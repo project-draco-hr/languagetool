@@ -6,5 +6,5 @@ def __init__(self):
     f.close()
     for line in lines:
         rule = Rule(line)
-        self.rules.append(r)
+        self.rules.append(rule)
     return
