@@ -2,5 +2,6 @@ import Tagger
 import re
 import sys
 import string
+import getopt
 prg = Controller()
 prg.run()

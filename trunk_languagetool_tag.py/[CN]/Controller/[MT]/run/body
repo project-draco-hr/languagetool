@@ -1,35 +1,50 @@
 def run(self):
-    if (len(sys.argv) <= 2):
-        prg.usage()
-        sys.exit()
-    option = sys.argv[1]
-    filename = sys.argv[2]
-    if (option == '-build'):
+    try:
+        (options, rest) = getopt.getopt(sys.argv[1:], 'htbws', ['help', 'build', 'tag', 'wordtag', 'seqtag'])
+    except getopt.GetoptError as e:
+        print  >> sys.stderr, ('Error: %s' % e)
+        self.usage()
+        sys.exit(1)
+    mode = self.TAG
+    for (o, a) in options:
+        if (o in ('-h', '--help')):
+            self.usage()
+            sys.exit(0)
+        elif (o in ('-h', '--tag')):
+            mode = self.TAG
+        elif (o in ('-h', '--build')):
+            mode = self.BUILD
+        elif (o in ('-w', '--wordtag')):
+            mode = self.TAGWORD
+        elif (o in ('-s', '--seqtag')):
+            mode = self.TAGSEQ
+    if (not rest):
+        self.usage()
+        sys.exit(1)
+    if (mode == self.BUILD):
         tagger = Tagger.Tagger()
-        tagger.deleteData()
         tagger.bindData()
-        filenames = sys.argv[2:]
-        for filename in filenames:
+        for filename in rest:
             tagger.buildData(filename)
         tagger.commitData()
-    elif (option == '-tag'):
+    elif (mode == self.TAG):
         tagger = Tagger.Tagger()
         tagger.bindData()
-        xml = tagger.tagFile(filename)
-        print xml
+        for filename in rest:
+            xml = tagger.tagFile(filename)
+            self.sanityCheck(filename, xml)
+            print xml
         print  >> sys.stderr, 'Done.'
-        words = re.compile('<w.*?>(.*?)</w>', re.DOTALL).findall(xml)
-        word_list = []
-        for word in words:
-            word_list.append(word)
-        words_string = string.join(word_list, '')
-        f = open(filename)
-        orig_contents = f.read()
-        f.close()
-        if (orig_contents != words_string):
-            print  >> sys.stderr, "*** Warning: joined output doesn't match original file!"
-            print  >> sys.stderr, '*** (can be ignored if the file is a BNC file)'
-    else:
-        print ("Unknown option '%s'" % option)
-        self.usage()
+    elif (mode == self.TAGWORD):
+        tagger = Tagger.Tagger()
+        tagger.bindData()
+        for word in rest:
+            r = tagger.tagWord(word)
+            print r
+    elif (mode == self.TAGSEQ):
+        tagger = Tagger.Tagger()
+        tagger.bindData()
+        key = (rest[0], rest[1], rest[2])
+        prob = tagger.tagSeq(key)
+        print prob
     return

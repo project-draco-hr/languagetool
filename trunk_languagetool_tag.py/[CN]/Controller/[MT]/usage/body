@@ -1,3 +1,8 @@
 def usage(self):
-    print 'Usage: ./tagger.py <-build|-tag> <filename>'
+    print  >> sys.stderr, 'Usage: ./tagger.py <--build|--tag|--tagword> <filename...>'
+    print  >> sys.stderr, ' -h, --help    this help information'
+    print  >> sys.stderr, ' -t, --tag     tag any text files'
+    print  >> sys.stderr, ' -b, --build   train the tagger using BNC XML files'
+    print  >> sys.stderr, ' -w, --wordtag tag any word'
+    print  >> sys.stderr, ' -s, --seqtag  probability for any 3-tag-sequence'
     return
