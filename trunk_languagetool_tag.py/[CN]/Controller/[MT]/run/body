@@ -24,8 +24,7 @@ def run(self):
     if (mode == self.BUILD):
         tagger = Tagger.Tagger()
         tagger.bindData()
-        for filename in rest:
-            tagger.buildData(filename)
+        tagger.buildData(rest)
         tagger.commitData()
     elif (mode == self.TAG):
         tagger = Tagger.Tagger()
