@@ -1,4 +1,9 @@
 import re
+import sys
 if (__name__ == '__main__'):
-    taginfo = TagInfo()
+    if (len(sys.argv) < 2):
+        print 'Usage: TagInfo.py <language>'
+        print '\twhere <language> is a language code like en, de, ...'
+        sys.exit(1)
+    taginfo = TagInfo(sys.argv[1])
     taginfo.printAll()
