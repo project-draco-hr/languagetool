@@ -24,7 +24,7 @@ def testGuess(self):
     self.assertEqual(tag, 'AV0')
     tag = tagger.guessTagTest('10.10pm')
     self.assertEqual(tag, 'AV0')
-    tag = tagger.guessTagTest('Gro\xdfekath\xf6fer')
+    tag = tagger.guessTagTest(u'Gro\xdfekath\xf6fer')
     self.assertEqual(tag, 'NP0')
     tag = tagger.guessTagTest('jackerfoodom')
     self.assertEqual(tag, 'NN1')
