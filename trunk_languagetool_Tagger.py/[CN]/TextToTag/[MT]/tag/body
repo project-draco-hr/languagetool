@@ -86,4 +86,6 @@ def tag(self, data_table, seqs_table):
         if self.sentence_end.search(tag_triple[0]):
             result_tuple_list[i] = (tag_triple[0], None, None)
         i = (i + 1)
+    stat = self.getStats(count_wrong_tags)
+    print  >> sys.stderr, stat
     return result_tuple_list
