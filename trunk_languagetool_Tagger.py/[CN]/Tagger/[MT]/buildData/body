@@ -1,5 +1,5 @@
 def buildData(self, filename):
-    'Load a BNC file in XML format and count the word/POS occurences\n\t\tand the POS tag sequences.'
+    'Load a BNC file in XML or SGML format and count the word/POS\n\t\toccurences and the POS tag sequences.'
     print  >> sys.stderr, ('Loading %s...' % filename)
     text = PreTaggedText(filename)
     tagged_words = text.getTaggedWords()

@@ -1,6 +1,6 @@
 def guessTag(self, word):
     'Take a word and guess which POS tag it might\thave and return\n\t\tthat POS tag. This considers e.g. word prefixes, suffixes and \n\t\tcapitalization. If no guess can be made, None is returned.'
-    if (word.startswith('\xa3') or word.startswith('$')):
+    if (word.startswith(u'\xa3') or word.startswith(u'$')):
         return 'NN0'
     if self.number_regex.match(word):
         return 'CRD'

@@ -1,5 +1,5 @@
 def getBNCTuples(self, text):
-    'Return a list of (tag, word) tuples from text if\n\t\ttext is a BNC Sampler text in XML format. Otherwise\n\t\treturn an empty list. The tags are mapped from the C7 tag set\n\t\tto the much smaller C5 tag set.'
+    'Return a list of (tag, word) tuples from text if\n\t\ttext is a BNC Sampler text in XML or SGML format. Otherwise\n\t\treturn an empty list. The tags are mapped from the C7 tag set\n\t\tto the much smaller C5 tag set.'
     l = []
     pos = 0
     while 1:
