@@ -1,0 +1,4 @@
+def setMaxLength(self, max_length):
+    "Set the maximum length that's still okay. Limit 0 means no limit."
+    self.max_length = int(max_length)
+    return
