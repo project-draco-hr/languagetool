@@ -1,5 +1,0 @@
-def __init__(self):
-    Rule.__init__(self, 'DET', "Use of 'a' vs. use of 'an'.", 0, None)
-    self.requires_a = self.loadWords(self.requires_a_file)
-    self.requires_an = self.loadWords(self.requires_an_file)
-    return

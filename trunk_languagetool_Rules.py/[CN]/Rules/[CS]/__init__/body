@@ -1,13 +1,18 @@
 def __init__(self, max_sentence_length, grammar_rules, word_rules, builtin_rules, false_friend_rules, textlang, mothertongue):
     'Parse all rules and put them in the self.rules list, together\n\t\twith built-in rules like the SentenceLengthRule.'
     self.rules = []
-    length_rule = SentenceLengthRule()
-    if (max_sentence_length != None):
-        length_rule.setMaxLength(max_sentence_length)
-    self.rules.append(length_rule)
-    if ((not builtin_rules) or ('DET' in builtin_rules)):
-        a_an_rule = AvsAnRule()
-        self.rules.append(a_an_rule)
+    sys.path.append(self.python_rules_dir)
+    dyn_files = os.listdir(self.python_rules_dir)
+    for filename in dyn_files:
+        if ((not filename.endswith('.py')) or filename.endswith('Test.py')):
+            continue
+        filename = filename[:(-3)]
+        exec ('import %s' % filename)
+        exec ('dynamic_rule = %s.%s()' % (filename, filename))
+        if ((dynamic_rule.rule_id == 'SENTENCE_LENGTH') and (max_sentence_length != None)):
+            dynamic_rule.setMaxLength(max_sentence_length)
+        if ((not builtin_rules) or (dynamic_rule.rule_id in builtin_rules)):
+            self.rules.append(dynamic_rule)
     for filename in self.rule_files:
         dir_temp = os.getcwd()
         os.chdir(os.path.dirname(filename))
