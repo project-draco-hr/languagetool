@@ -1,6 +1,7 @@
 def testRules(self):
+    "Test if the style and grammar checker can find the errors in the\n\t\trules' examples and if it doesn't find errors in the examples which\n\t\tare correct. If something goes wrong, this only throws an assert()\n\t\tat the very end."
     examples = self.loadRuleExamples()
-    checker = TextChecker.TextChecker(grammar=None, falsefriends=None, words=None, builtin=None, textlanguage=None, mothertongue=None, max_sentence_length=99)
+    checker = TextChecker.TextChecker(grammar=None, falsefriends=None, words=None, builtin=None, textlanguage=None, mothertongue=None, max_sentence_length=0)
     err_count = 0
     for sentence_obj in examples:
         (rule_matches, xml_err, tagged_text) = checker.check(sentence_obj.sentence)
@@ -25,5 +26,6 @@ def testRules(self):
                 print ('*** Error: %s' % msg)
                 print 
                 err_count = (err_count + 1)
-    print ('%d problems (errors not detected resp. wrong error detected' % err_count)
+    print  >> sys.stderr, ('%d problems (errors not detected resp. wrong error detected)' % err_count)
+    self.assertEqual(err_count, 0)
     return

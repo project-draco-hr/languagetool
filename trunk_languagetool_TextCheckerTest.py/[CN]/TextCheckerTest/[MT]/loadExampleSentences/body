@@ -16,5 +16,6 @@ def loadExampleSentences(self):
                 to_pos = len(xml_str)
                 spans.append((from_pos, to_pos))
         err = Error(xml_str, corr, spans)
+        print err
         errors.append(err)
     return errors

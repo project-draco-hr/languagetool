@@ -1,7 +1,0 @@
-def testLengthLimit(self):
-    checker = TextChecker.TextChecker(grammar=None, falsefriends=None, words=None, builtin=None, textlanguage=None, mothertongue=None, max_sentence_length=5)
-    s = 'One two three four five.'
-    (rule_match, xml_err, tagged_text) = checker.check(s)
-    s = 'One two three four five six.'
-    (rule_match, xml_err, tagged_text) = checker.check(s)
-    return
