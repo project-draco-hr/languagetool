@@ -8,6 +8,6 @@ def remove_false_end_of_sentence(self, text):
     for abbr in self.abbr:
         s = ('(\\b%s%s\\s)%s' % (abbr, self.PAP, self.EOS))
         text = re.compile(s, (re.DOTALL | re.IGNORECASE)).sub('\\1', text)
-    text = re.compile(('(["\']\\s*)%s(\\s*[%s])' % (self.EOS, string.lowercase)), (re.DOTALL | re.IGNORECASE)).sub('\\1\\2', text)
+    text = re.compile(('(["\']\\s*)%s(\\s*[%s])' % (self.EOS, string.lowercase)), re.DOTALL).sub('\\1\\2', text)
     text = re.compile(('(\\s%s\\s)%s' % (self.PAP, self.EOS)), re.DOTALL).sub('\\1', text)
     return text
