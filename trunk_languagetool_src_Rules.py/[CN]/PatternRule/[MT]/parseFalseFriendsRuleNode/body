@@ -13,7 +13,7 @@ def parseFalseFriendsRuleNode(self, rule_node, mothertongue, textlang):
             translations.append(trans_str)
     if self.valid:
         self.case_sensitive = 0
-        self.pattern = rule_node.getElementsByTagName('pattern')[0].childNodes[0].data
+        self.pattern = rule_node.getElementsByTagName('pattern')[0].childNodes[0].data.strip()
         (repl_word, repl_trans) = self.getOtherMeaning(rule_node.parentNode, mothertongue, textlang)
         l = []
         for elem in repl_trans:

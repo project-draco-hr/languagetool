@@ -2,7 +2,7 @@ def parseRuleNode(self, rule_node):
     self.rule_id = rule_node.getAttribute('id')
     if (not self.rule_id):
         self.rule_id = rule_node.parentNode.getAttribute('id')
-    self.pattern = rule_node.getElementsByTagName('pattern')[0].childNodes[0].data
+    self.pattern = rule_node.getElementsByTagName('pattern')[0].childNodes[0].data.strip()
     token_strings = re.split('\\s+', self.pattern)
     self.tokens = []
     for token_string in token_strings:
