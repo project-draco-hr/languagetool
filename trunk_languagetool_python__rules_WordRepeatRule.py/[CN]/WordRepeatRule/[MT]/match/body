@@ -5,6 +5,10 @@ def match(self, tagged_words, chunks, position_fix=0):
     while 1:
         if (i >= (len(tagged_words) - 2)):
             break
+        org_tag = tagged_words[i][2]
+        if (org_tag == 'CRD'):
+            i = (i + 1)
+            continue
         org_word = tagged_words[i][0]
         org_word_next = tagged_words[(i + 2)][0]
         text_length = (text_length + len(org_word))
