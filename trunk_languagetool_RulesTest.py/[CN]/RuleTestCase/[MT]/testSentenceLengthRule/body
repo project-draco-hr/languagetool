@@ -1,5 +1,5 @@
 def testSentenceLengthRule(self):
-    r = Rules.SentenceLengthRule()
+    r = SentenceLengthRule.SentenceLengthRule()
     r.setMaxLength(3)
     warnings = r.match([('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T')])
     self.assertEqual(len(warnings), 0)

@@ -1,4 +1,9 @@
 import unittest
 import Rules
+import sys
+sys.path.append('python_rules')
+import SentenceLengthRule
+import AvsAnRule
+import WordRepeatRule
 if (__name__ == '__main__'):
     unittest.main()
