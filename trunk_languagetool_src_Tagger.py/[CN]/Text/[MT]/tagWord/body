@@ -24,14 +24,14 @@ def tagWord(self, word, data_table):
         if (rc[0] != '-'):
             src = rc.split()
             word = src[(len(src) - 2)]
-            return [(orig_word, word, [(src[(len(src) - 1)], 1)])]
+            return [(orig_word, orig_word, [(src[(len(src) - 1)], 1)])]
         if (rc[0] == '-'):
             self.count_unknown = (self.count_unknown + 1)
             guess_tag = self.guessTags(word)
             if guess_tag:
-                return [(orig_word, word, [(guess_tag, 1)])]
+                return [(orig_word, orig_word, [(guess_tag, 1)])]
             else:
-                return [(orig_word, word, [('unknown', 1)])]
+                return [(orig_word, orig_word, [('unknown', 1)])]
     elif (not data_table.has_key(word)):
         self.count_unknown = (self.count_unknown + 1)
         guess_tag = self.guessTags(word)
