@@ -1,5 +1,5 @@
 def tag(self, data_table, seqs_table):
-    'Tag self.text and returns list of tuples\n\t\t(word, normalized word, most probable tag)'
+    'Tag self.text and return list of tuples\n\t\t(word, normalized word, most probable tag)'
     self.text = self.expandEntities(self.text)
     result_tuple_list = []
     count_wrong_tags = 'n/a'
