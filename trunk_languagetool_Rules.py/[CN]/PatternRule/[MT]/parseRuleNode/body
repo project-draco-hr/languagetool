@@ -46,4 +46,5 @@ def parseRuleNode(self, rule_node):
                 self.false_positives = error_rate
         except ValueError:
             pass
+    self.simple_rule = 0
     return

@@ -54,7 +54,13 @@ def match(self, tagged_words, chunks=None, position_fix=0):
             case_switch = re.IGNORECASE
             if self.case_sensitive:
                 case_switch = 0
-            match = re.compile(('%s$' % expected_token_str), case_switch).match(found)
+            if self.simple_rule:
+                if case_switch:
+                    match = (expected_token_str.lower() == found.lower())
+                else:
+                    match = (expected_token_str == found)
+            else:
+                match = re.compile(('%s$' % expected_token_str), case_switch).match(found)
             if expected_token.negation:
                 if (not match):
                     match = 1

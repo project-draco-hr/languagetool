@@ -14,4 +14,5 @@ def setVars(self, rule_id, pattern, message, marker_from, marker_to, example_goo
     for token_string in token_strings:
         token = Token(token_string)
         self.tokens.append(token)
+    self.simple_rule = 0
     return
