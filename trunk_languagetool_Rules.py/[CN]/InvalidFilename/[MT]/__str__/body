@@ -1,0 +1,3 @@
+def __str__(self):
+    s = ("Constructor must be named as the file, i.e. '%s'" % self.value)
+    return s

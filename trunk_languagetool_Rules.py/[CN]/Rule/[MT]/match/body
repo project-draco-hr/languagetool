@@ -1,3 +1,0 @@
-def match(self):
-    'Do nothing (quasi virtual method).'
-    return

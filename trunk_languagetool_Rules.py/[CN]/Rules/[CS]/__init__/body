@@ -8,7 +8,12 @@ def __init__(self, max_sentence_length, grammar_rules, word_rules, builtin_rules
             continue
         filename = filename[:(-3)]
         exec ('import %s' % filename)
-        exec ('dynamic_rule = %s.%s()' % (filename, filename))
+        try:
+            exec ('dynamic_rule = %s.%s()' % (filename, filename))
+        except AttributeError:
+            raise InvalidFilename(filename)
+        if (not hasattr(dynamic_rule, 'match')):
+            raise MissingMethod('match', ('%s.py' % filename))
         if ((dynamic_rule.rule_id == 'SENTENCE_LENGTH') and (max_sentence_length != None)):
             dynamic_rule.setMaxLength(max_sentence_length)
         if ((not builtin_rules) or (dynamic_rule.rule_id in builtin_rules)):
