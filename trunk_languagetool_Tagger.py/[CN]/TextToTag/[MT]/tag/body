@@ -70,11 +70,7 @@ def tag(self, data_table, seqs_table):
         (next_word, next) = self.getNextToken(i, tagged_list)
         if (not next):
             next = [(None, 1)]
-        tuple_by_rule = self.applyRules(prev_word, orig_word, next_word, tagged_word)
-        if tuple_by_rule:
-            result_tuple_list.append(tuple_by_rule)
-            i = (i + 1)
-            continue
+        self.applyConstraints(prev_word, orig_word, next_word, tag_tuples)
         best_tag = self.getBestTag(prev, tag_tuples, next, seqs_table, i, tag_table)
         if tagged:
             result_tuple_list.append((orig_word, tagged_word, best_tag))

@@ -1,5 +1,0 @@
-def applyRules(self, prev_word, curr_word, next_word, tagged_word):
-    'Some hard-coded and manually written rules that fix mistagging by \n\t\tthe probabilistic tagger. Returns a (word, normalized_word, tag) triple.'
-    if (prev_word and (prev_word.lower() == 'it') and (curr_word == "'s")):
-        return (curr_word, tagged_word, 'VBZ')
-    return None

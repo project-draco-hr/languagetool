@@ -2,4 +2,4 @@ self
 prev_word
 curr_word
 next_word
-tagged_word
+tagged_tuples

@@ -1,4 +1,4 @@
-def testDddTagList(self):
+def testTagList(self):
     text = Tagger.Text()
     t = {}
     text.addTagList(['NN0'], t)

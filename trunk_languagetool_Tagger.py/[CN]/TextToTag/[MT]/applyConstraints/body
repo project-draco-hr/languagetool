@@ -1,0 +1,5 @@
+def applyConstraints(self, prev_word, curr_word, next_word, tagged_tuples):
+    'Some hard-coded and manually written rules that prevent mistaggings by \n\t\tthe probabilistic tagger. Removes incorrect POS tags from tagged_tuples.\n\t\tReturns nothing, as it works directly on tagged_tuples.'
+    if (curr_word and (curr_word.lower() == 'demodemo')):
+        self.constrain(tagged_tuples, 'AA')
+    return
