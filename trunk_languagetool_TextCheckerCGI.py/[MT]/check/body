@@ -20,7 +20,7 @@ def check(form):
         max_sentence_length = None
     checker = TextChecker.TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
     print '<html><head>\n\t\t<title>Check result</title>\n\t\t<style rel=\'stylesheet\'>\n\t\t\t<!--\n\t\t\t.tag { color: grey; }\n\t\t\t.error { font-weight: bold; color: red; }\n\t\t\t.expl { color: blue; }\n\t\t\t.repl { font-weight: bold; }\n\t\t\t-->\n\t\t\t</style>\n\t\t<script language="javascript">\n\t\t\t<!--\n\t\t\tvar data = new Array();\n\t\t\t'
-    taginfo = TagInfo.TagInfo()
+    taginfo = TagInfo.TagInfo(textlanguage)
     print taginfo.getJavascriptCode()
     print '\n\t\t\tfunction info(s) {\t\n\t\t\t\talert(s + ": " + data[s]);\n\t\t\t}\n\t\t\t//-->\n\t\t</script>\n\t\t</head>\n\t\t<body>\n\t\t<h1>Result</h1>'
     (rule_matches, res, tags) = checker.check(text)
@@ -32,7 +32,7 @@ def check(form):
         tag_str = ''
         if (form.getvalue('tags') and tag_triple[2]):
             w = tag_triple[2]
-            tag_str = ('<span class="tag"><a href="TextCheckerCGI.py?explain=%s" \t\t\t\tonclick="info(\'%s\');return false;">[%s]</a></span>' % (w, w, w))
+            tag_str = ('<span class="tag"><a href="TextCheckerCGI.py?explain=%s&amp;lang=%s" \t\t\t\tonclick="info(\'%s\');return false;">[%s]</a></span>' % (w, textlanguage, w, w))
             if (tag_triple[2] == 'SENT_END'):
                 tag_str = ('%s<br>\n' % tag_str)
         word = cgi.escape(tag_triple[0])
