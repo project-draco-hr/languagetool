@@ -8,5 +8,5 @@ import htmlentitydefs
 import Wfinder
 dicFile = 'deutsch.txt'
 affFile = 'deutsch.aff'
-textlanguage = 'German'
+textlanguage = 'de'
 wfinder = Wfinder.Wfinder()
