@@ -34,7 +34,7 @@ def checkBNCFiles(self, directory, checker):
                 self.bnc_paras = (self.bnc_paras + 1)
                 s = xml_regex.sub('', match)
                 s = whitespace_regex.sub(' ', s)
-                s = self.cleanEntities(s)
+                s = Entities.Entities.cleanEntities(s)
                 s = s.strip()
                 (rule_matches, result, tagged_words) = checker.check(s)
                 if (len(rule_matches) == 0):
@@ -42,5 +42,5 @@ def checkBNCFiles(self, directory, checker):
                 else:
                     for rule_match in rule_matches:
                         s_mark = ('%s***%s' % (s[:rule_match.from_pos], s[rule_match.from_pos:]))
-                        print ('%s:\n<!-- %s -->\n%s' % (filename, s_mark.encode('utf8'), result.encode('utf8')))
+                        print ('%s:\n<!--%s: %s -->\n%s' % (rule_match.id, filename, s_mark.encode('utf8'), result.encode('utf8')))
     return

@@ -1,0 +1,10 @@
+def cleanEntities(s):
+    'Replace only the most common BNC entities with their\n\t\tASCII respresentation.'
+    entities = {'amp': '&', 'pound': '\xa3', 'eacute': 'e', 'aacute': 'a', 'bquo': '"', 'equo': '"', 'ecirc': 'e', 'quot': "'", 'dollar': '$', 'egrave': 'e', 'percnt': '&', 'ndash': '-', 'mdash': '--', 'hellip': '...', 'lsqb': '[', 'rsqb': ']', 'uuml': 'u', 'auml': 'a', 'ouml': 'o', 'Uuml': 'U', 'Auml': 'A', 'Ouml': 'O', }
+    try:
+        for key in entities:
+            s = s.replace(('&%s;' % key), entities[key])
+            s = s.replace(('&%s' % key), entities[key])
+    except TypeError:
+        print  >> sys.stderr, ("TypeError: '%s'" % s)
+    return s

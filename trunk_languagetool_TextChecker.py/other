@@ -7,6 +7,7 @@ import string
 import sys
 import time
 import profile
+import Entities
 import Tagger
 import Chunker
 import Rules
