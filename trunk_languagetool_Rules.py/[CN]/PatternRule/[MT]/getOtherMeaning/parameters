@@ -1,5 +1,4 @@
 self
-node
-is_false_friend_node
+rulegroup_node
 mothertongue
 textlang

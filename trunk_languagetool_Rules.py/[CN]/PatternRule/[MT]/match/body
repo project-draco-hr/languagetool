@@ -23,13 +23,14 @@ def match(self, tagged_words, position_fix):
                 expected_token = self.tokens[p]
             except IndexError:
                 break
+            expected_token_str = expected_token.token
             if (tagged_words_copy[i][2] == 'SENT_START'):
                 found = 'SENT_START'
             elif (tagged_words_copy[i][2] == 'SENT_END'):
                 found = 'SENT_END'
             elif expected_token.is_word:
                 try:
-                    found = tagged_words_copy[i][1]
+                    found = tagged_words_copy[i][1].strip()
                 except:
                     break
             else:
@@ -42,7 +43,7 @@ def match(self, tagged_words, position_fix):
             case_switch = re.IGNORECASE
             if self.case_sensitive:
                 case_switch = 0
-            match = re.compile((expected_token.token + '$'), case_switch).match(found)
+            match = re.compile(('%s$' % expected_token_str), case_switch).match(found)
             if expected_token.negation:
                 if (not match):
                     match = 1

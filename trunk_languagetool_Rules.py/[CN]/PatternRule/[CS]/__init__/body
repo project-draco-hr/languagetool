@@ -1,40 +1,9 @@
-def __init__(self, rule_node):
+def __init__(self, node, is_false_friend_node=None, mothertongue=None, textlang=None):
     'Build an object by parsing an XML rule node.'
-    if (rule_node == None):
+    if (node == None):
         return
-    self.rule_id = rule_node.getAttribute('id')
-    self.pattern = rule_node.getElementsByTagName('pattern')[0].childNodes[0].data
-    token_strings = re.split('\\s+', self.pattern)
-    self.tokens = []
-    for token_string in token_strings:
-        token = Token(token_string)
-        self.tokens.append(token)
-    pattern_node = rule_node.getElementsByTagName('pattern')[0]
-    self.language = pattern_node.getAttribute('lang')
-    marker_from_att = pattern_node.getAttribute('mark_from')
-    if marker_from_att:
-        self.marker_from = int(marker_from_att)
+    if is_false_friend_node:
+        self.parseFalseFriendsRuleNode(node, mothertongue, textlang)
     else:
-        self.marker_from = 0
-    marker_to_att = pattern_node.getAttribute('mark_to')
-    if marker_to_att:
-        self.marker_to = int(marker_to_att)
-    else:
-        self.marker_to = 0
-    self.case_sensitive = 0
-    if (rule_node.getElementsByTagName('pattern')[0].getAttribute('case_sensitive') == 'yes'):
-        self.case_sensitive = 1
-    if rule_node.getElementsByTagName('message'):
-        self.message = Tools.Tools.getXML(rule_node.getElementsByTagName('message')[0])
-    else:
-        self.message = Tools.Tools.getXML(rule_node.parentNode.getElementsByTagName('message')[0])
-    example_nodes = rule_node.getElementsByTagName('example')
-    self.example_good = ''
-    self.example_bad = ''
-    for example_node in example_nodes:
-        if (example_node.getAttribute('type') == 'correct'):
-            self.example_good = Tools.Tools.getXML(example_node.childNodes[0])
-        else:
-            self.example_bad = Tools.Tools.getXML(example_node.childNodes[0])
-    self.false_positives = rule_node.getElementsByTagName('error_rate')[0].childNodes[0].data
+        self.parseRuleNode(node)
     return

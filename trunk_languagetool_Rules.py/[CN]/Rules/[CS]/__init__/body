@@ -1,4 +1,4 @@
-def __init__(self, max_sentence_length, grammar_rules):
+def __init__(self, max_sentence_length, grammar_rules, word_rules, false_friend_rules, textlang, mothertongue):
     'Parse all rules and put them in the self.rules list, together\n\t\twith built-in rules like the SentenceLengthRule.'
     self.rules = []
     length_rule = SentenceLengthRule()
@@ -10,9 +10,24 @@ def __init__(self, max_sentence_length, grammar_rules):
         os.chdir(os.path.dirname(filename))
         doc = xml.dom.minidom.parse(os.path.basename(filename))
         os.chdir(dir_temp)
-        rule_nodes = doc.getElementsByTagName('rule')
-        for rule_node in rule_nodes:
-            rule = PatternRule(rule_node)
-            if ((grammar_rules == None) or (rule.rule_id in grammar_rules)):
-                self.rules.append(rule)
+        if filename.endswith('grammar.xml'):
+            rule_nodes = doc.getElementsByTagName('rule')
+            for rule_node in rule_nodes:
+                rule = PatternRule(rule_node)
+                if ((grammar_rules == None) or (rule.rule_id in grammar_rules)):
+                    self.rules.append(rule)
+        elif filename.endswith('words.xml'):
+            rule_nodes = doc.getElementsByTagName('rule')
+            for rule_node in rule_nodes:
+                rule = PatternRule(rule_node)
+                if ((word_rules == None) or (rule.rule_id in word_rules)):
+                    self.rules.append(rule)
+        elif filename.endswith('false_friends.xml'):
+            pattern_nodes = doc.getElementsByTagName('pattern')
+            for pattern_node in pattern_nodes:
+                lang = pattern_node.getAttribute('lang')
+                if ((textlang == None) or (lang == textlang)):
+                    rule = PatternRule(pattern_node.parentNode, 1, mothertongue, textlang)
+                    if (rule.valid and ((false_friend_rules == None) or (rule.rule_id in false_friend_rules))):
+                        self.rules.append(rule)
     return
