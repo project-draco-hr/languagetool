@@ -35,8 +35,8 @@ def match(self, tagged_words, chunks=None, position_fix=0, line_fix=0, column_fi
                     continue
             if (word_next and (not self.after_punct_regex.match(org_word_next)) and (not self.whitespace_regex.match(org_word_next))):
                 matches.append(RuleMatch(self.rule_id, text_length, (text_length + len(org_word)), (line_breaks + line_fix), (column + column_fix), 'Usually a space character is inserted after punctuation.'))
-        elif self.whitespace_regex.match(org_word):
-            if self.punct_regex.match(org_word_next):
+        elif self.whitespace_before_punct.match(org_word):
+            if (not self.punct_regex.match(org_word_next)):
                 matches.append(RuleMatch(self.rule_id, text_length, (text_length + len(org_word)), (line_breaks + line_fix), (column + column_fix), 'Usually no space character is inserted before punctuation.'))
         i = (i + 1)
     return matches
