@@ -8,5 +8,5 @@ def __init__(self, grammar, falsefriends, words, builtin, textlanguage, motherto
     self.max_sentence_length = max_sentence_length
     self.tagger = Tagger.Tagger()
     self.tagger.bindData()
-    self.rules = Rules.Rules(self.max_sentence_length)
+    self.rules = Rules.Rules(self.max_sentence_length, self.grammar)
     return

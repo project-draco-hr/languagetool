@@ -7,7 +7,9 @@ def main():
         print  >> sys.stderr, 'Error: ', e
         usage()
         sys.exit(2)
-    grammar = falsefriends = words = []
+    grammar = None
+    falsefriends = None
+    words = None
     builtin = []
     textlanguage = mothertongue = None
     max_sentence_length = None
