@@ -10,13 +10,15 @@ def match(self, tagged_words, position_fix):
         expected_token = None
         found = None
         match = 1
-        first_match = ct
+        first_match = None
         while match:
             try:
                 if (not self.isRealWord(tagged_words_copy, i)):
                     i = (i + 1)
                     ct = (ct + 1)
                     continue
+                elif (not first_match):
+                    first_match = ct
             except IndexError:
                 break
             try:
@@ -52,28 +54,19 @@ def match(self, tagged_words, position_fix):
             i = (i + 1)
             p = (p + 1)
         if (match and (p == len(self.tokens))):
-            if (tagged_words_copy[first_match][1] == None):
-                first_match = (first_match + 1)
-            p_tmp = 0
-            i_tmp = first_match
-            for tagged_word in tagged_words_copy[first_match:]:
-                if (tagged_word[1] != None):
-                    p_tmp = (p_tmp + 1)
-                if (p_tmp >= (len(self.tokens) + self.marker_to)):
-                    last_match = i_tmp
-                    break
-                i_tmp = (i_tmp + 1)
-            if (not last_match):
-                last_match = len(tagged_words_copy)
-            char_count = 0
-            for tagged_word in tagged_words_copy[:(first_match + self.marker_from)]:
-                char_count = (char_count + len(tagged_word[0]))
-            from_pos = char_count
-            char_count = 0
-            for tagged_word in tagged_words_copy[:(last_match + 1)]:
-                char_count = (char_count + len(tagged_word[0]))
-            to_pos = char_count
-            match = RuleMatch(self.rule_id, (from_pos + position_fix), (to_pos + position_fix), self.message)
+            (first_match, from_pos, to_pos) = self.listPosToAbsPos(tagged_words_copy, first_match)
+            to_upper = 0
+            if (tagged_words_copy[first_match][0][0] in string.uppercase):
+                to_upper = 1
+            l = first_match
+            lcount = 1
+            msg = self.message
+            while (lcount <= len(self.tokens)):
+                if self.isRealWord(tagged_words_copy, l):
+                    msg = msg.replace(('\\%d' % lcount), tagged_words_copy[l][0])
+                    lcount = (lcount + 1)
+                l = (l + 1)
+            match = RuleMatch(self.rule_id, (from_pos + position_fix), (to_pos + position_fix), msg, to_upper)
             matches.append(match)
         ct = (ct + 1)
     return matches

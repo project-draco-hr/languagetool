@@ -1,0 +1,25 @@
+def listPosToAbsPos(self, l, first_match):
+    j = (first_match + 1)
+    i = 0
+    mark_from_tmp = self.marker_from
+    while ((mark_from_tmp > 0) and (j < len(l))):
+        if l[j][1]:
+            mark_from_tmp = (mark_from_tmp - 1)
+        i = (i + 1)
+        j = (j + 1)
+    first_match = (first_match + i)
+    last_match = first_match
+    match_len = ((len(self.tokens) - self.marker_from) + self.marker_to)
+    for el in l[first_match:]:
+        if (match_len == 0):
+            break
+        if el[1]:
+            match_len = (match_len - 1)
+        last_match = (last_match + 1)
+    from_pos = 0
+    for el in l[:first_match]:
+        from_pos = (from_pos + len(el[0]))
+    to_pos = 0
+    for el in l[:last_match]:
+        to_pos = (to_pos + len(el[0]))
+    return (first_match, from_pos, to_pos)

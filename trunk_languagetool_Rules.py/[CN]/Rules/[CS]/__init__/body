@@ -14,13 +14,19 @@ def __init__(self, max_sentence_length, grammar_rules, word_rules, false_friend_
             rule_nodes = doc.getElementsByTagName('rule')
             for rule_node in rule_nodes:
                 rule = PatternRule(rule_node)
-                if ((grammar_rules == None) or (rule.rule_id in grammar_rules)):
+                lang_ok = 0
+                if ((textlang == None) or (textlang == rule.language)):
+                    lang_ok = 1
+                if (lang_ok and ((grammar_rules == None) or (rule.rule_id in grammar_rules))):
                     self.rules.append(rule)
         elif filename.endswith('words.xml'):
             rule_nodes = doc.getElementsByTagName('rule')
             for rule_node in rule_nodes:
                 rule = PatternRule(rule_node)
-                if ((word_rules == None) or (rule.rule_id in word_rules)):
+                lang_ok = 0
+                if ((textlang == None) or (textlang == rule.language)):
+                    lang_ok = 1
+                if (lang_ok and ((word_rules == None) or (rule.rule_id in word_rules))):
                     self.rules.append(rule)
         elif filename.endswith('false_friends.xml'):
             pattern_nodes = doc.getElementsByTagName('pattern')
