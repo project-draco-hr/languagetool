@@ -1,13 +1,12 @@
 def loadWords(self, filename):
     f = open(filename)
-    contents = f.read()
+    l = []
+    while 1:
+        line = f.readline()
+        if (not line):
+            break
+        if (line.startswith('#') or (line.strip() == '')):
+            continue
+        l.append(line.strip().lower())
     f.close()
-    l = re.split('\n', contents)
-    i = 0
-    for el in l:
-        if (el.startswith('#') or (el == '')):
-            del l[i]
-        else:
-            l[i] = l[i].strip().lower()
-        i = (i + 1)
     return l

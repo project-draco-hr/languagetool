@@ -1,5 +1,7 @@
 def parseRuleNode(self, rule_node):
     self.rule_id = rule_node.getAttribute('id')
+    if (not self.rule_id):
+        self.rule_id = rule_node.parentNode.getAttribute('id')
     self.pattern = rule_node.getElementsByTagName('pattern')[0].childNodes[0].data
     token_strings = re.split('\\s+', self.pattern)
     self.tokens = []
@@ -33,8 +35,15 @@ def parseRuleNode(self, rule_node):
             self.example_good = Tools.Tools.getXML(example_node.childNodes[0])
         else:
             self.example_bad = Tools.Tools.getXML(example_node.childNodes[0])
+    self.false_positives = None
     if rule_node.getElementsByTagName('error_rate'):
-        self.false_positives = rule_node.getElementsByTagName('error_rate')[0].childNodes[0].data
-    else:
-        self.false_positives = 0
+        error_rate_node = rule_node.getElementsByTagName('error_rate')[0]
+        warnings = error_rate_node.getAttribute('warnings')
+        sentences = error_rate_node.getAttribute('sentences')
+        try:
+            if (int(sentences) != 0):
+                error_rate = ((float(warnings) / float(sentences)) * 100)
+                self.false_positives = error_rate
+        except ValueError:
+            pass
     return

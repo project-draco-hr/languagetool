@@ -15,7 +15,11 @@ def parseFalseFriendsRuleNode(self, rule_node, mothertongue, textlang):
         self.case_sensitive = 0
         self.pattern = rule_node.getElementsByTagName('pattern')[0].childNodes[0].data
         (repl_word, repl_trans) = self.getOtherMeaning(rule_node.parentNode, mothertongue, textlang)
-        self.message = ("'%s' means %s. Did you maybe mean '%s' (%s)?" % (self.pattern, str.join(', ', translations), repl_word, str.join(', ', repl_trans)))
+        l = []
+        for elem in repl_trans:
+            l.append(('<em>%s</em>' % elem))
+        repl_trans_str = str.join(', ', l)
+        self.message = ("'%s' means %s. Did you maybe mean '%s', which is %s?" % (self.pattern, str.join(', ', translations), repl_word, repl_trans_str))
         token_strings = re.split('\\s+', self.pattern)
         self.tokens = []
         for token_string in token_strings:
