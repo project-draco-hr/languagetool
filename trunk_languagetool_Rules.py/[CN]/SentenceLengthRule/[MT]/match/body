@@ -1,5 +1,5 @@
 def match(self, tagged_words, position_fix=0):
-    'Check if a sentence is too long. Put the warning on the first word\n\t\tabove the limit. Assumes that tagged_words is exactly one sentence.'
+    'Check if a sentence is too long, according to the limit set\n\t\tby setMaxLength(). Put the warning on the first word\n\t\tabove the limit. Assumes that tagged_words is exactly one sentence.'
     if (self.max_length == 0):
         return []
     matches = []

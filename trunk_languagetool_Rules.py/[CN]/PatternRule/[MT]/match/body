@@ -41,14 +41,12 @@ def match(self, tagged_words, position_fix):
             case_switch = re.IGNORECASE
             if self.case_sensitive:
                 case_switch = 0
+            match = re.compile((expected_token.token + '$'), case_switch).match(found)
             if expected_token.negation:
-                match = re.compile((expected_token.token + '$'), case_switch).match(found)
                 if (not match):
                     match = 1
                 else:
                     match = None
-            else:
-                match = re.compile((expected_token.token + '$'), case_switch).match(found)
             i = (i + 1)
             p = (p + 1)
         if (match and (p == len(self.tokens))):

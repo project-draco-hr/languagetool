@@ -1,5 +1,5 @@
 def setVars(self, rule_id, pattern, message, marker_position, example_good, example_bad, case_sensitive, false_positives, language):
-    'Manually init the pattern rule -- for test cases only.'
+    'Manually initialize the pattern rule -- for test cases only.'
     self.rule_id = rule_id
     self.message = message
     self.false_positives = false_positives

@@ -1,4 +1,5 @@
 def __init__(self, max_sentence_length, grammar_rules):
+    'Parse all rules and put them in the self.rules list, together\n\t\twith built-in rules like the SentenceLengthRule.'
     self.rules = []
     length_rule = SentenceLengthRule()
     if (max_sentence_length != None):

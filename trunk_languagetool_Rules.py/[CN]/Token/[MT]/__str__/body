@@ -1,5 +1,5 @@
 def __str__(self):
-    'Debugging only'
+    'For debugging only'
     strng = self.token
     if self.negation:
         strng = ('^%s' % strng)

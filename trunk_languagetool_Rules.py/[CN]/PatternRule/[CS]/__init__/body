@@ -1,5 +1,5 @@
 def __init__(self, rule_node):
-    'Parse an XML rule node and init the object with its variables.'
+    'Build an object by parsing an XML rule node.'
     if (rule_node == None):
         return
     self.rule_id = rule_node.getAttribute('id')
