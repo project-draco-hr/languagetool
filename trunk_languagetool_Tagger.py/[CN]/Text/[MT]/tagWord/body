@@ -2,14 +2,14 @@ def tagWord(self, word, data_table):
     'Find all possible tags for a word and return a list of tuples:\n\t\t[(orig_word, normalised_word, [(tag, probability])]'
     orig_word = word
     word = self.normalise(word)
-    short_form_pos = word.find("n't")
     if ((not word) or self.nonword.match(word)):
         return [(orig_word, None, [])]
     if (word.count("'") > 1):
         print  >> sys.stderr, ("*** What's this, more than one apostroph: '%s'!?" % word)
+    short_form_pos = word.find("n't")
     if ((short_form_pos != (-1)) and (short_form_pos != 0)):
         if (not word.endswith("n't")):
-            print  >> sys.stderr, ("*** What's this, negation not at the end: '%s'!?" % word)
+            pass
         first_part = self.tagWord(word[0:short_form_pos], data_table)[0]
         second_part = self.tagWord("n't", data_table)[0]
         tag_results = []
@@ -19,7 +19,7 @@ def tagWord(self, word, data_table):
     possesive_pos = word.find("'s")
     if ((possesive_pos != (-1)) and (possesive_pos != 0)):
         if (not word.endswith("'s")):
-            print  >> sys.stderr, ("*** What's this, possesive not at the end: '%s'!?" % word)
+            pass
         first_part = self.tagWord(word[0:possesive_pos], data_table)[0]
         second_part = self.tagWord("'s", data_table)[0]
         tag_results = []
