@@ -46,7 +46,7 @@ def run(self):
     elif (mode == self.TAGSEQ):
         tagger = Tagger.Tagger()
         tagger.bindData()
-        key = (rest[0], rest[1], rest[2])
+        key = (rest[0], rest[1])
         prob = tagger.tagSeq(key)
         print prob
     return
