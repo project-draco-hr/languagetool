@@ -1,5 +1,5 @@
 def checkWords(checker, words):
-    result = '<result>'
+    result = u'<result>'
     ispell = iSpell()
     words = words.replace('\n', ' ')
     r = ispell.check(words)
@@ -7,7 +7,7 @@ def checkWords(checker, words):
         for mistake in ispell.getMistakes():
             pos = []
             for p in mistake.getPositions():
-                result = ('%s<error from="%d" to="%d" word="%s" corrections="%s"/>' % (result, p, (p + len(mistake.getWord())), mistake.getWord(), str.join(',', mistake.corrections)))
+                result = (u'%s<error from="%d" to="%d" word="%s" corrections="%s"/>' % (result, p, (p + len(mistake.getWord())), unicode(mistake.getWord(), 'latin1'), unicode(str.join(',', mistake.corrections), 'latin1')))
     (rule_matches, res, tags) = checker.check(words)
     result = (result + res)
     result = (result + '</result>\n')
