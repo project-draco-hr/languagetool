@@ -1,12 +1,13 @@
-def __init__(self, max_sentence_length, grammar_rules, word_rules, false_friend_rules, textlang, mothertongue):
+def __init__(self, max_sentence_length, grammar_rules, word_rules, builtin_rules, false_friend_rules, textlang, mothertongue):
     'Parse all rules and put them in the self.rules list, together\n\t\twith built-in rules like the SentenceLengthRule.'
     self.rules = []
     length_rule = SentenceLengthRule()
     if (max_sentence_length != None):
         length_rule.setMaxLength(max_sentence_length)
     self.rules.append(length_rule)
-    a_an_rule = AvsAnRule()
-    self.rules.append(a_an_rule)
+    if ((not builtin_rules) or ('DET' in builtin_rules)):
+        a_an_rule = AvsAnRule()
+        self.rules.append(a_an_rule)
     for filename in self.rule_files:
         dir_temp = os.getcwd()
         os.chdir(os.path.dirname(filename))

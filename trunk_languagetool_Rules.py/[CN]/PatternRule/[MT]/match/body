@@ -1,4 +1,4 @@
-def match(self, tagged_words, position_fix):
+def match(self, tagged_words, chunks=None, position_fix=0):
     'Check if there are rules that match the tagged_words. Returns a list\n\t\tof RuleMatch objects.'
     matches = []
     ct = 0
@@ -11,6 +11,7 @@ def match(self, tagged_words, position_fix):
         found = None
         match = 1
         first_match = None
+        chunk_corr = 0
         while match:
             try:
                 if (not self.isRealWord(tagged_words_copy, i)):
@@ -35,6 +36,14 @@ def match(self, tagged_words, position_fix):
                     found = tagged_words_copy[i][1].strip()
                 except:
                     break
+            elif expected_token.is_chunk:
+                found = None
+                for (from_pos, to_pos, chunk_name) in chunks:
+                    if ((i >= from_pos) and (i <= to_pos)):
+                        found = chunk_name
+                        i = (i + (to_pos - from_pos))
+                        chunk_corr = (chunk_corr + (to_pos - from_pos))
+                        break
             else:
                 try:
                     found = tagged_words_copy[i][2]
@@ -55,6 +64,7 @@ def match(self, tagged_words, position_fix):
             p = (p + 1)
         if (match and (p == len(self.tokens))):
             (first_match, from_pos, to_pos) = self.listPosToAbsPos(tagged_words_copy, first_match)
+            to_pos = (to_pos + chunk_corr)
             l = first_match
             lcount = 1
             msg = self.message
