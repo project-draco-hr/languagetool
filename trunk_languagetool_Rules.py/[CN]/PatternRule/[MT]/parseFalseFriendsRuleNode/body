@@ -27,8 +27,4 @@ def parseFalseFriendsRuleNode(self, rule_node, mothertongue, textlang):
             self.tokens.append(token)
         self.marker_from = 0
         self.marker_to = 0
-        if (self.pattern.find('|') == (-1)):
-            self.simple_rule = 1
-        else:
-            self.simple_rule = 0
     return

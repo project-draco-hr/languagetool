@@ -4,6 +4,10 @@ def __init__(self, token):
     self.is_word = 0
     self.is_tag = 0
     self.is_chunk = 0
+    if ((self.token.find('|') != (-1)) or (self.token.find('(') != (-1)) or (self.token.find('[') != (-1)) or (self.token.find('.') != (-1))):
+        self.simple_token = 0
+    else:
+        self.simple_token = 1
     if self.token.startswith('^'):
         self.token = token[1:]
         self.negation = 1

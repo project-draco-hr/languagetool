@@ -56,7 +56,7 @@ def match(self, tagged_words, chunks=None, position_fix=0):
             case_switch = re.IGNORECASE
             if self.case_sensitive:
                 case_switch = 0
-            if self.simple_rule:
+            if expected_token.simple_token:
                 if case_switch:
                     match = (expected_token_str.lower() == found.lower())
                 else:
