@@ -1,5 +1,6 @@
 def checkFile(self, filename):
     'Check a text file and return the results as an XML formatted list \n\t\tof possible errors.'
+    text = ''
     f = open(filename)
     text = f.read()
     f.close()

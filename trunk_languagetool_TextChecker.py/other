@@ -6,6 +6,7 @@ import socket
 import string
 import sys
 import time
+import xml.dom.minidom
 import profile
 import Entities
 import Tagger

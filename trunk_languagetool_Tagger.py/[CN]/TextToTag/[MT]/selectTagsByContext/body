@@ -109,7 +109,6 @@ def selectTagsByContext(self, tagged_list, seqs_table_followed_by, seqs_table_fo
             count_wrong_tags = (count_wrong_tags + wrong_tags)
         i = (i + 1)
     stat = self.getStats(count_wrong_tags, is_bnc)
-    print  >> sys.stderr, stat
     tagged_list.pop(0)
     tagged_list.pop(0)
     tagged_list.pop()
