@@ -3,7 +3,7 @@ def __init__(self, max_sentence_length, grammar_rules, word_rules, builtin_rules
     if (textlanguage == 'en'):
         self.rule_files = [os.path.join(sys.path[0], 'rules', grammarFile), os.path.join(sys.path[0], 'rules', wordFile), os.path.join(sys.path[0], 'rules', falsefriendsFile)]
     else:
-        self.rule_files = [os.path.join('rules', grammarFile)]
+        self.rule_files = [os.path.join(sys.path[0], 'rules', grammarFile)]
     self.rules = []
     sys.path.append(self.python_rules_dir)
     dyn_files = os.listdir(self.python_rules_dir)
