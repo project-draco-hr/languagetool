@@ -82,7 +82,7 @@ def match(self, tagged_words, chunks=None, position_fix=0, line_fix=0, column_fi
                 if ((not tagged_words_copy[l][1]) and (tagged_words_copy[l][2] != 'SENT_START') and (tagged_words_copy[l][2] != 'SENT_END')):
                     pass
                 else:
-                    msg = msg.replace(('\\%d' % lcount), found)
+                    msg = msg.replace(('\\%d' % lcount), tagged_words_copy[l][0])
                     lcount = (lcount + 1)
                 l = (l + 1)
             first_match_word = tagged_words_copy[first_match][0]
