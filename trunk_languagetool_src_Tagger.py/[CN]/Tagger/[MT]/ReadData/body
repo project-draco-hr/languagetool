@@ -1,5 +1,5 @@
 def ReadData(self, db_word_name):
-    fd = open(db_word_name, 'r')
+    fd = codecs.open(db_word_name, 'r', 'latin1')
     self.data_table = {}
     self.word_table = {}
     table = {}
