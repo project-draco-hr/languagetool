@@ -1,4 +1,4 @@
-def listPosToAbsPos(self, l, first_match):
+def listPosToAbsPos(self, l, first_match, chunk_corr=0):
     j = (first_match + 1)
     i = 0
     mark_from_tmp = self.marker_from
@@ -9,7 +9,7 @@ def listPosToAbsPos(self, l, first_match):
         j = (j + 1)
     first_match = (first_match + i)
     last_match = first_match
-    match_len = ((len(self.tokens) - self.marker_from) + self.marker_to)
+    match_len = (((len(self.tokens) - self.marker_from) + self.marker_to) + chunk_corr)
     for el in l[first_match:]:
         if (match_len == 0):
             break

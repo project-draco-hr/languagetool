@@ -12,6 +12,7 @@ def match(self, tagged_words, chunks=None, position_fix=0):
         match = 1
         first_match = None
         chunk_corr = 0
+        chunk_len = 0
         while match:
             try:
                 if (not self.isRealWord(tagged_words_copy, i)):
@@ -43,6 +44,7 @@ def match(self, tagged_words, chunks=None, position_fix=0):
                         found = chunk_name
                         i = (i + (to_pos - from_pos))
                         chunk_corr = (chunk_corr + (to_pos - from_pos))
+                        chunk_len = (chunk_len + 1)
                         break
             else:
                 try:
@@ -69,7 +71,7 @@ def match(self, tagged_words, chunks=None, position_fix=0):
             i = (i + 1)
             p = (p + 1)
         if (match and (p == len(self.tokens))):
-            (first_match, from_pos, to_pos) = self.listPosToAbsPos(tagged_words_copy, first_match)
+            (first_match, from_pos, to_pos) = self.listPosToAbsPos(tagged_words_copy, first_match, 0)
             to_pos = (to_pos + chunk_corr)
             l = first_match
             lcount = 1
