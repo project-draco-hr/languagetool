@@ -99,8 +99,10 @@ def selectTagsByContext(self, tagged_list, seqs_table_followed_by, seqs_table_fo
                 if ((tag_prob[0] == i) and (tag_probs[tag_prob] >= max_prob)):
                     max_prob = tag_probs[tag_prob]
                     best_tag = tag_prob[1]
-                    del tag_probs[tag_prob]
             tagged_list[i] = (orig_word, norm_word, best_tag)
+            for tag_prob in keys:
+                if (tag_prob[0] <= i):
+                    del tag_probs[tag_prob]
         if (is_bnc and one):
             orig_word = one[0]
             wrong_tags = self.checkBNCMatch(i, tagged_list_bnc, orig_word, best_tag, data_table)
