@@ -1,5 +1,0 @@
-def __init__(self, sentence, correctable, span_list):
-    self.sentence = self.cleanup(sentence)
-    self.correctable = correctable
-    self.span_list = span_list
-    return

@@ -1,0 +1,19 @@
+def testSomeRules(self):
+    checker = TextChecker.TextChecker(grammar=None, falsefriends=None, words=None, builtin=None, textlanguage='en', mothertongue='de', max_sentence_length=20)
+    err_count = 0
+    sentence = 'A sentence without problems.'
+    (rule_matches, xml_err, tagged_text) = checker.check(sentence)
+    self.assertEqual(len(rule_matches), 0)
+    sentence = 'This is bigger then blah.'
+    (rule_matches, xml_err, tagged_text) = checker.check(sentence)
+    self.assertEqual(len(rule_matches), 1)
+    self.assertEqual(rule_matches[0].id, 'COMP_THAN')
+    sentence = 'English/German false friend: my chef'
+    (rule_matches, xml_err, tagged_text) = checker.check(sentence)
+    self.assertEqual(len(rule_matches), 1)
+    self.assertEqual(rule_matches[0].id, 'CHEF')
+    sentence = "Whitespace,here it's lacking."
+    (rule_matches, xml_err, tagged_text) = checker.check(sentence)
+    self.assertEqual(len(rule_matches), 1)
+    self.assertEqual(rule_matches[0].id, 'WHITESPACE')
+    return

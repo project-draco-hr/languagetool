@@ -1,3 +1,0 @@
-def cleanup(self, xml_str):
-    xml_str = re.compile('\\s+', re.DOTALL).sub(' ', xml_str)
-    return xml_str
