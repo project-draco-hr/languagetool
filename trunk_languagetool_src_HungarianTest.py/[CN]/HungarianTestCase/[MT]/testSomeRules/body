@@ -1,0 +1,5 @@
+def testSomeRules(self):
+    'Some English rule checks. Requires a trained tagger.'
+    self._check(u'\xc9n m\xe9sz moziba', ExpMatch('EN', 0, 7))
+    self._check(u'\xd5k soha nem fogj\xe1k megtanulni.', None)
+    return
