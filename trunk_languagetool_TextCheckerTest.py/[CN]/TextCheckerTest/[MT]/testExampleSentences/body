@@ -1,5 +1,5 @@
 def testExampleSentences(self):
-    checker = TextChecker.TextChecker(grammar=None, falsefriends=None, words=None, builtin=None, textlanguage=None, mothertongue=None, max_sentence_length=0)
+    checker = TextChecker.TextChecker(grammar=None, falsefriends=None, words=None, textlanguage=None, mothertongue=None, max_sentence_length=0)
     errors = self.loadExampleSentences()
     stat_corr_found = 0
     stat_found = 0
