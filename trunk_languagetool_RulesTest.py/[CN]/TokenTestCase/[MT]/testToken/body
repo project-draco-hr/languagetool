@@ -1,0 +1,22 @@
+def testToken(self):
+    rule = Rules.Token('NN')
+    self.assertEqual(rule.token, 'NN')
+    assert (not rule.negation)
+    assert rule.is_tag
+    assert (not rule.is_word)
+    rule = Rules.Token('"word"')
+    self.assertEqual(rule.token, 'word')
+    assert (not rule.negation)
+    assert (not rule.is_tag)
+    assert rule.is_word
+    rule = Rules.Token('^(NN)')
+    self.assertEqual(rule.token, '(NN)')
+    assert rule.negation
+    assert rule.is_tag
+    assert (not rule.is_word)
+    rule = Rules.Token('^"word"')
+    self.assertEqual(rule.token, 'word')
+    assert rule.negation
+    assert (not rule.is_tag)
+    assert rule.is_word
+    return

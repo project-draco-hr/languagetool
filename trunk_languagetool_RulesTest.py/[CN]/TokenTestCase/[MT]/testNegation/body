@@ -1,8 +1,0 @@
-def testNegation(self):
-    rule = Rules.Token('^(NN)')
-    self.assertEqual(rule.token, '(NN)')
-    assert rule.negation
-    rule = Rules.Token('^"word"')
-    self.assertEqual(rule.token, 'word')
-    assert rule.negation
-    return
