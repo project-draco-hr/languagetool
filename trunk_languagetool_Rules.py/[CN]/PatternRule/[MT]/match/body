@@ -56,12 +56,13 @@ def match(self, tagged_words, position_fix):
         if (match and (p == len(self.tokens))):
             (first_match, from_pos, to_pos) = self.listPosToAbsPos(tagged_words_copy, first_match)
             to_upper = 0
-            if (tagged_words_copy[first_match][0][0] in string.uppercase):
+            first_match_word = tagged_words_copy[first_match][0]
+            if (first_match_word and (first_match_word[0] in string.uppercase)):
                 to_upper = 1
             l = first_match
             lcount = 1
             msg = self.message
-            while (lcount <= len(self.tokens)):
+            while ((lcount <= len(self.tokens)) and (l < len(tagged_words_copy))):
                 if self.isRealWord(tagged_words_copy, l):
                     msg = msg.replace(('\\%d' % lcount), tagged_words_copy[l][0])
                     lcount = (lcount + 1)
