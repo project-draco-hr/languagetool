@@ -1,4 +1,5 @@
 def __init__(self, textlanguage):
     self.is_initialized = 0
+    self.is_secondflag = 0
     self.textlanguage = textlanguage
     return

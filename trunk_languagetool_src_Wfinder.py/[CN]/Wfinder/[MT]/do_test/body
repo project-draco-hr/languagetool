@@ -4,112 +4,21 @@ def do_test(self, l):
     else:
         oldword = l
         found = 0
-        for windex in (ord(l[(-1)]), ord('0')):
-            for elem in alfab_conddic[windex]:
-                if found:
-                    break
-                appnd = elem[2]
-                if len(appnd):
-                    if (l[(- len(appnd)):] != appnd):
-                        continue
-                    restoredWord = l[0:(len(l) - len(appnd))]
-                else:
-                    restoredWord = l
-                condlist = elem[0]
-                strip = elem[1]
-                if len(strip):
-                    restoredWord = (restoredWord + strip)
-                break_it = 0
-                if ((len(condlist) > 0) and (len(restoredWord) >= len(condlist))):
-                    substr = restoredWord[(- len(condlist)):]
-                    for i in range(0, len(condlist), 1):
-                        if (condlist[i][ord(substr[i])] != 1):
-                            break_it = 1
-                            break
-                    if break_it:
-                        continue
-                if szodic.has_key(restoredWord):
-                    flags = szodic[restoredWord]
-                    if (flags == ''):
-                        continue
-                    elif (find(flags, elem[3]) == (-1)):
-                        continue
-                    return ('++ %s %s' % (l, restoredWord))
-                    found = 1
-                    break
-    if found:
-        return ('+found %s' % oldword)
-    for windex in (ord(l[0]), ord('0')):
-        for elem in palfab_conddic[windex]:
-            if found:
-                break
-            appnd = elem[2]
-            if (appnd == l[:len(appnd)]):
-                l1 = l[len(appnd):]
-            else:
-                continue
-            condlist = elem[0]
-            strip = elem[1]
-            if len(strip):
-                l1 = (strip + l1)
-            break_it = 0
-            if ((len(condlist) > 0) and (len(l1) >= len(condlist))):
-                substr = l1[0:len(condlist)]
-                for i in range(0, len(condlist), 1):
-                    if (condlist[i][ord(substr[i])] != 1):
-                        break_it = 1
-                        break
-                if break_it:
-                    continue
-            arrname = elem[3]
-            if szodic.has_key(l1):
-                flags1 = szodic[l1]
-                if (flags1 != ''):
-                    if (find(flags1, arrname) == (-1)):
-                        continue
-                    return ('++ %s  %s' % (l, l1))
-                    found = 1
-                    break
-            if (lower(yesno[arrname]) == 'n'):
-                continue
-            for windex1 in (ord(l1[(-1)]), ord('0')):
-                for elem1 in alfab_conddic[windex1]:
-                    if found:
-                        break
-                    arrname1 = elem1[3]
-                    if (lower(yesno[arrname1]) == 'n'):
-                        continue
-                    appnd1 = elem1[2]
-                    if len(appnd1):
-                        if (l1[(- len(appnd1)):] != appnd1):
-                            continue
-                        restoredWord1 = l1[0:(len(l1) - len(appnd1))]
-                    else:
-                        restoredWord1 = l1
-                    condlist1 = elem1[0]
-                    strip1 = elem1[1]
-                    if len(strip1):
-                        restoredWord1 = (restoredWord1 + strip1)
-                    break_it = 0
-                    if ((len(condlist1) > 0) and (len(restoredWord1) >= len(condlist1))):
-                        substr = restoredWord1[(- len(condlist1)):]
-                        for i1 in range(0, len(condlist1), 1):
-                            if (condlist1[i1][ord(substr[i1])] != 1):
-                                break_it = 1
-                                break
-                        if break_it:
-                            continue
-                    if szodic.has_key(restoredWord1):
-                        flags1 = szodic[restoredWord1]
-                        if (flags1 == ''):
-                            continue
-                        else:
-                            if (find(flags1, arrname1) == (-1)):
-                                continue
-                            if (find(flags1, arrname) == (-1)):
-                                continue
-                        return ('+++ %s %s %s' % (l, l1, restoredWord1))
-                        found = 1
-                        break
-    if (found == 0):
+        retval = self.suffix_search(l, '', '')
+        if (retval != ''):
+            found = 1
+            return retval
+        retval = self.prefix_search(l)
+        if (retval != ''):
+            found = 1
+            return retval
+        if self.is_secondflag:
+            retval = self.suffix22_search(l, '', '')
+            if (retval != ''):
+                found = 1
+                return retval
+            retval = self.prefix22_search(l)
+            if (retval != ''):
+                found = 1
+                return retval
         return ('- %s' % oldword)

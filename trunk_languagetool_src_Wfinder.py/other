@@ -5,7 +5,6 @@ import Tagger
 from string import *
 import time
 import sys
-test_file = 'test.txt'
 yesno = {}
 comment = '#'
 condlist = []
@@ -13,5 +12,9 @@ condlist1 = []
 alfab_conddic = {}
 palfab_conddic = {}
 alfab_condlist_group = []
+alfab2_condlist_group = []
+alfab2_conddic = {}
+palfab2_conddic = {}
+alfab2_condlist_group = []
 szodic = {}
 typdic = {}

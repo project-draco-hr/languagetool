@@ -2,11 +2,14 @@ def aff_read(self):
     self.aff_file = os.path.join(sys.path[0], 'data', Tagger.affFile)
     condlist = []
     alfab_condlist_group = []
+    alfab2_condlist_group = []
     faff = codecs.open(self.aff_file, 'r', self.encoding)
     l = ' '
     for i in range(0, 256, 1):
         alfab_conddic[i] = []
         palfab_conddic[i] = []
+        alfab2_conddic[i] = []
+        palfab2_conddic[i] = []
     while (l != ''):
         l = faff.readline()
         ll = l.split()
@@ -58,6 +61,24 @@ def aff_read(self):
                             condarr[ord(bb[4][jj])] = insbit
                             jj = (jj + 1)
                         condlist.append(condarr)
+                secondflag = ''
+                if (len(bb) >= 7):
+                    secondflag = bb[6]
+                    self.is_secondflag = 1
+                    if (find(self.doubleflags, arrname) == (-1)):
+                        self.doubleflags = (self.doubleflags + arrname)
+                    for elem in secondflag:
+                        if (find(self.doubleflagList, elem) == (-1)):
+                            self.doubleflagList = (self.doubleflagList + elem)
+                    alfab2_condlist_group.append(condlist)
+                    alfab2_condlist_group.append(strip)
+                    alfab2_condlist_group.append(appnd)
+                    alfab2_condlist_group.append(arrname)
+                    alfab2_condlist_group.append(secondflag)
+                    if (prefix == 0):
+                        alfab2_conddic[ord(appnd_last)].append(alfab2_condlist_group)
+                    else:
+                        palfab2_conddic[ord(appnd_last)].append(alfab2_condlist_group)
                 alfab_condlist_group.append(condlist)
                 alfab_condlist_group.append(strip)
                 alfab_condlist_group.append(appnd)
@@ -68,4 +89,5 @@ def aff_read(self):
                     palfab_conddic[ord(appnd_last)].append(alfab_condlist_group)
                 condlist = []
                 alfab_condlist_group = []
+                alfab2_condlist_group = []
     faff.close()
