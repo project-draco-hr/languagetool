@@ -1,5 +1,5 @@
 def testGuess(self):
-    tagger = Tagger.Tagger(self.FILENAME_WORDS, self.FILENAME_SEQ1, self.FILENAME_SEQ2)
+    tagger = Tagger.Tagger('en', self.FILENAME_WORDS, self.FILENAME_SEQ1, self.FILENAME_SEQ2)
     tagger.deleteData()
     tagger.bindData()
     tagger.buildDataFromString('')

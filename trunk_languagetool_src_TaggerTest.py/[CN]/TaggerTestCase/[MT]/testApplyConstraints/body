@@ -1,4 +1,0 @@
-def testApplyConstraints(self):
-    r = self.tag('A/X bla/X demodemo/AA demodemo/AA demodemo/BB bla/X bla/X', 'demodemo')
-    self.assertEqual(r, [('demodemo', 'BB')])
-    return
