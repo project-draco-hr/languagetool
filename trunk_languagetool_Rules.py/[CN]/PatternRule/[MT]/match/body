@@ -58,9 +58,6 @@ def match(self, tagged_words, position_fix):
             from_pos = 0
             to_pos = 0
             for tagged_word in tagged_words_copy:
-                if (ct_tmp == 0):
-                    ct_tmp = (ct_tmp + 1)
-                    continue
                 if (ct_tmp < (first_match + self.marker_position)):
                     from_pos = (from_pos + len(tagged_word[0]))
                     list_match_from = (ct_tmp + 1)

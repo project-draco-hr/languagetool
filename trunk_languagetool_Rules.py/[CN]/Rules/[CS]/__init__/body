@@ -1,4 +1,4 @@
-def __init__(self, max_sentence_length):
+def __init__(self, max_sentence_length, grammar_rules):
     self.rules = []
     length_rule = SentenceLengthRule()
     if (max_sentence_length != None):
@@ -11,6 +11,7 @@ def __init__(self, max_sentence_length):
     rule_nodes = doc.getElementsByTagName('rule')
     for rule_node in rule_nodes:
         rule = PatternRule(0, 'NP VB', '', 0, '', '', 0, 0, '')
-        rule.parse(rule_node)
-        self.rules.append(rule)
+        rule_id = rule.parse(rule_node)
+        if ((grammar_rules == None) or (rule_id in grammar_rules)):
+            self.rules.append(rule)
     return
