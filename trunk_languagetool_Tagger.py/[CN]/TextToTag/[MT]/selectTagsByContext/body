@@ -59,11 +59,9 @@ def selectTagsByContext(self, tagged_list, seqs_table_followed_by, seqs_table_fo
                             k1 = (one_tag_prob, two_tag_prob)
                             k2 = (two_tag_prob, three_tag_prob)
                             seq_prob = (seqs_table_followed_by[k1] * seqs_table_followed_by[k2])
-                            print ('k1=%s, k2=%s' % (str(k1), str(k2)))
                         except KeyError:
                             pass
                         prob_combined = (seq_prob * tag_one_prob)
-                        print ('  %.10f' % prob_combined)
                         k1 = (i, one_tag[0])
                         try:
                             tag_probs[k1] = (tag_probs[k1] + prob_combined)
@@ -71,7 +69,7 @@ def selectTagsByContext(self, tagged_list, seqs_table_followed_by, seqs_table_fo
                             tag_probs[k1] = prob_combined
                     if two:
                         try:
-                            seq_prob = (seqs_table_follows[(one_tag_prob, two_tag_prob)] * seqs_table_followed_by[(two_tag_prob, three_tag_prob)])
+                            seq_prob = (seqs_table_follows[(two_tag_prob, one_tag_prob)] * seqs_table_followed_by[(two_tag_prob, three_tag_prob)])
                         except KeyError:
                             pass
                         prob_combined = (seq_prob * tag_two_prob)
@@ -82,7 +80,7 @@ def selectTagsByContext(self, tagged_list, seqs_table_followed_by, seqs_table_fo
                             tag_probs[k2] = prob_combined
                     if three:
                         try:
-                            seq_prob = (seqs_table_follows[(one_tag_prob, two_tag_prob)] * seqs_table_follows[(two_tag_prob, three_tag_prob)])
+                            seq_prob = (seqs_table_follows[(two_tag_prob, one_tag_prob)] * seqs_table_follows[(three_tag_prob, two_tag_prob)])
                         except KeyError:
                             pass
                         prob_combined = (seq_prob * tag_three_prob)
