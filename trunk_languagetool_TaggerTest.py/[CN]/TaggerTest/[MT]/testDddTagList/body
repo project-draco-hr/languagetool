@@ -1,0 +1,19 @@
+def testDddTagList(self):
+    text = Tagger.Text()
+    t = {}
+    text.addTagList(['NN0'], t)
+    expected = {(None, None, 'NN0'): 1.0, (None, 'NN0', None): 1.0, ('NN0', None, None): 1.0, }
+    self.assertEqual(t, expected)
+    t = {}
+    text.addTagList(['NN0', 'XX'], t)
+    expected = {(None, None, 'NN0'): 1.0, (None, 'NN0', 'XX'): 1.0, ('NN0', 'XX', None): 1.0, ('XX', None, None): 1.0, }
+    self.assertEqual(t, expected)
+    t = {}
+    text.addTagList(['NN0', 'AV0', 'NP1'], t)
+    expected = {(None, None, 'NN0'): 1.0, (None, 'NN0', 'AV0'): 1.0, ('NN0', 'AV0', 'NP1'): 1.0, ('AV0', 'NP1', None): 1.0, ('NP1', None, None): 1.0, }
+    self.assertEqual(t, expected)
+    t = {}
+    text.addTagList(['NN0', 'AV0', 'NP1-YY', 'XX'], t)
+    expected = {(None, None, 'NN0'): 1.0, (None, 'NN0', 'AV0'): 1.0, ('NN0', 'AV0', 'NP1'): 0.5, ('NN0', 'AV0', 'YY'): 0.5, ('AV0', 'NP1', 'XX'): 0.5, ('AV0', 'YY', 'XX'): 0.5, ('NP1', 'XX', None): 0.5, ('YY', 'XX', None): 0.5, ('XX', None, None): 1.0, }
+    self.assertEqual(t, expected)
+    return
