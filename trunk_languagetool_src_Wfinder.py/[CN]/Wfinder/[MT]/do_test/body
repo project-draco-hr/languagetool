@@ -9,9 +9,6 @@ def do_test(self, l):
                 key = elem[3]
                 if found:
                     break
-                if (arrtype[key] == 'P'):
-                    continue
-                break_it = 0
                 appnd = elem[2]
                 if len(appnd):
                     if (l[(- len(appnd)):] != appnd):
@@ -23,6 +20,7 @@ def do_test(self, l):
                 strip = elem[1]
                 if len(strip):
                     restoredWord = (restoredWord + strip)
+                break_it = 0
                 if ((len(condlist) > 0) and (len(restoredWord) >= len(condlist))):
                     substr = restoredWord[(- len(condlist)):]
                     for i in range(0, len(condlist), 1):
@@ -42,23 +40,18 @@ def do_test(self, l):
                     break
     if found:
         return ('+found %s' % oldword)
-    for key in condglob.keys():
-        if found:
-            break
-        if (lower(yesno[key]) == 'n'):
-            continue
-        if (arrtype[key] != 'P'):
-            continue
-        conddic = condglob[key]
-        for k2 in conddic.keys():
-            break_it = 0
-            appnd = conddic[k2][2]
+    for windex in (ord(l[0]), ord('0')):
+        for elem in palfab_conddic[windex]:
+            key = elem[3]
+            if found:
+                break
+            appnd = elem[2]
             if (appnd == l[:len(appnd)]):
                 l1 = l[len(appnd):]
             else:
                 continue
-            condlist = conddic[k2][0]
-            strip = conddic[k2][1]
+            condlist = elem[0]
+            strip = elem[1]
             if len(strip):
                 l1 = (strip + l1)
             break_it = 0
@@ -78,14 +71,15 @@ def do_test(self, l):
                     return ('++ %s  %s' % (l, l1))
                     found = 1
                     break
+            if (lower(yesno[key]) == 'n'):
+                continue
             for windex1 in (ord(l1[(-1)]), ord('0')):
                 for elem1 in alfab_conddic[windex1]:
                     key1 = elem1[3]
                     if found:
                         break
-                    if (arrtype[key1] == 'P'):
+                    if (lower(yesno[key1]) == 'n'):
                         continue
-                    break_it = 0
                     appnd1 = elem1[2]
                     if len(appnd1):
                         if (l1[(- len(appnd1)):] != appnd1):
@@ -97,6 +91,7 @@ def do_test(self, l):
                     strip1 = elem1[1]
                     if len(strip1):
                         restoredWord1 = (restoredWord1 + strip1)
+                    break_it = 0
                     if ((len(condlist1) > 0) and (len(restoredWord1) >= len(condlist1))):
                         substr = restoredWord1[(- len(condlist1)):]
                         for i1 in range(0, len(condlist1), 1):

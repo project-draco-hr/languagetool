@@ -17,6 +17,7 @@ conddic = {}
 conddic1 = {}
 condglob = {}
 alfab_conddic = {}
+palfab_conddic = {}
 alfab_condlist_group = []
 szodic = {}
 typdic = {}
