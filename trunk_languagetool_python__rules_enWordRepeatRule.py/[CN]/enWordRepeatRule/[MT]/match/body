@@ -30,6 +30,6 @@ def match(self, tagged_words, chunks, position_fix=0, line_fix=0, column_fix=0):
         if (line_breaks_cur == 0):
             column = (column + len(org_word))
         if (org_word.lower() == org_word_next.lower()):
-            matches.append(Rules.RuleMatch(self.rule_id, (text_length + position_fix), (((text_length + whitespace_length) + len(org_word_next)) + position_fix), (line_breaks + line_fix), (column + column_fix), ('You repeated a word. Maybe you should <em>remove</em> one ' + 'of the words?'), org_word))
+            matches.append(Rules.RuleMatch(self.rule_id, (text_length + position_fix), (((text_length + whitespace_length) + len(org_word_next)) + position_fix), (line_breaks + line_fix), (column + column_fix), ('<message>You repeated a word. Maybe you should <em>remove</em> one ' + 'of the words?</message>'), org_word))
         i = (i + 1)
     return matches

@@ -20,7 +20,7 @@ def match(self, tagged_words, chunks, position_fix=0, line_fix=0, column_fix=0):
             elif ((len(org_word_next) > 0) and (org_word_next[0].lower() in ('a', 'e', 'i', 'o', 'u', u'\xe1', u'\xe9', u'\xf6', u'\xfc', u'\xed', u'\xfb', u'\xf5', u'\xfa')) and (not (org_word_next.lower() in self.requires_a)) and (not self.IsRoman(org_word_next.upper()))):
                 err = 1
             if err:
-                matches.append(Rules.RuleMatch(self.rule_id, (text_length + position_fix), ((text_length + len(org_word)) + position_fix), (line_breaks + line_fix), column, ('Hasznaljon <em>az-t a</em> helyett ' + 'ha a kovetkezo szo maganhangzoval kezdodik'), org_word))
+                matches.append(Rules.RuleMatch(self.rule_id, (text_length + position_fix), ((text_length + len(org_word)) + position_fix), (line_breaks + line_fix), column, ('<message>Hasznaljon <em>az-t a</em> helyett ' + 'ha a kovetkezo szo maganhangzoval kezdodik</message>'), org_word))
         text_length = (text_length + len(org_word))
         i = (i + 1)
     return matches

@@ -28,5 +28,5 @@ def match(self, tagged_words, chunks=None, position_fix=0, line_fix=0, column_fi
             column = (column + len(org_word))
         line_breaks = (line_breaks + line_breaks_cur)
     if too_long:
-        matches.append(Rules.RuleMatch(self.rule_id, (too_long_start + position_fix), (too_long_end + position_fix), (line_breaks + line_fix), (column + column_fix), ('This sentence is %d words long, which exceeds the configured limit of %d words.' % (count, self.max_length))))
+        matches.append(Rules.RuleMatch(self.rule_id, (too_long_start + position_fix), (too_long_end + position_fix), (line_breaks + line_fix), (column + column_fix), ('<message>This sentence is %d words long, which exceeds the configured limit of %d words.</message>' % (count, self.max_length))))
     return matches
