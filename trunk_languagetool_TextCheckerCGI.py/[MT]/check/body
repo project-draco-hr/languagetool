@@ -31,6 +31,7 @@ def check(form):
         text_list.append(word)
         text_list.append(tag_str)
         char_count = (char_count + len(word))
+    rule_matches.sort()
     rule_matches.reverse()
     for rule_match in rule_matches:
         ct = 0
@@ -39,13 +40,15 @@ def check(form):
         end_found = 0
         for el in text_list:
             if (not el.startswith('<span')):
-                ct = (ct + len(el))
-                if ((ct == rule_match.to_pos) and (not end_found)):
+                from_pos = ct
+                to_pos = (ct + len(el))
+                if ((rule_match.to_pos <= to_pos) and (rule_match.to_pos >= from_pos) and (not end_found)):
                     text_list[i] = ('%s</span><span class="expl">[%s]</span>' % (text_list[i], rule_match.message))
                     end_found = 1
-                elif ((ct == rule_match.from_pos) and (not start_found)):
+                elif ((rule_match.from_pos <= to_pos) and (rule_match.from_pos >= from_pos) and (not start_found)):
                     text_list[i] = ('<span class="error">%s' % text_list[i])
                     start_found = 1
+                ct = (ct + len(el))
             if (end_found and start_found):
                 break
             i = (i + 1)
