@@ -4,23 +4,23 @@ def do_test(self, l):
     else:
         oldword = l
         found = 0
-        for key in condglob.keys():
-            if found:
-                break
-            if (arrtype[key] == 'P'):
-                continue
-            conddic = condglob[key]
-            for k2 in conddic.keys():
+        for windex in (ord(l[(-1)]), ord('0')):
+            for elem in alfab_conddic[windex]:
+                key = elem[3]
+                if found:
+                    break
+                if (arrtype[key] == 'P'):
+                    continue
                 break_it = 0
-                appnd = conddic[k2][2]
+                appnd = elem[2]
                 if len(appnd):
                     if (l[(- len(appnd)):] != appnd):
                         continue
                     restoredWord = l[0:(len(l) - len(appnd))]
                 else:
                     restoredWord = l
-                condlist = conddic[k2][0]
-                strip = conddic[k2][1]
+                condlist = elem[0]
+                strip = elem[1]
                 if len(strip):
                     restoredWord = (restoredWord + strip)
                 if ((len(condlist) > 0) and (len(restoredWord) >= len(condlist))):
@@ -78,26 +78,23 @@ def do_test(self, l):
                     return ('++ %s  %s' % (l, l1))
                     found = 1
                     break
-            for key1 in condglob.keys():
-                if found:
-                    break
-                if (lower(yesno[key1]) == 'n'):
-                    continue
-                if (arrtype[key1] == 'P'):
-                    continue
-                conddic1 = condglob[key1]
-                for k21 in conddic1.keys():
+            for windex1 in (ord(l1[(-1)]), ord('0')):
+                for elem1 in alfab_conddic[windex1]:
+                    key1 = elem1[3]
+                    if found:
+                        break
+                    if (arrtype[key1] == 'P'):
+                        continue
                     break_it = 0
-                    appnd1 = conddic1[k21][2]
+                    appnd1 = elem1[2]
                     if len(appnd1):
-                        if (l[(- len(appnd1)):] != appnd1):
+                        if (l1[(- len(appnd1)):] != appnd1):
                             continue
-                    if len(appnd1):
                         restoredWord1 = l1[0:(len(l1) - len(appnd1))]
                     else:
                         restoredWord1 = l1
-                    condlist1 = conddic1[k21][0]
-                    strip1 = conddic1[k21][1]
+                    condlist1 = elem1[0]
+                    strip1 = elem1[1]
                     if len(strip1):
                         restoredWord1 = (restoredWord1 + strip1)
                     if ((len(condlist1) > 0) and (len(restoredWord1) >= len(condlist1))):

@@ -2,9 +2,12 @@ def aff_read(self):
     self.aff_file = os.path.join(sys.path[0], 'data', Tagger.affFile)
     condlist = []
     condlist_group = []
+    alfab_condlist_group = []
     conddic = {}
     faff = codecs.open(self.aff_file, 'r', self.encoding)
     l = ' '
+    for i in range(0, 256, 1):
+        alfab_conddic[i] = []
     while (l != ''):
         l = faff.readline()
         ll = l.split()
@@ -17,22 +20,18 @@ def aff_read(self):
             arrtype[arrname] = ll[0][0]
             yesno[arrname] = ll[2]
             count[arrname] = int(ll[3])
-            maxllen[arrname] = 1
-            maxveg[arrname] = 1
             for i in range(0, count[arrname]):
                 l = faff.readline()
                 bb = l.split()
-                if (len(bb[2]) > maxllen[arrname]):
-                    maxllen[arrname] = len(bb[3])
-                if (len(bb[3]) > maxveg[arrname]):
-                    maxveg[arrname] = len(bb[3])
                 strip = bb[2]
                 if (bb[2] == '0'):
                     strip = ''
                 appnd = bb[3]
                 if (bb[3] == '0'):
                     appnd = ''
-                numc = 0
+                    appnd_last = '0'
+                else:
+                    appnd_last = appnd[(-1)]
                 if (bb[4] != '.'):
                     jj = 0
                     while (jj < len(bb[4])):
@@ -57,13 +56,18 @@ def aff_read(self):
                             condarr[ord(bb[4][jj])] = insbit
                             jj = (jj + 1)
                         condlist.append(condarr)
-                        (+ (+ numc))
                 condlist_group.append(condlist)
                 condlist_group.append(strip)
                 condlist_group.append(appnd)
+                alfab_condlist_group.append(condlist)
+                alfab_condlist_group.append(strip)
+                alfab_condlist_group.append(appnd)
+                alfab_condlist_group.append(arrname)
                 conddic[i] = condlist_group
+                alfab_conddic[ord(appnd_last)].append(alfab_condlist_group)
                 condlist = []
                 condlist_group = []
+                alfab_condlist_group = []
             condglob[arrname] = conddic
             conddic = {}
     faff.close()
