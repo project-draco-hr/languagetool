@@ -8,8 +8,8 @@ def test_it(self, l):
         lu = l[0]
         if (lu != lu.lower()):
             l1 = (lu[0].lower() + l[1:])
-            if (l1.encode('iso-8859-1') != l):
-                result = self.do_test(l1.encode('iso-8859-1'))
+            if (l1 != l):
+                result = self.do_test(l1)
     typ = ''
     if (result[0] != '-'):
         src = result.split()
