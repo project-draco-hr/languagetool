@@ -16,7 +16,7 @@ def test_it(self, l):
         word = src[(len(src) - 1)]
         oword = src[1]
         typ = typdic[word]
-        if (Tagger.textlanguage == 'de'):
+        if (self.textlanguage == 'de'):
             if (typ != ''):
                 if (typ == 'V'):
                     if (oword[(-1):] == 'e'):

@@ -6,7 +6,7 @@ def __init__(self, grammar, falsefriends, words, builtin, textlanguage, motherto
     self.textlanguage = textlanguage
     self.mothertongue = mothertongue
     self.max_sentence_length = max_sentence_length
-    self.tagger = Tagger.Tagger()
+    self.tagger = Tagger.Tagger(textlanguage)
     self.chunker = Chunker.Chunker()
     rules = Chunker.Rules()
     self.chunker.setRules(rules)

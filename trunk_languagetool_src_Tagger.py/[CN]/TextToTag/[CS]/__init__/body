@@ -1,4 +1,5 @@
-def __init__(self):
+def __init__(self, textlanguage, wfinder):
+    self.textlanguage = textlanguage
     self.text = None
-    Text.__init__(self)
+    Text.__init__(self, self.textlanguage, wfinder)
     return

@@ -30,8 +30,6 @@ def main():
             textlanguage = a
         elif (o in ('-l', '--sentencelength')):
             max_sentence_length = a
-    Tagger.textlanguage = textlanguage
-    Rules.textlanguage = textlanguage
     config.readfp(open('TextChecker.ini'))
     Tagger.dicFile = config.get(textlanguage, 'dicFile')
     Tagger.affFile = config.get(textlanguage, 'affFile')

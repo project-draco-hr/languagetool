@@ -10,5 +10,5 @@ def buildDataFromString(self, s):
         word = pair[0]
         tag = pair[1]
         tagged_words.append((word, tag))
-    text = TextToTag()
+    text = TextToTag(self.textlanguage, self.wfinder)
     return

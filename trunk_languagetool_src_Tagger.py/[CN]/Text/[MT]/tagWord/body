@@ -8,7 +8,7 @@ def tagWord(self, word, data_table):
         return [(orig_word, orig_word, [(self.manually_tagged[word], 1)])]
     if (word.count("'") > 1):
         print  >> sys.stderr, ("*** What's this, more than one apostroph: '%s'?" % word)
-    if (textlanguage == 'en'):
+    if (self.textlanguage == 'en'):
         special_cases = ("n't", "'s", "'re", "'ll", "'ve")
         for special_case in special_cases:
             special_case_pos = word.find(special_case)
@@ -19,8 +19,8 @@ def tagWord(self, word, data_table):
                 tag_results.append((word[0:special_case_pos], first_part[1], first_part[2]))
                 tag_results.append((special_case, second_part[1], second_part[2]))
                 return tag_results
-    if (textlanguage != 'en'):
-        rc = wfinder.test_it(word)
+    if (self.textlanguage != 'en'):
+        rc = self.wfinder.test_it(word)
         if (rc[0] != '-'):
             src = rc.split()
             word = src[(len(src) - 2)]

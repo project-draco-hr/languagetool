@@ -1,5 +1,7 @@
-def __init__(self, db_word_name=None, db_seq_name1=None, db_seq_name2=None):
+def __init__(self, textlanguage, db_word_name=None, db_seq_name1=None, db_seq_name2=None):
     'Initialize the tagger, optionally using the given\n\t\tfile names that will be used to load and save data later.'
+    self.textlanguage = textlanguage
+    self.wfinder = Wfinder.Wfinder(textlanguage)
     db_word_name = os.path.join(sys.path[0], 'data', dicFile)
     db_seq_name1 = os.path.join(sys.path[0], 'data', 'seqs1')
     db_seq_name2 = os.path.join(sys.path[0], 'data', 'seqs2')

@@ -1,5 +1,6 @@
-def __init__(self, max_sentence_length, grammar_rules, word_rules, builtin_rules, false_friend_rules, textlang, mothertongue):
+def __init__(self, max_sentence_length, grammar_rules, word_rules, builtin_rules, false_friend_rules, textlanguage, mothertongue):
     'Parse all rules and put them in the self.rules list, together\n\t\twith built-in rules like the SentenceLengthRule.'
+    self.textlanguage = textlanguage
     if (textlanguage == 'en'):
         self.rule_files = [os.path.join(sys.path[0], 'rules', grammarFile), os.path.join(sys.path[0], 'rules', wordFile), os.path.join(sys.path[0], 'rules', falsefriendsFile)]
     else:
@@ -42,7 +43,7 @@ def __init__(self, max_sentence_length, grammar_rules, word_rules, builtin_rules
             for rule_node in rule_nodes:
                 rule = PatternRule(rule_node)
                 lang_ok = 0
-                if ((textlang == None) or (textlang == rule.language)):
+                if ((self.textlanguage == None) or (self.textlanguage == rule.language)):
                     lang_ok = 1
                 if (lang_ok and ((grammar_rules == None) or (rule.rule_id in grammar_rules))):
                     self.rules.append(rule)
@@ -51,7 +52,7 @@ def __init__(self, max_sentence_length, grammar_rules, word_rules, builtin_rules
             for rule_node in rule_nodes:
                 rule = PatternRule(rule_node)
                 lang_ok = 0
-                if ((textlang == None) or (textlang == rule.language)):
+                if ((self.textlanguage == None) or (self.textlanguage == rule.language)):
                     lang_ok = 1
                 if (lang_ok and ((word_rules == None) or (rule.rule_id in word_rules))):
                     self.rules.append(rule)
@@ -59,8 +60,8 @@ def __init__(self, max_sentence_length, grammar_rules, word_rules, builtin_rules
             pattern_nodes = doc.getElementsByTagName('pattern')
             for pattern_node in pattern_nodes:
                 lang = pattern_node.getAttribute('lang')
-                if ((textlang == None) or (lang == textlang)):
-                    rule = PatternRule(pattern_node.parentNode, 1, mothertongue, textlang)
+                if ((self.textlanguage == None) or (lang == self.textlanguage)):
+                    rule = PatternRule(pattern_node.parentNode, 1, mothertongue, textlanguage)
                     if (rule.valid and ((false_friend_rules == None) or (rule.rule_id in false_friend_rules))):
                         self.rules.append(rule)
     return

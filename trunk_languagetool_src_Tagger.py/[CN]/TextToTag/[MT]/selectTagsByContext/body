@@ -105,7 +105,7 @@ def selectTagsByContext(self, tagged_list, seqs_table_followed_by, seqs_table_fo
                     del tag_probs[tag_prob]
         if (is_bnc and one):
             orig_word = one[0]
-            if (textlanguage == 'en'):
+            if (self.textlanguage == 'en'):
                 wrong_tags = self.checkBNCMatch(i, tagged_list_bnc, orig_word, best_tag, data_table)
                 count_wrong_tags = (count_wrong_tags + wrong_tags)
         i = (i + 1)

@@ -1,6 +1,6 @@
 def guessTagTest(self, word):
     'See Text.guessTags(). For test cases only.'
-    text = TextToTag()
+    text = TextToTag(self.textlanguage, self.wfinder)
     text.setText('')
     tag = text.guessTags(word)
     return tag

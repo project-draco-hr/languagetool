@@ -34,7 +34,7 @@ def tag(self, data_table, seqs_table_followed_by, seqs_table_follows):
             word = word_matches[i]
             if ((i + 1) < len(word_matches)):
                 next_token = word_matches[(i + 1)]
-        if (textlanguage == 'en'):
+        if (self.textlanguage == 'en'):
             if ((i + 2) < len(word_matches)):
                 tuple_word = ('%s %s' % (word, word_matches[(i + 2)]))
                 if data_table.has_key(tuple_word):
