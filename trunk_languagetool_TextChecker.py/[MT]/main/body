@@ -2,7 +2,7 @@ def main():
     options = None
     rest = None
     try:
-        (options, rest) = getopt.getopt(sys.argv[1:], 'hcg:f:w:l:', ['help', 'check', 'grammar=', 'falsefriends=', 'words=', 'mothertongue=', 'textlanguage=', 'sentencelength='])
+        (options, rest) = getopt.getopt(sys.argv[1:], 'hcg:f:w:m:t:l:', ['help', 'check', 'grammar=', 'falsefriends=', 'words=', 'mothertongue=', 'textlanguage=', 'sentencelength='])
     except getopt.GetoptError as e:
         print  >> sys.stderr, 'Error: ', e
         usage()
@@ -10,7 +10,6 @@ def main():
     grammar = None
     falsefriends = None
     words = None
-    builtin = []
     textlanguage = mothertongue = None
     max_sentence_length = None
     for (o, a) in options:
@@ -31,18 +30,19 @@ def main():
             usage()
             sys.exit(0)
         elif (o in ('-c', '--check')):
-            checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
+            checker = TextChecker(grammar, falsefriends, words, textlanguage, mothertongue, max_sentence_length)
             for filename in rest:
                 checker.checkBNCFiles(filename, checker)
             print  >> sys.stderr, ('Checked %d paragraphs.' % checker.bnc_paras)
             sys.exit(0)
     if (len(rest) == 1):
-        checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
+        checker = TextChecker(grammar, falsefriends, words, textlanguage, mothertongue, max_sentence_length)
         (rule_matches, result, tagged_words) = checker.checkFile(rest[0])
         if (not result):
             print  >> sys.stderr, 'No errors found.'
         else:
-            print result
+            print result.encode('latin1')
     else:
         usage()
+        sys.exit(1)
     return
