@@ -1,11 +1,12 @@
 import codecs
 import getopt
 import os
-import pre as re
+import re
 import socket
 import string
 import sys
 import time
+import profile
 import Tagger
 import Chunker
 import Rules
