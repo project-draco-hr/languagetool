@@ -4,7 +4,7 @@ import os
 import sys
 sys.path.append(os.path.join('python_rules'))
 import allSentenceLengthRule
-import allWordRepeatRule
+import enWordRepeatRule
 import enAvsAnRule
 if (__name__ == '__main__'):
     unittest.main()
