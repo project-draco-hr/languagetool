@@ -1,0 +1,13 @@
+def loadAbbreviations(self):
+    'Load the abbreviation list and return all words in a list.'
+    abbr = []
+    f = open(self.ABBR_FILE, 'r')
+    while 1:
+        l = f.readline()
+        if (not l):
+            break
+        l = l.strip()
+        if l:
+            abbr.append(l)
+    f.close()
+    return abbr

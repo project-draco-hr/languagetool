@@ -1,0 +1,4 @@
+def __str__(self):
+    'String representation of this object, equals XML representation\n\t\t(except the stripped whit space).'
+    strng = self.toXML().strip()
+    return strng

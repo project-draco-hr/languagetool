@@ -1,0 +1,12 @@
+def niceFormat(tokens, rel_pos, match_len):
+    l = []
+    count = 0
+    for (word, tag) in tokens:
+        if ((count >= rel_pos) and (count < (rel_pos + match_len))):
+            l.append(('<b>%s<span class="tag">/%s</span></b>' % (word, tag)))
+        elif (tag == 'PUN'):
+            l.append(word)
+        else:
+            l.append(('%s<span class="tag">/%s</span>' % (word, tag)))
+        count = (count + 1)
+    return (str.join(' ', l) + '<br>')

@@ -1,0 +1,10 @@
+def tagSeq(self, tup):
+    'Return the probability of a 2-POS-tag sequence.'
+    if (len(tup) != 2):
+        print  >> sys.stderr, ("Sequence does not consist of 2 tokens: '%s'" % str(seq))
+        return None
+    try:
+        probability = self.seqs_table_followed_by[tup]
+    except KeyError:
+        probability = 0
+    return probability

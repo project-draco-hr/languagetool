@@ -1,0 +1,19 @@
+def main():
+    global limit
+    global context
+    form = cgi.FieldStorage()
+    if (not form.getvalue('tokens')):
+        displayForm()
+        return
+    if form.getvalue('context'):
+        context = int(form.getvalue('context'))
+    if form.getvalue('limit'):
+        limit = int(form.getvalue('limit'))
+    print 'Content-Type: text/html\n\n'
+    token_display = cgi.escape(form.getvalue('tokens'), 1)
+    print ('<html><head>\n\t\t<title>BNC query result for \'%s\'</title>\n\t\t<style rel="stylesheet">\n\t\t<!--\n\t\t.tag { color:#999999; }\n\t\t-->\n\t\t</style></head>\n\t\t<body>\n\t\t<h1>BNC query result for \'%s\'</h1>' % (token_display, token_display))
+    tokens = re.split('\\s+', form.getvalue('tokens'))
+    queryFiles(tokens, data_dir)
+    print ('<p>Queried %d words in %d sentences.' % (word_count, sentence_count))
+    print '</body></html>'
+    return

@@ -1,0 +1,23 @@
+def getConfig(data):
+    "Get a new config in pseudo XML format from the client.\n\tIt needs to be at the beginning of the string that comes\n\tfrom the client and must be of form <config ... />.\n\tReturns a tuple with the a checker based on this config and \n\tthe 'data' string with the config section removed."
+    print 'Receiving new config...'
+    line_end_pos = data.find('/>')
+    cfg_str = data[:line_end_pos]
+    data = data[(line_end_pos + 3):]
+    grammar = getConfigValue(cfg_str, 'grammar')
+    falsefriends = getConfigValue(cfg_str, 'falsefriends')
+    words = getConfigValue(cfg_str, 'words')
+    builtin = getConfigValue(cfg_str, 'builtin')
+    textlanguage = getConfigValue(cfg_str, 'textlanguage')
+    if textlanguage:
+        textlanguage = textlanguage[0]
+    mothertongue = getConfigValue(cfg_str, 'mothertongue')
+    if mothertongue:
+        mothertongue = mothertongue[0]
+    sentence_length = getConfigValue(cfg_str, 'max-sentence-length')
+    if (not sentence_length):
+        sentence_length = 0
+    else:
+        sentence_length = int(sentence_length[0])
+    checker = makeChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, sentence_length)
+    return (checker, data)

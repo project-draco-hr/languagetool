@@ -1,0 +1,8 @@
+def testConstructor(self):
+    self.assertEqual(self.rule.rule_id, 'TEST1')
+    self.assertEqual(len(self.rule.tokens), 2)
+    self.assertEqual(self.rule2.rule_id, 'TEST2')
+    self.assertEqual(len(self.rule.tokens), 2)
+    self.assertEqual(self.rule3.rule_id, 'TEST3')
+    self.assertEqual(len(self.rule.tokens), 2)
+    return

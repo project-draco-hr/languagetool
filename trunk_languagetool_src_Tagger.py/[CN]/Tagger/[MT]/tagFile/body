@@ -1,0 +1,7 @@
+def tagFile(self, filename):
+    'POS-tag the contents of a text file and return XML that contains\n\t\tthe original text with each word\'s POS tag in the "type"\n\t\tattribute.'
+    text = TextToTag()
+    text.setFilename(filename)
+    tagged_words = text.tag(self.data_table, self.seqs_table_followed_by, self.seqs_table_follows)
+    xml = text.toXML(tagged_words)
+    return xml

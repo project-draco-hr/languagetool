@@ -1,0 +1,120 @@
+def do_test(self, l):
+    if (l == ''):
+        return ''
+    if szodic.has_key(l):
+        return ('+ %s' % l)
+    else:
+        oldword = l
+        found = 0
+        for key in condglob.keys():
+            if found:
+                break
+            if (arrtype[key] == 'P'):
+                continue
+            conddic = condglob[key]
+            for k2 in conddic.keys():
+                break_it = 0
+                condlist = conddic[k2][0]
+                strip = conddic[k2][1]
+                appnd = conddic[k2][2]
+                if len(appnd):
+                    if (l[(- len(appnd)):] != appnd):
+                        continue
+                if len(appnd):
+                    restoredWord = l[0:(len(l) - len(appnd))]
+                else:
+                    restoredWord = l
+                if len(strip):
+                    restoredWord = (restoredWord + strip)
+                if ((len(condlist) > 0) and (len(restoredWord) >= len(condlist))):
+                    substr = restoredWord[(- len(condlist)):]
+                    for i in range(0, (len(condlist) - 1), 1):
+                        if (condlist[i][ord(substr[i])] != 1):
+                            break_it = 1
+                            break
+                    if break_it:
+                        continue
+                elif (appnd == l[:len(appnd)]):
+                    restoredWord = l[len(appnd):]
+                else:
+                    continue
+                if szodic.has_key(restoredWord):
+                    flags = szodic[restoredWord]
+                    if (flags == ''):
+                        continue
+                    elif (find(flags, key) == (-1)):
+                        continue
+                    return ('++ %s %s' % (l, restoredWord))
+                    found = 1
+                    break
+    if found:
+        return ('+found %s' % oldword)
+    for key in condglob.keys():
+        if found:
+            break
+        if (lower(yesno[key]) == 'n'):
+            continue
+        if (arrtype[key] != 'P'):
+            continue
+        conddic = condglob[key]
+        for k2 in conddic.keys():
+            break_it = 0
+            condlist = conddic[k2][0]
+            strip = conddic[k2][1]
+            appnd = conddic[k2][2]
+            if (appnd == l[:len(appnd)]):
+                l1 = l[len(appnd):]
+            else:
+                continue
+            if szodic.has_key(l1):
+                flags1 = szodic[l1]
+                if (flags1 != ''):
+                    if (find(flags1, key) == (-1)):
+                        continue
+                    return ('++ %s  %s' % (l, l1))
+                    found = 1
+                    break
+            for key1 in condglob.keys():
+                if found:
+                    break
+                if (lower(yesno[key1]) == 'n'):
+                    continue
+                if (arrtype[key1] == 'P'):
+                    continue
+                conddic1 = condglob[key1]
+                for k21 in conddic1.keys():
+                    break_it = 0
+                    condlist1 = conddic1[k21][0]
+                    strip1 = conddic1[k21][1]
+                    appnd1 = conddic1[k21][2]
+                    if len(appnd1):
+                        if (l[(- len(appnd1)):] != appnd1):
+                            continue
+                    if len(appnd1):
+                        restoredWord1 = l1[0:(len(l1) - len(appnd1))]
+                    else:
+                        restoredWord1 = l1
+                    if len(strip1):
+                        restoredWord1 = (restoredWord1 + strip1)
+                    if ((len(condlist1) > 0) and (len(restoredWord1) >= len(condlist1))):
+                        substr = restoredWord1[(- len(condlist1)):]
+                        for i1 in range(0, (len(condlist1) - 1), 1):
+                            if (condlist1[i1][ord(substr[i1])] != 11):
+                                break_it = 1
+                                break
+                        if break_it:
+                            continue
+                    if szodic.has_key(restoredWord1):
+                        flags1 = szodic[restoredWord1]
+                        if (flags1 == ''):
+                            continue
+                        else:
+                            if (find(flags1, key1) == (-1)):
+                                continue
+                            if (find(flags1, key) == (-1)):
+                                continue
+                        return ('+++ %s %s %s' % (l, l1, restoredWord1))
+                        found = 1
+                        break
+    if (found == 0):
+        return ('- %s' % oldword)

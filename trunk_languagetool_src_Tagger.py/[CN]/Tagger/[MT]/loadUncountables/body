@@ -1,0 +1,13 @@
+def loadUncountables(self):
+    'TODO: not used yet.'
+    l = []
+    f = open(self.uncountable_name)
+    while 1:
+        line = f.readline()
+        if (not line):
+            break
+        line = line.strip()
+        if ((not line.startswith('#')) and (line != '')):
+            l.append(line)
+    f.close()
+    return l

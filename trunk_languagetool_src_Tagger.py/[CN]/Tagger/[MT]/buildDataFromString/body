@@ -1,0 +1,14 @@
+def buildDataFromString(self, s):
+    'Take a string with format "word1/tag1 word2/tag2 ..." and\n\t\tcount the word/POS occurences and the POS tag sequences.\n\t\tOnly useful for the test cases.'
+    pairs = re.compile('\\s+').split(s)
+    tagged_words = []
+    split_regex = re.compile('/')
+    for pair in pairs:
+        pair = split_regex.split(pair)
+        if (len(pair) != 2):
+            continue
+        word = pair[0]
+        tag = pair[1]
+        tagged_words.append((word, tag))
+    text = TextToTag()
+    return

@@ -1,0 +1,25 @@
+def readConfig():
+    'Read the checker config from a KDE config file (INI style).\n\tReturn a checker which uses that config.'
+    config = ConfigParser.ConfigParser()
+    try:
+        config.readfp(open(configfile))
+    except IOError:
+        print ("Couldn't load config file '%s', using defaults..." % configfile)
+    grammar = loadOptionList(config, 'EnableGrammar', 'GrammarRules')
+    falsefriends = loadOptionList(config, 'EnableFalseFriends', 'FalseFriendsRules')
+    words = loadOptionList(config, 'EnableWords', 'WordsRules')
+    builtin = []
+    if loadOptionBoolean(config, 'EnableArticleCheck'):
+        builtin.append('DET')
+    if loadOptionBoolean(config, 'EnableWhitespaceCheck'):
+        builtin.append('WHITESPACE')
+    if (len(builtin) == 0):
+        builtin = None
+    textlanguage = loadOptionString(config, 'TextLanguage', 'en')
+    mothertongue = loadOptionString(config, 'MotherTongue', 'en')
+    sentence_length = 0
+    if loadOptionBoolean(config, 'EnableSentenceLength'):
+        if config.has_option('General', 'MaxSentenceLength'):
+            sentence_length = config.getint('General', 'MaxSentenceLength')
+    checker = makeChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, sentence_length)
+    return checker

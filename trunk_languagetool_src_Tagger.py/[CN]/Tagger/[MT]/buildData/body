@@ -1,0 +1,9 @@
+def buildData(self, filenames):
+    'Load BNC files in XML or SGML format and count the word/POS\n\t\toccurences and the POS tag sequences.'
+    tagged_words = []
+    for filename in filenames:
+        print  >> sys.stderr, ('Loading %s...' % filename)
+        text = PreTaggedText(filename)
+        tagged_words.extend(text.getTaggedWords())
+    self.word_count = (self.word_count + len(tagged_words))
+    return

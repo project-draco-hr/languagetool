@@ -1,0 +1,7 @@
+def split_unsplit_stuff(self, text):
+    'Treat some more special cases that make up a sentence boundary. Insert\n\t\tthe special break character at these positions.'
+    text = re.compile(('(\\D\\d+)(%s)(\\s+)' % self.P), re.DOTALL).sub(('\\1\\2%s\\3' % self.EOS), text)
+    text = re.compile(("('\\w%s)(\\s)" % self.P), re.DOTALL).sub(('\\1%s\\2' % self.EOS), text)
+    text = re.compile('(\\sno\\.)(\\s+)(?!\\d)', (re.DOTALL | re.IGNORECASE)).sub(('\\1%s\\2' % self.EOS), text)
+    text = re.compile(('([ap]\\.m\\.\\s+)([%s])' % string.uppercase), re.DOTALL).sub(('\\1%s\\2' % self.EOS), text)
+    return text

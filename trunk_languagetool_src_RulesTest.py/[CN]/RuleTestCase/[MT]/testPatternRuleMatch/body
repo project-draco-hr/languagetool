@@ -1,0 +1,15 @@
+def testPatternRuleMatch(self):
+    res_list = self.rule.match([('', None, 'SENT_START'), ('word', 'word', 'XX'), (' ', None, None), ('bla', 'bla', 'VB')], 0)
+    self.assertEqual(len(res_list), 1)
+    self.assertEqual(str(res_list[0]), '<error from="0" to="8">Test message 1.</error>')
+    res_list = self.rule.match([('no', 'no', 'XX'), ('foo', 'foo', 'VB')], 0)
+    self.assertEqual(len(res_list), 0)
+    res_list = self.rule.match([], 0)
+    self.assertEqual(len(res_list), 0)
+    res_list = self.rule.match([('word', 'word', 'XX')], 0)
+    self.assertEqual(len(res_list), 0)
+    res_list = self.rule2.match([('word', 'word', 'XX'), ('', None, None), ('xxx', 'xxx', 'VBX')], 0)
+    self.assertEqual(len(res_list), 1)
+    res_list = self.rule3.match([('foo', 'foo', 'XX'), (' ', None, None), ('xxx', 'xxx', 'VB')], 0)
+    self.assertEqual(len(res_list), 1)
+    return

@@ -1,0 +1,8 @@
+def constrain(self, tagged_tuples, pos_tag):
+    'Remove the pos_tag reading from tagged_tuples. Returns nothing,\n\t\tworks directly on tagged_tuples.'
+    i = 0
+    for t in tagged_tuples:
+        if (t[0] == pos_tag):
+            del tagged_tuples[i]
+        i = (i + 1)
+    return

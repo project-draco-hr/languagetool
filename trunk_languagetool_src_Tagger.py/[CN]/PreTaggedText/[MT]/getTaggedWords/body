@@ -1,0 +1,8 @@
+def getTaggedWords(self):
+    'Returns list of tuples (word, tag)'
+    text = self.expandEntities(self.content)
+    word_matches = self.getBNCTuples(text)
+    tagged_words = []
+    for (tag, word) in word_matches:
+        tagged_words.append((word, tag))
+    return tagged_words

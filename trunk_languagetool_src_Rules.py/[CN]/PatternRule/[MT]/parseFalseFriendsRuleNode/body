@@ -1,0 +1,32 @@
+def parseFalseFriendsRuleNode(self, rule_node, mothertongue, textlang):
+    self.rule_id = rule_node.parentNode.getAttribute('id')
+    pattern_node = rule_node.getElementsByTagName('pattern')[0]
+    self.language = rule_node.getAttribute('lang')
+    trans_nodes = rule_node.getElementsByTagName('translation')
+    self.valid = 0
+    translations = []
+    for trans_node in trans_nodes:
+        trans_lang = trans_node.getAttribute('lang')
+        if (trans_lang == mothertongue):
+            self.valid = 1
+            trans_str = trans_node.childNodes[0].data
+            translations.append(trans_str)
+    if self.valid:
+        self.case_sensitive = 0
+        self.pattern = rule_node.getElementsByTagName('pattern')[0].childNodes[0].data
+        (repl_word, repl_trans) = self.getOtherMeaning(rule_node.parentNode, mothertongue, textlang)
+        l = []
+        for elem in repl_trans:
+            l.append(('<em>%s</em>' % elem))
+        repl_trans_str = str.join(', ', l)
+        self.message = ("'%s' means %s. " % (self.pattern, str.join(', ', translations)))
+        if repl_word:
+            self.message = (self.message + (" Did you maybe mean '%s', which is %s?" % (repl_word, repl_trans_str)))
+        token_strings = re.split('\\s+', self.pattern)
+        self.tokens = []
+        for token_string in token_strings:
+            token = Token(('"%s"' % token_string))
+            self.tokens.append(token)
+        self.marker_from = 0
+        self.marker_to = 0
+    return

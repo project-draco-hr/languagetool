@@ -1,0 +1,33 @@
+def query(search_tokens, filename):
+    global sentence_count
+    global word_count
+    global limit
+    global matches
+    global tags
+    t1 = time.time()
+    tokens = buildList(filename)
+    t1 = time.time()
+    match_pos = 0
+    pos = 0
+    for (word, tag) in tokens:
+        if (tag == 'S_BEGIN'):
+            sentence_count = (sentence_count + 1)
+        word_count = (word_count + 1)
+        if (tags.count(search_tokens[match_pos]) > 0):
+            compare = tag
+        else:
+            compare = word
+        if ((compare == search_tokens[match_pos]) or (search_tokens[match_pos] == '_')):
+            match_pos = (match_pos + 1)
+        else:
+            match_pos = 0
+        if (match_pos == len(search_tokens)):
+            if ((matches + 1) > limit):
+                return None
+            print ('%d.' % (matches + 1))
+            print niceFormat(tokens[(pos - context):(pos + context)], ((context - len(search_tokens)) + 1), len(search_tokens))
+            sys.stdout.flush()
+            matches = (matches + 1)
+            match_pos = 0
+        pos = (pos + 1)
+    return 1

@@ -1,0 +1,6 @@
+def __init__(self, rule_id, message, false_positives, language):
+    self.rule_id = rule_id
+    self.message = message
+    self.false_positives = false_positives
+    self.language = language
+    return

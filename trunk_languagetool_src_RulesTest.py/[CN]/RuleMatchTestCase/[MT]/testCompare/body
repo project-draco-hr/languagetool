@@ -1,0 +1,8 @@
+def testCompare(self):
+    r1 = Rules.RuleMatch('ONE', 1, 2, 'fake1', 0)
+    r2 = Rules.RuleMatch('ONE', 2, 3, 'fake2', 0)
+    assert (r1 < r2)
+    r3 = Rules.RuleMatch('ONE', 1, 3, 'fake3', 0)
+    assert (r1 == r3)
+    assert (r2 > r3)
+    return

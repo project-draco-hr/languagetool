@@ -1,0 +1,3 @@
+def __init__(self):
+    Rule.__init__(self, 'WHITESPACE', 'Insert a space character before punctuation.', 0, None)
+    return

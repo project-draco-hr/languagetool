@@ -1,0 +1,7 @@
+def first_sentence_breaking(self, text):
+    'Add a special break character at all places with typical sentence\n\t\tdelimiters.'
+    text = re.compile('(\n\\s*\n)', re.DOTALL).sub(('\\1%s' % self.EOS), text)
+    text = re.compile(('(%s\\s)' % self.PAP), re.DOTALL).sub(('\\1%s' % self.EOS), text)
+    text = re.compile(('(%s)([%s][^%s.])' % (self.PAP, string.uppercase, string.uppercase)), re.DOTALL).sub(('\\1%s\\2' % self.EOS), text)
+    text = re.compile(('(\\s\\w%s)' % self.P), re.DOTALL).sub(('\\1%s' % self.EOS), text)
+    return text

@@ -1,0 +1,4 @@
+def toXML(self):
+    'XML representation of this object.'
+    strng = ('<error from="%d" to="%d">%s</error>' % (self.from_pos, self.to_pos, self.message))
+    return strng

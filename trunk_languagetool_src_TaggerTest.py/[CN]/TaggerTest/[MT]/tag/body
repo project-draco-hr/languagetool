@@ -1,0 +1,13 @@
+def tag(self, learn_text, text):
+    tagger = Tagger.Tagger(self.FILENAME_WORDS, self.FILENAME_SEQ1, self.FILENAME_SEQ2)
+    tagger.deleteData()
+    tagger.bindData()
+    tagger.buildDataFromString(learn_text)
+    tagger.commitData()
+    tagger = None
+    tagger2 = Tagger.Tagger(self.FILENAME_WORDS, self.FILENAME_SEQ1, self.FILENAME_SEQ2)
+    tagger2.bindData()
+    res = tagger2.tagText(text)
+    res = self.cleanList(res)
+    tagger2.deleteData()
+    return res

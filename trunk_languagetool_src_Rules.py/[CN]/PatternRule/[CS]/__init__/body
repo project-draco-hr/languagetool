@@ -1,0 +1,9 @@
+def __init__(self, node, is_false_friend_node=None, mothertongue=None, textlang=None):
+    'Build an object by parsing an XML rule node.'
+    if (node == None):
+        return
+    if is_false_friend_node:
+        self.parseFalseFriendsRuleNode(node, mothertongue, textlang)
+    else:
+        self.parseRuleNode(node)
+    return

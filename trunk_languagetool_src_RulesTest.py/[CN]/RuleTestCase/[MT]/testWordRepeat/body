@@ -1,0 +1,9 @@
+def testWordRepeat(self):
+    r = WordRepeatRule.WordRepeatRule()
+    warnings = r.match([('blah', 'blah', 'XX'), (' ', None, None), ('blahbla', 'blahbla', 'YY')], [])
+    self.assertEqual(len(warnings), 0)
+    warnings = r.match([('blah', 'blah', 'XX'), (' ', None, None), ('blah', 'blah', 'YY')], [])
+    self.assertEqual(len(warnings), 1)
+    warnings = r.match([('blah', 'blah', 'XX'), (' ', None, None), ('BLAH', 'BLAH', 'XX')], [])
+    self.assertEqual(len(warnings), 1)
+    return

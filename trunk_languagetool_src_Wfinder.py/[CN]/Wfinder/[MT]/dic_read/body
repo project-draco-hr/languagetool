@@ -1,0 +1,25 @@
+def dic_read(self):
+    self.dic_file = os.path.join(sys.path[0], 'data', Tagger.dicFile)
+    szoszam = 0
+    fdic = codecs.open(self.dic_file, 'r', self.encoding)
+    l = ' '
+    szolista = []
+    ujlista = []
+    l = fdic.readline()
+    szoszam = int(l)
+    while (l != ''):
+        l = fdic.readline()
+        szolista = l.split('/')
+        for szo in szolista:
+            szo = szo.strip('\n \t')
+            ujlista.append(szo)
+        if (len(ujlista) > 1):
+            szodic[ujlista[0]] = ujlista[1]
+        else:
+            szodic[ujlista[0]] = ''
+        if (len(ujlista) > 2):
+            typdic[ujlista[0]] = ujlista[2]
+        else:
+            typdic[ujlista[0]] = ''
+        ujlista = []
+    fdic.close()

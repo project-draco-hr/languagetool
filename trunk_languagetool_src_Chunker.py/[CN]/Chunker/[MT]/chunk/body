@@ -1,0 +1,44 @@
+def chunk(self, tagged_text):
+    'Take a POS tagged text and find all its chunks. Returns\n\t\ta list of (from, to, chunk_name) tuples where the from/to positions\n\t\trefer to the list position. Only parts of the list may be\n\t\tcovered by chunks. There are no overlappings.'
+    l = []
+    tagged_text_pos = 0
+    while 1:
+        if (tagged_text_pos >= len(tagged_text)):
+            break
+        (word, norm_word, tag) = tagged_text[tagged_text_pos]
+        for rule in self.rules.rules:
+            match_start = None
+            match_end = None
+            pattern_pos = 0
+            pos_corr = 0
+            rule_match = 1
+            cont = 1
+            while 1:
+                try:
+                    tag = tagged_text[((tagged_text_pos + pattern_pos) + pos_corr)][2]
+                except IndexError:
+                    break
+                if ((pattern_pos == 0) and (tag == None)):
+                    cont = 0
+                    break
+                if (tag == None):
+                    pos_corr = (pos_corr + 1)
+                    continue
+                if (tag != rule.pattern[pattern_pos]):
+                    rule_match = 0
+                    break
+                if (match_start == None):
+                    match_start = tagged_text_pos
+                pattern_pos = (pattern_pos + 1)
+                if (pattern_pos == len(rule.pattern)):
+                    match_end = (((match_start + pattern_pos) + pos_corr) - 1)
+                    l.append((match_start, match_end, rule.name))
+                    tagged_text_pos = (tagged_text_pos + (match_end - match_start))
+                    cont = 0
+                    break
+            if (not rule_match):
+                continue
+            if (not cont):
+                break
+        tagged_text_pos = (tagged_text_pos + 1)
+    return l

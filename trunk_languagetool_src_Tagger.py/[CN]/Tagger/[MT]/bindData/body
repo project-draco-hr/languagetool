@@ -1,0 +1,25 @@
+def bindData(self):
+    'Load the word/POS tag and POS tag sequence data from disk.'
+    try:
+        if (textlanguage != 'en'):
+            self.ReadData(self.db_word_name)
+        else:
+            self.data_table = cPickle.load(open(self.db_word_name, 'rb'))
+    except IOError:
+        print  >> sys.stderr, ("No date file '%s' yet, starting with empty table." % self.db_word_name)
+        self.data_table = {}
+    if (textlanguage == 'en'):
+        try:
+            self.seqs_table_followed_by = cPickle.load(open(self.db_seq_name1, 'rb'))
+        except IOError:
+            print  >> sys.stderr, ("No date file '%s' yet, starting with empty table." % self.db_seq_name1)
+        self.seqs_table_followed_by = {}
+        try:
+            self.seqs_table_follows = cPickle.load(open(self.db_seq_name2, 'rb'))
+        except IOError:
+            print  >> sys.stderr, ("No date file '%s' yet, starting with empty table." % self.db_seq_name2)
+            self.seqs_table_follows = {}
+    else:
+        self.seqs_table_followed_by = {}
+        self.seqs_table_follows = {}
+    return

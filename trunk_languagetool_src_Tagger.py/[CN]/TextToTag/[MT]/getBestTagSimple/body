@@ -1,0 +1,10 @@
+def getBestTagSimple(self, tag_tuples):
+    'Return the most probable tag without taking context into\n\t\taccount. Only useful for testing and checking the baseline.'
+    max_prob = 0
+    best_tag = None
+    for tag_tuples_here in tag_tuples:
+        prob = tag_tuples_here[1]
+        if (prob >= max_prob):
+            max_prob = prob
+            best_tag = tag_tuples_here[0]
+    return best_tag

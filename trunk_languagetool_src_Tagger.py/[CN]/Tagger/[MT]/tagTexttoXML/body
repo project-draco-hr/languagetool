@@ -1,0 +1,7 @@
+def tagTexttoXML(self, strng):
+    'POS-tag a string and return a list of (word, normalized word, tag)\n\t\ttriples.'
+    text = TextToTag()
+    text.setText(strng)
+    tagged_words = text.tag(self.data_table, self.seqs_table_followed_by, self.seqs_table_follows)
+    xml = text.toXML(tagged_words)
+    return xml

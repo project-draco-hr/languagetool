@@ -1,0 +1,12 @@
+import os
+import re
+import string
+import sys
+import time
+import cPickle
+import htmlentitydefs
+import Wfinder
+dicFile = 'deutsch.txt'
+affFile = 'deutsch.aff'
+textlanguage = 'German'
+wfinder = Wfinder.Wfinder()

@@ -1,0 +1,58 @@
+def test_it(self, l):
+    if (self.is_initialized == 0):
+        self.aff_read()
+        self.dic_read()
+        self.is_initialized = 1
+    result = self.do_test(l)
+    if (result[0] == '-'):
+        lu = l[0]
+        if (lu != lu.lower()):
+            l1 = (lu[0].lower() + l[1:])
+            if (l1.encode('iso-8859-1') != l):
+                result = self.do_test(l1.encode('iso-8859-1'))
+    typ = ''
+    if (result[0] != '-'):
+        src = result.split()
+        word = src[(len(src) - 1)]
+        oword = src[1]
+        typ = typdic[word]
+        if (Tagger.textlanguage == 'de'):
+            if (typ != ''):
+                if (typ == 'V'):
+                    if (oword[(-1):] == 'e'):
+                        typ = 'V11'
+                    elif (oword[(-2):] == 'st'):
+                        typ = 'V12'
+                    elif (oword[(-2):] == 'en'):
+                        typ = 'V14'
+                    elif (oword[(-2):] == 'et'):
+                        typ = 'V15'
+                    elif (oword[(-1):] == 't'):
+                        typ = 'V13'
+                elif (typ == 'HV'):
+                    if (oword[(-1):] == 'e'):
+                        typ = 'HV11'
+                    elif (oword[(-2):] == 'st'):
+                        typ = 'HV12'
+                    elif (oword[(-2):] == 'en'):
+                        typ = 'HV14'
+                    elif (oword[(-2):] == 'et'):
+                        typ = 'HV15'
+                    elif (oword[(-1):] == 't'):
+                        typ = 'HV13'
+                elif (typ == 'ADJ'):
+                    if (oword[(-2):] == 'er'):
+                        typ = 'ADJER'
+                    elif (oword[(-2):] == 'en'):
+                        typ = 'ADJEN'
+                    elif (oword[(-2):] == 'em'):
+                        typ = 'ADJEM'
+                    elif (oword[(-2):] == 'es'):
+                        typ = 'ADJES'
+                    elif (oword[(-1):] == 'e'):
+                        typ = 'ADJE'
+                elif (typ[0] == 'N'):
+                    if ((word != oword) and (typ[(-1):] == 'S')):
+                        typ = typ[0:(-1)]
+        result = ((result + ' ') + typ)
+    return result
