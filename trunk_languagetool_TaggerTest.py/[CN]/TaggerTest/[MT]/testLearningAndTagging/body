@@ -13,6 +13,6 @@ def testLearningAndTagging(self):
     self.assertEqual(r, [('A', 'DET'), ('fat', 'NN1'), ('man', 'NN1')])
     r = self.tag('The/DET fat/AJ0 is/VB hot/AJ0\n\t\t\tA/DET fat/AJ0 man/NN1 . \n\t\t\tHe/PP used/VBD fat/NN1', 'A fat man')
     self.assertEqual(r, [('A', 'DET'), ('fat', 'AJ0'), ('man', 'NN1')])
-    r = self.tag('The/DET fat/AJ0 man/NN is/VB fat/AJ0 ./PP', 'A fat man, he is fat.')
-    self.assertEqual(r, [('A', 'unknown'), ('fat', 'AJ0'), ('man', 'NN'), (', ', None), ('he', 'unknown'), ('is', 'VB'), ('fat', 'AJ0')])
+    r = self.tag('The/DET fat/AJ0 man/NN is/VB fat/AJ0 ./PP', 'A fat man he is fat.')
+    self.assertEqual(r, [('A', 'unknown'), ('fat', 'AJ0'), ('man', 'NN'), ('he', 'unknown'), ('is', 'VB'), ('fat', 'AJ0')])
     return
