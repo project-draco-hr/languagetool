@@ -25,7 +25,7 @@ def match(self, tagged_words, chunks=None, position_fix=0, line_fix=0, column_fi
         whitespace_length = len(tagged_words[(i + 1)][0])
         if (line_breaks_cur == 0):
             column = (column + len(org_word))
-        if self.punct_regex.match(org_word):
+        if (self.punct_regex.match(org_word) and (not (org_word.endswith('\n') or org_word.endswith('\r')))):
             word_next = tagged_words[(i + 1)][1]
             word_next = self.getNextTriple(tagged_words, (i + 1))
             if word_next:
