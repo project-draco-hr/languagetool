@@ -1,32 +1,40 @@
 def chunk(self, tagged_text):
-    'fixme-doc'
+    'Take a POS tagged text and find all its chunks. Returns\n\t\ta list of (from, to, chunk_name) tuples where the from/to positions\n\t\trefer to the list position. Each from/to range will only\n\t\thave one chunk at most.'
     l = []
-    rules = Rules()
-    for rule in rules.rules:
-        match_start = None
-        match_end = None
-        i = 0
-        for (word, norm_word, tag) in tagged_text:
+    tagged_text_pos = 0
+    for (word, norm_word, tag) in tagged_text:
+        for rule in self.rules.rules:
+            match_start = None
+            match_end = None
             pattern_pos = 0
-            print ('%s, %s ?= %s' % (word, tag, rule.pattern[pattern_pos]))
-            while (tag == rule.pattern[pattern_pos]):
-                if (not match_start):
-                    match_start = i
-                (pattern_repeat, pattern) = self.__getPattern(rule.pattern[pattern_pos])
-                if pattern_repeat:
-                    print ("Repeat '%s -- %s'!++++" % (tag, pattern))
-                    while (tag == pattern):
-                        print '~'
-                        try:
-                            tag = rule.pattern[pattern_pos]
-                        except IndexError:
-                            print 'end pattern'
-                pattern_pos = (pattern_pos + 1)
-                if (pattern_pos == (len(rule.pattern) - 1)):
-                    print 'match!'
-                    match_end = (i + 1)
-                    l.append(((match_start + 1), (match_end + 1), rule.name))
+            pos_corr = 0
+            rule_match = 1
+            cont = 1
+            while 1:
+                try:
+                    tag = tagged_text[((tagged_text_pos + pattern_pos) + pos_corr)][2]
+                except IndexError:
                     break
-                i = (i + 1)
-    print l
+                if ((pattern_pos == 0) and (tag == None)):
+                    cont = 0
+                    break
+                if (tag == None):
+                    pos_corr = (pos_corr + 1)
+                    continue
+                if (tag != rule.pattern[pattern_pos]):
+                    rule_match = 0
+                    break
+                if (match_start == None):
+                    match_start = tagged_text_pos
+                pattern_pos = (pattern_pos + 1)
+                if (pattern_pos == len(rule.pattern)):
+                    match_end = (((match_start + pattern_pos) + pos_corr) - 1)
+                    l.append((match_start, match_end, rule.name))
+                    cont = 0
+                    break
+            if (not rule_match):
+                continue
+            if (not cont):
+                break
+        tagged_text_pos = (tagged_text_pos + 1)
     return l

@@ -1,6 +1,0 @@
-def __getPattern(self, pattern):
-    repeat = 0
-    if pattern.endswith('+'):
-        pattern = pattern[0:(len(pattern) - 1)]
-        repeat = 1
-    return (repeat, pattern)
