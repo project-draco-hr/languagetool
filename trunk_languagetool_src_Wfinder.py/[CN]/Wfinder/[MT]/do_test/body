@@ -25,7 +25,7 @@ def do_test(self, l):
                     restoredWord = (restoredWord + strip)
                 if ((len(condlist) > 0) and (len(restoredWord) >= len(condlist))):
                     substr = restoredWord[(- len(condlist)):]
-                    for i in range(0, (len(condlist) - 1), 1):
+                    for i in range(0, len(condlist), 1):
                         if (condlist[i][ord(substr[i])] != 1):
                             break_it = 1
                             break
@@ -91,7 +91,7 @@ def do_test(self, l):
                         restoredWord1 = (restoredWord1 + strip1)
                     if ((len(condlist1) > 0) and (len(restoredWord1) >= len(condlist1))):
                         substr = restoredWord1[(- len(condlist1)):]
-                        for i1 in range(0, (len(condlist1) - 1), 1):
+                        for i1 in range(0, len(condlist1), 1):
                             if (condlist1[i1][ord(substr[i1])] != 11):
                                 break_it = 1
                                 break
