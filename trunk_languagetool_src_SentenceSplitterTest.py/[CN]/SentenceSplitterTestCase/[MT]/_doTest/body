@@ -1,4 +1,4 @@
-def doTest(self, s):
+def _doTest(self, s):
     s_copy = s.replace('#', '')
     l = self.s.split(s_copy)
     correct_result = s.split('#')

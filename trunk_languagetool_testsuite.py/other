@@ -1,0 +1,11 @@
+import os
+import sys
+import unittest
+sys.path.append(os.path.join(sys.path[0], 'src'))
+import SentenceSplitterTest
+import ChunkerTest
+import RulesTest
+import TaggerTest
+import EnglishTest
+suite = suite()
+unittest.TextTestRunner().run(suite)

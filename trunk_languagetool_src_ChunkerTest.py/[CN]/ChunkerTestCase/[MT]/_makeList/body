@@ -1,4 +1,4 @@
-def makeList(self, s):
+def _makeList(self, s):
     parts = re.split('(\\s+)', s)
     l = []
     for part in parts:

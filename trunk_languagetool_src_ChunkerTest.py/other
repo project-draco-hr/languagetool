@@ -1,5 +1,3 @@
 import re
 import unittest
 import Chunker
-if (__name__ == '__main__'):
-    unittest.main()
