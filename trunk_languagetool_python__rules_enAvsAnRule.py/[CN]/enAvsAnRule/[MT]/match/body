@@ -1,4 +1,4 @@
-def match(self, tagged_words, chunks, position_fix=0, line_fix=0):
+def match(self, tagged_words, chunks, position_fix=0, line_fix=0, column_fix=0):
     matches = []
     text_length = 0
     line_breaks = 0
