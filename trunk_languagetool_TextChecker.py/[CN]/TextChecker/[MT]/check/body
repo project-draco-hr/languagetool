@@ -9,6 +9,8 @@ def check(self, text):
     column_counter = 0
     for sentence in sentences:
         tagged_words = self.tagger.tagText(sentence)
+        if self.debug_mode:
+            print ('Tw:%s' % tagged_words)
         chunks = self.chunker.chunk(tagged_words)
         tagged_words.insert(0, ('', None, 'SENT_START'))
         tagged_words.append(('', None, 'SENT_END'))

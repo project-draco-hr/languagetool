@@ -1,4 +1,4 @@
-def __init__(self, grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length):
+def __init__(self, grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length, debug_mode):
     self.grammar = grammar
     self.falsefriends = falsefriends
     self.words = words
@@ -6,6 +6,7 @@ def __init__(self, grammar, falsefriends, words, builtin, textlanguage, motherto
     self.textlanguage = textlanguage
     self.mothertongue = mothertongue
     self.max_sentence_length = max_sentence_length
+    self.debug_mode = debug_mode
     config = ConfigParser.ConfigParser()
     config.readfp(open('TextChecker.ini'))
     Tagger.dicFile = config.get(textlanguage, 'dicFile')

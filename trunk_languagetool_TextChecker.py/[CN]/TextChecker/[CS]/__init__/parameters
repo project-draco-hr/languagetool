@@ -6,3 +6,4 @@ builtin
 textlanguage
 mothertongue
 max_sentence_length
+debug_mode

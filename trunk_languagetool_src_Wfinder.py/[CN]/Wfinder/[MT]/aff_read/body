@@ -1,9 +1,7 @@
 def aff_read(self):
     self.aff_file = os.path.join(sys.path[0], 'data', Tagger.affFile)
     condlist = []
-    condlist_group = []
     alfab_condlist_group = []
-    conddic = {}
     faff = codecs.open(self.aff_file, 'r', self.encoding)
     l = ' '
     for i in range(0, 256, 1):
@@ -18,13 +16,11 @@ def aff_read(self):
             continue
         if (ll[0][1:3] == 'FX'):
             arrname = ll[1]
-            arrtype[arrname] = ll[0][0]
             prefix = 0
-            if (arrtype[arrname] == 'P'):
+            if (ll[0][0] == 'P'):
                 prefix = 1
             yesno[arrname] = ll[2]
-            count[arrname] = int(ll[3])
-            for i in range(0, count[arrname]):
+            for i in range(0, int(ll[3])):
                 l = faff.readline()
                 bb = l.split()
                 strip = bb[2]
@@ -62,21 +58,14 @@ def aff_read(self):
                             condarr[ord(bb[4][jj])] = insbit
                             jj = (jj + 1)
                         condlist.append(condarr)
-                condlist_group.append(condlist)
-                condlist_group.append(strip)
-                condlist_group.append(appnd)
                 alfab_condlist_group.append(condlist)
                 alfab_condlist_group.append(strip)
                 alfab_condlist_group.append(appnd)
                 alfab_condlist_group.append(arrname)
-                conddic[i] = condlist_group
                 if (prefix == 0):
                     alfab_conddic[ord(appnd_last)].append(alfab_condlist_group)
                 else:
                     palfab_conddic[ord(appnd_last)].append(alfab_condlist_group)
                 condlist = []
-                condlist_group = []
                 alfab_condlist_group = []
-            condglob[arrname] = conddic
-            conddic = {}
     faff.close()

@@ -10,4 +10,5 @@ def usage():
     print '  -s, --sentencelength=... Warn if a sentence is longer than this (default: never warn)'
     print "  -e, --encoding           Input file's encoding/charset (e.g. latin1 or utf8)"
     print '  -x, --xml                Print out result as XML'
+    print '  -d, --debug              Print out tagged words'
     return

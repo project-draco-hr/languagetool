@@ -5,17 +5,11 @@ import Tagger
 from string import *
 import time
 import sys
-arrtype = {}
 test_file = 'test.txt'
 yesno = {}
-count = {}
 comment = '#'
 condlist = []
 condlist1 = []
-condlist_group = []
-conddic = {}
-conddic1 = {}
-condglob = {}
 alfab_conddic = {}
 palfab_conddic = {}
 alfab_condlist_group = []

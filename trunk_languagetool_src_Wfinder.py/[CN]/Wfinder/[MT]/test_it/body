@@ -29,32 +29,19 @@ def test_it(self, l):
         if (self.textlanguage == 'de'):
             if (typ != ''):
                 if ((typ == 'V') or (typ == 'HV')):
-                    if (oword[(-4):] == 'ende'):
+                    if ((oword[(-4):] == 'ende') or (oword[(-5):(-1)] == 'ende')):
                         typ = 'ADJV'
-                    if (oword[(-5):(-1)] == 'ende'):
-                        typ = 'ADJV'
-                if (typ == 'V'):
+                if ((typ == 'V') or (typ == 'HV')):
                     if (oword[(-1):] == 'e'):
-                        typ = 'V11'
+                        typ = (typ + '11')
                     elif (oword[(-2):] == 'st'):
-                        typ = 'V12'
+                        typ = (typ + '12')
                     elif (oword[(-2):] == 'en'):
-                        typ = 'V14'
+                        typ = (typ + '14')
                     elif (oword[(-2):] == 'et'):
-                        typ = 'V15'
+                        typ = (typ + '15')
                     elif (oword[(-1):] == 't'):
-                        typ = 'V13'
-                if (typ == 'HV'):
-                    if (oword[(-1):] == 'e'):
-                        typ = 'HV11'
-                    elif (oword[(-2):] == 'st'):
-                        typ = 'HV12'
-                    elif (oword[(-2):] == 'en'):
-                        typ = 'HV14'
-                    elif (oword[(-2):] == 'et'):
-                        typ = 'HV15'
-                    elif (oword[(-1):] == 't'):
-                        typ = 'HV13'
+                        typ = (typ + '13')
                 elif (typ == 'ADJ'):
                     if (oword[(-2):] == 'er'):
                         typ = 'ADJER'
@@ -74,7 +61,7 @@ def test_it(self, l):
                 if (typ[0] == 'N'):
                     if ((word != oword) and (typ[(-1):] == 'S')):
                         typ = typ[0:(-1)]
-        if (self.textlanguage == 'hu'):
+        elif (self.textlanguage == 'hu'):
             dif = (len(oword) - len(word))
             if (((typ[0] == 'V') or (typ[0:2] == 'SI')) and (word != oword)):
                 ik = ''
