@@ -1,18 +1,18 @@
 import TextChecker
-import config
 import ConfigParser
 import os
 import re
 import socket
 import sys
 import time
-sys.path.append(os.path.join(config.BASEDIR, 'snakespell-1.01'))
+sys.path.append(os.path.join(sys.path[0], 'snakespell-1.01'))
 from scriptfoundry.snakespell import iSpell
 server_name = '127.0.0.1'
 server_port = 50100
+configfile = os.path.join(os.getenv('HOME'), '.kde/share/config/languagetool')
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    os.chdir(config.BASEDIR)
+    os.chdir(sys.path[0])
     main()
 except KeyboardInterrupt:
     s.shutdown(2)
