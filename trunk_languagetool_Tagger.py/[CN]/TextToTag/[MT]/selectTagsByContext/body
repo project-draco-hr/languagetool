@@ -51,8 +51,6 @@ def selectTagsByContext(self, tagged_list, seqs_table_followed_by, seqs_table_fo
                     three_tag_prob = None
                     if three_tag:
                         three_tag_prob = three_tag[0]
-                    seq1 = (one_tag_prob, two_tag_prob)
-                    seq2 = (two_tag_prob, three_tag_prob)
                     seq_prob = 0
                     if one:
                         try:
@@ -110,7 +108,7 @@ def selectTagsByContext(self, tagged_list, seqs_table_followed_by, seqs_table_fo
             wrong_tags = self.checkBNCMatch(i, tagged_list_bnc, orig_word, best_tag, data_table)
             count_wrong_tags = (count_wrong_tags + wrong_tags)
         i = (i + 1)
-    stat = self.getStats(count_wrong_tags)
+    stat = self.getStats(count_wrong_tags, is_bnc)
     print  >> sys.stderr, stat
     tagged_list.pop(0)
     tagged_list.pop(0)

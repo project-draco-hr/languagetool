@@ -36,6 +36,4 @@ def addTagSequences(self, tag_list, seqs_table_followed_by, seqs_table_follows):
         seqs_table_followed_by[t] = (float(seqs_table_followed_by[t]) / float(count_followed_by[t[0]]))
     for t in seqs_table_follows.keys():
         seqs_table_follows[t] = (float(seqs_table_follows[t]) / float(count_follows[t[0]]))
-    for k in seqs_table_follows.keys():
-        print ('%s -> %s' % (k, seqs_table_follows[k]))
     return
