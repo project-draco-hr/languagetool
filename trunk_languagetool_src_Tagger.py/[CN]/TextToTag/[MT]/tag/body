@@ -40,6 +40,12 @@ def tag(self, data_table, seqs_table_followed_by, seqs_table_follows):
                 if data_table.has_key(tuple_word):
                     word = tuple_word
                     i = (i + 2)
+        if ((len(word) >= 1) and (word[(-1)] in ('.', ',', '?', '!', ':', ';', "'", '"', '%', '='))):
+            wordend = word[(-1)]
+            word = word[0:(-1)]
+            r = Text.tagWord(self, word, data_table)
+            tagged_list.extend(r)
+            word = wordend
         r = Text.tagWord(self, word, data_table)
         tagged_list.extend(r)
         if is_bnc:

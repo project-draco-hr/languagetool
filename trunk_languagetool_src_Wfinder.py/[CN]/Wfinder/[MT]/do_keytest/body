@@ -1,0 +1,7 @@
+def do_keytest(self, l):
+    if (l == ''):
+        return ''
+    if szodic.has_key(l):
+        return ('+ %s' % l)
+    else:
+        return ('- %s' % l)
