@@ -5,6 +5,7 @@ def check(self, text):
     rule_matches = []
     char_counter = 0
     all_tagged_words = []
+    line_counter = 1
     for sentence in sentences:
         tagged_words = self.tagger.tagText(sentence)
         chunks = self.chunker.chunk(tagged_words)
@@ -12,15 +13,24 @@ def check(self, text):
         tagged_words.append(('', None, 'SENT_END'))
         all_tagged_words.extend(tagged_words)
         for rule in self.rules.rules:
-            matches = rule.match(tagged_words, chunks, char_counter)
+            matches = rule.match(tagged_words, chunks, char_counter, line_counter)
             rule_matches.extend(matches)
         for triple in sentence:
             char_counter = (char_counter + len(triple[0]))
+        line_counter = (line_counter + Tools.Tools.countLinebreaks(sentence))
     if ((not self.builtin) or ('WHITESPACE' in self.builtin)):
         whitespace_rule = Rules.WhitespaceRule()
         rule_matches.extend(whitespace_rule.match(all_tagged_words))
     rule_match_list = []
+    context = 10
     for rule_match in rule_matches:
-        rule_match_list.append(rule_match.toXML())
-    xml_part = ('<errors>\n%s\n</errors>\n' % string.join(rule_match_list, '\n'))
-    return (rule_matches, xml_part, all_tagged_words)
+        if self.xml_output:
+            rule_match_list.append(rule_match.toXML())
+            rule_match_list.append('\n')
+        else:
+            rule_match_list.append(str(rule_match))
+            rule_match_list.append('\n')
+    result = string.join(rule_match_list, '')
+    if self.xml_output:
+        result = ('<errors>\n%s</errors>' % result)
+    return (rule_matches, result, all_tagged_words)

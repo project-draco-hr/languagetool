@@ -15,6 +15,7 @@ import Tagger
 import Chunker
 import Rules
 import SentenceSplitter
+import Tools
 import ConfigParser
 if (__name__ == '__main__'):
     main()

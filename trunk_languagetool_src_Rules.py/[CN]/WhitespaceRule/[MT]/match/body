@@ -19,10 +19,10 @@ def match(self, tagged_words, chunks=None):
                     i = (i + 1)
                     continue
             if (word_next and (not self.after_punct_regex.match(org_word_next)) and (not self.whitespace_regex.match(org_word_next))):
-                matches.append(RuleMatch(self.rule_id, text_length, (text_length + len(org_word)), 'Usually a space character is inserted after punctuation.'))
+                matches.append(RuleMatch(self.rule_id, text_length, (text_length + len(org_word)), 0, 0, 'Usually a space character is inserted after punctuation.'))
         elif self.whitespace_regex.match(org_word):
             if self.punct_regex.match(org_word_next):
-                matches.append(RuleMatch(self.rule_id, text_length, (text_length + len(org_word)), 'Usually no space character is inserted before punctuation.'))
+                matches.append(RuleMatch(self.rule_id, text_length, (text_length + len(org_word)), 0, 0, 'Usually no space character is inserted before punctuation.'))
         text_length = (text_length + len(org_word))
         i = (i + 1)
     return matches

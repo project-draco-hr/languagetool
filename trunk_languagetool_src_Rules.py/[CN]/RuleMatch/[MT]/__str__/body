@@ -1,4 +1,7 @@
 def __str__(self):
-    'String representation of this object, equals XML representation\n\t\t(except the stripped whit space).'
-    strng = self.toXML().strip()
+    'String representation of this object, i.e. human readable output.'
+    msg = self.message
+    msg = re.compile('</?message>').sub('', msg)
+    msg = re.compile('</?em>').sub("'", msg)
+    strng = ('Line %d, Column %d: %s' % (self.line, self.column, msg))
     return strng

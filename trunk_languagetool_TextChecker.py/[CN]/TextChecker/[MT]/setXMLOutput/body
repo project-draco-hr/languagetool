@@ -1,0 +1,3 @@
+def setXMLOutput(self, xml_output):
+    self.xml_output = xml_output
+    return

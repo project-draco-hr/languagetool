@@ -1,7 +1,9 @@
-def __init__(self, rule_id, from_pos, to_pos, message, first_match_word=None):
+def __init__(self, rule_id, from_pos, to_pos, line, column, message, first_match_word=None):
     self.id = rule_id
     self.from_pos = from_pos
     self.to_pos = to_pos
+    self.line = line
+    self.column = column
     self.message = message
     if (first_match_word and (first_match_word[0] in unicode(string.uppercase, 'latin1'))):
         self.message = re.compile('<em>(.)').sub(self.upper, self.message)

@@ -2,7 +2,7 @@ def main():
     options = None
     rest = None
     try:
-        (options, rest) = getopt.getopt(sys.argv[1:], 'hcg:f:w:b:m:t:l:', ['help', 'check', 'grammar=', 'falsefriends=', 'words=', 'builtin=', 'mothertongue=', 'textlanguage=', 'sentencelength='])
+        (options, rest) = getopt.getopt(sys.argv[1:], 'hcg:f:w:b:m:l:s:x', ['help', 'check', 'grammar=', 'falsefriends=', 'words=', 'builtin=', 'mothertongue=', 'lang=', 'sentencelength=', 'xml'])
     except getopt.GetoptError as e:
         print  >> sys.stderr, 'Error: ', e
         usage()
@@ -14,6 +14,7 @@ def main():
     textlanguage = mothertongue = None
     max_sentence_length = None
     textlanguage = 'de'
+    xml_output = 0
     for (o, a) in options:
         if (o in ('-g', '--grammar')):
             grammar = a.split(',')
@@ -25,10 +26,12 @@ def main():
             builtin = a.split(',')
         elif (o in ('-m', '--mothertongue')):
             mothertongue = a
-        elif (o in ('-t', '--textlanguage')):
+        elif (o in ('-l', '--lang')):
             textlanguage = a
-        elif (o in ('-l', '--sentencelength')):
+        elif (o in ('-s', '--sentencelength')):
             max_sentence_length = a
+        elif (o in ('-x', '--xml')):
+            xml_output = 1
     for (o, a) in options:
         if (o in ('-h', '--help')):
             usage()
@@ -41,6 +44,7 @@ def main():
             sys.exit(0)
     if (len(rest) == 1):
         checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
+        checker.setXMLOutput(xml_output)
         (rule_matches, result, tagged_words) = checker.checkFile(rest[0])
         if (not result):
             print  >> sys.stderr, 'No errors found.'

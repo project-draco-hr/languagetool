@@ -17,9 +17,17 @@ def listPosToAbsPos(self, l, first_match, chunk_corr=0):
             match_len = (match_len - 1)
         last_match = (last_match + 1)
     from_pos = 0
+    line = 0
+    column = 0
     for el in l[:first_match]:
+        matches = re.findall('[\n\r]', el[0])
+        line = (line + len(matches))
+        if (len(matches) > 0):
+            column = 0
+        else:
+            column = (column + len(el[0]))
         from_pos = (from_pos + len(el[0]))
     to_pos = 0
     for el in l[:last_match]:
         to_pos = (to_pos + len(el[0]))
-    return (first_match, from_pos, to_pos)
+    return (first_match, from_pos, to_pos, line, column)
