@@ -5,11 +5,15 @@ def check(form):
     grammar = None
     falsefriends = None
     words = None
+    if (not form.getvalue('style')):
+        words = 'NONE'
     textlanguage = 'en'
     mothertongue = 'de'
     if (not form.getvalue('german_ff')):
         mothertongue = None
-    max_sentence_length = None
+    max_sentence_length = 0
+    if form.getvalue('sentencelength'):
+        max_sentence_length = None
     checker = TextChecker.TextChecker(grammar, falsefriends, words, textlanguage, mothertongue, max_sentence_length)
     print 'Content-Type: text/html\n\n'
     print '<html><head>\n\t\t<title>Check result</title>\n\t\t<style rel=\'stylesheet\'>\n\t\t\t<!--\n\t\t\t.tag { color: grey; }\n\t\t\t.error { font-weight: bold; color: red; }\n\t\t\t.expl { color: blue; }\n\t\t\t.repl { font-weight: bold; }\n\t\t\t-->\n\t\t\t</style>\n\t\t<script language="javascript">\n\t\t\t<!--\n\t\t\tvar data = new Array();\n\t\t\t'
@@ -27,7 +31,7 @@ def check(form):
             w = tag_triple[2]
             tag_str = ('<span class="tag"><a href="TextCheckerCGI.py?explain=%s" \t\t\t\tonclick="info(\'%s\');return false;">[%s]</a></span>' % (w, w, w))
             if (tag_triple[2] == 'SENT_END'):
-                tag_str = ('%s<br>' % tag_str)
+                tag_str = ('%s<br>\n' % tag_str)
         word = cgi.escape(tag_triple[0])
         text_list.append(word)
         text_list.append(tag_str)
