@@ -1,0 +1,7 @@
+def IsRoman(self, word):
+    i = 0
+    while (i < len(word)):
+        if (not (word[i] in ('I', 'V', 'X', 'L', 'C', 'D', 'M'))):
+            return 0
+        i = (i + 1)
+    return 1
