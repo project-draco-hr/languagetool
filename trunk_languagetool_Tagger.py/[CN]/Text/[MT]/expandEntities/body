@@ -1,3 +1,5 @@
 def expandEntities(self, text):
+    "Take a text and expand a few selected entities. Return the same\n\t\ttext with entities expanded. (We cannot simply parse the file with \n\t\tDOM, as we don't have an XML DTD -- the original files were SGML.)"
     text = re.compile('&amp;', re.IGNORECASE).sub('&', text)
+    text = re.compile('&#xA3;', re.IGNORECASE).sub('\xa3', text)
     return text

@@ -1,10 +1,10 @@
-def tag(self, data_table):
-    'Returns list of tuples (word, tag)'
+def tag(self, data_table, seqs_table):
+    'Tag self.text and returns list of tuples\n\t\t(word, normalized word, most probable tag)'
     self.text = self.expandEntities(self.text)
-    word_matches = self.bnc_word_regexp.findall(self.text)
     result_tuple_list = []
     count_wrong_tags = 'n/a'
     is_bnc = 0
+    word_matches = self.bnc_word_regexp.findall(self.text)
     if (len(word_matches) > 0):
         is_bnc = 1
         print  >> sys.stderr, 'BNC text detected.'
@@ -12,8 +12,11 @@ def tag(self, data_table):
     else:
         word_matches = self.nonword.split(self.text)
     i = 0
+    tagged_list = [self.DUMMY, self.DUMMY]
+    tagged_list_bnc = [self.DUMMY, self.DUMMY]
     while (i < len(word_matches)):
         next_token = None
+        tags = None
         if is_bnc:
             (tag, word) = word_matches[i]
             if ((i + 1) < len(word_matches)):
@@ -29,33 +32,45 @@ def tag(self, data_table):
             if data_table.has_key(tuple_word):
                 word = tuple_word
                 i = (i + 2)
-        tagged_list = Text.tagWord(self, word, data_table)
+        r = Text.tagWord(self, word, data_table)
+        tagged_list.extend(r)
+        if is_bnc:
+            for el in r:
+                tagged_list_bnc.append((el[0], tags))
         i = (i + 1)
-        for tagged in tagged_list:
-            (orig_word, tagged_word, tagged_tag) = tagged
-            result_tuple_list.append(tagged)
-            if is_bnc:
-                if (not (orig_word == tagged_word)):
-                    print  >> sys.stderr, ("*** word mismatch: '%s'/'%s'" % (word, orig_word))
-                    continue
-                if ((not (tagged_tag in tags)) or (not (word == orig_word))):
-                    count_wrong_tags = (count_wrong_tags + 1)
-                    print  >> sys.stderr, ('*** tag mismatch: got %s/%s, expected %s/%s' % (tagged_word, tagged_tag, word, tag))
-        next_char_end = 0
-        if ((i + 1) >= len(word_matches)):
-            next_char_end = 1
-        elif re.compile('\\s+').match(next_token):
-            next_char_end = 1
-        if ((word.strip() in ('.', '!', '?')) and next_char_end):
-            result_tuple_list.append(('', '', 'SENT_END'))
-    res = '--- STATISTICS: ---\n'
-    sum = ((self.count_unknown + self.count_unambiguous) + self.count_ambiguous)
-    if (sum > 0):
-        res = (res + ('count_unknown = %d (%.2f%%)\n' % (self.count_unknown, ((float(self.count_unknown) / float(sum)) * 100))))
-        res = (res + ('count_unambiguous = %d (%.2f%%)\n' % (self.count_unambiguous, ((float(self.count_unambiguous) / float(sum)) * 100))))
-        res = (res + ('count_ambiguous = %d (%.2f%%)\n' % (self.count_ambiguous, ((float(self.count_ambiguous) / float(sum)) * 100))))
-        res = (res + ('sum = %d\n' % sum))
-        if (not (count_wrong_tags == 'n/a')):
-            res = (res + ('correct tags = %d (%.2f%%)\n' % ((sum - count_wrong_tags), ((float((sum - count_wrong_tags)) / float(sum)) * 100))))
-            res = (res + ('count_wrong_tags = %d (%.2f%%)\n' % (count_wrong_tags, ((float(count_wrong_tags) / float(sum)) * 100))))
+    tagged_list.append(self.DUMMY)
+    tagged_list.append(self.DUMMY)
+    i = 0
+    tag_table = {}
+    for tagged in tagged_list:
+        if (i == 0):
+            i = (i + 1)
+            continue
+        next = [(None, 1)]
+        (orig_word, tagged_word, tag_tuples) = self.getTuple(tagged)
+        if ((not tagged_word) and (not (tagged == None))):
+            i = (i + 1)
+            result_tuple_list.append((orig_word, tagged_word, None))
+            continue
+        if (not tag_tuples):
+            tag_tuples = [(None, 1)]
+        (prev_word, prev) = self.getPrevToken(i, tagged_list)
+        if (not prev):
+            prev = [(None, 1)]
+        (next_word, next) = self.getNextToken(i, tagged_list)
+        if (not next):
+            next = [(None, 1)]
+        tuple_by_rule = self.applyRules(prev_word, orig_word, next_word, tagged_word)
+        if tuple_by_rule:
+            result_tuple_list.append(tuple_by_rule)
+            i = (i + 1)
+            continue
+        best_tag = self.getBestTag(prev, tag_tuples, next, seqs_table, i, tag_table)
+        if tagged:
+            result_tuple_list.append((orig_word, tagged_word, best_tag))
+        if is_bnc:
+            wrong_tags = self.checkBNCMatch(i, tagged_list_bnc, orig_word, best_tag)
+            count_wrong_tags = (count_wrong_tags + wrong_tags)
+        i = (i + 1)
+    stat = self.getStats(count_wrong_tags)
     return result_tuple_list

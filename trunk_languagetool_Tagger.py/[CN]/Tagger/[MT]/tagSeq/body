@@ -1,0 +1,10 @@
+def tagSeq(self, triple):
+    'Return the probability of a 3-POS-tag sequence.'
+    if (len(triple) != 3):
+        print  >> sys.stderr, ("Sequence does not consist of 3 tokens: '%s'" % str(seq))
+        return None
+    try:
+        probability = self.seqs_table[triple]
+    except KeyError:
+        probability = 0
+    return probability

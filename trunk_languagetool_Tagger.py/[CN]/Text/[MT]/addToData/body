@@ -1,0 +1,35 @@
+def addToData(self, tagged_words, data_table, seqs_table):
+    'Count words and POS tags so they can later be added\n\t\tto the persistent storage.'
+    tag_list = self.addWords(tagged_words, data_table)
+    for e in data_table.keys():
+        t = data_table[e].table
+        occ_all = 0
+        for occ in t.values():
+            occ_all = (occ_all + occ)
+        for key in t.keys():
+            t[key] = (t[key] / occ_all)
+    self.addTagList(tag_list, seqs_table)
+    keys = {}
+    tags_done = {}
+    for tag in tag_list:
+        tags = self.splitBNCTag(tag)
+        for tag in tags:
+            if tags_done.has_key(tag):
+                continue
+            for key in seqs_table.keys():
+                if (tag == key[1]):
+                    try:
+                        keys[tag] = (keys[tag] + seqs_table[key])
+                    except KeyError:
+                        keys[tag] = seqs_table[key]
+                    tags_done[tag] = 1
+    for key in seqs_table.keys():
+        occ = 1
+        try:
+            middle_tag = key[1]
+            occ = keys[middle_tag]
+        except KeyError:
+            if middle_tag:
+                print  >> sys.stderr, ("Warning: number of occurences of '%s' not found" % middle_tag)
+        seqs_table[key] = (float(seqs_table[key]) / occ)
+    return

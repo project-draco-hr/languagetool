@@ -1,0 +1,8 @@
+def getTuple(self, tagged_list_elem):
+    if (not tagged_list_elem):
+        orig_word = None
+        tagged_word = None
+        tag_tuples = None
+    else:
+        (orig_word, tagged_word, tag_tuples) = tagged_list_elem
+    return (orig_word, tagged_word, tag_tuples)

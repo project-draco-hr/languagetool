@@ -1,11 +1,10 @@
 def tagWord(self, word, data_table):
-    'Return a tuple (normalised_word, tag).'
+    'Find all possible tags for a word and return a list of tuples:\n\t\t[(orig_word, normalised_word, [(tag, probability])]'
     orig_word = word
     word = self.normalise(word)
-    word = re.compile("[^\\w' ]", re.IGNORECASE).sub('', word)
     short_form_pos = word.find("n't")
     if ((not word) or self.nonword.match(word)):
-        return [(orig_word, None, None)]
+        return [(orig_word, None, [])]
     if (word.count("'") > 1):
         print  >> sys.stderr, ("*** What's this, more than one apostroph: '%s'!?" % word)
     if ((short_form_pos != (-1)) and (short_form_pos != 0)):
@@ -29,18 +28,19 @@ def tagWord(self, word, data_table):
         return tag_results
     if (not data_table.has_key(word)):
         self.count_unknown = (self.count_unknown + 1)
-        return [(orig_word, word, 'unknown')]
+        guess_tag = self.guessTag(word)
+        if guess_tag:
+            return [(orig_word, word, [(guess_tag, 1)])]
+        else:
+            return [(orig_word, word, [('unknown', 1)])]
     else:
         pos_table = data_table[word].table
         if (len(pos_table) == 1):
             self.count_unambiguous = (self.count_unambiguous + 1)
-            return [(orig_word, word, pos_table.keys()[0])]
+            return [(orig_word, word, [(pos_table.keys()[0], 1)])]
         else:
-            max_occurences = 0
-            max_tag = 'error'
+            tag_tuples = []
             for pos_tag in pos_table.keys():
-                if (pos_table[pos_tag] > max_occurences):
-                    max_occurences = pos_table[pos_tag]
-                    max_tag = pos_tag
+                tag_tuples.append((pos_tag, pos_table[pos_tag]))
             self.count_ambiguous = (self.count_ambiguous + 1)
-            return [(orig_word, word, max_tag)]
+            return [(orig_word, word, tag_tuples)]

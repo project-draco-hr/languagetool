@@ -1,2 +1,10 @@
-def __init__(self):
+def __init__(self, db_word_name=None, db_seq_name=None):
+    'Initialize the tagger, optionally using the given\n\t\tfile names that will be used to load and save data later.'
+    self.data_table = None
+    self.seqs_table = None
+    if db_word_name:
+        self.db_word_name = db_word_name
+    if db_seq_name:
+        self.db_seq_name = db_seq_name
+    self.word_count = 0
     return

@@ -3,3 +3,4 @@ import re
 import string
 import sys
 import cPickle
+import htmlentitydefs

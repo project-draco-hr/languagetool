@@ -1,0 +1,25 @@
+def guessTag(self, word):
+    'Take a word and guess which POS tag it might\thave and return\n\t\tthat POS tag. This considers e.g. word prefixes, suffixes and \n\t\tcapitalization. If no guess can be made, None is returned.'
+    if self.number_regex.match(word):
+        return 'CRD'
+    if ((len(word) >= 2) and (word == word.upper())):
+        return 'NN0'
+    if ((len(word) >= 3) and (word[0] in string.uppercase)):
+        return 'NP0'
+    noun = ['dom', 'ment', 'tion', 'sion', 'ance', 'ence', 'er', 'or', 'ist', 'ness', 'icity']
+    for suffix in noun:
+        if word.endswith(suffix):
+            return 'NN1'
+    if word.endswith('ly'):
+        return 'AV0'
+    if self.time_regex.search(word):
+        return 'AV0'
+    adj = ['ive', 'ic', 'al', 'able', 'y', 'ous', 'ful', 'less']
+    for suffix in adj:
+        if word.endswith(suffix):
+            return 'AJ0'
+    verb = ['ize', 'ise', 'ate', 'ify', 'fy']
+    for suffix in verb:
+        if word.endswith(suffix):
+            return 'VVI'
+    return None

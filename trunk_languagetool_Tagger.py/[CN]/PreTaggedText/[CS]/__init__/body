@@ -1,4 +1,5 @@
 def __init__(self, filename):
+    self.content = None
     Text.__init__(self)
     f = open(filename)
     self.content = f.read()

@@ -1,6 +1,8 @@
 def addWords(self, tagged_words, data_table):
+    'For each word, save the tag frequency to data_table so\n\t\tit can later be added to the persistent storage. Return\n\t\ta list of all tags.'
     all_tags_list = []
     for (word, tag) in tagged_words:
+        all_tags_list.append(tag)
         tag_list = self.splitBNCTag(tag)
         assert ((len(tag_list) == 1) or (len(tag_list) == 2))
         if data_table.has_key(word):
@@ -15,5 +17,4 @@ def addWords(self, tagged_words, data_table):
             for tag in tag_list:
                 word_table[tag] = (1.0 / len(tag_list))
             data_table[word] = WordData(word, word_table)
-        all_tags_list.append(tag)
     return all_tags_list

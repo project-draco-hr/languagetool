@@ -1,0 +1,13 @@
+def getStats(self, count_wrong_tags):
+    'Get some human-readable statistics about tagging success,\n\t\te.g. number and percentage of correctly tagged tokens.'
+    res = '<!-- Statistics:\n'
+    sum = ((self.count_unknown + self.count_unambiguous) + self.count_ambiguous)
+    if (sum > 0):
+        res = (res + ('count_unknown = %d (%.2f%%)\n' % (self.count_unknown, ((float(self.count_unknown) / float(sum)) * 100))))
+        res = (res + ('count_unambiguous = %d (%.2f%%)\n' % (self.count_unambiguous, ((float(self.count_unambiguous) / float(sum)) * 100))))
+        res = (res + ('count_ambiguous = %d (%.2f%%)\n' % (self.count_ambiguous, ((float(self.count_ambiguous) / float(sum)) * 100))))
+        if (not (count_wrong_tags == 'n/a')):
+            res = (res + ('correct tags = %d (%.2f%%)\n' % ((sum - count_wrong_tags), ((float((sum - count_wrong_tags)) / float(sum)) * 100))))
+            res = (res + ('count_wrong_tags = %d (%.2f%%)\n' % (count_wrong_tags, ((float(count_wrong_tags) / float(sum)) * 100))))
+    res = (res + '-->')
+    return res

@@ -1,6 +1,6 @@
 def tagText(self, strng):
-    'Tag a string and return tagged_words list of tuples.'
+    'POS-tag a string and return a list of (word, normalized word, tag)\n\t\ttriples.'
     text = TextToTag()
     text.setText(strng)
-    tagged_words = text.tag(self.data_table)
+    tagged_words = text.tag(self.data_table, self.seqs_table)
     return tagged_words

@@ -1,0 +1,6 @@
+def tagWord(self, word):
+    'See Text.tagWord()'
+    text = TextToTag()
+    text.setText('')
+    tag = text.tagWord(word, self.data_table)
+    return tag

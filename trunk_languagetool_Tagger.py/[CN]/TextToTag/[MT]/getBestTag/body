@@ -1,0 +1,23 @@
+def getBestTag(self, prev, tag_tuples, next, seqs_table, i, tag_table):
+    'Check the probability of all 3-tag sequences and choose that with\n\t\tthe highest combined probability.'
+    max_prob = 0
+    best_tag = None
+    for tag_tuples_prev in prev:
+        for tag_tuples_here in tag_tuples:
+            for tag_tuples_next in next:
+                seq = (tag_tuples_prev[0], tag_tuples_here[0], tag_tuples_next[0])
+                seq_prob = 0
+                try:
+                    seq_prob = seqs_table[seq]
+                except KeyError:
+                    pass
+                prob_combined = (seq_prob * tag_tuples_here[1])
+                k = (i, tag_tuples_here[0])
+                try:
+                    tag_table[k] = (tag_table[k] + prob_combined)
+                except KeyError:
+                    tag_table[k] = prob_combined
+                if (prob_combined >= max_prob):
+                    max_prob = prob_combined
+                    best_tag = tag_tuples_here[0]
+    return best_tag
