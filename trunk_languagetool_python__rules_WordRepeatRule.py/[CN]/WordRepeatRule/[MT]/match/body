@@ -1,0 +1,18 @@
+def match(self, tagged_words, chunks, position_fix=0):
+    matches = []
+    text_length = 0
+    i = 0
+    while 1:
+        if (i >= (len(tagged_words) - 2)):
+            break
+        org_word = tagged_words[i][0]
+        org_word_next = tagged_words[(i + 2)][0]
+        text_length = (text_length + len(org_word))
+        if (tagged_words[i][1] == None):
+            i = (i + 1)
+            continue
+        whitespace_length = len(tagged_words[(i + 1)][0])
+        if (org_word.lower() == org_word_next.lower()):
+            matches.append(Rules.RuleMatch(self.rule_id, (text_length + position_fix), (((text_length + whitespace_length) + len(org_word_next)) + position_fix), ('You repeated a word. Maybe you should <em>remove</em> one ' + 'of the words?'), org_word))
+        i = (i + 1)
+    return matches
