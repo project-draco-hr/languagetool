@@ -1,5 +1,8 @@
 def setUp(self):
-    self.rule = Rules.PatternRule('TEST1', '"word" (VB|TST)', 'Test message.', 0, 'Good example.', 'Bad example.', 0, 5, 'en')
-    self.rule2 = Rules.PatternRule('TEST1', '"word" ^(VB|TST)', 'Test message.', 0, 'Good example.', 'Bad example.', 0, 5, 'en')
-    self.rule3 = Rules.PatternRule('TEST1', '^"word" (VB|TST)', 'Test message.', 0, 'Good example.', 'Bad example.', 0, 5, 'en')
+    self.rule = Rules.PatternRule(None)
+    self.rule.setVars('TEST1', '"word" (VB|TST)', 'Test message.', 0, 'Good example.', 'Bad example.', 0, 5, 'en')
+    self.rule2 = Rules.PatternRule(None)
+    self.rule2.setVars('TEST1', '"word" ^(VB|TST)', 'Test message.', 0, 'Good example.', 'Bad example.', 0, 5, 'en')
+    self.rule3 = Rules.PatternRule(None)
+    self.rule3.setVars('TEST1', '^"word" (VB|TST)', 'Test message.', 0, 'Good example.', 'Bad example.', 0, 5, 'en')
     return
