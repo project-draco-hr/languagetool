@@ -82,5 +82,7 @@ def match(self, tagged_words, chunks=None, position_fix=0):
             first_match_word = tagged_words_copy[first_match][0]
             match = RuleMatch(self.rule_id, (from_pos + position_fix), (to_pos + position_fix), msg, first_match_word)
             matches.append(match)
+        elif (p == len(self.tokens)):
+            break
         ct = (ct + 1)
     return matches
