@@ -2,9 +2,7 @@ def tagWord(self, word, data_table):
     'Find all possible tags for a word and return a list of tuples:\n\t\t[(orig_word, normalised_word, [(tag, probability])]'
     orig_word = word
     word = self.normalise(word)
-    if (word and self.nonword_punct.match(word)):
-        return [(orig_word, orig_word, [])]
-    if ((not word) or self.nonword.match(word)):
+    if ((not word) or self.whitespace.match(word)):
         return [(orig_word, None, [])]
     if (word.count("'") > 1):
         print  >> sys.stderr, ("*** What's this, more than one apostroph: '%s'?" % word)
@@ -20,7 +18,7 @@ def tagWord(self, word, data_table):
             return tag_results
     if (not data_table.has_key(word)):
         self.count_unknown = (self.count_unknown + 1)
-        guess_tag = self.guessTag(word)
+        guess_tag = self.guessTags(word)
         if guess_tag:
             return [(orig_word, word, [(guess_tag, 1)])]
         else:

@@ -6,7 +6,11 @@ def deleteData(self):
     except OSError as e:
         print  >> sys.stderr, ('Note: Could not delete file: %s' % e)
     try:
-        os.remove(self.db_seq_name)
+        os.remove(self.db_seq_name1)
+    except OSError as e:
+        print  >> sys.stderr, ('Note: Could not delete file: %s' % e)
+    try:
+        os.remove(self.db_seq_name2)
     except OSError as e:
         print  >> sys.stderr, ('Note: Could not delete file: %s' % e)
     return

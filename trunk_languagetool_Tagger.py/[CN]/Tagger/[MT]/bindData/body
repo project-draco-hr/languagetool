@@ -6,8 +6,13 @@ def bindData(self):
         print  >> sys.stderr, ("No date file '%s' yet, starting with empty table." % self.db_word_name)
         self.data_table = {}
     try:
-        self.seqs_table = cPickle.load(open(self.db_seq_name))
+        self.seqs_table_followed_by = cPickle.load(open(self.db_seq_name1))
     except IOError:
-        print  >> sys.stderr, ("No date file '%s' yet, starting with empty table." % self.db_seq_name)
-        self.seqs_table = {}
+        print  >> sys.stderr, ("No date file '%s' yet, starting with empty table." % self.db_seq_name1)
+        self.seqs_table_followed_by = {}
+    try:
+        self.seqs_table_follows = cPickle.load(open(self.db_seq_name2))
+    except IOError:
+        print  >> sys.stderr, ("No date file '%s' yet, starting with empty table." % self.db_seq_name2)
+        self.seqs_table_follows = {}
     return

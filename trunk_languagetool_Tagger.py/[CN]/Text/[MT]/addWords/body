@@ -17,4 +17,11 @@ def addWords(self, tagged_words, data_table):
             for tag in tag_list:
                 word_table[tag] = (1.0 / len(tag_list))
             data_table[word] = WordData(word, word_table)
+    for e in data_table.keys():
+        t = data_table[e].table
+        occ_all = 0
+        for occ in t.values():
+            occ_all = (occ_all + occ)
+        for key in t.keys():
+            t[key] = (t[key] / occ_all)
     return all_tags_list

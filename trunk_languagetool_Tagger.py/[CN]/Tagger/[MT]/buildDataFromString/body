@@ -11,5 +11,5 @@ def buildDataFromString(self, s):
         tag = pair[1]
         tagged_words.append((word, tag))
     text = TextToTag()
-    text.addToData(tagged_words, self.data_table, self.seqs_table)
+    text.addToData(tagged_words, self.data_table, self.seqs_table_followed_by, self.seqs_table_follows)
     return

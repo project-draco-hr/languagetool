@@ -1,0 +1,39 @@
+def addTagSequences(self, tag_list, seqs_table_followed_by, seqs_table_follows):
+    'Save information about POS tag tuples to seqs_table.'
+    if (len(tag_list) == 0):
+        return
+    i = 0
+    count_followed_by = {}
+    count_follows = {}
+    while 1:
+        if (i >= (len(tag_list) - 1)):
+            break
+        tag0 = tag_list[i]
+        key = ()
+        if self.mapping.has_key(tag0):
+            tag0 = self.mapping[tag0]
+        tag1 = tag_list[(i + 1)]
+        if self.mapping.has_key(tag1):
+            tag1 = self.mapping[tag1]
+        try:
+            seqs_table_followed_by[(tag0, tag1)] = (seqs_table_followed_by[(tag0, tag1)] + 1)
+        except KeyError:
+            seqs_table_followed_by[(tag0, tag1)] = 1
+        try:
+            count_followed_by[tag0] = (count_followed_by[tag0] + seqs_table_followed_by[(tag0, tag1)])
+        except KeyError:
+            count_followed_by[tag0] = seqs_table_followed_by[(tag0, tag1)]
+        try:
+            seqs_table_follows[(tag0, tag1)] = (seqs_table_follows[(tag0, tag1)] + 1)
+        except KeyError:
+            seqs_table_follows[(tag0, tag1)] = 1
+        try:
+            count_follows[tag0] = (count_follows[tag0] + seqs_table_follows[(tag0, tag1)])
+        except KeyError:
+            count_follows[tag0] = seqs_table_follows[(tag0, tag1)]
+        i = (i + 1)
+    for t in seqs_table_followed_by.keys():
+        seqs_table_followed_by[t] = (float(seqs_table_followed_by[t]) / float(count_followed_by[t[0]]))
+    for t in seqs_table_follows.keys():
+        seqs_table_follows[t] = (float(seqs_table_follows[t]) / float(count_follows[t[0]]))
+    return

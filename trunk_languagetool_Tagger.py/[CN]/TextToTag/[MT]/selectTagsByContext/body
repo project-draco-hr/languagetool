@@ -1,0 +1,122 @@
+def selectTagsByContext(self, tagged_list, seqs_table_followed_by, seqs_table_follows, tagged_list_bnc, is_bnc, data_table):
+    i = 0
+    tagged_pos_list = []
+    for tagged in tagged_list:
+        if ((tagged == None) or (tagged[1] != None)):
+            tagged_pos_list.append(i)
+            print ('%d**%s<br>' % (i, str(tagged_list[i])))
+        i = (i + 1)
+    print ('tagged_pos_list=%s' % tagged_pos_list)
+    result_tuple_list = []
+    count_wrong_tags = 0
+    tag_probs = {}
+    i = 0
+    pos = (-1)
+    for tagged_triple in tagged_list:
+        if (not (i in tagged_pos_list)):
+            print ('IGN(%d): %s<br>' % (i, str(tagged_triple)))
+            i = (i + 1)
+            continue
+        print ('XXX(%d): %s<br>' % (i, str(tagged_triple)))
+        pos = (pos + 1)
+        one_pos = tagged_pos_list[pos]
+        try:
+            one = tagged_list[one_pos]
+            two = tagged_list[tagged_pos_list[(pos + 1)]]
+            three = tagged_list[tagged_pos_list[(pos + 2)]]
+        except IndexError:
+            print 'END<br>'
+            break
+        one_tags = [None]
+        if one:
+            one_tags = one[2]
+        two_tags = [None]
+        if two:
+            two_tags = two[2]
+        three_tags = [None]
+        if three:
+            three_tags = three[2]
+        for one_tag in one_tags:
+            tag_one_prob = 0
+            if one_tag:
+                tag_one_prob = one_tag[1]
+            for two_tag in two_tags:
+                tag_two_prob = 0
+                if two_tag:
+                    tag_two_prob = two_tag[1]
+                for three_tag in three_tags:
+                    tag_three_prob = 0
+                    if three_tag:
+                        tag_three_prob = three_tag[1]
+                    one_tag_prob = None
+                    if one_tag:
+                        one_tag_prob = one_tag[0]
+                    two_tag_prob = None
+                    if two_tag:
+                        two_tag_prob = two_tag[0]
+                    three_tag_prob = None
+                    if three_tag:
+                        three_tag_prob = three_tag[0]
+                    seq1 = (one_tag_prob, two_tag_prob)
+                    seq2 = (two_tag_prob, three_tag_prob)
+                    seq_prob = 0
+                    if one:
+                        try:
+                            seq_prob = (seqs_table_followed_by[(one_tag_prob, two_tag_prob)] * seqs_table_followed_by[(two_tag_prob, three_tag_prob)])
+                        except KeyError:
+                            pass
+                        prob_combined = (seq_prob * tag_one_prob)
+                        k1 = (pos, one_tag[0])
+                        try:
+                            tag_probs[k1] = (tag_probs[k1] + prob_combined)
+                        except KeyError:
+                            tag_probs[k1] = prob_combined
+                    if two:
+                        try:
+                            seq_prob = (seqs_table_follows[(one_tag_prob, two_tag_prob)] * seqs_table_followed_by[(two_tag_prob, three_tag_prob)])
+                        except KeyError:
+                            pass
+                        prob_combined = (seq_prob * tag_two_prob)
+                        k2 = (tagged_pos_list[(pos + 1)], two_tag[0])
+                        try:
+                            tag_probs[k2] = (tag_probs[k2] + prob_combined)
+                        except KeyError:
+                            tag_probs[k2] = prob_combined
+                    if three:
+                        try:
+                            seq_prob = (seqs_table_follows[(one_tag_prob, two_tag_prob)] * seqs_table_follows[(two_tag_prob, three_tag_prob)])
+                        except KeyError:
+                            pass
+                        prob_combined = (seq_prob * tag_three_prob)
+                        k3 = (tagged_pos_list[(pos + 2)], three_tag[0])
+                        try:
+                            tag_probs[k3] = (tag_probs[k3] + prob_combined)
+                        except KeyError:
+                            tag_probs[k3] = prob_combined
+        orig_word = None
+        norm_word = None
+        if one:
+            orig_word = one[0]
+            norm_word = one[1]
+            keys = tag_probs.keys()
+            keys.sort()
+            max_prob = 0
+            best_tag = None
+            for tag_prob in keys:
+                if ((tag_prob[0] == pos) and (tag_probs[tag_prob] >= max_prob)):
+                    max_prob = tag_probs[tag_prob]
+                    best_tag = tag_prob[1]
+            tagged_list[i] = (orig_word, norm_word, best_tag)
+        if (is_bnc and one):
+            orig_word = one[0]
+            wrong_tags = self.checkBNCMatch(i, tagged_list_bnc, orig_word, best_tag, data_table)
+            count_wrong_tags = (count_wrong_tags + wrong_tags)
+        i = (i + 1)
+    stat = self.getStats(count_wrong_tags)
+    print  >> sys.stderr, stat
+    tagged_list.pop(0)
+    tagged_list.pop(0)
+    tagged_list.pop()
+    tagged_list.pop()
+    print ('<br>##tagged_list=%s<p>' % tagged_list)
+    return tagged_list

@@ -1,6 +1,6 @@
 def guessTagTest(self, word):
-    'See Text.guessTag(). For test cases only.'
+    'See Text.guessTags(). For test cases only.'
     text = TextToTag()
     text.setText('')
-    tag = text.guessTag(word)
+    tag = text.guessTags(word)
     return tag

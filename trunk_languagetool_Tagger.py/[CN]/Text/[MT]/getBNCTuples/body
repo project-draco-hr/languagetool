@@ -6,11 +6,12 @@ def getBNCTuples(self, text):
         m = self.bnc_regex.search(text, pos)
         if (not m):
             break
-        tag = m.group(1)
+        tag = m.group(2)
         if self.mapping.has_key(tag):
             tag = self.mapping[tag]
         else:
             pass
-        l.append((tag, m.group(2).strip()))
+        if m.group(3):
+            l.append((tag, m.group(3).strip()))
         pos = (m.start() + 1)
     return l

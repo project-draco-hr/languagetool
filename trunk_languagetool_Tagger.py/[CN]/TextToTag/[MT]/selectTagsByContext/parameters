@@ -1,4 +1,7 @@
 self
-data_table
+tagged_list
 seqs_table_followed_by
 seqs_table_follows
+tagged_list_bnc
+is_bnc
+data_table

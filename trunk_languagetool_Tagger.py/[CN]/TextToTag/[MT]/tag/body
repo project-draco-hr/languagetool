@@ -1,14 +1,11 @@
-def tag(self, data_table, seqs_table):
+def tag(self, data_table, seqs_table_followed_by, seqs_table_follows):
     'Tag self.text and return list of tuples\n\t\t(word, normalized word, most probable tag)'
     self.text = self.expandEntities(self.text)
-    result_tuple_list = []
-    count_wrong_tags = 'n/a'
     is_bnc = 0
     word_matches = self.getBNCTuples(self.text)
     if (len(word_matches) > 0):
         is_bnc = 1
         print  >> sys.stderr, 'BNC text detected.'
-        count_wrong_tags = 0
     else:
         word_matches = self.nonword.split(self.text)
     if (not is_bnc):
@@ -50,34 +47,8 @@ def tag(self, data_table, seqs_table):
         i = (i + 1)
     tagged_list.append(self.DUMMY)
     tagged_list.append(self.DUMMY)
-    i = 0
-    tag_table = {}
-    for tagged in tagged_list:
-        if (i == 0):
-            i = (i + 1)
-            continue
-        next = [(None, 1)]
-        (orig_word, tagged_word, tag_tuples) = self.getTuple(tagged)
-        if ((not tagged_word) and (not (tagged == None))):
-            i = (i + 1)
-            result_tuple_list.append((orig_word, tagged_word, None))
-            continue
-        if (not tag_tuples):
-            tag_tuples = [(None, 1)]
-        (prev_word, prev) = self.getPrevToken(i, tagged_list)
-        if (not prev):
-            prev = [(None, 1)]
-        (next_word, next) = self.getNextToken(i, tagged_list)
-        if (not next):
-            next = [(None, 1)]
-        self.applyConstraints(prev_word, orig_word, next_word, tag_tuples)
-        best_tag = self.getBestTag(prev, tag_tuples, next, seqs_table, i, tag_table)
-        if tagged:
-            result_tuple_list.append((orig_word, tagged_word, best_tag))
-        if is_bnc:
-            wrong_tags = self.checkBNCMatch(i, tagged_list_bnc, orig_word, best_tag)
-            count_wrong_tags = (count_wrong_tags + wrong_tags)
-        i = (i + 1)
+    result_tuple_list = self.selectTagsByContext(tagged_list, seqs_table_followed_by, seqs_table_follows, tagged_list_bnc, is_bnc, data_table)
+    print result_tuple_list
     i = 0
     for tag_triple in result_tuple_list:
         triple = self.applyTagRules(tag_triple[0], tag_triple[1], tag_triple[2])
