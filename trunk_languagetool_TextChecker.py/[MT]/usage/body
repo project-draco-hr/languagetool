@@ -4,6 +4,8 @@ def usage():
     print '  -c, --check              Check directory with BNC files in SGML format'
     print '  -g, --grammar=...        Use only these grammar rules'
     print '  -f, --falsefriends=...   Use only these false friend rules'
+    print '  -w, --words=...          Use only these style/word rules'
+    print '  -b, --builtin=...        Use only these builtin rules'
     print '  -m, --mothertongue=...   Your native language'
     print "  -t, --textlanguage=...   The text's language"
     print '  -l, --sentencelength=... Maximum sentence length'

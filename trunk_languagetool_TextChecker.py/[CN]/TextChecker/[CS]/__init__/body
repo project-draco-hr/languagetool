@@ -1,7 +1,8 @@
-def __init__(self, grammar, falsefriends, words, textlanguage, mothertongue, max_sentence_length):
+def __init__(self, grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length):
     self.grammar = grammar
     self.falsefriends = falsefriends
     self.words = words
+    self.builtin = builtin
     self.textlanguage = textlanguage
     self.mothertongue = mothertongue
     self.max_sentence_length = max_sentence_length
@@ -10,7 +11,7 @@ def __init__(self, grammar, falsefriends, words, textlanguage, mothertongue, max
     rules = Chunker.Rules()
     self.chunker.setRules(rules)
     self.tagger.bindData()
-    self.rules = Rules.Rules(self.max_sentence_length, self.grammar, self.words, self.falsefriends, textlanguage, mothertongue)
+    self.rules = Rules.Rules(self.max_sentence_length, self.grammar, self.words, self.builtin, self.falsefriends, textlanguage, mothertongue)
     self.bnc_paras = 0
     self.bnc_sentences = 0
     return

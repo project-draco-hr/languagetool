@@ -2,6 +2,7 @@ self
 grammar
 falsefriends
 words
+builtin
 textlanguage
 mothertongue
 max_sentence_length
