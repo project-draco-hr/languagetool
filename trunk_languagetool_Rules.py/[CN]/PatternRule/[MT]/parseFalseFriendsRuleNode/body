@@ -19,7 +19,9 @@ def parseFalseFriendsRuleNode(self, rule_node, mothertongue, textlang):
         for elem in repl_trans:
             l.append(('<em>%s</em>' % elem))
         repl_trans_str = str.join(', ', l)
-        self.message = ("'%s' means %s. Did you maybe mean '%s', which is %s?" % (self.pattern, str.join(', ', translations), repl_word, repl_trans_str))
+        self.message = ("'%s' means %s. " % (self.pattern, str.join(', ', translations)))
+        if repl_word:
+            self.message = (self.message + (" Did you maybe mean '%s', which is %s?" % (repl_word, repl_trans_str)))
         token_strings = re.split('\\s+', self.pattern)
         self.tokens = []
         for token_string in token_strings:

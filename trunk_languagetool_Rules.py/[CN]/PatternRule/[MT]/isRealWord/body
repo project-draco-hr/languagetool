@@ -1,4 +1,0 @@
-def isRealWord(self, tagged_words, i):
-    if ((not tagged_words[i][1]) and (tagged_words[i][2] != 'SENT_START') and (tagged_words[i][2] != 'SENT_END')):
-        return 0
-    return 1
