@@ -1,5 +1,5 @@
 def checkFile(self, filename):
-    'Check a text file and return the results as an XML formatted list \n\t\tof possible errors.'
+    'Check a text file and return the results as an XML formatted list\n\t\tof possible errors.'
     text = ''
     f = codecs.open(filename, 'r', self.encoding)
     text = f.read()

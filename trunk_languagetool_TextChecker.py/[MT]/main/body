@@ -1,6 +1,7 @@
 def main():
     options = None
     rest = None
+    config = ConfigParser.ConfigParser()
     try:
         (options, rest) = getopt.getopt(sys.argv[1:], 'hcg:f:w:b:m:t:l:', ['help', 'check', 'grammar=', 'falsefriends=', 'words=', 'builtin=', 'mothertongue=', 'textlanguage=', 'sentencelength='])
     except getopt.GetoptError as e:
@@ -13,6 +14,7 @@ def main():
     builtin = None
     textlanguage = mothertongue = None
     max_sentence_length = None
+    textlanguage = 'de'
     for (o, a) in options:
         if (o in ('-g', '--grammar')):
             grammar = a.split(',')
@@ -28,6 +30,12 @@ def main():
             textlanguage = a
         elif (o in ('-l', '--sentencelength')):
             max_sentence_length = a
+    Tagger.textlanguage = textlanguage
+    Rules.textlanguage = textlanguage
+    config.readfp(open('TextChecker.ini'))
+    Tagger.dicFile = config.get(textlanguage, 'dicFile')
+    Tagger.affFile = config.get(textlanguage, 'affFile')
+    Rules.grammarFile = config.get(textlanguage, 'grammarFile')
     for (o, a) in options:
         if (o in ('-h', '--help')):
             usage()

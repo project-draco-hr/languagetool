@@ -8,10 +8,12 @@ import sys
 import time
 import xml.dom.minidom
 import profile
+sys.path.append(os.path.join(sys.path[0], 'src'))
 import Entities
 import Tagger
 import Chunker
 import Rules
 import SentenceSplitter
+import ConfigParser
 if (__name__ == '__main__'):
     main()

@@ -1,5 +1,5 @@
 def check(self, text):
-    'Check a text string and return the results as an XML formatted list \n\t\tof possible errors.'
+    'Check a text string and return the results as an XML formatted list\n\t\tof possible errors.'
     splitter = SentenceSplitter.SentenceSplitter()
     sentences = splitter.split(text)
     rule_matches = []
