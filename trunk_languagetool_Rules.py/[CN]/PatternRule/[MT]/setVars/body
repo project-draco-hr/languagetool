@@ -1,10 +1,11 @@
-def setVars(self, rule_id, pattern, message, marker_position, example_good, example_bad, case_sensitive, false_positives, language):
+def setVars(self, rule_id, pattern, message, marker_from, marker_to, example_good, example_bad, case_sensitive, false_positives, language):
     'Manually initialize the pattern rule -- for test cases only.'
     self.rule_id = rule_id
     self.message = message
     self.false_positives = false_positives
     self.language = language
-    self.marker_position = marker_position
+    self.marker_from = marker_from
+    self.marker_to = marker_to
     self.example_good = example_good
     self.example_bad = example_bad
     self.case_sensitive = case_sensitive

@@ -9,7 +9,7 @@ def __init__(self, token):
     if self.token.startswith('"'):
         self.is_word = 1
         if (not self.token.endswith('"')):
-            print  >> sys.stderr, ("*** Warning: token '%s' starts with quote but doesn't\t\t\t\t\tend with quote!" % token)
+            print  >> sys.stderr, ("*** Warning: token '%s' starts with quote but doesn't end with quote!" % self.token)
         self.token = self.token[1:(len(self.token) - 1)]
     else:
         self.is_tag = 1

@@ -2,7 +2,8 @@ self
 rule_id
 pattern
 message
-marker_position
+marker_from
+marker_to
 example_good
 example_bad
 case_sensitive

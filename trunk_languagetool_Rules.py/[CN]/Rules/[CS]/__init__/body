@@ -5,13 +5,14 @@ def __init__(self, max_sentence_length, grammar_rules):
     if (max_sentence_length != None):
         length_rule.setMaxLength(max_sentence_length)
     self.rules.append(length_rule)
-    dir_temp = os.getcwd()
-    os.chdir(os.path.dirname(self.rules_grammar_file))
-    doc = xml.dom.minidom.parse(os.path.basename(self.rules_grammar_file))
-    os.chdir(dir_temp)
-    rule_nodes = doc.getElementsByTagName('rule')
-    for rule_node in rule_nodes:
-        rule = PatternRule(rule_node)
-        if ((grammar_rules == None) or (rule.rule_id in grammar_rules)):
-            self.rules.append(rule)
+    for filename in self.rule_files:
+        dir_temp = os.getcwd()
+        os.chdir(os.path.dirname(filename))
+        doc = xml.dom.minidom.parse(os.path.basename(filename))
+        os.chdir(dir_temp)
+        rule_nodes = doc.getElementsByTagName('rule')
+        for rule_node in rule_nodes:
+            rule = PatternRule(rule_node)
+            if ((grammar_rules == None) or (rule.rule_id in grammar_rules)):
+                self.rules.append(rule)
     return

@@ -9,7 +9,18 @@ def __init__(self, rule_node):
     for token_string in token_strings:
         token = Token(token_string)
         self.tokens.append(token)
-    self.language = rule_node.getElementsByTagName('pattern')[0].getAttribute('lang')
+    pattern_node = rule_node.getElementsByTagName('pattern')[0]
+    self.language = pattern_node.getAttribute('lang')
+    marker_from_att = pattern_node.getAttribute('mark_from')
+    if marker_from_att:
+        self.marker_from = int(marker_from_att)
+    else:
+        self.marker_from = 0
+    marker_to_att = pattern_node.getAttribute('mark_to')
+    if marker_to_att:
+        self.marker_to = int(marker_to_att)
+    else:
+        self.marker_to = 0
     self.case_sensitive = 0
     if (rule_node.getElementsByTagName('pattern')[0].getAttribute('case_sensitive') == 'yes'):
         self.case_sensitive = 1
@@ -17,7 +28,6 @@ def __init__(self, rule_node):
         self.message = Tools.Tools.getXML(rule_node.getElementsByTagName('message')[0])
     else:
         self.message = Tools.Tools.getXML(rule_node.parentNode.getElementsByTagName('message')[0])
-    self.marker_position = int(rule_node.getElementsByTagName('marker')[0].childNodes[0].data)
     example_nodes = rule_node.getElementsByTagName('example')
     self.example_good = ''
     self.example_bad = ''

@@ -1,8 +1,6 @@
-def __init__(self, rule_id, from_pos, to_pos, list_pos_from, list_pos_to, message):
+def __init__(self, rule_id, from_pos, to_pos, message):
     self.id = rule_id
     self.from_pos = from_pos
     self.to_pos = to_pos
-    self.list_pos_from = list_pos_from
-    self.list_pos_to = list_pos_to
     self.message = message
     return

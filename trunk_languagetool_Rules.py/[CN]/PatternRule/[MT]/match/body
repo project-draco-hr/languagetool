@@ -3,6 +3,7 @@ def match(self, tagged_words, position_fix):
     matches = []
     ct = 0
     tagged_words_copy = tagged_words
+    last_match = None
     for word_tag_tuple in tagged_words_copy:
         i = ct
         p = 0
@@ -12,7 +13,7 @@ def match(self, tagged_words, position_fix):
         first_match = ct
         while match:
             try:
-                if ((not tagged_words_copy[i][1]) and (tagged_words_copy[i][2] != 'SENT_START') and (tagged_words_copy[i][2] != 'SENT_END')):
+                if (not self.isRealWord(tagged_words_copy, i)):
                     i = (i + 1)
                     ct = (ct + 1)
                     continue
@@ -50,20 +51,28 @@ def match(self, tagged_words, position_fix):
             i = (i + 1)
             p = (p + 1)
         if (match and (p == len(self.tokens))):
-            ct_tmp = 0
-            list_match_from = 0
-            list_match_to = 0
-            from_pos = 0
-            to_pos = 0
-            for tagged_word in tagged_words_copy:
-                if (ct_tmp < (first_match + self.marker_position)):
-                    from_pos = (from_pos + len(tagged_word[0]))
-                    list_match_from = (ct_tmp + 1)
-                if (ct_tmp < (ct + self.marker_position)):
-                    to_pos = (to_pos + len(tagged_word[0]))
-                    list_match_to = (ct_tmp + 1)
-                ct_tmp = (ct_tmp + 1)
-            match = RuleMatch(self.rule_id, (from_pos + position_fix), (to_pos + position_fix), list_match_from, list_match_to, self.message)
+            if (tagged_words_copy[first_match][1] == None):
+                first_match = (first_match + 1)
+            p_tmp = 0
+            i_tmp = first_match
+            for tagged_word in tagged_words_copy[first_match:]:
+                if (tagged_word[1] != None):
+                    p_tmp = (p_tmp + 1)
+                if (p_tmp >= (len(self.tokens) + self.marker_to)):
+                    last_match = i_tmp
+                    break
+                i_tmp = (i_tmp + 1)
+            if (not last_match):
+                last_match = len(tagged_words_copy)
+            char_count = 0
+            for tagged_word in tagged_words_copy[:(first_match + self.marker_from)]:
+                char_count = (char_count + len(tagged_word[0]))
+            from_pos = char_count
+            char_count = 0
+            for tagged_word in tagged_words_copy[:(last_match + 1)]:
+                char_count = (char_count + len(tagged_word[0]))
+            to_pos = char_count
+            match = RuleMatch(self.rule_id, (from_pos + position_fix), (to_pos + position_fix), self.message)
             matches.append(match)
         ct = (ct + 1)
     return matches

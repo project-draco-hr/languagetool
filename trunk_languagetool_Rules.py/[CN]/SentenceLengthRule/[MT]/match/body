@@ -18,5 +18,5 @@ def match(self, tagged_words, position_fix=0):
             too_long_start = (text_length - len(org_word))
             too_long_end = text_length
     if too_long:
-        matches.append(RuleMatch('MAX_LEN', too_long_start, too_long_end, self.max_length, (self.max_length + 1), ('This sentence is %d words long, which exceeds the configured limit of %d words.' % (count, self.max_length))))
+        matches.append(RuleMatch('MAX_LEN', too_long_start, too_long_end, ('This sentence is %d words long, which exceeds the configured limit of %d words.' % (count, self.max_length))))
     return matches
