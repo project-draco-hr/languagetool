@@ -1,0 +1,4 @@
+def addMarker(self, s, from_pos, to_pos, marker):
+    s = ('%s%s%s' % (s[:from_pos], marker, s[from_pos:]))
+    s = ('%s%s%s' % (s[:to_pos], marker, s[to_pos:]))
+    return s

@@ -1,0 +1,34 @@
+def main():
+    (options, rest) = getopt.getopt(sys.argv[1:], 'hsgfw', ['help', 'server', 'grammar=', 'falsefriends=', 'words=', 'mothertongue=', 'textlanguage='])
+    grammar = falsefriends = words = []
+    builtin = []
+    textlanguage = mothertongue = None
+    max_sentence_length = None
+    for (o, a) in options:
+        if (o in ('-g', '--grammar')):
+            grammar = a.split(',')
+        elif (o in ('-f', '--falsefriends')):
+            falsefriends = a.split(',')
+        elif (o in ('-w', '--words')):
+            words = a.split(',')
+        elif (o in ('-m', '--mothertongue')):
+            mothertongue = a
+        elif (o in ('-t', '--textlanguage')):
+            textlanguage = a
+    for (o, a) in options:
+        if (o in ('-h', '--help')):
+            usage()
+            sys.exit()
+        elif (o in ('-s', '--server')):
+            checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
+            checker.server()
+            sys.exit()
+    if (len(rest) == 1):
+        checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
+        (rule_matches, result, tagged_words) = checker.checkFile(rest[0])
+        if (not result):
+            print 'No errors found.'
+        else:
+            print result
+    else:
+        usage()

@@ -1,0 +1,3 @@
+def __delitem__(self, key):
+    del self.dict[key]
+    self.list.remove(key)

@@ -1,0 +1,21 @@
+def check(self, text):
+    'Check a text string and return the results as an XML formatted list \n\t\tof possible errors.'
+    splitter = SentenceSplitter.SentenceSplitter()
+    sentences = splitter.split(text)
+    tx = time.time()
+    rule_matches = []
+    all_tagged_words = []
+    char_counter = 0
+    for sentence in sentences:
+        tagged_words = self.tagger.tagText(sentence)
+        all_tagged_words.extend(tagged_words)
+        for rule in self.rules.rules:
+            matches = rule.match(tagged_words, char_counter)
+            rule_matches.extend(matches)
+        for triple in sentence:
+            char_counter = (char_counter + len(triple[0]))
+    rule_match_list = []
+    for rule_match in rule_matches:
+        rule_match_list.append(rule_match.toXML())
+    xml_part = ('<errors>\n%s\n</errors>\n' % string.join(rule_match_list, '\n'))
+    return (rule_matches, xml_part, all_tagged_words)

@@ -1,0 +1,8 @@
+def __str__(self):
+    'Debugging only'
+    strng = self.token
+    if self.negation:
+        strng = ('^%s' % strng)
+    if self.is_word:
+        strng = ('"%s"' % strng)
+    return strng

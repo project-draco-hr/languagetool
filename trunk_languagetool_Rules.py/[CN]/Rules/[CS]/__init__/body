@@ -1,0 +1,14 @@
+def __init__(self):
+    self.rules = []
+    length_rule = SentenceLengthRule()
+    self.rules.append(length_rule)
+    dir_temp = os.getcwd()
+    os.chdir(os.path.dirname(self.rules_grammar_file))
+    doc = xml.dom.minidom.parse(os.path.basename(self.rules_grammar_file))
+    os.chdir(dir_temp)
+    rule_nodes = doc.getElementsByTagName('rule')
+    for rule_node in rule_nodes:
+        rule = PatternRule(0, 'NP VB', '', 0, '', '', 0, 0, '')
+        rule.parse(rule_node)
+        self.rules.append(rule)
+    return

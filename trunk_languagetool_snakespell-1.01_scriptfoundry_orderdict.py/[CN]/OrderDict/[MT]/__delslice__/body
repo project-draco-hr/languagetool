@@ -1,0 +1,6 @@
+def __delslice__(self, i, j):
+    i = max(i, 0)
+    j = max(j, 0)
+    for key in self.list[i:j]:
+        del self.dict[key]
+    del self.list[i:j]

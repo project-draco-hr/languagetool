@@ -1,0 +1,2 @@
+def correction(self, word, correction, text, position=(-1)):
+    pass

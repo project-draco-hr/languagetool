@@ -1,0 +1,5 @@
+def buildData(self, filename):
+    print  >> sys.stderr, ('Loading %s...' % filename)
+    text = PreTaggedText(filename)
+    tagged_words = text.getTaggedWords()
+    text.addToData(tagged_words, self.data_table)

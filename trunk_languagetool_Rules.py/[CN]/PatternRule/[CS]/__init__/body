@@ -1,0 +1,12 @@
+def __init__(self, rule_id, pattern, message, marker_position, example_good, example_bad, case_sensitive, false_positives, language):
+    Rule.__init__(self, rule_id, message, false_positives, language)
+    self.marker_position = marker_position
+    self.example_good = example_good
+    self.example_bad = example_bad
+    self.case_sensitive = case_sensitive
+    self.tokens = []
+    token_strings = re.split('\\s+', pattern)
+    for token_string in token_strings:
+        token = Token(token_string)
+        self.tokens.append(token)
+    return

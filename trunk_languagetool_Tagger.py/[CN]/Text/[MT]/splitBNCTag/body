@@ -1,0 +1,5 @@
+def splitBNCTag(self, tag):
+    "Turn a string with BNC tags like 'NN1-NP0' into a list, i.e. ['NN1', 'NP0']."
+    "Single tags like 'NN0' become ['NN0']."
+    tags = re.split('-', tag)
+    return tags

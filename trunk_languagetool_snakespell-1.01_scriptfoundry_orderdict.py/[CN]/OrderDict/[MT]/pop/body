@@ -1,0 +1,5 @@
+def pop(self, i=(-1)):
+    key = self.list.pop(i)
+    item = self.dict[key]
+    del self.dict[key]
+    return (key, item)

@@ -1,0 +1,6 @@
+def displayExplanation(form):
+    print 'Content-Type: text/html\n\n'
+    tag = cgi.escape(form.getvalue('explain'))
+    taginfo = TagInfo.TagInfo()
+    print ('<html><head>\n\t\t<title>LanguageTool: Tag explanation for %s</title>\n\t\t</head>\n\t\t<body>\n\t\t<h1>Tag explanation for %s</h1>\n\n\t\t<p><strong>%s:</strong> %s</p>\n\t\t\n\t\t</body></html>' % (tag, tag, tag, taginfo.getExp(form.getvalue('explain'))))
+    return

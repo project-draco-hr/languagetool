@@ -1,0 +1,2 @@
+def pipeString(self, options):
+    return ('/usr/bin/ispell %s' % options)

@@ -1,0 +1,7 @@
+def toXML(self, tagged_words):
+    'Show result as XML.'
+    xml_list = []
+    for (orig_word, word, tag) in tagged_words:
+        xml_list.append((' <w term="%s" type="%s">%s</w>\n' % (word, tag, orig_word)))
+    xml = (('<taggedWords>\n' + string.join(xml_list, '')) + '</taggedWords>\n')
+    return xml

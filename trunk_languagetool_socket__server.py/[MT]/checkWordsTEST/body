@@ -1,0 +1,9 @@
+def checkWordsTEST(words):
+    "Just for testing. Marks 'working' as incorrect."
+    words = re.split('\\s+', words)
+    s = '<result>'
+    for w in words:
+        if (w == 'working'):
+            s = (s + '\t<error word="working" pos="5" corrections="Bohlen,Didda"/>')
+    s = (s + '</result>')
+    return s

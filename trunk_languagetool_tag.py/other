@@ -1,0 +1,6 @@
+import Tagger
+import re
+import sys
+import string
+prg = Controller()
+prg.run()

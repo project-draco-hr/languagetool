@@ -1,0 +1,16 @@
+def __init__(self, token):
+    self.token = token
+    self.negation = 0
+    self.is_word = 0
+    self.is_tag = 0
+    if self.token.startswith('^'):
+        self.token = token[1:len(token)]
+        self.negation = 1
+    if self.token.startswith('"'):
+        self.is_word = 1
+        if (not self.token.endswith('"')):
+            print  >> sys.stderr, ("*** Warning: token '%s' starts with quote but doesn't\t\t\t\t\tend with quote!" % token)
+        self.token = self.token[1:(len(self.token) - 1)]
+    else:
+        self.is_tag = 1
+    return

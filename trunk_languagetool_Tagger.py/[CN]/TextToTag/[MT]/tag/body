@@ -1,0 +1,61 @@
+def tag(self, data_table):
+    'Returns list of tuples (word, tag)'
+    self.text = self.expandEntities(self.text)
+    word_matches = self.bnc_word_regexp.findall(self.text)
+    result_tuple_list = []
+    count_wrong_tags = 'n/a'
+    is_bnc = 0
+    if (len(word_matches) > 0):
+        is_bnc = 1
+        print  >> sys.stderr, 'BNC text detected.'
+        count_wrong_tags = 0
+    else:
+        word_matches = self.nonword.split(self.text)
+    i = 0
+    while (i < len(word_matches)):
+        next_token = None
+        if is_bnc:
+            (tag, word) = word_matches[i]
+            if ((i + 1) < len(word_matches)):
+                (next_token, foo) = word_matches[(i + 1)]
+            word = self.normalise(word)
+            tags = self.splitBNCTag(tag)
+        else:
+            word = word_matches[i]
+            if ((i + 1) < len(word_matches)):
+                next_token = word_matches[(i + 1)]
+        if ((i + 2) < len(word_matches)):
+            tuple_word = ('%s %s' % (word, word_matches[(i + 2)]))
+            if data_table.has_key(tuple_word):
+                word = tuple_word
+                i = (i + 2)
+        tagged_list = Text.tagWord(self, word, data_table)
+        i = (i + 1)
+        for tagged in tagged_list:
+            (orig_word, tagged_word, tagged_tag) = tagged
+            result_tuple_list.append(tagged)
+            if is_bnc:
+                if (not (orig_word == tagged_word)):
+                    print  >> sys.stderr, ("*** word mismatch: '%s'/'%s'" % (word, orig_word))
+                    continue
+                if ((not (tagged_tag in tags)) or (not (word == orig_word))):
+                    count_wrong_tags = (count_wrong_tags + 1)
+                    print  >> sys.stderr, ('*** tag mismatch: got %s/%s, expected %s/%s' % (tagged_word, tagged_tag, word, tag))
+        next_char_end = 0
+        if ((i + 1) >= len(word_matches)):
+            next_char_end = 1
+        elif re.compile('\\s+').match(next_token):
+            next_char_end = 1
+        if ((word.strip() in ('.', '!', '?')) and next_char_end):
+            result_tuple_list.append(('', '', 'SENT_END'))
+    res = '--- STATISTICS: ---\n'
+    sum = ((self.count_unknown + self.count_unambiguous) + self.count_ambiguous)
+    if (sum > 0):
+        res = (res + ('count_unknown = %d (%.2f%%)\n' % (self.count_unknown, ((float(self.count_unknown) / float(sum)) * 100))))
+        res = (res + ('count_unambiguous = %d (%.2f%%)\n' % (self.count_unambiguous, ((float(self.count_unambiguous) / float(sum)) * 100))))
+        res = (res + ('count_ambiguous = %d (%.2f%%)\n' % (self.count_ambiguous, ((float(self.count_ambiguous) / float(sum)) * 100))))
+        res = (res + ('sum = %d\n' % sum))
+        if (not (count_wrong_tags == 'n/a')):
+            res = (res + ('correct tags = %d (%.2f%%)\n' % ((sum - count_wrong_tags), ((float((sum - count_wrong_tags)) / float(sum)) * 100))))
+            res = (res + ('count_wrong_tags = %d (%.2f%%)\n' % (count_wrong_tags, ((float(count_wrong_tags) / float(sum)) * 100))))
+    return result_tuple_list

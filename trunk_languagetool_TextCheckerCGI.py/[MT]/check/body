@@ -1,0 +1,58 @@
+def check(form):
+    text = form.getvalue('text')
+    if (not text):
+        text = ''
+    grammar = []
+    falsefriends = []
+    words = []
+    builtin = []
+    textlanguage = None
+    mothertongue = None
+    max_sentence_length = None
+    checker = TextChecker.TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
+    print 'Content-Type: text/html\n\n'
+    print '<html><head>\n\t\t<title>Check result</title>\n\t\t<style rel=\'stylesheet\'>\n\t\t\t<!--\n\t\t\t.tag { color: grey; }\n\t\t\t.error { font-weight: bold; color: red; }\n\t\t\t.expl { color: blue; }\n\t\t\t.repl { font-weight: bold; }\n\t\t\t-->\n\t\t\t</style>\n\t\t<script language="javascript">\n\t\t\t<!--\n\t\t\tvar data = new Array();\n\t\t\t'
+    taginfo = TagInfo.TagInfo()
+    print taginfo.getJavascriptCode()
+    print '\n\t\t\tfunction info(s) {\t\n\t\t\t\talert(s + ": " + data[s]);\n\t\t\t}\n\t\t\t//-->\n\t\t</script>\n\t\t</head>\n\t\t<body>\n\t\t<h1>Result</h1>'
+    (rule_matches, res, tags) = checker.check(text)
+    taglist = []
+    char_count = 0
+    list_count = 0
+    text_list = []
+    for tag_triple in tags:
+        tag_str = ''
+        if (form.getvalue('tags') and tag_triple[2]):
+            w = tag_triple[2]
+            tag_str = ('<span class="tag"><a href="TextCheckerCGI.py?explain=%s" \t\t\t\tonclick="info(\'%s\');return false;">[%s]</a></span>' % (w, w, w))
+            if (tag_triple[2] == 'SENT_END'):
+                tag_str = ('%s<br>' % tag_str)
+        word = cgi.escape(tag_triple[0])
+        text_list.append(word)
+        text_list.append(tag_str)
+        char_count = (char_count + len(word))
+    rule_matches.reverse()
+    for rule_match in rule_matches:
+        ct = 0
+        i = 0
+        start_found = 0
+        end_found = 0
+        for el in text_list:
+            if (not el.startswith('<span')):
+                ct = (ct + len(el))
+                if ((ct == rule_match.to_pos) and (not end_found)):
+                    text_list[i] = ('%s</span><span class="expl">[%s]</span>' % (text_list[i], rule_match.message))
+                    end_found = 1
+                elif ((ct == rule_match.from_pos) and (not start_found)):
+                    text_list[i] = ('<span class="error">%s' % text_list[i])
+                    start_found = 1
+            if (end_found and start_found):
+                break
+            i = (i + 1)
+    text = string.join(text_list, '')
+    print text
+    if (len(rule_matches) == 1):
+        print ('<p>%d possible error found.</p>' % len(rule_matches))
+    else:
+        print ('<p>%d possible errors found.</p>' % len(rule_matches))
+    print '</body></html>'

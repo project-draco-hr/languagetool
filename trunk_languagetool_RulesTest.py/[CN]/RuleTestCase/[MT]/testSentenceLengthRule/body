@@ -1,0 +1,17 @@
+def testSentenceLengthRule(self):
+    r = Rules.SentenceLengthRule()
+    r.setMaxLength(3)
+    warnings = r.match([('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T')])
+    assert (len(warnings) == 0)
+    warnings = r.match([('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T')])
+    assert (len(warnings) == 1)
+    assert str(warnings[0]).startswith('<error from="3" to="4">')
+    r.setMaxLength(60)
+    warnings = r.match([('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T')])
+    assert (len(warnings) == 0)
+    r.setMaxLength(3)
+    warnings = r.match([('  ', None, None), ('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T')])
+    assert (len(warnings) == 0)
+    warnings = r.match([('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T')])
+    assert (len(warnings) == 1)
+    return

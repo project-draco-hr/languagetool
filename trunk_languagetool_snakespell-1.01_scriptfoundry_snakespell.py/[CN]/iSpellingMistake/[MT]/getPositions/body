@@ -1,0 +1,2 @@
+def getPositions(self):
+    return self.positions

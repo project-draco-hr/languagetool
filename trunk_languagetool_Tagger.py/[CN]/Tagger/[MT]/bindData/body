@@ -1,0 +1,7 @@
+def bindData(self):
+    try:
+        self.data_table = cPickle.load(open(self.db_name))
+    except IOError:
+        print  >> sys.stderr, ("No date file '%s' yet, starting with empty table." % self.db_name)
+        self.data_table = {}
+    return

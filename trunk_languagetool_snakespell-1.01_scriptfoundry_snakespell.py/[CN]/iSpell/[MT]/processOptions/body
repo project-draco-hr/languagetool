@@ -1,0 +1,8 @@
+def processOptions(self, newOptions):
+    opts = split(newOptions)
+    if ('-a' not in opts):
+        opts.append('-a')
+    if ('-m' not in opts):
+        opts.append('-m')
+    getopt(opts, 'tnBCPmSd:p:wW:la')
+    return join(opts)

@@ -1,0 +1,46 @@
+def tagWord(self, word, data_table):
+    'Return a tuple (normalised_word, tag).'
+    orig_word = word
+    word = self.normalise(word)
+    word = re.compile("[^\\w' ]", re.IGNORECASE).sub('', word)
+    short_form_pos = word.find("n't")
+    if ((not word) or self.nonword.match(word)):
+        return [(orig_word, None, None)]
+    if (word.count("'") > 1):
+        print  >> sys.stderr, ("*** What's this, more than one apostroph: '%s'!?" % word)
+    if ((short_form_pos != (-1)) and (short_form_pos != 0)):
+        if (not word.endswith("n't")):
+            print  >> sys.stderr, ("*** What's this, negation not at the end: '%s'!?" % word)
+        first_part = self.tagWord(word[0:short_form_pos], data_table)[0]
+        second_part = self.tagWord("n't", data_table)[0]
+        tag_results = []
+        tag_results.append((word[0:short_form_pos], first_part[1], first_part[2]))
+        tag_results.append(("n't", second_part[1], second_part[2]))
+        return tag_results
+    possesive_pos = word.find("'s")
+    if ((possesive_pos != (-1)) and (possesive_pos != 0)):
+        if (not word.endswith("'s")):
+            print  >> sys.stderr, ("*** What's this, possesive not at the end: '%s'!?" % word)
+        first_part = self.tagWord(word[0:possesive_pos], data_table)[0]
+        second_part = self.tagWord("'s", data_table)[0]
+        tag_results = []
+        tag_results.append((word[0:possesive_pos], first_part[1], first_part[2]))
+        tag_results.append(("'s", second_part[1], second_part[2]))
+        return tag_results
+    if (not data_table.has_key(word)):
+        self.count_unknown = (self.count_unknown + 1)
+        return [(orig_word, word, 'unknown')]
+    else:
+        pos_table = data_table[word].table
+        if (len(pos_table) == 1):
+            self.count_unambiguous = (self.count_unambiguous + 1)
+            return [(orig_word, word, pos_table.keys()[0])]
+        else:
+            max_occurences = 0
+            max_tag = 'error'
+            for pos_tag in pos_table.keys():
+                if (pos_table[pos_tag] > max_occurences):
+                    max_occurences = pos_table[pos_tag]
+                    max_tag = pos_tag
+            self.count_ambiguous = (self.count_ambiguous + 1)
+            return [(orig_word, word, max_tag)]

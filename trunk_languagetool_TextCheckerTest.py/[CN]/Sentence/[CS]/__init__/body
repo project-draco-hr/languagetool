@@ -1,0 +1,4 @@
+def __init__(self, sentence, expected_error_id):
+    self.sentence = sentence
+    self.expected_error_id = expected_error_id
+    return

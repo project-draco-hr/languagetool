@@ -1,0 +1,6 @@
+def addToData(self, tagged_words, data_table):
+    'Add data about words and their tags to the persistent storage.'
+    'TODO: Also save information about POS tag triplets.'
+    tag_list = self.addWords(tagged_words, data_table)
+    self.addTagList(tag_list, data_table)
+    return

@@ -1,0 +1,4 @@
+def testConstructor(self):
+    assert (self.rule.rule_id == 'TEST1')
+    assert (len(self.rule.tokens) == 2)
+    return

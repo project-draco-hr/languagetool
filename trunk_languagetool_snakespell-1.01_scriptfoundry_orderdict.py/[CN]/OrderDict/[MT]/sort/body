@@ -1,0 +1,2 @@
+def sort(self, *args):
+    apply(self.list.sort, args)

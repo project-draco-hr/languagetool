@@ -1,0 +1,2 @@
+def getWord(self):
+    return self.word

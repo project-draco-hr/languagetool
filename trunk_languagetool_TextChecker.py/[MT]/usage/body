@@ -1,0 +1,3 @@
+def usage():
+    print 'Usage: TextChecker.py <filename>'
+    return

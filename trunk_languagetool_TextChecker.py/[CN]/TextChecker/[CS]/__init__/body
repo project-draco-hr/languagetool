@@ -1,0 +1,12 @@
+def __init__(self, grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length):
+    self.grammar = grammar
+    self.falsefriends = falsefriends
+    self.words = words
+    self.builtin = builtin
+    self.textlanguage = textlanguage
+    self.mothertongue = mothertongue
+    self.max_sentence_length = max_sentence_length
+    self.tagger = Tagger.Tagger()
+    self.tagger.bindData()
+    self.rules = Rules.Rules()
+    return

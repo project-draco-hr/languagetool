@@ -1,0 +1,3 @@
+def expandEntities(self, text):
+    text = re.compile('&amp;', re.IGNORECASE).sub('&', text)
+    return text

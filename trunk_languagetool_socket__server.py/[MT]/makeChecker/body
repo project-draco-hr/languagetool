@@ -1,0 +1,10 @@
+def makeChecker():
+    grammar_cfg = []
+    falsefriends_cfg = []
+    words_cfg = []
+    builtin = []
+    textlanguage = None
+    mothertongue = None
+    max_sentence_length = None
+    checker = TextChecker.TextChecker(grammar_cfg, falsefriends_cfg, words_cfg, builtin, textlanguage, mothertongue, max_sentence_length)
+    return checker

@@ -1,0 +1,8 @@
+def __getslice__(self, i, j):
+    i = max(i, 0)
+    j = max(j, 0)
+    userlist = self.__class__()
+    userlist.list[:] = self.list[i:j]
+    for key in userlist.list:
+        userlist.dict[key] = self.dict[key]
+    return userlist

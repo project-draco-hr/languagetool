@@ -1,0 +1,25 @@
+def main():
+    print ("Binding to '%s:%d'..." % (name, port))
+    s.bind((name, port))
+    print 'Listening...'
+    s.listen(1)
+    print 'Setting up Checker...'
+    checker = makeChecker()
+    while 1:
+        (conn, addr) = s.accept()
+        if (addr[0] != '127.0.0.1'):
+            print ("Connection by '%s' refused" % addr[0])
+            conn.close()
+            continue
+        else:
+            print ("Connected by '%s'" % addr[0])
+        data = conn.recv(1024)
+        print ("Received '%s'" % data)
+        t1 = time.time()
+        check_result = checkWords(checker, data)
+        t2 = (time.time() - t1)
+        print ("Replying (%.2fs) '%s'" % (t2, check_result))
+        conn.send(check_result)
+        conn.close()
+    s.close()
+    return

@@ -1,0 +1,35 @@
+def run(self):
+    if (len(sys.argv) <= 2):
+        prg.usage()
+        sys.exit()
+    option = sys.argv[1]
+    filename = sys.argv[2]
+    if (option == '-build'):
+        tagger = Tagger.Tagger()
+        tagger.deleteData()
+        tagger.bindData()
+        filenames = sys.argv[2:]
+        for filename in filenames:
+            tagger.buildData(filename)
+        tagger.commitData()
+    elif (option == '-tag'):
+        tagger = Tagger.Tagger()
+        tagger.bindData()
+        xml = tagger.tagFile(filename)
+        print xml
+        print  >> sys.stderr, 'Done.'
+        words = re.compile('<w.*?>(.*?)</w>', re.DOTALL).findall(xml)
+        word_list = []
+        for word in words:
+            word_list.append(word)
+        words_string = string.join(word_list, '')
+        f = open(filename)
+        orig_contents = f.read()
+        f.close()
+        if (orig_contents != words_string):
+            print  >> sys.stderr, "*** Warning: joined output doesn't match original file!"
+            print  >> sys.stderr, '*** (can be ignored if the file is a BNC file)'
+    else:
+        print ("Unknown option '%s'" % option)
+        self.usage()
+    return

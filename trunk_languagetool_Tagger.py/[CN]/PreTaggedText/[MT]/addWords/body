@@ -1,0 +1,19 @@
+def addWords(self, tagged_words, data_table):
+    all_tags_list = []
+    for (word, tag) in tagged_words:
+        tag_list = self.splitBNCTag(tag)
+        assert ((len(tag_list) == 1) or (len(tag_list) == 2))
+        if data_table.has_key(word):
+            word_table = data_table[word].table
+            for tag in tag_list:
+                if word_table.has_key(tag):
+                    word_table[tag] = (word_table[tag] + (1.0 / len(tag_list)))
+                else:
+                    word_table[tag] = (1.0 / len(tag_list))
+        else:
+            word_table = {}
+            for tag in tag_list:
+                word_table[tag] = (1.0 / len(tag_list))
+            data_table[word] = WordData(word, word_table)
+        all_tags_list.append(tag)
+    return all_tags_list

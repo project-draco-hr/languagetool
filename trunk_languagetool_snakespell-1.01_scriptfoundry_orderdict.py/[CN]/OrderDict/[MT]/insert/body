@@ -1,0 +1,3 @@
+def insert(self, i, key, item):
+    self.list.insert(i, key)
+    self.dict[key] = item

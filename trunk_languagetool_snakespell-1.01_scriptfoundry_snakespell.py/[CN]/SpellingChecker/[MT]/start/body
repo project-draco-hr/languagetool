@@ -1,0 +1,4 @@
+def start(self, options=None):
+    if options:
+        self.option = options
+    (self.input, self.output) = popen2(self.pipeString(self.options))

@@ -1,0 +1,13 @@
+def checkWords(checker, words):
+    result = '<result>'
+    ispell = iSpell()
+    r = ispell.check(words)
+    if (r > 0):
+        for mistake in ispell.getMistakes():
+            pos = []
+            for p in mistake.getPositions():
+                result = ('%s<error from="%d" to="%d" word="%s" corrections="%s"/>' % (result, p, (p + len(mistake.getWord())), mistake.getWord(), str.join(',', mistake.corrections)))
+    (rule_matches, res, tags) = checker.check(words)
+    result = (result + res)
+    result = (result + '</result>\n')
+    return result

@@ -1,0 +1,17 @@
+def result(self):
+    retval = None
+    try:
+        self.output.close()
+        result = split(self.input.read(), '\n')
+        result = filter(len, result)
+        for line in result[1:]:
+            mistake = self.processLine(line)
+            if mistake:
+                if self.mistakeList.has_key(mistake.word):
+                    self.mistakeList[mistake.word].positions.extend(mistake.positions)
+                else:
+                    self.mistakeList.append(mistake.word, mistake)
+    except:
+        import traceback
+        traceback.print_exc()
+    return len(self.mistakeList)

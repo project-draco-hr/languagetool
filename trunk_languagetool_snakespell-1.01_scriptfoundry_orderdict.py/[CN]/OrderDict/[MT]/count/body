@@ -1,0 +1,2 @@
+def count(self, item):
+    return self.list.count(item)

@@ -1,0 +1,5 @@
+def __getitem__(self, key):
+    if (type(key) is type(1)):
+        return self.dict[self.list[key]]
+    else:
+        return self.dict[key]

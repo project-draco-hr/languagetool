@@ -1,0 +1,12 @@
+if (__name__ == '__main__'):
+    md = OrderDict()
+    md['one'] = 1
+    md['two'] = 2
+    md['three'] = 3
+    md['one'] = 3
+    md['four'] = 4
+    print md.__dict__
+    print md['one']
+    print md[0:(-1)]
+    for i in md:
+        print i

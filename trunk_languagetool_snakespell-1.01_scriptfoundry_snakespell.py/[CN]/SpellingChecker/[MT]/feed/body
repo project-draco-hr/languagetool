@@ -1,0 +1,2 @@
+def feed(self, text):
+    self.output.write(text)

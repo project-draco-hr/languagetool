@@ -1,0 +1,2 @@
+def addTagList(self, tag_list, data_table):
+    return

@@ -1,0 +1,3 @@
+def setMaxLength(self, max_length):
+    self.max_length = max_length
+    return

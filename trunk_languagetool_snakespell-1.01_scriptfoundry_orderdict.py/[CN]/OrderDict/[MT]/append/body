@@ -1,0 +1,3 @@
+def append(self, key, item):
+    self.list.append(key)
+    self.dict[key] = item

@@ -1,0 +1,12 @@
+import cgi
+import string
+import sys
+import os
+import config
+os.chdir(config.BASEDIR)
+sys.path.append(config.BASEDIR)
+import TagInfo
+import TextChecker
+import cgitb
+cgitb.enable()
+main()

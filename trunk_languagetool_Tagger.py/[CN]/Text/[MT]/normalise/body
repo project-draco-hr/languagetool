@@ -1,0 +1,4 @@
+def normalise(self, text):
+    text = re.compile('<.*?>', (re.DOTALL | re.IGNORECASE)).sub('', text)
+    text = text.strip()
+    return text

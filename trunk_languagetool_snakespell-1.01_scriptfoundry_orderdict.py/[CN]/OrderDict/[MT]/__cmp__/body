@@ -1,0 +1,3 @@
+def __cmp__(self, dict):
+    if isinstance(dict, OrderDict):
+        return (cmp(self.dict, dict.dict) and cmp(self.list, self.list))

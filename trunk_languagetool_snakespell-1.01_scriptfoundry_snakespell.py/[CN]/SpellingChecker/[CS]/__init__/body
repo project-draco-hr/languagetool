@@ -1,0 +1,3 @@
+def __init__(self, optionsString=''):
+    self.setOptions(optionsString)
+    self.mistakeList = OrderDict()

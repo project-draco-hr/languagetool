@@ -1,0 +1,6 @@
+def __init__(self, filename):
+    Text.__init__(self)
+    f = open(filename)
+    self.content = f.read()
+    f.close()
+    return

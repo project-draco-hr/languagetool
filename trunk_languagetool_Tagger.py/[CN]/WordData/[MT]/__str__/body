@@ -1,0 +1,6 @@
+def __str__(self):
+    'Show word data (debugging only!)'
+    string = (self.word + ':\n')
+    for el in self.table:
+        string = (((((string + '\t') + el) + ': ') + str(self.table[el])) + '\n')
+    return string

@@ -1,0 +1,2 @@
+def setOptions(self, options):
+    self.options = self.processOptions(options)

@@ -1,0 +1,11 @@
+def getHTMLCode(self):
+    l = []
+    l.append('<table border="0" cellpadding="0" cellspacing="2">')
+    for (tag_short, tag_exp) in self.tags:
+        tag_exp = tag_exp.replace('"', '\\"')
+        if tag_short:
+            l.append(('<tr bgcolor="#dddddd"><td valign="top"><strong>%s</strong></td><td>%s</td></tr>' % (tag_short, tag_exp)))
+        else:
+            l.append('<tr><td>&nbsp;</td></tr>')
+    l.append('</table>')
+    return str.join('\n', l)

@@ -1,0 +1,6 @@
+def display(self, tagged_text):
+    l = []
+    for (org, cleaned, tag) in tagged_text:
+        if cleaned:
+            l.append(('%s/%s' % (cleaned, tag)))
+    return str.join(' ', l)

@@ -1,0 +1,18 @@
+def processLine(self, line):
+    types = {'*': 'OK', '+': 'Root', '-': 'Compound', '&': 'Miss', '?': 'Guess', '#': 'None', }
+    kind = line[0]
+    if (kind in ('&', '?')):
+        (head, missesNguesses) = split(line[1:], ':')
+        (original, count, offset) = split(head)
+        corrections = map(strip, split(missesNguesses, ','))
+    elif (kind == '#'):
+        (original, offset) = split(line[1:])
+        corrections = []
+    elif (kind == '+'):
+        original = line[1:]
+        return
+    elif (kind == '-'):
+        return
+    else:
+        return
+    return iSpellingMistake(original, types[kind], long(offset), corrections)

@@ -1,0 +1,4 @@
+def remove(self, item):
+    key = self.list[item]
+    self.list.remove(item)
+    del self.dict[key]

@@ -1,0 +1,5 @@
+def __init__(self, dict={}):
+    self.dict = {}
+    self.list = []
+    if (dict is not None):
+        self.update(dict)

@@ -1,0 +1,10 @@
+def getXML(node, xmlstr=''):
+    'Get the XML content of a node, but only elements and text.'
+    if (node and (node.nodeType == node.ELEMENT_NODE)):
+        l = []
+        for child in node.childNodes:
+            l.append(Tools.getXML(child, xmlstr))
+        xmlstr = ('<%s>%s</%s>' % (node.tagName, str.join('', l), node.tagName))
+    elif (node and (node.nodeType == node.TEXT_NODE)):
+        xmlstr = ('%s%s' % (xmlstr, node.data))
+    return xmlstr

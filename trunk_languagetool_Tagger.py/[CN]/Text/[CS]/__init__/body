@@ -1,0 +1,3 @@
+def __init__(self):
+    self.bnc_word_regexp = re.compile('<W\\s+TYPE="(.*?)".*?>(.*?)</W>', (re.DOTALL | re.IGNORECASE))
+    return
