@@ -6,6 +6,11 @@ def __init__(self, grammar, falsefriends, words, builtin, textlanguage, motherto
     self.textlanguage = textlanguage
     self.mothertongue = mothertongue
     self.max_sentence_length = max_sentence_length
+    config = ConfigParser.ConfigParser()
+    config.readfp(open('TextChecker.ini'))
+    Tagger.dicFile = config.get(textlanguage, 'dicFile')
+    Tagger.affFile = config.get(textlanguage, 'affFile')
+    Rules.grammarFile = config.get(textlanguage, 'grammarFile')
     self.tagger = Tagger.Tagger(textlanguage)
     self.chunker = Chunker.Chunker()
     rules = Chunker.Rules()
