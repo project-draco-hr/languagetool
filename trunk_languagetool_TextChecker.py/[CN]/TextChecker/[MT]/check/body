@@ -10,7 +10,10 @@ def check(self, text):
     for sentence in sentences:
         tagged_words = self.tagger.tagText(sentence)
         if self.debug_mode:
-            print ('Tw:%s' % tagged_words)
+            print 'Tw:',
+            for tagged_word in tagged_words:
+                if tagged_word[2]:
+                    print ('%s/%s' % (tagged_word[0], tagged_word[2])),
         chunks = self.chunker.chunk(tagged_words)
         tagged_words.insert(0, ('', None, 'SENT_START'))
         tagged_words.append(('', None, 'SENT_END'))
