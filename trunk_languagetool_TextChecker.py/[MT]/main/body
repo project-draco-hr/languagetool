@@ -33,7 +33,7 @@ def main():
             checker = TextChecker(grammar, falsefriends, words, textlanguage, mothertongue, max_sentence_length)
             for filename in rest:
                 checker.checkBNCFiles(filename, checker)
-            print  >> sys.stderr, ('Checked %d paragraphs.' % checker.bnc_paras)
+            print  >> sys.stderr, ('Checked %d sentences in %d paragraphs.' % (checker.bnc_sentences, checker.bnc_paras))
             sys.exit(0)
     if (len(rest) == 1):
         checker = TextChecker(grammar, falsefriends, words, textlanguage, mothertongue, max_sentence_length)
