@@ -22,13 +22,17 @@ def check(self, text):
         whitespace_rule = Rules.WhitespaceRule()
         rule_matches.extend(whitespace_rule.match(all_tagged_words))
     rule_match_list = []
-    context = 10
     for rule_match in rule_matches:
         if self.xml_output:
             rule_match_list.append(rule_match.toXML())
             rule_match_list.append('\n')
         else:
             rule_match_list.append(str(rule_match))
+            from_pos = max((rule_match.from_pos - self.context), 0)
+            to_pos = min((rule_match.to_pos + self.context), len(text))
+            summary = text[from_pos:to_pos]
+            summary = re.compile('[\n\r]').sub(' ', summary)
+            rule_match_list.append(('\n\t...%s...' % summary))
             rule_match_list.append('\n')
     result = string.join(rule_match_list, '')
     if self.xml_output:

@@ -2,7 +2,7 @@ def main():
     options = None
     rest = None
     try:
-        (options, rest) = getopt.getopt(sys.argv[1:], 'hcg:f:w:b:m:l:s:x', ['help', 'check', 'grammar=', 'falsefriends=', 'words=', 'builtin=', 'mothertongue=', 'lang=', 'sentencelength=', 'xml'])
+        (options, rest) = getopt.getopt(sys.argv[1:], 'hcg:f:w:b:m:l:s:e:x', ['help', 'check', 'grammar=', 'falsefriends=', 'words=', 'builtin=', 'mothertongue=', 'lang=', 'sentencelength=', 'encoding=', 'xml'])
     except getopt.GetoptError as e:
         print  >> sys.stderr, 'Error: ', e
         usage()
@@ -13,8 +13,9 @@ def main():
     builtin = None
     textlanguage = mothertongue = None
     max_sentence_length = None
-    textlanguage = 'de'
+    textlanguage = 'en'
     xml_output = 0
+    input_encoding = 'latin1'
     for (o, a) in options:
         if (o in ('-g', '--grammar')):
             grammar = a.split(',')
@@ -30,6 +31,8 @@ def main():
             textlanguage = a
         elif (o in ('-s', '--sentencelength')):
             max_sentence_length = a
+        elif (o in ('-e', '--encoding')):
+            input_encoding = a
         elif (o in ('-x', '--xml')):
             xml_output = 1
     for (o, a) in options:
@@ -43,9 +46,18 @@ def main():
             print  >> sys.stderr, ('Checked %d sentences in %d paragraphs.' % (checker.bnc_sentences, checker.bnc_paras))
             sys.exit(0)
     if (len(rest) == 1):
+        filename = rest[0]
+        if (not xml_output):
+            display_name = Tools.Tools.getLanguageName(textlanguage)
+            if (not display_name):
+                print  >> sys.stderr, ("Unknown language code '%s'" % textlanguage)
+                print  >> sys.stderr, 'Supported languages are en, de, and hu'
+                sys.exit(2)
+            print ("Checking '%s', file encoding %s, language %s:" % (filename, input_encoding, display_name))
         checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
         checker.setXMLOutput(xml_output)
-        (rule_matches, result, tagged_words) = checker.checkFile(rest[0])
+        checker.setInputEncoding(input_encoding)
+        (rule_matches, result, tagged_words) = checker.checkFile(filename)
         if (not result):
             print  >> sys.stderr, 'No errors found.'
         else:

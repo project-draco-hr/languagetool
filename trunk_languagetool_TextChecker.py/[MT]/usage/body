@@ -8,5 +8,6 @@ def usage():
     print '  -b, --builtin=...        Use only these builtin rules (currently only WHITESPACE)'
     print '  -m, --mothertongue=...   Your native language, used with false friend checking'
     print '  -s, --sentencelength=... Warn if a sentence is longer than this (default: never warn)'
+    print "  -e, --encoding           Input file's encoding/charset (e.g. latin1 or utf8)"
     print '  -x, --xml                Print out result as XML'
     return
