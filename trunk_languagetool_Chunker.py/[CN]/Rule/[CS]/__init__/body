@@ -1,0 +1,6 @@
+def __init__(self, line):
+    'Parse a chunk rule in this format:\n\t\tname: tag1 tag2...'
+    parts = re.split('\\s+', line.strip())
+    self.name = parts[0]
+    self.pattern = parts[1:]
+    return

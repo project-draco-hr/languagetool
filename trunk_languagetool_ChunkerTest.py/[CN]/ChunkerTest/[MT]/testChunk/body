@@ -1,0 +1,12 @@
+def testChunk(self):
+    c = Chunker.Chunker()
+    tagged_text = [('Blah', 'Blah', 'XX'), ('the', 'the', 'AT0'), ('house', 'house', 'NN1'), ('foo', 'foo', 'YY')]
+    chunks = c.chunk(tagged_text)
+    self.assertEqual(chunks, [(1, 2, 'NP')])
+    tagged_text = [('Blah', 'Blah', 'XX'), ('house', 'house', 'NN1'), ('foo', 'foo', 'YY')]
+    chunks = c.chunk(tagged_text)
+    self.assertEqual(chunks, [])
+    tagged_text = [('Blah', 'Blah', 'XX'), ('the', 'the', 'AT0'), ('summer', 'summer', 'NN1'), ('house', 'house', 'NN1'), ('foo', 'foo', 'YY')]
+    chunks = c.chunk(tagged_text)
+    self.assertEqual(chunks, [(1, 3, 'NP')])
+    return

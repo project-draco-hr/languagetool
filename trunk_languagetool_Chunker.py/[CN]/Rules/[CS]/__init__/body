@@ -1,0 +1,10 @@
+def __init__(self):
+    'fixme-doc'
+    self.rules = []
+    f = open(self.chunk_rules)
+    lines = f.readlines()
+    f.close()
+    for line in lines:
+        rule = Rule(line)
+        self.rules.append(r)
+    return

@@ -1,0 +1,25 @@
+def chunk(self, tagged_text):
+    'fixme-doc'
+    l = []
+    i = 0
+    rules = Rules()
+    for rule in rules.rules:
+        match_start = None
+        match_end = None
+        for (word, norm_word, tag) in tagged_text:
+            print ('%s, %s' % (word, tag))
+            pattern_pos = 0
+            while (tag == rule.pattern[pattern_pos]):
+                if (not match_start):
+                    match_start = i
+                pattern_pos = (pattern_pos + 1)
+                try:
+                    tag = rule.pattern[pattern_pos]
+                except IndexError:
+                    print 'match!'
+                    match_end = (i + 1)
+                    l.append((match_start, match_end, rule.name))
+                    break
+                i = (i + 1)
+    print l
+    return l
