@@ -9,4 +9,5 @@ def __init__(self, grammar, falsefriends, words, builtin, textlanguage, motherto
     self.tagger = Tagger.Tagger()
     self.tagger.bindData()
     self.rules = Rules.Rules(self.max_sentence_length, self.grammar)
+    self.bnc_paras = 0
     return

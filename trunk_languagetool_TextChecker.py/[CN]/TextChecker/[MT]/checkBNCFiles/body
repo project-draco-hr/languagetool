@@ -1,5 +1,5 @@
-def checkBNCFiles(directory, checker):
-    'Recursively load all files from a directory, extract\n\tall paragraphs and feed them to the style and grammar checker\n\tone by one.'
+def checkBNCFiles(self, directory, checker):
+    'Recursively load all files from a directory, extract\n\t\tall paragraphs and feed them to the style and grammar checker\n\t\tone by one.'
     para_regex = re.compile('<p>(.*?)</p>', re.DOTALL)
     xml_regex = re.compile('<.*?>', re.DOTALL)
     whitespace_regex = re.compile('\\s+', re.DOTALL)
@@ -17,17 +17,18 @@ def checkBNCFiles(directory, checker):
         else:
             filename = os.path.join(directory, file)
         if os.path.isdir(filename):
-            checkBNCFiles(filename, checker)
+            self.checkBNCFiles(filename, checker)
         elif os.path.isfile(filename):
-            print ('FILE=%s' % file)
+            print  >> sys.stderr, ('FILE=%s' % file)
             f = open(filename)
             s = f.read()
             f.close()
             matches = para_regex.findall(s)
             for match in matches:
+                self.bnc_paras = (self.bnc_paras + 1)
                 s = xml_regex.sub('', match)
                 s = whitespace_regex.sub(' ', s)
-                s = cleanEntities(s)
+                s = self.cleanEntities(s)
                 s = s.strip()
                 (rule_matches, result, tagged_words) = checker.check(s)
                 if (len(rule_matches) == 0):

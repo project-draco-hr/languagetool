@@ -33,7 +33,8 @@ def main():
         elif (o in ('-c', '--check')):
             checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
             for filename in rest:
-                checkBNCFiles(filename, checker)
+                checker.checkBNCFiles(filename, checker)
+            print  >> sys.stderr, ('Checked %d paragraphs.' % checker.bnc_paras)
             sys.exit(0)
     if (len(rest) == 1):
         checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)

@@ -1,6 +1,6 @@
 import getopt
 import os
-import re
+import pre as re
 import socket
 import string
 import sys

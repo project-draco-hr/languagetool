@@ -1,5 +1,5 @@
-def cleanEntities(s):
-    'Replace only the most common BNC entities with their\n\tASCII respresentation.'
+def cleanEntities(self, s):
+    'Replace only the most common BNC entities with their\n\t\tASCII respresentation.'
     s = re.compile('&amp;?').sub('&', s)
     s = re.compile('&pound;?').sub('\xa3', s)
     s = s.replace('&ast', '*')
