@@ -99,7 +99,7 @@ def test_it(self, l):
                 elif (dif != 0):
                     typ = 'ADV'
             elif (typ[0] == 'N'):
-                if ((oword[(-2):] in ('ek', 'ok', 'ak', u'\xe9k', u'\xe1k', u'\xf3k', u'\xfbk', u'\xf5k', u'\xfak')) and (dif > 0) and (dif < 3)):
+                if ((oword[(-1)] == 'k') and (oword[(-2)] in ('a', u'\xe1', 'e', u'\xe9', 'i', u'\xed', 'o', u'\xf3', u'\xf6', u'\xf5', 'u', u'\xfa', u'\xfc', u'\xfb')) and (dif > 0) and (dif < 3)):
                     typ = 'NP'
                 elif ((oword[(-1):] == 'i') and (dif == 1)):
                     typ = 'DNA'
