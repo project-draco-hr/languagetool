@@ -4,22 +4,23 @@ def tag(self, data_table, seqs_table):
     result_tuple_list = []
     count_wrong_tags = 'n/a'
     is_bnc = 0
-    word_matches = self.bnc_word_regexp.findall(self.text)
+    word_matches = self.getBNCTuples(self.text)
     if (len(word_matches) > 0):
         is_bnc = 1
         print  >> sys.stderr, 'BNC text detected.'
         count_wrong_tags = 0
     else:
         word_matches = self.nonword.split(self.text)
-    j = (len(word_matches) - 1)
-    while (j >= 0):
-        w = word_matches[j]
-        s_end_match = self.sentence_end.search(w)
-        if s_end_match:
-            word_matches[j] = w[:(len(w) - len(s_end_match.group(1)))]
-            word_matches.insert((j + 1), s_end_match.group(1))
-            break
-        j = (j - 1)
+    if (not is_bnc):
+        j = (len(word_matches) - 1)
+        while (j >= 0):
+            w = word_matches[j]
+            s_end_match = self.sentence_end.search(w)
+            if s_end_match:
+                word_matches[j] = w[:(len(w) - len(s_end_match.group(1)))]
+                word_matches.insert((j + 1), s_end_match.group(1))
+                break
+            j = (j - 1)
     i = 0
     tagged_list = [self.DUMMY, self.DUMMY]
     tagged_list_bnc = [self.DUMMY, self.DUMMY]
@@ -89,5 +90,4 @@ def tag(self, data_table, seqs_table):
         if self.sentence_end.search(tag_triple[0]):
             result_tuple_list[i] = (tag_triple[0], None, None)
         i = (i + 1)
-    stat = self.getStats(count_wrong_tags)
     return result_tuple_list

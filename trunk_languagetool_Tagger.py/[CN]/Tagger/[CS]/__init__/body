@@ -6,6 +6,5 @@ def __init__(self, db_word_name=None, db_seq_name=None):
         self.db_word_name = db_word_name
     if db_seq_name:
         self.db_seq_name = db_seq_name
-    uncountable_nouns = self.loadUncountables()
     self.word_count = 0
     return
