@@ -2,8 +2,7 @@ def match(self, tagged_words, position_fix):
     'Check if there are rules that match the tagged_words. Returns a list\n\t\tof RuleMatch objects.'
     matches = []
     ct = 0
-    tagged_words_copy = copy.copy(tagged_words)
-    tagged_words_copy.insert(0, ('__fake__word__', '__fake__word__', 'FILL_TAG'))
+    tagged_words_copy = tagged_words
     for word_tag_tuple in tagged_words_copy:
         i = ct
         p = 0
@@ -13,7 +12,7 @@ def match(self, tagged_words, position_fix):
         first_match = ct
         while match:
             try:
-                if (not tagged_words_copy[i][1]):
+                if ((not tagged_words_copy[i][1]) and (tagged_words_copy[i][2] != 'SENT_START') and (tagged_words_copy[i][2] != 'SENT_END')):
                     i = (i + 1)
                     ct = (ct + 1)
                     continue
@@ -23,7 +22,11 @@ def match(self, tagged_words, position_fix):
                 expected_token = self.tokens[p]
             except IndexError:
                 break
-            if expected_token.is_word:
+            if (tagged_words_copy[i][2] == 'SENT_START'):
+                found = 'SENT_START'
+            elif (tagged_words_copy[i][2] == 'SENT_END'):
+                found = 'SENT_END'
+            elif expected_token.is_word:
                 try:
                     found = tagged_words_copy[i][1]
                 except:
@@ -34,7 +37,6 @@ def match(self, tagged_words, position_fix):
                 except:
                     break
             if (not found):
-                print  >> sys.stderr, ("*** 'found' undefined (i=%d, %s/%s)" % (i, tagged_words_copy[i][1], tagged_words_copy[i][2]))
                 break
             case_switch = re.IGNORECASE
             if self.case_sensitive:

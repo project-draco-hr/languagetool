@@ -1,6 +1,8 @@
-def __init__(self):
+def __init__(self, max_sentence_length):
     self.rules = []
     length_rule = SentenceLengthRule()
+    if (max_sentence_length != None):
+        length_rule.setMaxLength(max_sentence_length)
     self.rules.append(length_rule)
     dir_temp = os.getcwd()
     os.chdir(os.path.dirname(self.rules_grammar_file))

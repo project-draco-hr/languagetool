@@ -1,5 +1,7 @@
 def match(self, tagged_words, fake_param):
-    'Check if a sentence is too long. Put the warning on the first word\n\t\tabove the limit. TODO: assumes that tagged_words is exactly one sentence.'
+    'Check if a sentence is too long. Put the warning on the first word\n\t\tabove the limit. Assumes that tagged_words is exactly one sentence.'
+    if (self.max_length == 0):
+        return []
     matches = []
     text_length = 0
     count = 0
@@ -11,10 +13,10 @@ def match(self, tagged_words, fake_param):
         if ((not tagged_tag) or (not tagged_word)):
             continue
         count = (count + 1)
-        if ((count >= self.max_length) and (not too_long)):
+        if ((count > self.max_length) and (not too_long)):
             too_long = 1
             too_long_start = (text_length - len(org_word))
             too_long_end = text_length
     if too_long:
-        matches.append(RuleMatch('MAX_LEN', too_long_start, too_long_end, self.max_length, (self.max_length + 1), ('This sentence is %d words long, which exceeds the \t\t\t\tconfigured limit of %d words.' % (count, self.max_length))))
+        matches.append(RuleMatch('MAX_LEN', too_long_start, too_long_end, self.max_length, (self.max_length + 1), ('This sentence is %d words long, which exceeds the configured limit of %d words.' % (count, self.max_length))))
     return matches
