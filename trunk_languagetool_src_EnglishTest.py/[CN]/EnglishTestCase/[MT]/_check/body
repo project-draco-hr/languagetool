@@ -1,0 +1,8 @@
+def _check(self, sentence, expectedError):
+    (rule_matches, output, tagged_text) = self.checker.check(sentence)
+    if (expectedError == None):
+        self.assertEqual(len(rule_matches), 0)
+    else:
+        self.assertEqual(len(rule_matches), 1)
+        self.assertEqual(rule_matches[0].id, expectedError)
+    return

@@ -1,0 +1,8 @@
+def testSomeRules(self):
+    'Some rule checks. Requires a trained tagger.'
+    err_count = 0
+    self._check('A sentence without problems.', None)
+    self._check('This is bigger then blah.', 'COMP_THAN')
+    self._check('English/German false friend: my chef', 'CHEF')
+    self._check("Whitespace,here it's lacking.", 'WHITESPACE')
+    return
