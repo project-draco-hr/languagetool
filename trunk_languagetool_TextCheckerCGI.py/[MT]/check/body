@@ -7,12 +7,14 @@ def check(form):
     falsefriends = None
     words = None
     builtin = None
+    textlanguage = 'en'
     if (not form.getvalue('style')):
         words = ['__NONE']
-    textlanguage = 'en'
     mothertongue = 'de'
     if (not form.getvalue('german_ff')):
         mothertongue = None
+    if form.getvalue('lang'):
+        textlanguage = form.getvalue('lang')
     max_sentence_length = 0
     if form.getvalue('sentencelength'):
         max_sentence_length = None
