@@ -2,6 +2,8 @@ def tagWord(self, word, data_table):
     'Find all possible tags for a word and return a list of tuples:\n\t\t[(orig_word, normalised_word, [(tag, probability])]'
     orig_word = word
     word = self.normalise(word)
+    if (word and self.nonword_punct.match(word)):
+        return [(orig_word, orig_word, [])]
     if ((not word) or self.nonword.match(word)):
         return [(orig_word, None, [])]
     if (word.count("'") > 1):

@@ -3,6 +3,7 @@ def __init__(self):
     self.count_ambiguous = 0
     self.count_unknown = 0
     self.nonword = re.compile('([\\s,:;]+)')
+    self.nonword_punct = re.compile('([,:;]+)')
     self.sentence_end = re.compile('([.!?]+)$')
     self.bnc_word_regexp = re.compile('<W\\s+TYPE="(.*?)".*?>(.*?)</W>', (re.DOTALL | re.IGNORECASE))
     self.mapping = self.loadMapping()
