@@ -2,12 +2,13 @@ def check(self, text):
     'Check a text string and return the results as an XML formatted list \n\t\tof possible errors.'
     splitter = SentenceSplitter.SentenceSplitter()
     sentences = splitter.split(text)
-    tx = time.time()
     rule_matches = []
     all_tagged_words = []
     char_counter = 0
     for sentence in sentences:
         tagged_words = self.tagger.tagText(sentence)
+        tagged_words.insert(0, ('', None, 'SENT_START'))
+        tagged_words.append(('', None, 'SENT_END'))
         all_tagged_words.extend(tagged_words)
         for rule in self.rules.rules:
             matches = rule.match(tagged_words, char_counter)

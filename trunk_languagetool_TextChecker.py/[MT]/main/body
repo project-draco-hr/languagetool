@@ -1,5 +1,5 @@
 def main():
-    (options, rest) = getopt.getopt(sys.argv[1:], 'hsgfw', ['help', 'server', 'grammar=', 'falsefriends=', 'words=', 'mothertongue=', 'textlanguage='])
+    (options, rest) = getopt.getopt(sys.argv[1:], 'hcsg:f:w:l:', ['help', 'check', 'server', 'grammar=', 'falsefriends=', 'words=', 'mothertongue=', 'textlanguage=', 'sentencelength='])
     grammar = falsefriends = words = []
     builtin = []
     textlanguage = mothertongue = None
@@ -15,20 +15,28 @@ def main():
             mothertongue = a
         elif (o in ('-t', '--textlanguage')):
             textlanguage = a
+        elif (o in ('-l', '--sentencelength')):
+            max_sentence_length = a
     for (o, a) in options:
         if (o in ('-h', '--help')):
             usage()
-            sys.exit()
+            sys.exit(0)
         elif (o in ('-s', '--server')):
             checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
             checker.server()
-            sys.exit()
+            sys.exit(0)
+        elif (o in ('-c', '--check')):
+            checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
+            for filename in rest:
+                checkBNCFiles(filename, checker)
+            sys.exit(0)
     if (len(rest) == 1):
         checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
         (rule_matches, result, tagged_words) = checker.checkFile(rest[0])
         if (not result):
-            print 'No errors found.'
+            print  >> sys.stderr, 'No errors found.'
         else:
             print result
     else:
         usage()
+    return
