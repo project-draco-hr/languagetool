@@ -1,3 +1,9 @@
 def usage():
-    print 'Usage: TextChecker.py <filename>'
+    print 'Usage: TextChecker.py [OPTION] <filename>'
+    print '  -h, --help               Show this help'
+    print '  -c, --check              Check directory with BNC files in SGML format'
+    print '  -g, --grammar=...        Use only these grammar rules'
+    print '  -f, --falsefriends=...   Use only these false friend rules'
+    print '  -m, --mothertongue=...   Your native language'
+    print '  -l, --sentencelength=... Maximum sentence length'
     return

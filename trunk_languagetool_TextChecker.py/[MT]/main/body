@@ -1,5 +1,12 @@
 def main():
-    (options, rest) = getopt.getopt(sys.argv[1:], 'hcsg:f:w:l:', ['help', 'check', 'server', 'grammar=', 'falsefriends=', 'words=', 'mothertongue=', 'textlanguage=', 'sentencelength='])
+    options = None
+    rest = None
+    try:
+        (options, rest) = getopt.getopt(sys.argv[1:], 'hcg:f:w:l:', ['help', 'check', 'grammar=', 'falsefriends=', 'words=', 'mothertongue=', 'textlanguage=', 'sentencelength='])
+    except getopt.GetoptError as e:
+        print  >> sys.stderr, 'Error: ', e
+        usage()
+        sys.exit(2)
     grammar = falsefriends = words = []
     builtin = []
     textlanguage = mothertongue = None
@@ -20,10 +27,6 @@ def main():
     for (o, a) in options:
         if (o in ('-h', '--help')):
             usage()
-            sys.exit(0)
-        elif (o in ('-s', '--server')):
-            checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
-            checker.server()
             sys.exit(0)
         elif (o in ('-c', '--check')):
             checker = TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
