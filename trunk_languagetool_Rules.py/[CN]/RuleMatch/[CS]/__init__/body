@@ -1,8 +1,8 @@
-def __init__(self, rule_id, from_pos, to_pos, message, to_upper):
+def __init__(self, rule_id, from_pos, to_pos, message, first_match_word=None):
     self.id = rule_id
     self.from_pos = from_pos
     self.to_pos = to_pos
     self.message = message
-    if to_upper:
+    if (first_match_word and (first_match_word[0] in string.uppercase)):
         self.message = re.compile('<em>(.)').sub(self.upper, self.message)
     return

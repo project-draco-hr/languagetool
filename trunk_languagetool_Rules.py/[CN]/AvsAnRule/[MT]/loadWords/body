@@ -1,0 +1,13 @@
+def loadWords(self, filename):
+    f = open(filename)
+    contents = f.read()
+    f.close()
+    l = re.split('\n', contents)
+    i = 0
+    for el in l:
+        if (el.startswith('#') or (el == '')):
+            del l[i]
+        else:
+            l[i] = l[i].strip().lower()
+        i = (i + 1)
+    return l

@@ -3,4 +3,4 @@ rule_id
 from_pos
 to_pos
 message
-to_upper
+first_match_word

@@ -1,4 +1,4 @@
-def match(self, tagged_words, position_fix=0):
+def match(self, tagged_words):
     "Check if a sentence contains whitespace/token sequences\n\t\tthat are against the 'use a space after, but not before, a token'\n\t\trule."
     matches = []
     text_length = 0
@@ -16,10 +16,10 @@ def match(self, tagged_words, position_fix=0):
             if word_next:
                 word_next = word_next[1]
             if (word_next and (not self.after_punct_regex.match(org_word_next)) and (not self.whitespace_regex.match(org_word_next))):
-                matches.append(RuleMatch(self.rule_id, text_length, (text_length + len(org_word)), 'Usually a space character is inserted after punctuation.', 0))
+                matches.append(RuleMatch(self.rule_id, text_length, (text_length + len(org_word)), 'Usually a space character is inserted after punctuation.'))
         elif self.whitespace_regex.match(org_word):
             if self.punct_regex.match(org_word_next):
-                matches.append(RuleMatch(self.rule_id, text_length, (text_length + len(org_word)), 'Usually no space character is inserted before punctuation.', 0))
+                matches.append(RuleMatch(self.rule_id, text_length, (text_length + len(org_word)), 'Usually no space character is inserted before punctuation.'))
         text_length = (text_length + len(org_word))
         i = (i + 1)
     return matches

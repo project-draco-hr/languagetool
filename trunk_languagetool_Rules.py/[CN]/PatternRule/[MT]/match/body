@@ -55,10 +55,6 @@ def match(self, tagged_words, position_fix):
             p = (p + 1)
         if (match and (p == len(self.tokens))):
             (first_match, from_pos, to_pos) = self.listPosToAbsPos(tagged_words_copy, first_match)
-            to_upper = 0
-            first_match_word = tagged_words_copy[first_match][0]
-            if (first_match_word and (first_match_word[0] in string.uppercase)):
-                to_upper = 1
             l = first_match
             lcount = 1
             msg = self.message
@@ -67,7 +63,8 @@ def match(self, tagged_words, position_fix):
                     msg = msg.replace(('\\%d' % lcount), tagged_words_copy[l][0])
                     lcount = (lcount + 1)
                 l = (l + 1)
-            match = RuleMatch(self.rule_id, (from_pos + position_fix), (to_pos + position_fix), msg, to_upper)
+            first_match_word = tagged_words_copy[first_match][0]
+            match = RuleMatch(self.rule_id, (from_pos + position_fix), (to_pos + position_fix), msg, first_match_word)
             matches.append(match)
         ct = (ct + 1)
     return matches

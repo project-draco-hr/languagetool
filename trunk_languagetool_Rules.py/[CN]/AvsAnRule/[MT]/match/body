@@ -1,0 +1,29 @@
+def match(self, tagged_words, position_fix=0):
+    matches = []
+    text_length = 0
+    i = 0
+    while 1:
+        if (i >= (len(tagged_words) - 2)):
+            break
+        org_word = tagged_words[i][0]
+        org_word_next = tagged_words[(i + 2)][0]
+        if (org_word.lower() == 'a'):
+            err = 0
+            if (org_word_next in self.requires_an):
+                err = 1
+            elif ((org_word_next[0].lower() in ('a', 'e', 'i', 'o', 'u')) and (not (org_word_next in self.requires_a))):
+                err = 1
+            if err:
+                matches.append(RuleMatch(self.rule_id, (text_length + (+ position_fix)), ((text_length + len(org_word)) + position_fix), (('Use <em>an</em> instead of <em>a</em> if the following ' + "word starts with a vowel sound, e.g. 'an article', ") + "'an hour'"), org_word))
+        elif (org_word.lower() == 'an'):
+            err = 0
+            if (org_word_next in self.requires_a):
+                err = 1
+            elif ((not (org_word_next[0].lower() in ('a', 'e', 'i', 'o', 'u'))) and (not (org_word_next in self.requires_an))):
+                err = 1
+            if err:
+                matches.append(RuleMatch(self.rule_id, (text_length + (+ position_fix)), ((text_length + len(org_word)) + position_fix), (('Use <em>a</em> instead of <em>an</em> if the following ' + "word doesn't start with a vowel sound, e.g. 'a test', ") + "'a university'"), org_word))
+            pass
+        text_length = (text_length + len(org_word))
+        i = (i + 1)
+    return matches
