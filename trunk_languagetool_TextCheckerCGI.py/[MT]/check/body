@@ -2,14 +2,15 @@ def check(form):
     text = form.getvalue('text')
     if (not text):
         text = ''
-    grammar = []
-    falsefriends = []
-    words = []
-    builtin = []
-    textlanguage = None
-    mothertongue = None
+    grammar = None
+    falsefriends = None
+    words = None
+    textlanguage = 'en'
+    mothertongue = 'de'
+    if (not form.getvalue('german_ff')):
+        mothertongue = None
     max_sentence_length = None
-    checker = TextChecker.TextChecker(grammar, falsefriends, words, builtin, textlanguage, mothertongue, max_sentence_length)
+    checker = TextChecker.TextChecker(grammar, falsefriends, words, textlanguage, mothertongue, max_sentence_length)
     print 'Content-Type: text/html\n\n'
     print '<html><head>\n\t\t<title>Check result</title>\n\t\t<style rel=\'stylesheet\'>\n\t\t\t<!--\n\t\t\t.tag { color: grey; }\n\t\t\t.error { font-weight: bold; color: red; }\n\t\t\t.expl { color: blue; }\n\t\t\t.repl { font-weight: bold; }\n\t\t\t-->\n\t\t\t</style>\n\t\t<script language="javascript">\n\t\t\t<!--\n\t\t\tvar data = new Array();\n\t\t\t'
     taginfo = TagInfo.TagInfo()
@@ -53,7 +54,7 @@ def check(form):
                 break
             i = (i + 1)
     text = string.join(text_list, '')
-    print text
+    print text.encode('latin1')
     if (len(rule_matches) == 1):
         print ('<p>%d possible error found.</p>' % len(rule_matches))
     else:
