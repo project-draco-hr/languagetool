@@ -1,5 +1,5 @@
 def testAvsAnRule(self):
-    r = AvsAnRule.AvsAnRule()
+    r = enAvsAnRule.enAvsAnRule()
     warnings = r.match([('A', 'A', 'DET'), (' ', None, None), ('test', 'test', 'NN')], [])
     self.assertEqual(len(warnings), 0)
     warnings = r.match([('a', 'a', 'DET'), (' ', None, None), ('test', 'test', 'NN')], [])

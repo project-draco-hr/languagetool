@@ -1,9 +1,10 @@
 import unittest
 import Rules
+import os
 import sys
-sys.path.append('python_rules')
-import SentenceLengthRule
-import AvsAnRule
-import WordRepeatRule
+sys.path.append(os.path.join('..', 'python_rules'))
+import allSentenceLengthRule
+import allWordRepeatRule
+import enAvsAnRule
 if (__name__ == '__main__'):
     unittest.main()

@@ -1,11 +1,11 @@
 def testSentenceLengthRule(self):
-    r = SentenceLengthRule.SentenceLengthRule()
+    r = allSentenceLengthRule.allSentenceLengthRule()
     r.setMaxLength(3)
     warnings = r.match([('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T')])
     self.assertEqual(len(warnings), 0)
     warnings = r.match([('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T')])
     self.assertEqual(len(warnings), 1)
-    assert str(warnings[0]).startswith('<error from="3" to="4">')
+    assert warnings[0].toXML().startswith('<error from="3" to="4">')
     r.setMaxLength(60)
     warnings = r.match([('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T'), ('x', 'x', 'T')])
     self.assertEqual(len(warnings), 0)
