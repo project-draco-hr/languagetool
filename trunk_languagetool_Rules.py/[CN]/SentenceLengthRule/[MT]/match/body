@@ -3,12 +3,18 @@ def match(self, tagged_words, fake_param):
     matches = []
     text_length = 0
     count = 0
+    too_long = 0
+    too_long_start = 0
+    too_long_end = 0
     for (org_word, tagged_word, tagged_tag) in tagged_words:
         text_length = (text_length + len(org_word))
-        if (not tagged_tag):
+        if ((not tagged_tag) or (not tagged_word)):
             continue
-        if (count >= self.max_length):
-            matches.append(RuleMatch('MAX_LEN', (text_length - len(org_word)), text_length, count, (count + 1), self.message))
-            break
         count = (count + 1)
+        if ((count >= self.max_length) and (not too_long)):
+            too_long = 1
+            too_long_start = (text_length - len(org_word))
+            too_long_end = text_length
+    if too_long:
+        matches.append(RuleMatch('MAX_LEN', too_long_start, too_long_end, self.max_length, (self.max_length + 1), ('This sentence is %d words long, which exceeds the \t\t\t\tconfigured limit of %d words.' % (count, self.max_length))))
     return matches
