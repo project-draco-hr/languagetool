@@ -1,7 +1,7 @@
 def testPatternRuleMatch(self):
     res_list = self.rule.match([('word', 'word', 'XX'), (' ', None, None), ('bla', 'bla', 'VB')], 0)
     self.assertEqual(len(res_list), 1)
-    self.assertEqual(str(res_list[0]), '<error from="0" to="4">Test message.</error>')
+    self.assertEqual(str(res_list[0]), '<error from="0" to="8">Test message.</error>')
     res_list = self.rule.match([('no', 'no', 'XX'), ('foo', 'foo', 'VB')], 0)
     assert (len(res_list) == 0)
     res_list = self.rule.match([], 0)
