@@ -7,11 +7,12 @@ def check(self, text):
     all_tagged_words = []
     for sentence in sentences:
         tagged_words = self.tagger.tagText(sentence)
+        chunks = self.chunker.chunk(tagged_words)
         tagged_words.insert(0, ('', None, 'SENT_START'))
         tagged_words.append(('', None, 'SENT_END'))
         all_tagged_words.extend(tagged_words)
         for rule in self.rules.rules:
-            matches = rule.match(tagged_words, char_counter)
+            matches = rule.match(tagged_words, chunks, char_counter)
             rule_matches.extend(matches)
         for triple in sentence:
             char_counter = (char_counter + len(triple[0]))
