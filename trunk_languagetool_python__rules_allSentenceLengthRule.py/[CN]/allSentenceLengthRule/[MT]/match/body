@@ -1,4 +1,4 @@
-def match(self, tagged_words, chunks=None, position_fix=0, line_fix=0):
+def match(self, tagged_words, chunks=None, position_fix=0, line_fix=0, column_fix=0):
     'Check if a sentence is too long, according to the limit set\n\t\tby setMaxLength(). Put the warning on the first word\n\t\tabove the limit. Assumes that tagged_words is exactly one sentence.'
     if (self.max_length == 0):
         return []

@@ -2,3 +2,5 @@ self
 tagged_words
 chunks
 position_fix
+line_fix
+column_fix
