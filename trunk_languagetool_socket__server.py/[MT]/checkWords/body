@@ -1,6 +1,7 @@
 def checkWords(checker, words):
     result = '<result>'
     ispell = iSpell()
+    words = words.replace('\n', ' ')
     r = ispell.check(words)
     if (r > 0):
         for mistake in ispell.getMistakes():
