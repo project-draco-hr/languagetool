@@ -1,27 +1,5 @@
 def ReadData(self, db_word_name):
-    fd = codecs.open(db_word_name, 'r', 'latin1')
     self.data_table = {}
     self.word_table = {}
     table = {}
-    i = 1
-    elemlista = []
-    l = fd.readline()
-    while 1:
-        l = fd.readline().strip('\n \t')
-        if (not l):
-            break
-        elems = l.split('/')
-        j = (len(elems) - 3)
-        k = 2
-        delta = ((len(elems) - 1) / 2)
-        while j:
-            self.word_table[elems[k]] = elems[(k + delta)]
-            j = (j - 2)
-            k = (k + 1)
-            if (j <= 0):
-                break
-        self.data_table[elems[0]] = WordData(elems[0], elems[1], self.word_table)
-        elemlista.append(elems[0])
-        self.word_table = {}
-        i = (i + 1)
     return
