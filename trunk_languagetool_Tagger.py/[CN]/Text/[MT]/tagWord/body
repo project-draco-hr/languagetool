@@ -5,27 +5,17 @@ def tagWord(self, word, data_table):
     if ((not word) or self.nonword.match(word)):
         return [(orig_word, None, [])]
     if (word.count("'") > 1):
-        print  >> sys.stderr, ("*** What's this, more than one apostroph: '%s'!?" % word)
-    short_form_pos = word.find("n't")
-    if ((short_form_pos != (-1)) and (short_form_pos != 0)):
-        if (not word.endswith("n't")):
-            pass
-        first_part = self.tagWord(word[0:short_form_pos], data_table)[0]
-        second_part = self.tagWord("n't", data_table)[0]
-        tag_results = []
-        tag_results.append((word[0:short_form_pos], first_part[1], first_part[2]))
-        tag_results.append(("n't", second_part[1], second_part[2]))
-        return tag_results
-    possesive_pos = word.find("'s")
-    if ((possesive_pos != (-1)) and (possesive_pos != 0)):
-        if (not word.endswith("'s")):
-            pass
-        first_part = self.tagWord(word[0:possesive_pos], data_table)[0]
-        second_part = self.tagWord("'s", data_table)[0]
-        tag_results = []
-        tag_results.append((word[0:possesive_pos], first_part[1], first_part[2]))
-        tag_results.append(("'s", second_part[1], second_part[2]))
-        return tag_results
+        print  >> sys.stderr, ("*** What's this, more than one apostroph: '%s'?" % word)
+    special_cases = ("n't", "'s", "'re", "'ll")
+    for special_case in special_cases:
+        special_case_pos = word.find(special_case)
+        if ((special_case_pos != (-1)) and (special_case_pos != 0)):
+            first_part = self.tagWord(word[0:special_case_pos], data_table)[0]
+            second_part = self.tagWord(special_case, data_table)[0]
+            tag_results = []
+            tag_results.append((word[0:special_case_pos], first_part[1], first_part[2]))
+            tag_results.append((special_case, second_part[1], second_part[2]))
+            return tag_results
     if (not data_table.has_key(word)):
         self.count_unknown = (self.count_unknown + 1)
         guess_tag = self.guessTag(word)
