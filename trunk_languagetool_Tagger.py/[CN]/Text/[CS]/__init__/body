@@ -8,4 +8,5 @@ def __init__(self):
     self.sentence_end = re.compile('([.!?]+)$')
     self.bnc_word_regexp = re.compile('<W\\s+TYPE="(.*?)".*?>(.*?)</W>', (re.DOTALL | re.IGNORECASE))
     self.mapping = self.loadMapping()
+    self.manually_tagged = self.loadManuallyTagged()
     return
