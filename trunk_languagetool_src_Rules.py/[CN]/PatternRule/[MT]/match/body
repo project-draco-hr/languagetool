@@ -53,18 +53,16 @@ def match(self, tagged_words, chunks=None, position_fix=0, line_fix=0, column_fi
                     break
             if (not found):
                 break
-            else:
-                found = found.lower()
-            case_switch = re.IGNORECASE
+            case_sensitive = re.IGNORECASE
             if self.case_sensitive:
-                case_switch = 0
+                case_sensitive = 0
             if expected_token.simple_token:
-                if case_switch:
-                    match = (expected_token_str.lower() == found)
+                if case_sensitive:
+                    match = (expected_token_str.lower() == found.lower())
                 else:
                     match = (expected_token_str == found)
             else:
-                match = re.compile(('%s$' % expected_token_str), case_switch).match(found)
+                match = re.compile(('%s$' % expected_token_str), case_sensitive).match(found)
             if expected_token.negation:
                 if (not match):
                     match = 1
