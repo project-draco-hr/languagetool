@@ -1,3 +1,4 @@
 self
 sentence
+rule_match
 expectedError

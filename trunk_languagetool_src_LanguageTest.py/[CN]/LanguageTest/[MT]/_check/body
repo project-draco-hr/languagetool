@@ -1,0 +1,24 @@
+def _check(self, sentence, expectedErrors):
+    (rule_matches, output, tagged_text) = self.checker.check(sentence)
+    rule_matches.sort()
+    if (expectedErrors == None):
+        if (len(rule_matches) != 0):
+            print ('Expected no errors, found %d' % len(rule_matches))
+            print ('Sentence: %s' % sentence)
+            self.fail()
+    elif isinstance(expectedErrors, list):
+        if (len(rule_matches) != len(expectedErrors)):
+            print ('Expected %d errors, found %d' % (len(expectedErrors), len(rule_matches)))
+            print ('Sentence: %s' % sentence)
+            self.fail()
+        i = 0
+        for expError in expectedErrors:
+            self._checkError(sentence, rule_matches[i], expError)
+            i = (i + 1)
+    else:
+        if (len(rule_matches) != 1):
+            print ('Expected 1 error, found %d' % len(rule_matches))
+            print ('Sentence: %s' % sentence)
+            self.fail()
+        self._checkError(sentence, rule_matches[0], expectedErrors)
+    return

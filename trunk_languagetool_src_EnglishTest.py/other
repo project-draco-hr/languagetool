@@ -1,2 +1,5 @@
 import TextChecker
-import unittest
+import LanguageTest
+from LanguageTest import ExpMatch
+if (__name__ == '__main__'):
+    unittest.main()

@@ -1,0 +1,5 @@
+def __init__(self, error_type, from_pos, to_pos):
+    self.error_type = error_type
+    self.from_pos = from_pos
+    self.to_pos = to_pos
+    return
