@@ -6,8 +6,6 @@ def tagWord(self, word, data_table):
         return [(orig_word, None, [])]
     if self.manually_tagged.has_key(word):
         return [(orig_word, orig_word, [(self.manually_tagged[word], 1)])]
-    if (word.count("'") > 1):
-        print  >> sys.stderr, ("*** What's this, more than one apostroph: '%s'?" % word)
     if (self.textlanguage == 'en'):
         special_cases = ("n't", "'s", "'re", "'ll", "'ve")
         for special_case in special_cases:
