@@ -47,6 +47,15 @@ def tag(self, data_table, seqs_table_followed_by, seqs_table_follows):
         i = (i + 1)
     tagged_list.append(self.DUMMY)
     tagged_list.append(self.DUMMY)
+    prev_word = None
+    next_word = None
+    i = 0
+    for tag_tuples in tagged_list:
+        prev_word = self.getPrevWord(i, tagged_list)
+        next_word = self.getNextWord(i, tagged_list)
+        if (tag_tuples and tag_tuples[1]):
+            self.applyConstraints(prev_word, tag_tuples[0], next_word, tag_tuples[2])
+        i = (i + 1)
     result_tuple_list = self.selectTagsByContext(tagged_list, seqs_table_followed_by, seqs_table_follows, tagged_list_bnc, is_bnc, data_table)
     i = 0
     for tag_triple in result_tuple_list:

@@ -1,4 +1,4 @@
-def getNextToken(self, i, tagged_list):
+def getNextWord(self, i, tagged_list):
     'Find the token next to the token at position i from tagged_list,\n\t\tignoring whitespace tokens. See self.getPrevToken()'
     j = (i + 1)
     while (j < len(tagged_list)):
@@ -8,5 +8,5 @@ def getNextToken(self, i, tagged_list):
             continue
         else:
             next = tag_tuples_tmp
-            return (orig_word_tmp, next)
-    return (None, None)
+            return orig_word_tmp
+    return None

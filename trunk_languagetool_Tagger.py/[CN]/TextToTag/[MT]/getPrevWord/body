@@ -1,4 +1,4 @@
-def getPrevToken(self, i, tagged_list):
+def getPrevWord(self, i, tagged_list):
     'Find the token previous to the token at position i from tagged_list,\n\t\tignoring whitespace tokens. Return a tuple (word, tuple_list),\n\t\twhereas tuple_list is a list of (tag, tag_probability) tuples.'
     j = (i - 1)
     while (j >= 0):
@@ -8,5 +8,5 @@ def getPrevToken(self, i, tagged_list):
             continue
         else:
             prev = tag_tuples_tmp
-            return (orig_word_tmp, prev)
-    return (None, None)
+            return orig_word_tmp
+    return None
