@@ -2,6 +2,8 @@ import array
 import codecs
 import os
 import Tagger
+import Wfdeu
+import Wfhun
 from string import *
 import time
 import sys
