@@ -4,19 +4,29 @@ def testToken(self):
     assert (not rule.negation)
     assert rule.is_tag
     assert (not rule.is_word)
+    assert (not rule.is_chunk)
     rule = Rules.Token('"word"')
     self.assertEqual(rule.token, 'word')
     assert (not rule.negation)
     assert (not rule.is_tag)
     assert rule.is_word
+    assert (not rule.is_chunk)
     rule = Rules.Token('^(NN)')
     self.assertEqual(rule.token, '(NN)')
     assert rule.negation
     assert rule.is_tag
     assert (not rule.is_word)
+    assert (not rule.is_chunk)
     rule = Rules.Token('^"word"')
     self.assertEqual(rule.token, 'word')
     assert rule.negation
     assert (not rule.is_tag)
     assert rule.is_word
+    assert (not rule.is_chunk)
+    rule = Rules.Token('_NP')
+    self.assertEqual(rule.token, 'NP')
+    assert (not rule.negation)
+    assert (not rule.is_tag)
+    assert (not rule.is_word)
+    assert rule.is_chunk
     return
