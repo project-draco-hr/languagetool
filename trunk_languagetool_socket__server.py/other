@@ -1,5 +1,6 @@
 import TextChecker
 import config
+import ConfigParser
 import os
 import re
 import socket
@@ -7,8 +8,8 @@ import sys
 import time
 sys.path.append(os.path.join(config.BASEDIR, 'snakespell-1.01'))
 from scriptfoundry.snakespell import iSpell
-name = '127.0.0.1'
-port = 50100
+server_name = '127.0.0.1'
+server_port = 50100
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     os.chdir(config.BASEDIR)

@@ -1,0 +1,5 @@
+def loadOptionString(config, option_name, default):
+    val = default
+    if config.has_option('General', option_name):
+        val = config.get('General', option_name)
+    return val

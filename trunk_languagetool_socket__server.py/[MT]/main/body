@@ -1,10 +1,10 @@
 def main():
-    print ("Binding to '%s:%d'..." % (name, port))
-    s.bind((name, port))
+    print ("Binding to '%s:%d'..." % (server_name, server_port))
+    s.bind((server_name, server_port))
     print 'Listening...'
     s.listen(1)
     print 'Setting up Checker...'
-    checker = makeChecker()
+    checker = readConfig()
     print 'Ready...'
     while 1:
         (conn, addr) = s.accept()
@@ -14,13 +14,24 @@ def main():
             continue
         else:
             print ("Connected by '%s'" % addr[0])
-        data = conn.recv(1024)
+        l = []
+        limit = 1024
+        while 1:
+            data = conn.recv(limit)
+            l.append(data)
+            if ((not data) or (len(data) < limit)):
+                break
+        data = str.join('', l)
         print ("Received '%s'" % data)
+        if (data.find('<config') != (-1)):
+            del checker
+            (checker, data) = getConfig(data)
+            print 'New config activated'
         t1 = time.time()
         check_result = checkWords(checker, data)
         t2 = (time.time() - t1)
-        print ("Replying (%.2fs) '%s'" % (t2, check_result))
-        conn.send(check_result)
+        print ("Replying (%.2fs) '%s'" % (t2, check_result.encode('utf8')))
+        conn.send(check_result.encode('utf8'))
         conn.close()
     s.close()
     return

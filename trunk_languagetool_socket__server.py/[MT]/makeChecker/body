@@ -1,9 +1,4 @@
-def makeChecker():
-    grammar_cfg = None
-    falsefriends_cfg = None
-    words_cfg = None
-    textlanguage = None
-    mothertongue = None
-    max_sentence_length = None
-    checker = TextChecker.TextChecker(grammar_cfg, falsefriends_cfg, words_cfg, textlanguage, mothertongue, max_sentence_length)
+def makeChecker(grammar_cfg=None, falsefriends_cfg=None, words_cfg=None, builtin_cfg=None, textlanguage=None, mothertongue=None, max_sentence_length=None):
+    'Create a new TextChecker object and return it.'
+    checker = TextChecker.TextChecker(grammar_cfg, falsefriends_cfg, words_cfg, builtin_cfg, textlanguage, mothertongue, max_sentence_length)
     return checker

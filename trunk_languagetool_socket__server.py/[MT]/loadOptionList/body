@@ -1,0 +1,8 @@
+def loadOptionList(config, enable_name, option_name):
+    val = None
+    if (config.has_option('General', enable_name) and config.getboolean('General', enable_name)):
+        if config.has_option('General', option_name):
+            val = re.split(',', config.get('General', option_name))
+    else:
+        val = ['NONE']
+    return val
