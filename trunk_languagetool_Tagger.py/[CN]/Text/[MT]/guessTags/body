@@ -20,7 +20,7 @@ def guessTags(self, word):
     for suffix in adj:
         if word.endswith(suffix):
             return 'AJ0'
-    verb = ['ize', 'ise', 'ate', 'ify', 'fy']
+    verb = ['ize', 'ise', 'ate', 'fy']
     for suffix in verb:
         if word.endswith(suffix):
             return 'VVI'

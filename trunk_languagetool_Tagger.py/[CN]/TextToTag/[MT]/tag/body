@@ -48,7 +48,6 @@ def tag(self, data_table, seqs_table_followed_by, seqs_table_follows):
     tagged_list.append(self.DUMMY)
     tagged_list.append(self.DUMMY)
     result_tuple_list = self.selectTagsByContext(tagged_list, seqs_table_followed_by, seqs_table_follows, tagged_list_bnc, is_bnc, data_table)
-    print result_tuple_list
     i = 0
     for tag_triple in result_tuple_list:
         triple = self.applyTagRules(tag_triple[0], tag_triple[1], tag_triple[2])

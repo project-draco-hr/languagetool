@@ -1,5 +1,0 @@
-def getName(self, x):
-    if (x == None):
-        return 'None'
-    else:
-        return x[0]
