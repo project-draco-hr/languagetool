@@ -1,4 +1,0 @@
-def __init__(self):
-    'Init the object by loading the abbreviation list.'
-    self.abbr = self.loadAbbreviations()
-    return

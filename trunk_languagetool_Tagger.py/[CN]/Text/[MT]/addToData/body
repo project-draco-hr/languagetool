@@ -1,5 +1,0 @@
-def addToData(self, tagged_words, data_table, seqs_table_followed_by, seqs_table_follows):
-    'Count words and POS tags so they can later be added\n\t\tto the persistent storage.'
-    tag_list = self.addWords(tagged_words, data_table)
-    self.addTagSequences(tag_list, seqs_table_followed_by, seqs_table_follows)
-    return

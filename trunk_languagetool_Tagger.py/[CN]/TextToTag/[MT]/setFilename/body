@@ -1,5 +1,0 @@
-def setFilename(self, filename):
-    f = open(filename)
-    self.text = f.read()
-    f.close()
-    return

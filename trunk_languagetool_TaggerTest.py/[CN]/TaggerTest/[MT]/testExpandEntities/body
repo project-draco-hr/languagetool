@@ -1,7 +1,0 @@
-def testExpandEntities(self):
-    tagger = Tagger.Text()
-    r = tagger.expandEntities('')
-    self.assertEqual(r, '')
-    r = tagger.expandEntities('bla &amp;&amp;')
-    self.assertEqual(r, 'bla &&')
-    return

@@ -1,9 +1,0 @@
-def getNextTriple(self, tagged_words, pos):
-    'Get the next triple form the tagged_words list, starting at\n\t\tpos but ignoring all SENT_START and SENT_END tags.'
-    tag = tagged_words[pos][2]
-    while ((tag == 'SENT_START') or (tag == 'SENT_END')):
-        pos = (pos + 1)
-        if (pos >= len(tagged_words)):
-            return None
-        tag = tagged_words[pos][2]
-    return tagged_words[pos]

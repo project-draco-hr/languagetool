@@ -1,2 +1,0 @@
-def upper(self, match):
-    return ('<em>%s' % match.group(1)[0].upper())

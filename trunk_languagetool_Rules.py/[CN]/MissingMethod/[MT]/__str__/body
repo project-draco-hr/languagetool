@@ -1,3 +1,0 @@
-def __str__(self):
-    s = ("The '%s' method needs to be implemented in %s" % (self.value, self.filename))
-    return s

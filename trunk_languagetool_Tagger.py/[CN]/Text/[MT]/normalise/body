@@ -1,5 +1,0 @@
-def normalise(self, text):
-    'Take a string and remove XML markup and whitespace at the beginning \n\t\tand the end. Return the modified string.'
-    text = re.compile('<.*?>', (re.DOTALL | re.IGNORECASE)).sub('', text)
-    text = text.strip()
-    return text

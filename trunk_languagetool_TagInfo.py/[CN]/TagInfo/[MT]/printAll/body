@@ -1,7 +1,0 @@
-def printAll(self):
-    for (tag_short, tag_exp) in self.tags:
-        if tag_short:
-            print ('%s: %s' % (tag_short, tag_exp))
-        else:
-            print 
-    return

@@ -1,6 +1,0 @@
-def __init__(self, word, table):
-    self.word = word
-    self.table = {}
-    for el in table:
-        self.table[el] = table[el]
-    return

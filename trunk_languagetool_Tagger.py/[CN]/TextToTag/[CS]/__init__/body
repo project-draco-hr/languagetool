@@ -1,4 +1,0 @@
-def __init__(self):
-    self.text = None
-    Text.__init__(self)
-    return

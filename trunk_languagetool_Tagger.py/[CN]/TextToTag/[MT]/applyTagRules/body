@@ -1,3 +1,0 @@
-def applyTagRules(self, curr_word, tagged_word, curr_tag):
-    'Some hard-coded and manually written rules that extent the\n\t\ttagging. Returns a (word, normalized_word, tag) triple.'
-    return None

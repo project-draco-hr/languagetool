@@ -1,4 +1,0 @@
-def loadOptionBoolean(config, option_name):
-    if (config.has_option('General', option_name) and config.getboolean('General', option_name)):
-        return 1
-    return None

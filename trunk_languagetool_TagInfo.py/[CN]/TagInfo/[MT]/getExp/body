@@ -1,5 +1,0 @@
-def getExp(self, short_tag_search):
-    for (tag_short, tag_exp) in self.tags:
-        if (short_tag_search == tag_short):
-            return tag_exp
-    return None

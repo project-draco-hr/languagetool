@@ -1,7 +1,0 @@
-def cleanListAll(self, l):
-    "Return a copy of the list with 'None' elements (e.g. whitespace)\n\t\tremoved. Also, only the last element of each triple is copied."
-    new_list = []
-    for el in l:
-        if el[1]:
-            new_list.append(el[2])
-    return new_list
