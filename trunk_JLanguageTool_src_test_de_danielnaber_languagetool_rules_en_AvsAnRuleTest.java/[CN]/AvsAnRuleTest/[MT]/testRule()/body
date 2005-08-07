@@ -1,0 +1,26 @@
+{
+  AvsAnRule rule=new AvsAnRule();
+  RuleMatch[] matches;
+  matches=rule.match(TestTools.getAnaylzedText("This is a test sentence."));
+  assertEquals(0,matches.length);
+  matches=rule.match(TestTools.getAnaylzedText("It was an hour ago."));
+  assertEquals(0,matches.length);
+  matches=rule.match(TestTools.getAnaylzedText("A university is ..."));
+  assertEquals(0,matches.length);
+  matches=rule.match(TestTools.getAnaylzedText("It was a hour ago."));
+  assertEquals(1,matches.length);
+  matches=rule.match(TestTools.getAnaylzedText("It was an sentence that's long."));
+  assertEquals(1,matches.length);
+  matches=rule.match(TestTools.getAnaylzedText("It was a uninteresting talk."));
+  assertEquals(1,matches.length);
+  matches=rule.match(TestTools.getAnaylzedText("An university"));
+  assertEquals(1,matches.length);
+  matches=rule.match(TestTools.getAnaylzedText("A unintersting ..."));
+  assertEquals(1,matches.length);
+  matches=rule.match(TestTools.getAnaylzedText("It was a uninteresting talk with an long sentence."));
+  assertEquals(2,matches.length);
+  matches=rule.match(TestTools.getAnaylzedText("A university"));
+  assertEquals(0,matches.length);
+  matches=rule.match(TestTools.getAnaylzedText("then an university sdoj fixme sdoopsd"));
+  assertEquals(1,matches.length);
+}

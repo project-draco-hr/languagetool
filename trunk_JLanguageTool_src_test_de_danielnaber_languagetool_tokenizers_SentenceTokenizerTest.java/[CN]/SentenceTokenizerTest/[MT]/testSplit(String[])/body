@@ -1,0 +1,13 @@
+{
+  StringBuffer inputString=new StringBuffer();
+  Vector input=new Vector();
+  for (int i=0; i < sentences.length; i++) {
+    input.add(sentences[i]);
+  }
+  for (Iterator iter=input.iterator(); iter.hasNext(); ) {
+    String s=(String)iter.next();
+    inputString.append(s);
+  }
+  SentenceTokenizer stokenizer=new SentenceTokenizer();
+  assertEquals(input,stokenizer.tokenize(inputString.toString()));
+}

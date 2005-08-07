@@ -1,0 +1,43 @@
+{
+  List ruleMatches=new ArrayList();
+  List tokens=text.getTokens();
+  if (patternElements == null) {
+    patternElements=getPatternElements(pattern);
+  }
+  int tokenPos=0;
+  for (Iterator iter=tokens.iterator(); iter.hasNext(); ) {
+    String token=(String)iter.next();
+    if (token.trim().equals("")) {
+    }
+ else {
+      boolean allElementsMatch=true;
+      for (int i=0; i < patternElements.length; i++) {
+        Element elem=patternElements[i];
+        int nextPos=getNextTokenPosition(tokens,tokenPos + i);
+        if (nextPos == -1) {
+          allElementsMatch=false;
+          break;
+        }
+        String matchToken=(String)tokens.get(nextPos);
+        System.err.println(elem + " matches? " + matchToken);
+        if (!elem.match(matchToken)) {
+          allElementsMatch=false;
+          System.err.println("NOMATCH: " + this);
+          break;
+        }
+ else {
+          System.err.println("MATCH: " + this);
+        }
+      }
+      if (allElementsMatch) {
+        System.out.println("------>Match: " + this);
+        int startPos=0;
+        int endPos=0;
+        RuleMatch ruleMatch=new RuleMatch(this,startPos,endPos,description);
+        ruleMatches.add(ruleMatch);
+      }
+    }
+    tokenPos++;
+  }
+  return (RuleMatch[])ruleMatches.toArray(new RuleMatch[0]);
+}

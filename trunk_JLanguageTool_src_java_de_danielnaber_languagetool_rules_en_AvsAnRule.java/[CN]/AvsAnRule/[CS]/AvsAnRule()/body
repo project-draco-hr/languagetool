@@ -1,0 +1,5 @@
+{
+  String path="rules" + File.separator + "en"+ File.separator;
+  requiresA=loadWords(path + "det_a.txt");
+  requiresAn=loadWords(path + "det_an.txt");
+}

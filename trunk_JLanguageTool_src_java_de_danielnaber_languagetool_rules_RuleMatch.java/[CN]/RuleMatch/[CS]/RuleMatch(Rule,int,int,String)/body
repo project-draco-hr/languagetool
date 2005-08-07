@@ -1,0 +1,6 @@
+{
+  this.rule=rule;
+  this.fromPos=fromPos;
+  this.toPos=toPos;
+  this.message=message;
+}

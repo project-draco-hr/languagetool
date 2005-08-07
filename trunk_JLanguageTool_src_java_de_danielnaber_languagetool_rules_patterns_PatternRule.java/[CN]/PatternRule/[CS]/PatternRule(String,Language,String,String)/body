@@ -1,0 +1,6 @@
+{
+  this.id=id;
+  this.language=language;
+  this.pattern=pattern;
+  this.description=description;
+}

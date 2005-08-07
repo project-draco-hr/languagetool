@@ -1,0 +1,6 @@
+{
+  WordTokenizer wtokenizer=new WordTokenizer();
+  List tokens=wtokenizer.tokenize(sentence);
+  AnalyzedSentence text=new AnalyzedSentence(tokens);
+  return text;
+}

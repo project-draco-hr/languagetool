@@ -1,0 +1,4 @@
+{
+  PatternRuleLoader ruleLoader=new PatternRuleLoader();
+  return ruleLoader.getRules(filename);
+}

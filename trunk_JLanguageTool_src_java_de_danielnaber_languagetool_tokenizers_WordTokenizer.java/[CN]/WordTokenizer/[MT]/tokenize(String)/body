@@ -1,0 +1,8 @@
+{
+  List l=new ArrayList();
+  StringTokenizer st=new StringTokenizer(text," ,.;()!?:",true);
+  while (st.hasMoreElements()) {
+    l.add(st.nextElement());
+  }
+  return l;
+}

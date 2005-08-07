@@ -1,0 +1,16 @@
+{
+  if (namespaceURI == null)   namespaceURI=null;
+  if (lName == null)   lName=null;
+  if (qName.equals("rule")) {
+    if (attrs != null) {
+      id=attrs.getValue("id");
+      description=attrs.getValue("name");
+    }
+  }
+ else   if (qName.equals("pattern")) {
+    inPattern=true;
+    if (attrs != null) {
+      languageStr=attrs.getValue("lang");
+    }
+  }
+}

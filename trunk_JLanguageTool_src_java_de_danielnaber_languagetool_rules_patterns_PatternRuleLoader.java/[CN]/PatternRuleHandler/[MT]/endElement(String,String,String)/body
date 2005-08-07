@@ -1,0 +1,18 @@
+{
+  if (namespaceURI == null)   namespaceURI=null;
+  if (sName == null)   sName=null;
+  Language language;
+  if (qName.equals("rule")) {
+    if (Language.LANGUAGES.containsKey(languageStr)) {
+      language=(Language)Language.LANGUAGES.get(languageStr);
+    }
+ else {
+      throw new SAXException("Unknown language '" + languageStr + "'");
+    }
+    Rule rule=new PatternRule(id,language,pattern,description);
+    rules.add(rule);
+  }
+ else   if (qName.equals("pattern")) {
+    inPattern=false;
+  }
+}

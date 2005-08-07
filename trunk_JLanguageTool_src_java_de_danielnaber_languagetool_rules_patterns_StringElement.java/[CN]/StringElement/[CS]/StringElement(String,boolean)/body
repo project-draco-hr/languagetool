@@ -1,0 +1,4 @@
+{
+  this.tokens=new String[]{token};
+  this.caseSensitive=caseSensitive;
+}

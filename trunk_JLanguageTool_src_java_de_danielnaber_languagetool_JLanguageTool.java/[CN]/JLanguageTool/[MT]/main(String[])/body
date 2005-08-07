@@ -1,0 +1,21 @@
+{
+  if (args.length < 1) {
+    System.out.println("Usage: java JLanguageTool <file>");
+    System.exit(1);
+  }
+  JLanguageTool lt=new JLanguageTool();
+  List patternRules=lt.loadPatternRules(DEFAULT_GRAMMAR_RULES);
+  for (Iterator iter=patternRules.iterator(); iter.hasNext(); ) {
+    Rule rule=(Rule)iter.next();
+    lt.addRule(rule);
+  }
+  String filename=args[0];
+  List ruleMatches=lt.check(filename);
+  String fileContents=lt.readFile(filename);
+  for (Iterator iter=ruleMatches.iterator(); iter.hasNext(); ) {
+    RuleMatch match=(RuleMatch)iter.next();
+    System.out.println(match);
+    System.out.println(lt.getContext(match.getFromPos(),match.getToPos(),fileContents));
+    if (iter.hasNext())     System.out.println();
+  }
+}

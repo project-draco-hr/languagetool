@@ -1,0 +1,6 @@
+{
+  String s=new String(buf,offset,len);
+  if (inPattern) {
+    pattern=s;
+  }
+}

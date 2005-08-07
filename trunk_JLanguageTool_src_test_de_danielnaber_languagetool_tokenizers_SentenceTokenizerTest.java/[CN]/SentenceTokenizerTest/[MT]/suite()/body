@@ -1,0 +1,5 @@
+{
+  TestSuite suite=new TestSuite("SentenceTokenizerTest");
+  suite.addTestSuite(SentenceTokenizerTest.class);
+  return suite;
+}

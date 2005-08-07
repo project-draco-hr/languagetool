@@ -1,0 +1,3 @@
+{
+  builtinRules=new Rule[]{new AvsAnRule(),new CommaWhitespaceRule()};
+}
