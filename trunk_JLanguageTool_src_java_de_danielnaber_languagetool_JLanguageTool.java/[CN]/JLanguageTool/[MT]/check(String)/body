@@ -9,15 +9,22 @@
   for (Iterator iter=sentences.iterator(); iter.hasNext(); ) {
     String sentence=(String)iter.next();
     List tokens=wtokenizer.tokenize(sentence);
-    AnalyzedSentence analyzedText=new AnalyzedSentence(tokens);
+    AnalyzedToken[] tokenArray=new AnalyzedToken[tokens.size()];
+    int toArrayCount=0;
+    int startPos=0;
+    for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
+      String tokenStr=(String)iterator.next();
+      tokenArray[toArrayCount]=new AnalyzedToken(tokenStr,"FIXME",startPos);
+      toArrayCount++;
+      startPos+=tokenStr.length();
+    }
+    AnalyzedSentence analyzedText=new AnalyzedSentence(tokenArray);
     for (Iterator iterator=allRules.iterator(); iterator.hasNext(); ) {
       Rule rule=(Rule)iterator.next();
       if (disabledRules.contains(rule.getId()))       continue;
       RuleMatch[] thisMatches=rule.match(analyzedText);
       for (int i=0; i < thisMatches.length; i++) {
-        System.err.println("OLDMATCH=" + thisMatches[i]);
         RuleMatch thisMatch=new RuleMatch(thisMatches[i].getRule(),thisMatches[i].getFromPos() + tokenCount,thisMatches[i].getToPos() + tokenCount,thisMatches[i].getMessage());
-        System.err.println("NEWMATCH=" + thisMatch);
         ruleMatches.add(thisMatch);
       }
     }

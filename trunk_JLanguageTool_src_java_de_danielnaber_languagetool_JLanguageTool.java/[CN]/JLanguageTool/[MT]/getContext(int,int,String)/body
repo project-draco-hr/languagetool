@@ -1,6 +1,5 @@
 {
-  final int contextSize=15;
-  int startContent=fromPos - contextSize;
+  int startContent=fromPos - CONTEXT_SIZE;
   String prefix="...";
   String postfix="...";
   String markerPrefix="   ";
@@ -9,7 +8,7 @@
     markerPrefix="";
     startContent=0;
   }
-  int endContent=toPos + contextSize;
+  int endContent=toPos + CONTEXT_SIZE;
   if (endContent > fileContents.length()) {
     postfix="";
     endContent=fileContents.length();
