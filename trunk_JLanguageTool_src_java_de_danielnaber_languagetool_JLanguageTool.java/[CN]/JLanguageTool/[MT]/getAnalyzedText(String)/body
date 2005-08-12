@@ -1,0 +1,28 @@
+{
+  WordTokenizer wtokenizer=new WordTokenizer();
+  List tokens=wtokenizer.tokenize(sentence);
+  List noWhitespaceTokens=new ArrayList();
+  for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
+    String token=(String)iterator.next();
+    if (!token.trim().equals("")) {
+      noWhitespaceTokens.add(token);
+    }
+  }
+  List posTags=tagger.tag(noWhitespaceTokens);
+  AnalyzedToken[] tokenArray=new AnalyzedToken[tokens.size()];
+  int toArrayCount=0;
+  int startPos=0;
+  int noWhitespaceCount=0;
+  for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
+    String tokenStr=(String)iterator.next();
+    String posTag=null;
+    if (!tokenStr.trim().equals("")) {
+      posTag=(String)posTags.get(noWhitespaceCount);
+      noWhitespaceCount++;
+    }
+    tokenArray[toArrayCount]=new AnalyzedToken(tokenStr,posTag,startPos);
+    toArrayCount++;
+    startPos+=tokenStr.length();
+  }
+  return new AnalyzedSentence(tokenArray);
+}

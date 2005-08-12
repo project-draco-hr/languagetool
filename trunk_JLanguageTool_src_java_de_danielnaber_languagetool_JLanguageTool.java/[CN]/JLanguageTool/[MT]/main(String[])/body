@@ -1,21 +1,34 @@
 {
-  if (args.length < 1) {
-    System.out.println("Usage: java JLanguageTool <file>");
-    System.exit(1);
+  if (args.length < 1 || args.length > 2) {
+    exitWithUsageMessagee();
   }
+  String filename=null;
+  boolean verbose=false;
+  if (args.length == 2) {
+    if (args[0].equals("-v") || args[0].equals("--verbose"))     filename=args[1];
+ else     exitWithUsageMessagee();
+    verbose=true;
+  }
+ else {
+    filename=args[0];
+  }
+  long startTime=System.currentTimeMillis();
   JLanguageTool lt=new JLanguageTool();
   List patternRules=lt.loadPatternRules(DEFAULT_GRAMMAR_RULES);
   for (Iterator iter=patternRules.iterator(); iter.hasNext(); ) {
     Rule rule=(Rule)iter.next();
     lt.addRule(rule);
   }
-  String filename=args[0];
+  if (verbose)   lt.setOutput(System.err);
   List ruleMatches=lt.check(filename);
   String fileContents=lt.readFile(filename);
+  long startTimeMatching=System.currentTimeMillis();
   for (Iterator iter=ruleMatches.iterator(); iter.hasNext(); ) {
     RuleMatch match=(RuleMatch)iter.next();
     System.out.println(match);
     System.out.println(lt.getContext(match.getFromPos(),match.getToPos(),fileContents));
     if (iter.hasNext())     System.out.println();
   }
+  long endTime=System.currentTimeMillis();
+  System.out.println("Time: " + (endTime - startTime) + "ms (including "+ (endTime - startTimeMatching)+ "ms for rule matching)");
 }

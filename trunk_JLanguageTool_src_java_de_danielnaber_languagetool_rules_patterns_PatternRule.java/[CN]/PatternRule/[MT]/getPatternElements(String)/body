@@ -13,8 +13,12 @@
       StringElement stringElement=new StringElement(tokenParts,false);
       elements.add(stringElement);
     }
+ else     if (element.toUpperCase().equals(element)) {
+      POSElement posElement=new POSElement(element);
+      elements.add(posElement);
+    }
  else {
-      throw new IllegalArgumentException("Unknown type in pattern: " + pattern);
+      throw new IllegalArgumentException("Unknown type " + element + " in pattern: "+ pattern);
     }
   }
   return (Element[])elements.toArray(new Element[0]);
