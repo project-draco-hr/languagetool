@@ -1,7 +1,6 @@
 {
   PatternRule pr;
   RuleMatch[] matches;
-  JLanguageTool langTool=new JLanguageTool();
   pr=new PatternRule("ID1",Language.ENGLISH,"\"one\"","test rule");
   matches=pr.match(langTool.getAnalyzedText("A non-matching sentence."));
   assertEquals(0,matches.length);
