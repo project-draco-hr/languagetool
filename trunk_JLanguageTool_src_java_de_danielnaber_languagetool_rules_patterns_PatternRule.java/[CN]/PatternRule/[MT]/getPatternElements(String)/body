@@ -14,7 +14,8 @@
       elements.add(stringElement);
     }
  else     if (element.toUpperCase().equals(element)) {
-      POSElement posElement=new POSElement(element);
+      String tokenParts[]=element.split("\\|");
+      POSElement posElement=new POSElement(tokenParts);
       elements.add(posElement);
     }
  else {
