@@ -1,0 +1,13 @@
+{
+  WordRepeatRule rule=new WordRepeatRule();
+  RuleMatch[] matches;
+  JLanguageTool langTool=new JLanguageTool();
+  matches=rule.match(langTool.getAnalyzedText("This is a test sentence."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedText("This this is a test sentence."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedText("This is a test sentence sentence."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedText("This is is a a test sentence sentence."));
+  assertEquals(3,matches.length);
+}

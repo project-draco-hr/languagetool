@@ -1,0 +1,3 @@
+{
+  return "Avoid repeating of words (e.g. \"the the\")";
+}

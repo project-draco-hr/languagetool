@@ -1,4 +1,4 @@
 {
-  builtinRules=new Rule[]{new AvsAnRule(),new CommaWhitespaceRule()};
+  builtinRules=new Rule[]{new AvsAnRule(),new CommaWhitespaceRule(),new WordRepeatRule()};
   tagger=new EnglishPOSTaggerME();
 }
