@@ -13,4 +13,12 @@
       languageStr=attrs.getValue("lang");
     }
   }
+ else   if (qName.equals("example") && attrs.getValue("type").equals("correct")) {
+    inCorrectExample=true;
+    correctExample=new StringBuffer();
+  }
+ else   if (qName.equals("example") && attrs.getValue("type").equals("incorrect")) {
+    inIncorrectExample=true;
+    incorrectExample=new StringBuffer();
+  }
 }

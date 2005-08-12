@@ -3,4 +3,10 @@
   if (inPattern) {
     pattern=s;
   }
+ else   if (inCorrectExample) {
+    correctExample.append(s);
+  }
+ else   if (inIncorrectExample) {
+    incorrectExample.append(s);
+  }
 }

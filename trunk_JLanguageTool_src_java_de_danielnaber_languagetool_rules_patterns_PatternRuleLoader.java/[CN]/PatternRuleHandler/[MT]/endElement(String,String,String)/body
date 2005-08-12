@@ -10,9 +10,15 @@
       throw new SAXException("Unknown language '" + languageStr + "'");
     }
     Rule rule=new PatternRule(id,language,pattern,description);
+    rule.setCorrectExample(correctExample.toString());
+    rule.setIncorrectExample(incorrectExample.toString());
     rules.add(rule);
   }
  else   if (qName.equals("pattern")) {
     inPattern=false;
+  }
+ else   if (qName.equals("example")) {
+    inCorrectExample=false;
+    inIncorrectExample=false;
   }
 }
