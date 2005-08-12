@@ -1,12 +1,13 @@
 {
   CommaWhitespaceRule rule=new CommaWhitespaceRule();
   RuleMatch[] matches;
-  matches=rule.match(TestTools.getAnaylzedText("This is a test sentence."));
+  JLanguageTool langTool=new JLanguageTool();
+  matches=rule.match(langTool.getAnalyzedText("This is a test sentence."));
   assertEquals(0,matches.length);
-  matches=rule.match(TestTools.getAnaylzedText("This, is, a test sentence."));
+  matches=rule.match(langTool.getAnalyzedText("This, is, a test sentence."));
   assertEquals(0,matches.length);
-  matches=rule.match(TestTools.getAnaylzedText("This , is a test sentence."));
+  matches=rule.match(langTool.getAnalyzedText("This , is a test sentence."));
   assertEquals(1,matches.length);
-  matches=rule.match(TestTools.getAnaylzedText("This ,is a test sentence."));
+  matches=rule.match(langTool.getAnalyzedText("This ,is a test sentence."));
   assertEquals(1,matches.length);
 }
