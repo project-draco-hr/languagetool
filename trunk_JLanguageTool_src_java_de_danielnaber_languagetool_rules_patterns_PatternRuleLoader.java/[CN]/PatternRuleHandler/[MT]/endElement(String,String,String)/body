@@ -9,9 +9,10 @@
  else {
       throw new SAXException("Unknown language '" + languageStr + "'");
     }
-    Rule rule=new PatternRule(id,language,pattern,description);
+    PatternRule rule=new PatternRule(id,language,pattern,description);
     rule.setCorrectExample(correctExample.toString());
     rule.setIncorrectExample(incorrectExample.toString());
+    rule.setCaseSensitive(caseSensitive);
     rules.add(rule);
   }
  else   if (qName.equals("pattern")) {

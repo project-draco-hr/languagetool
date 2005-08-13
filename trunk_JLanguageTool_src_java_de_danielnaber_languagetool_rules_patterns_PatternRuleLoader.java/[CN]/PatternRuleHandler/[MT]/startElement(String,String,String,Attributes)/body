@@ -11,6 +11,7 @@
     inPattern=true;
     if (attrs != null) {
       languageStr=attrs.getValue("lang");
+      if (attrs.getValue("case_sensitive") != null && attrs.getValue("case_sensitive").equals("yes"))       caseSensitive=true;
     }
   }
  else   if (qName.equals("example") && attrs.getValue("type").equals("correct")) {
