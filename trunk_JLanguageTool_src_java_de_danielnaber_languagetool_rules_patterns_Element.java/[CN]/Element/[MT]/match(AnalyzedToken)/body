@@ -1,0 +1,4 @@
+{
+  if (negation)   return !matchToken(token);
+ else   return matchToken(token);
+}

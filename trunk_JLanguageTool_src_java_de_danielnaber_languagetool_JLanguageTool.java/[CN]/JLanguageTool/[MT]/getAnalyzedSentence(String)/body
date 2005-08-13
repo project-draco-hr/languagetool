@@ -9,8 +9,10 @@
     }
   }
   List posTags=tagger.tag(noWhitespaceTokens);
-  AnalyzedToken[] tokenArray=new AnalyzedToken[tokens.size()];
+  AnalyzedToken[] tokenArray=new AnalyzedToken[tokens.size() + 1];
   int toArrayCount=0;
+  AnalyzedToken sentenceStartToken=new AnalyzedToken("","SENT_START",0);
+  tokenArray[toArrayCount++]=sentenceStartToken;
   int startPos=0;
   int noWhitespaceCount=0;
   for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
@@ -20,8 +22,8 @@
       posTag=(String)posTags.get(noWhitespaceCount);
       noWhitespaceCount++;
     }
-    tokenArray[toArrayCount]=new AnalyzedToken(tokenStr,posTag,startPos);
-    toArrayCount++;
+    AnalyzedToken analyzedToken=new AnalyzedToken(tokenStr,posTag,startPos);
+    tokenArray[toArrayCount++]=analyzedToken;
     startPos+=tokenStr.length();
   }
   return new AnalyzedSentence(tokenArray);

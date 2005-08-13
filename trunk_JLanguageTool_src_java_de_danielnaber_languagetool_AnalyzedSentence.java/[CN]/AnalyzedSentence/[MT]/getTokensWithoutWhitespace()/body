@@ -2,7 +2,7 @@
   List l=new ArrayList();
   for (int i=0; i < tokens.length; i++) {
     AnalyzedToken token=tokens[i];
-    if (!token.isWhitespace()) {
+    if (!token.isWhitespace() || (token.getPOSTag() != null && token.getPOSTag().equals("SENT_START"))) {
       l.add(token);
     }
   }

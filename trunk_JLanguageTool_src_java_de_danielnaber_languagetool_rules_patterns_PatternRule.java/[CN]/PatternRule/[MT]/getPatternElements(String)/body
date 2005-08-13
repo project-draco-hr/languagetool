@@ -7,15 +7,22 @@
     if (element.startsWith("\"") && !element.endsWith("\"") || element.endsWith("\"") && !element.startsWith("\"")) {
       throw new IllegalArgumentException("Invalid pattern '" + pattern + "': unbalanced quote");
     }
+    boolean negation=false;
+    if (element.startsWith("^")) {
+      negation=true;
+      element=element.substring(1);
+    }
     if (element.startsWith("\"") && element.endsWith("\"")) {
       element=element.substring(1,element.length() - 1);
       String tokenParts[]=element.split("\\|");
       StringElement stringElement=new StringElement(tokenParts,false);
+      stringElement.setNegation(negation);
       elements.add(stringElement);
     }
  else     if (element.toUpperCase().equals(element)) {
       String tokenParts[]=element.split("\\|");
       POSElement posElement=new POSElement(tokenParts);
+      posElement.setNegation(negation);
       elements.add(posElement);
     }
  else {
