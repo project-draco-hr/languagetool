@@ -1,0 +1,34 @@
+{
+  List ruleMatches=new ArrayList();
+  AnalyzedToken[] tokens=text.getTokens();
+  int pos=0;
+  boolean foundSpiegelt=false;
+  boolean foundWieder=false;
+  boolean foundWider=false;
+  for (int i=0; i < tokens.length; i++) {
+    String token=tokens[i].getToken();
+    if (token.trim().equals("")) {
+    }
+ else {
+      if (token.equalsIgnoreCase("spiegelt") || token.equalsIgnoreCase("spiegeln")) {
+        foundSpiegelt=true;
+      }
+ else       if (token.equalsIgnoreCase("wieder")) {
+        foundWieder=true;
+      }
+ else       if (token.equalsIgnoreCase("wider")) {
+        foundWider=true;
+      }
+      if (foundSpiegelt && foundWieder && !foundWider) {
+        String msg="<i>wieder</i> in <i>widerspiegeln</i> wird mit <i>i</i> statt mit <i>ie</i> " + "geschrieben, z.B. <i>Das spiegelt die Situation wider.</i>";
+        RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),msg);
+        ruleMatches.add(ruleMatch);
+        foundSpiegelt=false;
+        foundWieder=false;
+        foundWider=false;
+      }
+    }
+    pos+=token.length();
+  }
+  return toRuleMatchArray(ruleMatches);
+}
