@@ -1,4 +1,0 @@
-{
-  System.out.println("Usage: java JLanguageTool [-v|--verbove] <file>");
-  System.exit(1);
-}

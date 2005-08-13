@@ -1,9 +1,9 @@
 {
-  String s=readFile(filename);
   SentenceTokenizer sTokenizer=new SentenceTokenizer();
   List sentences=sTokenizer.tokenize(s);
   List ruleMatches=new ArrayList();
-  List allRules=getallRules();
+  List allRules=getAllRules();
+  print(allRules.size() + " rules activated for language " + language);
   int tokenCount=0;
   for (Iterator iter=sentences.iterator(); iter.hasNext(); ) {
     String sentence=(String)iter.next();

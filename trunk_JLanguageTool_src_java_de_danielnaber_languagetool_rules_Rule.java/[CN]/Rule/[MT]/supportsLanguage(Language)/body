@@ -1,0 +1,7 @@
+{
+  Language[] languages=getLanguages();
+  for (int i=0; i < languages.length; i++) {
+    if (language == languages[i])     return true;
+  }
+  return false;
+}

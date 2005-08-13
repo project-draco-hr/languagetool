@@ -11,7 +11,7 @@
  else {
       if (prevToken.toLowerCase().equals(token.toLowerCase())) {
         String msg="Don't repeat a word";
-        RuleMatch ruleMatch=new RuleMatch(this,prevPos,prevPos + prevToken.length(),msg);
+        RuleMatch ruleMatch=new RuleMatch(this,prevPos,pos + prevToken.length(),msg);
         ruleMatches.add(ruleMatch);
       }
       prevToken=token;

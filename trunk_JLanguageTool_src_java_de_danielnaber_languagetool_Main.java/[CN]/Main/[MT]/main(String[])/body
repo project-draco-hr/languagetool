@@ -1,0 +1,37 @@
+{
+  if (args.length < 1 || args.length > 4) {
+    exitWithUsageMessagee();
+  }
+  boolean verbose=false;
+  Language language=null;
+  String filename=null;
+  for (int i=0; i < args.length; i++) {
+    if (args[i].equals("-v") || args[i].equals("--verbose")) {
+      verbose=true;
+    }
+ else     if (args[i].equals("-l") || args[i].equals("--language")) {
+      String lang=args[++i];
+      if (lang.equals("en")) {
+        language=Language.ENGLISH;
+      }
+ else       if (lang.equals("de")) {
+        language=Language.GERMAN;
+      }
+ else {
+        exitWithUsageMessagee();
+      }
+    }
+ else {
+      filename=args[i];
+    }
+  }
+  if (filename == null) {
+    exitWithUsageMessagee();
+  }
+  if (language == null) {
+    System.err.println("No language specified, using English");
+    language=Language.ENGLISH;
+  }
+  Main prg=new Main();
+  prg.run(filename,verbose,language);
+}

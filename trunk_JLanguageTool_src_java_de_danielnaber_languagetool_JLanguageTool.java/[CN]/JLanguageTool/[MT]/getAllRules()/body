@@ -1,6 +1,6 @@
 {
   List rules=new ArrayList();
-  rules.addAll(Arrays.asList(builtinRules));
+  rules.addAll(builtinRules);
   rules.addAll(userRules);
   return rules;
 }

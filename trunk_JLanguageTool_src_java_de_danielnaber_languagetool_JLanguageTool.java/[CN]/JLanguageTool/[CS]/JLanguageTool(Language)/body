@@ -1,0 +1,11 @@
+{
+  if (language == null) {
+    throw new NullPointerException("language cannot be null");
+  }
+  this.language=language;
+  Rule[] allBuiltinRules=new Rule[]{new AvsAnRule(),new CommaWhitespaceRule(),new WordRepeatRule()};
+  for (int i=0; i < allBuiltinRules.length; i++) {
+    if (allBuiltinRules[i].supportsLanguage(language))     builtinRules.add(allBuiltinRules[i]);
+  }
+  tagger=new EnglishPOSTaggerME();
+}
