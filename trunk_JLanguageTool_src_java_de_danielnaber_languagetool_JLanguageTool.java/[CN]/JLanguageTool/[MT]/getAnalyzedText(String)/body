@@ -6,6 +6,7 @@
     String token=(String)iterator.next();
     if (!token.trim().equals("")) {
       noWhitespaceTokens.add(token);
+      System.err.println(">>>" + token + "<");
     }
   }
   List posTags=tagger.tag(noWhitespaceTokens);

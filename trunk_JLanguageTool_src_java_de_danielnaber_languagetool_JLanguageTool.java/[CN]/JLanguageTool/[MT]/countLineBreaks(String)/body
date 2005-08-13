@@ -1,0 +1,11 @@
+{
+  int pos=-1;
+  int count=0;
+  while (true) {
+    int nextPos=s.indexOf("\n",pos + 1);
+    if (nextPos == -1)     break;
+    pos=nextPos;
+    count++;
+  }
+  return count;
+}

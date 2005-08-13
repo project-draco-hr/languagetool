@@ -1,4 +1,5 @@
 {
+  fileContents=fileContents.replaceAll("\n"," ");
   int startContent=fromPos - CONTEXT_SIZE;
   String prefix="...";
   String postfix="...";
