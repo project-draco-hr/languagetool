@@ -1,0 +1,11 @@
+{
+  WordCoherencyRule rule=new WordCoherencyRule();
+  JLanguageTool langTool=new JLanguageTool(Language.GERMAN);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist aufwendig, aber nicht zu aufwendig.")).length);
+  rule.reset();
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist aufw??ndig, aber nicht zu aufw??ndig.")).length);
+  rule.reset();
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das ist aufwendig, aber nicht zu aufw??ndig.")).length);
+  rule.reset();
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das ist aufw??ndig, aber nicht zu aufwendig.")).length);
+}
