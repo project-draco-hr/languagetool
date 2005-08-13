@@ -1,8 +1,8 @@
 {
   WiederVsWiderRule rule=new WiederVsWiderRule();
   JLanguageTool langTool=new JLanguageTool(Language.GERMAN);
-  assertEquals(0,rule.match(langTool.getAnalyzedText("Das spiegelt wider, wie es wieder l??uft.")).length);
-  assertEquals(0,rule.match(langTool.getAnalyzedText("Das spiegelt die Situation gut wider.")).length);
-  assertEquals(1,rule.match(langTool.getAnalyzedText("Das spiegelt wieder, wie es wieder l??uft.")).length);
-  assertEquals(1,rule.match(langTool.getAnalyzedText("Das spiegelt die Situation gut wieder.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das spiegelt wider, wie es wieder l??uft.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das spiegelt die Situation gut wider.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das spiegelt wieder, wie es wieder l??uft.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das spiegelt die Situation gut wieder.")).length);
 }

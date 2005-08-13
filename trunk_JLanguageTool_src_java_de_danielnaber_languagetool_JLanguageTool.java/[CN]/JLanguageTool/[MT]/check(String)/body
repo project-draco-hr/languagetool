@@ -1,6 +1,6 @@
 {
   SentenceTokenizer sTokenizer=new SentenceTokenizer();
-  List sentences=sTokenizer.tokenize(s);
+  List sentences=sTokenizer.tokenize(test);
   List ruleMatches=new ArrayList();
   List allRules=getAllRules();
   printIfVerbose(allRules.size() + " rules activated for language " + language);
@@ -9,7 +9,7 @@
   int columnCount=0;
   for (Iterator iter=sentences.iterator(); iter.hasNext(); ) {
     String sentence=(String)iter.next();
-    AnalyzedSentence analyzedText=getAnalyzedText(sentence);
+    AnalyzedSentence analyzedText=getAnalyzedSentence(sentence);
     printIfVerbose(analyzedText.toString());
     for (Iterator iterator=allRules.iterator(); iterator.hasNext(); ) {
       Rule rule=(Rule)iterator.next();
