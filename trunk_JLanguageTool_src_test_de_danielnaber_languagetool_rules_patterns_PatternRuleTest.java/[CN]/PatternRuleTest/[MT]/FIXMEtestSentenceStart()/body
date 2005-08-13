@@ -1,0 +1,9 @@
+{
+  PatternRule pr;
+  RuleMatch[] matches;
+  pr=new PatternRule("ID1",Language.ENGLISH,"SENT_START \"One\"","test rule");
+  matches=pr.match(langTool.getAnalyzedSentence("Not One word."));
+  assertEquals(0,matches.length);
+  matches=pr.match(langTool.getAnalyzedSentence("One word."));
+  assertEquals(1,matches.length);
+}

@@ -1,0 +1,26 @@
+{
+  PatternRule pr;
+  RuleMatch[] matches;
+  pr=new PatternRule("ID1",Language.ENGLISH,"\"one\" ^\"two\"","test rule");
+  matches=pr.match(langTool.getAnalyzedSentence("Here's one two."));
+  assertEquals(0,matches.length);
+  matches=pr.match(langTool.getAnalyzedSentence("Here's one four."));
+  assertEquals(1,matches.length);
+  pr=new PatternRule("ID1",Language.ENGLISH,"\"one\" ^\"two|three\"","test rule");
+  matches=pr.match(langTool.getAnalyzedSentence("Here's one two."));
+  assertEquals(0,matches.length);
+  matches=pr.match(langTool.getAnalyzedSentence("Here's one three."));
+  assertEquals(0,matches.length);
+  matches=pr.match(langTool.getAnalyzedSentence("Here's one four."));
+  assertEquals(1,matches.length);
+  pr=new PatternRule("ID1",Language.ENGLISH,"SENT_START ^\"One\"","test rule");
+  matches=pr.match(langTool.getAnalyzedSentence("One two."));
+  assertEquals(0,matches.length);
+  matches=pr.match(langTool.getAnalyzedSentence("Two three."));
+  assertEquals(1,matches.length);
+  pr=new PatternRule("ID1",Language.ENGLISH,"\"One\" ^CD","test rule");
+  matches=pr.match(langTool.getAnalyzedSentence("One two."));
+  assertEquals(0,matches.length);
+  matches=pr.match(langTool.getAnalyzedSentence("One walk."));
+  assertEquals(1,matches.length);
+}
