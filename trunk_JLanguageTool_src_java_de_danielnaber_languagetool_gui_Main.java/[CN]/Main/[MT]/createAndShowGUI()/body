@@ -1,0 +1,38 @@
+{
+  JFrame frame=new JFrame("JLanguageTool Demo");
+  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  textArea=new JTextArea("This is a example input to to show you how JLanguageTool works. " + "Note, howeva, that it does not include a spell checka.");
+  textArea.setLineWrap(true);
+  textArea.setWrapStyleWord(true);
+  resultArea=new JTextPane();
+  resultArea.setContentType("text/html");
+  resultArea.setText("<html>Results will appear here</html>");
+  JLabel label=new JLabel("Please type or paste text to check in the top area");
+  JButton button=new JButton("Check text");
+  button.setMnemonic('c');
+  button.addActionListener(this);
+  Container contentPane=frame.getContentPane();
+  GridBagLayout gridLayout=new GridBagLayout();
+  contentPane.setLayout(gridLayout);
+  GridBagConstraints cons=new GridBagConstraints();
+  cons.fill=GridBagConstraints.BOTH;
+  cons.weightx=10.0f;
+  cons.weighty=10.0f;
+  cons.gridx=0;
+  cons.gridy=0;
+  contentPane.add(new JScrollPane(textArea),cons);
+  cons.gridy=1;
+  cons.weighty=5.0f;
+  contentPane.add(new JScrollPane(resultArea),cons);
+  cons.fill=GridBagConstraints.NONE;
+  cons.gridx=0;
+  cons.gridy=2;
+  cons.weighty=0.0f;
+  cons.insets=new Insets(3,3,3,3);
+  contentPane.add(label,cons);
+  cons.gridy=3;
+  contentPane.add(button,cons);
+  frame.pack();
+  frame.setSize(600,600);
+  frame.setVisible(true);
+}

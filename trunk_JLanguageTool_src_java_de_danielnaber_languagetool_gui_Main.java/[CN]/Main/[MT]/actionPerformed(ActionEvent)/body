@@ -1,0 +1,30 @@
+{
+  if (e == null)   ;
+  if (textArea.getText().trim().equals("")) {
+    textArea.setText("Please insert text to check here");
+  }
+ else {
+    StringBuffer sb=new StringBuffer();
+    resultArea.setText("<html>Starting check...<br>\n</html>");
+    resultArea.repaint();
+    sb.append("Starting check...<br>\n");
+    try {
+      checkText(textArea.getText(),Language.ENGLISH,sb);
+    }
+ catch (    IOException e1) {
+      sb.append(e1.toString());
+      e1.printStackTrace();
+    }
+catch (    ParserConfigurationException e1) {
+      sb.append(e1.toString());
+      e1.printStackTrace();
+    }
+catch (    SAXException e1) {
+      sb.append(e1.toString());
+      e1.printStackTrace();
+    }
+    sb.append("Check done.<br>\n");
+    resultArea.setText(sb.toString());
+    resultArea.setCaretPosition(0);
+  }
+}
