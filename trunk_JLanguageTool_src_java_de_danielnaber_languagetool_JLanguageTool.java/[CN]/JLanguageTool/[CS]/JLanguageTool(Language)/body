@@ -7,5 +7,5 @@
   for (int i=0; i < allBuiltinRules.length; i++) {
     if (allBuiltinRules[i].supportsLanguage(language))     builtinRules.add(allBuiltinRules[i]);
   }
-  tagger=new EnglishPOSTaggerME();
+  tagger=language.getTagger();
 }
