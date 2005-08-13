@@ -1,0 +1,14 @@
+{
+  JLanguageTool tool=new JLanguageTool(Language.GERMAN);
+  List matches=tool.check("Ein Test, der keine Fehler geben sollte.");
+  assertEquals(0,matches.size());
+  matches=tool.check("Ein Test Test, der Fehler geben sollte.");
+  assertEquals(1,matches.size());
+  List rules=tool.loadPatternRules("rules/de/grammar.xml");
+  for (Iterator iter=rules.iterator(); iter.hasNext(); ) {
+    Rule rule=(Rule)iter.next();
+    tool.addRule(rule);
+  }
+  matches=tool.check("I can give you more a detailed description");
+  assertEquals(0,matches.size());
+}
