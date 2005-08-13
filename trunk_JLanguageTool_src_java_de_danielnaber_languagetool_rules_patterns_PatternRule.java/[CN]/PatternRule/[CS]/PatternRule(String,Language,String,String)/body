@@ -1,6 +1,6 @@
 {
   this.id=id;
-  this.language=language;
+  this.language=new Language[]{language};
   this.pattern=pattern;
   this.description=description;
 }
