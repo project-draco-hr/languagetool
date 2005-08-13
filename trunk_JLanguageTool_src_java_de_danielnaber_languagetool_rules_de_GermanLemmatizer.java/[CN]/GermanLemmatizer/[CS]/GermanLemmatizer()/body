@@ -1,0 +1,3 @@
+{
+  fullform2baseform=loadWords(FILE_NAME);
+}

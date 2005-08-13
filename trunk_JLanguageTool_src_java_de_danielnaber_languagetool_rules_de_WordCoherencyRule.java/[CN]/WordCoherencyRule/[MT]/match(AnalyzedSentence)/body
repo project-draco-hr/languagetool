@@ -1,0 +1,30 @@
+{
+  List ruleMatches=new ArrayList();
+  AnalyzedToken[] tokens=text.getTokens();
+  int pos=0;
+  for (int i=0; i < tokens.length; i++) {
+    String token=tokens[i].getToken();
+    if (token.trim().equals("")) {
+    }
+ else {
+      String origToken=token;
+      String baseform=lemmatizer.getBaseform(token);
+      if (baseform != null)       token=baseform;
+      if (shouldNotAppearWord.containsKey(token)) {
+        RuleMatch otherMatch=(RuleMatch)shouldNotAppearWord.get(token);
+        String otherSpelling=otherMatch.getMessage();
+        String msg="You should probably not use <i>" + token + "</i> and <i>"+ otherSpelling+ "</i> in the same document, stick to one spelling";
+        RuleMatch ruleMatch=new RuleMatch(this,pos,pos + origToken.length(),msg);
+        ruleMatches.add(ruleMatch);
+      }
+ else       if (relevantWords.containsKey(token)) {
+        String shouldNotAppear=(String)relevantWords.get(token);
+        String msg=token;
+        RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + origToken.length(),msg);
+        shouldNotAppearWord.put(shouldNotAppear,potentialRuleMatch);
+      }
+    }
+    pos+=token.length();
+  }
+  return toRuleMatchArray(ruleMatches);
+}

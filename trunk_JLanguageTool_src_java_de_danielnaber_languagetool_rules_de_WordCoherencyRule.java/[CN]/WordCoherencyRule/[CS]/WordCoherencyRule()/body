@@ -1,0 +1,4 @@
+{
+  relevantWords=loadWords(FILE_NAME);
+  lemmatizer=new GermanLemmatizer();
+}

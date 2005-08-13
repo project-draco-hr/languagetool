@@ -1,0 +1,3 @@
+{
+  return "Use always the same spelling for a word if more than one spelling is valid.";
+}
