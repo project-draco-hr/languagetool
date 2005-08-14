@@ -2,17 +2,15 @@
   if (namespaceURI == null)   namespaceURI=null;
   if (lName == null)   lName=null;
   if (qName.equals("rule")) {
-    if (attrs != null) {
-      id=attrs.getValue("id");
-      description=attrs.getValue("name");
-    }
+    id=attrs.getValue("id");
+    if (inRuleGroup && id == null)     id=ruleGroupId;
+    description=attrs.getValue("name");
+    if (inRuleGroup && description == null)     description=ruleGroupDescription;
   }
  else   if (qName.equals("pattern")) {
     inPattern=true;
-    if (attrs != null) {
-      languageStr=attrs.getValue("lang");
-      if (attrs.getValue("case_sensitive") != null && attrs.getValue("case_sensitive").equals("yes"))       caseSensitive=true;
-    }
+    languageStr=attrs.getValue("lang");
+    if (attrs.getValue("case_sensitive") != null && attrs.getValue("case_sensitive").equals("yes"))     caseSensitive=true;
   }
  else   if (qName.equals("example") && attrs.getValue("type").equals("correct")) {
     inCorrectExample=true;
@@ -21,5 +19,10 @@
  else   if (qName.equals("example") && attrs.getValue("type").equals("incorrect")) {
     inIncorrectExample=true;
     incorrectExample=new StringBuffer();
+  }
+ else   if (qName.equals("rulegroup")) {
+    ruleGroupId=attrs.getValue("id");
+    ruleGroupDescription=attrs.getValue("name");
+    inRuleGroup=true;
   }
 }

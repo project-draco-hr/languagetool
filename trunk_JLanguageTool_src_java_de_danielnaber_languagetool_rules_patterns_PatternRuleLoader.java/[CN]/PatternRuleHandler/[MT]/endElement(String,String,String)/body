@@ -20,4 +20,7 @@
     inCorrectExample=false;
     inIncorrectExample=false;
   }
+ else   if (qName.equals("rulegroup")) {
+    inRuleGroup=false;
+  }
 }
