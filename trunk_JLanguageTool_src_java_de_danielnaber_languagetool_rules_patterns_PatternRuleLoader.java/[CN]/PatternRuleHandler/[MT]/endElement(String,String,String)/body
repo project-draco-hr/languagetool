@@ -7,7 +7,7 @@
     if (language == null) {
       throw new SAXException("Unknown language '" + languageStr + "'");
     }
-    PatternRule rule=new PatternRule(id,language,pattern,description);
+    PatternRule rule=new PatternRule(id,language,pattern.toString(),description);
     rule.setCorrectExample(correctExample.toString());
     rule.setIncorrectExample(incorrectExample.toString());
     rule.setCaseSensitive(caseSensitive);

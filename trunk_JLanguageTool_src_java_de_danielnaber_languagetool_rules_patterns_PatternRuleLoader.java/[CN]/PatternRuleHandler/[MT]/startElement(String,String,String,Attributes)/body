@@ -8,6 +8,7 @@
     if (inRuleGroup && description == null)     description=ruleGroupDescription;
   }
  else   if (qName.equals("pattern")) {
+    pattern=new StringBuffer();
     inPattern=true;
     languageStr=attrs.getValue("lang");
     if (attrs.getValue("case_sensitive") != null && attrs.getValue("case_sensitive").equals("yes"))     caseSensitive=true;
