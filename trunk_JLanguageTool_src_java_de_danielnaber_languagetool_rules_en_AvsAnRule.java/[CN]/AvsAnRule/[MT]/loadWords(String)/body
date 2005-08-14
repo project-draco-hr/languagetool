@@ -9,7 +9,7 @@
     while ((line=br.readLine()) != null) {
       line=line.trim();
       if (line.startsWith("#"))       continue;
-      set.add(line);
+      set.add(line.toLowerCase());
     }
   }
   finally {
