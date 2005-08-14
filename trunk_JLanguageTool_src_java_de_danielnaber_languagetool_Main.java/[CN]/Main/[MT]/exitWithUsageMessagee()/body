@@ -1,4 +1,4 @@
 {
-  System.out.println("Usage: java de.danielnaber.languagetool.Main [-v|--verbove] [-l|--language] <file>");
+  System.out.println("Usage: java de.danielnaber.languagetool.Main " + "[-r|--recursive] [-v|--verbove] [-l|--language] <file>");
   System.exit(1);
 }

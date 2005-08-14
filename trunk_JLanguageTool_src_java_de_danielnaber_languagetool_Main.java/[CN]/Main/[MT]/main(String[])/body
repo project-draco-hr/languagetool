@@ -1,13 +1,17 @@
 {
-  if (args.length < 1 || args.length > 4) {
+  if (args.length < 1 || args.length > 5) {
     exitWithUsageMessagee();
   }
   boolean verbose=false;
+  boolean recursive=false;
   Language language=null;
   String filename=null;
   for (int i=0; i < args.length; i++) {
     if (args[i].equals("-v") || args[i].equals("--verbose")) {
       verbose=true;
+    }
+ else     if (args[i].equals("-r") || args[i].equals("--recursive")) {
+      recursive=true;
     }
  else     if (args[i].equals("-l") || args[i].equals("--language")) {
       String lang=args[++i];
@@ -32,6 +36,7 @@
     System.err.println("No language specified, using English");
     language=Language.ENGLISH;
   }
-  Main prg=new Main();
-  prg.run(filename,verbose,language);
+  Main prg=new Main(verbose,language);
+  if (recursive)   prg.runRecursive(filename);
+ else   prg.run(filename);
 }

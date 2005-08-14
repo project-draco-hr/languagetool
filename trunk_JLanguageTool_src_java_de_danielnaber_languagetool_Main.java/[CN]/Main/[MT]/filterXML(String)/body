@@ -1,0 +1,5 @@
+{
+  s=s.replaceAll("(?s)<!--.*?-->"," ");
+  s=s.replaceAll("(?s)<.*?>"," ");
+  return s;
+}
