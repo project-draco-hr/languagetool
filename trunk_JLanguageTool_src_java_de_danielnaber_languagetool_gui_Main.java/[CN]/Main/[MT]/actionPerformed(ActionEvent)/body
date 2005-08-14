@@ -5,11 +5,14 @@
   }
  else {
     StringBuffer sb=new StringBuffer();
-    resultArea.setText("<html>Starting check...<br>\n</html>");
+    String langName=langBox.getSelectedItem().toString();
+    resultArea.setText("Starting check...<br>\n");
     resultArea.repaint();
-    sb.append("Starting check...<br>\n");
+    sb.append("Starting check in " + langName + "...<br>\n");
+    int matches=0;
     try {
-      checkText(textArea.getText(),Language.ENGLISH,sb);
+      Language language=Language.getLanguageforName(langName);
+      matches=checkText(textArea.getText(),language,sb);
     }
  catch (    IOException e1) {
       sb.append(e1.toString());
@@ -23,7 +26,7 @@ catch (    SAXException e1) {
       sb.append(e1.toString());
       e1.printStackTrace();
     }
-    sb.append("Check done.<br>\n");
+    sb.append("Check done. " + matches + " potential problems found<br>\n");
     resultArea.setText(sb.toString());
     resultArea.setCaretPosition(0);
   }

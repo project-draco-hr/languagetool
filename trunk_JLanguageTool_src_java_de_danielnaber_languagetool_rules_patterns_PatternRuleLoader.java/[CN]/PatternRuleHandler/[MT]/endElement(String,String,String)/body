@@ -1,12 +1,10 @@
 {
   if (namespaceURI == null)   namespaceURI=null;
   if (sName == null)   sName=null;
-  Language language;
+  Language language=null;
   if (qName.equals("rule")) {
-    if (Language.LANGUAGES.containsKey(languageStr)) {
-      language=(Language)Language.LANGUAGES.get(languageStr);
-    }
- else {
+    language=Language.getLanguageforShortName(languageStr);
+    if (language == null) {
       throw new SAXException("Unknown language '" + languageStr + "'");
     }
     PatternRule rule=new PatternRule(id,language,pattern,description);

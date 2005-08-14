@@ -11,6 +11,19 @@
   JButton button=new JButton("Check text");
   button.setMnemonic('c');
   button.addActionListener(this);
+  JPanel panel2=new JPanel();
+  panel2.setLayout(new GridBagLayout());
+  GridBagConstraints buttonCons=new GridBagConstraints();
+  buttonCons.gridx=0;
+  buttonCons.gridy=0;
+  panel2.add(button,buttonCons);
+  buttonCons.gridx=1;
+  buttonCons.gridy=0;
+  panel2.add(new JLabel(" in: "),buttonCons);
+  buttonCons.gridx=2;
+  buttonCons.gridy=0;
+  langBox=new JComboBox(Language.LANGUAGES);
+  panel2.add(langBox,buttonCons);
   Container contentPane=frame.getContentPane();
   GridBagLayout gridLayout=new GridBagLayout();
   contentPane.setLayout(gridLayout);
@@ -31,7 +44,7 @@
   cons.insets=new Insets(3,3,3,3);
   contentPane.add(label,cons);
   cons.gridy=3;
-  contentPane.add(button,cons);
+  contentPane.add(panel2,cons);
   frame.pack();
   frame.setSize(600,600);
   frame.setVisible(true);

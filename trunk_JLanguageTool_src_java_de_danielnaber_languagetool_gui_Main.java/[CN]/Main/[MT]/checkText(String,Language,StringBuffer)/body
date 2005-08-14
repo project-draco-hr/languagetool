@@ -25,8 +25,9 @@
     msg=msg.replaceAll("</old>","</b>");
     sb.append("<b>Message:</b> " + msg + "<br>\n");
     sb.append("<b>Context:</b> " + getContext(match.getFromPos(),match.getToPos(),text));
-    if (iter.hasNext())     sb.append("<br>\n");
+    sb.append("<br>\n");
   }
   long endTime=System.currentTimeMillis();
-  sb.append("<br>\n<br>\nTime: " + (endTime - startTime) + "ms (including "+ (endTime - startTimeMatching)+ "ms for rule matching)<br>\n");
+  sb.append("<br>\nTime: " + (endTime - startTime) + "ms (including "+ (endTime - startTimeMatching)+ "ms for rule matching)<br>\n");
+  return ruleMatches.size();
 }
