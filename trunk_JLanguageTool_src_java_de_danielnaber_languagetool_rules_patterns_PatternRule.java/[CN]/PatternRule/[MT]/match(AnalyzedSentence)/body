@@ -30,6 +30,10 @@
       RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),lastMatchToken.getStartPos() + lastMatchToken.getToken().length(),description);
       ruleMatches.add(ruleMatch);
     }
+ else {
+      firstMatchToken=null;
+      lastMatchToken=null;
+    }
     tokenPos++;
   }
   return (RuleMatch[])ruleMatches.toArray(new RuleMatch[0]);
