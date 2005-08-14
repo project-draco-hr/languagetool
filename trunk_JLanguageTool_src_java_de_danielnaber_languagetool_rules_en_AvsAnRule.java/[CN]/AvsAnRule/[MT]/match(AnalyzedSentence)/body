@@ -32,7 +32,6 @@
           doesRequireA=true;
         }
       }
-      System.err.println(prevToken + " " + token+ ", a="+ doesRequireA+ ", an="+ doesRequireAn);
       String msg=null;
       if (prevToken.toLowerCase().equals("a") && doesRequireAn) {
         msg="Use <suggestion>an</suggestion> instead of <old>a</old> if the following " + "word starts with a vowel sound, e.g. <i>an article</i>, " + "<i>an hour</i>";
