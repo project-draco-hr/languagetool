@@ -1,0 +1,18 @@
+{
+  if (e.getActionCommand().equals(OK_BUTTON)) {
+    int i=0;
+    inactivateRuleIds.clear();
+    for (Iterator iter=checkBoxes.iterator(); iter.hasNext(); ) {
+      JCheckBox checkBox=(JCheckBox)iter.next();
+      if (!checkBox.isSelected()) {
+        String ruleId=(String)checkBoxesRuleIds.get(i);
+        inactivateRuleIds.add(ruleId);
+      }
+      i++;
+    }
+    dialog.hide();
+  }
+ else   if (e.getActionCommand().equals(CANCEL_BUTTON)) {
+    dialog.hide();
+  }
+}

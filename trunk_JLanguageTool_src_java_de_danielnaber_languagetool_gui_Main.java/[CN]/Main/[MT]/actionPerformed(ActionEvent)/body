@@ -1,30 +1,64 @@
 {
-  if (e == null)   ;
-  if (textArea.getText().trim().equals("")) {
-    textArea.setText("Please insert text to check here");
+  String langName=langBox.getSelectedItem().toString();
+  Language language=Language.getLanguageforName(langName);
+  ConfigurationDialog configDialog=null;
+  if (configDialogs.containsKey(language)) {
+    configDialog=(ConfigurationDialog)configDialogs.get(language);
   }
  else {
-    StringBuffer sb=new StringBuffer();
-    String langName=langBox.getSelectedItem().toString();
-    resultArea.setText("Starting check...<br>\n");
-    resultArea.repaint();
-    sb.append("Starting check in " + langName + "...<br>\n");
-    int matches=0;
-    Language language=Language.getLanguageforName(langName);
-    try {
-      matches=checkText(textArea.getText(),language,sb);
-    }
- catch (    Exception ex) {
-      sb.append("<br><br><b><font color=\"red\">" + ex.toString() + "<br>");
-      StackTraceElement[] elements=ex.getStackTrace();
-      for (int i=0; i < elements.length; i++) {
-        sb.append(elements[i] + "<br>");
+    configDialog=new ConfigurationDialog();
+    configDialogs.put(language,configDialog);
+  }
+  JLanguageTool langTool;
+  try {
+    langTool=new JLanguageTool(language);
+    langTool.activateDefaultPatternRules();
+    Set disabledRules=configDialog.getdisabledRuleIds();
+    if (disabledRules != null) {
+      for (Iterator iter=disabledRules.iterator(); iter.hasNext(); ) {
+        String ruleId=(String)iter.next();
+        langTool.disableRule(ruleId);
       }
-      sb.append("</font></b><br>");
-      ex.printStackTrace();
     }
-    sb.append("Check done. " + matches + " potential problems found<br>\n");
-    resultArea.setText(sb.toString());
-    resultArea.setCaretPosition(0);
+  }
+ catch (  IOException ioe) {
+    throw new RuntimeException(ioe);
+  }
+catch (  ParserConfigurationException ex) {
+    throw new RuntimeException(ex);
+  }
+catch (  SAXException ex) {
+    throw new RuntimeException(ex);
+  }
+  if (e.getActionCommand().equals(OPTIONS_BUTTON)) {
+    List rules=langTool.getAllRules();
+    configDialog.show(rules);
+  }
+ else {
+    if (textArea.getText().trim().equals("")) {
+      textArea.setText("Please insert text to check here");
+    }
+ else {
+      StringBuffer sb=new StringBuffer();
+      resultArea.setText("Starting check...<br>\n");
+      resultArea.repaint();
+      sb.append("Starting check in " + langName + "...<br>\n");
+      int matches=0;
+      try {
+        matches=checkText(langTool,language,textArea.getText(),sb);
+      }
+ catch (      Exception ex) {
+        sb.append("<br><br><b><font color=\"red\">" + ex.toString() + "<br>");
+        StackTraceElement[] elements=ex.getStackTrace();
+        for (int i=0; i < elements.length; i++) {
+          sb.append(elements[i] + "<br>");
+        }
+        sb.append("</font></b><br>");
+        ex.printStackTrace();
+      }
+      sb.append("Check done. " + matches + " potential problems found<br>\n");
+      resultArea.setText(sb.toString());
+      resultArea.setCaretPosition(0);
+    }
   }
 }
