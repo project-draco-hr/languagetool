@@ -1,6 +1,6 @@
 {
   long startTime=System.currentTimeMillis();
-  File defaultPatternFile=new File(RULES_DIR + File.separator + language.getShortName()+ File.separator+ PATTERN_FILE);
+  File defaultPatternFile=new File(JLanguageTool.RULES_DIR + File.separator + language.getShortName()+ File.separator+ JLanguageTool.PATTERN_FILE);
   List patternRules=new ArrayList();
   if (defaultPatternFile.exists()) {
     patternRules=lt.loadPatternRules(defaultPatternFile.getAbsolutePath());
