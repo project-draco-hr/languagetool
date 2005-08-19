@@ -7,7 +7,7 @@
     if (language == null) {
       throw new SAXException("Unknown language '" + languageStr + "'");
     }
-    PatternRule rule=new PatternRule(id,language,pattern.toString(),description);
+    PatternRule rule=new PatternRule(id,language,pattern.toString(),description,message.toString());
     rule.setCorrectExample(correctExample.toString());
     rule.setIncorrectExample(incorrectExample.toString());
     rule.setCaseSensitive(caseSensitive);
@@ -19,6 +19,9 @@
  else   if (qName.equals("example")) {
     inCorrectExample=false;
     inIncorrectExample=false;
+  }
+ else   if (qName.equals("message")) {
+    inMessage=false;
   }
  else   if (qName.equals("rulegroup")) {
     inRuleGroup=false;

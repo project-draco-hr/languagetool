@@ -7,4 +7,5 @@
   this.language=new Language[]{language};
   this.pattern=pattern;
   this.description=description;
+  this.message=message;
 }

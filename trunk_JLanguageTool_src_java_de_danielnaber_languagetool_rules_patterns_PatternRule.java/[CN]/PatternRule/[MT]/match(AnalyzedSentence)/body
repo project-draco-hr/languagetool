@@ -27,7 +27,7 @@
       }
     }
     if (allElementsMatch) {
-      RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),lastMatchToken.getStartPos() + lastMatchToken.getToken().length(),description);
+      RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),lastMatchToken.getStartPos() + lastMatchToken.getToken().length(),message);
       ruleMatches.add(ruleMatch);
     }
  else {

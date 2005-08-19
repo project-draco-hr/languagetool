@@ -21,6 +21,9 @@
     inIncorrectExample=true;
     incorrectExample=new StringBuffer();
   }
+ else   if (qName.equals("message")) {
+    inMessage=true;
+  }
  else   if (qName.equals("rulegroup")) {
     ruleGroupId=attrs.getValue("id");
     ruleGroupDescription=attrs.getValue("name");
