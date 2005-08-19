@@ -1,14 +1,14 @@
 {
   PatternRule pr;
   RuleMatch[] matches;
-  pr=new PatternRule("ID1",Language.ENGLISH,"\"one\"","test rule");
+  pr=makePatternRule("\"one\"");
   matches=pr.match(langTool.getAnalyzedSentence("A non-matching sentence."));
   assertEquals(0,matches.length);
   matches=pr.match(langTool.getAnalyzedSentence("A matching sentence with one match."));
   assertEquals(1,matches.length);
   matches=pr.match(langTool.getAnalyzedSentence("one one and one: three matches"));
   assertEquals(3,matches.length);
-  pr=new PatternRule("ID1",Language.ENGLISH,"\"one\" \"two\"","test rule");
+  pr=makePatternRule("\"one\" \"two\"");
   matches=pr.match(langTool.getAnalyzedSentence("this is one not two"));
   assertEquals(0,matches.length);
   matches=pr.match(langTool.getAnalyzedSentence("this is two one"));
@@ -17,7 +17,7 @@
   assertEquals(1,matches.length);
   matches=pr.match(langTool.getAnalyzedSentence("one two"));
   assertEquals(1,matches.length);
-  pr=new PatternRule("ID1",Language.ENGLISH,"\"one|foo|xxxx\" \"two\"","test rule");
+  pr=makePatternRule("\"one|foo|xxxx\" \"two\"");
   matches=pr.match(langTool.getAnalyzedSentence("one foo three"));
   assertEquals(0,matches.length);
   matches=pr.match(langTool.getAnalyzedSentence("one two"));
@@ -28,7 +28,7 @@
   assertEquals(1,matches.length);
   matches=pr.match(langTool.getAnalyzedSentence("y x z one two blah foo"));
   assertEquals(1,matches.length);
-  pr=new PatternRule("ID1",Language.ENGLISH,"\"one|foo|xxxx\" \"two|yyy\"","test rule");
+  pr=makePatternRule("\"one|foo|xxxx\" \"two|yyy\"");
   matches=pr.match(langTool.getAnalyzedSentence("one, yyy"));
   assertEquals(0,matches.length);
   matches=pr.match(langTool.getAnalyzedSentence("one yyy"));
