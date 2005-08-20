@@ -32,4 +32,7 @@
     ruleGroupDescription=attrs.getValue("name");
     inRuleGroup=true;
   }
+ else   if (qName.equals("em") && inMessage) {
+    message.append("<em>");
+  }
 }
