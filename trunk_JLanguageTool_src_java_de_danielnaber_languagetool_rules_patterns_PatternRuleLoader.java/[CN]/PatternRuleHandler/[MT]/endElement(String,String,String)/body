@@ -8,6 +8,8 @@
       throw new SAXException("Unknown language '" + languageStr + "'");
     }
     PatternRule rule=new PatternRule(id,language,pattern.toString(),description,message.toString());
+    rule.setStartPositionCorrection(startPositionCorrection);
+    rule.setEndPositionCorrection(endPositionCorrection);
     rule.setCorrectExample(correctExample.toString());
     rule.setIncorrectExample(incorrectExample.toString());
     rule.setCaseSensitive(caseSensitive);

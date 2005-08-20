@@ -11,6 +11,8 @@
     pattern=new StringBuffer();
     inPattern=true;
     languageStr=attrs.getValue("lang");
+    if (attrs.getValue("mark_from") != null)     startPositionCorrection=Integer.parseInt(attrs.getValue("mark_from"));
+    if (attrs.getValue("mark_to") != null)     endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
     if (attrs.getValue("case_sensitive") != null && attrs.getValue("case_sensitive").equals("yes"))     caseSensitive=true;
   }
  else   if (qName.equals("example") && attrs.getValue("type").equals("correct")) {
