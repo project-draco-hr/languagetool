@@ -8,6 +8,6 @@
     assertTrue(goodSentence.trim().length() > 0);
     assertTrue(badSentence.trim().length() > 0);
     assertFalse("Did not expect error in: " + goodSentence,match(rule,goodSentence));
-    assertTrue("Did  expect error in: " + badSentence,match(rule,badSentence));
+    assertTrue("Did expect error in: " + badSentence,match(rule,badSentence));
   }
 }
