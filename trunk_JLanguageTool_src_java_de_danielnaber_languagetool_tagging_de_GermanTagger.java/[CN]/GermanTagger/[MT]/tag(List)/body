@@ -1,0 +1,15 @@
+{
+  if (word2cat == null)   word2cat=getWord2CategoryMapping();
+  List posTags=new ArrayList();
+  for (Iterator iter=tokens.iterator(); iter.hasNext(); ) {
+    String word=(String)iter.next();
+    List l=(List)word2cat.get(word);
+    if (l == null) {
+      posTags.add(null);
+    }
+ else {
+      posTags.add(l.toString());
+    }
+  }
+  return posTags;
+}

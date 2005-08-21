@@ -1,0 +1,41 @@
+{
+  InputStreamReader isr=new InputStreamReader(new FileInputStream(DATA_FILE),"latin1");
+  BufferedReader br=new BufferedReader(isr);
+  String line;
+  String fullform=null;
+  Map mapping=new HashMap();
+  while ((line=br.readLine()) != null) {
+    line=line.trim();
+    if (line.equals(""))     continue;
+    if (line.indexOf("wkl=VER") != -1 || line.indexOf("wkl=PA2") != -1)     continue;
+    if (line.startsWith("<form>")) {
+      fullform=line.substring("<form>".length(),line.indexOf("</form>"));
+    }
+ else {
+      line=line.replaceFirst("typ=[A-Z]{3}\\s+","");
+      int startPos=line.indexOf("wkl=");
+      int endPos=line.indexOf("gen=");
+      if (startPos != -1 && endPos != -1) {
+        String cat=line.substring(startPos + 4,endPos + 7);
+        cat=cat.replaceFirst("kas=","");
+        cat=cat.replaceFirst("num=","");
+        cat=cat.replaceFirst("gen=","");
+        if (mapping.containsKey(fullform)) {
+          List l=(List)mapping.get(fullform);
+          l.add(cat);
+          mapping.put(fullform,l);
+        }
+ else {
+          List l=new ArrayList();
+          l.add(cat);
+          mapping.put(fullform,l);
+        }
+      }
+ else {
+      }
+    }
+  }
+  isr.close();
+  br.close();
+  return mapping;
+}

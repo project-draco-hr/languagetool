@@ -1,0 +1,10 @@
+{
+  super(token,null,startPos);
+  if (tagInfoAsString == null)   return;
+  if (tagInfoAsString.startsWith("[") && tagInfoAsString.endsWith("]"))   tagInfoAsString=tagInfoAsString.substring(1,tagInfoAsString.length() - 1);
+  String[] parts=tagInfoAsString.split(",");
+  for (int i=0; i < parts.length; i++) {
+    AnalyzedGermanTokenReading reading=new AnalyzedGermanTokenReading(parts[i].trim());
+    readings.add(reading);
+  }
+}

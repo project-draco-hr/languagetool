@@ -1,0 +1,23 @@
+{
+  List ruleMatches=new ArrayList();
+  AnalyzedToken[] tokens=text.getTokensWithoutWhitespace();
+  int pos=0;
+  for (int i=0; i < tokens.length; i++) {
+    String posToken=tokens[i].getPOSTag();
+    AnalyzedGermanToken analyzedToken=new AnalyzedGermanToken(tokens[i].getToken(),posToken,tokens[i].getStartPos());
+    if (analyzedToken.hasReadingOfType(Type.DETERMINER)) {
+      int tokenPos=i + 1;
+      AnalyzedGermanToken nextToken=new AnalyzedGermanToken(tokens[tokenPos].getToken(),tokens[tokenPos].getPOSTag(),tokens[tokenPos].getStartPos());
+      if (nextToken.hasReadingOfType(Type.ADJEKTIV)) {
+        tokenPos=i + 2;
+        AnalyzedGermanToken nextNextToken=new AnalyzedGermanToken(tokens[tokenPos].getToken(),tokens[tokenPos].getPOSTag(),tokens[tokenPos].getStartPos());
+        if (nextNextToken.hasReadingOfType(Type.NOMEN)) {
+          RuleMatch ruleMatch=checkDetAdjNounAgreement(tokens[i],tokens[i + 1],tokens[i + 2]);
+          if (ruleMatch != null)           ruleMatches.add(ruleMatch);
+        }
+      }
+    }
+    pos+=tokens[i].getToken().length();
+  }
+  return toRuleMatchArray(ruleMatches);
+}
