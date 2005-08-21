@@ -1,0 +1,17 @@
+{
+  AgreementRule rule=new AgreementRule();
+  JLanguageTool langTool=new JLanguageTool(Language.GERMAN);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist der riesige Tisch.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Der riesige Tisch ist gro??.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die Kanten der der riesigen Tische.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Den riesigen Tisch mag er.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Es mag den riesigen Tisch.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die Kante des riesigen Tisches.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Dem riesigen Tisch fehlt was.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die riesigen Tische sind gro??.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Der riesigen Tische wegen.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Es sind die riesigen Tisch.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Dort, die riesigen Tischs!")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Als die riesigen Tischs kamen.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Als die riesigen Tisches kamen.")).length);
+}
