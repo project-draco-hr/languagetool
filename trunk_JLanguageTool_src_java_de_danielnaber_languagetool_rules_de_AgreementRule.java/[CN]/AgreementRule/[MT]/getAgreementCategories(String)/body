@@ -6,7 +6,7 @@
     int delim=allCats.indexOf(" ");
     String cats=allCats.substring(delim);
     if (cats.startsWith("["))     cats=cats.substring(1);
-    if (cats.endsWith("]"))     cats=cats.substring(0,cats.length() - 2);
+    if (cats.endsWith("]"))     cats=cats.substring(0,cats.length() - 1);
     set.add(cats.trim());
   }
   return set;
