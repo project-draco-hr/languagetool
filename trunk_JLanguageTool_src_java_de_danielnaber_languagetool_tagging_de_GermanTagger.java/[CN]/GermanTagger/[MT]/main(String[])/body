@@ -1,0 +1,5 @@
+{
+  GermanTagger tagger=new GermanTagger();
+  List l=tagger.lookup("Eltern");
+  System.out.println(l);
+}
