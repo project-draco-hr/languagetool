@@ -16,6 +16,10 @@
           if (ruleMatch != null)           ruleMatches.add(ruleMatch);
         }
       }
+ else       if (nextToken.hasReadingOfType(POSType.NOMEN)) {
+        RuleMatch ruleMatch=checkDetNounAgreement(tokens[i],tokens[i + 1]);
+        if (ruleMatch != null)         ruleMatches.add(ruleMatch);
+      }
     }
     pos+=tokens[i].getToken().length();
   }
