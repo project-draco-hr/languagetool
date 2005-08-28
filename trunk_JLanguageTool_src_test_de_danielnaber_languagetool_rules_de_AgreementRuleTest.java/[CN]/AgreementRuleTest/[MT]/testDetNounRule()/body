@@ -1,0 +1,27 @@
+{
+  AgreementRule rule=new AgreementRule();
+  JLanguageTool langTool=new JLanguageTool(Language.GERMAN);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("So ist es in den USA.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist der Tisch.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist das Haus.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist die Frau.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist das Auto der Frau.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das geh??rt dem Mann.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das Auto des Mannes.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das interessiert den Mann.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das interessiert die M??nner.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das Auto von einem Mann.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das Auto eines Mannes.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Es sind die Tisch.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Es sind das Tisch.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Es sind die Haus.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Es sind der Haus.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Es sind das Frau.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das Auto des Mann.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das interessiert das Mann.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das interessiert die Mann.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das Auto ein Mannes.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das Auto einem Mannes.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das Auto einer Mannes.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das Auto einen Mannes.")).length);
+}
