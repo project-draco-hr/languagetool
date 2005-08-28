@@ -1,0 +1,13 @@
+{
+  GermanTagger tagger=new GermanTagger();
+  List l=tagger.lookup("Haus");
+  assertEquals("[SUB NOM SIN NEU, SUB DAT SIN NEU, SUB AKK SIN NEU]",l.toString());
+  l=tagger.lookup("Hauses");
+  assertEquals("[SUB GEN SIN NEU]",l.toString());
+  l=tagger.lookup("hauses");
+  assertNull(l);
+  l=tagger.lookup("Gro??");
+  assertNull(l);
+  l=tagger.lookup("gro??er");
+  assertEquals("[ADJ NOM SIN MAS, ADJ GEN PLU MAS, ADJ GEN SIN FEM, ADJ DAT SIN FEM, ADJ GEN " + "PLU FEM, ADJ GEN PLU NEU, ADJ NOM SIN MAS]",l.toString());
+}
