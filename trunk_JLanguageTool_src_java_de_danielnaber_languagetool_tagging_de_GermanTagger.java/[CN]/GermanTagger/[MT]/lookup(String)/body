@@ -1,0 +1,23 @@
+{
+  if (searcher == null)   searcher=new IndexSearcher(INDEX_DIR);
+  Query query=new TermQuery(new Term(FULLFORM_FIELD,word));
+  Hits hits=searcher.search(query);
+  if (hits.length() == 0) {
+    return null;
+  }
+ else   if (hits.length() > 1) {
+    throw new IllegalStateException("More than one hit for " + word);
+  }
+ else {
+    Document doc=hits.doc(0);
+    Field[] fields=doc.getFields(CATEGORIES_FIELD);
+    List l=new ArrayList();
+    if (fields != null) {
+      for (int i=0; i < fields.length; i++) {
+        String val=fields[i].stringValue();
+        if (!val.equals(""))         l.add(val);
+      }
+    }
+    return l;
+  }
+}

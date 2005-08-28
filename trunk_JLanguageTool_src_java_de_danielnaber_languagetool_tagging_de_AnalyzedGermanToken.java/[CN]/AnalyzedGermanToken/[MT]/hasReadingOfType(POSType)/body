@@ -1,6 +1,6 @@
 {
   for (Iterator iter=readings.iterator(); iter.hasNext(); ) {
-    AnalyzedGermanTokenReading reading=(AnalyzedGermanTokenReading)iter.next();
+    GermanTokenReading reading=(GermanTokenReading)iter.next();
     if (reading.getType() == type)     return true;
   }
   return false;

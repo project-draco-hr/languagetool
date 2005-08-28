@@ -1,15 +1,12 @@
 {
-  if (word2cat == null)   word2cat=getWord2CategoryMapping();
+  if (searcher == null)   searcher=new IndexSearcher(INDEX_DIR);
   List posTags=new ArrayList();
   for (Iterator iter=tokens.iterator(); iter.hasNext(); ) {
     String word=(String)iter.next();
-    List l=(List)word2cat.get(word);
-    if (l == null) {
-      posTags.add(null);
-    }
- else {
-      posTags.add(l.toString());
-    }
+    List l=lookup(word);
+    if (l == null)     posTags.add(null);
+ else     if (l.size() > 0)     posTags.add(l.toString());
+ else     posTags.add(null);
   }
   return posTags;
 }
