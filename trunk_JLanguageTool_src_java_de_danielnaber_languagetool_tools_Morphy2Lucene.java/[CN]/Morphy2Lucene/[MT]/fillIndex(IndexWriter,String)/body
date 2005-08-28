@@ -1,0 +1,51 @@
+{
+  InputStreamReader isr=new InputStreamReader(new FileInputStream(inputFile),"cp1252");
+  BufferedReader br=new BufferedReader(isr);
+  String line;
+  String fullform=null;
+  Document doc=null;
+  int addCount=0;
+  while ((line=br.readLine()) != null) {
+    line=line.trim();
+    if (line.equals(""))     continue;
+    if (line.indexOf("wkl=VER") != -1 || line.indexOf("wkl=PA2") != -1)     continue;
+    if (line.startsWith("<form>")) {
+      if (doc != null) {
+        iw.addDocument(doc);
+        addCount++;
+        if (addCount % 1000 == 0) {
+          System.out.println(addCount + "...");
+        }
+      }
+      fullform=line.substring("<form>".length(),line.indexOf("</form>"));
+      doc=new Document();
+      doc.add(new Field(GermanTagger.FULLFORM_FIELD,fullform,Field.Store.NO,Field.Index.UN_TOKENIZED));
+    }
+ else {
+      if (line.startsWith("<lemma")) {
+        String postype=DEFAULT_CATEGORY;
+        String kasus=DEFAULT_CATEGORY;
+        String numerus=DEFAULT_CATEGORY;
+        String genus=DEFAULT_CATEGORY;
+        if (line.indexOf("wkl=") != -1)         postype=line.replaceAll(".*wkl=([A-Z]+).*","$1");
+        if (line.indexOf("kas=") != -1)         kasus=line.replaceAll(".*kas=([A-Z]+).*","$1");
+        if (line.indexOf("num=") != -1)         numerus=line.replaceAll(".*num=([A-Z]+).*","$1");
+        if (line.indexOf("gen=") != -1)         genus=line.replaceAll(".*gen=([A-Z]+).*","$1");
+        String cat=postype + " " + kasus+ " "+ numerus+ " "+ genus;
+        if (cat.length() < 8)         throw new IllegalStateException("category too short: " + cat);
+        if (cat.length() > 15)         throw new IllegalStateException("category too long: " + cat);
+        doc.add(new Field(GermanTagger.CATEGORIES_FIELD,cat,Field.Store.YES,Field.Index.NO));
+      }
+ else {
+        System.err.println("unknown format: " + line);
+      }
+    }
+  }
+  if (doc != null) {
+    iw.addDocument(doc);
+    addCount++;
+  }
+  isr.close();
+  br.close();
+  System.out.println("Added " + addCount + " terms.");
+}

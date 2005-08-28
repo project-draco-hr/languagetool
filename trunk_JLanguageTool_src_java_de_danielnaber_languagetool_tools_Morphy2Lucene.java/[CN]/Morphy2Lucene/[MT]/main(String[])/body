@@ -1,0 +1,10 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: de.danielnaber.languagetool.tools.Morphy2Lucene <morphyfile>");
+    System.exit(1);
+  }
+  System.out.println("Writing category index to " + INDEX_DIR);
+  Morphy2Lucene prg=new Morphy2Lucene();
+  prg.run(args[0]);
+  System.out.println("Done.");
+}
