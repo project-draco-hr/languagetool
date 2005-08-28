@@ -13,6 +13,7 @@
     lt.addRule(rule);
   }
   if (verbose)   lt.setOutput(System.err);
+  System.out.println("Working on " + filename + "...");
   String fileContents=readFile(filename);
   fileContents=filterXML(fileContents);
   List ruleMatches=lt.check(fileContents);

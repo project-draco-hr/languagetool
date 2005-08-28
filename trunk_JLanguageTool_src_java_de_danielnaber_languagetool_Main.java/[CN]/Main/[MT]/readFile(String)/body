@@ -1,10 +1,10 @@
 {
-  FileReader fr=null;
+  InputStreamReader isr=null;
   BufferedReader br=null;
   StringBuffer sb=new StringBuffer();
   try {
-    fr=new FileReader(filename);
-    br=new BufferedReader(fr);
+    isr=new InputStreamReader(new FileInputStream(filename),FILE_ENCODING);
+    br=new BufferedReader(isr);
     String line;
     while ((line=br.readLine()) != null) {
       sb.append(line);
@@ -13,7 +13,7 @@
   }
   finally {
     if (br != null)     br.close();
-    if (fr != null)     fr.close();
+    if (isr != null)     isr.close();
   }
   return sb.toString();
 }
