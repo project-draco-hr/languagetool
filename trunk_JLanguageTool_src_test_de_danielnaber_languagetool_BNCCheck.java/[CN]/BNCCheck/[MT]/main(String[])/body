@@ -1,0 +1,8 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: BNCTest <directory>");
+    System.exit(1);
+  }
+  BNCCheck prg=new BNCCheck();
+  prg.run(new File(args[0]));
+}

@@ -1,0 +1,3 @@
+{
+  prg=new Main(false,Language.ENGLISH);
+}
