@@ -1,5 +1,5 @@
 {
-  for (int i=0; i < abbrevList.length; i++) {
-    abbreviations.add(abbrevList[i]);
+  for (int i=0; i < ABBREV_LIST.length; i++) {
+    abbreviations.add(ABBREV_LIST[i]);
   }
 }
