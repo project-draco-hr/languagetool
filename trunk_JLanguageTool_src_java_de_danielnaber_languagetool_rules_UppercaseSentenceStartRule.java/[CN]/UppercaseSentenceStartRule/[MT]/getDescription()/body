@@ -1,0 +1,3 @@
+{
+  return "Checks that a sentence starts with an uppercase letter";
+}

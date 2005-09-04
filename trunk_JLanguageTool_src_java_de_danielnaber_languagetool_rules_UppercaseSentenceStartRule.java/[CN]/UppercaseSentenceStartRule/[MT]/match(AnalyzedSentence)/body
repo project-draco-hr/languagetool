@@ -1,0 +1,14 @@
+{
+  List ruleMatches=new ArrayList();
+  AnalyzedToken[] tokens=text.getTokensWithoutWhitespace();
+  if (tokens.length < 2)   return toRuleMatchArray(ruleMatches);
+  AnalyzedToken token=tokens[1];
+  String firstToken=token.getToken();
+  char firstChar=firstToken.charAt(0);
+  if (Character.isLowerCase(firstChar)) {
+    String msg="This sentence does not start with an uppercase letter";
+    RuleMatch ruleMatch=new RuleMatch(this,token.getStartPos(),token.getStartPos() + token.getToken().length(),msg);
+    ruleMatches.add(ruleMatch);
+  }
+  return toRuleMatchArray(ruleMatches);
+}
