@@ -38,5 +38,5 @@
   }
   Main prg=new Main(verbose,language);
   if (recursive)   prg.runRecursive(filename);
- else   prg.run(filename);
+ else   prg.getFilteredText(filename);
 }

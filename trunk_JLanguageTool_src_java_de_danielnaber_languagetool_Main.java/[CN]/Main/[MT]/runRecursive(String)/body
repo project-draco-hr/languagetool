@@ -9,7 +9,8 @@
       runRecursive(files[i].getAbsolutePath());
     }
  else {
-      run(files[i].getAbsolutePath());
+      String text=getFilteredText(files[i].getAbsolutePath());
+      checkText(text);
     }
   }
 }
