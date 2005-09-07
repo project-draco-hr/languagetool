@@ -23,6 +23,7 @@
     }
  else {
       if (line.startsWith("<lemma")) {
+        String baseform=line.substring(line.indexOf(">") + 1,line.indexOf("<",1));
         String postype=DEFAULT_CATEGORY;
         String kasus=DEFAULT_CATEGORY;
         String numerus=DEFAULT_CATEGORY;
@@ -35,6 +36,10 @@
         if (cat.length() < 8)         throw new IllegalStateException("category too short: " + cat);
         if (cat.length() > 15)         throw new IllegalStateException("category too long: " + cat);
         doc.add(new Field(GermanTagger.CATEGORIES_FIELD,cat,Field.Store.YES,Field.Index.NO));
+        if (fullform.equals(baseform)) {
+          doc.removeField(IS_BASEFORM);
+          doc.add(new Field(IS_BASEFORM,"1",Field.Store.YES,Field.Index.NO));
+        }
       }
  else {
         System.err.println("unknown format: " + line);
