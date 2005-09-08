@@ -1,0 +1,3 @@
+String word
+int startPos
+boolean makeLowercase

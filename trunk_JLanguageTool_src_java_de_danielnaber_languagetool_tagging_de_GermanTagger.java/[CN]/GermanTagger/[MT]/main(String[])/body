@@ -1,7 +1,7 @@
 {
   GermanTagger tagger=new GermanTagger();
   List l=new ArrayList();
-  l.add("das");
+  l.add("Das");
   l.add("Haus");
   List result=tagger.tag(l);
   System.out.println(result);

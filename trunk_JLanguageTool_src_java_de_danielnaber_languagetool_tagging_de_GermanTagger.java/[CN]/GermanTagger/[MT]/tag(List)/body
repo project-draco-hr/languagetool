@@ -2,9 +2,14 @@
   if (searcher == null)   searcher=new IndexSearcher(INDEX_DIR);
   List posTags=new ArrayList();
   int pos=0;
+  boolean firstWord=true;
   for (Iterator iter=tokens.iterator(); iter.hasNext(); ) {
     String word=(String)iter.next();
     AnalyzedGermanToken aToken=lookup(word,pos);
+    if (firstWord) {
+      aToken=lookup(word,pos,true);
+      firstWord=false;
+    }
     pos+=word.length();
     if (aToken != null && aToken.getReadings().size() > 0)     posTags.add(aToken);
  else     posTags.add(new AnalyzedGermanToken(word,(List)null,pos));
