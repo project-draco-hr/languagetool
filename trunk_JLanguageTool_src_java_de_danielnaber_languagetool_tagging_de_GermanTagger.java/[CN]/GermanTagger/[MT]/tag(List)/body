@@ -1,12 +1,13 @@
 {
   if (searcher == null)   searcher=new IndexSearcher(INDEX_DIR);
   List posTags=new ArrayList();
+  int pos=0;
   for (Iterator iter=tokens.iterator(); iter.hasNext(); ) {
     String word=(String)iter.next();
-    List l=lookup(word);
-    if (l == null)     posTags.add(null);
- else     if (l.size() > 0)     posTags.add(l.toString());
- else     posTags.add(null);
+    AnalyzedGermanToken aToken=lookup(word,pos);
+    pos+=word.length();
+    if (aToken != null && aToken.getReadings().size() > 0)     posTags.add(aToken);
+ else     posTags.add(new AnalyzedGermanToken(word,(List)null,pos));
   }
   return posTags;
 }

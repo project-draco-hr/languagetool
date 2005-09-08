@@ -1,0 +1,4 @@
+{
+  if (readings == null)   return token + ":<unknown>";
+ else   return token + ":" + readings.toString();
+}

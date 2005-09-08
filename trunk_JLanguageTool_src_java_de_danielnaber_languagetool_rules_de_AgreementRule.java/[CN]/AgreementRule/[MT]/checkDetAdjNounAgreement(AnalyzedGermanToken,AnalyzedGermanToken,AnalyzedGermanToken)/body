@@ -1,15 +1,15 @@
 {
   RuleMatch ruleMatch=null;
-  Set set1=getAgreementCategories(token1.getPOSTag());
+  Set set1=getAgreementCategories(token1);
   if (set1 == null)   return null;
-  Set set2=getAgreementCategories(token2.getPOSTag());
+  Set set2=getAgreementCategories(token2);
   if (set2 == null)   return null;
-  Set set3=getAgreementCategories(token3.getPOSTag());
+  Set set3=getAgreementCategories(token3);
   if (set3 == null)   return null;
   set1.retainAll(set2);
   set1.retainAll(set3);
   if (set1.size() == 0) {
-    String msg="Agreement error";
+    String msg="Possible agreement error";
     ruleMatch=new RuleMatch(this,token1.getStartPos(),token3.getStartPos() + token3.getToken().length(),msg);
   }
   return ruleMatch;

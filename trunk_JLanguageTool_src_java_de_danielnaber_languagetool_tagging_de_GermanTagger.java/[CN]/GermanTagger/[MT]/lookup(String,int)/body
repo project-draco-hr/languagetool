@@ -19,15 +19,19 @@
           if (val.indexOf(" NOG") != -1) {
             String val1=val.replaceFirst(" NOG"," MAS");
             String val2=val.replaceFirst(" NOG"," FEM");
-            l.add(val1);
-            l.add(val2);
+            GermanTokenReading tokenReading1=GermanTokenReading.createTokenReadingFromMorphyString(val1,word);
+            l.add(tokenReading1);
+            GermanTokenReading tokenReading2=GermanTokenReading.createTokenReadingFromMorphyString(val2,word);
+            l.add(tokenReading2);
           }
  else {
-            l.add(val);
+            GermanTokenReading tokenReading=GermanTokenReading.createTokenReadingFromMorphyString(val,word);
+            l.add(tokenReading);
           }
         }
       }
     }
-    return l;
+    AnalyzedGermanToken aToken=new AnalyzedGermanToken(word,l,startPos);
+    return aToken;
   }
 }

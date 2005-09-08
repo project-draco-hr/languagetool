@@ -1,7 +1,7 @@
 {
   StringBuffer sb=new StringBuffer();
   for (int i=0; i < tokens.length; i++) {
-    if (tokens[i].isWhitespace())     sb.append(tokens[i].getToken());
+    if (tokens[i] != null && tokens[i].isWhitespace())     sb.append(tokens[i].getToken());
  else     sb.append(tokens[i]);
   }
   return sb.toString();
