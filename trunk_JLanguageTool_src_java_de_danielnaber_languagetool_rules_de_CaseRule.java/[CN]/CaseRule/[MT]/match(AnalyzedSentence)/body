@@ -1,0 +1,37 @@
+{
+  List ruleMatches=new ArrayList();
+  AnalyzedToken[] tokens=text.getTokensWithoutWhitespace();
+  int pos=0;
+  for (int i=0; i < tokens.length; i++) {
+    String posToken=tokens[i].getPOSTag();
+    if (posToken != null && posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME))     continue;
+    if (i == 1)     continue;
+    AnalyzedGermanToken analyzedToken=(AnalyzedGermanToken)tokens[i];
+    String token=analyzedToken.getToken();
+    List readings=analyzedToken.getReadings();
+    if (readings == null) {
+      AnalyzedGermanToken analyzedGermanToken2;
+      try {
+        analyzedGermanToken2=tagger.lookup(token.toLowerCase(),-1);
+        if (analyzedGermanToken2 != null)         readings=analyzedGermanToken2.getReadings();
+      }
+ catch (      IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    if (readings == null)     continue;
+    boolean hasNounReading=false;
+    for (Iterator iter=readings.iterator(); iter.hasNext(); ) {
+      GermanTokenReading reading=(GermanTokenReading)iter.next();
+      if (reading.getType() == GermanToken.POSType.NOMEN)       hasNounReading=true;
+    }
+    if (hasNounReading)     continue;
+    if (Character.isUpperCase(token.charAt(0))) {
+      String msg="Au??er am Satzanfang werden nur Nomen und Eigennamen gro?? geschrieben";
+      RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
+      ruleMatches.add(ruleMatch);
+    }
+    pos+=token.length();
+  }
+  return toRuleMatchArray(ruleMatches);
+}
