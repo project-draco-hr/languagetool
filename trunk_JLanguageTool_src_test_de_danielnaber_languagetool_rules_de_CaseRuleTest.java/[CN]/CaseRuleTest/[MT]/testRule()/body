@@ -1,0 +1,9 @@
+{
+  CaseRule rule=new CaseRule();
+  JLanguageTool langTool=new JLanguageTool(Language.GERMAN);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ein einfacher Satz zum Testen.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das Laufen f??llt mir leicht.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das Winseln st??rt.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Ein Einfacher Satz zum Testen.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das Winseln St??rt.")).length);
+}
