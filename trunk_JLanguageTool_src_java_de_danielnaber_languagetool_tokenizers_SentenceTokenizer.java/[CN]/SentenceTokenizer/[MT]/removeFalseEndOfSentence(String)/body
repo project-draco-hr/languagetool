@@ -11,6 +11,7 @@
   }
   s=abbrev6.matcher(s).replaceAll("$1$2");
   s=abbrev7.matcher(s).replaceAll("$1");
+  s=abbrev8.matcher(s).replaceAll("$1");
   for (int i=0; i < germanMonthList.length; i++) {
     s=s.replaceAll("(\\d+\\.) " + EOS + "("+ germanMonthList[i]+ ")","$1 $2");
   }
