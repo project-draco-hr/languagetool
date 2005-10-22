@@ -26,7 +26,7 @@
       if (reading.getType() == GermanToken.POSType.NOMEN)       hasNounReading=true;
     }
     if (hasNounReading)     continue;
-    if (Character.isUpperCase(token.charAt(0))) {
+    if (Character.isUpperCase(token.charAt(0)) && !tokens[i - 1].getToken().equals(":")) {
       String msg="Au??er am Satzanfang werden nur Nomen und Eigennamen gro?? geschrieben";
       RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
       ruleMatches.add(ruleMatch);
