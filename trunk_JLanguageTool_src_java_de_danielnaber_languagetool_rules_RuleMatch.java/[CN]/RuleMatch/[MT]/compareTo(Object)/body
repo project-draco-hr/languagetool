@@ -1,0 +1,7 @@
+{
+  if (other == null)   throw new ClassCastException();
+  RuleMatch otherRule=(RuleMatch)other;
+  if (getFromPos() < otherRule.getFromPos())   return -1;
+  if (getFromPos() > otherRule.getFromPos())   return 1;
+  return 0;
+}
