@@ -1,0 +1,8 @@
+{
+  if (readings == null)   return false;
+  for (Iterator iter=readings.iterator(); iter.hasNext(); ) {
+    GermanTokenReading reading=(GermanTokenReading)iter.next();
+    if (reading.getCasus() == kasus)     return true;
+  }
+  return false;
+}
