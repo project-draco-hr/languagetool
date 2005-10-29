@@ -9,7 +9,6 @@
     if (token.trim().equals("")) {
     }
  else {
-      char tokenFirstChar=token.charAt(0);
       boolean doesRequireA=false;
       boolean doesRequireAn=false;
       boolean isException=false;
@@ -17,6 +16,9 @@
       if (parts.length >= 1) {
         token=parts[0];
       }
+      token=token.replaceAll("[^a-zA-Z]","");
+      if (token.length() == 0)       continue;
+      char tokenFirstChar=token.charAt(0);
       if (requiresA.contains(token.toLowerCase())) {
         isException=true;
         doesRequireA=true;
