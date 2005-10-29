@@ -1,8 +1,0 @@
-{
-  IndexWriter iw=new IndexWriter(INDEX_DIR,new WhitespaceAnalyzer(),true);
-  iw.setMaxBufferedDocs(500);
-  iw.setMergeFactor(500);
-  fillIndex(iw,inputFile);
-  iw.optimize();
-  iw.close();
-}
