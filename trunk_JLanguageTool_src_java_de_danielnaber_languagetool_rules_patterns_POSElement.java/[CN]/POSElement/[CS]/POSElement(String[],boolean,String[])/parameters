@@ -1,0 +1,3 @@
+String[] tokens
+boolean caseSensitive
+String[] exceptions
