@@ -1,0 +1,7 @@
+{
+  final int length=3;
+  String str=null;
+  if (obj == null)   str="-";
+ else   str=obj.toString().substring(0,length);
+  return str;
+}

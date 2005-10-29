@@ -1,4 +1,18 @@
 {
-  if (readings == null)   return token + ":<unknown>";
- else   return token + ":" + readings.toString();
+  if (readings == null)   return token + "[?]";
+ else {
+    StringBuffer sb=new StringBuffer(token);
+    Set printed=new HashSet();
+    sb.append("[");
+    for (Iterator iter=readings.iterator(); iter.hasNext(); ) {
+      GermanTokenReading reading=(GermanTokenReading)iter.next();
+      if (!printed.contains(reading.toString())) {
+        if (printed.size() > 0)         sb.append(", ");
+        sb.append(reading.toString());
+      }
+      printed.add(reading.toString());
+    }
+    sb.append("]");
+    return sb.toString();
+  }
 }
