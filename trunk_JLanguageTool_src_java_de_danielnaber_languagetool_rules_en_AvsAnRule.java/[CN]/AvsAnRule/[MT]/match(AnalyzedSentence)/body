@@ -13,9 +13,9 @@
       boolean doesRequireA=false;
       boolean doesRequireAn=false;
       boolean isException=false;
-      if (token.indexOf("-") != -1) {
-        String[] parts=token.split("-");
-        if (parts.length >= 1)         token=parts[0];
+      String[] parts=token.split("[-']");
+      if (parts.length >= 1) {
+        token=parts[0];
       }
       if (requiresA.contains(token.toLowerCase())) {
         isException=true;
