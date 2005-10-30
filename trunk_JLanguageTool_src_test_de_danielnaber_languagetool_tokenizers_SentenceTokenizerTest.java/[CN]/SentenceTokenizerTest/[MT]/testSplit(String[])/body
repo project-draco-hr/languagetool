@@ -8,6 +8,5 @@
     String s=(String)iter.next();
     inputString.append(s);
   }
-  SentenceTokenizer stokenizer=new SentenceTokenizer();
   assertEquals(input,stokenizer.tokenize(inputString.toString()));
 }
