@@ -21,7 +21,9 @@
   testSplit(new String[]{"Das hier ist ein(!!) Satz."});
   testSplit(new String[]{"Das hier ist ein(?) Satz."});
   testSplit(new String[]{"Das hier ist ein(???) Satz."});
-  testSplit(new String[]{"Der Papagei ist gr??n. ","Das kam so."});
+  testSplit(new String[]{"Das hier ist ein(???) Satz."});
+  testSplit(new String[]{"??Der Papagei ist gr??n.?? ","Das kam so."});
+  testSplit(new String[]{"??Der Papagei ist gr??n??, sagte er"});
   testSplit(new String[]{"Das war es: gar nichts."});
   testSplit(new String[]{"Das war es: Dies ist ein neuer Satz."});
   testSplit(new String[]{"Here's a"});
