@@ -6,6 +6,8 @@
     if (inRuleGroup && id == null)     id=ruleGroupId;
     description=attrs.getValue("name");
     if (inRuleGroup && description == null)     description=ruleGroupDescription;
+    correctExamples=new ArrayList();
+    incorrectExamples=new ArrayList();
   }
  else   if (qName.equals("pattern")) {
     pattern=new StringBuffer();

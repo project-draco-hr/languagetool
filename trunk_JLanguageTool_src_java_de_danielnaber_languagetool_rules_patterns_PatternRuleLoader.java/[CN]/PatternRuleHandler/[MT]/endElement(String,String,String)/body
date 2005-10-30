@@ -12,8 +12,8 @@
     rule.setEndPositionCorrection(endPositionCorrection);
     startPositionCorrection=0;
     endPositionCorrection=0;
-    rule.setCorrectExample(correctExample.toString());
-    rule.setIncorrectExample(incorrectExample.toString());
+    rule.setCorrectExamples(correctExamples);
+    rule.setIncorrectExamples(incorrectExamples);
     rule.setCaseSensitive(caseSensitive);
     caseSensitive=false;
     rules.add(rule);
@@ -22,8 +22,16 @@
     inPattern=false;
   }
  else   if (qName.equals("example")) {
+    if (inCorrectExample) {
+      correctExamples.add(correctExample.toString());
+    }
+ else     if (inIncorrectExample) {
+      incorrectExamples.add(incorrectExample.toString());
+    }
     inCorrectExample=false;
     inIncorrectExample=false;
+    correctExample=new StringBuffer();
+    incorrectExample=new StringBuffer();
   }
  else   if (qName.equals("message")) {
     inMessage=false;
