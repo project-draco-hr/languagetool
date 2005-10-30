@@ -6,7 +6,7 @@
   for (Iterator iter=tokens.iterator(); iter.hasNext(); ) {
     String word=(String)iter.next();
     AnalyzedGermanToken aToken=lookup(word,pos);
-    if (firstWord) {
+    if (firstWord && aToken == null) {
       aToken=lookup(word,pos,true);
       firstWord=false;
     }
