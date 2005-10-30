@@ -9,7 +9,7 @@
   set1.retainAll(set2);
   set1.retainAll(set3);
   if (set1.size() == 0) {
-    String msg="Possible agreement error";
+    String msg="Fehlende ??bereinstimmung (Kongruenz) zwischen Artikel, Adjektiv und" + " Nomen bez??glich Kasus, Numerus oder Genus.";
     ruleMatch=new RuleMatch(this,token1.getStartPos(),token3.getStartPos() + token3.getToken().length(),msg);
   }
   return ruleMatch;
