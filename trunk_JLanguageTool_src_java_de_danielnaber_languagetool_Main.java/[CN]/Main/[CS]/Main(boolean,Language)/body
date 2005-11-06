@@ -1,5 +1,3 @@
 {
-  this.verbose=verbose;
-  this.language=language;
-  lt=new JLanguageTool(language);
+  this(verbose,language,new String[0]);
 }
