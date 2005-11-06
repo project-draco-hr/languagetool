@@ -1,0 +1,9 @@
+{
+  try {
+    String text=getText();
+    System.out.println("text to check: " + text);
+  }
+ catch (  Throwable e) {
+    e.printStackTrace();
+  }
+}

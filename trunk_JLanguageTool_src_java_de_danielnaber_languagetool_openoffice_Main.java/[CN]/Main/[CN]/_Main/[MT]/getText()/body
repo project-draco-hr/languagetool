@@ -1,0 +1,4 @@
+{
+  XText text=xTextDoc.getText();
+  return text.getString();
+}
