@@ -1,0 +1,12 @@
+{
+  DashRule rule=new DashRule();
+  JLanguageTool langTool=new JLanguageTool(Language.GERMAN);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die gro??e Di??ten-Erh??hung kam dann doch.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die gro??e Di??tenerh??hung kam dann doch.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die gro??e Di??ten-Erh??hungs-Manie kam dann doch.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die gro??e Di??ten- und Gehaltserh??hung kam dann doch.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Die gro??e Di??ten- Erh??hung kam dann doch.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Die gro??e Di??ten-  Erh??hung kam dann doch.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Die gro??e Di??ten-Erh??hungs- Manie kam dann doch.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Die gro??e Di??ten- Erh??hungs-Manie kam dann doch.")).length);
+}

@@ -1,0 +1,25 @@
+{
+  List ruleMatches=new ArrayList();
+  AnalyzedToken[] tokens=text.getTokensWithoutWhitespace();
+  int pos=0;
+  String prevToken=null;
+  for (int i=0; i < tokens.length; i++) {
+    String token=tokens[i].getToken();
+    if (token.trim().equals("")) {
+      continue;
+    }
+ else {
+      if (prevToken != null && prevToken.endsWith("-")) {
+        char firstChar=token.charAt(0);
+        if (Character.isUpperCase(firstChar)) {
+          String msg="M??glicherweise fehlt ein 'und' oder es wurde nach dem Wort " + "ein ??berfl??ssiges Leerzeichen eingef??gt.";
+          RuleMatch ruleMatch=new RuleMatch(this,tokens[i - 1].getStartPos(),tokens[i - 1].getStartPos() + prevToken.length(),msg);
+          ruleMatches.add(ruleMatch);
+        }
+      }
+    }
+    prevToken=token;
+    pos+=token.length();
+  }
+  return toRuleMatchArray(ruleMatches);
+}
