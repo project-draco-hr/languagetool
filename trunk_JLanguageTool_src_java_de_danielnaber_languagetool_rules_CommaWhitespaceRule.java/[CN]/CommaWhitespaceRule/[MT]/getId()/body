@@ -1,3 +1,3 @@
 {
-  return "COMMA_WHITESPACE";
+  return "COMMA__PARENTHESIS_WHITESPACE";
 }
