@@ -45,7 +45,7 @@ catch (  SAXException ex) {
       sb.append("Starting check in " + langName + "...<br>\n");
       int matches=0;
       try {
-        matches=checkText(langTool,language,textArea.getText(),sb);
+        matches=checkText(langTool,textArea.getText(),sb);
       }
  catch (      Exception ex) {
         sb.append("<br><br><b><font color=\"red\">" + ex.toString() + "<br>");

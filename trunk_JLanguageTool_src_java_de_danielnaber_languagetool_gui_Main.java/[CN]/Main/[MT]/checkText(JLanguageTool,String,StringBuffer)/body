@@ -1,17 +1,5 @@
 {
   long startTime=System.currentTimeMillis();
-  File defaultPatternFile=new File(JLanguageTool.RULES_DIR + File.separator + language.getShortName()+ File.separator+ JLanguageTool.PATTERN_FILE);
-  List patternRules=new ArrayList();
-  if (defaultPatternFile.exists()) {
-    patternRules=langTool.loadPatternRules(defaultPatternFile.getAbsolutePath());
-  }
- else {
-    sb.append("Pattern file " + defaultPatternFile.getAbsolutePath() + " not found<br>\n");
-  }
-  for (Iterator iter=patternRules.iterator(); iter.hasNext(); ) {
-    Rule rule=(Rule)iter.next();
-    langTool.addRule(rule);
-  }
   List ruleMatches=langTool.check(text);
   long startTimeMatching=System.currentTimeMillis();
   int i=0;
