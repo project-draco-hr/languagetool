@@ -14,6 +14,8 @@
     text=text.replaceAll("<.*?>","");
     text=text.replaceAll(" +"," ");
     text=text.replaceAll("&bquo|&equo","\"");
+    text=text.replaceAll("&mdash;?","--");
+    text=text.replaceAll("&amp;?","&");
     prg.checkText(text);
   }
 }
