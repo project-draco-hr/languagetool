@@ -1,9 +1,14 @@
 {
-  try {
-    String text=getText();
-    System.out.println("text to check: " + text);
+  if (sEvent.equals("execute")) {
+    try {
+      String text=getText();
+      checkText(text);
+    }
+ catch (    Throwable e) {
+      e.printStackTrace();
+    }
   }
- catch (  Throwable e) {
-    e.printStackTrace();
+ else {
+    System.err.println("Sorry, don't know what to do, sEvent = " + sEvent);
   }
 }

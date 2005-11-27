@@ -1,0 +1,18 @@
+{
+  JLanguageTool langTool=new JLanguageTool(Language.ENGLISH);
+  File defaultPatternFile=new File("rules/en/grammar.xml");
+  List patternRules=new ArrayList();
+  patternRules=langTool.loadPatternRules(defaultPatternFile.getAbsolutePath());
+  for (Iterator iter=patternRules.iterator(); iter.hasNext(); ) {
+    Rule rule=(Rule)iter.next();
+    langTool.addRule(rule);
+  }
+  List ruleMatches=langTool.check(text);
+  if (ruleMatches.size() == 0) {
+    JOptionPane.showMessageDialog(null,"No errors and warnings found");
+  }
+ else {
+    OOoDialog dialog=new OOoDialog();
+    dialog.show(ruleMatches,text);
+  }
+}
