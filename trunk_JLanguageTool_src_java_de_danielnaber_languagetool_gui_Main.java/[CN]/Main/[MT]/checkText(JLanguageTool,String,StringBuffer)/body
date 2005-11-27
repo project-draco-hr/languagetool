@@ -12,7 +12,7 @@
     msg=msg.replaceAll("<old>","<b>");
     msg=msg.replaceAll("</old>","</b>");
     sb.append("<b>Message:</b> " + msg + "<br>\n");
-    sb.append("<b>Context:</b> " + getContext(match.getFromPos(),match.getToPos(),text));
+    sb.append("<b>Context:</b> " + Tools.getContext(match.getFromPos(),match.getToPos(),text));
     sb.append("<br>\n");
     i++;
   }

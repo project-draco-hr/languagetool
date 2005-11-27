@@ -1,6 +1,6 @@
 {
   fileContents=fileContents.replaceAll("\n"," ");
-  int startContent=fromPos - CONTEXT_SIZE;
+  int startContent=fromPos - contextSize;
   String prefix="...";
   String postfix="...";
   String markerPrefix="   ";
@@ -9,7 +9,7 @@
     markerPrefix="";
     startContent=0;
   }
-  int endContent=toPos + CONTEXT_SIZE;
+  int endContent=toPos + contextSize;
   if (endContent > fileContents.length()) {
     postfix="";
     endContent=fileContents.length();
