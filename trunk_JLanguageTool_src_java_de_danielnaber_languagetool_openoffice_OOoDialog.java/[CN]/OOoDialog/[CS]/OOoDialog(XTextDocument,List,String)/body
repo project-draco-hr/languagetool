@@ -1,0 +1,5 @@
+{
+  this.xTextDoc=xTextDoc;
+  this.ruleMatches=ruleMatches;
+  this.text=text;
+}

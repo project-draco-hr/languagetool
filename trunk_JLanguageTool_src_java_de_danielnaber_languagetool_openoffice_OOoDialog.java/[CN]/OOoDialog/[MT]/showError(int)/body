@@ -1,0 +1,17 @@
+{
+  RuleMatch match=(RuleMatch)ruleMatches.get(i);
+  currentRuleMatch=match;
+  currentRuleMatchPos=i;
+  String msg=match.getMessage();
+  msg=msg.replaceAll("<suggestion>","<b>");
+  msg=msg.replaceAll("</suggestion>","</b>");
+  msg=msg.replaceAll("<old>","<b>");
+  msg=msg.replaceAll("</old>","</b>");
+  StringBuffer sb=new StringBuffer();
+  sb.append(ruleMatches.size() + " matches<br>\n\n");
+  sb.append("<br>\n<b>" + (i + 1) + ".</b> ");
+  sb.append("<b>Message:</b> " + msg + "<br>\n");
+  sb.append("<b>Context:</b> " + Tools.getContext(match.getFromPos(),match.getToPos(),text));
+  sb.append("<br>\n");
+  resultArea.setText(sb.toString());
+}

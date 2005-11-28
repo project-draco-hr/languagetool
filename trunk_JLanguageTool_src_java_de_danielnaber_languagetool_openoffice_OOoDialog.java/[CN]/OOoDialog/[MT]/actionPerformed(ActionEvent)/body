@@ -1,0 +1,32 @@
+{
+  if (event.getActionCommand().equals(CHANGE_TEXT_BUTTON)) {
+    XText text=xTextDoc.getText();
+    XTextCursor cursor=text.createTextCursor();
+    cursor.gotoStart(false);
+    cursor.goRight((short)currentRuleMatch.getFromPos(),false);
+    short errorLength=(short)(currentRuleMatch.getToPos() - currentRuleMatch.getFromPos());
+    cursor.goRight(errorLength,true);
+    String msgText=currentRuleMatch.getMessage();
+    Pattern pattern=Pattern.compile("<em>(.*?)</em>");
+    Matcher matcher=pattern.matcher(msgText);
+    if (matcher.find()) {
+      cursor.setString(matcher.group(1));
+      int correction=errorLength - matcher.group(1).length();
+      System.err.println("corr=" + correction);
+    }
+ else {
+      System.err.println("No replacement found in message: " + msgText);
+    }
+  }
+ else   if (event.getActionCommand().equals(PREV_BUTTON)) {
+    currentRuleMatchPos--;
+    showError(currentRuleMatchPos);
+  }
+ else   if (event.getActionCommand().equals(NEXT_BUTTON)) {
+    currentRuleMatchPos++;
+    showError(currentRuleMatchPos);
+  }
+ else {
+    System.err.println("Unknown action: " + event);
+  }
+}

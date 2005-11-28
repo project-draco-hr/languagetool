@@ -1,7 +1,7 @@
 {
-  OOoDialog prg=new OOoDialog();
   JLanguageTool lt=new JLanguageTool(Language.ENGLISH);
   String text="this is a test";
   List ruleMatches=lt.check(text);
-  prg.show(ruleMatches,text);
+  OOoDialog prg=new OOoDialog(null,ruleMatches,text);
+  prg.show();
 }

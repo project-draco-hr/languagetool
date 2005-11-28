@@ -12,7 +12,7 @@
     JOptionPane.showMessageDialog(null,"No errors and warnings found");
   }
  else {
-    OOoDialog dialog=new OOoDialog();
-    dialog.show(ruleMatches,text);
+    OOoDialog dialog=new OOoDialog(xTextDoc,ruleMatches,text);
+    dialog.show();
   }
 }
