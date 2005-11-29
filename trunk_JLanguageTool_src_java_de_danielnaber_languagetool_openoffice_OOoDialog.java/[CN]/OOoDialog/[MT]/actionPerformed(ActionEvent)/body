@@ -1,30 +1,32 @@
 {
-  if (event.getActionCommand().equals(CHANGE_TEXT_BUTTON)) {
+  if (event.getActionCommand().equals(CHANGE_BUTTON)) {
+    String replacement=(String)suggestionList.getSelectedValue();
+    System.err.println("repl=" + replacement);
     XText text=xTextDoc.getText();
     XTextCursor cursor=text.createTextCursor();
     cursor.gotoStart(false);
     cursor.goRight((short)currentRuleMatch.getFromPos(),false);
     short errorLength=(short)(currentRuleMatch.getToPos() - currentRuleMatch.getFromPos());
     cursor.goRight(errorLength,true);
-    String msgText=currentRuleMatch.getMessage();
-    Pattern pattern=Pattern.compile("<em>(.*?)</em>");
-    Matcher matcher=pattern.matcher(msgText);
-    if (matcher.find()) {
-      cursor.setString(matcher.group(1));
-      int correction=errorLength - matcher.group(1).length();
-      System.err.println("corr=" + correction);
+    cursor.setString(replacement);
+  }
+ else   if (event.getActionCommand().equals(IGNORE_BUTTON)) {
+    if (currentRuleMatchPos >= ruleMatches.size() - 1) {
+      complete();
     }
  else {
-      System.err.println("No replacement found in message: " + msgText);
+      currentRuleMatchPos++;
+      showError(currentRuleMatchPos);
     }
   }
- else   if (event.getActionCommand().equals(PREV_BUTTON)) {
-    currentRuleMatchPos--;
-    showError(currentRuleMatchPos);
+ else   if (event.getActionCommand().equals(IGNORE_ALL_BUTTON)) {
+    JOptionPane.showMessageDialog(null,"fixme: not yet implemented");
   }
- else   if (event.getActionCommand().equals(NEXT_BUTTON)) {
-    currentRuleMatchPos++;
-    showError(currentRuleMatchPos);
+ else   if (event.getActionCommand().equals(OPTIONS_BUTTON)) {
+    JOptionPane.showMessageDialog(null,"fixme: not yet implemented");
+  }
+ else   if (event.getActionCommand().equals(CLOSE_BUTTON)) {
+    dialog.setVisible(false);
   }
  else {
     System.err.println("Unknown action: " + event);

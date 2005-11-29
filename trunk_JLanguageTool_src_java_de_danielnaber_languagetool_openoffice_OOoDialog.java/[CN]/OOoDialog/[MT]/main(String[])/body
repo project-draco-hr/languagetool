@@ -1,6 +1,7 @@
 {
   JLanguageTool lt=new JLanguageTool(Language.ENGLISH);
-  String text="this is a test";
+  lt.activateDefaultPatternRules();
+  String text="I thing that's a good idea.";
   List ruleMatches=lt.check(text);
   OOoDialog prg=new OOoDialog(null,ruleMatches,text);
   prg.show();

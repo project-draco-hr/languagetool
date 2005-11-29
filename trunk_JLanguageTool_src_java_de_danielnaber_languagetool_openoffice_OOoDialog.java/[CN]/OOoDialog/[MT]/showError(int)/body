@@ -3,15 +3,14 @@
   currentRuleMatch=match;
   currentRuleMatchPos=i;
   String msg=match.getMessage();
-  msg=msg.replaceAll("<suggestion>","<b>");
-  msg=msg.replaceAll("</suggestion>","</b>");
-  msg=msg.replaceAll("<old>","<b>");
-  msg=msg.replaceAll("</old>","</b>");
   StringBuffer sb=new StringBuffer();
-  sb.append(ruleMatches.size() + " matches<br>\n\n");
-  sb.append("<br>\n<b>" + (i + 1) + ".</b> ");
-  sb.append("<b>Message:</b> " + msg + "<br>\n");
-  sb.append("<b>Context:</b> " + Tools.getContext(match.getFromPos(),match.getToPos(),text));
+  if (ruleMatches.size() == 1)   sb.append(ruleMatches.size() + " match");
+ else   sb.append(ruleMatches.size() + " matches");
+  sb.append("<br>\n<br>\n<b>" + (i + 1) + ".</b> ");
+  sb.append("<b>Match:</b> ");
+  sb.append(msg);
   sb.append("<br>\n");
-  resultArea.setText(sb.toString());
+  contextArea.setText(Tools.getContext(match.getFromPos(),match.getToPos(),text));
+  messageArea.setText(sb.toString());
+  setSuggestions();
 }

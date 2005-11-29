@@ -1,0 +1,20 @@
+{
+  String msgText=currentRuleMatch.getMessage();
+  Pattern pattern=Pattern.compile("<em>(.*?)</em>");
+  Matcher matcher=pattern.matcher(msgText);
+  int pos=0;
+  List suggestions=new ArrayList();
+  while (matcher.find(pos)) {
+    pos=matcher.end();
+    suggestions.add(matcher.group(1));
+  }
+  if (suggestions.size() == 0) {
+    System.err.println("No replacement found in message: " + msgText);
+    changeButton.setEnabled(false);
+  }
+ else {
+    changeButton.setEnabled(true);
+  }
+  suggestionList.setListData(suggestions.toArray());
+  suggestionList.setSelectedIndex(0);
+}
