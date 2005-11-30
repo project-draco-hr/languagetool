@@ -1,4 +1,4 @@
 {
   JOptionPane.showMessageDialog(null,COMPLETE_TEXT);
-  dialog.setVisible(false);
+  close();
 }

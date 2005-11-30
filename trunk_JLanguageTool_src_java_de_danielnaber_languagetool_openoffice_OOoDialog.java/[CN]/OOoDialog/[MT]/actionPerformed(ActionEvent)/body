@@ -29,14 +29,7 @@
     configuration.setDisabledRuleIds(cfgDialog.getDisabledRuleIds());
   }
  else   if (event.getActionCommand().equals(CLOSE_BUTTON)) {
-    try {
-      configuration.saveConfiguration();
-    }
- catch (    IOException e) {
-      e.printStackTrace();
-      throw new RuntimeException(e);
-    }
-    dialog.setVisible(false);
+    close();
   }
  else {
     System.err.println("Unknown action: " + event);

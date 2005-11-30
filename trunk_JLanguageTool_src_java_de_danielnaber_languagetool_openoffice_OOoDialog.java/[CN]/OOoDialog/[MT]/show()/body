@@ -18,6 +18,7 @@
   cons.gridy=0;
   cons.gridheight=2;
   contextArea.setContentType("text/html");
+  contextArea.setEditable(false);
   contentPane.add(new JScrollPane(contextArea),cons);
   cons.gridheight=1;
   cons.weightx=1.0f;
@@ -35,6 +36,7 @@
   contentPane.add(ignoreAllButton,cons);
   messageArea=new JTextPane();
   messageArea.setContentType("text/html");
+  messageArea.setEditable(false);
   cons.fill=GridBagConstraints.BOTH;
   cons.weightx=8.0f;
   cons.weighty=8.0f;

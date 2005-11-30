@@ -1,0 +1,10 @@
+{
+  try {
+    configuration.saveConfiguration();
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+    throw new RuntimeException(e);
+  }
+  dialog.setVisible(false);
+}
