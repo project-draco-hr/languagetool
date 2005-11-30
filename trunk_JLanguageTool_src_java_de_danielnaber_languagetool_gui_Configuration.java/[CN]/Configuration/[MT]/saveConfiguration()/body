@@ -1,0 +1,21 @@
+{
+  Properties props=new Properties();
+  StringBuffer sb=new StringBuffer();
+  for (Iterator iter=disabledRuleIds.iterator(); iter.hasNext(); ) {
+    String id=(String)iter.next();
+    sb.append(id);
+    if (iter.hasNext())     sb.append(",");
+  }
+  if (disabledRuleIds == null)   props.setProperty(DISABLED_RULES_CONFIG_KEY,"");
+ else   props.setProperty(DISABLED_RULES_CONFIG_KEY,sb.toString());
+  FileOutputStream fos=null;
+  try {
+    fos=new FileOutputStream(CONFIG_FILE);
+    props.store(fos,"JLanguageTool configuration");
+  }
+  finally {
+    if (fos != null) {
+      fos.close();
+    }
+  }
+}

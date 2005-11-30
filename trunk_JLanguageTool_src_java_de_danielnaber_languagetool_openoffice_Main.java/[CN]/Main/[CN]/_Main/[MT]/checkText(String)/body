@@ -1,12 +1,17 @@
 {
+  Configuration config=new Configuration();
   JLanguageTool langTool=new JLanguageTool(Language.ENGLISH);
   langTool.activateDefaultPatternRules();
+  for (Iterator iter=config.getDisabledRuleIds().iterator(); iter.hasNext(); ) {
+    String id=(String)iter.next();
+    langTool.disableRule(id);
+  }
   List ruleMatches=langTool.check(text);
   if (ruleMatches.size() == 0) {
     JOptionPane.showMessageDialog(null,"No errors and warnings found");
   }
  else {
-    OOoDialog dialog=new OOoDialog(xTextDoc,ruleMatches,text);
+    OOoDialog dialog=new OOoDialog(config,langTool.getAllRules(),xTextDoc,ruleMatches,text);
     dialog.show();
   }
 }

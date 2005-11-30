@@ -23,9 +23,19 @@
     JOptionPane.showMessageDialog(null,"fixme: not yet implemented");
   }
  else   if (event.getActionCommand().equals(OPTIONS_BUTTON)) {
-    JOptionPane.showMessageDialog(null,"fixme: not yet implemented");
+    ConfigurationDialog cfgDialog=new ConfigurationDialog();
+    cfgDialog.setDisabledRules(configuration.getDisabledRuleIds());
+    cfgDialog.show(rules);
+    configuration.setDisabledRuleIds(cfgDialog.getDisabledRuleIds());
   }
  else   if (event.getActionCommand().equals(CLOSE_BUTTON)) {
+    try {
+      configuration.saveConfiguration();
+    }
+ catch (    IOException e) {
+      e.printStackTrace();
+      throw new RuntimeException(e);
+    }
     dialog.setVisible(false);
   }
  else {

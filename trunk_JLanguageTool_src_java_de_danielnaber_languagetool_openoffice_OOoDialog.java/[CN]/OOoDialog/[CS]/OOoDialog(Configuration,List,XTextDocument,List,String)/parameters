@@ -1,3 +1,5 @@
+Configuration configuration
+List rules
 XTextDocument xTextDoc
 List ruleMatches
 String text

@@ -1,8 +1,13 @@
 {
   JLanguageTool lt=new JLanguageTool(Language.ENGLISH);
   lt.activateDefaultPatternRules();
-  String text="I thing that's a good idea.";
+  Configuration config=new Configuration();
+  for (Iterator iter=config.getDisabledRuleIds().iterator(); iter.hasNext(); ) {
+    String id=(String)iter.next();
+    lt.disableRule(id);
+  }
+  String text="I thing that's a good idea. This is an test.";
   List ruleMatches=lt.check(text);
-  OOoDialog prg=new OOoDialog(null,ruleMatches,text);
+  OOoDialog prg=new OOoDialog(config,lt.getAllRules(),null,ruleMatches,text);
   prg.show();
 }
