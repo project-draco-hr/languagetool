@@ -1,6 +1,7 @@
 {
   Configuration config=new Configuration();
-  JLanguageTool langTool=new JLanguageTool(Language.ENGLISH);
+  Language docLanguage=getLanguage();
+  JLanguageTool langTool=new JLanguageTool(docLanguage);
   langTool.activateDefaultPatternRules();
   for (Iterator iter=config.getDisabledRuleIds().iterator(); iter.hasNext(); ) {
     String id=(String)iter.next();
@@ -8,7 +9,7 @@
   }
   List ruleMatches=langTool.check(text);
   if (ruleMatches.size() == 0) {
-    JOptionPane.showMessageDialog(null,"No errors and warnings found");
+    JOptionPane.showMessageDialog(null,"No errors and warnings found (document language: " + docLanguage.getName() + ")");
   }
  else {
     OOoDialog dialog=new OOoDialog(config,langTool.getAllRules(),xTextDoc,ruleMatches,text);
