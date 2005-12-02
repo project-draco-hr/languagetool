@@ -1,0 +1,9 @@
+{
+  if (currentRuleMatchPos >= ruleMatches.size() - 1) {
+    complete();
+  }
+ else {
+    currentRuleMatchPos++;
+    showError(currentRuleMatchPos);
+  }
+}

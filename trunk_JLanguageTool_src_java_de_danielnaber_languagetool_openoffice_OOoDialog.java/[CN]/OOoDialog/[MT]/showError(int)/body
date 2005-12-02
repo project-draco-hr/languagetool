@@ -13,4 +13,14 @@
   contextArea.setText(Tools.getContext(match.getFromPos(),match.getToPos(),text));
   messageArea.setText(sb.toString());
   setSuggestions();
+  if (xTextDoc != null) {
+    XModel xModel=(XModel)UnoRuntime.queryInterface(XModel.class,xTextDoc);
+    XController xController=xModel.getCurrentController();
+    XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,xController);
+    XTextViewCursor xViewCursor=xViewCursorSupplier.getViewCursor();
+    xViewCursor.gotoStart(false);
+    int errorLength=currentRuleMatch.getToPos() - currentRuleMatch.getFromPos();
+    xViewCursor.goRight((short)currentRuleMatch.getFromPos(),false);
+    xViewCursor.goRight((short)errorLength,true);
+  }
 }

@@ -1,7 +1,6 @@
 {
   if (event.getActionCommand().equals(CHANGE_BUTTON)) {
     String replacement=(String)suggestionList.getSelectedValue();
-    System.err.println("repl=" + replacement);
     XText text=xTextDoc.getText();
     XTextCursor cursor=text.createTextCursor();
     cursor.gotoStart(false);
@@ -9,15 +8,10 @@
     short errorLength=(short)(currentRuleMatch.getToPos() - currentRuleMatch.getFromPos());
     cursor.goRight(errorLength,true);
     cursor.setString(replacement);
+    gotoNextMatch();
   }
  else   if (event.getActionCommand().equals(IGNORE_BUTTON)) {
-    if (currentRuleMatchPos >= ruleMatches.size() - 1) {
-      complete();
-    }
- else {
-      currentRuleMatchPos++;
-      showError(currentRuleMatchPos);
-    }
+    gotoNextMatch();
   }
  else   if (event.getActionCommand().equals(IGNORE_ALL_BUTTON)) {
     JOptionPane.showMessageDialog(null,"fixme: not yet implemented");
