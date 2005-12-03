@@ -4,8 +4,8 @@
   currentRuleMatchPos=i;
   String msg=match.getMessage();
   StringBuffer sb=new StringBuffer();
-  if (ruleMatches.size() == 1)   sb.append(ruleMatches.size() + " match");
- else   sb.append(ruleMatches.size() + " matches");
+  if (ruleMatches.size() == 1)   sb.append(ruleMatches.size() + " match in total");
+ else   sb.append(ruleMatches.size() + " matches in total");
   sb.append("<br>\n<br>\n<b>" + (i + 1) + ".</b> ");
   sb.append("<b>Match:</b> ");
   sb.append(msg);
@@ -20,7 +20,7 @@
     XTextViewCursor xViewCursor=xViewCursorSupplier.getViewCursor();
     xViewCursor.gotoStart(false);
     int errorLength=currentRuleMatch.getToPos() - currentRuleMatch.getFromPos();
-    xViewCursor.goRight((short)currentRuleMatch.getFromPos(),false);
+    xViewCursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
     xViewCursor.goRight((short)errorLength,true);
   }
 }

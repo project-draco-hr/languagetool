@@ -1,14 +1,6 @@
 {
   if (event.getActionCommand().equals(CHANGE_BUTTON)) {
-    String replacement=(String)suggestionList.getSelectedValue();
-    XText text=xTextDoc.getText();
-    XTextCursor cursor=text.createTextCursor();
-    cursor.gotoStart(false);
-    cursor.goRight((short)currentRuleMatch.getFromPos(),false);
-    short errorLength=(short)(currentRuleMatch.getToPos() - currentRuleMatch.getFromPos());
-    cursor.goRight(errorLength,true);
-    cursor.setString(replacement);
-    gotoNextMatch();
+    changeText();
   }
  else   if (event.getActionCommand().equals(IGNORE_BUTTON)) {
     gotoNextMatch();

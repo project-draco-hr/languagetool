@@ -6,7 +6,7 @@
     String id=(String)iter.next();
     lt.disableRule(id);
   }
-  String text="i thing that's a good idea. This is an test.";
+  String text="There was to much snow.";
   List ruleMatches=lt.check(text);
   OOoDialog prg=new OOoDialog(config,lt.getAllRules(),null,ruleMatches,text);
   prg.show();
