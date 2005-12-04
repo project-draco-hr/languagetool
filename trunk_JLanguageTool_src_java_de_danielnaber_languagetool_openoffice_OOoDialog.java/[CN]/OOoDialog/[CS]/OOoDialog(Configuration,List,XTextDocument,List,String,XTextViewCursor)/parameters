@@ -3,3 +3,4 @@ List rules
 XTextDocument xTextDoc
 List ruleMatches
 String text
+XTextViewCursor xViewCursor

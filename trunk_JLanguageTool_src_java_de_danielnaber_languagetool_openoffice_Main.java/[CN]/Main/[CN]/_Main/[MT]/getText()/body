@@ -1,4 +1,13 @@
 {
-  XText text=xTextDoc.getText();
-  return text.getString();
+  XModel xModel=(XModel)UnoRuntime.queryInterface(XModel.class,xTextDoc);
+  XController xController=xModel.getCurrentController();
+  XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,xController);
+  xViewCursor=xViewCursorSupplier.getViewCursor();
+  String textToCheck=xViewCursor.getString();
+  if (textToCheck.equals("")) {
+    XText text=xTextDoc.getText();
+    textToCheck=text.getString();
+    xViewCursor=null;
+  }
+  return textToCheck;
 }

@@ -1,12 +1,23 @@
 {
   String replacement=(String)suggestionList.getSelectedValue();
   XText text=xTextDoc.getText();
-  XTextCursor cursor=text.createTextCursor();
-  cursor.gotoStart(false);
-  cursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
   short errorLength=(short)(currentRuleMatch.getToPos() - currentRuleMatch.getFromPos());
-  cursor.goRight(errorLength,true);
-  cursor.setString(replacement);
+  if (xViewCursor == null) {
+    XTextCursor cursor=text.createTextCursor();
+    cursor.gotoStart(false);
+    cursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
+    cursor.goRight(errorLength,true);
+    cursor.setString(replacement);
+  }
+ else {
+    if (startTextRange == null) {
+      startTextRange=xViewCursor.getStart();
+    }
+    xViewCursor.gotoRange(startTextRange,false);
+    xViewCursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
+    xViewCursor.goRight((short)errorLength,true);
+    xViewCursor.setString(replacement);
+  }
   replacementCorrection+=errorLength - replacement.length();
   gotoNextMatch();
 }

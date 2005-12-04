@@ -8,6 +8,6 @@
   }
   String text="There was to much snow.";
   List ruleMatches=lt.check(text);
-  OOoDialog prg=new OOoDialog(config,lt.getAllRules(),null,ruleMatches,text);
+  OOoDialog prg=new OOoDialog(config,lt.getAllRules(),null,ruleMatches,text,null);
   prg.show();
 }

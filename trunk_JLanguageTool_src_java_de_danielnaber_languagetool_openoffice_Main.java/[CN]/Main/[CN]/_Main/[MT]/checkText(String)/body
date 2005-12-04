@@ -12,7 +12,7 @@
     JOptionPane.showMessageDialog(null,"No errors and warnings found (document language: " + docLanguage.getName() + ")");
   }
  else {
-    OOoDialog dialog=new OOoDialog(config,langTool.getAllRules(),xTextDoc,ruleMatches,text);
+    OOoDialog dialog=new OOoDialog(config,langTool.getAllRules(),xTextDoc,ruleMatches,text,xViewCursor);
     dialog.show();
   }
 }

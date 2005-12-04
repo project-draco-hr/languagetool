@@ -17,10 +17,20 @@
     XModel xModel=(XModel)UnoRuntime.queryInterface(XModel.class,xTextDoc);
     XController xController=xModel.getCurrentController();
     XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,xController);
-    XTextViewCursor xViewCursor=xViewCursorSupplier.getViewCursor();
-    xViewCursor.gotoStart(false);
     int errorLength=currentRuleMatch.getToPos() - currentRuleMatch.getFromPos();
-    xViewCursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
-    xViewCursor.goRight((short)errorLength,true);
+    if (xViewCursor == null) {
+      XTextViewCursor tmpxViewCursor=xViewCursorSupplier.getViewCursor();
+      tmpxViewCursor.gotoStart(false);
+      tmpxViewCursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
+      tmpxViewCursor.goRight((short)errorLength,true);
+    }
+ else {
+      if (startTextRange == null) {
+        startTextRange=xViewCursor.getStart();
+      }
+      xViewCursor.gotoRange(startTextRange,false);
+      xViewCursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
+      xViewCursor.goRight((short)errorLength,true);
+    }
   }
 }
