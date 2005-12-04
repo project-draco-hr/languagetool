@@ -35,6 +35,9 @@
         if (analyzedGermanToken2 != null && Character.isLowerCase(token.charAt(0)) && !substVerbenExceptions.contains(token)) {
           String msg="Substantivierte Verben werden gro?? geschrieben.";
           RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
+          String word=tokens[i].getToken();
+          String fixedWord=Character.toUpperCase(word.charAt(0)) + word.substring(1);
+          ruleMatch.setSuggestedReplacement(fixedWord);
           ruleMatches.add(ruleMatch);
         }
       }
@@ -55,6 +58,9 @@
     if (Character.isUpperCase(token.charAt(0)) && !tokens[i - 1].getToken().equals(":") && !exceptions.contains(token)&& token.length() > 1) {
       String msg="Au??er am Satzanfang werden nur Nomen und Eigennamen gro?? geschrieben";
       RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
+      String word=tokens[i].getToken();
+      String fixedWord=Character.toLowerCase(word.charAt(0)) + word.substring(1);
+      ruleMatch.setSuggestedReplacement(fixedWord);
       ruleMatches.add(ruleMatch);
     }
     pos+=token.length();
