@@ -1,0 +1,11 @@
+{
+  int i=0;
+  List filteredRuleMatches=new ArrayList();
+  for (Iterator iter=ruleMatches.iterator(); iter.hasNext(); ) {
+    RuleMatch ruleMatch=(RuleMatch)iter.next();
+    if (i < currentRuleMatchPos)     continue;
+    if (!ruleMatch.getRule().getId().equals(currentRuleMatch.getRule().getId()))     filteredRuleMatches.add(ruleMatch);
+    i++;
+  }
+  ruleMatches=filteredRuleMatches;
+}

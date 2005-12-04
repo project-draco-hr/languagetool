@@ -6,7 +6,8 @@
     gotoNextMatch();
   }
  else   if (event.getActionCommand().equals(IGNORE_ALL_BUTTON)) {
-    JOptionPane.showMessageDialog(null,"fixme: not yet implemented");
+    ignoreAll();
+    gotoNextMatch();
   }
  else   if (event.getActionCommand().equals(OPTIONS_BUTTON)) {
     ConfigurationDialog cfgDialog=new ConfigurationDialog();
