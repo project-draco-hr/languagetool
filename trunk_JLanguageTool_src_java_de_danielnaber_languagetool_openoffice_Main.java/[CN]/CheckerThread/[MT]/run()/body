@@ -1,0 +1,24 @@
+{
+  try {
+    langTool=new JLanguageTool(docLanguage);
+    langTool.activateDefaultPatternRules();
+    for (Iterator iter=config.getDisabledRuleIds().iterator(); iter.hasNext(); ) {
+      String id=(String)iter.next();
+      langTool.disableRule(id);
+    }
+    ruleMatches=langTool.check(text);
+    done=true;
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+    throw new RuntimeException(e);
+  }
+catch (  ParserConfigurationException e) {
+    e.printStackTrace();
+    throw new RuntimeException(e);
+  }
+catch (  SAXException e) {
+    e.printStackTrace();
+    throw new RuntimeException(e);
+  }
+}

@@ -1,0 +1,11 @@
+{
+  setTitle("Starting LanguageTool...");
+  JPanel progressPanel=new JPanel(new BorderLayout());
+  JProgressBar progressBar=new JProgressBar(0,100);
+  progressBar.setIndeterminate(true);
+  progressPanel.add(progressBar);
+  setContentPane(progressPanel);
+  pack();
+  setVisible(true);
+  setSize(400,30);
+}

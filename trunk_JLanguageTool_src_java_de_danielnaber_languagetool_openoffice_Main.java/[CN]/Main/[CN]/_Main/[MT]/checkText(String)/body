@@ -1,18 +1,28 @@
 {
+  ProgressDialog progressDialog=new ProgressDialog();
+  Language docLanguage=null;
+  if (xTextDoc == null)   docLanguage=Language.ENGLISH;
+ else   docLanguage=getLanguage();
   Configuration config=new Configuration();
-  Language docLanguage=getLanguage();
-  JLanguageTool langTool=new JLanguageTool(docLanguage);
-  langTool.activateDefaultPatternRules();
-  for (Iterator iter=config.getDisabledRuleIds().iterator(); iter.hasNext(); ) {
-    String id=(String)iter.next();
-    langTool.disableRule(id);
+  CheckerThread checkerThread=new CheckerThread(text,docLanguage,config);
+  checkerThread.start();
+  while (true) {
+    if (checkerThread.done()) {
+      break;
+    }
+    try {
+      Thread.sleep(100);
+    }
+ catch (    InterruptedException e) {
+    }
   }
-  List ruleMatches=langTool.check(text);
+  progressDialog.close();
+  List ruleMatches=checkerThread.getRuleMatches();
   if (ruleMatches.size() == 0) {
     JOptionPane.showMessageDialog(null,"No errors and warnings found (document language: " + docLanguage.getName() + ")");
   }
  else {
-    OOoDialog dialog=new OOoDialog(config,langTool.getAllRules(),xTextDoc,ruleMatches,text,xViewCursor);
+    OOoDialog dialog=new OOoDialog(config,checkerThread.getLanguageTool().getAllRules(),xTextDoc,ruleMatches,text,xViewCursor);
     dialog.show();
   }
 }
