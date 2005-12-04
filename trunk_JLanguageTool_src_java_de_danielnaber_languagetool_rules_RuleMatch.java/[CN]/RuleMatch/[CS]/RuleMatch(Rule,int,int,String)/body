@@ -1,12 +1,3 @@
 {
-  this.rule=rule;
-  this.fromPos=fromPos;
-  this.toPos=toPos;
-  this.message=message;
-  Matcher matcher=SUGGESTION_PATTERN.matcher(message);
-  int pos=0;
-  while (matcher.find(pos)) {
-    pos=matcher.end();
-    suggestedReplacements.add(matcher.group(1));
-  }
+  this(rule,fromPos,toPos,message,false);
 }

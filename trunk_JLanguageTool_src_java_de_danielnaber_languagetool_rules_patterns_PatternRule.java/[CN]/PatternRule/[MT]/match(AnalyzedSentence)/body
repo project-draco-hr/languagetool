@@ -33,7 +33,8 @@
       for (int j=0; j < matchingTokens; j++) {
         errMessage=errMessage.replaceAll("\\\\" + (j + 1),tokens[firstMatchToken + j].getToken());
       }
-      RuleMatch ruleMatch=new RuleMatch(this,tokens[firstMatchToken + startPositionCorrection].getStartPos(),tokens[lastMatchToken + endPositionCorrection].getStartPos() + tokens[lastMatchToken + endPositionCorrection].getToken().length(),errMessage);
+      boolean startsWithUppercase=StringTools.startsWithUppercase(tokens[firstMatchToken + startPositionCorrection].toString());
+      RuleMatch ruleMatch=new RuleMatch(this,tokens[firstMatchToken + startPositionCorrection].getStartPos(),tokens[lastMatchToken + endPositionCorrection].getStartPos() + tokens[lastMatchToken + endPositionCorrection].getToken().length(),errMessage,startsWithUppercase);
       ruleMatches.add(ruleMatch);
     }
  else {

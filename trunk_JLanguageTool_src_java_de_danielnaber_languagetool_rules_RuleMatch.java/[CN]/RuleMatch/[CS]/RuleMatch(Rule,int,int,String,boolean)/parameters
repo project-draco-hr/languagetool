@@ -1,0 +1,5 @@
+Rule rule
+int fromPos
+int toPos
+String message
+boolean startWithUppercase

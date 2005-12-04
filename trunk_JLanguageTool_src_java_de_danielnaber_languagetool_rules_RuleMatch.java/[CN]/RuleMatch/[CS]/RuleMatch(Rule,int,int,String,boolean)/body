@@ -1,0 +1,14 @@
+{
+  this.rule=rule;
+  this.fromPos=fromPos;
+  this.toPos=toPos;
+  this.message=message;
+  Matcher matcher=SUGGESTION_PATTERN.matcher(message);
+  int pos=0;
+  while (matcher.find(pos)) {
+    pos=matcher.end();
+    String repl=matcher.group(1);
+    if (startWithUppercase)     repl=StringTools.uppercaseFirstChar(repl);
+    suggestedReplacements.add(repl);
+  }
+}
