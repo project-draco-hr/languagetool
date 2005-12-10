@@ -14,7 +14,7 @@
       boolean doesRequireAn=false;
       boolean isException=false;
       String[] parts=token.split("[-']");
-      if (parts.length >= 1) {
+      if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
         token=parts[0];
       }
       token=token.replaceAll("[^a-zA-Z0-9]","");
