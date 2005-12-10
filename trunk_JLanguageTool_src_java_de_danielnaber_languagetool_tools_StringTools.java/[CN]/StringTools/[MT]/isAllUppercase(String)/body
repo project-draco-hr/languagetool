@@ -1,0 +1,6 @@
+{
+  if (str.toUpperCase().equals(str)) {
+    return true;
+  }
+  return false;
+}
