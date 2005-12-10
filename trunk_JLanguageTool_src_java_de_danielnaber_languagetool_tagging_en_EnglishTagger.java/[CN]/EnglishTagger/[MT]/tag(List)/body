@@ -1,5 +1,5 @@
 {
-  if (tagger == null)   tagger=new EnglishPOSTaggerME();
+  if (tagger == null)   tagger=new PosTagger("resource/en/EnglishPOS.bin.gz",(Dictionary)null);
   List taggerTokens=tagger.tag(tokens);
   List analyzedTokens=new ArrayList();
   int i=0;
