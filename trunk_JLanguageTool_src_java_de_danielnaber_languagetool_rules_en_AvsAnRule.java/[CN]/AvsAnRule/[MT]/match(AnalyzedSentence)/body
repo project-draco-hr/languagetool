@@ -36,13 +36,8 @@
       }
       if (!isException) {
         if (StringTools.isAllUppercase(token)) {
-          char fc=Character.toLowerCase(tokenFirstChar);
-          if (fc == 'a' || fc == 'e' || fc == 'f' || fc == 'h' || fc == 'i' || fc == 'l' || fc == 'm' || fc == 'n' || fc == 's' || fc == 's' || fc == 'x') {
-            doesRequireAn=true;
-          }
- else {
-            doesRequireA=true;
-          }
+          doesRequireAn=false;
+          doesRequireA=false;
         }
  else         if (isVowel(tokenFirstChar)) {
           doesRequireAn=true;
