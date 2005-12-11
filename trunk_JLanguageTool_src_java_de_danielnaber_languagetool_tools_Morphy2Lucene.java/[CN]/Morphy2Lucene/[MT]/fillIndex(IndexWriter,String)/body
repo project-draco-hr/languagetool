@@ -24,7 +24,6 @@
     }
  else {
       if (line.startsWith("<lemma")) {
-        String baseform=line.substring(line.indexOf(">") + 1,line.indexOf("<",1));
         String postype=DEFAULT_CATEGORY;
         String kasus=DEFAULT_CATEGORY;
         String numerus=DEFAULT_CATEGORY;
@@ -33,14 +32,9 @@
         if (line.indexOf("kas=") != -1)         kasus=line.replaceAll(".*kas=([A-Z]+).*","$1");
         if (line.indexOf("num=") != -1)         numerus=line.replaceAll(".*num=([A-Z]+).*","$1");
         if (line.indexOf("gen=") != -1)         genus=line.replaceAll(".*gen=([A-Z]+).*","$1");
-        String cat=postype + " " + kasus+ " "+ numerus+ " "+ genus;
-        if (cat.length() < 8)         throw new IllegalStateException("category too short: " + cat);
-        if (cat.length() > 15)         throw new IllegalStateException("category too long: " + cat);
+        String cat="" + map(postype,avoidAmbiguitiesCat) + map(kasus,avoidAmbiguitiesKasus)+ map(numerus,avoidAmbiguitiesNumerus)+ map(genus,avoidAmbiguitiesGenus);
+        if (cat.length() != 4)         throw new IllegalStateException("category.length != 4: " + cat);
         doc.add(new Field(GermanTagger.CATEGORIES_FIELD,cat,Field.Store.YES,Field.Index.NO));
-        if (fullform.equals(baseform)) {
-          doc.removeField(IS_BASEFORM);
-          doc.add(new Field(IS_BASEFORM,"1",Field.Store.YES,Field.Index.NO));
-        }
       }
  else {
         System.err.println("unknown format: " + line);

@@ -1,0 +1,14 @@
+{
+  char shortForm;
+  if (manualMapping.containsKey(str))   shortForm=((Character)manualMapping.get(str)).charValue();
+ else   shortForm=str.charAt(0);
+  Character shortFormObj=new Character(shortForm);
+  if (avoidAmbiguities.containsKey(shortFormObj)) {
+    String oldValue=(String)avoidAmbiguities.get(shortFormObj);
+    if (!oldValue.equals(str))     System.err.println("Mapping ambiguous: " + shortForm + " <- "+ str+ "/"+ oldValue);
+  }
+ else {
+    avoidAmbiguities.put(new Character(shortForm),str);
+  }
+  return shortForm;
+}
