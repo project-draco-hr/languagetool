@@ -1,4 +1,4 @@
 {
-  relevantWords=loadWords(FILE_NAME);
+  relevantWords=loadWords(JLanguageTool.getAbsoluteFile(FILE_NAME));
   lemmatizer=new GermanLemmatizer();
 }

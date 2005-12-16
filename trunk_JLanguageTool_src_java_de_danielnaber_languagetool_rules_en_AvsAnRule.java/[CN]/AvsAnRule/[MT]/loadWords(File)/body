@@ -3,7 +3,7 @@
   BufferedReader br=null;
   Set set=new HashSet();
   try {
-    fr=new FileReader(filename);
+    fr=new FileReader(file);
     br=new BufferedReader(fr);
     String line;
     while ((line=br.readLine()) != null) {

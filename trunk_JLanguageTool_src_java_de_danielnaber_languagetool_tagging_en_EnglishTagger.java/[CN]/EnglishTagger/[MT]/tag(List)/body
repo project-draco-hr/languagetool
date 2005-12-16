@@ -1,5 +1,8 @@
 {
-  if (tagger == null)   tagger=new PosTagger("resource/en/EnglishPOS.bin.gz",(Dictionary)null);
+  if (tagger == null) {
+    File resourceFile=JLanguageTool.getAbsoluteFile(RESOURCE_FILENAME);
+    tagger=new PosTagger(resourceFile.getAbsolutePath(),(Dictionary)null);
+  }
   List taggerTokens=tagger.tag(tokens);
   List analyzedTokens=new ArrayList();
   int i=0;

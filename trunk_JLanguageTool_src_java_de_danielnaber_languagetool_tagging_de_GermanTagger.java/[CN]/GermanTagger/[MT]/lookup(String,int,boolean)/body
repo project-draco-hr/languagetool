@@ -1,5 +1,5 @@
 {
-  if (searcher == null)   searcher=new IndexSearcher(INDEX_DIR);
+  initSearcher();
   Term term=null;
   if (makeLowercase)   term=new Term(FULLFORM_FIELD,word.toLowerCase());
  else   term=new Term(FULLFORM_FIELD,word);

@@ -1,0 +1,12 @@
+{
+  if (language == null) {
+    throw new NullPointerException("language cannot be null");
+  }
+  basedir=basedirArg;
+  this.language=language;
+  Rule[] allBuiltinRules=new Rule[]{new CommaWhitespaceRule(),new WordRepeatRule(language),new WordCoherencyRule(),new DoublePunctuationRule(),new AvsAnRule(),new CaseRule(),new WiederVsWiderRule(),new AgreementRule(),new UppercaseSentenceStartRule(),new DashRule()};
+  for (int i=0; i < allBuiltinRules.length; i++) {
+    if (allBuiltinRules[i].supportsLanguage(language))     builtinRules.add(allBuiltinRules[i]);
+  }
+  tagger=language.getTagger();
+}
