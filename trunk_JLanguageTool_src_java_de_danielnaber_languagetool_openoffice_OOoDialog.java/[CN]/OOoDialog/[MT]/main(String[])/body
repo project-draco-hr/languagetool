@@ -1,7 +1,7 @@
 {
   JLanguageTool lt=new JLanguageTool(Language.ENGLISH);
   lt.activateDefaultPatternRules();
-  Configuration config=new Configuration();
+  Configuration config=new Configuration(new File("/tmp"));
   for (Iterator iter=config.getDisabledRuleIds().iterator(); iter.hasNext(); ) {
     String id=(String)iter.next();
     lt.disableRule(id);

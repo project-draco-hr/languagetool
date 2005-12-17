@@ -1,6 +1,5 @@
 {
   try {
-    File baseDir=getBaseDir();
     langTool=new JLanguageTool(docLanguage,baseDir);
     langTool.activateDefaultPatternRules();
     for (Iterator iter=config.getDisabledRuleIds().iterator(); iter.hasNext(); ) {

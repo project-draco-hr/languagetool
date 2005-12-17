@@ -10,8 +10,8 @@
  else   props.setProperty(DISABLED_RULES_CONFIG_KEY,sb.toString());
   FileOutputStream fos=null;
   try {
-    fos=new FileOutputStream(CONFIG_FILE);
-    props.store(fos,"JLanguageTool configuration");
+    fos=new FileOutputStream(configFile);
+    props.store(fos,"LanguageTool configuration");
   }
   finally {
     if (fos != null) {

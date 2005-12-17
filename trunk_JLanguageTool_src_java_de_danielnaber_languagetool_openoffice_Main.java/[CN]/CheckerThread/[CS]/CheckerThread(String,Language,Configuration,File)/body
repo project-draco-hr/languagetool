@@ -2,4 +2,5 @@
   this.text=text;
   this.docLanguage=docLanguage;
   this.config=config;
+  this.baseDir=baseDir;
 }

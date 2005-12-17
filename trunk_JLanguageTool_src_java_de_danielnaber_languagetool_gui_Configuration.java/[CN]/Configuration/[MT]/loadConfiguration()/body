@@ -1,7 +1,7 @@
 {
   FileInputStream fis=null;
   try {
-    fis=new FileInputStream(CONFIG_FILE);
+    fis=new FileInputStream(configFile);
     Properties props=new Properties();
     props.load(fis);
     String val=(String)props.get(DISABLED_RULES_CONFIG_KEY);

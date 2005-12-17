@@ -3,8 +3,9 @@
   Language docLanguage=null;
   if (xTextDoc == null)   docLanguage=Language.ENGLISH;
  else   docLanguage=getLanguage();
-  Configuration config=new Configuration();
-  CheckerThread checkerThread=new CheckerThread(text,docLanguage,config);
+  File baseDir=getBaseDir();
+  Configuration config=new Configuration(baseDir);
+  CheckerThread checkerThread=new CheckerThread(text,docLanguage,config,baseDir);
   checkerThread.start();
   while (true) {
     if (checkerThread.done()) {
