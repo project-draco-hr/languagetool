@@ -10,8 +10,8 @@
   sb.append("<b>Match:</b> ");
   sb.append(msg);
   sb.append("<br>\n");
-  contextArea.setText(Tools.getContext(match.getFromPos(),match.getToPos(),text));
-  messageArea.setText(sb.toString());
+  contextArea.setText(FONT_TAG + Tools.getContext(match.getFromPos(),match.getToPos(),text));
+  messageArea.setText(FONT_TAG + sb.toString());
   setSuggestions();
   if (xTextDoc != null) {
     XModel xModel=(XModel)UnoRuntime.queryInterface(XModel.class,xTextDoc);
