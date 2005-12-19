@@ -1,4 +1,5 @@
 {
+  sentenceCount=0;
   SentenceTokenizer sTokenizer=new SentenceTokenizer();
   List sentences=sTokenizer.tokenize(text);
   List ruleMatches=new ArrayList();
@@ -9,6 +10,7 @@
   int columnCount=0;
   for (Iterator iter=sentences.iterator(); iter.hasNext(); ) {
     String sentence=(String)iter.next();
+    sentenceCount++;
     AnalyzedSentence analyzedText=getAnalyzedSentence(sentence);
     List sentenceMatches=new ArrayList();
     printIfVerbose(analyzedText.toString());
