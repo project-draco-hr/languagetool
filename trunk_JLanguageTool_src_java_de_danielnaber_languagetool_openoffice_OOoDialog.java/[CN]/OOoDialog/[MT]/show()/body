@@ -14,7 +14,7 @@
 ;
   JRootPane rootPane=dialog.getRootPane();
   rootPane.registerKeyboardAction(actionListener,stroke,JComponent.WHEN_IN_FOCUSED_WINDOW);
-  dialog.setTitle("JLanguageTool/OOo ALPHA Version");
+  dialog.setTitle("LanguageTool Version " + JLanguageTool.VERSION);
   Container contentPane=dialog.getContentPane();
   contentPane.setLayout(new GridBagLayout());
   GridBagConstraints cons=new GridBagConstraints();
