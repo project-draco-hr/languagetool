@@ -1,0 +1,10 @@
+{
+  List l=new ArrayList();
+  int pos=0;
+  for (Iterator iter=sentenceTokens.iterator(); iter.hasNext(); ) {
+    String word=(String)iter.next();
+    l.add(new AnalyzedToken(word,null,pos));
+    pos+=word.length();
+  }
+  return l;
+}
