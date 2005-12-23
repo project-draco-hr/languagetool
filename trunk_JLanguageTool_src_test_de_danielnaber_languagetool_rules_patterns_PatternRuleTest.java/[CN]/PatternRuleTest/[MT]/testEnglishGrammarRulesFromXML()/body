@@ -1,6 +1,0 @@
-{
-  PatternRuleLoader ruleLoader=new PatternRuleLoader();
-  JLanguageTool languageTool=new JLanguageTool(Language.ENGLISH);
-  List rules=ruleLoader.getRules("rules/en/grammar.xml");
-  testGrammarRulesFromXML(rules,languageTool);
-}
