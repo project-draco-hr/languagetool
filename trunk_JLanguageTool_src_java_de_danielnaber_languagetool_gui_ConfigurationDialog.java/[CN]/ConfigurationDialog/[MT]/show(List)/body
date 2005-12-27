@@ -50,7 +50,8 @@
   cons.fill=GridBagConstraints.NONE;
   contentPane.add(buttonPanel,cons);
   dialog.pack();
-  dialog.setModal(true);
+  dialog.setModal(modal);
   dialog.setSize(500,500);
+  isClosed=false;
   dialog.setVisible(true);
 }

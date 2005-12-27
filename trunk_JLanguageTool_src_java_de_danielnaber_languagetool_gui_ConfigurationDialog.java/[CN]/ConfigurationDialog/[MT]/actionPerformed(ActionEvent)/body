@@ -10,9 +10,11 @@
       }
       i++;
     }
+    isClosed=true;
     dialog.hide();
   }
  else   if (e.getActionCommand().equals(CANCEL_BUTTON)) {
+    isClosed=true;
     dialog.hide();
   }
 }
