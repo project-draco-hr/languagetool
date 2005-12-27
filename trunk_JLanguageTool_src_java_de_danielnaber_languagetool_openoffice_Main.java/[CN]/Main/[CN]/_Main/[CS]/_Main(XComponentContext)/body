@@ -5,8 +5,11 @@
     XDesktop xDesktop=(XDesktop)UnoRuntime.queryInterface(XDesktop.class,desktop);
     XComponent xComponent=xDesktop.getCurrentComponent();
     xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,xComponent);
+    baseDir=getBaseDir();
+    config=new Configuration(baseDir);
   }
  catch (  Throwable e) {
+    writeError(e);
     e.printStackTrace();
   }
 }

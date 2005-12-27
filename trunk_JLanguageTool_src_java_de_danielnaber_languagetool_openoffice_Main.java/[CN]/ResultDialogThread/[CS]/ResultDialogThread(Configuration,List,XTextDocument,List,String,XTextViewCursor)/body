@@ -1,0 +1,8 @@
+{
+  this.configuration=configuration;
+  this.rules=rules;
+  this.xTextDoc=xTextDoc;
+  this.ruleMatches=ruleMatches;
+  this.text=text;
+  this.xViewCursor=xViewCursor;
+}

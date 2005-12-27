@@ -1,0 +1,7 @@
+{
+  this.docLanguage=docLanguage;
+  this.config=config;
+  this.baseDir=baseDir;
+  cfgDialog=new ConfigurationDialog(true);
+  cfgDialog.setDisabledRules(config.getDisabledRuleIds());
+}

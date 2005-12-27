@@ -10,7 +10,7 @@
     gotoNextMatch();
   }
  else   if (event.getActionCommand().equals(OPTIONS_BUTTON)) {
-    ConfigurationDialog cfgDialog=new ConfigurationDialog();
+    ConfigurationDialog cfgDialog=new ConfigurationDialog(true);
     cfgDialog.setDisabledRules(configuration.getDisabledRuleIds());
     cfgDialog.show(rules);
     configuration.setDisabledRuleIds(cfgDialog.getDisabledRuleIds());

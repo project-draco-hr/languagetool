@@ -1,5 +1,5 @@
 {
-  setTitle("Starting LanguageTool...");
+  setTitle("-Dmitri v3- Starting LanguageTool...");
   JPanel progressPanel=new JPanel(new FlowLayout(FlowLayout.CENTER));
   JProgressBar progressBar=new JProgressBar(0,100);
   progressBar.setIndeterminate(true);

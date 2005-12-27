@@ -1,14 +1,35 @@
 {
-  if (sEvent.equals("execute")) {
-    try {
-      String text=getText();
-      checkText(text);
+  try {
+    if (sEvent.equals("execute")) {
+      try {
+        String text=getText();
+        checkText(text);
+      }
+ catch (      Throwable e) {
+        writeError(e);
+        e.printStackTrace();
+      }
     }
- catch (    Throwable e) {
-      e.printStackTrace();
+ else     if (sEvent.equals("configure")) {
+      ConfigThread configThread=new ConfigThread(getLanguage(),config,baseDir);
+      configThread.start();
+      while (true) {
+        if (configThread.done()) {
+          break;
+        }
+        try {
+          Thread.sleep(100);
+        }
+ catch (        InterruptedException e) {
+          break;
+        }
+      }
+    }
+ else {
+      System.err.println("Sorry, don't know what to do, sEvent = " + sEvent);
     }
   }
- else {
-    System.err.println("Sorry, don't know what to do, sEvent = " + sEvent);
+ catch (  Throwable e) {
+    e.printStackTrace();
   }
 }

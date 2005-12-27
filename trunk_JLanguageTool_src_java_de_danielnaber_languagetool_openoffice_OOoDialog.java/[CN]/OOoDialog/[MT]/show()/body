@@ -86,6 +86,10 @@
   contentPane.add(closeButton,cons);
   showError(0);
   dialog.pack();
+  dialog.setModal(true);
   dialog.setSize(500,380);
+  Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+  Dimension frameSize=dialog.getSize();
+  dialog.setLocation(screenSize.width / 2 - (frameSize.width / 2),screenSize.height / 2 - (frameSize.height / 2));
   dialog.setVisible(true);
 }
