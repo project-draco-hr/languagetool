@@ -1,7 +1,14 @@
 {
   if (namespaceURI == null)   namespaceURI=null;
   if (lName == null)   lName=null;
-  if (qName.equals("rule")) {
+  if (qName.equals("rules")) {
+    String languageStr=attrs.getValue("lang");
+    language=Language.getLanguageforShortName(languageStr);
+    if (language == null) {
+      throw new SAXException("Unknown language '" + languageStr + "'");
+    }
+  }
+ else   if (qName.equals("rule")) {
     id=attrs.getValue("id");
     if (inRuleGroup && id == null)     id=ruleGroupId;
     description=attrs.getValue("name");
@@ -12,7 +19,6 @@
  else   if (qName.equals("pattern")) {
     pattern=new StringBuffer();
     inPattern=true;
-    languageStr=attrs.getValue("lang");
     if (attrs.getValue("mark_from") != null)     startPositionCorrection=Integer.parseInt(attrs.getValue("mark_from"));
     if (attrs.getValue("mark_to") != null)     endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
     if (attrs.getValue("case_sensitive") != null && attrs.getValue("case_sensitive").equals("yes"))     caseSensitive=true;

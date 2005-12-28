@@ -1,12 +1,7 @@
 {
   if (namespaceURI == null)   namespaceURI=null;
   if (sName == null)   sName=null;
-  Language language=null;
   if (qName.equals("rule")) {
-    language=Language.getLanguageforShortName(languageStr);
-    if (language == null) {
-      throw new SAXException("Unknown language '" + languageStr + "'");
-    }
     PatternRule rule=new PatternRule(id,language,pattern.toString(),description,message.toString());
     rule.setStartPositionCorrection(startPositionCorrection);
     rule.setEndPositionCorrection(endPositionCorrection);
