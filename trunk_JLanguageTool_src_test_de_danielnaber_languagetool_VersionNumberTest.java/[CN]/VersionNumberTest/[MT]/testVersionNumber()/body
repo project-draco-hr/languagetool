@@ -1,0 +1,11 @@
+{
+  String buildFile=load("build.xml");
+  Pattern p1=Pattern.compile("name=\"version\" value=\"(.*?)\"");
+  Matcher m1=p1.matcher(buildFile);
+  m1.find();
+  String javaFile=load("src/java/de/danielnaber/languagetool/JLanguageTool.java");
+  Pattern p2=Pattern.compile("VERSION = \"(.*?)\"");
+  Matcher m2=p2.matcher(javaFile);
+  m2.find();
+  assertEquals(m1.group(1),m2.group(1));
+}
