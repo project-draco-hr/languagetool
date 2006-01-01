@@ -11,13 +11,11 @@
   Kasus casus=null;
   Numerus numerus=null;
   Genus genus=null;
-  if (parts[0] == 'O') {
-    return new GermanTokenReading(POSType.OTHER,null,null,null);
-  }
   if (parts[0] == 'V')   type=POSType.VERB;
  else   if (parts[0] == 'S' || parts[0] == 'E')   type=POSType.NOMEN;
  else   if (parts[0] == 'J')   type=POSType.ADJEKTIV;
  else   if (parts[0] == 'T')   type=POSType.DETERMINER;
+ else   if (parts[0] == 'O')   type=POSType.PRONOMEN;
  else   type=POSType.OTHER;
   if (parts[1] == 'N')   casus=Kasus.NOMINATIV;
  else   if (parts[1] == 'A')   casus=Kasus.AKKUSATIV;
