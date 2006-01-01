@@ -1,0 +1,4 @@
+{
+  ResourceBundle messages=ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",new Locale("en"));
+  return messages;
+}

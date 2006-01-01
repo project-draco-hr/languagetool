@@ -1,3 +1,4 @@
 String name
 String shortForm
+Locale locale
 Tagger tagger

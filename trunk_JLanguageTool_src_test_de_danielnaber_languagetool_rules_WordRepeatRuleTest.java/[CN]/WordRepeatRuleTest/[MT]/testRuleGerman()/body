@@ -1,5 +1,5 @@
 {
-  WordRepeatRule rule=new WordRepeatRule(Language.GERMAN);
+  WordRepeatRule rule=new WordRepeatRule(TestTools.getEnglishMessages(),Language.GERMAN);
   RuleMatch[] matches;
   JLanguageTool langTool=new JLanguageTool(Language.GERMAN);
   matches=rule.match(langTool.getAnalyzedSentence("Das sind die S??tze, die die testen sollen."));

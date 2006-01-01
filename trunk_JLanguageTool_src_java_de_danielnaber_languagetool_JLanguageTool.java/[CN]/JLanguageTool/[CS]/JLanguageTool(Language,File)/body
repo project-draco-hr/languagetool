@@ -4,7 +4,8 @@
   }
   basedir=basedirArg;
   this.language=language;
-  Rule[] allBuiltinRules=new Rule[]{new CommaWhitespaceRule(),new WordRepeatRule(language),new WordCoherencyRule(),new DoublePunctuationRule(),new AvsAnRule(),new CaseRule(),new WiederVsWiderRule(),new AgreementRule(),new UppercaseSentenceStartRule(),new DashRule()};
+  ResourceBundle messages=ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",language.getLocale());
+  Rule[] allBuiltinRules=new Rule[]{new CommaWhitespaceRule(messages),new WordRepeatRule(messages,language),new DoublePunctuationRule(messages),new UppercaseSentenceStartRule(messages),new AvsAnRule(),new WordCoherencyRule(),new CaseRule(),new WiederVsWiderRule(),new AgreementRule(),new DashRule()};
   for (int i=0; i < allBuiltinRules.length; i++) {
     if (allBuiltinRules[i].supportsLanguage(language))     builtinRules.add(allBuiltinRules[i]);
   }

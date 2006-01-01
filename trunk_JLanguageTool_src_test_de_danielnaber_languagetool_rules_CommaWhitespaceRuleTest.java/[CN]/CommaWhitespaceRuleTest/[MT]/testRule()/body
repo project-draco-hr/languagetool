@@ -1,5 +1,5 @@
 {
-  CommaWhitespaceRule rule=new CommaWhitespaceRule();
+  CommaWhitespaceRule rule=new CommaWhitespaceRule(TestTools.getEnglishMessages());
   RuleMatch[] matches;
   JLanguageTool langTool=new JLanguageTool(Language.ENGLISH);
   matches=rule.match(langTool.getAnalyzedSentence("This is a test sentence."));

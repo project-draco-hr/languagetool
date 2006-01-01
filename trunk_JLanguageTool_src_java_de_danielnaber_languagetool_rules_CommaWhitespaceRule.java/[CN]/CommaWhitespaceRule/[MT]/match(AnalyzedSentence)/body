@@ -11,14 +11,14 @@
     int fixPos=0;
     int fixLen=0;
     if (token.trim().equals("") && prevToken.trim().equals("(")) {
-      msg="Don't put a space after the opening parenthesis.";
+      msg=messages.getString("no_space_after");
     }
  else     if (token.trim().equals(")") && prevToken.trim().equals("")) {
-      msg="Don't put a space before the closing parenthesis.";
+      msg=messages.getString("no_space_before");
       if (prevPos > 0)       fixPos=-1;
     }
  else     if (token.trim().equals(",") && prevToken.trim().equals("")) {
-      msg="Put a space after the comma, but not before the comma.";
+      msg=messages.getString("space_after_comma");
       fixLen=1;
       if (prevPos > 0)       fixPos=-1;
     }

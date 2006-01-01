@@ -19,13 +19,13 @@
       matchToken=tokens[i];
     }
     if (dotCount == 2 && !nextToken.equals(".")) {
-      String msg="Two consecutive dots.";
+      String msg=messages.getString("two_dots");
       RuleMatch ruleMatch=new RuleMatch(this,matchToken.getStartPos(),matchToken.getStartPos() + 1,msg);
       ruleMatches.add(ruleMatch);
       dotCount=0;
     }
  else     if (commaCount == 2 && !nextToken.equals(",")) {
-      String msg="Two consecutive commas.";
+      String msg=messages.getString("two_commas");
       RuleMatch ruleMatch=new RuleMatch(this,matchToken.getStartPos(),matchToken.getStartPos() + 1,msg);
       ruleMatches.add(ruleMatch);
       commaCount=0;
