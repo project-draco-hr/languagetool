@@ -6,11 +6,12 @@
     String posToken=tokens[i].getPOSTag();
     if (posToken != null && posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME))     continue;
     AnalyzedGermanToken analyzedToken=(AnalyzedGermanToken)tokens[i];
-    boolean isPronomen=analyzedToken.hasReadingOfType(POSType.PRONOMEN);
-    if (i > 0 && tokens[i - 1].getToken().equalsIgnoreCase("vor") && tokens[i].getToken().equalsIgnoreCase("allem"))     isPronomen=false;
-    if (tokens[i].getToken().equalsIgnoreCase("es"))     isPronomen=false;
-    if (tokens[i].getToken().equalsIgnoreCase("dessen"))     isPronomen=false;
-    if (analyzedToken.hasReadingOfType(POSType.DETERMINER) || isPronomen) {
+    boolean isRelevantPronomen=analyzedToken.hasReadingOfType(POSType.PRONOMEN);
+    if (i > 0 && tokens[i - 1].getToken().equalsIgnoreCase("vor") && tokens[i].getToken().equalsIgnoreCase("allem"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("es"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("dessen"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("sich"))     isRelevantPronomen=false;
+    if (analyzedToken.hasReadingOfType(POSType.DETERMINER) || isRelevantPronomen) {
       int tokenPos=i + 1;
       if (tokenPos >= tokens.length)       break;
       AnalyzedGermanToken nextToken=(AnalyzedGermanToken)tokens[tokenPos];
