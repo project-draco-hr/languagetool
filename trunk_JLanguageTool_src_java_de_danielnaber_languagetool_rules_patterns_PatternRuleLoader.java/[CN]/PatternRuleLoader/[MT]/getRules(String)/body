@@ -1,7 +1,6 @@
 {
   PatternRuleHandler handler=new PatternRuleHandler();
   SAXParserFactory factory=SAXParserFactory.newInstance();
-  factory.setValidating(true);
   SAXParser saxParser=factory.newSAXParser();
   saxParser.parse(JLanguageTool.getAbsoluteFile(filename),handler);
   rules=handler.getRules();
