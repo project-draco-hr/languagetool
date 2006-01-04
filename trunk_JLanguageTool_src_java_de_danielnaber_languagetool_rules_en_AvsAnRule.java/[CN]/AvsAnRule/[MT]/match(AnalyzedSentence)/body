@@ -23,11 +23,11 @@
         continue;
       }
       char tokenFirstChar=token.charAt(0);
-      if (requiresA.contains(token.toLowerCase())) {
+      if (requiresA.contains(token.toLowerCase()) || requiresA.contains(token)) {
         isException=true;
         doesRequireA=true;
       }
-      if (requiresAn.contains(token.toLowerCase())) {
+      if (requiresAn.contains(token.toLowerCase()) || requiresAn.contains(token)) {
         if (isException) {
           throw new IllegalStateException(token + " is listed in both det_a.txt and det_an.txt");
         }
