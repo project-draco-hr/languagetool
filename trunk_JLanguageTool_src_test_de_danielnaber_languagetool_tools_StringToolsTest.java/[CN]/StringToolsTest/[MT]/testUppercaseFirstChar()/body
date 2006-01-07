@@ -1,0 +1,6 @@
+{
+  assertEquals("",StringTools.uppercaseFirstChar(""));
+  assertEquals("A",StringTools.uppercaseFirstChar("A"));
+  assertEquals("??????",StringTools.uppercaseFirstChar("??????"));
+  assertEquals("??a",StringTools.uppercaseFirstChar("??a"));
+}

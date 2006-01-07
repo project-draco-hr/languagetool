@@ -1,0 +1,6 @@
+{
+  assertTrue(StringTools.startsWithUppercase("A"));
+  assertTrue(StringTools.startsWithUppercase("????"));
+  assertFalse(StringTools.startsWithUppercase("??"));
+  assertFalse(StringTools.startsWithUppercase("-"));
+}

@@ -1,0 +1,11 @@
+{
+  assertTrue(StringTools.isAllUppercase("A"));
+  assertTrue(StringTools.isAllUppercase("ABC"));
+  assertTrue(StringTools.isAllUppercase("ASV-EDR"));
+  assertTrue(StringTools.isAllUppercase("ASV-??????"));
+  assertTrue(StringTools.isAllUppercase(""));
+  assertFalse(StringTools.isAllUppercase("??"));
+  assertFalse(StringTools.isAllUppercase("AAAAAAAAAAAAq"));
+  assertFalse(StringTools.isAllUppercase("a"));
+  assertFalse(StringTools.isAllUppercase("abc"));
+}
