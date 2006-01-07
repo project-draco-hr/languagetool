@@ -4,7 +4,7 @@
   List noWhitespaceTokens=new ArrayList();
   for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
     String token=(String)iterator.next();
-    if (!token.trim().equals("")) {
+    if (isWord(token)) {
       noWhitespaceTokens.add(token);
     }
   }
@@ -18,13 +18,13 @@
   for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
     String tokenStr=(String)iterator.next();
     AnalyzedToken posTag=null;
-    if (!tokenStr.trim().equals("")) {
+    if (isWord(tokenStr)) {
       posTag=(AnalyzedToken)aTokens.get(noWhitespaceCount);
       posTag.startPos=startPos;
       noWhitespaceCount++;
     }
  else {
-      posTag=new AnalyzedToken(tokenStr,null,startPos);
+      posTag=(AnalyzedToken)tagger.createNullToken(tokenStr,startPos);
     }
     tokenArray[toArrayCount++]=posTag;
     startPos+=tokenStr.length();

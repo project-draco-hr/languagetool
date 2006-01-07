@@ -1,6 +1,6 @@
 {
   List l=new ArrayList();
-  StringTokenizer st=new StringTokenizer(text," ,.;()!?:\n",true);
+  StringTokenizer st=new StringTokenizer(text," ,.;()!?:\"\n",true);
   while (st.hasMoreElements()) {
     l.add(st.nextElement());
   }
