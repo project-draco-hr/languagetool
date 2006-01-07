@@ -1,0 +1,18 @@
+{
+  List tokens=tokenizer.tokenize(input);
+  List noWhitespaceTokens=new ArrayList();
+  for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
+    String token=(String)iterator.next();
+    if (isWord(token)) {
+      noWhitespaceTokens.add(token);
+    }
+  }
+  List output=tagger.tag(noWhitespaceTokens);
+  StringBuffer outputStr=new StringBuffer();
+  for (Iterator iter=output.iterator(); iter.hasNext(); ) {
+    AnalyzedToken token=(AnalyzedToken)iter.next();
+    outputStr.append(token);
+    if (iter.hasNext())     outputStr.append(" ");
+  }
+  assertEquals(expected,outputStr.toString());
+}
