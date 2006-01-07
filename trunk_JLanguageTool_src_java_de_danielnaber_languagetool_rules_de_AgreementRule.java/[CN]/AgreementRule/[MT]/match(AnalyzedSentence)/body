@@ -11,7 +11,8 @@
  else     if (tokens[i].getToken().equalsIgnoreCase("es"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("dessen"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("sich"))     isRelevantPronomen=false;
-    if (analyzedToken.hasReadingOfType(POSType.DETERMINER) || isRelevantPronomen) {
+    boolean ignore=tokens[i - 1].getToken().equals(",") && tokens[i].getToken().equalsIgnoreCase("das");
+    if ((analyzedToken.hasReadingOfType(POSType.DETERMINER) || isRelevantPronomen) && !ignore) {
       int tokenPos=i + 1;
       if (tokenPos >= tokens.length)       break;
       AnalyzedGermanToken nextToken=(AnalyzedGermanToken)tokens[tokenPos];
