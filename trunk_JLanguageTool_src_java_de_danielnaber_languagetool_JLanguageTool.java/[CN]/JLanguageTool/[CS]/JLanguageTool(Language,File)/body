@@ -10,4 +10,6 @@
     if (allBuiltinRules[i].supportsLanguage(language))     builtinRules.add(allBuiltinRules[i]);
   }
   tagger=language.getTagger();
+  sentenceTokenizer=language.getSentenceTokenizer();
+  wordTokenizer=language.getWordTokenizer();
 }

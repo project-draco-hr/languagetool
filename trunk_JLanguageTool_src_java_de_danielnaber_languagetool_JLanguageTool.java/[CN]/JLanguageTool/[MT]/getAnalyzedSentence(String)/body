@@ -1,6 +1,5 @@
 {
-  WordTokenizer wtokenizer=new WordTokenizer();
-  List tokens=wtokenizer.tokenize(sentence);
+  List tokens=wordTokenizer.tokenize(sentence);
   List noWhitespaceTokens=new ArrayList();
   for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
     String token=(String)iterator.next();

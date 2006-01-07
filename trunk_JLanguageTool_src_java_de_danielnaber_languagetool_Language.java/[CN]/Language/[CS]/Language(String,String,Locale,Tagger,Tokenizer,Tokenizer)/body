@@ -3,4 +3,6 @@
   this.shortForm=shortForm;
   this.tagger=tagger;
   this.locale=locale;
+  this.sentenceTokenizer=sentenceTokenizer;
+  this.wordTokenizer=wordTokenizer;
 }
