@@ -1,0 +1,4 @@
+{
+  rule=new AgreementRule();
+  langTool=new JLanguageTool(Language.GERMAN);
+}
