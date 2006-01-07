@@ -1,16 +1,4 @@
 {
-  File defaultPatternFile=new File(JLanguageTool.RULES_DIR + File.separator + language.getShortName()+ File.separator+ JLanguageTool.PATTERN_FILE);
-  List patternRules=new ArrayList();
-  if (defaultPatternFile.exists()) {
-    patternRules=lt.loadPatternRules(defaultPatternFile.getAbsolutePath());
-  }
- else {
-    System.err.println("Pattern file " + defaultPatternFile.getAbsolutePath() + " not found");
-  }
-  for (Iterator iter=patternRules.iterator(); iter.hasNext(); ) {
-    Rule rule=(Rule)iter.next();
-    lt.addRule(rule);
-  }
   if (verbose)   lt.setOutput(System.err);
   System.out.println("Working on " + filename + "...");
   String fileContents=StringTools.readFile(filename);
