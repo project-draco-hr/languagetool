@@ -1,0 +1,4 @@
+{
+  List matches=langTool.check(s);
+  assertEquals(errorCount,matches.size());
+}
