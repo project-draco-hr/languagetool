@@ -1,6 +1,6 @@
 {
   dialog=new JDialog();
-  dialog.setTitle("Options");
+  dialog.setTitle("LanguageTool Options");
   checkBoxes.clear();
   checkBoxesRuleIds.clear();
   JPanel checkBoxPanel=new JPanel();
@@ -33,10 +33,18 @@
   okButton.addActionListener(this);
   JButton cancelButton=new JButton(CANCEL_BUTTON);
   cancelButton.addActionListener(this);
-  buttonPanel.add(okButton);
-  buttonPanel.add(cancelButton);
+  motherTongueBox=new JComboBox(getPossibleMotherTongues());
+  if (motherTongue != null)   motherTongueBox.setSelectedItem(motherTongue);
+  cons=new GridBagConstraints();
+  cons.insets=new Insets(0,4,0,0);
+  buttonPanel.add(new JLabel("Your mother tongue: "),cons);
+  buttonPanel.add(motherTongueBox,cons);
+  buttonPanel.add(okButton,cons);
+  buttonPanel.add(cancelButton,cons);
   Container contentPane=dialog.getContentPane();
   contentPane.setLayout(new GridBagLayout());
+  cons=new GridBagConstraints();
+  cons.insets=new Insets(4,4,4,4);
   cons.gridx=0;
   cons.gridy=0;
   cons.weightx=10.0f;
@@ -48,10 +56,14 @@
   cons.weightx=0.0f;
   cons.weighty=0.0f;
   cons.fill=GridBagConstraints.NONE;
+  cons.anchor=GridBagConstraints.EAST;
   contentPane.add(buttonPanel,cons);
   dialog.pack();
   dialog.setModal(modal);
   dialog.setSize(500,500);
   isClosed=false;
+  Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+  Dimension frameSize=dialog.getSize();
+  dialog.setLocation(screenSize.width / 2 - (frameSize.width / 2),screenSize.height / 2 - (frameSize.height / 2));
   dialog.setVisible(true);
 }

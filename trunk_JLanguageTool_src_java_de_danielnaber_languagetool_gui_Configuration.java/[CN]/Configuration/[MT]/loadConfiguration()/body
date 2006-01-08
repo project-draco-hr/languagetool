@@ -11,6 +11,10 @@
         disabledRuleIds.add(ids[i]);
       }
     }
+    String motherTongueStr=(String)props.get(MOTHER_TONGUE_CONFIG_KEY);
+    if (motherTongueStr != null) {
+      motherTongue=Language.getLanguageforShortName(motherTongueStr);
+    }
   }
  catch (  FileNotFoundException e) {
   }

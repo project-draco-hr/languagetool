@@ -8,6 +8,7 @@
   }
   if (disabledRuleIds == null)   props.setProperty(DISABLED_RULES_CONFIG_KEY,"");
  else   props.setProperty(DISABLED_RULES_CONFIG_KEY,sb.toString());
+  if (motherTongue != null)   props.setProperty(MOTHER_TONGUE_CONFIG_KEY,motherTongue.getShortName());
   FileOutputStream fos=null;
   try {
     fos=new FileOutputStream(configFile);

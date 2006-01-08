@@ -29,13 +29,6 @@
   panel.add(langBox,buttonCons);
   buttonCons.gridx=3;
   buttonCons.gridy=0;
-  panel.add(new JLabel(" Mother tongue: "),buttonCons);
-  buttonCons.gridx=4;
-  buttonCons.gridy=0;
-  motherTongueBox=new JComboBox(getPossibleMotherTongues());
-  panel.add(motherTongueBox,buttonCons);
-  buttonCons.gridx=5;
-  buttonCons.gridy=0;
   buttonCons.insets=new Insets(0,10,0,0);
   panel.add(configButton,buttonCons);
   Container contentPane=frame.getContentPane();

@@ -10,6 +10,8 @@
       }
       i++;
     }
+    if (motherTongueBox.getSelectedItem() instanceof String)     motherTongue=null;
+ else     motherTongue=(Language)motherTongueBox.getSelectedItem();
     isClosed=true;
     dialog.hide();
   }

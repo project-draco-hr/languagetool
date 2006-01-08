@@ -4,4 +4,5 @@
   this.baseDir=baseDir;
   cfgDialog=new ConfigurationDialog(true);
   cfgDialog.setDisabledRules(config.getDisabledRuleIds());
+  cfgDialog.setMotherTongue(config.getMotherTongue());
 }
