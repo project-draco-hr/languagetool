@@ -1,0 +1,5 @@
+{
+  PatternRuleLoader prg=new PatternRuleLoader();
+  List l=prg.getRules("rules/de/grammar.xml");
+  System.out.println(l);
+}

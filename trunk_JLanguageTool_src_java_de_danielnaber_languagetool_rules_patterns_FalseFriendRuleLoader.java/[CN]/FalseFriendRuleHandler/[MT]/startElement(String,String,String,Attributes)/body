@@ -1,0 +1,44 @@
+{
+  if (namespaceURI == null)   namespaceURI=null;
+  if (lName == null)   lName=null;
+  if (qName.equals("rule")) {
+    id=attrs.getValue("id");
+    if (inRuleGroup && id == null)     id=ruleGroupId;
+    correctExamples=new ArrayList();
+    incorrectExamples=new ArrayList();
+  }
+ else   if (qName.equals("pattern")) {
+    pattern=new StringBuffer();
+    inPattern=true;
+    String languageStr=attrs.getValue("lang");
+    language=Language.getLanguageforShortName(languageStr);
+    if (language == null) {
+      throw new SAXException("Unknown language '" + languageStr + "'");
+    }
+  }
+ else   if (qName.equals("translation")) {
+    translation=new StringBuffer();
+    inTranslation=true;
+    String languageStr=attrs.getValue("lang");
+    translationLanguage=Language.getLanguageforShortName(languageStr);
+    if (translationLanguage == null) {
+      throw new SAXException("Unknown language '" + languageStr + "'");
+    }
+  }
+ else   if (qName.equals("example") && attrs.getValue("type").equals("correct")) {
+    inCorrectExample=true;
+    correctExample=new StringBuffer();
+  }
+ else   if (qName.equals("example") && attrs.getValue("type").equals("incorrect")) {
+    inIncorrectExample=true;
+    incorrectExample=new StringBuffer();
+  }
+ else   if (qName.equals("message")) {
+    inMessage=true;
+    message=new StringBuffer();
+  }
+ else   if (qName.equals("rulegroup")) {
+    ruleGroupId=attrs.getValue("id");
+    inRuleGroup=true;
+  }
+}

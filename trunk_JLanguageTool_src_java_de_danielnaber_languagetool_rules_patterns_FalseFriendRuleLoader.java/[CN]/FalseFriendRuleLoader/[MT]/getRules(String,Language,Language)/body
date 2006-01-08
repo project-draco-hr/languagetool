@@ -1,0 +1,8 @@
+{
+  FalseFriendRuleHandler handler=new FalseFriendRuleHandler(textLanguage,motherTongue);
+  SAXParserFactory factory=SAXParserFactory.newInstance();
+  SAXParser saxParser=factory.newSAXParser();
+  saxParser.parse(JLanguageTool.getAbsoluteFile(filename),handler);
+  rules=handler.getRules();
+  return rules;
+}

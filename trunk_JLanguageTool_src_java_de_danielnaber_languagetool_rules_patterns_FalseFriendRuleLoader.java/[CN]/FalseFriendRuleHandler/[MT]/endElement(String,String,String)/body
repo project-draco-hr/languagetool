@@ -1,0 +1,39 @@
+{
+  if (namespaceURI == null)   namespaceURI=null;
+  if (sName == null)   sName=null;
+  if (qName.equals("rule")) {
+    if (language == textLanguage && translationLanguage == motherTongue) {
+      formatter.applyPattern(messages.getString("false_friend_hint"));
+      Object[] messageArguments={pattern,textLanguage.getName(),translation,motherTongue.getName()};
+      String description=formatter.format(messageArguments);
+      PatternRule rule=new PatternRule(id,language,pattern.toString(),description,message.toString());
+      rule.setCorrectExamples(correctExamples);
+      rule.setIncorrectExamples(incorrectExamples);
+      rules.add(rule);
+    }
+  }
+ else   if (qName.equals("pattern")) {
+    inPattern=false;
+  }
+ else   if (qName.equals("translation")) {
+    inTranslation=false;
+  }
+ else   if (qName.equals("example")) {
+    if (inCorrectExample) {
+      correctExamples.add(correctExample.toString());
+    }
+ else     if (inIncorrectExample) {
+      incorrectExamples.add(incorrectExample.toString());
+    }
+    inCorrectExample=false;
+    inIncorrectExample=false;
+    correctExample=new StringBuffer();
+    incorrectExample=new StringBuffer();
+  }
+ else   if (qName.equals("message")) {
+    inMessage=false;
+  }
+ else   if (qName.equals("rulegroup")) {
+    inRuleGroup=false;
+  }
+}
