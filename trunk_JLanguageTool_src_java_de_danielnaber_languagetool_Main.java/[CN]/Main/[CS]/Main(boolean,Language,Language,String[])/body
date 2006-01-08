@@ -1,7 +1,8 @@
 {
   this.verbose=verbose;
-  lt=new JLanguageTool(language);
+  lt=new JLanguageTool(language,motherTongue,null);
   lt.activateDefaultPatternRules();
+  lt.activateDefaultFalseFriendRules();
   for (int i=0; i < disabledRules.length; i++) {
     lt.disableRule(disabledRules[i]);
   }

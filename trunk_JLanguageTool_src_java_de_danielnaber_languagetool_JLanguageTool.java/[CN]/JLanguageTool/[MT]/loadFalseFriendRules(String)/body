@@ -1,0 +1,5 @@
+{
+  if (motherTongue == null)   return new ArrayList();
+  FalseFriendRuleLoader ruleLoader=new FalseFriendRuleLoader();
+  return ruleLoader.getRules(filename,language,motherTongue);
+}

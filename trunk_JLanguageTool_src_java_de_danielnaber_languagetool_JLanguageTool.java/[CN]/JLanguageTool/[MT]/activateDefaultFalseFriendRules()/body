@@ -1,0 +1,8 @@
+{
+  String falseFriendRulesFilename=RULES_DIR + File.separator + FALSE_FRIEND_FILE;
+  List patternRules=loadFalseFriendRules(falseFriendRulesFilename);
+  for (Iterator iter=patternRules.iterator(); iter.hasNext(); ) {
+    Rule rule=(Rule)iter.next();
+    addRule(rule);
+  }
+}

@@ -1,0 +1,4 @@
+{
+  System.out.println("Usage: java de.danielnaber.languagetool.Main " + "[-r|--recursive] [-v|--verbose] [-l|--language LANG] [-m|--mothertongue LANG] [-d|--disable RULES] <file>");
+  System.exit(1);
+}
