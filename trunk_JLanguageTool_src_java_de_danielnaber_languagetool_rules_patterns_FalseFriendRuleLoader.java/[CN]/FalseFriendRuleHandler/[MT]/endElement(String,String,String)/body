@@ -6,7 +6,8 @@
       formatter.applyPattern(messages.getString("false_friend_hint"));
       Object[] messageArguments={pattern,textLanguage.getName(),translation,motherTongue.getName()};
       String description=formatter.format(messageArguments);
-      PatternRule rule=new PatternRule(id,language,pattern.toString(),description,message.toString());
+      String rulePattern=makeRulePattern(pattern.toString());
+      PatternRule rule=new PatternRule(id,language,rulePattern,messages.getString("false_friend_desc") + " " + pattern.toString(),description);
       rule.setCorrectExamples(correctExamples);
       rule.setIncorrectExamples(incorrectExamples);
       rules.add(rule);
