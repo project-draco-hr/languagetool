@@ -1,0 +1,3 @@
+{
+  validate("rules" + File.separator + "false-friends.xml","rules/false-friends.dtd");
+}

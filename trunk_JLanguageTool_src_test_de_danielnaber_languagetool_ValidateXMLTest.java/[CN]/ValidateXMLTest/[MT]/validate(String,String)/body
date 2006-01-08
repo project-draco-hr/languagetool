@@ -4,7 +4,7 @@
   SAXParser saxParser=factory.newSAXParser();
   String xml=StringTools.readFile(filename);
   final String decl="<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-  final String dtd="<!DOCTYPE rules PUBLIC \"-//W3C//DTD GrammarRules 0.1//EN\" \"file:rules/rules.dtd\">";
+  final String dtd="<!DOCTYPE rules PUBLIC \"-//W3C//DTD Rules 0.1//EN\" \"file:" + dtdFile + "\">";
   int pos=xml.indexOf(decl);
   if (pos == -1)   fail("No XML declaration found in " + filename);
   String newXML=xml.substring(0,pos + decl.length()) + "\r\n" + dtd+ xml.substring(pos + decl.length());
