@@ -1,6 +1,8 @@
 {
   String langName=langBox.getSelectedItem().toString();
   Language language=Language.getLanguageforName(langName);
+  String motherTongueName=motherTongueBox.getSelectedItem().toString();
+  Language motherTongue=Language.getLanguageforName(motherTongueName);
   ConfigurationDialog configDialog=null;
   if (configDialogs.containsKey(language)) {
     configDialog=(ConfigurationDialog)configDialogs.get(language);
@@ -11,8 +13,9 @@
   }
   JLanguageTool langTool;
   try {
-    langTool=new JLanguageTool(language);
+    langTool=new JLanguageTool(language,motherTongue);
     langTool.activateDefaultPatternRules();
+    langTool.activateDefaultFalseFriendRules();
     Set disabledRules=configDialog.getDisabledRuleIds();
     if (disabledRules != null) {
       for (Iterator iter=disabledRules.iterator(); iter.hasNext(); ) {
