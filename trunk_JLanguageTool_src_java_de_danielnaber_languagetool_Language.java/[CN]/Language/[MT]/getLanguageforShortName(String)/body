@@ -1,4 +1,5 @@
 {
+  if (shortLanguageCode == null)   throw new NullPointerException("Language code cannot be null");
   for (int i=0; i < Language.LANGUAGES.length; i++) {
     if (shortLanguageCode.equals(Language.LANGUAGES[i].getShortName())) {
       return Language.LANGUAGES[i];
