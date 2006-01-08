@@ -9,7 +9,7 @@
       negation=true;
       element=element.substring(1);
     }
-    if (element.startsWith("\"") && !element.endsWith("\"") || element.endsWith("\"") && !element.startsWith("\"")) {
+    if ((element.startsWith("\"") && !element.endsWith("\"")) || (element.endsWith("\"") && !element.startsWith("\""))) {
       throw new IllegalArgumentException("Invalid pattern '" + pattern + "': unbalanced quote");
     }
     if (element.startsWith("\"") && element.endsWith("\"")) {
