@@ -2,6 +2,7 @@
   if (namespaceURI == null)   namespaceURI=null;
   if (lName == null)   lName=null;
   if (qName.equals("rule")) {
+    translations=new ArrayList();
     id=attrs.getValue("id");
     if (inRuleGroup && id == null)     id=ruleGroupId;
     correctExamples=new ArrayList();
@@ -17,7 +18,6 @@
     }
   }
  else   if (qName.equals("translation")) {
-    translation=new StringBuffer();
     inTranslation=true;
     String languageStr=attrs.getValue("lang");
     translationLanguage=Language.getLanguageforShortName(languageStr);

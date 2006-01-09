@@ -1,0 +1,11 @@
+{
+  StringBuffer sb=new StringBuffer();
+  for (Iterator iter=translations.iterator(); iter.hasNext(); ) {
+    StringBuffer trans=(StringBuffer)iter.next();
+    sb.append("\"");
+    sb.append(trans.toString());
+    sb.append("\"");
+    if (iter.hasNext())     sb.append(", ");
+  }
+  return sb.toString();
+}

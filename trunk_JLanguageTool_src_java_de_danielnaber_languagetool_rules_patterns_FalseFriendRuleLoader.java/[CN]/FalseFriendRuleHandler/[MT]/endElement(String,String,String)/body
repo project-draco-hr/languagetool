@@ -4,7 +4,7 @@
   if (qName.equals("rule")) {
     if (language == textLanguage && translationLanguage == motherTongue) {
       formatter.applyPattern(messages.getString("false_friend_hint"));
-      Object[] messageArguments={pattern,textLanguage.getShortName(),translation,motherTongue.getShortName()};
+      Object[] messageArguments={pattern,textLanguage.getShortName(),formatTranslations(translations),motherTongue.getShortName()};
       String description=formatter.format(messageArguments);
       String rulePattern=makeRulePattern(pattern.toString());
       PatternRule rule=new PatternRule(id,language,rulePattern,messages.getString("false_friend_desc") + " " + pattern.toString(),description);
@@ -17,6 +17,8 @@
     inPattern=false;
   }
  else   if (qName.equals("translation")) {
+    translations.add(translation);
+    translation=new StringBuffer();
     inTranslation=false;
   }
  else   if (qName.equals("example")) {
