@@ -10,7 +10,7 @@
     if (token.trim().equals("")) {
     }
  else {
-      if (token.equalsIgnoreCase("spiegelt") || token.equalsIgnoreCase("spiegeln")) {
+      if (token.equalsIgnoreCase("spiegelt") || token.equalsIgnoreCase("spiegeln") || token.equalsIgnoreCase("spiegelte")|| token.equalsIgnoreCase("spiegelten")) {
         foundSpiegelt=true;
       }
  else       if (token.equalsIgnoreCase("wieder")) {
