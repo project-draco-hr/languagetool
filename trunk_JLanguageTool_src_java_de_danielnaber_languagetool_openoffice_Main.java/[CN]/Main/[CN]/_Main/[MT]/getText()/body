@@ -9,5 +9,6 @@
     textToCheck=text.getString();
     xViewCursor=null;
   }
+  textToCheck=textToCheck.replaceAll("\r\n","\n");
   return textToCheck;
 }
