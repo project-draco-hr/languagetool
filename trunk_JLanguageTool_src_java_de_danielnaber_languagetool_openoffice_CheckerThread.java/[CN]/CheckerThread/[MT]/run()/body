@@ -12,16 +12,8 @@
     ruleMatches=langTool.check(text);
     done=true;
   }
- catch (  IOException e) {
-    e.printStackTrace();
-    throw new RuntimeException(e);
-  }
-catch (  ParserConfigurationException e) {
-    e.printStackTrace();
-    throw new RuntimeException(e);
-  }
-catch (  SAXException e) {
-    e.printStackTrace();
-    throw new RuntimeException(e);
+ catch (  Exception e) {
+    done=true;
+    Main.showError(e);
   }
 }

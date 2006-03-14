@@ -30,6 +30,6 @@
     }
   }
  catch (  Throwable e) {
-    e.printStackTrace();
+    showError(e);
   }
 }

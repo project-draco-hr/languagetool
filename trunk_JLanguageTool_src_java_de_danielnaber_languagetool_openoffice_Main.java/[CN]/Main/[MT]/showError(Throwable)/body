@@ -1,0 +1,10 @@
+{
+  String msg="An error has occured:\n" + e.toString() + "\nStacktrace:\n";
+  StackTraceElement[] elem=e.getStackTrace();
+  for (int i=0; i < elem.length; i++) {
+    msg+=elem[i].toString() + "\n";
+  }
+  JOptionPane.showMessageDialog(null,msg,"Error",JOptionPane.ERROR_MESSAGE);
+  e.printStackTrace();
+  throw new RuntimeException(e);
+}
