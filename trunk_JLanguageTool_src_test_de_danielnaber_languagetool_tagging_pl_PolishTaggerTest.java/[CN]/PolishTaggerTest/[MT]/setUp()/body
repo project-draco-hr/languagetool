@@ -1,0 +1,4 @@
+{
+  tagger=new PolishTagger();
+  tokenizer=new WordTokenizer();
+}

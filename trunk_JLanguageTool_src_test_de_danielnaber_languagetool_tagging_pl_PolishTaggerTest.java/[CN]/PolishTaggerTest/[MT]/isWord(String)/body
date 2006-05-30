@@ -1,0 +1,7 @@
+{
+  for (int i=0; i < token.length(); i++) {
+    char c=token.charAt(i);
+    if (Character.isLetter(c) || Character.isDigit(c))     return true;
+  }
+  return false;
+}
