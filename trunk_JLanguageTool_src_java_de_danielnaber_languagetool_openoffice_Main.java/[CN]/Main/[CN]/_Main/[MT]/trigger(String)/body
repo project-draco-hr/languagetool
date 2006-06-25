@@ -2,8 +2,8 @@
   try {
     if (sEvent.equals("execute")) {
       try {
-        String text=getText();
-        checkText(text);
+        TextToCheck textToCheck=getText();
+        checkText(textToCheck);
       }
  catch (      Throwable e) {
         writeError(e);

@@ -1,4 +1,5 @@
 {
   _Main m=new _Main();
-  m.checkText("This is an test, don't berate yourself.");
+  TextToCheck ttc=new TextToCheck("This is an test, don't berate yourself.",false);
+  m.checkText(ttc);
 }

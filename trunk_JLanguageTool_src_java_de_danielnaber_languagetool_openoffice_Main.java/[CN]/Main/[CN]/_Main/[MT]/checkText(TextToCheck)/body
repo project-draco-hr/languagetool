@@ -1,0 +1,33 @@
+{
+  ProgressDialog progressDialog=new ProgressDialog();
+  Language docLanguage=getLanguage();
+  CheckerThread checkerThread=new CheckerThread(textToCheck.text,docLanguage,config,baseDir);
+  checkerThread.start();
+  while (true) {
+    if (checkerThread.done()) {
+      break;
+    }
+    try {
+      Thread.sleep(100);
+    }
+ catch (    InterruptedException e) {
+    }
+  }
+  progressDialog.close();
+  List ruleMatches=checkerThread.getRuleMatches();
+  if (ruleMatches.size() == 0) {
+    String msg;
+    if (textToCheck.isSelection) {
+      msg="No errors or warnings found in selected text " + "(language: " + docLanguage.getName() + ")";
+    }
+ else {
+      msg="No errors or warnings found " + "(document language: " + docLanguage.getName() + ")";
+    }
+    DialogThread dt=new DialogThread(msg);
+    dt.start();
+  }
+ else {
+    ResultDialogThread dialog=new ResultDialogThread(config,checkerThread.getLanguageTool().getAllRules(),xTextDoc,ruleMatches,textToCheck.text,xViewCursor);
+    dialog.start();
+  }
+}

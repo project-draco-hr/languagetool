@@ -4,11 +4,13 @@
   XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,xController);
   xViewCursor=xViewCursorSupplier.getViewCursor();
   String textToCheck=xViewCursor.getString();
+  boolean selection=true;
   if (textToCheck.equals("")) {
+    selection=false;
     XText text=xTextDoc.getText();
     textToCheck=text.getString();
     xViewCursor=null;
   }
   textToCheck=textToCheck.replaceAll("\r\n","\n");
-  return textToCheck;
+  return new TextToCheck(textToCheck,selection);
 }
