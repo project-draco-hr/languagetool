@@ -2,8 +2,7 @@
   if (e.getActionCommand().equals(OK_BUTTON)) {
     int i=0;
     inactiveRuleIds.clear();
-    for (Iterator<JCheckBox> iter=checkBoxes.iterator(); iter.hasNext(); ) {
-      JCheckBox checkBox=iter.next();
+    for (    JCheckBox checkBox : checkBoxes) {
       if (!checkBox.isSelected()) {
         String ruleId=checkBoxesRuleIds.get(i);
         inactiveRuleIds.add(ruleId);
