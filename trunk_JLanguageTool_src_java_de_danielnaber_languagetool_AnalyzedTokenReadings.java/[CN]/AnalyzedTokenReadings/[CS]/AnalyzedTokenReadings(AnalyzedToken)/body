@@ -1,0 +1,6 @@
+{
+  ATreadings=new AnalyzedToken[1];
+  ATreadings[0]=at;
+  token=ATreadings[0].getToken();
+  startPos=at.getStartPos();
+}
