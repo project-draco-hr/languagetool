@@ -8,7 +8,7 @@
     public void actionPerformed(    ActionEvent actionEvent){
       if (actionEvent == null)       actionEvent=null;
       isClosed=true;
-      dialog.hide();
+      dialog.setVisible(false);
     }
   }
 ;
