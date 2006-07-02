@@ -1,7 +1,13 @@
 {
   boolean match=false;
   for (int i=0; i < tokens.length; i++) {
-    if (token.getPOSTag() != null)     if (Pattern.matches(tokens[i],token.getPOSTag())) {
+    if (!regExp) {
+      if (tokens[i].equals(token.getPOSTag())) {
+        match=true;
+        break;
+      }
+    }
+ else     if (token.getPOSTag() != null)     if (Pattern.matches(tokens[i],token.getPOSTag())) {
       match=true;
       break;
     }

@@ -3,6 +3,9 @@
   if (sName == null)   sName=null;
   if (qName.equals("rule")) {
     PatternRule rule=new PatternRule(id,language,pattern.toString(),description,message.toString());
+    if (elementList != null) {
+      rule.addPatternElements(elementList);
+    }
     rule.setStartPositionCorrection(startPositionCorrection);
     rule.setEndPositionCorrection(endPositionCorrection);
     startPositionCorrection=0;
@@ -12,6 +15,19 @@
     rule.setCaseSensitive(caseSensitive);
     caseSensitive=false;
     rules.add(rule);
+    if (elementList != null) {
+      elementList.clear();
+    }
+  }
+ else   if (qName.equals("token")) {
+    if (inToken) {
+      StringElement stringElement=new StringElement(elements.toString(),caseSensitive,regExpression);
+      stringElement.setNegation(tokenNegated);
+      elementList.add(stringElement);
+      tokenNegated=false;
+    }
+    inToken=false;
+    regExpression=false;
   }
  else   if (qName.equals("pattern")) {
     inPattern=false;

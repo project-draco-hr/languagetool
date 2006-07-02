@@ -1,7 +1,7 @@
 {
-  if (readings == null)   return token + "[?]";
+  if (readings == null)   return super.getAnalyzedToken(0).getToken() + "[?]";
  else {
-    StringBuffer sb=new StringBuffer(token);
+    StringBuffer sb=new StringBuffer(super.getAnalyzedToken(0).getToken());
     Set printed=new HashSet();
     sb.append("[");
     for (Iterator iter=readings.iterator(); iter.hasNext(); ) {

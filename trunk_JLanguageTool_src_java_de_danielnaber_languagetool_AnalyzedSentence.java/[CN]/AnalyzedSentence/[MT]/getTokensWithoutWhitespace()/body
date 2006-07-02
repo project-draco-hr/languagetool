@@ -1,10 +1,10 @@
 {
   List l=new ArrayList();
   for (int i=0; i < tokens.length; i++) {
-    AnalyzedToken token=tokens[i];
-    if (!token.isWhitespace() || (token.getPOSTag() != null && token.getPOSTag().equals(JLanguageTool.SENTENCE_START_TAGNAME))) {
+    AnalyzedTokenReadings token=tokens[i];
+    if (!token.getAnalyzedToken(0).isWhitespace() || (token.getAnalyzedToken(0).getPOSTag() != null && token.getAnalyzedToken(0).getPOSTag().equals(JLanguageTool.SENTENCE_START_TAGNAME))) {
       l.add(token);
     }
   }
-  return (AnalyzedToken[])l.toArray(new AnalyzedToken[0]);
+  return (AnalyzedTokenReadings[])l.toArray(new AnalyzedTokenReadings[0]);
 }

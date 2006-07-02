@@ -1,7 +1,7 @@
 {
   String s=new String(buf,offset,len);
-  if (inPattern) {
-    pattern.append(s);
+  if (inToken) {
+    elements.append(s);
   }
  else   if (inCorrectExample) {
     correctExample.append(s);

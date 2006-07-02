@@ -1,5 +1,3 @@
 {
-  this.tokens=tokens;
-  this.exceptions=exceptions;
-  this.caseSensitive=caseSensitive;
+  this(tokens,false,regExp,exceptions);
 }

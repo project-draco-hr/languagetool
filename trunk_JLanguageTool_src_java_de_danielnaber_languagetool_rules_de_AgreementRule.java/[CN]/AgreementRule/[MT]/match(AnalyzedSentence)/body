@@ -1,9 +1,9 @@
 {
   List ruleMatches=new ArrayList();
-  AnalyzedToken[] tokens=text.getTokensWithoutWhitespace();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   int pos=0;
   for (int i=0; i < tokens.length; i++) {
-    String posToken=tokens[i].getPOSTag();
+    String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
     if (posToken != null && posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME))     continue;
     AnalyzedGermanToken analyzedToken=(AnalyzedGermanToken)tokens[i];
     boolean isRelevantPronomen=analyzedToken.hasReadingOfType(POSType.PRONOMEN);

@@ -1,8 +1,8 @@
 {
   List ruleMatches=new ArrayList();
-  AnalyzedToken[] tokens=text.getTokensWithoutWhitespace();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   if (tokens.length < 2)   return toRuleMatchArray(ruleMatches);
-  AnalyzedToken token=tokens[1];
+  AnalyzedToken token=tokens[1].getAnalyzedToken(0);
   String firstToken=token.getToken();
   char firstChar=firstToken.charAt(0);
   if (Character.isLowerCase(firstChar)) {

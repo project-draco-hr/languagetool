@@ -1,4 +1,5 @@
 {
   this.tokens=tokens;
   this.caseSensitive=caseSensitive;
+  this.regExp=regExp;
 }

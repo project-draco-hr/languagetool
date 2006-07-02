@@ -1,0 +1,10 @@
+{
+  List elems=new ArrayList();
+  if (this.patternElements != null)   for (int i=0; i < this.patternElements.length; i++) {
+    elems.add(this.patternElements[i]);
+  }
+  for (int i=0; i < elements.size(); i++) {
+    elems.add(elements.get(i));
+  }
+  this.patternElements=(Element[])elems.toArray(new Element[0]);
+}

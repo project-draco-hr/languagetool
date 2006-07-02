@@ -15,7 +15,7 @@
     if (element.startsWith("\"") && element.endsWith("\"")) {
       element=element.substring(1,element.length() - 1);
       String tokenParts[]=element.split("\\|");
-      StringElement stringElement=new StringElement(tokenParts,caseSensitive);
+      StringElement stringElement=new StringElement(tokenParts,caseSensitive,false);
       stringElement.setNegation(negation);
       elements.add(stringElement);
     }
@@ -30,7 +30,7 @@
  else {
         tokenParts=element.split("\\|");
       }
-      posElement=new POSElement(tokenParts,caseSensitive,exceptions);
+      posElement=new POSElement(tokenParts,caseSensitive,true,exceptions);
       posElement.setNegation(negation);
       elements.add(posElement);
     }

@@ -1,6 +1,6 @@
 {
   List ruleMatches=new ArrayList();
-  AnalyzedToken[] tokens=text.getTokensWithoutWhitespace();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   if (patternElements == null) {
     patternElements=getPatternElements(pattern);
   }
@@ -8,45 +8,42 @@
   int firstMatchToken=-1;
   int lastMatchToken=-1;
   for (int i=0; i < tokens.length; i++) {
-    boolean allElementsMatch=true;
-    int matchingTokens=0;
-    for (int k=0; k < patternElements.length; k++) {
-      Element elem=patternElements[k];
-      int nextPos=tokenPos + k;
-      if (nextPos >= tokens.length) {
-        allElementsMatch=false;
-        break;
+    for (int l=0; l < tokens[i].getReadingslength(); l++) {
+      boolean allElementsMatch=true;
+      int matchingTokens=0;
+      for (int k=0; k < patternElements.length; k++) {
+        Element elem=patternElements[k];
+        int nextPos=tokenPos + k;
+        if (nextPos >= tokens.length) {
+          allElementsMatch=false;
+          break;
+        }
+        AnalyzedToken matchToken=tokens[nextPos].getAnalyzedToken(l);
+        if (!elem.match(matchToken)) {
+          allElementsMatch=false;
+          break;
+        }
+ else {
+          matchingTokens++;
+          lastMatchToken=nextPos;
+          if (firstMatchToken == -1)           firstMatchToken=nextPos;
+        }
       }
-      AnalyzedToken matchToken=tokens[nextPos];
-      if (!elem.match(matchToken)) {
-        allElementsMatch=false;
-        break;
+      if (allElementsMatch) {
+        String errMessage=message;
+        for (int j=0; j < matchingTokens; j++) {
+          errMessage=errMessage.replaceAll("\\\\" + (j + 1),tokens[firstMatchToken + j].getToken());
+        }
+        boolean startsWithUppercase=StringTools.startsWithUppercase(tokens[firstMatchToken + startPositionCorrection].toString());
+        RuleMatch ruleMatch=new RuleMatch(this,tokens[firstMatchToken + startPositionCorrection].getStartPos(),tokens[lastMatchToken + endPositionCorrection].getStartPos() + tokens[lastMatchToken + endPositionCorrection].getToken().length(),errMessage,startsWithUppercase);
+        ruleMatches.add(ruleMatch);
       }
  else {
-        matchingTokens++;
-        lastMatchToken=nextPos;
-        if (firstMatchToken == -1)         firstMatchToken=nextPos;
+        firstMatchToken=-1;
+        lastMatchToken=-1;
       }
+      tokenPos++;
     }
-    if (allElementsMatch) {
-      String errMessage=message;
-      for (int j=0; j < matchingTokens; j++) {
-        errMessage=errMessage.replaceAll("\\\\" + (j + 1),tokens[firstMatchToken + j].getToken());
-      }
-      int first=firstMatchToken + startPositionCorrection;
-      int last=lastMatchToken + endPositionCorrection;
-      if (first >= tokens.length || first < 0 || last >= tokens.length || last < 0) {
-        throw new RuntimeException("Please fix the mark_from and/or mark_to attributes of rule " + getId() + " so that they don't point beyond the pattern.");
-      }
-      boolean startsWithUppercase=StringTools.startsWithUppercase(tokens[first].toString());
-      RuleMatch ruleMatch=new RuleMatch(this,tokens[first].getStartPos(),tokens[last].getStartPos() + tokens[last].getToken().length(),errMessage,startsWithUppercase);
-      ruleMatches.add(ruleMatch);
-    }
- else {
-      firstMatchToken=-1;
-      lastMatchToken=-1;
-    }
-    tokenPos++;
   }
   return (RuleMatch[])ruleMatches.toArray(new RuleMatch[0]);
 }

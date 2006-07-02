@@ -4,7 +4,8 @@
     tagger=new PosTagger(resourceFile.getAbsolutePath(),(Dictionary)null);
   }
   List taggerTokens=tagger.tag(tokens);
-  List analyzedTokens=new ArrayList();
+  List analyzedTokenReadings=new ArrayList();
+  AnalyzedTokenReadings tokArray=null;
   int i=0;
   int pos=0;
   AnalyzedToken nextAnalyzedToken=null;
@@ -12,6 +13,7 @@
     String posTag=(String)iter.next();
     String token=(String)tokens.get(i);
     String nextToken=null;
+    List analyzedTokens=new ArrayList();
     if (i < tokens.size() - 1)     nextToken=(String)tokens.get(i + 1);
     if (nextAnalyzedToken != null) {
       analyzedTokens.add(nextAnalyzedToken);
@@ -38,6 +40,8 @@
     }
     i++;
     pos+=token.length();
+    tokArray=new AnalyzedTokenReadings((AnalyzedToken[])analyzedTokens.toArray(new AnalyzedToken[0]));
+    analyzedTokenReadings.add(tokArray);
   }
-  return analyzedTokens;
+  return analyzedTokenReadings;
 }

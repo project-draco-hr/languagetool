@@ -1,6 +1,6 @@
 {
   List ruleMatches=new ArrayList();
-  AnalyzedToken[] tokens=text.getTokensWithoutWhitespace();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   int pos=0;
   String prevToken=null;
   for (int i=0; i < tokens.length; i++) {

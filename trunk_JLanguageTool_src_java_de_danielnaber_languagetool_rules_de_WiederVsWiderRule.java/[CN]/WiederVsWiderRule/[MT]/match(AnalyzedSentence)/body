@@ -1,6 +1,6 @@
 {
   List ruleMatches=new ArrayList();
-  AnalyzedToken[] tokens=text.getTokens();
+  AnalyzedTokenReadings[] tokens=text.getTokens();
   int pos=0;
   boolean foundSpiegelt=false;
   boolean foundWieder=false;

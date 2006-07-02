@@ -1,0 +1,6 @@
+{
+  this.tokens=tokens;
+  this.exceptions=exceptions;
+  this.caseSensitive=caseSensitive;
+  this.regExp=regExp;
+}

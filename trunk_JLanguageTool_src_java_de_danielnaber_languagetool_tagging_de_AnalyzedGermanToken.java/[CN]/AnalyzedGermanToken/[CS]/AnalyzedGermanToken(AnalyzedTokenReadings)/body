@@ -1,0 +1,3 @@
+{
+  super(new AnalyzedToken(atr.getToken(),atr.getAnalyzedToken(0).getPOSTag(),atr.getStartPos()));
+}
