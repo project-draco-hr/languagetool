@@ -1,5 +1,5 @@
 {
-  List rules=new ArrayList();
+  List<Rule> rules=new ArrayList<Rule>();
   rules.addAll(builtinRules);
   rules.addAll(userRules);
   for (Iterator iter=rules.iterator(); iter.hasNext(); ) {
