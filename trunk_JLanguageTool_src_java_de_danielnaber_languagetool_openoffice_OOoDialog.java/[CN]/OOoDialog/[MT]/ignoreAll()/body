@@ -1,6 +1,6 @@
 {
   int i=0;
-  List filteredRuleMatches=new ArrayList();
+  List<RuleMatch> filteredRuleMatches=new ArrayList<RuleMatch>();
   for (Iterator iter=ruleMatches.iterator(); iter.hasNext(); ) {
     RuleMatch ruleMatch=(RuleMatch)iter.next();
     if (i <= currentRuleMatchPos) {

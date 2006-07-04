@@ -1,7 +1,7 @@
 {
   FileReader fr=null;
   BufferedReader br=null;
-  Set set=new HashSet();
+  Set<String> set=new HashSet<String>();
   try {
     fr=new FileReader(file);
     br=new BufferedReader(fr);

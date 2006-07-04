@@ -1,5 +1,5 @@
 {
-  Set set=new HashSet();
+  Set<String> set=new HashSet<String>();
   List readings=aToken.getReadings();
   for (Iterator iter=readings.iterator(); iter.hasNext(); ) {
     GermanTokenReading reading=(GermanTokenReading)iter.next();
