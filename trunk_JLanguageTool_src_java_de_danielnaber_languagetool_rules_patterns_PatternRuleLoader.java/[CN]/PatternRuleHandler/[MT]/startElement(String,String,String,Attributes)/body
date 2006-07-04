@@ -28,6 +28,9 @@
     if (attrs.getValue("negate") != null) {
       tokenNegated=attrs.getValue("negate").equals("yes");
     }
+    if (attrs.getValue("inflected") != null) {
+      tokenInflected=attrs.getValue("inflected").equals("yes");
+    }
     elements=new StringBuffer();
     if (elementList == null) {
       elementList=new ArrayList();

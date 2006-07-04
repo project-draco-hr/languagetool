@@ -15,7 +15,7 @@
     if (element.startsWith("\"") && element.endsWith("\"")) {
       element=element.substring(1,element.length() - 1);
       String tokenParts[]=element.split("\\|");
-      StringElement stringElement=new StringElement(tokenParts,caseSensitive,false);
+      StringElement stringElement=new StringElement(tokenParts,caseSensitive,false,false);
       stringElement.setNegation(negation);
       elements.add(stringElement);
     }

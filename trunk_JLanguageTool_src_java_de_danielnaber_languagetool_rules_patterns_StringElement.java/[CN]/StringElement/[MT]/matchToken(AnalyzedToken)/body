@@ -1,21 +1,24 @@
 {
+  String testToken=null;
+  if (Inflected)   testToken=token.getLemma();
+ else   testToken=token.getToken();
   if (caseSensitive) {
     for (int i=0; i < tokens.length; i++) {
       if (regExp) {
-        if (token.getToken() != null)         if (Pattern.matches(tokens[i],token.getToken()))         return true;
+        if (token.getToken() != null)         if (Pattern.matches(tokens[i],testToken))         return true;
       }
  else {
-        if (tokens[i].equals(token.getToken()))         return true;
+        if (tokens[i].equals(testToken))         return true;
       }
     }
   }
  else {
     for (int i=0; i < tokens.length; i++) {
       if (regExp) {
-        if (token.getToken() != null)         if (Pattern.matches("(?u)".concat(tokens[i]),token.getToken()))         return true;
+        if (testToken != null)         if (Pattern.matches("(?u)".concat(tokens[i]),testToken))         return true;
       }
  else {
-        if (tokens[i].equalsIgnoreCase(token.getToken()))         return true;
+        if (tokens[i].equalsIgnoreCase(testToken))         return true;
       }
     }
   }

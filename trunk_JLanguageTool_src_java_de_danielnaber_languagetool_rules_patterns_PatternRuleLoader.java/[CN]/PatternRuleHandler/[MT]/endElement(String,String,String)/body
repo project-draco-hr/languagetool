@@ -21,10 +21,11 @@
   }
  else   if (qName.equals("token")) {
     if (inToken) {
-      StringElement stringElement=new StringElement(elements.toString(),caseSensitive,regExpression);
+      StringElement stringElement=new StringElement(elements.toString(),caseSensitive,regExpression,tokenInflected);
       stringElement.setNegation(tokenNegated);
       elementList.add(stringElement);
       tokenNegated=false;
+      tokenInflected=false;
     }
     inToken=false;
     regExpression=false;

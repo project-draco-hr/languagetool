@@ -1,7 +1,6 @@
 {
   String[] taggerTokens;
   boolean firstWord=true;
-  String annotations;
   List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
@@ -17,7 +16,6 @@
       taggerTokens=morfologik.stemAndForm(word.toLowerCase());
       firstWord=false;
     }
-    annotations="";
     if (taggerTokens != null) {
       int i=0;
       while (i < taggerTokens.length) {
