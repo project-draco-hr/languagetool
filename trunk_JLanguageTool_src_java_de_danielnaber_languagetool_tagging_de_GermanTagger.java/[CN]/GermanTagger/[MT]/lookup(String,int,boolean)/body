@@ -9,7 +9,7 @@
     return null;
   }
  else {
-    List l=new ArrayList();
+    List<GermanTokenReading> l=new ArrayList<GermanTokenReading>();
     for (int j=0; j < hits.length(); j++) {
       Document doc=hits.doc(j);
       Field[] fields=doc.getFields(CATEGORIES_FIELD);

@@ -1,6 +1,6 @@
 {
   initSearcher();
-  List posTags=new ArrayList();
+  List<AnalyzedTokenReadings> posTags=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   boolean firstWord=true;
   for (Iterator iter=tokens.iterator(); iter.hasNext(); ) {
