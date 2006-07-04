@@ -28,28 +28,29 @@
         }
         allElementsMatch=Match;
       }
+      if (!allElementsMatch) {
+        break;
+      }
+ else {
+        matchingTokens++;
+        lastMatchToken=nextPos;
+        if (firstMatchToken == -1)         firstMatchToken=nextPos;
+      }
     }
-    if (!allElementsMatch) {
-      break;
+    if (allElementsMatch) {
+      String errMessage=message;
+      for (int j=0; j < matchingTokens; j++) {
+        errMessage=errMessage.replaceAll("\\\\" + (j + 1),tokens[firstMatchToken + j].getToken());
+      }
+      boolean startsWithUppercase=StringTools.startsWithUppercase(tokens[firstMatchToken + startPositionCorrection].toString());
+      RuleMatch ruleMatch=new RuleMatch(this,tokens[firstMatchToken + startPositionCorrection].getStartPos(),tokens[lastMatchToken + endPositionCorrection].getStartPos() + tokens[lastMatchToken + endPositionCorrection].getToken().length(),errMessage,startsWithUppercase);
+      ruleMatches.add(ruleMatch);
     }
  else {
-      matchingTokens++;
-      lastMatchToken=nextPos;
-      if (firstMatchToken == -1)       firstMatchToken=nextPos;
+      firstMatchToken=-1;
+      lastMatchToken=-1;
     }
+    tokenPos++;
   }
-  if (allElementsMatch) {
-    String errMessage=message;
-    for (int j=0; j < matchingTokens; j++) {
-      errMessage=errMessage.replaceAll("\\\\" + (j + 1),tokens[firstMatchToken + j].getToken());
-    }
-    boolean startsWithUppercase=StringTools.startsWithUppercase(tokens[firstMatchToken + startPositionCorrection].toString());
-    RuleMatch ruleMatch=new RuleMatch(this,tokens[firstMatchToken + startPositionCorrection].getStartPos(),tokens[lastMatchToken + endPositionCorrection].getStartPos() + tokens[lastMatchToken + endPositionCorrection].getToken().length(),errMessage,startsWithUppercase);
-    ruleMatches.add(ruleMatch);
-  }
- else {
-    firstMatchToken=-1;
-    lastMatchToken=-1;
-  }
-  tokenPos++;
+  return (RuleMatch[])ruleMatches.toArray(new RuleMatch[0]);
 }
