@@ -1,6 +1,6 @@
 {
   String testToken=null;
-  if (Inflected)   testToken=token.getLemma();
+  if (inflected)   testToken=token.getLemma();
  else   testToken=token.getToken();
   if (caseSensitive) {
     for (int i=0; i < tokens.length; i++) {

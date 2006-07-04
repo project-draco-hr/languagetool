@@ -1,4 +1,4 @@
 String[] tokens
 boolean caseSensitive
 boolean regExp
-boolean Inflected
+boolean inflected

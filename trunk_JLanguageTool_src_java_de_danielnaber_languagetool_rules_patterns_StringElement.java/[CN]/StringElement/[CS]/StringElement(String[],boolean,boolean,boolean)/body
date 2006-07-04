@@ -2,5 +2,5 @@
   this.tokens=tokens;
   this.caseSensitive=caseSensitive;
   this.regExp=regExp;
-  this.Inflected=Inflected;
+  this.inflected=inflected;
 }
