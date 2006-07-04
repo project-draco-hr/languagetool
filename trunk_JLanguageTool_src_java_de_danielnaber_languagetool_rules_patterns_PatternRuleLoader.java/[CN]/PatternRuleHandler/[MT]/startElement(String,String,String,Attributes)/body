@@ -1,6 +1,4 @@
 {
-  if (namespaceURI == null)   namespaceURI=null;
-  if (lName == null)   lName=null;
   if (qName.equals("rules")) {
     String languageStr=attrs.getValue("lang");
     language=Language.getLanguageforShortName(languageStr);
@@ -13,8 +11,8 @@
     if (inRuleGroup && id == null)     id=ruleGroupId;
     description=attrs.getValue("name");
     if (inRuleGroup && description == null)     description=ruleGroupDescription;
-    correctExamples=new ArrayList();
-    incorrectExamples=new ArrayList();
+    correctExamples=new ArrayList<String>();
+    incorrectExamples=new ArrayList<String>();
   }
  else   if (qName.equals("pattern")) {
     pattern=new StringBuffer();
@@ -33,7 +31,7 @@
     }
     elements=new StringBuffer();
     if (elementList == null) {
-      elementList=new ArrayList();
+      elementList=new ArrayList<Element>();
     }
     if (attrs.getValue("postag") != null) {
       if (attrs.getValue("postag_exceptions") != null) {
@@ -52,7 +50,7 @@
         posElement.setNegation(attrs.getValue("negate_pos").equals("yes"));
       }
       if (elementList == null) {
-        elementList=new ArrayList();
+        elementList=new ArrayList<Element>();
       }
       elementList.add(posElement);
       inToken=false;

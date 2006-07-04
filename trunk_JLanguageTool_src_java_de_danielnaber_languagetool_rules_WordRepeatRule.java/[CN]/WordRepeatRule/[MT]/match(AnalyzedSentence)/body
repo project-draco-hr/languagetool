@@ -1,5 +1,5 @@
 {
-  List ruleMatches=new ArrayList();
+  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   AnalyzedTokenReadings[] tokens=text.getTokens();
   String prevToken="";
   String prevPrevToken="";

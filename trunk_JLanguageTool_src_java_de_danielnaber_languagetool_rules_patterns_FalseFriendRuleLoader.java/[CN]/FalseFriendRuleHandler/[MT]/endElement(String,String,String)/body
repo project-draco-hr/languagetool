@@ -1,6 +1,4 @@
 {
-  if (namespaceURI == null)   namespaceURI=null;
-  if (sName == null)   sName=null;
   if (qName.equals("rule")) {
     if (language == textLanguage && translationLanguage == motherTongue) {
       formatter.applyPattern(messages.getString("false_friend_hint"));

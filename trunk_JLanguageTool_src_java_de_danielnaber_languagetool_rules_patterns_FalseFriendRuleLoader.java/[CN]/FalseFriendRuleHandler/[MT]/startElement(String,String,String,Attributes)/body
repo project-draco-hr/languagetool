@@ -1,12 +1,10 @@
 {
-  if (namespaceURI == null)   namespaceURI=null;
-  if (lName == null)   lName=null;
   if (qName.equals("rule")) {
-    translations=new ArrayList();
+    translations=new ArrayList<StringBuffer>();
     id=attrs.getValue("id");
     if (inRuleGroup && id == null)     id=ruleGroupId;
-    correctExamples=new ArrayList();
-    incorrectExamples=new ArrayList();
+    correctExamples=new ArrayList<String>();
+    incorrectExamples=new ArrayList<String>();
   }
  else   if (qName.equals("pattern")) {
     pattern=new StringBuffer();
