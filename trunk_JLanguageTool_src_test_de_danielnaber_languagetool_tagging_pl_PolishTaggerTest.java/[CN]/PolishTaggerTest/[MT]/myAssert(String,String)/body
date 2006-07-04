@@ -10,8 +10,8 @@
   List output=tagger.tag(noWhitespaceTokens);
   StringBuffer outputStr=new StringBuffer();
   for (Iterator iter=output.iterator(); iter.hasNext(); ) {
-    AnalyzedToken token=(AnalyzedToken)iter.next();
-    outputStr.append(token);
+    AnalyzedTokenReadings token=(AnalyzedTokenReadings)iter.next();
+    outputStr.append(token.getAnalyzedToken(0));
     if (iter.hasNext())     outputStr.append(" ");
   }
   assertEquals(expected,outputStr.toString());

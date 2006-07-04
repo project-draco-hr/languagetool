@@ -1,4 +1,5 @@
 {
-  myAssert("To jest du??y dom.","To/INDECL|ADJ:IRREG|ADJ:SG:NOM:N+PPRON:NOM.ACC.VOC:SG:N+PPRON:NOM.ACC.VOC:PL:N jest/INDECL|QUB du??y/ADJ:SG:NOM.ACC:M+ADJ:SG:NOM:M dom/SUBST:SG:NOM.ACC:M3+SUBST:SG:NOM:M");
-  myAssert("Krowa pasie si?? na pastwisku.","Krowa/SUBST:SG:NOM:F pasie/INDECL|SUBST:IRREG|SUBST:PL:NOM.VOC:M1+SUBST:SG:LOC.VOC:M+SUBST:SG:LOC.VOC:M3|SUBST:SG:LOC.VOC:M+SUBST:SG:LOC.VOC:M3|QUB si??/INDECL|QUB na/INDECL pastwisku/SUBST:SG:DAT:M+SUBST:SG:DAT:N+SUBST:SG:LOC.VOC:M+SUBST:SG:LOC:N|SUBST:SG:DAT:N+SUBST:SG:LOC:N");
+  myAssert("To jest du??y dom.","To/conj jest/verb:fin:sg:ter:imperf du??y/adj:sg:nom.acc:m+adj:sg:nom:m dom/subst:sg:nom.acc:m3+subst:sg:nom:m");
+  myAssert("Krowa pasie si?? na pastwisku.","Krowa/subst:sg:nom:f pasie/subst:pl:nom.voc:m1+subst:sg:loc.voc:m+subst:sg:loc.voc:m3 si??/qub na/prep:loc pastwisku/subst:sg:dat:m+subst:sg:dat:n+subst:sg:loc.voc:m+subst:sg:loc:n");
+  myAssert("blablabla","blablabla/null");
 }
