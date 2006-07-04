@@ -2,7 +2,7 @@
   String[] taggerTokens;
   boolean firstWord=true;
   String annotations;
-  List tokenReadings=new ArrayList();
+  List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
     File resourceFile=JLanguageTool.getAbsoluteFile(RESOURCE_FILENAME);
@@ -11,7 +11,7 @@
   }
   for (Iterator iter=sentenceTokens.iterator(); iter.hasNext(); ) {
     String word=(String)iter.next();
-    List l=new ArrayList();
+    List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
     taggerTokens=morfologik.stemAndForm(word);
     if (firstWord && taggerTokens == null) {
       taggerTokens=morfologik.stemAndForm(word.toLowerCase());
@@ -19,13 +19,11 @@
     }
     annotations="";
     if (taggerTokens != null) {
-      for (int i=0; i < taggerTokens.length; i++) {
-        if (i % 2 != 0) {
-          annotations=annotations.concat(taggerTokens[i].toUpperCase());
-          if (i + 1 < taggerTokens.length)           annotations=annotations.concat("|");
-        }
+      int i=0;
+      while (i < taggerTokens.length) {
+        l.add(new AnalyzedToken(word,taggerTokens[i + 1],taggerTokens[i]));
+        i=i + 2;
       }
-      l.add(new AnalyzedToken(word,annotations,pos));
     }
  else     l.add(new AnalyzedToken(word,null,pos));
     pos+=word.length();
