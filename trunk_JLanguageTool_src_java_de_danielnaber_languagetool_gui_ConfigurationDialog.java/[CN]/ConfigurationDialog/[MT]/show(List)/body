@@ -22,14 +22,7 @@
   for (Iterator iter=rules.iterator(); iter.hasNext(); ) {
     Rule rule=(Rule)iter.next();
     cons.gridy=row;
-    JCheckBox checkBox=null;
-    if (rule instanceof PatternRule) {
-      PatternRule patternRule=(PatternRule)rule;
-      checkBox=new JCheckBox(rule.getDescription() + " -- " + patternRule.getPattern());
-    }
- else {
-      checkBox=new JCheckBox(rule.getDescription());
-    }
+    JCheckBox checkBox=new JCheckBox(rule.getDescription());
     if (inactiveRuleIds != null && inactiveRuleIds.contains(rule.getId()))     checkBox.setSelected(false);
  else     checkBox.setSelected(true);
     checkBoxes.add(checkBox);
