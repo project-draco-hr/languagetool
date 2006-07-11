@@ -21,6 +21,10 @@
     if (inToken) {
       StringElement stringElement=new StringElement(elements.toString(),caseSensitive,regExpression,tokenInflected);
       stringElement.setNegation(tokenNegated);
+      if (skipPos != 0) {
+        stringElement.setSkipNext(skipPos);
+        skipPos=0;
+      }
       elementList.add(stringElement);
       tokenNegated=false;
       tokenInflected=false;

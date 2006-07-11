@@ -29,6 +29,9 @@
     if (attrs.getValue("inflected") != null) {
       tokenInflected=attrs.getValue("inflected").equals("yes");
     }
+    if (attrs.getValue("skip") != null) {
+      skipPos=Integer.parseInt(attrs.getValue("skip"));
+    }
     elements=new StringBuffer();
     if (elementList == null) {
       elementList=new ArrayList<Element>();
