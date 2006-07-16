@@ -1,13 +1,13 @@
 {
   GermanTagger tagger=new GermanTagger();
-  AnalyzedGermanToken aToken=tagger.lookup("Haus",0);
-  assertEquals("Haus[Nomen/Nom/Sin/Neu, Nomen/Dat/Sin/Neu, " + "Nomen/Akk/Sin/Neu]",aToken.toString());
-  aToken=tagger.lookup("Hauses",0);
+  AnalyzedGermanTokenReadings aToken=tagger.lookup("Haus");
+  assertEquals("Haus[Nomen/Akk/Sin/Neu, Nomen/Dat/Sin/Neu, Nomen/Nom/Sin/Neu]",aToken.toString());
+  aToken=tagger.lookup("Hauses");
   assertEquals("Hauses[Nomen/Gen/Sin/Neu]",aToken.toString());
-  aToken=tagger.lookup("hauses",0);
+  aToken=tagger.lookup("hauses");
   assertNull(aToken);
-  aToken=tagger.lookup("Gro??",0);
+  aToken=tagger.lookup("Gro??");
   assertNull(aToken);
-  aToken=tagger.lookup("gro??er",0);
-  assertEquals("gro??er[Adjektiv/Nom/Sin/Mas, Adjektiv/Gen/Plu/Mas, " + "Adjektiv/Gen/Sin/Fem, Adjektiv/Dat/Sin/Fem, " + "Adjektiv/Gen/Plu/Fem, Adjektiv/Gen/Plu/Neu]",aToken.toString());
+  aToken=tagger.lookup("gro??er");
+  assertEquals("gro??er[Adjektiv/Dat/Sin/Fem, Adjektiv/Gen/Plu/Fem, " + "Adjektiv/Gen/Plu/Mas, Adjektiv/Gen/Plu/Neu, " + "Adjektiv/Gen/Sin/Fem, Adjektiv/Nom/Sin/Mas]",aToken.toString());
 }
