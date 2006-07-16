@@ -1,0 +1,17 @@
+{
+  if (ATreadings == null)   return super.getAnalyzedToken(0).getToken() + "[?]";
+ else {
+    StringBuffer sb=new StringBuffer(super.getAnalyzedToken(0).getToken());
+    Set<String> printed=new HashSet<String>();
+    sb.append("[");
+    for (    AnalyzedToken reading : ATreadings) {
+      if (!printed.contains(reading.toString())) {
+        if (printed.size() > 0)         sb.append(", ");
+        sb.append(reading.toString());
+      }
+      printed.add(reading.toString());
+    }
+    sb.append("]");
+    return sb.toString();
+  }
+}

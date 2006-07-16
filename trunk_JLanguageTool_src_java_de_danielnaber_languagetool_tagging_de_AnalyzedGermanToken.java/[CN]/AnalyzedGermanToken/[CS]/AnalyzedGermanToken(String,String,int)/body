@@ -1,0 +1,4 @@
+{
+  super(token,posTag,startPos);
+  initFromPOSTagString(posTag);
+}

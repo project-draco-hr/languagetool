@@ -1,1 +1,2 @@
 List sentenceTokens
+boolean ignoreCase

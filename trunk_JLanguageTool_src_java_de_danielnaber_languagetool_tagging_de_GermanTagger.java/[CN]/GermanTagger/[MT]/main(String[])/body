@@ -1,13 +1,7 @@
 {
-  if (args.length == 0) {
-    System.out.println("Usage: GermanTagger <word1> [word2...]");
-    System.exit(1);
-  }
-  GermanTagger tagger=new GermanTagger();
+  GermanTagger gt=new GermanTagger();
   List<String> l=new ArrayList<String>();
-  for (int i=0; i < args.length; i++) {
-    l.add(args[i]);
-  }
-  List result=tagger.tag(l);
-  System.out.println(result);
+  l.add("Einfacher");
+  List res=gt.tag(l);
+  System.err.println(res);
 }

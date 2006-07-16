@@ -12,13 +12,13 @@
       }
       continue;
     }
-    AnalyzedGermanToken analyzedToken=(AnalyzedGermanToken)tokens[i];
+    AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[i];
     String token=analyzedToken.getToken();
     List readings=analyzedToken.getReadings();
-    if (readings == null) {
-      AnalyzedGermanToken analyzedGermanToken2;
+    AnalyzedGermanTokenReadings analyzedGermanToken2=null;
+    if (readings == null || analyzedToken.getAnalyzedToken(0).getPOSTag() == null || hasOnlyVerbReadings(analyzedToken)) {
       try {
-        analyzedGermanToken2=tagger.lookup(token.toLowerCase(),-1);
+        analyzedGermanToken2=tagger.lookup(token.toLowerCase());
         if (analyzedGermanToken2 != null)         readings=analyzedGermanToken2.getReadings();
       }
  catch (      IOException e) {
@@ -27,12 +27,12 @@
       if (prevTokenIsDas) {
         String newToken=token.substring(0,1).toUpperCase() + token.substring(1);
         try {
-          analyzedGermanToken2=tagger.lookup(newToken,-1);
+          analyzedGermanToken2=tagger.lookup(newToken);
         }
  catch (        IOException e) {
           throw new RuntimeException(e);
         }
-        if (analyzedGermanToken2 != null && Character.isLowerCase(token.charAt(0)) && !substVerbenExceptions.contains(token)) {
+        if (Character.isLowerCase(token.charAt(0)) && !substVerbenExceptions.contains(token)) {
           String msg="Substantivierte Verben werden gro?? geschrieben.";
           RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
           String word=tokens[i].getToken();
@@ -49,12 +49,14 @@
       prevTokenIsDas=false;
     }
     if (readings == null)     continue;
-    boolean hasNounReading=false;
-    for (Iterator iter=readings.iterator(); iter.hasNext(); ) {
-      GermanTokenReading reading=(GermanTokenReading)iter.next();
-      if (reading.getType() == GermanToken.POSType.NOMEN)       hasNounReading=true;
-    }
+    boolean hasNounReading=analyzedToken.hasReadingOfType(GermanToken.POSType.NOMEN);
     if (hasNounReading)     continue;
+    if (analyzedToken.getAnalyzedToken(0).getPOSTag() == null && analyzedGermanToken2 == null) {
+      continue;
+    }
+    if (analyzedToken.getAnalyzedToken(0).getPOSTag() == null && analyzedGermanToken2 != null && analyzedGermanToken2.getAnalyzedToken(0).getPOSTag() == null) {
+      continue;
+    }
     if (Character.isUpperCase(token.charAt(0)) && !tokens[i - 1].getToken().equals(":") && !exceptions.contains(token)&& token.length() > 1) {
       String msg="Au??er am Satzanfang werden nur Nomen und Eigennamen gro?? geschrieben";
       RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);

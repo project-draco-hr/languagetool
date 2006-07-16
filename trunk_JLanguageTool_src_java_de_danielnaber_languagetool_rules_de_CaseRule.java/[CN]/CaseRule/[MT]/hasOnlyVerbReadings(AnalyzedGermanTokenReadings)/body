@@ -1,0 +1,6 @@
+{
+  if (!analyzedToken.hasReadingOfType(GermanToken.POSType.NOMEN) && !analyzedToken.hasReadingOfType(GermanToken.POSType.ADJEKTIV) && !analyzedToken.hasReadingOfType(GermanToken.POSType.DETERMINER)&& !analyzedToken.hasReadingOfType(GermanToken.POSType.PRONOMEN)&& !analyzedToken.hasReadingOfType(GermanToken.POSType.PARTIZIP)&& !analyzedToken.hasReadingOfType(GermanToken.POSType.OTHER)&& analyzedToken.hasReadingOfType(GermanToken.POSType.VERB)) {
+    return true;
+  }
+  return false;
+}

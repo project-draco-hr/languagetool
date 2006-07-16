@@ -1,4 +1,0 @@
-{
-  super(new AnalyzedToken(token,null,startPos));
-  this.readings=readings;
-}

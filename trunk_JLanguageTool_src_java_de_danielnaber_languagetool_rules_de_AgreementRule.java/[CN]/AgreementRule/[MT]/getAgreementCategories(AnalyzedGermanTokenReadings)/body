@@ -1,0 +1,10 @@
+{
+  Set<String> set=new HashSet<String>();
+  List readings=aToken.getReadings();
+  for (Iterator iter=readings.iterator(); iter.hasNext(); ) {
+    AnalyzedGermanToken reading=(AnalyzedGermanToken)iter.next();
+    if (reading.getCasus() == null && reading.getNumerus() == null && reading.getGenus() == null)     continue;
+    set.add(reading.getCasus() + "/" + reading.getNumerus()+ "/"+ reading.getGenus());
+  }
+  return set;
+}

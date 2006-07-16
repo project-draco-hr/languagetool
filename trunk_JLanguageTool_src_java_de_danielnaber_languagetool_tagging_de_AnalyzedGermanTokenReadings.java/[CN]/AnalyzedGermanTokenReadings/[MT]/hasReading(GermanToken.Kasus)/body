@@ -1,0 +1,8 @@
+{
+  if (ATreadings == null)   return false;
+  for (  AnalyzedToken reading : ATreadings) {
+    AnalyzedGermanToken germanReading=(AnalyzedGermanToken)reading;
+    if (germanReading.getCasus() == kasus)     return true;
+  }
+  return false;
+}

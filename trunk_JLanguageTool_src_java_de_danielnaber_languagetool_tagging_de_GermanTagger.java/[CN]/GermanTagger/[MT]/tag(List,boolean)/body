@@ -1,0 +1,33 @@
+{
+  String[] taggerTokens;
+  boolean firstWord=true;
+  List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
+  int pos=0;
+  if (morfologik == null) {
+    File resourceFile=JLanguageTool.getAbsoluteFile(RESOURCE_FILENAME);
+    System.setProperty(Lametyzator.PROPERTY_NAME_LAMETYZATOR_DICT,resourceFile.getAbsolutePath());
+    morfologik=new Lametyzator();
+  }
+  for (Iterator iter=sentenceTokens.iterator(); iter.hasNext(); ) {
+    String word=(String)iter.next();
+    List<AnalyzedGermanToken> l=new ArrayList<AnalyzedGermanToken>();
+    taggerTokens=morfologik.stemAndForm(word);
+    if (firstWord && taggerTokens == null && ignoreCase) {
+      taggerTokens=morfologik.stemAndForm(word.toLowerCase());
+      firstWord=false;
+    }
+    if (taggerTokens != null) {
+      int i=0;
+      while (i < taggerTokens.length) {
+        l.add(new AnalyzedGermanToken(word,taggerTokens[i + 1],taggerTokens[i]));
+        i=i + 2;
+      }
+    }
+ else {
+      l.add(new AnalyzedGermanToken(word,null,pos));
+    }
+    pos+=word.length();
+    tokenReadings.add(new AnalyzedGermanTokenReadings((AnalyzedGermanToken[])l.toArray(new AnalyzedGermanToken[0])));
+  }
+  return tokenReadings;
+}

@@ -1,18 +1,3 @@
 {
-  initSearcher();
-  List<AnalyzedTokenReadings> posTags=new ArrayList<AnalyzedTokenReadings>();
-  int pos=0;
-  boolean firstWord=true;
-  for (Iterator iter=tokens.iterator(); iter.hasNext(); ) {
-    String word=(String)iter.next();
-    AnalyzedGermanToken aToken=lookup(word,pos);
-    if (firstWord && aToken == null) {
-      aToken=lookup(word,pos,true);
-      firstWord=false;
-    }
-    pos+=word.length();
-    if (aToken != null && aToken.getReadings().size() > 0)     posTags.add(aToken);
- else     posTags.add(new AnalyzedGermanToken(word,(List)null,pos));
-  }
-  return posTags;
+  return tag(sentenceTokens,true);
 }

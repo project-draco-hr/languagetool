@@ -1,6 +1,0 @@
-{
-  this.type=type;
-  this.casus=casus;
-  this.numerus=numerus;
-  this.genus=genus;
-}
