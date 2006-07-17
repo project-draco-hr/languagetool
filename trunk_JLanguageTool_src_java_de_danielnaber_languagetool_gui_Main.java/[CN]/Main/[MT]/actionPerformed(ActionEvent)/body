@@ -40,7 +40,7 @@ catch (  SAXException ex) {
       textArea.setText("Please insert text to check here");
     }
  else {
-      StringBuffer sb=new StringBuffer();
+      StringBuilder sb=new StringBuilder();
       resultArea.setText("Starting check...<br>\n");
       resultArea.repaint();
       sb.append("Starting check in " + langName + "...<br>\n");
