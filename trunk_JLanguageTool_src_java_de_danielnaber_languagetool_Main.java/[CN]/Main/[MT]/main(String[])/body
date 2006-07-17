@@ -1,11 +1,12 @@
 {
-  if (args.length < 1 || args.length > 6) {
+  if (args.length < 1 || args.length > 8) {
     exitWithUsageMessage();
   }
   boolean verbose=false;
   boolean recursive=false;
   Language language=null;
   Language motherTongue=null;
+  String encoding=null;
   String filename=null;
   String[] disabledRules=new String[0];
   for (int i=0; i < args.length; i++) {
@@ -28,6 +29,9 @@
  else     if (args[i].equals("-m") || args[i].equals("--mothertongue")) {
       motherTongue=getLanguageOrExit(args[++i]);
     }
+ else     if (args[i].equals("-e") || args[i].equals("--encoding")) {
+      encoding=args[++i];
+    }
  else {
       filename=args[i];
     }
@@ -41,10 +45,10 @@
   }
   Main prg=new Main(verbose,language,motherTongue,disabledRules);
   if (recursive) {
-    prg.runRecursive(filename);
+    prg.runRecursive(filename,encoding);
   }
  else {
-    String text=prg.getFilteredText(filename);
+    String text=prg.getFilteredText(filename,encoding);
     prg.checkText(text);
   }
 }
