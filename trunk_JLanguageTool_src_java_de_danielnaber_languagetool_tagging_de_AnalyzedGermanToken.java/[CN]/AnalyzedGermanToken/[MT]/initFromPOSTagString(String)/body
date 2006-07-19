@@ -7,12 +7,13 @@
     return;
   }
   for (int i=0; i < parts.length; i++) {
-    if (parts[i].equals("SUB"))     type=POSType.NOMEN;
+    if (parts[i].equals("EIG"))     type=POSType.PROPER_NOUN;
+ else     if (parts[i].equals("SUB") && type == null)     type=POSType.NOMEN;
  else     if (parts[i].equals("PA1") || parts[i].equals("PA2"))     type=POSType.PARTIZIP;
  else     if (parts[i].equals("VER") && type == null)     type=POSType.VERB;
- else     if (parts[i].equals("ADJ"))     type=POSType.ADJEKTIV;
- else     if (parts[i].equals("PRO"))     type=POSType.PRONOMEN;
- else     if (parts[i].equals("ART"))     type=POSType.DETERMINER;
+ else     if (parts[i].equals("ADJ") && type == null)     type=POSType.ADJEKTIV;
+ else     if (parts[i].equals("PRO") && type == null)     type=POSType.PRONOMEN;
+ else     if (parts[i].equals("ART") && type == null)     type=POSType.DETERMINER;
  else     if (parts[i].equals("AKK"))     casus=Kasus.AKKUSATIV;
  else     if (parts[i].equals("GEN"))     casus=Kasus.GENITIV;
  else     if (parts[i].equals("NOM"))     casus=Kasus.NOMINATIV;
