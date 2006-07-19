@@ -4,6 +4,8 @@
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ein einfacher Satz zum Testen.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das Laufen f??llt mir leicht.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das Winseln st??rt.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das schl??gt nicht so zu Buche.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Dirk Hetzel ist ein Name.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Schon Le Monde schrieb das.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("In Blubberdorf macht man das so.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist es: kein Satz.")).length);
