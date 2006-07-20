@@ -1,10 +1,9 @@
 {
   long startTime=System.currentTimeMillis();
-  List ruleMatches=langTool.check(text);
+  List<RuleMatch> ruleMatches=langTool.check(text);
   long startTimeMatching=System.currentTimeMillis();
   int i=0;
-  for (Iterator iter=ruleMatches.iterator(); iter.hasNext(); ) {
-    RuleMatch match=(RuleMatch)iter.next();
+  for (  RuleMatch match : ruleMatches) {
     sb.append("<br>\n<b>" + (i + 1) + ". Line "+ (match.getLine() + 1)+ ", column "+ match.getColumn()+ "</b><br>\n");
     String msg=match.getMessage();
     msg=msg.replaceAll("<suggestion>","<b>");

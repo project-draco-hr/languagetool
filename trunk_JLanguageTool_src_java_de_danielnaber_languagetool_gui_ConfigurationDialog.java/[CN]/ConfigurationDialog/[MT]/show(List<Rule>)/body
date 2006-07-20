@@ -19,8 +19,7 @@
   cons.anchor=GridBagConstraints.NORTHWEST;
   cons.gridx=0;
   int row=0;
-  for (Iterator iter=rules.iterator(); iter.hasNext(); ) {
-    Rule rule=(Rule)iter.next();
+  for (  Rule rule : rules) {
     cons.gridy=row;
     JCheckBox checkBox=new JCheckBox(rule.getDescription());
     if (inactiveRuleIds != null && inactiveRuleIds.contains(rule.getId()))     checkBox.setSelected(false);

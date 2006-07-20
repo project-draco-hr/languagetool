@@ -1,6 +1,6 @@
 Configuration configuration
-List rules
+List<Rule> rules
 XTextDocument xTextDoc
-List ruleMatches
+List<RuleMatch> ruleMatches
 String text
 XTextViewCursor xViewCursor

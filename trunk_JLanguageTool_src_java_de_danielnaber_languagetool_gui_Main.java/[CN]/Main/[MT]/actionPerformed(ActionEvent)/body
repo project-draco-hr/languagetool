@@ -14,10 +14,9 @@
     langTool=new JLanguageTool(language,configDialog.getMotherTongue());
     langTool.activateDefaultPatternRules();
     langTool.activateDefaultFalseFriendRules();
-    Set disabledRules=configDialog.getDisabledRuleIds();
+    Set<String> disabledRules=configDialog.getDisabledRuleIds();
     if (disabledRules != null) {
-      for (Iterator iter=disabledRules.iterator(); iter.hasNext(); ) {
-        String ruleId=(String)iter.next();
+      for (      String ruleId : disabledRules) {
         langTool.disableRule(ruleId);
       }
     }
@@ -32,7 +31,7 @@ catch (  SAXException ex) {
     throw new RuntimeException(ex);
   }
   if (e.getActionCommand().equals(OPTIONS_BUTTON)) {
-    List rules=langTool.getAllRules();
+    List<Rule> rules=langTool.getAllRules();
     configDialog.show(rules);
   }
  else {

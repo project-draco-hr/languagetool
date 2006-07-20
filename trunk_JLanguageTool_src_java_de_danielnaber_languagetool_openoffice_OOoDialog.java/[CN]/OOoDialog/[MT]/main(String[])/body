@@ -2,12 +2,12 @@
   JLanguageTool lt=new JLanguageTool(Language.ENGLISH);
   lt.activateDefaultPatternRules();
   Configuration config=new Configuration(new File("/tmp"));
-  for (Iterator iter=config.getDisabledRuleIds().iterator(); iter.hasNext(); ) {
-    String id=(String)iter.next();
+  for (Iterator<String> iter=config.getDisabledRuleIds().iterator(); iter.hasNext(); ) {
+    String id=iter.next();
     lt.disableRule(id);
   }
   String text="There was to much snow.";
-  List ruleMatches=lt.check(text);
+  List<RuleMatch> ruleMatches=lt.check(text);
   OOoDialog prg=new OOoDialog(config,lt.getAllRules(),null,ruleMatches,text,null);
   prg.show();
 }

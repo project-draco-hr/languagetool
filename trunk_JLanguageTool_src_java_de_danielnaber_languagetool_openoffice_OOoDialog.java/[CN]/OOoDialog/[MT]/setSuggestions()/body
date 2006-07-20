@@ -1,5 +1,5 @@
 {
-  List suggestions=currentRuleMatch.getSuggestedReplacements();
+  List<String> suggestions=currentRuleMatch.getSuggestedReplacements();
   if (suggestions.size() == 0) {
     System.err.println("No suggested replacement found");
     changeButton.setEnabled(false);

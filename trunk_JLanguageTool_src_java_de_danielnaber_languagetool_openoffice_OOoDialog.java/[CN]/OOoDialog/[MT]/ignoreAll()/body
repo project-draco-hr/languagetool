@@ -1,8 +1,7 @@
 {
   int i=0;
   List<RuleMatch> filteredRuleMatches=new ArrayList<RuleMatch>();
-  for (Iterator iter=ruleMatches.iterator(); iter.hasNext(); ) {
-    RuleMatch ruleMatch=(RuleMatch)iter.next();
+  for (  RuleMatch ruleMatch : ruleMatches) {
     if (i <= currentRuleMatchPos) {
       filteredRuleMatches.add(ruleMatch);
       i++;

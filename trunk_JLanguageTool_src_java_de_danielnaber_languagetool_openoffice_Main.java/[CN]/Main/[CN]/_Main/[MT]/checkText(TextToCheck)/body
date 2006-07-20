@@ -15,7 +15,7 @@
     }
   }
   progressDialog.close();
-  List ruleMatches=checkerThread.getRuleMatches();
+  List<RuleMatch> ruleMatches=checkerThread.getRuleMatches();
   if (ruleMatches.size() == 0) {
     String msg;
     if (textToCheck.isSelection) {
