@@ -1,5 +1,5 @@
 {
-  List tokens=wordTokenizer.tokenize(sentence);
+  List<String> tokens=wordTokenizer.tokenize(sentence);
   List<String> noWhitespaceTokens=new ArrayList<String>();
   for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
     String token=(String)iterator.next();
@@ -7,7 +7,7 @@
       noWhitespaceTokens.add(token);
     }
   }
-  List aTokens=tagger.tag(noWhitespaceTokens);
+  List<AnalyzedTokenReadings> aTokens=tagger.tag(noWhitespaceTokens);
   AnalyzedTokenReadings[] tokenArray=new AnalyzedTokenReadings[tokens.size() + 1];
   AnalyzedToken[] startTokenArray=new AnalyzedToken[1];
   int toArrayCount=0;
