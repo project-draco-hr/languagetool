@@ -14,7 +14,7 @@
     }
     AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[i];
     String token=analyzedToken.getToken();
-    List readings=analyzedToken.getReadings();
+    List<AnalyzedGermanToken> readings=analyzedToken.getReadings();
     AnalyzedGermanTokenReadings analyzedGermanToken2=null;
     boolean isBaseform=false;
     if (analyzedToken.getReadingsLength() > 1 && token.equals(analyzedToken.getAnalyzedToken(0).getLemma())) {
