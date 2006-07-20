@@ -1,0 +1,11 @@
+{
+  StringBuilder sb=new StringBuilder();
+  for (Iterator<StringBuilder> iter=translations.iterator(); iter.hasNext(); ) {
+    StringBuilder trans=iter.next();
+    sb.append("\"");
+    sb.append(trans.toString());
+    sb.append("\"");
+    if (iter.hasNext())     sb.append(", ");
+  }
+  return sb.toString();
+}

@@ -2,21 +2,41 @@
   if (qName.equals("rule")) {
     if (language == textLanguage && translationLanguage == motherTongue) {
       formatter.applyPattern(messages.getString("false_friend_hint"));
-      Object[] messageArguments={pattern,textLanguage.getShortName(),formatTranslations(translations),motherTongue.getShortName()};
+      Object[] messageArguments={elements,textLanguage.getShortName(),formatTranslations(translations),motherTongue.getShortName()};
       String description=formatter.format(messageArguments);
-      String rulePattern=makeRulePattern(pattern.toString());
-      PatternRule rule=new PatternRule(id,language,rulePattern,messages.getString("false_friend_desc") + " " + pattern.toString(),description);
+      PatternRule rule=new PatternRule(id,language,pattern.toString(),messages.getString("false_friend_desc") + " " + pattern.toString(),description);
+      if (elementList != null) {
+        rule.addPatternElements(elementList);
+      }
       rule.setCorrectExamples(correctExamples);
       rule.setIncorrectExamples(incorrectExamples);
       rules.add(rule);
     }
+    if (elementList != null) {
+      elementList.clear();
+    }
+  }
+ else   if (qName.equals("token")) {
+    if (inToken) {
+      StringElement stringElement=new StringElement(elements.toString(),caseSensitive,regExpression,tokenInflected);
+      stringElement.setNegation(tokenNegated);
+      if (skipPos != 0) {
+        stringElement.setSkipNext(skipPos);
+        skipPos=0;
+      }
+      elementList.add(stringElement);
+      tokenNegated=false;
+      tokenInflected=false;
+    }
+    inToken=false;
+    regExpression=false;
   }
  else   if (qName.equals("pattern")) {
     inPattern=false;
   }
  else   if (qName.equals("translation")) {
     translations.add(translation);
-    translation=new StringBuffer();
+    translation=new StringBuilder();
     inTranslation=false;
   }
  else   if (qName.equals("example")) {

@@ -1,9 +1,6 @@
 {
   List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  if (patternElements == null) {
-    patternElements=getPatternElements(pattern);
-  }
   int tokenPos=0;
   int prevSkipNext=0;
   int skipNext=0;

@@ -1,5 +1,0 @@
-{
-  PatternRule rule=new PatternRule("ID1",Language.ENGLISH,s,"test rule","user visible message");
-  rule.setCaseSensitive(caseSensitive);
-  return rule;
-}
