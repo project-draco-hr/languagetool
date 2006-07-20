@@ -1,6 +1,6 @@
 {
   if (qName.equals("rule")) {
-    if (language == textLanguage && translationLanguage == motherTongue) {
+    if (language == textLanguage && translationLanguage != null && translationLanguage == motherTongue) {
       formatter.applyPattern(messages.getString("false_friend_hint"));
       Object[] messageArguments={elements.toString().replace('|','/'),messages.getString(textLanguage.getShortName()),formatTranslations(translations),messages.getString(motherTongue.getShortName())};
       String description=formatter.format(messageArguments);
@@ -32,9 +32,12 @@
     inPattern=false;
   }
  else   if (qName.equals("translation")) {
-    translations.add(translation);
+    if (currentTranslationLanguage == motherTongue) {
+      translations.add(translation);
+    }
     translation=new StringBuilder();
     inTranslation=false;
+    currentTranslationLanguage=null;
   }
  else   if (qName.equals("example")) {
     if (inCorrectExample) {
