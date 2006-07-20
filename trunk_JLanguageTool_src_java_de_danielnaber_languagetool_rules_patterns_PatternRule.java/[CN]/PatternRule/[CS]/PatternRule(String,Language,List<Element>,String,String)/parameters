@@ -1,5 +1,5 @@
 String id
 Language language
-String pattern
+List<Element> elements
 String description
 String message

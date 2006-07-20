@@ -1,9 +1,6 @@
 {
   if (qName.equals("rule")) {
-    PatternRule rule=new PatternRule(id,language,pattern.toString(),description,message.toString());
-    if (elementList != null) {
-      rule.addPatternElements(elementList);
-    }
+    PatternRule rule=new PatternRule(id,language,elementList,description,message.toString());
     rule.setStartPositionCorrection(startPositionCorrection);
     rule.setEndPositionCorrection(endPositionCorrection);
     startPositionCorrection=0;
