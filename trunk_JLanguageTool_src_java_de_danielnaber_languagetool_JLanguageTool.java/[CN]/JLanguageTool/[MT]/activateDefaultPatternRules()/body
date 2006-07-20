@@ -1,8 +1,5 @@
 {
   String defaultPatternFilename=RULES_DIR + File.separator + language.getShortName()+ File.separator+ PATTERN_FILE;
-  List patternRules=loadPatternRules(defaultPatternFilename);
-  for (Iterator iter=patternRules.iterator(); iter.hasNext(); ) {
-    Rule rule=(Rule)iter.next();
-    addRule(rule);
-  }
+  List<PatternRule> patternRules=loadPatternRules(defaultPatternFilename);
+  userRules.addAll(patternRules);
 }

@@ -2,6 +2,6 @@
   GermanTagger gt=new GermanTagger();
   List<String> l=new ArrayList<String>();
   l.add("Einfacher");
-  List res=gt.tag(l);
+  List<AnalyzedTokenReadings> res=gt.tag(l);
   System.err.println(res);
 }

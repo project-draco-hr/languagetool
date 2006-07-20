@@ -1,8 +1,7 @@
 {
   List<String> tokens=wordTokenizer.tokenize(sentence);
   List<String> noWhitespaceTokens=new ArrayList<String>();
-  for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
-    String token=(String)iterator.next();
+  for (  String token : tokens) {
     if (isWord(token)) {
       noWhitespaceTokens.add(token);
     }
@@ -16,8 +15,7 @@
   tokenArray[toArrayCount++]=new AnalyzedTokenReadings(startTokenArray);
   int startPos=0;
   int noWhitespaceCount=0;
-  for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
-    String tokenStr=(String)iterator.next();
+  for (  String tokenStr : tokens) {
     AnalyzedTokenReadings posTag=null;
     if (isWord(tokenStr)) {
       posTag=(AnalyzedTokenReadings)aTokens.get(noWhitespaceCount);

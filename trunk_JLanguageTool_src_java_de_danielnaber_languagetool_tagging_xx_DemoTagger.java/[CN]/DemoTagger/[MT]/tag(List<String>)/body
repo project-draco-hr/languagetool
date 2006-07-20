@@ -1,8 +1,8 @@
 {
   List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
-  for (Iterator iter=sentenceTokens.iterator(); iter.hasNext(); ) {
-    String word=(String)iter.next();
+  for (Iterator<String> iter=sentenceTokens.iterator(); iter.hasNext(); ) {
+    String word=iter.next();
     List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
     l.add(new AnalyzedToken(word,null,pos));
     pos+=word.length();
