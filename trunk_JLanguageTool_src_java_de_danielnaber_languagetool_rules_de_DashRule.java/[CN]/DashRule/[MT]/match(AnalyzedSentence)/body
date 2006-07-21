@@ -13,7 +13,8 @@
         char firstChar=token.charAt(0);
         if (Character.isUpperCase(firstChar)) {
           String msg="M??glicherweise fehlt ein 'und' oder es wurde nach dem Wort " + "ein ??berfl??ssiges Leerzeichen eingef??gt.";
-          RuleMatch ruleMatch=new RuleMatch(this,tokens[i - 1].getStartPos(),tokens[i - 1].getStartPos() + prevToken.length(),msg);
+          RuleMatch ruleMatch=new RuleMatch(this,tokens[i - 1].getStartPos(),tokens[i - 1].getStartPos() + prevToken.length() + 1,msg);
+          ruleMatch.setSuggestedReplacement(tokens[i - 1].getToken());
           ruleMatches.add(ruleMatch);
         }
       }
