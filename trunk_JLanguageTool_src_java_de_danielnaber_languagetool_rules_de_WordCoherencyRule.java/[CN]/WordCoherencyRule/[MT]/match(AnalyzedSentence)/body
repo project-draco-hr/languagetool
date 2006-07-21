@@ -8,8 +8,11 @@
     }
  else {
       String origToken=token;
-      String baseform=lemmatizer.getBaseform(token);
-      if (baseform != null)       token=baseform;
+      List<AnalyzedToken> readings=tokens[i].getReadings();
+      if (readings != null && readings.size() > 0) {
+        String baseform=readings.get(0).getLemma();
+        if (baseform != null)         token=baseform;
+      }
       if (shouldNotAppearWord.containsKey(token)) {
         RuleMatch otherMatch=(RuleMatch)shouldNotAppearWord.get(token);
         String otherSpelling=otherMatch.getMessage();
@@ -25,7 +28,7 @@
         shouldNotAppearWord.put(shouldNotAppear,potentialRuleMatch);
       }
     }
-    pos+=token.length();
+    pos+=tokens[i].getToken().length();
   }
   return toRuleMatchArray(ruleMatches);
 }
