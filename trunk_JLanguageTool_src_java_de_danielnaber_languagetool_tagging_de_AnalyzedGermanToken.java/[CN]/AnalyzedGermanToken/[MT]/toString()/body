@@ -1,6 +1,7 @@
 {
+  String typeStr=makeReadableString(type);
   String casusStr=makeReadableString(casus);
   String numerusStr=makeReadableString(numerus);
   String genusStr=makeReadableString(genus);
-  return type + "/" + casusStr+ "/"+ numerusStr+ "/"+ genusStr;
+  return typeStr + "/" + casusStr+ "/"+ numerusStr+ "/"+ genusStr;
 }
