@@ -1,0 +1,17 @@
+{
+  this.verbose=verbose;
+  lt=new JLanguageTool(language,motherTongue);
+  lt.activateDefaultPatternRules();
+  lt.activateDefaultFalseFriendRules();
+  for (int i=0; i < disabledRules.length; i++) {
+    lt.disableRule(disabledRules[i]);
+  }
+  if (enabledRules.length > 0) {
+    Set<String> enabledRuleIDs=new HashSet<String>(Arrays.asList(enabledRules));
+    for (    Rule rule : lt.getAllRules()) {
+      if (!enabledRuleIDs.contains(rule.getId())) {
+        lt.disableRule(rule.getId());
+      }
+    }
+  }
+}

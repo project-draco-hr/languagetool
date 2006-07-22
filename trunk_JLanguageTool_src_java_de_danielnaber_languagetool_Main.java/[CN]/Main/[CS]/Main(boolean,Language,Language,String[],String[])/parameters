@@ -2,3 +2,4 @@ boolean verbose
 Language language
 Language motherTongue
 String[] disabledRules
+String[] enabledRules

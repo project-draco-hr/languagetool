@@ -9,6 +9,7 @@
   String encoding=null;
   String filename=null;
   String[] disabledRules=new String[0];
+  String[] enabledRules=new String[0];
   for (int i=0; i < args.length; i++) {
     if (args[i].equals("-h") || args[i].equals("-help") || args[i].equals("--help")) {
       exitWithUsageMessage();
@@ -20,8 +21,14 @@
       recursive=true;
     }
  else     if (args[i].equals("-d") || args[i].equals("--disable")) {
+      if (enabledRules.length > 0)       throw new IllegalArgumentException("You cannot specifiy both enabled and disabled rules");
       String rules=args[++i];
       disabledRules=rules.split(",");
+    }
+ else     if (args[i].equals("-e") || args[i].equals("--enable")) {
+      if (disabledRules.length > 0)       throw new IllegalArgumentException("You cannot specifiy both enabled and disabled rules");
+      String rules=args[++i];
+      enabledRules=rules.split(",");
     }
  else     if (args[i].equals("-l") || args[i].equals("--language")) {
       language=getLanguageOrExit(args[++i]);
@@ -29,7 +36,7 @@
  else     if (args[i].equals("-m") || args[i].equals("--mothertongue")) {
       motherTongue=getLanguageOrExit(args[++i]);
     }
- else     if (args[i].equals("-e") || args[i].equals("--encoding")) {
+ else     if (args[i].equals("-c") || args[i].equals("--encoding")) {
       encoding=args[++i];
     }
  else {
@@ -43,7 +50,7 @@
     System.err.println("No language specified, using English");
     language=Language.ENGLISH;
   }
-  Main prg=new Main(verbose,language,motherTongue,disabledRules);
+  Main prg=new Main(verbose,language,motherTongue,disabledRules,enabledRules);
   if (recursive) {
     prg.runRecursive(filename,encoding);
   }
