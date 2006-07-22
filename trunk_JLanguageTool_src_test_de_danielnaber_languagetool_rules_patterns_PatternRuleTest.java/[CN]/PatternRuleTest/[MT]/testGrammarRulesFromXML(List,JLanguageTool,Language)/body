@@ -1,0 +1,27 @@
+{
+  for (Iterator iter=rules.iterator(); iter.hasNext(); ) {
+    Rule rule=(Rule)iter.next();
+    List goodSentences=rule.getCorrectExamples();
+    for (Iterator iterator=goodSentences.iterator(); iterator.hasNext(); ) {
+      String goodSentence=(String)iterator.next();
+      goodSentence=cleanXML(goodSentence);
+      assertTrue(goodSentence.trim().length() > 0);
+      assertFalse(lang + ": Did not expect error in: " + goodSentence+ " (ID="+ rule.getId()+ ")",match(rule,goodSentence,languageTool));
+    }
+    List badSentences=rule.getIncorrectExamples();
+    for (Iterator iterator=badSentences.iterator(); iterator.hasNext(); ) {
+      String origBadSentence=(String)iterator.next();
+      int expectedMatchStart=origBadSentence.indexOf("<em>");
+      int expectedMatchEnd=origBadSentence.indexOf("</em>") - 4;
+      if (expectedMatchStart == -1 || expectedMatchEnd == -1) {
+        fail(lang + ": No error position markup ('<em>...</em>') in bad example in rule ID = " + rule.getId());
+      }
+      String badSentence=cleanXML(origBadSentence);
+      assertTrue(badSentence.trim().length() > 0);
+      RuleMatch[] matches=getMatches(rule,badSentence,languageTool);
+      assertTrue(lang + ": Did expect one error in: " + badSentence+ " (ID="+ rule.getId()+ "), got "+ matches.length,matches.length == 1);
+      assertEquals(lang + ": Incorrect match position markup (start) for rule ID = " + rule.getId(),expectedMatchStart,matches[0].getFromPos());
+      assertEquals(lang + ": Incorrect match position markup (end) for rule ID = " + rule.getId(),expectedMatchEnd,matches[0].getToPos());
+    }
+  }
+}
