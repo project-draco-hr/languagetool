@@ -1,0 +1,6 @@
+{
+  this.stringToken=token;
+  this.caseSensitive=caseSensitive;
+  this.stringRegExp=regExp;
+  this.inflected=inflected;
+}

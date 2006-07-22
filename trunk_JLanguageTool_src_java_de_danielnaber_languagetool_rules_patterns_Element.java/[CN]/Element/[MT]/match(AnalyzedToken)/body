@@ -1,4 +1,3 @@
 {
-  if (negation)   return !matchToken(token);
- else   return matchToken(token);
+  return (matchStringToken(token) != negation) && (matchPosToken(token) != posNegation) && !exceptionMatch(token);
 }

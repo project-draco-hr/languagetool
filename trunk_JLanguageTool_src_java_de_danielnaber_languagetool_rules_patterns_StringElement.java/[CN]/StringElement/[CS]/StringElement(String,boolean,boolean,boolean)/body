@@ -1,6 +1,0 @@
-{
-  this.tokens=new String[]{token};
-  this.caseSensitive=caseSensitive;
-  this.regExp=regExp;
-  this.inflected=inflected;
-}

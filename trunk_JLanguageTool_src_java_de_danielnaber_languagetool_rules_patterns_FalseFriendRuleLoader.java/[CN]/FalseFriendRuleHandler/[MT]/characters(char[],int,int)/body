@@ -1,6 +1,9 @@
 {
   String s=new String(buf,offset,len);
-  if (inToken && inPattern) {
+  if (inException) {
+    exceptions.append(s);
+  }
+ else   if (inToken && inPattern) {
     elements.append(s);
   }
  else   if (inCorrectExample) {

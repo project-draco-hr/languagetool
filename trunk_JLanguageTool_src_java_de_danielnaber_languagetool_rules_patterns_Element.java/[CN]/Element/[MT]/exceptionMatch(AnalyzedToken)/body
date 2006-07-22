@@ -1,0 +1,8 @@
+{
+  if (exceptionSet) {
+    return (matchExceptionStringToken(token) != exceptionNegation) && (matchExceptionPosToken(token) != exceptionPosNegation);
+  }
+ else {
+    return false;
+  }
+}

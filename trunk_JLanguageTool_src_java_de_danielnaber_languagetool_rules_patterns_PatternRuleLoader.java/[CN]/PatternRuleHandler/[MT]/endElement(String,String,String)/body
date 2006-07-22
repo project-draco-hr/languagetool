@@ -14,20 +14,40 @@
       elementList.clear();
     }
   }
+ else   if (qName.equals("exception")) {
+    inException=false;
+  }
  else   if (qName.equals("token")) {
-    if (inToken) {
-      StringElement stringElement=new StringElement(elements.toString(),caseSensitive,regExpression,tokenInflected);
-      stringElement.setNegation(tokenNegated);
-      if (skipPos != 0) {
-        stringElement.setSkipNext(skipPos);
-        skipPos=0;
-      }
-      elementList.add(stringElement);
-      tokenNegated=false;
-      tokenInflected=false;
+    Element stringElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
+    stringElement.setNegation(stringNegation);
+    if (skipPos != 0) {
+      stringElement.setSkipNext(skipPos);
+      skipPos=0;
     }
+    if (posToken != null) {
+      stringElement.setPosElement(posToken,posRegExp,posNegation);
+      posToken=null;
+    }
+    if (exceptionSet) {
+      stringElement.setStringException(exceptions.toString(),caseSensitive,exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation);
+      exceptionSet=false;
+    }
+    if (exceptionPosToken != null) {
+      stringElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation);
+      exceptionPosToken=null;
+    }
+    elementList.add(stringElement);
+    stringNegation=false;
+    stringInflected=false;
+    posNegation=false;
+    posRegExp=false;
     inToken=false;
-    regExpression=false;
+    stringRegExp=false;
+    exceptionStringNegation=false;
+    exceptionStringInflected=false;
+    exceptionPosNegation=false;
+    exceptionPosRegExp=false;
+    exceptionStringRegExp=false;
   }
  else   if (qName.equals("pattern")) {
     inPattern=false;

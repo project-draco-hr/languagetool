@@ -1,0 +1,28 @@
+{
+  if (stringToken == null) {
+    return true;
+  }
+  if (stringToken.equals("")) {
+    return true;
+  }
+  String testToken=null;
+  if (inflected)   testToken=token.getLemma();
+ else   testToken=token.getToken();
+  if (caseSensitive) {
+    if (stringRegExp) {
+      if (token.getToken() != null)       if (Pattern.matches(stringToken,testToken))       return true;
+    }
+ else {
+      if (stringToken.equals(testToken))       return true;
+    }
+  }
+ else {
+    if (stringRegExp) {
+      if (testToken != null)       if (Pattern.matches("(?u)".concat(stringToken),testToken))       return true;
+    }
+ else {
+      if (stringToken.equalsIgnoreCase(testToken))       return true;
+    }
+  }
+  return false;
+}

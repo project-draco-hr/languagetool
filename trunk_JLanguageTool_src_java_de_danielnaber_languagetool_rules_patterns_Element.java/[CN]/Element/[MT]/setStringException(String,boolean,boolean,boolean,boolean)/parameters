@@ -1,0 +1,5 @@
+String token
+boolean caseSensitive
+boolean regExp
+boolean inflected
+boolean negation

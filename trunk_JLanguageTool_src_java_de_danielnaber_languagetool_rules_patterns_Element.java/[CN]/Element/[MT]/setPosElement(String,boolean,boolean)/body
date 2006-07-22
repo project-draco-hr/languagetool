@@ -1,0 +1,5 @@
+{
+  this.posToken=posToken;
+  this.posNegation=negation;
+  posRegExp=regExp;
+}

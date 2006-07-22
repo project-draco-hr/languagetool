@@ -1,0 +1,15 @@
+{
+  if (posToken == null) {
+    return true;
+  }
+  boolean match=false;
+  if (!posRegExp) {
+    if (posToken.equals(token.getPOSTag())) {
+      match=true;
+    }
+  }
+ else   if (token.getPOSTag() != null)   if (Pattern.matches(posToken,token.getPOSTag())) {
+    match=true;
+  }
+  return match;
+}
