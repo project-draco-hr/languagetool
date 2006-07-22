@@ -7,7 +7,7 @@
     String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
     if (posToken != null && posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME))     continue;
     if (i == 1) {
-      if (tokens[i].getToken().equalsIgnoreCase("das")) {
+      if (nounIndicators.contains(tokens[i].getToken().toLowerCase())) {
         prevTokenIsDas=true;
       }
       continue;
@@ -20,7 +20,7 @@
     if (analyzedToken.getReadingsLength() > 1 && token.equals(analyzedToken.getAnalyzedToken(0).getLemma())) {
       isBaseform=true;
     }
-    if ((readings == null || analyzedToken.getAnalyzedToken(0).getPOSTag() == null || hasOnlyVerbReadings(analyzedToken)) && isBaseform) {
+    if ((readings == null || analyzedToken.getAnalyzedToken(0).getPOSTag() == null || analyzedToken.hasReadingOfType(GermanToken.POSType.VERB)) && isBaseform) {
       try {
         analyzedGermanToken2=tagger.lookup(token.toLowerCase());
         if (analyzedGermanToken2 != null) {
@@ -48,7 +48,7 @@
         }
       }
     }
-    if (tokens[i].getToken().equalsIgnoreCase("das")) {
+    if (nounIndicators.contains(tokens[i].getToken().toLowerCase())) {
       prevTokenIsDas=true;
     }
  else {
