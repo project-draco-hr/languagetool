@@ -9,6 +9,11 @@
       rule.setIncorrectExamples(incorrectExamples);
       rules.add(rule);
     }
+    if (suggestions.size() > 0) {
+      List<String> l=new ArrayList<String>(suggestions);
+      suggestionMap.put(id,l);
+      suggestions.clear();
+    }
     if (elementList != null) {
       elementList.clear();
     }
@@ -56,6 +61,9 @@
  else   if (qName.equals("translation")) {
     if (currentTranslationLanguage == motherTongue) {
       translations.add(translation);
+    }
+    if (currentTranslationLanguage == textLanguage) {
+      suggestions.add(translation.toString());
     }
     translation=new StringBuilder();
     inTranslation=false;

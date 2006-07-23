@@ -4,5 +4,14 @@
   SAXParser saxParser=factory.newSAXParser();
   saxParser.parse(JLanguageTool.getAbsoluteFile(filename),handler);
   rules=handler.getRules();
+  ResourceBundle messages=ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",motherTongue.getLocale());
+  for (  PatternRule rule : rules) {
+    List<String> sugg=handler.getSuggestionMap().get(rule.getId());
+    if (sugg != null) {
+      MessageFormat msgFormat=new MessageFormat(messages.getString("false_friend_suggestion"));
+      Object[] msg=new Object[]{formatSuggestions(sugg)};
+      rule.setMessage(rule.getMessage() + " " + msgFormat.format(msg));
+    }
+  }
   return rules;
 }
