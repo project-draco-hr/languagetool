@@ -1,0 +1,76 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  AnalyzedTokenReadings[] tokens=text.getTokens();
+  boolean repetition=false;
+  List<String> inflectedWords=new ArrayList<String>();
+  String prevLemma, curLemma;
+  int pos=0;
+  for (int i=0; i < tokens.length; i++) {
+    String token=tokens[i].getToken();
+    if (token.trim().equals("")) {
+    }
+ else {
+      boolean isWord=true;
+      boolean hasLemma=true;
+      if (token.length() == 1) {
+        char c=token.charAt(0);
+        if (!Character.isLetter(c)) {
+          isWord=false;
+        }
+      }
+      for (int k=0; k < tokens[i].getReadingsLength(); k++) {
+        String posTag=tokens[i].getAnalyzedToken(k).getPOSTag();
+        if (posTag != null) {
+          if (posTag.equals("")) {
+            isWord=false;
+            break;
+          }
+          if (Pattern.matches("prep:.*",posTag)) {
+            isWord=false;
+            break;
+          }
+        }
+ else {
+          hasLemma=false;
+        }
+      }
+      if (tokens[i].getToken().equals("nie")) {
+        isWord=false;
+      }
+      prevLemma="";
+      if (isWord) {
+        for (int j=0; j < tokens[i].getReadingsLength(); j++) {
+          if (hasLemma) {
+            curLemma=tokens[i].getAnalyzedToken(j).getLemma();
+            if (!prevLemma.equals(curLemma)) {
+              if (inflectedWords.contains(curLemma)) {
+                repetition=true;
+              }
+ else {
+                inflectedWords.add(tokens[i].getAnalyzedToken(j).getLemma());
+              }
+            }
+            prevLemma=curLemma;
+          }
+ else {
+            if (inflectedWords.contains(tokens[i].getToken())) {
+              repetition=true;
+            }
+ else {
+              inflectedWords.add(tokens[i].getToken());
+            }
+          }
+        }
+      }
+      if (repetition) {
+        String msg="Powt??rzony wyraz w zdaniu";
+        RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),msg);
+        ruleMatch.setSuggestedReplacement(tokens[i].getToken());
+        ruleMatches.add(ruleMatch);
+        repetition=false;
+      }
+    }
+    pos+=token.length();
+  }
+  return toRuleMatchArray(ruleMatches);
+}
