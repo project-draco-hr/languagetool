@@ -1,6 +1,6 @@
 {
   dialog=new JDialog();
-  dialog.setTitle("LanguageTool Options");
+  dialog.setTitle("LanguageTool " + JLanguageTool.VERSION + " Options");
   checkBoxes.clear();
   checkBoxesRuleIds.clear();
   Collections.sort(rules,new AlphabeticComparator());
