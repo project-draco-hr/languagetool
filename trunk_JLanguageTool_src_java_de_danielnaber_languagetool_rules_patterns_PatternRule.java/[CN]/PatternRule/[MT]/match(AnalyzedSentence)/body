@@ -64,6 +64,9 @@
       }
       boolean startsWithUppercase=StringTools.startsWithUppercase(tokens[firstMatchToken + startPositionCorrection].toString());
       RuleMatch ruleMatch=new RuleMatch(this,tokens[firstMatchToken + startPositionCorrection].getStartPos(),tokens[lastMatchToken + endPositionCorrection].getStartPos() + tokens[lastMatchToken + endPositionCorrection].getToken().length(),errMessage,startsWithUppercase);
+      if (i == 1) {
+        ruleMatch.isAtSentenceStart(true);
+      }
       ruleMatches.add(ruleMatch);
     }
  else {
