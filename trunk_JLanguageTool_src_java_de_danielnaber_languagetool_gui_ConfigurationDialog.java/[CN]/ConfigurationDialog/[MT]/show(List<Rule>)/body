@@ -3,6 +3,7 @@
   dialog.setTitle("LanguageTool Options");
   checkBoxes.clear();
   checkBoxesRuleIds.clear();
+  Collections.sort(rules,new AlphabeticComparator());
   KeyStroke stroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
   ActionListener actionListener=new ActionListener(){
     @SuppressWarnings("unused") public void actionPerformed(    ActionEvent actionEvent){
