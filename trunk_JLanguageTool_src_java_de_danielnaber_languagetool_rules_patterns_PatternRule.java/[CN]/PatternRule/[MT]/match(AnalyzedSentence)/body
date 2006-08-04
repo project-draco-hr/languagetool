@@ -8,34 +8,43 @@
   int skipShift=0;
   int firstMatchToken=-1;
   int lastMatchToken=-1;
+  Element elem=null, prevElement=null;
   for (int i=0; i < tokens.length; i++) {
     boolean allElementsMatch=true;
     int matchingTokens=0;
     for (int k=0; k < patternElements.size(); k++) {
-      Element elem=patternElements.get(k);
+      if (elem != null) {
+        prevElement=elem;
+      }
+      elem=patternElements.get(k);
       skipNext=elem.getSkipNext();
       int nextPos=tokenPos + k + skipShift;
       if (nextPos >= tokens.length) {
         allElementsMatch=false;
         break;
       }
-      boolean skipMatch=false;
+      boolean skipMatch=false, exceptionMatched=false;
       if (prevSkipNext + nextPos >= tokens.length || prevSkipNext < 0) {
         prevSkipNext=tokens.length - (nextPos + 1);
       }
       for (int m=nextPos; m <= nextPos + prevSkipNext; m++) {
-        boolean Match=false;
+        boolean matched=false;
         for (int l=0; l < tokens[m].getReadingsLength(); l++) {
           AnalyzedToken matchToken=tokens[m].getAnalyzedToken(l);
+          if (prevSkipNext > 0 && prevElement != null) {
+            if (prevElement.exceptionMatch(matchToken)) {
+              exceptionMatched=true;
+            }
+          }
           if (!elem.match(matchToken)) {
-            Match=Match || false;
+            matched=matched || false;
           }
  else {
-            Match=true;
+            matched=true && !exceptionMatched;
             matchPos=m;
             skipShift=matchPos - nextPos;
           }
-          skipMatch=skipMatch || Match;
+          skipMatch=skipMatch || matched;
         }
         if (skipMatch) {
           break;
