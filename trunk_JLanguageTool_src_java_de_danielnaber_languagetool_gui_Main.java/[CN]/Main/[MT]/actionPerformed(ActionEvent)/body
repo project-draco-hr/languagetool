@@ -1,64 +1,12 @@
 {
-  String langName=langBox.getSelectedItem().toString();
-  Language language=Language.getLanguageforName(langName);
-  ConfigurationDialog configDialog=null;
-  if (configDialogs.containsKey(language)) {
-    configDialog=(ConfigurationDialog)configDialogs.get(language);
-  }
- else {
-    configDialog=new ConfigurationDialog(false);
-    configDialogs.put(language,configDialog);
-  }
-  JLanguageTool langTool;
-  try {
-    langTool=new JLanguageTool(language,configDialog.getMotherTongue());
-    langTool.activateDefaultPatternRules();
-    langTool.activateDefaultFalseFriendRules();
-    Set<String> disabledRules=configDialog.getDisabledRuleIds();
-    if (disabledRules != null) {
-      for (      String ruleId : disabledRules) {
-        langTool.disableRule(ruleId);
-      }
-    }
-  }
- catch (  IOException ioe) {
-    throw new RuntimeException(ioe);
-  }
-catch (  ParserConfigurationException ex) {
-    throw new RuntimeException(ex);
-  }
-catch (  SAXException ex) {
-    throw new RuntimeException(ex);
-  }
   if (e.getActionCommand().equals(OPTIONS_BUTTON)) {
+    JLanguageTool langTool=getCurrentLanguageTool();
     List<Rule> rules=langTool.getAllRules();
+    ConfigurationDialog configDialog=getCurrentConfigDialog();
     configDialog.show(rules);
   }
  else {
-    if (textArea.getText().trim().equals("")) {
-      textArea.setText("Please insert text to check here");
-    }
- else {
-      StringBuilder sb=new StringBuilder();
-      resultArea.setText("Starting check...<br>\n");
-      resultArea.repaint();
-      sb.append("Starting check in " + langName + "...<br>\n");
-      int matches=0;
-      try {
-        matches=checkText(langTool,textArea.getText(),sb);
-      }
- catch (      Exception ex) {
-        sb.append("<br><br><b><font color=\"red\">" + ex.toString() + "<br>");
-        StackTraceElement[] elements=ex.getStackTrace();
-        for (        StackTraceElement element : elements) {
-          sb.append(element + "<br>");
-        }
-        sb.append("</font></b><br>");
-        ex.printStackTrace();
-      }
-      sb.append("Check done. " + matches + " potential problems found<br>\n");
-      resultArea.setText(sb.toString());
-      resultArea.setCaretPosition(0);
-    }
+    JLanguageTool langTool=getCurrentLanguageTool();
+    checkTextAndDisplayResults(langTool,getCurrentLanguage().getName());
   }
 }

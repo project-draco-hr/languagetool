@@ -1,0 +1,25 @@
+{
+  JLanguageTool langTool;
+  try {
+    ConfigurationDialog configDialog=getCurrentConfigDialog();
+    langTool=new JLanguageTool(getCurrentLanguage(),configDialog.getMotherTongue());
+    langTool.activateDefaultPatternRules();
+    langTool.activateDefaultFalseFriendRules();
+    Set<String> disabledRules=configDialog.getDisabledRuleIds();
+    if (disabledRules != null) {
+      for (      String ruleId : disabledRules) {
+        langTool.disableRule(ruleId);
+      }
+    }
+  }
+ catch (  IOException ioe) {
+    throw new RuntimeException(ioe);
+  }
+catch (  ParserConfigurationException ex) {
+    throw new RuntimeException(ex);
+  }
+catch (  SAXException ex) {
+    throw new RuntimeException(ex);
+  }
+  return langTool;
+}

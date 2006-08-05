@@ -1,0 +1,8 @@
+{
+  if (e.getActionCommand().equals(DOCK_TO_TRAY)) {
+    prg.hideToTray();
+  }
+ else   if (e.getActionCommand().equals(QUIT)) {
+    prg.quit();
+  }
+}

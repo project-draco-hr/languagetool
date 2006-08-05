@@ -1,0 +1,11 @@
+{
+  this.prg=prg;
+  JMenuItem dockToTrayItem=new JMenuItem(DOCK_TO_TRAY);
+  dockToTrayItem.addActionListener(this);
+  fileMenu.add(dockToTrayItem);
+  JMenuItem quitTtem=new JMenuItem(QUIT);
+  quitTtem.addActionListener(this);
+  fileMenu.insertSeparator(1);
+  fileMenu.add(quitTtem);
+  add(fileMenu);
+}

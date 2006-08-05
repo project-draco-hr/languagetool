@@ -1,0 +1,13 @@
+{
+  System.err.println("##" + frame.isVisible() + " "+ frame.isShowing());
+  if (frame.isVisible() && frame.isActive()) {
+    frame.setVisible(false);
+  }
+ else   if (frame.isVisible() && !frame.isActive()) {
+    frame.toFront();
+    restoreFromTray();
+  }
+ else {
+    restoreFromTray();
+  }
+}
