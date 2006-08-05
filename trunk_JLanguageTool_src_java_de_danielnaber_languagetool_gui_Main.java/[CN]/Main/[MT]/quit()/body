@@ -1,3 +1,7 @@
 {
+  if (trayIcon != null) {
+    SystemTray tray=SystemTray.getDefaultSystemTray();
+    tray.removeTrayIcon(trayIcon);
+  }
   frame.setVisible(false);
 }

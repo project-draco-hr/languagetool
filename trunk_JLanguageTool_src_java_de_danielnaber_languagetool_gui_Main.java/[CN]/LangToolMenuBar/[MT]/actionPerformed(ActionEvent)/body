@@ -5,4 +5,7 @@
  else   if (e.getActionCommand().equals(QUIT)) {
     prg.quit();
   }
+ else   if (e.getActionCommand().equals(ABOUT)) {
+    JOptionPane.showMessageDialog(null,"LanguageTool " + JLanguageTool.VERSION + "\n"+ "Copyright (C) 2005-2006 Daniel Naber\n"+ "This software is licensed under the GNU Lesser General Public License.\n"+ "LanguageTool Homepage: http://www.danielnaber.de/languagetool");
+  }
 }

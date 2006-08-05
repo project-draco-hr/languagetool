@@ -9,6 +9,7 @@
     s=(String)(data.getTransferData(DataFlavor.stringFlavor));
   }
  catch (  Exception ex) {
+    ex.printStackTrace();
     s=data.toString();
   }
   frame.setVisible(true);
