@@ -46,10 +46,11 @@
   cons.weighty=10.0f;
   cons.gridx=0;
   cons.gridy=0;
-  contentPane.add(new JScrollPane(textArea),cons);
   cons.gridy=1;
   cons.weighty=5.0f;
-  contentPane.add(new JScrollPane(resultArea),cons);
+  JSplitPane splitPane=new JSplitPane(JSplitPane.VERTICAL_SPLIT,new JScrollPane(textArea),new JScrollPane(resultArea));
+  splitPane.setDividerLocation(200);
+  contentPane.add(splitPane,cons);
   cons.fill=GridBagConstraints.NONE;
   cons.gridx=0;
   cons.gridy=2;
