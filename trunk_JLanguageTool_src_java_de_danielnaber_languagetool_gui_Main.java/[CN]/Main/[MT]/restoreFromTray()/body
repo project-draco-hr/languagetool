@@ -6,7 +6,9 @@
   String s=null;
   Transferable data=clipboard.getContents(this);
   try {
-    s=(String)(data.getTransferData(DataFlavor.stringFlavor));
+    DataFlavor df=DataFlavor.getTextPlainUnicodeFlavor();
+    Reader sr=df.getReaderForText(data);
+    s=StringTools.readerToString(sr);
   }
  catch (  Exception ex) {
     ex.printStackTrace();
