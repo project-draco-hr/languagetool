@@ -1,6 +1,6 @@
 {
   if (trayIcon == null) {
-    trayIcon=new TrayIcon(new ImageIcon("resource/TrayIcon.png"));
+    trayIcon=new TrayIcon(SYSTEM_TRAY_ICON);
     SystemTray tray=SystemTray.getDefaultSystemTray();
     trayIcon.addActionListener(new TrayActionListener());
     tray.addTrayIcon(trayIcon);
