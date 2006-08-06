@@ -1,9 +1,25 @@
 {
   final Main prg=new Main();
-  javax.swing.SwingUtilities.invokeLater(new Runnable(){
-    public void run(){
-      prg.createAndShowGUI();
+  if (args.length == 1 && (args[0].equals("-t") || args[0].equals("--tray"))) {
+    javax.swing.SwingUtilities.invokeLater(new Runnable(){
+      public void run(){
+        prg.createGUI();
+        prg.hideToTray();
+      }
     }
-  }
 );
+  }
+ else   if (args.length >= 1) {
+    System.out.println("Usage: java de.danielnaber.languagetool.gui.Main [-t|--tray]");
+    System.out.println("  -t|--tray: dock LanguageTool to tray on startup");
+  }
+ else {
+    javax.swing.SwingUtilities.invokeLater(new Runnable(){
+      public void run(){
+        prg.createGUI();
+        prg.showGUI();
+      }
+    }
+);
+  }
 }

@@ -61,5 +61,4 @@
   contentPane.add(panel,cons);
   frame.pack();
   frame.setSize(600,600);
-  frame.setVisible(true);
 }
