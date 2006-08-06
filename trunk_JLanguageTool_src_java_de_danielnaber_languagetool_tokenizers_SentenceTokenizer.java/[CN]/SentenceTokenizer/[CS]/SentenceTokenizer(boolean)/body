@@ -1,0 +1,7 @@
+{
+  if (lineBreakParagraphs)   paragraph=paragraphByLineBreak;
+ else   paragraph=paragraphByTwoLineBreaks;
+  for (int i=0; i < ABBREV_LIST.length; i++) {
+    abbreviations.add(ABBREV_LIST[i]);
+  }
+}
