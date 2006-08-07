@@ -1,14 +1,13 @@
 {
   frame=new JFrame("LanguageTool " + JLanguageTool.VERSION + " Demo");
   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  frame.setIconImage(new ImageIcon(WINDOW_ICON_URL).getImage());
   frame.setJMenuBar(new MainMenuBar(this));
   textArea=new JTextArea("This is a example input to to show you how JLanguageTool works. " + "Note, however, that it does not include a spell checka.");
   textArea.setLineWrap(true);
   textArea.setWrapStyleWord(true);
   resultArea=new JTextPane();
   resultArea.setContentType("text/html");
-  resultArea.setText(HTML_FONT_START + "Results will appear here" + HTML_FONT_END);
+  resultArea.setText("Results will appear here");
   JLabel label=new JLabel("Please type or paste text to check in the top area");
   JButton button=new JButton("Check text");
   button.setMnemonic('c');
