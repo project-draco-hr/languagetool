@@ -21,7 +21,7 @@
       ex.printStackTrace();
     }
     sb.append("Check done. " + matches + " potential problems found<br>\n");
-    resultArea.setText(sb.toString());
+    resultArea.setText(HTML_FONT_START + sb.toString() + HTML_FONT_END);
     resultArea.setCaretPosition(0);
   }
 }
