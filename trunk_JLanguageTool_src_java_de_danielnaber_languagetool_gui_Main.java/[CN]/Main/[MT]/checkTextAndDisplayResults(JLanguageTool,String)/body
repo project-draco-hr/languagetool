@@ -4,7 +4,7 @@
   }
  else {
     StringBuilder sb=new StringBuilder();
-    resultArea.setText("Starting check...<br>\n");
+    resultArea.setText(HTML_FONT_START + "Starting check in " + langName+ "...<br>\n"+ HTML_FONT_END);
     resultArea.repaint();
     sb.append("Starting check in " + langName + "...<br>\n");
     int matches=0;
