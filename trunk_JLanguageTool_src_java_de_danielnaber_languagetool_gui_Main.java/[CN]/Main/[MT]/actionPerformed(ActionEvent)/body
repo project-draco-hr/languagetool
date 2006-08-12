@@ -3,4 +3,7 @@
     JLanguageTool langTool=getCurrentLanguageTool();
     checkTextAndDisplayResults(langTool,getCurrentLanguage().getName());
   }
+ else {
+    throw new IllegalArgumentException("Unknown action " + e);
+  }
 }

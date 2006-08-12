@@ -1,0 +1,4 @@
+{
+  if (f.getName().toLowerCase().endsWith(".txt"))   return true;
+  return false;
+}

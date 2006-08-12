@@ -1,5 +1,8 @@
 {
   this.prg=prg;
+  JMenuItem openItem=new JMenuItem(OPEN);
+  openItem.addActionListener(this);
+  fileMenu.add(openItem);
   JMenuItem dockToTrayItem=new JMenuItem(DOCK_TO_TRAY);
   dockToTrayItem.addActionListener(this);
   fileMenu.add(dockToTrayItem);
