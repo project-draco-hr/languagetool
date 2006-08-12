@@ -1,0 +1,6 @@
+{
+  JLanguageTool langTool=getCurrentLanguageTool();
+  List<Rule> rules=langTool.getAllRules();
+  ConfigurationDialog configDialog=getCurrentConfigDialog();
+  configDialog.show(rules);
+}

@@ -10,12 +10,9 @@
   resultArea.setContentType("text/html");
   resultArea.setText(HTML_FONT_START + "Results will appear here" + HTML_FONT_END);
   JLabel label=new JLabel("Please type or paste text to check in the top area");
-  JButton button=new JButton("Check text");
+  JButton button=new JButton(CHECK_TEXT_BUTTON);
   button.setMnemonic('c');
   button.addActionListener(this);
-  JButton configButton=new JButton(OPTIONS_BUTTON);
-  configButton.setMnemonic('o');
-  configButton.addActionListener(this);
   JPanel panel=new JPanel();
   panel.setLayout(new GridBagLayout());
   GridBagConstraints buttonCons=new GridBagConstraints();
@@ -34,10 +31,6 @@
     }
   }
   panel.add(langBox,buttonCons);
-  buttonCons.gridx=3;
-  buttonCons.gridy=0;
-  buttonCons.insets=new Insets(0,10,0,0);
-  panel.add(configButton,buttonCons);
   Container contentPane=frame.getContentPane();
   GridBagLayout gridLayout=new GridBagLayout();
   contentPane.setLayout(gridLayout);

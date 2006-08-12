@@ -1,11 +1,5 @@
 {
-  if (e.getActionCommand().equals(OPTIONS_BUTTON)) {
-    JLanguageTool langTool=getCurrentLanguageTool();
-    List<Rule> rules=langTool.getAllRules();
-    ConfigurationDialog configDialog=getCurrentConfigDialog();
-    configDialog.show(rules);
-  }
- else {
+  if (e.getActionCommand().equals(CHECK_TEXT_BUTTON)) {
     JLanguageTool langTool=getCurrentLanguageTool();
     checkTextAndDisplayResults(langTool,getCurrentLanguage().getName());
   }
