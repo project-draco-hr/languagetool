@@ -1,0 +1,5 @@
+{
+  if (priority < 0 || priority > 100)   throw new IllegalArgumentException("priority must be in range 0 - 100");
+  this.name=name;
+  this.priority=priority;
+}
