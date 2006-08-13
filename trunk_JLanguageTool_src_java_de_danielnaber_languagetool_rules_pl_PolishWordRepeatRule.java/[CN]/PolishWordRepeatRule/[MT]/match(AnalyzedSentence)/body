@@ -25,6 +25,11 @@
             isWord=false;
             break;
           }
+          String lemma=tokens[i].getAnalyzedToken(k).getLemma();
+          if (Pattern.matches("to",lemma)) {
+            isWord=false;
+            break;
+          }
           if (Pattern.matches("prep:.*",posTag)) {
             isWord=false;
             break;
