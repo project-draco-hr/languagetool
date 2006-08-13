@@ -4,7 +4,7 @@
       formatter.applyPattern(messages.getString("false_friend_hint"));
       Object[] messageArguments={elements.toString().replace('|','/'),messages.getString(textLanguage.getShortName()),formatTranslations(translations),messages.getString(motherTongue.getShortName())};
       String description=formatter.format(messageArguments);
-      PatternRule rule=new PatternRule(id,language,elementList,messages.getString("false_friend_desc") + " " + pattern.toString(),description);
+      PatternRule rule=new PatternRule(id,language,elementList,messages.getString("false_friend_desc") + " " + elements.toString().replace('|','/'),description);
       rule.setCorrectExamples(correctExamples);
       rule.setIncorrectExamples(incorrectExamples);
       rules.add(rule);

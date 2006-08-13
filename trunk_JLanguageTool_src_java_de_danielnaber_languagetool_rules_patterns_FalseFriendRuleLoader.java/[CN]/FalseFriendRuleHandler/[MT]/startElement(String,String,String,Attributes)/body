@@ -7,7 +7,6 @@
     incorrectExamples=new ArrayList<String>();
   }
  else   if (qName.equals("pattern")) {
-    pattern=new StringBuffer();
     inPattern=true;
     String languageStr=attrs.getValue("lang");
     language=Language.getLanguageforShortName(languageStr);

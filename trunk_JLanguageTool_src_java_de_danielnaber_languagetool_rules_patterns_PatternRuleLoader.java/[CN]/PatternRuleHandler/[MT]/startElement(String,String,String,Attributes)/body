@@ -22,7 +22,6 @@
     incorrectExamples=new ArrayList<String>();
   }
  else   if (qName.equals("pattern")) {
-    pattern=new StringBuffer();
     inPattern=true;
     if (attrs.getValue("mark_from") != null)     startPositionCorrection=Integer.parseInt(attrs.getValue("mark_from"));
     if (attrs.getValue("mark_to") != null)     endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
