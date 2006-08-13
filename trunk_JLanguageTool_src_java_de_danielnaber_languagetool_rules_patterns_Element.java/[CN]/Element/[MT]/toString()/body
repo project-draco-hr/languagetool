@@ -2,5 +2,7 @@
   if (posToken != null) {
     return stringToken.concat("/").concat(posToken);
   }
- else   return stringToken;
+ else {
+    return stringToken;
+  }
 }

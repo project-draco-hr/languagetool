@@ -8,8 +8,10 @@
       match=true;
     }
   }
- else   if (token.getPOSTag() != null)   if (Pattern.matches(posToken,token.getPOSTag())) {
-    match=true;
+ else   if (token.getPOSTag() != null) {
+    if (Pattern.matches(posToken,token.getPOSTag())) {
+      match=true;
+    }
   }
   return match;
 }
