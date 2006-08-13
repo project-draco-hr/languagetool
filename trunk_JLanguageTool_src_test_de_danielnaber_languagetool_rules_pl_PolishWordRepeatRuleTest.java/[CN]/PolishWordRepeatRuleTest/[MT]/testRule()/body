@@ -1,5 +1,5 @@
 {
-  PolishWordRepeatRule rule=new PolishWordRepeatRule();
+  PolishWordRepeatRule rule=new PolishWordRepeatRule(null);
   RuleMatch[] matches;
   JLanguageTool langTool=new JLanguageTool(Language.POLISH);
   matches=rule.match(langTool.getAnalyzedSentence("To jest zdanie pr??bne."));

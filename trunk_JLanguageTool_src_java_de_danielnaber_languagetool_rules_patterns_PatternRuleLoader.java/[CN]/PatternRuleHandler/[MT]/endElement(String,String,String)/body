@@ -8,6 +8,7 @@
     rule.setCorrectExamples(correctExamples);
     rule.setIncorrectExamples(incorrectExamples);
     rule.setCaseSensitive(caseSensitive);
+    rule.setCategory(category);
     caseSensitive=false;
     rules.add(rule);
     if (elementList != null) {

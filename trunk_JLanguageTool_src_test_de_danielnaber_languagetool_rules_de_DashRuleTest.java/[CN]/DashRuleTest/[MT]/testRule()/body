@@ -1,5 +1,5 @@
 {
-  DashRule rule=new DashRule();
+  DashRule rule=new DashRule(null);
   JLanguageTool langTool=new JLanguageTool(Language.GERMAN);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die gro??e Di??ten-Erh??hung kam dann doch.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die gro??e Di??tenerh??hung kam dann doch.")).length);

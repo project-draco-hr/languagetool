@@ -1,0 +1,5 @@
+{
+  boolean hasCat=r1.getCategory() != null && r2.getCategory() != null;
+  if (hasCat)   return r1.getCategory().getName().compareTo(r2.getCategory().getName());
+ else   return r1.getDescription().compareToIgnoreCase(r2.getDescription());
+}

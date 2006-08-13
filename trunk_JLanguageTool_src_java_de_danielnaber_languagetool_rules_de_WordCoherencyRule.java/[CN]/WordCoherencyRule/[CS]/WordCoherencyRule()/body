@@ -1,3 +1,0 @@
-{
-  relevantWords=loadWords(JLanguageTool.getAbsoluteFile(FILE_NAME));
-}
