@@ -1,2 +1,3 @@
 {
+  config=new Configuration(new File(System.getProperty("user.home")),CONFIG_FILE);
 }

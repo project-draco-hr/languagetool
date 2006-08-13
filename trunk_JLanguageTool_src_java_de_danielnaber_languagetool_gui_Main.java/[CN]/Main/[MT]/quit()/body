@@ -1,4 +1,10 @@
 {
+  try {
+    config.saveConfiguration();
+  }
+ catch (  IOException e) {
+    showError(e);
+  }
   if (trayIcon != null) {
     SystemTray tray=SystemTray.getDefaultSystemTray();
     tray.removeTrayIcon(trayIcon);

@@ -3,4 +3,6 @@
   List<Rule> rules=langTool.getAllRules();
   ConfigurationDialog configDialog=getCurrentConfigDialog();
   configDialog.show(rules);
+  config.setDisabledRuleIds(configDialog.getDisabledRuleIds());
+  config.setMotherTongue(configDialog.getMotherTongue());
 }

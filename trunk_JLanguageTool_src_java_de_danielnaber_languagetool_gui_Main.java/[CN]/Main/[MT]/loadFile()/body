@@ -11,7 +11,6 @@
     checkTextAndDisplayResults(langTool,getCurrentLanguage().getName());
   }
  catch (  IOException e) {
-    JOptionPane.showMessageDialog(null,e.toString());
-    e.printStackTrace();
+    showError(e);
   }
 }
