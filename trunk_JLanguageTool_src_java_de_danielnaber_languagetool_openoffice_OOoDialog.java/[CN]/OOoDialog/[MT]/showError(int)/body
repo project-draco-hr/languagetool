@@ -21,10 +21,13 @@
     XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,xController);
     int errorLength=currentRuleMatch.getToPos() - currentRuleMatch.getFromPos();
     if (xViewCursor == null) {
+      XTextCursor cursor=xTextDoc.getText().createTextCursor();
+      cursor.gotoStart(false);
+      cursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
+      cursor.goRight((short)errorLength,true);
       XTextViewCursor tmpxViewCursor=xViewCursorSupplier.getViewCursor();
-      tmpxViewCursor.gotoStart(false);
-      tmpxViewCursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
-      tmpxViewCursor.goRight((short)errorLength,true);
+      tmpxViewCursor.gotoRange(cursor.getStart(),false);
+      tmpxViewCursor.gotoRange(cursor.getEnd(),true);
     }
  else {
       if (startTextRange == null) {
