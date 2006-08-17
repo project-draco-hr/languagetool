@@ -26,11 +26,11 @@
             break;
           }
           String lemma=tokens[i].getAnalyzedToken(k).getLemma();
-          if (Pattern.matches("to",lemma)) {
+          if (Pattern.matches("to|siebie|by??",lemma)) {
             isWord=false;
             break;
           }
-          if (Pattern.matches("prep:.*",posTag)) {
+          if (Pattern.matches("prep:.*|ppron.*",posTag)) {
             isWord=false;
             break;
           }
