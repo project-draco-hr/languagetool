@@ -10,4 +10,5 @@
     tray.removeTrayIcon(trayIcon);
   }
   frame.setVisible(false);
+  System.exit(0);
 }
