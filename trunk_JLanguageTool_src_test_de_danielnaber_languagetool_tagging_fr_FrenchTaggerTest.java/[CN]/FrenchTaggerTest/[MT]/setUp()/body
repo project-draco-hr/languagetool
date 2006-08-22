@@ -1,0 +1,4 @@
+{
+  tagger=new FrenchTagger();
+  tokenizer=new WordTokenizer();
+}

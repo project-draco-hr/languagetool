@@ -1,0 +1,14 @@
+{
+  try {
+    URL url=new URL(resourcePath);
+    InputStream is=url.openStream();
+    return is;
+  }
+ catch (  MalformedURLException e) {
+  }
+  File f=new File(resourcePath);
+  if (f.exists() && f.isFile() && f.canRead()) {
+    return new FileInputStream(f);
+  }
+ else   throw new IOException("Could not open input stream from URL/ resource/ file: " + resourcePath);
+}
