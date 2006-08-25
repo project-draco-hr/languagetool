@@ -1,0 +1,4 @@
+{
+  tagger=new SpanishTagger();
+  tokenizer=new WordTokenizer();
+}
