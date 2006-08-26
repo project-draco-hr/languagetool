@@ -3,16 +3,16 @@
   boolean firstWord=true;
   List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
-  if (morfologik == null) {
+  if (morfologik_spanish == null) {
     File resourceFile=JLanguageTool.getAbsoluteFile(RESOURCE_FILENAME);
-    morfologik=new Lametyzator(JLanguageTool.getInputStream(resourceFile.getAbsolutePath()),"iso8859-1",'+');
+    morfologik_spanish=new Lametyzator(JLanguageTool.getInputStream(resourceFile.getAbsolutePath()),"iso8859-1",'+');
   }
   for (Iterator<String> iter=sentenceTokens.iterator(); iter.hasNext(); ) {
     String word=iter.next();
     List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
-    taggerTokens=morfologik.stemAndForm(word);
+    taggerTokens=morfologik_spanish.stemAndForm(word);
     if (firstWord && taggerTokens == null) {
-      taggerTokens=morfologik.stemAndForm(word.toLowerCase());
+      taggerTokens=morfologik_spanish.stemAndForm(word.toLowerCase());
       firstWord=false;
     }
     if (taggerTokens != null) {
