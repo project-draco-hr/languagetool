@@ -26,7 +26,7 @@
             break;
           }
           String lemma=tokens[i].getAnalyzedToken(k).getLemma();
-          if (Pattern.matches("to|siebie|by??",lemma)) {
+          if (Pattern.matches("to|siebie|by??|ani|albo|czy|b??d??",lemma)) {
             isWord=false;
             break;
           }
