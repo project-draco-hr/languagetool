@@ -6,7 +6,10 @@
     return true;
   }
   String testToken=null;
-  if (exceptionInflected)   testToken=token.getLemma();
+  if (exceptionInflected) {
+    testToken=token.getLemma();
+    if (testToken == null)     testToken=token.getToken();
+  }
  else   testToken=token.getToken();
   if (caseSensitive) {
     if (exceptionRegExp) {
