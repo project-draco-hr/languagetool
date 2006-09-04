@@ -4,6 +4,7 @@
   }
   boolean verbose=false;
   boolean recursive=false;
+  boolean singleLineBreakMarksParagraph=false;
   Language language=null;
   Language motherTongue=null;
   String encoding=null;
@@ -39,6 +40,9 @@
  else     if (args[i].equals("-c") || args[i].equals("--encoding")) {
       encoding=args[++i];
     }
+ else     if (args[i].equals("-b")) {
+      singleLineBreakMarksParagraph=true;
+    }
  else {
       filename=args[i];
     }
@@ -50,6 +54,7 @@
     System.err.println("No language specified, using English");
     language=Language.ENGLISH;
   }
+  language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(singleLineBreakMarksParagraph);
   Main prg=new Main(verbose,language,motherTongue,disabledRules,enabledRules);
   if (recursive) {
     prg.runRecursive(filename,encoding);
