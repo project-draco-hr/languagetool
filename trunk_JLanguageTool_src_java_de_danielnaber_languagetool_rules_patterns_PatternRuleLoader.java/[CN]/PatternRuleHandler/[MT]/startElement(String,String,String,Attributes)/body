@@ -60,10 +60,12 @@
   }
  else   if (qName.equals("exception")) {
     inException=true;
-    exceptionSet=true;
     exceptions=new StringBuffer();
     if (attrs.getValue("negate") != null) {
       exceptionStringNegation=attrs.getValue("negate").equals("yes");
+    }
+    if (attrs.getValue("scope") != null) {
+      exceptionValidNext=attrs.getValue("scope").equals("next");
     }
     if (attrs.getValue("inflected") != null) {
       exceptionStringInflected=attrs.getValue("inflected").equals("yes");

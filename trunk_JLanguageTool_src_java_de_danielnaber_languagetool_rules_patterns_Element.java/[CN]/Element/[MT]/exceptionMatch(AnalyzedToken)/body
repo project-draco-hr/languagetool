@@ -1,8 +1,13 @@
 {
+  boolean exceptionMatched=false;
   if (exceptionSet) {
-    return (matchExceptionStringToken(token) != exceptionNegation) && (matchExceptionPosToken(token) != exceptionPosNegation);
+    Iterator<Element> it=exceptionList.iterator();
+    while (it.hasNext()) {
+      exceptionMatched=exceptionMatched || it.next().match(token);
+      if (exceptionMatched) {
+        break;
+      }
+    }
   }
- else {
-    return false;
-  }
+  return exceptionMatched;
 }

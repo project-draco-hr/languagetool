@@ -17,10 +17,27 @@
   }
  else   if (qName.equals("exception")) {
     inException=false;
+    if (!exceptionSet) {
+      stringElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
+      exceptionSet=true;
+    }
+    stringElement.setNegation(stringNegation);
+    if (!exceptions.toString().equals("")) {
+      stringElement.setStringException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext);
+    }
+    if (exceptionPosToken != null) {
+      stringElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext);
+      exceptionPosToken=null;
+    }
   }
  else   if (qName.equals("token")) {
-    Element stringElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
-    stringElement.setNegation(stringNegation);
+    if (!exceptionSet || stringElement == null) {
+      stringElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
+      stringElement.setNegation(stringNegation);
+    }
+ else {
+      stringElement.setStringElement(elements.toString());
+    }
     if (skipPos != 0) {
       stringElement.setSkipNext(skipPos);
       skipPos=0;
@@ -28,14 +45,6 @@
     if (posToken != null) {
       stringElement.setPosElement(posToken,posRegExp,posNegation);
       posToken=null;
-    }
-    if (exceptionSet) {
-      stringElement.setStringException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation);
-      exceptionSet=false;
-    }
-    if (exceptionPosToken != null) {
-      stringElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation);
-      exceptionPosToken=null;
     }
     elementList.add(stringElement);
     stringNegation=false;
@@ -49,6 +58,8 @@
     exceptionPosNegation=false;
     exceptionPosRegExp=false;
     exceptionStringRegExp=false;
+    exceptionValidNext=true;
+    exceptionSet=false;
   }
  else   if (qName.equals("pattern")) {
     inPattern=false;

@@ -20,11 +20,28 @@
   }
  else   if (qName.equals("exception")) {
     inException=false;
+    if (!exceptionSet) {
+      stringElement=new Element(elements.toString(),caseSensitive,regExpression,tokenInflected);
+      exceptionSet=true;
+    }
+    stringElement.setNegation(tokenNegated);
+    if (!exceptions.toString().equals("")) {
+      stringElement.setStringException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext);
+    }
+    if (exceptionPosToken != null) {
+      stringElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext);
+      exceptionPosToken=null;
+    }
   }
  else   if (qName.equals("token")) {
     if (inToken) {
-      Element stringElement=new Element(elements.toString(),caseSensitive,regExpression,tokenInflected);
-      stringElement.setNegation(tokenNegated);
+      if (!exceptionSet || stringElement == null) {
+        stringElement=new Element(elements.toString(),caseSensitive,regExpression,tokenInflected);
+        stringElement.setNegation(tokenNegated);
+      }
+ else {
+        stringElement.setStringElement(elements.toString());
+      }
       if (skipPos != 0) {
         stringElement.setSkipNext(skipPos);
         skipPos=0;
@@ -33,19 +50,12 @@
         stringElement.setPosElement(posToken,regular,posNegation);
         posToken=null;
       }
-      if (exceptionSet) {
-        stringElement.setStringException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation);
-        exceptionSet=false;
-      }
-      if (exceptionPosToken != null) {
-        stringElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation);
-        exceptionPosToken=null;
-      }
       elementList.add(stringElement);
       tokenNegated=false;
       tokenInflected=false;
       posNegation=false;
       regular=false;
+      exceptionValidNext=true;
     }
     inToken=false;
     regExpression=false;

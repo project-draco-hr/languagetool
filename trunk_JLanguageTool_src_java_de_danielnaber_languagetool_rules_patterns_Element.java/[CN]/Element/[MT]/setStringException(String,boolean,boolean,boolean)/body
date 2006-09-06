@@ -1,7 +1,0 @@
-{
-  exceptionStringToken=token;
-  exceptionRegExp=regExp;
-  exceptionInflected=inflected;
-  exceptionNegation=negation;
-  exceptionSet=true;
-}

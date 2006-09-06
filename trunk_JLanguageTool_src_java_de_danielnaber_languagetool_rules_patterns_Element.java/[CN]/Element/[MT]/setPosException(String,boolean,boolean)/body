@@ -1,6 +1,0 @@
-{
-  exceptionPosToken=posToken;
-  exceptionPosNegation=negation;
-  exceptionPosRegExp=regExp;
-  exceptionSet=true;
-}

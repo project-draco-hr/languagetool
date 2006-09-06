@@ -32,7 +32,7 @@
         for (int l=0; l < tokens[m].getReadingsLength(); l++) {
           AnalyzedToken matchToken=tokens[m].getAnalyzedToken(l);
           if (prevSkipNext > 0 && prevElement != null) {
-            if (prevElement.exceptionMatch(matchToken)) {
+            if (prevElement.exceptionMatch(matchToken) && prevElement.exceptionValid()) {
               exceptionMatched=true;
             }
           }
