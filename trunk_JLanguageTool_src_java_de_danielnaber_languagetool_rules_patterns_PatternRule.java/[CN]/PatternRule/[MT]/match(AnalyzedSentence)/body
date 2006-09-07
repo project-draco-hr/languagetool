@@ -23,7 +23,8 @@
         allElementsMatch=false;
         break;
       }
-      boolean skipMatch=false, exceptionMatched=false;
+      boolean skipMatch=false, thisMatched=false, prevMatched=false;
+      boolean exceptionMatched=false;
       if (prevSkipNext + nextPos >= tokens.length || prevSkipNext < 0) {
         prevSkipNext=tokens.length - (nextPos + 1);
       }
@@ -32,12 +33,14 @@
         for (int l=0; l < tokens[m].getReadingsLength(); l++) {
           AnalyzedToken matchToken=tokens[m].getAnalyzedToken(l);
           if (prevSkipNext > 0 && prevElement != null) {
-            if (prevElement.exceptionMatch(matchToken) && prevElement.exceptionValid()) {
+            if (prevElement.prevExceptionMatch(matchToken)) {
               exceptionMatched=true;
+              prevMatched=true;
             }
           }
+          thisMatched=thisMatched || elem.match(matchToken);
           exceptionMatched=exceptionMatched || elem.exceptionMatch(matchToken);
-          if (!(elem.match(matchToken) && !exceptionMatched)) {
+          if (!thisMatched && !exceptionMatched) {
             matched=matched || false;
           }
  else {
@@ -47,9 +50,15 @@
           }
           skipMatch=(skipMatch || matched) && !exceptionMatched;
         }
+        if (!thisMatched && !prevMatched) {
+          exceptionMatched=false;
+        }
         if (skipMatch) {
           break;
         }
+      }
+      if (!thisMatched && !prevMatched) {
+        skipMatch=false;
       }
       allElementsMatch=skipMatch;
       if (skipMatch) {

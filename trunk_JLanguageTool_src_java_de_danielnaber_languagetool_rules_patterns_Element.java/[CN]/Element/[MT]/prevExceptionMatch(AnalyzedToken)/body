@@ -4,7 +4,9 @@
     Iterator<Element> it=exceptionList.iterator();
     while (it.hasNext()) {
       Element testException=it.next();
-      exceptionMatched=exceptionMatched || testException.match(token);
+      if (testException.exceptionValidNext) {
+        exceptionMatched=exceptionMatched || testException.match(token);
+      }
       if (exceptionMatched) {
         break;
       }
