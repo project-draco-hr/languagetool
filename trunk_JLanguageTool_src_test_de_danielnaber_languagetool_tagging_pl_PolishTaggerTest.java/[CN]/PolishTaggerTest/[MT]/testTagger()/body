@@ -1,5 +1,5 @@
 {
   myAssert("To jest du??y dom.","To/conj jest/verb:fin:sg:ter:imperf du??y/adj:sg:nom:m dom/subst:sg:nom.acc:m3");
-  myAssert("Krowa pasie si?? na pastwisku.","Krowa/subst:sg:nom:f pasie/subst:sg:loc.voc:m3 si??/qub na/prep:loc pastwisku/subst:sg:dat:n+subst:sg:loc:n");
+  myAssert("Krowa pasie si?? na pastwisku.","Krowa/subst:sg:nom:f pasie/subst:sg:loc.voc:m3 si??/qub na/prep:acc.loc pastwisku/subst:sg:dat:n+subst:sg:loc:n");
   myAssert("blablabla","blablabla/null");
 }
