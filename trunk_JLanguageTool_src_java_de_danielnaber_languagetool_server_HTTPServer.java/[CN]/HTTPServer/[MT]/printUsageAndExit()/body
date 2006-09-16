@@ -1,0 +1,4 @@
+{
+  System.out.println("Usage: HTTPServer [-p|--port port]");
+  System.exit(1);
+}

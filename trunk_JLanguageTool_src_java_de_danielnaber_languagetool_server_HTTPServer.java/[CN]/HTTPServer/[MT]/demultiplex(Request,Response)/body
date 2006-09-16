@@ -1,0 +1,31 @@
+{
+  try {
+    if ("".equals(connRequest.getLocation())) {
+      connResponse.setStatus(403);
+      throw new RuntimeException("Error: Access to " + connRequest.getLocation() + " denied");
+    }
+    if (allowedIPs.contains(connRequest.getIPAddressString())) {
+      String langParam=connRequest.getParamOrNull("language");
+      if (langParam == null)       throw new IllegalArgumentException("Missing 'language' parameter");
+      Language lang=Language.getLanguageForShortName(langParam);
+      if (lang == null)       throw new IllegalArgumentException("Unknown language '" + langParam + "'");
+      JLanguageTool lt=new JLanguageTool(lang);
+      lt.activateDefaultPatternRules();
+      lt.activateDefaultFalseFriendRules();
+      String text=connRequest.getParam("text");
+      System.out.println("Checking text with length " + text.length());
+      List<RuleMatch> matches=lt.check(text);
+      connResponse.setHeaderLine(ProtocolResponseHeader.Content_Type,"text/xml");
+      return StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE);
+    }
+ else {
+      connResponse.setStatus(403);
+      throw new RuntimeException("Error: Access from " + connRequest.getIPAddressString() + " denied");
+    }
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    connResponse.setStatus(500);
+    return "Error: " + e.toString();
+  }
+}

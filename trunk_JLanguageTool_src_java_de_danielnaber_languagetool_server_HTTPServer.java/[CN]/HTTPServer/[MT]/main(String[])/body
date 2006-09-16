@@ -1,0 +1,12 @@
+{
+  if (args.length == 1 || args.length > 2) {
+    printUsageAndExit();
+  }
+  int port=DEFAULT_PORT;
+  if (args.length == 2) {
+    if ("-p".equals(args[0]) || "--port".equals(args[0]))     port=Integer.parseInt(args[1]);
+ else     printUsageAndExit();
+  }
+  HTTPServer server=new HTTPServer(port);
+  server.run();
+}

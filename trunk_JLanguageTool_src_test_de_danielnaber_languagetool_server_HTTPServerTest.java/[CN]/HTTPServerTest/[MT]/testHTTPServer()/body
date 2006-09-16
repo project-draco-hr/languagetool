@@ -1,0 +1,15 @@
+{
+  HTTPServer server=new HTTPServer();
+  try {
+    server.run();
+    assertEquals("<matches>\n</matches>\n",check(Language.GERMAN,""));
+    assertEquals("<matches>\n</matches>\n",check(Language.GERMAN,"Ein kleiner test"));
+    assertTrue(check(Language.GERMAN,"ein kleiner test").indexOf("UPPERCASE_SENTENCE_START") != -1);
+    String result=check(Language.GERMAN,"ein kleiner test. Und wieder Erwarten noch was.");
+    assertTrue(result.indexOf("UPPERCASE_SENTENCE_START") != -1);
+    assertTrue(result.indexOf("WIEDER_WILLEN") != -1);
+  }
+  finally {
+    server.stop();
+  }
+}
