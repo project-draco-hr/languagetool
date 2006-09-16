@@ -12,7 +12,8 @@
       JLanguageTool lt=new JLanguageTool(lang);
       lt.activateDefaultPatternRules();
       lt.activateDefaultFalseFriendRules();
-      String text=connRequest.getParam("text");
+      String text=connRequest.getParamOrNull("text");
+      if (text == null)       throw new IllegalArgumentException("Missing 'text' parameter");
       System.out.println("Checking text with length " + text.length());
       List<RuleMatch> matches=lt.check(text);
       connResponse.setHeaderLine(ProtocolResponseHeader.Content_Type,"text/xml");
