@@ -1,0 +1,7 @@
+{
+  boolean isSE=false;
+  if (ATreadings[0].posTag != null) {
+    isSE=ATreadings[0].posTag.equals(JLanguageTool.SENTENCE_START_TAGNAME);
+  }
+  return isSE;
+}
