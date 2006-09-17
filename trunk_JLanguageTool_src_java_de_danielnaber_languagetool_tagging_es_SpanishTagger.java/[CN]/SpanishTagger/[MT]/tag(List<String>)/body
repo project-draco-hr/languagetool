@@ -5,7 +5,7 @@
   int pos=0;
   if (morfologik_spanish == null) {
     File resourceFile=JLanguageTool.getAbsoluteFile(RESOURCE_FILENAME);
-    morfologik_spanish=new Lametyzator(JLanguageTool.getInputStream(resourceFile.getAbsolutePath()),"iso8859-1",'+');
+    morfologik_spanish=new Lametyzator(Tools.getInputStream(resourceFile.getAbsolutePath()),"iso8859-1",'+');
   }
   for (Iterator<String> iter=sentenceTokens.iterator(); iter.hasNext(); ) {
     String word=iter.next();
