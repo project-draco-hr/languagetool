@@ -1,7 +1,7 @@
 {
-  s=s.replaceAll("&","&amp;");
-  s=s.replaceAll("<","&lt;");
-  s=s.replaceAll(">","&gt;");
-  s=s.replaceAll("\"","&quot;");
+  s=s.replace("&","&amp;");
+  s=s.replace("<","&lt;");
+  s=s.replace(">","&gt;");
+  s=s.replace("\"","&quot;");
   return s;
 }

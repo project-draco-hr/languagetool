@@ -11,20 +11,21 @@
     if (testToken == null)     testToken=token.getToken();
   }
  else   testToken=token.getToken();
-  if (caseSensitive) {
-    if (stringRegExp) {
-      if (token.getToken() != null)       if (Pattern.matches(stringToken,testToken))       return true;
+  String regToken=stringToken;
+  if (!caseSensitive) {
+    regToken="(?u)".concat(stringToken);
+  }
+  if (!stringRegExp) {
+    if (caseSensitive) {
+      return stringToken.equals(testToken);
     }
  else {
-      if (stringToken.equals(testToken))       return true;
+      return stringToken.equalsIgnoreCase(testToken);
     }
   }
  else {
-    if (stringRegExp) {
-      if (testToken != null)       if (Pattern.matches("(?u)".concat(stringToken),testToken))       return true;
-    }
- else {
-      if (stringToken.equalsIgnoreCase(testToken))       return true;
+    if (token.getToken() != null) {
+      return Pattern.matches(regToken,testToken);
     }
   }
   return false;

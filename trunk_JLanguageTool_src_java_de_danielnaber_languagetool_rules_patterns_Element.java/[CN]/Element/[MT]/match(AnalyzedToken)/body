@@ -1,3 +1,10 @@
 {
+  boolean testString=true;
+  if (stringToken == null) {
+    testString=false;
+  }
+  if (stringToken.equals("")) {
+    testString=false;
+  }
   return (matchStringToken(token) != negation) && (matchPosToken(token) != posNegation);
 }
