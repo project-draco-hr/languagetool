@@ -1,0 +1,8 @@
+{
+  ConfigurationDialog dlg=new ConfigurationDialog(false);
+  List<Rule> rules=new ArrayList<Rule>();
+  JLanguageTool lt=new JLanguageTool(Language.ENGLISH);
+  lt.activateDefaultPatternRules();
+  rules.addAll(lt.getAllRules());
+  dlg.show(rules);
+}

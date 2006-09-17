@@ -15,6 +15,14 @@
     if (motherTongueStr != null) {
       motherTongue=Language.getLanguageForShortName(motherTongueStr);
     }
+    String runServerString=(String)props.get(SERVER_RUN_CONFIG_KEY);
+    if (runServerString != null) {
+      runServer=runServerString.equals("true");
+    }
+    String serverPortString=(String)props.get(SERVER_PORT_CONFIG_KEY);
+    if (serverPortString != null) {
+      serverPort=Integer.parseInt(serverPortString);
+    }
   }
  catch (  FileNotFoundException e) {
   }

@@ -5,4 +5,8 @@
   configDialog.show(rules);
   config.setDisabledRuleIds(configDialog.getDisabledRuleIds());
   config.setMotherTongue(configDialog.getMotherTongue());
+  config.setRunServer(configDialog.getRunServer());
+  config.setServerPort(configDialog.getServerPort());
+  stopServer();
+  maybeStartServer();
 }

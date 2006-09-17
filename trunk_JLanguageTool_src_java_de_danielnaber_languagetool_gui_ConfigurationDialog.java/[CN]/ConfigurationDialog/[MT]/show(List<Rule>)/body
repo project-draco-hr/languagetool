@@ -43,18 +43,42 @@
     }
     prevID=rule.getId();
   }
+  JPanel motherTonguePanel=new JPanel();
+  motherTonguePanel.add(new JLabel("Your mother tongue: "),cons);
+  motherTongueBox=new JComboBox(getPossibleMotherTongues());
+  if (motherTongue != null)   motherTongueBox.setSelectedItem(motherTongue);
+  motherTonguePanel.add(motherTongueBox,cons);
+  JPanel portPanel=new JPanel();
+  portPanel.setLayout(new GridBagLayout());
+  serverCheckbox=new JCheckBox("Run as server on port");
+  serverCheckbox.setSelected(serverMode);
+  cons=new GridBagConstraints();
+  cons.insets=new Insets(0,4,0,0);
+  cons.gridx=0;
+  cons.gridy=0;
+  cons.anchor=GridBagConstraints.WEST;
+  cons.fill=GridBagConstraints.NONE;
+  cons.weightx=0.0f;
+  portPanel.add(serverCheckbox,cons);
+  serverPortField=new JTextField(serverPort + "");
+  serverPortField.setEnabled(serverCheckbox.isSelected());
+  serverPortField.setMinimumSize(new Dimension(200,15));
+  cons.gridx=1;
+  serverCheckbox.addActionListener(new ActionListener(){
+    public void actionPerformed(    @SuppressWarnings("unused") ActionEvent e){
+      serverPortField.setEnabled(serverCheckbox.isSelected());
+    }
+  }
+);
+  portPanel.add(serverPortField,cons);
   JPanel buttonPanel=new JPanel();
   buttonPanel.setLayout(new GridBagLayout());
   JButton okButton=new JButton(OK_BUTTON);
   okButton.addActionListener(this);
   JButton cancelButton=new JButton(CANCEL_BUTTON);
   cancelButton.addActionListener(this);
-  motherTongueBox=new JComboBox(getPossibleMotherTongues());
-  if (motherTongue != null)   motherTongueBox.setSelectedItem(motherTongue);
   cons=new GridBagConstraints();
   cons.insets=new Insets(0,4,0,0);
-  buttonPanel.add(new JLabel("Your mother tongue: "),cons);
-  buttonPanel.add(motherTongueBox,cons);
   buttonPanel.add(okButton,cons);
   buttonPanel.add(cancelButton,cons);
   Container contentPane=dialog.getContentPane();
@@ -69,6 +93,20 @@
   contentPane.add(new JScrollPane(checkBoxPanel),cons);
   cons.gridx=0;
   cons.gridy=1;
+  cons.weightx=0.0f;
+  cons.weighty=0.0f;
+  cons.fill=GridBagConstraints.NONE;
+  cons.anchor=GridBagConstraints.WEST;
+  contentPane.add(motherTonguePanel,cons);
+  cons.gridx=0;
+  cons.gridy=2;
+  cons.weightx=0.0f;
+  cons.weighty=0.0f;
+  cons.fill=GridBagConstraints.NONE;
+  cons.anchor=GridBagConstraints.WEST;
+  contentPane.add(portPanel,cons);
+  cons.gridx=0;
+  cons.gridy=3;
   cons.weightx=0.0f;
   cons.weighty=0.0f;
   cons.fill=GridBagConstraints.NONE;

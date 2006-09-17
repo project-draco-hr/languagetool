@@ -1,0 +1,6 @@
+{
+  if (config.getRunServer()) {
+    httpServer=new HTTPServer(config.getServerPort());
+    httpServer.run();
+  }
+}
