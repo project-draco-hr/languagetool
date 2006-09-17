@@ -44,10 +44,10 @@
   testSplit(new String[]{"He won't say no.","Not really."});
   testSplit(new String[]{"He won't say No.","Not really."});
   testSplit(new String[]{"This is it: a test."});
-  testSplit(new String[]{"He won't\n\n","Really."},stokenizer2);
-  testSplit(new String[]{"He won't\n","Really."},stokenizer);
-  testSplit(new String[]{"He won't\n\n","Really."},stokenizer2);
-  testSplit(new String[]{"He won't\nReally."},stokenizer2);
+  TestTools.testSplit(new String[]{"He won't\n\n","Really."},stokenizer2);
+  TestTools.testSplit(new String[]{"He won't\n","Really."},stokenizer);
+  TestTools.testSplit(new String[]{"He won't\n\n","Really."},stokenizer2);
+  TestTools.testSplit(new String[]{"He won't\nReally."},stokenizer2);
   testSplit(new String[]{"James is from the Ireland!","He lives in Spain now."});
   testSplit(new String[]{"Ks. Jankowski jest prof. teologii."});
   testSplit(new String[]{"To wydarzy??o si?? w 1939 r. To by?? burzliwy rok."});

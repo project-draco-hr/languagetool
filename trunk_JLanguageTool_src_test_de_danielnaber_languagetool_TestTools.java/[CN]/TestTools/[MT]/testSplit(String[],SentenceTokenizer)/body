@@ -8,5 +8,5 @@
     String s=(String)iter.next();
     inputString.append(s);
   }
-  assertEquals(input,stokenizer.tokenize(inputString.toString()));
+  TestCase.assertEquals(input,stokenizer.tokenize(inputString.toString()));
 }

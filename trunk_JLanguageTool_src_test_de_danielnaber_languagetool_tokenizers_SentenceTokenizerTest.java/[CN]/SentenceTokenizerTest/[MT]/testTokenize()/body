@@ -60,10 +60,10 @@
   testSplit(new String[]{"They met at 5 p.m. on Thursday."});
   testSplit(new String[]{"They met at 5 p.m. ","It was Thursday."});
   testSplit(new String[]{"This is it: a test."});
-  testSplit(new String[]{"He won't\n\n","Really."},stokenizer2);
-  testSplit(new String[]{"He won't\n","Really."},stokenizer);
-  testSplit(new String[]{"He won't\n\n","Really."},stokenizer2);
-  testSplit(new String[]{"He won't\nReally."},stokenizer2);
+  TestTools.testSplit(new String[]{"He won't\n\n","Really."},stokenizer2);
+  TestTools.testSplit(new String[]{"He won't\n","Really."},stokenizer);
+  TestTools.testSplit(new String[]{"He won't\n\n","Really."},stokenizer2);
+  TestTools.testSplit(new String[]{"He won't\nReally."},stokenizer2);
   testSplit(new String[]{"James is from the Ireland!","He lives in Spain now."});
   testSplit(new String[]{"Jones Bros. have built a succesful company."});
 }
