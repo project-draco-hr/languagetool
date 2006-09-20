@@ -4,14 +4,11 @@
   }
   boolean match=false;
   if (!posRegExp) {
-    if (posToken.equals(token.getPOSTag())) {
-      match=true;
-    }
+    match=posToken.equals(token.getPOSTag());
   }
  else   if (token.getPOSTag() != null) {
-    if (Pattern.matches(posToken,token.getPOSTag())) {
-      match=true;
-    }
+    Matcher m=pPos.matcher(token.getPOSTag());
+    match=m.matches();
   }
   return match;
 }

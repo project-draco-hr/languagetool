@@ -2,4 +2,7 @@
   this.posToken=posToken;
   this.posNegation=negation;
   posRegExp=regExp;
+  if (posRegExp) {
+    pPos=Pattern.compile(posToken);
+  }
 }

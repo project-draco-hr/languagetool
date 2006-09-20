@@ -1,3 +1,10 @@
 {
   this.stringToken=token;
+  if (!stringToken.equals("") && stringRegExp) {
+    regToken=stringToken;
+    if (!caseSensitive) {
+      regToken="(?u)".concat(stringToken);
+    }
+    p=Pattern.compile(regToken);
+  }
 }

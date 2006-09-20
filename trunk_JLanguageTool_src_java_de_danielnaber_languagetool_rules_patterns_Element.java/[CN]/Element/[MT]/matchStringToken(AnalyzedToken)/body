@@ -11,10 +11,6 @@
     if (testToken == null)     testToken=token.getToken();
   }
  else   testToken=token.getToken();
-  String regToken=stringToken;
-  if (!caseSensitive) {
-    regToken="(?u)".concat(stringToken);
-  }
   if (!stringRegExp) {
     if (caseSensitive) {
       return stringToken.equals(testToken);
@@ -25,7 +21,9 @@
   }
  else {
     if (token.getToken() != null) {
-      Pattern p=Pattern.compile(regToken);
+      if (p == null) {
+        p=Pattern.compile(regToken);
+      }
       Matcher m=p.matcher(testToken);
       return m.matches();
     }
