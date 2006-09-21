@@ -10,12 +10,14 @@
     startContent=0;
   }
   int endContent=toPos + contextSize;
-  if (endContent > fileContents.length()) {
+  int fileLen=fileContents.length();
+  if (endContent > fileLen) {
     postfix="";
-    endContent=fileContents.length();
+    endContent=fileLen;
   }
   StringBuilder marker=new StringBuilder();
-  for (int i=0; i < fileContents.length() + prefix.length(); i++) {
+  int totalLen=fileLen + prefix.length();
+  for (int i=0; i < totalLen; i++) {
     if (i >= fromPos && i < toPos)     marker.append("^");
  else     marker.append(" ");
   }
