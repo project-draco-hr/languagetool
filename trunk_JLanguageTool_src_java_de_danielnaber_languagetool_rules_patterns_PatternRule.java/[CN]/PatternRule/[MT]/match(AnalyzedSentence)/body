@@ -17,6 +17,10 @@
       allElementsMatch=false;
       break;
     }
+    if (startWithSentStart && i > 0) {
+      allElementsMatch=false;
+      break;
+    }
     int matchingTokens=0;
     for (int k=0; (k < patternSize); k++) {
       if (elem != null) {
@@ -26,10 +30,6 @@
       skipNext=elem.getSkipNext();
       int nextPos=tokenPos + k + skipShift;
       if (nextPos >= tokens.length) {
-        allElementsMatch=false;
-        break;
-      }
-      if (startWithSentStart && matchingTokens == 0 && i > 0) {
         allElementsMatch=false;
         break;
       }
@@ -50,7 +50,7 @@
             }
           }
           thisMatched|=elem.match(matchToken);
-          exceptionMatched=exceptionMatched || elem.exceptionMatch(matchToken);
+          exceptionMatched|=elem.exceptionMatch(matchToken);
           if (!thisMatched && !exceptionMatched) {
             matched|=false;
           }
