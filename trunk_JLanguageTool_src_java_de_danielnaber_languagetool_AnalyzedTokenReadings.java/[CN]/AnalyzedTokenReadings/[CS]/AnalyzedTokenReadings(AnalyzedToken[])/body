@@ -1,5 +1,5 @@
 {
-  ATreadings=r;
-  token=ATreadings[0].getToken();
-  this.startPos=ATreadings[0].getStartPos();
+  anTokReadings=r;
+  token=anTokReadings[0].getToken();
+  this.startPos=anTokReadings[0].getStartPos();
 }

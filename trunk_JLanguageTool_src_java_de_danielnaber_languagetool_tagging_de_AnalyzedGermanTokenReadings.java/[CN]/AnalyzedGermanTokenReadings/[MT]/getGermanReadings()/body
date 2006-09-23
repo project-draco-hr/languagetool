@@ -1,7 +1,7 @@
 {
   List<AnalyzedGermanToken> l=new ArrayList<AnalyzedGermanToken>();
-  for (int i=0; i < ATreadings.length; i++) {
-    l.add((AnalyzedGermanToken)ATreadings[i]);
+  for (int i=0; i < anTokReadings.length; i++) {
+    l.add((AnalyzedGermanToken)anTokReadings[i]);
   }
   return l;
 }

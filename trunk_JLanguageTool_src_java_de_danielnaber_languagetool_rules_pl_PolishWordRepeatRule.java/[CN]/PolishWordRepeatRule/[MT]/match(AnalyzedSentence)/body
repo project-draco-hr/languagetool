@@ -5,11 +5,12 @@
   List<String> inflectedWords=new ArrayList<String>();
   String prevLemma, curLemma;
   int pos=0;
+  Pattern pExc1=Pattern.compile("to|siebie|by??|ani|albo|lub|czy|b??d??|jako|z??|coraz|bardzo|ten|jak|mln|tys|sw??j|m??j|tw??j|nasz|wasz|i");
+  Pattern pExc2=Pattern.compile("prep:.*|ppron.*");
+  Pattern pExc3=Pattern.compile("nie|&quot|&gt|&lt|&amp|[0-9].*|M*(D?C{0,3}|C[DM])(L?X{0,3}|X[LC])(V?I{0,3}|I[VX])$");
   for (int i=0; i < tokens.length; i++) {
     String token=tokens[i].getToken();
-    if (token.trim().equals("")) {
-    }
- else {
+    if (!token.trim().equals("")) {
       boolean isWord=true;
       boolean hasLemma=true;
       if (token.length() == 1) {
@@ -18,7 +19,8 @@
           isWord=false;
         }
       }
-      for (int k=0; k < tokens[i].getReadingsLength(); k++) {
+      int readingsLen=tokens[i].getReadingsLength();
+      for (int k=0; k < readingsLen; k++) {
         String posTag=tokens[i].getAnalyzedToken(k).getPOSTag();
         if (posTag != null) {
           if (posTag.equals("")) {
@@ -26,11 +28,13 @@
             break;
           }
           String lemma=tokens[i].getAnalyzedToken(k).getLemma();
-          if (Pattern.matches("to|siebie|by??|ani|albo|lub|czy|b??d??|jako|z??|coraz|bardzo|ten|jak|mln|tys|sw??j|m??j|tw??j|nasz|wasz|i",lemma)) {
+          Matcher m1=pExc1.matcher(lemma);
+          if (m1.matches()) {
             isWord=false;
             break;
           }
-          if (Pattern.matches("prep:.*|ppron.*",posTag)) {
+          Matcher m2=pExc2.matcher(posTag);
+          if (m2.matches()) {
             isWord=false;
             break;
           }
@@ -39,12 +43,13 @@
           hasLemma=false;
         }
       }
-      if (Pattern.matches("nie|&quot|&gt|&lt|&amp|[0-9].*|M*(D?C{0,3}|C[DM])(L?X{0,3}|X[LC])(V?I{0,3}|I[VX])$",tokens[i].getToken())) {
+      Matcher m1=pExc3.matcher(tokens[i].getToken());
+      if (m1.matches()) {
         isWord=false;
       }
       prevLemma="";
       if (isWord) {
-        for (int j=0; j < tokens[i].getReadingsLength(); j++) {
+        for (int j=0; j < readingsLen; j++) {
           if (hasLemma) {
             curLemma=tokens[i].getAnalyzedToken(j).getLemma();
             if (!prevLemma.equals(curLemma)) {
