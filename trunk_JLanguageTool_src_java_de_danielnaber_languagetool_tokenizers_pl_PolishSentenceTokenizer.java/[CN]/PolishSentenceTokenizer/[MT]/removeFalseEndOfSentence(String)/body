@@ -4,10 +4,8 @@
   s=abbrev3.matcher(s).replaceAll("$1");
   s=abbrev4.matcher(s).replaceAll("$1$2");
   s=abbrev5.matcher(s).replaceAll("$1");
-  for (  String abbrev : abbreviations) {
-    Pattern pattern=Pattern.compile("(?u)(\\b" + abbrev + PAP+ "\\s)"+ EOS);
-    s=pattern.matcher(s).replaceAll("$1");
-  }
+  Pattern pattern=Pattern.compile("(?u)(\\b(" + abbrev_list + ")"+ PAP+ "\\s)"+ EOS);
+  s=pattern.matcher(s).replaceAll("$1");
   s=abbrev6.matcher(s).replaceAll("$1$2");
   s=abbrev7.matcher(s).replaceAll("$1");
   s=abbrev8.matcher(s).replaceAll("$1");
