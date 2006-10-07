@@ -15,6 +15,7 @@
         checkedParagraphs.add(new CheckedParagraph(paraCount,ruleMatches));
       }
       paraCount++;
+      progressInfo.setProgress(paraCount);
     }
     done=true;
   }

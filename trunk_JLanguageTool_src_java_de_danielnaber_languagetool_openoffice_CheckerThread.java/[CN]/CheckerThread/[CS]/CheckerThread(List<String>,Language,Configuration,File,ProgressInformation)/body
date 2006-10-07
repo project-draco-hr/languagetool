@@ -3,4 +3,6 @@
   this.docLanguage=docLanguage;
   this.config=config;
   this.baseDir=baseDir;
+  this.progressInfo=progressInfo;
+  progressInfo.setMaxProgress(paragraphs.size());
 }
