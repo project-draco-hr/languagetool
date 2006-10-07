@@ -1,8 +1,7 @@
 {
   this.rules=rules;
   this.xTextDoc=xTextDoc;
-  this.ruleMatches=ruleMatches;
-  this.text=text;
+  this.checkedParagraphs=checkedParagraphs;
   this.configuration=configuration;
   this.xViewCursor=xViewCursor;
 }

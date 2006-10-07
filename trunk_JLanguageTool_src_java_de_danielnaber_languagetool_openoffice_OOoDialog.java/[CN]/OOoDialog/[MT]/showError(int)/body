@@ -1,18 +1,38 @@
 {
-  RuleMatch match=(RuleMatch)ruleMatches.get(i);
+  System.err.println("show err " + i);
+  RuleMatch match=null;
+  int count=0;
+  int paragraphNumber=-1;
+  for (  CheckedParagraph checkedParagraph : checkedParagraphs) {
+    for (    RuleMatch ruleMatch : checkedParagraph.getRuleMatches()) {
+      if (count >= i && !rulesToIgnore.contains(ruleMatch.getRule().getId())) {
+        match=ruleMatch;
+        paragraphNumber=checkedParagraph.getParagraphNumber();
+        break;
+      }
+      count++;
+    }
+    if (match != null) {
+      break;
+    }
+  }
+  if (match == null || paragraphNumber == -1) {
+    complete();
+    return;
+  }
   currentRuleMatch=match;
-  currentRuleMatchPos=i;
+  currentRuleMatchPos=count;
   String msg=match.getMessage();
   msg=msg.replaceAll("<suggestion>","<b>");
   msg=msg.replaceAll("</suggestion>","</b>");
   StringBuilder sb=new StringBuilder();
-  if (ruleMatches.size() == 1)   sb.append(ruleMatches.size() + " match in total");
- else   sb.append(ruleMatches.size() + " matches in total");
+  int totalMatches=getTotalRuleMatches();
+  if (totalMatches == 1)   sb.append(totalMatches + " match in total");
+ else   sb.append(totalMatches + " matches in total");
   sb.append("<br>\n<br>\n<b>" + (i + 1) + ".</b> ");
   sb.append("<b>Match:</b> ");
   sb.append(msg);
   sb.append("<br>\n");
-  contextArea.setText(FONT_TAG + Tools.getContext(match.getFromPos(),match.getToPos(),text));
   messageArea.setText(FONT_TAG + sb.toString());
   setSuggestions();
   if (xTextDoc != null) {
@@ -22,12 +42,30 @@
     int errorLength=currentRuleMatch.getToPos() - currentRuleMatch.getFromPos();
     if (xViewCursor == null) {
       XTextCursor cursor=xTextDoc.getText().createTextCursor();
-      cursor.gotoStart(false);
-      cursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
-      cursor.goRight((short)errorLength,true);
-      XTextViewCursor tmpxViewCursor=xViewCursorSupplier.getViewCursor();
-      tmpxViewCursor.gotoRange(cursor.getStart(),false);
-      tmpxViewCursor.gotoRange(cursor.getEnd(),true);
+      XParagraphCursor xParagraphCursor=(XParagraphCursor)UnoRuntime.queryInterface(XParagraphCursor.class,cursor);
+      boolean hasNextParagraph=true;
+      boolean foundError=false;
+      int paraCount=0;
+      while (hasNextParagraph) {
+        if (paraCount == paragraphNumber) {
+          if (paragraphNumber != prevMatchParagraph)           replacementCorrection=0;
+          xParagraphCursor.gotoStartOfParagraph(false);
+          xParagraphCursor.gotoEndOfParagraph(true);
+          contextArea.setText(FONT_TAG + Tools.getContext(match.getFromPos() - replacementCorrection,match.getToPos() - replacementCorrection,xParagraphCursor.getString(),CONTEXT_SIZE));
+          xParagraphCursor.gotoStartOfParagraph(true);
+          xParagraphCursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
+          xParagraphCursor.goRight((short)errorLength,true);
+          myViewCursor=xViewCursorSupplier.getViewCursor();
+          myViewCursor.gotoRange(xParagraphCursor.getStart(),false);
+          myViewCursor.gotoRange(xParagraphCursor.getEnd(),true);
+          prevMatchParagraph=paragraphNumber;
+          foundError=true;
+          break;
+        }
+        hasNextParagraph=xParagraphCursor.gotoNextParagraph(false);
+        paraCount++;
+      }
+      if (!foundError)       throw new IllegalStateException("No position found in text that should be marked (paragraph=" + paragraphNumber + ")");
     }
  else {
       if (startTextRange == null) {

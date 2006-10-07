@@ -1,4 +1,4 @@
-String text
+List<String> paragraphs
 Language docLanguage
 Configuration config
 File baseDir

@@ -1,5 +1,5 @@
 {
-  if (ruleMatches.size() == 0) {
+  if (checkedParagraphs.size() == 0) {
     JOptionPane.showMessageDialog(null,COMPLETE_TEXT);
     return;
   }
@@ -68,6 +68,7 @@
   cons.weightx=1.0f;
   cons.weighty=1.0f;
   cons.gridheight=1;
+  suggestionList.addMouseListener(new DoubleClickListener());
   cons.gridx=1;
   cons.gridy=4;
   cons.gridwidth=1;

@@ -1,4 +1,4 @@
 {
-  OOoDialog dialog=new OOoDialog(configuration,rules,xTextDoc,ruleMatches,text,xViewCursor);
+  OOoDialog dialog=new OOoDialog(configuration,rules,xTextDoc,checkedParagraphs,xViewCursor);
   dialog.show();
 }

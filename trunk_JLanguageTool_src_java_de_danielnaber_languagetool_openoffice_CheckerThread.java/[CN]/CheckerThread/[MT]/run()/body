@@ -8,7 +8,14 @@
         langTool.disableRule(id);
       }
     }
-    ruleMatches=langTool.check(text);
+    int paraCount=0;
+    for (    String para : paragraphs) {
+      List<RuleMatch> ruleMatches=langTool.check(para);
+      if (ruleMatches.size() > 0) {
+        checkedParagraphs.add(new CheckedParagraph(paraCount,ruleMatches));
+      }
+      paraCount++;
+    }
     done=true;
   }
  catch (  Exception e) {

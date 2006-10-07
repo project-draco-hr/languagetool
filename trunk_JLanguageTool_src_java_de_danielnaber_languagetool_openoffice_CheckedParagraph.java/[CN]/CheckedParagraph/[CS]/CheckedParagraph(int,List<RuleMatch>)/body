@@ -1,0 +1,4 @@
+{
+  this.paraNumber=paraNumber;
+  this.ruleMatches=ruleMatches;
+}

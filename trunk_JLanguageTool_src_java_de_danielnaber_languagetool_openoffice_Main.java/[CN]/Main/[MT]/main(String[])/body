@@ -1,5 +1,7 @@
 {
   _Main m=new _Main();
-  TextToCheck ttc=new TextToCheck("This is an test, don't berate yourself.",false);
+  List<String> paras=new ArrayList<String>();
+  paras.add("This is an test, don't berate yourself.");
+  TextToCheck ttc=new TextToCheck(paras,false);
   m.checkText(ttc);
 }

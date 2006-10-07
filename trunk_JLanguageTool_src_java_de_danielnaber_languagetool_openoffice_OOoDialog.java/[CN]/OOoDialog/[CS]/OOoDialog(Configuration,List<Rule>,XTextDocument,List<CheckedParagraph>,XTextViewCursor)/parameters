@@ -1,6 +1,5 @@
 Configuration configuration
 List<Rule> rules
 XTextDocument xTextDoc
-List<RuleMatch> ruleMatches
-String text
+List<CheckedParagraph> checkedParagraphs
 XTextViewCursor xViewCursor

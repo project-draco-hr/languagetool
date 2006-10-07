@@ -1,16 +1,3 @@
 {
-  int i=0;
-  List<RuleMatch> filteredRuleMatches=new ArrayList<RuleMatch>();
-  for (  RuleMatch ruleMatch : ruleMatches) {
-    if (i <= currentRuleMatchPos) {
-      filteredRuleMatches.add(ruleMatch);
-      i++;
-      continue;
-    }
-    if (!ruleMatch.getRule().getId().equals(currentRuleMatch.getRule().getId())) {
-      filteredRuleMatches.add(ruleMatch);
-    }
-    i++;
-  }
-  ruleMatches=filteredRuleMatches;
+  rulesToIgnore.add(currentRuleMatch.getRule().getId());
 }

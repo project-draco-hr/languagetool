@@ -1,24 +1,40 @@
 {
-  XModel xModel=(XModel)UnoRuntime.queryInterface(XModel.class,xTextDoc);
-  if (xModel == null) {
-    DialogThread dt=new DialogThread("Sorry, only text documents are supported");
-    dt.start();
-    return null;
+  com.sun.star.container.XEnumerationAccess xParaAccess=(com.sun.star.container.XEnumerationAccess)UnoRuntime.queryInterface(com.sun.star.container.XEnumerationAccess.class,xTextDoc.getText());
+  if (xParaAccess == null) {
+    System.err.println("xParaAccess == null");
+    return new TextToCheck(new ArrayList<String>(),false);
   }
-  XController xController=xModel.getCurrentController();
-  XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,xController);
-  xViewCursor=xViewCursorSupplier.getViewCursor();
-  String textToCheck=xViewCursor.getString();
-  boolean selection=true;
-  if (textToCheck.equals("")) {
-    selection=false;
-    XText text=xTextDoc.getText();
-    textToCheck=text.getString();
-    if (textToCheck.equals("")) {
-      JOptionPane.showMessageDialog(null,"No text to check. Please note that documents > 64 KB are not yet supported","Error",JOptionPane.ERROR_MESSAGE);
+  List<String> paragraphs=new ArrayList<String>();
+  try {
+    for (com.sun.star.container.XEnumeration xParaEnum=xParaAccess.createEnumeration(); xParaEnum.hasMoreElements(); ) {
+      Object para=null;
+      para=xParaEnum.nextElement();
+      if (para == null) {
+        continue;
+      }
+      com.sun.star.container.XEnumerationAccess xPortionAccess=(com.sun.star.container.XEnumerationAccess)UnoRuntime.queryInterface(com.sun.star.container.XEnumerationAccess.class,para);
+      if (xPortionAccess == null) {
+        System.err.println("xPortionAccess is null");
+        continue;
+      }
+      StringBuilder sb=new StringBuilder();
+      for (XEnumeration portionEnum=xPortionAccess.createEnumeration(); portionEnum.hasMoreElements(); ) {
+        Object textPortion=portionEnum.nextElement();
+        XPropertySet textProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,textPortion);
+        String type=(String)textProps.getPropertyValue("TextPortionType");
+        XTextRange xtr=(XTextRange)UnoRuntime.queryInterface(XTextRange.class,textPortion);
+        if ("Footnote".equals(type)) {
+          sb.append("1");
+        }
+ else {
+          sb.append(xtr.getString());
+        }
+      }
+      paragraphs.add(sb.toString());
     }
-    xViewCursor=null;
   }
-  textToCheck=textToCheck.replaceAll("\r\n","\n");
-  return new TextToCheck(textToCheck,selection);
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return new TextToCheck(paragraphs,false);
 }
