@@ -1,6 +1,5 @@
 {
-  String[] taggerTokens;
-  boolean firstWord=true;
+  String[] taggerTokens=null;
   List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
@@ -10,19 +9,43 @@
   for (Iterator<String> iter=sentenceTokens.iterator(); iter.hasNext(); ) {
     String word=iter.next();
     List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
-    taggerTokens=morfologik.stemAndForm(word);
-    if (firstWord && taggerTokens == null) {
-      taggerTokens=morfologik.stemAndForm(word.toLowerCase());
-      firstWord=false;
-    }
-    if (taggerTokens != null) {
-      int i=0;
-      while (i < taggerTokens.length) {
-        l.add(new AnalyzedToken(word,taggerTokens[i + 1],taggerTokens[i]));
-        i=i + 2;
+    boolean added=false;
+    for (int turn=0; turn < 2; turn++) {
+      String wordToTest=word;
+      boolean caseSens=false;
+      if (!word.equals(word.toLowerCase())) {
+        caseSens=true;
+        if (turn != 0) {
+          wordToTest=word.toLowerCase();
+        }
+        taggerTokens=morfologik.stemAndForm(wordToTest);
+      }
+ else {
+        if (turn == 0) {
+          taggerTokens=morfologik.stemAndForm(wordToTest);
+        }
+ else {
+          taggerTokens=null;
+        }
+      }
+      if (taggerTokens != null) {
+        int i=0;
+        while (i < taggerTokens.length) {
+          l.add(new AnalyzedToken(word,taggerTokens[i + 1],taggerTokens[i]));
+          i=i + 2;
+        }
+      }
+ else {
+        if (!added && !caseSens && turn == 0) {
+          l.add(new AnalyzedToken(word,null,pos));
+          added=true;
+        }
+ else         if (!added & caseSens && turn == 1) {
+          l.add(new AnalyzedToken(word,null,pos));
+          added=true;
+        }
       }
     }
- else     l.add(new AnalyzedToken(word,null,pos));
     pos+=word.length();
     tokenReadings.add(new AnalyzedTokenReadings((AnalyzedToken[])l.toArray(new AnalyzedToken[0])));
   }
