@@ -10,10 +10,10 @@
   for (Iterator<String> iter=sentenceTokens.iterator(); iter.hasNext(); ) {
     String word=iter.next();
     List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+    String[] lowerTaggerTokens=null;
     taggerTokens=morfologik_spanish.stemAndForm(word);
-    if (firstWord && taggerTokens == null) {
-      taggerTokens=morfologik_spanish.stemAndForm(word.toLowerCase());
-      firstWord=false;
+    if (word != word.toLowerCase()) {
+      lowerTaggerTokens=morfologik_spanish.stemAndForm(word.toLowerCase());
     }
     if (taggerTokens != null) {
       int i=0;
@@ -22,7 +22,16 @@
         i=i + 2;
       }
     }
- else     l.add(new AnalyzedToken(word,null,pos));
+    if (lowerTaggerTokens != null) {
+      int i=0;
+      while (i < lowerTaggerTokens.length) {
+        l.add(new AnalyzedToken(word,lowerTaggerTokens[i + 1],lowerTaggerTokens[i]));
+        i=i + 2;
+      }
+    }
+    if (lowerTaggerTokens == null && taggerTokens == null) {
+      l.add(new AnalyzedToken(word,null,pos));
+    }
     pos+=word.length();
     tokenReadings.add(new AnalyzedTokenReadings((AnalyzedToken[])l.toArray(new AnalyzedToken[0])));
   }
