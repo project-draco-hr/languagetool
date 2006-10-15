@@ -84,7 +84,12 @@
   closeButton=new JButton(CLOSE_BUTTON);
   closeButton.addActionListener(this);
   contentPane.add(closeButton,cons);
-  showError(0);
+  try {
+    showError(0);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
   dialog.pack();
   dialog.setModal(true);
   dialog.setSize(500,380);

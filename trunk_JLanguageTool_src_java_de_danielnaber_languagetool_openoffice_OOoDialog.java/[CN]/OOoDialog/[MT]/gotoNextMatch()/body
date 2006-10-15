@@ -4,6 +4,11 @@
   }
  else {
     currentRuleMatchPos++;
-    showError(currentRuleMatchPos);
+    try {
+      showError(currentRuleMatchPos);
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 }
