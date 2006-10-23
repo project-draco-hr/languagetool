@@ -28,7 +28,13 @@
     dt.start();
   }
  else {
-    ResultDialogThread dialog=new ResultDialogThread(config,checkerThread.getLanguageTool().getAllRules(),xTextDoc,checkedParagraphs,xViewCursor);
+    ResultDialogThread dialog;
+    if (textToCheck.isSelection) {
+      dialog=new ResultDialogThread(config,checkerThread.getLanguageTool().getAllRules(),xTextDoc,checkedParagraphs,xViewCursor,textToCheck);
+    }
+ else {
+      dialog=new ResultDialogThread(config,checkerThread.getLanguageTool().getAllRules(),xTextDoc,checkedParagraphs,null,null);
+    }
     dialog.start();
   }
 }

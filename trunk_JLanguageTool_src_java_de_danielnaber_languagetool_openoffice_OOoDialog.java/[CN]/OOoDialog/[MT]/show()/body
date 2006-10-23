@@ -1,6 +1,6 @@
 {
   if (checkedParagraphs.size() == 0) {
-    JOptionPane.showMessageDialog(null,COMPLETE_TEXT);
+    complete();
     return;
   }
   dialog=new JDialog();

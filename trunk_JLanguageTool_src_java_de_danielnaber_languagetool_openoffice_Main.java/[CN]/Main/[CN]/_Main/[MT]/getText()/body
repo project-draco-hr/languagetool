@@ -4,6 +4,23 @@
     System.err.println("xParaAccess == null");
     return new TextToCheck(new ArrayList<String>(),false);
   }
+  XModel xModel=(XModel)UnoRuntime.queryInterface(XModel.class,xTextDoc);
+  if (xModel == null) {
+    DialogThread dt=new DialogThread("Sorry, only text documents are supported");
+    dt.start();
+    return null;
+  }
+  XController xController=xModel.getCurrentController();
+  XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,xController);
+  xViewCursor=xViewCursorSupplier.getViewCursor();
+  String textToCheck=xViewCursor.getString();
+  if (textToCheck.equals("")) {
+  }
+ else {
+    List<String> l=new ArrayList<String>();
+    l.add(textToCheck);
+    return new TextToCheck(l,true);
+  }
   List<String> paragraphs=new ArrayList<String>();
   try {
     for (com.sun.star.container.XEnumeration xParaEnum=xParaAccess.createEnumeration(); xParaEnum.hasMoreElements(); ) {

@@ -80,6 +80,17 @@
       if (startTextRange == null) {
         startTextRange=xViewCursor.getStart();
       }
+      int j=0;
+      String contentForDisplay=null;
+      for (Iterator iter=textToCheck.paragraphs.iterator(); iter.hasNext(); ) {
+        String para=(String)iter.next();
+        if (paragraphNumber == j) {
+          contentForDisplay=para;
+          break;
+        }
+        j++;
+      }
+      contextArea.setText(FONT_TAG + Tools.getContext(match.getFromPos(),match.getToPos(),contentForDisplay,CONTEXT_SIZE));
       xViewCursor.gotoRange(startTextRange,false);
       xViewCursor.goRight((short)(currentRuleMatch.getFromPos() - replacementCorrection),false);
       xViewCursor.goRight((short)errorLength,true);

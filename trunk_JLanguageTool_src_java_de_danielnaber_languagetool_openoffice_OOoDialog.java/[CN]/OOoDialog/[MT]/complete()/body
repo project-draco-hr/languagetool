@@ -1,4 +1,5 @@
 {
-  JOptionPane.showMessageDialog(null,COMPLETE_TEXT);
+  if (xViewCursor == null)   JOptionPane.showMessageDialog(null,COMPLETE_CHECK);
+ else   JOptionPane.showMessageDialog(null,COMPLETE_CHECK_OF_SELECTION);
   close();
 }
