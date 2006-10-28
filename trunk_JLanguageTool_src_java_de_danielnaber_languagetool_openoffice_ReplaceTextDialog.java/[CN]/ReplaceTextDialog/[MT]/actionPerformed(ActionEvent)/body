@@ -1,0 +1,11 @@
+{
+  if (OK_BUTTON.equals(event.getActionCommand()) || event.getActionCommand() == null) {
+    replaceText=textField.getText();
+  }
+ else   if (CANCEL_BUTTON.equals(event.getActionCommand())) {
+  }
+ else {
+    System.err.println("Unknown action: " + event);
+  }
+  dialog.setVisible(false);
+}

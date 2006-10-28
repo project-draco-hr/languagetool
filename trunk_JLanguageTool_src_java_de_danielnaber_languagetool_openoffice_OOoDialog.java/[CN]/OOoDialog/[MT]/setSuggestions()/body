@@ -1,12 +1,6 @@
 {
   List<String> suggestions=currentRuleMatch.getSuggestedReplacements();
-  if (suggestions.size() == 0) {
-    System.err.println("No suggested replacement found");
-    changeButton.setEnabled(false);
-  }
- else {
-    changeButton.setEnabled(true);
-  }
+  suggestions.add(REPLACE_WITH_OTHER_TEXT);
   suggestionList.setListData(suggestions.toArray());
   suggestionList.setSelectedIndex(0);
 }

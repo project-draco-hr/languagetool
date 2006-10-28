@@ -1,5 +1,15 @@
 {
   String replacement=(String)suggestionList.getSelectedValue();
+  if (REPLACE_WITH_OTHER_TEXT.equals(replacement)) {
+    ReplaceTextDialog replaceDialog=new ReplaceTextDialog();
+    String replacementTextTmp=replaceDialog.getText();
+    if (replacementTextTmp != null) {
+      replacement=replacementTextTmp;
+    }
+ else {
+      return;
+    }
+  }
   short errorLength=(short)(currentRuleMatch.getToPos() - currentRuleMatch.getFromPos());
   if (xViewCursor == null) {
     myViewCursor.setString(replacement);

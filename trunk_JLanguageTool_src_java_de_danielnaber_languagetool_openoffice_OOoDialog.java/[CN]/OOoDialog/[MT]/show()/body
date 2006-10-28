@@ -4,15 +4,7 @@
     return;
   }
   dialog=new JDialog();
-  KeyStroke stroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
-  ActionListener actionListener=new ActionListener(){
-    @SuppressWarnings("unused") public void actionPerformed(    ActionEvent actionEvent){
-      dialog.setVisible(false);
-    }
-  }
-;
-  JRootPane rootPane=dialog.getRootPane();
-  rootPane.registerKeyboardAction(actionListener,stroke,JComponent.WHEN_IN_FOCUSED_WINDOW);
+  bindKey(dialog,KeyEvent.VK_ESCAPE,new EscapeActionListener(dialog));
   dialog.setTitle("LanguageTool Version " + JLanguageTool.VERSION);
   Container contentPane=dialog.getContentPane();
   contentPane.setLayout(new GridBagLayout());
@@ -93,8 +85,6 @@
   dialog.pack();
   dialog.setModal(true);
   dialog.setSize(500,380);
-  Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
-  Dimension frameSize=dialog.getSize();
-  dialog.setLocation(screenSize.width / 2 - (frameSize.width / 2),screenSize.height / 2 - (frameSize.height / 2));
+  centerDialog(dialog);
   dialog.setVisible(true);
 }
