@@ -8,4 +8,5 @@
   setSize(400,80);
   OOoDialog.centerDialog(this);
   setVisible(true);
+  setModal(true);
 }
