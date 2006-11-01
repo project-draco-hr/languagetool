@@ -1,7 +1,3 @@
 {
-  String typeStr=makeReadableString(type);
-  String casusStr=makeReadableString(casus);
-  String numerusStr=makeReadableString(numerus);
-  String genusStr=makeReadableString(genus);
-  return typeStr + "/" + casusStr+ "/"+ numerusStr+ "/"+ genusStr;
+  return getPOSTag();
 }
