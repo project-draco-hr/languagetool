@@ -6,6 +6,7 @@
         public void run(){
           try {
             prg.createGUI();
+            prg.setTrayMode(true);
             prg.hideToTray();
           }
  catch (          Exception e) {
