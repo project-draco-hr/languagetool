@@ -3,6 +3,9 @@
   JMenuItem openItem=new JMenuItem(OPEN);
   openItem.addActionListener(this);
   fileMenu.add(openItem);
+  JMenuItem checkClipboardItem=new JMenuItem(CHECK_CLIPBOARD_TEXT);
+  checkClipboardItem.addActionListener(this);
+  fileMenu.add(checkClipboardItem);
   JMenuItem dockToTrayItem=new JMenuItem(DOCK_TO_TRAY);
   dockToTrayItem.addActionListener(this);
   fileMenu.add(dockToTrayItem);

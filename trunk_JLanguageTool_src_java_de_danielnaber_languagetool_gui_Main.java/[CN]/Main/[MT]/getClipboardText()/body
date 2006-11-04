@@ -1,0 +1,18 @@
+{
+  Clipboard clipboard=Toolkit.getDefaultToolkit().getSystemSelection();
+  if (clipboard == null) {
+    clipboard=Toolkit.getDefaultToolkit().getSystemClipboard();
+  }
+  String s=null;
+  Transferable data=clipboard.getContents(this);
+  try {
+    DataFlavor df=DataFlavor.getTextPlainUnicodeFlavor();
+    Reader sr=df.getReaderForText(data);
+    s=StringTools.readerToString(sr);
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+    s=data.toString();
+  }
+  return s;
+}

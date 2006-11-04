@@ -2,6 +2,9 @@
   if (e.getActionCommand().equals(OPEN)) {
     prg.loadFile();
   }
+ else   if (e.getActionCommand().equals(CHECK_CLIPBOARD_TEXT)) {
+    prg.checkClipboardText();
+  }
  else   if (e.getActionCommand().equals(DOCK_TO_TRAY)) {
     prg.hideToTray();
   }
