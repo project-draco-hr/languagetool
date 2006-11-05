@@ -3,6 +3,7 @@
     trayIcon=new TrayIcon(SYSTEM_TRAY_ICON);
     SystemTray tray=SystemTray.getDefaultSystemTray();
     trayIcon.addActionListener(new TrayActionListener());
+    trayIcon.setToolTip(SYSTEM_TRAY_TOOLTIP);
     tray.addTrayIcon(trayIcon);
   }
   frame.setVisible(false);
