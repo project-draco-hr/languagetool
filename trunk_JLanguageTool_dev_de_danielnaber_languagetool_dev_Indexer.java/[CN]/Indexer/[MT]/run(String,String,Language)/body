@@ -1,0 +1,9 @@
+{
+  IndexWriter iw=new IndexWriter(indexDir,new POSTagAnalyzer(lang.getTagger()),true);
+  iw.setMaxBufferedDocs(100);
+  index(iw,new File(dataDir),1);
+  System.out.println("Optimizing index...");
+  iw.optimize();
+  iw.close();
+  System.out.println("Done.");
+}

@@ -1,0 +1,12 @@
+{
+  PhraseQuery pq=new PhraseQuery();
+  if (rightContext) {
+    pq.add(new Term(Indexer.BODY_FIELD,term1));
+    pq.add(new Term(Indexer.BODY_FIELD,t.text()));
+  }
+ else {
+    pq.add(new Term(Indexer.BODY_FIELD,t.text()));
+    pq.add(new Term(Indexer.BODY_FIELD,term1));
+  }
+  return pq;
+}

@@ -1,0 +1,3 @@
+IndexWriter iw
+File file
+int count

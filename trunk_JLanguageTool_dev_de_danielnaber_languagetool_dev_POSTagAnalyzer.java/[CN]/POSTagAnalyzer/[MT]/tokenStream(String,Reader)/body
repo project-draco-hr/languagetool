@@ -1,0 +1,5 @@
+{
+  TokenStream result=new StandardTokenizer(reader);
+  result=new POSTagFilter(result,tagger);
+  return result;
+}

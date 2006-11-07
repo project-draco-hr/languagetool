@@ -1,0 +1,9 @@
+{
+  Indexer prg=new Indexer();
+  if (args.length != 2) {
+    System.err.println("Usage: Indexer <dataDir> <indexDir>");
+    System.exit(1);
+  }
+  Language lang=Language.GERMAN;
+  prg.run(args[0],args[1],lang);
+}

@@ -1,0 +1,11 @@
+{
+  StringBuilder sb=new StringBuilder();
+  Pattern pattern=Pattern.compile("<p>(.*?)</p>",Pattern.DOTALL);
+  Matcher matcher=pattern.matcher(xml);
+  int pos=0;
+  while (matcher.find(pos)) {
+    sb.append(matcher.group(1));
+    pos=matcher.end();
+  }
+  return sb.toString();
+}

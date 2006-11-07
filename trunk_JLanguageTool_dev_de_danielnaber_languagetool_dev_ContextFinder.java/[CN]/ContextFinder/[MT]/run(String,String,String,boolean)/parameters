@@ -1,0 +1,4 @@
+String indexDir
+String term1
+String term2
+boolean rightContext

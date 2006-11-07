@@ -1,0 +1,35 @@
+{
+  if (stack.size() > 0) {
+    return stack.pop();
+  }
+ else {
+    Token t=input.next();
+    if (t == null)     return null;
+    List<String> wordList=new ArrayList<String>();
+    wordList.add(t.termText());
+    List<AnalyzedTokenReadings> atr=tagger.tag(wordList);
+    for (Iterator iter=atr.iterator(); iter.hasNext(); ) {
+      AnalyzedGermanTokenReadings atrs=(AnalyzedGermanTokenReadings)iter.next();
+      List<AnalyzedToken> ats=atrs.getReadings();
+      for (Iterator iterator=ats.iterator(); iterator.hasNext(); ) {
+        AnalyzedToken at=(AnalyzedToken)iterator.next();
+        if (at.getPOSTag() != null) {
+          Token posToken=new Token(at.getPOSTag(),t.startOffset(),t.endOffset());
+          posToken.setPositionIncrement(0);
+          stack.push(posToken);
+        }
+        Set<String> indexLemmas=new HashSet<String>();
+        if (at.getLemma() != null) {
+          String lemma=at.getLemma().toLowerCase();
+          if (!lemma.equalsIgnoreCase(t.termText()) && !indexLemmas.contains(lemma)) {
+            Token posToken=new Token(BASEFORM_PREFIX + lemma,t.startOffset(),t.endOffset());
+            posToken.setPositionIncrement(0);
+            stack.push(posToken);
+            indexLemmas.add(lemma);
+          }
+        }
+      }
+    }
+    return new Token(TEXTFORM_PREFIX + t.termText().toLowerCase(),t.startOffset(),t.endOffset());
+  }
+}
