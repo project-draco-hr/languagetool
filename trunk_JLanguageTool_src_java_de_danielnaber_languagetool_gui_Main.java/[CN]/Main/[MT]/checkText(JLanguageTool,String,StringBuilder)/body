@@ -4,7 +4,7 @@
   long startTimeMatching=System.currentTimeMillis();
   int i=0;
   for (  RuleMatch match : ruleMatches) {
-    String output=makeTexti18n("result1",new Object[]{new Integer(i + 1),new Integer(match.getLine() + 1),new Integer(match.getColumn())});
+    String output=Tools.makeTexti18n(messages,"result1",new Object[]{new Integer(i + 1),new Integer(match.getLine() + 1),new Integer(match.getColumn())});
     sb.append(output);
     String msg=match.getMessage();
     msg=msg.replaceAll("<suggestion>","<b>");
@@ -18,6 +18,6 @@
     i++;
   }
   long endTime=System.currentTimeMillis();
-  sb.append(makeTexti18n("resultTime",new Object[]{new Long(endTime - startTime),new Long(endTime - startTimeMatching)}));
+  sb.append(Tools.makeTexti18n(messages,"resultTime",new Object[]{new Long(endTime - startTime),new Long(endTime - startTimeMatching)}));
   return ruleMatches.size();
 }
