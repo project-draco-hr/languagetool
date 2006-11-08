@@ -7,6 +7,7 @@
     xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,xComponent);
     baseDir=getBaseDir();
     config=new Configuration(baseDir);
+    messages=JLanguageTool.getMessageBundle();
   }
  catch (  Throwable e) {
     writeError(e);

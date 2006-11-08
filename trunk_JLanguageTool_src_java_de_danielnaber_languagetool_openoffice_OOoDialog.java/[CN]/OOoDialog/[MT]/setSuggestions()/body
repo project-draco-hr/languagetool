@@ -1,6 +1,6 @@
 {
   List<String> suggestions=currentRuleMatch.getSuggestedReplacements();
-  suggestions.add(REPLACE_WITH_OTHER_TEXT);
+  suggestions.add(replaceWithOtherText);
   suggestionList.setListData(suggestions.toArray());
   suggestionList.setSelectedIndex(0);
 }

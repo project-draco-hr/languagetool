@@ -1,8 +1,8 @@
 {
-  if (OK_BUTTON.equals(event.getActionCommand()) || event.getActionCommand() == null) {
+  if (event.getSource() == okButton || event.getActionCommand() == null) {
     replaceText=textField.getText();
   }
- else   if (CANCEL_BUTTON.equals(event.getActionCommand())) {
+ else   if (event.getSource() == cancelButton) {
   }
  else {
     System.err.println("Unknown action: " + event);

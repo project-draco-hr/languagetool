@@ -1,7 +1,7 @@
 {
   String replacement=(String)suggestionList.getSelectedValue();
-  if (REPLACE_WITH_OTHER_TEXT.equals(replacement)) {
-    ReplaceTextDialog replaceDialog=new ReplaceTextDialog();
+  if (replaceWithOtherText.equals(replacement)) {
+    ReplaceTextDialog replaceDialog=new ReplaceTextDialog(messages);
     String replacementTextTmp=replaceDialog.getText();
     if (replacementTextTmp != null) {
       replacement=replacementTextTmp;

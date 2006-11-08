@@ -1,15 +1,15 @@
 {
-  if (event.getActionCommand().equals(CHANGE_BUTTON)) {
+  if (event.getSource() == changeButton) {
     changeText();
   }
- else   if (event.getActionCommand().equals(IGNORE_BUTTON)) {
+ else   if (event.getSource() == ignoreButton) {
     gotoNextMatch();
   }
- else   if (event.getActionCommand().equals(IGNORE_ALL_BUTTON)) {
+ else   if (event.getSource() == ignoreAllButton) {
     ignoreAll();
     gotoNextMatch();
   }
- else   if (event.getActionCommand().equals(OPTIONS_BUTTON)) {
+ else   if (event.getSource() == optionsButton) {
     ConfigurationDialog cfgDialog=new ConfigurationDialog(true,true);
     cfgDialog.setMotherTongue(configuration.getMotherTongue());
     cfgDialog.setDisabledRules(configuration.getDisabledRuleIds());
@@ -17,7 +17,7 @@
     configuration.setDisabledRuleIds(cfgDialog.getDisabledRuleIds());
     configuration.setMotherTongue(cfgDialog.getMotherTongue());
   }
- else   if (event.getActionCommand().equals(CLOSE_BUTTON)) {
+ else   if (event.getSource() == closeButton) {
     close();
   }
  else {

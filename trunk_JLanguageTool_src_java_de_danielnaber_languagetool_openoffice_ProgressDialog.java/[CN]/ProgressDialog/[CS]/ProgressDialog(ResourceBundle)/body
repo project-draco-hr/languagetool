@@ -1,5 +1,5 @@
 {
-  setTitle("LanguageTool: Checking Text...");
+  setTitle(messages.getString("guiProgressWindowTitle"));
   JPanel progressPanel=new JPanel(new FlowLayout(FlowLayout.CENTER));
   progressBar=new JProgressBar();
   progressPanel.add(progressBar);

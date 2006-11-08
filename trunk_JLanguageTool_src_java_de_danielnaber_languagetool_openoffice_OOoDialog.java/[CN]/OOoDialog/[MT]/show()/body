@@ -27,17 +27,17 @@
   cons.gridx=1;
   cons.gridy=0;
   cons.fill=GridBagConstraints.HORIZONTAL;
-  ignoreButton=new JButton(IGNORE_BUTTON);
+  ignoreButton=new JButton(messages.getString("guiOOoIgnoreButton"));
   ignoreButton.addActionListener(this);
   contentPane.add(ignoreButton,cons);
   cons.gridx=1;
   cons.gridy=1;
-  ignoreAllButton=new JButton(IGNORE_ALL_BUTTON);
+  ignoreAllButton=new JButton(messages.getString("guiOOoIgnoreAllButton"));
   ignoreAllButton.addActionListener(this);
   contentPane.add(ignoreAllButton,cons);
   cons.gridx=1;
   cons.gridy=2;
-  optionsButton=new JButton(OPTIONS_BUTTON);
+  optionsButton=new JButton(messages.getString("guiOOoOptionsButton"));
   optionsButton.addActionListener(this);
   contentPane.add(optionsButton,cons);
   messageArea=new JTextPane();
@@ -67,13 +67,13 @@
   cons.weightx=1.0f;
   cons.weighty=1.0f;
   cons.fill=GridBagConstraints.HORIZONTAL;
-  changeButton=new JButton(CHANGE_BUTTON);
+  changeButton=new JButton(messages.getString("guiOOoChangeButton"));
   changeButton.addActionListener(this);
   contentPane.add(changeButton,cons);
   cons.gridx=1;
   cons.gridy=5;
   cons.anchor=GridBagConstraints.SOUTH;
-  closeButton=new JButton(CLOSE_BUTTON);
+  closeButton=new JButton(messages.getString("guiOOoCloseButton"));
   closeButton.addActionListener(this);
   contentPane.add(closeButton,cons);
   try {

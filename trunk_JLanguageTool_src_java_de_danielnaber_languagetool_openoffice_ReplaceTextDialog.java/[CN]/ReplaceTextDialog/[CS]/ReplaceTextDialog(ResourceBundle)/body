@@ -1,6 +1,6 @@
 {
   dialog=new JDialog();
-  dialog.setTitle(TITLE);
+  dialog.setTitle(messages.getString("guiReplaceWindowTitle"));
   Container contentPane=dialog.getContentPane();
   contentPane.setLayout(new GridBagLayout());
   GridBagConstraints cons=new GridBagConstraints();
@@ -16,12 +16,12 @@
   cons.gridx=0;
   cons.gridy=1;
   cons.anchor=GridBagConstraints.SOUTH;
-  JButton okButton=new JButton(OK_BUTTON);
+  okButton=new JButton(messages.getString("guiOKButton"));
   okButton.addActionListener(this);
   contentPane.add(okButton,cons);
   cons.gridx=1;
   cons.gridy=1;
-  JButton cancelButton=new JButton(CANCEL_BUTTON);
+  cancelButton=new JButton(messages.getString("guiCancelButton"));
   cancelButton.addActionListener(this);
   contentPane.add(cancelButton,cons);
   dialog.pack();
