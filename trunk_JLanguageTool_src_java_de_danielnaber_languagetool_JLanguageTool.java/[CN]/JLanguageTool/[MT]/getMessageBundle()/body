@@ -1,0 +1,3 @@
+{
+  return ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle");
+}

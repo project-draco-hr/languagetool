@@ -1,6 +1,6 @@
 {
   dialog=new JDialog();
-  dialog.setTitle("LanguageTool " + JLanguageTool.VERSION + " Options");
+  dialog.setTitle(messages.getString("guiConfigWindowTitle"));
   checkBoxes.clear();
   checkBoxesRuleIds.clear();
   Collections.sort(rules,new CategoryComparator());
@@ -44,15 +44,12 @@
     prevID=rule.getId();
   }
   JPanel motherTonguePanel=new JPanel();
-  motherTonguePanel.add(new JLabel("Your mother tongue: "),cons);
+  motherTonguePanel.add(new JLabel(messages.getString("guiMotherTongue")),cons);
   motherTongueBox=new JComboBox(getPossibleMotherTongues());
   if (motherTongue != null)   motherTongueBox.setSelectedItem(motherTongue);
   motherTonguePanel.add(motherTongueBox,cons);
   JPanel portPanel=new JPanel();
   portPanel.setLayout(new GridBagLayout());
-  serverCheckbox=new JCheckBox("Run as server on port");
-  serverCheckbox.setMnemonic('r');
-  serverCheckbox.setSelected(serverMode);
   cons=new GridBagConstraints();
   cons.insets=new Insets(0,4,0,0);
   cons.gridx=0;
@@ -60,24 +57,29 @@
   cons.anchor=GridBagConstraints.WEST;
   cons.fill=GridBagConstraints.NONE;
   cons.weightx=0.0f;
-  portPanel.add(serverCheckbox,cons);
-  serverPortField=new JTextField(serverPort + "");
-  serverPortField.setEnabled(serverCheckbox.isSelected());
-  serverPortField.setMinimumSize(new Dimension(200,15));
-  cons.gridx=1;
-  serverCheckbox.addActionListener(new ActionListener(){
-    public void actionPerformed(    @SuppressWarnings("unused") ActionEvent e){
-      serverPortField.setEnabled(serverCheckbox.isSelected());
+  if (!insideOOo) {
+    serverCheckbox=new JCheckBox(messages.getString("guiRunOnPort"));
+    serverCheckbox.setMnemonic('r');
+    serverCheckbox.setSelected(serverMode);
+    portPanel.add(serverCheckbox,cons);
+    serverPortField=new JTextField(serverPort + "");
+    serverPortField.setEnabled(serverCheckbox.isSelected());
+    serverPortField.setMinimumSize(new Dimension(200,15));
+    cons.gridx=1;
+    serverCheckbox.addActionListener(new ActionListener(){
+      public void actionPerformed(      @SuppressWarnings("unused") ActionEvent e){
+        serverPortField.setEnabled(serverCheckbox.isSelected());
+      }
     }
-  }
 );
-  portPanel.add(serverPortField,cons);
+    portPanel.add(serverPortField,cons);
+  }
   JPanel buttonPanel=new JPanel();
   buttonPanel.setLayout(new GridBagLayout());
-  JButton okButton=new JButton(OK_BUTTON);
+  okButton=new JButton(messages.getString("guiOKButton"));
   okButton.setMnemonic('o');
   okButton.addActionListener(this);
-  JButton cancelButton=new JButton(CANCEL_BUTTON);
+  cancelButton=new JButton(messages.getString("guiCancelButton"));
   cancelButton.setMnemonic('c');
   cancelButton.addActionListener(this);
   cons=new GridBagConstraints();

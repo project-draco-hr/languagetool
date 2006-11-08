@@ -1,3 +1,4 @@
 {
+  if (serverCheckbox == null)   return false;
   return serverCheckbox.isSelected();
 }

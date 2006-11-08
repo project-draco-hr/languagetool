@@ -1,7 +1,7 @@
 {
-  if (e.getActionCommand().equals(CHECK_TEXT_BUTTON)) {
+  if (e.getActionCommand().equals(messages.getString("checkText"))) {
     JLanguageTool langTool=getCurrentLanguageTool();
-    checkTextAndDisplayResults(langTool,getCurrentLanguage().getName());
+    checkTextAndDisplayResults(langTool,getCurrentLanguage());
   }
  else {
     throw new IllegalArgumentException("Unknown action " + e);

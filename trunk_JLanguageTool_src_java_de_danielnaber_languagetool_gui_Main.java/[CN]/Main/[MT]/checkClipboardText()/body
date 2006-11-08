@@ -2,5 +2,5 @@
   String s=getClipboardText();
   textArea.setText(s);
   JLanguageTool langTool=getCurrentLanguageTool();
-  checkTextAndDisplayResults(langTool,getCurrentLanguage().getName());
+  checkTextAndDisplayResults(langTool,getCurrentLanguage());
 }

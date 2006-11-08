@@ -3,5 +3,5 @@
   frame.setVisible(true);
   textArea.setText(s);
   JLanguageTool langTool=getCurrentLanguageTool();
-  checkTextAndDisplayResults(langTool,getCurrentLanguage().getName());
+  checkTextAndDisplayResults(langTool,getCurrentLanguage());
 }

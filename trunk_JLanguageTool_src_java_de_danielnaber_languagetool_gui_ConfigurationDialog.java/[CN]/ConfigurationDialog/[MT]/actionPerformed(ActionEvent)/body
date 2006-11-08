@@ -1,5 +1,5 @@
 {
-  if (e.getActionCommand().equals(OK_BUTTON)) {
+  if (e.getSource() == okButton) {
     int i=0;
     inactiveRuleIds.clear();
     for (    JCheckBox checkBox : checkBoxes) {
@@ -11,12 +11,14 @@
     }
     if (motherTongueBox.getSelectedItem() instanceof String)     motherTongue=null;
  else     motherTongue=(Language)motherTongueBox.getSelectedItem();
-    serverMode=serverCheckbox.isSelected();
-    serverPort=Integer.parseInt(serverPortField.getText());
+    if (serverCheckbox != null) {
+      serverMode=serverCheckbox.isSelected();
+      serverPort=Integer.parseInt(serverPortField.getText());
+    }
     isClosed=true;
     dialog.setVisible(false);
   }
- else   if (e.getActionCommand().equals(CANCEL_BUTTON)) {
+ else   if (e.getSource() == cancelButton) {
     isClosed=true;
     dialog.setVisible(false);
   }

@@ -4,19 +4,20 @@
   long startTimeMatching=System.currentTimeMillis();
   int i=0;
   for (  RuleMatch match : ruleMatches) {
-    sb.append("<br>\n<b>" + (i + 1) + ". Line "+ (match.getLine() + 1)+ ", column "+ match.getColumn()+ "</b><br>\n");
+    String output=makeTexti18n("result1",new Object[]{new Integer(i + 1),new Integer(match.getLine() + 1),new Integer(match.getColumn())});
+    sb.append(output);
     String msg=match.getMessage();
     msg=msg.replaceAll("<suggestion>","<b>");
     msg=msg.replaceAll("</suggestion>","</b>");
     msg=msg.replaceAll("<old>","<b>");
     msg=msg.replaceAll("</old>","</b>");
-    sb.append("<b>Message:</b> " + msg + "<br>\n");
+    sb.append("<b>" + messages.getString("errorMessage") + "</b> "+ msg+ "<br>\n");
     String context=Tools.getContext(match.getFromPos(),match.getToPos(),text);
-    sb.append("<b>Context:</b> " + context);
+    sb.append("<b>" + messages.getString("errorContext") + "</b> "+ context);
     sb.append("<br>\n");
     i++;
   }
   long endTime=System.currentTimeMillis();
-  sb.append("<br>\nTime: " + (endTime - startTime) + "ms (including "+ (endTime - startTimeMatching)+ "ms for rule matching)<br>\n");
+  sb.append(makeTexti18n("resultTime",new Object[]{new Long(endTime - startTime),new Long(endTime - startTimeMatching)}));
   return ruleMatches.size();
 }

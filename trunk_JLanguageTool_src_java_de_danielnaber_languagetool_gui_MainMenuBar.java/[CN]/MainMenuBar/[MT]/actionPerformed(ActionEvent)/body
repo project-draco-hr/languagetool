@@ -1,20 +1,20 @@
 {
-  if (e.getActionCommand().equals(OPEN)) {
+  if (e.getActionCommand().equals(openText)) {
     prg.loadFile();
   }
- else   if (e.getActionCommand().equals(CHECK_CLIPBOARD_TEXT)) {
+ else   if (e.getActionCommand().equals(checkClipboardText)) {
     prg.checkClipboardText();
   }
- else   if (e.getActionCommand().equals(DOCK_TO_TRAY)) {
+ else   if (e.getActionCommand().equals(docktoTrayText)) {
     prg.hideToTray();
   }
- else   if (e.getActionCommand().equals(OPTIONS)) {
+ else   if (e.getActionCommand().equals(optionsText)) {
     prg.showOptions();
   }
- else   if (e.getActionCommand().equals(QUIT)) {
+ else   if (e.getActionCommand().equals(quitText)) {
     prg.quit();
   }
- else   if (e.getActionCommand().equals(ABOUT)) {
+ else   if (e.getActionCommand().equals(aboutText)) {
     JOptionPane.showMessageDialog(null,"LanguageTool " + JLanguageTool.VERSION + "\n"+ "Copyright (C) 2005-2006 Daniel Naber\n"+ "This software is licensed under the GNU Lesser General Public License.\n"+ "LanguageTool Homepage: http://www.danielnaber.de/languagetool");
   }
  else {

@@ -8,7 +8,7 @@
     String fileContents=StringTools.readFile(file.getAbsolutePath());
     textArea.setText(fileContents);
     JLanguageTool langTool=getCurrentLanguageTool();
-    checkTextAndDisplayResults(langTool,getCurrentLanguage().getName());
+    checkTextAndDisplayResults(langTool,getCurrentLanguage());
   }
  catch (  IOException e) {
     showError(e);

@@ -1,0 +1,5 @@
+{
+  this.modal=modal;
+  this.insideOOo=insideOOo;
+  messages=JLanguageTool.getMessageBundle();
+}
