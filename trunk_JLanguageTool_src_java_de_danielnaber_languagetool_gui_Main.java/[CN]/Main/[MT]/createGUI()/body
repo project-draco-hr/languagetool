@@ -28,10 +28,10 @@
   langBox=new JComboBox();
   for (  Language lang : Language.LANGUAGES) {
     if (lang != Language.DEMO) {
-      langBox.addItem(lang);
+      langBox.addItem(messages.getString(lang.getShortName()));
     }
   }
-  langBox.setSelectedItem(Language.getLanguageForShortName(Locale.getDefault().getLanguage()));
+  langBox.setSelectedItem(messages.getString((Locale.getDefault().getLanguage())));
   panel.add(langBox,buttonCons);
   Container contentPane=frame.getContentPane();
   GridBagLayout gridLayout=new GridBagLayout();
