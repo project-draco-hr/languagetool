@@ -2,7 +2,7 @@
   frame=new JFrame("LanguageTool " + JLanguageTool.VERSION);
   frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
   frame.addWindowListener(new CloseListener());
-  frame.setIconImage(new ImageIcon(WINDOW_ICON_URL).getImage());
+  frame.setIconImage(Tools.WINDOW_ICON);
   frame.setJMenuBar(new MainMenuBar(this,messages));
   textArea=new JTextArea(messages.getString("guiDemoText"));
   textArea.setLineWrap(true);

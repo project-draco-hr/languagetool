@@ -4,6 +4,10 @@
     return;
   }
   dialog=new JDialog();
+  Frame owner=(Frame)dialog.getOwner();
+  if (owner != null) {
+    owner.setIconImage(Tools.WINDOW_ICON);
+  }
   bindKey(dialog,KeyEvent.VK_ESCAPE,new EscapeActionListener(dialog));
   dialog.setTitle("LanguageTool Version " + JLanguageTool.VERSION);
   Container contentPane=dialog.getContentPane();
