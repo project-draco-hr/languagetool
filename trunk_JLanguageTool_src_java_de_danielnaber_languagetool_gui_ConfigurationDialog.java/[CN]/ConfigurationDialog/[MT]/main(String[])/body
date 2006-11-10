@@ -1,5 +1,5 @@
 {
-  ConfigurationDialog dlg=new ConfigurationDialog(false,false);
+  ConfigurationDialog dlg=new ConfigurationDialog(null,false);
   List<Rule> rules=new ArrayList<Rule>();
   JLanguageTool lt=new JLanguageTool(Language.ENGLISH);
   lt.activateDefaultPatternRules();

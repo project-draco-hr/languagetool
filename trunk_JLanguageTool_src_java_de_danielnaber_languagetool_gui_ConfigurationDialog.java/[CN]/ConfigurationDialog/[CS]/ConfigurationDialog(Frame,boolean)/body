@@ -1,5 +1,5 @@
 {
-  this.modal=modal;
+  this.owner=owner;
   this.insideOOo=insideOOo;
   messages=JLanguageTool.getMessageBundle();
 }

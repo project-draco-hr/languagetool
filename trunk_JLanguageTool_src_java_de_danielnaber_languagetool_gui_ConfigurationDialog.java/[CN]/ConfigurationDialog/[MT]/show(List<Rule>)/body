@@ -1,5 +1,5 @@
 {
-  dialog=new JDialog();
+  dialog=new JDialog(owner,true);
   dialog.setTitle(messages.getString("guiConfigWindowTitle"));
   checkBoxes.clear();
   checkBoxesRuleIds.clear();
@@ -118,7 +118,6 @@
   cons.anchor=GridBagConstraints.EAST;
   contentPane.add(buttonPanel,cons);
   dialog.pack();
-  dialog.setModal(modal);
   dialog.setSize(500,500);
   isClosed=false;
   Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
