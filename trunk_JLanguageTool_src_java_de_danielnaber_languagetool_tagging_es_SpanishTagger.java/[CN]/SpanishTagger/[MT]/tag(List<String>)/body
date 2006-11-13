@@ -1,6 +1,5 @@
 {
   String[] taggerTokens;
-  boolean firstWord=true;
   List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik_spanish == null) {
