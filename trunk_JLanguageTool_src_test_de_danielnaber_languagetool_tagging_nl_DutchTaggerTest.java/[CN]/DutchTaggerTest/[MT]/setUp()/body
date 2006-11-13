@@ -1,0 +1,4 @@
+{
+  tagger=new DutchTagger();
+  tokenizer=new WordTokenizer();
+}
