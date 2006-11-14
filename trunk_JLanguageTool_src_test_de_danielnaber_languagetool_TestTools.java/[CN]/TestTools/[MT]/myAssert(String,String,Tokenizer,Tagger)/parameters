@@ -1,0 +1,4 @@
+String input
+String expected
+Tokenizer tokenizer
+Tagger tagger
