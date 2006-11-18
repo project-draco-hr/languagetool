@@ -1,0 +1,29 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  int pos=0;
+  AnalyzedTokenReadings prevToken=null;
+  for (int i=0; i < tokens.length; i++) {
+    AnalyzedTokenReadings token=tokens[i];
+    String tokenStr=tokens[i].getToken();
+    if (prevToken == null) {
+      prevToken=token;
+      continue;
+    }
+    String stringtoCheck=prevToken.getToken() + " " + tokenStr;
+    if (incorrectCompounds.contains(stringtoCheck)) {
+      String msg="Komposita werden ??blicherweise zusammen oder mit Bindestrich geschrieben.";
+      RuleMatch ruleMatch=new RuleMatch(this,prevToken.getStartPos(),token.getStartPos() + token.getToken().length(),msg);
+      List<String> repl=new ArrayList<String>();
+      repl.add(prevToken.getToken() + "-" + tokenStr);
+      if (!StringTools.isAllUppercase(tokenStr)) {
+        repl.add(prevToken.getToken() + tokenStr.toLowerCase());
+      }
+      ruleMatch.setSuggestedReplacements(repl);
+      ruleMatches.add(ruleMatch);
+    }
+    prevToken=token;
+    pos+=tokens[i].getToken().length();
+  }
+  return toRuleMatchArray(ruleMatches);
+}
