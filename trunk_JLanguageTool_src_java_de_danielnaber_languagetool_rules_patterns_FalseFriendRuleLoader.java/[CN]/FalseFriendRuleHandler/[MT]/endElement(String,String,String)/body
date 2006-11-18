@@ -1,6 +1,6 @@
 {
   if (qName.equals("rule")) {
-    if (language == textLanguage && translationLanguage != null && translationLanguage == motherTongue) {
+    if (language == textLanguage && translationLanguage != null && translationLanguage == motherTongue && language != motherTongue) {
       formatter.applyPattern(messages.getString("false_friend_hint"));
       Object[] messageArguments={elements.toString().replace('|','/'),messages.getString(textLanguage.getShortName()),formatTranslations(translations),messages.getString(motherTongue.getShortName())};
       String description=formatter.format(messageArguments);
