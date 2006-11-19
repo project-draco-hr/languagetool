@@ -1,0 +1,33 @@
+{
+  for (int i=0; i < Language.LANGUAGES.length; i++) {
+    if (Language.LANGUAGES[i] != Language.DEMO) {
+      Language lang=Language.LANGUAGES[i];
+      System.out.println(lang.getName());
+      String xmlFile="rules" + File.separator + lang.getShortName()+ File.separator+ "grammar.xml";
+      File f=new File(xmlFile);
+      if (!f.exists()) {
+        System.out.println("  0 XML rules");
+      }
+ else {
+        String xmlRules=StringTools.readFile(xmlFile);
+        xmlRules=xmlRules.replaceAll("(?s)<!--.*?-->","");
+        int pos=0;
+        int count=0;
+        while (pos != -1) {
+          pos=xmlRules.indexOf("<rule",pos + 1);
+          if (pos == -1)           break;
+          count++;
+        }
+        System.out.println("  " + count + " XML rules");
+      }
+      File dir=new File("src/java/de/danielnaber/languagetool/rules/" + lang.getShortName());
+      if (!dir.exists()) {
+        System.out.println("  0 Java rules");
+      }
+ else {
+        File[] javaRules=dir.listFiles(new JavaFilter());
+        System.out.println("  " + (javaRules.length - 1) + " java rules");
+      }
+    }
+  }
+}
