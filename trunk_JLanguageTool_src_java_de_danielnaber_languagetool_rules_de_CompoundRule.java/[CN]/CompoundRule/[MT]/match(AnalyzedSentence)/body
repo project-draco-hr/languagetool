@@ -1,8 +1,9 @@
 {
   List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  RuleMatch prevRuleMatch=null;
   Queue<AnalyzedTokenReadings> prevTokens=new ArrayBlockingQueue<AnalyzedTokenReadings>(MAX_TERMS);
-  for (int i=0; i < tokens.length + MAX_TERMS / 2 + 1; i++) {
+  for (int i=0; i < tokens.length + MAX_TERMS - 1; i++) {
     AnalyzedTokenReadings token=null;
     if (i >= tokens.length)     token=new AnalyzedTokenReadings(new AnalyzedToken("","",prevTokens.peek().getStartPos()));
  else     token=tokens[i];
@@ -18,24 +19,30 @@
     for (Iterator iter=prevTokens.iterator(); iter.hasNext(); ) {
       AnalyzedTokenReadings atr=(AnalyzedTokenReadings)iter.next();
       if (j == 0)       firstMatchToken=atr;
- else       sb.append(" ");
+      sb.append(" ");
       sb.append(atr.getToken());
       if (j >= 1) {
-        stringsToCheck.add(sb.toString());
-        stringToToken.put(sb.toString(),atr);
+        String stringtoCheck=sb.toString().trim();
+        stringsToCheck.add(stringtoCheck);
+        if (!stringToToken.containsKey(stringtoCheck))         stringToToken.put(stringtoCheck,atr);
       }
       j++;
     }
     for (int k=stringsToCheck.size() - 1; k >= 0; k--) {
-      String stringtoCheck=stringsToCheck.get(k);
-      if (incorrectCompounds.contains(stringtoCheck)) {
-        AnalyzedTokenReadings atr=stringToToken.get(stringtoCheck);
-        String msg="Komposita werden ??blicherweise zusammen oder mit Bindestrich geschrieben.";
+      String stringToCheck=stringsToCheck.get(k).trim();
+      if (incorrectCompounds.contains(stringToCheck)) {
+        AnalyzedTokenReadings atr=stringToToken.get(stringToCheck);
+        String msg="Komposita werden zusammen oder mit Bindestrich geschrieben.";
         RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),atr.getStartPos() + atr.getToken().length(),msg);
+        if (prevRuleMatch != null && prevRuleMatch.getFromPos() == ruleMatch.getFromPos()) {
+          prevRuleMatch=ruleMatch;
+          break;
+        }
+        prevRuleMatch=ruleMatch;
         List<String> repl=new ArrayList<String>();
-        repl.add(stringtoCheck.replace(' ','-'));
-        if (!StringTools.isAllUppercase(stringtoCheck)) {
-          repl.add(mergeCompound(stringtoCheck));
+        repl.add(stringToCheck.replace(' ','-'));
+        if (!StringTools.isAllUppercase(stringToCheck)) {
+          repl.add(mergeCompound(stringToCheck));
         }
         ruleMatch.setSuggestedReplacements(repl);
         ruleMatches.add(ruleMatch);
