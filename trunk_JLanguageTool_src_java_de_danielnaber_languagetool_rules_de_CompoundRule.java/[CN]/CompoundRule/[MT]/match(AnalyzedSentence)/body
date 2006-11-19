@@ -22,14 +22,14 @@
       sb.append(" ");
       sb.append(atr.getToken());
       if (j >= 1) {
-        String stringtoCheck=sb.toString().trim();
+        String stringtoCheck=sb.toString().trim().toLowerCase();
         stringsToCheck.add(stringtoCheck);
         if (!stringToToken.containsKey(stringtoCheck))         stringToToken.put(stringtoCheck,atr);
       }
       j++;
     }
     for (int k=stringsToCheck.size() - 1; k >= 0; k--) {
-      String stringToCheck=stringsToCheck.get(k).trim();
+      String stringToCheck=stringsToCheck.get(k).trim().toLowerCase();
       if (incorrectCompounds.contains(stringToCheck)) {
         AnalyzedTokenReadings atr=stringToToken.get(stringToCheck);
         String msg="Komposita werden zusammen oder mit Bindestrich geschrieben.";

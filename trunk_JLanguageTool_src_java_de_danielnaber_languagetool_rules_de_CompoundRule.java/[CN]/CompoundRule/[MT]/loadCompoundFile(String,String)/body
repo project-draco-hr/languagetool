@@ -15,7 +15,7 @@
       String[] parts=line.split(" ");
       if (parts.length > MAX_TERMS)       throw new IOException("Too many compound parts: " + line + ", maximum allowed: "+ MAX_TERMS);
       if (parts.length == 1)       throw new IOException("Not a compound: " + line);
-      words.add(line);
+      words.add(line.toLowerCase());
     }
   }
   finally {
