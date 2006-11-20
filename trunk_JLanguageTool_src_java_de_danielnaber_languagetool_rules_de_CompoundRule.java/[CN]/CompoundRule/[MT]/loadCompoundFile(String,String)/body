@@ -2,7 +2,6 @@
   InputStreamReader isr=null;
   BufferedReader br=null;
   FileInputStream fis=null;
-  Set<String> words=new HashSet<String>();
   try {
     fis=new FileInputStream(filename);
     isr=new InputStreamReader(fis,encoding);
@@ -15,7 +14,15 @@
       String[] parts=line.split(" ");
       if (parts.length > MAX_TERMS)       throw new IOException("Too many compound parts: " + line + ", maximum allowed: "+ MAX_TERMS);
       if (parts.length == 1)       throw new IOException("Not a compound: " + line);
-      words.add(line.toLowerCase());
+      if (line.endsWith("+")) {
+        line=line.substring(0,line.length() - 1);
+        noDashSuggestion.add(line.toLowerCase());
+      }
+ else       if (line.endsWith("*")) {
+        line=line.substring(0,line.length() - 1);
+        onlyDashSuggestion.add(line.toLowerCase());
+      }
+      incorrectCompounds.add(line.toLowerCase());
     }
   }
   finally {
@@ -23,5 +30,4 @@
     if (isr != null)     isr.close();
     if (fis != null)     fis.close();
   }
-  return words;
 }

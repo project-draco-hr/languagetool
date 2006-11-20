@@ -1,4 +1,4 @@
 {
   if (messages != null)   super.setCategory(new Category(messages.getString("category_misc")));
-  incorrectCompounds=loadCompoundFile(FILE_NAME,"UTF-8");
+  loadCompoundFile(FILE_NAME,"UTF-8");
 }

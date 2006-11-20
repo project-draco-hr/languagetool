@@ -15,6 +15,7 @@
     int j=0;
     AnalyzedTokenReadings firstMatchToken=null;
     List<String> stringsToCheck=new ArrayList<String>();
+    List<String> origStringsToCheck=new ArrayList<String>();
     Map<String,AnalyzedTokenReadings> stringToToken=new HashMap<String,AnalyzedTokenReadings>();
     for (Iterator iter=prevTokens.iterator(); iter.hasNext(); ) {
       AnalyzedTokenReadings atr=(AnalyzedTokenReadings)iter.next();
@@ -24,12 +25,14 @@
       if (j >= 1) {
         String stringtoCheck=sb.toString().trim().toLowerCase();
         stringsToCheck.add(stringtoCheck);
+        origStringsToCheck.add(sb.toString().trim());
         if (!stringToToken.containsKey(stringtoCheck))         stringToToken.put(stringtoCheck,atr);
       }
       j++;
     }
     for (int k=stringsToCheck.size() - 1; k >= 0; k--) {
-      String stringToCheck=stringsToCheck.get(k).trim().toLowerCase();
+      String stringToCheck=stringsToCheck.get(k);
+      String origStringToCheck=origStringsToCheck.get(k);
       if (incorrectCompounds.contains(stringToCheck)) {
         AnalyzedTokenReadings atr=stringToToken.get(stringToCheck);
         String msg="Komposita werden zusammen oder mit Bindestrich geschrieben.";
@@ -40,9 +43,11 @@
         }
         prevRuleMatch=ruleMatch;
         List<String> repl=new ArrayList<String>();
-        repl.add(stringToCheck.replace(' ','-'));
-        if (!StringTools.isAllUppercase(stringToCheck)) {
-          repl.add(mergeCompound(stringToCheck));
+        if (!noDashSuggestion.contains(stringToCheck)) {
+          repl.add(origStringToCheck.replace(' ','-'));
+        }
+        if (!hasAllUppercaseParts(origStringToCheck) && countParts(stringToCheck) <= 2 && !onlyDashSuggestion.contains(stringToCheck)) {
+          repl.add(mergeCompound(origStringToCheck));
         }
         ruleMatch.setSuggestedReplacements(repl);
         ruleMatches.add(ruleMatch);

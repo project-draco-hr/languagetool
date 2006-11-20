@@ -1,3 +1,3 @@
 {
-  assertEquals(expectedErrors,rule.match(langTool.getAnalyzedSentence(text)).length);
+  check(expectedErrors,text,null);
 }
