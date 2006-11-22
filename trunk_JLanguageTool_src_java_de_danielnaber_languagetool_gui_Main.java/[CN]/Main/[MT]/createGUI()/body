@@ -56,5 +56,5 @@
   cons.gridy=3;
   contentPane.add(panel,cons);
   frame.pack();
-  frame.setSize(600,600);
+  frame.setSize(600,550);
 }
