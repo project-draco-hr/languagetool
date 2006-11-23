@@ -23,7 +23,7 @@
       sb.append(" ");
       sb.append(atr.getToken());
       if (j >= 1) {
-        String stringtoCheck=sb.toString().trim().toLowerCase();
+        String stringtoCheck=normalize(sb.toString());
         stringsToCheck.add(stringtoCheck);
         origStringsToCheck.add(sb.toString().trim());
         if (!stringToToken.containsKey(stringtoCheck))         stringToToken.put(stringtoCheck,atr);

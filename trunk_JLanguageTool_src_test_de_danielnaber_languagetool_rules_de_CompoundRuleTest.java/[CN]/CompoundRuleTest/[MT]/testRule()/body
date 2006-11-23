@@ -33,4 +33,6 @@
   check(1,"Spin off",new String[]{"Spin-off"});
   check(1,"Spin Off",new String[]{"Spin-Off"});
   check(1,"CW Wert",new String[]{"CW-Wert"});
+  check(1,"Roll-on-roll-off Schiff",new String[]{"Roll-on-roll-off-Schiff"});
+  check(1,"E-Mail Adressen",new String[]{"E-Mail-Adressen"});
 }
