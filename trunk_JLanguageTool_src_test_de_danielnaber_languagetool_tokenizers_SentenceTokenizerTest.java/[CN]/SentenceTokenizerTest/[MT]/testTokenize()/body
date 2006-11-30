@@ -25,6 +25,7 @@
   testSplit(new String[]{"\"Here he comes.\" ","But this is another sentence."});
   testSplit(new String[]{"\"Here he comes!\". ","That's what he said."});
   testSplit(new String[]{"The sentence ends here. ","(Another sentence.)"});
+  testSplit(new String[]{"He will not. ","Really."});
   testSplit(new String[]{"He won't go. ","Really."});
   testSplit(new String[]{"He won't say no.","Not really."});
   testSplit(new String[]{"He won't say No.","Not really."});
@@ -39,4 +40,10 @@
   TestTools.testSplit(new String[]{"He won't\nReally."},stokenizer2);
   testSplit(new String[]{"James is from the Ireland!","He lives in Spain now."});
   testSplit(new String[]{"Jones Bros. have built a succesful company."});
+  testSplit(new String[]{"It (really!) works."});
+  testSplit(new String[]{"It [really!] works."});
+  testSplit(new String[]{"It works (really!). ","No doubt."});
+  testSplit(new String[]{"It works [really!]. ","No doubt."});
+  testSplit(new String[]{"It really(!) works well."});
+  testSplit(new String[]{"It really[!] works well."});
 }
