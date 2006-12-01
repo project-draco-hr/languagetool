@@ -1,0 +1,15 @@
+{
+  for (Iterator iter=myExceptionPhrases.iterator(); iter.hasNext(); ) {
+    String exc=(String)iter.next();
+    String[] parts=exc.split(" ");
+    for (int j=0; j < parts.length; j++) {
+      if (parts[j].equals(tokens[i].getToken())) {
+        int startIndex=i - j;
+        if (compareLists(tokens,startIndex,startIndex + parts.length - 1,parts)) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
