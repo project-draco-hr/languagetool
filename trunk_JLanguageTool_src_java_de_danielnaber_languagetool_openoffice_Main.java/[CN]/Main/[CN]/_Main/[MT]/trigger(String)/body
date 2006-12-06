@@ -5,7 +5,9 @@
       checkText(textToCheck);
     }
  else     if (sEvent.equals("configure")) {
-      ConfigThread configThread=new ConfigThread(getLanguage(),config,baseDir);
+      Language lang=getLanguage();
+      if (lang == null)       return;
+      ConfigThread configThread=new ConfigThread(lang,config,baseDir);
       configThread.start();
       while (true) {
         if (configThread.done()) {

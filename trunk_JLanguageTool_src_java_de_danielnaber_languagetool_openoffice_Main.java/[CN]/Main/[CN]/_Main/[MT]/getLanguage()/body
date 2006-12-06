@@ -15,7 +15,7 @@
     }
     if (!langIsSupported) {
       JOptionPane.showMessageDialog(null,"Error: Sorry, the document language '" + charLocale.Language + "' is not supported by LanguageTool.");
-      throw new IllegalArgumentException("Language is not supported: " + charLocale.Language);
+      return null;
     }
   }
  catch (  UnknownPropertyException e) {

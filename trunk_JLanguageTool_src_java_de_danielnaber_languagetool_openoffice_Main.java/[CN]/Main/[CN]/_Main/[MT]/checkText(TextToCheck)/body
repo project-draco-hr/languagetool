@@ -1,7 +1,8 @@
 {
   if (textToCheck == null)   return;
-  ProgressDialog progressDialog=new ProgressDialog(messages);
   Language docLanguage=getLanguage();
+  if (docLanguage == null)   return;
+  ProgressDialog progressDialog=new ProgressDialog(messages);
   CheckerThread checkerThread=new CheckerThread(textToCheck.paragraphs,docLanguage,config,baseDir,progressDialog);
   checkerThread.start();
   while (true) {
