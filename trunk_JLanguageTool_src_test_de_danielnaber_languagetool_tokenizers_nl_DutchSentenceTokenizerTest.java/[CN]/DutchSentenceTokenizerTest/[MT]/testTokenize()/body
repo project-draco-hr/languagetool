@@ -24,6 +24,6 @@
   testSplit(new String[]{"Dit hier is een(???) zin."});
   testSplit(new String[]{"??De papagaai is groen.?? ","Dat was hij al."});
   testSplit(new String[]{"??De papagaai is groen??, zei hij."});
-  testSplit(new String[]{"Dat was het: helmaal niets."});
+  testSplit(new String[]{"Dat was het: helemaal niets."});
   testSplit(new String[]{"Dat was het: het is een nieuwe zin."});
 }
