@@ -2,14 +2,28 @@
   List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   if (tokens.length < 2)   return toRuleMatchArray(ruleMatches);
-  AnalyzedToken token=tokens[1].getAnalyzedToken(0);
+  int matchTokenPos=1;
+  AnalyzedToken token=tokens[matchTokenPos].getAnalyzedToken(0);
   String firstToken=token.getToken();
-  if (tokens.length >= 3 && ("'".equals(firstToken) || "\"".equals(firstToken)))   firstToken=tokens[2].getAnalyzedToken(0).getToken();
-  char firstChar=firstToken.charAt(0);
+  String secondToken=null;
+  String thirdToken=null;
+  if (tokens.length >= 3 && ("'".equals(firstToken) || "\"".equals(firstToken))) {
+    matchTokenPos=2;
+    secondToken=tokens[matchTokenPos].getAnalyzedToken(0).getToken();
+  }
+  String firstDutchToken=dutchSpecialCase(firstToken,secondToken,tokens);
+  if (firstDutchToken != null) {
+    thirdToken=firstDutchToken;
+    matchTokenPos=3;
+  }
+  String checkToken=firstToken;
+  if (thirdToken != null)   checkToken=thirdToken;
+ else   if (secondToken != null)   checkToken=secondToken;
+  char firstChar=checkToken.charAt(0);
   if (Character.isLowerCase(firstChar)) {
     String msg=messages.getString("incorrect_case");
-    RuleMatch ruleMatch=new RuleMatch(this,tokens[1].getStartPos(),tokens[1].getStartPos() + tokens[1].getToken().length(),msg);
-    ruleMatch.setSuggestedReplacement(Character.toUpperCase(firstChar) + firstToken.substring(1));
+    RuleMatch ruleMatch=new RuleMatch(this,tokens[matchTokenPos].getStartPos(),tokens[matchTokenPos].getStartPos() + tokens[matchTokenPos].getToken().length(),msg);
+    ruleMatch.setSuggestedReplacement(Character.toUpperCase(firstChar) + checkToken.substring(1));
     ruleMatches.add(ruleMatch);
   }
   return toRuleMatchArray(ruleMatches);

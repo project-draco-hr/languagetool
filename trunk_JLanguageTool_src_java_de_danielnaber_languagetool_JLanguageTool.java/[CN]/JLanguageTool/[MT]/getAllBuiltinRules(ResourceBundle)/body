@@ -1,4 +1,4 @@
 {
-  Rule[] allBuiltinRules=new Rule[]{new CommaWhitespaceRule(messages),new WordRepeatRule(messages,language),new DoublePunctuationRule(messages),new UppercaseSentenceStartRule(messages),new AvsAnRule(messages),new WordCoherencyRule(messages),new CaseRule(messages),new WiederVsWiderRule(messages),new AgreementRule(messages),new DashRule(messages),new CompoundRule(messages),new PolishWordRepeatRule(messages)};
+  Rule[] allBuiltinRules=new Rule[]{new CommaWhitespaceRule(messages),new WordRepeatRule(messages,language),new DoublePunctuationRule(messages),new UppercaseSentenceStartRule(messages,language),new AvsAnRule(messages),new WordCoherencyRule(messages),new CaseRule(messages),new WiederVsWiderRule(messages),new AgreementRule(messages),new DashRule(messages),new CompoundRule(messages),new PolishWordRepeatRule(messages)};
   return allBuiltinRules;
 }

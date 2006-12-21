@@ -1,0 +1,8 @@
+{
+  if (language != Language.DUTCH)   return null;
+  if (tokens.length >= 3 && firstToken.equals("'") && secondToken.matches("k|m|n|r|s|t")) {
+    firstToken=tokens[3].getAnalyzedToken(0).getToken();
+    return firstToken;
+  }
+  return null;
+}

@@ -1,0 +1,3 @@
+String firstToken
+String secondToken
+AnalyzedTokenReadings[] tokens
