@@ -1,0 +1,3 @@
+{
+  return getContext(fromPos,toPos,fileContents,DEFAULT_CONTEXT_SIZE);
+}
