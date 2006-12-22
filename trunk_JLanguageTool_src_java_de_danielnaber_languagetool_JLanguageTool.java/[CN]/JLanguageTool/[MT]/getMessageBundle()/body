@@ -1,3 +1,8 @@
 {
-  return ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle");
+  try {
+    return ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle");
+  }
+ catch (  MissingResourceException e) {
+    return ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",Locale.ENGLISH);
+  }
 }
