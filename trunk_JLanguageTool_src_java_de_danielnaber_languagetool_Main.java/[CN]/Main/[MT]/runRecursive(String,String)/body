@@ -10,7 +10,7 @@
     }
  else {
       String text=getFilteredText(files[i].getAbsolutePath(),encoding);
-      checkText(text);
+      Tools.checkText(text,lt);
     }
   }
 }

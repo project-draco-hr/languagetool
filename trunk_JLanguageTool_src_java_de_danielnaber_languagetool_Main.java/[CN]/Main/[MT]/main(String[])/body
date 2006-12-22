@@ -61,6 +61,6 @@
   }
  else {
     String text=prg.getFilteredText(filename,encoding);
-    prg.checkText(text);
+    Tools.checkText(text,prg.getJLanguageTool());
   }
 }
