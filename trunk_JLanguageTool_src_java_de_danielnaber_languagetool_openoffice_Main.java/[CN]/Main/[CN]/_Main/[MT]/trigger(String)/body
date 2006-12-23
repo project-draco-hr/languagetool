@@ -1,4 +1,7 @@
 {
+  if (!javaVersionOkay()) {
+    return;
+  }
   try {
     if (sEvent.equals("execute")) {
       TextToCheck textToCheck=getText();
