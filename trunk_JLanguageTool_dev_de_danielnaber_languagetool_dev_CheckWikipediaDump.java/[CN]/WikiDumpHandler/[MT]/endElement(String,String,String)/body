@@ -1,0 +1,15 @@
+{
+  if (qName.equals("text")) {
+    inText=false;
+    String textToCheck=cleanup(text.toString());
+    if (!textToCheck.contains("#REDIRECT")) {
+      try {
+        Tools.checkText(textToCheck,lt);
+      }
+ catch (      IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    text=new StringBuilder();
+  }
+}

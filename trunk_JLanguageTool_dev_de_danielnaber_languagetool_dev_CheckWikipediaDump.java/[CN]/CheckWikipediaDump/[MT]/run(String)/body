@@ -1,0 +1,10 @@
+{
+  JLanguageTool lt=new JLanguageTool(Language.GERMAN);
+  lt.activateDefaultPatternRules();
+  lt.disableRule("DE_CASE");
+  lt.disableRule("UPPERCASE_SENTENCE_START");
+  WikiDumpHandler handler=new WikiDumpHandler(lt);
+  SAXParserFactory factory=SAXParserFactory.newInstance();
+  SAXParser saxParser=factory.newSAXParser();
+  saxParser.parse(filename,handler);
+}

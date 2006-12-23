@@ -1,0 +1,8 @@
+{
+  CheckWikipediaDump prg=new CheckWikipediaDump();
+  if (args.length != 1) {
+    System.err.println("Usage: CheckWikipediaDump <filename>");
+    System.exit(1);
+  }
+  prg.run(args[0]);
+}
