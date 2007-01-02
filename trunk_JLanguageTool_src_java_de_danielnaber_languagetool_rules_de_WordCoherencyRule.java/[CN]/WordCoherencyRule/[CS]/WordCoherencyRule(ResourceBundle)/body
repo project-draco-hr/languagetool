@@ -1,4 +1,5 @@
 {
   if (messages != null)   super.setCategory(new Category(messages.getString("category_misc")));
   relevantWords=loadWords(JLanguageTool.getAbsoluteFile(FILE_NAME));
+  germanLemmatizer=new GermanLemmatizer();
 }

@@ -11,7 +11,13 @@
       List<AnalyzedToken> readings=tokens[i].getReadings();
       if (readings != null && readings.size() > 0) {
         String baseform=readings.get(0).getLemma();
-        if (baseform != null)         token=baseform;
+        if (baseform != null) {
+          token=baseform;
+        }
+ else {
+          String manualLookup=germanLemmatizer.getBaseform(origToken);
+          if (manualLookup != null)           token=manualLookup;
+        }
       }
       if (shouldNotAppearWord.containsKey(token)) {
         RuleMatch otherMatch=(RuleMatch)shouldNotAppearWord.get(token);
