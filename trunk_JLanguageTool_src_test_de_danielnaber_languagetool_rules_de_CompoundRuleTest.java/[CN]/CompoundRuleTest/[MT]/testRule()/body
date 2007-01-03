@@ -35,4 +35,8 @@
   check(1,"CW Wert",new String[]{"CW-Wert"});
   check(1,"Roll-on-roll-off Schiff",new String[]{"Roll-on-roll-off-Schiff"});
   check(1,"E-Mail Adressen",new String[]{"E-Mail-Adressen"});
+  check(0,"x-mal");
+  check(1,"x mal",new String[]{"x-mal"});
+  check(0,"y-Achse");
+  check(1,"y Achse",new String[]{"y-Achse"});
 }
