@@ -20,7 +20,7 @@
       suggestionText=")";
       fixLen=1;
     }
- else     if (prevToken.trim().equals(",") && !token.trim().equals("") && !token.equals("'")&& !token.equals("&quot")&& !token.equals("???")&& !token.equals("???")&& !token.matches(".*\\d.*")&& !token.equals("-")) {
+ else     if (prevToken.trim().equals(",") && !token.trim().equals("") && !token.equals("'")&& !token.equals("&quot")&& !token.equals("???")&& !token.equals("???")&& !token.equals("\"")&& !token.equals("???")&& !token.matches(".*\\d.*")&& !token.equals("-")) {
       msg=messages.getString("missing_space_after_comma");
       suggestionText=", ";
     }
