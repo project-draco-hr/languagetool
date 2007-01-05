@@ -10,4 +10,6 @@
   assertNull(aToken);
   aToken=tagger.lookup("gro??er");
   assertEquals("gro??er[ADJ:DAT:SIN:FEM:GRU:SOL, ADJ:GEN:PLU:FEM:GRU:SOL, " + "ADJ:GEN:PLU:MAS:GRU:SOL, ADJ:GEN:PLU:NEU:GRU:SOL, " + "ADJ:GEN:SIN:FEM:GRU:SOL, ADJ:NOM:SIN:MAS:GRU:IND, ADJ:NOM:SIN:MAS:GRU:SOL]",aToken.toString());
+  aToken=tagger.lookup("Interessen");
+  assertEquals("Interessen[SUB:DAT:PLU:NEU, SUB:NOM:PLU:NEU, SUB:AKK:PLU:NEU, SUB:GEN:PLU:NEU]",aToken.toString());
 }
