@@ -21,6 +21,7 @@
       if (tokenPos >= tokens.length)       break;
       AnalyzedGermanTokenReadings nextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos];
       if (nextToken.hasReadingOfType(POSType.ADJEKTIV)) {
+        if ("Berliner".equals(nextToken.getToken()))         break;
         tokenPos=i + 2;
         if (tokenPos >= tokens.length)         break;
         AnalyzedGermanTokenReadings nextNextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos];
