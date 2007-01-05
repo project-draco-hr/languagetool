@@ -3,7 +3,14 @@
   List<AnalyzedGermanToken> readings=aToken.getGermanReadings();
   for (  AnalyzedGermanToken reading : readings) {
     if (reading.getCasus() == null && reading.getNumerus() == null && reading.getGenus() == null)     continue;
-    set.add(reading.getCasus() + "/" + reading.getNumerus()+ "/"+ reading.getGenus());
+    if (reading.getGenus() == null) {
+      set.add(reading.getCasus() + "/" + reading.getNumerus()+ "/"+ GermanToken.Genus.FEMININUM);
+      set.add(reading.getCasus() + "/" + reading.getNumerus()+ "/"+ GermanToken.Genus.MASKULINUM);
+      set.add(reading.getCasus() + "/" + reading.getNumerus()+ "/"+ GermanToken.Genus.FEMININUM);
+    }
+ else {
+      set.add(reading.getCasus() + "/" + reading.getNumerus()+ "/"+ reading.getGenus());
+    }
   }
   return set;
 }

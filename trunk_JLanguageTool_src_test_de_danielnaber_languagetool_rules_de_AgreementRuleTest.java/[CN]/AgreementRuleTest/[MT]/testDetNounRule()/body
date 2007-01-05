@@ -19,6 +19,9 @@
   assertGood("Das Dach meiner gro??en Autos.");
   assertGood("Das Wahlrecht, das Frauen damals zugesprochen bekamen.");
   assertGood("Es war Karl, dessen Leiche Donnerstag gefunden wurde.");
+  assertGood("Erst recht ich Arbeiter.");
+  assertGood("Erst recht wir Arbeiter.");
+  assertGood("Erst recht wir flei??igen Arbeiter.");
   assertGood("Dann lud er Freunde ein.");
   assertGood("Dann lud sie Freunde ein.");
   assertGood("Aller Kommunikation liegt dies zugrunde.");
@@ -43,4 +46,6 @@
   assertBad("Das Dach meinem Autos.");
   assertBad("Das Dach meinem gro??en Autos.");
   assertBad("Das Dach mein gro??en Autos.");
+  assertBad("Erst recht wir flei??iges Arbeiter.");
+  assertBad("Erst recht ich flei??iges Arbeiter.");
 }
