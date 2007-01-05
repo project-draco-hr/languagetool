@@ -1,0 +1,3 @@
+{
+  mapping=loadMapping(file,"utf8");
+}

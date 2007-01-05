@@ -1,0 +1,8 @@
+{
+  ManualTagger mt=new ManualTagger(new File(MANUAL_DICT_FILENAME));
+  assertNull(mt.lookup(""));
+  assertNull(mt.lookup("gibtsnicht"));
+  assertEquals("[Trotz, SUB:NOM:SIN:MAS]",Arrays.toString(mt.lookup("Trotz")));
+  assertNull(mt.lookup("trotz"));
+  assertEquals("[Interesse, SUB:NOM:PLU:NEU, Interesse, SUB:AKK:PLU:NEU, Interesse, SUB:GEN:PLU:NEU]",Arrays.toString(mt.lookup("Interessen")));
+}

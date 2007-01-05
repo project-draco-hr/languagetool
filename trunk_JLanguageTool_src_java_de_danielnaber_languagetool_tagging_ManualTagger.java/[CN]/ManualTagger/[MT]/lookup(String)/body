@@ -1,0 +1,12 @@
+{
+  List<LookedUpTerm> l=mapping.get(term);
+  if (l == null)   return null;
+  List<String> plainResult=new ArrayList<String>();
+  for (Iterator iter=l.iterator(); iter.hasNext(); ) {
+    LookedUpTerm lookedUpTerm=(LookedUpTerm)iter.next();
+    plainResult.add(lookedUpTerm.baseform);
+    plainResult.add(lookedUpTerm.postags);
+  }
+  if (plainResult.size() == 0)   return null;
+  return plainResult.toArray(new String[]{});
+}

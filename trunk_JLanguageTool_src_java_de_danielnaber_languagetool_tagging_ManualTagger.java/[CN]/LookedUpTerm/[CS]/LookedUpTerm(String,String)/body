@@ -1,0 +1,4 @@
+{
+  this.baseform=baseform;
+  this.postags=postags;
+}
