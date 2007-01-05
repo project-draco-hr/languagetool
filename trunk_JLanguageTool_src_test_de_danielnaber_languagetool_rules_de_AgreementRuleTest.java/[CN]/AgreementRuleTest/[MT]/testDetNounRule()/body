@@ -17,8 +17,12 @@
   assertGood("Das Dach meiner Autos.");
   assertGood("Das Dach meines gro??en Autos.");
   assertGood("Das Dach meiner gro??en Autos.");
-  assertGood("Das Wahlrecht, das Frauen damalszugesprochen bekamen.");
+  assertGood("Das Wahlrecht, das Frauen damals zugesprochen bekamen.");
   assertGood("Es war Karl, dessen Leiche Donnerstag gefunden wurde.");
+  assertGood("Dann lud er Freunde ein.");
+  assertGood("Dann lud sie Freunde ein.");
+  assertGood("Aller Kommunikation liegt dies zugrunde.");
+  assertGood("Pragmatisch w??hlt man solche Formeln als Axiome.");
   assertGood("Der Abschuss eines Papageien.");
   assertBad("Es sind die Tisch.");
   assertBad("Es sind das Tisch.");
