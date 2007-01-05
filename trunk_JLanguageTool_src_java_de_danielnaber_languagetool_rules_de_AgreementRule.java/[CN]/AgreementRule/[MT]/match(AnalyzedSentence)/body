@@ -10,6 +10,7 @@
     if (i > 0 && tokens[i - 1].getToken().equalsIgnoreCase("vor") && tokens[i].getToken().equalsIgnoreCase("allem"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("er") || tokens[i].getToken().equalsIgnoreCase("sie") || tokens[i].getToken().equalsIgnoreCase("es"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("dessen"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("deren"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("sich"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("unser"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("aller"))     isRelevantPronomen=false;
