@@ -1,0 +1,11 @@
+{
+  Set<String> set1=getAgreementCategories(token1,relax);
+  if (set1 == null)   return null;
+  Set<String> set2=getAgreementCategories(token2,relax);
+  if (set2 == null)   return null;
+  Set<String> set3=getAgreementCategories(token3,relax);
+  if (set3 == null)   return null;
+  set1.retainAll(set2);
+  set1.retainAll(set3);
+  return set1;
+}

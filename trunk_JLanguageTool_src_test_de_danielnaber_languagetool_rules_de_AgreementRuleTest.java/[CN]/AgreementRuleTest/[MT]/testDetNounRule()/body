@@ -47,5 +47,4 @@
   assertBad("Das Dach meinem gro??en Autos.");
   assertBad("Das Dach mein gro??en Autos.");
   assertBad("Erst recht wir flei??iges Arbeiter.");
-  assertBad("Erst recht ich flei??iges Arbeiter.");
 }

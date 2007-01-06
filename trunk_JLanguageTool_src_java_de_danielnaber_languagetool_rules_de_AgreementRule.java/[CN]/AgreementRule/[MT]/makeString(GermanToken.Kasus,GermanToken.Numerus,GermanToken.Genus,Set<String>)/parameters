@@ -1,0 +1,4 @@
+GermanToken.Kasus casus
+GermanToken.Numerus num
+GermanToken.Genus gen
+Set<String> omit

@@ -1,15 +1,9 @@
 {
+  Set<String> relax=new HashSet<String>();
+  Set<String> set=retainCommonCategories(token1,token2,token3,relax);
   RuleMatch ruleMatch=null;
-  Set<String> set1=getAgreementCategories(token1);
-  if (set1 == null)   return null;
-  Set<String> set2=getAgreementCategories(token2);
-  if (set2 == null)   return null;
-  Set<String> set3=getAgreementCategories(token3);
-  if (set3 == null)   return null;
-  set1.retainAll(set2);
-  set1.retainAll(set3);
-  if (set1.size() == 0) {
-    String msg="Fehlende ??bereinstimmung (Kongruenz) zwischen Artikel, Adjektiv und" + " Nomen bez??glich Kasus, Numerus oder Genus.";
+  if (set.size() == 0) {
+    String msg="Fehlende ??bereinstimmung (Kongruenz) zwischen Artikel, Adjektiv und " + "Nomen bez??glich Kasus, Numerus oder Genus. Beispiel: 'mein kleiner Haus' " + "statt 'mein kleines Haus'";
     ruleMatch=new RuleMatch(this,token1.getStartPos(),token3.getStartPos() + token3.getToken().length(),msg);
   }
   return ruleMatch;

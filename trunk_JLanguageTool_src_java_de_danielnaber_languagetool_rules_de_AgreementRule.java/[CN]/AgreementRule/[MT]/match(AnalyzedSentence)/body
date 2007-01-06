@@ -9,12 +9,20 @@
     boolean isRelevantPronomen=analyzedToken.hasReadingOfType(POSType.PRONOMEN);
     if (i > 0 && tokens[i - 1].getToken().equalsIgnoreCase("vor") && tokens[i].getToken().equalsIgnoreCase("allem"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("er") || tokens[i].getToken().equalsIgnoreCase("sie") || tokens[i].getToken().equalsIgnoreCase("es"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("ich"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("du"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("dessen"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("deren"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("sich"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("unser"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("aller"))     isRelevantPronomen=false;
  else     if (tokens[i].getToken().equalsIgnoreCase("man"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("beiden"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("wessen"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("a"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("alle"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("etwas"))     isRelevantPronomen=false;
+ else     if (tokens[i].getToken().equalsIgnoreCase("was"))     isRelevantPronomen=false;
     boolean ignore=tokens[i - 1].getToken().equals(",") && tokens[i].getToken().equalsIgnoreCase("das");
     if ((analyzedToken.hasReadingOfType(POSType.DETERMINER) || isRelevantPronomen) && !ignore) {
       int tokenPos=i + 1;
