@@ -21,4 +21,5 @@
   float timeInSeconds=(float)time / 1000.0f;
   float sentencesPerSecond=(float)lt.getSentenceCount() / (float)timeInSeconds;
   System.out.printf(Locale.ENGLISH,"Time: %dms (including %dms for rule matching) for %d sentences (%.1f sentences/sec)\n",time,endTime - startTimeMatching,lt.getSentenceCount(),sentencesPerSecond);
+  return ruleMatches.size();
 }
