@@ -4,7 +4,13 @@
     String textToCheck=cleanup(text.toString());
     if (!textToCheck.contains("#REDIRECT")) {
       try {
-        Tools.checkText(textToCheck,lt);
+        articleCount++;
+        if (maxArticles > 0 && articleCount >= maxArticles) {
+          System.out.printf("Maximim number of articles reached. Found %d matches in %d articles\n",ruleMatches,articleCount);
+          System.exit(0);
+        }
+        System.out.println("checking article " + articleCount);
+        ruleMatches+=Tools.checkText(textToCheck,lt);
       }
  catch (      IOException e) {
         throw new RuntimeException(e);

@@ -6,10 +6,8 @@
   }
   JLanguageTool lt=new JLanguageTool(lang,Language.GERMAN);
   lt.activateDefaultPatternRules();
-  lt.disableRule("DE_CASE");
-  lt.disableRule("UPPERCASE_SENTENCE_START");
   System.err.println("These rules are disabled: " + lt.getDisabledRules());
-  WikiDumpHandler handler=new WikiDumpHandler(lt);
+  WikiDumpHandler handler=new WikiDumpHandler(lt,maxArticles);
   SAXParserFactory factory=SAXParserFactory.newInstance();
   SAXParser saxParser=factory.newSAXParser();
   saxParser.parse(filename,handler);

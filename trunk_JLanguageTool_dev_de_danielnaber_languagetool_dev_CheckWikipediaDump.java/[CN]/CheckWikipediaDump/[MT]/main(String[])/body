@@ -1,8 +1,10 @@
 {
   CheckWikipediaDump prg=new CheckWikipediaDump();
-  if (args.length != 2) {
-    System.err.println("Usage: CheckWikipediaDump <language> <filename>");
+  if (args.length < 2 || args.length > 3) {
+    System.err.println("Usage: CheckWikipediaDump <language> <filename> [maxArticleCheck]");
     System.exit(1);
   }
-  prg.run(args[0],args[1]);
+  int maxArticles=0;
+  if (args.length == 3)   maxArticles=Integer.parseInt(args[2]);
+  prg.run(args[0],args[1],maxArticles);
 }
