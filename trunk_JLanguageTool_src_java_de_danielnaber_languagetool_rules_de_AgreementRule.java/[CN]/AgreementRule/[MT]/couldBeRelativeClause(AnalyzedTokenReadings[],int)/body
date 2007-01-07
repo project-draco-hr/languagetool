@@ -1,0 +1,19 @@
+{
+  boolean comma=false;
+  boolean relPronoun=false;
+  if (pos >= 1) {
+    comma=tokens[pos - 1].getToken().equals(",");
+    String term=tokens[pos].getToken().toLowerCase();
+    relPronoun=relPronouns.contains(term);
+    if (comma && relPronoun)     return true;
+  }
+  if (pos >= 2) {
+    comma=tokens[pos - 2].getToken().equals(",");
+    String term1=tokens[pos - 1].getToken().toLowerCase();
+    String term2=tokens[pos].getToken().toLowerCase();
+    boolean prep=prepositions.contains(term1);
+    relPronoun=relPronouns.contains(term2);
+    return comma && prep && relPronoun;
+  }
+  return false;
+}

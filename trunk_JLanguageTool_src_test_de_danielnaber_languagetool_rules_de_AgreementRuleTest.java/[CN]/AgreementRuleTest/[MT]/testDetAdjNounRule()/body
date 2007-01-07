@@ -9,7 +9,6 @@
   assertGood("Die riesigen Tische sind gro??.");
   assertGood("Der riesigen Tische wegen.");
   assertBad("Es sind die riesigen Tisch.");
-  assertBad("Dort, die riesigen Tischs!");
   assertBad("Als die riesigen Tischs kamen.");
   assertBad("Als die riesigen Tisches kamen.");
 }
