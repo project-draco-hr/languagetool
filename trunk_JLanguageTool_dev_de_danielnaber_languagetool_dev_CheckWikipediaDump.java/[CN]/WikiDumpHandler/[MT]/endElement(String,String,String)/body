@@ -1,7 +1,7 @@
 {
   if (qName.equals("text")) {
     inText=false;
-    String textToCheck=cleanup(text.toString());
+    String textToCheck=textFilter.filter(text.toString());
     if (!textToCheck.contains("#REDIRECT")) {
       try {
         articleCount++;

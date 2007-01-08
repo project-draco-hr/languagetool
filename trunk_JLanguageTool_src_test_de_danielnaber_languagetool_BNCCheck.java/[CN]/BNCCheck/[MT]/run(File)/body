@@ -8,14 +8,7 @@
  else {
     System.out.println("Checking " + file.getAbsolutePath());
     String text=StringTools.readFile(file.getAbsolutePath());
-    text=text.replaceAll("(?s)<header.*?>.*?</header>","");
-    text=text.replaceAll("<w.*?>","");
-    text=text.replaceAll("<c.*?>","");
-    text=text.replaceAll("<.*?>","");
-    text=text.replaceAll(" +"," ");
-    text=text.replaceAll("&bquo|&equo","\"");
-    text=text.replaceAll("&mdash;?","--");
-    text=text.replaceAll("&amp;?","&");
+    text=textFilter.filter(text);
     Tools.checkText(text,prg.getJLanguageTool());
   }
 }
