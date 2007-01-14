@@ -31,6 +31,7 @@
   assertGood("Der Mann, in dem quadratische Fische schwammen.");
   assertGood("Gutenberg, der quadratische Mann.");
   assertGood("Das M??nchener Fest.");
+  assertGood("Das M??nchner Fest.");
   assertGood("Die Planung des M??nchener Festes.");
   assertGood("Das Berliner Wetter.");
   assertGood("Den Berliner Arbeitern ist das egal.");
