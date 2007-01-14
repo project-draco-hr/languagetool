@@ -30,6 +30,15 @@
   assertGood("Das Recht, das Frauen einger??umt wird.");
   assertGood("Der Mann, in dem quadratische Fische schwammen.");
   assertGood("Gutenberg, der quadratische Mann.");
+  assertGood("Das M??nchener Fest.");
+  assertGood("Die Planung des M??nchener Festes.");
+  assertGood("Das Berliner Wetter.");
+  assertGood("Den Berliner Arbeitern ist das egal.");
+  assertGood("Das Haus des Berliner Arbeiters.");
+  assertGood("Es geh??rt dem Berliner Arbeiter.");
+  assertGood("Das Stuttgarter Auto.");
+  assertGood("Das Bielefelder Radio.");
+  assertGood("Das G??tersloher Radio.");
   assertBad("Es sind die Tisch.");
   assertBad("Es sind das Tisch.");
   assertBad("Es sind die Haus.");

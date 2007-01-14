@@ -1,0 +1,22 @@
+{
+  String nextTerm=nextToken.getToken();
+  if (nextTerm.endsWith("er") && tokens.length > tokenPos + 1) {
+    AnalyzedGermanTokenReadings nextNextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos + 1];
+    GermanTagger tagger=new GermanTagger();
+    try {
+      AnalyzedGermanTokenReadings nextATR=tagger.lookup(nextTerm.substring(0,nextTerm.length() - 2));
+      AnalyzedGermanTokenReadings nextNextATR=tagger.lookup(nextNextToken.getToken());
+      if (nextATR != null && (nextATR.hasReadingOfType(POSType.PROPER_NOUN) || nextATR.hasReadingOfType(POSType.NOMEN)) && nextNextATR != null && nextNextATR.hasReadingOfType(POSType.NOMEN)) {
+        AnalyzedGermanToken[] adjReadings=new AnalyzedGermanToken[ADJ_READINGS.length];
+        for (int j=0; j < ADJ_READINGS.length; j++) {
+          adjReadings[j]=new AnalyzedGermanToken(nextTerm,ADJ_READINGS[j],nextToken.getStartPos());
+        }
+        nextToken=new AnalyzedGermanTokenReadings(adjReadings);
+      }
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+  return nextToken;
+}
