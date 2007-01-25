@@ -1,0 +1,4 @@
+{
+  String xml=StringTools.readFile(filename);
+  validateInternal(xml,dtdFile,docType);
+}

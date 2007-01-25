@@ -1,0 +1,3 @@
+{
+  validateInternal(xml,dtdFile,docType);
+}
