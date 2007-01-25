@@ -1,5 +1,6 @@
 {
   StringBuilder xml=new StringBuilder();
+  xml.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
   xml.append("<matches>\n");
   int i=1;
   for (  RuleMatch match : ruleMatches) {
