@@ -9,6 +9,15 @@
     System.out.println("Checking " + file.getAbsolutePath());
     String text=StringTools.readFile(file.getAbsolutePath());
     text=textFilter.filter(text);
-    Tools.checkText(text,langTool);
+    if (CHECK_BY_SENTENCE) {
+      SentenceTokenizer st=new SentenceTokenizer();
+      List<String> sentences=st.tokenize(text);
+      for (      String sentence : sentences) {
+        Tools.checkText(sentence,langTool,false,1000);
+      }
+    }
+ else {
+      Tools.checkText(text,langTool);
+    }
   }
 }
