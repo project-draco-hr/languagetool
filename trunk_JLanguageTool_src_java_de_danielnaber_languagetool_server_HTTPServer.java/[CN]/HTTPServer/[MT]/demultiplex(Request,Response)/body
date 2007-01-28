@@ -17,6 +17,7 @@
       System.out.println("Checking text with length " + text.length());
       List<RuleMatch> matches=lt.check(text);
       connResponse.setHeaderLine(ProtocolResponseHeader.Content_Type,"text/xml");
+      connResponse.setHeaderLine(ProtocolResponseHeader.Content_Encoding,System.getProperty("file.encoding"));
       return StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE);
     }
  else {

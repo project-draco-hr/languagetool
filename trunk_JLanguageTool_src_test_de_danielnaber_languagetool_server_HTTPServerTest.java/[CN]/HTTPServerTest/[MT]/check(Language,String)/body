@@ -1,6 +1,6 @@
 {
   String urlOptions="/?language=" + lang.getShortName();
-  urlOptions+="&text=" + URLEncoder.encode(text);
+  urlOptions+="&text=" + URLEncoder.encode(text,"latin1");
   URL url=new URL("http://localhost:" + HTTPServer.DEFAULT_PORT + urlOptions);
   InputStream stream=(InputStream)url.getContent();
   String result=StringTools.streamToString(stream);
