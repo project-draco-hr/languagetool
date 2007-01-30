@@ -4,7 +4,7 @@
   xml.append("<matches>\n");
   int i=1;
   for (  RuleMatch match : ruleMatches) {
-    xml.append("<error" + " fromy=\"" + (match.getLine() + 1) + "\""+ " fromx=\""+ (match.getColumn() + 1)+ "\""+ " toy=\""+ (match.getEndLine() + 1)+ "\""+ " tox=\""+ match.getEndColumn()+ "\""+ " ruleId=\""+ match.getRule().getId()+ "\"");
+    xml.append("<error" + " fromy=\"" + match.getLine() + "\""+ " fromx=\""+ match.getColumn()+ "\""+ " toy=\""+ match.getEndLine()+ "\""+ " tox=\""+ match.getEndColumn()+ "\""+ " ruleId=\""+ match.getRule().getId()+ "\"");
     String msg=match.getMessage().replaceAll("</?suggestion>","'");
     xml.append(" msg=\"" + escapeXMLForAPIOutput(msg) + "\"");
     final String START_MARKER="__languagetoo_start_marker";
