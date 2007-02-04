@@ -26,6 +26,10 @@
   assertGood("Dann lud sie Freunde ein.");
   assertGood("Aller Kommunikation liegt dies zugrunde.");
   assertGood("Pragmatisch w??hlt man solche Formeln als Axiome.");
+  assertGood("Der eine Polizist rief dem anderen zu...");
+  assertGood("Das eine Kind rief dem anderen zu...");
+  assertGood("Er wollte seine Interessen wahrnehmen.");
+  assertGood("... wo Krieg den Unschuldigen Leid und Tod bringt.");
   assertGood("Der Abschuss eines Papageien.");
   assertGood("Das Recht, das Frauen einger??umt wird.");
   assertGood("Der Mann, in dem quadratische Fische schwammen.");
