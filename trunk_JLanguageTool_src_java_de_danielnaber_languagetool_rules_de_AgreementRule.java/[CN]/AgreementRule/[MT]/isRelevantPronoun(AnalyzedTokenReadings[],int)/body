@@ -1,0 +1,22 @@
+{
+  AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[pos];
+  boolean isRelevantPronomen=analyzedToken.hasReadingOfType(POSType.PRONOMEN);
+  String token=tokens[pos].getToken();
+  if (pos > 0 && tokens[pos - 1].getToken().equalsIgnoreCase("vor") && tokens[pos].getToken().equalsIgnoreCase("allem"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("er") || token.equalsIgnoreCase("sie") || token.equalsIgnoreCase("es"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("ich"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("du"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("dessen"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("deren"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("sich"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("unser"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("aller"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("man"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("beiden"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("wessen"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("a"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("alle"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("etwas"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("was"))   isRelevantPronomen=false;
+  return isRelevantPronomen;
+}
