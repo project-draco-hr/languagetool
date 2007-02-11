@@ -13,6 +13,7 @@
     XMLValidator validator=new XMLValidator();
     validator.validateXMLString(result,"resource/api-output.dtd","matches");
     validator.checkSimpleXMLString(result);
+    assertTrue(check(Language.GERMAN,"bla <script>").indexOf("<script>") == -1);
   }
  catch (  Exception e) {
     throw new RuntimeException(e);

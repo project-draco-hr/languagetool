@@ -28,6 +28,6 @@
  catch (  Exception e) {
     e.printStackTrace();
     connResponse.setStatus(500);
-    return "Error: " + e.toString();
+    return "Error: " + StringTools.escapeXML(e.toString());
   }
 }
