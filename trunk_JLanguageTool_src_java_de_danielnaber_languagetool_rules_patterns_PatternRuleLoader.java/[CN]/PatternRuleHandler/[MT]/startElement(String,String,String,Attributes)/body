@@ -109,4 +109,8 @@
  else   if (qName.equals("marker") && inIncorrectExample) {
     incorrectExample.append("<marker>");
   }
+ else   if (qName.equals("phrases")) {
+    inPhrases=true;
+    phrases=new StringBuffer();
+  }
 }
