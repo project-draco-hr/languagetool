@@ -15,7 +15,7 @@
       elementList.clear();
     }
   }
- else   if (qName.equals("exception")) {
+ else   if (qName.equals("exception") && !inPhrases) {
     inException=false;
     if (!exceptionSet) {
       stringElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
@@ -30,7 +30,7 @@
       exceptionPosToken=null;
     }
   }
- else   if (qName.equals("token")) {
+ else   if (qName.equals("token") && !inPhrases) {
     if (!exceptionSet || stringElement == null) {
       stringElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
       stringElement.setNegation(stringNegation);

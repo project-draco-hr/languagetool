@@ -27,7 +27,7 @@
     if (attrs.getValue("mark_to") != null)     endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
     if (attrs.getValue("case_sensitive") != null && attrs.getValue("case_sensitive").equals("yes"))     caseSensitive=true;
   }
- else   if (qName.equals("token")) {
+ else   if (qName.equals("token") && !inPhrases) {
     inToken=true;
     if (attrs.getValue("negate") != null) {
       stringNegation=attrs.getValue("negate").equals("yes");
@@ -58,7 +58,7 @@
       stringRegExp=attrs.getValue("regexp").equals("yes");
     }
   }
- else   if (qName.equals("exception")) {
+ else   if (qName.equals("exception") && !inPhrases) {
     inException=true;
     exceptions=new StringBuffer();
     if (attrs.getValue("negate") != null) {
