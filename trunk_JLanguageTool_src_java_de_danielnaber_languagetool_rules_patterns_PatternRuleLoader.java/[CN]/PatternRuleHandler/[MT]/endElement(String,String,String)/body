@@ -15,7 +15,7 @@
       elementList.clear();
     }
   }
- else   if (qName.equals("exception") && !inPhrases) {
+ else   if (qName.equals("exception")) {
     inException=false;
     if (!exceptionSet) {
       stringElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
@@ -30,7 +30,7 @@
       exceptionPosToken=null;
     }
   }
- else   if (qName.equals("token") && !inPhrases) {
+ else   if (qName.equals("token")) {
     if (!exceptionSet || stringElement == null) {
       stringElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
       stringElement.setNegation(stringNegation);
@@ -90,6 +90,25 @@
   }
  else   if (qName.equals("marker") && inIncorrectExample) {
     incorrectExample.append("</marker>");
+  }
+ else   if (qName.equals("phrase") && inPhrases) {
+    if (phraseMap == null) {
+      phraseMap=new HashMap<String,List<Element>>();
+    }
+    List<Element> phrElemList=new ArrayList<Element>();
+    Iterator<Element> it=elementList.iterator();
+    while (it.hasNext()) {
+      phrElemList.add(it.next());
+    }
+    phraseMap.put(phraseId,phrElemList);
+    if (elementList != null) {
+      elementList.clear();
+    }
+  }
+ else   if (qName.equals("phraseref") && inPhrases) {
+    if (elementList != null) {
+      elementList.clear();
+    }
   }
  else   if (qName.equals("phrases") && inPhrases) {
     inPhrases=false;

@@ -15,7 +15,4 @@
  else   if (inMessage) {
     message.append(s);
   }
- else   if (inPhrases) {
-    phrases.append(s);
-  }
 }

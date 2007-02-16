@@ -27,7 +27,7 @@
     if (attrs.getValue("mark_to") != null)     endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
     if (attrs.getValue("case_sensitive") != null && attrs.getValue("case_sensitive").equals("yes"))     caseSensitive=true;
   }
- else   if (qName.equals("token") && !inPhrases) {
+ else   if (qName.equals("token")) {
     inToken=true;
     if (attrs.getValue("negate") != null) {
       stringNegation=attrs.getValue("negate").equals("yes");
@@ -58,7 +58,7 @@
       stringRegExp=attrs.getValue("regexp").equals("yes");
     }
   }
- else   if (qName.equals("exception") && !inPhrases) {
+ else   if (qName.equals("exception")) {
     inException=true;
     exceptions=new StringBuffer();
     if (attrs.getValue("negate") != null) {
@@ -111,6 +111,22 @@
   }
  else   if (qName.equals("phrases")) {
     inPhrases=true;
-    phrases=new StringBuffer();
+  }
+ else   if (qName.equals("phrase") && inPhrases) {
+    phraseId=attrs.getValue("id");
+  }
+ else   if (qName.equals("phraseref") && inPhrases) {
+    if (elementList == null) {
+      elementList=new ArrayList<Element>();
+    }
+    if (attrs.getValue("idref") != null) {
+      if (phraseMap.containsKey(attrs.getValue("idref"))) {
+        phraseElementList=phraseMap.get(attrs.getValue("idref"));
+        Iterator<Element> it=phraseElementList.iterator();
+        while (it.hasNext()) {
+          elementList.add(it.next());
+        }
+      }
+    }
   }
 }
