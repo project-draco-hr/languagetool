@@ -1,18 +1,46 @@
 {
   if (qName.equals("rule")) {
-    PatternRule rule=new PatternRule(id,language,elementList,description,message.toString());
-    rule.setStartPositionCorrection(startPositionCorrection);
-    rule.setEndPositionCorrection(endPositionCorrection);
-    startPositionCorrection=0;
-    endPositionCorrection=0;
-    rule.setCorrectExamples(correctExamples);
-    rule.setIncorrectExamples(incorrectExamples);
-    rule.setCaseSensitive(caseSensitive);
-    rule.setCategory(category);
-    caseSensitive=false;
-    rules.add(rule);
+    if (phraseElementList == null) {
+      phraseElementList=new ArrayList<ArrayList<Element>>();
+    }
+    if (!phraseElementList.isEmpty()) {
+      Iterator<ArrayList<Element>> phIt=phraseElementList.iterator();
+      while (phIt.hasNext()) {
+        phIt.next().addAll(new ArrayList<Element>(elementList));
+      }
+      Iterator<ArrayList<Element>> it=phraseElementList.iterator();
+      while (it.hasNext()) {
+        PatternRule rule=new PatternRule(id + phraseIdRef,language,it.next(),description,message.toString());
+        rule.setStartPositionCorrection(startPositionCorrection);
+        rule.setEndPositionCorrection(endPositionCorrection);
+        startPositionCorrection=0;
+        endPositionCorrection=0;
+        rule.setCorrectExamples(correctExamples);
+        rule.setIncorrectExamples(incorrectExamples);
+        rule.setCaseSensitive(caseSensitive);
+        rule.setCategory(category);
+        caseSensitive=false;
+        rules.add(rule);
+      }
+    }
+ else {
+      PatternRule rule=new PatternRule(id,language,elementList,description,message.toString());
+      rule.setStartPositionCorrection(startPositionCorrection);
+      rule.setEndPositionCorrection(endPositionCorrection);
+      startPositionCorrection=0;
+      endPositionCorrection=0;
+      rule.setCorrectExamples(correctExamples);
+      rule.setIncorrectExamples(incorrectExamples);
+      rule.setCaseSensitive(caseSensitive);
+      rule.setCategory(category);
+      caseSensitive=false;
+      rules.add(rule);
+    }
     if (elementList != null) {
       elementList.clear();
+    }
+    if (phraseElementList != null) {
+      phraseElementList.clear();
     }
   }
  else   if (qName.equals("exception")) {

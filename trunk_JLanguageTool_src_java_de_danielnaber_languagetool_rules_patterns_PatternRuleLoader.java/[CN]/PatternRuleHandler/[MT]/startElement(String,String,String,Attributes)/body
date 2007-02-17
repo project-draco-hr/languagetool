@@ -124,10 +124,11 @@
  else   if (qName.equals("phrase") && inPhrases) {
     phraseId=attrs.getValue("id");
   }
- else   if (qName.equals("phraseref") && inIncludePhrases) {
+ else   if (qName.equals("phraseref")) {
     if (attrs.getValue("idref") != null) {
-      if (phraseMap.containsKey(attrs.getValue("idref"))) {
-        ArrayList<ArrayList<Element>> curPhraseElementList=phraseMap.get(attrs.getValue("idref"));
+      phraseIdRef=attrs.getValue("idref");
+      if (phraseMap.containsKey(phraseIdRef)) {
+        ArrayList<ArrayList<Element>> curPhraseElementList=phraseMap.get(phraseIdRef);
         Iterator<ArrayList<Element>> it=curPhraseElementList.iterator();
         ArrayList<Element> prevList=new ArrayList<Element>(elementList);
         if (!phraseElementList.isEmpty()) {
