@@ -93,22 +93,35 @@
   }
  else   if (qName.equals("phrase") && inPhrases) {
     if (phraseMap == null) {
-      phraseMap=new HashMap<String,List<Element>>();
+      phraseMap=new HashMap<String,ArrayList<ArrayList<Element>>>();
     }
-    List<Element> phrElemList=new ArrayList<Element>();
-    Iterator<Element> it=elementList.iterator();
-    while (it.hasNext()) {
-      phrElemList.add(it.next());
+    if (phraseElementList == null) {
+      phraseElementList=new ArrayList<ArrayList<Element>>();
     }
-    phraseMap.put(phraseId,phrElemList);
+    if (elementList != null) {
+      if (!phraseElementList.isEmpty()) {
+        Iterator<ArrayList<Element>> phIt=phraseElementList.iterator();
+        while (phIt.hasNext()) {
+          phIt.next().addAll(new ArrayList<Element>(elementList));
+        }
+      }
+ else {
+        phraseElementList.add(new ArrayList<Element>(elementList));
+      }
+    }
+    phraseMap.put(phraseId,new ArrayList<ArrayList<Element>>(phraseElementList));
+    if (elementList != null) {
+      elementList.clear();
+    }
+    phraseElementList.clear();
+  }
+ else   if (qName.equals("phraseref") && inIncludePhrases) {
     if (elementList != null) {
       elementList.clear();
     }
   }
- else   if (qName.equals("phraseref") && inPhrases) {
-    if (elementList != null) {
-      elementList.clear();
-    }
+ else   if (qName.equals("includephrases") && inPhrases) {
+    inIncludePhrases=false;
   }
  else   if (qName.equals("phrases") && inPhrases) {
     inPhrases=false;

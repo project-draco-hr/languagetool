@@ -112,20 +112,43 @@
  else   if (qName.equals("phrases")) {
     inPhrases=true;
   }
- else   if (qName.equals("phrase") && inPhrases) {
-    phraseId=attrs.getValue("id");
-  }
- else   if (qName.equals("phraseref") && inPhrases) {
+ else   if (qName.equals("includephrases")) {
+    inIncludePhrases=true;
+    if (phraseElementList == null) {
+      phraseElementList=new ArrayList<ArrayList<Element>>();
+    }
     if (elementList == null) {
       elementList=new ArrayList<Element>();
     }
+  }
+ else   if (qName.equals("phrase") && inPhrases) {
+    phraseId=attrs.getValue("id");
+  }
+ else   if (qName.equals("phraseref") && inIncludePhrases) {
     if (attrs.getValue("idref") != null) {
       if (phraseMap.containsKey(attrs.getValue("idref"))) {
-        phraseElementList=phraseMap.get(attrs.getValue("idref"));
-        Iterator<Element> it=phraseElementList.iterator();
-        while (it.hasNext()) {
-          elementList.add(it.next());
+        ArrayList<ArrayList<Element>> curPhraseElementList=phraseMap.get(attrs.getValue("idref"));
+        Iterator<ArrayList<Element>> it=curPhraseElementList.iterator();
+        if (!phraseElementList.isEmpty()) {
+          while (it.hasNext()) {
+            Iterator<ArrayList<Element>> phIt=phraseElementList.iterator();
+            while (phIt.hasNext()) {
+              phIt.next().addAll(new ArrayList<Element>(it.next()));
+            }
+          }
         }
+ else {
+          while (it.hasNext()) {
+            if (!elementList.isEmpty()) {
+              elementList.addAll(it.next());
+              phraseElementList.add(new ArrayList<Element>(elementList));
+            }
+ else {
+              phraseElementList.add(new ArrayList<Element>(it.next()));
+            }
+          }
+        }
+        elementList.clear();
       }
     }
   }
