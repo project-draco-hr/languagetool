@@ -18,5 +18,6 @@
  else   if (token.equalsIgnoreCase("alle"))   isRelevantPronomen=false;
  else   if (token.equalsIgnoreCase("etwas"))   isRelevantPronomen=false;
  else   if (token.equalsIgnoreCase("was"))   isRelevantPronomen=false;
+ else   if (token.equalsIgnoreCase("wer"))   isRelevantPronomen=false;
   return isRelevantPronomen;
 }
