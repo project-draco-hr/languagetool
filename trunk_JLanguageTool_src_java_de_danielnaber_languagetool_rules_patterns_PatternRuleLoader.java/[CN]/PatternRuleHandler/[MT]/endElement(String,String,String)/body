@@ -116,12 +116,10 @@
     phraseElementList.clear();
   }
  else   if (qName.equals("phraseref") && inIncludePhrases) {
-    if (elementList != null) {
-      elementList.clear();
-    }
   }
  else   if (qName.equals("includephrases") && inPhrases) {
     inIncludePhrases=false;
+    elementList.clear();
   }
  else   if (qName.equals("phrases") && inPhrases) {
     inPhrases=false;

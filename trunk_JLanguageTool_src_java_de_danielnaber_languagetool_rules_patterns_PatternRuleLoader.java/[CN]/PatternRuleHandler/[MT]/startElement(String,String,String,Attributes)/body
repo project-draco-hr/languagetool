@@ -129,26 +129,25 @@
       if (phraseMap.containsKey(attrs.getValue("idref"))) {
         ArrayList<ArrayList<Element>> curPhraseElementList=phraseMap.get(attrs.getValue("idref"));
         Iterator<ArrayList<Element>> it=curPhraseElementList.iterator();
+        ArrayList<Element> prevList=new ArrayList<Element>(elementList);
         if (!phraseElementList.isEmpty()) {
           while (it.hasNext()) {
             Iterator<ArrayList<Element>> phIt=phraseElementList.iterator();
-            while (phIt.hasNext()) {
-              phIt.next().addAll(new ArrayList<Element>(it.next()));
-            }
+            prevList.addAll(it.next());
+            phraseElementList.add(new ArrayList<Element>(prevList));
           }
         }
  else {
           while (it.hasNext()) {
-            if (!elementList.isEmpty()) {
-              elementList.addAll(it.next());
-              phraseElementList.add(new ArrayList<Element>(elementList));
+            if (!prevList.isEmpty()) {
+              prevList.addAll(it.next());
+              phraseElementList.add(new ArrayList<Element>(prevList));
             }
  else {
               phraseElementList.add(new ArrayList<Element>(it.next()));
             }
           }
         }
-        elementList.clear();
       }
     }
   }
