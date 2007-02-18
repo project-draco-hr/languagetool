@@ -113,7 +113,6 @@
     inPhrases=true;
   }
  else   if (qName.equals("includephrases")) {
-    inIncludePhrases=true;
     if (phraseElementList == null) {
       phraseElementList=new ArrayList<ArrayList<Element>>();
     }

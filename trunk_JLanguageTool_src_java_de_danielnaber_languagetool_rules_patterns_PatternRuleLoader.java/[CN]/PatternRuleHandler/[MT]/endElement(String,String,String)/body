@@ -10,7 +10,7 @@
       }
       Iterator<ArrayList<Element>> it=phraseElementList.iterator();
       while (it.hasNext()) {
-        PatternRule rule=new PatternRule(id + phraseIdRef,language,it.next(),description,message.toString());
+        PatternRule rule=new PatternRule(id,language,it.next(),description,message.toString(),true);
         rule.setStartPositionCorrection(startPositionCorrection);
         rule.setEndPositionCorrection(endPositionCorrection);
         startPositionCorrection=0;
@@ -143,10 +143,7 @@
     }
     phraseElementList.clear();
   }
- else   if (qName.equals("phraseref") && inIncludePhrases) {
-  }
  else   if (qName.equals("includephrases") && inPhrases) {
-    inIncludePhrases=false;
     elementList.clear();
   }
  else   if (qName.equals("phrases") && inPhrases) {
