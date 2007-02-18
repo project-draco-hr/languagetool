@@ -50,9 +50,6 @@
       if (attrs.getValue("negate_pos") != null) {
         posNegation=attrs.getValue("negate_pos").equals("yes");
       }
-      if (elementList == null) {
-        elementList=new ArrayList<Element>();
-      }
     }
     if (attrs.getValue("regexp") != null) {
       stringRegExp=attrs.getValue("regexp").equals("yes");
