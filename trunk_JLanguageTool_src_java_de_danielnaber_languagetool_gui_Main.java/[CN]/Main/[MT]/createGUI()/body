@@ -32,7 +32,12 @@
       langBox.addItem(messages.getString(lang.getShortName()));
     }
   }
-  langBox.setSelectedItem(messages.getString((Locale.getDefault().getLanguage())));
+  try {
+    Locale defaultLocale=Locale.getDefault();
+    langBox.setSelectedItem(messages.getString((defaultLocale.getLanguage())));
+  }
+ catch (  MissingResourceException e) {
+  }
   panel.add(langBox,buttonCons);
   Container contentPane=frame.getContentPane();
   GridBagLayout gridLayout=new GridBagLayout();
