@@ -1,0 +1,3 @@
+{
+  return (clazz.getModifiers() & (Modifier.ABSTRACT | Modifier.INTERFACE)) == 0;
+}

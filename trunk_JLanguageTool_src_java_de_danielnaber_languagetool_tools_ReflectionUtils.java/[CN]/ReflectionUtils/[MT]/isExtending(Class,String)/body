@@ -1,0 +1,8 @@
+{
+  Class superclass1=class1.getSuperclass();
+  while (superclass1 != null) {
+    if (superclassName.equals(superclass1.getName()))     return true;
+    superclass1=superclass1.getSuperclass();
+  }
+  return false;
+}

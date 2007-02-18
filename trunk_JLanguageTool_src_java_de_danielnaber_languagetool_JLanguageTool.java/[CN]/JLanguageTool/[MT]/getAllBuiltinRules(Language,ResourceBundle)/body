@@ -1,0 +1,29 @@
+{
+  List<Rule> rules=new ArrayList<Rule>();
+  try {
+    Class[] classes1=ReflectionUtils.findClasses(Rule.class.getClassLoader(),Rule.class.getPackage().getName(),".*Rule$",0,Rule.class,null);
+    Class[] classes2=ReflectionUtils.findClasses(Rule.class.getClassLoader(),Rule.class.getPackage().getName() + "." + language.getShortName(),".*Rule$",0,Rule.class,null);
+    List<Class> classes=new ArrayList<Class>();
+    classes.addAll(Arrays.asList(classes1));
+    classes.addAll(Arrays.asList(classes2));
+    for (    Class class1 : classes) {
+      Constructor[] constructors=class1.getConstructors();
+      for (      Constructor constructor : constructors) {
+        Class[] paramTypes=constructor.getParameterTypes();
+        if (paramTypes.length == 1 && paramTypes[0].equals(ResourceBundle.class)) {
+          rules.add((Rule)constructor.newInstance(messages));
+          break;
+        }
+        if (paramTypes.length == 2 && paramTypes[0].equals(ResourceBundle.class) && paramTypes[1].equals(Language.class)) {
+          rules.add((Rule)constructor.newInstance(messages,language));
+          break;
+        }
+        throw new RuntimeException("Unkown constructor for rule class: " + class1.getName());
+      }
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Failed to load rules: " + e.getMessage(),e);
+  }
+  return rules.toArray(new Rule[0]);
+}

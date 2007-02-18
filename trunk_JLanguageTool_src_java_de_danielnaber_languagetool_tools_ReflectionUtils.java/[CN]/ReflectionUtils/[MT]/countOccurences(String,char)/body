@@ -1,0 +1,9 @@
+{
+  int i=0;
+  int pos=str.indexOf(ch,0);
+  while (pos != -1) {
+    i++;
+    pos=str.indexOf(ch,pos + 1);
+  }
+  return i;
+}
