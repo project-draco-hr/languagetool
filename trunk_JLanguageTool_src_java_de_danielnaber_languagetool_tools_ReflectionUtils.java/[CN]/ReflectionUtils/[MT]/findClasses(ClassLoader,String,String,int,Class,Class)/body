@@ -16,7 +16,7 @@
     }
     for (    URL resource : uniqResources) {
       if (resource.getPath().endsWith("jar")) {
-        JarFile currentFile=new JarFile(new File(resource.getPath()));
+        JarFile currentFile=new JarFile(new File(resource.toURI()));
         for (Enumeration<JarEntry> e=currentFile.entries(); e.hasMoreElements(); ) {
           JarEntry current=(JarEntry)e.nextElement();
           String name=current.getName();
@@ -39,7 +39,7 @@
         }
       }
  else {
-        File directory=new File(resource.getPath());
+        File directory=new File(resource.toURI());
         if (!directory.exists() && !directory.isDirectory()) {
           throw new Exception("directory does not exist: " + directory.getAbsolutePath());
         }
