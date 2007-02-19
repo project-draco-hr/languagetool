@@ -16,6 +16,9 @@
     }
     for (    URL resource : uniqResources) {
       if (resource.getPath().endsWith("jar")) {
+        if (resource.getPath().endsWith("LanguageTool.jar")) {
+          continue;
+        }
         JarFile currentFile=new JarFile(new File(resource.toURI()));
         for (Enumeration<JarEntry> e=currentFile.entries(); e.hasMoreElements(); ) {
           JarEntry current=(JarEntry)e.nextElement();
@@ -28,6 +31,9 @@
               String subName=classNm.substring(packageName.length() + 1);
               if (countOccurences(subName,'.') > subdirLevel)               continue;
               Class clazz=Class.forName(classNm);
+              if (foundClasses.contains(clazz)) {
+                throw new RuntimeException("Duplicate class definition:\n" + clazz.getName() + ", found in\n"+ currentFile.getName());
+              }
               if (!isMaterial(clazz))               continue;
               if (classExtends == null || isExtending(clazz,classExtends.getName())) {
                 if (interfaceImplements == null || isImplementing(clazz,interfaceImplements)) {
