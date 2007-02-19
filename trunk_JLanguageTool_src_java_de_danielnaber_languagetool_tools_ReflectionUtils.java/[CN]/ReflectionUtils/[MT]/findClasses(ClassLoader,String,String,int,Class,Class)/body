@@ -16,7 +16,7 @@
     }
     for (    URL resource : uniqResources) {
       if (resource.getPath().endsWith("jar")) {
-        if (resource.getPath().endsWith("LanguageTool.jar")) {
+        if (resource.getPath().endsWith("LanguageTool.uno.jar")) {
           continue;
         }
         JarFile currentFile=new JarFile(new File(resource.toURI()));
