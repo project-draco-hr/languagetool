@@ -1,3 +1,4 @@
 {
-  return (clazz.getModifiers() & (Modifier.ABSTRACT | Modifier.INTERFACE)) == 0;
+  int mod=clazz.getModifiers();
+  return (!Modifier.isAbstract(mod) && !Modifier.isInterface(mod));
 }
