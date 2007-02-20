@@ -1,0 +1,3 @@
+{
+  return messages.getString("desc_punctuation_generic_check");
+}
