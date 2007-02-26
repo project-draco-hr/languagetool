@@ -4,13 +4,15 @@
       phraseElementList=new ArrayList<ArrayList<Element>>();
     }
     if (!phraseElementList.isEmpty()) {
-      Iterator<ArrayList<Element>> phIt=phraseElementList.iterator();
-      while (phIt.hasNext()) {
-        phIt.next().addAll(new ArrayList<Element>(elementList));
+      if (!elementList.isEmpty()) {
+        Iterator<ArrayList<Element>> phIt=phraseElementList.iterator();
+        while (phIt.hasNext()) {
+          phIt.next().addAll(new ArrayList<Element>(elementList));
+        }
       }
       Iterator<ArrayList<Element>> it=phraseElementList.iterator();
       while (it.hasNext()) {
-        PatternRule rule=new PatternRule(id,language,it.next(),description,message.toString(),true);
+        PatternRule rule=new PatternRule(id,language,it.next(),description,message.toString(),phraseElementList.size() > 1);
         rule.setStartPositionCorrection(startPositionCorrection);
         rule.setEndPositionCorrection(endPositionCorrection);
         startPositionCorrection=0;
@@ -91,6 +93,9 @@
   }
  else   if (qName.equals("pattern")) {
     inPattern=false;
+    if (lastPhrase) {
+      elementList.clear();
+    }
   }
  else   if (qName.equals("example")) {
     if (inCorrectExample) {
@@ -143,13 +148,10 @@
     }
     phraseElementList.clear();
   }
- else   if (qName.equals("includephrases") && inPhrases) {
+ else   if (qName.equals("includephrases")) {
     elementList.clear();
   }
  else   if (qName.equals("phrases") && inPhrases) {
     inPhrases=false;
-  }
- else   if (qName.equals("phraseref")) {
-    elementList.clear();
   }
 }

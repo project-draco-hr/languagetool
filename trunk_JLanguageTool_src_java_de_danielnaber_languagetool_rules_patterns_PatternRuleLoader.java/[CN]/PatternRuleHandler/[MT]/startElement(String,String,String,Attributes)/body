@@ -29,6 +29,10 @@
   }
  else   if (qName.equals("token")) {
     inToken=true;
+    if (lastPhrase && elementList != null) {
+      elementList.clear();
+    }
+    lastPhrase=false;
     if (attrs.getValue("negate") != null) {
       stringNegation=attrs.getValue("negate").equals("yes");
     }
@@ -127,24 +131,16 @@
         ArrayList<ArrayList<Element>> curPhraseElementList=phraseMap.get(phraseIdRef);
         Iterator<ArrayList<Element>> it=curPhraseElementList.iterator();
         ArrayList<Element> prevList=new ArrayList<Element>(elementList);
-        if (!phraseElementList.isEmpty()) {
-          while (it.hasNext()) {
-            Iterator<ArrayList<Element>> phIt=phraseElementList.iterator();
+        while (it.hasNext()) {
+          if (!prevList.isEmpty()) {
             prevList.addAll(it.next());
             phraseElementList.add(new ArrayList<Element>(prevList));
           }
-        }
  else {
-          while (it.hasNext()) {
-            if (!prevList.isEmpty()) {
-              prevList.addAll(it.next());
-              phraseElementList.add(new ArrayList<Element>(prevList));
-            }
- else {
-              phraseElementList.add(new ArrayList<Element>(it.next()));
-            }
+            phraseElementList.add(new ArrayList<Element>(it.next()));
           }
         }
+        lastPhrase=true;
       }
     }
   }
