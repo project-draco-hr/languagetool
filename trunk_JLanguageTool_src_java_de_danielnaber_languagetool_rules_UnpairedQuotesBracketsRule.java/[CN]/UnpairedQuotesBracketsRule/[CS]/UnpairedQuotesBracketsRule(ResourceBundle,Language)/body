@@ -17,6 +17,10 @@
     startSymbols=DE_START_SYMBOLS;
     endSymbols=DE_END_SYMBOLS;
   }
+ else   if (language == Language.DUTCH) {
+    startSymbols=NL_START_SYMBOLS;
+    endSymbols=NL_END_SYMBOLS;
+  }
  else   if (language == Language.SPANISH) {
     startSymbols=ES_START_SYMBOLS;
     endSymbols=ES_END_SYMBOLS;
@@ -24,6 +28,10 @@
  else   if (language == Language.UKRAINIAN) {
     startSymbols=UK_START_SYMBOLS;
     endSymbols=UK_END_SYMBOLS;
+  }
+ else   if (language == Language.ITALIAN) {
+    startSymbols=IT_START_SYMBOLS;
+    endSymbols=IT_END_SYMBOLS;
   }
  else {
     startSymbols=START_SYMBOLS;
