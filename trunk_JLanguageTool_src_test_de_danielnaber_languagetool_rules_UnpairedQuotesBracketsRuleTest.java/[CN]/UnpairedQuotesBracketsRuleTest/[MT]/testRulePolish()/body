@@ -1,0 +1,9 @@
+{
+  UnpairedQuotesBracketsRule rule=new UnpairedQuotesBracketsRule(TestTools.getEnglishMessages(),Language.POLISH);
+  RuleMatch[] matches;
+  JLanguageTool langTool=new JLanguageTool(Language.POLISH);
+  matches=rule.match(langTool.getAnalyzedSentence("(To jest zdanie do testowania)."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("W tym zdaniu jest niesparowany ???cudzys????w."));
+  assertEquals(1,matches.length);
+}

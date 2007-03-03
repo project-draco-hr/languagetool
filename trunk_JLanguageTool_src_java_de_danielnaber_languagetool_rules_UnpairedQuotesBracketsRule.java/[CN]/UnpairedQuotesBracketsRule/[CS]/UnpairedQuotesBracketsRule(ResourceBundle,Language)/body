@@ -1,0 +1,32 @@
+{
+  super(messages);
+  super.setCategory(new Category(messages.getString("category_misc")));
+  if (language == Language.POLISH) {
+    startSymbols=PL_START_SYMBOLS;
+    endSymbols=PL_END_SYMBOLS;
+  }
+ else   if (language == Language.FRENCH) {
+    startSymbols=FR_START_SYMBOLS;
+    endSymbols=FR_END_SYMBOLS;
+  }
+ else   if (language == Language.ENGLISH) {
+    startSymbols=EN_START_SYMBOLS;
+    endSymbols=EN_END_SYMBOLS;
+  }
+ else   if (language == Language.GERMAN) {
+    startSymbols=DE_START_SYMBOLS;
+    endSymbols=DE_END_SYMBOLS;
+  }
+ else   if (language == Language.SPANISH) {
+    startSymbols=ES_START_SYMBOLS;
+    endSymbols=ES_END_SYMBOLS;
+  }
+ else   if (language == Language.UKRAINIAN) {
+    startSymbols=UK_START_SYMBOLS;
+    endSymbols=UK_END_SYMBOLS;
+  }
+ else {
+    startSymbols=START_SYMBOLS;
+    endSymbols=END_SYMBOLS;
+  }
+}

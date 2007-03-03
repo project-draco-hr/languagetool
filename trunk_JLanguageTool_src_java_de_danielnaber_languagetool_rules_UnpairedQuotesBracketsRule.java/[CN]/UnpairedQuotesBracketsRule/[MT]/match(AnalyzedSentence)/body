@@ -1,0 +1,28 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  AnalyzedTokenReadings[] tokens=text.getTokens();
+  AnalyzedToken matchToken=null;
+  int symbolCounter=0;
+  int pos=0;
+  for (int j=0; j < startSymbols.length; j++) {
+    symbolCounter=0;
+    for (int i=0; i < tokens.length; i++) {
+      String token=tokens[i].getToken();
+      if (token.trim().equals(startSymbols[j])) {
+        symbolCounter++;
+        pos=i;
+      }
+ else       if (token.trim().equals(endSymbols[j])) {
+        symbolCounter--;
+        pos=i;
+      }
+    }
+    if (symbolCounter != 0) {
+      matchToken=tokens[pos].getAnalyzedToken(0);
+      String msg=messages.getString("unpaired_brackets");
+      @SuppressWarnings("null") RuleMatch ruleMatch=new RuleMatch(this,matchToken.getStartPos(),matchToken.getStartPos() + 1,msg);
+      ruleMatches.add(ruleMatch);
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}
