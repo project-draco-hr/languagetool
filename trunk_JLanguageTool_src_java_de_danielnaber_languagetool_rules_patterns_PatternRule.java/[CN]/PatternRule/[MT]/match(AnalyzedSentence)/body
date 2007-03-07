@@ -7,6 +7,7 @@
   int skipNext=0;
   int matchPos=0;
   int skipShift=0;
+  int skipShiftTotal=0;
   int firstMatchToken=-1;
   int lastMatchToken=-1;
   int patternSize=patternElements.size();
@@ -29,7 +30,7 @@
       }
       elem=patternElements.get(k);
       skipNext=elem.getSkipNext();
-      int nextPos=tokenPos + k + skipShift;
+      int nextPos=tokenPos + k + skipShiftTotal;
       if (nextPos >= tokens.length) {
         allElementsMatch=false;
         break;
@@ -81,14 +82,17 @@
         prevSkipNext=0;
       }
       if (!allElementsMatch) {
+        skipShiftTotal=0;
         break;
       }
  else {
         matchingTokens++;
         lastMatchToken=matchPos;
         if (firstMatchToken == -1)         firstMatchToken=matchPos;
+        skipShiftTotal+=skipShift;
       }
     }
+    tokenPos++;
     if (allElementsMatch) {
       String errMessage=message;
       if (firstMatchToken + matchingTokens >= tokens.length) {
@@ -129,8 +133,8 @@
  else {
       firstMatchToken=-1;
       lastMatchToken=-1;
+      skipShiftTotal=0;
     }
-    tokenPos++;
   }
   return (RuleMatch[])ruleMatches.toArray(new RuleMatch[0]);
 }
