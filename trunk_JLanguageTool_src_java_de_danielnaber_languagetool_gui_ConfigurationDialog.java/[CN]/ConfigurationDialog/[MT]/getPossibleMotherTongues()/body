@@ -3,7 +3,7 @@
   motherTongues.add(NO_MOTHER_TONGUE);
   for (  Language lang : Language.LANGUAGES) {
     if (lang != Language.DEMO) {
-      motherTongues.add(lang);
+      motherTongues.add(messages.getString(lang.getShortName()));
     }
   }
   return motherTongues.toArray();
