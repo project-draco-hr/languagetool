@@ -1,0 +1,4 @@
+{
+  if (lineBreakParagraphs)   paragraph=paragraphByLineBreak;
+ else   paragraph=paragraphByTwoLineBreaks;
+}
