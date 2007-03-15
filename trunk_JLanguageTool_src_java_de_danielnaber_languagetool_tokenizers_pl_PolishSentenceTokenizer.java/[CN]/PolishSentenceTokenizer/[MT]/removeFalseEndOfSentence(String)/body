@@ -1,6 +1,7 @@
 {
   s=abbrev1.matcher(s).replaceAll("$1");
   s=abbrev2.matcher(s).replaceAll("$1");
+  s=abbrev3.matcher(s).replaceAll("$1");
   s=abbrev4.matcher(s).replaceAll("$1$2");
   s=abbrev5.matcher(s).replaceAll("$1");
   Pattern pattern=Pattern.compile("(?u)(\\b(" + ABBREVLIST + ")"+ PAP+ "\\s)"+ EOS);
