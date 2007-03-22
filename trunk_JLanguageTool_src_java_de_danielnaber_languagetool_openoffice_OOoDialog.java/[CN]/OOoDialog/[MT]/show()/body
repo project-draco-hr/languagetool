@@ -22,6 +22,8 @@
   cons.gridx=0;
   cons.gridy=0;
   cons.gridheight=3;
+  editorKit=new HTMLEditorKit();
+  contextArea.setEditorKit(editorKit);
   contextArea.setContentType("text/html");
   contextArea.setEditable(false);
   contentPane.add(new JScrollPane(contextArea),cons);
@@ -45,6 +47,7 @@
   optionsButton.addActionListener(this);
   contentPane.add(optionsButton,cons);
   messageArea=new JTextPane();
+  messageArea.setEditorKit(editorKit);
   messageArea.setContentType("text/html");
   messageArea.setEditable(false);
   cons.fill=GridBagConstraints.BOTH;
