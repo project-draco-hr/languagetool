@@ -28,5 +28,7 @@
     tokenArray[toArrayCount++]=posTag;
     startPos+=tokenStr.length();
   }
-  return new AnalyzedSentence(tokenArray);
+  AnalyzedSentence finalSentence=new AnalyzedSentence(tokenArray);
+  finalSentence=disambiguator.disambiguate(finalSentence);
+  return finalSentence;
 }

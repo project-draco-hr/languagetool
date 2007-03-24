@@ -1,6 +1,7 @@
 {
   this.name=name;
   this.shortForm=shortForm;
+  this.disambiguator=disambiguator;
   this.tagger=tagger;
   this.locale=locale;
   this.sentenceTokenizer=sentenceTokenizer;
