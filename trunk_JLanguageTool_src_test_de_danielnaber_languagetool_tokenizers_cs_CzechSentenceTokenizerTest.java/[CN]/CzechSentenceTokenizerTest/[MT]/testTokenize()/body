@@ -48,6 +48,6 @@
   TestTools.testSplit(new String[]{"He won't\nReally."},stokenizer2);
   testSplit(new String[]{"James is from the Ireland!","He lives in Spain now."});
   testSplit(new String[]{"V ??e??tin?? jsou zkr. i pro jazyky, nap??. angl., ma??. a jin??."});
-  testSplit(new String[]{"Titul jako doc. RNDr. Adam ????ezn??k, Ph.D. se m????e vyskytnout."});
+  testSplit(new String[]{"Titul jako doc. RNDr. Adam ??ezn??k, Ph.D. se m????e vyskytnout."});
   testSplit(new String[]{"Starov??k?? Egypt vznikl okolo r. 3150 p??.n.l. (anebo 3150 p??.kr.). ","A zanikl v r. 31 p??.kr."});
 }
