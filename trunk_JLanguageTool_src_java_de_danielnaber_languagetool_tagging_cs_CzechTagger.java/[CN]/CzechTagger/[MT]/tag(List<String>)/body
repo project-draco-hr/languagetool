@@ -15,17 +15,23 @@
       lowerTaggerTokens=morfologik.stemAndForm(word.toLowerCase());
     }
     if (taggerTokens != null) {
+      String lemma=new String();
       int i=0;
       while (i < taggerTokens.length) {
-        l.add(new AnalyzedToken(word,taggerTokens[i + 1],taggerTokens[i]));
-        i=i + 2;
+        lemma=taggerTokens[i];
+        String[] tagsArr=taggerTokens[i + 1].split("\\+");
+        for (        String currTag : tagsArr)         l.add(new AnalyzedToken(word,currTag,lemma));
+        i+=2;
       }
     }
     if (lowerTaggerTokens != null) {
+      String lemma=new String();
       int i=0;
       while (i < lowerTaggerTokens.length) {
-        l.add(new AnalyzedToken(word,lowerTaggerTokens[i + 1],lowerTaggerTokens[i]));
-        i=i + 2;
+        lemma=lowerTaggerTokens[i];
+        String[] tagsArr=lowerTaggerTokens[i + 1].split("\\+");
+        for (        String currTag : tagsArr)         l.add(new AnalyzedToken(word,currTag,lemma));
+        i+=2;
       }
     }
     if (lowerTaggerTokens == null && taggerTokens == null) {
