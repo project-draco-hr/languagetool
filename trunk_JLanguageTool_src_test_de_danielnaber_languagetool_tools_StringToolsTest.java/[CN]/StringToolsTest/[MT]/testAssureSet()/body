@@ -1,0 +1,25 @@
+{
+  String s="";
+  try {
+    StringTools.assureSet(s,"varName");
+    fail();
+  }
+ catch (  IllegalArgumentException e) {
+  }
+  s=" \t";
+  try {
+    StringTools.assureSet(s,"varName");
+    fail();
+  }
+ catch (  IllegalArgumentException e) {
+  }
+  s=null;
+  try {
+    StringTools.assureSet(s,"varName");
+    fail();
+  }
+ catch (  NullPointerException e) {
+  }
+  s="foo";
+  StringTools.assureSet(s,"varName");
+}

@@ -1,0 +1,4 @@
+{
+  assertEquals("!??&quot;&lt;&gt;&amp;&amp;",StringTools.escapeXML("!??\"<>&&"));
+  assertEquals("!??&quot;&lt;&gt;&amp;&amp;",StringTools.escapeHTML("!??\"<>&&"));
+}
