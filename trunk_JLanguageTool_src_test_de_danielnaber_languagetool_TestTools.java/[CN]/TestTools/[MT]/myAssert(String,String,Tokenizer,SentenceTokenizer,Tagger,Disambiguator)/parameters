@@ -1,0 +1,6 @@
+String input
+String expected
+Tokenizer tokenizer
+SentenceTokenizer sentenceTokenizer
+Tagger tagger
+Disambiguator disambiguator
