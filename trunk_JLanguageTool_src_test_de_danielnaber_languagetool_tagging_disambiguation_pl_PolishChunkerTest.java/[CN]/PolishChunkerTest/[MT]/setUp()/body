@@ -1,0 +1,6 @@
+{
+  tagger=new PolishTagger();
+  tokenizer=new WordTokenizer();
+  sentenceTokenizer=new PolishSentenceTokenizer();
+  disambiguator=new PolishChunker();
+}
