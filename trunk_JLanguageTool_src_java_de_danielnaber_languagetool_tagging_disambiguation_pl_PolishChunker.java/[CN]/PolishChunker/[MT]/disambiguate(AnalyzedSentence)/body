@@ -1,0 +1,24 @@
+{
+  AnalyzedTokenReadings[] anTokens=input.getTokens();
+  AnalyzedTokenReadings[] output=new AnalyzedTokenReadings[anTokens.length];
+  output=anTokens;
+  for (int i=0; i < anTokens.length; i++) {
+    if (output[i].getToken().equals(".") && i + 2 < anTokens.length) {
+      if (anTokens[i + 1].getToken().equals(".") && anTokens[i + 2].getToken().equals(".")) {
+        AnalyzedToken ellipsisStart=new AnalyzedToken(".","<ELLIPSIS>","...");
+        output[i].addReading(ellipsisStart);
+        AnalyzedToken ellipsisEnd=new AnalyzedToken(".","</ELLIPSIS>","...");
+        output[i + 2].addReading(ellipsisEnd);
+      }
+    }
+  }
+  AnalyzedToken sentenceEnd=new AnalyzedToken(output[anTokens.length - 1].getToken(),"SENT_END",output[anTokens.length - 1].getAnalyzedToken(0).getLemma());
+  output[output.length - 1].addReading(sentenceEnd);
+  if (anTokens.length == 2) {
+    if (anTokens[0].isSentStart() && anTokens[1].getToken().equals("\n")) {
+      AnalyzedToken paragraphEnd=new AnalyzedToken(output[anTokens.length - 1].getToken(),"PARA_END",output[anTokens.length - 1].getAnalyzedToken(0).getLemma());
+      output[output.length - 1].addReading(paragraphEnd);
+    }
+  }
+  return new AnalyzedSentence(output);
+}
