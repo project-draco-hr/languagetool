@@ -1,6 +1,11 @@
 {
   if (anTokReadings == null)   return false;
   for (  AnalyzedToken reading : anTokReadings) {
+    if (reading.getPOSTag() != null) {
+      if (reading.getPOSTag().equals("SENT_END")) {
+        return false;
+      }
+    }
     AnalyzedGermanToken germanReading=(AnalyzedGermanToken)reading;
     if (germanReading.getType() == type)     return true;
   }
