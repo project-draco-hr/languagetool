@@ -1,0 +1,13 @@
+{
+  if (previousMatches == null) {
+    return false;
+  }
+ else {
+    if (previousMatches.size() >= i) {
+      return (previousMatches.get(i) != null);
+    }
+ else {
+      return false;
+    }
+  }
+}
