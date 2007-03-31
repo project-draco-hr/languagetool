@@ -5,3 +5,4 @@ Disambiguator disambiguator
 Tagger tagger
 SentenceTokenizer sentenceTokenizer
 Tokenizer wordTokenizer
+String maintainers

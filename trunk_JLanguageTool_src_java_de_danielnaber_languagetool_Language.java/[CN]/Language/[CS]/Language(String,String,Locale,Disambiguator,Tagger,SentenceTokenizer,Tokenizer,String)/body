@@ -13,4 +13,5 @@
   this.locale=locale;
   this.sentenceTokenizer=sentenceTokenizer;
   this.wordTokenizer=wordTokenizer;
+  this.maintainers=maintainers;
 }
