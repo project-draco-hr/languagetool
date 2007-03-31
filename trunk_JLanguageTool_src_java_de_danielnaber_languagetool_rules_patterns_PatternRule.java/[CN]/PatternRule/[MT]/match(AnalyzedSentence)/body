@@ -118,7 +118,7 @@
         while (l > endPositionCorrection) {
           int test=matchingTokens + l - 1;
           test=tokenPositions[test];
-          correctedEndPos=correctedEndPos - tokenPositions[matchingTokens + l - 1];
+          correctedEndPos-=tokenPositions[matchingTokens + l - 1];
           l--;
         }
       }
