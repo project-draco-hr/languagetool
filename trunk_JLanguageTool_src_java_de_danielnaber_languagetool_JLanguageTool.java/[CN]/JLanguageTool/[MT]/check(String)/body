@@ -13,7 +13,7 @@
     AnalyzedSentence analyzedText=getAnalyzedSentence(sentence);
     if (sentenceCount == sentences.size()) {
       AnalyzedTokenReadings[] anTokens=analyzedText.getTokens();
-      AnalyzedToken paragraphEnd=new AnalyzedToken(anTokens[anTokens.length - 1].getToken(),PARAGRAPH_END_TAGNAME,anTokens[anTokens.length - 1].getAnalyzedToken(0).getLemma());
+      AnalyzedToken paragraphEnd=new AnalyzedToken(anTokens[anTokens.length - 1].getToken(),PARAGRAPH_END_TAGNAME,anTokens[anTokens.length - 1].getAnalyzedToken(0).getLemma(),anTokens[anTokens.length - 1].getAnalyzedToken(0).getStartPos());
       anTokens[anTokens.length - 1].addReading(paragraphEnd);
       analyzedText=new AnalyzedSentence(anTokens);
     }
