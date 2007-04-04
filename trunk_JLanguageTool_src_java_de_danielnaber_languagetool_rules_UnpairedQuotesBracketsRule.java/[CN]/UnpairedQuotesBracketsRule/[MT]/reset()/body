@@ -3,5 +3,8 @@
     symbolCounter[i]=0;
     ruleMatchArray[i]=0;
   }
+  if (!reachedEndOfParagraph) {
+    clearMatches();
+  }
   reachedEndOfParagraph=false;
 }
