@@ -52,4 +52,6 @@
   testSplit(new String[]{"Ks. Jankowski jest prof. teologii."});
   testSplit(new String[]{"To wydarzy??o si?? w 1939 r.","To by?? burzliwy rok."});
   testSplit(new String[]{"Prezydent jest popierany przez 20 proc. spo??ecze??stwa."});
+  testSplit(new String[]{"Moje wyst??pienie ma na celu zmobilizowanie zarz??du partii do dzia??a??, kt??re umo??liwi?? uzyskanie 40 proc.","Nie widz?? dzi?? na scenie politycznej formacji, kt??ra lepiej by ????czy??a r????ne pogl??dy"});
+  testSplit(new String[]{"To jest zmienna A.","Za?? to jest zmienna B."});
 }
