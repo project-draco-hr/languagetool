@@ -1,7 +1,9 @@
 {
   boolean isSE=false;
-  for (  AnalyzedToken reading : anTokReadings)   if (reading.posTag != null) {
-    isSE=isSE || reading.posTag.equals(JLanguageTool.SENTENCE_END_TAGNAME);
+  for (  AnalyzedToken reading : anTokReadings) {
+    if (reading.posTag != null) {
+      isSE=isSE || reading.posTag.equals(JLanguageTool.SENTENCE_END_TAGNAME);
+    }
   }
   return isSE;
 }

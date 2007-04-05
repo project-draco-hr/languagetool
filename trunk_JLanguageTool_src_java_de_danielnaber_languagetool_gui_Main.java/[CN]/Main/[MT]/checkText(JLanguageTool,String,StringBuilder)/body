@@ -4,7 +4,7 @@
   long startTimeMatching=System.currentTimeMillis();
   int i=0;
   for (  RuleMatch match : ruleMatches) {
-    String output=Tools.makeTexti18n(messages,"result1",new Object[]{new Integer(i + 1),new Integer(match.getLine() + 1),new Integer(match.getColumn())});
+    String output=Tools.makeTexti18n(messages,"result1",new Object[]{Integer.valueOf(i + 1),Integer.valueOf(match.getLine() + 1),Integer.valueOf(match.getColumn())});
     sb.append(output);
     String msg=match.getMessage();
     msg=msg.replaceAll("<suggestion>","<b>");

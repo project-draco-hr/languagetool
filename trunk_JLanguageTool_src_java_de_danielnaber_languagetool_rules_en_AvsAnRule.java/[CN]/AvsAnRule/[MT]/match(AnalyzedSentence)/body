@@ -47,12 +47,12 @@
         }
       }
       String msg=null;
-      if (prevToken.toLowerCase().equals("a") && doesRequireAn) {
+      if (prevToken.equalsIgnoreCase("a") && doesRequireAn) {
         String repl="an";
         if (prevToken.equals("A"))         repl="An";
         msg="Use <suggestion>" + repl + "</suggestion> instead of '"+ prevToken+ "' if the following "+ "word starts with a vowel sound, e.g. 'an article', "+ "'an hour'";
       }
- else       if (prevToken.toLowerCase().equals("an") && doesRequireA) {
+ else       if (prevToken.equalsIgnoreCase("an") && doesRequireA) {
         String repl="a";
         if (prevToken.equals("An"))         repl="A";
         msg="Use <suggestion>" + repl + "</suggestion> instead of '"+ prevToken+ "' if the following "+ "word doesn't start with a vowel sound, e.g. 'a sentence', "+ "'a university'";

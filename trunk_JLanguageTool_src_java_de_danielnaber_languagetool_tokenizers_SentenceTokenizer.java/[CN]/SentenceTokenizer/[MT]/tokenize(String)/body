@@ -5,7 +5,7 @@
   stringTokenizer=new StringTokenizer(s,EOS);
   List<String> l=new ArrayList<String>();
   while (stringTokenizer.hasMoreTokens()) {
-    String sentence=stringTokenizer.nextToken();
+    final String sentence=stringTokenizer.nextToken();
     l.add(sentence);
   }
   return l;

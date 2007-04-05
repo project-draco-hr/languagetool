@@ -7,5 +7,5 @@
     l.add(anTokReadings[anTokReadings.length - 1]);
   }
   l.add(tok);
-  anTokReadings=l.toArray(new AnalyzedToken[0]);
+  anTokReadings=l.toArray(new AnalyzedToken[l.size()]);
 }

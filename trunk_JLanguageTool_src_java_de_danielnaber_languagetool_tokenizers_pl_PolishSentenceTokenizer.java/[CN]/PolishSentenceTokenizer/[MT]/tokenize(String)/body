@@ -1,10 +1,10 @@
 {
   s=firstSentenceSplitting(s);
   s=removeFalseEndOfSentence(s);
-  stringTokenizer=new StringTokenizer(s,EOS);
-  List<String> l=new ArrayList<String>();
+  final StringTokenizer stringTokenizer=new StringTokenizer(s,EOS);
+  final List<String> l=new ArrayList<String>();
   while (stringTokenizer.hasMoreTokens()) {
-    String sentence=stringTokenizer.nextToken();
+    final String sentence=stringTokenizer.nextToken();
     l.add(sentence);
   }
   return l;
