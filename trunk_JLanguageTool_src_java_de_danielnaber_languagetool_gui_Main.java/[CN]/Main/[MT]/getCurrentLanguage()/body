@@ -2,7 +2,7 @@
   String langName=langBox.getSelectedItem().toString();
   String lang=langName;
   for (Enumeration<String> e=messages.getKeys(); e.hasMoreElements(); ) {
-    String elem=e.nextElement().toString();
+    String elem=e.nextElement();
     if (messages.getString(elem).equals(langName)) {
       lang=elem;
       break;

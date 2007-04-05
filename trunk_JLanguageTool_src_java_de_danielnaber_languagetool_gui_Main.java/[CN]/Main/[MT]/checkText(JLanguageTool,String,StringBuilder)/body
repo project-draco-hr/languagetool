@@ -22,6 +22,6 @@
     i++;
   }
   long endTime=System.currentTimeMillis();
-  sb.append(Tools.makeTexti18n(messages,"resultTime",new Object[]{new Long(endTime - startTime),new Long(endTime - startTimeMatching)}));
+  sb.append(Tools.makeTexti18n(messages,"resultTime",new Object[]{Long.valueOf(endTime - startTime),Long.valueOf(endTime - startTimeMatching)}));
   return ruleMatches.size();
 }

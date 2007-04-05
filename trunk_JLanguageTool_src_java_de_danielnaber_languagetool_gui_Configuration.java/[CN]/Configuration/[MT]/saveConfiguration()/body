@@ -1,13 +1,17 @@
 {
   Properties props=new Properties();
-  StringBuilder sb=new StringBuilder();
-  for (Iterator<String> iter=disabledRuleIds.iterator(); iter.hasNext(); ) {
-    String id=iter.next();
-    sb.append(id);
-    if (iter.hasNext())     sb.append(",");
+  if (disabledRuleIds == null) {
+    props.setProperty(DISABLED_RULES_CONFIG_KEY,"");
   }
-  if (disabledRuleIds == null)   props.setProperty(DISABLED_RULES_CONFIG_KEY,"");
- else   props.setProperty(DISABLED_RULES_CONFIG_KEY,sb.toString());
+ else {
+    StringBuilder sb=new StringBuilder();
+    for (Iterator<String> iter=disabledRuleIds.iterator(); iter.hasNext(); ) {
+      String id=iter.next();
+      sb.append(id);
+      if (iter.hasNext())       sb.append(",");
+    }
+    props.setProperty(DISABLED_RULES_CONFIG_KEY,sb.toString());
+  }
   if (motherTongue != null)   props.setProperty(MOTHER_TONGUE_CONFIG_KEY,motherTongue.getShortName());
   props.setProperty(SERVER_RUN_CONFIG_KEY,Boolean.valueOf(runServer).toString());
   props.setProperty(SERVER_PORT_CONFIG_KEY,Integer.valueOf(serverPort).toString());
