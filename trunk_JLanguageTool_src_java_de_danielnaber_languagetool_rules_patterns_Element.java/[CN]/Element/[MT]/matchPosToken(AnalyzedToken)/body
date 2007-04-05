@@ -7,8 +7,13 @@
     match=posToken.equals(token.getPOSTag());
   }
  else   if (token.getPOSTag() != null) {
-    Matcher m=pPos.matcher(token.getPOSTag());
-    match=m.matches();
+    if (mPos == null) {
+      mPos=pPos.matcher(token.getPOSTag());
+    }
+ else {
+      mPos.reset(token.getPOSTag());
+    }
+    match=mPos.matches();
   }
   return match;
 }

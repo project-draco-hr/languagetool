@@ -19,7 +19,12 @@
   }
  else {
     if (token.getToken() != null) {
-      Matcher m=p.matcher(testToken);
+      if (m == null) {
+        m=p.matcher(testToken);
+      }
+ else {
+        m.reset(testToken);
+      }
       return m.matches();
     }
   }
