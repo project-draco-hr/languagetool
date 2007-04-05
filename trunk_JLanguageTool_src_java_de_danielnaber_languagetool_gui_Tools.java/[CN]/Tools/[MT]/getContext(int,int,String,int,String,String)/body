@@ -1,5 +1,5 @@
 {
-  fileContents=fileContents.replaceAll("\n"," ");
+  fileContents=fileContents.replace('\n',' ');
   int startContent=fromPos - contextSize;
   String prefix="...";
   String postfix="...";
@@ -26,8 +26,8 @@
   sb.append(fileContents.substring(startContent,endContent));
   String markerStr=markerPrefix + marker.substring(startContent,endContent);
   sb.append(postfix);
-  int startMark=markerStr.indexOf("^");
-  int endMark=markerStr.lastIndexOf("^");
+  int startMark=markerStr.indexOf('^');
+  int endMark=markerStr.lastIndexOf('^');
   String result=sb.toString();
   result=result.substring(0,startMark) + markerStart + result.substring(startMark,endMark + 1)+ markerEnd+ result.substring(endMark + 1);
   return result;
