@@ -5,19 +5,13 @@
   HashMap<String,String> inflectedWords=new HashMap<String,String>();
   String prevLemma, curLemma;
   int pos=0;
-  Pattern pExc1=Pattern.compile("to|siebie|by??|ani|albo|lub|czy|b??d??|jako|z??|coraz|bardzo|ten|jak|mln|tys|sw??j|m??j|tw??j|nasz|wasz|i");
-  Pattern pExc2=Pattern.compile("prep:.*|ppron.*");
-  Pattern pExc3=Pattern.compile("nie|&quot|&gt|&lt|&amp|[0-9].*|M*(D?C{0,3}|C[DM])(L?X{0,3}|X[LC])(V?I{0,3}|I[VX])$");
   for (int i=0; i < tokens.length; i++) {
     String token=tokens[i].getToken();
     if (!token.trim().equals("")) {
       boolean isWord=true;
       boolean hasLemma=true;
-      if (token.length() == 1) {
-        char c=token.charAt(0);
-        if (!Character.isLetter(c)) {
-          isWord=false;
-        }
+      if (token.length() < 2) {
+        isWord=false;
       }
       int readingsLen=tokens[i].getReadingsLength();
       for (int k=0; k < readingsLen; k++) {
@@ -32,12 +26,12 @@
             hasLemma=false;
             break;
           }
-          Matcher m1=pExc1.matcher(lemma);
+          Matcher m1=EXC_WORDS.matcher(lemma);
           if (m1.matches()) {
             isWord=false;
             break;
           }
-          Matcher m2=pExc2.matcher(posTag);
+          Matcher m2=EXC_POS.matcher(posTag);
           if (m2.matches()) {
             isWord=false;
             break;
@@ -47,7 +41,7 @@
           hasLemma=false;
         }
       }
-      Matcher m1=pExc3.matcher(tokens[i].getToken());
+      Matcher m1=EXC_NONWORDS.matcher(tokens[i].getToken());
       if (m1.matches()) {
         isWord=false;
       }
