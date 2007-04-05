@@ -1,9 +1,3 @@
 {
-  final char[] chrs=token.toCharArray();
-  for (int i=0; i < chrs.length; i++) {
-    if (!Character.isWhitespace(chrs[i])) {
-      return false;
-    }
-  }
-  return true;
+  return token.trim().equals("");
 }

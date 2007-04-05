@@ -1,9 +1,12 @@
 {
-  List<AnalyzedTokenReadings> l=new ArrayList<AnalyzedTokenReadings>();
-  for (  AnalyzedTokenReadings token : tokens) {
-    if (!token.isWhitespace() || token.isSentStart() || token.isSentEnd()|| token.isParaEnd()) {
-      l.add(token);
+  if (nonBlankTokens == null) {
+    List<AnalyzedTokenReadings> l=new ArrayList<AnalyzedTokenReadings>();
+    for (    AnalyzedTokenReadings token : tokens) {
+      if (!token.isWhitespace() || token.isSentStart() || token.isSentEnd()|| token.isParaEnd()) {
+        l.add(token);
+      }
     }
+    nonBlankTokens=(AnalyzedTokenReadings[])l.toArray(new AnalyzedTokenReadings[l.size()]);
   }
-  return (AnalyzedTokenReadings[])l.toArray(new AnalyzedTokenReadings[l.size()]);
+  return nonBlankTokens;
 }
