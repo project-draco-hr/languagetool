@@ -3,8 +3,10 @@
   if (stringToken == null) {
     testString=false;
   }
-  if (stringToken.equals("")) {
-    testString=false;
+ else {
+    if (stringToken.equals("")) {
+      testString=false;
+    }
   }
   if (testString) {
     return (matchStringToken(token) != negation) && (matchPosToken(token) != posNegation);

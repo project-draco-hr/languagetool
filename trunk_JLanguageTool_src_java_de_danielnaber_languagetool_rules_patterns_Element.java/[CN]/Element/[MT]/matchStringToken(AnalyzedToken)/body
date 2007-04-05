@@ -25,9 +25,6 @@
   }
  else {
     if (token.getToken() != null) {
-      if (p == null) {
-        p=Pattern.compile(regToken);
-      }
       Matcher m=p.matcher(testToken);
       return m.matches();
     }

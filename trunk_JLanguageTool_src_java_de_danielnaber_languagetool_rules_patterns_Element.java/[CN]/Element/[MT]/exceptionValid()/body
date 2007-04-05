@@ -1,9 +1,8 @@
 {
   boolean eNext=false;
   if (exceptionSet) {
-    Iterator<Element> it=exceptionList.iterator();
-    while (it.hasNext()) {
-      eNext=eNext || it.next().exceptionValidNext;
+    for (    Element testException : exceptionList) {
+      eNext|=testException.exceptionValidNext;
       if (eNext) {
         break;
       }

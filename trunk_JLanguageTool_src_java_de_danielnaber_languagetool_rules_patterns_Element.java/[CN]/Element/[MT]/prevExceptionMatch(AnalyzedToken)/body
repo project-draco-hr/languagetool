@@ -1,9 +1,7 @@
 {
   boolean exceptionMatched=false;
   if (exceptionSet) {
-    Iterator<Element> it=exceptionList.iterator();
-    while (it.hasNext()) {
-      Element testException=it.next();
+    for (    Element testException : exceptionList) {
       if (testException.exceptionValidNext) {
         exceptionMatched|=testException.match(token);
       }
