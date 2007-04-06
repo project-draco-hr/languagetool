@@ -1,6 +1,6 @@
 {
   List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   int[] tokenPositions=new int[tokens.length + 1];
   int tokenPos=0;
   int prevSkipNext=0;
@@ -12,7 +12,7 @@
   int lastMatchToken=-1;
   int patternSize=patternElements.size();
   Element elem=null, prevElement=null;
-  boolean startWithSentStart=patternElements.get(0).isSentStart();
+  final boolean startWithSentStart=patternElements.get(0).isSentStart();
   for (int i=0; i < tokens.length; i++) {
     boolean allElementsMatch=true;
     if (patternSize + i > tokens.length) {
@@ -81,15 +81,15 @@
  else {
         prevSkipNext=0;
       }
-      if (!allElementsMatch) {
-        skipShiftTotal=0;
-        break;
-      }
- else {
+      if (allElementsMatch) {
         matchingTokens++;
         lastMatchToken=matchPos;
         if (firstMatchToken == -1)         firstMatchToken=matchPos;
         skipShiftTotal+=skipShift;
+      }
+ else {
+        skipShiftTotal=0;
+        break;
       }
     }
     tokenPos++;
