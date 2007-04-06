@@ -6,7 +6,7 @@
   if (!stringToken.equals("") && stringRegExp) {
     regToken=stringToken;
     if (!caseSensitive) {
-      regToken="(?u)".concat(stringToken);
+      regToken="(?iu)".concat(stringToken);
     }
     p=Pattern.compile(regToken);
   }
