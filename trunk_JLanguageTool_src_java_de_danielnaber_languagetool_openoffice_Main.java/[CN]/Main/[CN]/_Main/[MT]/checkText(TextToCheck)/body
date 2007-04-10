@@ -3,7 +3,7 @@
   Language docLanguage=getLanguage();
   if (docLanguage == null)   return;
   ProgressDialog progressDialog=new ProgressDialog(messages);
-  CheckerThread checkerThread=new CheckerThread(textToCheck.paragraphs,docLanguage,config,baseDir,progressDialog);
+  CheckerThread checkerThread=new CheckerThread(textToCheck.paragraphs,docLanguage,config,progressDialog);
   checkerThread.start();
   while (true) {
     if (checkerThread.done()) {

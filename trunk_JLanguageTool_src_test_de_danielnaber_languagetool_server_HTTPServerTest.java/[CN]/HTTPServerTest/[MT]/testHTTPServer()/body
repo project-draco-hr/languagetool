@@ -11,7 +11,7 @@
     assertTrue(result.indexOf("WIEDER_WILLEN") != -1);
     assertTrue(result.indexOf("????????") != -1);
     XMLValidator validator=new XMLValidator();
-    validator.validateXMLString(result,"resource/api-output.dtd","matches");
+    validator.validateXMLString(result,"/resource/api-output.dtd","matches");
     validator.checkSimpleXMLString(result);
     assertTrue(check(Language.GERMAN,"bla <script>").indexOf("<script>") == -1);
   }

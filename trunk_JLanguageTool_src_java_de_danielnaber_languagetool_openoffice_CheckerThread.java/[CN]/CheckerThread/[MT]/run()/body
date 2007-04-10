@@ -1,6 +1,6 @@
 {
   try {
-    langTool=new JLanguageTool(docLanguage,config.getMotherTongue(),baseDir);
+    langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
     langTool.activateDefaultPatternRules();
     langTool.activateDefaultFalseFriendRules();
     if (config.getDisabledRuleIds() != null) {

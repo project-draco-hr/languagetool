@@ -7,7 +7,7 @@
   matches=tool.check("I can give you more a detailed description.");
   assertEquals(0,matches.size());
   assertEquals(6,tool.getAllRules().size());
-  List rules=tool.loadPatternRules("rules/en/grammar.xml");
+  List rules=tool.loadPatternRules("/rules/en/grammar.xml");
   for (Iterator iter=rules.iterator(); iter.hasNext(); ) {
     Rule rule=(Rule)iter.next();
     tool.addRule(rule);

@@ -1,6 +1,6 @@
 {
   if (verbose)   lt.setOutput(System.err);
   if (!apiFormat)   System.out.println("Working on " + filename + "...");
-  String fileContents=StringTools.readFile(filename,encoding);
+  String fileContents=StringTools.readFile(new FileInputStream(filename),encoding);
   return filterXML(fileContents);
 }

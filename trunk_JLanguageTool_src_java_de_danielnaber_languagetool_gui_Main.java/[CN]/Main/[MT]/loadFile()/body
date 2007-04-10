@@ -5,7 +5,7 @@
   try {
     File file=jfc.getSelectedFile();
     if (file == null)     return;
-    String fileContents=StringTools.readFile(file.getAbsolutePath());
+    String fileContents=StringTools.readFile(this.getClass().getResourceAsStream((file.getAbsolutePath())));
     textArea.setText(fileContents);
     JLanguageTool langTool=getCurrentLanguageTool();
     checkTextAndDisplayResults(langTool,getCurrentLanguage());

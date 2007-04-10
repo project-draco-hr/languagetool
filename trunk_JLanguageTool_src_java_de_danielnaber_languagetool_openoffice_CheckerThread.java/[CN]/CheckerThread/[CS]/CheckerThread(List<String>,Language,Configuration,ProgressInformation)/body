@@ -1,0 +1,7 @@
+{
+  this.paragraphs=paragraphs;
+  this.docLanguage=docLanguage;
+  this.config=config;
+  this.progressInfo=progressInfo;
+  progressInfo.setMaxProgress(paragraphs.size());
+}

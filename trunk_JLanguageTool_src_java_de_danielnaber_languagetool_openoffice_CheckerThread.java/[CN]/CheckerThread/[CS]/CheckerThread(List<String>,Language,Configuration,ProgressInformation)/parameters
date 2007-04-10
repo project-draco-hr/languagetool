@@ -1,0 +1,4 @@
+List<String> paragraphs
+Language docLanguage
+Configuration config
+ProgressInformation progressInfo

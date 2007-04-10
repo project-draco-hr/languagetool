@@ -2,7 +2,6 @@
   if (language == null) {
     throw new NullPointerException("language cannot be null");
   }
-  basedir=basedirArg;
   this.language=language;
   this.motherTongue=motherTongue;
   messages=getMessageBundle(language);

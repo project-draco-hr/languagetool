@@ -1,4 +1,4 @@
 {
   if (messages != null)   super.setCategory(new Category(messages.getString("category_misc")));
-  loadCompoundFile(JLanguageTool.getAbsoluteFile(FILE_NAME),"UTF-8");
+  loadCompoundFile(this.getClass().getResourceAsStream(FILE_NAME),"UTF-8");
 }

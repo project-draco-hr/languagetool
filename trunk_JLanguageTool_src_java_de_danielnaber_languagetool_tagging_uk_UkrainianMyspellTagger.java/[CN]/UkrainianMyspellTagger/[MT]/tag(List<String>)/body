@@ -3,8 +3,8 @@
   int pos=0;
   if (wordsToPos == null) {
     wordsToPos=new HashMap<String,String[]>();
-    File resourceFile=JLanguageTool.getAbsoluteFile(RESOURCE_FILENAME);
-    BufferedReader input=new BufferedReader(new InputStreamReader(new FileInputStream(resourceFile),Charset.forName("UTF-8")));
+    InputStream resourceFile=this.getClass().getResourceAsStream(RESOURCE_FILENAME);
+    BufferedReader input=new BufferedReader(new InputStreamReader(resourceFile,Charset.forName("UTF-8")));
     String line;
     while ((line=input.readLine()) != null) {
       line=line.trim();
@@ -24,6 +24,9 @@
  else         if (flags.matches("[UV]+"))         posTags.add(IPOSTag.TAG_ADJ);
         if (posTags.size() > 0)         wordsToPos.put(wrd[0],posTags.toArray(new String[0]));
       }
+    }
+    if (input != null) {
+      input.close();
     }
   }
   for (Iterator<String> iter=sentenceTokens.iterator(); iter.hasNext(); ) {
@@ -45,7 +48,7 @@
     }
     if (posTags == null && lowerPosTags == null)     analyzedTokens.add(new AnalyzedToken(word,null,pos));
     pos+=word.length();
-    tokenReadings.add(new AnalyzedTokenReadings(analyzedTokens.toArray(new AnalyzedToken[0])));
+    tokenReadings.add(new AnalyzedTokenReadings(analyzedTokens.toArray(new AnalyzedToken[analyzedTokens.size()])));
   }
   return tokenReadings;
 }

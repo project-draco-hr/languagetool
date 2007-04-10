@@ -1,4 +1,0 @@
-{
-  if (basedir == null)   return new File(relFilename);
-  return new File(basedir,relFilename);
-}

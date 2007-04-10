@@ -1,5 +1,5 @@
 {
   if (messages != null)   super.setCategory(new Category(messages.getString("category_misc")));
-  requiresA=loadWords(JLanguageTool.getAbsoluteFile(FILENAME_A));
-  requiresAn=loadWords(JLanguageTool.getAbsoluteFile(FILENAME_AN));
+  requiresA=loadWords(this.getClass().getResourceAsStream(FILENAME_A));
+  requiresAn=loadWords(this.getClass().getResourceAsStream(FILENAME_AN));
 }

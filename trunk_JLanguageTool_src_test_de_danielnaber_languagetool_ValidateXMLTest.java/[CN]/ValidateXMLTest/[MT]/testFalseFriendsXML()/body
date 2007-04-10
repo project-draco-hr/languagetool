@@ -1,4 +1,4 @@
 {
   XMLValidator validator=new XMLValidator();
-  validator.validate("rules" + File.separator + "false-friends.xml","rules/false-friends.dtd","rules");
+  validator.validate("/rules/false-friends.xml","/rules/false-friends.dtd","rules");
 }

@@ -4,12 +4,10 @@
   List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
-    File resourceFile=JLanguageTool.getAbsoluteFile(DICT_FILENAME);
-    System.setProperty(Lametyzator.PROPERTY_NAME_LAMETYZATOR_DICT,resourceFile.getAbsolutePath());
-    morfologik=new Lametyzator();
+    morfologik=new Lametyzator(this.getClass().getResourceAsStream(DICT_FILENAME),"iso8859-1",'+');
   }
   if (manualTagger == null) {
-    manualTagger=new ManualTagger(JLanguageTool.getAbsoluteFile(USER_DICT_FILENAME));
+    manualTagger=new ManualTagger(this.getClass().getResourceAsStream(USER_DICT_FILENAME));
   }
   for (  String word : sentenceTokens) {
     List<AnalyzedGermanToken> l=new ArrayList<AnalyzedGermanToken>();
@@ -29,7 +27,7 @@
       l.add(new AnalyzedGermanToken(word,null,pos));
     }
     pos+=word.length();
-    tokenReadings.add(new AnalyzedGermanTokenReadings(l.toArray(new AnalyzedGermanToken[0])));
+    tokenReadings.add(new AnalyzedGermanTokenReadings(l.toArray(new AnalyzedGermanToken[l.size()])));
   }
   return tokenReadings;
 }

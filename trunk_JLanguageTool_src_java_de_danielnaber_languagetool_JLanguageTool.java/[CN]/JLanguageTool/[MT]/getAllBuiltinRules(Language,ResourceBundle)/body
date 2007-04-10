@@ -18,7 +18,7 @@
           rules.add((Rule)constructor.newInstance(messages,language));
           break;
         }
-        throw new RuntimeException("Unkown constructor for rule class: " + class1.getName());
+        throw new RuntimeException("Unknown constructor for rule class: " + class1.getName());
       }
     }
   }

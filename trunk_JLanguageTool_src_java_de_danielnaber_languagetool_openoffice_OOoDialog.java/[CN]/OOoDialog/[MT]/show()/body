@@ -6,7 +6,8 @@
   dialog=new JDialog();
   Frame owner=(Frame)dialog.getOwner();
   if (owner != null) {
-    owner.setIconImage(Tools.WINDOW_ICON);
+    final Image WINDOW_ICON=new ImageIcon(this.getClass().getResource(Tools.WINDOW_ICON_FILE)).getImage();
+    owner.setIconImage(WINDOW_ICON);
   }
   bindKey(dialog,KeyEvent.VK_ESCAPE,new EscapeActionListener(dialog));
   dialog.setTitle("LanguageTool Version " + JLanguageTool.VERSION);

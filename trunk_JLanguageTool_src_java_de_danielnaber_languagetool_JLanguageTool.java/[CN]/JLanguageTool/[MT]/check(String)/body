@@ -28,7 +28,7 @@
         thisMatch.setSuggestedReplacements(thisMatches[i].getSuggestedReplacements());
         String sentencePartToError=sentence.substring(0,thisMatches[i].getFromPos());
         String sentencePartToEndOfError=sentence.substring(0,thisMatches[i].getToPos());
-        int lastLineBreakPos=sentencePartToError.lastIndexOf("\n");
+        int lastLineBreakPos=sentencePartToError.lastIndexOf('\n');
         int column=-1;
         int endColumn=-1;
         if (lastLineBreakPos == -1) {
@@ -37,7 +37,7 @@
  else {
           column=sentencePartToError.length() - lastLineBreakPos - 1;
         }
-        int lastLineBreakPosInError=sentencePartToEndOfError.lastIndexOf("\n");
+        int lastLineBreakPosInError=sentencePartToEndOfError.lastIndexOf('\n');
         if (lastLineBreakPosInError == -1) {
           endColumn=sentencePartToEndOfError.length() + columnCount + 1;
         }
@@ -61,7 +61,7 @@
     ruleMatches.addAll(sentenceMatches);
     tokenCount+=sentence.length();
     lineCount+=countLineBreaks(sentence);
-    int linebreakPos=sentence.indexOf("\n");
+    int linebreakPos=sentence.indexOf('\n');
     if (linebreakPos == -1) {
       columnCount+=sentence.length();
     }

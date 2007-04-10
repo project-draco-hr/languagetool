@@ -1,4 +1,4 @@
 {
-  String xml=StringTools.readFile(filename);
+  String xml=StringTools.readFile(this.getClass().getResourceAsStream(filename));
   validateInternal(xml,dtdFile,docType);
 }
