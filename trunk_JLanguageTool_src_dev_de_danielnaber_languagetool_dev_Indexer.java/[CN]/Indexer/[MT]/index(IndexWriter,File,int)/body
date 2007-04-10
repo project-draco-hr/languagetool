@@ -8,7 +8,7 @@
  else {
     Document doc=new Document();
     if (count % 50 == 0)     System.out.println("Indexing file #" + count);
-    String s=StringTools.readFile(file.getAbsolutePath(),"iso-8859-1");
+    String s=StringTools.readFile(new FileInputStream(file.getAbsolutePath()),"iso-8859-1");
     s=getParagraphs(s);
     doc.add(new Field(BODY_FIELD,s,Field.Store.YES,Field.Index.TOKENIZED));
     iw.addDocument(doc);

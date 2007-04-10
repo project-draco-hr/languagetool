@@ -7,7 +7,7 @@
   }
  else {
     System.out.println("Checking " + file.getAbsolutePath());
-    String text=StringTools.readFile(file.getAbsolutePath());
+    String text=StringTools.readFile(new FileInputStream(file.getAbsolutePath()));
     text=textFilter.filter(text);
     if (CHECK_BY_SENTENCE) {
       SentenceTokenizer st=new SentenceTokenizer();
