@@ -46,7 +46,7 @@
   JPanel motherTonguePanel=new JPanel();
   motherTonguePanel.add(new JLabel(messages.getString("guiMotherTongue")),cons);
   motherTongueBox=new JComboBox(getPossibleMotherTongues());
-  if (motherTongue != null)   motherTongueBox.setSelectedItem(motherTongue);
+  if (motherTongue != null)   motherTongueBox.setSelectedItem(messages.getString(motherTongue.getShortName()));
   motherTonguePanel.add(motherTongueBox,cons);
   JPanel portPanel=new JPanel();
   portPanel.setLayout(new GridBagLayout());

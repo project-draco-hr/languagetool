@@ -9,7 +9,7 @@
       }
       i++;
     }
-    if (motherTongueBox.getSelectedItem() instanceof String)     motherTongue=null;
+    if (motherTongueBox.getSelectedItem() instanceof String)     motherTongue=getLanguageForLocalizedName(motherTongueBox.getSelectedItem().toString());
  else     motherTongue=(Language)motherTongueBox.getSelectedItem();
     if (serverCheckbox != null) {
       serverMode=serverCheckbox.isSelected();
