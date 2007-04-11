@@ -10,7 +10,7 @@
     }
     for (    URL resource : uniqResources) {
       if (resource.getProtocol().startsWith("jar")) {
-        if (resource.getPath().endsWith("LanguageTool.uno.jar")) {
+        if (resource.getPath().contains("LanguageTool.uno.jar")) {
           continue;
         }
         findClassesInJar(packageName,classNameRegEx,subdirLevel,classExtends,interfaceImplements,foundClasses,resource);
