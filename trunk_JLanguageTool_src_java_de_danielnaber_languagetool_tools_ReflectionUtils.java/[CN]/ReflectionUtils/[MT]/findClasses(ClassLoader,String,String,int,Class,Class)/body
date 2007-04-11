@@ -6,16 +6,10 @@
     Set<URL> uniqResources=new HashSet<URL>();
     for (; resources_.hasMoreElements(); ) {
       URL resource=resources_.nextElement();
-      if (resource.getProtocol().equals("jar")) {
-        String jarPath=resource.getPath().substring(0,resource.getPath().indexOf('!'));
-        uniqResources.add(new URL(jarPath));
-      }
- else {
-        uniqResources.add(resource);
-      }
+      uniqResources.add(resource);
     }
     for (    URL resource : uniqResources) {
-      if (resource.getPath().endsWith("jar")) {
+      if (resource.getProtocol().startsWith("jar")) {
         if (resource.getPath().endsWith("LanguageTool.uno.jar")) {
           continue;
         }

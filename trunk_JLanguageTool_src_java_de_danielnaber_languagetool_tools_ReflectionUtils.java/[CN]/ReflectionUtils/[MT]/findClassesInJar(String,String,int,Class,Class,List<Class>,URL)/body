@@ -1,5 +1,6 @@
 {
-  JarFile currentFile=new JarFile(new File(resource.toURI()));
+  JarURLConnection conn=(JarURLConnection)resource.openConnection();
+  JarFile currentFile=conn.getJarFile();
   for (Enumeration<JarEntry> e=currentFile.entries(); e.hasMoreElements(); ) {
     JarEntry current=(JarEntry)e.nextElement();
     String name=current.getName();
