@@ -1,3 +1,3 @@
-String filename
+InputStream file
 Language textLanguage
 Language motherTongue

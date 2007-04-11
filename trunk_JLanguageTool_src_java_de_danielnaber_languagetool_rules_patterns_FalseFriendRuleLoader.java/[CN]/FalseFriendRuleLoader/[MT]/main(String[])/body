@@ -1,13 +1,13 @@
 {
   FalseFriendRuleLoader prg=new FalseFriendRuleLoader();
-  List<PatternRule> l=prg.getRules("rules/false-friends.xml",Language.ENGLISH,Language.GERMAN);
+  List<PatternRule> l=prg.getRules(this.getClass().getResourceAsStream("/rules/false-friends.xml"),Language.ENGLISH,Language.GERMAN);
   System.out.println("Hints for German native speakers:");
   for (  PatternRule rule : l) {
     System.out.println(rule);
   }
   System.out.println("=======================================");
   System.out.println("Hints for English native speakers:");
-  l=prg.getRules("rules/false-friends.xml",Language.GERMAN,Language.ENGLISH);
+  l=prg.getRules(this.getClass().getResourceAsStream("/rules/false-friends.xml"),Language.GERMAN,Language.ENGLISH);
   for (  PatternRule rule : l) {
     System.out.println(rule);
   }
