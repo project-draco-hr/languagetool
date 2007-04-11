@@ -7,7 +7,12 @@
     String line;
     while ((line=br.readLine()) != null) {
       line=line.trim();
-      if (line.equals("") || line.startsWith("#"))       continue;
+      if (line.length() < 1) {
+        continue;
+      }
+      if (line.charAt(0) == '#') {
+        continue;
+      }
       line=line.replace('-',' ');
       String[] parts=line.split(" ");
       if (parts.length > MAX_TERMS)       throw new IOException("Too many compound parts: " + line + ", maximum allowed: "+ MAX_TERMS);

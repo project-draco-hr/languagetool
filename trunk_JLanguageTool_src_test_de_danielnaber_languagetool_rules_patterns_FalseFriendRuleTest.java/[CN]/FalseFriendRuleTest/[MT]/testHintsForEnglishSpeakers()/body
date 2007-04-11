@@ -1,5 +1,5 @@
 {
-  JLanguageTool langTool=new JLanguageTool(Language.GERMAN,Language.ENGLISH,null);
+  JLanguageTool langTool=new JLanguageTool(Language.GERMAN,Language.ENGLISH);
   langTool.activateDefaultFalseFriendRules();
   assertErrors(1,"Man sollte ihn nicht so beraten.",langTool);
   assertErrors(0,"Man sollte ihn nicht so beschimpfen.",langTool);
