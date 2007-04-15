@@ -44,4 +44,5 @@
     symbolCounter[i]=0;
     ruleMatchArray[i]=0;
   }
+  ruleLang=language;
 }

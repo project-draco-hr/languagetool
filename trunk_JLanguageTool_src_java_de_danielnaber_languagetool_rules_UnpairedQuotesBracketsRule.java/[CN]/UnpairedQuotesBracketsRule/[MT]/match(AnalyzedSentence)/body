@@ -10,11 +10,30 @@
   for (int j=0; j < startSymbols.length; j++) {
     for (int i=0; i < tokens.length; i++) {
       String token=tokens[i].getToken();
-      if (token.trim().equals(startSymbols[j])) {
+      boolean precededByWhitespace=true;
+      if (i > 1) {
+        precededByWhitespace=tokens[i - 1].isWhitespace() || tokens[i - 1].getToken().matches("\\p{Punct}");
+      }
+      boolean followedByWhitespace=true;
+      if (i < tokens.length - 1) {
+        followedByWhitespace=tokens[i + 1].isWhitespace() || tokens[i + 1].getToken().matches("\\p{Punct}");
+      }
+      boolean noException=true;
+      if ((precededByWhitespace || followedByWhitespace) && i > 1 && ruleLang.equals(Language.ENGLISH) && token.trim().equals("\"")) {
+        if (tokens[i - 1].getToken().matches("[\\d]+")) {
+          noException=false;
+        }
+      }
+      if ((precededByWhitespace || followedByWhitespace) && ruleLang.equals(Language.ENGLISH) && token.trim().equals("'")&& i > 1 && noException) {
+        if (tokens[i - 1].getToken().charAt(tokens[i - 1].getToken().length() - 1) == 's') {
+          noException=false;
+        }
+      }
+      if (noException && precededByWhitespace && token.trim().equals(startSymbols[j])) {
         symbolCounter[j]++;
         pos=i;
       }
- else       if (token.trim().equals(endSymbols[j])) {
+ else       if (noException && followedByWhitespace && token.trim().equals(endSymbols[j])) {
         if (i > 2 && endSymbols[j].equals(")") && symbolCounter[j] == 0) {
           if (!(tokens[i - 1].getToken().matches("(?i)\\d{1,2}?[a-z']*|M*(D?C{0,3}|C[DM])(L?X{0,3}|X[LC])(V?I{0,3}|I[VX])$"))) {
             symbolCounter[j]--;
