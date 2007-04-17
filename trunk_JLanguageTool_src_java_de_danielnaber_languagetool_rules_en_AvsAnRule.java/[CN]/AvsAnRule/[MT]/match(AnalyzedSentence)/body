@@ -1,70 +1,61 @@
 {
   List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  AnalyzedTokenReadings[] tokens=text.getTokens();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   String prevToken="";
-  int pos=0;
-  int prevPos=0;
   for (int i=0; i < tokens.length; i++) {
     String token=tokens[i].getAnalyzedToken(0).getToken();
-    String origToken=token;
-    if (token.trim().equals("")) {
+    boolean doesRequireA=false;
+    boolean doesRequireAn=false;
+    boolean isException=false;
+    String[] parts=token.split("[-']");
+    if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
+      token=parts[0];
     }
- else {
-      boolean doesRequireA=false;
-      boolean doesRequireAn=false;
-      boolean isException=false;
-      String[] parts=token.split("[-']");
-      if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
-        token=parts[0];
+    token=token.replaceAll("&quot|&amp|&lt|&gt|[^a-zA-Z0-9]","");
+    if (token.length() == 0) {
+      continue;
+    }
+    char tokenFirstChar=token.charAt(0);
+    if (requiresA.contains(token.toLowerCase()) || requiresA.contains(token)) {
+      isException=true;
+      doesRequireA=true;
+    }
+    if (requiresAn.contains(token.toLowerCase()) || requiresAn.contains(token)) {
+      if (isException) {
+        throw new IllegalStateException(token + " is listed in both det_a.txt and det_an.txt");
       }
-      token=token.replaceAll("&quot|&amp|&lt|&gt|[^a-zA-Z0-9]","");
-      if (token.length() == 0) {
-        pos+=origToken.length();
-        continue;
+      isException=true;
+      doesRequireAn=true;
+    }
+    if (!isException) {
+      if (StringTools.isAllUppercase(token)) {
+        doesRequireAn=false;
+        doesRequireA=false;
       }
-      char tokenFirstChar=token.charAt(0);
-      if (requiresA.contains(token.toLowerCase()) || requiresA.contains(token)) {
-        isException=true;
-        doesRequireA=true;
-      }
-      if (requiresAn.contains(token.toLowerCase()) || requiresAn.contains(token)) {
-        if (isException) {
-          throw new IllegalStateException(token + " is listed in both det_a.txt and det_an.txt");
-        }
-        isException=true;
+ else       if (isVowel(tokenFirstChar)) {
         doesRequireAn=true;
       }
-      if (!isException) {
-        if (StringTools.isAllUppercase(token)) {
-          doesRequireAn=false;
-          doesRequireA=false;
-        }
- else         if (isVowel(tokenFirstChar)) {
-          doesRequireAn=true;
-        }
  else {
-          doesRequireA=true;
-        }
+        doesRequireA=true;
       }
-      String msg=null;
-      if (prevToken.equalsIgnoreCase("a") && doesRequireAn) {
-        String repl="an";
-        if (prevToken.equals("A"))         repl="An";
-        msg="Use <suggestion>" + repl + "</suggestion> instead of '"+ prevToken+ "' if the following "+ "word starts with a vowel sound, e.g. 'an article', "+ "'an hour'";
-      }
- else       if (prevToken.equalsIgnoreCase("an") && doesRequireA) {
-        String repl="a";
-        if (prevToken.equals("An"))         repl="A";
-        msg="Use <suggestion>" + repl + "</suggestion> instead of '"+ prevToken+ "' if the following "+ "word doesn't start with a vowel sound, e.g. 'a sentence', "+ "'a university'";
-      }
-      if (msg != null) {
-        RuleMatch ruleMatch=new RuleMatch(this,prevPos,prevPos + prevToken.length(),msg);
-        ruleMatches.add(ruleMatch);
-      }
-      prevToken=token;
-      prevPos=pos;
     }
-    pos+=origToken.length();
+    String msg=null;
+    if (prevToken.equalsIgnoreCase("a") && doesRequireAn) {
+      String repl="an";
+      if (prevToken.equals("A"))       repl="An";
+      msg="Use <suggestion>" + repl + "</suggestion> instead of '"+ prevToken+ "' if the following "+ "word starts with a vowel sound, e.g. 'an article', "+ "'an hour'";
+    }
+ else     if (prevToken.equalsIgnoreCase("an") && doesRequireA) {
+      String repl="a";
+      if (prevToken.equals("An"))       repl="A";
+      msg="Use <suggestion>" + repl + "</suggestion> instead of '"+ prevToken+ "' if the following "+ "word doesn't start with a vowel sound, e.g. 'a sentence', "+ "'a university'";
+    }
+    if (msg != null) {
+      int prevPos=tokens[i - 1].getStartPos();
+      RuleMatch ruleMatch=new RuleMatch(this,prevPos,prevPos + prevToken.length(),msg);
+      ruleMatches.add(ruleMatch);
+    }
+    prevToken=token;
   }
   return toRuleMatchArray(ruleMatches);
 }
