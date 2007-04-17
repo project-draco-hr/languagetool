@@ -2,8 +2,8 @@
   List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   String prevToken="";
-  for (int i=0; i < tokens.length; i++) {
-    String token=tokens[i].getAnalyzedToken(0).getToken();
+  for (int i=1; i < tokens.length; i++) {
+    String token=tokens[i].getToken();
     boolean doesRequireA=false;
     boolean doesRequireAn=false;
     boolean isException=false;

@@ -4,7 +4,7 @@
   boolean repetition=false;
   TreeSet<String> inflectedWords=new TreeSet<String>();
   String prevLemma, curLemma;
-  for (int i=0; i < tokens.length; i++) {
+  for (int i=1; i < tokens.length; i++) {
     String token=tokens[i].getToken();
     boolean isWord=true;
     boolean hasLemma=true;
