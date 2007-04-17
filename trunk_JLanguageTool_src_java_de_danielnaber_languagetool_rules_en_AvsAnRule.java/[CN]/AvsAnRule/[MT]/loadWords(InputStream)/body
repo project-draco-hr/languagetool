@@ -1,6 +1,6 @@
 {
   BufferedReader br=null;
-  Set<String> set=new HashSet<String>();
+  TreeSet<String> set=new TreeSet<String>();
   try {
     br=new BufferedReader(new InputStreamReader(file));
     String line;

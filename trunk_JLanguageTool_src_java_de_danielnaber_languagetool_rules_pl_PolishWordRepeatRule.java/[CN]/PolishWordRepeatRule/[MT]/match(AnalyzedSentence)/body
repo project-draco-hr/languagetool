@@ -1,84 +1,81 @@
 {
   List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  AnalyzedTokenReadings[] tokens=text.getTokens();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   boolean repetition=false;
-  HashMap<String,String> inflectedWords=new HashMap<String,String>();
+  TreeSet<String> inflectedWords=new TreeSet<String>();
   String prevLemma, curLemma;
-  int pos=0;
   for (int i=0; i < tokens.length; i++) {
     String token=tokens[i].getToken();
-    if (!token.trim().equals("")) {
-      boolean isWord=true;
-      boolean hasLemma=true;
-      if (token.length() < 2) {
-        isWord=false;
-      }
-      int readingsLen=tokens[i].getReadingsLength();
-      for (int k=0; k < readingsLen; k++) {
-        String posTag=tokens[i].getAnalyzedToken(k).getPOSTag();
-        if (posTag != null) {
-          if (posTag.equals("")) {
-            isWord=false;
-            break;
-          }
-          String lemma=tokens[i].getAnalyzedToken(k).getLemma();
-          if (lemma == null) {
-            hasLemma=false;
-            break;
-          }
-          Matcher m1=EXC_WORDS.matcher(lemma);
-          if (m1.matches()) {
-            isWord=false;
-            break;
-          }
-          Matcher m2=EXC_POS.matcher(posTag);
-          if (m2.matches()) {
-            isWord=false;
-            break;
-          }
+    boolean isWord=true;
+    boolean hasLemma=true;
+    if (token.length() < 2) {
+      isWord=false;
+    }
+    int readingsLen=tokens[i].getReadingsLength();
+    for (int k=0; k < readingsLen; k++) {
+      String posTag=tokens[i].getAnalyzedToken(k).getPOSTag();
+      if (posTag != null) {
+        if (posTag.equals("")) {
+          isWord=false;
+          break;
         }
- else {
+        String lemma=tokens[i].getAnalyzedToken(k).getLemma();
+        if (lemma == null) {
           hasLemma=false;
+          break;
+        }
+        Matcher m1=EXC_WORDS.matcher(lemma);
+        if (m1.matches()) {
+          isWord=false;
+          break;
+        }
+        Matcher m2=EXC_POS.matcher(posTag);
+        if (m2.matches()) {
+          isWord=false;
+          break;
         }
       }
-      Matcher m1=EXC_NONWORDS.matcher(tokens[i].getToken());
-      if (m1.matches()) {
-        isWord=false;
+ else {
+        hasLemma=false;
       }
-      prevLemma="";
-      if (isWord) {
-        for (int j=0; j < readingsLen; j++) {
-          if (hasLemma) {
-            curLemma=tokens[i].getAnalyzedToken(j).getLemma();
-            if (!prevLemma.equals(curLemma)) {
-              if (inflectedWords.containsKey(curLemma)) {
-                repetition=true;
-              }
- else {
-                inflectedWords.put(tokens[i].getAnalyzedToken(j).getLemma(),tokens[i].getToken());
-              }
-            }
-            prevLemma=curLemma;
-          }
- else {
-            if (inflectedWords.containsKey(tokens[i].getToken())) {
+    }
+    Matcher m1=EXC_NONWORDS.matcher(tokens[i].getToken());
+    if (m1.matches()) {
+      isWord=false;
+    }
+    prevLemma="";
+    if (isWord) {
+      for (int j=0; j < readingsLen; j++) {
+        if (hasLemma) {
+          curLemma=tokens[i].getAnalyzedToken(j).getLemma();
+          if (!prevLemma.equals(curLemma)) {
+            if (inflectedWords.contains(curLemma)) {
               repetition=true;
             }
  else {
-              inflectedWords.put(tokens[i].getToken(),tokens[i].getToken());
+              inflectedWords.add(tokens[i].getAnalyzedToken(j).getLemma());
             }
+          }
+          prevLemma=curLemma;
+        }
+ else {
+          if (inflectedWords.contains(tokens[i].getToken())) {
+            repetition=true;
+          }
+ else {
+            inflectedWords.add(tokens[i].getToken());
           }
         }
       }
-      if (repetition) {
-        String msg="Powt??rzony wyraz w zdaniu";
-        RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),msg);
-        ruleMatch.setSuggestedReplacement(tokens[i].getToken());
-        ruleMatches.add(ruleMatch);
-        repetition=false;
-      }
     }
-    pos+=token.length();
+    if (repetition) {
+      String msg="Powt??rzony wyraz w zdaniu";
+      int pos=tokens[i].getStartPos();
+      RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),msg);
+      ruleMatch.setSuggestedReplacement(tokens[i].getToken());
+      ruleMatches.add(ruleMatch);
+      repetition=false;
+    }
   }
   return toRuleMatchArray(ruleMatches);
 }
