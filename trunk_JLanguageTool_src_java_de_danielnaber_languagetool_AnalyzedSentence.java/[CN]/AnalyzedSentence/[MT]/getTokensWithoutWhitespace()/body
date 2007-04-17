@@ -8,5 +8,5 @@
     }
     nonBlankTokens=(AnalyzedTokenReadings[])l.toArray(new AnalyzedTokenReadings[l.size()]);
   }
-  return nonBlankTokens;
+  return nonBlankTokens.clone();
 }
