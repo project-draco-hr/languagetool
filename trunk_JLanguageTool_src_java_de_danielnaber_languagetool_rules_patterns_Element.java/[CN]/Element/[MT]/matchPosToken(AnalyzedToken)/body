@@ -1,4 +1,20 @@
 {
+  if (token.getPOSTag() == null) {
+    if (!posRegExp) {
+      if (UNKNOWN_TAG.equals(posToken)) {
+        return true;
+      }
+    }
+ else {
+      if (mPos == null) {
+        mPos=pPos.matcher(UNKNOWN_TAG);
+      }
+ else {
+        mPos.reset(UNKNOWN_TAG);
+      }
+      return mPos.matches();
+    }
+  }
   if (posToken == null) {
     return true;
   }
