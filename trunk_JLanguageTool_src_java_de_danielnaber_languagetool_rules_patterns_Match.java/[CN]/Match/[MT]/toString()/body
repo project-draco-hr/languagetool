@@ -1,0 +1,36 @@
+{
+  String formattedString="";
+  if (formattedToken != null) {
+    if (posTag == null) {
+      if (pRegexMatch == null) {
+switch (caseConversionType) {
+default :
+          formattedString=formattedToken.getToken();
+        break;
+case NONE:
+      formattedString=formattedToken.getToken();
+    break;
+case STARTLOWER:
+  formattedString=formattedToken.getToken().substring(0,1).toLowerCase() + formattedToken.getToken().substring(1);
+break;
+case STARTUPPER:
+formattedString=formattedToken.getToken().substring(0,1).toUpperCase() + formattedToken.getToken().substring(1);
+break;
+case ALLUPPER:
+formattedString=formattedToken.getToken().toUpperCase();
+break;
+case ALLLOWER:
+formattedString=formattedToken.getToken().toLowerCase();
+break;
+}
+}
+ else {
+formattedString=pRegexMatch.matcher(formattedToken.getToken()).replaceAll(regexReplace);
+}
+}
+ else {
+formattedString=pRegexMatch.matcher(formattedToken.getToken()).replaceAll(regexReplace);
+}
+}
+return formattedString;
+}

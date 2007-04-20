@@ -21,6 +21,12 @@
         rule.setIncorrectExamples(incorrectExamples);
         rule.setCategory(category);
         caseSensitive=false;
+        if (suggestionMatches != null) {
+          for (          Match m : suggestionMatches) {
+            rule.addSuggestionMatch(m);
+          }
+          suggestionMatches.clear();
+        }
         rules.add(rule);
       }
     }
@@ -34,6 +40,12 @@
       rule.setIncorrectExamples(incorrectExamples);
       rule.setCategory(category);
       caseSensitive=false;
+      if (suggestionMatches != null) {
+        for (        Match m : suggestionMatches) {
+          rule.addSuggestionMatch(m);
+        }
+        suggestionMatches.clear();
+      }
       rules.add(rule);
     }
     if (elementList != null) {
