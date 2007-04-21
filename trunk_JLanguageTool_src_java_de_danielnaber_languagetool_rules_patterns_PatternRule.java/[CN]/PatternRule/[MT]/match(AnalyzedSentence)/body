@@ -94,35 +94,7 @@
     }
     tokenPos++;
     if (allElementsMatch) {
-      String errMessage=message;
-      if (firstMatchToken + matchingTokens >= tokens.length) {
-        matchingTokens=tokens.length - firstMatchToken;
-      }
-      int matchCounter=0;
-      for (int j=0; j < matchingTokens; j++) {
-        int repTokenPos=0;
-        for (int l=0; l <= j; l++) {
-          repTokenPos+=tokenPositions[l];
-        }
-        if (errMessage.indexOf("\\" + (j + 1)) > 0) {
-          boolean newWay=false;
-          if (suggestionMatches != null) {
-            if (matchCounter < suggestionMatches.size()) {
-              if (suggestionMatches.get(matchCounter) != null) {
-                while (errMessage.indexOf("\\" + (j + 1)) > 0) {
-                  suggestionMatches.get(matchCounter).setToken(tokens[firstMatchToken + repTokenPos - 1]);
-                  errMessage=errMessage.replaceFirst("\\\\" + (j + 1),suggestionMatches.get(matchCounter).toString());
-                  matchCounter++;
-                  newWay=true;
-                }
-              }
-            }
-          }
-          if (!newWay) {
-            errMessage=errMessage.replaceAll("\\\\" + (j + 1),tokens[firstMatchToken + repTokenPos - 1].getToken());
-          }
-        }
-      }
+      String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,matchingTokens,message);
       int correctedStPos=0;
       if (startPositionCorrection > 0) {
         for (int l=0; l <= startPositionCorrection; l++) {

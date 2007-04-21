@@ -1,0 +1,56 @@
+{
+  String[] formattedString=new String[1];
+  if (formattedToken != null) {
+    if (posTag == null) {
+      if (pRegexMatch == null) {
+switch (caseConversionType) {
+default :
+          formattedString[0]=formattedToken.getToken();
+        break;
+case NONE:
+      formattedString[0]=formattedToken.getToken();
+    break;
+case STARTLOWER:
+  formattedString[0]=formattedToken.getToken().substring(0,1).toLowerCase() + formattedToken.getToken().substring(1);
+break;
+case STARTUPPER:
+formattedString[0]=formattedToken.getToken().substring(0,1).toUpperCase() + formattedToken.getToken().substring(1);
+break;
+case ALLUPPER:
+formattedString[0]=formattedToken.getToken().toUpperCase();
+break;
+case ALLLOWER:
+formattedString[0]=formattedToken.getToken().toLowerCase();
+break;
+}
+}
+ else {
+formattedString[0]=pRegexMatch.matcher(formattedToken.getToken()).replaceAll(regexReplace);
+}
+}
+ else {
+if (synthesizer == null) {
+formattedString[0]=formattedToken.getToken();
+}
+ else {
+int readingCount=formattedToken.getReadingsLength();
+List<String> wordForms=new ArrayList<String>();
+for (int i=0; i < readingCount; i++) {
+String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i).getLemma(),posTag);
+if (possibleWordForms != null) {
+for (String form : possibleWordForms) {
+wordForms.add(form);
+}
+}
+}
+if (wordForms != null) {
+formattedString=wordForms.toArray(new String[wordForms.size()]);
+}
+ else {
+formattedString[0]=formattedToken.getToken();
+}
+}
+}
+}
+return formattedString;
+}

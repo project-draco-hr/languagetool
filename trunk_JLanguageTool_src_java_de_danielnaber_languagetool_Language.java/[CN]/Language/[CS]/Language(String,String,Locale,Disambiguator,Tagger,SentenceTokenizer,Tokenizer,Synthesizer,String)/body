@@ -1,0 +1,7 @@
+{
+  this(name,shortForm,locale,disambiguator,tagger,sentenceTokenizer,wordTokenizer,maintainers);
+  if (synthesizer == null) {
+    throw new NullPointerException("synthesizer cannot be null");
+  }
+  this.synthesizer=synthesizer;
+}

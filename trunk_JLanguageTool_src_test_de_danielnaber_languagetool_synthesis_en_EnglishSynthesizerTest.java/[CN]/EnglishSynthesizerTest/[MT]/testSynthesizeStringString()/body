@@ -1,0 +1,6 @@
+{
+  EnglishSynthesizer synth=new EnglishSynthesizer();
+  assertNull(synth.synthesize("blablabla","blablabla"));
+  assertEquals("[presidents]",Arrays.toString(synth.synthesize("president","NNS")));
+  assertEquals("[tested]",Arrays.toString(synth.synthesize("test","VBD")));
+}

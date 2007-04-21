@@ -1,0 +1,5 @@
+AnalyzedTokenReadings[] toks
+int[] positions
+int firstMatchTok
+int matchingTok
+String errorMsg
