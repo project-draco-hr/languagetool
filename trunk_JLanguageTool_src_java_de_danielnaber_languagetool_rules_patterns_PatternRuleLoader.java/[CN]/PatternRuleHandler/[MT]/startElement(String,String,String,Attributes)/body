@@ -116,7 +116,7 @@
     if (attrs.getValue("case_conversion") != null) {
       caseConv=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());
     }
-    mWorker=new Match(attrs.getValue("postag"),false,attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv);
+    mWorker=new Match(attrs.getValue("postag"),"yes".equals(attrs.getValue("postag_regexp")),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv);
     suggestionMatches.add(mWorker);
     message.append("\\" + attrs.getValue("no"));
   }
