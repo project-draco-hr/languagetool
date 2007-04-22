@@ -1,0 +1,15 @@
+{
+  try {
+    PatternRuleHandler handler=new PatternRuleHandler();
+    SAXParserFactory factory=SAXParserFactory.newInstance();
+    SAXParser saxParser=factory.newSAXParser();
+    saxParser.parse(is,handler);
+    rules=handler.getRules();
+    return rules;
+  }
+ catch (  Exception e) {
+    IOException ioe=new IOException("Cannot load or parse '" + filename + "'");
+    ioe.initCause(e);
+    throw ioe;
+  }
+}

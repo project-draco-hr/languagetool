@@ -1,4 +1,4 @@
 {
   PatternRuleLoader ruleLoader=new PatternRuleLoader();
-  return ruleLoader.getRules(this.getClass().getResourceAsStream(filename));
+  return ruleLoader.getRules(this.getClass().getResourceAsStream(filename),filename);
 }

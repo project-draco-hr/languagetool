@@ -1,4 +1,11 @@
 {
-  String xml=StringTools.readFile(this.getClass().getResourceAsStream(filename));
-  validateInternal(xml,dtdFile,docType);
+  try {
+    String xml=StringTools.readFile(this.getClass().getResourceAsStream(filename));
+    validateInternal(xml,dtdFile,docType);
+  }
+ catch (  Exception e) {
+    IOException ioe=new IOException("Cannot load or parse '" + filename + "'");
+    ioe.initCause(e);
+    throw ioe;
+  }
 }

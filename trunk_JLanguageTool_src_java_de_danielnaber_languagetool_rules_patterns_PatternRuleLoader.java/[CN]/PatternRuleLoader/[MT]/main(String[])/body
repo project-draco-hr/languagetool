@@ -1,5 +1,6 @@
 {
   PatternRuleLoader prg=new PatternRuleLoader();
-  List<PatternRule> l=prg.getRules(this.getClass().getResourceAsStream("/rules/de/grammar.xml"));
+  String name="/rules/de/grammar.xml";
+  List<PatternRule> l=prg.getRules(this.getClass().getResourceAsStream(name),name);
   System.out.println(l);
 }
