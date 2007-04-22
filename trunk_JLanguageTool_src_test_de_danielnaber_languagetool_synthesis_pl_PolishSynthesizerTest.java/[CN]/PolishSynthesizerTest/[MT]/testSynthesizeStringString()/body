@@ -1,0 +1,9 @@
+{
+  PolishSynthesizer synth=new PolishSynthesizer();
+  assertNull(synth.synthesize("blablabla","blablabla"));
+  assertEquals("[Aaru]",Arrays.toString(synth.synthesize("Aar","subst:sg:gen:m3")));
+  assertEquals("[Abchazem]",Arrays.toString(synth.synthesize("Abchaz","subst:sg:inst:m3")));
+  assertEquals("[niedu??y]",Arrays.toString(synth.synthesize("du??y","adj:sg:nom:m:neg")));
+  assertEquals("[tonera]",Arrays.toString(synth.synthesize("toner",".*sg:gen.*",true)));
+  assertEquals("[niedu??ego, niedu??emu, niedu??y]",Arrays.toString(synth.synthesize("du??y","adj:sg.*m:neg",true)));
+}

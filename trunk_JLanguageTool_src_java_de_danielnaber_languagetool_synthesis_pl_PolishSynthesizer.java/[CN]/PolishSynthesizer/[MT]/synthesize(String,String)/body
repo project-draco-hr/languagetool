@@ -1,0 +1,20 @@
+{
+  if (synthesizer == null) {
+    synthesizer=new Lametyzator(this.getClass().getResourceAsStream(RESOURCE_FILENAME),"iso8859-2",'+');
+  }
+  String[] wordForms=null;
+  if (posTag.indexOf(":neg") > 0) {
+    wordForms=synthesizer.stem(lemma + "|" + posTag.replaceFirst(":neg",":pneg"));
+    if (wordForms != null) {
+      String[] negForms=wordForms;
+      for (int i=0; i < wordForms.length; i++) {
+        negForms[i]="nie" + wordForms[i];
+      }
+      wordForms=negForms;
+    }
+  }
+ else {
+    wordForms=synthesizer.stem(lemma + "|" + posTag);
+  }
+  return wordForms;
+}
