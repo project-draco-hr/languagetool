@@ -4,20 +4,26 @@
     matchingTok=toks.length - firstMatchTok;
   }
   int matchCounter=0;
-  for (int j=0; j < matchingTok; j++) {
-    int repTokenPos=0;
-    for (int l=0; l <= j; l++) {
-      repTokenPos+=positions[l];
-    }
-    if (errorMessage.indexOf("\\" + (j + 1)) > 0) {
-      boolean newWay=false;
-      if (suggestionMatches != null) {
-        if (matchCounter < suggestionMatches.size()) {
-          if (suggestionMatches.get(matchCounter) != null) {
-            while (errorMessage.indexOf("\\" + (j + 1)) > 0) {
+  boolean newWay=false;
+  int errLen=errorMessage.length();
+  int errMarker=errorMessage.indexOf("\\");
+  boolean numberFollows=false;
+  if (errMarker > 0 & errMarker < errLen - 1) {
+    numberFollows=errorMessage.charAt(errMarker + 1) >= '1' & errorMessage.charAt(errMarker + 1) <= '9';
+  }
+  while (errMarker > 0 & numberFollows) {
+    for (int j=0; j < matchingTok; j++) {
+      int repTokenPos=0;
+      for (int l=0; l <= j; l++) {
+        repTokenPos+=positions[l];
+      }
+      int ind=errorMessage.indexOf("\\" + (j + 1));
+      if (ind > 0) {
+        if (suggestionMatches != null) {
+          if (matchCounter < suggestionMatches.size()) {
+            if (suggestionMatches.get(matchCounter) != null) {
               suggestionMatches.get(matchCounter).setToken(toks[firstMatchTok + repTokenPos - 1]);
               suggestionMatches.get(matchCounter).setSynthesizer(language[0].getSynthesizer());
-              int ind=errorMessage.indexOf("\\" + (j + 1));
               String leftSide=errorMessage.substring(0,ind);
               String suggestionLeft="";
               String suggestionRight="";
@@ -49,6 +55,11 @@
       if (!newWay) {
         errorMessage=errorMessage.replaceAll("\\\\" + (j + 1),toks[firstMatchTok + repTokenPos - 1].getToken());
       }
+    }
+    errMarker=errorMessage.indexOf("\\");
+    numberFollows=false;
+    if (errMarker > 0 & errMarker < errLen - 1) {
+      numberFollows=errorMessage.charAt(errMarker + 1) >= '1' & errorMessage.charAt(errMarker + 1) <= '9';
     }
   }
   return errorMessage;
