@@ -46,29 +46,27 @@
     int finalLen=0;
     if (mStartSpace.containsKey(tok)) {
       int len=Integer.parseInt(mStartSpace.get(tok));
-      if (i + len * 2 < anTokens.length) {
-        int j=i;
-        int lenCounter=0;
-        while (j < anTokens.length) {
-          if (!anTokens[j].isWhitespace()) {
-            tokens.append(anTokens[j].getToken());
-            lenCounter++;
-            if (lenCounter == len) {
-              break;
-            }
- else {
-              tokens.append(' ');
-            }
+      int j=i;
+      int lenCounter=0;
+      while (j < anTokens.length) {
+        if (!anTokens[j].isWhitespace()) {
+          tokens.append(anTokens[j].getToken());
+          if (mFull.containsKey(tokens.toString())) {
+            AnalyzedToken tokenStart=new AnalyzedToken(tok,"<" + mFull.get(tokens.toString()) + ">",tokens.toString());
+            output[i].addReading(tokenStart);
+            AnalyzedToken tokenEnd=new AnalyzedToken(anTokens[finalLen].getToken(),"</" + mFull.get(tokens.toString()) + ">",tokens.toString());
+            output[finalLen].addReading(tokenEnd);
           }
-          j++;
-          finalLen=j;
+          lenCounter++;
+          if (lenCounter == len) {
+            break;
+          }
+ else {
+            tokens.append(' ');
+          }
         }
-      }
-      if (mFull.containsKey(tokens.toString())) {
-        AnalyzedToken tokenStart=new AnalyzedToken(tok,"<" + mFull.get(tokens.toString()) + ">",tokens.toString());
-        output[i].addReading(tokenStart);
-        AnalyzedToken tokenEnd=new AnalyzedToken(anTokens[finalLen].getToken(),"</" + mFull.get(tokens.toString()) + ">",tokens.toString());
-        output[finalLen].addReading(tokenEnd);
+        j++;
+        finalLen=j;
       }
     }
     if (mStartNoSpace.containsKey(tok)) {
@@ -76,13 +74,13 @@
       if (i + len < anTokens.length) {
         for (int j=i; j < i + len; j++) {
           tokens.append(anTokens[j].getToken());
+          if (mFull.containsKey(tokens.toString())) {
+            AnalyzedToken tokenStart=new AnalyzedToken(tok,"<" + mFull.get(tokens.toString()) + ">",tokens.toString());
+            output[i].addReading(tokenStart);
+            AnalyzedToken tokenEnd=new AnalyzedToken(anTokens[i + len - 1].getToken(),"</" + mFull.get(tokens.toString()) + ">",tokens.toString());
+            output[i + len - 1].addReading(tokenEnd);
+          }
         }
-      }
-      if (mFull.containsKey(tokens.toString())) {
-        AnalyzedToken tokenStart=new AnalyzedToken(tok,"<" + mFull.get(tokens.toString()) + ">",tokens.toString());
-        output[i].addReading(tokenStart);
-        AnalyzedToken tokenEnd=new AnalyzedToken(anTokens[i + len - 1].getToken(),"</" + mFull.get(tokens.toString()) + ">",tokens.toString());
-        output[i + len - 1].addReading(tokenEnd);
       }
     }
   }
