@@ -3,20 +3,20 @@
   try {
     String packagePath=packageName.replace('.','/');
     Enumeration<URL> resources_=classLoader.getResources(packagePath);
-    Set<URI> uniqResources=new HashSet<URI>();
+    Set<URL> uniqResources=new HashSet<URL>();
     for (; resources_.hasMoreElements(); ) {
       URL resource=resources_.nextElement();
-      uniqResources.add(resource.toURI());
+      uniqResources.add(resource);
     }
-    for (    URI resource : uniqResources) {
-      if (resource.toURL().getProtocol().startsWith("jar")) {
+    for (    URL resource : uniqResources) {
+      if (resource.getProtocol().startsWith("jar")) {
         if (resource.getPath().contains("LanguageTool.uno.jar")) {
           continue;
         }
-        findClassesInJar(packageName,classNameRegEx,subdirLevel,classExtends,interfaceImplements,foundClasses,resource.toURL());
+        findClassesInJar(packageName,classNameRegEx,subdirLevel,classExtends,interfaceImplements,foundClasses,resource);
       }
  else {
-        findClassesInDirectory(classLoader,packageName,classNameRegEx,subdirLevel,classExtends,interfaceImplements,foundClasses,resource.toURL());
+        findClassesInDirectory(classLoader,packageName,classNameRegEx,subdirLevel,classExtends,interfaceImplements,foundClasses,resource);
       }
     }
   }
