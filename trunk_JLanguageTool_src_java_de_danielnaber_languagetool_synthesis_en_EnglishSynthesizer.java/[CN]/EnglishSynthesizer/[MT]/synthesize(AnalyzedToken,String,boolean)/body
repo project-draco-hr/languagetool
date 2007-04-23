@@ -4,7 +4,7 @@
       possibleTags=loadWords(this.getClass().getResourceAsStream(TAGS_FILE_NAME));
     }
     if (synthesizer == null) {
-      synthesizer=new Lametyzator(this.getClass().getResourceAsStream(RESOURCE_FILENAME),"iso8859-2",'+');
+      synthesizer=new Lametyzator(this.getClass().getResourceAsStream(RESOURCE_FILENAME),"iso8859-1",'+');
     }
     Pattern p=Pattern.compile(posTag);
     ArrayList<String> results=new ArrayList<String>();
@@ -12,19 +12,7 @@
       Matcher m=p.matcher(tag);
       if (m.matches()) {
         String[] wordForms=null;
-        if (posTag.indexOf(":neg") > 0) {
-          wordForms=synthesizer.stem(lemma + "|" + tag.replaceAll(":neg",":pneg"));
-          if (wordForms != null) {
-            String[] negForms=wordForms;
-            for (int i=0; i < wordForms.length; i++) {
-              negForms[i]="nie" + wordForms[i];
-            }
-            wordForms=negForms;
-          }
-        }
- else {
-          wordForms=synthesizer.stem(lemma + "|" + tag);
-        }
+        wordForms=synthesizer.stem(token.getLemma() + "|" + tag);
         if (wordForms != null) {
           results.addAll(Arrays.asList(wordForms));
         }
@@ -33,6 +21,6 @@
     return (String[])results.toArray(new String[results.size()]);
   }
  else {
-    return synthesize(lemma,posTag);
+    return synthesize(token,posTag);
   }
 }

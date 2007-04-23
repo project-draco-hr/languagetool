@@ -1,10 +1,10 @@
 {
   EnglishSynthesizer synth=new EnglishSynthesizer();
-  assertNull(synth.synthesize("blablabla","blablabla"));
-  assertEquals("[were, wast, was]",Arrays.toString(synth.synthesize("be","VBD")));
-  assertEquals("[presidents]",Arrays.toString(synth.synthesize("president","NNS")));
-  assertEquals("[tested]",Arrays.toString(synth.synthesize("test","VBD")));
-  assertEquals("[tested]",Arrays.toString(synth.synthesize("test","VBD",false)));
-  assertEquals("[tested]",Arrays.toString(synth.synthesize("test","VBD",true)));
-  assertEquals("[tested, testing]",Arrays.toString(synth.synthesize("test","VBD|VBG",true)));
+  assertNull(synth.synthesize(dummyToken("blablabla"),"blablabla"));
+  assertEquals("[were, wast, was]",Arrays.toString(synth.synthesize(dummyToken("be"),"VBD")));
+  assertEquals("[presidents]",Arrays.toString(synth.synthesize(dummyToken("president"),"NNS")));
+  assertEquals("[tested]",Arrays.toString(synth.synthesize(dummyToken("test"),"VBD")));
+  assertEquals("[tested]",Arrays.toString(synth.synthesize(dummyToken("test"),"VBD",false)));
+  assertEquals("[tested]",Arrays.toString(synth.synthesize(dummyToken("test"),"VBD",true)));
+  assertEquals("[tested, testing]",Arrays.toString(synth.synthesize(dummyToken("test"),"VBD|VBG",true)));
 }

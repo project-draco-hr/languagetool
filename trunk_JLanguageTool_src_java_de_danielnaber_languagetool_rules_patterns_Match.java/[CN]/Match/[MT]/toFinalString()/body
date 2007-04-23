@@ -36,7 +36,7 @@ formattedString[0]=formattedToken.getToken();
 int readingCount=formattedToken.getReadingsLength();
 TreeSet<String> wordForms=new TreeSet<String>();
 for (int i=0; i < readingCount; i++) {
-String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i).getLemma(),posTag,true);
+String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i),posTag,true);
 if (possibleWordForms != null) {
 for (String form : possibleWordForms) {
 wordForms.add(form);
@@ -54,7 +54,7 @@ formattedString[0]=formattedToken.getToken();
 int readingCount=formattedToken.getReadingsLength();
 TreeSet<String> wordForms=new TreeSet<String>();
 for (int i=0; i < readingCount; i++) {
-String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i).getLemma(),posTag);
+String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i),posTag);
 if (possibleWordForms != null) {
 for (String form : possibleWordForms) {
 wordForms.add(form);
