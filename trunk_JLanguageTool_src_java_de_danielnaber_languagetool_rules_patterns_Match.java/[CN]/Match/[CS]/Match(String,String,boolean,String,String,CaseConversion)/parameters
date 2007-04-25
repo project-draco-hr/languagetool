@@ -1,4 +1,5 @@
 String posTag
+String posTagReplace
 boolean postagRegexp
 String regexMatch
 String regexReplace

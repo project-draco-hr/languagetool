@@ -1,0 +1,13 @@
+{
+  this.posTag=posTag;
+  this.postagRegexp=postagRegexp;
+  this.caseConversionType=caseConversionType;
+  if (regexMatch != null) {
+    pRegexMatch=Pattern.compile(regexMatch);
+  }
+  if (postagRegexp & posTag != null) {
+    pPosRegexMatch=Pattern.compile(posTag);
+  }
+  this.regexReplace=regexReplace;
+  this.posTagReplace=posTagReplace;
+}
