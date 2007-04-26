@@ -15,14 +15,22 @@
     if (taggerTokens != null) {
       int i=0;
       while (i < taggerTokens.length) {
-        l.add(new AnalyzedToken(word,taggerTokens[i + 1],taggerTokens[i]));
+        String lemma=taggerTokens[i];
+        String[] tagsArr=taggerTokens[i + 1].split("\\+");
+        for (        String currTag : tagsArr) {
+          l.add(new AnalyzedToken(word,currTag,lemma));
+        }
         i=i + 2;
       }
     }
     if (lowerTaggerTokens != null) {
       int i=0;
       while (i < lowerTaggerTokens.length) {
-        l.add(new AnalyzedToken(word,lowerTaggerTokens[i + 1],lowerTaggerTokens[i]));
+        String lemma=lowerTaggerTokens[i];
+        String[] tagsArr=lowerTaggerTokens[i + 1].split("\\+");
+        for (        String currTag : tagsArr) {
+          l.add(new AnalyzedToken(word,currTag,lemma));
+        }
         i=i + 2;
       }
     }
