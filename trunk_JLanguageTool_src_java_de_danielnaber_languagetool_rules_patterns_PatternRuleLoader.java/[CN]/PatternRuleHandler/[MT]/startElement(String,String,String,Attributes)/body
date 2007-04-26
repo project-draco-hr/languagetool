@@ -108,15 +108,16 @@
     message.append("<suggestion>");
   }
  else   if (qName.equals("match") && inMessage) {
+    inMatch=true;
+    match=new StringBuffer();
     if (suggestionMatches == null) {
       suggestionMatches=new ArrayList<Match>();
     }
-    Match mWorker;
     Match.CaseConversion caseConv=Match.CaseConversion.NONE;
     if (attrs.getValue("case_conversion") != null) {
       caseConv=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());
     }
-    mWorker=new Match(attrs.getValue("postag"),attrs.getValue("postag_replace"),"yes".equals(attrs.getValue("postag_regexp")),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv);
+    Match mWorker=new Match(attrs.getValue("postag"),attrs.getValue("postag_replace"),"yes".equals(attrs.getValue("postag_regexp")),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv);
     suggestionMatches.add(mWorker);
     message.append("\\" + attrs.getValue("no"));
   }

@@ -1,3 +1,8 @@
 {
-  formattedToken=token;
+  if (!staticLemma) {
+    formattedToken=token;
+  }
+ else {
+    matchedToken=token;
+  }
 }

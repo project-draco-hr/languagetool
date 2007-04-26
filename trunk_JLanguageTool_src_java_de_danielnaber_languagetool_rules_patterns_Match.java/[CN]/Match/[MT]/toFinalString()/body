@@ -2,28 +2,29 @@
   String[] formattedString=new String[1];
   if (formattedToken != null) {
     if (posTag == null) {
+      formattedString[0]=formattedToken.getToken();
+      if (pRegexMatch != null) {
+        formattedString[0]=pRegexMatch.matcher(formattedString[0]).replaceAll(regexReplace);
+      }
 switch (caseConversionType) {
 default :
-        formattedString[0]=formattedToken.getToken();
+        formattedString[0]=formattedString[0];
       break;
 case NONE:
-    formattedString[0]=formattedToken.getToken();
+    formattedString[0]=formattedString[0];
   break;
 case STARTLOWER:
-formattedString[0]=formattedToken.getToken().substring(0,1).toLowerCase() + formattedToken.getToken().substring(1);
+formattedString[0]=formattedString[0].substring(0,1).toLowerCase() + formattedToken.getToken().substring(1);
 break;
 case STARTUPPER:
-formattedString[0]=formattedToken.getToken().substring(0,1).toUpperCase() + formattedToken.getToken().substring(1);
+formattedString[0]=formattedString[0].substring(0,1).toUpperCase() + formattedToken.getToken().substring(1);
 break;
 case ALLUPPER:
-formattedString[0]=formattedToken.getToken().toUpperCase();
+formattedString[0]=formattedString[0].toUpperCase();
 break;
 case ALLLOWER:
-formattedString[0]=formattedToken.getToken().toLowerCase();
+formattedString[0]=formattedString[0].toLowerCase();
 break;
-}
-if (pRegexMatch != null) {
-formattedString[0]=pRegexMatch.matcher(formattedString[0]).replaceAll(regexReplace);
 }
 }
  else {
@@ -33,8 +34,28 @@ formattedString[0]=formattedToken.getToken();
  else if (postagRegexp) {
 int readingCount=formattedToken.getReadingsLength();
 String targetPosTag=posTag;
+if (staticLemma) {
+int numRead=matchedToken.getReadingsLength();
+for (int i=0; i < numRead; i++) {
+String tst=matchedToken.getAnalyzedToken(i).getPOSTag();
+if (tst != null) {
+if (pPosRegexMatch.matcher(tst).matches()) {
+targetPosTag=matchedToken.getAnalyzedToken(i).getPOSTag();
+break;
+}
+}
+}
+if (pPosRegexMatch != null & posTagReplace != null) {
+targetPosTag=pPosRegexMatch.matcher(targetPosTag).replaceAll(posTagReplace);
+}
+if (targetPosTag.indexOf("?") > 0) {
+targetPosTag=targetPosTag.replaceAll("\\?","\\\\?");
+}
+}
+ else {
 if (pPosRegexMatch != null & posTagReplace != null) {
 targetPosTag=pPosRegexMatch.matcher(posTag).replaceAll(posTagReplace);
+}
 }
 TreeSet<String> wordForms=new TreeSet<String>();
 for (int i=0; i < readingCount; i++) {
@@ -46,7 +67,12 @@ wordForms.add(form);
 }
 }
 if (wordForms != null) {
+if (wordForms.size() > 0) {
 formattedString=wordForms.toArray(new String[wordForms.size()]);
+}
+ else {
+formattedString[0]="(" + formattedToken.getToken() + ")";
+}
 }
  else {
 formattedString[0]=formattedToken.getToken();

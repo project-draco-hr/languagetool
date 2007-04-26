@@ -12,13 +12,14 @@
     numberFollows=errorMessage.charAt(errMarker + 1) >= '1' & errorMessage.charAt(errMarker + 1) <= '9';
   }
   while (errMarker > 0 & numberFollows) {
-    for (int j=0; j < matchingTok; j++) {
-      int repTokenPos=0;
-      for (int l=0; l <= j; l++) {
-        repTokenPos+=positions[l];
-      }
-      int ind=errorMessage.indexOf("\\" + (j + 1));
-      if (ind > 0) {
+    int ind=errorMessage.indexOf("\\");
+    if (ind > 0) {
+      if (errorMessage.charAt(ind + 1) >= '1' & errorMessage.charAt(ind + 1) <= '9') {
+        int j=errorMessage.charAt(ind + 1) - '1';
+        int repTokenPos=0;
+        for (int l=0; l <= j; l++) {
+          repTokenPos+=positions[l];
+        }
         if (suggestionMatches != null) {
           if (matchCounter < suggestionMatches.size()) {
             if (suggestionMatches.get(matchCounter) != null) {
@@ -51,15 +52,24 @@
             }
           }
         }
-      }
-      if (!newWay) {
-        errorMessage=errorMessage.replaceAll("\\\\" + (j + 1),toks[firstMatchTok + repTokenPos - 1].getToken());
+        if (!newWay) {
+          errorMessage=errorMessage.replaceAll("\\\\" + (j + 1),toks[firstMatchTok + repTokenPos - 1].getToken());
+          errMarker=errorMessage.indexOf("\\");
+          numberFollows=false;
+          errLen=errorMessage.length();
+          if (errMarker > 0 & errMarker < errLen - 1) {
+            numberFollows=errorMessage.charAt(errMarker + 1) >= '1' & errorMessage.charAt(errMarker + 1) <= '9';
+          }
+        }
       }
     }
-    errMarker=errorMessage.indexOf("\\");
-    numberFollows=false;
-    if (errMarker > 0 & errMarker < errLen - 1) {
-      numberFollows=errorMessage.charAt(errMarker + 1) >= '1' & errorMessage.charAt(errMarker + 1) <= '9';
+ else {
+      errMarker=errorMessage.indexOf("\\");
+      numberFollows=false;
+      errLen=errorMessage.length();
+      if (errMarker > 0 & errMarker < errLen - 1) {
+        numberFollows=errorMessage.charAt(errMarker + 1) >= '1' & errorMessage.charAt(errMarker + 1) <= '9';
+      }
     }
   }
   return errorMessage;

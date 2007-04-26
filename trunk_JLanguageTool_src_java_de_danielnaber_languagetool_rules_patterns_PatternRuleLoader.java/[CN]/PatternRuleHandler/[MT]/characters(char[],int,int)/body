@@ -12,6 +12,9 @@
  else   if (inIncorrectExample) {
     incorrectExample.append(s);
   }
+ else   if (inMatch) {
+    match.append(s);
+  }
  else   if (inMessage) {
     message.append(s);
   }

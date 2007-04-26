@@ -2,7 +2,10 @@
   if (synthesizer == null) {
     synthesizer=new Lametyzator(this.getClass().getResourceAsStream(RESOURCE_FILENAME),"iso8859-2",'+');
   }
-  boolean isNegated=posTag.indexOf(":neg") > 0 || token.getPOSTag().indexOf(":neg") > 0;
+  boolean isNegated=false;
+  if (posTag != null && token.getPOSTag() != null) {
+    isNegated=posTag.indexOf(":neg") > 0 || token.getPOSTag().indexOf(":neg") > 0;
+  }
   String[] wordForms=null;
   if (isNegated) {
     wordForms=synthesizer.stem(token.getLemma() + "|" + posTag.replaceFirst(":neg",":pneg"));

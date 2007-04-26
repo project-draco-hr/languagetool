@@ -122,6 +122,10 @@
  else   if (qName.equals("message")) {
     inMessage=false;
   }
+ else   if (qName.equals("match")) {
+    suggestionMatches.get(suggestionMatches.size() - 1).setLemmaString(match.toString());
+    inMatch=false;
+  }
  else   if (qName.equals("rulegroup")) {
     inRuleGroup=false;
   }
