@@ -34,7 +34,17 @@
                 errorMessage=leftSide + suggestionLeft + matches[0]+ suggestionRight+ rightSide;
               }
  else {
-                errorMessage=leftSide;
+                suggestionLeft=leftSide.substring(leftSide.lastIndexOf("<suggestion>") + "<suggestion>".length());
+                if (suggestionLeft.equals("")) {
+                  errorMessage=leftSide;
+                }
+ else {
+                  errorMessage=leftSide.substring(0,leftSide.lastIndexOf("<suggestion>")) + "<suggestion>";
+                }
+                suggestionRight=rightSide.substring(0,rightSide.indexOf("</suggestion>"));
+                if (!suggestionRight.equals("")) {
+                  rightSide=rightSide.substring(rightSide.indexOf("</suggestion>"));
+                }
                 int lastLeftSugEnd=leftSide.indexOf("</suggestion>");
                 int lastLeftSugStart=leftSide.lastIndexOf("<suggestion>");
                 for (                String formatMatch : matches) {
@@ -43,8 +53,8 @@
                     errorMessage+="</suggestion>, <suggestion>";
                   }
                 }
-                int correctionSug=errorMessage.lastIndexOf("<suggestion>");
-                if (correctionSug + "<suggestion>".length() == errorMessage.length())                 errorMessage=errorMessage.substring(0,correctionSug);
+                int correctionSug=errorMessage.lastIndexOf(", <suggestion>");
+                if (correctionSug + ", <suggestion>".length() == errorMessage.length())                 errorMessage=errorMessage.substring(0,correctionSug);
                 errorMessage+=rightSide;
               }
               matchCounter++;
