@@ -1,0 +1,18 @@
+{
+  String s=new String(buf,offset,len);
+  if (inException) {
+    exceptions.append(s);
+  }
+ else   if (inToken && inPattern) {
+    elements.append(s);
+  }
+ else   if (inCorrectExample) {
+    correctExample.append(s);
+  }
+ else   if (inIncorrectExample) {
+    incorrectExample.append(s);
+  }
+ else   if (inDisamb) {
+    disamb.append(s);
+  }
+}

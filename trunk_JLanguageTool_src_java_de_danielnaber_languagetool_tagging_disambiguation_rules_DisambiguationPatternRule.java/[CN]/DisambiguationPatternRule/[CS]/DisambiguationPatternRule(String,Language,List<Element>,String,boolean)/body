@@ -1,0 +1,11 @@
+{
+  if (id == null)   throw new NullPointerException("id cannot be null");
+  if (language == null)   throw new NullPointerException("language cannot be null");
+  if (elements == null)   throw new NullPointerException("elements cannot be null");
+  if (description == null)   throw new NullPointerException("description cannot be null");
+  this.id=id;
+  this.language=new Language[]{language};
+  this.description=description;
+  this.patternElements=new ArrayList<Element>(elements);
+  this.isMemberOfDisjunctiveSet=isMember;
+}
