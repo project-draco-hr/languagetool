@@ -27,6 +27,9 @@
     if (attrs.getValue("mark_to") != null)     endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
     if (attrs.getValue("case_sensitive") != null && attrs.getValue("case_sensitive").equals("yes"))     caseSensitive=true;
   }
+ else   if (qName.equals("and")) {
+    inAndGroup=true;
+  }
  else   if (qName.equals("token")) {
     inToken=true;
     if (lastPhrase && elementList != null) {
@@ -117,7 +120,7 @@
     if (attrs.getValue("case_conversion") != null) {
       caseConv=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());
     }
-    Match mWorker=new Match(attrs.getValue("postag"),attrs.getValue("postag_replace"),"yes".equals(attrs.getValue("postag_regexp")),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv);
+    final Match mWorker=new Match(attrs.getValue("postag"),attrs.getValue("postag_replace"),"yes".equals(attrs.getValue("postag_regexp")),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv);
     suggestionMatches.add(mWorker);
     message.append("\\" + attrs.getValue("no"));
   }
@@ -131,9 +134,7 @@
     inPhrases=true;
   }
  else   if (qName.equals("includephrases")) {
-    if (phraseElementList == null) {
-      phraseElementList=new ArrayList<ArrayList<Element>>();
-    }
+    phraseElementInit();
     if (elementList == null) {
       elementList=new ArrayList<Element>();
     }
@@ -146,16 +147,15 @@
       phraseIdRef=attrs.getValue("idref");
       if (phraseMap.containsKey(phraseIdRef)) {
         ArrayList<ArrayList<Element>> curPhraseElementList=phraseMap.get(phraseIdRef);
-        Iterator<ArrayList<Element>> it=curPhraseElementList.iterator();
-        while (it.hasNext()) {
+        for (        ArrayList<Element> curPhrEl : curPhraseElementList) {
           if (!elementList.isEmpty()) {
             ArrayList<Element> prevList=new ArrayList<Element>(elementList);
-            prevList.addAll(it.next());
+            prevList.addAll(curPhrEl);
             phraseElementList.add(new ArrayList<Element>(prevList));
             prevList.clear();
           }
  else {
-            phraseElementList.add(new ArrayList<Element>(it.next()));
+            phraseElementList.add(new ArrayList<Element>(curPhrEl));
           }
         }
         lastPhrase=true;

@@ -1,0 +1,11 @@
+{
+  if (andToken != null) {
+    if (andGroupList == null) {
+      andGroupList=new ArrayList<Element>();
+    }
+    if (!andGroupSet) {
+      andGroupSet=true;
+    }
+    andGroupList.add(andToken);
+  }
+}

@@ -1,0 +1,9 @@
+{
+  boolean andGroupMatched=true;
+  if (andGroupSet) {
+    for (    Element testAndGroup : andGroupList) {
+      andGroupMatched&=testAndGroup.match(token);
+    }
+  }
+  return andGroupMatched;
+}

@@ -1,6 +1,6 @@
 {
   if (posToken != null) {
-    return stringToken.concat("/").concat(posToken);
+    return stringToken + "/" + posToken;
   }
  else {
     return stringToken;

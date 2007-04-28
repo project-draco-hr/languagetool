@@ -9,7 +9,7 @@
     }
   }
   if (testString) {
-    return (matchStringToken(token) != negation) && (matchPosToken(token) != posNegation);
+    return (matchStringToken(token) != negation) && (matchPosToken(token) != posNegation) && andGroupMatch(token);
   }
  else {
     return (!negation) && (matchPosToken(token) != posNegation);

@@ -1,0 +1,15 @@
+{
+  stringNegation=false;
+  stringInflected=false;
+  posNegation=false;
+  posRegExp=false;
+  inToken=false;
+  stringRegExp=false;
+  exceptionStringNegation=false;
+  exceptionStringInflected=false;
+  exceptionPosNegation=false;
+  exceptionPosRegExp=false;
+  exceptionStringRegExp=false;
+  exceptionValidNext=true;
+  exceptionSet=false;
+}

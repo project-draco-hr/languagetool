@@ -7,15 +7,12 @@
         formattedString[0]=pRegexMatch.matcher(formattedString[0]).replaceAll(regexReplace);
       }
 switch (caseConversionType) {
-default :
+case NONE:
         formattedString[0]=formattedString[0];
       break;
-case NONE:
-    formattedString[0]=formattedString[0];
-  break;
 case STARTLOWER:
-formattedString[0]=formattedString[0].substring(0,1).toLowerCase() + formattedToken.getToken().substring(1);
-break;
+    formattedString[0]=formattedString[0].substring(0,1).toLowerCase() + formattedToken.getToken().substring(1);
+  break;
 case STARTUPPER:
 formattedString[0]=formattedString[0].substring(0,1).toUpperCase() + formattedToken.getToken().substring(1);
 break;
@@ -24,6 +21,9 @@ formattedString[0]=formattedString[0].toUpperCase();
 break;
 case ALLLOWER:
 formattedString[0]=formattedString[0].toLowerCase();
+break;
+default :
+formattedString[0]=formattedString[0];
 break;
 }
 }

@@ -5,7 +5,7 @@
   if (regexMatch != null) {
     pRegexMatch=Pattern.compile(regexMatch);
   }
-  if (postagRegexp & posTag != null) {
+  if (postagRegexp && posTag != null) {
     pPosRegexMatch=Pattern.compile(posTag);
   }
   this.regexReplace=regexReplace;

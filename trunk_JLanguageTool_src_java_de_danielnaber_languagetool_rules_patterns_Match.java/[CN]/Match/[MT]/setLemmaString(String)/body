@@ -4,7 +4,7 @@
       formattedToken=new AnalyzedTokenReadings(new AnalyzedToken(lemmaString,null,lemmaString));
       staticLemma=true;
       postagRegexp=true;
-      if (postagRegexp & posTag != null) {
+      if (postagRegexp && posTag != null) {
         pPosRegexMatch=Pattern.compile(posTag);
       }
     }

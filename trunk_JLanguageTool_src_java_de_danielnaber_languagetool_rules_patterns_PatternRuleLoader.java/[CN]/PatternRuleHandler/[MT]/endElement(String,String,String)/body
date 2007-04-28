@@ -1,51 +1,21 @@
 {
   if (qName.equals("rule")) {
-    if (phraseElementList == null) {
-      phraseElementList=new ArrayList<ArrayList<Element>>();
-    }
+    phraseElementInit();
     if (!phraseElementList.isEmpty()) {
       if (!elementList.isEmpty()) {
-        Iterator<ArrayList<Element>> phIt=phraseElementList.iterator();
-        while (phIt.hasNext()) {
-          phIt.next().addAll(new ArrayList<Element>(elementList));
+        for (        ArrayList<Element> ph : phraseElementList) {
+          ph.addAll(new ArrayList<Element>(elementList));
         }
       }
-      Iterator<ArrayList<Element>> it=phraseElementList.iterator();
-      while (it.hasNext()) {
-        PatternRule rule=new PatternRule(id,language,it.next(),description,message.toString(),phraseElementList.size() > 1);
-        rule.setStartPositionCorrection(startPositionCorrection);
-        rule.setEndPositionCorrection(endPositionCorrection);
-        startPositionCorrection=0;
-        endPositionCorrection=0;
-        rule.setCorrectExamples(correctExamples);
-        rule.setIncorrectExamples(incorrectExamples);
-        rule.setCategory(category);
-        caseSensitive=false;
-        if (suggestionMatches != null) {
-          for (          Match m : suggestionMatches) {
-            rule.addSuggestionMatch(m);
-          }
-          suggestionMatches.clear();
-        }
+      for (      ArrayList<Element> phraseElement : phraseElementList) {
+        PatternRule rule=new PatternRule(id,language,phraseElement,description,message.toString(),phraseElementList.size() > 1);
+        prepareRule(rule);
         rules.add(rule);
       }
     }
  else {
       PatternRule rule=new PatternRule(id,language,elementList,description,message.toString());
-      rule.setStartPositionCorrection(startPositionCorrection);
-      rule.setEndPositionCorrection(endPositionCorrection);
-      startPositionCorrection=0;
-      endPositionCorrection=0;
-      rule.setCorrectExamples(correctExamples);
-      rule.setIncorrectExamples(incorrectExamples);
-      rule.setCategory(category);
-      caseSensitive=false;
-      if (suggestionMatches != null) {
-        for (        Match m : suggestionMatches) {
-          rule.addSuggestionMatch(m);
-        }
-        suggestionMatches.clear();
-      }
+      prepareRule(rule);
       rules.add(rule);
     }
     if (elementList != null) {
@@ -58,48 +28,48 @@
  else   if (qName.equals("exception")) {
     inException=false;
     if (!exceptionSet) {
-      stringElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
+      tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
       exceptionSet=true;
     }
-    stringElement.setNegation(stringNegation);
+    tokenElement.setNegation(stringNegation);
     if (!exceptions.toString().equals("")) {
-      stringElement.setStringException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext);
+      tokenElement.setStringException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext);
     }
     if (exceptionPosToken != null) {
-      stringElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext);
+      tokenElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext);
       exceptionPosToken=null;
     }
   }
+ else   if (qName.equals("and")) {
+    inAndGroup=false;
+    andGroupCounter=0;
+  }
  else   if (qName.equals("token")) {
-    if (!exceptionSet || stringElement == null) {
-      stringElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
-      stringElement.setNegation(stringNegation);
+    if (!exceptionSet || tokenElement == null) {
+      tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
+      tokenElement.setNegation(stringNegation);
     }
  else {
-      stringElement.setStringElement(elements.toString());
+      tokenElement.setStringElement(elements.toString());
     }
     if (skipPos != 0) {
-      stringElement.setSkipNext(skipPos);
+      tokenElement.setSkipNext(skipPos);
       skipPos=0;
     }
     if (posToken != null) {
-      stringElement.setPosElement(posToken,posRegExp,posNegation);
+      tokenElement.setPosElement(posToken,posRegExp,posNegation);
       posToken=null;
     }
-    elementList.add(stringElement);
-    stringNegation=false;
-    stringInflected=false;
-    posNegation=false;
-    posRegExp=false;
-    inToken=false;
-    stringRegExp=false;
-    exceptionStringNegation=false;
-    exceptionStringInflected=false;
-    exceptionPosNegation=false;
-    exceptionPosRegExp=false;
-    exceptionStringRegExp=false;
-    exceptionValidNext=true;
-    exceptionSet=false;
+    if (inAndGroup && andGroupCounter > 0) {
+      elementList.get(elementList.size() - 1).setAndGroupElement(tokenElement);
+    }
+ else {
+      elementList.add(tokenElement);
+    }
+    if (inAndGroup) {
+      andGroupCounter++;
+    }
+    resetToken();
   }
  else   if (qName.equals("pattern")) {
     inPattern=false;
@@ -142,14 +112,11 @@
     if (phraseMap == null) {
       phraseMap=new HashMap<String,ArrayList<ArrayList<Element>>>();
     }
-    if (phraseElementList == null) {
-      phraseElementList=new ArrayList<ArrayList<Element>>();
-    }
+    phraseElementInit();
     if (elementList != null) {
       if (!phraseElementList.isEmpty()) {
-        Iterator<ArrayList<Element>> phIt=phraseElementList.iterator();
-        while (phIt.hasNext()) {
-          phIt.next().addAll(new ArrayList<Element>(elementList));
+        for (        ArrayList<Element> ph : phraseElementList) {
+          ph.addAll(new ArrayList<Element>(elementList));
         }
       }
  else {
