@@ -1,0 +1,6 @@
+{
+  XMLValidator validator=new XMLValidator();
+  Language lang=Language.FRENCH;
+  String grammarFile="/resource/" + lang.getShortName() + "/disambiguation.xml";
+  validator.validate(grammarFile,"/resource/disambiguation.dtd","rules");
+}
