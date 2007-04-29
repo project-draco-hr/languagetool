@@ -1,5 +1,6 @@
 {
-  AnalyzedTokenReadings[] tokens=text.getTokens();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  AnalyzedTokenReadings[] whTokens=text.getTokens();
   int[] tokenPositions=new int[tokens.length + 1];
   int tokenPos=0;
   int prevSkipNext=0;
@@ -9,7 +10,7 @@
   int skipShiftTotal=0;
   int firstMatchToken=-1;
   int lastMatchToken=-1;
-  int patternSize=patternElements.size();
+  final int patternSize=patternElements.size();
   Element elem=null, prevElement=null;
   final boolean startWithSentStart=patternElements.get(0).isSentStart();
   for (int i=0; i < tokens.length; i++) {
@@ -17,9 +18,6 @@
     if (patternSize + i > tokens.length) {
       allElementsMatch=false;
       break;
-    }
-    if (tokens[i].isWhitespace()) {
-      continue;
     }
     if (startWithSentStart && i > 0) {
       allElementsMatch=false;
@@ -32,7 +30,7 @@
       }
       elem=patternElements.get(k);
       skipNext=elem.getSkipNext();
-      int nextPos=tokenPos + k + skipShiftTotal;
+      final int nextPos=tokenPos + k + skipShiftTotal;
       if (nextPos >= tokens.length) {
         allElementsMatch=false;
         break;
@@ -44,9 +42,9 @@
       }
       for (int m=nextPos; m <= nextPos + prevSkipNext; m++) {
         boolean matched=false;
-        int numberOfReadings=tokens[m].getReadingsLength();
+        final int numberOfReadings=tokens[m].getReadingsLength();
         for (int l=0; l < numberOfReadings; l++) {
-          AnalyzedToken matchToken=tokens[m].getAnalyzedToken(l);
+          final AnalyzedToken matchToken=tokens[m].getAnalyzedToken(l);
           if (prevSkipNext > 0 && prevElement != null) {
             if (prevElement.prevExceptionMatch(matchToken)) {
               exceptionMatched=true;
@@ -86,7 +84,9 @@
       if (allElementsMatch) {
         matchingTokens++;
         lastMatchToken=matchPos;
-        if (firstMatchToken == -1)         firstMatchToken=matchPos;
+        if (firstMatchToken == -1) {
+          firstMatchToken=matchPos;
+        }
         skipShiftTotal+=skipShift;
       }
  else {
@@ -113,20 +113,23 @@
           l--;
         }
       }
-      int fromPos=firstMatchToken + correctedStPos;
-      int numRead=tokens[fromPos].getReadingsLength();
+      final int fromPos=text.getOriginalPosition(firstMatchToken + correctedStPos);
+      final int numRead=whTokens[fromPos].getReadingsLength();
       String lemma="";
-      char startChar=disambiguatedPOS.charAt(0);
       for (int l=0; l < numRead; l++) {
-        if (tokens[fromPos].getAnalyzedToken(l).getLemma().charAt(0) == startChar) {
-          lemma=tokens[fromPos].getAnalyzedToken(l).getLemma();
+        if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag() != null) {
+          if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag().equals(disambiguatedPOS)) {
+            if (whTokens[fromPos].getAnalyzedToken(l).getLemma() != null) {
+              lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
+            }
+          }
         }
       }
       if (lemma.equals("")) {
-        lemma=tokens[fromPos].getAnalyzedToken(0).getLemma();
+        lemma=whTokens[fromPos].getAnalyzedToken(0).getLemma();
       }
-      AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(tokens[fromPos].getToken(),disambiguatedPOS,lemma,tokens[fromPos].getStartPos()));
-      tokens[fromPos]=toReplace;
+      AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma,whTokens[fromPos].getStartPos()));
+      whTokens[fromPos]=toReplace;
     }
  else {
       firstMatchToken=-1;
@@ -134,5 +137,5 @@
       skipShiftTotal=0;
     }
   }
-  return new AnalyzedSentence(tokens);
+  return new AnalyzedSentence(whTokens);
 }
