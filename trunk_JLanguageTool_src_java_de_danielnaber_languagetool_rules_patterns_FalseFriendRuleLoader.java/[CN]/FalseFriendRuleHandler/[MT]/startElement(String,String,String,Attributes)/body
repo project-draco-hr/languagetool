@@ -16,7 +16,6 @@
   }
  else   if (qName.equals("exception")) {
     inException=true;
-    exceptionSet=true;
     exceptions=new StringBuffer();
     if (attrs.getValue("negate") != null) {
       exceptionStringNegation=attrs.getValue("negate").equals("yes");

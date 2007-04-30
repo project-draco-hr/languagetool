@@ -64,6 +64,8 @@
     exceptionPosNegation=false;
     exceptionPosRegExp=false;
     exceptionStringRegExp=false;
+    exceptionValidNext=true;
+    exceptionSet=false;
   }
  else   if (qName.equals("pattern")) {
     inPattern=false;
