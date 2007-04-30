@@ -6,7 +6,7 @@
       disambiguationRules=loadPatternRules(defaultPatternFilename);
     }
     if (language == null) {
-      setLanguage(Language.FRENCH);
+      language=Language.FRENCH;
     }
     for (    DisambiguationPatternRule dr : disambiguationRules) {
       sentence=dr.replace(sentence);

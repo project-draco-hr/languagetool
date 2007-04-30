@@ -28,10 +28,10 @@
  else   if (qName.equals("exception")) {
     inException=false;
     if (!exceptionSet) {
-      tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
+      tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,tokenInflected);
       exceptionSet=true;
     }
-    tokenElement.setNegation(stringNegation);
+    tokenElement.setNegation(tokenNegated);
     if (!exceptions.toString().equals("")) {
       tokenElement.setStringException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext);
     }
@@ -46,8 +46,8 @@
   }
  else   if (qName.equals("token")) {
     if (!exceptionSet || tokenElement == null) {
-      tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,stringInflected);
-      tokenElement.setNegation(stringNegation);
+      tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,tokenInflected);
+      tokenElement.setNegation(tokenNegated);
     }
  else {
       tokenElement.setStringElement(elements.toString());

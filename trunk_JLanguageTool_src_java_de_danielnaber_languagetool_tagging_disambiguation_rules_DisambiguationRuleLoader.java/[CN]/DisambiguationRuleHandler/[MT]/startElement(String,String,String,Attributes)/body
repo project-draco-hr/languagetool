@@ -16,7 +16,6 @@
   }
  else   if (qName.equals("exception")) {
     inException=true;
-    exceptionSet=true;
     exceptions=new StringBuffer();
     if (attrs.getValue("negate") != null) {
       exceptionStringNegation=attrs.getValue("negate").equals("yes");
@@ -40,6 +39,9 @@
       exceptionStringRegExp=attrs.getValue("regexp").equals("yes");
     }
   }
+ else   if (qName.equals("and")) {
+    inAndGroup=true;
+  }
  else   if (qName.equals("token")) {
     inToken=true;
     if (attrs.getValue("negate") != null) {
@@ -58,17 +60,14 @@
     if (attrs.getValue("postag") != null) {
       posToken=attrs.getValue("postag");
       if (attrs.getValue("postag_regexp") != null) {
-        regular=attrs.getValue("postag_regexp").equals("yes");
+        posRegExp=attrs.getValue("postag_regexp").equals("yes");
       }
       if (attrs.getValue("negate_pos") != null) {
         posNegation=(attrs.getValue("negate_pos").equals("yes"));
       }
-      if (elementList == null) {
-        elementList=new ArrayList<Element>();
-      }
     }
     if (attrs.getValue("regexp") != null) {
-      regExpression=attrs.getValue("regexp").equals("yes");
+      stringRegExp=attrs.getValue("regexp").equals("yes");
     }
   }
  else   if (qName.equals("disambig")) {

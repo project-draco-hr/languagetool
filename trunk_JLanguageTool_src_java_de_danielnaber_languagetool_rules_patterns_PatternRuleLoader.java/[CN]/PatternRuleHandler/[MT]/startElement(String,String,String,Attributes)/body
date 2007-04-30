@@ -37,10 +37,10 @@
     }
     lastPhrase=false;
     if (attrs.getValue("negate") != null) {
-      stringNegation=attrs.getValue("negate").equals("yes");
+      tokenNegated=attrs.getValue("negate").equals("yes");
     }
     if (attrs.getValue("inflected") != null) {
-      stringInflected=attrs.getValue("inflected").equals("yes");
+      tokenInflected=attrs.getValue("inflected").equals("yes");
     }
     if (attrs.getValue("skip") != null) {
       skipPos=Integer.parseInt(attrs.getValue("skip"));
