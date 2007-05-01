@@ -1,6 +1,7 @@
 {
   String errorMessage=errorMsg;
   int matchCounter=0;
+  int[] numbersToMatches=new int[errorMsg.length()];
   boolean newWay=false;
   int errLen=errorMessage.length();
   int errMarker=errorMessage.indexOf("\\");
@@ -11,14 +12,15 @@
   while (errMarker > 0 && numberFollows) {
     int ind=errorMessage.indexOf("\\");
     if (ind > 0) {
-      if (errorMessage.charAt(ind + 1) >= '1' & errorMessage.charAt(ind + 1) <= '9') {
-        int j=errorMessage.charAt(ind + 1) - '1';
+      if (errorMessage.charAt(ind + 1) >= '1' && errorMessage.charAt(ind + 1) <= '9') {
+        final int j=errorMessage.charAt(ind + 1) - '1';
         int repTokenPos=0;
         for (int l=0; l <= j; l++) {
           repTokenPos+=positions[l];
         }
         if (suggestionMatches != null) {
           if (matchCounter < suggestionMatches.size()) {
+            numbersToMatches[j]=matchCounter;
             if (suggestionMatches.get(matchCounter) != null) {
               suggestionMatches.get(matchCounter).setToken(toks[firstMatchTok + repTokenPos - 1]);
               suggestionMatches.get(matchCounter).setSynthesizer(language[0].getSynthesizer());
@@ -26,7 +28,7 @@
               String suggestionLeft="";
               String suggestionRight="";
               String rightSide=errorMessage.substring(ind + 2);
-              String[] matches=suggestionMatches.get(matchCounter).toFinalString();
+              final String[] matches=suggestionMatches.get(matchCounter).toFinalString();
               if (matches.length == 1) {
                 errorMessage=leftSide + suggestionLeft + matches[0]+ suggestionRight+ rightSide;
               }
@@ -42,21 +44,24 @@
                 if (!suggestionRight.equals("")) {
                   rightSide=rightSide.substring(rightSide.indexOf("</suggestion>"));
                 }
-                int lastLeftSugEnd=leftSide.indexOf("</suggestion>");
-                int lastLeftSugStart=leftSide.lastIndexOf("<suggestion>");
+                final int lastLeftSugEnd=leftSide.indexOf("</suggestion>");
+                final int lastLeftSugStart=leftSide.lastIndexOf("<suggestion>");
                 for (                String formatMatch : matches) {
                   errorMessage+=suggestionLeft + formatMatch + suggestionRight;
                   if (lastLeftSugEnd == -1 && lastLeftSugStart > 0) {
                     errorMessage+="</suggestion>, <suggestion>";
                   }
                 }
-                int correctionSug=errorMessage.lastIndexOf(", <suggestion>");
+                final int correctionSug=errorMessage.lastIndexOf(", <suggestion>");
                 if (correctionSug + ", <suggestion>".length() == errorMessage.length())                 errorMessage=errorMessage.substring(0,correctionSug);
                 errorMessage+=rightSide;
               }
               matchCounter++;
               newWay=true;
             }
+          }
+ else {
+            suggestionMatches.add(suggestionMatches.get(numbersToMatches[j]));
           }
         }
         if (!newWay) {
@@ -70,13 +75,11 @@
         }
       }
     }
- else {
-      errMarker=errorMessage.indexOf("\\");
-      numberFollows=false;
-      errLen=errorMessage.length();
-      if (errMarker > 0 & errMarker < errLen - 1) {
-        numberFollows=errorMessage.charAt(errMarker + 1) >= '1' & errorMessage.charAt(errMarker + 1) <= '9';
-      }
+    errMarker=errorMessage.indexOf("\\");
+    numberFollows=false;
+    errLen=errorMessage.length();
+    if (errMarker > 0 & errMarker < errLen - 1) {
+      numberFollows=errorMessage.charAt(errMarker + 1) >= '1' & errorMessage.charAt(errMarker + 1) <= '9';
     }
   }
   return errorMessage;

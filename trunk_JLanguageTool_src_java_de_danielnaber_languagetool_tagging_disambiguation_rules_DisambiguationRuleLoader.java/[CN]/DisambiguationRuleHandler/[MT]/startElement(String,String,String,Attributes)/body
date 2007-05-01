@@ -73,7 +73,6 @@
  else   if (qName.equals("disambig")) {
     inDisamb=true;
     disambiguatedPOS=attrs.getValue("postag");
-    message=new StringBuffer();
   }
  else   if (qName.equals("rulegroup")) {
     ruleGroupId=attrs.getValue("id");

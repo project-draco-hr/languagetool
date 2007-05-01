@@ -10,6 +10,6 @@
   exceptionPosNegation=false;
   exceptionPosRegExp=false;
   exceptionStringRegExp=false;
-  exceptionValidNext=true;
+  exceptionValidNext=false;
   exceptionSet=false;
 }

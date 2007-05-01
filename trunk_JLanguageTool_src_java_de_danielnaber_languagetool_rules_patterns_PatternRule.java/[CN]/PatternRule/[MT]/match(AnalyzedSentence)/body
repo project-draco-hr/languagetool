@@ -10,7 +10,7 @@
   int skipShiftTotal=0;
   int firstMatchToken=-1;
   int lastMatchToken=-1;
-  int patternSize=patternElements.size();
+  final int patternSize=patternElements.size();
   Element elem=null, prevElement=null;
   final boolean startWithSentStart=patternElements.get(0).isSentStart();
   for (int i=0; i < tokens.length; i++) {
@@ -42,9 +42,9 @@
       }
       for (int m=nextPos; m <= nextPos + prevSkipNext; m++) {
         boolean matched=false;
-        int numberOfReadings=tokens[m].getReadingsLength();
+        final int numberOfReadings=tokens[m].getReadingsLength();
         for (int l=0; l < numberOfReadings; l++) {
-          AnalyzedToken matchToken=tokens[m].getAnalyzedToken(l);
+          final AnalyzedToken matchToken=tokens[m].getAnalyzedToken(l);
           if (prevSkipNext > 0 && prevElement != null) {
             if (prevElement.prevExceptionMatch(matchToken)) {
               exceptionMatched=true;
@@ -97,7 +97,7 @@
       if (firstMatchToken + matchingTokens >= tokens.length) {
         matchingTokens=tokens.length - firstMatchToken;
       }
-      String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,matchingTokens,message);
+      final String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,matchingTokens,message);
       int correctedStPos=0;
       if (startPositionCorrection > 0) {
         for (int l=0; l <= startPositionCorrection; l++) {
@@ -121,8 +121,8 @@
         firstMatchTokenObj=tokens[firstMatchToken + correctedStPos + 1];
         startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.toString());
       }
-      int fromPos=tokens[firstMatchToken + correctedStPos].getStartPos();
-      int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
+      final int fromPos=tokens[firstMatchToken + correctedStPos].getStartPos();
+      final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
       if (fromPos < toPos) {
         RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,errMessage,startsWithUppercase);
         ruleMatches.add(ruleMatch);
