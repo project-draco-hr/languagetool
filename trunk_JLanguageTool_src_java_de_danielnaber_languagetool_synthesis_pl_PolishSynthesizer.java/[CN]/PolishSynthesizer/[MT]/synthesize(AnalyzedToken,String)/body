@@ -7,7 +7,7 @@
   }
   boolean isNegated=false;
   if (token.getPOSTag() != null) {
-    isNegated=posTag.indexOf(":neg") > 0 || token.getPOSTag().indexOf(":neg") > 0;
+    isNegated=posTag.indexOf(NEGATION_TAG) > 0 || token.getPOSTag().indexOf(NEGATION_TAG) > 0;
   }
   if (posTag.indexOf("+") > 0) {
     return synthesize(token,posTag,true);
@@ -15,7 +15,7 @@
  else {
     String[] wordForms=null;
     if (isNegated) {
-      wordForms=synthesizer.stem(token.getLemma() + "|" + posTag.replaceFirst(":neg",":pneg"));
+      wordForms=synthesizer.stem(token.getLemma() + "|" + posTag.replaceFirst(NEGATION_TAG,POTENTIAL_NEGATION_TAG));
       if (wordForms != null) {
         String[] negForms=wordForms;
         for (int i=0; i < wordForms.length; i++) {
