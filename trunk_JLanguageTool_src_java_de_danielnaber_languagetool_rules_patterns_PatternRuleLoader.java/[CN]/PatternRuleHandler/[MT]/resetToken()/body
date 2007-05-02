@@ -12,4 +12,5 @@
   exceptionStringRegExp=false;
   exceptionValidNext=false;
   exceptionSet=false;
+  tokenReference=null;
 }

@@ -60,6 +60,9 @@
       tokenElement.setPosElement(posToken,posRegExp,posNegation);
       posToken=null;
     }
+    if (tokenReference != null) {
+      tokenElement.setMatch(tokenReference);
+    }
     if (inAndGroup && andGroupCounter > 0) {
       elementList.get(elementList.size() - 1).setAndGroupElement(tokenElement);
     }
@@ -93,7 +96,12 @@
     inMessage=false;
   }
  else   if (qName.equals("match")) {
-    suggestionMatches.get(suggestionMatches.size() - 1).setLemmaString(match.toString());
+    if (inMessage) {
+      suggestionMatches.get(suggestionMatches.size() - 1).setLemmaString(match.toString());
+    }
+ else     if (inToken) {
+      tokenReference.setLemmaString(match.toString());
+    }
     inMatch=false;
   }
  else   if (qName.equals("rulegroup")) {

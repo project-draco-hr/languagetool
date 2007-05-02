@@ -110,19 +110,34 @@
  else   if (qName.equals("suggestion") && inMessage) {
     message.append("<suggestion>");
   }
- else   if (qName.equals("match") && inMessage) {
+ else   if (qName.equals("match")) {
     inMatch=true;
     match=new StringBuffer();
-    if (suggestionMatches == null) {
-      suggestionMatches=new ArrayList<Match>();
-    }
     Match.CaseConversion caseConv=Match.CaseConversion.NONE;
     if (attrs.getValue("case_conversion") != null) {
       caseConv=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());
     }
     final Match mWorker=new Match(attrs.getValue("postag"),attrs.getValue("postag_replace"),"yes".equals(attrs.getValue("postag_regexp")),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv);
-    suggestionMatches.add(mWorker);
-    message.append("\\" + attrs.getValue("no"));
+    if (inMessage) {
+      if (suggestionMatches == null) {
+        suggestionMatches=new ArrayList<Match>();
+      }
+      suggestionMatches.add(mWorker);
+      message.append("\\" + attrs.getValue("no"));
+    }
+ else     if (inToken) {
+      if (attrs.getValue("no") != null) {
+        int refNumber=Integer.parseInt(attrs.getValue("no"));
+        if (refNumber > elementList.size()) {
+          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber);
+        }
+ else {
+          mWorker.setTokenRef(refNumber);
+          tokenReference=mWorker;
+          elements.append("\\" + refNumber);
+        }
+      }
+    }
   }
  else   if (qName.equals("marker") && inCorrectExample) {
     correctExample.append("<marker>");

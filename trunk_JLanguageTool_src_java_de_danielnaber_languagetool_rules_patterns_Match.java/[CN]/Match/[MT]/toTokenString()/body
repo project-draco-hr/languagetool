@@ -1,0 +1,16 @@
+{
+  String output="";
+  try {
+    final String[] stringToFormat=toFinalString();
+    for (int i=0; i < stringToFormat.length; i++) {
+      output+=stringToFormat[i];
+      if (i + 1 < stringToFormat.length) {
+        output+="|";
+      }
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e.getMessage());
+  }
+  return output;
+}

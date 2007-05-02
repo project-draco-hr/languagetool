@@ -51,6 +51,13 @@
               prevMatched=true;
             }
           }
+          if (elem.referenceElement()) {
+            if (firstMatchToken + elem.getMatch().getTokenRef() < tokens.length) {
+              elem.getMatch().setToken(tokens[firstMatchToken + elem.getMatch().getTokenRef()]);
+              elem.getMatch().setSynthesizer(language[0].getSynthesizer());
+              elem.compile();
+            }
+          }
           thisMatched|=elem.match(matchToken);
           exceptionMatched|=(elem.exceptionMatch(matchToken) || elem.andGroupExceptionMatch(matchToken));
           if (!thisMatched && !exceptionMatched) {

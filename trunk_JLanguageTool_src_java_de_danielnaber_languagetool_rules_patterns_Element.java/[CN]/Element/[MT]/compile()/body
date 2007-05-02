@@ -1,0 +1,13 @@
+{
+  if ("".equals(referenceString)) {
+    referenceString=stringToken;
+  }
+  stringToken=referenceString.replaceAll("\\\\" + tokenReference.getTokenRef(),tokenReference.toTokenString());
+  if (!stringToken.equals("") && stringRegExp) {
+    regToken=stringToken;
+    if (!caseSensitive) {
+      regToken="(?iu)".concat(stringToken);
+    }
+    p=Pattern.compile(regToken);
+  }
+}
