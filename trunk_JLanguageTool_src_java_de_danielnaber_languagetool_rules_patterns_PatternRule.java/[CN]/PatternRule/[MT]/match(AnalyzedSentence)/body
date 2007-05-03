@@ -1,7 +1,7 @@
 {
-  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  int[] tokenPositions=new int[tokens.length + 1];
+  final int[] tokenPositions=new int[tokens.length + 1];
   int tokenPos=0;
   int prevSkipNext=0;
   int skipNext=0;
@@ -30,7 +30,7 @@
       }
       elem=patternElements.get(k);
       skipNext=elem.getSkipNext();
-      int nextPos=tokenPos + k + skipShiftTotal;
+      final int nextPos=tokenPos + k + skipShiftTotal;
       if (nextPos >= tokens.length) {
         allElementsMatch=false;
         break;
@@ -91,7 +91,9 @@
       if (allElementsMatch) {
         matchingTokens++;
         lastMatchToken=matchPos;
-        if (firstMatchToken == -1)         firstMatchToken=matchPos;
+        if (firstMatchToken == -1) {
+          firstMatchToken=matchPos;
+        }
         skipShiftTotal+=skipShift;
       }
  else {
@@ -131,7 +133,7 @@
       final int fromPos=tokens[firstMatchToken + correctedStPos].getStartPos();
       final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
       if (fromPos < toPos) {
-        RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,errMessage,startsWithUppercase);
+        final RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,errMessage,startsWithUppercase);
         ruleMatches.add(ruleMatch);
       }
     }
@@ -141,5 +143,5 @@
       skipShiftTotal=0;
     }
   }
-  return (RuleMatch[])ruleMatches.toArray(new RuleMatch[ruleMatches.size()]);
+  return ruleMatches.toArray(new RuleMatch[ruleMatches.size()]);
 }

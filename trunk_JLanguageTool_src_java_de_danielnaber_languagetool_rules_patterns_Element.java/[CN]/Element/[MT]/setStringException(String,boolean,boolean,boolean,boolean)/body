@@ -1,5 +1,5 @@
 {
-  Element stringException=new Element(token,this.caseSensitive,regExp,inflected);
+  final Element stringException=new Element(token,this.caseSensitive,regExp,inflected);
   stringException.setNegation(negation);
   stringException.exceptionValidNext=scope;
   if (exceptionList == null) {

@@ -2,7 +2,7 @@
   try {
     return valueOf(str);
   }
- catch (  Exception ex) {
+ catch (  final Exception ex) {
     return NONE;
   }
 }
