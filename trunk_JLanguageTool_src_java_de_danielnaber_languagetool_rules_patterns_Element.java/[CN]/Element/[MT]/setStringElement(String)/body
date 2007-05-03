@@ -3,7 +3,7 @@
   if (!stringToken.equals("") && stringRegExp) {
     regToken=stringToken;
     if (!caseSensitive) {
-      regToken="(?iu)" + stringToken;
+      regToken=CASE_INSENSITIVE + stringToken;
     }
     p=Pattern.compile(regToken);
   }
