@@ -1,6 +1,6 @@
 {
   String token=formattedToken.getToken();
-  ArrayList<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+  final ArrayList<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
   if (formattedToken != null) {
     if (pRegexMatch != null) {
       token=pRegexMatch.matcher(token).replaceAll(regexReplace);
@@ -74,5 +74,10 @@ l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
 }
 }
 }
+if (l.size() == 0) {
+return formattedToken;
+}
+ else {
 return new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]));
+}
 }
