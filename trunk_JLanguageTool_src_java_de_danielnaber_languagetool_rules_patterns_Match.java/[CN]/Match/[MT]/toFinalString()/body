@@ -1,18 +1,17 @@
 {
   String[] formattedString=new String[1];
   if (formattedToken != null) {
-    if (posTag == null) {
-      formattedString[0]=formattedToken.getToken();
-      if (pRegexMatch != null) {
-        formattedString[0]=pRegexMatch.matcher(formattedString[0]).replaceAll(regexReplace);
-      }
+    formattedString[0]=formattedToken.getToken();
+    if (pRegexMatch != null) {
+      formattedString[0]=pRegexMatch.matcher(formattedString[0]).replaceAll(regexReplace);
+    }
 switch (caseConversionType) {
 case NONE:
-        formattedString[0]=formattedString[0];
-      break;
+      formattedString[0]=formattedString[0];
+    break;
 case STARTLOWER:
-    formattedString[0]=formattedString[0].substring(0,1).toLowerCase() + formattedToken.getToken().substring(1);
-  break;
+  formattedString[0]=formattedString[0].substring(0,1).toLowerCase() + formattedToken.getToken().substring(1);
+break;
 case STARTUPPER:
 formattedString[0]=formattedString[0].substring(0,1).toUpperCase() + formattedToken.getToken().substring(1);
 break;
@@ -26,8 +25,7 @@ default :
 formattedString[0]=formattedString[0];
 break;
 }
-}
- else {
+if (posTag != null) {
 if (synthesizer == null) {
 formattedString[0]=formattedToken.getToken();
 }

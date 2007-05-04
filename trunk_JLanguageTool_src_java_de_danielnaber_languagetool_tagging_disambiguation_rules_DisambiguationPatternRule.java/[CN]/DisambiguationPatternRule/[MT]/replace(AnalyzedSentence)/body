@@ -9,7 +9,6 @@
   int skipShift=0;
   int skipShiftTotal=0;
   int firstMatchToken=-1;
-  int lastMatchToken=-1;
   final int patternSize=patternElements.size();
   Element elem=null, prevElement=null;
   final boolean startWithSentStart=patternElements.get(0).isSentStart();
@@ -51,6 +50,13 @@
               prevMatched=true;
             }
           }
+          if (elem.referenceElement()) {
+            if (firstMatchToken + elem.getMatch().getTokenRef() < tokens.length) {
+              elem.getMatch().setToken(tokens[firstMatchToken + elem.getMatch().getTokenRef()]);
+              elem.getMatch().setSynthesizer(language.getSynthesizer());
+              elem.compile();
+            }
+          }
           thisMatched|=elem.match(matchToken);
           exceptionMatched|=(elem.exceptionMatch(matchToken) || elem.andGroupExceptionMatch(matchToken));
           if (!(thisMatched || exceptionMatched)) {
@@ -83,7 +89,6 @@
       }
       if (allElementsMatch) {
         matchingTokens++;
-        lastMatchToken=matchPos;
         if (firstMatchToken == -1) {
           firstMatchToken=matchPos;
         }
@@ -115,25 +120,30 @@
       }
       final int fromPos=text.getOriginalPosition(firstMatchToken + correctedStPos);
       final int numRead=whTokens[fromPos].getReadingsLength();
-      String lemma="";
-      for (int l=0; l < numRead; l++) {
-        if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag() != null) {
-          if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag().equals(disambiguatedPOS)) {
-            if (whTokens[fromPos].getAnalyzedToken(l).getLemma() != null) {
-              lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
+      if (matchToken == null) {
+        String lemma="";
+        for (int l=0; l < numRead; l++) {
+          if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag() != null) {
+            if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag().equals(disambiguatedPOS)) {
+              if (whTokens[fromPos].getAnalyzedToken(l).getLemma() != null) {
+                lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
+              }
             }
           }
         }
+        if (lemma.equals("")) {
+          lemma=whTokens[fromPos].getAnalyzedToken(0).getLemma();
+        }
+        final AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma,whTokens[fromPos].getStartPos()));
+        whTokens[fromPos]=toReplace;
       }
-      if (lemma.equals("")) {
-        lemma=whTokens[fromPos].getAnalyzedToken(0).getLemma();
+ else {
+        matchToken.setToken(whTokens[fromPos]);
+        whTokens[fromPos]=matchToken.filterReadings(whTokens[fromPos]);
       }
-      AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma,whTokens[fromPos].getStartPos()));
-      whTokens[fromPos]=toReplace;
     }
  else {
       firstMatchToken=-1;
-      lastMatchToken=-1;
       skipShiftTotal=0;
     }
   }

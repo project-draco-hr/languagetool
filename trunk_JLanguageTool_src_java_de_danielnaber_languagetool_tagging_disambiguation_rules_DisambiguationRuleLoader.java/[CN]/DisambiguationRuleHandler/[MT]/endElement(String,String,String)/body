@@ -2,10 +2,14 @@
   if (qName.equals("rule")) {
     DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,elementList,disambiguatedPOS);
     rule.setStartPositionCorrection(positionCorrection);
+    if (posSelector != null) {
+      rule.setMatchToken(posSelector);
+    }
     rules.add(rule);
     if (elementList != null) {
       elementList.clear();
     }
+    posSelector=null;
   }
  else   if (qName.equals("exception")) {
     inException=false;
@@ -41,6 +45,9 @@
     if (posToken != null) {
       tokenElement.setPosElement(posToken,posRegExp,posNegation);
       posToken=null;
+    }
+    if (tokenReference != null) {
+      tokenElement.setMatch(tokenReference);
     }
     if (inAndGroup && andGroupCounter > 0) {
       elementList.get(elementList.size() - 1).setAndGroupElement(tokenElement);

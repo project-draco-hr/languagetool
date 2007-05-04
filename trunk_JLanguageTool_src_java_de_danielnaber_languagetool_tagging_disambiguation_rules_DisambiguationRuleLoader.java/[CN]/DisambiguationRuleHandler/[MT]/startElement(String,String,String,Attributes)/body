@@ -74,6 +74,40 @@
     inDisamb=true;
     disambiguatedPOS=attrs.getValue("postag");
   }
+ else   if (qName.equals("match")) {
+    inMatch=true;
+    match=new StringBuffer();
+    Match.CaseConversion caseConv=Match.CaseConversion.NONE;
+    if (attrs.getValue("case_conversion") != null) {
+      caseConv=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());
+    }
+    final Match mWorker=new Match(attrs.getValue("postag"),attrs.getValue("postag_replace"),"yes".equals(attrs.getValue("postag_regexp")),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv);
+    if (inDisamb) {
+      if (attrs.getValue("no") != null) {
+        final int refNumber=Integer.parseInt(attrs.getValue("no"));
+        if (refNumber > elementList.size()) {
+          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber);
+        }
+ else {
+          mWorker.setTokenRef(refNumber);
+          posSelector=mWorker;
+        }
+      }
+    }
+ else     if (inToken) {
+      if (attrs.getValue("no") != null) {
+        final int refNumber=Integer.parseInt(attrs.getValue("no"));
+        if (refNumber > elementList.size()) {
+          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber);
+        }
+ else {
+          mWorker.setTokenRef(refNumber);
+          tokenReference=mWorker;
+          elements.append("\\" + refNumber);
+        }
+      }
+    }
+  }
  else   if (qName.equals("rulegroup")) {
     ruleGroupId=attrs.getValue("id");
     ruleGroupName=attrs.getValue("name");
