@@ -1,5 +1,0 @@
-String id
-Language language
-List<Element> elements
-String description
-boolean isMember
