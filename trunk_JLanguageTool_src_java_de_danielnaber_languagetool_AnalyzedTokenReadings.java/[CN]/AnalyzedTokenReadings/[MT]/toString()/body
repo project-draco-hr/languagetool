@@ -1,7 +1,7 @@
 {
-  StringBuilder sb=new StringBuilder();
-  for (int i=0; i < anTokReadings.length; i++) {
-    sb.append(anTokReadings[i]);
+  final StringBuilder sb=new StringBuilder();
+  for (  AnalyzedToken element : anTokReadings) {
+    sb.append(element);
   }
   return sb.toString();
 }

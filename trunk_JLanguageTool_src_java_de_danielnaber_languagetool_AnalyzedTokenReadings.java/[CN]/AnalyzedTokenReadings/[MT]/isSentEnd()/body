@@ -1,6 +1,6 @@
 {
   boolean isSE=false;
-  for (  AnalyzedToken reading : anTokReadings) {
+  for (  final AnalyzedToken reading : anTokReadings) {
     if (reading.posTag != null) {
       isSE|=reading.posTag.equals(JLanguageTool.SENTENCE_END_TAGNAME);
       if (isSE) {
