@@ -60,7 +60,7 @@
           }
           thisMatched|=elem.match(matchToken);
           exceptionMatched|=(elem.exceptionMatch(matchToken) || elem.andGroupExceptionMatch(matchToken));
-          if (!thisMatched && !exceptionMatched) {
+          if (!(thisMatched || exceptionMatched)) {
             matched|=false;
           }
  else {
@@ -71,14 +71,14 @@
           }
           skipMatch=(skipMatch || matched) && !exceptionMatched;
         }
-        if (!thisMatched && !prevMatched) {
+        if (!(thisMatched || prevMatched)) {
           exceptionMatched=false;
         }
         if (skipMatch) {
           break;
         }
       }
-      if (!thisMatched && !prevMatched) {
+      if (!(thisMatched || prevMatched)) {
         skipMatch=false;
       }
       allElementsMatch=skipMatch;
