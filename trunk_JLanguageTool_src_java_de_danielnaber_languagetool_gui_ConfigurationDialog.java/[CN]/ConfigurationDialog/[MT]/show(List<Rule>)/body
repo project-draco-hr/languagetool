@@ -43,10 +43,17 @@
     }
     prevID=rule.getId();
   }
-  JPanel motherTonguePanel=new JPanel();
+  final JPanel motherTonguePanel=new JPanel();
   motherTonguePanel.add(new JLabel(messages.getString("guiMotherTongue")),cons);
   motherTongueBox=new JComboBox(getPossibleMotherTongues());
-  if (motherTongue != null)   motherTongueBox.setSelectedItem(messages.getString(motherTongue.getShortName()));
+  if (motherTongue != null) {
+    if (motherTongue == Language.DEMO) {
+      motherTongueBox.setSelectedItem(NO_MOTHER_TONGUE);
+    }
+ else {
+      motherTongueBox.setSelectedItem(messages.getString(motherTongue.getShortName()));
+    }
+  }
   motherTonguePanel.add(motherTongueBox,cons);
   JPanel portPanel=new JPanel();
   portPanel.setLayout(new GridBagLayout());
@@ -74,7 +81,7 @@
 );
     portPanel.add(serverPortField,cons);
   }
-  JPanel buttonPanel=new JPanel();
+  final JPanel buttonPanel=new JPanel();
   buttonPanel.setLayout(new GridBagLayout());
   okButton=new JButton(messages.getString("guiOKButton"));
   okButton.setMnemonic('o');
@@ -86,7 +93,7 @@
   cons.insets=new Insets(0,4,0,0);
   buttonPanel.add(okButton,cons);
   buttonPanel.add(cancelButton,cons);
-  Container contentPane=dialog.getContentPane();
+  final Container contentPane=dialog.getContentPane();
   contentPane.setLayout(new GridBagLayout());
   cons=new GridBagConstraints();
   cons.insets=new Insets(4,4,4,4);

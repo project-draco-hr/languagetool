@@ -4,7 +4,7 @@
     inactiveRuleIds.clear();
     for (    JCheckBox checkBox : checkBoxes) {
       if (!checkBox.isSelected()) {
-        String ruleId=checkBoxesRuleIds.get(i);
+        final String ruleId=checkBoxesRuleIds.get(i);
         inactiveRuleIds.add(ruleId);
       }
       i++;
