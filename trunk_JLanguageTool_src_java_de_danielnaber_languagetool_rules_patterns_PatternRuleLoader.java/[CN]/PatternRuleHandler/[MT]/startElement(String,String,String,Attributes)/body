@@ -1,8 +1,7 @@
 {
   if (qName.equals("category")) {
-    String catName=attrs.getValue("name");
-    String prioStr=attrs.getValue("priority");
-    int prio=0;
+    final String catName=attrs.getValue("name");
+    final String prioStr=attrs.getValue("priority");
     if (prioStr != null)     category=new Category(catName,Integer.parseInt(prioStr));
  else     category=new Category(catName);
   }
