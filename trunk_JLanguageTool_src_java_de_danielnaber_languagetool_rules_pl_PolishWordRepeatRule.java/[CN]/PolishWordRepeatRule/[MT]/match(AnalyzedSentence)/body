@@ -1,35 +1,35 @@
 {
-  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   boolean repetition=false;
-  TreeSet<String> inflectedWords=new TreeSet<String>();
+  final TreeSet<String> inflectedWords=new TreeSet<String>();
   String prevLemma, curLemma;
   for (int i=1; i < tokens.length; i++) {
-    String token=tokens[i].getToken();
+    final String token=tokens[i].getToken();
     boolean isWord=true;
     boolean hasLemma=true;
     if (token.length() < 2) {
       isWord=false;
     }
-    int readingsLen=tokens[i].getReadingsLength();
+    final int readingsLen=tokens[i].getReadingsLength();
     for (int k=0; k < readingsLen; k++) {
-      String posTag=tokens[i].getAnalyzedToken(k).getPOSTag();
+      final String posTag=tokens[i].getAnalyzedToken(k).getPOSTag();
       if (posTag != null) {
         if (posTag.equals("")) {
           isWord=false;
           break;
         }
-        String lemma=tokens[i].getAnalyzedToken(k).getLemma();
+        final String lemma=tokens[i].getAnalyzedToken(k).getLemma();
         if (lemma == null) {
           hasLemma=false;
           break;
         }
-        Matcher m1=EXC_WORDS.matcher(lemma);
+        final Matcher m1=EXC_WORDS.matcher(lemma);
         if (m1.matches()) {
           isWord=false;
           break;
         }
-        Matcher m2=EXC_POS.matcher(posTag);
+        final Matcher m2=EXC_POS.matcher(posTag);
         if (m2.matches()) {
           isWord=false;
           break;
@@ -39,7 +39,7 @@
         hasLemma=false;
       }
     }
-    Matcher m1=EXC_NONWORDS.matcher(tokens[i].getToken());
+    final Matcher m1=EXC_NONWORDS.matcher(tokens[i].getToken());
     if (m1.matches()) {
       isWord=false;
     }
@@ -69,9 +69,9 @@
       }
     }
     if (repetition) {
-      String msg="Powt??rzony wyraz w zdaniu";
-      int pos=tokens[i].getStartPos();
-      RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),msg);
+      final String msg="Powt??rzony wyraz w zdaniu";
+      final int pos=tokens[i].getStartPos();
+      final RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),msg);
       ruleMatch.setSuggestedReplacement(tokens[i].getToken());
       ruleMatches.add(ruleMatch);
       repetition=false;
