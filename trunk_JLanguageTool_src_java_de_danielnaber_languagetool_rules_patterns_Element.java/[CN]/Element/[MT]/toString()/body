@@ -1,8 +1,12 @@
 {
+  String negate="";
+  if (negation) {
+    negate="!";
+  }
   if (posToken != null) {
-    return stringToken + "/" + posToken;
+    return negate + stringToken + "/"+ posToken;
   }
  else {
-    return stringToken;
+    return negate + stringToken;
   }
 }

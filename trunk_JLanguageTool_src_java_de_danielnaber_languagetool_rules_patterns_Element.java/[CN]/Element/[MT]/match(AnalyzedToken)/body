@@ -9,9 +9,9 @@
     }
   }
   if (testString) {
-    return (matchStringToken(token) != negation) && (matchPosToken(token) != posNegation) && andGroupMatch(token);
+    return (matchStringToken(token) != negation) && (matchPosToken(token) != posNegation);
   }
  else {
-    return (!negation) && (matchPosToken(token) != posNegation) && andGroupMatch(token);
+    return (!negation) && (matchPosToken(token) != posNegation);
   }
 }

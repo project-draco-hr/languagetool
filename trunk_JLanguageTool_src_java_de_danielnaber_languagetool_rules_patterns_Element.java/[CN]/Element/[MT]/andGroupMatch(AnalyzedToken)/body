@@ -1,8 +1,12 @@
 {
-  boolean andGroupMatched=true;
+  boolean andGroupMatched=false;
   if (andGroupSet) {
-    for (    final Element testAndGroup : andGroupList) {
-      andGroupMatched&=testAndGroup.match(token);
+    for (int i=0; i < andGroupList.size(); i++) {
+      final Element testAndGroup=andGroupList.get(i);
+      if (testAndGroup.match(token)) {
+        andGroupMatched=true;
+        andGroupCheck[i]=true;
+      }
     }
   }
   return andGroupMatched;

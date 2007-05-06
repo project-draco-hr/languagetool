@@ -1,0 +1,12 @@
+{
+  if (andGroupSet) {
+    boolean allConditionsMatch=true;
+    for (    boolean testValue : andGroupCheck) {
+      allConditionsMatch&=testValue;
+    }
+    return allConditionsMatch;
+  }
+ else {
+    return previousValue;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  if (andGroupSet) {
+    andGroupCheck=new boolean[andGroupList.size()];
+    for (int i=0; i < andGroupList.size(); i++) {
+      andGroupCheck[i]=false;
+    }
+  }
+}
