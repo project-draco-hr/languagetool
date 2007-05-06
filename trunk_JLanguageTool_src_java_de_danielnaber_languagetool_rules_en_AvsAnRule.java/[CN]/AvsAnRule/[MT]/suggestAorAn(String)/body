@@ -1,0 +1,47 @@
+{
+  String word=noun;
+  boolean doesRequireA=false;
+  boolean doesRequireAn=false;
+  boolean isException=false;
+  final String[] parts=word.split("[-']");
+  if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
+    word=parts[0];
+  }
+  word=word.replaceAll("&quot|&amp|&lt|&gt|[^a-zA-Z0-9]","");
+  if (word.length() == 0) {
+    return word;
+  }
+  char tokenFirstChar=word.charAt(0);
+  if (requiresA.contains(word.toLowerCase()) || requiresA.contains(word)) {
+    isException=true;
+    doesRequireA=true;
+  }
+  if (requiresAn.contains(word.toLowerCase()) || requiresAn.contains(word)) {
+    if (isException) {
+      throw new IllegalStateException(word + " is listed in both det_a.txt and det_an.txt");
+    }
+    isException=true;
+    doesRequireAn=true;
+  }
+  if (!isException) {
+    if (StringTools.isAllUppercase(word)) {
+      doesRequireAn=false;
+      doesRequireA=false;
+    }
+ else     if (isVowel(tokenFirstChar)) {
+      doesRequireAn=true;
+    }
+ else {
+      doesRequireA=true;
+    }
+  }
+  if (doesRequireA) {
+    return "a " + word;
+  }
+ else   if (doesRequireAn) {
+    return "an " + word;
+  }
+ else {
+    return word;
+  }
+}
