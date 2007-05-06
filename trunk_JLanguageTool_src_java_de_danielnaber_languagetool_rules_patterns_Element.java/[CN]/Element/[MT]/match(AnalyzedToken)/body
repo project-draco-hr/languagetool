@@ -8,10 +8,15 @@
       testString=false;
     }
   }
+  boolean matched;
   if (testString) {
-    return (matchStringToken(token) != negation) && (matchPosToken(token) != posNegation);
+    matched=(matchStringToken(token) != negation) && (matchPosToken(token) != posNegation);
   }
  else {
-    return (!negation) && (matchPosToken(token) != posNegation);
+    matched=(!negation) && (matchPosToken(token) != posNegation);
   }
+  if (andGroupSet) {
+    andGroupCheck[0]|=matched;
+  }
+  return matched;
 }
