@@ -3,6 +3,10 @@
     final AvsAnRule rule=new AvsAnRule(null);
     return new String[]{rule.suggestAorAn(token.getToken()),"the " + token.getToken()};
   }
+ else   if (ADD_IND_DETERMINER.equals(posTag)) {
+    final AvsAnRule rule=new AvsAnRule(null);
+    return new String[]{rule.suggestAorAn(token.getToken())};
+  }
  else {
     if (synthesizer == null) {
       synthesizer=new Lametyzator(this.getClass().getResourceAsStream(RESOURCE_FILENAME),"iso8859-1",'+');
