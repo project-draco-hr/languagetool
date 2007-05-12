@@ -1,0 +1,7 @@
+{
+  FileOutputStream fos=new FileOutputStream(outputFile);
+  ObjectOutputStream oos=new ObjectOutputStream(fos);
+  oos.writeObject(words);
+  oos.close();
+  fos.close();
+}

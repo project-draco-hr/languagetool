@@ -1,0 +1,3 @@
+String[] taggerTokens
+String word
+List<AnalyzedGermanToken> l

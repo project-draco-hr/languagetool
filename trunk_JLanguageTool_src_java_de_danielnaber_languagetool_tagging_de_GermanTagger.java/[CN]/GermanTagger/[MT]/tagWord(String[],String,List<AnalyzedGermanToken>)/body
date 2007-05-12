@@ -1,0 +1,7 @@
+{
+  int i=0;
+  while (i < taggerTokens.length) {
+    l.add(new AnalyzedGermanToken(word,taggerTokens[i + 1],taggerTokens[i]));
+    i=i + 2;
+  }
+}

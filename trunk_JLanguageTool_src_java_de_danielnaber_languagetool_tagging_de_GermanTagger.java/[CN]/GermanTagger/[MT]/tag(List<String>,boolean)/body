@@ -9,6 +9,9 @@
   if (manualTagger == null) {
     manualTagger=new ManualTagger(this.getClass().getResourceAsStream(USER_DICT_FILENAME));
   }
+  if (compoundTokenizer == null) {
+    compoundTokenizer=new GermanCompoundTokenizer();
+  }
   for (  String word : sentenceTokens) {
     List<AnalyzedGermanToken> l=new ArrayList<AnalyzedGermanToken>();
     taggerTokens=lexiconLookup(word);
@@ -17,14 +20,29 @@
       firstWord=false;
     }
     if (taggerTokens != null) {
-      int i=0;
-      while (i < taggerTokens.length) {
-        l.add(new AnalyzedGermanToken(word,taggerTokens[i + 1],taggerTokens[i]));
-        i=i + 2;
-      }
+      tagWord(taggerTokens,word,l);
     }
  else {
-      l.add(new AnalyzedGermanToken(word,null,pos));
+      if (!word.trim().equals("")) {
+        List<String> compoundParts=compoundTokenizer.tokenize(word);
+        if (compoundParts.size() <= 1) {
+          l.add(new AnalyzedGermanToken(word,null,pos));
+        }
+ else {
+          String lastPart=compoundParts.get(compoundParts.size() - 1);
+          lastPart=StringTools.uppercaseFirstChar(lastPart);
+          taggerTokens=lexiconLookup(lastPart);
+          if (taggerTokens != null) {
+            tagWord(taggerTokens,word,l);
+          }
+ else {
+            l.add(new AnalyzedGermanToken(word,null,pos));
+          }
+        }
+      }
+ else {
+        l.add(new AnalyzedGermanToken(word,null,pos));
+      }
     }
     pos+=word.length();
     tokenReadings.add(new AnalyzedGermanTokenReadings(l.toArray(new AnalyzedGermanToken[l.size()])));
