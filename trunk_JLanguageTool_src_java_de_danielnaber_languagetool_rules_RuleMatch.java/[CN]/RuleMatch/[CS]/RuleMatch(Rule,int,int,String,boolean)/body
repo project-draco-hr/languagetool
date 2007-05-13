@@ -3,7 +3,7 @@
   this.fromPos=fromPos;
   this.toPos=toPos;
   this.message=message;
-  Matcher matcher=SUGGESTION_PATTERN.matcher(message);
+  final Matcher matcher=SUGGESTION_PATTERN.matcher(message);
   int pos=0;
   while (matcher.find(pos)) {
     pos=matcher.end();
