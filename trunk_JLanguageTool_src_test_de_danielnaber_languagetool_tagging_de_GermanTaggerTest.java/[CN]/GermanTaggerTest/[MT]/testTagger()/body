@@ -16,4 +16,8 @@
   assertEquals("Donaudampfschiff[SUB:AKK:SIN:NEU, SUB:DAT:SIN:NEU, SUB:NOM:SIN:NEU]",aToken.toString());
   aToken=tagger.lookup("H??userk??mpfe");
   assertEquals("H??userk??mpfe[SUB:AKK:PLU:MAS, SUB:GEN:PLU:MAS, SUB:NOM:PLU:MAS]",aToken.toString());
+  aToken=tagger.lookup("H??userkampfes");
+  assertEquals("H??userkampfes[SUB:GEN:SIN:MAS]",aToken.toString());
+  aToken=tagger.lookup("H??userkampfs");
+  assertEquals("H??userkampfs[SUB:GEN:SIN:MAS]",aToken.toString());
 }
