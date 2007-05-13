@@ -7,10 +7,12 @@
   int tokenCount=0;
   int lineCount=0;
   int columnCount=0;
+  unknownWords=new HashSet<String>();
   for (Iterator<String> iter=sentences.iterator(); iter.hasNext(); ) {
     String sentence=iter.next();
     sentenceCount++;
     AnalyzedSentence analyzedText=getAnalyzedSentence(sentence);
+    rememberUnknownWords(analyzedText);
     if (sentenceCount == sentences.size()) {
       AnalyzedTokenReadings[] anTokens=analyzedText.getTokens();
       AnalyzedToken paragraphEnd=new AnalyzedToken(anTokens[anTokens.length - 1].getToken(),PARAGRAPH_END_TAGNAME,anTokens[anTokens.length - 1].getAnalyzedToken(0).getLemma(),anTokens[anTokens.length - 1].getAnalyzedToken(0).getStartPos());

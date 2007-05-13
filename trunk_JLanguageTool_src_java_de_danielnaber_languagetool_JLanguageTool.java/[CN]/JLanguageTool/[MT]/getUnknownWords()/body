@@ -1,0 +1,8 @@
+{
+  if (!listUnknownWords) {
+    throw new IllegalStateException("listUnknownWords is set to false, unknown words not stored");
+  }
+  List<String> words=new ArrayList<String>(unknownWords);
+  Collections.sort(words);
+  return words;
+}
