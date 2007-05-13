@@ -1,7 +1,7 @@
 {
-  String token=formattedToken.getToken();
   final ArrayList<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
   if (formattedToken != null) {
+    String token=formattedToken.getToken();
     if (pRegexMatch != null) {
       token=pRegexMatch.matcher(token).replaceAll(regexReplace);
     }
@@ -39,16 +39,14 @@ l.add(new AnalyzedToken(token,targetPosTag,formattedToken.getAnalyzedToken(i).ge
 }
 }
 }
-if (l.size() == 0) {
+if (l.isEmpty()) {
 String lemma="";
 for (int j=0; j < numRead; j++) {
 if (formattedToken.getAnalyzedToken(j).getPOSTag() != null) {
-if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag)) {
-if (formattedToken.getAnalyzedToken(j).getLemma() != null) {
+if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag) && (formattedToken.getAnalyzedToken(j).getLemma() != null)) {
 lemma=formattedToken.getAnalyzedToken(j).getLemma();
 }
-}
-if (lemma.equals("")) {
+if ("".equals(lemma)) {
 lemma=formattedToken.getAnalyzedToken(0).getLemma();
 }
 l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
@@ -60,12 +58,10 @@ l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
 String lemma="";
 for (int j=0; j < numRead; j++) {
 if (formattedToken.getAnalyzedToken(j).getPOSTag() != null) {
-if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag)) {
-if (formattedToken.getAnalyzedToken(j).getLemma() != null) {
+if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag) && (formattedToken.getAnalyzedToken(j).getLemma() != null)) {
 lemma=formattedToken.getAnalyzedToken(j).getLemma();
 }
-}
-if (lemma.equals("")) {
+if ("".equals(lemma)) {
 lemma=formattedToken.getAnalyzedToken(0).getLemma();
 }
 l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
@@ -74,7 +70,7 @@ l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
 }
 }
 }
-if (l.size() == 0) {
+if (l.isEmpty()) {
 return formattedToken;
 }
  else {
