@@ -12,12 +12,12 @@
     ArrayList<String> results=new ArrayList<String>();
     boolean isNegated=false;
     if (token.getPOSTag() != null) {
-      isNegated=posTag.indexOf(NEGATION_TAG) > 0 || token.getPOSTag().indexOf(NEGATION_TAG) > 0;
+      isNegated=posTag.indexOf(NEGATION_TAG) > 0 || token.getPOSTag().indexOf(NEGATION_TAG) > 0 && !(posTag.indexOf(COMP_TAG) > 0) && !(posTag.indexOf(SUP_TAG) > 0);
     }
     if (isNegated) {
       posTag=posTag.replaceAll(NEGATION_TAG,POTENTIAL_NEGATION_TAG + "?");
     }
-    final Pattern p=Pattern.compile(posTag.replaceAll("\\+","|"));
+    final Pattern p=Pattern.compile(posTag.replace('+','|'));
     for (    String tag : possibleTags) {
       final Matcher m=p.matcher(tag);
       if (m.matches()) {
