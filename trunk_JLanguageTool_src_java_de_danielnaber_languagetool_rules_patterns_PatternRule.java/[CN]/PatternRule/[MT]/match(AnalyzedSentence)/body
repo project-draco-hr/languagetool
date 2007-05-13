@@ -143,7 +143,10 @@
         firstMatchTokenObj=tokens[firstMatchToken + correctedStPos + 1];
         startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.toString());
       }
-      final int fromPos=tokens[firstMatchToken + correctedStPos].getStartPos();
+      int fromPos=tokens[firstMatchToken + correctedStPos].getStartPos();
+      if (errMessage.contains("<suggestion>,")) {
+        fromPos=tokens[firstMatchToken + correctedStPos - 1].getStartPos() + tokens[firstMatchToken + correctedStPos - 1].getToken().length();
+      }
       final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
       if (fromPos < toPos) {
         final RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,errMessage,startsWithUppercase);
