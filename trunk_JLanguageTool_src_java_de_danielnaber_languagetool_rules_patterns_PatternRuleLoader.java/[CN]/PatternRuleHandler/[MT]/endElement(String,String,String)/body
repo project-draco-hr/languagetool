@@ -1,7 +1,12 @@
 {
   if (qName.equals("rule")) {
     phraseElementInit();
-    if (!phraseElementList.isEmpty()) {
+    if (phraseElementList.isEmpty()) {
+      PatternRule rule=new PatternRule(id,language,elementList,description,message.toString());
+      prepareRule(rule);
+      rules.add(rule);
+    }
+ else {
       if (!elementList.isEmpty()) {
         for (        ArrayList<Element> ph : phraseElementList) {
           ph.addAll(new ArrayList<Element>(elementList));
@@ -12,11 +17,6 @@
         prepareRule(rule);
         rules.add(rule);
       }
-    }
- else {
-      PatternRule rule=new PatternRule(id,language,elementList,description,message.toString());
-      prepareRule(rule);
-      rules.add(rule);
     }
     if (elementList != null) {
       elementList.clear();
@@ -110,10 +110,10 @@
  else   if (qName.equals("suggestion") && inMessage) {
     message.append("</suggestion>");
   }
- else   if (qName.equals("marker") && inCorrectExample) {
+ else   if (qName.equals(MARKER) && inCorrectExample) {
     correctExample.append("</marker>");
   }
- else   if (qName.equals("marker") && inIncorrectExample) {
+ else   if (qName.equals(MARKER) && inIncorrectExample) {
     incorrectExample.append("</marker>");
   }
  else   if (qName.equals("phrase") && inPhrases) {
@@ -122,13 +122,13 @@
     }
     phraseElementInit();
     if (elementList != null) {
-      if (!phraseElementList.isEmpty()) {
+      if (phraseElementList.isEmpty()) {
+        phraseElementList.add(new ArrayList<Element>(elementList));
+      }
+ else {
         for (        ArrayList<Element> ph : phraseElementList) {
           ph.addAll(new ArrayList<Element>(elementList));
         }
-      }
- else {
-        phraseElementList.add(new ArrayList<Element>(elementList));
       }
     }
     phraseMap.put(phraseId,new ArrayList<ArrayList<Element>>(phraseElementList));

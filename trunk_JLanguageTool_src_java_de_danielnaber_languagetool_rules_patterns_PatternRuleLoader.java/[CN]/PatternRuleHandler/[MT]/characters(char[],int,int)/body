@@ -1,5 +1,5 @@
 {
-  String s=new String(buf,offset,len);
+  final String s=new String(buf,offset,len);
   if (inException) {
     exceptions.append(s);
   }
