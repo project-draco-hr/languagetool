@@ -4,7 +4,7 @@
   final int[] numbersToMatches=new int[errorMsg.length()];
   boolean newWay=false;
   int errLen=errorMessage.length();
-  int errMarker=errorMessage.indexOf("\\");
+  int errMarker=errorMessage.indexOf('\\');
   boolean numberFollows=false;
   if (errMarker > 0 & errMarker < errLen - 1) {
     numberFollows=errorMessage.charAt(errMarker + 1) >= '1' & errorMessage.charAt(errMarker + 1) <= '9';
@@ -34,14 +34,14 @@
               }
  else {
                 suggestionLeft=leftSide.substring(leftSide.lastIndexOf("<suggestion>") + "<suggestion>".length());
-                if (suggestionLeft.equals("")) {
+                if ("".equals(suggestionLeft)) {
                   errorMessage=leftSide;
                 }
  else {
                   errorMessage=leftSide.substring(0,leftSide.lastIndexOf("<suggestion>")) + "<suggestion>";
                 }
                 suggestionRight=rightSide.substring(0,rightSide.indexOf("</suggestion>"));
-                if (!suggestionRight.equals("")) {
+                if (!"".equals(suggestionRight)) {
                   rightSide=rightSide.substring(rightSide.indexOf("</suggestion>"));
                 }
                 final int lastLeftSugEnd=leftSide.indexOf("</suggestion>");
@@ -68,7 +68,7 @@
         }
         if (!newWay) {
           errorMessage=errorMessage.replaceAll("\\\\" + (j + 1),toks[firstMatchTok + repTokenPos - 1].getToken());
-          errMarker=errorMessage.indexOf("\\");
+          errMarker=errorMessage.indexOf('\\');
           numberFollows=false;
           errLen=errorMessage.length();
           if (errMarker > 0 & errMarker < errLen - 1) {
@@ -77,7 +77,7 @@
         }
       }
     }
-    errMarker=errorMessage.indexOf("\\");
+    errMarker=errorMessage.indexOf('\\');
     numberFollows=false;
     errLen=errorMessage.length();
     if (errMarker > 0 & errMarker < errLen - 1) {

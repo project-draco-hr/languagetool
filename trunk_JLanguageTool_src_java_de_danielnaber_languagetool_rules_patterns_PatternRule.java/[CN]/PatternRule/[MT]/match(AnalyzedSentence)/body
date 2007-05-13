@@ -51,21 +51,17 @@
               prevMatched=true;
             }
           }
-          if (elem.referenceElement()) {
-            if (firstMatchToken + elem.getMatch().getTokenRef() < tokens.length) {
-              elem.getMatch().setToken(tokens[firstMatchToken + elem.getMatch().getTokenRef()]);
-              elem.getMatch().setSynthesizer(language[0].getSynthesizer());
-              elem.compile();
-            }
+          if (elem.referenceElement() && (firstMatchToken + elem.getMatch().getTokenRef() < tokens.length)) {
+            elem.getMatch().setToken(tokens[firstMatchToken + elem.getMatch().getTokenRef()]);
+            elem.getMatch().setSynthesizer(language[0].getSynthesizer());
+            elem.compile();
           }
           if (elem.hasAndGroup()) {
             for (            Element andElement : elem.getAndGroup()) {
-              if (andElement.referenceElement()) {
-                if (firstMatchToken + andElement.getMatch().getTokenRef() < tokens.length) {
-                  andElement.getMatch().setToken(tokens[firstMatchToken + andElement.getMatch().getTokenRef()]);
-                  andElement.getMatch().setSynthesizer(language[0].getSynthesizer());
-                  andElement.compile();
-                }
+              if (andElement.referenceElement() && (firstMatchToken + andElement.getMatch().getTokenRef() < tokens.length)) {
+                andElement.getMatch().setToken(tokens[firstMatchToken + andElement.getMatch().getTokenRef()]);
+                andElement.getMatch().setSynthesizer(language[0].getSynthesizer());
+                andElement.compile();
               }
             }
             if (l == 0) {
