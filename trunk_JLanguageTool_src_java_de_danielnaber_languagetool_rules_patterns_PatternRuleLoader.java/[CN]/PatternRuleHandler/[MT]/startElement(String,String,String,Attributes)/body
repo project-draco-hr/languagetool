@@ -2,8 +2,12 @@
   if (qName.equals("category")) {
     final String catName=attrs.getValue("name");
     final String prioStr=attrs.getValue("priority");
-    if (prioStr != null)     category=new Category(catName,Integer.parseInt(prioStr));
- else     category=new Category(catName);
+    if (prioStr != null) {
+      category=new Category(catName,Integer.parseInt(prioStr));
+    }
+ else {
+      category=new Category(catName);
+    }
   }
  else   if (qName.equals("rules")) {
     final String languageStr=attrs.getValue("lang");
@@ -14,17 +18,27 @@
   }
  else   if (qName.equals("rule")) {
     id=attrs.getValue("id");
-    if (inRuleGroup && id == null)     id=ruleGroupId;
+    if (inRuleGroup && id == null) {
+      id=ruleGroupId;
+    }
     description=attrs.getValue("name");
-    if (inRuleGroup && description == null)     description=ruleGroupDescription;
+    if (inRuleGroup && description == null) {
+      description=ruleGroupDescription;
+    }
     correctExamples=new ArrayList<String>();
     incorrectExamples=new ArrayList<String>();
   }
  else   if (qName.equals("pattern")) {
     inPattern=true;
-    if (attrs.getValue("mark_from") != null)     startPositionCorrection=Integer.parseInt(attrs.getValue("mark_from"));
-    if (attrs.getValue("mark_to") != null)     endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
-    if (attrs.getValue("case_sensitive") != null && YES.equals(attrs.getValue("case_sensitive")))     caseSensitive=true;
+    if (attrs.getValue("mark_from") != null) {
+      startPositionCorrection=Integer.parseInt(attrs.getValue("mark_from"));
+    }
+    if (attrs.getValue("mark_to") != null) {
+      endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
+    }
+    if (attrs.getValue("case_sensitive") != null && YES.equals(attrs.getValue("case_sensitive"))) {
+      caseSensitive=true;
+    }
   }
  else   if (qName.equals("and")) {
     inAndGroup=true;
@@ -116,7 +130,7 @@
     if (attrs.getValue("case_conversion") != null) {
       caseConv=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());
     }
-    final Match mWorker=new Match(attrs.getValue(POSTAG),attrs.getValue("postag_replace"),"yes".equals(attrs.getValue(POSTAG_REGEXP)),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv);
+    final Match mWorker=new Match(attrs.getValue(POSTAG),attrs.getValue("postag_replace"),YES.equals(attrs.getValue(POSTAG_REGEXP)),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv);
     if (inMessage) {
       if (suggestionMatches == null) {
         suggestionMatches=new ArrayList<Match>();
@@ -157,13 +171,12 @@
  else   if (qName.equals("phraseref") && (attrs.getValue("idref") != null)) {
     phraseIdRef=attrs.getValue("idref");
     if (phraseMap.containsKey(phraseIdRef)) {
-      ArrayList<ArrayList<Element>> curPhraseElementList=phraseMap.get(phraseIdRef);
-      for (      ArrayList<Element> curPhrEl : curPhraseElementList) {
+      for (      final ArrayList<Element> curPhrEl : phraseMap.get(phraseIdRef)) {
         if (elementList.isEmpty()) {
           phraseElementList.add(new ArrayList<Element>(curPhrEl));
         }
  else {
-          ArrayList<Element> prevList=new ArrayList<Element>(elementList);
+          final ArrayList<Element> prevList=new ArrayList<Element>(elementList);
           prevList.addAll(curPhrEl);
           phraseElementList.add(new ArrayList<Element>(prevList));
           prevList.clear();

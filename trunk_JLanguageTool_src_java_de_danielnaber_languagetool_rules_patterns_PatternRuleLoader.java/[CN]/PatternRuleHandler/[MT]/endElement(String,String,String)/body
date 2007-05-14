@@ -2,18 +2,18 @@
   if (qName.equals("rule")) {
     phraseElementInit();
     if (phraseElementList.isEmpty()) {
-      PatternRule rule=new PatternRule(id,language,elementList,description,message.toString());
+      final PatternRule rule=new PatternRule(id,language,elementList,description,message.toString());
       prepareRule(rule);
       rules.add(rule);
     }
  else {
       if (!elementList.isEmpty()) {
-        for (        ArrayList<Element> ph : phraseElementList) {
+        for (        final ArrayList<Element> ph : phraseElementList) {
           ph.addAll(new ArrayList<Element>(elementList));
         }
       }
-      for (      ArrayList<Element> phraseElement : phraseElementList) {
-        PatternRule rule=new PatternRule(id,language,phraseElement,description,message.toString(),phraseElementList.size() > 1);
+      for (      final ArrayList<Element> phraseElement : phraseElementList) {
+        final PatternRule rule=new PatternRule(id,language,phraseElement,description,message.toString(),phraseElementList.size() > 1);
         prepareRule(rule);
         rules.add(rule);
       }
@@ -126,7 +126,7 @@
         phraseElementList.add(new ArrayList<Element>(elementList));
       }
  else {
-        for (        ArrayList<Element> ph : phraseElementList) {
+        for (        final ArrayList<Element> ph : phraseElementList) {
           ph.addAll(new ArrayList<Element>(elementList));
         }
       }
