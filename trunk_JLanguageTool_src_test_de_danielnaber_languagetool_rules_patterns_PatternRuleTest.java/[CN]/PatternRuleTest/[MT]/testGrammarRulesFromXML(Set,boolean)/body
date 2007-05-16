@@ -1,0 +1,15 @@
+{
+  for (int i=0; i < Language.LANGUAGES.length; i++) {
+    Language lang=Language.LANGUAGES[i];
+    if (ignoredLanguages != null && ignoredLanguages.contains(lang)) {
+      if (verbose)       System.out.println("Ignoring tests for " + lang.getName());
+      continue;
+    }
+    if (verbose)     System.out.println("Running tests for " + lang.getName() + "...");
+    PatternRuleLoader ruleLoader=new PatternRuleLoader();
+    JLanguageTool languageTool=new JLanguageTool(lang);
+    String name="/rules/" + lang.getShortName() + "/grammar.xml";
+    List rules=ruleLoader.getRules(this.getClass().getResourceAsStream(name),name);
+    testGrammarRulesFromXML(rules,languageTool,lang);
+  }
+}

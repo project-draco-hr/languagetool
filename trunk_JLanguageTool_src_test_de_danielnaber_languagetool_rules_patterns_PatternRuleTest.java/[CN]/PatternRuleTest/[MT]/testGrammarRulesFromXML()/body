@@ -1,10 +1,3 @@
 {
-  for (int i=0; i < Language.LANGUAGES.length; i++) {
-    Language lang=Language.LANGUAGES[i];
-    PatternRuleLoader ruleLoader=new PatternRuleLoader();
-    JLanguageTool languageTool=new JLanguageTool(lang);
-    String name="/rules/" + lang.getShortName() + "/grammar.xml";
-    List rules=ruleLoader.getRules(this.getClass().getResourceAsStream(name),name);
-    testGrammarRulesFromXML(rules,languageTool,lang);
-  }
+  testGrammarRulesFromXML(null,false);
 }
