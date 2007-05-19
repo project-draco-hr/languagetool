@@ -26,7 +26,7 @@
       if (disabledRules.contains(rule.getId()))       continue;
       RuleMatch[] thisMatches=rule.match(analyzedText);
       for (int i=0; i < thisMatches.length; i++) {
-        RuleMatch thisMatch=new RuleMatch(thisMatches[i].getRule(),thisMatches[i].getFromPos() + tokenCount,thisMatches[i].getToPos() + tokenCount,thisMatches[i].getMessage());
+        final RuleMatch thisMatch=new RuleMatch(thisMatches[i].getRule(),thisMatches[i].getFromPos() + tokenCount,thisMatches[i].getToPos() + tokenCount,thisMatches[i].getMessage());
         thisMatch.setSuggestedReplacements(thisMatches[i].getSuggestedReplacements());
         String sentencePartToError=sentence.substring(0,thisMatches[i].getFromPos());
         String sentencePartToEndOfError=sentence.substring(0,thisMatches[i].getToPos());
