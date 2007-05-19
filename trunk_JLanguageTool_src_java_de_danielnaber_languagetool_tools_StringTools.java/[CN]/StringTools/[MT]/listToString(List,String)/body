@@ -1,9 +1,11 @@
 {
-  StringBuilder sb=new StringBuilder();
-  for (Iterator iter=l.iterator(); iter.hasNext(); ) {
-    String str=(String)iter.next();
+  final StringBuilder sb=new StringBuilder();
+  for (final Iterator iter=l.iterator(); iter.hasNext(); ) {
+    final String str=(String)iter.next();
     sb.append(str);
-    if (iter.hasNext())     sb.append(delimiter);
+    if (iter.hasNext()) {
+      sb.append(delimiter);
+    }
   }
   return sb.toString();
 }

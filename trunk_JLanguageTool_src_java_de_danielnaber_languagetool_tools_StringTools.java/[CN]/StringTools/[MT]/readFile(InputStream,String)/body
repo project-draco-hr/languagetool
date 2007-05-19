@@ -1,10 +1,14 @@
 {
   InputStreamReader isr=null;
   BufferedReader br=null;
-  StringBuilder sb=new StringBuilder();
+  final StringBuilder sb=new StringBuilder();
   try {
-    if (encoding != null)     isr=new InputStreamReader(file,encoding);
- else     isr=new InputStreamReader(file);
+    if (encoding != null) {
+      isr=new InputStreamReader(file,encoding);
+    }
+ else {
+      isr=new InputStreamReader(file);
+    }
     br=new BufferedReader(isr);
     String line;
     while ((line=br.readLine()) != null) {
@@ -13,8 +17,12 @@
     }
   }
   finally {
-    if (br != null)     br.close();
-    if (isr != null)     isr.close();
+    if (br != null) {
+      br.close();
+    }
+    if (isr != null) {
+      isr.close();
+    }
   }
   return sb.toString();
 }

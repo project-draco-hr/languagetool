@@ -1,16 +1,16 @@
 {
-  StringBuilder xml=new StringBuilder();
+  final StringBuilder xml=new StringBuilder();
   xml.append("<?xml version=\"1.0\" encoding=\"" + System.getProperty("file.encoding") + "\"?>\n");
   xml.append("<matches>\n");
   int i=1;
-  for (  RuleMatch match : ruleMatches) {
+  for (  final RuleMatch match : ruleMatches) {
     xml.append("<error" + " fromy=\"" + match.getLine() + "\""+ " fromx=\""+ match.getColumn()+ "\""+ " toy=\""+ match.getEndLine()+ "\""+ " tox=\""+ match.getEndColumn()+ "\""+ " ruleId=\""+ match.getRule().getId()+ "\"");
-    String msg=match.getMessage().replaceAll("</?suggestion>","'");
+    final String msg=match.getMessage().replaceAll("</?suggestion>","'");
     xml.append(" msg=\"" + escapeXMLForAPIOutput(msg) + "\"");
     final String START_MARKER="__languagetoo_start_marker";
     String context=Tools.getContext(match.getFromPos(),match.getToPos(),escapeXML(text),contextSize,START_MARKER,"");
     xml.append(" replacements=\"" + escapeXMLForAPIOutput(listToString(match.getSuggestedReplacements(),"#")) + "\"");
-    int contextOffset=context.indexOf(START_MARKER);
+    final int contextOffset=context.indexOf(START_MARKER);
     context=context.replaceFirst(START_MARKER,"");
     xml.append(" context=\"" + escapeXMLForAPIOutput(context) + "\"");
     xml.append(" contextoffset=\"" + contextOffset + "\"");

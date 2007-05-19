@@ -14,12 +14,16 @@
     postfix="";
     endContent=fileContents.length();
   }
-  StringBuilder marker=new StringBuilder();
+  final StringBuilder marker=new StringBuilder();
   for (int i=0; i < fileContents.length() + prefix.length(); i++) {
-    if (i >= fromPos && i < toPos)     marker.append("^");
- else     marker.append(" ");
+    if (i >= fromPos && i < toPos) {
+      marker.append("^");
+    }
+ else {
+      marker.append(" ");
+    }
   }
-  StringBuilder sb=new StringBuilder();
+  final StringBuilder sb=new StringBuilder();
   sb.append(prefix);
   sb.append(fileContents.substring(startContent,endContent));
   sb.append(postfix);

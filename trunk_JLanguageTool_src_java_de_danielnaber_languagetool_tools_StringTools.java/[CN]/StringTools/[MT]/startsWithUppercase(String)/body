@@ -1,6 +1,10 @@
 {
-  if (str.length() == 0)   return false;
-  char firstChar=str.charAt(0);
-  if (Character.isUpperCase(firstChar))   return true;
+  if (str.length() == 0) {
+    return false;
+  }
+  final char firstChar=str.charAt(0);
+  if (Character.isUpperCase(firstChar)) {
+    return true;
+  }
   return false;
 }
