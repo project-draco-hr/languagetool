@@ -38,7 +38,7 @@
         if (pos == -1)         break;
         countInRulegroup++;
       }
-      System.out.print("<td align=\"right\">" + (count + countInRulegroup) + "</td>");
+      System.out.print("<td align=\"right\">" + (count + countInRulegroup) + " (<a href=\"http://languagetool.cvs.sourceforge.net/*checkout*/languagetool/"+ "JLanguageTool/src/rules/"+ lang.getShortName()+ "/grammar.xml\">show</a>)"+ "</td>");
     }
     System.out.print("<td></td>");
     File dir=new File("src/java/de/danielnaber/languagetool/rules/" + lang.getShortName());
