@@ -1,7 +1,8 @@
 {
-  Language[] languages=getLanguages();
+  Language[] languages=Language.LANGUAGES;
   for (int i=0; i < languages.length; i++) {
-    if (language.equals(languages[i]))     return true;
+    Set<String> relevantIDs=language.getRelevantRuleIDs();
+    if (relevantIDs != null && relevantIDs.contains(getId()))     return true;
   }
   return false;
 }

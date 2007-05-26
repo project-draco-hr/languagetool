@@ -1,0 +1,6 @@
+{
+  Set<String> ids=new HashSet<String>();
+  ids.add("COMMA_PARENTHESIS_WHITESPACE");
+  ids.add("DOUBLE_PUNCTUATION");
+  return ids;
+}
