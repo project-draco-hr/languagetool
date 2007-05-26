@@ -18,8 +18,8 @@
     StringBuilder maintainersInfo=new StringBuilder();
     for (    Language lang : Language.LANGUAGES) {
       if (lang != Language.DEMO) {
-        String m=lang.getMaintainers();
-        if (m != null) {
+        if (lang.getMaintainers() != null) {
+          String m=Arrays.toString(lang.getMaintainers());
           maintainersInfo.append(messages.getString(lang.getShortName()));
           maintainersInfo.append(" ??? ");
           maintainersInfo.append(m);
