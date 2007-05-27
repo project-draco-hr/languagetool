@@ -27,11 +27,7 @@
   buttonCons.gridx=2;
   buttonCons.gridy=0;
   langBox=new JComboBox();
-  for (  Language lang : Language.LANGUAGES) {
-    if (lang != Language.DEMO) {
-      langBox.addItem(messages.getString(lang.getShortName()));
-    }
-  }
+  populateLanguageBox();
   try {
     Locale defaultLocale=Locale.getDefault();
     langBox.setSelectedItem(messages.getString((defaultLocale.getLanguage())));

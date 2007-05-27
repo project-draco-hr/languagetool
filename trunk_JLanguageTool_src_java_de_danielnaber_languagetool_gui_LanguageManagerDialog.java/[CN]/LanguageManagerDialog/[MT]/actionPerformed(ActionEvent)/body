@@ -1,0 +1,19 @@
+{
+  if (e.getSource() == addButton) {
+    File ruleFile=Tools.openFileDialog(null,new XMLFileFilter());
+    ruleFiles.add(ruleFile);
+    list.setListData(ruleFiles.toArray(new File[]{}));
+  }
+ else   if (e.getSource() == removeButton) {
+    if (list.getSelectedIndex() != -1) {
+      ruleFiles.remove(list.getSelectedIndex());
+      list.setListData(ruleFiles.toArray(new File[]{}));
+    }
+  }
+ else   if (e.getSource() == closeButton) {
+    dialog.setVisible(false);
+  }
+ else {
+    throw new IllegalArgumentException("Don't know how to handle " + e);
+  }
+}

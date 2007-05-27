@@ -1,0 +1,6 @@
+{
+  LanguageManagerDialog lmd=new LanguageManagerDialog(frame,Language.getExternalLanguages());
+  lmd.show();
+  Language.reInit(lmd.getLanguages());
+  populateLanguageBox();
+}

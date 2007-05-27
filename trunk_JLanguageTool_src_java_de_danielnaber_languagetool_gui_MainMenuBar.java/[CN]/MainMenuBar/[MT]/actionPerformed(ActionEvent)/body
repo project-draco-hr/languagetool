@@ -8,6 +8,9 @@
  else   if (e.getActionCommand().equals(dockToTrayText)) {
     prg.hideToTray();
   }
+ else   if (e.getActionCommand().equals(addLanguageText)) {
+    prg.addLanguage();
+  }
  else   if (e.getActionCommand().equals(optionsText)) {
     prg.showOptions();
   }

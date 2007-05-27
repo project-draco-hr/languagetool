@@ -1,5 +1,5 @@
 {
-  String defaultPatternFilename=RULES_DIR + "/" + language.getShortName()+ "/"+ PATTERN_FILE;
+  String defaultPatternFilename=language.getRuleFileName();
   List<PatternRule> patternRules=loadPatternRules(defaultPatternFilename);
   userRules.addAll(patternRules);
 }

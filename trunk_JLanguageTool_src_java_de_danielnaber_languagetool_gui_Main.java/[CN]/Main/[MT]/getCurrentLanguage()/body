@@ -8,5 +8,8 @@
       break;
     }
   }
+  if (lang.length() > 2) {
+    return Language.getLanguageForName(lang);
+  }
   return Language.getLanguageForShortName(lang);
 }

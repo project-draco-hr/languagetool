@@ -1,0 +1,4 @@
+{
+  if (f.getName().toLowerCase().endsWith(".xml"))   return true;
+  return false;
+}

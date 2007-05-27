@@ -1,5 +1,5 @@
 {
-  File file=Tools.openFileDialog(frame);
+  File file=Tools.openFileDialog(frame,new PlainTextFilter());
   if (file == null)   return;
   try {
     String fileContents=StringTools.readFile(new FileInputStream(file.getAbsolutePath()));

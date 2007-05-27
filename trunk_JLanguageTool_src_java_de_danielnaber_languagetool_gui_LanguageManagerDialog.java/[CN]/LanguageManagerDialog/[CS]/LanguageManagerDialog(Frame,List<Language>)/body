@@ -1,0 +1,6 @@
+{
+  this.owner=owner;
+  for (  Language lang : languages) {
+    ruleFiles.add(new File(lang.getRuleFileName()));
+  }
+}

@@ -4,6 +4,7 @@
   openText=messages.getString("guiMenuOpen");
   checkClipboardText=messages.getString("guiMenuCheckClipboard");
   dockToTrayText=messages.getString("guiMenuHide");
+  addLanguageText="Add language...";
   optionsText=messages.getString("guiMenuOptions");
   quitText=messages.getString("guiMenuQuit");
   aboutText=messages.getString("guiMenuAbout");

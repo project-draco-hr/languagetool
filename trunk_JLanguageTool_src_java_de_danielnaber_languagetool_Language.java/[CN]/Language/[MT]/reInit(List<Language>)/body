@@ -1,0 +1,11 @@
+{
+  LANGUAGES=new Language[BUILTIN_LANGUAGES.length + languages.size()];
+  int i=0;
+  for (; i < BUILTIN_LANGUAGES.length; i++) {
+    LANGUAGES[i]=BUILTIN_LANGUAGES[i];
+  }
+  for (  Language lang : languages) {
+    LANGUAGES[i++]=lang;
+  }
+  externalLanguages=languages;
+}

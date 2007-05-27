@@ -4,7 +4,7 @@
   }
  else {
     StringBuilder sb=new StringBuilder();
-    String startChecktext=Tools.makeTexti18n(messages,"startChecking",new Object[]{messages.getString(lang.getShortName())});
+    String startChecktext=Tools.makeTexti18n(messages,"startChecking",new Object[]{lang.getTranslatedName(messages)});
     resultArea.setText(HTML_FONT_START + startChecktext + "<br>\n"+ HTML_FONT_END);
     resultArea.repaint();
     sb.append(startChecktext + "...<br>\n");

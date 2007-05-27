@@ -19,6 +19,11 @@
   dockToTrayItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D,Event.CTRL_MASK));
   dockToTrayItem.addActionListener(this);
   fileMenu.add(dockToTrayItem);
+  JMenuItem addLanguageItem=new JMenuItem(addLanguageText);
+  addLanguageItem.setMnemonic('a');
+  addLanguageItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A,Event.CTRL_MASK));
+  addLanguageItem.addActionListener(this);
+  fileMenu.add(addLanguageItem);
   JMenuItem optionsItem=new JMenuItem(optionsText);
   optionsItem.setMnemonic('s');
   optionsItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,Event.CTRL_MASK));
