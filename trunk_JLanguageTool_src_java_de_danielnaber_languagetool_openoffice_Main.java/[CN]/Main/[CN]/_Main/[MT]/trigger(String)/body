@@ -24,6 +24,10 @@
         }
       }
     }
+ else     if (sEvent.equals("about")) {
+      AboutDialogThread aboutthread=new AboutDialogThread(messages);
+      aboutthread.start();
+    }
  else {
       System.err.println("Sorry, don't know what to do, sEvent = " + sEvent);
     }
