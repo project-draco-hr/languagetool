@@ -15,19 +15,8 @@
     prg.quit();
   }
  else   if (e.getActionCommand().equals(aboutText)) {
-    StringBuilder maintainersInfo=new StringBuilder();
-    for (    Language lang : Language.LANGUAGES) {
-      if (lang != Language.DEMO) {
-        if (lang.getMaintainers() != null) {
-          String m=Arrays.toString(lang.getMaintainers());
-          maintainersInfo.append(messages.getString(lang.getShortName()));
-          maintainersInfo.append(" ??? ");
-          maintainersInfo.append(m);
-          maintainersInfo.append("\n");
-        }
-      }
-    }
-    JOptionPane.showMessageDialog(null,"LanguageTool " + JLanguageTool.VERSION + "\n"+ "Copyright (C) 2005-2007 Daniel Naber\n"+ "This software is licensed under the GNU Lesser General Public License.\n"+ "LanguageTool Homepage: http://www.danielnaber.de/languagetool\n\n"+ maintainersInfo.toString(),aboutText,JOptionPane.INFORMATION_MESSAGE);
+    AboutDialog about=new AboutDialog(messages);
+    about.show();
   }
  else {
     throw new IllegalArgumentException("Unknown action " + e);

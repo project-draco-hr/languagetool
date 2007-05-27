@@ -1,0 +1,16 @@
+{
+  StringBuilder maintainersInfo=new StringBuilder();
+  for (  Language lang : Language.LANGUAGES) {
+    if (lang != Language.DEMO) {
+      if (lang.getMaintainers() != null) {
+        String m=Arrays.toString(lang.getMaintainers());
+        maintainersInfo.append(messages.getString(lang.getShortName()));
+        maintainersInfo.append(" ??? ");
+        maintainersInfo.append(m);
+        maintainersInfo.append("\n");
+      }
+    }
+  }
+  String aboutText=messages.getString("guiMenuAbout");
+  JOptionPane.showMessageDialog(null,"LanguageTool " + JLanguageTool.VERSION + "\n"+ "Copyright (C) 2005-2007 Daniel Naber\n"+ "This software is licensed under the GNU Lesser General Public License.\n"+ "LanguageTool Homepage: http://www.danielnaber.de/languagetool\n\n"+ "Maintainers of the language modules:\n"+ maintainersInfo.toString(),aboutText,JOptionPane.INFORMATION_MESSAGE);
+}
