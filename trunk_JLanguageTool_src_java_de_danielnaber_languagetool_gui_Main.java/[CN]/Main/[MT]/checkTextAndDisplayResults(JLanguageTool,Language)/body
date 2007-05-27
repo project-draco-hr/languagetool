@@ -1,6 +1,6 @@
 {
   if (textArea.getText().trim().equals("")) {
-    textArea.setText("enterText2");
+    textArea.setText(messages.getString("enterText2"));
   }
  else {
     StringBuilder sb=new StringBuilder();

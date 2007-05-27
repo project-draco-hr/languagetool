@@ -1,16 +1,13 @@
 {
-  JFileChooser jfc=new JFileChooser();
-  jfc.setFileFilter(new PlainTextFilter());
-  jfc.showOpenDialog(frame);
+  File file=Tools.openFileDialog(frame);
+  if (file == null)   return;
   try {
-    File file=jfc.getSelectedFile();
-    if (file == null)     return;
     String fileContents=StringTools.readFile(new FileInputStream(file.getAbsolutePath()));
     textArea.setText(fileContents);
     JLanguageTool langTool=getCurrentLanguageTool();
     checkTextAndDisplayResults(langTool,getCurrentLanguage());
   }
  catch (  IOException e) {
-    showError(e);
+    Tools.showError(e);
   }
 }

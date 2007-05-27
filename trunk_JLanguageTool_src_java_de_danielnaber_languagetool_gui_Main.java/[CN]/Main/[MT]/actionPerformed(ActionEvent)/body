@@ -9,6 +9,6 @@
     }
   }
  catch (  Exception exc) {
-    showError(exc);
+    Tools.showError(exc);
   }
 }

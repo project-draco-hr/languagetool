@@ -1,0 +1,8 @@
+{
+  JFileChooser jfc=new JFileChooser();
+  jfc.setFileFilter(new PlainTextFilter());
+  jfc.showOpenDialog(frame);
+  File file=jfc.getSelectedFile();
+  if (file == null)   return null;
+  return file;
+}

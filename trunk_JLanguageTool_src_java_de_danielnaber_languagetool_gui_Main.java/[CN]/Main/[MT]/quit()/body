@@ -4,7 +4,7 @@
     config.saveConfiguration();
   }
  catch (  IOException e) {
-    showError(e);
+    Tools.showError(e);
   }
   if (trayIcon != null) {
     SystemTray tray=SystemTray.getDefaultSystemTray();

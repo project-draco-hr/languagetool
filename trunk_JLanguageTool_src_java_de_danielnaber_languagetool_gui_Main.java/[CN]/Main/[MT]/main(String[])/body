@@ -10,7 +10,7 @@
             prg.hideToTray();
           }
  catch (          Exception e) {
-            showError(e);
+            Tools.showError(e);
           }
         }
       }
@@ -28,7 +28,7 @@
             prg.showGUI();
           }
  catch (          Exception e) {
-            showError(e);
+            Tools.showError(e);
           }
         }
       }
@@ -36,6 +36,6 @@
     }
   }
  catch (  Exception e) {
-    showError(e);
+    Tools.showError(e);
   }
 }
