@@ -14,7 +14,7 @@
   checkClipboardItem.setMnemonic('c');
   checkClipboardItem.addActionListener(this);
   fileMenu.add(checkClipboardItem);
-  JMenuItem dockToTrayItem=new JMenuItem(docktoTrayText);
+  JMenuItem dockToTrayItem=new JMenuItem(dockToTrayText);
   dockToTrayItem.setMnemonic('d');
   dockToTrayItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D,Event.CTRL_MASK));
   dockToTrayItem.addActionListener(this);

@@ -3,7 +3,7 @@
   helpMenu=new JMenu(messages.getString("guiMenuHelp"));
   openText=messages.getString("guiMenuOpen");
   checkClipboardText=messages.getString("guiMenuCheckClipboard");
-  docktoTrayText=messages.getString("guiMenuHide");
+  dockToTrayText=messages.getString("guiMenuHide");
   optionsText=messages.getString("guiMenuOptions");
   quitText=messages.getString("guiMenuQuit");
   aboutText=messages.getString("guiMenuAbout");
