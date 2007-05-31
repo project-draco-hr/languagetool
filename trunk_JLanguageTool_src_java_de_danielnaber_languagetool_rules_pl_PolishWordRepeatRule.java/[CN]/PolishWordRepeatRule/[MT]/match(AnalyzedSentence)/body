@@ -48,7 +48,12 @@
       for (int j=0; j < readingsLen; j++) {
         if (hasLemma) {
           curLemma=tokens[i].getAnalyzedToken(j).getLemma();
-          if (!prevLemma.equals(curLemma)) {
+          final String Pos=tokens[i].getAnalyzedToken(j).getPOSTag();
+          boolean notSentEnd=false;
+          if (Pos != null) {
+            notSentEnd="SENT_END".equals(Pos);
+          }
+          if (!prevLemma.equals(curLemma) && !notSentEnd) {
             if (inflectedWords.contains(curLemma)) {
               repetition=true;
             }
