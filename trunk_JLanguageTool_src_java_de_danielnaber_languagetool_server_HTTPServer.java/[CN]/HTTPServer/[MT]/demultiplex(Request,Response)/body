@@ -1,4 +1,6 @@
 {
+  long timeStart=System.currentTimeMillis();
+  String text=null;
   try {
     if ("".equals(connRequest.getLocation())) {
       connResponse.setStatus(403);
@@ -12,13 +14,15 @@
       JLanguageTool lt=new JLanguageTool(lang);
       lt.activateDefaultPatternRules();
       lt.activateDefaultFalseFriendRules();
-      String text=connRequest.getParamOrNull("text");
+      text=connRequest.getParamOrNull("text");
       if (text == null)       throw new IllegalArgumentException("Missing 'text' parameter");
-      System.out.println("Checking text with length " + text.length());
+      print("Checking " + text.length() + " characters of text, language "+ langParam);
       List<RuleMatch> matches=lt.check(text);
       connResponse.setHeaderLine(ProtocolResponseHeader.Content_Type,"text/xml");
       connResponse.setHeaderLine(ProtocolResponseHeader.Content_Encoding,System.getProperty("file.encoding"));
-      return StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE);
+      String response=StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE);
+      print("Check done in " + (System.currentTimeMillis() - timeStart) + "ms");
+      return response;
     }
  else {
       connResponse.setStatus(403);
@@ -26,6 +30,7 @@
     }
   }
  catch (  Exception e) {
+    if (verbose)     print("Exceptions was caused by this text: " + text);
     e.printStackTrace();
     connResponse.setStatus(500);
     return "Error: " + StringTools.escapeXML(e.toString());

@@ -1,12 +1,17 @@
 {
-  if (args.length == 1 || args.length > 2) {
+  if (args.length > 3) {
     printUsageAndExit();
   }
+  boolean verbose=false;
   int port=DEFAULT_PORT;
-  if (args.length == 2) {
-    if ("-p".equals(args[0]) || "--port".equals(args[0]))     port=Integer.parseInt(args[1]);
- else     printUsageAndExit();
+  for (int i=0; i < args.length; i++) {
+    if ("-p".equals(args[i]) || "--port".equals(args[i])) {
+      port=Integer.parseInt(args[++i]);
+    }
+ else     if ("-v".equals(args[i]) || "--verbose".equals(args[i])) {
+      verbose=true;
+    }
   }
-  HTTPServer server=new HTTPServer(port);
+  HTTPServer server=new HTTPServer(port,verbose);
   server.run();
 }
