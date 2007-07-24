@@ -1,6 +1,11 @@
 {
   if (config.getRunServer()) {
     httpServer=new HTTPServer(config.getServerPort());
-    httpServer.run();
+    try {
+      httpServer.run();
+    }
+ catch (    PortBindingException e) {
+      JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+    }
   }
 }
