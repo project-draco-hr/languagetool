@@ -1,0 +1,7 @@
+{
+  String s=getClipboardText();
+  restoreFromTray();
+  textArea.setText(s);
+  JLanguageTool langTool=getCurrentLanguageTool();
+  checkTextAndDisplayResults(langTool,getCurrentLanguage());
+}

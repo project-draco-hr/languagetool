@@ -6,7 +6,12 @@
     prg.checkClipboardText();
   }
  else   if (e.getActionCommand().equals(dockToTrayText)) {
-    prg.hideToTray();
+    try {
+      prg.hideToTray();
+    }
+ catch (    MissingJdicException ex) {
+      JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+    }
   }
  else   if (e.getActionCommand().equals(addLanguageText)) {
     prg.addLanguage();

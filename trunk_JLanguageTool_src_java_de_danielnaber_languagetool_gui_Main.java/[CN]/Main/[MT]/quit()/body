@@ -6,10 +6,6 @@
  catch (  IOException e) {
     Tools.showError(e);
   }
-  if (trayIcon != null) {
-    SystemTray tray=SystemTray.getDefaultSystemTray();
-    tray.removeTrayIcon(trayIcon);
-  }
   frame.setVisible(false);
   System.exit(0);
 }

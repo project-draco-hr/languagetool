@@ -1,0 +1,12 @@
+{
+  if (frame.isVisible() && frame.isActive()) {
+    frame.setVisible(false);
+  }
+ else   if (frame.isVisible() && !frame.isActive()) {
+    frame.toFront();
+    restoreFromTrayAndCheck();
+  }
+ else {
+    restoreFromTrayAndCheck();
+  }
+}

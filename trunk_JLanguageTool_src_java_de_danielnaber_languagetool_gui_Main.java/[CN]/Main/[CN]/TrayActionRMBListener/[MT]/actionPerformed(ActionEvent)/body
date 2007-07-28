@@ -1,0 +1,14 @@
+{
+  if (e.getActionCommand().equalsIgnoreCase(messages.getString("guiMenuCheckClipboard"))) {
+    restoreFromTrayAndCheck();
+  }
+ else   if (e.getActionCommand().equalsIgnoreCase(messages.getString("guiMenuShowMainWindow"))) {
+    restoreFromTray();
+  }
+ else   if (e.getActionCommand().equalsIgnoreCase(messages.getString("guiMenuQuit"))) {
+    quit();
+  }
+ else {
+    JOptionPane.showMessageDialog(null,"Unknown action: " + e.getActionCommand(),"Error",JOptionPane.ERROR_MESSAGE);
+  }
+}
