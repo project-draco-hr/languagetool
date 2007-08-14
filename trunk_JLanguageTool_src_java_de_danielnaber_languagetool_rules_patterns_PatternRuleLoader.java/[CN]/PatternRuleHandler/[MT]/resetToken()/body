@@ -13,4 +13,7 @@
   exceptionValidNext=false;
   exceptionSet=false;
   tokenReference=null;
+  if (phElementCnt != null) {
+    phElementCnt.clear();
+  }
 }
