@@ -115,10 +115,13 @@
       }
     }
     tokenPos++;
+    if (firstMatchToken + matchingTokens >= tokens.length) {
+      matchingTokens=tokens.length - firstMatchToken;
+    }
+    if (firstMatchToken + skipShiftTotal + matchingTokens > tokens.length) {
+      allElementsMatch=false;
+    }
     if (allElementsMatch) {
-      if (firstMatchToken + matchingTokens >= tokens.length) {
-        matchingTokens=tokens.length - firstMatchToken;
-      }
       final String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,matchingTokens,message);
       int correctedStPos=0;
       if (startPositionCorrection > 0) {
