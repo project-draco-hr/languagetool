@@ -29,7 +29,7 @@
         prevElement=elem;
       }
       elem=patternElements.get(k);
-      skipNext=elem.getSkipNext();
+      skipNext=translateElementNo(elem.getSkipNext());
       final int nextPos=tokenPos + k + skipShiftTotal;
       if (nextPos >= tokens.length) {
         allElementsMatch=false;

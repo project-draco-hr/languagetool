@@ -16,4 +16,35 @@
   this.description=description;
   this.message=message;
   this.patternElements=new ArrayList<Element>(elements);
+  this.elementNo=new ArrayList<Integer>();
+  String prevName="";
+  String curName="";
+  int cnt=0;
+  int loopCnt=0;
+  for (  Element e : patternElements) {
+    if (!e.isPartOfPhrase()) {
+      if (cnt > 0) {
+        elementNo.add(cnt);
+      }
+      elementNo.add(1);
+    }
+ else {
+      curName=e.getPhraseName();
+      if (prevName.equals(curName) || prevName.equals("")) {
+        cnt++;
+        useList=true;
+      }
+ else {
+        elementNo.add(cnt);
+        prevName="";
+        curName="";
+        cnt=0;
+      }
+      prevName=curName;
+      loopCnt++;
+      if (loopCnt == patternElements.size() && !prevName.equals("")) {
+        elementNo.add(cnt);
+      }
+    }
+  }
 }

@@ -1,0 +1,10 @@
+{
+  if (!useList | i < 0) {
+    return i;
+  }
+  int j=0;
+  for (int k=0; k < i; k++) {
+    j+=elementNo.get(k);
+  }
+  return j;
+}
