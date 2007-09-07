@@ -11,6 +11,8 @@
     for (    final Match m : suggestionMatches) {
       rule.addSuggestionMatch(m);
     }
-    suggestionMatches.clear();
+    if (phraseElementList.size() <= 1) {
+      suggestionMatches.clear();
+    }
   }
 }

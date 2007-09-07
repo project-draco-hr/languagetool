@@ -1,0 +1,6 @@
+{
+  if (!useList || i > (elementNo.size() - 1)) {
+    return 1;
+  }
+  return elementNo.get(i);
+}

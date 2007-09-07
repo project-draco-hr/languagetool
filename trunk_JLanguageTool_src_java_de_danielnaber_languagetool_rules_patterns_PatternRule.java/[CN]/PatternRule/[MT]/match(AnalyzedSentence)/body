@@ -57,7 +57,7 @@
             elem.compile();
           }
           if (elem.hasAndGroup()) {
-            for (            Element andElement : elem.getAndGroup()) {
+            for (            final Element andElement : elem.getAndGroup()) {
               if (andElement.referenceElement() && (firstMatchToken + andElement.getMatch().getTokenRef() < tokens.length)) {
                 andElement.getMatch().setToken(tokens[firstMatchToken + andElement.getMatch().getTokenRef()]);
                 andElement.getMatch().setSynthesizer(language[0].getSynthesizer());

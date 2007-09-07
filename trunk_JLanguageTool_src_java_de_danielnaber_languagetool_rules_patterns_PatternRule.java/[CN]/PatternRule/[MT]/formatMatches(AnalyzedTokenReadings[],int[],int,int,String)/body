@@ -22,25 +22,29 @@
           if (matchCounter < suggestionMatches.size()) {
             numbersToMatches[j]=matchCounter;
             if (suggestionMatches.get(matchCounter) != null) {
-              suggestionMatches.get(matchCounter).setToken(toks[firstMatchTok + repTokenPos - 1]);
-              suggestionMatches.get(matchCounter).setSynthesizer(language[0].getSynthesizer());
+              final String[] matches=concatMatches(matchCounter,j,firstMatchTok + repTokenPos,toks);
               final String leftSide=errorMessage.substring(0,ind);
-              String suggestionLeft="";
-              String suggestionRight="";
               String rightSide=errorMessage.substring(ind + 2);
-              final String[] matches=suggestionMatches.get(matchCounter).toFinalString();
               if (matches.length == 1) {
-                errorMessage=leftSide + suggestionLeft + matches[0]+ suggestionRight+ rightSide;
+                errorMessage=leftSide + matches[0] + rightSide;
               }
  else {
-                suggestionLeft=leftSide.substring(leftSide.lastIndexOf("<suggestion>") + "<suggestion>".length());
+                String suggestionLeft="";
+                String suggestionRight="";
+                final int sPos=leftSide.lastIndexOf("<suggestion>");
+                if (sPos > 0) {
+                  suggestionLeft=leftSide.substring(sPos + "<suggestion>".length());
+                }
                 if ("".equals(suggestionLeft)) {
                   errorMessage=leftSide;
                 }
  else {
                   errorMessage=leftSide.substring(0,leftSide.lastIndexOf("<suggestion>")) + "<suggestion>";
                 }
-                suggestionRight=rightSide.substring(0,rightSide.indexOf("</suggestion>"));
+                final int rPos=rightSide.indexOf("</suggestion>");
+                if (rPos > 0) {
+                  suggestionRight=rightSide.substring(0,rPos);
+                }
                 if (!"".equals(suggestionRight)) {
                   rightSide=rightSide.substring(rightSide.indexOf("</suggestion>"));
                 }

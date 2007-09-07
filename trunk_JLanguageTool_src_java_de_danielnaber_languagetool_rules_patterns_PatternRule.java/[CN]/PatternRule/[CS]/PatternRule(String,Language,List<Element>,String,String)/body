@@ -21,12 +21,13 @@
   String curName="";
   int cnt=0;
   int loopCnt=0;
-  for (  Element e : patternElements) {
+  for (  final Element e : patternElements) {
     if (!e.isPartOfPhrase()) {
       if (cnt > 0) {
         elementNo.add(cnt);
       }
       elementNo.add(1);
+      loopCnt++;
     }
  else {
       curName=e.getPhraseName();
