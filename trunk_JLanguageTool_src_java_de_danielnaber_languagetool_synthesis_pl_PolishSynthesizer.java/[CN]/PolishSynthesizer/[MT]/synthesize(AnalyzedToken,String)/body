@@ -17,7 +17,7 @@
     if (isNegated) {
       wordForms=synthesizer.stem(token.getLemma() + "|" + posTag.replaceFirst(NEGATION_TAG,POTENTIAL_NEGATION_TAG));
       if (wordForms != null) {
-        String[] negForms=wordForms;
+        final String[] negForms=wordForms;
         for (int i=0; i < wordForms.length; i++) {
           negForms[i]="nie" + wordForms[i];
         }

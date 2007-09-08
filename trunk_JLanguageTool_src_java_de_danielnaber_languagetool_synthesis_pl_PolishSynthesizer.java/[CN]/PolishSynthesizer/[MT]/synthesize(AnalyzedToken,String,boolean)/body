@@ -9,7 +9,7 @@
     if (synthesizer == null) {
       synthesizer=new Lametyzator(this.getClass().getResourceAsStream(RESOURCE_FILENAME),"iso8859-2",'+');
     }
-    ArrayList<String> results=new ArrayList<String>();
+    final ArrayList<String> results=new ArrayList<String>();
     boolean isNegated=false;
     if (token.getPOSTag() != null) {
       isNegated=posTag.indexOf(NEGATION_TAG) > 0 || token.getPOSTag().indexOf(NEGATION_TAG) > 0 && !(posTag.indexOf(COMP_TAG) > 0) && !(posTag.indexOf(SUP_TAG) > 0);
@@ -18,14 +18,14 @@
       posTag=posTag.replaceAll(NEGATION_TAG,POTENTIAL_NEGATION_TAG + "?");
     }
     final Pattern p=Pattern.compile(posTag.replace('+','|'));
-    for (    String tag : possibleTags) {
+    for (    final String tag : possibleTags) {
       final Matcher m=p.matcher(tag);
       if (m.matches()) {
         String[] wordForms=null;
         if (isNegated) {
           wordForms=synthesizer.stem(token.getLemma() + "|" + tag.replaceAll(NEGATION_TAG,POTENTIAL_NEGATION_TAG));
           if (wordForms != null) {
-            String[] negForms=wordForms;
+            final String[] negForms=wordForms;
             for (int i=0; i < wordForms.length; i++) {
               negForms[i]="nie" + wordForms[i];
             }
@@ -40,7 +40,7 @@
         }
       }
     }
-    return (String[])results.toArray(new String[results.size()]);
+    return results.toArray(new String[results.size()]);
   }
  else {
     return synthesize(token,posTag);

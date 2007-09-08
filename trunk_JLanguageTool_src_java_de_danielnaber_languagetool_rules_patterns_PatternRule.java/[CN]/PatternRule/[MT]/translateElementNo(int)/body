@@ -1,5 +1,5 @@
 {
-  if (!useList | i < 0) {
+  if (!useList || i < 0) {
     return i;
   }
   int j=0;

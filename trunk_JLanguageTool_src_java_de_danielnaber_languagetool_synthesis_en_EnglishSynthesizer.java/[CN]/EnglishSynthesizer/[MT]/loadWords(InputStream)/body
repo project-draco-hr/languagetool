@@ -1,5 +1,5 @@
 {
-  ArrayList<String> set=new ArrayList<String>();
+  final ArrayList<String> set=new ArrayList<String>();
   InputStreamReader isr=null;
   BufferedReader br=null;
   try {
@@ -18,8 +18,12 @@
     }
   }
   finally {
-    if (br != null)     br.close();
-    if (isr != null)     isr.close();
+    if (br != null) {
+      br.close();
+    }
+    if (isr != null) {
+      isr.close();
+    }
   }
   return set;
 }
