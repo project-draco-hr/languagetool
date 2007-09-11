@@ -4,7 +4,7 @@
   assertEquals("[Aaru]",Arrays.toString(synth.synthesize(dummyToken("Aar"),"subst:sg:gen:m3")));
   assertEquals("[Abchazem]",Arrays.toString(synth.synthesize(dummyToken("Abchaz"),"subst:sg:inst:m3")));
   assertEquals("[niedu??y]",Arrays.toString(synth.synthesize(dummyToken("du??y"),"adj:sg:nom.voc:m1.m2:pos:neg")));
-  assertEquals("[mia??a]",Arrays.toString(synth.synthesize(dummyToken("mie??"),"verb:praet:sg:ter:f:?perf")));
+  assertEquals("[mia??a]",Arrays.toString(synth.synthesize(dummyToken("mie??"),"verb:praet:sg:ter:f:perf")));
   assertEquals("[brzydziej]",Arrays.toString(synth.synthesize(dummyToken("brzydko"),"adv:comp")));
   assertEquals("[tonera]",Arrays.toString(synth.synthesize(dummyToken("toner"),".*sg:gen.*",true)));
   assertEquals("[niedu??ego, niedu??emu, niedu??ym, niedu??y, niedu??y]",Arrays.toString(synth.synthesize(dummyToken("du??y"),"adj:sg.*(m[0-9]?|m.n):pos:neg",true)));
