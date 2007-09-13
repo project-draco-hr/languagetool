@@ -5,75 +5,58 @@
     if (pRegexMatch != null) {
       token=pRegexMatch.matcher(token).replaceAll(regexReplace);
     }
-switch (caseConversionType) {
-case NONE:
-      break;
-case STARTLOWER:
-    token=token.substring(0,1).toLowerCase() + formattedToken.getToken().substring(1);
-  break;
-case STARTUPPER:
-token=token.substring(0,1).toUpperCase() + formattedToken.getToken().substring(1);
-break;
-case ALLUPPER:
-token=token.toUpperCase();
-break;
-case ALLLOWER:
-token=token.toLowerCase();
-break;
-default :
-break;
-}
-if (posTag != null) {
-final int numRead=formattedToken.getReadingsLength();
-if (postagRegexp) {
-String targetPosTag=posTag;
-for (int i=0; i < numRead; i++) {
-final String tst=formattedToken.getAnalyzedToken(i).getPOSTag();
-if (tst != null) {
-if (pPosRegexMatch.matcher(tst).matches()) {
-targetPosTag=formattedToken.getAnalyzedToken(i).getPOSTag();
-if (pPosRegexMatch != null & posTagReplace != null) {
-targetPosTag=pPosRegexMatch.matcher(targetPosTag).replaceAll(posTagReplace);
-}
-l.add(new AnalyzedToken(token,targetPosTag,formattedToken.getAnalyzedToken(i).getLemma(),formattedToken.getStartPos()));
-}
-}
-}
-if (l.isEmpty()) {
-String lemma="";
-for (int j=0; j < numRead; j++) {
-if (formattedToken.getAnalyzedToken(j).getPOSTag() != null) {
-if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag) && (formattedToken.getAnalyzedToken(j).getLemma() != null)) {
-lemma=formattedToken.getAnalyzedToken(j).getLemma();
-}
-if ("".equals(lemma)) {
-lemma=formattedToken.getAnalyzedToken(0).getLemma();
-}
-l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
-}
-}
-}
-}
+    token=convertCase(token);
+    if (posTag != null) {
+      final int numRead=formattedToken.getReadingsLength();
+      if (postagRegexp) {
+        String targetPosTag=posTag;
+        for (int i=0; i < numRead; i++) {
+          final String tst=formattedToken.getAnalyzedToken(i).getPOSTag();
+          if (tst != null) {
+            if (pPosRegexMatch.matcher(tst).matches()) {
+              targetPosTag=formattedToken.getAnalyzedToken(i).getPOSTag();
+              if (pPosRegexMatch != null & posTagReplace != null) {
+                targetPosTag=pPosRegexMatch.matcher(targetPosTag).replaceAll(posTagReplace);
+              }
+              l.add(new AnalyzedToken(token,targetPosTag,formattedToken.getAnalyzedToken(i).getLemma(),formattedToken.getStartPos()));
+            }
+          }
+        }
+        if (l.isEmpty()) {
+          String lemma="";
+          for (int j=0; j < numRead; j++) {
+            if (formattedToken.getAnalyzedToken(j).getPOSTag() != null) {
+              if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag) && (formattedToken.getAnalyzedToken(j).getLemma() != null)) {
+                lemma=formattedToken.getAnalyzedToken(j).getLemma();
+              }
+              if ("".equals(lemma)) {
+                lemma=formattedToken.getAnalyzedToken(0).getLemma();
+              }
+              l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
+            }
+          }
+        }
+      }
  else {
-String lemma="";
-for (int j=0; j < numRead; j++) {
-if (formattedToken.getAnalyzedToken(j).getPOSTag() != null) {
-if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag) && (formattedToken.getAnalyzedToken(j).getLemma() != null)) {
-lemma=formattedToken.getAnalyzedToken(j).getLemma();
-}
-if ("".equals(lemma)) {
-lemma=formattedToken.getAnalyzedToken(0).getLemma();
-}
-l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
-}
-}
-}
-}
-}
-if (l.isEmpty()) {
-return formattedToken;
-}
+        String lemma="";
+        for (int j=0; j < numRead; j++) {
+          if (formattedToken.getAnalyzedToken(j).getPOSTag() != null) {
+            if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag) && (formattedToken.getAnalyzedToken(j).getLemma() != null)) {
+              lemma=formattedToken.getAnalyzedToken(j).getLemma();
+            }
+            if ("".equals(lemma)) {
+              lemma=formattedToken.getAnalyzedToken(0).getLemma();
+            }
+            l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
+          }
+        }
+      }
+    }
+  }
+  if (l.isEmpty()) {
+    return formattedToken;
+  }
  else {
-return new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]));
-}
+    return new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]));
+  }
 }
