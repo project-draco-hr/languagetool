@@ -3,7 +3,7 @@
   this.caseSensitive=caseSensitive;
   this.stringRegExp=regExp;
   this.inflected=inflected;
-  if (!stringToken.equals("") && stringRegExp) {
+  if (!"".equals(stringToken) && stringRegExp) {
     regToken=stringToken;
     if (!caseSensitive) {
       regToken=CASE_INSENSITIVE + stringToken;

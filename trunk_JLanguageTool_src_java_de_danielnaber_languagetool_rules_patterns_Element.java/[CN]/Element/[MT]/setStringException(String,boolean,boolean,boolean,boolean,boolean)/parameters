@@ -2,4 +2,5 @@ String token
 boolean regExp
 boolean inflected
 boolean negation
-boolean scope
+boolean scopeNext
+boolean scopePrevious

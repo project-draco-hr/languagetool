@@ -1,6 +1,6 @@
 {
   this.stringToken=token;
-  if (!stringToken.equals("") && stringRegExp) {
+  if (!"".equals(stringToken) && stringRegExp) {
     regToken=stringToken;
     if (!caseSensitive) {
       regToken=CASE_INSENSITIVE + stringToken;

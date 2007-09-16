@@ -4,7 +4,7 @@
     testString=false;
   }
  else {
-    if (stringToken.equals("")) {
+    if (("").equals(stringToken)) {
       testString=false;
     }
   }

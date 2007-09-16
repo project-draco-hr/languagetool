@@ -1,0 +1,14 @@
+{
+  boolean exceptionMatched=false;
+  if (exceptionValidPrevious) {
+    for (    final Element testException : previousExceptionList) {
+      if (!testException.exceptionValidNext) {
+        exceptionMatched|=testException.match(token);
+      }
+      if (exceptionMatched) {
+        break;
+      }
+    }
+  }
+  return exceptionMatched;
+}

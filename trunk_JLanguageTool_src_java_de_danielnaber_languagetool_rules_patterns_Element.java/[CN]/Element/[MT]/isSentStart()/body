@@ -1,7 +1,7 @@
 {
   boolean equals=false;
   if (posToken != null) {
-    equals=posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME) && posNegation;
+    equals=JLanguageTool.SENTENCE_START_TAGNAME.equals(posToken) && posNegation;
   }
   return equals;
 }

@@ -16,10 +16,10 @@
     }
     tokenElement.setNegation(tokenNegated);
     if (!exceptions.toString().equals("")) {
-      tokenElement.setStringException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext);
+      tokenElement.setStringException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev);
     }
     if (exceptionPosToken != null) {
-      tokenElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext);
+      tokenElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext,exceptionValidPrev);
       exceptionPosToken=null;
     }
   }

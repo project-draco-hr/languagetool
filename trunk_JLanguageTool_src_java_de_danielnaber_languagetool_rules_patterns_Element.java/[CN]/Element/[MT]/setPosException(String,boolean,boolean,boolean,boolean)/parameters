@@ -1,4 +1,5 @@
 String posToken
 boolean regExp
 boolean negation
-boolean scope
+boolean scopeNext
+boolean scopePrevious

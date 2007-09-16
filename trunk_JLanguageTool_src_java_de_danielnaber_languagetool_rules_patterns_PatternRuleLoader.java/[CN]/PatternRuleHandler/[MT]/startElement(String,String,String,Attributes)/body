@@ -83,6 +83,7 @@
     }
     if (attrs.getValue("scope") != null) {
       exceptionValidNext=attrs.getValue("scope").equals("next");
+      exceptionValidPrev=attrs.getValue("scope").equals("previous");
     }
     if (attrs.getValue(INFLECTED) != null) {
       exceptionStringInflected=YES.equals(attrs.getValue(INFLECTED));

@@ -32,11 +32,11 @@
       exceptionSet=true;
     }
     tokenElement.setNegation(tokenNegated);
-    if (!exceptions.toString().equals("")) {
-      tokenElement.setStringException(StringTools.trimWhitespace(exceptions.toString()),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext);
+    if (!"".equals(exceptions.toString())) {
+      tokenElement.setStringException(StringTools.trimWhitespace(exceptions.toString()),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev);
     }
     if (exceptionPosToken != null) {
-      tokenElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext);
+      tokenElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext,exceptionValidPrev);
       exceptionPosToken=null;
     }
   }

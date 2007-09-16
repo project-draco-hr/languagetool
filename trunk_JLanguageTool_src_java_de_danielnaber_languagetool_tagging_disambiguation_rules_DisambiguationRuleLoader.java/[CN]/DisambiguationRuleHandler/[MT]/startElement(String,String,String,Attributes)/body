@@ -12,7 +12,9 @@
   }
  else   if (qName.equals("pattern")) {
     inPattern=true;
-    if (attrs.getValue("mark") != null)     positionCorrection=Integer.parseInt(attrs.getValue("mark"));
+    if (attrs.getValue("mark") != null) {
+      positionCorrection=Integer.parseInt(attrs.getValue("mark"));
+    }
   }
  else   if (qName.equals("exception")) {
     inException=true;
@@ -22,6 +24,7 @@
     }
     if (attrs.getValue("scope") != null) {
       exceptionValidNext=attrs.getValue("scope").equals("next");
+      exceptionValidPrev=attrs.getValue("scope").equals("previous");
     }
     if (attrs.getValue("inflected") != null) {
       exceptionStringInflected=attrs.getValue("inflected").equals("yes");
