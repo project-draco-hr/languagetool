@@ -4,7 +4,8 @@
   List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
-    morfologik=new Lametyzator(this.getClass().getResourceAsStream(DICT_FILENAME),"iso8859-1",'+');
+    setFileName();
+    morfologik=new Lametyzator();
   }
   if (manualTagger == null) {
     manualTagger=new ManualTagger(this.getClass().getResourceAsStream(USER_DICT_FILENAME));

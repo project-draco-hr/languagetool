@@ -7,7 +7,8 @@
       possibleTags=loadWords(this.getClass().getResourceAsStream(TAGS_FILE_NAME));
     }
     if (synthesizer == null) {
-      synthesizer=new Lametyzator(this.getClass().getResourceAsStream(RESOURCE_FILENAME),"iso8859-2",'+');
+      setFileName();
+      synthesizer=new Lametyzator();
     }
     final ArrayList<String> results=new ArrayList<String>();
     boolean isNegated=false;

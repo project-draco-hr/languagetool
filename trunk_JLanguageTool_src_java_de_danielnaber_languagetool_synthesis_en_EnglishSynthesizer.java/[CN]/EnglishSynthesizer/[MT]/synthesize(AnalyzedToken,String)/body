@@ -9,7 +9,8 @@
   }
  else {
     if (synthesizer == null) {
-      synthesizer=new Lametyzator(this.getClass().getResourceAsStream(RESOURCE_FILENAME),"iso8859-1",'+');
+      setFileName();
+      synthesizer=new Lametyzator();
     }
     String[] wordForms=null;
     wordForms=synthesizer.stem(token.getLemma() + "|" + posTag);

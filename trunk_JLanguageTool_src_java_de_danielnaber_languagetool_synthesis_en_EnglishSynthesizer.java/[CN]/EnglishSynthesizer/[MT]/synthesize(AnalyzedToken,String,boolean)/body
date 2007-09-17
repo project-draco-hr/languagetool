@@ -4,7 +4,8 @@
       possibleTags=loadWords(this.getClass().getResourceAsStream(TAGS_FILE_NAME));
     }
     if (synthesizer == null) {
-      synthesizer=new Lametyzator(this.getClass().getResourceAsStream(RESOURCE_FILENAME),"iso8859-1",'+');
+      setFileName();
+      synthesizer=new Lametyzator();
     }
     final Pattern p=Pattern.compile(posTag);
     final ArrayList<String> results=new ArrayList<String>();

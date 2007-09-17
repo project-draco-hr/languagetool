@@ -3,7 +3,8 @@
   List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
-    morfologik=new Lametyzator(this.getClass().getResourceAsStream(RESOURCE_FILENAME),"iso8859-2",'+',true,true);
+    setFileName();
+    morfologik=new Lametyzator();
   }
   for (  String word : sentenceTokens) {
     List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
