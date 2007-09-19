@@ -5,7 +5,7 @@
     for (int k=0; k < output.length; k++) {
       sb.append(output[k]);
       if (k < output.length - 1) {
-        sb.append(" ");
+        sb.append(StringTools.addSpace(output[k + 1],language[0]));
       }
     }
     outputList.add(sb.toString());

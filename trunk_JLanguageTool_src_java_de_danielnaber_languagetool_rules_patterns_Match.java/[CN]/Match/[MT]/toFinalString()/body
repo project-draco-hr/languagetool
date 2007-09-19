@@ -12,13 +12,36 @@
       }
  else       if (postagRegexp) {
         final int readingCount=formattedToken.getReadingsLength();
-        final String targetPosTag=getTargetPosTag();
         final TreeSet<String> wordForms=new TreeSet<String>();
-        for (int i=0; i < readingCount; i++) {
-          final String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i),targetPosTag,true);
-          if (possibleWordForms != null) {
-            for (            final String form : possibleWordForms) {
-              wordForms.add(form);
+        boolean oneForm=false;
+        for (int k=0; k < readingCount; k++) {
+          if (formattedToken.getAnalyzedToken(k).getLemma() == null) {
+            final String posUnique=formattedToken.getAnalyzedToken(k).getPOSTag();
+            if (posUnique == null) {
+              wordForms.add(formattedToken.getToken());
+              oneForm=true;
+            }
+ else {
+              if (JLanguageTool.SENTENCE_START_TAGNAME.equals(posUnique) || JLanguageTool.SENTENCE_END_TAGNAME.equals(posUnique) || JLanguageTool.PARAGRAPH_END_TAGNAME.equals(posUnique)) {
+                if (!oneForm) {
+                  wordForms.add(formattedToken.getToken());
+                }
+                oneForm=true;
+              }
+ else {
+                oneForm=false;
+              }
+            }
+          }
+        }
+        final String targetPosTag=getTargetPosTag();
+        if (!oneForm) {
+          for (int i=0; i < readingCount; i++) {
+            final String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i),targetPosTag,true);
+            if (possibleWordForms != null) {
+              for (              final String form : possibleWordForms) {
+                wordForms.add(form);
+              }
             }
           }
         }
