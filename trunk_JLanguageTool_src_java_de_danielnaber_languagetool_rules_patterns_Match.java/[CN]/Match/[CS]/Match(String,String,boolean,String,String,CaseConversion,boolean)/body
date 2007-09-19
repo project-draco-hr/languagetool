@@ -10,4 +10,5 @@
   }
   this.regexReplace=regexReplace;
   this.posTagReplace=posTagReplace;
+  setPos=setPOS;
 }

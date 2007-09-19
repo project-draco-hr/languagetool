@@ -4,3 +4,4 @@ boolean postagRegexp
 String regexMatch
 String regexReplace
 CaseConversion caseConversionType
+boolean setPOS
