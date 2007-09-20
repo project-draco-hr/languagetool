@@ -2,7 +2,10 @@
   if ("".equals(referenceString)) {
     referenceString=stringToken;
   }
-  stringToken=referenceString.replaceAll("\\\\" + tokenReference.getTokenRef(),tokenReference.toTokenString());
+  final boolean setsPos=tokenReference.setsPos();
+  if (!setsPos) {
+    stringToken=referenceString.replaceAll("\\\\" + tokenReference.getTokenRef(),tokenReference.toTokenString());
+  }
   if (!"".equals(stringToken) && stringRegExp) {
     regToken=stringToken;
     if (!caseSensitive) {
@@ -10,10 +13,15 @@
     }
     p=Pattern.compile(regToken);
   }
-  if (tokenReference.setsPos()) {
+  if (setsPos) {
     final String posReference=tokenReference.getTargetPosTag();
     if (posReference != null) {
-      setPosElement(tokenReference.getTargetPosTag(),posRegExp,negation);
+      if (mPos != null) {
+        mPos=null;
+      }
+      setPosElement(posReference,tokenReference.posRegExp(),negation);
     }
+    stringToken=referenceString.replaceAll("\\\\" + tokenReference.getTokenRef(),"");
+    inflected=true;
   }
 }

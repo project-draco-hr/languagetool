@@ -1,0 +1,25 @@
+{
+  if (posTag.contains(".")) {
+    final String[] tags=posTag.split(":");
+    int pos=-1;
+    for (int i=0; i < tags.length; i++) {
+      if (tags[i].contains(".") && tags[i].matches(pattern)) {
+        tags[i]=".*[\\.:]" + tags[i].replace(".","[\\.:].*|[\\.:].*") + "[\\.:].*";
+        pos=i;
+      }
+    }
+    if (pos == -1) {
+      return posTag;
+    }
+ else {
+      String s=tags[0];
+      for (int i=1; i < tags.length; i++) {
+        s=s + ":" + tags[i];
+      }
+      return s;
+    }
+  }
+ else {
+    return posTag;
+  }
+}
