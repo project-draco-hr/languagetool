@@ -5,13 +5,6 @@
   posRegExp=false;
   inToken=false;
   stringRegExp=false;
-  exceptionStringNegation=false;
-  exceptionStringInflected=false;
-  exceptionPosNegation=false;
-  exceptionPosRegExp=false;
-  exceptionStringRegExp=false;
-  exceptionValidNext=false;
-  exceptionValidPrev=false;
   exceptionSet=false;
   tokenReference=null;
 }
