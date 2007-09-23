@@ -1,0 +1,9 @@
+{
+  exceptionStringNegation=false;
+  exceptionStringInflected=false;
+  exceptionPosNegation=false;
+  exceptionPosRegExp=false;
+  exceptionStringRegExp=false;
+  exceptionValidNext=false;
+  exceptionValidPrev=false;
+}
