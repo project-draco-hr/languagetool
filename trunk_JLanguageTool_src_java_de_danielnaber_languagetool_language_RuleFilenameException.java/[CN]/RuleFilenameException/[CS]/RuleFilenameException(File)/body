@@ -1,0 +1,3 @@
+{
+  super("Rule file must be named rules-<xx>-<lang>.xml (<xx> = language code, " + "<lang> = language name), current name: " + file.getName());
+}

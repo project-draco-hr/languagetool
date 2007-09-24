@@ -1,6 +1,11 @@
 {
   LanguageManagerDialog lmd=new LanguageManagerDialog(frame,Language.getExternalLanguages());
   lmd.show();
-  Language.reInit(lmd.getLanguages());
+  try {
+    Language.reInit(lmd.getLanguages());
+  }
+ catch (  RuleFilenameException e) {
+    Tools.showErrorMessage(e);
+  }
   populateLanguageBox();
 }
