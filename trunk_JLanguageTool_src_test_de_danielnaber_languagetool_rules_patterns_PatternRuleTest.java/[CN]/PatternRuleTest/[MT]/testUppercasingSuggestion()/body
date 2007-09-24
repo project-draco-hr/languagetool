@@ -1,10 +1,10 @@
 {
-  JLanguageTool langTool=new JLanguageTool(Language.ENGLISH);
+  final JLanguageTool langTool=new JLanguageTool(Language.ENGLISH);
   langTool.activateDefaultPatternRules();
-  List<RuleMatch> matches=langTool.check("Were are in the process of ...");
+  final List<RuleMatch> matches=langTool.check("Were are in the process of ...");
   assertEquals(1,matches.size());
-  RuleMatch match=matches.get(0);
-  List<String> sugg=match.getSuggestedReplacements();
+  final RuleMatch match=matches.get(0);
+  final List<String> sugg=match.getSuggestedReplacements();
   assertEquals(2,sugg.size());
   assertEquals("Where",sugg.get(0));
   assertEquals("We",sugg.get(1));

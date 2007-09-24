@@ -1,8 +1,8 @@
 {
-  PatternRuleTest prt=new PatternRuleTest();
+  final PatternRuleTest prt=new PatternRuleTest();
   System.out.println("Running XML pattern tests...");
   prt.setUp();
-  Set<Language> ignoredLanguages=new HashSet<Language>();
+  final Set<Language> ignoredLanguages=new HashSet<Language>();
   ignoredLanguages.add(Language.CZECH);
   prt.testGrammarRulesFromXML(ignoredLanguages,true);
   System.out.println("Tests successful.");

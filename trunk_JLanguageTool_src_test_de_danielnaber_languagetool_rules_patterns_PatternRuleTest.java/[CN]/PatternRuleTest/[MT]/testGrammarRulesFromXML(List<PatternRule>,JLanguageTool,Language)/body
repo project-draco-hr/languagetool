@@ -1,32 +1,31 @@
 {
   int noSuggestionCount=0;
-  HashMap<String,PatternRule> complexRules=new HashMap<String,PatternRule>();
-  for (Iterator iter=rules.iterator(); iter.hasNext(); ) {
-    PatternRule rule=(PatternRule)iter.next();
-    List<String> goodSentences=rule.getCorrectExamples();
+  final HashMap<String,PatternRule> complexRules=new HashMap<String,PatternRule>();
+  for (  final PatternRule rule : rules) {
+    final List<String> goodSentences=rule.getCorrectExamples();
     for (    String goodSentence : goodSentences) {
       goodSentence=goodSentence.replaceAll("[\\n\\t]+","");
       goodSentence=cleanXML(goodSentence);
       assertTrue(goodSentence.trim().length() > 0);
       assertFalse(lang + ": Did not expect error in: " + goodSentence+ " (Rule: "+ rule+ ")",match(rule,goodSentence,languageTool));
     }
-    List<String> badSentences=rule.getIncorrectExamples();
+    final List<String> badSentences=rule.getIncorrectExamples();
     for (    String origBadSentence : badSentences) {
       origBadSentence=origBadSentence.replaceAll("[\\n\\t]+","");
       List<String> suggestedCorrection=new ArrayList<String>();
       if (origBadSentence.indexOf("<correction>") > -1) {
-        int corStart=origBadSentence.indexOf("<correction>");
-        int corEnd=origBadSentence.indexOf("</correction>");
-        String sugCorrection=origBadSentence.substring(corStart + "<correction>".length(),corEnd);
+        final int corStart=origBadSentence.indexOf("<correction>");
+        final int corEnd=origBadSentence.indexOf("</correction>");
+        final String sugCorrection=origBadSentence.substring(corStart + "<correction>".length(),corEnd);
         suggestedCorrection=java.util.Arrays.asList(sugCorrection.split("\\|"));
         origBadSentence=origBadSentence.substring(corEnd + "</correction>".length());
       }
-      int expectedMatchStart=origBadSentence.indexOf("<marker>");
-      int expectedMatchEnd=origBadSentence.indexOf("</marker>") - "<marker>".length();
+      final int expectedMatchStart=origBadSentence.indexOf("<marker>");
+      final int expectedMatchEnd=origBadSentence.indexOf("</marker>") - "<marker>".length();
       if (expectedMatchStart == -1 || expectedMatchEnd == -1) {
         fail(lang + ": No error position markup ('<marker>...</marker>') in bad example in rule " + rule);
       }
-      String badSentence=cleanXML(origBadSentence);
+      final String badSentence=cleanXML(origBadSentence);
       assertTrue(badSentence.trim().length() > 0);
       RuleMatch[] matches=getMatches(rule,badSentence,languageTool);
       if (!rule.isWithComplexPhrase()) {
@@ -37,10 +36,10 @@
           assertTrue(lang + ": Incorrect suggestions: " + suggestedCorrection.toString()+ " != "+ matches[0].getSuggestedReplacements()+ "for rule "+ rule,suggestedCorrection.equals(matches[0].getSuggestedReplacements()));
         }
         if (matches[0].getSuggestedReplacements().size() > 0) {
-          int fromPos=matches[0].getFromPos();
-          int toPos=matches[0].getToPos();
-          for (          String repl : matches[0].getSuggestedReplacements()) {
-            String fixedSentence=badSentence.substring(0,fromPos) + repl + badSentence.substring(toPos);
+          final int fromPos=matches[0].getFromPos();
+          final int toPos=matches[0].getToPos();
+          for (          final String repl : matches[0].getSuggestedReplacements()) {
+            final String fixedSentence=badSentence.substring(0,fromPos) + repl + badSentence.substring(toPos);
             matches=getMatches(rule,fixedSentence,languageTool);
             assertEquals("Corrected sentence for rule " + rule + " triggered error: "+ fixedSentence,0,matches.length);
           }
@@ -51,11 +50,11 @@
       }
  else {
         matches=getMatches(rule,badSentence,languageTool);
-        if (matches.length == 0 && !complexRules.containsKey(rule.getId())) {
-          complexRules.put(rule.getId(),rule);
+        if (matches.length == 0 && !complexRules.containsKey(rule.getId() + badSentence)) {
+          complexRules.put(rule.getId() + badSentence,rule);
         }
         if (matches.length != 0) {
-          complexRules.put(rule.getId(),null);
+          complexRules.put(rule.getId() + badSentence,null);
           assertTrue(lang + ": Did expect one error in: \"" + badSentence+ "\" (Rule: "+ rule+ "), got "+ matches.length,matches.length == 1);
           assertEquals(lang + ": Incorrect match position markup (start) for rule " + rule,expectedMatchStart,matches[0].getFromPos());
           assertEquals(lang + ": Incorrect match position markup (end) for rule " + rule,expectedMatchEnd,matches[0].getToPos());
@@ -63,10 +62,10 @@
             assertTrue(lang + ": Incorrect suggestions: " + suggestedCorrection.toString()+ " != "+ matches[0].getSuggestedReplacements()+ "for rule "+ rule,suggestedCorrection.equals(matches[0].getSuggestedReplacements()));
           }
           if (matches[0].getSuggestedReplacements().size() > 0) {
-            int fromPos=matches[0].getFromPos();
-            int toPos=matches[0].getToPos();
-            for (            String repl : matches[0].getSuggestedReplacements()) {
-              String fixedSentence=badSentence.substring(0,fromPos) + repl + badSentence.substring(toPos);
+            final int fromPos=matches[0].getFromPos();
+            final int toPos=matches[0].getToPos();
+            for (            final String repl : matches[0].getSuggestedReplacements()) {
+              final String fixedSentence=badSentence.substring(0,fromPos) + repl + badSentence.substring(toPos);
               matches=getMatches(rule,fixedSentence,languageTool);
               assertEquals("Corrected sentence for rule " + rule + " triggered error: "+ fixedSentence,0,matches.length);
             }
@@ -79,11 +78,11 @@
     }
   }
   if (!complexRules.isEmpty()) {
-    Set set=complexRules.keySet();
-    List<PatternRule> badRules=new ArrayList<PatternRule>();
-    Iterator iter=set.iterator();
+    final Set set=complexRules.keySet();
+    final List<PatternRule> badRules=new ArrayList<PatternRule>();
+    final Iterator iter=set.iterator();
     while (iter.hasNext()) {
-      PatternRule badRule=(PatternRule)complexRules.get(iter.next());
+      final PatternRule badRule=complexRules.get(iter.next());
       if (badRule != null) {
         badRule.notComplexPhrase();
         badRules.add(badRule);
