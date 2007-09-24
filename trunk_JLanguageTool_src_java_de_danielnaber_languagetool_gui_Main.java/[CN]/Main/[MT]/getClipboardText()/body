@@ -4,11 +4,16 @@
     clipboard=Toolkit.getDefaultToolkit().getSystemClipboard();
   }
   String s=null;
-  Transferable data=clipboard.getContents(this);
+  final Transferable data=clipboard.getContents(this);
   try {
-    DataFlavor df=DataFlavor.getTextPlainUnicodeFlavor();
-    Reader sr=df.getReaderForText(data);
-    s=StringTools.readerToString(sr);
+    if (data != null && data.isDataFlavorSupported(DataFlavor.getTextPlainUnicodeFlavor())) {
+      final DataFlavor df=DataFlavor.getTextPlainUnicodeFlavor();
+      final Reader sr=df.getReaderForText(data);
+      s=StringTools.readerToString(sr);
+    }
+ else {
+      s="";
+    }
   }
  catch (  Exception ex) {
     ex.printStackTrace();
