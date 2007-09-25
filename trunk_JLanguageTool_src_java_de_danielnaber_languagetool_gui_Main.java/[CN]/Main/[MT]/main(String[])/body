@@ -29,12 +29,6 @@ catch (          Exception e) {
       javax.swing.SwingUtilities.invokeLater(new Runnable(){
         public void run(){
           try {
-            UIManager.setLookAndFeel(new WindowsLookAndFeel());
-          }
- catch (          Exception ex) {
-            System.out.println("Unable to load native look and feel");
-          }
-          try {
             prg.createGUI();
             prg.showGUI();
           }
