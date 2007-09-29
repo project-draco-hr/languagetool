@@ -1,5 +1,7 @@
 {
-  if (!baseDir.isDirectory())   throw new IllegalArgumentException("Not a directory: " + baseDir);
+  if (!baseDir.isDirectory()) {
+    throw new IllegalArgumentException("Not a directory: " + baseDir);
+  }
   configFile=new File(baseDir,filename);
   loadConfiguration();
 }

@@ -1,18 +1,22 @@
 {
-  Properties props=new Properties();
+  final Properties props=new Properties();
   if (disabledRuleIds == null) {
     props.setProperty(DISABLED_RULES_CONFIG_KEY,"");
   }
  else {
-    StringBuilder sb=new StringBuilder();
-    for (Iterator<String> iter=disabledRuleIds.iterator(); iter.hasNext(); ) {
-      String id=iter.next();
+    final StringBuilder sb=new StringBuilder();
+    for (final Iterator<String> iter=disabledRuleIds.iterator(); iter.hasNext(); ) {
+      final String id=iter.next();
       sb.append(id);
-      if (iter.hasNext())       sb.append(",");
+      if (iter.hasNext()) {
+        sb.append(",");
+      }
     }
     props.setProperty(DISABLED_RULES_CONFIG_KEY,sb.toString());
   }
-  if (motherTongue != null)   props.setProperty(MOTHER_TONGUE_CONFIG_KEY,motherTongue.getShortName());
+  if (motherTongue != null) {
+    props.setProperty(MOTHER_TONGUE_CONFIG_KEY,motherTongue.getShortName());
+  }
   props.setProperty(SERVER_RUN_CONFIG_KEY,Boolean.valueOf(runServer).toString());
   props.setProperty(SERVER_PORT_CONFIG_KEY,Integer.valueOf(serverPort).toString());
   FileOutputStream fos=null;

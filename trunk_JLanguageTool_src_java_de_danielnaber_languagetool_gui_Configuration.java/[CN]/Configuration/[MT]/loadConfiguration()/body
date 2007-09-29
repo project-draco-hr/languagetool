@@ -2,29 +2,29 @@
   FileInputStream fis=null;
   try {
     fis=new FileInputStream(configFile);
-    Properties props=new Properties();
+    final Properties props=new Properties();
     props.load(fis);
-    String val=(String)props.get(DISABLED_RULES_CONFIG_KEY);
+    final String val=(String)props.get(DISABLED_RULES_CONFIG_KEY);
     if (val != null) {
-      String[] ids=val.split(",");
-      for (      String id : ids) {
+      final String[] ids=val.split(",");
+      for (      final String id : ids) {
         disabledRuleIds.add(id);
       }
     }
-    String motherTongueStr=(String)props.get(MOTHER_TONGUE_CONFIG_KEY);
+    final String motherTongueStr=(String)props.get(MOTHER_TONGUE_CONFIG_KEY);
     if (motherTongueStr != null) {
       motherTongue=Language.getLanguageForShortName(motherTongueStr);
     }
-    String runServerString=(String)props.get(SERVER_RUN_CONFIG_KEY);
+    final String runServerString=(String)props.get(SERVER_RUN_CONFIG_KEY);
     if (runServerString != null) {
       runServer=runServerString.equals("true");
     }
-    String serverPortString=(String)props.get(SERVER_PORT_CONFIG_KEY);
+    final String serverPortString=(String)props.get(SERVER_PORT_CONFIG_KEY);
     if (serverPortString != null) {
       serverPort=Integer.parseInt(serverPortString);
     }
   }
- catch (  FileNotFoundException e) {
+ catch (  final FileNotFoundException e) {
   }
  finally {
     if (fis != null) {
