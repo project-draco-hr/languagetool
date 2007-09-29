@@ -2,7 +2,7 @@
   try {
     return ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle");
   }
- catch (  MissingResourceException e) {
+ catch (  final MissingResourceException e) {
     return ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",Locale.ENGLISH);
   }
 }

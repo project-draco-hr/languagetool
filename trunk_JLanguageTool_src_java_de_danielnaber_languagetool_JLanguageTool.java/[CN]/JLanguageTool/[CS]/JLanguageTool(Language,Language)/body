@@ -5,9 +5,11 @@
   this.language=language;
   this.motherTongue=motherTongue;
   messages=getMessageBundle(language);
-  Rule[] allBuiltinRules=getAllBuiltinRules(language,messages);
-  for (int i=0; i < allBuiltinRules.length; i++) {
-    if (allBuiltinRules[i].supportsLanguage(language))     builtinRules.add(allBuiltinRules[i]);
+  final Rule[] allBuiltinRules=getAllBuiltinRules(language,messages);
+  for (  final Rule element : allBuiltinRules) {
+    if (element.supportsLanguage(language)) {
+      builtinRules.add(element);
+    }
   }
   disambiguator=language.getDisambiguator();
   tagger=language.getTagger();

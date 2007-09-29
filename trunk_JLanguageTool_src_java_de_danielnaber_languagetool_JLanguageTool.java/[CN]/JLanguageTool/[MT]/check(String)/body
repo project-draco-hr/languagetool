@@ -1,36 +1,36 @@
 {
   sentenceCount=0;
-  List<String> sentences=sentenceTokenizer.tokenize(text);
-  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  List<Rule> allRules=getAllRules();
+  final List<String> sentences=sentenceTokenizer.tokenize(text);
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final List<Rule> allRules=getAllRules();
   printIfVerbose(allRules.size() + " rules activated for language " + language);
   int tokenCount=0;
   int lineCount=0;
   int columnCount=0;
   unknownWords=new HashSet<String>();
-  for (Iterator<String> iter=sentences.iterator(); iter.hasNext(); ) {
-    String sentence=iter.next();
+  for (  final String sentence : sentences) {
     sentenceCount++;
     AnalyzedSentence analyzedText=getAnalyzedSentence(sentence);
     rememberUnknownWords(analyzedText);
     if (sentenceCount == sentences.size()) {
-      AnalyzedTokenReadings[] anTokens=analyzedText.getTokens();
-      AnalyzedToken paragraphEnd=new AnalyzedToken(anTokens[anTokens.length - 1].getToken(),PARAGRAPH_END_TAGNAME,anTokens[anTokens.length - 1].getAnalyzedToken(0).getLemma(),anTokens[anTokens.length - 1].getAnalyzedToken(0).getStartPos());
+      final AnalyzedTokenReadings[] anTokens=analyzedText.getTokens();
+      final AnalyzedToken paragraphEnd=new AnalyzedToken(anTokens[anTokens.length - 1].getToken(),PARAGRAPH_END_TAGNAME,anTokens[anTokens.length - 1].getAnalyzedToken(0).getLemma(),anTokens[anTokens.length - 1].getAnalyzedToken(0).getStartPos());
       anTokens[anTokens.length - 1].addReading(paragraphEnd);
       analyzedText=new AnalyzedSentence(anTokens);
     }
-    List<RuleMatch> sentenceMatches=new ArrayList<RuleMatch>();
+    final List<RuleMatch> sentenceMatches=new ArrayList<RuleMatch>();
     printIfVerbose(analyzedText.toString());
-    for (Iterator<Rule> iterator=allRules.iterator(); iterator.hasNext(); ) {
-      Rule rule=iterator.next();
-      if (disabledRules.contains(rule.getId()))       continue;
-      RuleMatch[] thisMatches=rule.match(analyzedText);
-      for (int i=0; i < thisMatches.length; i++) {
-        final RuleMatch thisMatch=new RuleMatch(thisMatches[i].getRule(),thisMatches[i].getFromPos() + tokenCount,thisMatches[i].getToPos() + tokenCount,thisMatches[i].getMessage());
-        thisMatch.setSuggestedReplacements(thisMatches[i].getSuggestedReplacements());
-        String sentencePartToError=sentence.substring(0,thisMatches[i].getFromPos());
-        String sentencePartToEndOfError=sentence.substring(0,thisMatches[i].getToPos());
-        int lastLineBreakPos=sentencePartToError.lastIndexOf('\n');
+    for (    final Rule rule : allRules) {
+      if (disabledRules.contains(rule.getId())) {
+        continue;
+      }
+      final RuleMatch[] thisMatches=rule.match(analyzedText);
+      for (      final RuleMatch element1 : thisMatches) {
+        final RuleMatch thisMatch=new RuleMatch(element1.getRule(),element1.getFromPos() + tokenCount,element1.getToPos() + tokenCount,element1.getMessage());
+        thisMatch.setSuggestedReplacements(element1.getSuggestedReplacements());
+        final String sentencePartToError=sentence.substring(0,element1.getFromPos());
+        final String sentencePartToEndOfError=sentence.substring(0,element1.getToPos());
+        final int lastLineBreakPos=sentencePartToError.lastIndexOf('\n');
         int column=-1;
         int endColumn=-1;
         if (lastLineBreakPos == -1) {
@@ -39,20 +39,20 @@
  else {
           column=sentencePartToError.length() - lastLineBreakPos - 1;
         }
-        int lastLineBreakPosInError=sentencePartToEndOfError.lastIndexOf('\n');
+        final int lastLineBreakPosInError=sentencePartToEndOfError.lastIndexOf('\n');
         if (lastLineBreakPosInError == -1) {
           endColumn=sentencePartToEndOfError.length() + columnCount + 1;
         }
  else {
           endColumn=sentencePartToEndOfError.length() - lastLineBreakPos;
         }
-        int lineBreaksToError=countLineBreaks(sentencePartToError);
-        int lineBreaksToEndOfError=countLineBreaks(sentencePartToEndOfError);
+        final int lineBreaksToError=countLineBreaks(sentencePartToError);
+        final int lineBreaksToEndOfError=countLineBreaks(sentencePartToEndOfError);
         thisMatch.setLine(lineCount + lineBreaksToError);
         thisMatch.setEndLine(lineCount + lineBreaksToEndOfError);
         thisMatch.setColumn(column);
         thisMatch.setEndColumn(endColumn);
-        thisMatch.setOffset(thisMatches[i].getFromPos() + tokenCount);
+        thisMatch.setOffset(element1.getFromPos() + tokenCount);
         sentenceMatches.add(thisMatch);
         if (rule.isParagraphBackTrack()) {
           rule.addRuleMatch(thisMatch);
@@ -63,7 +63,7 @@
     ruleMatches.addAll(sentenceMatches);
     tokenCount+=sentence.length();
     lineCount+=countLineBreaks(sentence);
-    int linebreakPos=sentence.indexOf('\n');
+    final int linebreakPos=sentence.indexOf('\n');
     if (linebreakPos == -1) {
       columnCount+=sentence.length();
     }
@@ -71,11 +71,11 @@
       columnCount=sentence.length() - linebreakPos - 1;
     }
   }
-  for (  Rule rule : allRules) {
+  for (  final Rule rule : allRules) {
     if (rule.isParagraphBackTrack()) {
       if (rule.getMatches() != null) {
-        List<RuleMatch> rm=rule.getMatches();
-        for (        RuleMatch r : rm) {
+        final List<RuleMatch> rm=rule.getMatches();
+        for (        final RuleMatch r : rm) {
           if (rule.isInRemoved(r)) {
             ruleMatches.remove(r);
           }

@@ -1,8 +1,8 @@
 {
-  List<Rule> rules=new ArrayList<Rule>();
+  final List<Rule> rules=new ArrayList<Rule>();
   rules.addAll(builtinRules);
   rules.addAll(userRules);
-  for (  Rule rule : rules) {
+  for (  final Rule rule : rules) {
     rule.reset();
   }
   return rules;

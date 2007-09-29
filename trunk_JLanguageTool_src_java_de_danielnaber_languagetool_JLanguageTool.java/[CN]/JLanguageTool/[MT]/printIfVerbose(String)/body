@@ -1,3 +1,5 @@
 {
-  if (printStream != null)   printStream.println(s);
+  if (printStream != null) {
+    printStream.println(s);
+  }
 }

@@ -1,5 +1,5 @@
 {
-  String falseFriendRulesFilename=RULES_DIR + "/" + FALSE_FRIEND_FILE;
-  List<PatternRule> patternRules=loadFalseFriendRules(falseFriendRulesFilename);
+  final String falseFriendRulesFilename=RULES_DIR + "/" + FALSE_FRIEND_FILE;
+  final List<PatternRule> patternRules=loadFalseFriendRules(falseFriendRulesFilename);
   userRules.addAll(patternRules);
 }

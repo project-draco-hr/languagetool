@@ -1,14 +1,14 @@
 {
-  List<String> tokens=wordTokenizer.tokenize(sentence);
-  List<AnalyzedTokenReadings> aTokens=tagger.tag(tokens);
-  AnalyzedTokenReadings[] tokenArray=new AnalyzedTokenReadings[tokens.size() + 1];
-  AnalyzedToken[] startTokenArray=new AnalyzedToken[1];
+  final List<String> tokens=wordTokenizer.tokenize(sentence);
+  final List<AnalyzedTokenReadings> aTokens=tagger.tag(tokens);
+  final AnalyzedTokenReadings[] tokenArray=new AnalyzedTokenReadings[tokens.size() + 1];
+  final AnalyzedToken[] startTokenArray=new AnalyzedToken[1];
   int toArrayCount=0;
-  AnalyzedToken sentenceStartToken=new AnalyzedToken("",SENTENCE_START_TAGNAME,0);
+  final AnalyzedToken sentenceStartToken=new AnalyzedToken("",SENTENCE_START_TAGNAME,0);
   startTokenArray[0]=sentenceStartToken;
   tokenArray[toArrayCount++]=new AnalyzedTokenReadings(startTokenArray);
   int startPos=0;
-  for (  AnalyzedTokenReadings posTag : aTokens) {
+  for (  final AnalyzedTokenReadings posTag : aTokens) {
     posTag.startPos=startPos;
     tokenArray[toArrayCount++]=posTag;
     startPos+=posTag.getToken().length();
