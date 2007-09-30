@@ -1,6 +1,15 @@
 {
   if (e.getSource() == okButton) {
     int i=0;
+    inactiveCategoryNames.clear();
+    for (    JCheckBox checkBox : categoryCheckBoxes) {
+      if (!checkBox.isSelected()) {
+        final String categoryName=checkBoxesCategoryNames.get(i);
+        inactiveCategoryNames.add(categoryName);
+      }
+      i++;
+    }
+    i=0;
     inactiveRuleIds.clear();
     for (    JCheckBox checkBox : checkBoxes) {
       if (!checkBox.isSelected()) {

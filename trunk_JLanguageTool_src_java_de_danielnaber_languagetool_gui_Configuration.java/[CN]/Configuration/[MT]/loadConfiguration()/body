@@ -11,6 +11,13 @@
         disabledRuleIds.add(id);
       }
     }
+    final String cat=(String)props.get(DISABLED_CATEGORIES_CONFIG_KEY);
+    if (cat != null) {
+      final String[] names=cat.split(",");
+      for (      final String name : names) {
+        disabledCategoryNames.add(name);
+      }
+    }
     final String motherTongueStr=(String)props.get(MOTHER_TONGUE_CONFIG_KEY);
     if (motherTongueStr != null) {
       motherTongue=Language.getLanguageForShortName(motherTongueStr);

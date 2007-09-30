@@ -24,6 +24,9 @@
       if (disabledRules.contains(rule.getId())) {
         continue;
       }
+      if (disabledCategories.contains(rule.getCategory().getName())) {
+        continue;
+      }
       final RuleMatch[] thisMatches=rule.match(analyzedText);
       for (      final RuleMatch element1 : thisMatches) {
         final RuleMatch thisMatch=new RuleMatch(element1.getRule(),element1.getFromPos() + tokenCount,element1.getToPos() + tokenCount,element1.getMessage());

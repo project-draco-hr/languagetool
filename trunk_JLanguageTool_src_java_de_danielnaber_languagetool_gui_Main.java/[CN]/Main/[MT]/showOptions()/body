@@ -4,6 +4,7 @@
   ConfigurationDialog configDialog=getCurrentConfigDialog();
   configDialog.show(rules);
   config.setDisabledRuleIds(configDialog.getDisabledRuleIds());
+  config.setDisabledCategoryNames(configDialog.getDisabledCategoryNames());
   config.setMotherTongue(configDialog.getMotherTongue());
   config.setRunServer(configDialog.getRunServer());
   config.setServerPort(configDialog.getServerPort());

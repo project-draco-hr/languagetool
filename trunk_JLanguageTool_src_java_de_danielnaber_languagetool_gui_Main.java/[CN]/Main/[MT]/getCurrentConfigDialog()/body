@@ -8,6 +8,7 @@
     configDialog=new ConfigurationDialog(frame,false);
     configDialog.setMotherTongue(config.getMotherTongue());
     configDialog.setDisabledRules(config.getDisabledRuleIds());
+    configDialog.setDisabledCategories(config.getDisabledCategoryNames());
     configDialog.setRunServer(config.getRunServer());
     configDialog.setServerPort(config.getServerPort());
     configDialogs.put(language,configDialog);

@@ -8,7 +8,7 @@
  catch (    NoClassDefFoundError e) {
       throw new MissingJdicException(e);
     }
-    SystemTray tray=SystemTray.getDefaultSystemTray();
+    final SystemTray tray=SystemTray.getDefaultSystemTray();
     trayIcon.addActionListener(new TrayActionListener());
     trayIcon.setToolTip(SYSTEM_TRAY_TOOLTIP);
     tray.addTrayIcon(trayIcon);

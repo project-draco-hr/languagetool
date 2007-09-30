@@ -11,6 +11,12 @@
         langTool.disableRule(ruleId);
       }
     }
+    Set<String> disabledCategories=configDialog.getDisabledCategoryNames();
+    if (disabledCategories != null) {
+      for (      String categoryName : disabledCategories) {
+        langTool.disableCategory(categoryName);
+      }
+    }
   }
  catch (  IOException ioe) {
     throw new RuntimeException(ioe);
