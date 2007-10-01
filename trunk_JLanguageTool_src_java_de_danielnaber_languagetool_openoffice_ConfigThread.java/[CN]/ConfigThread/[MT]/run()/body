@@ -4,6 +4,7 @@
     langTool.activateDefaultPatternRules();
     cfgDialog.show(langTool.getAllRules());
     config.setDisabledRuleIds(cfgDialog.getDisabledRuleIds());
+    config.setDisabledCategoryNames(cfgDialog.getDisabledCategoryNames());
     config.setMotherTongue(cfgDialog.getMotherTongue());
     config.saveConfiguration();
   }
