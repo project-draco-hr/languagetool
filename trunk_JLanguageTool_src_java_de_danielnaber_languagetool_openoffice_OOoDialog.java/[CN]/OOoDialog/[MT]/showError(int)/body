@@ -25,7 +25,7 @@
   msg=msg.replaceAll("<suggestion>","<b>");
   msg=msg.replaceAll("</suggestion>","</b>");
   StringBuilder sb=new StringBuilder();
-  int totalMatches=getTotalRuleMatches();
+  final int totalMatches=getTotalRuleMatches();
   sb.append(messages.getString("guiMatchCount") + " " + totalMatches);
   sb.append("<br>\n<br>\n<b>" + (i + 1) + ".</b> ");
   sb.append(msg);

@@ -8,6 +8,12 @@
         langTool.disableRule(id);
       }
     }
+    Set<String> disabledCategories=config.getDisabledCategoryNames();
+    if (disabledCategories != null) {
+      for (      String categoryName : disabledCategories) {
+        langTool.disableCategory(categoryName);
+      }
+    }
     int paraCount=0;
     for (    String para : paragraphs) {
       List<RuleMatch> ruleMatches=langTool.check(para);

@@ -13,8 +13,10 @@
     ConfigurationDialog cfgDialog=new ConfigurationDialog(null,true);
     cfgDialog.setMotherTongue(configuration.getMotherTongue());
     cfgDialog.setDisabledRules(configuration.getDisabledRuleIds());
+    cfgDialog.setDisabledCategories(configuration.getDisabledCategoryNames());
     cfgDialog.show(rules);
     configuration.setDisabledRuleIds(cfgDialog.getDisabledRuleIds());
+    configuration.setDisabledCategoryNames(cfgDialog.getDisabledCategoryNames());
     configuration.setMotherTongue(cfgDialog.getMotherTongue());
   }
  else   if (event.getSource() == closeButton) {
