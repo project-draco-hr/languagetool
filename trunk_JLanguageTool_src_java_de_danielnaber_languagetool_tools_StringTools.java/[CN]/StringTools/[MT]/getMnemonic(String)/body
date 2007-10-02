@@ -1,0 +1,12 @@
+{
+  int mnemonicPos=label.indexOf('&');
+  while (mnemonicPos != -1 && mnemonicPos == label.indexOf("&&") && mnemonicPos < label.length()) {
+    mnemonicPos=label.indexOf('&',mnemonicPos + 2);
+  }
+  if (mnemonicPos == -1 || mnemonicPos == label.length()) {
+    return '\u0000';
+  }
+ else {
+    return label.charAt(mnemonicPos + 1);
+  }
+}

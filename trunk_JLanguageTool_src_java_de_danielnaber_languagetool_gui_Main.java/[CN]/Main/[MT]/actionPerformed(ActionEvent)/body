@@ -1,6 +1,6 @@
 {
   try {
-    if (e.getActionCommand().equals(messages.getString("checkText"))) {
+    if (e.getActionCommand().equals(StringTools.getLabel(messages.getString("checkText")))) {
       JLanguageTool langTool=getCurrentLanguageTool();
       checkTextAndDisplayResults(langTool,getCurrentLanguage());
     }
