@@ -11,6 +11,13 @@
         disabledRuleIds.add(id);
       }
     }
+    final String enRul=(String)props.get(ENABLED_RULES_CONFIG_KEY);
+    if (enRul != null) {
+      final String[] ids=enRul.split(",");
+      for (      final String id : ids) {
+        enabledRuleIds.add(id);
+      }
+    }
     final String cat=(String)props.get(DISABLED_CATEGORIES_CONFIG_KEY);
     if (cat != null) {
       final String[] names=cat.split(",");

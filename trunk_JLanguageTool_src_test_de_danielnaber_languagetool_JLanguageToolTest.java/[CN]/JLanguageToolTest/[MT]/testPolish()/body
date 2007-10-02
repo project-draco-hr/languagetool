@@ -1,0 +1,20 @@
+{
+  final JLanguageTool tool=new JLanguageTool(Language.POLISH);
+  List matches=tool.check("To jest ca??kowicie prawid??owe zdanie.");
+  assertEquals(0,matches.size());
+  matches=tool.check("To jest jest problem.");
+  assertEquals(1,matches.size());
+  matches=tool.check("By?? on bowiem pi??knym strzelcem bowiem.");
+  assertEquals(0,matches.size());
+  tool.enableDefaultOffRule("PL_WORD_REPEAT");
+  matches=tool.check("By?? on bowiem pi??knym strzelcem bowiem.");
+  assertEquals(1,matches.size());
+  final List<PatternRule> rules=tool.loadPatternRules("/rules/pl/grammar.xml");
+  for (  final PatternRule rule : rules) {
+    tool.addRule(rule);
+  }
+  matches=tool.check("Premier drapie si?? w ucho co i rusz.");
+  assertEquals(1,matches.size());
+  matches=tool.check("I can give you more a detailed description");
+  assertEquals(0,matches.size());
+}

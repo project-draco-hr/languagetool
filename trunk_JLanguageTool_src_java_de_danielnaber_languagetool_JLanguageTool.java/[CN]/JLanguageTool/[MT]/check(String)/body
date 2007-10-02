@@ -21,7 +21,7 @@
     final List<RuleMatch> sentenceMatches=new ArrayList<RuleMatch>();
     printIfVerbose(analyzedText.toString());
     for (    final Rule rule : allRules) {
-      if (disabledRules.contains(rule.getId())) {
+      if (disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()))) {
         continue;
       }
       if (disabledCategories.contains(rule.getCategory().getName())) {

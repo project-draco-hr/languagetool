@@ -30,6 +30,12 @@
       final JCheckBox checkBox=new JCheckBox(rule.getDescription());
       if (inactiveRuleIds != null && (inactiveRuleIds.contains(rule.getId()) || inactiveCategoryNames.contains(rule.getCategory().getName())))       checkBox.setSelected(false);
  else       checkBox.setSelected(true);
+      if (rule.isDefaultOff() && !enabledRuleIds.contains(rule.getId())) {
+        checkBox.setSelected(false);
+      }
+      if (rule.isDefaultOff()) {
+        defaultOffRules.add(rule.getId());
+      }
       ActionListener ruleCheckBoxListener=new ActionListener(){
         public void actionPerformed(        final ActionEvent actionEvent){
           final JCheckBox cBox=(JCheckBox)actionEvent.getSource();
@@ -38,7 +44,7 @@
           for (          JCheckBox chBox : checkBoxes) {
             if (chBox.equals(cBox)) {
               final int catNo=checkBoxesCategoryNames.indexOf(checkBoxesCategories.get(i));
-              categoryCheckBoxes.get(catNo).setSelected(selected);
+              if (selected && !categoryCheckBoxes.get(catNo).isSelected())               categoryCheckBoxes.get(catNo).setSelected(true);
             }
             i++;
           }

@@ -15,4 +15,7 @@
       suggestionMatches.clear();
     }
   }
+  if (defaultOff) {
+    rule.setDefaultOff();
+  }
 }
