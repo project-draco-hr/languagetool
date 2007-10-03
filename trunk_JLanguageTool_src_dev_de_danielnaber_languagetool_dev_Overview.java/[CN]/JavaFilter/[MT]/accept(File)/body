@@ -1,4 +1,6 @@
 {
-  if (f.getName().endsWith(".java"))   return true;
+  if (f.getName().endsWith(".java")) {
+    return true;
+  }
   return false;
 }
