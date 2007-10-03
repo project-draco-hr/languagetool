@@ -1,11 +1,13 @@
 {
-  StringBuilder sb=new StringBuilder();
-  for (Iterator iter=l.iterator(); iter.hasNext(); ) {
-    String s=(String)iter.next();
+  final StringBuilder sb=new StringBuilder();
+  for (final Iterator iter=l.iterator(); iter.hasNext(); ) {
+    final String s=(String)iter.next();
     sb.append("<suggestion>");
     sb.append(s);
     sb.append("</suggestion>");
-    if (iter.hasNext())     sb.append(", ");
+    if (iter.hasNext()) {
+      sb.append(", ");
+    }
   }
   return sb.toString();
 }

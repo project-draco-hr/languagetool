@@ -2,13 +2,18 @@
   if (qName.equals("rule")) {
     translations=new ArrayList<StringBuilder>();
     id=attrs.getValue("id");
-    if (inRuleGroup && id == null)     id=ruleGroupId;
+    if (!(inRuleGroup && defaultOff)) {
+      defaultOff="off".equals(attrs.getValue("default"));
+    }
+    if (inRuleGroup && id == null) {
+      id=ruleGroupId;
+    }
     correctExamples=new ArrayList<String>();
     incorrectExamples=new ArrayList<String>();
   }
  else   if (qName.equals("pattern")) {
     inPattern=true;
-    String languageStr=attrs.getValue("lang");
+    final String languageStr=attrs.getValue("lang");
     language=Language.getLanguageForShortName(languageStr);
     if (language == null) {
       throw new SAXException("Unknown language '" + languageStr + "'");
@@ -73,8 +78,8 @@
   }
  else   if (qName.equals("translation")) {
     inTranslation=true;
-    String languageStr=attrs.getValue("lang");
-    Language tmpLang=Language.getLanguageForShortName(languageStr);
+    final String languageStr=attrs.getValue("lang");
+    final Language tmpLang=Language.getLanguageForShortName(languageStr);
     currentTranslationLanguage=tmpLang;
     if (tmpLang == motherTongue) {
       translationLanguage=tmpLang;
@@ -98,5 +103,6 @@
  else   if (qName.equals("rulegroup")) {
     ruleGroupId=attrs.getValue("id");
     inRuleGroup=true;
+    defaultOff="off".equals(attrs.getValue("default"));
   }
 }

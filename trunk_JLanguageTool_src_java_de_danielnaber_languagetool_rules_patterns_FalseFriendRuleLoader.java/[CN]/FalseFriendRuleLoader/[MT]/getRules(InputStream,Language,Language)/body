@@ -1,15 +1,15 @@
 {
-  FalseFriendRuleHandler handler=new FalseFriendRuleHandler(textLanguage,motherTongue);
-  SAXParserFactory factory=SAXParserFactory.newInstance();
-  SAXParser saxParser=factory.newSAXParser();
+  final FalseFriendRuleHandler handler=new FalseFriendRuleHandler(textLanguage,motherTongue);
+  final SAXParserFactory factory=SAXParserFactory.newInstance();
+  final SAXParser saxParser=factory.newSAXParser();
   saxParser.parse(file,handler);
   rules=handler.getRules();
-  ResourceBundle messages=ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",motherTongue.getLocale());
-  for (  PatternRule rule : rules) {
-    List<String> sugg=handler.getSuggestionMap().get(rule.getId());
+  final ResourceBundle messages=ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",motherTongue.getLocale());
+  for (  final PatternRule rule : rules) {
+    final List<String> sugg=handler.getSuggestionMap().get(rule.getId());
     if (sugg != null) {
-      MessageFormat msgFormat=new MessageFormat(messages.getString("false_friend_suggestion"));
-      Object[] msg=new Object[]{formatSuggestions(sugg)};
+      final MessageFormat msgFormat=new MessageFormat(messages.getString("false_friend_suggestion"));
+      final Object[] msg=new Object[]{formatSuggestions(sugg)};
       rule.setMessage(rule.getMessage() + " " + msgFormat.format(msg));
     }
   }
