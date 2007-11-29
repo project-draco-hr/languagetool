@@ -1,6 +1,6 @@
 {
   BufferedReader br=null;
-  TreeSet<String> set=new TreeSet<String>();
+  final TreeSet<String> set=new TreeSet<String>();
   try {
     br=new BufferedReader(new InputStreamReader(file));
     String line;
@@ -9,13 +9,21 @@
       if (line.length() < 1) {
         continue;
       }
-      if (line.charAt(0) == '#')       continue;
-      if (line.charAt(0) == '*')       set.add(line.substring(1));
- else       set.add(line.toLowerCase());
+      if (line.charAt(0) == '#') {
+        continue;
+      }
+      if (line.charAt(0) == '*') {
+        set.add(line.substring(1));
+      }
+ else {
+        set.add(line.toLowerCase());
+      }
     }
   }
   finally {
-    if (br != null)     br.close();
+    if (br != null) {
+      br.close();
+    }
   }
   return set;
 }

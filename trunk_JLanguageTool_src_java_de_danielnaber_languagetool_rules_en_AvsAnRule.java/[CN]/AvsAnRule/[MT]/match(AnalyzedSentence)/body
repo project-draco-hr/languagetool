@@ -1,13 +1,13 @@
 {
-  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   String prevToken="";
   for (int i=1; i < tokens.length; i++) {
     String token=tokens[i].getToken();
     boolean doesRequireA=false;
     boolean doesRequireAn=false;
     boolean isException=false;
-    String[] parts=token.split("[-']");
+    final String[] parts=token.split("[-']");
     if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
       token=parts[0];
     }
@@ -15,7 +15,7 @@
     if (token.length() == 0) {
       continue;
     }
-    char tokenFirstChar=token.charAt(0);
+    final char tokenFirstChar=token.charAt(0);
     if (requiresA.contains(token.toLowerCase()) || requiresA.contains(token)) {
       isException=true;
       doesRequireA=true;
@@ -42,17 +42,21 @@
     String msg=null;
     if (prevToken.equalsIgnoreCase("a") && doesRequireAn) {
       String repl="an";
-      if (prevToken.equals("A"))       repl="An";
+      if (prevToken.equals("A")) {
+        repl="An";
+      }
       msg="Use <suggestion>" + repl + "</suggestion> instead of '"+ prevToken+ "' if the following "+ "word starts with a vowel sound, e.g. 'an article', "+ "'an hour'";
     }
  else     if (prevToken.equalsIgnoreCase("an") && doesRequireA) {
       String repl="a";
-      if (prevToken.equals("An"))       repl="A";
+      if (prevToken.equals("An")) {
+        repl="A";
+      }
       msg="Use <suggestion>" + repl + "</suggestion> instead of '"+ prevToken+ "' if the following "+ "word doesn't start with a vowel sound, e.g. 'a sentence', "+ "'a university'";
     }
     if (msg != null) {
-      int prevPos=tokens[i - 1].getStartPos();
-      RuleMatch ruleMatch=new RuleMatch(this,prevPos,prevPos + prevToken.length(),msg);
+      final int prevPos=tokens[i - 1].getStartPos();
+      final RuleMatch ruleMatch=new RuleMatch(this,prevPos,prevPos + prevToken.length(),msg);
       ruleMatches.add(ruleMatch);
     }
     prevToken=token;
