@@ -71,9 +71,9 @@
     }
   }
   if (!complexRules.isEmpty()) {
-    final Set set=complexRules.keySet();
+    final Set<String> set=complexRules.keySet();
     final List<PatternRule> badRules=new ArrayList<PatternRule>();
-    final Iterator iter=set.iterator();
+    final Iterator<String> iter=set.iterator();
     while (iter.hasNext()) {
       final PatternRule badRule=complexRules.get(iter.next());
       if (badRule != null) {

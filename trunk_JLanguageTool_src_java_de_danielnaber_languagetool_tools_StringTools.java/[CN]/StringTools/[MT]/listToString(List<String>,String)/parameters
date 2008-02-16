@@ -1,2 +1,2 @@
-List l
+List<String> l
 String delimiter
