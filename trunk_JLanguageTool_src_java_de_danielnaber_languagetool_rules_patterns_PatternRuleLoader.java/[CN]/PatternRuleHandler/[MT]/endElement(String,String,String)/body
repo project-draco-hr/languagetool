@@ -87,12 +87,21 @@
       correctExamples.add(correctExample.toString());
     }
  else     if (inIncorrectExample) {
-      incorrectExamples.add(incorrectExample.toString());
+      IncorrectExample example=null;
+      String[] corrections=incorrectCorrection.toString().split("\\|");
+      if (corrections.length > 0 && corrections[0].length() > 0) {
+        example=new IncorrectExample(incorrectExample.toString(),corrections);
+      }
+ else {
+        example=new IncorrectExample(incorrectExample.toString());
+      }
+      incorrectExamples.add(example);
     }
     inCorrectExample=false;
     inIncorrectExample=false;
     correctExample=new StringBuffer();
     incorrectExample=new StringBuffer();
+    incorrectCorrection=new StringBuffer();
   }
  else   if (qName.equals("message")) {
     inMessage=false;

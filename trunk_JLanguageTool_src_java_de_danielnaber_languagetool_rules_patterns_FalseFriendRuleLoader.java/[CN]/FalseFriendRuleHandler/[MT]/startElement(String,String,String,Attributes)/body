@@ -9,7 +9,7 @@
       id=ruleGroupId;
     }
     correctExamples=new ArrayList<String>();
-    incorrectExamples=new ArrayList<String>();
+    incorrectExamples=new ArrayList<IncorrectExample>();
   }
  else   if (qName.equals("pattern")) {
     inPattern=true;

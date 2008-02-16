@@ -1,0 +1,7 @@
+{
+  List<String> strList=new ArrayList<String>();
+  for (  Element patternElement : patternElements) {
+    strList.add(patternElement.toString());
+  }
+  return StringTools.listToString(strList,", ");
+}
