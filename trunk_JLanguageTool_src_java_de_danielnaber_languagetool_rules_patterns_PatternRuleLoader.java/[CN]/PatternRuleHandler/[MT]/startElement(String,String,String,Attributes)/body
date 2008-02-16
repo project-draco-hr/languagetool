@@ -115,9 +115,9 @@
  else   if (qName.equals("example") && attrs.getValue("type").equals("incorrect")) {
     inIncorrectExample=true;
     incorrectExample=new StringBuffer();
-    incorrectCorrection=new StringBuffer();
+    exampleCorrection=new StringBuffer();
     if (attrs.getValue("correction") != null) {
-      incorrectCorrection.append(attrs.getValue("correction"));
+      exampleCorrection.append(attrs.getValue("correction"));
     }
   }
  else   if (qName.equals("message")) {
