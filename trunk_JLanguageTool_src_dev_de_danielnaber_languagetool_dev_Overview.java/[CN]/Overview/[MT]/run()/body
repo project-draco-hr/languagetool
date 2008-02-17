@@ -81,7 +81,7 @@
         }
         count++;
       }
-      System.out.print("<td align=\"left\">" + (count) + "</td></tr>");
+      System.out.print("<td align=\"left\">" + (count) + "</td>");
     }
     System.out.println("</tr>");
   }
