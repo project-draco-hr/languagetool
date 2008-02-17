@@ -75,7 +75,8 @@
   cons.weightx=1.0f;
   cons.weighty=1.0f;
   cons.fill=GridBagConstraints.HORIZONTAL;
-  changeButton=new JButton(messages.getString("guiOOoChangeButton"));
+  changeButton=new JButton(StringTools.getLabel(messages.getString("guiOOoChangeButton")));
+  changeButton.setMnemonic(StringTools.getMnemonic(messages.getString("guiOOoChangeButton")));
   changeButton.addActionListener(this);
   contentPane.add(changeButton,cons);
   cons.gridx=1;
