@@ -1,5 +1,5 @@
 {
-  baseDir=new File(".");
-  config=new Configuration(baseDir);
+  homeDir=new File(".");
+  config=new Configuration(homeDir,CONFIG_FILE);
   messages=JLanguageTool.getMessageBundle();
 }

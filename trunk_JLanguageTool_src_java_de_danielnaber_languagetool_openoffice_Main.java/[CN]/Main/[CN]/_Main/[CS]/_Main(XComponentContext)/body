@@ -5,8 +5,8 @@
     XDesktop xDesktop=(XDesktop)UnoRuntime.queryInterface(XDesktop.class,desktop);
     XComponent xComponent=xDesktop.getCurrentComponent();
     xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,xComponent);
-    baseDir=getBaseDir();
-    config=new Configuration(baseDir);
+    homeDir=getHomeDir();
+    config=new Configuration(homeDir,CONFIG_FILE);
     messages=JLanguageTool.getMessageBundle();
   }
  catch (  Throwable e) {
