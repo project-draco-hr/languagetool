@@ -1,0 +1,27 @@
+{
+  if (posTagRegExp) {
+    if (possibleTags == null) {
+      possibleTags=loadWords(this.getClass().getResourceAsStream(TAGS_FILE_NAME));
+    }
+    if (synthesizer == null) {
+      setFileName();
+      synthesizer=new Lametyzator();
+    }
+    final Pattern p=Pattern.compile(posTag);
+    final ArrayList<String> results=new ArrayList<String>();
+    for (    final String tag : possibleTags) {
+      final Matcher m=p.matcher(tag);
+      if (m.matches()) {
+        String[] wordForms=null;
+        wordForms=synthesizer.stem(token.getLemma() + "|" + tag);
+        if (wordForms != null) {
+          results.addAll(Arrays.asList(wordForms));
+        }
+      }
+    }
+    return results.toArray(new String[results.size()]);
+  }
+ else {
+    return synthesize(token,posTag);
+  }
+}
