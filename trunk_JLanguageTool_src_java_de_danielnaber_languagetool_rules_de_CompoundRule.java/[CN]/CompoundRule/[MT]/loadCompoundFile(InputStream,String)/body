@@ -2,7 +2,6 @@
   InputStreamReader isr=null;
   BufferedReader br=null;
   try {
-    System.err.println(">>" + file);
     isr=new InputStreamReader(file,encoding);
     br=new BufferedReader(isr);
     String line;

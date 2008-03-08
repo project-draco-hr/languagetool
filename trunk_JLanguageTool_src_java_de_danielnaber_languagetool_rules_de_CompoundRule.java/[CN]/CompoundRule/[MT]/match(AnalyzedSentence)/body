@@ -17,8 +17,8 @@
     List<String> stringsToCheck=new ArrayList<String>();
     List<String> origStringsToCheck=new ArrayList<String>();
     Map<String,AnalyzedTokenReadings> stringToToken=new HashMap<String,AnalyzedTokenReadings>();
-    for (Iterator iter=prevTokens.iterator(); iter.hasNext(); ) {
-      AnalyzedTokenReadings atr=(AnalyzedTokenReadings)iter.next();
+    for (    AnalyzedTokenReadings analyzedTokenReadings : prevTokens) {
+      AnalyzedTokenReadings atr=(AnalyzedTokenReadings)analyzedTokenReadings;
       if (j == 0)       firstMatchToken=atr;
       sb.append(" ");
       sb.append(atr.getToken());
