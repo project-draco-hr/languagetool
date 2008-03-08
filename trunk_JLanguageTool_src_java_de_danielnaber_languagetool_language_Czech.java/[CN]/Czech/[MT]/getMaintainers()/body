@@ -1,3 +1,3 @@
 {
-  return new String[]{"Jozef Li??ko"};
+  return new Contributor[]{new Contributor("Jozef Li??ko")};
 }

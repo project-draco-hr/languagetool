@@ -1,3 +1,5 @@
 {
-  return new String[]{"Agnes Souque","Hugo Voisard"};
+  Contributor hVoisard=new Contributor("Hugo Voisard");
+  hVoisard.setRemark("2006-2007");
+  return new Contributor[]{new Contributor("Agnes Souque"),hVoisard};
 }
