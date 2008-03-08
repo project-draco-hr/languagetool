@@ -1,6 +1,6 @@
 {
   final JLanguageTool tool=new JLanguageTool(Language.POLISH);
-  List matches=tool.check("To jest ca??kowicie prawid??owe zdanie.");
+  List<RuleMatch> matches=tool.check("To jest ca??kowicie prawid??owe zdanie.");
   assertEquals(0,matches.size());
   matches=tool.check("To jest jest problem.");
   assertEquals(1,matches.size());

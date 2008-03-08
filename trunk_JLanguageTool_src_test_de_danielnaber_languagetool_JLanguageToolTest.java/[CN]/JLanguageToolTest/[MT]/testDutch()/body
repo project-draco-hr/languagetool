@@ -1,13 +1,12 @@
 {
   final JLanguageTool tool=new JLanguageTool(Language.DUTCH);
-  List matches=tool.check("Een test, die geen fouten mag geven.");
+  List<RuleMatch> matches=tool.check("Een test, die geen fouten mag geven.");
   assertEquals(0,matches.size());
   matches=tool.check("Een test test, die een fout moet geven.");
   assertEquals(1,matches.size());
-  final List rules=tool.loadPatternRules("/rules/nl/grammar.xml");
-  for (final Iterator iter=rules.iterator(); iter.hasNext(); ) {
-    final Rule rule=(Rule)iter.next();
-    tool.addRule(rule);
+  final List<PatternRule> rules=tool.loadPatternRules("/rules/nl/grammar.xml");
+  for (  PatternRule patternRule : rules) {
+    tool.addRule(patternRule);
   }
   matches=tool.check("I can give you more a detailed description");
   assertEquals(0,matches.size());

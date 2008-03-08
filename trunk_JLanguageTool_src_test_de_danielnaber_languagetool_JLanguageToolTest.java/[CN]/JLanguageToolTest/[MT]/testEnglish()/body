@@ -1,16 +1,15 @@
 {
   final JLanguageTool tool=new JLanguageTool(Language.ENGLISH);
-  List matches=tool.check("A test that should not give errors.");
+  List<RuleMatch> matches=tool.check("A test that should not give errors.");
   assertEquals(0,matches.size());
   matches=tool.check("A test test that should give errors.");
   assertEquals(1,matches.size());
   matches=tool.check("I can give you more a detailed description.");
   assertEquals(0,matches.size());
   assertEquals(6,tool.getAllRules().size());
-  final List rules=tool.loadPatternRules("/rules/en/grammar.xml");
-  for (final Iterator iter=rules.iterator(); iter.hasNext(); ) {
-    final Rule rule=(Rule)iter.next();
-    tool.addRule(rule);
+  final List<PatternRule> rules=tool.loadPatternRules("/rules/en/grammar.xml");
+  for (  PatternRule patternRule : rules) {
+    tool.addRule(patternRule);
   }
   assertTrue(tool.getAllRules().size() > 3);
   matches=tool.check("I can give you more a detailed description.");
