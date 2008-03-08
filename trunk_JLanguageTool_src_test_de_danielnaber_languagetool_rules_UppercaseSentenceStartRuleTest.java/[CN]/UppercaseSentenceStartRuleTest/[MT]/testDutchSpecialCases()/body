@@ -1,6 +1,6 @@
 {
   JLanguageTool langTool=new JLanguageTool(Language.DUTCH);
-  List matches;
+  List<RuleMatch> matches;
   matches=langTool.check("A sentence.");
   assertEquals(0,matches.size());
   matches=langTool.check("'s Morgens...");

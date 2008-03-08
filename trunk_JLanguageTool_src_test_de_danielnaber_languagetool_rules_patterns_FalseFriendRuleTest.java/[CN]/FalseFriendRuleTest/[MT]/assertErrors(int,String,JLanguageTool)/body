@@ -1,4 +1,4 @@
 {
-  List matches=langTool.check(s);
+  List<RuleMatch> matches=langTool.check(s);
   assertEquals(errorCount,matches.size());
 }
