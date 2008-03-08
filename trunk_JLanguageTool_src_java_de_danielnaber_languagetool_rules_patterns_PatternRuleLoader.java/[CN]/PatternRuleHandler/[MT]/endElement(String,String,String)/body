@@ -117,6 +117,7 @@
   }
  else   if (qName.equals("rulegroup")) {
     inRuleGroup=false;
+    subId=0;
   }
  else   if (qName.equals("suggestion") && inMessage) {
     message.append("</suggestion>");
