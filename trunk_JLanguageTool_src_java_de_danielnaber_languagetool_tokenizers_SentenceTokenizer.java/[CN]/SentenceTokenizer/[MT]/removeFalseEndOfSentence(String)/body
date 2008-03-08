@@ -16,8 +16,8 @@
       s=s.replaceAll("(\\d+\\.) " + EOS + "("+ monthNames[i]+ ")","$1 $2");
     }
   }
-  s=s.replaceAll("([\\(\\[])([!?]+)([\\]\\)]) " + EOS,"$1$2$3 ");
-  s=s.replaceAll("([!?]+)([\\)\\]]) " + EOS,"$1$2 ");
-  s=repair4.matcher(s).replaceAll("$1 ");
+  s=repair10.matcher(s).replaceAll("$1$2$3 ");
+  s=repair11.matcher(s).replaceAll("$1$2 ");
+  s=repair12.matcher(s).replaceAll("$1 ");
   return s;
 }
