@@ -1,4 +1,0 @@
-{
-  final Overview prg=new Overview();
-  prg.run();
-}
