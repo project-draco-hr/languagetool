@@ -1,8 +1,7 @@
 {
   List<String> tokens=tokenizer.tokenize(input);
   List<String> noWhitespaceTokens=new ArrayList<String>();
-  for (  String string : tokens) {
-    String token=(String)string;
+  for (  String token : tokens) {
     if (isWord(token)) {
       noWhitespaceTokens.add(token);
     }

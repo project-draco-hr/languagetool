@@ -5,8 +5,7 @@
     input.add(sentences[i]);
   }
   for (  String string : input) {
-    String s=(String)string;
-    inputString.append(s);
+    inputString.append(string);
   }
   TestCase.assertEquals(input,stokenizer.tokenize(inputString.toString()));
 }
