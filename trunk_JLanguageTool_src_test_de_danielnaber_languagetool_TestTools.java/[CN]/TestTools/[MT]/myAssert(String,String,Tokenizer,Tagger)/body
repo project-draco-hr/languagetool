@@ -1,15 +1,15 @@
 {
-  List tokens=tokenizer.tokenize(input);
+  List<String> tokens=tokenizer.tokenize(input);
   List<String> noWhitespaceTokens=new ArrayList<String>();
-  for (Iterator iterator=tokens.iterator(); iterator.hasNext(); ) {
-    String token=(String)iterator.next();
+  for (  String string : tokens) {
+    String token=(String)string;
     if (isWord(token)) {
       noWhitespaceTokens.add(token);
     }
   }
-  List output=tagger.tag(noWhitespaceTokens);
+  List<AnalyzedTokenReadings> output=tagger.tag(noWhitespaceTokens);
   StringBuffer outputStr=new StringBuffer();
-  for (Iterator iter=output.iterator(); iter.hasNext(); ) {
+  for (Iterator<AnalyzedTokenReadings> iter=output.iterator(); iter.hasNext(); ) {
     AnalyzedTokenReadings token=(AnalyzedTokenReadings)iter.next();
     int readingsNumber=token.getReadingsLength();
     for (int j=0; j < readingsNumber; j++) {
