@@ -4,7 +4,7 @@
   }
   final boolean setsPos=tokenReference.setsPos();
   if (!setsPos) {
-    stringToken=referenceString.replaceAll("\\\\" + tokenReference.getTokenRef(),tokenReference.toTokenString());
+    stringToken=referenceString.replace("\\" + tokenReference.getTokenRef(),tokenReference.toTokenString());
   }
   if (!"".equals(stringToken) && stringRegExp) {
     regToken=stringToken;
@@ -21,7 +21,7 @@
       }
       setPosElement(posReference,tokenReference.posRegExp(),negation);
     }
-    stringToken=referenceString.replaceAll("\\\\" + tokenReference.getTokenRef(),"");
+    stringToken=referenceString.replace("\\" + tokenReference.getTokenRef(),"");
     inflected=true;
   }
 }
