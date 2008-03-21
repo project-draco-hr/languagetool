@@ -1,16 +1,15 @@
 {
-  File dir=new File(filename);
+  final File dir=new File(filename);
   if (!dir.isDirectory()) {
     throw new IllegalArgumentException(dir.getAbsolutePath() + " is not a directory, cannot use recursion");
   }
-  File[] files=dir.listFiles();
+  final File[] files=dir.listFiles();
   for (int i=0; i < files.length; i++) {
     if (files[i].isDirectory()) {
       runRecursive(files[i].getAbsolutePath(),encoding);
     }
  else {
-      String text=getFilteredText(files[i].getAbsolutePath(),encoding);
-      Tools.checkText(text,lt);
+      runOnFile(files[i].getAbsolutePath(),encoding);
     }
   }
 }

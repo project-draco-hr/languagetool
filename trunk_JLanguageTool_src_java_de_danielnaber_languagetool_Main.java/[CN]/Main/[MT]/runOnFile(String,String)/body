@@ -1,0 +1,35 @@
+{
+  final File file=new File(filename);
+  if (file.length() < MAXFILESIZE) {
+    final String text=getFilteredText(filename,encoding);
+    Tools.checkText(text,lt);
+  }
+ else {
+    if (verbose)     lt.setOutput(System.err);
+    if (!apiFormat)     System.out.println("Working on " + filename + "... in a line by line mode");
+    InputStreamReader isr=null;
+    BufferedReader br=null;
+    try {
+      if (encoding != null) {
+        isr=new InputStreamReader(new FileInputStream(file.getAbsolutePath()),encoding);
+      }
+ else {
+        isr=new InputStreamReader(new FileInputStream(file.getAbsolutePath()));
+      }
+      br=new BufferedReader(isr);
+      String line;
+      while ((line=br.readLine()) != null) {
+        line+="\n";
+        Tools.checkText(filterXML(line),lt);
+      }
+    }
+  finally {
+      if (br != null) {
+        br.close();
+      }
+      if (isr != null) {
+        isr.close();
+      }
+    }
+  }
+}

@@ -76,8 +76,7 @@
     prg.runRecursive(filename,encoding);
   }
  else {
-    String text=prg.getFilteredText(filename,encoding);
-    Tools.checkText(text,prg.getJLanguageTool(),apiFormat);
+    prg.runOnFile(filename,encoding);
     if (listUnknown) {
       System.out.println("Unknown words: " + prg.getJLanguageTool().getUnknownWords());
     }
