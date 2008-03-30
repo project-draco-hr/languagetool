@@ -1,18 +1,26 @@
 {
-  if (qName.equals("text")) {
+  if (qName.equals("title")) {
+    title=text.toString();
+  }
+ else   if (qName.equals("text")) {
     inText=false;
     String textToCheck=textFilter.filter(text.toString());
     if (!textToCheck.contains("#REDIRECT")) {
       try {
         articleCount++;
-        if (maxArticles > 0 && articleCount >= maxArticles) {
-          System.out.printf("Maximim number of articles reached. Found %d matches in %d articles\n",ruleMatches,articleCount);
+        if (maxArticles > 0 && articleCount > maxArticles) {
+          System.out.printf("Maximim number of articles reached. Found %d matches in %d articles\n",ruleMatchCount,articleCount);
           System.exit(0);
         }
-        System.out.println("checking article " + articleCount);
-        ruleMatches+=Tools.checkText(textToCheck,lt);
+        List<RuleMatch> ruleMatches=lt.check(textToCheck);
+        System.out.println("Checking article " + articleCount + " ("+ title+ ")"+ ", found "+ ruleMatches.size()+ " matches");
+        saveResultToDatabase(ruleMatches,textToCheck,lt.getLanguage());
+        ruleMatchCount+=ruleMatches.size();
       }
  catch (      IOException e) {
+        throw new RuntimeException(e);
+      }
+catch (      SQLException e) {
         throw new RuntimeException(e);
       }
     }

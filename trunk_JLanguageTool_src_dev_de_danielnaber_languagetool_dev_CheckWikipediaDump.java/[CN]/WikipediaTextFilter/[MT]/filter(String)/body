@@ -1,7 +1,7 @@
 {
   s=s.replaceAll("(?s)\\[\\[Bild:.*?\\]\\]","");
   s=s.replaceAll("(?s)\\[\\[[^\\[]*?\\|(.*?)\\]\\]","$1");
-  s=s.replaceAll("(?s)\\[\\[...?:.*?\\]","");
+  s=s.replaceAll("(?s)\\[...?:.*?\\]\\]","");
   s=s.replaceAll("(?s)\\[\\[(.*?)\\]\\]","$1");
   s=s.replaceAll("(?s)<math>.*?</math>","X");
   s=s.replaceAll("(?s)<!---.*?--->","");
@@ -17,6 +17,7 @@
   s=s.replaceAll("'''","");
   s=s.replaceAll("''","");
   s=s.replaceAll("<br\\s*/>","\n");
+  s=s.replaceAll("\n+","\n");
   s=s.replaceAll("&nbsp;"," ");
   return s;
 }

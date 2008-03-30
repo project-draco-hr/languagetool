@@ -1,14 +1,27 @@
 {
+  File file=new File(filename);
+  if (!file.exists() || !file.isFile()) {
+    throw new IOException("File doesn't exist or isn't a file: " + filename);
+  }
   Language lang=Language.getLanguageForShortName(language);
   if (lang == null) {
     System.err.println("Language not supported: " + language);
     System.exit(1);
   }
-  JLanguageTool lt=new JLanguageTool(lang,Language.GERMAN);
+  JLanguageTool lt=new JLanguageTool(lang);
   lt.activateDefaultPatternRules();
+  lt.disableRule("DE_CASE");
+  lt.disableRule("UNPAIRED_BRACKETS");
+  lt.disableRule("UPPERCASE_SENTENCE_START");
+  lt.disableRule("WORD_REPEAT_RULE");
+  lt.disableRule("COMMA_PARENTHESIS_WHITESPACE");
+  lt.disableRule("WHITESPACE_RULE");
   System.err.println("These rules are disabled: " + lt.getDisabledRules());
-  WikiDumpHandler handler=new WikiDumpHandler(lt,maxArticles);
+  Date dumpDate=getDumpDate(file);
+  String dumpLangCode=getDumpLanguageCode(file);
+  System.out.println("Dump date: " + dumpDate + ", language: "+ dumpLangCode);
+  WikiDumpHandler handler=new WikiDumpHandler(lt,maxArticles,dumpDate,dumpLangCode);
   SAXParserFactory factory=SAXParserFactory.newInstance();
   SAXParser saxParser=factory.newSAXParser();
-  saxParser.parse(filename,handler);
+  saxParser.parse(file,handler);
 }
