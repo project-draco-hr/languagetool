@@ -1,8 +1,0 @@
-{
-  String filename=file.getName();
-  int wikiPos=filename.indexOf("wiki");
-  if (wikiPos == -1) {
-    throw new IOException("Unexpected filename format, no 'xxwiki': " + file.getName());
-  }
-  return filename.substring(0,wikiPos);
-}

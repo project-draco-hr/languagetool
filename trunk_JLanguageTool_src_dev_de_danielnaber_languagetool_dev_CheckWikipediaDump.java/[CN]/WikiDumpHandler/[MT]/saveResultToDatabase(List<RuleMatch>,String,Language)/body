@@ -8,7 +8,7 @@
     prepSt.setString(4,Tools.getContext(match.getFromPos(),match.getToPos(),text,CONTEXT_SIZE,MARKER_START,MARKER_END));
     prepSt.setDate(5,new java.sql.Date(dumpDate.getTime()));
     prepSt.setDate(6,new java.sql.Date(new Date().getTime()));
-    prepSt.setString(7,URL_PREFIX.replaceAll("XX",langCode) + title);
+    prepSt.setString(7,URL_PREFIX.replaceAll(LANG_MARKER,langCode) + title);
     prepSt.executeUpdate();
   }
 }

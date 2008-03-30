@@ -1,10 +1,14 @@
 {
   CheckWikipediaDump prg=new CheckWikipediaDump();
-  if (args.length < 2 || args.length > 3) {
-    System.err.println("Usage: CheckWikipediaDump <language> <filename> [maxArticleCheck]");
+  if (args.length < 3 || args.length > 4) {
+    System.err.println("Usage: CheckWikipediaDump <propertyFile> <language> <filename> [maxArticleCheck]");
     System.exit(1);
   }
   int maxArticles=0;
-  if (args.length == 3)   maxArticles=Integer.parseInt(args[2]);
-  prg.run(args[0],args[1],maxArticles);
+  if (args.length == 4)   maxArticles=Integer.parseInt(args[3]);
+  File propFile=new File(args[0]);
+  if (!propFile.exists() || propFile.isDirectory()) {
+    throw new IOException("file not found or isn't a file: " + propFile.getAbsolutePath());
+  }
+  prg.run(propFile,args[1],args[2],maxArticles);
 }

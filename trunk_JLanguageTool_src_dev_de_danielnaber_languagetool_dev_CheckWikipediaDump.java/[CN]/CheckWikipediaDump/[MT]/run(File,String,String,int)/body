@@ -1,7 +1,7 @@
 {
-  File file=new File(filename);
+  File file=new File(textFilename);
   if (!file.exists() || !file.isFile()) {
-    throw new IOException("File doesn't exist or isn't a file: " + filename);
+    throw new IOException("File doesn't exist or isn't a file: " + textFilename);
   }
   Language lang=Language.getLanguageForShortName(language);
   if (lang == null) {
@@ -18,9 +18,8 @@
   lt.disableRule("WHITESPACE_RULE");
   System.err.println("These rules are disabled: " + lt.getDisabledRules());
   Date dumpDate=getDumpDate(file);
-  String dumpLangCode=getDumpLanguageCode(file);
-  System.out.println("Dump date: " + dumpDate + ", language: "+ dumpLangCode);
-  WikiDumpHandler handler=new WikiDumpHandler(lt,maxArticles,dumpDate,dumpLangCode);
+  System.out.println("Dump date: " + dumpDate + ", language: "+ language);
+  WikiDumpHandler handler=new WikiDumpHandler(lt,maxArticles,dumpDate,language,propFile);
   SAXParserFactory factory=SAXParserFactory.newInstance();
   SAXParser saxParser=factory.newSAXParser();
   saxParser.parse(file,handler);

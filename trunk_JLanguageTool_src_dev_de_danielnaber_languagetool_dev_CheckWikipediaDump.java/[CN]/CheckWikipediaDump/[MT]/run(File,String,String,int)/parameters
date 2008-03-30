@@ -1,0 +1,4 @@
+File propFile
+String language
+String textFilename
+int maxArticles
