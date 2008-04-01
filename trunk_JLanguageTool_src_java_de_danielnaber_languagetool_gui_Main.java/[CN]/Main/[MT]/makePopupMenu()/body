@@ -1,13 +1,13 @@
 {
   PopupMenu popup=new PopupMenu();
   ActionListener rmbListener=new TrayActionRMBListener();
-  MenuItem checkClipboardItem=new MenuItem(messages.getString("guiMenuCheckClipboard"));
+  MenuItem checkClipboardItem=new MenuItem(StringTools.getLabel(messages.getString("guiMenuCheckClipboard")));
   checkClipboardItem.addActionListener(rmbListener);
   popup.add(checkClipboardItem);
-  MenuItem restoreItem=new MenuItem(messages.getString("guiMenuShowMainWindow"));
+  MenuItem restoreItem=new MenuItem(StringTools.getLabel(messages.getString("guiMenuShowMainWindow")));
   restoreItem.addActionListener(rmbListener);
   popup.add(restoreItem);
-  MenuItem exitItem=new MenuItem(messages.getString("guiMenuQuit"));
+  MenuItem exitItem=new MenuItem(StringTools.getLabel(messages.getString("guiMenuQuit")));
   exitItem.addActionListener(rmbListener);
   popup.add(exitItem);
   return popup;
