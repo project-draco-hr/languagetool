@@ -1,0 +1,4 @@
+{
+  TestTools.myAssert("I cannot have it.","/[null]SENT_START I/[I]PRP  /[null]null cannot/[can]MD  /[null]null have/[have]VB  /[null]null it/[it]PRP ./[null]null",tokenizer,sentenceTokenizer,tagger,disambiguator);
+  TestTools.myAssert("I cannot have it.","/[null]SENT_START I/[I]PRP  /[null]null cannot/[can]MD  /[null]null have/[have]NN|have/[have]VB|have/[have]VBP  /[null]null it/[it]PRP ./[null]null",tokenizer,sentenceTokenizer,tagger,disamb2);
+}

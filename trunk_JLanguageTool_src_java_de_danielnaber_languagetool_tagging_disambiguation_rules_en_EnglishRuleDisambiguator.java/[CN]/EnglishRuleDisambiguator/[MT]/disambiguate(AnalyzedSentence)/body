@@ -1,0 +1,22 @@
+{
+  AnalyzedSentence sentence=input;
+  try {
+    if (disambiguationRules == null) {
+      final String defaultPatternFilename="/resource/en/" + DISAMB_FILE;
+      disambiguationRules=loadPatternRules(defaultPatternFilename);
+    }
+    if (language == null) {
+      language=Language.ENGLISH;
+    }
+    for (    DisambiguationPatternRule dr : disambiguationRules) {
+      sentence=dr.replace(sentence);
+    }
+  }
+ catch (  ParserConfigurationException e) {
+    throw new RuntimeException("Problems with parsing disambiguation file: " + language.getShortName() + "/"+ DISAMB_FILE+ e.getMessage(),e);
+  }
+catch (  SAXException e) {
+    throw new RuntimeException("Problems with parsing disambiguation file: " + e.getMessage(),e);
+  }
+  return sentence;
+}
