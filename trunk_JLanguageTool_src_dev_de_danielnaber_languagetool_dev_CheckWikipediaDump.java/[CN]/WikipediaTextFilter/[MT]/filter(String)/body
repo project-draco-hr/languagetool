@@ -1,23 +1,15 @@
 {
-  s=s.replaceAll("(?s)\\[\\[Bild:.*?\\]\\]","");
-  s=s.replaceAll("(?s)\\[\\[[^\\[]*?\\|(.*?)\\]\\]","$1");
-  s=s.replaceAll("(?s)\\[...?:.*?\\]\\]","");
-  s=s.replaceAll("(?s)\\[\\[(.*?)\\]\\]","$1");
-  s=s.replaceAll("(?s)<math>.*?</math>","X");
-  s=s.replaceAll("(?s)<!---.*?--->","");
-  s=s.replaceAll("(?si)\\{\\{prettytable\\}\\}.*?\\}","");
-  s=s.replaceAll("(?si)\\{\\{Personendaten.*?\\}","");
-  s=s.replaceAll("(?si)\\[http://.*?\\]","Quelle");
-  s=s.replaceAll("(Quelle\\s*)+","Quelle ");
-  s=s.replaceAll("(Quelle\\*\\s*)+","Quelle ");
-  s=s.replaceAll("(\\*Quelle\\s*)+","Quelle ");
-  s=s.replaceAll("(?si)\\{\\{.*?\\}\\}","");
-  s=s.replaceAll("(?si)\\[\\[.*?\\]\\]","");
-  s=s.replaceAll("\n\\* ","\n");
-  s=s.replaceAll("'''","");
-  s=s.replaceAll("''","");
-  s=s.replaceAll("<br\\s*/>","\n");
-  s=s.replaceAll("\n+","\n");
-  s=s.replaceAll("&nbsp;"," ");
+  WikiModel wikiModel=new WikiModel("${image}","${title}");
+  s=wikiModel.render(s);
+  s=s.replaceAll("\n"," ");
+  s=s.replaceAll("\\{\\{.*?\\}\\}","");
+  s=s.replaceAll("</p>","\n\n");
+  s=s.replaceAll("</dt>","\n\n");
+  s=s.replaceAll("</dl>","\n\n");
+  s=s.replaceAll("</h\\d>","\n\n");
+  s=s.replaceAll("<a href=\"http://[a-zA-Z-]+\\.wikipedia\\.org/wiki/.*?\">.*?</a>","");
+  s=s.replaceAll("<.*?>","");
+  s=s.replaceAll("\n\n+","\n\n");
+  s=StringEscapeUtils.unescapeHtml(s);
   return s;
 }
