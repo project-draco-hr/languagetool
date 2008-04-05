@@ -3,4 +3,7 @@
   Language lang=Language.FRENCH;
   String grammarFile="/resource/" + lang.getShortName() + "/disambiguation.xml";
   validator.validate(grammarFile,"/resource/disambiguation.dtd","rules");
+  lang=Language.ENGLISH;
+  grammarFile="/resource/" + lang.getShortName() + "/disambiguation.xml";
+  validator.validate(grammarFile,"/resource/disambiguation.dtd","rules");
 }
