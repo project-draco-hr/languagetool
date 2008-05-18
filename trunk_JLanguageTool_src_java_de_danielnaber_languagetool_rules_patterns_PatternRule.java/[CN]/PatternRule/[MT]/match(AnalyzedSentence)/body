@@ -153,7 +153,7 @@
         startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.toString());
       }
       int fromPos=tokens[firstMatchToken + correctedStPos].getStartPos();
-      if (errMessage.contains("<suggestion>,")) {
+      if (errMessage.contains("<suggestion>,") && firstMatchToken + correctedStPos >= 1) {
         fromPos=tokens[firstMatchToken + correctedStPos - 1].getStartPos() + tokens[firstMatchToken + correctedStPos - 1].getToken().length();
       }
       final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
