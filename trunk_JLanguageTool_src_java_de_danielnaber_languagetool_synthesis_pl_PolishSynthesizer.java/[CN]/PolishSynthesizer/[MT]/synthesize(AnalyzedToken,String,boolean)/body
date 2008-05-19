@@ -4,7 +4,7 @@
   }
   if (posTagRegExp) {
     if (possibleTags == null) {
-      possibleTags=loadWords(this.getClass().getResourceAsStream(TAGS_FILE_NAME));
+      possibleTags=loadWords(Tools.getStream(TAGS_FILE_NAME));
     }
     if (synthesizer == null) {
       setFileName();

@@ -3,7 +3,7 @@
   int pos=0;
   if (wordsToPos == null) {
     wordsToPos=new HashMap<String,String[]>();
-    InputStream resourceFile=this.getClass().getResourceAsStream(RESOURCE_FILENAME);
+    InputStream resourceFile=Tools.getStream(RESOURCE_FILENAME);
     BufferedReader input=new BufferedReader(new InputStreamReader(resourceFile,Charset.forName("UTF-8")));
     String line;
     while ((line=input.readLine()) != null) {

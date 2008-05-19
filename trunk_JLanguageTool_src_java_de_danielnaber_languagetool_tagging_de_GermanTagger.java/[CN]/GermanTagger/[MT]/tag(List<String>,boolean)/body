@@ -8,7 +8,7 @@
     morfologik=new Lametyzator();
   }
   if (manualTagger == null) {
-    manualTagger=new ManualTagger(this.getClass().getResourceAsStream(USER_DICT_FILENAME));
+    manualTagger=new ManualTagger(Tools.getStream(USER_DICT_FILENAME));
   }
   if (compoundTokenizer == null) {
     compoundTokenizer=new GermanCompoundTokenizer();

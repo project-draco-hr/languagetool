@@ -22,7 +22,7 @@
   Collections.sort(sortedLanguages);
   final String ffFile="/rules" + File.separator + "false-friends.xml";
   final java.net.URL ffurl=this.getClass().getResource(ffFile);
-  String ffRules=StringTools.readFile(this.getClass().getResourceAsStream(ffFile));
+  String ffRules=StringTools.readFile(Tools.getStream(ffFile));
   ffRules=ffRules.replaceAll("(?s)<!--.*?-->","");
   ffRules=ffRules.replaceAll("(?s)<rules.*?>","");
   for (  final String langName : sortedLanguages) {
@@ -35,7 +35,7 @@
       System.out.println("<td align=\"right\">0</td>");
     }
  else {
-      String xmlRules=StringTools.readFile(this.getClass().getResourceAsStream(xmlFile));
+      String xmlRules=StringTools.readFile(Tools.getStream(xmlFile));
       xmlRules=xmlRules.replaceAll("(?s)<!--.*?-->","");
       xmlRules=xmlRules.replaceAll("(?s)<rules.*?>","");
       int pos=0;
