@@ -1,4 +1,4 @@
 {
   DisambiguationRuleLoader ruleLoader=new DisambiguationRuleLoader();
-  return ruleLoader.getRules(this.getClass().getResourceAsStream(filename));
+  return ruleLoader.getRules(Tools.getStream(filename));
 }
