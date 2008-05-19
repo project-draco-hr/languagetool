@@ -1,0 +1,29 @@
+{
+  if (xTextDoc == null)   return Language.ENGLISH;
+  Locale charLocale;
+  try {
+    XTextCursor textCursor=xTextDoc.getText().createTextCursor();
+    textCursor.gotoStart(false);
+    XPropertySet xCursorProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,textCursor);
+    charLocale=(Locale)xCursorProps.getPropertyValue("CharLocale");
+    boolean langIsSupported=false;
+    for (int i=0; i < Language.LANGUAGES.length; i++) {
+      if (Language.LANGUAGES[i].getShortName().equals(charLocale.Language)) {
+        langIsSupported=true;
+        break;
+      }
+    }
+    if (!langIsSupported) {
+      DialogThread dt=new DialogThread("Error: Sorry, the document language '" + charLocale.Language + "' is not supported by LanguageTool.");
+      dt.start();
+      return null;
+    }
+  }
+ catch (  UnknownPropertyException e) {
+    throw new RuntimeException(e);
+  }
+catch (  WrappedTargetException e) {
+    throw new RuntimeException(e);
+  }
+  return Language.getLanguageForShortName(charLocale.Language);
+}

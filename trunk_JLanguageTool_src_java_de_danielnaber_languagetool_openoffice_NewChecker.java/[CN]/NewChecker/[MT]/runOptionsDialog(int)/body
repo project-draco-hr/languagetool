@@ -1,0 +1,17 @@
+{
+  Language lang=getLanguage();
+  if (lang == null)   return;
+  final ConfigThread configThread=new ConfigThread(lang,config);
+  configThread.start();
+  while (true) {
+    if (configThread.done()) {
+      break;
+    }
+    try {
+      Thread.sleep(100);
+    }
+ catch (    InterruptedException e) {
+      break;
+    }
+  }
+}
