@@ -1,2 +1,41 @@
 {
+  if (hasLocale(arg2) && (!arg1.isChecked(com.sun.star.text.TextMarkupType.GRAMMAR))) {
+    docLanguage=Language.DEMO;
+    for (int i=0; i < Language.LANGUAGES.length; i++) {
+      if (Language.LANGUAGES[i].getShortName().equals(arg2.Language)) {
+        docLanguage=Language.LANGUAGES[i];
+        break;
+      }
+      try {
+        langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
+        langTool.activateDefaultPatternRules();
+        langTool.activateDefaultFalseFriendRules();
+      }
+ catch (      Exception exception) {
+      }
+      ;
+    }
+    if (config.getDisabledRuleIds() != null) {
+      for (      String id : config.getDisabledRuleIds()) {
+        langTool.disableRule(id);
+      }
+    }
+    Set<String> disabledCategories=config.getDisabledCategoryNames();
+    if (disabledCategories != null) {
+      for (      String categoryName : disabledCategories) {
+        langTool.disableCategory(categoryName);
+      }
+    }
+    try {
+      List<RuleMatch> ruleMatches=langTool.check(arg1.getText());
+      if (ruleMatches.size() > 0) {
+      }
+ else {
+        arg1.setChecked(com.sun.star.text.TextMarkupType.GRAMMAR,true);
+      }
+    }
+ catch (    IOException exception) {
+    }
+    ;
+  }
 }

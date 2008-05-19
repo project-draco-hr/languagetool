@@ -6,14 +6,7 @@
     textCursor.gotoStart(false);
     XPropertySet xCursorProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,textCursor);
     charLocale=(Locale)xCursorProps.getPropertyValue("CharLocale");
-    boolean langIsSupported=false;
-    for (int i=0; i < Language.LANGUAGES.length; i++) {
-      if (Language.LANGUAGES[i].getShortName().equals(charLocale.Language)) {
-        langIsSupported=true;
-        break;
-      }
-    }
-    if (!langIsSupported) {
+    if (!hasLocale(charLocale)) {
       DialogThread dt=new DialogThread("Error: Sorry, the document language '" + charLocale.Language + "' is not supported by LanguageTool.");
       dt.start();
       return null;

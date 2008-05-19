@@ -1,3 +1,10 @@
 {
-  return false;
+  boolean langIsSupported=false;
+  for (int i=0; i < Language.LANGUAGES.length; i++) {
+    if (Language.LANGUAGES[i].getShortName().equals(arg0.Language)) {
+      langIsSupported=true;
+      break;
+    }
+  }
+  return langIsSupported;
 }
