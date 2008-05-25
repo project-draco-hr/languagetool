@@ -1,0 +1,13 @@
+{
+  SingleGrammarError aError=new SingleGrammarError();
+  aError.nErrorType=com.sun.star.text.TextMarkupType.GRAMMAR;
+  aError.aFullComment=myMatch.getMessage();
+  aError.aShortComment=aError.aFullComment;
+  aError.aSuggestions=(String[])myMatch.getSuggestedReplacements().toArray();
+  aError.nErrorLevel=0;
+  aError.nErrorStart=myMatch.getFromPos();
+  aError.aNewLocale=locale;
+  aError.xGC=this;
+  aError.nErrorLen=myMatch.getToPos() - myMatch.getFromPos();
+  return aError;
+}

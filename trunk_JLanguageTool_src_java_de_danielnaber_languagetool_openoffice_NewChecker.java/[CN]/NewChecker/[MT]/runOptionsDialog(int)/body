@@ -1,5 +1,5 @@
 {
-  Language lang=getLanguage();
+  final Language lang=getLanguage();
   if (lang == null)   return;
   final ConfigThread configThread=new ConfigThread(lang,config);
   configThread.start();

@@ -1,0 +1,6 @@
+int docId
+XFlatParagraph para
+Locale locale
+int sentStart
+int SentEnd
+RuleMatch myMatch

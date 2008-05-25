@@ -1,5 +1,5 @@
 {
-  Locale[] aLocales=new Locale[Language.LANGUAGES.length];
+  final Locale[] aLocales=new Locale[Language.LANGUAGES.length];
   for (int i=0; i < Language.LANGUAGES.length; i++) {
     aLocales[i]=new Locale(Language.LANGUAGES[i].getShortName(),Language.LANGUAGES[i].getLocale().getVariant(),"");
   }
