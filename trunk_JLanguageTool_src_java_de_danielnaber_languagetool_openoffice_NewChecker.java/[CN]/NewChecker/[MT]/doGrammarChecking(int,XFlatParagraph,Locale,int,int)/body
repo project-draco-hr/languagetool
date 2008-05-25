@@ -42,6 +42,13 @@
           i++;
         }
         paRes.aGrammarErrors=errorArray;
+        if (gcListeners != null) {
+          if (gcListeners.size() > 0) {
+            for (            XGrammarCheckingResultListener gcL : gcListeners) {
+              gcL.GrammarCheckingFinished(paRes);
+            }
+          }
+        }
       }
  else {
         arg1.setChecked(com.sun.star.text.TextMarkupType.GRAMMAR,true);

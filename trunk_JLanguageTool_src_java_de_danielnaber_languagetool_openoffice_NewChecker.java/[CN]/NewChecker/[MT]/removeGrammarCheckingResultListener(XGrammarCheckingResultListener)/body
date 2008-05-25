@@ -1,0 +1,15 @@
+{
+  Object myMutex=new Object();
+synchronized (myMutex) {
+    if (gcListeners == null) {
+      return true;
+    }
+    if (xListener != null) {
+      gcListeners.remove(xListener);
+      return true;
+    }
+ else {
+      return false;
+    }
+  }
+}
