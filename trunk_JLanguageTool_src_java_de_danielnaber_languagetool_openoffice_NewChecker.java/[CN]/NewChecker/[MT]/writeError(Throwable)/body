@@ -1,0 +1,15 @@
+{
+  FileWriter fw;
+  try {
+    fw=new FileWriter("languagetool.log");
+    fw.write(e.toString() + "\r\n");
+    StackTraceElement[] el=e.getStackTrace();
+    for (int i=0; i < el.length; i++) {
+      fw.write(el[i].toString() + "\r\n");
+    }
+    fw.close();
+  }
+ catch (  IOException e1) {
+    e1.printStackTrace();
+  }
+}

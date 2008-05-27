@@ -12,8 +12,8 @@
         langTool.activateDefaultFalseFriendRules();
       }
  catch (      Exception exception) {
+        showError(exception);
       }
-      ;
     }
     if (config.getDisabledRuleIds() != null) {
       for (      String id : config.getDisabledRuleIds()) {
@@ -55,7 +55,7 @@
       }
     }
  catch (    IOException exception) {
+      showError(exception);
     }
-    ;
   }
 }
