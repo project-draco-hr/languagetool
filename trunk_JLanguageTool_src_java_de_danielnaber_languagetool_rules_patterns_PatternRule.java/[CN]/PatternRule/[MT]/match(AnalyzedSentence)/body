@@ -147,13 +147,13 @@
         }
       }
       AnalyzedTokenReadings firstMatchTokenObj=tokens[firstMatchToken + correctedStPos];
-      boolean startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.toString());
+      boolean startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.toString()) && !matchConvertsCase();
       if (firstMatchTokenObj.isSentStart() && tokens.length > firstMatchToken + correctedStPos + 1) {
         firstMatchTokenObj=tokens[firstMatchToken + correctedStPos + 1];
         startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.toString());
       }
       int fromPos=tokens[firstMatchToken + correctedStPos].getStartPos();
-      if (errMessage.contains("<suggestion>,") && firstMatchToken + correctedStPos >= 1) {
+      if (errMessage.contains(suggTag + ",") && firstMatchToken + correctedStPos >= 1) {
         fromPos=tokens[firstMatchToken + correctedStPos - 1].getStartPos() + tokens[firstMatchToken + correctedStPos - 1].getToken().length();
       }
       final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
