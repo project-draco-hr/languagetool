@@ -1,3 +1,3 @@
 {
-  return token.trim().equals("");
+  return StringTools.isWhitespace(token);
 }
