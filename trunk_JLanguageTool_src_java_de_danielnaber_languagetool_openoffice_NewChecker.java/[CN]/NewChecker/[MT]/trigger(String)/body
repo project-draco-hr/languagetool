@@ -4,6 +4,8 @@
   }
   try {
     if (sEvent.equals("execute")) {
+      TextToCheck textToCheck=getText();
+      checkText(textToCheck);
     }
  else     if (sEvent.equals("configure")) {
       final Language lang=getLanguage();

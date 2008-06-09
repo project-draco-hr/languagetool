@@ -1,0 +1,46 @@
+{
+  if (textToCheck == null) {
+    return;
+  }
+  Language docLanguage=getLanguage();
+  if (docLanguage == null) {
+    return;
+  }
+  ProgressDialog progressDialog=new ProgressDialog(messages);
+  CheckerThread checkerThread=new CheckerThread(textToCheck.paragraphs,docLanguage,config,progressDialog);
+  checkerThread.start();
+  while (true) {
+    if (checkerThread.done()) {
+      break;
+    }
+    try {
+      Thread.sleep(100);
+    }
+ catch (    InterruptedException e) {
+    }
+  }
+  progressDialog.close();
+  List<CheckedParagraph> checkedParagraphs=checkerThread.getRuleMatches();
+  if (checkedParagraphs.size() == 0) {
+    String msg;
+    String translatedLangName=messages.getString(docLanguage.getShortName());
+    if (textToCheck.isSelection) {
+      msg=Tools.makeTexti18n(messages,"guiNoErrorsFoundSelectedText",new String[]{translatedLangName});
+    }
+ else {
+      msg=Tools.makeTexti18n(messages,"guiNoErrorsFound",new String[]{translatedLangName});
+    }
+    DialogThread dt=new DialogThread(msg);
+    dt.start();
+  }
+ else {
+    ResultDialogThread dialog;
+    if (textToCheck.isSelection) {
+      dialog=new ResultDialogThread(config,checkerThread.getLanguageTool().getAllRules(),xTextDoc,checkedParagraphs,xViewCursor,textToCheck);
+    }
+ else {
+      dialog=new ResultDialogThread(config,checkerThread.getLanguageTool().getAllRules(),xTextDoc,checkedParagraphs,null,null);
+    }
+    dialog.start();
+  }
+}
