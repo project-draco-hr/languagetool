@@ -58,4 +58,6 @@
   assertEquals(1,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("In a un-united Germany..."));
   assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("A. R.J. Turgot"));
+  assertEquals(0,matches.length);
 }
