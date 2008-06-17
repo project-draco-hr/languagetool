@@ -1,4 +1,6 @@
 {
+  DialogThread dt=new DialogThread("Starting the check!");
+  dt.start();
   myDocID=docID;
   docLanguage=getLanguage();
   try {
@@ -9,6 +11,4 @@
  catch (  Exception exception) {
     showError(exception);
   }
-  DialogThread dt=new DialogThread("Starting the check!");
-  dt.start();
 }

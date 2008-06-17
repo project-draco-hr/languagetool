@@ -6,6 +6,9 @@
     xComponent=xDesktop.getCurrentComponent();
     xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,xComponent);
     xFlatPI=(XFlatParagraphIteratorProvider)UnoRuntime.queryInterface(XFlatParagraphIteratorProvider.class,xComponent);
+    Object xInterface;
+    xInterface=xMCF.createInstanceWithContext("com.sun.star.i18n.BreakIterator",xCompContext);
+    xTokenizer=(XBreakIterator)UnoRuntime.queryInterface(XBreakIterator.class,xInterface);
     homeDir=getHomeDir();
     config=new Configuration(homeDir,CONFIG_FILE);
     messages=JLanguageTool.getMessageBundle();

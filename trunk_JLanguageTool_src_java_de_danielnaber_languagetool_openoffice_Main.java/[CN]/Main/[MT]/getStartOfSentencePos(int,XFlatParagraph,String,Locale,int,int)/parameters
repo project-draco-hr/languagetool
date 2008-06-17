@@ -2,5 +2,5 @@ int docID
 XFlatParagraph para
 String paraText
 Locale locale
-int startOfSentence
+int nPosInSentence
 int suggestedEndOfSentencePos
