@@ -1,3 +1,0 @@
-{
-  return sServiceName.equals(__serviceName);
-}

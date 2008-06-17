@@ -1,0 +1,17 @@
+{
+  try {
+    XMultiComponentFactory xMCF=xCompContext.getServiceManager();
+    Object desktop=xMCF.createInstanceWithContext("com.sun.star.frame.Desktop",xCompContext);
+    XDesktop xDesktop=(XDesktop)UnoRuntime.queryInterface(XDesktop.class,desktop);
+    xComponent=xDesktop.getCurrentComponent();
+    xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,xComponent);
+    xFlatPI=(XFlatParagraphIteratorProvider)UnoRuntime.queryInterface(XFlatParagraphIteratorProvider.class,xComponent);
+    homeDir=getHomeDir();
+    config=new Configuration(homeDir,CONFIG_FILE);
+    messages=JLanguageTool.getMessageBundle();
+  }
+ catch (  Throwable e) {
+    writeError(e);
+    e.printStackTrace();
+  }
+}

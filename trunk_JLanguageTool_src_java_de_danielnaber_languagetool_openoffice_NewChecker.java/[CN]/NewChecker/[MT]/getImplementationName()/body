@@ -1,3 +1,0 @@
-{
-  return NewChecker.class.getName();
-}

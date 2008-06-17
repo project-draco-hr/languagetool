@@ -1,5 +1,0 @@
-{
-  XSingleComponentFactory xFactory=null;
-  if (sImplName.equals(NewChecker.class.getName()))   xFactory=Factory.createComponentFactory(NewChecker.class,NewChecker.getServiceNames());
-  return xFactory;
-}

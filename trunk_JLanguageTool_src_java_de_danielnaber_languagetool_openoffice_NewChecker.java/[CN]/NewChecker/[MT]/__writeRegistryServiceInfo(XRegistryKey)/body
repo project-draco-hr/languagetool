@@ -1,3 +1,0 @@
-{
-  return Factory.writeRegistryServiceInfo(NewChecker.class.getName(),NewChecker.getServiceNames(),regKey);
-}

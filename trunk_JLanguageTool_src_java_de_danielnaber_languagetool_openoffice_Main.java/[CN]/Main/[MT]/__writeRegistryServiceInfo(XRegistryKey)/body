@@ -1,3 +1,3 @@
 {
-  return Factory.writeRegistryServiceInfo(_Main.class.getName(),_Main.getServiceNames(),regKey);
+  return Factory.writeRegistryServiceInfo(Main.class.getName(),Main.getServiceNames(),regKey);
 }

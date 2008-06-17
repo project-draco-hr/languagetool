@@ -1,0 +1,31 @@
+{
+  if (xFlatPI == null) {
+    return Language.ENGLISH;
+  }
+  Locale charLocale;
+  try {
+    if (xFlatPI == null) {
+      return null;
+    }
+    com.sun.star.text.XFlatParagraphIterator xParaAccess=xFlatPI.getFlatParagraphIterator(com.sun.star.text.TextMarkupType.GRAMMAR,true);
+    if (xParaAccess == null) {
+      System.err.println("xParaAccess == null");
+      return null;
+    }
+    com.sun.star.text.XFlatParagraph xParaEnum=xParaAccess.getFirstPara();
+    int maxLen=xParaEnum.getText().length();
+    if (maxLen > 200) {
+      maxLen=200;
+    }
+    charLocale=(Locale)xParaEnum.getPrimaryLanguageOfText(1,maxLen);
+    if (!hasLocale(charLocale)) {
+      DialogThread dt=new DialogThread("Error: Sorry, the document language '" + charLocale.Language + "' is not supported by LanguageTool.");
+      dt.start();
+      return null;
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return Language.getLanguageForShortName(charLocale.Language);
+}

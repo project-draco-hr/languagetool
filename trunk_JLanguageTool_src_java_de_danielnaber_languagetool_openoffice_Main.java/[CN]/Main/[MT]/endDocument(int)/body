@@ -1,0 +1,5 @@
+{
+  if (myDocID == oldDocID) {
+    myDocID=-1;
+  }
+}

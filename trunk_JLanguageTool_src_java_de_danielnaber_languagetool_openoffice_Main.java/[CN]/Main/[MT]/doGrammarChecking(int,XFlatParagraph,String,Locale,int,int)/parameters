@@ -1,0 +1,6 @@
+int docID
+XFlatParagraph xPara
+String paraText
+Locale locale
+int startOfSentencePos
+int suggEndOfSentencePos

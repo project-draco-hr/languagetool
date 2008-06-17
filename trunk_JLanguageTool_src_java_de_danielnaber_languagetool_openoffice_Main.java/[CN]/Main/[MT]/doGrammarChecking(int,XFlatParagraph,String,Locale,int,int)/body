@@ -1,0 +1,51 @@
+{
+  GrammarCheckingResult paRes=new GrammarCheckingResult();
+  paRes.nEndOfSentencePos=paraText.length();
+  if (hasLocale(locale)) {
+    if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null) {
+      docLanguage=Language.getLanguageForShortName(locale.Language);
+      if (docLanguage == null) {
+        return paRes;
+      }
+      try {
+        langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
+        langTool.activateDefaultPatternRules();
+        langTool.activateDefaultFalseFriendRules();
+      }
+ catch (      Exception exception) {
+        showError(exception);
+      }
+    }
+    if (config.getDisabledRuleIds() != null) {
+      for (      String id : config.getDisabledRuleIds()) {
+        langTool.disableRule(id);
+      }
+    }
+    Set<String> disabledCategories=config.getDisabledCategoryNames();
+    if (disabledCategories != null) {
+      for (      String categoryName : disabledCategories) {
+        langTool.disableCategory(categoryName);
+      }
+    }
+    try {
+      List<RuleMatch> ruleMatches=langTool.check(paraText);
+      if (ruleMatches.size() > 0) {
+        paRes.xFlatParagraph=xPara;
+        paRes.aText=paraText;
+        paRes.aLocale=locale;
+        SingleGrammarError[] errorArray=new SingleGrammarError[ruleMatches.size()];
+        ;
+        int i=0;
+        for (        RuleMatch myRuleMatch : ruleMatches) {
+          errorArray[i]=createOOoError(docID,xPara,locale,startOfSentencePos,suggEndOfSentencePos,myRuleMatch);
+          i++;
+        }
+        paRes.aGrammarErrors=errorArray;
+      }
+    }
+ catch (    IOException exception) {
+      showError(exception);
+    }
+  }
+  return paRes;
+}

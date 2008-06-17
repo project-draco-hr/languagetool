@@ -1,5 +1,0 @@
-{
-  if (docID == arg0) {
-    docID=-1;
-  }
-}

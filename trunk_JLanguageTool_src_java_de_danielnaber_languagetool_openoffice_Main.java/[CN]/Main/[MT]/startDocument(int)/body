@@ -1,0 +1,14 @@
+{
+  myDocID=docID;
+  docLanguage=getLanguage();
+  try {
+    langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
+    langTool.activateDefaultPatternRules();
+    langTool.activateDefaultFalseFriendRules();
+  }
+ catch (  Exception exception) {
+    showError(exception);
+  }
+  DialogThread dt=new DialogThread("Starting the check!");
+  dt.start();
+}
