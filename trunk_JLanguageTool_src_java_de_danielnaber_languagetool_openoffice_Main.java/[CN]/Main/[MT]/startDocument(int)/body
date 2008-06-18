@@ -1,6 +1,4 @@
 {
-  DialogThread dt=new DialogThread("Starting the check!");
-  dt.start();
   myDocID=docID;
   docLanguage=getLanguage();
   try {

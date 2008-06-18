@@ -6,7 +6,7 @@
   aError.aSuggestions=(String[])myMatch.getSuggestedReplacements().toArray(new String[myMatch.getSuggestedReplacements().size()]);
   aError.nErrorLevel=0;
   aError.nErrorStart=myMatch.getFromPos();
-  aError.aNewLocale=locale;
   aError.nErrorLength=myMatch.getToPos() - myMatch.getFromPos();
+  aError.aNewLocale=locale;
   return aError;
 }

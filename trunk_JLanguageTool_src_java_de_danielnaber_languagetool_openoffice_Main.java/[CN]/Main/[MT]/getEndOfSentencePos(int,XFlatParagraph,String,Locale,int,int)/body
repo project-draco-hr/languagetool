@@ -1,7 +1,3 @@
 {
-  int pos=-1;
-  if (xTokenizer != null) {
-    pos=xTokenizer.endOfSentence(paraText,startOfSentence,locale);
-  }
-  return pos;
+  return paraText.length();
 }

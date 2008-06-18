@@ -1,6 +1,6 @@
 {
   GrammarCheckingResult paRes=new GrammarCheckingResult();
-  paRes.nEndOfSentencePos=paraText.length();
+  paRes.nEndOfSentencePos=suggEndOfSentencePos - startOfSentencePos;
   if (hasLocale(locale)) {
     if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null) {
       docLanguage=Language.getLanguageForShortName(locale.Language);
@@ -28,16 +28,16 @@
       }
     }
     try {
-      List<RuleMatch> ruleMatches=langTool.check(paraText);
+      List<RuleMatch> ruleMatches=langTool.check(paraText.substring(startOfSentencePos,suggEndOfSentencePos));
       if (ruleMatches.size() > 0) {
         paRes.xFlatParagraph=xPara;
-        paRes.aText=paraText;
+        paRes.aText=paraText.substring(startOfSentencePos,suggEndOfSentencePos);
         paRes.aLocale=locale;
         SingleGrammarError[] errorArray=new SingleGrammarError[ruleMatches.size()];
         ;
         int i=0;
         for (        RuleMatch myRuleMatch : ruleMatches) {
-          errorArray[i]=createOOoError(docID,xPara,locale,startOfSentencePos,suggEndOfSentencePos,myRuleMatch);
+          errorArray[i]=createOOoError(locale,myRuleMatch);
           i++;
         }
         paRes.aGrammarErrors=errorArray;
