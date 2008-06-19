@@ -1,6 +1,11 @@
 {
   GrammarCheckingResult paRes=new GrammarCheckingResult();
   paRes.nEndOfSentencePos=suggEndOfSentencePos - startOfSentencePos;
+  paRes.xFlatParagraph=xPara;
+  paRes.xGrammarChecker=this;
+  paRes.aText=paraText.substring(startOfSentencePos,suggEndOfSentencePos);
+  paRes.aLocale=locale;
+  paRes.nDocumentId=docID;
   if (hasLocale(locale)) {
     if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null) {
       docLanguage=Language.getLanguageForShortName(locale.Language);
@@ -30,9 +35,6 @@
     try {
       List<RuleMatch> ruleMatches=langTool.check(paraText.substring(startOfSentencePos,suggEndOfSentencePos));
       if (ruleMatches.size() > 0) {
-        paRes.xFlatParagraph=xPara;
-        paRes.aText=paraText.substring(startOfSentencePos,suggEndOfSentencePos);
-        paRes.aLocale=locale;
         SingleGrammarError[] errorArray=new SingleGrammarError[ruleMatches.size()];
         ;
         int i=0;
