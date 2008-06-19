@@ -1,7 +1,15 @@
 {
-  final Locale[] aLocales=new Locale[Language.LANGUAGES.length];
+  int dims=0;
   for (int i=0; i < Language.LANGUAGES.length; i++) {
-    aLocales[i]=new Locale(Language.LANGUAGES[i].getShortName(),Language.LANGUAGES[i].getLocale().getVariant(),"");
+    dims+=Language.LANGUAGES[i].getCountryVariants().length;
+  }
+  final Locale[] aLocales=new Locale[dims];
+  int cnt=0;
+  for (int i=0; i < Language.LANGUAGES.length; i++) {
+    for (    String variant : Language.LANGUAGES[i].getCountryVariants()) {
+      aLocales[cnt]=new Locale(Language.LANGUAGES[i].getShortName(),variant,"");
+      cnt++;
+    }
   }
   return aLocales;
 }
