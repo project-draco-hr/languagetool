@@ -8,23 +8,7 @@
       checkText(textToCheck);
     }
  else     if (sEvent.equals("configure")) {
-      final Language lang=getLanguage();
-      if (lang == null) {
-        return;
-      }
-      final ConfigThread configThread=new ConfigThread(lang,config);
-      configThread.start();
-      while (true) {
-        if (configThread.done()) {
-          break;
-        }
-        try {
-          Thread.sleep(100);
-        }
- catch (        final InterruptedException e) {
-          break;
-        }
-      }
+      runOptionsDialog();
     }
  else     if (sEvent.equals("about")) {
       final AboutDialogThread aboutthread=new AboutDialogThread(messages);
