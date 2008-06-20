@@ -1,13 +1,13 @@
 {
   int dims=0;
-  for (int i=0; i < Language.LANGUAGES.length; i++) {
-    dims+=Language.LANGUAGES[i].getCountryVariants().length;
+  for (  final Language element : Language.LANGUAGES) {
+    dims+=element.getCountryVariants().length;
   }
   final Locale[] aLocales=new Locale[dims];
   int cnt=0;
-  for (int i=0; i < Language.LANGUAGES.length; i++) {
-    for (    String variant : Language.LANGUAGES[i].getCountryVariants()) {
-      aLocales[cnt]=new Locale(Language.LANGUAGES[i].getShortName(),variant,"");
+  for (  final Language element : Language.LANGUAGES) {
+    for (    final String variant : element.getCountryVariants()) {
+      aLocales[cnt]=new Locale(element.getShortName(),variant,"");
       cnt++;
     }
   }

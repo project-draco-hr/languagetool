@@ -4,12 +4,14 @@
   }
   try {
     if (sEvent.equals("execute")) {
-      TextToCheck textToCheck=getText();
+      final TextToCheck textToCheck=getText();
       checkText(textToCheck);
     }
  else     if (sEvent.equals("configure")) {
       final Language lang=getLanguage();
-      if (lang == null)       return;
+      if (lang == null) {
+        return;
+      }
       final ConfigThread configThread=new ConfigThread(lang,config);
       configThread.start();
       while (true) {
@@ -19,20 +21,20 @@
         try {
           Thread.sleep(100);
         }
- catch (        InterruptedException e) {
+ catch (        final InterruptedException e) {
           break;
         }
       }
     }
  else     if (sEvent.equals("about")) {
-      AboutDialogThread aboutthread=new AboutDialogThread(messages);
+      final AboutDialogThread aboutthread=new AboutDialogThread(messages);
       aboutthread.start();
     }
  else {
       System.err.println("Sorry, don't know what to do, sEvent = " + sEvent);
     }
   }
- catch (  Throwable e) {
+ catch (  final Throwable e) {
     showError(e);
   }
 }

@@ -6,7 +6,7 @@
     langTool.activateDefaultPatternRules();
     langTool.activateDefaultFalseFriendRules();
   }
- catch (  Exception exception) {
+ catch (  final Exception exception) {
     showError(exception);
   }
 }

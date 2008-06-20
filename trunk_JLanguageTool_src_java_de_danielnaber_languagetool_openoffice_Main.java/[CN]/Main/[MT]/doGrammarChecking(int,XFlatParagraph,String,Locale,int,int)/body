@@ -1,11 +1,17 @@
 {
-  GrammarCheckingResult paRes=new GrammarCheckingResult();
+  final GrammarCheckingResult paRes=new GrammarCheckingResult();
   paRes.nEndOfSentencePos=suggEndOfSentencePos - startOfSentencePos;
   paRes.xFlatParagraph=xPara;
   paRes.xGrammarChecker=this;
-  paRes.aText=paraText.substring(startOfSentencePos,suggEndOfSentencePos);
   paRes.aLocale=locale;
   paRes.nDocumentId=docID;
+  paRes.aText=paraText;
+  if (paraText != null) {
+    paRes.nEndOfSentencePos=paraText.length();
+  }
+ else {
+    return paRes;
+  }
   if (hasLocale(locale)) {
     if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null) {
       docLanguage=Language.getLanguageForShortName(locale.Language);
@@ -17,35 +23,35 @@
         langTool.activateDefaultPatternRules();
         langTool.activateDefaultFalseFriendRules();
       }
- catch (      Exception exception) {
+ catch (      final Exception exception) {
         showError(exception);
       }
     }
     if (config.getDisabledRuleIds() != null) {
-      for (      String id : config.getDisabledRuleIds()) {
+      for (      final String id : config.getDisabledRuleIds()) {
         langTool.disableRule(id);
       }
     }
-    Set<String> disabledCategories=config.getDisabledCategoryNames();
+    final Set<String> disabledCategories=config.getDisabledCategoryNames();
     if (disabledCategories != null) {
-      for (      String categoryName : disabledCategories) {
+      for (      final String categoryName : disabledCategories) {
         langTool.disableCategory(categoryName);
       }
     }
     try {
-      List<RuleMatch> ruleMatches=langTool.check(paraText.substring(startOfSentencePos,suggEndOfSentencePos));
+      final List<RuleMatch> ruleMatches=langTool.check(paraText);
       if (ruleMatches.size() > 0) {
-        SingleGrammarError[] errorArray=new SingleGrammarError[ruleMatches.size()];
+        final SingleGrammarError[] errorArray=new SingleGrammarError[ruleMatches.size()];
         ;
         int i=0;
-        for (        RuleMatch myRuleMatch : ruleMatches) {
+        for (        final RuleMatch myRuleMatch : ruleMatches) {
           errorArray[i]=createOOoError(locale,myRuleMatch);
           i++;
         }
         paRes.aGrammarErrors=errorArray;
       }
     }
- catch (    IOException exception) {
+ catch (    final IOException exception) {
       showError(exception);
     }
   }

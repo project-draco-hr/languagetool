@@ -2,12 +2,12 @@
   if (xFlatPI == null) {
     return new TextToCheck(new ArrayList<String>(),false);
   }
-  com.sun.star.text.XFlatParagraphIterator xParaAccess=xFlatPI.getFlatParagraphIterator(com.sun.star.text.TextMarkupType.GRAMMAR,false);
+  final com.sun.star.text.XFlatParagraphIterator xParaAccess=xFlatPI.getFlatParagraphIterator(com.sun.star.text.TextMarkupType.GRAMMAR,false);
   if (xParaAccess == null) {
     System.err.println("xParaAccess == null");
     return new TextToCheck(new ArrayList<String>(),false);
   }
-  List<String> paragraphs=new ArrayList<String>();
+  final List<String> paragraphs=new ArrayList<String>();
   try {
     com.sun.star.text.XFlatParagraph xParaEnum=xParaAccess.getFirstPara();
     String paraString=xParaEnum.getText();
@@ -33,7 +33,7 @@
       }
     }
   }
- catch (  Exception e) {
+ catch (  final Exception e) {
     throw new RuntimeException(e);
   }
   return new TextToCheck(paragraphs,false);
