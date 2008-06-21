@@ -6,9 +6,6 @@
   paRes.aLocale=locale;
   paRes.nDocumentId=docID;
   paRes.aText=paraText;
-  if (w.tokenize(paraText).size() == 1) {
-    return paRes;
-  }
   if (paraText != null) {
     paRes.nEndOfSentencePos=paraText.length();
   }
