@@ -9,6 +9,7 @@
     homeDir=getHomeDir();
     config=new Configuration(homeDir,CONFIG_FILE);
     messages=JLanguageTool.getMessageBundle();
+    w=new WordTokenizer();
   }
  catch (  final Throwable e) {
     writeError(e);
