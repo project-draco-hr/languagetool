@@ -6,7 +6,7 @@
   if (docLanguage == null) {
     return;
   }
-  final ProgressDialog progressDialog=new ProgressDialog(messages);
+  final ProgressDialog progressDialog=new ProgressDialog(MESSAGES);
   final CheckerThread checkerThread=new CheckerThread(textToCheck.paragraphs,docLanguage,config,progressDialog);
   checkerThread.start();
   while (true) {
@@ -23,12 +23,12 @@
   final List<CheckedParagraph> checkedParagraphs=checkerThread.getRuleMatches();
   if (checkedParagraphs.size() == 0) {
     String msg;
-    final String translatedLangName=messages.getString(docLanguage.getShortName());
+    final String translatedLangName=MESSAGES.getString(docLanguage.getShortName());
     if (textToCheck.isSelection) {
-      msg=Tools.makeTexti18n(messages,"guiNoErrorsFoundSelectedText",new String[]{translatedLangName});
+      msg=Tools.makeTexti18n(MESSAGES,"guiNoErrorsFoundSelectedText",new String[]{translatedLangName});
     }
  else {
-      msg=Tools.makeTexti18n(messages,"guiNoErrorsFound",new String[]{translatedLangName});
+      msg=Tools.makeTexti18n(MESSAGES,"guiNoErrorsFound",new String[]{translatedLangName});
     }
     final DialogThread dt=new DialogThread(msg);
     dt.start();

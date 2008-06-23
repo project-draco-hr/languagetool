@@ -1,4 +1,0 @@
-{
-  AboutDialog about=new AboutDialog(messages);
-  about.show();
-}

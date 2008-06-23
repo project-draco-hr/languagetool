@@ -1,4 +1,0 @@
-{
-  String[] sSupportedServiceNames={__serviceName};
-  return sSupportedServiceNames;
-}

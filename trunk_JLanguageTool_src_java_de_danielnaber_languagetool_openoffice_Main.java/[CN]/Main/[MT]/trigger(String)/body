@@ -11,7 +11,7 @@
       runOptionsDialog();
     }
  else     if (sEvent.equals("about")) {
-      final AboutDialogThread aboutthread=new AboutDialogThread(messages);
+      final AboutDialogThread aboutthread=new AboutDialogThread(MESSAGES);
       aboutthread.start();
     }
  else {

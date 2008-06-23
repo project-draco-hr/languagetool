@@ -8,7 +8,6 @@
     xFlatPI=(XFlatParagraphIteratorProvider)UnoRuntime.queryInterface(XFlatParagraphIteratorProvider.class,xComponent);
     homeDir=getHomeDir();
     config=new Configuration(homeDir,CONFIG_FILE);
-    messages=JLanguageTool.getMessageBundle();
   }
  catch (  final Throwable e) {
     writeError(e);

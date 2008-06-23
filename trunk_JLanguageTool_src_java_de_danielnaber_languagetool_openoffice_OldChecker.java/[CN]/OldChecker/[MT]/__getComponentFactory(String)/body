@@ -1,5 +1,0 @@
-{
-  XSingleComponentFactory xFactory=null;
-  if (sImplName.equals(_Main.class.getName()))   xFactory=Factory.createComponentFactory(_Main.class,_Main.getServiceNames());
-  return xFactory;
-}
