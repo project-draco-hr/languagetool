@@ -1,5 +1,6 @@
 {
   try {
+    xContext=xCompContext;
     final XMultiComponentFactory xMCF=xCompContext.getServiceManager();
     final Object desktop=xMCF.createInstanceWithContext("com.sun.star.frame.Desktop",xCompContext);
     final XDesktop xDesktop=(XDesktop)UnoRuntime.queryInterface(XDesktop.class,desktop);

@@ -7,6 +7,28 @@
       final TextToCheck textToCheck=getText();
       checkText(textToCheck);
     }
+ else     if (sEvent.equals("test_new_win")) {
+      XMultiComponentFactory xMCF=xContext.getServiceManager();
+      final XNameAccess xNameAccess=(XNameAccess)UnoRuntime.queryInterface(XNameAccess.class,xContext);
+      Object oPIP=xNameAccess.getByName("/singletons/com.sun.star.deployment.PackageInformationProvider");
+      XPackageInformationProvider xPIP=(XPackageInformationProvider)UnoRuntime.queryInterface(XPackageInformationProvider.class,oPIP);
+      final String sPackageURL=xPIP.getPackageLocation("org.openoffice.languagetool.oxt");
+      final String sDialogURL=sPackageURL + "/Options.xdl";
+      Object oDialogProvider=xMCF.createInstanceWithContext("com.sun.star.awt.DialogProvider",xContext);
+      XDialogProvider xDialogProv=(XDialogProvider)UnoRuntime.queryInterface(XDialogProvider.class,oDialogProvider);
+      XDialog xDialog=xDialogProv.createDialog(sDialogURL);
+      XControlContainer xDlgContainer=(XControlContainer)UnoRuntime.queryInterface(XControlContainer.class,xDialog);
+      XControl xListControl=xDlgContainer.getControl("LanguageList");
+      XListBox xListBox=(XListBox)UnoRuntime.queryInterface(XListBox.class,xListControl);
+      for (short i=0; i < Language.LANGUAGES.length - 1; i++) {
+        xListBox.addItem(Language.LANGUAGES[i].getTranslatedName(MESSAGES),i);
+      }
+      XButton xOKButton=(XButton)UnoRuntime.queryInterface(XButton.class,xDlgContainer.getControl("OK_Button"));
+      xOKButton.setLabel(StringTools.getOOoLabel(MESSAGES.getString("guiOKButton")));
+      XButton xCancelButton=(XButton)UnoRuntime.queryInterface(XButton.class,xDlgContainer.getControl("Cancel_Button"));
+      xCancelButton.setLabel(StringTools.getOOoLabel(MESSAGES.getString("guiCancelButton")));
+      short nResult=xDialog.execute();
+    }
  else     if (sEvent.equals("configure")) {
       runOptionsDialog();
     }
