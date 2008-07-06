@@ -30,6 +30,10 @@
     startSymbols=UK_START_SYMBOLS;
     endSymbols=UK_END_SYMBOLS;
   }
+ else   if (language.equals(Language.RUSSIAN)) {
+    startSymbols=RU_START_SYMBOLS;
+    endSymbols=RU_END_SYMBOLS;
+  }
  else   if (language.equals(Language.ITALIAN)) {
     startSymbols=IT_START_SYMBOLS;
     endSymbols=IT_END_SYMBOLS;
