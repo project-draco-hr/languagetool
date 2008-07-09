@@ -1,0 +1,9 @@
+{
+  if (xLinEvLis != null) {
+    xEventListeners.add(xLinEvLis);
+    return true;
+  }
+ else {
+    return false;
+  }
+}

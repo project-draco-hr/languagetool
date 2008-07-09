@@ -1,6 +1,0 @@
-int docID
-XFlatParagraph para
-String paraText
-Locale locale
-int nPosInSentence
-int suggestedEndOfSentencePos

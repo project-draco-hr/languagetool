@@ -1,0 +1,11 @@
+{
+  if (!xEventListeners.isEmpty()) {
+    for (    final XLinguServiceEventListener xEvLis : xEventListeners) {
+      if (xEvLis != null) {
+        final com.sun.star.linguistic2.LinguServiceEvent xEvent=new com.sun.star.linguistic2.LinguServiceEvent();
+        xEvent.nEvent=com.sun.star.linguistic2.LinguServiceEventFlags.GRAMMAR_CHECK_AGAIN;
+        xEvLis.processLinguServiceEvent(xEvent);
+      }
+    }
+  }
+}

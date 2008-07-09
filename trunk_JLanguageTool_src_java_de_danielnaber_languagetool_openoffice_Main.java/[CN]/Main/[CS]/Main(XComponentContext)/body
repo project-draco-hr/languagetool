@@ -9,6 +9,7 @@
     xFlatPI=(XFlatParagraphIteratorProvider)UnoRuntime.queryInterface(XFlatParagraphIteratorProvider.class,xComponent);
     homeDir=getHomeDir();
     config=new Configuration(homeDir,CONFIG_FILE);
+    xEventListeners=new ArrayList<XLinguServiceEventListener>();
   }
  catch (  final Throwable e) {
     writeError(e);

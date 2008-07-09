@@ -1,0 +1,4 @@
+{
+  final PrintLocales prg=new PrintLocales();
+  prg.run();
+}

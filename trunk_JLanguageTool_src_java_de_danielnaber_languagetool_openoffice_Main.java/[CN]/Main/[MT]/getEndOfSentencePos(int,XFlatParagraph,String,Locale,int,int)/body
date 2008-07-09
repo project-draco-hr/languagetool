@@ -1,8 +1,0 @@
-{
-  if (paraText != null) {
-    return paraText.length();
-  }
- else {
-    return -1;
-  }
-}

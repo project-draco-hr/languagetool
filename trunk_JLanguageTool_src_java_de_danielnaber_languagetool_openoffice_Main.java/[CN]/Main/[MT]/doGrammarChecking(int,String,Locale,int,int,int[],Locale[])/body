@@ -1,7 +1,6 @@
 {
   final GrammarCheckingResult paRes=new GrammarCheckingResult();
   paRes.nEndOfSentencePos=suggEndOfSentencePos - startOfSentencePos;
-  paRes.xFlatParagraph=xPara;
   paRes.xGrammarChecker=this;
   paRes.aLocale=locale;
   paRes.nDocumentId=docID;

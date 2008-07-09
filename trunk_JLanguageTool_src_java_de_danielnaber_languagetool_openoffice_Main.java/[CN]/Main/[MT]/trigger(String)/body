@@ -27,10 +27,24 @@
       xOKButton.setLabel(StringTools.getOOoLabel(MESSAGES.getString("guiOKButton")));
       XButton xCancelButton=(XButton)UnoRuntime.queryInterface(XButton.class,xDlgContainer.getControl("Cancel_Button"));
       xCancelButton.setLabel(StringTools.getOOoLabel(MESSAGES.getString("guiCancelButton")));
+      XControl xControlTree=xDlgContainer.getControl("Rules");
+      XControlModel xTreeModel=xControlTree.getModel();
+      Object xTreeData=xMCF.createInstanceWithContext("com.sun.star.awt.tree.MutableTreeDataModel",xContext);
+      XMutableTreeDataModel mxTreeDataModel=(XMutableTreeDataModel)UnoRuntime.queryInterface(XMutableTreeDataModel.class,xTreeData);
+      XMutableTreeNode xNode=mxTreeDataModel.createNode("Rules",false);
+      xNode.appendChild(mxTreeDataModel.createNode("Misc",false));
+      xNode.appendChild(mxTreeDataModel.createNode("Punctuation",false));
+      mxTreeDataModel.setRoot(xNode);
+      XPropertySet xTreeModelProperty=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,xTreeModel);
+      xTreeModelProperty.setPropertyValue("DataModel",mxTreeDataModel);
+      xNode.setDataValue("test2");
+      xNode.setExpandedGraphicURL(sPackageURL + "triangle_down.png");
+      xNode.setCollapsedGraphicURL(sPackageURL + "triangle_right.png");
       short nResult=xDialog.execute();
     }
  else     if (sEvent.equals("configure")) {
       runOptionsDialog();
+      resetDocument();
     }
  else     if (sEvent.equals("about")) {
       final AboutDialogThread aboutthread=new AboutDialogThread(MESSAGES);
