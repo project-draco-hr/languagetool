@@ -11,6 +11,18 @@
  else {
     return paRes;
   }
+  try {
+    final File f=new File(homeDir,CONFIG_FILE);
+    if (configTimeStamp != f.lastModified()) {
+      configTimeStamp=f.lastModified();
+      config=new Configuration(homeDir,CONFIG_FILE);
+      langTool=null;
+      resetDocument();
+    }
+  }
+ catch (  final Exception exception) {
+    showError(exception);
+  }
   if (hasLocale(locale)) {
     if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null) {
       docLanguage=Language.getLanguageForShortName(locale.Language);
