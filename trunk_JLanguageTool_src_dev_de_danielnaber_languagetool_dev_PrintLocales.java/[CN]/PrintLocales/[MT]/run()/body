@@ -12,6 +12,8 @@
       }
     }
   }
+  final File f=new File("ooolocales.properties");
+  f.setWritable(true);
   final Properties propLoc=new Properties();
   propLoc.setProperty("countryvariants",locales);
   propLoc.store(new FileOutputStream("ooolocales.properties"),"Locales");
