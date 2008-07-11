@@ -1,7 +1,7 @@
 {
-  XSingleComponentFactory xFactory=null;
+  SingletonFactory xFactory=null;
   if (sImplName.equals(Main.class.getName())) {
-    xFactory=Factory.createComponentFactory(Main.class,Main.getServiceNames());
+    xFactory=new SingletonFactory();
   }
   return xFactory;
 }

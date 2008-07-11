@@ -13,11 +13,10 @@
   }
   try {
     final File f=new File(homeDir,CONFIG_FILE);
-    if (configTimeStamp != f.lastModified()) {
+    if (configTimeStamp != f.lastModified() || config == null) {
       configTimeStamp=f.lastModified();
       config=new Configuration(homeDir,CONFIG_FILE);
       langTool=null;
-      resetDocument();
     }
   }
  catch (  final Exception exception) {
