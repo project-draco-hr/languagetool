@@ -2,21 +2,21 @@
   if (para == null) {
     return null;
   }
-  com.sun.star.container.XEnumerationAccess xPortionAccess=(com.sun.star.container.XEnumerationAccess)UnoRuntime.queryInterface(com.sun.star.container.XEnumerationAccess.class,para);
+  final com.sun.star.container.XEnumerationAccess xPortionAccess=(com.sun.star.container.XEnumerationAccess)UnoRuntime.queryInterface(com.sun.star.container.XEnumerationAccess.class,para);
   if (xPortionAccess == null) {
     System.err.println("xPortionAccess is null");
     return null;
   }
-  StringBuilder sb=new StringBuilder();
-  for (XEnumeration portionEnum=xPortionAccess.createEnumeration(); portionEnum.hasMoreElements(); ) {
-    Object textPortion=portionEnum.nextElement();
-    XPropertySet textProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,textPortion);
-    String type=(String)textProps.getPropertyValue("TextPortionType");
+  final StringBuilder sb=new StringBuilder();
+  for (final XEnumeration portionEnum=xPortionAccess.createEnumeration(); portionEnum.hasMoreElements(); ) {
+    final Object textPortion=portionEnum.nextElement();
+    final XPropertySet textProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,textPortion);
+    final String type=(String)textProps.getPropertyValue("TextPortionType");
     if ("Footnote".equals(type) || "DocumentIndexMark".equals(type)) {
       sb.append("1");
     }
  else {
-      XTextRange xtr=(XTextRange)UnoRuntime.queryInterface(XTextRange.class,textPortion);
+      final XTextRange xtr=(XTextRange)UnoRuntime.queryInterface(XTextRange.class,textPortion);
       sb.append(xtr.getString());
     }
   }

@@ -3,7 +3,7 @@
     instance=new de.danielnaber.languagetool.openoffice.Main(arg0);
   }
  else {
-    de.danielnaber.languagetool.openoffice.Main x=(de.danielnaber.languagetool.openoffice.Main)instance;
+    final de.danielnaber.languagetool.openoffice.Main x=(de.danielnaber.languagetool.openoffice.Main)instance;
     x.changeContext(arg0);
   }
   return instance;

@@ -7,6 +7,7 @@
   configThread.start();
   while (true) {
     if (configThread.done()) {
+      resetDocument();
       break;
     }
     try {

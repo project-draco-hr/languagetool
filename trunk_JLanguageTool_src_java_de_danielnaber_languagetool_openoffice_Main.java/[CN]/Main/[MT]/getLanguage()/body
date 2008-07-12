@@ -1,5 +1,7 @@
 {
-  if (xTextDoc == null)   return Language.ENGLISH;
+  if (xTextDoc == null) {
+    return Language.ENGLISH;
+  }
   Locale charLocale;
   try {
     final XModel model=(XModel)UnoRuntime.queryInterface(XModel.class,xComponent);
@@ -8,8 +10,8 @@
     final XPropertySet xCursorProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,xCursor);
     charLocale=(Locale)xCursorProps.getPropertyValue("CharLocale");
     boolean langIsSupported=false;
-    for (int i=0; i < Language.LANGUAGES.length; i++) {
-      if (Language.LANGUAGES[i].getShortName().equals(charLocale.Language)) {
+    for (    Language element : Language.LANGUAGES) {
+      if (element.getShortName().equals(charLocale.Language)) {
         langIsSupported=true;
         break;
       }
@@ -19,10 +21,10 @@
       return null;
     }
   }
- catch (  UnknownPropertyException e) {
+ catch (  final UnknownPropertyException e) {
     throw new RuntimeException(e);
   }
-catch (  WrappedTargetException e) {
+catch (  final WrappedTargetException e) {
     throw new RuntimeException(e);
   }
   return Language.getLanguageForShortName(charLocale.Language);

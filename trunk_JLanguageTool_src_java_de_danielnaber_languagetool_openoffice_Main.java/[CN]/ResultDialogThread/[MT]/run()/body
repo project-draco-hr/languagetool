@@ -1,6 +1,10 @@
 {
   OOoDialog dialog;
-  if (xViewCursor == null)   dialog=new OOoDialog(configuration,rules,xTextDoc,checkedParagraphs);
- else   dialog=new OOoDialog(configuration,rules,xTextDoc,checkedParagraphs,xViewCursor,textTocheck);
+  if (xViewCursor == null) {
+    dialog=new OOoDialog(configuration,rules,xTextDoc,checkedParagraphs);
+  }
+ else {
+    dialog=new OOoDialog(configuration,rules,xTextDoc,checkedParagraphs,xViewCursor,textTocheck);
+  }
   dialog.show();
 }

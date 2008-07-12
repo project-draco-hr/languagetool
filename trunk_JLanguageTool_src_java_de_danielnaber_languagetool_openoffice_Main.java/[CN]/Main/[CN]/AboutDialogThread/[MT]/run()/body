@@ -1,7 +1,7 @@
 {
-  XModel model=(XModel)UnoRuntime.queryInterface(XModel.class,xComponent);
-  XWindow parentWindow=model.getCurrentController().getFrame().getContainerWindow();
-  XWindowPeer parentWindowPeer=(XWindowPeer)UnoRuntime.queryInterface(XWindowPeer.class,parentWindow);
+  final XModel model=(XModel)UnoRuntime.queryInterface(XModel.class,xComponent);
+  final XWindow parentWindow=model.getCurrentController().getFrame().getContainerWindow();
+  final XWindowPeer parentWindowPeer=(XWindowPeer)UnoRuntime.queryInterface(XWindowPeer.class,parentWindow);
   final OOoAboutDialog about=new OOoAboutDialog(messages,parentWindowPeer);
   about.show();
 }
