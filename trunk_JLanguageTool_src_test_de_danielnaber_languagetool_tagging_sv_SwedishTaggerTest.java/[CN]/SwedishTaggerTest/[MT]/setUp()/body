@@ -1,0 +1,4 @@
+{
+  tagger=new SwedishTagger();
+  tokenizer=new WordTokenizer();
+}
