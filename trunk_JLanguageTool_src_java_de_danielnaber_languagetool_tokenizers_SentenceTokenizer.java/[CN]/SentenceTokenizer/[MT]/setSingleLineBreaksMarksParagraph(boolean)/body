@@ -1,4 +1,8 @@
 {
-  if (lineBreakParagraphs)   paragraph=paragraphByLineBreak;
- else   paragraph=paragraphByTwoLineBreaks;
+  if (lineBreakParagraphs) {
+    paragraph=paragraphByLineBreak;
+  }
+ else {
+    paragraph=paragraphByTwoLineBreaks;
+  }
 }

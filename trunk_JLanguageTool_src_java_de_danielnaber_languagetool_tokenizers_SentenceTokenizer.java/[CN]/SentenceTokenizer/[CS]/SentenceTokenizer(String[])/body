@@ -1,6 +1,6 @@
 {
   this();
-  for (int i=0; i < abbrevList.length; i++) {
-    abbreviations.add(abbrevList[i]);
+  for (  String element : abbrevList) {
+    abbreviations.add(element);
   }
 }
