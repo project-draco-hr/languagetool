@@ -9,9 +9,11 @@
     config.setDisabledCategoryNames(cfgDialog.getDisabledCategoryNames());
     config.setMotherTongue(cfgDialog.getMotherTongue());
     config.saveConfiguration();
+    if (mainThread != null) {
+      mainThread.resetDocument();
+    }
   }
  catch (  Throwable e) {
-    done=true;
     Main.showError(e);
   }
 }

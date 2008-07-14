@@ -1,5 +1,8 @@
 {
-  if (xLinEvLis != null) {
+  if (xLinEvLis == null) {
+    return false;
+  }
+ else {
     if (xEventListeners.contains(xLinEvLis)) {
       xEventListeners.remove(xLinEvLis);
       return true;
@@ -7,8 +10,5 @@
  else {
       return false;
     }
-  }
- else {
-    return false;
   }
 }

@@ -33,11 +33,9 @@
       serverMode=serverCheckbox.isSelected();
       serverPort=Integer.parseInt(serverPortField.getText());
     }
-    isClosed=true;
     dialog.setVisible(false);
   }
  else   if (e.getSource() == cancelButton) {
-    isClosed=true;
     dialog.setVisible(false);
   }
 }

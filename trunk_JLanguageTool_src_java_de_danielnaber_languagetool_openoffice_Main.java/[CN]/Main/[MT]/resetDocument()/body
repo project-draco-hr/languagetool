@@ -7,5 +7,6 @@
         xEvLis.processLinguServiceEvent(xEvent);
       }
     }
+    recheck=true;
   }
 }

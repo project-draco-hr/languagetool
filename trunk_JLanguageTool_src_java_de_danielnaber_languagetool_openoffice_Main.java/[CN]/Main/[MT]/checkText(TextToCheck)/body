@@ -21,7 +21,7 @@
   }
   progressDialog.close();
   final List<CheckedParagraph> checkedParagraphs=checkerThread.getRuleMatches();
-  if (checkedParagraphs.size() == 0) {
+  if (checkedParagraphs.isEmpty()) {
     String msg;
     final String translatedLangName=MESSAGES.getString(docLanguage.getShortName());
     if (textToCheck.isSelection) {

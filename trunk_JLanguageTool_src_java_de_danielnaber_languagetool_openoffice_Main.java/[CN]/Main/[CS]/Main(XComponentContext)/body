@@ -7,10 +7,8 @@
     xComponent=xDesktop.getCurrentComponent();
     xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,xComponent);
     xFlatPI=(XFlatParagraphIteratorProvider)UnoRuntime.queryInterface(XFlatParagraphIteratorProvider.class,xComponent);
-    homeDir=getHomeDir();
+    final File homeDir=getHomeDir();
     config=new Configuration(homeDir,CONFIG_FILE);
-    final File f=new File(homeDir,CONFIG_FILE);
-    configTimeStamp=f.lastModified();
     xEventListeners=new ArrayList<XLinguServiceEventListener>();
   }
  catch (  final Throwable e) {

@@ -3,18 +3,6 @@
   if (lang == null) {
     return;
   }
-  final ConfigThread configThread=new ConfigThread(lang,config);
+  final ConfigThread configThread=new ConfigThread(lang,config,this);
   configThread.start();
-  while (true) {
-    if (configThread.done()) {
-      resetDocument();
-      break;
-    }
-    try {
-      Thread.sleep(100);
-    }
- catch (    final InterruptedException e) {
-      break;
-    }
-  }
 }

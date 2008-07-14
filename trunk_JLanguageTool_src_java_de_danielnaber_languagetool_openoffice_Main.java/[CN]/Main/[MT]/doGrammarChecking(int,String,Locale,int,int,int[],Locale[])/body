@@ -5,25 +5,14 @@
   paRes.aLocale=locale;
   paRes.nDocumentId=docID;
   paRes.aText=paraText;
-  if (paraText != null) {
-    paRes.nEndOfSentencePos=paraText.length();
-  }
- else {
+  if (paraText == null) {
     return paRes;
   }
-  try {
-    final File f=new File(homeDir,CONFIG_FILE);
-    if (configTimeStamp != f.lastModified() || config == null) {
-      configTimeStamp=f.lastModified();
-      config=new Configuration(homeDir,CONFIG_FILE);
-      langTool=null;
-    }
-  }
- catch (  final Exception exception) {
-    showError(exception);
+ else {
+    paRes.nEndOfSentencePos=paraText.length();
   }
   if (hasLocale(locale)) {
-    if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null) {
+    if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null || recheck) {
       docLanguage=Language.getLanguageForShortName(locale.Language);
       if (docLanguage == null) {
         return paRes;
@@ -32,6 +21,7 @@
         langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
         langTool.activateDefaultPatternRules();
         langTool.activateDefaultFalseFriendRules();
+        recheck=false;
       }
  catch (      final Exception exception) {
         showError(exception);
@@ -50,7 +40,7 @@
     }
     try {
       final List<RuleMatch> ruleMatches=langTool.check(paraText);
-      if (ruleMatches.size() > 0) {
+      if (!ruleMatches.isEmpty()) {
         final SingleGrammarError[] errorArray=new SingleGrammarError[ruleMatches.size()];
         ;
         int i=0;

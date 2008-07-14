@@ -1,6 +1,7 @@
 {
   this.docLanguage=docLanguage;
   this.config=config;
+  mainThread=main;
   cfgDialog=new ConfigurationDialog(null,true);
   cfgDialog.setDisabledRules(config.getDisabledRuleIds());
   cfgDialog.setEnabledRules(config.getEnabledRuleIds());
