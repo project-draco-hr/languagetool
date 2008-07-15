@@ -25,5 +25,5 @@
  catch (  final Exception e) {
     throw new RuntimeException("Failed to load rules: " + e.getMessage(),e);
   }
-  return rules.toArray(new Rule[0]);
+  return rules.toArray(new Rule[rules.size()]);
 }

@@ -75,13 +75,11 @@
     }
   }
   for (  final Rule rule : allRules) {
-    if (rule.isParagraphBackTrack()) {
-      if (rule.getMatches() != null) {
-        final List<RuleMatch> rm=rule.getMatches();
-        for (        final RuleMatch r : rm) {
-          if (rule.isInRemoved(r)) {
-            ruleMatches.remove(r);
-          }
+    if (rule.isParagraphBackTrack() && (rule.getMatches() != null)) {
+      final List<RuleMatch> rm=rule.getMatches();
+      for (      final RuleMatch r : rm) {
+        if (rule.isInRemoved(r)) {
+          ruleMatches.remove(r);
         }
       }
     }

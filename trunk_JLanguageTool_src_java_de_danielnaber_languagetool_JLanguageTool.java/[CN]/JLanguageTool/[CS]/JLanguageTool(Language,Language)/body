@@ -4,7 +4,7 @@
   }
   this.language=language;
   this.motherTongue=motherTongue;
-  messages=getMessageBundle(language);
+  final ResourceBundle messages=getMessageBundle(language);
   final Rule[] allBuiltinRules=getAllBuiltinRules(language,messages);
   for (  final Rule element : allBuiltinRules) {
     if (element.supportsLanguage(language)) {

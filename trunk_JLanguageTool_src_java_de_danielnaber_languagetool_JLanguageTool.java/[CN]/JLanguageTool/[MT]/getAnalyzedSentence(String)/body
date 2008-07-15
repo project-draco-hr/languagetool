@@ -22,11 +22,9 @@
   }
   final AnalyzedToken sentenceEnd=new AnalyzedToken(tokenArray[lastToken].getToken(),SENTENCE_END_TAGNAME,tokenArray[lastToken].getAnalyzedToken(0).getLemma(),tokenArray[lastToken].getAnalyzedToken(0).getStartPos());
   tokenArray[lastToken].addReading(sentenceEnd);
-  if (tokenArray.length == 2) {
-    if (tokenArray[0].isSentStart() && tokenArray[1].getToken().equals("\n")) {
-      final AnalyzedToken paragraphEnd=new AnalyzedToken(tokenArray[lastToken].getToken(),PARAGRAPH_END_TAGNAME,tokenArray[lastToken].getAnalyzedToken(0).getLemma(),tokenArray[lastToken].getAnalyzedToken(0).getStartPos());
-      tokenArray[lastToken].addReading(paragraphEnd);
-    }
+  if (tokenArray.length == 2 && (tokenArray[0].isSentStart()) && tokenArray[1].getToken().equals("\n")) {
+    final AnalyzedToken paragraphEnd=new AnalyzedToken(tokenArray[lastToken].getToken(),PARAGRAPH_END_TAGNAME,tokenArray[lastToken].getAnalyzedToken(0).getLemma(),tokenArray[lastToken].getAnalyzedToken(0).getStartPos());
+    tokenArray[lastToken].addReading(paragraphEnd);
   }
   AnalyzedSentence finalSentence=new AnalyzedSentence(tokenArray);
   finalSentence=disambiguator.disambiguate(finalSentence);
