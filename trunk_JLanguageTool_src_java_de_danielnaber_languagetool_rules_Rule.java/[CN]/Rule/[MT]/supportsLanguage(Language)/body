@@ -1,9 +1,4 @@
 {
   Set<String> relevantIDs=language.getRelevantRuleIDs();
-  if (relevantIDs != null && relevantIDs.contains(getId())) {
-    return true;
-  }
- else {
-    return false;
-  }
+  return (relevantIDs != null && relevantIDs.contains(getId()));
 }
