@@ -1,6 +1,6 @@
 {
   if (qName.equals("rule")) {
-    DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,elementList,disambiguatedPOS,posSelector);
+    final DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,elementList,disambiguatedPOS,posSelector);
     rule.setStartPositionCorrection(positionCorrection);
     rules.add(rule);
     if (elementList != null) {

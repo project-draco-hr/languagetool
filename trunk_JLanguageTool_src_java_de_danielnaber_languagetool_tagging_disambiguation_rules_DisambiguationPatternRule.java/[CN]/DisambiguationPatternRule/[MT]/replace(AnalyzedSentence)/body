@@ -1,7 +1,7 @@
 {
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  AnalyzedTokenReadings[] whTokens=text.getTokens();
-  int[] tokenPositions=new int[tokens.length + 1];
+  final AnalyzedTokenReadings[] whTokens=text.getTokens();
+  final int[] tokenPositions=new int[tokens.length + 1];
   int tokenPos=0;
   int prevSkipNext=0;
   int skipNext=0;
@@ -50,21 +50,17 @@
               prevMatched=true;
             }
           }
-          if (elem.referenceElement()) {
-            if (firstMatchToken + elem.getMatch().getTokenRef() < tokens.length) {
-              elem.getMatch().setToken(tokens[firstMatchToken + elem.getMatch().getTokenRef()]);
-              elem.getMatch().setSynthesizer(language.getSynthesizer());
-              elem.compile();
-            }
+          if (elem.referenceElement() && (firstMatchToken + elem.getMatch().getTokenRef() < tokens.length)) {
+            elem.getMatch().setToken(tokens[firstMatchToken + elem.getMatch().getTokenRef()]);
+            elem.getMatch().setSynthesizer(language.getSynthesizer());
+            elem.compile();
           }
           if (elem.hasAndGroup()) {
-            for (            Element andElement : elem.getAndGroup()) {
-              if (andElement.referenceElement()) {
-                if (firstMatchToken + andElement.getMatch().getTokenRef() < tokens.length) {
-                  andElement.getMatch().setToken(tokens[firstMatchToken + andElement.getMatch().getTokenRef()]);
-                  andElement.getMatch().setSynthesizer(language.getSynthesizer());
-                  andElement.compile();
-                }
+            for (            final Element andElement : elem.getAndGroup()) {
+              if (andElement.referenceElement() && (firstMatchToken + andElement.getMatch().getTokenRef() < tokens.length)) {
+                andElement.getMatch().setToken(tokens[firstMatchToken + andElement.getMatch().getTokenRef()]);
+                andElement.getMatch().setSynthesizer(language.getSynthesizer());
+                andElement.compile();
               }
             }
             if (l == 0) {
@@ -148,14 +144,12 @@
         String lemma="";
         for (int l=0; l < numRead; l++) {
           if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag() != null) {
-            if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag().equals(disambiguatedPOS)) {
-              if (whTokens[fromPos].getAnalyzedToken(l).getLemma() != null) {
-                lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
-              }
+            if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag().equals(disambiguatedPOS) && (whTokens[fromPos].getAnalyzedToken(l).getLemma() != null)) {
+              lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
             }
           }
         }
-        if (lemma.equals("")) {
+        if (("").equals(lemma)) {
           lemma=whTokens[fromPos].getAnalyzedToken(0).getLemma();
         }
         final AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma,whTokens[fromPos].getStartPos()));

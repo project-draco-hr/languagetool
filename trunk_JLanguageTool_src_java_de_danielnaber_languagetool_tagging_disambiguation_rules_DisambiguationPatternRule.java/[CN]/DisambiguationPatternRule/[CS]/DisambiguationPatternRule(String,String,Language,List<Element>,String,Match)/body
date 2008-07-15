@@ -1,9 +1,19 @@
 {
-  if (id == null)   throw new NullPointerException("id cannot be null");
-  if (language == null)   throw new NullPointerException("language cannot be null");
-  if (elements == null)   throw new NullPointerException("elements cannot be null");
-  if (description == null)   throw new NullPointerException("description cannot be null");
-  if (disamb == null && posSelect == null)   throw new NullPointerException("disambiguated POS cannot be null");
+  if (id == null) {
+    throw new NullPointerException("id cannot be null");
+  }
+  if (language == null) {
+    throw new NullPointerException("language cannot be null");
+  }
+  if (elements == null) {
+    throw new NullPointerException("elements cannot be null");
+  }
+  if (description == null) {
+    throw new NullPointerException("description cannot be null");
+  }
+  if (disamb == null && posSelect == null) {
+    throw new NullPointerException("disambiguated POS cannot be null");
+  }
   this.id=id;
   this.language=language;
   this.description=description;

@@ -1,7 +1,7 @@
 {
-  DisambiguationRuleHandler handler=new DisambiguationRuleHandler();
-  SAXParserFactory factory=SAXParserFactory.newInstance();
-  SAXParser saxParser=factory.newSAXParser();
+  final DisambiguationRuleHandler handler=new DisambiguationRuleHandler();
+  final SAXParserFactory factory=SAXParserFactory.newInstance();
+  final SAXParser saxParser=factory.newSAXParser();
   saxParser.parse(file,handler);
   rules=handler.getRules();
   return rules;

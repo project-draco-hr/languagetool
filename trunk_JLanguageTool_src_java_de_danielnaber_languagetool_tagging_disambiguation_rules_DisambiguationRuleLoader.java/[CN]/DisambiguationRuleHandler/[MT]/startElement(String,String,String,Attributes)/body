@@ -2,7 +2,9 @@
   if (qName.equals("rule")) {
     id=attrs.getValue("id");
     name=attrs.getValue("name");
-    if (inRuleGroup && id == null)     id=ruleGroupId;
+    if (inRuleGroup && id == null) {
+      id=ruleGroupId;
+    }
     if (inRuleGroup && name == null) {
       name=ruleGroupName;
     }

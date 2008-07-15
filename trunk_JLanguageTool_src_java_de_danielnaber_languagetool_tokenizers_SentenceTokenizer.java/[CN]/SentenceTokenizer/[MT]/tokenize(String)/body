@@ -2,7 +2,7 @@
   s=firstSentenceSplitting(s);
   s=removeFalseEndOfSentence(s);
   s=splitUnsplitStuff(s);
-  stringTokenizer=new StringTokenizer(s,EOS);
+  final StringTokenizer stringTokenizer=new StringTokenizer(s,EOS);
   final List<String> l=new ArrayList<String>();
   while (stringTokenizer.hasMoreTokens()) {
     final String sentence=stringTokenizer.nextToken();
