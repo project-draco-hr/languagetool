@@ -32,4 +32,5 @@
   OOoDialog.centerDialog(dialog);
   dialog.setModal(true);
   dialog.setVisible(true);
+  dialog.setAlwaysOnTop(true);
 }

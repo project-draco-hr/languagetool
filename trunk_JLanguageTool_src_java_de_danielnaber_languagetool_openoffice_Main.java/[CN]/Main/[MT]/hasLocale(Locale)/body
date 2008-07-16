@@ -1,6 +1,6 @@
 {
   for (  final Language element : Language.LANGUAGES) {
-    if (element.getShortName().equals(arg0.Language)) {
+    if (element.getShortName().equals(locale.Language)) {
       return true;
     }
   }

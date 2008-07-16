@@ -1,39 +1,39 @@
 {
-  if (xFlatPI == null) {
-    return new TextToCheck(new ArrayList<String>(),false);
-  }
-  final com.sun.star.text.XFlatParagraphIterator xParaAccess=xFlatPI.getFlatParagraphIterator(com.sun.star.text.TextMarkupType.GRAMMAR,false);
+  com.sun.star.container.XEnumerationAccess xParaAccess=(com.sun.star.container.XEnumerationAccess)UnoRuntime.queryInterface(com.sun.star.container.XEnumerationAccess.class,xTextDoc.getText());
   if (xParaAccess == null) {
     System.err.println("xParaAccess == null");
     return new TextToCheck(new ArrayList<String>(),false);
   }
-  final List<String> paragraphs=new ArrayList<String>();
-  try {
-    com.sun.star.text.XFlatParagraph xParaEnum=xParaAccess.getFirstPara();
-    String paraString=xParaEnum.getText();
-    if (paraString == null) {
-      paragraphs.add("");
-    }
+  XModel xModel=(XModel)UnoRuntime.queryInterface(XModel.class,xTextDoc);
+  if (xModel == null) {
+    DialogThread dt=new DialogThread("Sorry, only text documents are supported");
+    dt.start();
+    return null;
+  }
+  XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,xModel.getCurrentController());
+  xViewCursor=xViewCursorSupplier.getViewCursor();
+  String textToCheck=xViewCursor.getString();
+  if (textToCheck.equals("")) {
+  }
  else {
-      paragraphs.add(paraString);
-    }
-    while (true) {
-      xParaEnum=xParaAccess.getNextPara();
-      if (xParaEnum == null) {
-        break;
+    List<String> l=new ArrayList<String>();
+    l.add(textToCheck);
+    return new TextToCheck(l,true);
+  }
+  List<String> paragraphs=new ArrayList<String>();
+  try {
+    for (com.sun.star.container.XEnumeration xParaEnum=xParaAccess.createEnumeration(); xParaEnum.hasMoreElements(); ) {
+      Object para=xParaEnum.nextElement();
+      String paraString=getParagraphContent(para);
+      if (paraString == null) {
+        paragraphs.add("");
       }
  else {
-        paraString=xParaEnum.getText();
-        if (paraString == null) {
-          paragraphs.add("");
-        }
- else {
-          paragraphs.add(paraString);
-        }
+        paragraphs.add(paraString);
       }
     }
   }
- catch (  final Exception e) {
+ catch (  Exception e) {
     throw new RuntimeException(e);
   }
   return new TextToCheck(paragraphs,false);

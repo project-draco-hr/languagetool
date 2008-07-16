@@ -1,11 +1,11 @@
 {
-synchronized (instance) {
-    if (instance == null) {
-      instance=new de.danielnaber.languagetool.openoffice.Main(xContext);
-    }
+  if (instance == null) {
+    instance=new de.danielnaber.languagetool.openoffice.Main(xContext);
+  }
  else {
+synchronized (instance) {
       instance.changeContext(xContext);
     }
-    return instance;
   }
+  return instance;
 }

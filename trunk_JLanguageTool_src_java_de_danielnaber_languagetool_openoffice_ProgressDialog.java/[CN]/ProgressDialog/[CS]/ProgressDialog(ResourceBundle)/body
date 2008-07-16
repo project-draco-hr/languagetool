@@ -1,6 +1,6 @@
 {
   setTitle(messages.getString("guiProgressWindowTitle"));
-  JPanel progressPanel=new JPanel(new FlowLayout(FlowLayout.CENTER));
+  final JPanel progressPanel=new JPanel(new FlowLayout(FlowLayout.CENTER));
   progressBar=new JProgressBar();
   progressPanel.add(progressBar);
   setContentPane(progressPanel);
@@ -9,4 +9,5 @@
   OOoDialog.centerDialog(this);
   setVisible(true);
   setModal(true);
+  setAlwaysOnTop(true);
 }

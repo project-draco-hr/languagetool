@@ -101,4 +101,5 @@
   centerDialog(dialog);
   dialog.setVisible(true);
   dialog.toFront();
+  dialog.setAlwaysOnTop(true);
 }
