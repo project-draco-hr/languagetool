@@ -23,7 +23,7 @@
       msg=msg.replaceAll("</suggestion>","'");
       System.out.println("Message: " + msg);
       List<String> repl=match.getSuggestedReplacements();
-      if (repl.size() > 0)       System.out.println("Suggestion: " + StringTools.listToString(repl,"; "));
+      if (!repl.isEmpty())       System.out.println("Suggestion: " + StringTools.listToString(repl,"; "));
       System.out.println(StringTools.getContext(match.getFromPos(),match.getToPos(),contents,contextSize));
       if (iter.hasNext())       System.out.println();
       i++;

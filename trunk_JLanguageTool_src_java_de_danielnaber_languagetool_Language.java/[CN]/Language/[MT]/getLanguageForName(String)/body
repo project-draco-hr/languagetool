@@ -1,7 +1,7 @@
 {
-  for (int i=0; i < Language.LANGUAGES.length; i++) {
-    if (languageName.equals(Language.LANGUAGES[i].getName())) {
-      return Language.LANGUAGES[i];
+  for (  Language element : Language.LANGUAGES) {
+    if (languageName.equals(element.getName())) {
+      return element;
     }
   }
   return null;

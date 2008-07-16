@@ -2,7 +2,7 @@
   try {
     return messages.getString(getShortName());
   }
- catch (  MissingResourceException e) {
+ catch (  final MissingResourceException e) {
     return getName();
   }
 }
