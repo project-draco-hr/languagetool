@@ -2,9 +2,9 @@
   if (nonBlankTokens == null) {
     int whCounter=0;
     int nonWhCounter=0;
-    int[] mapping=new int[tokens.length + 1];
-    List<AnalyzedTokenReadings> l=new ArrayList<AnalyzedTokenReadings>();
-    for (    AnalyzedTokenReadings token : tokens) {
+    final int[] mapping=new int[tokens.length + 1];
+    final List<AnalyzedTokenReadings> l=new ArrayList<AnalyzedTokenReadings>();
+    for (    final AnalyzedTokenReadings token : tokens) {
       if (!token.isWhitespace() || token.isSentStart() || token.isSentEnd()|| token.isParaEnd()) {
         l.add(token);
         mapping[nonWhCounter]=whCounter;
@@ -12,7 +12,7 @@
       }
       whCounter++;
     }
-    nonBlankTokens=(AnalyzedTokenReadings[])l.toArray(new AnalyzedTokenReadings[l.size()]);
+    nonBlankTokens=l.toArray(new AnalyzedTokenReadings[l.size()]);
     whPositions=mapping.clone();
   }
   return nonBlankTokens.clone();
