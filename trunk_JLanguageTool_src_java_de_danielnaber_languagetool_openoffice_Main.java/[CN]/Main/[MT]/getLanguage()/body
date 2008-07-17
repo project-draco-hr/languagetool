@@ -1,14 +1,24 @@
 {
-  if (xTextDoc == null) {
+  if (xComponent == null) {
     return Language.ENGLISH;
   }
   Locale charLocale;
+  XPropertySet xCursorProps;
   try {
     final XModel model=(XModel)UnoRuntime.queryInterface(XModel.class,xComponent);
     final XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,model.getCurrentController());
     final XTextViewCursor xCursor=xViewCursorSupplier.getViewCursor();
-    final XPropertySet xCursorProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,xCursor);
-    charLocale=(Locale)xCursorProps.getPropertyValue("CharLocale");
+    if (xCursor.isCollapsed()) {
+      xCursorProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,xCursor);
+    }
+ else {
+      xCursorProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,xCursor.getText().createTextCursorByRange(xCursor.getStart()));
+    }
+    final Object obj=xCursorProps.getPropertyValue("CharLocale");
+    if (obj == null) {
+      return Language.ENGLISH;
+    }
+    charLocale=(Locale)obj;
     boolean langIsSupported=false;
     for (    Language element : Language.LANGUAGES) {
       if (element.getShortName().equals(charLocale.Language)) {

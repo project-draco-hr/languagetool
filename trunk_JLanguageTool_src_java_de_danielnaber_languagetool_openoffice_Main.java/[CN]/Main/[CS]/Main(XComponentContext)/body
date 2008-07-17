@@ -6,7 +6,6 @@
     final XDesktop xDesktop=(XDesktop)UnoRuntime.queryInterface(XDesktop.class,desktop);
     xComponent=xDesktop.getCurrentComponent();
     xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,xComponent);
-    xFlatPI=(XFlatParagraphIteratorProvider)UnoRuntime.queryInterface(XFlatParagraphIteratorProvider.class,xComponent);
     final File homeDir=getHomeDir();
     config=new Configuration(homeDir,CONFIG_FILE);
     xEventListeners=new ArrayList<XLinguServiceEventListener>();

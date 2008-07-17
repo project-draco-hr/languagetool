@@ -6,7 +6,6 @@
     final XDesktop xDesktop=(XDesktop)UnoRuntime.queryInterface(XDesktop.class,desktop);
     xComponent=xDesktop.getCurrentComponent();
     xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,xComponent);
-    xFlatPI=(XFlatParagraphIteratorProvider)UnoRuntime.queryInterface(XFlatParagraphIteratorProvider.class,xComponent);
   }
  catch (  final Throwable e) {
     writeError(e);
