@@ -1,0 +1,22 @@
+{
+  token=anTokReadings[0].getToken();
+  isWhitespace=StringTools.isWhitespace(token);
+  isParaEnd=false;
+  for (  final AnalyzedToken reading : anTokReadings) {
+    if (reading.posTag != null) {
+      isParaEnd|=reading.posTag.equals(JLanguageTool.PARAGRAPH_END_TAGNAME);
+      if (isParaEnd) {
+        break;
+      }
+    }
+  }
+  isSentEnd=false;
+  for (  final AnalyzedToken reading : anTokReadings) {
+    if (reading.posTag != null) {
+      isSentEnd|=reading.posTag.equals(JLanguageTool.SENTENCE_END_TAGNAME);
+      if (isSentEnd) {
+        break;
+      }
+    }
+  }
+}

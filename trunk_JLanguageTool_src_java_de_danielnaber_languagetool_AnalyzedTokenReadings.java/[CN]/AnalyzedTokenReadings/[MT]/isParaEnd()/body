@@ -1,12 +1,3 @@
 {
-  boolean isPE=false;
-  for (  final AnalyzedToken reading : anTokReadings) {
-    if (reading.posTag != null) {
-      isPE|=reading.posTag.equals(JLanguageTool.PARAGRAPH_END_TAGNAME);
-      if (isPE) {
-        return isPE;
-      }
-    }
-  }
-  return isPE;
+  return isParaEnd;
 }
