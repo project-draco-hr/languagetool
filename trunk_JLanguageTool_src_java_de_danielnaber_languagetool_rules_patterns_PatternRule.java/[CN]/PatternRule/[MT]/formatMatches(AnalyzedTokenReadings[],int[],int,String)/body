@@ -31,15 +31,15 @@
  else {
                 String suggestionLeft="";
                 String suggestionRight="";
-                final int sPos=leftSide.lastIndexOf(suggTag);
+                final int sPos=leftSide.lastIndexOf(SUGG_TAG);
                 if (sPos > 0) {
-                  suggestionLeft=leftSide.substring(sPos + suggTag.length());
+                  suggestionLeft=leftSide.substring(sPos + SUGG_TAG.length());
                 }
                 if ("".equals(suggestionLeft)) {
                   errorMessage=leftSide;
                 }
  else {
-                  errorMessage=leftSide.substring(0,leftSide.lastIndexOf(suggTag)) + suggTag;
+                  errorMessage=leftSide.substring(0,leftSide.lastIndexOf(SUGG_TAG)) + SUGG_TAG;
                 }
                 final int rPos=rightSide.indexOf("</suggestion>");
                 if (rPos > 0) {
@@ -49,15 +49,15 @@
                   rightSide=rightSide.substring(rightSide.indexOf("</suggestion>"));
                 }
                 final int lastLeftSugEnd=leftSide.indexOf("</suggestion>");
-                final int lastLeftSugStart=leftSide.lastIndexOf(suggTag);
+                final int lastLeftSugStart=leftSide.lastIndexOf(SUGG_TAG);
                 for (                final String formatMatch : matches) {
                   errorMessage+=suggestionLeft + formatMatch + suggestionRight;
                   if (lastLeftSugEnd < lastLeftSugStart && lastLeftSugStart > 0) {
-                    errorMessage+="</suggestion>, " + suggTag;
+                    errorMessage+="</suggestion>, " + SUGG_TAG;
                   }
                 }
-                final int correctionSug=errorMessage.lastIndexOf(", " + suggTag);
-                if (correctionSug + (", " + suggTag).length() == errorMessage.length()) {
+                final int correctionSug=errorMessage.lastIndexOf(", " + SUGG_TAG);
+                if (correctionSug + (", " + SUGG_TAG).length() == errorMessage.length()) {
                   errorMessage=errorMessage.substring(0,correctionSug);
                 }
                 errorMessage+=rightSide;

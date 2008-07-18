@@ -44,11 +44,9 @@
         final int numberOfReadings=tokens[m].getReadingsLength();
         for (int l=0; l < numberOfReadings; l++) {
           final AnalyzedToken matchToken=tokens[m].getAnalyzedToken(l);
-          if (prevSkipNext > 0 && prevElement != null) {
-            if (prevElement.scopeNextExceptionMatch(matchToken)) {
-              exceptionMatched=true;
-              prevMatched=true;
-            }
+          if (prevSkipNext > 0 && prevElement != null && prevElement.scopeNextExceptionMatch(matchToken)) {
+            exceptionMatched=true;
+            prevMatched=true;
           }
           if (elem.referenceElement() && (firstMatchToken + elem.getMatch().getTokenRef() < tokens.length)) {
             elem.getMatch().setToken(tokens[firstMatchToken + elem.getMatch().getTokenRef()]);
@@ -143,10 +141,8 @@
       if (matchToken == null) {
         String lemma="";
         for (int l=0; l < numRead; l++) {
-          if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag() != null) {
-            if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag().equals(disambiguatedPOS) && (whTokens[fromPos].getAnalyzedToken(l).getLemma() != null)) {
-              lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
-            }
+          if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag() != null && (whTokens[fromPos].getAnalyzedToken(l).getPOSTag().equals(disambiguatedPOS) && (whTokens[fromPos].getAnalyzedToken(l).getLemma() != null))) {
+            lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
           }
         }
         if (("").equals(lemma)) {

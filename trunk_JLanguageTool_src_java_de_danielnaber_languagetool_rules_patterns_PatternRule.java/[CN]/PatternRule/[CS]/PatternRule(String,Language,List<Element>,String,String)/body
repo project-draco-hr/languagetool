@@ -12,7 +12,7 @@
     throw new NullPointerException("description cannot be null");
   }
   this.id=id;
-  PatternRule.language=new Language[]{language};
+  PatternRule.language=language;
   this.description=description;
   this.message=message;
   this.patternElements=new ArrayList<Element>(elements);

@@ -45,22 +45,20 @@
         final int numberOfReadings=tokens[m].getReadingsLength();
         for (int l=0; l < numberOfReadings; l++) {
           final AnalyzedToken matchToken=tokens[m].getAnalyzedToken(l);
-          if (prevSkipNext > 0 && prevElement != null) {
-            if (prevElement.scopeNextExceptionMatch(matchToken)) {
-              exceptionMatched=true;
-              prevMatched=true;
-            }
+          if (prevSkipNext > 0 && prevElement != null && prevElement.scopeNextExceptionMatch(matchToken)) {
+            exceptionMatched=true;
+            prevMatched=true;
           }
           if (elem.referenceElement() && (firstMatchToken + elem.getMatch().getTokenRef() < tokens.length)) {
             elem.getMatch().setToken(tokens[firstMatchToken + elem.getMatch().getTokenRef()]);
-            elem.getMatch().setSynthesizer(language[0].getSynthesizer());
+            elem.getMatch().setSynthesizer(language.getSynthesizer());
             elem.compile();
           }
           if (elem.hasAndGroup()) {
             for (            final Element andElement : elem.getAndGroup()) {
               if (andElement.referenceElement() && (firstMatchToken + andElement.getMatch().getTokenRef() < tokens.length)) {
                 andElement.getMatch().setToken(tokens[firstMatchToken + andElement.getMatch().getTokenRef()]);
-                andElement.getMatch().setSynthesizer(language[0].getSynthesizer());
+                andElement.getMatch().setSynthesizer(language.getSynthesizer());
                 andElement.compile();
               }
             }
@@ -128,7 +126,7 @@
       allElementsMatch=false;
     }
     if (allElementsMatch) {
-      final String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,matchingTokens,message);
+      final String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,message);
       int correctedStPos=0;
       if (startPositionCorrection > 0) {
         for (int l=0; l <= startPositionCorrection; l++) {
@@ -153,7 +151,7 @@
         startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.toString());
       }
       int fromPos=tokens[firstMatchToken + correctedStPos].getStartPos();
-      if (errMessage.contains(suggTag + ",") && firstMatchToken + correctedStPos >= 1) {
+      if (errMessage.contains(SUGG_TAG + ",") && firstMatchToken + correctedStPos >= 1) {
         fromPos=tokens[firstMatchToken + correctedStPos - 1].getStartPos() + tokens[firstMatchToken + correctedStPos - 1].getToken().length();
       }
       final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();

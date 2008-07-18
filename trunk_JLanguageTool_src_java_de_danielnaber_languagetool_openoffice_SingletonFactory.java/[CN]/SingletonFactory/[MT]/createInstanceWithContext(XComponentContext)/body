@@ -3,9 +3,7 @@
     instance=new de.danielnaber.languagetool.openoffice.Main(xContext);
   }
  else {
-synchronized (instance) {
-      instance.changeContext(xContext);
-    }
+    instance.changeContext(xContext);
   }
   return instance;
 }
