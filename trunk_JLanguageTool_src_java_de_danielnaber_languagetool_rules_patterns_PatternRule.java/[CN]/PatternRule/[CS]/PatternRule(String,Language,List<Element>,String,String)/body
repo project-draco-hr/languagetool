@@ -31,7 +31,7 @@
     }
  else {
       curName=e.getPhraseName();
-      if (prevName.equals(curName) || prevName.equals("")) {
+      if (prevName.equals(curName) || ("").equals(prevName)) {
         cnt++;
         useList=true;
       }
@@ -43,7 +43,7 @@
       }
       prevName=curName;
       loopCnt++;
-      if (loopCnt == patternElements.size() && !prevName.equals("")) {
+      if (loopCnt == patternElements.size() && !("").equals(prevName)) {
         elementNo.add(cnt);
       }
     }
