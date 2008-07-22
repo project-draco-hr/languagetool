@@ -14,6 +14,9 @@
         ignore=true;
       }
     }
+    if (analyzedToken.getToken().equals("nichts")) {
+      ignore=true;
+    }
     if ((analyzedToken.hasReadingOfType(POSType.DETERMINER) || isRelevantPronomen) && !ignore) {
       int tokenPos=i + 1;
       if (tokenPos >= tokens.length)       break;
@@ -25,12 +28,16 @@
         AnalyzedGermanTokenReadings nextNextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos];
         if (nextNextToken.hasReadingOfType(POSType.NOMEN)) {
           RuleMatch ruleMatch=checkDetAdjNounAgreement((AnalyzedGermanTokenReadings)tokens[i],nextToken,(AnalyzedGermanTokenReadings)tokens[i + 2]);
-          if (ruleMatch != null)           ruleMatches.add(ruleMatch);
+          if (ruleMatch != null) {
+            ruleMatches.add(ruleMatch);
+          }
         }
       }
  else       if (nextToken.hasReadingOfType(POSType.NOMEN)) {
         RuleMatch ruleMatch=checkDetNounAgreement((AnalyzedGermanTokenReadings)tokens[i],(AnalyzedGermanTokenReadings)tokens[i + 1]);
-        if (ruleMatch != null)         ruleMatches.add(ruleMatch);
+        if (ruleMatch != null) {
+          ruleMatches.add(ruleMatch);
+        }
       }
     }
     pos+=tokens[i].getToken().length();
