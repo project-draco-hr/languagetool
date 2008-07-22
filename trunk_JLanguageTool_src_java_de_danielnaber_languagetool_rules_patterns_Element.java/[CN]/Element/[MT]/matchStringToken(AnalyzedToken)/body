@@ -9,15 +9,7 @@
  else {
     testToken=token.getToken();
   }
-  if (!stringRegExp) {
-    if (caseSensitive) {
-      return stringToken.equals(testToken);
-    }
- else {
-      return stringToken.equalsIgnoreCase(testToken);
-    }
-  }
- else {
+  if (stringRegExp) {
     if (token.getToken() != null) {
       if (m == null) {
         m=p.matcher(testToken);
@@ -26,6 +18,14 @@
         m.reset(testToken);
       }
       return m.matches();
+    }
+  }
+ else {
+    if (caseSensitive) {
+      return stringToken.equals(testToken);
+    }
+ else {
+      return stringToken.equalsIgnoreCase(testToken);
     }
   }
   return false;

@@ -2,18 +2,7 @@
   if ("".equals(referenceString)) {
     referenceString=stringToken;
   }
-  final boolean setsPos=tokenReference.setsPos();
-  if (!setsPos) {
-    stringToken=referenceString.replace("\\" + tokenReference.getTokenRef(),tokenReference.toTokenString());
-  }
-  if (!"".equals(stringToken) && stringRegExp) {
-    regToken=stringToken;
-    if (!caseSensitive) {
-      regToken=CASE_INSENSITIVE + stringToken;
-    }
-    p=Pattern.compile(regToken);
-  }
-  if (setsPos) {
+  if (tokenReference.setsPos()) {
     final String posReference=tokenReference.getTargetPosTag();
     if (posReference != null) {
       if (mPos != null) {
@@ -21,7 +10,10 @@
       }
       setPosElement(posReference,tokenReference.posRegExp(),negation);
     }
-    stringToken=referenceString.replace("\\" + tokenReference.getTokenRef(),"");
+    setStringElement(referenceString.replace("\\" + tokenReference.getTokenRef(),""));
     inflected=true;
+  }
+ else {
+    setStringElement(referenceString.replace("\\" + tokenReference.getTokenRef(),tokenReference.toTokenString()));
   }
 }

@@ -1,5 +1,14 @@
 {
   this.stringToken=token;
+  testString=true;
+  if (this.stringToken == null) {
+    testString=false;
+  }
+ else {
+    if (this.stringToken.length() == 0) {
+      testString=false;
+    }
+  }
   if (!"".equals(stringToken) && stringRegExp) {
     regToken=stringToken;
     if (!caseSensitive) {

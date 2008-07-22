@@ -1,14 +1,5 @@
 {
-  boolean testString=true;
-  if (stringToken == null) {
-    testString=false;
-  }
- else {
-    if (("").equals(stringToken)) {
-      testString=false;
-    }
-  }
-  boolean matched;
+  boolean matched=false;
   if (testString) {
     matched=(matchStringToken(token) != negation) && (matchPosToken(token) != posNegation);
   }

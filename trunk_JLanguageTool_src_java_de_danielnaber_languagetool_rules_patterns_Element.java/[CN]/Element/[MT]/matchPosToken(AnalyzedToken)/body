@@ -1,4 +1,7 @@
 {
+  if (posToken == null) {
+    return true;
+  }
   if (token.getPOSTag() == null) {
     if (posRegExp) {
       if (mPos == null) {
@@ -15,20 +18,15 @@
       }
     }
   }
-  if (posToken == null) {
-    return true;
-  }
   boolean match=false;
   if (posRegExp) {
-    if (token.getPOSTag() != null) {
-      if (mPos == null) {
-        mPos=pPos.matcher(token.getPOSTag());
-      }
- else {
-        mPos.reset(token.getPOSTag());
-      }
-      match=mPos.matches();
+    if (mPos == null) {
+      mPos=pPos.matcher(token.getPOSTag());
     }
+ else {
+      mPos.reset(token.getPOSTag());
+    }
+    match=mPos.matches();
   }
  else {
     match=posToken.equals(token.getPOSTag());

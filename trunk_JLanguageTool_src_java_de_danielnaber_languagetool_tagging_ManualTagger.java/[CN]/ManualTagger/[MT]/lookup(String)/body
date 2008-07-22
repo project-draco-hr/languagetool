@@ -1,12 +1,16 @@
 {
-  List<LookedUpTerm> l=mapping.get(term);
-  if (l == null)   return null;
-  List<String> plainResult=new ArrayList<String>();
-  for (Iterator iter=l.iterator(); iter.hasNext(); ) {
-    LookedUpTerm lookedUpTerm=(LookedUpTerm)iter.next();
+  final List<LookedUpTerm> l=mapping.get(term);
+  if (l == null) {
+    return null;
+  }
+  final List<String> plainResult=new ArrayList<String>();
+  for (  final Object element : l) {
+    final LookedUpTerm lookedUpTerm=(LookedUpTerm)element;
     plainResult.add(lookedUpTerm.baseform);
     plainResult.add(lookedUpTerm.postags);
   }
-  if (plainResult.isEmpty())   return null;
+  if (plainResult.isEmpty()) {
+    return null;
+  }
   return plainResult.toArray(new String[]{});
 }

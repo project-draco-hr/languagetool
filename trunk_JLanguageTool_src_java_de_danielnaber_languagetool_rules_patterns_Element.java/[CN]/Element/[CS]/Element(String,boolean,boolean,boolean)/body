@@ -1,13 +1,6 @@
 {
-  this.stringToken=token;
   this.caseSensitive=caseSensitive;
   this.stringRegExp=regExp;
   this.inflected=inflected;
-  if (!"".equals(stringToken) && stringRegExp) {
-    regToken=stringToken;
-    if (!caseSensitive) {
-      regToken=CASE_INSENSITIVE + stringToken;
-    }
-    p=Pattern.compile(regToken);
-  }
+  setStringElement(token);
 }
