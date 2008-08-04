@@ -1,3 +1,0 @@
-{
-  return exceptionMatch(token) || andGroupExceptionMatch(token);
-}

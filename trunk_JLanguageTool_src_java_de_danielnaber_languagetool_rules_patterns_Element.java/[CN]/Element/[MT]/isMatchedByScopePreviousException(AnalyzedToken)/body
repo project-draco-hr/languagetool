@@ -1,9 +1,9 @@
 {
   boolean exceptionMatched=false;
-  if (exceptionSet) {
-    for (    final Element testException : exceptionList) {
+  if (exceptionValidPrevious) {
+    for (    final Element testException : previousExceptionList) {
       if (!testException.exceptionValidNext) {
-        exceptionMatched|=testException.match(token);
+        exceptionMatched|=testException.isMatched(token);
       }
       if (exceptionMatched) {
         break;

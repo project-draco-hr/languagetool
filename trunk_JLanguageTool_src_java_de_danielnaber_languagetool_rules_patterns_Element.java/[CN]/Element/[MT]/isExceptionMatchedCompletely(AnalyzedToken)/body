@@ -1,0 +1,3 @@
+{
+  return isExceptionMatched(token) || isAndExceptionGroupMatched(token);
+}

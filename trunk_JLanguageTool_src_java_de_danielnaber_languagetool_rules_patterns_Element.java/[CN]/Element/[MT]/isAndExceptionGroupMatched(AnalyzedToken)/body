@@ -2,7 +2,7 @@
   boolean andGroupExceptionMatched=false;
   if (andGroupSet) {
     for (    final Element testAndGroup : andGroupList) {
-      andGroupExceptionMatched|=testAndGroup.exceptionMatch(token);
+      andGroupExceptionMatched|=testAndGroup.isExceptionMatched(token);
       if (andGroupExceptionMatched) {
         return andGroupExceptionMatched;
       }

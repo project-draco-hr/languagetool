@@ -1,4 +1,6 @@
 {
+  tokenReference.setToken(token);
+  tokenReference.setSynthesizer(synth);
   if ("".equals(referenceString)) {
     referenceString=stringToken;
   }
