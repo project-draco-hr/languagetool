@@ -1,0 +1,4 @@
+{
+  stokenizer.setSingleLineBreaksMarksParagraph(true);
+  stokenizer2.setSingleLineBreaksMarksParagraph(false);
+}
