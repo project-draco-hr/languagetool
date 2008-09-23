@@ -40,18 +40,21 @@
           repl.add(origStringToCheck.replace(' ','-'));
           msg="Dessa ord skrivs samman med bindestr??ck.";
         }
-        if (!hasAllUppercaseParts(origStringToCheck) && countParts(stringToCheck) <= 2 && !onlyDashSuggestion.contains(stringToCheck)) {
+        if (!hasAllUppercaseParts(origStringToCheck) && !onlyDashSuggestion.contains(stringToCheck)) {
           repl.add(mergeCompound(origStringToCheck));
           msg="Dessa ord skrivs samman.";
         }
         String[] parts=stringToCheck.split(" ");
-        if (parts.length > 0 && parts[0].length() == 1) {
+        if (parts.length > 0) {
           repl.clear();
           repl.add(origStringToCheck.replace(' ','-'));
           msg="Dessa ord skrivs samman med bindestr??ck.";
         }
  else         if (repl.size() == 0 || repl.size() == 2) {
           msg="Dessa ord skrivs samman med eller utan bindestr??ck.";
+          repl.clear();
+          repl.add(origStringToCheck.replace(' ','-'));
+          repl.add(mergeCompound(origStringToCheck));
         }
         RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),atr.getStartPos() + atr.getToken().length(),msg);
         if (prevRuleMatch != null && prevRuleMatch.getFromPos() == ruleMatch.getFromPos()) {
