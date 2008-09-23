@@ -1,0 +1,14 @@
+{
+  try {
+    final XMultiComponentFactory xMCF=xContext.getServiceManager();
+    final Object desktop=xMCF.createInstanceWithContext("com.sun.star.frame.Desktop",xContext);
+    final XDesktop xDesktop=(XDesktop)UnoRuntime.queryInterface(XDesktop.class,desktop);
+    final XComponent xComponent=xDesktop.getCurrentComponent();
+    return xComponent;
+  }
+ catch (  final Throwable e) {
+    writeError(e);
+    e.printStackTrace();
+    return null;
+  }
+}

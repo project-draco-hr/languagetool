@@ -35,7 +35,7 @@
   }
  else {
     ResultDialogThread dialog;
-    xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,xComponent);
+    final XTextDocument xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,getxComponent());
     if (textToCheck.isSelection) {
       dialog=new ResultDialogThread(config,checkerThread.getLanguageTool().getAllRules(),xTextDoc,checkedParagraphs,xViewCursor,textToCheck);
     }

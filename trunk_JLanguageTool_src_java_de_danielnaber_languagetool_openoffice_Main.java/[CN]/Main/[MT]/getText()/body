@@ -1,4 +1,5 @@
 {
+  final XTextDocument xTextDoc=(XTextDocument)UnoRuntime.queryInterface(XTextDocument.class,getxComponent());
   com.sun.star.container.XEnumerationAccess xParaAccess=(com.sun.star.container.XEnumerationAccess)UnoRuntime.queryInterface(com.sun.star.container.XEnumerationAccess.class,xTextDoc.getText());
   if (xParaAccess == null) {
     System.err.println("xParaAccess == null");
