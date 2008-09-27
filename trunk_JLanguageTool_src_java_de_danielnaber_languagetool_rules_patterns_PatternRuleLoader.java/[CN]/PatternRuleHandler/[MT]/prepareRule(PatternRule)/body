@@ -19,4 +19,7 @@
   if (defaultOff) {
     rule.setDefaultOff();
   }
+  if (category.isDefaultOff() && !defaultOn) {
+    rule.setDefaultOff();
+  }
 }

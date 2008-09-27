@@ -8,6 +8,9 @@
  else {
       category=new Category(catName);
     }
+    if ("off".equals(attrs.getValue("default"))) {
+      category.setDefaultOff();
+    }
   }
  else   if (qName.equals("rules")) {
     final String languageStr=attrs.getValue("lang");
@@ -21,6 +24,9 @@
     subId++;
     if (!(inRuleGroup && defaultOff)) {
       defaultOff="off".equals(attrs.getValue("default"));
+    }
+    if (!(inRuleGroup && defaultOn)) {
+      defaultOn="on".equals(attrs.getValue("default"));
     }
     if (inRuleGroup && id == null) {
       id=ruleGroupId;
@@ -129,6 +135,7 @@
     ruleGroupId=attrs.getValue("id");
     ruleGroupDescription=attrs.getValue("name");
     defaultOff="off".equals(attrs.getValue("default"));
+    defaultOn="on".equals(attrs.getValue("default"));
     inRuleGroup=true;
   }
  else   if (qName.equals("suggestion") && inMessage) {
