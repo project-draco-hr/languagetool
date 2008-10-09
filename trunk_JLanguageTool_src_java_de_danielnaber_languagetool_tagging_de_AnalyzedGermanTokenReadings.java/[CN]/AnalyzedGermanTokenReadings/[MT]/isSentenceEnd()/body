@@ -1,0 +1,13 @@
+{
+  if (anTokReadings == null) {
+    return false;
+  }
+  for (  AnalyzedToken reading : anTokReadings) {
+    if (reading.getPOSTag() != null) {
+      if (reading.getPOSTag().equals("SENT_END") || reading.getPOSTag().equals("PARA_END")) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
