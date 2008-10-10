@@ -1,6 +1,6 @@
 {
   try {
-    String xml=StringTools.readFile(this.getClass().getResourceAsStream(filename));
+    String xml=StringTools.readFile(this.getClass().getResourceAsStream(filename),"utf-8");
     validateInternal(xml,dtdFile,docType);
   }
  catch (  Exception e) {
