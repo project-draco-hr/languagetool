@@ -10,7 +10,7 @@
   sb.append("\" mark_to=\"");
   sb.append(endPositionCorrection);
   sb.append("\"");
-  if (patternElements.get(0).getCaseSensitive()) {
+  if (patternElements.size() > 0 && patternElements.get(0).getCaseSensitive()) {
     sb.append(" case_sensitive=\"yes\"");
   }
   sb.append(">\n");
