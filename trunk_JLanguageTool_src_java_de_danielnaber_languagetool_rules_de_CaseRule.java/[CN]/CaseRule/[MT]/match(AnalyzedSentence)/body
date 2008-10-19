@@ -69,7 +69,7 @@
     if (analyzedToken.getAnalyzedToken(0).getPOSTag() == null && analyzedGermanToken2 != null && analyzedGermanToken2.getAnalyzedToken(0).getPOSTag() == null) {
       continue;
     }
-    if (Character.isUpperCase(token.charAt(0)) && !sentenceStartExceptions.contains(tokens[i - 1].getToken()) && !StringTools.isAllUppercase(token)&& !exceptions.contains(token)&& token.length() > 1 && (!analyzedToken.hasReadingOfType(POSType.PROPER_NOUN) && !analyzedToken.isSentenceEnd()) && !isExceptionPhrase(i,tokens)) {
+    if (Character.isUpperCase(token.charAt(0)) && !sentenceStartExceptions.contains(tokens[i - 1].getToken()) && token.length() > 1 && !StringTools.isAllUppercase(token) && !exceptions.contains(token) && !analyzedToken.hasReadingOfType(POSType.PROPER_NOUN) && !analyzedToken.isSentenceEnd() && !isExceptionPhrase(i,tokens)) {
       String msg="Au??er am Satzanfang werden nur Nomen und Eigennamen gro?? geschrieben";
       RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
       String word=tokens[i].getToken();
