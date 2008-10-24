@@ -1,3 +1,5 @@
 {
   wordSplitter=new GermanWordSplitter(false);
+  wordSplitter.setStrictMode(true);
+  wordSplitter.setMinimumWordLength(3);
 }

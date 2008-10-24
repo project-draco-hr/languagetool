@@ -17,6 +17,7 @@
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz, \"ein Zitat.\"")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Schon Le Monde schrieb das.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("In Blubberdorf macht man das so.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das sind Euroscheine.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist es: kein Satz.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist es: Kein Satz.")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Ein Einfacher Satz zum Testen.")).length);
