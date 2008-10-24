@@ -31,7 +31,7 @@
         throw new RuntimeException(e);
       }
       if (prevTokenIsDas) {
-        String newToken=token.substring(0,1).toUpperCase() + token.substring(1);
+        String newToken=StringTools.uppercaseFirstChar(token);
         try {
           analyzedGermanToken2=tagger.lookup(newToken);
         }
@@ -42,7 +42,7 @@
           String msg="Substantivierte Verben werden gro?? geschrieben.";
           RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
           String word=tokens[i].getToken();
-          String fixedWord=Character.toUpperCase(word.charAt(0)) + word.substring(1);
+          String fixedWord=StringTools.uppercaseFirstChar(word);
           ruleMatch.setSuggestedReplacement(fixedWord);
           ruleMatches.add(ruleMatch);
         }
