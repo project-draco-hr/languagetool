@@ -2,7 +2,7 @@
   HTTPServer server=new HTTPServer();
   try {
     server.run();
-    String enc=System.getProperty("file.encoding");
+    String enc="UTF-8";
     assertEquals("<?xml version=\"1.0\" encoding=\"" + enc + "\"?>\n<matches>\n</matches>\n",check(Language.GERMAN,""));
     assertEquals("<?xml version=\"1.0\" encoding=\"" + enc + "\"?>\n<matches>\n</matches>\n",check(Language.GERMAN,"Ein kleiner test"));
     assertTrue(check(Language.GERMAN,"ein kleiner test").indexOf("UPPERCASE_SENTENCE_START") != -1);
