@@ -11,48 +11,50 @@
  else {
     paRes.nEndOfSentencePos=paraText.length();
   }
-  if (hasLocale(locale)) {
-    if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null || recheck) {
-      docLanguage=Language.getLanguageForShortName(locale.Language);
-      if (docLanguage == null) {
-        return paRes;
+  if (!"".equals(paraText)) {
+    if (hasLocale(locale)) {
+      if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null || recheck) {
+        docLanguage=Language.getLanguageForShortName(locale.Language);
+        if (docLanguage == null) {
+          return paRes;
+        }
+        try {
+          langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
+          langTool.activateDefaultPatternRules();
+          langTool.activateDefaultFalseFriendRules();
+          recheck=false;
+        }
+ catch (        final Exception exception) {
+          showError(exception);
+        }
+      }
+      if (config.getDisabledRuleIds() != null) {
+        for (        final String id : config.getDisabledRuleIds()) {
+          langTool.disableRule(id);
+        }
+      }
+      final Set<String> disabledCategories=config.getDisabledCategoryNames();
+      if (disabledCategories != null) {
+        for (        final String categoryName : disabledCategories) {
+          langTool.disableCategory(categoryName);
+        }
       }
       try {
-        langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
-        langTool.activateDefaultPatternRules();
-        langTool.activateDefaultFalseFriendRules();
-        recheck=false;
+        final List<RuleMatch> ruleMatches=langTool.check(paraText);
+        if (!ruleMatches.isEmpty()) {
+          final SingleGrammarError[] errorArray=new SingleGrammarError[ruleMatches.size()];
+          ;
+          int i=0;
+          for (          final RuleMatch myRuleMatch : ruleMatches) {
+            errorArray[i]=createOOoError(locale,myRuleMatch);
+            i++;
+          }
+          paRes.aGrammarErrors=errorArray;
+        }
       }
- catch (      final Exception exception) {
+ catch (      final IOException exception) {
         showError(exception);
       }
-    }
-    if (config.getDisabledRuleIds() != null) {
-      for (      final String id : config.getDisabledRuleIds()) {
-        langTool.disableRule(id);
-      }
-    }
-    final Set<String> disabledCategories=config.getDisabledCategoryNames();
-    if (disabledCategories != null) {
-      for (      final String categoryName : disabledCategories) {
-        langTool.disableCategory(categoryName);
-      }
-    }
-    try {
-      final List<RuleMatch> ruleMatches=langTool.check(paraText);
-      if (!ruleMatches.isEmpty()) {
-        final SingleGrammarError[] errorArray=new SingleGrammarError[ruleMatches.size()];
-        ;
-        int i=0;
-        for (        final RuleMatch myRuleMatch : ruleMatches) {
-          errorArray[i]=createOOoError(locale,myRuleMatch);
-          i++;
-        }
-        paRes.aGrammarErrors=errorArray;
-      }
-    }
- catch (    final IOException exception) {
-      showError(exception);
     }
   }
   return paRes;
