@@ -1,7 +1,7 @@
 {
   final SingleGrammarError aError=new SingleGrammarError();
   aError.nErrorType=com.sun.star.text.TextMarkupType.GRAMMAR;
-  final String comment=myMatch.getMessage().replaceAll("<suggestion>","\"").replaceAll("</suggestion>","\"");
+  final String comment=myMatch.getMessage().replaceAll("<suggestion>","\"").replaceAll("</suggestion>","\"").replaceAll("([\r]*\n)"," ");
   aError.aFullComment=comment;
   aError.aShortComment=aError.aFullComment;
   aError.aSuggestions=myMatch.getSuggestedReplacements().toArray(new String[myMatch.getSuggestedReplacements().size()]);
