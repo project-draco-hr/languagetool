@@ -1,7 +1,8 @@
 {
   final String homeDir=System.getProperty("user.home");
   if (homeDir == null) {
-    throw new RuntimeException("Could not get home directory");
+    RuntimeException ex=new RuntimeException("Could not get home directory");
+    showError(ex);
   }
   return new File(homeDir);
 }

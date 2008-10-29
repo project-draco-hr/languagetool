@@ -35,7 +35,8 @@
     }
   }
  catch (  Exception e) {
-    throw new RuntimeException(e);
+    showError(e);
+    return null;
   }
   return new TextToCheck(paragraphs,false);
 }
