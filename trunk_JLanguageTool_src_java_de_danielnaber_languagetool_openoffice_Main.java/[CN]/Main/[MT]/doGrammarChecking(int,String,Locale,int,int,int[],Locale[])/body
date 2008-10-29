@@ -43,7 +43,6 @@
         final List<RuleMatch> ruleMatches=langTool.check(paraText);
         if (!ruleMatches.isEmpty()) {
           final SingleGrammarError[] errorArray=new SingleGrammarError[ruleMatches.size()];
-          ;
           int i=0;
           for (          final RuleMatch myRuleMatch : ruleMatches) {
             errorArray[i]=createOOoError(locale,myRuleMatch);
