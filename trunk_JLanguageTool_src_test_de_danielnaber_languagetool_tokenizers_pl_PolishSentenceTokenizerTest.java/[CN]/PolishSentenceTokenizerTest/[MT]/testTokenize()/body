@@ -49,6 +49,8 @@
   TestTools.testSplit(new String[]{"He won't\n\n","Really."},stokenizer2);
   TestTools.testSplit(new String[]{"He won't\nReally."},stokenizer2);
   testSplit(new String[]{"James is from the Ireland!","He lives in Spain now."});
+  testSplit(new String[]{"Temperatura wody w systemie wynosi 30??C.","W sk??ad obiegu otwartego wchodzi zbiornik i armatura."});
+  testSplit(new String[]{"Zabudowano kolumny o d??ugo??ci 45 m. ","Woda z uj??cia jest dostarczana do zak??adu."});
   testSplit(new String[]{"Ks. Jankowski jest prof. teologii."});
   testSplit(new String[]{"To wydarzy??o si?? w 1939 r.","To by?? burzliwy rok."});
   testSplit(new String[]{"Prezydent jest popierany przez 20 proc. spo??ecze??stwa."});
