@@ -1,11 +1,9 @@
 {
-  String msg="An error has occured:\n" + e.toString() + "\nStacktrace:\n";
+  String msg="An error has occured in LanguageTool:\n" + e.toString() + "\nStacktrace:\n";
   final StackTraceElement[] elem=e.getStackTrace();
   for (  final StackTraceElement element : elem) {
     msg+=element.toString() + "\n";
   }
   final DialogThread dt=new DialogThread(msg);
   dt.start();
-  e.printStackTrace();
-  throw new RuntimeException(e);
 }
