@@ -32,12 +32,8 @@
       return null;
     }
   }
- catch (  final UnknownPropertyException e) {
-    showError(e);
-    return null;
-  }
-catch (  final WrappedTargetException e) {
-    showError(e);
+ catch (  final Throwable t) {
+    showError(t);
     return null;
   }
   return Language.getLanguageForShortName(charLocale.Language);

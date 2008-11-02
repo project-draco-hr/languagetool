@@ -6,9 +6,8 @@
     final XComponent xComponent=xDesktop.getCurrentComponent();
     return xComponent;
   }
- catch (  final Throwable e) {
-    writeError(e);
-    e.printStackTrace();
+ catch (  final Throwable t) {
+    showError(t);
     return null;
   }
 }

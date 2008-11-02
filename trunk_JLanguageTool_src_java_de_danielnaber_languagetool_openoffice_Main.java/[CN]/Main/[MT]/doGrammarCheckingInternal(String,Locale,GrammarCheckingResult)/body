@@ -45,7 +45,7 @@
           paRes.aGrammarErrors=errorArray;
         }
       }
- catch (      final IOException exception) {
+ catch (      final Exception exception) {
         showError(exception);
       }
     }
