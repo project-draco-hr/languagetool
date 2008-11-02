@@ -8,8 +8,8 @@
     paRes.aText=paraText;
     return doGrammarCheckingInternal(paraText,locale,paRes);
   }
- catch (  final Exception ex) {
-    showError(ex);
+ catch (  final Throwable t) {
+    showError(t);
     return paRes;
   }
 }

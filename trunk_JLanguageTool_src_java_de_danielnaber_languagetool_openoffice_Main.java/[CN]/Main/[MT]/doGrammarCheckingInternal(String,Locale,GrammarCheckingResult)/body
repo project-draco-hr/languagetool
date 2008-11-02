@@ -18,8 +18,8 @@
           langTool.activateDefaultFalseFriendRules();
           recheck=false;
         }
- catch (        final Exception exception) {
-          showError(exception);
+ catch (        final Throwable t) {
+          showError(t);
         }
       }
       if (config.getDisabledRuleIds() != null) {
@@ -45,8 +45,8 @@
           paRes.aGrammarErrors=errorArray;
         }
       }
- catch (      final Exception exception) {
-        showError(exception);
+ catch (      final Throwable t) {
+        showError(t);
       }
     }
   }
