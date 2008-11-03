@@ -3,7 +3,7 @@
   Set<String> set=retainCommonCategories(token1,token2,token3,relax);
   RuleMatch ruleMatch=null;
   if (set.size() == 0) {
-    String msg="Fehlende ??bereinstimmung (Kongruenz) zwischen Artikel, Adjektiv und " + "Nomen bez??glich Kasus, Numerus oder Genus. Beispiel: 'mein kleiner Haus' " + "statt 'mein kleines Haus'";
+    String msg="M??glicherweise fehlende ??bereinstimmung (Kongruenz) zwischen Artikel, Adjektiv und " + "Nomen bez??glich Kasus, Numerus oder Genus. Beispiel: 'mein kleiner Haus' " + "statt 'mein kleines Haus'";
     ruleMatch=new RuleMatch(this,token1.getStartPos(),token3.getStartPos() + token3.getToken().length(),msg);
   }
   return ruleMatch;
