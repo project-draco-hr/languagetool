@@ -20,6 +20,12 @@
   assertEquals(1,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("This (foo bar ) is a test(!)."));
   assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("This is a sentence with an orphaned full stop ."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("This is a sentence with ellipsis ..."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("This is a figure: .5 and it's correct."));
+  assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("ABB (  z.B. )"));
   assertEquals(2,matches.length);
   assertEquals(4,matches[0].getFromPos());
