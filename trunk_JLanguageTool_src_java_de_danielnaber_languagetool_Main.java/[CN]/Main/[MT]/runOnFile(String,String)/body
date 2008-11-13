@@ -2,7 +2,12 @@
   final File file=new File(filename);
   if (file.length() < MAXFILESIZE) {
     final String text=getFilteredText(filename,encoding);
-    Tools.checkText(text,lt);
+    if (!taggerOnly) {
+      Tools.checkText(text,lt);
+    }
+ else {
+      Tools.tagText(text,lt);
+    }
   }
  else {
     if (verbose)     lt.setOutput(System.err);
@@ -20,7 +25,12 @@
       String line;
       while ((line=br.readLine()) != null) {
         line+="\n";
-        Tools.checkText(filterXML(line),lt);
+        if (!taggerOnly) {
+          Tools.checkText(filterXML(line),lt);
+        }
+ else {
+          Tools.tagText(filterXML(line),lt);
+        }
       }
     }
   finally {

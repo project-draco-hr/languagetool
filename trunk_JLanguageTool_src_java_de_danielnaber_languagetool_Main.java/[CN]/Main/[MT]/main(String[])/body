@@ -4,6 +4,7 @@
   }
   boolean verbose=false;
   boolean recursive=false;
+  boolean taggerOnly=false;
   boolean singleLineBreakMarksParagraph=false;
   boolean apiFormat=false;
   boolean listUnknown=false;
@@ -19,6 +20,9 @@
     }
  else     if (args[i].equals("-v") || args[i].equals("--verbose")) {
       verbose=true;
+    }
+ else     if (args[i].equals("-t") || args[i].equals("--taggeronly")) {
+      taggerOnly=true;
     }
  else     if (args[i].equals("-r") || args[i].equals("--recursive")) {
       recursive=true;
@@ -70,7 +74,7 @@
     System.out.println("Expected text language: " + language.getName());
   }
   language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(singleLineBreakMarksParagraph);
-  Main prg=new Main(verbose,language,motherTongue,disabledRules,enabledRules,apiFormat);
+  Main prg=new Main(verbose,taggerOnly,language,motherTongue,disabledRules,enabledRules,apiFormat);
   prg.setListUnknownWords(listUnknown);
   if (recursive) {
     prg.runRecursive(filename,encoding);

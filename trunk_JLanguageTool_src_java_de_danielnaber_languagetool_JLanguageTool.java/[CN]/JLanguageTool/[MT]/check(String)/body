@@ -1,6 +1,6 @@
 {
   sentenceCount=0;
-  final List<String> sentences=sentenceTokenizer.tokenize(text);
+  final List<String> sentences=sentenceTokenize(text);
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final List<Rule> allRules=getAllRules();
   printIfVerbose(allRules.size() + " rules activated for language " + language);

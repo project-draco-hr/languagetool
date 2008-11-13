@@ -1,6 +1,7 @@
 {
   this.verbose=verbose;
   this.apiFormat=apiFormat;
+  this.taggerOnly=taggerOnly;
   lt=new JLanguageTool(language,motherTongue);
   lt.activateDefaultPatternRules();
   lt.activateDefaultFalseFriendRules();
