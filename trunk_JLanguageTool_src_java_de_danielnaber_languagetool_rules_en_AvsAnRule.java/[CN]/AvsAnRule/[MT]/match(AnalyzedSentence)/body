@@ -59,7 +59,12 @@
       final RuleMatch ruleMatch=new RuleMatch(this,prevPos,prevPos + prevToken.length(),msg);
       ruleMatches.add(ruleMatch);
     }
-    prevToken=token;
+    if (tokens[i].hasPosTag("DT")) {
+      prevToken=token;
+    }
+ else {
+      prevToken="";
+    }
   }
   return toRuleMatchArray(ruleMatches);
 }
