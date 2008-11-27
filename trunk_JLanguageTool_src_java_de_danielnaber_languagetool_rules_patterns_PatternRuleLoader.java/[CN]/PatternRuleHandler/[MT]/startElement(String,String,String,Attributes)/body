@@ -131,6 +131,10 @@
     inMessage=true;
     message=new StringBuffer();
   }
+ else   if (qName.equals("short")) {
+    inShortMessage=true;
+    shortMessage=new StringBuffer();
+  }
  else   if (qName.equals("rulegroup")) {
     ruleGroupId=attrs.getValue("id");
     ruleGroupDescription=attrs.getValue("name");

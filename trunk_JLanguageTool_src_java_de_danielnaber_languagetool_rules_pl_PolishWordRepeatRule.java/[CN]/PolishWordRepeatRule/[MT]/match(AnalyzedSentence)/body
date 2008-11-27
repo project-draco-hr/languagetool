@@ -76,7 +76,7 @@
     if (repetition) {
       final String msg="Powt??rzony wyraz w zdaniu";
       final int pos=tokens[i].getStartPos();
-      final RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),msg);
+      final RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),msg,"Powt??rzenie wyrazu");
       ruleMatch.setSuggestedReplacement(tokens[i].getToken());
       ruleMatches.add(ruleMatch);
       repetition=false;

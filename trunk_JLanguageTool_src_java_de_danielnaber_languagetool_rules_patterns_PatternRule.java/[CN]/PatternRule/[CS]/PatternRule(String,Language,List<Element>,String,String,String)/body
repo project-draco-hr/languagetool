@@ -15,6 +15,7 @@
   PatternRule.language=language;
   this.description=description;
   this.message=message;
+  this.shortMessage=shortMessage;
   this.patternElements=new ArrayList<Element>(elements);
   this.elementNo=new ArrayList<Integer>();
   String prevName="";

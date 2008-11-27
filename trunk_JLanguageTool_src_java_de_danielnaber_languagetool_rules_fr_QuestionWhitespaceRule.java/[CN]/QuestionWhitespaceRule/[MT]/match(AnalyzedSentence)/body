@@ -73,7 +73,7 @@
     if (msg != null) {
       int fromPos=tokens[i - 1].getStartPos() + fixPos;
       int toPos=tokens[i - 1].getStartPos() + fixPos + fixLen+ prevToken.length();
-      RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,msg);
+      RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,msg,"Ins??rer un espace ins??cable");
       if (suggestionText != null)       ruleMatch.setSuggestedReplacement(suggestionText);
       ruleMatches.add(ruleMatch);
     }

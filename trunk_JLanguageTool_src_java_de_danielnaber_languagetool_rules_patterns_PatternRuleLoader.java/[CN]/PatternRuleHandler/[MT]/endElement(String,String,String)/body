@@ -2,7 +2,7 @@
   if (qName.equals("rule")) {
     phraseElementInit();
     if (phraseElementList.isEmpty()) {
-      final PatternRule rule=new PatternRule(id,language,elementList,description,message.toString());
+      final PatternRule rule=new PatternRule(id,language,elementList,description,message.toString(),shortMessage.toString());
       prepareRule(rule);
       rules.add(rule);
     }
@@ -14,7 +14,7 @@
       }
       for (      final ArrayList<Element> phraseElement : phraseElementList) {
         processElement(phraseElement);
-        final PatternRule rule=new PatternRule(id,language,phraseElement,description,message.toString(),phraseElementList.size() > 1);
+        final PatternRule rule=new PatternRule(id,language,phraseElement,description,message.toString(),shortMessage.toString(),phraseElementList.size() > 1);
         prepareRule(rule);
         rules.add(rule);
       }
@@ -105,6 +105,9 @@
   }
  else   if (qName.equals("message")) {
     inMessage=false;
+  }
+ else   if (qName.equals("short")) {
+    inShortMessage=false;
   }
  else   if (qName.equals("match")) {
     if (inMessage) {

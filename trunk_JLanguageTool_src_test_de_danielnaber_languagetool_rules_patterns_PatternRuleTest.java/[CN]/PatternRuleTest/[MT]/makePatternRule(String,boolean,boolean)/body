@@ -19,6 +19,6 @@
     elems.add(se);
     pos=false;
   }
-  final PatternRule rule=new PatternRule("ID1",Language.ENGLISH,elems,"test rule","user visible message");
+  final PatternRule rule=new PatternRule("ID1",Language.ENGLISH,elems,"test rule","user visible message","short comment");
   return rule;
 }

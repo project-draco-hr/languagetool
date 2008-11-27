@@ -3,4 +3,5 @@ Language language
 List<Element> elements
 String description
 String message
+String shortMessage
 boolean isMember

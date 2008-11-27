@@ -144,7 +144,7 @@
       }
       final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
       if (fromPos < toPos) {
-        final RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,errMessage,startsWithUppercase);
+        final RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,errMessage,shortMessage,startsWithUppercase);
         ruleMatches.add(ruleMatch);
       }
     }
