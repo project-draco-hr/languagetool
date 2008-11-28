@@ -1,0 +1,6 @@
+{
+  super(messages);
+  loadCompoundFile(Tools.getStream(FILE_NAME),"UTF-8");
+  super.setShort("Hyphenation problem");
+  super.setMsg("This word is normally spelled with hyphen.","This word is normally spelled as one.","This expression is normally spelled as one or with hyphen.");
+}

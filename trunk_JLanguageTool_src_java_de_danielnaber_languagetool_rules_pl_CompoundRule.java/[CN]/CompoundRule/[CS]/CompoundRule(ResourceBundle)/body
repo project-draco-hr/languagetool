@@ -1,0 +1,6 @@
+{
+  super(messages);
+  loadCompoundFile(Tools.getStream(FILE_NAME),"UTF-8");
+  super.setShort("Brak ????cznika lub zb??dny ????cznik");
+  super.setMsg("Ten wyraz pisze si?? z ????cznikiem.","Ten wyraz jest pisany bez ????cznika.","Ten wyraz pisze si?? z ????cznikiem lub bez niego.");
+}

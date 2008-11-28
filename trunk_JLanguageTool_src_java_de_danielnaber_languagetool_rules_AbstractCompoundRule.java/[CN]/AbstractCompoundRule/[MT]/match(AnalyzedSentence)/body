@@ -38,22 +38,22 @@
         List<String> repl=new ArrayList<String>();
         if (!noDashSuggestion.contains(stringToCheck)) {
           repl.add(origStringToCheck.replace(' ','-'));
-          msg="Dieses Kompositum wird mit Bindestrich geschrieben.";
+          msg=withHyphen;
         }
         if (!hasAllUppercaseParts(origStringToCheck) && countParts(stringToCheck) <= 2 && !onlyDashSuggestion.contains(stringToCheck)) {
           repl.add(mergeCompound(origStringToCheck));
-          msg="Dieses Kompositum wird zusammengeschrieben.";
+          msg=asOne;
         }
         String[] parts=stringToCheck.split(" ");
         if (parts.length > 0 && parts[0].length() == 1) {
           repl.clear();
           repl.add(origStringToCheck.replace(' ','-'));
-          msg="Dieses Kompositum wird mit Bindestrich geschrieben.";
+          msg=withHyphen;
         }
  else         if (repl.size() == 0 || repl.size() == 2) {
-          msg="Dieses Kompositum wird zusammen oder mit Bindestrich geschrieben.";
+          msg=withHyphenOrNot;
         }
-        RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),atr.getStartPos() + atr.getToken().length(),msg);
+        RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),atr.getStartPos() + atr.getToken().length(),msg,shortDesc);
         if (prevRuleMatch != null && prevRuleMatch.getFromPos() == ruleMatch.getFromPos()) {
           prevRuleMatch=ruleMatch;
           break;

@@ -1,4 +1,0 @@
-{
-  String[] parts=str.split(" ");
-  return parts.length;
-}

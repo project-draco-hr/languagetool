@@ -1,0 +1,7 @@
+{
+  langTool=new JLanguageTool(Language.POLISH);
+  rule=new CompoundRule(null);
+  check(0,"Nie r??bmy nic na ??apu-capu.");
+  check(0,"Jedzmy kogiel-mogiel.");
+  check(1,"bim bom",new String[]{"bim-bom"});
+}

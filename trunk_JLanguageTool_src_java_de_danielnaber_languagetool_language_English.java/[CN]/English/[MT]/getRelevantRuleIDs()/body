@@ -7,5 +7,6 @@
   ids.add("WORD_REPEAT_RULE");
   ids.add("WHITESPACE_RULE");
   ids.add("EN_A_VS_AN");
+  ids.add("EN_COMPOUNDS");
   return ids;
 }

@@ -1,0 +1,3 @@
+{
+  return "Hyphenated words, e.g., 'case-sensitive' instead of 'case sensitive'";
+}

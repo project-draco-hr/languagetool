@@ -1,4 +1,6 @@
 {
-  if (messages != null)   super.setCategory(new Category(messages.getString("category_misc")));
+  super(messages);
   loadCompoundFile(Tools.getStream(FILE_NAME),"UTF-8");
+  super.setShort("Hyphenation problem");
+  super.setMsg("Dieses Kompositum wird mit Bindestrich geschrieben.","Dieses Kompositum wird zusammengeschrieben.","Dieses Kompositum wird zusammen oder mit Bindestrich geschrieben.");
 }

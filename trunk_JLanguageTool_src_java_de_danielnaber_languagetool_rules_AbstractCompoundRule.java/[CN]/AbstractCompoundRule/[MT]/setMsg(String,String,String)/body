@@ -1,0 +1,5 @@
+{
+  withHyphen=msg1;
+  asOne=msg2;
+  withHyphenOrNot=msg3;
+}
