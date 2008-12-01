@@ -1,0 +1,4 @@
+{
+  tagger=new RussianTagger();
+  tokenizer=new WordTokenizer();
+}
