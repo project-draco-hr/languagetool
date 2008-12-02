@@ -15,7 +15,7 @@
           if (tst != null) {
             if (pPosRegexMatch.matcher(tst).matches()) {
               targetPosTag=formattedToken.getAnalyzedToken(i).getPOSTag();
-              if (pPosRegexMatch != null & posTagReplace != null) {
+              if (pPosRegexMatch != null && posTagReplace != null) {
                 targetPosTag=pPosRegexMatch.matcher(targetPosTag).replaceAll(posTagReplace);
               }
               l.add(new AnalyzedToken(token,targetPosTag,formattedToken.getAnalyzedToken(i).getLemma(),formattedToken.getStartPos()));

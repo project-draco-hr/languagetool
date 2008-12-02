@@ -12,7 +12,7 @@
         }
       }
     }
-    if (pPosRegexMatch != null & posTagReplace != null) {
+    if (pPosRegexMatch != null && posTagReplace != null) {
       targetPosTag=pPosRegexMatch.matcher(targetPosTag).replaceAll(posTagReplace);
     }
     if (targetPosTag.indexOf('?') > 0) {
@@ -30,7 +30,7 @@
         }
       }
     }
-    if (pPosRegexMatch != null & posTagReplace != null) {
+    if (pPosRegexMatch != null && posTagReplace != null) {
       if (posTags.isEmpty()) {
         posTags.add(targetPosTag);
       }
