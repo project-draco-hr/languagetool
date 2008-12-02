@@ -9,7 +9,7 @@
       testString=false;
     }
   }
-  if (!"".equals(stringToken) && stringRegExp) {
+  if (testString && stringRegExp) {
     regToken=stringToken;
     if (!caseSensitive) {
       regToken=CASE_INSENSITIVE + stringToken;
