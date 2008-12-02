@@ -19,6 +19,18 @@
     if (patternElement.getNegation()) {
       sb.append(" negate=\"yes\"");
     }
+    if (patternElement.isRegularExpression()) {
+      sb.append(" regexp=\"yes\"");
+    }
+    if (patternElement.getPOStag() != null) {
+      sb.append(" postag=\"" + patternElement.getPOStag() + "\"");
+    }
+    if (patternElement.getPOSNegation()) {
+      sb.append(" negate_pos=\"yes\"");
+    }
+    if (patternElement.isInflected()) {
+      sb.append(" inflected=\"yes\"");
+    }
     sb.append(">");
     if (patternElement.getString() != null) {
       sb.append(StringTools.escapeXML(patternElement.getString()));
