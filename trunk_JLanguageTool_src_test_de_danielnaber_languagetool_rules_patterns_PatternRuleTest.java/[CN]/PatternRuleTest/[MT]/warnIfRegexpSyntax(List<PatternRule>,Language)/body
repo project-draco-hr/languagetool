@@ -1,0 +1,12 @@
+{
+  for (  final PatternRule rule : rules) {
+    for (    final Element element : rule.getElements()) {
+      if (!element.isRegularExpression() && (element.getString().matches(".*([\\[\\]\\*\\+\\|\\^]|\\(.+\\)|\\[.+\\]|\\{.+\\}).*"))) {
+        System.err.println("The " + lang.toString() + " rule: "+ rule.getId()+ " contains element "+ "\""+ element+ "\" that is not marked as regular expression"+ " but probably is one.");
+      }
+      if (element.isRegularExpression() && (element.getString() == null || (!element.getString().matches(".*([\\[\\]\\*\\+\\|\\^]|\\(.+\\)|\\[.+\\]|\\{.+\\}).*")))) {
+        System.err.println("The " + lang.toString() + " rule: "+ rule.getId()+ " contains element "+ "\""+ element+ "\" that is marked as regular expression"+ " but probably is not one.");
+      }
+    }
+  }
+}
