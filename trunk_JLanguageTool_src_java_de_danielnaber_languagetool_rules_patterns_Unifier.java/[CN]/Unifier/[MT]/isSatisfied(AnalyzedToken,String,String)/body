@@ -1,0 +1,55 @@
+{
+  if (allFeatsIn && equivalencesMatched.isEmpty()) {
+    return false;
+  }
+  if ("".equals(feature)) {
+    return false;
+  }
+  String indexStr;
+  boolean unified=false;
+  final String features[]=feature.split(",");
+  String types[];
+  for (  String feat : features) {
+    if ("".equals(type)) {
+      types=equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
+    }
+ else {
+      types=type.split(",");
+    }
+    for (    String t : types) {
+      indexStr=feat + ":" + t;
+      Element testElem=(Element)equivalenceTypes.get(indexStr);
+      if (testElem == null) {
+        return false;
+      }
+      if (!allFeatsIn) {
+        if (testElem.isMatched(AT)) {
+          equivalencesMatched.add(indexStr);
+          if (tokSequence == null) {
+            tokSequence=new ArrayList<AnalyzedToken>();
+          }
+          tokSequence.add(AT);
+        }
+        unified|=equivalencesMatched.contains(indexStr);
+      }
+ else {
+        if (equivalencesMatched.contains(indexStr)) {
+          if (testElem.isMatched(AT)) {
+            equivalencesMatched.add(indexStr);
+            if (tokSequence == null) {
+              tokSequence=new ArrayList<AnalyzedToken>();
+            }
+            tokSequence.add(AT);
+          }
+ else {
+            if (equivalencesMatched.contains(indexStr)) {
+              equivalencesMatched.remove(indexStr);
+            }
+          }
+          unified|=equivalencesMatched.contains(indexStr);
+        }
+      }
+    }
+  }
+  return unified ^ negation;
+}

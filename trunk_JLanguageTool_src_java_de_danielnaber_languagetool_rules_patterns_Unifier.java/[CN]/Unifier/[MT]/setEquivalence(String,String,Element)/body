@@ -1,0 +1,18 @@
+{
+  if (equivalenceTypes == null) {
+  }
+  if (equivalenceFeatures == null) {
+  }
+  if (equivalenceTypes.containsKey(feature + ":" + type)) {
+  }
+  equivalenceTypes.put(feature + ":" + type,elem);
+  List<String> lTypes;
+  if (equivalenceFeatures.containsKey(feature)) {
+    lTypes=equivalenceFeatures.get(feature);
+  }
+ else {
+    lTypes=new ArrayList<String>();
+  }
+  lTypes.add(type);
+  equivalenceFeatures.put(feature,lTypes);
+}

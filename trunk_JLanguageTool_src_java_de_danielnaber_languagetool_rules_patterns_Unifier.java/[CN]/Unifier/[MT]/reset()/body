@@ -1,0 +1,7 @@
+{
+  if (equivalencesMatched != null) {
+    equivalencesMatched.clear();
+  }
+  allFeatsIn=false;
+  negation=false;
+}

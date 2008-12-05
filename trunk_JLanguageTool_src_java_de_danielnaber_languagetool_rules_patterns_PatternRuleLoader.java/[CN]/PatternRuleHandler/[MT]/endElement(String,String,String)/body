@@ -46,6 +46,9 @@
     inAndGroup=false;
     andGroupCounter=0;
   }
+ else   if (qName.equals("unify")) {
+    inUnification=false;
+  }
  else   if (qName.equals("token")) {
     if (!exceptionSet || tokenElement == null) {
       tokenElement=new Element(StringTools.trimWhitespace(elements.toString()),caseSensitive,stringRegExp,tokenInflected);
@@ -73,6 +76,15 @@
     }
     if (inAndGroup) {
       andGroupCounter++;
+    }
+    if (inUnification) {
+      tokenElement.setUnification(uFeature,uType);
+      if (uniNegation) {
+        tokenElement.setUniNegation();
+      }
+    }
+    if (inUnificationDef) {
+      language.getUnifier().setEquivalence(uFeature,uType,tokenElement);
     }
     resetToken();
   }
@@ -157,5 +169,11 @@
   }
  else   if (qName.equals("phrases") && inPhrases) {
     inPhrases=false;
+  }
+ else   if (qName.equals("unification") && inUnificationDef) {
+    inUnificationDef=false;
+  }
+ else   if (qName.equals("unify") && inUnification) {
+    inUnification=false;
   }
 }

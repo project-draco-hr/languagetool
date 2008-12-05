@@ -1,0 +1,5 @@
+{
+  equivalencesMatched=new HashSet<String>();
+  equivalenceTypes=new HashMap<String,Element>();
+  equivalenceFeatures=new HashMap<String,List<String>>();
+}

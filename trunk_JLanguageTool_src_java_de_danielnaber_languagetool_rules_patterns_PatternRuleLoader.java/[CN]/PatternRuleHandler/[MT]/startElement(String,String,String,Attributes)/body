@@ -56,6 +56,14 @@
  else   if (qName.equals("and")) {
     inAndGroup=true;
   }
+ else   if (qName.equals("unify")) {
+    inUnification=true;
+    uFeature=attrs.getValue("feature");
+    uType=attrs.getValue("type");
+    if (attrs.getValue("negate") != null && YES.equals(attrs.getValue("negate"))) {
+      uniNegation=true;
+    }
+  }
  else   if (qName.equals("token")) {
     inToken=true;
     if (lastPhrase && elementList != null) {
@@ -209,5 +217,12 @@
       }
       lastPhrase=true;
     }
+  }
+ else   if (qName.equals("unification")) {
+    uFeature=attrs.getValue("feature");
+    inUnificationDef=true;
+  }
+ else   if (qName.equals("equivalence") && inUnificationDef) {
+    uType=attrs.getValue("type");
   }
 }
