@@ -149,6 +149,7 @@
     defaultOff="off".equals(attrs.getValue("default"));
     defaultOn="on".equals(attrs.getValue("default"));
     inRuleGroup=true;
+    subId=0;
   }
  else   if (qName.equals("suggestion") && inMessage) {
     message.append("<suggestion>");
