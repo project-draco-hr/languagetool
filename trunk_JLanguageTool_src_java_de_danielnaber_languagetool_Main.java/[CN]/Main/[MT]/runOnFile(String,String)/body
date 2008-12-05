@@ -3,7 +3,7 @@
   if (file.length() < MAXFILESIZE) {
     final String text=getFilteredText(filename,encoding);
     if (!taggerOnly) {
-      Tools.checkText(text,lt);
+      Tools.checkText(text,lt,apiFormat);
     }
  else {
       Tools.tagText(text,lt);

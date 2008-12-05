@@ -28,12 +28,12 @@
       recursive=true;
     }
  else     if (args[i].equals("-d") || args[i].equals("--disable")) {
-      if (enabledRules.length > 0)       throw new IllegalArgumentException("You cannot specifiy both enabled and disabled rules");
+      if (enabledRules.length > 0)       throw new IllegalArgumentException("You cannot specify both enabled and disabled rules");
       String rules=args[++i];
       disabledRules=rules.split(",");
     }
  else     if (args[i].equals("-e") || args[i].equals("--enable")) {
-      if (disabledRules.length > 0)       throw new IllegalArgumentException("You cannot specifiy both enabled and disabled rules");
+      if (disabledRules.length > 0)       throw new IllegalArgumentException("You cannot specify both enabled and disabled rules");
       String rules=args[++i];
       enabledRules=rules.split(",");
     }
