@@ -85,6 +85,9 @@
     }
     if (inUnificationDef) {
       language.getUnifier().setEquivalence(uFeature,uType,tokenElement);
+      if (elementList != null) {
+        elementList.clear();
+      }
     }
     resetToken();
   }

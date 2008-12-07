@@ -5,51 +5,46 @@
   if ("".equals(feature)) {
     return false;
   }
-  String indexStr;
-  boolean unified=false;
+  boolean unified=true;
   final String features[]=feature.split(",");
   String types[];
-  for (  String feat : features) {
-    if ("".equals(type)) {
-      types=equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
+  if (!allFeatsIn) {
+    tokCnt++;
+    if (equivalencesMatched.size() <= tokCnt) {
+      Map<String,Set<String>> mapTemp=new HashMap<String,Set<String>>();
+      equivalencesMatched.add(mapTemp);
     }
- else {
-      types=type.split(",");
-    }
-    for (    String t : types) {
-      indexStr=feat + ":" + t;
-      Element testElem=(Element)equivalenceTypes.get(indexStr);
-      if (testElem == null) {
-        return false;
+    for (    String feat : features) {
+      if ("".equals(type)) {
+        types=equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
       }
-      if (!allFeatsIn) {
+ else {
+        types=type.split(",");
+      }
+      for (      String typename : types) {
+        Element testElem=equivalenceTypes.get(feat + ":" + typename);
+        if (testElem == null) {
+          return false;
+        }
         if (testElem.isMatched(AT)) {
-          equivalencesMatched.add(indexStr);
-          if (tokSequence == null) {
-            tokSequence=new ArrayList<AnalyzedToken>();
+          if (!equivalencesMatched.get(tokCnt).containsKey(feat)) {
+            Set<String> typeSet=new HashSet<String>();
+            typeSet.add(typename);
+            equivalencesMatched.get(tokCnt).put(feat,typeSet);
           }
-          tokSequence.add(AT);
+ else {
+            equivalencesMatched.get(tokCnt).get(feat).add(typename);
+          }
         }
-        unified|=equivalencesMatched.contains(indexStr);
       }
- else {
-        if (equivalencesMatched.contains(indexStr)) {
-          if (testElem.isMatched(AT)) {
-            equivalencesMatched.add(indexStr);
-            if (tokSequence == null) {
-              tokSequence=new ArrayList<AnalyzedToken>();
-            }
-            tokSequence.add(AT);
-          }
- else {
-            if (equivalencesMatched.contains(indexStr)) {
-              equivalencesMatched.remove(indexStr);
-            }
-          }
-          unified|=equivalencesMatched.contains(indexStr);
-        }
+      unified&=equivalencesMatched.get(tokCnt).containsKey(feat);
+      if (!unified) {
+        break;
       }
     }
   }
-  return unified ^ negation;
+ else {
+    unified&=checkNext(AT,features,type);
+  }
+  return (unified) ^ negation;
 }

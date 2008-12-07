@@ -9,8 +9,8 @@
   AnalyzedToken sing1=new AnalyzedToken("ma??y","adj:sg:blahblah","ma??y");
   AnalyzedToken sing2=new AnalyzedToken("cz??owiek","subst:sg:blahblah","cz??owiek");
   boolean satisfied=uni.isSatisfied(sing1,"number","singular");
-  satisfied&=uni.isSatisfied(sing2,"number","singular");
   uni.startUnify();
+  satisfied&=uni.isSatisfied(sing2,"number","singular");
   assertEquals(true,satisfied);
   uni.reset();
   AnalyzedToken sing1a=new AnalyzedToken("ma??y","adj:pl:blahblah","ma??y");

@@ -59,7 +59,12 @@
  else   if (qName.equals("unify")) {
     inUnification=true;
     uFeature=attrs.getValue("feature");
-    uType=attrs.getValue("type");
+    if (attrs.getValue("type") != null) {
+      uType=attrs.getValue("type");
+    }
+ else {
+      uType="";
+    }
     if (attrs.getValue("negate") != null && YES.equals(attrs.getValue("negate"))) {
       uniNegation=true;
     }
@@ -187,6 +192,13 @@
  else   if (qName.equals(MARKER) && inIncorrectExample) {
     incorrectExample.append("<marker>");
   }
+ else   if (qName.equals("unification")) {
+    uFeature=attrs.getValue("feature");
+    inUnificationDef=true;
+  }
+ else   if (qName.equals("equivalence")) {
+    uType=attrs.getValue("type");
+  }
  else   if (qName.equals("phrases")) {
     inPhrases=true;
   }
@@ -218,12 +230,5 @@
       }
       lastPhrase=true;
     }
-  }
- else   if (qName.equals("unification")) {
-    uFeature=attrs.getValue("feature");
-    inUnificationDef=true;
-  }
- else   if (qName.equals("equivalence") && inUnificationDef) {
-    uType=attrs.getValue("type");
   }
 }

@@ -14,6 +14,7 @@
   Element elem=null, prevElement=null;
   final boolean startWithSentStart=patternElements.get(0).isSentStart();
   boolean inUnification=false;
+  boolean uniMatched=false;
   for (int i=0; i < tokens.length; i++) {
     boolean allElementsMatch=true;
     if (patternSize + i > tokens.length) {
@@ -64,23 +65,28 @@
             }
           }
           thisMatched|=elem.isMatchedCompletely(matchToken);
-          if (elem.isUnified()) {
+          if (thisMatched && elem.isUnified()) {
             if (inUnification) {
-              thisMatched&=language.getUnifier().isSatisfied(matchToken,elem.getUniFeature(),elem.getUniType());
+              uniMatched=uniMatched || language.getUnifier().isSatisfied(matchToken,elem.getUniFeature(),elem.getUniType());
+              if (l + 1 == numberOfReadings) {
+                thisMatched&=uniMatched;
+              }
             }
  else {
-              thisMatched|=language.getUnifier().isSatisfied(matchToken,elem.getUniFeature(),elem.getUniType());
               if (elem.getUniNegation()) {
                 language.getUnifier().setNegation(true);
               }
+              thisMatched|=language.getUnifier().isSatisfied(matchToken,elem.getUniFeature(),elem.getUniType());
               if (l + 1 == numberOfReadings) {
                 inUnification=true;
                 language.getUnifier().startUnify();
+                uniMatched=false;
               }
             }
           }
- else {
+          if (!elem.isUnified()) {
             inUnification=false;
+            uniMatched=false;
             language.getUnifier().reset();
           }
           if (l + 1 == numberOfReadings && elem.hasAndGroup()) {

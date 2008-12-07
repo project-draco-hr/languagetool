@@ -1,0 +1,29 @@
+{
+  boolean unifiedNext=true;
+  boolean anyFeatUnified=false;
+  String types[];
+  if (allFeatsIn) {
+    for (int i=0; i <= tokCnt; i++) {
+      boolean allFeatsUnified=true;
+      for (      String feat : features) {
+        boolean featUnified=false;
+        if ("".equals(type)) {
+          types=equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
+        }
+ else {
+          types=type.split(",");
+        }
+        for (        String typename : types) {
+          if (equivalencesMatched.get(i).containsKey(feat) && equivalencesMatched.get(i).get(feat).contains(typename)) {
+            Element testElem=equivalenceTypes.get(feat + ":" + typename);
+            featUnified=featUnified || testElem.isMatched(AT);
+          }
+        }
+        allFeatsUnified&=featUnified;
+      }
+      anyFeatUnified|=allFeatsUnified;
+    }
+    unifiedNext&=anyFeatUnified;
+  }
+  return unifiedNext;
+}
