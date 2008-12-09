@@ -1,8 +1,4 @@
 {
-  if (equivalenceTypes == null) {
-  }
-  if (equivalenceFeatures == null) {
-  }
   if (equivalenceTypes.containsKey(feature + ":" + type)) {
   }
   equivalenceTypes.put(feature + ":" + type,elem);

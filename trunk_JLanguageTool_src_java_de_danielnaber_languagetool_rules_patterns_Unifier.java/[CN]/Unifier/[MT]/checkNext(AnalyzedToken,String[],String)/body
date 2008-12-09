@@ -14,16 +14,25 @@
           types=type.split(",");
         }
         for (        String typename : types) {
-          if (equivalencesMatched.get(i).containsKey(feat) && equivalencesMatched.get(i).get(feat).contains(typename)) {
+          if (featuresFound.get(i) && equivalencesMatched.get(i).containsKey(feat) && equivalencesMatched.get(i).get(feat).contains(typename)) {
             Element testElem=equivalenceTypes.get(feat + ":" + typename);
             featUnified=featUnified || testElem.isMatched(AT);
           }
         }
         allFeatsUnified&=featUnified;
       }
+      tmpFeaturesFound.set(i,allFeatsUnified);
       anyFeatUnified|=allFeatsUnified;
     }
     unifiedNext&=anyFeatUnified;
+    if (unifiedNext) {
+      if (tokSequence.size() == readingsCounter) {
+        tokSequence.add(new AnalyzedTokenReadings(AT));
+      }
+ else {
+        tokSequence.get(readingsCounter).addReading(AT);
+      }
+    }
   }
   return unifiedNext;
 }

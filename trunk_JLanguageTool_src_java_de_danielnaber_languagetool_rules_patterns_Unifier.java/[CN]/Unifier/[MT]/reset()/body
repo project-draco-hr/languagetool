@@ -1,8 +1,10 @@
 {
-  if (equivalencesMatched != null) {
-    equivalencesMatched.clear();
-  }
+  equivalencesMatched.clear();
   allFeatsIn=false;
   negation=false;
   tokCnt=-1;
+  featuresFound.clear();
+  tmpFeaturesFound.clear();
+  tokSequence.clear();
+  readingsCounter=1;
 }

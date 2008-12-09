@@ -1,0 +1,21 @@
+{
+  AnalyzedTokenReadings tmpATR;
+  int first=-1;
+  for (int i=0; i <= tokCnt; i++) {
+    if (tmpFeaturesFound.get(i)) {
+      first=i;
+    }
+  }
+  if (first == -1) {
+    return null;
+  }
+  tmpATR=new AnalyzedTokenReadings(tokSequence.get(0).getAnalyzedToken(first));
+  for (int i=first + 1; i <= tokCnt; i++) {
+    if (tmpFeaturesFound.get(i)) {
+      tmpATR.addReading(tokSequence.get(0).getAnalyzedToken(i));
+    }
+  }
+  tokSequence.set(0,tmpATR);
+  AnalyzedTokenReadings[] atr=tokSequence.toArray(new AnalyzedTokenReadings[tokSequence.size()]);
+  return atr;
+}
