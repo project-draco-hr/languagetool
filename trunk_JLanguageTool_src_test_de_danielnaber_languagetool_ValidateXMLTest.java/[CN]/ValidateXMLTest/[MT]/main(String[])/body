@@ -1,0 +1,8 @@
+{
+  final ValidateXMLTest prt=new ValidateXMLTest();
+  System.out.println("Validating XML grammar files ...");
+  prt.testPatternFile();
+  prt.testFalseFriendsXML();
+  prt.testDisambiguationRuleFile();
+  System.out.println("Validation tests successful.");
+}
