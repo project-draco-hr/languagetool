@@ -1,3 +1,4 @@
 {
+  System.err.println(e.getMessage() + " Problem found at line " + e.getLineNumber()+ ", column "+ e.getColumnNumber()+ ".");
   throw e;
 }
