@@ -59,4 +59,5 @@
   testSplit(new String[]{"Mam ju?? 20 mln.","To powinno mi wystarczy??"});
   testSplit(new String[]{"Mam ju?? 20 mln. burak??w."});
   testSplit(new String[]{"Rytmem tej wiecznie przemijaj??cej ??wiatowej egzystencji [???] rytmem mesja??skiej natury jest szcz????cie."});
+  testSplit(new String[]{"W gazecie napisali, ??e pasy (sic!) pogryz??y cz??owieka."});
 }
