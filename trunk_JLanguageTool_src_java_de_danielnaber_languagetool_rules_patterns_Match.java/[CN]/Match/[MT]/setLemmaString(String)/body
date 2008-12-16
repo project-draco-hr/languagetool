@@ -1,7 +1,7 @@
 {
   if (lemmaString != null) {
     if (!lemmaString.equals("")) {
-      formattedToken=new AnalyzedTokenReadings(new AnalyzedToken(lemmaString,null,lemmaString));
+      formattedToken=new AnalyzedTokenReadings(new AnalyzedToken(lemmaString,posTag,lemmaString));
       staticLemma=true;
       postagRegexp=true;
       if (postagRegexp && posTag != null) {
