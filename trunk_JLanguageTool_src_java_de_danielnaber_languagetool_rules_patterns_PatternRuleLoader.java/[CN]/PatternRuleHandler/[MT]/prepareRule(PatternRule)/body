@@ -6,7 +6,8 @@
   rule.setCorrectExamples(correctExamples);
   rule.setIncorrectExamples(incorrectExamples);
   rule.setCategory(category);
-  rule.setSubId(subId + "");
+  if (inRuleGroup)   rule.setSubId(subId + "");
+ else   rule.setSubId("1");
   caseSensitive=false;
   if (suggestionMatches != null) {
     for (    final Match m : suggestionMatches) {

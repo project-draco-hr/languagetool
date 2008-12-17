@@ -21,7 +21,7 @@
   }
  else   if (qName.equals("rule")) {
     id=attrs.getValue("id");
-    subId++;
+    if (inRuleGroup)     subId++;
     if (!(inRuleGroup && defaultOff)) {
       defaultOff="off".equals(attrs.getValue("default"));
     }
