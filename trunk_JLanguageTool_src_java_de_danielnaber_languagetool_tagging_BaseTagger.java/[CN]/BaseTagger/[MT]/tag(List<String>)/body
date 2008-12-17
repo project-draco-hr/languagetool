@@ -16,14 +16,14 @@
     if (taggerTokens != null) {
       int i=0;
       while (i < taggerTokens.length) {
-        l.add(new AnalyzedToken(word,taggerTokens[i + 1],taggerTokens[i]));
+        l.add(new AnalyzedToken(word,taggerTokens[i + 1],taggerTokens[i],pos));
         i=i + 2;
       }
     }
     if (lowerTaggerTokens != null) {
       int i=0;
       while (i < lowerTaggerTokens.length) {
-        l.add(new AnalyzedToken(word,lowerTaggerTokens[i + 1],lowerTaggerTokens[i]));
+        l.add(new AnalyzedToken(word,lowerTaggerTokens[i + 1],lowerTaggerTokens[i],pos));
         i=i + 2;
       }
     }
