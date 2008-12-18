@@ -1,7 +1,7 @@
 {
   boolean matched=false;
   if (testString) {
-    matched=(isStringTokenMatched(token) ^ negation) && (isPosTokenMatched(token) ^ posNegation);
+    matched=(isStringTokenMatched(token) ^ negation) && (isPosTokenMatched(token) ^ posNegation) && (ignoreWhitespace || isWhitespaceBefore(token));
   }
  else {
     matched=(!negation) && (isPosTokenMatched(token) ^ posNegation);

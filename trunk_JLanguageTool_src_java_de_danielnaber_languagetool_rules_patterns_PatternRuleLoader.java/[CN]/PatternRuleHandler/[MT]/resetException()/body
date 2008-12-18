@@ -6,4 +6,6 @@
   exceptionStringRegExp=false;
   exceptionValidNext=false;
   exceptionValidPrev=false;
+  exceptionSpaceBefore=false;
+  exceptionSpaceBeforeSet=false;
 }

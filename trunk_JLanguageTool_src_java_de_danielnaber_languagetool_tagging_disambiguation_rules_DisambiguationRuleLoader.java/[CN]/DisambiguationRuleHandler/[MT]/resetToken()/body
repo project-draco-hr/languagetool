@@ -5,6 +5,8 @@
   posRegExp=false;
   inToken=false;
   stringRegExp=false;
+  tokenSpaceBefore=false;
+  tokenSpaceBeforeSet=false;
   resetException();
   exceptionSet=false;
   tokenReference=null;

@@ -1,0 +1,4 @@
+{
+  whitespaceBefore=isWhite;
+  ignoreWhitespace=false;
+}

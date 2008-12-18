@@ -1,0 +1,6 @@
+{
+  isWhitespaceBefore=isWhite;
+  for (  AnalyzedToken aTok : anTokReadings) {
+    aTok.setWhitespaceBefore(isWhite);
+  }
+}

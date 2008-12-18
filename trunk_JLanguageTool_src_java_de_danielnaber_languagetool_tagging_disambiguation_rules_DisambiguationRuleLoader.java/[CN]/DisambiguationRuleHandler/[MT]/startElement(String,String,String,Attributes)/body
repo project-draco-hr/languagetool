@@ -46,6 +46,10 @@
     if (attrs.getValue("regexp") != null) {
       exceptionStringRegExp=attrs.getValue("regexp").equals("yes");
     }
+    if (attrs.getValue("spacebefore") != null) {
+      exceptionSpaceBefore="yes".equals(attrs.getValue("spacebefore"));
+      exceptionSpaceBeforeSet=!"ignore".equals(attrs.getValue("spacebefore"));
+    }
   }
  else   if (qName.equals("and")) {
     inAndGroup=true;
@@ -76,6 +80,10 @@
     }
     if (attrs.getValue("regexp") != null) {
       stringRegExp=attrs.getValue("regexp").equals("yes");
+    }
+    if (attrs.getValue("spacebefore") != null) {
+      tokenSpaceBefore="yes".equals(attrs.getValue("spacebefore"));
+      tokenSpaceBeforeSet=!"ignore".equals(attrs.getValue("spacebefore"));
     }
   }
  else   if (qName.equals("disambig")) {

@@ -23,6 +23,9 @@
       tokenElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext,exceptionValidPrev);
       exceptionPosToken=null;
     }
+    if (exceptionSpaceBeforeSet) {
+      tokenElement.setExceptionSpaceBefore(exceptionSpaceBefore);
+    }
     resetException();
   }
  else   if (qName.equals("and")) {
@@ -56,6 +59,9 @@
     }
     if (inAndGroup) {
       andGroupCounter++;
+    }
+    if (tokenSpaceBeforeSet) {
+      tokenElement.setWhitespaceBefore(tokenSpaceBefore);
     }
     resetToken();
   }

@@ -100,6 +100,10 @@
     if (attrs.getValue(REGEXP) != null) {
       stringRegExp=YES.equals(attrs.getValue(REGEXP));
     }
+    if (attrs.getValue("spacebefore") != null) {
+      tokenSpaceBefore=YES.equals(attrs.getValue("spacebefore"));
+      tokenSpaceBeforeSet=!"ignore".equals(attrs.getValue("spacebefore"));
+    }
   }
  else   if (qName.equals("exception")) {
     inException=true;
@@ -126,6 +130,10 @@
     }
     if (attrs.getValue(REGEXP) != null) {
       exceptionStringRegExp=YES.equals(attrs.getValue(REGEXP));
+    }
+    if (attrs.getValue("spacebefore") != null) {
+      exceptionSpaceBefore=YES.equals(attrs.getValue("spacebefore"));
+      exceptionSpaceBeforeSet=!"ignore".equals(attrs.getValue("spacebefore"));
     }
   }
  else   if (qName.equals("example") && attrs.getValue("type").equals("correct")) {
