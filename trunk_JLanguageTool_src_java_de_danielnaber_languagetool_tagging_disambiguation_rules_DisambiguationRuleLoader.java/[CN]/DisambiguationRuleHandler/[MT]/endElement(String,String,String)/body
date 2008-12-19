@@ -1,7 +1,10 @@
 {
   if (qName.equals("rule")) {
-    final DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,elementList,disambiguatedPOS,posSelector);
+    final DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,elementList,disambiguatedPOS,posSelector,disambigAction);
     rule.setStartPositionCorrection(positionCorrection);
+    if (!singleTokenCorrection) {
+      rule.setEndPositionCorrection(endPositionCorrection);
+    }
     caseSensitive=false;
     rules.add(rule);
     if (elementList != null) {
@@ -32,6 +35,9 @@
     inAndGroup=false;
     andGroupCounter=0;
   }
+ else   if (qName.equals("unify")) {
+    inUnification=false;
+  }
  else   if (qName.equals("token")) {
     if (!exceptionSet || tokenElement == null) {
       tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,tokenInflected);
@@ -60,6 +66,18 @@
     if (inAndGroup) {
       andGroupCounter++;
     }
+    if (inUnification) {
+      tokenElement.setUnification(uFeature,uType);
+      if (uniNegation) {
+        tokenElement.setUniNegation();
+      }
+    }
+    if (inUnificationDef) {
+      language.getUnifier().setEquivalence(uFeature,uType,tokenElement);
+      if (elementList != null) {
+        elementList.clear();
+      }
+    }
     if (tokenSpaceBeforeSet) {
       tokenElement.setWhitespaceBefore(tokenSpaceBefore);
     }
@@ -82,5 +100,11 @@
   }
  else   if (qName.equals("rulegroup")) {
     inRuleGroup=false;
+  }
+ else   if (qName.equals("unification") && inUnificationDef) {
+    inUnificationDef=false;
+  }
+ else   if (qName.equals("unify") && inUnification) {
+    inUnification=false;
   }
 }

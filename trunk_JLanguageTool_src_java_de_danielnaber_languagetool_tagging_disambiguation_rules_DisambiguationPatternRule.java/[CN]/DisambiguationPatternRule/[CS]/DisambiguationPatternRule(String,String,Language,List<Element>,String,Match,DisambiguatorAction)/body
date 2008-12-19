@@ -11,7 +11,7 @@
   if (description == null) {
     throw new NullPointerException("description cannot be null");
   }
-  if (disamb == null && posSelect == null) {
+  if (disamb == null && posSelect == null && disambAction != DisambiguatorAction.UNIFY) {
     throw new NullPointerException("disambiguated POS cannot be null");
   }
   this.id=id;
@@ -20,4 +20,5 @@
   this.patternElements=new ArrayList<Element>(elements);
   this.disambiguatedPOS=disamb;
   this.matchToken=posSelect;
+  this.disAction=disambAction;
 }

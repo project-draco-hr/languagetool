@@ -14,8 +14,24 @@
   }
  else   if (qName.equals("pattern")) {
     inPattern=true;
+    if (attrs.getValue("mark") != null && (attrs.getValue("mark_from") != null)) {
+      throw new SAXException("You cannot use both mark and mark_from attributes.");
+    }
+    if (attrs.getValue("mark") != null && (attrs.getValue("mark_to") != null)) {
+      throw new SAXException("You cannot use both mark and mark_to attributes.");
+    }
     if (attrs.getValue("mark") != null) {
       positionCorrection=Integer.parseInt(attrs.getValue("mark"));
+    }
+    if (attrs.getValue("mark_from") != null) {
+      positionCorrection=Integer.parseInt(attrs.getValue("mark_from"));
+    }
+    if (attrs.getValue("mark_to") != null) {
+      endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
+      singleTokenCorrection=false;
+    }
+ else {
+      singleTokenCorrection=true;
     }
     if (attrs.getValue("case_sensitive") != null && "yes".equals(attrs.getValue("case_sensitive"))) {
       caseSensitive=true;
@@ -54,6 +70,19 @@
  else   if (qName.equals("and")) {
     inAndGroup=true;
   }
+ else   if (qName.equals("unify")) {
+    inUnification=true;
+    uFeature=attrs.getValue("feature");
+    if (attrs.getValue("type") != null) {
+      uType=attrs.getValue("type");
+    }
+ else {
+      uType="";
+    }
+    if (attrs.getValue("negate") != null && "yes".equals(attrs.getValue("negate"))) {
+      uniNegation=true;
+    }
+  }
  else   if (qName.equals("token")) {
     inToken=true;
     if (attrs.getValue("negate") != null) {
@@ -89,6 +118,12 @@
  else   if (qName.equals("disambig")) {
     inDisamb=true;
     disambiguatedPOS=attrs.getValue("postag");
+    if (attrs.getValue("action") != null) {
+      disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction(attrs.getValue("action").toUpperCase());
+    }
+ else {
+      disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction("REPLACE");
+    }
   }
  else   if (qName.equals("match")) {
     inMatch=true;
@@ -128,5 +163,12 @@
     ruleGroupId=attrs.getValue("id");
     ruleGroupName=attrs.getValue("name");
     inRuleGroup=true;
+  }
+ else   if (qName.equals("unification")) {
+    uFeature=attrs.getValue("feature");
+    inUnificationDef=true;
+  }
+ else   if (qName.equals("equivalence")) {
+    uType=attrs.getValue("type");
   }
 }

@@ -4,3 +4,4 @@ Language language
 List<Element> elements
 String disamb
 Match posSelect
+DisambiguatorAction disambAction
