@@ -1,9 +1,9 @@
 {
   if (qName.equals("title")) {
     title=text.toString();
+    text=new StringBuilder();
   }
  else   if (qName.equals("text")) {
-    inText=false;
     String textToCheck=textFilter.filter(text.toString());
     if (!textToCheck.contains("#REDIRECT")) {
       try {
@@ -26,4 +26,5 @@ catch (      SQLException e) {
     }
     text=new StringBuilder();
   }
+  inText=false;
 }
