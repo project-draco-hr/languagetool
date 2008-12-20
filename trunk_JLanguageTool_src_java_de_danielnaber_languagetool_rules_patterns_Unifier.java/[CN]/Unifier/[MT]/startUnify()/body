@@ -3,5 +3,5 @@
   for (int i=0; i <= tokCnt; i++) {
     featuresFound.add(true);
   }
-  tmpFeaturesFound=(List<Boolean>)((ArrayList)featuresFound).clone();
+  tmpFeaturesFound=new ArrayList<Boolean>(featuresFound);
 }

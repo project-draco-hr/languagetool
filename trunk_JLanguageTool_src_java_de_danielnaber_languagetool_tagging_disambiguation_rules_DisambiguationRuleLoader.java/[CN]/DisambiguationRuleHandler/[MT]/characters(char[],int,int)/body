@@ -9,6 +9,9 @@
  else   if (inMatch) {
     match.append(s);
   }
+ else   if (inWord) {
+    wd.append(s);
+  }
  else   if (inDisamb) {
     disamb.append(s);
   }

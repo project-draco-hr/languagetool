@@ -11,7 +11,7 @@
   if (description == null) {
     throw new NullPointerException("description cannot be null");
   }
-  if (disamb == null && posSelect == null && disambAction != DisambiguatorAction.UNIFY) {
+  if (disamb == null && posSelect == null && disambAction != DisambiguatorAction.UNIFY && disambAction != DisambiguatorAction.ADD && disambAction != DisambiguatorAction.REMOVE) {
     throw new NullPointerException("disambiguated POS cannot be null");
   }
   this.id=id;

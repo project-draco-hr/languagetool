@@ -5,9 +5,28 @@
     if (!singleTokenCorrection) {
       rule.setEndPositionCorrection(endPositionCorrection);
     }
+    if (newWdList != null) {
+      if (disambigAction == DisambiguatorAction.ADD || disambigAction == DisambiguatorAction.REMOVE) {
+        if (newWdList.size() != (elementList.size() - positionCorrection + endPositionCorrection)) {
+          throw new SAXException("Rule error. The number of interpretations specified with wd: " + newWdList.size() + " must be equal to the number of matched tokens."+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+        }
+        rule.setNewInterpretations(newWdList.toArray((new AnalyzedToken[newWdList.size()])));
+      }
+      newWdList.clear();
+    }
     caseSensitive=false;
     rules.add(rule);
     if (elementList != null) {
+      if (disambigAction == DisambiguatorAction.UNIFY) {
+        if ((elementList.size() - positionCorrection + endPositionCorrection) != uniCounter) {
+          throw new SAXException("Rule error. The number unified tokens: " + uniCounter + " must be equal to the number of matched tokens."+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+        }
+      }
+      if (!singleTokenCorrection && (disambigAction == DisambiguatorAction.FILTER || disambigAction == DisambiguatorAction.REPLACE)) {
+        if ((elementList.size() - positionCorrection + endPositionCorrection) > 1) {
+          throw new SAXException("Rule error. Cannot replace or filter more than one token at a time." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
+        }
+      }
       elementList.clear();
     }
     posSelector=null;
@@ -71,6 +90,7 @@
       if (uniNegation) {
         tokenElement.setUniNegation();
       }
+      uniCounter++;
     }
     if (inUnificationDef) {
       language.getUnifier().setEquivalence(uFeature,uType,tokenElement);
@@ -106,5 +126,9 @@
   }
  else   if (qName.equals("unify") && inUnification) {
     inUnification=false;
+  }
+ else   if (qName.equals("wd")) {
+    addNewWord(wd.toString(),wdLemma,wdPos);
+    inWord=false;
   }
 }

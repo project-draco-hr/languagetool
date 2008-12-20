@@ -15,10 +15,10 @@
  else   if (qName.equals("pattern")) {
     inPattern=true;
     if (attrs.getValue("mark") != null && (attrs.getValue("mark_from") != null)) {
-      throw new SAXException("You cannot use both mark and mark_from attributes.");
+      throw new SAXException("You cannot use both mark and mark_from attributes." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
     }
     if (attrs.getValue("mark") != null && (attrs.getValue("mark_to") != null)) {
-      throw new SAXException("You cannot use both mark and mark_to attributes.");
+      throw new SAXException("You cannot use both mark and mark_to attributes." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
     }
     if (attrs.getValue("mark") != null) {
       positionCorrection=Integer.parseInt(attrs.getValue("mark"));
@@ -82,6 +82,7 @@
     if (attrs.getValue("negate") != null && "yes".equals(attrs.getValue("negate"))) {
       uniNegation=true;
     }
+    uniCounter=0;
   }
  else   if (qName.equals("token")) {
     inToken=true;
@@ -124,6 +125,7 @@
  else {
       disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction("REPLACE");
     }
+    disamb=new StringBuffer();
   }
  else   if (qName.equals("match")) {
     inMatch=true;
@@ -137,7 +139,7 @@
       if (attrs.getValue("no") != null) {
         final int refNumber=Integer.parseInt(attrs.getValue("no"));
         if (refNumber > elementList.size()) {
-          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber);
+          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
         }
  else {
           mWorker.setTokenRef(refNumber);
@@ -149,7 +151,7 @@
       if (attrs.getValue("no") != null) {
         final int refNumber=Integer.parseInt(attrs.getValue("no"));
         if (refNumber > elementList.size()) {
-          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber);
+          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
         }
  else {
           mWorker.setTokenRef(refNumber);
@@ -170,5 +172,11 @@
   }
  else   if (qName.equals("equivalence")) {
     uType=attrs.getValue("type");
+  }
+ else   if (qName.equals("wd")) {
+    wdLemma=attrs.getValue("lemma");
+    wdPos=attrs.getValue("pos");
+    inWord=true;
+    wd=new StringBuffer();
   }
 }

@@ -1,4 +1,4 @@
 {
-  featuresFound=(ArrayList<Boolean>)((ArrayList)tmpFeaturesFound).clone();
+  featuresFound=new ArrayList<Boolean>(tmpFeaturesFound);
   readingsCounter++;
 }

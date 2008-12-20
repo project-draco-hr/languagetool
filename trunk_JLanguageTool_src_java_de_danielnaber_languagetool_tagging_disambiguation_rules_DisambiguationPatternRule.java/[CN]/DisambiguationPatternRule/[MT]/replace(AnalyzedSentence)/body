@@ -158,8 +158,8 @@
         }
       }
       final int fromPos=text.getOriginalPosition(firstMatchToken + correctedStPos);
-      int toPos=lastMatchToken + correctedEndPos;
       final int numRead=whTokens[fromPos].getReadingsLength();
+      boolean filtered=false;
 switch (disAction) {
 case UNIFY:
 {
@@ -173,28 +173,61 @@ case UNIFY:
           }
           break;
         }
+case REMOVE:
+{
+        if (newTokenReadings != null) {
+          if (newTokenReadings.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
+            for (i=0; i < newTokenReadings.length; i++) {
+              whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].removeReading(newTokenReadings[i]);
+            }
+          }
+        }
+        break;
+      }
+case ADD:
+{
+      if (newTokenReadings != null) {
+        if (newTokenReadings.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
+          for (i=0; i < newTokenReadings.length; i++) {
+            whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].addReading(newTokenReadings[i]);
+          }
+        }
+      }
+      break;
+    }
+case FILTER:
+{
+    if (matchToken == null) {
+      Match tmpMatchToken=new Match(disambiguatedPOS,null,true,disambiguatedPOS,null,Match.CaseConversion.NONE,false);
+      tmpMatchToken.setToken(whTokens[fromPos]);
+      whTokens[fromPos]=tmpMatchToken.filterReadings(whTokens[fromPos]);
+      filtered=true;
+    }
+  }
 case REPLACE:
 default :
 {
-        if (matchToken == null) {
-          String lemma="";
-          for (int l=0; l < numRead; l++) {
-            if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag() != null && (whTokens[fromPos].getAnalyzedToken(l).getPOSTag().equals(disambiguatedPOS) && (whTokens[fromPos].getAnalyzedToken(l).getLemma() != null))) {
-              lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
-            }
-          }
-          if (("").equals(lemma)) {
-            lemma=whTokens[fromPos].getAnalyzedToken(0).getLemma();
-          }
-          final AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma,whTokens[fromPos].getStartPos()));
-          whTokens[fromPos]=toReplace;
-        }
- else {
-          matchToken.setToken(whTokens[fromPos]);
-          whTokens[fromPos]=matchToken.filterReadings(whTokens[fromPos]);
+  if (!filtered) {
+    if (matchToken == null) {
+      String lemma="";
+      for (int l=0; l < numRead; l++) {
+        if (whTokens[fromPos].getAnalyzedToken(l).getPOSTag() != null && (whTokens[fromPos].getAnalyzedToken(l).getPOSTag().equals(disambiguatedPOS) && (whTokens[fromPos].getAnalyzedToken(l).getLemma() != null))) {
+          lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
         }
       }
+      if (("").equals(lemma)) {
+        lemma=whTokens[fromPos].getAnalyzedToken(0).getLemma();
+      }
+      final AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma,whTokens[fromPos].getStartPos()));
+      whTokens[fromPos]=toReplace;
+    }
+ else {
+      matchToken.setToken(whTokens[fromPos]);
+      whTokens[fromPos]=matchToken.filterReadings(whTokens[fromPos]);
+    }
   }
+}
+}
 }
 firstMatchToken=-1;
 lastMatchToken=-1;
