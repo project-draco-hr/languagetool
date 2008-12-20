@@ -1,6 +1,7 @@
 {
   token=anTokReadings[0].getToken();
   isWhitespace=StringTools.isWhitespace(token);
+  isLinebreak=token.equals("\n") || token.equals("\r\n") || token.equals("\r")|| token.equals("\n\r");
   isParaEnd=false;
   for (  final AnalyzedToken reading : anTokReadings) {
     if (reading.posTag != null) {
