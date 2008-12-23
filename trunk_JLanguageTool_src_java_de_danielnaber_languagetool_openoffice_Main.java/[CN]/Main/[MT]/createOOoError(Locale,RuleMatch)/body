@@ -1,6 +1,6 @@
 {
-  final SingleGrammarError aError=new SingleGrammarError();
-  aError.nErrorType=com.sun.star.text.TextMarkupType.GRAMMAR;
+  final SingleProofreadingError aError=new SingleProofreadingError();
+  aError.nErrorType=com.sun.star.text.TextMarkupType.PROOFREADING;
   final String comment=myMatch.getMessage().replaceAll("<suggestion>","\"").replaceAll("</suggestion>","\"").replaceAll("([\r]*\n)"," ");
   aError.aFullComment=comment;
   if (myMatch.getShortMessage() != null) {
@@ -10,9 +10,8 @@
     aError.aShortComment=aError.aFullComment;
   }
   aError.aSuggestions=myMatch.getSuggestedReplacements().toArray(new String[myMatch.getSuggestedReplacements().size()]);
-  aError.nErrorLevel=0;
   aError.nErrorStart=myMatch.getFromPos();
   aError.nErrorLength=myMatch.getToPos() - myMatch.getFromPos();
-  aError.aNewLocale=locale;
+  aError.aRuleIdentifier=myMatch.getRule().getId();
   return aError;
 }

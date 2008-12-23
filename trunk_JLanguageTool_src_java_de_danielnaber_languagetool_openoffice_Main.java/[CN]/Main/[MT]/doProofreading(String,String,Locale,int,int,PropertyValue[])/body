@@ -1,0 +1,15 @@
+{
+  final ProofreadingResult paRes=new ProofreadingResult();
+  try {
+    paRes.nBehindEndOfSentencePosition=nSuggestedBehindEndOfSentencePosition - startOfSentencePos;
+    paRes.xProofreader=this;
+    paRes.aLocale=locale;
+    paRes.aDocumentIdentifier=docID;
+    paRes.aText=paraText;
+    return doGrammarCheckingInternal(paraText,locale,paRes);
+  }
+ catch (  final Throwable t) {
+    showError(t);
+    return paRes;
+  }
+}

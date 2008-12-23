@@ -1,0 +1,6 @@
+String docID
+String paraText
+Locale locale
+int startOfSentencePos
+int nSuggestedBehindEndOfSentencePosition
+PropertyValue[] arg5
