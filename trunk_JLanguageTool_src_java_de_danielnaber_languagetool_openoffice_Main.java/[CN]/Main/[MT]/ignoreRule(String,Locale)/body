@@ -1,2 +1,15 @@
 {
+  Set<String> disabledRules=config.getDisabledRuleIds();
+  if (disabledRules == null) {
+    disabledRules=new HashSet<String>();
+  }
+  disabledRules.add(ruleId);
+  config.setDisabledRuleIds(disabledRules);
+  try {
+    config.saveConfiguration();
+  }
+ catch (  final Throwable t) {
+    showError(t);
+  }
+  recheck=true;
 }

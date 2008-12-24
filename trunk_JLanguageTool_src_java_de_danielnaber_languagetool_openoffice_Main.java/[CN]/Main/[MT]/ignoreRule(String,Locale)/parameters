@@ -1,2 +1,2 @@
-String arg0
-Locale arg1
+String ruleId
+Locale locale

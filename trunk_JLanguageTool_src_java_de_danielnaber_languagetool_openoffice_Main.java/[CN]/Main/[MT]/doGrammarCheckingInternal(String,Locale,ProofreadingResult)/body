@@ -42,6 +42,7 @@
             errorArray[i]=createOOoError(locale,myRuleMatch);
             i++;
           }
+          Arrays.sort(errorArray,new ErrorPositionComparator());
           paRes.aErrors=errorArray;
         }
       }
