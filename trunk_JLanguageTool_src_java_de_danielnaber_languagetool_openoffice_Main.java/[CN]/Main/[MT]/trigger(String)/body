@@ -4,43 +4,32 @@
   }
   try {
     if (sEvent.equals("execute")) {
-      final TextToCheck textToCheck=getText();
-      checkText(textToCheck);
-    }
- else     if (sEvent.equals("test_new_win")) {
       final XMultiComponentFactory xMCF=xContext.getServiceManager();
-      final XNameAccess xNameAccess=(XNameAccess)UnoRuntime.queryInterface(XNameAccess.class,xContext);
-      final Object oPIP=xNameAccess.getByName("/singletons/com.sun.star.deployment.PackageInformationProvider");
-      final XPackageInformationProvider xPIP=(XPackageInformationProvider)UnoRuntime.queryInterface(XPackageInformationProvider.class,oPIP);
-      final String sPackageURL=xPIP.getPackageLocation("org.openoffice.languagetool.oxt");
-      final String sDialogURL=sPackageURL + "/Options.xdl";
-      final Object oDialogProvider=xMCF.createInstanceWithContext("com.sun.star.awt.DialogProvider",xContext);
-      final XDialogProvider xDialogProv=(XDialogProvider)UnoRuntime.queryInterface(XDialogProvider.class,oDialogProvider);
-      final XDialog xDialog=xDialogProv.createDialog(sDialogURL);
-      final XControlContainer xDlgContainer=(XControlContainer)UnoRuntime.queryInterface(XControlContainer.class,xDialog);
-      final XControl xListControl=xDlgContainer.getControl("LanguageList");
-      final XListBox xListBox=(XListBox)UnoRuntime.queryInterface(XListBox.class,xListControl);
-      for (short i=0; i < Language.LANGUAGES.length - 1; i++) {
-        xListBox.addItem(Language.LANGUAGES[i].getTranslatedName(MESSAGES),i);
+      Object aObj=xMCF.createInstanceWithContext("com.sun.star.linguistic2.LinguServiceManager",xContext);
+      com.sun.star.linguistic2.XLinguServiceManager mxLinguSvcMgr=(com.sun.star.linguistic2.XLinguServiceManager)UnoRuntime.queryInterface(com.sun.star.linguistic2.XLinguServiceManager.class,aObj);
+      if (mxLinguSvcMgr != null) {
+        Map<Locale,String[]> previousServices=new HashMap<Locale,String[]>();
+        Locale[] locales=this.getLocales();
+        for (        Locale loc : locales) {
+          String[] spServices=mxLinguSvcMgr.getConfiguredServices("com.sun.star.linguistic2.SpellChecker",loc);
+          if (spServices != null) {
+            previousServices.put(loc,spServices);
+            System.err.println(loc.toString() + " " + Arrays.toString(spServices));
+            mxLinguSvcMgr.setConfiguredServices("com.sun.star.linguistic2.SpellChecker",loc,new String[0]);
+          }
+        }
+        com.sun.star.lang.XMultiServiceFactory xMultiServiceManager=(com.sun.star.lang.XMultiServiceFactory)UnoRuntime.queryInterface(com.sun.star.lang.XMultiServiceFactory.class,xContext.getServiceManager());
+        XModel xModel=(XModel)UnoRuntime.queryInterface(XModel.class,getxComponent());
+        com.sun.star.frame.XFrame xFrame=xModel.getCurrentController().getFrame();
+        Object objDispatchHelper=xMultiServiceManager.createInstance("com.sun.star.frame.DispatchHelper");
+        XDispatchHelper xDispatchHelper=(XDispatchHelper)UnoRuntime.queryInterface(XDispatchHelper.class,objDispatchHelper);
+        XDispatchProvider xDispatchProvider=(XDispatchProvider)UnoRuntime.queryInterface(XDispatchProvider.class,xFrame);
+        UnoRuntime.queryInterface(com.sun.star.frame.XDispatchProvider.class,xFrame);
+        xDispatchHelper.executeDispatch(xDispatchProvider,".uno:SpellingAndGrammarDialog","",0,new PropertyValue[0]);
+        for (        Locale loc : locales) {
+          if (previousServices.get(loc) != null)           mxLinguSvcMgr.setConfiguredServices("com.sun.star.linguistic2.SpellChecker",loc,previousServices.get(loc));
+        }
       }
-      final XButton xOKButton=(XButton)UnoRuntime.queryInterface(XButton.class,xDlgContainer.getControl("OK_Button"));
-      xOKButton.setLabel(StringTools.getOOoLabel(MESSAGES.getString("guiOKButton")));
-      final XButton xCancelButton=(XButton)UnoRuntime.queryInterface(XButton.class,xDlgContainer.getControl("Cancel_Button"));
-      xCancelButton.setLabel(StringTools.getOOoLabel(MESSAGES.getString("guiCancelButton")));
-      final XControl xControlTree=xDlgContainer.getControl("Rules");
-      final XControlModel xTreeModel=xControlTree.getModel();
-      final Object xTreeData=xMCF.createInstanceWithContext("com.sun.star.awt.tree.MutableTreeDataModel",xContext);
-      final XMutableTreeDataModel mxTreeDataModel=(XMutableTreeDataModel)UnoRuntime.queryInterface(XMutableTreeDataModel.class,xTreeData);
-      final XMutableTreeNode xNode=mxTreeDataModel.createNode("Rules",false);
-      xNode.appendChild(mxTreeDataModel.createNode("Misc",false));
-      xNode.appendChild(mxTreeDataModel.createNode("Punctuation",false));
-      mxTreeDataModel.setRoot(xNode);
-      final XPropertySet xTreeModelProperty=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,xTreeModel);
-      xTreeModelProperty.setPropertyValue("DataModel",mxTreeDataModel);
-      xNode.setDataValue("test2");
-      xNode.setExpandedGraphicURL(sPackageURL + "triangle_down.png");
-      xNode.setCollapsedGraphicURL(sPackageURL + "triangle_right.png");
-      final short nResult=xDialog.execute();
     }
  else     if (sEvent.equals("configure")) {
       runOptionsDialog();

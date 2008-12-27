@@ -1,3 +1,10 @@
 {
   config.setDisabledRuleIds(new HashSet<String>());
+  try {
+    config.saveConfiguration();
+  }
+ catch (  final Throwable t) {
+    showError(t);
+  }
+  recheck=true;
 }

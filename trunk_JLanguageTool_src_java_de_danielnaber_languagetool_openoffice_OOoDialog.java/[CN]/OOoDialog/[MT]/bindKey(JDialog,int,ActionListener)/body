@@ -1,5 +1,0 @@
-{
-  KeyStroke stroke=KeyStroke.getKeyStroke(keyCode,0);
-  JRootPane rootPane=dialog.getRootPane();
-  rootPane.registerKeyboardAction(actionListener,stroke,JComponent.WHEN_IN_FOCUSED_WINDOW);
-}

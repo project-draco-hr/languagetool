@@ -1,7 +1,0 @@
-{
-  int error1pos=((SingleProofreadingError)match1).nErrorStart;
-  int error2pos=((SingleProofreadingError)match2).nErrorStart;
-  if (error1pos > error2pos)   return 1;
- else   if (error1pos < error2pos)   return -1;
- else   return 0;
-}

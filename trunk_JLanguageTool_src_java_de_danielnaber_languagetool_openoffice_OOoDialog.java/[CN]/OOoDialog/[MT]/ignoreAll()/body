@@ -1,3 +1,0 @@
-{
-  rulesToIgnore.add(currentRuleMatch.getRule().getId());
-}

@@ -1,6 +1,0 @@
-Configuration configuration
-List<Rule> rules
-XTextDocument xTextDoc
-List<CheckedParagraph> checkedParagraphs
-XTextViewCursor xViewCursor
-TextToCheck textToCheck

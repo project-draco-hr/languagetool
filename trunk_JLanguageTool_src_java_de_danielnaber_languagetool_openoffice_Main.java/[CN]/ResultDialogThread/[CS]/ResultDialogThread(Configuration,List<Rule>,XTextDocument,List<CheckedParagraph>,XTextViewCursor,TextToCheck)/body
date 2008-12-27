@@ -1,8 +1,0 @@
-{
-  this.configuration=configuration;
-  this.rules=rules;
-  this.xTextDoc=xTextDoc;
-  this.checkedParagraphs=checkedParagraphs;
-  this.xViewCursor=xViewCursor;
-  this.textTocheck=textTocheck;
-}

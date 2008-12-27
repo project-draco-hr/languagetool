@@ -1,4 +1,0 @@
-{
-  this.paragraphs=paragraphs;
-  this.isSelection=isSelection;
-}

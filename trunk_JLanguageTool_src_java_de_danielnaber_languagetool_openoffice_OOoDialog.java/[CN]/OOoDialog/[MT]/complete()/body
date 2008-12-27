@@ -1,5 +1,0 @@
-{
-  if (xViewCursor == null)   JOptionPane.showMessageDialog(null,messages.getString("guiCheckComplete"));
- else   JOptionPane.showMessageDialog(null,messages.getString("guiSelectionCheckComplete"));
-  close();
-}
