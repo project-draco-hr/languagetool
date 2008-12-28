@@ -16,10 +16,10 @@
     BufferedReader br=null;
     try {
       if (encoding != null) {
-        isr=new InputStreamReader(new FileInputStream(file.getAbsolutePath()),encoding);
+        isr=new InputStreamReader(new BufferedInputStream(new FileInputStream(file.getAbsolutePath())),encoding);
       }
  else {
-        isr=new InputStreamReader(new FileInputStream(file.getAbsolutePath()));
+        isr=new InputStreamReader(new BufferedInputStream(new FileInputStream(file.getAbsolutePath())));
       }
       br=new BufferedReader(isr);
       String line;
