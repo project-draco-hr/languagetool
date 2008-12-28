@@ -120,9 +120,9 @@
     }
     inCorrectExample=false;
     inIncorrectExample=false;
-    correctExample=new StringBuffer();
-    incorrectExample=new StringBuffer();
-    exampleCorrection=new StringBuffer();
+    correctExample=new StringBuilder();
+    incorrectExample=new StringBuilder();
+    exampleCorrection=new StringBuilder();
   }
  else   if (qName.equals("message")) {
     inMessage=false;

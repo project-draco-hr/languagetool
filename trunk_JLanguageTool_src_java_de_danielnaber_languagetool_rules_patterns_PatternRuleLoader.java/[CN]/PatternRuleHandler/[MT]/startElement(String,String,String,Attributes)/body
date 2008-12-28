@@ -84,7 +84,7 @@
     if (attrs.getValue("skip") != null) {
       skipPos=Integer.parseInt(attrs.getValue("skip"));
     }
-    elements=new StringBuffer();
+    elements=new StringBuilder();
     if (elementList == null) {
       elementList=new ArrayList<Element>();
     }
@@ -107,7 +107,7 @@
   }
  else   if (qName.equals("exception")) {
     inException=true;
-    exceptions=new StringBuffer();
+    exceptions=new StringBuilder();
     resetException();
     if (attrs.getValue(NEGATE) != null) {
       exceptionStringNegation=YES.equals(attrs.getValue(NEGATE));
@@ -138,23 +138,23 @@
   }
  else   if (qName.equals("example") && attrs.getValue("type").equals("correct")) {
     inCorrectExample=true;
-    correctExample=new StringBuffer();
+    correctExample=new StringBuilder();
   }
  else   if (qName.equals("example") && attrs.getValue("type").equals("incorrect")) {
     inIncorrectExample=true;
-    incorrectExample=new StringBuffer();
-    exampleCorrection=new StringBuffer();
+    incorrectExample=new StringBuilder();
+    exampleCorrection=new StringBuilder();
     if (attrs.getValue("correction") != null) {
       exampleCorrection.append(attrs.getValue("correction"));
     }
   }
  else   if (qName.equals("message")) {
     inMessage=true;
-    message=new StringBuffer();
+    message=new StringBuilder();
   }
  else   if (qName.equals("short")) {
     inShortMessage=true;
-    shortMessage=new StringBuffer();
+    shortMessage=new StringBuilder();
   }
  else   if (qName.equals("rulegroup")) {
     ruleGroupId=attrs.getValue("id");
@@ -169,7 +169,7 @@
   }
  else   if (qName.equals("match")) {
     inMatch=true;
-    match=new StringBuffer();
+    match=new StringBuilder();
     Match.CaseConversion caseConv=Match.CaseConversion.NONE;
     if (attrs.getValue("case_conversion") != null) {
       caseConv=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());

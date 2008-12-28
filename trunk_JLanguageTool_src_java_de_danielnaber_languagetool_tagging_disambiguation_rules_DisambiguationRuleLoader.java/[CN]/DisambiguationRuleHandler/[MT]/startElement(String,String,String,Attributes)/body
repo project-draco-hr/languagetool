@@ -39,7 +39,7 @@
   }
  else   if (qName.equals("exception")) {
     inException=true;
-    exceptions=new StringBuffer();
+    exceptions=new StringBuilder();
     if (attrs.getValue("negate") != null) {
       exceptionStringNegation=attrs.getValue("negate").equals("yes");
     }
@@ -95,7 +95,7 @@
     if (attrs.getValue("skip") != null) {
       skipPos=Integer.parseInt(attrs.getValue("skip"));
     }
-    elements=new StringBuffer();
+    elements=new StringBuilder();
     if (elementList == null) {
       elementList=new ArrayList<Element>();
     }
@@ -125,11 +125,11 @@
  else {
       disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction("REPLACE");
     }
-    disamb=new StringBuffer();
+    disamb=new StringBuilder();
   }
  else   if (qName.equals("match")) {
     inMatch=true;
-    match=new StringBuffer();
+    match=new StringBuilder();
     Match.CaseConversion caseConv=Match.CaseConversion.NONE;
     if (attrs.getValue("case_conversion") != null) {
       caseConv=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());
@@ -177,6 +177,6 @@
     wdLemma=attrs.getValue("lemma");
     wdPos=attrs.getValue("pos");
     inWord=true;
-    wd=new StringBuffer();
+    wd=new StringBuilder();
   }
 }
