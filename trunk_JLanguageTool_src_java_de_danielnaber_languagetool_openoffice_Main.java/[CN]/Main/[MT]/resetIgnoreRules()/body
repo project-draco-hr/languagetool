@@ -1,5 +1,5 @@
 {
-  config.setDisabledRuleIds(new HashSet<String>());
+  config.setDisabledRuleIds(disabledRules);
   try {
     config.saveConfiguration();
   }

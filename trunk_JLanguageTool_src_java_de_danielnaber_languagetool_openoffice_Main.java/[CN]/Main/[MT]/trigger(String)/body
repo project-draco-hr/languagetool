@@ -3,35 +3,7 @@
     return;
   }
   try {
-    if (sEvent.equals("execute")) {
-      final XMultiComponentFactory xMCF=xContext.getServiceManager();
-      Object aObj=xMCF.createInstanceWithContext("com.sun.star.linguistic2.LinguServiceManager",xContext);
-      com.sun.star.linguistic2.XLinguServiceManager mxLinguSvcMgr=(com.sun.star.linguistic2.XLinguServiceManager)UnoRuntime.queryInterface(com.sun.star.linguistic2.XLinguServiceManager.class,aObj);
-      if (mxLinguSvcMgr != null) {
-        Map<Locale,String[]> previousServices=new HashMap<Locale,String[]>();
-        Locale[] locales=this.getLocales();
-        for (        Locale loc : locales) {
-          String[] spServices=mxLinguSvcMgr.getConfiguredServices("com.sun.star.linguistic2.SpellChecker",loc);
-          if (spServices != null) {
-            previousServices.put(loc,spServices);
-            System.err.println(loc.toString() + " " + Arrays.toString(spServices));
-            mxLinguSvcMgr.setConfiguredServices("com.sun.star.linguistic2.SpellChecker",loc,new String[0]);
-          }
-        }
-        com.sun.star.lang.XMultiServiceFactory xMultiServiceManager=(com.sun.star.lang.XMultiServiceFactory)UnoRuntime.queryInterface(com.sun.star.lang.XMultiServiceFactory.class,xContext.getServiceManager());
-        XModel xModel=(XModel)UnoRuntime.queryInterface(XModel.class,getxComponent());
-        com.sun.star.frame.XFrame xFrame=xModel.getCurrentController().getFrame();
-        Object objDispatchHelper=xMultiServiceManager.createInstance("com.sun.star.frame.DispatchHelper");
-        XDispatchHelper xDispatchHelper=(XDispatchHelper)UnoRuntime.queryInterface(XDispatchHelper.class,objDispatchHelper);
-        XDispatchProvider xDispatchProvider=(XDispatchProvider)UnoRuntime.queryInterface(XDispatchProvider.class,xFrame);
-        UnoRuntime.queryInterface(com.sun.star.frame.XDispatchProvider.class,xFrame);
-        xDispatchHelper.executeDispatch(xDispatchProvider,".uno:SpellingAndGrammarDialog","",0,new PropertyValue[0]);
-        for (        Locale loc : locales) {
-          if (previousServices.get(loc) != null)           mxLinguSvcMgr.setConfiguredServices("com.sun.star.linguistic2.SpellChecker",loc,previousServices.get(loc));
-        }
-      }
-    }
- else     if (sEvent.equals("configure")) {
+    if (sEvent.equals("configure")) {
       runOptionsDialog();
     }
  else     if (sEvent.equals("about")) {

@@ -3,5 +3,5 @@
   int error2pos=match2.nErrorStart;
   if (error1pos > error2pos)   return 1;
  else   if (error1pos < error2pos)   return -1;
- else   return 0;
+ else   return ((Integer)(match1.aSuggestions.length)).compareTo(match2.aSuggestions.length);
 }

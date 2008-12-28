@@ -1,10 +1,6 @@
 {
-  Set<String> disabledRules=config.getDisabledRuleIds();
-  if (disabledRules == null) {
-    disabledRules=new HashSet<String>();
-  }
-  disabledRules.add(ruleId);
-  config.setDisabledRuleIds(disabledRules);
+  disabledRulesUI.add(ruleId);
+  config.setDisabledRuleIds(disabledRulesUI);
   try {
     config.saveConfiguration();
   }

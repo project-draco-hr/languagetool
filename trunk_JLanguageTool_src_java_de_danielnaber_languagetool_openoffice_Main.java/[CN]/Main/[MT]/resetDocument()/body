@@ -8,5 +8,9 @@
       }
     }
     recheck=true;
+    disabledRules=config.getDisabledRuleIds();
+    if (disabledRules == null) {
+      disabledRules=new HashSet<String>();
+    }
   }
 }

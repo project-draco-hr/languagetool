@@ -13,5 +13,6 @@
   aError.nErrorStart=myMatch.getFromPos();
   aError.nErrorLength=myMatch.getToPos() - myMatch.getFromPos();
   aError.aRuleIdentifier=myMatch.getRule().getId();
+  aError.aProperties=new PropertyValue[0];
   return aError;
 }

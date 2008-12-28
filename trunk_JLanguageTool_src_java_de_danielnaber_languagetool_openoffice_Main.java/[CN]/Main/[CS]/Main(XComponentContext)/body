@@ -3,6 +3,11 @@
     changeContext(xCompContext);
     final File homeDir=getHomeDir();
     config=new Configuration(homeDir,CONFIG_FILE);
+    disabledRules=config.getDisabledRuleIds();
+    if (disabledRules == null) {
+      disabledRules=new HashSet<String>();
+    }
+    disabledRulesUI=new HashSet<String>(disabledRules);
     xEventListeners=new ArrayList<XLinguServiceEventListener>();
   }
  catch (  final Throwable t) {
