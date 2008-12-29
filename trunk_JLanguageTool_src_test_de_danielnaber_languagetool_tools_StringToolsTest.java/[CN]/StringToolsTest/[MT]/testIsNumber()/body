@@ -1,0 +1,4 @@
+{
+  assertEquals(true,StringTools.isNumber('3'));
+  assertEquals(false,StringTools.isNumber('a'));
+}
