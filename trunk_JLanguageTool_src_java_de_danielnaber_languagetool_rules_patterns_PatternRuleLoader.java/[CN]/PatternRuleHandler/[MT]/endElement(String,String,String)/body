@@ -109,7 +109,7 @@
     }
  else     if (inIncorrectExample) {
       IncorrectExample example=null;
-      String[] corrections=exampleCorrection.toString().split("\\|");
+      final String[] corrections=exampleCorrection.toString().split("\\|");
       if (corrections.length > 0 && corrections[0].length() > 0) {
         example=new IncorrectExample(incorrectExample.toString(),corrections);
       }
@@ -153,7 +153,7 @@
   }
  else   if (qName.equals("phrase") && inPhrases) {
     if (phraseMap == null) {
-      phraseMap=new HashMap<String,ArrayList<ArrayList<Element>>>();
+      phraseMap=new HashMap<String,List<List<Element>>>();
     }
     phraseElementInit();
     if (elementList != null) {
@@ -166,7 +166,7 @@
         }
       }
     }
-    phraseMap.put(phraseId,new ArrayList<ArrayList<Element>>(phraseElementList));
+    phraseMap.put(phraseId,new ArrayList<List<Element>>(phraseElementList));
     if (elementList != null) {
       elementList.clear();
     }

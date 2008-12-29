@@ -1,5 +1,5 @@
 {
-  InputStream is=Tools.class.getResourceAsStream(filename);
+  final InputStream is=Tools.class.getResourceAsStream(filename);
   if (is == null) {
     throw new IOException("Could not load file from classpath : " + filename);
   }

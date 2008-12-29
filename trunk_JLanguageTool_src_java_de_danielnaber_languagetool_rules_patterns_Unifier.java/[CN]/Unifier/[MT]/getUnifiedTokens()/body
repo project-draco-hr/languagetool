@@ -21,6 +21,6 @@
     }
     firstUnified=true;
   }
-  AnalyzedTokenReadings[] atr=tokSequence.toArray(new AnalyzedTokenReadings[tokSequence.size()]);
+  final AnalyzedTokenReadings[] atr=tokSequence.toArray(new AnalyzedTokenReadings[tokSequence.size()]);
   return atr;
 }

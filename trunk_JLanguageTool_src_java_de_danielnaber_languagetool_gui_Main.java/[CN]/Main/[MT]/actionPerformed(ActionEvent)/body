@@ -1,14 +1,14 @@
 {
   try {
     if (e.getActionCommand().equals(StringTools.getLabel(messages.getString("checkText")))) {
-      JLanguageTool langTool=getCurrentLanguageTool();
+      final JLanguageTool langTool=getCurrentLanguageTool();
       checkTextAndDisplayResults(langTool,getCurrentLanguage());
     }
  else {
       throw new IllegalArgumentException("Unknown action " + e);
     }
   }
- catch (  Exception exc) {
+ catch (  final Exception exc) {
     Tools.showError(exc);
   }
 }

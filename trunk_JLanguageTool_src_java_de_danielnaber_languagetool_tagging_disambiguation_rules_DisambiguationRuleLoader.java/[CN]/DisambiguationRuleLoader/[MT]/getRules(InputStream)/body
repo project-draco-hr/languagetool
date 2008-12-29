@@ -3,6 +3,5 @@
   final SAXParserFactory factory=SAXParserFactory.newInstance();
   final SAXParser saxParser=factory.newSAXParser();
   saxParser.parse(file,handler);
-  rules=handler.getRules();
-  return rules;
+  return handler.getRules();
 }

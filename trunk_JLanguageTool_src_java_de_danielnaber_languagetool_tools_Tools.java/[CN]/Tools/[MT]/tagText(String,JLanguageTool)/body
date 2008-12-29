@@ -1,7 +1,7 @@
 {
   AnalyzedSentence analyzedText;
   final List<String> sentences=lt.sentenceTokenize(contents);
-  for (  String sentence : sentences) {
+  for (  final String sentence : sentences) {
     analyzedText=lt.getAnalyzedSentence(sentence);
     System.out.println(analyzedText.toString());
   }

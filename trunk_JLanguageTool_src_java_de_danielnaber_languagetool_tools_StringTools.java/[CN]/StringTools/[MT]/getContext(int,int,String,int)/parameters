@@ -1,4 +1,4 @@
 int fromPos
 int toPos
-String fileContents
+String contents
 int contextSize

@@ -1,16 +1,17 @@
 {
-  String negate="";
-  String tokString=stringToken;
-  if (phraseName != null) {
-    tokString+=" {" + phraseName + "}";
-  }
+  final StringBuilder sb=new StringBuilder();
   if (negation) {
-    negate="!";
+    sb.append("!");
+  }
+  sb.append(stringToken);
+  if (phraseName != null) {
+    sb.append(" {");
+    sb.append(phraseName);
+    sb.append("}");
   }
   if (posToken != null) {
-    return negate + tokString + "/"+ posToken;
+    sb.append("/");
+    sb.append(posToken);
   }
- else {
-    return negate + tokString;
-  }
+  return sb.toString();
 }

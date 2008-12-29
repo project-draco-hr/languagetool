@@ -15,7 +15,7 @@
       s="";
     }
   }
- catch (  Exception ex) {
+ catch (  final Exception ex) {
     ex.printStackTrace();
     s=data.toString();
   }

@@ -1,5 +1,5 @@
 {
-  AnalyzedToken newWd=new AnalyzedToken(word,pos,lemma);
+  final AnalyzedToken newWd=new AnalyzedToken(word,pos,lemma);
   if (newWdList == null) {
     newWdList=new ArrayList<AnalyzedToken>();
   }

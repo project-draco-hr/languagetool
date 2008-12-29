@@ -11,18 +11,14 @@
   int firstMatchToken=-1;
   int lastMatchToken=-1;
   final int patternSize=patternElements.size();
-  language.getUnifier().reset();
   Element elem=null, prevElement=null;
-  final boolean startWithSentStart=patternElements.get(0).isSentStart();
+  final boolean sentStart=patternElements.get(0).isSentStart();
+  language.getUnifier().reset();
   boolean inUnification=false;
   boolean uniMatched=false;
   for (int i=0; i < tokens.length; i++) {
     boolean allElementsMatch=true;
-    if (patternSize + i > tokens.length) {
-      allElementsMatch=false;
-      break;
-    }
-    if (startWithSentStart && i > 0) {
+    if (patternSize + i > tokens.length || sentStart && i > 0) {
       allElementsMatch=false;
       break;
     }
@@ -47,6 +43,7 @@
         boolean matched=false;
         final int numberOfReadings=tokens[m].getReadingsLength();
         for (int l=0; l < numberOfReadings; l++) {
+          final boolean lastReading=l + 1 == numberOfReadings;
           final AnalyzedToken matchToken=tokens[m].getAnalyzedToken(l);
           if (prevSkipNext > 0 && prevElement != null && prevElement.isMatchedByScopeNextException(matchToken)) {
             exceptionMatched=true;
@@ -69,7 +66,7 @@
           if (thisMatched && elem.isUnified()) {
             if (inUnification) {
               uniMatched=uniMatched || language.getUnifier().isSatisfied(matchToken,elem.getUniFeature(),elem.getUniType());
-              if (l + 1 == numberOfReadings) {
+              if (lastReading) {
                 thisMatched&=uniMatched;
                 language.getUnifier().startNextToken();
               }
@@ -79,10 +76,10 @@
                 language.getUnifier().setNegation(true);
               }
               thisMatched|=language.getUnifier().isSatisfied(matchToken,elem.getUniFeature(),elem.getUniType());
-              if (l + 1 == numberOfReadings) {
+              if (lastReading) {
                 inUnification=true;
-                language.getUnifier().startUnify();
                 uniMatched=false;
+                language.getUnifier().startUnify();
               }
             }
           }
@@ -91,7 +88,7 @@
             uniMatched=false;
             language.getUnifier().reset();
           }
-          if (l + 1 == numberOfReadings && elem.hasAndGroup()) {
+          if (lastReading && elem.hasAndGroup()) {
             thisMatched&=elem.checkAndGroup(thisMatched);
           }
           exceptionMatched|=elem.isExceptionMatchedCompletely(matchToken);
@@ -144,36 +141,9 @@
       allElementsMatch=false;
     }
     if (allElementsMatch) {
-      final String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,message);
-      int correctedStPos=0;
-      if (startPositionCorrection > 0) {
-        for (int l=0; l <= startPositionCorrection; l++) {
-          correctedStPos+=tokenPositions[l];
-        }
-        correctedStPos--;
-      }
-      int correctedEndPos=0;
-      if (endPositionCorrection < 0) {
-        int l=0;
-        while (l > endPositionCorrection) {
-          correctedEndPos-=tokenPositions[matchingTokens + l - 1];
-          l--;
-        }
-      }
-      AnalyzedTokenReadings firstMatchTokenObj=tokens[firstMatchToken + correctedStPos];
-      boolean startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.getToken()) && !matchConvertsCase();
-      if (firstMatchTokenObj.isSentStart() && tokens.length > firstMatchToken + correctedStPos + 1) {
-        firstMatchTokenObj=tokens[firstMatchToken + correctedStPos + 1];
-        startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.getToken());
-      }
-      int fromPos=tokens[firstMatchToken + correctedStPos].getStartPos();
-      if (errMessage.contains(SUGG_TAG + ",") && firstMatchToken + correctedStPos >= 1) {
-        fromPos=tokens[firstMatchToken + correctedStPos - 1].getStartPos() + tokens[firstMatchToken + correctedStPos - 1].getToken().length();
-      }
-      final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
-      if (fromPos < toPos) {
-        final RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,errMessage,shortMessage,startsWithUppercase);
-        ruleMatches.add(ruleMatch);
+      final RuleMatch rM=createRuleMatch(tokenPositions,tokens,firstMatchToken,lastMatchToken,matchingTokens);
+      if (rM != null) {
+        ruleMatches.add(rM);
       }
     }
     firstMatchToken=-1;

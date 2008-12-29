@@ -1,13 +1,15 @@
 {
-  File file=Tools.openFileDialog(frame,new PlainTextFilter());
-  if (file == null)   return;
+  final File file=Tools.openFileDialog(frame,new PlainTextFilter());
+  if (file == null) {
+    return;
+  }
   try {
-    String fileContents=StringTools.readFile(new FileInputStream(file.getAbsolutePath()));
+    final String fileContents=StringTools.readFile(new FileInputStream(file.getAbsolutePath()));
     textArea.setText(fileContents);
-    JLanguageTool langTool=getCurrentLanguageTool();
+    final JLanguageTool langTool=getCurrentLanguageTool();
     checkTextAndDisplayResults(langTool,getCurrentLanguage());
   }
- catch (  IOException e) {
+ catch (  final IOException e) {
     Tools.showError(e);
   }
 }

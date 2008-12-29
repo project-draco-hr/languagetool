@@ -1,10 +1,10 @@
 {
-  long startTime=System.currentTimeMillis();
-  List<RuleMatch> ruleMatches=langTool.check(text);
-  long startTimeMatching=System.currentTimeMillis();
+  final long startTime=System.currentTimeMillis();
+  final List<RuleMatch> ruleMatches=langTool.check(text);
+  final long startTimeMatching=System.currentTimeMillis();
   int i=0;
-  for (  RuleMatch match : ruleMatches) {
-    String output=Tools.makeTexti18n(messages,"result1",new Object[]{Integer.valueOf(i + 1),Integer.valueOf(match.getLine() + 1),Integer.valueOf(match.getColumn())});
+  for (  final RuleMatch match : ruleMatches) {
+    final String output=Tools.makeTexti18n(messages,"result1",new Object[]{Integer.valueOf(i + 1),Integer.valueOf(match.getLine() + 1),Integer.valueOf(match.getColumn())});
     sb.append(output);
     String msg=match.getMessage();
     msg=msg.replaceAll("<suggestion>","<b>");
@@ -13,15 +13,15 @@
     msg=msg.replaceAll("</old>","</b>");
     sb.append("<b>" + messages.getString("errorMessage") + "</b> "+ msg+ "<br>\n");
     if (match.getSuggestedReplacements().size() > 0) {
-      String repl=StringTools.listToString(match.getSuggestedReplacements(),"; ");
+      final String repl=StringTools.listToString(match.getSuggestedReplacements(),"; ");
       sb.append("<b>" + messages.getString("correctionMessage") + "</b> "+ repl+ "<br>\n");
     }
-    String context=Tools.getContext(match.getFromPos(),match.getToPos(),text);
+    final String context=Tools.getContext(match.getFromPos(),match.getToPos(),text);
     sb.append("<b>" + messages.getString("errorContext") + "</b> "+ context);
     sb.append("<br>\n");
     i++;
   }
-  long endTime=System.currentTimeMillis();
+  final long endTime=System.currentTimeMillis();
   sb.append(Tools.makeTexti18n(messages,"resultTime",new Object[]{Long.valueOf(endTime - startTime),Long.valueOf(endTime - startTimeMatching)}));
   return ruleMatches.size();
 }

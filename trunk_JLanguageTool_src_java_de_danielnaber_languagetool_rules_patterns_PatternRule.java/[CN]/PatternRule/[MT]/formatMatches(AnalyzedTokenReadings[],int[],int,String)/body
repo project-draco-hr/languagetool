@@ -11,80 +11,39 @@
   }
   while (errMarker > 0 && numberFollows) {
     final int ind=errorMessage.indexOf('\\');
-    if (ind > 0) {
-      if (StringTools.isPositiveNumber(errorMessage.charAt(ind + 1))) {
-        int numLen=1;
-        while (ind + numLen < errorMessage.length() && StringTools.isPositiveNumber(errorMessage.charAt(ind + numLen))) {
-          numLen++;
-        }
-        final int j=Integer.parseInt(errorMessage.substring(ind + 1,ind + numLen)) - 1;
-        int repTokenPos=0;
-        for (int l=0; l <= j; l++) {
-          repTokenPos+=positions[l];
-        }
-        if (suggestionMatches != null) {
-          if (matchCounter < suggestionMatches.size()) {
-            numbersToMatches[j]=matchCounter;
-            if (suggestionMatches.get(matchCounter) != null) {
-              final String[] matches=concatMatches(matchCounter,j,firstMatchTok + repTokenPos,toks);
-              final String leftSide=errorMessage.substring(0,ind);
-              String rightSide=errorMessage.substring(ind + numLen);
-              if (matches.length == 1) {
-                errorMessage=leftSide + matches[0] + rightSide;
-              }
- else {
-                String suggestionLeft="";
-                String suggestionRight="";
-                final int sPos=leftSide.lastIndexOf(SUGG_TAG);
-                if (sPos > 0) {
-                  suggestionLeft=leftSide.substring(sPos + SUGG_TAG.length());
-                }
-                if (StringTools.isEmpty(suggestionLeft)) {
-                  errorMessage=leftSide;
-                }
- else {
-                  errorMessage=leftSide.substring(0,leftSide.lastIndexOf(SUGG_TAG)) + SUGG_TAG;
-                }
-                final int rPos=rightSide.indexOf("</suggestion>");
-                if (rPos > 0) {
-                  suggestionRight=rightSide.substring(0,rPos);
-                }
-                if (!StringTools.isEmpty(suggestionRight)) {
-                  rightSide=rightSide.substring(rightSide.indexOf("</suggestion>"));
-                }
-                final int lastLeftSugEnd=leftSide.indexOf("</suggestion>");
-                final int lastLeftSugStart=leftSide.lastIndexOf(SUGG_TAG);
-                StringBuilder sb=new StringBuilder();
-                sb.append(errorMessage);
-                for (int z=0; z < matches.length; z++) {
-                  sb.append(suggestionLeft);
-                  sb.append(matches[z]);
-                  sb.append(suggestionRight);
-                  if ((z < matches.length - 1) && lastLeftSugEnd < lastLeftSugStart) {
-                    sb.append("</suggestion>, ");
-                    sb.append(SUGG_TAG);
-                  }
-                }
-                sb.append(rightSide);
-                errorMessage=sb.toString();
-              }
-              matchCounter++;
-              newWay=true;
+    if (ind > 0 && StringTools.isPositiveNumber(errorMessage.charAt(ind + 1))) {
+      int numLen=1;
+      while (ind + numLen < errorMessage.length() && StringTools.isPositiveNumber(errorMessage.charAt(ind + numLen))) {
+        numLen++;
+      }
+      final int j=Integer.parseInt(errorMessage.substring(ind + 1,ind + numLen)) - 1;
+      int repTokenPos=0;
+      for (int l=0; l <= j; l++) {
+        repTokenPos+=positions[l];
+      }
+      if (suggestionMatches != null) {
+        if (matchCounter < suggestionMatches.size()) {
+          numbersToMatches[j]=matchCounter;
+          if (suggestionMatches.get(matchCounter) != null) {
+            final String[] matches=concatMatches(matchCounter,j,firstMatchTok + repTokenPos,toks);
+            final String leftSide=errorMessage.substring(0,ind);
+            final String rightSide=errorMessage.substring(ind + numLen);
+            if (matches.length == 1) {
+              errorMessage=leftSide + matches[0] + rightSide;
             }
-          }
  else {
-            suggestionMatches.add(suggestionMatches.get(numbersToMatches[j]));
+              errorMessage=formatMultipleSynthesis(matches,leftSide,rightSide);
+            }
+            matchCounter++;
+            newWay=true;
           }
         }
-        if (!newWay) {
-          errorMessage=errorMessage.replace("\\" + (j + 1),toks[firstMatchTok + repTokenPos - 1].getToken());
-          errMarker=errorMessage.indexOf('\\');
-          numberFollows=false;
-          errLen=errorMessage.length();
-          if (errMarker > 0 && errMarker < errLen - 1) {
-            numberFollows=StringTools.isPositiveNumber(errorMessage.charAt(errMarker + 1));
-          }
+ else {
+          suggestionMatches.add(suggestionMatches.get(numbersToMatches[j]));
         }
+      }
+      if (!newWay) {
+        errorMessage=errorMessage.replace("\\" + (j + 1),toks[firstMatchTok + repTokenPos - 1].getToken());
       }
     }
     errMarker=errorMessage.indexOf('\\');

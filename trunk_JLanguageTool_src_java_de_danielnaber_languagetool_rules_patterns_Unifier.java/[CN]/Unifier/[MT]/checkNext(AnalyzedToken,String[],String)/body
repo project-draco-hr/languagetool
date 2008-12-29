@@ -15,7 +15,7 @@
         }
         for (        String typename : types) {
           if (featuresFound.get(i) && equivalencesMatched.get(i).containsKey(feat) && equivalencesMatched.get(i).get(feat).contains(typename)) {
-            Element testElem=equivalenceTypes.get(feat + ":" + typename);
+            final Element testElem=equivalenceTypes.get(feat + ":" + typename);
             featUnified=featUnified || testElem.isMatched(AT);
           }
         }

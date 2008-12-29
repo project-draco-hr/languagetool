@@ -3,7 +3,7 @@
   try {
     config.saveConfiguration();
   }
- catch (  IOException e) {
+ catch (  final IOException e) {
     Tools.showError(e);
   }
   frame.setVisible(false);

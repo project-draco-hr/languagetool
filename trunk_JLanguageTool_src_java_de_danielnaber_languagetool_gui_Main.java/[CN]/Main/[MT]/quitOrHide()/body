@@ -1,4 +1,8 @@
 {
-  if (trayMode)   hideToTray();
- else   quit();
+  if (trayMode) {
+    hideToTray();
+  }
+ else {
+    quit();
+  }
 }

@@ -1,16 +1,16 @@
 {
-  StringBuilder sb=new StringBuilder();
+  final StringBuilder sb=new StringBuilder();
   sb.append("<rule id=\"");
   sb.append(StringTools.escapeXML(id));
   sb.append("\" name=\"");
   sb.append(StringTools.escapeXML(description));
   sb.append("\">\n");
   sb.append("<pattern mark_from=\"");
-  sb.append(startPositionCorrection);
+  sb.append(startPosCorr);
   sb.append("\" mark_to=\"");
-  sb.append(endPositionCorrection);
+  sb.append(endPosCorr);
   sb.append("\"");
-  if (patternElements.size() > 0 && patternElements.get(0).getCaseSensitive()) {
+  if (!patternElements.isEmpty() && patternElements.get(0).getCaseSensitive()) {
     sb.append(" case_sensitive=\"yes\"");
   }
   sb.append(">\n");

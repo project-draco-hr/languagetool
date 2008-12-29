@@ -1,0 +1,16 @@
+{
+  final List<AnalyzedToken> list=new ArrayList<AnalyzedToken>();
+  String lemma="";
+  for (int j=0; j < numRead; j++) {
+    if (formattedToken.getAnalyzedToken(j).getPOSTag() != null) {
+      if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag) && (formattedToken.getAnalyzedToken(j).getLemma() != null)) {
+        lemma=formattedToken.getAnalyzedToken(j).getLemma();
+      }
+      if (StringTools.isEmpty(lemma)) {
+        lemma=formattedToken.getAnalyzedToken(0).getLemma();
+      }
+      list.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
+    }
+  }
+  return list.toArray(new AnalyzedToken[list.size()]);
+}

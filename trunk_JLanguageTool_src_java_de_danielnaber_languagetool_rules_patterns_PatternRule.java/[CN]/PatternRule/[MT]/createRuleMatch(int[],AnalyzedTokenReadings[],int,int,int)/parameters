@@ -1,0 +1,5 @@
+int[] tokenPositions
+AnalyzedTokenReadings[] tokens
+int firstMatchToken
+int lastMatchToken
+int matchingTokens

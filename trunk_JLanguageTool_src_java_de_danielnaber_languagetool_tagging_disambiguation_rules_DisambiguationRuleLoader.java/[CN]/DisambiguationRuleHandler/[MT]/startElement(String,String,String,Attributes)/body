@@ -64,7 +64,7 @@
     }
     if (attrs.getValue("spacebefore") != null) {
       exceptionSpaceBefore="yes".equals(attrs.getValue("spacebefore"));
-      exceptionSpaceBeforeSet=!"ignore".equals(attrs.getValue("spacebefore"));
+      exceptionSpaceBeforeSet="ignore".equals(attrs.getValue("spacebefore")) ^ true;
     }
   }
  else   if (qName.equals("and")) {
@@ -105,7 +105,7 @@
         posRegExp=attrs.getValue("postag_regexp").equals("yes");
       }
       if (attrs.getValue("negate_pos") != null) {
-        posNegation=(attrs.getValue("negate_pos").equals("yes"));
+        posNegation=attrs.getValue("negate_pos").equals("yes");
       }
     }
     if (attrs.getValue("regexp") != null) {
@@ -113,7 +113,7 @@
     }
     if (attrs.getValue("spacebefore") != null) {
       tokenSpaceBefore="yes".equals(attrs.getValue("spacebefore"));
-      tokenSpaceBeforeSet=!"ignore".equals(attrs.getValue("spacebefore"));
+      tokenSpaceBeforeSet="ignore".equals(attrs.getValue("spacebefore")) ^ true;
     }
   }
  else   if (qName.equals("disambig")) {

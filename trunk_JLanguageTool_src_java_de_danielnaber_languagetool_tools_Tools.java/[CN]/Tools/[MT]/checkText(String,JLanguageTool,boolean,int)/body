@@ -2,19 +2,18 @@
   if (contextSize == -1) {
     contextSize=DEFAULT_CONTEXT_SIZE;
   }
-  long startTime=System.currentTimeMillis();
-  List<RuleMatch> ruleMatches=lt.check(contents);
+  final long startTime=System.currentTimeMillis();
+  final List<RuleMatch> ruleMatches=lt.check(contents);
   if (apiFormat) {
-    String xml=StringTools.ruleMatchesToXML(ruleMatches,contents,contextSize);
+    final String xml=StringTools.ruleMatchesToXML(ruleMatches,contents,contextSize);
     System.out.print(xml);
   }
  else {
     int i=1;
-    for (Iterator<RuleMatch> iter=ruleMatches.iterator(); iter.hasNext(); ) {
-      RuleMatch match=(RuleMatch)iter.next();
+    for (    final RuleMatch match : ruleMatches) {
       String output=i + ".) Line " + (match.getLine() + 1)+ ", column "+ match.getColumn()+ ", Rule ID: "+ match.getRule().getId();
       if (match.getRule() instanceof PatternRule) {
-        PatternRule pRule=(PatternRule)match.getRule();
+        final PatternRule pRule=(PatternRule)match.getRule();
         output+="[" + pRule.getSubId() + "]";
       }
       System.out.println(output);
@@ -22,17 +21,21 @@
       msg=msg.replaceAll("<suggestion>","'");
       msg=msg.replaceAll("</suggestion>","'");
       System.out.println("Message: " + msg);
-      List<String> repl=match.getSuggestedReplacements();
-      if (!repl.isEmpty())       System.out.println("Suggestion: " + StringTools.listToString(repl,"; "));
+      final List<String> repl=match.getSuggestedReplacements();
+      if (!repl.isEmpty()) {
+        System.out.println("Suggestion: " + StringTools.listToString(repl,"; "));
+      }
       System.out.println(StringTools.getContext(match.getFromPos(),match.getToPos(),contents,contextSize));
-      if (iter.hasNext())       System.out.println();
+      if (i < ruleMatches.size()) {
+        System.out.println();
+      }
       i++;
     }
   }
-  long endTime=System.currentTimeMillis();
-  long time=endTime - startTime;
-  float timeInSeconds=(float)time / 1000.0f;
-  float sentencesPerSecond=(float)lt.getSentenceCount() / (float)timeInSeconds;
+  final long endTime=System.currentTimeMillis();
+  final long time=endTime - startTime;
+  final float timeInSeconds=time / 1000.0f;
+  final float sentencesPerSecond=lt.getSentenceCount() / timeInSeconds;
   if (apiFormat) {
     System.out.println("<!--");
   }

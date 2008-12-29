@@ -7,13 +7,13 @@
   checkBoxesCategoryNames.clear();
   Collections.sort(rules,new CategoryComparator());
   final KeyStroke stroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
-  ActionListener actionListener=new ActionListener(){
+  final ActionListener actionListener=new ActionListener(){
     @SuppressWarnings("unused") public void actionPerformed(    ActionEvent actionEvent){
       dialog.setVisible(false);
     }
   }
 ;
-  JRootPane rootPane=dialog.getRootPane();
+  final JRootPane rootPane=dialog.getRootPane();
   rootPane.registerKeyboardAction(actionListener,stroke,JComponent.WHEN_IN_FOCUSED_WINDOW);
   checkBoxPanel=new JPanel();
   checkBoxPanel.setLayout(new GridBagLayout());
@@ -23,12 +23,16 @@
   int row=0;
   String prevID=null;
   String prevCategory=null;
-  for (  Rule rule : rules) {
-    if (prevID == null || (prevID != null && !prevID.equals(rule.getId()))) {
+  for (  final Rule rule : rules) {
+    if (prevID == null || prevID != null && !prevID.equals(rule.getId())) {
       cons.gridy=row;
       final JCheckBox checkBox=new JCheckBox(rule.getDescription());
-      if (inactiveRuleIds != null && (inactiveRuleIds.contains(rule.getId()) || inactiveCategoryNames.contains(rule.getCategory().getName())))       checkBox.setSelected(false);
- else       checkBox.setSelected(true);
+      if (inactiveRuleIds != null && (inactiveRuleIds.contains(rule.getId()) || inactiveCategoryNames.contains(rule.getCategory().getName()))) {
+        checkBox.setSelected(false);
+      }
+ else {
+        checkBox.setSelected(true);
+      }
       if (rule.isDefaultOff() && !enabledRuleIds.contains(rule.getId())) {
         checkBox.setSelected(false);
       }
@@ -43,15 +47,17 @@
           inactiveCategoryNames.remove(rule.getCategory().getName());
         }
       }
-      ActionListener ruleCheckBoxListener=new ActionListener(){
+      final ActionListener ruleCheckBoxListener=new ActionListener(){
         public void actionPerformed(        final ActionEvent actionEvent){
           final JCheckBox cBox=(JCheckBox)actionEvent.getSource();
           final boolean selected=cBox.getModel().isSelected();
           int i=0;
-          for (          JCheckBox chBox : checkBoxes) {
+          for (          final JCheckBox chBox : checkBoxes) {
             if (chBox.equals(cBox)) {
               final int catNo=checkBoxesCategoryNames.indexOf(checkBoxesCategories.get(i));
-              if (selected && !categoryCheckBoxes.get(catNo).isSelected())               categoryCheckBoxes.get(catNo).setSelected(true);
+              if (selected && !categoryCheckBoxes.get(catNo).isSelected()) {
+                categoryCheckBoxes.get(catNo).setSelected(true);
+              }
             }
             i++;
           }
@@ -62,7 +68,7 @@
       checkBoxes.add(checkBox);
       checkBoxesRuleIds.add(rule.getId());
       checkBoxesCategories.add(rule.getCategory().getName());
-      boolean showHeadline=(rule.getCategory() != null && !rule.getCategory().getName().equals(prevCategory));
+      final boolean showHeadline=rule.getCategory() != null && !rule.getCategory().getName().equals(prevCategory);
       if ((showHeadline || prevCategory == null) && rule.getCategory() != null) {
         final JCheckBox categoryCheckBox=new JCheckBox(rule.getCategory().getName());
         if (inactiveCategoryNames != null && inactiveCategoryNames.contains(rule.getCategory().getName())) {
@@ -71,12 +77,12 @@
  else {
           categoryCheckBox.setSelected(true);
         }
-        ActionListener categoryCheckBoxListener=new ActionListener(){
+        final ActionListener categoryCheckBoxListener=new ActionListener(){
           public void actionPerformed(          final ActionEvent actionEvent){
             final JCheckBox cBox=(JCheckBox)actionEvent.getSource();
             final boolean selected=cBox.getModel().isSelected();
             int i=0;
-            for (            JCheckBox ruleBox : checkBoxes) {
+            for (            final JCheckBox ruleBox : checkBoxes) {
               if (ruleBox.isSelected() != selected) {
                 if (checkBoxesCategories.get(i).equals(cBox.getText())) {
                   ruleBox.setSelected(selected);
@@ -113,7 +119,7 @@
     }
   }
   motherTonguePanel.add(motherTongueBox,cons);
-  JPanel portPanel=new JPanel();
+  final JPanel portPanel=new JPanel();
   portPanel.setLayout(new GridBagLayout());
   cons=new GridBagConstraints();
   cons.insets=new Insets(0,4,0,0);
@@ -184,8 +190,8 @@
   contentPane.add(buttonPanel,cons);
   dialog.pack();
   dialog.setSize(500,500);
-  Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
-  Dimension frameSize=dialog.getSize();
-  dialog.setLocation(screenSize.width / 2 - (frameSize.width / 2),screenSize.height / 2 - (frameSize.height / 2));
+  final Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+  final Dimension frameSize=dialog.getSize();
+  dialog.setLocation(screenSize.width / 2 - frameSize.width / 2,screenSize.height / 2 - frameSize.height / 2);
   dialog.setVisible(true);
 }

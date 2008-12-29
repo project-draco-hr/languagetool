@@ -1,4 +1,5 @@
 {
+  List<PatternRule> rules;
   final FalseFriendRuleHandler handler=new FalseFriendRuleHandler(textLanguage,motherTongue);
   final SAXParserFactory factory=SAXParserFactory.newInstance();
   final SAXParser saxParser=factory.newSAXParser();

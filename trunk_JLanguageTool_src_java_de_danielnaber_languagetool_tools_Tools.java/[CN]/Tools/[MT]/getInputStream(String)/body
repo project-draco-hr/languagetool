@@ -1,14 +1,15 @@
 {
   try {
-    URL url=new URL(resourcePath);
-    InputStream is=url.openStream();
-    return is;
+    final URL url=new URL(resourcePath);
+    return url.openStream();
   }
- catch (  MalformedURLException e) {
+ catch (  final MalformedURLException e) {
   }
-  File f=new File(resourcePath);
+  final File f=new File(resourcePath);
   if (f.exists() && f.isFile() && f.canRead()) {
     return new BufferedInputStream(new FileInputStream(f));
   }
- else   throw new IOException("Could not open input stream from URL/resource/file: " + f.getAbsolutePath());
+ else {
+    throw new IOException("Could not open input stream from URL/resource/file: " + f.getAbsolutePath());
+  }
 }

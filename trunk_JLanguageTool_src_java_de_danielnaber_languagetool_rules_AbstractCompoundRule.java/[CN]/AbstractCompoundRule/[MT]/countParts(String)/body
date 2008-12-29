@@ -1,4 +1,3 @@
 {
-  String[] parts=str.split(" ");
-  return parts.length;
+  return str.split(" ").length;
 }

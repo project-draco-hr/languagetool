@@ -1,5 +1,5 @@
 {
-  MessageFormat formatter=new MessageFormat("");
+  final MessageFormat formatter=new MessageFormat("");
   formatter.applyPattern(messages.getString(key));
   return formatter.format(messageArguments);
 }

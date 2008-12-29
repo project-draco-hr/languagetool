@@ -2,7 +2,7 @@
   if (s == null) {
     throw new NullPointerException(varName + " cannot be null");
   }
-  if ((isEmpty(s.trim()))) {
+  if (isEmpty(s.trim())) {
     throw new IllegalArgumentException(varName + " cannot be empty or whitespace only");
   }
 }

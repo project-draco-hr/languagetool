@@ -1,15 +1,15 @@
 {
-  List<Class> foundClasses=new ArrayList<Class>();
+  final List<Class> foundClasses=new ArrayList<Class>();
   try {
-    String packagePath=packageName.replace('.','/');
-    Enumeration<URL> resources_=classLoader.getResources(packagePath);
-    Set<URI> uniqResources=new HashSet<URI>();
+    final String packagePath=packageName.replace('.','/');
+    final Enumeration<URL> resources_=classLoader.getResources(packagePath);
+    final Set<URI> uniqResources=new HashSet<URI>();
     while (resources_.hasMoreElements()) {
-      URI resource=resources_.nextElement().toURI();
+      final URI resource=resources_.nextElement().toURI();
       uniqResources.add(resource);
     }
-    for (    URI res : uniqResources) {
-      URL resource=res.toURL();
+    for (    final URI res : uniqResources) {
+      final URL resource=res.toURL();
       if (resource.getProtocol().startsWith("jar")) {
         findClassesInJar(packageName,classNameRegEx,subdirLevel,classExtends,interfaceImplements,foundClasses,resource);
       }
@@ -18,7 +18,7 @@
       }
     }
   }
- catch (  Exception ex) {
+ catch (  final Exception ex) {
     throw new ClassNotFoundException("Loading rules failed: " + ex.getMessage(),ex);
   }
   return foundClasses.toArray(new Class[foundClasses.size()]);

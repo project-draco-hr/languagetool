@@ -1,26 +1,26 @@
 {
-  File directory=new File(resource.toURI());
+  final File directory=new File(resource.toURI());
   if (!directory.exists() && !directory.isDirectory()) {
     throw new Exception("directory does not exist: " + directory.getAbsolutePath());
   }
-  for (  File file : directory.listFiles()) {
+  for (  final File file : directory.listFiles()) {
     if (file.isFile() && file.getName().endsWith(".class")) {
-      String classShortNm=file.getName().substring(0,file.getName().lastIndexOf('.'));
+      final String classShortNm=file.getName().substring(0,file.getName().lastIndexOf('.'));
       if (classNameRegEx == null || classShortNm.matches(classNameRegEx)) {
-        Class clazz=Class.forName(packageName + "." + classShortNm);
-        if (!isMaterial(clazz))         continue;
-        if (classExtends == null || isExtending(clazz,classExtends.getName())) {
-          if (interfaceImplements == null || isImplementing(clazz,interfaceImplements)) {
-            foundClasses.add(clazz);
-          }
+        final Class clazz=Class.forName(packageName + "." + classShortNm);
+        if (!isMaterial(clazz)) {
+          continue;
+        }
+        if (classExtends == null || isExtending(clazz,classExtends.getName()) && interfaceImplements == null || isImplementing(clazz,interfaceImplements)) {
+          foundClasses.add(clazz);
         }
       }
     }
   }
   if (subdirLevel > 0) {
-    for (    File dir : directory.listFiles()) {
+    for (    final File dir : directory.listFiles()) {
       if (dir.isDirectory()) {
-        Class[] subLevelClasses=findClasses(classLoader,packageName + "." + dir.getName(),classNameRegEx,subdirLevel - 1,classExtends,interfaceImplements);
+        final Class[] subLevelClasses=findClasses(classLoader,packageName + "." + dir.getName(),classNameRegEx,subdirLevel - 1,classExtends,interfaceImplements);
         foundClasses.addAll(Arrays.asList(subLevelClasses));
       }
     }

@@ -1,4 +1,4 @@
 {
   whitespaceBefore=isWhite;
-  ignoreWhitespace=false;
+  testWhitespace=true;
 }

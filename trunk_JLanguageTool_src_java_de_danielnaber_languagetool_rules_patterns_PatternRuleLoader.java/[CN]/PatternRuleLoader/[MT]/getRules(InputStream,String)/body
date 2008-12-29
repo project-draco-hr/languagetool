@@ -1,4 +1,5 @@
 {
+  List<PatternRule> rules;
   try {
     final PatternRuleHandler handler=new PatternRuleHandler();
     final SAXParserFactory factory=SAXParserFactory.newInstance();

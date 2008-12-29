@@ -2,7 +2,6 @@
   final StringBuilder xml=new StringBuilder();
   xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
   xml.append("<matches>\n");
-  int i=1;
   for (  final RuleMatch match : ruleMatches) {
     xml.append("<error" + " fromy=\"" + match.getLine() + "\""+ " fromx=\""+ match.getColumn()+ "\""+ " toy=\""+ match.getEndLine()+ "\""+ " tox=\""+ match.getEndColumn()+ "\""+ " ruleId=\""+ match.getRule().getId()+ "\"");
     final String msg=match.getMessage().replaceAll("</?suggestion>","'");
@@ -17,7 +16,6 @@
     xml.append(" contextoffset=\"" + contextOffset + "\"");
     xml.append(" errorlength=\"" + (match.getToPos() - match.getFromPos()) + "\"");
     xml.append("/>\n");
-    i++;
   }
   xml.append("</matches>\n");
   return xml.toString();

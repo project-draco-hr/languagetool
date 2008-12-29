@@ -1,11 +1,11 @@
 {
   langBox.removeAllItems();
-  for (  Language lang : Language.LANGUAGES) {
+  for (  final Language lang : Language.LANGUAGES) {
     if (lang != Language.DEMO) {
       try {
         langBox.addItem(messages.getString(lang.getShortName()));
       }
- catch (      MissingResourceException e) {
+ catch (      final MissingResourceException e) {
         langBox.addItem(lang.getName());
       }
     }

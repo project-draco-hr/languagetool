@@ -32,15 +32,11 @@
         }
       }
       boolean noException=true;
-      if ((precededByWhitespace || followedByWhitespace) && i > 1 && ruleLang.equals(Language.ENGLISH) && token.trim().equals("\"")) {
-        if (tokens[i - 1].getToken().matches("[\\d]+")) {
-          noException=false;
-        }
+      if ((precededByWhitespace || followedByWhitespace) && i > 1 && ruleLang.equals(Language.ENGLISH) && token.trim().equals("\"") && tokens[i - 1].getToken().matches("[\\d]+")) {
+        noException=false;
       }
-      if ((precededByWhitespace || followedByWhitespace) && ruleLang.equals(Language.ENGLISH) && token.trim().equals("'")&& i > 1 && noException) {
-        if (tokens[i - 1].getToken().charAt(tokens[i - 1].getToken().length() - 1) == 's') {
-          noException=false;
-        }
+      if ((precededByWhitespace || followedByWhitespace) && ruleLang.equals(Language.ENGLISH) && token.trim().equals("'")&& i > 1 && noException && (tokens[i - 1].getToken().charAt(tokens[i - 1].getToken().length() - 1) == 's')) {
+        noException=false;
       }
       if (noException && precededByWhitespace && token.trim().equals(startSymbols[j])) {
         symbolCounter[j]++;

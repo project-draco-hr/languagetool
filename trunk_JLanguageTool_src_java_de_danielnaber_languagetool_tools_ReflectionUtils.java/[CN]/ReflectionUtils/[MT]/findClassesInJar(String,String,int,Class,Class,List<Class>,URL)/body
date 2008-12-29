@@ -1,25 +1,27 @@
 {
-  JarURLConnection conn=(JarURLConnection)resource.openConnection();
-  JarFile currentFile=conn.getJarFile();
-  for (Enumeration<JarEntry> e=currentFile.entries(); e.hasMoreElements(); ) {
-    JarEntry current=(JarEntry)e.nextElement();
-    String name=current.getName();
+  final JarURLConnection conn=(JarURLConnection)resource.openConnection();
+  final JarFile currentFile=conn.getJarFile();
+  for (final Enumeration<JarEntry> e=currentFile.entries(); e.hasMoreElements(); ) {
+    final JarEntry current=e.nextElement();
+    final String name=current.getName();
     if (name.endsWith(".class")) {
-      String classNm=name.replaceAll("/",".").replace(".class","");
-      int pointIdx=classNm.lastIndexOf('.');
-      String classShortNm=pointIdx == -1 ? classNm : classNm.substring(pointIdx + 1);
+      final String classNm=name.replaceAll("/",".").replace(".class","");
+      final int pointIdx=classNm.lastIndexOf('.');
+      final String classShortNm=pointIdx == -1 ? classNm : classNm.substring(pointIdx + 1);
       if (classNm.startsWith(packageName) && (classNameRegEx == null || classShortNm.matches(classNameRegEx))) {
-        String subName=classNm.substring(packageName.length() + 1);
-        if (countOccurences(subName,'.') > subdirLevel)         continue;
-        Class clazz=Class.forName(classNm);
+        final String subName=classNm.substring(packageName.length() + 1);
+        if (countOccurences(subName,'.') > subdirLevel) {
+          continue;
+        }
+        final Class clazz=Class.forName(classNm);
         if (foundClasses.contains(clazz)) {
           throw new RuntimeException("Duplicate class definition:\n" + clazz.getName() + ", found in\n"+ currentFile.getName());
         }
-        if (!isMaterial(clazz))         continue;
-        if (classExtends == null || isExtending(clazz,classExtends.getName())) {
-          if (interfaceImplements == null || isImplementing(clazz,interfaceImplements)) {
-            foundClasses.add(clazz);
-          }
+        if (!isMaterial(clazz)) {
+          continue;
+        }
+        if (classExtends == null || isExtending(clazz,classExtends.getName()) && interfaceImplements == null || isImplementing(clazz,interfaceImplements)) {
+          foundClasses.add(clazz);
         }
       }
     }

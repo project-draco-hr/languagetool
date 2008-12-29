@@ -1,5 +1,3 @@
 {
-  s=escapeXML(s);
-  s=s.replaceAll("[\n\r]"," ");
-  return s;
+  return escapeXML(s).replaceAll("[\n\r]"," ");
 }

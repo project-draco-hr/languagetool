@@ -4,7 +4,7 @@
     try {
       httpServer.run();
     }
- catch (    PortBindingException e) {
+ catch (    final PortBindingException e) {
       JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
     }
   }

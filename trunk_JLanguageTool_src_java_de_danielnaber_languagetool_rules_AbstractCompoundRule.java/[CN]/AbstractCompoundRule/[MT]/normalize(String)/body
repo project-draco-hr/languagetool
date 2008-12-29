@@ -1,5 +1,5 @@
 {
-  str=str.trim().toLowerCase();
+  String str=inStr.trim().toLowerCase();
   if (str.indexOf('-') != -1 && str.indexOf(' ') != -1) {
     str=str.replace('-',' ');
   }

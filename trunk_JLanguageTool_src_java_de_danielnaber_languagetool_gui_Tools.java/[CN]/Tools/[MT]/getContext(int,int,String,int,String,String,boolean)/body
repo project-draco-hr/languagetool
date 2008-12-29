@@ -10,24 +10,28 @@
     startContent=0;
   }
   int endContent=toPos + contextSize;
-  int fileLen=text.length();
+  final int fileLen=text.length();
   if (endContent > fileLen) {
     postfix="";
     endContent=fileLen;
   }
-  StringBuilder marker=new StringBuilder();
-  int totalLen=fileLen + prefix.length();
+  final StringBuilder marker=new StringBuilder();
+  final int totalLen=fileLen + prefix.length();
   for (int i=0; i < totalLen; i++) {
-    if (i >= fromPos && i < toPos)     marker.append("^");
- else     marker.append(" ");
+    if (i >= fromPos && i < toPos) {
+      marker.append("^");
+    }
+ else {
+      marker.append(" ");
+    }
   }
-  StringBuilder sb=new StringBuilder();
+  final StringBuilder sb=new StringBuilder();
   sb.append(prefix);
   sb.append(text.substring(startContent,endContent));
-  String markerStr=markerPrefix + marker.substring(startContent,endContent);
+  final String markerStr=markerPrefix + marker.substring(startContent,endContent);
   sb.append(postfix);
-  int startMark=markerStr.indexOf('^');
-  int endMark=markerStr.lastIndexOf('^');
+  final int startMark=markerStr.indexOf('^');
+  final int endMark=markerStr.lastIndexOf('^');
   String result=sb.toString();
   if (escapeHTML) {
     result=StringTools.escapeHTML(result.substring(0,startMark)) + markerStart + StringTools.escapeHTML(result.substring(startMark,endMark + 1))+ markerEnd+ StringTools.escapeHTML(result.substring(endMark + 1));

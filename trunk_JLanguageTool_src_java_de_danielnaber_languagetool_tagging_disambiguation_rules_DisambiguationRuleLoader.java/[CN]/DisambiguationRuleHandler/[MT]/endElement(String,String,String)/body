@@ -10,22 +10,18 @@
         if (newWdList.size() != (elementList.size() - positionCorrection + endPositionCorrection)) {
           throw new SAXException("Rule error. The number of interpretations specified with wd: " + newWdList.size() + " must be equal to the number of matched tokens."+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
         }
-        rule.setNewInterpretations(newWdList.toArray((new AnalyzedToken[newWdList.size()])));
+        rule.setNewInterpretations(newWdList.toArray(new AnalyzedToken[newWdList.size()]));
       }
       newWdList.clear();
     }
     caseSensitive=false;
     rules.add(rule);
     if (elementList != null) {
-      if (disambigAction == DisambiguatorAction.UNIFY) {
-        if ((elementList.size() - positionCorrection + endPositionCorrection) != uniCounter) {
-          throw new SAXException("Rule error. The number unified tokens: " + uniCounter + " must be equal to the number of matched tokens."+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
-        }
+      if (disambigAction == DisambiguatorAction.UNIFY && (elementList.size() - positionCorrection + endPositionCorrection) != uniCounter) {
+        throw new SAXException("Rule error. The number unified tokens: " + uniCounter + " must be equal to the number of matched tokens."+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
       }
-      if (!singleTokenCorrection && (disambigAction == DisambiguatorAction.FILTER || disambigAction == DisambiguatorAction.REPLACE)) {
-        if ((elementList.size() - positionCorrection + endPositionCorrection) > 1) {
-          throw new SAXException("Rule error. Cannot replace or filter more than one token at a time." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
-        }
+      if ((!singleTokenCorrection && (disambigAction == DisambiguatorAction.FILTER || disambigAction == DisambiguatorAction.REPLACE)) && ((elementList.size() - positionCorrection + endPositionCorrection) > 1)) {
+        throw new SAXException("Rule error. Cannot replace or filter more than one token at a time." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
       }
       elementList.clear();
     }

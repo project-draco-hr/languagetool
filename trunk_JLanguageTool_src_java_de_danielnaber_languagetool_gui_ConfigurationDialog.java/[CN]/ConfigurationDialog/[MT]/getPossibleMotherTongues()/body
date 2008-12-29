@@ -1,7 +1,7 @@
 {
-  List<Object> motherTongues=new ArrayList<Object>();
+  final List<Object> motherTongues=new ArrayList<Object>();
   motherTongues.add(NO_MOTHER_TONGUE);
-  for (  Language lang : Language.LANGUAGES) {
+  for (  final Language lang : Language.LANGUAGES) {
     if (lang != Language.DEMO) {
       motherTongues.add(messages.getString(lang.getShortName()));
     }

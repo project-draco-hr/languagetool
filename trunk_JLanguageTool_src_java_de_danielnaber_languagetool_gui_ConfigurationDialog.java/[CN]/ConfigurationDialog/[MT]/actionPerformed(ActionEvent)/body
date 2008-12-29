@@ -2,7 +2,7 @@
   if (e.getSource() == okButton) {
     int i=0;
     inactiveCategoryNames.clear();
-    for (    JCheckBox checkBox : categoryCheckBoxes) {
+    for (    final JCheckBox checkBox : categoryCheckBoxes) {
       if (!checkBox.isSelected()) {
         final String categoryName=checkBoxesCategoryNames.get(i);
         inactiveCategoryNames.add(categoryName);
@@ -12,7 +12,7 @@
     i=0;
     inactiveRuleIds.clear();
     enabledRuleIds.clear();
-    for (    JCheckBox checkBox : checkBoxes) {
+    for (    final JCheckBox checkBox : checkBoxes) {
       if (!checkBox.isSelected()) {
         final String ruleId=checkBoxesRuleIds.get(i);
         if (!defaultOffRules.contains(ruleId)) {
@@ -27,8 +27,12 @@
       }
       i++;
     }
-    if (motherTongueBox.getSelectedItem() instanceof String)     motherTongue=getLanguageForLocalizedName(motherTongueBox.getSelectedItem().toString());
- else     motherTongue=(Language)motherTongueBox.getSelectedItem();
+    if (motherTongueBox.getSelectedItem() instanceof String) {
+      motherTongue=getLanguageForLocalizedName(motherTongueBox.getSelectedItem().toString());
+    }
+ else {
+      motherTongue=(Language)motherTongueBox.getSelectedItem();
+    }
     if (serverCheckbox != null) {
       serverMode=serverCheckbox.isSelected();
       serverPort=Integer.parseInt(serverPortField.getText());
