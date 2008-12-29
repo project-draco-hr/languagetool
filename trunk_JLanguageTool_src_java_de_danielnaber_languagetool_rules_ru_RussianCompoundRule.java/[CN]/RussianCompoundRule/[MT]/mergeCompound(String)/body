@@ -1,9 +1,0 @@
-{
-  String[] stringParts=str.split(" ");
-  StringBuilder sb=new StringBuilder();
-  for (int k=0; k < stringParts.length; k++) {
-    if (k == 0)     sb.append(stringParts[k]);
- else     sb.append(stringParts[k].toLowerCase());
-  }
-  return sb.toString();
-}
