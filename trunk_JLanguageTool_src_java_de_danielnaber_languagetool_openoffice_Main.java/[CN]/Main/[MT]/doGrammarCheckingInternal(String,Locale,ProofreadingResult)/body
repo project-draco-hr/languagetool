@@ -5,7 +5,7 @@
  else {
     paRes.nBehindEndOfSentencePosition=paraText.length();
   }
-  if (!"".equals(paraText)) {
+  if (!StringTools.isEmpty(paraText)) {
     if (hasLocale(locale)) {
       if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null || recheck) {
         docLanguage=Language.getLanguageForShortName(locale.Language);

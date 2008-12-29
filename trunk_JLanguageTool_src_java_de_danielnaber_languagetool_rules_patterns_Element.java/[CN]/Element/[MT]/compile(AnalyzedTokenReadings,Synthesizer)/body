@@ -1,7 +1,7 @@
 {
   tokenReference.setToken(token);
   tokenReference.setSynthesizer(synth);
-  if ("".equals(referenceString)) {
+  if (StringTools.isEmpty(referenceString)) {
     referenceString=stringToken;
   }
   if (tokenReference.setsPos()) {

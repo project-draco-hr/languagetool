@@ -15,7 +15,7 @@
     for (int k=0; k < readingsLen; k++) {
       final String posTag=tokens[i].getAnalyzedToken(k).getPOSTag();
       if (posTag != null) {
-        if (posTag.equals("")) {
+        if (StringTools.isEmpty(posTag)) {
           isWord=false;
           break;
         }

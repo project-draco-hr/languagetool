@@ -1,0 +1,5 @@
+{
+  assertEquals(true,StringTools.isEmpty(""));
+  assertEquals(true,StringTools.isEmpty(null));
+  assertEquals(false,StringTools.isEmpty("a"));
+}

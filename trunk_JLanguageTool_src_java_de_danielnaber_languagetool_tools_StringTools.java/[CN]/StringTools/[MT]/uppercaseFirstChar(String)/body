@@ -1,5 +1,5 @@
 {
-  if (str.length() == 0) {
+  if (isEmpty(str)) {
     return str;
   }
   final char firstChar=str.charAt(0);

@@ -7,7 +7,7 @@
       boolean allFeatsUnified=true;
       for (      String feat : features) {
         boolean featUnified=false;
-        if ("".equals(type)) {
+        if (StringTools.isEmpty(type)) {
           types=equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
         }
  else {

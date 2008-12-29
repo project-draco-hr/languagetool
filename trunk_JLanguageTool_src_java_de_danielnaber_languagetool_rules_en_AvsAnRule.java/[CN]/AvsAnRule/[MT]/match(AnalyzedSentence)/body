@@ -12,7 +12,7 @@
       token=parts[0];
     }
     token=token.replaceAll("&quot|&amp|&lt|&gt|[^a-zA-Z0-9\\.']","");
-    if (token.length() == 0) {
+    if (StringTools.isEmpty(token)) {
       continue;
     }
     final char tokenFirstChar=token.charAt(0);

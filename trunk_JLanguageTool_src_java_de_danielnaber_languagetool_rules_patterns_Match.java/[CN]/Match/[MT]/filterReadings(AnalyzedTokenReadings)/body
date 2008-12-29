@@ -32,7 +32,7 @@
               if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag) && (formattedToken.getAnalyzedToken(j).getLemma() != null)) {
                 lemma=formattedToken.getAnalyzedToken(j).getLemma();
               }
-              if ("".equals(lemma)) {
+              if (StringTools.isEmpty(lemma)) {
                 lemma=formattedToken.getAnalyzedToken(0).getLemma();
               }
               l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
@@ -47,7 +47,7 @@
             if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag) && (formattedToken.getAnalyzedToken(j).getLemma() != null)) {
               lemma=formattedToken.getAnalyzedToken(j).getLemma();
             }
-            if ("".equals(lemma)) {
+            if (StringTools.isEmpty(lemma)) {
               lemma=formattedToken.getAnalyzedToken(0).getLemma();
             }
             l.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));

@@ -1,13 +1,8 @@
 {
   this.stringToken=token;
   testString=true;
-  if (this.stringToken == null) {
+  if (StringTools.isEmpty(stringToken)) {
     testString=false;
-  }
- else {
-    if (this.stringToken.length() == 0) {
-      testString=false;
-    }
   }
   if (testString && stringRegExp) {
     regToken=stringToken;

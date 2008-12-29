@@ -33,7 +33,7 @@
       exceptionSet=true;
     }
     tokenElement.setNegation(tokenNegated);
-    if (!"".equals(exceptions.toString())) {
+    if (!StringTools.isEmpty(exceptions.toString())) {
       tokenElement.setStringException(StringTools.trimWhitespace(exceptions.toString()),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev);
     }
     if (exceptionPosToken != null) {

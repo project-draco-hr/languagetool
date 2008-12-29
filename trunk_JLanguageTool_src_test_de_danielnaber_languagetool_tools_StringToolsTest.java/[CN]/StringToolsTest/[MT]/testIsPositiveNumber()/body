@@ -1,0 +1,4 @@
+{
+  assertEquals(true,StringTools.isPositiveNumber('3'));
+  assertEquals(false,StringTools.isPositiveNumber('a'));
+}

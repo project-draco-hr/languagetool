@@ -1,12 +1,10 @@
 {
-  if (lemmaString != null) {
-    if (!lemmaString.equals("")) {
-      formattedToken=new AnalyzedTokenReadings(new AnalyzedToken(lemmaString,posTag,lemmaString));
-      staticLemma=true;
-      postagRegexp=true;
-      if (postagRegexp && posTag != null) {
-        pPosRegexMatch=Pattern.compile(posTag);
-      }
+  if (!StringTools.isEmpty(lemmaString)) {
+    formattedToken=new AnalyzedTokenReadings(new AnalyzedToken(lemmaString,posTag,lemmaString));
+    staticLemma=true;
+    postagRegexp=true;
+    if (postagRegexp && posTag != null) {
+      pPosRegexMatch=Pattern.compile(posTag);
     }
   }
 }

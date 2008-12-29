@@ -3,7 +3,7 @@
     return false;
   }
   final String trimStr=str.trim();
-  if (("").equals(trimStr)) {
+  if (isEmpty(trimStr)) {
     return true;
   }
  else {

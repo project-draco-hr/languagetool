@@ -2,7 +2,7 @@
   if (allFeatsIn && equivalencesMatched.isEmpty()) {
     return false;
   }
-  if ("".equals(feature)) {
+  if (StringTools.isEmpty(feature)) {
     return false;
   }
   boolean unified=true;
@@ -15,7 +15,7 @@
       equivalencesMatched.add(mapTemp);
     }
     for (    String feat : features) {
-      if ("".equals(type)) {
+      if (StringTools.isEmpty(type)) {
         types=equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
       }
  else {

@@ -8,7 +8,7 @@
     word=parts[0];
   }
   word=word.replaceAll("&quot|&amp|&lt|&gt|[^a-zA-Z0-9]","");
-  if (word.length() == 0) {
+  if (StringTools.isEmpty(word)) {
     return word;
   }
   final char tokenFirstChar=word.charAt(0);

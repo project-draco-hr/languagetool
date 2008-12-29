@@ -213,7 +213,7 @@ default :
           lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
         }
       }
-      if (("").equals(lemma)) {
+      if (StringTools.isEmpty(lemma)) {
         lemma=whTokens[fromPos].getAnalyzedToken(0).getLemma();
       }
       final AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma,whTokens[fromPos].getStartPos()));

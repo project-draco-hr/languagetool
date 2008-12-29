@@ -10,7 +10,7 @@
     List<String> lines=loadFile(file);
     for (    String line : lines) {
       line=line.trim();
-      if (line.startsWith("#") || line.equals(""))       continue;
+      if (line.startsWith("#") || StringTools.isEmpty(line))       continue;
       String[] parts=line.split("=");
       if (parts.length < 2) {
         System.err.println("***** Empty translation: '" + line + "' in file "+ file);
