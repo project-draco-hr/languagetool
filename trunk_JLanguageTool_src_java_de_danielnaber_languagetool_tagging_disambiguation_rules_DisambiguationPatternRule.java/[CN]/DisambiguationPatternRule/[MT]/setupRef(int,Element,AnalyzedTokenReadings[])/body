@@ -1,0 +1,6 @@
+{
+  final int refPos=firstMatchToken + elem.getMatch().getTokenRef();
+  if (refPos < tokens.length) {
+    elem.compile(tokens[refPos],language.getSynthesizer());
+  }
+}

@@ -49,13 +49,13 @@
             exceptionMatched=true;
             prevMatched=true;
           }
-          if (elem.isReferenceElement() && (firstMatchToken + elem.getMatch().getTokenRef() < tokens.length)) {
-            elem.compile(tokens[firstMatchToken + elem.getMatch().getTokenRef()],language.getSynthesizer());
+          if (elem.isReferenceElement()) {
+            setupRef(firstMatchToken,elem,tokens);
           }
           if (elem.hasAndGroup()) {
             for (            final Element andElement : elem.getAndGroup()) {
-              if (andElement.isReferenceElement() && (firstMatchToken + andElement.getMatch().getTokenRef() < tokens.length)) {
-                andElement.compile(tokens[firstMatchToken + andElement.getMatch().getTokenRef()],language.getSynthesizer());
+              if (andElement.isReferenceElement()) {
+                setupRef(firstMatchToken,andElement,tokens);
               }
             }
             if (l == 0) {

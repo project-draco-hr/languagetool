@@ -1,0 +1,3 @@
+int firstMatchToken
+Element elem
+AnalyzedTokenReadings[] tokens
