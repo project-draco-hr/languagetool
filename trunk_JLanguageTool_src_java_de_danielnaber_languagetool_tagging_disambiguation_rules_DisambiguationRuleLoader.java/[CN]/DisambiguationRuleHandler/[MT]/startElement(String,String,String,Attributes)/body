@@ -12,129 +12,129 @@
  else   if (qName.equals("rules")) {
     language=Language.getLanguageForShortName(attrs.getValue("lang"));
   }
- else   if (qName.equals("pattern")) {
+ else   if (qName.equals(PATTERN)) {
     inPattern=true;
-    if (attrs.getValue("mark") != null && (attrs.getValue("mark_from") != null)) {
+    if (attrs.getValue(MARK) != null && (attrs.getValue(MARK_FROM) != null)) {
       throw new SAXException("You cannot use both mark and mark_from attributes." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
     }
-    if (attrs.getValue("mark") != null && (attrs.getValue("mark_to") != null)) {
+    if (attrs.getValue(MARK) != null && (attrs.getValue(MARK_TO) != null)) {
       throw new SAXException("You cannot use both mark and mark_to attributes." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
     }
-    if (attrs.getValue("mark") != null) {
-      positionCorrection=Integer.parseInt(attrs.getValue("mark"));
+    if (attrs.getValue(MARK) != null) {
+      positionCorrection=Integer.parseInt(attrs.getValue(MARK));
     }
-    if (attrs.getValue("mark_from") != null) {
-      positionCorrection=Integer.parseInt(attrs.getValue("mark_from"));
+    if (attrs.getValue(MARK_FROM) != null) {
+      positionCorrection=Integer.parseInt(attrs.getValue(MARK_FROM));
     }
-    if (attrs.getValue("mark_to") != null) {
-      endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
+    if (attrs.getValue(MARK_TO) != null) {
+      endPositionCorrection=Integer.parseInt(attrs.getValue(MARK_TO));
       singleTokenCorrection=false;
     }
  else {
       singleTokenCorrection=true;
     }
-    if (attrs.getValue("case_sensitive") != null && "yes".equals(attrs.getValue("case_sensitive"))) {
+    if (attrs.getValue(CASE_SENSITIVE) != null && YES.equals(attrs.getValue(CASE_SENSITIVE))) {
       caseSensitive=true;
     }
   }
- else   if (qName.equals("exception")) {
+ else   if (qName.equals(EXCEPTION)) {
     inException=true;
     exceptions=new StringBuilder();
-    if (attrs.getValue("negate") != null) {
-      exceptionStringNegation=attrs.getValue("negate").equals("yes");
+    if (attrs.getValue(NEGATE) != null) {
+      exceptionStringNegation=attrs.getValue(NEGATE).equals(YES);
     }
-    if (attrs.getValue("scope") != null) {
-      exceptionValidNext=attrs.getValue("scope").equals("next");
-      exceptionValidPrev=attrs.getValue("scope").equals("previous");
+    if (attrs.getValue(SCOPE) != null) {
+      exceptionValidNext=attrs.getValue(SCOPE).equals("next");
+      exceptionValidPrev=attrs.getValue(SCOPE).equals("previous");
     }
-    if (attrs.getValue("inflected") != null) {
-      exceptionStringInflected=attrs.getValue("inflected").equals("yes");
+    if (attrs.getValue(INFLECTED) != null) {
+      exceptionStringInflected=attrs.getValue(INFLECTED).equals(YES);
     }
-    if (attrs.getValue("postag") != null) {
-      exceptionPosToken=attrs.getValue("postag");
-      if (attrs.getValue("postag_regexp") != null) {
-        exceptionPosRegExp=attrs.getValue("postag_regexp").equals("yes");
+    if (attrs.getValue(POSTAG) != null) {
+      exceptionPosToken=attrs.getValue(POSTAG);
+      if (attrs.getValue(POSTAG_REGEXP) != null) {
+        exceptionPosRegExp=attrs.getValue(POSTAG_REGEXP).equals(YES);
       }
-      if (attrs.getValue("negate_pos") != null) {
-        exceptionPosNegation=attrs.getValue("negate_pos").equals("yes");
+      if (attrs.getValue(NEGATE_POS) != null) {
+        exceptionPosNegation=attrs.getValue(NEGATE_POS).equals(YES);
       }
     }
-    if (attrs.getValue("regexp") != null) {
-      exceptionStringRegExp=attrs.getValue("regexp").equals("yes");
+    if (attrs.getValue(REGEXP) != null) {
+      exceptionStringRegExp=attrs.getValue(REGEXP).equals(YES);
     }
-    if (attrs.getValue("spacebefore") != null) {
-      exceptionSpaceBefore="yes".equals(attrs.getValue("spacebefore"));
-      exceptionSpaceBeforeSet="ignore".equals(attrs.getValue("spacebefore")) ^ true;
+    if (attrs.getValue(SPACEBEFORE) != null) {
+      exceptionSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
+      exceptionSpaceBeforeSet=IGNORE.equals(attrs.getValue(SPACEBEFORE)) ^ true;
     }
   }
- else   if (qName.equals("and")) {
+ else   if (qName.equals(AND)) {
     inAndGroup=true;
   }
- else   if (qName.equals("unify")) {
+ else   if (qName.equals(UNIFY)) {
     inUnification=true;
-    uFeature=attrs.getValue("feature");
-    if (attrs.getValue("type") != null) {
-      uType=attrs.getValue("type");
+    uFeature=attrs.getValue(FEATURE);
+    if (attrs.getValue(TYPE) != null) {
+      uType=attrs.getValue(TYPE);
     }
  else {
       uType="";
     }
-    if (attrs.getValue("negate") != null && "yes".equals(attrs.getValue("negate"))) {
+    if (attrs.getValue(NEGATE) != null && YES.equals(attrs.getValue(NEGATE))) {
       uniNegation=true;
     }
     uniCounter=0;
   }
- else   if (qName.equals("token")) {
+ else   if (qName.equals(TOKEN)) {
     inToken=true;
-    if (attrs.getValue("negate") != null) {
-      tokenNegated=attrs.getValue("negate").equals("yes");
+    if (attrs.getValue(NEGATE) != null) {
+      tokenNegated=attrs.getValue(NEGATE).equals(YES);
     }
-    if (attrs.getValue("inflected") != null) {
-      tokenInflected=attrs.getValue("inflected").equals("yes");
+    if (attrs.getValue(INFLECTED) != null) {
+      tokenInflected=attrs.getValue(INFLECTED).equals(YES);
     }
-    if (attrs.getValue("skip") != null) {
-      skipPos=Integer.parseInt(attrs.getValue("skip"));
+    if (attrs.getValue(SKIP) != null) {
+      skipPos=Integer.parseInt(attrs.getValue(SKIP));
     }
     elements=new StringBuilder();
-    if (attrs.getValue("postag") != null) {
-      posToken=attrs.getValue("postag");
-      if (attrs.getValue("postag_regexp") != null) {
-        posRegExp=attrs.getValue("postag_regexp").equals("yes");
+    if (attrs.getValue(POSTAG) != null) {
+      posToken=attrs.getValue(POSTAG);
+      if (attrs.getValue(POSTAG_REGEXP) != null) {
+        posRegExp=attrs.getValue(POSTAG_REGEXP).equals(YES);
       }
-      if (attrs.getValue("negate_pos") != null) {
-        posNegation=attrs.getValue("negate_pos").equals("yes");
+      if (attrs.getValue(NEGATE_POS) != null) {
+        posNegation=attrs.getValue(NEGATE_POS).equals(YES);
       }
     }
-    if (attrs.getValue("regexp") != null) {
-      stringRegExp=attrs.getValue("regexp").equals("yes");
+    if (attrs.getValue(REGEXP) != null) {
+      stringRegExp=attrs.getValue(REGEXP).equals(YES);
     }
-    if (attrs.getValue("spacebefore") != null) {
-      tokenSpaceBefore="yes".equals(attrs.getValue("spacebefore"));
-      tokenSpaceBeforeSet="ignore".equals(attrs.getValue("spacebefore")) ^ true;
+    if (attrs.getValue(SPACEBEFORE) != null) {
+      tokenSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
+      tokenSpaceBeforeSet=IGNORE.equals(attrs.getValue(SPACEBEFORE)) ^ true;
     }
   }
- else   if (qName.equals("disambig")) {
+ else   if (qName.equals(DISAMBIG)) {
     inDisamb=true;
-    disambiguatedPOS=attrs.getValue("postag");
-    if (attrs.getValue("action") != null) {
-      disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction(attrs.getValue("action").toUpperCase());
+    disambiguatedPOS=attrs.getValue(POSTAG);
+    if (attrs.getValue(ACTION) != null) {
+      disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction(attrs.getValue(ACTION).toUpperCase());
     }
  else {
       disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction("REPLACE");
     }
     disamb=new StringBuilder();
   }
- else   if (qName.equals("match")) {
+ else   if (qName.equals(MATCH)) {
     inMatch=true;
     match=new StringBuilder();
     Match.CaseConversion caseConv=Match.CaseConversion.NONE;
     if (attrs.getValue("case_conversion") != null) {
       caseConv=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());
     }
-    final Match mWorker=new Match(attrs.getValue("postag"),attrs.getValue("postag_replace"),"yes".equals(attrs.getValue("postag_regexp")),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv,"yes".equals(attrs.getValue("setpos")));
+    final Match mWorker=new Match(attrs.getValue(POSTAG),attrs.getValue("postag_replace"),YES.equals(attrs.getValue(POSTAG_REGEXP)),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv,YES.equals(attrs.getValue("setpos")));
     if (inDisamb) {
-      if (attrs.getValue("no") != null) {
-        final int refNumber=Integer.parseInt(attrs.getValue("no"));
+      if (attrs.getValue(NO) != null) {
+        final int refNumber=Integer.parseInt(attrs.getValue(NO));
         if (refNumber > elementList.size()) {
           throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
         }
@@ -145,8 +145,8 @@
       }
     }
  else     if (inToken) {
-      if (attrs.getValue("no") != null) {
-        final int refNumber=Integer.parseInt(attrs.getValue("no"));
+      if (attrs.getValue(NO) != null) {
+        final int refNumber=Integer.parseInt(attrs.getValue(NO));
         if (refNumber > elementList.size()) {
           throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
         }
@@ -158,19 +158,19 @@
       }
     }
   }
- else   if (qName.equals("rulegroup")) {
+ else   if (qName.equals(RULEGROUP)) {
     ruleGroupId=attrs.getValue("id");
     ruleGroupName=attrs.getValue("name");
     inRuleGroup=true;
   }
- else   if (qName.equals("unification")) {
-    uFeature=attrs.getValue("feature");
+ else   if (qName.equals(UNIFICATION)) {
+    uFeature=attrs.getValue(FEATURE);
     inUnificationDef=true;
   }
  else   if (qName.equals("equivalence")) {
-    uType=attrs.getValue("type");
+    uType=attrs.getValue(TYPE);
   }
- else   if (qName.equals("wd")) {
+ else   if (qName.equals(WD)) {
     wdLemma=attrs.getValue("lemma");
     wdPos=attrs.getValue("pos");
     inWord=true;

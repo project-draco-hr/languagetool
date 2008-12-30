@@ -4,7 +4,7 @@
   int pos=0;
   for (int i=0; i < tokens.length; i++) {
     String token=tokens[i].getToken();
-    if (token.trim().equals("")) {
+    if (tokens[i].isWhitespace()) {
     }
  else {
       String origToken=token;

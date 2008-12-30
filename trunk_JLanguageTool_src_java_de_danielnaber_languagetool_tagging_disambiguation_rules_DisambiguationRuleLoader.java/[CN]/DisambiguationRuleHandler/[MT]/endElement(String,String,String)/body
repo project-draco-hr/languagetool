@@ -25,7 +25,7 @@
     elementList.clear();
     posSelector=null;
   }
- else   if (qName.equals("exception")) {
+ else   if (qName.equals(EXCEPTION)) {
     inException=false;
     if (!exceptionSet) {
       tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,tokenInflected);
@@ -44,14 +44,14 @@
     }
     resetException();
   }
- else   if (qName.equals("and")) {
+ else   if (qName.equals(AND)) {
     inAndGroup=false;
     andGroupCounter=0;
   }
- else   if (qName.equals("unify")) {
+ else   if (qName.equals(UNIFY)) {
     inUnification=false;
   }
- else   if (qName.equals("token")) {
+ else   if (qName.equals(TOKEN)) {
     if (!exceptionSet || tokenElement == null) {
       tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,tokenInflected);
       tokenElement.setNegation(tokenNegated);
@@ -95,10 +95,10 @@
     }
     resetToken();
   }
- else   if (qName.equals("pattern")) {
+ else   if (qName.equals(PATTERN)) {
     inPattern=false;
   }
- else   if (qName.equals("match")) {
+ else   if (qName.equals(MATCH)) {
     if (inDisamb) {
       posSelector.setLemmaString(match.toString());
     }
@@ -107,19 +107,19 @@
     }
     inMatch=false;
   }
- else   if (qName.equals("disambig")) {
+ else   if (qName.equals(DISAMBIG)) {
     inDisamb=false;
   }
- else   if (qName.equals("rulegroup")) {
+ else   if (qName.equals(RULEGROUP)) {
     inRuleGroup=false;
   }
- else   if (qName.equals("unification") && inUnificationDef) {
+ else   if (qName.equals(UNIFICATION) && inUnificationDef) {
     inUnificationDef=false;
   }
- else   if (qName.equals("unify") && inUnification) {
+ else   if (qName.equals(UNIFY) && inUnification) {
     inUnification=false;
   }
- else   if (qName.equals("wd")) {
+ else   if (qName.equals(WD)) {
     addNewWord(wd.toString(),wdLemma,wdPos);
     inWord=false;
   }

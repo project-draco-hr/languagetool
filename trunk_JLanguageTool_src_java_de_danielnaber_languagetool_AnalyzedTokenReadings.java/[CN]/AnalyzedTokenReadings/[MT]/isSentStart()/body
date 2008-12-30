@@ -1,7 +1,3 @@
 {
-  boolean isSE=false;
-  if (anTokReadings[0].posTag != null) {
-    isSE=anTokReadings[0].posTag.equals(JLanguageTool.SENTENCE_START_TAGNAME);
-  }
-  return isSE;
+  return isSentStart;
 }

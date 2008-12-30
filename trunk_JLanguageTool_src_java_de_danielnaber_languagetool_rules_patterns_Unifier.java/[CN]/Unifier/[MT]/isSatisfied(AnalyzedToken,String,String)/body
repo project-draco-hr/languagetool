@@ -6,8 +6,8 @@
     return false;
   }
   boolean unified=true;
-  final String features[]=feature.split(",");
-  String types[];
+  final String[] features=feature.split(",");
+  String[] types;
   if (!allFeatsIn) {
     tokCnt++;
     if (equivalencesMatched.size() <= tokCnt) {
@@ -26,7 +26,7 @@
         if (testElem == null) {
           return false;
         }
-        if (testElem.isMatched(AT)) {
+        if (testElem.isMatched(aToken)) {
           if (!equivalencesMatched.get(tokCnt).containsKey(feat)) {
             final Set<String> typeSet=new HashSet<String>();
             typeSet.add(typename);
@@ -44,15 +44,15 @@
     }
     if (unified) {
       if (tokCnt == 0 || tokSequence.isEmpty()) {
-        tokSequence.add(new AnalyzedTokenReadings(AT));
+        tokSequence.add(new AnalyzedTokenReadings(aToken));
       }
  else {
-        tokSequence.get(0).addReading(AT);
+        tokSequence.get(0).addReading(aToken);
       }
     }
   }
  else {
-    unified&=checkNext(AT,features,type);
+    unified&=checkNext(aToken,features,type);
   }
-  return (unified) ^ negation;
+  return unified ^ negation;
 }

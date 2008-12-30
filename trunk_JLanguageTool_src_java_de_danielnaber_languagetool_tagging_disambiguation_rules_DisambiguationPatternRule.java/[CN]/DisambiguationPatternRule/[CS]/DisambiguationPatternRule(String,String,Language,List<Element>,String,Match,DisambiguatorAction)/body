@@ -19,6 +19,6 @@
   this.description=description;
   this.patternElements=new ArrayList<Element>(elements);
   this.disambiguatedPOS=disamb;
-  this.matchToken=posSelect;
+  this.matchElement=posSelect;
   this.disAction=disambAction;
 }

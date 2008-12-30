@@ -23,7 +23,7 @@
       AnalyzedTokenReadings posTag=null;
       if (isWord(tokenStr)) {
         posTag=(AnalyzedTokenReadings)aTokens.get(noWhitespaceCount);
-        posTag.startPos=startPos;
+        posTag.setStartPos(startPos);
         noWhitespaceCount++;
       }
  else {
