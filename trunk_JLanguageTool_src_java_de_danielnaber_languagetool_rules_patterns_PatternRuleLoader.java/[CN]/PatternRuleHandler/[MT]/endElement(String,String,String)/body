@@ -19,9 +19,7 @@
         rules.add(rule);
       }
     }
-    if (elementList != null) {
-      elementList.clear();
-    }
+    elementList.clear();
     if (phraseElementList != null) {
       phraseElementList.clear();
     }
@@ -88,9 +86,7 @@
     }
     if (inUnificationDef) {
       language.getUnifier().setEquivalence(uFeature,uType,tokenElement);
-      if (elementList != null) {
-        elementList.clear();
-      }
+      elementList.clear();
     }
     if (tokenSpaceBeforeSet) {
       tokenElement.setWhitespaceBefore(tokenSpaceBefore);
@@ -156,20 +152,16 @@
       phraseMap=new HashMap<String,List<List<Element>>>();
     }
     phraseElementInit();
-    if (elementList != null) {
-      if (phraseElementList.isEmpty()) {
-        phraseElementList.add(new ArrayList<Element>(elementList));
-      }
+    if (phraseElementList.isEmpty()) {
+      phraseElementList.add(new ArrayList<Element>(elementList));
+    }
  else {
-        for (        final ArrayList<Element> ph : phraseElementList) {
-          ph.addAll(new ArrayList<Element>(elementList));
-        }
+      for (      final ArrayList<Element> ph : phraseElementList) {
+        ph.addAll(new ArrayList<Element>(elementList));
       }
     }
     phraseMap.put(phraseId,new ArrayList<List<Element>>(phraseElementList));
-    if (elementList != null) {
-      elementList.clear();
-    }
+    elementList.clear();
     phraseElementList.clear();
   }
  else   if (qName.equals("includephrases")) {

@@ -96,9 +96,6 @@
       skipPos=Integer.parseInt(attrs.getValue("skip"));
     }
     elements=new StringBuilder();
-    if (elementList == null) {
-      elementList=new ArrayList<Element>();
-    }
     if (attrs.getValue("postag") != null) {
       posToken=attrs.getValue("postag");
       if (attrs.getValue("postag_regexp") != null) {

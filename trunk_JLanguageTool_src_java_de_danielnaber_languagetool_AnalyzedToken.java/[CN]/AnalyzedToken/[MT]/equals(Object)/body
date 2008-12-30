@@ -1,0 +1,21 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  AnalyzedToken other=(AnalyzedToken)obj;
+  if (isWhitespaceBefore != other.isWhitespaceBefore)   return false;
+  if (lemma == null) {
+    if (other.lemma != null)     return false;
+  }
+ else   if (!lemma.equals(other.lemma))   return false;
+  if (posTag == null) {
+    if (other.posTag != null)     return false;
+  }
+ else   if (!posTag.equals(other.posTag))   return false;
+  if (startPos != other.startPos)   return false;
+  if (token == null) {
+    if (other.token != null)     return false;
+  }
+ else   if (!token.equals(other.token))   return false;
+  return true;
+}

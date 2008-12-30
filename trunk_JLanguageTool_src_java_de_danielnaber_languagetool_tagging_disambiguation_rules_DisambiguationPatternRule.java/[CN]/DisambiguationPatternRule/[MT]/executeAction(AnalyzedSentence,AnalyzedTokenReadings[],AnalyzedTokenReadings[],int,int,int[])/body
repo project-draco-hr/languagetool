@@ -1,6 +1,5 @@
 {
-  AnalyzedTokenReadings[] whTokens=new AnalyzedTokenReadings[whiteTokens.length];
-  whTokens=whiteTokens.clone();
+  AnalyzedTokenReadings[] whTokens=whiteTokens.clone();
   int correctedStPos=0;
   if (startPositionCorrection > 0) {
     for (int l=0; l <= startPositionCorrection; l++) {

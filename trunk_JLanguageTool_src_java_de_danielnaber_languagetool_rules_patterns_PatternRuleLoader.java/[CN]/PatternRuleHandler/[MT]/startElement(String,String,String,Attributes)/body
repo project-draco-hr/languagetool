@@ -71,7 +71,7 @@
   }
  else   if (qName.equals("token")) {
     inToken=true;
-    if (lastPhrase && elementList != null) {
+    if (lastPhrase) {
       elementList.clear();
     }
     lastPhrase=false;
@@ -85,9 +85,6 @@
       skipPos=Integer.parseInt(attrs.getValue("skip"));
     }
     elements=new StringBuilder();
-    if (elementList == null) {
-      elementList=new ArrayList<Element>();
-    }
     if (attrs.getValue(POSTAG) != null) {
       posToken=attrs.getValue(POSTAG);
       if (attrs.getValue(POSTAG_REGEXP) != null) {
@@ -218,9 +215,6 @@
   }
  else   if (qName.equals("includephrases")) {
     phraseElementInit();
-    if (elementList == null) {
-      elementList=new ArrayList<Element>();
-    }
   }
  else   if (qName.equals("phrase") && inPhrases) {
     phraseId=attrs.getValue("id");

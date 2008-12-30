@@ -13,7 +13,7 @@
     throw new NullPointerException("description cannot be null");
   }
   this.id=id;
-  PatternRule.language=language;
+  this.language=language;
   this.description=description;
   this.message=message;
   this.shortMessage=shortMessage;

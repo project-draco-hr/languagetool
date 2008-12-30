@@ -16,15 +16,13 @@
     }
     caseSensitive=false;
     rules.add(rule);
-    if (elementList != null) {
-      if (disambigAction == DisambiguatorAction.UNIFY && (elementList.size() - positionCorrection + endPositionCorrection) != uniCounter) {
-        throw new SAXException("Rule error. The number unified tokens: " + uniCounter + " must be equal to the number of matched tokens."+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
-      }
-      if ((!singleTokenCorrection && (disambigAction == DisambiguatorAction.FILTER || disambigAction == DisambiguatorAction.REPLACE)) && ((elementList.size() - positionCorrection + endPositionCorrection) > 1)) {
-        throw new SAXException("Rule error. Cannot replace or filter more than one token at a time." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
-      }
-      elementList.clear();
+    if (disambigAction == DisambiguatorAction.UNIFY && (elementList.size() - positionCorrection + endPositionCorrection) != uniCounter) {
+      throw new SAXException("Rule error. The number unified tokens: " + uniCounter + " must be equal to the number of matched tokens."+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
     }
+    if ((!singleTokenCorrection && (disambigAction == DisambiguatorAction.FILTER || disambigAction == DisambiguatorAction.REPLACE)) && ((elementList.size() - positionCorrection + endPositionCorrection) > 1)) {
+      throw new SAXException("Rule error. Cannot replace or filter more than one token at a time." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
+    }
+    elementList.clear();
     posSelector=null;
   }
  else   if (qName.equals("exception")) {
@@ -90,9 +88,7 @@
     }
     if (inUnificationDef) {
       language.getUnifier().setEquivalence(uFeature,uType,tokenElement);
-      if (elementList != null) {
-        elementList.clear();
-      }
+      elementList.clear();
     }
     if (tokenSpaceBeforeSet) {
       tokenElement.setWhitespaceBefore(tokenSpaceBefore);
