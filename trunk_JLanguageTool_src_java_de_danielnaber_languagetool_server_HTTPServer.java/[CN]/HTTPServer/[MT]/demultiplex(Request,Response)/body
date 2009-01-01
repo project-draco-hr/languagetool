@@ -24,10 +24,8 @@
       print("Check done in " + (System.currentTimeMillis() - timeStart) + "ms");
       return response;
     }
- else {
-      connResponse.setStatus(403);
-      throw new RuntimeException("Error: Access from " + connRequest.getIPAddressString() + " denied");
-    }
+    connResponse.setStatus(403);
+    throw new RuntimeException("Error: Access from " + connRequest.getIPAddressString() + " denied");
   }
  catch (  Exception e) {
     if (verbose)     print("Exceptions was caused by this text: " + text);

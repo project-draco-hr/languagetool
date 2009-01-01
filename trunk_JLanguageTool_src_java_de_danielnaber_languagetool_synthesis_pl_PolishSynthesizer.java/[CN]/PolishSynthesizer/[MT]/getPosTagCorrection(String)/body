@@ -11,15 +11,13 @@
     if (pos == -1) {
       return posTag;
     }
- else {
-      String s=tags[0];
-      for (int i=1; i < tags.length; i++) {
-        s=s + ":" + tags[i];
-      }
-      return s;
+    final StringBuilder sb=new StringBuilder();
+    sb.append(tags[0]);
+    for (int i=1; i < tags.length; i++) {
+      sb.append(":");
+      sb.append(tags[i]);
     }
+    return sb.toString();
   }
- else {
-    return posTag;
-  }
+  return posTag;
 }

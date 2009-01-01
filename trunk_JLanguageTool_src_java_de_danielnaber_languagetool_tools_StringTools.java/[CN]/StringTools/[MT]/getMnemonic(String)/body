@@ -6,7 +6,5 @@
   if (mnemonicPos == -1 || mnemonicPos == label.length()) {
     return '\u0000';
   }
- else {
-    return label.charAt(mnemonicPos + 1);
-  }
+  return label.charAt(mnemonicPos + 1);
 }

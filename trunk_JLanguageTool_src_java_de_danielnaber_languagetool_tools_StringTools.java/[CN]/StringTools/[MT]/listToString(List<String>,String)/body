@@ -1,7 +1,7 @@
 {
   final StringBuilder sb=new StringBuilder();
   for (final Iterator<String> iter=l.iterator(); iter.hasNext(); ) {
-    final String str=(String)iter.next();
+    final String str=iter.next();
     sb.append(str);
     if (iter.hasNext()) {
       sb.append(delimiter);

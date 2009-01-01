@@ -5,11 +5,7 @@
     if (res == 0) {
       return r1.getDescription().compareToIgnoreCase(r2.getDescription());
     }
- else {
-      return res;
-    }
+    return res;
   }
- else {
-    return r1.getDescription().compareToIgnoreCase(r2.getDescription());
-  }
+  return r1.getDescription().compareToIgnoreCase(r2.getDescription());
 }

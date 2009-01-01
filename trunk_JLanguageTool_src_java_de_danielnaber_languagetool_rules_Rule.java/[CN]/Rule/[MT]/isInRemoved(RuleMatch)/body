@@ -2,7 +2,5 @@
   if (removedMatches == null) {
     return false;
   }
- else {
-    return removedMatches.contains(r);
-  }
+  return removedMatches.contains(r);
 }

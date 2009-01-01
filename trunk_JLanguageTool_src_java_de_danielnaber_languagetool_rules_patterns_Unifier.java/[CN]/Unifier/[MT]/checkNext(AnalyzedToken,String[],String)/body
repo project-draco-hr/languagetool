@@ -5,17 +5,17 @@
   if (allFeatsIn) {
     for (int i=0; i <= tokCnt; i++) {
       boolean allFeatsUnified=true;
-      for (      String feat : features) {
+      for (      final String feat : features) {
         boolean featUnified=false;
         if (StringTools.isEmpty(type)) {
           types=equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
         }
  else {
-          types=type.split(",");
+          types=type.split(FEATURE_SEPARATOR);
         }
-        for (        String typename : types) {
+        for (        final String typename : types) {
           if (featuresFound.get(i) && equivalencesMatched.get(i).containsKey(feat) && equivalencesMatched.get(i).get(feat).contains(typename)) {
-            final Element testElem=equivalenceTypes.get(feat + ":" + typename);
+            final Element testElem=equivalenceTypes.get(feat + FEATURE_TYPE_SEPARATOR + typename);
             featUnified=featUnified || testElem.isMatched(AT);
           }
         }

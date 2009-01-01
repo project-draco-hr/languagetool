@@ -2,9 +2,7 @@
   if (paraText == null) {
     return paRes;
   }
- else {
-    paRes.nBehindEndOfSentencePosition=paraText.length();
-  }
+  paRes.nBehindEndOfSentencePosition=paraText.length();
   if (!StringTools.isEmpty(paraText)) {
     if (hasLocale(locale)) {
       if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null || recheck) {

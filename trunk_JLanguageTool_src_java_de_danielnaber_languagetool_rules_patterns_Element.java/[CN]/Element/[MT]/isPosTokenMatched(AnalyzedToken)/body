@@ -12,10 +12,8 @@
       }
       return mPos.matches();
     }
- else {
-      if (UNKNOWN_TAG.equals(posToken)) {
-        return true;
-      }
+    if (UNKNOWN_TAG.equals(posToken)) {
+      return true;
     }
   }
   boolean match=false;

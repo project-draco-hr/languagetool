@@ -1,0 +1,10 @@
+{
+  AnalyzedTokenReadings testanaTokRead=new AnalyzedTokenReadings(new AnalyzedToken("word","POS","lemma"));
+  assertEquals(false,testanaTokRead.isLinebreak());
+  assertEquals(false,testanaTokRead.isSentEnd());
+  assertEquals(false,testanaTokRead.isParaEnd());
+  assertEquals(false,testanaTokRead.isSentStart());
+  testanaTokRead.setSentEnd();
+  assertEquals(false,testanaTokRead.isSentStart());
+  assertEquals(true,testanaTokRead.isSentEnd());
+}

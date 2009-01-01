@@ -31,7 +31,7 @@
       l.add(new AnalyzedToken(word,null,pos));
     }
     pos+=word.length();
-    tokenReadings.add(new AnalyzedTokenReadings((AnalyzedToken[])l.toArray(new AnalyzedToken[l.size()])));
+    tokenReadings.add(new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()])));
   }
   return tokenReadings;
 }

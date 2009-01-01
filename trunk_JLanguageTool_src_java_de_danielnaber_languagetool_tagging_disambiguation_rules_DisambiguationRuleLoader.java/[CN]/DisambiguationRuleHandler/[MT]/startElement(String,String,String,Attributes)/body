@@ -138,10 +138,8 @@
         if (refNumber > elementList.size()) {
           throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
         }
- else {
-          mWorker.setTokenRef(refNumber);
-          posSelector=mWorker;
-        }
+        mWorker.setTokenRef(refNumber);
+        posSelector=mWorker;
       }
     }
  else     if (inToken) {
@@ -150,11 +148,9 @@
         if (refNumber > elementList.size()) {
           throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
         }
- else {
-          mWorker.setTokenRef(refNumber);
-          tokenReference=mWorker;
-          elements.append("\\" + refNumber);
-        }
+        mWorker.setTokenRef(refNumber);
+        tokenReference=mWorker;
+        elements.append("\\" + refNumber);
       }
     }
   }

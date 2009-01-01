@@ -41,7 +41,5 @@
   if (l.isEmpty()) {
     return formattedToken;
   }
- else {
-    return new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]));
-  }
+  return new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]));
 }

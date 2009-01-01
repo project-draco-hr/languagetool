@@ -23,7 +23,7 @@
       break;
     }
     int matchingTokens=0;
-    for (int k=0; (k < patternSize); k++) {
+    for (int k=0; k < patternSize; k++) {
       if (elem != null) {
         prevElement=elem;
       }

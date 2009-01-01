@@ -6,7 +6,5 @@
     }
     return allConditionsMatch;
   }
- else {
-    return previousValue;
-  }
+  return previousValue;
 }

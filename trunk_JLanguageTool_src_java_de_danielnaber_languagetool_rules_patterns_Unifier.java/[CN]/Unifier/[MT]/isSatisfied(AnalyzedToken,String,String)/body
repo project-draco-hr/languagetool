@@ -6,7 +6,7 @@
     return false;
   }
   boolean unified=true;
-  final String[] features=feature.split(",");
+  final String[] features=feature.trim().split(FEATURE_SEPARATOR);
   String[] types;
   if (!allFeatsIn) {
     tokCnt++;
@@ -14,15 +14,15 @@
       final Map<String,Set<String>> mapTemp=new HashMap<String,Set<String>>();
       equivalencesMatched.add(mapTemp);
     }
-    for (    String feat : features) {
+    for (    final String feat : features) {
       if (StringTools.isEmpty(type)) {
         types=equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
       }
  else {
-        types=type.split(",");
+        types=type.split(FEATURE_SEPARATOR);
       }
-      for (      String typename : types) {
-        final Element testElem=equivalenceTypes.get(feat + ":" + typename);
+      for (      final String typename : types) {
+        final Element testElem=equivalenceTypes.get(feat + FEATURE_TYPE_SEPARATOR + typename);
         if (testElem == null) {
           return false;
         }

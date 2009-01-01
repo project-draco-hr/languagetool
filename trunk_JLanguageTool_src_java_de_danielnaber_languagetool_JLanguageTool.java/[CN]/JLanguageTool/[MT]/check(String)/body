@@ -14,8 +14,7 @@
     rememberUnknownWords(analyzedText);
     if (sentenceCount == sentences.size()) {
       final AnalyzedTokenReadings[] anTokens=analyzedText.getTokens();
-      final AnalyzedToken paragraphEnd=new AnalyzedToken(anTokens[anTokens.length - 1].getToken(),PARAGRAPH_END_TAGNAME,anTokens[anTokens.length - 1].getAnalyzedToken(0).getLemma(),anTokens[anTokens.length - 1].getAnalyzedToken(0).getStartPos());
-      anTokens[anTokens.length - 1].addReading(paragraphEnd);
+      anTokens[anTokens.length - 1].setParaEnd();
       analyzedText=new AnalyzedSentence(anTokens);
     }
     final List<RuleMatch> sentenceMatches=new ArrayList<RuleMatch>();

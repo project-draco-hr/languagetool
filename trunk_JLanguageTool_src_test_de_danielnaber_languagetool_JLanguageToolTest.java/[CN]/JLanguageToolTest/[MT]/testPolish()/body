@@ -18,4 +18,7 @@
   assertEquals(1,matches.size());
   matches=tool.check("I can give you more a detailed description");
   assertEquals(0,matches.size());
+  tool.setListUnknownWords(true);
+  matches=tool.check("This is not a Polish text.");
+  assertEquals("[Polish, This, is, text]",tool.getUnknownWords().toString());
 }

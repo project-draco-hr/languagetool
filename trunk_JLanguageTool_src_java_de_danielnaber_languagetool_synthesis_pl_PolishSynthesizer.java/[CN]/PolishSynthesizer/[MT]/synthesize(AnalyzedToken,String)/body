@@ -13,7 +13,5 @@
   if (posTag.indexOf('+') > 0) {
     return synthesize(token,posTag,true);
   }
- else {
-    return getWordForms(token,posTag,isNegated);
-  }
+  return getWordForms(token,posTag,isNegated);
 }

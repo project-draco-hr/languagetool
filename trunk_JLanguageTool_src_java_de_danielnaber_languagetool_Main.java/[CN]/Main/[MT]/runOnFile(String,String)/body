@@ -26,7 +26,7 @@
       while ((line=br.readLine()) != null) {
         line+="\n";
         if (!taggerOnly) {
-          Tools.checkText(filterXML(line),lt);
+          Tools.checkText(filterXML(line),lt,apiFormat);
         }
  else {
           Tools.tagText(filterXML(line),lt);

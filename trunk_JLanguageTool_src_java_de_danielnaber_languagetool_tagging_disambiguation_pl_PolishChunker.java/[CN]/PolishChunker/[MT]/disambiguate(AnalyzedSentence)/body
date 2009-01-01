@@ -23,9 +23,7 @@
           if (lenCounter == len) {
             break;
           }
- else {
-            tokens.append(' ');
-          }
+          tokens.append(' ');
         }
         j++;
         finalLen=j;

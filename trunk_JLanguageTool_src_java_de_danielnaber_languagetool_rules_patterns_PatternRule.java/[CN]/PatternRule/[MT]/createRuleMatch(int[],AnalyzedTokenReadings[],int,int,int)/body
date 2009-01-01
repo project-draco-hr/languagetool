@@ -30,7 +30,5 @@
     final RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,errMessage,shortMessage,startsWithUppercase);
     return ruleMatch;
   }
- else {
-    return null;
-  }
+  return null;
 }

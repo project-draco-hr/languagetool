@@ -1,3 +1,3 @@
 AnalyzedToken token
-String posTag
+String pos
 boolean posTagRegExp

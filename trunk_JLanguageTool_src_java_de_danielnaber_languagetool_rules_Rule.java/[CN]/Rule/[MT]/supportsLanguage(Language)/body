@@ -1,4 +1,4 @@
 {
-  Set<String> relevantIDs=language.getRelevantRuleIDs();
+  final Set<String> relevantIDs=language.getRelevantRuleIDs();
   return relevantIDs != null && relevantIDs.contains(getId());
 }

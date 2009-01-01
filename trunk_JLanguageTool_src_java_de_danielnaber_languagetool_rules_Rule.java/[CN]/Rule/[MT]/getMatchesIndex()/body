@@ -2,7 +2,5 @@
   if (previousMatches == null) {
     return 0;
   }
- else {
-    return previousMatches.size();
-  }
+  return previousMatches.size();
 }

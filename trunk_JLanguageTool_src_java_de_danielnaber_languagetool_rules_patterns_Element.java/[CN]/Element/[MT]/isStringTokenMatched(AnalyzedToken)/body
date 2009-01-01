@@ -24,9 +24,7 @@
     if (caseSensitive) {
       return stringToken.equals(testToken);
     }
- else {
-      return stringToken.equalsIgnoreCase(testToken);
-    }
+    return stringToken.equalsIgnoreCase(testToken);
   }
   return false;
 }

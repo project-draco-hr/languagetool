@@ -17,7 +17,12 @@
   }
  catch (  final Exception ex) {
     ex.printStackTrace();
-    s=data.toString();
+    if (data != null) {
+      s=data.toString();
+    }
+ else {
+      s="";
+    }
   }
   return s;
 }

@@ -1,7 +1,8 @@
 {
-  if (posTag == null) {
+  if (pos == null) {
     return null;
   }
+  String posTag=pos;
   if (posTagRegExp) {
     if (possibleTags == null) {
       possibleTags=SynthesizerTools.loadWords(Tools.getStream(TAGS_FILE_NAME));
@@ -22,7 +23,7 @@
     for (    final String tag : possibleTags) {
       final Matcher m=p.matcher(tag);
       if (m.matches()) {
-        String[] wordForms=getWordForms(token,tag,isNegated);
+        final String[] wordForms=getWordForms(token,tag,isNegated);
         if (wordForms != null) {
           results.addAll(Arrays.asList(wordForms));
         }
@@ -30,7 +31,5 @@
     }
     return results.toArray(new String[results.size()]);
   }
- else {
-    return synthesize(token,posTag);
-  }
+  return synthesize(token,posTag);
 }

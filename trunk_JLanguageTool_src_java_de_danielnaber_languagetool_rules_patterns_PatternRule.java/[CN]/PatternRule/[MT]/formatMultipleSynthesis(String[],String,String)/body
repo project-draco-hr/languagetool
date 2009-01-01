@@ -13,14 +13,14 @@
  else {
     errorMessage=leftSide.substring(0,leftSide.lastIndexOf(SUGG_TAG)) + SUGG_TAG;
   }
-  final int rPos=rightSide.indexOf("</suggestion>");
+  final int rPos=rightSide.indexOf(END_SUGG_TAG);
   if (rPos > 0) {
     suggestionRight=rightSide.substring(0,rPos);
   }
   if (!StringTools.isEmpty(suggestionRight)) {
-    rightSideNew=rightSide.substring(rightSide.indexOf("</suggestion>"));
+    rightSideNew=rightSide.substring(rightSide.indexOf(END_SUGG_TAG));
   }
-  final int lastLeftSugEnd=leftSide.indexOf("</suggestion>");
+  final int lastLeftSugEnd=leftSide.indexOf(END_SUGG_TAG);
   final int lastLeftSugStart=leftSide.lastIndexOf(SUGG_TAG);
   final StringBuilder sb=new StringBuilder();
   sb.append(errorMessage);
@@ -29,7 +29,8 @@
     sb.append(matches[z]);
     sb.append(suggestionRight);
     if ((z < matches.length - 1) && lastLeftSugEnd < lastLeftSugStart) {
-      sb.append("</suggestion>, ");
+      sb.append(END_SUGG_TAG);
+      sb.append(", ");
       sb.append(SUGG_TAG);
     }
   }

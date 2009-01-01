@@ -6,12 +6,8 @@
   if (isEmpty(trimStr)) {
     return true;
   }
- else {
-    if (trimStr.length() == 1) {
-      return java.lang.Character.isWhitespace(trimStr.charAt(0));
-    }
- else {
-      return false;
-    }
+  if (trimStr.length() == 1) {
+    return java.lang.Character.isWhitespace(trimStr.charAt(0));
   }
+  return false;
 }

@@ -21,7 +21,5 @@
     }
     return results.toArray(new String[results.size()]);
   }
- else {
-    return synthesize(token,posTag);
-  }
+  return synthesize(token,posTag);
 }

@@ -1,9 +1,24 @@
 {
   final List<String> tokens=wordTokenizer.tokenize(sentence);
+  final Map<Integer,String> softHyphenTokens=new HashMap<Integer,String>();
+  for (int i=0; i < tokens.size(); i++) {
+    if (tokens.get(i).indexOf('\u00ad') != -1) {
+      softHyphenTokens.put(i,tokens.get(i));
+      tokens.set(i,tokens.get(i).replaceAll("\u00ad",""));
+    }
+  }
   final List<AnalyzedTokenReadings> aTokens=tagger.tag(tokens);
-  int numTokens=aTokens.size();
+  final int numTokens=aTokens.size();
+  int posFix=0;
   for (int i=1; i < numTokens; i++) {
     aTokens.get(i).setWhitespaceBefore(aTokens.get(i - 1).isWhitespace());
+    aTokens.get(i).setStartPos(aTokens.get(i).getStartPos() + posFix);
+    if (!softHyphenTokens.isEmpty()) {
+      if (softHyphenTokens.get(i) != null) {
+        aTokens.get(i).addReading(new AnalyzedToken(softHyphenTokens.get(i),null,aTokens.get(i).getStartPos()));
+        posFix+=softHyphenTokens.get(i).length() - aTokens.get(i).getToken().length();
+      }
+    }
   }
   final AnalyzedTokenReadings[] tokenArray=new AnalyzedTokenReadings[tokens.size() + 1];
   final AnalyzedToken[] startTokenArray=new AnalyzedToken[1];
@@ -24,11 +39,9 @@
       break;
     }
   }
-  final AnalyzedToken sentenceEnd=new AnalyzedToken(tokenArray[lastToken].getToken(),SENTENCE_END_TAGNAME,tokenArray[lastToken].getAnalyzedToken(0).getLemma(),tokenArray[lastToken].getAnalyzedToken(0).getStartPos());
-  tokenArray[lastToken].addReading(sentenceEnd);
-  if (tokenArray.length == 2 && (tokenArray[0].isSentStart()) && tokenArray[1].getToken().equals("\n")) {
-    final AnalyzedToken paragraphEnd=new AnalyzedToken(tokenArray[lastToken].getToken(),PARAGRAPH_END_TAGNAME,tokenArray[lastToken].getAnalyzedToken(0).getLemma(),tokenArray[lastToken].getAnalyzedToken(0).getStartPos());
-    tokenArray[lastToken].addReading(paragraphEnd);
+  tokenArray[lastToken].setSentEnd();
+  if (tokenArray.length == 2 && (tokenArray[0].isSentStart()) && tokenArray[1].isLinebreak()) {
+    tokenArray[lastToken].setParaEnd();
   }
   AnalyzedSentence finalSentence=new AnalyzedSentence(tokenArray);
   finalSentence=disambiguator.disambiguate(finalSentence);

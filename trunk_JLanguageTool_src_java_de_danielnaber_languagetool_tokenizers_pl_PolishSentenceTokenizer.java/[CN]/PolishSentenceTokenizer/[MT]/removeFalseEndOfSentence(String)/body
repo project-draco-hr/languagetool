@@ -1,4 +1,5 @@
 {
+  String s=str;
   s=abbrev1.matcher(s).replaceAll("$1");
   s=abbrev2.matcher(s).replaceAll("$1");
   s=abbrev3.matcher(s).replaceAll("$1$2");

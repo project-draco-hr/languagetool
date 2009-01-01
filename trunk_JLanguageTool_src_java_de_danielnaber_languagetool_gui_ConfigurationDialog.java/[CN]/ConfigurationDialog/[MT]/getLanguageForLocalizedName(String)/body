@@ -3,10 +3,8 @@
     if (NO_MOTHER_TONGUE.equals(languageName)) {
       return Language.DEMO;
     }
- else {
-      if (languageName.equals(messages.getString(element.getShortName()))) {
-        return element;
-      }
+    if (languageName.equals(messages.getString(element.getShortName()))) {
+      return element;
     }
   }
   return null;

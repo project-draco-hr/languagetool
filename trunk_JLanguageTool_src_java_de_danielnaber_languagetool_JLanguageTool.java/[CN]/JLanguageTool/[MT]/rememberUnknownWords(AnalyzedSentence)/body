@@ -2,7 +2,7 @@
   if (listUnknownWords) {
     final AnalyzedTokenReadings[] atr=analyzedText.getTokensWithoutWhitespace();
     for (    final AnalyzedTokenReadings t : atr) {
-      if (t.getReadings().toString().equals("[null]")) {
+      if (t.getReadings().toString().contains("null]")) {
         unknownWords.add(t.getToken());
       }
     }

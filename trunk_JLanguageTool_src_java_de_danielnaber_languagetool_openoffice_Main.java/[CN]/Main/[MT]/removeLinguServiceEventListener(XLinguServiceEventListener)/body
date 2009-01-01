@@ -2,13 +2,9 @@
   if (xLinEvLis == null) {
     return false;
   }
- else {
-    if (xEventListeners.contains(xLinEvLis)) {
-      xEventListeners.remove(xLinEvLis);
-      return true;
-    }
- else {
-      return false;
-    }
+  if (xEventListeners.contains(xLinEvLis)) {
+    xEventListeners.remove(xLinEvLis);
+    return true;
   }
+  return false;
 }
