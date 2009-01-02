@@ -80,9 +80,6 @@
     prg.runRecursive(filename,encoding);
   }
  else {
-    prg.runOnFile(filename,encoding);
-    if (listUnknown) {
-      System.out.println("Unknown words: " + prg.getJLanguageTool().getUnknownWords());
-    }
+    prg.runOnFile(filename,encoding,listUnknown);
   }
 }

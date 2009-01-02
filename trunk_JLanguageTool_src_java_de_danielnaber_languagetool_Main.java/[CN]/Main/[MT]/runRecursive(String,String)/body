@@ -9,7 +9,7 @@
       runRecursive(files[i].getAbsolutePath(),encoding);
     }
  else {
-      runOnFile(files[i].getAbsolutePath(),encoding);
+      runOnFile(files[i].getAbsolutePath(),encoding,false);
     }
   }
 }
