@@ -2,7 +2,7 @@
   List<AnalyzedGermanToken> l=new ArrayList<AnalyzedGermanToken>();
   for (  AnalyzedToken reading : anTokReadings) {
     if (reading.getPOSTag() != null) {
-      if (!reading.getPOSTag().equals("SENT_END") && !reading.getPOSTag().equals("PARA_END")) {
+      if (!reading.getPOSTag().equals(JLanguageTool.SENTENCE_END_TAGNAME) && !reading.getPOSTag().equals(JLanguageTool.PARAGRAPH_END_TAGNAME)) {
         l.add((AnalyzedGermanToken)reading);
       }
     }
