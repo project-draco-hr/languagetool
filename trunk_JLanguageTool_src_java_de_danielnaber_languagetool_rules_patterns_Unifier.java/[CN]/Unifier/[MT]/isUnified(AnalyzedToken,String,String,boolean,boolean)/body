@@ -1,11 +1,14 @@
 {
   if (inUnification) {
-    uniMatched=uniMatched || isSatisfied(matchToken,feature,type);
+    uniMatched|=isSatisfied(matchToken,feature,type);
+    uniAllMatched=uniMatched;
     if (lastReading) {
+      uniAllMatched&=uniMatched;
       startNextToken();
       unifiedTokens=getUnifiedTokens();
+      uniMatched=false;
     }
-    return uniMatched;
+    return uniAllMatched;
   }
   if (isUniNegated) {
     setNegation(true);

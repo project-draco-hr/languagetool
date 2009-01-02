@@ -9,5 +9,6 @@
   readingsCounter=1;
   firstUnified=false;
   uniMatched=false;
+  uniAllMatched=false;
   inUnification=false;
 }
