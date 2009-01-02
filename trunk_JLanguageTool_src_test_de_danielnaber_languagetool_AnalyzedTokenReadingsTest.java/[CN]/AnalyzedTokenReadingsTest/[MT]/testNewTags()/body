@@ -7,4 +7,13 @@
   testanaTokRead.setSentEnd();
   assertEquals(false,testanaTokRead.isSentStart());
   assertEquals(true,testanaTokRead.isSentEnd());
+  testanaTokRead=new AnalyzedTokenReadings(new AnalyzedToken("word",null,"lemma"));
+  testanaTokRead.addReading(new AnalyzedToken("word","SENT_END",null));
+  assertEquals(true,testanaTokRead.isSentEnd());
+  assertEquals(false,testanaTokRead.isParaEnd());
+  testanaTokRead.addReading(new AnalyzedToken("word","PARA_END",null));
+  assertEquals(true,testanaTokRead.isParaEnd());
+  assertEquals(false,testanaTokRead.isSentStart());
+  testanaTokRead.addReading(new AnalyzedToken("word","SENT_START",null));
+  assertEquals(false,testanaTokRead.isSentStart());
 }
