@@ -1,0 +1,5 @@
+AnalyzedToken matchToken
+String feature
+String type
+boolean isUniNegated
+boolean lastReading

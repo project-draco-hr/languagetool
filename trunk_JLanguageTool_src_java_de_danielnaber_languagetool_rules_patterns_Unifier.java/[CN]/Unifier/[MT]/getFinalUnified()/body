@@ -1,0 +1,4 @@
+{
+  if (inUnification)   return unifiedTokens;
+  return null;
+}

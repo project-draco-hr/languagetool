@@ -1,0 +1,20 @@
+{
+  if (inUnification) {
+    uniMatched=uniMatched || isSatisfied(matchToken,feature,type);
+    if (lastReading) {
+      startNextToken();
+      unifiedTokens=getUnifiedTokens();
+    }
+    return uniMatched;
+  }
+  if (isUniNegated) {
+    setNegation(true);
+  }
+  isSatisfied(matchToken,feature,type);
+  if (lastReading) {
+    inUnification=true;
+    uniMatched=false;
+    startUnify();
+  }
+  return true;
+}

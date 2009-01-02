@@ -8,4 +8,6 @@
   tokSequence.clear();
   readingsCounter=1;
   firstUnified=false;
+  uniMatched=false;
+  inUnification=false;
 }
