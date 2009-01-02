@@ -77,7 +77,7 @@
   Main prg=new Main(verbose,taggerOnly,language,motherTongue,disabledRules,enabledRules,apiFormat);
   prg.setListUnknownWords(listUnknown);
   if (recursive) {
-    prg.runRecursive(filename,encoding);
+    prg.runRecursive(filename,encoding,listUnknown);
   }
  else {
     prg.runOnFile(filename,encoding,listUnknown);
