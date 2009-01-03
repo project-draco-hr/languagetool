@@ -12,11 +12,11 @@
       final String token=tokens[i].getToken().trim();
       boolean precededByWhitespace=true;
       if (startSymbols[j].equals(endSymbols[j])) {
-        precededByWhitespace=tokens[i].isWhitespaceBefore() || tokens[i - 1].getToken().matches("\\p{Punct}(?<!\\.)");
+        precededByWhitespace=tokens[i].isWhitespaceBefore() || PUNCTUATION_NO_DOT.matcher(tokens[i - 1].getToken()).matches();
       }
       boolean followedByWhitespace=true;
       if (i < tokens.length - 1 && startSymbols[j].equals(endSymbols[j])) {
-        followedByWhitespace=tokens[i + 1].isWhitespace() || tokens[i + 1].getToken().matches("\\p{Punct}");
+        followedByWhitespace=tokens[i + 1].isWhitespace() || PUNCTUATION.matcher(tokens[i + 1].getToken()).matches();
       }
       if (followedByWhitespace && precededByWhitespace) {
         if (i == tokens.length) {
@@ -32,11 +32,13 @@
         }
       }
       boolean noException=true;
-      if ((precededByWhitespace || followedByWhitespace) && i > 1 && ruleLang.equals(Language.ENGLISH) && token.equals("\"") && tokens[i - 1].getToken().matches("[\\d]+")) {
-        noException=false;
-      }
-      if ((precededByWhitespace || followedByWhitespace) && ruleLang.equals(Language.ENGLISH) && "'".equals(token)&& i > 1 && noException && (tokens[i - 1].getToken().charAt(tokens[i - 1].getToken().length() - 1) == 's')) {
-        noException=false;
+      if (ruleLang.equals(Language.ENGLISH) && i > 1) {
+        if ((precededByWhitespace || followedByWhitespace) && "\"".equals(token) && NUMBER.matcher(tokens[i - 1].getToken()).matches()) {
+          noException=false;
+        }
+        if ((precededByWhitespace || followedByWhitespace) && "'".equals(token) && noException&& (tokens[i - 1].getToken().charAt(tokens[i - 1].getToken().length() - 1) == 's')&& (tokens[i - 1].hasPosTag("NNS") || tokens[i - 1].hasPosTag("NNPS"))) {
+          noException=false;
+        }
       }
       if (noException && precededByWhitespace && token.equals(startSymbols[j])) {
         symbolCounter[j]++;
@@ -44,7 +46,7 @@
       }
  else       if (noException && followedByWhitespace && token.equals(endSymbols[j])) {
         if (i > 1 && endSymbols[j].equals(")") && symbolCounter[j] == 0) {
-          if (!(tokens[i - 1].getToken().matches("(?i)\\d{1,2}?[a-z']*|M*(D?C{0,3}|C[DM])(L?X{0,3}|X[LC])(V?I{0,3}|I[VX])$"))) {
+          if (!NUMERALS.matcher(tokens[i - 1].getToken()).matches()) {
             symbolCounter[j]--;
             pos=i;
           }
@@ -57,18 +59,9 @@
     }
     for (int i=0; i < symbolCounter.length; i++) {
       if (symbolCounter[i] != 0) {
-        if (ruleMatchArray[i] != 0) {
-          if (isInMatches(ruleMatchArray[i] - 1)) {
-            setAsDeleted(ruleMatchArray[i] - 1);
-            ruleMatchArray[i]=0;
-          }
- else {
-            ruleMatchIndex++;
-            ruleMatchArray[i]=ruleMatchIndex;
-            matchToken=tokens[pos].getAnalyzedToken(0);
-            final RuleMatch ruleMatch=new RuleMatch(this,matchToken.getStartPos(),matchToken.getStartPos() + 1,messages.getString("unpaired_brackets"));
-            ruleMatches.add(ruleMatch);
-          }
+        if (ruleMatchArray[i] != 0 && isInMatches(ruleMatchArray[i] - 1)) {
+          setAsDeleted(ruleMatchArray[i] - 1);
+          ruleMatchArray[i]=0;
         }
  else {
           ruleMatchIndex++;
