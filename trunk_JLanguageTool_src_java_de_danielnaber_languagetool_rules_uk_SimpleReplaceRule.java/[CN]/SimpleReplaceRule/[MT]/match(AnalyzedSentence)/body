@@ -1,14 +1,14 @@
 {
-  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   for (int i=1; i < tokens.length; i++) {
-    String token=tokens[i].getToken();
-    String origToken=token;
+    final String token=tokens[i].getToken();
+    final String origToken=token;
     if (wrongWords.containsKey(token)) {
-      String replacement=wrongWords.get(token);
-      String msg=token + " is not valid, use " + replacement;
-      int pos=tokens[i].getStartPos();
-      RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + origToken.length(),msg,"Wrong word");
+      final String replacement=wrongWords.get(token);
+      final String msg=token + " is not valid, use " + replacement;
+      final int pos=tokens[i].getStartPos();
+      final RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + origToken.length(),msg,"Wrong word");
       potentialRuleMatch.setSuggestedReplacement(replacement);
       ruleMatches.add(potentialRuleMatch);
     }

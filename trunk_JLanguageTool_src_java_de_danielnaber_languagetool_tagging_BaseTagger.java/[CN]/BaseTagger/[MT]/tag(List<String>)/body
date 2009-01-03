@@ -7,7 +7,7 @@
     morfologik=new Lametyzator();
   }
   for (  String word : sentenceTokens) {
-    List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+    final List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
     String[] lowerTaggerTokens=null;
     taggerTokens=morfologik.stemAndForm(word);
     if (!word.equals(word.toLowerCase(conversionLocale))) {

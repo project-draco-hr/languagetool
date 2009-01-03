@@ -1,7 +1,9 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  if (tokens.length < 2)   return toRuleMatchArray(ruleMatches);
+  if (tokens.length < 2) {
+    return toRuleMatchArray(ruleMatches);
+  }
   int matchTokenPos=1;
   final AnalyzedToken token=tokens[matchTokenPos].getAnalyzedToken(0);
   final String firstToken=token.getToken();
@@ -17,8 +19,12 @@
     matchTokenPos=3;
   }
   String checkToken=firstToken;
-  if (thirdToken != null)   checkToken=thirdToken;
- else   if (secondToken != null)   checkToken=secondToken;
+  if (thirdToken != null) {
+    checkToken=thirdToken;
+  }
+ else   if (secondToken != null) {
+    checkToken=secondToken;
+  }
   final char firstChar=checkToken.charAt(0);
   if (Character.isLowerCase(firstChar)) {
     final RuleMatch ruleMatch=new RuleMatch(this,tokens[matchTokenPos].getStartPos(),tokens[matchTokenPos].getStartPos() + tokens[matchTokenPos].getToken().length(),messages.getString("incorrect_case"));

@@ -43,7 +43,9 @@
       final int fromPos=tokens[i - 1].getStartPos();
       final int toPos=tokens[i - 1].getStartPos() + fixLen + prevLen;
       final RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,msg);
-      if (suggestionText != null)       ruleMatch.setSuggestedReplacement(suggestionText);
+      if (suggestionText != null) {
+        ruleMatch.setSuggestedReplacement(suggestionText);
+      }
       ruleMatches.add(ruleMatch);
     }
     prevToken=token;
