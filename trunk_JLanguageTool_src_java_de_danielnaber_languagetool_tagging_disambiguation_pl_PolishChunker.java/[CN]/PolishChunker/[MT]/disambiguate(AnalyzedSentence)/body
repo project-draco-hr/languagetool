@@ -31,7 +31,7 @@
     }
     if (mStartNoSpace.containsKey(tok)) {
       final int len=Integer.parseInt(mStartNoSpace.get(tok));
-      if (i + len < anTokens.length) {
+      if (i + len <= anTokens.length) {
         for (int j=i; j < i + len; j++) {
           tokens.append(anTokens[j].getToken());
           if (mFull.containsKey(tokens.toString())) {
