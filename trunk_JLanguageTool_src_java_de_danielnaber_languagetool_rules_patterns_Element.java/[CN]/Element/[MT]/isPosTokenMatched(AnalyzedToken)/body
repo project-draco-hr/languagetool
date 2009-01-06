@@ -29,5 +29,8 @@
  else {
     match=posToken.equals(token.getPOSTag());
   }
+  if (!match && UNKNOWN_TAG.equals(posToken)) {
+    match=JLanguageTool.SENTENCE_END_TAGNAME.equals(token.getPOSTag()) || JLanguageTool.PARAGRAPH_END_TAGNAME.equals(token.getPOSTag());
+  }
   return match;
 }
