@@ -1,5 +1,13 @@
 {
   frame=new JFrame("LanguageTool " + JLanguageTool.VERSION);
+  final String version=System.getProperty("java.version");
+  if ("1.6.0_10".equals(version)) {
+    try {
+      UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+    }
+ catch (    Exception ex) {
+    }
+  }
   frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
   frame.addWindowListener(new CloseListener());
   frame.setIconImage(new ImageIcon(this.getClass().getResource("/resource/TrayIcon.png")).getImage());

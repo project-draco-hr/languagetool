@@ -5,5 +5,12 @@
     dt.start();
     return false;
   }
+  if ("1.6.0_10".equals(version)) {
+    try {
+      UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+    }
+ catch (    Exception ex) {
+    }
+  }
   return true;
 }
