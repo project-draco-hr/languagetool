@@ -15,9 +15,6 @@
     if (pPosRegexMatch != null && posTagReplace != null) {
       targetPosTag=pPosRegexMatch.matcher(targetPosTag).replaceAll(posTagReplace);
     }
-    if (targetPosTag.indexOf('?') > 0) {
-      targetPosTag=targetPosTag.replaceAll("\\?","\\\\?");
-    }
   }
  else {
     final int numRead=formattedToken.getReadingsLength();
