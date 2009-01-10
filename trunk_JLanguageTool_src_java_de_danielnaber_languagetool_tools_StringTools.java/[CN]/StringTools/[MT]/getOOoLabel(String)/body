@@ -1,4 +1,3 @@
 {
-  final String noAmpersand=label.replaceAll("&([^&])","~$1");
-  return noAmpersand.replaceAll("&&","&");
+  return label.replaceAll("&([^&])","~$1").replaceAll("&&","&");
 }
