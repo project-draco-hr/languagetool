@@ -10,7 +10,7 @@
   String[] types;
   if (!allFeatsIn) {
     tokCnt++;
-    if (equivalencesMatched.size() <= tokCnt) {
+    while (equivalencesMatched.size() <= tokCnt) {
       final Map<String,Set<String>> mapTemp=new HashMap<String,Set<String>>();
       equivalencesMatched.add(mapTemp);
     }

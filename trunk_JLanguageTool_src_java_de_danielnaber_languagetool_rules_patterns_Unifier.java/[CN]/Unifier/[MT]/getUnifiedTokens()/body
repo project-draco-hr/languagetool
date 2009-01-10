@@ -9,8 +9,8 @@
     while (!tmpFeaturesFound.get(first)) {
       first++;
     }
-    if (first == tmpFeaturesFound.size()) {
-      tmpFeaturesFound.remove(first);
+    tmpFeaturesFound.remove(tmpFeaturesFound.size() - 1);
+    if (first >= tmpFeaturesFound.size()) {
       return null;
     }
     if (first < tokSequence.get(0).getReadingsLength()) {
