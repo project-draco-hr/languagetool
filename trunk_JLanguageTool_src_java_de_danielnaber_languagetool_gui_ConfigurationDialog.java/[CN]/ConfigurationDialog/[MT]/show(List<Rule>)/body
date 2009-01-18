@@ -133,7 +133,7 @@
     serverCheckbox.setMnemonic(StringTools.getMnemonic(messages.getString("guiRunOnPort")));
     serverCheckbox.setSelected(serverMode);
     portPanel.add(serverCheckbox,cons);
-    serverPortField=new JTextField(serverPort + "");
+    serverPortField=new JTextField(Integer.toString(serverPort));
     serverPortField.setEnabled(serverCheckbox.isSelected());
     serverPortField.setMinimumSize(new Dimension(200,15));
     cons.gridx=1;
