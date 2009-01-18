@@ -1,9 +1,8 @@
 {
   Language language=null;
   boolean foundLanguage=false;
-  List<String> supportedLanguages=new ArrayList<String>();
-  for (int j=0; j < Language.LANGUAGES.length; j++) {
-    Language tmpLang=Language.LANGUAGES[j];
+  final List<String> supportedLanguages=new ArrayList<String>();
+  for (  final Language tmpLang : Language.LANGUAGES) {
     supportedLanguages.add(tmpLang.getShortName());
     if (lang.equals(tmpLang.getShortName())) {
       language=tmpLang;

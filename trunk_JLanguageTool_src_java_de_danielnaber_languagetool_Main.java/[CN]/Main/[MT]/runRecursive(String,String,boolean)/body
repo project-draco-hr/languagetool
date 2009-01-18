@@ -4,12 +4,12 @@
     throw new IllegalArgumentException(dir.getAbsolutePath() + " is not a directory, cannot use recursion");
   }
   final File[] files=dir.listFiles();
-  for (int i=0; i < files.length; i++) {
-    if (files[i].isDirectory()) {
-      runRecursive(files[i].getAbsolutePath(),encoding,listUnknown);
+  for (  final File file : files) {
+    if (file.isDirectory()) {
+      runRecursive(file.getAbsolutePath(),encoding,listUnknown);
     }
  else {
-      runOnFile(files[i].getAbsolutePath(),encoding,listUnknown);
+      runOnFile(file.getAbsolutePath(),encoding,listUnknown);
     }
   }
 }

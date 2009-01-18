@@ -13,8 +13,12 @@
     }
   }
  else {
-    if (verbose)     lt.setOutput(System.err);
-    if (!apiFormat)     System.out.println("Working on " + filename + "... in a buffered mode (100 lines)");
+    if (verbose) {
+      lt.setOutput(System.err);
+    }
+    if (!apiFormat) {
+      System.out.println("Working on " + filename + "... in a buffered mode (100 lines)");
+    }
     InputStreamReader isr=null;
     BufferedReader br=null;
     int counter=0;
@@ -55,7 +59,7 @@
  else {
           Tools.tagText(filterXML(sb.toString()),lt);
         }
-        if (listUnknownWords) {
+        if (listUnknownWords && !taggerOnly) {
           System.out.println("Unknown words: " + lt.getUnknownWords());
         }
       }

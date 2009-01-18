@@ -15,7 +15,7 @@
   String[] disabledRules=new String[0];
   String[] enabledRules=new String[0];
   for (int i=0; i < args.length; i++) {
-    if (args[i].equals("-h") || args[i].equals("-help") || args[i].equals("--help")) {
+    if (args[i].equals("-h") || args[i].equals("-help") || args[i].equals("--help")|| args[i].equals("--?")) {
       exitWithUsageMessage();
     }
  else     if (args[i].equals("-v") || args[i].equals("--verbose")) {
@@ -23,18 +23,25 @@
     }
  else     if (args[i].equals("-t") || args[i].equals("--taggeronly")) {
       taggerOnly=true;
+      if (listUnknown) {
+        throw new IllegalArgumentException("You cannot list unknown words when tagging only.");
+      }
     }
  else     if (args[i].equals("-r") || args[i].equals("--recursive")) {
       recursive=true;
     }
  else     if (args[i].equals("-d") || args[i].equals("--disable")) {
-      if (enabledRules.length > 0)       throw new IllegalArgumentException("You cannot specify both enabled and disabled rules");
-      String rules=args[++i];
+      if (enabledRules.length > 0) {
+        throw new IllegalArgumentException("You cannot specify both enabled and disabled rules");
+      }
+      final String rules=args[++i];
       disabledRules=rules.split(",");
     }
  else     if (args[i].equals("-e") || args[i].equals("--enable")) {
-      if (disabledRules.length > 0)       throw new IllegalArgumentException("You cannot specify both enabled and disabled rules");
-      String rules=args[++i];
+      if (disabledRules.length > 0) {
+        throw new IllegalArgumentException("You cannot specify both enabled and disabled rules");
+      }
+      final String rules=args[++i];
       enabledRules=rules.split(",");
     }
  else     if (args[i].equals("-l") || args[i].equals("--language")) {
@@ -48,6 +55,9 @@
     }
  else     if (args[i].equals("-u") || args[i].equals("--list-unknown")) {
       listUnknown=true;
+      if (taggerOnly) {
+        throw new IllegalArgumentException("You cannot list unknown words when tagging only.");
+      }
     }
  else     if (args[i].equals("-b")) {
       singleLineBreakMarksParagraph=true;
@@ -67,14 +77,16 @@
     exitWithUsageMessage();
   }
   if (language == null) {
-    if (!apiFormat)     System.err.println("No language specified, using English");
+    if (!apiFormat) {
+      System.err.println("No language specified, using English");
+    }
     language=Language.ENGLISH;
   }
  else   if (!apiFormat) {
     System.out.println("Expected text language: " + language.getName());
   }
   language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(singleLineBreakMarksParagraph);
-  Main prg=new Main(verbose,taggerOnly,language,motherTongue,disabledRules,enabledRules,apiFormat);
+  final Main prg=new Main(verbose,taggerOnly,language,motherTongue,disabledRules,enabledRules,apiFormat);
   prg.setListUnknownWords(listUnknown);
   if (recursive) {
     prg.runRecursive(filename,encoding,listUnknown);
