@@ -3,7 +3,7 @@
   aError.nErrorType=com.sun.star.text.TextMarkupType.PROOFREADING;
   final String comment=myMatch.getMessage().replaceAll("<suggestion>","\"").replaceAll("</suggestion>","\"").replaceAll("([\r]*\n)"," ");
   aError.aFullComment=comment;
-  if (myMatch.getShortMessage() != null) {
+  if (!StringTools.isEmpty(myMatch.getShortMessage())) {
     aError.aShortComment=myMatch.getShortMessage();
   }
  else {
