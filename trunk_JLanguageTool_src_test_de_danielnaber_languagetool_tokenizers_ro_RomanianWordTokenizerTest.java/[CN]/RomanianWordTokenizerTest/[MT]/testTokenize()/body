@@ -1,0 +1,24 @@
+{
+  RomanianWordTokenizer w=new RomanianWordTokenizer();
+  List<String> testList=w.tokenize("Aceaste mese sunt bune");
+  assertEquals(testList.size(),7);
+  assertEquals("[Aceaste,  , mese,  , sunt,  , bune]",testList.toString());
+  testList=w.tokenize("Aceast?? carte este frumoas??");
+  assertEquals(testList.size(),7);
+  assertEquals("[Aceast??,  , carte,  , este,  , frumoas??]",testList.toString());
+  testList=w.tokenize("nu-??i doresc");
+  assertEquals(testList.size(),5);
+  assertEquals("[nu, -, ??i,  , doresc]",testList.toString());
+  testList=w.tokenize("zicea ???merge");
+  assertEquals(testList.size(),4);
+  assertEquals("[zicea,  , ???, merge]",testList.toString());
+  testList=w.tokenize("zicea ??? merge");
+  assertEquals(testList.size(),5);
+  assertEquals("[zicea,  , ???,  , merge]",testList.toString());
+  testList=w.tokenize("zicea merge???");
+  assertEquals(testList.size(),4);
+  assertEquals("[zicea,  , merge, ???]",testList.toString());
+  testList=w.tokenize("zicea ???merge bine???");
+  assertEquals(testList.size(),7);
+  assertEquals("[zicea,  , ???, merge,  , bine, ???]",testList.toString());
+}

@@ -1,0 +1,4 @@
+{
+  assertHasLemmaAndPos("mergeam","merge","V0s1000ii0");
+  assertHasLemmaAndPos("mergeam","merge","V0p1000ii0");
+}

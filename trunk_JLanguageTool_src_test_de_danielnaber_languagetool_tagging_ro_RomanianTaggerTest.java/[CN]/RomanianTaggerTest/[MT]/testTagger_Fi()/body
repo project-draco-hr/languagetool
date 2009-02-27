@@ -1,0 +1,4 @@
+{
+  assertHasLemmaAndPos("sunt","fi","V0s1000izf");
+  assertHasLemmaAndPos("sunt","fi","V0p3000izf");
+}

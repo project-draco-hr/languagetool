@@ -1,0 +1,5 @@
+{
+  super();
+  setFileName();
+  setLocale(roLocale);
+}

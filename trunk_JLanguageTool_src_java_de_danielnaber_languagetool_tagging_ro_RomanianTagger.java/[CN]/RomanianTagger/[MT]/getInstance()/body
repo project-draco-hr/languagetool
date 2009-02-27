@@ -1,0 +1,6 @@
+{
+  if (null == instance) {
+    instance=new RomanianTagger();
+  }
+  return instance;
+}

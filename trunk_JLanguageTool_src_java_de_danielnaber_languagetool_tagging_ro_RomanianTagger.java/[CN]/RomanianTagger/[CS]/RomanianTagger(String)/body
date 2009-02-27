@@ -1,0 +1,5 @@
+{
+  super();
+  RESOURCE_FILENAME=fileName;
+  setLocale(roLocale);
+}

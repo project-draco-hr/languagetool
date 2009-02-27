@@ -1,0 +1,3 @@
+{
+  TestTools.myAssert("Cartea este frumoas??.","Cartea/[carte]Sfs3aac000 este/[fi]V0s3000izb frumoas??/[frumos]Afs3an0000",getTokenizer(),getTagger());
+}

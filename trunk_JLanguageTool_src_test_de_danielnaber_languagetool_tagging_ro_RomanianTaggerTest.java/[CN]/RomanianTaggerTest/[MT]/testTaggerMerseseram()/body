@@ -1,0 +1,3 @@
+{
+  TestTools.myAssert("merseser??m","merseser??m/[merge]V0p1000im0",getTokenizer(),getTagger());
+}
