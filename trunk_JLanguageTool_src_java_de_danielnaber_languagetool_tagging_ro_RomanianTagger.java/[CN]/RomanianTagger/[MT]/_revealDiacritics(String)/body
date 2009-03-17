@@ -1,0 +1,4 @@
+{
+  if (isFixDiacritics())   return revealDiacritics(s);
+  return s;
+}

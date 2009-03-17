@@ -1,0 +1,5 @@
+{
+  assertHasLemmaAndPos("cu??c??","cu??c??","001");
+  assertHasLemmaAndPos("cu??it","cu??it","001");
+  assertHasLemmaAndPos("cu??itul","cu??it","002");
+}

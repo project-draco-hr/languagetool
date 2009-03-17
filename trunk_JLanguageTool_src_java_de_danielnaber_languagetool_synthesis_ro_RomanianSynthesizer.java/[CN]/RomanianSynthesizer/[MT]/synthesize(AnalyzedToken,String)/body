@@ -1,0 +1,10 @@
+{
+  if (synthesizer == null) {
+    setFileName();
+    synthesizer=new Lametyzator();
+  }
+  String[] wordForms=null;
+  wordForms=synthesizer.stem(_hideDiacritics(token.getLemma()) + "|" + posTag);
+  wordForms=_revealDiacritics(wordForms);
+  return wordForms;
+}

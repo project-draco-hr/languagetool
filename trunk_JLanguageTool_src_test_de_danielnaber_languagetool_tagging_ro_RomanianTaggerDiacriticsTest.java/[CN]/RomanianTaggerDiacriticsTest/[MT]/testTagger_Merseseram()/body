@@ -1,0 +1,3 @@
+{
+  assertHasLemmaAndPos("merseser??m","merge","002");
+}

@@ -1,0 +1,15 @@
+{
+  RomanianSynthesizer synth=new RomanianSynthesizer();
+  assertNull(synth.synthesize(dummyToken("blablabla"),"blablabla"));
+  assertEquals("[alege]",Arrays.toString(synth.synthesize(dummyToken("alege"),"V000000f00")));
+  assertEquals("[alege??i]",Arrays.toString(synth.synthesize(dummyToken("alege"),"V0p2000cz0")));
+  assertEquals("[fi]",Arrays.toString(synth.synthesize(dummyToken("fi"),"V000000f0f")));
+  assertEquals("[sunte??i]",Arrays.toString(synth.synthesize(dummyToken("fi"),"V0p2000izf")));
+  assertEquals("[sunt]",Arrays.toString(synth.synthesize(dummyToken("fi"),"V0p3000izf")));
+  assertEquals("[sunt]",Arrays.toString(synth.synthesize(dummyToken("fi"),"V0s1000izf")));
+  assertEquals("[sunte??i, sunt]",Arrays.toString(synth.synthesize(dummyToken("fi"),"V0p2000izf|V0p3000izf",true)));
+  assertEquals("[merseser??m]",Arrays.toString(synth.synthesize(dummyToken("merge"),"V0p1000im0")));
+  assertEquals("[mersesem]",Arrays.toString(synth.synthesize(dummyToken("merge"),"V0s1000im0")));
+  assertEquals("[leg??tura]",Arrays.toString(synth.synthesize(dummyToken("leg??tur??"),"Sfs3aac000")));
+  assertEquals("[leg??tur??]",Arrays.toString(synth.synthesize(dummyToken("leg??tur??"),"Sfs3anc000")));
+}

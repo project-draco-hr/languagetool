@@ -1,4 +1,4 @@
 {
-  tagger=new RomanianTagger();
+  tagger=createTagger();
   tokenizer=new WordTokenizer();
 }
