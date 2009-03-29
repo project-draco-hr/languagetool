@@ -1,8 +1,0 @@
-{
-  if ((null == wordForms) || (!isFixDiacritics()))   return wordForms;
-  String[] res=new String[wordForms.length];
-  for (int i=0; i < wordForms.length; i++) {
-    res[i]=_revealDiacritics(wordForms[i]);
-  }
-  return res;
-}

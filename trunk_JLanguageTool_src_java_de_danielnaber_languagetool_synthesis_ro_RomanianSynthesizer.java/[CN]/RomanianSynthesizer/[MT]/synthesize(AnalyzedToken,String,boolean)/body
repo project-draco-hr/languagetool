@@ -13,14 +13,13 @@
       final Matcher m=p.matcher(tag);
       if (m.matches()) {
         String[] wordForms=null;
-        wordForms=synthesizer.stem(_hideDiacritics(token.getLemma()) + "|" + tag);
+        wordForms=synthesizer.stem(token.getLemma() + "|" + tag);
         if (wordForms != null) {
           results.addAll(Arrays.asList(wordForms));
         }
       }
     }
-    String[] res=results.toArray(new String[results.size()]);
-    return _revealDiacritics(res);
+    return results.toArray(new String[results.size()]);
   }
   return synthesize(token,posTag);
 }

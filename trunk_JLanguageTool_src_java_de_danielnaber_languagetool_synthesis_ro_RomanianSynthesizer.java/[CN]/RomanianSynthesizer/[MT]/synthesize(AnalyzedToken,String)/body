@@ -3,8 +3,5 @@
     setFileName();
     synthesizer=new Lametyzator();
   }
-  String[] wordForms=null;
-  wordForms=synthesizer.stem(_hideDiacritics(token.getLemma()) + "|" + posTag);
-  wordForms=_revealDiacritics(wordForms);
-  return wordForms;
+  return synthesizer.stem(token.getLemma() + "|" + posTag);
 }

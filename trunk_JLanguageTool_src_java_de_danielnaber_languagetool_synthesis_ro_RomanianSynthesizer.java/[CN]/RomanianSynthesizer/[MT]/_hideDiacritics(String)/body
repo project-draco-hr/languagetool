@@ -1,4 +1,0 @@
-{
-  if (isFixDiacritics())   return RomanianTagger.hideDiacritics(s);
-  return s;
-}

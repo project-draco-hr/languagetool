@@ -1,0 +1,7 @@
+{
+  tagger=new RomanianTagger();
+  tokenizer=new RomanianWordTokenizer();
+  sentenceTokenizer=new SentenceTokenizer();
+  disambiguator=new RomanianRuleDisambiguator();
+  disamb2=new DemoDisambiguator();
+}

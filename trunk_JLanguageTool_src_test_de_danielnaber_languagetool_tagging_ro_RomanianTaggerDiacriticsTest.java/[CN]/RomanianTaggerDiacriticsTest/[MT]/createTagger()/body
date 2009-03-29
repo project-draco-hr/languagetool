@@ -1,5 +1,4 @@
 {
   RomanianTagger res=new RomanianTagger("/resource/ro/test_diacritics.dict");
-  res.setFixDiacritics(false);
   return res;
 }

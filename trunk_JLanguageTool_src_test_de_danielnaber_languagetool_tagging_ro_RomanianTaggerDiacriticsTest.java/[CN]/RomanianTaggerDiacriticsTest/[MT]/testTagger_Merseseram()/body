@@ -1,3 +1,5 @@
 {
+  assertHasLemmaAndPos("f??cusem","face","004");
+  assertHasLemmaAndPos("cu??itul","cu??it","002");
   assertHasLemmaAndPos("merseser??m","merge","002");
 }

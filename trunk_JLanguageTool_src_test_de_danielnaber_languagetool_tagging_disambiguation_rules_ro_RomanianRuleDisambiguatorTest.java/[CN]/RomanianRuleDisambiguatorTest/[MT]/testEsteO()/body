@@ -1,0 +1,5 @@
+{
+  TestTools.myAssert("este o mas??.","/[null]SENT_START este/[fi]V0s3000izb  /[null]null o/[o]Dfs3a0t000|o/[o]Nfs3a0p00c|o/[o]Sms3anc000|o/[o]I00000o000|o/[vrea]V0s3000iov  /[null]null mas??/[mas??]Sfs3anc000|mas??/[masa]V0s3000is0 ./[null]null",tokenizer,sentenceTokenizer,tagger,disamb2);
+  TestTools.myAssert("este o mas??.","/[null]SENT_START este/[fi]V0s3000izb  /[null]null o/[o]Dfs3a0t000|o/[o]Nfs3a0p00c|o/[o]Sms3anc000|o/[o]I00000o000|o/[vrea]V0s3000iov  /[null]null mas??/[mas??]Sfs3anc000 ./[null]null",tokenizer,sentenceTokenizer,tagger,disambiguator);
+  TestTools.myAssert("este o mas??","/[null]SENT_START este/[fi]V0s3000izb  /[null]null o/[o]Dfs3a0t000|o/[o]Nfs3a0p00c|o/[o]Sms3anc000|o/[o]I00000o000|o/[vrea]V0s3000iov  /[null]null mas??/[mas??]Sfs3anc000",tokenizer,sentenceTokenizer,tagger,disambiguator);
+}

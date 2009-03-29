@@ -1,0 +1,4 @@
+{
+  TestTools.myAssert("Persoana care face treab??.","/[null]SENT_START Persoana/[persoan??]Sfs3aac000  /[null]null care/[car]Snp3anc000|care/[care]0000000000|care/[care]N000a0l000|care/[c??ra]V0p3000cz0|care/[c??ra]V0s3000cz0  /[null]null face/[face]V000000f00|face/[face]V0s3000iz0  /[null]null treab??/[treab??]Sfs3anc000 ./[null]null",tokenizer,sentenceTokenizer,tagger,disamb2);
+  TestTools.myAssert("Persoana care face treab??.","/[null]SENT_START Persoana/[persoan??]Sfs3aac000  /[null]null care/[care]N000a0l000  /[null]null face/[face]V000000f00|face/[face]V0s3000iz0  /[null]null treab??/[treab??]Sfs3anc000 ./[null]null",tokenizer,sentenceTokenizer,tagger,disambiguator);
+}
