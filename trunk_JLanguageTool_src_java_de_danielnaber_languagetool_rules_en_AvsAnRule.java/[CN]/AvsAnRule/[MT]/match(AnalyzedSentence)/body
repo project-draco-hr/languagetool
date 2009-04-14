@@ -28,7 +28,7 @@
       doesRequireAn=true;
     }
     if (!isException) {
-      if (StringTools.isAllUppercase(token)) {
+      if (StringTools.isAllUppercase(token) || StringTools.isMixedCase(token)) {
         doesRequireAn=false;
         doesRequireA=false;
       }

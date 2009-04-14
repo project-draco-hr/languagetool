@@ -1,0 +1,11 @@
+{
+  assertTrue(StringTools.isMixedCase("AbC"));
+  assertTrue(StringTools.isMixedCase("MixedCase"));
+  assertTrue(StringTools.isMixedCase("iPod"));
+  assertTrue(StringTools.isMixedCase("AbCdE"));
+  assertFalse(StringTools.isMixedCase(""));
+  assertFalse(StringTools.isMixedCase("ABC"));
+  assertFalse(StringTools.isMixedCase("abc"));
+  assertFalse(StringTools.isMixedCase("!"));
+  assertFalse(StringTools.isMixedCase("Word"));
+}

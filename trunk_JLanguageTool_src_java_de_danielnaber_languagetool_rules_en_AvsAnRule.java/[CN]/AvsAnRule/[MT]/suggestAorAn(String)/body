@@ -24,7 +24,7 @@
     doesRequireAn=true;
   }
   if (!isException) {
-    if (StringTools.isAllUppercase(word)) {
+    if (StringTools.isAllUppercase(word) || StringTools.isMixedCase(word)) {
       doesRequireAn=false;
       doesRequireA=false;
     }
