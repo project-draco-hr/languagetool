@@ -27,6 +27,13 @@
           langTool.disableCategory(categoryName);
         }
       }
+      final Set<String> enabledRules=config.getEnabledRuleIds();
+      if (enabledRules != null) {
+        for (        String ruleName : enabledRules) {
+          langTool.enableDefaultOffRule(ruleName);
+          langTool.enableRule(ruleName);
+        }
+      }
       try {
         int index=paraText.length();
         if (paRes.nBehindEndOfSentencePosition < paraText.length()) {
