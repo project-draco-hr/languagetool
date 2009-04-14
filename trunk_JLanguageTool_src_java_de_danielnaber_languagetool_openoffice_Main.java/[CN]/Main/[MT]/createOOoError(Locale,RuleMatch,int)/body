@@ -10,7 +10,7 @@
     aError.aShortComment=aError.aFullComment;
   }
   aError.aSuggestions=myMatch.getSuggestedReplacements().toArray(new String[myMatch.getSuggestedReplacements().size()]);
-  aError.nErrorStart=myMatch.getFromPos();
+  aError.nErrorStart=myMatch.getFromPos() + startIndex;
   aError.nErrorLength=myMatch.getToPos() - myMatch.getFromPos();
   aError.aRuleIdentifier=myMatch.getRule().getId();
   aError.aProperties=new PropertyValue[0];

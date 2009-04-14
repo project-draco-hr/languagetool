@@ -1,7 +1,8 @@
 {
   final ProofreadingResult paRes=new ProofreadingResult();
   try {
-    paRes.nBehindEndOfSentencePosition=nSuggestedBehindEndOfSentencePosition - startOfSentencePos;
+    paRes.nBehindEndOfSentencePosition=nSuggestedBehindEndOfSentencePosition;
+    paRes.nStartOfSentencePosition=startOfSentencePos;
     paRes.xProofreader=this;
     paRes.aLocale=locale;
     paRes.aDocumentIdentifier=docID;

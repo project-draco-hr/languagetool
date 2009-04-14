@@ -1,0 +1,54 @@
+{
+  if (contextSize == -1) {
+    contextSize=DEFAULT_CONTEXT_SIZE;
+  }
+  final long startTime=System.currentTimeMillis();
+  final List<RuleMatch> ruleMatches=lt.check(contents);
+  for (  RuleMatch r : ruleMatches) {
+    r.setLine(r.getLine() + lineOffset);
+    r.setEndLine(r.getEndLine() + lineOffset);
+  }
+  if (apiFormat) {
+    final String xml=StringTools.ruleMatchesToXML(ruleMatches,contents,contextSize,xmlMode);
+    System.out.print(xml);
+  }
+ else {
+    int i=1;
+    for (    final RuleMatch match : ruleMatches) {
+      String output=i + prevMatches + ".) Line "+ (match.getLine() + 1)+ ", column "+ match.getColumn()+ ", Rule ID: "+ match.getRule().getId();
+      if (match.getRule() instanceof PatternRule) {
+        final PatternRule pRule=(PatternRule)match.getRule();
+        output+="[" + pRule.getSubId() + "]";
+      }
+      System.out.println(output);
+      String msg=match.getMessage();
+      msg=msg.replaceAll("<suggestion>","'");
+      msg=msg.replaceAll("</suggestion>","'");
+      System.out.println("Message: " + msg);
+      final List<String> repl=match.getSuggestedReplacements();
+      if (!repl.isEmpty()) {
+        System.out.println("Suggestion: " + StringTools.listToString(repl,"; "));
+      }
+      System.out.println(StringTools.getContext(match.getFromPos(),match.getToPos(),contents,contextSize));
+      if (i < ruleMatches.size()) {
+        System.out.println();
+      }
+      i++;
+    }
+  }
+  if (xmlMode == StringTools.XmlPrintMode.NORMAL_XML) {
+    final long endTime=System.currentTimeMillis();
+    final long time=endTime - startTime;
+    final float timeInSeconds=time / 1000.0f;
+    final float sentencesPerSecond=lt.getSentenceCount() / timeInSeconds;
+    if (apiFormat) {
+      System.out.println("<!--");
+    }
+    System.out.printf(Locale.ENGLISH,"Time: %dms for %d sentences (%.1f sentences/sec)",time,lt.getSentenceCount(),sentencesPerSecond);
+    System.out.println();
+    if (apiFormat) {
+      System.out.println("-->");
+    }
+  }
+  return ruleMatches.size();
+}

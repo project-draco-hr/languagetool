@@ -1,0 +1,3 @@
+{
+  return checkText(contents,lt,false,-1,lineOffset,0,StringTools.XmlPrintMode.NORMAL_XML);
+}

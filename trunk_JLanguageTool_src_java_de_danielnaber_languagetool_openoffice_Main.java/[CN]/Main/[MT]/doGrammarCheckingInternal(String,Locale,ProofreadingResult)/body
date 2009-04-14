@@ -1,8 +1,4 @@
 {
-  if (paraText == null) {
-    return paRes;
-  }
-  paRes.nBehindEndOfSentencePosition=paraText.length();
   if (!StringTools.isEmpty(paraText)) {
     if (hasLocale(locale)) {
       if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null || recheck) {
@@ -32,20 +28,30 @@
         }
       }
       try {
-        final List<RuleMatch> ruleMatches=langTool.check(paraText);
-        if (!ruleMatches.isEmpty()) {
-          final SingleProofreadingError[] errorArray=new SingleProofreadingError[ruleMatches.size()];
-          int i=0;
-          for (          final RuleMatch myRuleMatch : ruleMatches) {
-            errorArray[i]=createOOoError(locale,myRuleMatch);
-            i++;
+        int index=paraText.length();
+        if (paRes.nBehindEndOfSentencePosition < paraText.length()) {
+          index=paRes.nBehindEndOfSentencePosition - paRes.nStartOfNextSentencePosition;
+        }
+        final List<String> sentences=langTool.sentenceTokenize(paraText.substring(paRes.nStartOfSentencePosition,index));
+        paRes.nStartOfNextSentencePosition=paRes.nBehindEndOfSentencePosition + 1;
+        if (!sentences.isEmpty()) {
+          final List<RuleMatch> ruleMatches=langTool.check(sentences.get(0));
+          prevRuleMatches=ruleMatches;
+          if (!ruleMatches.isEmpty()) {
+            final SingleProofreadingError[] errorArray=new SingleProofreadingError[ruleMatches.size()];
+            int i=0;
+            for (            final RuleMatch myRuleMatch : ruleMatches) {
+              errorArray[i]=createOOoError(locale,myRuleMatch,paRes.nStartOfSentencePosition);
+              i++;
+            }
+            Arrays.sort(errorArray,new ErrorPositionComparator());
+            paRes.aErrors=errorArray;
           }
-          Arrays.sort(errorArray,new ErrorPositionComparator());
-          paRes.aErrors=errorArray;
         }
       }
  catch (      final Throwable t) {
         showError(t);
+        paRes.nBehindEndOfSentencePosition=paraText.length();
       }
     }
   }

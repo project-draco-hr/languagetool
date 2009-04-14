@@ -74,7 +74,7 @@
     }
   }
   if (filename == null) {
-    exitWithUsageMessage();
+    filename="-";
   }
   if (language == null) {
     if (!apiFormat) {

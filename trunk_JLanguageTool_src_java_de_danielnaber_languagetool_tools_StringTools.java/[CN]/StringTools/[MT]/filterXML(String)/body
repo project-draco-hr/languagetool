@@ -1,0 +1,6 @@
+{
+  String s=str;
+  s=XML_COMMENT_PATTERN.matcher(s).replaceAll(" ");
+  s=XML_PATTERN.matcher(s).replaceAll(" ");
+  return s;
+}

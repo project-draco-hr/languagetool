@@ -1,4 +1,7 @@
 String contents
 JLanguageTool lt
 boolean apiFormat
+int contextSize
 int lineOffset
+int prevMatches
+XmlPrintMode xmlMode

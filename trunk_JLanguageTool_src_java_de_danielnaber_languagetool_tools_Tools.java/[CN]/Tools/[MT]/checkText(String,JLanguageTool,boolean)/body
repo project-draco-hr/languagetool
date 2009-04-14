@@ -1,3 +1,0 @@
-{
-  return checkText(contents,lt,apiFormat,-1);
-}
