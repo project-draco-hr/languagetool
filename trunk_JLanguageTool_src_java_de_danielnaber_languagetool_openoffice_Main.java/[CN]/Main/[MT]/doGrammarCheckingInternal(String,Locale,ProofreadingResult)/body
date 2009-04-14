@@ -36,7 +36,6 @@
         paRes.nStartOfNextSentencePosition=paRes.nBehindEndOfSentencePosition + 1;
         if (!sentences.isEmpty()) {
           final List<RuleMatch> ruleMatches=langTool.check(sentences.get(0));
-          prevRuleMatches=ruleMatches;
           if (!ruleMatches.isEmpty()) {
             final SingleProofreadingError[] errorArray=new SingleProofreadingError[ruleMatches.size()];
             int i=0;
