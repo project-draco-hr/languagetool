@@ -1,0 +1,14 @@
+{
+  try {
+    final URL url=this.getClass().getResource("test-en.txt");
+    final URI uri=new URI(url.toString());
+    String[] args=new String[]{"-l","en","--taggeronly",uri.getPath()};
+    Main.main(args);
+    String output=new String(this.out.toByteArray());
+    assertTrue(output.indexOf("Expected text language: English") == 0);
+    assertTrue(output.indexOf("<S> This[this/DT,this/PDT]  is[be/VBZ]  an[a/DT]  test[test/JJ,test/NN,test/VB,test/VBP].[./.,</S>]") != -1);
+  }
+ catch (  ExitException e) {
+    assertEquals("Exit status",1,e.status);
+  }
+}

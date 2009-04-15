@@ -1,0 +1,4 @@
+{
+  System.setSecurityManager(null);
+  super.tearDown();
+}

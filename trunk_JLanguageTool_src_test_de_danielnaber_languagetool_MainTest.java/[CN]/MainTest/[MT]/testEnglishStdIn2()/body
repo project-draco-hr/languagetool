@@ -1,0 +1,15 @@
+{
+  try {
+    final String test="This is an test.";
+    final byte[] b=test.getBytes();
+    System.setIn(new ByteArrayInputStream(b));
+    String[] args=new String[]{"-l","en","-"};
+    Main.main(args);
+    String output=new String(this.out.toByteArray());
+    assertTrue(output.indexOf("Expected text language: English") == 0);
+    assertTrue(output.indexOf("1.) Line 1, column 8, Rule ID: EN_A_VS_AN") != -1);
+  }
+ catch (  ExitException e) {
+    assertEquals("Exit status",1,e.status);
+  }
+}
