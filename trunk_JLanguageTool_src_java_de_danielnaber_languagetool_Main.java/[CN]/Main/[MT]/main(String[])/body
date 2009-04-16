@@ -8,6 +8,7 @@
   boolean singleLineBreakMarksParagraph=false;
   boolean apiFormat=false;
   boolean listUnknown=false;
+  boolean applySuggestions=false;
   Language language=null;
   Language motherTongue=null;
   String encoding=null;
@@ -25,6 +26,9 @@
       taggerOnly=true;
       if (listUnknown) {
         throw new IllegalArgumentException("You cannot list unknown words when tagging only.");
+      }
+      if (applySuggestions) {
+        throw new IllegalArgumentException("You cannot apply suggestions when tagging only.");
       }
     }
  else     if (args[i].equals("-r") || args[i].equals("--recursive")) {
@@ -67,6 +71,18 @@
     }
  else     if (args[i].equals("--api")) {
       apiFormat=true;
+      if (applySuggestions) {
+        throw new IllegalArgumentException("API format makes no sense for automatic application of suggestions.");
+      }
+    }
+ else     if (args[i].equals("-a") || args[i].equals("--apply")) {
+      applySuggestions=true;
+      if (taggerOnly) {
+        throw new IllegalArgumentException("You cannot apply suggestions when tagging only.");
+      }
+      if (apiFormat) {
+        throw new IllegalArgumentException("API format makes no sense for automatic application of suggestions.");
+      }
     }
  else {
       System.err.println("Unknown option: " + args[i]);
@@ -82,11 +98,11 @@
     }
     language=Language.ENGLISH;
   }
- else   if (!apiFormat) {
+ else   if (!apiFormat && !applySuggestions) {
     System.out.println("Expected text language: " + language.getName());
   }
   language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(singleLineBreakMarksParagraph);
-  final Main prg=new Main(verbose,taggerOnly,language,motherTongue,disabledRules,enabledRules,apiFormat);
+  final Main prg=new Main(verbose,taggerOnly,language,motherTongue,disabledRules,enabledRules,apiFormat,applySuggestions);
   prg.setListUnknownWords(listUnknown);
   if (recursive) {
     prg.runRecursive(filename,encoding,listUnknown);

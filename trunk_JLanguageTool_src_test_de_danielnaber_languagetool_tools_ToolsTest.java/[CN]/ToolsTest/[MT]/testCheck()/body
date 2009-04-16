@@ -1,0 +1,13 @@
+{
+  final JLanguageTool tool=new JLanguageTool(Language.POLISH);
+  tool.activateDefaultPatternRules();
+  tool.activateDefaultFalseFriendRules();
+  int matches=Tools.checkText("To jest ca??kowicie prawid??owe zdanie.",tool);
+  String output=new String(this.out.toByteArray());
+  assertTrue(output.indexOf("Time:") == 0);
+  assertEquals(0,matches);
+  matches=Tools.checkText("To jest jest problem.",tool);
+  output=new String(this.out.toByteArray());
+  assertTrue(output.indexOf("Rule ID: WORD_REPEAT_RULE") != -1);
+  assertEquals(1,matches);
+}

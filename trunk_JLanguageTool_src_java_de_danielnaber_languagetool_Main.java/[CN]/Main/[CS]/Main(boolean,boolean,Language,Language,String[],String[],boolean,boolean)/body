@@ -2,6 +2,7 @@
   this.verbose=verbose;
   this.apiFormat=apiFormat;
   this.taggerOnly=taggerOnly;
+  this.applySuggestions=applySuggestions;
   lt=new JLanguageTool(language,motherTongue);
   lt.activateDefaultPatternRules();
   lt.activateDefaultFalseFriendRules();

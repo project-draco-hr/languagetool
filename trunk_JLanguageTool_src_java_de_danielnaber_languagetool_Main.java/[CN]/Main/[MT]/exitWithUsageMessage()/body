@@ -1,4 +1,4 @@
 {
-  System.out.println("Usage: java de.danielnaber.languagetool.Main " + "[-r|--recursive] [-v|--verbose] [-l|--language LANG] [-m|--mothertongue LANG] [-d|--disable RULES] " + "[-e|--enable RULES] [-c|--encoding] [-u|--list-unknown] [-t|--taggeronly] [-b] [--api] <file>");
+  System.out.println("Usage: java de.danielnaber.languagetool.Main " + "[-r|--recursive] [-v|--verbose] [-l|--language LANG] [-m|--mothertongue LANG] [-d|--disable RULES] " + "[-e|--enable RULES] [-c|--encoding] [-u|--list-unknown] [-t|--taggeronly] [-b] [--api] [-a|--apply] <file>");
   System.exit(1);
 }
