@@ -28,6 +28,9 @@
     }
     if (attrs.getValue(MARK_TO) != null) {
       endPositionCorrection=Integer.parseInt(attrs.getValue(MARK_TO));
+      if (endPositionCorrection > 0) {
+        throw new SAXException("End position correction (mark_to=" + endPositionCorrection + ") cannot be larger than 0: "+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+      }
       singleTokenCorrection=false;
     }
  else {
@@ -111,6 +114,9 @@
     if (attrs.getValue(SPACEBEFORE) != null) {
       tokenSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
       tokenSpaceBeforeSet=IGNORE.equals(attrs.getValue(SPACEBEFORE)) ^ true;
+    }
+    if (!inAndGroup) {
+      tokenCounter++;
     }
   }
  else   if (qName.equals(DISAMBIG)) {

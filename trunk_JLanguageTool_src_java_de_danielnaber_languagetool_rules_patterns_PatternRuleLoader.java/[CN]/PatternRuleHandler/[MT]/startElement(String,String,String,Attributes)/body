@@ -48,6 +48,9 @@
     }
     if (attrs.getValue("mark_to") != null) {
       endPositionCorrection=Integer.parseInt(attrs.getValue("mark_to"));
+      if (endPositionCorrection > 0) {
+        throw new SAXException("End position correction (mark_to=" + endPositionCorrection + ") cannot be larger than 0: "+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
+      }
     }
     if (attrs.getValue("case_sensitive") != null && YES.equals(attrs.getValue("case_sensitive"))) {
       caseSensitive=true;
@@ -100,6 +103,9 @@
     if (attrs.getValue(SPACEBEFORE) != null) {
       tokenSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
       tokenSpaceBeforeSet="ignore".equals(attrs.getValue(SPACEBEFORE)) ^ true;
+    }
+    if (!inAndGroup) {
+      tokenCounter++;
     }
   }
  else   if (qName.equals("exception")) {
