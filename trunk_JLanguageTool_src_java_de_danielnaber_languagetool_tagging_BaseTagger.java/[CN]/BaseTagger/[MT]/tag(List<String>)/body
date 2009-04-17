@@ -13,22 +13,22 @@
     if (!word.equals(word.toLowerCase(conversionLocale))) {
       lowerTaggerTokens=morfologik.stemAndForm(word.toLowerCase(conversionLocale));
     }
-    if (taggerTokens != null) {
-      int i=0;
-      while (i < taggerTokens.length) {
-        l.add(new AnalyzedToken(word,taggerTokens[i + 1],taggerTokens[i],pos));
-        i=i + 2;
-      }
-    }
-    if (lowerTaggerTokens != null) {
-      int i=0;
-      while (i < lowerTaggerTokens.length) {
-        l.add(new AnalyzedToken(word,lowerTaggerTokens[i + 1],lowerTaggerTokens[i],pos));
-        i=i + 2;
-      }
-    }
+    addTokens(word,taggerTokens,l,pos);
+    addTokens(word,lowerTaggerTokens,l,pos);
     if (lowerTaggerTokens == null && taggerTokens == null) {
-      l.add(new AnalyzedToken(word,null,pos));
+      if (word.equals(word.toLowerCase(conversionLocale))) {
+        String[] upperTaggerTokens=null;
+        upperTaggerTokens=morfologik.stemAndForm(StringTools.uppercaseFirstChar(word));
+        if (upperTaggerTokens != null) {
+          addTokens(word,upperTaggerTokens,l,pos);
+        }
+ else {
+          l.add(new AnalyzedToken(word,null,pos));
+        }
+      }
+ else {
+        l.add(new AnalyzedToken(word,null,pos));
+      }
     }
     pos+=word.length();
     tokenReadings.add(new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()])));

@@ -1,0 +1,4 @@
+String word
+String[] taggedTokens
+List<AnalyzedToken> l
+int pos
