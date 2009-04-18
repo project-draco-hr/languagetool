@@ -1,0 +1,21 @@
+{
+  if (paraText.equals(currentPara) && tokenizedSentences != null) {
+    int i=0;
+    int index=0;
+    while (index < startPos && i < tokenizedSentences.size()) {
+      index+=tokenizedSentences.get(i++).length();
+    }
+    position=index;
+    if (i < tokenizedSentences.size()) {
+      return tokenizedSentences.get(i);
+    }
+    return "";
+  }
+  currentPara=paraText;
+  tokenizedSentences=langTool.sentenceTokenize(paraText);
+  position=0;
+  if (!tokenizedSentences.isEmpty()) {
+    return tokenizedSentences.get(0);
+  }
+  return "";
+}

@@ -35,14 +35,12 @@
         }
       }
       try {
-        int index=paraText.length();
-        if (paRes.nBehindEndOfSentencePosition < paraText.length()) {
-          index=paRes.nBehindEndOfSentencePosition - paRes.nStartOfNextSentencePosition;
-        }
-        final List<String> sentences=langTool.sentenceTokenize(paraText.substring(paRes.nStartOfSentencePosition,index));
-        paRes.nStartOfNextSentencePosition=paRes.nBehindEndOfSentencePosition + 1;
-        if (!sentences.isEmpty()) {
-          final List<RuleMatch> ruleMatches=langTool.check(sentences.get(0));
+        String sentence=getSentence(paraText,paRes.nStartOfSentencePosition);
+        if (!StringTools.isEmpty(sentence)) {
+          final List<RuleMatch> ruleMatches=langTool.check(sentence);
+          paRes.nStartOfSentencePosition=position;
+          paRes.nStartOfNextSentencePosition=position + sentence.length();
+          paRes.nBehindEndOfSentencePosition=position + sentence.length();
           if (!ruleMatches.isEmpty()) {
             final SingleProofreadingError[] errorArray=new SingleProofreadingError[ruleMatches.size()];
             int i=0;
