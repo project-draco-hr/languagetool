@@ -36,20 +36,38 @@
       }
       try {
         String sentence=getSentence(paraText,paRes.nStartOfSentencePosition);
+        paRes.nStartOfSentencePosition=position;
+        paRes.nStartOfNextSentencePosition=position + sentence.length();
+        paRes.nBehindEndOfSentencePosition=paRes.nStartOfNextSentencePosition;
         if (!StringTools.isEmpty(sentence)) {
-          final List<RuleMatch> ruleMatches=langTool.check(sentence);
-          paRes.nStartOfSentencePosition=position;
-          paRes.nStartOfNextSentencePosition=position + sentence.length();
-          paRes.nBehindEndOfSentencePosition=position + sentence.length();
+          final List<RuleMatch> ruleMatches=langTool.check(sentence,false,JLanguageTool.paragraphHandling.ONLYNONPARA);
+          final SingleProofreadingError[] pErrors=checkParaRules(paraText,locale,paRes.nStartOfSentencePosition,paRes.nStartOfNextSentencePosition,paRes.aDocumentIdentifier);
+          int pErrorCount=0;
+          if (pErrors != null) {
+            pErrorCount=pErrors.length;
+          }
           if (!ruleMatches.isEmpty()) {
-            final SingleProofreadingError[] errorArray=new SingleProofreadingError[ruleMatches.size()];
+            final SingleProofreadingError[] errorArray=new SingleProofreadingError[ruleMatches.size() + pErrorCount];
             int i=0;
             for (            final RuleMatch myRuleMatch : ruleMatches) {
               errorArray[i]=createOOoError(locale,myRuleMatch,paRes.nStartOfSentencePosition);
               i++;
             }
+            if (pErrors != null) {
+              for (              SingleProofreadingError paraError : pErrors) {
+                if (paraError != null) {
+                  errorArray[i]=paraError;
+                  i++;
+                }
+              }
+            }
             Arrays.sort(errorArray,new ErrorPositionComparator());
             paRes.aErrors=errorArray;
+          }
+ else {
+            if (pErrors != null) {
+              paRes.aErrors=pErrors;
+            }
           }
         }
       }

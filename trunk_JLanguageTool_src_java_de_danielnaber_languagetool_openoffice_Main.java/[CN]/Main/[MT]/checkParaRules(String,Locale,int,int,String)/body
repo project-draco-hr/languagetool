@@ -1,0 +1,28 @@
+{
+  if (startPos == 0) {
+    try {
+      paragraphMatches=langTool.check(paraText,false,JLanguageTool.paragraphHandling.ONLYPARA);
+      this.docID=docID;
+    }
+ catch (    final Throwable t) {
+      showError(t);
+    }
+  }
+  if (paragraphMatches != null && !paragraphMatches.isEmpty() && docID.equals(this.docID)) {
+    final SingleProofreadingError[] errorArray=new SingleProofreadingError[paragraphMatches.size()];
+    int i=0;
+    for (    final RuleMatch myRuleMatch : paragraphMatches) {
+      final int startErrPos=myRuleMatch.getFromPos();
+      final int endErrPos=myRuleMatch.getToPos();
+      if (startErrPos >= startPos && startErrPos < endPos && endErrPos >= startPos && endErrPos < endPos) {
+        errorArray[i]=createOOoError(locale,myRuleMatch,0);
+        i++;
+      }
+    }
+    Arrays.sort(errorArray,new ErrorPositionComparator());
+    if (i > 0) {
+      return errorArray;
+    }
+  }
+  return null;
+}

@@ -1,0 +1,5 @@
+String paraText
+Locale locale
+int startPos
+int endPos
+String docID

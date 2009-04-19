@@ -1,6 +1,6 @@
 {
-  int error1pos=match1.nErrorStart;
-  int error2pos=match2.nErrorStart;
+  final int error1pos=match1.nErrorStart;
+  final int error2pos=match2.nErrorStart;
   if (error1pos > error2pos)   return 1;
  else   if (error1pos < error2pos)   return -1;
  else   return ((Integer)(match1.aSuggestions.length)).compareTo(match2.aSuggestions.length);

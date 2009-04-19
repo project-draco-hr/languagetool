@@ -1,12 +1,16 @@
 {
   if (paraText.equals(currentPara) && tokenizedSentences != null) {
     int i=0;
-    int index=0;
+    int index=-1;
     while (index < startPos && i < tokenizedSentences.size()) {
-      index+=tokenizedSentences.get(i++).length();
+      index+=tokenizedSentences.get(i).length();
+      if (index < startPos) {
+        i++;
+      }
     }
-    position=index;
+    position=index + 1;
     if (i < tokenizedSentences.size()) {
+      position-=tokenizedSentences.get(i).length();
       return tokenizedSentences.get(i);
     }
     return "";
