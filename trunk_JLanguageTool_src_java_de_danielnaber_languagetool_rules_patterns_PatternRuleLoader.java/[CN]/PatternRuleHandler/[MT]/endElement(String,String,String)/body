@@ -131,6 +131,7 @@
     exampleCorrection=new StringBuilder();
   }
  else   if (qName.equals("message")) {
+    suggestionMatches=addLegacyMatches();
     inMessage=false;
   }
  else   if (qName.equals("short")) {
