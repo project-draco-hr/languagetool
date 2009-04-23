@@ -1,0 +1,5 @@
+{
+  Class[] argClasses={String[].class,String.class,String.class};
+  Object[] argObjects={suggs,left,right};
+  return TestTools.callStringStaticMethod(PatternRule.class,"formatMultipleSynthesis",argClasses,argObjects);
+}

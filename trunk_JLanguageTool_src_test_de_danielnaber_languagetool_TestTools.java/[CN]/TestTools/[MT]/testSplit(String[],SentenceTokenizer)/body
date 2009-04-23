@@ -1,11 +1,11 @@
 {
-  StringBuilder inputString=new StringBuilder();
-  List<String> input=new ArrayList<String>();
-  for (int i=0; i < sentences.length; i++) {
-    input.add(sentences[i]);
+  final StringBuilder inputString=new StringBuilder();
+  final List<String> input=new ArrayList<String>();
+  for (  final String sentence : sentences) {
+    input.add(sentence);
   }
-  for (  String string : input) {
+  for (  final String string : input) {
     inputString.append(string);
   }
-  TestCase.assertEquals(input,stokenizer.tokenize(inputString.toString()));
+  Assert.assertEquals(input,stokenizer.tokenize(inputString.toString()));
 }

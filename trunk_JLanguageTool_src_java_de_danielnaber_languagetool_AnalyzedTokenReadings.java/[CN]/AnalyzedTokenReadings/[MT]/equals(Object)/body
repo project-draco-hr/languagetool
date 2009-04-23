@@ -1,0 +1,19 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  AnalyzedTokenReadings other=(AnalyzedTokenReadings)obj;
+  if (!Arrays.equals(anTokReadings,other.anTokReadings))   return false;
+  if (isLinebreak != other.isLinebreak)   return false;
+  if (isParaEnd != other.isParaEnd)   return false;
+  if (isSentEnd != other.isSentEnd)   return false;
+  if (isSentStart != other.isSentStart)   return false;
+  if (isWhitespace != other.isWhitespace)   return false;
+  if (isWhitespaceBefore != other.isWhitespaceBefore)   return false;
+  if (startPos != other.startPos)   return false;
+  if (token == null) {
+    if (other.token != null)     return false;
+  }
+ else   if (!token.equals(other.token))   return false;
+  return true;
+}

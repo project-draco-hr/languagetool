@@ -178,4 +178,22 @@
     inWord=true;
     wd=new StringBuilder();
   }
+ else   if (qName.equals("example")) {
+    inExample=true;
+    if (untouchedExamples == null) {
+      untouchedExamples=new ArrayList<String>();
+    }
+    if (disambExamples == null) {
+      disambExamples=new ArrayList<DisambiguatedExample>();
+    }
+    untouched=attrs.getValue("type").equals("untouched");
+    if (attrs.getValue("type").equals("ambiguous")) {
+      input=attrs.getValue("inputform");
+      output=attrs.getValue("outputform");
+    }
+    example=new StringBuilder();
+  }
+ else   if (qName.equals("marker")) {
+    example.append("<marker>");
+  }
 }

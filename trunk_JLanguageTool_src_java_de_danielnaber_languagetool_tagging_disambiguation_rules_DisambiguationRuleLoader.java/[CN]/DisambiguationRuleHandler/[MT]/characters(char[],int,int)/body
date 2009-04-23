@@ -15,4 +15,7 @@
  else   if (inDisamb) {
     disamb.append(s);
   }
+ else   if (inExample) {
+    example.append(s);
+  }
 }

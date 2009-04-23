@@ -1,5 +1,5 @@
 {
-  if (nonBlankTokens == null) {
+  if (getNonBlankTokens() == null) {
     int whCounter=0;
     int nonWhCounter=0;
     final int[] mapping=new int[tokens.length + 1];
@@ -12,8 +12,8 @@
       }
       whCounter++;
     }
-    nonBlankTokens=l.toArray(new AnalyzedTokenReadings[l.size()]);
-    whPositions=mapping.clone();
+    setNonBlankTokens(l.toArray(new AnalyzedTokenReadings[l.size()]));
+    setWhPositions(mapping.clone());
   }
-  return nonBlankTokens.clone();
+  return getNonBlankTokens().clone();
 }

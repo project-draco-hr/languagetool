@@ -1,0 +1,3 @@
+List<DisambiguationPatternRule> rules
+String ruleID
+AnalyzedSentence sentence

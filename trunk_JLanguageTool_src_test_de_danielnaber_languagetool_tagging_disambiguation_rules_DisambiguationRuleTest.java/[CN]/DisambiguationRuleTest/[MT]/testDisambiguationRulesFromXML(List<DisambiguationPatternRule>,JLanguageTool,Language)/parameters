@@ -1,0 +1,3 @@
+List<DisambiguationPatternRule> rules
+JLanguageTool languageTool
+Language lang

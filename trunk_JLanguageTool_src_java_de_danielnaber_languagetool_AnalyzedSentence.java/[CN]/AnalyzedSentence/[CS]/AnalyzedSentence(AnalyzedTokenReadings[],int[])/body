@@ -1,0 +1,5 @@
+{
+  this.tokens=tokens.clone();
+  this.setWhPositions(whPositions.clone());
+  getTokensWithoutWhitespace();
+}

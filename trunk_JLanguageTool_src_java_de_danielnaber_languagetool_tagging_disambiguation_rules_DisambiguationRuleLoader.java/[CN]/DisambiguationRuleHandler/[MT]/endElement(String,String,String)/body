@@ -15,6 +15,12 @@
       newWdList.clear();
     }
     caseSensitive=false;
+    if (disambExamples != null) {
+      rule.setExamples(disambExamples);
+    }
+    if (untouchedExamples != null) {
+      rule.setUntouchedExamples(untouchedExamples);
+    }
     rules.add(rule);
     if (disambigAction == DisambiguatorAction.UNIFY && (elementList.size() - positionCorrection + endPositionCorrection) != uniCounter) {
       throw new SAXException("Rule error. The number unified tokens: " + uniCounter + " must be equal to the number of matched tokens."+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
@@ -24,6 +30,8 @@
     }
     elementList.clear();
     posSelector=null;
+    disambExamples=null;
+    untouchedExamples=null;
   }
  else   if (qName.equals(EXCEPTION)) {
     inException=false;
@@ -130,5 +138,17 @@
  else   if (qName.equals(WD)) {
     addNewWord(wd.toString(),wdLemma,wdPos);
     inWord=false;
+  }
+ else   if (qName.equals("example")) {
+    inExample=false;
+    if (untouched) {
+      untouchedExamples.add(example.toString());
+    }
+ else {
+      disambExamples.add(new DisambiguatedExample(example.toString(),input,output));
+    }
+  }
+ else   if (qName.equals("marker")) {
+    example.append("</marker>");
   }
 }

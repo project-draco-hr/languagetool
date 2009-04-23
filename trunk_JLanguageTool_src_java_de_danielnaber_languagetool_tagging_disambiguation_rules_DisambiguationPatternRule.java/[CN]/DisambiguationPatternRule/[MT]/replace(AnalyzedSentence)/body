@@ -119,5 +119,5 @@
     skipShiftTotal=0;
     language.getUnifier().reset();
   }
-  return new AnalyzedSentence(whTokens);
+  return new AnalyzedSentence(whTokens,text.getWhPositions());
 }

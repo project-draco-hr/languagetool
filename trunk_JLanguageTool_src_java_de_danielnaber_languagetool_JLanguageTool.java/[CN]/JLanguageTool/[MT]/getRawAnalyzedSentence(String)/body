@@ -1,0 +1,47 @@
+{
+  final List<String> tokens=wordTokenizer.tokenize(sentence);
+  final Map<Integer,String> softHyphenTokens=new HashMap<Integer,String>();
+  for (int i=0; i < tokens.size(); i++) {
+    if (tokens.get(i).indexOf('\u00ad') != -1) {
+      softHyphenTokens.put(i,tokens.get(i));
+      tokens.set(i,tokens.get(i).replaceAll("\u00ad",""));
+    }
+  }
+  final List<AnalyzedTokenReadings> aTokens=tagger.tag(tokens);
+  final int numTokens=aTokens.size();
+  int posFix=0;
+  for (int i=1; i < numTokens; i++) {
+    aTokens.get(i).setWhitespaceBefore(aTokens.get(i - 1).isWhitespace());
+    aTokens.get(i).setStartPos(aTokens.get(i).getStartPos() + posFix);
+    if (!softHyphenTokens.isEmpty()) {
+      if (softHyphenTokens.get(i) != null) {
+        aTokens.get(i).addReading(tagger.createToken(softHyphenTokens.get(i),null,aTokens.get(i).getStartPos()));
+        posFix+=softHyphenTokens.get(i).length() - aTokens.get(i).getToken().length();
+      }
+    }
+  }
+  final AnalyzedTokenReadings[] tokenArray=new AnalyzedTokenReadings[tokens.size() + 1];
+  final AnalyzedToken[] startTokenArray=new AnalyzedToken[1];
+  int toArrayCount=0;
+  final AnalyzedToken sentenceStartToken=new AnalyzedToken("",SENTENCE_START_TAGNAME,0);
+  startTokenArray[0]=sentenceStartToken;
+  tokenArray[toArrayCount++]=new AnalyzedTokenReadings(startTokenArray);
+  int startPos=0;
+  for (  final AnalyzedTokenReadings posTag : aTokens) {
+    posTag.setStartPos(startPos);
+    tokenArray[toArrayCount++]=posTag;
+    startPos+=posTag.getToken().length();
+  }
+  int lastToken=toArrayCount - 1;
+  for (int i=0; i < toArrayCount - 1; i++) {
+    if (!tokenArray[lastToken - i].isWhitespace()) {
+      lastToken-=i;
+      break;
+    }
+  }
+  tokenArray[lastToken].setSentEnd();
+  if (tokenArray.length == lastToken + 1 && tokenArray[lastToken].isLinebreak()) {
+    tokenArray[lastToken].setParaEnd();
+  }
+  return new AnalyzedSentence(tokenArray);
+}

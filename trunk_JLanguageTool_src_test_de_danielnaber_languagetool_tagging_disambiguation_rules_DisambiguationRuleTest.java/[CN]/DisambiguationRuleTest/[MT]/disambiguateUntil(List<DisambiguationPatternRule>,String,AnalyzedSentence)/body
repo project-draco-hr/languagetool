@@ -1,0 +1,10 @@
+{
+  AnalyzedSentence disambiguated=sentence;
+  for (  final DisambiguationPatternRule rule : rules) {
+    if (ruleID.equals(rule.getId())) {
+      break;
+    }
+    disambiguated=rule.replace(disambiguated);
+  }
+  return disambiguated;
+}
