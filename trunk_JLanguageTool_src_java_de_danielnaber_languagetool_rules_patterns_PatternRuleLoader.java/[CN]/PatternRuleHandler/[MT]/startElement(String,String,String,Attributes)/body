@@ -183,7 +183,7 @@
         suggestionMatches=new ArrayList<Match>();
       }
       suggestionMatches.add(mWorker);
-      message.append("&\\" + attrs.getValue("no"));
+      message.append("\u0001\\" + attrs.getValue("no"));
       if (StringTools.isEmpty(attrs.getValue("no"))) {
         throw new SAXException("References cannot be empty: " + "\n Line: " + pLocator.getLineNumber() + ", column: "+ pLocator.getColumnNumber()+ ".");
       }

@@ -11,12 +11,12 @@
     pos=messageStr.indexOf('\\',ind + 1);
     if (pos != -1 && messageStr.length() > pos) {
       if (Character.isDigit(messageStr.charAt(pos + 1))) {
-        if (pos == 1 || messageStr.charAt(pos - 1) != '&') {
+        if (pos == 1 || messageStr.charAt(pos - 1) != '\u0001') {
           final Match mWorker=new Match(null,null,false,null,null,Match.CaseConversion.NONE,false);
           mWorker.setInMessageOnly(true);
           sugMatch.add(mWorker);
         }
- else         if (messageStr.charAt(pos - 1) == '&') {
+ else         if (messageStr.charAt(pos - 1) == '\u0001') {
           sugMatch.add(suggestionMatches.get(matchCounter));
           message.deleteCharAt(pos - 1 - matchCounter);
           matchCounter++;
