@@ -1,0 +1,36 @@
+{
+  final int MAXFILESIZE=64000;
+  InputStreamReader isr=null;
+  BufferedReader br=null;
+  StringBuilder sb=new StringBuilder();
+  try {
+    isr=new InputStreamReader(new BufferedInputStream(System.in));
+    br=new BufferedReader(isr);
+    String line;
+    while ((line=br.readLine()) != null) {
+      sb.append(line);
+      sb.append("\n");
+      if (lt.getLanguage().getSentenceTokenizer().singleLineBreaksMarksPara()) {
+        tagText(sb.toString(),lt);
+        sb=new StringBuilder();
+      }
+ else {
+        if ("".equals(line) || sb.length() >= MAXFILESIZE) {
+          tagText(sb.toString(),lt);
+          sb=new StringBuilder();
+        }
+      }
+    }
+  }
+  finally {
+    if (sb.length() > 0) {
+      tagText(sb.toString(),lt);
+    }
+  }
+  if (br != null) {
+    br.close();
+  }
+  if (isr != null) {
+    isr.close();
+  }
+}
