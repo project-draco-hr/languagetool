@@ -1,6 +1,6 @@
 {
   try {
-    final URL url=this.getClass().getResource("test-en.txt");
+    final URL url=this.getClass().getResource(ENGLISH_TEST_FILE);
     final URI uri=new URI(url.toString());
     String[] args=new String[]{"-l","en","-v",uri.getPath()};
     Main.main(args);
