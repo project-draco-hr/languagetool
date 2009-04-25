@@ -1,6 +1,6 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  final AnalyzedTokenReadings[] tokens=text.getTokens();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   if (reachedEndOfParagraph) {
     reset();
   }
