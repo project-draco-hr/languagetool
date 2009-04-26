@@ -48,32 +48,15 @@
           if (elem.isReferenceElement()) {
             setupRef(firstMatchToken,elem,tokens);
           }
-          if (elem.hasAndGroup()) {
-            for (            final Element andElement : elem.getAndGroup()) {
-              if (andElement.isReferenceElement()) {
-                setupRef(firstMatchToken,andElement,tokens);
-              }
-            }
-            if (l == 0) {
-              elem.setupAndGroup();
-            }
-          }
+          setupAndGroup(l,firstMatchToken,elem,tokens);
           thisMatched|=elem.isMatchedCompletely(matchToken);
-          if (thisMatched && elem.isUnified()) {
-            thisMatched&=language.getUnifier().isUnified(matchToken,elem.getUniFeature(),elem.getUniType(),elem.isUniNegated(),lastReading);
-          }
-          if (!elem.isUnified()) {
-            language.getUnifier().reset();
-          }
+          thisMatched&=testUnification(thisMatched,lastReading,matchToken,elem);
           if (lastReading && elem.hasAndGroup()) {
             thisMatched&=elem.checkAndGroup(thisMatched);
           }
           exceptionMatched|=elem.isExceptionMatchedCompletely(matchToken);
           if (!exceptionMatched && m > 0 && elem.hasPreviousException()) {
-            final int numReadings=tokens[m - 1].getReadingsLength();
-            for (int p=0; p < numReadings; p++) {
-              exceptionMatched|=elem.isMatchedByPreviousException(tokens[m - 1].getAnalyzedToken(p));
-            }
+            exceptionMatched|=elem.isMatchedByPreviousException(tokens[m - 1]);
           }
           if (thisMatched || exceptionMatched) {
             matched=true;

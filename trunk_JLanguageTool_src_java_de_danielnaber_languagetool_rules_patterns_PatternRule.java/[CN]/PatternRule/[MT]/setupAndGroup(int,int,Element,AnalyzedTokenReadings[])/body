@@ -1,0 +1,12 @@
+{
+  if (elem.hasAndGroup()) {
+    for (    final Element andElement : elem.getAndGroup()) {
+      if (andElement.isReferenceElement()) {
+        setupRef(firstMatchToken,andElement,tokens);
+      }
+    }
+    if (readNo == 0) {
+      elem.setupAndGroup();
+    }
+  }
+}

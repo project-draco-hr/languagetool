@@ -1,0 +1,10 @@
+{
+  boolean thisMatched=matched;
+  if (matched && elem.isUnified()) {
+    thisMatched&=language.getUnifier().isUnified(matchToken,elem.getUniFeature(),elem.getUniType(),elem.isUniNegated(),lastReading);
+  }
+  if (!elem.isUnified()) {
+    language.getUnifier().reset();
+  }
+  return thisMatched;
+}
