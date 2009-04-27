@@ -3,8 +3,14 @@
   if (matched && elem.isUnified()) {
     thisMatched&=language.getUnifier().isUnified(matchToken,elem.getUniFeature(),elem.getUniType(),elem.isUniNegated(),lastReading);
   }
+  if (thisMatched) {
+    unifiedTokens=language.getUnifier().getFinalUnified();
+  }
   if (!elem.isUnified()) {
     language.getUnifier().reset();
+  }
+  if (lastReading) {
+    thisMatched&=elem.checkAndGroup(thisMatched);
   }
   return thisMatched;
 }

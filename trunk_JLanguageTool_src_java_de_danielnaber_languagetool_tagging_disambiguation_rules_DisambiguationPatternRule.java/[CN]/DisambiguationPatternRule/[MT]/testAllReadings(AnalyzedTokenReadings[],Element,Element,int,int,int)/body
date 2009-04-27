@@ -1,0 +1,17 @@
+{
+  boolean exceptionMatched=false;
+  boolean thisMatched=false;
+  final int numberOfReadings=tokens[tokenNo].getReadingsLength();
+  for (int l=0; l < numberOfReadings; l++) {
+    final AnalyzedToken matchToken=tokens[tokenNo].getAnalyzedToken(l);
+    prevMatched|=prevSkipNext > 0 && prevElement != null && prevElement.isMatchedByScopeNextException(matchToken);
+    setupAndGroup(l,firstMatchToken,elem,tokens);
+    thisMatched|=elem.isMatchedCompletely(matchToken);
+    thisMatched&=testUnificationAndGroups(thisMatched,l + 1 == numberOfReadings,matchToken,elem);
+    exceptionMatched|=elem.isExceptionMatchedCompletely(matchToken);
+  }
+  if (!exceptionMatched && tokenNo > 0 && elem.hasPreviousException()) {
+    exceptionMatched|=elem.isMatchedByPreviousException(tokens[tokenNo - 1]);
+  }
+  return thisMatched && !(exceptionMatched || prevMatched);
+}
