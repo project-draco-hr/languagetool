@@ -1,0 +1,6 @@
+{
+  super.finalize();
+  if (srxReader != null) {
+    srxReader.close();
+  }
+}

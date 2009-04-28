@@ -1,0 +1,15 @@
+{
+  this.language=language;
+  try {
+    srxReader=new BufferedReader(new InputStreamReader(Tools.getStream(RULES),"utf-8"));
+    SrxParser srxParser=new SrxAnyParser();
+    document=srxParser.parse(srxReader);
+  }
+ catch (  UnsupportedEncodingException e) {
+    e.printStackTrace();
+  }
+catch (  IOException e) {
+    e.printStackTrace();
+  }
+  setSingleLineBreaksMarksParagraph(false);
+}

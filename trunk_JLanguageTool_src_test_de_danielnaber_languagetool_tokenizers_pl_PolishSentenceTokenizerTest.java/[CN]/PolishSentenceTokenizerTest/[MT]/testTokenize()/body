@@ -1,17 +1,16 @@
 {
+  testSplit(new String[]{"This is a sentence. "});
   testSplit(new String[]{"Dies ist ein Satz."});
   testSplit(new String[]{"Dies ist ein Satz. ","Noch einer."});
   testSplit(new String[]{"Ein Satz! ","Noch einer."});
   testSplit(new String[]{"Ein Satz... ","Noch einer."});
   testSplit(new String[]{"Unter http://www.test.de gibt es eine Website."});
-  testSplit(new String[]{"Das Schreiben ist auf den 3.10. datiert."});
-  testSplit(new String[]{"Das Schreiben ist auf den 31.1. datiert."});
-  testSplit(new String[]{"Das Schreiben ist auf den 3.10.2000 datiert."});
+  testSplit(new String[]{"To si?? wydarzy??o 3.10.2000 i mam na to dowody."});
+  testSplit(new String[]{"To by??o 13.12 - nikt nie zapomni tego przem??wienia."});
   testSplit(new String[]{"Heute ist der 13.12.2004."});
-  testSplit(new String[]{"Dzi?? jest 13. rocznica powstania w??chockiego."});
-  testSplit(new String[]{"To jest 1. wydanie."});
-  testSplit(new String[]{"Es geht am 24.09. los."});
   testSplit(new String[]{"To jest np. ten debil spod jedynki."});
+  testSplit(new String[]{"To jest 1. wydanie."});
+  testSplit(new String[]{"Dzi?? jest 13. rocznica powstania w??chockiego."});
   testSplit(new String[]{"Das in Punkt 3.9.1 genannte Verhalten."});
   testSplit(new String[]{"To jest tzw. premier."});
   testSplit(new String[]{"Jarek kupi?? sobie kurteczk??, tj. str??j Marka."});
@@ -32,6 +31,7 @@
   testSplit(new String[]{"This is a sentence. ","And this is another one."});
   testSplit(new String[]{"This is a sentence.","Isn't it?","Yes, it is."});
   testSplit(new String[]{"Don't split strings like U. S. A. either."});
+  testSplit(new String[]{"Don't split strings like U.S.A. either."});
   testSplit(new String[]{"Don't split... ","Well you know. ","Here comes more text."});
   testSplit(new String[]{"Don't split... well you know. ","Here comes more text."});
   testSplit(new String[]{"The \".\" should not be a delimiter in quotes."});
@@ -60,4 +60,5 @@
   testSplit(new String[]{"Mam ju?? 20 mln. burak??w."});
   testSplit(new String[]{"Rytmem tej wiecznie przemijaj??cej ??wiatowej egzystencji [???] rytmem mesja??skiej natury jest szcz????cie."});
   testSplit(new String[]{"W gazecie napisali, ??e pasy (sic!) pogryz??y cz??owieka."});
+  testSplit(new String[]{"Mam w magazynie dwie skrzynie LMD20. ","Jestem ??o??nierzem i wiem, jak mo??na ich u??y??"});
 }

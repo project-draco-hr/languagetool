@@ -1,0 +1,8 @@
+{
+  if (lineBreakParagraphs) {
+    parCode="_one";
+  }
+ else {
+    parCode="_two";
+  }
+}

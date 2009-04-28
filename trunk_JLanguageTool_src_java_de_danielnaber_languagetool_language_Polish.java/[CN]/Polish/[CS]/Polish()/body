@@ -1,0 +1,3 @@
+{
+  sentenceTokenizer=new SRXSentenceTokenizer("pl");
+}
