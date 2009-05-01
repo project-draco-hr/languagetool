@@ -1,80 +1,78 @@
 {
-  if (!StringTools.isEmpty(paraText)) {
-    if (hasLocale(locale)) {
-      if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null || recheck) {
-        docLanguage=Language.getLanguageForShortName(locale.Language);
-        if (docLanguage == null) {
-          return paRes;
-        }
-        try {
-          langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
-          langTool.activateDefaultPatternRules();
-          langTool.activateDefaultFalseFriendRules();
-          recheck=false;
-        }
- catch (        final Throwable t) {
-          showError(t);
-        }
-      }
-      if (config.getDisabledRuleIds() != null) {
-        for (        final String id : config.getDisabledRuleIds()) {
-          langTool.disableRule(id);
-        }
-      }
-      final Set<String> disabledCategories=config.getDisabledCategoryNames();
-      if (disabledCategories != null) {
-        for (        final String categoryName : disabledCategories) {
-          langTool.disableCategory(categoryName);
-        }
-      }
-      final Set<String> enabledRules=config.getEnabledRuleIds();
-      if (enabledRules != null) {
-        for (        String ruleName : enabledRules) {
-          langTool.enableDefaultOffRule(ruleName);
-          langTool.enableRule(ruleName);
-        }
+  if (!StringTools.isEmpty(paraText) && hasLocale(locale)) {
+    if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null || recheck) {
+      docLanguage=Language.getLanguageForShortName(locale.Language);
+      if (docLanguage == null) {
+        return paRes;
       }
       try {
-        String sentence=getSentence(paraText,paRes.nStartOfSentencePosition);
-        paRes.nStartOfSentencePosition=position;
-        paRes.nStartOfNextSentencePosition=position + sentence.length();
-        paRes.nBehindEndOfSentencePosition=paRes.nStartOfNextSentencePosition;
-        if (!StringTools.isEmpty(sentence)) {
-          final List<RuleMatch> ruleMatches=langTool.check(sentence,false,JLanguageTool.paragraphHandling.ONLYNONPARA);
-          final SingleProofreadingError[] pErrors=checkParaRules(paraText,locale,paRes.nStartOfSentencePosition,paRes.nStartOfNextSentencePosition,paRes.aDocumentIdentifier);
-          int pErrorCount=0;
-          if (pErrors != null) {
-            pErrorCount=pErrors.length;
-          }
-          if (!ruleMatches.isEmpty()) {
-            final SingleProofreadingError[] errorArray=new SingleProofreadingError[ruleMatches.size() + pErrorCount];
-            int i=0;
-            for (            final RuleMatch myRuleMatch : ruleMatches) {
-              errorArray[i]=createOOoError(locale,myRuleMatch,paRes.nStartOfSentencePosition);
-              i++;
-            }
-            if (pErrors != null) {
-              for (              SingleProofreadingError paraError : pErrors) {
-                if (paraError != null) {
-                  errorArray[i]=paraError;
-                  i++;
-                }
-              }
-            }
-            Arrays.sort(errorArray,new ErrorPositionComparator());
-            paRes.aErrors=errorArray;
-          }
- else {
-            if (pErrors != null) {
-              paRes.aErrors=pErrors;
-            }
-          }
-        }
+        langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
+        langTool.activateDefaultPatternRules();
+        langTool.activateDefaultFalseFriendRules();
+        recheck=false;
       }
  catch (      final Throwable t) {
         showError(t);
-        paRes.nBehindEndOfSentencePosition=paraText.length();
       }
+    }
+    if (config.getDisabledRuleIds() != null) {
+      for (      final String id : config.getDisabledRuleIds()) {
+        langTool.disableRule(id);
+      }
+    }
+    final Set<String> disabledCategories=config.getDisabledCategoryNames();
+    if (disabledCategories != null) {
+      for (      final String categoryName : disabledCategories) {
+        langTool.disableCategory(categoryName);
+      }
+    }
+    final Set<String> enabledRules=config.getEnabledRuleIds();
+    if (enabledRules != null) {
+      for (      String ruleName : enabledRules) {
+        langTool.enableDefaultOffRule(ruleName);
+        langTool.enableRule(ruleName);
+      }
+    }
+    try {
+      String sentence=getSentence(paraText,paRes.nStartOfSentencePosition);
+      paRes.nStartOfSentencePosition=position;
+      paRes.nStartOfNextSentencePosition=position + sentence.length();
+      paRes.nBehindEndOfSentencePosition=paRes.nStartOfNextSentencePosition;
+      if (!StringTools.isEmpty(sentence)) {
+        final List<RuleMatch> ruleMatches=langTool.check(sentence,false,JLanguageTool.paragraphHandling.ONLYNONPARA);
+        final SingleProofreadingError[] pErrors=checkParaRules(paraText,locale,paRes.nStartOfSentencePosition,paRes.nStartOfNextSentencePosition,paRes.aDocumentIdentifier);
+        int pErrorCount=0;
+        if (pErrors != null) {
+          pErrorCount=pErrors.length;
+        }
+        if (!ruleMatches.isEmpty()) {
+          final SingleProofreadingError[] errorArray=new SingleProofreadingError[ruleMatches.size() + pErrorCount];
+          int i=0;
+          for (          final RuleMatch myRuleMatch : ruleMatches) {
+            errorArray[i]=createOOoError(myRuleMatch,paRes.nStartOfSentencePosition);
+            i++;
+          }
+          if (pErrors != null) {
+            for (            SingleProofreadingError paraError : pErrors) {
+              if (paraError != null) {
+                errorArray[i]=paraError;
+                i++;
+              }
+            }
+          }
+          Arrays.sort(errorArray,new ErrorPositionComparator());
+          paRes.aErrors=errorArray;
+        }
+ else {
+          if (pErrors != null) {
+            paRes.aErrors=pErrors;
+          }
+        }
+      }
+    }
+ catch (    final Throwable t) {
+      showError(t);
+      paRes.nBehindEndOfSentencePosition=paraText.length();
     }
   }
   return paRes;

@@ -1,16 +1,11 @@
 {
   final StringBuilder output=new StringBuilder();
-  try {
-    final String[] stringToFormat=toFinalString();
-    for (int i=0; i < stringToFormat.length; i++) {
-      output.append(stringToFormat[i]);
-      if (i + 1 < stringToFormat.length) {
-        output.append("|");
-      }
+  final String[] stringToFormat=toFinalString();
+  for (int i=0; i < stringToFormat.length; i++) {
+    output.append(stringToFormat[i]);
+    if (i + 1 < stringToFormat.length) {
+      output.append("|");
     }
-  }
- catch (  final IOException e) {
-    throw new RuntimeException(e.getCause());
   }
   return output.toString();
 }

@@ -24,14 +24,7 @@
   int cnt=0;
   int loopCnt=0;
   for (  final Element e : patternElements) {
-    if (!e.isPartOfPhrase()) {
-      if (cnt > 0) {
-        elementNo.add(cnt);
-      }
-      elementNo.add(1);
-      loopCnt++;
-    }
- else {
+    if (e.isPartOfPhrase()) {
       curName=e.getPhraseName();
       if (prevName.equals(curName) || StringTools.isEmpty(prevName)) {
         cnt++;
@@ -48,6 +41,13 @@
       if (loopCnt == patternElements.size() && !StringTools.isEmpty(prevName)) {
         elementNo.add(cnt);
       }
+    }
+ else {
+      if (cnt > 0) {
+        elementNo.add(cnt);
+      }
+      elementNo.add(1);
+      loopCnt++;
     }
   }
 }

@@ -2,14 +2,11 @@
   this.language=language;
   try {
     srxReader=new BufferedReader(new InputStreamReader(Tools.getStream(RULES),"utf-8"));
-    final SrxParser srxParser=new Srx2Parser();
-    document=srxParser.parse(srxReader);
   }
- catch (  final UnsupportedEncodingException e) {
+ catch (  IOException e) {
     e.printStackTrace();
   }
-catch (  final IOException e) {
-    e.printStackTrace();
-  }
+  final SrxParser srxParser=new Srx2Parser();
+  document=srxParser.parse(srxReader);
   setSingleLineBreaksMarksParagraph(false);
 }

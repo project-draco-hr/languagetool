@@ -3,10 +3,10 @@
     return;
   }
   try {
-    if (sEvent.equals("configure")) {
+    if ("configure".equals(sEvent)) {
       runOptionsDialog();
     }
- else     if (sEvent.equals("about")) {
+ else     if ("about".equals(sEvent)) {
       final AboutDialogThread aboutthread=new AboutDialogThread(MESSAGES);
       aboutthread.start();
     }

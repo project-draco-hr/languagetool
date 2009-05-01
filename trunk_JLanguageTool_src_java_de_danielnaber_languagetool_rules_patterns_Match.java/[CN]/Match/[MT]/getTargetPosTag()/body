@@ -5,11 +5,9 @@
     final int numRead=matchedToken.getReadingsLength();
     for (int i=0; i < numRead; i++) {
       final String tst=matchedToken.getAnalyzedToken(i).getPOSTag();
-      if (tst != null) {
-        if (pPosRegexMatch.matcher(tst).matches()) {
-          targetPosTag=matchedToken.getAnalyzedToken(i).getPOSTag();
-          posTags.add(targetPosTag);
-        }
+      if (tst != null && pPosRegexMatch.matcher(tst).matches()) {
+        targetPosTag=matchedToken.getAnalyzedToken(i).getPOSTag();
+        posTags.add(targetPosTag);
       }
     }
     if (pPosRegexMatch != null && posTagReplace != null) {
@@ -20,11 +18,9 @@
     final int numRead=formattedToken.getReadingsLength();
     for (int i=0; i < numRead; i++) {
       final String tst=formattedToken.getAnalyzedToken(i).getPOSTag();
-      if (tst != null) {
-        if (pPosRegexMatch.matcher(tst).matches()) {
-          targetPosTag=formattedToken.getAnalyzedToken(i).getPOSTag();
-          posTags.add(targetPosTag);
-        }
+      if (tst != null && pPosRegexMatch.matcher(tst).matches()) {
+        targetPosTag=formattedToken.getAnalyzedToken(i).getPOSTag();
+        posTags.add(targetPosTag);
       }
     }
     if (pPosRegexMatch != null && posTagReplace != null) {

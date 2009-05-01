@@ -14,11 +14,11 @@
       final int startErrPos=myRuleMatch.getFromPos();
       final int endErrPos=myRuleMatch.getToPos();
       if (startErrPos >= startPos && startErrPos < endPos && endErrPos >= startPos && endErrPos < endPos) {
-        errorList.add(createOOoError(locale,myRuleMatch,0));
+        errorList.add(createOOoError(myRuleMatch,0));
       }
     }
     if (!errorList.isEmpty()) {
-      SingleProofreadingError[] errorArray=errorList.toArray(new SingleProofreadingError[errorList.size()]);
+      final SingleProofreadingError[] errorArray=errorList.toArray(new SingleProofreadingError[errorList.size()]);
       Arrays.sort(errorArray,new ErrorPositionComparator());
       return errorArray;
     }

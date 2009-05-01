@@ -15,24 +15,22 @@
         String targetPosTag=posTag;
         for (int i=0; i < numRead; i++) {
           final String tst=formattedToken.getAnalyzedToken(i).getPOSTag();
-          if (tst != null) {
-            if (pPosRegexMatch.matcher(tst).matches()) {
-              targetPosTag=formattedToken.getAnalyzedToken(i).getPOSTag();
-              if (posTagReplace != null) {
-                targetPosTag=pPosRegexMatch.matcher(targetPosTag).replaceAll(posTagReplace);
-              }
-              l.add(new AnalyzedToken(token,targetPosTag,formattedToken.getAnalyzedToken(i).getLemma(),formattedToken.getStartPos()));
+          if (tst != null && pPosRegexMatch.matcher(tst).matches()) {
+            targetPosTag=formattedToken.getAnalyzedToken(i).getPOSTag();
+            if (posTagReplace != null) {
+              targetPosTag=pPosRegexMatch.matcher(targetPosTag).replaceAll(posTagReplace);
             }
+            l.add(new AnalyzedToken(token,targetPosTag,formattedToken.getAnalyzedToken(i).getLemma(),formattedToken.getStartPos()));
           }
         }
         if (l.isEmpty()) {
-          for (          AnalyzedToken anaTok : getNewToken(numRead,token)) {
+          for (          final AnalyzedToken anaTok : getNewToken(numRead,token)) {
             l.add(anaTok);
           }
         }
       }
  else {
-        for (        AnalyzedToken anaTok : getNewToken(numRead,token)) {
+        for (        final AnalyzedToken anaTok : getNewToken(numRead,token)) {
           l.add(anaTok);
         }
       }

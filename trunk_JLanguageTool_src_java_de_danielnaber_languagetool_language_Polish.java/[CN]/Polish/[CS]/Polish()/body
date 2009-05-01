@@ -1,0 +1,7 @@
+{
+  try {
+    sentenceTokenizer=new SRXSentenceTokenizer("pl");
+  }
+ catch (  Throwable t) {
+  }
+}
