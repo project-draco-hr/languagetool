@@ -1,0 +1,8 @@
+{
+  final List<String> list=new ArrayList<String>();
+  list.add("foo");
+  list.add("bar");
+  list.add(",");
+  assertEquals("foo,bar,,",StringTools.listToString(list,","));
+  assertEquals("foo\tbar\t,",StringTools.listToString(list,"\t"));
+}
