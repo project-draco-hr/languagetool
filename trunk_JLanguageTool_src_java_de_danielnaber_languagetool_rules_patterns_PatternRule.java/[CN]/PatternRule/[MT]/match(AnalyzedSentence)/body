@@ -3,12 +3,10 @@
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   final int[] tokenPositions=new int[tokens.length + 1];
   final int patternSize=patternElements.size();
+  final int limit=Math.max(0,tokens.length - patternSize + 1);
   Element elem=null;
   final boolean sentStart=patternElements.get(0).isSentStart();
-  for (int i=0; i < tokens.length; i++) {
-    if (patternSize + i > tokens.length || sentStart && i > 0) {
-      break;
-    }
+  for (int i=0; i < limit && !(sentStart && i > 0); i++) {
     boolean allElementsMatch=false;
     int firstMatchToken=-1;
     int lastMatchToken=-1;
@@ -22,10 +20,6 @@
       setupRef(firstMatchToken,elem,tokens);
       final int skipNext=translateElementNo(elem.getSkipNext());
       final int nextPos=i + k + skipShiftTotal;
-      if (nextPos >= tokens.length) {
-        allElementsMatch=false;
-        break;
-      }
       prevMatched=false;
       if (prevSkipNext + nextPos >= tokens.length || prevSkipNext < 0) {
         prevSkipNext=tokens.length - (nextPos + 1);
@@ -48,12 +42,6 @@
       if (!allElementsMatch) {
         break;
       }
-    }
-    if (firstMatchToken + matchingTokens >= tokens.length) {
-      matchingTokens=tokens.length - firstMatchToken;
-    }
-    if (firstMatchToken + skipShiftTotal + matchingTokens > tokens.length) {
-      allElementsMatch=false;
     }
     if (allElementsMatch) {
       final RuleMatch rM=createRuleMatch(tokenPositions,tokens,firstMatchToken,lastMatchToken,matchingTokens);
