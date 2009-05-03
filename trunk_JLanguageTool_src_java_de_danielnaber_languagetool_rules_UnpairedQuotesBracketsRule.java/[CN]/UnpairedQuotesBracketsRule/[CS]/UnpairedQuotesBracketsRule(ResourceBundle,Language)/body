@@ -50,10 +50,8 @@
     startSymbols=START_SYMBOLS;
     endSymbols=END_SYMBOLS;
   }
-  symbolCounter=new int[startSymbols.length];
   ruleMatchArray=new int[startSymbols.length];
   for (int i=0; i < startSymbols.length; i++) {
-    symbolCounter[i]=0;
     ruleMatchArray[i]=0;
   }
   ruleLang=language;

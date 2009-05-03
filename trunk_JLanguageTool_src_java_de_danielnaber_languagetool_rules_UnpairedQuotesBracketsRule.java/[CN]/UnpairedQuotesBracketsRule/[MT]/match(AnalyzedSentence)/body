@@ -4,8 +4,7 @@
   if (reachedEndOfParagraph) {
     reset();
   }
-  int ruleMatchIndex=getMatchesIndex();
-  int pos=0;
+  ruleMatchIndex=getMatchesIndex();
   for (int j=0; j < startSymbols.length; j++) {
     for (int i=1; i < tokens.length; i++) {
       final String token=tokens[i].getToken().trim();
@@ -22,7 +21,7 @@
           precededByWhitespace=false;
         }
  else         if (startSymbols[j].equals(endSymbols[j])) {
-          if (symbolCounter[j] > 0) {
+          if (!symbolStack.isEmpty()) {
             precededByWhitespace=false;
           }
  else {
@@ -40,38 +39,51 @@
         }
       }
       if (noException && precededByWhitespace && token.equals(startSymbols[j])) {
-        symbolCounter[j]++;
-        pos=i;
+        symbolStack.push(startSymbols[j] + i);
       }
  else       if (noException && followedByWhitespace && token.equals(endSymbols[j])) {
-        if (i > 1 && endSymbols[j].equals(")") && symbolCounter[j] == 0) {
+        if (i > 1 && endSymbols[j].equals(")")) {
           if (!NUMERALS.matcher(tokens[i - 1].getToken()).matches()) {
-            symbolCounter[j]--;
-            pos=i;
+            if (!symbolStack.isEmpty()) {
+              if (symbolStack.peek().startsWith(startSymbols[j])) {
+                symbolStack.pop();
+              }
+ else {
+                symbolStack.push(endSymbols[j] + i);
+              }
+            }
+ else {
+              symbolStack.push(endSymbols[j] + i);
+            }
           }
         }
  else {
-          symbolCounter[j]--;
-          pos=i;
-        }
-      }
-    }
-    for (int i=0; i < symbolCounter.length; i++) {
-      if (symbolCounter[i] != 0) {
-        if (ruleMatchArray[i] != 0 && isInMatches(ruleMatchArray[i] - 1)) {
-          setAsDeleted(ruleMatchArray[i] - 1);
-          ruleMatchArray[i]=0;
-        }
+          if (!symbolStack.isEmpty()) {
+            if (symbolStack.peek().startsWith(startSymbols[j])) {
+              symbolStack.pop();
+            }
  else {
-          ruleMatchIndex++;
-          ruleMatchArray[i]=ruleMatchIndex;
-          final int startPos=tokens[pos].getStartPos();
-          final RuleMatch ruleMatch=new RuleMatch(this,startPos,startPos + 1,messages.getString("unpaired_brackets"));
-          ruleMatches.add(ruleMatch);
+              symbolStack.push(endSymbols[j] + i);
+            }
+          }
+ else {
+            symbolStack.push(endSymbols[j] + i);
+          }
         }
-        symbolCounter[i]=0;
       }
     }
+    for (    final String sym : symbolStack) {
+      final int num=Integer.decode(sym.substring(1));
+      final int symbolNum=findSymbolNum(sym.substring(0,1));
+      if (symbolNum >= 0) {
+        RuleMatch rMatch=createMatch(tokens[num].getStartPos(),symbolNum);
+        if (rMatch != null) {
+          ruleMatches.add(rMatch);
+        }
+      }
+    }
+    symbolStack.clear();
+    ruleMatchIndex=0;
   }
   if (tokens[tokens.length - 1].isParaEnd()) {
     reachedEndOfParagraph=true;

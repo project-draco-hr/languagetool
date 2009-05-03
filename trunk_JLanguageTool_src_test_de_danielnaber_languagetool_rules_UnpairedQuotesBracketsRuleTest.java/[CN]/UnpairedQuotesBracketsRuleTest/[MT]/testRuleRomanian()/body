@@ -6,6 +6,10 @@
   assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("Nu's de prin locurile astea."));
   assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("A fost )plecat( pentru (pu??in timp)."));
+  assertEquals(2,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("A fost {plecat) pentru (pu??in timp}."));
+  assertEquals(2,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("A fost plecat pentru ???pu??in timp???."));
   assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("A fost plecat ???pentru... pu??in timp???."));
