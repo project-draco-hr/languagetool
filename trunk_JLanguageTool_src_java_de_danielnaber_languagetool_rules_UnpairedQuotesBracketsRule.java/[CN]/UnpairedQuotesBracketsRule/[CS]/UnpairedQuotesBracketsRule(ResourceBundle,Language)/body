@@ -42,6 +42,10 @@
     startSymbols=IT_START_SYMBOLS;
     endSymbols=IT_END_SYMBOLS;
   }
+ else   if (language.equals(Language.ROMANIAN)) {
+    startSymbols=RO_START_SYMBOLS;
+    endSymbols=RO_END_SYMBOLS;
+  }
  else {
     startSymbols=START_SYMBOLS;
     endSymbols=END_SYMBOLS;
