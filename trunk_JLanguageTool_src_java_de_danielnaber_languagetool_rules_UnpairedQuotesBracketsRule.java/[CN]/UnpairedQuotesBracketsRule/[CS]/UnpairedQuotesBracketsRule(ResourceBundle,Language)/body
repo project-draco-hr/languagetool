@@ -6,6 +6,10 @@
     startSymbols=PL_START_SYMBOLS;
     endSymbols=PL_END_SYMBOLS;
   }
+ else   if (language.equals(Language.SLOVAK)) {
+    startSymbols=SK_START_SYMBOLS;
+    endSymbols=SK_END_SYMBOLS;
+  }
  else   if (language.equals(Language.FRENCH)) {
     startSymbols=FR_START_SYMBOLS;
     endSymbols=FR_END_SYMBOLS;
