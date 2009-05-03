@@ -11,7 +11,7 @@
       final String token=tokens[i].getToken().trim();
       boolean precededByWhitespace=true;
       if (startSymbols[j].equals(endSymbols[j])) {
-        precededByWhitespace=tokens[i].isWhitespaceBefore() || PUNCTUATION_NO_DOT.matcher(tokens[i - 1].getToken()).matches();
+        precededByWhitespace=tokens[i - 1].isSentStart() || tokens[i].isWhitespaceBefore() || PUNCTUATION_NO_DOT.matcher(tokens[i - 1].getToken()).matches();
       }
       boolean followedByWhitespace=true;
       if (i < tokens.length - 1 && startSymbols[j].equals(endSymbols[j])) {

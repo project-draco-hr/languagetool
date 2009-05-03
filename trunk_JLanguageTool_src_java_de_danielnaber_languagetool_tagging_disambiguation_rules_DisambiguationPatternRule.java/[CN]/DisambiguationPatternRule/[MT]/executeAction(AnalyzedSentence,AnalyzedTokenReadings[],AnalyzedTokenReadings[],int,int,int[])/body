@@ -17,6 +17,7 @@
   }
   final int fromPos=text.getOriginalPosition(firstMatchToken + correctedStPos);
   final int numRead=whTokens[fromPos].getReadingsLength();
+  final boolean spaceBefore=whTokens[fromPos].isWhitespaceBefore();
   boolean filtered=false;
 switch (disAction) {
 case UNIFY:
@@ -50,7 +51,7 @@ case FILTER:
 if (matchElement == null) {
 final Match tmpMatchToken=new Match(disambiguatedPOS,null,true,disambiguatedPOS,null,Match.CaseConversion.NONE,false);
 tmpMatchToken.setToken(whTokens[fromPos]);
-whTokens[fromPos]=tmpMatchToken.filterReadings(whTokens[fromPos]);
+whTokens[fromPos]=tmpMatchToken.filterReadings();
 filtered=true;
 }
 case REPLACE:
@@ -68,10 +69,12 @@ lemma=whTokens[fromPos].getAnalyzedToken(0).getLemma();
 }
 final AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma,whTokens[fromPos].getStartPos()));
 whTokens[fromPos]=toReplace;
+whTokens[fromPos].setWhitespaceBefore(spaceBefore);
 }
  else {
 matchElement.setToken(whTokens[fromPos]);
-whTokens[fromPos]=matchElement.filterReadings(whTokens[fromPos]);
+whTokens[fromPos]=matchElement.filterReadings();
+whTokens[fromPos].setWhitespaceBefore(spaceBefore);
 }
 }
 }

@@ -18,6 +18,8 @@
   assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("(([20] [20] [20]))"));
   assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("This is a \"special test\", right?"));
+  assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("We discussed this in Chapter 1)."));
   assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("We discussed this in section 1a)."));

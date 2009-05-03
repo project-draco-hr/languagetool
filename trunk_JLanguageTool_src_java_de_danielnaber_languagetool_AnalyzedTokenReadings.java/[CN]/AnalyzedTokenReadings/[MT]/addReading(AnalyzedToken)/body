@@ -11,6 +11,7 @@
   if (tok.getToken().length() > token.length()) {
     token=tok.getToken();
   }
+  anTokReadings[anTokReadings.length - 1].setWhitespaceBefore(isWhitespaceBefore);
   isParaEnd=hasPosTag(JLanguageTool.PARAGRAPH_END_TAGNAME);
   isSentEnd=hasPosTag(JLanguageTool.SENTENCE_END_TAGNAME);
 }
