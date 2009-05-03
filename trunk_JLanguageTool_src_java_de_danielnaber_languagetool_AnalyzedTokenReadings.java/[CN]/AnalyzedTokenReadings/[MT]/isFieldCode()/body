@@ -1,0 +1,3 @@
+{
+  return "\u0001".equals(token) || "\u0002".equals(token);
+}
