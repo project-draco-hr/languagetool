@@ -9,7 +9,7 @@
   matches=rule.match(langTool.getAnalyzedSentence("A fost )plecat( pentru (pu??in timp)."));
   assertEquals(2,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("A fost {plecat) pentru (pu??in timp}."));
-  assertEquals(2,matches.length);
+  assertEquals(4,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("A fost plecat pentru ???pu??in timp???."));
   assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("A fost plecat ???pentru... pu??in timp???."));
@@ -23,9 +23,11 @@
   matches=rule.match(langTool.getAnalyzedSentence("A fost plecat ??pu??in."));
   assertEquals(1,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("A fost plecat ???pentru ??pu??in timp???."));
-  assertEquals(1,matches.length);
+  assertEquals(3,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("A fost plecat ???pentru pu??in?? timp???."));
-  assertEquals(1,matches.length);
+  assertEquals(3,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("A fost plecat ???pentru... pu??in?? timp???."));
-  assertEquals(1,matches.length);
+  assertEquals(3,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("A fost plecat ???pentru... ??pu??in??? timp??."));
+  assertEquals(4,matches.length);
 }

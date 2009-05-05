@@ -8,7 +8,7 @@
     if (newWdList != null) {
       if (disambigAction == DisambiguatorAction.ADD || disambigAction == DisambiguatorAction.REMOVE) {
         if (newWdList.size() != (elementList.size() - positionCorrection + endPositionCorrection)) {
-          throw new SAXException("Rule error. The number of interpretations specified with wd: " + newWdList.size() + " must be equal to the number of matched tokens."+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+          throw new SAXException("Rule error. The number of interpretations specified with wd: " + newWdList.size() + " must be equal to the number of matched tokens ("+ (elementList.size() - positionCorrection + endPositionCorrection)+ ")"+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
         }
         rule.setNewInterpretations(newWdList.toArray(new AnalyzedToken[newWdList.size()]));
       }

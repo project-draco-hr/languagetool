@@ -1,10 +1,8 @@
 {
-  for (int i=0; i < startSymbols.length; i++) {
-    ruleMatchArray[i]=0;
-  }
+  ruleMatchStack.clear();
   symbolStack.clear();
-  if (!reachedEndOfParagraph) {
+  if (!endOfParagraph) {
     clearMatches();
   }
-  reachedEndOfParagraph=false;
+  endOfParagraph=false;
 }

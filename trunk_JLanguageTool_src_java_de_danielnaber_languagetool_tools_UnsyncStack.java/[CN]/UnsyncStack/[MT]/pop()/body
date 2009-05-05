@@ -1,0 +1,7 @@
+{
+  E obj;
+  int len=size();
+  obj=peek();
+  remove(len - 1);
+  return obj;
+}

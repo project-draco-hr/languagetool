@@ -1,0 +1,4 @@
+{
+  super(sym,ind);
+  myIndex=myInd;
+}
