@@ -10,8 +10,8 @@
         types=getTypes(feat,type);
         for (        final String typename : types) {
           if (featuresFound.get(i) && equivalencesMatched.get(i).containsKey(feat) && equivalencesMatched.get(i).get(feat).contains(typename)) {
-            final Element testElem=equivalenceTypes.get(feat + FEATURE_TYPE_SEPARATOR + typename);
-            featUnified=featUnified || testElem.isMatched(AT);
+            final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat,typename));
+            featUnified=featUnified || testElem.isMatched(aToken);
           }
         }
         allFeatsUnified&=featUnified;
@@ -22,10 +22,10 @@
     unifiedNext&=anyFeatUnified;
     if (unifiedNext) {
       if (tokSequence.size() == readingsCounter) {
-        tokSequence.add(new AnalyzedTokenReadings(AT));
+        tokSequence.add(new AnalyzedTokenReadings(aToken));
       }
  else {
-        tokSequence.get(readingsCounter).addReading(AT);
+        tokSequence.get(readingsCounter).addReading(aToken);
       }
     }
   }

@@ -1,8 +1,8 @@
 {
-  if (equivalenceTypes.containsKey(feature + FEATURE_TYPE_SEPARATOR + type)) {
+  if (equivalenceTypes.containsKey(new EquivalenceTypeLocator(feature,type))) {
     return;
   }
-  equivalenceTypes.put(feature + FEATURE_TYPE_SEPARATOR + type,elem);
+  equivalenceTypes.put(new EquivalenceTypeLocator(feature,type),elem);
   List<String> lTypes;
   if (equivalenceFeatures.containsKey(feature)) {
     lTypes=equivalenceFeatures.get(feature);

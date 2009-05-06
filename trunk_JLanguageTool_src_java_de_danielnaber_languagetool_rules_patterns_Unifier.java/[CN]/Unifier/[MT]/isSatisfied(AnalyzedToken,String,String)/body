@@ -16,7 +16,7 @@
     for (    final String feat : features) {
       types=getTypes(feat,type);
       for (      final String typename : types) {
-        final Element testElem=equivalenceTypes.get(feat + FEATURE_TYPE_SEPARATOR + typename);
+        final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat,typename));
         if (testElem == null) {
           return false;
         }

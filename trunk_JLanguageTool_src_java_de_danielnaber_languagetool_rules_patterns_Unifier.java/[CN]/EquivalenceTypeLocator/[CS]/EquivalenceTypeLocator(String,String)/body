@@ -1,0 +1,4 @@
+{
+  this.feature=feature;
+  this.type=type;
+}
