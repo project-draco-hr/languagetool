@@ -21,4 +21,6 @@
   this.disambiguatedPOS=disamb;
   this.matchElement=posSelect;
   this.disAction=disambAction;
+  this.unifier=language.getUnifier();
+  testUnification=initUnifier();
 }

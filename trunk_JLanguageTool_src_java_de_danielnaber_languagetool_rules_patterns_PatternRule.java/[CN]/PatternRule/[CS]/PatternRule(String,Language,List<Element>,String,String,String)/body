@@ -50,4 +50,6 @@
       loopCnt++;
     }
   }
+  unifier=language.getUnifier();
+  testUnification=initUnifier();
 }

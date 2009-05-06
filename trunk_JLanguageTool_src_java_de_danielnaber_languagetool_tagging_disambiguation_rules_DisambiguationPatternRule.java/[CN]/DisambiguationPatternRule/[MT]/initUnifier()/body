@@ -1,0 +1,8 @@
+{
+  for (  final Element elem : patternElements) {
+    if (elem.isUnified()) {
+      return true;
+    }
+  }
+  return false;
+}

@@ -13,7 +13,9 @@
     int matchingTokens=0;
     int prevSkipNext=0;
     int skipShiftTotal=0;
-    language.getUnifier().reset();
+    if (testUnification) {
+      unifier.reset();
+    }
     for (int k=0; k < patternSize; k++) {
       final Element prevElement=elem;
       elem=patternElements.get(k);
