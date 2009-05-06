@@ -7,12 +7,7 @@
       boolean allFeatsUnified=true;
       for (      final String feat : features) {
         boolean featUnified=false;
-        if (StringTools.isEmpty(type)) {
-          types=equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
-        }
- else {
-          types=type.split(FEATURE_SEPARATOR);
-        }
+        types=getTypes(feat,type);
         for (        final String typename : types) {
           if (featuresFound.get(i) && equivalencesMatched.get(i).containsKey(feat) && equivalencesMatched.get(i).get(feat).contains(typename)) {
             final Element testElem=equivalenceTypes.get(feat + FEATURE_TYPE_SEPARATOR + typename);

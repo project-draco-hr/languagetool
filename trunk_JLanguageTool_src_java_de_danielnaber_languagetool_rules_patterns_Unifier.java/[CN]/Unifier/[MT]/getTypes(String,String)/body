@@ -1,0 +1,6 @@
+{
+  if (StringTools.isEmpty(type)) {
+    return equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
+  }
+  return type.split(FEATURE_SEPARATOR);
+}

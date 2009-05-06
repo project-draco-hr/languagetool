@@ -14,12 +14,7 @@
       equivalencesMatched.add(new HashMap<String,Set<String>>());
     }
     for (    final String feat : features) {
-      if (StringTools.isEmpty(type)) {
-        types=equivalenceFeatures.get(feat).toArray(new String[equivalenceFeatures.get(feat).size()]);
-      }
- else {
-        types=type.split(FEATURE_SEPARATOR);
-      }
+      types=getTypes(feat,type);
       for (      final String typename : types) {
         final Element testElem=equivalenceTypes.get(feat + FEATURE_TYPE_SEPARATOR + typename);
         if (testElem == null) {
