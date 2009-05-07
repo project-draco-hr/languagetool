@@ -1,5 +1,3 @@
 {
-  this.token=token;
-  this.posTag=posTag;
-  this.lemma=lemma;
+  this(token,posTag,lemma,0);
 }

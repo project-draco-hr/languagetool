@@ -1,8 +1,8 @@
 {
   final int numReadings=prevToken.getReadingsLength();
   boolean matched=false;
-  for (int p=0; p < numReadings; p++) {
-    matched|=isMatchedByPreviousException(prevToken.getAnalyzedToken(p));
+  for (int i=0; i < numReadings; i++) {
+    matched|=isMatchedByPreviousException(prevToken.getAnalyzedToken(i));
     if (matched) {
       break;
     }

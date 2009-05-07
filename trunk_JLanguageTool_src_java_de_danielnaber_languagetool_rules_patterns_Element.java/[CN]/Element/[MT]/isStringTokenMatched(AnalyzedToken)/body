@@ -1,30 +1,16 @@
 {
-  String testToken=null;
-  if (inflected) {
-    testToken=token.getLemma();
-    if (testToken == null) {
-      testToken=token.getToken();
-    }
-  }
- else {
-    testToken=token.getToken();
-  }
+  final String testToken=getTestToken(token);
   if (stringRegExp) {
-    if (testToken != null) {
-      if (m == null) {
-        m=p.matcher(testToken);
-      }
- else {
-        m.reset(testToken);
-      }
-      return m.matches();
+    if (m == null) {
+      m=p.matcher(testToken);
     }
-  }
  else {
-    if (caseSensitive) {
-      return stringToken.equals(testToken);
+      m.reset(testToken);
     }
-    return stringToken.equalsIgnoreCase(testToken);
+    return m.matches();
   }
-  return false;
+  if (caseSensitive) {
+    return stringToken.equals(testToken);
+  }
+  return stringToken.equalsIgnoreCase(testToken);
 }

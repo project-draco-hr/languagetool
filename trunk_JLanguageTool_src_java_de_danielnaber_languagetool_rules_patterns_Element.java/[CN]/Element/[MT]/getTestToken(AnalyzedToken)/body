@@ -1,0 +1,6 @@
+{
+  if (inflected) {
+    return token.getTokenInflected();
+  }
+  return token.getToken();
+}

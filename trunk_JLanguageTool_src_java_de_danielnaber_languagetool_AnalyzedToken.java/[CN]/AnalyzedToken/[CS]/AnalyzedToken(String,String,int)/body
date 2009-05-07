@@ -1,5 +1,3 @@
 {
-  this.token=token;
-  this.posTag=posTag;
-  this.startPos=startPos;
+  this(token,posTag,null,startPos);
 }
