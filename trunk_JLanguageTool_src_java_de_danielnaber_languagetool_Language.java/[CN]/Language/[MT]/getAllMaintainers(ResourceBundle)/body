@@ -1,0 +1,17 @@
+{
+  final StringBuilder maintainersInfo=new StringBuilder();
+  final List<String> toSort=new ArrayList<String>();
+  for (  final Language lang : Language.LANGUAGES) {
+    if (lang != Language.DEMO) {
+      if (lang.getMaintainers() != null) {
+        toSort.add(messages.getString(lang.getShortName()) + "-" + Arrays.toString(lang.getMaintainers()));
+      }
+    }
+  }
+  Collections.sort(toSort);
+  for (  final String lElem : toSort) {
+    maintainersInfo.append(lElem);
+    maintainersInfo.append("\n");
+  }
+  return maintainersInfo.toString();
+}
