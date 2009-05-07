@@ -27,4 +27,7 @@
   testList=w.tokenize("zicea ??merge bine??");
   assertEquals(testList.size(),7);
   assertEquals("[zicea,  , ??, merge,  , bine, ??]",testList.toString());
+  testList=w.tokenize("zicea <<merge bine>>");
+  assertEquals(testList.size(),9);
+  assertEquals("[zicea,  , <, <, merge,  , bine, >, >]",testList.toString());
 }
