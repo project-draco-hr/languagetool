@@ -33,4 +33,7 @@
   testList=w.tokenize("avea 15% ap??");
   assertEquals(testList.size(),6);
   assertEquals("[avea,  , 15, %,  , ap??]",testList.toString());
+  testList=w.tokenize("are 30??C");
+  assertEquals(testList.size(),5);
+  assertEquals("[are,  , 30, ??, C]",testList.toString());
 }
