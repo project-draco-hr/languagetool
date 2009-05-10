@@ -30,4 +30,7 @@
   testList=w.tokenize("zicea <<merge bine>>");
   assertEquals(testList.size(),9);
   assertEquals("[zicea,  , <, <, merge,  , bine, >, >]",testList.toString());
+  testList=w.tokenize("avea 15% ap??");
+  assertEquals(testList.size(),6);
+  assertEquals("[avea,  , 15, %,  , ap??]",testList.toString());
 }
