@@ -3,4 +3,8 @@
   assertEquals("A",StringTools.uppercaseFirstChar("A"));
   assertEquals("??????",StringTools.uppercaseFirstChar("??????"));
   assertEquals("??a",StringTools.uppercaseFirstChar("??a"));
+  assertEquals("'Test'",StringTools.uppercaseFirstChar("'test'"));
+  assertEquals("''Test",StringTools.uppercaseFirstChar("''test"));
+  assertEquals("''T",StringTools.uppercaseFirstChar("''t"));
+  assertEquals("'''",StringTools.uppercaseFirstChar("'''"));
 }
