@@ -1,0 +1,15 @@
+{
+  final List<RuleMatch> matches=langTool.check(s);
+  int suggFound=0;
+  for (  final RuleMatch match : matches) {
+    int pos=0;
+    while (pos != -1) {
+      pos=match.getMessage().indexOf("<suggestion>",pos + 1);
+      suggFound++;
+    }
+  }
+  if (suggFound > 0) {
+    suggFound--;
+  }
+  assertEquals(suggestionCount,suggFound);
+}

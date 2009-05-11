@@ -1,0 +1,3 @@
+int suggestionCount
+String s
+JLanguageTool langTool
