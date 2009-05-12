@@ -1,3 +1,0 @@
-{
-  return isMatched(token) | isAndGroupMatched(token);
-}

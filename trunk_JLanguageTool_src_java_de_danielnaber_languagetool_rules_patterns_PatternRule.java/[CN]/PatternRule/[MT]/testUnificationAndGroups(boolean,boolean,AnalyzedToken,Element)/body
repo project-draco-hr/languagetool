@@ -8,8 +8,11 @@
       unifier.reset();
     }
   }
-  if (lastReading) {
-    thisMatched&=elem.checkAndGroup(thisMatched);
+  if (elem.hasAndGroup()) {
+    elem.isAndGroupMatched(matchToken);
+    if (lastReading) {
+      thisMatched&=elem.checkAndGroup(thisMatched);
+    }
   }
   return thisMatched;
 }
