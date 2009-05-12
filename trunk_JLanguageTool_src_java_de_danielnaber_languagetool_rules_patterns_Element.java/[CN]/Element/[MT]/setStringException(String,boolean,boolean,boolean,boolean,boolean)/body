@@ -2,20 +2,5 @@
   final Element stringException=new Element(token,this.caseSensitive,regExp,inflected);
   stringException.setNegation(negation);
   stringException.exceptionValidNext=scopeNext;
-  exceptionValidPrevious|=scopePrevious;
-  if (exceptionList == null && !scopePrevious) {
-    exceptionList=new ArrayList<Element>();
-  }
-  if (previousExceptionList == null && scopePrevious) {
-    previousExceptionList=new ArrayList<Element>();
-  }
-  if (!(exceptionSet || scopePrevious)) {
-    exceptionSet=true;
-  }
-  if (exceptionSet && !scopePrevious) {
-    exceptionList.add(stringException);
-  }
-  if (scopePrevious) {
-    previousExceptionList.add(stringException);
-  }
+  setException(stringException,scopePrevious);
 }

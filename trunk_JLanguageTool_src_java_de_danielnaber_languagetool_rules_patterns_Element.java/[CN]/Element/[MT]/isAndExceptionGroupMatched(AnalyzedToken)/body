@@ -1,12 +1,10 @@
 {
-  boolean andGroupExceptionMatched=false;
   if (andGroupSet) {
     for (    final Element testAndGroup : andGroupList) {
-      andGroupExceptionMatched|=testAndGroup.isExceptionMatched(token);
-      if (andGroupExceptionMatched) {
-        return andGroupExceptionMatched;
+      if (testAndGroup.isExceptionMatched(token)) {
+        return true;
       }
     }
   }
-  return andGroupExceptionMatched;
+  return false;
 }

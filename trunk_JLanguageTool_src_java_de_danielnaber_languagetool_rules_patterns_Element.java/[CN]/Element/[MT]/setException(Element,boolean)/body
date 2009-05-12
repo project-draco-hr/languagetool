@@ -1,0 +1,20 @@
+{
+  exceptionValidPrevious|=scopePrevious;
+  if (exceptionList == null && !scopePrevious) {
+    exceptionList=new ArrayList<Element>();
+  }
+  if (previousExceptionList == null && scopePrevious) {
+    previousExceptionList=new ArrayList<Element>();
+  }
+  if (scopePrevious) {
+    previousExceptionList.add(elem);
+  }
+ else {
+    if (!exceptionSet) {
+      exceptionSet=true;
+    }
+    if (exceptionSet) {
+      exceptionList.add(elem);
+    }
+  }
+}
