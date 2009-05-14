@@ -64,6 +64,8 @@
   testSplit(new String[]{"Are mere, pere, etc. dar nu are alune."});
   testSplit(new String[]{"Are mere, pere, etc. ","Nu are alune."});
   testSplit(new String[]{"Are mere, pere, ??.a. dar nu are alune."});
+  testSplit(new String[]{"A fost ??i la M.Ap.N. dar nu l-au primit. "});
+  testSplit(new String[]{"A fost ??i la M.Ap.N. ","Nu l-au primit. "});
   testSplit(new String[]{"Apo' da' tulai (sic!) c?? mult mai e de mers."});
   testSplit(new String[]{"Apo' da' tulai(sic!) c?? mult mai e de mers."});
   testSplit(new String[]{"Aici este o fraz?? [???] mult prescurtat??."});
