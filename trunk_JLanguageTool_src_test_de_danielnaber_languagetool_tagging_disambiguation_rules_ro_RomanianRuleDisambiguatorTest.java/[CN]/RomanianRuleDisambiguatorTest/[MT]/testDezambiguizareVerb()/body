@@ -1,0 +1,7 @@
+{
+  TestTools.myAssert("vom participa la","/[null]SENT_START vom/[vrea]V0p1000ivv  /[null]null participa/[participa]V000000f00|participa/[participa]V0s3000ii0  /[null]null la/[la]Sms3anc000|la/[la]P000000000",tokenizer,sentenceTokenizer,tagger,disamb2);
+  TestTools.myAssert("vom participa la","/[null]SENT_START vom/[vrea]V0p1000ivv  /[null]null participa/[participa]V000000f00  /[null]null la/[la]Sms3anc000|la/[la]P000000000",tokenizer,sentenceTokenizer,tagger,disambiguator);
+  TestTools.myAssert("vom culege","/[null]SENT_START vom/[vrea]V0p1000ivv  /[null]null culege/[culege]V0s3000iz0|culege/[culege]V0s2000m00|culege/[culege]V000000f00",tokenizer,sentenceTokenizer,tagger,disamb2);
+  TestTools.myAssert("vom culege","/[null]SENT_START vom/[vrea]V0p1000ivv  /[null]null culege/[culege]V000000f00",tokenizer,sentenceTokenizer,tagger,disambiguator);
+  TestTools.myAssert("ve??i culege","/[null]SENT_START ve??i/[vrea]V0p2000ivv  /[null]null culege/[culege]V000000f00",tokenizer,sentenceTokenizer,tagger,disambiguator);
+}
