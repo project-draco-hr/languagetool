@@ -11,7 +11,7 @@
     }
   }
   if (precSpace && !follSpace) {
-    if ("'".equals(token) && i < tokens.length && "em".equals(tokens[i + 1].getToken())) {
+    if ("'".equals(token) && i + 1 < tokens.length && "em".equals(tokens[i + 1].getToken())) {
       return false;
     }
   }
