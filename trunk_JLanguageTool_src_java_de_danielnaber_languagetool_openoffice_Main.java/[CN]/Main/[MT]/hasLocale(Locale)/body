@@ -1,8 +1,13 @@
 {
-  for (  final Language element : Language.LANGUAGES) {
-    if (element.getShortName().equals(locale.Language)) {
-      return true;
+  try {
+    for (    final Language element : Language.LANGUAGES) {
+      if (element.getShortName().equals(locale.Language)) {
+        return true;
+      }
     }
+  }
+ catch (  final Throwable t) {
+    showError(t);
   }
   return false;
 }
