@@ -1,10 +1,7 @@
 {
-  tokenNegated=false;
-  tokenInflected=false;
   posNegation=false;
   posRegExp=false;
   inToken=false;
-  stringRegExp=false;
   tokenSpaceBefore=false;
   tokenSpaceBeforeSet=false;
   resetException();
