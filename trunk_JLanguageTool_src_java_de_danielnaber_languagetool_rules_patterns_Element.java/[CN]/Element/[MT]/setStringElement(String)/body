@@ -9,6 +9,8 @@
     if (!caseSensitive) {
       regToken=CASE_INSENSITIVE + stringToken;
     }
-    p=Pattern.compile(regToken);
+    if (!"\\0".equals(token)) {
+      p=Pattern.compile(regToken);
+    }
   }
 }

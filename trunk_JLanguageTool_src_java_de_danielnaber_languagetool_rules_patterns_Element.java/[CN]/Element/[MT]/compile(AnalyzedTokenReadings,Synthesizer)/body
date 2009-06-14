@@ -1,4 +1,6 @@
 {
+  m=null;
+  p=null;
   tokenReference.setToken(token);
   tokenReference.setSynthesizer(synth);
   if (StringTools.isEmpty(referenceString)) {
