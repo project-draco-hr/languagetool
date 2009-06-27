@@ -1,0 +1,4 @@
+{
+  tagger=new SlovakTagger();
+  tokenizer=new WordTokenizer();
+}
