@@ -2,6 +2,7 @@
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   String prevToken="";
+  int skipped=0;
   for (int i=1; i < tokens.length; i++) {
     String token=tokens[i].getToken();
     boolean doesRequireA=false;
@@ -13,6 +14,7 @@
     }
     token=token.replaceAll("[^a-zA-Z0-9\\.']","");
     if (StringTools.isEmpty(token)) {
+      skipped++;
       continue;
     }
     final char tokenFirstChar=token.charAt(0);
@@ -55,12 +57,13 @@
       msg="Use <suggestion>" + repl + "</suggestion> instead of '"+ prevToken+ "' if the following "+ "word doesn't start with a vowel sound, e.g. 'a sentence', "+ "'a university'";
     }
     if (msg != null) {
-      final int prevPos=tokens[i - 1].getStartPos();
+      final int prevPos=tokens[i - skipped - 1].getStartPos();
       final RuleMatch ruleMatch=new RuleMatch(this,prevPos,prevPos + prevToken.length(),msg,"Wrong article");
       ruleMatches.add(ruleMatch);
     }
     if (tokens[i].hasPosTag("DT")) {
       prevToken=token;
+      skipped=0;
     }
  else {
       prevToken="";
