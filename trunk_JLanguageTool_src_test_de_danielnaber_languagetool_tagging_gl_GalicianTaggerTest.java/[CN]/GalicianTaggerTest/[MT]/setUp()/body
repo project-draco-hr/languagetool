@@ -1,0 +1,4 @@
+{
+  tagger=new GalicianTagger();
+  tokenizer=new WordTokenizer();
+}
