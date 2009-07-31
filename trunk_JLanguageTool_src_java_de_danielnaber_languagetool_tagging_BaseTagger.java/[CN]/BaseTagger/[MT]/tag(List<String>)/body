@@ -23,15 +23,15 @@
           addTokens(word,upperTaggerTokens,l,pos);
         }
  else {
-          l.add(new AnalyzedToken(word,null,pos));
+          l.add(new AnalyzedToken(word,null,null));
         }
       }
  else {
-        l.add(new AnalyzedToken(word,null,pos));
+        l.add(new AnalyzedToken(word,null,null));
       }
     }
+    tokenReadings.add(new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]),pos));
     pos+=word.length();
-    tokenReadings.add(new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()])));
   }
   return tokenReadings;
 }

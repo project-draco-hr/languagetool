@@ -28,9 +28,6 @@
  else   if (!posTag.equals(other.posTag)) {
     return false;
   }
-  if (startPos != other.startPos) {
-    return false;
-  }
   if (token == null) {
     if (other.token != null) {
       return false;

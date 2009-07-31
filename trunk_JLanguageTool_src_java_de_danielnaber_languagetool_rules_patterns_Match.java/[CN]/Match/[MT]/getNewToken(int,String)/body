@@ -9,7 +9,7 @@
       if (StringTools.isEmpty(lemma)) {
         lemma=formattedToken.getAnalyzedToken(0).getLemma();
       }
-      list.add(new AnalyzedToken(token,posTag,lemma,formattedToken.getStartPos()));
+      list.add(new AnalyzedToken(token,posTag,lemma));
       list.get(list.size() - 1).setWhitespaceBefore(formattedToken.isWhitespaceBefore());
     }
   }

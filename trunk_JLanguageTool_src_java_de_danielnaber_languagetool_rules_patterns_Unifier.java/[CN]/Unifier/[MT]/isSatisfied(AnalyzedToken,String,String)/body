@@ -38,7 +38,7 @@
     }
     if (unified) {
       if (tokCnt == 0 || tokSequence.isEmpty()) {
-        tokSequence.add(new AnalyzedTokenReadings(aToken));
+        tokSequence.add(new AnalyzedTokenReadings(aToken,0));
       }
  else {
         tokSequence.get(0).addReading(aToken);

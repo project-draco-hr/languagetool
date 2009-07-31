@@ -5,7 +5,7 @@
       final String lemma=taggedTokens[i];
       final String[] tagsArr=taggedTokens[i + 1].split("\\+");
       for (      final String currTag : tagsArr) {
-        l.add(new AnalyzedToken(word,currTag,lemma,pos));
+        l.add(new AnalyzedToken(word,currTag,lemma));
       }
       i=i + 2;
     }

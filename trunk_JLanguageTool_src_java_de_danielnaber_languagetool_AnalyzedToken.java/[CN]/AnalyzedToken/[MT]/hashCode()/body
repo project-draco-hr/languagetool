@@ -4,7 +4,6 @@
   result=prime * result + (isWhitespaceBefore ? 1231 : 1237);
   result=prime * result + ((lemma == null) ? 0 : lemma.hashCode());
   result=prime * result + ((posTag == null) ? 0 : posTag.hashCode());
-  result=prime * result + startPos;
   result=prime * result + ((token == null) ? 0 : token.hashCode());
   return result;
 }

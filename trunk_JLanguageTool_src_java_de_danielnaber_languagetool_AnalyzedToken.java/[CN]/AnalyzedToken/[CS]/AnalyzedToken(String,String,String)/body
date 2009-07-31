@@ -1,3 +1,14 @@
 {
-  this(token,posTag,lemma,0);
+  if (token == null) {
+    throw new NullPointerException("Token cannot be null!");
+  }
+  this.token=token;
+  this.posTag=posTag;
+  this.lemma=lemma;
+  if (lemma == null) {
+    tokenInflected=token;
+  }
+ else {
+    tokenInflected=lemma;
+  }
 }

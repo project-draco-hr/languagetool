@@ -1,1 +1,2 @@
 AnalyzedGermanToken[] aTokens
+int startPos

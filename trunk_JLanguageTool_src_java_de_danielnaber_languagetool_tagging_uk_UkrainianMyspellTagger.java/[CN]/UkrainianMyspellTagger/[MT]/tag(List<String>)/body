@@ -57,10 +57,10 @@
       }
     }
     if (posTags == null && lowerPosTags == null) {
-      analyzedTokens.add(new AnalyzedToken(word,null,pos));
+      analyzedTokens.add(new AnalyzedToken(word,null,null));
     }
+    tokenReadings.add(new AnalyzedTokenReadings(analyzedTokens.toArray(new AnalyzedToken[analyzedTokens.size()]),pos));
     pos+=word.length();
-    tokenReadings.add(new AnalyzedTokenReadings(analyzedTokens.toArray(new AnalyzedToken[analyzedTokens.size()])));
   }
   return tokenReadings;
 }

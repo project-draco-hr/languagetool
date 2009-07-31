@@ -24,6 +24,7 @@ case UNIFY:
     if (unifiedTokens != null) {
       if (unifiedTokens.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
         for (int i=0; i < unifiedTokens.length; i++) {
+          unifiedTokens[i].setStartPos(whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].getStartPos());
           whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)]=unifiedTokens[i];
         }
       }
@@ -67,7 +68,7 @@ lemma=whTokens[fromPos].getAnalyzedToken(l).getLemma();
 if (StringTools.isEmpty(lemma)) {
 lemma=whTokens[fromPos].getAnalyzedToken(0).getLemma();
 }
-final AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma,whTokens[fromPos].getStartPos()));
+final AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma),whTokens[fromPos].getStartPos());
 whTokens[fromPos]=toReplace;
 whTokens[fromPos].setWhitespaceBefore(spaceBefore);
 }

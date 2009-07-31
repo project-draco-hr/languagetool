@@ -2,7 +2,7 @@
   if (taggedTokens != null) {
     int i=0;
     while (i < taggedTokens.length) {
-      l.add(new AnalyzedToken(word,taggedTokens[i + 1],taggedTokens[i],pos));
+      l.add(new AnalyzedToken(word,taggedTokens[i + 1],taggedTokens[i]));
       i=i + 2;
     }
   }

@@ -1,5 +1,0 @@
-{
-  anTokReadings=r.clone();
-  this.startPos=anTokReadings[0].getStartPos();
-  init();
-}

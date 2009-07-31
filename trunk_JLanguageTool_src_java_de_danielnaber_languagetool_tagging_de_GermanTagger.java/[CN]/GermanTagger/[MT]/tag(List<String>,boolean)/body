@@ -27,7 +27,7 @@
       if (!StringTools.isEmpty(word.trim())) {
         List<String> compoundParts=compoundTokenizer.tokenize(word);
         if (compoundParts.size() <= 1) {
-          l.add(new AnalyzedGermanToken(word,null,pos));
+          l.add(new AnalyzedGermanToken(word,null,null));
         }
  else {
           String lastPart=compoundParts.get(compoundParts.size() - 1);
@@ -39,16 +39,16 @@
             tagWord(taggerTokens,word,l);
           }
  else {
-            l.add(new AnalyzedGermanToken(word,null,pos));
+            l.add(new AnalyzedGermanToken(word,null,null));
           }
         }
       }
  else {
-        l.add(new AnalyzedGermanToken(word,null,pos));
+        l.add(new AnalyzedGermanToken(word,null,null));
       }
     }
+    tokenReadings.add(new AnalyzedGermanTokenReadings(l.toArray(new AnalyzedGermanToken[l.size()]),pos));
     pos+=word.length();
-    tokenReadings.add(new AnalyzedGermanTokenReadings(l.toArray(new AnalyzedGermanToken[l.size()])));
   }
   return tokenReadings;
 }
