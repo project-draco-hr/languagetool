@@ -1,4 +1,5 @@
 {
+  super(id,description,language,elements,true);
   if (id == null) {
     throw new NullPointerException("id cannot be null");
   }
@@ -14,13 +15,7 @@
   if (disamb == null && posSelect == null && disambAction != DisambiguatorAction.UNIFY && disambAction != DisambiguatorAction.ADD && disambAction != DisambiguatorAction.REMOVE) {
     throw new NullPointerException("disambiguated POS cannot be null");
   }
-  this.id=id;
-  this.language=language;
-  this.description=description;
-  this.patternElements=new ArrayList<Element>(elements);
   this.disambiguatedPOS=disamb;
   this.matchElement=posSelect;
   this.disAction=disambAction;
-  this.unifier=language.getUnifier();
-  testUnification=initUnifier();
 }

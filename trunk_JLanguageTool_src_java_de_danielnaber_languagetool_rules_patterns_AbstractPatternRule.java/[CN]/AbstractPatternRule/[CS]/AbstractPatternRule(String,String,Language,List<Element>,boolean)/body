@@ -1,0 +1,9 @@
+{
+  this.id=id;
+  this.description=description;
+  this.patternElements=new ArrayList<Element>(elements);
+  this.language=language;
+  this.getUnified=getUnified;
+  unifier=language.getUnifier();
+  testUnification=initUnifier();
+}

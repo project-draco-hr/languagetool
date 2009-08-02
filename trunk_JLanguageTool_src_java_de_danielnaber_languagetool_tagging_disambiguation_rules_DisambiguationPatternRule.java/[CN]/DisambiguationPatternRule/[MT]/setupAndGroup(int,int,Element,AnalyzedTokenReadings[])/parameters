@@ -1,4 +1,0 @@
-int readNo
-int firstMatchToken
-Element elem
-AnalyzedTokenReadings[] tokens

@@ -1,16 +1,16 @@
 {
   final String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,message);
   int correctedStPos=0;
-  if (startPosCorr > 0) {
-    for (int l=0; l <= startPosCorr; l++) {
+  if (startPositionCorrection > 0) {
+    for (int l=0; l <= startPositionCorrection; l++) {
       correctedStPos+=tokenPositions[l];
     }
     correctedStPos--;
   }
   int correctedEndPos=0;
-  if (endPosCorr < 0) {
+  if (endPositionCorrection < 0) {
     int l=0;
-    while (l > endPosCorr) {
+    while (l > endPositionCorrection) {
       correctedEndPos-=tokenPositions[matchingTokens + l - 1];
       l--;
     }

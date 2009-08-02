@@ -1,14 +1,14 @@
 {
   final StringBuilder sb=new StringBuilder();
   sb.append("<rule id=\"");
-  sb.append(StringTools.escapeXML(id));
+  sb.append(StringTools.escapeXML(getId()));
   sb.append("\" name=\"");
-  sb.append(StringTools.escapeXML(description));
+  sb.append(StringTools.escapeXML(getDescription()));
   sb.append("\">\n");
   sb.append("<pattern mark_from=\"");
-  sb.append(startPosCorr);
+  sb.append(startPositionCorrection);
   sb.append("\" mark_to=\"");
-  sb.append(endPosCorr);
+  sb.append(endPositionCorrection);
   sb.append("\"");
   if (!patternElements.isEmpty() && patternElements.get(0).getCaseSensitive()) {
     sb.append(" case_sensitive=\"yes\"");
