@@ -6,4 +6,16 @@
   this.getUnified=getUnified;
   unifier=language.getUnifier();
   testUnification=initUnifier();
+  sentStart=patternElements.get(0).isSentStart();
+  if (!testUnification) {
+    for (    Element elem : patternElements) {
+      if (elem.hasAndGroup()) {
+        groupsOrUnification=true;
+        break;
+      }
+    }
+  }
+ else {
+    groupsOrUnification=true;
+  }
 }

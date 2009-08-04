@@ -11,11 +11,9 @@
       unifier.reset();
     }
   }
-  if (elem.hasAndGroup()) {
-    elem.isAndGroupMatched(matchToken);
-    if (lastReading) {
-      thisMatched&=elem.checkAndGroup(thisMatched);
-    }
+  elem.addMemberAndGroup(matchToken);
+  if (lastReading) {
+    thisMatched&=elem.checkAndGroup(thisMatched);
   }
   return thisMatched;
 }
