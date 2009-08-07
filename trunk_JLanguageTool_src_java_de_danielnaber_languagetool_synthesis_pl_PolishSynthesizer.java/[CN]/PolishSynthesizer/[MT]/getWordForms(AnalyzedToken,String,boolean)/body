@@ -11,10 +11,8 @@
   }
  else {
     wordForms=synthesizer.lookup(token.getLemma() + "|" + posTag);
-    if (wordForms != null) {
-      for (      WordData wd : wordForms) {
-        forms.add(wd.getStem().toString());
-      }
+    for (    WordData wd : wordForms) {
+      forms.add(wd.getStem().toString());
     }
   }
   return forms;
