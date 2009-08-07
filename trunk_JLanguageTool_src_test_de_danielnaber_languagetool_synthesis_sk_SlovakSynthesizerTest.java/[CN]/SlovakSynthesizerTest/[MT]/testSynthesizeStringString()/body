@@ -1,6 +1,6 @@
 {
   SlovakSynthesizer synth=new SlovakSynthesizer();
-  assertNull(synth.synthesize(dummyToken("blablabla"),"blablabla"));
+  assertEquals(synth.synthesize(dummyToken("blablabla"),"blablabla").length,0);
   assertEquals("[??asopisu]",Arrays.toString(synth.synthesize(dummyToken("??asopis"),"SSis2")));
   assertEquals("[??asopisy, ??asopisov, ??asopisom, ??asopisy, ??asopisy, ??asopisoch, ??asopismi, ??asopis, ??asopisu, ??asopisu, ??asopis, ??asopis, ??asopise, ??asopisom]",Arrays.toString(synth.synthesize(dummyToken("??asopis"),"SS.*",true)));
 }

@@ -1,0 +1,24 @@
+{
+  if (posTagRegExp) {
+    if (possibleTags == null) {
+      possibleTags=SynthesizerTools.loadWords(Tools.getStream(tagsFileName));
+    }
+    if (synthesizer == null) {
+      final URL url=this.getClass().getResource(resourceFileName);
+      synthesizer=new DictionaryLookup(Dictionary.read(url));
+    }
+    final Pattern p=Pattern.compile(posTag);
+    final ArrayList<String> results=new ArrayList<String>();
+    for (    final String tag : possibleTags) {
+      final Matcher m=p.matcher(tag);
+      if (m.matches()) {
+        List<WordData> wordForms=synthesizer.lookup(token.getLemma() + "|" + tag);
+        if (wordForms != null) {
+          for (          WordData wd : wordForms)           results.add(wd.getStem().toString());
+        }
+      }
+    }
+    return results.toArray(new String[results.size()]);
+  }
+  return synthesize(token,posTag);
+}

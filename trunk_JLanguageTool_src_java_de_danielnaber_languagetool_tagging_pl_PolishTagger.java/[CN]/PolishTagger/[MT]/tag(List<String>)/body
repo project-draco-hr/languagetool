@@ -1,26 +1,28 @@
 {
-  String[] taggerTokens;
+  List<AnalyzedToken> taggerTokens;
+  List<AnalyzedToken> lowerTaggerTokens;
+  List<AnalyzedToken> upperTaggerTokens;
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
-    setFileName();
-    morfologik=new Lametyzator();
+    final URL url=this.getClass().getResource(RESOURCE_FILENAME);
+    morfologik=new DictionaryLookup(Dictionary.read(url));
   }
-  for (  final String word : sentenceTokens) {
+  for (  String word : sentenceTokens) {
     final List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
-    String[] lowerTaggerTokens=null;
-    taggerTokens=morfologik.stemAndForm(word);
-    if (!word.equals(word.toLowerCase(plLocale))) {
-      lowerTaggerTokens=morfologik.stemAndForm(word.toLowerCase(plLocale));
+    final String lowerWord=word.toLowerCase(plLocale);
+    taggerTokens=asAnalyzedTokenList(word,morfologik.lookup(word));
+    lowerTaggerTokens=asAnalyzedTokenList(word,morfologik.lookup(lowerWord));
+    boolean isLowercase=word.equals(lowerWord);
+    addTokens(taggerTokens,l);
+    if (!isLowercase) {
+      addTokens(lowerTaggerTokens,l);
     }
-    addTokens(word,taggerTokens,l,pos);
-    addTokens(word,lowerTaggerTokens,l,pos);
-    if (lowerTaggerTokens == null && taggerTokens == null) {
-      if (word.equals(word.toLowerCase(plLocale))) {
-        String[] upperTaggerTokens=null;
-        upperTaggerTokens=morfologik.stemAndForm(StringTools.uppercaseFirstChar(word));
-        if (upperTaggerTokens != null) {
-          addTokens(word,upperTaggerTokens,l,pos);
+    if (lowerTaggerTokens.isEmpty() && taggerTokens.isEmpty()) {
+      if (isLowercase) {
+        upperTaggerTokens=asAnalyzedTokenList(word,morfologik.lookup(StringTools.uppercaseFirstChar(word)));
+        if (!upperTaggerTokens.isEmpty()) {
+          addTokens(upperTaggerTokens,l);
         }
  else {
           l.add(new AnalyzedToken(word,null,null));

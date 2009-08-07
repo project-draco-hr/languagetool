@@ -1,0 +1,7 @@
+{
+  List<AnalyzedToken> aTokenList=new ArrayList<AnalyzedToken>();
+  for (  WordData wd : wdList) {
+    aTokenList.add(asAnalyzedToken(word,wd));
+  }
+  return aTokenList;
+}

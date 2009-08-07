@@ -1,3 +1,0 @@
-{
-  System.setProperty(Lametyzator.PROPERTY_NAME_LAMETYZATOR_DICTIONARY,"/resource/ru/russian.dict");
-}

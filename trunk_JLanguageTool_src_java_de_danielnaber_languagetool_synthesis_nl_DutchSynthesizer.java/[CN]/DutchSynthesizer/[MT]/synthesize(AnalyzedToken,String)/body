@@ -1,9 +1,0 @@
-{
-  if (synthesizer == null) {
-    setFileName();
-    synthesizer=new Lametyzator();
-  }
-  String[] wordForms=null;
-  wordForms=synthesizer.stem(token.getLemma() + "|" + posTag);
-  return wordForms;
-}

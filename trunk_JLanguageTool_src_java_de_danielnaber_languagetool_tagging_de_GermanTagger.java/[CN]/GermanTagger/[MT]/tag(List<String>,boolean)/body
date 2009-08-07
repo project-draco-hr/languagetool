@@ -4,8 +4,8 @@
   List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
-    setFileName();
-    morfologik=new Lametyzator();
+    final URL url=this.getClass().getResource(DICT_FILENAME);
+    morfologik=new DictionaryLookup(Dictionary.read(url));
   }
   if (manualTagger == null) {
     manualTagger=new ManualTagger(Tools.getStream(USER_DICT_FILENAME));

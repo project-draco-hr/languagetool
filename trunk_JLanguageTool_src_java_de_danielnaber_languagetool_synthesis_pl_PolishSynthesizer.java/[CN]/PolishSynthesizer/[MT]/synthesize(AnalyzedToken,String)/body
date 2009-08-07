@@ -3,8 +3,8 @@
     return null;
   }
   if (synthesizer == null) {
-    setFileName();
-    synthesizer=new Lametyzator();
+    final URL url=this.getClass().getResource(RESOURCE_FILENAME);
+    synthesizer=new DictionaryLookup(Dictionary.read(url));
   }
   boolean isNegated=false;
   if (token.getPOSTag() != null) {
@@ -13,5 +13,6 @@
   if (posTag.indexOf('+') > 0) {
     return synthesize(token,posTag,true);
   }
-  return getWordForms(token,posTag,isNegated);
+  List<String> forms=getWordForms(token,posTag,isNegated);
+  return forms.toArray(new String[forms.size()]);
 }

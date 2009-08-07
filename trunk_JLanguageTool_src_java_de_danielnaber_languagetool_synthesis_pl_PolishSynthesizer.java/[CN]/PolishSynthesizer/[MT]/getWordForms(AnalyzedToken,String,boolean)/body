@@ -1,17 +1,21 @@
 {
-  String[] wordForms=null;
+  List<String> forms=new ArrayList<String>();
+  List<WordData> wordForms;
   if (isNegated) {
-    wordForms=synthesizer.stem(token.getLemma() + "|" + posTag.replaceFirst(NEGATION_TAG,POTENTIAL_NEGATION_TAG));
+    wordForms=synthesizer.lookup(token.getLemma() + "|" + posTag.replaceFirst(NEGATION_TAG,POTENTIAL_NEGATION_TAG));
     if (wordForms != null) {
-      final String[] negForms=wordForms;
-      for (int i=0; i < wordForms.length; i++) {
-        negForms[i]="nie" + wordForms[i];
+      for (      WordData wd : wordForms) {
+        forms.add("nie" + wd.getStem().toString());
       }
-      wordForms=negForms;
     }
   }
  else {
-    wordForms=synthesizer.stem(token.getLemma() + "|" + posTag);
+    wordForms=synthesizer.lookup(token.getLemma() + "|" + posTag);
+    if (wordForms != null) {
+      for (      WordData wd : wordForms) {
+        forms.add(wd.getStem().toString());
+      }
+    }
   }
-  return wordForms;
+  return forms;
 }

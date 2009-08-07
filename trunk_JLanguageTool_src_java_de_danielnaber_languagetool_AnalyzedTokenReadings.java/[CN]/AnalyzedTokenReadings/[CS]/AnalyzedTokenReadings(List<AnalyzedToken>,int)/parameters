@@ -1,0 +1,2 @@
+List<AnalyzedToken> list
+int startPos

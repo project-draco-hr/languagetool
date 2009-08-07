@@ -1,7 +1,0 @@
-{
-  if (synthesizer == null) {
-    setFileName();
-    synthesizer=new Lametyzator();
-  }
-  return synthesizer.stem(token.getLemma() + "|" + posTag);
-}

@@ -1,6 +1,6 @@
 {
   RomanianSynthesizer synth=new RomanianSynthesizer();
-  assertNull(synth.synthesize(dummyToken("blablabla"),"blablabla"));
+  assertEquals(synth.synthesize(dummyToken("blablabla"),"blablabla").length,0);
   assertEquals("[alege]",Arrays.toString(synth.synthesize(dummyToken("alege"),"V000000f00")));
   assertEquals("[alege??i]",Arrays.toString(synth.synthesize(dummyToken("alege"),"V0p2000cz0")));
   assertEquals("[fi]",Arrays.toString(synth.synthesize(dummyToken("fi"),"V000000f0f")));

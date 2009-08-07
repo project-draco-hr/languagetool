@@ -1,6 +1,6 @@
 {
   PolishSynthesizer synth=new PolishSynthesizer();
-  assertNull(synth.synthesize(dummyToken("blablabla"),"blablabla"));
+  assertEquals(synth.synthesize(dummyToken("blablabla"),"blablabla").length,0);
   assertEquals("[Aaru]",Arrays.toString(synth.synthesize(dummyToken("Aar"),"subst:sg:gen:m3")));
   assertEquals("[Abchazem]",Arrays.toString(synth.synthesize(dummyToken("Abchaz"),"subst:sg:inst:m1")));
   assertEquals("[niedu??y]",Arrays.toString(synth.synthesize(dummyToken("du??y"),"adj:sg:nom.voc:m1.m2:pos:neg")));
