@@ -5,8 +5,6 @@
         setupRef(firstMatchToken,andElement,tokens);
       }
     }
-    if (readNo == 0) {
-      elem.setupAndGroup();
-    }
+    elem.setupAndGroup();
   }
 }

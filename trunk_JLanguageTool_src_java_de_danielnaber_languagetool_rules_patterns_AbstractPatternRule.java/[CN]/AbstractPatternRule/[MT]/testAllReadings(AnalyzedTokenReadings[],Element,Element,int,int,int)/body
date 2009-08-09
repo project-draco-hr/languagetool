@@ -1,10 +1,13 @@
 {
   boolean thisMatched=false;
   final int numberOfReadings=tokens[tokenNo].getReadingsLength();
+  setupAndGroup(firstMatchToken,elem,tokens);
   for (int l=0; l < numberOfReadings; l++) {
     final AnalyzedToken matchToken=tokens[tokenNo].getAnalyzedToken(l);
     prevMatched=prevMatched || prevSkipNext > 0 && prevElement != null && prevElement.isMatchedByScopeNextException(matchToken);
-    setupAndGroup(l,firstMatchToken,elem,tokens);
+    if (prevMatched) {
+      return false;
+    }
     thisMatched=thisMatched || elem.isMatched(matchToken);
     if (groupsOrUnification) {
       thisMatched&=testUnificationAndGroups(thisMatched,l + 1 == numberOfReadings,matchToken,elem);
@@ -14,9 +17,9 @@
     for (int l=0; l < numberOfReadings; l++) {
       if (elem.isExceptionMatchedCompletely(tokens[tokenNo].getAnalyzedToken(l)))       return false;
     }
+    if (tokenNo > 0 && elem.hasPreviousException()) {
+      if (elem.isMatchedByPreviousException(tokens[tokenNo - 1]))       return false;
+    }
   }
-  if (tokenNo > 0 && elem.hasPreviousException()) {
-    if (elem.isMatchedByPreviousException(tokens[tokenNo - 1]))     return false;
-  }
-  return thisMatched && !prevMatched;
+  return thisMatched;
 }
