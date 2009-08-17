@@ -9,6 +9,9 @@
       return false;
     }
     thisMatched=thisMatched || elem.isMatched(matchToken);
+    if (!thisMatched && l > 0 && !elem.isInflected() && elem.getPOStag() == null) {
+      return false;
+    }
     if (groupsOrUnification) {
       thisMatched&=testUnificationAndGroups(thisMatched,l + 1 == numberOfReadings,matchToken,elem);
     }
