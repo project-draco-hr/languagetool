@@ -1,4 +1,7 @@
 {
+  if (testWhitespace && !isWhitespaceBefore(token)) {
+    return false;
+  }
   boolean matched=false;
   if (testString) {
     matched=(isStringTokenMatched(token) ^ negation) && (isPosTokenMatched(token) ^ posNegation);
@@ -9,5 +12,5 @@
   if (andGroupSet) {
     andGroupCheck[0]|=matched;
   }
-  return matched && (!testWhitespace || isWhitespaceBefore(token));
+  return matched;
 }
