@@ -1,0 +1,14 @@
+{
+  int i=0;
+  while (i < taggerTokens.length) {
+    if (compoundParts != null) {
+      List<String> allButLastPart=compoundParts.subList(0,compoundParts.size() - 1);
+      String lemma=StringTools.listToString(allButLastPart,"") + StringTools.lowercaseFirstChar(taggerTokens[i]);
+      l.add(new AnalyzedGermanToken(word,taggerTokens[i + 1],lemma));
+    }
+ else {
+      l.add(new AnalyzedGermanToken(word,taggerTokens[i + 1],taggerTokens[i]));
+    }
+    i=i + 2;
+  }
+}

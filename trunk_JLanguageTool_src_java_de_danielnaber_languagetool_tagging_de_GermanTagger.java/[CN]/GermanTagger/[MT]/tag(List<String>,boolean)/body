@@ -36,7 +36,7 @@
           }
           taggerTokens=lexiconLookup(lastPart);
           if (taggerTokens != null) {
-            tagWord(taggerTokens,word,l);
+            tagWord(taggerTokens,word,l,compoundParts);
           }
  else {
             l.add(new AnalyzedGermanToken(word,null,null));
