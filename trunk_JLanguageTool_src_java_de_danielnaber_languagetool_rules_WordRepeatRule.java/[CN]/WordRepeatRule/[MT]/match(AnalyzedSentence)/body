@@ -2,7 +2,6 @@
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   String prevToken="";
-  String prevPrevToken="";
   for (int i=1; i < tokens.length; i++) {
     final String token=tokens[i].getToken();
     boolean isWord=true;
@@ -12,11 +11,8 @@
         isWord=false;
       }
     }
-    boolean germanException=false;
-    if (prevPrevToken.equals(",") && language.equals(Language.GERMAN)) {
-      germanException=true;
-    }
-    if (isWord && prevToken.toLowerCase().equals(token.toLowerCase()) && !germanException) {
+    boolean isException=ignore(tokens,i);
+    if (isWord && prevToken.toLowerCase().equals(token.toLowerCase()) && !isException) {
       final String msg=messages.getString("repetition");
       final int prevPos=tokens[i - 1].getStartPos();
       final int pos=tokens[i].getStartPos();
@@ -24,7 +20,6 @@
       ruleMatch.setSuggestedReplacement(prevToken);
       ruleMatches.add(ruleMatch);
     }
-    prevPrevToken=prevToken;
     prevToken=token;
   }
   return toRuleMatchArray(ruleMatches);

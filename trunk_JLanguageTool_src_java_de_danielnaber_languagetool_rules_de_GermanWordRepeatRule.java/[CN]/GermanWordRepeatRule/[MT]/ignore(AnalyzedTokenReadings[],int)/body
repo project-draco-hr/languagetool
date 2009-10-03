@@ -1,0 +1,6 @@
+{
+  if (position >= 2 && ",".equals(tokens[position - 2].getToken())) {
+    return true;
+  }
+  return false;
+}
