@@ -4,15 +4,14 @@
   }
  else {
     StringBuilder sb=new StringBuilder(super.getAnalyzedToken(0).getToken());
-    Set<String> printed=new HashSet<String>();
+    Set<String> elems=new TreeSet<String>();
     sb.append("[");
     for (    AnalyzedToken reading : anTokReadings) {
-      if (!printed.contains(reading.toString())) {
-        if (printed.size() > 0)         sb.append(", ");
-        sb.append(reading.toString());
+      if (!elems.contains(reading.toString())) {
+        elems.add(reading.toString());
       }
-      printed.add(reading.toString());
     }
+    sb.append(StringTools.listToString(elems,", "));
     sb.append("]");
     return sb.toString();
   }
