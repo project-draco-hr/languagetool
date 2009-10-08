@@ -50,6 +50,10 @@
     startSymbols=RO_START_SYMBOLS;
     endSymbols=RO_END_SYMBOLS;
   }
+ else   if (language.equals(Language.DANISH)) {
+    startSymbols=DK_START_SYMBOLS;
+    endSymbols=DK_END_SYMBOLS;
+  }
  else {
     startSymbols=START_SYMBOLS;
     endSymbols=END_SYMBOLS;
