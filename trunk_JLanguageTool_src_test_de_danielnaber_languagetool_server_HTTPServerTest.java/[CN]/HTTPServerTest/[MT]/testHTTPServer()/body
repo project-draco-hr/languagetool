@@ -14,6 +14,12 @@
     validator.validateXMLString(result,"/resource/api-output.dtd","matches");
     validator.checkSimpleXMLString(result);
     assertTrue(check(Language.GERMAN,"bla <script>").indexOf("<script>") == -1);
+    String germanSpecialChars=check(Language.GERMAN,"ein kleiner test. Und wieder Erwarten noch was: ???????? ????????.");
+    assertTrue("Expected special chars, got: '" + germanSpecialChars + "'",germanSpecialChars.contains("????????"));
+    String romanianSpecialChars=check(Language.ROMANIAN,"bla bla ?????????? ?????????? ??i c??teva caractere speciale");
+    assertTrue("Expected special chars, got: '" + romanianSpecialChars + "'",romanianSpecialChars.contains("??????????"));
+    String polishSpecialChars=check(Language.POLISH,"M??wi??a d??ugo, ??eby tylko m??wi?? m??wi?? d??ugo.");
+    assertTrue("Expected special chars, got: '" + polishSpecialChars + "'",polishSpecialChars.contains("m??wi??"));
   }
  catch (  Exception e) {
     throw new RuntimeException(e);

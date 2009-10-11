@@ -7,6 +7,7 @@
       throw new RuntimeException("Error: Access to " + connRequest.getLocation() + " denied");
     }
     if (allowedIPs.contains(connRequest.getIPAddressString())) {
+      fixRequestParamMap(connRequest);
       String langParam=connRequest.getParamOrNull("language");
       if (langParam == null)       throw new IllegalArgumentException("Missing 'language' parameter");
       Language lang=Language.getLanguageForShortName(langParam);

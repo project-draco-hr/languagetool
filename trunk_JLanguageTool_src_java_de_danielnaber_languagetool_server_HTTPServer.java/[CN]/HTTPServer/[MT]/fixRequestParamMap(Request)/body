@@ -1,0 +1,5 @@
+{
+  Map<String,String> paramMap=getParamMap(connRequest);
+  connRequest.getParamMap().clear();
+  connRequest.getParamMap().putAll(paramMap);
+}
