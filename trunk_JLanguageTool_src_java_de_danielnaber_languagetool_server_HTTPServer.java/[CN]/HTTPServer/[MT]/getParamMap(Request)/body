@@ -1,4 +1,5 @@
 {
+  if ((null == connRequest) || (null == connRequest.getParamString()))   return new HashMap<String,String>();
   Map<String,String> paramMap=new HashMap<String,String>();
   String[] comps=connRequest.getParamString().split("&");
   for (int i=0; i < comps.length; i++) {
