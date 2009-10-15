@@ -8,6 +8,9 @@
     }
     if (allowedIPs.contains(connRequest.getIPAddressString())) {
       fixRequestParamMap(connRequest);
+      if (connRequest.getLocation().endsWith("/Languages")) {
+        return getSupportedLanguagesAsXML();
+      }
       String langParam=connRequest.getParamOrNull("language");
       if (langParam == null)       throw new IllegalArgumentException("Missing 'language' parameter");
       Language lang=Language.getLanguageForShortName(langParam);

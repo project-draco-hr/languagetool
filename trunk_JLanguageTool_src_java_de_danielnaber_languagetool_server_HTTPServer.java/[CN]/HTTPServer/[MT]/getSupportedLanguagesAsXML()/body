@@ -1,0 +1,15 @@
+{
+  List<Language> languages=Arrays.asList(Language.REAL_LANGUAGES);
+  Collections.sort(languages,new Comparator<Language>(){
+    @Override public int compare(    Language o1,    Language o2){
+      return o1.getName().compareTo(o2.getName());
+    }
+  }
+);
+  StringBuilder xmlBuffer=new StringBuilder("<?xml version='1.0' encoding='UTF-8'?>\n<languages>\n");
+  for (  Language lang : languages) {
+    xmlBuffer.append(String.format("\t<language name=\"%s\" abbr=\"%s\" /> \n",lang.getName(),lang.getShortName()));
+  }
+  xmlBuffer.append("</languages>\n");
+  return xmlBuffer.toString();
+}
