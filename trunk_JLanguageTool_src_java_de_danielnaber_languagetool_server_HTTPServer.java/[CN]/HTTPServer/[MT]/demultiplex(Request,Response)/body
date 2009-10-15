@@ -9,6 +9,8 @@
     if (allowedIPs.contains(connRequest.getIPAddressString())) {
       fixRequestParamMap(connRequest);
       if (connRequest.getLocation().endsWith("/Languages")) {
+        connResponse.setHeaderLine(ProtocolResponseHeader.Content_Type,"text/xml");
+        connResponse.setHeaderLine(ProtocolResponseHeader.Content_Encoding,"UTF-8");
         return getSupportedLanguagesAsXML();
       }
       String langParam=connRequest.getParamOrNull("language");
