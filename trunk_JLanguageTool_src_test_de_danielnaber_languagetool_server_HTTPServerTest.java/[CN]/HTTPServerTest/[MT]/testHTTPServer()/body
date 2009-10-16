@@ -20,6 +20,10 @@
     assertTrue("Expected special chars, got: '" + romanianSpecialChars + "'",romanianSpecialChars.contains("??????????"));
     String polishSpecialChars=check(Language.POLISH,"M??wi??a d??ugo, ??eby tylko m??wi?? m??wi?? d??ugo.");
     assertTrue("Expected special chars, got: '" + polishSpecialChars + "'",polishSpecialChars.contains("m??wi??"));
+    assertTrue(checkByPOST(Language.ROMANIAN,"gre??it gre??it").indexOf("gre??it") != -1);
+    URL url=new URL("http://localhost:" + HTTPServer.DEFAULT_PORT + "/Languages");
+    String languagesXML=StringTools.streamToString((InputStream)url.getContent());
+    if (!languagesXML.contains("Romanian") || !languagesXML.contains("English"))     fail("Error getting supported languages: " + languagesXML);
   }
  catch (  Exception e) {
     throw new RuntimeException(e);
