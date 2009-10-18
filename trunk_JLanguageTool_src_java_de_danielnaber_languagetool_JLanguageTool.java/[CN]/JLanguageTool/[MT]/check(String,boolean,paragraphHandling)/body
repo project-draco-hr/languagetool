@@ -13,7 +13,7 @@
   printIfVerbose(allRules.size() + " rules activated for language " + language);
   int tokenCount=0;
   int lineCount=0;
-  int columnCount=0;
+  int columnCount=1;
   unknownWords=new HashSet<String>();
   for (  final String sentence : sentences) {
     sentenceCount++;
@@ -64,7 +64,7 @@ default :
       column=sentencePartToError.length() + columnCount;
     }
  else {
-      column=sentencePartToError.length() - lastLineBreakPos - 1;
+      column=sentencePartToError.length() - lastLineBreakPos;
     }
     final int lastLineBreakPosInError=sentencePartToEndOfError.lastIndexOf('\n');
     if (lastLineBreakPosInError == -1) {
@@ -92,10 +92,10 @@ tokenCount+=sentence.length();
 lineCount+=countLineBreaks(sentence);
 final int linebreakPos=sentence.indexOf('\n');
 if (linebreakPos == -1) {
-  columnCount+=sentence.length();
+  columnCount+=sentence.length() - 1;
 }
  else {
-  columnCount=sentence.length() - linebreakPos - 1;
+  columnCount=1;
 }
 }
 if (!paraMode.equals(paragraphHandling.ONLYNONPARA)) {
