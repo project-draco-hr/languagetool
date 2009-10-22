@@ -1,5 +1,5 @@
 {
-  final Element posException=new Element("",this.caseSensitive,regExp,false);
+  final Element posException=new Element("",this.caseSensitive,false,false);
   posException.setPosElement(posToken,regExp,negation);
   posException.exceptionValidNext=scopeNext;
   setException(posException,scopePrevious);
