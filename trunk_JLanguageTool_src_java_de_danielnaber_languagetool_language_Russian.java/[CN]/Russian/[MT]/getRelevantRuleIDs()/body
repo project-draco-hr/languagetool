@@ -7,5 +7,6 @@
   ids.add("WORD_REPEAT_RULE");
   ids.add("WHITESPACE_RULE");
   ids.add("RU_COMPOUNDS");
+  ids.add("RU_SIMPLE_REPLACE");
   return ids;
 }
