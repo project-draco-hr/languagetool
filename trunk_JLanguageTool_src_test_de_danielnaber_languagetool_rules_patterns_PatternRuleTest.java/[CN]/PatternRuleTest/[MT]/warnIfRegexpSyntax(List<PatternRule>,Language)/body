@@ -1,11 +1,13 @@
 {
   for (  final PatternRule rule : rules) {
+    int i=0;
     for (    final Element element : rule.getElements()) {
-      if (!element.isRegularExpression() && (PROBABLE_REGEX.matcher(element.getString()).find())) {
-        System.err.println("The " + lang.toString() + " rule: "+ rule.getId()+ " contains element "+ "\""+ element+ "\" that is not marked as regular expression"+ " but probably is one.");
-      }
-      if (element.isRegularExpression() && (element.getString() == null || (!PROBABLE_REGEX.matcher(element.getString()).find()))) {
-        System.err.println("The " + lang.toString() + " rule: "+ rule.getId()+ " contains element "+ "\""+ element+ "\" that is marked as regular expression"+ " but probably is not one.");
+      i++;
+      warnIfElementNotKosher(element,lang,rule.getId());
+      if (element.getExceptionList() != null) {
+        for (        final Element exception : element.getExceptionList()) {
+          warnIfElementNotKosher(exception,lang,rule.getId() + " (exception in token [" + i+ "]:"+ element+ ") ");
+        }
       }
     }
   }
