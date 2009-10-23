@@ -7,5 +7,6 @@
   ids.add("UNPAIRED_BRACKETS");
   ids.add("UPPERCASE_SENTENCE_START");
   ids.add("WORD_REPEAT_RULE");
+  ids.add(SimpleReplaceRule.ROMANIAN_SIMPLE_REPLACE_RULE);
   return ids;
 }
