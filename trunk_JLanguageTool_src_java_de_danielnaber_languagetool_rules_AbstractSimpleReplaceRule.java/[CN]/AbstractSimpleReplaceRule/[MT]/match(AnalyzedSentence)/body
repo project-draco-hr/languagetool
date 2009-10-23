@@ -4,12 +4,17 @@
   for (int i=1; i < tokens.length; i++) {
     final String token=tokens[i].getToken();
     final String origToken=token;
-    if (wrongWords.containsKey(token)) {
-      final String replacement=wrongWords.get(token);
+    final String replacement=isCaseSensitive() ? wrongWords.get(token) : wrongWords.get(token.toLowerCase(getLocale()));
+    if (replacement != null) {
       final String msg=token + " is not valid, use " + replacement;
       final int pos=tokens[i].getStartPos();
       final RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + origToken.length(),msg,"Wrong word");
-      potentialRuleMatch.setSuggestedReplacement(replacement);
+      if (!isCaseSensitive() && StringTools.startsWithUppercase(token)) {
+        potentialRuleMatch.setSuggestedReplacement(StringTools.uppercaseFirstChar(replacement));
+      }
+ else {
+        potentialRuleMatch.setSuggestedReplacement(replacement);
+      }
       ruleMatches.add(potentialRuleMatch);
     }
   }
