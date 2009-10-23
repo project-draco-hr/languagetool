@@ -10,6 +10,10 @@
     startSymbols=SK_START_SYMBOLS;
     endSymbols=SK_END_SYMBOLS;
   }
+ else   if (language.equals(Language.SLOVENIAN)) {
+    startSymbols=SL_START_SYMBOLS;
+    endSymbols=SL_END_SYMBOLS;
+  }
  else   if (language.equals(Language.FRENCH)) {
     startSymbols=FR_START_SYMBOLS;
     endSymbols=FR_END_SYMBOLS;
