@@ -1,19 +1,15 @@
 {
-  SimpleReplaceRule rule=new SimpleReplaceRule(TestTools.getMessages("ro"));
-  RuleMatch[] matches;
-  JLanguageTool langTool=new JLanguageTool(Language.ROMANIAN);
-  matches=rule.match(langTool.getAnalyzedSentence("Paisprezece case."));
-  assertEquals(0,matches.length);
-  matches=rule.match(langTool.getAnalyzedSentence("Satul are patrusprezece case."));
-  assertEquals(1,matches.length);
-  assertEquals(1,matches[0].getSuggestedReplacements().size());
-  assertEquals("paisprezece",matches[0].getSuggestedReplacements().get(0));
-  matches=rule.match(langTool.getAnalyzedSentence("Patrusprezece case."));
-  assertEquals(1,matches.length);
-  assertEquals(1,matches[0].getSuggestedReplacements().size());
-  assertEquals("Paisprezece",matches[0].getSuggestedReplacements().get(0));
-  matches=rule.match(langTool.getAnalyzedSentence("El are ??asesprezece ani."));
-  assertEquals(1,matches.length);
-  assertEquals(1,matches[0].getSuggestedReplacements().size());
-  assertEquals("??aisprezece",matches[0].getSuggestedReplacements().get(0));
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Paisprezece case.")).length);
+  checkSimpleReplaceRule("Patrusprezece case.","Paisprezece");
+  checkSimpleReplaceRule("Satul are patrusprezece case.","paisprezece");
+  checkSimpleReplaceRule("Satul are (patrusprezece) case.","paisprezece");
+  checkSimpleReplaceRule("Satul are ??patrusprezece?? case.","paisprezece");
+  checkSimpleReplaceRule("El are ??asesprezece ani.","??aisprezece");
+  checkSimpleReplaceRule("El a luptat pentru ??nt??iele c??r??i.","??nt??ile");
+  checkSimpleReplaceRule("El are cinsprezece c??r??i.","cincisprezece");
+  checkSimpleReplaceRule("El a fost patruzecioptist.","pa??optist");
+  checkSimpleReplaceRule("M-am adresat ??nt??iei venite.","??nt??ii");
+  checkSimpleReplaceRule("M-am adresat ??nt??ielor venite.","??nt??ilor");
+  checkSimpleReplaceRule("A ajuns al dou??zecelea.","dou??zecilea");
+  checkSimpleReplaceRule("A ajuns al zecilea.","zecelea");
 }
