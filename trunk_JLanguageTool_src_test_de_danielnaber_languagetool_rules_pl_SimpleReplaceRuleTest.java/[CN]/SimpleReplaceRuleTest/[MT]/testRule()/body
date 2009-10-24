@@ -1,0 +1,5 @@
+{
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Wszystko w porz??dku.")).length);
+  checkSimpleReplaceRule("Piaty przypadek.","Pi??ty");
+  checkSimpleReplaceRule("To piaty przypadek.","pi??ty");
+}
