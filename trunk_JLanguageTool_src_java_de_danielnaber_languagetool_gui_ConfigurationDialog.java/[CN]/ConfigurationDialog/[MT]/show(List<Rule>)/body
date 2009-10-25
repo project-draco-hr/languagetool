@@ -135,7 +135,7 @@
     portPanel.add(serverCheckbox,cons);
     serverPortField=new JTextField(Integer.toString(serverPort));
     serverPortField.setEnabled(serverCheckbox.isSelected());
-    serverPortField.setMinimumSize(new Dimension(200,15));
+    serverPortField.setMinimumSize(new Dimension(100,25));
     cons.gridx=1;
     serverCheckbox.addActionListener(new ActionListener(){
       public void actionPerformed(      @SuppressWarnings("unused") ActionEvent e){
