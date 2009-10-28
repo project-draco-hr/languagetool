@@ -95,7 +95,15 @@ if (linebreakPos == -1) {
   columnCount+=sentence.length() - 1;
 }
  else {
-  columnCount=1;
+  if (linebreakPos == 0) {
+    columnCount=sentence.length();
+    if (!language.getSentenceTokenizer().singleLineBreaksMarksPara()) {
+      columnCount--;
+    }
+  }
+ else {
+    columnCount=1;
+  }
 }
 }
 if (!paraMode.equals(paragraphHandling.ONLYNONPARA)) {
