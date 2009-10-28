@@ -1,9 +1,0 @@
-{
-  final StringTokenizer stringTokenizer=new StringTokenizer(removeFalseEndOfSentence(firstSentenceSplitting(s)),EOS);
-  final List<String> l=new ArrayList<String>();
-  while (stringTokenizer.hasMoreTokens()) {
-    final String sentence=stringTokenizer.nextToken();
-    l.add(sentence);
-  }
-  return l;
-}

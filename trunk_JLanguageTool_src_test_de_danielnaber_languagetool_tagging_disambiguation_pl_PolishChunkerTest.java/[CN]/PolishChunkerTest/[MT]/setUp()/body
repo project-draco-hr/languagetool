@@ -1,6 +1,6 @@
 {
   tagger=new PolishTagger();
   tokenizer=new WordTokenizer();
-  sentenceTokenizer=new PolishSentenceTokenizer();
+  sentenceTokenizer=new SRXSentenceTokenizer("pl");
   disambiguator=new PolishChunker();
 }
