@@ -30,7 +30,6 @@
   }
   final String oldLocales=checkPropLoc.getProperty("countryvariants");
   if (!locales.equals(oldLocales)) {
-    final File f=new File("ooolocales.properties");
     final Properties propLoc=new Properties();
     propLoc.setProperty("countryvariants",locales);
     FileOutputStream fOut=null;
