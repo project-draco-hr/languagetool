@@ -30,15 +30,17 @@
               noException=false;
             }
           }
-          if (noException)           if (symbolStack.isEmpty()) {
-            symbolStack.push(new SymbolLocator(endSymbols[j],i));
-          }
- else {
-            if (symbolStack.peek().symbol.equals(startSymbols[j])) {
-              symbolStack.pop();
+          if (noException) {
+            if (symbolStack.isEmpty()) {
+              symbolStack.push(new SymbolLocator(endSymbols[j],i));
             }
  else {
-              symbolStack.push(new SymbolLocator(endSymbols[j],i));
+              if (symbolStack.peek().symbol.equals(startSymbols[j])) {
+                symbolStack.pop();
+              }
+ else {
+                symbolStack.push(new SymbolLocator(endSymbols[j],i));
+              }
             }
           }
         }
