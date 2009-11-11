@@ -42,8 +42,23 @@ break;
 case ADD:
 if (newTokenReadings != null) {
 if (newTokenReadings.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
+String lemma="";
+String token="";
 for (int i=0; i < newTokenReadings.length; i++) {
-  whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].addReading(newTokenReadings[i]);
+  if ("".equals(newTokenReadings[i].getToken())) {
+    token=whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].getToken();
+  }
+ else {
+    token=newTokenReadings[i].getToken();
+  }
+  if (newTokenReadings[i].getLemma() == null) {
+    lemma=token;
+  }
+ else {
+    lemma=newTokenReadings[i].getLemma();
+  }
+  AnalyzedToken newTok=new AnalyzedToken(token,newTokenReadings[i].getPOSTag(),lemma);
+  whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].addReading(newTok);
 }
 }
 }
