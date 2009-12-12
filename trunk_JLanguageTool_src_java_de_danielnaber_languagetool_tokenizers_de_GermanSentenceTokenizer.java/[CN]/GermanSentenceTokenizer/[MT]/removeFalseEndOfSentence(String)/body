@@ -1,0 +1,5 @@
+{
+  s=super.removeFalseEndOfSentence(s);
+  s=REPAIR_NAME_PATTERN.matcher(s).replaceAll("$1 $2");
+  return s;
+}
