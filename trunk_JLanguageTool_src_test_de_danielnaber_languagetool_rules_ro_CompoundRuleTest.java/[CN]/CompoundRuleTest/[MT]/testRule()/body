@@ -1,0 +1,8 @@
+{
+  check(0,"Au plecat c??te??itrei.");
+  check(1,"c??te ??i trei",new String[]{"c??te??itrei"});
+  check(1,"C??te ??i trei",new String[]{"C??te??itrei"});
+  check(1,"c??te-??i-trei",new String[]{"c??te??itrei"});
+  check(1,"tus trei",new String[]{"tustrei"});
+  check(1,"tus-trei",new String[]{"tustrei"});
+}
