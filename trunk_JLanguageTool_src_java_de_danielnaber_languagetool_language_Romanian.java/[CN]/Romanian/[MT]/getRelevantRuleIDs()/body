@@ -8,5 +8,6 @@
   ids.add("UPPERCASE_SENTENCE_START");
   ids.add("WORD_REPEAT_RULE");
   ids.add(SimpleReplaceRule.ROMANIAN_SIMPLE_REPLACE_RULE);
+  ids.add(CompoundRule.ROMANIAN_COMPOUND_RULE);
   return ids;
 }
