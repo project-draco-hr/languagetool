@@ -40,7 +40,7 @@
           repl.add(origStringToCheck.replace(' ','-'));
           msg=withHyphen;
         }
-        if (!hasAllUppercaseParts(origStringToCheck) && countParts(stringToCheck) <= 2 && !onlyDashSuggestion.contains(stringToCheck)) {
+        if (!hasAllUppercaseParts(origStringToCheck) && countParts(stringToCheck) <= getMaxUnHyphenatedWordCount() && !onlyDashSuggestion.contains(stringToCheck)) {
           repl.add(mergeCompound(origStringToCheck));
           msg=asOne;
         }
