@@ -1,0 +1,12 @@
+{
+  List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
+  int pos=0;
+  for (Iterator<String> iter=sentenceTokens.iterator(); iter.hasNext(); ) {
+    String word=iter.next();
+    List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+    l.add(new AnalyzedToken(word,null,null));
+    pos+=word.length();
+    tokenReadings.add(new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[0]),0));
+  }
+  return tokenReadings;
+}
