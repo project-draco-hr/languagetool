@@ -29,7 +29,7 @@
   if ((language == Language.RUSSIAN || language == Language.POLISH) && (";".equals(lastPragraphString) || ";".equals(chklastToken) || ",".equals(lastPragraphString)|| ",".equals(chklastToken))) {
     noException=true;
   }
-  if ((language == Language.RUSSIAN || language == Language.ITALIAN) && (",".equals(lastPragraphString))) {
+  if ((language == Language.RUSSIAN || language == Language.ITALIAN || language == Language.POLISH || language == Language.GERMAN) && (",".equals(lastPragraphString))) {
     noException=true;
   }
   lastPragraphString=chklastToken;
