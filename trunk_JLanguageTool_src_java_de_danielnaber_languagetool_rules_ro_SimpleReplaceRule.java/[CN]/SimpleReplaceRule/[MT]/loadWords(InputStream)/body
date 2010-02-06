@@ -1,0 +1,37 @@
+{
+  final List<Map<String,String>> list=new ArrayList<Map<String,String>>();
+  InputStreamReader isr=null;
+  BufferedReader br=null;
+  try {
+    isr=new InputStreamReader(file,getEncoding());
+    br=new BufferedReader(isr);
+    String line;
+    while ((line=br.readLine()) != null) {
+      line=line.trim();
+      if (line.length() < 1 || line.charAt(0) == '#') {
+        continue;
+      }
+      final String[] parts=line.split("=");
+      if (parts.length != 2) {
+        throw new IOException("Format error in file " + this.getClass().getResource(getFileName()) + ", line: "+ line);
+      }
+      final int wordCount=new StringTokenizer(parts[0]," ").countTokens();
+      for (int i=list.size(); i < wordCount; i++) {
+        list.add(new HashMap<String,String>());
+      }
+      String[] wrongForms=parts[0].split("\\|");
+      for (      String wrongForm : wrongForms) {
+        list.get(wordCount - 1).put(wrongForm,parts[1]);
+      }
+    }
+  }
+  finally {
+    if (br != null) {
+      br.close();
+    }
+    if (isr != null) {
+      isr.close();
+    }
+  }
+  return list;
+}

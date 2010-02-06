@@ -12,4 +12,19 @@
   checkSimpleReplaceRule("M-am adresat ??nt??ielor venite.","??nt??ilor");
   checkSimpleReplaceRule("A ajuns al dou??zecelea.","dou??zecilea");
   checkSimpleReplaceRule("A ajuns al zecilea.","zecelea");
+  checkSimpleReplaceRule("A primit jumate de litru de lapte.","jum??tate");
+  checkSimpleReplaceRule("aqua forte","acvaforte");
+  checkSimpleReplaceRule("aqua forte.","acvaforte");
+  checkSimpleReplaceRule("A folosit ??aqua forte??.","acvaforte");
+  checkSimpleReplaceRule("Aqua forte.","Acvaforte");
+  checkSimpleReplaceRule("este aqua forte","acvaforte");
+  checkSimpleReplaceRule("este aqua forte.","acvaforte");
+  checkSimpleReplaceRule("este Aqua Forte.","Acvaforte");
+  checkSimpleReplaceRule("este AquA Forte.","Acvaforte");
+  checkSimpleReplaceRule("A primit jumate de litru de lapte ??i este aqua forte.","jum??tate","acvaforte");
+  checkSimpleReplaceRule("A fost ad??ogit?? o alt?? regul??.","ad??ugit??/ad??ugat??");
+  checkSimpleReplaceRule("A venit adinioarea.","adineaori/adineauri");
+  checkSimpleReplaceRule("A pus axterix.","asterisc");
+  checkSimpleReplaceRule("A pus axterics.","asterisc");
+  checkSimpleReplaceRule("A pus asterics.","asterisc");
 }
