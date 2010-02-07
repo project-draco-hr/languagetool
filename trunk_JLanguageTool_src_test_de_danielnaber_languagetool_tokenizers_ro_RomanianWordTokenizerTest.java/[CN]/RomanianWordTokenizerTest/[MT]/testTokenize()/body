@@ -36,4 +36,10 @@
   testList=w.tokenize("are 30??C");
   assertEquals(testList.size(),5);
   assertEquals("[are,  , 30, ??, C]",testList.toString());
+  testList=w.tokenize("fructe=mere");
+  assertEquals(testList.size(),3);
+  assertEquals("[fructe, =, mere]",testList.toString());
+  testList=w.tokenize("pere|mere");
+  assertEquals(testList.size(),3);
+  assertEquals("[pere, |, mere]",testList.toString());
 }
