@@ -15,12 +15,18 @@
       if (parts.length != 2) {
         throw new IOException("Format error in file " + this.getClass().getResource(getFileName()) + ", line: "+ line);
       }
-      final int wordCount=new StringTokenizer(parts[0]," ").countTokens();
-      for (int i=list.size(); i < wordCount; i++) {
-        list.add(new HashMap<String,String>());
-      }
-      String[] wrongForms=parts[0].split("\\|");
+      final String[] wrongForms=parts[0].split("\\|");
       for (      String wrongForm : wrongForms) {
+        int wordCount=0;
+        List<String> tokens=getWordTokenizer().tokenize(wrongForm);
+        for (        String token : tokens) {
+          if (!StringTools.isWhitespace(token)) {
+            wordCount++;
+          }
+        }
+        for (int i=list.size(); i < wordCount; i++) {
+          list.add(new HashMap<String,String>());
+        }
         list.get(wordCount - 1).put(wrongForm,parts[1]);
       }
     }

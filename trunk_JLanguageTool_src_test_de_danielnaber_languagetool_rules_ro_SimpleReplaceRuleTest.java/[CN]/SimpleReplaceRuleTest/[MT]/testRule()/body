@@ -22,6 +22,15 @@
   checkSimpleReplaceRule("este Aqua Forte.","Acvaforte");
   checkSimpleReplaceRule("este AquA Forte.","Acvaforte");
   checkSimpleReplaceRule("A primit jumate de litru de lapte ??i este aqua forte.","jum??tate","acvaforte");
+  checkSimpleReplaceRule("cou-boi","cowboy");
+  checkSimpleReplaceRule("cow-boy","cowboy");
+  checkSimpleReplaceRule("cau-boi","cowboy");
+  checkSimpleReplaceRule("Cau-boi","Cowboy");
+  checkSimpleReplaceRule("cowboy");
+  checkSimpleReplaceRule("Iat?? un cau-boi","cowboy");
+  checkSimpleReplaceRule("Iat?? un cau-boi.","cowboy");
+  checkSimpleReplaceRule("Iat?? un (cau-boi).","cowboy");
+  checkSimpleReplaceRule("v??car=cau-boi","cowboy");
   checkSimpleReplaceRule("A fost ad??ogit?? o alt?? regul??.","ad??ugit??/ad??ugat??");
   checkSimpleReplaceRule("A venit adinioarea.","adineaori/adineauri");
   checkSimpleReplaceRule("A pus axterix.","asterisc");
