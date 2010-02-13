@@ -29,6 +29,9 @@
             if ((NUMERALS.matcher(tokens[i - 1].getToken()).matches() && !(!symbolStack.empty() && "(".equals(symbolStack.peek().symbol)))) {
               noException=false;
             }
+            if ((ruleLang.equals(Language.RUSSIAN)) && (NUMERALS_RU.matcher(tokens[i - 1].getToken()).matches() && !(!symbolStack.empty() && "(".equals(symbolStack.peek().symbol)))) {
+              noException=false;
+            }
           }
           if (noException) {
             if (symbolStack.isEmpty()) {
