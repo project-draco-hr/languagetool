@@ -14,14 +14,14 @@
           continue;
         }
         final Class clazz=Class.forName(classNm);
-        if (foundClasses.containsKey(clazz)) {
-          continue;
+        if (foundClasses.contains(clazz)) {
+          throw new RuntimeException("Duplicate class definition:\n" + clazz.getName() + ", found in\n"+ currentFile.getName());
         }
         if (!isMaterial(clazz)) {
           continue;
         }
         if (classExtends == null || isExtending(clazz,classExtends.getName()) && interfaceImplements == null || isImplementing(clazz,interfaceImplements)) {
-          foundClasses.put(clazz,currentFile.getName());
+          foundClasses.add(clazz);
         }
       }
     }

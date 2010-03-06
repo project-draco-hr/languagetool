@@ -12,7 +12,7 @@
           continue;
         }
         if (classExtends == null || isExtending(clazz,classExtends.getName()) && interfaceImplements == null || isImplementing(clazz,interfaceImplements)) {
-          foundClasses.put(clazz,file.getAbsolutePath());
+          foundClasses.add(clazz);
         }
       }
     }
@@ -21,9 +21,7 @@
     for (    final File dir : directory.listFiles()) {
       if (dir.isDirectory()) {
         final Class[] subLevelClasses=findClasses(classLoader,packageName + "." + dir.getName(),classNameRegEx,subdirLevel - 1,classExtends,interfaceImplements);
-        for (        Class class1 : subLevelClasses) {
-          foundClasses.put(class1,"dir:" + dir.getAbsolutePath());
-        }
+        foundClasses.addAll(Arrays.asList(subLevelClasses));
       }
     }
   }
