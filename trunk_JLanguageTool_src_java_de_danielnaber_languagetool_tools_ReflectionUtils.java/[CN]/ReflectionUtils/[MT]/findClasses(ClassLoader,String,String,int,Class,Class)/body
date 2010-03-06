@@ -1,11 +1,15 @@
 {
-  final List<Class> foundClasses=new ArrayList<Class>();
+  final Map<Class,String> foundClasses=new HashMap<Class,String>();
   try {
     final String packagePath=packageName.replace('.','/');
     final Enumeration<URL> resources_=classLoader.getResources(packagePath);
     final Set<URI> uniqResources=new HashSet<URI>();
     while (resources_.hasMoreElements()) {
-      final URI resource=resources_.nextElement().toURI();
+      final URL url=resources_.nextElement();
+      final URI resource=url.toURI().normalize();
+      System.err.println("resource: " + resource.getPath());
+      System.err.println("resource: " + url.getPath());
+      System.err.println("");
       uniqResources.add(resource);
     }
     for (    final URI res : uniqResources) {
@@ -21,5 +25,5 @@
  catch (  final Exception ex) {
     throw new ClassNotFoundException("Loading rules failed: " + ex.getMessage(),ex);
   }
-  return foundClasses.toArray(new Class[foundClasses.size()]);
+  return (Class[])foundClasses.keySet().toArray(new Class[foundClasses.size()]);
 }
