@@ -49,7 +49,7 @@
       ruleMatches.add(ruleMatch);
     }
     prevToken=token;
-    prevWhite=isWhite;
+    prevWhite=isWhite && !tokens[i].isFieldCode();
     prevLen=tokens[i].getToken().length();
   }
   return toRuleMatchArray(ruleMatches);
