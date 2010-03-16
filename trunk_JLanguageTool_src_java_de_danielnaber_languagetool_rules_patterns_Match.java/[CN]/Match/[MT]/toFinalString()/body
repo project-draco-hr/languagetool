@@ -66,5 +66,12 @@
       }
     }
   }
+  if (includeSkipped && skippedTokens != null && !"".equals(skippedTokens)) {
+    String[] helper=new String[formattedString.length];
+    for (int i=0; i < formattedString.length; i++) {
+      helper[i]=formattedString[i] + skippedTokens;
+    }
+    formattedString=helper;
+  }
   return formattedString;
 }

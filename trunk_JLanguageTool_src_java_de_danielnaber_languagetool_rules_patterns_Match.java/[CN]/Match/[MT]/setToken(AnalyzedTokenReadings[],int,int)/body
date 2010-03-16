@@ -1,0 +1,16 @@
+{
+  setToken(tokens[index]);
+  if (next > 1 && includeSkipped) {
+    StringBuilder sb=new StringBuilder();
+    for (int k=index + 1; k < index + next; k++) {
+      if (tokens[k].isWhitespaceBefore()) {
+        sb.append(" ");
+      }
+      sb.append(tokens[k].getToken());
+    }
+    skippedTokens=sb.toString();
+  }
+ else {
+    skippedTokens="";
+  }
+}

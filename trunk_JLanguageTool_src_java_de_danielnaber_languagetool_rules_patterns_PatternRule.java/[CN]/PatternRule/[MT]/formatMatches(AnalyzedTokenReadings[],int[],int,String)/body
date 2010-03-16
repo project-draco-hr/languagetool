@@ -18,14 +18,18 @@
       }
       final int j=Integer.parseInt(errorMessage.substring(ind + 1,ind + numLen)) - 1;
       int repTokenPos=0;
+      int nextTokenPos=0;
       for (int l=0; l <= j; l++) {
         repTokenPos+=positions[l];
+      }
+      if (j <= positions.length) {
+        nextTokenPos=firstMatchTok + repTokenPos + positions[j + 1];
       }
       if (suggestionMatches != null) {
         if (matchCounter < suggestionMatches.size()) {
           numbersToMatches[j]=matchCounter;
           if (suggestionMatches.get(matchCounter) != null) {
-            final String[] matches=concatMatches(matchCounter,j,firstMatchTok + repTokenPos,toks);
+            final String[] matches=concatMatches(matchCounter,j,firstMatchTok + repTokenPos,toks,nextTokenPos);
             final String leftSide=errorMessage.substring(0,ind);
             final String rightSide=errorMessage.substring(ind + numLen);
             if (matches.length == 1) {

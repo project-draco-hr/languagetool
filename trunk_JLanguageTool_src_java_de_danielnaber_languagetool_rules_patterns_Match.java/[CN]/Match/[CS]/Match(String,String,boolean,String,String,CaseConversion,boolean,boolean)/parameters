@@ -5,3 +5,4 @@ String regexMatch
 String regexReplace
 CaseConversion caseConversionType
 boolean setPOS
+boolean includeSkipped

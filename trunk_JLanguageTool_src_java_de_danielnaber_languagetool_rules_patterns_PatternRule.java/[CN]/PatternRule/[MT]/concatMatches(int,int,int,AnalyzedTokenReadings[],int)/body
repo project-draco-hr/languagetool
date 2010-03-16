@@ -3,14 +3,16 @@
   if (suggestionMatches.get(start) != null) {
     final int len=phraseLen(index);
     if (len == 1) {
-      suggestionMatches.get(start).setToken(tokens[tokenIndex - 1]);
+      int skippedTokens=nextTokenPos - tokenIndex;
+      suggestionMatches.get(start).setToken(tokens,tokenIndex - 1,skippedTokens);
       suggestionMatches.get(start).setSynthesizer(language.getSynthesizer());
       finalMatch=suggestionMatches.get(start).toFinalString();
     }
  else {
       final List<String[]> matchList=new ArrayList<String[]>();
       for (int i=0; i < len; i++) {
-        suggestionMatches.get(start).setToken(tokens[tokenIndex - 1 + i]);
+        int skippedTokens=nextTokenPos - (tokenIndex + i);
+        suggestionMatches.get(start).setToken(tokens,tokenIndex - 1 + i,skippedTokens);
         suggestionMatches.get(start).setSynthesizer(language.getSynthesizer());
         matchList.add(suggestionMatches.get(start).toFinalString());
       }

@@ -2,3 +2,4 @@ int start
 int index
 int tokenIndex
 AnalyzedTokenReadings[] tokens
+int nextTokenPos
