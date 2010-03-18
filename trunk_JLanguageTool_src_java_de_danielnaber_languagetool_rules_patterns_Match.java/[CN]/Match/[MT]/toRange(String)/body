@@ -1,0 +1,8 @@
+{
+  try {
+    return valueOf(str);
+  }
+ catch (  final Exception ex) {
+    return NONE;
+  }
+}

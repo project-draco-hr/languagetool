@@ -1,9 +1,12 @@
 {
   setToken(tokens[index]);
-  if (next > 1 && includeSkipped) {
+  if (next > 1 && includeSkipped != IncludeRange.NONE) {
     StringBuilder sb=new StringBuilder();
+    if (includeSkipped == IncludeRange.FOLLOWING) {
+      formattedToken=null;
+    }
     for (int k=index + 1; k < index + next; k++) {
-      if (tokens[k].isWhitespaceBefore()) {
+      if (k > index + 1 && tokens[k].isWhitespaceBefore()) {
         sb.append(" ");
       }
       sb.append(tokens[k].getToken());
