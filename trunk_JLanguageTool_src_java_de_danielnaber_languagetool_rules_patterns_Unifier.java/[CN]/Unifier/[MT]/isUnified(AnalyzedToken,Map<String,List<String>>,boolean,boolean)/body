@@ -1,6 +1,6 @@
 {
   if (inUnification) {
-    uniMatched|=isSatisfied(matchToken,feature,type);
+    uniMatched|=isSatisfied(matchToken,uFeatures);
     uniAllMatched=uniMatched;
     if (lastReading) {
       startNextToken();
@@ -12,7 +12,7 @@
   if (isUniNegated) {
     setNegation(true);
   }
-  isSatisfied(matchToken,feature,type);
+  isSatisfied(matchToken,uFeatures);
   if (lastReading) {
     inUnification=true;
     uniMatched=false;

@@ -2,19 +2,21 @@
   if (allFeatsIn && equivalencesMatched.isEmpty()) {
     return false;
   }
-  if (StringTools.isEmpty(feature)) {
+  if (uFeatures == null) {
     return false;
   }
   boolean unified=true;
-  final String[] features=StringTools.trimWhitespace(feature).split(FEATURE_SEPARATOR);
-  String[] types;
+  List<String> types;
   if (!allFeatsIn) {
     tokCnt++;
     while (equivalencesMatched.size() <= tokCnt) {
       equivalencesMatched.add(new HashMap<String,Set<String>>());
     }
-    for (    final String feat : features) {
-      types=getTypes(feat,type);
+    for (    final String feat : uFeatures.keySet()) {
+      types=uFeatures.get(feat);
+      if (types == null || types.isEmpty()) {
+        types=equivalenceFeatures.get(feat);
+      }
       for (      final String typename : types) {
         final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat,typename));
         if (testElem == null) {
@@ -46,7 +48,7 @@
     }
   }
  else {
-    unified&=checkNext(aToken,features,type);
+    unified&=checkNext(aToken,uFeatures);
   }
   return unified ^ negation;
 }

@@ -16,11 +16,14 @@
   AnalyzedToken sing1a=new AnalyzedToken("ma??y","adj:sg:blahblah:f","ma??y");
   AnalyzedToken sing1b=new AnalyzedToken("ma??y","adj:pl:blahblah:m","ma??y");
   AnalyzedToken sing2=new AnalyzedToken("cz??owiek","subst:sg:blahblah:m","cz??owiek");
-  boolean satisfied=uni.isSatisfied(sing1,"number,gender","");
-  satisfied|=uni.isSatisfied(sing1a,"number,gender","");
-  satisfied|=uni.isSatisfied(sing1b,"number,gender","");
+  Map<String,List<String>> equiv=new HashMap<String,List<String>>();
+  equiv.put("number",null);
+  equiv.put("gender",null);
+  boolean satisfied=uni.isSatisfied(sing1,equiv);
+  satisfied|=uni.isSatisfied(sing1a,equiv);
+  satisfied|=uni.isSatisfied(sing1b,equiv);
   uni.startUnify();
-  satisfied&=uni.isSatisfied(sing2,"number,gender","");
+  satisfied&=uni.isSatisfied(sing2,equiv);
   uni.startNextToken();
   assertEquals(true,satisfied);
   assertEquals("[ma??y/adj:sg:blahblah:m, cz??owiek/subst:sg:blahblah:m]",Arrays.toString(uni.getUnifiedTokens()));

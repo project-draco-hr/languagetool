@@ -1,5 +1,4 @@
 AnalyzedToken matchToken
-String feature
-String type
+Map<String,List<String>> uFeatures
 boolean isUniNegated
 boolean lastReading

@@ -48,9 +48,6 @@
     andGroupCounter=0;
     tokenCounter++;
   }
- else   if (qName.equals("unify")) {
-    inUnification=false;
-  }
  else   if (qName.equals("token")) {
     if (!exceptionSet || tokenElement == null) {
       tokenElement=new Element(StringTools.trimWhitespace(elements.toString()),caseSensitive,stringRegExp,tokenInflected);
@@ -80,7 +77,7 @@
       andGroupCounter++;
     }
     if (inUnification) {
-      tokenElement.setUnification(uFeature,uType);
+      tokenElement.setUnification(equivalenceFeatures);
       if (uniNegation) {
         tokenElement.setUniNegation();
       }
@@ -184,7 +181,12 @@
  else   if (qName.equals("unification") && inUnificationDef) {
     inUnificationDef=false;
   }
+ else   if (qName.equals("feature") && inUnification) {
+    equivalenceFeatures.put(uFeature,uTypeList);
+    uTypeList=new ArrayList<String>();
+  }
  else   if (qName.equals("unify") && inUnification) {
     inUnification=false;
+    equivalenceFeatures=new HashMap<String,List<String>>();
   }
 }

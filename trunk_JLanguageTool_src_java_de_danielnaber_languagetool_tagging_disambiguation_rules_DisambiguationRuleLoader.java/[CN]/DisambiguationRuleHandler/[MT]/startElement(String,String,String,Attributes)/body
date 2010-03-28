@@ -75,17 +75,15 @@
   }
  else   if (qName.equals(UNIFY)) {
     inUnification=true;
-    uFeature=attrs.getValue(FEATURE);
-    if (attrs.getValue(TYPE) != null) {
-      uType=attrs.getValue(TYPE);
-    }
- else {
-      uType="";
-    }
-    if (attrs.getValue(NEGATE) != null && YES.equals(attrs.getValue(NEGATE))) {
-      uniNegation=true;
-    }
+    uniNegation=YES.equals(attrs.getValue("negate"));
     uniCounter=0;
+  }
+ else   if (qName.equals("feature")) {
+    uFeature=attrs.getValue("id");
+  }
+ else   if (qName.equals(TYPE)) {
+    uType=attrs.getValue("id");
+    uTypeList.add(uType);
   }
  else   if (qName.equals(TOKEN)) {
     inToken=true;

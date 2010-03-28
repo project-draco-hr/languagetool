@@ -59,14 +59,14 @@
   }
  else   if (qName.equals("unify")) {
     inUnification=true;
-    uFeature=attrs.getValue("feature");
-    if (attrs.getValue(TYPE) != null) {
-      uType=attrs.getValue(TYPE);
-    }
- else {
-      uType="";
-    }
     uniNegation=YES.equals(attrs.getValue("negate"));
+  }
+ else   if (qName.equals("feature")) {
+    uFeature=attrs.getValue("id");
+  }
+ else   if (qName.equals(TYPE)) {
+    uType=attrs.getValue("id");
+    uTypeList.add(uType);
   }
  else   if (qName.equals("token")) {
     inToken=true;

@@ -1,14 +1,17 @@
 {
   boolean unifiedNext=true;
   boolean anyFeatUnified=false;
-  String[] types;
+  List<String> types;
   ArrayList<Boolean> tokenFeaturesFound=new ArrayList<Boolean>(tmpFeaturesFound);
   if (allFeatsIn) {
     for (int i=0; i <= tokCnt; i++) {
       boolean allFeatsUnified=true;
-      for (      final String feat : features) {
+      for (      final String feat : uFeatures.keySet()) {
         boolean featUnified=false;
-        types=getTypes(feat,type);
+        types=uFeatures.get(feat);
+        if (types == null || types.isEmpty()) {
+          types=equivalenceFeatures.get(feat);
+        }
         for (        final String typename : types) {
           if (featuresFound.get(i) && equivalencesMatched.get(i).containsKey(feat) && equivalencesMatched.get(i).get(feat).contains(typename)) {
             final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat,typename));
