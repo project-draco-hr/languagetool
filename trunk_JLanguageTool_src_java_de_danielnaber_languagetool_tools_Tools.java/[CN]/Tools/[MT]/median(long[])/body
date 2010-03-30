@@ -1,0 +1,7 @@
+{
+  int middle=m.length / 2;
+  if (m.length % 2 == 1) {
+    return m[middle];
+  }
+  return (m[middle - 1] + m[middle]) / 2;
+}

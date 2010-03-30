@@ -1,0 +1,5 @@
+{
+  int matchCount=0;
+  matchCount=lt.check(contents).size();
+  return matchCount;
+}

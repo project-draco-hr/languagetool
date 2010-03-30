@@ -3,6 +3,7 @@
   this.apiFormat=apiFormat;
   this.taggerOnly=taggerOnly;
   this.applySuggestions=applySuggestions;
+  profileRules=false;
   lt=new JLanguageTool(language,motherTongue);
   lt.activateDefaultPatternRules();
   lt.activateDefaultFalseFriendRules();
