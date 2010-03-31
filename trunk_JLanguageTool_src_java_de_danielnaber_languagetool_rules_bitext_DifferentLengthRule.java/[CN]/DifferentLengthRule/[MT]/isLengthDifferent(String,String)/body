@@ -1,0 +1,4 @@
+{
+  double skew=(((double)src.length() / (double)trg.length()) * 100.00);
+  return (skew > 250 || skew < 30);
+}
