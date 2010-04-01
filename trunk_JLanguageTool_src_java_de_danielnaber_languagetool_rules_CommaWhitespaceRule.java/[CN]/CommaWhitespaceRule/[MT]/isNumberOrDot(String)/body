@@ -1,0 +1,4 @@
+{
+  char c=str.charAt(0);
+  return (c == '.' || Character.isDigit(c));
+}
