@@ -37,9 +37,6 @@
     int runCount=1;
     List<Rule> rules=lt.getAllRules();
     if (profileRules) {
-      for (      Rule rule : rules) {
-        lt.disableRule(rule.getId());
-      }
       System.out.printf("Testing %d rules\n",rules.size());
       System.out.println("Rule ID\tTime\tSentences\tMatches\tSentences per sec.");
       runCount=rules.size();
@@ -50,15 +47,10 @@
     List<String> unknownWords=new ArrayList<String>();
     StringBuilder sb=new StringBuilder();
     for (int ruleIndex=0; ruleIndex < runCount; ruleIndex++) {
+      currentRule=rules.get(ruleIndex);
       int matches=0;
       long sentences=0;
       final long startTime=System.currentTimeMillis();
-      if (profileRules) {
-        if (ruleIndex > 0) {
-          lt.disableRule(rules.get(ruleIndex - 1).getId());
-        }
-        lt.enableRule(rules.get(ruleIndex).getId());
-      }
       try {
         if (!"-".equals(filename)) {
           final File file=new File(filename);
@@ -85,6 +77,9 @@
           if (lt.getLanguage().getSentenceTokenizer().singleLineBreaksMarksPara()) {
             matches=handleLine(matches,lineOffset,sb);
             sentences+=lt.getSentenceCount();
+            if (profileRules) {
+              sentences+=lt.sentenceTokenize(sb.toString()).size();
+            }
             if (listUnknownWords && !taggerOnly) {
               for (              String word : lt.getUnknownWords())               if (!unknownWords.contains(word)) {
                 unknownWords.add(word);
@@ -96,6 +91,9 @@
             if ("".equals(line) || sb.length() >= MAXFILESIZE) {
               matches=handleLine(matches,lineOffset,sb);
               sentences+=lt.getSentenceCount();
+              if (profileRules) {
+                sentences+=lt.sentenceTokenize(sb.toString()).size();
+              }
               if (listUnknownWords && !taggerOnly) {
                 for (                String word : lt.getUnknownWords())                 if (!unknownWords.contains(word)) {
                   unknownWords.add(word);
@@ -111,6 +109,9 @@
         if (sb.length() > 0) {
           matches=handleLine(matches,lineOffset - 1,sb);
           sentences+=lt.getSentenceCount();
+          if (profileRules) {
+            sentences+=lt.sentenceTokenize(sb.toString()).size();
+          }
           if (listUnknownWords && !taggerOnly) {
             for (            String word : lt.getUnknownWords())             if (!unknownWords.contains(word)) {
               unknownWords.add(word);

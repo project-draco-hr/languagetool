@@ -4,7 +4,7 @@
     System.out.print(Tools.correctText(StringTools.filterXML(sb.toString()),lt));
   }
  else   if (profileRules) {
-    matches+=Tools.profileRulesOnLine(StringTools.filterXML(sb.toString()),lt);
+    matches+=Tools.profileRulesOnLine(StringTools.filterXML(sb.toString()),lt,currentRule);
   }
  else   if (!taggerOnly) {
     if (matches == 0) {
