@@ -1,10 +1,5 @@
 {
-  this.lang=lang;
-  this.lt=lt;
-  this.maxArticles=maxArticles;
-  this.dumpDate=dumpDate;
-  this.langCode=langCode;
-  initTextFilter();
+  super(lt,maxArticles,dumpDate,langCode,lang);
   try {
     Properties dbProperties=new Properties();
     dbProperties.load(new FileInputStream(propertiesFile));

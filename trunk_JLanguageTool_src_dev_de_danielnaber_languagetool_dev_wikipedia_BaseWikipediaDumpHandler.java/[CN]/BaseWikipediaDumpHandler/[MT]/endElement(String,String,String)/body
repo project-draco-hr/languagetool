@@ -14,13 +14,15 @@
         }
         List<RuleMatch> ruleMatches=lt.check(textToCheck);
         System.out.println("Checking article " + articleCount + " ("+ textToCheck.length() / 1024 + "KB, '" + title + "')" + ", found " + ruleMatches.size() + " matches");
-        saveResultToDatabase(ruleMatches,textToCheck,lt.getLanguage());
+        try {
+          handleResult(title,ruleMatches,textToCheck,lt.getLanguage());
+        }
+ catch (        Exception e) {
+          throw new RuntimeException(e);
+        }
         ruleMatchCount+=ruleMatches.size();
       }
  catch (      IOException e) {
-        throw new RuntimeException(e);
-      }
-catch (      SQLException e) {
         throw new RuntimeException(e);
       }
     }
