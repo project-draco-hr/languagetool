@@ -19,7 +19,13 @@
   System.err.println("These rules are disabled: " + lt.getDisabledRules());
   Date dumpDate=getDumpDate(file);
   System.out.println("Dump date: " + dumpDate + ", language: "+ language);
-  DatabaseDumpHandler handler=new DatabaseDumpHandler(lt,maxArticles,dumpDate,language,propFile,lang);
+  BaseWikipediaDumpHandler handler;
+  if (propFile != null) {
+    handler=new DatabaseDumpHandler(lt,maxArticles,dumpDate,language,propFile,lang);
+  }
+ else {
+    handler=new OutputDumpHandler(lt,maxArticles,dumpDate,language,lang);
+  }
   SAXParserFactory factory=SAXParserFactory.newInstance();
   SAXParser saxParser=factory.newSAXParser();
   saxParser.parse(file,handler);

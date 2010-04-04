@@ -1,0 +1,4 @@
+String title
+List<RuleMatch> ruleMatches
+String text
+Language language

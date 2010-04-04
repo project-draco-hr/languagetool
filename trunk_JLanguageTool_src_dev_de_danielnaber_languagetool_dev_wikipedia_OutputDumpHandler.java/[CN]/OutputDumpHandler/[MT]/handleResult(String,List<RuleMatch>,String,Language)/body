@@ -1,0 +1,24 @@
+{
+  if (ruleMatches.size() > 0) {
+    int i=1;
+    System.out.println("\nTitle: " + title);
+    for (    RuleMatch match : ruleMatches) {
+      String output=i + ".) Line " + (match.getLine() + 1)+ ", column "+ match.getColumn()+ ", Rule ID: "+ match.getRule().getId();
+      if (match.getRule() instanceof PatternRule) {
+        final PatternRule pRule=(PatternRule)match.getRule();
+        output+="[" + pRule.getSubId() + "]";
+      }
+      System.out.println(output);
+      String msg=match.getMessage();
+      msg=msg.replaceAll("<suggestion>","'");
+      msg=msg.replaceAll("</suggestion>","'");
+      System.out.println("Message: " + msg);
+      final List<String> repl=match.getSuggestedReplacements();
+      if (!repl.isEmpty()) {
+        System.out.println("Suggestion: " + StringTools.listToString(repl,"; "));
+      }
+      System.out.println(StringTools.getContext(match.getFromPos(),match.getToPos(),text,CONTEXT_SIZE));
+      i++;
+    }
+  }
+}

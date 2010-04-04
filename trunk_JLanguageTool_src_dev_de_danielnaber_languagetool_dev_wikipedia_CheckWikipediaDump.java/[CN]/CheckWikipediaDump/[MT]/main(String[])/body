@@ -2,13 +2,22 @@
   CheckWikipediaDump prg=new CheckWikipediaDump();
   if (args.length < 3 || args.length > 4) {
     System.err.println("Usage: CheckWikipediaDump <propertyFile> <language> <filename> [maxArticleCheck]");
+    System.err.println("\tpropertyFile a file to set database access properties. Use '-' to print results to stdout.");
+    System.err.println("\tlanguage languagecode like 'en' or 'de'");
+    System.err.println("\tfilename path to unpacked Wikipedia XML dump");
+    System.err.println("\tmaxArticleCheck optional: maximum number of articles to check");
     System.exit(1);
   }
   int maxArticles=0;
-  if (args.length == 4)   maxArticles=Integer.parseInt(args[3]);
-  File propFile=new File(args[0]);
-  if (!propFile.exists() || propFile.isDirectory()) {
-    throw new IOException("file not found or isn't a file: " + propFile.getAbsolutePath());
+  if (args.length == 4) {
+    maxArticles=Integer.parseInt(args[3]);
+  }
+  File propFile=null;
+  if (!"-".equals(args[0])) {
+    propFile=new File(args[0]);
+    if (!propFile.exists() || propFile.isDirectory()) {
+      throw new IOException("file not found or isn't a file: " + propFile.getAbsolutePath());
+    }
   }
   prg.run(propFile,args[1],args[2],maxArticles);
 }

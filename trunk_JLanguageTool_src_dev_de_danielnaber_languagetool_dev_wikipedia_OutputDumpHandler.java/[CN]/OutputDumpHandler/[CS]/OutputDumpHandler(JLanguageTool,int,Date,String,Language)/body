@@ -1,0 +1,3 @@
+{
+  super(lt,maxArticles,dumpDate,langCode,lang);
+}
