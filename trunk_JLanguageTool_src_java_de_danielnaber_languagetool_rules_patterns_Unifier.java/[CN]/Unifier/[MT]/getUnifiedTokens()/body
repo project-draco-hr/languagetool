@@ -13,7 +13,7 @@
     if (first >= tmpFeaturesFound.size()) {
       return null;
     }
-    int numRead=tokSequence.get(0).getReadingsLength();
+    final int numRead=tokSequence.get(0).getReadingsLength();
     if (first < numRead) {
       tmpATR=new AnalyzedTokenReadings(tokSequence.get(0).getAnalyzedToken(first),0);
       for (int i=first + 1; i <= Math.min(numRead - 1,tokCnt); i++) {
