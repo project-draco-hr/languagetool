@@ -1,0 +1,22 @@
+{
+  if (i <= 1) {
+    return true;
+  }
+  if (!precSpace && follSpace) {
+    if ("\"".equals(token) && NUMBER.matcher(tokens[i - 1].getToken()).matches()) {
+      return false;
+    }
+    if ("'".equals(token) && tokens[i].hasPosTag("POS")) {
+      return false;
+    }
+    if ("'".equals(token) && tokens[i - 1].hasPosTag("VBG") && tokens[i - 1].getToken().endsWith("in")) {
+      return false;
+    }
+  }
+  if (precSpace && !follSpace) {
+    if ("'".equals(token) && i + 1 < tokens.length && "em".equals(tokens[i + 1].getToken())) {
+      return false;
+    }
+  }
+  return true;
+}

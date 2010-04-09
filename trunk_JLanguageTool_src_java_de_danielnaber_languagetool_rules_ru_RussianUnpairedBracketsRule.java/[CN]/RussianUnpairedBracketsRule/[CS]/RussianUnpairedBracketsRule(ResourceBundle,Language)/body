@@ -1,0 +1,5 @@
+{
+  super(messages,language);
+  startSymbols=RU_START_SYMBOLS;
+  endSymbols=RU_END_SYMBOLS;
+}

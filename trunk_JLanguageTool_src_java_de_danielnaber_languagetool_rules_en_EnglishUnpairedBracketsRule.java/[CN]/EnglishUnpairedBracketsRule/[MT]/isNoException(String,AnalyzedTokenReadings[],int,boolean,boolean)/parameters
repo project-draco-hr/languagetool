@@ -1,0 +1,5 @@
+String token
+AnalyzedTokenReadings[] tokens
+int i
+boolean precSpace
+boolean follSpace
