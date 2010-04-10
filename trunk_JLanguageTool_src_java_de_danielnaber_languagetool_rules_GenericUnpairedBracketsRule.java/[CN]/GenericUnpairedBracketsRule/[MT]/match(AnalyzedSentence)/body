@@ -22,13 +22,10 @@
           symbolStack.push(new SymbolLocator(startSymbols[j],i));
         }
  else         if (noException && followedByWhitespace && token.equals(endSymbols[j])) {
-          if (i > 1 && endSymbols[j].equals(")")) {
-            if ((NUMERALS.matcher(tokens[i - 1].getToken()).matches() && !(!symbolStack.empty() && "(".equals(symbolStack.peek().symbol)))) {
-              noException=false;
-            }
+          if (i > 1 && endSymbols[j].equals(")") && (NUMERALS.matcher(tokens[i - 1].getToken()).matches() && !(!symbolStack.empty() && "(".equals(symbolStack.peek().symbol)))) {
           }
-          if (noException) {
-            if (symbolStack.isEmpty()) {
+ else {
+            if (symbolStack.empty()) {
               symbolStack.push(new SymbolLocator(endSymbols[j],i));
             }
  else {
