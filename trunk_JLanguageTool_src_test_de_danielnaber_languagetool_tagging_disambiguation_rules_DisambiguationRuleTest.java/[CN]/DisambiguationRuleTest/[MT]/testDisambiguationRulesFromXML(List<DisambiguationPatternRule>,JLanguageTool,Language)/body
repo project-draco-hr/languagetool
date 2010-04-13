@@ -43,7 +43,7 @@
             break;
           }
         }
-        assertTrue("The input form for the rule " + id + " in the example: "+ example.toString()+ " is different than expected (expected "+ inputForms+ " but got "+ reading+ ").",reading.equals(inputForms));
+        assertTrue("The input form for the rule " + id + " in the example: "+ example.toString()+ " is different than expected (expected "+ inputForms+ " but got "+ sortForms(reading)+ ").",sortForms(reading).equals(inputForms));
         for (        final AnalyzedTokenReadings readings : disambiguatedSent.getTokens()) {
           if (readings.isSentStart() && outputForms.indexOf("<S>") == -1) {
             continue;
@@ -55,7 +55,7 @@
             break;
           }
         }
-        assertTrue("The output form for the rule " + id + " in the example: "+ example.toString()+ " is different than expected (expected "+ outputForms+ " but got "+ reading+ ").",reading.equals(outputForms));
+        assertTrue("The output form for the rule " + id + " in the example: "+ example.toString()+ " is different than expected (expected "+ outputForms+ " but got "+ sortForms(reading)+ ").",sortForms(reading).equals(outputForms));
       }
     }
   }
