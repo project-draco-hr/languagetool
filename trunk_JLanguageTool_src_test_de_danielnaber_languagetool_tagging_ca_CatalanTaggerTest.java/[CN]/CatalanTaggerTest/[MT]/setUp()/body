@@ -1,0 +1,4 @@
+{
+  tagger=new CatalanTagger();
+  tokenizer=new WordTokenizer();
+}
