@@ -1,4 +1,0 @@
-{
-  super(ABBREV_LIST);
-  super.monthNames=MONTH_NAMES;
-}
