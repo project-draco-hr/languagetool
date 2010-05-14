@@ -1,0 +1,11 @@
+{
+  SpanishSynthesizer synth=new SpanishSynthesizer();
+  assertEquals(synth.synthesize(dummyToken("blablabla"),"blablabla").length,0);
+  assertEquals("[temiera, temiese]",Arrays.toString(synth.synthesize(dummyToken("temer"),"VMSI3S0")));
+  assertEquals("[presidentes]",Arrays.toString(synth.synthesize(dummyToken("presidente"),"NCMP000")));
+  assertEquals("[cont??is]",Arrays.toString(synth.synthesize(dummyToken("contar"),"VMSP2P0")));
+  assertEquals("[probado]",Arrays.toString(synth.synthesize(dummyToken("probar"),"VMP00SM")));
+  assertEquals("[probado]",Arrays.toString(synth.synthesize(dummyToken("probar"),"VMP00SM",false)));
+  assertEquals("[probado]",Arrays.toString(synth.synthesize(dummyToken("probar"),"VMP00SM",true)));
+  assertEquals("[probando, probado]",Arrays.toString(synth.synthesize(dummyToken("probar"),"VMP00SM|VMG0000",true)));
+}
