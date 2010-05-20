@@ -1,6 +1,6 @@
 {
   s=super.removeFalseEndOfSentence(s);
   s=REPAIR_NAME_PATTERN.matcher(s).replaceAll("$1 $2");
-  s=REPAIR_CENTURY_PATTERN.matcher(s).replaceAll("$1$2$3$4 ");
+  s=REPAIR_NUMBER_PATTERN.matcher(s).replaceAll("$1$2$3 ");
   return s;
 }

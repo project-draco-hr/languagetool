@@ -7,6 +7,7 @@
   testSplit(new String[]{"Das Schreiben ist auf den 3.10. datiert."});
   testSplit(new String[]{"Das Schreiben ist auf den 31.1. datiert."});
   testSplit(new String[]{"Das Schreiben ist auf den 3.10.2000 datiert."});
+  testSplit(new String[]{"Nat??rliche Vererbungsprozesse pr??gten sich erst im 18. und fr??hen 19. Jahrhundert aus."});
   testSplit(new String[]{"Friedrich I., auch bekannt als Friedrich der Gro??e."});
   testSplit(new String[]{"Friedrich II., auch bekannt als Friedrich der Gro??e."});
   testSplit(new String[]{"Friedrich IIXC., auch bekannt als Friedrich der Gro??e."});
