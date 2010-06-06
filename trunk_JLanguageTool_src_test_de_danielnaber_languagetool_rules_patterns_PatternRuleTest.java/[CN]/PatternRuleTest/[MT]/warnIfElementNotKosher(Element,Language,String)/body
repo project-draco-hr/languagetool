@@ -3,7 +3,7 @@
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains element "+ "\""+ element+ "\" that is not marked as regular expression"+ " but probably is one.");
   }
   if (element.isRegularExpression() && "".equals(element.getString())) {
-    System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains en empty string element "+ "\""+ element+ "\" that is marked as regular expression (don't look at the POS tag, it might be OK).");
+    System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains an empty string element "+ "\""+ element+ "\" that is marked as regular expression (don't look at the POS tag, it might be OK).");
   }
  else   if (element.isRegularExpression() && !PROBABLE_REGEX.matcher(element.getString()).find()) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains element "+ "\""+ element+ "\" that is marked as regular expression"+ " but probably is not one.");
