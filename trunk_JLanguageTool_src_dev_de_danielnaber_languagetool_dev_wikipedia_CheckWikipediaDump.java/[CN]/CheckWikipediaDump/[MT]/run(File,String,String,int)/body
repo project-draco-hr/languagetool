@@ -18,6 +18,9 @@
   lt.disableRule("WHITESPACE_RULE");
   lt.disableRule("EN_QUOTES");
   lt.disableRule("CUDZYSLOW_DRUKARSKI");
+  lt.disableRule("POMI??LJAJ_1");
+  lt.disableRule("POMI??LJAJ_2");
+  lt.disableRule("POMI??LJAJ_3");
   System.err.println("These rules are disabled: " + lt.getDisabledRules());
   Date dumpDate=getDumpDate(file);
   System.out.println("Dump date: " + dumpDate + ", language: "+ language);
