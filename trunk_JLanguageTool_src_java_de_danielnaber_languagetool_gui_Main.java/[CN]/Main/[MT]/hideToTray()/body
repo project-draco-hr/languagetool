@@ -3,7 +3,8 @@
   if (!isInTray && version.startsWith("1.5")) {
     TrayIcon trayIcon=null;
     try {
-      trayIcon=new TrayIcon(SYSTEM_TRAY_ICON);
+      Icon sysTrayIcon=new ImageIcon(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(Main.SYSTEM_TRAY_ICON_NAME));
+      trayIcon=new TrayIcon(sysTrayIcon);
     }
  catch (    final NoClassDefFoundError e) {
       throw new MissingJdicException(e);
@@ -15,7 +16,7 @@
   }
  else   if (!isInTray) {
     final java.awt.SystemTray tray=java.awt.SystemTray.getSystemTray();
-    final Image img=Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/resource/TrayIcon.png"));
+    final Image img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(Main.SYSTEM_TRAY_ICON_NAME));
     final PopupMenu popup=makePopupMenu();
     try {
       final java.awt.TrayIcon trayIcon=new java.awt.TrayIcon(img,"tooltip",popup);

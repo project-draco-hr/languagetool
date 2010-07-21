@@ -11,7 +11,7 @@
     assertTrue(result.indexOf("WIEDER_WILLEN") != -1);
     assertTrue("Expected special chars, got: '" + result + "'",result.indexOf("\u00f6\u00e4\u00fc\u00df") != -1);
     XMLValidator validator=new XMLValidator();
-    validator.validateXMLString(result,"/resource/api-output.dtd","matches");
+    validator.validateXMLString(result,JLanguageTool.getDataBroker().getResourceDir() + "/api-output.dtd","matches");
     validator.checkSimpleXMLString(result);
     assertTrue(check(Language.GERMAN,"bla <script>").indexOf("<script>") == -1);
     String germanSpecialChars=check(Language.GERMAN,"ein kleiner test. Und wieder Erwarten noch was: ???????? ????????.");

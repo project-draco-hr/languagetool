@@ -12,7 +12,7 @@
     final DisambiguationRuleLoader ruleLoader=new DisambiguationRuleLoader();
     final JLanguageTool languageTool=new JLanguageTool(lang);
     if (!(languageTool.getLanguage().getDisambiguator() instanceof DemoDisambiguator) && !(languageTool.getLanguage().getDisambiguator() instanceof TrimDisambiguator)) {
-      final String name="/resource/" + lang.getShortName() + "/disambiguation.xml";
+      final String name=JLanguageTool.getDataBroker().getResourceDir() + "/" + lang.getShortName()+ "/disambiguation.xml";
       final List<DisambiguationPatternRule> rules=ruleLoader.getRules(ruleLoader.getClass().getResourceAsStream(name));
       testDisambiguationRulesFromXML(rules,languageTool,lang);
     }

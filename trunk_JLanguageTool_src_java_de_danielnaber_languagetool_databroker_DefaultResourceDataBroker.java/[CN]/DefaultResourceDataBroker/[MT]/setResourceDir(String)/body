@@ -1,0 +1,3 @@
+{
+  this.resourceDir=(resourceDir == null) ? "" : resourceDir;
+}

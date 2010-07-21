@@ -10,7 +10,7 @@
   tool.enableDefaultOffRule("PL_WORD_REPEAT");
   matches=tool.check("By?? on bowiem pi??knym strzelcem bowiem.");
   assertEquals(1,matches.size());
-  List<PatternRule> rules=tool.loadPatternRules("/rules/pl/grammar.xml");
+  List<PatternRule> rules=tool.loadPatternRules(JLanguageTool.getDataBroker().getRulesDir() + "/pl/grammar.xml");
   for (  final PatternRule rule : rules) {
     tool.addRule(rule);
   }
@@ -30,7 +30,7 @@
   final Language lang=Language.POLISH;
   lang.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(true);
   tool=new JLanguageTool(lang);
-  rules=tool.loadPatternRules("/rules/pl/grammar.xml");
+  rules=tool.loadPatternRules(JLanguageTool.getDataBroker().getRulesDir() + "/pl/grammar.xml");
   for (  final PatternRule rule : rules) {
     tool.addRule(rule);
   }

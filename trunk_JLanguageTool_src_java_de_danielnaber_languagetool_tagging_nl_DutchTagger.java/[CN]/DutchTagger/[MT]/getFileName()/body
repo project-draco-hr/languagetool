@@ -1,3 +1,3 @@
 {
-  return "/resource/nl/dutch.dict";
+  return JLanguageTool.getDataBroker().getResourceDir() + "/nl/dutch.dict";
 }

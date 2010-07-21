@@ -1,6 +1,6 @@
 {
   final JLanguageTool tool=new JLanguageTool(Language.DUTCH);
-  final List<PatternRule> rules=tool.loadPatternRules("/rules/nl/grammar.xml");
+  final List<PatternRule> rules=tool.loadPatternRules(JLanguageTool.getDataBroker().getRulesDir() + "/nl/grammar.xml");
   for (  PatternRule patternRule : rules) {
     tool.addRule(patternRule);
   }

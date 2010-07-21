@@ -1,4 +1,4 @@
 {
-  RomanianTagger res=new RomanianTagger("/resource/ro/test_diacritics.dict");
+  RomanianTagger res=new RomanianTagger("/ro/test_diacritics.dict");
   return res;
 }

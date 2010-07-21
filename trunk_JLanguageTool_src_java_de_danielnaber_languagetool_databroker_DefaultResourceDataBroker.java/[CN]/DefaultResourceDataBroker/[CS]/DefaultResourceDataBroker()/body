@@ -1,0 +1,3 @@
+{
+  this(ResourceDataBroker.RESOURCE_DIR,ResourceDataBroker.RULES_DIR);
+}

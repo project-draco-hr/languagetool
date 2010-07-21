@@ -1,0 +1,6 @@
+{
+  if (JLanguageTool.dataBroker == null) {
+    JLanguageTool.dataBroker=new DefaultResourceDataBroker();
+  }
+  return JLanguageTool.dataBroker;
+}

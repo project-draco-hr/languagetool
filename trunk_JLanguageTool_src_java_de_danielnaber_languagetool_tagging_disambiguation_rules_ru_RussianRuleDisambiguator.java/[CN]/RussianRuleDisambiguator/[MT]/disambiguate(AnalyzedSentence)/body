@@ -2,7 +2,7 @@
   AnalyzedSentence sentence=input;
   try {
     if (disambiguationRules == null) {
-      final String defaultPatternFilename="/resource/ru/" + DISAMB_FILE;
+      final String defaultPatternFilename=JLanguageTool.getDataBroker().getResourceDir() + "/ru/" + DISAMB_FILE;
       disambiguationRules=loadPatternRules(defaultPatternFilename);
     }
     for (    final DisambiguationPatternRule dr : disambiguationRules) {

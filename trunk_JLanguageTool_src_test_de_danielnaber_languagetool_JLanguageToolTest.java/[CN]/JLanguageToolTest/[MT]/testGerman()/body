@@ -4,7 +4,7 @@
   assertEquals(0,matches.size());
   matches=tool.check("Ein Test Test, der Fehler geben sollte.");
   assertEquals(1,matches.size());
-  final List<PatternRule> rules=tool.loadPatternRules("/rules/de/grammar.xml");
+  final List<PatternRule> rules=tool.loadPatternRules(JLanguageTool.getDataBroker().getRulesDir() + "/de/grammar.xml");
   for (  PatternRule patternRule : rules) {
     tool.addRule(patternRule);
   }

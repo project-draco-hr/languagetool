@@ -4,11 +4,11 @@
   List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
-    final URL url=this.getClass().getResource(DICT_FILENAME);
+    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(DICT_FILENAME);
     morfologik=new DictionaryLookup(Dictionary.read(url));
   }
   if (manualTagger == null) {
-    manualTagger=new ManualTagger(Tools.getStream(USER_DICT_FILENAME));
+    manualTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(USER_DICT_FILENAME));
   }
   if (compoundTokenizer == null) {
     compoundTokenizer=new GermanCompoundTokenizer();

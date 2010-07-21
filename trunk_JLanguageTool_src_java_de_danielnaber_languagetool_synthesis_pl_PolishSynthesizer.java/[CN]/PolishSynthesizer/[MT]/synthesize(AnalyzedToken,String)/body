@@ -3,7 +3,7 @@
     return null;
   }
   if (synthesizer == null) {
-    final URL url=this.getClass().getResource(RESOURCE_FILENAME);
+    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(RESOURCE_FILENAME);
     synthesizer=new DictionaryLookup(Dictionary.read(url));
   }
   boolean isNegated=false;

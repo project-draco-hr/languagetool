@@ -1,0 +1,4 @@
+{
+  this.setResourceDir(resourceDir);
+  this.setRulesDir(rulesDir);
+}

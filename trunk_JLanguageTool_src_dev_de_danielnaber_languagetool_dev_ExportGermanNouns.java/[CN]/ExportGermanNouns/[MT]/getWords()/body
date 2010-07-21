@@ -1,5 +1,5 @@
 {
-  FSA fsa=FSA.getInstance(this.getClass().getResourceAsStream(DICT_FILENAME));
+  FSA fsa=FSA.getInstance(JLanguageTool.getDataBroker().getFromResourceDirAsStream(DICT_FILENAME));
   String lastTerm=null;
   Set<String> set=new HashSet<String>();
   for (  ByteBuffer bb : fsa) {

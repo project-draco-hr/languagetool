@@ -1,0 +1,13 @@
+{
+  StringBuffer completePath=new StringBuffer(this.getRulesDir());
+  if (!this.getRulesDir().endsWith("/") && !path.startsWith("/")) {
+    completePath.append('/');
+  }
+  if (this.getRulesDir().endsWith("/") && path.startsWith("/") && path.length() > 1) {
+    completePath.append(path.substring(1));
+  }
+ else {
+    completePath.append(path);
+  }
+  return ResourceDataBroker.class.getResourceAsStream(completePath.toString());
+}

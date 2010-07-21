@@ -1,15 +1,15 @@
 {
   XMLValidator validator=new XMLValidator();
   Language lang=Language.FRENCH;
-  String grammarFile="/resource/" + lang.getShortName() + "/disambiguation.xml";
-  validator.validate(grammarFile,"/resource/disambiguation.xsd");
+  String grammarFile=JLanguageTool.getDataBroker().getResourceDir() + "/" + lang.getShortName()+ "/disambiguation.xml";
+  validator.validate(grammarFile,JLanguageTool.getDataBroker().getResourceDir() + "/disambiguation.xsd");
   lang=Language.ENGLISH;
-  grammarFile="/resource/" + lang.getShortName() + "/disambiguation.xml";
-  validator.validate(grammarFile,"/resource/disambiguation.xsd");
+  grammarFile=JLanguageTool.getDataBroker().getResourceDir() + "/" + lang.getShortName()+ "/disambiguation.xml";
+  validator.validate(grammarFile,JLanguageTool.getDataBroker().getResourceDir() + "/disambiguation.xsd");
   lang=Language.DUTCH;
-  grammarFile="/resource/" + lang.getShortName() + "/disambiguation.xml";
-  validator.validate(grammarFile,"/resource/disambiguation.xsd");
+  grammarFile=JLanguageTool.getDataBroker().getResourceDir() + "/" + lang.getShortName()+ "/disambiguation.xml";
+  validator.validate(grammarFile,JLanguageTool.getDataBroker().getResourceDir() + "/disambiguation.xsd");
   lang=Language.POLISH;
-  grammarFile="/resource/" + lang.getShortName() + "/disambiguation.xml";
-  validator.validate(grammarFile,"/resource/disambiguation.xsd");
+  grammarFile=JLanguageTool.getDataBroker().getResourceDir() + "/" + lang.getShortName()+ "/disambiguation.xml";
+  validator.validate(grammarFile,JLanguageTool.getDataBroker().getResourceDir() + "/disambiguation.xsd");
 }

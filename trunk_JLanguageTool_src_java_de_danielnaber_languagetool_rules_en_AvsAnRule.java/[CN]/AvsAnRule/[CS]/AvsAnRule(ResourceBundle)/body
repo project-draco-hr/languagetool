@@ -2,6 +2,6 @@
   if (messages != null) {
     super.setCategory(new Category(messages.getString("category_misc")));
   }
-  requiresA=loadWords(Tools.getStream(FILENAME_A));
-  requiresAn=loadWords(Tools.getStream(FILENAME_AN));
+  requiresA=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(FILENAME_A));
+  requiresAn=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(FILENAME_AN));
 }
