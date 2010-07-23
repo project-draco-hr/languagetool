@@ -1,4 +1,4 @@
 {
   final String completePath=this.getCompleteResourceUrl(path);
-  return ResourceDataBroker.class.getResource(completePath.toString());
+  return getFixedJarURL(ResourceDataBroker.class.getResource(completePath.toString()));
 }
