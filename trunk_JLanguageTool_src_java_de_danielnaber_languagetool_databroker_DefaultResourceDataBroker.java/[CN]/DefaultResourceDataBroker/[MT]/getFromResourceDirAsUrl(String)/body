@@ -1,13 +1,4 @@
 {
-  StringBuffer completePath=new StringBuffer(this.getResourceDir());
-  if (!this.getResourceDir().endsWith("/") && !path.startsWith("/")) {
-    completePath.append('/');
-  }
-  if (this.getResourceDir().endsWith("/") && path.startsWith("/") && path.length() > 1) {
-    completePath.append(path.substring(1));
-  }
- else {
-    completePath.append(path);
-  }
+  final StringBuffer completePath=this.getCompleteResourceUrl(path);
   return ResourceDataBroker.class.getResource(completePath.toString());
 }
