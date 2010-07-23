@@ -1,4 +1,4 @@
 {
-  StringBuffer completePath=this.getCompleteRulesUrl(path);
+  final StringBuffer completePath=this.getCompleteRulesUrl(path);
   return ResourceDataBroker.class.getResourceAsStream(completePath.toString());
 }

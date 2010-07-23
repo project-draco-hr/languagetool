@@ -1,4 +1,4 @@
 {
-  StringBuffer completePath=this.getCompleteResourceUrl(path);
+  final String completePath=this.getCompleteResourceUrl(path);
   return ResourceDataBroker.class.getResourceAsStream(completePath.toString());
 }
