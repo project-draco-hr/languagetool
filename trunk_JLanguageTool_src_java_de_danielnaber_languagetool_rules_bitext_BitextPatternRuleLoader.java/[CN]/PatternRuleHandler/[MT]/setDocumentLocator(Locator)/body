@@ -1,0 +1,4 @@
+{
+  pLocator=locator;
+  super.setDocumentLocator(locator);
+}

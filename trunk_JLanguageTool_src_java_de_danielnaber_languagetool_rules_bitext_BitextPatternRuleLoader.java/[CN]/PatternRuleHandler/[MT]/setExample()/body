@@ -1,0 +1,19 @@
+{
+  IncorrectExample example=null;
+  if (inCorrectExample) {
+    example=new IncorrectExample(correctExample.toString());
+  }
+ else   if (inIncorrectExample) {
+    final String[] corrections=exampleCorrection.toString().split("\\|");
+    if (corrections.length > 0 && corrections[0].length() > 0) {
+      example=new IncorrectExample(incorrectExample.toString(),corrections);
+    }
+ else {
+      example=new IncorrectExample(incorrectExample.toString());
+    }
+  }
+  correctExample=new StringBuilder();
+  incorrectExample=new StringBuilder();
+  exampleCorrection=new StringBuilder();
+  return example;
+}

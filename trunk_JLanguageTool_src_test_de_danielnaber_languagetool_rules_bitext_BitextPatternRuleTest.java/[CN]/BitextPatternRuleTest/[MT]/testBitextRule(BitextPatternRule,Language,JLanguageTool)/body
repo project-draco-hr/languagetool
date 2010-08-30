@@ -1,0 +1,23 @@
+{
+  JLanguageTool srcTool=new JLanguageTool(rule.getSourceLang());
+  final List<StringPair> goodSentences=rule.getCorrectBitextExamples();
+  for (  StringPair goodSentence : goodSentences) {
+    assertTrue(cleanSentence(goodSentence.getSource()).trim().length() > 0);
+    assertTrue(cleanSentence(goodSentence.getTarget()).trim().length() > 0);
+    assertFalse(lang + ": Did not expect error in: " + goodSentence+ " (Rule: "+ rule+ ")",match(rule,goodSentence.getSource(),goodSentence.getTarget(),languageTool,srcTool));
+  }
+  final List<IncorrectBitextExample> badSentences=rule.getIncorrectBitextExamples();
+  for (  IncorrectBitextExample origBadExample : badSentences) {
+    String origBadSrcSentence=origBadExample.getExample().getSource().replaceAll("[\\n\\t]+","");
+    String origBadTrgSentence=origBadExample.getExample().getTarget().replaceAll("[\\n\\t]+","");
+    final List<String> suggestedCorrection=origBadExample.getCorrections();
+    final int expectedSrcMatchStart=origBadSrcSentence.indexOf("<marker>");
+    final int expectedSrcMatchEnd=origBadSrcSentence.indexOf("</marker>") - "<marker>".length();
+    testMarker(expectedSrcMatchStart,expectedSrcMatchEnd,rule,lang);
+    final int expectedTrgMatchStart=origBadTrgSentence.indexOf("<marker>");
+    final int expectedTrgMatchEnd=origBadTrgSentence.indexOf("</marker>") - "<marker>".length();
+    testMarker(expectedTrgMatchStart,expectedTrgMatchEnd,rule,lang);
+    testBadSentence(origBadSrcSentence,suggestedCorrection,expectedSrcMatchStart,expectedSrcMatchEnd,rule.getSrcRule(),lang,languageTool);
+    testBadSentence(origBadTrgSentence,suggestedCorrection,expectedTrgMatchStart,expectedTrgMatchEnd,rule.getTrgRule(),lang,languageTool);
+  }
+}

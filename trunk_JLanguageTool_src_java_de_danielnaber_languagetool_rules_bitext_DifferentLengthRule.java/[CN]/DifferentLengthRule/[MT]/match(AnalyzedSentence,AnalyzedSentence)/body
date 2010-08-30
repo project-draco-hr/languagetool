@@ -3,7 +3,7 @@
     RuleMatch[] rm=new RuleMatch[1];
     AnalyzedTokenReadings[] tokens=targetText.getTokens();
     int len=tokens[tokens.length - 1].getStartPos() + tokens[tokens.length - 1].getToken().length();
-    rm[0]=new RuleMatch(this,1,len,"Source and target translation lengths are very different!");
+    rm[0]=new RuleMatch(this,1,len,MSG);
     return rm;
   }
   return new RuleMatch[0];

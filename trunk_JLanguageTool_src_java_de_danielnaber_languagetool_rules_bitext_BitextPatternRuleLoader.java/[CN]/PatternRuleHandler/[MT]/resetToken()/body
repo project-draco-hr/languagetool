@@ -1,0 +1,10 @@
+{
+  posNegation=false;
+  posRegExp=false;
+  inToken=false;
+  tokenSpaceBefore=false;
+  tokenSpaceBeforeSet=false;
+  resetException();
+  exceptionSet=false;
+  tokenReference=null;
+}

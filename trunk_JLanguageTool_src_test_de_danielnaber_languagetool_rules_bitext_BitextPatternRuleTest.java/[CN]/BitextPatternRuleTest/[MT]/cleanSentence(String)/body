@@ -1,0 +1,3 @@
+{
+  return cleanXML(str.replaceAll("[\\n\\t]+",""));
+}

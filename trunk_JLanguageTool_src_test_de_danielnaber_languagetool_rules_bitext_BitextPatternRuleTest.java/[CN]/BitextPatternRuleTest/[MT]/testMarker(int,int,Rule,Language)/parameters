@@ -1,0 +1,4 @@
+int expectedMatchStart
+int expectedMatchEnd
+Rule rule
+Language lang

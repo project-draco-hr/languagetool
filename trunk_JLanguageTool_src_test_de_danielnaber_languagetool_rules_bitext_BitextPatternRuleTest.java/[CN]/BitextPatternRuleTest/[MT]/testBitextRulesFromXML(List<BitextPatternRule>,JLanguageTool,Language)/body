@@ -1,0 +1,6 @@
+{
+  final HashMap<String,PatternRule> complexRules=new HashMap<String,PatternRule>();
+  for (  final BitextPatternRule rule : rules) {
+    testBitextRule(rule,lang,languageTool);
+  }
+}

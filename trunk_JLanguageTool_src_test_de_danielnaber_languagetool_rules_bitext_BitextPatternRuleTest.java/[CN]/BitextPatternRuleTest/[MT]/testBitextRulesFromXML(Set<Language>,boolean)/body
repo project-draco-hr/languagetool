@@ -1,0 +1,7 @@
+{
+  final BitextPatternRuleLoader ruleLoader=new BitextPatternRuleLoader();
+  final JLanguageTool languageTool=new JLanguageTool(Language.POLISH);
+  final String name="/" + Language.POLISH.getShortName() + "/bitext.xml";
+  final List<BitextPatternRule> rules=ruleLoader.getRules(JLanguageTool.getDataBroker().getFromRulesDirAsStream(name),name);
+  testBitextRulesFromXML(rules,languageTool,Language.POLISH);
+}

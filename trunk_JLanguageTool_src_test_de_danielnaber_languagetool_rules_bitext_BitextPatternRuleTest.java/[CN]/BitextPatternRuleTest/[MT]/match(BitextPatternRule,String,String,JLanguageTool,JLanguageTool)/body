@@ -1,0 +1,6 @@
+{
+  final AnalyzedSentence srcText=srcLanguageTool.getAnalyzedSentence(src);
+  final AnalyzedSentence trgText=trgLanguageTool.getAnalyzedSentence(trg);
+  final RuleMatch[] matches=rule.match(srcText,trgText);
+  return matches.length > 0;
+}

@@ -1,0 +1,3 @@
+{
+  testBitextRulesFromXML(null,false);
+}
