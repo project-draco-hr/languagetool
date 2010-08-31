@@ -1,0 +1,18 @@
+{
+  final FalseFriendRuleLoader ruleLoader=new FalseFriendRuleLoader();
+  List<BitextPatternRule> bRules=new ArrayList<BitextPatternRule>();
+  List<PatternRule> rules1=ruleLoader.getRules(this.getClass().getResourceAsStream(filename),motherTongue,language);
+  List<PatternRule> rules2=ruleLoader.getRules(this.getClass().getResourceAsStream(filename),language,motherTongue);
+  HashMap<String,PatternRule> srcRules=new HashMap<String,PatternRule>();
+  for (  PatternRule rule : rules1) {
+    srcRules.put(rule.getId(),rule);
+  }
+  for (  PatternRule rule : rules2) {
+    if (srcRules.containsKey(rule.getId())) {
+      BitextPatternRule bRule=new BitextPatternRule(srcRules.get(rule.getId()),rule);
+      bRule.setSourceLang(motherTongue);
+      bRules.add(bRule);
+    }
+  }
+  return bRules;
+}

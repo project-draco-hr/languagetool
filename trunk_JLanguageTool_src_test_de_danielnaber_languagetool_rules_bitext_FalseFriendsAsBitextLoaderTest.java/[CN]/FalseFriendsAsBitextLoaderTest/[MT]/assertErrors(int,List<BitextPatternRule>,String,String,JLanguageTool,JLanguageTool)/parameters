@@ -1,0 +1,6 @@
+int errorCount
+List<BitextPatternRule> rules
+String src
+String trg
+JLanguageTool srcTool
+JLanguageTool trgTool
