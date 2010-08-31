@@ -23,6 +23,5 @@
   }
   startPositionCorrection=0;
   endPositionCorrection=0;
-  targetExample=false;
   return rule;
 }

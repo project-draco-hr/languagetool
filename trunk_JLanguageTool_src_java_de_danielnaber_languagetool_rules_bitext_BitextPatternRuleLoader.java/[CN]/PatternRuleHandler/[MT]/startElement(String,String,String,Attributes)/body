@@ -117,12 +117,6 @@
     inCorrectExample=true;
     correctExample=new StringBuilder();
   }
- else   if (qName.equals("trgExample")) {
-    targetExample=true;
-  }
- else   if (qName.equals("srcExample")) {
-    targetExample=false;
-  }
  else   if (qName.equals("example") && attrs.getValue(TYPE).equals("incorrect")) {
     inIncorrectExample=true;
     incorrectExample=new StringBuilder();
