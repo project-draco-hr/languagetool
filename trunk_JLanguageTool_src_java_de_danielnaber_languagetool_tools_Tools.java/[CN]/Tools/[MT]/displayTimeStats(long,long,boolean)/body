@@ -1,0 +1,14 @@
+{
+  final long endTime=System.currentTimeMillis();
+  final long time=endTime - startTime;
+  final float timeInSeconds=time / 1000.0f;
+  final float sentencesPerSecond=sentCount / timeInSeconds;
+  if (apiFormat) {
+    System.out.println("<!--");
+  }
+  System.out.printf(Locale.ENGLISH,"Time: %dms for %d sentences (%.1f sentences/sec)",time,sentCount,sentencesPerSecond);
+  System.out.println();
+  if (apiFormat) {
+    System.out.println("-->");
+  }
+}

@@ -1,0 +1,29 @@
+{
+  final List<BitextRule> rules=new ArrayList<BitextRule>();
+  try {
+    final Class[] classes=ReflectionUtils.findClasses(Rule.class.getClassLoader(),Rule.class.getPackage().getName() + ".bitext",".*Rule$",0,Rule.class,null);
+    for (    final Class class1 : classes) {
+      final Constructor[] constructors=class1.getConstructors();
+      for (      final Constructor constructor : constructors) {
+        final Class[] paramTypes=constructor.getParameterTypes();
+        if (paramTypes.length == 0) {
+          rules.add((BitextRule)constructor.newInstance());
+          break;
+        }
+        if (paramTypes.length == 1 && paramTypes[0].equals(ResourceBundle.class)) {
+          rules.add((BitextRule)constructor.newInstance(messages));
+          break;
+        }
+        if (paramTypes.length == 2 && paramTypes[0].equals(ResourceBundle.class) && paramTypes[1].equals(Language.class)) {
+          rules.add((BitextRule)constructor.newInstance(messages,language));
+          break;
+        }
+        throw new RuntimeException("Unknown constructor for rule class: " + class1.getName());
+      }
+    }
+  }
+ catch (  final Exception e) {
+    throw new RuntimeException("Failed to load rules: " + e.getMessage(),e);
+  }
+  return rules;
+}

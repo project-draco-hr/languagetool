@@ -1,0 +1,24 @@
+{
+  final long startTime=System.currentTimeMillis();
+  int contextSize=DEFAULT_CONTEXT_SIZE;
+  final List<RuleMatch> ruleMatches=srcLt.check(src);
+  for (  BitextRule bRule : bRules) {
+    RuleMatch[] curMatch=bitextMatch(bRule,src,trg,srcLt,trgLt);
+    if (curMatch != null) {
+      for (      RuleMatch match : curMatch) {
+        ruleMatches.add(match);
+      }
+    }
+  }
+  if (apiFormat) {
+    final String xml=StringTools.ruleMatchesToXML(ruleMatches,trg,contextSize,xmlMode);
+    System.out.print(xml);
+  }
+ else {
+    printMatches(ruleMatches,0,trg,contextSize);
+  }
+  if (xmlMode == StringTools.XmlPrintMode.NORMAL_XML) {
+    displayTimeStats(startTime,srcLt.getSentenceCount(),apiFormat);
+  }
+  return ruleMatches.size();
+}

@@ -1,0 +1,4 @@
+List<RuleMatch> ruleMatches
+int prevMatches
+String contents
+int contextSize
