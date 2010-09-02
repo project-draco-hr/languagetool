@@ -1,0 +1,13 @@
+{
+  try {
+    StringPair result=nextline;
+    if (nextline != null) {
+      nextline=Tab2StringPair(in.readLine());
+      if (nextline == null)       in.close();
+    }
+    return result;
+  }
+ catch (  IOException e) {
+    throw new IllegalArgumentException(e);
+  }
+}

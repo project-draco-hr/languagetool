@@ -1,0 +1,9 @@
+{
+  try {
+    in=new BufferedReader(new FileReader(filename));
+    nextline=Tab2StringPair(in.readLine());
+  }
+ catch (  IOException e) {
+    throw new IllegalArgumentException(e);
+  }
+}

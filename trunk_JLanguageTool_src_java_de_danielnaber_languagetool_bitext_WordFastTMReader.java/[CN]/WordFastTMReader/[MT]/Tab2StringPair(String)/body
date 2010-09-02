@@ -1,0 +1,7 @@
+{
+  if (line == null) {
+    return null;
+  }
+  String[] fields=line.split("\t");
+  return new StringPair(fields[4],fields[6]);
+}

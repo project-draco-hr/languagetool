@@ -1,0 +1,6 @@
+{
+  super(filename);
+  if (nextline != null) {
+    nextline=Tab2StringPair(in.readLine());
+  }
+}
