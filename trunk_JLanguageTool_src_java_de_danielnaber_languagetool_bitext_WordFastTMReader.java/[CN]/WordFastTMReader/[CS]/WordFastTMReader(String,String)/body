@@ -1,5 +1,5 @@
 {
-  super(filename);
+  super(filename,encoding);
   if (nextline != null) {
     nextline=Tab2StringPair(in.readLine());
   }

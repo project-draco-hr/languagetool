@@ -1,0 +1,12 @@
+{
+  final List<RuleMatch> ruleMatches=srcLt.check(src);
+  for (  BitextRule bRule : bRules) {
+    RuleMatch[] curMatch=bitextMatch(bRule,src,trg,srcLt,trgLt);
+    if (curMatch != null) {
+      for (      RuleMatch match : curMatch) {
+        ruleMatches.add(match);
+      }
+    }
+  }
+  return ruleMatches;
+}

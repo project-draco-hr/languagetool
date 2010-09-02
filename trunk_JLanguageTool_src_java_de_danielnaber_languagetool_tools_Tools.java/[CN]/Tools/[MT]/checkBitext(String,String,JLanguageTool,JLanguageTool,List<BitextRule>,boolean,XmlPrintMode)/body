@@ -1,15 +1,7 @@
 {
   final long startTime=System.currentTimeMillis();
   int contextSize=DEFAULT_CONTEXT_SIZE;
-  final List<RuleMatch> ruleMatches=srcLt.check(src);
-  for (  BitextRule bRule : bRules) {
-    RuleMatch[] curMatch=bitextMatch(bRule,src,trg,srcLt,trgLt);
-    if (curMatch != null) {
-      for (      RuleMatch match : curMatch) {
-        ruleMatches.add(match);
-      }
-    }
-  }
+  final List<RuleMatch> ruleMatches=checkBitext(src,trg,srcLt,trgLt,bRules);
   if (apiFormat) {
     final String xml=StringTools.ruleMatchesToXML(ruleMatches,trg,contextSize,xmlMode);
     System.out.print(xml);
