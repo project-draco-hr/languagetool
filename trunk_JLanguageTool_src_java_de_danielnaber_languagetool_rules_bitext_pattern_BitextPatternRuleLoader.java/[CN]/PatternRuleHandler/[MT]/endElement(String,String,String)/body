@@ -18,6 +18,15 @@
     trgRule=finalizeRule();
   }
  else   if (qName.equals("rule")) {
+    trgRule.setMessage(message.toString());
+    if (suggestionMatches != null) {
+      for (      final Match m : suggestionMatches) {
+        trgRule.addSuggestionMatch(m);
+      }
+      if (phraseElementList.size() <= 1) {
+        suggestionMatches.clear();
+      }
+    }
     BitextPatternRule bRule=new BitextPatternRule(srcRule,trgRule);
     bRule.setCorrectBitextExamples(correctExamples);
     bRule.setIncorrectBitextExamples(incorrectExamples);

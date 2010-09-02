@@ -1,5 +1,5 @@
 {
-  if (srcRule.match(sourceText) != null) {
+  if (srcRule.match(sourceText).length > 0) {
     return trgRule.match(targetText);
   }
   return null;
