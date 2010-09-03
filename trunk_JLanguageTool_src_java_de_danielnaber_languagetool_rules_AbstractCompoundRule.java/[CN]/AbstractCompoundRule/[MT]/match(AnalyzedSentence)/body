@@ -22,10 +22,10 @@
       sb.append(" ");
       sb.append(atr.getToken());
       if (j >= 1) {
-        final String stringtoCheck=normalize(sb.toString());
-        stringsToCheck.add(stringtoCheck);
+        final String stringToCheck=normalize(sb.toString());
+        stringsToCheck.add(stringToCheck);
         origStringsToCheck.add(sb.toString().trim());
-        if (!stringToToken.containsKey(stringtoCheck))         stringToToken.put(stringtoCheck,atr);
+        if (!stringToToken.containsKey(stringToCheck))         stringToToken.put(stringToCheck,atr);
       }
       j++;
     }
@@ -35,23 +35,23 @@
       if (incorrectCompounds.contains(stringToCheck)) {
         final AnalyzedTokenReadings atr=stringToToken.get(stringToCheck);
         String msg=null;
-        final List<String> repl=new ArrayList<String>();
+        final List<String> replacement=new ArrayList<String>();
         if (!noDashSuggestion.contains(stringToCheck)) {
-          repl.add(origStringToCheck.replace(' ','-'));
-          msg=withHyphen;
+          replacement.add(origStringToCheck.replace(' ','-'));
+          msg=withHyphenMessage;
         }
         if (!hasAllUppercaseParts(origStringToCheck) && countParts(stringToCheck) <= getMaxUnHyphenatedWordCount() && !onlyDashSuggestion.contains(stringToCheck)) {
-          repl.add(mergeCompound(origStringToCheck));
-          msg=asOne;
+          replacement.add(mergeCompound(origStringToCheck));
+          msg=asOneMessage;
         }
         final String[] parts=stringToCheck.split(" ");
         if (parts.length > 0 && parts[0].length() == 1) {
-          repl.clear();
-          repl.add(origStringToCheck.replace(' ','-'));
-          msg=withHyphen;
+          replacement.clear();
+          replacement.add(origStringToCheck.replace(' ','-'));
+          msg=withHyphenMessage;
         }
- else         if (repl.isEmpty() || repl.size() == 2) {
-          msg=withHyphenOrNot;
+ else         if (replacement.isEmpty() || replacement.size() == 2) {
+          msg=withOrWithoutHyphenMessage;
         }
         final RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),atr.getStartPos() + atr.getToken().length(),msg,shortDesc);
         if (prevRuleMatch != null && prevRuleMatch.getFromPos() == ruleMatch.getFromPos()) {
@@ -59,7 +59,7 @@
           break;
         }
         prevRuleMatch=ruleMatch;
-        ruleMatch.setSuggestedReplacements(repl);
+        ruleMatch.setSuggestedReplacements(replacement);
         ruleMatches.add(ruleMatch);
         break;
       }

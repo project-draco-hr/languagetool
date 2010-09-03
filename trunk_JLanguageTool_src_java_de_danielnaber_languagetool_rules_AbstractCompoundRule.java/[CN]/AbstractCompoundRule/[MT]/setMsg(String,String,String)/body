@@ -1,5 +1,5 @@
 {
-  withHyphen=msg1;
-  asOne=msg2;
-  withHyphenOrNot=msg3;
+  this.withHyphenMessage=withHyphenMessage;
+  this.asOneMessage=asOneMessage;
+  withOrWithoutHyphenMessage=withHyphenOrNotMessage;
 }
