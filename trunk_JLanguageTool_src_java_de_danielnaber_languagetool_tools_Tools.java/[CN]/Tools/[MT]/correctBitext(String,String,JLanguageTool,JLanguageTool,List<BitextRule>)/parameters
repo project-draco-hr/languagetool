@@ -1,5 +1,5 @@
 String src
-String trg
-JLanguageTool srcLt
-JLanguageTool trgLt
+String target
+JLanguageTool sourceLanguageTool
+JLanguageTool targetLanguageTool
 List<BitextRule> bRules

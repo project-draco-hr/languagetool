@@ -10,7 +10,7 @@
       final String classShortNm=pointIdx == -1 ? classNm : classNm.substring(pointIdx + 1);
       if (classNm.startsWith(packageName) && (classNameRegEx == null || classShortNm.matches(classNameRegEx))) {
         final String subName=classNm.substring(packageName.length() + 1);
-        if (countOccurences(subName,'.') > subdirLevel) {
+        if (countOccurrences(subName,'.') > subdirLevel) {
           continue;
         }
         final Class clazz=Class.forName(classNm);

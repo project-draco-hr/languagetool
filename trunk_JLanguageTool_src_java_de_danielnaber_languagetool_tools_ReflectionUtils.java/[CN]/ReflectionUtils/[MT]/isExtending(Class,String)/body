@@ -1,10 +1,10 @@
 {
-  Class superclass1=class1.getSuperclass();
-  while (superclass1 != null) {
-    if (superclassName.equals(superclass1.getName())) {
+  Class tmpSuperClass=clazz.getSuperclass();
+  while (tmpSuperClass != null) {
+    if (superClassName.equals(tmpSuperClass.getName())) {
       return true;
     }
-    superclass1=superclass1.getSuperclass();
+    tmpSuperClass=tmpSuperClass.getSuperclass();
   }
   return false;
 }

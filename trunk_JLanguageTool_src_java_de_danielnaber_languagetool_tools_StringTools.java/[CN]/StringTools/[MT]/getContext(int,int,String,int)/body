@@ -28,6 +28,7 @@
   sb.append(fileContents.substring(startContent,endContent));
   sb.append(postfix);
   sb.append("\n");
-  sb.append(markerPrefix + marker.substring(startContent,endContent));
+  sb.append(markerPrefix);
+  sb.append(marker.substring(startContent,endContent));
   return sb.toString();
 }

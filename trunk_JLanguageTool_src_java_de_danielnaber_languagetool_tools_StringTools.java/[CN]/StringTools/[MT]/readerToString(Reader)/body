@@ -1,13 +1,13 @@
 {
   final StringBuilder sb=new StringBuilder();
-  int readbytes=0;
+  int readBytes=0;
   final char[] chars=new char[4000];
-  while (readbytes >= 0) {
-    readbytes=reader.read(chars,0,4000);
-    if (readbytes <= 0) {
+  while (readBytes >= 0) {
+    readBytes=reader.read(chars,0,4000);
+    if (readBytes <= 0) {
       break;
     }
-    sb.append(new String(chars,0,readbytes));
+    sb.append(new String(chars,0,readBytes));
   }
   return sb.toString();
 }

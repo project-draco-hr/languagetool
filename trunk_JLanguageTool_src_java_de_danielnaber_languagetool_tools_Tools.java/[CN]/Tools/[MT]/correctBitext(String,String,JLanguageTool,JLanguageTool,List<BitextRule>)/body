@@ -1,15 +1,13 @@
 {
-  final List<RuleMatch> ruleMatches=srcLt.check(src);
+  final List<RuleMatch> ruleMatches=sourceLanguageTool.check(src);
   for (  BitextRule bRule : bRules) {
-    RuleMatch[] curMatch=bitextMatch(bRule,src,trg,srcLt,trgLt);
+    final RuleMatch[] curMatch=bitextMatch(bRule,src,target,sourceLanguageTool,targetLanguageTool);
     if (curMatch != null) {
-      for (      RuleMatch match : curMatch) {
-        ruleMatches.add(match);
-      }
+      ruleMatches.addAll(Arrays.asList(curMatch));
     }
   }
   if (ruleMatches.isEmpty()) {
-    return trg;
+    return target;
   }
-  return correctTextFromMatches(trg,ruleMatches);
+  return correctTextFromMatches(target,ruleMatches);
 }

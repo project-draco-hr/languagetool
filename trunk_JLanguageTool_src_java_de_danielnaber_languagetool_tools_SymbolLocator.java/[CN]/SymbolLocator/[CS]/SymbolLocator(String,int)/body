@@ -1,4 +1,4 @@
 {
-  symbol=sym;
-  index=ind;
+  this.symbol=symbol;
+  this.index=index;
 }

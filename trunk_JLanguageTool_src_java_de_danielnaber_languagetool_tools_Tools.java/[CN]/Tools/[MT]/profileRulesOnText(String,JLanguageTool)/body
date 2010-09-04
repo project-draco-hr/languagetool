@@ -1,11 +1,11 @@
 {
-  long[] workTime=new long[10];
+  final long[] workTime=new long[10];
   int matchCount=0;
-  List<Rule> rules=lt.getAllRules();
-  int ruleCount=rules.size();
+  final List<Rule> rules=lt.getAllRules();
+  final int ruleCount=rules.size();
   System.out.printf("Testing %d rules\n",ruleCount);
   System.out.println("Rule ID\tTime\tSentences\tMatches\tSentences per sec.");
-  List<String> sentences=lt.sentenceTokenize(contents);
+  final List<String> sentences=lt.sentenceTokenize(contents);
   for (  Rule rule : rules) {
     matchCount=0;
     for (int k=0; k < 10; k++) {
