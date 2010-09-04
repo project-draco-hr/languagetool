@@ -4,7 +4,7 @@
   for (  StringPair goodSentence : goodSentences) {
     assertTrue(cleanSentence(goodSentence.getSource()).trim().length() > 0);
     assertTrue(cleanSentence(goodSentence.getTarget()).trim().length() > 0);
-    assertFalse(lang + ": Did not expect error in: " + goodSentence+ " (Rule: "+ rule+ ")",match(rule,goodSentence.getSource(),goodSentence.getTarget(),languageTool,srcTool));
+    assertFalse(lang + ": Did not expect error in: " + goodSentence+ " (Rule: "+ rule+ ")",match(rule,goodSentence.getSource(),goodSentence.getTarget(),srcTool,languageTool));
   }
   final List<IncorrectBitextExample> badSentences=rule.getIncorrectBitextExamples();
   for (  IncorrectBitextExample origBadExample : badSentences) {
@@ -17,7 +17,7 @@
     final int expectedTrgMatchStart=origBadTrgSentence.indexOf("<marker>");
     final int expectedTrgMatchEnd=origBadTrgSentence.indexOf("</marker>") - "<marker>".length();
     testMarker(expectedTrgMatchStart,expectedTrgMatchEnd,rule,lang);
-    testBadSentence(origBadSrcSentence,suggestedCorrection,expectedSrcMatchStart,expectedSrcMatchEnd,rule.getSrcRule(),lang,languageTool);
+    testBadSentence(origBadSrcSentence,suggestedCorrection,expectedSrcMatchStart,expectedSrcMatchEnd,rule.getSrcRule(),lang,srcTool);
     testBadSentence(origBadTrgSentence,suggestedCorrection,expectedTrgMatchStart,expectedTrgMatchEnd,rule.getTrgRule(),lang,languageTool);
   }
 }
