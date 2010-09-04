@@ -1,5 +1,5 @@
 {
-  boolean inserted=prevTokens.offer(token);
+  final boolean inserted=prevTokens.offer(token);
   if (!inserted) {
     prevTokens.poll();
     prevTokens.offer(token);

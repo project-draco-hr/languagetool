@@ -39,9 +39,7 @@
           for (int i=0; i < readingCount; i++) {
             final String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i),targetPosTag,true);
             if (possibleWordForms != null) {
-              for (              final String form : possibleWordForms) {
-                wordForms.add(form);
-              }
+              wordForms.addAll(Arrays.asList(possibleWordForms));
             }
           }
         }
@@ -57,9 +55,7 @@
         for (int i=0; i < readingCount; i++) {
           final String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i),posTag);
           if (possibleWordForms != null) {
-            for (            final String form : possibleWordForms) {
-              wordForms.add(form);
-            }
+            wordForms.addAll(Arrays.asList(possibleWordForms));
           }
         }
         formattedString=wordForms.toArray(new String[wordForms.size()]);
@@ -67,7 +63,7 @@
     }
   }
   if (includeSkipped != IncludeRange.NONE && skippedTokens != null && !"".equals(skippedTokens)) {
-    String[] helper=new String[formattedString.length];
+    final String[] helper=new String[formattedString.length];
     for (int i=0; i < formattedString.length; i++) {
       if (formattedString[i] == null) {
         formattedString[i]="";

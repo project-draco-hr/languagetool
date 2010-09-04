@@ -3,7 +3,7 @@
     formattedToken=new AnalyzedTokenReadings(new AnalyzedToken(lemmaString,posTag,lemmaString),0);
     staticLemma=true;
     postagRegexp=true;
-    if (postagRegexp && posTag != null) {
+    if (posTag != null) {
       pPosRegexMatch=Pattern.compile(posTag);
     }
   }

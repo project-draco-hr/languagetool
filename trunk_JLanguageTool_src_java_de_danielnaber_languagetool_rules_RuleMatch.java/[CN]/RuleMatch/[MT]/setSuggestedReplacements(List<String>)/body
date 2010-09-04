@@ -1,4 +1,4 @@
 {
-  if (repl == null)   throw new NullPointerException("replacement might be empty but not null");
-  this.suggestedReplacements=repl;
+  if (replacement == null)   throw new NullPointerException("replacement might be empty but not null");
+  this.suggestedReplacements=replacement;
 }

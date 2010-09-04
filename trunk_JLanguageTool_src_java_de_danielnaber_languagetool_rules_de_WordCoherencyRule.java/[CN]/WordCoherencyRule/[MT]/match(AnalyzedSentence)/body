@@ -1,40 +1,39 @@
 {
-  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  AnalyzedTokenReadings[] tokens=text.getTokens();
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokens();
   int pos=0;
-  for (int i=0; i < tokens.length; i++) {
-    String token=tokens[i].getToken();
-    if (tokens[i].isWhitespace()) {
+  for (  AnalyzedTokenReadings tmpToken : tokens) {
+    String token=tmpToken.getToken();
+    if (tmpToken.isWhitespace()) {
     }
  else {
-      String origToken=token;
-      List<AnalyzedToken> readings=tokens[i].getReadings();
+      final String origToken=token;
+      final List<AnalyzedToken> readings=tmpToken.getReadings();
       if (readings != null && readings.size() > 0) {
-        String baseform=readings.get(0).getLemma();
+        final String baseform=readings.get(0).getLemma();
         if (baseform != null) {
           token=baseform;
         }
  else {
-          String manualLookup=germanLemmatizer.getBaseform(origToken);
+          final String manualLookup=germanLemmatizer.getBaseform(origToken);
           if (manualLookup != null)           token=manualLookup;
         }
       }
       if (shouldNotAppearWord.containsKey(token)) {
-        RuleMatch otherMatch=shouldNotAppearWord.get(token);
-        String otherSpelling=otherMatch.getMessage();
-        String msg="'" + token + "' und '"+ otherSpelling+ "' sollten nicht gleichzeitig benutzt werden";
-        RuleMatch ruleMatch=new RuleMatch(this,pos,pos + origToken.length(),msg);
+        final RuleMatch otherMatch=shouldNotAppearWord.get(token);
+        final String otherSpelling=otherMatch.getMessage();
+        final String msg="'" + token + "' und '"+ otherSpelling+ "' sollten nicht gleichzeitig benutzt werden";
+        final RuleMatch ruleMatch=new RuleMatch(this,pos,pos + origToken.length(),msg);
         ruleMatch.setSuggestedReplacement(otherSpelling);
         ruleMatches.add(ruleMatch);
       }
  else       if (relevantWords.containsKey(token)) {
-        String shouldNotAppear=relevantWords.get(token);
-        String msg=token;
-        RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + origToken.length(),msg);
+        final String shouldNotAppear=relevantWords.get(token);
+        final RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + origToken.length(),token);
         shouldNotAppearWord.put(shouldNotAppear,potentialRuleMatch);
       }
     }
-    pos+=tokens[i].getToken().length();
+    pos+=tmpToken.getToken().length();
   }
   return toRuleMatchArray(ruleMatches);
 }

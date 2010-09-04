@@ -1,10 +1,10 @@
 {
-  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   int pos=0;
   boolean prevTokenIsDas=false;
   for (int i=0; i < tokens.length; i++) {
-    String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
+    final String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
     if (posToken != null && posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME))     continue;
     if (i == 1) {
       if (nounIndicators.contains(tokens[i].getToken().toLowerCase())) {
@@ -12,8 +12,8 @@
       }
       continue;
     }
-    AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[i];
-    String token=analyzedToken.getToken();
+    final AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[i];
+    final String token=analyzedToken.getToken();
     List<AnalyzedGermanToken> readings=analyzedToken.getGermanReadings();
     AnalyzedGermanTokenReadings analyzedGermanToken2=null;
     boolean isBaseform=false;
@@ -31,7 +31,7 @@
         throw new RuntimeException(e);
       }
       if (prevTokenIsDas) {
-        String newToken=StringTools.uppercaseFirstChar(token);
+        final String newToken=StringTools.uppercaseFirstChar(token);
         try {
           analyzedGermanToken2=tagger.lookup(newToken);
         }
@@ -39,23 +39,18 @@
           throw new RuntimeException(e);
         }
         if (Character.isLowerCase(token.charAt(0)) && !substVerbenExceptions.contains(token)) {
-          String msg="Substantivierte Verben werden gro?? geschrieben.";
-          RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
-          String word=tokens[i].getToken();
-          String fixedWord=StringTools.uppercaseFirstChar(word);
+          final String msg="Substantivierte Verben werden gro?? geschrieben.";
+          final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
+          final String word=tokens[i].getToken();
+          final String fixedWord=StringTools.uppercaseFirstChar(word);
           ruleMatch.setSuggestedReplacement(fixedWord);
           ruleMatches.add(ruleMatch);
         }
       }
     }
-    if (nounIndicators.contains(tokens[i].getToken().toLowerCase())) {
-      prevTokenIsDas=true;
-    }
- else {
-      prevTokenIsDas=false;
-    }
+    prevTokenIsDas=nounIndicators.contains(tokens[i].getToken().toLowerCase());
     if (readings == null)     continue;
-    boolean hasNounReading=analyzedToken.hasReadingOfType(GermanToken.POSType.NOMEN);
+    final boolean hasNounReading=analyzedToken.hasReadingOfType(GermanToken.POSType.NOMEN);
     if (hasNounReading)     continue;
     try {
       analyzedGermanToken2=tagger.lookup(token.toLowerCase());
@@ -70,10 +65,10 @@
       continue;
     }
     if (Character.isUpperCase(token.charAt(0)) && token.length() > 1 && !sentenceStartExceptions.contains(tokens[i - 1].getToken()) && !StringTools.isAllUppercase(token) && !exceptions.contains(token) && !analyzedToken.hasReadingOfType(POSType.PROPER_NOUN) && !analyzedToken.isSentenceEnd() && !isExceptionPhrase(i,tokens)) {
-      String msg="Au??er am Satzanfang werden nur Nomen und Eigennamen gro?? geschrieben";
-      RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
-      String word=tokens[i].getToken();
-      String fixedWord=Character.toLowerCase(word.charAt(0)) + word.substring(1);
+      final String msg="Au??er am Satzanfang werden nur Nomen und Eigennamen gro?? geschrieben";
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
+      final String word=tokens[i].getToken();
+      final String fixedWord=Character.toLowerCase(word.charAt(0)) + word.substring(1);
       ruleMatch.setSuggestedReplacement(fixedWord);
       ruleMatches.add(ruleMatch);
     }

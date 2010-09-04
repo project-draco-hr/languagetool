@@ -1,4 +1,4 @@
-AnalyzedTokenReadings[] toks
+AnalyzedTokenReadings[] tokenReadings
 int[] positions
 int firstMatchTok
 String errorMsg

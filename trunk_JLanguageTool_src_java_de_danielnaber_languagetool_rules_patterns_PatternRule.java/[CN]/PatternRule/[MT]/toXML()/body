@@ -23,7 +23,9 @@
       sb.append(" regexp=\"yes\"");
     }
     if (patternElement.getPOStag() != null) {
-      sb.append(" postag=\"" + patternElement.getPOStag() + "\"");
+      sb.append(" postag=\"");
+      sb.append(patternElement.getPOStag());
+      sb.append("\"");
     }
     if (patternElement.getPOSNegation()) {
       sb.append(" negate_pos=\"yes\"");

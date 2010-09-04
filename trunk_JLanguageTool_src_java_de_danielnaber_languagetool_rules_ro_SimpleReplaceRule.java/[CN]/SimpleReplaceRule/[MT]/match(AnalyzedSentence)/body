@@ -1,24 +1,24 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  Queue<AnalyzedTokenReadings> prevTokens=new ArrayBlockingQueue<AnalyzedTokenReadings>(wrongWords.size());
+  final Queue<AnalyzedTokenReadings> prevTokens=new ArrayBlockingQueue<AnalyzedTokenReadings>(wrongWords.size());
   for (int i=1; i < tokens.length; i++) {
     addToQueue(tokens[i],prevTokens);
     final StringBuilder sb=new StringBuilder();
-    ArrayList<String> variants=new ArrayList<String>();
-    List<AnalyzedTokenReadings> prevTokensList=Arrays.asList(prevTokens.toArray(new AnalyzedTokenReadings[]{}));
+    final ArrayList<String> variants=new ArrayList<String>();
+    final List<AnalyzedTokenReadings> prevTokensList=Arrays.asList(prevTokens.toArray(new AnalyzedTokenReadings[]{}));
     for (int j=prevTokensList.size() - 1; j >= 0; j--) {
       if (j != prevTokensList.size() - 1 && prevTokensList.get(j + 1).isWhitespaceBefore())       sb.insert(0," ");
       sb.insert(0,prevTokensList.get(j).getToken());
       variants.add(0,sb.toString());
     }
-    int len=variants.size();
+    final int len=variants.size();
     for (int j=0; j < len; j++) {
-      String crt=variants.get(j);
-      int crtWordCount=len - j;
+      final String crt=variants.get(j);
+      final int crtWordCount=len - j;
       final String crtMatch=isCaseSensitive() ? wrongWords.get(crtWordCount - 1).get(crt) : wrongWords.get(crtWordCount - 1).get(crt.toLowerCase(getLocale()));
       if (crtMatch != null) {
-        List<String> replacements=Arrays.asList(crtMatch.split("\\|"));
+        final List<String> replacements=Arrays.asList(crtMatch.split("\\|"));
         String msg=crt + getSuggestion();
         for (int k=0; k < replacements.size(); k++) {
           if (k > 0) {

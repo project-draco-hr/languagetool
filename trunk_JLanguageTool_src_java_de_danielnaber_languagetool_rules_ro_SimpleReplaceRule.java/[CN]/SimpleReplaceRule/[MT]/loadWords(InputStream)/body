@@ -18,7 +18,7 @@
       final String[] wrongForms=parts[0].split("\\|");
       for (      String wrongForm : wrongForms) {
         int wordCount=0;
-        List<String> tokens=getWordTokenizer().tokenize(wrongForm);
+        final List<String> tokens=getWordTokenizer().tokenize(wrongForm);
         for (        String token : tokens) {
           if (!StringTools.isWhitespace(token)) {
             wordCount++;

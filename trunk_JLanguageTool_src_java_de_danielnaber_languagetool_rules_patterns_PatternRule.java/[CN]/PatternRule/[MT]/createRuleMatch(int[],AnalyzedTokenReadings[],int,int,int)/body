@@ -27,8 +27,7 @@
   }
   final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
   if (fromPos < toPos) {
-    final RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,errMessage,shortMessage,startsWithUppercase);
-    return ruleMatch;
+    return new RuleMatch(this,fromPos,toPos,errMessage,shortMessage,startsWithUppercase);
   }
   return null;
 }

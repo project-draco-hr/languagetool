@@ -29,7 +29,7 @@
         if (matchCounter < suggestionMatches.size()) {
           numbersToMatches[j]=matchCounter;
           if (suggestionMatches.get(matchCounter) != null) {
-            final String[] matches=concatMatches(matchCounter,j,firstMatchTok + repTokenPos,toks,nextTokenPos);
+            final String[] matches=concatMatches(matchCounter,j,firstMatchTok + repTokenPos,tokenReadings,nextTokenPos);
             final String leftSide=errorMessage.substring(0,ind);
             final String rightSide=errorMessage.substring(ind + numLen);
             if (matches.length == 1) {
@@ -47,7 +47,7 @@
         }
       }
       if (!newWay) {
-        errorMessage=errorMessage.replace("\\" + (j + 1),toks[firstMatchTok + repTokenPos - 1].getToken());
+        errorMessage=errorMessage.replace("\\" + (j + 1),tokenReadings[firstMatchTok + repTokenPos - 1].getToken());
       }
     }
     errMarker=errorMessage.indexOf('\\');

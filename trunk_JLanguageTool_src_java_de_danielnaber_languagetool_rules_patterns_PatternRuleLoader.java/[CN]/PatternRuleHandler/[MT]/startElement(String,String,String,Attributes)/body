@@ -1,9 +1,9 @@
 {
   if (qName.equals("category")) {
     final String catName=attrs.getValue("name");
-    final String prioStr=attrs.getValue("priority");
-    if (prioStr != null) {
-      category=new Category(catName,Integer.parseInt(prioStr));
+    final String priorityStr=attrs.getValue("priority");
+    if (priorityStr != null) {
+      category=new Category(catName,Integer.parseInt(priorityStr));
     }
  else {
       category=new Category(catName);
@@ -88,7 +88,7 @@
     stringRegExp=YES.equals(attrs.getValue(REGEXP));
     if (attrs.getValue(SPACEBEFORE) != null) {
       tokenSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
-      tokenSpaceBeforeSet="ignore".equals(attrs.getValue(SPACEBEFORE)) ^ true;
+      tokenSpaceBeforeSet=!"ignore".equals(attrs.getValue(SPACEBEFORE));
     }
     if (!inAndGroup) {
       tokenCounter++;
@@ -110,7 +110,7 @@
     exceptionStringRegExp=YES.equals(attrs.getValue(REGEXP));
     if (attrs.getValue(SPACEBEFORE) != null) {
       exceptionSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
-      exceptionSpaceBeforeSet="ignore".equals(attrs.getValue(SPACEBEFORE)) ^ true;
+      exceptionSpaceBeforeSet=!"ignore".equals(attrs.getValue(SPACEBEFORE));
     }
   }
  else   if (qName.equals("example") && attrs.getValue(TYPE).equals("correct")) {
@@ -147,21 +147,22 @@
  else   if (qName.equals("match")) {
     inMatch=true;
     match=new StringBuilder();
-    Match.CaseConversion caseConv=Match.CaseConversion.NONE;
+    Match.CaseConversion caseConversion=Match.CaseConversion.NONE;
     if (attrs.getValue("case_conversion") != null) {
-      caseConv=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());
+      caseConversion=Match.CaseConversion.toCase(attrs.getValue("case_conversion").toUpperCase());
     }
     Match.IncludeRange includeRange=Match.IncludeRange.NONE;
     if (attrs.getValue("include_skipped") != null) {
       includeRange=Match.IncludeRange.toRange(attrs.getValue("include_skipped").toUpperCase());
     }
-    final Match mWorker=new Match(attrs.getValue(POSTAG),attrs.getValue("postag_replace"),YES.equals(attrs.getValue(POSTAG_REGEXP)),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConv,YES.equals(attrs.getValue("setpos")),includeRange);
+    final Match mWorker=new Match(attrs.getValue(POSTAG),attrs.getValue("postag_replace"),YES.equals(attrs.getValue(POSTAG_REGEXP)),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConversion,YES.equals(attrs.getValue("setpos")),includeRange);
     if (inMessage) {
       if (suggestionMatches == null) {
         suggestionMatches=new ArrayList<Match>();
       }
       suggestionMatches.add(mWorker);
-      message.append("\u0001\\" + attrs.getValue("no"));
+      message.append("\u0001\\");
+      message.append(attrs.getValue("no"));
       if (StringTools.isEmpty(attrs.getValue("no"))) {
         throw new SAXException("References cannot be empty: " + "\n Line: " + pLocator.getLineNumber() + ", column: "+ pLocator.getColumnNumber()+ ".");
       }
@@ -176,7 +177,8 @@
       }
       mWorker.setTokenRef(refNumber);
       tokenReference=mWorker;
-      elements.append("\\" + refNumber);
+      elements.append("\\");
+      elements.append(refNumber);
     }
   }
  else   if (qName.equals(MARKER) && inCorrectExample) {

@@ -1,13 +1,11 @@
 {
-  List<PatternRule> rules;
   try {
     final PatternRuleHandler handler=new PatternRuleHandler();
     final SAXParserFactory factory=SAXParserFactory.newInstance();
     final SAXParser saxParser=factory.newSAXParser();
     saxParser.getXMLReader().setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd",false);
     saxParser.parse(is,handler);
-    rules=handler.getRules();
-    return rules;
+    return handler.getRules();
   }
  catch (  final Exception e) {
     final IOException ioe=new IOException("Cannot load or parse '" + filename + "'");

@@ -14,7 +14,7 @@
         continue;
       }
       line=line.replace('-',' ');
-      String[] parts=line.split(" ");
+      final String[] parts=line.split(" ");
       if (parts.length > MAX_TERMS)       throw new IOException("F??r m??nga ord sammansatta: " + line + ", max antal till??tna ord: "+ MAX_TERMS);
       if (parts.length == 1)       throw new IOException("Inget sammansatt ord: " + line);
       if (line.endsWith("+")) {

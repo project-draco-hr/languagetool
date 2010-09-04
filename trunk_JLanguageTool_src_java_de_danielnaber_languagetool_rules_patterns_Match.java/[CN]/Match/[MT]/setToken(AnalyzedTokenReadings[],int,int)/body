@@ -1,7 +1,7 @@
 {
   setToken(tokens[index]);
   if (next > 1 && includeSkipped != IncludeRange.NONE) {
-    StringBuilder sb=new StringBuilder();
+    final StringBuilder sb=new StringBuilder();
     if (includeSkipped == IncludeRange.FOLLOWING) {
       formattedToken=null;
     }

@@ -2,7 +2,7 @@
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   final int[] tokenPositions=new int[tokens.length + 1];
-  int patternSize=patternElements.size();
+  final int patternSize=patternElements.size();
   final int limit=Math.max(0,tokens.length - patternSize + 1);
   Element elem=null;
   int i=0;

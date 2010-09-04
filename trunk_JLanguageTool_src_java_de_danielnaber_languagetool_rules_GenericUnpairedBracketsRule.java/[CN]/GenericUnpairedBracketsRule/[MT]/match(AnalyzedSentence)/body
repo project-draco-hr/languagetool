@@ -17,7 +17,7 @@
         if (i < tokens.length - 1 && startSymbols[j].equals(endSymbols[j])) {
           followedByWhitespace=tokens[i + 1].isWhitespaceBefore() || PUNCTUATION.matcher(tokens[i + 1].getToken()).matches();
         }
-        boolean noException=isNoException(token,tokens,i,j,precededByWhitespace,followedByWhitespace);
+        final boolean noException=isNoException(token,tokens,i,j,precededByWhitespace,followedByWhitespace);
         if (noException && precededByWhitespace && token.equals(startSymbols[j])) {
           symbolStack.push(new SymbolLocator(startSymbols[j],i));
         }

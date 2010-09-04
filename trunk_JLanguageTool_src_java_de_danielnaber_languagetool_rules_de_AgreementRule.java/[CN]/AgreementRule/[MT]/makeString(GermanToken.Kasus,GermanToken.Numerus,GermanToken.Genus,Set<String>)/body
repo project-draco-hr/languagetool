@@ -1,5 +1,5 @@
 {
-  List<String> l=new ArrayList<String>();
+  final List<String> l=new ArrayList<String>();
   if (casus != null && !omit.contains(KASUS))   l.add(casus.toString());
   if (num != null && !omit.contains(NUMERUS))   l.add(num.toString());
   if (gen != null && !omit.contains(GENUS))   l.add(gen.toString());

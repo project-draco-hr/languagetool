@@ -1,15 +1,15 @@
 {
-  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   int pos=0;
   for (int i=0; i < tokens.length; i++) {
-    String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
+    final String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
     if (posToken != null && posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME))     continue;
-    AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[i];
-    boolean isRelevantPronomen=isRelevantPronoun(tokens,i);
+    final AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[i];
+    final boolean relevantPronoun=isRelevantPronoun(tokens,i);
     boolean ignore=couldBeRelativeClause(tokens,i);
     if (i > 0) {
-      String prevToken=tokens[i - 1].getToken().toLowerCase();
+      final String prevToken=tokens[i - 1].getToken().toLowerCase();
       if ((prevToken.equals("der") || prevToken.equals("die") || prevToken.equals("das")) && tokens[i].getToken().equals("eine")) {
         ignore=true;
       }
@@ -17,7 +17,7 @@
     if (analyzedToken.getToken().equals("nichts")) {
       ignore=true;
     }
-    if ((analyzedToken.hasReadingOfType(POSType.DETERMINER) || isRelevantPronomen) && !ignore) {
+    if ((analyzedToken.hasReadingOfType(POSType.DETERMINER) || relevantPronoun) && !ignore) {
       int tokenPos=i + 1;
       if (tokenPos >= tokens.length)       break;
       AnalyzedGermanTokenReadings nextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos];
@@ -25,16 +25,16 @@
       if (nextToken.hasReadingOfType(POSType.ADJEKTIV)) {
         tokenPos=i + 2;
         if (tokenPos >= tokens.length)         break;
-        AnalyzedGermanTokenReadings nextNextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos];
+        final AnalyzedGermanTokenReadings nextNextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos];
         if (nextNextToken.hasReadingOfType(POSType.NOMEN)) {
-          RuleMatch ruleMatch=checkDetAdjNounAgreement((AnalyzedGermanTokenReadings)tokens[i],nextToken,(AnalyzedGermanTokenReadings)tokens[i + 2]);
+          final RuleMatch ruleMatch=checkDetAdjNounAgreement((AnalyzedGermanTokenReadings)tokens[i],nextToken,(AnalyzedGermanTokenReadings)tokens[i + 2]);
           if (ruleMatch != null) {
             ruleMatches.add(ruleMatch);
           }
         }
       }
  else       if (nextToken.hasReadingOfType(POSType.NOMEN)) {
-        RuleMatch ruleMatch=checkDetNounAgreement((AnalyzedGermanTokenReadings)tokens[i],(AnalyzedGermanTokenReadings)tokens[i + 1]);
+        final RuleMatch ruleMatch=checkDetNounAgreement((AnalyzedGermanTokenReadings)tokens[i],(AnalyzedGermanTokenReadings)tokens[i + 1]);
         if (ruleMatch != null) {
           ruleMatches.add(ruleMatch);
         }

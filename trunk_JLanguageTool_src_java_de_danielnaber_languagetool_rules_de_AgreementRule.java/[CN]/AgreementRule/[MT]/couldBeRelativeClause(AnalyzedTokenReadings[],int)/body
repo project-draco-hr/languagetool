@@ -1,17 +1,17 @@
 {
-  boolean comma=false;
-  boolean relPronoun=false;
+  boolean comma;
+  boolean relPronoun;
   if (pos >= 1) {
     comma=tokens[pos - 1].getToken().equals(",");
-    String term=tokens[pos].getToken().toLowerCase();
+    final String term=tokens[pos].getToken().toLowerCase();
     relPronoun=REL_PRONOUN.contains(term);
     if (comma && relPronoun)     return true;
   }
   if (pos >= 2) {
     comma=tokens[pos - 2].getToken().equals(",");
-    String term1=tokens[pos - 1].getToken().toLowerCase();
-    String term2=tokens[pos].getToken().toLowerCase();
-    boolean prep=PREPOSITIONS.contains(term1);
+    final String term1=tokens[pos - 1].getToken().toLowerCase();
+    final String term2=tokens[pos].getToken().toLowerCase();
+    final boolean prep=PREPOSITIONS.contains(term1);
     relPronoun=REL_PRONOUN.contains(term2);
     return comma && prep && relPronoun;
   }

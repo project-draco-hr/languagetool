@@ -16,7 +16,7 @@
       return true;
     }
   }
-  boolean match=false;
+  boolean match;
   if (posRegExp) {
     if (mPos == null) {
       mPos=pPos.matcher(token.getPOSTag());

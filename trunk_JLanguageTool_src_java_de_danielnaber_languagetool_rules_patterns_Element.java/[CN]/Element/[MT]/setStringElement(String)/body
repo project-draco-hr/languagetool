@@ -1,9 +1,6 @@
 {
   this.stringToken=token;
-  testString=true;
-  if (StringTools.isEmpty(stringToken)) {
-    testString=false;
-  }
+  testString=!StringTools.isEmpty(stringToken);
   if (testString && stringRegExp) {
     regToken=stringToken;
     if (!caseSensitive) {

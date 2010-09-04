@@ -1,6 +1,6 @@
 {
-  if (repl == null)   throw new NullPointerException("replacement might be empty but not null");
+  if (replacement == null)   throw new NullPointerException("replacement might be empty but not null");
   final List<String> fixes=new ArrayList<String>();
-  fixes.add(repl);
+  fixes.add(replacement);
   setSuggestedReplacements(fixes);
 }
