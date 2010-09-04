@@ -4,7 +4,11 @@
   for (  final Language lang : Language.LANGUAGES) {
     if (lang != Language.DEMO) {
       if (lang.getMaintainers() != null) {
-        toSort.add(messages.getString(lang.getShortName()) + "-" + Arrays.toString(lang.getMaintainers()));
+        final List<String> names=new ArrayList<String>();
+        for (        Contributor contributor : lang.getMaintainers()) {
+          names.add(contributor.getName());
+        }
+        toSort.add(messages.getString(lang.getShortName()) + ": " + StringTools.listToString(names,", "));
       }
     }
   }

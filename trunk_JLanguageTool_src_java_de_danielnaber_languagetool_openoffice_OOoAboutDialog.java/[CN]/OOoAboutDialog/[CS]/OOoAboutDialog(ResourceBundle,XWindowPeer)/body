@@ -1,4 +1,4 @@
 {
-  this.messages=messages;
+  super(messages);
   winPeer=parentWindowPeer;
 }
