@@ -13,7 +13,7 @@
     final String lowerWord=word.toLowerCase(plLocale);
     taggerTokens=asAnalyzedTokenList(word,morfologik.lookup(word));
     lowerTaggerTokens=asAnalyzedTokenList(word,morfologik.lookup(lowerWord));
-    boolean isLowercase=word.equals(lowerWord);
+    final boolean isLowercase=word.equals(lowerWord);
     addTokens(taggerTokens,l);
     if (!isLowercase) {
       addTokens(lowerTaggerTokens,l);

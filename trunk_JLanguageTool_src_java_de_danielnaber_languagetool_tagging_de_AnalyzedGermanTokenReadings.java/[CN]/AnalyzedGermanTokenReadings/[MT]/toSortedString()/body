@@ -3,15 +3,15 @@
     return super.getAnalyzedToken(0).getToken() + "[?]";
   }
  else {
-    StringBuilder sb=new StringBuilder(super.getAnalyzedToken(0).getToken());
-    Set<String> elems=new TreeSet<String>();
+    final StringBuilder sb=new StringBuilder(super.getAnalyzedToken(0).getToken());
+    final Set<String> elements=new TreeSet<String>();
     sb.append("[");
     for (    AnalyzedToken reading : anTokReadings) {
-      if (!elems.contains(reading.toString())) {
-        elems.add(reading.toString());
+      if (!elements.contains(reading.toString())) {
+        elements.add(reading.toString());
       }
     }
-    sb.append(StringTools.listToString(elems,", "));
+    sb.append(StringTools.listToString(elements,", "));
     sb.append("]");
     return sb.toString();
   }

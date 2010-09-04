@@ -1,8 +1,8 @@
 {
-  List<String> l=new ArrayList<String>();
-  l.add(word);
-  List<AnalyzedTokenReadings> result=tag(l,false);
-  AnalyzedGermanTokenReadings atr=(AnalyzedGermanTokenReadings)result.get(0);
+  final List<String> words=new ArrayList<String>();
+  words.add(word);
+  final List<AnalyzedTokenReadings> result=tag(words,false);
+  final AnalyzedGermanTokenReadings atr=(AnalyzedGermanTokenReadings)result.get(0);
   if (atr.getAnalyzedToken(0).getPOSTag() == null)   return null;
   return atr;
 }

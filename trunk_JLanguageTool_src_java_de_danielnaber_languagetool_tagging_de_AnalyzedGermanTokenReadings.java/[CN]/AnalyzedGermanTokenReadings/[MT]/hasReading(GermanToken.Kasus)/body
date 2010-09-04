@@ -1,7 +1,7 @@
 {
   if (anTokReadings == null)   return false;
   for (  AnalyzedToken reading : anTokReadings) {
-    AnalyzedGermanToken germanReading=(AnalyzedGermanToken)reading;
+    final AnalyzedGermanToken germanReading=(AnalyzedGermanToken)reading;
     if (germanReading.getCasus() == kasus)     return true;
   }
   return false;

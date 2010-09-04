@@ -1,7 +1,7 @@
 {
   InputStreamReader isr=null;
   BufferedReader br=null;
-  List<String> lines=new ArrayList<String>();
+  final List<String> lines=new ArrayList<String>();
   try {
     isr=new InputStreamReader(file,"UTF-8");
     br=new BufferedReader(isr);

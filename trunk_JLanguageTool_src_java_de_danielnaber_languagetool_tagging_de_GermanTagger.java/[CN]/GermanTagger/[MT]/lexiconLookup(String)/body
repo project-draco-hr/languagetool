@@ -1,8 +1,8 @@
 {
-  String[] posTagsFromUserDict=manualTagger.lookup(word);
-  List<WordData> posTagsFromDict=morfologik.lookup(word);
+  final String[] posTagsFromUserDict=manualTagger.lookup(word);
+  final List<WordData> posTagsFromDict=morfologik.lookup(word);
   if (posTagsFromUserDict != null && !posTagsFromDict.isEmpty()) {
-    String[] allPosTags=new String[posTagsFromUserDict.length + posTagsFromDict.size() * 2];
+    final String[] allPosTags=new String[posTagsFromUserDict.length + posTagsFromDict.size() * 2];
     int i=0;
     for (    WordData wd : posTagsFromDict) {
       allPosTags[i]=wd.getStem().toString();
@@ -13,7 +13,7 @@
     return allPosTags;
   }
  else   if (posTagsFromUserDict == null && !posTagsFromDict.isEmpty()) {
-    String[] allPosTags=new String[posTagsFromDict.size() * 2];
+    final String[] allPosTags=new String[posTagsFromDict.size() * 2];
     int i=0;
     for (    WordData wd : posTagsFromDict) {
       allPosTags[i]=wd.getStem().toString();

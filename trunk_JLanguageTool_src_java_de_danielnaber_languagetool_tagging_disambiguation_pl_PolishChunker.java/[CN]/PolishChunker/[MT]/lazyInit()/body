@@ -8,7 +8,7 @@
     final String[] tokenAndTag=posToken.split("\t");
     final boolean containsSpace=tokenAndTag[0].indexOf(' ') > 0;
     String firstToken="";
-    String[] firstTokens;
+    final String[] firstTokens;
     if (!containsSpace) {
       firstTokens=new String[tokenAndTag[0].length()];
       firstToken=tokenAndTag[0].substring(0,1);

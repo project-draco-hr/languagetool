@@ -1,14 +1,14 @@
 {
-  List<AnalyzedGermanToken> l=new ArrayList<AnalyzedGermanToken>();
+  final List<AnalyzedGermanToken> tokens=new ArrayList<AnalyzedGermanToken>();
   for (  AnalyzedToken reading : anTokReadings) {
     if (reading.getPOSTag() != null) {
       if (!reading.getPOSTag().equals(JLanguageTool.SENTENCE_END_TAGNAME) && !reading.getPOSTag().equals(JLanguageTool.PARAGRAPH_END_TAGNAME)) {
-        l.add((AnalyzedGermanToken)reading);
+        tokens.add((AnalyzedGermanToken)reading);
       }
     }
  else {
-      l.add((AnalyzedGermanToken)reading);
+      tokens.add((AnalyzedGermanToken)reading);
     }
   }
-  return l;
+  return tokens;
 }

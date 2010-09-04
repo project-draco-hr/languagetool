@@ -2,7 +2,7 @@
   List<AnalyzedToken> taggerTokens;
   List<AnalyzedToken> lowerTaggerTokens;
   List<AnalyzedToken> upperTaggerTokens;
-  List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
+  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
     final URL url=this.getClass().getResource(getFileName());
@@ -13,7 +13,7 @@
     final String lowerWord=word.toLowerCase(conversionLocale);
     taggerTokens=asAnalyzedTokenList(word,morfologik.lookup(word));
     lowerTaggerTokens=asAnalyzedTokenList(word,morfologik.lookup(lowerWord));
-    boolean isLowercase=word.equals(lowerWord);
+    final boolean isLowercase=word.equals(lowerWord);
     addTokens(taggerTokens,l);
     if (!isLowercase) {
       addTokens(lowerTaggerTokens,l);

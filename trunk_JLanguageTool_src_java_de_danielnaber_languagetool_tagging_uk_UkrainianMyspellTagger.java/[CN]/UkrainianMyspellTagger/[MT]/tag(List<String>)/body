@@ -35,12 +35,9 @@
         }
       }
     }
-    if (input != null) {
-      input.close();
-    }
+    input.close();
   }
-  for (Iterator<String> iter=sentenceTokens.iterator(); iter.hasNext(); ) {
-    final String word=iter.next();
+  for (  final String word : sentenceTokens) {
     final List<AnalyzedToken> analyzedTokens=new ArrayList<AnalyzedToken>();
     final String[] posTags=wordsToPos.get(word);
     String[] lowerPosTags=null;
