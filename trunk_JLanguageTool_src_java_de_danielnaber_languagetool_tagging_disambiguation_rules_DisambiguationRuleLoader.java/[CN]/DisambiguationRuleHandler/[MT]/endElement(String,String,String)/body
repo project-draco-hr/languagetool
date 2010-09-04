@@ -108,15 +108,15 @@
  else   if (qName.equals(PATTERN)) {
     inPattern=false;
     if (positionCorrection >= tokenCounter) {
-      throw new SAXException("Attemp to mark a token no. (" + positionCorrection + ") that is outside the pattern ("+ tokenCounter+ "). Pattern elements are numbered starting from 0!"+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+      throw new SAXException("Attempt to mark a token no. (" + positionCorrection + ") that is outside the pattern ("+ tokenCounter+ "). Pattern elements are numbered starting from 0!"+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
     }
     if (tokenCounter - endPositionCorrection < 0) {
-      throw new SAXException("Attemp to mark a token no. (" + endPositionCorrection + ") that is outside the pattern ("+ tokenCounter+ "). Pattern elements are numbered starting from 0!"+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+      throw new SAXException("Attempt to mark a token no. (" + endPositionCorrection + ") that is outside the pattern ("+ tokenCounter+ "). Pattern elements are numbered starting from 0!"+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
     }
     tokenCounter=0;
   }
  else   if (qName.equals(MATCH)) {
-    if (inDisamb) {
+    if (inDisambiguation) {
       posSelector.setLemmaString(match.toString());
     }
  else     if (inToken) {
@@ -125,7 +125,7 @@
     inMatch=false;
   }
  else   if (qName.equals(DISAMBIG)) {
-    inDisamb=false;
+    inDisambiguation=false;
   }
  else   if (qName.equals(RULEGROUP)) {
     inRuleGroup=false;

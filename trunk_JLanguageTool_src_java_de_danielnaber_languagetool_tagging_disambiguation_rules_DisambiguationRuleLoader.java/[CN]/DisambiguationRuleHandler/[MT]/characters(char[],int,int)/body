@@ -12,7 +12,7 @@
  else   if (inWord) {
     wd.append(s);
   }
- else   if (inDisamb) {
+ else   if (inDisambiguation) {
     disamb.append(s);
   }
  else   if (inExample) {

@@ -60,7 +60,7 @@ for (int i=0; i < newTokenReadings.length; i++) {
  else {
     lemma=newTokenReadings[i].getLemma();
   }
-  AnalyzedToken newTok=new AnalyzedToken(token,newTokenReadings[i].getPOSTag(),lemma);
+  final AnalyzedToken newTok=new AnalyzedToken(token,newTokenReadings[i].getPOSTag(),lemma);
   whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].addReading(newTok);
 }
 }
