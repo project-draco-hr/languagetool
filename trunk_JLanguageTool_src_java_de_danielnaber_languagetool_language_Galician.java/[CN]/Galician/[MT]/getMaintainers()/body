@@ -1,5 +1,5 @@
 {
-  Contributor contributor=new Contributor("Susana Sotelo Doc??o");
+  final Contributor contributor=new Contributor("Susana Sotelo Doc??o");
   contributor.setUrl("http://www.g11n.net/languagetool-gl");
   return new Contributor[]{contributor};
 }

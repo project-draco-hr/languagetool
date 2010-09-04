@@ -1,5 +1,5 @@
 {
-  Set<String> ids=new HashSet<String>();
+  final Set<String> ids=new HashSet<String>();
   ids.add("COMMA_PARENTHESIS_WHITESPACE");
   ids.add("DOUBLE_PUNCTUATION");
   ids.add("UPPERCASE_SENTENCE_START");
