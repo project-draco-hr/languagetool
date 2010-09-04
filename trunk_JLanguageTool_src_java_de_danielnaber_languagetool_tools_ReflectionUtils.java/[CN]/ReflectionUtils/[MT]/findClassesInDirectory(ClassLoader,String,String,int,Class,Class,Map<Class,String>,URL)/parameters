@@ -1,7 +1,8 @@
+ClassLoader classLoader
 String packageName
 String classNameRegEx
 int subdirLevel
 Class classExtends
 Class interfaceImplements
-List<Class> foundClasses
+Map<Class,String> foundClasses
 URL resource

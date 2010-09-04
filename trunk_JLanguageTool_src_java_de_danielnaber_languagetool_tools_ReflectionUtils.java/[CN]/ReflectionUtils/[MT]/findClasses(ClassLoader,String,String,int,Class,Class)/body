@@ -1,5 +1,5 @@
 {
-  final List<Class> foundClasses=new ArrayList<Class>();
+  final Map<Class,String> foundClasses=new HashMap<Class,String>();
   try {
     final String packagePath=packageName.replace('.','/');
     final Enumeration<URL> resources_=classLoader.getResources(packagePath);
@@ -21,5 +21,5 @@
  catch (  final Exception ex) {
     throw new ClassNotFoundException("Loading rules failed: " + ex.getMessage(),ex);
   }
-  return foundClasses.toArray(new Class[foundClasses.size()]);
+  return foundClasses.keySet().toArray(new Class[foundClasses.size()]);
 }
