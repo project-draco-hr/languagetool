@@ -1,8 +1,8 @@
 {
-  List<String> l=new ArrayList<String>();
-  StringTokenizer st=new StringTokenizer(text,"\u0020\u00A0\u115f\u1160\u1680" + ",.;()[]{}!?:\"'??????????????????\\/\t\n",true);
+  final List<String> tokens=new ArrayList<String>();
+  final StringTokenizer st=new StringTokenizer(text,"\u0020\u00A0\u115f\u1160\u1680" + ",.;()[]{}!?:\"'??????????????????\\/\t\n",true);
   while (st.hasMoreElements()) {
-    l.add(st.nextToken());
+    tokens.add(st.nextToken());
   }
-  return l;
+  return tokens;
 }

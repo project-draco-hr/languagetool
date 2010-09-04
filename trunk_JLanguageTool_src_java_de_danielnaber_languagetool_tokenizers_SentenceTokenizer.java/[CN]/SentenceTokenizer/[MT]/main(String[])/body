@@ -1,4 +1,0 @@
-{
-  final SentenceTokenizer st=new GermanSentenceTokenizer();
-  st.tokenize("Er sagte (...) und");
-}
