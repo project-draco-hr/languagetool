@@ -1,6 +1,6 @@
 {
   JLanguageTool langTool;
-  List matches=null;
+  List<RuleMatch> matches=null;
   langTool=new JLanguageTool(Language.GERMAN);
   matches=langTool.check("Das ist aufw??ndig. Aber hallo. Es ist wirklich aufw??ndig.");
   assertEquals(0,matches.size());
