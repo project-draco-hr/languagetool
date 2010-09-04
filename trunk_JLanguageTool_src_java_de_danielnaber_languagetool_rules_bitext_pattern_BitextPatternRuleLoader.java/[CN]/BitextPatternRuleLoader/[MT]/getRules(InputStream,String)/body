@@ -1,5 +1,5 @@
 {
-  List<BitextPatternRule> rules;
+  final List<BitextPatternRule> rules;
   try {
     final PatternRuleHandler handler=new PatternRuleHandler();
     final SAXParserFactory factory=SAXParserFactory.newInstance();

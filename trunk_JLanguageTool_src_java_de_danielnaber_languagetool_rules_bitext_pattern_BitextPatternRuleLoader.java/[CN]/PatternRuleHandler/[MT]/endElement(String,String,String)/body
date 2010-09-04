@@ -27,7 +27,7 @@
         suggestionMatches.clear();
       }
     }
-    BitextPatternRule bRule=new BitextPatternRule(srcRule,trgRule);
+    final BitextPatternRule bRule=new BitextPatternRule(srcRule,trgRule);
     bRule.setCorrectBitextExamples(correctExamples);
     bRule.setIncorrectBitextExamples(incorrectExamples);
     bRule.setSourceLang(srcLang);
