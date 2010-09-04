@@ -128,7 +128,7 @@
     if (motherTongue == null) {
       throw new IllegalArgumentException("You have to set the source language (as mother tongue).");
     }
-    prg.setBitextMOde(motherTongue);
+    prg.setBitextMode(motherTongue);
   }
   if (recursive) {
     prg.runRecursive(filename,encoding,listUnknown);
