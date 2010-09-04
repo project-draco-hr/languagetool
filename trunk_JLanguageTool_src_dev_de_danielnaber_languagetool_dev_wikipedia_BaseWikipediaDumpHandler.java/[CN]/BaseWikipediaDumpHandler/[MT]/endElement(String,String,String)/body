@@ -4,7 +4,7 @@
     text=new StringBuilder();
   }
  else   if (qName.equals("text")) {
-    String textToCheck=textFilter.filter(text.toString());
+    final String textToCheck=textFilter.filter(text.toString());
     if (!textToCheck.contains("#REDIRECT")) {
       try {
         articleCount++;
@@ -12,10 +12,10 @@
           System.out.printf("Maximum number of articles reached. Found %d matches in %d articles\n",ruleMatchCount,articleCount);
           System.exit(0);
         }
-        List<RuleMatch> ruleMatches=lt.check(textToCheck);
+        final List<RuleMatch> ruleMatches=languageTool.check(textToCheck);
         System.out.println("Checking article " + articleCount + " ("+ textToCheck.length() / 1024 + "KB, '" + title + "')" + ", found " + ruleMatches.size() + " matches");
         try {
-          handleResult(title,ruleMatches,textToCheck,lt.getLanguage());
+          handleResult(title,ruleMatches,textToCheck,languageTool.getLanguage());
         }
  catch (        Exception e) {
           throw new RuntimeException(e);

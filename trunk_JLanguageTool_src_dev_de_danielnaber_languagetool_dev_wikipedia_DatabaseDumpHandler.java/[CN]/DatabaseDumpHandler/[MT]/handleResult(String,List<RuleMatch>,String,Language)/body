@@ -1,6 +1,6 @@
 {
-  String sql="INSERT INTO corpus_match " + "(version, language_code, ruleid, message, error_context, corpus_date, " + "check_date, sourceuri, is_visible) "+ "VALUES (0, ?, ?, ?, ?, ?, ?, ?, 1)";
-  PreparedStatement prepSt=conn.prepareStatement(sql);
+  final String sql="INSERT INTO corpus_match " + "(version, language_code, ruleid, message, error_context, corpus_date, " + "check_date, sourceuri, is_visible) "+ "VALUES (0, ?, ?, ?, ?, ?, ?, ?, 1)";
+  final PreparedStatement prepSt=conn.prepareStatement(sql);
   for (  RuleMatch match : ruleMatches) {
     prepSt.setString(1,language.getShortName());
     prepSt.setString(2,match.getRule().getId());

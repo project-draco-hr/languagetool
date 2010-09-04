@@ -3,6 +3,6 @@
     System.out.println("Usage: CheckBNC <directory>");
     System.exit(1);
   }
-  CheckBNC prg=new CheckBNC();
+  final CheckBNC prg=new CheckBNC();
   prg.run(new File(args[0]));
 }

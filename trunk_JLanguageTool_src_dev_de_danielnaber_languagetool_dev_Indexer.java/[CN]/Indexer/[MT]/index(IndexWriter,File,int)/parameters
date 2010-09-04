@@ -1,3 +1,3 @@
 IndexWriter iw
-File file
+File dir
 int count

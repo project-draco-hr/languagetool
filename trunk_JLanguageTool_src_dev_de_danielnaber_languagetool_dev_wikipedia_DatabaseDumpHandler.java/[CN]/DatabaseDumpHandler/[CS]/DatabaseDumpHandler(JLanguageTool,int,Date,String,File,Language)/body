@@ -1,12 +1,12 @@
 {
   super(lt,maxArticles,dumpDate,langCode,lang);
   try {
-    Properties dbProperties=new Properties();
+    final Properties dbProperties=new Properties();
     dbProperties.load(new FileInputStream(propertiesFile));
-    String dbDriver=getProperty(dbProperties,"dbDriver");
-    String dbUrl=getProperty(dbProperties,"dbUrl");
-    String dbUser=getProperty(dbProperties,"dbUser");
-    String dbPassword=getProperty(dbProperties,"dbPassword");
+    final String dbDriver=getProperty(dbProperties,"dbDriver");
+    final String dbUrl=getProperty(dbProperties,"dbUrl");
+    final String dbUser=getProperty(dbProperties,"dbUser");
+    final String dbPassword=getProperty(dbProperties,"dbPassword");
     Class.forName(dbDriver);
     conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
   }

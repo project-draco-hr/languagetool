@@ -1,4 +1,6 @@
 {
-  if (t.text().equals(t.text().toUpperCase()))   return true;
+  if (t.text().equals(t.text().toUpperCase())) {
+    return true;
+  }
   return false;
 }

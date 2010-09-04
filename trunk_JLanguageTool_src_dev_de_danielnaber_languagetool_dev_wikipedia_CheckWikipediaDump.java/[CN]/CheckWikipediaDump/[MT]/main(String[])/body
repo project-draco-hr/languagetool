@@ -1,5 +1,5 @@
 {
-  CheckWikipediaDump prg=new CheckWikipediaDump();
+  final CheckWikipediaDump prg=new CheckWikipediaDump();
   if (args.length < 3 || args.length > 4) {
     System.err.println("Usage: CheckWikipediaDump <propertyFile> <language> <filename> [maxArticleCheck]");
     System.err.println("\tpropertyFile a file to set database access properties. Use '-' to print results to stdout.");

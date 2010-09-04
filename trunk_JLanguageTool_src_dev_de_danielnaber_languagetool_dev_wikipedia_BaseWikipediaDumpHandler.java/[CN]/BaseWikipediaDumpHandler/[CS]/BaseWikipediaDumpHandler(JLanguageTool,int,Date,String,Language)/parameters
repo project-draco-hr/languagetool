@@ -1,4 +1,4 @@
-JLanguageTool lt
+JLanguageTool languageTool
 int maxArticles
 Date dumpDate
 String langCode

@@ -2,7 +2,7 @@
   if (args.length != 4 || !args[3].startsWith("--context")) {
     printUsageAndExit();
   }
-  ContextFinder prg=new ContextFinder();
+  final ContextFinder prg=new ContextFinder();
   if (args[3].endsWith("=right"))   prg.run(args[0],args[1],args[2],true);
  else   if (args[3].endsWith("=left"))   prg.run(args[0],args[1],args[2],false);
  else   printUsageAndExit();
