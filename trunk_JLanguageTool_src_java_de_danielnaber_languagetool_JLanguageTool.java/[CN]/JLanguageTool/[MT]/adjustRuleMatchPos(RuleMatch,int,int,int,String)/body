@@ -1,0 +1,30 @@
+{
+  final RuleMatch thisMatch=new RuleMatch(rm.getRule(),rm.getFromPos() + sentLen,rm.getToPos() + sentLen,rm.getMessage(),rm.getShortMessage());
+  thisMatch.setSuggestedReplacements(rm.getSuggestedReplacements());
+  final String sentencePartToError=sentence.substring(0,rm.getFromPos());
+  final String sentencePartToEndOfError=sentence.substring(0,rm.getToPos());
+  final int lastLineBreakPos=sentencePartToError.lastIndexOf('\n');
+  final int column;
+  final int endColumn;
+  if (lastLineBreakPos == -1) {
+    column=sentencePartToError.length() + columnCount;
+  }
+ else {
+    column=sentencePartToError.length() - lastLineBreakPos;
+  }
+  final int lastLineBreakPosInError=sentencePartToEndOfError.lastIndexOf('\n');
+  if (lastLineBreakPosInError == -1) {
+    endColumn=sentencePartToEndOfError.length() + columnCount + 1;
+  }
+ else {
+    endColumn=sentencePartToEndOfError.length() - lastLineBreakPos;
+  }
+  final int lineBreaksToError=countLineBreaks(sentencePartToError);
+  final int lineBreaksToEndOfError=countLineBreaks(sentencePartToEndOfError);
+  thisMatch.setLine(lineCount + lineBreaksToError);
+  thisMatch.setEndLine(lineCount + lineBreaksToEndOfError);
+  thisMatch.setColumn(column);
+  thisMatch.setEndColumn(endColumn);
+  thisMatch.setOffset(rm.getFromPos() + sentLen);
+  return thisMatch;
+}

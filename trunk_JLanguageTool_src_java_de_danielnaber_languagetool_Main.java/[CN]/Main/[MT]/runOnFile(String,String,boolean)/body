@@ -2,24 +2,32 @@
   boolean oneTime=false;
   if (!"-".equals(filename)) {
     final File file=new File(filename);
-    oneTime=file.length() < MAX_FILE_SIZE;
+    oneTime=file.length() < MAX_FILE_SIZE || bitextMode;
   }
   if (oneTime) {
-    final String text=getFilteredText(filename,encoding);
-    if (applySuggestions) {
-      System.out.print(Tools.correctText(text,lt));
-    }
- else     if (profileRules) {
-      Tools.profileRulesOnText(text,lt);
-    }
- else     if (!taggerOnly) {
-      Tools.checkText(text,lt,apiFormat,0);
+    if (bitextMode) {
+      TabBitextReader reader=new TabBitextReader(filename,encoding);
+      for (      StringPair srcAndTrg : reader) {
+        Tools.checkBitext(srcAndTrg.getSource(),srcAndTrg.getTarget(),srcLt,lt,bRules,apiFormat,StringTools.XmlPrintMode.NORMAL_XML);
+      }
     }
  else {
-      Tools.tagText(text,lt);
-    }
-    if (listUnknownWords) {
-      System.out.println("Unknown words: " + lt.getUnknownWords());
+      final String text=getFilteredText(filename,encoding);
+      if (applySuggestions) {
+        System.out.print(Tools.correctText(text,lt));
+      }
+ else       if (profileRules) {
+        Tools.profileRulesOnText(text,lt);
+      }
+ else       if (!taggerOnly) {
+        Tools.checkText(text,lt,apiFormat,0);
+      }
+ else {
+        Tools.tagText(text,lt);
+      }
+      if (listUnknownWords) {
+        System.out.println("Unknown words: " + lt.getUnknownWords());
+      }
     }
   }
  else {

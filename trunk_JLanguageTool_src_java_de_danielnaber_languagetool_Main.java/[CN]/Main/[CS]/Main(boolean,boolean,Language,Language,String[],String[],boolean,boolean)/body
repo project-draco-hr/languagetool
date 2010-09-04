@@ -4,6 +4,9 @@
   this.taggerOnly=taggerOnly;
   this.applySuggestions=applySuggestions;
   profileRules=false;
+  bitextMode=false;
+  srcLt=null;
+  bRules=null;
   lt=new JLanguageTool(language,motherTongue);
   lt.activateDefaultPatternRules();
   lt.activateDefaultFalseFriendRules();

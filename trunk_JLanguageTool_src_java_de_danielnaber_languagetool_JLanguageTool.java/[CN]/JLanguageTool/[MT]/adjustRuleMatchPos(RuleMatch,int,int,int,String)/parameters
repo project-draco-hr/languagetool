@@ -1,0 +1,5 @@
+RuleMatch rm
+int sentLen
+int columnCount
+int lineCount
+String sentence

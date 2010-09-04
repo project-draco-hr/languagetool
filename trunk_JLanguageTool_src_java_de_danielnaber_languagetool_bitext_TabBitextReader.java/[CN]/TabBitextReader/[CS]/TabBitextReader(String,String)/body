@@ -1,6 +1,11 @@
 {
   try {
-    in=new BufferedReader(new InputStreamReader(new FileInputStream(filename),encoding));
+    if (encoding == null) {
+      in=new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
+    }
+ else {
+      in=new BufferedReader(new InputStreamReader(new FileInputStream(filename),encoding));
+    }
     nextline=Tab2StringPair(in.readLine());
   }
  catch (  IOException e) {

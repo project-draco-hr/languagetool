@@ -10,6 +10,7 @@
   boolean listUnknown=false;
   boolean applySuggestions=false;
   boolean profile=false;
+  boolean bitext=false;
   Language language=null;
   Language motherTongue=null;
   String encoding=null;
@@ -34,6 +35,9 @@
     }
  else     if (args[i].equals("-r") || args[i].equals("--recursive")) {
       recursive=true;
+    }
+ else     if (args[i].equals("-b2") || args[i].equals("--bitext")) {
+      bitext=true;
     }
  else     if (args[i].equals("-d") || args[i].equals("--disable")) {
       if (enabledRules.length > 0) {
@@ -119,6 +123,12 @@
   prg.setListUnknownWords(listUnknown);
   if (profile) {
     prg.setProfilingMode();
+  }
+  if (bitext) {
+    if (motherTongue == null) {
+      throw new IllegalArgumentException("You have to set the source language (as mother tongue).");
+    }
+    prg.setBitextMOde(motherTongue);
   }
   if (recursive) {
     prg.runRecursive(filename,encoding,listUnknown);
