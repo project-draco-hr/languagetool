@@ -2,7 +2,7 @@
   if (this == obj)   return true;
   if (obj == null)   return false;
   if (getClass() != obj.getClass())   return false;
-  AnalyzedSentence other=(AnalyzedSentence)obj;
+  final AnalyzedSentence other=(AnalyzedSentence)obj;
   if (!Arrays.equals(nonBlankTokens,other.nonBlankTokens))   return false;
   if (!Arrays.equals(tokens,other.tokens))   return false;
   if (!Arrays.equals(whPositions,other.whPositions))   return false;

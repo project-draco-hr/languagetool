@@ -2,7 +2,7 @@
   if (this == obj)   return true;
   if (obj == null)   return false;
   if (getClass() != obj.getClass())   return false;
-  AnalyzedTokenReadings other=(AnalyzedTokenReadings)obj;
+  final AnalyzedTokenReadings other=(AnalyzedTokenReadings)obj;
   if (!Arrays.equals(anTokReadings,other.anTokReadings))   return false;
   if (isLinebreak != other.isLinebreak)   return false;
   if (isParaEnd != other.isParaEnd)   return false;
