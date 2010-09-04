@@ -1,8 +1,8 @@
 {
-  List<Language> langs=new ArrayList<Language>();
+  final List<Language> languages=new ArrayList<Language>();
   for (  File ruleFile : ruleFiles) {
     final Language newLanguage=LanguageBuilder.makeLanguage(ruleFile);
-    langs.add(newLanguage);
+    languages.add(newLanguage);
   }
-  return langs;
+  return languages;
 }

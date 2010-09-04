@@ -15,7 +15,7 @@
 ;
   final JRootPane rootPane=dialog.getRootPane();
   rootPane.registerKeyboardAction(actionListener,stroke,JComponent.WHEN_IN_FOCUSED_WINDOW);
-  checkBoxPanel=new JPanel();
+  final JPanel checkBoxPanel=new JPanel();
   checkBoxPanel.setLayout(new GridBagLayout());
   GridBagConstraints cons=new GridBagConstraints();
   cons.anchor=GridBagConstraints.NORTHWEST;

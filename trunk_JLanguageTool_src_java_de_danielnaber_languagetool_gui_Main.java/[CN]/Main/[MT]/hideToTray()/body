@@ -3,7 +3,7 @@
   if (!isInTray && version.startsWith("1.5")) {
     TrayIcon trayIcon=null;
     try {
-      Icon sysTrayIcon=new ImageIcon(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(Main.SYSTEM_TRAY_ICON_NAME));
+      final Icon sysTrayIcon=new ImageIcon(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(Main.SYSTEM_TRAY_ICON_NAME));
       trayIcon=new TrayIcon(sysTrayIcon);
     }
  catch (    final NoClassDefFoundError e) {

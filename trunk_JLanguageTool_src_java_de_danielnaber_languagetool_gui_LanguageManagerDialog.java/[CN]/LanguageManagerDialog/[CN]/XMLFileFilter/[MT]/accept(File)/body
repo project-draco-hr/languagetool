@@ -1,4 +1,6 @@
 {
-  if (f.getName().toLowerCase().endsWith(".xml") || f.isDirectory())   return true;
+  if (f.getName().toLowerCase().endsWith(".xml") || f.isDirectory()) {
+    return true;
+  }
   return false;
 }

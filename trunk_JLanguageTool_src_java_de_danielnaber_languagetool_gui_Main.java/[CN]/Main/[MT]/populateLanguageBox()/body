@@ -1,5 +1,5 @@
 {
-  List<String> toSort=new ArrayList<String>();
+  final List<String> toSort=new ArrayList<String>();
   langBox.removeAllItems();
   for (  final Language lang : Language.LANGUAGES) {
     if (lang != Language.DEMO) {

@@ -4,10 +4,11 @@
   }
  else {
     final StringBuilder sb=new StringBuilder();
-    final String startChecktext=Tools.makeTexti18n(messages,"startChecking",new Object[]{lang.getTranslatedName(messages)});
-    resultArea.setText(HTML_FONT_START + startChecktext + "<br>\n"+ HTML_FONT_END);
+    final String startCheckText=Tools.makeTexti18n(messages,"startChecking",new Object[]{lang.getTranslatedName(messages)});
+    resultArea.setText(HTML_FONT_START + startCheckText + "<br>\n"+ HTML_FONT_END);
     resultArea.repaint();
-    sb.append(startChecktext + "...<br>\n");
+    sb.append(startCheckText);
+    sb.append("...<br>\n");
     int matches=0;
     try {
       matches=checkText(langTool,textArea.getText(),sb);
@@ -16,13 +17,15 @@
       sb.append("<br><br><b><font color=\"red\">" + ex.toString() + "<br>");
       final StackTraceElement[] elements=ex.getStackTrace();
       for (      final StackTraceElement element : elements) {
-        sb.append(element + "<br>");
+        sb.append(element);
+        sb.append("<br>");
       }
       sb.append("</font></b><br>");
       ex.printStackTrace();
     }
-    final String checkDone=Tools.makeTexti18n(messages,"checkDone",new Object[]{Integer.valueOf(matches)});
-    sb.append(checkDone + "<br>\n");
+    final String checkDone=Tools.makeTexti18n(messages,"checkDone",new Object[]{matches});
+    sb.append(checkDone);
+    sb.append("<br>\n");
     resultArea.setText(HTML_FONT_START + sb.toString() + HTML_FONT_END);
     resultArea.setCaretPosition(0);
   }

@@ -1,5 +1,5 @@
 {
-  JLanguageTool langTool;
+  final JLanguageTool langTool;
   try {
     final ConfigurationDialog configDialog=getCurrentConfigDialog();
     langTool=new JLanguageTool(getCurrentLanguage(),configDialog.getMotherTongue());

@@ -7,23 +7,17 @@
     final String val=(String)props.get(DISABLED_RULES_CONFIG_KEY);
     if (val != null) {
       final String[] ids=val.split(",");
-      for (      final String id : ids) {
-        disabledRuleIds.add(id);
-      }
+      disabledRuleIds.addAll(Arrays.asList(ids));
     }
     final String enRul=(String)props.get(ENABLED_RULES_CONFIG_KEY);
     if (enRul != null) {
       final String[] ids=enRul.split(",");
-      for (      final String id : ids) {
-        enabledRuleIds.add(id);
-      }
+      enabledRuleIds.addAll(Arrays.asList(ids));
     }
     final String cat=(String)props.get(DISABLED_CATEGORIES_CONFIG_KEY);
     if (cat != null) {
       final String[] names=cat.split(",");
-      for (      final String name : names) {
-        disabledCategoryNames.add(name);
-      }
+      disabledCategoryNames.addAll(Arrays.asList(names));
     }
     final String motherTongueStr=(String)props.get(MOTHER_TONGUE_CONFIG_KEY);
     if (motherTongueStr != null) {

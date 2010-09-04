@@ -23,7 +23,7 @@
     prg.quit();
   }
  else   if (e.getActionCommand().equals(aboutText)) {
-    AboutDialog about=new AboutDialog(messages);
+    final AboutDialog about=new AboutDialog(messages);
     about.show();
   }
  else {
