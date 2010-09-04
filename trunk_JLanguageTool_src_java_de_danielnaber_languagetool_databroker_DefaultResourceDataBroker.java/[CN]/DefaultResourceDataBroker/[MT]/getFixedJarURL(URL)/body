@@ -7,7 +7,7 @@
     return url;
   }
   final String originalURLString=url.toString();
-  int bangSlashIndex=originalURLString.indexOf("!/");
+  final int bangSlashIndex=originalURLString.indexOf("!/");
   if (bangSlashIndex > -1) {
     return url;
   }
@@ -37,7 +37,7 @@
     return url;
   }
   final File file=new File(urlConnectionPermissionName);
-  if (file.exists() == false) {
+  if (!file.exists()) {
     return url;
   }
   try {
