@@ -7,8 +7,8 @@
       runOptionsDialog();
     }
  else     if ("about".equals(sEvent)) {
-      final AboutDialogThread aboutthread=new AboutDialogThread(MESSAGES);
-      aboutthread.start();
+      final AboutDialogThread aboutThread=new AboutDialogThread(MESSAGES);
+      aboutThread.start();
     }
  else {
       System.err.println("Sorry, don't know what to do, sEvent = " + sEvent);

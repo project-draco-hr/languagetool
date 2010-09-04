@@ -34,7 +34,7 @@
       }
     }
     try {
-      String sentence=getSentence(paraText,paRes.nStartOfSentencePosition);
+      final String sentence=getSentence(paraText,paRes.nStartOfSentencePosition);
       paRes.nStartOfSentencePosition=position;
       paRes.nStartOfNextSentencePosition=position + sentence.length();
       paRes.nBehindEndOfSentencePosition=paRes.nStartOfNextSentencePosition;

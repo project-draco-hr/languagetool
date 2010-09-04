@@ -3,8 +3,8 @@
   if (xComponent == null) {
     return Language.ENGLISH;
   }
-  Locale charLocale;
-  XPropertySet xCursorProps;
+  final Locale charLocale;
+  final XPropertySet xCursorProps;
   try {
     final XModel model=(XModel)UnoRuntime.queryInterface(XModel.class,xComponent);
     final XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,model.getCurrentController());

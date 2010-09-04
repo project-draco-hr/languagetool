@@ -1,6 +1,6 @@
 {
   try {
-    JLanguageTool langTool=new JLanguageTool(docLanguage,cfgDialog.getMotherTongue());
+    final JLanguageTool langTool=new JLanguageTool(docLanguage,cfgDialog.getMotherTongue());
     langTool.activateDefaultPatternRules();
     langTool.activateDefaultFalseFriendRules();
     cfgDialog.show(langTool.getAllRules());
