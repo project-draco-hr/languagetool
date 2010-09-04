@@ -2,6 +2,6 @@
   if (line == null) {
     return null;
   }
-  String[] fields=line.split("\t");
+  final String[] fields=line.split("\t");
   return new StringPair(fields[0],fields[1]);
 }

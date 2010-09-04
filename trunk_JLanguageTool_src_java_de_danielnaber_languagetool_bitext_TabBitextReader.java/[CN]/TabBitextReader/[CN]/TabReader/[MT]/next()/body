@@ -1,9 +1,9 @@
 {
   try {
-    StringPair result=nextline;
-    if (nextline != null) {
-      nextline=tab2StringPair(in.readLine());
-      if (nextline == null)       in.close();
+    final StringPair result=nextLine;
+    if (nextLine != null) {
+      nextLine=tab2StringPair(in.readLine());
+      if (nextLine == null)       in.close();
     }
     return result;
   }
