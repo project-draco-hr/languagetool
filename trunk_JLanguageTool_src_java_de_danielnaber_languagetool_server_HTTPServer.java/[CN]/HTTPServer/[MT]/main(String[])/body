@@ -12,6 +12,6 @@
       verbose=true;
     }
   }
-  HTTPServer server=new HTTPServer(port,verbose);
+  final HTTPServer server=new HTTPServer(port,verbose);
   server.run();
 }

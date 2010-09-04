@@ -13,6 +13,6 @@
   if (posTag.indexOf('+') > 0) {
     return synthesize(token,posTag,true);
   }
-  List<String> forms=getWordForms(token,posTag,isNegated);
+  final List<String> forms=getWordForms(token,posTag,isNegated);
   return forms.toArray(new String[forms.size()]);
 }

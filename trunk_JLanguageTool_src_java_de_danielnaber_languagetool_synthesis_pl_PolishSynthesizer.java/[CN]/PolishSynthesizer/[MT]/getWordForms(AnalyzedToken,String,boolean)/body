@@ -1,6 +1,6 @@
 {
-  List<String> forms=new ArrayList<String>();
-  List<WordData> wordForms;
+  final List<String> forms=new ArrayList<String>();
+  final List<WordData> wordForms;
   if (isNegated) {
     wordForms=synthesizer.lookup(token.getLemma() + "|" + posTag.replaceFirst(NEGATION_TAG,POTENTIAL_NEGATION_TAG));
     if (wordForms != null) {
