@@ -2,7 +2,7 @@
   try {
     StringPair result=nextline;
     if (nextline != null) {
-      nextline=Tab2StringPair(in.readLine());
+      nextline=tab2StringPair(in.readLine());
       if (nextline == null)       in.close();
     }
     return result;

@@ -6,7 +6,7 @@
  else {
       in=new BufferedReader(new InputStreamReader(new FileInputStream(filename),encoding));
     }
-    nextline=Tab2StringPair(in.readLine());
+    nextline=tab2StringPair(in.readLine());
   }
  catch (  IOException e) {
     throw new IllegalArgumentException(e);
