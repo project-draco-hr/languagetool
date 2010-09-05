@@ -1,4 +1,3 @@
 {
-  columnCount=sentencePos;
-  return columnCount;
+  return sentencePos;
 }

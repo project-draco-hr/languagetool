@@ -1,8 +1,11 @@
 {
   try {
-    final StringPair result=nextLine;
+    final StringPair result=nextPair;
+    sentencePos=nextPair.getSource().length() + 1;
     if (nextLine != null) {
-      nextLine=tab2StringPair(in.readLine());
+      prevLine=nextLine;
+      nextLine=in.readLine();
+      nextPair=tab2StringPair(nextLine);
       lineCount++;
       if (nextLine == null)       in.close();
     }

@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> ruleMatches=srcLt.check(src);
+  final List<RuleMatch> ruleMatches=trgLt.check(trg);
   for (  BitextRule bRule : bRules) {
     final RuleMatch[] curMatch=bitextMatch(bRule,src,trg,srcLt,trgLt);
     if (curMatch != null) {

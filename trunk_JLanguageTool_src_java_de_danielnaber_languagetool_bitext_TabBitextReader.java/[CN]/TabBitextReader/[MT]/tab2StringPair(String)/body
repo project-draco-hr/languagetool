@@ -3,6 +3,5 @@
     return null;
   }
   final String[] fields=line.split("\t");
-  sentencePos=fields[0].length() + 1;
   return new StringPair(fields[0],fields[1]);
 }
