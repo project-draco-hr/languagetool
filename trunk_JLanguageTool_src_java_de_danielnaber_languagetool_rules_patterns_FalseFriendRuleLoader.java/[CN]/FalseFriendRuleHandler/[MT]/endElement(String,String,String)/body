@@ -80,7 +80,7 @@
     inTranslation=false;
     currentTranslationLanguage=null;
   }
- else   if (qName.equals("example")) {
+ else   if (qName.equals(EXAMPLE)) {
     if (inCorrectExample) {
       correctExamples.add(correctExample.toString());
     }

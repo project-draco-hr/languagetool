@@ -99,8 +99,8 @@
     exceptions=new StringBuilder();
     resetException();
     exceptionStringNegation=YES.equals(attrs.getValue(NEGATE));
-    exceptionValidNext="next".equals(attrs.getValue("scope"));
-    exceptionValidPrev="previous".equals(attrs.getValue("scope"));
+    exceptionValidNext="next".equals(attrs.getValue(SCOPE));
+    exceptionValidPrev="previous".equals(attrs.getValue(SCOPE));
     exceptionStringInflected=YES.equals(attrs.getValue(INFLECTED));
     if (attrs.getValue(POSTAG) != null) {
       exceptionPosToken=attrs.getValue(POSTAG);
@@ -113,11 +113,11 @@
       exceptionSpaceBeforeSet=!"ignore".equals(attrs.getValue(SPACEBEFORE));
     }
   }
- else   if (qName.equals("example") && attrs.getValue(TYPE).equals("correct")) {
+ else   if (qName.equals(EXAMPLE) && attrs.getValue(TYPE).equals("correct")) {
     inCorrectExample=true;
     correctExample=new StringBuilder();
   }
- else   if (qName.equals("example") && attrs.getValue(TYPE).equals("incorrect")) {
+ else   if (qName.equals(EXAMPLE) && attrs.getValue(TYPE).equals("incorrect")) {
     inIncorrectExample=true;
     incorrectExample=new StringBuilder();
     exampleCorrection=new StringBuilder();
