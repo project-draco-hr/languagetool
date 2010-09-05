@@ -3,6 +3,7 @@
     final StringPair result=nextLine;
     if (nextLine != null) {
       nextLine=tab2StringPair(in.readLine());
+      lineCount++;
       if (nextLine == null)       in.close();
     }
     return result;
