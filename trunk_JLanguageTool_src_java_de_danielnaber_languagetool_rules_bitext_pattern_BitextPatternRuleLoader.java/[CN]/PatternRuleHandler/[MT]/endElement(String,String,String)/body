@@ -157,6 +157,7 @@
   }
  else   if (qName.equals("suggestion") && inMessage) {
     message.append("</suggestion>");
+    inSuggestion=false;
   }
  else   if (qName.equals(MARKER) && inCorrectExample) {
     correctExample.append("</marker>");

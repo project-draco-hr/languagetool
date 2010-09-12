@@ -127,6 +127,7 @@
   }
  else   if (qName.equals("message")) {
     inMessage=true;
+    inSuggestion=false;
     message=new StringBuilder();
   }
  else   if (qName.equals("short")) {
@@ -143,6 +144,7 @@
   }
  else   if (qName.equals("suggestion") && inMessage) {
     message.append("<suggestion>");
+    inSuggestion=true;
   }
  else   if (qName.equals("match")) {
     inMatch=true;
@@ -156,6 +158,7 @@
       includeRange=Match.IncludeRange.toRange(attrs.getValue("include_skipped").toUpperCase());
     }
     final Match mWorker=new Match(attrs.getValue(POSTAG),attrs.getValue("postag_replace"),YES.equals(attrs.getValue(POSTAG_REGEXP)),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConversion,YES.equals(attrs.getValue("setpos")),includeRange);
+    mWorker.setInMessageOnly(!inSuggestion);
     if (inMessage) {
       if (suggestionMatches == null) {
         suggestionMatches=new ArrayList<Match>();
