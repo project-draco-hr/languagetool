@@ -1,0 +1,19 @@
+{
+  inException=true;
+  exceptions=new StringBuilder();
+  resetException();
+  exceptionStringNegation=YES.equals(attrs.getValue(NEGATE));
+  exceptionValidNext="next".equals(attrs.getValue(SCOPE));
+  exceptionValidPrev="previous".equals(attrs.getValue(SCOPE));
+  exceptionStringInflected=YES.equals(attrs.getValue(INFLECTED));
+  if (attrs.getValue(POSTAG) != null) {
+    exceptionPosToken=attrs.getValue(POSTAG);
+    exceptionPosRegExp=YES.equals(attrs.getValue(POSTAG_REGEXP));
+    exceptionPosNegation=YES.equals(attrs.getValue(NEGATE_POS));
+  }
+  exceptionStringRegExp=YES.equals(attrs.getValue(REGEXP));
+  if (attrs.getValue(SPACEBEFORE) != null) {
+    exceptionSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
+    exceptionSpaceBeforeSet=!"ignore".equals(attrs.getValue(SPACEBEFORE));
+  }
+}

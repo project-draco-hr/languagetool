@@ -63,7 +63,7 @@
     if (attrs.getValue(POSTAG) != null) {
       posToken=attrs.getValue(POSTAG);
       if (attrs.getValue(POSTAG_REGEXP) != null) {
-        regular=attrs.getValue(POSTAG_REGEXP).equals(YES);
+        posRegExp=attrs.getValue(POSTAG_REGEXP).equals(YES);
       }
       if (attrs.getValue(NEGATE_POS) != null) {
         posNegation=attrs.getValue(NEGATE_POS).equals(YES);

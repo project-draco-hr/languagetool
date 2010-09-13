@@ -13,7 +13,7 @@
     }
   }
  else   if (qName.equals("rules")) {
-    final String languageStr=attrs.getValue("lang");
+    final String languageStr=attrs.getValue("targetLang");
     language=Language.getLanguageForShortName(languageStr);
     if (language == null) {
       throw new SAXException("Unknown language '" + languageStr + "'");
@@ -35,8 +35,8 @@
     if (inRuleGroup && description == null) {
       description=ruleGroupDescription;
     }
-    correctExamples=new ArrayList<String>();
-    incorrectExamples=new ArrayList<IncorrectExample>();
+    correctExamples=new ArrayList<StringPair>();
+    incorrectExamples=new ArrayList<IncorrectBitextExample>();
     if (suggestionMatches != null) {
       suggestionMatches.clear();
     }
@@ -111,7 +111,6 @@
   }
  else   if (qName.equals("message")) {
     inMessage=true;
-    inSuggestion=false;
     message=new StringBuilder();
   }
  else   if (qName.equals("short")) {
@@ -174,5 +173,8 @@
       }
       lastPhrase=true;
     }
+  }
+ else   if (qName.equals("source")) {
+    srcLang=Language.getLanguageForShortName(attrs.getValue("lang"));
   }
 }
