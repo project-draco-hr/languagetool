@@ -22,14 +22,14 @@
  else   if (qName.equals("exception")) {
     inException=true;
     exceptions=new StringBuilder();
-    if (attrs.getValue("negate") != null) {
-      exceptionStringNegation=attrs.getValue("negate").equals(YES);
+    if (attrs.getValue(NEGATE) != null) {
+      exceptionStringNegation=attrs.getValue(NEGATE).equals(YES);
     }
     if (attrs.getValue(SCOPE) != null) {
       exceptionValidNext=attrs.getValue(SCOPE).equals("next");
       exceptionValidPrev=attrs.getValue(SCOPE).equals("previous");
     }
-    if (attrs.getValue("inflected") != null) {
+    if (attrs.getValue(INFLECTED) != null) {
       exceptionStringInflected=attrs.getValue(INFLECTED).equals(YES);
     }
     if (attrs.getValue(POSTAG) != null) {
@@ -45,36 +45,8 @@
       exceptionStringRegExp=attrs.getValue(REGEXP).equals(YES);
     }
   }
- else   if (qName.equals("token")) {
-    inToken=true;
-    if (attrs.getValue("negate") != null) {
-      tokenNegated=attrs.getValue("negate").equals(YES);
-    }
-    if (attrs.getValue("inflected") != null) {
-      tokenInflected=attrs.getValue("inflected").equals(YES);
-    }
-    if (attrs.getValue("skip") != null) {
-      skipPos=Integer.parseInt(attrs.getValue("skip"));
-    }
-    elements=new StringBuilder();
-    if (elementList == null) {
-      elementList=new ArrayList<Element>();
-    }
-    if (attrs.getValue(POSTAG) != null) {
-      posToken=attrs.getValue(POSTAG);
-      if (attrs.getValue(POSTAG_REGEXP) != null) {
-        posRegExp=attrs.getValue(POSTAG_REGEXP).equals(YES);
-      }
-      if (attrs.getValue(NEGATE_POS) != null) {
-        posNegation=attrs.getValue(NEGATE_POS).equals(YES);
-      }
-      if (elementList == null) {
-        elementList=new ArrayList<Element>();
-      }
-    }
-    if (attrs.getValue(REGEXP) != null) {
-      regExpression=attrs.getValue(REGEXP).equals(YES);
-    }
+ else   if (qName.equals(TOKEN)) {
+    setToken(attrs);
   }
  else   if (qName.equals("translation")) {
     inTranslation=true;

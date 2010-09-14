@@ -32,33 +32,8 @@
       exceptionPosToken=null;
     }
   }
- else   if (qName.equals("token")) {
-    if (inToken) {
-      if (!exceptionSet || tokenElement == null) {
-        tokenElement=new Element(elements.toString(),caseSensitive,regExpression,tokenInflected);
-        tokenElement.setNegation(tokenNegated);
-      }
- else {
-        tokenElement.setStringElement(elements.toString());
-      }
-      if (skipPos != 0) {
-        tokenElement.setSkipNext(skipPos);
-        skipPos=0;
-      }
-      if (posToken != null) {
-        tokenElement.setPosElement(posToken,posRegExp,posNegation);
-        posToken=null;
-      }
-      elementList.add(tokenElement);
-      tokenNegated=false;
-      tokenInflected=false;
-      posNegation=false;
-      posRegExp=false;
-      exceptionValidNext=true;
-    }
-    inToken=false;
-    regExpression=false;
-    resetException();
+ else   if (qName.equals(TOKEN)) {
+    finalizeTokens();
   }
  else   if (qName.equals("pattern")) {
     inPattern=false;

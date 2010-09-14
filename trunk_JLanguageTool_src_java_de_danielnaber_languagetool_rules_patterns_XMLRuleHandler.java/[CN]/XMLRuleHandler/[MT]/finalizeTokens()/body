@@ -1,0 +1,43 @@
+{
+  if (!exceptionSet || tokenElement == null) {
+    tokenElement=new Element(StringTools.trimWhitespace(elements.toString()),caseSensitive,regExpression,tokenInflected);
+    tokenElement.setNegation(tokenNegated);
+  }
+ else {
+    tokenElement.setStringElement(StringTools.trimWhitespace(elements.toString()));
+  }
+  if (skipPos != 0) {
+    tokenElement.setSkipNext(skipPos);
+    skipPos=0;
+  }
+  if (posToken != null) {
+    tokenElement.setPosElement(posToken,posRegExp,posNegation);
+    posToken=null;
+  }
+  if (tokenReference != null) {
+    tokenElement.setMatch(tokenReference);
+  }
+  if (inAndGroup && andGroupCounter > 0) {
+    elementList.get(elementList.size() - 1).setAndGroupElement(tokenElement);
+  }
+ else {
+    elementList.add(tokenElement);
+  }
+  if (inAndGroup) {
+    andGroupCounter++;
+  }
+  if (inUnification) {
+    tokenElement.setUnification(equivalenceFeatures);
+    if (uniNegation) {
+      tokenElement.setUniNegation();
+    }
+  }
+  if (inUnificationDef) {
+    language.getUnifier().setEquivalence(uFeature,uType,tokenElement);
+    elementList.clear();
+  }
+  if (tokenSpaceBeforeSet) {
+    tokenElement.setWhitespaceBefore(tokenSpaceBefore);
+  }
+  resetToken();
+}
