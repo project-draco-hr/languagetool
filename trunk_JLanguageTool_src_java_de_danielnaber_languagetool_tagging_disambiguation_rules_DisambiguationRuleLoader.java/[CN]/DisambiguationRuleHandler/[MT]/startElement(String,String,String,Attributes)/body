@@ -15,10 +15,10 @@
  else   if (qName.equals(PATTERN)) {
     inPattern=true;
     if (attrs.getValue(MARK) != null && (attrs.getValue(MARK_FROM) != null)) {
-      throw new SAXException("You cannot use both mark and mark_from attributes." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
+      throw new SAXException("You cannot use both mark and mark_from attributes." + "\n Line: " + pLocator.getLineNumber() + ", column: "+ pLocator.getColumnNumber()+ ".");
     }
     if (attrs.getValue(MARK) != null && (attrs.getValue(MARK_TO) != null)) {
-      throw new SAXException("You cannot use both mark and mark_to attributes." + "\n Line: " + dLocator.getLineNumber() + ", column: "+ dLocator.getColumnNumber()+ ".");
+      throw new SAXException("You cannot use both mark and mark_to attributes." + "\n Line: " + pLocator.getLineNumber() + ", column: "+ pLocator.getColumnNumber()+ ".");
     }
     if (attrs.getValue(MARK) != null) {
       positionCorrection=Integer.parseInt(attrs.getValue(MARK));
@@ -29,7 +29,7 @@
     if (attrs.getValue(MARK_TO) != null) {
       endPositionCorrection=Integer.parseInt(attrs.getValue(MARK_TO));
       if (endPositionCorrection > 0) {
-        throw new SAXException("End position correction (mark_to=" + endPositionCorrection + ") cannot be larger than 0: "+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+        throw new SAXException("End position correction (mark_to=" + endPositionCorrection + ") cannot be larger than 0: "+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
       }
       singleTokenCorrection=false;
     }
@@ -41,41 +41,14 @@
     }
   }
  else   if (qName.equals(EXCEPTION)) {
-    inException=true;
-    exceptions=new StringBuilder();
-    if (attrs.getValue(NEGATE) != null) {
-      exceptionStringNegation=attrs.getValue(NEGATE).equals(YES);
-    }
-    if (attrs.getValue(SCOPE) != null) {
-      exceptionValidNext=attrs.getValue(SCOPE).equals("next");
-      exceptionValidPrev=attrs.getValue(SCOPE).equals("previous");
-    }
-    if (attrs.getValue(INFLECTED) != null) {
-      exceptionStringInflected=attrs.getValue(INFLECTED).equals(YES);
-    }
-    if (attrs.getValue(POSTAG) != null) {
-      exceptionPosToken=attrs.getValue(POSTAG);
-      if (attrs.getValue(POSTAG_REGEXP) != null) {
-        exceptionPosRegExp=attrs.getValue(POSTAG_REGEXP).equals(YES);
-      }
-      if (attrs.getValue(NEGATE_POS) != null) {
-        exceptionPosNegation=attrs.getValue(NEGATE_POS).equals(YES);
-      }
-    }
-    if (attrs.getValue(REGEXP) != null) {
-      exceptionStringRegExp=attrs.getValue(REGEXP).equals(YES);
-    }
-    if (attrs.getValue(SPACEBEFORE) != null) {
-      exceptionSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
-      exceptionSpaceBeforeSet=!IGNORE.equals(attrs.getValue(SPACEBEFORE));
-    }
+    setExceptions(attrs);
   }
  else   if (qName.equals(AND)) {
     inAndGroup=true;
   }
  else   if (qName.equals(UNIFY)) {
     inUnification=true;
-    uniNegation=YES.equals(attrs.getValue("negate"));
+    uniNegation=YES.equals(attrs.getValue(NEGATE));
     uniCounter=0;
   }
  else   if (qName.equals("feature")) {
@@ -86,36 +59,7 @@
     uTypeList.add(uType);
   }
  else   if (qName.equals(TOKEN)) {
-    inToken=true;
-    if (attrs.getValue(NEGATE) != null) {
-      tokenNegated=attrs.getValue(NEGATE).equals(YES);
-    }
-    if (attrs.getValue(INFLECTED) != null) {
-      tokenInflected=attrs.getValue(INFLECTED).equals(YES);
-    }
-    if (attrs.getValue(SKIP) != null) {
-      skipPos=Integer.parseInt(attrs.getValue(SKIP));
-    }
-    elements=new StringBuilder();
-    if (attrs.getValue(POSTAG) != null) {
-      posToken=attrs.getValue(POSTAG);
-      if (attrs.getValue(POSTAG_REGEXP) != null) {
-        posRegExp=attrs.getValue(POSTAG_REGEXP).equals(YES);
-      }
-      if (attrs.getValue(NEGATE_POS) != null) {
-        posNegation=attrs.getValue(NEGATE_POS).equals(YES);
-      }
-    }
-    if (attrs.getValue(REGEXP) != null) {
-      stringRegExp=attrs.getValue(REGEXP).equals(YES);
-    }
-    if (attrs.getValue(SPACEBEFORE) != null) {
-      tokenSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
-      tokenSpaceBeforeSet=!IGNORE.equals(attrs.getValue(SPACEBEFORE));
-    }
-    if (!inAndGroup) {
-      tokenCounter++;
-    }
+    setToken(attrs);
   }
  else   if (qName.equals(DISAMBIG)) {
     inDisambiguation=true;
@@ -144,7 +88,7 @@
       if (attrs.getValue(NO) != null) {
         final int refNumber=Integer.parseInt(attrs.getValue(NO));
         if (refNumber > elementList.size()) {
-          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
         }
         mWorker.setTokenRef(refNumber);
         posSelector=mWorker;
@@ -154,7 +98,7 @@
       if (attrs.getValue(NO) != null) {
         final int refNumber=Integer.parseInt(attrs.getValue(NO));
         if (refNumber > elementList.size()) {
-          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+          throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
         }
         mWorker.setTokenRef(refNumber);
         tokenReference=mWorker;
@@ -181,7 +125,7 @@
     inWord=true;
     wd=new StringBuilder();
   }
- else   if (qName.equals("example")) {
+ else   if (qName.equals(EXAMPLE)) {
     inExample=true;
     if (untouchedExamples == null) {
       untouchedExamples=new ArrayList<String>();
@@ -189,8 +133,8 @@
     if (disambExamples == null) {
       disambExamples=new ArrayList<DisambiguatedExample>();
     }
-    untouched=attrs.getValue("type").equals("untouched");
-    if (attrs.getValue("type").equals("ambiguous")) {
+    untouched=attrs.getValue(TYPE).equals("untouched");
+    if (attrs.getValue(TYPE).equals("ambiguous")) {
       input=attrs.getValue("inputform");
       output=attrs.getValue("outputform");
     }

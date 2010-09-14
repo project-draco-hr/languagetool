@@ -1,0 +1,26 @@
+{
+  inToken=true;
+  if (lastPhrase) {
+    elementList.clear();
+  }
+  lastPhrase=false;
+  tokenNegated=YES.equals(attrs.getValue(NEGATE));
+  tokenInflected=YES.equals(attrs.getValue(INFLECTED));
+  if (attrs.getValue("skip") != null) {
+    skipPos=Integer.parseInt(attrs.getValue("skip"));
+  }
+  elements=new StringBuilder();
+  if (attrs.getValue(POSTAG) != null) {
+    posToken=attrs.getValue(POSTAG);
+    posRegExp=YES.equals(attrs.getValue(POSTAG_REGEXP));
+    posNegation=YES.equals(attrs.getValue(NEGATE_POS));
+  }
+  regExpression=YES.equals(attrs.getValue(REGEXP));
+  if (attrs.getValue(SPACEBEFORE) != null) {
+    tokenSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
+    tokenSpaceBeforeSet=!"ignore".equals(attrs.getValue(SPACEBEFORE));
+  }
+  if (!inAndGroup) {
+    tokenCounter++;
+  }
+}

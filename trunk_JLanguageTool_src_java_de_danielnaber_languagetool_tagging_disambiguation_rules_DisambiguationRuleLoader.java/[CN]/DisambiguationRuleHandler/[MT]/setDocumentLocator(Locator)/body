@@ -1,4 +1,4 @@
 {
-  dLocator=locator;
+  pLocator=locator;
   super.setDocumentLocator(locator);
 }

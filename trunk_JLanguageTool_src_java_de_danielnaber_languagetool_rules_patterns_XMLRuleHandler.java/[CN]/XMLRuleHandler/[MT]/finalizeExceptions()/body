@@ -1,0 +1,19 @@
+{
+  inException=false;
+  if (!exceptionSet) {
+    tokenElement=new Element(StringTools.trimWhitespace(elements.toString()),caseSensitive,regExpression,tokenInflected);
+    exceptionSet=true;
+  }
+  tokenElement.setNegation(tokenNegated);
+  if (!StringTools.isEmpty(exceptions.toString())) {
+    tokenElement.setStringException(StringTools.trimWhitespace(exceptions.toString()),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev);
+  }
+  if (exceptionPosToken != null) {
+    tokenElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext,exceptionValidPrev);
+    exceptionPosToken=null;
+  }
+  if (exceptionSpaceBeforeSet) {
+    tokenElement.setExceptionSpaceBefore(exceptionSpaceBefore);
+  }
+  resetException();
+}

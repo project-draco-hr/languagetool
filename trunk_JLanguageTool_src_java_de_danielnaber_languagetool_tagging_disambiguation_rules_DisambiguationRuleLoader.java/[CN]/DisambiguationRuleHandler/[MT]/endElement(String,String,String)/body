@@ -12,7 +12,7 @@
     if (newWdList != null) {
       if (disambigAction == DisambiguatorAction.ADD || disambigAction == DisambiguatorAction.REMOVE) {
         if (newWdList.size() != (elementList.size() - positionCorrection + endPositionCorrection)) {
-          throw new SAXException(language.getName() + " rule error. The number of interpretations specified with wd: " + newWdList.size()+ " must be equal to the number of matched tokens ("+ (elementList.size() - positionCorrection + endPositionCorrection)+ ")"+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+          throw new SAXException(language.getName() + " rule error. The number of interpretations specified with wd: " + newWdList.size()+ " must be equal to the number of matched tokens ("+ (elementList.size() - positionCorrection + endPositionCorrection)+ ")"+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
         }
         rule.setNewInterpretations(newWdList.toArray(new AnalyzedToken[newWdList.size()]));
       }
@@ -27,10 +27,10 @@
     }
     rules.add(rule);
     if (disambigAction == DisambiguatorAction.UNIFY && (elementList.size() - positionCorrection + endPositionCorrection) != uniCounter) {
-      throw new SAXException(language.getName() + " rule error. The number unified tokens: " + uniCounter+ " must be equal to the number of matched tokens."+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+      throw new SAXException(language.getName() + " rule error. The number unified tokens: " + uniCounter+ " must be equal to the number of matched tokens."+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
     }
     if ((!singleTokenCorrection && (disambigAction == DisambiguatorAction.FILTER || disambigAction == DisambiguatorAction.REPLACE)) && ((elementList.size() - positionCorrection + endPositionCorrection) > 1)) {
-      throw new SAXException(language.getName() + " rule error. Cannot replace or filter more than one token at a time." + "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+      throw new SAXException(language.getName() + " rule error. Cannot replace or filter more than one token at a time." + "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
     }
     elementList.clear();
     posSelector=null;
@@ -38,23 +38,7 @@
     untouchedExamples=null;
   }
  else   if (qName.equals(EXCEPTION)) {
-    inException=false;
-    if (!exceptionSet) {
-      tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,tokenInflected);
-      exceptionSet=true;
-    }
-    tokenElement.setNegation(tokenNegated);
-    if (!StringTools.isEmpty(exceptions.toString())) {
-      tokenElement.setStringException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev);
-    }
-    if (exceptionPosToken != null) {
-      tokenElement.setPosException(exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionValidNext,exceptionValidPrev);
-      exceptionPosToken=null;
-    }
-    if (exceptionSpaceBeforeSet) {
-      tokenElement.setExceptionSpaceBefore(exceptionSpaceBefore);
-    }
-    resetException();
+    finalizeExceptions();
   }
  else   if (qName.equals(AND)) {
     inAndGroup=false;
@@ -63,7 +47,7 @@
   }
  else   if (qName.equals(TOKEN)) {
     if (!exceptionSet || tokenElement == null) {
-      tokenElement=new Element(elements.toString(),caseSensitive,stringRegExp,tokenInflected);
+      tokenElement=new Element(elements.toString(),caseSensitive,regExpression,tokenInflected);
       tokenElement.setNegation(tokenNegated);
     }
  else {
@@ -108,10 +92,10 @@
  else   if (qName.equals(PATTERN)) {
     inPattern=false;
     if (positionCorrection >= tokenCounter) {
-      throw new SAXException("Attempt to mark a token no. (" + positionCorrection + ") that is outside the pattern ("+ tokenCounter+ "). Pattern elements are numbered starting from 0!"+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+      throw new SAXException("Attempt to mark a token no. (" + positionCorrection + ") that is outside the pattern ("+ tokenCounter+ "). Pattern elements are numbered starting from 0!"+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
     }
     if (tokenCounter - endPositionCorrection < 0) {
-      throw new SAXException("Attempt to mark a token no. (" + endPositionCorrection + ") that is outside the pattern ("+ tokenCounter+ "). Pattern elements are numbered starting from 0!"+ "\n Line: "+ dLocator.getLineNumber()+ ", column: "+ dLocator.getColumnNumber()+ ".");
+      throw new SAXException("Attempt to mark a token no. (" + endPositionCorrection + ") that is outside the pattern ("+ tokenCounter+ "). Pattern elements are numbered starting from 0!"+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
     }
     tokenCounter=0;
   }
