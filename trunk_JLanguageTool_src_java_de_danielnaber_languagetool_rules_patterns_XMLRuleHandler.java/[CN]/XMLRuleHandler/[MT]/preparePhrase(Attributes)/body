@@ -1,0 +1,20 @@
+{
+  phraseIdRef=attrs.getValue("idref");
+  if (phraseMap.containsKey(phraseIdRef)) {
+    for (    final List<Element> curPhrEl : phraseMap.get(phraseIdRef)) {
+      for (      final Element e : curPhrEl) {
+        e.setPhraseName(phraseIdRef);
+      }
+      if (elementList.isEmpty()) {
+        phraseElementList.add(new ArrayList<Element>(curPhrEl));
+      }
+ else {
+        final ArrayList<Element> prevList=new ArrayList<Element>(elementList);
+        prevList.addAll(curPhrEl);
+        phraseElementList.add(new ArrayList<Element>(prevList));
+        prevList.clear();
+      }
+    }
+    lastPhrase=true;
+  }
+}

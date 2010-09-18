@@ -110,21 +110,7 @@
     incorrectExample.append("</marker>");
   }
  else   if (qName.equals("phrase") && inPhrases) {
-    if (phraseMap == null) {
-      phraseMap=new HashMap<String,List<List<Element>>>();
-    }
-    phraseElementInit();
-    if (phraseElementList.isEmpty()) {
-      phraseElementList.add(new ArrayList<Element>(elementList));
-    }
- else {
-      for (      final ArrayList<Element> ph : phraseElementList) {
-        ph.addAll(new ArrayList<Element>(elementList));
-      }
-    }
-    phraseMap.put(phraseId,new ArrayList<List<Element>>(phraseElementList));
-    elementList.clear();
-    phraseElementList.clear();
+    finalizePhrase();
   }
  else   if (qName.equals("includephrases")) {
     elementList.clear();
