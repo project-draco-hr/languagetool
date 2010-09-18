@@ -1,20 +1,10 @@
 {
   if (qName.equals("source")) {
-    if (phraseElementList == null || phraseElementList.size() == 0) {
-      final int endMarker=elementList.size() + endPositionCorrection;
-      if (endMarker <= startPositionCorrection) {
-        throw new RuntimeException("Invalid combination of mark_from (" + startPositionCorrection + ") and mark_to ("+ endPositionCorrection+ ") for rule "+ id+ " with "+ elementList.size()+ " tokens: the error position created by mark_from and mark_to is less than one token");
-      }
-    }
+    checkMarkPositions();
     srcRule=finalizeRule();
   }
  else   if (qName.equals("target")) {
-    if (phraseElementList == null || phraseElementList.size() == 0) {
-      final int endMarker=elementList.size() + endPositionCorrection;
-      if (endMarker <= startPositionCorrection) {
-        throw new RuntimeException("Invalid combination of mark_from (" + startPositionCorrection + ") and mark_to ("+ endPositionCorrection+ ") for rule "+ id+ " with "+ elementList.size()+ " tokens: the error position created by mark_from and mark_to is less than one token");
-      }
-    }
+    checkMarkPositions();
     trgRule=finalizeRule();
   }
  else   if (qName.equals("rule")) {
@@ -44,7 +34,7 @@
  else   if (qName.equals(TOKEN)) {
     finalizeTokens();
   }
- else   if (qName.equals("pattern")) {
+ else   if (qName.equals(PATTERN)) {
     inPattern=false;
     if (lastPhrase) {
       elementList.clear();
