@@ -1,4 +1,7 @@
 {
+  if (StringTools.isEmpty(s)) {
+    return s;
+  }
   String token=s;
 switch (caseConversionType) {
 case NONE:
