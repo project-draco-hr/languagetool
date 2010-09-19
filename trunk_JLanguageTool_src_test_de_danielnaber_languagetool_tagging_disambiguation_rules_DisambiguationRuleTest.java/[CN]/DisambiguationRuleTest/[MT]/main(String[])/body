@@ -1,0 +1,7 @@
+{
+  final DisambiguationRuleTest prt=new DisambiguationRuleTest();
+  System.out.println("Running XML pattern tests...");
+  prt.setUp();
+  prt.testDisambiguationRulesFromXML();
+  System.out.println("Tests successful.");
+}
