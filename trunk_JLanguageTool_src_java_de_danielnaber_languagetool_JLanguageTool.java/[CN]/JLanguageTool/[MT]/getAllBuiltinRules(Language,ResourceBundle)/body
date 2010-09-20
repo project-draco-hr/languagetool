@@ -23,7 +23,7 @@
     }
   }
  catch (  final Exception e) {
-    throw new RuntimeException("Failed to load rules: " + e.getMessage(),e);
+    throw new RuntimeException("Failed to load rules for language " + language,e);
   }
   return rules.toArray(new Rule[rules.size()]);
 }
