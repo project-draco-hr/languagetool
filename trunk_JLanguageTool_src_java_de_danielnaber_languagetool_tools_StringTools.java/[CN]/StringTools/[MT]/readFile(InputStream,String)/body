@@ -3,11 +3,11 @@
   BufferedReader br=null;
   final StringBuilder sb=new StringBuilder();
   try {
-    if (encoding != null) {
-      isr=new InputStreamReader(file,encoding);
+    if (encoding == null) {
+      isr=new InputStreamReader(file);
     }
  else {
-      isr=new InputStreamReader(file);
+      isr=new InputStreamReader(file,encoding);
     }
     br=new BufferedReader(isr);
     String line;

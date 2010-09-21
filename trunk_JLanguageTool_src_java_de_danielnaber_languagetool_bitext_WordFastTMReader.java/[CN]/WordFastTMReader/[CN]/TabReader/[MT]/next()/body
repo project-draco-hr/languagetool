@@ -4,7 +4,9 @@
     if (nextLine != null) {
       nextLine=in.readLine();
       nextPair=tab2StringPair(nextLine);
-      if (nextLine == null)       in.close();
+      if (nextLine == null) {
+        in.close();
+      }
     }
     return result;
   }

@@ -1,12 +1,12 @@
 {
-  if (qName.equals("rule")) {
+  if ("rule".equals(qName)) {
     final DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,elementList,disambiguatedPOS,posSelector,disambigAction);
     rule.setStartPositionCorrection(positionCorrection);
-    if (!singleTokenCorrection) {
+    if (singleTokenCorrection) {
+      endPositionCorrection=1 - (elementList.size() - positionCorrection);
       rule.setEndPositionCorrection(endPositionCorrection);
     }
  else {
-      endPositionCorrection=1 - (elementList.size() - positionCorrection);
       rule.setEndPositionCorrection(endPositionCorrection);
     }
     if (newWdList != null) {
@@ -117,7 +117,7 @@
  else   if (qName.equals(UNIFICATION) && inUnificationDef) {
     inUnificationDef=false;
   }
- else   if (qName.equals("feature")) {
+ else   if ("feature".equals(qName)) {
     equivalenceFeatures.put(uFeature,uTypeList);
     uTypeList=new ArrayList<String>();
   }
@@ -129,7 +129,7 @@
     addNewWord(wd.toString(),wdLemma,wdPos);
     inWord=false;
   }
- else   if (qName.equals("example")) {
+ else   if (EXAMPLE.equals(qName)) {
     inExample=false;
     if (untouched) {
       untouchedExamples.add(example.toString());
@@ -138,7 +138,7 @@
       disambExamples.add(new DisambiguatedExample(example.toString(),input,output));
     }
   }
- else   if (qName.equals("marker")) {
+ else   if ("marker".equals(qName)) {
     example.append("</marker>");
   }
 }

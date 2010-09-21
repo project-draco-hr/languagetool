@@ -7,7 +7,9 @@
       nextLine=in.readLine();
       nextPair=tab2StringPair(nextLine);
       lineCount++;
-      if (nextLine == null)       in.close();
+      if (nextLine == null) {
+        in.close();
+      }
     }
     return result;
   }

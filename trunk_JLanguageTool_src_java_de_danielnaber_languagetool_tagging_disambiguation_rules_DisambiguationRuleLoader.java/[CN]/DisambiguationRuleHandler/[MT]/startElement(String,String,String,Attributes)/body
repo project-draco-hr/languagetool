@@ -9,7 +9,7 @@
       name=ruleGroupName;
     }
   }
- else   if (qName.equals("rules")) {
+ else   if ("rules".equals(qName)) {
     language=Language.getLanguageForShortName(attrs.getValue("lang"));
   }
  else   if (qName.equals(PATTERN)) {
@@ -26,15 +26,15 @@
     if (attrs.getValue(MARK_FROM) != null) {
       positionCorrection=Integer.parseInt(attrs.getValue(MARK_FROM));
     }
-    if (attrs.getValue(MARK_TO) != null) {
+    if (attrs.getValue(MARK_TO) == null) {
+      singleTokenCorrection=true;
+    }
+ else {
       endPositionCorrection=Integer.parseInt(attrs.getValue(MARK_TO));
       if (endPositionCorrection > 0) {
         throw new SAXException("End position correction (mark_to=" + endPositionCorrection + ") cannot be larger than 0: "+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
       }
       singleTokenCorrection=false;
-    }
- else {
-      singleTokenCorrection=true;
     }
     if (attrs.getValue(CASE_SENSITIVE) != null && YES.equals(attrs.getValue(CASE_SENSITIVE))) {
       caseSensitive=true;
@@ -51,7 +51,7 @@
     uniNegation=YES.equals(attrs.getValue(NEGATE));
     uniCounter=0;
   }
- else   if (qName.equals("feature")) {
+ else   if ("feature".equals(qName)) {
     uFeature=attrs.getValue("id");
   }
  else   if (qName.equals(TYPE)) {
@@ -64,11 +64,11 @@
  else   if (qName.equals(DISAMBIG)) {
     inDisambiguation=true;
     disambiguatedPOS=attrs.getValue(POSTAG);
-    if (attrs.getValue(ACTION) != null) {
-      disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction(attrs.getValue(ACTION).toUpperCase());
+    if (attrs.getValue(ACTION) == null) {
+      disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction("REPLACE");
     }
  else {
-      disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction("REPLACE");
+      disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction(attrs.getValue(ACTION).toUpperCase());
     }
     disamb=new StringBuilder();
   }
@@ -116,7 +116,7 @@
     uFeature=attrs.getValue(FEATURE);
     inUnificationDef=true;
   }
- else   if (qName.equals("equivalence")) {
+ else   if ("equivalence".equals(qName)) {
     uType=attrs.getValue(TYPE);
   }
  else   if (qName.equals(WD)) {
@@ -140,7 +140,7 @@
     }
     example=new StringBuilder();
   }
- else   if (qName.equals("marker")) {
+ else   if ("marker".equals(qName)) {
     example.append("<marker>");
   }
 }
