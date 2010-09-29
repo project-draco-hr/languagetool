@@ -1,0 +1,3 @@
+JLanguageTool lt
+String[] disabledRules
+String[] enabledRules
