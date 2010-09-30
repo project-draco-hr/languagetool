@@ -1,0 +1,19 @@
+{
+  try {
+    File input=File.createTempFile("input","txt");
+    input.deleteOnExit();
+    PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(input),"UTF-8"));
+    w.println("To jest ??winia kt??ra si?? ??lini.");
+    w.close();
+    String[] args=new String[]{"-l","pl","--api",input.getAbsolutePath()};
+    Main.main(args);
+    String output=new String(this.out.toByteArray());
+    assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);
+    assertTrue(output.indexOf("<error fromy=\"0\" fromx=\"8\" toy=\"0\" tox=\"21\" ruleId=\"BRAK_PRZECINKA_KTORY\" subId=\"5\"") != -1);
+    assertTrue(output.indexOf("msg=\"Brak przecinka w tym fragmencie zdania. Przecinek prawdopodobnie nale??y postawi?? tak: '??winia, kt??ra'.\" replacements=\"??winia, kt??ra\" ") != -1);
+    assertTrue(output.indexOf("context=\"To jest ??winia kt??ra si?? ??lini. \" contextoffset=\"8\" errorlength=\"12\"/>") != -1);
+  }
+ catch (  ExitException e) {
+    assertEquals("Exit status",1,e.status);
+  }
+}

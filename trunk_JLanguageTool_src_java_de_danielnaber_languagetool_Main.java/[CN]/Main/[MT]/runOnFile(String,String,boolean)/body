@@ -7,7 +7,7 @@
   if (oneTime) {
     if (bitextMode) {
       TabBitextReader reader=new TabBitextReader(filename,encoding);
-      Tools.checkBitext(reader,srcLt,lt,bRules,apiFormat,StringTools.XmlPrintMode.NORMAL_XML);
+      Tools.checkBitext(reader,srcLt,lt,bRules,apiFormat);
     }
  else {
       final String text=getFilteredText(filename,encoding);
