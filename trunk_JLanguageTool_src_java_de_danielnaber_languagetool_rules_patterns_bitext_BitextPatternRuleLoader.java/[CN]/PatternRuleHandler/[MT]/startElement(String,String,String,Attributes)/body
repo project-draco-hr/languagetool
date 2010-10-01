@@ -41,13 +41,13 @@
       suggestionMatches.clear();
     }
   }
- else   if (qName.equals(PATTERN)) {
+ else   if (PATTERN.equals(qName) || "target".equals(qName)) {
     startPattern(attrs);
   }
- else   if (qName.equals(AND)) {
+ else   if (AND.equals(qName)) {
     inAndGroup=true;
   }
- else   if (qName.equals(UNIFY)) {
+ else   if (UNIFY.equals(qName)) {
     inUnification=true;
     uniNegation=YES.equals(attrs.getValue(NEGATE));
   }
@@ -68,7 +68,7 @@
     inCorrectExample=true;
     correctExample=new StringBuilder();
   }
- else   if (qName.equals(EXAMPLE) && attrs.getValue(TYPE).equals("incorrect")) {
+ else   if (EXAMPLE.equals(qName) && attrs.getValue(TYPE).equals("incorrect")) {
     inIncorrectExample=true;
     incorrectExample=new StringBuilder();
     exampleCorrection=new StringBuilder();
@@ -76,7 +76,7 @@
       exampleCorrection.append(attrs.getValue("correction"));
     }
   }
- else   if (qName.equals("message")) {
+ else   if (MESSAGE.equals(qName)) {
     inMessage=true;
     message=new StringBuilder();
   }

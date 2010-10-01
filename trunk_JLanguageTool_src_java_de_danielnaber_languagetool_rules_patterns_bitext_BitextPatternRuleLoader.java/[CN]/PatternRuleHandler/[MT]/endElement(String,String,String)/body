@@ -3,11 +3,11 @@
     checkMarkPositions();
     srcRule=finalizeRule();
   }
- else   if (qName.equals("target")) {
+ else   if ("target".equals(qName)) {
     checkMarkPositions();
     trgRule=finalizeRule();
   }
- else   if (qName.equals("rule")) {
+ else   if ("rule".equals(qName)) {
     trgRule.setMessage(message.toString());
     if (suggestionMatches != null) {
       for (      final Match m : suggestionMatches) {
