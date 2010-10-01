@@ -1,0 +1,6 @@
+{
+  final BitextPatternRuleTest prt=new BitextPatternRuleTest();
+  System.out.println("Running XML bitext pattern tests...");
+  prt.testBitextRulesFromXML();
+  System.out.println("Tests successful.");
+}

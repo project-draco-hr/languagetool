@@ -1,7 +1,21 @@
 {
-  final BitextPatternRuleLoader ruleLoader=new BitextPatternRuleLoader();
-  final JLanguageTool languageTool=new JLanguageTool(Language.POLISH);
-  final String name="/" + Language.POLISH.getShortName() + "/bitext.xml";
-  final List<BitextPatternRule> rules=ruleLoader.getRules(JLanguageTool.getDataBroker().getFromRulesDirAsStream(name),name);
-  testBitextRulesFromXML(rules,languageTool,Language.POLISH);
+  for (  final Language lang : Language.LANGUAGES) {
+    if (ignoredLanguages != null && ignoredLanguages.contains(lang)) {
+      if (verbose) {
+        System.out.println("Ignoring tests for " + lang.getName());
+      }
+      continue;
+    }
+    final BitextPatternRuleLoader ruleLoader=new BitextPatternRuleLoader();
+    final String name="/" + lang.getShortName() + "/bitext.xml";
+    final InputStream is=JLanguageTool.getDataBroker().getFromRulesDirAsStream(name);
+    if (is != null) {
+      if (verbose) {
+        System.out.println("Running tests for " + lang.getName() + "...");
+      }
+      final JLanguageTool languageTool=new JLanguageTool(lang);
+      final List<BitextPatternRule> rules=ruleLoader.getRules(is,name);
+      testBitextRulesFromXML(rules,languageTool,Language.POLISH);
+    }
+  }
 }
