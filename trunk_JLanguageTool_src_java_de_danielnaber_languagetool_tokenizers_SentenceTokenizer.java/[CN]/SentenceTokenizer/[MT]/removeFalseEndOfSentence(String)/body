@@ -4,9 +4,9 @@
   s=abbrev3.matcher(s).replaceAll("$1");
   s=abbrev4.matcher(s).replaceAll("$1$2");
   s=abbrev5.matcher(s).replaceAll("$1");
-  for (  final String abbrev : abbreviations) {
-    final Pattern pattern=Pattern.compile("(\\b" + abbrev + PAP+ "\\s)"+ EOS);
-    s=pattern.matcher(s).replaceAll("$1");
+  for (  final Pattern abbrevPattern : abbreviationPatterns) {
+    final Matcher matcher=abbrevPattern.matcher(s);
+    s=matcher.replaceAll("$1");
   }
   s=abbrev6.matcher(s).replaceAll("$1$2");
   s=abbrev7.matcher(s).replaceAll("$1");

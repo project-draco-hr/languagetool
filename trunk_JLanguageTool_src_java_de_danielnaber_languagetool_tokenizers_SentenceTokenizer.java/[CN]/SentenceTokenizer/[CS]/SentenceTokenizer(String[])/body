@@ -1,6 +1,10 @@
 {
-  this();
-  for (  String element : abbrevList) {
-    abbreviations.add(element);
+  final List<String> allAbbreviations=new ArrayList<String>();
+  allAbbreviations.addAll(Arrays.asList(abbrevList));
+  allAbbreviations.addAll(Arrays.asList(ABBREV_LIST));
+  for (  String element : allAbbreviations) {
+    final Pattern pattern=Pattern.compile("(\\b" + element + PAP+ "\\s)"+ EOS);
+    abbreviationPatterns.add(pattern);
   }
+  setSingleLineBreaksMarksParagraph(false);
 }
