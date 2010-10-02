@@ -2,7 +2,7 @@
   boolean thisMatched=matched;
   if (testUnification) {
     if (matched && elem.isUnified()) {
-      thisMatched&=unifier.isUnified(matchToken,elem.getUniFeatures(),elem.isUniNegated(),lastReading);
+      thisMatched=thisMatched && unifier.isUnified(matchToken,elem.getUniFeatures(),elem.isUniNegated(),lastReading);
     }
     if (thisMatched && getUnified) {
       unifiedTokens=unifier.getFinalUnified();
