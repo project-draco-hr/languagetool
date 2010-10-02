@@ -1,14 +1,9 @@
 {
-  try {
-    final URL url=this.getClass().getResource(ENGLISH_TEST_FILE);
-    final URI uri=new URI(url.toString());
-    String[] args=new String[]{"-l","en","--api",uri.getPath()};
-    Main.main(args);
-    String output=new String(this.out.toByteArray());
-    assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);
-    assertTrue(output.indexOf("<error fromy=\"0\" fromx=\"8\" toy=\"0\" tox=\"11\" ruleId=\"EN_A_VS_AN\" msg=\"Use 'a' instead of 'an' if the following word doesn't start with a vowel sound, e.g. 'a sentence', 'a university'\" replacements=\"a\" context=\"This is an test. \" contextoffset=\"8\" errorlength=\"2\"/>") != -1);
-  }
- catch (  ExitException e) {
-    assertEquals("Exit status",1,e.status);
-  }
+  final URL url=this.getClass().getResource(ENGLISH_TEST_FILE);
+  final URI uri=new URI(url.toString());
+  String[] args=new String[]{"-l","en","--api",uri.getPath()};
+  Main.main(args);
+  String output=new String(this.out.toByteArray());
+  assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);
+  assertTrue(output.indexOf("<error fromy=\"0\" fromx=\"8\" toy=\"0\" tox=\"11\" ruleId=\"EN_A_VS_AN\" msg=\"Use 'a' instead of 'an' if the following word doesn't start with a vowel sound, e.g. 'a sentence', 'a university'\" replacements=\"a\" context=\"This is an test. \" contextoffset=\"8\" errorlength=\"2\"/>") != -1);
 }
