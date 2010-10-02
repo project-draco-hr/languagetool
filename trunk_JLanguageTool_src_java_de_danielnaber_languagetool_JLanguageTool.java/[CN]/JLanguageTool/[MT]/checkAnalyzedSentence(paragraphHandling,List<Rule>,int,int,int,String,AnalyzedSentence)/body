@@ -1,0 +1,38 @@
+{
+  final List<RuleMatch> sentenceMatches=new ArrayList<RuleMatch>();
+  for (  final Rule rule : allRules) {
+    if (disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()))) {
+      continue;
+    }
+    if (disabledCategories.contains(rule.getCategory().getName())) {
+      continue;
+    }
+switch (paraMode) {
+case ONLYNONPARA:
+{
+        if (rule.isParagraphBackTrack()) {
+          continue;
+        }
+        break;
+      }
+case ONLYPARA:
+{
+      if (!rule.isParagraphBackTrack()) {
+        continue;
+      }
+      break;
+    }
+case NORMAL:
+default :
+}
+final RuleMatch[] thisMatches=rule.match(analyzedText);
+for (final RuleMatch element1 : thisMatches) {
+  RuleMatch thisMatch=adjustRuleMatchPos(element1,tokenCount,columnCount,lineCount,sentence);
+  sentenceMatches.add(thisMatch);
+  if (rule.isParagraphBackTrack()) {
+    rule.addRuleMatch(thisMatch);
+  }
+}
+}
+return sentenceMatches;
+}

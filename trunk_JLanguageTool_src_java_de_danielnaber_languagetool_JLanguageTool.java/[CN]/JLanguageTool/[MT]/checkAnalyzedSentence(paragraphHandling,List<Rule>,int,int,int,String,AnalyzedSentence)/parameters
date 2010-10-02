@@ -1,0 +1,7 @@
+paragraphHandling paraMode
+List<Rule> allRules
+int tokenCount
+int lineCount
+int columnCount
+String sentence
+AnalyzedSentence analyzedText
