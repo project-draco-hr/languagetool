@@ -7,7 +7,7 @@
     }
     for (int k=index + 1; k < index + next; k++) {
       if (k > index + 1 && tokens[k].isWhitespaceBefore()) {
-        sb.append(" ");
+        sb.append(' ');
       }
       sb.append(tokens[k].getToken());
     }

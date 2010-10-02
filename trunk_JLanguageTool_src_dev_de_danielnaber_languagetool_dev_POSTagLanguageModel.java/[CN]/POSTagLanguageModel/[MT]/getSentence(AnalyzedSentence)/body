@@ -3,7 +3,7 @@
   sb.append("<S>");
   for (  final AnalyzedTokenReadings atr : sent.getTokensWithoutWhitespace()) {
     sb.append(getPOS(atr));
-    sb.append(" ");
+    sb.append(' ');
   }
   sb.append("</S>");
   return sb.toString();

@@ -1,9 +1,9 @@
 {
   final StringBuffer completePath=new StringBuffer(this.getRulesDir());
-  if (!this.getRulesDir().endsWith("/") && !path.startsWith("/")) {
+  if (!this.getRulesDir().endsWith("/") && !(path.charAt(0) == '/')) {
     completePath.append('/');
   }
-  if (this.getRulesDir().endsWith("/") && path.startsWith("/") && path.length() > 1) {
+  if (this.getRulesDir().endsWith("/") && (path.charAt(0) == '/') && path.length() > 1) {
     completePath.append(path.substring(1));
   }
  else {

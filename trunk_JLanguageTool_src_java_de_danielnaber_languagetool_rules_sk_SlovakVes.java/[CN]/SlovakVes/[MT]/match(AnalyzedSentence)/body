@@ -33,7 +33,7 @@
     if (pady && Character.isUpperCase(pomocnik)) {
       tag=true;
     }
-    if (tag && (tag2 == false)) {
+    if (tag && !tag2) {
       if (pady && Character.isLowerCase(pomocnik)) {
         tag2=true;
       }

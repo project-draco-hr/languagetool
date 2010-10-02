@@ -17,7 +17,7 @@
       readingStr.append(token.getAnalyzedToken(j).getToken());
       readingStr.append("/[");
       readingStr.append(token.getAnalyzedToken(j).getLemma());
-      readingStr.append("]");
+      readingStr.append(']');
       readingStr.append(token.getAnalyzedToken(j).getPOSTag());
       readings.add(readingStr.toString());
     }

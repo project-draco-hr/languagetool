@@ -2,17 +2,15 @@
   if (anTokReadings == null) {
     return super.getAnalyzedToken(0).getToken() + "[?]";
   }
- else {
-    final StringBuilder sb=new StringBuilder(super.getAnalyzedToken(0).getToken());
-    final Set<String> elements=new TreeSet<String>();
-    sb.append("[");
-    for (    AnalyzedToken reading : anTokReadings) {
-      if (!elements.contains(reading.toString())) {
-        elements.add(reading.toString());
-      }
+  final StringBuilder sb=new StringBuilder(super.getAnalyzedToken(0).getToken());
+  final Set<String> elements=new TreeSet<String>();
+  sb.append('[');
+  for (  AnalyzedToken reading : anTokReadings) {
+    if (!elements.contains(reading.toString())) {
+      elements.add(reading.toString());
     }
-    sb.append(StringTools.listToString(elements,", "));
-    sb.append("]");
-    return sb.toString();
   }
+  sb.append(StringTools.listToString(elements,", "));
+  sb.append(']');
+  return sb.toString();
 }

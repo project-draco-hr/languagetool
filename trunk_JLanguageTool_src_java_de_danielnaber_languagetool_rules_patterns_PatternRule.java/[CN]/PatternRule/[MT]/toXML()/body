@@ -9,7 +9,7 @@
   sb.append(startPositionCorrection);
   sb.append("\" mark_to=\"");
   sb.append(endPositionCorrection);
-  sb.append("\"");
+  sb.append('"');
   if (!patternElements.isEmpty() && patternElements.get(0).getCaseSensitive()) {
     sb.append(" case_sensitive=\"yes\"");
   }
@@ -25,7 +25,7 @@
     if (patternElement.getPOStag() != null) {
       sb.append(" postag=\"");
       sb.append(patternElement.getPOStag());
-      sb.append("\"");
+      sb.append('"');
     }
     if (patternElement.getPOSNegation()) {
       sb.append(" negate_pos=\"yes\"");
@@ -33,7 +33,7 @@
     if (patternElement.isInflected()) {
       sb.append(" inflected=\"yes\"");
     }
-    sb.append(">");
+    sb.append('>');
     if (patternElement.getString() != null) {
       sb.append(StringTools.escapeXML(patternElement.getString()));
     }

@@ -5,7 +5,7 @@
     if (!atr.isWhitespace()) {
       sb.append(atr.getAnalyzedToken(i).getPOSTag());
       if (i != readNum - 1) {
-        sb.append("+");
+        sb.append('+');
       }
     }
   }

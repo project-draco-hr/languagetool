@@ -38,7 +38,7 @@
         }
         sb.append(lposTag);
         if (l < posTagLen) {
-          sb.append("|");
+          sb.append('|');
         }
       }
       targetPosTag=sb.toString();
