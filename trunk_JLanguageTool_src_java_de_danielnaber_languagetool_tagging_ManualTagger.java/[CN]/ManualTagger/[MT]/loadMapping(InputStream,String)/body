@@ -7,7 +7,7 @@
     br=new BufferedReader(isr);
     String line;
     while ((line=br.readLine()) != null) {
-      if (line.charAt(0) == '#') {
+      if (StringTools.isEmpty(line) || line.charAt(0) == '#') {
         continue;
       }
       final String[] parts=line.split("\t");
