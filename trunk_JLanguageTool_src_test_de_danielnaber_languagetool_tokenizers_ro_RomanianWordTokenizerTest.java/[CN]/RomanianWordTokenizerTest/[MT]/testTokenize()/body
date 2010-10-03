@@ -42,4 +42,13 @@
   testList=w.tokenize("pere|mere");
   assertEquals(testList.size(),3);
   assertEquals("[pere, |, mere]",testList.toString());
+  testList=w.tokenize("pere\nmere");
+  assertEquals(testList.size(),3);
+  assertEquals("[pere, \n, mere]",testList.toString());
+  testList=w.tokenize("pere\rmere");
+  assertEquals(testList.size(),3);
+  assertEquals("[pere, \r, mere]",testList.toString());
+  testList=w.tokenize("pere\n\rmere");
+  assertEquals(testList.size(),4);
+  assertEquals("[pere, \n, \r, mere]",testList.toString());
 }
