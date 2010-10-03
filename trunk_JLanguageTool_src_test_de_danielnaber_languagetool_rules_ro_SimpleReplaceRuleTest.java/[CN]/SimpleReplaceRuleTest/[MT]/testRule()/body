@@ -22,6 +22,7 @@
   checkSimpleReplaceRule("este Aqua Forte.","Acvaforte");
   checkSimpleReplaceRule("este AquA Forte.","Acvaforte");
   checkSimpleReplaceRule("A primit jumate de litru de lapte ??i este aqua forte.","jum??tate","acvaforte");
+  checkSimpleReplaceRule("du-te vino","du-te-vino");
   checkSimpleReplaceRule("cou-boi","cowboy");
   checkSimpleReplaceRule("cow-boy","cowboy");
   checkSimpleReplaceRule("cau-boi","cowboy");
