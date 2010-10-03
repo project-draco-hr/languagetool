@@ -39,5 +39,9 @@
       isr.close();
     }
   }
-  return list;
+  List<Map<String,String>> result=new ArrayList<Map<String,String>>();
+  for (  Map<String,String> map : list) {
+    result.add(Collections.unmodifiableMap(map));
+  }
+  return Collections.unmodifiableList(result);
 }
