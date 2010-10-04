@@ -20,7 +20,7 @@
         final int expectedMatchStart=example.getExample().indexOf("<marker>");
         final int expectedMatchEnd=example.getExample().indexOf("</marker>") - "<marker>".length();
         if (expectedMatchStart == -1 || expectedMatchEnd == -1) {
-          fail(lang + ": No error position markup ('<marker>...</marker>') in bad example in rule " + rule);
+          fail(lang + ": No position markup ('<marker>...</marker>') in disambiguated example in rule " + rule);
         }
         final String inputForms=example.getAmbiguous();
         assertTrue("No input form found for: " + id,inputForms != null);
