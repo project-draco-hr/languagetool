@@ -1,22 +1,4 @@
 {
-  final String wordsNotTagged[]={"ne","nek","pli","malpli","ol","ju","des"};
-  final Set setWordsNotTagged=new HashSet<String>(Arrays.asList(wordsNotTagged));
-  final String prepositionsNoAccusative[]={"al","anstata??","apud","cis","da","de","dum","el","far","??is","je","kontra??","krom","kun","la??","malgra??","na","per","po","post","por","pri","pro","sen","super","tra"};
-  final Set setPrepositionsNoAccusative=new HashSet<String>(Arrays.asList(prepositionsNoAccusative));
-  final String prepositionsAccusative[]={"en","sur","sub","trans","preter","??irka??","anta??","ekster","inter","??e"};
-  final Set setPrepositionsAccusative=new HashSet<String>(Arrays.asList(prepositionsAccusative));
-  final String conjunctions[]={"??ar","kaj","a??","sed","plus","minus","tamen"};
-  final Set setConjunctions=new HashSet<String>(Arrays.asList(conjunctions));
-  final String numbers[]={"nul","unu","du","tri","kvar","kvin","ses","sep","ok","na??","dek","cent","mil"};
-  final Set setNumbers=new HashSet<String>(Arrays.asList(numbers));
-  final String adverbs[]={"ankora??","almena??","apena??","balda??","preska??","e??","jam","jen","??us","morga??","hodia??","hiera??","nun","nur","plu","tre","tro","tuj","for"};
-  final Set setAdverbs=new HashSet<String>(Arrays.asList(adverbs));
-  final Pattern patternVerb1=Pattern.compile("(.*)(as|os|is|us|u|i)$");
-  final Pattern patternVerb2=Pattern.compile(".*(ig|i??)(.s|.)$");
-  final String ntrVerbs[]={"abort","abstin","ag","agoni","a??i","akord","altern","aparten","apelaci","aper","aspekt","at","atut","a??dac","aviad","balot","bankrot","barakt","batal","bicikl","blasfem","blek","blov","boj","boks","bol","bril","brokant","bru","brul","cirkul","da??r","degel","dron","eksplod","est","evolu","fal","grimp","halt","ir","koler","kresk","krev","labor","mir","odor","okaz","parol","pend","porol","rid","sid","star","velk","ven","vetur","zorg","??es","??oj","??pruc","??rump","??vel"};
-  final Set setNtrVerbs=new HashSet<String>(Arrays.asList(ntrVerbs));
-  final String trVerbs[]={"balanc","ban","bonven","bukl","dezir","difin","dolor","du??","enhav","etend","far","fend","ferm","fin","fleks","forges","hav","interes","ka??","kirl","klin","kolekt","komenc","komplik","komunik","konduk","korekt","lav","lig","lud","man??","memor","mov","mezur","miks","mov","nask","na??z","pag","parol","pa??t","pes","perd","profit","renkont","renvers","romp","rul","sci","send","sent","sku","spekt","stre??","sufok","sving","ted","tim","tir","tord","tran??","translok","tren","turn","uz","vek","vend","ven??","ver??","vest","vid","vind","vol","volv","??ancel","??an??","??los","??ir","??ut"};
-  final Set setTrVerbs=new HashSet<String>(Arrays.asList(trVerbs));
   final Pattern patternParticip=Pattern.compile("(.*)([aio])(n?)t([aoe])(j?)(n?)");
   final Pattern patternTabelvorto=Pattern.compile("^(i|ti|ki|??i|neni)((([uoae])(j?)(n?))|(am|al|es|el|om))$");
   Matcher matcher;
@@ -24,64 +6,64 @@
   int pos=0;
   for (  String word : sentenceTokens) {
     final List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
-    final String lword=word.toLowerCase();
-    if (lword.equals(".")) {
+    final String lWord=word.toLowerCase();
+    if (lWord.equals(".")) {
       l.add(new AnalyzedToken(word,"M fino",null));
     }
- else     if (lword.equals("?")) {
+ else     if (lWord.equals("?")) {
       l.add(new AnalyzedToken(word,"M fino dem",null));
     }
- else     if (lword.equals("!")) {
+ else     if (lWord.equals("!")) {
       l.add(new AnalyzedToken(word,"M fino kri",null));
     }
- else     if (lword.equals("la")) {
+ else     if (lWord.equals("la")) {
       l.add(new AnalyzedToken(word,"D",null));
     }
- else     if (setAdverbs.contains(lword)) {
+ else     if (setAdverbs.contains(lWord)) {
       l.add(new AnalyzedToken(word,"E nak",null));
     }
- else     if (setWordsNotTagged.contains(lword)) {
+ else     if (setWordsNotTagged.contains(lWord)) {
       l.add(new AnalyzedToken(word,null,null));
     }
- else     if (lword.equals("mi") || lword.equals("ci") || lword.equals("li")|| lword.equals("??i")|| lword.equals("oni")) {
+ else     if (lWord.equals("mi") || lWord.equals("ci") || lWord.equals("li")|| lWord.equals("??i")|| lWord.equals("oni")) {
       l.add(new AnalyzedToken(word,"R nak np",null));
     }
- else     if (lword.equals("min") || lword.equals("cin") || lword.equals("lin")|| lword.equals("??in")) {
+ else     if (lWord.equals("min") || lWord.equals("cin") || lWord.equals("lin")|| lWord.equals("??in")) {
       l.add(new AnalyzedToken(word,"R akz np",null));
     }
- else     if (lword.equals("ni") || lword.equals("ili")) {
+ else     if (lWord.equals("ni") || lWord.equals("ili")) {
       l.add(new AnalyzedToken(word,"R nak pl",null));
     }
- else     if (lword.equals("nin") || lword.equals("ilin")) {
+ else     if (lWord.equals("nin") || lWord.equals("ilin")) {
       l.add(new AnalyzedToken(word,"R akz pl",null));
     }
- else     if (lword.equals("vi")) {
+ else     if (lWord.equals("vi")) {
       l.add(new AnalyzedToken(word,"R nak pn",null));
     }
- else     if (lword.equals("vin")) {
+ else     if (lWord.equals("vin")) {
       l.add(new AnalyzedToken(word,"R akz pn",null));
     }
- else     if (setConjunctions.contains(lword)) {
+ else     if (setConjunctions.contains(lWord)) {
       l.add(new AnalyzedToken(word,"K",null));
     }
- else     if (setPrepositionsNoAccusative.contains(lword)) {
+ else     if (setPrepositionsNoAccusative.contains(lWord)) {
       l.add(new AnalyzedToken(word,"P sak",null));
     }
- else     if (setPrepositionsAccusative.contains(lword)) {
+ else     if (setPrepositionsAccusative.contains(lWord)) {
       l.add(new AnalyzedToken(word,"P kak",null));
     }
- else     if (setNumbers.contains(lword)) {
+ else     if (setNumbers.contains(lWord)) {
       l.add(new AnalyzedToken(word,"B",null));
     }
- else     if ((matcher=patternTabelvorto.matcher(lword)).find()) {
-      String type1Group=matcher.group(1).substring(0,1).toLowerCase();
-      String type2Group=matcher.group(4);
-      String plGroup=matcher.group(5);
-      String accGroup=matcher.group(6);
-      String type3Group=matcher.group(7);
-      String type;
-      String plural;
-      String accusative;
+ else     if ((matcher=patternTabelvorto.matcher(lWord)).find()) {
+      final String type1Group=matcher.group(1).substring(0,1).toLowerCase();
+      final String type2Group=matcher.group(4);
+      final String plGroup=matcher.group(5);
+      final String accGroup=matcher.group(6);
+      final String type3Group=matcher.group(7);
+      final String type;
+      final String plural;
+      final String accusative;
       if (accGroup == null) {
         accusative="xxx";
       }
@@ -97,47 +79,47 @@
       type=((type2Group == null) ? type3Group : type2Group).toLowerCase();
       l.add(new AnalyzedToken(word,"T " + accusative + plural+ type1Group+ " "+ type,null));
     }
- else     if (lword.endsWith("o")) {
+ else     if (lWord.endsWith("o")) {
       l.add(new AnalyzedToken(word,"O nak np",null));
     }
- else     if (lword.endsWith("oj")) {
+ else     if (lWord.endsWith("oj")) {
       l.add(new AnalyzedToken(word,"O nak pl",null));
     }
- else     if (lword.endsWith("on")) {
+ else     if (lWord.endsWith("on")) {
       l.add(new AnalyzedToken(word,"O akz np",null));
     }
- else     if (lword.endsWith("ojn")) {
+ else     if (lWord.endsWith("ojn")) {
       l.add(new AnalyzedToken(word,"O akz pl",null));
     }
- else     if (lword.endsWith("a")) {
+ else     if (lWord.endsWith("a")) {
       l.add(new AnalyzedToken(word,"A nak np",null));
     }
- else     if (lword.endsWith("aj")) {
+ else     if (lWord.endsWith("aj")) {
       l.add(new AnalyzedToken(word,"A nak pl",null));
     }
- else     if (lword.endsWith("an")) {
+ else     if (lWord.endsWith("an")) {
       l.add(new AnalyzedToken(word,"A akz np",null));
     }
- else     if (lword.endsWith("ajn")) {
+ else     if (lWord.endsWith("ajn")) {
       l.add(new AnalyzedToken(word,"A akz pl",null));
     }
- else     if (lword.endsWith("e")) {
+ else     if (lWord.endsWith("e")) {
       l.add(new AnalyzedToken(word,"E nak",null));
     }
- else     if (lword.endsWith("en")) {
+ else     if (lWord.endsWith("en")) {
       l.add(new AnalyzedToken(word,"E akz",null));
     }
- else     if ((matcher=patternVerb1.matcher(lword)).find()) {
-      String tense=matcher.group(2);
-      String transitive;
-      Matcher matcher2=patternVerb2.matcher(lword);
+ else     if ((matcher=patternVerb1.matcher(lWord)).find()) {
+      final String tense=matcher.group(2);
+      final String transitive;
+      final Matcher matcher2=patternVerb2.matcher(lWord);
       if (matcher2.find()) {
         transitive=matcher2.group(1).equals("ig") ? "tr" : "nt";
       }
  else {
-        String verb=matcher.group(1);
-        boolean isTransitive=setTrVerbs.contains(verb);
-        boolean isIntransitive=setNtrVerbs.contains(verb);
+        final String verb=matcher.group(1);
+        final boolean isTransitive=setTrVerbs.contains(verb);
+        final boolean isIntransitive=setNtrVerbs.contains(verb);
         if (isTransitive) {
           transitive=isIntransitive ? "tn" : "tr";
         }
