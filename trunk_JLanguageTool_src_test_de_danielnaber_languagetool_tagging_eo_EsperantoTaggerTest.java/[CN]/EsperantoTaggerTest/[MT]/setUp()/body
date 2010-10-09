@@ -1,0 +1,4 @@
+{
+  tagger=new EsperantoTagger();
+  tokenizer=new WordTokenizer();
+}

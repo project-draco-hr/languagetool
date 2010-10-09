@@ -1,0 +1,3 @@
+{
+  TestTools.myAssert("Tio estas simpla testo","Tio/[null]T nak np t o -- estas/[est]V nt as -- simpla/[simpl]A nak np -- testo/[test]O nak np",tokenizer,tagger);
+}
