@@ -1,6 +1,5 @@
 {
-  final Pattern patternParticip=Pattern.compile("(.*)([aio])(n?)t([aoe])(j?)(n?)");
-  final Pattern patternTabelvorto=Pattern.compile("^(i|ti|ki|??i|neni)((([uoae])(j?)(n?))|(am|al|es|el|om))$");
+  lazyInit();
   Matcher matcher;
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
@@ -28,7 +27,7 @@
  else     if (lWord.equals("mi") || lWord.equals("ci") || lWord.equals("li")|| lWord.equals("??i")|| lWord.equals("oni")) {
       l.add(new AnalyzedToken(word,"R nak np",lWord));
     }
- else     if (lWord.equals("min") || lWord.equals("cin") || lWord.equals("lin")|| lWord.equals("??in")) {
+ else     if (lWord.equals("min") || lWord.equals("cin") || lWord.equals("lin")|| lWord.equals("??in")|| lWord.equals("sin")) {
       l.add(new AnalyzedToken(word,"R akz np",lWord.substring(0,lWord.length() - 1)));
     }
  else     if (lWord.equals("ni") || lWord.equals("ili")) {
@@ -80,37 +79,37 @@
       l.add(new AnalyzedToken(word,"T " + accusative + plural+ type1Group+ " "+ type,null));
     }
  else     if (lWord.endsWith("o")) {
-      l.add(new AnalyzedToken(word,"O nak np",lWord.substring(0,lWord.length() - 1)));
+      l.add(new AnalyzedToken(word,"O nak np",lWord));
     }
  else     if (lWord.endsWith("oj")) {
-      l.add(new AnalyzedToken(word,"O nak pl",lWord.substring(0,lWord.length() - 2)));
+      l.add(new AnalyzedToken(word,"O nak pl",lWord.substring(0,lWord.length() - 1)));
     }
  else     if (lWord.endsWith("on")) {
-      l.add(new AnalyzedToken(word,"O akz np",lWord.substring(0,lWord.length() - 2)));
+      l.add(new AnalyzedToken(word,"O akz np",lWord.substring(0,lWord.length() - 1)));
     }
  else     if (lWord.endsWith("ojn")) {
-      l.add(new AnalyzedToken(word,"O akz pl",lWord.substring(0,lWord.length() - 3)));
+      l.add(new AnalyzedToken(word,"O akz pl",lWord.substring(0,lWord.length() - 2)));
     }
  else     if (lWord.endsWith("a")) {
-      l.add(new AnalyzedToken(word,"A nak np",lWord.substring(0,lWord.length() - 1)));
+      l.add(new AnalyzedToken(word,"A nak np",lWord));
     }
  else     if (lWord.endsWith("aj")) {
-      l.add(new AnalyzedToken(word,"A nak pl",lWord.substring(0,lWord.length() - 2)));
+      l.add(new AnalyzedToken(word,"A nak pl",lWord.substring(0,lWord.length() - 1)));
     }
  else     if (lWord.endsWith("an")) {
-      l.add(new AnalyzedToken(word,"A akz np",lWord.substring(0,lWord.length() - 2)));
+      l.add(new AnalyzedToken(word,"A akz np",lWord.substring(0,lWord.length() - 1)));
     }
  else     if (lWord.endsWith("ajn")) {
-      l.add(new AnalyzedToken(word,"A akz pl",lWord.substring(0,lWord.length() - 3)));
+      l.add(new AnalyzedToken(word,"A akz pl",lWord.substring(0,lWord.length() - 2)));
     }
  else     if (lWord.endsWith("e")) {
-      l.add(new AnalyzedToken(word,"E nak",lWord.substring(0,lWord.length() - 1)));
+      l.add(new AnalyzedToken(word,"E nak",lWord));
     }
  else     if (lWord.endsWith("en")) {
-      l.add(new AnalyzedToken(word,"E akz",lWord.substring(0,lWord.length() - 2)));
+      l.add(new AnalyzedToken(word,"E akz",lWord.substring(0,lWord.length() - 1)));
     }
  else     if ((matcher=patternVerb1.matcher(lWord)).find()) {
-      final String verb=matcher.group(1);
+      final String verb=matcher.group(1) + "i";
       final String tense=matcher.group(2);
       final String transitive;
       final Matcher matcher2=patternVerb2.matcher(lWord);
@@ -118,8 +117,8 @@
         transitive=matcher2.group(1).equals("ig") ? "tr" : "nt";
       }
  else {
-        final boolean isTransitive=setTrVerbs.contains(verb);
-        final boolean isIntransitive=setNtrVerbs.contains(verb);
+        final boolean isTransitive=setTransitiveVerbs.contains(verb);
+        final boolean isIntransitive=setNonTransitiveVerbs.contains(verb);
         if (isTransitive) {
           transitive=isIntransitive ? "tn" : "tr";
         }

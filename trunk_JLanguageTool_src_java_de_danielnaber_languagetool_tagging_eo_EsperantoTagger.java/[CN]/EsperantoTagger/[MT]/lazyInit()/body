@@ -1,0 +1,7 @@
+{
+  if (setTransitiveVerbs != null) {
+    return;
+  }
+  setTransitiveVerbs=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream("/eo/verb-tr.txt"));
+  setNonTransitiveVerbs=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream("/eo/verb-ntr.txt"));
+}
