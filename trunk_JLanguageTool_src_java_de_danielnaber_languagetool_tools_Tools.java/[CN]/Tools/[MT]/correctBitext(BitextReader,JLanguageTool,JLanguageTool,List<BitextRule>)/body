@@ -1,0 +1,17 @@
+{
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  for (  StringPair srcAndTrg : reader) {
+    final List<RuleMatch> curMatches=checkBitext(srcAndTrg.getSource(),srcAndTrg.getTarget(),srcLt,trgLt,bRules);
+    final List<RuleMatch> fixedMatches=new ArrayList<RuleMatch>();
+    for (    RuleMatch thisMatch : curMatches) {
+      fixedMatches.add(trgLt.adjustRuleMatchPos(thisMatch,0,reader.getTargetColumnCount(),reader.getLineCount(),reader.getCurrentLine()));
+    }
+    ruleMatches.addAll(fixedMatches);
+    if (fixedMatches.size() > 0) {
+      System.out.println(correctTextFromMatches(srcAndTrg.getTarget(),fixedMatches));
+    }
+ else {
+      System.out.println(srcAndTrg.getTarget());
+    }
+  }
+}

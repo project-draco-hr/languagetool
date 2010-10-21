@@ -1,0 +1,11 @@
+{
+  File input=File.createTempFile("input","txt");
+  input.deleteOnExit();
+  PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(input),"UTF-8"));
+  w.println("There is a dog.\tNie ma psa.");
+  w.close();
+  String[] args=new String[]{"-l","pl","--bitext","-m","en","--apply",input.getAbsolutePath()};
+  Main.main(args);
+  String output=new String(this.out.toByteArray());
+  assertTrue(output.startsWith("Istnieje psa."));
+}

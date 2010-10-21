@@ -7,7 +7,12 @@
   if (oneTime) {
     if (bitextMode) {
       TabBitextReader reader=new TabBitextReader(filename,encoding);
-      Tools.checkBitext(reader,srcLt,lt,bRules,apiFormat);
+      if (applySuggestions) {
+        Tools.correctBitext(reader,srcLt,lt,bRules);
+      }
+ else {
+        Tools.checkBitext(reader,srcLt,lt,bRules,apiFormat);
+      }
     }
  else {
       final String text=getFilteredText(filename,encoding);
