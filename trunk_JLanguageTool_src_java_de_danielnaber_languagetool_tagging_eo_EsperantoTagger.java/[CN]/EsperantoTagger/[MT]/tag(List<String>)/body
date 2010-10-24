@@ -24,7 +24,7 @@
  else     if (setWordsNotTagged.contains(lWord)) {
       l.add(new AnalyzedToken(word,null,lWord));
     }
- else     if (lWord.equals("mi") || lWord.equals("ci") || lWord.equals("li")|| lWord.equals("??i")|| lWord.equals("??i")|| lWord.equals("oni")) {
+ else     if (lWord.equals("mi") || lWord.equals("ci") || lWord.equals("li")|| lWord.equals("??i")|| lWord.equals("??i")|| lWord.equals("si")|| lWord.equals("oni")) {
       l.add(new AnalyzedToken(word,"R nak np",lWord));
     }
  else     if (lWord.equals("min") || lWord.equals("cin") || lWord.equals("lin")|| lWord.equals("??in")|| lWord.equals("??in")|| lWord.equals("sin")) {
