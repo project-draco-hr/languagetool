@@ -11,6 +11,16 @@
   if (element.isInflected() && "".equals(element.getString())) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains element "+ "\""+ element+ "\" that is marked as inflected"+ " but is empty, so the attribute is redundant.");
   }
+  if (element.isRegularExpression() && !element.getCaseSensitive()) {
+    Matcher matcher=CASE_REGEX.matcher(element.getString());
+    if (matcher.find()) {
+      final String letter1=matcher.group(1);
+      final String letter2=matcher.group(2);
+      if (!letter1.equals(letter2) && letter1.toLowerCase().equals(letter2.toLowerCase())) {
+        System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains regexp part ["+ letter1+ letter2+ "] which is useless without case_sensitive=\"yes\".");
+      }
+    }
+  }
   if (element.isRegularExpression() && element.getString().contains("|")) {
     final String[] groups=element.getString().split("\\)");
     final boolean caseSensitive=element.getCaseSensitive();
