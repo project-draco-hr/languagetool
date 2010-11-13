@@ -1,5 +1,5 @@
 {
-  TestTools.myAssert("To jest du??y dom.","To/[ten]adj:sg:nom.acc.voc:n:pos|To/[to]conj -- jest/[by??]verb:fin:sg:ter:imperf -- du??y/[du??y]adj:sg:nom.acc:m3:pos:aff|du??y/[du??y]adj:sg:nom.voc:m1.m2:pos:aff -- dom/[dom]subst:sg:nom.acc:m3",tokenizer,tagger);
+  TestTools.myAssert("To jest du??y dom.","To/[ten]adj:sg:acc.nom.voc:n:pos|To/[to]conj -- jest/[by??]verb:fin:sg:ter:imperf -- du??y/[du??y]adj:sg:acc:m3:pos:aff|du??y/[du??y]adj:sg:nom:m:pos:aff|du??y/[du??y]adj:sg:voc:m1.m2:pos:aff -- dom/[dom]subst:sg:acc.nom:m3",tokenizer,tagger);
   TestTools.myAssert("Krowa pasie si?? na pastwisku.","Krowa/[krowa]subst:sg:nom:f -- pasie/[pas]subst:sg:loc.voc:m3 -- si??/[siebie]qub -- na/[na]prep:acc.loc -- pastwisku/[pastwisko]subst:sg:dat.loc:n",tokenizer,tagger);
   TestTools.myAssert("blablabla","blablabla/[null]null",tokenizer,tagger);
 }

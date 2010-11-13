@@ -3,10 +3,10 @@
   assertEquals(synth.synthesize(dummyToken("blablabla"),"blablabla").length,0);
   assertEquals("[Aaru]",Arrays.toString(synth.synthesize(dummyToken("Aar"),"subst:sg:gen:m3")));
   assertEquals("[Abchazem]",Arrays.toString(synth.synthesize(dummyToken("Abchaz"),"subst:sg:inst:m1")));
-  assertEquals("[niedu??y]",Arrays.toString(synth.synthesize(dummyToken("du??y"),"adj:sg:nom.voc:m1.m2:pos:neg")));
+  assertEquals("[niedu??y]",Arrays.toString(synth.synthesize(dummyToken("du??y"),"adj:sg:nom:m:pos:neg")));
   assertEquals("[mia??a]",Arrays.toString(synth.synthesize(dummyToken("mie??"),"verb:praet:sg:ter:f:perf")));
   assertEquals("[brzydziej]",Arrays.toString(synth.synthesize(dummyToken("brzydko"),"adv:comp")));
   assertEquals("[tonera]",Arrays.toString(synth.synthesize(dummyToken("toner"),".*sg.*[\\.:]gen.*",true)));
-  assertEquals("[niedu??ego, niedu??emu, niedu??ym, niedu??y, niedu??y]",Arrays.toString(synth.synthesize(dummyToken("du??y"),"adj:sg.*(m[0-9]?|m.n):pos:neg",true)));
+  assertEquals("[niedu??ego, niedu??y, niedu??emu, niedu??ego, niedu??ym, niedu??y, niedu??y]",Arrays.toString(synth.synthesize(dummyToken("du??y"),"adj:sg.*(m[0-9]?|m.n):pos:neg",true)));
   assertEquals("[mia??abym, mia??bym, mia??aby??, mia??by??, mia??aby, mia??by, mia??oby, mia??am, mia??em, mia??a??, mia??e??, mia??a, mia??, mia??o]",Arrays.toString(synth.synthesize(dummyToken("mie??"),".*praet:sg.*",true)));
 }
