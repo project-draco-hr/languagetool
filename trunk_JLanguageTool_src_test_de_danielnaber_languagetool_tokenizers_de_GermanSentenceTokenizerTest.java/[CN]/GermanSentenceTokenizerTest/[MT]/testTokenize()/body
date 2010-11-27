@@ -36,4 +36,6 @@
   testSplit(new String[]{"??Der Papagei ist gr??n??, sagte er"});
   testSplit(new String[]{"Das war es: gar nichts."});
   testSplit(new String[]{"Das war es: Dies ist ein neuer Satz."});
+  testSplit(new String[]{"Hier ist foo. ","keine Abk. im Text."},stokenizer);
+  testSplit(new String[]{"Hier ist foo. eine Abk. im Text."},stokenizer3);
 }
