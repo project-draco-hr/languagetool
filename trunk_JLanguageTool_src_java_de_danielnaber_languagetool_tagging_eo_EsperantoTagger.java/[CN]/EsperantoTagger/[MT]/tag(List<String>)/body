@@ -77,6 +77,9 @@
       }
       type=((type2Group == null) ? type3Group : type2Group).toLowerCase();
       l.add(new AnalyzedToken(word,"T " + accusative + plural+ type1Group+ " "+ type,null));
+      if ((matcher=patternTabelvortoAdverb.matcher(lWord)).find()) {
+        l.add(new AnalyzedToken(word,"E nak",lWord));
+      }
     }
  else     if (lWord.endsWith("o")) {
       l.add(new AnalyzedToken(word,"O nak np",lWord));
