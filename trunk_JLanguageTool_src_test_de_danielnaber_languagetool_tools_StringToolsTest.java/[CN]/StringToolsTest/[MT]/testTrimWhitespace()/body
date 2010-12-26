@@ -1,0 +1,12 @@
+{
+  try {
+    assertEquals(null,StringTools.trimWhitespace(null));
+    fail();
+  }
+ catch (  NullPointerException e) {
+  }
+  assertEquals("",StringTools.trimWhitespace(""));
+  assertEquals("",StringTools.trimWhitespace(" "));
+  assertEquals("XXY",StringTools.trimWhitespace(" \nXX\t Y"));
+  assertEquals("word",StringTools.trimWhitespace("word"));
+}

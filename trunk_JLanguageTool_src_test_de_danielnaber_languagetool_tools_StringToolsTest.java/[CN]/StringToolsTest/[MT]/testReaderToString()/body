@@ -1,0 +1,12 @@
+{
+  final String str=StringTools.readerToString(new StringReader("bla\n??????"));
+  assertEquals("bla\n??????",str);
+  final StringBuilder longStr=new StringBuilder();
+  for (int i=0; i < 4000; i++) {
+    longStr.append("x");
+  }
+  longStr.append("1234567");
+  assertEquals(4007,longStr.length());
+  final String str2=StringTools.readerToString(new StringReader(longStr.toString()));
+  assertEquals(longStr.toString(),str2);
+}

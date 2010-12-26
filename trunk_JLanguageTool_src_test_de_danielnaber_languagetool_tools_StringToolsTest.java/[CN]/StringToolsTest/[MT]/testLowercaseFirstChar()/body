@@ -1,0 +1,10 @@
+{
+  assertEquals("",StringTools.lowercaseFirstChar(""));
+  assertEquals("a",StringTools.lowercaseFirstChar("A"));
+  assertEquals("??????",StringTools.lowercaseFirstChar("??????"));
+  assertEquals("??a",StringTools.lowercaseFirstChar("??a"));
+  assertEquals("'test'",StringTools.lowercaseFirstChar("'Test'"));
+  assertEquals("''test",StringTools.lowercaseFirstChar("''Test"));
+  assertEquals("''t",StringTools.lowercaseFirstChar("''T"));
+  assertEquals("'''",StringTools.lowercaseFirstChar("'''"));
+}

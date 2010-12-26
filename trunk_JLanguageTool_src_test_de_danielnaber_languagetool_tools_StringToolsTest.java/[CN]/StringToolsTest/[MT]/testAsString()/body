@@ -1,0 +1,4 @@
+{
+  assertNull(StringTools.asString(null));
+  assertEquals("foo!","foo!");
+}
