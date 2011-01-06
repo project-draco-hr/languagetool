@@ -1,6 +1,6 @@
 {
-  JLanguageTool langTool;
-  List<RuleMatch> matches=null;
+  final JLanguageTool langTool;
+  List<RuleMatch> matches;
   langTool=new JLanguageTool(Language.GERMAN);
   matches=langTool.check("Das ist aufw??ndig. Aber hallo. Es ist wirklich aufw??ndig.");
   assertEquals(0,matches.size());
@@ -17,5 +17,7 @@
   matches=langTool.check("Das ist das aufw??ndigste. Aber hallo. Es ist wirklich aufwendiger als...");
   assertEquals(1,matches.size());
   matches=langTool.check("Das ist das aufw??ndigste. Aber hallo. Es ist wirklich aufwendig.");
+  assertEquals(1,matches.size());
+  matches=langTool.check("Das ist das aufw??ndigste.\n\nAber hallo. Es ist wirklich aufwendig.");
   assertEquals(1,matches.size());
 }
