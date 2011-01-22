@@ -1,6 +1,0 @@
-{
-  final String[] suggArray={"blah blah","foo bar"};
-  assertEquals("This is how you should write: <suggestion>blah blah</suggestion>, <suggestion>foo bar</suggestion>.",callFormatMultipleSynthesis(suggArray,"This is how you should write: <suggestion>","</suggestion>."));
-  final String[] suggArray2={"test"," "};
-  assertEquals("This is how you should write: <suggestion>test</suggestion>, <suggestion> </suggestion>.",callFormatMultipleSynthesis(suggArray2,"This is how you should write: <suggestion>","</suggestion>."));
-}

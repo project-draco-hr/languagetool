@@ -1,8 +1,7 @@
 {
-  final PatternRuleTest prt=new PatternRuleTest();
+  final PatternRuleTest test=new PatternRuleTest();
   System.out.println("Running XML pattern tests...");
-  prt.setUp();
-  final Set<Language> ignoredLanguages=new HashSet<Language>();
-  prt.testGrammarRulesFromXML(ignoredLanguages,true);
-  System.out.println("Tests successful.");
+  test.setUp();
+  test.testGrammarRulesFromXML();
+  System.out.println("Tests finished.");
 }

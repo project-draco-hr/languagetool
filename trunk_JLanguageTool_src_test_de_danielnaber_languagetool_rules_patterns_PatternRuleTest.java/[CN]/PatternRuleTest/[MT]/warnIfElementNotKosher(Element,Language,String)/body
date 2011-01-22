@@ -1,18 +1,18 @@
 {
-  if (!element.isRegularExpression() && (PROBABLE_REGEX.matcher(element.getString()).find())) {
+  if (!element.isRegularExpression() && (PROBABLE_PATTERN.matcher(element.getString()).find())) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains element "+ "\""+ element+ "\" that is not marked as regular expression"+ " but probably is one.");
   }
   if (element.isRegularExpression() && "".equals(element.getString())) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains an empty string element "+ "\""+ element+ "\" that is marked as regular expression (don't look at the POS tag, it might be OK).");
   }
- else   if (element.isRegularExpression() && !PROBABLE_REGEX.matcher(element.getString()).find()) {
+ else   if (element.isRegularExpression() && !PROBABLE_PATTERN.matcher(element.getString()).find()) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains element "+ "\""+ element+ "\" that is marked as regular expression"+ " but probably is not one.");
   }
   if (element.isInflected() && "".equals(element.getString())) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains element "+ "\""+ element+ "\" that is marked as inflected"+ " but is empty, so the attribute is redundant.");
   }
   if (element.isRegularExpression() && !element.getCaseSensitive()) {
-    Matcher matcher=CASE_REGEX.matcher(element.getString());
+    final Matcher matcher=CASE_PATTERN.matcher(element.getString());
     if (matcher.find()) {
       final String letter1=matcher.group(1);
       final String letter2=matcher.group(2);
@@ -29,7 +29,7 @@
       final Set<String> partSet=new HashSet<String>();
       final Set<String> partSetNoCase=new HashSet<String>();
       for (      String part : alt) {
-        String partNoCase=caseSensitive ? part : part.toLowerCase();
+        final String partNoCase=caseSensitive ? part : part.toLowerCase();
         if (partSetNoCase.contains(partNoCase)) {
           if (partSet.contains(part)) {
             System.err.println("The " + lang.toString() + " rule : "+ ruleId+ " contains duplicated disjunction part ("+ part+ ") within the element "+ "\""+ element+ "\".");

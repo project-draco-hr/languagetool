@@ -11,7 +11,7 @@
     }
     final List<IncorrectExample> badSentences=rule.getIncorrectExamples();
     for (    IncorrectExample origBadExample : badSentences) {
-      String origBadSentence=origBadExample.getExample().replaceAll("[\\n\\t]+","");
+      final String origBadSentence=origBadExample.getExample().replaceAll("[\\n\\t]+","");
       final List<String> suggestedCorrection=origBadExample.getCorrections();
       final int expectedMatchStart=origBadSentence.indexOf("<marker>");
       final int expectedMatchEnd=origBadSentence.indexOf("</marker>") - "<marker>".length();
