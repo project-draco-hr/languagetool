@@ -5,7 +5,7 @@
     final JLanguageTool languageTool=new JLanguageTool(lang);
     final String name="/" + lang.getShortName() + "/grammar.xml";
     final List<PatternRule> rules=ruleLoader.getRules(JLanguageTool.getDataBroker().getFromRulesDirAsStream(name),name);
-    warnIfRegexpSyntax(rules,lang);
+    warnIfRegexpSyntaxNotKosher(rules,lang);
     testGrammarRulesFromXML(rules,languageTool,lang);
   }
 }

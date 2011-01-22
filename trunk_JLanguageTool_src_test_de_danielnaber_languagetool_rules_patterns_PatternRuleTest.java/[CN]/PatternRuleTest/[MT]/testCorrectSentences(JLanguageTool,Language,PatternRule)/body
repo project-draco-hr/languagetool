@@ -1,0 +1,9 @@
+{
+  final List<String> goodSentences=rule.getCorrectExamples();
+  for (  String goodSentence : goodSentences) {
+    goodSentence=goodSentence.replaceAll("[\\n\\t]+","");
+    goodSentence=cleanXML(goodSentence);
+    assertTrue(goodSentence.trim().length() > 0);
+    assertFalse(lang + ": Did not expect error in: " + goodSentence+ " (Rule: "+ rule+ ")",match(rule,goodSentence,languageTool));
+  }
+}

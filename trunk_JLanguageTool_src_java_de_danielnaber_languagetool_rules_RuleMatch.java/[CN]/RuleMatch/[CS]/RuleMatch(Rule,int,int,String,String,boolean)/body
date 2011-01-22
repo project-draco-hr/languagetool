@@ -8,8 +8,10 @@
   int pos=0;
   while (matcher.find(pos)) {
     pos=matcher.end();
-    String repl=matcher.group(1);
-    if (startWithUppercase)     repl=StringTools.uppercaseFirstChar(repl);
-    suggestedReplacements.add(repl);
+    String replacement=matcher.group(1);
+    if (startWithUppercase) {
+      replacement=StringTools.uppercaseFirstChar(replacement);
+    }
+    suggestedReplacements.add(replacement);
   }
 }

@@ -1,10 +1,10 @@
 {
-  final List<Element> elems=new ArrayList<Element>();
+  final List<Element> elements=new ArrayList<Element>();
   final String[] parts=s.split(" ");
   boolean pos=false;
-  Element se=null;
+  Element se;
   for (  final String element : parts) {
-    if (element.equals("SENT_START")) {
+    if (element.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
       pos=true;
     }
     if (!pos) {
@@ -16,9 +16,9 @@
     if (pos) {
       se.setPosElement(element,false,false);
     }
-    elems.add(se);
+    elements.add(se);
     pos=false;
   }
-  final PatternRule rule=new PatternRule("ID1",Language.ENGLISH,elems,"test rule","user visible message","short comment");
+  final PatternRule rule=new PatternRule("ID1",Language.ENGLISH,elements,"test rule","user visible message","short comment");
   return rule;
 }
