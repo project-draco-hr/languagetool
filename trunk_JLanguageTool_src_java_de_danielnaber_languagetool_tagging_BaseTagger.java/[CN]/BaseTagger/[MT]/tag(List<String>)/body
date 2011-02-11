@@ -4,15 +4,15 @@
   List<AnalyzedToken> upperTaggerTokens;
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
-  if (morfologik == null) {
+  if (dictLookup == null) {
     final URL url=this.getClass().getResource(getFileName());
-    morfologik=new DictionaryLookup(Dictionary.read(url));
+    dictLookup=new DictionaryLookup(Dictionary.read(url));
   }
   for (  String word : sentenceTokens) {
     final List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
     final String lowerWord=word.toLowerCase(conversionLocale);
-    taggerTokens=asAnalyzedTokenList(word,morfologik.lookup(word));
-    lowerTaggerTokens=asAnalyzedTokenList(word,morfologik.lookup(lowerWord));
+    taggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(word));
+    lowerTaggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(lowerWord));
     final boolean isLowercase=word.equals(lowerWord);
     addTokens(taggerTokens,l);
     if (!isLowercase) {
@@ -20,7 +20,7 @@
     }
     if (lowerTaggerTokens.isEmpty() && taggerTokens.isEmpty()) {
       if (isLowercase) {
-        upperTaggerTokens=asAnalyzedTokenList(word,morfologik.lookup(StringTools.uppercaseFirstChar(word)));
+        upperTaggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(StringTools.uppercaseFirstChar(word)));
         if (!upperTaggerTokens.isEmpty()) {
           addTokens(upperTaggerTokens,l);
         }
