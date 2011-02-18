@@ -1,7 +1,0 @@
-def commitData(self):
-    'Save the word/POS tag and POS tag sequence data to disk.'
-    print  >> sys.stderr, ('Words = %d' % self.word_count)
-    print  >> sys.stderr, ('Known words = %d' % len(self.data_table.keys()))
-    print  >> sys.stderr, ('Known sequences = %d' % len(self.seqs_table_followed_by.keys()))
-    print  >> sys.stderr, 'Commiting results...'
-    return

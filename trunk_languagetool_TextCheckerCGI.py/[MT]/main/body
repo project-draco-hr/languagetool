@@ -1,9 +1,0 @@
-def main():
-    form = cgi.FieldStorage()
-    if form.getvalue('text'):
-        check(form)
-    elif form.getvalue('explain'):
-        displayExplanation(form)
-    else:
-        displayForm(form)
-    return

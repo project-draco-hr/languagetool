@@ -1,4 +1,0 @@
-def splitBNCTag(self, tag):
-    "Take a string with BNC tags like 'NN1-NP0' and return a list,\n\t\te.g. ['NN1', 'NP0']. For single tags like 'NN0' this will\n\t\tbe returned: ['NN0']."
-    tags = re.split('-', tag)
-    return tags

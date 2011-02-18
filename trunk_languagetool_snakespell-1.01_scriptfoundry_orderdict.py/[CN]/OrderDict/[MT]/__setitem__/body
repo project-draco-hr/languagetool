@@ -1,6 +1,0 @@
-def __setitem__(self, key, item):
-    if (type(key) is type(1)):
-        self.dict[self.list[key]] = item
-    else:
-        self.dict[key] = item
-        self.list.append(key)

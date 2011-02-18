@@ -1,7 +1,0 @@
-def __init__(self, textlanguage):
-    self.is_initialized = 0
-    self.is_secondflag = 0
-    self.textlanguage = textlanguage
-    self.wfdeu = Wfdeu.Wfdeu()
-    self.wfhun = Wfhun.Wfhun()
-    return

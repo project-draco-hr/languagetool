@@ -1,6 +1,0 @@
-def getJavascriptCode(self):
-    l = []
-    for (tag_short, tag_exp) in self.tags:
-        tag_exp = tag_exp.replace('"', '\\"')
-        l.append(('data["%s"] = "%s";' % (tag_short, tag_exp)))
-    return str.join('\n', l)

@@ -1,6 +1,0 @@
-def testSomeRules(self):
-    'Some English rule checks. Requires a trained tagger.'
-    self._check(u'Ich gehe da\xdf er sieht', ExpMatch('DASS', 4, 12))
-    self._check(u'Ich gehe.', None)
-    self._check(u'Ich gehst.', ExpMatch('ICH', 0, 9))
-    return

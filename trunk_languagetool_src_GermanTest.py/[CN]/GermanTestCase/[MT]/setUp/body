@@ -1,3 +1,0 @@
-def setUp(self):
-    self.checker = TextChecker.TextChecker(grammar=None, falsefriends=None, words=None, builtin=None, textlanguage='de', mothertongue='de', max_sentence_length=20, debug_mode=0)
-    return

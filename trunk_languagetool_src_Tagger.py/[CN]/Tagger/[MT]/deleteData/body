@@ -1,3 +1,0 @@
-def deleteData(self):
-    'Remove the word/POS tag and POS tag sequence data files from disk.'
-    return

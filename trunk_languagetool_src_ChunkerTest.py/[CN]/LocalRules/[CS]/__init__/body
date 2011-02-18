@@ -1,3 +1,0 @@
-def __init__(self, rule_list):
-    self.rules = rule_list
-    return

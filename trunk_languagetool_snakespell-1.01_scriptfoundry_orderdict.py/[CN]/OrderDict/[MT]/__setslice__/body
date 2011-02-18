@@ -1,7 +1,0 @@
-def __setslice__(self, i, j, other):
-    i = max(i, 0)
-    j = max(j, 0)
-    if isinstance(other, OrderDict):
-        self.list[i:j] = other.list
-    for key in self.list[i:j]:
-        self.dict[key] = other.dict[key]

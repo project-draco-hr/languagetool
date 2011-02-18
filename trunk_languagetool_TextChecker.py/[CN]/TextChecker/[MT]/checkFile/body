@@ -1,8 +1,0 @@
-def checkFile(self, filename):
-    'Check a text file and return the results as an XML formatted list\n\t\tof possible errors.'
-    text = ''
-    f = codecs.open(filename, 'r', self.input_encoding)
-    text = f.read()
-    f.close()
-    (rule_matches, result, tagged_words) = self.check(text)
-    return (rule_matches, result, tagged_words)

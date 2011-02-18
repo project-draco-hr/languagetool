@@ -1,4 +1,0 @@
-def setRules(self, rules):
-    'Use the rules from this Rules object for the chunk() method.'
-    self.rules = rules
-    return

@@ -1,8 +1,0 @@
-def __cmp__(self, b):
-    "Compare by 'from' position."
-    if (self.from_pos > b.from_pos):
-        return 1
-    elif (self.from_pos < b.from_pos):
-        return (-1)
-    else:
-        return 0

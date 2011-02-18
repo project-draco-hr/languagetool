@@ -1,4 +1,0 @@
-def check(self, text, options=None):
-    self.start(options)
-    self.feed(text)
-    return self.result()

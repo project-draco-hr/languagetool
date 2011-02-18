@@ -1,2 +1,0 @@
-def processOptions(self, options):
-    return options

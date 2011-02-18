@@ -1,5 +1,0 @@
-def ReadData(self, db_word_name):
-    self.data_table = {}
-    self.word_table = {}
-    table = {}
-    return

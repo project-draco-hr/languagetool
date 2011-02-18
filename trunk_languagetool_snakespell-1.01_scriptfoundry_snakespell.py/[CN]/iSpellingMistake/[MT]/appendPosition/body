@@ -1,2 +1,0 @@
-def appendPosition(self, position):
-    self.positions.append(position)

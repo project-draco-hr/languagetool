@@ -1,2 +1,0 @@
-def processLine(self, line):
-    return SpellingMistake(line)

@@ -1,7 +1,0 @@
-def _checkError(self, sentence, rule_match, expectedError):
-    self.assertEqual(rule_match.id, expectedError.error_type)
-    if ((rule_match.from_pos != expectedError.from_pos) or (rule_match.to_pos != expectedError.to_pos)):
-        print ('Expected error from %d to %d, found error from %d to %d' % (expectedError.from_pos, expectedError.to_pos, rule_match.from_pos, rule_match.to_pos))
-        print ('Sentence: %s' % sentence)
-        self.fail()
-    return

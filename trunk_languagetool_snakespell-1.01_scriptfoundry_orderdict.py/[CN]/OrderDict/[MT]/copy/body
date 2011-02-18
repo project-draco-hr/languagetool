@@ -1,5 +1,0 @@
-def copy(self):
-    if (self.__class__ is OrderDict):
-        return OrderDict(self.dict)
-    import copy
-    return copy.copy(self)

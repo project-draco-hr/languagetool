@@ -1,5 +1,0 @@
-def get(self, key, failobj=None):
-    try:
-        return self.dict[key]
-    except:
-        return failobj

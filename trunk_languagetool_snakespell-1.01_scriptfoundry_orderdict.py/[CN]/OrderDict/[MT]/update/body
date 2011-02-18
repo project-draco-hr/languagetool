@@ -1,8 +1,0 @@
-def update(self, dict):
-    if isinstance(dict, OrderDict):
-        self.dict.update(dict.dict)
-    elif isinstance(dict, type(self.dict)):
-        self.dict.update(dict)
-    else:
-        for (k, v) in dict.items():
-            self.dict[k] = v

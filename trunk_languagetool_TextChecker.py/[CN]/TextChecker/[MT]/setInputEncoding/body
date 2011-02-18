@@ -1,3 +1,0 @@
-def setInputEncoding(self, input_encoding):
-    self.input_encoding = input_encoding
-    return

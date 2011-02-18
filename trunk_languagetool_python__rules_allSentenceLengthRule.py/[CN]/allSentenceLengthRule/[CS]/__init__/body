@@ -1,3 +1,0 @@
-def __init__(self):
-    Rules.Rule.__init__(self, 'SENTENCE_LENGTH', 'This sentence is too long.', 0, None)
-    return

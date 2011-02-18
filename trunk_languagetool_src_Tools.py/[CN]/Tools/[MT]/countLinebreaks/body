@@ -1,3 +1,0 @@
-def countLinebreaks(s):
-    matches = re.findall('[\n\r]', s)
-    return len(matches)

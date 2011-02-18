@@ -1,7 +1,0 @@
-def getConfigValue(cfg_str, val):
-    m = re.compile(('%s="(.*?)"' % val)).search(cfg_str)
-    if (not m):
-        return None
-    s = m.group(1)
-    l = re.split(',', s)
-    return l

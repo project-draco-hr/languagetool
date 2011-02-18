@@ -1,5 +1,0 @@
-def __init__(self):
-    Rules.Rule.__init__(self, 'DET', "'a' es 'az' hasznalata.", 0, None)
-    self.requires_a = {}
-    self.requires_an = {}
-    return

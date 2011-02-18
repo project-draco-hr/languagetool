@@ -1,6 +1,0 @@
-import os
-import string
-import re
-import sys
-if (__name__ == '__main__'):
-    print 'Please use ./SentenceSplitterTest.py for testing.'

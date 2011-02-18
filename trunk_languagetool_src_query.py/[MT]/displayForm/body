@@ -1,5 +1,0 @@
-def displayForm():
-    taginfo = TagInfo.TagInfo()
-    print 'Content-Type: text/html\n\n'
-    print ('\n\t\t<html><head>\n\t\t<title>BNC Query</title></head>\n\t\t<body>\n\t\t<h1>BNC Query</h1>\n\n\t\t<form action="query.py" method="get">\n\t\t<table border="0" cellspacing="0" cellpadding="0">\n\t\t<tr>\n\t\t\t<td>Word/tag sequence:</td>\n\t\t\t<td>Context:</td>\n\t\t\t<td>Max. results:</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td><input type="text" name="tokens"></td>\n\t\t\t<td><select name="context">\n\t\t\t\t<option value="4">4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>\n\t\t\t\t<option>6</option>\n\t\t\t\t<option>8</option>\n\t\t\t\t<option>10</option>\n\t\t\t</select></td>\n\t\t\t<td><input type="text" name="limit" value="30" size="6" /></input>\n\t\t\t<td>&nbsp;</td>\n\t\t\t<td><input type="submit" value="Query" /></td>\n\t\t</tr>\n\t\t</table>\n\t\t</form>\n\t\t<br />\n\t\t_ (underline) matches any word\n\t\t%s\n\t\t</body>\n\t\t</html>' % taginfo.getHTMLCode())
-    return

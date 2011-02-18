@@ -1,5 +1,0 @@
-def __init__(self, word, kind, position, corrections=[]):
-    SpellingMistake.__init__(self, word)
-    self.kind = kind
-    self.positions = [position]
-    self.corrections = corrections
