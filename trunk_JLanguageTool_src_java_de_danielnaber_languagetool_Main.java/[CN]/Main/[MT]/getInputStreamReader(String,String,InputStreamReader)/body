@@ -1,0 +1,20 @@
+{
+  if (!"-".equals(filename)) {
+    final File file=new File(filename);
+    if (encoding != null) {
+      isr=new InputStreamReader(new BufferedInputStream(new FileInputStream(file.getAbsolutePath())),encoding);
+    }
+ else {
+      isr=new InputStreamReader(new BufferedInputStream(new FileInputStream(file.getAbsolutePath())));
+    }
+  }
+ else {
+    if (encoding != null) {
+      isr=new InputStreamReader(new BufferedInputStream(System.in),encoding);
+    }
+ else {
+      isr=new InputStreamReader(new BufferedInputStream(System.in));
+    }
+  }
+  return isr;
+}
