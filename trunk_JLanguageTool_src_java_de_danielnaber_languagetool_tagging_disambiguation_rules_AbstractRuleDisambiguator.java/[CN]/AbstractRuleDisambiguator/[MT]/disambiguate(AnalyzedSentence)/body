@@ -1,12 +1,12 @@
 {
   AnalyzedSentence sentence=input;
   if (disambiguationRules == null) {
-    final String defaultPatternFilename=JLanguageTool.getDataBroker().getResourceDir() + "/" + getLanguage().getShortName()+ "/"+ DISAMB_FILE;
+    final String disambiguationFile=JLanguageTool.getDataBroker().getResourceDir() + "/" + getLanguage().getShortName()+ "/"+ DISAMBIGUATION_FILE;
     try {
-      disambiguationRules=loadPatternRules(defaultPatternFilename);
+      disambiguationRules=loadPatternRules(disambiguationFile);
     }
  catch (    final Exception e) {
-      throw new RuntimeException("Problems with parsing disambiguation file: " + defaultPatternFilename,e);
+      throw new RuntimeException("Problems with parsing disambiguation file: " + disambiguationFile,e);
     }
   }
   for (  final DisambiguationPatternRule patternRule : disambiguationRules) {
