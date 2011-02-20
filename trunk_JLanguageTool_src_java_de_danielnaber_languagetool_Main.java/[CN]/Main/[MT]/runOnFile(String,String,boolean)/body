@@ -6,7 +6,7 @@
   }
   if (oneTime) {
     if (bitextMode) {
-      TabBitextReader reader=new TabBitextReader(filename,encoding);
+      final TabBitextReader reader=new TabBitextReader(filename,encoding);
       if (applySuggestions) {
         Tools.correctBitext(reader,srcLt,lt,bRules);
       }

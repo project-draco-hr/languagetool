@@ -1,6 +1,6 @@
 {
   bitextMode=true;
-  Language target=lt.getLanguage();
+  final Language target=lt.getLanguage();
   lt=new JLanguageTool(target,null);
   srcLt=new JLanguageTool(sourceLang);
   lt.activateDefaultPatternRules();
