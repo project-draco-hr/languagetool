@@ -1,5 +1,5 @@
 {
-  final File file=Tools.openFileDialog(frame,new PlainTextFilter());
+  final File file=Tools.openFileDialog(frame,new PlainTextFileFilter());
   if (file == null) {
     return;
   }

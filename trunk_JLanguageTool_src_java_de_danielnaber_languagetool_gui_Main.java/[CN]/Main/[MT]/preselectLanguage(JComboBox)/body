@@ -1,0 +1,8 @@
+{
+  try {
+    final Locale defaultLocale=Locale.getDefault();
+    languageBox.setSelectedItem(messages.getString(defaultLocale.getLanguage()));
+  }
+ catch (  final MissingResourceException e) {
+  }
+}

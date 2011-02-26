@@ -3,7 +3,7 @@
   if (clipboard == null) {
     clipboard=Toolkit.getDefaultToolkit().getSystemClipboard();
   }
-  String s=null;
+  String s;
   final Transferable data=clipboard.getContents(this);
   try {
     if (data != null && data.isDataFlavorSupported(DataFlavor.getTextPlainUnicodeFlavor())) {

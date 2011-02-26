@@ -1,15 +1,6 @@
 {
   frame=new JFrame("LanguageTool " + JLanguageTool.VERSION);
-  try {
-    for (    UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-      if ("Nimbus".equals(info.getName())) {
-        UIManager.setLookAndFeel(info.getClassName());
-        break;
-      }
-    }
-  }
- catch (  Exception ex) {
-  }
+  setLookAndFeel();
   frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
   frame.addWindowListener(new CloseListener());
   frame.setIconImage(new ImageIcon(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(Main.SYSTEM_TRAY_ICON_NAME)).getImage());
@@ -36,15 +27,10 @@
   panel.add(new JLabel(" " + messages.getString("textLanguage") + " "),buttonCons);
   buttonCons.gridx=2;
   buttonCons.gridy=0;
-  langBox=new JComboBox();
-  populateLanguageBox();
-  try {
-    final Locale defaultLocale=Locale.getDefault();
-    langBox.setSelectedItem(messages.getString(defaultLocale.getLanguage()));
-  }
- catch (  final MissingResourceException e) {
-  }
-  panel.add(langBox,buttonCons);
+  languageBox=new JComboBox();
+  populateLanguageBox(languageBox);
+  preselectLanguage(languageBox);
+  panel.add(languageBox,buttonCons);
   final Container contentPane=frame.getContentPane();
   final GridBagLayout gridLayout=new GridBagLayout();
   contentPane.setLayout(gridLayout);
@@ -68,5 +54,5 @@
   cons.gridy=3;
   contentPane.add(panel,cons);
   frame.pack();
-  frame.setSize(600,550);
+  frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
 }

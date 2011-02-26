@@ -1,6 +1,6 @@
 {
   final Language language=getCurrentLanguage();
-  ConfigurationDialog configDialog=null;
+  final ConfigurationDialog configDialog;
   if (configDialogs.containsKey(language)) {
     configDialog=configDialogs.get(language);
   }

@@ -1,5 +1,5 @@
 {
-  final String langName=langBox.getSelectedItem().toString();
+  final String langName=languageBox.getSelectedItem().toString();
   String lang=langName;
   for (final Enumeration<String> e=messages.getKeys(); e.hasMoreElements(); ) {
     final String elem=e.nextElement();

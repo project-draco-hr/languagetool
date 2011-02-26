@@ -1,0 +1,18 @@
+{
+  final List<String> languages=new ArrayList<String>();
+  languageBox.removeAllItems();
+  for (  final Language language : Language.LANGUAGES) {
+    if (language != Language.DEMO) {
+      try {
+        languages.add(messages.getString(language.getShortName()));
+      }
+ catch (      final MissingResourceException e) {
+        languages.add(language.getName());
+      }
+    }
+  }
+  Collections.sort(languages);
+  for (  final String languageName : languages) {
+    languageBox.addItem(languageName);
+  }
+}

@@ -1,5 +1,5 @@
 {
-  if (trayMode) {
+  if (closeHidesToTray) {
     hideToTray();
   }
  else {
