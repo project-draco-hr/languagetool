@@ -1,15 +1,3 @@
 {
-  final String langName=languageBox.getSelectedItem().toString();
-  String lang=langName;
-  for (final Enumeration<String> e=messages.getKeys(); e.hasMoreElements(); ) {
-    final String elem=e.nextElement();
-    if (messages.getString(elem).equals(langName)) {
-      lang=elem;
-      break;
-    }
-  }
-  if (lang.length() > 2) {
-    return Language.getLanguageForName(lang);
-  }
-  return Language.getLanguageForShortName(lang);
+  return ((I18nLanguage)languageBox.getSelectedItem()).getLanguage();
 }

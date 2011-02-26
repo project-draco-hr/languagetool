@@ -1,18 +1,13 @@
 {
-  final List<String> languages=new ArrayList<String>();
   languageBox.removeAllItems();
-  for (  final Language language : Language.LANGUAGES) {
+  final List<I18nLanguage> i18nLanguages=new ArrayList<I18nLanguage>();
+  for (  Language language : Language.LANGUAGES) {
     if (language != Language.DEMO) {
-      try {
-        languages.add(messages.getString(language.getShortName()));
-      }
- catch (      final MissingResourceException e) {
-        languages.add(language.getName());
-      }
+      i18nLanguages.add(new I18nLanguage(language));
     }
   }
-  Collections.sort(languages);
-  for (  final String languageName : languages) {
-    languageBox.addItem(languageName);
+  Collections.sort(i18nLanguages);
+  for (  final I18nLanguage i18nLanguage : i18nLanguages) {
+    languageBox.addItem(i18nLanguage);
   }
 }

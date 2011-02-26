@@ -28,8 +28,11 @@
     public Set<String> getRelevantRuleIDs(){
       return null;
     }
-    public String getRuleFileName(){
+    @Override public String getRuleFileName(){
       return file.getAbsolutePath();
+    }
+    @Override public boolean isExternal(){
+      return isAdditional;
     }
   }
 ;
