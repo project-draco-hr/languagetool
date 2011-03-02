@@ -3,10 +3,14 @@
     int i=0;
     for (    final Element element : rule.getElements()) {
       i++;
-      warnIfElementNotKosher(element,lang,rule.getId());
+      warnIfElementNotKosher(element.getString(),element.isRegularExpression(),element.getCaseSensitive(),element.isInflected(),lang,rule.getId());
+      warnIfElementNotKosher(element.getPOStag() == null ? "" : element.getPOStag(),element.isPOStagRegularExpression(),element.getCaseSensitive(),false,lang,rule.getId() + " (exception in POS tag) ");
       if (element.getExceptionList() != null) {
         for (        final Element exception : element.getExceptionList()) {
-          warnIfElementNotKosher(exception,lang,rule.getId() + " (exception in token [" + i+ "]:"+ element+ ") ");
+          if (!exception.getString().equals(".")) {
+            warnIfElementNotKosher(exception.getString(),exception.isRegularExpression(),exception.getCaseSensitive(),exception.isInflected(),lang,rule.getId() + " (exception in token [" + i+ "]) ");
+          }
+          warnIfElementNotKosher(exception.getPOStag() == null ? "" : exception.getPOStag(),exception.isPOStagRegularExpression(),exception.getCaseSensitive(),false,lang,rule.getId() + " (exception in POS tag of token [" + i+ "]) ");
         }
       }
     }
