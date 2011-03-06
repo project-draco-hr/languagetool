@@ -111,24 +111,10 @@
  else     if (lWord.endsWith("en")) {
       l.add(new AnalyzedToken(word,"E akz",lWord.substring(0,lWord.length() - 1)));
     }
- else     if ((matcher=patternVerb1.matcher(lWord)).find()) {
+ else     if ((matcher=patternVerb.matcher(lWord)).find()) {
       final String verb=matcher.group(1) + "i";
       final String tense=matcher.group(2);
-      final String transitive;
-      final Matcher matcher2=patternVerb2.matcher(lWord);
-      if (matcher2.find()) {
-        transitive=matcher2.group(1).equals("ig") ? "tr" : "nt";
-      }
- else {
-        final boolean isTransitive=setTransitiveVerbs.contains(verb);
-        final boolean isIntransitive=setNonTransitiveVerbs.contains(verb);
-        if (isTransitive) {
-          transitive=isIntransitive ? "tn" : "tr";
-        }
- else {
-          transitive=isIntransitive ? "nt" : "tn";
-        }
-      }
+      final String transitive=findTransitivity(verb);
       l.add(new AnalyzedToken(word,"V " + transitive + " "+ tense,verb));
     }
  else {
@@ -141,21 +127,7 @@
       final String aoe=matcher.group(4);
       final String plural=matcher.group(5).equals("j") ? "pl" : "np";
       final String accusative=matcher.group(6).equals("n") ? "akz" : "nak";
-      final String transitive;
-      final Matcher matcher2=patternVerb2.matcher(lWord);
-      if (matcher2.find()) {
-        transitive=matcher2.group(1).equals("ig") ? "tr" : "nt";
-      }
- else {
-        final boolean isTransitive=setTransitiveVerbs.contains(verb);
-        final boolean isIntransitive=setNonTransitiveVerbs.contains(verb);
-        if (isTransitive) {
-          transitive=isIntransitive ? "tn" : "tr";
-        }
- else {
-          transitive=isIntransitive ? "nt" : "tn";
-        }
-      }
+      final String transitive=findTransitivity(verb);
       l.add(new AnalyzedToken(word,"C " + accusative + " "+ plural+ " "+ transitive+ " "+ aio+ " "+ antAt+ " "+ aoe,verb));
     }
     pos+=word.length();
