@@ -1,0 +1,4 @@
+List<RuleMatch> ruleMatches
+AnalyzedTokenReadings tokenReadings
+boolean prevTokenIsDas
+String token

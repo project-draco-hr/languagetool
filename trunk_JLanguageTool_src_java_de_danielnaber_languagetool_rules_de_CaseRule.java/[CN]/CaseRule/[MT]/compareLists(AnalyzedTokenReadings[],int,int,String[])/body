@@ -1,5 +1,7 @@
 {
-  if (startIndex < 0)   return false;
+  if (startIndex < 0) {
+    return false;
+  }
   int i=0;
   for (int j=startIndex; j <= endIndex; j++) {
     if (i >= parts.length)     return false;
