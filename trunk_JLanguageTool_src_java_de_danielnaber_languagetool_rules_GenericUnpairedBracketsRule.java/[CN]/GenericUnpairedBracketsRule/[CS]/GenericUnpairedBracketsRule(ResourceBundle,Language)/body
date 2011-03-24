@@ -50,5 +50,6 @@
     startSymbols=START_SYMBOLS;
     endSymbols=END_SYMBOLS;
   }
+  uniqueMapInit();
   ruleLang=language;
 }
