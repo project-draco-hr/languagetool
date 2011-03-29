@@ -29,7 +29,6 @@
   buttonCons.gridy=0;
   languageBox=new JComboBox();
   populateLanguageBox(languageBox);
-  preselectLanguage(languageBox);
   panel.add(languageBox,buttonCons);
   final Container contentPane=frame.getContentPane();
   final GridBagLayout gridLayout=new GridBagLayout();
