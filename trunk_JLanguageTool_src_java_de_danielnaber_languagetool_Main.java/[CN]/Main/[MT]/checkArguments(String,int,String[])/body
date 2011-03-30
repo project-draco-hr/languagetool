@@ -1,0 +1,5 @@
+{
+  if (argParsingPos + 1 >= args.length) {
+    throw new IllegalArgumentException("Missing argument to " + option + " command line option.");
+  }
+}
