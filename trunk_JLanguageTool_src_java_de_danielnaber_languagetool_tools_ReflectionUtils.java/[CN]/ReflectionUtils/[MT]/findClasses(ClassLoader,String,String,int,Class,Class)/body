@@ -3,12 +3,12 @@
   try {
     final String packagePath=packageName.replace('.','/');
     final Enumeration<URL> resources_=classLoader.getResources(packagePath);
-    final Set<URI> uniqResources=new HashSet<URI>();
+    final Set<URI> uniqueResources=new HashSet<URI>();
     while (resources_.hasMoreElements()) {
       final URI resource=resources_.nextElement().toURI();
-      uniqResources.add(resource);
+      uniqueResources.add(resource);
     }
-    for (    final URI res : uniqResources) {
+    for (    final URI res : uniqueResources) {
       final URL resource=res.toURL();
       if (resource.getProtocol().startsWith("jar")) {
         findClassesInJar(packageName,classNameRegEx,subdirLevel,classExtends,interfaceImplements,foundClasses,resource);

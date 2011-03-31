@@ -5,15 +5,15 @@
     final JarEntry current=e.nextElement();
     final String name=current.getName();
     if (name.endsWith(".class")) {
-      final String classNm=name.replaceAll("/",".").replace(".class","");
-      final int pointIdx=classNm.lastIndexOf('.');
-      final String classShortNm=pointIdx == -1 ? classNm : classNm.substring(pointIdx + 1);
-      if (classNm.startsWith(packageName) && (classNameRegEx == null || classShortNm.matches(classNameRegEx))) {
-        final String subName=classNm.substring(packageName.length() + 1);
+      final String className=name.replaceAll("/",".").replace(".class","");
+      final int pointIdx=className.lastIndexOf('.');
+      final String classShortNm=pointIdx == -1 ? className : className.substring(pointIdx + 1);
+      if (className.startsWith(packageName) && (classNameRegEx == null || classShortNm.matches(classNameRegEx))) {
+        final String subName=className.substring(packageName.length() + 1);
         if (countOccurrences(subName,'.') > subdirLevel) {
           continue;
         }
-        final Class clazz=Class.forName(classNm);
+        final Class clazz=Class.forName(className);
         if (foundClasses.containsKey(clazz)) {
           throw new RuntimeException("Duplicate class definition:\n" + clazz.getName() + ", found in\n"+ currentFile.getName()+ " and\n"+ foundClasses.get(clazz));
         }
