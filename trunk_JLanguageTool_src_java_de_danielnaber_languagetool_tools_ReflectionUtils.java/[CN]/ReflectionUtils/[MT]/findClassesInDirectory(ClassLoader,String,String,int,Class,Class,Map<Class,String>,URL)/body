@@ -1,7 +1,7 @@
 {
   final File directory=new File(resource.toURI());
   if (!directory.exists() && !directory.isDirectory()) {
-    throw new Exception("directory does not exist: " + directory.getAbsolutePath());
+    throw new Exception("Directory does not exist: " + directory.getAbsolutePath());
   }
   for (  final File file : directory.listFiles()) {
     if (file.isFile() && file.getName().endsWith(".class")) {
