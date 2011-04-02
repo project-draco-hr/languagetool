@@ -1,0 +1,11 @@
+{
+  if (args.length < 4 || args.length > 5) {
+    System.err.println("Usage: CheckWikipediaDump <propertyFile> <language> <filename> <ruleIds> [maxArticleCheck]");
+    System.err.println("\tpropertyFile a file to set database access properties. Use '-' to print results to stdout.");
+    System.err.println("\tlanguage languagecode like 'en' or 'de'");
+    System.err.println("\tfilename path to unpacked Wikipedia XML dump");
+    System.err.println("\truleIds comma-separated list of rule-ids to activate. Use '-' to activate the default rules.");
+    System.err.println("\tmaxArticleCheck optional: maximum number of articles to check");
+    System.exit(1);
+  }
+}
