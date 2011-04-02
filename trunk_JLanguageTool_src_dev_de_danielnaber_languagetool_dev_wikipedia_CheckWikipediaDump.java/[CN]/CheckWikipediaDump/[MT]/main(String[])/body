@@ -1,23 +1,28 @@
 {
   final CheckWikipediaDump prg=new CheckWikipediaDump();
-  if (args.length < 3 || args.length > 4) {
-    System.err.println("Usage: CheckWikipediaDump <propertyFile> <language> <filename> [maxArticleCheck]");
+  if (args.length < 4 || args.length > 5) {
+    System.err.println("Usage: CheckWikipediaDump <propertyFile> <language> <filename> <ruleIds> [maxArticleCheck]");
     System.err.println("\tpropertyFile a file to set database access properties. Use '-' to print results to stdout.");
     System.err.println("\tlanguage languagecode like 'en' or 'de'");
     System.err.println("\tfilename path to unpacked Wikipedia XML dump");
+    System.err.println("\truleIds comma-separated list of rule-ids to activate. Use '-' to activate the default rules.");
     System.err.println("\tmaxArticleCheck optional: maximum number of articles to check");
     System.exit(1);
-  }
-  int maxArticles=0;
-  if (args.length == 4) {
-    maxArticles=Integer.parseInt(args[3]);
   }
   File propFile=null;
   if (!"-".equals(args[0])) {
     propFile=new File(args[0]);
     if (!propFile.exists() || propFile.isDirectory()) {
-      throw new IOException("file not found or isn't a file: " + propFile.getAbsolutePath());
+      throw new IOException("File not found or isn't a file: " + propFile.getAbsolutePath());
     }
   }
-  prg.run(propFile,args[1],args[2],maxArticles);
+  int maxArticles=0;
+  if (args.length == 5) {
+    maxArticles=Integer.parseInt(args[4]);
+  }
+  String[] ruleIds=null;
+  if (!"-".equals(args[3])) {
+    ruleIds=args[3].split(",");
+  }
+  prg.run(propFile,args[1],args[2],ruleIds,maxArticles);
 }

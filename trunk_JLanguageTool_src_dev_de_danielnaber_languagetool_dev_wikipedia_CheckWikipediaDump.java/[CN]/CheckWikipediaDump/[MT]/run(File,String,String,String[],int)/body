@@ -10,18 +10,12 @@
   }
   final JLanguageTool languageTool=new JLanguageTool(lang);
   languageTool.activateDefaultPatternRules();
-  languageTool.disableRule("DE_CASE");
-  languageTool.disableRule("UNPAIRED_BRACKETS");
-  languageTool.disableRule("UPPERCASE_SENTENCE_START");
-  languageTool.disableRule("WORD_REPEAT_RULE");
-  languageTool.disableRule("COMMA_PARENTHESIS_WHITESPACE");
-  languageTool.disableRule("WHITESPACE_RULE");
-  languageTool.disableRule("EN_QUOTES");
-  languageTool.disableRule("CUDZYSLOW_DRUKARSKI");
-  languageTool.disableRule("POMI??LJAJ_1");
-  languageTool.disableRule("POMI??LJAJ_2");
-  languageTool.disableRule("POMI??LJAJ_3");
-  System.err.println("These rules are disabled: " + languageTool.getDisabledRules());
+  if (ruleIds != null) {
+    enableSpecifiedRules(ruleIds,languageTool);
+  }
+ else {
+    enableDefaultRules(languageTool);
+  }
   final Date dumpDate=getDumpDate(file);
   System.out.println("Dump date: " + dumpDate + ", language: "+ language);
   final BaseWikipediaDumpHandler handler;

@@ -1,0 +1,9 @@
+{
+  for (  Rule rule : languageTool.getAllRules()) {
+    languageTool.disableRule(rule.getId());
+  }
+  for (  String ruleId : ruleIds) {
+    languageTool.enableRule(ruleId);
+  }
+  System.err.println("Only these rules are enabled: " + Arrays.toString(ruleIds));
+}

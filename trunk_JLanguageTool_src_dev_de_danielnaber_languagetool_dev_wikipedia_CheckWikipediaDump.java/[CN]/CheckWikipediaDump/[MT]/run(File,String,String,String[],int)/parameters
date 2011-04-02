@@ -1,4 +1,5 @@
 File propFile
 String language
 String textFilename
+String[] ruleIds
 int maxArticles
