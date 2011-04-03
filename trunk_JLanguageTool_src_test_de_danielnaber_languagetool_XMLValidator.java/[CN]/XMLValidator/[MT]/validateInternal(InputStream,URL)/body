@@ -1,7 +1,7 @@
 {
-  SchemaFactory sf=SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-  Schema schema=sf.newSchema(xmlSchema);
-  Validator validator=schema.newValidator();
+  final SchemaFactory sf=SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+  final Schema schema=sf.newSchema(xmlSchema);
+  final Validator validator=schema.newValidator();
   validator.setErrorHandler(new ErrorHandler());
   validator.validate(new StreamSource(xml));
 }

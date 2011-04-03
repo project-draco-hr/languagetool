@@ -1,15 +1,15 @@
 {
-  SAXParserFactory factory=SAXParserFactory.newInstance();
+  final SAXParserFactory factory=SAXParserFactory.newInstance();
   factory.setValidating(true);
-  SAXParser saxParser=factory.newSAXParser();
+  final SAXParser saxParser=factory.newSAXParser();
   xml=xml.replaceAll("<!DOCTYPE.+>","");
   final String decl="<?xml version=\"1.0\"";
   final String endDecl="?>";
   final String dtd="<!DOCTYPE " + doctype + " PUBLIC \"-//W3C//DTD Rules 0.1//EN\" \""+ this.getClass().getResource(dtdFile)+ "\">";
-  int pos=xml.indexOf(decl);
-  int endPos=xml.indexOf(endDecl);
+  final int pos=xml.indexOf(decl);
+  final int endPos=xml.indexOf(endDecl);
   if (pos == -1)   throw new IOException("No XML declaration found in '" + xml.substring(0,Math.min(100,xml.length())) + "...'");
-  String newXML=xml.substring(0,endPos + endDecl.length()) + "\r\n" + dtd+ xml.substring(endPos + endDecl.length());
-  InputSource is=new InputSource(new StringReader(newXML));
+  final String newXML=xml.substring(0,endPos + endDecl.length()) + "\r\n" + dtd+ xml.substring(endPos + endDecl.length());
+  final InputSource is=new InputSource(new StringReader(newXML));
   saxParser.parse(is,new ErrorHandler());
 }
