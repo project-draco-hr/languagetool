@@ -1,5 +1,8 @@
 {
   for (  final Language lang : Language.LANGUAGES) {
+    if (ignoredLanguages != null && ignoredLanguages.contains(lang)) {
+      continue;
+    }
     System.out.println("Running tests for " + lang.getName() + "...");
     final PatternRuleLoader ruleLoader=new PatternRuleLoader();
     final JLanguageTool languageTool=new JLanguageTool(lang);

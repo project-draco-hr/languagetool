@@ -1,9 +1,6 @@
 {
   for (  final Language lang : Language.LANGUAGES) {
     if (ignoredLanguages != null && ignoredLanguages.contains(lang)) {
-      if (verbose) {
-        System.out.println("Ignoring tests for " + lang.getName());
-      }
       continue;
     }
     if (verbose) {

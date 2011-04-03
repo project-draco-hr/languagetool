@@ -1,0 +1,11 @@
+{
+  final Set<Language> languages=new HashSet<Language>();
+  languages.addAll(Arrays.asList(Language.LANGUAGES));
+  if (langCodes != null) {
+    for (    String langCode : langCodes) {
+      final Language lang=Language.getLanguageForShortName(langCode);
+      languages.remove(lang);
+    }
+  }
+  return languages;
+}

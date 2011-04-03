@@ -1,9 +1,6 @@
 {
   for (  final Language lang : Language.LANGUAGES) {
     if (ignoredLanguages != null && ignoredLanguages.contains(lang)) {
-      if (verbose) {
-        System.out.println("Ignoring tests for " + lang.getName());
-      }
       continue;
     }
     final BitextPatternRuleLoader ruleLoader=new BitextPatternRuleLoader();
@@ -15,7 +12,7 @@
       }
       final JLanguageTool languageTool=new JLanguageTool(lang);
       final List<BitextPatternRule> rules=ruleLoader.getRules(is,name);
-      testBitextRulesFromXML(rules,languageTool,Language.POLISH);
+      testBitextRulesFromXML(rules,languageTool,lang);
     }
   }
 }

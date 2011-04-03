@@ -1,7 +1,13 @@
 {
   final ValidateXMLTest prt=new ValidateXMLTest();
   System.out.println("Validating XML grammar files ...");
-  prt.testPatternFile();
+  if (args.length == 0) {
+    prt.testPatternFile(null,true);
+  }
+ else {
+    final Set<Language> ignoredLanguages=TestTools.getLanguagesExcept(args);
+    prt.testPatternFile(ignoredLanguages,true);
+  }
   prt.testFalseFriendsXML();
   prt.testDisambiguationRuleFile();
   System.out.println("Validation tests successful.");

@@ -2,6 +2,12 @@
   final DisambiguationRuleTest prt=new DisambiguationRuleTest();
   System.out.println("Running disambiguator rule tests...");
   prt.setUp();
-  prt.testDisambiguationRulesFromXML();
+  if (args.length == 0) {
+    prt.testDisambiguationRulesFromXML(null,true);
+  }
+ else {
+    final Set<Language> ignoredLanguages=TestTools.getLanguagesExcept(args);
+    prt.testDisambiguationRulesFromXML(ignoredLanguages,true);
+  }
   System.out.println("Tests successful.");
 }
