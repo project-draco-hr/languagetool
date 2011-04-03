@@ -1,12 +1,16 @@
 {
-  final Pattern p=Pattern.compile("(<error.*?/>)",Pattern.DOTALL | Pattern.MULTILINE);
-  final Matcher matcher=p.matcher(xml);
+  final Pattern pattern=Pattern.compile("(<error.*?/>)",Pattern.DOTALL | Pattern.MULTILINE);
+  final Matcher matcher=pattern.matcher(xml);
   int pos=0;
   while (matcher.find(pos)) {
     final String errorElement=matcher.group();
     pos=matcher.end();
-    if (errorElement.contains("\n") || errorElement.contains("\r"))     throw new IOException("<error ...> may not contain line breaks");
+    if (errorElement.contains("\n") || errorElement.contains("\r")) {
+      throw new IOException("<error ...> may not contain line breaks");
+    }
     final char beforeError=xml.charAt(matcher.start() - 1);
-    if (beforeError != '\n' && beforeError != '\r')     throw new IOException("Each <error ...> must start on a new line");
+    if (beforeError != '\n' && beforeError != '\r') {
+      throw new IOException("Each <error ...> must start on a new line");
+    }
   }
 }
