@@ -1,0 +1,3 @@
+{
+  testPatternFile(null,false);
+}
