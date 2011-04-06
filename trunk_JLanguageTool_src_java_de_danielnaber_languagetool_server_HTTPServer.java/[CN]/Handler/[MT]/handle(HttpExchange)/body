@@ -1,0 +1,77 @@
+{
+  parameters=new HashMap<String,String>();
+synchronized (instances) {
+    URI requestedUri=t.getRequestURI();
+    if ("post".equalsIgnoreCase(t.getRequestMethod())) {
+      InputStreamReader isr=new InputStreamReader(t.getRequestBody(),"utf-8");
+      BufferedReader br=new BufferedReader(isr);
+      String query=br.readLine();
+      parseQuery(query,parameters);
+    }
+ else {
+      String query=requestedUri.getRawQuery();
+      parseQuery(query,parameters);
+    }
+    final long timeStart=System.currentTimeMillis();
+    String text=null;
+    try {
+      if (StringTools.isEmpty(requestedUri.getRawPath())) {
+        t.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
+        throw new RuntimeException("Error: Access to " + requestedUri.getPath().toString() + " denied");
+      }
+      if (allowedIPs.contains(t.getRemoteAddress().getAddress().toString())) {
+        if (requestedUri.getRawPath().endsWith("/Languages")) {
+          t.getResponseHeaders().set("Content-Type","text/xml");
+          t.getResponseHeaders().set("Content_Encoding","UTF-8");
+          String response=getSupportedLanguagesAsXML();
+          t.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes().length);
+          t.getResponseBody().write(response.getBytes());
+          t.close();
+        }
+ else {
+          final String langParam=parameters.get("language");
+          if (langParam == null) {
+            throw new IllegalArgumentException("Missing 'language' parameter");
+          }
+          final Language lang=Language.getLanguageForShortName(langParam);
+          if (lang == null) {
+            throw new IllegalArgumentException("Unknown language '" + langParam + "'");
+          }
+          final String motherTongueParam=parameters.get("motherTongue");
+          Language motherTongue=null;
+          if (null != motherTongueParam) {
+            motherTongue=Language.getLanguageForShortName(motherTongueParam);
+          }
+          final JLanguageTool lt=getLanguageToolInstance(lang,motherTongue);
+          text=parameters.get("text");
+          if (text == null) {
+            throw new IllegalArgumentException("Missing 'text' parameter");
+          }
+          print("Checking " + text.length() + " characters of text, language "+ langParam);
+          final List<RuleMatch> matches=lt.check(text);
+          t.getResponseHeaders().set("Content-Type","text/xml");
+          t.getResponseHeaders().set("Content_Encoding","UTF-8");
+          final String response=StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE,StringTools.XmlPrintMode.NORMAL_XML);
+          print("Check done in " + (System.currentTimeMillis() - timeStart) + "ms");
+          t.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes().length);
+          t.getResponseBody().write(response.getBytes());
+          t.close();
+        }
+      }
+ else {
+        t.sendResponseHeaders(403,0);
+        throw new RuntimeException("Error: Access from " + t.getRemoteAddress().toString() + " denied");
+      }
+    }
+ catch (    Exception e) {
+      if (HTTPServer.verbose) {
+        print("Exceptions was caused by this text: " + text);
+      }
+      e.printStackTrace();
+      String response="Error: " + StringTools.escapeXML(e.toString());
+      t.sendResponseHeaders(500,response.getBytes().length);
+      t.getResponseBody().write(response.getBytes());
+      t.close();
+    }
+  }
+}

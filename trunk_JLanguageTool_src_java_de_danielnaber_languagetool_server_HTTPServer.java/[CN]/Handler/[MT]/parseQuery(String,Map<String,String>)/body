@@ -1,0 +1,21 @@
+{
+  if (query != null) {
+    String pairs[]=query.split("[&]");
+    for (    String pair : pairs) {
+      String param=pair.substring(0,pair.indexOf("="));
+      String key=null;
+      String value=null;
+      if (param != null) {
+        key=URLDecoder.decode(param,System.getProperty("file.encoding"));
+      }
+      if (pair.substring(pair.indexOf("=") + 1) == null || pair.substring(pair.indexOf("=") + 1).equals("")) {
+        value="";
+      }
+ else {
+        value=URLDecoder.decode(pair.substring(pair.indexOf("=") + 1),"UTF-8");
+      }
+      value=value.replaceAll("\\+"," ");
+      parameters.put(key,value);
+    }
+  }
+}

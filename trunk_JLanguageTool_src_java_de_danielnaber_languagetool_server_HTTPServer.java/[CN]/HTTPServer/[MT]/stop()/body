@@ -1,5 +1,5 @@
 {
-  System.out.println("Stopping server...");
-  daemon.tearDown();
+  System.out.println("Stoping server ");
+  server.stop(0);
   System.out.println("Server stopped");
 }

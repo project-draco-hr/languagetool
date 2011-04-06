@@ -1,4 +1,4 @@
 {
   this.port=port;
-  this.verbose=verbose;
+  HTTPServer.verbose=verbose;
 }
