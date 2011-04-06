@@ -13,8 +13,8 @@
     }
   }
   try {
-    com.sun.net.httpserver.HttpServer server=HttpServer.create(new InetSocketAddress(port),0);
-    server.createContext("/",new Handler());
+    final com.sun.net.httpserver.HttpServer server=HttpServer.create(new InetSocketAddress(port),0);
+    server.createContext("/",new LanguageToolHttpHandler());
     server.start();
   }
  catch (  Exception e) {

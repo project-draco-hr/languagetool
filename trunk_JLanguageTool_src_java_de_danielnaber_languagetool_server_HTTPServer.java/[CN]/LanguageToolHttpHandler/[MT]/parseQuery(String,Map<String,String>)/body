@@ -1,10 +1,10 @@
 {
   if (query != null) {
-    String pairs[]=query.split("[&]");
+    final String[] pairs=query.split("[&]");
     for (    String pair : pairs) {
-      String param=pair.substring(0,pair.indexOf("="));
+      final String param=pair.substring(0,pair.indexOf("="));
       String key=null;
-      String value=null;
+      String value;
       if (param != null) {
         key=URLDecoder.decode(param,System.getProperty("file.encoding"));
       }

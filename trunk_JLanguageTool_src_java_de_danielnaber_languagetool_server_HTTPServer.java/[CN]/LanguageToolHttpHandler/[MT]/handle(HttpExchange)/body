@@ -1,15 +1,15 @@
 {
-  parameters=new HashMap<String,String>();
+  final Map<String,String> parameters=new HashMap<String,String>();
 synchronized (instances) {
-    URI requestedUri=t.getRequestURI();
+    final URI requestedUri=t.getRequestURI();
     if ("post".equalsIgnoreCase(t.getRequestMethod())) {
-      InputStreamReader isr=new InputStreamReader(t.getRequestBody(),"utf-8");
-      BufferedReader br=new BufferedReader(isr);
-      String query=br.readLine();
+      final InputStreamReader isr=new InputStreamReader(t.getRequestBody(),"utf-8");
+      final BufferedReader br=new BufferedReader(isr);
+      final String query=br.readLine();
       parseQuery(query,parameters);
     }
  else {
-      String query=requestedUri.getRawQuery();
+      final String query=requestedUri.getRawQuery();
       parseQuery(query,parameters);
     }
     final long timeStart=System.currentTimeMillis();
@@ -17,13 +17,13 @@ synchronized (instances) {
     try {
       if (StringTools.isEmpty(requestedUri.getRawPath())) {
         t.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
-        throw new RuntimeException("Error: Access to " + requestedUri.getPath().toString() + " denied");
+        throw new RuntimeException("Error: Access to " + requestedUri.getPath() + " denied");
       }
       if (allowedIPs.contains(t.getRemoteAddress().getAddress().toString())) {
         if (requestedUri.getRawPath().endsWith("/Languages")) {
           t.getResponseHeaders().set("Content-Type","text/xml");
           t.getResponseHeaders().set("Content_Encoding","UTF-8");
-          String response=getSupportedLanguagesAsXML();
+          final String response=getSupportedLanguagesAsXML();
           t.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes().length);
           t.getResponseBody().write(response.getBytes());
           t.close();
@@ -68,7 +68,7 @@ synchronized (instances) {
         print("Exceptions was caused by this text: " + text);
       }
       e.printStackTrace();
-      String response="Error: " + StringTools.escapeXML(e.toString());
+      final String response="Error: " + StringTools.escapeXML(e.toString());
       t.sendResponseHeaders(500,response.getBytes().length);
       t.getResponseBody().write(response.getBytes());
       t.close();
