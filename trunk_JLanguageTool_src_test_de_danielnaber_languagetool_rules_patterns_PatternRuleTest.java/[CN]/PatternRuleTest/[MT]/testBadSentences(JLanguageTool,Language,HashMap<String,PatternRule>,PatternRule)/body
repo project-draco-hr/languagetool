@@ -12,7 +12,7 @@
     assertTrue(badSentence.trim().length() > 0);
     RuleMatch[] matches=getMatches(rule,badSentence,languageTool);
     if (!rule.isWithComplexPhrase()) {
-      assertTrue(lang + ": Did expect one error in: \"" + badSentence+ "\" (Rule: "+ rule+ "), got "+ matches.length+ ". Additional info:"+ rule.getMessage(),matches.length == 1);
+      assertTrue(lang + ": Did expect one error in: \"" + badSentence+ "\" (Rule: "+ rule+ "), but found "+ matches.length+ ". Additional info:"+ rule.getMessage(),matches.length == 1);
       assertEquals(lang + ": Incorrect match position markup (start) for rule " + rule,expectedMatchStart,matches[0].getFromPos());
       assertEquals(lang + ": Incorrect match position markup (end) for rule " + rule,expectedMatchEnd,matches[0].getToPos());
       if (suggestedCorrections != null && suggestedCorrections.size() > 0) {
