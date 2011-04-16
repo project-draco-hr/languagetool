@@ -14,6 +14,7 @@ synchronized (instances) {
     }
     final long timeStart=System.currentTimeMillis();
     String text=null;
+    String sourceText=null;
     try {
       if (StringTools.isEmpty(requestedUri.getRawPath())) {
         t.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
@@ -42,13 +43,27 @@ synchronized (instances) {
           if (null != motherTongueParam) {
             motherTongue=Language.getLanguageForShortName(motherTongueParam);
           }
-          final JLanguageTool lt=getLanguageToolInstance(lang,motherTongue);
           text=parameters.get("text");
           if (text == null) {
             throw new IllegalArgumentException("Missing 'text' parameter");
           }
-          print("Checking " + text.length() + " characters of text, language "+ langParam);
-          final List<RuleMatch> matches=lt.check(text);
+          List<RuleMatch> matches=null;
+          sourceText=parameters.get("srctext");
+          if (sourceText == null) {
+            final JLanguageTool lt=getLanguageToolInstance(lang,motherTongue);
+            print("Checking " + text.length() + " characters of text, language "+ langParam);
+            matches=lt.check(text);
+          }
+ else {
+            if (motherTongueParam == null) {
+              throw new IllegalArgumentException("Missing 'motherTongue' for bilingual checks");
+            }
+            print("Checking bilingual text, with source length" + sourceText.length() + "and target length "+ text.length()+ " (characters), source language "+ motherTongue+ "and target language "+ langParam);
+            final JLanguageTool trglt=getLanguageToolInstance(lang,null);
+            final JLanguageTool srclt=getLanguageToolInstance(motherTongue,null);
+            List<BitextRule> bRules=Tools.getBitextRules(motherTongue,lang);
+            matches=Tools.checkBitext(sourceText,text,srclt,trglt,bRules);
+          }
           t.getResponseHeaders().set("Content-Type","text/xml");
           t.getResponseHeaders().set("Content_Encoding","UTF-8");
           final String response=StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE,StringTools.XmlPrintMode.NORMAL_XML);

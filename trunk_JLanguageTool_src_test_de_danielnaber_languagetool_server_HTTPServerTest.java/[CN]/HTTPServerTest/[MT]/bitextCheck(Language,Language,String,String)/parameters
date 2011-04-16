@@ -1,0 +1,4 @@
+Language lang
+Language motherTongue
+String sourceText
+String text

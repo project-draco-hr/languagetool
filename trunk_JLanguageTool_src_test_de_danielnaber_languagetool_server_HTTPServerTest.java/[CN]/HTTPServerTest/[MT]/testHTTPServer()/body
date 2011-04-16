@@ -27,6 +27,9 @@
     assertTrue(check(Language.ENGLISH,"Me & you you").contains("&"));
     assertTrue(check(Language.ENGLISH,Language.GERMAN,"We will berate you").indexOf("BERATE") != -1);
     assertTrue(check(Language.GERMAN,Language.ENGLISH,"Man sollte ihn nicht so beraten.").indexOf("BERATE") != -1);
+    assertTrue(check(Language.POLISH,Language.ENGLISH,"To jest frywolne.").indexOf("FRIVOLOUS") != -1);
+    assertTrue(bitextCheck(Language.POLISH,Language.ENGLISH,"This is frivolous.","To jest frywolne.").indexOf("FRIVOLOUS") != -1);
+    assertTrue(bitextCheck(Language.POLISH,Language.ENGLISH,"This is something else.","To jest frywolne.").indexOf("FRIVOLOUS") == -1);
   }
   finally {
     server.stop();
