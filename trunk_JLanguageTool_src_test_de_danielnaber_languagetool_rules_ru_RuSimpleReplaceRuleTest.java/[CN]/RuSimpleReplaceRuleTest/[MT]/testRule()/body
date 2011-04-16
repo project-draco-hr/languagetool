@@ -1,5 +1,5 @@
 {
-  RuSimpleReplaceRule rule=new RuSimpleReplaceRule(TestTools.getMessages("ru"));
+  RussianSimpleReplaceRule rule=new RussianSimpleReplaceRule(TestTools.getMessages("ru"));
   RuleMatch[] matches;
   JLanguageTool langTool=new JLanguageTool(Language.RUSSIAN);
   matches=rule.match(langTool.getAnalyzedSentence("?????????? ???????? ??????????????."));
