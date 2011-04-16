@@ -1,4 +1,4 @@
 BitextReader reader
-JLanguageTool srcLt
-JLanguageTool trgLt
+JLanguageTool sourceLt
+JLanguageTool targetLt
 List<BitextRule> bRules

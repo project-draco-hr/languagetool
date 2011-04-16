@@ -7,7 +7,7 @@
   }
   if (apiFormat) {
     final String xml=StringTools.ruleMatchesToXML(ruleMatches,trg,contextSize,xmlMode);
-    PrintStream out=new PrintStream(System.out,true,"UTF-8");
+    final PrintStream out=new PrintStream(System.out,true,"UTF-8");
     out.print(xml);
   }
  else {
