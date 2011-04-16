@@ -5,8 +5,8 @@
     final JLanguageTool lt=new JLanguageTool(language);
     final List<Rule> allRules=lt.getAllRules();
     for (    Rule rule : allRules) {
-      assertUniqueness(ids,ruleClasses,language,rule);
-      assertValidId(language,rule);
+      assertIdUniqueness(ids,ruleClasses,language,rule);
+      assertIdValidity(language,rule);
     }
   }
 }
