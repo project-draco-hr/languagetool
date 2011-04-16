@@ -1,7 +1,7 @@
 {
   if (startPos == 0) {
     try {
-      paragraphMatches=langTool.check(paraText,false,JLanguageTool.paragraphHandling.ONLYPARA);
+      paragraphMatches=langTool.check(paraText,false,JLanguageTool.ParagraphHandling.ONLYPARA);
       this.docID=docID;
     }
  catch (    final Throwable t) {

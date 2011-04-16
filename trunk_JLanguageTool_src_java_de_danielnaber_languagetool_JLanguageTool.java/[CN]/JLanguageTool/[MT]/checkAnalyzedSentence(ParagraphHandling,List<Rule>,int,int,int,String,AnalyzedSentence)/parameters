@@ -1,4 +1,4 @@
-paragraphHandling paraMode
+ParagraphHandling paraMode
 List<Rule> allRules
 int tokenCount
 int lineCount
