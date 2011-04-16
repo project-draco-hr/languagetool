@@ -1,7 +1,0 @@
-{
-  final StringBuilder sb=new StringBuilder();
-  for (  AnalyzedTokenReadings token : text.getTokens()) {
-    sb.append(token.getToken());
-  }
-  return sb.toString();
-}
