@@ -1,6 +1,5 @@
 {
-  File input=File.createTempFile("input","txt");
-  input.deleteOnExit();
+  File input=createTempFile();
   PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(input),"UTF-8"));
   w.println("This is not actual.\tTo nie jest aktualne.");
   w.println("Test\tTest");
