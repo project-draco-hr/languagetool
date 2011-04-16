@@ -1,5 +1,0 @@
-{
-  final Set<String> ids=new HashSet<String>();
-  ids.add("KM_SIMPLE_REPLACE");
-  return ids;
-}

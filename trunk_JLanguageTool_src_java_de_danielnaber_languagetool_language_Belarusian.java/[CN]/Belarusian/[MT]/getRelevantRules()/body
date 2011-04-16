@@ -1,0 +1,3 @@
+{
+  return Arrays.asList(CommaWhitespaceRule.class,DoublePunctuationRule.class,UppercaseSentenceStartRule.class,WhitespaceRule.class);
+}

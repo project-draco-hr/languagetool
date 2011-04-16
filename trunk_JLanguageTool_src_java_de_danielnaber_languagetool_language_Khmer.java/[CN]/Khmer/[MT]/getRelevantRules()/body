@@ -1,0 +1,5 @@
+{
+  final List<Class<? extends Rule>> ruleClasses=new ArrayList<Class<? extends Rule>>();
+  ruleClasses.add(KhmerSimpleReplaceRule.class);
+  return ruleClasses;
+}

@@ -1,0 +1,5 @@
+{
+  CaseRule rule=new CaseRule(null);
+  assertTrue(rule.supportsLanguage(Language.GERMAN));
+  assertFalse(rule.supportsLanguage(Language.ENGLISH));
+}

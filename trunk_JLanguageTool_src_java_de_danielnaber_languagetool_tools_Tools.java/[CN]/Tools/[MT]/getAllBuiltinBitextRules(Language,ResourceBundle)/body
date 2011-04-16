@@ -1,7 +1,7 @@
 {
   final List<BitextRule> rules=new ArrayList<BitextRule>();
   try {
-    final Class[] classes=ReflectionUtils.findClasses(Rule.class.getClassLoader(),Rule.class.getPackage().getName() + ".bitext",".*Rule$",0,Rule.class,null);
+    final List<Class<? extends BitextRule>> classes=BitextRule.getRelevantRules();
     for (    final Class class1 : classes) {
       final Constructor[] constructors=class1.getConstructors();
       for (      final Constructor constructor : constructors) {

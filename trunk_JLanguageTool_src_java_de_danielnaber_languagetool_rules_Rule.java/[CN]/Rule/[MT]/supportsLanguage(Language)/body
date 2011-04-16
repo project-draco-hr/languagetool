@@ -1,4 +1,4 @@
 {
-  final Set<String> relevantIDs=language.getRelevantRuleIDs();
-  return relevantIDs != null && relevantIDs.contains(getId());
+  final List<Class<? extends Rule>> relevantRuleClasses=language.getRelevantRules();
+  return relevantRuleClasses != null && relevantRuleClasses.contains(this.getClass());
 }

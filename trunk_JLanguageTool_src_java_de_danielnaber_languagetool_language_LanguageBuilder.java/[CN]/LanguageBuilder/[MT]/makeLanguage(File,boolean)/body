@@ -25,8 +25,8 @@
     public String getName(){
       return parts[2].replace(".xml","");
     }
-    public Set<String> getRelevantRuleIDs(){
-      return null;
+    @Override public List<Class<? extends Rule>> getRelevantRules(){
+      return Collections.emptyList();
     }
     @Override public String getRuleFileName(){
       return file.getAbsolutePath();

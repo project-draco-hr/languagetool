@@ -1,13 +1,9 @@
 {
   final List<Rule> rules=new ArrayList<Rule>();
-  try {
-    final Class[] classes1=ReflectionUtils.findClasses(Rule.class.getClassLoader(),Rule.class.getPackage().getName(),".*Rule$",0,Rule.class,null);
-    final Class[] classes2=ReflectionUtils.findClasses(Rule.class.getClassLoader(),Rule.class.getPackage().getName() + "." + language.getShortName(),".*Rule$",0,Rule.class,null);
-    final List<Class> classes=new ArrayList<Class>();
-    classes.addAll(Arrays.asList(classes1));
-    classes.addAll(Arrays.asList(classes2));
-    for (    final Class class1 : classes) {
-      final Constructor[] constructors=class1.getConstructors();
+  final List<Class<? extends Rule>> languageRules=language.getRelevantRules();
+  for (  Class<? extends Rule> ruleClass : languageRules) {
+    final Constructor[] constructors=ruleClass.getConstructors();
+    try {
       for (      final Constructor constructor : constructors) {
         final Class[] paramTypes=constructor.getParameterTypes();
         if (paramTypes.length == 1 && paramTypes[0].equals(ResourceBundle.class)) {
@@ -18,12 +14,12 @@
           rules.add((Rule)constructor.newInstance(messages,language));
           break;
         }
-        throw new RuntimeException("Unknown constructor for rule class: " + class1.getName());
+        throw new RuntimeException("Unknown constructor for rule class: " + ruleClass.getName());
       }
     }
-  }
- catch (  final Exception e) {
-    throw new RuntimeException("Failed to load rules for language " + language,e);
+ catch (    Exception e) {
+      throw new RuntimeException("Failed to load rules for language " + language,e);
+    }
   }
   return rules.toArray(new Rule[rules.size()]);
 }
