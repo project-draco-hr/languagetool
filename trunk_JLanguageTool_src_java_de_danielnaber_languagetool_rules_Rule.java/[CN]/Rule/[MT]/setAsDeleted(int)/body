@@ -2,5 +2,5 @@
   if (removedMatches == null) {
     removedMatches=new ArrayList<RuleMatch>();
   }
-  removedMatches.add(previousMatches.get(i));
+  removedMatches.add(previousMatches.get(index));
 }

@@ -2,5 +2,5 @@
   if (removedMatches == null) {
     return false;
   }
-  return removedMatches.contains(r);
+  return removedMatches.contains(ruleMatch);
 }
