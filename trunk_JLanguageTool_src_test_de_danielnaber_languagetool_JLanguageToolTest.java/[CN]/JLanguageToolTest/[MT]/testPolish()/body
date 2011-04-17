@@ -10,16 +10,14 @@
   tool.enableDefaultOffRule("PL_WORD_REPEAT");
   matches=tool.check("By?? on bowiem pi??knym strzelcem bowiem.");
   assertEquals(1,matches.size());
-  List<PatternRule> rules=tool.loadPatternRules(JLanguageTool.getDataBroker().getRulesDir() + "/pl/grammar.xml");
-  for (  final PatternRule rule : rules) {
-    tool.addRule(rule);
-  }
+  tool.activateDefaultPatternRules();
   matches=tool.check("Premier drapie si?? w ucho co i rusz.");
   assertEquals(1,matches.size());
   matches=tool.check("I can give you more a detailed description");
   assertEquals(0,matches.size());
   tool.setListUnknownWords(true);
   matches=tool.check("This is not a Polish text.");
+  assertEquals(0,matches.size());
   assertEquals("[Polish, This, is]",tool.getUnknownWords().toString());
   matches=tool.check("To jest tekst.\nTest 1. To jest linia w kt??rej nie ma przecinka.");
   assertEquals(16,matches.get(0).getColumn());
@@ -30,10 +28,7 @@
   final Language lang=Language.POLISH;
   lang.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(true);
   tool=new JLanguageTool(lang);
-  rules=tool.loadPatternRules(JLanguageTool.getDataBroker().getRulesDir() + "/pl/grammar.xml");
-  for (  final PatternRule rule : rules) {
-    tool.addRule(rule);
-  }
+  tool.activateDefaultPatternRules();
   matches=tool.check("To jest tekst.\nTest 1. To jest linia w kt??rej nie ma przecinka.");
   assertEquals(16,matches.get(0).getColumn());
   matches=tool.check("To jest tekst. \nTest 1. To jest linia w kt??rej nie ma przecinka.");

@@ -1,23 +1,15 @@
 {
   final JLanguageTool tool=new JLanguageTool(Language.ENGLISH);
-  List<RuleMatch> matches=tool.check("A test that should not give errors.");
-  assertEquals(0,matches.size());
-  matches=tool.check("A test test that should give errors.");
-  assertEquals(1,matches.size());
-  matches=tool.check("I can give you more a detailed description.");
-  assertEquals(0,matches.size());
+  assertEquals(0,tool.check("A test that should not give errors.").size());
+  assertEquals(1,tool.check("A test test that should give errors.").size());
+  assertEquals(0,tool.check("I can give you more a detailed description.").size());
   assertEquals(8,tool.getAllRules().size());
-  final List<PatternRule> rules=tool.loadPatternRules(JLanguageTool.getDataBroker().getRulesDir() + "/en/grammar.xml");
-  for (  PatternRule patternRule : rules) {
-    tool.addRule(patternRule);
-  }
+  tool.activateDefaultPatternRules();
   assertTrue(tool.getAllRules().size() > 3);
-  matches=tool.check("I can give you more a detailed description.");
-  assertEquals(1,matches.size());
+  assertEquals(1,tool.check("I can give you more a detailed description.").size());
   tool.disableRule("MORE_A_JJ");
-  matches=tool.check("I can give you more a detailed description.");
-  assertEquals(0,matches.size());
+  assertEquals(0,tool.check("I can give you more a detailed description.").size());
+  assertEquals(1,tool.check("I've go to go.").size());
   tool.disableCategory("Possible Typos");
-  matches=tool.check("I've go to go.");
-  assertEquals(0,matches.size());
+  assertEquals(0,tool.check("I've go to go.").size());
 }
