@@ -1,4 +1,0 @@
-{
-  super((String[])ArrayUtils.addAll(ABBREV_LIST,abbrevList));
-  super.monthNames=MONTH_NAMES;
-}

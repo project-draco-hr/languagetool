@@ -1,3 +1,0 @@
-{
-  sTokenizer.setSingleLineBreaksMarksParagraph(true);
-}
