@@ -1,0 +1,40 @@
+{
+  final String langParam=parameters.get("language");
+  if (langParam == null) {
+    throw new IllegalArgumentException("Missing 'language' parameter");
+  }
+  final Language lang=Language.getLanguageForShortName(langParam);
+  if (lang == null) {
+    throw new IllegalArgumentException("Unknown language '" + langParam + "'");
+  }
+  final String motherTongueParam=parameters.get("motherTongue");
+  Language motherTongue=null;
+  if (null != motherTongueParam) {
+    motherTongue=Language.getLanguageForShortName(motherTongueParam);
+  }
+  final List<RuleMatch> matches;
+  final String sourceText=parameters.get("srctext");
+  if (sourceText == null) {
+    final JLanguageTool lt=getLanguageToolInstance(lang,motherTongue);
+    print("Checking " + text.length() + " characters of text, language "+ langParam);
+    matches=lt.check(text);
+  }
+ else {
+    if (motherTongueParam == null) {
+      throw new IllegalArgumentException("Missing 'motherTongue' for bilingual checks");
+    }
+    print("Checking bilingual text, with source length" + sourceText.length() + "and target length "+ text.length()+ " (characters), source language "+ motherTongue+ "and target language "+ langParam);
+    final JLanguageTool sourceLt=getLanguageToolInstance(motherTongue,null);
+    final JLanguageTool targetLt=getLanguageToolInstance(lang,null);
+    final List<BitextRule> bRules=Tools.getBitextRules(motherTongue,lang);
+    matches=Tools.checkBitext(sourceText,text,sourceLt,targetLt,bRules);
+  }
+  t.getResponseHeaders().set("Content-Type","text/xml");
+  t.getResponseHeaders().set("Content_Encoding","UTF-8");
+  final String response=StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE,StringTools.XmlPrintMode.NORMAL_XML);
+  print("Check done in " + (System.currentTimeMillis() - timeStart) + "ms");
+  t.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes().length);
+  t.getResponseBody().write(response.getBytes());
+  t.close();
+  return text;
+}

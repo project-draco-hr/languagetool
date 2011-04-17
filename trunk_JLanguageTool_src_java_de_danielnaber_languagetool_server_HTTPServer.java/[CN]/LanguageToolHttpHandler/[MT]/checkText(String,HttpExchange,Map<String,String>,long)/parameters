@@ -1,0 +1,4 @@
+String text
+HttpExchange t
+Map<String,String> parameters
+long timeStart
