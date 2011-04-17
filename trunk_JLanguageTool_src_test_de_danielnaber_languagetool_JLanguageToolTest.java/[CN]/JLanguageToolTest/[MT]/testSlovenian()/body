@@ -1,5 +1,4 @@
 {
   final JLanguageTool tool=new JLanguageTool(Language.SLOVENIAN);
-  List<RuleMatch> matches=tool.check("Kupil je npr. jajca, moko in mleko.");
-  assertEquals(0,matches.size());
+  assertEquals(0,tool.check("Kupil je npr. jajca, moko in mleko.").size());
 }
