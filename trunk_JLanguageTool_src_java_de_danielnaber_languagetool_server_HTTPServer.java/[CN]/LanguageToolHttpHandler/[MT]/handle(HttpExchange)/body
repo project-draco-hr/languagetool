@@ -1,6 +1,6 @@
 {
   final Map<String,String> parameters=new HashMap<String,String>();
-synchronized (instances) {
+synchronized (INSTANCES) {
     final URI requestedUri=t.getRequestURI();
     if ("post".equalsIgnoreCase(t.getRequestMethod())) {
       final InputStreamReader isr=new InputStreamReader(t.getRequestBody(),"utf-8");
@@ -30,7 +30,7 @@ synchronized (instances) {
         t.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
         throw new RuntimeException("Error: Access to " + requestedUri.getPath() + " denied");
       }
-      if (allowedIPs.contains(t.getRemoteAddress().getAddress().toString())) {
+      if (ALLOWED_IPS.contains(t.getRemoteAddress().getAddress().toString())) {
         if (requestedUri.getRawPath().endsWith("/Languages")) {
           t.getResponseHeaders().set("Content-Type","text/xml");
           t.getResponseHeaders().set("Content_Encoding","UTF-8");

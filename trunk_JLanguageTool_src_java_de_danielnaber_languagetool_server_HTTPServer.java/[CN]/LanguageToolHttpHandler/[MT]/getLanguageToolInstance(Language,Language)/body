@@ -1,8 +1,8 @@
 {
-  Map<Language,JLanguageTool> languageTools=instances.get(lang);
+  Map<Language,JLanguageTool> languageTools=INSTANCES.get(lang);
   if (null == languageTools) {
     languageTools=new HashMap<Language,JLanguageTool>();
-    instances.put(lang,languageTools);
+    INSTANCES.put(lang,languageTools);
   }
   final JLanguageTool languageTool=languageTools.get(motherTongue);
   if (null == languageTool) {
