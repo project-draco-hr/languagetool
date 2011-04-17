@@ -1,3 +1,3 @@
 {
-  return COUNTRIES;
+  return new String[]{"FR","","BE","CH","CA","LU","MC","CM","CI","HI","ML","SN","CD","MA","RE"};
 }
