@@ -1,6 +1,5 @@
 {
-  t.getResponseHeaders().set("Content-Type","text/xml");
-  t.getResponseHeaders().set("Content_Encoding","UTF-8");
+  t.getResponseHeaders().set("Content-Type",CONTENT_TYPE_VALUE);
   final String response=getSupportedLanguagesAsXML();
   t.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes().length);
   t.getResponseBody().write(response.getBytes());
