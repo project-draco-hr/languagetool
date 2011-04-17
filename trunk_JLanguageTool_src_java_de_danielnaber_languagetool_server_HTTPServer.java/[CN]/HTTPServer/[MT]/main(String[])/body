@@ -18,5 +18,6 @@
     server.start();
   }
  catch (  Exception e) {
+    throw new RuntimeException("Could not start LanguageTool HTTP server on port " + port,e);
   }
 }

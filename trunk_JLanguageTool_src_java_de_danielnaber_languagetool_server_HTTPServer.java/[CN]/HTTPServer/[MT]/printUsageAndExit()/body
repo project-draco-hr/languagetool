@@ -1,4 +1,4 @@
 {
-  System.out.println("Usage: HTTPServer [-p|--port port]");
+  System.out.println("Usage: " + HTTPServer.class.getSimpleName() + " [-p|--port port]");
   System.exit(1);
 }
