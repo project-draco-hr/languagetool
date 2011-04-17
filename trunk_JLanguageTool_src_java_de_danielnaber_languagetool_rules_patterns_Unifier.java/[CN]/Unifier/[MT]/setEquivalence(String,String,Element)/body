@@ -3,7 +3,7 @@
     return;
   }
   equivalenceTypes.put(new EquivalenceTypeLocator(feature,type),elem);
-  List<String> lTypes;
+  final List<String> lTypes;
   if (equivalenceFeatures.containsKey(feature)) {
     lTypes=equivalenceFeatures.get(feature);
   }

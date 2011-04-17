@@ -3,7 +3,7 @@
     return null;
   }
   if (!firstUnified) {
-    AnalyzedTokenReadings tmpATR;
+    final AnalyzedTokenReadings tmpATR;
     int first=0;
     tmpFeaturesFound.add(true);
     while (!tmpFeaturesFound.get(first)) {

@@ -20,19 +20,19 @@
       if (types == null || types.isEmpty()) {
         types=equivalenceFeatures.get(feat.getKey());
       }
-      for (      final String typename : types) {
-        final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typename));
+      for (      final String typeName : types) {
+        final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
         if (testElem == null) {
           return false;
         }
         if (testElem.isMatched(aToken)) {
           if (!equivalencesMatched.get(tokCnt).containsKey(feat.getKey())) {
             final Set<String> typeSet=new HashSet<String>();
-            typeSet.add(typename);
+            typeSet.add(typeName);
             equivalencesMatched.get(tokCnt).put(feat.getKey(),typeSet);
           }
  else {
-            equivalencesMatched.get(tokCnt).get(feat.getKey()).add(typename);
+            equivalencesMatched.get(tokCnt).get(feat.getKey()).add(typeName);
           }
         }
       }
