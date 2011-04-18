@@ -23,6 +23,9 @@
     }
   }
   if (isRegularExpression && stringValue.contains("|")) {
+    if (stringValue.indexOf("||") >= 0) {
+      System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains empty disjunction || within "+ "\""+ stringValue+ "\".");
+    }
     final String[] groups=stringValue.split("\\)");
     for (    final String group : groups) {
       final String[] alt=group.split("\\|");
