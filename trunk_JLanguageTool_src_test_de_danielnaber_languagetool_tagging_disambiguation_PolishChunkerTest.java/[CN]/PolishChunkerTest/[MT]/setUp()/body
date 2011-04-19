@@ -2,5 +2,5 @@
   tagger=new PolishTagger();
   tokenizer=new WordTokenizer();
   sentenceTokenizer=new SRXSentenceTokenizer("pl");
-  disambiguator=new PolishChunker();
+  disambiguator=new MultiWordChunker("/pl/multiwords.txt");
 }

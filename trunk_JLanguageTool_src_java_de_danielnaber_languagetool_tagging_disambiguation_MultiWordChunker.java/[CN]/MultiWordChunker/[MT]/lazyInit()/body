@@ -3,7 +3,7 @@
   mStartSpace=new HashMap<String,String>();
   mStartNoSpace=new HashMap<String,String>();
   mFull=new HashMap<String,String>();
-  final List<String> posTokens=loadWords(JLanguageTool.getDataBroker().getFromResourceDirAsStream(FILENAME));
+  final List<String> posTokens=loadWords(JLanguageTool.getDataBroker().getFromResourceDirAsStream(filename));
   for (  String posToken : posTokens) {
     final String[] tokenAndTag=posToken.split("\t");
     final boolean containsSpace=tokenAndTag[0].indexOf(' ') > 0;
