@@ -35,5 +35,4 @@
   t.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes().length);
   t.getResponseBody().write(response.getBytes());
   t.close();
-  return text;
 }
