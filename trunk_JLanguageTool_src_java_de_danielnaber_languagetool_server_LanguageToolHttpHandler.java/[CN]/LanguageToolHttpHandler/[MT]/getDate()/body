@@ -1,4 +1,0 @@
-{
-  final SimpleDateFormat sdf=new SimpleDateFormat();
-  return sdf.format(new Date());
-}

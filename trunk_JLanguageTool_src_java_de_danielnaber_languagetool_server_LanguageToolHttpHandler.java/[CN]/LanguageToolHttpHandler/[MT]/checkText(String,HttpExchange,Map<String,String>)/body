@@ -31,7 +31,6 @@
   }
   t.getResponseHeaders().set("Content-Type",CONTENT_TYPE_VALUE);
   final String response=StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE,StringTools.XmlPrintMode.NORMAL_XML);
-  print("Check done in " + (System.currentTimeMillis() - timeStart) + "ms");
   t.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes().length);
   t.getResponseBody().write(response.getBytes());
   t.close();
