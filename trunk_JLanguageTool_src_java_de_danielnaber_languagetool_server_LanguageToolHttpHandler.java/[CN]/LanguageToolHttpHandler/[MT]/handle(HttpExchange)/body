@@ -27,7 +27,7 @@ synchronized (INSTANCES) {
       }
     }
  catch (    Exception e) {
-      if (HTTPServer.verbose) {
+      if (verbose) {
         print("Exception was caused by this text: " + text);
       }
       e.printStackTrace();
