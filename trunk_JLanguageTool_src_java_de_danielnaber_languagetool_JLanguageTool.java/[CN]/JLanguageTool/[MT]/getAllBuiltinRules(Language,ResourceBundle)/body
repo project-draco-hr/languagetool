@@ -4,21 +4,25 @@
   for (  Class<? extends Rule> ruleClass : languageRules) {
     final Constructor[] constructors=ruleClass.getConstructors();
     try {
-      for (      final Constructor constructor : constructors) {
+      if (constructors.length > 0) {
+        final Constructor constructor=constructors[0];
         final Class[] paramTypes=constructor.getParameterTypes();
         if (paramTypes.length == 1 && paramTypes[0].equals(ResourceBundle.class)) {
           rules.add((Rule)constructor.newInstance(messages));
-          break;
         }
-        if (paramTypes.length == 2 && paramTypes[0].equals(ResourceBundle.class) && paramTypes[1].equals(Language.class)) {
+ else         if (paramTypes.length == 2 && paramTypes[0].equals(ResourceBundle.class) && paramTypes[1].equals(Language.class)) {
           rules.add((Rule)constructor.newInstance(messages,language));
-          break;
         }
-        throw new RuntimeException("Unknown constructor for rule class: " + ruleClass.getName());
+ else {
+          throw new RuntimeException("No matching constructor found for rule class: " + ruleClass.getName());
+        }
+      }
+ else {
+        throw new RuntimeException("No public constructor for rule class: " + ruleClass.getName());
       }
     }
  catch (    Exception e) {
-      throw new RuntimeException("Failed to load rules for language " + language,e);
+      throw new RuntimeException("Failed to load built-in Java rules for language " + language,e);
     }
   }
   return rules.toArray(new Rule[rules.size()]);
