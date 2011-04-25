@@ -25,14 +25,8 @@
       }
     }
   }
- catch (  final IOException ioe) {
-    throw new RuntimeException(ioe);
-  }
-catch (  final ParserConfigurationException ex) {
-    throw new RuntimeException(ex);
-  }
-catch (  final SAXException ex) {
-    throw new RuntimeException(ex);
+ catch (  final Exception e) {
+    throw new RuntimeException(e);
   }
   return langTool;
 }

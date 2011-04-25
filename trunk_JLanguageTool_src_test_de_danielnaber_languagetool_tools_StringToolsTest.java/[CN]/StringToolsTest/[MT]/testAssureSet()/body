@@ -4,21 +4,21 @@
     StringTools.assureSet(s,"varName");
     fail();
   }
- catch (  IllegalArgumentException e) {
+ catch (  IllegalArgumentException expected) {
   }
   s=" \t";
   try {
     StringTools.assureSet(s,"varName");
     fail();
   }
- catch (  IllegalArgumentException e) {
+ catch (  IllegalArgumentException expected) {
   }
   s=null;
   try {
     StringTools.assureSet(s,"varName");
     fail();
   }
- catch (  NullPointerException e) {
+ catch (  NullPointerException expected) {
   }
   s="foo";
   StringTools.assureSet(s,"varName");

@@ -13,15 +13,10 @@
     try {
       matches=checkText(langTool,textArea.getText(),sb);
     }
- catch (    final Exception ex) {
-      sb.append("<br><br><b><font color=\"red\">" + ex.toString() + "<br>");
-      final StackTraceElement[] elements=ex.getStackTrace();
-      for (      final StackTraceElement element : elements) {
-        sb.append(element);
-        sb.append("<br>");
-      }
+ catch (    final Exception e) {
+      sb.append("<br><br><b><font color=\"red\">");
+      sb.append(de.danielnaber.languagetool.tools.Tools.getFullStackTrace(e).replace("\n","<br/>"));
       sb.append("</font></b><br>");
-      ex.printStackTrace();
     }
     final String checkDone=Tools.makeTexti18n(messages,"checkDone",new Object[]{matches});
     sb.append(checkDone);

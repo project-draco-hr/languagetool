@@ -3,8 +3,6 @@
     validateInternal(this.getClass().getResourceAsStream(filename),this.getClass().getResource(xmlSchema));
   }
  catch (  Exception e) {
-    final IOException ioe=new IOException("Cannot load or parse '" + filename + "'");
-    ioe.initCause(e);
-    throw ioe;
+    throw new IOException("Cannot load or parse '" + filename + "'",e);
   }
 }
