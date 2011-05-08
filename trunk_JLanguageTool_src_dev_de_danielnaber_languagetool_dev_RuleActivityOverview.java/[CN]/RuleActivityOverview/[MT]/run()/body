@@ -1,0 +1,30 @@
+{
+  System.out.println("Commits per language in the last " + PAST_DAYS + " days");
+  System.out.println("Date: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+  final List<String> sortedLanguages=new ArrayList<String>();
+  for (  Language element : Language.LANGUAGES) {
+    if (element == Language.DEMO) {
+      continue;
+    }
+    sortedLanguages.add(element.getName());
+  }
+  Collections.sort(sortedLanguages);
+  final Calendar today=GregorianCalendar.getInstance();
+  final Calendar past=GregorianCalendar.getInstance();
+  past.add(Calendar.DAY_OF_MONTH,-PAST_DAYS);
+  final SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+  final String todayString=dateFormat.format(today.getTime());
+  final String pastString=dateFormat.format(past.getTime());
+  final Runtime runtime=Runtime.getRuntime();
+  for (  final String langName : sortedLanguages) {
+    final Language lang=Language.getLanguageForName(langName);
+    final File xmlFile=new File(".",JLanguageTool.getDataBroker().getRulesDir() + File.separator + lang.getShortName()+ File.separator+ "grammar.xml");
+    final String command="svn log -q -r {" + pastString + "}:{"+ todayString+ "} src/"+ xmlFile;
+    final Process process=runtime.exec(command);
+    final InputStream inputStream=process.getInputStream();
+    final String output=StringTools.readFile(inputStream);
+    process.waitFor();
+    final int commits=getCommits(output);
+    System.out.println(commits + "\t" + langName);
+  }
+}

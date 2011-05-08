@@ -1,0 +1,4 @@
+{
+  final RuleActivityOverview prg=new RuleActivityOverview();
+  prg.run();
+}
