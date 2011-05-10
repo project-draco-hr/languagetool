@@ -1,17 +1,7 @@
 {
-  Map<Language,JLanguageTool> languageTools=INSTANCES.get(lang);
-  if (null == languageTools) {
-    languageTools=new HashMap<Language,JLanguageTool>();
-    INSTANCES.put(lang,languageTools);
-  }
-  final JLanguageTool languageTool=languageTools.get(motherTongue);
-  if (null == languageTool) {
-    print("Creating JLanguageTool instance for language " + lang + ((null != motherTongue) ? (" and mother tongue " + motherTongue) : ""));
-    final JLanguageTool newLanguageTool=new JLanguageTool(lang,motherTongue);
-    newLanguageTool.activateDefaultPatternRules();
-    newLanguageTool.activateDefaultFalseFriendRules();
-    languageTools.put(motherTongue,newLanguageTool);
-    return newLanguageTool;
-  }
-  return languageTool;
+  print("Creating JLanguageTool instance for language " + lang + ((null != motherTongue) ? (" and mother tongue " + motherTongue) : ""));
+  final JLanguageTool newLanguageTool=new JLanguageTool(lang,motherTongue);
+  newLanguageTool.activateDefaultPatternRules();
+  newLanguageTool.activateDefaultFalseFriendRules();
+  return newLanguageTool;
 }

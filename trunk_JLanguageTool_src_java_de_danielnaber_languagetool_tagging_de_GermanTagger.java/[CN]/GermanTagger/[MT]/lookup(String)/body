@@ -3,6 +3,8 @@
   words.add(word);
   final List<AnalyzedTokenReadings> result=tag(words,false);
   final AnalyzedGermanTokenReadings atr=(AnalyzedGermanTokenReadings)result.get(0);
-  if (atr.getAnalyzedToken(0).getPOSTag() == null)   return null;
+  if (atr.getAnalyzedToken(0).getPOSTag() == null) {
+    return null;
+  }
   return atr;
 }

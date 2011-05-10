@@ -1,41 +1,39 @@
 {
-synchronized (INSTANCES) {
-    final URI requestedUri=t.getRequestURI();
-    final Map<String,String> parameters=getRequestQuery(t,requestedUri);
-    final long timeStart=System.currentTimeMillis();
-    String text=null;
-    try {
-      if (StringTools.isEmpty(requestedUri.getRawPath())) {
-        t.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
-        throw new RuntimeException("Error: Access to " + requestedUri.getPath() + " denied");
-      }
-      if (ALLOWED_IPS.contains(t.getRemoteAddress().getAddress().toString())) {
-        if (requestedUri.getRawPath().endsWith("/Languages")) {
-          printListOfLanguages(t);
-        }
- else {
-          text=parameters.get("text");
-          if (text == null) {
-            throw new IllegalArgumentException("Missing 'text' parameter");
-          }
-          checkText(text,t,parameters);
-        }
+  final URI requestedUri=t.getRequestURI();
+  final Map<String,String> parameters=getRequestQuery(t,requestedUri);
+  final long timeStart=System.currentTimeMillis();
+  String text=null;
+  try {
+    if (StringTools.isEmpty(requestedUri.getRawPath())) {
+      t.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
+      throw new RuntimeException("Error: Access to " + requestedUri.getPath() + " denied");
+    }
+    if (ALLOWED_IPS.contains(t.getRemoteAddress().getAddress().toString())) {
+      if (requestedUri.getRawPath().endsWith("/Languages")) {
+        printListOfLanguages(t);
       }
  else {
-        t.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
-        throw new RuntimeException("Error: Access from " + t.getRemoteAddress().toString() + " denied");
+        text=parameters.get("text");
+        if (text == null) {
+          throw new IllegalArgumentException("Missing 'text' parameter");
+        }
+        checkText(text,t,parameters);
       }
     }
- catch (    Exception e) {
-      if (verbose) {
-        print("Exception was caused by this text: " + text);
-      }
-      e.printStackTrace();
-      final String response="Error: " + StringTools.escapeXML(Tools.getFullStackTrace(e));
-      t.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR,response.getBytes().length);
-      t.getResponseBody().write(response.getBytes());
-      t.close();
+ else {
+      t.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
+      throw new RuntimeException("Error: Access from " + t.getRemoteAddress().toString() + " denied");
     }
-    print("Check done in " + (System.currentTimeMillis() - timeStart) + "ms");
   }
+ catch (  Exception e) {
+    if (verbose) {
+      print("Exception was caused by this text: " + text);
+    }
+    e.printStackTrace();
+    final String response="Error: " + StringTools.escapeXML(Tools.getFullStackTrace(e));
+    t.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR,response.getBytes().length);
+    t.getResponseBody().write(response.getBytes());
+    t.close();
+  }
+  print("Check done in " + (System.currentTimeMillis() - timeStart) + "ms");
 }
