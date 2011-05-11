@@ -1,28 +1,28 @@
 {
-  final URI requestedUri=t.getRequestURI();
-  final Map<String,String> parameters=getRequestQuery(t,requestedUri);
+  final URI requestedUri=httpExchange.getRequestURI();
+  final Map<String,String> parameters=getRequestQuery(httpExchange,requestedUri);
   final long timeStart=System.currentTimeMillis();
   String text=null;
   try {
     if (StringTools.isEmpty(requestedUri.getRawPath())) {
-      t.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
+      httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
       throw new RuntimeException("Error: Access to " + requestedUri.getPath() + " denied");
     }
-    if (ALLOWED_IPS.contains(t.getRemoteAddress().getAddress().toString())) {
+    if (ALLOWED_IPS.contains(httpExchange.getRemoteAddress().getAddress().toString())) {
       if (requestedUri.getRawPath().endsWith("/Languages")) {
-        printListOfLanguages(t);
+        printListOfLanguages(httpExchange);
       }
  else {
         text=parameters.get("text");
         if (text == null) {
           throw new IllegalArgumentException("Missing 'text' parameter");
         }
-        checkText(text,t,parameters);
+        checkText(text,httpExchange,parameters);
       }
     }
  else {
-      t.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
-      throw new RuntimeException("Error: Access from " + t.getRemoteAddress().toString() + " denied");
+      httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
+      throw new RuntimeException("Error: Access from " + httpExchange.getRemoteAddress().toString() + " denied");
     }
   }
  catch (  Exception e) {
@@ -31,9 +31,9 @@
     }
     e.printStackTrace();
     final String response="Error: " + StringTools.escapeXML(Tools.getFullStackTrace(e));
-    t.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR,response.getBytes().length);
-    t.getResponseBody().write(response.getBytes());
-    t.close();
+    httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR,response.getBytes().length);
+    httpExchange.getResponseBody().write(response.getBytes());
+    httpExchange.close();
   }
   print("Check done in " + (System.currentTimeMillis() - timeStart) + "ms");
 }

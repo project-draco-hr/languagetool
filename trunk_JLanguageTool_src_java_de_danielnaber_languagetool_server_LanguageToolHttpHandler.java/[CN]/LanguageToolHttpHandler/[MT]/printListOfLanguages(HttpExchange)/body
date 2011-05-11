@@ -1,7 +1,7 @@
 {
-  t.getResponseHeaders().set("Content-Type",CONTENT_TYPE_VALUE);
+  httpExchange.getResponseHeaders().set("Content-Type",CONTENT_TYPE_VALUE);
   final String response=getSupportedLanguagesAsXML();
-  t.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes().length);
-  t.getResponseBody().write(response.getBytes());
-  t.close();
+  httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes().length);
+  httpExchange.getResponseBody().write(response.getBytes());
+  httpExchange.close();
 }
