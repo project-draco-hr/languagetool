@@ -8,6 +8,7 @@
   textArea=new JTextArea(messages.getString("guiDemoText"));
   textArea.setLineWrap(true);
   textArea.setWrapStyleWord(true);
+  textArea.addKeyListener(new ControlReturnTextCheckingListener());
   resultArea=new JTextPane();
   resultArea.setContentType("text/html");
   resultArea.setText(HTML_FONT_START + messages.getString("resultAreaText") + HTML_FONT_END);
