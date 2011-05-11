@@ -1,7 +1,7 @@
 {
   try {
     server=HttpServer.create(new InetSocketAddress(port),0);
-    server.createContext("/",new LanguageToolHttpHandler(verbose));
+    server.createContext("/",new LanguageToolHttpHandler(verbose,ALLOWED_IPS));
     System.out.println("Starting server on port " + port + "...");
     server.start();
     System.out.print("Server started");

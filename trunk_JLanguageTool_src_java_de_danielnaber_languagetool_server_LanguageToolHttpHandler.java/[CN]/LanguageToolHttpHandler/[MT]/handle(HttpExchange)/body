@@ -8,7 +8,8 @@
       httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN,0);
       throw new RuntimeException("Error: Access to " + requestedUri.getPath() + " denied");
     }
-    if (ALLOWED_IPS.contains(httpExchange.getRemoteAddress().getAddress().toString())) {
+    final String remoteAddress=httpExchange.getRemoteAddress().getAddress().toString();
+    if (allowedIps.contains(remoteAddress)) {
       if (requestedUri.getRawPath().endsWith("/Languages")) {
         printListOfLanguages(httpExchange);
       }
