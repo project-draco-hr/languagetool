@@ -1,6 +1,6 @@
 {
   try {
-    server=com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(port),0);
+    server=HttpServer.create(new InetSocketAddress(port),0);
     server.createContext("/",new LanguageToolHttpHandler(verbose));
     System.out.println("Starting server on port " + port + "...");
     server.start();

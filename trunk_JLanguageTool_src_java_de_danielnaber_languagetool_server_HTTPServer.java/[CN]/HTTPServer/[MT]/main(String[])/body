@@ -1,6 +1,7 @@
 {
   if (args.length > 3) {
-    printUsageAndExit();
+    System.out.println("Usage: " + HTTPServer.class.getSimpleName() + " [-p|--port port]");
+    System.exit(1);
   }
   boolean verbose=false;
   int port=DEFAULT_PORT;
@@ -13,7 +14,7 @@
     }
   }
   try {
-    final com.sun.net.httpserver.HttpServer server=HttpServer.create(new InetSocketAddress(port),0);
+    final HttpServer server=HttpServer.create(new InetSocketAddress(port),0);
     server.createContext("/",new LanguageToolHttpHandler(verbose));
     server.start();
   }

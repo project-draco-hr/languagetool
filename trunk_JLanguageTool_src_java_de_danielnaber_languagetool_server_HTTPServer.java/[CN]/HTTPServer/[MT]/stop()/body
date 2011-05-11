@@ -1,6 +1,6 @@
 {
   if (server != null) {
-    System.out.println("Stopping server ");
+    System.out.println("Stopping server");
     server.stop(0);
     System.out.println("Server stopped");
   }
