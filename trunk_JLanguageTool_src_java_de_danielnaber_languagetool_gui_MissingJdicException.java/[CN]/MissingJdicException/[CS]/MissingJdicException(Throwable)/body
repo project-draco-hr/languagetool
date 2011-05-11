@@ -1,3 +1,0 @@
-{
-  super("TrayIcon class not found. Please unzip " + "'standalone-libs.zip' in your LanguageTool installation directory.",throwable);
-}
