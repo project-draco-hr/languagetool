@@ -1,0 +1,4 @@
+{
+  httpExchange.sendResponseHeaders(returnCode,response.getBytes().length);
+  httpExchange.getResponseBody().write(response.getBytes());
+}

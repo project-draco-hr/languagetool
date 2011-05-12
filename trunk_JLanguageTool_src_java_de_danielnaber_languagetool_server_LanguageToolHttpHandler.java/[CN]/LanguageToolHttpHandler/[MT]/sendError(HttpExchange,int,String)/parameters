@@ -1,0 +1,3 @@
+HttpExchange httpExchange
+int returnCode
+String response
