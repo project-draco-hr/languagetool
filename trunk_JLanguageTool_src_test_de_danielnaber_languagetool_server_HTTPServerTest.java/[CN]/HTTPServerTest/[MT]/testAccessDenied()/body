@@ -1,0 +1,15 @@
+{
+  final HTTPServer server=new HTTPServer(HTTPServer.DEFAULT_PORT,false,new HashSet<String>());
+  try {
+    server.run();
+    try {
+      check(Language.GERMAN,"no ip address allowed, so this cannot work");
+      fail();
+    }
+ catch (    IOException expected) {
+    }
+  }
+  finally {
+    server.stop();
+  }
+}

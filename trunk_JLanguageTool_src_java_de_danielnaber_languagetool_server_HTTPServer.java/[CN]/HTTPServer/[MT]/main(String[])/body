@@ -15,7 +15,7 @@
   }
   try {
     final HttpServer server=HttpServer.create(new InetSocketAddress(port),0);
-    server.createContext("/",new LanguageToolHttpHandler(verbose,allowedIps));
+    server.createContext("/",new LanguageToolHttpHandler(verbose,DEFAULT_ALLOWED_IPS));
     server.start();
   }
  catch (  Exception e) {
