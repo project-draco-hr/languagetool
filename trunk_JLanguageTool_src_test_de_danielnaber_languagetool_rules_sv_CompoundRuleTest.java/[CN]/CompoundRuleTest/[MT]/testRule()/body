@@ -1,0 +1,10 @@
+{
+  check(0,"skit-bra");
+  check(0,"IP-Adress");
+  check(0,"moll-tonart");
+  check(0,"e-mail");
+  check(1,"skit bra",new String[]{"skitbra"});
+  check(1,"IP Adress",new String[]{"IP-Adress"});
+  check(1,"moll tonart",new String[]{"moll-tonart","molltonart"});
+  check(1,"e mail",new String[]{"e-mail"});
+}

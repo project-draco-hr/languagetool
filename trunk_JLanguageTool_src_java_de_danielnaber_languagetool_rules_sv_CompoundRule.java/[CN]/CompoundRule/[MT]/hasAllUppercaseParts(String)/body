@@ -1,9 +1,0 @@
-{
-  final String[] parts=str.split(" ");
-  for (  String part : parts) {
-    if (StringTools.isAllUppercase(part)) {
-      return true;
-    }
-  }
-  return false;
-}
