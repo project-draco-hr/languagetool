@@ -7,22 +7,23 @@
     String line;
     while ((line=br.readLine()) != null) {
       line=line.trim();
-      if (line.length() < 1) {
-        continue;
-      }
-      if (line.charAt(0) == '#') {
+      if (line.length() < 1 || line.charAt(0) == '#') {
         continue;
       }
       line=line.replace('-',' ');
       final String[] parts=line.split(" ");
-      if (parts.length > MAX_TERMS)       throw new IOException("Too many compound parts: " + line + ", maximum allowed: "+ MAX_TERMS);
-      if (parts.length == 1)       throw new IOException("Not a compound: " + line);
+      if (parts.length > MAX_TERMS) {
+        throw new IOException("Too many compound parts: " + line + ", maximum allowed: "+ MAX_TERMS);
+      }
+      if (parts.length == 1) {
+        throw new IOException("Not a compound: " + line);
+      }
       if (line.endsWith("+")) {
-        line=line.substring(0,line.length() - 1);
+        line=removeLastCharacter(line);
         noDashSuggestion.add(line.toLowerCase());
       }
  else       if (line.endsWith("*")) {
-        line=line.substring(0,line.length() - 1);
+        line=removeLastCharacter(line);
         onlyDashSuggestion.add(line.toLowerCase());
       }
       incorrectCompounds.add(line.toLowerCase());
