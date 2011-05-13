@@ -1,5 +1,5 @@
 {
-  final XComponent xComponent=getxComponent();
+  final XComponent xComponent=getXComponent();
   if (xComponent == null) {
     return Language.ENGLISH;
   }

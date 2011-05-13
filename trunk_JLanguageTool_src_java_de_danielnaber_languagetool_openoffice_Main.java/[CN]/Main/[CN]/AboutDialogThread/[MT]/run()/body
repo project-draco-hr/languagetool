@@ -1,5 +1,5 @@
 {
-  final XModel model=(XModel)UnoRuntime.queryInterface(XModel.class,getxComponent());
+  final XModel model=(XModel)UnoRuntime.queryInterface(XModel.class,getXComponent());
   final XWindow parentWindow=model.getCurrentController().getFrame().getContainerWindow();
   final XWindowPeer parentWindowPeer=(XWindowPeer)UnoRuntime.queryInterface(XWindowPeer.class,parentWindow);
   final OOoAboutDialog about=new OOoAboutDialog(messages,parentWindowPeer);
