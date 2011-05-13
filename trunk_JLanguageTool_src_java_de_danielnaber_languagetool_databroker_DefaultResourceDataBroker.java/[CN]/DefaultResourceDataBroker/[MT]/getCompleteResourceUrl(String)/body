@@ -1,5 +1,5 @@
 {
-  final StringBuffer completePath=new StringBuffer(this.getResourceDir());
+  final StringBuilder completePath=new StringBuilder(this.getResourceDir());
   if (!this.getResourceDir().endsWith("/") && !(path.charAt(0) == '/')) {
     completePath.append('/');
   }

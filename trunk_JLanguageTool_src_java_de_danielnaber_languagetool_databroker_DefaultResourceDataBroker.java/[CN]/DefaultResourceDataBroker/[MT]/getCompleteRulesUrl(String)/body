@@ -1,5 +1,5 @@
 {
-  final StringBuffer completePath=new StringBuffer(this.getRulesDir());
+  final StringBuilder completePath=new StringBuilder(this.getRulesDir());
   if (!this.getRulesDir().endsWith("/") && !(path.charAt(0) == '/')) {
     completePath.append('/');
   }
@@ -9,5 +9,5 @@
  else {
     completePath.append(path);
   }
-  return completePath;
+  return completePath.toString();
 }

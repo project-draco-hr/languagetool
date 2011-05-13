@@ -1,18 +1,23 @@
 {
+  int testCount=0;
   for (  final Language lang : Language.LANGUAGES) {
     if (ignoredLanguages != null && ignoredLanguages.contains(lang)) {
       continue;
     }
     final BitextPatternRuleLoader ruleLoader=new BitextPatternRuleLoader();
     final String name="/" + lang.getShortName() + "/bitext.xml";
-    final InputStream is=JLanguageTool.getDataBroker().getFromRulesDirAsStream(name);
-    if (is != null) {
+    try {
+      final InputStream is=JLanguageTool.getDataBroker().getFromRulesDirAsStream(name);
       if (verbose) {
         System.out.println("Running tests for " + lang.getName() + "...");
       }
       final JLanguageTool languageTool=new JLanguageTool(lang);
       final List<BitextPatternRule> rules=ruleLoader.getRules(is,name);
       testBitextRulesFromXML(rules,languageTool,lang);
+      testCount++;
+    }
+ catch (    RuntimeException ignored) {
     }
   }
+  assertTrue(testCount >= 1);
 }
