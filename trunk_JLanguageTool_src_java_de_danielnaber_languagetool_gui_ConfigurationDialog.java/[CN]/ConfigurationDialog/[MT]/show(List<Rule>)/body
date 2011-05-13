@@ -8,7 +8,7 @@
   Collections.sort(rules,new CategoryComparator());
   final KeyStroke stroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
   final ActionListener actionListener=new ActionListener(){
-    public void actionPerformed(    @SuppressWarnings("unused") ActionEvent actionEvent){
+    @Override public void actionPerformed(    @SuppressWarnings("unused") ActionEvent actionEvent){
       dialog.setVisible(false);
     }
   }
@@ -48,7 +48,7 @@
         }
       }
       final ActionListener ruleCheckBoxListener=new ActionListener(){
-        public void actionPerformed(        final ActionEvent actionEvent){
+        @Override public void actionPerformed(        final ActionEvent actionEvent){
           final JCheckBox cBox=(JCheckBox)actionEvent.getSource();
           final boolean selected=cBox.getModel().isSelected();
           int i=0;
@@ -78,7 +78,7 @@
           categoryCheckBox.setSelected(true);
         }
         final ActionListener categoryCheckBoxListener=new ActionListener(){
-          public void actionPerformed(          final ActionEvent actionEvent){
+          @Override public void actionPerformed(          final ActionEvent actionEvent){
             final JCheckBox cBox=(JCheckBox)actionEvent.getSource();
             final boolean selected=cBox.getModel().isSelected();
             int i=0;
@@ -138,7 +138,7 @@
     serverPortField.setMinimumSize(new Dimension(100,25));
     cons.gridx=1;
     serverCheckbox.addActionListener(new ActionListener(){
-      public void actionPerformed(      @SuppressWarnings("unused") ActionEvent e){
+      @Override public void actionPerformed(      @SuppressWarnings("unused") ActionEvent e){
         serverPortField.setEnabled(serverCheckbox.isSelected());
       }
     }

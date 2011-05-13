@@ -10,19 +10,19 @@
     throw new RuleFilenameException(file);
   }
   final Language newLanguage=new Language(){
-    public Locale getLocale(){
+    @Override public Locale getLocale(){
       return new Locale(getShortName());
     }
-    public Contributor[] getMaintainers(){
+    @Override public Contributor[] getMaintainers(){
       return null;
     }
-    public String getShortName(){
+    @Override public String getShortName(){
       return parts[1];
     }
-    public String[] getCountryVariants(){
+    @Override public String[] getCountryVariants(){
       return new String[]{""};
     }
-    public String getName(){
+    @Override public String getName(){
       return parts[2].replace(".xml","");
     }
     @Override public List<Class<? extends Rule>> getRelevantRules(){
