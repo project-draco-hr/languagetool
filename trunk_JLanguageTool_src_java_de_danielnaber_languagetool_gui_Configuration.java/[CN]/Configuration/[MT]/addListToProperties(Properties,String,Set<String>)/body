@@ -1,0 +1,8 @@
+{
+  if (list == null) {
+    props.setProperty(key,"");
+  }
+ else {
+    props.setProperty(key,StringTools.listToString(list,DELIMITER));
+  }
+}
