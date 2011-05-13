@@ -1,5 +1,0 @@
-{
-  this.withHyphenMessage=withHyphenMessage;
-  this.asOneMessage=asOneMessage;
-  withOrWithoutHyphenMessage=withHyphenOrNotMessage;
-}

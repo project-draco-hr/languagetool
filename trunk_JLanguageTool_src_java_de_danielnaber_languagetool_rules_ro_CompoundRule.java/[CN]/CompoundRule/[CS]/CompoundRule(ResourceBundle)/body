@@ -1,8 +1,6 @@
 {
-  super(messages);
-  loadCompoundFile(JLanguageTool.getDataBroker().getFromRulesDirAsStream(FILE_NAME),"UTF-8");
+  super(messages,FILE_NAME,"Cuv??ntul se scrie cu cratim??.","Cuv??ntul se scrie legat.","Cuv??ntul se scrie legat sau cu cratim??.");
   super.setShort("Problem?? de scriere (cratim??, spa??iu, etc.)");
-  super.setMsg("Cuv??ntul se scrie cu cratim??.","Cuv??ntul se scrie legat.","Cuv??ntul se scrie legat sau cu cratim??.");
   setMaxUnHyphenatedWordCount(Integer.MAX_VALUE);
   setHyphenIgnored(false);
 }

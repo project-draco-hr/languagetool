@@ -48,7 +48,7 @@
         }
         if (!hasAllUppercaseParts(origStringToCheck) && countParts(stringToCheck) <= getMaxUnHyphenatedWordCount() && !onlyDashSuggestion.contains(stringToCheck)) {
           replacement.add(mergeCompound(origStringToCheck));
-          msg=asOneMessage;
+          msg=withoutHyphenMessage;
         }
         final String[] parts=stringToCheck.split(" ");
         if (parts.length > 0 && parts[0].length() == 1) {
