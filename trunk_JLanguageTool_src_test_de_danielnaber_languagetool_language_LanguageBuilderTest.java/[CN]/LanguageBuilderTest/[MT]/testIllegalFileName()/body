@@ -1,0 +1,8 @@
+{
+  try {
+    LanguageBuilder.makeAdditionalLanguage(new File("foo"));
+    fail();
+  }
+ catch (  RuleFilenameException expected) {
+  }
+}

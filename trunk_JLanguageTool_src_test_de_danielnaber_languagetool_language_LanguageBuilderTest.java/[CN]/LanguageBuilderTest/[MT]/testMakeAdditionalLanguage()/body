@@ -1,0 +1,7 @@
+{
+  final Language language=LanguageBuilder.makeAdditionalLanguage(new File("rules-xy-Fakelanguage.xml"));
+  assertEquals("Fakelanguage",language.getName());
+  assertEquals("xy",language.getShortName());
+  assertEquals(0,language.getRelevantRules().size());
+  assertTrue(language.isExternal());
+}
