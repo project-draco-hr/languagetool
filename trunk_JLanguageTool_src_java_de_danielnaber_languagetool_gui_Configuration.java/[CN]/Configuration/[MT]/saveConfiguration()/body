@@ -47,14 +47,11 @@
   }
   props.setProperty(SERVER_RUN_CONFIG_KEY,Boolean.valueOf(runServer).toString());
   props.setProperty(SERVER_PORT_CONFIG_KEY,Integer.valueOf(serverPort).toString());
-  FileOutputStream fos=null;
+  final FileOutputStream fos=new FileOutputStream(configFile);
   try {
-    fos=new FileOutputStream(configFile);
     props.store(fos,"LanguageTool configuration");
   }
   finally {
-    if (fos != null) {
-      fos.close();
-    }
+    fos.close();
   }
 }
