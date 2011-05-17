@@ -1,0 +1,5 @@
+{
+  check(0,"??esko-slovensk??");
+  check(0,"rak??sko-uhorsk??");
+  check(1,"bim bam",new String[]{"bim-bam"});
+}
