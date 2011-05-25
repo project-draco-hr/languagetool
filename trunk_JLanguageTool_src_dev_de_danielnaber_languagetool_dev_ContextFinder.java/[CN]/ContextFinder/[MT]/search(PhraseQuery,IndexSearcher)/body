@@ -1,6 +1,0 @@
-{
-  final Hits h=searcher.search(pq);
-  if (h.length() > 0) {
-  }
-  return h.length();
-}

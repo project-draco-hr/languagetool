@@ -1,4 +1,0 @@
-{
-  System.err.println("Usage: ContextFinder <indexDir> <term1> <term2> --context=right|left");
-  System.exit(1);
-}
