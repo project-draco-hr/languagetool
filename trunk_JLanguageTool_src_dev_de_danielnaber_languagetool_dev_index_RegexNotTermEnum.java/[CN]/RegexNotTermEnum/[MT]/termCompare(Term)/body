@@ -1,0 +1,8 @@
+{
+  if (field == term.field()) {
+    String searchText=term.text();
+    return !regexImpl.match(searchText);
+  }
+  endEnum=true;
+  return false;
+}
