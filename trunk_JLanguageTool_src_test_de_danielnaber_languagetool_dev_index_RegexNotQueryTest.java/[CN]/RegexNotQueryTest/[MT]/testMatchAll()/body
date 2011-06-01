@@ -1,0 +1,8 @@
+{
+  TermEnum terms=new RegexNotQuery(new Term(FN,"^q.[aeiou]c.*$")).getEnum(searcher.getIndexReader());
+  do {
+    Term term=terms.term();
+    assertNotNull(term);
+  }
+ while (terms.next());
+}
