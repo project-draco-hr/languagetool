@@ -1,5 +1,5 @@
 {
   int result=super.hashCode();
-  result=31 * result + regexImpl.hashCode();
+  result=31 * result + this.getRegexImplementation().hashCode();
   return result;
 }

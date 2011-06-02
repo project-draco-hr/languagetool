@@ -3,5 +3,5 @@
   if (o == null || getClass() != o.getClass())   return false;
   if (!super.equals(o))   return false;
   final RegexNotQuery that=(RegexNotQuery)o;
-  return regexImpl.equals(that.regexImpl);
+  return this.getRegexImplementation().equals(that.getRegexImplementation());
 }

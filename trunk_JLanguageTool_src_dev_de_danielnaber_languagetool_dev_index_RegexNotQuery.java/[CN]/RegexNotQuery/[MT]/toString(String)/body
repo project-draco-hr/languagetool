@@ -1,10 +1,10 @@
 {
   StringBuilder buffer=new StringBuilder();
-  if (!term.field().equals(field)) {
-    buffer.append(term.field());
+  if (!this.getTerm().field().equals(field)) {
+    buffer.append(this.getTerm().field());
     buffer.append(":*NOT*");
   }
-  buffer.append(term.text());
+  buffer.append(this.getTerm().text());
   buffer.append(ToStringUtils.boost(getBoost()));
   return buffer.toString();
 }
