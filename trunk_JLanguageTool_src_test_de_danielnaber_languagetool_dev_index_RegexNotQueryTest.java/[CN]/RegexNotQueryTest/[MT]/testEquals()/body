@@ -3,4 +3,6 @@
   query1.setRegexImplementation(new JakartaRegexpCapabilities());
   RegexNotQuery query2=new RegexNotQuery(newTerm("foo.*"));
   assertFalse(query1.equals(query2));
+  RegexQuery query3=new RegexQuery(newTerm("foo.*"));
+  assertFalse(query2.equals(query3));
 }
