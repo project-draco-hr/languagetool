@@ -5,4 +5,5 @@
   assertFalse(query1.equals(query2));
   RegexQuery query3=new RegexQuery(newTerm("foo.*"));
   assertFalse(query2.equals(query3));
+  assertFalse(query3.equals(query2));
 }
