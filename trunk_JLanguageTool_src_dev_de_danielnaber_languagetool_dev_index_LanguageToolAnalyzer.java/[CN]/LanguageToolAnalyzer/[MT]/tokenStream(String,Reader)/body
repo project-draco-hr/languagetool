@@ -1,3 +1,5 @@
 {
-  return null;
+  TokenStream result=new AnyCharTokenizer(this.matchVersion,reader);
+  result=new LanguageToolFilter(result,lt);
+  return result;
 }
