@@ -1,3 +1,26 @@
 {
-  return false;
+  if (tokenIter == null || !tokenIter.hasNext()) {
+    if (input.incrementToken()) {
+      AnalyzedSentence sentence=lt.getAnalyzedSentence(termAtt.toString());
+      tokenBuffer=Arrays.asList(sentence.getTokens());
+      tokenIter=tokenBuffer.iterator();
+      if (!tokenIter.hasNext())       return false;
+    }
+ else {
+      return false;
+    }
+  }
+  clearAttributes();
+  AnalyzedTokenReadings tr=tokenIter.next();
+  AnalyzedToken at=tr.getAnalyzedToken(0);
+  if (tr.isWhitespace()) {
+    return this.incrementToken();
+  }
+  offsetAtt.setOffset(tr.getStartPos(),tr.getStartPos() + at.getToken().length());
+  for (int i=0; i < tr.getReadingsLength(); i++) {
+    at=tr.getAnalyzedToken(i);
+  }
+  current=captureState();
+  termAtt.append(tr.getAnalyzedToken(0).getToken());
+  return true;
 }
