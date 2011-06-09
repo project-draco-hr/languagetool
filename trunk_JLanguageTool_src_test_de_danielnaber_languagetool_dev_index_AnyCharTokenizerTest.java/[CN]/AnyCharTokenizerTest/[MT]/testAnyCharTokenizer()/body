@@ -1,0 +1,8 @@
+{
+  StringReader sr=new StringReader("It's a good day, I liked it!");
+  AnyCharTokenizer tokenizer=new AnyCharTokenizer(Version.LUCENE_31,sr);
+  CharTermAttribute termAtt=tokenizer.addAttribute(CharTermAttribute.class);
+  assertTrue(tokenizer.incrementToken());
+  assertEquals("It's a good day, I liked it!",termAtt.toString());
+  assertFalse(tokenizer.incrementToken());
+}
