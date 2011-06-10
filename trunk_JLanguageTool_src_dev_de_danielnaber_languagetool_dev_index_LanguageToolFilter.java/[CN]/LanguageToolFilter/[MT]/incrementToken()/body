@@ -1,8 +1,16 @@
 {
+  if (stack.size() > 0) {
+    String pop=stack.pop();
+    restoreState(current);
+    termAtt.append(pop);
+    posIncrAtt.setPositionIncrement(0);
+    typeAtt.setType("pos");
+    return true;
+  }
   if (tokenIter == null || !tokenIter.hasNext()) {
     if (input.incrementToken()) {
       AnalyzedSentence sentence=lt.getAnalyzedSentence(termAtt.toString());
-      tokenBuffer=Arrays.asList(sentence.getTokens());
+      List<AnalyzedTokenReadings> tokenBuffer=Arrays.asList(sentence.getTokens());
       tokenIter=tokenBuffer.iterator();
       if (!tokenIter.hasNext())       return false;
     }
@@ -13,12 +21,19 @@
   clearAttributes();
   AnalyzedTokenReadings tr=tokenIter.next();
   AnalyzedToken at=tr.getAnalyzedToken(0);
+  if (tr.isSentStart()) {
+    termAtt.append(POS_PREFIX + tr.getAnalyzedToken(0).getPOSTag());
+    return true;
+  }
   if (tr.isWhitespace()) {
     return this.incrementToken();
   }
   offsetAtt.setOffset(tr.getStartPos(),tr.getStartPos() + at.getToken().length());
   for (int i=0; i < tr.getReadingsLength(); i++) {
     at=tr.getAnalyzedToken(i);
+    if (at.getPOSTag() != null) {
+      stack.push(POS_PREFIX + at.getPOSTag());
+    }
   }
   current=captureState();
   termAtt.append(tr.getAnalyzedToken(0).getToken());

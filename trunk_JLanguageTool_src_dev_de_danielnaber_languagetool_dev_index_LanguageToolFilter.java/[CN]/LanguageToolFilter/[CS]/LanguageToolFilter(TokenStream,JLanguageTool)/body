@@ -1,6 +1,7 @@
 {
   super(input);
   this.lt=lt;
+  stack=new Stack<String>();
   termAtt=addAttribute(CharTermAttribute.class);
   offsetAtt=addAttribute(OffsetAttribute.class);
   posIncrAtt=addAttribute(PositionIncrementAttribute.class);
