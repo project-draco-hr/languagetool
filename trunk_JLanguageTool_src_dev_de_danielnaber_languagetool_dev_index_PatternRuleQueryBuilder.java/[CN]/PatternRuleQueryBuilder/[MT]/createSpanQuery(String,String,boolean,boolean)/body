@@ -1,0 +1,18 @@
+{
+  SpanQuery q=null;
+  if (token != null && !token.equals("")) {
+    Term term=new Term(FN,prefix + token);
+    if (isNegation) {
+      q=new SpanRegexNotQuery(term);
+    }
+ else {
+      if (isRegularExpression) {
+        q=new SpanRegexQuery(term);
+      }
+ else {
+        q=new SpanTermQuery(term);
+      }
+    }
+  }
+  return q;
+}
