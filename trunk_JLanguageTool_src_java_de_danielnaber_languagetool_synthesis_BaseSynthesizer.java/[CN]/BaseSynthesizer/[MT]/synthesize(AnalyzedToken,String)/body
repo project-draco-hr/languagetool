@@ -1,8 +1,5 @@
 {
-  if (synthesizer == null) {
-    final URL url=this.getClass().getResource(resourceFileName);
-    synthesizer=new DictionaryLookup(Dictionary.read(url));
-  }
+  initSynthesizer();
   final List<WordData> wordData=synthesizer.lookup(token.getLemma() + "|" + posTag);
   final List<String> wordForms=new ArrayList<String>();
   for (  WordData wd : wordData) {

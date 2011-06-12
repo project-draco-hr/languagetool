@@ -1,0 +1,6 @@
+{
+  if (synthesizer == null) {
+    final URL url=this.getClass().getResource(resourceFileName);
+    synthesizer=new DictionaryLookup(Dictionary.read(url));
+  }
+}

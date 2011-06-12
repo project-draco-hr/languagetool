@@ -1,4 +1,4 @@
 {
-  tagsFileName=tagFile;
-  resourceFileName=resFile;
+  this.resourceFileName=resourceFileName;
+  this.tagFileName=tagFileName;
 }

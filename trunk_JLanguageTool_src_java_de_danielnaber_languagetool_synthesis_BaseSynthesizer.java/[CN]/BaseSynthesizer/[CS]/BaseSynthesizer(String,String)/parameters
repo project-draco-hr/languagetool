@@ -1,2 +1,2 @@
-String resFile
-String tagFile
+String resourceFileName
+String tagFileName
