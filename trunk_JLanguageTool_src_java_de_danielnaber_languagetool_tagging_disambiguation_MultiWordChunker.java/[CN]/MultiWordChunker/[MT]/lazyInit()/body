@@ -1,7 +1,9 @@
 {
-  if (mStartSpace != null)   return;
-  mStartSpace=new HashMap<String,String>();
-  mStartNoSpace=new HashMap<String,String>();
+  if (mStartSpace != null) {
+    return;
+  }
+  mStartSpace=new HashMap<String,Integer>();
+  mStartNoSpace=new HashMap<String,Integer>();
   mFull=new HashMap<String,String>();
   final List<String> posTokens=loadWords(JLanguageTool.getDataBroker().getFromResourceDirAsStream(filename));
   for (  String posToken : posTokens) {
@@ -16,24 +18,24 @@
         firstTokens[i]=tokenAndTag[0].substring(0 + (i - 1),i);
       }
       if (mStartNoSpace.containsKey(firstToken)) {
-        if (Integer.parseInt(mStartNoSpace.get(firstToken)) < firstTokens.length) {
-          mStartNoSpace.put(firstToken,Integer.toString(firstTokens.length));
+        if (mStartNoSpace.get(firstToken) < firstTokens.length) {
+          mStartNoSpace.put(firstToken,firstTokens.length);
         }
       }
  else {
-        mStartNoSpace.put(firstToken,Integer.toString(firstTokens.length));
+        mStartNoSpace.put(firstToken,firstTokens.length);
       }
     }
  else {
       firstTokens=tokenAndTag[0].split(" ");
       firstToken=firstTokens[0];
       if (mStartSpace.containsKey(firstToken)) {
-        if (Integer.parseInt(mStartSpace.get(firstToken)) < firstTokens.length) {
-          mStartSpace.put(firstToken,Integer.toString(firstTokens.length));
+        if (mStartSpace.get(firstToken) < firstTokens.length) {
+          mStartSpace.put(firstToken,firstTokens.length);
         }
       }
  else {
-        mStartSpace.put(firstToken,Integer.toString(firstTokens.length));
+        mStartSpace.put(firstToken,firstTokens.length);
       }
     }
     mFull.put(tokenAndTag[0],tokenAndTag[1]);

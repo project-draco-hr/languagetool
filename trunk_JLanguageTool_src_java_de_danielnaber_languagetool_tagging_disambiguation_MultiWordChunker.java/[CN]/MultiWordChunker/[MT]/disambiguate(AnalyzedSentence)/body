@@ -7,7 +7,7 @@
     final StringBuilder tokens=new StringBuilder();
     int finalLen=0;
     if (mStartSpace.containsKey(tok)) {
-      final int len=Integer.parseInt(mStartSpace.get(tok));
+      final int len=mStartSpace.get(tok);
       int j=i;
       int lenCounter=0;
       while (j < anTokens.length) {
@@ -30,7 +30,7 @@
       }
     }
     if (mStartNoSpace.containsKey(tok)) {
-      final int len=Integer.parseInt(mStartNoSpace.get(tok));
+      final int len=mStartNoSpace.get(tok);
       if (i + len <= anTokens.length) {
         for (int j=i; j < i + len; j++) {
           tokens.append(anTokens[j].getToken());
