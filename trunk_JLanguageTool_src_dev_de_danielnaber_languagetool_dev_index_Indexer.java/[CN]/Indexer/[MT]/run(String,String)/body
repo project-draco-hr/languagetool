@@ -1,0 +1,30 @@
+{
+  final File file=new File(textFile);
+  if (!file.exists() || !file.canRead()) {
+    System.out.println("Text file '" + file.getAbsolutePath() + "' does not exist or is not readable, please check the path");
+    System.exit(1);
+  }
+  System.out.println("Indexing to directory '" + indexDir + "'...");
+  Directory dir=FSDirectory.open(new File(indexDir));
+  Language language=Language.ENGLISH;
+  Analyzer analyzer=new LanguageToolAnalyzer(Version.LUCENE_31,new JLanguageTool(language));
+  IndexWriterConfig iwc=new IndexWriterConfig(Version.LUCENE_31,analyzer);
+  iwc.setOpenMode(OpenMode.CREATE);
+  IndexWriter writer=new IndexWriter(dir,iwc);
+  BufferedReader reader=new BufferedReader(new FileReader(file));
+  StringBuffer buffer=new StringBuffer();
+  String line="";
+  while ((line=reader.readLine()) != null) {
+    buffer.append(line);
+  }
+  String content=buffer.toString();
+  SentenceTokenizer sentenceTokenizer=language.getSentenceTokenizer();
+  List<String> sentences=sentenceTokenizer.tokenize(content);
+  for (  String sentence : sentences) {
+    Document doc=new Document();
+    doc.add(new Field(FN,sentence,Store.YES,Index.ANALYZED));
+    writer.addDocument(doc);
+  }
+  writer.close();
+  System.out.println("Index complete!");
+}
