@@ -11,6 +11,9 @@
   if (isInflected && "".equals(stringValue)) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains "+ "\""+ stringValue+ "\" that is marked as inflected but is empty, so the attribute is redundant.");
   }
+  if (isRegularExpression && ".*".equals(stringValue)) {
+    System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " marked as regular expression contains "+ "regular expression \".*\" which is useless: "+ "(use an empty string without regexp=\"yes\" such as <token/>)");
+  }
   if (isRegularExpression && !isCaseSensitive) {
     final Matcher matcher=CASE_PATTERN.matcher(stringValue);
     if (matcher.find()) {
@@ -23,8 +26,9 @@
     }
   }
   if (isRegularExpression && stringValue.contains("|")) {
-    if (stringValue.indexOf("||") >= 0) {
-      System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains empty disjunction || within "+ "\""+ stringValue+ "\".");
+    final Matcher matcher=EMPTY_DISJUNCTION.matcher(stringValue);
+    if (matcher.find()) {
+      System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains empty disjunction | within "+ "\""+ stringValue+ "\".");
     }
     final String[] groups=stringValue.split("\\)");
     for (    final String group : groups) {
