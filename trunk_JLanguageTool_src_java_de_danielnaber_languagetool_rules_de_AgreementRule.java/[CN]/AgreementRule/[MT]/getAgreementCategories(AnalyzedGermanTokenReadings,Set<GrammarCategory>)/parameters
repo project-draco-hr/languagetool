@@ -1,2 +1,2 @@
 AnalyzedGermanTokenReadings aToken
-Set<String> omit
+Set<GrammarCategory> omit

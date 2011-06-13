@@ -1,13 +1,21 @@
 {
-  if (token1.getToken().equalsIgnoreCase("ihm"))   return null;
+  if (token1.getToken().equalsIgnoreCase("ihm")) {
+    return null;
+  }
   RuleMatch ruleMatch=null;
   final Set<String> set1=getAgreementCategories(token1);
-  if (set1 == null)   return null;
+  if (set1 == null) {
+    return null;
+  }
   final Set<String> set2=getAgreementCategories(token2);
-  if (set2 == null)   return null;
+  if (set2 == null) {
+    return null;
+  }
   set1.retainAll(set2);
   if (set1.size() == 0) {
-    final String msg="M??glicherweise fehlende ??bereinstimmung (Kongruenz) zwischen Artikel und Nomen " + "bez??glich Kasus, Numerus oder Genus. Beispiel: 'meine Haus' statt 'mein Haus'";
+    final List<String> errorCategories=getCategoriesCausingError(token1,token2);
+    final String errorDetails=errorCategories.size() > 0 ? StringTools.listToString(errorCategories," und ") : "Kasus, Genus oder Numerus";
+    final String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Artikel und Nomen " + "bez??glich " + errorDetails + ".";
     ruleMatch=new RuleMatch(this,token1.getStartPos(),token2.getStartPos() + token2.getToken().length(),msg);
   }
   return ruleMatch;

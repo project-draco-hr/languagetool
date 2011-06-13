@@ -1,0 +1,8 @@
+{
+  assertBad("Das Fahrrads.","bez??glich Kasus");
+  assertBad("Der Fahrrad.","bez??glich Genus");
+  assertBad("Das Fahrr??der.","bez??glich Numerus");
+  assertBad("Die Tischen sind ecking.","bez??glich Kasus");
+  assertBad("Die Tischen sind ecking.","und Genus");
+  assertBad("Bei dem Papierabz??ge von Digitalbildern bestellte werden.","bez??glich Kasus, Genus oder Numerus.");
+}

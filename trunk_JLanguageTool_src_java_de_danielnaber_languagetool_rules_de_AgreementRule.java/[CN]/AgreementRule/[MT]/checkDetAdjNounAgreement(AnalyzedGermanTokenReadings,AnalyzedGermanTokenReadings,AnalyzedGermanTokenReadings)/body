@@ -1,6 +1,5 @@
 {
-  final Set<String> relax=new HashSet<String>();
-  final Set<String> set=retainCommonCategories(token1,token2,token3,relax);
+  final Set<String> set=retainCommonCategories(token1,token2,token3,null);
   RuleMatch ruleMatch=null;
   if (set.size() == 0) {
     final String msg="M??glicherweise fehlende ??bereinstimmung (Kongruenz) zwischen Artikel, Adjektiv und " + "Nomen bez??glich Kasus, Numerus oder Genus. Beispiel: 'mein kleiner Haus' " + "statt 'mein kleines Haus'";
