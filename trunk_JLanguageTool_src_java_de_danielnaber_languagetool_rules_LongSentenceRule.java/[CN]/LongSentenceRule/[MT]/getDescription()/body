@@ -1,0 +1,3 @@
+{
+  return "Readability: sentence over 40 words";
+}
