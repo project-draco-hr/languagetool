@@ -22,7 +22,7 @@
   List<String> sentences=sentenceTokenizer.tokenize(content);
   for (  String sentence : sentences) {
     Document doc=new Document();
-    doc.add(new Field(FN,sentence,Store.YES,Index.ANALYZED));
+    doc.add(new Field(PatternRuleQueryBuilder.FN,sentence,Store.YES,Index.ANALYZED));
     writer.addDocument(doc);
   }
   writer.close();

@@ -1,5 +1,4 @@
 {
-  System.out.println(args.length);
   ensureCorrectUsageOrExit(args);
   run(args[0],args[1]);
 }
