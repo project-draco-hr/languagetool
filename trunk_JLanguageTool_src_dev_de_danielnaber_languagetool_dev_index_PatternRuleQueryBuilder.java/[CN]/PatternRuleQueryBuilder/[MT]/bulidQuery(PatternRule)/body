@@ -1,24 +1,3 @@
 {
-  ArrayList<SpanQuery> list=new ArrayList<SpanQuery>();
-  int i=0;
-  for (  Element patternElement : rule.getElements()) {
-    SpanQuery termQuery=createSpanQuery(patternElement.getString(),"",patternElement.getNegation(),patternElement.isRegularExpression());
-    SpanQuery posQuery=createSpanQuery(patternElement.getPOStag(),LanguageToolFilter.POS_PREFIX,patternElement.getPOSNegation(),patternElement.isPOStagRegularExpression());
-    if (termQuery != null && posQuery != null) {
-      SpanNearQuery q=new SpanNearQuery(new SpanQuery[]{termQuery,posQuery},0,false);
-      list.add(q);
-    }
- else     if (termQuery != null) {
-      list.add(termQuery);
-    }
- else     if (posQuery != null) {
-      list.add(posQuery);
-    }
- else {
-      i++;
-    }
-    i+=patternElement.getSkipNext();
-  }
-  SpanNearQuery snq=new SpanNearQuery(list.toArray(new SpanQuery[list.size()]),i,true);
-  return snq;
+  return next(rule.getElements().iterator());
 }
