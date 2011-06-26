@@ -1,6 +1,6 @@
 {
-  if (stack.size() > 0) {
-    String pop=stack.pop();
+  if (posStack.size() > 0) {
+    final String pop=posStack.pop();
     restoreState(current);
     termAtt.append(pop);
     posIncrAtt.setPositionIncrement(0);
@@ -9,17 +9,19 @@
   }
   if (tokenIter == null || !tokenIter.hasNext()) {
     if (input.incrementToken()) {
-      AnalyzedSentence sentence=lt.getAnalyzedSentence(termAtt.toString());
-      List<AnalyzedTokenReadings> tokenBuffer=Arrays.asList(sentence.getTokens());
+      final AnalyzedSentence sentence=languageTool.getAnalyzedSentence(termAtt.toString());
+      final List<AnalyzedTokenReadings> tokenBuffer=Arrays.asList(sentence.getTokens());
       tokenIter=tokenBuffer.iterator();
-      if (!tokenIter.hasNext())       return false;
+      if (!tokenIter.hasNext()) {
+        return false;
+      }
     }
  else {
       return false;
     }
   }
   clearAttributes();
-  AnalyzedTokenReadings tr=tokenIter.next();
+  final AnalyzedTokenReadings tr=tokenIter.next();
   AnalyzedToken at=tr.getAnalyzedToken(0);
   if (tr.isSentStart()) {
     termAtt.append(POS_PREFIX + tr.getAnalyzedToken(0).getPOSTag());
@@ -32,7 +34,7 @@
   for (int i=0; i < tr.getReadingsLength(); i++) {
     at=tr.getAnalyzedToken(i);
     if (at.getPOSTag() != null) {
-      stack.push(POS_PREFIX + at.getPOSTag());
+      posStack.push(POS_PREFIX + at.getPOSTag());
     }
   }
   current=captureState();

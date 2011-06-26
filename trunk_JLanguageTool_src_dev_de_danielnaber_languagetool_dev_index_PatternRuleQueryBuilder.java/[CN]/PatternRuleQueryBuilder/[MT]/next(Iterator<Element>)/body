@@ -1,13 +1,15 @@
 {
-  if (!it.hasNext())   return null;
-  Element patternElement=it.next();
+  if (!it.hasNext()) {
+    return null;
+  }
+  final Element patternElement=it.next();
   patternElement.getExceptionList();
-  ArrayList<SpanQuery> list=new ArrayList<SpanQuery>();
+  final ArrayList<SpanQuery> list=new ArrayList<SpanQuery>();
   int skip=0;
-  SpanQuery termQuery=createSpanQuery(patternElement.getString(),"",patternElement.getNegation(),patternElement.isRegularExpression());
-  SpanQuery posQuery=createSpanQuery(patternElement.getPOStag(),LanguageToolFilter.POS_PREFIX,patternElement.getPOSNegation(),patternElement.isPOStagRegularExpression());
+  final SpanQuery termQuery=createSpanQuery(patternElement.getString(),"",patternElement.getNegation(),patternElement.isRegularExpression());
+  final SpanQuery posQuery=createSpanQuery(patternElement.getPOStag(),LanguageToolFilter.POS_PREFIX,patternElement.getPOSNegation(),patternElement.isPOStagRegularExpression());
   if (termQuery != null && posQuery != null) {
-    SpanNearQuery q=new SpanNearQuery(new SpanQuery[]{termQuery,posQuery},0,false);
+    final SpanNearQuery q=new SpanNearQuery(new SpanQuery[]{termQuery,posQuery},0,false);
     list.add(q);
   }
  else   if (termQuery != null) {
@@ -25,7 +27,7 @@
  else {
     skip=Integer.MAX_VALUE;
   }
-  SpanQuery next=next(it);
+  final SpanQuery next=next(it);
   if (next != null) {
     list.add(next);
     return new SpanNearQuery(list.toArray(new SpanQuery[list.size()]),skip,true);

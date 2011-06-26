@@ -1,5 +1,5 @@
 {
   TokenStream result=new AnyCharTokenizer(this.matchVersion,reader);
-  result=new LanguageToolFilter(result,lt);
+  result=new LanguageToolFilter(result,languageTool);
   return result;
 }
