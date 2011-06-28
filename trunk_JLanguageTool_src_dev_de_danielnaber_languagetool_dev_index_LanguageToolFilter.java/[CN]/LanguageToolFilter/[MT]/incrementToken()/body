@@ -24,6 +24,7 @@
   final AnalyzedTokenReadings tr=tokenIter.next();
   AnalyzedToken at=tr.getAnalyzedToken(0);
   if (tr.isSentStart()) {
+    typeAtt.setType("pos");
     termAtt.append(POS_PREFIX + tr.getAnalyzedToken(0).getPOSTag());
     return true;
   }
