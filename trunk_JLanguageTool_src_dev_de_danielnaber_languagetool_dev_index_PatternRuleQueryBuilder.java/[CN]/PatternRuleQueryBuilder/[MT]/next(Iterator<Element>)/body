@@ -3,7 +3,12 @@
     return null;
   }
   final Element patternElement=it.next();
-  patternElement.getExceptionList();
+  if (patternElement.getExceptionList() != null) {
+    throw new UnsupportedPatternRuleException("Pattern rules with token exceptions are not supported.");
+  }
+  if (patternElement.isInflected()) {
+    throw new UnsupportedPatternRuleException("Pattern rules with inflated tokens are not supported.");
+  }
   final ArrayList<SpanQuery> list=new ArrayList<SpanQuery>();
   int skip=0;
   final SpanQuery termQuery=createSpanQuery(patternElement.getString(),"",patternElement.getNegation(),patternElement.isRegularExpression());
