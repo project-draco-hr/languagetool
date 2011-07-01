@@ -2,6 +2,7 @@
   super(input);
   this.languageTool=languageTool;
   posStack=new Stack<String>();
+  insenStack=new Stack<String>();
   termAtt=addAttribute(CharTermAttribute.class);
   offsetAtt=addAttribute(OffsetAttribute.class);
   posIncrAtt=addAttribute(PositionIncrementAttribute.class);
