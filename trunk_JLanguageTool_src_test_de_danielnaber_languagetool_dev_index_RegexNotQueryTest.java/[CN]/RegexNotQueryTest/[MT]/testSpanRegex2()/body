@@ -1,3 +1,0 @@
-{
-  assertEquals(1,spanRegexQueryNrHits("^lazy$","dog",1,true));
-}
