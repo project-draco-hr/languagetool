@@ -1,7 +1,4 @@
 {
-  if (patternElement.hasExceptionList()) {
-    throw new UnsupportedPatternRuleException("Pattern rules with token exceptions are not supported.");
-  }
   if (patternElement.hasAndGroup()) {
     throw new UnsupportedPatternRuleException("Pattern rules with tokens in \"And Group\" are not supported.");
   }
@@ -13,8 +10,5 @@
   }
   if (patternElement.isInflected()) {
     throw new UnsupportedPatternRuleException("Pattern rules with inflated tokens are not supported.");
-  }
-  if (patternElement.testWhitespace()) {
-    throw new UnsupportedPatternRuleException("Pattern rules with tokens testing \"Whitespace before\" are not supported.");
   }
 }
