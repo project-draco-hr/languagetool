@@ -1,4 +1,0 @@
-String token
-String prefix
-boolean isNegation
-boolean isRegularExpression

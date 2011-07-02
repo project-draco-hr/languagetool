@@ -3,22 +3,18 @@
     return null;
   }
   final Element patternElement=it.next();
-  if (patternElement.getExceptionList() != null) {
-    throw new UnsupportedPatternRuleException("Pattern rules with token exceptions are not supported.");
-  }
-  if (patternElement.isInflected()) {
-    throw new UnsupportedPatternRuleException("Pattern rules with inflated tokens are not supported.");
-  }
+  checkUnsupportedRule(patternElement);
   final ArrayList<SpanQuery> list=new ArrayList<SpanQuery>();
   int skip=0;
-  final SpanQuery termQuery=createSpanQuery(patternElement.getString(),"",patternElement.getNegation(),patternElement.isRegularExpression());
-  final SpanQuery posQuery=createSpanQuery(patternElement.getPOStag(),LanguageToolFilter.POS_PREFIX,patternElement.getPOSNegation(),patternElement.isPOStagRegularExpression());
-  if (termQuery != null && posQuery != null) {
-    final SpanNearQuery q=new SpanNearQuery(new SpanQuery[]{termQuery,posQuery},0,false);
+  final boolean caseSensitive=patternElement.getCaseSensitive();
+  final SpanQuery tokenQuery=createTokenQuery(patternElement.getString(),patternElement.getNegation(),patternElement.isRegularExpression(),caseSensitive);
+  final SpanQuery posQuery=createPOSQuery(patternElement.getPOStag(),patternElement.getPOSNegation(),patternElement.isPOStagRegularExpression());
+  if (tokenQuery != null && posQuery != null) {
+    final RigidSpanNearQuery q=new RigidSpanNearQuery(new SpanQuery[]{tokenQuery,posQuery},0,true);
     list.add(q);
   }
- else   if (termQuery != null) {
-    list.add(termQuery);
+ else   if (tokenQuery != null) {
+    list.add(tokenQuery);
   }
  else   if (posQuery != null) {
     list.add(posQuery);
@@ -30,14 +26,17 @@
     skip+=patternElement.getSkipNext();
   }
  else {
-    skip=Integer.MAX_VALUE;
+    skip=MAX_SKIP;
   }
   final SpanQuery next=next(it);
   if (next != null) {
     list.add(next);
-    return new SpanNearQuery(list.toArray(new SpanQuery[list.size()]),skip,true);
+    return new RigidSpanNearQuery(list.toArray(new SpanQuery[list.size()]),skip + 1,true);
+  }
+ else   if (list.size() > 0) {
+    return list.get(0);
   }
  else {
-    return list.get(0);
+    return null;
   }
 }

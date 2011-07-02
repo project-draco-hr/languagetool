@@ -1,0 +1,3 @@
+String token
+boolean isNegation
+boolean isRegularExpression

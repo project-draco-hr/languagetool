@@ -1,0 +1,4 @@
+String token
+boolean isNegation
+boolean isRegularExpression
+boolean caseSensitive
