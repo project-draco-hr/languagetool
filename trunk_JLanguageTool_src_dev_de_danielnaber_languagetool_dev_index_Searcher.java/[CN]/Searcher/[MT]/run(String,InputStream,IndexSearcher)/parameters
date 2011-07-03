@@ -1,0 +1,3 @@
+String ruleId
+InputStream ruleXMLStream
+IndexSearcher searcher

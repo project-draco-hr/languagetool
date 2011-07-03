@@ -1,0 +1,4 @@
+{
+  indexer.index(reader,isSentence);
+  indexer.close();
+}

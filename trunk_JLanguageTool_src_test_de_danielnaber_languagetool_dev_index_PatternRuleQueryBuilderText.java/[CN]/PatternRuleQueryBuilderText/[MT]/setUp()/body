@@ -1,0 +1,12 @@
+{
+  super.setUp();
+  directory=newDirectory();
+  RandomIndexWriter writer=new RandomIndexWriter(random,directory,new LanguageToolAnalyzer(Version.LUCENE_31,new JLanguageTool(Language.ENGLISH)));
+  Document doc=new Document();
+  doc.add(newField(PatternRuleQueryBuilder.FIELD_NAME,"How do you thin about this wonderful idea?",Field.Store.NO,Field.Index.ANALYZED));
+  doc.add(newField(PatternRuleQueryBuilder.FIELD_NAME,"The are several grammar checkers for English, eg. LanguageTool.",Field.Store.NO,Field.Index.ANALYZED));
+  writer.addDocument(doc);
+  reader=writer.getReader();
+  writer.close();
+  searcher=newSearcher(reader);
+}

@@ -1,0 +1,18 @@
+{
+  final PatternRuleLoader ruleLoader=new PatternRuleLoader();
+  final List<PatternRule> rules=ruleLoader.getRules(ruleXMLStream,"test.xml");
+  ruleXMLStream.close();
+  PatternRule theRule=null;
+  for (  PatternRule rule : rules) {
+    if (rule.getId().equals(ruleId)) {
+      theRule=rule;
+      break;
+    }
+  }
+  if (theRule == null) {
+    throw new PatternRuleNotFoundException(ruleId);
+  }
+  final Query query=PatternRuleQueryBuilder.buildQuery(theRule);
+  System.out.println(query);
+  return searcher.search(query,1000);
+}

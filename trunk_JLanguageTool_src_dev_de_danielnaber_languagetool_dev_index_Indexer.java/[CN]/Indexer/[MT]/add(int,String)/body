@@ -1,0 +1,5 @@
+{
+  final Document doc=new Document();
+  doc.add(new Field(PatternRuleQueryBuilder.FIELD_NAME,sentence,Store.YES,Index.ANALYZED));
+  writer.addDocument(doc);
+}

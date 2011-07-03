@@ -1,12 +1,4 @@
 {
-  if (insenStack.size() > 0) {
-    final String pop=insenStack.pop();
-    restoreState(current);
-    termAtt.append(pop);
-    posIncrAtt.setPositionIncrement(0);
-    typeAtt.setType("insen");
-    return true;
-  }
   if (posStack.size() > 0) {
     final String pop=posStack.pop();
     restoreState(current);
@@ -40,7 +32,6 @@
     return this.incrementToken();
   }
   offsetAtt.setOffset(tr.getStartPos(),tr.getStartPos() + at.getToken().length());
-  insenStack.push(CASE_INSENSITIVE_PREFIX + at.getToken().toLowerCase());
   for (int i=0; i < tr.getReadingsLength(); i++) {
     at=tr.getAnalyzedToken(i);
     if (at.getPOSTag() != null) {

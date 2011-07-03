@@ -1,0 +1,17 @@
+{
+  StringBuffer sb=new StringBuffer();
+  sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?> <rules lang=\"en\"> <category name=\"Test\"> <rule id=\"TEST_RULE\" name=\"test\"> <pattern>");
+  sb.append("<token skip=\"-1\">How</token>");
+  sb.append("<token postag=\"PRP\"></token>");
+  sb.append("<token skip=\"1\">thin</token>");
+  sb.append("<token postag_regexp=\"yes\" postag=\"JJ|DT\">this</token>");
+  sb.append("<token regexp=\"yes\" negate=\"yes\">bad|good</token>");
+  sb.append("<token regexp=\"yes\">idea|proposal</token>");
+  sb.append("</pattern> </rule> </category> </rules>");
+  InputStream input=new ByteArrayInputStream(sb.toString().getBytes());
+  final PatternRuleLoader ruleLoader=new PatternRuleLoader();
+  List<PatternRule> rules=ruleLoader.getRules(input,"test.xml");
+  Query query=PatternRuleQueryBuilder.buildQuery(rules.get(0));
+  System.out.println(query);
+  assertEquals(1,searcher.search(query,null,1000).totalHits);
+}
