@@ -4,7 +4,7 @@
   sb.append("<token skip=\"-1\">How</token>");
   sb.append("<token postag=\"PRP\"></token>");
   sb.append("<token skip=\"1\">thin</token>");
-  sb.append("<token postag_regexp=\"yes\" postag=\"DT|NN\">this</token>");
+  sb.append("<token postag_regexp=\"yes\" postag=\"JJ|DT\">this</token>");
   sb.append("<token regexp=\"yes\" negate=\"yes\">bad|good</token>");
   sb.append("<token regexp=\"yes\">idea|proposal</token>");
   sb.append("</pattern> </rule> </category> </rules>");
