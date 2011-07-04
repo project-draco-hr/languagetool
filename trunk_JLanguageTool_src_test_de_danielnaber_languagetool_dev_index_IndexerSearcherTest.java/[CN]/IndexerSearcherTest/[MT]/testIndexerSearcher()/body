@@ -1,0 +1,30 @@
+{
+  String content="How to move back and fourth from linux to xmb?";
+  Indexer.run(content,directory,Language.ENGLISH,false);
+  searcher=new IndexSearcher(directory);
+  TopDocs topDocs=Searcher.run("BACK_AND_FOURTH",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),searcher);
+  assertEquals(1,topDocs.totalHits);
+  topDocs=Searcher.run("ALL_OVER_THE_WORD",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),searcher);
+  assertEquals(0,topDocs.totalHits);
+  try {
+    Searcher.run("Invalid Rule Id",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),searcher);
+    fail("Exception should be thrown for invalid rule id.");
+  }
+ catch (  IOException e) {
+    assertTrue(e instanceof PatternRuleNotFoundException);
+  }
+  try {
+    Searcher.run("EYE_BROW",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),searcher);
+    fail("Exception should be thrown for unsupported PatternRule");
+  }
+ catch (  IOException e) {
+    assertTrue(e instanceof UnsupportedPatternRuleException);
+  }
+  try {
+    Searcher.run("ALL_FOR_NOT",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),searcher);
+    fail("Exception should be thrown for unsupported PatternRule");
+  }
+ catch (  IOException e) {
+    assertTrue(e instanceof UnsupportedPatternRuleException);
+  }
+}
