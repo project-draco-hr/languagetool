@@ -1,0 +1,10 @@
+{
+  this.language=language;
+  this.indexer=new Indexer(dir,language);
+  this.start=start;
+  this.end=end;
+  if (start > end) {
+    throw new RuntimeException("\"Start\" should be smaller than \"End\"");
+  }
+  initTextFilter();
+}

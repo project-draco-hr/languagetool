@@ -1,0 +1,14 @@
+{
+  long start=System.currentTimeMillis();
+  final SAXParserFactory factory=SAXParserFactory.newInstance();
+  final SAXParser saxParser=factory.newSAXParser();
+  WikipediaIndexHandler handler=new WikipediaIndexHandler(FSDirectory.open(new File("E:\\project\\data\\index_zh")),Language.CHINESE,4001,10000);
+  try {
+    saxParser.parse(new FileInputStream(new File("E:\\project\\data\\zhwiki-latest-pages-meta-current.xml")),handler);
+  }
+ catch (  RuntimeException e) {
+  }
+  handler.close();
+  long end=System.currentTimeMillis();
+  System.out.println("It takes " + (start - end) / (1000 * 60) + " minutes");
+}
