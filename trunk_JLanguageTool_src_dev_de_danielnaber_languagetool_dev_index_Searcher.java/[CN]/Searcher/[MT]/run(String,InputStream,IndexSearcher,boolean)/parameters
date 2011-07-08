@@ -1,3 +1,4 @@
 String ruleId
 InputStream ruleXMLStream
 IndexSearcher searcher
+boolean checkUnsupportedRule

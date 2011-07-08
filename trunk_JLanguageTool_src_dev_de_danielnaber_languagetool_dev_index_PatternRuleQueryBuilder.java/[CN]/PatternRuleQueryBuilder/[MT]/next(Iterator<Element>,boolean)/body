@@ -3,7 +3,9 @@
     return null;
   }
   final Element patternElement=it.next();
-  checkUnsupportedRule(patternElement);
+  if (checkUnsupportedRule) {
+    checkUnsupportedRule(patternElement);
+  }
   final ArrayList<SpanQuery> list=new ArrayList<SpanQuery>();
   int skip=0;
   final boolean caseSensitive=patternElement.getCaseSensitive();
@@ -28,7 +30,7 @@
  else {
     skip=MAX_SKIP;
   }
-  final SpanQuery next=next(it);
+  final SpanQuery next=next(it,checkUnsupportedRule);
   if (next != null) {
     list.add(next);
     return new RigidSpanNearQuery(list.toArray(new SpanQuery[list.size()]),skip + 1,true);

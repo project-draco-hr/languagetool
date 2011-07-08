@@ -4,15 +4,17 @@
     System.out.println("Rule XML file '" + xml.getAbsolutePath() + "' does not exist or is not readable, please check the path");
     System.exit(1);
   }
-  final InputStream is=new FileInputStream(xml);
+  InputStream is=new FileInputStream(xml);
   final IndexSearcher searcher=new IndexSearcher(FSDirectory.open(new File(indexDir)));
-  final TopDocs docs=run(ruleId,is,searcher);
-  final ScoreDoc[] hits=docs.scoreDocs;
-  System.out.println("Search results: " + docs.totalHits);
-  for (int i=0; i < docs.totalHits; ) {
-    final Document d=searcher.doc(hits[i].doc);
-    i++;
-    System.out.println(i + ": " + d.get(PatternRuleQueryBuilder.FIELD_NAME));
+  TopDocs docs;
+  try {
+    docs=run(ruleId,is,searcher,true);
   }
+ catch (  UnsupportedPatternRuleException e) {
+    System.out.println(e.getMessage() + " Try to search potential matches:");
+    is=new FileInputStream(xml);
+    docs=run(ruleId,is,searcher,false);
+  }
+  printResult(docs,searcher);
   searcher.close();
 }

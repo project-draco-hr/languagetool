@@ -12,5 +12,5 @@
   if (theRule == null) {
     throw new PatternRuleNotFoundException(ruleId);
   }
-  return run(theRule,searcher);
+  return run(theRule,searcher,checkUnsupportedRule);
 }

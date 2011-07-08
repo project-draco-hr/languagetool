@@ -1,4 +1,0 @@
-{
-  final Query query=PatternRuleQueryBuilder.buildQuery(rule);
-  return searcher.search(query,10000);
-}

@@ -1,2 +1,2 @@
-PatternRule rule
+TopDocs docs
 IndexSearcher searcher
