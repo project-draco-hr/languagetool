@@ -3,6 +3,11 @@
   this.apiFormat=apiFormat;
   this.taggerOnly=taggerOnly;
   this.applySuggestions=applySuggestions;
+  this.autoDetect=autoDetect;
+  this.enabledRules=enabledRules;
+  this.disabledRules=disabledRules;
+  this.motherTongue=motherTongue;
+  this.singleLineBreakMarksParagraph=singleLineBreakMarksParagraph;
   profileRules=false;
   bitextMode=false;
   srcLt=null;

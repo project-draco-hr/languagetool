@@ -1,6 +1,23 @@
 {
   boolean oneTime=false;
   if (!"-".equals(filename)) {
+    if (autoDetect) {
+      Language language=getLanguageFromFile(filename,encoding);
+      if (language == null) {
+        System.err.println("Could not detect language well enough, using English");
+        language=Language.ENGLISH;
+      }
+      try {
+        changeLanguage(language,motherTongue,disabledRules,enabledRules);
+      }
+ catch (      SAXException e) {
+        e.printStackTrace();
+      }
+catch (      ParserConfigurationException e) {
+        e.printStackTrace();
+      }
+      System.out.println("Using " + language.getName() + " for file "+ filename);
+    }
     final File file=new File(filename);
     oneTime=file.length() < MAX_FILE_SIZE || bitextMode;
   }

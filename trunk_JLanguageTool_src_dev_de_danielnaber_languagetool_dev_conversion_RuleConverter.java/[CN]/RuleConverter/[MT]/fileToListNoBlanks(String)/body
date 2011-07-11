@@ -1,0 +1,20 @@
+{
+  ArrayList<String> returnList=new ArrayList<String>();
+  Scanner in=null;
+  try {
+    in=new Scanner(new FileInputStream(filename));
+    while (in.hasNextLine()) {
+      String line=in.nextLine();
+      if (!line.equals("") && !line.equals("\n")) {
+        returnList.add(line);
+      }
+    }
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+ finally {
+    in.close();
+  }
+  return returnList;
+}

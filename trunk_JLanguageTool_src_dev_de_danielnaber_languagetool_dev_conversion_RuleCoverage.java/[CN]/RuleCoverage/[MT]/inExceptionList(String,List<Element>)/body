@@ -1,0 +1,8 @@
+{
+  for (  Element element : exceptions) {
+    if (isExampleOf(word,element)) {
+      return true;
+    }
+  }
+  return false;
+}

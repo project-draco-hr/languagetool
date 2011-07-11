@@ -1,0 +1,10 @@
+{
+  IStemmer dictLookup=null;
+  try {
+    dictLookup=new DictionaryLookup(Dictionary.read(dictFile));
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  return dictLookup;
+}

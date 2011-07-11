@@ -6,3 +6,5 @@ String[] disabledRules
 String[] enabledRules
 boolean apiFormat
 boolean applySuggestions
+boolean autoDetect
+boolean singleLineBreakMarksParagraph

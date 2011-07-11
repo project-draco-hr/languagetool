@@ -18,19 +18,37 @@
   button.setMnemonic(StringTools.getMnemonic(messages.getString("checkText")));
   button.addActionListener(this);
   final JPanel panel=new JPanel();
+  panel.setOpaque(false);
   panel.setLayout(new GridBagLayout());
   final GridBagConstraints buttonCons=new GridBagConstraints();
+  final JPanel insidePanel=new JPanel();
+  insidePanel.setOpaque(false);
+  insidePanel.setLayout(new GridBagLayout());
   buttonCons.gridx=0;
   buttonCons.gridy=0;
-  panel.add(button,buttonCons);
+  insidePanel.add(button,buttonCons);
   buttonCons.gridx=1;
   buttonCons.gridy=0;
-  panel.add(new JLabel(" " + messages.getString("textLanguage") + " "),buttonCons);
-  buttonCons.gridx=2;
-  buttonCons.gridy=0;
+  insidePanel.add(new JLabel(" " + messages.getString("textLanguage") + " "),buttonCons);
   languageBox=new JComboBox();
   populateLanguageBox(languageBox);
-  panel.add(languageBox,buttonCons);
+  buttonCons.gridx=2;
+  buttonCons.gridy=0;
+  insidePanel.add(languageBox,buttonCons);
+  buttonCons.gridx=0;
+  buttonCons.gridy=0;
+  panel.add(insidePanel);
+  autoDetectBox=new JCheckBox("Automatically detect language");
+  autoDetectBox.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      languageBox.setEnabled(!autoDetectBox.isSelected());
+    }
+  }
+);
+  buttonCons.gridx=0;
+  buttonCons.gridy=1;
+  buttonCons.anchor=GridBagConstraints.WEST;
+  panel.add(autoDetectBox,buttonCons);
   final Container contentPane=frame.getContentPane();
   final GridBagLayout gridLayout=new GridBagLayout();
   contentPane.setLayout(gridLayout);

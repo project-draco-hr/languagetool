@@ -1,0 +1,5 @@
+{
+  String space=getSpace(indent);
+  orig.add(space + "<message> " + expandSuggestion(suggestion,pattern)+ "</message>");
+  return orig;
+}

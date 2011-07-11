@@ -1,0 +1,64 @@
+{
+  ArrayList<String> ltRule=new ArrayList<String>();
+  if (id != null && name != null) {
+    ltRule.add(firstIndent + "<rule " + "id=\""+ id+ "\" name=\""+ name+ "\">");
+  }
+ else {
+    ltRule.add(firstIndent + "<rule>");
+  }
+  if (type.equals("avoid")) {
+    if (Boolean.parseBoolean(rule.get("casesensitive"))) {
+      ltRule.add(secondIndent + "<pattern case_sensitive=\"yes\">");
+    }
+ else {
+      ltRule.add(secondIndent + "<pattern>");
+    }
+    String[] pattern=rule.get("pattern").split("\\ +");
+    for (    String e : pattern) {
+      if (e.contains("'")) {
+        String[] temp=e.replaceAll("'"," ' ").split("\\ +");
+        for (        String sTemp : temp) {
+          ltRule=addTokenHelper(ltRule,sTemp,thirdIndentInt);
+        }
+      }
+ else {
+        ltRule=addTokenHelper(ltRule,e,thirdIndentInt);
+      }
+    }
+    ltRule.add(secondIndent + "</pattern>");
+    ltRule.add(secondIndent + "<message>" + rule.get("explanation")+ "</message>");
+    ltRule.add(firstIndent + "</rule>");
+  }
+ else   if (type.equals("default")) {
+    if (rule.containsKey("filter")) {
+      if (rule.get("filter").equals("kill")) {
+        return null;
+      }
+    }
+    if (Boolean.parseBoolean(rule.get("casesensitive"))) {
+      ltRule.add(secondIndent + "<pattern case_sensitive=\"yes\">");
+    }
+ else {
+      ltRule.add(secondIndent + "<pattern>");
+    }
+    String[] pattern=rule.get("pattern").split("\\ +");
+    for (int i=0; i < pattern.length; i++) {
+      String e=pattern[i];
+      if (e.contains("'")) {
+        String[] temp=e.replaceAll("'"," ' ").split("\\ +");
+        for (        String sTemp : temp) {
+          ltRule=addTokenHelper(ltRule,sTemp,thirdIndentInt);
+        }
+      }
+ else {
+        ltRule=addTokenHelper(ltRule,e,thirdIndentInt);
+      }
+    }
+    ltRule.add(secondIndent + "</pattern>");
+    if (rule.containsKey("word")) {
+      ltRule=addSuggestion(ltRule,rule.get("word"),pattern,secondIndentInt);
+    }
+    ltRule.add(firstIndent + "</rule>");
+  }
+  return ltRule;
+}

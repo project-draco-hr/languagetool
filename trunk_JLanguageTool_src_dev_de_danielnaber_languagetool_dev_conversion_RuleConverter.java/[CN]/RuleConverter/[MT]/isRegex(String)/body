@@ -1,0 +1,4 @@
+{
+  Matcher m=regex.matcher(e);
+  return m.find();
+}

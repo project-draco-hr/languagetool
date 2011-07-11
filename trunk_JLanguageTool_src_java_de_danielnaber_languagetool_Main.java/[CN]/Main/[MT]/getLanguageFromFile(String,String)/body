@@ -1,0 +1,8 @@
+{
+  Language lang=null;
+  LanguageIdentifier li;
+  String text=StringTools.readFile(new FileInputStream(filename),encoding);
+  li=new LanguageIdentifier(text);
+  lang=Language.getLanguageForShortName(li.getLanguage());
+  return lang;
+}

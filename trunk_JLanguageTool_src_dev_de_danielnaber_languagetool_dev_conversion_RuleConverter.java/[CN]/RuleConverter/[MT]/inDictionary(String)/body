@@ -1,0 +1,6 @@
+{
+  if (dictLookup == null) {
+    dictLookup=(DictionaryLookup)loadDictionary();
+  }
+  return !dictLookup.lookup(word).isEmpty();
+}

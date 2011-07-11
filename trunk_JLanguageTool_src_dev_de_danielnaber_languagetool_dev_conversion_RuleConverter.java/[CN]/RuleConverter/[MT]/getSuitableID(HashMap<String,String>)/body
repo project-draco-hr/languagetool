@@ -1,0 +1,3 @@
+{
+  return rule.get("pattern").replaceAll("[\\ &|.*/]","_");
+}

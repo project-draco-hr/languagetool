@@ -1,0 +1,12 @@
+{
+  IStemmer dictLookup=null;
+  String fileName="." + JLanguageTool.getDataBroker().getResourceDir() + "/en/english.dict";
+  File dictFile=new File(fileName);
+  try {
+    dictLookup=new DictionaryLookup(Dictionary.read(dictFile));
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  return dictLookup;
+}

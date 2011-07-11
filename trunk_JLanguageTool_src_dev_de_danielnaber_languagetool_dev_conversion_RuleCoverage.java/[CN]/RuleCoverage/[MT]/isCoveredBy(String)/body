@@ -1,0 +1,7 @@
+{
+  List<RuleMatch> matches=tool.check(str);
+  if (matches.size() > 0) {
+    return matches.get(0).getRule().getId();
+  }
+  return null;
+}

@@ -1,0 +1,4 @@
+String infilename
+String grammarfile
+String generalFiletype
+String specificFiletype

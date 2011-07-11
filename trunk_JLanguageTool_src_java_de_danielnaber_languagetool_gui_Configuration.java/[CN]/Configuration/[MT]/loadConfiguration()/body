@@ -11,6 +11,10 @@
     if (motherTongueStr != null) {
       motherTongue=Language.getLanguageForShortName(motherTongueStr);
     }
+    final String autoDetectStr=(String)props.get(AUTO_DETECT_CONFIG_KEY);
+    if (autoDetectStr != null) {
+      autoDetect=autoDetectStr.equals("true");
+    }
     final String runServerString=(String)props.get(SERVER_RUN_CONFIG_KEY);
     if (runServerString != null) {
       runServer=runServerString.equals("true");

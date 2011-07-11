@@ -1,0 +1,23 @@
+{
+  String token=e.getString();
+  List<Element> exceptions=e.getExceptionList();
+  if (exceptions == null) {
+    exceptions=new ArrayList<Element>();
+  }
+  if (e.isSentStart()) {
+    return "";
+  }
+  if (!token.isEmpty() && !e.isRegularExpression()) {
+    return token;
+  }
+ else {
+    dictIterator=resetDictIter();
+    while (dictIterator.hasNext()) {
+      String word=dictIterator.next().getWord().toString();
+      if (isExampleOf(word,e) && !inExceptionList(word,exceptions)) {
+        return word;
+      }
+    }
+  }
+  return null;
+}

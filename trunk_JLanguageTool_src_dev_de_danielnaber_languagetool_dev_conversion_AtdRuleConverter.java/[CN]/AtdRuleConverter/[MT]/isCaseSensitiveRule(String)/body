@@ -1,0 +1,11 @@
+{
+  boolean caseSensitive=false;
+  String[] splitPattern=pattern.split("\\ +");
+  for (  String s : splitPattern) {
+    String[] splitS=s.split("/");
+    if (uppercase.matcher(splitS[0]).find()) {
+      caseSensitive=true;
+    }
+  }
+  return caseSensitive;
+}

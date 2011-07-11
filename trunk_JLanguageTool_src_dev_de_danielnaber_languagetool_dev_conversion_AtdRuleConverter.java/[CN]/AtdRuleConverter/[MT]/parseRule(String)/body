@@ -1,0 +1,25 @@
+{
+  HashMap<String,String> outRule=new HashMap<String,String>();
+  if (this.ruleType == "default") {
+    String[] splitRule=rule.split("::");
+    outRule.put("pattern",splitRule[0]);
+    if (splitRule.length > 1) {
+      for (int i=1; i < splitRule.length; i++) {
+        String[] splitDeclaration=splitRule[i].split("=");
+        outRule.put(splitDeclaration[0],splitDeclaration[1]);
+      }
+    }
+  }
+ else   if (this.ruleType == "avoid") {
+    String[] splitRule=rule.split("\t+");
+    outRule.put("pattern",splitRule[0]);
+    outRule.put("explanation",splitRule[1]);
+  }
+  if (isCaseSensitiveRule(outRule.get("pattern"))) {
+    outRule.put("casesensitive","true");
+  }
+ else {
+    outRule.put("casesensitive","false");
+  }
+  return outRule;
+}

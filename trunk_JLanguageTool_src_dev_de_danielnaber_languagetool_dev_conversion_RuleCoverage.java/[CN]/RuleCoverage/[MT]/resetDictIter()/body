@@ -1,0 +1,10 @@
+{
+  DictionaryIterator ret=null;
+  try {
+    ret=new DictionaryIterator(Dictionary.read(dictFile),Charset.forName("utf8").newDecoder(),true);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  return ret;
+}

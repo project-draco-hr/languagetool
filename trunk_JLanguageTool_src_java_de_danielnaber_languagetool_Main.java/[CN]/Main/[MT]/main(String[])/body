@@ -1,5 +1,5 @@
 {
-  if (args.length < 1 || args.length > 9) {
+  if (args.length < 1 || args.length > 10) {
     exitWithUsageMessage();
   }
   boolean verbose=false;
@@ -11,6 +11,7 @@
   boolean applySuggestions=false;
   boolean profile=false;
   boolean bitext=false;
+  boolean autoDetect=false;
   Language language=null;
   Language motherTongue=null;
   String encoding=null;
@@ -20,6 +21,9 @@
   for (int i=0; i < args.length; i++) {
     if (args[i].equals("-h") || args[i].equals("-help") || args[i].equals("--help")|| args[i].equals("--?")) {
       exitWithUsageMessage();
+    }
+ else     if (args[i].equals("-adl") || args[i].equals("--autoDetect")) {
+      autoDetect=true;
     }
  else     if (args[i].equals("-v") || args[i].equals("--verbose")) {
       verbose=true;
@@ -116,7 +120,9 @@
   }
   if (language == null) {
     if (!apiFormat) {
-      System.err.println("No language specified, using English");
+      if (!autoDetect) {
+        System.err.println("No language specified, using English");
+      }
     }
     language=Language.ENGLISH;
   }
@@ -124,7 +130,7 @@
     System.out.println("Expected text language: " + language.getName());
   }
   language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(singleLineBreakMarksParagraph);
-  final Main prg=new Main(verbose,taggerOnly,language,motherTongue,disabledRules,enabledRules,apiFormat,applySuggestions);
+  final Main prg=new Main(verbose,taggerOnly,language,motherTongue,disabledRules,enabledRules,apiFormat,applySuggestions,autoDetect,singleLineBreakMarksParagraph);
   prg.setListUnknownWords(listUnknown);
   if (profile) {
     prg.setProfilingMode();

@@ -21,6 +21,9 @@
     final AboutDialog about=new AboutDialog(messages);
     about.show();
   }
+ else   if (e.getActionCommand().equals(tagText)) {
+    prg.tagText();
+  }
  else {
     throw new IllegalArgumentException("Unknown action " + e);
   }

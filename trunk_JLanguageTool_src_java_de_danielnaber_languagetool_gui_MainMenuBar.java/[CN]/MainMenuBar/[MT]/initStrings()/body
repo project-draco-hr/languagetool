@@ -7,5 +7,6 @@
   addLanguageText=StringTools.getLabel(messages.getString("guiMenuAddRules"));
   optionsText=StringTools.getLabel(messages.getString("guiMenuOptions"));
   quitText=StringTools.getLabel(messages.getString("guiMenuQuit"));
+  tagText=StringTools.getLabel(messages.getString("guiTagText"));
   aboutText=StringTools.getLabel(messages.getString("guiMenuAbout"));
 }

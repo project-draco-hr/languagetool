@@ -1,0 +1,5 @@
+ArrayList<String> orig
+String token
+String postag
+String type
+int indent

@@ -1,0 +1,3 @@
+String inFileName
+String outFileName
+String ruleType

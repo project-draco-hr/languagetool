@@ -32,8 +32,28 @@
       isr=getInputStreamReader(filename,encoding,isr);
       br=new BufferedReader(isr);
       String line;
+      int lineCount=0;
       while ((line=br.readLine()) != null) {
         sb.append(line);
+        lineCount++;
+        if (lineCount == 1 && autoDetect) {
+          Language language=getLanguageFromString(line,false);
+          if (language == null) {
+            System.err.println("Could not detect language well enough, using English");
+            language=Language.ENGLISH;
+          }
+          System.out.println("Language used is: " + language.getName());
+          language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(singleLineBreakMarksParagraph);
+          try {
+            changeLanguage(language,motherTongue,disabledRules,enabledRules);
+          }
+ catch (          SAXException e) {
+            e.printStackTrace();
+          }
+catch (          ParserConfigurationException e) {
+            e.printStackTrace();
+          }
+        }
         sb.append('\n');
         tmpLineOffset++;
         if (lt.getLanguage().getSentenceTokenizer().singleLineBreaksMarksPara()) {

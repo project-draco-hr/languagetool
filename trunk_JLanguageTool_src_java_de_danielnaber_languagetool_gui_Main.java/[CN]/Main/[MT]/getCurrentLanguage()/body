@@ -1,3 +1,15 @@
 {
-  return ((I18nLanguage)languageBox.getSelectedItem()).getLanguage();
+  if (autoDetectBox.isSelected()) {
+    LanguageIdentifier li=new LanguageIdentifier(textArea.getText());
+    Language lang=Language.getLanguageForShortName(li.getLanguage());
+    if (lang != null) {
+      return Language.getLanguageForShortName(li.getLanguage());
+    }
+ else {
+      return Language.ENGLISH;
+    }
+  }
+ else {
+    return ((I18nLanguage)languageBox.getSelectedItem()).getLanguage();
+  }
 }

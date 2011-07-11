@@ -1,0 +1,17 @@
+{
+  ArrayList<String> returnList=new ArrayList<String>();
+  Scanner in=null;
+  try {
+    in=new Scanner(new FileInputStream(filename));
+    while (in.hasNextLine()) {
+      returnList.add(in.nextLine());
+    }
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+ finally {
+    in.close();
+  }
+  return returnList;
+}

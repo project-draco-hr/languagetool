@@ -119,6 +119,12 @@
     }
   }
   motherTonguePanel.add(motherTongueBox,cons);
+  if (insideOOo) {
+    autoDetectCheckbox=new JCheckBox("Automatically detect language");
+    autoDetectCheckbox.setSelected(autoDetect);
+    cons.gridy++;
+    motherTonguePanel.add(autoDetectCheckbox,cons);
+  }
   final JPanel portPanel=new JPanel();
   portPanel.setLayout(new GridBagLayout());
   cons=new GridBagConstraints();
