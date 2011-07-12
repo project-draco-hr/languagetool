@@ -1,7 +1,6 @@
 {
   this.grammarfile=grammarfile;
   this.specificFiletype=specificFiletype;
-  this.generalFiletype=generalFiletype;
   if (generalFiletype.equals("atd")) {
     rc=new AtdRuleConverter(infilename,grammarfile,specificFiletype);
   }

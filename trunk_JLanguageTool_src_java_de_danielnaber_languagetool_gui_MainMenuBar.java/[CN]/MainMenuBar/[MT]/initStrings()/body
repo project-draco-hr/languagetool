@@ -5,8 +5,8 @@
   checkClipboardText=StringTools.getLabel(messages.getString("guiMenuCheckClipboard"));
   dockToTrayText=StringTools.getLabel(messages.getString("guiMenuHide"));
   addLanguageText=StringTools.getLabel(messages.getString("guiMenuAddRules"));
+  tagText=StringTools.getLabel(messages.getString("guiTagText"));
   optionsText=StringTools.getLabel(messages.getString("guiMenuOptions"));
   quitText=StringTools.getLabel(messages.getString("guiMenuQuit"));
-  tagText=StringTools.getLabel(messages.getString("guiTagText"));
   aboutText=StringTools.getLabel(messages.getString("guiMenuAbout"));
 }

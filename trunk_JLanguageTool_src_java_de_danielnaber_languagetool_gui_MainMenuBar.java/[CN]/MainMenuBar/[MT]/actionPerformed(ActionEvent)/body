@@ -11,6 +11,9 @@
  else   if (e.getActionCommand().equals(addLanguageText)) {
     prg.addLanguage();
   }
+ else   if (e.getActionCommand().equals(tagText)) {
+    prg.tagText();
+  }
  else   if (e.getActionCommand().equals(optionsText)) {
     prg.showOptions();
   }
@@ -20,9 +23,6 @@
  else   if (e.getActionCommand().equals(aboutText)) {
     final AboutDialog about=new AboutDialog(messages);
     about.show();
-  }
- else   if (e.getActionCommand().equals(tagText)) {
-    prg.tagText();
   }
  else {
     throw new IllegalArgumentException("Unknown action " + e);
