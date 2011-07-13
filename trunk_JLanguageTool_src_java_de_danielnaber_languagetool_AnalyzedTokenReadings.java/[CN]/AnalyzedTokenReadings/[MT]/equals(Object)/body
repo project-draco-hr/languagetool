@@ -10,6 +10,7 @@
   if (isSentStart != other.isSentStart)   return false;
   if (isWhitespace != other.isWhitespace)   return false;
   if (isWhitespaceBefore != other.isWhitespaceBefore)   return false;
+  if (isImmunized != other.isImmunized)   return false;
   if (startPos != other.startPos)   return false;
   if (token == null) {
     if (other.token != null)     return false;
