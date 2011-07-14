@@ -30,11 +30,6 @@
     ltRule.add(firstIndent + "</rule>");
   }
  else   if (type.equals("default")) {
-    if (rule.containsKey("filter")) {
-      if (rule.get("filter").equals("kill")) {
-        return null;
-      }
-    }
     if (Boolean.parseBoolean(rule.get("casesensitive"))) {
       ltRule.add(secondIndent + "<pattern case_sensitive=\"yes\">");
     }
@@ -57,6 +52,11 @@
     ltRule.add(secondIndent + "</pattern>");
     if (rule.containsKey("word")) {
       ltRule=addSuggestion(ltRule,rule.get("word"),pattern,secondIndentInt);
+    }
+    if (rule.containsKey("filter")) {
+      if (rule.get("filter").equals("kill")) {
+        ltRule.add(secondIndent + "<disambig action=\"immunize\"/>");
+      }
     }
     ltRule.add(firstIndent + "</rule>");
   }

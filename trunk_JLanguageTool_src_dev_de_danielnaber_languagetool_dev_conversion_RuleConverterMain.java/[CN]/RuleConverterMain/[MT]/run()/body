@@ -1,10 +1,16 @@
 {
   List<String> rules=rc.getRulesAsString();
   ArrayList<ArrayList<String>> ltRules=new ArrayList<ArrayList<String>>();
+  ArrayList<ArrayList<String>> killedRules=new ArrayList<ArrayList<String>>();
   for (  String r : rules) {
     HashMap<String,String> hm=rc.parseRule(r);
     ArrayList<String> ltRule=(ArrayList<String>)rc.ltRuleAsList(hm,RuleConverter.getSuitableID(hm),RuleConverter.getSuitableName(hm),specificFiletype);
-    ltRules.add(ltRule);
+    if (notKilledRule(hm)) {
+      ltRules.add(ltRule);
+    }
+ else {
+      killedRules.add(ltRule);
+    }
   }
   PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(grammarfile),"UTF-8"));
   w.write(RuleConverter.xmlHeader);

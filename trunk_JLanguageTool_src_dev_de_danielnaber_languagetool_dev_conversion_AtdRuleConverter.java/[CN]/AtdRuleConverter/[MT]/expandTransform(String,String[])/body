@@ -37,10 +37,20 @@
     retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" case_conversion=\"alllower\" />";
   }
  else   if (transform.equals("singular")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NN|NNP\" postag_regexp=\"yes\"/>";
+    if (hasSpecificPosTag(pattern[numMatched],"NNPS")) {
+      retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNP\" />";
+    }
+ else {
+      retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NN\" />";
+    }
   }
  else   if (transform.equals("plural")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNS|NNPS\" postag_regexp=\"yes\"/>";
+    if (hasSpecificPosTag(pattern[numMatched],"NNP")) {
+      retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNPS\" />";
+    }
+ else {
+      retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNS\" />";
+    }
   }
  else   if (transform.equals("participle")) {
     retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBN\" />";

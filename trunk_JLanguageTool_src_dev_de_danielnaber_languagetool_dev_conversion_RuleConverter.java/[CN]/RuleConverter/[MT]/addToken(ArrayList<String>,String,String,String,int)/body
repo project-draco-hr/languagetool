@@ -22,7 +22,7 @@
     orig.add(space + "<token regexp=\"yes\">" + token+ "</token>");
   }
  else   if (type.equals("regexpostag")) {
-    orig.add(space + "<token postag=\"" + postag+ "\" + postag_regexp=\"yes\"></token>");
+    orig.add(space + "<token postag=\"" + postag+ "\" postag_regexp=\"yes\"></token>");
   }
  else   if (type.equals("sentstart")) {
     orig.add(space + "<token postag=\"SENT_START\"></token>");

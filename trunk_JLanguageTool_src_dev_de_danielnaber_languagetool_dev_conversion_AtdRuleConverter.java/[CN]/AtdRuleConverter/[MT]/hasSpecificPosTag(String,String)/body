@@ -1,0 +1,19 @@
+{
+  if (dictLookup == null) {
+    dictLookup=(DictionaryLookup)loadDictionary();
+  }
+  if (hasPosTag(word)) {
+    String[] splitWord=word.split("/");
+    if (Pattern.matches(splitWord[1],postag)) {
+      return true;
+    }
+    return false;
+  }
+  List<WordData> lwd=dictLookup.lookup(word);
+  for (  WordData wd : lwd) {
+    if (wd.getTag().toString().equals(postag)) {
+      return true;
+    }
+  }
+  return false;
+}

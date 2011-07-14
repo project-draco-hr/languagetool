@@ -5,6 +5,7 @@
   }
   if (hasPosTag(e)) {
     String[] parts=e.split("/");
+    parts[1]=fixNoun(parts[1]);
     if (parts[0].equals(".*")) {
       if (isRegex(parts[1])) {
         ltRule=addToken(ltRule,null,parts[1],"regexpostag",thirdIndentInt);
