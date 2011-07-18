@@ -1,3 +1,3 @@
 {
-  return rule.get("pattern").replaceAll("[\\ &|.*/]","_");
+  return rule.get("pattern").replaceAll("[\\ &|.*/<>]","_");
 }

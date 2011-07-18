@@ -3,6 +3,10 @@
     ltRule=addToken(ltRule,null,null,"sentstart",thirdIndentInt);
     return ltRule;
   }
+  if (e.equals("0END.0")) {
+    ltRule=addToken(ltRule,null,null,"sentend",thirdIndentInt);
+    return ltRule;
+  }
   if (hasPosTag(e)) {
     String[] parts=e.split("/");
     parts[1]=fixNoun(parts[1]);

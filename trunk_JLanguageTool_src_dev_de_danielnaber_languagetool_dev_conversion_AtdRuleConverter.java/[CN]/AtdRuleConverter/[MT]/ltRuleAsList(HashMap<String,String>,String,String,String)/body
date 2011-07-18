@@ -14,12 +14,38 @@
       ltRule.add(secondIndent + "<pattern>");
     }
     String[] pattern=rule.get("pattern").split("\\ +");
-    for (    String e : pattern) {
-      if (e.contains("'")) {
+    if (isSpecialApostropheCase(pattern)) {
+      List<HashMap<String,String>> twoRules=splitOffRegularWords(rule);
+      List<String> twoRulesList=new ArrayList<String>();
+      for (      HashMap<String,String> map : twoRules) {
+        List<String> singleRule=ltRuleAsList(map,RuleConverter.getSuitableID(map),RuleConverter.getSuitableName(map),type);
+        for (        String line : singleRule) {
+          twoRulesList.add(line);
+        }
+      }
+      return twoRulesList;
+    }
+    for (int i=0; i < pattern.length; i++) {
+      String e=pattern[i];
+      if (e.contains("'") && !e.contains("|")) {
         String[] temp=e.replaceAll("'"," ' ").split("\\ +");
         for (        String sTemp : temp) {
           ltRule=addTokenHelper(ltRule,sTemp,thirdIndentInt);
         }
+      }
+ else       if (e.contains("'") & e.contains("|")) {
+        String[] temp=e.split("\\|");
+        String prefixes="";
+        String suffix="";
+        for (        String sTemp : temp) {
+          String[] splitSTemp=sTemp.split("'");
+          prefixes=prefixes + splitSTemp[0] + "|";
+          suffix=splitSTemp[1];
+        }
+        prefixes=prefixes.substring(0,prefixes.length() - 1);
+        ltRule=addTokenHelper(ltRule,prefixes,thirdIndentInt);
+        ltRule=addTokenHelper(ltRule,"'",thirdIndentInt);
+        ltRule=addTokenHelper(ltRule,suffix,thirdIndentInt);
       }
  else {
         ltRule=addTokenHelper(ltRule,e,thirdIndentInt);
@@ -37,13 +63,38 @@
       ltRule.add(secondIndent + "<pattern>");
     }
     String[] pattern=rule.get("pattern").split("\\ +");
+    if (isSpecialApostropheCase(pattern)) {
+      List<HashMap<String,String>> twoRules=splitOffRegularWords(rule);
+      List<String> twoRulesList=new ArrayList<String>();
+      for (      HashMap<String,String> map : twoRules) {
+        List<String> singleRule=ltRuleAsList(map,RuleConverter.getSuitableID(map),RuleConverter.getSuitableName(map),type);
+        for (        String line : singleRule) {
+          twoRulesList.add(line);
+        }
+      }
+      return twoRulesList;
+    }
     for (int i=0; i < pattern.length; i++) {
       String e=pattern[i];
-      if (e.contains("'")) {
+      if (e.contains("'") && !e.contains("|")) {
         String[] temp=e.replaceAll("'"," ' ").split("\\ +");
         for (        String sTemp : temp) {
           ltRule=addTokenHelper(ltRule,sTemp,thirdIndentInt);
         }
+      }
+ else       if (e.contains("'") & e.contains("|")) {
+        String[] temp=e.split("\\|");
+        String prefixes="";
+        String suffix="";
+        for (        String sTemp : temp) {
+          String[] splitSTemp=sTemp.split("'");
+          prefixes=prefixes + splitSTemp[0] + "|";
+          suffix=splitSTemp[1];
+        }
+        prefixes=prefixes.substring(0,prefixes.length() - 1);
+        ltRule=addTokenHelper(ltRule,prefixes,thirdIndentInt);
+        ltRule=addTokenHelper(ltRule,"'",thirdIndentInt);
+        ltRule=addTokenHelper(ltRule,suffix,thirdIndentInt);
       }
  else {
         ltRule=addTokenHelper(ltRule,e,thirdIndentInt);

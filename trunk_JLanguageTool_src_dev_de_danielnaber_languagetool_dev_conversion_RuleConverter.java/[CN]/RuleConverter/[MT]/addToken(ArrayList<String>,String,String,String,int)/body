@@ -27,5 +27,8 @@
  else   if (type.equals("sentstart")) {
     orig.add(space + "<token postag=\"SENT_START\"></token>");
   }
+ else   if (type.equals("sentend")) {
+    orig.add(space + "<token postag=\"SENT_END\"></token>");
+  }
   return orig;
 }

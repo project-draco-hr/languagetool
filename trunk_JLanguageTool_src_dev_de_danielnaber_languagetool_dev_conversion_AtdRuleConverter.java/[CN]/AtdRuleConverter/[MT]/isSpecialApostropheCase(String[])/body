@@ -1,0 +1,13 @@
+{
+  for (  String s : pattern) {
+    if (s.contains("|") && s.contains("'")) {
+      String[] ss=s.split("\\|");
+      for (      String sss : ss) {
+        if (!sss.contains("'")) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}

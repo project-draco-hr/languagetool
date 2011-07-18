@@ -25,4 +25,11 @@
   w.close();
   RuleCoverage checker=new RuleCoverage(Language.ENGLISH);
   checker.evaluateRules(grammarfile);
+  w=new PrintWriter(new OutputStreamWriter(new FileOutputStream("disambiguationtest.xml"),"UTF-8"));
+  for (  ArrayList<String> killedRule : killedRules) {
+    for (    String line : killedRule) {
+      w.write(line + '\n');
+    }
+  }
+  w.close();
 }
