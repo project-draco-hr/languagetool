@@ -1,0 +1,5 @@
+{
+  for (  String language : additionalLanguages) {
+    addProfile(language);
+  }
+}

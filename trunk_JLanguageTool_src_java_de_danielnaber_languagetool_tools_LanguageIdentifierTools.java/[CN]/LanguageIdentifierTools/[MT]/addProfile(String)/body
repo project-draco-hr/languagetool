@@ -1,0 +1,28 @@
+{
+  String PROFILE_SUFFIX=".ngp";
+  String PROFILE_ENCODING="UTF-8";
+  try {
+    LanguageProfile profile=new LanguageProfile();
+    String executionPath=System.getProperty("user.dir");
+    String languageFilePath=executionPath + JLanguageTool.getDataBroker().getResourceDir() + "/"+ language+ "/"+ language+ PROFILE_SUFFIX;
+    InputStream stream=new FileInputStream(languageFilePath);
+    try {
+      BufferedReader reader=new BufferedReader(new InputStreamReader(stream,PROFILE_ENCODING));
+      String line=reader.readLine();
+      while (line != null) {
+        if (line.length() > 0 && !line.startsWith("#")) {
+          int space=line.indexOf(' ');
+          profile.add(line.substring(0,space),Long.parseLong(line.substring(space + 1)));
+        }
+        line=reader.readLine();
+      }
+    }
+  finally {
+      stream.close();
+    }
+    LanguageIdentifier.addProfile(language,profile);
+  }
+ catch (  Throwable t) {
+    throw new Exception("Failed trying to load language profile for language \"" + language + "\". Error: "+ t.getMessage());
+  }
+}

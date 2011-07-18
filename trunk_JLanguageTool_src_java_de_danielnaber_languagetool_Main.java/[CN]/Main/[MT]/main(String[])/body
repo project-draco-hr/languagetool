@@ -23,6 +23,13 @@
       exitWithUsageMessage();
     }
  else     if (args[i].equals("-adl") || args[i].equals("--autoDetect")) {
+      try {
+        LanguageIdentifierTools.addLtProfiles();
+      }
+ catch (      Exception e) {
+        System.out.println("Failed to load some additional profiles. Check your ngp files.");
+        e.printStackTrace();
+      }
       autoDetect=true;
     }
  else     if (args[i].equals("-v") || args[i].equals("--verbose")) {
