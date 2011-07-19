@@ -1,0 +1,11 @@
+{
+  if (element.equals("'")) {
+    ltRule=addTokenHelper(ltRule,element,indent,exceptions);
+    return ltRule;
+  }
+  String[] temp=element.replaceAll("'"," ' ").split("\\ +");
+  for (  String sTemp : temp) {
+    ltRule=addTokenHelper(ltRule,sTemp,indent,exceptions);
+  }
+  return ltRule;
+}

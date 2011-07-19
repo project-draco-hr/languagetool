@@ -3,3 +3,4 @@ String token
 String postag
 String type
 int indent
+String exceptions

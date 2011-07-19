@@ -37,20 +37,10 @@
     retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" case_conversion=\"alllower\" />";
   }
  else   if (transform.equals("singular")) {
-    if (hasSpecificPosTag(pattern[numMatched],"NNPS")) {
-      retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNP\" />";
-    }
- else {
-      retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NN\" />";
-    }
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNP|NN(:U.?)?\" postag_regexp=\"yes\" />";
   }
  else   if (transform.equals("plural")) {
-    if (hasSpecificPosTag(pattern[numMatched],"NNP")) {
-      retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNPS\" />";
-    }
- else {
-      retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNS\" />";
-    }
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNPS|NNS\" postag_regexp=\"yes\" />";
   }
  else   if (transform.equals("participle")) {
     retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBN\" />";
@@ -63,6 +53,14 @@
   }
  else   if (transform.equals("present")) {
     retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBG\" />";
+  }
+ else   if (transform.equals("determiner") || transform.equals("determiner2")) {
+    retString="the";
+  }
+ else   if (transform.equals("positive")) {
+  }
+ else   if (transform.equals("possessive")) {
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NN(:U.?)?\" postag_regexp=\"yes\" />'s";
   }
   return retString;
 }

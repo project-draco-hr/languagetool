@@ -1,15 +1,7 @@
 {
   for (  String s : pattern) {
-    if (s.contains("|") && s.contains("'")) {
-      String[] ss=s.split("\\|");
-      HashSet<String> suffixes=new HashSet<String>();
-      for (      String sss : ss) {
-        String[] ssss=sss.split("'");
-        suffixes.add(ssss[ssss.length - 1]);
-      }
-      if (suffixes.size() == 1) {
-        return true;
-      }
+    if (s.contains("'") && s.contains("|")) {
+      return true;
     }
   }
   return false;

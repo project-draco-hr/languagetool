@@ -1,0 +1,61 @@
+{
+  String[] pattern=rule.get("pattern").split("\\ +");
+  String offendingToken="";
+  int offendingTokenIndex=0;
+  for (int i=0; i < pattern.length; i++) {
+    String token=pattern[i];
+    if (token.contains("'") && token.contains("|")) {
+      offendingToken=token;
+      offendingTokenIndex=i;
+      break;
+    }
+  }
+  String[] brokenToken=offendingToken.split("\\|");
+  HashMap<String,ArrayList<String>> suffixMap=new HashMap<String,ArrayList<String>>();
+  for (  String token : brokenToken) {
+    if (!token.contains("'")) {
+      suffixMap=addItemSmart(suffixMap,"regular",token);
+    }
+ else {
+      String[] splitToken=token.split("'");
+      if (splitToken.length == 1) {
+        suffixMap=addItemSmart(suffixMap,"",splitToken[0]);
+      }
+ else {
+        suffixMap=addItemSmart(suffixMap,splitToken[1],splitToken[0]);
+      }
+    }
+  }
+  ArrayList<String> newPatterns=new ArrayList<String>();
+  for (  String suffix : suffixMap.keySet()) {
+    String newPattern="";
+    for (int i=0; i < pattern.length; i++) {
+      if (i == offendingTokenIndex) {
+        ArrayList<String> prefixes=suffixMap.get(suffix);
+        String prefixString="";
+        for (        String prefix : prefixes) {
+          prefixString=prefixString + prefix + "|";
+        }
+        prefixString=prefixString.substring(0,prefixString.length() - 1);
+        if (suffix.equals("regular")) {
+          newPattern=newPattern + prefixString + " ";
+        }
+ else {
+          newPattern=newPattern + prefixString + " ' "+ suffix+ " ";
+        }
+      }
+ else {
+        newPattern=newPattern + pattern[i] + " ";
+      }
+    }
+    newPattern=newPattern.trim();
+    newPatterns.add(newPattern);
+  }
+  ArrayList<String> allRules=new ArrayList<String>();
+  for (  String newPattern : newPatterns) {
+    rule.put("pattern",newPattern);
+    List<String> newLtRule=ltRuleAsList(rule,getSuitableID(rule),getSuitableName(rule),type);
+    allRules.addAll(newLtRule);
+  }
+  return allRules;
+}
