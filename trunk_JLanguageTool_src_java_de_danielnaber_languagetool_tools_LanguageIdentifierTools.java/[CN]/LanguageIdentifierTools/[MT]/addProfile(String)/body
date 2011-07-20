@@ -1,10 +1,9 @@
 {
-  String PROFILE_SUFFIX=".ngp";
-  String PROFILE_ENCODING="UTF-8";
+  final String PROFILE_SUFFIX=".ngp";
+  final String PROFILE_ENCODING="UTF-8";
   try {
     LanguageProfile profile=new LanguageProfile();
-    String executionPath=System.getProperty("user.dir");
-    String languageFilePath=executionPath + JLanguageTool.getDataBroker().getResourceDir() + "/"+ language+ "/"+ language+ PROFILE_SUFFIX;
+    String languageFilePath="./" + JLanguageTool.getDataBroker().getResourceDir() + "/"+ language+ "/"+ language+ PROFILE_SUFFIX;
     InputStream stream=new FileInputStream(languageFilePath);
     try {
       BufferedReader reader=new BufferedReader(new InputStreamReader(stream,PROFILE_ENCODING));
