@@ -3,8 +3,8 @@
   final String PROFILE_ENCODING="UTF-8";
   try {
     LanguageProfile profile=new LanguageProfile();
-    String languageFilePath="./" + JLanguageTool.getDataBroker().getResourceDir() + "/"+ language+ "/"+ language+ PROFILE_SUFFIX;
-    InputStream stream=new FileInputStream(languageFilePath);
+    final String languageFilePath=JLanguageTool.getDataBroker().getResourceDir() + "/" + language+ "/"+ language+ PROFILE_SUFFIX;
+    InputStream stream=JLanguageTool.class.getResourceAsStream(languageFilePath);
     try {
       BufferedReader reader=new BufferedReader(new InputStreamReader(stream,PROFILE_ENCODING));
       String line=reader.readLine();
