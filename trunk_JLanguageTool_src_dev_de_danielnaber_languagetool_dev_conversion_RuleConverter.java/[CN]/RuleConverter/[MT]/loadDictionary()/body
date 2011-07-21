@@ -1,7 +1,14 @@
 {
   IStemmer dictLookup=null;
-  String fileName="." + JLanguageTool.getDataBroker().getResourceDir() + "/en/english.dict";
-  File dictFile=new File(fileName);
+  String fileName="/en/english.dict";
+  URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(fileName);
+  File dictFile=null;
+  try {
+    dictFile=new File(url.toURI());
+  }
+ catch (  URISyntaxException e) {
+    e.printStackTrace();
+  }
   try {
     dictLookup=new DictionaryLookup(Dictionary.read(dictFile));
   }

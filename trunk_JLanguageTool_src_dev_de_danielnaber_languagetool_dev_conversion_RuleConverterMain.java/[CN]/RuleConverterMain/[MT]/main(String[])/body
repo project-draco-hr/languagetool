@@ -3,7 +3,20 @@
   String rulefile=null;
   String specificFiletype=null;
   String generalFiletype=null;
-  if (args.length < 2) {
+  String discardfile=null;
+  String disambigfile=null;
+  try {
+    if (args[0].equals("--check")) {
+      RuleCoverage checker=new RuleCoverage(Language.ENGLISH);
+      String inFile=args[1];
+      checker.evaluateRules(inFile);
+      System.exit(1);
+    }
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+  if (args.length < 4) {
     exitWithUsageMessage();
   }
   for (int i=0; i < args.length; i++) {
@@ -16,11 +29,17 @@
  else     if (args[i].equals("-g") || args[i].equals("--generalFiletype")) {
       generalFiletype=getGeneralFiletypeOrExit(args[++i]);
     }
- else     if (i == args.length - 2) {
-      rulefile=args[i];
+ else     if (args[i].equals("--grammarFile") || args[i].equals("-f")) {
+      grammarfile=args[++i];
     }
- else     if (i == args.length - 1) {
-      grammarfile=args[i];
+ else     if (args[i].equals("--discardFile") || args[i].equals("-d")) {
+      discardfile=args[++i];
+    }
+ else     if (args[i].equals("--disambigFile") || args[i].equals("-a")) {
+      disambigfile=args[++i];
+    }
+ else     if (args[i].equals("--ruleFile") || args[i].equals("-r")) {
+      rulefile=args[++i];
     }
  else {
       System.err.println("Unknown option: " + args[i]);
@@ -33,6 +52,20 @@
   if (generalFiletype == null) {
     generalFiletype="atd";
   }
-  RuleConverterMain prg=new RuleConverterMain(rulefile,grammarfile,generalFiletype,specificFiletype);
+  if (grammarfile == null) {
+    System.err.println("Need to specify a grammar file");
+    exitWithUsageMessage();
+  }
+  if (rulefile == null) {
+    System.err.println("Need to specify a rule file");
+    exitWithUsageMessage();
+  }
+  if (disambigfile == null) {
+    disambigfile="disambig.xml";
+  }
+  if (discardfile == null) {
+    discardfile="discard.xml";
+  }
+  RuleConverterMain prg=new RuleConverterMain(rulefile,grammarfile,discardfile,disambigfile,generalFiletype,specificFiletype);
   prg.run();
 }

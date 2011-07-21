@@ -1,6 +1,8 @@
 {
   this.grammarfile=grammarfile;
   this.specificFiletype=specificFiletype;
+  this.disambigfile=disambigfile;
+  this.discardfile=discardfile;
   if (generalFiletype.equals("atd")) {
     rc=new AtdRuleConverter(infilename,grammarfile,specificFiletype);
   }

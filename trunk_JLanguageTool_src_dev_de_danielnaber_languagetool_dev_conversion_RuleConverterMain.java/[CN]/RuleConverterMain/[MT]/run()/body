@@ -24,12 +24,15 @@
   w.write("</rules>");
   w.close();
   RuleCoverage checker=new RuleCoverage(Language.ENGLISH);
-  checker.evaluateRules(grammarfile);
-  w=new PrintWriter(new OutputStreamWriter(new FileOutputStream("disambiguationtest.xml"),"UTF-8"));
-  for (  ArrayList<String> killedRule : killedRules) {
-    for (    String line : killedRule) {
-      w.write(line + '\n');
+  checker.splitOutCoveredRules(grammarfile,discardfile);
+  if (killedRules.size() > 0) {
+    w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(disambigfile),"UTF-8"));
+    for (    ArrayList<String> killedRule : killedRules) {
+      for (      String line : killedRule) {
+        w.write(line + '\n');
+      }
     }
+    w.close();
+    System.out.println(Integer.toString(killedRules.size()) + " disambiguation rules written to " + disambigfile);
   }
-  w.close();
 }

@@ -1,4 +1,6 @@
 String infilename
 String grammarfile
+String discardfile
+String disambigfile
 String generalFiletype
 String specificFiletype
