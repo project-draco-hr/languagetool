@@ -1,13 +1,15 @@
 {
   ArrayList<String> returnList=new ArrayList<String>();
   Scanner in=null;
+  InputStream is=null;
   try {
-    in=new Scanner(new FileInputStream(filename));
+    is=JLanguageTool.getDataBroker().getFromResourceDirAsStream(filename);
+    in=new Scanner(is);
     while (in.hasNextLine()) {
       returnList.add(in.nextLine());
     }
   }
- catch (  IOException e) {
+ catch (  Exception e) {
     e.printStackTrace();
   }
  finally {
