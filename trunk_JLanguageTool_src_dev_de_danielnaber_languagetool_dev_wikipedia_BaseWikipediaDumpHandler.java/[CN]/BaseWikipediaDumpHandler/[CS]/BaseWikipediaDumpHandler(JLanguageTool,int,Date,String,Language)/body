@@ -4,5 +4,5 @@
   this.maxArticles=maxArticles;
   this.dumpDate=dumpDate;
   this.langCode=langCode;
-  initTextFilter();
+  textFilter=TextFilterTools.getTextFilter(lang);
 }

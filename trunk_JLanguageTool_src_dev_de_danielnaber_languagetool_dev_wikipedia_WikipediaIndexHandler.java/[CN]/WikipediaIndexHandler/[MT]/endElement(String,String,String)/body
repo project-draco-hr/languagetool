@@ -3,21 +3,21 @@
     text=new StringBuilder();
   }
  else   if (qName.equals("text")) {
+    System.out.println(++articleCount);
+    if (articleCount < start) {
+      return;
+    }
+ else     if (articleCount >= end && end != 0) {
+      throw new DocumentLimitReachedException(end);
+    }
     try {
-      System.out.println(articleCount++);
-      if (articleCount < start) {
-        return;
-      }
- else       if (articleCount >= end) {
-        throw new RuntimeException();
-      }
       final String textToCheck=textFilter.filter(text.toString());
       if (!textToCheck.contains("#REDIRECT") && !textToCheck.trim().equals("")) {
         indexer.index(textToCheck,false);
       }
     }
  catch (    Exception e) {
-      throw new RuntimeException(e);
+      throw new RuntimeException("Failed checking article " + articleCount,e);
     }
   }
   text=new StringBuilder();
