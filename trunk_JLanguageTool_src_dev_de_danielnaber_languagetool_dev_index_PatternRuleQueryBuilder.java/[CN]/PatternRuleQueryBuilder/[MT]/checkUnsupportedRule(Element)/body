@@ -15,6 +15,6 @@
     throw new UnsupportedPatternRuleException("Pattern rules with unified tokens are not supported.");
   }
   if (patternElement.isInflected()) {
-    throw new UnsupportedPatternRuleException("Pattern rules with inflated tokens are not supported.");
+    throw new UnsupportedPatternRuleException("Pattern rules with inflected tokens are not supported.");
   }
 }
