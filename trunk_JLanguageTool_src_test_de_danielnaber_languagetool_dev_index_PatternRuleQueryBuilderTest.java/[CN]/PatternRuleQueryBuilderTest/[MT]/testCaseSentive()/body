@@ -18,15 +18,11 @@
   final PatternRuleLoader ruleLoader=new PatternRuleLoader();
   List<PatternRule> rules=ruleLoader.getRules(input,"test.xml");
   Query query=PatternRuleQueryBuilder.buildQuery(rules.get(0),true);
-  System.out.println(query);
   assertEquals(1,searcher.search(query,null,1000).totalHits);
   query=PatternRuleQueryBuilder.buildQuery(rules.get(1),true);
-  System.out.println(query);
   assertEquals(0,searcher.search(query,null,1000).totalHits);
   query=PatternRuleQueryBuilder.buildQuery(rules.get(2),true);
-  System.out.println(query);
   assertEquals(1,searcher.search(query,null,1000).totalHits);
   query=PatternRuleQueryBuilder.buildQuery(rules.get(3),true);
-  System.out.println(query);
   assertEquals(1,searcher.search(query,null,1000).totalHits);
 }
