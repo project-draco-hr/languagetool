@@ -1,5 +1,5 @@
 {
-  StringBuffer sb=new StringBuffer();
+  StringBuilder sb=new StringBuilder();
   sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?> <rules lang=\"en\"> <category name=\"Test\"> <rule id=\"TEST_RULE\" name=\"test\"> <pattern>");
   sb.append("<token skip=\"-1\">both<exception scope=\"next\">and</exception></token>");
   sb.append("</pattern> </rule> </category> </rules>");
@@ -10,8 +10,7 @@
     PatternRuleQueryBuilder.buildQuery(rules.get(0),true);
     fail("Exception should be thrown for unsupported PatternRule");
   }
- catch (  UnsupportedPatternRuleException e) {
-    assertTrue(e instanceof UnsupportedPatternRuleException);
+ catch (  UnsupportedPatternRuleException expected) {
   }
   try {
     PatternRuleQueryBuilder.buildQuery(rules.get(0),false);
@@ -19,7 +18,7 @@
  catch (  UnsupportedPatternRuleException e) {
     fail("Exception should not be thrown, if not checkUnsupportedRule");
   }
-  sb=new StringBuffer();
+  sb=new StringBuilder();
   sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?> <rules lang=\"en\"> <category name=\"Test\"> <rule id=\"TEST_RULE\" name=\"test\"> <pattern>");
   sb.append("<token inflected=\"yes\">suppose</token>");
   sb.append("</pattern> </rule> </category> </rules>");
@@ -29,8 +28,7 @@
     PatternRuleQueryBuilder.buildQuery(rules.get(0),true);
     fail("Exception should be thrown for unsupported PatternRule");
   }
- catch (  UnsupportedPatternRuleException e) {
-    assertTrue(e instanceof UnsupportedPatternRuleException);
+ catch (  UnsupportedPatternRuleException expected) {
   }
   try {
     PatternRuleQueryBuilder.buildQuery(rules.get(0),false);
