@@ -1,0 +1,16 @@
+{
+  init();
+  final ArrayList<String> ret=new ArrayList<String>();
+  String result;
+  try {
+    result=seg.split(chinesdJF.chineseFan2Jan(text)).getFinalResult();
+  }
+ catch (  Exception e) {
+    return ret;
+  }
+  final String[] list=result.split(" ");
+  for (int i=0; i < list.length; i++) {
+    ret.add(list[i]);
+  }
+  return ret;
+}

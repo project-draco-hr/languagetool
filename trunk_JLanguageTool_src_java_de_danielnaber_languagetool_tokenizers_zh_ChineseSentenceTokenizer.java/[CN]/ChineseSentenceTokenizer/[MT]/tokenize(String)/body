@@ -1,0 +1,16 @@
+{
+  final SentenceSeg ss=new SentenceSeg(text);
+  final ArrayList<Sentence> sens=ss.getSens();
+  final ArrayList<String> list=new ArrayList<String>();
+  for (  Sentence sen : sens) {
+    String str=sen.getContent();
+    if (str.contains(Utility.SENTENCE_BEGIN)) {
+      str=str.substring(Utility.SENTENCE_BEGIN.length());
+    }
+    if (str.contains(Utility.SENTENCE_END)) {
+      str=str.substring(0,str.length() - Utility.SENTENCE_BEGIN.length());
+    }
+    list.add(str);
+  }
+  return list;
+}
