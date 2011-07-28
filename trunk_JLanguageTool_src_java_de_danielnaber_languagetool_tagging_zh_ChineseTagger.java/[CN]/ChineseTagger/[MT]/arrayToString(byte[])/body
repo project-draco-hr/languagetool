@@ -1,0 +1,7 @@
+{
+  StringBuffer buff=new StringBuffer();
+  for (int i=0; i < bytes.length; i++) {
+    buff.append(bytes[i] + " ");
+  }
+  return buff.toString();
+}
