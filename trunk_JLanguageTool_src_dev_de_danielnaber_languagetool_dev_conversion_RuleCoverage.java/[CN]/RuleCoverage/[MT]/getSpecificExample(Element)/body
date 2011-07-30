@@ -10,13 +10,11 @@
   if (!token.isEmpty() && !e.isRegularExpression()) {
     return token;
   }
- else {
-    dictIterator=resetDictIter();
-    while (dictIterator.hasNext()) {
-      String word=dictIterator.next().getWord().toString();
-      if (isExampleOf(word,e) && !inExceptionList(word,exceptions)) {
-        return word;
-      }
+  dictIterator=resetDictIter();
+  while (dictIterator.hasNext()) {
+    String word=dictIterator.next().getWord().toString();
+    if (isExampleOf(word,e) && !inExceptionList(word,exceptions)) {
+      return word;
     }
   }
   return null;
