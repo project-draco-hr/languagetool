@@ -4,7 +4,7 @@
   }
   if (seg == null) {
     InputStream coreDictIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/coreDict.dct");
-    InputStream bigramDictIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/bigramDict.dct");
+    InputStream bigramDictIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/BigramDict.dct");
     InputStream personTaggerDctIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/nr.dct");
     InputStream personTaggerCtxIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/nr.ctx");
     InputStream transPersonTaggerDctIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/tr.dct");
