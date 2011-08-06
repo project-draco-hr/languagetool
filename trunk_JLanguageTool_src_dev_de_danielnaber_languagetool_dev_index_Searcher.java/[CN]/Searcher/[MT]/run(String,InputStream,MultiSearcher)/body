@@ -13,6 +13,5 @@
     throw new PatternRuleNotFoundException(ruleId);
   }
   final Query query=PatternRuleQueryBuilder.buildQuery(theRule,true);
-  System.out.println(query);
   return searcher.search(query,MAX_HITS);
 }

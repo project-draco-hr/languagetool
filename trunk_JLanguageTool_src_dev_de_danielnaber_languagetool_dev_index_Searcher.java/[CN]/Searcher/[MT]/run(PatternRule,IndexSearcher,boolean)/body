@@ -1,5 +1,4 @@
 {
   final Query query=PatternRuleQueryBuilder.buildQuery(rule,checkUnsupportedRule);
-  System.out.println(query);
   return searcher.search(query,MAX_HITS);
 }
