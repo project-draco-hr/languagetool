@@ -1,6 +1,6 @@
 {
   final PatternRuleLoader ruleLoader=new PatternRuleLoader();
-  final List<PatternRule> rules=ruleLoader.getRules(ruleXMLStream,"test.xml");
+  final List<PatternRule> rules=ruleLoader.getRules(ruleXMLStream,ruleXmlFile);
   ruleXMLStream.close();
   PatternRule theRule=null;
   for (  PatternRule rule : rules) {

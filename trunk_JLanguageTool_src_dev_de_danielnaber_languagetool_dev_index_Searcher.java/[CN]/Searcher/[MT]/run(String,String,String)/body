@@ -1,5 +1,5 @@
 {
-  final File xml=new File(ruleXML);
+  final File xml=new File(ruleXmlFile);
   if (!xml.exists() || !xml.canRead()) {
     System.out.println("Rule XML file '" + xml.getAbsolutePath() + "' does not exist or is not readable, please check the path");
     System.exit(1);
@@ -8,12 +8,12 @@
   final IndexSearcher searcher=new IndexSearcher(FSDirectory.open(new File(indexDir)));
   TopDocs docs;
   try {
-    docs=run(ruleId,is,searcher,true);
+    docs=run(ruleId,is,ruleXmlFile,searcher,true);
   }
  catch (  UnsupportedPatternRuleException e) {
     System.out.println(e.getMessage() + " Try to search potential matches:");
     is=new FileInputStream(xml);
-    docs=run(ruleId,is,searcher,false);
+    docs=run(ruleId,is,ruleXmlFile,searcher,false);
   }
   printResult(docs,searcher);
   searcher.close();
