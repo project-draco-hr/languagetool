@@ -1,0 +1,10 @@
+{
+  if (LanguageIdentifier.getSupportedLanguages().contains(code)) {
+    return true;
+  }
+  final Set<String> additionalCodes=new HashSet<String>(Arrays.asList(LanguageIdentifierTools.ADDITIONAL_LANGUAGES));
+  if (additionalCodes.contains(code)) {
+    return true;
+  }
+  return false;
+}

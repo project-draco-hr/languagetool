@@ -4,13 +4,15 @@
   System.out.println("<table>");
   System.out.println("<tr>");
   System.out.println("  <th></th>");
-  System.out.println("  <th align=\"right\">XML rules</th>");
+  System.out.println("  <th valign='bottom' align=\"right\">XML rules</th>");
   System.out.println("  <th>&nbsp;&nbsp;</th>");
-  System.out.println("  <th align=\"right\">Java rules</th>");
+  System.out.println("  <th align=\"right\">Java<br/>rules</th>");
   System.out.println("  <th>&nbsp;&nbsp;</th>");
-  System.out.println("  <th align=\"right\">" + "<a href=\"http://languagetool.svn.sourceforge.net/viewvc/languagetool/trunk/JLanguageTool/src/rules/false-friends.xml?content-type=text%2Fplain" + "\">False friends</a></th>");
+  System.out.println("  <th align=\"right\">" + "<a href=\"http://languagetool.svn.sourceforge.net/viewvc/languagetool/trunk/JLanguageTool/src/rules/false-friends.xml?content-type=text%2Fplain" + "\">False<br/>friends</a></th>");
   System.out.println("  <th>&nbsp;&nbsp;</th>");
-  System.out.println("  <th align=\"left\">Rule Maintainers</th>");
+  System.out.println("  <th valign='bottom'>Auto-<br/>detected</th>");
+  System.out.println("  <th>&nbsp;&nbsp;</th>");
+  System.out.println("  <th valign='bottom' align=\"left\">Rule Maintainers</th>");
   System.out.println("</tr>");
   final List<String> sortedLanguages=new ArrayList<String>();
   for (  Language element : Language.LANGUAGES) {
@@ -83,6 +85,8 @@
         count++;
       }
       System.out.print("<td align=\"right\">" + count + "</td>");
+      System.out.print("<td></td>");
+      System.out.print("<td>" + (isAutoDetected(lang.getShortName()) ? "yes" : "-") + "</td>");
       System.out.print("<td></td>");
       final StringBuilder maintainerInfo=new StringBuilder();
       if (lang.getMaintainers() != null) {
