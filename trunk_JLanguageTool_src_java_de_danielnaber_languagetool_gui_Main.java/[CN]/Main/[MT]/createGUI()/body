@@ -42,9 +42,11 @@
   autoDetectBox.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
       languageBox.setEnabled(!autoDetectBox.isSelected());
+      config.setAutoDetect(autoDetectBox.isSelected());
     }
   }
 );
+  autoDetectBox.setSelected(config.getAutoDetect());
   buttonCons.gridx=0;
   buttonCons.gridy=1;
   buttonCons.anchor=GridBagConstraints.WEST;
