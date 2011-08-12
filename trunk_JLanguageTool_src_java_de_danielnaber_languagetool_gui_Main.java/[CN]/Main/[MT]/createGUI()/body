@@ -47,6 +47,7 @@
   }
 );
   autoDetectBox.setSelected(config.getAutoDetect());
+  languageBox.setEnabled(!autoDetectBox.isSelected());
   buttonCons.gridx=0;
   buttonCons.gridy=1;
   buttonCons.anchor=GridBagConstraints.WEST;
