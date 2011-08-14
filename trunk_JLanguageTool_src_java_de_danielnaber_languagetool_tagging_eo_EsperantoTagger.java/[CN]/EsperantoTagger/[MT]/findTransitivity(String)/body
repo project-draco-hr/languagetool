@@ -3,11 +3,11 @@
     return "nt";
   }
  else   if (verb.endsWith("igi")) {
-    return "tr";
+    return verb.equals("memmortigi") ? "nt" : "tr";
   }
   for (; ; ) {
     final boolean isTransitive=setTransitiveVerbs.contains(verb);
-    final boolean isIntransitive=setNonTransitiveVerbs.contains(verb);
+    final boolean isIntransitive=setIntransitiveVerbs.contains(verb);
     if (isTransitive) {
       return isIntransitive ? "tn" : "tr";
     }
