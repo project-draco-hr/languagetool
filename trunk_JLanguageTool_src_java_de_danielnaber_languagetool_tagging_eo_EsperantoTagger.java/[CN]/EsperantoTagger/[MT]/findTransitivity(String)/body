@@ -1,7 +1,9 @@
 {
-  final Matcher matcher=patternVerbIg.matcher(verb);
-  if (matcher.find()) {
-    return matcher.group(1).equals("g") ? "tr" : "nt";
+  if (verb.endsWith("i??i")) {
+    return "nt";
+  }
+ else   if (verb.endsWith("igi")) {
+    return "tr";
   }
   for (; ; ) {
     final boolean isTransitive=setTransitiveVerbs.contains(verb);
@@ -14,7 +16,7 @@
     }
     final Matcher matcherPrefix=patternPrefix.matcher(verb);
     if (matcherPrefix.find()) {
-      verb=matcherPrefix.group(2);
+      verb=matcherPrefix.group(1);
       continue;
     }
     final Matcher matcherSuffix=patternSuffix.matcher(verb);
