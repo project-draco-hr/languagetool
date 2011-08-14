@@ -4,5 +4,6 @@
   setParagraphBackTrack(true);
   startSymbols=language.getUnpairedRuleStartSymbols();
   endSymbols=language.getUnpairedRuleEndSymbols();
+  NUMERALS=NUMERALS_EN;
   uniqueMapInit();
 }
