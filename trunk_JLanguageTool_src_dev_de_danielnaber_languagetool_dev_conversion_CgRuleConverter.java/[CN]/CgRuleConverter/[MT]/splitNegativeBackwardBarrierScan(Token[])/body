@@ -1,0 +1,26 @@
+{
+  ArrayList<List<Token>> list=new ArrayList<List<Token>>();
+  ArrayList<Token> newTokenList1=new ArrayList<Token>();
+  ArrayList<Token> newTokenList2=new ArrayList<Token>();
+  int index=0;
+  for (index=0; index < tokens.length; index++) {
+    if (tokens[index].scanbehind && tokens[index].negate && !tokens[index].barrier.isEmpty()) {
+      Token newToken=new Token(tokens[index]);
+      newToken.barrier=new CgSet();
+      newTokenList1.add(tokens[index]);
+      newTokenList2.add(newToken);
+      break;
+    }
+ else {
+      newTokenList1.add(tokens[index]);
+      newTokenList2.add(tokens[index]);
+    }
+  }
+  for (index=index + 1; index < tokens.length; index++) {
+    newTokenList1.add(tokens[index]);
+    newTokenList2.add(tokens[index]);
+  }
+  list.add(newTokenList1);
+  list.add(newTokenList2);
+  return list;
+}

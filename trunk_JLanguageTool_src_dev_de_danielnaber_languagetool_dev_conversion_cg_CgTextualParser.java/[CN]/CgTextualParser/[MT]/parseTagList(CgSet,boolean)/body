@@ -1,0 +1,85 @@
+{
+  if (isinline) {
+    if (inArray[index] != '(') {
+      System.err.println("Error: Missing opening ( on line " + result.lines);
+      System.exit(1);
+    }
+    ++index;
+  }
+  while (notDone() && inArray[index] != ';' && inArray[index] != ')') {
+    result.lines+=SKIPWS(';',')');
+    if (notDone() && inArray[index] != ';' && inArray[index] != ')') {
+      if (inArray[index] == '(') {
+        ++index;
+        ArrayList<CgTag> tags=new ArrayList<CgTag>();
+        while (notDone() && inArray[index] != ';' && inArray[index] != ')') {
+          nindex=index;
+          if (inArray[nindex] == '"') {
+            nindex++;
+            result.lines+=SKIPTO_NOSPAN_N('"');
+            if (inArray[nindex] != '"') {
+              System.err.println("Error: missing closing \" on line " + result.lines);
+              System.exit(1);
+            }
+          }
+          result.lines+=SKIPTOWS_N(')',true);
+          StringBuilder sb=new StringBuilder();
+          for (int i=index; i < nindex; i++) {
+            sb.append(inArray[i]);
+          }
+          CgTag t=result.allocateTag(sb.toString(),false);
+          tags.add(t);
+          index=nindex;
+          result.lines+=SKIPWS(';',')');
+        }
+        if (inArray[index] != ')') {
+          System.err.println("Error: missing closing ) on line " + result.lines);
+          System.exit(1);
+        }
+        ++index;
+        if (tags.size() == 1) {
+          s.addTag(tags.get(tags.size() - 1));
+        }
+ else {
+          CgCompositeTag ct=result.allocateCompositeTag();
+          for (int i=0; i < tags.size(); i++) {
+            ct.addTag(tags.get(i));
+          }
+          s.addCompositeTag(ct);
+        }
+      }
+ else {
+        nindex=index;
+        if (inArray[nindex] == '"') {
+          nindex++;
+          result.lines+=SKIPTO_NOSPAN_N('"');
+          if (inArray[nindex] != '"') {
+            System.err.println("Error: missing closing \" on line " + result.lines);
+            System.exit(1);
+          }
+        }
+        if (isinline) {
+          result.lines+=SKIPTOWS_N(')',true);
+        }
+ else {
+          result.lines+=SKIPTOWS_N((char)0,true);
+        }
+        StringBuilder sb=new StringBuilder();
+        for (int i=index; i < nindex; i++) {
+          sb.append(inArray[i]);
+        }
+        CgTag t=result.allocateTag(sb.toString(),false);
+        s.addTag(t);
+        index=nindex;
+      }
+    }
+  }
+  if (isinline) {
+    if (inArray[index] != ')') {
+      System.err.println("Error: missing closing ) on line " + result.lines);
+      System.exit(1);
+    }
+    ++index;
+  }
+  return s;
+}

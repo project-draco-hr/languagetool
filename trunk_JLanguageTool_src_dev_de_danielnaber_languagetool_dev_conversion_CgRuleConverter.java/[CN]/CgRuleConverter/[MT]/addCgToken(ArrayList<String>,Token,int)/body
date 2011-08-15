@@ -1,0 +1,29 @@
+{
+  String postags=postagsToString(token.postags);
+  String baseforms=glueWords(cleanForms(token.baseforms));
+  String surfaceforms=glueWords(cleanForms(token.surfaceforms));
+  CgCompositeTag[] compositeTags=token.compositeTags;
+  if (compositeTags.length != 0) {
+    postags=compositeTags[0].getPostags();
+    baseforms=compositeTags[0].getBaseform();
+    surfaceforms=compositeTags[0].getSurfaceform();
+  }
+  boolean careful=token.careful;
+  boolean negate=token.negate;
+  String exceptions=token.exceptionString;
+  int skip=token.skip;
+  if (postags.equals("") && baseforms.equals("") && surfaceforms.equals("")) {
+    ltRule=addToken(ltRule,baseforms,postags,exceptions,careful,false,negate,skip,indent);
+    return ltRule;
+  }
+  if (!baseforms.equals("")) {
+    ltRule=addToken(ltRule,baseforms,postags,exceptions,careful,true,negate,skip,indent);
+  }
+ else   if (!surfaceforms.equals("")) {
+    ltRule=addToken(ltRule,surfaceforms,postags,exceptions,careful,false,negate,skip,indent);
+  }
+ else {
+    ltRule=addToken(ltRule,surfaceforms,postags,exceptions,careful,false,negate,skip,indent);
+  }
+  return ltRule;
+}

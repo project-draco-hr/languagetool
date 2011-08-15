@@ -1,0 +1,7 @@
+{
+  ArrayList<String> ret=new ArrayList<String>();
+  for (  CgCompositeTag ctag : list) {
+    ret.add(compositePostagToString(ctag));
+  }
+  return ret;
+}

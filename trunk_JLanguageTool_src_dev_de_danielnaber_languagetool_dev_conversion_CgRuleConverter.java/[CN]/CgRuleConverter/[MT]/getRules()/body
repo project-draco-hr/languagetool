@@ -1,0 +1,8 @@
+{
+  parseCgFile();
+  List<CgRule> rules=new ArrayList<CgRule>();
+  for (  CgRule rule : grammar.rule_by_number) {
+    rules.add(rule);
+  }
+  return rules;
+}

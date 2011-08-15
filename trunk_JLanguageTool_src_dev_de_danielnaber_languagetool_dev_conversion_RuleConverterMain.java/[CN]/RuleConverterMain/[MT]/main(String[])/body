@@ -29,7 +29,7 @@
  else     if (args[i].equals("-g") || args[i].equals("--generalFiletype")) {
       generalFiletype=getGeneralFiletypeOrExit(args[++i]);
     }
- else     if (args[i].equals("--grammarFile") || args[i].equals("-f")) {
+ else     if (args[i].equals("--outputFile") || args[i].equals("-o")) {
       grammarfile=args[++i];
     }
  else     if (args[i].equals("--discardFile") || args[i].equals("-d")) {
@@ -38,7 +38,7 @@
  else     if (args[i].equals("--disambigFile") || args[i].equals("-a")) {
       disambigfile=args[++i];
     }
- else     if (args[i].equals("--ruleFile") || args[i].equals("-r")) {
+ else     if (args[i].equals("--inputFile") || args[i].equals("-i")) {
       rulefile=args[++i];
     }
  else {

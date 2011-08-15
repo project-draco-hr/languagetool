@@ -7,4 +7,6 @@
  else {
     this.ruleType=ruleType;
   }
+  idIndex=0;
+  nameIndex=0;
 }

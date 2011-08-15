@@ -1,0 +1,4 @@
+{
+  HashMap<String,String> ruleMap=(HashMap<String,String>)ruleObject;
+  return ruleMap.get("pattern").replaceAll("[&|.*/<>]","_");
+}

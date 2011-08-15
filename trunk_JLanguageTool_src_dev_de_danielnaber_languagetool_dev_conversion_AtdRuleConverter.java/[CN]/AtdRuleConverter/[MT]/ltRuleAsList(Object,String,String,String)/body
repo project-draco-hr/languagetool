@@ -1,0 +1,71 @@
+{
+  ArrayList<String> ltRule=new ArrayList<String>();
+  HashMap<String,String> rule=(HashMap<String,String>)ruleObject;
+  ltRule.add("<!-- " + rule.get("ruleString") + " -->");
+  if (id != null && name != null) {
+    ltRule.add(firstIndent + "<rule " + "id=\""+ id+ "\" name=\""+ name+ "\">");
+  }
+ else {
+    ltRule.add(firstIndent + "<rule>");
+  }
+  String exceptions=null;
+  if (rule.containsKey("avoid")) {
+    exceptions=getAvoidWords(rule.get("avoid"));
+  }
+  if (type.equals("avoid")) {
+    if (Boolean.parseBoolean(rule.get("casesensitive"))) {
+      ltRule.add(secondIndent + "<pattern case_sensitive=\"yes\">");
+    }
+ else {
+      ltRule.add(secondIndent + "<pattern>");
+    }
+    String[] pattern=rule.get("pattern").split("\\ +");
+    if (isApostropheCase(pattern)) {
+      return handleApostropheCase(rule,type);
+    }
+    for (int i=0; i < pattern.length; i++) {
+      String e=pattern[i];
+      if (e.contains("'")) {
+        ltRule=handleRegularApostrophe(ltRule,e,thirdIndentInt,exceptions);
+      }
+ else {
+        ltRule=addTokenHelper(ltRule,e,thirdIndentInt,exceptions);
+      }
+    }
+    ltRule.add(secondIndent + "</pattern>");
+    ltRule.add(secondIndent + "<message>" + rule.get("explanation")+ "</message>");
+    ltRule.add(firstIndent + "</rule>");
+  }
+ else   if (type.equals("default")) {
+    if (Boolean.parseBoolean(rule.get("casesensitive"))) {
+      ltRule.add(secondIndent + "<pattern case_sensitive=\"yes\">");
+    }
+ else {
+      ltRule.add(secondIndent + "<pattern>");
+    }
+    String[] pattern=rule.get("pattern").split("\\ +");
+    if (isApostropheCase(pattern)) {
+      return handleApostropheCase(rule,type);
+    }
+    for (int i=0; i < pattern.length; i++) {
+      String e=pattern[i];
+      if (e.contains("'")) {
+        ltRule=handleRegularApostrophe(ltRule,e,thirdIndentInt,exceptions);
+      }
+ else {
+        ltRule=addTokenHelper(ltRule,e,thirdIndentInt,exceptions);
+      }
+    }
+    ltRule.add(secondIndent + "</pattern>");
+    if (rule.containsKey("word")) {
+      ltRule=addSuggestion(ltRule,rule.get("word"),pattern,secondIndentInt);
+    }
+    if (rule.containsKey("filter")) {
+      if (rule.get("filter").equals("kill")) {
+        ltRule.add(secondIndent + "<disambig action=\"immunize\"/>");
+      }
+    }
+    ltRule.add(firstIndent + "</rule>");
+  }
+  return ltRule;
+}

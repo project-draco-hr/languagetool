@@ -1,0 +1,11 @@
+{
+  ArrayList<CgCompositeTag> tags=new ArrayList<CgCompositeTag>();
+  if (!set.tags.isEmpty()) {
+    for (    CgCompositeTag ctag : set.tags) {
+      if (!isCompositePostag(ctag)) {
+        tags.add(ctag);
+      }
+    }
+  }
+  return tags.toArray(new CgCompositeTag[tags.size()]);
+}

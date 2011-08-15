@@ -1,0 +1,43 @@
+{
+  ArrayList<String> ltRule=new ArrayList<String>();
+  TreeMap<Integer,ArrayList<Token>> tokenmap=new TreeMap<Integer,ArrayList<Token>>();
+  for (  Token token : tokens) {
+    tokenmap=smartPut(tokenmap,token.offset,token);
+  }
+  if (name != null || id != null) {
+    ltRule.add("<rule id=\"" + id + "\" name=\""+ name+ "\">");
+  }
+ else {
+    ltRule.add("<rule>");
+  }
+  int mark=getPositionOfTarget(tokens);
+  ltRule.add(firstIndent + "<pattern mark=\"" + mark+ "\">");
+  for (Iterator<Integer> iter=tokenmap.keySet().iterator(); iter.hasNext(); ) {
+    int key=iter.next();
+    ArrayList<Token> value=tokenmap.get(key);
+    value=removeExtraEmptyTokens(value);
+    if (value.size() == 1) {
+      Token token=value.get(0);
+      ltRule=addCgToken(ltRule,token,secondIndentInt);
+    }
+ else {
+      ltRule.add(secondIndent + "<and>");
+      for (      Token token : value) {
+        ltRule=addCgToken(ltRule,token,thirdIndentInt);
+      }
+      ltRule.add(secondIndent + "</and>");
+    }
+  }
+  ltRule.add(firstIndent + "</pattern>");
+  if (type.equals("K_REMOVE")) {
+    ltRule.add(firstIndent + "<disambig action=\"remove\">" + removeTarget(target)+ "</disambig>");
+  }
+ else   if (type.equals("K_SELECT")) {
+    ltRule.add(firstIndent + "<disambig action=\"replace\"><match no=\"" + (mark + 1)+ "\" postag=\""+ replaceRegexp(target)+ "\" postag_regexp=\"yes\"/></disambig>");
+  }
+ else   if (type.equals("K_MAP")) {
+    ltRule.add(firstIndent + "<disambig action=\"add\" postag=\"" + addRegexp(rule.maplist)+ "\" postag_regexp=\"yes\"/>");
+  }
+  ltRule.add("</rule>");
+  return ltRule;
+}

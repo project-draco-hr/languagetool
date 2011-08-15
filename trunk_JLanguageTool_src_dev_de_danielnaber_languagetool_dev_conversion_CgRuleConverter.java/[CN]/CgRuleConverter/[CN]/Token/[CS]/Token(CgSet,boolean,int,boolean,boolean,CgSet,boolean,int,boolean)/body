@@ -1,0 +1,18 @@
+{
+  this.target=target;
+  this.postags=getPostags(target);
+  this.surfaceforms=getSurfaceForms(target);
+  this.baseforms=getBaseForms(target);
+  this.compositeTags=getCompositeTags(target);
+  this.careful=careful;
+  this.offset=offset;
+  this.scanahead=scanahead;
+  this.scanbehind=scanbehind;
+  this.barrier=barrier;
+  this.cbarrier=cbarrier;
+  this.skip=skip;
+  this.negate=negate;
+  this.nextToken=null;
+  this.prevToken=null;
+  this.relativeOffset=0;
+}

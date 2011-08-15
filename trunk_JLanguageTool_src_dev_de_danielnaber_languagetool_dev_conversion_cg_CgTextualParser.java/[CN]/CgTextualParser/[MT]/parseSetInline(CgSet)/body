@@ -1,0 +1,147 @@
+{
+  ArrayList<Integer> set_ops=new ArrayList<Integer>();
+  ArrayList<Integer> sets=new ArrayList<Integer>();
+  boolean wantop=false;
+  while (notDone() && inArray[index] != ';' && inArray[index] != ')') {
+    result.lines+=SKIPWS(';',')');
+    if (notDone() && inArray[index] != ';' && inArray[index] != ')') {
+      if (!wantop) {
+        if (inArray[index] == '(') {
+          ++index;
+          CgSet set_c=result.allocateSet();
+          set_c.line=result.lines;
+          set_c.setName(sets_counter++);
+          ArrayList<CgTag> tags=new ArrayList<CgTag>();
+          while (notDone() && inArray[index] != ';' && inArray[index] != ')') {
+            result.lines+=SKIPWS(';',')');
+            nindex=index;
+            if (inArray[nindex] == '"') {
+              nindex++;
+              result.lines+=SKIPTO_NOSPAN_N('"');
+              if (inArray[nindex] != '"') {
+                System.err.println("Error: missing closing \" at line " + result.lines);
+                System.exit(1);
+              }
+            }
+            result.lines+=SKIPTOWS_N(')',true);
+            StringBuilder sb=new StringBuilder();
+            for (int i=index; i < nindex; i++) {
+              sb.append(inArray[i]);
+            }
+            CgTag t=result.allocateTag(sb.toString(),false);
+            tags.add(t);
+            index=nindex;
+            result.lines+=SKIPWS(';',')');
+          }
+          if (inArray[index] != ')') {
+            System.err.println("Error: missing closing ) on line " + result.lines);
+            System.exit(1);
+          }
+          ++index;
+          if (tags.size() == 1) {
+            set_c.addTag(tags.get(tags.size() - 1));
+          }
+ else {
+            CgCompositeTag ct=result.allocateCompositeTag();
+            for (int i=0; i < tags.size(); i++) {
+              ct.addTag(tags.get(i));
+            }
+            set_c.addCompositeTag(ct);
+          }
+          result.addSet(set_c);
+          sets.add(set_c.hash);
+        }
+ else {
+          nindex=index;
+          result.lines+=SKIPTOWS_N(')',true);
+          while (inArray[nindex - 1] == ',' || inArray[nindex - 1] == ']') {
+            --nindex;
+          }
+          StringBuilder sb=new StringBuilder();
+          for (int i=index; i < nindex; i++) {
+            sb.append(inArray[i]);
+          }
+          CgSet tmp=result.parseSet(sb.toString());
+          int sh=tmp.hash;
+          sets.add(sh);
+          index=nindex;
+        }
+        if (!set_ops.isEmpty() && (set_ops.get(set_ops.size() - 1) == STRINGS.S_SET_ISECT_U.value || set_ops.get(set_ops.size() - 1) == STRINGS.S_SET_SYMDIFF_U.value)) {
+          System.out.println("Warning: intersection and symmetric difference with sets may not work correctly");
+          final HashSet<CgCompositeTag.AnyTag> a=result.getSet(sets.get(sets.size() - 1)).getTagList(result);
+          final HashSet<CgCompositeTag.AnyTag> b=result.getSet(sets.get(sets.size() - 2)).getTagList(result);
+          ArrayList<CgCompositeTag.AnyTag> r=new ArrayList<CgCompositeTag.AnyTag>();
+          if (set_ops.get(set_ops.size() - 1) == STRINGS.S_SET_ISECT_U.value) {
+            HashSet<CgCompositeTag.AnyTag> c=new HashSet<CgCompositeTag.AnyTag>();
+            c.addAll(a);
+            c.addAll(b);
+            for (            CgCompositeTag.AnyTag itag : c) {
+              r.add(itag);
+            }
+          }
+ else           if (set_ops.get(set_ops.size() - 1) == STRINGS.S_SET_SYMDIFF_U.value) {
+            for (            CgCompositeTag.AnyTag itag : a) {
+              if (!b.contains(itag)) {
+                r.add(itag);
+              }
+            }
+            for (            CgCompositeTag.AnyTag itag : b) {
+              if (!a.contains(itag)) {
+                r.add(itag);
+              }
+            }
+          }
+          set_ops.remove(set_ops.size() - 1);
+          sets.remove(sets.size() - 1);
+          sets.remove(sets.size() - 1);
+          CgSet set_c=result.allocateSet();
+          set_c.line=result.lines;
+          set_c.setName(sets_counter++);
+          for (int i=0; i < r.size(); i++) {
+            if (r.get(i).which == CgCompositeTag.ANYTAG_TYPE.ANYTAG_TAG.value) {
+              CgTag t=r.get(i).getTag();
+              set_c.addTag(t);
+            }
+ else {
+              CgCompositeTag t=r.get(i).getCompositeTag();
+              set_c.addCompositeTag(t);
+            }
+          }
+          result.addSet(set_c);
+          sets.add(set_c.hash);
+        }
+        wantop=true;
+      }
+ else {
+        nindex=index;
+        result.lines+=SKIPTOWS_N((char)0,true);
+        StringBuilder sb=new StringBuilder();
+        for (int i=index; i < nindex; i++) {
+          sb.append(inArray[i]);
+        }
+        int sop=ux_isSetOp(sb.toString());
+        if (sop != STRINGS.S_IGNORE.value) {
+          set_ops.add(sop);
+          wantop=false;
+          index=nindex;
+        }
+ else {
+          break;
+        }
+      }
+    }
+  }
+  if (s != null) {
+    s.sets=sets;
+    s.set_ops=set_ops;
+  }
+ else   if (sets.size() == 1) {
+    s=result.getSet(sets.get(sets.size() - 1));
+  }
+ else {
+    s=result.allocateSet();
+    s.sets=sets;
+    s.set_ops=set_ops;
+  }
+  return s;
+}

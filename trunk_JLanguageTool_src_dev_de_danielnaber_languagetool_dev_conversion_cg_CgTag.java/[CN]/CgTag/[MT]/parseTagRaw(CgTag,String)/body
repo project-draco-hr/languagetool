@@ -1,0 +1,33 @@
+{
+  tag.type=new HashSet<Integer>();
+  if (to.length() > 0) {
+    String tmp=to;
+    int len=tmp.length();
+    if (tmp.charAt(0) != (char)0 && (tmp.charAt(0) == '"' || tmp.charAt(0) == '<')) {
+      if (((tmp.charAt(0) == '"') && (tmp.charAt(len - 1) == '"')) || ((tmp.charAt(0) == '<') && (tmp.charAt(len - 1)) == '>')) {
+        tag.type.add(TAGS.T_TEXTUAL.value);
+        if (tmp.charAt(0) == '"' && tmp.charAt(len - 1) == '"') {
+          if (tmp.charAt(1) == '<' && tmp.charAt(len - 2) == '>') {
+            tag.type.add(TAGS.T_WORDFORM.value);
+          }
+ else {
+            tag.type.add(TAGS.T_BASEFORM.value);
+          }
+        }
+      }
+    }
+    tag.tag=tmp;
+    if (!tag.tag.isEmpty() && tag.tag.charAt(0) == '<' && tag.tag.charAt(len - 1) == '>') {
+      tag=parseNumeric(tag);
+    }
+    if (!tag.tag.isEmpty() && tag.tag.charAt(0) == '#') {
+    }
+  }
+  if (tag.type.contains(TAGS.T_SPECIAL.value)) {
+    tag.type.remove(TAGS.T_SPECIAL.value);
+  }
+  if (tag.type.contains(TAGS.T_NUMERICAL.value)) {
+    tag.type.add(TAGS.T_SPECIAL.value);
+  }
+  return tag;
+}

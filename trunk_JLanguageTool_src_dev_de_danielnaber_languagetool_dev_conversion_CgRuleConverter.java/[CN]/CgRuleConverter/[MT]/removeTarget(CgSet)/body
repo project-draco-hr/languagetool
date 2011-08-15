@@ -1,0 +1,15 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append("<wd ");
+  ArrayList<String> lemmas=target.getSingleTagBaseformsString();
+  ArrayList<String> postags=target.getSingleTagPostagsString();
+  ArrayList<CgCompositeTag> compositeTags=target.getCompositeTags();
+  ArrayList<String> compositePostags=compositePostagsToString(target.getCompositePostags());
+  postags.addAll(compositePostags);
+  ArrayList<String> surfaceforms=target.getSingleTagSurfaceformsString();
+  if (lemmas.size() > 0 && (compositeTags.size() > 0 || postags.size() > 0 || surfaceforms.size() > 0)) {
+    System.err.println("Error: something went wrong here.");
+  }
+  sb.append("/>");
+  return sb.toString();
+}

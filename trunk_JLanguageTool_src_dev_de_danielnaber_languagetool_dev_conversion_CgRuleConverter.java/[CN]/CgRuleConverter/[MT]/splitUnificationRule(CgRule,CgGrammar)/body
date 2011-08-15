@@ -1,0 +1,52 @@
+{
+  ArrayList<CgRule> rules=new ArrayList<CgRule>();
+  HashSet<CgSet> unifyingSets=new HashSet<CgSet>();
+  for (Iterator<Integer> iter=rule.test_map.keySet().iterator(); iter.hasNext(); ) {
+    CgContextualTest curTest=rule.test_map.get(iter.next());
+    CgSet target=grammar.getSet(curTest.target);
+    for (    Integer setint : target.sets) {
+      CgSet set=grammar.getSet(setint);
+      if (set.type.contains(ST.ST_TAG_UNIFY.value)) {
+        unifyingSets.add(set);
+      }
+    }
+  }
+  CgSet targetSet=grammar.getSet(rule.target);
+  for (  int setint : targetSet.sets) {
+    if (grammar.getSet(setint).type.contains(ST.ST_TAG_UNIFY.value)) {
+      unifyingSets.add(grammar.getSet(setint));
+    }
+  }
+  if (unifyingSets.size() == 0) {
+    rules.add(rule);
+  }
+  for (  CgSet unifyingSet : unifyingSets) {
+    CgSet unifyingSetExpanded=expandSetSets(unifyingSet);
+    for (    CgTag tag : unifyingSetExpanded.single_tags) {
+      CgSet oldTargetSet=new CgSet(grammar.getSet(rule.target));
+      CgRule newRule=new CgRule(rule);
+      if (oldTargetSet.sets.contains(unifyingSet.hash)) {
+        oldTargetSet.sets.remove((Object)unifyingSet.hash);
+        oldTargetSet.single_tags.add(tag);
+        oldTargetSet.rehash();
+        grammar.addSet(oldTargetSet);
+        newRule.target=oldTargetSet.hash;
+      }
+      for (Iterator<Integer> iter=newRule.test_map.keySet().iterator(); iter.hasNext(); ) {
+        int testKey=iter.next();
+        CgContextualTest test=newRule.test_map.get(testKey);
+        CgSet oldTestTargetSet=new CgSet(grammar.getSet(test.target));
+        if (oldTestTargetSet.sets.contains(unifyingSet.hash)) {
+          oldTestTargetSet.sets.remove(unifyingSet);
+          oldTestTargetSet.single_tags.add(tag);
+          oldTestTargetSet.rehash();
+          grammar.addSet(oldTestTargetSet);
+          test.target=oldTestTargetSet.hash;
+        }
+        newRule.test_map.put(testKey,test);
+      }
+      rules.add(newRule);
+    }
+  }
+  return rules;
+}

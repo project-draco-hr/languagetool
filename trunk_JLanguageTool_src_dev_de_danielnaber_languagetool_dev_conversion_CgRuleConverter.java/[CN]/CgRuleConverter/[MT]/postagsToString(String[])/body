@@ -1,0 +1,11 @@
+{
+  if (postags.length == 0) {
+    return "";
+  }
+  StringBuilder sb=new StringBuilder();
+  sb.append("(.*" + tagDelimiter + ")?");
+  String postagsGlued=glueWords(postags);
+  sb.append(postagsGlued);
+  sb.append("(" + tagDelimiter + ".*)?");
+  return sb.toString();
+}

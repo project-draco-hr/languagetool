@@ -34,5 +34,20 @@
  else   if (type.equals("sentend")) {
     orig.add(space + "<token postag=\"SENT_END\">" + exceptionString+ "</token>");
   }
+ else   if (type.equals("tokeninflected")) {
+    orig.add(space + "<token inflected=\"yes\">" + token+ exceptionString+ "</token>");
+  }
+ else   if (type.equals("regexpinflected")) {
+    orig.add(space + "<token regexp=\"yes\" inflected=\"yes\">" + token+ exceptionString+ "</token>");
+  }
+ else   if (type.equals("tokenandpostaginflected")) {
+    orig.add(space + "<token postag=\"" + postag+ "\" inflected=\"yes\">"+ token+ exceptionString+ "</token>");
+  }
+ else   if (type.equals("regexpandpostaginflected")) {
+    orig.add(space + "<token postag=\"" + postag+ "\" inflected=\"yes\" regexp=\"yes\">"+ token+ exceptionString+ "</token>");
+  }
+ else   if (type.equals("regexpandregexppostaginflected")) {
+    orig.add(space + "<token postag=\"" + postag+ "\" inflected=\"yes\" regexp=\"yes\" postag_regexp=\"yes\">"+ token+ exceptionString+ "</token>");
+  }
   return orig;
 }

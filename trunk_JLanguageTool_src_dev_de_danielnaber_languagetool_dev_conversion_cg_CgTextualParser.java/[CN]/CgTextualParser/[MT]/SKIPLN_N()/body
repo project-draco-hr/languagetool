@@ -1,0 +1,7 @@
+{
+  while ((nindex < inArray.length) && !ISNL(nindex)) {
+    ++nindex;
+  }
+  ++nindex;
+  return 1;
+}

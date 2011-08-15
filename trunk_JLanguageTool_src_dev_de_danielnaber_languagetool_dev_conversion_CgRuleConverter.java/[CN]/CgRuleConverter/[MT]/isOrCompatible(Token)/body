@@ -1,0 +1,37 @@
+{
+  if (token.postags.length > 0 && (token.baseforms.length > 0 || token.surfaceforms.length > 0)) {
+    return false;
+  }
+  if (token.baseforms.length > 0 && token.surfaceforms.length > 0) {
+    return false;
+  }
+  if (token.compositeTags.length > 0 && (token.postags.length > 0 || token.baseforms.length > 0 || token.surfaceforms.length > 0)) {
+    return false;
+  }
+  HashSet<String> pos=new HashSet<String>();
+  HashSet<String> base=new HashSet<String>();
+  HashSet<String> surf=new HashSet<String>();
+  for (  CgCompositeTag ctag : token.compositeTags) {
+    for (    CgTag tag : ctag.tags) {
+      if (isPostag(tag.tag)) {
+        pos.add(tag.tag);
+      }
+ else       if (isSurfaceForm(tag.tag)) {
+        surf.add(tag.tag);
+      }
+ else       if (isBaseForm(tag.tag)) {
+        base.add(tag.tag);
+      }
+    }
+  }
+  if (pos.size() > 1 && (surf.size() > 1 || base.size() > 1)) {
+    return false;
+  }
+  if (surf.size() > 1 && base.size() > 1) {
+    return false;
+  }
+  if (surf.size() > 0 && base.size() > 0 && pos.size() > 0) {
+    return false;
+  }
+  return true;
+}

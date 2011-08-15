@@ -1,0 +1,12 @@
+{
+  ArrayList<List<String>> ltRules=new ArrayList<List<String>>();
+  for (  Object ruleObject : rules) {
+    String ruleString=(String)ruleObject;
+    HashMap<String,String> ruleMap=parseRule(ruleString);
+    if (notKilledRule(ruleMap)) {
+      List<String> ltRule=ltRuleAsList(ruleMap,generateId(ruleMap),generateName(ruleMap),this.ruleType);
+      ltRules.add(ltRule);
+    }
+  }
+  return ltRules;
+}

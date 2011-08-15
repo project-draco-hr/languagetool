@@ -1,0 +1,9 @@
+{
+  char[] ar=s.toCharArray();
+  for (int i=0; i < ar.length; i++) {
+    if (inArray[index + i] != ar[i] && inArray[index + i] != ar[i] + (char)32) {
+      return false;
+    }
+  }
+  return true;
+}

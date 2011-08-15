@@ -1,0 +1,21 @@
+{
+  if (tag != null && !tag.tags.isEmpty()) {
+    if (tag.tags.size() == 1) {
+      CgTag rtag=tag.tags.get(0);
+      CgSet s=this.addTagToSet(rtag,set);
+    }
+ else {
+      tag=addCompositeTag(tag);
+      set.tags.add(tag);
+      if (tag.is_special) {
+        set.type.add(ST.ST_SPECIAL.value);
+      }
+    }
+  }
+ else {
+    System.err.println("Error: attempted to add empty composite tag to set on line " + this.lines);
+    System.exit(1);
+  }
+  this.addCompositeTag(tag);
+  return set;
+}

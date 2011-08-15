@@ -1,0 +1,35 @@
+{
+  int sh=name.hashCode();
+  if (name.length() > 2 && (name.charAt(0) == '$' && name.charAt(1) == '$') || (name.charAt(0) == '&' && name.charAt(1) == '&')) {
+    String wname=name.substring(2);
+    int wrap=wname.hashCode();
+    CgSet wtmp=this.getSet(wrap);
+    if (wtmp == null) {
+      System.err.println("Error: attempted to reference undefined set " + wname + " on line "+ this.lines);
+      System.exit(1);
+    }
+    CgSet tmp=this.getSet(sh);
+    if (tmp == null) {
+      CgSet ns=this.allocateSet();
+      ns.line=this.lines;
+      ns.setName(name);
+      ns.sets.add(wtmp.hash);
+      if (name.charAt(0) == '$' && name.charAt(1) == '$') {
+        ns.type.add(ST.ST_TAG_UNIFY.value);
+      }
+ else       if (name.charAt(0) == '&' && name.charAt(1) == '&') {
+        ns.type.add(ST.ST_SET_UNIFY.value);
+      }
+      this.addSet(ns);
+    }
+  }
+  if (this.set_alias.containsKey(sh)) {
+    sh=this.set_alias.get(sh);
+  }
+  CgSet tmp=this.getSet(sh);
+  if (tmp == null) {
+    System.err.println("Error: attempted to reference undefined set " + name + " on line "+ this.lines);
+    System.exit(1);
+  }
+  return tmp;
+}

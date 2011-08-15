@@ -1,0 +1,7 @@
+{
+  String[] postags=getPostags(target);
+  String postagString=glueWords(postags);
+  postagString="(".concat(postagString).concat(")");
+  String postagRegexp=toStringRegexpFormat(postagString);
+  return postagRegexp;
+}

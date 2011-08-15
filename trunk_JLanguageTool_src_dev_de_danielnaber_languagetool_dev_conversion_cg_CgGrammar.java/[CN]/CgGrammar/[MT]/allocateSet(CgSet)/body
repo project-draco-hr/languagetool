@@ -1,0 +1,11 @@
+{
+  CgSet ns=null;
+  if (from != null) {
+    ns=new CgSet(from);
+  }
+ else {
+    ns=new CgSet();
+  }
+  this.sets_all.add(ns);
+  return ns;
+}

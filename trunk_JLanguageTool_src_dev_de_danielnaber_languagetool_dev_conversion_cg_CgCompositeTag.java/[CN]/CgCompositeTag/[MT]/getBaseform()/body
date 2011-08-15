@@ -1,0 +1,9 @@
+{
+  String baseform=null;
+  for (  CgTag tag : this.tags) {
+    if (CgRuleConverter.isBaseForm(tag.tag)) {
+      baseform=tag.tag;
+    }
+  }
+  return baseform;
+}

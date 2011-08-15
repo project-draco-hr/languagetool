@@ -1,0 +1,5 @@
+{
+  if (this.sets_all.contains(s)) {
+    this.sets_all.remove(s);
+  }
+}

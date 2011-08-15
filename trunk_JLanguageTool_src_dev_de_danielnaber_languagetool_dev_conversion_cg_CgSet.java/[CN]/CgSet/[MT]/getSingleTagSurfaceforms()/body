@@ -1,0 +1,10 @@
+{
+  ArrayList<CgTag> forms=new ArrayList<CgTag>();
+  if (!this.single_tags.isEmpty()) {
+    for (    CgTag tag : this.single_tags) {
+      String tagtag=tag.tag;
+      if (tagtag.matches(surfaceformRegex))       forms.add(tag);
+    }
+  }
+  return forms;
+}

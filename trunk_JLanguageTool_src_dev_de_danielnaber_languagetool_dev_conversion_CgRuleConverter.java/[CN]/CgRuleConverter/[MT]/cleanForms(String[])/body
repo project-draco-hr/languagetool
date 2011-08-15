@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < words.length; i++) {
+    words[i]=words[i].replaceAll(">\"r?i?","").replaceAll(">\"","").replaceAll("\"<","").replaceAll("\"r?i?","");
+  }
+  return words;
+}

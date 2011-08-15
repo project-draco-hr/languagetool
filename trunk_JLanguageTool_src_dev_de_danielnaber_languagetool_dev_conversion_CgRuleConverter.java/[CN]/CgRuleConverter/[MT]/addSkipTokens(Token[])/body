@@ -1,0 +1,105 @@
+{
+  ArrayList<Token> tokenList=new ArrayList<Token>(Arrays.asList(tokens));
+  for (int i=0; i < tokenList.size(); i++) {
+    if (tokenList.get(i).scanahead) {
+      if (i == 0) {
+        Token newToken=new Token(new CgSet(),false,tokenList.get(i).offset - 1,false,false,new CgSet(),false,-1,false);
+        if (!tokenList.get(i).barrier.isEmpty() || tokenList.get(i).negate) {
+          newToken.exceptionString=getBarrierExceptionStringFromToken(tokenList.get(i));
+        }
+        Token oldToken=tokenList.get(i);
+        if (oldToken.negate) {
+          CgSet newTarget=oldToken.barrier;
+          CgTag sentEndTag=new CgTag();
+          sentEndTag.tag=sent_end;
+          newTarget.single_tags.add(sentEndTag);
+          oldToken.target=newTarget;
+          oldToken.postags=getPostags(oldToken.target);
+          oldToken.baseforms=getBaseForms(oldToken.target);
+          oldToken.surfaceforms=getSurfaceForms(oldToken.target);
+          tokenList.set(0,oldToken);
+        }
+        tokenList.add(0,newToken);
+      }
+ else {
+        int index=i - 1;
+        String exceptionString=null;
+        if (!tokenList.get(i).barrier.isEmpty() || tokenList.get(i).negate) {
+          exceptionString=getBarrierExceptionStringFromToken(tokenList.get(i));
+        }
+        int prevOffset=tokenList.get(index).offset;
+        while (index >= 0 && tokenList.get(index).offset == prevOffset) {
+          Token prevToken=tokenList.get(index);
+          prevToken.skip=-1;
+          prevToken.exceptionString=exceptionString;
+          tokenList.set(index,prevToken);
+          index--;
+        }
+        Token oldToken=tokenList.get(i);
+        if (oldToken.negate) {
+          CgSet newTarget=oldToken.barrier;
+          CgTag sentEndTag=new CgTag();
+          sentEndTag.tag=sent_end;
+          newTarget.single_tags.add(sentEndTag);
+          oldToken.target=newTarget;
+          oldToken.postags=getPostags(oldToken.target);
+          oldToken.baseforms=getBaseForms(oldToken.target);
+          oldToken.surfaceforms=getSurfaceForms(oldToken.target);
+          oldToken.negate=false;
+          tokenList.set(i,oldToken);
+        }
+      }
+    }
+ else     if (tokenList.get(i).scanbehind) {
+      Token newToken=new Token(new CgSet(),false,tokenList.get(i).offset - 1,false,false,new CgSet(),false,-1,false);
+      String exceptionString=null;
+      if (!tokenList.get(i).barrier.isEmpty() || tokenList.get(i).negate) {
+        exceptionString=getBarrierExceptionStringFromToken(tokenList.get(i));
+      }
+      CgSet newTarget=newToken.target;
+      CgTag sentStartTag=new CgTag();
+      sentStartTag.tag=sent_start;
+      newTarget.single_tags.add(sentStartTag);
+      newToken.target=newTarget;
+      newToken.postags=getPostags(newToken.target);
+      newToken.baseforms=getBaseForms(newToken.target);
+      newToken.surfaceforms=getSurfaceForms(newToken.target);
+      newToken.compositeTags=getCompositeTags(newToken.target);
+      newToken.skip=-1;
+      Token oldToken=tokenList.get(i);
+      oldToken.skip=-1;
+      oldToken.scanbehind=false;
+      if (oldToken.barrier.isEmpty()) {
+        if (oldToken.negate) {
+          newToken.exceptionString=exceptionString;
+          newToken.offset++;
+          tokenList.set(i,newToken);
+        }
+ else {
+          tokenList.set(i,oldToken);
+          tokenList.add(i,newToken);
+          i++;
+        }
+      }
+ else {
+        if (oldToken.negate) {
+          oldToken.target=oldToken.barrier;
+          oldToken.postags=getPostags(oldToken.target);
+          oldToken.baseforms=getBaseForms(oldToken.target);
+          oldToken.surfaceforms=getSurfaceForms(oldToken.target);
+          oldToken.compositeTags=getCompositeTags(oldToken.target);
+          oldToken.exceptionString=exceptionString;
+          tokenList.set(i,oldToken);
+          tokenList.add(i,newToken);
+        }
+ else {
+          oldToken.exceptionString=exceptionString;
+          tokenList.set(i,oldToken);
+          tokenList.add(i,newToken);
+          i++;
+        }
+      }
+    }
+  }
+  return tokenList.toArray(new Token[tokenList.size()]);
+}

@@ -1,0 +1,8 @@
+{
+  for (  Token token : tokens) {
+    if (token.scanbehind && token.negate && !token.barrier.isEmpty()) {
+      return true;
+    }
+  }
+  return false;
+}

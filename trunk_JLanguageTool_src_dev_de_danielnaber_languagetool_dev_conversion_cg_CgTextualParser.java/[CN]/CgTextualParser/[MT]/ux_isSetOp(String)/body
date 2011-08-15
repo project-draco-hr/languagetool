@@ -1,0 +1,28 @@
+{
+  int retval=STRINGS.S_IGNORE.value;
+  if (s.compareToIgnoreCase(stringbits[STRINGS.S_OR.value]) == 0 || s.compareToIgnoreCase(stringbits[STRINGS.S_PIPE.value]) == 0) {
+    retval=STRINGS.S_OR.value;
+  }
+ else   if (s.compareTo(stringbits[STRINGS.S_PLUS.value]) == 0) {
+    retval=STRINGS.S_PLUS.value;
+  }
+ else   if (s.compareTo(stringbits[STRINGS.S_MINUS.value]) == 0) {
+    retval=STRINGS.S_MINUS.value;
+  }
+ else   if (s.compareTo(stringbits[STRINGS.S_MULTIPLY.value]) == 0) {
+    retval=STRINGS.S_MULTIPLY.value;
+  }
+ else   if (s.compareTo(stringbits[STRINGS.S_FAILFAST.value]) == 0) {
+    retval=STRINGS.S_FAILFAST.value;
+  }
+ else   if (s.compareTo(stringbits[STRINGS.S_NOT.value]) == 0) {
+    retval=STRINGS.S_NOT.value;
+  }
+ else   if (s.compareTo(stringbits[STRINGS.S_SET_ISECT_U.value]) == 0) {
+    retval=STRINGS.S_SET_ISECT_U.value;
+  }
+ else   if (s.compareTo(stringbits[STRINGS.S_SET_SYMDIFF_U.value]) == 0) {
+    retval=STRINGS.S_SET_SYMDIFF_U.value;
+  }
+  return retval;
+}

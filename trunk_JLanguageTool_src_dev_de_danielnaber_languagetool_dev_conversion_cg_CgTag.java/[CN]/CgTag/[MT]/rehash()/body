@@ -1,0 +1,48 @@
+{
+  this.hash=0;
+  this.plain_hash=0;
+  if (this.type.contains(TAGS.T_NEGATIVE.value)) {
+    this.hash=CgStrings.hash_sdbm_char("!",this.hash,0);
+  }
+  if (this.type.contains(TAGS.T_FAILFAST.value)) {
+    this.hash=CgStrings.hash_sdbm_char("^",this.hash,0);
+  }
+  if (this.type.contains(TAGS.T_META.value)) {
+    this.hash=CgStrings.hash_sdbm_char("META:",this.hash,0);
+  }
+  if (this.type.contains(TAGS.T_VARIABLE.value)) {
+    this.hash=CgStrings.hash_sdbm_char("VAR:",this.hash,0);
+  }
+  if (this.type.contains(TAGS.T_SET.value)) {
+    this.hash=CgStrings.hash_sdbm_char("SET:",this.hash,0);
+  }
+  if (this.type.contains(TAGS.T_NEGATIVE.value)) {
+    this.hash=CgStrings.hash_sdbm_char("!",this.hash,0);
+  }
+  this.plain_hash=CgStrings.hash_sdbm_uchar(this.tag,0,0);
+  if (this.hash != 0) {
+    this.hash=CgStrings.hash_sdbm_uint32_t(this.plain_hash,this.hash);
+  }
+ else {
+    this.hash=this.plain_hash;
+  }
+  if (this.type.contains(TAGS.T_CASE_INSENSITIVE.value)) {
+    this.hash=CgStrings.hash_sdbm_char("i",this.hash,0);
+  }
+  if (this.type.contains(TAGS.T_REGEXP.value)) {
+    this.hash=CgStrings.hash_sdbm_char("r",this.hash,0);
+  }
+  if (this.type.contains(TAGS.T_VARSTRING.value)) {
+    CgStrings.hash_sdbm_char("v",this.hash,0);
+  }
+  if (this.seed != 0) {
+    hash+=this.seed;
+  }
+  if (this.type.contains(TAGS.T_SPECIAL.value)) {
+    this.type.remove(TAGS.T_SPECIAL.value);
+  }
+  if (this.type.contains(TAGS.T_ANY.value) || this.type.contains(TAGS.T_TARGET.value) || this.type.contains(TAGS.T_MARK.value)|| this.type.contains(TAGS.T_ATTACHTO.value)|| this.type.contains(TAGS.T_PAR_LEFT.value)|| this.type.contains(TAGS.T_PAR_RIGHT.value)|| this.type.contains(TAGS.T_NUMERICAL.value)|| this.type.contains(TAGS.T_VARIABLE.value)|| this.type.contains(TAGS.T_META.value)|| this.type.contains(TAGS.T_NEGATIVE.value)|| this.type.contains(TAGS.T_FAILFAST.value)|| this.type.contains(TAGS.T_CASE_INSENSITIVE.value)|| this.type.contains(TAGS.T_REGEXP.value)|| this.type.contains(TAGS.T_REGEXP_ANY.value)|| this.type.contains(TAGS.T_VARSTRING.value)|| this.type.contains(TAGS.T_SET.value)) {
+    this.type.add(TAGS.T_SPECIAL.value);
+  }
+  return this.hash;
+}

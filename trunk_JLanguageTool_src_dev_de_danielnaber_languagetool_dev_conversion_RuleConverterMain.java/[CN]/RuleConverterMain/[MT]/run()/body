@@ -1,21 +1,11 @@
 {
-  List<String> rules=rc.getRulesAsString();
-  ArrayList<ArrayList<String>> ltRules=new ArrayList<ArrayList<String>>();
-  ArrayList<ArrayList<String>> killedRules=new ArrayList<ArrayList<String>>();
-  for (  String r : rules) {
-    HashMap<String,String> hm=rc.parseRule(r);
-    ArrayList<String> ltRule=(ArrayList<String>)rc.ltRuleAsList(hm,RuleConverter.getSuitableID(hm),RuleConverter.getSuitableName(hm),specificFiletype);
-    if (notKilledRule(hm)) {
-      ltRules.add(ltRule);
-    }
- else {
-      killedRules.add(ltRule);
-    }
-  }
+  List<? extends Object> rules=rc.getRules();
+  ArrayList<List<String>> ltRules=rc.getLtRules(rules);
+  ArrayList<List<String>> falseAlarmRules=rc.getFalseAlarmRules(rules);
   PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(grammarfile),"UTF-8"));
-  w.write(RuleConverter.xmlHeader);
-  w.write("<category name=\"Auto-generated AtD rules\" id=\"ATD_RULES\">\n");
-  for (  ArrayList<String> ltRule : ltRules) {
+  w.write("<rules>\n");
+  w.write("<category name=\"Auto-generated rules\">\n");
+  for (  List<String> ltRule : ltRules) {
     for (    String line : ltRule) {
       w.write(line + '\n');
     }
@@ -23,16 +13,14 @@
   w.write("</category>\n");
   w.write("</rules>");
   w.close();
-  RuleCoverage checker=new RuleCoverage(Language.ENGLISH);
-  checker.splitOutCoveredRules(grammarfile,discardfile);
-  if (killedRules.size() > 0) {
+  if (falseAlarmRules.size() > 0) {
     w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(disambigfile),"UTF-8"));
-    for (    ArrayList<String> killedRule : killedRules) {
+    for (    List<String> killedRule : falseAlarmRules) {
       for (      String line : killedRule) {
         w.write(line + '\n');
       }
     }
     w.close();
-    System.out.println(Integer.toString(killedRules.size()) + " disambiguation rules written to " + disambigfile);
+    System.out.println(Integer.toString(falseAlarmRules.size()) + " disambiguation rules written to " + disambigfile);
   }
 }

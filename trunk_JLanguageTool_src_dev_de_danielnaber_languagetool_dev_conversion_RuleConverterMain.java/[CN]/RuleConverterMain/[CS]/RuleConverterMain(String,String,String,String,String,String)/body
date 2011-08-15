@@ -6,4 +6,7 @@
   if (generalFiletype.equals("atd")) {
     rc=new AtdRuleConverter(infilename,grammarfile,specificFiletype);
   }
+ else   if (generalFiletype.equals("cg")) {
+    rc=new CgRuleConverter(infilename,grammarfile,specificFiletype);
+  }
 }

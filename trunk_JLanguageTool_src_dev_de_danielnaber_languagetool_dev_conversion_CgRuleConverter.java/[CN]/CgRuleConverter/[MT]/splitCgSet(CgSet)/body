@@ -1,0 +1,50 @@
+{
+  ArrayList<CgSet> twoSets=new ArrayList<CgSet>();
+  ArrayList<CgTag> postags=target.getSingleTagPostags();
+  ArrayList<CgTag> baseforms=target.getSingleTagBaseforms();
+  ArrayList<CgTag> surfaceforms=target.getSingleTagSurfaceforms();
+  ArrayList<CgCompositeTag> compositePostags=target.getCompositePostags();
+  ArrayList<CgCompositeTag> compositeTags=target.getCompositeTags();
+  if (postags.size() > 0 && baseforms.size() > 0) {
+    CgSet set1=new CgSet(target);
+    CgSet set2=new CgSet(set1);
+    set1.single_tags.removeAll(new ArrayList<CgTag>(postags));
+    set1.tags.removeAll(compositePostags);
+    set2.single_tags.removeAll(baseforms);
+    twoSets.add(set1);
+    twoSets.add(set2);
+    return twoSets;
+  }
+  if (postags.size() > 0 && surfaceforms.size() > 0) {
+    CgSet set1=new CgSet(target);
+    CgSet set2=new CgSet(target);
+    set1.single_tags.removeAll(postags);
+    set1.tags.removeAll(compositePostags);
+    set2.single_tags.removeAll(surfaceforms);
+    twoSets.add(set1);
+    twoSets.add(set2);
+    return twoSets;
+  }
+  if (surfaceforms.size() > 0 && baseforms.size() > 0) {
+    CgSet set1=new CgSet(target);
+    CgSet set2=new CgSet(target);
+    set1.single_tags.removeAll(surfaceforms);
+    set2.single_tags.removeAll(baseforms);
+    twoSets.add(set1);
+    twoSets.add(set2);
+    return twoSets;
+  }
+  for (  CgCompositeTag ctag : compositeTags) {
+    CgSet set1=new CgSet(target);
+    CgSet set2=new CgSet(target);
+    set1.tags.remove(ctag);
+    set2.tags.removeAll(compositeTags);
+    set2.tags.removeAll(compositePostags);
+    set2.single_tags=new HashSet<CgTag>();
+    set2.tags.add(ctag);
+    twoSets.add(set1);
+    twoSets.add(set2);
+    return twoSets;
+  }
+  return null;
+}

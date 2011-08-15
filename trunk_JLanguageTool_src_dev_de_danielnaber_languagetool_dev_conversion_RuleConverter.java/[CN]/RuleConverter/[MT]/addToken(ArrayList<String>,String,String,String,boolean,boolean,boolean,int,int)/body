@@ -1,0 +1,48 @@
+{
+  String space=getSpace(indent);
+  String inflectedString="";
+  if (inflected) {
+    inflectedString=" inflected=\"yes\"";
+  }
+  String skipString="";
+  if (skip == -1) {
+    skipString=" skip=\"-1\"";
+  }
+  String regexpString="";
+  if (isRegex(token)) {
+    regexpString=" regexp=\"yes\"";
+  }
+  String exceptionString="";
+  if (exceptions != null) {
+    if (exceptions.contains("<exception")) {
+      exceptionString=exceptions;
+    }
+ else {
+      exceptionString="<exception regexp=\"yes\">" + exceptions + "</exception>";
+    }
+  }
+  String postagRegexp="";
+  if (isRegex(postag)) {
+    postagRegexp=" postag_regexp=\"yes\"";
+  }
+  String postagString="";
+  if (postag != null) {
+    if (!postag.isEmpty()) {
+      postagString=" postag=\"" + postag + "\"";
+    }
+  }
+  String carefulString="";
+  if (careful) {
+    carefulString="<exception" + postagString + postagRegexp+ " negate_pos=\"yes\"/>";
+  }
+  String negateString="";
+  if (!token.isEmpty() && negate) {
+    negateString=" negate=\"yes\"";
+  }
+  String negatePosString="";
+  if (!postagString.isEmpty() && negate) {
+    negatePosString=" negate_pos=\"yes\"";
+  }
+  orig.add(space + "<token" + inflectedString+ skipString+ regexpString+ postagString+ postagRegexp+ negateString+ negatePosString+ ">"+ token+ carefulString+ exceptionString+ "</token>");
+  return orig;
+}

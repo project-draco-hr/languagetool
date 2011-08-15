@@ -1,0 +1,11 @@
+{
+  ArrayList<String> forms=new ArrayList<String>();
+  if (!set.single_tags.isEmpty()) {
+    for (    CgTag tag : set.single_tags) {
+      if (isBaseForm(tag.tag)) {
+        forms.add(tag.tag);
+      }
+    }
+  }
+  return forms.toArray(new String[forms.size()]);
+}

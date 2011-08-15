@@ -26,5 +26,6 @@
  else {
     outRule.put("casesensitive","false");
   }
+  outRule.put("ruleString",rule);
   return outRule;
 }

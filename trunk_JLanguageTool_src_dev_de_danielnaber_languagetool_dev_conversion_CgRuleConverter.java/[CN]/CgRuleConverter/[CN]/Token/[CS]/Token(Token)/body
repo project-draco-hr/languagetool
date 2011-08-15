@@ -1,0 +1,18 @@
+{
+  this.target=new CgSet(another.target);
+  this.postags=getPostags(target);
+  this.surfaceforms=getSurfaceForms(target);
+  this.baseforms=getBaseForms(target);
+  this.compositeTags=getCompositeTags(target);
+  this.careful=another.careful;
+  this.offset=another.offset;
+  this.scanahead=another.scanahead;
+  this.scanbehind=another.scanbehind;
+  this.barrier=new CgSet(another.barrier);
+  this.cbarrier=another.cbarrier;
+  this.skip=another.skip;
+  this.negate=another.negate;
+  this.nextToken=another.nextToken;
+  this.prevToken=another.prevToken;
+  this.relativeOffset=another.relativeOffset;
+}

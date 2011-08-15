@@ -1,0 +1,9 @@
+{
+  ArrayList<String> postags=target.getSingleTagPostagsString();
+  if (postags.size() != 1) {
+    System.err.println("Error: trying to map more than one mapping tag on line " + target.line);
+    System.exit(1);
+  }
+  String postag=postags.get(0);
+  return postag;
+}

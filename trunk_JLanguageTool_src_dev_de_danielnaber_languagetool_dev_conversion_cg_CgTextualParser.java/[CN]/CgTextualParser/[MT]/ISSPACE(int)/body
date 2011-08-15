@@ -1,0 +1,4 @@
+{
+  char c=inArray[position];
+  return (c == (char)0x20 || c == (char)0x09 || Character.isWhitespace(c));
+}

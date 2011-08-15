@@ -1,0 +1,42 @@
+{
+  ArrayList<Token> tokens=new ArrayList<Token>();
+  for (int i=0; i < tests.size(); i++) {
+    if (i == 0) {
+      tokens.add(getTokenFromNormalTest(tests.get(i)));
+    }
+ else {
+      Token token=getTokenFromNormalTest(tests.get(i));
+      token.relativeOffset=token.offset;
+      token.offset=token.offset + tokens.get(i - 1).offset;
+      token.prevToken=tokens.get(i - 1);
+      tokens.add(token);
+    }
+  }
+  Token[] ts=tokens.toArray(new Token[tokens.size()]);
+  Arrays.sort(ts);
+  for (int i=0; i < ts.length; i++) {
+    if (ts[i].scanahead) {
+      ts[i].scanahead=false;
+      ts[0].scanahead=true;
+      break;
+    }
+  }
+  for (int i=1; i < ts.length; i++) {
+    if (ts[i].scanahead) {
+      System.err.println("Two scan tests in one series of linked tests. This is really hard to represent in LT format. Try to split it into several rules");
+      System.exit(1);
+    }
+  }
+  ts=addLinkedGapTokens(ts);
+  for (int i=0; i < ts.length; i++) {
+    if (i == 0) {
+      ts[i].relativeOffset=0;
+    }
+ else {
+      ts[i].relativeOffset=1;
+    }
+    if (i != ts.length - 1)     ts[i].nextToken=ts[i + 1];
+    if (i != 0)     ts[i].prevToken=ts[i - 1];
+  }
+  return ts[0];
+}

@@ -1,0 +1,89 @@
+{
+  if (result == null) {
+    System.err.println("Grammar hasn't been initialized. Make this happen.");
+    System.exit(1);
+  }
+  BufferedReader reader=null;
+  StringBuilder sb=new StringBuilder();
+  sb.append("    ");
+  try {
+    reader=new BufferedReader(new InputStreamReader(new FileInputStream(filename),"UTF-8"));
+    int c=reader.read();
+    while (c != -1) {
+      sb.append((char)c);
+      c=reader.read();
+    }
+    inArray=sb.toString().toCharArray();
+    reader.close();
+  }
+ catch (  IOException e) {
+    System.err.println("Error opening grammar file");
+    System.exit(1);
+  }
+  index=4;
+  length=inArray.length;
+  result.addAnchor(KEYWORDS.K_START.name(),result.lines);
+{
+    CgTag tany=result.allocateTag(stringbits[S_ASTERISK.value],false);
+    result.tag_any=tany.hash;
+  }
+{
+    CgSet set_c=result.allocateSet();
+    set_c.line=0;
+    set_c.setName(stringbits[STRINGS.S_UU_TARGET.value]);
+    CgTag t=result.allocateTag(stringbits[STRINGS.S_UU_TARGET.value],false);
+    result.addTagToSet(t,set_c);
+    result.addSet(set_c);
+  }
+{
+    CgSet set_c=result.allocateSet();
+    set_c.line=0;
+    set_c.setName(stringbits[STRINGS.S_UU_MARK.value]);
+    CgTag t=result.allocateTag(stringbits[STRINGS.S_UU_MARK.value],false);
+    result.addTagToSet(t,set_c);
+    result.addSet(set_c);
+  }
+  CgSet s_right=null;
+{
+    CgSet set_c=result.allocateSet();
+    set_c.line=0;
+    set_c.setName(stringbits[STRINGS.S_UU_ATTACHTO.value]);
+    CgTag t=result.allocateTag(stringbits[STRINGS.S_UU_ATTACHTO.value],false);
+    result.addTagToSet(t,set_c);
+    result.addSet(set_c);
+    s_right=set_c;
+  }
+  CgSet s_left=null;
+{
+    CgSet set_c=result.allocateSet();
+    set_c.line=0;
+    set_c.setName(stringbits[STRINGS.S_UU_LEFT.value]);
+    CgTag t=result.allocateTag(stringbits[STRINGS.S_UU_LEFT.value],false);
+    result.addTagToSet(t,set_c);
+    result.addSet(set_c);
+    s_left=set_c;
+  }
+{
+    CgSet set_c=result.allocateSet();
+    set_c.line=0;
+    set_c.setName(stringbits[STRINGS.S_UU_RIGHT.value]);
+    CgTag t=result.allocateTag(stringbits[STRINGS.S_UU_RIGHT.value],false);
+    result.addTagToSet(t,set_c);
+    result.addSet(set_c);
+  }
+{
+    CgSet set_c=result.allocateSet();
+    set_c.line=0;
+    set_c.setName(stringbits[STRINGS.S_UU_PAREN.value]);
+    set_c.set_ops.add(STRINGS.S_OR.value);
+    set_c.sets.add(s_left.hash);
+    set_c.sets.add(s_right.hash);
+    result.addSet(set_c);
+  }
+  int error=parseFromChar(filename);
+  if (error != 0) {
+    return error;
+  }
+  result.addAnchor("end",result.lines);
+  return 0;
+}
