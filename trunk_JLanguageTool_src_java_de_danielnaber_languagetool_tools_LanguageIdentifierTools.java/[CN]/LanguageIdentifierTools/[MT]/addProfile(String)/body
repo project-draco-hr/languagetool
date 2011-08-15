@@ -22,6 +22,6 @@
     LanguageIdentifier.addProfile(language,profile);
   }
  catch (  Exception e) {
-    throw new Exception("Failed trying to load language profile for language \"" + language + "\".",e);
+    throw new RuntimeException("Failed trying to load language profile for language \"" + language + "\".",e);
   }
 }

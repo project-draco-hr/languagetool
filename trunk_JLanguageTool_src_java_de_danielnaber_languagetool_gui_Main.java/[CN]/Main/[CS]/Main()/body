@@ -1,4 +1,5 @@
 {
+  LanguageIdentifierTools.addLtProfiles();
   config=new Configuration(new File(System.getProperty("user.home")),CONFIG_FILE);
   messages=JLanguageTool.getMessageBundle();
   maybeStartServer();
