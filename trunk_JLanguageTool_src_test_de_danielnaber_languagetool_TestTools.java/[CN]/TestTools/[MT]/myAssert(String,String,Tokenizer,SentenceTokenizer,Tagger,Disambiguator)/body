@@ -1,5 +1,5 @@
 {
-  final StringBuffer outputStr=new StringBuffer();
+  final StringBuilder outputStr=new StringBuilder();
   final List<String> sentences=sentenceTokenizer.tokenize(input);
   for (  final String sentence : sentences) {
     final List<String> tokens=tokenizer.tokenize(sentence);
@@ -39,7 +39,7 @@
       final int readingsNumber=token.getReadingsLength();
       final List<String> readings=new ArrayList<String>();
       for (int j=0; j < readingsNumber; j++) {
-        final StringBuffer readingStr=new StringBuffer();
+        final StringBuilder readingStr=new StringBuilder();
         readingStr.append(token.getAnalyzedToken(j).getToken());
         readingStr.append("/[");
         readingStr.append(token.getAnalyzedToken(j).getLemma());

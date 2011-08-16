@@ -1,2 +1,2 @@
 String[] sentences
-SentenceTokenizer stokenizer
+SentenceTokenizer sTokenizer

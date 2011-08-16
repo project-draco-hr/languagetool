@@ -1,11 +1,9 @@
 {
   final StringBuilder inputString=new StringBuilder();
   final List<String> input=new ArrayList<String>();
-  for (  final String sentence : sentences) {
-    input.add(sentence);
-  }
+  Collections.addAll(input,sentences);
   for (  final String string : input) {
     inputString.append(string);
   }
-  Assert.assertEquals(input,stokenizer.tokenize(inputString.toString()));
+  Assert.assertEquals(input,sTokenizer.tokenize(inputString.toString()));
 }
