@@ -1,7 +1,7 @@
 {
   List<? extends Object> rules=rc.getRules();
   ArrayList<List<String>> ltRules=rc.getLtRules(rules);
-  ArrayList<List<String>> falseAlarmRules=rc.getFalseAlarmRules(rules);
+  ArrayList<List<String>> falseAlarmRules=rc.getDisambiguationRules(rules);
   PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(grammarfile),"UTF-8"));
   w.write("<rules>\n");
   w.write("<category name=\"Auto-generated rules\">\n");

@@ -1,0 +1,14 @@
+{
+  fileMenu=new JMenu("File");
+  navigateMenu=new JMenu("Navigate");
+  helpMenu=new JMenu("Help");
+  openText="Open";
+  writeText="Write rules to file";
+  saveRuleText="Save current rule";
+  showRulesText="Show all rules";
+  optionsText="Options";
+  quitText="Quit";
+  nextRuleText="Next rule";
+  prevRuleText="Previous rule";
+  aboutText="About";
+}

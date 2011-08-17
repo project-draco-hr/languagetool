@@ -1,0 +1,7 @@
+{
+  String[] ft=getCurrentRuleConverter().getAcceptableFileTypes();
+  specificRuleTypeBox.removeAllItems();
+  for (  String s : ft) {
+    specificRuleTypeBox.addItem(s);
+  }
+}

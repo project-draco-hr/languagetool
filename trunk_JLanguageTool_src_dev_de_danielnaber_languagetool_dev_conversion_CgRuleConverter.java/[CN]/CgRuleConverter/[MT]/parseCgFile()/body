@@ -4,7 +4,6 @@
   CgTextualParser parser=new CgTextualParser(grammar,file);
   int result=parser.parse_grammar_from_file(inFileName,null,null);
   if (result == 0) {
-    System.out.println("Successfully parsed constraint grammar file " + inFileName);
   }
  else {
     System.err.println("Failed to parse constraint grammar file " + inFileName);

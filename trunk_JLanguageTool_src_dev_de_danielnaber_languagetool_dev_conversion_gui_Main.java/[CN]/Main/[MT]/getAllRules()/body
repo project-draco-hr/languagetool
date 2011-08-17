@@ -1,0 +1,10 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if (ruleStrings == null) {
+    return "";
+  }
+  for (  String r : ruleStrings) {
+    sb.append(r);
+  }
+  return sb.toString();
+}

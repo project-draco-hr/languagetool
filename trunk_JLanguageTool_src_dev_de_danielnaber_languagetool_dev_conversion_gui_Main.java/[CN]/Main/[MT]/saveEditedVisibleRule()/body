@@ -1,0 +1,13 @@
+{
+  if (originalRuleStrings != null && ruleStrings != null) {
+    String newRule=resultArea.getText();
+    String selectedRule=(String)rulesBox.getSelectedItem();
+    int index;
+    for (index=0; index < originalRuleStrings.size(); index++) {
+      if (selectedRule.equals(originalRuleStrings.get(index))) {
+        break;
+      }
+    }
+    ruleStrings.set(index,newRule);
+  }
+}

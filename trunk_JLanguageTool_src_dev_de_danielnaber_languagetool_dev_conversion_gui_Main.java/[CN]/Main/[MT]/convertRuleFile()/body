@@ -1,0 +1,49 @@
+{
+  RuleConverter rc=getCurrentRuleConverter();
+  this.rulesBox.removeAllItems();
+  try {
+    ruleObjects=rc.getRules();
+    allRulesList=rc.getAllLtRules(ruleObjects);
+    ruleStrings=new ArrayList<String>();
+    originalRuleStrings=new ArrayList<String>();
+    for (int i=0; i < ruleObjects.size(); i++) {
+      Object ruleObject=ruleObjects.get(i);
+      String originalString=rc.getRuleAsString(ruleObject);
+      originalRuleStrings.add(originalString);
+      List<String> ruleList=allRulesList.get(i);
+      String ruleString=RuleConverter.getRuleStringFromList(ruleList);
+      ruleStrings.add(ruleString);
+    }
+    removeDuplicateRules();
+    disambigRuleIndices=new boolean[allRulesList.size()];
+    coveredByList=new String[allRulesList.size()];
+    numberOfRules=allRulesList.size();
+    numRulesPane.setText(Integer.toString(numberOfRules));
+    for (int i=0; i < ruleObjects.size(); i++) {
+      Object ruleObject=ruleObjects.get(i);
+      if (rc.isDisambiguationRule(ruleObject)) {
+        disambigRuleIndices[i]=true;
+      }
+ else {
+        disambigRuleIndices[i]=false;
+      }
+      coveredByList[i]="";
+    }
+    if (checkCovered.isSelected()) {
+      checker=new RuleCoverage();
+      for (int i=0; i < ruleStrings.size(); i++) {
+        if (!disambigRuleIndices[i]) {
+          String cov=checker.isCoveredBy(checker.parsePatternRule(ruleStrings.get(i)).get(0));
+          coveredByList[i]=cov;
+          ;
+        }
+ else {
+          coveredByList[i]="";
+        }
+      }
+    }
+  }
+ catch (  IOException e) {
+    showDialog("IOException while loading/parsing file " + filename);
+  }
+}

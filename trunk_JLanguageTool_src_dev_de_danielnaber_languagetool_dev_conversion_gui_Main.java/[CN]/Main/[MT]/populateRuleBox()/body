@@ -1,0 +1,26 @@
+{
+  rulesBox.removeAllItems();
+  if (originalRuleStrings != null) {
+    if (regularRules.isSelected() && disambigRules.isSelected()) {
+      for (      String r : originalRuleStrings) {
+        rulesBox.addItem(r);
+      }
+    }
+ else     if (regularRules.isSelected()) {
+      for (int i=0; i < originalRuleStrings.size(); i++) {
+        if (!disambigRuleIndices[i]) {
+          rulesBox.addItem(originalRuleStrings.get(i));
+        }
+      }
+    }
+ else     if (disambigRules.isSelected()) {
+      for (int i=0; i < originalRuleStrings.size(); i++) {
+        if (disambigRuleIndices[i]) {
+          rulesBox.addItem(originalRuleStrings.get(i));
+        }
+      }
+    }
+ else {
+    }
+  }
+}

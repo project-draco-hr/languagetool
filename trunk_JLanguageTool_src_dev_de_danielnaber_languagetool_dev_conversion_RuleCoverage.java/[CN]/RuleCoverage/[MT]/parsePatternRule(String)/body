@@ -1,0 +1,6 @@
+{
+  final PatternRuleLoader ruleLoader=new PatternRuleLoader();
+  String ruleFileString=ruleFileHeader + categoriesString + ruleString+ endCategoriesString+ endRulesString;
+  InputStream is=new ByteArrayInputStream(ruleFileString.getBytes());
+  return ruleLoader.getRules(is,null);
+}

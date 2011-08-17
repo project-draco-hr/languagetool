@@ -45,6 +45,7 @@
           oldToken.postags=getPostags(oldToken.target);
           oldToken.baseforms=getBaseForms(oldToken.target);
           oldToken.surfaceforms=getSurfaceForms(oldToken.target);
+          oldToken.compositeTags=getCompositeTags(oldToken.target);
           oldToken.negate=false;
           tokenList.set(i,oldToken);
         }

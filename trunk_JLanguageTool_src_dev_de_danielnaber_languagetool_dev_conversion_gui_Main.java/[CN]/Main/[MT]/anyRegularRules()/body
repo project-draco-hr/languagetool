@@ -1,0 +1,6 @@
+{
+  for (  boolean b : disambigRuleIndices) {
+    if (!b)     return true;
+  }
+  return false;
+}

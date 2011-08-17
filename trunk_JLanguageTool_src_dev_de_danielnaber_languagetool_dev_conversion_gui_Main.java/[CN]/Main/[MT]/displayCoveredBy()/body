@@ -1,0 +1,18 @@
+{
+  if (rulesBox.getSelectedIndex() == -1) {
+    coveredByPane.setText("");
+  }
+ else {
+    if (coveredByList != null) {
+      int index=getCurrentRuleIndex();
+      if (!coveredByList[index].isEmpty()) {
+        coveredByPane.setText("Covered by: " + coveredByList[index]);
+        coveredByPane.repaint();
+      }
+ else {
+        coveredByPane.setText("");
+        coveredByPane.repaint();
+      }
+    }
+  }
+}

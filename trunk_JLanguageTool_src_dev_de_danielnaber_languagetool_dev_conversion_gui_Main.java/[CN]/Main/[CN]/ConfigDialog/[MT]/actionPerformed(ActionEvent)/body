@@ -1,0 +1,18 @@
+{
+  if (e.getSource() == okButton) {
+    ruleType.setSelectedItem(optionsRuleType.getSelectedItem());
+    filename=ruleFilePane.getText();
+    mainRuleFilePane.setText(filename);
+    outfilename=outFilePane.getText();
+    disambigOutFile=disambigOutFilePane.getText();
+    specificFileType=(String)specificRuleTypeBox.getSelectedItem();
+    dialog.setVisible(false);
+  }
+ else   if (e.getSource() == cancelButton) {
+    dialog.setVisible(false);
+  }
+ else   if (e.getSource() == changeRuleFile) {
+    String optionsFilename=loadFile(this.owner,"Load rule file",null);
+    ruleFilePane.setText(optionsFilename);
+  }
+}

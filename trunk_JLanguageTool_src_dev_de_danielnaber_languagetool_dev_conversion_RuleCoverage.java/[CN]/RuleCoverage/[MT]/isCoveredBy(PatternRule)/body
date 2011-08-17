@@ -1,0 +1,8 @@
+{
+  String example=generateExample(rule);
+  List<RuleMatch> matches=tool.check(example);
+  if (matches.size() > 0) {
+    return matches.get(0).getRule().getId();
+  }
+  return "";
+}

@@ -1,0 +1,18 @@
+{
+  boolean notdone=true;
+  while (notdone) {
+    for (int i=0; i < originalRuleStrings.size(); i++) {
+      String originalRuleString=originalRuleStrings.get(i);
+      if (originalRuleStrings.subList(i + 1,originalRuleStrings.size()).contains(originalRuleString)) {
+        originalRuleStrings.remove(i);
+        ruleStrings.remove(i);
+        allRulesList.remove(i);
+        ruleObjects.remove(i);
+        break;
+      }
+ else {
+        if (i == originalRuleStrings.size() - 1)         notdone=false;
+      }
+    }
+  }
+}

@@ -25,5 +25,8 @@
     barrier=new CgSet();
     cbarrier=false;
   }
+  if (test.line == 548 && test.offset == 1) {
+    System.out.println();
+  }
   return new Token(testTarget,testCareful,testOffset,testScanAhead,testScanBehind,barrier,cbarrier,0,testNot);
 }

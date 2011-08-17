@@ -1,0 +1,9 @@
+{
+  tool=new JLanguageTool(Language.ENGLISH);
+  tool.activateDefaultPatternRules();
+  tool.disableRule("UPPERCASE_SENTENCE_START");
+  tool.disableRule("EN_UNPAIRED_BRACKETS");
+  tool.disableRule("EN_A_VS_AN");
+  this.fileName=dictFileName;
+  dictLookup=(DictionaryLookup)loadDictionary();
+}

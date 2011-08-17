@@ -1,0 +1,29 @@
+{
+  boolean writeCovered=writeCoveredRules.isSelected();
+  if (anyRegularRules()) {
+    PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(outfilename),"UTF-8"));
+    w.write("<rules>\n");
+    w.write("<category name=\"Auto-generated rules\">\n");
+    for (int i=0; i < ruleStrings.size(); i++) {
+      if (!disambigRuleIndices[i] && (writeCovered || (!writeCovered && coveredByList[i].equals("")))) {
+        w.write(ruleStrings.get(i));
+      }
+    }
+    w.write("</category>\n");
+    w.write("</rules>");
+    w.close();
+    showDialog("Rules written to " + outfilename);
+  }
+  if (anyDisambiguationRules()) {
+    PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(disambigOutFile),"UTF-8"));
+    w.write("<rules>\n");
+    for (int i=0; i < ruleStrings.size(); i++) {
+      if (disambigRuleIndices[i]) {
+        w.write(ruleStrings.get(i));
+      }
+    }
+    w.write("</rules>");
+    w.close();
+    showDialog("Rules written to " + disambigOutFile);
+  }
+}
