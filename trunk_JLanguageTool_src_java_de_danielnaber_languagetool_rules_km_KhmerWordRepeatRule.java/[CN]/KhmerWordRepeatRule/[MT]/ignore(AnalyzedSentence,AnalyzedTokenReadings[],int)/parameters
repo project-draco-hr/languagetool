@@ -1,0 +1,3 @@
+AnalyzedSentence text
+AnalyzedTokenReadings[] tokensWithWhiteSpace
+int position
