@@ -26,7 +26,7 @@
   optionsRuleType=new JComboBox();
   optionsRuleType.addItem(cgString);
   optionsRuleType.addItem(atdString);
-  optionsRuleType.setSelectedItem(ruleType.getSelectedItem());
+  optionsRuleType.setSelectedItem(ruleTypeBox.getSelectedItem());
   optionsRuleType.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent arg0){
       populateSpecificRuleType();

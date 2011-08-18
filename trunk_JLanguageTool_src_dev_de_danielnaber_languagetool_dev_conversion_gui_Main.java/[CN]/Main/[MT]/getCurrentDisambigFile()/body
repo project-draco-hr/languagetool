@@ -1,0 +1,9 @@
+{
+  if (disambigOutFile.equals("")) {
+    disambigOutFile=filename + ".disambig.xml";
+    return disambigOutFile;
+  }
+ else {
+    return disambigOutFile;
+  }
+}

@@ -4,10 +4,10 @@
     filename=fn;
     String fileString=readFileAsString(filename);
     if (fileString.contains("::")) {
-      ruleType.setSelectedItem("After the Deadline");
+      ruleTypeBox.setSelectedItem("After the Deadline");
     }
  else     if (fileString.contains("REMOVE") || fileString.contains("SELECT") || fileString.contains("LIST")|| fileString.contains("SET")) {
-      ruleType.setSelectedItem("Constraint Grammar");
+      ruleTypeBox.setSelectedItem("Constraint Grammar");
     }
     mainRuleFilePane.setText(filename);
   }

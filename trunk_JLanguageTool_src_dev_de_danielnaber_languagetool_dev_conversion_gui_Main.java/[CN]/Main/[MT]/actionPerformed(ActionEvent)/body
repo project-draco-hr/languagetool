@@ -1,2 +1,13 @@
 {
+  if (e.getSource() == checkRulesCoveredButton) {
+    checkIfAllCurrentRulesCovered();
+  }
+ else   if (e.getSource() == writeRulesToFileButton) {
+    try {
+      writeRulesToFile();
+    }
+ catch (    IOException ex) {
+      showError(ex);
+    }
+  }
 }

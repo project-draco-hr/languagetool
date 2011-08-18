@@ -1,6 +1,7 @@
 {
   boolean writeCovered=writeCoveredRules.isSelected();
   if (anyRegularRules()) {
+    outfilename=getCurrentOutfile();
     PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(outfilename),"UTF-8"));
     w.write("<rules>\n");
     w.write("<category name=\"Auto-generated rules\">\n");
@@ -15,6 +16,7 @@
     showDialog("Rules written to " + outfilename);
   }
   if (anyDisambiguationRules()) {
+    disambigOutFile=getCurrentDisambigFile();
     PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(disambigOutFile),"UTF-8"));
     w.write("<rules>\n");
     for (int i=0; i < ruleStrings.size(); i++) {

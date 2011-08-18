@@ -29,19 +29,6 @@
       }
       coveredByList[i]="";
     }
-    if (checkCovered.isSelected()) {
-      checker=new RuleCoverage();
-      for (int i=0; i < ruleStrings.size(); i++) {
-        if (!disambigRuleIndices[i]) {
-          String cov=checker.isCoveredBy(checker.parsePatternRule(ruleStrings.get(i)).get(0));
-          coveredByList[i]=cov;
-          ;
-        }
- else {
-          coveredByList[i]="";
-        }
-      }
-    }
   }
  catch (  IOException e) {
     showDialog("IOException while loading/parsing file " + filename);

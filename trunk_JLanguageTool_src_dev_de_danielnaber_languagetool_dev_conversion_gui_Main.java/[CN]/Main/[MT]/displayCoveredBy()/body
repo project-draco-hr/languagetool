@@ -6,7 +6,7 @@
     if (coveredByList != null) {
       int index=getCurrentRuleIndex();
       if (!coveredByList[index].isEmpty()) {
-        coveredByPane.setText("Covered by: " + coveredByList[index]);
+        coveredByPane.setText(coveredByList[index]);
         coveredByPane.repaint();
       }
  else {

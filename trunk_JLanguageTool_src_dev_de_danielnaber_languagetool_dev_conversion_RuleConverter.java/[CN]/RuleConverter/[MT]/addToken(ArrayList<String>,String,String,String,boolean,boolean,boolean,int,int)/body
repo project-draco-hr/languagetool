@@ -1,5 +1,8 @@
 {
   String space=getSpace(indent);
+  if (token.equals(".*")) {
+    token="";
+  }
   String inflectedString="";
   if (inflected) {
     inflectedString=" inflected=\"yes\"";

@@ -1,0 +1,14 @@
+{
+  try {
+    checker=new RuleCoverage();
+    for (int i=0; i < ruleStrings.size(); i++) {
+      PatternRule patternRule=checker.parsePatternRule(ruleStrings.get(i)).get(0);
+      String coveringRule=checker.isCoveredBy(patternRule);
+      coveredByList[i]=coveringRule;
+      displayCoveredBy();
+    }
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

@@ -4,10 +4,8 @@
       rulesBox.setSelectedIndex(rulesBox.getSelectedIndex() + 1);
     }
  catch (    IndexOutOfBoundsException e) {
-      e.printStackTrace();
     }
 catch (    IllegalArgumentException e) {
-      e.printStackTrace();
     }
   }
 }

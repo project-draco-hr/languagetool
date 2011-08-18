@@ -1,0 +1,9 @@
+{
+  if (outfilename.equals("")) {
+    outfilename=filename + ".grammar.xml";
+    return outfilename;
+  }
+ else {
+    return outfilename;
+  }
+}

@@ -1,6 +1,6 @@
 {
   if (e.getSource() == okButton) {
-    ruleType.setSelectedItem(optionsRuleType.getSelectedItem());
+    ruleTypeBox.setSelectedItem(optionsRuleType.getSelectedItem());
     filename=ruleFilePane.getText();
     mainRuleFilePane.setText(filename);
     outfilename=outFilePane.getText();

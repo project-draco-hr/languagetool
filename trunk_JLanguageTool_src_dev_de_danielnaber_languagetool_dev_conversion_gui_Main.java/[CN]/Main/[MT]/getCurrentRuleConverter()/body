@@ -1,6 +1,6 @@
 {
   RuleConverter rc=null;
-  String type=(String)ruleType.getSelectedItem();
+  String type=(String)ruleTypeBox.getSelectedItem();
   if (type.equals(atdString)) {
     rc=new AtdRuleConverter(getCurrentFilename(),null,"default");
   }
