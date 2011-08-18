@@ -4,7 +4,14 @@
   }
  else {
     final StringBuilder sb=new StringBuilder();
-    final String startCheckText=Tools.makeTexti18n(messages,"startChecking",new Object[]{lang.getTranslatedName(messages)});
+    final String langName;
+    if (lang.isExternal()) {
+      langName=lang.getTranslatedName(messages) + EXTERNAL_LANGUAGE_SUFFIX;
+    }
+ else {
+      langName=lang.getTranslatedName(messages);
+    }
+    final String startCheckText=Tools.makeTexti18n(messages,"startChecking",new Object[]{langName});
     resultArea.setText(HTML_FONT_START + startCheckText + "<br>\n"+ HTML_FONT_END);
     resultArea.repaint();
     sb.append(startCheckText);
