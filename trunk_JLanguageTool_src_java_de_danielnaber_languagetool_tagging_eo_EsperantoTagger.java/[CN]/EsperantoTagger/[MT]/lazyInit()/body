@@ -1,7 +1,8 @@
 {
-  if (setTransitiveVerbs != null) {
+  if (manualTagger != null) {
     return;
   }
+  manualTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream("/eo/manual-tagger.txt"));
   setTransitiveVerbs=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream("/eo/verb-tr.txt"));
   setIntransitiveVerbs=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream("/eo/verb-ntr.txt"));
   setNonParticiple=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream("/eo/root-ant-at.txt"));
