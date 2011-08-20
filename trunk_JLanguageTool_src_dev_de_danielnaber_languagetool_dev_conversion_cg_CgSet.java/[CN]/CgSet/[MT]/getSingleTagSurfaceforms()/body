@@ -6,5 +6,5 @@
       if (tagtag.matches(surfaceformRegex))       forms.add(tag);
     }
   }
-  return forms;
+  return forms.toArray(new CgTag[forms.size()]);
 }

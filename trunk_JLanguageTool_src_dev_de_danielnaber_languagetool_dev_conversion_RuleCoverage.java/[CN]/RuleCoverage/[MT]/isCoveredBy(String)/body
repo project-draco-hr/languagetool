@@ -1,7 +1,10 @@
 {
   List<RuleMatch> matches=tool.check(str);
+  ArrayList<String> coverages=new ArrayList<String>();
   if (matches.size() > 0) {
-    return matches.get(0).getRule().getId();
+    for (    RuleMatch match : matches) {
+      coverages.add(match.getRule().getId());
+    }
   }
-  return null;
+  return coverages.toArray(new String[coverages.size()]);
 }

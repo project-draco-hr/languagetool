@@ -11,12 +11,13 @@
         if (oldToken.negate) {
           CgSet newTarget=oldToken.barrier;
           CgTag sentEndTag=new CgTag();
-          sentEndTag.tag=sent_end;
+          sentEndTag.tag=SENT_END;
           newTarget.single_tags.add(sentEndTag);
           oldToken.target=newTarget;
-          oldToken.postags=getPostags(oldToken.target);
-          oldToken.baseforms=getBaseForms(oldToken.target);
-          oldToken.surfaceforms=getSurfaceForms(oldToken.target);
+          oldToken.postags=oldToken.target.getSingleTagPostagsString();
+          oldToken.baseforms=oldToken.target.getSingleTagBaseformsString();
+          oldToken.surfaceforms=oldToken.target.getSingleTagSurfaceformsString();
+          oldToken.compositeTags=oldToken.target.getCompositeTags();
           tokenList.set(0,oldToken);
         }
         tokenList.add(0,newToken);
@@ -39,13 +40,13 @@
         if (oldToken.negate) {
           CgSet newTarget=oldToken.barrier;
           CgTag sentEndTag=new CgTag();
-          sentEndTag.tag=sent_end;
+          sentEndTag.tag=SENT_END;
           newTarget.single_tags.add(sentEndTag);
           oldToken.target=newTarget;
-          oldToken.postags=getPostags(oldToken.target);
-          oldToken.baseforms=getBaseForms(oldToken.target);
-          oldToken.surfaceforms=getSurfaceForms(oldToken.target);
-          oldToken.compositeTags=getCompositeTags(oldToken.target);
+          oldToken.postags=oldToken.target.getSingleTagPostagsString();
+          oldToken.baseforms=oldToken.target.getSingleTagBaseformsString();
+          oldToken.surfaceforms=oldToken.target.getSingleTagSurfaceformsString();
+          oldToken.compositeTags=oldToken.target.getCompositeTags();
           oldToken.negate=false;
           tokenList.set(i,oldToken);
         }
@@ -59,13 +60,13 @@
       }
       CgSet newTarget=newToken.target;
       CgTag sentStartTag=new CgTag();
-      sentStartTag.tag=sent_start;
+      sentStartTag.tag=SENT_START;
       newTarget.single_tags.add(sentStartTag);
       newToken.target=newTarget;
-      newToken.postags=getPostags(newToken.target);
-      newToken.baseforms=getBaseForms(newToken.target);
-      newToken.surfaceforms=getSurfaceForms(newToken.target);
-      newToken.compositeTags=getCompositeTags(newToken.target);
+      newToken.postags=newToken.target.getSingleTagPostagsString();
+      newToken.baseforms=newToken.target.getSingleTagBaseformsString();
+      newToken.surfaceforms=newToken.target.getSingleTagSurfaceformsString();
+      newToken.compositeTags=newToken.target.getCompositeTags();
       newToken.skip=-1;
       Token oldToken=tokenList.get(i);
       oldToken.skip=-1;
@@ -85,10 +86,10 @@
  else {
         if (oldToken.negate) {
           oldToken.target=oldToken.barrier;
-          oldToken.postags=getPostags(oldToken.target);
-          oldToken.baseforms=getBaseForms(oldToken.target);
-          oldToken.surfaceforms=getSurfaceForms(oldToken.target);
-          oldToken.compositeTags=getCompositeTags(oldToken.target);
+          oldToken.postags=oldToken.target.getSingleTagPostagsString();
+          oldToken.baseforms=oldToken.target.getSingleTagBaseformsString();
+          oldToken.surfaceforms=oldToken.target.getSingleTagSurfaceformsString();
+          oldToken.compositeTags=oldToken.target.getCompositeTags();
           oldToken.exceptionString=exceptionString;
           tokenList.set(i,oldToken);
           tokenList.add(i,newToken);

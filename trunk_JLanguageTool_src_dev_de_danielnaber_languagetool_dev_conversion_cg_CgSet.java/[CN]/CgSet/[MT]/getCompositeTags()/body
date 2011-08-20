@@ -7,5 +7,5 @@
       }
     }
   }
-  return tags;
+  return tags.toArray(new CgCompositeTag[tags.size()]);
 }

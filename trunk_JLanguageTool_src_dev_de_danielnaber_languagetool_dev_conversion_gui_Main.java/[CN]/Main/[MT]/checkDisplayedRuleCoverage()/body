@@ -1,0 +1,26 @@
+{
+  try {
+    if (checker == null) {
+      checker=new RuleCoverage("/home/mbryant/languagetool/JLanguageTool/src/resource/en/english.dict");
+    }
+    int index=getCurrentRuleIndex();
+    if (!ruleStrings.get(index).equals(resultArea.getText())) {
+      showDialog("Current rule not yet saved");
+    }
+ else {
+      List<PatternRule> patternRules=checker.parsePatternRule(resultArea.getText());
+      ArrayList<String[]> allCoveringRules=checker.isCoveredBy(patternRules);
+      ArrayList<String> coveringRules=new ArrayList<String>();
+      for (      String[] s : allCoveringRules) {
+        for (        String ss : s) {
+          coveringRules.add(ss);
+        }
+      }
+      coveredByList.set(index,coveringRules.toArray(new String[coveringRules.size()]));
+      displayCoveredBy();
+    }
+  }
+ catch (  IOException e) {
+    showDialog("Couldn't parse or check the rule's coverage for some reason");
+  }
+}

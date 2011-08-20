@@ -1,9 +1,9 @@
 {
   boolean not=token.negate;
   boolean inflected=true;
-  String barrierPos=glueWords(getPostags(expandSetSets(token.barrier)));
+  String barrierPos=glueWords(expandSetSets(token.barrier).getPostagsString());
   if (token.scanahead) {
-    barrierPos=barrierPos.concat("|" + sent_end);
+    barrierPos=barrierPos.concat("|" + SENT_END);
   }
   String barrierToken=glueWords(token.barrier.getSingleTagBaseformsString());
   if (barrierToken.isEmpty()) {

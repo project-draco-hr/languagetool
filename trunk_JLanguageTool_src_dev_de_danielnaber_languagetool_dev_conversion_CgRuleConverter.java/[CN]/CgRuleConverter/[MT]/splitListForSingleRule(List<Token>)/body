@@ -14,14 +14,14 @@
       Token token2=new Token(tokens.get(i));
       token1.target=twoSets.get(0);
       token2.target=twoSets.get(1);
-      token1.postags=getPostags(token1.target);
-      token1.baseforms=getBaseForms(token1.target);
-      token1.surfaceforms=getSurfaceForms(token1.target);
-      token1.compositeTags=getCompositeTags(token1.target);
-      token2.postags=getPostags(token2.target);
-      token2.baseforms=getBaseForms(token2.target);
-      token2.surfaceforms=getSurfaceForms(token2.target);
-      token2.compositeTags=getCompositeTags(token2.target);
+      token1.postags=token1.target.getSingleTagPostagsString();
+      token1.baseforms=token1.target.getSingleTagBaseformsString();
+      token1.surfaceforms=token1.target.getSingleTagSurfaceformsString();
+      token1.compositeTags=token1.target.getCompositeTags();
+      token2.postags=token2.target.getSingleTagPostagsString();
+      token2.baseforms=token2.target.getSingleTagBaseformsString();
+      token2.surfaceforms=token2.target.getSingleTagSurfaceformsString();
+      token2.compositeTags=token2.target.getCompositeTags();
       list1.add(token1);
       list2.add(token2);
     }

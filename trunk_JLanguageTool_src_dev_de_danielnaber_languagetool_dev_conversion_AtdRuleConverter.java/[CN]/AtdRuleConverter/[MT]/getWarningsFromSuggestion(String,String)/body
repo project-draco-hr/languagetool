@@ -1,0 +1,16 @@
+{
+  String[] splitSuggs=sugg.split(",\\s*");
+  for (  String ss : splitSuggs) {
+    String[] suggestionParts=ss.split("\\ +");
+    for (    String sp : suggestionParts) {
+      String transform=getTransformString(sp);
+      if (transform.equals(":positive")) {
+        curWarn+="Positive transform not supported.";
+      }
+ else       if (transform.equals(":determiner")) {
+        curWarn+="Determiner transform relies on bigram probabilities. Current implementation just returns \"the\"";
+      }
+    }
+  }
+  return curWarn;
+}

@@ -10,12 +10,19 @@
   if (!token.isEmpty() && !e.isRegularExpression()) {
     return token;
   }
-  dictIterator=resetDictIter();
-  while (dictIterator.hasNext()) {
+  if (!token.isEmpty() && isSimpleOrRegex(e)) {
+    return randomOredElement(e);
+  }
+  int count=0;
+  while (count < 400000) {
+    if (!dictIterator.hasNext()) {
+      dictIterator=resetDictIter();
+    }
     String word=dictIterator.next().getWord().toString();
     if (isExampleOf(word,e) && !inExceptionList(word,exceptions)) {
       return word;
     }
+    count++;
   }
   return null;
 }

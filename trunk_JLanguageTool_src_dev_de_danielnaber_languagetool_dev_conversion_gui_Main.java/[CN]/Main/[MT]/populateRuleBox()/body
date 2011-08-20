@@ -1,26 +1,66 @@
 {
   rulesBox.removeAllItems();
+  boolean showRegularRules=regularRules.isSelected();
+  boolean showDisambigRules=disambigRules.isSelected();
+  boolean showWarningRules=warningRules.isSelected();
+  boolean showNoWarningRules=noWarningRules.isSelected();
+  boolean showCoveredRules=coveredRules.isSelected();
+  boolean showNotCoveredRules=notCoveredRules.isSelected();
+  int numDisplayed=0;
   if (originalRuleStrings != null) {
-    if (regularRules.isSelected() && disambigRules.isSelected()) {
-      for (      String r : originalRuleStrings) {
-        rulesBox.addItem(r);
-      }
-    }
- else     if (regularRules.isSelected()) {
-      for (int i=0; i < originalRuleStrings.size(); i++) {
-        if (!disambigRuleIndices[i]) {
+    for (int i=0; i < originalRuleStrings.size(); i++) {
+      boolean cov=coveredByList.get(i).length != 0;
+      boolean war=!warnings.get(i).equals("");
+      boolean dis=disambigRuleIndices[i];
+      if (dis && cov && war) {
+        if (showDisambigRules && showCoveredRules && showWarningRules) {
           rulesBox.addItem(originalRuleStrings.get(i));
+          numDisplayed++;
+        }
+      }
+ else       if (dis && cov && !war) {
+        if (showDisambigRules && showCoveredRules && showNoWarningRules) {
+          rulesBox.addItem(originalRuleStrings.get(i));
+          numDisplayed++;
+        }
+      }
+ else       if (dis && !cov && war) {
+        if (showDisambigRules && showNotCoveredRules && showWarningRules) {
+          rulesBox.addItem(originalRuleStrings.get(i));
+          numDisplayed++;
+        }
+      }
+ else       if (dis && !cov && !war) {
+        if (showDisambigRules && showNotCoveredRules && showNoWarningRules) {
+          rulesBox.addItem(originalRuleStrings.get(i));
+          numDisplayed++;
+        }
+      }
+ else       if (!dis && cov && war) {
+        if (showRegularRules && showCoveredRules && showWarningRules) {
+          rulesBox.addItem(originalRuleStrings.get(i));
+          numDisplayed++;
+        }
+      }
+ else       if (!dis && cov && !war) {
+        if (showRegularRules && showCoveredRules && showNoWarningRules) {
+          rulesBox.addItem(originalRuleStrings.get(i));
+          numDisplayed++;
+        }
+      }
+ else       if (!dis && !cov && war) {
+        if (showRegularRules && showNotCoveredRules && showWarningRules) {
+          rulesBox.addItem(originalRuleStrings.get(i));
+          numDisplayed++;
+        }
+      }
+ else       if (!dis && !cov && !war) {
+        if (showRegularRules && showNotCoveredRules && showNoWarningRules) {
+          rulesBox.addItem(originalRuleStrings.get(i));
+          numDisplayed++;
         }
       }
     }
- else     if (disambigRules.isSelected()) {
-      for (int i=0; i < originalRuleStrings.size(); i++) {
-        if (disambigRuleIndices[i]) {
-          rulesBox.addItem(originalRuleStrings.get(i));
-        }
-      }
-    }
- else {
-    }
+    displayedNumRulesPane.setText(Integer.toString(numDisplayed));
   }
 }

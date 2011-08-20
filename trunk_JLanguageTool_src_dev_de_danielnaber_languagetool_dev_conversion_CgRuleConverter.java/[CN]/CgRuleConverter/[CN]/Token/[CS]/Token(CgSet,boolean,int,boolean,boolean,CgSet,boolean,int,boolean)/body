@@ -1,9 +1,9 @@
 {
   this.target=target;
-  this.postags=getPostags(target);
-  this.surfaceforms=getSurfaceForms(target);
-  this.baseforms=getBaseForms(target);
-  this.compositeTags=getCompositeTags(target);
+  this.postags=target.getPostagsString();
+  this.surfaceforms=target.getSingleTagSurfaceformsString();
+  this.baseforms=target.getSingleTagBaseformsString();
+  this.compositeTags=target.getCompositeTags();
   this.careful=careful;
   this.offset=offset;
   this.scanahead=scanahead;

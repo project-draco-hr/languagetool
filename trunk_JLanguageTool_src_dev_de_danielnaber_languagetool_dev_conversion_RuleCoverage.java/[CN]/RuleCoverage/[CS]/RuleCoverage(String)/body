@@ -5,5 +5,7 @@
   tool.disableRule("EN_UNPAIRED_BRACKETS");
   tool.disableRule("EN_A_VS_AN");
   this.fileName=dictFileName;
+  this.dictFile=new File(fileName);
   dictLookup=(DictionaryLookup)loadDictionary();
+  dictIterator=resetDictIter();
 }

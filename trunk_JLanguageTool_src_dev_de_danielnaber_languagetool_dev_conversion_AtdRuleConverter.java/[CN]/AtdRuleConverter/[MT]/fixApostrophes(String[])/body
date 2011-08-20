@@ -1,0 +1,18 @@
+{
+  ArrayList<String> retList=new ArrayList<String>();
+  for (  String s : p) {
+    if (s.equals("'")) {
+      retList.add(s);
+    }
+ else     if (s.contains("'")) {
+      String[] temp=s.replaceAll("'"," ' ").split("\\ +");
+      for (      String sTemp : temp) {
+        retList.add(sTemp);
+      }
+    }
+ else {
+      retList.add(s);
+    }
+  }
+  return retList.toArray(new String[retList.size()]);
+}

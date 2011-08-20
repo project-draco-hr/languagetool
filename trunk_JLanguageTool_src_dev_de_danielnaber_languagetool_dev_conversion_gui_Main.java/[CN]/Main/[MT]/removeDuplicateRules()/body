@@ -8,6 +8,7 @@
         ruleStrings.remove(i);
         allRulesList.remove(i);
         ruleObjects.remove(i);
+        warnings.remove(i);
         break;
       }
  else {

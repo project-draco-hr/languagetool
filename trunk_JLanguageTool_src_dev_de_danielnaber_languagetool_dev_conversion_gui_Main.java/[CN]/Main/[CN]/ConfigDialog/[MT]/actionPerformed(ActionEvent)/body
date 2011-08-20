@@ -5,7 +5,7 @@
     mainRuleFilePane.setText(filename);
     outfilename=outFilePane.getText();
     disambigOutFile=disambigOutFilePane.getText();
-    specificFileType=(String)specificRuleTypeBox.getSelectedItem();
+    specificFileType=(String)optionsSpecificRuleTypeBox.getSelectedItem();
     dialog.setVisible(false);
   }
  else   if (e.getSource() == cancelButton) {

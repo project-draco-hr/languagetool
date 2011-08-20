@@ -23,6 +23,10 @@
   showRulesItem.setMnemonic(0);
   showRulesItem.addActionListener(this);
   fileMenu.add(showRulesItem);
+  final JMenuItem showCoveringRulesItem=new JMenuItem(showCoveringRulesText);
+  showCoveringRulesItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,Event.CTRL_MASK));
+  showCoveringRulesItem.addActionListener(this);
+  fileMenu.add(showCoveringRulesItem);
   final JMenuItem optionsItem=new JMenuItem(optionsText);
   optionsItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_COMMA,Event.CTRL_MASK));
   optionsItem.setMnemonic(0);

@@ -1,0 +1,6 @@
+{
+  String[] split=e.getString().split("\\|");
+  Random rng=new Random();
+  int index=rng.nextInt(split.length);
+  return split[index];
+}

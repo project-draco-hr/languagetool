@@ -1,5 +1,4 @@
 {
-  String s=CgTextualParser.stringbits[STRINGS.S_DELIMITSET.value];
   if (this.delimiters == null && to.name.equals(CgTextualParser.stringbits[STRINGS.S_DELIMITSET.value])) {
     this.delimiters=to;
   }

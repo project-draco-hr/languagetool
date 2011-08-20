@@ -1,0 +1,4 @@
+{
+  String[] ruleIds=coveredByPane.getText().split(",\\ ?");
+  openExistingRuleWindow(ruleIds);
+}

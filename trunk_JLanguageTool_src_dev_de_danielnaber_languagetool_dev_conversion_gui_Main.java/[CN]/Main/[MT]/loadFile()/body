@@ -2,6 +2,7 @@
   String fn=loadFile(frame,"Load grammar file",null);
   if (!fn.equals("nullnull")) {
     filename=fn;
+    mainRuleFilePane.setText(filename);
     String fileString=readFileAsString(filename);
     if (fileString.contains("::")) {
       ruleTypeBox.setSelectedItem("After the Deadline");
@@ -10,5 +11,6 @@
       ruleTypeBox.setSelectedItem("Constraint Grammar");
     }
     mainRuleFilePane.setText(filename);
+    mainRuleFilePane.repaint();
   }
 }

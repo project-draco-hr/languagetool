@@ -2,21 +2,20 @@
   RuleConverter rc=getCurrentRuleConverter();
   this.rulesBox.removeAllItems();
   try {
+    rc.parseRuleFile();
     ruleObjects=rc.getRules();
-    allRulesList=rc.getAllLtRules(ruleObjects);
+    allRulesList=rc.getAllLtRules();
     ruleStrings=new ArrayList<String>();
-    originalRuleStrings=new ArrayList<String>();
-    for (int i=0; i < ruleObjects.size(); i++) {
-      Object ruleObject=ruleObjects.get(i);
-      String originalString=rc.getRuleAsString(ruleObject);
-      originalRuleStrings.add(originalString);
+    originalRuleStrings=rc.getOriginalRuleStrings();
+    warnings=rc.getWarnings();
+    for (int i=0; i < allRulesList.size(); i++) {
       List<String> ruleList=allRulesList.get(i);
       String ruleString=RuleConverter.getRuleStringFromList(ruleList);
       ruleStrings.add(ruleString);
     }
     removeDuplicateRules();
     disambigRuleIndices=new boolean[allRulesList.size()];
-    coveredByList=new String[allRulesList.size()];
+    coveredByList=new ArrayList<String[]>();
     numberOfRules=allRulesList.size();
     numRulesPane.setText(Integer.toString(numberOfRules));
     for (int i=0; i < ruleObjects.size(); i++) {
@@ -27,8 +26,9 @@
  else {
         disambigRuleIndices[i]=false;
       }
-      coveredByList[i]="";
+      coveredByList.add(new String[0]);
     }
+    tieOutFileNames();
   }
  catch (  IOException e) {
     showDialog("IOException while loading/parsing file " + filename);

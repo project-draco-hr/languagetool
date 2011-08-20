@@ -5,14 +5,12 @@
  else {
     if (coveredByList != null) {
       int index=getCurrentRuleIndex();
-      if (!coveredByList[index].isEmpty()) {
-        coveredByPane.setText(coveredByList[index]);
-        coveredByPane.repaint();
+      String[] cov=coveredByList.get(index);
+      StringBuilder sb=new StringBuilder();
+      for (      String s : cov) {
+        sb.append(s + ", ");
       }
- else {
-        coveredByPane.setText("");
-        coveredByPane.repaint();
-      }
+      coveredByPane.setText(sb.toString().trim());
     }
   }
 }

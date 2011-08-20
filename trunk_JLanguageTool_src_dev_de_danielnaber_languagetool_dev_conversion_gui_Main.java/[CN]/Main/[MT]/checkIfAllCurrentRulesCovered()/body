@@ -1,10 +1,19 @@
 {
   try {
-    checker=new RuleCoverage();
+    checker=new RuleCoverage("/home/mbryant/languagetool/JLanguageTool/src/resource/en/english.dict");
     for (int i=0; i < ruleStrings.size(); i++) {
-      PatternRule patternRule=checker.parsePatternRule(ruleStrings.get(i)).get(0);
-      String coveringRule=checker.isCoveredBy(patternRule);
-      coveredByList[i]=coveringRule;
+      if (disambigRuleIndices[i]) {
+        continue;
+      }
+      List<PatternRule> patternRules=checker.parsePatternRule(ruleStrings.get(i));
+      ArrayList<String[]> allCoveringRules=checker.isCoveredBy(patternRules);
+      ArrayList<String> coveringRules=new ArrayList<String>();
+      for (      String[] s : allCoveringRules) {
+        for (        String ss : s) {
+          coveringRules.add(ss);
+        }
+      }
+      coveredByList.set(i,coveringRules.toArray(new String[coveringRules.size()]));
       displayCoveredBy();
     }
   }

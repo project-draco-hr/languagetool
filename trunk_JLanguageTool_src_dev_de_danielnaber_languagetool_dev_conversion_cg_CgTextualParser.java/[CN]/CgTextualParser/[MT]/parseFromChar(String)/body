@@ -505,31 +505,6 @@
  else     if (ISCHR(index,0,'T','t') && ISCHR(index,7,'E','e') && ISCHR(index,1,'E','e')&& ISCHR(index,2,'M','m')&& ISCHR(index,3,'P','p')&& ISCHR(index,4,'L','l')&& ISCHR(index,5,'A','a')&& ISCHR(index,6,'T','t')&& !ISSTRING(index,7)) {
       System.err.println("Templates not supported yet in this CG parser. Sorry.");
       System.exit(1);
-      CgContextualTest t=new CgContextualTest();
-      t.line=result.lines;
-      index+=8;
-      result.lines+=SKIPWS((char)0,(char)0);
-      nindex=index;
-      result.lines+=SKIPTOWS_N((char)0,true);
-      StringBuilder template=new StringBuilder();
-      for (int i=index; i < nindex; i++) {
-        template.append(inArray[i]);
-      }
-      t.name=template.toString().hashCode();
-      result.addContextualTest(t,template.toString());
-      index=nindex;
-      result.lines+=SKIPWS('=',(char)0);
-      if (inArray[index] != '=') {
-        System.err.println("Error encountered before expected = on line " + result.lines);
-        System.exit(1);
-      }
-      ++index;
-      parseContextualTestList(null);
-      result.lines+=SKIPWS(';',(char)0);
-      if (inArray[index] != '=') {
-        System.err.println("Missing closing ; at line " + result.lines);
-        System.exit(1);
-      }
     }
  else     if (ISCHR(index,0,'P','p') && ISCHR(index,10,'S','s') && ISCHR(index,1,'A','a')&& ISCHR(index,2,'R','r')&& ISCHR(index,3,'E','e')&& ISCHR(index,4,'N','n')&& ISCHR(index,5,'T','t')&& ISCHR(index,6,'H','h')&& ISCHR(index,7,'E','e')&& ISCHR(index,8,'S','s')&& ISCHR(index,9,'E','e')&& !ISSTRING(index,10)) {
       index+=11;

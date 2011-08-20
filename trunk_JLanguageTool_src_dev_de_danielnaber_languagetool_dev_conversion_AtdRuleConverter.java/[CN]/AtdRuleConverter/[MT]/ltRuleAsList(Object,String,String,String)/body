@@ -1,18 +1,38 @@
 {
-  ArrayList<String> ltRule=new ArrayList<String>();
-  HashMap<String,String> rule=(HashMap<String,String>)ruleObject;
-  ltRule.add("<!-- " + rule.get("ruleString") + " -->");
-  if (id != null && name != null) {
-    ltRule.add(firstIndent + "<rule " + "id=\""+ id+ "\" name=\""+ name+ "\">");
+  ArrayList<HashMap<String,String>> outerList=new ArrayList<HashMap<String,String>>();
+  HashMap<String,String> mainRule=(HashMap<String,String>)ruleObject;
+  String currentWarning="";
+  String[] mainPattern=mainRule.get("pattern").split("\\ +");
+  for (int i=0; i < mainPattern.length; i++) {
+    mainPattern[i]=expandMacro(mainPattern[i]);
+  }
+  mainRule.put("pattern",gluePattern(mainPattern));
+  if (isApostropheCase(mainRule.get("pattern").split("\\ +"))) {
+    ArrayList<HashMap<String,String>> splitRules=handleApostropheCase(mainRule,ruleObject,type);
+    for (    HashMap<String,String> splitRule : splitRules) {
+      outerList.add(splitRule);
+    }
   }
  else {
-    ltRule.add(firstIndent + "<rule>");
+    outerList.add(mainRule);
   }
-  String exceptions=null;
-  if (rule.containsKey("avoid")) {
-    exceptions=getAvoidWords(rule.get("avoid"));
+  ArrayList<String> bigLtRule=new ArrayList<String>();
+  bigLtRule.add("<!-- " + mainRule.get("ruleString") + " -->");
+  if (outerList.size() > 1) {
+    bigLtRule.add("<rulegroup name=\"" + name + "\" id=\""+ id+ "\">");
   }
-  if (type.equals("avoid")) {
+  for (  HashMap<String,String> rule : outerList) {
+    ArrayList<String> ltRule=new ArrayList<String>();
+    if (outerList.size() == 1) {
+      ltRule.add(firstIndent + "<rule id=\"" + id+ "\" name=\""+ name+ "\">");
+    }
+ else {
+      ltRule.add(firstIndent + "<rule>");
+    }
+    String exceptions=null;
+    if (rule.containsKey("avoid")) {
+      exceptions=getAvoidWords(rule.get("avoid"));
+    }
     if (Boolean.parseBoolean(rule.get("casesensitive"))) {
       ltRule.add(secondIndent + "<pattern case_sensitive=\"yes\">");
     }
@@ -20,52 +40,43 @@
       ltRule.add(secondIndent + "<pattern>");
     }
     String[] pattern=rule.get("pattern").split("\\ +");
-    if (isApostropheCase(pattern)) {
-      return handleApostropheCase(rule,type);
-    }
-    for (int i=0; i < pattern.length; i++) {
-      String e=pattern[i];
-      if (e.contains("'")) {
-        ltRule=handleRegularApostrophe(ltRule,e,thirdIndentInt,exceptions);
-      }
- else {
-        ltRule=addTokenHelper(ltRule,e,thirdIndentInt,exceptions);
-      }
-    }
-    ltRule.add(secondIndent + "</pattern>");
-    ltRule.add(secondIndent + "<message>" + rule.get("explanation")+ "</message>");
-    ltRule.add(firstIndent + "</rule>");
-  }
- else   if (type.equals("default")) {
-    if (Boolean.parseBoolean(rule.get("casesensitive"))) {
-      ltRule.add(secondIndent + "<pattern case_sensitive=\"yes\">");
-    }
- else {
-      ltRule.add(secondIndent + "<pattern>");
-    }
-    String[] pattern=rule.get("pattern").split("\\ +");
-    if (isApostropheCase(pattern)) {
-      return handleApostropheCase(rule,type);
-    }
-    for (int i=0; i < pattern.length; i++) {
-      String e=pattern[i];
-      if (e.contains("'")) {
-        ltRule=handleRegularApostrophe(ltRule,e,thirdIndentInt,exceptions);
-      }
- else {
-        ltRule=addTokenHelper(ltRule,e,thirdIndentInt,exceptions);
-      }
-    }
-    ltRule.add(secondIndent + "</pattern>");
+    String[] newpattern=fixApostrophes(pattern);
+    String suggestion=null;
     if (rule.containsKey("word")) {
-      ltRule=addSuggestion(ltRule,rule.get("word"),pattern,secondIndentInt);
+      suggestion=rule.get("word");
+      if (rule.get("pattern").contains("'")) {
+        currentWarning+="Apostrophes in the pattern may have affected the numbering in the suggestion.\n";
+      }
+    }
+    pattern=newpattern;
+    for (int i=0; i < pattern.length; i++) {
+      String e=pattern[i];
+      ltRule=addTokenHelper(ltRule,e,thirdIndentInt,exceptions);
+    }
+    ltRule.add(secondIndent + "</pattern>");
+    if (suggestion != null) {
+      currentWarning=getWarningsFromSuggestion(currentWarning,suggestion);
+      ltRule=addSuggestion(ltRule,suggestion,pattern,secondIndentInt);
     }
     if (rule.containsKey("filter")) {
-      if (rule.get("filter").equals("kill")) {
+      if (rule.get("filter").equals("kill") || rule.get("filter").equals("die")) {
         ltRule.add(secondIndent + "<disambig action=\"immunize\"/>");
+      }
+ else       if (rule.get("filter").equals("none")) {
+      }
+ else       if (rule.get("filter").equals("indefarticle")) {
+        currentWarning+="The \"indefarticle\" filter uses an n-gram probability filter. It probably shouldn't be transferred.";
+      }
+ else {
+        currentWarning+="Filter other than kill.\n";
       }
     }
     ltRule.add(firstIndent + "</rule>");
+    bigLtRule.addAll(ltRule);
   }
-  return ltRule;
+  if (outerList.size() > 1) {
+    bigLtRule.add("</rulegroup>");
+  }
+  warnings.add(currentWarning);
+  return bigLtRule;
 }

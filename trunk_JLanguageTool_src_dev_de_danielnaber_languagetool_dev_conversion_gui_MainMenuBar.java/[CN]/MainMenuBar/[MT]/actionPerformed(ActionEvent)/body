@@ -28,6 +28,9 @@
  else   if (e.getActionCommand().equals(showRulesText)) {
     prg.showAllRules();
   }
+ else   if (e.getActionCommand().equals(showCoveringRulesText)) {
+    prg.displayCoveringRules();
+  }
  else {
     throw new IllegalArgumentException("Unknown action " + e);
   }

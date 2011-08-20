@@ -1,9 +1,0 @@
-{
-  ArrayList<List<String>> ltRules=new ArrayList<List<String>>();
-  for (  Object ruleObject : rules) {
-    CgRule cgrule=(CgRule)ruleObject;
-    List<String> ltRule=ltRuleAsList(cgrule,generateId(ruleObject),generateName(ruleObject),cgrule.type.name());
-    ltRules.add(ltRule);
-  }
-  return ltRules;
-}

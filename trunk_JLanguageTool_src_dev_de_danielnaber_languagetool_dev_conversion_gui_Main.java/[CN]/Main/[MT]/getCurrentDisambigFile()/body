@@ -4,6 +4,9 @@
     return disambigOutFile;
   }
  else {
+    if (!disambigOutFilePane.getText().equals(disambigOutFile)) {
+      disambigOutFile=disambigOutFilePane.getText();
+    }
     return disambigOutFile;
   }
 }

@@ -1,10 +1,8 @@
 {
   CgRule rule=(CgRule)ruleObject;
   type=rule.type.name();
-  if (rule.line > 500) {
-    System.out.println();
-  }
   List<String> ltRule=new ArrayList<String>();
+  String currentWarning="";
   String cgRuleString=lines[rule.line];
   ltRule.add("<!-- " + cgRuleString + " -->");
   ArrayList<Token> tokensList=new ArrayList<Token>();
@@ -13,7 +11,7 @@
   CgSet targetSet=expandSetSets(grammar.getSet(rule.target));
   Token target=new Token(targetSet,false,0,false,false,new CgSet(),false,0,false);
   if (!isOrCompatible(target)) {
-    System.err.println("Target for rule on line " + rule.line + " cannot be represented as one LT rule. Rewrite");
+    System.err.println("Target for rule on line " + rule.line + " cannot be represented as one LT rule. Consider rewriting it.");
     return new ArrayList<String>();
   }
   tokensList.add(target);
@@ -135,5 +133,6 @@
     }
     ltRule.add("</rulegroup>");
   }
+  warnings.add(currentWarning);
   return ltRule;
 }

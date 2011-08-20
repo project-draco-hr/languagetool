@@ -5,4 +5,5 @@
   tool.disableRule("EN_UNPAIRED_BRACKETS");
   tool.disableRule("EN_A_VS_AN");
   dictLookup=(DictionaryLookup)loadDictionary();
+  dictIterator=resetDictIter();
 }

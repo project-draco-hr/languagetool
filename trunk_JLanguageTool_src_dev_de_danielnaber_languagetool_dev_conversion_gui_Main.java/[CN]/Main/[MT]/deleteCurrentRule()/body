@@ -1,0 +1,13 @@
+{
+  int index=getCurrentRuleIndex();
+  ruleObjects.remove(index);
+  allRulesList.remove(index);
+  ruleStrings.remove(index);
+  originalRuleStrings.remove(index);
+  warnings.remove(index);
+  disambigRuleIndices=removeIndexFromBooleanArray(disambigRuleIndices,index);
+  coveredByList.remove(index);
+  numberOfRules--;
+  numRulesPane.setText(Integer.toString(numberOfRules));
+  populateRuleBox();
+}

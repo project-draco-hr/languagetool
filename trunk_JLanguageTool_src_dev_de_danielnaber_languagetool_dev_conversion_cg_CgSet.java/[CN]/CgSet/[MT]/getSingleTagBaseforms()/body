@@ -5,5 +5,5 @@
       if (tag.tag.matches(baseformRegex))       forms.add(tag);
     }
   }
-  return forms;
+  return forms.toArray(new CgTag[forms.size()]);
 }

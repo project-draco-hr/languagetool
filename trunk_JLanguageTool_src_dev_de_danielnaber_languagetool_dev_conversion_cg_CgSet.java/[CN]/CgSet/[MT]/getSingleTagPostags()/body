@@ -5,5 +5,5 @@
       if (CgRuleConverter.isPostag(tag.tag))       postags.add(tag);
     }
   }
-  return postags;
+  return postags.toArray(new CgTag[postags.size()]);
 }

@@ -1,19 +1,21 @@
 {
   boolean writeCovered=writeCoveredRules.isSelected();
+  int numReg=0;
+  int numDis=0;
   if (anyRegularRules()) {
     outfilename=getCurrentOutfile();
     PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(outfilename),"UTF-8"));
     w.write("<rules>\n");
     w.write("<category name=\"Auto-generated rules\">\n");
     for (int i=0; i < ruleStrings.size(); i++) {
-      if (!disambigRuleIndices[i] && (writeCovered || (!writeCovered && coveredByList[i].equals("")))) {
+      if (!disambigRuleIndices[i] && (writeCovered || (!writeCovered && coveredByList.get(i).length == 0))) {
         w.write(ruleStrings.get(i));
+        numReg++;
       }
     }
     w.write("</category>\n");
     w.write("</rules>");
     w.close();
-    showDialog("Rules written to " + outfilename);
   }
   if (anyDisambiguationRules()) {
     disambigOutFile=getCurrentDisambigFile();
@@ -22,10 +24,21 @@
     for (int i=0; i < ruleStrings.size(); i++) {
       if (disambigRuleIndices[i]) {
         w.write(ruleStrings.get(i));
+        numDis++;
       }
     }
     w.write("</rules>");
     w.close();
-    showDialog("Rules written to " + disambigOutFile);
   }
+  String message="";
+  if (numReg > 0) {
+    message+=Integer.toString(numReg) + " rules written to " + outfilename+ "<br>";
+  }
+  if (numDis > 0) {
+    message+=Integer.toString(numDis) + " rules written to " + disambigOutFile;
+  }
+  if (message.equals("")) {
+    message="No rules written";
+  }
+  showDialog(message);
 }

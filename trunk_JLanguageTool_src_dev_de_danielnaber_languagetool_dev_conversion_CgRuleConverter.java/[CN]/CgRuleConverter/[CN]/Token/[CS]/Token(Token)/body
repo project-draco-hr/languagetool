@@ -1,9 +1,9 @@
 {
   this.target=new CgSet(another.target);
-  this.postags=getPostags(target);
-  this.surfaceforms=getSurfaceForms(target);
-  this.baseforms=getBaseForms(target);
-  this.compositeTags=getCompositeTags(target);
+  this.postags=target.getPostagsString();
+  this.surfaceforms=target.getSingleTagSurfaceformsString();
+  this.baseforms=target.getSingleTagBaseformsString();
+  this.compositeTags=target.getCompositeTags();
   this.careful=another.careful;
   this.offset=another.offset;
   this.scanahead=another.scanahead;

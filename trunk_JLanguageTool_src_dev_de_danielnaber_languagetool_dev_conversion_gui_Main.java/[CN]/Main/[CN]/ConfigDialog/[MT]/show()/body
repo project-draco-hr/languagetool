@@ -34,10 +34,10 @@
   }
 );
   final JLabel ortLabel=new JLabel("Current rule type:");
-  specificRuleTypeBox=new JComboBox();
-  populateSpecificRuleType();
+  optionsSpecificRuleTypeBox=new JComboBox();
+  populateOptionsSpecificRuleType();
   try {
-    specificRuleTypeBox.setSelectedItem(specificFileType);
+    optionsSpecificRuleTypeBox.setSelectedItem(specificFileType);
   }
  catch (  Exception e) {
   }
@@ -101,7 +101,7 @@
   cons.gridx=1;
   cons.gridy=2;
   cons.anchor=GridBagConstraints.WEST;
-  contentPane.add(specificRuleTypeBox,cons);
+  contentPane.add(optionsSpecificRuleTypeBox,cons);
   cons.gridx=0;
   cons.gridy=3;
   cons.anchor=GridBagConstraints.EAST;

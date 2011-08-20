@@ -7,5 +7,5 @@
       }
     }
   }
-  return postags;
+  return postags.toArray(new String[postags.size()]);
 }
