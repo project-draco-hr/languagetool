@@ -16,9 +16,31 @@
     }
   }
  else   if (this.ruleType == "avoid") {
-    String[] splitRule=rule.split("\t+");
-    outRule.put("pattern",splitRule[0]);
-    outRule.put("explanation",splitRule[1]);
+    if (rule.contains("::word")) {
+      String[] splitRule=rule.split("::");
+      outRule.put("pattern",splitRule[0]);
+      if (splitRule.length > 1) {
+        for (int i=1; i < splitRule.length; i++) {
+          String[] splitDeclaration=splitRule[i].split("=");
+          try {
+            outRule.put(splitDeclaration[0],splitDeclaration[1]);
+          }
+ catch (          ArrayIndexOutOfBoundsException e) {
+            System.err.println("Incorrect declaration for rule " + rule + "; rule skipped");
+          }
+        }
+      }
+    }
+ else {
+      String[] splitRule=rule.split("\t+");
+      outRule.put("pattern",splitRule[0]);
+      if (splitRule.length > 1) {
+        outRule.put("explanation",splitRule[1]);
+      }
+ else {
+        outRule.put("explanation","");
+      }
+    }
   }
   if (isCaseSensitiveRule(outRule.get("pattern"))) {
     outRule.put("casesensitive","true");

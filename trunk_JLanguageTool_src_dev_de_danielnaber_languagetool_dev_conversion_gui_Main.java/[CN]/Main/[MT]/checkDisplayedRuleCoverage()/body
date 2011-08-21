@@ -1,7 +1,7 @@
 {
   try {
     if (checker == null) {
-      checker=new RuleCoverage("/home/mbryant/languagetool/JLanguageTool/src/resource/en/english.dict");
+      checker=new RuleCoverage();
     }
     int index=getCurrentRuleIndex();
     if (!ruleStrings.get(index).equals(resultArea.getText())) {

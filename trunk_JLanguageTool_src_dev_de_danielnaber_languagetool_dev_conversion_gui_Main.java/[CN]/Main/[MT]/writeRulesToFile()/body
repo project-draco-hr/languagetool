@@ -2,43 +2,34 @@
   boolean writeCovered=writeCoveredRules.isSelected();
   int numReg=0;
   int numDis=0;
+  StringBuilder regWriteString=new StringBuilder();
+  StringBuilder disWriteString=new StringBuilder();
+  regWriteString.append("<category name=\"Auto-generated rules " + new File(filename).getName() + "\">\n");
+  disWriteString.append("<category name=\"Auto-generated rules " + new File(filename).getName() + "\">\n");
   if (anyRegularRules()) {
-    outfilename=getCurrentOutfile();
-    PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(outfilename),"UTF-8"));
-    w.write("<rules>\n");
-    w.write("<category name=\"Auto-generated rules\">\n");
     for (int i=0; i < ruleStrings.size(); i++) {
       if (!disambigRuleIndices[i] && (writeCovered || (!writeCovered && coveredByList.get(i).length == 0))) {
-        w.write(ruleStrings.get(i));
+        regWriteString.append(ruleStrings.get(i));
         numReg++;
       }
     }
-    w.write("</category>\n");
-    w.write("</rules>");
-    w.close();
   }
   if (anyDisambiguationRules()) {
-    disambigOutFile=getCurrentDisambigFile();
-    PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(disambigOutFile),"UTF-8"));
-    w.write("<rules>\n");
     for (int i=0; i < ruleStrings.size(); i++) {
       if (disambigRuleIndices[i]) {
-        w.write(ruleStrings.get(i));
+        disWriteString.append(ruleStrings.get(i));
         numDis++;
       }
     }
-    w.write("</rules>");
-    w.close();
   }
-  String message="";
-  if (numReg > 0) {
-    message+=Integer.toString(numReg) + " rules written to " + outfilename+ "<br>";
+  regWriteString.append("</category>");
+  disWriteString.append("</category>");
+  String disString=disWriteString.toString();
+  String regString=regWriteString.toString();
+  if (editBeforeWriting.isSelected()) {
+    writeWithEditing(disString,regString,numDis,numReg);
   }
-  if (numDis > 0) {
-    message+=Integer.toString(numDis) + " rules written to " + disambigOutFile;
+ else {
+    writeWithoutEditing(disString,regString,numDis,numReg);
   }
-  if (message.equals("")) {
-    message="No rules written";
-  }
-  showDialog(message);
 }

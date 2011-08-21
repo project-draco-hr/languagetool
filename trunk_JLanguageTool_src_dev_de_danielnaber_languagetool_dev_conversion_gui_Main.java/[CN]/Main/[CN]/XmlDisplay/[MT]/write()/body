@@ -1,0 +1,13 @@
+{
+  if (!this.text.isEmpty()) {
+    try {
+      PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(filename),"UTF-8"));
+      w.write(this.text);
+      w.close();
+      showDialog(Integer.toString(numRules) + " rules written to " + filename);
+    }
+ catch (    IOException e) {
+      showError(e);
+    }
+  }
+}

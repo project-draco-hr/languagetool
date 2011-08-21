@@ -1,6 +1,6 @@
 {
   try {
-    checker=new RuleCoverage("/home/mbryant/languagetool/JLanguageTool/src/resource/en/english.dict");
+    checker=new RuleCoverage();
     for (int i=0; i < ruleStrings.size(); i++) {
       if (disambigRuleIndices[i]) {
         continue;

@@ -1,0 +1,46 @@
+{
+  xmlframe=new JFrame(title);
+  final Container contentPane=xmlframe.getContentPane();
+  final GridBagLayout gridLayout=new GridBagLayout();
+  contentPane.setLayout(gridLayout);
+  GridBagConstraints c=new GridBagConstraints();
+  c.fill=GridBagConstraints.BOTH;
+  c.weightx=1f;
+  c.weighty=1f;
+  pane=new XmlTextPane();
+  pane.setText(text);
+  pane.requestFocusInWindow();
+  scrollpane=new JScrollPane(pane);
+  scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+  done=new JButton("Done");
+  done.addActionListener(this);
+  done.setMnemonic('D');
+  cancel=new JButton("Cancel");
+  cancel.addActionListener(this);
+  cancel.setMnemonic('C');
+  contentPane.add(scrollpane,c);
+  c.gridy=1;
+  c.weighty=0;
+  c.fill=GridBagConstraints.NONE;
+  contentPane.add(done,c);
+  final JRootPane rootPane=xmlframe.getRootPane();
+  final KeyStroke escStroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
+  final ActionListener actionListener=new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      xmlframe.setVisible(false);
+    }
+  }
+;
+  rootPane.registerKeyboardAction(actionListener,escStroke,JComponent.WHEN_IN_FOCUSED_WINDOW);
+  final KeyStroke enterStroke=KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,KeyEvent.CTRL_MASK);
+  final ActionListener actionListener2=new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      done.doClick();
+    }
+  }
+;
+  rootPane.registerKeyboardAction(actionListener2,enterStroke,JComponent.WHEN_IN_FOCUSED_WINDOW);
+  xmlframe.pack();
+  xmlframe.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+  xmlframe.setVisible(true);
+}

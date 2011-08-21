@@ -51,6 +51,7 @@
     pattern=newpattern;
     for (int i=0; i < pattern.length; i++) {
       String e=pattern[i];
+      currentWarning=getWarningsFromPatternElement(currentWarning,e);
       ltRule=addTokenHelper(ltRule,e,thirdIndentInt,exceptions);
     }
     ltRule.add(secondIndent + "</pattern>");
@@ -58,17 +59,16 @@
       currentWarning=getWarningsFromSuggestion(currentWarning,suggestion);
       ltRule=addSuggestion(ltRule,suggestion,pattern,secondIndentInt);
     }
+    if (rule.containsKey("explanation")) {
+      String explanation=rule.get("explanation");
+      ltRule=addExplanation(ltRule,explanation,secondIndentInt);
+    }
     if (rule.containsKey("filter")) {
       if (rule.get("filter").equals("kill") || rule.get("filter").equals("die")) {
         ltRule.add(secondIndent + "<disambig action=\"immunize\"/>");
       }
- else       if (rule.get("filter").equals("none")) {
-      }
- else       if (rule.get("filter").equals("indefarticle")) {
-        currentWarning+="The \"indefarticle\" filter uses an n-gram probability filter. It probably shouldn't be transferred.";
-      }
  else {
-        currentWarning+="Filter other than kill.\n";
+        currentWarning=getWarningsFromFilter(currentWarning,rule.get("filter"));
       }
     }
     ltRule.add(firstIndent + "</rule>");

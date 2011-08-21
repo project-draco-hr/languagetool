@@ -1,0 +1,9 @@
+{
+  String space=getSpace(indent);
+  String explanationString="";
+  if (!explanation.equals("")) {
+    explanationString=" \"" + explanation + "\"";
+  }
+  orig.add(space + "<message>" + avoidMessage+ explanationString+ "</message>");
+  return orig;
+}

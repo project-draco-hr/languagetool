@@ -2,9 +2,13 @@
   Scanner in=new Scanner(new FileInputStream(inFileName));
   List<String> ruleList=new ArrayList<String>();
   try {
+    int lineCount=0;
     while (in.hasNextLine()) {
       String line=in.nextLine().trim();
-      if (line.startsWith("#") || line.equals("")) {
+      if (line.startsWith("#?") && lineCount == 0 && ruleType.equals("avoid")) {
+        avoidMessage=line.substring(2);
+      }
+ else       if (line.startsWith("#") || line.equals("")) {
         continue;
       }
  else {
@@ -13,6 +17,7 @@
         }
         ruleList.add(line);
       }
+      lineCount++;
     }
   }
   finally {

@@ -1,0 +1,4 @@
+String text
+String filename
+String title
+int numRules

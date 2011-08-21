@@ -95,6 +95,7 @@
   coveredRules.addActionListener(this);
   notCoveredRules.addActionListener(this);
   writeCoveredRules=new JCheckBox("Write duplicate rules to file");
+  editBeforeWriting=new JCheckBox("Edit rules before writing");
   checkRulesCoveredButton=new JButton("Check rule coverage");
   checkRulesCoveredButton.setMnemonic('E');
   checkRulesCoveredButton.addActionListener(this);
@@ -164,6 +165,8 @@
   JPanel writeOptionsPanel=new JPanel(new GridBagLayout());
   c.gridx=0;
   writeOptionsPanel.add(writeCoveredRules,c);
+  c.gridx=1;
+  writeOptionsPanel.add(editBeforeWriting,c);
   insidePanel.add(writeOptionsPanel,buttonCons);
   JPanel numRulesPanel=new JPanel(new GridBagLayout());
   c.gridx=0;
