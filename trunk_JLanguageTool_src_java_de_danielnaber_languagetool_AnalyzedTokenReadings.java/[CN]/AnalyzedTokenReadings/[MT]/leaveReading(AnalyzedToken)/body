@@ -1,0 +1,11 @@
+{
+  final ArrayList<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+  final AnalyzedToken tmpTok=new AnalyzedToken(tok.getToken(),tok.getPOSTag(),tok.getLemma());
+  tmpTok.setWhitespaceBefore(isWhitespaceBefore);
+  for (  AnalyzedToken anTokReading : anTokReadings) {
+    if (anTokReading.matches(tmpTok)) {
+      l.add(anTokReading);
+    }
+  }
+  anTokReadings=l.toArray(new AnalyzedToken[l.size()]);
+}
