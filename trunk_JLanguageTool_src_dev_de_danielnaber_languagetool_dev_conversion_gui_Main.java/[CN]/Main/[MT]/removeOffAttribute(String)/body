@@ -1,0 +1,10 @@
+{
+  Matcher alreadyOff=defaultOffRegex.matcher(rule);
+  if (alreadyOff.find()) {
+    String newRule=rule.replace(alreadyOff.group(),"");
+    return newRule;
+  }
+ else {
+    return rule;
+  }
+}

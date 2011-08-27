@@ -31,6 +31,6 @@
     tieOutFileNames();
   }
  catch (  IOException e) {
-    showDialog("IOException while loading/parsing file " + filename);
+    showDialog("IOException while loading/parsing file " + filename,null);
   }
 }

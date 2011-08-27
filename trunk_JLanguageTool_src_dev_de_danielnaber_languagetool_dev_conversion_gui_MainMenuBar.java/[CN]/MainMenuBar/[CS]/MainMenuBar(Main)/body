@@ -27,11 +27,6 @@
   showCoveringRulesItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,Event.CTRL_MASK));
   showCoveringRulesItem.addActionListener(this);
   fileMenu.add(showCoveringRulesItem);
-  final JMenuItem optionsItem=new JMenuItem(optionsText);
-  optionsItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_COMMA,Event.CTRL_MASK));
-  optionsItem.setMnemonic(0);
-  optionsItem.addActionListener(this);
-  fileMenu.add(optionsItem);
   final JMenuItem quitItem=new JMenuItem(quitText);
   quitItem.setMnemonic(0);
   quitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,Event.CTRL_MASK));

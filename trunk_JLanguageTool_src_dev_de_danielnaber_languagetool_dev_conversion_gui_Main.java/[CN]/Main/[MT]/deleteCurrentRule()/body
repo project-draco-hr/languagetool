@@ -1,4 +1,7 @@
 {
+  if (ruleStrings == null) {
+    return;
+  }
   int index=getCurrentRuleIndex();
   ruleObjects.remove(index);
   allRulesList.remove(index);

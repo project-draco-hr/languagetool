@@ -1,0 +1,6 @@
+{
+  if (regexSet.matcher(e.getString()).matches() && !e.getNegation() && e.getPOStag() == null) {
+    return true;
+  }
+  return false;
+}

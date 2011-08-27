@@ -1,7 +1,7 @@
 {
   ArrayList<HashMap<String,String>> outerList=new ArrayList<HashMap<String,String>>();
   HashMap<String,String> mainRule=(HashMap<String,String>)ruleObject;
-  String currentWarning="";
+  ArrayList<String> currentWarnings=new ArrayList<String>();
   String[] mainPattern=mainRule.get("pattern").split("\\ +");
   for (int i=0; i < mainPattern.length; i++) {
     mainPattern[i]=expandMacro(mainPattern[i]);
@@ -19,7 +19,7 @@
   ArrayList<String> bigLtRule=new ArrayList<String>();
   bigLtRule.add("<!-- " + mainRule.get("ruleString") + " -->");
   if (outerList.size() > 1) {
-    bigLtRule.add("<rulegroup name=\"" + name + "\" id=\""+ id+ "\">");
+    bigLtRule.add("<rulegroup id=\"" + id + "\" name=\""+ name+ "\">");
   }
   for (  HashMap<String,String> rule : outerList) {
     ArrayList<String> ltRule=new ArrayList<String>();
@@ -45,18 +45,20 @@
     if (rule.containsKey("word")) {
       suggestion=rule.get("word");
       if (rule.get("pattern").contains("'")) {
-        currentWarning+="Apostrophes in the pattern may have affected the numbering in the suggestion.\n";
+        if (!currentWarnings.contains(WARNINGS.APOSTROPHES.value)) {
+          currentWarnings.add(WARNINGS.APOSTROPHES.value);
+        }
       }
     }
     pattern=newpattern;
     for (int i=0; i < pattern.length; i++) {
       String e=pattern[i];
-      currentWarning=getWarningsFromPatternElement(currentWarning,e);
+      currentWarnings=getWarningsFromPatternElement(currentWarnings,e);
       ltRule=addTokenHelper(ltRule,e,thirdIndentInt,exceptions);
     }
     ltRule.add(secondIndent + "</pattern>");
     if (suggestion != null) {
-      currentWarning=getWarningsFromSuggestion(currentWarning,suggestion);
+      currentWarnings=getWarningsFromSuggestion(currentWarnings,suggestion);
       ltRule=addSuggestion(ltRule,suggestion,pattern,secondIndentInt);
     }
     if (rule.containsKey("explanation")) {
@@ -68,7 +70,7 @@
         ltRule.add(secondIndent + "<disambig action=\"immunize\"/>");
       }
  else {
-        currentWarning=getWarningsFromFilter(currentWarning,rule.get("filter"));
+        currentWarnings=getWarningsFromFilter(currentWarnings,rule.get("filter"));
       }
     }
     ltRule.add(firstIndent + "</rule>");
@@ -77,6 +79,6 @@
   if (outerList.size() > 1) {
     bigLtRule.add("</rulegroup>");
   }
-  warnings.add(currentWarning);
+  warnings.add(currentWarnings.toArray(new String[currentWarnings.size()]));
   return bigLtRule;
 }

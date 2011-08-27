@@ -1,11 +1,14 @@
 {
+  if (ruleStrings == null) {
+    return;
+  }
   try {
     if (checker == null) {
       checker=new RuleCoverage();
     }
     int index=getCurrentRuleIndex();
     if (!ruleStrings.get(index).equals(resultArea.getText())) {
-      showDialog("Current rule not yet saved");
+      showDialog("Current rule not yet saved",null);
     }
  else {
       List<PatternRule> patternRules=checker.parsePatternRule(resultArea.getText());
@@ -21,6 +24,6 @@
     }
   }
  catch (  IOException e) {
-    showDialog("Couldn't parse or check the rule's coverage for some reason");
+    showDialog("Couldn't parse or check the rule's coverage for some reason",null);
   }
 }

@@ -1,0 +1,60 @@
+{
+  if (tokenPattern.pattern().isEmpty() && posPattern == null) {
+    return true;
+  }
+  boolean tokenMatches=true;
+  boolean postagMatches=false;
+  boolean isTokenEmpty=e.getString().isEmpty();
+  boolean hasPosTag=(posPattern != null);
+  boolean negate=e.getNegation();
+  boolean postagNegate=e.getPOSNegation();
+  boolean inflected=e.isInflected();
+  if (posPattern == null) {
+    postagMatches=true;
+  }
+  if (!isTokenEmpty) {
+    Matcher m;
+    boolean matches=false;
+    if (inflected) {
+      if (isInflectedStringMatch(word,e)) {
+        matches=true;
+      }
+    }
+ else {
+      m=tokenPattern.matcher(word);
+      if (m.matches())       matches=true;
+    }
+    if (matches) {
+      if (negate) {
+        tokenMatches=false;
+      }
+    }
+ else {
+      if (!negate) {
+        tokenMatches=false;
+      }
+    }
+  }
+  if (hasPosTag) {
+    List<String> postags=getPosTags(word);
+    for (    String s : postags) {
+      Matcher m=posPattern.matcher(s);
+      if (m.matches()) {
+        if (!postagNegate) {
+          postagMatches=true;
+          break;
+        }
+      }
+ else {
+        if (postagNegate) {
+          postagMatches=true;
+          break;
+        }
+      }
+    }
+    if (postags.size() == 0) {
+      postagMatches=false;
+    }
+  }
+  return (tokenMatches && postagMatches);
+}

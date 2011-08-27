@@ -9,7 +9,7 @@
   allLtRules=new ArrayList<List<String>>();
   disambiguationRules=new ArrayList<List<String>>();
   originalRuleStrings=new ArrayList<String>();
-  warnings=new ArrayList<String>();
+  warnings=new ArrayList<String[]>();
   for (  Object ruleObject : ruleObjects) {
     CgRule cgrule=(CgRule)ruleObject;
     List<String> ruleAsList=ltRuleAsList(cgrule,generateId(ruleObject),generateName(ruleObject),cgrule.type.name());

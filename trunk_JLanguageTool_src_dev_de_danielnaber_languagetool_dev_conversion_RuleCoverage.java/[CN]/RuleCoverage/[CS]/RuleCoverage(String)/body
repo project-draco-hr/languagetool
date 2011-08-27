@@ -1,11 +1,11 @@
 {
-  tool=new JLanguageTool(Language.ENGLISH);
+  language=Language.ENGLISH;
+  tool=new JLanguageTool(language);
   tool.activateDefaultPatternRules();
   tool.disableRule("UPPERCASE_SENTENCE_START");
   tool.disableRule("EN_UNPAIRED_BRACKETS");
   tool.disableRule("EN_A_VS_AN");
-  this.fileName=dictFileName;
-  this.dictFile=new File(fileName);
-  dictLookup=(DictionaryLookup)loadDictionary();
-  dictIterator=resetDictIter();
+  this.filename=dictFileName;
+  this.dictFile=new File(filename);
+  setupDictionaryFiles();
 }

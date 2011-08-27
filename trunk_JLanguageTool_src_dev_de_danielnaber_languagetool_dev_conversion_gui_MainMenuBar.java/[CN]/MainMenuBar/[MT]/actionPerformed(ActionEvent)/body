@@ -13,9 +13,6 @@
       ex.printStackTrace();
     }
   }
- else   if (e.getActionCommand().equals(optionsText)) {
-    prg.showOptions();
-  }
  else   if (e.getActionCommand().equals(nextRuleText)) {
     prg.nextRule();
   }
@@ -30,6 +27,9 @@
   }
  else   if (e.getActionCommand().equals(showCoveringRulesText)) {
     prg.displayCoveringRules();
+  }
+ else   if (e.getActionCommand().equals(aboutText)) {
+    prg.displayAboutDialog();
   }
  else {
     throw new IllegalArgumentException("Unknown action " + e);

@@ -1,4 +1,7 @@
 {
+  if (ruleStrings == null) {
+    return;
+  }
   try {
     checker=new RuleCoverage();
     for (int i=0; i < ruleStrings.size(); i++) {

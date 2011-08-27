@@ -19,5 +19,5 @@
   if (message.equals("")) {
     message="No rules written";
   }
-  showDialog(message);
+  showDialog(message,null);
 }

@@ -1,4 +1,7 @@
 {
+  if (ruleStrings == null) {
+    return;
+  }
   boolean writeCovered=writeCoveredRules.isSelected();
   int numReg=0;
   int numDis=0;

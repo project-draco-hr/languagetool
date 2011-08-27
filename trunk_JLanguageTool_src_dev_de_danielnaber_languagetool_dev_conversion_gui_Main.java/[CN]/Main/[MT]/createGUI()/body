@@ -6,7 +6,6 @@
   resultArea=new XmlTextPane();
   resultArea.requestFocusInWindow();
   JScrollPane scrollPane=new JScrollPane(resultArea);
-  scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
   scrollPane.setPreferredSize(new Dimension(250,145));
   scrollPane.setMinimumSize(new Dimension(10,10));
   rulesBox=new JComboBox();
@@ -52,6 +51,22 @@
   deleteCurrentRule.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
       deleteCurrentRule();
+    }
+  }
+);
+  setDefaultOff=new JButton("Set rules off by default");
+  setDefaultOff.setMnemonic('o');
+  setDefaultOff.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      setDefaultOff();
+    }
+  }
+);
+  setDefaultOn=new JButton("Set rules on by default");
+  setDefaultOn.setMnemonic('l');
+  setDefaultOn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      setDefaultOn();
     }
   }
 );
@@ -126,6 +141,7 @@
   ruleTypePanel.add(specificRuleTypeBox,c);
   insidePanel.add(ruleTypePanel,buttonCons);
   JPanel displayRulesPanel=new JPanel(new GridBagLayout());
+  c.anchor=GridBagConstraints.WEST;
   c.gridx=0;
   displayRulesPanel.add(regularRules,c);
   c.gridx=1;
@@ -140,33 +156,44 @@
   displayRulesPanel.add(coveredRules,c);
   c.gridx=1;
   displayRulesPanel.add(notCoveredRules,c);
+  c.anchor=GridBagConstraints.CENTER;
   buttonCons.gridy=1;
   insidePanel.add(displayRulesPanel,buttonCons);
-  JPanel convertPanel=new JPanel(new GridBagLayout());
+  JPanel coveragePanel=new JPanel(new GridBagLayout());
   c.gridx=0;
-  convertPanel.add(checkRulesCoveredButton,c);
+  coveragePanel.add(checkRulesCoveredButton,c);
   c.gridx=1;
-  convertPanel.add(recheckCurrentRuleCoverage,c);
+  coveragePanel.add(recheckCurrentRuleCoverage,c);
   buttonCons.gridy=2;
   buttonCons.fill=GridBagConstraints.NONE;
-  insidePanel.add(convertPanel,buttonCons);
+  insidePanel.add(coveragePanel,buttonCons);
+  JPanel modifyRulesPanel=new JPanel(new GridBagLayout());
+  c.gridx=0;
+  modifyRulesPanel.add(setDefaultOff,c);
+  c.gridx=1;
+  modifyRulesPanel.add(setDefaultOn,c);
   buttonCons.gridy=3;
+  insidePanel.add(modifyRulesPanel,buttonCons);
   JPanel savePanel=new JPanel(new GridBagLayout());
   c.gridx=0;
   savePanel.add(saveEditedRule,c);
   c.gridx=1;
-  savePanel.add(writeRulesToFileButton,c);
-  c.gridx=2;
   savePanel.add(deleteCurrentRule,c);
-  insidePanel.add(savePanel,buttonCons);
   buttonCons.gridy=4;
-  insidePanel.add(convert,buttonCons);
+  insidePanel.add(savePanel,buttonCons);
+  JPanel convertPanel=new JPanel(new GridBagLayout());
+  c.gridx=0;
+  convertPanel.add(convert,c);
+  c.gridx=1;
+  convertPanel.add(writeRulesToFileButton,c);
   buttonCons.gridy=5;
+  insidePanel.add(convertPanel,buttonCons);
   JPanel writeOptionsPanel=new JPanel(new GridBagLayout());
   c.gridx=0;
   writeOptionsPanel.add(writeCoveredRules,c);
   c.gridx=1;
   writeOptionsPanel.add(editBeforeWriting,c);
+  buttonCons.gridy=6;
   insidePanel.add(writeOptionsPanel,buttonCons);
   JPanel numRulesPanel=new JPanel(new GridBagLayout());
   c.gridx=0;
@@ -177,7 +204,7 @@
   numRulesPanel.add(numDisplayedRulesLabel,c);
   c.gridx=3;
   numRulesPanel.add(displayedNumRulesPane,c);
-  buttonCons.gridy=6;
+  buttonCons.gridy=7;
   insidePanel.add(numRulesPanel,buttonCons);
   cons.gridx=0;
   cons.gridy=0;

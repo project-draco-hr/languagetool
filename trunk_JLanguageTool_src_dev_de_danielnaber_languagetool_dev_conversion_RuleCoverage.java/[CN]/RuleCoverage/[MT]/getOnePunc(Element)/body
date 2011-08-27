@@ -1,0 +1,6 @@
+{
+  String set=e.getString();
+  Matcher m=regexSet.matcher(set);
+  m.find();
+  return m.group(1);
+}

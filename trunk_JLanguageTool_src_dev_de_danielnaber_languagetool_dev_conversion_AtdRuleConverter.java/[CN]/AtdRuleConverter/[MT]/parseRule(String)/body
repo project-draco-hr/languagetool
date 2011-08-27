@@ -3,6 +3,7 @@
   if (this.ruleType == "default") {
     String[] splitRule=rule.split("::");
     outRule.put("pattern",splitRule[0]);
+    outRule.put("name",getNameFromPattern(splitRule[0]));
     if (splitRule.length > 1) {
       for (int i=1; i < splitRule.length; i++) {
         String[] splitDeclaration=splitRule[i].split("=");
@@ -19,6 +20,7 @@
     if (rule.contains("::word")) {
       String[] splitRule=rule.split("::");
       outRule.put("pattern",splitRule[0]);
+      outRule.put("name",getNameFromPattern(splitRule[0]));
       if (splitRule.length > 1) {
         for (int i=1; i < splitRule.length; i++) {
           String[] splitDeclaration=splitRule[i].split("=");
@@ -34,6 +36,7 @@
  else {
       String[] splitRule=rule.split("\t+");
       outRule.put("pattern",splitRule[0]);
+      outRule.put("name",getNameFromPattern(splitRule[0]));
       if (splitRule.length > 1) {
         outRule.put("explanation",splitRule[1]);
       }

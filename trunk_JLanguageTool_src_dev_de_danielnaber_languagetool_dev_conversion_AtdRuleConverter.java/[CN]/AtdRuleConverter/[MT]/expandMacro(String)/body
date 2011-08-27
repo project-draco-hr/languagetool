@@ -1,6 +1,6 @@
 {
   if (e.charAt(0) == '&') {
-    return macroExpansions.get(e);
+    return MACRO_EXPANSIONS.valueOf(e.substring(1)).value;
   }
  else {
     return e;

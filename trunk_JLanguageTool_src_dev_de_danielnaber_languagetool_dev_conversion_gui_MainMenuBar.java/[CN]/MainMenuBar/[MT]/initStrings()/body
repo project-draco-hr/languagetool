@@ -7,7 +7,6 @@
   saveRuleText="Save current rule";
   showRulesText="Show all rules";
   showCoveringRulesText="Show covering rules";
-  optionsText="Options";
   quitText="Quit";
   nextRuleText="Next rule";
   prevRuleText="Previous rule";

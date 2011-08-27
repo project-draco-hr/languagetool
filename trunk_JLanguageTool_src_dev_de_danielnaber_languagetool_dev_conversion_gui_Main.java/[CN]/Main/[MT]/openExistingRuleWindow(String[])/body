@@ -1,4 +1,7 @@
 {
+  if (checker == null) {
+    return;
+  }
   JLanguageTool tool=checker.getLanguageTool();
   String fetchedRuleString="<pre>";
   List<Rule> rules=tool.getAllRules();
@@ -20,5 +23,5 @@
     }
   }
   fetchedRuleString=fetchedRuleString.concat("</pre>");
-  showDialog("<html>" + fetchedRuleString + "</html>");
+  showDialog("<html>" + fetchedRuleString + "</html>","Existing LT Rule");
 }

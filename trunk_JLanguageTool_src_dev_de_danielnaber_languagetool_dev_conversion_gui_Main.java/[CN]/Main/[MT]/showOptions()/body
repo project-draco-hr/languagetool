@@ -1,4 +1,0 @@
-{
-  ConfigDialog configDialog=new ConfigDialog(this.frame);
-  configDialog.show();
-}

@@ -5,7 +5,7 @@
  else {
     if (warnings != null) {
       int index=getCurrentRuleIndex();
-      warningPane.setText(warnings.get(index));
+      warningPane.setText(listToString(warnings.get(index)));
       warningPane.repaint();
     }
   }

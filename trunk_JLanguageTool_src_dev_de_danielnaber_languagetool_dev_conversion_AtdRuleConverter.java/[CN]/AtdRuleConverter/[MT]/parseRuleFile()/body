@@ -28,11 +28,11 @@
   ltRules=new ArrayList<List<String>>();
   disambiguationRules=new ArrayList<List<String>>();
   originalRuleStrings=new ArrayList<String>();
-  warnings=new ArrayList<String>();
+  warnings=new ArrayList<String[]>();
   for (  Object ruleObject : ruleObjects) {
     String ruleString=(String)ruleObject;
     HashMap<String,String> ruleMap=parseRule(ruleString);
-    List<String> ruleAsList=ltRuleAsList(ruleMap,generateId(ruleMap),generateName(ruleMap),this.ruleType);
+    List<String> ruleAsList=ltRuleAsList(ruleMap,getIdFromName(ruleMap.get("name")),ruleMap.get("name"),this.ruleType);
     if (notKilledRule(ruleMap)) {
       ltRules.add(ruleAsList);
     }

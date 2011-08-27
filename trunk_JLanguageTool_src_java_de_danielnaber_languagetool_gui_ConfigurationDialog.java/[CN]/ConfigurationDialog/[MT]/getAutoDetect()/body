@@ -1,3 +1,6 @@
 {
-  return autoDetectCheckbox.isSelected();
+  if (insideOOo) {
+    return autoDetectCheckbox.isSelected();
+  }
+  return false;
 }

@@ -1,0 +1,11 @@
+{
+  if (ruleStrings == null) {
+    return;
+  }
+  for (int i=0; i < ruleStrings.size(); i++) {
+    String oldRuleString=ruleStrings.get(i);
+    String newRuleString=addOffAttribute(oldRuleString);
+    ruleStrings.set(i,newRuleString);
+  }
+  populateRuleBox();
+}
