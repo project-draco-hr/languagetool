@@ -5,4 +5,5 @@
   isSentStart=JLanguageTool.SENTENCE_START_TAGNAME.equals(anTokReadings[0].getPOSTag());
   isParaEnd=hasPosTag(JLanguageTool.PARAGRAPH_END_TAGNAME);
   isSentEnd=hasPosTag(JLanguageTool.SENTENCE_END_TAGNAME);
+  setNoRealPOStag();
 }

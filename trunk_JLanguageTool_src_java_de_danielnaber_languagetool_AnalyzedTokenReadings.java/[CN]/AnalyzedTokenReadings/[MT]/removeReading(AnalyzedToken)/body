@@ -8,4 +8,5 @@
     }
   }
   anTokReadings=l.toArray(new AnalyzedToken[l.size()]);
+  setNoRealPOStag();
 }

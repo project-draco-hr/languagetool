@@ -46,7 +46,7 @@
       }
     }
   }
-  if (!paraMode.equals(ParagraphHandling.ONLYNONPARA)) {
+  if (!ruleMatches.isEmpty() && !paraMode.equals(ParagraphHandling.ONLYNONPARA)) {
     for (    final Rule rule : allRules) {
       if (rule.isParagraphBackTrack() && (rule.getMatches() != null)) {
         final List<RuleMatch> rm=rule.getMatches();

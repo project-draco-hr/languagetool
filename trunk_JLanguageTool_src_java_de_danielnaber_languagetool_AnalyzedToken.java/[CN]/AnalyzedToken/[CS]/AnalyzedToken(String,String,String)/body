@@ -11,4 +11,5 @@
  else {
     tokenInflected=lemma;
   }
+  hasNoPOSTag=(posTag == null || JLanguageTool.SENTENCE_END_TAGNAME.equals(posTag) || JLanguageTool.PARAGRAPH_END_TAGNAME.equals(posTag));
 }

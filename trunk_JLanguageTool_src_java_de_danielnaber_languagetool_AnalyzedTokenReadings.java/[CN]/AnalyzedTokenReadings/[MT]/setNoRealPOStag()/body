@@ -1,0 +1,14 @@
+{
+  boolean hasNoPOStag=!isLinebreak();
+  for (  AnalyzedToken an : anTokReadings) {
+    if (JLanguageTool.PARAGRAPH_END_TAGNAME.equals(an.getPOSTag()) || JLanguageTool.SENTENCE_END_TAGNAME.equals(an.getPOSTag())) {
+      continue;
+    }
+    if (an.getPOSTag() != null) {
+      hasNoPOStag=false;
+    }
+  }
+  for (  AnalyzedToken an : anTokReadings) {
+    an.setNoPOSTag(hasNoPOStag);
+  }
+}

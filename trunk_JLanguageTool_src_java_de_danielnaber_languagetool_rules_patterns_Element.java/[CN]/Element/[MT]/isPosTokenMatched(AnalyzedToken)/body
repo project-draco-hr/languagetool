@@ -3,18 +3,10 @@
     return true;
   }
   if (token.getPOSTag() == null) {
-    if (posRegExp) {
-      if (mPos == null) {
-        mPos=pPos.matcher(UNKNOWN_TAG);
-      }
- else {
-        mPos.reset(UNKNOWN_TAG);
-      }
-      return mPos.matches();
+    if (posUnknown) {
+      return token.hasNoTag();
     }
-    if (UNKNOWN_TAG.equals(posToken)) {
-      return true;
-    }
+    return false;
   }
   boolean match;
   if (posRegExp) {
@@ -29,8 +21,8 @@
  else {
     match=posToken.equals(token.getPOSTag());
   }
-  if (!match && UNKNOWN_TAG.equals(posToken)) {
-    match=JLanguageTool.SENTENCE_END_TAGNAME.equals(token.getPOSTag()) || JLanguageTool.PARAGRAPH_END_TAGNAME.equals(token.getPOSTag());
+  if (!match && posUnknown) {
+    match=token.hasNoTag();
   }
   return match;
 }
