@@ -120,7 +120,7 @@
   }
   motherTonguePanel.add(motherTongueBox,cons);
   if (insideOOo) {
-    autoDetectCheckbox=new JCheckBox("Automatically detect language");
+    autoDetectCheckbox=new JCheckBox(messages.getString("atd"));
     autoDetectCheckbox.setSelected(autoDetect);
     cons.gridy++;
     motherTonguePanel.add(autoDetectCheckbox,cons);
