@@ -1,3 +1,6 @@
 {
+  if (wordTokenizer == null) {
+    wordTokenizer=new MalayalamWordTokenizer();
+  }
   return wordTokenizer;
 }

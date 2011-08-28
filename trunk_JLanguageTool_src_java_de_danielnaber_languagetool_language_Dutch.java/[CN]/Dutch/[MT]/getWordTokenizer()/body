@@ -1,3 +1,6 @@
 {
-  return wdTokenizer;
+  if (wordTokenizer == null) {
+    wordTokenizer=new DutchWordTokenizer();
+  }
+  return wordTokenizer;
 }

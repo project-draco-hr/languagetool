@@ -1,3 +1,6 @@
 {
+  if (tagger == null) {
+    tagger=new DutchTagger();
+  }
   return tagger;
 }

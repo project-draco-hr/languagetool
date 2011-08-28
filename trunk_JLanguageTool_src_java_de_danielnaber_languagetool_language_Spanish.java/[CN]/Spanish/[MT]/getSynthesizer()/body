@@ -1,3 +1,6 @@
 {
+  if (synthesizer == null) {
+    synthesizer=new SpanishSynthesizer();
+  }
   return synthesizer;
 }
