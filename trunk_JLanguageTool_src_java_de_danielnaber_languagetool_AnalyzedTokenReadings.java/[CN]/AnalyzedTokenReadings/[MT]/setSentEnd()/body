@@ -1,4 +1,6 @@
 {
-  final AnalyzedToken sentenceEnd=new AnalyzedToken(getToken(),JLanguageTool.SENTENCE_END_TAGNAME,getAnalyzedToken(0).getLemma());
-  addReading(sentenceEnd);
+  if (!isSentEnd()) {
+    final AnalyzedToken sentenceEnd=new AnalyzedToken(getToken(),JLanguageTool.SENTENCE_END_TAGNAME,getAnalyzedToken(0).getLemma());
+    addReading(sentenceEnd);
+  }
 }

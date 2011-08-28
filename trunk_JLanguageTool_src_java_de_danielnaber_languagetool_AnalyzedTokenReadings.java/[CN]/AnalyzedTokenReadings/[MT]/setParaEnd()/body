@@ -1,4 +1,6 @@
 {
-  final AnalyzedToken paragraphEnd=new AnalyzedToken(getToken(),JLanguageTool.PARAGRAPH_END_TAGNAME,getAnalyzedToken(0).getLemma());
-  addReading(paragraphEnd);
+  if (!isParaEnd()) {
+    final AnalyzedToken paragraphEnd=new AnalyzedToken(getToken(),JLanguageTool.PARAGRAPH_END_TAGNAME,getAnalyzedToken(0).getLemma());
+    addReading(paragraphEnd);
+  }
 }
