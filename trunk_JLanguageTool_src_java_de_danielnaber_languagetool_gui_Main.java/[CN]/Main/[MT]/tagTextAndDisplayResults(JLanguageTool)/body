@@ -3,20 +3,19 @@
     textArea.setText(messages.getString("enterText2"));
   }
  else {
-    List<String> sentences=langTool.sentenceTokenize(textArea.getText());
+    final List<String> sentences=langTool.sentenceTokenize(textArea.getText());
     final StringBuilder sb=new StringBuilder();
     try {
       for (      String sent : sentences) {
-        AnalyzedSentence analyzedText=langTool.getAnalyzedSentence(sent);
+        final AnalyzedSentence analyzedText=langTool.getAnalyzedSentence(sent);
         sb.append(analyzedText.toString());
         sb.append("\n");
       }
     }
  catch (    IOException e) {
-      sb.append("An error occurred while tagging the text");
+      sb.append("An error occurred while tagging the text: " + e.getMessage());
     }
-    String s=sb.toString();
-    s=s.replaceAll("<S>","SENT_START");
+    final String s=sb.toString().replaceAll("<S>","SENT_START").replaceAll("</S>","");
     resultArea.setText(HTML_FONT_START + s + HTML_FONT_END);
   }
 }
