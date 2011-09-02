@@ -1,0 +1,3 @@
+{
+  new PatternRule("-1",Language.ENGLISH,Collections.<Element>emptyList(),"","","");
+}
