@@ -3,7 +3,7 @@
   if (!this.single_tags.isEmpty()) {
     for (    CgTag tag : this.single_tags) {
       String tagtag=tag.tag;
-      if (tagtag.matches(baseformRegex)) {
+      if (CgRuleConverter.isBaseForm(tagtag)) {
         forms.add(tagtag);
       }
     }
@@ -12,7 +12,7 @@
     for (    CgCompositeTag ctag : this.tags) {
       for (      CgTag tag : ctag.tags) {
         String tagtag=tag.tag;
-        if (tagtag.matches(baseformRegex)) {
+        if (CgRuleConverter.isBaseForm(tagtag)) {
           forms.add(tagtag);
         }
       }

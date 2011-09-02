@@ -18,11 +18,15 @@
   cancel=new JButton("Cancel");
   cancel.addActionListener(this);
   cancel.setMnemonic('C');
+  c.gridwidth=2;
   contentPane.add(scrollpane,c);
   c.gridy=1;
   c.weighty=0;
+  c.gridwidth=1;
   c.fill=GridBagConstraints.NONE;
   contentPane.add(done,c);
+  c.gridx=1;
+  contentPane.add(cancel,c);
   final JRootPane rootPane=xmlframe.getRootPane();
   final KeyStroke escStroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
   final ActionListener actionListener=new ActionListener(){

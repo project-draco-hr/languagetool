@@ -1,5 +1,5 @@
 {
-  if (ruleStrings == null) {
+  if (ruleStrings == null || rulesBox.getSelectedItem() == null) {
     return;
   }
   int index=getCurrentRuleIndex();
@@ -13,4 +13,7 @@
   numberOfRules--;
   numRulesPane.setText(Integer.toString(numberOfRules));
   populateRuleBox();
+  if (index > 0) {
+    rulesBox.setSelectedItem(originalRuleStrings.get(index - 1));
+  }
 }

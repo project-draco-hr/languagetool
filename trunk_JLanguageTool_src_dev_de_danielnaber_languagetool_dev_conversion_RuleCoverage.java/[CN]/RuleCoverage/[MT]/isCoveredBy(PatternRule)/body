@@ -1,6 +1,6 @@
 {
   ArrayList<String> coverages=new ArrayList<String>();
-  String example=generateExample(rule);
+  String example=generateIncorrectExample(rule);
   List<RuleMatch> matches=tool.check(example);
   if (matches.size() > 0) {
     for (    RuleMatch match : matches) {

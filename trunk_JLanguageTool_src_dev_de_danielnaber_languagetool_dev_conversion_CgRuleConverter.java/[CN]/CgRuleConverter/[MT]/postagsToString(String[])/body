@@ -3,9 +3,9 @@
     return "";
   }
   StringBuilder sb=new StringBuilder();
-  sb.append("(.*" + tagDelimiter + ")?");
-  String postagsGlued=glueWords(postags);
-  sb.append(postagsGlued);
-  sb.append("(" + tagDelimiter + ".*)?");
-  return sb.toString();
+  for (  String pos : postags) {
+    sb.append(pos + "|");
+  }
+  String ret=sb.toString();
+  return ret.substring(0,ret.length() - 1);
 }

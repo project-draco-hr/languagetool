@@ -1,0 +1,8 @@
+{
+  if (filename == null) {
+    return;
+  }
+  String f=readFileAsString(filename);
+  XmlDisplay regdisplay=new XmlDisplay(f,filename,"Edit existing rules file");
+  regdisplay.show();
+}

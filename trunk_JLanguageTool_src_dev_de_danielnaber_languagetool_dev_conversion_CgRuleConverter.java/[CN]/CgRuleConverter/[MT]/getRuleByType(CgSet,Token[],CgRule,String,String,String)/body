@@ -33,7 +33,7 @@
     ltRule.add(firstIndent + "<disambig action=\"remove\">" + removeTarget(target)+ "</disambig>");
   }
  else   if (type.equals("K_SELECT")) {
-    ltRule.add(firstIndent + "<disambig action=\"replace\"><match no=\"" + (mark + 1)+ "\" postag=\""+ replaceRegexp(target)+ "\" postag_regexp=\"yes\"/></disambig>");
+    ltRule.add(firstIndent + filterTarget(target,mark + 1));
   }
  else   if (type.equals("K_MAP")) {
     ltRule.add(firstIndent + "<disambig action=\"add\" postag=\"" + addRegexp(rule.maplist)+ "\" postag_regexp=\"yes\"/>");

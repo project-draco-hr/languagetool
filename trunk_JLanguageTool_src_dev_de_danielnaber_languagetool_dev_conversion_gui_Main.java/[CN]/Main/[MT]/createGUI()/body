@@ -54,19 +54,41 @@
     }
   }
 );
-  setDefaultOff=new JButton("Set rules off by default");
-  setDefaultOff.setMnemonic('o');
-  setDefaultOff.addActionListener(new ActionListener(){
+  toggleDefaultOff=new JButton("Toggle default=\"off\"");
+  toggleDefaultOff.setMnemonic('t');
+  toggleDefaultOff.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
-      setDefaultOff();
+      if (!defaultOff) {
+        setDefaultOff();
+        defaultOff=true;
+      }
+ else {
+        setDefaultOn();
+        defaultOff=false;
+      }
     }
   }
 );
-  setDefaultOn=new JButton("Set rules on by default");
-  setDefaultOn.setMnemonic('l');
-  setDefaultOn.addActionListener(new ActionListener(){
+  makeRuleExclusive=new JButton("Make rule exclusive");
+  makeRuleExclusive.setMnemonic('x');
+  makeRuleExclusive.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
-      setDefaultOn();
+      makeCurrentRuleExclusive();
+    }
+  }
+);
+  toggleExtraTokens=new JButton("Toggle extra tokens");
+  toggleExtraTokens.setMnemonic('a');
+  toggleExtraTokens.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      if (!extraTokens) {
+        addExtraTokens();
+        extraTokens=true;
+      }
+ else {
+        removeExtraTokens();
+        extraTokens=false;
+      }
     }
   }
 );
@@ -169,9 +191,11 @@
   insidePanel.add(coveragePanel,buttonCons);
   JPanel modifyRulesPanel=new JPanel(new GridBagLayout());
   c.gridx=0;
-  modifyRulesPanel.add(setDefaultOff,c);
+  modifyRulesPanel.add(toggleDefaultOff,c);
   c.gridx=1;
-  modifyRulesPanel.add(setDefaultOn,c);
+  modifyRulesPanel.add(makeRuleExclusive,c);
+  c.gridx=2;
+  modifyRulesPanel.add(toggleExtraTokens,c);
   buttonCons.gridy=3;
   insidePanel.add(modifyRulesPanel,buttonCons);
   JPanel savePanel=new JPanel(new GridBagLayout());

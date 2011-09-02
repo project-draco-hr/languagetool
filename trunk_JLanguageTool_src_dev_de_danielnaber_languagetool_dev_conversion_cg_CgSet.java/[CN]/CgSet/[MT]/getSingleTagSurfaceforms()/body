@@ -3,7 +3,7 @@
   if (!this.single_tags.isEmpty()) {
     for (    CgTag tag : this.single_tags) {
       String tagtag=tag.tag;
-      if (tagtag.matches(surfaceformRegex))       forms.add(tag);
+      if (CgRuleConverter.isSurfaceForm(tagtag))       forms.add(tag);
     }
   }
   return forms.toArray(new CgTag[forms.size()]);

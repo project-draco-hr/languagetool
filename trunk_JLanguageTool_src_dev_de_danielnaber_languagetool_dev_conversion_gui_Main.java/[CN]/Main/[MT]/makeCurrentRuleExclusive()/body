@@ -1,0 +1,10 @@
+{
+  if (ruleStrings == null || rulesBox.getSelectedItem() == null) {
+    return;
+  }
+  int index=getCurrentRuleIndex();
+  String rs=ruleStrings.get(index);
+  rs=makeTokensExclusive(rs);
+  ruleStrings.set(index,rs);
+  displaySelectedRule();
+}

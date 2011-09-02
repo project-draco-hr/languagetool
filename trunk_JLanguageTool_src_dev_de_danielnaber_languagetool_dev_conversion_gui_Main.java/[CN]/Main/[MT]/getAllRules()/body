@@ -1,6 +1,6 @@
 {
   StringBuilder sb=new StringBuilder();
-  if (ruleStrings == null) {
+  if (ruleStrings == null || rulesBox.getSelectedItem() == null) {
     return "";
   }
   for (  String r : ruleStrings) {

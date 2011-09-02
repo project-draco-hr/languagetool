@@ -4,7 +4,7 @@
   PrintWriter w2=null;
   int discardedRules=0;
   for (  PatternRule rule : rules) {
-    String example=generateExample(rule);
+    String example=generateIncorrectExample(rule);
     if (isCoveredBy(example) == null) {
       w.write(rule.toXML());
     }

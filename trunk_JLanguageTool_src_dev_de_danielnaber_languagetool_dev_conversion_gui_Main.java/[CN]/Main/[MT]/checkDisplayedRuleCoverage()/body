@@ -1,5 +1,5 @@
 {
-  if (ruleStrings == null) {
+  if (ruleStrings == null || rulesBox.getSelectedItem() == null) {
     return;
   }
   try {

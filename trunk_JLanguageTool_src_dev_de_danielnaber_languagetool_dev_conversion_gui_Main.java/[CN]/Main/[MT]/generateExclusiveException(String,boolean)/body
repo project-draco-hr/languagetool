@@ -1,0 +1,14 @@
+{
+  String ex="<exception postag=\"";
+  ex=ex.concat(postags).concat("\"");
+  if (regexp) {
+    ex=ex.concat(" postag_regexp=\"yes\" negate_pos=\"yes\"/>");
+  }
+ else {
+    ex=ex.concat(" negate_pos=\"yes\"/>");
+  }
+  if (postags.equals(getCurrentRuleConverter().getSentStart()) || postags.equals(getCurrentRuleConverter().getSentEnd())) {
+    return "";
+  }
+  return ex;
+}

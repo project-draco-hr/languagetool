@@ -1,5 +1,5 @@
 {
-  if (ruleStrings == null) {
+  if (ruleStrings == null || rulesBox.getSelectedItem() == null) {
     return;
   }
   boolean writeCovered=writeCoveredRules.isSelected();
@@ -7,26 +7,26 @@
   int numDis=0;
   StringBuilder regWriteString=new StringBuilder();
   StringBuilder disWriteString=new StringBuilder();
-  regWriteString.append("<category name=\"Auto-generated rules " + new File(filename).getName() + "\">\n");
-  disWriteString.append("<category name=\"Auto-generated rules " + new File(filename).getName() + "\">\n");
   if (anyRegularRules()) {
+    regWriteString.append("<category name=\"Auto-generated rules " + new File(filename).getName() + "\">\n");
     for (int i=0; i < ruleStrings.size(); i++) {
       if (!disambigRuleIndices[i] && (writeCovered || (!writeCovered && coveredByList.get(i).length == 0))) {
         regWriteString.append(ruleStrings.get(i));
         numReg++;
       }
     }
+    regWriteString.append("</category>");
   }
   if (anyDisambiguationRules()) {
+    disWriteString.append("<category name=\"Auto-generated rules " + new File(filename).getName() + "\">\n");
     for (int i=0; i < ruleStrings.size(); i++) {
       if (disambigRuleIndices[i]) {
         disWriteString.append(ruleStrings.get(i));
         numDis++;
       }
     }
+    disWriteString.append("</category>");
   }
-  regWriteString.append("</category>");
-  disWriteString.append("</category>");
   String disString=disWriteString.toString();
   String regString=regWriteString.toString();
   if (editBeforeWriting.isSelected()) {

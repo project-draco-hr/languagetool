@@ -1,5 +1,5 @@
 {
-  if (originalRuleStrings != null && ruleStrings != null) {
+  if (originalRuleStrings != null && ruleStrings != null && rulesBox.getSelectedItem() != null) {
     String newRule=resultArea.getText();
     String selectedRule=(String)rulesBox.getSelectedItem();
     int index;

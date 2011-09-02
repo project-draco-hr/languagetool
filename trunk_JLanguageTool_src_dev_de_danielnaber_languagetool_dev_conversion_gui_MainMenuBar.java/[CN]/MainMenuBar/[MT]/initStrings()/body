@@ -1,13 +1,21 @@
 {
   fileMenu=new JMenu("File");
+  editMenu=new JMenu("Edit");
   navigateMenu=new JMenu("Navigate");
   helpMenu=new JMenu("Help");
   openText="Open";
   writeText="Write rules to file";
-  saveRuleText="Save current rule";
   showRulesText="Show all rules";
   showCoveringRulesText="Show covering rules";
+  showOriginalFileText="Show original rule file";
   quitText="Quit";
+  saveRuleText="Save current rule";
+  removeCoveringRulesText="Remove covering rules";
+  removeWarningsText="Remove warnings";
+  allRulesExclusiveText="All rules exclusive";
+  cutText="Cut";
+  copyText="Copy";
+  pasteText="Paste";
   nextRuleText="Next rule";
   prevRuleText="Previous rule";
   aboutText="About";

@@ -1,7 +1,7 @@
 {
   List<PatternRule> rules=loadPatternRules(grammarfile);
   for (  PatternRule rule : rules) {
-    String example=generateExample(rule);
+    String example=generateIncorrectExample(rule);
     System.out.println("Rule " + rule.getId() + " is covered by "+ isCoveredBy(example)+ " for example "+ example);
   }
 }

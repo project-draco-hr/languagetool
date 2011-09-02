@@ -8,6 +8,12 @@
   if (lemmas.length > 0 && (compositeTags.length > 0 || postags.length > 0 || surfaceforms.length > 0)) {
     System.err.println("Error: something went wrong here.");
   }
+  if (lemmas.length > 0) {
+    sb.append("lemma=" + glueWords(lemmas));
+  }
+  if (postags.length > 0) {
+    sb.append("pos=\"" + glueWords(postags) + "\"");
+  }
   sb.append("/>");
   return sb.toString();
 }
