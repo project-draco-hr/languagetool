@@ -1,0 +1,6 @@
+{
+  if (sentenceTokenizer == null) {
+    sentenceTokenizer=new SRXSentenceTokenizer(getShortName());
+  }
+  return sentenceTokenizer;
+}
