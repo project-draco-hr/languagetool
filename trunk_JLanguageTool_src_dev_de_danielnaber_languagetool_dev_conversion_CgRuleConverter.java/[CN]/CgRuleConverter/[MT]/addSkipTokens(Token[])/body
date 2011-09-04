@@ -14,7 +14,7 @@
           sentEndTag.tag=SENT_END;
           newTarget.single_tags.add(sentEndTag);
           oldToken.target=newTarget;
-          oldToken.postags=oldToken.target.getSingleTagPostagsString();
+          oldToken.postags=oldToken.target.getPostagsString();
           oldToken.baseforms=oldToken.target.getSingleTagBaseformsString();
           oldToken.surfaceforms=oldToken.target.getSingleTagSurfaceformsString();
           oldToken.compositeTags=oldToken.target.getCompositeTags();
@@ -43,7 +43,7 @@
           sentEndTag.tag=SENT_END;
           newTarget.single_tags.add(sentEndTag);
           oldToken.target=newTarget;
-          oldToken.postags=oldToken.target.getSingleTagPostagsString();
+          oldToken.postags=oldToken.target.getPostagsString();
           oldToken.baseforms=oldToken.target.getSingleTagBaseformsString();
           oldToken.surfaceforms=oldToken.target.getSingleTagSurfaceformsString();
           oldToken.compositeTags=oldToken.target.getCompositeTags();
@@ -63,7 +63,7 @@
       sentStartTag.tag=SENT_START;
       newTarget.single_tags.add(sentStartTag);
       newToken.target=newTarget;
-      newToken.postags=newToken.target.getSingleTagPostagsString();
+      newToken.postags=newToken.target.getPostagsString();
       newToken.baseforms=newToken.target.getSingleTagBaseformsString();
       newToken.surfaceforms=newToken.target.getSingleTagSurfaceformsString();
       newToken.compositeTags=newToken.target.getCompositeTags();
@@ -86,7 +86,7 @@
  else {
         if (oldToken.negate) {
           oldToken.target=oldToken.barrier;
-          oldToken.postags=oldToken.target.getSingleTagPostagsString();
+          oldToken.postags=oldToken.target.getPostagsString();
           oldToken.baseforms=oldToken.target.getSingleTagBaseformsString();
           oldToken.surfaceforms=oldToken.target.getSingleTagSurfaceformsString();
           oldToken.compositeTags=oldToken.target.getCompositeTags();

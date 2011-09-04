@@ -15,4 +15,5 @@
   this.nextToken=another.nextToken;
   this.prevToken=another.prevToken;
   this.relativeOffset=another.relativeOffset;
+  this.exceptionString=another.exceptionString;
 }

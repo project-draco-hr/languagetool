@@ -1,0 +1,48 @@
+{
+  HashMap<String,ArrayList<CgCompositeTag>> bf=new HashMap<String,ArrayList<CgCompositeTag>>();
+  HashMap<String,ArrayList<CgCompositeTag>> sf=new HashMap<String,ArrayList<CgCompositeTag>>();
+  HashMap<String,CgCompositeTag> dict=new HashMap<String,CgCompositeTag>();
+  for (  CgCompositeTag ctag : target.tags) {
+    CgCompositeTag postags=new CgCompositeTag();
+    CgCompositeTag baseforms=new CgCompositeTag();
+    CgCompositeTag surfaceforms=new CgCompositeTag();
+    for (    CgTag tag : ctag.tags) {
+      if (isBaseForm(tag.tag)) {
+        baseforms.addTag(tag);
+      }
+ else       if (isSurfaceForm(tag.tag)) {
+        surfaceforms.addTag(tag);
+      }
+ else       if (isPostag(tag.tag)) {
+        postags.addTag(tag);
+      }
+    }
+    if (!postags.isEmpty()) {
+      if (!baseforms.isEmpty()) {
+        bf=(HashMap)smartPut(bf,postags.toString(),baseforms);
+      }
+ else       if (!surfaceforms.isEmpty()) {
+        sf=(HashMap)smartPut(sf,postags.toString(),surfaceforms);
+      }
+    }
+    dict.put(postags.toString(),postags);
+  }
+  ArrayList<CgSet> ret=new ArrayList<CgSet>();
+  for (  String postagSet : bf.keySet()) {
+    CgSet newSet=new CgSet(target);
+    newSet.tags=new HashSet<CgCompositeTag>();
+    ArrayList<CgCompositeTag> bfs=bf.get(postagSet);
+    for (    CgCompositeTag singleBf : bfs) {
+      CgCompositeTag newTotalTag=new CgCompositeTag();
+      for (      CgTag tag : dict.get(postagSet).tags) {
+        newTotalTag.addTag(tag);
+      }
+      for (      CgTag tag : singleBf.tags) {
+        newTotalTag.addTag(tag);
+      }
+      newSet.addCompositeTag(newTotalTag);
+    }
+    ret.add(newSet);
+  }
+  return ret;
+}

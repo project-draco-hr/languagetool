@@ -1,36 +1,38 @@
 {
   ArrayList<List<Token>> list=new ArrayList<List<Token>>();
-  ArrayList<Token> list1=new ArrayList<Token>();
-  ArrayList<Token> list2=new ArrayList<Token>();
+  final ArrayList<Token> firstList=new ArrayList<Token>();
+  list.add(firstList);
   int i=0;
   for (i=0; i < tokens.size(); i++) {
     if (isOrCompatible(tokens.get(i))) {
-      list1.add(tokens.get(i));
-      list2.add(tokens.get(i));
+      firstList.add(tokens.get(i));
     }
  else {
-      ArrayList<CgSet> twoSets=splitCgSet(tokens.get(i).target);
-      Token token1=new Token(tokens.get(i));
-      Token token2=new Token(tokens.get(i));
-      token1.target=twoSets.get(0);
-      token2.target=twoSets.get(1);
-      token1.postags=token1.target.getSingleTagPostagsString();
-      token1.baseforms=token1.target.getSingleTagBaseformsString();
-      token1.surfaceforms=token1.target.getSingleTagSurfaceformsString();
-      token1.compositeTags=token1.target.getCompositeTags();
-      token2.postags=token2.target.getSingleTagPostagsString();
-      token2.baseforms=token2.target.getSingleTagBaseformsString();
-      token2.surfaceforms=token2.target.getSingleTagSurfaceformsString();
-      token2.compositeTags=token2.target.getCompositeTags();
-      list1.add(token1);
-      list2.add(token2);
+      list.remove(firstList);
+      ArrayList<CgSet> newSets=splitCgSet(tokens.get(i).target);
+      for (      CgSet set : newSets) {
+        Token newToken=new Token(tokens.get(i));
+        newToken.target=expandSetSets(set);
+        newToken.postags=newToken.target.getPostagsString();
+        newToken.baseforms=newToken.target.getSingleTagBaseformsString();
+        newToken.surfaceforms=newToken.target.getSingleTagSurfaceformsString();
+        newToken.compositeTags=newToken.target.getCompositeTags();
+        ArrayList<Token> newList=new ArrayList<Token>();
+        for (        Token token : firstList) {
+          newList.add(new Token(token));
+        }
+        newList.add(newToken);
+        list.add(newList);
+      }
+      break;
     }
   }
   for (int j=i + 1; j < tokens.size(); j++) {
-    list1.add(tokens.get(j));
-    list2.add(tokens.get(j));
+    for (int k=0; k < list.size(); k++) {
+      ArrayList<Token> insideList=(ArrayList<Token>)list.get(k);
+      insideList.add(tokens.get(j));
+      list.set(k,insideList);
+    }
   }
-  list.add(list1);
-  list.add(list2);
   return list;
 }

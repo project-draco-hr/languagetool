@@ -12,9 +12,10 @@
   HashSet<String> base=new HashSet<String>();
   HashSet<String> surf=new HashSet<String>();
   for (  CgCompositeTag ctag : token.compositeTags) {
+    CgCompositeTag postagCompile=new CgCompositeTag();
     for (    CgTag tag : ctag.tags) {
       if (isPostag(tag.tag)) {
-        pos.add(tag.tag);
+        postagCompile.addTag(tag);
       }
  else       if (isSurfaceForm(tag.tag)) {
         surf.add(tag.tag);
@@ -23,6 +24,7 @@
         base.add(tag.tag);
       }
     }
+    pos.add(postagCompile.toString());
   }
   if (pos.size() > 1 && (surf.size() > 1 || base.size() > 1)) {
     return false;

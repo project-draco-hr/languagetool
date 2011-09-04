@@ -4,9 +4,25 @@
   String surfaceforms=glueWords(cleanForms(token.surfaceforms));
   CgCompositeTag[] compositeTags=token.compositeTags;
   if (compositeTags.length != 0) {
-    postags=compositeTags[0].getPostags();
-    baseforms=compositeTags[0].getBaseform();
-    surfaceforms=compositeTags[0].getSurfaceform();
+    ArrayList<String> baseformsList=new ArrayList<String>();
+    ArrayList<String> surfaceformsList=new ArrayList<String>();
+    for (    CgCompositeTag ctag : compositeTags) {
+      CgCompositeTag postagCompiled=new CgCompositeTag();
+      for (      CgTag tag : ctag.tags) {
+        if (isPostag(tag.tag)) {
+          postagCompiled.addTag(tag);
+        }
+ else         if (isBaseForm(tag.tag)) {
+          baseformsList.add(tag.tag);
+        }
+ else         if (isSurfaceForm(tag.tag)) {
+          surfaceformsList.add(tag.tag);
+        }
+      }
+      postags=compositePostagToString(postagCompiled);
+    }
+    baseforms=glueWords(cleanForms(baseformsList.toArray(new String[baseformsList.size()])));
+    surfaceforms=glueWords(cleanForms(surfaceformsList.toArray(new String[surfaceformsList.size()])));
   }
   boolean careful=token.careful;
   boolean negate=token.negate;

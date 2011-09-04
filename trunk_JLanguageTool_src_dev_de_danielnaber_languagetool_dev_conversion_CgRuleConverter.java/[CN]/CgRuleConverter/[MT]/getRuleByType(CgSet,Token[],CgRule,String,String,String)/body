@@ -2,7 +2,7 @@
   ArrayList<String> ltRule=new ArrayList<String>();
   TreeMap<Integer,ArrayList<Token>> tokenmap=new TreeMap<Integer,ArrayList<Token>>();
   for (  Token token : tokens) {
-    tokenmap=smartPut(tokenmap,token.offset,token);
+    tokenmap=(TreeMap)smartPut(tokenmap,token.offset,token);
   }
   if (name != null || id != null) {
     ltRule.add("<rule id=\"" + id + "\" name=\""+ name+ "\">");
