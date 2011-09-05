@@ -1,5 +1,5 @@
 {
   final Contributor contributor=new Contributor("Susana Sotelo Doc??o");
-  contributor.setUrl("http://www.g11n.net");
+  contributor.setUrl("http://www.linguarum.net/projects/languagetool-gl");
   return new Contributor[]{contributor};
 }
