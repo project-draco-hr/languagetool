@@ -1,6 +1,6 @@
 {
   if (tagger == null) {
-    tagger=new DemoTagger();
+    tagger=new BretonTagger();
   }
   return tagger;
 }

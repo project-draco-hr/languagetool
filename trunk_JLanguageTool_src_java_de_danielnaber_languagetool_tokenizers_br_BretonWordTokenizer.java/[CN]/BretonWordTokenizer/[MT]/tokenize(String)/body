@@ -1,9 +1,9 @@
 {
-  String replaced=text.replaceAll("([Cc])['???]([Hh])","$1##EO_APOS##$2");
+  String replaced=text.replaceAll("([Cc])['???]([Hh])","$1##BR_APOS##$2").replaceAll("(\\p{L})['???]","$1##BR_APOS## ");
   final List<String> tokenList=super.tokenize(replaced);
   final String[] tokens=tokenList.toArray(new String[tokenList.size()]);
   for (int i=0; i < tokens.length; i++) {
-    tokens[i]=tokens[i].replace("##EO_APOS##","???");
+    tokens[i]=tokens[i].replace("##BR_APOS##","???");
   }
   return Arrays.asList(tokens);
 }
