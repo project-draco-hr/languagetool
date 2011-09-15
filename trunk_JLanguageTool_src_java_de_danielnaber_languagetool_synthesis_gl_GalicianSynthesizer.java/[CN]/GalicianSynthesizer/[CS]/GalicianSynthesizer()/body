@@ -1,0 +1,3 @@
+{
+  super(JLanguageTool.getDataBroker().getResourceDir() + RESOURCE_FILENAME,JLanguageTool.getDataBroker().getResourceDir() + TAGS_FILE_NAME);
+}
