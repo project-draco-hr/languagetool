@@ -1,7 +1,7 @@
 {
-  if (xLinEvLis == null) {
+  if (eventListener == null) {
     return false;
   }
-  xEventListeners.add(xLinEvLis);
+  xEventListeners.add(eventListener);
   return true;
 }

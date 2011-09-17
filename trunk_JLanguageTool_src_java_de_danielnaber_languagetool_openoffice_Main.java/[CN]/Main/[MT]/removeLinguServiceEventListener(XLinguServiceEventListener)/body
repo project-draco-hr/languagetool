@@ -1,9 +1,9 @@
 {
-  if (xLinEvLis == null) {
+  if (eventListener == null) {
     return false;
   }
-  if (xEventListeners.contains(xLinEvLis)) {
-    xEventListeners.remove(xLinEvLis);
+  if (xEventListeners.contains(eventListener)) {
+    xEventListeners.remove(eventListener);
     return true;
   }
   return false;
