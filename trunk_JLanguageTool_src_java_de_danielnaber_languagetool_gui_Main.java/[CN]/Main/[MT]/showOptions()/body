@@ -9,7 +9,6 @@
   config.setMotherTongue(configDialog.getMotherTongue());
   config.setRunServer(configDialog.getRunServer());
   config.setServerPort(configDialog.getServerPort());
-  config.setAutoDetect(configDialog.getAutoDetect());
   stopServer();
   maybeStartServer();
 }

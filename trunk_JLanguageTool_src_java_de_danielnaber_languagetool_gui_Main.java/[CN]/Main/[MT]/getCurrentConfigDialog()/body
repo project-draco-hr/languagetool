@@ -12,7 +12,6 @@
     configDialog.setDisabledCategories(config.getDisabledCategoryNames());
     configDialog.setRunServer(config.getRunServer());
     configDialog.setServerPort(config.getServerPort());
-    configDialog.setAutoDetect(config.getAutoDetect());
     configDialogs.put(language,configDialog);
   }
   return configDialog;

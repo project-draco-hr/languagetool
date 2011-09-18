@@ -33,9 +33,6 @@
  else {
       motherTongue=(Language)motherTongueBox.getSelectedItem();
     }
-    if (autoDetectCheckbox != null) {
-      autoDetect=autoDetectCheckbox.isSelected();
-    }
     if (serverCheckbox != null) {
       serverMode=serverCheckbox.isSelected();
       serverPort=Integer.parseInt(serverPortField.getText());
