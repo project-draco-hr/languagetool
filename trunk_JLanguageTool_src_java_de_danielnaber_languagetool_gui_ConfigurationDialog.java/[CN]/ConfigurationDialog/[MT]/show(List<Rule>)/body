@@ -47,23 +47,7 @@
           inactiveCategoryNames.remove(rule.getCategory().getName());
         }
       }
-      final ActionListener ruleCheckBoxListener=new ActionListener(){
-        @Override public void actionPerformed(        final ActionEvent actionEvent){
-          final JCheckBox cBox=(JCheckBox)actionEvent.getSource();
-          final boolean selected=cBox.getModel().isSelected();
-          int i=0;
-          for (          final JCheckBox chBox : checkBoxes) {
-            if (chBox.equals(cBox)) {
-              final int catNo=checkBoxesCategoryNames.indexOf(checkBoxesCategories.get(i));
-              if (selected && !categoryCheckBoxes.get(catNo).isSelected()) {
-                categoryCheckBoxes.get(catNo).setSelected(true);
-              }
-            }
-            i++;
-          }
-        }
-      }
-;
+      final ActionListener ruleCheckBoxListener=makeRuleCheckboxListener();
       checkBox.addActionListener(ruleCheckBoxListener);
       checkBoxes.add(checkBox);
       checkBoxesRuleIds.add(rule.getId());
@@ -77,22 +61,7 @@
  else {
           categoryCheckBox.setSelected(true);
         }
-        final ActionListener categoryCheckBoxListener=new ActionListener(){
-          @Override public void actionPerformed(          final ActionEvent actionEvent){
-            final JCheckBox cBox=(JCheckBox)actionEvent.getSource();
-            final boolean selected=cBox.getModel().isSelected();
-            int i=0;
-            for (            final JCheckBox ruleBox : checkBoxes) {
-              if (ruleBox.isSelected() != selected) {
-                if (checkBoxesCategories.get(i).equals(cBox.getText())) {
-                  ruleBox.setSelected(selected);
-                }
-              }
-              i++;
-            }
-          }
-        }
-;
+        final ActionListener categoryCheckBoxListener=makeCategoryCheckboxListener();
         categoryCheckBox.addActionListener(categoryCheckBoxListener);
         categoryCheckBoxes.add(categoryCheckBox);
         checkBoxesCategoryNames.add(rule.getCategory().getName());

@@ -1,0 +1,19 @@
+{
+  return new ActionListener(){
+    @Override public void actionPerformed(    final ActionEvent actionEvent){
+      final JCheckBox cBox=(JCheckBox)actionEvent.getSource();
+      final boolean selected=cBox.getModel().isSelected();
+      int i=0;
+      for (      final JCheckBox chBox : checkBoxes) {
+        if (chBox.equals(cBox)) {
+          final int catNo=checkBoxesCategoryNames.indexOf(checkBoxesCategories.get(i));
+          if (selected && !categoryCheckBoxes.get(catNo).isSelected()) {
+            categoryCheckBoxes.get(catNo).setSelected(true);
+          }
+        }
+        i++;
+      }
+    }
+  }
+;
+}
