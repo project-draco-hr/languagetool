@@ -1,4 +1,4 @@
 {
   final BufferedReader br=new BufferedReader(new StringReader(content));
-  index(br,isSentence);
+  index(br,isSentence,docCount);
 }

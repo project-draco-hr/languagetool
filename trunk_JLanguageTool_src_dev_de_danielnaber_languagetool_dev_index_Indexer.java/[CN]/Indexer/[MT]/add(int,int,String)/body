@@ -1,5 +1,8 @@
 {
   final Document doc=new Document();
   doc.add(new Field(PatternRuleQueryBuilder.FIELD_NAME,sentence,Store.YES,Index.ANALYZED));
+  if (docCount != -1) {
+    doc.add(new Field("docCount",docCount + "",Store.YES,Index.NO));
+  }
   writer.addDocument(doc);
 }

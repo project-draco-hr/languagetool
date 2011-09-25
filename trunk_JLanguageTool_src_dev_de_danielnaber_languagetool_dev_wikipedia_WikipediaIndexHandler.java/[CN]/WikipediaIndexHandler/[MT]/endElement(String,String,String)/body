@@ -13,7 +13,7 @@
     try {
       final String textToCheck=textFilter.filter(text.toString());
       if (!textToCheck.contains("#REDIRECT") && !textToCheck.trim().equals("")) {
-        indexer.index(textToCheck,false);
+        indexer.index(textToCheck,false,articleCount);
       }
     }
  catch (    Exception e) {

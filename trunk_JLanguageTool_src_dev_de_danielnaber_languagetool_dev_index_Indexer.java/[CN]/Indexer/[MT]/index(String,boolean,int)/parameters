@@ -1,2 +1,3 @@
 String content
 boolean isSentence
+int docCount

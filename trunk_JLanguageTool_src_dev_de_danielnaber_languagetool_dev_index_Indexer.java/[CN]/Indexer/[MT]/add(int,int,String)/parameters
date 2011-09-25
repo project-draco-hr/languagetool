@@ -1,2 +1,3 @@
 int lineNo
+int docCount
 String sentence
