@@ -1,11 +1,12 @@
 {
   super();
   field=term.field();
-  regex=term.text();
   this.regexImpl=regexImpl;
   this.isPOS=isPOS;
-  regexImpl.compile(regex);
+  regexImpl.compile(term.text());
   pre=regexImpl.prefix();
-  if (pre == null)   pre="";
+  if (pre == null) {
+    pre="";
+  }
   setEnum(reader.terms(new Term(term.field(),pre)));
 }

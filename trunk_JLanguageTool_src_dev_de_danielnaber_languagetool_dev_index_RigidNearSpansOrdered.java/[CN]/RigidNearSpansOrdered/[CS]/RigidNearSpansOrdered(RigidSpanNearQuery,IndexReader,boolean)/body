@@ -4,7 +4,7 @@
   }
   this.collectPayloads=collectPayloads;
   allowedSlop=spanNearQuery.getSlop();
-  SpanQuery[] clauses=spanNearQuery.getClauses();
+  final SpanQuery[] clauses=spanNearQuery.getClauses();
   subSpans=new Spans[clauses.length];
   matchPayload=new LinkedList<byte[]>();
   subSpansByDoc=new Spans[clauses.length];

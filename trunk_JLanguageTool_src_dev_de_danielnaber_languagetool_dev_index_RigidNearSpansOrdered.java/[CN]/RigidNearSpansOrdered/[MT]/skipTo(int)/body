@@ -1,8 +1,8 @@
 {
   if (firstTime) {
     firstTime=false;
-    for (int i=0; i < subSpans.length; i++) {
-      if (!subSpans[i].skipTo(target)) {
+    for (    Spans subSpan : subSpans) {
+      if (!subSpan.skipTo(target)) {
         more=false;
         return false;
       }

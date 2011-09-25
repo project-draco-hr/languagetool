@@ -2,12 +2,12 @@
   SpanQuery q=null;
   if (token != null && !token.equals("")) {
     if (!isNegation) {
-      String text=isRegularExpression ? token : Pattern.quote(token);
+      final String text=isRegularExpression ? token : Pattern.quote(token);
       final Term term=new Term(FIELD_NAME,text);
       q=new POSAwaredSpanRegexQuery(term,true);
     }
  else {
-      String text=isRegularExpression ? token : Pattern.quote(token);
+      final String text=isRegularExpression ? token : Pattern.quote(token);
       final Term term=new Term(FIELD_NAME,text);
       q=new POSAwaredSpanRegexNotQuery(term,true);
     }

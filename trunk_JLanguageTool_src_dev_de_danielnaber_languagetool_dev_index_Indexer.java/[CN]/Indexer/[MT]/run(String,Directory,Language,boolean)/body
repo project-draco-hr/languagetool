@@ -1,4 +1,4 @@
 {
-  BufferedReader br=new BufferedReader(new StringReader(content));
+  final BufferedReader br=new BufferedReader(new StringReader(content));
   run(br,new Indexer(dir,language),isSentence);
 }
