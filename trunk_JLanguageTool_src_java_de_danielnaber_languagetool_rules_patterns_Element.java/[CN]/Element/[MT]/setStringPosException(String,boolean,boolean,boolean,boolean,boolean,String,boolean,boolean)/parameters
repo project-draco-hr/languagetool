@@ -4,3 +4,6 @@ boolean inflected
 boolean negation
 boolean scopeNext
 boolean scopePrevious
+String posToken
+boolean posRegExp
+boolean posNegation

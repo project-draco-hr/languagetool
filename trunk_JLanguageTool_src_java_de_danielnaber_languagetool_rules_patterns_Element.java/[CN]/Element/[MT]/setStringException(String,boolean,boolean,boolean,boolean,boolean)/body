@@ -1,6 +1,0 @@
-{
-  final Element stringException=new Element(token,this.caseSensitive,regExp,inflected);
-  stringException.setNegation(negation);
-  stringException.exceptionValidNext=scopeNext;
-  setException(stringException,scopePrevious);
-}

@@ -1,5 +1,0 @@
-String posToken
-boolean regExp
-boolean negation
-boolean scopeNext
-boolean scopePrevious

@@ -1,0 +1,7 @@
+{
+  final Element exception=new Element(token,this.caseSensitive,regExp,inflected);
+  exception.setNegation(negation);
+  exception.setPosElement(posToken,posRegExp,posNegation);
+  exception.exceptionValidNext=scopeNext;
+  setException(exception,scopePrevious);
+}
