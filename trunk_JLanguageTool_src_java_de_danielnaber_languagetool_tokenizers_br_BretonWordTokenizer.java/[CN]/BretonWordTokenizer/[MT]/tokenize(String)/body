@@ -6,7 +6,7 @@
   while (itr.hasNext()) {
     String word=itr.next().replace("##BR_APOS##","???");
     tokens.add(word);
-    if (word.endsWith("???")) {
+    if (!word.equals("???") && word.endsWith("???")) {
       word=itr.next();
     }
   }
