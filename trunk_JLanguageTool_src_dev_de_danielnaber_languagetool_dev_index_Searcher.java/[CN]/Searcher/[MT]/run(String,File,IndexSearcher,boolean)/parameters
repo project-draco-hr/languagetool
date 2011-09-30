@@ -1,5 +1,4 @@
 String ruleId
-InputStream ruleXMLStream
-String ruleXmlFile
+File ruleXmlFile
 IndexSearcher searcher
 boolean checkUnsupportedRule

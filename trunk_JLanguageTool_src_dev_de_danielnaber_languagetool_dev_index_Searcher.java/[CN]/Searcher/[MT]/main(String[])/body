@@ -1,5 +1,5 @@
 {
   ensureCorrectUsageOrExit(args);
   final Searcher searcher=new Searcher();
-  searcher.run(args[0],args[1],args[2]);
+  searcher.run(args[0],new File(args[1]),new File(args[2]));
 }
