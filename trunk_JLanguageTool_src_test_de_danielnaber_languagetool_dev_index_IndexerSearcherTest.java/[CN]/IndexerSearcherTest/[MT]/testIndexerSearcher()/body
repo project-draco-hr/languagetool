@@ -3,14 +3,18 @@
   Indexer.run(content,directory,Language.ENGLISH,false);
   searcher=new IndexSearcher(directory);
   Searcher errorSearcher=new Searcher();
-  TopDocs topDocs=errorSearcher.run("BACK_AND_FOURTH",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),"/en/grammar.xml",searcher,true);
-  assertEquals(1,topDocs.totalHits);
+  List<TopDocs> topDocs=errorSearcher.run("BACK_AND_FOURTH",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),"/en/grammar.xml",searcher,true);
+  assertEquals(1,topDocs.size());
+  assertEquals(1,topDocs.get(0).totalHits);
   topDocs=errorSearcher.run("BACK_AND_FOURTH",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),"/en/grammar.xml",searcher,false);
-  assertEquals(1,topDocs.totalHits);
+  assertEquals(1,topDocs.size());
+  assertEquals(1,topDocs.get(0).totalHits);
   topDocs=errorSearcher.run("ALL_OVER_THE_WORD",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),"/en/grammar.xml",searcher,true);
-  assertEquals(0,topDocs.totalHits);
+  assertEquals(1,topDocs.size());
+  assertEquals(0,topDocs.get(0).totalHits);
   topDocs=errorSearcher.run("ALL_OVER_THE_WORD",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),"/en/grammar.xml",searcher,false);
-  assertEquals(0,topDocs.totalHits);
+  assertEquals(1,topDocs.size());
+  assertEquals(0,topDocs.get(0).totalHits);
   try {
     errorSearcher.run("Invalid Rule Id",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),"/en/grammar.xml",searcher,true);
     fail("Exception should be thrown for invalid rule id.");
@@ -30,7 +34,8 @@
  catch (  IOException e) {
     assertTrue(e instanceof UnsupportedPatternRuleException);
     topDocs=errorSearcher.run("EYE_BROW",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),"/en/grammar.xml",searcher,false);
-    assertEquals(1,topDocs.totalHits);
+    assertEquals(1,topDocs.size());
+    assertEquals(1,topDocs.get(0).totalHits);
   }
   try {
     errorSearcher.run("ALL_FOR_NOT",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),"/en/grammar.xml",searcher,true);
@@ -38,6 +43,7 @@
   }
  catch (  UnsupportedPatternRuleException expected) {
     topDocs=errorSearcher.run("ALL_FOR_NOT",JLanguageTool.getDataBroker().getFromRulesDirAsStream("/en/grammar.xml"),"/en/grammar.xml",searcher,false);
-    assertEquals(0,topDocs.totalHits);
+    assertEquals(1,topDocs.size());
+    assertEquals(0,topDocs.get(0).totalHits);
   }
 }

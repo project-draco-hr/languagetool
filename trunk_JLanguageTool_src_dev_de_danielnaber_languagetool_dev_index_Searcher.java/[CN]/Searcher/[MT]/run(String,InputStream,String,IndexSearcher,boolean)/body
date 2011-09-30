@@ -2,15 +2,17 @@
   final PatternRuleLoader ruleLoader=new PatternRuleLoader();
   final List<PatternRule> rules=ruleLoader.getRules(ruleXMLStream,ruleXmlFile);
   ruleXMLStream.close();
-  PatternRule theRule=null;
+  boolean foundRule=false;
+  final List<TopDocs> topDocsList=new ArrayList<TopDocs>();
   for (  PatternRule rule : rules) {
     if (rule.getId().equals(ruleId)) {
-      theRule=rule;
-      break;
+      final TopDocs topDocs=run(rule,searcher,checkUnsupportedRule);
+      topDocsList.add(topDocs);
+      foundRule=true;
     }
   }
-  if (theRule == null) {
+  if (!foundRule) {
     throw new PatternRuleNotFoundException(ruleId);
   }
-  return run(theRule,searcher,checkUnsupportedRule);
+  return topDocsList;
 }

@@ -6,15 +6,17 @@
   }
   InputStream is=new FileInputStream(xml);
   final IndexSearcher searcher=new IndexSearcher(FSDirectory.open(new File(indexDir)));
-  TopDocs docs;
+  List<TopDocs> docsList;
   try {
-    docs=run(ruleId,is,ruleXmlFile,searcher,true);
+    docsList=run(ruleId,is,ruleXmlFile,searcher,true);
   }
  catch (  UnsupportedPatternRuleException e) {
     System.out.println(e.getMessage() + " Try to search potential matches:");
     is=new FileInputStream(xml);
-    docs=run(ruleId,is,ruleXmlFile,searcher,false);
+    docsList=run(ruleId,is,ruleXmlFile,searcher,false);
   }
-  printResult(docs,searcher);
+  for (  TopDocs topDocs : docsList) {
+    printResult(topDocs,searcher);
+  }
   searcher.close();
 }
