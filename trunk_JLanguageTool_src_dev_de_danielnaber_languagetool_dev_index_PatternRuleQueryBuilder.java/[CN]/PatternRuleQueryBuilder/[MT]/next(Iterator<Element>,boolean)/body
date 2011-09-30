@@ -3,7 +3,7 @@
     return null;
   }
   final Element patternElement=it.next();
-  SpanQuery tokenQuery=null;
+  SpanQuery tokenQuery;
   SpanQuery posQuery=null;
   try {
     checkUnsupportedRule(patternElement);

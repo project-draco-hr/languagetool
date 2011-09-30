@@ -5,15 +5,16 @@
   sb.append("</pattern> </rule> </category> </rules>");
   InputStream input=new ByteArrayInputStream(sb.toString().getBytes());
   final PatternRuleLoader ruleLoader=new PatternRuleLoader();
+  final PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder();
   List<PatternRule> rules=ruleLoader.getRules(input,"test.xml");
   try {
-    PatternRuleQueryBuilder.buildQuery(rules.get(0),true);
+    patternRuleQueryBuilder.buildQuery(rules.get(0),true);
     fail("Exception should be thrown for unsupported PatternRule");
   }
  catch (  UnsupportedPatternRuleException expected) {
   }
   try {
-    PatternRuleQueryBuilder.buildQuery(rules.get(0),false);
+    patternRuleQueryBuilder.buildQuery(rules.get(0),false);
   }
  catch (  UnsupportedPatternRuleException e) {
     fail("Exception should not be thrown, if not checkUnsupportedRule");
@@ -25,13 +26,13 @@
   input=new ByteArrayInputStream(sb.toString().getBytes());
   rules=ruleLoader.getRules(input,"test.xml");
   try {
-    PatternRuleQueryBuilder.buildQuery(rules.get(0),true);
+    patternRuleQueryBuilder.buildQuery(rules.get(0),true);
     fail("Exception should be thrown for unsupported PatternRule");
   }
  catch (  UnsupportedPatternRuleException expected) {
   }
   try {
-    PatternRuleQueryBuilder.buildQuery(rules.get(0),false);
+    patternRuleQueryBuilder.buildQuery(rules.get(0),false);
   }
  catch (  UnsupportedPatternRuleException e) {
     fail("Exception should not be thrown, if not checkUnsupportedRule");

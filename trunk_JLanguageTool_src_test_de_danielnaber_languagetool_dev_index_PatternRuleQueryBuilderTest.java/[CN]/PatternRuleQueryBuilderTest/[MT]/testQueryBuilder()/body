@@ -11,8 +11,9 @@
   final InputStream input=new ByteArrayInputStream(sb.toString().getBytes());
   final PatternRuleLoader ruleLoader=new PatternRuleLoader();
   final List<PatternRule> rules=ruleLoader.getRules(input,"test.xml");
-  final Query query1=PatternRuleQueryBuilder.buildQuery(rules.get(0),true);
-  final Query query2=PatternRuleQueryBuilder.buildQuery(rules.get(0),false);
+  final PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder();
+  final Query query1=patternRuleQueryBuilder.buildQuery(rules.get(0),true);
+  final Query query2=patternRuleQueryBuilder.buildQuery(rules.get(0),false);
   assertEquals(query1,query2);
   assertEquals(1,searcher.search(query1,null,1000).totalHits);
   assertEquals(1,searcher.search(query2,null,1000).totalHits);
