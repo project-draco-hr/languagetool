@@ -1,0 +1,10 @@
+{
+  final JLanguageTool languageTool=new JLanguageTool(Language.DEMO);
+  final List<PatternRule> patternRules=loadRules(xmlRuleFile);
+  for (  PatternRule patternRule : patternRules) {
+    if (ruleId.equals(patternRule.getId())) {
+      languageTool.addRule(patternRule);
+    }
+  }
+  return languageTool;
+}

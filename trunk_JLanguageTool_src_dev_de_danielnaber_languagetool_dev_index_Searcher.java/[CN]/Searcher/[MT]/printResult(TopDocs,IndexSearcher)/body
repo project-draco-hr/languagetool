@@ -1,9 +1,0 @@
-{
-  final ScoreDoc[] hits=docs.scoreDocs;
-  System.out.println("Search results: " + docs.totalHits);
-  for (int i=0; i < docs.totalHits; ) {
-    final Document doc=searcher.doc(hits[i].doc);
-    i++;
-    System.out.println(i + ": " + doc.get(PatternRuleQueryBuilder.FIELD_NAME));
-  }
-}

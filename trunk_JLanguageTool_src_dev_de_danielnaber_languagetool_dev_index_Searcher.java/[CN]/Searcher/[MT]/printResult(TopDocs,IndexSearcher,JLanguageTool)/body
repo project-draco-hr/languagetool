@@ -1,0 +1,25 @@
+{
+  final ScoreDoc[] hits=docs.scoreDocs;
+  if (languageTool != null) {
+    System.out.println("Potential search results: " + docs.totalHits);
+  }
+ else {
+    System.out.println("Search results: " + docs.totalHits);
+  }
+  for (int i=0; i < Math.min(docs.totalHits,MAX_HITS); ) {
+    final Document doc=searcher.doc(hits[i++].doc);
+    final String sentence=doc.get(PatternRuleQueryBuilder.FIELD_NAME);
+    if (languageTool != null) {
+      final List<RuleMatch> ruleMatches=languageTool.check(sentence);
+      if (ruleMatches.size() > 0) {
+        System.out.println(i + ": " + sentence);
+      }
+    }
+ else {
+      System.out.println(i + ": " + sentence);
+    }
+  }
+  if (docs.totalHits > MAX_HITS) {
+    System.out.println("NOTE: matches skipped due to maximum hit limit of " + MAX_HITS);
+  }
+}

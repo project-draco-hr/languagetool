@@ -1,23 +1,16 @@
 {
-  final PatternRuleLoader ruleLoader=new PatternRuleLoader();
   final List<TopDocs> topDocsList=new ArrayList<TopDocs>();
-  final InputStream xmlRulesStream=new FileInputStream(ruleXmlFile);
-  try {
-    final List<PatternRule> rules=ruleLoader.getRules(xmlRulesStream,ruleXmlFile.getAbsolutePath());
-    boolean foundRule=false;
-    for (    PatternRule rule : rules) {
-      if (rule.getId().equals(ruleId)) {
-        final TopDocs topDocs=run(rule,searcher,checkUnsupportedRule);
-        topDocsList.add(topDocs);
-        foundRule=true;
-      }
-    }
-    if (!foundRule) {
-      throw new PatternRuleNotFoundException(ruleId);
+  final List<PatternRule> rules=loadRules(xmlRuleFile);
+  boolean foundRule=false;
+  for (  PatternRule rule : rules) {
+    if (rule.getId().equals(ruleId)) {
+      final TopDocs topDocs=run(rule,searcher,checkUnsupportedRule);
+      topDocsList.add(topDocs);
+      foundRule=true;
     }
   }
-  finally {
-    xmlRulesStream.close();
+  if (!foundRule) {
+    throw new PatternRuleNotFoundException(ruleId);
   }
   return topDocsList;
 }
