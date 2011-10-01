@@ -15,6 +15,10 @@
  else {
       xCursorProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,xCursor.getText().createTextCursorByRange(xCursor.getStart()));
     }
+    final KhmerDetector khmerDetector=new KhmerDetector();
+    if (khmerDetector.isKhmer(xCursor.getText().getString())) {
+      return Language.KHMER;
+    }
     final Object obj=xCursorProps.getPropertyValue("CharLocale");
     if (obj == null) {
       return Language.ENGLISH;
