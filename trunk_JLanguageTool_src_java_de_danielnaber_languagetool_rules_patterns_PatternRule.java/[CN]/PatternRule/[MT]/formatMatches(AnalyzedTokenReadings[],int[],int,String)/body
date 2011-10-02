@@ -6,17 +6,17 @@
   int errLen=errorMessage.length();
   int errMarker=errorMessage.indexOf('\\');
   boolean numberFollows=false;
-  if (errMarker > 0 && errMarker < errLen - 1) {
+  if (errMarker >= 0 && errMarker < errLen - 1) {
     numberFollows=StringTools.isPositiveNumber(errorMessage.charAt(errMarker + 1));
   }
-  while (errMarker > 0 && numberFollows) {
-    final int ind=errorMessage.indexOf('\\');
-    if (ind > 0 && StringTools.isPositiveNumber(errorMessage.charAt(ind + 1))) {
+  while (errMarker >= 0 && numberFollows) {
+    final int backslashPos=errorMessage.indexOf('\\');
+    if (backslashPos >= 0 && StringTools.isPositiveNumber(errorMessage.charAt(backslashPos + 1))) {
       int numLen=1;
-      while (ind + numLen < errorMessage.length() && StringTools.isPositiveNumber(errorMessage.charAt(ind + numLen))) {
+      while (backslashPos + numLen < errorMessage.length() && StringTools.isPositiveNumber(errorMessage.charAt(backslashPos + numLen))) {
         numLen++;
       }
-      final int j=Integer.parseInt(errorMessage.substring(ind + 1,ind + numLen)) - 1;
+      final int j=Integer.parseInt(errorMessage.substring(backslashPos + 1,backslashPos + numLen)) - 1;
       int repTokenPos=0;
       int nextTokenPos=0;
       for (int l=0; l <= j; l++) {
@@ -30,8 +30,8 @@
           numbersToMatches[j]=matchCounter;
           if (suggestionMatches.get(matchCounter) != null) {
             final String[] matches=concatMatches(matchCounter,j,firstMatchTok + repTokenPos,tokenReadings,nextTokenPos);
-            final String leftSide=errorMessage.substring(0,ind);
-            final String rightSide=errorMessage.substring(ind + numLen);
+            final String leftSide=errorMessage.substring(0,backslashPos);
+            final String rightSide=errorMessage.substring(backslashPos + numLen);
             if (matches.length == 1) {
               errorMessage=leftSide + matches[0] + rightSide;
             }
@@ -53,7 +53,7 @@
     errMarker=errorMessage.indexOf('\\');
     numberFollows=false;
     errLen=errorMessage.length();
-    if (errMarker > 0 && errMarker < errLen - 1) {
+    if (errMarker >= 0 && errMarker < errLen - 1) {
       numberFollows=StringTools.isPositiveNumber(errorMessage.charAt(errMarker + 1));
     }
   }
