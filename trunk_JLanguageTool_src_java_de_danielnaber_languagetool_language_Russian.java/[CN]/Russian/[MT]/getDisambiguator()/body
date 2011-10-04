@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new RussianRuleDisambiguator();
+    disambiguator=new RussianHybridDisambiguator();
   }
   return disambiguator;
 }
