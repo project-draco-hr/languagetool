@@ -1,0 +1,3 @@
+{
+  return disambiguator.disambiguate(chunker.disambiguate(input));
+}
