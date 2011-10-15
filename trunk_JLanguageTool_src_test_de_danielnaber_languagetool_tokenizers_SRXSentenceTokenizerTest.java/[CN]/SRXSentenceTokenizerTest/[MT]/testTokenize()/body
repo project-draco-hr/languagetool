@@ -43,7 +43,7 @@
   TestTools.testSplit(new String[]{"He won't\n\n","Really."},stokenizer2);
   TestTools.testSplit(new String[]{"He won't\nReally."},stokenizer2);
   testSplit(new String[]{"James is from the Ireland!","He lives in Spain now."});
-  testSplit(new String[]{"Jones Bros. have built a succesful company."});
+  testSplit(new String[]{"Jones Bros. have built a successful company."});
   testSplit(new String[]{"It (really!) works."});
   testSplit(new String[]{"It [really!] works."});
   testSplit(new String[]{"It works (really!). ","No doubt."});
