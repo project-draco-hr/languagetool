@@ -1,4 +1,5 @@
 File propFile
+Set<String> disabledRules
 String language
 String textFilename
 String[] ruleIds

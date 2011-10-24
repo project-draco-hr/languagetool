@@ -2,7 +2,7 @@
   final String filename=file.getName();
   final String[] parts=filename.split("-");
   if (parts.length < 3) {
-    throw new IOException("Unexpected filename format: " + file.getName());
+    throw new IOException("Unexpected filename format: " + file.getName() + ". Must be like ??wiki-????????-pages-articles.xml");
   }
   final SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
   try {

@@ -1,0 +1,7 @@
+{
+  final String disabledRulesString=(String)disabledRules.get(languageCode);
+  if (disabledRulesString != null) {
+    final String[] ids=disabledRulesString.split(",");
+    disabledRuleIds.addAll(Arrays.asList(ids));
+  }
+}

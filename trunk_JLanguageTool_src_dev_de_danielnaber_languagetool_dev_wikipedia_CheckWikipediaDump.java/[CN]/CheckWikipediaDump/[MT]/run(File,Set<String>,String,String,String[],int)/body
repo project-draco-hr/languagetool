@@ -14,7 +14,7 @@
     enableSpecifiedRules(ruleIds,languageTool);
   }
  else {
-    enableDefaultRules(languageTool);
+    applyRuleDeactivation(languageTool,disabledRules);
   }
   final Date dumpDate=getDumpFileDate(file);
   System.out.println("Dump date: " + dumpDate + ", language: "+ language);

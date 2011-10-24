@@ -8,13 +8,25 @@
       throw new IOException("File not found or isn't a file: " + propFile.getAbsolutePath());
     }
   }
+  final String languageCode=args[2];
+  final Set<String> disabledRuleIds=new HashSet<String>();
+  if (!"-".equals(args[1])) {
+    final File disabledRulesPropFile=new File(args[1]);
+    if (!disabledRulesPropFile.exists() || disabledRulesPropFile.isDirectory()) {
+      throw new IOException("File not found or isn't a file: " + disabledRulesPropFile.getAbsolutePath());
+    }
+    final Properties disabledRules=new Properties();
+    disabledRules.load(new FileInputStream(disabledRulesPropFile));
+    addDisabledRules("all",disabledRuleIds,disabledRules);
+    addDisabledRules(languageCode,disabledRuleIds,disabledRules);
+  }
   int maxArticles=0;
-  if (args.length == 5) {
+  if (args.length == 6) {
     maxArticles=Integer.parseInt(args[4]);
   }
   String[] ruleIds=null;
-  if (!"-".equals(args[3])) {
-    ruleIds=args[3].split(",");
+  if (!"-".equals(args[4])) {
+    ruleIds=args[4].split(",");
   }
-  prg.run(propFile,args[1],args[2],ruleIds,maxArticles);
+  prg.run(propFile,disabledRuleIds,languageCode,args[3],ruleIds,maxArticles);
 }
