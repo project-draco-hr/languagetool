@@ -1,0 +1,3 @@
+{
+  return "Zwei aufeinander folgende Punkte. Auch wenn ein Satz mit einer Abk??rzung endet, " + "endet er nur mit einem Punkt (??103 Regelwerk).";
+}

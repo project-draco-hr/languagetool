@@ -21,17 +21,15 @@
       startPos=tokens[i].getStartPos();
     }
     if (dotCount == 2 && !".".equals(nextToken)) {
-      final String msg=messages.getString("two_dots");
       final int fromPos=Math.max(0,startPos - 1);
-      final RuleMatch ruleMatch=new RuleMatch(this,fromPos,startPos + 1,msg,messages.getString("double_dots_short"));
+      final RuleMatch ruleMatch=new RuleMatch(this,fromPos,startPos + 1,getDotMessage(),messages.getString("double_dots_short"));
       ruleMatch.setSuggestedReplacement(".");
       ruleMatches.add(ruleMatch);
       dotCount=0;
     }
  else     if (commaCount == 2 && !",".equals(nextToken)) {
-      final String msg=messages.getString("two_commas");
       final int fromPos=Math.max(0,startPos);
-      final RuleMatch ruleMatch=new RuleMatch(this,fromPos,startPos + 1,msg,messages.getString("double_commas_short"));
+      final RuleMatch ruleMatch=new RuleMatch(this,fromPos,startPos + 1,getCommaMessage(),messages.getString("double_commas_short"));
       ruleMatch.setSuggestedReplacement(",");
       ruleMatches.add(ruleMatch);
       commaCount=0;
