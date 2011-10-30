@@ -3,7 +3,7 @@
   this.stdout=System.out;
   this.stderr=System.err;
   this.out=new ByteArrayOutputStream();
-  this.err=new ByteArrayOutputStream();
+  final ByteArrayOutputStream err=new ByteArrayOutputStream();
   System.setOut(new PrintStream(this.out));
-  System.setErr(new PrintStream(this.err));
+  System.setErr(new PrintStream(err));
 }

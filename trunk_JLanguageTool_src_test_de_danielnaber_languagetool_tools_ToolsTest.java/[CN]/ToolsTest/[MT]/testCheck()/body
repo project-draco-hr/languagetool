@@ -8,6 +8,6 @@
   assertEquals(0,matches);
   matches=Tools.checkText("To jest jest problem.",tool);
   output=new String(this.out.toByteArray());
-  assertTrue(output.indexOf("Rule ID: WORD_REPEAT_RULE") != -1);
+  assertTrue(output.contains("Rule ID: WORD_REPEAT_RULE"));
   assertEquals(1,matches);
 }

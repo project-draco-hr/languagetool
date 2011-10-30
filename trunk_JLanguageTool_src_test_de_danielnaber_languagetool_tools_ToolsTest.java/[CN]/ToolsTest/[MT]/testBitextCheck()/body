@@ -9,6 +9,6 @@
   assertEquals(0,matches);
   matches=Tools.checkBitext("This is not actual.","To nie jest aktualne.",srcTool,trgTool,rules,false,StringTools.XmlPrintMode.NORMAL_XML);
   output=new String(this.out.toByteArray());
-  assertTrue(output.indexOf("Rule ID: ACTUAL") != -1);
+  assertTrue(output.contains("Rule ID: ACTUAL"));
   assertEquals(1,matches);
 }
