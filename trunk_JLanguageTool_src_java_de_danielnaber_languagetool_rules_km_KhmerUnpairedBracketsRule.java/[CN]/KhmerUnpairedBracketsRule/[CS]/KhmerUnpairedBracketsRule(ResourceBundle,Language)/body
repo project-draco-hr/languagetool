@@ -1,0 +1,6 @@
+{
+  super(messages,language);
+  startSymbols=KM_START_SYMBOLS;
+  endSymbols=KM_END_SYMBOLS;
+  uniqueMapInit();
+}
