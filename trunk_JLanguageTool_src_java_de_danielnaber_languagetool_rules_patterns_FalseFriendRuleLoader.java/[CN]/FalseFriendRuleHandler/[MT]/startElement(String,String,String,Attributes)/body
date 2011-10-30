@@ -19,32 +19,6 @@
       throw new SAXException("Unknown language '" + languageStr + "'");
     }
   }
- else   if (qName.equals(EXCEPTION)) {
-    inException=true;
-    exceptions=new StringBuilder();
-    if (attrs.getValue(NEGATE) != null) {
-      exceptionStringNegation=attrs.getValue(NEGATE).equals(YES);
-    }
-    if (attrs.getValue(SCOPE) != null) {
-      exceptionValidNext=attrs.getValue(SCOPE).equals("next");
-      exceptionValidPrev=attrs.getValue(SCOPE).equals("previous");
-    }
-    if (attrs.getValue(INFLECTED) != null) {
-      exceptionStringInflected=attrs.getValue(INFLECTED).equals(YES);
-    }
-    if (attrs.getValue(POSTAG) != null) {
-      exceptionPosToken=attrs.getValue(POSTAG);
-      if (attrs.getValue(POSTAG_REGEXP) != null) {
-        exceptionPosRegExp=attrs.getValue(POSTAG_REGEXP).equals(YES);
-      }
-      if (attrs.getValue(NEGATE_POS) != null) {
-        exceptionPosNegation=attrs.getValue(NEGATE_POS).equals(YES);
-      }
-    }
-    if (attrs.getValue(REGEXP) != null) {
-      exceptionStringRegExp=attrs.getValue(REGEXP).equals(YES);
-    }
-  }
  else   if (qName.equals(TOKEN)) {
     setToken(attrs);
   }

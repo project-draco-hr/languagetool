@@ -17,17 +17,6 @@
       elementList.clear();
     }
   }
- else   if (qName.equals(EXCEPTION)) {
-    inException=false;
-    if (!exceptionSet) {
-      tokenElement=new Element(elements.toString(),caseSensitive,regExpression,tokenInflected);
-      exceptionSet=true;
-    }
-    tokenElement.setNegation(tokenNegated);
-    if (!StringTools.isEmpty(exceptions.toString()) || exceptionPosToken != null) {
-      tokenElement.setStringPosException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev,exceptionPosToken,exceptionPosRegExp,exceptionPosNegation);
-    }
-  }
  else   if (qName.equals(TOKEN)) {
     finalizeTokens();
   }
