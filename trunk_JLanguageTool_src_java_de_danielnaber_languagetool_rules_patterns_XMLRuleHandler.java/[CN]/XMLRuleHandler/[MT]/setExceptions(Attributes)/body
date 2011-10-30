@@ -14,6 +14,6 @@
   exceptionStringRegExp=YES.equals(attrs.getValue(REGEXP));
   if (attrs.getValue(SPACEBEFORE) != null) {
     exceptionSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
-    exceptionSpaceBeforeSet=!"ignore".equals(attrs.getValue(SPACEBEFORE));
+    exceptionSpaceBeforeSet=!IGNORE.equals(attrs.getValue(SPACEBEFORE));
   }
 }
