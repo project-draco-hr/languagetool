@@ -1,5 +1,5 @@
 {
-  if (qName.equals("rule")) {
+  if (qName.equals(RULE)) {
     if (language == textLanguage && translationLanguage != null && translationLanguage == motherTongue && language != motherTongue && !translations.isEmpty()) {
       formatter.applyPattern(messages.getString("false_friend_hint"));
       final Object[] messageArguments={StringUtils.join(elementList," ").replace('|','/'),messages.getString(textLanguage.getShortName()),formatTranslations(translations),messages.getString(motherTongue.getShortName())};
@@ -17,7 +17,7 @@
       elementList.clear();
     }
   }
- else   if (qName.equals("exception")) {
+ else   if (qName.equals(EXCEPTION)) {
     inException=false;
     if (!exceptionSet) {
       tokenElement=new Element(elements.toString(),caseSensitive,regExpression,tokenInflected);
@@ -31,10 +31,10 @@
  else   if (qName.equals(TOKEN)) {
     finalizeTokens();
   }
- else   if (qName.equals("pattern")) {
+ else   if (qName.equals(PATTERN)) {
     inPattern=false;
   }
- else   if (qName.equals("translation")) {
+ else   if (qName.equals(TRANSLATION)) {
     if (currentTranslationLanguage == motherTongue) {
       translations.add(translation);
     }
@@ -57,10 +57,10 @@
     correctExample=new StringBuilder();
     incorrectExample=new StringBuilder();
   }
- else   if (qName.equals("message")) {
+ else   if (qName.equals(MESSAGE)) {
     inMessage=false;
   }
- else   if (qName.equals("rulegroup")) {
+ else   if (qName.equals(RULEGROUP)) {
     if (!suggestions.isEmpty()) {
       final List<String> l=new ArrayList<String>(suggestions);
       suggestionMap.put(id,l);

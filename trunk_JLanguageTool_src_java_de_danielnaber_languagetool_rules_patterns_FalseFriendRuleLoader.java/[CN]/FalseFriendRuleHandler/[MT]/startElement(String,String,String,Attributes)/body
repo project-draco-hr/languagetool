@@ -1,5 +1,5 @@
 {
-  if (qName.equals("rule")) {
+  if (qName.equals(RULE)) {
     translations=new ArrayList<StringBuilder>();
     id=attrs.getValue("id");
     if (!(inRuleGroup && defaultOff)) {
@@ -11,7 +11,7 @@
     correctExamples=new ArrayList<String>();
     incorrectExamples=new ArrayList<IncorrectExample>();
   }
- else   if (qName.equals("pattern")) {
+ else   if (qName.equals(PATTERN)) {
     inPattern=true;
     final String languageStr=attrs.getValue("lang");
     language=Language.getLanguageForShortName(languageStr);
@@ -19,7 +19,7 @@
       throw new SAXException("Unknown language '" + languageStr + "'");
     }
   }
- else   if (qName.equals("exception")) {
+ else   if (qName.equals(EXCEPTION)) {
     inException=true;
     exceptions=new StringBuilder();
     if (attrs.getValue(NEGATE) != null) {
@@ -48,7 +48,7 @@
  else   if (qName.equals(TOKEN)) {
     setToken(attrs);
   }
- else   if (qName.equals("translation")) {
+ else   if (qName.equals(TRANSLATION)) {
     inTranslation=true;
     final String languageStr=attrs.getValue("lang");
     final Language tmpLang=Language.getLanguageForShortName(languageStr);
@@ -68,11 +68,11 @@
     inIncorrectExample=true;
     incorrectExample=new StringBuilder();
   }
- else   if (qName.equals("message")) {
+ else   if (qName.equals(MESSAGE)) {
     inMessage=true;
     message=new StringBuilder();
   }
- else   if (qName.equals("rulegroup")) {
+ else   if (qName.equals(RULEGROUP)) {
     ruleGroupId=attrs.getValue("id");
     inRuleGroup=true;
     defaultOff="off".equals(attrs.getValue(DEFAULT));
