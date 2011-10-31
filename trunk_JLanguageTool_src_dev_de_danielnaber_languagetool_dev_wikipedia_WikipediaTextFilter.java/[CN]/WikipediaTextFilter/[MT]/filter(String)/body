@@ -1,5 +1,7 @@
 {
   final WikiModel wikiModel=new WikiModel("${image}","${title}");
+  s=s.replaceAll("\\[\\[Datei:.*?\\[\\[.*?\\]\\].*?\\]\\]","");
+  s=s.replaceAll("\\[\\[Datei:.*?\\]\\]","");
   s=wikiModel.render(s);
   s=s.replaceAll("\\{\\{.*?\\}\\}","");
   s=s.replaceAll("</p>","\n\n");
@@ -10,5 +12,5 @@
   s=s.replaceAll("<.*?>","");
   s=s.replaceAll("\n\n*","\n\n");
   s=StringEscapeUtils.unescapeHtml(s);
-  return s;
+  return s.trim();
 }
