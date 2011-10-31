@@ -1,0 +1,4 @@
+{
+  final InputStream contentStream=(InputStream)wikipediaUrl.getContent();
+  return StringTools.streamToString(contentStream);
+}

@@ -1,0 +1,5 @@
+{
+  if (!wikipediaUrl.toString().matches("http://..\\.wikipedia\\.org/wiki/.*")) {
+    throw new RuntimeException("URL does not seem to be a Wikipedia URL: " + wikipediaUrl);
+  }
+}
