@@ -1,0 +1,11 @@
+{
+  final int fromPos=completeWikiContent.indexOf("<rev ");
+  final int toPos=completeWikiContent.indexOf("</rev>");
+  if (fromPos == -1 || toPos == -1) {
+    throw new RuntimeException("Sorry, no content found in article at " + apiUrl);
+  }
+  final String wikiContent=completeWikiContent.substring(completeWikiContent.indexOf(">",fromPos),toPos);
+  final WikipediaTextFilter filter=new WikipediaTextFilter();
+  final String plainText=filter.filter(wikiContent).replace("&nbsp;"," ");
+  return plainText;
+}

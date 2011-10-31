@@ -11,27 +11,16 @@
     throw new RuntimeException("URL does not seem to be a valid URL: " + wikipediaUrl.toString(),e);
   }
   final Language lang=Language.getLanguageForShortName(shortLangName);
-  if (lang != Language.GERMAN) {
-    throw new RuntimeException("Sorry, only German is support for now");
-  }
   if (lang == null) {
     throw new RuntimeException("Language '" + shortLangName + "' is not supported by LanguageTool");
   }
+  if (lang != Language.GERMAN) {
+    throw new RuntimeException("Sorry, only German is support for now");
+  }
   final String apiUrl="http://" + lang.getShortName() + ".wikipedia.org/w/api.php?titles="+ pageTitle+ "&action=query&prop=revisions&rvprop=content&format=xml";
   final String completeWikiContent=getContent(new URL(apiUrl));
-  final int fromPos=completeWikiContent.indexOf("<rev ");
-  final int toPos=completeWikiContent.indexOf("</rev>");
-  if (fromPos == -1 || toPos == -1) {
-    throw new RuntimeException("Sorry, no content found in article at " + apiUrl);
-  }
-  final String wikiContent=completeWikiContent.substring(completeWikiContent.indexOf(">",fromPos),toPos);
-  final WikipediaTextFilter filter=new WikipediaTextFilter();
-  final String plainText=filter.filter(wikiContent).replace("&nbsp;"," ");
-  final JLanguageTool langTool=new JLanguageTool(lang);
-  langTool.activateDefaultPatternRules();
-  for (  String disabledRuleId : disabledRuleIds) {
-    langTool.disableRule(disabledRuleId);
-  }
+  final String plainText=getFilteredWikiContent(apiUrl,completeWikiContent);
+  final JLanguageTool langTool=getLanguageTool(lang);
   final List<RuleMatch> ruleMatches=langTool.check(plainText);
   return new WikipediaQuickCheckResult(plainText,ruleMatches,lang.getShortName());
 }
