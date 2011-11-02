@@ -1,3 +1,3 @@
 {
-  return new Contributor[]{new Contributor("Jan Schreiber"),Contributors.DANIEL_NABER};
+  return new Contributor[]{new Contributor("Jan Schreiber"),new Contributor("Markus Brenneis"),Contributors.DANIEL_NABER};
 }
