@@ -9,6 +9,7 @@
  else {
     aError.aShortComment=aError.aFullComment;
   }
+  aError.aShortComment=shortenComment(aError.aShortComment);
   aError.aSuggestions=myMatch.getSuggestedReplacements().toArray(new String[myMatch.getSuggestedReplacements().size()]);
   aError.nErrorStart=myMatch.getFromPos() + startIndex;
   aError.nErrorLength=myMatch.getToPos() - myMatch.getFromPos();
