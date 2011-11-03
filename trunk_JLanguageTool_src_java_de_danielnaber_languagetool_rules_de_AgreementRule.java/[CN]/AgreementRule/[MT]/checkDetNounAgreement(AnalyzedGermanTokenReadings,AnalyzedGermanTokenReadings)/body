@@ -1,7 +1,4 @@
 {
-  if (token1.getToken().equalsIgnoreCase("ihm")) {
-    return null;
-  }
   RuleMatch ruleMatch=null;
   final Set<String> set1=getAgreementCategories(token1);
   if (set1 == null) {
