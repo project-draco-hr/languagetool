@@ -2,25 +2,11 @@
   final AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[pos];
   boolean relevantPronoun=analyzedToken.hasReadingOfType(POSType.PRONOMEN);
   final String token=tokens[pos].getToken();
-  if (pos > 0 && tokens[pos - 1].getToken().equalsIgnoreCase("vor") && tokens[pos].getToken().equalsIgnoreCase("allem"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("er") || token.equalsIgnoreCase("sie") || token.equalsIgnoreCase("es"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("ihm"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("ich"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("du"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("dessen"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("deren"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("sich"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("unser"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("aller"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("man"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("beide"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("beiden"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("beider"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("wessen"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("a"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("alle"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("etwas"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("was"))   relevantPronoun=false;
- else   if (token.equalsIgnoreCase("wer"))   relevantPronoun=false;
+  if (pos > 0 && tokens[pos - 1].getToken().equalsIgnoreCase("vor") && tokens[pos].getToken().equalsIgnoreCase("allem")) {
+    relevantPronoun=false;
+  }
+ else   if (PRONOUNS_TO_BE_IGNORED.contains(token.toLowerCase())) {
+    relevantPronoun=false;
+  }
   return relevantPronoun;
 }
