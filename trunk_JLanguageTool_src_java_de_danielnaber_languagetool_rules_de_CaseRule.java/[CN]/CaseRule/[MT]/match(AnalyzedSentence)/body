@@ -13,6 +13,9 @@
       }
       continue;
     }
+    if (i > 0 && (tokens[i - 1].getToken().equals("Herr") || tokens[i - 1].getToken().equals("Herrn") || tokens[i - 1].getToken().equals("Frau"))) {
+      continue;
+    }
     final AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[i];
     final String token=analyzedToken.getToken();
     List<AnalyzedGermanToken> readings=analyzedToken.getGermanReadings();
