@@ -4,8 +4,8 @@
   if (fromPos == -1 || toPos == -1) {
     throw new RuntimeException("Sorry, no content found in article at " + apiUrl);
   }
-  final String wikiContent=completeWikiContent.substring(completeWikiContent.indexOf(">",fromPos),toPos);
-  final WikipediaTextFilter filter=new WikipediaTextFilter();
-  final String plainText=filter.filter(wikiContent).replace("&nbsp;"," ");
+  final String wikiContent=completeWikiContent.substring(completeWikiContent.indexOf(">",fromPos) + 1,toPos);
+  final TextFilter filter=new SwebleWikipediaTextFilter();
+  final String plainText=filter.filter(wikiContent).replace("nbsp;"," ");
   return plainText;
 }

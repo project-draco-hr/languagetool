@@ -1,7 +1,7 @@
 {
-  final WikipediaTextFilter textFilter;
+  final BlikiWikipediaTextFilter textFilter;
   if (Language.ROMANIAN == lang) {
-    textFilter=new WikipediaTextFilter(){
+    textFilter=new BlikiWikipediaTextFilter(){
       @Override public String filter(      String arg0){
         final String tmp=super.filter(arg0);
         return RomanianDiacriticsModifier.correctDiacritrics(tmp);
@@ -10,7 +10,7 @@
 ;
   }
  else {
-    textFilter=new WikipediaTextFilter();
+    textFilter=new BlikiWikipediaTextFilter();
   }
   return textFilter;
 }

@@ -1,0 +1,4 @@
+{
+  final String input="foo [[Target|visible link]] bar";
+  assertEquals("foo visible link bar",swebleFilter.filter(input));
+}
