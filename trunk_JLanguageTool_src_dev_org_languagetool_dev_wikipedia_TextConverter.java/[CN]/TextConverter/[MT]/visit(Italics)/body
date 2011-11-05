@@ -1,5 +1,3 @@
 {
-  write("//");
   iterate(i.getContent());
-  write("//");
 }

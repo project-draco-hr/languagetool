@@ -23,8 +23,6 @@
   }
   newline(2);
   write(title);
-  newline(1);
-  write(StringUtils.strrep('-',title.length()));
   newline(2);
   noWrap=saveNoWrap;
   iterate(s.getBody());
