@@ -1,0 +1,3 @@
+{
+  write(Character.toChars(cr.getCodePoint()));
+}

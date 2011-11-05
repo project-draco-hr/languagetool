@@ -1,0 +1,8 @@
+{
+  if (e.getName().equalsIgnoreCase("br")) {
+    newline(1);
+  }
+ else {
+    iterate(e.getBody());
+  }
+}

@@ -1,0 +1,11 @@
+{
+  String ch=EntityReferences.resolve(er.getName());
+  if (ch == null) {
+    write('&');
+    write(er.getName());
+    write(';');
+  }
+ else {
+    write(ch);
+  }
+}

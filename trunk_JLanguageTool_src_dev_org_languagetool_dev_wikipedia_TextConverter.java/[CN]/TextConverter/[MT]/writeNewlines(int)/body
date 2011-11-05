@@ -1,0 +1,6 @@
+{
+  finishLine();
+  sb.append(StringUtils.strrep('\n',num));
+  needNewlines=0;
+  needSpace=false;
+}

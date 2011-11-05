@@ -1,0 +1,5 @@
+{
+  write("**");
+  iterate(b.getContent());
+  write("**");
+}
