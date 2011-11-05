@@ -18,7 +18,7 @@
 );
     }
  else     if (args.length >= 1) {
-      System.out.println("Usage: java de.danielnaber.languagetool.gui.Main [-t|--tray]");
+      System.out.println("Usage: java org.languagetool.gui.Main [-t|--tray]");
       System.out.println("  -t, --tray: dock LanguageTool to system tray on startup");
       prg.stopServer();
     }

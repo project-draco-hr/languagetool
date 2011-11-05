@@ -1,4 +1,4 @@
 {
-  System.out.println("Usage: java de.danielnaber.languagetool.tools.RuleConverterMain " + "[-h|--help] [-g|--generalFiletype] [-s|--specificFiletype] [-i|--inputFile] [-a|--disambigFile] " + "[-d|--discardFile] [-o|--outputFile]");
+  System.out.println("Usage: java org.languagetool.tools.RuleConverterMain " + "[-h|--help] [-g|--generalFiletype] [-s|--specificFiletype] [-i|--inputFile] [-a|--disambigFile] " + "[-d|--discardFile] [-o|--outputFile]");
   System.exit(1);
 }

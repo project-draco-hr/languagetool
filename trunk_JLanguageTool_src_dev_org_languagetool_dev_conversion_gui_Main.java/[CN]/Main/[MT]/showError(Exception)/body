@@ -1,5 +1,5 @@
 {
-  final String msg=de.danielnaber.languagetool.tools.Tools.getFullStackTrace(e);
+  final String msg=org.languagetool.tools.Tools.getFullStackTrace(e);
   JOptionPane.showMessageDialog(null,msg,"Error",JOptionPane.ERROR_MESSAGE);
   e.printStackTrace();
 }

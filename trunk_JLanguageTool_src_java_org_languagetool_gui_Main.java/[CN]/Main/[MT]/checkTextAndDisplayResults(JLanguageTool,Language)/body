@@ -22,7 +22,7 @@
     }
  catch (    final Exception e) {
       sb.append("<br><br><b><font color=\"red\">");
-      sb.append(de.danielnaber.languagetool.tools.Tools.getFullStackTrace(e).replace("\n","<br/>"));
+      sb.append(org.languagetool.tools.Tools.getFullStackTrace(e).replace("\n","<br/>"));
       sb.append("</font></b><br>");
     }
     final String checkDone=Tools.makeTexti18n(messages,"checkDone",new Object[]{matches});

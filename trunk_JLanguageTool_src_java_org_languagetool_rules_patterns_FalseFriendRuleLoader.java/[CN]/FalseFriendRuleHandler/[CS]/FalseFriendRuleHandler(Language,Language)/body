@@ -1,5 +1,5 @@
 {
-  messages=ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",motherTongue.getLocale());
+  messages=ResourceBundle.getBundle("org.languagetool.MessagesBundle",motherTongue.getLocale());
   formatter=new MessageFormat("");
   formatter.setLocale(motherTongue.getLocale());
   this.textLanguage=textLanguage;

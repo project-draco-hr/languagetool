@@ -1,10 +1,10 @@
 {
   try {
-    final ResourceBundle bundle=ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",lang.getLocale());
-    final ResourceBundle fallbackBundle=ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",Locale.ENGLISH);
+    final ResourceBundle bundle=ResourceBundle.getBundle("org.languagetool.MessagesBundle",lang.getLocale());
+    final ResourceBundle fallbackBundle=ResourceBundle.getBundle("org.languagetool.MessagesBundle",Locale.ENGLISH);
     return new ResourceBundleWithFallback(bundle,fallbackBundle);
   }
  catch (  final MissingResourceException e) {
-    return ResourceBundle.getBundle("de.danielnaber.languagetool.MessagesBundle",Locale.ENGLISH);
+    return ResourceBundle.getBundle("org.languagetool.MessagesBundle",Locale.ENGLISH);
   }
 }
