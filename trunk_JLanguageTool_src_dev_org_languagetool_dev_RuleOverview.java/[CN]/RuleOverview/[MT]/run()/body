@@ -60,7 +60,7 @@
       System.out.print("<td valign=\"top\" align=\"right\">" + (count + countInRuleGroup) + " ("+ "<a href=\"http://languagetool.svn.sourceforge.net/viewvc/languagetool/trunk/JLanguageTool/src/rules/"+ lang.getShortName()+ "/grammar.xml?content-type=text%2Fplain"+ "\">show</a>/"+ "<a href=\"http://community.languagetool.org/rule/list?lang="+ lang.getShortName()+ "\">browse</a>"+ ")</td>");
     }
     System.out.print("<td></td>");
-    final File dir=new File("src/java/de/danielnaber/languagetool" + JLanguageTool.getDataBroker().getRulesDir() + "/"+ lang.getShortName());
+    final File dir=new File("src/java/org/languagetool" + JLanguageTool.getDataBroker().getRulesDir() + "/"+ lang.getShortName());
     if (!dir.exists()) {
       System.out.print("<td valign=\"top\" align=\"right\">0</td>");
     }
