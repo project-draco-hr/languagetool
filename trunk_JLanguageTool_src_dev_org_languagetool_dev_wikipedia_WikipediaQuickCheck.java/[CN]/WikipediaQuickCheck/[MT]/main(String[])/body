@@ -1,6 +1,6 @@
 {
   final WikipediaQuickCheck check=new WikipediaQuickCheck();
-  final String url="http://de.wikipedia.org/wiki/Benutzer_Diskussion:Dnaber";
+  final String url="http://de.wikipedia.org/wiki/Wortschatz";
   final WikipediaQuickCheckResult checkResult=check.checkPage(new URL(url));
   for (  RuleMatch ruleMatch : checkResult.getRuleMatches()) {
     System.out.println(ruleMatch.getMessage());

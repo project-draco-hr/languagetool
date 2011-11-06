@@ -1,0 +1,6 @@
+{
+  final String wikiContent=getRevisionContent(completeWikiContent);
+  final TextFilter filter=new SwebleWikipediaTextFilter();
+  final String plainText=filter.filter(wikiContent);
+  return plainText;
+}

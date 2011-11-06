@@ -1,0 +1,6 @@
+{
+  final String s=new String(buf,offset,len);
+  if (inRevision) {
+    revisionText.append(s);
+  }
+}

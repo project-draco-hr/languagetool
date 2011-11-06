@@ -19,7 +19,7 @@
   }
   final String apiUrl="http://" + lang.getShortName() + ".wikipedia.org/w/api.php?titles="+ pageTitle+ "&action=query&prop=revisions&rvprop=content&format=xml";
   final String completeWikiContent=getContent(new URL(apiUrl));
-  final String plainText=getFilteredWikiContent(apiUrl,completeWikiContent);
+  final String plainText=getFilteredWikiContent(completeWikiContent);
   final JLanguageTool langTool=getLanguageTool(lang);
   final List<RuleMatch> ruleMatches=langTool.check(plainText);
   return new WikipediaQuickCheckResult(plainText,ruleMatches,lang.getShortName());
