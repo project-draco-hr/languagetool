@@ -1,0 +1,17 @@
+{
+  try {
+    final URL res=JLanguageTool.class.getResource(JLanguageTool.class.getSimpleName() + ".class");
+    final Object connObj=res.openConnection();
+    if (connObj instanceof JarURLConnection) {
+      final JarURLConnection conn=(JarURLConnection)connObj;
+      final Manifest manifest=conn.getManifest();
+      return manifest.getMainAttributes().getValue("Implementation-Date");
+    }
+ else {
+      return null;
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Could not get build date from JAR",e);
+  }
+}
