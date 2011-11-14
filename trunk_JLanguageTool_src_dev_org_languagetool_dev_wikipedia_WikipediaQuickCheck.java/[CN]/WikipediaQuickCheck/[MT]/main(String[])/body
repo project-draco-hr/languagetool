@@ -1,11 +1,10 @@
 {
   final WikipediaQuickCheck check=new WikipediaQuickCheck();
-  final String urlString="http://de.wikipedia.org/wiki/Benutzer_Diskussion:Dnaber";
+  final String urlString="http://de.wikipedia.org/wiki/Wortschatz";
   final URL url=new URL(urlString);
-  final String language=check.getLanguage(url);
   final String mediaWikiContent=check.getMediaWikiContent(url);
   final String plainText=check.getPlainText(mediaWikiContent);
-  final WikipediaQuickCheckResult checkResult=check.checkPage(plainText,Language.getLanguageForShortName(language));
+  final WikipediaQuickCheckResult checkResult=check.checkPage(plainText,Language.GERMAN);
   for (  RuleMatch ruleMatch : checkResult.getRuleMatches()) {
     System.out.println(ruleMatch.getMessage());
     final String context=StringTools.getContext(ruleMatch.getFromPos(),ruleMatch.getToPos(),checkResult.getText());

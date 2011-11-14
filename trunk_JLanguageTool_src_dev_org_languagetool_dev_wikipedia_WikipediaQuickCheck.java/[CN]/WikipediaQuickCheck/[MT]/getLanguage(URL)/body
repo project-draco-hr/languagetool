@@ -1,7 +1,0 @@
-{
-  final String[] parts=wikipediaUrl.getHost().split("\\.");
-  if (parts.length != 3) {
-    throw new RuntimeException("Does not look like a Wikipedia server: " + wikipediaUrl);
-  }
-  return parts[0];
-}

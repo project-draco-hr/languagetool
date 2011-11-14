@@ -1,14 +1,7 @@
 {
-  validateWikipediaUrl(wikipediaUrl);
-  final String shortLangName;
-  final String pageTitle;
-  try {
-    shortLangName=getLanguage(wikipediaUrl);
-    pageTitle=wikipediaUrl.toString().substring("http://xx.wikipedia.org/wiki/".length());
-  }
- catch (  StringIndexOutOfBoundsException e) {
-    throw new RuntimeException("URL does not seem to be a valid URL: " + wikipediaUrl.toString(),e);
-  }
+  final Matcher matcher=getUrlMatcher(wikipediaUrl.toString());
+  final String shortLangName=matcher.group(1);
+  final String pageTitle=matcher.group(2);
   final String apiUrl="http://" + shortLangName + ".wikipedia.org/w/api.php?titles="+ pageTitle+ "&action=query&prop=revisions&rvprop=content&format=xml";
   return getContent(new URL(apiUrl));
 }

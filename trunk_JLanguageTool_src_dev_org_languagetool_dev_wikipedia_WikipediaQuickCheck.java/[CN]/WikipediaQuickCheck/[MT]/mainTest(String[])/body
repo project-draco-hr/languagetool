@@ -1,5 +1,0 @@
-{
-  final TextFilter filter=new SwebleWikipediaTextFilter();
-  final String plainText=filter.filter("hallo\n* eins\n* zwei");
-  System.out.println(plainText);
-}
