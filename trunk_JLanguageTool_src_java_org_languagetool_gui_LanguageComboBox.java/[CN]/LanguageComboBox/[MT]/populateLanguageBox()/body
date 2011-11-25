@@ -1,0 +1,5 @@
+{
+  removeAllItems();
+  final List<I18nLanguage> i18nLanguages=getAllLanguages();
+  preselectDefaultLanguage(i18nLanguages);
+}

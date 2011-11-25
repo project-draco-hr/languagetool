@@ -1,0 +1,9 @@
+{
+  String defaultGuiLocale=null;
+  try {
+    defaultGuiLocale=messages.getString(defaultLocale);
+  }
+ catch (  final MissingResourceException e) {
+  }
+  return defaultGuiLocale;
+}

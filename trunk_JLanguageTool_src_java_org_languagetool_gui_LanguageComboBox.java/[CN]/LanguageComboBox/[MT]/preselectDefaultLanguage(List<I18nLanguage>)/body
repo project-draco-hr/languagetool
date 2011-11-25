@@ -1,0 +1,10 @@
+{
+  final String defaultLocale=Locale.getDefault().getLanguage();
+  final String defaultGuiLocale=getDefaultGuiLanguage(defaultLocale);
+  for (  final I18nLanguage i18nLanguage : i18nLanguages) {
+    addItem(i18nLanguage);
+    if (i18nLanguage.toString().equals(defaultGuiLocale)) {
+      setSelectedItem(i18nLanguage);
+    }
+  }
+}

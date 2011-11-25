@@ -1,0 +1,10 @@
+{
+  final List<I18nLanguage> i18nLanguages=new ArrayList<I18nLanguage>();
+  for (  Language language : Language.LANGUAGES) {
+    if (language != Language.DEMO) {
+      i18nLanguages.add(new I18nLanguage(language,messages));
+    }
+  }
+  Collections.sort(i18nLanguages);
+  return i18nLanguages;
+}
