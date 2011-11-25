@@ -1,8 +1,7 @@
 {
   if (e.getKeyCode() == KeyEvent.VK_ENTER) {
     if ((e.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK) == KeyEvent.CTRL_DOWN_MASK) {
-      final JLanguageTool langTool=getCurrentLanguageTool();
-      checkTextAndDisplayResults(langTool,getCurrentLanguage());
+      checkTextAndDisplayResults();
     }
   }
 }

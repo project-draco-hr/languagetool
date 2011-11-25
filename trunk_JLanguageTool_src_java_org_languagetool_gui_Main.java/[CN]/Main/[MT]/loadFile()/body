@@ -6,8 +6,7 @@
   try {
     final String fileContents=StringTools.readFile(new FileInputStream(file.getAbsolutePath()));
     textArea.setText(fileContents);
-    final JLanguageTool langTool=getCurrentLanguageTool();
-    checkTextAndDisplayResults(langTool,getCurrentLanguage());
+    checkTextAndDisplayResults();
   }
  catch (  final IOException e) {
     Tools.showError(e);

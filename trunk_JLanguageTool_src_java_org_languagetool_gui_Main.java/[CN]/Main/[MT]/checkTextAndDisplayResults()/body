@@ -1,4 +1,8 @@
 {
+  final Cursor prevCursor=resultArea.getCursor();
+  frame.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+  final JLanguageTool langTool=getCurrentLanguageTool();
+  final Language lang=getCurrentLanguage();
   if (StringTools.isEmpty(textArea.getText().trim())) {
     textArea.setText(messages.getString("enterText2"));
   }
@@ -31,4 +35,5 @@
     resultArea.setText(HTML_FONT_START + sb.toString() + HTML_FONT_END);
     resultArea.setCaretPosition(0);
   }
+  frame.setCursor(prevCursor);
 }
