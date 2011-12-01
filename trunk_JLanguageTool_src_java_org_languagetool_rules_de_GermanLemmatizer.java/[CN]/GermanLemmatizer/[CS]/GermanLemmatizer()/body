@@ -1,3 +1,0 @@
-{
-  fullform2baseform=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(FILE_NAME));
-}

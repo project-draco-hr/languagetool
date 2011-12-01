@@ -1,0 +1,4 @@
+{
+  final WordCoherencyRule rule=new WordCoherencyRule(null);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence(s)).length);
+}

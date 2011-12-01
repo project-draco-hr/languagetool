@@ -14,10 +14,6 @@
         if (baseform != null) {
           token=baseform;
         }
- else {
-          final String manualLookup=germanLemmatizer.getBaseform(origToken);
-          if (manualLookup != null)           token=manualLookup;
-        }
       }
       if (shouldNotAppearWord.containsKey(token)) {
         final RuleMatch otherMatch=shouldNotAppearWord.get(token);
