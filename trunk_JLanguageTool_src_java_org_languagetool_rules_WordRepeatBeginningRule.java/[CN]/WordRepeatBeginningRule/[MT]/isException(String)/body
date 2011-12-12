@@ -1,4 +1,6 @@
 {
-  if (token.equals(":") || token.equals("???") || token.equals("-"))   return true;
+  if (token.equals(":") || token.equals("???") || token.equals("-")) {
+    return true;
+  }
   return false;
 }
