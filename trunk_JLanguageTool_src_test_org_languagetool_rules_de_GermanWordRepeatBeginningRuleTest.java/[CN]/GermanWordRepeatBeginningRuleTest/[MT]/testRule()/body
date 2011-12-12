@@ -1,5 +1,4 @@
 {
-  GermanWordRepeatBeginningRule rule=new GermanWordRepeatBeginningRule(TestTools.getMessages("de"),Language.GERMAN);
   JLanguageTool langTool=new JLanguageTool(Language.GERMAN);
   assertEquals(0,langTool.check("Er ist nett. Er hei??t Max.").size());
   assertEquals(0,langTool.check("Au??erdem kommt er. Ferner kommt sie. Au??erdem kommt es.").size());
