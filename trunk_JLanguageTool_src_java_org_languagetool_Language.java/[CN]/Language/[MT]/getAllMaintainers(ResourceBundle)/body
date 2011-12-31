@@ -8,7 +8,7 @@
         for (        Contributor contributor : lang.getMaintainers()) {
           names.add(contributor.getName());
         }
-        toSort.add(messages.getString(lang.getShortName()) + ": " + StringTools.listToString(names,", "));
+        toSort.add(messages.getString(lang.getShortName()) + ": " + listToStringWithLineBreaks(names));
       }
     }
   }
