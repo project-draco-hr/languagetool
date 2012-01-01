@@ -1,5 +1,5 @@
 {
-  if (Character.isUpperCase(token.charAt(0)) && token.length() > 1 && !sentenceStartExceptions.contains(tokens[i - 1].getToken()) && !StringTools.isAllUppercase(token) && !exceptions.contains(token) && !analyzedToken.hasReadingOfType(POSType.PROPER_NOUN) && !analyzedToken.isSentenceEnd() && !isExceptionPhrase(i,tokens)) {
+  if (Character.isUpperCase(token.charAt(0)) && token.length() > 1 && !sentenceStartExceptions.contains(tokens[i - 1].getToken()) && !StringTools.isAllUppercase(token) && !exceptions.contains(token) && !analyzedToken.hasReadingOfType(POSType.PROPER_NOUN) && !isNilReading(analyzedToken) && !analyzedToken.isSentenceEnd() && !isExceptionPhrase(i,tokens)) {
     final String msg="Au??er am Satzanfang werden nur Nomen und Eigennamen gro??geschrieben";
     final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg);
     final String word=tokens[i].getToken();

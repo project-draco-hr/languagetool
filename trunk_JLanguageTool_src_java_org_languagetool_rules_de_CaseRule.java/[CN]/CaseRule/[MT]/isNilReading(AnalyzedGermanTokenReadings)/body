@@ -1,0 +1,9 @@
+{
+  final List<AnalyzedGermanToken> germanReadings=analyzedToken.getGermanReadings();
+  if (germanReadings.size() > 0) {
+    if ("NIL:SUB".equals(germanReadings.get(0).getPOSTag())) {
+      return true;
+    }
+  }
+  return false;
+}
