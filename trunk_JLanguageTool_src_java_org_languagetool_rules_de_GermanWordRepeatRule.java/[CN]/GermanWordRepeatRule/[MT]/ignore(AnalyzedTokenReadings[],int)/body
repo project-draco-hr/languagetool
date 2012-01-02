@@ -1,6 +1,12 @@
 {
-  if (position >= 2 && ",".equals(tokens[position - 2].getToken())) {
-    return true;
+  if (tokens[position - 1].getToken().length() == 3) {
+    if (position >= 2 && ",".equals(tokens[position - 2].getToken())) {
+      return true;
+    }
+    if (position >= 3 && ",".equals(tokens[position - 3].getToken()) && tokens[position - 2].getToken().matches("auf|nach|f??r|in|??ber")) {
+      return true;
+    }
+    return false;
   }
   return false;
 }
