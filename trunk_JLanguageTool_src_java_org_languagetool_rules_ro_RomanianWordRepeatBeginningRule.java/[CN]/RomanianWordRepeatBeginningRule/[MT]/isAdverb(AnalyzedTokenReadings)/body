@@ -1,0 +1,17 @@
+{
+  boolean isAdverb=false;
+  List<AnalyzedToken> readings=token.getReadings();
+  for (  AnalyzedToken analyzedToken : readings) {
+    if (analyzedToken.getPOSTag() != null) {
+      if (analyzedToken.getPOSTag().startsWith("G")) {
+        isAdverb=true;
+      }
+ else {
+        if (!allowAmbiguousAdverbs()) {
+          return false;
+        }
+      }
+    }
+  }
+  return isAdverb;
+}
