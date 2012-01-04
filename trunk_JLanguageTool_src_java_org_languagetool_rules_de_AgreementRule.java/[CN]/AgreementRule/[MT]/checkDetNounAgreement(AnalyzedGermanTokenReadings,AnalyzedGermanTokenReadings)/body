@@ -13,7 +13,8 @@
     final List<String> errorCategories=getCategoriesCausingError(token1,token2);
     final String errorDetails=errorCategories.size() > 0 ? StringTools.listToString(errorCategories," und ") : "Kasus, Genus oder Numerus";
     final String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Artikel und Nomen " + "bez??glich " + errorDetails + ".";
-    ruleMatch=new RuleMatch(this,token1.getStartPos(),token2.getStartPos() + token2.getToken().length(),msg);
+    final String shortMsg="M??glicherweise keine ??bereinstimmung bez??glich " + errorDetails;
+    ruleMatch=new RuleMatch(this,token1.getStartPos(),token2.getStartPos() + token2.getToken().length(),msg,shortMsg);
   }
   return ruleMatch;
 }
