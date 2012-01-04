@@ -1,0 +1,4 @@
+{
+  if (ADVERBS.contains(token.getToken()))   return true;
+  return false;
+}
