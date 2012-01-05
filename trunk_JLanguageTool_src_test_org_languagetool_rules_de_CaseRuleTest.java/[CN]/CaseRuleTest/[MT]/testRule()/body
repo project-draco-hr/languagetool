@@ -12,6 +12,7 @@
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz. ??Ein Zitat.??")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz. ??Ein Zitat.??")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz. (Noch einer.)")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier geht es nach Tel Aviv.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ein Menschenfreund.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Der Nachfahre.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz, \"Ein Zitat.\"")).length);
