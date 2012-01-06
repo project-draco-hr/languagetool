@@ -1,0 +1,6 @@
+{
+  final List<WordData> wordForms=synthesizer.lookup(lemma + "|" + posTag);
+  for (  WordData wd : wordForms) {
+    results.add(wd.getStem().toString());
+  }
+}

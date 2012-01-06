@@ -1,9 +1,6 @@
 {
   initSynthesizer();
-  final List<WordData> wordData=synthesizer.lookup(token.getLemma() + "|" + posTag);
   final List<String> wordForms=new ArrayList<String>();
-  for (  WordData wd : wordData) {
-    wordForms.add(wd.getStem().toString());
-  }
+  lookup(token.getLemma(),posTag,wordForms);
   return wordForms.toArray(new String[wordForms.size()]);
 }
