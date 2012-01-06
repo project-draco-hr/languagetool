@@ -1,0 +1,6 @@
+{
+  super.initSynthesizer();
+  if (manualSynthesizer == null) {
+    manualSynthesizer=new ManualSynthesizer(JLanguageTool.getDataBroker().getFromResourceDirAsStream(USER_DICT_FILENAME));
+  }
+}

@@ -1,0 +1,3 @@
+{
+  assertHasLemmaAndPos("configura??i","configura","V0p2000cz0");
+}

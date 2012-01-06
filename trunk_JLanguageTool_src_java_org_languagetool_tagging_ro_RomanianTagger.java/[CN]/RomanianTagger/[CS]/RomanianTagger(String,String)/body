@@ -1,0 +1,6 @@
+{
+  super();
+  RESOURCE_FILENAME=dictFileName;
+  USER_DICT_FILENAME=userDictFileName;
+  setLocale(roLocale);
+}

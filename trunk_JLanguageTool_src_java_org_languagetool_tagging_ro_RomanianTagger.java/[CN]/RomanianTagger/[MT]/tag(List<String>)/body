@@ -1,14 +1,17 @@
 {
-  List<WordData> taggerTokens;
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
     final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(RESOURCE_FILENAME);
     morfologik=new DictionaryLookup(Dictionary.read(url));
   }
+  if (manualTagger == null && USER_DICT_FILENAME != null) {
+    manualTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(USER_DICT_FILENAME));
+  }
   for (  final String word : sentenceTokens) {
     final List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
-    taggerTokens=morfologik.lookup(word.toLowerCase(roLocale));
+    final String lowerCaseWord=word.toLowerCase(roLocale);
+    final List<WordData> taggerTokens=morfologik.lookup(lowerCaseWord);
     if (taggerTokens != null) {
       for (      WordData wd : taggerTokens) {
         final String[] tagsArr=wd.getStem().toString().split("\\+");
@@ -17,7 +20,15 @@
         }
       }
     }
-    if (taggerTokens == null || taggerTokens.isEmpty()) {
+    if (manualTagger != null) {
+      final String[] manualTags=manualTagger.lookup(lowerCaseWord);
+      if (manualTags != null) {
+        for (int i=0; i < manualTags.length / 2; i=i + 2) {
+          l.add(new AnalyzedToken(word,manualTags[i + 1],manualTags[i]));
+        }
+      }
+    }
+    if (l.isEmpty()) {
       l.add(new AnalyzedToken(word,null,null));
     }
     tokenReadings.add(new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]),pos));

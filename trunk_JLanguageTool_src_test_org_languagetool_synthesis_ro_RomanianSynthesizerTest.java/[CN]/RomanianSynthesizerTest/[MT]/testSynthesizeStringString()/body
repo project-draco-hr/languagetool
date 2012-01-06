@@ -12,4 +12,6 @@
   assertEquals("[mersesem]",Arrays.toString(synth.synthesize(dummyToken("merge"),"V0s1000im0")));
   assertEquals("[leg??tura]",Arrays.toString(synth.synthesize(dummyToken("leg??tur??"),"Sfs3aac000")));
   assertEquals("[leg??tur??]",Arrays.toString(synth.synthesize(dummyToken("leg??tur??"),"Sfs3anc000")));
+  assertEquals("[configura??i]",Arrays.toString(synth.synthesize(dummyToken("configura"),"V0p2000cz0")));
+  assertEquals("[configura??i, configurezi]",Arrays.toString(synth.synthesize(dummyToken("configura"),"V0.2000cz0",true)));
 }
