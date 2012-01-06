@@ -1,0 +1,33 @@
+{
+  final Map<String,List<String>> map=new HashMap<String,List<String>>();
+  InputStreamReader isr=null;
+  BufferedReader br=null;
+  try {
+    isr=new InputStreamReader(file,encoding);
+    br=new BufferedReader(isr);
+    String line;
+    while ((line=br.readLine()) != null) {
+      if (StringTools.isEmpty(line) || line.charAt(0) == '#') {
+        continue;
+      }
+      final String[] parts=line.split("\t");
+      if (parts.length != 3) {
+        throw new IOException("Unknown format in " + file + ": "+ line);
+      }
+      final String key=parts[1] + "|" + parts[2];
+      if (!map.containsKey(key)) {
+        map.put(key,new ArrayList<String>());
+      }
+      map.get(key).add(parts[0]);
+    }
+  }
+  finally {
+    if (br != null) {
+      br.close();
+    }
+    if (isr != null) {
+      isr.close();
+    }
+  }
+  return map;
+}

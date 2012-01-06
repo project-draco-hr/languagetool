@@ -1,0 +1,3 @@
+{
+  assertNull(synthesizer.lookup("LEmma1","POS1"));
+}

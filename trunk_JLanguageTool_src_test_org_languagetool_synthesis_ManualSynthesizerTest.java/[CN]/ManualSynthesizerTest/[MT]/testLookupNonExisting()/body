@@ -1,0 +1,7 @@
+{
+  assertNull(synthesizer.lookup("",""));
+  assertNull(synthesizer.lookup("",null));
+  assertNull(synthesizer.lookup(null,""));
+  assertNull(synthesizer.lookup(null,null));
+  assertNull(synthesizer.lookup("NONE","UNKNOWN"));
+}

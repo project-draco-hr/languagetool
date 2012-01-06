@@ -1,0 +1,6 @@
+{
+  assertNull(synthesizer.lookup("NONE","POS1"));
+  assertNull(synthesizer.lookup("Lemma1","UNKNOWN"));
+  assertNull(synthesizer.lookup("Lemma1","POS."));
+  assertNull(synthesizer.lookup("Lemma2","POS2"));
+}

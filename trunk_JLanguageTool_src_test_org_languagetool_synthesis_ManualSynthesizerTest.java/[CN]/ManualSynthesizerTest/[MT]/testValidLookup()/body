@@ -1,0 +1,5 @@
+{
+  assertEquals("[InflectedForm11]",String.valueOf(synthesizer.lookup("Lemma1","POS1")));
+  assertEquals("[InflectedForm121, InflectedForm122]",String.valueOf(synthesizer.lookup("Lemma1","POS2")));
+  assertEquals("[InflectedForm2]",String.valueOf(synthesizer.lookup("Lemma2","POS1")));
+}
