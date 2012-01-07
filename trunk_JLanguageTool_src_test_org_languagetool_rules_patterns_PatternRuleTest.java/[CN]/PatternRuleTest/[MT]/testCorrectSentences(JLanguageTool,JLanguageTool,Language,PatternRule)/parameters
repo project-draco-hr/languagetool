@@ -1,3 +1,4 @@
 JLanguageTool languageTool
+JLanguageTool allRulesLanguageTool
 Language lang
 PatternRule rule

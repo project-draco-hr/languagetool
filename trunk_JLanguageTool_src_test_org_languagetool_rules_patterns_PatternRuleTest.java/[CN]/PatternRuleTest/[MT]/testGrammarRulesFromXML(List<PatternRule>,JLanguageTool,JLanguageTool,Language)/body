@@ -1,7 +1,7 @@
 {
   final HashMap<String,PatternRule> complexRules=new HashMap<String,PatternRule>();
   for (  final PatternRule rule : rules) {
-    testCorrectSentences(languageTool,lang,rule);
+    testCorrectSentences(languageTool,allRulesLanguageTool,lang,rule);
     testBadSentences(languageTool,lang,complexRules,rule);
   }
   if (!complexRules.isEmpty()) {
@@ -16,7 +16,7 @@
       }
     }
     if (!badRules.isEmpty()) {
-      testGrammarRulesFromXML(badRules,languageTool,lang);
+      testGrammarRulesFromXML(badRules,languageTool,allRulesLanguageTool,lang);
     }
   }
 }
