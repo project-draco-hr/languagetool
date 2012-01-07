@@ -1,9 +1,9 @@
 {
-  GermanTagger tagger=new GermanTagger();
+  final GermanTagger tagger=new GermanTagger();
   final List<String> upperCaseWord=new ArrayList<String>();
   upperCaseWord.add("Das");
   List<AnalyzedTokenReadings> readings=tagger.tag(upperCaseWord);
-  assertEquals("[Das[ART:DEF:AKK:SIN:NEU, ART:DEF:NOM:SIN:NEU, PRO:DEM:AKK:SIN:NEU, PRO:DEM:NOM:SIN:NEU, " + "PRO:PER:AKK:SIN:NEU, PRO:PER:NOM:SIN:NEU]]",readings.toString());
+  assertEquals("[Das[der/ART:DEF:AKK:SIN:NEU, der/ART:DEF:NOM:SIN:NEU, der/PRO:DEM:AKK:SIN:NEU, " + "der/PRO:DEM:NOM:SIN:NEU, der/PRO:PER:AKK:SIN:NEU, der/PRO:PER:NOM:SIN:NEU]]",readings.toString());
   readings=tagger.tag(upperCaseWord,false);
-  assertEquals("[Das[null]]",readings.toString());
+  assertEquals("[Das[null/null]]",readings.toString());
 }

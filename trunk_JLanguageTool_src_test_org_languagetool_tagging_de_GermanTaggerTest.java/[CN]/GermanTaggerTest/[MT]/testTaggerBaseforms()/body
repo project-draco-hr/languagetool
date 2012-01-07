@@ -1,5 +1,5 @@
 {
-  GermanTagger tagger=new GermanTagger();
+  final GermanTagger tagger=new GermanTagger();
   List<AnalyzedGermanToken> readings=tagger.lookup("??brigbleibst").getGermanReadings();
   assertEquals(1,readings.size());
   assertEquals("??brigbleiben",readings.get(0).getLemma());
