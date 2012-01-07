@@ -21,7 +21,7 @@
     List<AnalyzedGermanToken> readings=analyzedToken.getGermanReadings();
     AnalyzedGermanTokenReadings analyzedGermanToken2;
     boolean isBaseform=false;
-    if (analyzedToken.getReadingsLength() > 1 && token.equals(analyzedToken.getAnalyzedToken(0).getLemma())) {
+    if (analyzedToken.getReadingsLength() >= 1 && token.equals(analyzedToken.getAnalyzedToken(0).getLemma())) {
       isBaseform=true;
     }
     if ((readings == null || analyzedToken.getAnalyzedToken(0).getPOSTag() == null || analyzedToken.hasReadingOfType(GermanToken.POSType.VERB)) && isBaseform) {
