@@ -1,15 +1,10 @@
 {
-  BufferedReader br=null;
-  final TreeSet<String> set=new TreeSet<String>();
+  final Set<String> set=new TreeSet<String>();
+  final Scanner scanner=new Scanner(file,"utf-8");
   try {
-    br=new BufferedReader(new InputStreamReader(file));
-    String line;
-    while ((line=br.readLine()) != null) {
-      line=line.trim();
-      if (line.length() < 1) {
-        continue;
-      }
-      if (line.charAt(0) == '#') {
+    while (scanner.hasNextLine()) {
+      final String line=scanner.nextLine().trim();
+      if (line.length() < 1 || line.charAt(0) == '#') {
         continue;
       }
       if (line.charAt(0) == '*') {
@@ -21,9 +16,7 @@
     }
   }
   finally {
-    if (br != null) {
-      br.close();
-    }
+    scanner.close();
   }
   return set;
 }
