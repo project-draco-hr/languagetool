@@ -1,5 +1,5 @@
 {
-  anTokReadings=r.clone();
+  anTokReadings=token.clone();
   this.startPos=startPos;
   init();
 }

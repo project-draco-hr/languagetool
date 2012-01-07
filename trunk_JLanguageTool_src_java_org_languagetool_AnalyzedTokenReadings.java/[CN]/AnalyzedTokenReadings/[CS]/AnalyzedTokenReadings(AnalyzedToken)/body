@@ -1,6 +1,6 @@
 {
   anTokReadings=new AnalyzedToken[1];
-  anTokReadings[0]=at;
-  isWhitespaceBefore=at.isWhitespaceBefore();
+  anTokReadings[0]=token;
+  isWhitespaceBefore=token.isWhitespaceBefore();
   init();
 }

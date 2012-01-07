@@ -1,4 +1,4 @@
 {
-  this(at);
+  this(token);
   this.startPos=startPos;
 }

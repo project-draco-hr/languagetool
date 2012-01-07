@@ -1,2 +1,2 @@
-List<AnalyzedToken> list
+List<AnalyzedToken> tokens
 int startPos

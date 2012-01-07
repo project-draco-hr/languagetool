@@ -1,5 +1,5 @@
 {
-  anTokReadings=list.toArray(new AnalyzedToken[list.size()]);
+  anTokReadings=tokens.toArray(new AnalyzedToken[tokens.size()]);
   this.startPos=startPos;
   init();
 }

@@ -2,7 +2,7 @@
   boolean found=false;
   for (  final AnalyzedToken reading : anTokReadings) {
     if (reading.getPOSTag() != null) {
-      found=pos.equals(reading.getPOSTag());
+      found=posTag.equals(reading.getPOSTag());
       if (found) {
         break;
       }

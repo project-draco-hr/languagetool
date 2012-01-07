@@ -6,11 +6,11 @@
   if (anTokReadings[anTokReadings.length - 1].getPOSTag() != null) {
     l.add(anTokReadings[anTokReadings.length - 1]);
   }
-  tok.setWhitespaceBefore(isWhitespaceBefore);
-  l.add(tok);
+  token.setWhitespaceBefore(isWhitespaceBefore);
+  l.add(token);
   anTokReadings=l.toArray(new AnalyzedToken[l.size()]);
-  if (tok.getToken().length() > token.length()) {
-    token=tok.getToken();
+  if (token.getToken().length() > this.token.length()) {
+    this.token=token.getToken();
   }
   anTokReadings[anTokReadings.length - 1].setWhitespaceBefore(isWhitespaceBefore);
   isParaEnd=hasPosTag(JLanguageTool.PARAGRAPH_END_TAGNAME);
