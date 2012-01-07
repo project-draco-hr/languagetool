@@ -12,7 +12,7 @@
     if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
       token=parts[0];
     }
-    token=token.replaceAll("[^a-zA-Z0-9\\.']","");
+    token=token.replaceAll("[^??a-zA-Z0-9\\.']","");
     if (StringTools.isEmpty(token)) {
       continue;
     }
