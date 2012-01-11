@@ -9,7 +9,7 @@
     if (pRegexMatch != null && regexReplace != null) {
       token=pRegexMatch.matcher(token).replaceAll(regexReplace);
     }
-    token=convertCase(token);
+    token=convertCase(token,token);
     if (posTag != null) {
       final int numRead=formattedToken.getReadingsLength();
       if (postagRegexp) {

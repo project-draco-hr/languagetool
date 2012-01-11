@@ -6,7 +6,6 @@
     if (pRegexMatch != null) {
       formattedString[0]=pRegexMatch.matcher(formattedString[0]).replaceAll(regexReplace);
     }
-    formattedString[0]=convertCase(formattedString[0]);
     if (posTag != null) {
       if (synthesizer == null) {
         formattedString[0]=formattedToken.getToken();
@@ -61,6 +60,10 @@
         formattedString=wordForms.toArray(new String[wordForms.size()]);
       }
     }
+  }
+  final String original=formattedToken != null ? formattedToken.getToken() : "";
+  for (int i=0; i < formattedString.length; i++) {
+    formattedString[i]=convertCase(formattedString[i],original);
   }
   if (includeSkipped != IncludeRange.NONE && skippedTokens != null && !"".equals(skippedTokens)) {
     final String[] helper=new String[formattedString.length];
