@@ -6,8 +6,18 @@
 switch (caseConversionType) {
 case NONE:
     break;
+case PRESERVE:
+  if (StringTools.startsWithUppercase(sample)) {
+    if (StringTools.isAllUppercase(formattedToken.getToken())) {
+      token=token.toUpperCase();
+    }
+ else {
+      token=StringTools.uppercaseFirstChar(token);
+    }
+  }
+break;
 case STARTLOWER:
-  token=token.substring(0,1).toLowerCase() + token.substring(1);
+token=token.substring(0,1).toLowerCase() + token.substring(1);
 break;
 case STARTUPPER:
 token=token.substring(0,1).toUpperCase() + token.substring(1);

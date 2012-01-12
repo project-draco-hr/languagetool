@@ -1,0 +1,8 @@
+{
+  synthesizer=new IStemmer(){
+    @Override public List<WordData> lookup(    CharSequence word){
+      return new ArrayList<WordData>();
+    }
+  }
+;
+}
