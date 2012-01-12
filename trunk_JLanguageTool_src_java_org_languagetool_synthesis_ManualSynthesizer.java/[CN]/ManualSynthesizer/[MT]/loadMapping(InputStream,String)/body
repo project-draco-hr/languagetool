@@ -19,6 +19,7 @@
         map.put(key,new ArrayList<String>());
       }
       map.get(key).add(parts[0]);
+      possibleTags.add(parts[2]);
     }
   }
   finally {

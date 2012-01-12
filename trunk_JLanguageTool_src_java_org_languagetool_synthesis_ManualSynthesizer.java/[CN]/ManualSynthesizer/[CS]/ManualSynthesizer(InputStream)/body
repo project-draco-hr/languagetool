@@ -1,3 +1,4 @@
 {
   mapping=loadMapping(file,"utf8");
+  possibleTags=Collections.unmodifiableSet(possibleTags);
 }

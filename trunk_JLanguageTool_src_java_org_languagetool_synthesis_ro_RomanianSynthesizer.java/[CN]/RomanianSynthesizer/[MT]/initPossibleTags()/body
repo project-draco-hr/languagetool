@@ -1,0 +1,8 @@
+{
+  super.initPossibleTags();
+  for (  String tag : manualSynthesizer.getPossibleTags()) {
+    if (!possibleTags.contains(tag)) {
+      possibleTags.add(tag);
+    }
+  }
+}

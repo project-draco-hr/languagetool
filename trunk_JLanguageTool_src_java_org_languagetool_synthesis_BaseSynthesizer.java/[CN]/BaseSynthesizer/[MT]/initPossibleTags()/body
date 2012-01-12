@@ -1,0 +1,5 @@
+{
+  if (possibleTags == null) {
+    possibleTags=SynthesizerTools.loadWords(Tools.getStream(tagFileName));
+  }
+}

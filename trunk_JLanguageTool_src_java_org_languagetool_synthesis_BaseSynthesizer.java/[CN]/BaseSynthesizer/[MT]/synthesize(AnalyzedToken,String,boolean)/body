@@ -1,9 +1,7 @@
 {
   if (posTagRegExp) {
-    if (possibleTags == null) {
-      possibleTags=SynthesizerTools.loadWords(Tools.getStream(tagFileName));
-    }
     initSynthesizer();
+    initPossibleTags();
     final Pattern p=Pattern.compile(posTag);
     final ArrayList<String> results=new ArrayList<String>();
     for (    final String tag : possibleTags) {
