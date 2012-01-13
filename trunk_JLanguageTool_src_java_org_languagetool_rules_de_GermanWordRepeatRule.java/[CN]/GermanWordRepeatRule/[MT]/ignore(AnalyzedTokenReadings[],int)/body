@@ -1,5 +1,5 @@
 {
-  if (tokens[position - 1].getToken().length() == 3) {
+  if (tokens[position - 1].getToken().length() == 3 && tokens[position - 1].getToken().charAt(0) == 'd') {
     if (position >= 2 && ",".equals(tokens[position - 2].getToken())) {
       return true;
     }
