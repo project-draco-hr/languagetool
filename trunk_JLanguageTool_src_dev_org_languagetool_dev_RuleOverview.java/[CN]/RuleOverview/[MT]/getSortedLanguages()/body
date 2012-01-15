@@ -1,0 +1,11 @@
+{
+  final List<String> sortedLanguages=new ArrayList<String>();
+  for (  Language element : Language.LANGUAGES) {
+    if (element == Language.DEMO) {
+      continue;
+    }
+    sortedLanguages.add(element.getName());
+  }
+  Collections.sort(sortedLanguages);
+  return sortedLanguages;
+}

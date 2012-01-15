@@ -1,0 +1,23 @@
+{
+  final StringBuilder maintainerInfo=new StringBuilder();
+  if (lang.getMaintainers() != null) {
+    for (    Contributor contributor : lang.getMaintainers()) {
+      if (!StringTools.isEmpty(maintainerInfo.toString())) {
+        maintainerInfo.append(", ");
+      }
+      if (contributor.getUrl() != null) {
+        maintainerInfo.append("<a href=\"");
+        maintainerInfo.append(contributor.getUrl());
+        maintainerInfo.append("\">");
+      }
+      maintainerInfo.append(contributor.getName());
+      if (contributor.getUrl() != null) {
+        maintainerInfo.append("</a>");
+      }
+      if (contributor.getRemark() != null) {
+        maintainerInfo.append("&nbsp;(" + contributor.getRemark() + ")");
+      }
+    }
+  }
+  return maintainerInfo;
+}
