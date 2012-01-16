@@ -1,0 +1,17 @@
+{
+  super.setUp();
+  tagger=new ManualTaggerAdapter(new ManualTagger(new ByteArrayInputStream(TEST_DATA.getBytes("UTF-8"))));
+  synthesizer=new ManualSynthesizerAdapter(new ManualSynthesizer(new ByteArrayInputStream(TEST_DATA.getBytes("UTF-8"))));
+  languageTool=new JLanguageTool(new Demo(){
+    @Override public String getName(){
+      return "TEST";
+    }
+    @Override public Synthesizer getSynthesizer(){
+      return MatchTest.this.synthesizer;
+    }
+    @Override public Tagger getTagger(){
+      return MatchTest.this.tagger;
+    }
+  }
+);
+}

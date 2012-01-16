@@ -1,0 +1,5 @@
+{
+  Match match=getMatch(null,null,Match.IncludeRange.FOLLOWING);
+  match.setToken(getAnalyzedTokenReadings("inflectedform11 inflectedform2 inflectedform122 inflectedform122"),1,3);
+  assertEquals("[inflectedform2 inflectedform122]",Arrays.toString(match.toFinalString()));
+}
