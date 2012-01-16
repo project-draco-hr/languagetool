@@ -64,6 +64,16 @@
   testSplit(new String[]{"Are mere, pere, etc. dar nu are alune."});
   testSplit(new String[]{"Are mere, pere, etc. ","Nu are alune."});
   testSplit(new String[]{"Are mere, pere, ??.a. dar nu are alune."});
+  testSplit(new String[]{"Lec??ia ??ncepe la pag. urm??toare ??i are trei pagini."});
+  testSplit(new String[]{"Lec??ia ??ncepe la pag. 20 ??i are trei pagini."});
+  testSplit(new String[]{"A ac??ionat ??n conformitate cu lg. 144, art. 33."});
+  testSplit(new String[]{"A ac??ionat ??n conformitate cu leg. 144, art. 33."});
+  testSplit(new String[]{"A ac??ionat ??n conformitate cu legea nr. 11."});
+  testSplit(new String[]{"Lupta a avut loc ??n anul 2000 ??.H. ??i a durat trei ani."});
+  testSplit(new String[]{"Discu??ia a avut loc pe data de dou??zeci aug. ??i a durat dou?? ore."});
+  testSplit(new String[]{"Discu??ia a avut loc pe data de dou??zeci ian. ??i a durat dou?? ore."});
+  testSplit(new String[]{"Discu??ia a avut loc pe data de dou??zeci feb. ??i a durat dou?? ore."});
+  testSplit(new String[]{"Discu??ia a avut loc pe data de dou??zeci ian.","A durat dou?? ore."});
   testSplit(new String[]{"A fost ??i la M.Ap.N. dar nu l-au primit. "});
   testSplit(new String[]{"A fost ??i la M.Ap.N. ","Nu l-au primit. "});
   testSplit(new String[]{"Apo' da' tulai (sic!) c?? mult mai e de mers."});
