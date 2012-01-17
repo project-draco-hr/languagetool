@@ -61,7 +61,13 @@
       }
     }
   }
-  final String original=formattedToken != null ? formattedToken.getToken() : "";
+  final String original;
+  if (staticLemma) {
+    original=matchedToken != null ? matchedToken.getToken() : "";
+  }
+ else {
+    original=formattedToken != null ? formattedToken.getToken() : "";
+  }
   for (int i=0; i < formattedString.length; i++) {
     formattedString[i]=convertCase(formattedString[i],original);
   }

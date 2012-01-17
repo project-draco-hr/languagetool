@@ -8,7 +8,7 @@ case NONE:
     break;
 case PRESERVE:
   if (StringTools.startsWithUppercase(sample)) {
-    if (StringTools.isAllUppercase(formattedToken.getToken())) {
+    if (StringTools.isAllUppercase(sample)) {
       token=token.toUpperCase();
     }
  else {
