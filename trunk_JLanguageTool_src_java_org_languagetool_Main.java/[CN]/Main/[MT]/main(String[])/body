@@ -120,10 +120,8 @@
     filename="-";
   }
   if (language == null) {
-    if (!apiFormat) {
-      if (!autoDetect) {
-        System.err.println("No language specified, using English");
-      }
+    if (!apiFormat && !autoDetect) {
+      System.err.println("No language specified, using English");
     }
     language=Language.ENGLISH;
   }
@@ -138,7 +136,7 @@
   }
   if (bitext) {
     if (motherTongue == null) {
-      throw new IllegalArgumentException("You have to set the source language (as mother tongue).");
+      throw new IllegalArgumentException("You have to set the source language (as mother tongue) in bitext mode.");
     }
     prg.setBitextMode(motherTongue,disabledRules,enabledRules);
   }

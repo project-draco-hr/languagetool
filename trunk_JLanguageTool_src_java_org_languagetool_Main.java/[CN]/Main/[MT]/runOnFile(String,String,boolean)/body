@@ -2,7 +2,7 @@
   boolean oneTime=false;
   if (!"-".equals(filename)) {
     if (autoDetect) {
-      Language language=getLanguageFromFile(filename,encoding);
+      Language language=detectLanguageOfFile(filename,encoding);
       if (language == null) {
         System.err.println("Could not detect language well enough, using English");
         language=Language.ENGLISH;

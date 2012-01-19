@@ -1,0 +1,5 @@
+{
+  final LanguageIdentifier identifier=new LanguageIdentifier(string);
+  final Language lang=Language.getLanguageForShortName(identifier.getLanguage());
+  return lang;
+}

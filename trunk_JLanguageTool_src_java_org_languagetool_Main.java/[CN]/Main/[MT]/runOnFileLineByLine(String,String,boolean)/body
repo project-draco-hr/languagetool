@@ -37,7 +37,7 @@
         sb.append(line);
         lineCount++;
         if (lineCount == 1 && autoDetect) {
-          Language language=getLanguageFromString(line,false);
+          Language language=detectLanguageOfString(line);
           if (language == null) {
             System.err.println("Could not detect language well enough, using English");
             language=Language.ENGLISH;
