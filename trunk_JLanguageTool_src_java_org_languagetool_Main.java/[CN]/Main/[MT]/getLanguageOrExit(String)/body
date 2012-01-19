@@ -1,15 +1,11 @@
 {
-  Language language=null;
-  final List<String> supportedLanguages=new ArrayList<String>();
-  for (  final Language lang : Language.LANGUAGES) {
-    supportedLanguages.add(lang.getShortName());
-    if (userSuppliedLang.equals(lang.getShortName())) {
-      language=lang;
-      break;
-    }
-  }
+  final Language language=Language.getLanguageForShortName(userSuppliedLangCode);
   if (language == null) {
-    System.out.println("Unknown language '" + userSuppliedLang + "'. Supported languages are: "+ supportedLanguages);
+    final List<String> supportedLanguages=new ArrayList<String>();
+    for (    final Language lang : Language.LANGUAGES) {
+      supportedLanguages.add(lang.getShortName());
+    }
+    System.out.println("Unknown language '" + userSuppliedLangCode + "'. Supported languages are: "+ supportedLanguages);
     exitWithUsageMessage();
   }
   return language;
