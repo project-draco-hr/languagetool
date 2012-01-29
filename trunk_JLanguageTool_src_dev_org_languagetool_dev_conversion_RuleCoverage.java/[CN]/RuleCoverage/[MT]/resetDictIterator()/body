@@ -4,7 +4,7 @@
     ret=new DictionaryIterator(Dictionary.read(dictFile),Charset.forName("utf8").newDecoder(),true);
   }
  catch (  IOException e) {
-    e.printStackTrace();
+    throw new RuntimeException("Could not read " + dictFile,e);
   }
   return ret;
 }

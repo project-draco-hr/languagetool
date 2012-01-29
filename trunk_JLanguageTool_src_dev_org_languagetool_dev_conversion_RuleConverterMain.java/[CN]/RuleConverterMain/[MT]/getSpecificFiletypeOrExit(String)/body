@@ -1,14 +1,14 @@
 {
   String type=null;
-  boolean foundtype=false;
+  boolean foundType=false;
   for (  String s : supportedSpecificFiletypes) {
     if (arg.equals(s)) {
       type=s;
-      foundtype=true;
+      foundType=true;
       break;
     }
   }
-  if (!foundtype) {
+  if (!foundType) {
     System.out.println("Unknown specific filetype " + arg);
     System.out.print("Supported filetypes are");
     for (    String s : supportedSpecificFiletypes) {

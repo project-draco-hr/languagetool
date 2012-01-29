@@ -43,7 +43,7 @@
     int numResets=0;
     while (numResets < 2) {
       if (!dictIterator.hasNext()) {
-        dictIterator=resetDictIter();
+        dictIterator=resetDictIterator();
         numResets++;
       }
       String word=dictIterator.next().getWord().toString();
@@ -104,7 +104,7 @@
     int numResets=0;
     while (numResets < 2) {
       if (!dictIterator.hasNext()) {
-        dictIterator=resetDictIter();
+        dictIterator=resetDictIterator();
         numResets++;
       }
       String word=dictIterator.next().getWord().toString();

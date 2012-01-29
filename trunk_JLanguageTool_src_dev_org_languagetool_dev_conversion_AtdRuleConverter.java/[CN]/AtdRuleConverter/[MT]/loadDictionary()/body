@@ -1,19 +1,18 @@
 {
-  IStemmer dictLookup=null;
-  String fileName="/en/english.dict";
-  URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(fileName);
-  File dictFile=null;
+  IStemmer dictLookup;
+  URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(ENGLISH_DICT);
+  File dictFile;
   try {
     dictFile=new File(url.toURI());
   }
  catch (  URISyntaxException e) {
-    e.printStackTrace();
+    throw new RuntimeException("Could not load " + ENGLISH_DICT,e);
   }
   try {
     dictLookup=new DictionaryLookup(Dictionary.read(dictFile));
   }
  catch (  IOException e) {
-    e.printStackTrace();
+    throw new RuntimeException("Could not load " + dictFile,e);
   }
   return dictLookup;
 }

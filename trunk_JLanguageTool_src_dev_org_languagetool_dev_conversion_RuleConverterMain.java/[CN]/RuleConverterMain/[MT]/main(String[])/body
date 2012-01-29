@@ -1,10 +1,13 @@
 {
-  String grammarfile=null;
-  String rulefile=null;
-  String specificFiletype=null;
-  String generalFiletype=null;
-  String discardfile=null;
-  String disambigfile=null;
+  String grammarFile=null;
+  String ruleFile=null;
+  String specificFileType=null;
+  String generalFiletType=null;
+  String discardFile=null;
+  String disambigFile=null;
+  if (args.length < 4) {
+    exitWithUsageMessage();
+  }
   try {
     if (args[0].equals("--check")) {
       RuleCoverage checker=new RuleCoverage(Language.ENGLISH);
@@ -14,58 +17,55 @@
     }
   }
  catch (  Exception e) {
-    e.printStackTrace();
-  }
-  if (args.length < 4) {
-    exitWithUsageMessage();
+    throw new RuntimeException(e);
   }
   for (int i=0; i < args.length; i++) {
     if (args[i].equals("-h") || args[i].equals("--help") || args[i].equals("--?")|| args[i].equals("-help")) {
       exitWithUsageMessage();
     }
  else     if (args[i].equals("-s") || args[i].equals("--specificFiletype")) {
-      specificFiletype=getSpecificFiletypeOrExit(args[++i]);
+      specificFileType=getSpecificFiletypeOrExit(args[++i]);
     }
  else     if (args[i].equals("-g") || args[i].equals("--generalFiletype")) {
-      generalFiletype=getGeneralFiletypeOrExit(args[++i]);
+      generalFiletType=getGeneralFiletypeOrExit(args[++i]);
     }
  else     if (args[i].equals("--outputFile") || args[i].equals("-o")) {
-      grammarfile=args[++i];
+      grammarFile=args[++i];
     }
  else     if (args[i].equals("--discardFile") || args[i].equals("-d")) {
-      discardfile=args[++i];
+      discardFile=args[++i];
     }
  else     if (args[i].equals("--disambigFile") || args[i].equals("-a")) {
-      disambigfile=args[++i];
+      disambigFile=args[++i];
     }
  else     if (args[i].equals("--inputFile") || args[i].equals("-i")) {
-      rulefile=args[++i];
+      ruleFile=args[++i];
     }
  else {
       System.err.println("Unknown option: " + args[i]);
       exitWithUsageMessage();
     }
   }
-  if (specificFiletype == null) {
-    specificFiletype="default";
+  if (specificFileType == null) {
+    specificFileType="default";
   }
-  if (generalFiletype == null) {
-    generalFiletype="atd";
+  if (generalFiletType == null) {
+    generalFiletType="atd";
   }
-  if (grammarfile == null) {
+  if (grammarFile == null) {
     System.err.println("Need to specify a grammar file");
     exitWithUsageMessage();
   }
-  if (rulefile == null) {
+  if (ruleFile == null) {
     System.err.println("Need to specify a rule file");
     exitWithUsageMessage();
   }
-  if (disambigfile == null) {
-    disambigfile="disambig.xml";
+  if (disambigFile == null) {
+    disambigFile="disambig.xml";
   }
-  if (discardfile == null) {
-    discardfile="discard.xml";
+  if (discardFile == null) {
+    discardFile="discard.xml";
   }
-  RuleConverterMain prg=new RuleConverterMain(rulefile,grammarfile,discardfile,disambigfile,generalFiletype,specificFiletype);
+  RuleConverterMain prg=new RuleConverterMain(ruleFile,grammarFile,discardFile,disambigFile,generalFiletType,specificFileType);
   prg.run();
 }

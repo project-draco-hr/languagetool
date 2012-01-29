@@ -1,5 +1,4 @@
 {
-  IStemmer dictLookup=null;
-  dictLookup=new DictionaryLookup(Dictionary.read(dictFile));
+  IStemmer dictLookup=new DictionaryLookup(Dictionary.read(dictFile));
   return dictLookup;
 }

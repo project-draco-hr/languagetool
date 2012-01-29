@@ -1,6 +1,6 @@
-String infilename
-String grammarfile
-String discardfile
-String disambigfile
-String generalFiletype
-String specificFiletype
+String inFilename
+String grammarFile
+String discardFile
+String disambigFile
+String generalFileType
+String specificFileType

@@ -3,15 +3,15 @@
     dictLookup=(DictionaryLookup)loadDictionary();
   }
   if (hasPosTag(word)) {
-    String[] splitWord=word.split("/");
-    if (Pattern.matches(splitWord[1],postag)) {
+    final String[] splitWord=word.split("/");
+    if (Pattern.matches(splitWord[1],posTag)) {
       return true;
     }
     return false;
   }
-  List<WordData> lwd=dictLookup.lookup(word);
+  final List<WordData> lwd=dictLookup.lookup(word);
   for (  WordData wd : lwd) {
-    if (wd.getTag().toString().equals(postag)) {
+    if (wd.getTag().toString().equals(posTag)) {
       return true;
     }
   }

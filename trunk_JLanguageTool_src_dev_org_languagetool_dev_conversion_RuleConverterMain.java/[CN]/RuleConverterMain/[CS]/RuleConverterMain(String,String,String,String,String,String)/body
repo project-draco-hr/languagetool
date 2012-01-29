@@ -1,12 +1,12 @@
 {
-  this.grammarfile=grammarfile;
-  this.specificFiletype=specificFiletype;
-  this.disambigfile=disambigfile;
-  this.discardfile=discardfile;
-  if (generalFiletype.equals("atd")) {
-    rc=new AtdRuleConverter(infilename,grammarfile,specificFiletype);
+  this.grammarFile=grammarFile;
+  this.specificFiletype=specificFileType;
+  this.disambigFile=disambigFile;
+  this.discardFile=discardFile;
+  if (generalFileType.equals("atd")) {
+    rc=new AtdRuleConverter(inFilename,grammarFile,specificFileType);
   }
- else   if (generalFiletype.equals("cg")) {
-    rc=new CgRuleConverter(infilename,grammarfile,specificFiletype);
+ else   if (generalFileType.equals("cg")) {
+    rc=new CgRuleConverter(inFilename,grammarFile,specificFileType);
   }
 }
