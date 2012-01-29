@@ -1,6 +1,7 @@
 String stringValue
 boolean isRegularExpression
 boolean isCaseSensitive
+boolean isNegated
 boolean isInflected
 Language lang
 String ruleId
