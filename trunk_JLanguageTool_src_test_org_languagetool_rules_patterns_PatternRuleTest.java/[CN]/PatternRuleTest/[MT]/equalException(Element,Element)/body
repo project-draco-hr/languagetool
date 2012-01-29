@@ -1,0 +1,19 @@
+{
+  String string1=exception1.getString();
+  String string2=exception2.getString();
+  if (!exception1.getCaseSensitive() || !exception2.getCaseSensitive()) {
+    string1=string1.toLowerCase();
+    string2=string2.toLowerCase();
+  }
+  final boolean equalStrings=(string1 == null || string2 == null) ? string1 == string2 : string1.equals(string2);
+  if (!equalStrings) {
+    return false;
+  }
+  final String posTag1=exception1.getPOStag();
+  final String posTag2=exception2.getPOStag();
+  final boolean equalPosTags=(posTag1 == null || posTag2 == null) ? posTag1 == posTag2 : posTag1.equals(posTag2);
+  if (!equalPosTags) {
+    return false;
+  }
+  return exception1.getNegation() == exception2.getNegation() && exception1.getPOSNegation() == exception2.getPOSNegation() && exception1.hasNextException() == exception2.hasNextException() && exception1.hasPreviousException() == exception2.hasPreviousException();
+}
