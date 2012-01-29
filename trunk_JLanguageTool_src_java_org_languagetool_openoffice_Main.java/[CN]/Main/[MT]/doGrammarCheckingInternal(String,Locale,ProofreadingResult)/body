@@ -1,7 +1,8 @@
 {
   if (!StringTools.isEmpty(paraText) && hasLocale(locale)) {
-    if (!Language.getLanguageForShortName(locale.Language).equals(docLanguage) || langTool == null || recheck) {
-      docLanguage=Language.getLanguageForShortName(locale.Language);
+    final Language langForShortName=Language.getLanguageForShortName(locale.Language);
+    if (!langForShortName.equals(docLanguage) || langTool == null || recheck) {
+      docLanguage=langForShortName;
       if (docLanguage == null) {
         return paRes;
       }

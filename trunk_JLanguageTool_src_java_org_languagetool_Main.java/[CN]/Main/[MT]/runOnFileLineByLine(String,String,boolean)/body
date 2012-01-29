@@ -44,15 +44,7 @@
           }
           System.out.println("Language used is: " + language.getName());
           language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(singleLineBreakMarksParagraph);
-          try {
-            changeLanguage(language,motherTongue,disabledRules,enabledRules);
-          }
- catch (          SAXException e) {
-            e.printStackTrace();
-          }
-catch (          ParserConfigurationException e) {
-            e.printStackTrace();
-          }
+          changeLanguage(language,motherTongue,disabledRules,enabledRules);
         }
         sb.append('\n');
         tmpLineOffset++;

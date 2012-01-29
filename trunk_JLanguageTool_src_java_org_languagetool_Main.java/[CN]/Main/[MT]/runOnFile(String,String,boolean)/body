@@ -7,15 +7,7 @@
         System.err.println("Could not detect language well enough, using English");
         language=Language.ENGLISH;
       }
-      try {
-        changeLanguage(language,motherTongue,disabledRules,enabledRules);
-      }
- catch (      SAXException e) {
-        e.printStackTrace();
-      }
-catch (      ParserConfigurationException e) {
-        e.printStackTrace();
-      }
+      changeLanguage(language,motherTongue,disabledRules,enabledRules);
       System.out.println("Using " + language.getName() + " for file "+ filename);
     }
     final File file=new File(filename);

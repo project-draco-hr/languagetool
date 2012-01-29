@@ -1,9 +1,14 @@
 {
-  lt=new JLanguageTool(language,motherTongue);
-  lt.activateDefaultPatternRules();
-  lt.activateDefaultFalseFriendRules();
-  selectRules(lt,disabledRules,enabledRules);
-  if (verbose) {
-    lt.setOutput(System.err);
+  try {
+    lt=new JLanguageTool(language,motherTongue);
+    lt.activateDefaultPatternRules();
+    lt.activateDefaultFalseFriendRules();
+    selectRules(lt,disabledRules,enabledRules);
+    if (verbose) {
+      lt.setOutput(System.err);
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Could not create LanguageTool instance for language " + language,e);
   }
 }
