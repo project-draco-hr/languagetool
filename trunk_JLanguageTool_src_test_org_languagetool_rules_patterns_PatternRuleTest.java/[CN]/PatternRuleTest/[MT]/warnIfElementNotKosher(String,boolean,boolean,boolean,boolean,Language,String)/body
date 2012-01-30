@@ -9,7 +9,7 @@
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains "+ "\""+ stringValue+ "\" that is marked as regular expression but probably is not one.");
   }
   if (isNegated && stringValue.isEmpty()) {
-    System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " marked as negated but is empty so the negation is useless. Did you mix up negated and pos_negated?");
+    System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " marked as negated but is empty so the negation is useless. Did you mix up negate=\"yes\" and negate_pos=\"yes\"?");
   }
   if (isInflected && stringValue.isEmpty()) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ " contains "+ "\""+ stringValue+ "\" that is marked as inflected but is empty, so the attribute is redundant.");
