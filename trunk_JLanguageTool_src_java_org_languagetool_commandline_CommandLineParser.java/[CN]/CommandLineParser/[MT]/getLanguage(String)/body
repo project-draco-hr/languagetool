@@ -5,8 +5,7 @@
     for (    final Language lang : Language.LANGUAGES) {
       supportedLanguages.add(lang.getShortName());
     }
-    System.out.println("Unknown language '" + userSuppliedLangCode + "'. Supported languages are: "+ supportedLanguages);
-    exitWithUsageMessage();
+    throw new IllegalArgumentException("Unknown language '" + userSuppliedLangCode + "'. Supported languages are: "+ supportedLanguages);
   }
   return language;
 }

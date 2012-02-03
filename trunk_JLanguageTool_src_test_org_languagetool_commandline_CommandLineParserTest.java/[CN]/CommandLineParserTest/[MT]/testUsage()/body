@@ -1,0 +1,15 @@
+{
+  final CommandLineParser parser=new CommandLineParser();
+  try {
+    parser.parseOptions(new String[]{});
+    fail();
+  }
+ catch (  IllegalArgumentException expected) {
+  }
+  try {
+    parser.parseOptions(new String[]{"--help"});
+    fail();
+  }
+ catch (  IllegalArgumentException expected) {
+  }
+}

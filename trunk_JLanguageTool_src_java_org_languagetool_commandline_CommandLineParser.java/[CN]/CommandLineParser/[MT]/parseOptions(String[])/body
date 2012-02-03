@@ -1,0 +1,104 @@
+{
+  if (args.length < 1 || args.length > 10) {
+    throw new IllegalArgumentException();
+  }
+  final CommandLineOptions options=new CommandLineOptions();
+  for (int i=0; i < args.length; i++) {
+    if (args[i].equals("-h") || args[i].equals("-help") || args[i].equals("--help")|| args[i].equals("--?")) {
+      throw new IllegalArgumentException();
+    }
+ else     if (args[i].equals("-adl") || args[i].equals("--autoDetect")) {
+      LanguageIdentifierTools.addLtProfiles();
+      options.setAutoDetect(true);
+    }
+ else     if (args[i].equals("-v") || args[i].equals("--verbose")) {
+      options.setVerbose(true);
+    }
+ else     if (args[i].equals("-t") || args[i].equals("--taggeronly")) {
+      options.setTaggerOnly(true);
+      if (options.isListUnknown()) {
+        throw new IllegalArgumentException("You cannot list unknown words when tagging only.");
+      }
+      if (options.isApplySuggestions()) {
+        throw new IllegalArgumentException("You cannot apply suggestions when tagging only.");
+      }
+    }
+ else     if (args[i].equals("-r") || args[i].equals("--recursive")) {
+      options.setRecursive(true);
+    }
+ else     if (args[i].equals("-b2") || args[i].equals("--bitext")) {
+      options.setBitext(true);
+    }
+ else     if (args[i].equals("-d") || args[i].equals("--disable")) {
+      if (options.getEnabledRules().length > 0) {
+        throw new IllegalArgumentException("You cannot specify both enabled and disabled rules");
+      }
+      checkArguments("-d/--disable",i,args);
+      final String rules=args[++i];
+      options.setDisabledRules(rules.split(","));
+    }
+ else     if (args[i].equals("-e") || args[i].equals("--enable")) {
+      if (options.getDisabledRules().length > 0) {
+        throw new IllegalArgumentException("You cannot specify both enabled and disabled rules");
+      }
+      checkArguments("-e/--enable",i,args);
+      final String rules=args[++i];
+      options.setEnabledRules(rules.split(","));
+    }
+ else     if (args[i].equals("-l") || args[i].equals("--language")) {
+      checkArguments("-l/--language",i,args);
+      options.setLanguage(getLanguage(args[++i]));
+    }
+ else     if (args[i].equals("-m") || args[i].equals("--mothertongue")) {
+      checkArguments("-m/--mothertongue",i,args);
+      options.setMotherTongue(getLanguage(args[++i]));
+    }
+ else     if (args[i].equals("-c") || args[i].equals("--encoding")) {
+      checkArguments("-c/--encoding",i,args);
+      options.setEncoding(args[++i]);
+    }
+ else     if (args[i].equals("-u") || args[i].equals("--list-unknown")) {
+      options.setListUnknown(true);
+      if (options.isTaggerOnly()) {
+        throw new IllegalArgumentException("You cannot list unknown words when tagging only.");
+      }
+    }
+ else     if (args[i].equals("-b")) {
+      options.setSingleLineBreakMarksParagraph(true);
+    }
+ else     if (args[i].equals("--api")) {
+      options.setApiFormat(true);
+      if (options.isApplySuggestions()) {
+        throw new IllegalArgumentException("API format makes no sense for automatic application of suggestions.");
+      }
+    }
+ else     if (args[i].equals("-a") || args[i].equals("--apply")) {
+      options.setApplySuggestions(true);
+      if (options.isTaggerOnly()) {
+        throw new IllegalArgumentException("You cannot apply suggestions when tagging only.");
+      }
+      if (options.isApiFormat()) {
+        throw new IllegalArgumentException("API format makes no sense for automatic application of suggestions.");
+      }
+    }
+ else     if (args[i].equals("-p") || args[i].equals("--profile")) {
+      options.setProfile(true);
+      if (options.isApiFormat()) {
+        throw new IllegalArgumentException("API format makes no sense for profiling.");
+      }
+      if (options.isApplySuggestions()) {
+        throw new IllegalArgumentException("Applying suggestions makes no sense for profiling.");
+      }
+      if (options.isTaggerOnly()) {
+        throw new IllegalArgumentException("Tagging makes no sense for profiling.");
+      }
+    }
+ else     if (i == args.length - 1) {
+      options.setFilename(args[i]);
+    }
+ else {
+      throw new IllegalArgumentException("Unknown option: " + args[i]);
+    }
+  }
+  return options;
+}
