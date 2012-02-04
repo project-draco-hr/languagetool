@@ -22,6 +22,8 @@
     i++;
   }
   final long endTime=System.currentTimeMillis();
+  sb.append(HTML_GREY_FONT_START);
   sb.append(Tools.makeTexti18n(messages,"resultTime",new Object[]{endTime - startTime,endTime - startTimeMatching}));
+  sb.append(HTML_FONT_END);
   return ruleMatches.size();
 }

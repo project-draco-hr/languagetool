@@ -15,8 +15,8 @@
  else {
       langName=lang.getTranslatedName(messages);
     }
-    final String startCheckText=Tools.makeTexti18n(messages,"startChecking",new Object[]{langName});
-    resultArea.setText(HTML_FONT_START + startCheckText + "<br>\n"+ HTML_FONT_END);
+    final String startCheckText=HTML_GREY_FONT_START + Tools.makeTexti18n(messages,"startChecking",new Object[]{langName}) + HTML_FONT_END;
+    resultArea.setText(startCheckText);
     resultArea.repaint();
     sb.append(startCheckText);
     sb.append("...<br>\n");
@@ -30,7 +30,9 @@
       sb.append("</font></b><br>");
     }
     final String checkDone=Tools.makeTexti18n(messages,"checkDone",new Object[]{matches});
+    sb.append(HTML_GREY_FONT_START);
     sb.append(checkDone);
+    sb.append(HTML_FONT_END);
     sb.append("<br>\n");
     resultArea.setText(HTML_FONT_START + sb.toString() + HTML_FONT_END);
     resultArea.setCaretPosition(0);
