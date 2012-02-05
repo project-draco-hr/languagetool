@@ -1,0 +1,23 @@
+{
+  List<String> l=Arrays.asList("inflectedform2");
+  List<AnalyzedTokenReadings> analyzedTokenReadings=tagger.tag(l);
+  assertNotNull(analyzedTokenReadings);
+  assertEquals(1,analyzedTokenReadings.size());
+  AnalyzedTokenReadings analyzedTokenReading=analyzedTokenReadings.get(0);
+  assertEquals("inflectedform2",analyzedTokenReading.getToken());
+  assertNotNull(analyzedTokenReading.getReadings());
+  assertEquals(3,analyzedTokenReading.getReadingsLength());
+  AnalyzedToken analyzedToken;
+  analyzedToken=analyzedTokenReading.getReadings().get(0);
+  assertEquals("POS1a",analyzedToken.getPOSTag());
+  assertEquals("inflectedform2",analyzedToken.getToken());
+  assertEquals("lemma2",analyzedToken.getLemma());
+  analyzedToken=analyzedTokenReading.getReadings().get(1);
+  assertEquals("POS1b",analyzedToken.getPOSTag());
+  assertEquals("inflectedform2",analyzedToken.getToken());
+  assertEquals("lemma2",analyzedToken.getLemma());
+  analyzedToken=analyzedTokenReading.getReadings().get(2);
+  assertEquals("POS1c",analyzedToken.getPOSTag());
+  assertEquals("inflectedform2",analyzedToken.getToken());
+  assertEquals("lemma2",analyzedToken.getLemma());
+}

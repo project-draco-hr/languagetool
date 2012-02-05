@@ -1,0 +1,15 @@
+{
+  List<String> l=Arrays.asList("inflectedform2","inflectedform3");
+  List<AnalyzedTokenReadings> analyzedTokenReadings=tagger.tag(l);
+  assertNotNull(analyzedTokenReadings);
+  assertEquals(2,analyzedTokenReadings.size());
+  AnalyzedTokenReadings analyzedTokenReading;
+  analyzedTokenReading=analyzedTokenReadings.get(0);
+  assertEquals("inflectedform2",analyzedTokenReading.getToken());
+  assertNotNull(analyzedTokenReading.getReadings());
+  assertEquals(3,analyzedTokenReading.getReadingsLength());
+  analyzedTokenReading=analyzedTokenReadings.get(1);
+  assertEquals("inflectedform3",analyzedTokenReading.getToken());
+  assertNotNull(analyzedTokenReading.getReadings());
+  assertEquals(4,analyzedTokenReading.getReadingsLength());
+}
