@@ -1,13 +1,13 @@
 {
-  List<AnalyzedTokenReadings> tags=tagger.tag(createList(inflected));
-  StringBuilder allTags=new StringBuilder();
+  final List<AnalyzedTokenReadings> tags=tagger.tag(Arrays.asList(inflected));
+  final StringBuilder allTags=new StringBuilder();
   boolean found=false;
   for (  AnalyzedTokenReadings analyzedTokenReadings : tags) {
-    int length=analyzedTokenReadings.getReadingsLength();
+    final int length=analyzedTokenReadings.getReadingsLength();
     for (int i=0; i < length; i++) {
-      AnalyzedToken token=analyzedTokenReadings.getAnalyzedToken(i);
-      String crtLemma=token.getLemma();
-      String crtPOSTag=token.getPOSTag();
+      final AnalyzedToken token=analyzedTokenReadings.getAnalyzedToken(i);
+      final String crtLemma=token.getLemma();
+      final String crtPOSTag=token.getPOSTag();
       allTags.append(String.format("[%s/%s]",crtLemma,crtPOSTag));
       found=((null == lemma) || (lemma.equals(crtLemma))) && ((null == posTag) || (posTag.equals(crtPOSTag)));
       if (found)       break;
