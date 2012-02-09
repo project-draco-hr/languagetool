@@ -1,12 +1,16 @@
 {
-  String postData="language=" + lang.getShortName();
-  postData+="&text=" + URLEncoder.encode(text,"UTF-8");
+  final String postData="language=" + lang.getShortName() + "&text="+ URLEncoder.encode(text,"UTF-8");
   final URL url=new URL("http://localhost:" + HTTPServer.DEFAULT_PORT);
   final URLConnection connection=url.openConnection();
   connection.setDoOutput(true);
   final OutputStreamWriter wr=new OutputStreamWriter(connection.getOutputStream());
-  wr.write(postData);
-  wr.flush();
-  final String result=StringTools.streamToString(connection.getInputStream());
-  return result;
+  try {
+    wr.write(postData);
+    wr.flush();
+    final String result=StringTools.streamToString(connection.getInputStream());
+    return result;
+  }
+  finally {
+    wr.close();
+  }
 }

@@ -2,31 +2,31 @@
   final String enc="UTF-8";
   assertEquals("<?xml version=\"1.0\" encoding=\"" + enc + "\"?>\n<matches>\n</matches>\n",check(Language.GERMAN,""));
   assertEquals("<?xml version=\"1.0\" encoding=\"" + enc + "\"?>\n<matches>\n</matches>\n",check(Language.GERMAN,"Ein kleiner test"));
-  assertTrue(check(Language.GERMAN,"ein kleiner test").indexOf("UPPERCASE_SENTENCE_START") != -1);
+  assertTrue(check(Language.GERMAN,"ein kleiner test").contains("UPPERCASE_SENTENCE_START"));
   final String result=check(Language.GERMAN,"ein kleiner test. Und wieder Erwarten noch was: \u00f6\u00e4\u00fc\u00df.");
-  assertTrue(result.indexOf("UPPERCASE_SENTENCE_START") != -1);
-  assertTrue(result.indexOf("WIEDER_WILLEN") != -1);
-  assertTrue("Expected special chars, got: '" + result + "'",result.indexOf("\u00f6\u00e4\u00fc\u00df") != -1);
+  assertTrue(result.contains("UPPERCASE_SENTENCE_START"));
+  assertTrue(result.contains("WIEDER_WILLEN"));
+  assertTrue("Expected special chars, got: '" + result + "'",result.contains("\u00f6\u00e4\u00fc\u00df"));
   final XMLValidator validator=new XMLValidator();
   validator.validateXMLString(result,JLanguageTool.getDataBroker().getResourceDir() + "/api-output.dtd","matches");
   validator.checkSimpleXMLString(result);
-  assertTrue(check(Language.GERMAN,"bla <script>").indexOf("<script>") == -1);
+  assertTrue(!check(Language.GERMAN,"bla <script>").contains("<script>"));
   final String germanSpecialChars=check(Language.GERMAN,"ein kleiner test. Und wieder Erwarten noch was: ???????? ????????.");
   assertTrue("Expected special chars, got: '" + germanSpecialChars + "'",germanSpecialChars.contains("????????"));
   final String romanianSpecialChars=check(Language.ROMANIAN,"bla bla ?????????? ?????????? ??i c??teva caractere speciale");
   assertTrue("Expected special chars, got: '" + romanianSpecialChars + "'",romanianSpecialChars.contains("??????????"));
   final String polishSpecialChars=check(Language.POLISH,"M??wi??a d??ugo, ??eby tylko m??wi?? m??wi?? d??ugo.");
   assertTrue("Expected special chars, got: '" + polishSpecialChars + "'",polishSpecialChars.contains("m??wi??"));
-  assertTrue(checkByPOST(Language.ROMANIAN,"gre??it gre??it").indexOf("gre??it") != -1);
+  assertTrue(checkByPOST(Language.ROMANIAN,"gre??it gre??it").contains("gre??it"));
   final URL url=new URL("http://localhost:" + HTTPServer.DEFAULT_PORT + "/Languages");
   final String languagesXML=StringTools.streamToString((InputStream)url.getContent());
   if (!languagesXML.contains("Romanian") || !languagesXML.contains("English")) {
     fail("Error getting supported languages: " + languagesXML);
   }
   assertTrue(check(Language.ENGLISH,"Me & you you").contains("&"));
-  assertTrue(check(Language.ENGLISH,Language.GERMAN,"We will berate you").indexOf("BERATE") != -1);
-  assertTrue(check(Language.GERMAN,Language.ENGLISH,"Man sollte ihn nicht so beraten.").indexOf("BERATE") != -1);
-  assertTrue(check(Language.POLISH,Language.ENGLISH,"To jest frywolne.").indexOf("FRIVOLOUS") != -1);
-  assertTrue(bitextCheck(Language.POLISH,Language.ENGLISH,"This is frivolous.","To jest frywolne.").indexOf("FRIVOLOUS") != -1);
-  assertTrue(bitextCheck(Language.POLISH,Language.ENGLISH,"This is something else.","To jest frywolne.").indexOf("FRIVOLOUS") == -1);
+  assertTrue(check(Language.ENGLISH,Language.GERMAN,"We will berate you").contains("BERATE"));
+  assertTrue(check(Language.GERMAN,Language.ENGLISH,"Man sollte ihn nicht so beraten.").contains("BERATE"));
+  assertTrue(check(Language.POLISH,Language.ENGLISH,"To jest frywolne.").contains("FRIVOLOUS"));
+  assertTrue(bitextCheck(Language.POLISH,Language.ENGLISH,"This is frivolous.","To jest frywolne.").contains("FRIVOLOUS"));
+  assertTrue(!bitextCheck(Language.POLISH,Language.ENGLISH,"This is something else.","To jest frywolne.").contains("FRIVOLOUS"));
 }
