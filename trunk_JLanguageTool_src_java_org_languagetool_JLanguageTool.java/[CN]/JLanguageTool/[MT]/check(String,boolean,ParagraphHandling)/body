@@ -32,7 +32,7 @@
     lineCount+=countLineBreaks(sentence);
     final int lineBreakPos=sentence.indexOf('\n');
     if (lineBreakPos == -1) {
-      columnCount+=sentence.length() - 1;
+      columnCount+=sentence.length();
     }
  else {
       if (lineBreakPos == 0) {
