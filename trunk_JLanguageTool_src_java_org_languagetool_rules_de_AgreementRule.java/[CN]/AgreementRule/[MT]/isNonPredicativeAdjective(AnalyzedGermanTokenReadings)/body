@@ -1,0 +1,11 @@
+{
+  for (  AnalyzedToken reading : tokensReadings.getReadings()) {
+    if (reading instanceof AnalyzedGermanToken) {
+      final AnalyzedGermanToken germanReading=(AnalyzedGermanToken)reading;
+      if (germanReading.getType() == POSType.ADJEKTIV && !germanReading.getPOSTag().contains("PRD")) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

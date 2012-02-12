@@ -22,7 +22,7 @@
       if (tokenPos >= tokens.length)       break;
       AnalyzedGermanTokenReadings nextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos];
       nextToken=maybeAddAdjectiveReadings(nextToken,tokens,tokenPos);
-      if (nextToken.hasReadingOfType(POSType.ADJEKTIV)) {
+      if (isNonPredicativeAdjective(nextToken)) {
         tokenPos=i + 2;
         if (tokenPos >= tokens.length)         break;
         final AnalyzedGermanTokenReadings nextNextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos];

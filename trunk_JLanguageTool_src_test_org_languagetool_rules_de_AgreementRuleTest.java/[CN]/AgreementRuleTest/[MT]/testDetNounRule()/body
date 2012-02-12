@@ -44,6 +44,7 @@
   assertGood("Das Stuttgarter Auto.");
   assertGood("Das Bielefelder Radio.");
   assertGood("Das G??tersloher Radio.");
+  assertGood("Das wirklich Wichtige kommt jetzt erst.");
   assertBad("Es sind die Tisch.");
   assertBad("Es sind das Tisch.");
   assertBad("Es sind die Haus.");
