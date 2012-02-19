@@ -1,6 +1,5 @@
 {
-  final int maxCommentLength;
-  maxCommentLength=100;
+  final int maxCommentLength=100;
   if (comment.length() > maxCommentLength) {
     while (comment.lastIndexOf(" [") > 0 && comment.lastIndexOf("]") > comment.lastIndexOf(" [") && comment.length() > maxCommentLength) {
       comment=comment.substring(0,comment.lastIndexOf(" [")) + comment.substring(comment.lastIndexOf("]") + 1);
@@ -8,7 +7,9 @@
     while (comment.lastIndexOf(" (") > 0 && comment.lastIndexOf(")") > comment.lastIndexOf(" (") && comment.length() > maxCommentLength) {
       comment=comment.substring(0,comment.lastIndexOf(" (")) + comment.substring(comment.lastIndexOf(")") + 1);
     }
-    if (comment.length() > maxCommentLength)     comment=comment.substring(0,maxCommentLength - 1) + "???";
+    if (comment.length() > maxCommentLength) {
+      comment=comment.substring(0,maxCommentLength - 1) + "???";
+    }
   }
   return comment;
 }
