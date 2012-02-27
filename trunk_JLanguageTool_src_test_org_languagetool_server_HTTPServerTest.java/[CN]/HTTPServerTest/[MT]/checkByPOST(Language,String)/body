@@ -7,7 +7,7 @@
   try {
     wr.write(postData);
     wr.flush();
-    final String result=StringTools.streamToString(connection.getInputStream());
+    final String result=StringTools.streamToString(connection.getInputStream(),"UTF-8");
     return result;
   }
   finally {

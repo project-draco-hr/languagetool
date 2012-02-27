@@ -6,6 +6,6 @@
   }
   final URL url=new URL("http://localhost:" + HTTPServer.DEFAULT_PORT + urlOptions);
   final InputStream stream=(InputStream)url.getContent();
-  final String result=StringTools.streamToString(stream);
+  final String result=StringTools.streamToString(stream,"UTF-8");
   return result;
 }

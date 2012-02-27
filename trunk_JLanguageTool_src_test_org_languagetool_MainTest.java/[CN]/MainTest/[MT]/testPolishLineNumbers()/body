@@ -10,9 +10,9 @@
   w.println("");
   w.println("Test kt??ry wyka??e b????d.");
   w.close();
-  String[] args=new String[]{"-l","pl",input.getAbsolutePath()};
+  String[] args=new String[]{"-l","pl","-c","utf-8",input.getAbsolutePath()};
   Main.main(args);
-  String output=new String(this.out.toByteArray());
+  String output=new String(this.out.toByteArray(),"UTF-8");
   assertTrue(output.indexOf("Expected text language: Polish") == 0);
   assertTrue(output.indexOf("Line 8, column 1, Rule ID: BRAK_PRZECINKA_KTORY") != -1);
 }
