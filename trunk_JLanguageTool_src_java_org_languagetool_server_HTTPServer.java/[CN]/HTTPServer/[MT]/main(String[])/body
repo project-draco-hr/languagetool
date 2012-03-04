@@ -14,12 +14,12 @@
     }
   }
   try {
-    final HttpServer server=HttpServer.create(new InetSocketAddress(port),0);
+    final HttpServer server=HttpServer.create(new InetSocketAddress(DEFAULT_HOST,port),0);
     server.createContext("/",new LanguageToolHttpHandler(verbose,DEFAULT_ALLOWED_IPS));
     server.start();
-    System.out.println("Started LanguageTool HTTP server on port " + port + ".");
+    System.out.println("Started LanguageTool HTTP server on " + DEFAULT_HOST + ", port "+ port+ ".");
   }
  catch (  Exception e) {
-    throw new RuntimeException("Could not start LanguageTool HTTP server on port " + port,e);
+    throw new RuntimeException("Could not start LanguageTool HTTP server on " + DEFAULT_HOST + ", port "+ port,e);
   }
 }

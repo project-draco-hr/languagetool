@@ -1,0 +1,4 @@
+int port
+boolean verbose
+String host
+Set<String> allowedIps
