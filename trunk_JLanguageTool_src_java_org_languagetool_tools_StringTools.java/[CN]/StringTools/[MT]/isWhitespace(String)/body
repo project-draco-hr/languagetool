@@ -7,6 +7,9 @@
     return true;
   }
   if (trimStr.length() == 1) {
+    if ("\u200B".equals(str)) {
+      return true;
+    }
     return java.lang.Character.isWhitespace(trimStr.charAt(0));
   }
   return false;
