@@ -14,65 +14,65 @@
     if (isWhiteBefore) {
       if (token.equals("?")) {
         msg="Point d'interrogation est pr??c??d?? d'une espace fine ins??cable.";
-        suggestionText="???";
+        suggestionText="????";
         fixLen=1;
       }
  else       if (token.equals("!")) {
         msg="Point d'exclamation est pr??c??d?? d'une espace fine ins??cable.";
-        suggestionText="??!";
+        suggestionText="???!";
         fixLen=1;
       }
  else       if (token.equals("??")) {
         msg="Le guillemet fermant est pr??c??d?? d'une espace fine ins??cable.";
-        suggestionText="????";
+        suggestionText="?????";
         fixLen=1;
       }
  else       if (token.equals(";")) {
         msg="Point-virgule est pr??c??d?? d'une espace fine ins??cable.";
-        suggestionText="??;";
+        suggestionText="???;";
         fixLen=1;
       }
  else       if (token.equals(":")) {
         msg="Deux-points sont pr??c??d?? d'une espace fine ins??cable.";
-        suggestionText="??:";
+        suggestionText="???:";
         fixLen=1;
       }
     }
  else {
-      if (token.equals("?") && !prevToken.equals("!") && !prevToken.equals("\u00a0")) {
+      if (token.equals("?") && !prevToken.equals("!") && !prevToken.equals("\u00a0")&& !prevToken.equals("\u202f")) {
         msg="Point d'interrogation est pr??c??d?? d'une espace fine ins??cable.";
-        suggestionText=prevToken + "???";
-        fixLen=1;
-      }
- else       if (token.equals("!") && !prevToken.equals("?") && !prevToken.equals("\u00a0")) {
-        msg="Point d'exclamation est pr??c??d?? d'une espace fine ins??cable.";
-        suggestionText=prevToken + "??!";
-        fixLen=1;
-      }
- else       if (token.equals(";") && !prevToken.equals("\u00a0")) {
-        msg="Point-virgule est pr??c??d?? d'une espace fine ins??cable.";
-        suggestionText=prevToken + "??;";
-        fixLen=1;
-      }
- else       if (token.equals(":") && !prevToken.equals("\u00a0")) {
-        msg="Deux-points pr??c??d??s d'une espace fine ins??cable.";
-        suggestionText=prevToken + "??:";
-        fixLen=1;
-      }
- else       if (token.equals("??") && !prevToken.equals("\u00a0")) {
-        msg="Le guillemet fermant est pr??c??d?? d'une espace fine ins??cable.";
         suggestionText=prevToken + "????";
+        fixLen=1;
+      }
+ else       if (token.equals("!") && !prevToken.equals("?") && !prevToken.equals("\u00a0")&& !prevToken.equals("\u202f")) {
+        msg="Point d'exclamation est pr??c??d?? d'une espace fine ins??cable.";
+        suggestionText=prevToken + "???!";
+        fixLen=1;
+      }
+ else       if (token.equals(";") && !prevToken.equals("\u00a0") && !prevToken.equals("\u202f")) {
+        msg="Point-virgule est pr??c??d?? d'une espace fine ins??cable.";
+        suggestionText=prevToken + "???;";
+        fixLen=1;
+      }
+ else       if (token.equals(":") && !prevToken.equals("\u00a0") && !prevToken.equals("\u202f")) {
+        msg="Deux-points pr??c??d??s d'une espace fine ins??cable.";
+        suggestionText=prevToken + "???:";
+        fixLen=1;
+      }
+ else       if (token.equals("??") && !prevToken.equals("\u00a0") && !prevToken.equals("\u202f")) {
+        msg="Le guillemet fermant est pr??c??d?? d'une espace fine ins??cable.";
+        suggestionText=prevToken + "?????";
         fixLen=1;
       }
     }
     if (StringTools.isEmpty(token) && prevToken.equals("??")) {
       msg="Le guillemet ouvrant est suivi d'une espace fine ins??cable.";
-      suggestionText="????";
+      suggestionText="?????";
       fixLen=1;
     }
  else     if (!StringTools.isEmpty(token) && !token.equals("\u00a0") && prevToken.equals("??")) {
       msg="Le guillemet ouvrant est suivi d'une espace fine ins??cable.";
-      suggestionText="????";
+      suggestionText="?????";
       fixLen=0;
     }
     if (msg != null) {
