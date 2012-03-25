@@ -4,6 +4,14 @@
   JLanguageTool langTool=new JLanguageTool(Language.GERMAN);
   matches=rule.match(langTool.getAnalyzedSentence("(Das sind die S??tze, die die testen sollen)."));
   assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("(Das sind die ??S??tze??, die die testen sollen)."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("(Das sind die ??S??tze??, die die testen sollen)."));
+  assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("Die ???S??tze zum testen."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Die ??S??tze zum testen."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Die ??S??tze zum testen."));
   assertEquals(1,matches.length);
 }
