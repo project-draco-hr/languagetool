@@ -2,6 +2,6 @@
   super(messages,language);
   startSymbols=RU_START_SYMBOLS;
   endSymbols=RU_END_SYMBOLS;
-  NUMERALS=NUMERALS_RU;
+  numerals=NUMERALS_RU;
   uniqueMapInit();
 }

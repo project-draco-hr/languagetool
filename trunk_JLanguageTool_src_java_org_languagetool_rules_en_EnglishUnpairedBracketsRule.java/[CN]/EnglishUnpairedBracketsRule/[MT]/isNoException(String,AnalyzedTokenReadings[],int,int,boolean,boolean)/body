@@ -3,18 +3,19 @@
     return true;
   }
   if (!precSpace && follSpace) {
-    if ("\"".equals(token) && NUMBER.matcher(tokens[i - 1].getToken()).matches()) {
+    final AnalyzedTokenReadings prevToken=tokens[i - 1];
+    if ("\"".equals(tokenStr) && NUMBER.matcher(prevToken.getToken()).matches()) {
       return false;
     }
-    if ("'".equals(token) && tokens[i].hasPosTag("POS")) {
+    if ("'".equals(tokenStr) && tokens[i].hasPosTag("POS")) {
       return false;
     }
-    if ("'".equals(token) && tokens[i - 1].hasPosTag("VBG") && tokens[i - 1].getToken().endsWith("in")) {
+    if ("'".equals(tokenStr) && prevToken.hasPosTag("VBG") && prevToken.getToken().endsWith("in")) {
       return false;
     }
   }
   if (precSpace && !follSpace) {
-    if ("'".equals(token) && i + 1 < tokens.length && "em".equals(tokens[i + 1].getToken())) {
+    if ("'".equals(tokenStr) && i + 1 < tokens.length && "em".equals(tokens[i + 1].getToken())) {
       return false;
     }
   }

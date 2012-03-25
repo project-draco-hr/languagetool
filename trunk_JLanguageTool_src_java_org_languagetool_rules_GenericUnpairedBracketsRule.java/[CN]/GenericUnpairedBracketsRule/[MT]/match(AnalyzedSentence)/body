@@ -23,7 +23,7 @@
           break;
         }
  else         if (noException && followedByWhitespace && token.equals(endSymbols[j])) {
-          if (i > 1 && endSymbols[j].equals(")") && (NUMERALS.matcher(tokens[i - 1].getToken()).matches() && !(!symbolStack.empty() && "(".equals(symbolStack.peek().symbol)))) {
+          if (i > 1 && endSymbols[j].equals(")") && (numerals.matcher(tokens[i - 1].getToken()).matches() && !(!symbolStack.empty() && "(".equals(symbolStack.peek().symbol)))) {
           }
  else {
             if (symbolStack.empty()) {
