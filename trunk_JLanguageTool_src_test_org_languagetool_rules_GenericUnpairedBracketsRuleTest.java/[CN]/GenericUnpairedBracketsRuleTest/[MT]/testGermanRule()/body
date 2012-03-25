@@ -1,0 +1,10 @@
+{
+  setUpRule(Language.GERMAN);
+  assertMatches("(Das sind die S??tze, die sie testen sollen).",0);
+  assertMatches("(Das sind die ??S??tze??, die sie testen sollen).",0);
+  assertMatches("(Das sind die ??S??tze??, die sie testen sollen).",0);
+  assertMatches("(Das sind die S??tze (noch mehr Klammern [schon wieder!]), die sie testen sollen).",0);
+  assertMatches("Die ???S??tze zum Testen.",1);
+  assertMatches("Die ??S??tze zum Testen.",1);
+  assertMatches("Die ??S??tze zum Testen.",1);
+}

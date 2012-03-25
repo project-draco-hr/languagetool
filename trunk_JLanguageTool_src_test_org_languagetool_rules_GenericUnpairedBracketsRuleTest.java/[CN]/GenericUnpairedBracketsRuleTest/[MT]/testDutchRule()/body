@@ -1,0 +1,8 @@
+{
+  setUpRule(Language.DUTCH);
+  assertMatches("Het centrale probleem van het werk is de ???dichterlijke kuischheid???.",0);
+  assertMatches(" Eurlings: ???De gegevens van de dienst zijn van cruciaal belang voor de veiligheid van de luchtvaart en de scheepvaart???.",0);
+  assertMatches(" Eurlings: \u201eDe gegevens van de dienst zijn van cruciaal belang voor de veiligheid van de luchtvaart en de scheepvaart\u201d.",0);
+  assertMatches("Het centrale probleem van het werk is de ???dichterlijke kuischheid.",1);
+  assertMatches(" Eurlings: ???De gegevens van de dienst zijn van cruciaal belang voor de veiligheid van de luchtvaart en de scheepvaart.",1);
+}
