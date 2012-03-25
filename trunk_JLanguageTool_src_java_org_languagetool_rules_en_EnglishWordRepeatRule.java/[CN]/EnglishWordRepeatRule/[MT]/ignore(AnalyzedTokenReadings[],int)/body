@@ -1,0 +1,9 @@
+{
+  if (wordRepetitionOf("had",tokens,position)) {
+    return true;
+  }
+  if (wordRepetitionOf("that",tokens,position)) {
+    return true;
+  }
+  return false;
+}
