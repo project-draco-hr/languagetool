@@ -1,0 +1,6 @@
+{
+  if (wordTokenizer == null) {
+    wordTokenizer=new CatalanWordTokenizer();
+  }
+  return wordTokenizer;
+}

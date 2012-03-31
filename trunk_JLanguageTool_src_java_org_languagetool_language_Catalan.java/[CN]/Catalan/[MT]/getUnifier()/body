@@ -1,0 +1,6 @@
+{
+  if (unifier == null) {
+    unifier=new Unifier();
+  }
+  return unifier;
+}
