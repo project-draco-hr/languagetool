@@ -4,7 +4,7 @@
   }
   int j=0;
   for (int k=0; k < i; k++) {
-    j+=elementNo.get(k);
+    j+=rule.getElementNo().get(k);
   }
   return j;
 }

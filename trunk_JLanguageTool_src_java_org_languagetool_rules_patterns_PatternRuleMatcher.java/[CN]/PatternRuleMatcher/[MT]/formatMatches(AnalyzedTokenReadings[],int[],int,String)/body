@@ -25,6 +25,7 @@
       if (j <= positions.length) {
         nextTokenPos=firstMatchTok + repTokenPos + positions[j + 1];
       }
+      final List<Match> suggestionMatches=rule.getSuggestionMatches();
       if (suggestionMatches != null) {
         if (matchCounter < suggestionMatches.size()) {
           numbersToMatches[j]=matchCounter;
