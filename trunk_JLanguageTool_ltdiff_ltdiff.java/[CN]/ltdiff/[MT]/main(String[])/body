@@ -1,55 +1,94 @@
 {
   String lang=args[0];
-  ArrayList<String[]> rules_added=new ArrayList<String[]>();
-  ArrayList<String[]> rules_removed=new ArrayList<String[]>();
+  ArrayList<rule> old_rules=new ArrayList<rule>();
+  ArrayList<rule> new_rules=new ArrayList<rule>();
+  ArrayList<rule> modified_rules=new ArrayList<rule>();
   try {
-    BufferedReader in=new BufferedReader(new FileReader("grammar_" + lang + ".xml.diff"));
-    String line;
-    while ((line=in.readLine()) != null) {
-      if (line.contains("id=\"") && line.contains("name=\"")) {
-        String[] r=new String[2];
-        r[0]=line;
-        r[1]=line;
-        r[0]=r[0].replaceAll(".*id=\"","").replaceAll("\".*","");
-        r[1]=r[1].replaceAll(".*name=\"","").replaceAll("\".*","");
-        if (line.startsWith("+"))         rules_added.add(r);
- else         if (line.startsWith("-"))         rules_removed.add(r);
+    for (int i=0; i < 2; i++) {
+      ArrayList<rule> rules;
+      if (i == 0)       rules=old_rules;
+ else       rules=new_rules;
+      BufferedReader in=new BufferedReader(new FileReader(i == 0 ? "old" : "new"));
+      String line;
+      rule r=new rule();
+      while ((line=in.readLine()) != null) {
+        if (line.contains("id=\"") && line.contains("rule")) {
+          if (!line.contains("name=\""))           line+=in.readLine();
+          if (r.correct.size() > 0) {
+            rules.add(r);
+            r=new rule();
+          }
+          r.id=line;
+          r.name=line;
+          r.id=r.id.replaceAll(".*id=\"","").replaceAll("\".*","");
+          r.name=r.name.replaceAll(".*name=\"","").replaceAll("\".*","");
+          for (int j=0; j < rules.size(); j++) {
+            if (r.name.equals(rules.get(j).name)) {
+              r.name+=" ";
+            }
+          }
+        }
+ else         if (line.contains("type=\"correct\"")) {
+          while (!line.contains("</example>"))           line+=in.readLine();
+          r.correct.add(line.replaceAll("marker","b").replaceAll(".*<example.*?>","").replaceAll("</example>.*",""));
+        }
+ else         if (line.contains("type=\"incorrect\"")) {
+          while (!line.contains("</example>"))           line+=in.readLine();
+          r.incorrect.add(line.replaceAll("marker","b").replaceAll(".*<example.*?>","").replaceAll("</example>.*",""));
+        }
       }
+      in.close();
     }
-    in.close();
   }
  catch (  IOException e) {
-    System.err.println("Error: " + e.getMessage());
+    System.err.println("Error 1: " + e.getMessage());
   }
-  Collections.sort(rules_added,new Comparator<String[]>(){
-    public int compare(    String[] strings,    String[] otherStrings){
-      return strings[1].compareTo(otherStrings[1]);
-    }
-  }
-);
-  Collections.sort(rules_removed,new Comparator<String[]>(){
-    public int compare(    String[] strings,    String[] otherStrings){
-      return strings[1].compareTo(otherStrings[1]);
-    }
-  }
-);
+  Collections.sort(old_rules);
+  Collections.sort(new_rules);
   try {
     FileWriter fstream=new FileWriter("changes_" + lang + ".html");
     BufferedWriter out=new BufferedWriter(fstream);
-    for (int j=0; j < rules_added.size(); j++) {
-      boolean ignore=false;
-      for (int k=0; k < rules_removed.size(); k++)       if (rules_removed.get(k)[0].equals(rules_added.get(j)[0]))       ignore=true;
-      if (!ignore)       out.write("<tr class=\"new\"><td>4NEWRULE</td><td>" + rules_added.get(j)[1] + "</td></tr>\n");
+    for (int i=0; i < new_rules.size(); i++) {
+      boolean found=false;
+      for (int j=0; j < old_rules.size() && !found; j++) {
+        if (new_rules.get(i).id.equals(old_rules.get(j).id) || new_rules.get(i).name.equals(old_rules.get(j).name)) {
+          found=true;
+          if (new_rules.get(i).numberOfExamples() > old_rules.get(j).numberOfExamples()) {
+            rule r=new_rules.get(i);
+            for (int k=0; k < r.correct.size(); k++) {
+              for (int l=0; l < old_rules.get(j).correct.size(); l++) {
+                if (r.correct.get(k).equals(old_rules.get(j).correct.get(l))) {
+                  r.correct.remove(k);
+                  if (k > 0)                   k--;
+                }
+              }
+            }
+            for (int k=0; k < r.incorrect.size(); k++) {
+              for (int l=0; l < old_rules.get(j).incorrect.size(); l++) {
+                if (r.incorrect.get(k).equals(old_rules.get(j).incorrect.get(l))) {
+                  r.incorrect.remove(k);
+                  if (k > 0)                   k--;
+                }
+              }
+            }
+            modified_rules.add(r);
+          }
+        }
+      }
+      if (!found)       out.write("<tr class=\"new\"><td>4NEWRULE</td><td>" + new_rules.get(i).name + new_rules.get(i).examples(false)+ "</td></tr>\n");
     }
-    for (int j=0; j < rules_removed.size(); j++) {
-      boolean ignore=false;
-      for (int k=0; k < rules_added.size(); k++)       if (rules_added.get(k)[0].equals(rules_removed.get(j)[0]))       ignore=true;
-      if (!ignore)       out.write("<tr class=\"removed\"><td>5REMOVEDRULE</td><td>" + rules_removed.get(j)[1] + "</td></tr>\n");
+    for (int i=0; i < modified_rules.size(); i++) {
+      out.write("<tr class=\"modified\"><td>6IMPROVEDRULE</td><td>" + modified_rules.get(i).name + modified_rules.get(i).examples(true)+ "</td></tr>\n");
+    }
+    for (int i=0; i < old_rules.size(); i++) {
+      boolean found=false;
+      for (int j=0; j < new_rules.size(); j++)       if (new_rules.get(j).id.equals(old_rules.get(i).id) || new_rules.get(j).name.equals(old_rules.get(i).name))       found=true;
+      if (!found)       out.write("<tr class=\"removed\"><td>5REMOVEDRULE</td><td>" + old_rules.get(i).name + "</td></tr>\n");
     }
     out.close();
   }
  catch (  Exception e) {
-    System.err.println("Error: " + e.getMessage());
+    System.err.println("Error 2: " + e.getMessage());
   }
   System.exit(0);
 }
