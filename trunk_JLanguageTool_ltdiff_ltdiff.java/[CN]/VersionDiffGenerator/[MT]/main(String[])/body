@@ -1,22 +1,22 @@
 {
   String lang=args[0];
-  ArrayList<rule> old_rules=new ArrayList<rule>();
-  ArrayList<rule> new_rules=new ArrayList<rule>();
-  ArrayList<rule> modified_rules=new ArrayList<rule>();
+  ArrayList<Rule> old_rules=new ArrayList<Rule>();
+  ArrayList<Rule> new_rules=new ArrayList<Rule>();
+  ArrayList<Rule> modified_rules=new ArrayList<Rule>();
   try {
     for (int i=0; i < 2; i++) {
-      ArrayList<rule> rules;
+      ArrayList<Rule> rules;
       if (i == 0)       rules=old_rules;
  else       rules=new_rules;
       BufferedReader in=new BufferedReader(new FileReader(i == 0 ? "old" : "new"));
       String line;
-      rule r=new rule();
+      Rule r=new Rule();
       while ((line=in.readLine()) != null) {
         if (line.contains("id=\"") && line.contains("rule")) {
           if (!line.contains("name=\""))           line+=in.readLine();
-          if (r.correct.size() > 0) {
+          if (r.numberOfExamples() > 0) {
             rules.add(r);
-            r=new rule();
+            r=new Rule();
           }
           r.id=line;
           r.name=line;
@@ -54,7 +54,7 @@
         if (new_rules.get(i).id.equals(old_rules.get(j).id) || new_rules.get(i).name.equals(old_rules.get(j).name)) {
           found=true;
           if (new_rules.get(i).numberOfExamples() > old_rules.get(j).numberOfExamples()) {
-            rule r=new_rules.get(i);
+            Rule r=new_rules.get(i);
             for (int k=0; k < r.correct.size(); k++) {
               for (int l=0; l < old_rules.get(j).correct.size(); l++) {
                 if (r.correct.get(k).equals(old_rules.get(j).correct.get(l))) {
