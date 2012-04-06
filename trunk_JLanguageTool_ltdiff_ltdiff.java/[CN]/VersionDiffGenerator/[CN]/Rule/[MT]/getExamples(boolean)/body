@@ -1,0 +1,13 @@
+{
+  String s="<div>";
+  for (  String anIncorrect : incorrect) {
+    s+="<span>7FINDERR</span>" + anIncorrect + "<br/>";
+  }
+  if (all) {
+    for (    String aCorrect : correct) {
+      s+="<span>8FINDNOTERR</span>" + aCorrect + "<br/>";
+    }
+  }
+  s=s.substring(0,s.length() - 5) + "</div>";
+  return s;
+}
