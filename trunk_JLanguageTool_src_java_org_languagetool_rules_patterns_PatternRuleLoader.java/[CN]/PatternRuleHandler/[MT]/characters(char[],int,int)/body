@@ -21,4 +21,7 @@
  else   if (inShortMessage) {
     shortMessage.append(s);
   }
+ else   if (inUrl) {
+    url.append(s);
+  }
 }

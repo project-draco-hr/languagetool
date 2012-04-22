@@ -79,6 +79,9 @@
  else   if ("short".equals(qName)) {
     inShortMessage=false;
   }
+ else   if ("url".equals(qName)) {
+    inUrl=false;
+  }
  else   if ("match".equals(qName)) {
     if (inMessage) {
       suggestionMatches.get(suggestionMatches.size() - 1).setLemmaString(match.toString());

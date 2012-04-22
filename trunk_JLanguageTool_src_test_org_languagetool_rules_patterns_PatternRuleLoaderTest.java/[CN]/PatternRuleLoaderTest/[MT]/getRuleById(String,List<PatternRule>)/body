@@ -1,0 +1,8 @@
+{
+  for (  Rule rule : rules) {
+    if (rule.getId().equals(id)) {
+      return rule;
+    }
+  }
+  throw new RuntimeException("No rule found for id '" + id + "'");
+}

@@ -21,6 +21,7 @@
   }
  else   if ("rule".equals(qName)) {
     shortMessage=new StringBuilder();
+    url=new StringBuilder();
     id=attrs.getValue("id");
     if (inRuleGroup) {
       subId++;
@@ -87,6 +88,10 @@
  else   if ("short".equals(qName)) {
     inShortMessage=true;
     shortMessage=new StringBuilder();
+  }
+ else   if ("url".equals(qName)) {
+    inUrl=true;
+    url=new StringBuilder();
   }
  else   if ("rulegroup".equals(qName)) {
     ruleGroupId=attrs.getValue("id");

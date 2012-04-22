@@ -27,4 +27,12 @@
   if (category.isDefaultOff() && !defaultOn) {
     rule.setDefaultOff();
   }
+  if (url != null && url.length() > 0) {
+    try {
+      rule.setUrl(new URL(url.toString()));
+    }
+ catch (    MalformedURLException e) {
+      throw new RuntimeException("Could not parse URL for rule: " + rule + ": '"+ url+ "'",e);
+    }
+  }
 }
