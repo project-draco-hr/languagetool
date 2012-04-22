@@ -1,0 +1,11 @@
+{
+  AnalyzedTokenReadings tokenReadings=new AnalyzedTokenReadings(new AnalyzedToken("word","POS:FOO:BAR","lemma"));
+  assertTrue(tokenReadings.hasPartialPosTag("POS:FOO:BAR"));
+  assertTrue(tokenReadings.hasPartialPosTag("POS:FOO:"));
+  assertTrue(tokenReadings.hasPartialPosTag("POS:FOO"));
+  assertTrue(tokenReadings.hasPartialPosTag(":FOO:"));
+  assertTrue(tokenReadings.hasPartialPosTag("FOO:BAR"));
+  assertFalse(tokenReadings.hasPartialPosTag("POS:FOO:BARX"));
+  assertFalse(tokenReadings.hasPartialPosTag("POS:foo:BAR"));
+  assertFalse(tokenReadings.hasPartialPosTag("xaz"));
+}

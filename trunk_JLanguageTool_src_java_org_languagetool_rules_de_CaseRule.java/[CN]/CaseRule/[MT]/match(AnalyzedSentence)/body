@@ -29,7 +29,11 @@
       if (analyzedGermanToken2 != null) {
         readings=analyzedGermanToken2.getGermanReadings();
       }
-      potentiallyAddLowercaseMatch(ruleMatches,tokens[i],prevTokenIsDas,token);
+      boolean nextTokenIsPersonalPronoun=false;
+      if (i < tokens.length - 1) {
+        nextTokenIsPersonalPronoun=tokens[i + 1].hasPartialPosTag("PRO:PER") || tokens[i + 1].getToken().equals("Sie");
+      }
+      potentiallyAddLowercaseMatch(ruleMatches,tokens[i],prevTokenIsDas,token,nextTokenIsPersonalPronoun);
     }
     prevTokenIsDas=nounIndicators.contains(tokens[i].getToken().toLowerCase());
     if (readings == null) {

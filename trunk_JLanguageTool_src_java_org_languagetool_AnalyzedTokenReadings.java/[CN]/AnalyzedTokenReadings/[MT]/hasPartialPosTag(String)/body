@@ -1,0 +1,12 @@
+{
+  boolean found=false;
+  for (  final AnalyzedToken reading : anTokReadings) {
+    if (reading.getPOSTag() != null) {
+      found=reading.getPOSTag().contains(posTag);
+      if (found) {
+        break;
+      }
+    }
+  }
+  return found;
+}
