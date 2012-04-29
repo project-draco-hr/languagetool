@@ -1,4 +1,5 @@
 JLanguageTool languageTool
+JLanguageTool allRulesLanguageTool
 Language lang
 HashMap<String,PatternRule> complexRules
 PatternRule rule

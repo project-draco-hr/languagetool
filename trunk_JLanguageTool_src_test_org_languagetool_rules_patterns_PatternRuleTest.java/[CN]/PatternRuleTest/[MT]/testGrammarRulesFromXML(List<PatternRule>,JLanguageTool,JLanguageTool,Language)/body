@@ -2,7 +2,7 @@
   final HashMap<String,PatternRule> complexRules=new HashMap<String,PatternRule>();
   for (  final PatternRule rule : rules) {
     testCorrectSentences(languageTool,allRulesLanguageTool,lang,rule);
-    testBadSentences(languageTool,lang,complexRules,rule);
+    testBadSentences(languageTool,allRulesLanguageTool,lang,complexRules,rule);
   }
   if (!complexRules.isEmpty()) {
     final Set<String> set=complexRules.keySet();
