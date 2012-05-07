@@ -45,6 +45,7 @@
   assertGood("Das Bielefelder Radio.");
   assertGood("Das G??tersloher Radio.");
   assertGood("Das wirklich Wichtige kommt jetzt erst.");
+  assertGood("Besonders wenn wir Wermut oder Absinth trinken.");
   assertBad("Es sind die Tisch.");
   assertBad("Es sind das Tisch.");
   assertBad("Es sind die Haus.");
@@ -64,5 +65,4 @@
   assertBad("Das Dach meinem Autos.");
   assertBad("Das Dach meinem gro??en Autos.");
   assertBad("Das Dach mein gro??en Autos.");
-  assertBad("Erst recht wir flei??iges Arbeiter.");
 }
