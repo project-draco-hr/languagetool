@@ -34,5 +34,6 @@ for (final RuleMatch element1 : thisMatches) {
   }
 }
 }
-return sentenceMatches;
+final RuleMatchFilter filter=new SameRuleGroupFilter();
+return filter.filter(sentenceMatches);
 }

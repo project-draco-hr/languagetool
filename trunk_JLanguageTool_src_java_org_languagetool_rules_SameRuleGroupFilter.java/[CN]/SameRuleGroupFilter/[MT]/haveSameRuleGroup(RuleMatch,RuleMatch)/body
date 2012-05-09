@@ -1,0 +1,4 @@
+{
+  final String id1=match.getRule().getId();
+  return id1 != null && id1.equals(nextMatch.getRule().getId());
+}

@@ -1,0 +1,10 @@
+{
+  final List<Element> fakeElements=new ArrayList<Element>();
+  final PatternRule rule1=new PatternRule("id1",Language.ENGLISH,fakeElements,"desc1","msg1","shortMsg1");
+  final PatternRule rule2=new PatternRule("id1",Language.ENGLISH,fakeElements,"desc2","msg2","shortMsg2");
+  final RuleMatch match1=new RuleMatch(rule1,10,20,"Match1");
+  final RuleMatch match2=new RuleMatch(rule2,21,25,"Match2");
+  final SameRuleGroupFilter filter=new SameRuleGroupFilter();
+  final List<RuleMatch> filteredMatches=filter.filter(Arrays.asList(match1,match2));
+  assertEquals(2,filteredMatches.size());
+}
