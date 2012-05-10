@@ -23,10 +23,14 @@
     }
     if (requiresAn.contains(token.toLowerCase()) || requiresAn.contains(token)) {
       if (isException) {
-        throw new IllegalStateException(token + " is listed in both det_a.txt and det_an.txt");
+        isException=true;
+        doesRequireA=false;
+        doesRequireAn=false;
       }
-      isException=true;
-      doesRequireAn=true;
+ else {
+        isException=true;
+        doesRequireAn=true;
+      }
     }
     if (!isException) {
       if (StringTools.isAllUppercase(token) || StringTools.isMixedCase(token)) {

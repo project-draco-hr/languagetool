@@ -35,4 +35,6 @@
   assertIncorrect("Anyone for a MSc?");
   assertCorrect("Anyone for an XMR-based writer?");
   assertCorrect("Its name in English is a[1] (), plural A's, As, as, or a's.");
+  assertCorrect("An historic event");
+  assertCorrect("A historic event");
 }
