@@ -1,7 +1,7 @@
 {
-  AvsAnRule rule=new AvsAnRule(null);
+  final AvsAnRule rule=new AvsAnRule(null);
   RuleMatch[] matches;
-  JLanguageTool langTool=new JLanguageTool(Language.ENGLISH);
+  final JLanguageTool langTool=new JLanguageTool(Language.ENGLISH);
   matches=rule.match(langTool.getAnalyzedSentence("a industry standard."));
   assertEquals(0,matches[0].getFromPos());
   assertEquals(1,matches[0].getToPos());
