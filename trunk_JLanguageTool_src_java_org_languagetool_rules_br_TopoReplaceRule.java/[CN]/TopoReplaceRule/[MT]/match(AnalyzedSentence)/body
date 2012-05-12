@@ -1,0 +1,44 @@
+{
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  final Queue<AnalyzedTokenReadings> prevTokens=new ArrayBlockingQueue<AnalyzedTokenReadings>(wrongWords.size());
+  for (int i=1; i < tokens.length; i++) {
+    addToQueue(tokens[i],prevTokens);
+    final StringBuilder sb=new StringBuilder();
+    final ArrayList<String> variants=new ArrayList<String>();
+    final List<AnalyzedTokenReadings> prevTokensList=Arrays.asList(prevTokens.toArray(new AnalyzedTokenReadings[]{}));
+    for (int j=prevTokensList.size() - 1; j >= 0; j--) {
+      if (j != prevTokensList.size() - 1 && prevTokensList.get(j + 1).isWhitespaceBefore())       sb.insert(0," ");
+      sb.insert(0,prevTokensList.get(j).getToken());
+      variants.add(0,sb.toString());
+    }
+    final int len=variants.size();
+    for (int j=0; j < len; j++) {
+      final String crt=variants.get(j);
+      final int crtWordCount=len - j;
+      final String crtMatch=isCaseSensitive() ? wrongWords.get(crtWordCount - 1).get(crt) : wrongWords.get(crtWordCount - 1).get(crt.toLowerCase(getLocale()));
+      if (crtMatch != null) {
+        final List<String> replacements=Arrays.asList(crtMatch.split("\\|"));
+        String msg=crt + getSuggestion();
+        for (int k=0; k < replacements.size(); k++) {
+          if (k > 0) {
+            msg=msg + (k == replacements.size() - 1 ? getSuggestionsSeparator() : ", ");
+          }
+          msg+="<suggestion>" + replacements.get(k) + "</suggestion>?";
+        }
+        final int startPos=prevTokensList.get(len - crtWordCount).getStartPos();
+        final int endPos=prevTokensList.get(len - 1).getStartPos() + prevTokensList.get(len - 1).getToken().length();
+        final RuleMatch potentialRuleMatch=new RuleMatch(this,startPos,endPos,msg,getShort());
+        if (!isCaseSensitive() && StringTools.startsWithUppercase(crt)) {
+          for (int k=0; k < replacements.size(); k++) {
+            replacements.set(k,StringTools.uppercaseFirstChar(replacements.get(k)));
+          }
+        }
+        potentialRuleMatch.setSuggestedReplacements(replacements);
+        ruleMatches.add(potentialRuleMatch);
+        break;
+      }
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}
