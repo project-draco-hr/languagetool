@@ -1,6 +1,14 @@
 {
-  rule.setStartPositionCorrection(startPositionCorrection);
-  rule.setEndPositionCorrection(endPositionCorrection);
+  if (startPos != -1 && endPos != -1) {
+    rule.setStartPositionCorrection(startPos);
+    rule.setEndPositionCorrection(endPos - elementList.size());
+  }
+ else {
+    rule.setStartPositionCorrection(startPositionCorrection);
+    rule.setEndPositionCorrection(endPositionCorrection);
+  }
+  startPos=-1;
+  endPos=-1;
   startPositionCorrection=0;
   endPositionCorrection=0;
   rule.setCorrectExamples(correctExamples);

@@ -35,6 +35,9 @@
  else   if (qName.equals(TOKEN)) {
     finalizeTokens();
   }
+ else   if (qName.equals("marker") && inPattern) {
+    endPos=tokenCounter;
+  }
  else   if (qName.equals(PATTERN)) {
     checkMarkPositions();
     inPattern=false;

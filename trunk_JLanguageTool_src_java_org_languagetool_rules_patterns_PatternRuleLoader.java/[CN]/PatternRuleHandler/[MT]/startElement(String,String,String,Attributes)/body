@@ -65,6 +65,9 @@
  else   if (qName.equals(TOKEN)) {
     setToken(attrs);
   }
+ else   if (qName.equals("marker") && inPattern) {
+    startPos=tokenCounter;
+  }
  else   if (EXCEPTION.equals(qName)) {
     setExceptions(attrs);
   }
