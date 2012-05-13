@@ -4,5 +4,5 @@
   final SAXParser saxParser=factory.newSAXParser();
   saxParser.getXMLReader().setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd",false);
   saxParser.getXMLReader().setProperty("http://xml.org/sax/properties/lexical-handler",new MyLexicalHandler());
-  saxParser.parse(new FileInputStream("/home/dnaber/prg/languagetool-svn/trunk/JLanguageTool/src/rules/xx/grammar.xml"),handler);
+  saxParser.parse(new FileInputStream("/home/dnaber/prg/languagetool-svn/trunk/JLanguageTool/src/rules/" + LANGUAGE.getShortName() + "/grammar.xml"),handler);
 }

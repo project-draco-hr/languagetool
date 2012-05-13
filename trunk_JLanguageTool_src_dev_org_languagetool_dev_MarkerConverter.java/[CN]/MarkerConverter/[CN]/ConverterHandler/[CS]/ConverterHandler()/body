@@ -1,5 +1,5 @@
 {
-  final JLanguageTool languageTool=new JLanguageTool(Language.DEMO);
+  final JLanguageTool languageTool=new JLanguageTool(LANGUAGE);
   languageTool.activateDefaultPatternRules();
   final List<Rule> rules=languageTool.getAllRules();
   for (  Rule rule : rules) {
