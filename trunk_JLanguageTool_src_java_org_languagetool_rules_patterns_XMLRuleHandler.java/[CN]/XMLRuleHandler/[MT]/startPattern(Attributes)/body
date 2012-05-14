@@ -1,4 +1,5 @@
 {
+  tokenCounter=0;
   inPattern=true;
   if (attrs.getValue(MARK_FROM) != null) {
     startPositionCorrection=Integer.parseInt(attrs.getValue(MARK_FROM));
