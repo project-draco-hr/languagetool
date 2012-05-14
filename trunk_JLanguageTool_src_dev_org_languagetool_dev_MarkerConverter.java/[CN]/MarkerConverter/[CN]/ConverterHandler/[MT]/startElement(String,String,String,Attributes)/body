@@ -13,7 +13,7 @@
       if (qName1.equals("mark_from") || qName1.equals("mark_to")) {
         continue;
       }
-      System.out.print(" " + qName1 + "=\""+ attrs.getValue(qName1)+ "\"");
+      System.out.print(" " + qName1 + "=\""+ StringTools.escapeXML(attrs.getValue(qName1))+ "\"");
     }
     System.out.print(">");
   }
