@@ -1,0 +1,8 @@
+{
+  for (  String s : getSupportedServiceNames()) {
+    if (s.equals(serviceName)) {
+      return true;
+    }
+  }
+  return false;
+}
