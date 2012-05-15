@@ -1,0 +1,24 @@
+{
+  System.out.print("<" + localName);
+  mark_from=Integer.MAX_VALUE;
+  mark_to=Integer.MAX_VALUE;
+  for (int i=0; i < eventReader.getAttributeCount(); i++) {
+    final String attributeValue=eventReader.getAttributeValue(i);
+    final String attributeLocalName=eventReader.getAttributeLocalName(i);
+    if (!attributeLocalName.equals("mark_from") && !attributeLocalName.equals("mark_to")) {
+      System.out.print(" " + attributeLocalName + "=\""+ StringTools.escapeXML(attributeValue)+ "\"");
+    }
+    if (attributeLocalName.equals("mark_from")) {
+      mark_from=Integer.parseInt(attributeValue);
+    }
+ else     if (attributeLocalName.equals("mark_to")) {
+      mark_to=Integer.parseInt(attributeValue);
+    }
+    if ((localName.equals("rulegroup") || localName.equals("rule")) && attributeLocalName.equals("id")) {
+      if (attributeValue != null) {
+        currentId=attributeValue;
+      }
+    }
+  }
+  System.out.print(">");
+}
