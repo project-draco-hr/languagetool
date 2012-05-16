@@ -1,0 +1,5 @@
+{
+  if (refNumber > elementList.size()) {
+    throw new SAXException("Only backward references in match elements are possible, tried to specify token " + refNumber + "\n"+ "Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
+  }
+}
