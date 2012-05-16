@@ -39,7 +39,6 @@
     endPos=tokenCountForMarker;
   }
  else   if (qName.equals(PATTERN)) {
-    checkMarkPositions();
     inPattern=false;
     if (lastPhrase) {
       elementList.clear();
@@ -59,7 +58,7 @@
       correctExamples.add(correctExample.toString());
     }
  else     if (inIncorrectExample) {
-      IncorrectExample example=null;
+      final IncorrectExample example;
       final String[] corrections=exampleCorrection.toString().split("\\|");
       if (corrections.length > 0 && corrections[0].length() > 0) {
         example=new IncorrectExample(incorrectExample.toString(),corrections);

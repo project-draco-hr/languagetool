@@ -3,14 +3,8 @@
     rule.setStartPositionCorrection(startPos);
     rule.setEndPositionCorrection(endPos - tokenCountForMarker);
   }
- else {
-    rule.setStartPositionCorrection(startPositionCorrection);
-    rule.setEndPositionCorrection(endPositionCorrection);
-  }
   startPos=-1;
   endPos=-1;
-  startPositionCorrection=0;
-  endPositionCorrection=0;
   rule.setCorrectExamples(correctExamples);
   rule.setIncorrectExamples(incorrectExamples);
   rule.setCategory(category);
