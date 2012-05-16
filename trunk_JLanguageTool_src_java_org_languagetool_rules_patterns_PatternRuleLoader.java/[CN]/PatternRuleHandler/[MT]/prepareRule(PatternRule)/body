@@ -1,7 +1,7 @@
 {
   if (startPos != -1 && endPos != -1) {
     rule.setStartPositionCorrection(startPos);
-    rule.setEndPositionCorrection(endPos - elementList.size());
+    rule.setEndPositionCorrection(endPos - tokenCountForMarker);
   }
  else {
     rule.setStartPositionCorrection(startPositionCorrection);

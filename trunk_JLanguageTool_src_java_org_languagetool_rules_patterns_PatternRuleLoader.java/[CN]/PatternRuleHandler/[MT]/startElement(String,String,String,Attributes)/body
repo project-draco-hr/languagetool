@@ -47,9 +47,11 @@
   }
  else   if (PATTERN.equals(qName)) {
     startPattern(attrs);
+    tokenCountForMarker=0;
   }
  else   if (AND.equals(qName)) {
     inAndGroup=true;
+    tokenCountForMarker++;
   }
  else   if ("unify".equals(qName)) {
     inUnification=true;
@@ -64,6 +66,9 @@
   }
  else   if (qName.equals(TOKEN)) {
     setToken(attrs);
+    if (!inAndGroup) {
+      tokenCountForMarker++;
+    }
   }
  else   if (qName.equals("marker") && inPattern) {
     startPos=tokenCounter;
@@ -135,5 +140,6 @@
   }
  else   if ("phraseref".equals(qName) && (attrs.getValue("idref") != null)) {
     preparePhrase(attrs);
+    tokenCountForMarker++;
   }
 }
