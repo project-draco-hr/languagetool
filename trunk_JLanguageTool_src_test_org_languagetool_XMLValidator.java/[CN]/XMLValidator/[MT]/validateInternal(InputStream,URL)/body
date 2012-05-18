@@ -3,5 +3,21 @@
   final Schema schema=sf.newSchema(xmlSchema);
   final Validator validator=schema.newValidator();
   validator.setErrorHandler(new ErrorHandler());
+  validator.setResourceResolver(new LSResourceResolver(){
+    @Override public LSInput resolveResource(    String type,    String namespaceURI,    String publicId,    String systemId,    String baseURI){
+      if (systemId.startsWith("classpath:")) {
+        final String path=systemId.substring("classpath:".length());
+        final InputStream stream=this.getClass().getResourceAsStream(path);
+        if (stream == null) {
+          throw new RuntimeException("Could not find " + path + " in classpath");
+        }
+ else {
+          return new DOMInputImpl(publicId,systemId,baseURI,stream,"utf-8");
+        }
+      }
+      return null;
+    }
+  }
+);
   validator.validate(new StreamSource(xml));
 }

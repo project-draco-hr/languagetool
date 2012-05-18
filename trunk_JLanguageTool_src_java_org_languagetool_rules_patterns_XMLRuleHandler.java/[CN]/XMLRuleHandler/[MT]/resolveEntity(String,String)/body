@@ -1,0 +1,16 @@
+{
+  if (systemId.startsWith("classpath:")) {
+    final String path=systemId.substring("classpath:".length());
+    final InputStream stream=this.getClass().getResourceAsStream(path);
+    if (stream == null) {
+      throw new RuntimeException("Could not find " + path + " in classpath");
+    }
+ else {
+      final InputSource source=new InputSource(stream);
+      source.setPublicId(publicId);
+      source.setSystemId(systemId);
+      return source;
+    }
+  }
+  return null;
+}
