@@ -1,0 +1,7 @@
+{
+  if (hunspell != null) {
+    return hunspell;
+  }
+  hunspell=new Hunspell(libDir);
+  return hunspell;
+}

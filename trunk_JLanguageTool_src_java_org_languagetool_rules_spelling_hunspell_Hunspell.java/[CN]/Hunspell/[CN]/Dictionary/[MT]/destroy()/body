@@ -1,0 +1,6 @@
+{
+  if (hsl != null && hunspellDict != null) {
+    hsl.Hunspell_destroy(hunspellDict);
+    hunspellDict=null;
+  }
+}

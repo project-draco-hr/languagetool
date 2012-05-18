@@ -1,0 +1,10 @@
+{
+  if (map.containsKey(baseFileName)) {
+    return map.get(baseFileName);
+  }
+ else {
+    Dictionary d=new Dictionary(baseFileName);
+    map.put(baseFileName,d);
+    return d;
+  }
+}

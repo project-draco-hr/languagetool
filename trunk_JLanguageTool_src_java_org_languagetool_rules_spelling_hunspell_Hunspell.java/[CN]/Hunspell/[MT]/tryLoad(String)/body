@@ -1,0 +1,3 @@
+{
+  hsl=(HunspellLibrary)Native.loadLibrary(libFile,HunspellLibrary.class);
+}

@@ -1,0 +1,3 @@
+{
+  return (str + "\u0000").getBytes(encoding);
+}

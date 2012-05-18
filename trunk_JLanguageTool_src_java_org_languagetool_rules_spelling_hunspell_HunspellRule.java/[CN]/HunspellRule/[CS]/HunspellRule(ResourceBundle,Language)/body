@@ -1,0 +1,10 @@
+{
+  super(messages,language);
+  super.setCategory(new Category(messages.getString("category_typo")));
+  final String shortDicPath="/" + language.getShortName() + "/"+ language.getShortName()+ "_"+ language.getCountryVariants()[0];
+  String dictionaryPath=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(shortDicPath + ".dic").getPath();
+  dictionaryPath=dictionaryPath.substring(0,dictionaryPath.length() - 4);
+  if (JLanguageTool.getDataBroker().getFromResourceDirAsUrl(shortDicPath + ".dic") != null) {
+    dictionary=Hunspell.getInstance().getDictionary(dictionaryPath);
+  }
+}

@@ -1,0 +1,12 @@
+{
+  String os=System.getProperty("os.name").toLowerCase();
+  if (os.startsWith("windows")) {
+    return libNameBare() + ".dll";
+  }
+ else   if (os.startsWith("mac os x")) {
+    return libNameBare() + ".jnilib";
+  }
+ else {
+    return "lib" + libNameBare() + ".so";
+  }
+}

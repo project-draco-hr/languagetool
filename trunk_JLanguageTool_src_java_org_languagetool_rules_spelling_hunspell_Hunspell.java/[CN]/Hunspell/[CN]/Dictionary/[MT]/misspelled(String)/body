@@ -1,0 +1,8 @@
+{
+  try {
+    return hsl.Hunspell_spell(hunspellDict,stringToBytes(word)) == 0;
+  }
+ catch (  UnsupportedEncodingException e) {
+    return true;
+  }
+}
