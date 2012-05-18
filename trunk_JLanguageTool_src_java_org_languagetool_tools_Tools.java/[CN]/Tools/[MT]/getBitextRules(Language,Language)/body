@@ -8,7 +8,7 @@
   }
   final FalseFriendsAsBitextLoader fRuleLoader=new FalseFriendsAsBitextLoader();
   final String fName="/false-friends.xml";
-  bRules.addAll(fRuleLoader.getFalseFriendsAsBitext(JLanguageTool.getDataBroker().getRulesDir() + fName,source,target));
+  bRules.addAll(fRuleLoader.getFalseFriendsAsBitext(fName,source,target));
   bRules.addAll(getAllBuiltinBitextRules(source,null));
   return bRules;
 }
