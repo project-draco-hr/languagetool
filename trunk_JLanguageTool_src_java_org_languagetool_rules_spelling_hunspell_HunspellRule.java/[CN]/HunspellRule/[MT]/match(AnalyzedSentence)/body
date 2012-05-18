@@ -6,7 +6,7 @@
     final String word=tokens[i].getToken();
     boolean isAlphabetic=true;
     if (word.length() == 1) {
-      isAlphabetic=Character.isAlphabetic(word.charAt(0));
+      isAlphabetic=StringTools.isAlphabetic(word.charAt(0));
     }
     if (isAlphabetic && dictionary.misspelled(word)) {
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + word.length(),messages.getString("category_typo"),messages.getString("category_typo"));
