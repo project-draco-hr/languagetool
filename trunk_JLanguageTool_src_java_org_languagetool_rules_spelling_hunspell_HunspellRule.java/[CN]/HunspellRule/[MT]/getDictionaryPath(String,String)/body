@@ -1,0 +1,18 @@
+{
+  URL dictURL=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(originalPath);
+  String dictionaryPath=dictURL.getPath();
+  if ("jar".equals(dictURL.getProtocol())) {
+    File tempDir=new File(System.getProperty("java.io.tmpdir"));
+    File temporaryFile=new File(tempDir,dicName + ".dic");
+    JLanguageTool.addTemporaryFile(temporaryFile);
+    fileCopy(JLanguageTool.getDataBroker().getFromResourceDirAsStream(originalPath),temporaryFile);
+    temporaryFile=new File(tempDir,dicName + ".aff");
+    JLanguageTool.addTemporaryFile(temporaryFile);
+    fileCopy(JLanguageTool.getDataBroker().getFromResourceDirAsStream(originalPath.replaceFirst(".dic$",".aff")),temporaryFile);
+    dictionaryPath=tempDir.getAbsolutePath() + "/" + dicName;
+  }
+ else {
+    dictionaryPath=dictionaryPath.substring(0,dictionaryPath.length() - 4);
+  }
+  return dictionaryPath;
+}

@@ -1,0 +1,6 @@
+{
+  lt.removeTemporaryFiles();
+  if (srcLt != null) {
+    srcLt.removeTemporaryFiles();
+  }
+}

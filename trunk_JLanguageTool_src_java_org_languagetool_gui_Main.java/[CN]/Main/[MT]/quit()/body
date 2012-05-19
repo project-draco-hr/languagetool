@@ -7,5 +7,6 @@
     Tools.showError(e);
   }
   frame.setVisible(false);
+  JLanguageTool.removeTemporaryFiles();
   System.exit(0);
 }

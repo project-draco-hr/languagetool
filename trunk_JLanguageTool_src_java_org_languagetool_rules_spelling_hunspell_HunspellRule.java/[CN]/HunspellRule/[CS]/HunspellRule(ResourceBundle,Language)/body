@@ -1,12 +1,9 @@
 {
   super(messages,language);
   super.setCategory(new Category(messages.getString("category_typo")));
-  final String shortDicPath="/" + language.getShortName() + "/hunspell/"+ language.getShortName()+ "_"+ language.getCountryVariants()[0]+ ".dic";
+  final String langCountry=language.getShortName() + "_" + language.getCountryVariants()[0];
+  final String shortDicPath="/" + language.getShortName() + "/hunspell/"+ langCountry+ ".dic";
   if (JLanguageTool.getDataBroker().resourceExists(shortDicPath)) {
-    String dictionaryPath=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(shortDicPath).getPath();
-    dictionaryPath=dictionaryPath.substring(0,dictionaryPath.length() - 4);
-    if (JLanguageTool.getDataBroker().getFromResourceDirAsUrl(shortDicPath) != null) {
-      dictionary=Hunspell.getInstance().getDictionary(dictionaryPath);
-    }
+    dictionary=Hunspell.getInstance().getDictionary(getDictionaryPath(langCountry,shortDicPath));
   }
 }

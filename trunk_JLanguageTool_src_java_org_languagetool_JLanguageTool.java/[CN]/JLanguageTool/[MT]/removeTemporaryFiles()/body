@@ -1,0 +1,7 @@
+{
+  if (!temporaryFiles.isEmpty()) {
+    for (    File f : temporaryFiles) {
+      f.delete();
+    }
+  }
+}
