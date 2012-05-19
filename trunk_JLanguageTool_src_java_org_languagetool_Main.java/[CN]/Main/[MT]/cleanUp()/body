@@ -1,6 +1,3 @@
 {
-  lt.removeTemporaryFiles();
-  if (srcLt != null) {
-    srcLt.removeTemporaryFiles();
-  }
+  JLanguageTool.removeTemporaryFiles();
 }
