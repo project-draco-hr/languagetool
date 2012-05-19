@@ -1,7 +1,7 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  if (dictionary == null)   return null;
+  if (dictionary == null)   return toRuleMatchArray(ruleMatches);
   for (int i=1; i < tokens.length; i++) {
     final String word=tokens[i].getToken();
     boolean isAlphabetic=true;

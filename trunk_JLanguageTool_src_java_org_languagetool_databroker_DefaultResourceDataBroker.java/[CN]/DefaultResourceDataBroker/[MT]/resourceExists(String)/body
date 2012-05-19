@@ -1,0 +1,4 @@
+{
+  final String completePath=this.getCompleteResourceUrl(path);
+  return ResourceDataBroker.class.getResource(completePath) != null;
+}
