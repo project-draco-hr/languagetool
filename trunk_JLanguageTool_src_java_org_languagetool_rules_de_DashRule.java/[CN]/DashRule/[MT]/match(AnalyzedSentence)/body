@@ -11,7 +11,7 @@
     if (prevToken != null && !prevToken.equals("-") && prevToken.indexOf("--") == -1 && prevToken.indexOf("???-") == -1 && prevToken.endsWith("-")) {
       final char firstChar=token.charAt(0);
       if (Character.isUpperCase(firstChar)) {
-        final String msg="M??glicherweise fehlt ein 'und' oder es wurde nach dem Wort " + "ein ??berfl??ssiges Leerzeichen eingef??gt.";
+        final String msg="M??glicherweise fehlt ein 'und' oder ein Komma, oder es wurde nach dem Wort " + "ein ??berfl??ssiges Leerzeichen eingef??gt. Eventuell haben Sie auch versehentlich einen Bindestrich statt eines Punktes eingef??gt.";
         final RuleMatch ruleMatch=new RuleMatch(this,tokens[i - 1].getStartPos(),tokens[i - 1].getStartPos() + prevToken.length() + 1,msg);
         ruleMatch.setSuggestedReplacement(tokens[i - 1].getToken());
         ruleMatches.add(ruleMatch);
