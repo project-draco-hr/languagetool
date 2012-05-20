@@ -31,6 +31,7 @@
     if (disambigAction == DisambiguatorAction.UNIFY && matchedTokenCount != uniCounter) {
       throw new SAXException(language.getName() + " rule error. The number unified tokens: " + uniCounter+ " must be equal to the number of matched tokens: "+ matchedTokenCount+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
     }
+    final boolean singleTokenCorrection=endPos - startPos > 1;
     if ((!singleTokenCorrection && (disambigAction == DisambiguatorAction.FILTER || disambigAction == DisambiguatorAction.REPLACE)) && (matchedTokenCount > 1)) {
       throw new SAXException(language.getName() + " rule error. Cannot replace or filter more than one token at a time." + "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
     }

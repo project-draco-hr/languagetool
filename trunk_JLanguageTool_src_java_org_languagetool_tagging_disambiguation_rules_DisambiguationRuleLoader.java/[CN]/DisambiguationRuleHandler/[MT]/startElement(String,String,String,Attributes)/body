@@ -15,22 +15,6 @@
  else   if (qName.equals(PATTERN)) {
     inPattern=true;
     tokenCountForMarker=0;
-    if (attrs.getValue(MARK) != null && (attrs.getValue(MARK_FROM) != null)) {
-      throw new SAXException("You cannot use both mark and mark_from attributes." + "\n Line: " + pLocator.getLineNumber() + ", column: "+ pLocator.getColumnNumber()+ ".");
-    }
-    if (attrs.getValue(MARK) != null && (attrs.getValue(MARK_TO) != null)) {
-      throw new SAXException("You cannot use both mark and mark_to attributes." + "\n Line: " + pLocator.getLineNumber() + ", column: "+ pLocator.getColumnNumber()+ ".");
-    }
-    if (attrs.getValue(MARK_TO) == null) {
-      singleTokenCorrection=true;
-    }
- else {
-      endPositionCorrection=Integer.parseInt(attrs.getValue(MARK_TO));
-      if (endPositionCorrection > 0) {
-        throw new SAXException("End position correction (mark_to=" + endPositionCorrection + ") cannot be larger than 0: "+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
-      }
-      singleTokenCorrection=false;
-    }
     if (attrs.getValue(CASE_SENSITIVE) != null && YES.equals(attrs.getValue(CASE_SENSITIVE))) {
       caseSensitive=true;
     }
