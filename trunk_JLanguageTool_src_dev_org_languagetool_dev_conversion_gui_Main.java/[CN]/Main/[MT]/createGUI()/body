@@ -8,7 +8,7 @@
   JScrollPane scrollPane=new JScrollPane(resultArea);
   scrollPane.setPreferredSize(new Dimension(250,145));
   scrollPane.setMinimumSize(new Dimension(10,10));
-  rulesBox=new JComboBox();
+  rulesBox=new JComboBox<String>();
   rulesBox.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
       displaySelectedRule();
@@ -17,7 +17,7 @@
     }
   }
 );
-  ruleTypeBox=new JComboBox();
+  ruleTypeBox=new JComboBox<String>();
   ruleTypeBox.addItem(atdString);
   ruleTypeBox.addItem(cgString);
   ruleTypeBox.addActionListener(new ActionListener(){
@@ -26,7 +26,7 @@
     }
   }
 );
-  specificRuleTypeBox=new JComboBox();
+  specificRuleTypeBox=new JComboBox<String>();
   populateSpecificRuleType();
   mainRuleFilePane=new JTextPane();
   mainRuleFilePane.setText(filename);

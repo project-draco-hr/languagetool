@@ -39,7 +39,7 @@
       }
       andGroup.set(a,and);
     }
-    ArrayList<ArrayList> exceptionAttributes=getExceptionAttributes(allExceptions);
+    ArrayList<ArrayList<Pattern>> exceptionAttributes=getExceptionAttributes(allExceptions);
     int numResets=0;
     while (numResets < 2) {
       if (!dictIterator.hasNext()) {
@@ -72,7 +72,7 @@
       exceptions=new ArrayList<Element>();
     }
     exceptions.addAll(prevExceptions);
-    ArrayList<ArrayList> exceptionAttributes=getExceptionAttributes(exceptions);
+    ArrayList<ArrayList<Pattern>> exceptionAttributes=getExceptionAttributes(exceptions);
     if (e.isSentStart()) {
       return "";
     }

@@ -1,9 +1,9 @@
 {
   if (exceptions.size() == 0) {
-    return new ArrayList<ArrayList>();
+    return new ArrayList<ArrayList<Pattern>>();
   }
   int size=exceptions.size();
-  ArrayList<ArrayList> ret=new ArrayList<ArrayList>(6);
+  ArrayList<ArrayList<Pattern>> ret=new ArrayList<ArrayList<Pattern>>(6);
   ArrayList<Pattern> tokenPatterns=new ArrayList<Pattern>(size);
   ArrayList<Pattern> posPatterns=new ArrayList<Pattern>(size);
   for (  Element e : exceptions) {
