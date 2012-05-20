@@ -14,17 +14,12 @@
   }
  else   if (qName.equals(PATTERN)) {
     inPattern=true;
+    tokenCountForMarker=0;
     if (attrs.getValue(MARK) != null && (attrs.getValue(MARK_FROM) != null)) {
       throw new SAXException("You cannot use both mark and mark_from attributes." + "\n Line: " + pLocator.getLineNumber() + ", column: "+ pLocator.getColumnNumber()+ ".");
     }
     if (attrs.getValue(MARK) != null && (attrs.getValue(MARK_TO) != null)) {
       throw new SAXException("You cannot use both mark and mark_to attributes." + "\n Line: " + pLocator.getLineNumber() + ", column: "+ pLocator.getColumnNumber()+ ".");
-    }
-    if (attrs.getValue(MARK) != null) {
-      positionCorrection=Integer.parseInt(attrs.getValue(MARK));
-    }
-    if (attrs.getValue(MARK_FROM) != null) {
-      positionCorrection=Integer.parseInt(attrs.getValue(MARK_FROM));
     }
     if (attrs.getValue(MARK_TO) == null) {
       singleTokenCorrection=true;
@@ -45,6 +40,7 @@
   }
  else   if (qName.equals(AND)) {
     inAndGroup=true;
+    tokenCountForMarker++;
   }
  else   if (qName.equals(UNIFY)) {
     inUnification=true;
@@ -60,6 +56,9 @@
   }
  else   if (qName.equals(TOKEN)) {
     setToken(attrs);
+    if (!inAndGroup) {
+      tokenCountForMarker++;
+    }
   }
  else   if (qName.equals(DISAMBIG)) {
     inDisambiguation=true;
@@ -142,5 +141,8 @@
   }
  else   if ("marker".equals(qName)) {
     example.append("<marker>");
+    if (inPattern) {
+      startPos=tokenCounter;
+    }
   }
 }
