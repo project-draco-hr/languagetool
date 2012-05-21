@@ -1,25 +1,25 @@
 {
-  if (qName.equals("category")) {
+  if ("category".equals(qName)) {
     final String catName=attrs.getValue("name");
     final String priorityStr=attrs.getValue("priority");
-    if (priorityStr != null) {
-      category=new Category(catName,Integer.parseInt(priorityStr));
+    if (priorityStr == null) {
+      category=new Category(catName);
     }
  else {
-      category=new Category(catName);
+      category=new Category(catName,Integer.parseInt(priorityStr));
     }
     if ("off".equals(attrs.getValue(DEFAULT))) {
       category.setDefaultOff();
     }
   }
- else   if (qName.equals("rules")) {
+ else   if ("rules".equals(qName)) {
     final String languageStr=attrs.getValue("targetLang");
     language=Language.getLanguageForShortName(languageStr);
     if (language == null) {
       throw new SAXException("Unknown language '" + languageStr + "'");
     }
   }
- else   if (qName.equals("rule")) {
+ else   if ("rule".equals(qName)) {
     shortMessage=new StringBuilder();
     id=attrs.getValue("id");
     if (inRuleGroup)     subId++;
@@ -48,11 +48,11 @@
  else   if (AND.equals(qName)) {
     inAndGroup=true;
   }
- else   if (UNIFY.equals(qName)) {
+ else   if ("unify".equals(qName)) {
     inUnification=true;
     uniNegation=YES.equals(attrs.getValue(NEGATE));
   }
- else   if (qName.equals("feature")) {
+ else   if ("feature".equals(qName)) {
     uFeature=attrs.getValue("id");
   }
  else   if (qName.equals(TYPE)) {
@@ -69,7 +69,7 @@
     inCorrectExample=true;
     correctExample=new StringBuilder();
   }
- else   if (EXAMPLE.equals(qName) && attrs.getValue(TYPE).equals("incorrect")) {
+ else   if (qName.equals(EXAMPLE) && attrs.getValue(TYPE).equals("incorrect")) {
     inIncorrectExample=true;
     incorrectExample=new StringBuilder();
     exampleCorrection=new StringBuilder();
@@ -77,15 +77,15 @@
       exampleCorrection.append(attrs.getValue("correction"));
     }
   }
- else   if (MESSAGE.equals(qName)) {
+ else   if ("message".equals(qName)) {
     inMessage=true;
     message=new StringBuilder();
   }
- else   if (qName.equals("short")) {
+ else   if ("short".equals(qName)) {
     inShortMessage=true;
     shortMessage=new StringBuilder();
   }
- else   if (qName.equals(RULEGROUP)) {
+ else   if ("rulegroup".equals(qName)) {
     ruleGroupId=attrs.getValue("id");
     ruleGroupDescription=attrs.getValue("name");
     defaultOff="off".equals(attrs.getValue(DEFAULT));
@@ -93,11 +93,11 @@
     inRuleGroup=true;
     subId=0;
   }
- else   if (qName.equals("suggestion") && inMessage) {
+ else   if ("suggestion".equals(qName) && inMessage) {
     message.append("<suggestion>");
     inSuggestion=true;
   }
- else   if (qName.equals("match")) {
+ else   if ("match".equals(qName)) {
     setMatchElement(attrs);
   }
  else   if (qName.equals(MARKER) && inCorrectExample) {
@@ -106,23 +106,23 @@
  else   if (qName.equals(MARKER) && inIncorrectExample) {
     incorrectExample.append("<marker>");
   }
- else   if (qName.equals("unification")) {
+ else   if (UNIFICATION.equals(qName)) {
     uFeature=attrs.getValue("feature");
     inUnificationDef=true;
   }
- else   if (qName.equals("equivalence")) {
+ else   if ("equivalence".equals(qName)) {
     uType=attrs.getValue(TYPE);
   }
- else   if (qName.equals("phrases")) {
+ else   if (PHRASES.equals(qName)) {
     inPhrases=true;
   }
- else   if (qName.equals("includephrases")) {
+ else   if ("includephrases".equals(qName)) {
     phraseElementInit();
   }
- else   if (qName.equals("phrase") && inPhrases) {
+ else   if ("phrase".equals(qName) && inPhrases) {
     phraseId=attrs.getValue("id");
   }
- else   if (qName.equals("phraseref") && (attrs.getValue("idref") != null)) {
+ else   if ("phraseref".equals(qName) && (attrs.getValue("idref") != null)) {
     preparePhrase(attrs);
   }
  else   if (qName.equals("source")) {

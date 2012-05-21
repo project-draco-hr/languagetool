@@ -88,10 +88,10 @@
     }
     inMatch=false;
   }
- else   if (qName.equals("rulegroup")) {
+ else   if ("rulegroup".equals(qName)) {
     inRuleGroup=false;
   }
- else   if (qName.equals("suggestion") && inMessage) {
+ else   if ("suggestion".equals(qName) && inMessage) {
     message.append("</suggestion>");
     inSuggestion=false;
   }
@@ -101,23 +101,23 @@
  else   if (qName.equals(MARKER) && inIncorrectExample) {
     incorrectExample.append("</marker>");
   }
- else   if (qName.equals("phrase") && inPhrases) {
+ else   if ("phrase".equals(qName) && inPhrases) {
     finalizePhrase();
   }
- else   if (qName.equals("includephrases")) {
+ else   if ("includephrases".equals(qName)) {
     elementList.clear();
   }
- else   if (qName.equals("phrases") && inPhrases) {
+ else   if (PHRASES.equals(qName) && inPhrases) {
     inPhrases=false;
   }
- else   if (qName.equals("unification")) {
+ else   if (UNIFICATION.equals(qName)) {
     inUnificationDef=false;
   }
- else   if (qName.equals("feature")) {
+ else   if ("feature".equals(qName)) {
     equivalenceFeatures.put(uFeature,uTypeList);
     uTypeList=new ArrayList<String>();
   }
- else   if (qName.equals("unify")) {
+ else   if ("unify".equals(qName)) {
     inUnification=false;
     equivalenceFeatures=new HashMap<String,List<String>>();
   }
