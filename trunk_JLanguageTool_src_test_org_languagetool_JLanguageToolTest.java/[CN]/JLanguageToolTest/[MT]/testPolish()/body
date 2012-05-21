@@ -14,7 +14,7 @@
   matches=tool.check("Premier drapie si?? w ucho co i rusz.");
   assertEquals(1,matches.size());
   matches=tool.check("I can give you more a detailed description");
-  assertEquals(5,matches.size());
+  assertEquals(6,matches.size());
   tool.setListUnknownWords(true);
   matches=tool.check("This is not a Polish text.");
   assertEquals(3,matches.size());
