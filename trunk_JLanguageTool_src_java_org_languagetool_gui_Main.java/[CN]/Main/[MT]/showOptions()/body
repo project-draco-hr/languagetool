@@ -8,7 +8,14 @@
   config.setDisabledCategoryNames(configDialog.getDisabledCategoryNames());
   config.setMotherTongue(configDialog.getMotherTongue());
   config.setRunServer(configDialog.getRunServer());
+  config.setUseGUIConfig(configDialog.getUseGUIConfig());
   config.setServerPort(configDialog.getServerPort());
+  try {
+    config.saveConfiguration();
+  }
+ catch (  final IOException e) {
+    Tools.showError(e);
+  }
   stopServer();
   maybeStartServer();
 }

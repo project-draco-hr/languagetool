@@ -11,14 +11,9 @@
     if (motherTongueStr != null) {
       motherTongue=Language.getLanguageForShortName(motherTongueStr);
     }
-    final String autoDetectStr=(String)props.get(AUTO_DETECT_CONFIG_KEY);
-    if (autoDetectStr != null) {
-      autoDetect=autoDetectStr.equals("true");
-    }
-    final String runServerString=(String)props.get(SERVER_RUN_CONFIG_KEY);
-    if (runServerString != null) {
-      runServer=runServerString.equals("true");
-    }
+    autoDetect="true".equals((String)props.get(AUTO_DETECT_CONFIG_KEY));
+    guiConfig="true".equals((String)props.get(USE_GUI_CONFIG_KEY));
+    runServer="true".equals((String)props.get(SERVER_RUN_CONFIG_KEY));
     final String serverPortString=(String)props.get(SERVER_PORT_CONFIG_KEY);
     if (serverPortString != null) {
       serverPort=Integer.parseInt(serverPortString);

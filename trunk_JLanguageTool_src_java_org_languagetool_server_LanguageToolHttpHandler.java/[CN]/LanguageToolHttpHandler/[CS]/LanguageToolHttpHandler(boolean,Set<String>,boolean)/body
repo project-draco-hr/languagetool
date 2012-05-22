@@ -1,0 +1,6 @@
+{
+  this.verbose=verbose;
+  this.allowedIps=allowedIps;
+  this.internalServer=internal;
+  config=new Configuration(new File(System.getProperty("user.home")),CONFIG_FILE);
+}

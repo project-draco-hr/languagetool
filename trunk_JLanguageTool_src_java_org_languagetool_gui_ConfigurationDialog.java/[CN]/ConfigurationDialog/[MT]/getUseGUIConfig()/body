@@ -1,0 +1,6 @@
+{
+  if (serverSettingsCheckbox == null) {
+    return false;
+  }
+  return serverSettingsCheckbox.isSelected();
+}

@@ -113,6 +113,12 @@
     }
 );
     portPanel.add(serverPortField,cons);
+    cons.gridx=0;
+    cons.gridy=10;
+    serverSettingsCheckbox=new JCheckBox(StringTools.getLabel(messages.getString("useGUIConfig")));
+    serverSettingsCheckbox.setMnemonic(StringTools.getMnemonic(messages.getString("useGUIConfig")));
+    serverSettingsCheckbox.setSelected(useGUIConfig);
+    portPanel.add(serverSettingsCheckbox,cons);
   }
   final JPanel buttonPanel=new JPanel();
   buttonPanel.setLayout(new GridBagLayout());

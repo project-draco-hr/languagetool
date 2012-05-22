@@ -1,0 +1,3 @@
+int port
+boolean verbose
+boolean runInternally

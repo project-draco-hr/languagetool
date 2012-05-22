@@ -37,6 +37,9 @@
       serverMode=serverCheckbox.isSelected();
       serverPort=Integer.parseInt(serverPortField.getText());
     }
+    if (serverSettingsCheckbox != null) {
+      useGUIConfig=serverSettingsCheckbox.isSelected();
+    }
     dialog.setVisible(false);
   }
  else   if (e.getSource() == cancelButton) {

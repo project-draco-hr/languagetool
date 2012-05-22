@@ -1,4 +1,0 @@
-{
-  this.verbose=verbose;
-  this.allowedIps=allowedIps;
-}

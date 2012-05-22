@@ -1,0 +1,22 @@
+{
+  print("Using options configured in the GUI");
+  final Set<String> disabledRules=config.getDisabledRuleIds();
+  if (disabledRules != null) {
+    for (    final String ruleId : disabledRules) {
+      langTool.disableRule(ruleId);
+    }
+  }
+  final Set<String> disabledCategories=config.getDisabledCategoryNames();
+  if (disabledCategories != null) {
+    for (    final String categoryName : disabledCategories) {
+      langTool.disableCategory(categoryName);
+    }
+  }
+  final Set<String> enabledRules=config.getEnabledRuleIds();
+  if (enabledRules != null) {
+    for (    String ruleName : enabledRules) {
+      langTool.enableDefaultOffRule(ruleName);
+      langTool.enableRule(ruleName);
+    }
+  }
+}

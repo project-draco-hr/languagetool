@@ -3,5 +3,8 @@
   final JLanguageTool newLanguageTool=new JLanguageTool(lang,motherTongue);
   newLanguageTool.activateDefaultPatternRules();
   newLanguageTool.activateDefaultFalseFriendRules();
+  if (internalServer && config.getUseGUIConfig()) {
+    configureGUI(lang,newLanguageTool);
+  }
   return newLanguageTool;
 }

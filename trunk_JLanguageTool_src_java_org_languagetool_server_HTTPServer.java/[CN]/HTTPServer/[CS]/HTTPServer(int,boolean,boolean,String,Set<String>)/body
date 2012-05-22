@@ -2,7 +2,7 @@
   this.port=port;
   try {
     server=HttpServer.create(new InetSocketAddress(host,port),0);
-    server.createContext("/",new LanguageToolHttpHandler(verbose,allowedIps));
+    server.createContext("/",new LanguageToolHttpHandler(verbose,allowedIps,runInternally));
   }
  catch (  Exception e) {
     throw new PortBindingException("LanguageTool server could not be started on host '" + host + "', port "+ port+ " - maybe something else is running on that port already?",e);

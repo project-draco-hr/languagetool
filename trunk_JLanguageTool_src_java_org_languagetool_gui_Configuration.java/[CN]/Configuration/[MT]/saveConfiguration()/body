@@ -7,6 +7,7 @@
     props.setProperty(MOTHER_TONGUE_CONFIG_KEY,motherTongue.getShortName());
   }
   props.setProperty(AUTO_DETECT_CONFIG_KEY,Boolean.valueOf(autoDetect).toString());
+  props.setProperty(USE_GUI_CONFIG_KEY,Boolean.valueOf(guiConfig).toString());
   props.setProperty(SERVER_RUN_CONFIG_KEY,Boolean.valueOf(runServer).toString());
   props.setProperty(SERVER_PORT_CONFIG_KEY,Integer.valueOf(serverPort).toString());
   final FileOutputStream fos=new FileOutputStream(configFile);
