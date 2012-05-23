@@ -104,20 +104,22 @@
     portPanel.add(serverCheckbox,cons);
     serverPortField=new JTextField(Integer.toString(serverPort));
     serverPortField.setEnabled(serverCheckbox.isSelected());
+    serverSettingsCheckbox=new JCheckBox(StringTools.getLabel(messages.getString("useGUIConfig")));
     serverPortField.setMinimumSize(new Dimension(100,25));
     cons.gridx=1;
     serverCheckbox.addActionListener(new ActionListener(){
       @Override public void actionPerformed(      @SuppressWarnings("unused") ActionEvent e){
         serverPortField.setEnabled(serverCheckbox.isSelected());
+        serverSettingsCheckbox.setEnabled(serverCheckbox.isSelected());
       }
     }
 );
     portPanel.add(serverPortField,cons);
     cons.gridx=0;
     cons.gridy=10;
-    serverSettingsCheckbox=new JCheckBox(StringTools.getLabel(messages.getString("useGUIConfig")));
     serverSettingsCheckbox.setMnemonic(StringTools.getMnemonic(messages.getString("useGUIConfig")));
     serverSettingsCheckbox.setSelected(useGUIConfig);
+    serverSettingsCheckbox.setEnabled(serverMode);
     portPanel.add(serverSettingsCheckbox,cons);
   }
   final JPanel buttonPanel=new JPanel();
