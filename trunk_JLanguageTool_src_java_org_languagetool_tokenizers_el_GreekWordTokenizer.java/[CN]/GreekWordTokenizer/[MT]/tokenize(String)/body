@@ -1,0 +1,13 @@
+{
+  final List<String> tokens=new ArrayList<String>();
+  tokenizer.yyreset(new StringReader(text));
+  try {
+    while (tokenizer.getNextToken() != GreekWordTokenizerImpl.YYEOF) {
+      tokens.add(tokenizer.getText());
+    }
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException(ex);
+  }
+  return tokens;
+}
