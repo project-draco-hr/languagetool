@@ -36,4 +36,16 @@
   assertTrue(!checkWithOptions(Language.ENGLISH,Language.GERMAN,"This is an test",nothing,disableAvsAn).contains("an test"));
   assertTrue(checkWithOptions(Language.ENGLISH,Language.GERMAN,"This is an test",disableAvsAn,nothing).contains("an test"));
   assertTrue(!checkWithOptions(Language.ENGLISH,Language.GERMAN,"We will berate you",disableAvsAn,nothing).contains("BERATE"));
+  String[] twoRules=new String[2];
+  twoRules[0]="EN_A_VS_AN";
+  twoRules[1]="BERATE";
+  String resultEn=checkWithOptions(Language.ENGLISH,Language.GERMAN,"This is an test. We will berate you.",twoRules,nothing);
+  assertTrue(resultEn.contains("EN_A_VS_AN"));
+  assertTrue(resultEn.contains("BERATE"));
+  resultEn=checkWithOptions(Language.ENGLISH,Language.GERMAN,"This is an test. We will berate you.",nothing,twoRules);
+  assertTrue(!resultEn.contains("EN_A_VS_AN"));
+  assertTrue(!resultEn.contains("BERATE"));
+  resultEn=checkWithOptions(Language.ENGLISH,Language.GERMAN,"This is an test. We will berate you.",disableAvsAn,twoRules);
+  assertTrue(resultEn.contains("EN_A_VS_AN"));
+  assertTrue(!resultEn.contains("BERATE"));
 }
