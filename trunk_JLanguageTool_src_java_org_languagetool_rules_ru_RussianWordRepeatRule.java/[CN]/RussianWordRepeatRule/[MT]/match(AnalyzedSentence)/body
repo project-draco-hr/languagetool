@@ -1,0 +1,85 @@
+{
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  boolean repetition=false;
+  final TreeSet<String> inflectedWords=new TreeSet<String>();
+  String prevLemma, curLemma;
+  for (int i=1; i < tokens.length; i++) {
+    final String token=tokens[i].getToken();
+    boolean isWord=true;
+    boolean hasLemma=true;
+    if (token.length() < 2) {
+      isWord=false;
+    }
+    final int readingsLen=tokens[i].getReadingsLength();
+    for (int k=0; k < readingsLen; k++) {
+      final String posTag=tokens[i].getAnalyzedToken(k).getPOSTag();
+      if (posTag != null) {
+        if (StringTools.isEmpty(posTag)) {
+          isWord=false;
+          break;
+        }
+        final String lemma=tokens[i].getAnalyzedToken(k).getLemma();
+        if (lemma == null) {
+          hasLemma=false;
+          break;
+        }
+        final Matcher m1=EXC_WORDS.matcher(lemma);
+        if (m1.matches()) {
+          isWord=false;
+          break;
+        }
+        final Matcher m2=EXC_POS.matcher(posTag);
+        if (m2.matches()) {
+          isWord=false;
+          break;
+        }
+      }
+ else {
+        hasLemma=false;
+      }
+    }
+    final Matcher m1=EXC_NONWORDS.matcher(tokens[i].getToken());
+    if (m1.matches()) {
+      isWord=false;
+    }
+    prevLemma="";
+    if (isWord) {
+      boolean notSentEnd=false;
+      for (int j=0; j < readingsLen; j++) {
+        final String pos=tokens[i].getAnalyzedToken(j).getPOSTag();
+        if (pos != null) {
+          notSentEnd|="SENT_END".equals(pos);
+        }
+        if (hasLemma) {
+          curLemma=tokens[i].getAnalyzedToken(j).getLemma();
+          if (!prevLemma.equals(curLemma) && !notSentEnd) {
+            if (inflectedWords.contains(curLemma)) {
+              repetition=true;
+            }
+ else {
+              inflectedWords.add(tokens[i].getAnalyzedToken(j).getLemma());
+            }
+          }
+          prevLemma=curLemma;
+        }
+ else {
+          if (inflectedWords.contains(tokens[i].getToken()) && !notSentEnd) {
+            repetition=true;
+          }
+ else {
+            inflectedWords.add(tokens[i].getToken());
+          }
+        }
+      }
+    }
+    if (repetition) {
+      final String msg="???????????? ???????? ?? ??????????????????????";
+      final int pos=tokens[i].getStartPos();
+      final RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),msg,"???????????? ???????? ?? ??????????????????????");
+      ruleMatches.add(ruleMatch);
+      repetition=false;
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}
