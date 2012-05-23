@@ -3,7 +3,7 @@
     lt=new JLanguageTool(language,motherTongue);
     lt.activateDefaultPatternRules();
     lt.activateDefaultFalseFriendRules();
-    selectRules(lt,disabledRules,enabledRules);
+    Tools.selectRules(lt,disabledRules,enabledRules);
     if (verbose) {
       lt.setOutput(System.err);
     }

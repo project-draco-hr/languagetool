@@ -1,0 +1,5 @@
+Language lang
+Language motherTongue
+String text
+String[] enabledRules
+String[] disabledRules

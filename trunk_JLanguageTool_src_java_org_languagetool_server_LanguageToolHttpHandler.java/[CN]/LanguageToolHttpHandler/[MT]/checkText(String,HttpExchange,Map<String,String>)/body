@@ -12,6 +12,17 @@
   if (null != motherTongueParam) {
     motherTongue=Language.getLanguageForShortName(motherTongueParam);
   }
+  final String enabledParam=parameters.get("enabled");
+  enabledRules=new String[0];
+  if (null != enabledParam) {
+    enabledRules=enabledParam.split(",");
+  }
+  final String disabledParam=parameters.get("disabled");
+  disabledRules=new String[0];
+  if (null != disabledParam) {
+    disabledRules=disabledParam.split(",");
+  }
+  useQuerySettings=enabledRules.length > 0 || disabledRules.length > 0;
   final List<RuleMatch> matches;
   final String sourceText=parameters.get("srctext");
   if (sourceText == null) {

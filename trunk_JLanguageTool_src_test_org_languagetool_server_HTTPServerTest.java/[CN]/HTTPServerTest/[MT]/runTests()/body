@@ -29,4 +29,11 @@
   assertTrue(check(Language.POLISH,Language.ENGLISH,"To jest frywolne.").contains("FRIVOLOUS"));
   assertTrue(bitextCheck(Language.POLISH,Language.ENGLISH,"This is frivolous.","To jest frywolne.").contains("FRIVOLOUS"));
   assertTrue(!bitextCheck(Language.POLISH,Language.ENGLISH,"This is something else.","To jest frywolne.").contains("FRIVOLOUS"));
+  String[] nothing=new String[0];
+  assertEquals(check(Language.ENGLISH,Language.GERMAN,"We will berate you"),checkWithOptions(Language.ENGLISH,Language.GERMAN,"We will berate you",nothing,nothing));
+  String[] disableAvsAn=new String[1];
+  disableAvsAn[0]="EN_A_VS_AN";
+  assertTrue(!checkWithOptions(Language.ENGLISH,Language.GERMAN,"This is an test",nothing,disableAvsAn).contains("an test"));
+  assertTrue(checkWithOptions(Language.ENGLISH,Language.GERMAN,"This is an test",disableAvsAn,nothing).contains("an test"));
+  assertTrue(!checkWithOptions(Language.ENGLISH,Language.GERMAN,"We will berate you",disableAvsAn,nothing).contains("BERATE"));
 }
