@@ -1,0 +1,13 @@
+{
+  final List<Rule> rules=new ArrayList<Rule>();
+  final List<Rule> rulesActive=new ArrayList<Rule>();
+  rules.addAll(builtinRules);
+  rules.addAll(userRules);
+  for (  final Rule rule : rules) {
+    rule.reset();
+    if (!disabledRules.contains(rule.getId())) {
+      rulesActive.add(rule);
+    }
+  }
+  return rulesActive;
+}
