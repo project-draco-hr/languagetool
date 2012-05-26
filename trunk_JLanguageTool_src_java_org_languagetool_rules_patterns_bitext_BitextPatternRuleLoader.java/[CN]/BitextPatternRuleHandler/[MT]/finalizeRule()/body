@@ -2,7 +2,7 @@
   PatternRule rule=null;
   phraseElementInit();
   if (phraseElementList.isEmpty()) {
-    rule=new PatternRule(id,language,elementList,description,"",shortMessage.toString());
+    rule=new PatternRule(id,language,elementList,name,"",shortMessage.toString());
     prepareRule(rule);
   }
  else {
@@ -13,7 +13,7 @@
     }
     for (    final ArrayList<Element> phraseElement : phraseElementList) {
       processElement(phraseElement);
-      rule=new PatternRule(id,language,phraseElement,description,message.toString(),shortMessage.toString(),phraseElementList.size() > 1);
+      rule=new PatternRule(id,language,phraseElement,name,message.toString(),shortMessage.toString(),phraseElementList.size() > 1);
       prepareRule(rule);
     }
   }

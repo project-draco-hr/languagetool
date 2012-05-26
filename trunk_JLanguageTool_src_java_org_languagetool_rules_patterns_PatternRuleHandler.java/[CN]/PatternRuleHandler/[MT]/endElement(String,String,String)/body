@@ -1,27 +1,28 @@
 {
-  if (qName.equals("source")) {
-    checkMarkPositions();
-    srcRule=finalizeRule();
-  }
- else   if ("target".equals(qName)) {
-    checkMarkPositions();
-    trgRule=finalizeRule();
-  }
- else   if ("rule".equals(qName)) {
-    trgRule.setMessage(message.toString());
-    if (suggestionMatches != null) {
-      for (      final Match m : suggestionMatches) {
-        trgRule.addSuggestionMatch(m);
+  if ("rule".equals(qName)) {
+    phraseElementInit();
+    if (phraseElementList.isEmpty()) {
+      final PatternRule rule=new PatternRule(id,language,elementList,name,message.toString(),shortMessage.toString());
+      prepareRule(rule);
+      rules.add(rule);
+    }
+ else {
+      if (!elementList.isEmpty()) {
+        for (        final ArrayList<Element> ph : phraseElementList) {
+          ph.addAll(new ArrayList<Element>(elementList));
+        }
       }
-      if (phraseElementList.size() <= 1) {
-        suggestionMatches.clear();
+      for (      final ArrayList<Element> phraseElement : phraseElementList) {
+        processElement(phraseElement);
+        final PatternRule rule=new PatternRule(id,language,phraseElement,name,message.toString(),shortMessage.toString(),phraseElementList.size() > 1);
+        prepareRule(rule);
+        rules.add(rule);
       }
     }
-    final BitextPatternRule bRule=new BitextPatternRule(srcRule,trgRule);
-    bRule.setCorrectBitextExamples(correctExamples);
-    bRule.setIncorrectBitextExamples(incorrectExamples);
-    bRule.setSourceLang(srcLang);
-    rules.add(bRule);
+    elementList.clear();
+    if (phraseElementList != null) {
+      phraseElementList.clear();
+    }
   }
  else   if (qName.equals(EXCEPTION)) {
     finalizeExceptions();
@@ -34,52 +35,48 @@
  else   if (qName.equals(TOKEN)) {
     finalizeTokens();
   }
+ else   if (qName.equals("marker") && inPattern) {
+    endPos=tokenCountForMarker;
+  }
  else   if (qName.equals(PATTERN)) {
     inPattern=false;
     if (lastPhrase) {
       elementList.clear();
     }
-    if (phraseElementList == null || phraseElementList.isEmpty()) {
-      checkPositions(0);
-    }
- else {
-      for (      List<Element> elements : phraseElementList) {
-        checkPositions(elements.size());
-      }
-    }
     tokenCounter=0;
   }
- else   if (qName.equals("trgExample")) {
-    trgExample=setExample();
-  }
- else   if (qName.equals("srcExample")) {
-    srcExample=setExample();
-  }
- else   if (qName.equals("example")) {
+ else   if (qName.equals(EXAMPLE)) {
     if (inCorrectExample) {
-      correctExamples.add(new StringPair(srcExample.getExample(),trgExample.getExample()));
+      correctExamples.add(correctExample.toString());
     }
  else     if (inIncorrectExample) {
-      if (trgExample.getCorrections() == null) {
-        incorrectExamples.add(new IncorrectBitextExample(new StringPair(srcExample.getExample(),trgExample.getExample())));
+      final IncorrectExample example;
+      final String[] corrections=exampleCorrection.toString().split("\\|");
+      if (corrections.length > 0 && corrections[0].length() > 0) {
+        example=new IncorrectExample(incorrectExample.toString(),corrections);
       }
  else {
-        List<String> l=trgExample.getCorrections();
-        String str[]=l.toArray(new String[l.size()]);
-        incorrectExamples.add(new IncorrectBitextExample(new StringPair(srcExample.getExample(),trgExample.getExample()),str));
+        example=new IncorrectExample(incorrectExample.toString());
       }
+      incorrectExamples.add(example);
     }
     inCorrectExample=false;
     inIncorrectExample=false;
+    correctExample=new StringBuilder();
+    incorrectExample=new StringBuilder();
+    exampleCorrection=new StringBuilder();
   }
- else   if (qName.equals("message")) {
+ else   if ("message".equals(qName)) {
     suggestionMatches=addLegacyMatches();
     inMessage=false;
   }
- else   if (qName.equals("short")) {
+ else   if ("short".equals(qName)) {
     inShortMessage=false;
   }
- else   if (qName.equals("match")) {
+ else   if ("url".equals(qName)) {
+    inUrl=false;
+  }
+ else   if ("match".equals(qName)) {
     if (inMessage) {
       suggestionMatches.get(suggestionMatches.size() - 1).setLemmaString(match.toString());
     }

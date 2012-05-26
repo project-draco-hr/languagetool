@@ -1,8 +1,0 @@
-{
-  if (startPositionCorrection >= tokenCounter + add) {
-    throw new SAXException("Attempt to mark a token no. (" + startPositionCorrection + ") that is outside the pattern ("+ tokenCounter+ "). Pattern elements are numbered starting from 0!"+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
-  }
-  if (tokenCounter + add - endPositionCorrection < 0) {
-    throw new SAXException("Attempt to mark a token no. (" + endPositionCorrection + ") that is outside the pattern ("+ tokenCounter+ " elements). End positions should be negative but not larger than the token count!"+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
-  }
-}
