@@ -9,5 +9,5 @@
   assertEquals(1,matches.length);
   assertEquals(0,matches[0].getFromPos());
   assertEquals(4,matches[0].getToPos());
-  assertEquals("??????w",matches[0].getSuggestedReplacements().get(9));
+  assertEquals("??????w",matches[0].getSuggestedReplacements().get(0));
 }
