@@ -1,14 +1,5 @@
 {
   tokenCounter=0;
   inPattern=true;
-  if (attrs.getValue(MARK_FROM) != null) {
-    startPositionCorrection=Integer.parseInt(attrs.getValue(MARK_FROM));
-  }
-  if (attrs.getValue(MARK_TO) != null) {
-    endPositionCorrection=Integer.parseInt(attrs.getValue(MARK_TO));
-    if (endPositionCorrection > 0) {
-      throw new SAXException("End position correction (mark_to=" + endPositionCorrection + ") cannot be larger than 0: "+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
-    }
-  }
   caseSensitive=YES.equals(attrs.getValue(CASE_SENSITIVE));
 }

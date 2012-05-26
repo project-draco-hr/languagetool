@@ -1,5 +1,5 @@
 {
-  if ("rule".equals(qName)) {
+  if (RULE.equals(qName)) {
     phraseElementInit();
     if (phraseElementList.isEmpty()) {
       final PatternRule rule=new PatternRule(id,language,elementList,name,message.toString(),shortMessage.toString());
@@ -24,28 +24,25 @@
       phraseElementList.clear();
     }
   }
- else   if (qName.equals(EXCEPTION)) {
+ else   if (EXCEPTION.equals(qName)) {
     finalizeExceptions();
   }
- else   if (qName.equals(AND)) {
+ else   if (AND.equals(qName)) {
     inAndGroup=false;
     andGroupCounter=0;
     tokenCounter++;
   }
- else   if (qName.equals(TOKEN)) {
+ else   if (TOKEN.equals(qName)) {
     finalizeTokens();
   }
- else   if (qName.equals("marker") && inPattern) {
-    endPos=tokenCountForMarker;
-  }
- else   if (qName.equals(PATTERN)) {
+ else   if (PATTERN.equals(qName)) {
     inPattern=false;
     if (lastPhrase) {
       elementList.clear();
     }
     tokenCounter=0;
   }
- else   if (qName.equals(EXAMPLE)) {
+ else   if (EXAMPLE.equals(qName)) {
     if (inCorrectExample) {
       correctExamples.add(correctExample.toString());
     }
@@ -66,7 +63,7 @@
     incorrectExample=new StringBuilder();
     exampleCorrection=new StringBuilder();
   }
- else   if ("message".equals(qName)) {
+ else   if (MESSAGE.equals(qName)) {
     suggestionMatches=addLegacyMatches();
     inMessage=false;
   }
@@ -76,7 +73,7 @@
  else   if ("url".equals(qName)) {
     inUrl=false;
   }
- else   if ("match".equals(qName)) {
+ else   if (MATCH.equals(qName)) {
     if (inMessage) {
       suggestionMatches.get(suggestionMatches.size() - 1).setLemmaString(match.toString());
     }
@@ -85,18 +82,21 @@
     }
     inMatch=false;
   }
- else   if ("rulegroup".equals(qName)) {
+ else   if (RULEGROUP.equals(qName)) {
     inRuleGroup=false;
   }
  else   if ("suggestion".equals(qName) && inMessage) {
     message.append("</suggestion>");
     inSuggestion=false;
   }
- else   if (qName.equals(MARKER) && inCorrectExample) {
+ else   if (MARKER.equals(qName) && inCorrectExample) {
     correctExample.append("</marker>");
   }
- else   if (qName.equals(MARKER) && inIncorrectExample) {
+ else   if (MARKER.equals(qName) && inIncorrectExample) {
     incorrectExample.append("</marker>");
+  }
+ else   if (MARKER.equals(qName) && inPattern) {
+    endPos=tokenCountForMarker;
   }
  else   if ("phrase".equals(qName) && inPhrases) {
     finalizePhrase();
@@ -110,11 +110,11 @@
  else   if (UNIFICATION.equals(qName)) {
     inUnificationDef=false;
   }
- else   if ("feature".equals(qName)) {
+ else   if (FEATURE.equals(qName)) {
     equivalenceFeatures.put(uFeature,uTypeList);
     uTypeList=new ArrayList<String>();
   }
- else   if ("unify".equals(qName)) {
+ else   if (UNIFY.equals(qName)) {
     inUnification=false;
     equivalenceFeatures=new HashMap<String,List<String>>();
   }

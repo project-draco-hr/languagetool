@@ -19,7 +19,7 @@
       throw new SAXException("Unknown language '" + languageStr + "'");
     }
   }
- else   if ("rule".equals(qName)) {
+ else   if (RULE.equals(qName)) {
     shortMessage=new StringBuilder();
     url=new StringBuilder();
     id=attrs.getValue("id");
@@ -53,34 +53,31 @@
     inAndGroup=true;
     tokenCountForMarker++;
   }
- else   if ("unify".equals(qName)) {
+ else   if (UNIFY.equals(qName)) {
     inUnification=true;
     uniNegation=YES.equals(attrs.getValue(NEGATE));
   }
- else   if ("feature".equals(qName)) {
+ else   if (FEATURE.equals(qName)) {
     uFeature=attrs.getValue("id");
   }
- else   if (qName.equals(TYPE)) {
+ else   if (TYPE.equals(qName)) {
     uType=attrs.getValue("id");
     uTypeList.add(uType);
   }
- else   if (qName.equals(TOKEN)) {
+ else   if (TOKEN.equals(qName)) {
     setToken(attrs);
     if (!inAndGroup) {
       tokenCountForMarker++;
     }
   }
- else   if (qName.equals("marker") && inPattern) {
-    startPos=tokenCounter;
-  }
  else   if (EXCEPTION.equals(qName)) {
     setExceptions(attrs);
   }
- else   if (qName.equals(EXAMPLE) && attrs.getValue(TYPE).equals("correct")) {
+ else   if (EXAMPLE.equals(qName) && attrs.getValue(TYPE).equals("correct")) {
     inCorrectExample=true;
     correctExample=new StringBuilder();
   }
- else   if (qName.equals(EXAMPLE) && attrs.getValue(TYPE).equals("incorrect")) {
+ else   if (EXAMPLE.equals(qName) && attrs.getValue(TYPE).equals("incorrect")) {
     inIncorrectExample=true;
     incorrectExample=new StringBuilder();
     exampleCorrection=new StringBuilder();
@@ -88,7 +85,7 @@
       exampleCorrection.append(attrs.getValue("correction"));
     }
   }
- else   if ("message".equals(qName)) {
+ else   if (MESSAGE.equals(qName)) {
     inMessage=true;
     inSuggestion=false;
     message=new StringBuilder();
@@ -101,7 +98,7 @@
     inUrl=true;
     url=new StringBuilder();
   }
- else   if ("rulegroup".equals(qName)) {
+ else   if (RULEGROUP.equals(qName)) {
     ruleGroupId=attrs.getValue("id");
     ruleGroupDescription=attrs.getValue("name");
     defaultOff="off".equals(attrs.getValue(DEFAULT));
@@ -113,14 +110,17 @@
     message.append("<suggestion>");
     inSuggestion=true;
   }
- else   if ("match".equals(qName)) {
+ else   if (MATCH.equals(qName)) {
     setMatchElement(attrs);
   }
- else   if (qName.equals(MARKER) && inCorrectExample) {
+ else   if (MARKER.equals(qName) && inCorrectExample) {
     correctExample.append("<marker>");
   }
- else   if (qName.equals(MARKER) && inIncorrectExample) {
+ else   if (MARKER.equals(qName) && inIncorrectExample) {
     incorrectExample.append("<marker>");
+  }
+ else   if (MARKER.equals(qName) && inPattern) {
+    startPos=tokenCounter;
   }
  else   if (UNIFICATION.equals(qName)) {
     uFeature=attrs.getValue("feature");
