@@ -1,7 +1,9 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  if (dictionary == null)   return toRuleMatchArray(ruleMatches);
+  if (dictionary == null) {
+    return toRuleMatchArray(ruleMatches);
+  }
   for (int i=1; i < tokens.length; i++) {
     final String word=tokens[i].getToken();
     boolean isAlphabetic=true;
@@ -10,7 +12,7 @@
     }
     if (isAlphabetic && dictionary.misspelled(word)) {
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + word.length(),messages.getString("spelling"),messages.getString("desc_spelling_short"));
-      List<String> suggestions=dictionary.suggest(word);
+      final List<String> suggestions=dictionary.suggest(word);
       if (suggestions != null) {
         ruleMatch.setSuggestedReplacements(suggestions);
       }

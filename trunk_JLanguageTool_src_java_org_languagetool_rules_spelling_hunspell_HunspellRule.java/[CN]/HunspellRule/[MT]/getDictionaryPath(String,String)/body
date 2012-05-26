@@ -1,8 +1,8 @@
 {
-  URL dictURL=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(originalPath);
+  final URL dictURL=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(originalPath);
   String dictionaryPath=dictURL.getPath();
   if ("jar".equals(dictURL.getProtocol())) {
-    File tempDir=new File(System.getProperty("java.io.tmpdir"));
+    final File tempDir=new File(System.getProperty("java.io.tmpdir"));
     File temporaryFile=new File(tempDir,dicName + ".dic");
     JLanguageTool.addTemporaryFile(temporaryFile);
     fileCopy(JLanguageTool.getDataBroker().getFromResourceDirAsStream(originalPath),temporaryFile);
