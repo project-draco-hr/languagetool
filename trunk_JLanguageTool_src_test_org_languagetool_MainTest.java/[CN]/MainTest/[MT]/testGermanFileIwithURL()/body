@@ -1,0 +1,16 @@
+{
+  File input=createTempFile();
+  PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(input),"UTF-8"));
+  w.println("Ward ihr zufrieden damit?");
+  w.close();
+  String[] args=new String[]{"-l","de","--api",input.getAbsolutePath()};
+  Main.main(args);
+  String output=new String(this.out.toByteArray());
+  assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);
+  assertTrue(output.indexOf("ruleId=\"WARD_VS_WART\" subId=\"1\"") != -1);
+  assertTrue(output.indexOf("url=\"http://www.korrekturen.de/beliebte_fehler/ward.shtml\"") != -1);
+  args=new String[]{"-l","de",input.getAbsolutePath()};
+  Main.main(args);
+  output=new String(this.out.toByteArray());
+  assertTrue(output.indexOf("More info: http://www.korrekturen.de/beliebte_fehler/ward.shtml") != -1);
+}
