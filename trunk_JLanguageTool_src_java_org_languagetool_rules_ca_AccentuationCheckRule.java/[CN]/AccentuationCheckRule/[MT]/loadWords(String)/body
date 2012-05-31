@@ -1,0 +1,26 @@
+{
+  final Map<String,AnalyzedTokenReadings> map=new HashMap<String,AnalyzedTokenReadings>();
+  final InputStream inputStream=JLanguageTool.getDataBroker().getFromRulesDirAsStream(fileName);
+  final Scanner scanner=new Scanner(inputStream,FILE_ENCODING);
+  try {
+    while (scanner.hasNextLine()) {
+      final String line=scanner.nextLine().trim();
+      if (line.length() < 1) {
+        continue;
+      }
+      if (line.charAt(0) == '#') {
+        continue;
+      }
+      final String[] parts=line.split(";");
+      if (parts.length != 3) {
+        throw new IOException("Format error in file " + fileName + ", line: "+ line+ ", "+ "expected 3 semicolon-separated parts, got "+ parts.length);
+      }
+      final AnalyzedToken analyzedToken=new AnalyzedToken(parts[1],parts[2],"lemma");
+      map.put(parts[0],new AnalyzedTokenReadings(analyzedToken,0));
+    }
+  }
+  finally {
+    scanner.close();
+  }
+  return map;
+}

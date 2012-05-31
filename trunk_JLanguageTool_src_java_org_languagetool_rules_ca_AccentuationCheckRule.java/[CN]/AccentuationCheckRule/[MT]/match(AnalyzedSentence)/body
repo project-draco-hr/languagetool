@@ -2,14 +2,14 @@
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   for (int i=1; i < tokens.length; i++) {
-    String token;
+    final String token;
     if (i == 1) {
       token=tokens[i].getToken().toLowerCase();
     }
  else {
       token=tokens[i].getToken();
     }
-    String prevToken=tokens[i - 1].getToken();
+    final String prevToken=tokens[i - 1].getToken();
     String prevPrevToken="";
     if (i > 2) {
       prevPrevToken=tokens[i - 2].getToken();
@@ -17,10 +17,6 @@
     String nextToken="";
     if (i < tokens.length - 1) {
       nextToken=tokens[i + 1].getToken();
-    }
-    String nextNextToken="";
-    if (i < tokens.length - 2) {
-      nextNextToken=tokens[i + 2].getToken();
     }
     boolean isRelevantWord=false;
     boolean isRelevantWord2=false;
@@ -33,7 +29,6 @@
     if (relevantWords2.containsKey(token)) {
       isRelevantWord2=true;
     }
-    String msg=null;
     String replacement=null;
     final Matcher mPreposicioDE=PREPOSICIO_DE.matcher(nextToken);
     final Matcher mArticleELMS=ARTICLE_EL_MS.matcher(prevToken);
@@ -72,7 +67,7 @@
       }
     }
     if (replacement != null) {
-      msg="Si \u00E9s un nom o un adjectiu, ha de portar accent: <suggestion>" + replacement + "</suggestion>.";
+      final String msg="Si \u00E9s un nom o un adjectiu, ha de portar accent: <suggestion>" + replacement + "</suggestion>.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Falta un accent");
       ruleMatches.add(ruleMatch);
     }
