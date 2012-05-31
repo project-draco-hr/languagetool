@@ -9,7 +9,7 @@
   Main.main(args);
   String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: Polish") == 0);
-  assertTrue(output.indexOf("Message: Hint: \"aktualny\" (Polish) means \"current\", \"(the) latest\", \"up-to-date\" (English). Did you mean 'rzeczywisty'?") == -1);
-  assertTrue(output.indexOf("Line 1, column 32, Rule ID: ACTUAL") == -1);
-  assertTrue(output.indexOf("Rule ID: TRANSLATION_LENGTH") != -1);
+  assertFalse(output.contains("Message: Hint: \"aktualny\" (Polish) means \"current\", \"(the) latest\", \"up-to-date\" (English). Did you mean 'rzeczywisty'?"));
+  assertFalse(output.contains("Line 1, column 32, Rule ID: ACTUAL"));
+  assertTrue(output.contains("Rule ID: TRANSLATION_LENGTH"));
 }

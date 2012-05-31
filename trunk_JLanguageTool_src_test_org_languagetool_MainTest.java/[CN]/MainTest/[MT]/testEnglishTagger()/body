@@ -5,5 +5,5 @@
   Main.main(args);
   String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: English") == 0);
-  assertTrue(output.indexOf("<S> This[this/DT]  is[be/VBZ]  an[a/DT]  test[test/NN].[./.,</S>]") != -1);
+  assertTrue(output.contains("<S> This[this/DT]  is[be/VBZ]  an[a/DT]  test[test/NN].[./.,</S>]"));
 }

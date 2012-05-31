@@ -5,5 +5,5 @@
   Main.main(args);
   String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: English") == 0);
-  assertTrue(output.indexOf("Rule ID: EN_A_VS_AN") != -1);
+  assertTrue(output.contains("Rule ID: EN_A_VS_AN"));
 }

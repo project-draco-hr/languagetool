@@ -5,5 +5,5 @@
   Main.main(args);
   String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: Polish") == 0);
-  assertTrue(output.indexOf("Unknown words: [This, is]") == -1);
+  assertTrue(!output.contains("Unknown words: [This, is]"));
 }

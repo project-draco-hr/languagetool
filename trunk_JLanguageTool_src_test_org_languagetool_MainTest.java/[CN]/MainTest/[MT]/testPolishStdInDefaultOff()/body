@@ -6,6 +6,6 @@
   Main.main(args);
   String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: Polish") == 0);
-  assertTrue(output.indexOf("Working on STDIN...") != -1);
-  assertTrue(output.indexOf("1.) Line 1, column 31, Rule ID: PL_WORD_REPEAT") != -1);
+  assertTrue(output.contains("Working on STDIN..."));
+  assertTrue(output.contains("1.) Line 1, column 31, Rule ID: PL_WORD_REPEAT"));
 }

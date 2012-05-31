@@ -14,5 +14,5 @@
   Main.main(args);
   String output=new String(this.out.toByteArray(),"UTF-8");
   assertTrue(output.indexOf("Expected text language: Polish") == 0);
-  assertTrue(output.indexOf("Line 8, column 1, Rule ID: BRAK_PRZECINKA_KTORY") != -1);
+  assertTrue(output.contains("Line 8, column 1, Rule ID: BRAK_PRZECINKA_KTORY"));
 }

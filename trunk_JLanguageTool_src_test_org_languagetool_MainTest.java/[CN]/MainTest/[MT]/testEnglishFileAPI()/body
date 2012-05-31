@@ -5,5 +5,5 @@
   Main.main(args);
   String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);
-  assertTrue(output.indexOf("<error fromy=\"0\" fromx=\"8\" toy=\"0\" tox=\"11\" ruleId=\"EN_A_VS_AN\" msg=\"Use 'a' instead of 'an' if the following word doesn't start with a vowel sound, e.g. 'a sentence', 'a university'\" replacements=\"a\" context=\"This is an test. \" contextoffset=\"8\" errorlength=\"2\"/>") != -1);
+  assertTrue(output.contains("<error fromy=\"0\" fromx=\"8\" toy=\"0\" tox=\"11\" ruleId=\"EN_A_VS_AN\" " + "msg=\"Use 'a' instead of 'an' if the following word doesn't start with a vowel sound, e.g. 'a sentence', " + "'a university'\" replacements=\"a\" context=\"This is an test. \" contextoffset=\"8\" errorlength=\"2\"/>"));
 }

@@ -7,5 +7,5 @@
   Main.main(args);
   String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: American English") == 0);
-  assertTrue(output.indexOf("HUNSPELL_RULE") != -1);
+  assertTrue(output.contains("HUNSPELL_RULE"));
 }
