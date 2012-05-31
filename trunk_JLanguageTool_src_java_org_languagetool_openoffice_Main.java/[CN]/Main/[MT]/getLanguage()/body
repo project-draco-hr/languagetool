@@ -40,5 +40,10 @@
     showError(t);
     return null;
   }
-  return Language.getLanguageForShortName(charLocale.Language);
+  try {
+    return Language.getLanguageForShortName(charLocale.Language + "-" + charLocale.Variant);
+  }
+ catch (  final Exception e) {
+    return Language.getLanguageForShortName(charLocale.Language);
+  }
 }
