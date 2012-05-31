@@ -1,0 +1,7 @@
+{
+  if (messages != null) {
+    super.setCategory(new Category(messages.getString("category_misc")));
+  }
+  relevantWords=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(FILE_NAME));
+  relevantWords2=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(FILE_NAME2));
+}

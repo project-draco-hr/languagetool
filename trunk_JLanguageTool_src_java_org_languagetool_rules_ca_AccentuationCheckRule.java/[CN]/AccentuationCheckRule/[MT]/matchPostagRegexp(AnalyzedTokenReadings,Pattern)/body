@@ -1,0 +1,15 @@
+{
+  boolean matches=false;
+  final int readingsLen=aToken.getReadingsLength();
+  for (int k=0; k < readingsLen; k++) {
+    final String posTag=aToken.getAnalyzedToken(k).getPOSTag();
+    if (posTag != null) {
+      final Matcher m=myPattern.matcher(posTag);
+      if (m.matches()) {
+        matches=true;
+        break;
+      }
+    }
+  }
+  return matches;
+}
