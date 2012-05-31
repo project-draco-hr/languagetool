@@ -84,7 +84,7 @@
       motherTongueBox.setSelectedItem(NO_MOTHER_TONGUE);
     }
  else {
-      motherTongueBox.setSelectedItem(messages.getString(motherTongue.getShortName()));
+      motherTongueBox.setSelectedItem(motherTongue.getTranslatedName(messages));
     }
   }
   motherTonguePanel.add(motherTongueBox,cons);
