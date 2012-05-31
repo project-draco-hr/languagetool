@@ -1,0 +1,4 @@
+{
+  assertEquals(Language.AMERICAN_ENGLISH,Language.getLanguageForShortName("en-US"));
+  assertEquals(Language.GERMAN,Language.getLanguageForShortName("de"));
+}
