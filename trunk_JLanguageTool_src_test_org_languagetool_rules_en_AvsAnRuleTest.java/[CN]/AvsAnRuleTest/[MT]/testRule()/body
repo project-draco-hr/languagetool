@@ -14,6 +14,8 @@
   assertCorrect("In an un-united Germany...");
   assertCorrect("Here, a and b are supplementary angles.");
   assertCorrect("The Qur'an was translated into Polish.");
+  assertCorrect("See an:Grammatica");
+  assertCorrect("See http://www.an.com");
   assertIncorrect("It was a hour ago.");
   assertIncorrect("It was an sentence that's long.");
   assertIncorrect("It was a uninteresting talk.");
