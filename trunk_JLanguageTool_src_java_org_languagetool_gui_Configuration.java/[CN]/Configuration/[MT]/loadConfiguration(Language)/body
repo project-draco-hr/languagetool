@@ -1,12 +1,13 @@
 {
+  final String qualifier=getQualifier(lang);
   FileInputStream fis=null;
   try {
     fis=new FileInputStream(configFile);
     final Properties props=new Properties();
     props.load(fis);
-    disabledRuleIds.addAll(getListFromProperties(props,DISABLED_RULES_CONFIG_KEY));
-    enabledRuleIds.addAll(getListFromProperties(props,ENABLED_RULES_CONFIG_KEY));
-    disabledCategoryNames.addAll(getListFromProperties(props,DISABLED_CATEGORIES_CONFIG_KEY));
+    disabledRuleIds.addAll(getListFromProperties(props,DISABLED_RULES_CONFIG_KEY + qualifier));
+    enabledRuleIds.addAll(getListFromProperties(props,ENABLED_RULES_CONFIG_KEY + qualifier));
+    disabledCategoryNames.addAll(getListFromProperties(props,DISABLED_CATEGORIES_CONFIG_KEY + qualifier));
     final String motherTongueStr=(String)props.get(MOTHER_TONGUE_CONFIG_KEY);
     if (motherTongueStr != null) {
       motherTongue=Language.getLanguageForShortName(motherTongueStr);
@@ -18,6 +19,7 @@
     if (serverPortString != null) {
       serverPort=Integer.parseInt(serverPortString);
     }
+    loadconfigForOtherLangs(lang,props);
   }
  catch (  final FileNotFoundException e) {
   }

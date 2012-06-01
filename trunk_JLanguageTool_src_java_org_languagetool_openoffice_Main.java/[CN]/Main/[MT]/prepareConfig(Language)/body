@@ -1,0 +1,14 @@
+{
+  try {
+    final File homeDir=getHomeDir();
+    config=new Configuration(homeDir,CONFIG_FILE,lang);
+    disabledRules=config.getDisabledRuleIds();
+    if (disabledRules == null) {
+      disabledRules=new HashSet<String>();
+    }
+    disabledRulesUI=new HashSet<String>(disabledRules);
+  }
+ catch (  final Throwable t) {
+    showError(t);
+  }
+}

@@ -2,7 +2,7 @@
   disabledRulesUI.add(ruleId);
   config.setDisabledRuleIds(disabledRulesUI);
   try {
-    config.saveConfiguration();
+    config.saveConfiguration(langTool.getLanguage());
   }
  catch (  final Throwable t) {
     showError(t);

@@ -3,5 +3,6 @@
     throw new IllegalArgumentException("Not a directory: " + baseDir);
   }
   configFile=new File(baseDir,filename);
-  loadConfiguration();
+  configForOtherLangs=new HashMap<String,String>();
+  loadConfiguration(lang);
 }

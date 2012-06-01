@@ -3,6 +3,7 @@
   try {
     final ConfigurationDialog configDialog=getCurrentConfigDialog();
     langTool=new JLanguageTool(getCurrentLanguage(),configDialog.getMotherTongue());
+    config=new Configuration(new File(System.getProperty("user.home")),CONFIG_FILE,getCurrentLanguage());
     langTool.activateDefaultPatternRules();
     langTool.activateDefaultFalseFriendRules();
     final Set<String> disabledRules=configDialog.getDisabledRuleIds();

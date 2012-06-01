@@ -11,7 +11,7 @@
   config.setUseGUIConfig(configDialog.getUseGUIConfig());
   config.setServerPort(configDialog.getServerPort());
   try {
-    config.saveConfiguration();
+    config.saveConfiguration(langTool.getLanguage());
   }
  catch (  final IOException e) {
     Tools.showError(e);

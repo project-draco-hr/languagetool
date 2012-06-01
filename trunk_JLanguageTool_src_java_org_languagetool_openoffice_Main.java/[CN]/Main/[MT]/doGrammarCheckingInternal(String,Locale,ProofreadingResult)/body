@@ -13,6 +13,7 @@
         return paRes;
       }
       try {
+        prepareConfig(docLanguage);
         langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
         langTool.activateDefaultPatternRules();
         langTool.activateDefaultFalseFriendRules();

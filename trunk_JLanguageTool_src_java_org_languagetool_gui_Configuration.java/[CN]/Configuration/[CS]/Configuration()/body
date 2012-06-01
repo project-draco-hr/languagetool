@@ -1,3 +1,0 @@
-{
-  this(new File(System.getProperty("user.home")),CONFIG_FILE);
-}

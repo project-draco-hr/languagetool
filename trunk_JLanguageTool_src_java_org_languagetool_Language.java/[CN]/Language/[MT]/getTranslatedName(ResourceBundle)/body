@@ -1,10 +1,6 @@
 {
-  String name=getShortName();
-  if (getCountryVariants().length == 1) {
-    name+="-" + getCountryVariants()[0];
-  }
   try {
-    return messages.getString(name);
+    return messages.getString(getShortNameWithVariant());
   }
  catch (  final MissingResourceException e) {
     try {

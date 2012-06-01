@@ -2,5 +2,5 @@
   this.verbose=verbose;
   this.allowedIps=allowedIps;
   this.internalServer=internal;
-  config=new Configuration();
+  config=new Configuration(null);
 }

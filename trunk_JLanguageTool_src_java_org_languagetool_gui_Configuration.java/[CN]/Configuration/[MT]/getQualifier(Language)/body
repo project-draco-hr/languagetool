@@ -1,0 +1,7 @@
+{
+  String qualifier="";
+  if (lang != null) {
+    qualifier="." + lang.getShortNameWithVariant();
+  }
+  return qualifier;
+}

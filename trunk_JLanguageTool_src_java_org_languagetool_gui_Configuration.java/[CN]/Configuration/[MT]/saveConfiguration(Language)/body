@@ -1,8 +1,9 @@
 {
   final Properties props=new Properties();
-  addListToProperties(props,DISABLED_RULES_CONFIG_KEY,disabledRuleIds);
-  addListToProperties(props,ENABLED_RULES_CONFIG_KEY,enabledRuleIds);
-  addListToProperties(props,DISABLED_CATEGORIES_CONFIG_KEY,disabledCategoryNames);
+  final String qualifier=getQualifier(lang);
+  addListToProperties(props,DISABLED_RULES_CONFIG_KEY + qualifier,disabledRuleIds);
+  addListToProperties(props,ENABLED_RULES_CONFIG_KEY + qualifier,enabledRuleIds);
+  addListToProperties(props,DISABLED_CATEGORIES_CONFIG_KEY + qualifier,disabledCategoryNames);
   if (motherTongue != null) {
     props.setProperty(MOTHER_TONGUE_CONFIG_KEY,motherTongue.getShortName());
   }
@@ -10,6 +11,9 @@
   props.setProperty(USE_GUI_CONFIG_KEY,Boolean.valueOf(guiConfig).toString());
   props.setProperty(SERVER_RUN_CONFIG_KEY,Boolean.valueOf(runServer).toString());
   props.setProperty(SERVER_PORT_CONFIG_KEY,Integer.valueOf(serverPort).toString());
+  for (  final String key : configForOtherLangs.keySet()) {
+    props.setProperty(key,configForOtherLangs.get(key));
+  }
   final FileOutputStream fos=new FileOutputStream(configFile);
   try {
     props.store(fos,"LanguageTool configuration");

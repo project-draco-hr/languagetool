@@ -1,8 +1,8 @@
 {
   final File tempFile=File.createTempFile(ConfigurationTest.class.getSimpleName(),".cfg");
-  createConfiguration(tempFile);
+  createConfiguration(tempFile,null);
   try {
-    final Configuration conf=new Configuration(tempFile.getParentFile(),tempFile.getName());
+    final Configuration conf=new Configuration(tempFile.getParentFile(),tempFile.getName(),null);
     final Set<String> disabledRuleIds=conf.getDisabledRuleIds();
     assertTrue(disabledRuleIds.contains("FOO1"));
     assertTrue(disabledRuleIds.contains("Foo2"));
