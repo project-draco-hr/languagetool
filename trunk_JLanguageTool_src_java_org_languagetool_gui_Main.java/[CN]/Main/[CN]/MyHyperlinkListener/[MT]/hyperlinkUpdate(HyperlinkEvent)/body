@@ -1,0 +1,11 @@
+{
+  if (Desktop.isDesktopSupported() && e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+    final Desktop desktop=java.awt.Desktop.getDesktop();
+    try {
+      desktop.browse(e.getURL().toURI());
+    }
+ catch (    Exception ex) {
+      throw new RuntimeException("Could not open URL: " + e.getURL(),ex);
+    }
+  }
+}

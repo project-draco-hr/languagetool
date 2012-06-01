@@ -19,6 +19,13 @@
     final String context=Tools.getContext(match.getFromPos(),match.getToPos(),text);
     sb.append("<b>" + messages.getString("errorContext") + "</b> "+ context);
     sb.append("<br>\n");
+    if (match.getRule().getUrl() != null && Desktop.isDesktopSupported()) {
+      sb.append("<b>More info:</b> <a href=\"");
+      final String url=match.getRule().getUrl().toString();
+      sb.append(url);
+      final String shortUrl=StringUtils.abbreviate(url,60);
+      sb.append("\">" + shortUrl + "</a><br>\n");
+    }
     i++;
   }
   final long endTime=System.currentTimeMillis();
