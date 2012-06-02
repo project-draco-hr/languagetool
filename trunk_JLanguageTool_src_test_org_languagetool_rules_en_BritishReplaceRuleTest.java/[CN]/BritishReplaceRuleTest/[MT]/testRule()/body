@@ -1,0 +1,5 @@
+{
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Buy some petrol.")).length);
+  checkSimpleReplaceRule("Diapers for sale!","Nappies");
+  checkSimpleReplaceRule("We have some diapers for sale.","nappies");
+}

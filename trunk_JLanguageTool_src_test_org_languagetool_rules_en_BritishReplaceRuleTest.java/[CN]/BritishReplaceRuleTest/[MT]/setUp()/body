@@ -1,0 +1,5 @@
+{
+  super.setUp();
+  rule=new BritishReplaceRule(TestTools.getMessages("en"));
+  langTool=new JLanguageTool(Language.BRITISH_ENGLISH);
+}
