@@ -12,7 +12,7 @@
     posQuery=createPOSQuery(patternElement.getPOStag(),patternElement.getPOSNegation(),patternElement.isPOStagRegularExpression());
   }
  catch (  UnsupportedPatternRuleException e) {
-    if (checkUnsupportedRule) {
+    if (throwExceptionOnUnsupportedRule) {
       throw e;
     }
  else {
@@ -40,7 +40,7 @@
  else {
     skip=MAX_SKIP;
   }
-  final SpanQuery next=next(it,checkUnsupportedRule);
+  final SpanQuery next=next(it,throwExceptionOnUnsupportedRule);
   if (next != null) {
     list.add(next);
     return new RigidSpanNearQuery(list.toArray(new SpanQuery[list.size()]),skip + 1,true);

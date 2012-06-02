@@ -1,0 +1,9 @@
+{
+  final List<PatternRule> rules=loadRules(xmlRuleFile);
+  for (  PatternRule rule : rules) {
+    if (rule.getId().equals(ruleId)) {
+      return rule;
+    }
+  }
+  throw new PatternRuleNotFoundException(ruleId,xmlRuleFile);
+}

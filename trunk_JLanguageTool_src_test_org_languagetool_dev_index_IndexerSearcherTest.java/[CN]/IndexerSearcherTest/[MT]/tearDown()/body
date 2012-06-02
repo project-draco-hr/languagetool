@@ -1,5 +1,7 @@
 {
-  searcher.close();
+  if (searcher != null) {
+    searcher.close();
+  }
   directory.close();
   super.tearDown();
 }

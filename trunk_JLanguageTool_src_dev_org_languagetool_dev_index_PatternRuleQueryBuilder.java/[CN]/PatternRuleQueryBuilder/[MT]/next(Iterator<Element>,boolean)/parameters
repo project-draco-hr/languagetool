@@ -1,2 +1,2 @@
 Iterator<Element> it
-boolean checkUnsupportedRule
+boolean throwExceptionOnUnsupportedRule

@@ -1,16 +1,5 @@
 {
-  final List<TopDocs> topDocsList=new ArrayList<TopDocs>();
-  final List<PatternRule> rules=loadRules(xmlRuleFile);
-  boolean foundRule=false;
-  for (  PatternRule rule : rules) {
-    if (rule.getId().equals(ruleId)) {
-      final TopDocs topDocs=run(rule,searcher,checkUnsupportedRule);
-      topDocsList.add(topDocs);
-      foundRule=true;
-    }
-  }
-  if (!foundRule) {
-    throw new PatternRuleNotFoundException(ruleId);
-  }
-  return topDocsList;
+  final PatternRule rule=getRuleById(ruleId,xmlRuleFile);
+  final TopDocs topDocs=run(rule,searcher,checkUnsupportedRule);
+  return topDocs;
 }

@@ -5,18 +5,14 @@
   }
   final IndexSearcher searcher=new IndexSearcher(FSDirectory.open(indexDir));
   try {
-    final List<TopDocs> matchesList=run(ruleId,xmlRuleFile,searcher,true);
-    for (    TopDocs matches : matchesList) {
-      printResult(matches,searcher,null);
-    }
+    final TopDocs topDocs=run(ruleId,xmlRuleFile,searcher,true);
+    printResult(topDocs,searcher,null);
   }
  catch (  UnsupportedPatternRuleException e) {
     System.out.println(e.getMessage() + " Will run checking on potential matches (this can be slow):");
-    final List<TopDocs> potentialMatchesList=run(ruleId,xmlRuleFile,searcher,false);
+    final TopDocs topDocs=run(ruleId,xmlRuleFile,searcher,false);
     final JLanguageTool languageTool=getLanguageToolWithOneRule(ruleId,xmlRuleFile);
-    for (    TopDocs potentialMatches : potentialMatchesList) {
-      printResult(potentialMatches,searcher,languageTool);
-    }
+    printResult(topDocs,searcher,languageTool);
   }
   searcher.close();
 }

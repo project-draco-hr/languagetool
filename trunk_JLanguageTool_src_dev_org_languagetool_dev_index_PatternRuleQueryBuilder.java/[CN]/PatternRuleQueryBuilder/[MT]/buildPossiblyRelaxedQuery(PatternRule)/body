@@ -1,0 +1,8 @@
+{
+  try {
+    return next(rule.getElements().iterator(),false);
+  }
+ catch (  UnsupportedPatternRuleException e) {
+    throw new RuntimeException(e);
+  }
+}

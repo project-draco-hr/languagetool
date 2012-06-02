@@ -1,11 +1,11 @@
 {
   final PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder();
-  final Query query;
-  if (throwExceptionOnUnsupportedRule) {
+  Query query;
+  try {
     query=patternRuleQueryBuilder.buildQuery(rule);
   }
- else {
+ catch (  UnsupportedPatternRuleException e) {
     query=patternRuleQueryBuilder.buildPossiblyRelaxedQuery(rule);
   }
-  return searcher.search(query,maxHits);
+  return query;
 }

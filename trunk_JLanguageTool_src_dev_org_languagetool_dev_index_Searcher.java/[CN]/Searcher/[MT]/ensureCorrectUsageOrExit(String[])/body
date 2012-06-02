@@ -3,7 +3,7 @@
     System.err.println("Usage: Searcher <ruleId> <ruleXML> <indexDir>");
     System.err.println("\truleId Id of the rule to search");
     System.err.println("\truleXML path to a rule file, e.g. en/grammar.xml");
-    System.err.println("\tindexDir path to a directory storing the index");
+    System.err.println("\tindexDir path to a directory containing the index");
     System.exit(1);
   }
 }

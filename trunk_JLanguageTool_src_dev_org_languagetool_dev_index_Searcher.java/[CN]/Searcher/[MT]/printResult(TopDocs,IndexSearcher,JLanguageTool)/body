@@ -6,7 +6,7 @@
  else {
     System.out.println("Search results: " + docs.totalHits);
   }
-  for (int i=0; i < Math.min(docs.totalHits,MAX_HITS); ) {
+  for (int i=0; i < Math.min(docs.totalHits,maxHits); ) {
     final Document doc=searcher.doc(hits[i++].doc);
     final String sentence=doc.get(PatternRuleQueryBuilder.FIELD_NAME);
     if (languageTool != null) {
@@ -19,7 +19,7 @@
       System.out.println(i + ": " + sentence);
     }
   }
-  if (docs.totalHits > MAX_HITS) {
-    System.out.println("NOTE: matches skipped due to maximum hit limit of " + MAX_HITS);
+  if (docs.totalHits > maxHits) {
+    System.out.println("NOTE: matches skipped due to maximum hit limit of " + maxHits);
   }
 }
