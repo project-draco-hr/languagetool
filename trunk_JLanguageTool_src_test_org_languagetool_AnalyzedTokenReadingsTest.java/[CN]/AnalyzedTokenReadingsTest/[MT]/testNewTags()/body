@@ -25,4 +25,12 @@
   AnalyzedToken aTok3=new AnalyzedToken("word","POS","lemma");
   aTok3.setWhitespaceBefore(true);
   assertEquals(aTok3,tokenReadings.getAnalyzedToken(0));
+  final AnalyzedTokenReadings testReadings=new AnalyzedTokenReadings(aTok3);
+  testReadings.removeReading(aTok3);
+  assertTrue(testReadings.getReadingsLength() == 1);
+  assertEquals(testReadings.getToken(),"word");
+  assertTrue(!testReadings.hasPosTag("POS"));
+  testReadings.leaveReading(aTok2);
+  assertEquals(testReadings.getToken(),"word");
+  assertTrue(!testReadings.hasPosTag("POS"));
 }
