@@ -1,0 +1,2 @@
+List<MatchingSentence> matchingSentences
+int checkedSentences

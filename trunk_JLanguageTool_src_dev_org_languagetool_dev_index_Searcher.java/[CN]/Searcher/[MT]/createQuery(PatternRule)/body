@@ -1,11 +1,14 @@
 {
   final PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder();
   Query query;
+  boolean relaxed;
   try {
     query=patternRuleQueryBuilder.buildQuery(rule);
+    relaxed=false;
   }
  catch (  UnsupportedPatternRuleException e) {
     query=patternRuleQueryBuilder.buildPossiblyRelaxedQuery(rule);
+    relaxed=true;
   }
-  return query;
+  return new PossiblyRelaxedQuery(query,relaxed);
 }

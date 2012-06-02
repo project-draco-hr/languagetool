@@ -1,0 +1,5 @@
+{
+  directory=newDirectory();
+  Indexer.run(content,directory,Language.ENGLISH,false);
+  searcher=new IndexSearcher(directory);
+}

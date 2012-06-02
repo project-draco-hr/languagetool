@@ -1,0 +1,4 @@
+{
+  this.matchingSentences=matchingSentences;
+  this.checkedSentences=checkedSentences;
+}

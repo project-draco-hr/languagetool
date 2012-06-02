@@ -1,12 +1,14 @@
 {
+  createIndex("How to move back and fourth from linux to xmb?");
   final Searcher errorSearcher=new Searcher();
   final List<Element> elements=Arrays.asList(new Element("move",false,false,false),new Element("back",false,false,false));
   final PatternRule rule1=new PatternRule("RULE1",Language.ENGLISH,elements,"desc","msg","shortMsg");
   final IndexSearcher indexSearcher=new IndexSearcher(directory);
   try {
-    final List<MatchingSentence> matchingSentences=errorSearcher.findRuleMatchesOnIndex(rule1,Language.ENGLISH,indexSearcher);
-    assertEquals(1,matchingSentences.size());
-    final List<RuleMatch> ruleMatches=matchingSentences.get(0).getRuleMatches();
+    final SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(rule1,Language.ENGLISH,indexSearcher);
+    assertEquals(1,searcherResult.getCheckedSentences());
+    assertEquals(1,searcherResult.getMatchingSentences().size());
+    final List<RuleMatch> ruleMatches=searcherResult.getMatchingSentences().get(0).getRuleMatches();
     assertEquals(1,ruleMatches.size());
     final Rule rule=ruleMatches.get(0).getRule();
     assertEquals("RULE1",rule.getId());

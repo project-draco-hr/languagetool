@@ -10,9 +10,9 @@
   }
   final File indexDir=new File(args[3]);
   final PatternRule rule=searcher.getRuleById(ruleId,ruleFile);
-  final List<MatchingSentence> ruleMatchesOnIndex=searcher.findRuleMatchesOnIndex(rule,language,indexDir);
+  final SearcherResult searcherResult=searcher.findRuleMatchesOnIndex(rule,language,indexDir);
   int i=1;
-  for (  MatchingSentence ruleMatch : ruleMatchesOnIndex) {
+  for (  MatchingSentence ruleMatch : searcherResult.getMatchingSentences()) {
     System.out.println(i + ": " + ruleMatch.getSentence());
     i++;
   }
