@@ -4,7 +4,8 @@
     if (disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()))) {
       continue;
     }
-    if (disabledCategories.contains(rule.getCategory().getName())) {
+    final Category category=rule.getCategory();
+    if (category != null && disabledCategories.contains(category.getName())) {
       continue;
     }
 switch (paraMode) {
