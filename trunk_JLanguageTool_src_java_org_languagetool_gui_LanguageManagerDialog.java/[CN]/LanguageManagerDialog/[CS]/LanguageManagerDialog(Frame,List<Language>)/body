@@ -1,6 +1,8 @@
 {
   this.owner=owner;
   for (  Language lang : languages) {
-    ruleFiles.add(new File(lang.getRuleFileName()));
+    for (    final String ruleFile : lang.getRuleFileName()) {
+      ruleFiles.add(new File(ruleFile));
+    }
   }
 }

@@ -1,5 +1,7 @@
 {
-  final String defaultPatternFilename=language.getRuleFileName();
-  final List<PatternRule> patternRules=loadPatternRules(defaultPatternFilename);
+  final List<PatternRule> patternRules=new ArrayList<PatternRule>();
+  for (  String patternRuleFileName : language.getRuleFileName()) {
+    patternRules.addAll(loadPatternRules(patternRuleFileName));
+  }
   userRules.addAll(patternRules);
 }

@@ -30,8 +30,10 @@
     @Override public List<Class<? extends Rule>> getRelevantRules(){
       return Collections.emptyList();
     }
-    @Override public String getRuleFileName(){
-      return file.getAbsolutePath();
+    @Override public List<String> getRuleFileName(){
+      List<String> ruleFiles=new ArrayList<String>();
+      ruleFiles.add(file.getAbsolutePath());
+      return ruleFiles;
     }
     @Override public boolean isExternal(){
       return isAdditional;
