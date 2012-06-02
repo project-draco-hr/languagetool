@@ -5,5 +5,14 @@
   if (wordRepetitionOf("that",tokens,position)) {
     return true;
   }
+  if (wordRepetitionOf("Pago",tokens,position)) {
+    return true;
+  }
+  if (wordRepetitionOf("Wagga",tokens,position)) {
+    return true;
+  }
+  if (wordRepetitionOf("Duran",tokens,position)) {
+    return true;
+  }
   return false;
 }
