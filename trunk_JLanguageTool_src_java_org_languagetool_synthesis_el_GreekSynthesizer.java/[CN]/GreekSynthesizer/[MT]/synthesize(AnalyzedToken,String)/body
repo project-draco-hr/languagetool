@@ -1,5 +1,0 @@
-{
-  for (  String s : super.synthesize(token,posTag)) {
-  }
-  return super.synthesize(token,posTag);
-}
