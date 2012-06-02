@@ -1,0 +1,10 @@
+{
+  for (  Language otherLang : Language.getAllLanguages()) {
+    if (!otherLang.equals(lang)) {
+      final String languageSuffix="." + otherLang.getShortNameWithVariant();
+      storeConfigKeyFromProp(prop,DISABLED_RULES_CONFIG_KEY + languageSuffix);
+      storeConfigKeyFromProp(prop,ENABLED_RULES_CONFIG_KEY + languageSuffix);
+      storeConfigKeyFromProp(prop,DISABLED_CATEGORIES_CONFIG_KEY + languageSuffix);
+    }
+  }
+}

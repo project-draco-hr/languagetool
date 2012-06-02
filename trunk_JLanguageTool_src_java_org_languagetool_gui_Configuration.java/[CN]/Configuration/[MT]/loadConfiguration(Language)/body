@@ -12,14 +12,14 @@
     if (motherTongueStr != null) {
       motherTongue=Language.getLanguageForShortName(motherTongueStr);
     }
-    autoDetect="true".equals((String)props.get(AUTO_DETECT_CONFIG_KEY));
-    guiConfig="true".equals((String)props.get(USE_GUI_CONFIG_KEY));
-    runServer="true".equals((String)props.get(SERVER_RUN_CONFIG_KEY));
+    autoDetect="true".equals(props.get(AUTO_DETECT_CONFIG_KEY));
+    guiConfig="true".equals(props.get(USE_GUI_CONFIG_KEY));
+    runServer="true".equals(props.get(SERVER_RUN_CONFIG_KEY));
     final String serverPortString=(String)props.get(SERVER_PORT_CONFIG_KEY);
     if (serverPortString != null) {
       serverPort=Integer.parseInt(serverPortString);
     }
-    loadconfigForOtherLangs(lang,props);
+    loadConfigForOtherLanguages(lang,props);
   }
  catch (  final FileNotFoundException e) {
   }
