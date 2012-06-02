@@ -3,12 +3,15 @@
   SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(getRule("BACK_AND_FOURTH"),Language.ENGLISH,searcher);
   assertEquals(2,searcherResult.getCheckedSentences());
   assertEquals(1,searcherResult.getMatchingSentences().size());
+  assertEquals(false,searcherResult.isRelaxedQuery());
   searcherResult=errorSearcher.findRuleMatchesOnIndex(getRule("EYE_BROW"),Language.ENGLISH,searcher);
   assertEquals(1,searcherResult.getCheckedSentences());
   assertEquals(1,searcherResult.getMatchingSentences().size());
+  assertEquals(true,searcherResult.isRelaxedQuery());
   searcherResult=errorSearcher.findRuleMatchesOnIndex(getRule("ALL_OVER_THE_WORD"),Language.ENGLISH,searcher);
   assertEquals(2,searcherResult.getCheckedSentences());
   assertEquals(0,searcherResult.getMatchingSentences().size());
+  assertEquals(false,searcherResult.isRelaxedQuery());
   try {
     errorSearcher.findRuleMatchesOnIndex(getRule("Invalid Rule Id"),Language.ENGLISH,searcher);
     fail("Exception should be thrown for invalid rule id.");

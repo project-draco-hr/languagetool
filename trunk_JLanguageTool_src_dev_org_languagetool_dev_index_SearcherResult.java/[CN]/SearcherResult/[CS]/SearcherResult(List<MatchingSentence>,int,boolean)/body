@@ -1,4 +1,5 @@
 {
   this.matchingSentences=matchingSentences;
   this.checkedSentences=checkedSentences;
+  this.relaxedQuery=relaxedQuery;
 }
