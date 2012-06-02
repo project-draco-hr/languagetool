@@ -7,6 +7,9 @@
       l.add(anTokReading);
     }
   }
+  if (l.isEmpty()) {
+    l.add(new AnalyzedToken(token.getToken(),null,null));
+  }
   anTokReadings=l.toArray(new AnalyzedToken[l.size()]);
   setNoRealPOStag();
 }
