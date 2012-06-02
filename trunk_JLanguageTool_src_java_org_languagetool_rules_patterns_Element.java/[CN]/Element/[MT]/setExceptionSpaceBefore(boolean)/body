@@ -1,5 +1,5 @@
 {
   if (exceptionList != null) {
-    exceptionList.get(exceptionList.size()).setWhitespaceBefore(isWhite);
+    exceptionList.get(exceptionList.size() - 1).setWhitespaceBefore(isWhite);
   }
 }
