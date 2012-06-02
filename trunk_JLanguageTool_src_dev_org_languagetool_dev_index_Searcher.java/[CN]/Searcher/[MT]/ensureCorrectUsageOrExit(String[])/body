@@ -1,9 +1,10 @@
 {
-  if (args.length != 3) {
-    System.err.println("Usage: Searcher <ruleId> <ruleXML> <indexDir>");
-    System.err.println("\truleId Id of the rule to search");
-    System.err.println("\truleXML path to a rule file, e.g. en/grammar.xml");
-    System.err.println("\tindexDir path to a directory containing the index");
+  if (args.length != 4) {
+    System.err.println("Usage: Searcher <ruleId> <ruleXML> <languageCode> <indexDir>");
+    System.err.println("\truleId       Id of the rule to search for");
+    System.err.println("\truleXML      path to a rule file, e.g. en/grammar.xml");
+    System.err.println("\tlanguageCode short language code, e.g. en for English");
+    System.err.println("\tindexDir     path to a directory containing the index");
     System.exit(1);
   }
 }

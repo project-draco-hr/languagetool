@@ -1,3 +1,0 @@
-PatternRule rule
-IndexSearcher searcher
-boolean throwExceptionOnUnsupportedRule

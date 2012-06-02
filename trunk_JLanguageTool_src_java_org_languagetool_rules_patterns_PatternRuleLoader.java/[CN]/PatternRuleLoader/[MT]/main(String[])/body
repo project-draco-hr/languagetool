@@ -1,6 +1,0 @@
-{
-  final PatternRuleLoader prg=new PatternRuleLoader();
-  final String name="/de/grammar.xml";
-  final List<PatternRule> l=prg.getRules(JLanguageTool.getDataBroker().getFromRulesDirAsStream(name),name);
-  System.out.println(l);
-}

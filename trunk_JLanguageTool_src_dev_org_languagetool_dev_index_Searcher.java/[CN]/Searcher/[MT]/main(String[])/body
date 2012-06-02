@@ -1,5 +1,19 @@
 {
   ensureCorrectUsageOrExit(args);
   final Searcher searcher=new Searcher();
-  searcher.run(args[0],new File(args[1]),new File(args[2]));
+  final String ruleId=args[0];
+  final File ruleFile=new File(args[1]);
+  final String languageCode=args[2];
+  final Language language=Language.getLanguageForShortName(languageCode);
+  if (language == null) {
+    throw new RuntimeException("Unknown language code '" + languageCode + "'");
+  }
+  final File indexDir=new File(args[3]);
+  final PatternRule rule=searcher.getRuleById(ruleId,ruleFile);
+  final List<MatchingSentence> ruleMatchesOnIndex=searcher.findRuleMatchesOnIndex(rule,language,indexDir);
+  int i=1;
+  for (  MatchingSentence ruleMatch : ruleMatchesOnIndex) {
+    System.out.println(i + ": " + ruleMatch.getSentence());
+    i++;
+  }
 }

@@ -1,5 +1,0 @@
-{
-  final PatternRule rule=getRuleById(ruleId,xmlRuleFile);
-  final TopDocs topDocs=run(rule,searcher,checkUnsupportedRule);
-  return topDocs;
-}

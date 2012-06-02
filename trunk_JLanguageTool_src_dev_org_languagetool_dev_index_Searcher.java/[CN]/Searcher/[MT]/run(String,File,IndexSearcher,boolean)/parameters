@@ -1,4 +1,0 @@
-String ruleId
-File xmlRuleFile
-IndexSearcher searcher
-boolean checkUnsupportedRule

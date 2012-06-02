@@ -1,13 +1,7 @@
 {
-  final List<RuleMatch> matches=new ArrayList<RuleMatch>();
   final Query query=createQuery(rule);
   final TopDocs topDocs=indexSearcher.search(query,maxHits);
   final JLanguageTool languageTool=getLanguageToolWithOneRule(language,rule);
-  for (  ScoreDoc match : topDocs.scoreDocs) {
-    final Document doc=indexSearcher.doc(match.doc);
-    final String sentence=doc.get(PatternRuleQueryBuilder.FIELD_NAME);
-    final List<RuleMatch> ruleMatches=languageTool.check(sentence);
-    matches.addAll(ruleMatches);
-  }
-  return matches;
+  final List<MatchingSentence> matchingSentences=findMatchingSentences(indexSearcher,topDocs,languageTool);
+  return matchingSentences;
 }

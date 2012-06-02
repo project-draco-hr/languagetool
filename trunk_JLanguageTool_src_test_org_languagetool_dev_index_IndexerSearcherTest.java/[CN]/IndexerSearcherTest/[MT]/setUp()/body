@@ -1,4 +1,7 @@
 {
   super.setUp();
   directory=newDirectory();
+  final String content="How to move back and fourth from linux to xmb? Calcium deposits on eye lid.";
+  Indexer.run(content,directory,Language.ENGLISH,false);
+  searcher=new IndexSearcher(directory);
 }

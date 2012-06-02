@@ -8,6 +8,6 @@
     return handler.getRules();
   }
  catch (  final Exception e) {
-    throw new IOException("Cannot load or parse '" + filename + "'",e);
+    throw new IOException("Cannot load or parse input stream of '" + filename + "'",e);
   }
 }

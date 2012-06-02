@@ -1,0 +1,13 @@
+{
+  final List<MatchingSentence> matchingSentences=new ArrayList<MatchingSentence>();
+  for (  ScoreDoc match : topDocs.scoreDocs) {
+    final Document doc=indexSearcher.doc(match.doc);
+    final String sentence=doc.get(PatternRuleQueryBuilder.FIELD_NAME);
+    final List<RuleMatch> ruleMatches=languageTool.check(sentence);
+    if (ruleMatches.size() > 0) {
+      final MatchingSentence matchingSentence=new MatchingSentence(sentence,ruleMatches);
+      matchingSentences.add(matchingSentence);
+    }
+  }
+  return matchingSentences;
+}
