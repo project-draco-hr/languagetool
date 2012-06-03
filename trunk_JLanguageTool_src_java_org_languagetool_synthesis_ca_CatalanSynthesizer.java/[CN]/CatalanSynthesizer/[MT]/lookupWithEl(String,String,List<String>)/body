@@ -1,0 +1,36 @@
+{
+  final List<WordData> wordForms=synthesizer.lookup(lemma + "|" + posTag);
+  final Matcher mMS=pMS.matcher(posTag);
+  final Matcher mFS=pFS.matcher(posTag);
+  final Matcher mMP=pMP.matcher(posTag);
+  final Matcher mFP=pFP.matcher(posTag);
+  for (  WordData wd : wordForms) {
+    final String word=wd.getStem().toString();
+    if (mMS.matches()) {
+      final Matcher mMascYes=pMascYes.matcher(wd.getStem().toString());
+      final Matcher mMascNo=pMascNo.matcher(wd.getStem().toString());
+      if (mMascYes.matches() && !mMascNo.matches()) {
+        results.add("l'" + word);
+      }
+ else {
+        results.add("el " + word);
+      }
+    }
+    if (mFS.matches()) {
+      final Matcher mFemYes=pFemYes.matcher(wd.getStem().toString());
+      final Matcher mFemNo=pFemNo.matcher(wd.getStem().toString());
+      if (mFemYes.matches() && !mFemNo.matches()) {
+        results.add("l'" + word);
+      }
+ else {
+        results.add("la " + word);
+      }
+    }
+    if (mMP.matches()) {
+      results.add("els " + word);
+    }
+    if (mFP.matches()) {
+      results.add("les " + word);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  initSynthesizer();
+  initPossibleTags();
+  final Pattern p;
+  final boolean addDt=posTag.equals(ADD_DETERMINER);
+  if (addDt) {
+    p=Pattern.compile("N.*|A.*|V.P.*");
+  }
+ else {
+    p=Pattern.compile(posTag);
+  }
+  final ArrayList<String> results=new ArrayList<String>();
+  for (  final String tag : possibleTags) {
+    final Matcher m=p.matcher(tag);
+    if (m.matches()) {
+      if (addDt) {
+        lookupWithEl(token.getLemma(),tag,results);
+      }
+ else {
+        lookup(token.getLemma(),tag,results);
+      }
+    }
+  }
+  return results.toArray(new String[results.size()]);
+}

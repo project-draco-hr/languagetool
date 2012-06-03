@@ -1,0 +1,11 @@
+{
+  final CatalanSynthesizer synth=new CatalanSynthesizer();
+  assertEquals(synth.synthesize(dummyToken("blablabla"),"blablabla").length,0);
+  assertEquals("[nostres]",Arrays.toString(synth.synthesize(dummyToken("nostre"),"PX1CP0P0")));
+  assertEquals("[presidents]",Arrays.toString(synth.synthesize(dummyToken("president"),"NCMP000")));
+  assertEquals("[comprovat]",Arrays.toString(synth.synthesize(dummyToken("comprovar"),"VMP00SM")));
+  assertEquals("[comprovades, comprovats, comprovada, comprovat]",Arrays.toString(synth.synthesize(dummyToken("comprovar"),"V.P.*",true)));
+  assertEquals("[contestant, contestar]",Arrays.toString(synth.synthesize(dummyToken("contestar"),"VM[GN]0000",true)));
+  assertEquals("[les universitats, la universitat]",Arrays.toString(synth.synthesize(dummyToken("universitat"),"+DT",false)));
+  assertEquals("[les ??niques, l'??nica, els ??nics, l'??nic]",Arrays.toString(synth.synthesize(dummyToken("??nic"),"+DT",false)));
+}
