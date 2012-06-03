@@ -7,8 +7,8 @@
   for (  WordData wd : wordForms) {
     final String word=wd.getStem().toString();
     if (mMS.matches()) {
-      final Matcher mMascYes=pMascYes.matcher(wd.getStem().toString());
-      final Matcher mMascNo=pMascNo.matcher(wd.getStem().toString());
+      final Matcher mMascYes=pMascYes.matcher(word);
+      final Matcher mMascNo=pMascNo.matcher(word);
       if (mMascYes.matches() && !mMascNo.matches()) {
         results.add("l'" + word);
       }
@@ -17,8 +17,8 @@
       }
     }
     if (mFS.matches()) {
-      final Matcher mFemYes=pFemYes.matcher(wd.getStem().toString());
-      final Matcher mFemNo=pFemNo.matcher(wd.getStem().toString());
+      final Matcher mFemYes=pFemYes.matcher(word);
+      final Matcher mFemNo=pFemNo.matcher(word);
       if (mFemYes.matches() && !mFemNo.matches()) {
         results.add("l'" + word);
       }

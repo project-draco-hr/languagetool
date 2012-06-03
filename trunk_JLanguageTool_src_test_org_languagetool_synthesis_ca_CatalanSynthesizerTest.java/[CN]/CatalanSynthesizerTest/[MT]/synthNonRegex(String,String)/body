@@ -1,0 +1,3 @@
+{
+  return Arrays.toString(synth.synthesize(dummyToken(word),pos,false));
+}
