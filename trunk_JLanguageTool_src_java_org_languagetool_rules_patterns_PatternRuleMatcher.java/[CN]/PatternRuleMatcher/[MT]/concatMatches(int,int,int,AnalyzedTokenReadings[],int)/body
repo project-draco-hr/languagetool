@@ -8,7 +8,11 @@
       final int skippedTokens=nextTokenPos - tokenIndex;
       suggestionMatches.get(start).setToken(tokens,tokenIndex - 1,skippedTokens);
       suggestionMatches.get(start).setSynthesizer(language.getSynthesizer());
-      finalMatch=suggestionMatches.get(start).toFinalString();
+      finalMatch=suggestionMatches.get(start).toFinalString(language);
+      if (suggestionMatches.get(start).checksSpelling() && finalMatch.length == 1 && "".equals(finalMatch[0])) {
+        finalMatch=new String[1];
+        finalMatch[0]="<mistake/>";
+      }
     }
  else {
       final List<String[]> matchList=new ArrayList<String[]>();
@@ -16,7 +20,7 @@
         final int skippedTokens=nextTokenPos - (tokenIndex + i);
         suggestionMatches.get(start).setToken(tokens,tokenIndex - 1 + i,skippedTokens);
         suggestionMatches.get(start).setSynthesizer(language.getSynthesizer());
-        matchList.add(suggestionMatches.get(start).toFinalString());
+        matchList.add(suggestionMatches.get(start).toFinalString(language));
       }
       return combineLists(matchList.toArray(new String[matchList.size()][]),new String[matchList.size()],0,language);
     }

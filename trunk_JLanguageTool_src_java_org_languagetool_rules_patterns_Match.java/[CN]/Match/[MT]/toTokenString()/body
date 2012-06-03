@@ -1,6 +1,6 @@
 {
   final StringBuilder output=new StringBuilder();
-  final String[] stringToFormat=toFinalString();
+  final String[] stringToFormat=toFinalString(null);
   for (int i=0; i < stringToFormat.length; i++) {
     output.append(stringToFormat[i]);
     if (i + 1 < stringToFormat.length) {
