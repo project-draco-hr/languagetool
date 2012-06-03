@@ -92,7 +92,7 @@
         found=true;
       }
     }
-    if (!found) {
+    if (!found && !oldRule.name.contains("<")) {
       out.write("<tr class=\"removed\"><td>5REMOVEDRULE</td><td>" + oldRule.name + "</td></tr>\n");
     }
   }
