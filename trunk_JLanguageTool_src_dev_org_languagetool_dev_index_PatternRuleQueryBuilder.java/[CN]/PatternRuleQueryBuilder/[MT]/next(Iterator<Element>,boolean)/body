@@ -16,7 +16,12 @@
       throw e;
     }
  else {
-      tokenQuery=createTokenQuery("",false,false,false);
+      if (patternElement.hasExceptionList()) {
+        tokenQuery=createTokenQuery(patternElement.getString(),patternElement.getNegation(),patternElement.isRegularExpression(),patternElement.getCaseSensitive());
+      }
+ else {
+        tokenQuery=createTokenQuery("",false,false,false);
+      }
     }
   }
   final ArrayList<SpanQuery> list=new ArrayList<SpanQuery>();
