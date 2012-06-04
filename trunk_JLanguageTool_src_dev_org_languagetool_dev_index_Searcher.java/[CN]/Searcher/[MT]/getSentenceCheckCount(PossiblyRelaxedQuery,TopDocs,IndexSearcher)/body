@@ -2,7 +2,7 @@
   final int sentencesChecked;
   final int indexSize=indexSearcher.getIndexReader().numDocs();
   if (query.isRelaxed) {
-    sentencesChecked=Math.min(maxHits,topDocs.totalHits);
+    sentencesChecked=Math.min(maxHits,indexSize);
   }
  else {
     sentencesChecked=indexSize;
