@@ -10,7 +10,7 @@
  else {
       rules=newRules;
     }
-    final Scanner scanner=new Scanner(new FileReader(i == 0 ? "old" : "new"));
+    final Scanner scanner=new Scanner(new FileReader(i == 0 ? "tools/ltdiff/old" : "tools/ltdiff/new"));
     Rule r=new Rule();
     while (scanner.hasNextLine()) {
       String line=scanner.nextLine();
