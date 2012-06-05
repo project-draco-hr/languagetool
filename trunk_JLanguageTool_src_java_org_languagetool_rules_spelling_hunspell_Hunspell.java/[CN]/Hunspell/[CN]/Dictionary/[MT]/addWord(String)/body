@@ -1,0 +1,3 @@
+{
+  hsl.Hunspell_add(hunspellDict,stringToBytes(word));
+}
