@@ -1,0 +1,33 @@
+{
+  final List<ContextWords> set=new Vector<ContextWords>();
+  final Scanner scanner=new Scanner(file,"utf-8");
+  try {
+    while (scanner.hasNextLine()) {
+      final String line=scanner.nextLine();
+      if (line.charAt(0) == '#') {
+        continue;
+      }
+      String[] column=line.split("\t");
+      if (column.length >= 6) {
+        ContextWords contextWords=new ContextWords();
+        contextWords.setWord(0,column[0]);
+        contextWords.setWord(1,column[1]);
+        contextWords.matches[0]=column[2];
+        contextWords.matches[1]=column[3];
+        contextWords.setContext(0,column[4]);
+        contextWords.setContext(1,column[5]);
+        if (column.length > 6) {
+          contextWords.explanations[0]=column[6];
+          if (column.length > 7) {
+            contextWords.explanations[1]=column[7];
+          }
+        }
+        set.add(contextWords);
+      }
+    }
+  }
+  finally {
+    scanner.close();
+  }
+  return set;
+}

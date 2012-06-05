@@ -1,0 +1,4 @@
+String wrongWord
+String suggestion
+String explanationSuggestion
+String explanationWrongWord

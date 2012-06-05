@@ -1,0 +1,64 @@
+{
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  for (  ContextWords contextWords : contextWordsSet) {
+    boolean matchedWord[]={false,false};
+    Matcher matchers[]={null,null};
+    matchers[0]=contextWords.words[0].matcher("");
+    matchers[1]=contextWords.words[1].matcher("");
+    int i;
+    String token1="";
+    for (i=1; i < tokens.length && !matchedWord[0]; i++) {
+      token1=tokens[i].getToken();
+      matchedWord[0]=matchers[0].reset(token1).find();
+    }
+    int j;
+    String token2="";
+    for (j=1; j < tokens.length && !matchedWord[1]; j++) {
+      token2=tokens[j].getToken();
+      matchedWord[1]=matchers[1].reset(token2).find();
+    }
+    int foundWord=-1;
+    int notFoundWord=-1;
+    int startPos=0;
+    int endPos=0;
+    String matchedToken="";
+    if (matchedWord[0] && !matchedWord[1]) {
+      foundWord=0;
+      notFoundWord=1;
+      matchers[1]=contextWords.contexts[1].matcher("");
+      startPos=tokens[i - 1].getStartPos();
+      endPos=tokens[i - 1].getStartPos() + token1.length();
+      matchedToken=token1;
+    }
+ else     if (matchedWord[1] && !matchedWord[0]) {
+      foundWord=1;
+      notFoundWord=0;
+      matchers[0]=contextWords.contexts[0].matcher("");
+      startPos=tokens[j - 1].getStartPos();
+      endPos=tokens[j - 1].getStartPos() + token2.length();
+      matchedToken=token2;
+    }
+    if (foundWord != -1) {
+      boolean matchedContext[]={false,false};
+      matchers[foundWord]=contextWords.contexts[foundWord].matcher("");
+      matchers[notFoundWord]=contextWords.contexts[notFoundWord].matcher("");
+      String token="";
+      for (i=1; i < tokens.length && !matchedContext[foundWord]; i++) {
+        token=tokens[i].getToken();
+        matchedContext[foundWord]=matchers[foundWord].reset(token).find();
+      }
+      for (i=1; i < tokens.length && !matchedContext[notFoundWord]; i++) {
+        token=tokens[i].getToken();
+        matchedContext[notFoundWord]=matchers[notFoundWord].reset(token).find();
+      }
+      if (matchedContext[notFoundWord] && !matchedContext[foundWord]) {
+        String msg=getMessage(matchedToken,matchedToken.replaceFirst(contextWords.matches[foundWord],contextWords.matches[notFoundWord]),contextWords.explanations[notFoundWord],contextWords.explanations[foundWord]);
+        String shortMsg=getShortMessage(matchedToken.replaceFirst(contextWords.matches[foundWord],contextWords.matches[notFoundWord]));
+        final RuleMatch ruleMatch=new RuleMatch(this,startPos,endPos,msg,shortMsg);
+        ruleMatches.add(ruleMatch);
+      }
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}

@@ -1,0 +1,3 @@
+{
+  return "M??gliche Wortverwechslung: Meinten Sie <suggestion>$SUGGESTION</suggestion> anstatt '$WRONGWORD'?";
+}

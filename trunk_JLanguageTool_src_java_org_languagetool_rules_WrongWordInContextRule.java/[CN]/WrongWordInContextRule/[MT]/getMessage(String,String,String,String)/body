@@ -1,0 +1,8 @@
+{
+  if (explanationSuggestion.equals("") || explanationWrongWord.equals("")) {
+    return getMessageString().replaceFirst("\\$SUGGESTION",suggestion).replaceFirst("\\$WRONGWORD",wrongWord);
+  }
+ else {
+    return getLongMessageString().replaceFirst("\\$SUGGESTION",suggestion).replaceFirst("\\$WRONGWORD",wrongWord).replaceFirst("\\$EXPLANATION_SUGGESTION",explanationSuggestion).replaceFirst("\\$EXPLANATION_WRONGWORD",explanationWrongWord);
+  }
+}

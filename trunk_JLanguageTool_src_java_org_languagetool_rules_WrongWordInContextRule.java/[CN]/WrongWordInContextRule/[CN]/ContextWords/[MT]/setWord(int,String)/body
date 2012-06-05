@@ -1,0 +1,3 @@
+{
+  words[i]=Pattern.compile(word);
+}

@@ -1,0 +1,7 @@
+{
+  if (messages != null) {
+    super.setCategory(new Category(getCategoryString()));
+  }
+  filename=getFilename();
+  contextWordsSet=loadContextWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(filename));
+}
