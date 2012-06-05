@@ -5,8 +5,7 @@
     return toRuleMatchArray(ruleMatches);
   }
   int len=text.getTokens()[1].getStartPos();
-  for (int i=0; i < tokens.length; i++) {
-    final String word=tokens[i];
+  for (  final String word : tokens) {
     boolean isAlphabetic=true;
     if (word.length() == 1) {
       isAlphabetic=StringTools.isAlphabetic(word.charAt(0));

@@ -1,5 +1,5 @@
 {
-  StringBuffer sb=new StringBuffer();
+  final StringBuilder sb=new StringBuilder();
   for (int i=1; i < sentence.getTokens().length; i++) {
     sb.append(sentence.getTokens()[i].getToken());
   }
