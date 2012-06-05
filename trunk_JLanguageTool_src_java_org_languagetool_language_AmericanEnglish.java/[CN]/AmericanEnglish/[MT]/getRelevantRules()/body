@@ -1,3 +1,6 @@
 {
-  return Arrays.asList(CommaWhitespaceRule.class,DoublePunctuationRule.class,EnglishUnpairedBracketsRule.class,UppercaseSentenceStartRule.class,WhitespaceRule.class,EnglishWordRepeatRule.class,LongSentenceRule.class,HunspellRule.class,AvsAnRule.class,EnglishWordRepeatBeginningRule.class,CompoundRule.class);
+  final List<Class<? extends Rule>> rules=new ArrayList<Class<? extends Rule>>();
+  rules.addAll(super.getRelevantRules());
+  rules.add(HunspellRule.class);
+  return rules;
 }
