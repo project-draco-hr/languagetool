@@ -1,9 +1,12 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  final String[] tokens=tokenizeText(getSentenceText(text));
+  if (needsInit) {
+    init();
+  }
   if (dictionary == null) {
     return toRuleMatchArray(ruleMatches);
   }
+  final String[] tokens=tokenizeText(getSentenceText(text));
   int len=text.getTokens()[1].getStartPos();
   for (  final String word : tokens) {
     boolean isAlphabetic=true;

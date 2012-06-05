@@ -1,0 +1,13 @@
+{
+  final String langCountry=language.getShortName() + "_" + language.getCountryVariants()[0];
+  final String shortDicPath="/" + language.getShortName() + "/hunspell/"+ langCountry+ ".dic";
+  String wordChars="";
+  if (JLanguageTool.getDataBroker().resourceExists(shortDicPath)) {
+    dictionary=Hunspell.getInstance().getDictionary(getDictionaryPath(langCountry,shortDicPath));
+    if (!"".equals(dictionary.getWordChars())) {
+      wordChars="(?![" + dictionary.getWordChars().replace("-","\\-") + "])";
+    }
+  }
+  nonWordPattern=Pattern.compile(wordChars + NON_ALPHABETIC);
+  needsInit=false;
+}

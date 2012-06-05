@@ -12,7 +12,8 @@
     dictionaryPath=tempDir.getAbsolutePath() + "/" + dicName;
   }
  else {
-    dictionaryPath=dictionaryPath.substring(0,dictionaryPath.length() - 4);
+    final int suffixLength=".dic".length();
+    dictionaryPath=dictionaryPath.substring(0,dictionaryPath.length() - suffixLength);
   }
   return dictionaryPath;
 }
