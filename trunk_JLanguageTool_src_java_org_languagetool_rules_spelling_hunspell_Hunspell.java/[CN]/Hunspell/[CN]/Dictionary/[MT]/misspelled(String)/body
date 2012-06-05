@@ -1,15 +1,6 @@
 {
   try {
-    if (hsl.Hunspell_spell(hunspellDict,stringToBytes(word)) == 0) {
-      byte[] arr=stringToBytes(word);
-      for (int i=0; i < arr.length; i++) {
-        System.err.print(arr[i]);
-        System.err.print(' ');
-      }
-      System.err.println();
-      return true;
-    }
-    return false;
+    return (hsl.Hunspell_spell(hunspellDict,stringToBytes(word)) == 0);
   }
  catch (  UnsupportedEncodingException e) {
     return true;

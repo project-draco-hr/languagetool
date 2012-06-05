@@ -6,8 +6,14 @@
   }
   hunspellDict=hsl.Hunspell_create(aff.toString(),dic.toString());
   encoding=hsl.Hunspell_get_dic_encoding(hunspellDict);
+  if ("microsoft1251".equals(encoding)) {
+    encoding="windows-1251";
+  }
+ else   if ("ISCII-DEVANAGARI".equals(encoding)) {
+    encoding="ISCII91";
+  }
   Charset charset=Charset.forName(encoding);
   encoder=charset.newEncoder();
   decoder=charset.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT);
-  stringToBytes("test");
+  wordChars=getWordCharsFromFile(aff);
 }

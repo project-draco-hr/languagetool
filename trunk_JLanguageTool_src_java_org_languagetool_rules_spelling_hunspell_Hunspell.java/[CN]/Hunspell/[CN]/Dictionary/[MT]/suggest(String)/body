@@ -15,7 +15,12 @@
           throw new RuntimeException("String improperly terminated: " + len);
         }
         byte[] data=pointerArray[i].getByteArray(0,(int)len);
-        res.add(new String(data,encoding));
+        ByteBuffer bb1=ByteBuffer.allocate((int)len);
+        bb1.put(data);
+        bb1.limit((int)len);
+        bb1.flip();
+        CharBuffer ch=decoder.decode(bb1);
+        res.add(ch.toString());
       }
     }
   }
