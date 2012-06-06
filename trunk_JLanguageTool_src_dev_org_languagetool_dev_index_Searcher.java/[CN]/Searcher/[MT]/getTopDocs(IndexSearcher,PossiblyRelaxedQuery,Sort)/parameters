@@ -1,0 +1,3 @@
+IndexSearcher indexSearcher
+PossiblyRelaxedQuery query
+Sort sort

@@ -1,0 +1,4 @@
+{
+  this.topDocs=topDocs;
+  this.resultIsTimeLimited=resultIsTimeLimited;
+}
