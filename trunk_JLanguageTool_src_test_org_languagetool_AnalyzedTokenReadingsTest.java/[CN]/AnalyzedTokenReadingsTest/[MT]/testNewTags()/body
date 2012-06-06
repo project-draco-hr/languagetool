@@ -33,4 +33,7 @@
   testReadings.leaveReading(aTok2);
   assertEquals(testReadings.getToken(),"word");
   assertTrue(!testReadings.hasPosTag("POS"));
+  testReadings.removeReading(aTok2);
+  assertEquals(testReadings.getToken(),"word");
+  assertTrue(!testReadings.hasPosTag("POS"));
 }
