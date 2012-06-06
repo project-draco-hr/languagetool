@@ -1,6 +1,5 @@
 {
-  final String defaultLocale=Locale.getDefault().getLanguage();
-  final String defaultGuiLocale=getDefaultGuiLanguage(defaultLocale);
+  final String defaultGuiLocale=getDefaultGuiLanguage(Locale.getDefault());
   for (  final I18nLanguage i18nLanguage : i18nLanguages) {
     addItem(i18nLanguage);
     if (i18nLanguage.toString().equals(defaultGuiLocale)) {

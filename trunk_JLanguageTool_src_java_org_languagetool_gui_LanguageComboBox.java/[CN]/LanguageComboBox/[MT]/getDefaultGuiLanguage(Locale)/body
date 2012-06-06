@@ -1,0 +1,14 @@
+{
+  String defaultGuiLocale=null;
+  try {
+    defaultGuiLocale=messages.getString(defaultLocale.getLanguage() + "-" + defaultLocale.getCountry());
+  }
+ catch (  final MissingResourceException e) {
+    try {
+      defaultGuiLocale=messages.getString(defaultLocale.getLanguage());
+    }
+ catch (    final MissingResourceException e2) {
+    }
+  }
+  return defaultGuiLocale;
+}
