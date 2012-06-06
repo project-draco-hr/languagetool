@@ -2,8 +2,8 @@
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   for (  ContextWords contextWords : contextWordsSet) {
-    boolean matchedWord[]={false,false};
-    Matcher matchers[]={null,null};
+    final boolean[] matchedWord={false,false};
+    final Matcher[] matchers={null,null};
     matchers[0]=contextWords.words[0].matcher("");
     matchers[1]=contextWords.words[1].matcher("");
     int i;
@@ -40,7 +40,7 @@
       matchedToken=token2;
     }
     if (foundWord != -1) {
-      boolean matchedContext[]={false,false};
+      final boolean[] matchedContext={false,false};
       matchers[foundWord]=contextWords.contexts[foundWord].matcher("");
       matchers[notFoundWord]=contextWords.contexts[notFoundWord].matcher("");
       String token="";
@@ -53,8 +53,8 @@
         matchedContext[notFoundWord]=matchers[notFoundWord].reset(token).find();
       }
       if (matchedContext[notFoundWord] && !matchedContext[foundWord]) {
-        String msg=getMessage(matchedToken,matchedToken.replaceFirst(contextWords.matches[foundWord],contextWords.matches[notFoundWord]),contextWords.explanations[notFoundWord],contextWords.explanations[foundWord]);
-        String shortMsg=getShortMessage(matchedToken.replaceFirst(contextWords.matches[foundWord],contextWords.matches[notFoundWord]));
+        final String msg=getMessage(matchedToken,matchedToken.replaceFirst(contextWords.matches[foundWord],contextWords.matches[notFoundWord]),contextWords.explanations[notFoundWord],contextWords.explanations[foundWord]);
+        final String shortMsg=getShortMessage(matchedToken.replaceFirst(contextWords.matches[foundWord],contextWords.matches[notFoundWord]));
         final RuleMatch ruleMatch=new RuleMatch(this,startPos,endPos,msg,shortMsg);
         ruleMatches.add(ruleMatch);
       }

@@ -7,9 +7,9 @@
       if (line.charAt(0) == '#') {
         continue;
       }
-      String[] column=line.split("\t");
+      final String[] column=line.split("\t");
       if (column.length >= 6) {
-        ContextWords contextWords=new ContextWords();
+        final ContextWords contextWords=new ContextWords();
         contextWords.setWord(0,column[0]);
         contextWords.setWord(1,column[1]);
         contextWords.matches[0]=column[2];
