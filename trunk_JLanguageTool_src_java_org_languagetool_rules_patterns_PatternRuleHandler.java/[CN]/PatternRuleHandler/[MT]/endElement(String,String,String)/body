@@ -117,5 +117,8 @@
  else   if (UNIFY.equals(qName)) {
     inUnification=false;
     equivalenceFeatures=new HashMap<String,List<String>>();
+    if (uniNegation) {
+      elementList.get(elementList.size() - 1).setUniNegation();
+    }
   }
 }

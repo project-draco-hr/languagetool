@@ -80,9 +80,6 @@
     }
     if (inUnification) {
       tokenElement.setUnification(equivalenceFeatures);
-      if (uniNegation) {
-        tokenElement.setUniNegation();
-      }
       uniCounter++;
     }
     if (inUnificationDef) {
@@ -124,6 +121,9 @@
  else   if (qName.equals(UNIFY)) {
     inUnification=false;
     equivalenceFeatures=new HashMap<String,List<String>>();
+    if (uniNegation) {
+      elementList.get(elementList.size() - 1).setUniNegation();
+    }
   }
  else   if (qName.equals(WD)) {
     addNewWord(wd.toString(),wdLemma,wdPos);

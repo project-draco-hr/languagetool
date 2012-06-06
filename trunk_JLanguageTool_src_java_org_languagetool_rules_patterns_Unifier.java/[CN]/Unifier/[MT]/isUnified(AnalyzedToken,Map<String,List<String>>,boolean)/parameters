@@ -1,4 +1,3 @@
 AnalyzedToken matchToken
 Map<String,List<String>> uFeatures
-boolean isUniNegated
 boolean lastReading

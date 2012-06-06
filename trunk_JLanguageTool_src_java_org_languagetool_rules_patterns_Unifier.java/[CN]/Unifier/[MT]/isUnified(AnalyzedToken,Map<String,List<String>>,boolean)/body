@@ -9,9 +9,6 @@
     }
     return uniAllMatched;
   }
-  if (isUniNegated) {
-    setNegation(true);
-  }
   isSatisfied(matchToken,uFeatures);
   if (lastReading) {
     inUnification=true;

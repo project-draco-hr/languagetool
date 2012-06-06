@@ -28,9 +28,6 @@
   }
   if (inUnification) {
     tokenElement.setUnification(equivalenceFeatures);
-    if (uniNegation) {
-      tokenElement.setUniNegation();
-    }
   }
   if (inUnificationDef) {
     language.getUnifier().setEquivalence(uFeature,uType,tokenElement);

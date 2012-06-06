@@ -50,5 +50,5 @@
       }
     }
   }
-  return unified ^ negation;
+  return unified;
 }
