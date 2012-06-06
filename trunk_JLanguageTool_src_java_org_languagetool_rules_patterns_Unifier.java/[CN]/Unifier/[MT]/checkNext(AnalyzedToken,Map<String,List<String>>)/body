@@ -32,6 +32,9 @@
         if (readingsCounter < tokSequence.size()) {
           tokSequence.get(readingsCounter).addReading(aToken);
         }
+ else {
+          unifiedNext=false;
+        }
       }
       tmpFeaturesFound=tokenFeaturesFound;
     }

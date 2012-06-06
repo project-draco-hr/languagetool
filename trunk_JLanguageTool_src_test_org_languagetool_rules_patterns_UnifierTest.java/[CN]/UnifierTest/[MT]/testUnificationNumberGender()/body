@@ -13,8 +13,8 @@
   mascElement.setPosElement(".*[\\.:]m",true,false);
   uni.setEquivalence("gender","masculine",mascElement);
   final AnalyzedToken sing1=new AnalyzedToken("ma??y","adj:sg:blahblah:m","ma??y");
-  final AnalyzedToken sing1a=new AnalyzedToken("ma??y","adj:sg:blahblah:f","ma??y");
-  final AnalyzedToken sing1b=new AnalyzedToken("ma??y","adj:pl:blahblah:m","ma??y");
+  final AnalyzedToken sing1a=new AnalyzedToken("ma??a","adj:sg:blahblah:f","ma??y");
+  final AnalyzedToken sing1b=new AnalyzedToken("ma??e","adj:pl:blahblah:m","ma??y");
   final AnalyzedToken sing2=new AnalyzedToken("cz??owiek","subst:sg:blahblah:m","cz??owiek");
   final Map<String,List<String>> equiv=new HashMap<String,List<String>>();
   equiv.put("number",null);
