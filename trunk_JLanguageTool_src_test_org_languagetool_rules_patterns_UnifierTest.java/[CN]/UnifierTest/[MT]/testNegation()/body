@@ -92,4 +92,22 @@
   satisfied&=uni.isUnified(subst_sing_fem,equiv,true);
   assertEquals(true,!satisfied);
   uni.reset();
+  satisfied=true;
+  satisfied&=uni.isUnified(det_sing_fem,equiv,true);
+  satisfied&=uni.isUnified(plur_fem,equiv,true);
+  satisfied&=uni.isUnified(subst_plur_fem,equiv,true);
+  assertEquals(true,!satisfied);
+  uni.reset();
+  satisfied=true;
+  satisfied&=uni.isUnified(det_sing_fem,equiv,true);
+  satisfied&=uni.isUnified(plur_fem,equiv,true);
+  satisfied&=uni.isUnified(subst_plur_masc,equiv,true);
+  assertEquals(true,!satisfied);
+  uni.reset();
+  satisfied=true;
+  satisfied&=uni.isUnified(det_plur_masc,equiv,true);
+  satisfied&=uni.isUnified(plur_fem,equiv,true);
+  satisfied&=uni.isUnified(subst_plur_masc,equiv,true);
+  assertEquals(true,!satisfied);
+  uni.reset();
 }
