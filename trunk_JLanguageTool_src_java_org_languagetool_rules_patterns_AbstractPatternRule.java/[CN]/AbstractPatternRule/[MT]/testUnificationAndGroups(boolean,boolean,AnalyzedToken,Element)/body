@@ -6,7 +6,12 @@
         thisMatched=!(thisMatched && unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading));
       }
  else {
-        thisMatched=thisMatched && unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading);
+        if (elem.isLastInUnification()) {
+          thisMatched=thisMatched && unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading);
+        }
+ else {
+          unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading);
+        }
       }
     }
     if (thisMatched && getUnified) {

@@ -1,7 +1,6 @@
 {
   equivalencesMatched.clear();
   allFeatsIn=false;
-  negation=false;
   tokCnt=-1;
   featuresFound.clear();
   tmpFeaturesFound.clear();

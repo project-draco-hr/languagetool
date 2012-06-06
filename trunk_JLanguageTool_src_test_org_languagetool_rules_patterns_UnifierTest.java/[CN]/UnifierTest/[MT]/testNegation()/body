@@ -41,7 +41,6 @@
   satisfied&=uni.isUnified(subst_sing_masc,equiv,true);
   assertEquals(true,satisfied);
   uni.reset();
-  uni.setNegation(true);
   satisfied=uni.isSatisfied(det_sing_masc,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(sing_masc,equiv);
