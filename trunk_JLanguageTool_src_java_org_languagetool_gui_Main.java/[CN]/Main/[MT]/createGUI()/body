@@ -38,15 +38,7 @@
   buttonCons.gridx=2;
   buttonCons.gridy=0;
   insidePanel.add(checkTextButton,buttonCons);
-  autoDetectBox=new JCheckBox(messages.getString("atd"));
-  autoDetectBox.addActionListener(new ActionListener(){
-    @Override public void actionPerformed(    ActionEvent e){
-      languageBox.setEnabled(!autoDetectBox.isSelected());
-      config.setAutoDetect(autoDetectBox.isSelected());
-    }
-  }
-);
-  autoDetectBox.setSelected(config.getAutoDetect());
+  autoDetectBox=new LanguageDetectionCheckbox(messages,languageBox,config);
   languageBox.setEnabled(!autoDetectBox.isSelected());
   buttonCons.gridx=1;
   buttonCons.gridy=1;

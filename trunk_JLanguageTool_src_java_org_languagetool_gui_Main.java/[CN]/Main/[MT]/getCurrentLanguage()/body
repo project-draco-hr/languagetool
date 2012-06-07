@@ -1,17 +1,6 @@
 {
   if (autoDetectBox.isSelected()) {
-    final LanguageIdentifier langIdentifier=new LanguageIdentifier(textArea.getText());
-    Language lang=Language.getLanguageForShortName(langIdentifier.getLanguage());
-    if (lang == null) {
-      lang=Language.ENGLISH;
-    }
-    for (int i=0; i < languageBox.getItemCount(); i++) {
-      final I18nLanguage boxLanguage=(I18nLanguage)languageBox.getItemAt(i);
-      if (boxLanguage.toString().equals(lang.getTranslatedName(messages))) {
-        languageBox.setSelectedIndex(i);
-      }
-    }
-    return lang;
+    return autoDetectBox.autoDetectLanguage(textArea.getText());
   }
  else {
     return ((I18nLanguage)languageBox.getSelectedItem()).getLanguage();
