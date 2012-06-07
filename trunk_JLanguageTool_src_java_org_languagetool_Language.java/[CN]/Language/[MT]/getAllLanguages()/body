@@ -1,8 +1,6 @@
 {
-  List<Language> langList=new ArrayList<Language>();
-  for (  Language lang : LANGUAGES) {
-    langList.add(lang);
-  }
+  final List<Language> langList=new ArrayList<Language>();
+  Collections.addAll(langList,LANGUAGES);
   langList.addAll(externalLanguages);
   return langList;
 }
