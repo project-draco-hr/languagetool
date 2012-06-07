@@ -1,0 +1,8 @@
+{
+  for (  Language language : Language.REAL_LANGUAGES) {
+    if (language.getShortName().equals(locale.getLanguage()) && !language.hasVariant()) {
+      return language;
+    }
+  }
+  return null;
+}

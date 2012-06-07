@@ -8,6 +8,5 @@
   }
 );
   setSelected(config.getAutoDetect());
-  this.messages=messages;
   this.languageBox=languageBox;
 }

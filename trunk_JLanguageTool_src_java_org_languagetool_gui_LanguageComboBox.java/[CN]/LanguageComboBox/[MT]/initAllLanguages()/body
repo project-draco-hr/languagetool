@@ -1,5 +1,5 @@
 {
-  final List<I18nLanguage> i18nLanguages=new ArrayList<I18nLanguage>();
+  i18nLanguages.clear();
   for (  Language language : Language.LANGUAGES) {
     final boolean skip=(language == Language.DEMO) || language.hasVariant();
     if (!skip) {
@@ -7,5 +7,7 @@
     }
   }
   Collections.sort(i18nLanguages);
-  return i18nLanguages;
+  for (  final I18nLanguage i18nLanguage : i18nLanguages) {
+    addItem(i18nLanguage);
+  }
 }

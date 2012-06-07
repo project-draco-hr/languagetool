@@ -1,0 +1,13 @@
+{
+  Language language=getLanguageForLanguageNameAndCountry(locale);
+  if (language != null) {
+    return language;
+  }
+ else {
+    language=getLanguageForLanguageNameOnly(locale);
+    if (language != null) {
+      return language;
+    }
+  }
+  return Language.AMERICAN_ENGLISH;
+}

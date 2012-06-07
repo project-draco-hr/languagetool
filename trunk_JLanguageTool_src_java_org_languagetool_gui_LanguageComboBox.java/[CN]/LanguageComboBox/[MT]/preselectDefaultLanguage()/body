@@ -1,0 +1,4 @@
+{
+  final Language defaultLanguage=Language.getLanguageForLocale(Locale.getDefault());
+  selectLanguage(defaultLanguage);
+}

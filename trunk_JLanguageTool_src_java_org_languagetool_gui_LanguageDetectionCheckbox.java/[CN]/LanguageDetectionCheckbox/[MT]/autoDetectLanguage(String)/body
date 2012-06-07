@@ -2,13 +2,11 @@
   final LanguageIdentifier langIdentifier=new LanguageIdentifier(text);
   Language lang=Language.getLanguageForShortName(langIdentifier.getLanguage());
   if (lang == null) {
-    lang=Language.ENGLISH;
+    lang=Language.AMERICAN_ENGLISH;
   }
-  for (int i=0; i < languageBox.getItemCount(); i++) {
-    final I18nLanguage boxLanguage=(I18nLanguage)languageBox.getItemAt(i);
-    if (boxLanguage.toString().equals(lang.getTranslatedName(messages))) {
-      languageBox.setSelectedIndex(i);
-    }
+  if (lang.hasVariant()) {
+    lang=lang.getDefaultVariant();
   }
+  languageBox.selectLanguage(lang);
   return lang;
 }
