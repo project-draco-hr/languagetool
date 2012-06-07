@@ -1,0 +1,6 @@
+{
+  if (buffer == null || buffer.capacity() < capacity) {
+    buffer=CharBuffer.allocate(capacity);
+  }
+  return buffer;
+}
