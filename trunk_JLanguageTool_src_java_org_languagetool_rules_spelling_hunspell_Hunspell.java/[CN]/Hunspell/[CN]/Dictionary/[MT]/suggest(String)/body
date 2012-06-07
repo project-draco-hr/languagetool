@@ -3,6 +3,10 @@
   try {
     int suggestionsCount=0;
     PointerByReference suggestions=new PointerByReference();
+    final byte[] wordAsBytes=stringToBytes(word);
+    if (wordAsBytes.length == 0 && word.length() > 0) {
+      return res;
+    }
     suggestionsCount=hsl.Hunspell_suggest(hunspellDict,suggestions,stringToBytes(word));
     if (suggestionsCount == 0) {
       return res;

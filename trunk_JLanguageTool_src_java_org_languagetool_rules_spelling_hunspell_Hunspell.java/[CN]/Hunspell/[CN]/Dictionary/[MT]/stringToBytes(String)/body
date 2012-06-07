@@ -14,8 +14,13 @@
   }
   charBuffer.mark();
   encoder.reset();
-  encoder.encode(charBuffer,bytes,true);
+  if (encoder.encode(charBuffer,bytes,true).isError()) {
+    bytes.clear();
+  }
   bytes.flip();
   charBuffer.reset();
-  return bytes.array();
+  if (bytes.hasRemaining()) {
+    return bytes.array();
+  }
+  return new byte[0];
 }
