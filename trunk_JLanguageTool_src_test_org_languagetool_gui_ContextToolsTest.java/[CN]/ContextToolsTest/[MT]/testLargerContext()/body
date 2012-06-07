@@ -1,0 +1,6 @@
+{
+  final ContextTools contextTools=new ContextTools();
+  contextTools.setContextSize(100);
+  final String context=contextTools.getContext(4,8,"Hi, this is some nice text waiting for its error markers.");
+  assertEquals("Hi, <b><font bgcolor=\"#ff8b8b\">this</font></b> is some nice text waiting for its error markers.",context);
+}

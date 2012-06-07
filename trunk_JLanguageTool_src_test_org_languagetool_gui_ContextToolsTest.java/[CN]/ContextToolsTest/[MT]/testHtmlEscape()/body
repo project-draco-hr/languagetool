@@ -1,0 +1,8 @@
+{
+  final ContextTools contextTools=new ContextTools();
+  final String context1=contextTools.getContext(0,2,"Hi, this is <html>.");
+  assertEquals("<b><font bgcolor=\"#ff8b8b\">Hi</font></b>, this is &lt;html&gt;.",context1);
+  contextTools.setEscapeHtml(false);
+  final String context2=contextTools.getContext(0,2,"Hi, this is <html>.");
+  assertEquals("<b><font bgcolor=\"#ff8b8b\">Hi</font></b>, this is <html>.",context2);
+}

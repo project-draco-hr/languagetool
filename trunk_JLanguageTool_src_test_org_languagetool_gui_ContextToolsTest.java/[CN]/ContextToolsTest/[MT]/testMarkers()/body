@@ -1,0 +1,7 @@
+{
+  final ContextTools contextTools=new ContextTools();
+  contextTools.setErrorMarkerStart("<X>");
+  contextTools.setErrorMarkerEnd("</X>");
+  final String context=contextTools.getContext(0,2,"Hi, this is it.");
+  assertEquals("<X>Hi</X>, this is it.",context);
+}

@@ -4,6 +4,12 @@
     xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
     xml.append("<matches>\n");
   }
+  final ContextTools contextTools=new ContextTools();
+  contextTools.setEscapeHtml(false);
+  contextTools.setContextSize(contextSize);
+  final String START_MARKER="__languagetool_start_marker";
+  contextTools.setErrorMarkerStart(START_MARKER);
+  contextTools.setErrorMarkerEnd("");
   for (  final RuleMatch match : ruleMatches) {
     String subId="";
     if (match.getRule() instanceof PatternRule) {
@@ -16,8 +22,7 @@
     final String msg=match.getMessage().replaceAll("</?suggestion>","'");
     xml.append(subId);
     xml.append(" msg=\"" + escapeXMLForAPIOutput(msg) + "\"");
-    final String START_MARKER="__languagetool_start_marker";
-    String context=Tools.getContext(match.getFromPos(),match.getToPos(),text,contextSize,START_MARKER,"",false);
+    String context=contextTools.getContext(match.getFromPos(),match.getToPos(),text);
     xml.append(" replacements=\"" + escapeXMLForAPIOutput(listToString(match.getSuggestedReplacements(),"#")) + "\"");
     final int contextOffset=context.indexOf(START_MARKER);
     context=context.replaceFirst(START_MARKER,"");

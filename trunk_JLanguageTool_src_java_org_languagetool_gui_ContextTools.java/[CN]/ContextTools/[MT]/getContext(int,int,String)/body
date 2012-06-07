@@ -1,0 +1,43 @@
+{
+  text=text.replace('\n',' ');
+  int startContent=fromPos - contextSize;
+  String prefix="...";
+  String postfix="...";
+  String markerPrefix="   ";
+  if (startContent < 0) {
+    prefix="";
+    markerPrefix="";
+    startContent=0;
+  }
+  int endContent=toPos + contextSize;
+  final int fileLen=text.length();
+  if (endContent > fileLen) {
+    postfix="";
+    endContent=fileLen;
+  }
+  final StringBuilder marker=new StringBuilder();
+  final int totalLen=fileLen + prefix.length();
+  for (int i=0; i < totalLen; i++) {
+    if (i >= fromPos && i < toPos) {
+      marker.append('^');
+    }
+ else {
+      marker.append(' ');
+    }
+  }
+  final StringBuilder sb=new StringBuilder();
+  sb.append(prefix);
+  sb.append(text.substring(startContent,endContent));
+  final String markerStr=markerPrefix + marker.substring(startContent,endContent);
+  sb.append(postfix);
+  final int startMark=markerStr.indexOf('^');
+  final int endMark=markerStr.lastIndexOf('^');
+  String result=sb.toString();
+  if (escapeHtml) {
+    result=StringTools.escapeHTML(result.substring(0,startMark)) + errorMarkerStart + StringTools.escapeHTML(result.substring(startMark,endMark + 1))+ errorMarkerEnd+ StringTools.escapeHTML(result.substring(endMark + 1));
+  }
+ else {
+    result=result.substring(0,startMark) + errorMarkerStart + result.substring(startMark,endMark + 1)+ errorMarkerEnd+ result.substring(endMark + 1);
+  }
+  return result;
+}
