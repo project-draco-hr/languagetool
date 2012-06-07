@@ -17,6 +17,12 @@
       final String repl=StringTools.listToString(match.getSuggestedReplacements(),"; ");
       sb.append("<b>" + messages.getString("correctionMessage") + "</b> "+ repl+ "<br>\n");
     }
+    if (match.getRule().getId().equals(HunspellRule.RULE_ID)) {
+      contextTools.setErrorMarkerStart(HUNSPELL_ERROR_MARKER_START);
+    }
+ else {
+      contextTools.setErrorMarkerStart(LT_ERROR_MARKER_START);
+    }
     final String context=contextTools.getContext(match.getFromPos(),match.getToPos(),text);
     sb.append("<b>" + messages.getString("errorContext") + "</b> "+ context);
     sb.append("<br>\n");
