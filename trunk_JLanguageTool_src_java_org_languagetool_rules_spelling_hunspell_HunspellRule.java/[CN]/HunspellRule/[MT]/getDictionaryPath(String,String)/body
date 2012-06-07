@@ -13,7 +13,13 @@
   }
  else {
     final int suffixLength=".dic".length();
-    dictionaryPath=dictionaryPath.substring(0,dictionaryPath.length() - suffixLength);
+    try {
+      dictionaryPath=new File(dictURL.toURI()).getAbsolutePath();
+      dictionaryPath=dictionaryPath.substring(0,dictionaryPath.length() - suffixLength);
+    }
+ catch (    URISyntaxException e) {
+      return "";
+    }
   }
   return dictionaryPath;
 }
