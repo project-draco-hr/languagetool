@@ -14,6 +14,7 @@
     new Thread(){
       public void run(){
         setWaitCursor();
+        checkTextButton.setEnabled(false);
         try {
           final String startCheckText=HTML_GREY_FONT_START + Tools.makeTexti18n(messages,"startChecking",new Object[]{langName}) + "..."+ HTML_FONT_END;
           resultArea.setText(startCheckText);
@@ -40,6 +41,7 @@
           resultArea.setCaretPosition(0);
         }
   finally {
+          checkTextButton.setEnabled(true);
           unsetWaitCursor();
         }
       }
