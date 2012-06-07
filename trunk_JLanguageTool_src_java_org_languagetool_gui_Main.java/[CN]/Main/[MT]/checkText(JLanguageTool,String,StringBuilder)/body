@@ -21,7 +21,7 @@
     sb.append("<b>" + messages.getString("errorContext") + "</b> "+ context);
     sb.append("<br>\n");
     if (match.getRule().getUrl() != null && Desktop.isDesktopSupported()) {
-      sb.append("<b>More info:</b> <a href=\"");
+      sb.append("<b>" + messages.getString("moreInfo") + "</b> <a href=\"");
       final String url=match.getRule().getUrl().toString();
       sb.append(url);
       final String shortUrl=StringUtils.abbreviate(url,60);
