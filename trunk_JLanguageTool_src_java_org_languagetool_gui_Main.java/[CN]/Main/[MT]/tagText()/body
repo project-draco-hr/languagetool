@@ -1,4 +1,5 @@
 {
-  final JLanguageTool langTool=getCurrentLanguageTool();
+  final Language currentLanguage=getCurrentLanguage();
+  final JLanguageTool langTool=getCurrentLanguageTool(currentLanguage);
   tagTextAndDisplayResults(langTool);
 }

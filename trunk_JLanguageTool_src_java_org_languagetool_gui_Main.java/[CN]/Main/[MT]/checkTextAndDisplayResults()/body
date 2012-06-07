@@ -24,7 +24,7 @@
           sb.append("<br>\n");
           int matches=0;
           try {
-            final JLanguageTool langTool=getCurrentLanguageTool();
+            final JLanguageTool langTool=getCurrentLanguageTool(lang);
             matches=checkText(langTool,textArea.getText(),sb);
           }
  catch (          final Exception e) {
