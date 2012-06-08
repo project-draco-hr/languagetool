@@ -1,3 +1,4 @@
 String lemma
 String posTag
+String prep
 List<String> results

@@ -3,50 +3,28 @@
   final StringTokenizer st=new StringTokenizer(text.replaceAll("([\\p{L}])['???]([\\p{L}])","$1##CA_APOS##$2"),"\u0020\u00A0\u115f\u1160\u1680" + "\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007" + "\u2008\u2009\u200A\u200B\u200c\u200d\u200e\u200f"+ "\u2013\u2014\u2015"+ "\u2028\u2029\u202a\u202b\u202c\u202d\u202e\u202f"+ "\u205F\u2060\u2061\u2062\u2063\u206A\u206b\u206c\u206d"+ "\u206E\u206F\u3000\u3164\ufeff\uffa0\ufff9\ufffa\ufffb"+ ",.;()[]{}<>!?:/\\\"'???????????????????`?????????\t\n\r",true);
   String s;
   String groupStr;
-  Pattern pattern1=Pattern.compile("^([lnmtsd]')([^'\\-]*)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-  Pattern pattern2=Pattern.compile("^(qui-sap-lo|qui-sap-la|qui-sap-los|qui-sap-les)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-  Pattern pattern3=Pattern.compile("^([lnmtsd]')(.*)" + PF + PF+ PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-  Pattern pattern3b=Pattern.compile("^(.*)" + PF + PF+ PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-  Pattern pattern4=Pattern.compile("^([lnmtsd]')(.*)" + PF + PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-  Pattern pattern4b=Pattern.compile("^(.*)" + PF + PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-  Pattern pattern5=Pattern.compile("^([lnmtsd]')(.*)" + PF + "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-  Pattern pattern5b=Pattern.compile("^(.*)" + PF + "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-  Pattern pattern6=Pattern.compile("^([lnmtsd]')(.*)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  int maxPatterns=11;
+  Pattern[] patterns=new Pattern[maxPatterns];
+  patterns[0]=Pattern.compile("^([lnmtsd]')([^'\\-]*)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[1]=Pattern.compile("^(qui-sap-lo|qui-sap-la|qui-sap-los|qui-sap-les)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[2]=Pattern.compile("^([lnmtsd]')(.*)" + PF + PF+ PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[3]=Pattern.compile("^(.*)" + PF + PF+ PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[4]=Pattern.compile("^([lnmtsd]')(.*)" + PF + PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[5]=Pattern.compile("^(.*)" + PF + PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[6]=Pattern.compile("^([lnmtsd]')(.*)" + PF + "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[7]=Pattern.compile("^(.*)" + PF + "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[8]=Pattern.compile("^([lnmtsd]')(.*)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[9]=Pattern.compile("^(a|de|pe)(ls?)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[10]=Pattern.compile("^(ca)(n)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   while (st.hasMoreElements()) {
     s=st.nextToken().replace("##CA_APOS##","'");
-    Matcher matcher=pattern1.matcher(s);
-    boolean matchFound=matcher.find();
-    if (!matchFound) {
-      matcher=pattern2.matcher(s);
+    Matcher matcher=null;
+    boolean matchFound=false;
+    int j=0;
+    while (j < maxPatterns && !matchFound) {
+      matcher=patterns[j].matcher(s);
       matchFound=matcher.find();
-    }
-    if (!matchFound) {
-      matcher=pattern3.matcher(s);
-      matchFound=matcher.find();
-    }
-    if (!matchFound) {
-      matcher=pattern3b.matcher(s);
-      matchFound=matcher.find();
-    }
-    if (!matchFound) {
-      matcher=pattern4.matcher(s);
-      matchFound=matcher.find();
-    }
-    if (!matchFound) {
-      matcher=pattern4b.matcher(s);
-      matchFound=matcher.find();
-    }
-    if (!matchFound) {
-      matcher=pattern5.matcher(s);
-      matchFound=matcher.find();
-    }
-    if (!matchFound) {
-      matcher=pattern5b.matcher(s);
-      matchFound=matcher.find();
-    }
-    if (!matchFound) {
-      matcher=pattern6.matcher(s);
-      matchFound=matcher.find();
+      j++;
     }
     if (matchFound) {
       for (int i=1; i <= matcher.groupCount(); i++) {

@@ -1,0 +1,85 @@
+{
+  final List<WordData> wordForms=synthesizer.lookup(lemma + "|" + posTag);
+  final Matcher mMS=pMS.matcher(posTag);
+  final Matcher mFS=pFS.matcher(posTag);
+  final Matcher mMP=pMP.matcher(posTag);
+  final Matcher mFP=pFP.matcher(posTag);
+  for (  WordData wd : wordForms) {
+    final String word=wd.getStem().toString();
+    if (mMS.matches()) {
+      final Matcher mMascYes=pMascYes.matcher(word);
+      final Matcher mMascNo=pMascNo.matcher(word);
+      if (prep.equals("per")) {
+        if (mMascYes.matches() && !mMascNo.matches()) {
+          results.add("per l'" + word);
+        }
+ else {
+          results.add("pel " + word);
+        }
+      }
+ else       if (prep.isEmpty()) {
+        if (mMascYes.matches() && !mMascNo.matches()) {
+          results.add("l'" + word);
+        }
+ else {
+          results.add("el " + word);
+        }
+      }
+ else {
+        if (mMascYes.matches() && !mMascNo.matches()) {
+          results.add(prep + " l'" + word);
+        }
+ else {
+          results.add(prep + "l " + word);
+        }
+      }
+    }
+    if (mFS.matches()) {
+      final Matcher mFemYes=pFemYes.matcher(word);
+      final Matcher mFemNo=pFemNo.matcher(word);
+      if (prep.equals("per")) {
+        if (mFemYes.matches() && !mFemNo.matches()) {
+          results.add("per l'" + word);
+        }
+ else {
+          results.add("per la " + word);
+        }
+      }
+ else       if (prep.isEmpty()) {
+        if (mFemYes.matches() && !mFemNo.matches()) {
+          results.add("l'" + word);
+        }
+ else {
+          results.add("la " + word);
+        }
+      }
+ else {
+        if (mFemYes.matches() && !mFemNo.matches()) {
+          results.add(prep + " l'" + word);
+        }
+ else {
+          results.add(prep + " la " + word);
+        }
+      }
+    }
+    if (mMP.matches()) {
+      if (prep.equals("per")) {
+        results.add("pels " + word);
+      }
+ else       if (prep.isEmpty()) {
+        results.add("els " + word);
+      }
+ else {
+        results.add(prep + "ls " + word);
+      }
+    }
+    if (mFP.matches()) {
+      if (prep.isEmpty()) {
+        results.add("les " + word);
+      }
+ else {
+        results.add(prep + " les " + word);
+      }
+    }
+  }
+}

@@ -2,9 +2,17 @@
   initSynthesizer();
   initPossibleTags();
   final Pattern p;
-  final boolean addDt=posTag.equals(ADD_DETERMINER);
+  boolean addDt=false;
+  String prep="";
+  final Matcher mPrep=pPrep.matcher(posTag);
+  if (mPrep.matches()) {
+    addDt=true;
+    if (mPrep.groupCount() > 1) {
+      prep=mPrep.group(2);
+    }
+  }
   if (addDt) {
-    p=Pattern.compile("N.*|A.*|V.P.*");
+    p=Pattern.compile("N.*|A.*|V.P.*|PX.");
   }
  else {
     p=Pattern.compile(posTag);
@@ -14,7 +22,7 @@
     final Matcher m=p.matcher(tag);
     if (m.matches()) {
       if (addDt) {
-        lookupWithEl(token.getLemma(),tag,results);
+        lookupWithEl(token.getLemma(),tag,prep,results);
       }
  else {
         lookup(token.getLemma(),tag,results);
