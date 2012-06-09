@@ -1,0 +1,6 @@
+{
+  CatalanWordTokenizer wordTokenizer=new CatalanWordTokenizer();
+  List<String> tokens=wordTokenizer.tokenize("Emporta-te'ls a l'observatori dels mars");
+  assertEquals(tokens.size(),13);
+  assertEquals("[Emporta, -te, 'ls,  , a,  , l', observatori,  , de, ls,  , mars]",tokens.toString());
+}

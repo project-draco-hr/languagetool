@@ -12,4 +12,14 @@
   assertEquals("??????w",matches[0].getSuggestedReplacements().get(0));
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("a??h")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("a")).length);
+  HunspellRule catRule=new HunspellRule(TestTools.getMessages("Catalan"),Language.CATALAN);
+  JLanguageTool catTool=new JLanguageTool(Language.CATALAN);
+  assertEquals(0,catRule.match(catTool.getAnalyzedSentence("All?? que m??s l'interessa.")).length);
+  assertEquals(0,catRule.match(catTool.getAnalyzedSentence("Porta'n quatre.")).length);
+  assertEquals(0,catRule.match(catTool.getAnalyzedSentence(",")).length);
+  matches=catRule.match(catTool.getAnalyzedSentence("Pecra"));
+  assertEquals(1,matches.length);
+  assertEquals(0,matches[0].getFromPos());
+  assertEquals(5,matches[0].getToPos());
+  assertEquals("Pera",matches[0].getSuggestedReplacements().get(0));
 }
