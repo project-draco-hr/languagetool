@@ -5,7 +5,7 @@
   newLanguageTool.activateDefaultFalseFriendRules();
   config=new Configuration(lang);
   if (!useQuerySettings && internalServer && config.getUseGUIConfig()) {
-    configureGUI(lang,newLanguageTool);
+    configureGUI(newLanguageTool);
   }
   if (useQuerySettings) {
     Tools.selectRules(newLanguageTool,disabledRules,enabledRules);
