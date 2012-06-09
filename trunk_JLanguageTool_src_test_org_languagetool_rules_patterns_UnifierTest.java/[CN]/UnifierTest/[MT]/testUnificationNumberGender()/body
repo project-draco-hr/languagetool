@@ -26,6 +26,6 @@
   satisfied&=uni.isSatisfied(sing2,equiv);
   uni.startNextToken();
   assertEquals(true,satisfied);
-  assertEquals("[ma??y/adj:sg:blahblah:m, cz??owiek/subst:sg:blahblah:m]",Arrays.toString(uni.getUnifiedTokens()));
+  assertEquals("[ma??y[ma??y/adj:sg:blahblah:m], cz??owiek[cz??owiek/subst:sg:blahblah:m]]",Arrays.toString(uni.getUnifiedTokens()));
   uni.reset();
 }

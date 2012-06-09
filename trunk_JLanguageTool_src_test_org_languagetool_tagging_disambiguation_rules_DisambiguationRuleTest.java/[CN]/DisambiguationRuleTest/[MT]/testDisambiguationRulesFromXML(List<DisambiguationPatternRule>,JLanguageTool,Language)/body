@@ -8,7 +8,7 @@
         goodSentence=cleanXML(goodSentence);
         assertTrue(goodSentence.trim().length() > 0);
         final AnalyzedSentence sent=disambiguateUntil(rules,id,languageTool.getRawAnalyzedSentence(goodSentence));
-        assertTrue("The untouched example for rule " + id + "was touched!",sent.equals(rule.replace(sent)));
+        assertTrue("The untouched example (" + goodSentence + ") for rule "+ id+ "was touched!",sent.equals(rule.replace(sent)));
       }
     }
     final List<DisambiguatedExample> examples=rule.getExamples();
@@ -32,6 +32,7 @@
         assertTrue("Disambiguated sentence is equal to the non-disambiguated sentence for rule :" + id,!cleanInput.equals(disambiguatedSent));
         assertTrue("Disambiguated sentence is equal to the input sentence for rule :" + id,!sent.equals(disambiguatedSent));
         String reading="";
+        String annotations="";
         for (        final AnalyzedTokenReadings readings : sent.getTokens()) {
           if (readings.isSentStart() && inputForms.indexOf("<S>") == -1) {
             continue;
@@ -39,11 +40,12 @@
           if (readings.getStartPos() == expectedMatchStart) {
             final AnalyzedTokenReadings r[]={readings};
             reading=new AnalyzedSentence(r).toString();
+            annotations=readings.getHistoricalAnnotations();
             assertTrue("Wrong marker position in the example for the rule " + id,readings.getStartPos() == expectedMatchStart && readings.getStartPos() + readings.getToken().length() == expectedMatchEnd);
             break;
           }
         }
-        assertTrue("The input form for the rule " + id + " in the example: "+ example.toString()+ " is different than expected (expected "+ inputForms+ " but got "+ sortForms(reading)+ ").",sortForms(reading).equals(inputForms));
+        assertTrue("The input form for the rule " + id + " in the example: "+ example.toString()+ " is different than expected (expected "+ inputForms+ " but got "+ sortForms(reading)+ "). The token has been changed by the disambiguator: "+ annotations,sortForms(reading).equals(inputForms));
         for (        final AnalyzedTokenReadings readings : disambiguatedSent.getTokens()) {
           if (readings.isSentStart() && outputForms.indexOf("<S>") == -1) {
             continue;
@@ -55,7 +57,7 @@
             break;
           }
         }
-        assertTrue("The output form for the rule " + id + " in the example: "+ example.toString()+ " is different than expected (expected "+ outputForms+ " but got "+ sortForms(reading)+ ").",sortForms(reading).equals(outputForms));
+        assertTrue("The output form for the rule " + id + " in the example: "+ example.toString()+ " is different than expected (expected "+ outputForms+ " but got "+ sortForms(reading)+ "). The token has been changed by the disambiguator: "+ annotations,sortForms(reading).equals(outputForms));
       }
     }
   }

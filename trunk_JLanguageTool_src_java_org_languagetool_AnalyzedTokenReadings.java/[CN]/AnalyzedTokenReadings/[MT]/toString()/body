@@ -1,7 +1,12 @@
 {
   final StringBuilder sb=new StringBuilder();
+  sb.append(token);
+  sb.append("[");
   for (  final AnalyzedToken element : anTokReadings) {
     sb.append(element);
+    sb.append(",");
   }
+  sb.delete(sb.length() - 1,sb.length());
+  sb.append("]");
   return sb.toString();
 }
