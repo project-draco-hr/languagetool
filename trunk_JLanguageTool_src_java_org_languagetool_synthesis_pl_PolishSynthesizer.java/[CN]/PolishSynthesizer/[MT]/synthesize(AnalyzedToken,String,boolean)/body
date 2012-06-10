@@ -19,7 +19,7 @@
     if (isNegated) {
       posTag=posTag.replaceAll(NEGATION_TAG,POTENTIAL_NEGATION_TAG + "?");
     }
-    final Pattern p=Pattern.compile(posTag.replace('+','|').replaceAll("m[1-3]","m[1-3]?"));
+    final Pattern p=Pattern.compile(posTag.replace('+','|'));
     for (    final String tag : possibleTags) {
       final Matcher m=p.matcher(tag);
       if (m.matches()) {
@@ -29,6 +29,10 @@
         }
       }
     }
+    HashSet<String> hs=new HashSet<String>();
+    hs.addAll(results);
+    results.clear();
+    results.addAll(hs);
     return results.toArray(new String[results.size()]);
   }
   return synthesize(token,posTag);

@@ -1,12 +1,11 @@
 {
   PolishSynthesizer synth=new PolishSynthesizer();
   assertEquals(synth.synthesize(dummyToken("blablabla"),"blablabla").length,0);
-  assertEquals("[Aaru]",Arrays.toString(synth.synthesize(dummyToken("Aar"),"subst:sg:gen:m3")));
+  assertEquals("[Aarona]",Arrays.toString(synth.synthesize(dummyToken("Aaron"),"subst:sg:gen:m1")));
   assertEquals("[Abchazem]",Arrays.toString(synth.synthesize(dummyToken("Abchaz"),"subst:sg:inst:m1")));
-  assertEquals("[niedu??y]",Arrays.toString(synth.synthesize(dummyToken("du??y"),"adj:sg:nom:m:pos:neg")));
   assertEquals("[mia??a]",Arrays.toString(synth.synthesize(dummyToken("mie??"),"verb:praet:sg:ter:f:imperf")));
-  assertEquals("[brzydziej]",Arrays.toString(synth.synthesize(dummyToken("brzydko"),"adv:comp")));
-  assertEquals("[tonera]",Arrays.toString(synth.synthesize(dummyToken("toner"),".*sg.*[\\.:]gen.*",true)));
-  assertEquals("[niedu??ego, niedu??y, niedu??emu, niedu??ego, niedu??ym, niedu??y, niedu??y]",Arrays.toString(synth.synthesize(dummyToken("du??y"),"adj:sg.*(m[0-9]?|m.n):pos:neg",true)));
-  assertEquals("[mia??abym, mia??bym, mia??aby??, mia??by??, mia??aby, mia??by, mia??oby, mia??am, mia??em, mia??a??, mia??e??, mia??a, mia??, mia??o]",Arrays.toString(synth.synthesize(dummyToken("mie??"),".*praet:sg.*",true)));
+  assertEquals("[brzydziej]",Arrays.toString(synth.synthesize(dummyToken("brzydko"),"adv:com")));
+  assertEquals("[tonera]",Arrays.toString(synth.synthesize(dummyToken("toner"),"subst:sg:gen:m.*",true)));
+  assertEquals("[niedu??y, niedu??ego]",Arrays.toString(synth.synthesize(dummyToken("niedu??y"),"adj:sg.*(m[0-9]?|m.n):pos",true)));
+  assertEquals("[mia??a??, mia??am, mia??a, mia??, mia??e??, mia??o, mia??em, mia??abym, mia??bym, mia??aby??, mia??oby, mia??by??, mia??by, mia??aby]",Arrays.toString(synth.synthesize(dummyToken("mie??"),".*praet:sg.*",true)));
 }

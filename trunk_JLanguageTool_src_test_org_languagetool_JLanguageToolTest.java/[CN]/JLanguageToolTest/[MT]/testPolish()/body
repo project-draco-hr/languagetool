@@ -18,7 +18,7 @@
   tool.setListUnknownWords(true);
   matches=tool.check("This is not a Polish text.");
   assertEquals(3,matches.size());
-  assertEquals("[Polish, This, is]",tool.getUnknownWords().toString());
+  assertEquals("[Polish, This, is, text]",tool.getUnknownWords().toString());
   matches=tool.check("To jest tekst.\nTest 1. To jest linia w kt??rej nie ma przecinka.");
   assertEquals(17,matches.get(0).getColumn());
   matches=tool.check("To jest tekst. \nTest 1. To jest linia w kt??rej nie ma przecinka.");
