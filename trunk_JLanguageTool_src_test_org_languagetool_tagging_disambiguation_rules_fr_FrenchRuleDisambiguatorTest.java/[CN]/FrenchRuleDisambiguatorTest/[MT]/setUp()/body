@@ -4,4 +4,10 @@
   sentenceTokenizer=new SentenceTokenizer();
   disambiguator=new FrenchRuleDisambiguator();
   disamb2=new DemoDisambiguator();
+  try {
+    lt=new JLanguageTool(Language.FRENCH);
+  }
+ catch (  IOException e) {
+    fail(e.getMessage());
+  }
 }

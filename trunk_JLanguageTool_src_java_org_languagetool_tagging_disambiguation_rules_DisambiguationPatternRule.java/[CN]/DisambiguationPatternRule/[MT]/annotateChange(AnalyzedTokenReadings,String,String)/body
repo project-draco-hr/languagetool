@@ -1,0 +1,3 @@
+{
+  atr.setHistoricalAnnotations(prevAnot + "\n" + this.getId()+ ": "+ prevValue+ " -> "+ atr.toString());
+}

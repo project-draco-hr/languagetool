@@ -7,14 +7,6 @@
     }
     correctedStPos--;
   }
-  int correctedEndPos=0;
-  if (endPositionCorrection < 0) {
-    int l=0;
-    while (l > endPositionCorrection) {
-      correctedEndPos-=tokenPositions[matchingTokens + l - 1];
-      l--;
-    }
-  }
   final int fromPos=text.getOriginalPosition(firstMatchToken + correctedStPos);
   final int numRead=whTokens[fromPos].getReadingsLength();
   final boolean spaceBefore=whTokens[fromPos].isWhitespaceBefore();
@@ -30,8 +22,9 @@ case UNIFY:
           final int position=text.getOriginalPosition(firstMatchToken + correctedStPos + i);
           unifiedTokens[i].setStartPos(whTokens[position].getStartPos());
           final String prevValue=whTokens[position].toString();
+          final String prevAnot=whTokens[position].getHistoricalAnnotations();
           whTokens[position]=unifiedTokens[i];
-          annotateChange(whTokens[position],prevValue);
+          annotateChange(whTokens[position],prevValue,prevAnot);
         }
       }
     }
@@ -42,8 +35,9 @@ if (newTokenReadings != null) {
     for (int i=0; i < newTokenReadings.length; i++) {
       final int position=text.getOriginalPosition(firstMatchToken + correctedStPos + i);
       final String prevValue=whTokens[position].toString();
+      final String prevAnot=whTokens[position].getHistoricalAnnotations();
       whTokens[position].removeReading(newTokenReadings[i]);
-      annotateChange(whTokens[position],prevValue);
+      annotateChange(whTokens[position],prevValue,prevAnot);
     }
   }
 }
@@ -69,8 +63,9 @@ for (int i=0; i < newTokenReadings.length; i++) {
   final AnalyzedToken newTok=new AnalyzedToken(token,newTokenReadings[i].getPOSTag(),lemma);
   final int position=text.getOriginalPosition(firstMatchToken + correctedStPos + i);
   final String prevValue=whTokens[position].toString();
+  final String prevAnot=whTokens[position].getHistoricalAnnotations();
   whTokens[position].addReading(newTok);
-  annotateChange(whTokens[position],prevValue);
+  annotateChange(whTokens[position],prevValue,prevAnot);
 }
 }
 }
@@ -84,8 +79,9 @@ if (matchElement == null) {
 final Match tmpMatchToken=new Match(disambiguatedPOS,null,true,disambiguatedPOS,null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);
 tmpMatchToken.setToken(whTokens[fromPos]);
 final String prevValue=whTokens[fromPos].toString();
+final String prevAnot=whTokens[fromPos].getHistoricalAnnotations();
 whTokens[fromPos]=tmpMatchToken.filterReadings();
-annotateChange(whTokens[fromPos],prevValue);
+annotateChange(whTokens[fromPos],prevValue,prevAnot);
 filtered=true;
 }
 case REPLACE:
@@ -113,14 +109,16 @@ if (isParaEnd) {
 whTokens[fromPos].setParaEnd();
 }
 whTokens[fromPos].setWhitespaceBefore(spaceBefore);
-annotateChange(whTokens[fromPos],prevValue);
+final String prevAnot=whTokens[fromPos].getHistoricalAnnotations();
+annotateChange(whTokens[fromPos],prevValue,prevAnot);
 }
  else {
 matchElement.setToken(whTokens[fromPos]);
 final String prevValue=whTokens[fromPos].toString();
+final String prevAnot=whTokens[fromPos].getHistoricalAnnotations();
 whTokens[fromPos]=matchElement.filterReadings();
 whTokens[fromPos].setWhitespaceBefore(spaceBefore);
-annotateChange(whTokens[fromPos],prevValue);
+annotateChange(whTokens[fromPos],prevValue,prevAnot);
 }
 }
 }
