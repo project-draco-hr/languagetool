@@ -1,5 +1,13 @@
 {
   for (  Language language : Language.REAL_LANGUAGES) {
+    if (language.getShortName().equals(locale.getLanguage()) && language.hasVariant()) {
+      final Language defaultVariant=language.getDefaultVariant();
+      if (defaultVariant != null) {
+        return defaultVariant;
+      }
+    }
+  }
+  for (  Language language : Language.REAL_LANGUAGES) {
     if (language.getShortName().equals(locale.getLanguage()) && !language.hasVariant()) {
       return language;
     }
