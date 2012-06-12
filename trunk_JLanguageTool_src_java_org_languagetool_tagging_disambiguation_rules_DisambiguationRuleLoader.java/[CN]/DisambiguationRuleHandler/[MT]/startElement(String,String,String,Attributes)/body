@@ -25,6 +25,9 @@
  else   if (qName.equals(AND)) {
     inAndGroup=true;
     tokenCountForMarker++;
+    if (inUnification) {
+      uniCounter++;
+    }
   }
  else   if (qName.equals(UNIFY)) {
     inUnification=true;

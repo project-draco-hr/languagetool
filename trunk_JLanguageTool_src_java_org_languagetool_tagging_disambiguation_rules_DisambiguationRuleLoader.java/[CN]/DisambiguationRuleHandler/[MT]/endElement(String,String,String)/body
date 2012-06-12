@@ -80,7 +80,9 @@
     }
     if (inUnification) {
       tokenElement.setUnification(equivalenceFeatures);
-      uniCounter++;
+      if (!inAndGroup) {
+        uniCounter++;
+      }
     }
     if (inUnificationDef) {
       language.getDisambiguationUnifier().setEquivalence(uFeature,uType,tokenElement);
