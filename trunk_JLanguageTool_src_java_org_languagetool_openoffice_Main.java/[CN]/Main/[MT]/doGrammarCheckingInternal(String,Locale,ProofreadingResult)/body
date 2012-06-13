@@ -17,6 +17,7 @@
         langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
         langTool.activateDefaultPatternRules();
         langTool.activateDefaultFalseFriendRules();
+        langTool.disableRule(HunspellRule.RULE_ID);
         recheck=false;
       }
  catch (      final Throwable t) {
