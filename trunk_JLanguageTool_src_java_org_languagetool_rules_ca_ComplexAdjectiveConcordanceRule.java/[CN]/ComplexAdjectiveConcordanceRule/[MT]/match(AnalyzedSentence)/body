@@ -1,0 +1,189 @@
+{
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  for (int i=1; i < tokens.length; i++) {
+    if (matchPostagRegexp(tokens[i],ADJECTIU) && !matchPostagRegexp(tokens[i],CONCORDA)) {
+      final String token=tokens[i].getToken();
+      final String prevToken=tokens[i - 1].getToken();
+      String prevPrevToken="";
+      if (i > 2) {
+        prevPrevToken=tokens[i - 2].getToken();
+      }
+      String nextToken="";
+      if (i < tokens.length - 1) {
+        nextToken=tokens[i + 1].getToken();
+      }
+      int j;
+      boolean adjectiveAgrees=false;
+      boolean theRuleMaches=false;
+      boolean isException=false;
+      boolean isPlural=true;
+      boolean isPrevNoun=false;
+      Pattern substPattern=null;
+      Matcher isUpperCase=UPPERCASE.matcher(token);
+      int maxLevels=4;
+      int[] cNt=new int[maxLevels];
+      int[] cNMS=new int[maxLevels];
+      int[] cNFS=new int[maxLevels];
+      int[] cNMP=new int[maxLevels];
+      int[] cNFP=new int[maxLevels];
+      int[] cDMS=new int[maxLevels];
+      int[] cDFS=new int[maxLevels];
+      int[] cDMP=new int[maxLevels];
+      int[] cDFP=new int[maxLevels];
+      int[] cN=new int[maxLevels];
+      int[] cD=new int[maxLevels];
+      for (j=0; j < maxLevels; j++) {
+        cNt[j]=0;
+        cNMS[j]=0;
+        cNFS[j]=0;
+        cNMP[j]=0;
+        cNFP[j]=0;
+        cDMS[j]=0;
+        cDFS[j]=0;
+        cDMP[j]=0;
+        cDFP[j]=0;
+        cN[j]=0;
+        cD[j]=0;
+      }
+      int level=0;
+      j=1;
+      boolean keepCounting=true;
+      while (keepCounting && i - j > 0 && level < maxLevels) {
+        if (!isPrevNoun) {
+          if (matchPostagRegexp(tokens[i - j],NOM_MS)) {
+            cNMS[level]++;
+          }
+          if (matchPostagRegexp(tokens[i - j],NOM_FS)) {
+            cNFS[level]++;
+          }
+          if (matchPostagRegexp(tokens[i - j],NOM_MP)) {
+            cNMP[level]++;
+          }
+          if (matchPostagRegexp(tokens[i - j],NOM_FP)) {
+            cNFP[level]++;
+          }
+        }
+        if (matchPostagRegexp(tokens[i - j],NOM)) {
+          cNt[level]++;
+          isPrevNoun=true;
+        }
+ else {
+          isPrevNoun=false;
+        }
+        ;
+        if (matchPostagRegexp(tokens[i - j],DET_MS)) {
+          cDMS[level]++;
+        }
+        if (matchPostagRegexp(tokens[i - j],DET_FS)) {
+          cDFS[level]++;
+        }
+        if (matchPostagRegexp(tokens[i - j],DET_MP)) {
+          cDMP[level]++;
+        }
+        if (matchPostagRegexp(tokens[i - j],DET_FP)) {
+          cDFP[level]++;
+        }
+        if (i - j > 0) {
+          if (matchRegexp(tokens[i - j].getToken(),PREPOSICIONS) && !matchRegexp(tokens[i - j - 1].getToken(),COORDINACIO_IONI)) {
+            level++;
+          }
+        }
+        if (level > 0 && matchRegexp(tokens[i - j].getToken(),COORDINACIO_IONI)) {
+          int k=1;
+          while (k < 4 && i - j - k > 0 && (matchPostagRegexp(tokens[i - j - k],KEEP_COUNT) || matchRegexp(tokens[i - j - k].getToken(),KEEP_COUNT2))) {
+            if (matchRegexp(tokens[i - j - k].getToken(),PREPOSICIONS)) {
+              j=j + k;
+              break;
+            }
+            k++;
+          }
+        }
+        j++;
+        keepCounting=matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2);
+      }
+      level++;
+      if (level > maxLevels) {
+        level=maxLevels;
+      }
+      j=0;
+      while (j < level) {
+        cN[j]=cNMS[j] + cNFS[j] + cNMP[j]+ cNFP[j];
+        cD[j]=cDMS[j] + cDFS[j] + cDMP[j]+ cDFP[j];
+        if (matchPostagRegexp(tokens[i],ADJECTIU_MP) && (cN[j] > 1 || cD[j] > 1) && (cNMS[j] + cNMP[j] + cDMS[j]+ cDMP[j]) > 0 && (cNFS[j] + cNFP[j] <= cNt[j])) {
+          isException=true;
+          break;
+        }
+        if (!isException && matchPostagRegexp(tokens[i],ADJECTIU_FP) && (cN[j] > 1 || cD[j] > 1)&& ((cNMS[j] + cNMP[j] + cDMS[j]+ cDMP[j]) == 0 || (cNFS[j] + cNFP[j] >= cNt[j]))) {
+          isException=true;
+          break;
+        }
+        if (cN[j] + cD[j] > 0) {
+          isPlural=isPlural && cD[j] > 1;
+        }
+        j++;
+      }
+      if (!isException && i < tokens.length - 2) {
+        Matcher pCoordina=COORDINACIO.matcher(nextToken);
+        if (pCoordina.matches()) {
+          if ((matchPostagRegexp(tokens[i - 1],NOM_MP) && matchPostagRegexp(tokens[i],ADJECTIU_M) && matchPostagRegexp(tokens[i + 2],ADJECTIU_M)) || (matchPostagRegexp(tokens[i - 1],NOM_FP) && matchPostagRegexp(tokens[i],ADJECTIU_F) && matchPostagRegexp(tokens[i + 2],ADJECTIU_F))) {
+            isException=true;
+          }
+        }
+      }
+      if (!isException && matchPostagRegexp(tokens[i],PARTICIPI) && ((prevPrevToken.equalsIgnoreCase("una") && prevToken.equals("vegada")) || (prevPrevToken.equalsIgnoreCase("una") && prevToken.equals("volta")) || (prevPrevToken.equalsIgnoreCase("un") && prevToken.equals("cop")))) {
+        isException=true;
+      }
+      if (!isException && token.equals("tret") || token.equals("llevat") || token.equals("primer") || token.equals("junts") || prevToken.equals("terme") || prevToken.equals("paraula") || prevToken.equals("mot") || prevToken.equals("termes") || prevToken.equals("paraules") || prevToken.equals("mots") || isUpperCase.matches()) {
+        isException=true;
+      }
+      if (!isException && i < tokens.length - 1 && (token.equals("segur") || token.equals("major") || token.equals("menor")) && nextToken.equals("que")) {
+        isException=true;
+      }
+      if (!isException) {
+        if (matchPostagRegexp(tokens[i],ADJECTIU_CS)) {
+          substPattern=GN_CS;
+        }
+ else         if (matchPostagRegexp(tokens[i],ADJECTIU_CP)) {
+          substPattern=GN_CP;
+        }
+ else         if (matchPostagRegexp(tokens[i],ADJECTIU_MS)) {
+          substPattern=GN_MS;
+        }
+ else         if (matchPostagRegexp(tokens[i],ADJECTIU_FS)) {
+          substPattern=GN_FS;
+        }
+ else         if (matchPostagRegexp(tokens[i],ADJECTIU_MP)) {
+          substPattern=GN_MP;
+        }
+ else         if (matchPostagRegexp(tokens[i],ADJECTIU_FP)) {
+          substPattern=GN_FP;
+        }
+        if (substPattern != null) {
+          if (matchPostagRegexp(tokens[i - 1],NOM) && !matchPostagRegexp(tokens[i - 1],substPattern)) {
+            j=i - maxTotalPrevWords;
+            if (j < 0) {
+              j=0;
+            }
+            while (j < i - 1 && !adjectiveAgrees) {
+              if (matchPostagRegexp(tokens[j],substPattern)) {
+                adjectiveAgrees=true;
+              }
+              j++;
+            }
+            theRuleMaches=!adjectiveAgrees;
+            if (isPlural && matchPostagRegexp(tokens[i],ADJECTIU_S)) {
+              theRuleMaches=true;
+            }
+          }
+        }
+      }
+      if (theRuleMaches) {
+        final String msg="L'adjectiu \u00AB" + token + "\u00BB no concorda apropiadament.";
+        final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Falta de concordan????a.");
+        ruleMatches.add(ruleMatch);
+      }
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}

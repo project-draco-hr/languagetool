@@ -1,0 +1,29 @@
+{
+  assertCorrect("Les perspectives de futur immediat.");
+  assertCorrect("Les perspectives de futur immediates.");
+  assertCorrect("la t??cnica i l'art cinematogr??fiques.");
+  assertCorrect("la t??cnica i l'art cinematogr??fic.");
+  assertCorrect("la t??cnica i l'art cinematogr??fics.");
+  assertCorrect("la t??cnica i l'art cinematogr??fica.");
+  assertCorrect("Les perspectives i el futur immediats.");
+  assertCorrect("Un punt de densitat i gravetat infinites.");
+  assertCorrect("De la literatura i la cultura catalanes.");
+  assertCorrect("Es fa segons regles de lectura constants i regulars.");
+  assertCorrect("Les meitats dreta i esquerra de la mand??bula.");
+  assertCorrect("Els per??odes cl??ssic i medieval.");
+  assertCorrect("Els costats superior i laterals.");
+  assertCorrect("En una mol??cula de glucosa i una de fructosa unides.");
+  assertCorrect("??ndex de desenvolupament hum?? i qualitat de vida elevat");
+  assertCorrect("??ndex de desenvolupament hum?? i qualitat de vida elevats");
+  assertCorrect("??ndex de desenvolupament hum?? i qualitat de vida elevada");
+  assertCorrect("La massa, el radi i la lluminositat llistats per ell.");
+  assertCorrect("La massa, el radi i la lluminositat llistada per ell.");
+  assertIncorrect("Les perspectives de futur immediata.");
+  assertIncorrect("Les perspectives de futur immediats.");
+  assertIncorrect("De la llengua i de la cultura catalans.");
+  assertIncorrect("En una mol??cula de glucosa i una de fructosa units.");
+  assertIncorrect("Un punt de densitat i gravetat infinits.");
+  assertIncorrect("??ndex de desenvolupament hum?? i qualitat de vida elevades.");
+  assertIncorrect("La massa, el radi i la lluminositat llistat per ell.");
+  assertIncorrect("La massa, el radi i la lluminositat llistades per ell.");
+}

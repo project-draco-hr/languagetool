@@ -1,0 +1,5 @@
+{
+  if (messages != null) {
+    super.setCategory(new Category("Concordances en grups nominals"));
+  }
+}
