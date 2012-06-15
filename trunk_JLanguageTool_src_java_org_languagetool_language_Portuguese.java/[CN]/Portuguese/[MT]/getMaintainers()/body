@@ -1,5 +1,5 @@
 {
-  final Contributor contributor=new Contributor("Marco A.G.Pinto");
+  final Contributor contributor=new Contributor("Marco A.G. Pinto");
   contributor.setUrl("http://www.marcoagpinto.com/");
   return new Contributor[]{contributor};
 }
