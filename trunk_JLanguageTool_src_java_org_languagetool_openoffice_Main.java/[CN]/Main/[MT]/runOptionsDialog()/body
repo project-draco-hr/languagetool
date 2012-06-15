@@ -3,6 +3,7 @@
   if (lang == null) {
     return;
   }
+  prepareConfig(lang);
   final ConfigThread configThread=new ConfigThread(lang,config,this);
   configThread.start();
 }

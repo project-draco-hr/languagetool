@@ -1,3 +1,3 @@
 {
-  return Arrays.asList(CommaWhitespaceRule.class,DoublePunctuationRule.class,HunspellRule.class,UppercaseSentenceStartRule.class,WordRepeatRule.class,WhitespaceRule.class,PolishUnpairedBracketsRule.class,PolishWordRepeatRule.class,CompoundRule.class,SimpleReplaceRule.class);
+  return Arrays.asList(CommaWhitespaceRule.class,DoublePunctuationRule.class,UppercaseSentenceStartRule.class,WordRepeatRule.class,WhitespaceRule.class,PolishUnpairedBracketsRule.class,MorfologikPolishSpellerRule.class,PolishWordRepeatRule.class,CompoundRule.class,SimpleReplaceRule.class);
 }

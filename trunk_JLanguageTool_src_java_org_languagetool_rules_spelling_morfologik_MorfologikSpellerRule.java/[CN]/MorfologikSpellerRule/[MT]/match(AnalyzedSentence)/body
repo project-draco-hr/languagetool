@@ -1,0 +1,34 @@
+{
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  if (speller == null) {
+    if (JLanguageTool.getDataBroker().resourceExists(getFileName())) {
+      final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(getFileName());
+      speller=new Speller(Dictionary.read(url));
+    }
+ else {
+      return toRuleMatchArray(ruleMatches);
+    }
+  }
+  for (  AnalyzedTokenReadings token : tokens) {
+    final String word=token.getToken();
+    boolean isAlphabetic=true;
+    if (word.length() == 1) {
+      isAlphabetic=StringTools.isAlphabetic(word.charAt(0));
+    }
+    if (word.length() > 0 && isAlphabetic && !token.isImmunized() && !speller.isInDictionary(word) && !speller.isInDictionary(word.toLowerCase(conversionLocale))) {
+      final List<String> suggestions=new ArrayList<String>();
+      suggestions.addAll(speller.findReplacements(word));
+      if (!word.toLowerCase(conversionLocale).equals(word)) {
+        suggestions.addAll(speller.findReplacements(word.toLowerCase(conversionLocale)));
+      }
+      suggestions.addAll(speller.replaceRunOnWords(word));
+      final RuleMatch ruleMatch=new RuleMatch(this,token.getStartPos(),token.getStartPos() + word.length(),messages.getString("spelling"),messages.getString("desc_spelling_short"));
+      if (!suggestions.isEmpty()) {
+        ruleMatch.setSuggestedReplacements(suggestions);
+      }
+      ruleMatches.add(ruleMatch);
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}
