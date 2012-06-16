@@ -1,4 +1,7 @@
 {
+  assertCorrect("Copa del m??n femenina.");
+  assertCorrect("Batalla entre asteques i espanyols coneguda com la Nit Trista.");
+  assertCorrect("??s un informe sobre la cultura japonesa realitzat per enc??rrec de l'ex??rcit d'Estats Units.");
   assertCorrect("Les perspectives de futur immediat.");
   assertCorrect("Les perspectives de futur immediates.");
   assertCorrect("la t??cnica i l'art cinematogr??fiques.");
@@ -20,7 +23,7 @@
   assertCorrect("La massa, el radi i la lluminositat llistada per ell.");
   assertIncorrect("Les perspectives de futur immediata.");
   assertIncorrect("Les perspectives de futur immediats.");
-  assertIncorrect("De la llengua i de la cultura catalans.");
+  assertIncorrect("la llengua i la cultura catalans.");
   assertIncorrect("En una mol??cula de glucosa i una de fructosa units.");
   assertIncorrect("Un punt de densitat i gravetat infinits.");
   assertIncorrect("??ndex de desenvolupament hum?? i qualitat de vida elevades.");
