@@ -1,8 +1,3 @@
 {
-  try {
-    indexer.index(reader,isSentence,-1);
-  }
-  finally {
-    indexer.close();
-  }
+  indexer.index(reader,isSentence,-1);
 }

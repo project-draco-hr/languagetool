@@ -6,6 +6,18 @@
   }
   final BufferedReader reader=new BufferedReader(new FileReader(file));
   System.out.println("Indexing to directory '" + indexDir + "'...");
-  run(reader,new Indexer(FSDirectory.open(new File(indexDir)),Language.ENGLISH),false);
+  final FSDirectory directory=FSDirectory.open(new File(indexDir));
+  try {
+    final Indexer indexer=new Indexer(directory,Language.ENGLISH);
+    try {
+      run(reader,indexer,false);
+    }
+  finally {
+      indexer.close();
+    }
+  }
+  finally {
+    directory.close();
+  }
   System.out.println("Index complete!");
 }
