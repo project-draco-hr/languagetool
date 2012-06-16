@@ -1,0 +1,13 @@
+{
+  for (  Language language : Language.REAL_LANGUAGES) {
+    if (language.getSentenceTokenizer().getClass() != SRXSentenceTokenizer.class) {
+      continue;
+    }
+    if (language == Language.KHMER || language == Language.MALAYALAM || language.getShortName().equals("pt")) {
+      continue;
+    }
+    final String input="A sentence.\u0002 And another one.";
+    final SentenceTokenizer tokenizer=new SRXSentenceTokenizer(language.getShortName());
+    assertEquals("Sentence not split correctly for " + language + ": '"+ input+ "'","[A sentence.\u0002 , And another one.]",tokenizer.tokenize(input).toString());
+  }
+}

@@ -50,4 +50,5 @@
   testSplit(new String[]{"It works [really!]. ","No doubt."});
   testSplit(new String[]{"It really(!) works well."});
   testSplit(new String[]{"It really[!] works well."});
+  testSplit(new String[]{"This is a sentence.\u0002 ","And this is another one."});
 }
