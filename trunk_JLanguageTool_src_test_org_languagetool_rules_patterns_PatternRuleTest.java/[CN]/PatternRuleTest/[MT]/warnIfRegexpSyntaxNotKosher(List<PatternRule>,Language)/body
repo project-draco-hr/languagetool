@@ -9,7 +9,7 @@
       if (element.getExceptionList() != null) {
         for (        final Element exception : element.getExceptionList()) {
           if (exception.hasNextException() && element.getSkipNext() == 0) {
-            System.err.println("The " + lang.toString() + " rule: "+ rule.getId()+ ":"+ rule.getSubId()+ " (exception in token ["+ i+ "])"+ " in token ["+ i+ "]"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies. "+ " Did you forget skip=\"...\"?");
+            System.err.println("The " + lang.toString() + " rule: "+ rule.getId()+ ":"+ rule.getSubId()+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies. "+ " Did you forget skip=\"...\"?");
           }
           if (!exception.getString().equals(".")) {
             warnIfElementNotKosher(exception.getString(),exception.isRegularExpression(),exception.getCaseSensitive(),exception.getNegation(),exception.isInflected(),lang,rule.getId() + ":" + rule.getSubId()+ " (exception in token ["+ i+ "])");
