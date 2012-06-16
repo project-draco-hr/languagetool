@@ -1,8 +1,7 @@
 {
-  ManualTagger mt=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(MANUAL_DICT_FILENAME));
-  assertNull(mt.lookup(""));
-  assertNull(mt.lookup("gibtsnicht"));
-  assertEquals("[Trotz, SUB:NOM:SIN:MAS]",Arrays.toString(mt.lookup("Trotz")));
-  assertNull(mt.lookup("trotz"));
-  assertEquals("[Interesse, SUB:NOM:PLU:NEU, Interesse, SUB:AKK:PLU:NEU, Interesse, SUB:GEN:PLU:NEU]",Arrays.toString(mt.lookup("Interessen")));
+  final ManualTagger tagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(MANUAL_DICT_FILENAME));
+  assertNull(tagger.lookup(""));
+  assertNull(tagger.lookup("gibtsnicht"));
+  assertEquals("[Ableitung, SUB:NOM:PLU:FEM, Ableitung, SUB:GEN:PLU:FEM, Ableitung, SUB:DAT:PLU:FEM, Ableitung, SUB:AKK:PLU:FEM]",Arrays.toString(tagger.lookup("Ableitungen")));
+  assertNull(tagger.lookup("ableitungen"));
 }
