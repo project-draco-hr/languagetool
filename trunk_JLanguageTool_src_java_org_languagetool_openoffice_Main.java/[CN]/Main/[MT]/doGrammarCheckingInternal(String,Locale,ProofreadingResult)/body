@@ -12,18 +12,7 @@
       if (docLanguage == null) {
         return paRes;
       }
-      try {
-        prepareConfig(docLanguage);
-        langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
-        langTool.activateDefaultPatternRules();
-        langTool.activateDefaultFalseFriendRules();
-        langTool.disableRule(HunspellRule.RULE_ID);
-        langTool.disableRule(MorfologikSpellerRule.RULE_ID);
-        recheck=false;
-      }
- catch (      final Throwable t) {
-        showError(t);
-      }
+      initLanguageTool();
     }
     if (config.getDisabledRuleIds() != null) {
       for (      final String id : config.getDisabledRuleIds()) {
