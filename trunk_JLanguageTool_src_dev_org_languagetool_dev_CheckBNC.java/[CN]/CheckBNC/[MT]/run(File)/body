@@ -10,8 +10,8 @@
     String text=StringTools.readFile(new FileInputStream(file.getAbsolutePath()));
     text=textFilter.filter(text);
     if (CHECK_BY_SENTENCE) {
-      final SentenceTokenizer st=new SentenceTokenizer();
-      final List<String> sentences=st.tokenize(text);
+      final Tokenizer sentenceTokenizer=langTool.getLanguage().getSentenceTokenizer();
+      final List<String> sentences=sentenceTokenizer.tokenize(text);
       for (      String sentence : sentences) {
         Tools.checkText(sentence,langTool,false,1000);
       }
