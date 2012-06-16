@@ -1,0 +1,12 @@
+{
+  boolean found=false;
+  for (  final AnalyzedToken reading : anTokReadings) {
+    if (reading.getLemma() != null) {
+      found=lemma.equals(reading.getLemma());
+      if (found) {
+        break;
+      }
+    }
+  }
+  return found;
+}
