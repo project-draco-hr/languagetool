@@ -1,7 +1,3 @@
 {
-  final Dictionary dictionary=Dictionary.read(this.getClass().getResource(tagger.getFileName()));
-  final DictionaryLookup dl=new DictionaryLookup(dictionary);
-  for (  WordData wd : dl) {
-    assertFalse(wd.getTag() == null);
-  }
+  TestTools.testDictionary(tagger,Language.ENGLISH);
 }
