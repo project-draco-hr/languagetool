@@ -1,0 +1,22 @@
+{
+  createIndex("How to move?");
+  final Searcher errorSearcher=new Searcher();
+  final Element negatedElement=new Element("Negated",false,false,false);
+  negatedElement.setNegation(true);
+  final List<Element> elements=Arrays.asList(negatedElement,new Element("How",false,false,false));
+  final PatternRule rule1=new PatternRule("RULE1",Language.ENGLISH,elements,"desc","msg","shortMsg");
+  final IndexSearcher indexSearcher=new IndexSearcher(directory);
+  try {
+    final SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(rule1,Language.ENGLISH,indexSearcher);
+    assertEquals(1,searcherResult.getCheckedSentences());
+    assertEquals(1,searcherResult.getMatchingSentences().size());
+    assertEquals(false,searcherResult.isRelaxedQuery());
+    final List<RuleMatch> ruleMatches=searcherResult.getMatchingSentences().get(0).getRuleMatches();
+    assertEquals(1,ruleMatches.size());
+    final Rule rule=ruleMatches.get(0).getRule();
+    assertEquals("RULE1",rule.getId());
+  }
+  finally {
+    indexSearcher.close();
+  }
+}

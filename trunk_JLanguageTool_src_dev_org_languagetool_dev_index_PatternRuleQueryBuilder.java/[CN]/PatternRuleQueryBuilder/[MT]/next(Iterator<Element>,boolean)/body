@@ -16,11 +16,11 @@
       throw e;
     }
  else {
-      if (patternElement.hasExceptionList()) {
+      if (patternElement.hasExceptionList() && !patternElement.getString().isEmpty()) {
         tokenQuery=createTokenQuery(patternElement.getString(),patternElement.getNegation(),patternElement.isRegularExpression(),patternElement.getCaseSensitive());
       }
  else {
-        tokenQuery=createTokenQuery("",false,false,false);
+        tokenQuery=new POSAwaredSpanRegexQuery(new Term(FIELD_NAME,".*"),false);
       }
     }
   }

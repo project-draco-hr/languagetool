@@ -1,0 +1,22 @@
+{
+  final Indexer indexer=new Indexer(directory,language);
+  try {
+    final List<Rule> rules=lt.getAllActiveRules();
+    for (    Rule rule : rules) {
+      if (rule instanceof PatternRule && !rule.isDefaultOff()) {
+        final PatternRule patternRule=(PatternRule)rule;
+        final List<IncorrectExample> incorrectExamples=rule.getIncorrectExamples();
+        final Document doc=new Document();
+        doc.add(new Field("ruleId",getFullId(patternRule),Field.Store.YES,Field.Index.NOT_ANALYZED));
+        for (        IncorrectExample incorrectExample : incorrectExamples) {
+          final String example=incorrectExample.getExample().replaceAll("</?marker>","");
+          doc.add(new Field(PatternRuleQueryBuilder.FIELD_NAME,example,Field.Store.YES,Field.Index.ANALYZED));
+        }
+        indexer.add(doc);
+      }
+    }
+  }
+  finally {
+    indexer.close();
+  }
+}
