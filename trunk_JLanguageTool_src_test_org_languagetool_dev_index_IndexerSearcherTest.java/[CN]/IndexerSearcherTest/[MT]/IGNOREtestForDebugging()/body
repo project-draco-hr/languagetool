@@ -1,0 +1,7 @@
+{
+  createIndex("Das machen Sinn");
+  final PatternRule rule=getRule("SINN_MACHEN",new File("src/rules/de/grammar.xml"));
+  final SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(rule,Language.GERMAN,searcher);
+  System.out.println("Matches: " + searcherResult.getMatchingSentences());
+  assertEquals(1,searcherResult.getMatchingSentences().size());
+}

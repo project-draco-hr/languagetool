@@ -8,6 +8,7 @@
   System.out.println("Done.");
   int ruleCounter=0;
   int ruleProblems=0;
+  int relaxedQueryCount=0;
   searcher=new IndexSearcher(directory);
   final List<Rule> rules=lt.getAllActiveRules();
   for (  Rule rule : rules) {
@@ -16,6 +17,9 @@
       try {
         ruleCounter++;
         final SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(patternRule,language,searcher);
+        if (searcherResult.isRelaxedQuery()) {
+          relaxedQueryCount++;
+        }
         final List<MatchingSentence> matchingSentences=searcherResult.getMatchingSentences();
         boolean foundExpectedMatch=false;
         for (        MatchingSentence matchingSentence : matchingSentences) {
@@ -28,6 +32,10 @@
         }
         if (!foundExpectedMatch) {
           System.out.println("Error: No match found for " + patternRule);
+          System.out.println("Query   : " + searcherResult.getPossiblyRelaxedQuery());
+          System.out.println("Matches : " + matchingSentences);
+          System.out.println("Examples: " + rule.getIncorrectExamples());
+          System.out.println();
           ruleProblems++;
         }
       }
@@ -38,4 +46,5 @@
     }
   }
   System.out.println(language + ": problems: " + ruleProblems+ ", total rules: "+ ruleCounter);
+  System.out.println(language + ": relaxedQueryCount: " + relaxedQueryCount);
 }

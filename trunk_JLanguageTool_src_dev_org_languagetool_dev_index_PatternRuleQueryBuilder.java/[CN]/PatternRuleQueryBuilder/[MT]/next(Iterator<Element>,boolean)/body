@@ -16,7 +16,7 @@
       throw e;
     }
  else {
-      if (patternElement.hasExceptionList() && !patternElement.getString().isEmpty()) {
+      if (patternElement.hasExceptionList() && !patternElement.isInflected() && !patternElement.getString().isEmpty()) {
         tokenQuery=createTokenQuery(patternElement.getString(),patternElement.getNegation(),patternElement.isRegularExpression(),patternElement.getCaseSensitive());
       }
  else {
