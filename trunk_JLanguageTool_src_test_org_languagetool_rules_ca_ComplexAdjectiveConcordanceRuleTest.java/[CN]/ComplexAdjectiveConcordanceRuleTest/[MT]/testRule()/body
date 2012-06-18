@@ -1,4 +1,6 @@
 {
+  assertCorrect("El rei ha trobat l'excusa i l'explicaci?? adequades.");
+  assertCorrect("El rei ha trobat l'excusa i l'explicaci?? adequada.");
   assertCorrect("Copa del m??n femenina.");
   assertCorrect("Batalla entre asteques i espanyols coneguda com la Nit Trista.");
   assertCorrect("??s un informe sobre la cultura japonesa realitzat per enc??rrec de l'ex??rcit d'Estats Units.");
@@ -21,6 +23,9 @@
   assertCorrect("??ndex de desenvolupament hum?? i qualitat de vida elevada");
   assertCorrect("La massa, el radi i la lluminositat llistats per ell.");
   assertCorrect("La massa, el radi i la lluminositat llistada per ell.");
+  assertIncorrect("El rei ha trobat l'excusa perfecte.");
+  assertIncorrect("El rei ha trobat l'excusa i l'explicaci?? adequats.");
+  assertIncorrect("El rei ha trobat l'excusa i l'explicaci?? adequat.");
   assertIncorrect("Les perspectives de futur immediata.");
   assertIncorrect("Les perspectives de futur immediats.");
   assertIncorrect("la llengua i la cultura catalans.");
