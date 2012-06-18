@@ -13,36 +13,40 @@
     }
     new Thread(){
       public void run(){
-        setWaitCursor();
-        checkTextButton.setEnabled(false);
-        try {
-          final String startCheckText=HTML_GREY_FONT_START + Tools.makeTexti18n(messages,"startChecking",new Object[]{langName}) + "..."+ HTML_FONT_END;
-          resultArea.setText(startCheckText);
-          resultArea.repaint();
-          final StringBuilder sb=new StringBuilder();
-          sb.append(startCheckText);
-          sb.append("<br>\n");
-          int matches=0;
+        if (!isAlreadyChecking) {
+          isAlreadyChecking=true;
+          setWaitCursor();
+          checkTextButton.setEnabled(false);
           try {
-            final JLanguageTool langTool=getCurrentLanguageTool(lang);
-            matches=checkText(langTool,textArea.getText(),sb);
+            final String startCheckText=HTML_GREY_FONT_START + Tools.makeTexti18n(messages,"startChecking",new Object[]{langName}) + "..."+ HTML_FONT_END;
+            resultArea.setText(startCheckText);
+            resultArea.repaint();
+            final StringBuilder sb=new StringBuilder();
+            sb.append(startCheckText);
+            sb.append("<br>\n");
+            int matches=0;
+            try {
+              final JLanguageTool langTool=getCurrentLanguageTool(lang);
+              matches=checkText(langTool,textArea.getText(),sb);
+            }
+ catch (            final Exception e) {
+              sb.append("<br><br><b><font color=\"red\">");
+              sb.append(org.languagetool.tools.Tools.getFullStackTrace(e).replace("\n","<br/>"));
+              sb.append("</font></b><br>");
+            }
+            final String checkDone=Tools.makeTexti18n(messages,"checkDone",new Object[]{matches});
+            sb.append(HTML_GREY_FONT_START);
+            sb.append(checkDone);
+            sb.append(HTML_FONT_END);
+            sb.append("<br>\n");
+            resultArea.setText(HTML_FONT_START + sb.toString() + HTML_FONT_END);
+            resultArea.setCaretPosition(0);
           }
- catch (          final Exception e) {
-            sb.append("<br><br><b><font color=\"red\">");
-            sb.append(org.languagetool.tools.Tools.getFullStackTrace(e).replace("\n","<br/>"));
-            sb.append("</font></b><br>");
-          }
-          final String checkDone=Tools.makeTexti18n(messages,"checkDone",new Object[]{matches});
-          sb.append(HTML_GREY_FONT_START);
-          sb.append(checkDone);
-          sb.append(HTML_FONT_END);
-          sb.append("<br>\n");
-          resultArea.setText(HTML_FONT_START + sb.toString() + HTML_FONT_END);
-          resultArea.setCaretPosition(0);
-        }
   finally {
-          checkTextButton.setEnabled(true);
-          unsetWaitCursor();
+            checkTextButton.setEnabled(true);
+            unsetWaitCursor();
+            isAlreadyChecking=false;
+          }
         }
       }
     }
