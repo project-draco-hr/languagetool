@@ -1,7 +1,7 @@
 {
   if (e.getSource() == addButton) {
     final File ruleFile=Tools.openFileDialog(null,new XMLFileFilter());
-    if (!isOnList(ruleFile)) {
+    if (!ruleFiles.contains(ruleFile)) {
       ruleFiles.add(ruleFile);
       list.setListData(ruleFiles.toArray(new File[]{}));
     }

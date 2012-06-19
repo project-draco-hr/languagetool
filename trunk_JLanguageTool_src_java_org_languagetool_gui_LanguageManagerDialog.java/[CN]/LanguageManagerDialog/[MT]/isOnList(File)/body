@@ -1,8 +1,0 @@
-{
-  for (  File f : ruleFiles) {
-    if (f.equals(file)) {
-      return true;
-    }
-  }
-  return false;
-}
