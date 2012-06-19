@@ -1,8 +1,14 @@
 {
   if (e.getSource() == addButton) {
     final File ruleFile=Tools.openFileDialog(null,new XMLFileFilter());
-    ruleFiles.add(ruleFile);
-    list.setListData(ruleFiles.toArray(new File[]{}));
+    if (!isOnList(ruleFile)) {
+      ruleFiles.add(ruleFile);
+      list.setListData(ruleFiles.toArray(new File[]{}));
+    }
+ else {
+      JOptionPane jop=new JOptionPane();
+      JOptionPane.showMessageDialog(jop,Messages.getString("guiDuplicate"),Messages.getString("guiWarning"),JOptionPane.WARNING_MESSAGE);
+    }
   }
  else   if (e.getSource() == removeButton) {
     if (list.getSelectedIndex() != -1) {

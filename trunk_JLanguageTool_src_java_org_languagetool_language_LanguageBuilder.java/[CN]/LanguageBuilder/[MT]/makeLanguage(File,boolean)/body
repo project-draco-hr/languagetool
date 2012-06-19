@@ -7,7 +7,7 @@
   }
   final String[] parts=file.getName().split("-");
   final boolean startsWithRules=parts[0].equals("rules");
-  final boolean secondPartHasCorrectLength=parts[1].length() == 2 || parts[1].length() == 3;
+  final boolean secondPartHasCorrectLength=(parts[1].length() == 2 || parts[1].length() == 5) || parts[1].length() == 3;
   if (parts.length != 3 || !startsWithRules || !secondPartHasCorrectLength) {
     throw new RuleFilenameException(file);
   }
@@ -19,10 +19,12 @@
       return null;
     }
     @Override public String getShortName(){
-      return parts[1];
+      if (parts[1].length() == 2)       return parts[1];
+      return parts[1].split("_")[0];
     }
     @Override public String[] getCountryVariants(){
-      return new String[]{""};
+      if (parts[1].length() == 2)       return new String[]{""};
+      return new String[]{parts[1].split("_")[1]};
     }
     @Override public String getName(){
       return parts[2].replace(".xml","");
