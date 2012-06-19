@@ -1,6 +1,6 @@
 {
   if (synthesizer == null) {
-    final URL url=this.getClass().getResource(resourceFileName);
+    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(resourceFileName);
     synthesizer=new DictionaryLookup(Dictionary.read(url));
   }
 }

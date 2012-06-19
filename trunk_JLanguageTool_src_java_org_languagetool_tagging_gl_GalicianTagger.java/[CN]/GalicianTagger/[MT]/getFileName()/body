@@ -1,3 +1,3 @@
 {
-  return JLanguageTool.getDataBroker().getResourceDir() + "/gl/galician.dict";
+  return "/gl/galician.dict";
 }

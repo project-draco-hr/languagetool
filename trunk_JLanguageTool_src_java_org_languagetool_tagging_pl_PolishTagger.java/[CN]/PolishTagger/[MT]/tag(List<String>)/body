@@ -5,7 +5,7 @@
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (morfologik == null) {
-    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(RESOURCE_FILENAME);
+    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(getFileName());
     morfologik=new DictionaryLookup(Dictionary.read(url));
   }
   for (  String word : sentenceTokens) {

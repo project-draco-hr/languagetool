@@ -5,7 +5,7 @@
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
   int pos=0;
   if (dictLookup == null) {
-    final URL url=this.getClass().getResource(getFileName());
+    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(getFileName());
     dictLookup=new DictionaryLookup(Dictionary.read(url));
   }
   for (  String word : sentenceTokens) {
