@@ -1,5 +1,5 @@
 {
-  if (f.getName().toLowerCase().endsWith(".xml") || f.isDirectory()) {
+  if (f.getName().startsWith("rules") && f.getName().toLowerCase().endsWith(".xml") || f.isDirectory()) {
     return true;
   }
   return false;
