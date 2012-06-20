@@ -3,7 +3,7 @@
   final List<String> upperCaseWord=new ArrayList<String>();
   upperCaseWord.add("Das");
   List<AnalyzedTokenReadings> readings=tagger.tag(upperCaseWord);
-  assertEquals("[Das[der/PRO:PER:NOM:SIN:NEU, der/PRO:PER:AKK:SIN:NEU, der/PRO:DEM:NOM:SIN:NEU, " + "der/PRO:DEM:AKK:SIN:NEU, der/ART:DEF:NOM:SIN:NEU, der/ART:DEF:AKK:SIN:NEU]]",readings.toString());
+  assertEquals("[Das[der/ART:DEF:AKK:SIN:NEU, der/ART:DEF:NOM:SIN:NEU, " + "der/PRO:DEM:AKK:SIN:NEU, der/PRO:DEM:NOM:SIN:NEU, der/PRO:PER:AKK:SIN:NEU, der/PRO:PER:NOM:SIN:NEU]]",readings.toString());
   readings=tagger.tag(upperCaseWord,false);
   assertEquals("[Das[null/null]]",readings.toString());
 }

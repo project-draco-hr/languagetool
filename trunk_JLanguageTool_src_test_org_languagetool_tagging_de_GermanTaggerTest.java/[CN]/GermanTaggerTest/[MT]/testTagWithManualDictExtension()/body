@@ -1,5 +1,5 @@
 {
   final GermanTagger tagger=new GermanTagger();
   final List<AnalyzedTokenReadings> readings=tagger.tag(Collections.singletonList("Wichtigtuerinnen"));
-  assertEquals("[Wichtigtuerinnen[Wichtigtuerin/SUB:NOM:PLU:FEM, Wichtigtuerin/SUB:GEN:PLU:FEM, " + "Wichtigtuerin/SUB:DAT:PLU:FEM, Wichtigtuerin/SUB:AKK:PLU:FEM]]",readings.toString());
+  assertEquals("[Wichtigtuerinnen[Wichtigtuerin/SUB:AKK:PLU:FEM, " + "Wichtigtuerin/SUB:DAT:PLU:FEM, Wichtigtuerin/SUB:GEN:PLU:FEM, Wichtigtuerin/SUB:NOM:PLU:FEM]]",readings.toString());
 }
