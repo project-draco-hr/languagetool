@@ -1,4 +1,7 @@
 {
+  if (position == 0 && patternElement.getNegation()) {
+    throw new UnsupportedPatternRuleException("Pattern rules with negation in first element are not supported.");
+  }
   if (patternElement.hasExceptionList()) {
     throw new UnsupportedPatternRuleException("Pattern rules with token exceptions are not supported.");
   }
