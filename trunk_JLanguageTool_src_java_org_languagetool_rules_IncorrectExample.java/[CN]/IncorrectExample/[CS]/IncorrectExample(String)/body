@@ -1,3 +1,4 @@
 {
   this.example=example;
+  this.corrections=Collections.emptyList();
 }

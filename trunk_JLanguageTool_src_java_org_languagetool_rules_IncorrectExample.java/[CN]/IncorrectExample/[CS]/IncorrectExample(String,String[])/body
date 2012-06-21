@@ -1,4 +1,4 @@
 {
-  this(example);
+  this.example=example;
   this.corrections=Arrays.asList(corrections);
 }
