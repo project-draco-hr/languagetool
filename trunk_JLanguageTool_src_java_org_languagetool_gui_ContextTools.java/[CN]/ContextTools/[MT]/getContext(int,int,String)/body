@@ -34,7 +34,8 @@
   final int endMark=markerStr.lastIndexOf('^');
   String result=sb.toString();
   if (escapeHtml) {
-    result=StringTools.escapeHTML(result.substring(0,startMark)) + errorMarkerStart + StringTools.escapeHTML(result.substring(startMark,endMark + 1))+ errorMarkerEnd+ StringTools.escapeHTML(result.substring(endMark + 1));
+    final String escapedErrorPart=StringTools.escapeHTML(result.substring(startMark,endMark + 1)).replace(" ","&nbsp;");
+    result=StringTools.escapeHTML(result.substring(0,startMark)) + errorMarkerStart + escapedErrorPart+ errorMarkerEnd+ StringTools.escapeHTML(result.substring(endMark + 1));
   }
  else {
     result=result.substring(0,startMark) + errorMarkerStart + result.substring(startMark,endMark + 1)+ errorMarkerEnd+ result.substring(endMark + 1);
