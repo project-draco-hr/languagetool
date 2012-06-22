@@ -1,0 +1,17 @@
+{
+  final String prevValue=oldAtr.toString();
+  final String prevAnot=oldAtr.getHistoricalAnnotations();
+  final boolean isSentEnd=oldAtr.isSentEnd();
+  final boolean isParaEnd=oldAtr.isParaEnd();
+  final boolean spaceBefore=oldAtr.isWhitespaceBefore();
+  AnalyzedTokenReadings a=newAtr;
+  if (isSentEnd) {
+    a.setSentEnd();
+  }
+  if (isParaEnd) {
+    a.setParaEnd();
+  }
+  a.setWhitespaceBefore(spaceBefore);
+  annotateChange(a,prevValue,prevAnot);
+  return a;
+}

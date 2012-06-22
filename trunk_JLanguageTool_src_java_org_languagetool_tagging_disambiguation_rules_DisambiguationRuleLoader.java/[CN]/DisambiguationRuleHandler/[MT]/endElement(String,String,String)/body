@@ -12,8 +12,8 @@
     }
     final int matchedTokenCount=endPos - startPos;
     if (newWdList != null) {
-      if (disambigAction == DisambiguatorAction.ADD || disambigAction == DisambiguatorAction.REMOVE) {
-        if (newWdList.size() != matchedTokenCount) {
+      if (disambigAction == DisambiguatorAction.ADD || disambigAction == DisambiguatorAction.REMOVE || disambigAction == DisambiguatorAction.REPLACE) {
+        if ((!newWdList.isEmpty() && disambigAction == DisambiguatorAction.REPLACE) && newWdList.size() != matchedTokenCount) {
           throw new SAXException(language.getName() + " rule error. The number of interpretations specified with wd: " + newWdList.size()+ " must be equal to the number of matched tokens ("+ matchedTokenCount+ ")"+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
         }
         rule.setNewInterpretations(newWdList.toArray(new AnalyzedToken[newWdList.size()]));

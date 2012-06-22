@@ -12,7 +12,7 @@
   if (description == null) {
     throw new NullPointerException("description cannot be null");
   }
-  if (disamb == null && posSelect == null && disambAction != DisambiguatorAction.UNIFY && disambAction != DisambiguatorAction.ADD && disambAction != DisambiguatorAction.REMOVE && disambAction != DisambiguatorAction.IMMUNIZE) {
+  if (disamb == null && posSelect == null && disambAction != DisambiguatorAction.UNIFY && disambAction != DisambiguatorAction.ADD && disambAction != DisambiguatorAction.REMOVE && disambAction != DisambiguatorAction.IMMUNIZE && disambAction != DisambiguatorAction.REPLACE) {
     throw new NullPointerException("disambiguated POS cannot be null");
   }
   this.disambiguatedPOS=disamb;
