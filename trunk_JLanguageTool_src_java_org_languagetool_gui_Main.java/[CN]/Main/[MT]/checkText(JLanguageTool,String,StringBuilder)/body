@@ -17,8 +17,8 @@
       final String repl=StringTools.listToString(match.getSuggestedReplacements(),"; ");
       sb.append("<b>" + messages.getString("correctionMessage") + "</b> "+ repl+ "<br>\n");
     }
-    if (match.getRule().getId().equals(HunspellRule.RULE_ID) || match.getRule().getId().equals(MorfologikSpellerRule.RULE_ID)) {
-      contextTools.setErrorMarkerStart(HUNSPELL_ERROR_MARKER_START);
+    if (match.getRule() instanceof SpellingCheckRule) {
+      contextTools.setErrorMarkerStart(SPELL_ERROR_MARKER_START);
     }
  else {
       contextTools.setErrorMarkerStart(LT_ERROR_MARKER_START);
