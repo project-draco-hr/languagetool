@@ -1,4 +1,6 @@
 {
+  assertCorrect("des de la tradicional divisi?? en dos regnes establida per Linnaeus");
+  assertCorrect("aquestes activitats avui residuals donada ja la manca de territori");
   assertCorrect("instruments de c??lcul basats en boles anomenats yupana.");
   assertCorrect("El rei ha trobat l'excusa i l'explicaci?? adequades.");
   assertCorrect("El rei ha trobat l'excusa i l'explicaci?? adequada.");

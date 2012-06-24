@@ -5,10 +5,6 @@
     if (matchPostagRegexp(tokens[i],ADJECTIU) && !matchPostagRegexp(tokens[i],CONCORDA)) {
       final String token=tokens[i].getToken();
       final String prevToken=tokens[i - 1].getToken();
-      String prevPrevToken="";
-      if (i > 2) {
-        prevPrevToken=tokens[i - 2].getToken();
-      }
       String nextToken="";
       if (i < tokens.length - 1) {
         nextToken=tokens[i + 1].getToken();
@@ -140,13 +136,13 @@
           }
         }
       }
-      if (!isException && matchPostagRegexp(tokens[i],PARTICIPI) && ((prevPrevToken.equalsIgnoreCase("una") && prevToken.equals("vegada")) || (prevPrevToken.equalsIgnoreCase("una") && prevToken.equals("volta")) || (prevPrevToken.equalsIgnoreCase("un") && prevToken.equals("cop")))) {
+      if (!isException && matchRegexp(prevToken,EXCEPCIONS_PREVIA)) {
         isException=true;
       }
-      if (!isException && (((token.equals("tret") || token.equals("llevat")) && nextToken.equals("de")) || token.equals("primer") || token.equals("junts")|| prevToken.equals("terme")|| prevToken.equals("paraula")|| prevToken.equals("mot")|| prevToken.equals("termes")|| prevToken.equals("paraules")|| prevToken.equals("mots")|| isUpperCase.matches())) {
+      if (!isException && (((token.equals("tret") || token.equals("llevat")) && nextToken.equals("de")) || token.equals("primer") || token.equals("junts")|| isUpperCase.matches())) {
         isException=true;
       }
-      if (!isException && matchPostagRegexp(tokens[i],EXCEPCIONS_PARTICIPI)) {
+      if (!isException && matchRegexp(token,EXCEPCIONS_PARTICIPI)) {
         isException=true;
       }
       if (!isException && i < tokens.length - 1 && (token.equals("segur") || token.equals("major") || token.equals("menor")) && nextToken.equals("que")) {
