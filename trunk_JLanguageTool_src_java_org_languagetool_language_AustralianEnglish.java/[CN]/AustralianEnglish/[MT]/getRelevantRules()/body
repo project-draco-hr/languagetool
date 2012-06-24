@@ -1,6 +1,6 @@
 {
   final List<Class<? extends Rule>> rules=new ArrayList<Class<? extends Rule>>();
   rules.addAll(super.getRelevantRules());
-  rules.add(HunspellRule.class);
+  rules.add(MorfologikAustralianSpellerRule.class);
   return rules;
 }
