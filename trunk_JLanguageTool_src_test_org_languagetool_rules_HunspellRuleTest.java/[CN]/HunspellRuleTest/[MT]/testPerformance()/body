@@ -1,0 +1,12 @@
+{
+  final List<Language> allLanguages=Language.getAllLanguages();
+  for (  Language language : allLanguages) {
+    final JLanguageTool langTool=new JLanguageTool(language);
+    langTool.check("warmup");
+    langTool.check("anotherwarmup");
+    final long startTime=System.currentTimeMillis();
+    langTool.check("fdfds fdfdsa fdfdsb fdfdsc fdfdsd fdfdse fdfdsf fdfds fdfdsa fdfdsb fdfdsc fdfdsd fdfdse fdfdsf");
+    final long endTime=System.currentTimeMillis();
+    System.out.println((endTime - startTime) + "ms for " + language);
+  }
+}
