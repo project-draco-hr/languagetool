@@ -1,0 +1,10 @@
+{
+  JLanguageTool langTool=new JLanguageTool(Language.BRITISH_ENGLISH,Language.SWISS_GERMAN);
+  langTool.activateDefaultFalseFriendRules();
+  final List<RuleMatch> matches=assertErrors(1,"We will berate you.",langTool);
+  assertEquals(matches.get(0).getSuggestedReplacements().toString(),"[to provide advice, to give advice]");
+  assertErrors(0,"We will give you advice.",langTool);
+  assertErrors(1,"I go to high school in Berlin.",langTool);
+  final List<RuleMatch> matches2=assertErrors(1,"The chef",langTool);
+  assertEquals("[boss, chief]",matches2.get(0).getSuggestedReplacements().toString());
+}

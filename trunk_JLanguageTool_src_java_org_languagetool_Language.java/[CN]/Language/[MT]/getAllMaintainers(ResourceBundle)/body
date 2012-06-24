@@ -1,8 +1,8 @@
 {
   final StringBuilder maintainersInfo=new StringBuilder();
   final List<String> toSort=new ArrayList<String>();
-  for (  final Language lang : Language.LANGUAGES) {
-    if (lang != Language.DEMO && !lang.isVariant()) {
+  for (  final Language lang : Language.REAL_LANGUAGES) {
+    if (!lang.isVariant()) {
       if (lang.getMaintainers() != null) {
         final List<String> names=new ArrayList<String>();
         for (        Contributor contributor : lang.getMaintainers()) {

@@ -1,0 +1,13 @@
+{
+  if (getShortName().equals(otherLanguage.getShortName())) {
+    final boolean thisHasVariant=hasCountryVariant();
+    final boolean otherHasVariant=otherLanguage.hasCountryVariant();
+    if (thisHasVariant && otherHasVariant) {
+      return getShortNameWithVariant().equals(otherLanguage.getShortNameWithVariant());
+    }
+    return true;
+  }
+ else {
+    return false;
+  }
+}

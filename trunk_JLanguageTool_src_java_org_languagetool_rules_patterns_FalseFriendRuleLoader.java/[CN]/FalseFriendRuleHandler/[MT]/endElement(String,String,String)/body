@@ -1,6 +1,6 @@
 {
   if (qName.equals(RULE)) {
-    if (language == textLanguage && translationLanguage != null && translationLanguage == motherTongue && language != motherTongue && !translations.isEmpty()) {
+    if (language.equalsConsiderVariantsIfSpecified(textLanguage) && translationLanguage != null && translationLanguage.equalsConsiderVariantsIfSpecified(motherTongue) && language != motherTongue && !translations.isEmpty()) {
       formatter.applyPattern(messages.getString("false_friend_hint"));
       final String tokensAsString=StringUtils.join(elementList," ").replace('|','/');
       final Object[] messageArguments={tokensAsString,messages.getString(textLanguage.getShortName()),formatTranslations(translations),messages.getString(motherTongue.getShortName())};
@@ -25,10 +25,10 @@
     inPattern=false;
   }
  else   if (qName.equals(TRANSLATION)) {
-    if (currentTranslationLanguage == motherTongue) {
+    if (currentTranslationLanguage.equalsConsiderVariantsIfSpecified(motherTongue)) {
       translations.add(translation);
     }
-    if (currentTranslationLanguage == textLanguage && language == motherTongue) {
+    if (currentTranslationLanguage.equalsConsiderVariantsIfSpecified(textLanguage) && language.equalsConsiderVariantsIfSpecified(motherTongue)) {
       suggestions.add(translation.toString());
     }
     translation=new StringBuilder();

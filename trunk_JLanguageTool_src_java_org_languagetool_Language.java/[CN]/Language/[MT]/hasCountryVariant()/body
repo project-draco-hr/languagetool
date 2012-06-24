@@ -1,0 +1,3 @@
+{
+  return getCountryVariants().length == 1 && !(getCountryVariants().length == 1 && getCountryVariants()[0].equals("ANY"));
+}

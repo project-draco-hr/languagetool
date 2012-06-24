@@ -26,12 +26,12 @@
     inTranslation=true;
     final String languageStr=attrs.getValue("lang");
     final Language tmpLang=Language.getLanguageForShortName(languageStr);
+    if (tmpLang == null) {
+      throw new SAXException("Unknown language '" + languageStr + "'");
+    }
     currentTranslationLanguage=tmpLang;
-    if (tmpLang == motherTongue) {
+    if (tmpLang.equalsConsiderVariantsIfSpecified(motherTongue)) {
       translationLanguage=tmpLang;
-      if (translationLanguage == null) {
-        throw new SAXException("Unknown language '" + languageStr + "'");
-      }
     }
   }
  else   if (qName.equals(EXAMPLE) && attrs.getValue(TYPE).equals("correct")) {
