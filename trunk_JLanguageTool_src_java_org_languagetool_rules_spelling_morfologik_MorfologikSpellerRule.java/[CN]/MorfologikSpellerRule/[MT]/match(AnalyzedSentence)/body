@@ -16,7 +16,7 @@
     if (word.length() == 1) {
       isAlphabetic=StringTools.isAlphabetic(word.charAt(0));
     }
-    if (word.length() > 0 && isAlphabetic && !token.isImmunized() && !containsDigit(word) && !speller.isInDictionary(word) && !speller.isInDictionary(word.toLowerCase(conversionLocale))) {
+    if (word.length() > 0 && isAlphabetic && !token.isImmunized() && !containsDigit(word) && !LANGUAGETOOL.equals(word) && !speller.isInDictionary(word) && !speller.isInDictionary(word.toLowerCase(conversionLocale))) {
       final List<String> suggestions=new ArrayList<String>();
       suggestions.addAll(speller.findReplacements(word));
       if (!word.toLowerCase(conversionLocale).equals(word)) {

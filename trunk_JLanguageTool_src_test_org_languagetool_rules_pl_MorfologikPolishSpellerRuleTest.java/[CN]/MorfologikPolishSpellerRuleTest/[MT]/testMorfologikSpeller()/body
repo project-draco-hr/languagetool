@@ -4,6 +4,7 @@
   JLanguageTool langTool=new JLanguageTool(Language.POLISH);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("To jest test bez jakiegokolwiek b????du.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("??????w na staro???? wydziela dziwn?? wo??.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("LanguageTool jest ??wietny!")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence(",")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("123454")).length);
   matches=rule.match(langTool.getAnalyzedSentence("Zolw"));
