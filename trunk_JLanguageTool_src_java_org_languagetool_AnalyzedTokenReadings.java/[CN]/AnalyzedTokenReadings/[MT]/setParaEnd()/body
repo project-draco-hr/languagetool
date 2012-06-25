@@ -1,6 +1,12 @@
 {
   if (!isParaEnd()) {
-    final AnalyzedToken paragraphEnd=new AnalyzedToken(getToken(),JLanguageTool.PARAGRAPH_END_TAGNAME,getAnalyzedToken(0).getLemma());
+    final AnalyzedToken paragraphEnd;
+    if (anTokReadings.length == 0) {
+      paragraphEnd=new AnalyzedToken(getToken(),JLanguageTool.PARAGRAPH_END_TAGNAME,null);
+    }
+ else {
+      paragraphEnd=new AnalyzedToken(getToken(),JLanguageTool.PARAGRAPH_END_TAGNAME,getAnalyzedToken(0).getLemma());
+    }
     addReading(paragraphEnd);
   }
 }
