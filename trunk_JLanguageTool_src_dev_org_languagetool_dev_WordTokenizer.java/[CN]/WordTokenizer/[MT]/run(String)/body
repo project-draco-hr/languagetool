@@ -1,0 +1,25 @@
+{
+  JLanguageTool langTool=new JLanguageTool(Language.getLanguageForShortName(lang));
+  BufferedReader in=null;
+  try {
+    in=new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter out=new BufferedWriter(new OutputStreamWriter(System.out));
+    String line;
+    while ((line=in.readLine()) != null) {
+      AnalyzedTokenReadings[] atr=langTool.getRawAnalyzedSentence(line).getTokensWithoutWhitespace();
+      for (      AnalyzedTokenReadings a : atr) {
+        out.write(a.getToken());
+        out.write("\n");
+      }
+    }
+  }
+ catch (  IOException e) {
+    System.err.println("IOException reading System.in" + e);
+    throw e;
+  }
+ finally {
+    if (in != null) {
+      in.close();
+    }
+  }
+}
