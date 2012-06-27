@@ -9,7 +9,7 @@
     boolean ignore=couldBeRelativeClause(tokens,i);
     if (i > 0) {
       final String prevToken=tokens[i - 1].getToken().toLowerCase();
-      if ((prevToken.equals("der") || prevToken.equals("die") || prevToken.equals("das")) && tokens[i].getToken().equals("eine")) {
+      if ((prevToken.equals("der") || prevToken.equals("die") || prevToken.equals("das")) && (tokens[i].getToken().equals("eine") || tokens[i].getToken().equals("einen"))) {
         ignore=true;
       }
     }
