@@ -19,11 +19,15 @@
       return null;
     }
     @Override public String getShortName(){
-      if (parts[1].length() == 2)       return parts[1];
+      if (parts[1].length() == 2) {
+        return parts[1];
+      }
       return parts[1].split("_")[0];
     }
     @Override public String[] getCountryVariants(){
-      if (parts[1].length() == 2)       return new String[]{""};
+      if (parts[1].length() == 2) {
+        return new String[]{""};
+      }
       return new String[]{parts[1].split("_")[1]};
     }
     @Override public String getName(){
@@ -33,7 +37,7 @@
       return Collections.emptyList();
     }
     @Override public List<String> getRuleFileName(){
-      List<String> ruleFiles=new ArrayList<String>();
+      final List<String> ruleFiles=new ArrayList<String>();
       ruleFiles.add(file.getAbsolutePath());
       return ruleFiles;
     }
