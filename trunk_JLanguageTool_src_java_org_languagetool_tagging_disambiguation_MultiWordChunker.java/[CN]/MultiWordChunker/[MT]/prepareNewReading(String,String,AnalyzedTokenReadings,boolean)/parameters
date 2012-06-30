@@ -1,0 +1,4 @@
+String tokens
+String tok
+AnalyzedTokenReadings token
+boolean isLast

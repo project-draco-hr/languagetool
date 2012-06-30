@@ -13,16 +13,10 @@
       while (j < anTokens.length) {
         if (!anTokens[j].isWhitespace()) {
           tokens.append(anTokens[j].getToken());
-          if (mFull.containsKey(tokens.toString())) {
-            final AnalyzedToken tokenStart=new AnalyzedToken(tok,"<" + mFull.get(tokens.toString()) + ">",tokens.toString());
-            String oldReading=output[i].toString();
-            output[i].addReading(tokenStart);
-            output[i].setHistoricalAnnotations("MULTIWORD_CHUNKER" + ": " + oldReading + " -> "+ output[i].toString());
-            final AnalyzedToken tokenEnd=new AnalyzedToken(anTokens[finalLen].getToken(),"</" + mFull.get(tokens.toString()) + ">",tokens.toString());
-            oldReading=output[finalLen].toString();
-            final String prevAnot=output[finalLen].getHistoricalAnnotations();
-            output[finalLen].addReading(tokenEnd);
-            output[finalLen].setHistoricalAnnotations(prevAnot + "\nMULTIWORD_CHUNKER" + ": "+ oldReading+ " -> "+ output[i].toString());
+          final String toks=tokens.toString();
+          if (mFull.containsKey(toks)) {
+            output[i]=prepareNewReading(toks,tok,output[i],false);
+            output[finalLen]=prepareNewReading(toks,anTokens[finalLen].getToken(),output[finalLen],true);
           }
           lenCounter++;
           if (lenCounter == len) {
@@ -39,16 +33,10 @@
       if (i + len <= anTokens.length) {
         for (int j=i; j < i + len; j++) {
           tokens.append(anTokens[j].getToken());
-          if (mFull.containsKey(tokens.toString())) {
-            final AnalyzedToken tokenStart=new AnalyzedToken(tok,"<" + mFull.get(tokens.toString()) + ">",tokens.toString());
-            String oldReading=output[i].toString();
-            output[i].addReading(tokenStart);
-            output[i].setHistoricalAnnotations("MULTIWORD_CHUNKER" + ": " + oldReading + " -> "+ output[i].toString());
-            final AnalyzedToken tokenEnd=new AnalyzedToken(anTokens[i + len - 1].getToken(),"</" + mFull.get(tokens.toString()) + ">",tokens.toString());
-            oldReading=output[i + len - 1].toString();
-            final String prevAnot=output[i + len - 1].getHistoricalAnnotations();
-            output[i + len - 1].addReading(tokenEnd);
-            output[i + len - 1].setHistoricalAnnotations(prevAnot + "\nMULTIWORD_CHUNKER" + ": "+ oldReading+ " -> "+ output[i].toString());
+          final String toks=tokens.toString();
+          if (mFull.containsKey(toks)) {
+            output[i]=prepareNewReading(toks,tok,output[i],false);
+            output[i + len - 1]=prepareNewReading(toks,anTokens[i + len - 1].getToken(),output[i + len - 1],true);
           }
         }
       }
