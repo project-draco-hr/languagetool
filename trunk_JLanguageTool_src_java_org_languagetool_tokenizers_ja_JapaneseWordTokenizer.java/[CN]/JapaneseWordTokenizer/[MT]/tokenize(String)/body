@@ -1,0 +1,15 @@
+{
+  init();
+  final ArrayList<String> ret=new ArrayList<String>();
+  List<Token> tokens=new ArrayList<Token>();
+  try {
+    stringtagger.analyze(text,tokens);
+  }
+ catch (  Exception e) {
+    return ret;
+  }
+  for (  Token token : tokens) {
+    ret.add(token.getSurface() + "/" + token.getMorpheme().getPartOfSpeech());
+  }
+  return ret;
+}

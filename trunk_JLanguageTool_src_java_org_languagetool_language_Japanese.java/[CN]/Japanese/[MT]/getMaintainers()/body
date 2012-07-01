@@ -1,0 +1,3 @@
+{
+  return new Contributor[]{new Contributor("Takahiro Shinkai")};
+}

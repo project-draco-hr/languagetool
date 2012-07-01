@@ -1,0 +1,6 @@
+{
+  if (sentenceTokenizer == null) {
+    sentenceTokenizer=new JapaneseSentenceTokenizer();
+  }
+  return sentenceTokenizer;
+}

@@ -1,0 +1,5 @@
+{
+  if (stringtagger == null) {
+    stringtagger=SenFactory.getStringTagger(null);
+  }
+}
