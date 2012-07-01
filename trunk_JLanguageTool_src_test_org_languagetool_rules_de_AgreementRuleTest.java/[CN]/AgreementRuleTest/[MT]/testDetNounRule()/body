@@ -11,6 +11,7 @@
   assertGood("Das Auto von einem Mann.");
   assertGood("Das Auto eines Mannes.");
   assertGood("Des gro??en Mannes.");
+  assertGood("Und nach der Nummerierung kommt die ??berschrift.");
   assertGood("Das Dach von meinem Auto.");
   assertGood("Das Dach von meinen Autos.");
   assertGood("Das Dach meines Autos.");
