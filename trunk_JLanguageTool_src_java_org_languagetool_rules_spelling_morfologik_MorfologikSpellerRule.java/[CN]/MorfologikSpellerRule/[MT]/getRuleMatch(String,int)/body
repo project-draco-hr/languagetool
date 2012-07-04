@@ -1,6 +1,6 @@
 {
   boolean isAlphabetic=true;
-  final List<RuleMatch> ruleM=new ArrayList<RuleMatch>();
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   if (word.length() == 1) {
     isAlphabetic=StringTools.isAlphabetic(word.charAt(0));
   }
@@ -15,7 +15,7 @@
     if (!suggestions.isEmpty()) {
       ruleMatch.setSuggestedReplacements(suggestions);
     }
-    ruleM.add(ruleMatch);
+    ruleMatches.add(ruleMatch);
   }
-  return ruleM;
+  return ruleMatches;
 }
