@@ -1,8 +1,8 @@
 {
-  final long startTime=System.currentTimeMillis();
-  final List<RuleMatch> ruleMatches=langTool.check(text);
-  final long startTimeMatching=System.currentTimeMillis();
   final ContextTools contextTools=new ContextTools();
+  final StringBuilder sb=new StringBuilder();
+  sb.append(startCheckText);
+  sb.append("<br>\n");
   int i=0;
   for (  final RuleMatch match : ruleMatches) {
     final String output=Tools.makeTexti18n(messages,"result1",new Object[]{i + 1,match.getLine() + 1,match.getColumn()});
@@ -12,7 +12,9 @@
     msg=msg.replaceAll("</suggestion>","</b>");
     msg=msg.replaceAll("<old>","<b>");
     msg=msg.replaceAll("</old>","</b>");
-    sb.append("<b>" + messages.getString("errorMessage") + "</b> "+ msg+ "<br>\n");
+    sb.append("<b>" + messages.getString("errorMessage") + "</b> ");
+    sb.append(msg);
+    sb.append("<br>\n");
     if (match.getSuggestedReplacements().size() > 0) {
       final String repl=StringTools.listToString(match.getSuggestedReplacements(),"; ");
       sb.append("<b>" + messages.getString("correctionMessage") + "</b> "+ repl+ "<br>\n");
@@ -35,9 +37,11 @@
     }
     i++;
   }
-  final long endTime=System.currentTimeMillis();
-  sb.append(HTML_GREY_FONT_START);
-  sb.append(Tools.makeTexti18n(messages,"resultTime",new Object[]{endTime - startTime,endTime - startTimeMatching}));
-  sb.append(HTML_FONT_END);
-  return ruleMatches.size();
+  sb.append(Main.HTML_GREY_FONT_START);
+  final String checkDone=Tools.makeTexti18n(messages,"checkDone",new Object[]{ruleMatches.size(),runTime});
+  sb.append("<br>\n");
+  sb.append(checkDone);
+  sb.append(Main.HTML_FONT_END);
+  sb.append("<br>\n");
+  return sb.toString();
 }

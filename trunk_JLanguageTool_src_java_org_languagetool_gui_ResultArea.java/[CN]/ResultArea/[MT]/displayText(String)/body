@@ -1,0 +1,4 @@
+{
+  setText(Main.HTML_FONT_START + text + Main.HTML_FONT_END);
+  setCaretPosition(0);
+}

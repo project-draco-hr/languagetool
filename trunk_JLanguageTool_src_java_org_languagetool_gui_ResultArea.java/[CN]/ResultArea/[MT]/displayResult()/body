@@ -1,0 +1,4 @@
+{
+  final String ruleMatchHtml=getRuleMatchHtml(ruleMatches,inputText,startText);
+  displayText(ruleMatchHtml);
+}

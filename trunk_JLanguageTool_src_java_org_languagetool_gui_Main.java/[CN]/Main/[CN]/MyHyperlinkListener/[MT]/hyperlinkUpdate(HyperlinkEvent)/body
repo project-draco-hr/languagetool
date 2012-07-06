@@ -1,11 +1,24 @@
 {
-  if (Desktop.isDesktopSupported() && e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-    final Desktop desktop=java.awt.Desktop.getDesktop();
+  if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+    final URL url=e.getURL();
     try {
-      desktop.browse(e.getURL().toURI());
+      final String uri=url.toURI().toString();
+      if (uri.startsWith(DEACTIVATE_URL)) {
+        final String ruleId=uri.substring(DEACTIVATE_URL.length());
+        final Set<String> disabledRuleIds=config.getDisabledRuleIds();
+        disabledRuleIds.add(ruleId);
+        config.setDisabledRuleIds(disabledRuleIds);
+        ruleMatches=filterRuleMatches();
+        resultArea.setInputText(textArea.getText());
+        resultArea.setRuleMatches(ruleMatches);
+        resultArea.displayResult();
+      }
+ else {
+        handleHttpClick(url);
+      }
     }
- catch (    Exception ex) {
-      throw new RuntimeException("Could not open URL: " + e.getURL(),ex);
+ catch (    URISyntaxException e1) {
+      throw new RuntimeException("Could not handle URL click: " + url,e1);
     }
   }
 }

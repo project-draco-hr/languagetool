@@ -21,26 +21,20 @@
             final String startCheckText=HTML_GREY_FONT_START + Tools.makeTexti18n(messages,"startChecking",new Object[]{langName}) + "..."+ HTML_FONT_END;
             resultArea.setText(startCheckText);
             resultArea.repaint();
-            final StringBuilder sb=new StringBuilder();
-            sb.append(startCheckText);
-            sb.append("<br>\n");
-            int matches=0;
             try {
               final JLanguageTool langTool=getCurrentLanguageTool(lang);
-              matches=checkText(langTool,textArea.getText(),sb);
+              final long startTime=System.currentTimeMillis();
+              ruleMatches=langTool.check(textArea.getText());
+              resultArea.setStartText(startCheckText);
+              resultArea.setInputText(textArea.getText());
+              resultArea.setRuleMatches(ruleMatches);
+              resultArea.setRunTime(System.currentTimeMillis() - startTime);
+              resultArea.displayResult();
             }
  catch (            final Exception e) {
-              sb.append("<br><br><b><font color=\"red\">");
-              sb.append(org.languagetool.tools.Tools.getFullStackTrace(e).replace("\n","<br/>"));
-              sb.append("</font></b><br>");
+              final String error="<br><br><b><font color=\"red\">" + org.languagetool.tools.Tools.getFullStackTrace(e).replace("\n","<br/>") + "</font></b><br>";
+              resultArea.displayText(error);
             }
-            final String checkDone=Tools.makeTexti18n(messages,"checkDone",new Object[]{matches});
-            sb.append(HTML_GREY_FONT_START);
-            sb.append(checkDone);
-            sb.append(HTML_FONT_END);
-            sb.append("<br>\n");
-            resultArea.setText(HTML_FONT_START + sb.toString() + HTML_FONT_END);
-            resultArea.setCaretPosition(0);
           }
   finally {
             checkTextButton.setEnabled(true);

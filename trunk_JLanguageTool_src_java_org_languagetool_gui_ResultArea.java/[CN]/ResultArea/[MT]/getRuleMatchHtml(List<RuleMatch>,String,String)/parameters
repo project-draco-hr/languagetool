@@ -1,0 +1,3 @@
+List<RuleMatch> ruleMatches
+String text
+String startCheckText
