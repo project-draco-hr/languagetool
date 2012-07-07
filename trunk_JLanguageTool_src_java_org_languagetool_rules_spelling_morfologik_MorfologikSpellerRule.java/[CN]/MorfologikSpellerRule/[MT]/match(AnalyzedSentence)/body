@@ -17,10 +17,18 @@
         ruleMatches.addAll(getRuleMatch(word,token.getStartPos()));
       }
  else {
-        int i=0;
-        for (        final String internalSplit : tokenizingPattern().split(word)) {
-          ruleMatches.addAll(getRuleMatch(internalSplit,token.getStartPos() + i));
-          i+=internalSplit.length() + separatorLength();
+        int index=0;
+        final Matcher m=tokenizingPattern().matcher(word);
+        while (m.find()) {
+          final String match=word.subSequence(index,m.start()).toString();
+          index=m.end();
+          ruleMatches.addAll(getRuleMatch(match,token.getStartPos() + index));
+        }
+        if (index == 0) {
+          ruleMatches.addAll(getRuleMatch(word,token.getStartPos()));
+        }
+ else {
+          ruleMatches.addAll(getRuleMatch(word.subSequence(index,word.length()).toString(),token.getStartPos() + index));
         }
       }
     }
