@@ -1,0 +1,14 @@
+{
+  final String id;
+  if (ruleLink.startsWith(DEACTIVATE_URL)) {
+    id=ruleLink.substring(DEACTIVATE_URL.length());
+    return new RuleLink(DEACTIVATE_URL,id);
+  }
+ else   if (ruleLink.startsWith(REACTIVATE_URL)) {
+    id=ruleLink.substring(REACTIVATE_URL.length());
+    return new RuleLink(REACTIVATE_URL,id);
+  }
+ else {
+    throw new RuntimeException("Unknown link prefix: " + ruleLink);
+  }
+}

@@ -9,11 +9,7 @@
   textArea.setLineWrap(true);
   textArea.setWrapStyleWord(true);
   textArea.addKeyListener(new ControlReturnTextCheckingListener());
-  resultArea=new ResultArea(messages);
-  resultArea.setContentType("text/html");
-  resultArea.setText(HTML_GREY_FONT_START + messages.getString("resultAreaText") + HTML_FONT_END);
-  resultArea.setEditable(false);
-  resultArea.addHyperlinkListener(new MyHyperlinkListener());
+  resultArea=new ResultArea(messages,textArea,config);
   checkTextButton=new JButton(StringTools.getLabel(messages.getString("checkText")));
   checkTextButton.setMnemonic(StringTools.getMnemonic(messages.getString("checkText")));
   checkTextButton.addActionListener(this);

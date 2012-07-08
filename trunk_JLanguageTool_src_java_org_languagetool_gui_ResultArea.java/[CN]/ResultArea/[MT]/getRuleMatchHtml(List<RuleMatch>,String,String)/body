@@ -7,17 +7,14 @@
   for (  final RuleMatch match : ruleMatches) {
     final String output=Tools.makeTexti18n(messages,"result1",new Object[]{i + 1,match.getLine() + 1,match.getColumn()});
     sb.append(output);
-    String msg=match.getMessage();
-    msg=msg.replaceAll("<suggestion>","<b>");
-    msg=msg.replaceAll("</suggestion>","</b>");
-    msg=msg.replaceAll("<old>","<b>");
-    msg=msg.replaceAll("</old>","</b>");
-    sb.append("<b>" + messages.getString("errorMessage") + "</b> ");
+    final String msg=match.getMessage().replaceAll("<suggestion>","<b>").replaceAll("</suggestion>","</b>").replaceAll("<old>","<b>").replaceAll("</old>","</b>");
+    sb.append("<b>").append(messages.getString("errorMessage")).append("</b> ");
     sb.append(msg);
-    sb.append("<br>\n");
+    final RuleLink ruleLink=RuleLink.buildDeactivationLink(match.getRule());
+    sb.append(" <a href=\"").append(ruleLink).append("\">").append(messages.getString("deactivateRule")).append("</a><br>\n");
     if (match.getSuggestedReplacements().size() > 0) {
-      final String repl=StringTools.listToString(match.getSuggestedReplacements(),"; ");
-      sb.append("<b>" + messages.getString("correctionMessage") + "</b> "+ repl+ "<br>\n");
+      final String replacement=StringTools.listToString(match.getSuggestedReplacements(),"; ");
+      sb.append("<b>").append(messages.getString("correctionMessage")).append("</b> ").append(replacement).append("<br>\n");
     }
     if (match.getRule() instanceof SpellingCheckRule) {
       contextTools.setErrorMarkerStart(SPELL_ERROR_MARKER_START);
@@ -26,22 +23,21 @@
       contextTools.setErrorMarkerStart(LT_ERROR_MARKER_START);
     }
     final String context=contextTools.getContext(match.getFromPos(),match.getToPos(),text);
-    sb.append("<b>" + messages.getString("errorContext") + "</b> "+ context);
+    sb.append("<b>").append(messages.getString("errorContext")).append("</b> ").append(context);
     sb.append("<br>\n");
     if (match.getRule().getUrl() != null && Desktop.isDesktopSupported()) {
-      sb.append("<b>" + messages.getString("moreInfo") + "</b> <a href=\"");
+      sb.append("<b>").append(messages.getString("moreInfo")).append("</b> <a href=\"");
       final String url=match.getRule().getUrl().toString();
       sb.append(url);
       final String shortUrl=StringUtils.abbreviate(url,60);
-      sb.append("\">" + shortUrl + "</a><br>\n");
+      sb.append("\">").append(shortUrl).append("</a><br>\n");
     }
     i++;
   }
   sb.append(Main.HTML_GREY_FONT_START);
+  sb.append(getDisabledRulesHtml());
   final String checkDone=Tools.makeTexti18n(messages,"checkDone",new Object[]{ruleMatches.size(),runTime});
-  sb.append("<br>\n");
-  sb.append(checkDone);
-  sb.append(Main.HTML_FONT_END);
-  sb.append("<br>\n");
+  sb.append("<br>\n").append(checkDone);
+  sb.append(Main.HTML_FONT_END).append("<br>\n");
   return sb.toString();
 }

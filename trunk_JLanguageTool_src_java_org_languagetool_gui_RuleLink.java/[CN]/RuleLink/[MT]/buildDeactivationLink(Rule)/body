@@ -1,0 +1,3 @@
+{
+  return new RuleLink(DEACTIVATE_URL,rule.getId());
+}

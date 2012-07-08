@@ -1,0 +1,4 @@
+{
+  this.urlPrefix=urlPrefix;
+  this.id=id;
+}

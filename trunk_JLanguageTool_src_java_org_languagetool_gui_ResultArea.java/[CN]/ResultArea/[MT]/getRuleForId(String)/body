@@ -1,0 +1,9 @@
+{
+  final List<Rule> allRules=languageTool.getAllRules();
+  for (  Rule rule : allRules) {
+    if (rule.getId().equals(ruleId)) {
+      return rule;
+    }
+  }
+  return null;
+}

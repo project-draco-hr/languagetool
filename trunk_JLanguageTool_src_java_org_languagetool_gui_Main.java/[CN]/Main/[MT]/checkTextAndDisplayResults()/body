@@ -29,6 +29,7 @@
               resultArea.setInputText(textArea.getText());
               resultArea.setRuleMatches(ruleMatches);
               resultArea.setRunTime(System.currentTimeMillis() - startTime);
+              resultArea.setLanguageTool(langTool);
               resultArea.displayResult();
             }
  catch (            final Exception e) {

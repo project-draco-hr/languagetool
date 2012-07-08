@@ -1,0 +1,28 @@
+{
+  final StringBuilder sb=new StringBuilder();
+  sb.append(messages.getString("deactivatedRulesText"));
+  int i=0;
+  int deactivatedRuleCount=0;
+  for (  String ruleId : config.getDisabledRuleIds()) {
+    if (ruleId.trim().isEmpty()) {
+      continue;
+    }
+    final Rule rule=getRuleForId(ruleId);
+    if (rule.isDefaultOff()) {
+      continue;
+    }
+    if (i++ > 0) {
+      sb.append(",");
+    }
+    final RuleLink reactivationLink=RuleLink.buildReactivationLink(rule);
+    sb.append(" <a href=\"").append(reactivationLink).append("\">").append(rule.getDescription()).append("</a>");
+    deactivatedRuleCount++;
+  }
+  sb.append("<br>");
+  if (deactivatedRuleCount == 0) {
+    return "";
+  }
+ else {
+    return sb.toString();
+  }
+}

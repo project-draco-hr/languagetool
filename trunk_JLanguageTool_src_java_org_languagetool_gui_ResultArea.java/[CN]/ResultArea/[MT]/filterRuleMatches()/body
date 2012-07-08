@@ -1,7 +1,7 @@
 {
   final List<RuleMatch> filtered=new ArrayList<RuleMatch>();
   final Set<String> disabledRuleIds=config.getDisabledRuleIds();
-  for (  RuleMatch ruleMatch : ruleMatches) {
+  for (  RuleMatch ruleMatch : allRuleMatches) {
     if (!disabledRuleIds.contains(ruleMatch.getRule().getId())) {
       filtered.add(ruleMatch);
     }

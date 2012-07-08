@@ -1,0 +1,17 @@
+{
+  if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+    final URL url=e.getURL();
+    try {
+      final String uri=url.toURI().toString();
+      if (uri.startsWith(DEACTIVATE_URL) || uri.startsWith(REACTIVATE_URL)) {
+        handleRuleLinkClick(uri);
+      }
+ else {
+        handleHttpClick(url);
+      }
+    }
+ catch (    Exception ex) {
+      throw new RuntimeException("Could not handle URL click: " + url,ex);
+    }
+  }
+}
