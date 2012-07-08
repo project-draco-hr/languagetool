@@ -12,7 +12,7 @@
       langName=lang.getTranslatedName(messages);
     }
     new Thread(){
-      public void run(){
+      @Override public void run(){
         if (!isAlreadyChecking) {
           isAlreadyChecking=true;
           setWaitCursor();
