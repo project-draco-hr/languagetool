@@ -18,12 +18,12 @@
           setWaitCursor();
           checkTextButton.setEnabled(false);
           try {
+            final long startTime=System.currentTimeMillis();
             final String startCheckText=HTML_GREY_FONT_START + Tools.makeTexti18n(messages,"startChecking",new Object[]{langName}) + "..."+ HTML_FONT_END;
             resultArea.setText(startCheckText);
             resultArea.repaint();
             try {
               final JLanguageTool langTool=getCurrentLanguageTool(lang);
-              final long startTime=System.currentTimeMillis();
               ruleMatches=langTool.check(textArea.getText());
               resultArea.setStartText(startCheckText);
               resultArea.setInputText(textArea.getText());

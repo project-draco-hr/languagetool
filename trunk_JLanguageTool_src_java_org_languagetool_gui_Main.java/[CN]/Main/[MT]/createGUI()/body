@@ -25,6 +25,12 @@
   buttonCons.anchor=GridBagConstraints.WEST;
   insidePanel.add(new JLabel(" " + messages.getString("textLanguage") + " "),buttonCons);
   languageBox=new LanguageComboBox(messages);
+  languageBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      langTool=null;
+    }
+  }
+);
   buttonCons.gridx=1;
   buttonCons.gridy=0;
   insidePanel.add(languageBox,buttonCons);
