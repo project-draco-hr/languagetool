@@ -21,8 +21,8 @@
         final Matcher m=tokenizingPattern().matcher(word);
         while (m.find()) {
           final String match=word.subSequence(index,m.start()).toString();
-          index=m.end();
           ruleMatches.addAll(getRuleMatch(match,token.getStartPos() + index));
+          index=m.end();
         }
         if (index == 0) {
           ruleMatches.addAll(getRuleMatch(word,token.getStartPos()));
