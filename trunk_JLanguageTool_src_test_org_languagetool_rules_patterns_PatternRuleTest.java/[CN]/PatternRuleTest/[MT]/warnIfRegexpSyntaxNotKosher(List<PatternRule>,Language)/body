@@ -3,6 +3,9 @@
     int i=0;
     for (    final Element element : rule.getElements()) {
       i++;
+      if (element.isReferenceElement()) {
+        continue;
+      }
       warnIfElementNotKosher(element.getString(),element.isRegularExpression(),element.getCaseSensitive(),element.getNegation(),element.isInflected(),lang,rule.getId() + ":" + rule.getSubId());
       warnIfElementNotKosher(element.getPOStag() == null ? "" : element.getPOStag(),element.isPOStagRegularExpression(),element.getCaseSensitive(),element.getPOSNegation(),false,lang,rule.getId() + ":" + rule.getSubId()+ " (POS tag)");
       List<Element> exceptionElements=new ArrayList<Element>();
