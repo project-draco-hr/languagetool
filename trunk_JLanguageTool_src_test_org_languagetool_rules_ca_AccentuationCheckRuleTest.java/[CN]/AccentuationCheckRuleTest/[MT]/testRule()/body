@@ -1,4 +1,6 @@
 {
+  assertCorrect("El cos genera suficient pressi?? interna.");
+  assertCorrect("Les seues contr??ries.");
   assertCorrect("Aix?? ??s una frase de prova.");
   assertCorrect("Amb ren??ncies i esfor??.");
   assertCorrect("He vingut per a cantar");
@@ -21,6 +23,7 @@
   assertCorrect("Els h??bitats de la comarca.");
   assertCorrect("Joan Pau II beatifica Paula Montal.");
   assertCorrect("La magn??fica conservaci?? del palau.");
+  assertIncorrect("Les seues contraries.");
   assertIncorrect("Amb renuncies i esfor??.");
   assertIncorrect("La renuncia del president.");
   assertIncorrect("S??n circumstancies d'un altre caire.");
