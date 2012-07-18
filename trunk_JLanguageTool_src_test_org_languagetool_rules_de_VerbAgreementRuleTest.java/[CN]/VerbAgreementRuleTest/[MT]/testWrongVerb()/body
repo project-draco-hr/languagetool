@@ -1,0 +1,16 @@
+{
+  assertGood("Das Wort ???schreibst??? ist sch??n.");
+  assertGood("Die Jagd nach bin Laden.");
+  assertGood("Die Unterlagen solltet ihr gr??ndlich durcharbeiten.");
+  assertGood("Er reagierte ??u??erst negativ.");
+  assertGood("Max und ich sollten das machen.");
+  assertGood("Osama bin Laden stammt aus Saudi-Arabien.");
+  assertGood("Solltet ihr das machen?");
+  assertBad("Als Borcarbid wei??t es eine hohe H??rte auf.");
+  assertBad("Das greift auf Vorl??uferinstitutionen bist auf die Zeit von 1234 zur??ck.");
+  assertBad("Die Eisenbahn dienst ??berwiegend dem G??terverkehr.");
+  assertBad("Die Unterlagen solltest ihr gr??ndlich durcharbeiten.");
+  assertBad("Peter bin nett.");
+  assertBad("Solltest ihr das machen?","Subjekt und Pr??dikat (Solltest)");
+  assertBad("Weiter befindest sich im Osten die Gemeinde Dorf.");
+}

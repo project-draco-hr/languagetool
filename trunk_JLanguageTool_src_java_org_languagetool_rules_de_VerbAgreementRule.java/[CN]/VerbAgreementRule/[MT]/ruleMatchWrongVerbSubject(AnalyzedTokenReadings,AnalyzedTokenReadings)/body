@@ -1,0 +1,9 @@
+{
+  final String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Subjekt (" + subject.getToken() + ") und Pr??dikat ("+ verb.getToken()+ ") bez??glich Person oder Numerus (Einzahl, Mehrzahl - Beispiel: "+ "'ich sind' statt 'ich bist').";
+  if (subject.getStartPos() < verb.getStartPos()) {
+    return new RuleMatch(this,subject.getStartPos(),verb.getStartPos() + verb.getToken().length(),msg);
+  }
+ else {
+    return new RuleMatch(this,verb.getStartPos(),subject.getStartPos() + subject.getToken().length(),msg);
+  }
+}

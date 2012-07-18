@@ -1,0 +1,9 @@
+{
+  if (token.getToken().length() == 0 || (Character.isUpperCase(token.getToken().charAt(0)) && !(token.getStartPos() == 0)) || !token.hasPartialPosTag("VER"))   return false;
+  for (int i=0; i < token.getReadingsLength(); ++i) {
+    String postag=token.getReadings().get(i).getPOSTag();
+    if (postag.contains("_END"))     continue;
+    if (!postag.contains(":" + person + ":"+ number))     return false;
+  }
+  return true;
+}

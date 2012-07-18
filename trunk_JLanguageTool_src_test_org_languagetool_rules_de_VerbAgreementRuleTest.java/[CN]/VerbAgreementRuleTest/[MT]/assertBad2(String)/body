@@ -1,0 +1,3 @@
+{
+  assertEquals(2,rule.match(langTool.getAnalyzedSentence(s)).length);
+}

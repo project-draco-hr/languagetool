@@ -1,0 +1,3 @@
+{
+  return QUOTATION_MARKS.contains(token.getToken());
+}

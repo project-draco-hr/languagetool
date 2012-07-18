@@ -1,0 +1,77 @@
+{
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  if (tokens.length < 4)   return toRuleMatchArray(ruleMatches);
+  int posIch=-1, posDu=-1, posEr=-1, posWir=-1;
+  int posVer1Sin=-1, posVer2Sin=-1, posVer1Plu=-1, posVer2Plu=-1;
+  int posPossibleVer1Sin=-1, posPossibleVer2Sin=-1, posPossibleVer3Sin=-1, posPossibleVer1Plu=-1, posPossibleVer2Plu=-1;
+  for (int i=1; i < tokens.length; ++i) {
+    String strToken=tokens[i].getToken().toLowerCase();
+    strToken=strToken.replace("???","");
+    if (strToken.equals("ich")) {
+      posIch=i;
+    }
+ else     if (strToken.equals("du")) {
+      posDu=i;
+    }
+ else     if (strToken.equals("er")) {
+      posEr=i;
+    }
+ else     if (strToken.equals("wir")) {
+      posWir=i;
+    }
+    if (tokens[i].hasPartialPosTag("VER") && (Character.isLowerCase(tokens[i].getToken().charAt(0)) || i == 1)) {
+      if (hasUnambiguouslyPersonAndNumber(tokens[i],"1","SIN") && !(strToken.equals("bin") && (BIN_IGNORE.contains(tokens[i - 1].getToken()) || (tokens.length != i + 1 && tokens[i + 1].getToken().startsWith("Laden"))))) {
+        posVer1Sin=i;
+      }
+ else       if (hasUnambiguouslyPersonAndNumber(tokens[i],"2","SIN")) {
+        posVer2Sin=i;
+      }
+ else       if (hasUnambiguouslyPersonAndNumber(tokens[i],"1","PLU")) {
+        posVer1Plu=i;
+      }
+ else       if (hasUnambiguouslyPersonAndNumber(tokens[i],"2","PLU")) {
+        posVer2Plu=i;
+      }
+      if (tokens[i].hasPartialPosTag(":1:SIN"))       posPossibleVer1Sin=i;
+      if (tokens[i].hasPartialPosTag(":2:SIN"))       posPossibleVer2Sin=i;
+      if (tokens[i].hasPartialPosTag(":3:SIN"))       posPossibleVer3Sin=i;
+      if (tokens[i].hasPartialPosTag(":1:PLU"))       posPossibleVer1Plu=i;
+      if (tokens[i].hasPartialPosTag(":2:PLU"))       posPossibleVer2Plu=i;
+    }
+  }
+  if (posVer1Sin != -1 && posIch == -1 && !isQuotationMark(tokens[posVer1Sin - 1])) {
+    ruleMatches.add(ruleMatchWrongVerb(tokens[posVer1Sin]));
+  }
+ else   if (posIch > 0 && !isNear(posPossibleVer1Sin,posIch) && (tokens[posIch].getToken().equals("ich") || tokens[posIch].getStartPos() == 0) && !isQuotationMark(tokens[posIch - 1])) {
+    int plus1=((posIch + 1) == tokens.length) ? 0 : +1;
+    if (!verbDoesMatchPersonAndNumber(tokens[posIch - 1],tokens[posIch + plus1],"1","SIN")) {
+      ruleMatches.add(ruleMatchWrongVerbSubject(tokens[posIch],finiteVerb));
+    }
+  }
+  if (posVer2Sin != -1 && posDu == -1 && !isQuotationMark(tokens[posVer2Sin - 1])) {
+    ruleMatches.add(ruleMatchWrongVerb(tokens[posVer2Sin]));
+  }
+ else   if (posDu > 0 && !isNear(posPossibleVer2Sin,posDu) && !isQuotationMark(tokens[posDu - 1])) {
+    int plus1=((posDu + 1) == tokens.length) ? 0 : +1;
+    if (!verbDoesMatchPersonAndNumber(tokens[posDu - 1],tokens[posDu + plus1],"2","SIN")) {
+      ruleMatches.add(ruleMatchWrongVerbSubject(tokens[posDu],finiteVerb));
+    }
+  }
+  if (posEr > 0 && !isNear(posPossibleVer3Sin,posEr) && !isQuotationMark(tokens[posEr - 1])) {
+    int plus1=((posEr + 1) == tokens.length) ? 0 : +1;
+    if (!verbDoesMatchPersonAndNumber(tokens[posEr - 1],tokens[posEr + plus1],"3","SIN")) {
+      ruleMatches.add(ruleMatchWrongVerbSubject(tokens[posEr],finiteVerb));
+    }
+  }
+  if (posVer1Plu != -1 && posWir == -1 && !isQuotationMark(tokens[posVer1Plu - 1])) {
+    ruleMatches.add(ruleMatchWrongVerb(tokens[posVer1Plu]));
+  }
+ else   if (posWir > 0 && !isNear(posPossibleVer1Plu,posWir) && !isQuotationMark(tokens[posWir - 1])) {
+    int plus1=((posWir + 1) == tokens.length) ? 0 : +1;
+    if (!verbDoesMatchPersonAndNumber(tokens[posWir - 1],tokens[posWir + plus1],"1","PLU")) {
+      ruleMatches.add(ruleMatchWrongVerbSubject(tokens[posWir],finiteVerb));
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}

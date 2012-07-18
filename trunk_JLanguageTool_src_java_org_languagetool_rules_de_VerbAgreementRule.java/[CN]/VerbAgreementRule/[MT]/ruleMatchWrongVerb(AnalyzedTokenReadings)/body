@@ -1,0 +1,4 @@
+{
+  final String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Subjekt und Pr??dikat (" + token.getToken() + ") bez??glich Person oder Numerus (Einzahl, Mehrzahl - Beispiel: "+ "'Max bist' statt 'Max ist').";
+  return new RuleMatch(this,token.getStartPos(),token.getStartPos() + token.getToken().length(),msg);
+}
