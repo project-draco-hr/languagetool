@@ -12,6 +12,8 @@
   assertNull(aToken);
   aToken=tagger.lookup("Gro??");
   assertNull(aToken);
+  aToken=tagger.lookup("Lieblingsbuchstabe");
+  assertEquals("Lieblingsbuchstabe[Lieblingsbuchstabe/SUB:NOM:SIN:MAS]",aToken.toSortedString());
   aToken=tagger.lookup("gro??er");
   assertEquals("gro??er[gro??/ADJ:DAT:SIN:FEM:GRU:SOL, gro??/ADJ:GEN:PLU:FEM:GRU:SOL, gro??/ADJ:GEN:PLU:MAS:GRU:SOL, " + "gro??/ADJ:GEN:PLU:NEU:GRU:SOL, gro??/ADJ:GEN:SIN:FEM:GRU:SOL, gro??/ADJ:NOM:SIN:MAS:GRU:IND, " + "gro??/ADJ:NOM:SIN:MAS:GRU:SOL]",aToken.toSortedString());
   assertEquals("gro??",aToken.getReadings().get(0).getLemma());
