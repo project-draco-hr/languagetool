@@ -1,6 +1,0 @@
-{
-  if (token.equals(":") || token.equals("???") || token.equals("-")) {
-    return true;
-  }
-  return false;
-}

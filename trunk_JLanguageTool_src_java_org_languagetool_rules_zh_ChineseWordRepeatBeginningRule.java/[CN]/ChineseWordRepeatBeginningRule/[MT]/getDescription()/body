@@ -1,3 +1,0 @@
-{
-  return messages.getString("desc_repetition_beginning");
-}
