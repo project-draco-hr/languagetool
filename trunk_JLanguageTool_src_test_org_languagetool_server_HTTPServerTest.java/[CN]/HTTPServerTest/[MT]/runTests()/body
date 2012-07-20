@@ -11,8 +11,8 @@
   validator.validateXMLString(result,JLanguageTool.getDataBroker().getResourceDir() + "/api-output.dtd","matches");
   validator.checkSimpleXMLString(result);
   assertTrue(!check(Language.GERMAN,"bla <script>").contains("<script>"));
-  final String germanSpecialChars=check(Language.GERMAN,"ein kleiner test. Und wieder Erwarten noch was: ???????? ????????.");
-  assertTrue("Expected special chars, got: '" + germanSpecialChars + "'",germanSpecialChars.contains("????????"));
+  final String germanSpecialChars=check(Language.GERMAN,"ein kleiner test. Und wieder Erwarten noch was: ????????+ ????????.");
+  assertTrue("Expected special chars, got: '" + germanSpecialChars + "'",germanSpecialChars.contains("????????+"));
   final String romanianSpecialChars=check(Language.ROMANIAN,"bla bla ?????????? ?????????? ??i c??teva caractere speciale");
   assertTrue("Expected special chars, got: '" + romanianSpecialChars + "'",romanianSpecialChars.contains("??????????"));
   final String polishSpecialChars=check(Language.POLISH,"M??wi??a d??ugo, ??eby tylko m??wi?? m??wi?? d??ugo.");
