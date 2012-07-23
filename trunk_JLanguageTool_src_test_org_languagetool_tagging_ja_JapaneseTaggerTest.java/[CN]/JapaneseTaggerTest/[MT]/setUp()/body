@@ -1,0 +1,4 @@
+{
+  tagger=new JapaneseTagger();
+  tokenizer=new JapaneseWordTokenizer();
+}

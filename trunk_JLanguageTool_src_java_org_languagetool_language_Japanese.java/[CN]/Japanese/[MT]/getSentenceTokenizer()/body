@@ -1,6 +1,6 @@
 {
   if (sentenceTokenizer == null) {
-    sentenceTokenizer=new JapaneseSentenceTokenizer();
+    sentenceTokenizer=new SRXSentenceTokenizer(this);
   }
   return sentenceTokenizer;
 }

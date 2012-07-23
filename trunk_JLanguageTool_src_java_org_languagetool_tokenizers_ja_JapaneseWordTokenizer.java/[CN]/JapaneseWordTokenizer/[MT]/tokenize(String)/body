@@ -2,6 +2,7 @@
   init();
   final ArrayList<String> ret=new ArrayList<String>();
   List<Token> tokens=new ArrayList<Token>();
+  String basicForm;
   try {
     stringtagger.analyze(text,tokens);
   }
@@ -9,7 +10,13 @@
     return ret;
   }
   for (  Token token : tokens) {
-    ret.add(token.getSurface() + "/" + token.getMorpheme().getPartOfSpeech());
+    if (token.getMorpheme().getBasicForm().equalsIgnoreCase("*")) {
+      basicForm=token.getSurface();
+    }
+ else {
+      basicForm=token.getMorpheme().getBasicForm();
+    }
+    ret.add(token.getSurface() + " " + token.getMorpheme().getPartOfSpeech()+ " "+ basicForm);
   }
   return ret;
 }
