@@ -1,4 +1,5 @@
 {
+  assertCorrect("Cap faria una cosa aix??.");
   assertCorrect("El cos genera suficient pressi?? interna.");
   assertCorrect("Les seues contr??ries.");
   assertCorrect("Aix?? ??s una frase de prova.");
@@ -23,6 +24,8 @@
   assertCorrect("Els h??bitats de la comarca.");
   assertCorrect("Joan Pau II beatifica Paula Montal.");
   assertCorrect("La magn??fica conservaci?? del palau.");
+  assertIncorrect("No em fumar?? cap faria com feia abans.");
+  assertIncorrect("M'he fumat una faria.");
   assertIncorrect("Les seues contraries.");
   assertIncorrect("Amb renuncies i esfor??.");
   assertIncorrect("La renuncia del president.");
