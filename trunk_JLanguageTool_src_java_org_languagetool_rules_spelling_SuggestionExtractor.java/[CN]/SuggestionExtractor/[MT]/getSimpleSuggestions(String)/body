@@ -1,0 +1,13 @@
+{
+  final Matcher matcher=SUGGESTION_PATTERN.matcher(message);
+  int startPos=0;
+  final List<String> suggestions=new ArrayList<String>();
+  while (matcher.find(startPos)) {
+    final String suggestion=matcher.group(1);
+    startPos=matcher.end();
+    if (isSimpleSuggestion(suggestion)) {
+      suggestions.add(suggestion);
+    }
+  }
+  return suggestions;
+}

@@ -1,0 +1,7 @@
+{
+  if (suggestion.contains("<match")) {
+    return false;
+  }
+  final Matcher matcher=BACK_REFERENCE_PATTERN.matcher(suggestion);
+  return !matcher.find();
+}
