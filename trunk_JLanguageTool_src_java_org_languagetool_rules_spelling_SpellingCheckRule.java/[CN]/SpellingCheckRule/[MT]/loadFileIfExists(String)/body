@@ -1,0 +1,7 @@
+{
+  final boolean ignoreFileExists=JLanguageTool.getDataBroker().resourceExists(filename);
+  if (!ignoreFileExists) {
+    return;
+  }
+  loadWordsToBeIgnored(filename);
+}

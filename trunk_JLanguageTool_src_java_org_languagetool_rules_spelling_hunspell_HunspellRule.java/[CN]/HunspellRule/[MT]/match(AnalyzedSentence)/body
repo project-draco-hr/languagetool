@@ -9,6 +9,10 @@
   final String[] tokens=tokenizeText(getSentenceText(text));
   int len=text.getTokens()[1].getStartPos();
   for (  final String word : tokens) {
+    if (ignoreWord(word)) {
+      len+=word.length() + 1;
+      continue;
+    }
     boolean isAlphabetic=true;
     if (word.length() == 1) {
       isAlphabetic=StringTools.isAlphabetic(word.charAt(0));

@@ -1,0 +1,4 @@
+{
+  loadFileIfExists(language.getShortName() + SPELLING_IGNORE_FILE);
+  loadFileIfExists(language.getShortNameWithVariant() + SPELLING_IGNORE_FILE);
+}

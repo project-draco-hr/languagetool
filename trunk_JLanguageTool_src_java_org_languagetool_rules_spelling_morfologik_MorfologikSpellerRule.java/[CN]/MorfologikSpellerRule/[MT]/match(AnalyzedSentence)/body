@@ -12,6 +12,9 @@
   }
   for (  AnalyzedTokenReadings token : tokens) {
     final String word=token.getToken();
+    if (ignoreWord(word)) {
+      continue;
+    }
     if (!token.isImmunized()) {
       if (tokenizingPattern() == null) {
         ruleMatches.addAll(getRuleMatch(word,token.getStartPos()));

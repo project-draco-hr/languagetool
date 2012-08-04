@@ -1,0 +1,9 @@
+{
+  final SuggestionExtractor extractor=new SuggestionExtractor(Language.ENGLISH);
+  assertEquals("[]",extractor.getSimpleSuggestions("Did you mean foo?").toString());
+  assertEquals("[foo bla]",extractor.getSimpleSuggestions("Did you mean <suggestion>foo bla</suggestion>?").toString());
+  assertEquals("[foo bla, xxx]",extractor.getSimpleSuggestions("Did you mean <suggestion>foo bla</suggestion> or <suggestion>xxx</suggestion>?").toString());
+  assertEquals("[foo bla, xxx]",extractor.getSimpleSuggestions("Did you mean <suggestion suppress_misspelled=\"yes\">foo bla</suggestion>" + " or <suggestion>xxx</suggestion>?").toString());
+  assertEquals("[]",extractor.getSimpleSuggestions("Did you mean <suggestion>foo \\1</suggestion>?").toString());
+  assertEquals("[]",extractor.getSimpleSuggestions("Did you mean <suggestion>???<match no=\"3\" include_skipped=\"following\"/></suggestion>?").toString());
+}

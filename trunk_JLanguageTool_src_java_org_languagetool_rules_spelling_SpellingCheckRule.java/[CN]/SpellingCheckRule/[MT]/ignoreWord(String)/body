@@ -1,0 +1,4 @@
+{
+  final String cleanWord=word.endsWith(".") ? word.substring(0,word.length() - 1) : word;
+  return wordsToBeIgnored.contains(cleanWord);
+}
