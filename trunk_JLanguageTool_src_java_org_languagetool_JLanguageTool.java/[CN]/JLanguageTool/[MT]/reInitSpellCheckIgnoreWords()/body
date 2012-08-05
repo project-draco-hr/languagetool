@@ -1,0 +1,5 @@
+{
+  final List<Rule> allActiveRules=getAllActiveRules();
+  final List<String> ignoreTokens=getAllIgnoreWords(allActiveRules);
+  setIgnoreWords(ignoreTokens,allActiveRules);
+}

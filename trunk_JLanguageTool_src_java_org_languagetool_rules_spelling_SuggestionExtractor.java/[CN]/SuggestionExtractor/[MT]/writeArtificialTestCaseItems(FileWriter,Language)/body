@@ -1,0 +1,8 @@
+{
+  if (language == Language.AMERICAN_ENGLISH) {
+    writer.write("anArtificialTestWordForLanguageTool\n");
+  }
+ else   if (language == Language.GERMANY_GERMAN) {
+    writer.write("einPseudoWortF??rLanguageToolTests\n");
+  }
+}

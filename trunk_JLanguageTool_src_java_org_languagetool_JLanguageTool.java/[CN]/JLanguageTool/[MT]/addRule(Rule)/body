@@ -1,3 +1,7 @@
 {
   userRules.add(rule);
+  final SuggestionExtractor extractor=new SuggestionExtractor(language);
+  final List<String> suggestionTokens=extractor.getSuggestionTokens(rule);
+  final List<Rule> allActiveRules=getAllActiveRules();
+  addIgnoreWords(suggestionTokens,allActiveRules);
 }

@@ -1,0 +1,10 @@
+{
+  final List<String> suggestionTokens=new ArrayList<String>();
+  for (  Rule activeRule : allActiveRules) {
+    if (activeRule instanceof PatternRule) {
+      final SuggestionExtractor extractor=new SuggestionExtractor(language);
+      suggestionTokens.addAll(extractor.getSuggestionTokens(activeRule));
+    }
+  }
+  return suggestionTokens;
+}

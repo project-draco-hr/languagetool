@@ -1,0 +1,21 @@
+{
+  final Map<Language,Set<String>> langToIgnoreTokens=new HashMap<Language,Set<String>>();
+  for (  Language lang : Language.REAL_LANGUAGES) {
+    final Set<String> suggestionTokens=new HashSet<String>();
+    final JLanguageTool languageTool=new JLanguageTool(lang);
+    languageTool.activateDefaultPatternRules();
+    final List<Rule> rules=languageTool.getAllRules();
+    for (    Rule rule : rules) {
+      suggestionTokens.addAll(getSuggestionTokens(rule));
+    }
+    final Language noVariantLanguage=lang.getDefaultVariant() == null ? lang : lang.getDefaultVariant();
+    final Set<String> existingTokens=langToIgnoreTokens.get(noVariantLanguage);
+    if (existingTokens != null) {
+      existingTokens.addAll(suggestionTokens);
+    }
+ else {
+      langToIgnoreTokens.put(noVariantLanguage,suggestionTokens);
+    }
+  }
+  return langToIgnoreTokens;
+}

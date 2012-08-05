@@ -2,7 +2,11 @@
   final List<String> tokens=new ArrayList<String>();
   for (  String suggestion : suggestions) {
     final List<String> suggestionTokens=language.getWordTokenizer().tokenize(suggestion);
-    tokens.addAll(suggestionTokens);
+    for (    String suggestionToken : suggestionTokens) {
+      if (!suggestionToken.trim().isEmpty()) {
+        tokens.add(suggestionToken);
+      }
+    }
   }
   return tokens;
 }

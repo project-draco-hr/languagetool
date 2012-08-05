@@ -1,0 +1,2 @@
+List<String> suggestionTokens
+List<Rule> allActiveRules

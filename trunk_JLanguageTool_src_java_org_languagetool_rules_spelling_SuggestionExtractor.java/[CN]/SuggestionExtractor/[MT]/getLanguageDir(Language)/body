@@ -1,0 +1,10 @@
+{
+  final File dir=new File("resource",language.getShortName());
+  if (dir.exists()) {
+    return dir;
+  }
+ else {
+    final File sourceDir=new File("src","resource");
+    return new File(sourceDir,language.getShortName());
+  }
+}

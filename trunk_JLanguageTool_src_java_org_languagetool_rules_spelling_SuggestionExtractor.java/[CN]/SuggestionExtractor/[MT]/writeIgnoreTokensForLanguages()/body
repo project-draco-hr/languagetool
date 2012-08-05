@@ -1,0 +1,28 @@
+{
+  final Map<Language,Set<String>> map=getLanguageToIgnoreTokensMapping();
+  for (  Map.Entry<Language,Set<String>> entry : map.entrySet()) {
+    final Language language=entry.getKey();
+    final File langDir=getLanguageDir(language);
+    final File hunspellDir=new File(langDir,"hunspell");
+    if (!hunspellDir.exists()) {
+      System.out.println("No directory " + hunspellDir + " found, ignoring language "+ language);
+      continue;
+    }
+    final File ignoreFile=new File(hunspellDir,"ignore.txt");
+    final Set<String> tokens=entry.getValue();
+    if (tokens.size() > 0) {
+      final FileWriter writer=new FileWriter(ignoreFile);
+      try {
+        writeIntro(writer,language);
+        for (        String token : tokens) {
+          writer.write(token);
+          writer.write("\n");
+        }
+      }
+  finally {
+        writer.close();
+      }
+      System.out.println("Wrote " + tokens.size() + " words to "+ ignoreFile);
+    }
+  }
+}
