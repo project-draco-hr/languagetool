@@ -9,7 +9,12 @@
         if (isComment) {
           continue;
         }
-        wordsToBeIgnored.add(line);
+        if (language == Language.SWISS_GERMAN) {
+          wordsToBeIgnored.add(line.replace("??","ss"));
+        }
+ else {
+          wordsToBeIgnored.add(line);
+        }
       }
     }
   finally {
