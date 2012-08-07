@@ -1,0 +1,10 @@
+{
+  final List<Rule> allActiveRules=languageTool.getAllActiveRules();
+  for (  Rule activeRule : allActiveRules) {
+    if (activeRule instanceof SpellingCheckRule) {
+      ((SpellingCheckRule)activeRule).setConsiderIgnoreWords(false);
+      return activeRule;
+    }
+  }
+  return null;
+}
