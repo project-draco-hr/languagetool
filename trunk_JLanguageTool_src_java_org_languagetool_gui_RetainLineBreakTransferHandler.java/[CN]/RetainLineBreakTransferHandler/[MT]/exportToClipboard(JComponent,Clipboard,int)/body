@@ -1,0 +1,5 @@
+{
+  if (action == COPY) {
+    clip.setContents(this.createTransferable(comp),null);
+  }
+}

@@ -6,4 +6,5 @@
   setText(Main.HTML_GREY_FONT_START + messages.getString("resultAreaText") + Main.HTML_FONT_END);
   setEditable(false);
   addHyperlinkListener(new MyHyperlinkListener());
+  setTransferHandler(new RetainLineBreakTransferHandler());
 }

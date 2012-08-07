@@ -1,0 +1,8 @@
+{
+  for (  DataFlavor supportedFlavor : supportedFlavors) {
+    if (supportedFlavor == flavor) {
+      return true;
+    }
+  }
+  return false;
+}

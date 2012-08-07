@@ -1,0 +1,29 @@
+{
+  final StringBuilder result=new StringBuilder();
+  final HTMLEditorKit.ParserCallback parserCallback=new HTMLEditorKit.ParserCallback(){
+    @Override public void handleText(    final char[] data,    final int pos){
+      result.append(data);
+    }
+    @Override public void handleStartTag(    HTML.Tag tag,    MutableAttributeSet attribute,    int pos){
+    }
+    @Override public void handleEndTag(    HTML.Tag tag,    final int pos){
+    }
+    @Override public void handleSimpleTag(    HTML.Tag tag,    MutableAttributeSet a,    final int pos){
+      if (tag.equals(HTML.Tag.BR)) {
+        result.append("\n");
+      }
+    }
+    @Override public void handleComment(    final char[] data,    final int pos){
+    }
+    @Override public void handleError(    final String errMsg,    final int pos){
+    }
+  }
+;
+  try {
+    new ParserDelegator().parse(reader,parserCallback,true);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  return result.toString();
+}

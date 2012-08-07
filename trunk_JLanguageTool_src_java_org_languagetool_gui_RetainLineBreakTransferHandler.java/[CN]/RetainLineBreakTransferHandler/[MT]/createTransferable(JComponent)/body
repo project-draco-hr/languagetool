@@ -1,0 +1,6 @@
+{
+  final JEditorPane pane=(JEditorPane)c;
+  final String htmlText=pane.getText();
+  final String plainText=extractText(new StringReader(htmlText));
+  return new MyTransferable(plainText,htmlText);
+}

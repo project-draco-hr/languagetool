@@ -1,0 +1,4 @@
+{
+  this.plainData=plainData;
+  this.htmlData=htmlData;
+}
