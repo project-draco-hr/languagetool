@@ -13,7 +13,7 @@
     int tokenCount=0;
     int noErrorCount=0;
     for (    Rule rule : rules) {
-      final List<String> tokens=getSuggestionTokens(rule);
+      final List<String> tokens=getSuggestionTokens(rule,lang);
       tokenCount+=tokens.size();
       for (      String token : tokens) {
         final AnalyzedSentence analyzedToken=languageTool.getAnalyzedSentence(token);

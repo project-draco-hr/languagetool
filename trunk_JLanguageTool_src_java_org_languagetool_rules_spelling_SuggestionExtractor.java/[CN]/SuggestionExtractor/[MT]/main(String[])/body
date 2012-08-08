@@ -1,4 +1,4 @@
 {
-  final SuggestionExtractor extractor=new SuggestionExtractor(Language.ENGLISH);
+  final SuggestionExtractor extractor=new SuggestionExtractor();
   extractor.writeIgnoreTokensForLanguages();
 }

@@ -4,7 +4,7 @@
     final PatternRule patternRule=(PatternRule)rule;
     final String message=patternRule.getMessage();
     final List<String> suggestions=getSimpleSuggestions(message);
-    final List<String> tokens=getSuggestionTokens(suggestions);
+    final List<String> tokens=getSuggestionTokens(suggestions,language);
     wordsToBeIgnored.addAll(tokens);
   }
   return wordsToBeIgnored;
