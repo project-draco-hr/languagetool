@@ -13,8 +13,6 @@
     if (!exceptionSet) {
       exceptionSet=true;
     }
-    if (exceptionSet) {
-      exceptionList.add(elem);
-    }
+    exceptionList.add(elem);
   }
 }

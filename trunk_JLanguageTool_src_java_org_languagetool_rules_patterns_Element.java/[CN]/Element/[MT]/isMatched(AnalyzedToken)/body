@@ -2,7 +2,7 @@
   if (testWhitespace && !isWhitespaceBefore(token)) {
     return false;
   }
-  boolean matched=false;
+  final boolean matched;
   if (testString) {
     matched=(isStringTokenMatched(token) ^ negation) && (isPosTokenMatched(token) ^ posNegation);
   }

@@ -2,7 +2,7 @@
   this.stringToken=token;
   testString=!StringTools.isEmpty(stringToken);
   if (testString && stringRegExp) {
-    regToken=stringToken;
+    String regToken=stringToken;
     if (!caseSensitive) {
       regToken=CASE_INSENSITIVE + stringToken;
     }
