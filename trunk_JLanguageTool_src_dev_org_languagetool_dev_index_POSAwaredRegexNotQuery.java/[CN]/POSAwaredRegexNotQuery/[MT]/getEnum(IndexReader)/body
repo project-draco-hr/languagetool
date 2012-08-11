@@ -1,3 +1,0 @@
-{
-  return new POSAwaredRegexNotTermEnum(reader,this.getTerm(),this.getRegexImplementation(),this.isPOS());
-}

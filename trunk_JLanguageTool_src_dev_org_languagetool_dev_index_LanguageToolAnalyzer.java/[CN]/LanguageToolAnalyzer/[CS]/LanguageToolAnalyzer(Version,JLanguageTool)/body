@@ -1,5 +1,0 @@
-{
-  super();
-  this.matchVersion=matchVersion;
-  this.languageTool=languageTool;
-}

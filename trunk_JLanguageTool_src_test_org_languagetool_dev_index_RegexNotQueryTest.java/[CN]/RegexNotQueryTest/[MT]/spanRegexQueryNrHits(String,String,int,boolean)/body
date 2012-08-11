@@ -1,6 +1,0 @@
-{
-  POSAwaredSpanRegexNotQuery srq1=new POSAwaredSpanRegexNotQuery(newTerm(regex1),false);
-  POSAwaredSpanRegexQuery srq2=new POSAwaredSpanRegexQuery(newTerm(regex2),false);
-  SpanNearQuery query=new SpanNearQuery(new SpanQuery[]{srq1,srq2},slop,ordered);
-  return searcher.search(query,null,1000).totalHits;
-}

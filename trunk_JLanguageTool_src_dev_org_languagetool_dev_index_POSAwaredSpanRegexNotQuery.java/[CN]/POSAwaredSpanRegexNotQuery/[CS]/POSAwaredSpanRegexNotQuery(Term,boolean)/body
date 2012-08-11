@@ -1,3 +1,0 @@
-{
-  super(new POSAwaredRegexNotQuery(term,isPOS));
-}

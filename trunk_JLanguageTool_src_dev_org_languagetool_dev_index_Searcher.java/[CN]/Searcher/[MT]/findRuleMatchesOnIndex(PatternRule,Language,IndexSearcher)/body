@@ -1,6 +1,6 @@
 {
   final PossiblyRelaxedQuery query=createQuery(rule);
-  final Sort sort=new Sort(new SortField("docCount",SortField.INT));
+  final Sort sort=new Sort(new SortField("docCount",SortField.Type.INT));
   if (query.query == null) {
     throw new NullPointerException("Cannot search on null query for rule: " + rule);
   }

@@ -1,8 +1,16 @@
 {
   final Document doc=new Document();
-  doc.add(new Field(PatternRuleQueryBuilder.FIELD_NAME,sentence,Store.YES,Index.ANALYZED));
+  final FieldType type=new FieldType();
+  type.setStored(true);
+  type.setIndexed(true);
+  type.setTokenized(true);
+  doc.add(new Field(FIELD_NAME,sentence,type));
+  doc.add(new Field(FIELD_NAME_LOWERCASE,sentence.toLowerCase(),type));
   if (docCount != -1) {
-    doc.add(new Field("docCount",docCount + "",Store.YES,Index.NO));
+    final FieldType countType=new FieldType();
+    countType.setStored(true);
+    countType.setIndexed(false);
+    doc.add(new Field("docCount",docCount + "",countType));
   }
   writer.addDocument(doc);
 }

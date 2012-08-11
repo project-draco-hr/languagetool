@@ -1,7 +1,0 @@
-{
-  POSAwaredRegexNotQuery query=new POSAwaredRegexNotQuery(newTerm(regex),false);
-  if (capability != null) {
-    query.setRegexImplementation(capability);
-  }
-  return searcher.search(query,null,1000).totalHits;
-}

@@ -25,7 +25,12 @@
   AnalyzedToken at=tr.getAnalyzedToken(0);
   if (tr.isSentStart()) {
     typeAtt.setType("pos");
-    termAtt.append(POS_PREFIX + tr.getAnalyzedToken(0).getPOSTag());
+    if (toLowerCase) {
+      termAtt.append(POS_PREFIX.toLowerCase() + tr.getAnalyzedToken(0).getPOSTag().toLowerCase());
+    }
+ else {
+      termAtt.append(POS_PREFIX + tr.getAnalyzedToken(0).getPOSTag());
+    }
     return true;
   }
   if (tr.isWhitespace()) {
@@ -35,7 +40,12 @@
   for (int i=0; i < tr.getReadingsLength(); i++) {
     at=tr.getAnalyzedToken(i);
     if (at.getPOSTag() != null) {
-      posStack.push(POS_PREFIX + at.getPOSTag());
+      if (toLowerCase) {
+        posStack.push(POS_PREFIX.toLowerCase() + at.getPOSTag().toLowerCase());
+      }
+ else {
+        posStack.push(POS_PREFIX + at.getPOSTag());
+      }
     }
   }
   current=captureState();

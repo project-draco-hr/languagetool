@@ -13,5 +13,9 @@
     sb.append('/');
     sb.append(posToken);
   }
+  if (exceptionList != null) {
+    sb.append("/exceptions=");
+    sb.append(exceptionList);
+  }
   return sb.toString();
 }

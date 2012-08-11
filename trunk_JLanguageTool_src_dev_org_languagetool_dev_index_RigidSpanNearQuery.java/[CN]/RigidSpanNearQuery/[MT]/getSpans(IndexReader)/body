@@ -1,6 +1,0 @@
-{
-  if (clauses.size() == 0)   return new SpanOrQuery(getClauses()).getSpans(reader);
-  if (clauses.size() == 1)   return clauses.get(0).getSpans(reader);
-  final Spans spans=new RigidNearSpansOrdered(this,reader);
-  return spans;
-}

@@ -1,9 +1,5 @@
 {
-  final IndexSearcher indexSearcher=new IndexSearcher(FSDirectory.open(indexDir));
-  try {
-    return findRuleMatchesOnIndex(rule,language,indexSearcher);
-  }
-  finally {
-    indexSearcher.close();
-  }
+  final FSDirectory directory=FSDirectory.open(indexDir);
+  final IndexSearcher indexSearcher=new IndexSearcher(IndexReader.open(directory));
+  return findRuleMatchesOnIndex(rule,language,indexSearcher);
 }

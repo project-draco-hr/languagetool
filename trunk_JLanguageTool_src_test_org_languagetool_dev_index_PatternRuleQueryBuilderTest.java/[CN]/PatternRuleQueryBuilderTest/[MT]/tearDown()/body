@@ -1,6 +1,9 @@
 {
-  searcher.close();
-  reader.close();
-  directory.close();
   super.tearDown();
+  if (reader != null) {
+    reader.close();
+  }
+  if (directory != null) {
+    directory.close();
+  }
 }

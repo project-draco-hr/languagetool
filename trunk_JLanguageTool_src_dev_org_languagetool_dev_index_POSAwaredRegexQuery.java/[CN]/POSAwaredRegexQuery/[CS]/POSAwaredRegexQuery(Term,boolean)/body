@@ -1,4 +1,0 @@
-{
-  super(term);
-  this.isPOS=isPOS;
-}

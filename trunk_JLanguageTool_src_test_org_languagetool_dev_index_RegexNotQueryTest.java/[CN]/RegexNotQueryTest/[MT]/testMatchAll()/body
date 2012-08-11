@@ -1,8 +1,0 @@
-{
-  TermEnum terms=new POSAwaredRegexNotQuery(new Term(FN,"^q.[aeiou]c.*$"),false).getEnum(searcher.getIndexReader());
-  do {
-    Term term=terms.term();
-    assertNotNull(term);
-  }
- while (terms.next());
-}

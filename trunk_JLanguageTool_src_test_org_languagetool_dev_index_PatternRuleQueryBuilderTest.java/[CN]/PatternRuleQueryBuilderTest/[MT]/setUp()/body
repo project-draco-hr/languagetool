@@ -1,12 +1,16 @@
 {
   super.setUp();
-  directory=newDirectory();
-  final RandomIndexWriter writer=new RandomIndexWriter(random,directory,new LanguageToolAnalyzer(Version.LUCENE_31,new JLanguageTool(Language.ENGLISH)));
-  final Document doc=new Document();
-  doc.add(newField(PatternRuleQueryBuilder.FIELD_NAME,"How do you thin about this wonderful idea?",Field.Store.NO,Field.Index.ANALYZED));
-  doc.add(newField(PatternRuleQueryBuilder.FIELD_NAME,"The are several grammar checkers for English, eg. LanguageTool.",Field.Store.NO,Field.Index.ANALYZED));
-  writer.addDocument(doc);
-  reader=writer.getReader();
-  writer.close();
+  directory=new RAMDirectory();
+  final LanguageToolAnalyzer analyzer=new LanguageToolAnalyzer(LUCENE_VERSION,new JLanguageTool(Language.ENGLISH),true);
+  final IndexWriterConfig config=new IndexWriterConfig(LUCENE_VERSION,analyzer);
+  final IndexWriter writer=new IndexWriter(directory,config);
+  try {
+    addDocument(writer,"How do you thin about this wonderful idea?");
+    addDocument(writer,"The are several grammar checkers for English, E.G. LanguageTool.");
+  }
+  finally {
+    writer.close();
+  }
+  reader=IndexReader.open(directory);
   searcher=newSearcher(reader);
 }

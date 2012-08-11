@@ -1,9 +1,0 @@
-{
-  POSAwaredRegexNotQuery query1=new POSAwaredRegexNotQuery(newTerm("foo.*"),false);
-  query1.setRegexImplementation(new JakartaRegexpCapabilities());
-  POSAwaredRegexNotQuery query2=new POSAwaredRegexNotQuery(newTerm("foo.*"),false);
-  assertFalse(query1.equals(query2));
-  POSAwaredRegexQuery query3=new POSAwaredRegexQuery(newTerm("foo.*"),false);
-  assertFalse(query2.equals(query3));
-  assertFalse(query3.equals(query2));
-}

@@ -1,0 +1,10 @@
+{
+  int skip=0;
+  if (element.getSkipNext() >= 0) {
+    skip+=element.getSkipNext();
+  }
+ else {
+    skip=MAX_SKIP;
+  }
+  return skip;
+}

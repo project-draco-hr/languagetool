@@ -5,8 +5,9 @@
   exceptionElem.setStringPosException("exception",false,false,false,false,false,"POS",false,false);
   final List<Element> elements=Arrays.asList(new Element("move",false,false,false),exceptionElem);
   final PatternRule rule1=new PatternRule("RULE1",Language.ENGLISH,elements,"desc","msg","shortMsg");
-  final IndexSearcher indexSearcher=new IndexSearcher(directory);
+  final DirectoryReader reader=IndexReader.open(directory);
   try {
+    final IndexSearcher indexSearcher=new IndexSearcher(reader);
     final SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(rule1,Language.ENGLISH,indexSearcher);
     assertEquals(1,searcherResult.getCheckedSentences());
     assertEquals(1,searcherResult.getMatchingSentences().size());
@@ -17,6 +18,6 @@
     assertEquals("RULE1",rule.getId());
   }
   finally {
-    indexSearcher.close();
+    reader.close();
   }
 }

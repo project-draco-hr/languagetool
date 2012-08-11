@@ -4,8 +4,9 @@
   final PatternRule rule1=new PatternRule("RULE1",Language.ENGLISH,elements1,"desc","msg","shortMsg");
   final List<Element> elements2=Arrays.asList(new Element("Bleed",false,false,false),new Element("'",false,false,false),new Element("x",false,false,false));
   final PatternRule rule2=new PatternRule("RULE",Language.ENGLISH,elements2,"desc","msg","shortMsg");
-  final IndexSearcher indexSearcher=new IndexSearcher(directory);
+  final DirectoryReader reader=IndexReader.open(directory);
   try {
+    final IndexSearcher indexSearcher=new IndexSearcher(reader);
     final SearcherResult searcherResult1=errorSearcher.findRuleMatchesOnIndex(rule1,Language.ENGLISH,indexSearcher);
     assertEquals(1,searcherResult1.getMatchingSentences().size());
     final List<RuleMatch> ruleMatches=searcherResult1.getMatchingSentences().get(0).getRuleMatches();
@@ -16,6 +17,6 @@
     assertEquals(0,searcherResult2.getMatchingSentences().size());
   }
   finally {
-    indexSearcher.close();
+    reader.close();
   }
 }

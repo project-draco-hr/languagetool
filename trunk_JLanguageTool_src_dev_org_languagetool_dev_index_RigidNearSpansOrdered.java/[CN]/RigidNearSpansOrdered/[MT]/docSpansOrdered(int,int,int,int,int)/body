@@ -1,8 +1,0 @@
-{
-  if (allowedSlop == 0) {
-    return (start1 == start2) ? (end1 <= end2) : (start1 < start2);
-  }
- else {
-    return (start1 == start2) ? (end1 < end2) : (start1 < start2);
-  }
-}

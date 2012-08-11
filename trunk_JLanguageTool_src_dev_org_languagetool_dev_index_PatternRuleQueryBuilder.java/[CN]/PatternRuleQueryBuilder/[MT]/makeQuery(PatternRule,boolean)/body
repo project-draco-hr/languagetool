@@ -1,0 +1,38 @@
+{
+  SpanQuery query=null;
+  Element prevElement=null;
+  int position=0;
+  for (  Element element : patternRule.getElements()) {
+    SpanQuery spanQuery;
+    try {
+      spanQuery=makeQuery(element,position,true);
+    }
+ catch (    UnsupportedPatternRuleException e) {
+      if (throwExceptionOnUnsupportedElement) {
+        throw e;
+      }
+ else {
+        spanQuery=getMatchAllQuery(element);
+      }
+    }
+    if (query == null) {
+      if (element.getNegation()) {
+        query=null;
+      }
+ else {
+        query=spanQuery;
+      }
+    }
+ else {
+      if (element.getNegation()) {
+        query=new SpanNotQuery(query,spanQuery);
+      }
+ else {
+        query=new SpanNearQuery(new SpanQuery[]{query,spanQuery},getSkip(prevElement),true);
+      }
+    }
+    prevElement=element;
+    position++;
+  }
+  return query;
+}

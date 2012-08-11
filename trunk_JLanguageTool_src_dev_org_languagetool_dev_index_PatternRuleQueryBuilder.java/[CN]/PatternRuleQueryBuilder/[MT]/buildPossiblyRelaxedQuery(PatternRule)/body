@@ -1,8 +1,11 @@
 {
   try {
-    return next(rule.getElements().iterator(),false);
+    return makeQuery(rule,false);
   }
  catch (  UnsupportedPatternRuleException e) {
-    throw new RuntimeException(e);
+    throw new RuntimeException("Internal error, exception thrown although it was disabled",e);
+  }
+catch (  Exception e) {
+    throw new RuntimeException("Could not convert rule " + rule,e);
   }
 }

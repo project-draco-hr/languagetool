@@ -1,5 +1,6 @@
 {
   final Indexer indexer=new Indexer(directory,language);
+  int ruleCount=0;
   try {
     final List<Rule> rules=lt.getAllActiveRules();
     for (    Rule rule : rules) {
@@ -7,16 +8,26 @@
         final PatternRule patternRule=(PatternRule)rule;
         final List<IncorrectExample> incorrectExamples=rule.getIncorrectExamples();
         final Document doc=new Document();
-        doc.add(new Field("ruleId",getFullId(patternRule),Field.Store.YES,Field.Index.NOT_ANALYZED));
+        final FieldType idType=new FieldType();
+        idType.setStored(true);
+        idType.setTokenized(false);
+        doc.add(new Field("ruleId",getFullId(patternRule),idType));
         for (        IncorrectExample incorrectExample : incorrectExamples) {
           final String example=incorrectExample.getExample().replaceAll("</?marker>","");
-          doc.add(new Field(PatternRuleQueryBuilder.FIELD_NAME,example,Field.Store.YES,Field.Index.ANALYZED));
+          final FieldType fieldType=new FieldType();
+          fieldType.setStored(true);
+          fieldType.setTokenized(true);
+          fieldType.setIndexed(true);
+          doc.add(new Field(PatternRuleQueryBuilder.FIELD_NAME,example,fieldType));
+          doc.add(new Field(PatternRuleQueryBuilder.FIELD_NAME_LOWERCASE,example.toLowerCase(),fieldType));
         }
         indexer.add(doc);
+        ruleCount++;
       }
     }
   }
   finally {
     indexer.close();
   }
+  return ruleCount;
 }
