@@ -2,6 +2,7 @@
   SpanQuery query=null;
   Element prevElement=null;
   int position=0;
+  int skipCount=0;
   for (  Element element : patternRule.getElements()) {
     SpanQuery spanQuery;
     try {
@@ -28,7 +29,14 @@
         query=new SpanNotQuery(query,spanQuery);
       }
  else {
-        query=new SpanNearQuery(new SpanQuery[]{query,spanQuery},getSkip(prevElement),true);
+        final int skip=getSkip(prevElement);
+        if (skip == 0) {
+          skipCount++;
+        }
+ else {
+          skipCount=0;
+        }
+        query=new SpanNearQuery(new SpanQuery[]{query,spanQuery},getSkip(prevElement) + skipCount,true);
       }
     }
     prevElement=element;
