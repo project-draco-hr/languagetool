@@ -1,3 +1,2 @@
 PossiblyRelaxedQuery query
-TopDocs topDocs
 IndexSearcher indexSearcher

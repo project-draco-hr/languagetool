@@ -11,6 +11,6 @@
   finally {
     writer.close();
   }
-  reader=IndexReader.open(directory);
+  reader=DirectoryReader.open(directory);
   searcher=newSearcher(reader);
 }
