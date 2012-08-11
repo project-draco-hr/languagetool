@@ -1,5 +1,11 @@
 {
   final FSDirectory directory=FSDirectory.open(indexDir);
-  final IndexSearcher indexSearcher=new IndexSearcher(IndexReader.open(directory));
-  return findRuleMatchesOnIndex(rule,language,indexSearcher);
+  final DirectoryReader reader=DirectoryReader.open(directory);
+  try {
+    final IndexSearcher indexSearcher=new IndexSearcher(reader);
+    return findRuleMatchesOnIndex(rule,language,indexSearcher);
+  }
+  finally {
+    reader.close();
+  }
 }
