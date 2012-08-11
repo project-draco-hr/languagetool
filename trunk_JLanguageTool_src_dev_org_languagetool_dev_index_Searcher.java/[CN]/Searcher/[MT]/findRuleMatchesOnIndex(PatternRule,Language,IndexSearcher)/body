@@ -9,6 +9,7 @@
   final List<MatchingSentence> matchingSentences=findMatchingSentences(indexSearcher,limitedTopDocs.topDocs,languageTool);
   final int sentencesChecked=getSentenceCheckCount(query,indexSearcher);
   final SearcherResult searcherResult=new SearcherResult(matchingSentences,sentencesChecked,query);
+  searcherResult.setDocCount(getDocCount(indexSearcher));
   searcherResult.setResultIsTimeLimited(limitedTopDocs.resultIsTimeLimited);
   return searcherResult;
 }
