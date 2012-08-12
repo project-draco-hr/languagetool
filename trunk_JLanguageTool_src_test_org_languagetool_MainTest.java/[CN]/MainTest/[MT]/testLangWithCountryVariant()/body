@@ -1,8 +1,5 @@
 {
-  File input=createTempFile();
-  PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(input),"UTF-8"));
-  w.println("This is modelling.");
-  w.close();
+  File input=populateFile("This is modelling.");
   String[] args=new String[]{"-l","en-US",input.getAbsolutePath()};
   Main.main(args);
   String output=new String(this.out.toByteArray());

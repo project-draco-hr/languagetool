@@ -1,8 +1,5 @@
 {
-  File input=createTempFile();
-  PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(input),"UTF-8"));
-  w.println("There is a dog.\tNie ma psa.");
-  w.close();
+  File input=populateFile("There is a dog.\tNie ma psa.");
   String[] args=new String[]{"-l","pl","--bitext","-m","en","--apply",input.getAbsolutePath()};
   Main.main(args);
   String output=new String(this.out.toByteArray());

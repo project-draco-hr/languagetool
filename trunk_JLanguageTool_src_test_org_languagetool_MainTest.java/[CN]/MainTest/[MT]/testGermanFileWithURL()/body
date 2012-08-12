@@ -1,8 +1,5 @@
 {
-  File input=createTempFile();
-  PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(input),"UTF-8"));
-  w.println("Ward ihr zufrieden damit?");
-  w.close();
+  File input=populateFile("Ward ihr zufrieden damit?");
   String[] args=new String[]{"-l","de","--api",input.getAbsolutePath()};
   Main.main(args);
   String output=new String(this.out.toByteArray());
