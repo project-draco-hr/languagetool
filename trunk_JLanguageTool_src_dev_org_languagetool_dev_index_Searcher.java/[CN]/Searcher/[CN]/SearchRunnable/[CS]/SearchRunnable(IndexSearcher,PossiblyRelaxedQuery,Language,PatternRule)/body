@@ -1,0 +1,6 @@
+{
+  this.indexSearcher=indexSearcher;
+  this.query=query;
+  this.language=language;
+  this.rule=rule;
+}

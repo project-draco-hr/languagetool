@@ -1,0 +1,4 @@
+IndexSearcher indexSearcher
+PossiblyRelaxedQuery query
+Language language
+PatternRule rule
