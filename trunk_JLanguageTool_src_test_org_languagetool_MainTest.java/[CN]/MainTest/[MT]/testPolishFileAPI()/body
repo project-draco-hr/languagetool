@@ -6,5 +6,5 @@
   assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);
   assertTrue(output.contains("<error fromy=\"0\" fromx=\"8\" toy=\"0\" tox=\"20\" ruleId=\"BRAK_PRZECINKA_KTORY\" subId=\"5\""));
   assertTrue(output.contains("msg=\"Brak przecinka w tym fragmencie zdania. Przecinek prawdopodobnie nale??y postawi?? tak: '??winia, kt??ra'.\" replacements=\"??winia, kt??ra\" "));
-  assertTrue(output.contains("context=\"To jest ??winia kt??ra si?? ??lini. \" contextoffset=\"8\" errorlength=\"12\"/>"));
+  assertTrue(output.contains("context=\"To jest ??winia kt??ra si?? ??lini. \" contextoffset=\"8\" errorlength=\"12\" category=\"B????dy interpunkcyjne\"/>"));
 }

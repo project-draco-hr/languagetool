@@ -33,6 +33,10 @@
     if (match.getRule().getUrl() != null) {
       xml.append(" url=\"" + escapeXMLForAPIOutput(match.getRule().getUrl().toString()) + "\"");
     }
+    final Category category=match.getRule().getCategory();
+    if (category != null) {
+      xml.append(" category=\"" + category.getName() + "\"");
+    }
     xml.append("/>\n");
   }
   if (xmlMode == XmlPrintMode.END_XML || xmlMode == XmlPrintMode.NORMAL_XML) {
