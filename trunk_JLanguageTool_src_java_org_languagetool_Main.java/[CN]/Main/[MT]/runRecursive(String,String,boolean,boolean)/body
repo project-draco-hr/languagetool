@@ -6,10 +6,10 @@
   final File[] files=dir.listFiles();
   for (  final File file : files) {
     if (file.isDirectory()) {
-      runRecursive(file.getAbsolutePath(),encoding,listUnknown);
+      runRecursive(file.getAbsolutePath(),encoding,listUnknown,xmlFiltering);
     }
  else {
-      runOnFile(file.getAbsolutePath(),encoding,listUnknown);
+      runOnFile(file.getAbsolutePath(),encoding,listUnknown,xmlFiltering);
     }
   }
 }

@@ -14,7 +14,7 @@
     oneTime=file.length() < MAX_FILE_SIZE || bitextMode;
   }
   if (oneTime) {
-    runOnFileInOneGo(filename,encoding,listUnknownWords);
+    runOnFileInOneGo(filename,encoding,listUnknownWords,xmlFiltering);
   }
  else {
     runOnFileLineByLine(filename,encoding,listUnknownWords);

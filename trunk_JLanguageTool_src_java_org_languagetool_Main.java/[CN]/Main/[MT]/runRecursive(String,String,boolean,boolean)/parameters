@@ -1,0 +1,4 @@
+String filename
+String encoding
+boolean listUnknown
+boolean xmlFiltering

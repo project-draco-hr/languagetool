@@ -9,7 +9,7 @@
     }
   }
  else {
-    final String text=getFilteredText(filename,encoding);
+    final String text=getFilteredText(filename,encoding,xmlFiltering);
     if (applySuggestions) {
       System.out.print(Tools.correctText(text,lt));
     }

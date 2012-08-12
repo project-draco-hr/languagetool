@@ -40,10 +40,10 @@
     prg.setBitextMode(options.getMotherTongue(),options.getDisabledRules(),options.getEnabledRules());
   }
   if (options.isRecursive()) {
-    prg.runRecursive(options.getFilename(),options.getEncoding(),options.isListUnknown());
+    prg.runRecursive(options.getFilename(),options.getEncoding(),options.isListUnknown(),options.isXmlFiltering());
   }
  else {
-    prg.runOnFile(options.getFilename(),options.getEncoding(),options.isListUnknown());
+    prg.runOnFile(options.getFilename(),options.getEncoding(),options.isListUnknown(),options.isXmlFiltering());
   }
   prg.cleanUp();
 }

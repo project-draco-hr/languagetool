@@ -96,6 +96,9 @@
         throw new IllegalArgumentException("Tagging makes no sense for profiling.");
       }
     }
+ else     if (args[i].equals("--xmlfilter")) {
+      options.setXmlFiltering(true);
+    }
  else     if (i == args.length - 1) {
       options.setFilename(args[i]);
     }
