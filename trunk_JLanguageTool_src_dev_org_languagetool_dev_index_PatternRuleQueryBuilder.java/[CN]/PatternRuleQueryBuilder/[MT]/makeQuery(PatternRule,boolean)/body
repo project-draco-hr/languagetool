@@ -25,17 +25,18 @@
       }
     }
  else {
-      if (element.getNegation()) {
-        query=new SpanNotQuery(query,spanQuery);
+      final int skip=getSkip(prevElement);
+      if (skip == 0) {
+        skipCount++;
       }
  else {
-        final int skip=getSkip(prevElement);
-        if (skip == 0) {
-          skipCount++;
-        }
+        skipCount=0;
+      }
+      if (element.getNegation()) {
+        final SpanNearQuery excludeQuery=new SpanNearQuery(new SpanQuery[]{query,spanQuery},getSkip(prevElement) + skipCount,true);
+        query=new SpanNotQuery(query,excludeQuery);
+      }
  else {
-          skipCount=0;
-        }
         query=new SpanNearQuery(new SpanQuery[]{query,spanQuery},getSkip(prevElement) + skipCount,true);
       }
     }
