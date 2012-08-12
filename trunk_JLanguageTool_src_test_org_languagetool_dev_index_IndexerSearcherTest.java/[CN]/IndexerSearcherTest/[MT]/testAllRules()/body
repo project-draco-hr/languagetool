@@ -39,6 +39,8 @@
             System.out.println();
             ruleProblems++;
           }
+ else {
+          }
         }
  catch (        NullPointerException e) {
           System.out.println("NullPointerException searching for rule " + getFullId(patternRule));
