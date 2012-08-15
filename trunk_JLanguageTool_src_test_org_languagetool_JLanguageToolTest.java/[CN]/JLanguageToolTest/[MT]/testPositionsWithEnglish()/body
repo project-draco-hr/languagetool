@@ -1,0 +1,8 @@
+{
+  final JLanguageTool tool=new JLanguageTool(Language.AMERICAN_ENGLISH);
+  final List<RuleMatch> matches=tool.check("A sentence with no period\n" + "A sentence. A typoh.");
+  assertEquals(1,matches.size());
+  final RuleMatch match=matches.get(0);
+  assertEquals(1,match.getLine());
+  assertEquals(15,match.getColumn());
+}

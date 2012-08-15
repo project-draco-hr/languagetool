@@ -31,7 +31,7 @@
     ruleMatches.addAll(sentenceMatches);
     charCount+=sentence.length();
     lineCount+=countLineBreaks(sentence);
-    final int lineBreakPos=sentence.indexOf('\n');
+    final int lineBreakPos=sentence.lastIndexOf('\n');
     if (lineBreakPos == -1) {
       columnCount+=sentence.length();
     }
@@ -43,7 +43,7 @@
         }
       }
  else {
-        columnCount=1;
+        columnCount=sentence.length() - lineBreakPos;
       }
     }
   }
