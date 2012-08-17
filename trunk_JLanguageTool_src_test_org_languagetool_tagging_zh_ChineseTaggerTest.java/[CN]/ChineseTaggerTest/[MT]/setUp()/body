@@ -1,0 +1,4 @@
+{
+  tagger=new ChineseTagger();
+  tokenizer=new ChineseWordTokenizer();
+}
