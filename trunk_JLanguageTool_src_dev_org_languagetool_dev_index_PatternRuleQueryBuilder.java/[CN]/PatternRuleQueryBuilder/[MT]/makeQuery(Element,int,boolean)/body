@@ -23,7 +23,7 @@
   final String pos=element.getPOStag();
   if (pos != null) {
     if (element.isPOStagRegularExpression()) {
-      posQuery=getWrappedRegexQuery(element,POS_PREFIX + pos);
+      posQuery=getWrappedRegexQuery(element,POS_PREFIX + "(" + pos+ ")");
     }
  else {
       if (element.getCaseSensitive()) {
