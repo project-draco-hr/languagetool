@@ -1,5 +1,5 @@
 {
-  final Indexer indexer=new Indexer(directory,language);
+  final Indexer indexer=new Indexer(directory,lt.getLanguage());
   int ruleCount=0;
   try {
     final List<Rule> rules=lt.getAllActiveRules();

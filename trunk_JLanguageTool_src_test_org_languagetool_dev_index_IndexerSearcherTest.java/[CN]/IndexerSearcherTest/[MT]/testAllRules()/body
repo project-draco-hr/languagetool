@@ -3,7 +3,7 @@
   final JLanguageTool lt=new JLanguageTool(language);
   lt.activateDefaultPatternRules();
   System.out.println("Creating index...");
-  final int ruleCount=createIndex(language,lt);
+  final int ruleCount=createIndex(lt);
   System.out.println("Index created with " + ruleCount + " rules");
   int ruleCounter=0;
   int ruleProblems=0;
