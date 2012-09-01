@@ -1,6 +1,6 @@
 {
   if (qName.equals("title")) {
-    inText=true;
+    inTitle=true;
   }
  else   if (qName.equals("text")) {
     inText=true;

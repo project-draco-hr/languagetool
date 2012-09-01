@@ -1,9 +1,10 @@
 {
   if (qName.equals("title")) {
-    text=new StringBuilder();
+    inTitle=false;
   }
  else   if (qName.equals("text")) {
-    System.out.println(++articleCount);
+    System.out.println(++articleCount + ": " + title);
+    title=new StringBuilder();
     if (articleCount < start) {
       return;
     }
