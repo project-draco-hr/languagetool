@@ -3,15 +3,16 @@
     chinesdJF=CJFBeanFactory.getChineseJF();
   }
   if (seg == null) {
-    InputStream coreDictIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/coreDict.dct");
-    InputStream bigramDictIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/BigramDict.dct");
-    InputStream personTaggerDctIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/nr.dct");
-    InputStream personTaggerCtxIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/nr.ctx");
-    InputStream transPersonTaggerDctIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/tr.dct");
-    InputStream transPersonTaggerCtxIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/tr.ctx");
-    InputStream placeTaggerDctIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/ns.dct");
-    InputStream placeTaggerCtxIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/ns.ctx");
-    InputStream lexTaggerCtxIn=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/zh/lexical.ctx");
+    final ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
+    final InputStream coreDictIn=dataBroker.getFromResourceDirAsStream("/zh/coreDict.dct");
+    final InputStream bigramDictIn=dataBroker.getFromResourceDirAsStream("/zh/BigramDict.dct");
+    final InputStream personTaggerDctIn=dataBroker.getFromResourceDirAsStream("/zh/nr.dct");
+    final InputStream personTaggerCtxIn=dataBroker.getFromResourceDirAsStream("/zh/nr.ctx");
+    final InputStream transPersonTaggerDctIn=dataBroker.getFromResourceDirAsStream("/zh/tr.dct");
+    final InputStream transPersonTaggerCtxIn=dataBroker.getFromResourceDirAsStream("/zh/tr.ctx");
+    final InputStream placeTaggerDctIn=dataBroker.getFromResourceDirAsStream("/zh/ns.dct");
+    final InputStream placeTaggerCtxIn=dataBroker.getFromResourceDirAsStream("/zh/ns.ctx");
+    final InputStream lexTaggerCtxIn=dataBroker.getFromResourceDirAsStream("/zh/lexical.ctx");
     seg=new SegTag(1,coreDictIn,bigramDictIn,personTaggerDctIn,personTaggerCtxIn,transPersonTaggerDctIn,transPersonTaggerCtxIn,placeTaggerDctIn,placeTaggerCtxIn,lexTaggerCtxIn);
   }
 }
