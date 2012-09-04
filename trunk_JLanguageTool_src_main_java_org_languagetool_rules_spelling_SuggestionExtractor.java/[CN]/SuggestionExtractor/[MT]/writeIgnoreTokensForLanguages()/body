@@ -10,7 +10,8 @@
     }
     final File ignoreFile=new File(hunspellDir,"ignore.txt");
     final Set<String> tokens=entry.getValue();
-    final FileWriter writer=new FileWriter(ignoreFile);
+    final FileOutputStream fos=new FileOutputStream(ignoreFile);
+    final OutputStreamWriter writer=new OutputStreamWriter(fos,"utf-8");
     try {
       writeIntro(writer,language);
       for (      String token : tokens) {
@@ -20,6 +21,7 @@
     }
   finally {
       writer.close();
+      fos.close();
     }
     System.out.println("Wrote " + tokens.size() + " words to "+ ignoreFile);
   }

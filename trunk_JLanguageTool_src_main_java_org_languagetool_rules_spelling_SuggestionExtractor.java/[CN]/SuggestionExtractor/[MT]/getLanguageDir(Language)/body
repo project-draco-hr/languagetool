@@ -1,10 +1,9 @@
 {
-  final File dir=new File("resource",language.getShortName());
+  final File dir=new File("org/languagetool/resource",language.getShortName());
   if (dir.exists()) {
     return dir;
   }
  else {
-    final File sourceDir=new File("src","resource");
-    return new File(sourceDir,language.getShortName());
+    return new File("src/main/resources/org/languagetool/resource/",language.getShortName());
   }
 }
