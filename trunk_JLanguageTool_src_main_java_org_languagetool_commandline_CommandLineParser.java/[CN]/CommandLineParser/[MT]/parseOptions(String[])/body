@@ -7,6 +7,9 @@
     if (args[i].equals("--version")) {
       options.setPrintVersion(true);
     }
+ else     if (args[i].equals("--list")) {
+      options.setPrintLanguages(true);
+    }
  else     if (args[i].equals("-h") || args[i].equals("-help") || args[i].equals("--help")|| args[i].equals("--?")) {
       throw new IllegalArgumentException();
     }

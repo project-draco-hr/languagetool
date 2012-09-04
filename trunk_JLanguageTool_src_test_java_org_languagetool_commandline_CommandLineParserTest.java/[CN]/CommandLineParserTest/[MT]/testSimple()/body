@@ -19,4 +19,6 @@
   assertTrue(options.isVerbose());
   options=parser.parseOptions(new String[]{"--version"});
   assertTrue(options.isPrintVersion());
+  options=parser.parseOptions(new String[]{"--list"});
+  assertTrue(options.isPrintLanguages());
 }

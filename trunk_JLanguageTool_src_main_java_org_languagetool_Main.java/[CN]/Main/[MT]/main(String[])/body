@@ -15,6 +15,10 @@
     System.out.println("LanguageTool version " + JLanguageTool.VERSION);
     System.exit(0);
   }
+  if (options.isPrintLanguages()) {
+    printLanguages();
+    System.exit(0);
+  }
   if (options.getFilename() == null) {
     options.setFilename("-");
   }
