@@ -44,5 +44,4 @@
   final String response=StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE,StringTools.XmlPrintMode.NORMAL_XML);
   httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes(ENCODING).length);
   httpExchange.getResponseBody().write(response.getBytes(ENCODING));
-  httpExchange.close();
 }

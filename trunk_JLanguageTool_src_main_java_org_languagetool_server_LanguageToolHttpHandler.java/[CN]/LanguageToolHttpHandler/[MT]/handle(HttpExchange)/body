@@ -30,6 +30,8 @@
     e.printStackTrace();
     final String response="Error: " + StringTools.escapeXML(Tools.getFullStackTrace(e));
     sendError(httpExchange,HttpURLConnection.HTTP_INTERNAL_ERROR,response);
+  }
+ finally {
     httpExchange.close();
   }
   print("Check done in " + (System.currentTimeMillis() - timeStart) + "ms");

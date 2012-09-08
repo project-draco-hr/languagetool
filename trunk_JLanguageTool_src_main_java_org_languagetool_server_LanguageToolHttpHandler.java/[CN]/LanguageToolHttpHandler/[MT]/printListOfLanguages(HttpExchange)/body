@@ -3,5 +3,4 @@
   final String response=getSupportedLanguagesAsXML();
   httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes(ENCODING).length);
   httpExchange.getResponseBody().write(response.getBytes(ENCODING));
-  httpExchange.close();
 }
