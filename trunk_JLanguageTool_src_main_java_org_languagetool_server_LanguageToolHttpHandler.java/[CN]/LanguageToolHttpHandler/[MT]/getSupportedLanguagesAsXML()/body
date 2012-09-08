@@ -1,5 +1,5 @@
 {
-  Language[] languageCopy=Language.REAL_LANGUAGES.clone();
+  final Language[] languageCopy=Language.REAL_LANGUAGES.clone();
   final List<Language> languages=Arrays.asList(languageCopy);
   Collections.sort(languages,new Comparator<Language>(){
     @Override public int compare(    Language o1,    Language o2){
@@ -9,7 +9,7 @@
 );
   final StringBuilder xmlBuffer=new StringBuilder("<?xml version='1.0' encoding='UTF-8'?>\n<languages>\n");
   for (  Language lang : languages) {
-    xmlBuffer.append(String.format("\t<language name=\"%s\" abbr=\"%s\" /> \n",lang.getName(),lang.getShortName()));
+    xmlBuffer.append(String.format("\t<language name=\"%s\" abbr=\"%s\" abbrWithVariant=\"%s\"/> \n",lang.getName(),lang.getShortName(),lang.getShortNameWithVariant()));
   }
   xmlBuffer.append("</languages>\n");
   return xmlBuffer.toString();

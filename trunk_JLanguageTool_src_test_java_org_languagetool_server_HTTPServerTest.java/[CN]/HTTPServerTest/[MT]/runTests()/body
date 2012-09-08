@@ -26,6 +26,9 @@
   if (!languagesXML.contains("Romanian") || !languagesXML.contains("English")) {
     fail("Error getting supported languages: " + languagesXML);
   }
+  if (!languagesXML.contains("abbr=\"de\"") || !languagesXML.contains("abbrWithVariant=\"de-DE\"")) {
+    fail("Error getting supported languages: " + languagesXML);
+  }
   assertTrue(check(Language.ENGLISH,"Me & you you").contains("&"));
   assertTrue(check(Language.ENGLISH,Language.GERMAN,"We will berate you").contains("BERATE"));
   assertTrue(check(Language.GERMAN,Language.ENGLISH,"Man sollte ihn nicht so beraten.").contains("BERATE"));
