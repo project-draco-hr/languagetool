@@ -45,11 +45,11 @@
       xmlRules=xmlRules.replaceAll("(?s)<rules.*?>","");
       final int count=countXmlRules(xmlRules);
       final int countInRuleGroup=countXmlRuleGroupRules(xmlRules);
-      final String ruleBase="http://languagetool.svn.sourceforge.net/viewvc/languagetool/trunk/JLanguageTool/src/rules/";
+      final String ruleBase="http://languagetool.svn.sourceforge.net/viewvc/languagetool/trunk/JLanguageTool/src/main/resources/org/languagetool/rules/";
       System.out.print("<td valign=\"top\" align=\"right\">" + (count + countInRuleGroup) + "</td>");
       System.out.print("<td valign=\"top\" align=\"right\">" + "<a href=\"" + ruleBase + lang.getShortName()+ "/grammar.xml"+ "\">Show</a> / "+ "<a href=\""+ ruleBase+ lang.getShortName()+ "/grammar.xml?content-type=text%2Fplain"+ "\">XML</a> / "+ "<a href=\"http://community.languagetool.org/rule/list?lang="+ lang.getShortName()+ "\">Browse</a>"+ "</td>");
     }
-    final File dir=new File("src/java/org/languagetool" + JLanguageTool.getDataBroker().getRulesDir() + "/"+ lang.getShortName());
+    final File dir=new File("src/main/java" + JLanguageTool.getDataBroker().getRulesDir() + "/"+ lang.getShortName());
     if (!dir.exists()) {
       System.out.print("<td valign=\"top\" align=\"right\">0</td>");
     }
@@ -72,7 +72,7 @@
     System.out.println("</tr>");
   }
   if (overallJavaCount == 0) {
-    throw new RuntimeException("No Java rules found - start this script from the LanguageTool directory so " + "that the sources are at 'src/java/org/languagetool'");
+    throw new RuntimeException("No Java rules found - start this script from the LanguageTool directory so " + "that the sources are at 'src/main/java/org/languagetool/rules'");
   }
   if (langSpecificWebsiteCount == 0) {
     throw new RuntimeException("No language specific websites found - please let the web root parameter " + "point to the 'www' directory (current value: '" + webRoot + "')");
