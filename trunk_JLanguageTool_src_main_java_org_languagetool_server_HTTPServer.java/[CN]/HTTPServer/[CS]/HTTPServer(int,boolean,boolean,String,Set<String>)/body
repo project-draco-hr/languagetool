@@ -1,7 +1,12 @@
 {
   this.port=port;
   try {
-    server=HttpServer.create(new InetSocketAddress(host,port),0);
+    if (host == null) {
+      server=HttpServer.create(new InetSocketAddress(port),0);
+    }
+ else {
+      server=HttpServer.create(new InetSocketAddress(host,port),0);
+    }
     server.createContext("/",new LanguageToolHttpHandler(verbose,allowedIps,runInternally));
   }
  catch (  Exception e) {

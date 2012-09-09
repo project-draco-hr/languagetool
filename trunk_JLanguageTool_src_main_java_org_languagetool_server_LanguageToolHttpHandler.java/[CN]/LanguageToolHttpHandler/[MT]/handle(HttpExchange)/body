@@ -5,7 +5,7 @@
     final URI requestedUri=httpExchange.getRequestURI();
     final Map<String,String> parameters=getRequestQuery(httpExchange,requestedUri);
     final String remoteAddress=httpExchange.getRemoteAddress().getAddress().getHostAddress();
-    if (allowedIps.contains(remoteAddress)) {
+    if (allowedIps == null || allowedIps.contains(remoteAddress)) {
       if (requestedUri.getRawPath().endsWith("/Languages")) {
         printListOfLanguages(httpExchange);
       }

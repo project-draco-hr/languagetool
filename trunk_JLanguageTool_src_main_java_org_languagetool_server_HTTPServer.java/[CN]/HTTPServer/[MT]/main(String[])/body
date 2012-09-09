@@ -4,6 +4,7 @@
     System.exit(1);
   }
   boolean verbose=false;
+  boolean publicAccess=false;
   final boolean runInternal=false;
   int port=DEFAULT_PORT;
   for (int i=0; i < args.length; i++) {
@@ -13,12 +14,20 @@
  else     if ("-v".equals(args[i]) || "--verbose".equals(args[i])) {
       verbose=true;
     }
+ else     if ("--public".equals(args[i])) {
+      publicAccess=true;
+    }
   }
   try {
-    final HttpServer server=HttpServer.create(new InetSocketAddress(DEFAULT_HOST,port),0);
-    server.createContext("/",new LanguageToolHttpHandler(verbose,DEFAULT_ALLOWED_IPS,runInternal));
-    server.start();
-    System.out.println("Started LanguageTool HTTP server on " + DEFAULT_HOST + ", port "+ port+ ".");
+    final HTTPServer server;
+    if (publicAccess) {
+      System.out.println("WARNING: running in public mode, LanguageTool API can be accessed without restrictions!");
+      server=new HTTPServer(port,verbose,runInternal,null,null);
+    }
+ else {
+      server=new HTTPServer(port,verbose,runInternal,DEFAULT_HOST,DEFAULT_ALLOWED_IPS);
+    }
+    server.run();
   }
  catch (  Exception e) {
     throw new RuntimeException("Could not start LanguageTool HTTP server on " + DEFAULT_HOST + ", port "+ port,e);
