@@ -1,7 +1,7 @@
 {
   Map<String,String> parameters;
   if ("post".equalsIgnoreCase(httpExchange.getRequestMethod())) {
-    final InputStreamReader isr=new InputStreamReader(httpExchange.getRequestBody(),"utf-8");
+    final InputStreamReader isr=new InputStreamReader(httpExchange.getRequestBody(),ENCODING);
     try {
       final BufferedReader br=new BufferedReader(isr);
       try {
