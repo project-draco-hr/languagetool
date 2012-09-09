@@ -1,6 +1,0 @@
-{
-  if (sentenceTokenizer == null) {
-    sentenceTokenizer=new SRXSentenceTokenizer(this);
-  }
-  return sentenceTokenizer;
-}
