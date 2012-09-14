@@ -1,0 +1,4 @@
+{
+  rule=new ReflexiveVerbsRule(null);
+  langTool=new JLanguageTool(Language.CATALAN);
+}
