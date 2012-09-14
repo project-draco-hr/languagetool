@@ -11,7 +11,11 @@
     String msg=null;
     int fixLen=0;
     String suggestionText=null;
-    if (isWhite && isLeftBracket(prevToken)) {
+    final int skip=getExceptionSkip(tokens,i);
+    if (skip > 0) {
+      i+=skip;
+    }
+ else     if (isWhite && isLeftBracket(prevToken)) {
       msg=messages.getString("no_space_after");
       suggestionText=prevToken;
       fixLen=1;

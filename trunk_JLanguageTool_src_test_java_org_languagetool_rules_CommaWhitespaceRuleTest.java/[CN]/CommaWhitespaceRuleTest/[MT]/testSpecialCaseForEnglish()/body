@@ -1,0 +1,4 @@
+{
+  assertMatches("Ellipsis . . . as suggested by The Chicago Manual of Style",3);
+  assertMatches("Ellipsis . . . . as suggested by The Chicago Manual of Style",4);
+}

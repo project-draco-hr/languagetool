@@ -1,0 +1,9 @@
+{
+  if (pos + 8 < tokens.length && isDotAt(tokens,pos + 2) && isDotAt(tokens,pos + 4) && isDotAt(tokens,pos + 6) && isDotAt(tokens,pos + 8)) {
+    return 7;
+  }
+  if (pos + 6 < tokens.length && isDotAt(tokens,pos + 2) && isDotAt(tokens,pos + 4) && isDotAt(tokens,pos + 6)) {
+    return 5;
+  }
+  return 0;
+}

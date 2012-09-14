@@ -1,0 +1,4 @@
+{
+  super.setUp();
+  rule=new EnglishCommaWhitespaceRule(TestTools.getEnglishMessages());
+}
