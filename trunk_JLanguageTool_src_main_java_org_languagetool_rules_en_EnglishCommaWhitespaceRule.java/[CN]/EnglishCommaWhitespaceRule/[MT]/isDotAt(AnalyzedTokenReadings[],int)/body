@@ -1,4 +1,0 @@
-{
-  final String str=tokens[pos].getToken();
-  return str.length() > 0 && str.charAt(0) == '.';
-}
