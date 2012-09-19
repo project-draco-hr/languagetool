@@ -1,3 +1,3 @@
 {
-  return new Contributor[]{new Contributor("Esben Aaberg")};
+  return new Contributor[]{new Contributor("Esben Aaberg"),new Contributor("Henrik Bendt")};
 }
