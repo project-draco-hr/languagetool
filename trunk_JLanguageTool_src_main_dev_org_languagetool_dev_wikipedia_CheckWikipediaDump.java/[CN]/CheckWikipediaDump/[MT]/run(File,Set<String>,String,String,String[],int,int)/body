@@ -16,6 +16,7 @@
  else {
     applyRuleDeactivation(languageTool,disabledRules);
   }
+  disableSpellingRules(languageTool);
   final Date dumpDate=getDumpFileDate(file);
   System.out.println("Dump date: " + dumpDate + ", language: "+ langCode);
   BaseWikipediaDumpHandler xmlHandler=null;
