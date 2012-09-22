@@ -6,6 +6,7 @@
   assertGood("Max und ich sollten das machen.");
   assertGood("Osama bin Laden stammt aus Saudi-Arabien.");
   assertGood("Solltet ihr das machen?");
+  assertGood("/usr/bin/firefox");
   assertBad("Als Borcarbid wei??t es eine hohe H??rte auf.");
   assertBad("Das greift auf Vorl??uferinstitutionen bist auf die Zeit von 1234 zur??ck.");
   assertBad("Die Eisenbahn dienst ??berwiegend dem G??terverkehr.");

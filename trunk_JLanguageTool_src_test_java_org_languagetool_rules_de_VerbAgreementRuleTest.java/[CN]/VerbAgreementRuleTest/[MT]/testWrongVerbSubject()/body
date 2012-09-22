@@ -9,6 +9,8 @@
   assertGood("Das Ich ist keine Einbildung");
   assertGood("Das lyrische Ich ist verzweifelt.");
   assertGood("Den Park, von dem er ??u??erst genaue Karten zeichnete.");
+  assertGood("Der auff??lligste Ring ist der erster Ring, obwohl er verglichen mit den anderen Ringen sehr schwach erscheint.");
+  assertGood("Der Fehler, falls er bestehen sollte, ist schwerwiegend.");
   assertGood("Der Vorfall, bei dem er einen Teil seines Verm??gens verloren hat, ist lange vorbei.");
   assertGood("Diese L??sung wurde in der 64'er beschrieben, kam jedoch nie.");
   assertGood("Die Theorie, mit der ich arbeiten konnte.");
@@ -43,6 +45,7 @@
   assertGood("Nett bist du.");
   assertGood("Nett ist er.");
   assertGood("Nett sind wir.");
+  assertGood("Niemand ahnte, dass er gewinnen k??nne.");
   assertGood("Sie lebt und wir leben.");
   assertGood("Sie und er leben.");
   assertGood("Sind ich und Peter nicht nette Kinder?");
