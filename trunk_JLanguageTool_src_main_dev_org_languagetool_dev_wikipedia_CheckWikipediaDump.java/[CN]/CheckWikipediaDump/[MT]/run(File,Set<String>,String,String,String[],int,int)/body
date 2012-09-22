@@ -1,0 +1,43 @@
+{
+  final File file=new File(textFilename);
+  if (!file.exists() || !file.isFile()) {
+    throw new IOException("File doesn't exist or isn't a file: " + textFilename);
+  }
+  final Language lang=Language.getLanguageForShortName(langCode);
+  if (lang == null) {
+    System.err.println("Language not supported: " + langCode);
+    System.exit(1);
+  }
+  final JLanguageTool languageTool=new JLanguageTool(lang);
+  languageTool.activateDefaultPatternRules();
+  if (ruleIds != null) {
+    enableSpecifiedRules(ruleIds,languageTool);
+  }
+ else {
+    applyRuleDeactivation(languageTool,disabledRules);
+  }
+  final Date dumpDate=getDumpFileDate(file);
+  System.out.println("Dump date: " + dumpDate + ", language: "+ langCode);
+  BaseWikipediaDumpHandler xmlHandler=null;
+  try {
+    if (propFile != null) {
+      xmlHandler=new DatabaseDumpHandler(languageTool,dumpDate,langCode,propFile,lang);
+    }
+ else {
+      xmlHandler=new OutputDumpHandler(languageTool,dumpDate,langCode,lang);
+    }
+    xmlHandler.setMaximumArticles(maxArticles);
+    xmlHandler.setMaximumErrors(maxErrors);
+    final SAXParserFactory factory=SAXParserFactory.newInstance();
+    final SAXParser saxParser=factory.newSAXParser();
+    saxParser.parse(file,xmlHandler);
+  }
+ catch (  ErrorLimitReachedException e) {
+    System.out.println(e);
+  }
+ finally {
+    if (xmlHandler != null) {
+      xmlHandler.close();
+    }
+  }
+}

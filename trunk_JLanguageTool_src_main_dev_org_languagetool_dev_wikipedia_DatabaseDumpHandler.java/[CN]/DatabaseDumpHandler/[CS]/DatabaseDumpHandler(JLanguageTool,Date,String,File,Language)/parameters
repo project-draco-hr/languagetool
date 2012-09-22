@@ -1,5 +1,4 @@
 JLanguageTool lt
-int maxArticles
 Date dumpDate
 String langCode
 File propertiesFile

@@ -1,7 +1,5 @@
 {
-  this.lang=lang;
   this.languageTool=languageTool;
-  this.maxArticles=maxArticles;
   this.dumpDate=dumpDate;
   this.langCode=langCode;
   textFilter=TextFilterTools.getTextFilter(lang);

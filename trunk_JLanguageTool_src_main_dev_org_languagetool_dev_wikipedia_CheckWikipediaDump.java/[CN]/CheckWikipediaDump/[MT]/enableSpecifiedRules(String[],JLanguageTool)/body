@@ -5,5 +5,5 @@
   for (  String ruleId : ruleIds) {
     languageTool.enableRule(ruleId);
   }
-  System.err.println("Only these rules are enabled: " + Arrays.toString(ruleIds));
+  System.out.println("Only these rules are enabled: " + Arrays.toString(ruleIds));
 }

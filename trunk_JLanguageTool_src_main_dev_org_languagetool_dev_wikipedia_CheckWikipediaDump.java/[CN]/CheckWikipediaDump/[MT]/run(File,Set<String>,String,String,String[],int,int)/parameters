@@ -1,6 +1,7 @@
 File propFile
 Set<String> disabledRules
-String language
+String langCode
 String textFilename
 String[] ruleIds
 int maxArticles
+int maxErrors

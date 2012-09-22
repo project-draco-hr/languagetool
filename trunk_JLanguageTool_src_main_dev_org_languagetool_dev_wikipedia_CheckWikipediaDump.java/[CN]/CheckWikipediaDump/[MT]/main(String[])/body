@@ -20,13 +20,11 @@
     addDisabledRules("all",disabledRuleIds,disabledRules);
     addDisabledRules(languageCode,disabledRuleIds,disabledRules);
   }
-  int maxArticles=0;
-  if (args.length == 6) {
-    maxArticles=Integer.parseInt(args[5]);
-  }
+  final int maxArticles=Integer.parseInt(args[5]);
+  final int maxErrors=Integer.parseInt(args[6]);
   String[] ruleIds=null;
   if (!"-".equals(args[4])) {
     ruleIds=args[4].split(",");
   }
-  prg.run(propFile,disabledRuleIds,languageCode,args[3],ruleIds,maxArticles);
+  prg.run(propFile,disabledRuleIds,languageCode,args[3],ruleIds,maxArticles,maxErrors);
 }

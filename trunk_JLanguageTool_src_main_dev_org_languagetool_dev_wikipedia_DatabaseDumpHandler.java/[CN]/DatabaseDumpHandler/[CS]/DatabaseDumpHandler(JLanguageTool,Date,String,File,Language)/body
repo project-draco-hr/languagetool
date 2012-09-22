@@ -1,5 +1,5 @@
 {
-  super(lt,maxArticles,dumpDate,langCode,lang);
+  super(lt,dumpDate,langCode,lang);
   final Properties dbProperties=new Properties();
   final FileInputStream inStream=new FileInputStream(propertiesFile);
   try {
