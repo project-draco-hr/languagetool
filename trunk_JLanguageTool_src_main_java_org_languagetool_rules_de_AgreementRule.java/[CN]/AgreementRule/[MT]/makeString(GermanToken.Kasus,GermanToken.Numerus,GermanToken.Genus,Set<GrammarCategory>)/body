@@ -1,7 +1,13 @@
 {
   final List<String> l=new ArrayList<String>();
-  if (casus != null && !omit.contains(GrammarCategory.KASUS))   l.add(casus.toString());
-  if (num != null && !omit.contains(GrammarCategory.NUMERUS))   l.add(num.toString());
-  if (gen != null && !omit.contains(GrammarCategory.GENUS))   l.add(gen.toString());
+  if (casus != null && !omit.contains(GrammarCategory.KASUS)) {
+    l.add(casus.toString());
+  }
+  if (num != null && !omit.contains(GrammarCategory.NUMERUS)) {
+    l.add(num.toString());
+  }
+  if (gen != null && !omit.contains(GrammarCategory.GENUS)) {
+    l.add(gen.toString());
+  }
   return StringTools.listToString(l,"/");
 }

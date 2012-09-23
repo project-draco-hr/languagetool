@@ -3,7 +3,7 @@
   final List<AnalyzedGermanToken> readings=aToken.getGermanReadings();
   for (  AnalyzedGermanToken reading : readings) {
     if (reading.getCasus() == null && reading.getNumerus() == null && reading.getGenus() == null)     continue;
-    if (reading.getGenus() == null && (reading.getToken().equals("ich") || reading.getToken().equals("wir"))) {
+    if (reading.getGenus() == GermanToken.Genus.ALLGEMEIN) {
       set.add(makeString(reading.getCasus(),reading.getNumerus(),GermanToken.Genus.MASKULINUM,omit));
       set.add(makeString(reading.getCasus(),reading.getNumerus(),GermanToken.Genus.FEMININUM,omit));
       set.add(makeString(reading.getCasus(),reading.getNumerus(),GermanToken.Genus.NEUTRUM,omit));
