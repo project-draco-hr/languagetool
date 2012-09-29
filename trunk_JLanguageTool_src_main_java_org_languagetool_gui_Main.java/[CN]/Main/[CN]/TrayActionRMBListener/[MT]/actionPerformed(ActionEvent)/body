@@ -1,11 +1,11 @@
 {
-  if (e.getActionCommand().equalsIgnoreCase(StringTools.getLabel(messages.getString("guiMenuCheckClipboard")))) {
+  if (isCommand(e,"guiMenuCheckClipboard")) {
     restoreFromTrayAndCheck();
   }
- else   if (e.getActionCommand().equalsIgnoreCase(StringTools.getLabel(messages.getString("guiMenuShowMainWindow")))) {
+ else   if (isCommand(e,"guiMenuShowMainWindow")) {
     restoreFromTray();
   }
- else   if (e.getActionCommand().equalsIgnoreCase(StringTools.getLabel(messages.getString("guiMenuQuit")))) {
+ else   if (isCommand(e,"guiMenuQuit")) {
     quit();
   }
  else {

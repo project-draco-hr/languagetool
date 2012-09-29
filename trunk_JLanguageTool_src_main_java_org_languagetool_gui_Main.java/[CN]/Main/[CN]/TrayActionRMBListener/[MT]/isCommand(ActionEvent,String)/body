@@ -1,0 +1,3 @@
+{
+  return e.getActionCommand().equalsIgnoreCase(StringTools.getLabel(messages.getString(label)));
+}

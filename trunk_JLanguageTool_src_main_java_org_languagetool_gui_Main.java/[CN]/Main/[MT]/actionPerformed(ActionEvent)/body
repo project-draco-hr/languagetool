@@ -7,7 +7,7 @@
       throw new IllegalArgumentException("Unknown action " + e);
     }
   }
- catch (  final Exception exc) {
+ catch (  Exception exc) {
     Tools.showError(exc);
   }
 }

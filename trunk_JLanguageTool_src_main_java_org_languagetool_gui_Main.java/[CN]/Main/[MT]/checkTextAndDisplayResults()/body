@@ -32,7 +32,7 @@
               resultArea.setLanguageTool(langTool);
               resultArea.displayResult();
             }
- catch (            final Exception e) {
+ catch (            Exception e) {
               final String error="<br><br><b><font color=\"red\">" + org.languagetool.tools.Tools.getFullStackTrace(e).replace("\n","<br/>") + "</font></b><br>";
               resultArea.displayText(error);
             }

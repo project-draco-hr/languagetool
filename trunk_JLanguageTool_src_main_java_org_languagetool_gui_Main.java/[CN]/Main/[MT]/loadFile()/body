@@ -8,7 +8,7 @@
     textArea.setText(fileContents);
     checkTextAndDisplayResults();
   }
- catch (  final IOException e) {
+ catch (  IOException e) {
     Tools.showError(e);
   }
 }

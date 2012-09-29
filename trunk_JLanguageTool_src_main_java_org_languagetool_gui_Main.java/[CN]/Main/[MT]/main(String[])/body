@@ -9,7 +9,7 @@
             prg.setTrayMode(true);
             prg.hideToTray();
           }
- catch (          final Exception e) {
+ catch (          Exception e) {
             Tools.showError(e);
             System.exit(1);
           }
@@ -29,7 +29,7 @@
             prg.createGUI();
             prg.showGUI();
           }
- catch (          final Exception e) {
+ catch (          Exception e) {
             Tools.showError(e);
           }
         }
@@ -37,7 +37,7 @@
 );
     }
   }
- catch (  final Exception e) {
+ catch (  Exception e) {
     Tools.showError(e);
   }
 }

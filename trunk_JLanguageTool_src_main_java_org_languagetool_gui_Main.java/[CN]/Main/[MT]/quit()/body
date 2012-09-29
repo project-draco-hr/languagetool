@@ -4,7 +4,7 @@
     final Language currentLanguage=getCurrentLanguage();
     config.saveConfiguration(getCurrentLanguageTool(currentLanguage).getLanguage());
   }
- catch (  final IOException e) {
+ catch (  IOException e) {
     Tools.showError(e);
   }
   frame.setVisible(false);

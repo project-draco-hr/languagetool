@@ -15,7 +15,7 @@
       s="";
     }
   }
- catch (  final Exception ex) {
+ catch (  Exception ex) {
     if (data != null) {
       s=data.toString();
     }

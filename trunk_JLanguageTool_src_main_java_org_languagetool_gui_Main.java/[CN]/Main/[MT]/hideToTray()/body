@@ -1,15 +1,14 @@
 {
   if (!isInTray) {
-    final java.awt.SystemTray tray=java.awt.SystemTray.getSystemTray();
+    final SystemTray tray=SystemTray.getSystemTray();
     final Image img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(SYSTEM_TRAY_ICON_NAME));
     final PopupMenu popup=makePopupMenu();
     try {
-      final java.awt.TrayIcon trayIcon=new java.awt.TrayIcon(img,"tooltip",popup);
+      final TrayIcon trayIcon=new TrayIcon(img,SYSTEM_TRAY_TOOLTIP,popup);
       trayIcon.addMouseListener(new TrayActionListener());
-      trayIcon.setToolTip(SYSTEM_TRAY_TOOLTIP);
       tray.add(trayIcon);
     }
- catch (    final AWTException e1) {
+ catch (    AWTException e1) {
       Tools.showError(e1);
     }
   }

@@ -9,12 +9,11 @@
       for (      String sent : sentences) {
         final AnalyzedSentence analyzedText=langTool.getAnalyzedSentence(sent);
         final String analyzedTextString=StringTools.escapeHTML(analyzedText.toString(", ")).replace("[","<font color='#888888'>[").replace("]","]</font>");
-        sb.append(analyzedTextString);
-        sb.append("\n");
+        sb.append(analyzedTextString).append("\n");
       }
     }
  catch (    IOException e) {
-      sb.append("An error occurred while tagging the text: " + e.getMessage());
+      sb.append("An error occurred while tagging the text: ").append(e.getMessage());
     }
     resultArea.setText(HTML_FONT_START + sb.toString() + HTML_FONT_END);
   }
