@@ -1,0 +1,4 @@
+AnalyzedTokenReadings[] tokens
+int i
+Pattern lemma
+Pattern postag

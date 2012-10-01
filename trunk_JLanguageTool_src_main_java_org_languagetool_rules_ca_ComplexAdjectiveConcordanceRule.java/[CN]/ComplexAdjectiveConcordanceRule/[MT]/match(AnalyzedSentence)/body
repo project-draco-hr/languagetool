@@ -16,6 +16,7 @@
       boolean isPlural=true;
       boolean isPrevNoun=false;
       Pattern substPattern=null;
+      Pattern gnPattern=null;
       Pattern adjPattern=null;
       Matcher isUpperCase=UPPERCASE.matcher(token);
       int maxLevels=4;
@@ -48,17 +49,31 @@
       boolean keepCounting=true;
       while (keepCounting && i - j > 0 && level < maxLevels) {
         if (!isPrevNoun) {
-          if (matchPostagRegexp(tokens[i - j],NOM_MS)) {
+          if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],_GN_MS)) {
             cNMS[level]++;
           }
-          if (matchPostagRegexp(tokens[i - j],NOM_FS)) {
+          if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],_GN_FS)) {
             cNFS[level]++;
           }
-          if (matchPostagRegexp(tokens[i - j],NOM_MP)) {
+          if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],_GN_MP)) {
             cNMP[level]++;
           }
-          if (matchPostagRegexp(tokens[i - j],NOM_FP)) {
+          if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],_GN_FP)) {
             cNFP[level]++;
+          }
+          if (!matchPostagRegexp(tokens[i - j],_GN_)) {
+            if (matchPostagRegexp(tokens[i - j],NOM_MS)) {
+              cNMS[level]++;
+            }
+            if (matchPostagRegexp(tokens[i - j],NOM_FS)) {
+              cNFS[level]++;
+            }
+            if (matchPostagRegexp(tokens[i - j],NOM_MP)) {
+              cNMP[level]++;
+            }
+            if (matchPostagRegexp(tokens[i - j],NOM_FP)) {
+              cNFP[level]++;
+            }
           }
         }
         if (matchPostagRegexp(tokens[i - j],NOM)) {
@@ -90,13 +105,13 @@
           cDFP[level]++;
         }
         if (i - j > 0) {
-          if (matchPostagRegexp(tokens[i - j],PREPOSICIONS) && !matchRegexp(tokens[i - j - 1].getToken(),COORDINACIO_IONI)) {
+          if (matchRegexp(tokens[i - j].getToken(),PREPOSICIO_CANVI_NIVELL) && !matchRegexp(tokens[i - j - 1].getToken(),COORDINACIO_IONI) && !matchPostagRegexp(tokens[i - j + 1],ADVERBI)) {
             level++;
           }
         }
         if (level > 0 && matchRegexp(tokens[i - j].getToken(),COORDINACIO_IONI)) {
           int k=1;
-          while (k < 4 && i - j - k > 0 && (matchPostagRegexp(tokens[i - j - k],KEEP_COUNT) || matchRegexp(tokens[i - j - k].getToken(),KEEP_COUNT2))) {
+          while (k < 4 && i - j - k > 0 && (matchPostagRegexp(tokens[i - j - k],KEEP_COUNT) || matchRegexp(tokens[i - j - k].getToken(),KEEP_COUNT2) || matchRegexp(tokens[i - j - k].getToken(),ADVERBIS_ACCEPTATS)) && !matchRegexp(tokens[i - j - k].getToken(),STOP_COUNT)) {
             if (matchPostagRegexp(tokens[i - j - k],PREPOSICIONS)) {
               j=j + k;
               break;
@@ -105,21 +120,25 @@
           }
         }
         j++;
-        keepCounting=matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2);
+        keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchRegexp(tokens[i - j].getToken(),ADVERBIS_ACCEPTATS)) && !matchRegexp(tokens[i - j].getToken(),STOP_COUNT);
       }
       level++;
       if (level > maxLevels) {
         level=maxLevels;
       }
       j=0;
+      int cNtotal=0;
+      int cDtotal=0;
       while (j < level) {
         cN[j]=cNMS[j] + cNFS[j] + cNMP[j]+ cNFP[j];
         cD[j]=cDMS[j] + cDFS[j] + cDMP[j]+ cDFP[j];
+        cNtotal+=cN[j];
+        cDtotal+=cD[j];
         if (matchPostagRegexp(tokens[i],ADJECTIU_MP) && (cN[j] > 1 || cD[j] > 1) && (cNMS[j] + cNMP[j] + cDMS[j]+ cDMP[j]) > 0 && (cNFS[j] + cNFP[j] <= cNt[j])) {
           isException=true;
           break;
         }
-        if (!isException && matchPostagRegexp(tokens[i],ADJECTIU_FP) && (cN[j] > 1 || cD[j] > 1)&& ((cNMS[j] + cNMP[j] + cDMS[j]+ cDMP[j]) == 0 || (cNFS[j] + cNFP[j] >= cNt[j]))) {
+        if (!isException && matchPostagRegexp(tokens[i],ADJECTIU_FP) && (cN[j] > 1 || cD[j] > 1)&& ((cNMS[j] + cNMP[j] + cDMS[j]+ cDMP[j]) == 0 || (cNt[j] > 0 && cNFS[j] + cNFP[j] >= cNt[j]))) {
           isException=true;
           break;
         }
@@ -127,6 +146,9 @@
           isPlural=isPlural && cD[j] > 1;
         }
         j++;
+      }
+      if (cNtotal == 0 && cDtotal == 0) {
+        isException=true;
       }
       if (!isException && i < tokens.length - 2) {
         Matcher pCoordina=COORDINACIO.matcher(nextToken);
@@ -145,44 +167,70 @@
       if (!isException && matchRegexp(token,EXCEPCIONS_PARTICIPI)) {
         isException=true;
       }
-      if (!isException && i < tokens.length - 1 && (token.equals("segur") || token.equals("major") || token.equals("menor")) && nextToken.equals("que")) {
+      if (!isException && i < tokens.length - 1) {
+        if ((token.equals("segur") || token.equals("major") || token.equals("menor")) && nextToken.equals("que")) {
+          isException=true;
+        }
+      }
+      if (!isException && token.equals("mateix") && matchPostagRegexp(tokens[i - 1],ADVERBI)) {
         isException=true;
       }
       if (!isException) {
         if (matchPostagRegexp(tokens[i],ADJECTIU_CS)) {
           substPattern=GN_CS;
           adjPattern=ADJECTIU_S;
+          gnPattern=_GN_CS;
         }
  else         if (matchPostagRegexp(tokens[i],ADJECTIU_CP)) {
           substPattern=GN_CP;
           adjPattern=ADJECTIU_P;
+          gnPattern=_GN_CP;
         }
  else         if (matchPostagRegexp(tokens[i],ADJECTIU_MS)) {
           substPattern=GN_MS;
           adjPattern=ADJECTIU_MS;
+          gnPattern=_GN_MS;
         }
  else         if (matchPostagRegexp(tokens[i],ADJECTIU_FS)) {
           substPattern=GN_FS;
           adjPattern=ADJECTIU_FS;
+          gnPattern=_GN_FS;
         }
  else         if (matchPostagRegexp(tokens[i],ADJECTIU_MP)) {
           substPattern=GN_MP;
           adjPattern=ADJECTIU_MP;
+          gnPattern=_GN_MP;
         }
  else         if (matchPostagRegexp(tokens[i],ADJECTIU_FP)) {
           substPattern=GN_FP;
           adjPattern=ADJECTIU_FP;
+          gnPattern=_GN_FP;
         }
         if (substPattern != null) {
-          if ((matchPostagRegexp(tokens[i - 1],NOM) && !matchPostagRegexp(tokens[i - 1],substPattern)) || (i > 3 && matchPostagRegexp(tokens[i - 1],ADJECTIU) && !matchPostagRegexp(tokens[i - 1],adjPattern) && !matchPostagRegexp(tokens[i - 2],VERB_AUXILIAR) && !matchPostagRegexp(tokens[i - 3],VERB_AUXILIAR))) {
+          j=1;
+          keepCounting=true;
+          while (i - j > 0 && !isException && keepCounting) {
+            if (gnPattern != null && matchPostagRegexp(tokens[i - j],NOM_DET) && matchPostagRegexp(tokens[i - j],gnPattern)) {
+              isException=true;
+            }
+ else             if (!matchPostagRegexp(tokens[i - j],_GN_) && matchPostagRegexp(tokens[i - j],substPattern)) {
+              isException=true;
+            }
+            keepCounting=!matchPostagRegexp(tokens[i - j],NOM_DET);
+            j++;
+          }
+          if (!isException && ((matchPostagRegexp(tokens[i - 1],NOM) && !matchPostagRegexp(tokens[i - 1],substPattern)) || (i > 3 && ((matchPostagRegexp(tokens[i - 1],ADJECTIU) && !matchPostagRegexp(tokens[i - 1],adjPattern)) || matchRegexp(tokens[i - 1].getToken(),ADVERBIS_ACCEPTATS) || matchPostagRegexp(tokens[i - 1],LOC_ADV)) && !matchPostagRegexp(tokens[i - 2],VERB) && !matchPostagRegexp(tokens[i - 3],VERB)))) {
             j=1;
             keepCounting=true;
             while (i - j > 0 && !adjectiveAgrees && keepCounting) {
-              if (matchPostagRegexp(tokens[i - j],substPattern)) {
+              if (gnPattern != null && matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],gnPattern)) {
+                adjectiveAgrees=true;
+              }
+ else               if (!matchPostagRegexp(tokens[i - j],_GN_) && matchPostagRegexp(tokens[i - j],substPattern)) {
                 adjectiveAgrees=true;
               }
               j++;
-              keepCounting=matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2);
+              keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchRegexp(tokens[i - j].getToken(),ADVERBIS_ACCEPTATS)) && !matchRegexp(tokens[i - j].getToken(),STOP_COUNT);
             }
             theRuleMaches=!adjectiveAgrees;
             if (isPlural && matchPostagRegexp(tokens[i],ADJECTIU_S)) {
@@ -192,7 +240,7 @@
         }
       }
       if (theRuleMaches) {
-        final String msg="L'adjectiu \u00AB" + token + "\u00BB no concorda apropiadament.";
+        final String msg="Reviseu la concordan??a de l'adjectiu \u00AB" + token + "\u00BB.";
         final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Falta de concordan??a.");
         ruleMatches.add(ruleMatch);
       }

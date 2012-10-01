@@ -2,7 +2,6 @@
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   loop:   for (int i=1; i < tokens.length; i++) {
-    boolean theRuleMatches=true;
     final String token;
     if (i == 1) {
       token=tokens[i].getToken().toLowerCase();
@@ -10,82 +9,35 @@
  else {
       token=tokens[i].getToken();
     }
-    if (!matchLemmaRegexp(tokens[i],VERBS_REFLEXIUS))     continue loop;
-    if (matchLemmaRegexp(tokens[i],NO_VERBS_REFLEXIUS))     continue loop;
     if (matchPostagRegexp(tokens[i],NO_VERB))     continue loop;
     final Matcher mUpperCase=UPPERCASE.matcher(tokens[i].getToken());
     if (i > 1 && mUpperCase.matches())     continue loop;
-    Pattern pPronomBuscat=null;
-    if (matchPostagRegexp(tokens[i],VERB_INDSUBJ)) {
-      pPronomBuscat=pronomPattern(tokens[i]);
-      if (pPronomBuscat != null) {
-        int j=1;
-        boolean keepCounting=true;
-        while (i - j > 0 && j < 4 && keepCounting) {
-          if (matchPostagRegexp(tokens[i - j],pPronomBuscat))           continue loop;
-          keepCounting=matchPostagRegexp(tokens[i - j],PRONOM_FEBLE);
-          j++;
-        }
+    if (matchLemmaRegexp(tokens[i],VERBS_PRONOMINALS)) {
+      if (matchLemmaRegexp(tokens[i],NO_VERBS_PRONOMINALS))       continue loop;
+      if (isThereReflexivePronoun(tokens,i)) {
+        continue loop;
       }
-    }
-    if (matchPostagRegexp(tokens[i],VERB_IMP)) {
-      pPronomBuscat=pronomPattern(tokens[i]);
-      if (pPronomBuscat != null) {
-        if (i < tokens.length - 1 && matchPostagRegexp(tokens[i + 1],pPronomBuscat))         continue loop;
-      }
-    }
-    if (matchPostagRegexp(tokens[i],VERB_PART)) {
-      if (matchLemmaRegexp(tokens[i - 1],VERB_HAVER) && matchPostagRegexp(tokens[i - 1],VERB_INDSUBJ)) {
-        pPronomBuscat=pronomPattern(tokens[i - 1]);
-        if (pPronomBuscat != null) {
-          int j=2;
-          boolean keepCounting=true;
-          while (i - j > 0 && j < 5 && keepCounting) {
-            if (matchPostagRegexp(tokens[i - j],pPronomBuscat))             continue loop;
-            keepCounting=matchPostagRegexp(tokens[i - j],PRONOM_FEBLE);
-            j++;
-          }
-        }
-      }
- else       if (!(matchLemmaRegexp(tokens[i - 1],VERB_HAVER) && matchPostagRegexp(tokens[i - 1],VERB_INFGER)))       continue loop;
-    }
-    if (matchPostagRegexp(tokens[i],VERB_INFGER)) {
-      int k=1;
-      boolean keepCounting=true;
-      boolean foundVerb=false;
-      while (i - k > 0 && keepCounting && !foundVerb) {
-        foundVerb=matchPostagRegexp(tokens[i - k],VERB_INDSUBJIMP);
-        keepCounting=matchPostagRegexp(tokens[i - k],PREP_VERB_PRONOM);
-        k++;
-      }
-      if (foundVerb) {
-        pPronomBuscat=pronomPattern(tokens[i - k + 1]);
-        if (pPronomBuscat != null) {
-          if (i < tokens.length - 1 && matchPostagRegexp(tokens[i + 1],pPronomBuscat))           continue loop;
-          int j=1;
-          keepCounting=true;
-          while (i - j > 0 && keepCounting) {
-            if (matchPostagRegexp(tokens[i - j],pPronomBuscat))             continue loop;
-            keepCounting=matchPostagRegexp(tokens[i - j],PREP_VERB_PRONOM);
-            j++;
-          }
-        }
-      }
- else {
-        if (i < tokens.length - 1 && matchPostagRegexp(tokens[i + 1],PRONOM_REFLEXIU))         continue loop;
-        int j=1;
-        keepCounting=true;
-        while (i - j > 0 && keepCounting) {
-          if (matchPostagRegexp(tokens[i - j],PRONOM_REFLEXIU))           continue loop;
-          keepCounting=matchPostagRegexp(tokens[i - j],PREP_VERB_PRONOM);
-          j++;
-        }
-      }
-    }
-    if (theRuleMatches) {
-      final String msg="Aquest verb ??s reflexiu. Falta un pronom.";
-      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb reflexiu: falta un pronom");
+      final String msg="Aquest verb ??s pronominal. Falta un pronom.";
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb pronominal: falta un pronom");
       ruleMatches.add(ruleMatch);
+    }
+    if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS)) {
+      if (!isThereReflexivePronoun(tokens,i)) {
+        continue loop;
+      }
+      final String msg="Aquest verb no ??s pronominal. Sobra un pronom.";
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb no pronominal: sobra un pronom");
+      ruleMatches.add(ruleMatch);
+    }
+    if (matchLemmaRegexp(tokens[i],VERBS_MOVIMENT) && !matchPostagRegexp(tokens[i],VERB_AUXILIAR)) {
+      if (i + 1 < tokens.length && matchLemmaRegexp(tokens[i + 1],VERBS_PRONOMINALS)) {
+        continue loop;
+      }
+      if (isThereReflexivePronoun(tokens,i) && (!isTherePronoun(tokens,i,LEMMA_EN,POSTAG_EN))) {
+        final String msg="Per a usar aquest verb com a pronominal, cal afegir-hi el pronom'n'.";
+        final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Falta el pronom 'en'");
+        ruleMatches.add(ruleMatch);
+      }
     }
   }
   return toRuleMatchArray(ruleMatches);

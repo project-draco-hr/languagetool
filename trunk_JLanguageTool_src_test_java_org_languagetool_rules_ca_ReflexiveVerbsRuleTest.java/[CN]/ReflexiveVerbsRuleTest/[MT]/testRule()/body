@@ -34,6 +34,18 @@
   assertCorrect("va queixant-se");
   assertCorrect("va queixar-se");
   assertCorrect("va queixar-se-li");
+  assertCorrect("Se'n puj?? al cel");
+  assertCorrect("Se li'n va anar la m??");
+  assertCorrect("El nen pot callar");
+  assertIncorrect("L'home es marx?? de seguida");
+  assertIncorrect("El nen es cau");
+  assertIncorrect("El nen se li cau");
+  assertIncorrect("El nen s'ha de caure");
+  assertIncorrect("El nen pot caure's");
+  assertIncorrect("Calleu-vos");
+  assertIncorrect("Es puj?? al cel");
+  assertIncorrect("Va baixar-se del cotxe en marxa.");
+  assertIncorrect("Se li va anar la m??");
   assertIncorrect("comencen queixant");
   assertIncorrect("comenceu a queixar-nos");
   assertIncorrect("et puc queixar");

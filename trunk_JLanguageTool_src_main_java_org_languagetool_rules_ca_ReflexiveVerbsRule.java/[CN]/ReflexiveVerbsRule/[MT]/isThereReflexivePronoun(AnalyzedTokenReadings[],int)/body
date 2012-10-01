@@ -1,0 +1,70 @@
+{
+  Pattern pPronomBuscat=null;
+  if (matchPostagRegexp(tokens[i],VERB_INDSUBJ)) {
+    pPronomBuscat=pronomPattern(tokens[i]);
+    if (pPronomBuscat != null) {
+      int j=1;
+      boolean keepCounting=true;
+      while (i - j > 0 && j < 4 && keepCounting) {
+        if (matchPostagRegexp(tokens[i - j],pPronomBuscat))         return true;
+        keepCounting=matchPostagRegexp(tokens[i - j],PRONOM_FEBLE);
+        j++;
+      }
+    }
+  }
+  if (matchPostagRegexp(tokens[i],VERB_IMP)) {
+    pPronomBuscat=pronomPattern(tokens[i]);
+    if (pPronomBuscat != null) {
+      if (i + 1 < tokens.length && matchPostagRegexp(tokens[i + 1],pPronomBuscat))       return true;
+    }
+  }
+  if (matchPostagRegexp(tokens[i],VERB_PART)) {
+    if (matchLemmaRegexp(tokens[i - 1],VERB_HAVER) && matchPostagRegexp(tokens[i - 1],VERB_INDSUBJ)) {
+      pPronomBuscat=pronomPattern(tokens[i - 1]);
+      if (pPronomBuscat != null) {
+        int j=2;
+        boolean keepCounting=true;
+        while (i - j > 0 && j < 5 && keepCounting) {
+          if (matchPostagRegexp(tokens[i - j],pPronomBuscat))           return true;
+          keepCounting=matchPostagRegexp(tokens[i - j],PRONOM_FEBLE);
+          j++;
+        }
+      }
+    }
+ else     if (!(matchLemmaRegexp(tokens[i - 1],VERB_HAVER) && matchPostagRegexp(tokens[i - 1],VERB_INFGER)))     return true;
+  }
+  if (matchPostagRegexp(tokens[i],VERB_INFGER)) {
+    int k=1;
+    boolean keepCounting=true;
+    boolean foundVerb=false;
+    while (i - k > 0 && keepCounting && !foundVerb) {
+      foundVerb=matchPostagRegexp(tokens[i - k],VERB_INDSUBJIMP);
+      keepCounting=matchPostagRegexp(tokens[i - k],PREP_VERB_PRONOM);
+      k++;
+    }
+    if (foundVerb) {
+      pPronomBuscat=pronomPattern(tokens[i - k + 1]);
+      if (pPronomBuscat != null) {
+        if (i + 1 < tokens.length && matchPostagRegexp(tokens[i + 1],pPronomBuscat))         return true;
+        int j=1;
+        keepCounting=true;
+        while (i - j > 0 && keepCounting) {
+          if (matchPostagRegexp(tokens[i - j],pPronomBuscat))           return true;
+          keepCounting=matchPostagRegexp(tokens[i - j],PREP_VERB_PRONOM);
+          j++;
+        }
+      }
+    }
+ else {
+      if (i + 1 < tokens.length && matchPostagRegexp(tokens[i + 1],PRONOM_REFLEXIU))       return true;
+      int j=1;
+      keepCounting=true;
+      while (i - j > 0 && keepCounting) {
+        if (matchPostagRegexp(tokens[i - j],PRONOM_REFLEXIU))         return true;
+        keepCounting=matchPostagRegexp(tokens[i - j],PREP_VERB_PRONOM);
+        j++;
+      }
+    }
+  }
+  return false;
+}
