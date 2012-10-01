@@ -5,8 +5,9 @@
  catch (  IllegalArgumentException e) {
     final List<String> supportedLanguages=new ArrayList<String>();
     for (    final Language lang : Language.LANGUAGES) {
-      supportedLanguages.add(lang.getShortName());
+      supportedLanguages.add(lang.getShortNameWithVariant());
     }
+    Collections.sort(supportedLanguages);
     throw new IllegalArgumentException("Unknown language '" + userSuppliedLangCode + "'. Supported languages are: "+ supportedLanguages);
   }
 }
