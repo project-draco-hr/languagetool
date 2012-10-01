@@ -1,7 +1,7 @@
 {
-  final File file=new File(textFilename);
+  final File file=new File(xmlFileName);
   if (!file.exists() || !file.isFile()) {
-    throw new IOException("File doesn't exist or isn't a file: " + textFilename);
+    throw new IOException("File doesn't exist or isn't a file: " + xmlFileName);
   }
   final Language lang=Language.getLanguageForShortName(langCode);
   final JLanguageTool languageTool=new JLanguageTool(lang);
@@ -37,4 +37,6 @@
       xmlHandler.close();
     }
   }
+  final float matchesPerDoc=(float)xmlHandler.getRuleMatchCount() / xmlHandler.getArticleCount();
+  System.out.printf(lang + ": ??%.2f rule matches per document",matchesPerDoc);
 }
