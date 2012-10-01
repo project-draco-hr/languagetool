@@ -1,11 +1,12 @@
 {
-  final Language language=Language.getLanguageForShortName(userSuppliedLangCode);
-  if (language == null) {
+  try {
+    return Language.getLanguageForShortName(userSuppliedLangCode);
+  }
+ catch (  IllegalArgumentException e) {
     final List<String> supportedLanguages=new ArrayList<String>();
     for (    final Language lang : Language.LANGUAGES) {
       supportedLanguages.add(lang.getShortName());
     }
     throw new IllegalArgumentException("Unknown language '" + userSuppliedLangCode + "'. Supported languages are: "+ supportedLanguages);
   }
-  return language;
 }

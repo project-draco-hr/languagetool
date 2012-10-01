@@ -20,5 +20,5 @@
       return element;
     }
   }
-  return null;
+  throw new IllegalArgumentException("'" + shortLanguageCode + "' is not a language code known to LanguageTool");
 }

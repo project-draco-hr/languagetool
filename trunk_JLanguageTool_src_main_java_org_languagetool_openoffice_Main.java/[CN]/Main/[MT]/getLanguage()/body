@@ -43,7 +43,7 @@
   try {
     return Language.getLanguageForShortName(charLocale.Language + "-" + charLocale.Variant);
   }
- catch (  final Exception e) {
+ catch (  java.lang.IllegalArgumentException e) {
     return Language.getLanguageForShortName(charLocale.Language);
   }
 }

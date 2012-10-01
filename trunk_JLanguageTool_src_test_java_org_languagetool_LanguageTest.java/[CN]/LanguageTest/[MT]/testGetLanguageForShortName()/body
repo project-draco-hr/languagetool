@@ -1,5 +1,16 @@
 {
   assertEquals(Language.AMERICAN_ENGLISH,Language.getLanguageForShortName("en-US"));
   assertEquals(Language.GERMAN,Language.getLanguageForShortName("de"));
-  assertEquals(null,Language.getLanguageForShortName("xy"));
+  try {
+    Language.getLanguageForShortName("xy");
+    fail();
+  }
+ catch (  IllegalArgumentException expected) {
+  }
+  try {
+    Language.getLanguageForShortName("YY-KK");
+    fail();
+  }
+ catch (  IllegalArgumentException expected) {
+  }
 }

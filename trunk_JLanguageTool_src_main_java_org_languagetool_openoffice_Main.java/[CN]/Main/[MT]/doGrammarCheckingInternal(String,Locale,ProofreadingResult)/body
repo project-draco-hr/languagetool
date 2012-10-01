@@ -4,7 +4,7 @@
     try {
       langForShortName=Language.getLanguageForShortName(locale.Language + "-" + locale.Variant);
     }
- catch (    Exception e) {
+ catch (    java.lang.IllegalArgumentException e) {
       langForShortName=Language.getLanguageForShortName(locale.Language);
     }
     if (!langForShortName.equals(docLanguage) || langTool == null || recheck) {

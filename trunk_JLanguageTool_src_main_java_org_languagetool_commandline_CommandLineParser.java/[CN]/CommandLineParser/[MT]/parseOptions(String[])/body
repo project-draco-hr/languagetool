@@ -11,7 +11,7 @@
       options.setPrintLanguages(true);
     }
  else     if (args[i].equals("-h") || args[i].equals("-help") || args[i].equals("--help")|| args[i].equals("--?")) {
-      throw new IllegalArgumentException();
+      options.setPrintUsage(true);
     }
  else     if (args[i].equals("-adl") || args[i].equals("--autoDetect")) {
       LanguageIdentifierTools.addLtProfiles();
@@ -106,7 +106,7 @@
       options.setFilename(args[i]);
     }
  else {
-      throw new IllegalArgumentException("Unknown option: " + args[i]);
+      throw new UnknownParameterException("Unknown parameter: " + args[i]);
     }
   }
   return options;
