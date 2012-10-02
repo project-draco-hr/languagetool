@@ -14,27 +14,33 @@
     if (i > 1 && mUpperCase.matches())     continue loop;
     if (matchLemmaRegexp(tokens[i],VERBS_PRONOMINALS)) {
       if (matchLemmaRegexp(tokens[i],NO_VERBS_PRONOMINALS))       continue loop;
-      if (isThereReflexivePronoun(tokens,i)) {
-        continue loop;
-      }
+      if (matchPostagRegexp(tokens[i],VERB_PARTICIPI) && !matchLemmaRegexp(tokens[i - 1],VERB_HAVER))       continue loop;
+      if (isThereReflexivePronoun(tokens,i))       continue loop;
       final String msg="Aquest verb ??s pronominal. Falta un pronom.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb pronominal: falta un pronom");
       ruleMatches.add(ruleMatch);
     }
     if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS)) {
-      if (!isThereReflexivePronoun(tokens,i)) {
-        continue loop;
-      }
+      if (matchLemmaRegexp(tokens[i],NO_VERBS_NO_PRONOMINALS))       continue loop;
+      if (!isThereReflexivePronoun(tokens,i))       continue loop;
+      if (isThereVerbBefore(tokens,i,VERBS_SOVINT_PRONOMINALS) || (isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) || isThereVerbBefore(tokens,i,VERBS_PRONOMINALS))       continue loop;
+      if (isTherePronounBefore(tokens,i,LEMMA_ES,POSTAG_ES) && !isTherePersonalSubjectBefore(tokens,i,TRENCA_COMPTE2) && isVerbNumberPerson(tokens,i,VERB_3S))       continue loop;
       final String msg="Aquest verb no ??s pronominal. Sobra un pronom.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb no pronominal: sobra un pronom");
       ruleMatches.add(ruleMatch);
     }
     if (matchLemmaRegexp(tokens[i],VERBS_MOVIMENT) && !matchPostagRegexp(tokens[i],VERB_AUXILIAR)) {
-      if (i + 1 < tokens.length && matchLemmaRegexp(tokens[i + 1],VERBS_PRONOMINALS)) {
-        continue loop;
+      if (isThereVerbBefore(tokens,i,VERBS_SOVINT_PRONOMINALS) || (isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) || isThereVerbBefore(tokens,i,VERBS_PRONOMINALS))       continue loop;
+      if (matchLemmaRegexp(tokens[i],VERB_ANAR)) {
+        if (isThereAfter(tokens,i,VERB_GERUNDI))         continue loop;
+        if (isThereVerbAfter(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) || isThereVerbAfter(tokens,i,VERBS_PRONOMINALS))         continue loop;
+        if (isTherePronounBefore(tokens,i,LEMMA_ES,POSTAG_ES) && (!isTherePersonalSubjectBefore(tokens,i,TRENCA_COMPTE) || isTherePronounBefore(tokens,i,LEMMA_HI,POSTAG_HI)) && isVerbNumberPerson(tokens,i,VERB_3S))         continue loop;
+      }
+ else {
+        if (isTherePronounBefore(tokens,i,LEMMA_ES,POSTAG_ES) && !isTherePersonalSubjectBefore(tokens,i,TRENCA_COMPTE))         continue loop;
       }
       if (isThereReflexivePronoun(tokens,i) && (!isTherePronoun(tokens,i,LEMMA_EN,POSTAG_EN))) {
-        final String msg="Per a usar aquest verb com a pronominal, cal afegir-hi el pronom'n'.";
+        final String msg="Per a usar aquest verb com a pronominal, cal afegir-hi el pronom 'en'.";
         final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Falta el pronom 'en'");
         ruleMatches.add(ruleMatch);
       }

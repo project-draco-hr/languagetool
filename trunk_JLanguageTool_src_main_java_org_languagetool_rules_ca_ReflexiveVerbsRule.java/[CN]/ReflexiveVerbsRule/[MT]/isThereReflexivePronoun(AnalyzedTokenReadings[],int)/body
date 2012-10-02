@@ -15,10 +15,10 @@
   if (matchPostagRegexp(tokens[i],VERB_IMP)) {
     pPronomBuscat=pronomPattern(tokens[i]);
     if (pPronomBuscat != null) {
-      if (i + 1 < tokens.length && matchPostagRegexp(tokens[i + 1],pPronomBuscat))       return true;
+      if (i + 1 < tokens.length && matchPostagRegexp(tokens[i + 1],pPronomBuscat) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT))       return true;
     }
   }
-  if (matchPostagRegexp(tokens[i],VERB_PART)) {
+  if (matchPostagRegexp(tokens[i],VERB_PARTICIPI)) {
     if (matchLemmaRegexp(tokens[i - 1],VERB_HAVER) && matchPostagRegexp(tokens[i - 1],VERB_INDSUBJ)) {
       pPronomBuscat=pronomPattern(tokens[i - 1]);
       if (pPronomBuscat != null) {
@@ -31,7 +31,6 @@
         }
       }
     }
- else     if (!(matchLemmaRegexp(tokens[i - 1],VERB_HAVER) && matchPostagRegexp(tokens[i - 1],VERB_INFGER)))     return true;
   }
   if (matchPostagRegexp(tokens[i],VERB_INFGER)) {
     int k=1;
@@ -45,23 +44,25 @@
     if (foundVerb) {
       pPronomBuscat=pronomPattern(tokens[i - k + 1]);
       if (pPronomBuscat != null) {
-        if (i + 1 < tokens.length && matchPostagRegexp(tokens[i + 1],pPronomBuscat))         return true;
+        if (i + 1 < tokens.length && matchPostagRegexp(tokens[i + 1],pPronomBuscat) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT))         return true;
         int j=1;
         keepCounting=true;
         while (i - j > 0 && keepCounting) {
           if (matchPostagRegexp(tokens[i - j],pPronomBuscat))           return true;
           keepCounting=matchPostagRegexp(tokens[i - j],PREP_VERB_PRONOM);
+          if (tokens[i - j].getToken().equalsIgnoreCase("per") && tokens[i - j + 1].getToken().equalsIgnoreCase("a"))           keepCounting=false;
           j++;
         }
       }
     }
  else {
-      if (i + 1 < tokens.length && matchPostagRegexp(tokens[i + 1],PRONOM_REFLEXIU))       return true;
+      if (i + 1 < tokens.length && matchPostagRegexp(tokens[i + 1],PRONOM_REFLEXIU) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT))       return true;
       int j=1;
       keepCounting=true;
       while (i - j > 0 && keepCounting) {
         if (matchPostagRegexp(tokens[i - j],PRONOM_REFLEXIU))         return true;
         keepCounting=matchPostagRegexp(tokens[i - j],PREP_VERB_PRONOM);
+        if (tokens[i - j].getToken().equalsIgnoreCase("per") && tokens[i - j + 1].getToken().equalsIgnoreCase("a"))         keepCounting=false;
         j++;
       }
     }
