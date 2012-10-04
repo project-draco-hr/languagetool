@@ -1,7 +1,5 @@
 {
-  final URL url=this.getClass().getResource(ENGLISH_TEST_FILE);
-  final URI uri=new URI(url.toString());
-  String[] args=new String[]{"-adl",uri.getPath()};
+  String[] args=new String[]{"-adl",getTestFilePath()};
   Main.main(args);
   String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Using English for file") == 0);

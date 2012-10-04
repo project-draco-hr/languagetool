@@ -1,7 +1,5 @@
 {
-  final URL url=this.getClass().getResource(ENGLISH_TEST_FILE);
-  final URI uri=new URI(url.toString());
-  String[] args=new String[]{"-l","en","--api",uri.getPath()};
+  String[] args=new String[]{"-l","en","--api",getTestFilePath()};
   Main.main(args);
   String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);

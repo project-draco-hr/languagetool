@@ -1,0 +1,7 @@
+{
+  final URL url=this.getClass().getResource(ENGLISH_TEST_FILE);
+  if (url == null) {
+    throw new RuntimeException(ENGLISH_TEST_FILE + " not found in classpath");
+  }
+  return new URI(url.toString()).getPath();
+}
