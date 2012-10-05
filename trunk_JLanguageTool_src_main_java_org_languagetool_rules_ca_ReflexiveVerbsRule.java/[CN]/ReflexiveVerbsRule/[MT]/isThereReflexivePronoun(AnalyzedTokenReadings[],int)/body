@@ -39,6 +39,7 @@
     while (i - k > 0 && keepCounting && !foundVerb) {
       foundVerb=matchPostagRegexp(tokens[i - k],VERB_INDSUBJIMP);
       keepCounting=matchPostagRegexp(tokens[i - k],PREP_VERB_PRONOM);
+      if (matchPostagRegexp(tokens[i - k],VERB_INDSUBJ) && matchPostagRegexp(tokens[i - k + 1],VERB_INFGER))       keepCounting=false;
       k++;
     }
     if (foundVerb) {
