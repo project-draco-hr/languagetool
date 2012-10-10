@@ -26,10 +26,13 @@
   }
   final String lastToken=tokens[tokens.length - 1].getToken();
   boolean noException=false;
-  if ((language == Language.RUSSIAN || language == Language.POLISH || language == Language.UKRAINIAN) && (";".equals(lastParagraphString) || ";".equals(lastToken) || ",".equals(lastParagraphString)|| ",".equals(lastToken))) {
+  if ((language == Language.RUSSIAN || language == Language.POLISH || language == Language.UKRAINIAN || language == Language.BELARUSIAN) && (";".equals(lastParagraphString) || ";".equals(lastToken) || ",".equals(lastParagraphString)|| ",".equals(lastToken))) {
     noException=true;
   }
-  if ((language == Language.RUSSIAN || language == Language.ITALIAN || language == Language.POLISH || language == Language.GERMAN || language == Language.UKRAINIAN) && (",".equals(lastParagraphString))) {
+  if ((language == Language.RUSSIAN || language == Language.ITALIAN || language == Language.POLISH || language == Language.GERMAN || language == Language.UKRAINIAN || language == Language.BELARUSIAN) && (",".equals(lastParagraphString))) {
+    noException=true;
+  }
+  if ((language == Language.RUSSIAN) && !(lastToken.matches("[.?!???;,]"))) {
     noException=true;
   }
   lastParagraphString=lastToken;
