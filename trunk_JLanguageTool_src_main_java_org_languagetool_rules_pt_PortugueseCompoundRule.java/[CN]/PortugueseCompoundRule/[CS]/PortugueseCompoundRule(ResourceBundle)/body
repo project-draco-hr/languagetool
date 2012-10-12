@@ -1,4 +1,4 @@
 {
-  super(messages,FILE_NAME,"Dieses Wort wird mit Bindestrich geschrieben.","Dieses Wort wird zusammengeschrieben.","Dieses Wort wird zusammen oder mit Bindestrich geschrieben.");
-  super.setShort("Zusammenschreibung von W??rtern");
+  super(messages,FILE_NAME,"Esta palavra ?? hifenizada.","Esta palavra ?? escrita em conjunto.","Esta palavra ?? uma palavra ou com um h??fen.");
+  super.setShort("Juntos grafias de palavras");
 }
