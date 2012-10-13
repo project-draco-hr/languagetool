@@ -65,13 +65,13 @@
             if (matchPostagRegexp(tokens[i - j],NOM_MS)) {
               cNMS[level]++;
             }
-            if (matchPostagRegexp(tokens[i - j],NOM_FS)) {
+ else             if (matchPostagRegexp(tokens[i - j],NOM_FS)) {
               cNFS[level]++;
             }
-            if (matchPostagRegexp(tokens[i - j],NOM_MP)) {
+ else             if (matchPostagRegexp(tokens[i - j],NOM_MP)) {
               cNMP[level]++;
             }
-            if (matchPostagRegexp(tokens[i - j],NOM_FP)) {
+ else             if (matchPostagRegexp(tokens[i - j],NOM_FP)) {
               cNFP[level]++;
             }
           }
