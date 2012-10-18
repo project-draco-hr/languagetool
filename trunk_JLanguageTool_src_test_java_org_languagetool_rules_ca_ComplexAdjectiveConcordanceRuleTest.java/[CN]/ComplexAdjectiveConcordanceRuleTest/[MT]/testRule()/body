@@ -52,6 +52,10 @@
   assertCorrect("la denominaci?? valenci?? per a la llengua pr??pia");
   assertCorrect("Com m??s petita ??s l'obertura de diafragma, m??s grans s??n la profunditat de camp i la profunditat");
   assertCorrect("es movien mitjan??ant filferros, tot projectant ombres");
+  assertCorrect("sota les grans persianes de color verd recalcades");
+  assertIncorrect("sota les grans persianes de color verd recalcada");
+  assertIncorrect("sota les grans persianes de color verd recalcat");
+  assertIncorrect("sota les grans persianes de color verd recalcats");
   assertIncorrect("S??n unes corbes de llum complexos.");
   assertIncorrect("fets moltes vegades inexplicable.");
   assertIncorrect("eren uns fets cada volta m??s inexplicable");
