@@ -36,7 +36,7 @@
     if (xmlHandler != null) {
       xmlHandler.close();
     }
+    final float matchesPerDoc=(float)xmlHandler.getRuleMatchCount() / xmlHandler.getArticleCount();
+    System.out.printf(lang + ": ??%.2f rule matches per document\n",matchesPerDoc);
   }
-  final float matchesPerDoc=(float)xmlHandler.getRuleMatchCount() / xmlHandler.getArticleCount();
-  System.out.printf(lang + ": ??%.2f rule matches per document",matchesPerDoc);
 }
