@@ -32,6 +32,9 @@
  catch (  ErrorLimitReachedException e) {
     System.out.println(e);
   }
+catch (  ArticleLimitReachedException e) {
+    System.out.println(e);
+  }
  finally {
     if (xmlHandler != null) {
       xmlHandler.close();

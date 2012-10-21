@@ -1,0 +1,3 @@
+{
+  return "Maximum number of articles (" + limit + ") reached";
+}
