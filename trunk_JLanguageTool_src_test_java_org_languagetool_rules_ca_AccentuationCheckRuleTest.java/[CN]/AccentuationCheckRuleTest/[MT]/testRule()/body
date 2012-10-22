@@ -1,4 +1,5 @@
 {
+  assertCorrect("els seg??ents territoris externs habitats:");
   assertCorrect("Cap faria una cosa aix??.");
   assertCorrect("El cos genera suficient pressi?? interna.");
   assertCorrect("Les seues contr??ries.");
@@ -36,7 +37,6 @@
   assertIncorrect("De manera obvia.");
   assertIncorrect("Ell fa tasques especifiques.");
   assertIncorrect("Un home adulter.");
-  assertIncorrect("Va deixar els nens atonits.");
   assertIncorrect("La sureda ocupa amplies extensions en la muntanya.");
   assertIncorrect("F??u una magnifica digitaci??.");
   assertIncorrect("Els habitats de la comarca.");

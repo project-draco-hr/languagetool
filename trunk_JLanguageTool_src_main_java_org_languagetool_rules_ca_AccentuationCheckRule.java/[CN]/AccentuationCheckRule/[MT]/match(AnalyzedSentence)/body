@@ -35,7 +35,7 @@
     final Matcher mArticleELFS=ARTICLE_EL_FS.matcher(prevToken);
     final Matcher mArticleELMP=ARTICLE_EL_MP.matcher(prevToken);
     final Matcher mArticleELFP=ARTICLE_EL_FP.matcher(prevToken);
-    if (isRelevantWord) {
+    if (isRelevantWord && !matchPostagRegexp(tokens[i],GN)) {
       if (tokens[i - 1].hasPosTag("SPS00") && !matchPostagRegexp(tokens[i - 1],DETERMINANT) && !matchPostagRegexp(tokens[i],INFINITIU)) {
         replacement=relevantWords.get(token).getToken();
       }
@@ -61,7 +61,7 @@
         replacement=relevantWords.get(token).getToken();
       }
     }
-    if (isRelevantWord2) {
+    if (isRelevantWord2 && !matchPostagRegexp(tokens[i],GN)) {
       if ((matchPostagRegexp(relevantWords2.get(token),ADJECTIU_MS) && matchPostagRegexp(tokens[i - 1],NOM_MS) && !tokens[i - 1].hasPosTag("_GN_FS")&& matchPostagRegexp(tokens[i],VERB_CONJUGAT)) || (matchPostagRegexp(relevantWords2.get(token),ADJECTIU_FS) && prevPrevToken.equalsIgnoreCase("de") && (prevToken.equals("manera") || prevToken.equals("forma"))) || (matchPostagRegexp(relevantWords2.get(token),ADJECTIU_MP) && matchPostagRegexp(tokens[i - 1],NOM_MP))|| (matchPostagRegexp(relevantWords2.get(token),ADJECTIU_FP) && matchPostagRegexp(tokens[i - 1],NOM_FP))) {
         replacement=relevantWords2.get(token).getToken();
       }
