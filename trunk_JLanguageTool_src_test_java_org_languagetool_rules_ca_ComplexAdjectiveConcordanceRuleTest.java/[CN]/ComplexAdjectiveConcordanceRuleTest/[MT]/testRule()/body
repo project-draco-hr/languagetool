@@ -19,7 +19,6 @@
   assertCorrect("Es fa segons regles de lectura constants i regulars.");
   assertCorrect("Les meitats dreta i esquerra de la mand??bula.");
   assertCorrect("Els per??odes cl??ssic i medieval.");
-  assertCorrect("Els costats superior i laterals.");
   assertCorrect("En una mol??cula de glucosa i una de fructosa unides.");
   assertCorrect("??ndex de desenvolupament hum?? i qualitat de vida elevat");
   assertCorrect("??ndex de desenvolupament hum?? i qualitat de vida elevats");
@@ -53,6 +52,7 @@
   assertCorrect("Com m??s petita ??s l'obertura de diafragma, m??s grans s??n la profunditat de camp i la profunditat");
   assertCorrect("es movien mitjan??ant filferros, tot projectant ombres");
   assertCorrect("sota les grans persianes de color verd recalcades");
+  assertIncorrect("pantalons curt o llargs");
   assertIncorrect("sota les grans persianes de color verd recalcada");
   assertIncorrect("sota les grans persianes de color verd recalcat");
   assertIncorrect("sota les grans persianes de color verd recalcats");
