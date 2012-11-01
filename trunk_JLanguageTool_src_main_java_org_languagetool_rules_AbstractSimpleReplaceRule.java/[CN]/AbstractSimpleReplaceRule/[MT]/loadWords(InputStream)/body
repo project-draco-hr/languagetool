@@ -1,17 +1,10 @@
 {
   final Map<String,String> map=new HashMap<String,String>();
-  InputStreamReader isr=null;
-  BufferedReader br=null;
+  final Scanner scanner=new Scanner(stream,getEncoding());
   try {
-    isr=new InputStreamReader(file,getEncoding());
-    br=new BufferedReader(isr);
-    String line;
-    while ((line=br.readLine()) != null) {
-      line=line.trim();
-      if (line.length() < 1) {
-        continue;
-      }
-      if (line.charAt(0) == '#') {
+    while (scanner.hasNextLine()) {
+      final String line=scanner.nextLine();
+      if (line.length() < 1 || line.charAt(0) == '#') {
         continue;
       }
       final String[] parts=line.split("=");
@@ -22,12 +15,7 @@
     }
   }
   finally {
-    if (br != null) {
-      br.close();
-    }
-    if (isr != null) {
-      isr.close();
-    }
+    scanner.close();
   }
   return map;
 }
