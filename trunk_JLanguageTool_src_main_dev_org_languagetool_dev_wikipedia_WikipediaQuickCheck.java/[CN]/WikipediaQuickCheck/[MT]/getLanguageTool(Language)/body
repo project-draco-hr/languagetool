@@ -4,5 +4,6 @@
   for (  String disabledRuleId : disabledRuleIds) {
     langTool.disableRule(disabledRuleId);
   }
+  disableSpellingRules(langTool);
   return langTool;
 }
