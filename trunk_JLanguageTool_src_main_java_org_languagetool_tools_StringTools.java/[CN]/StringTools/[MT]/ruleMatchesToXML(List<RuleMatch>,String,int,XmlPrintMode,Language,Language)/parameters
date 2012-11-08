@@ -1,0 +1,6 @@
+List<RuleMatch> ruleMatches
+String text
+int contextSize
+XmlPrintMode xmlMode
+Language lang
+Language motherTongue

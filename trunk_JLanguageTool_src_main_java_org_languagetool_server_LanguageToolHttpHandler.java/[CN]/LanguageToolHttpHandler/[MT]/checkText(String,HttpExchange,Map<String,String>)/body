@@ -1,9 +1,17 @@
 {
   final String langParam=parameters.get("language");
-  if (langParam == null) {
-    throw new IllegalArgumentException("Missing 'language' parameter");
+  final String autodetectParam=parameters.get("autodetect");
+  Language lang;
+  if (langParam == null && autodetectParam == null) {
+    throw new IllegalArgumentException("Missing 'language' parameter. Use autodetect=1 for auto-detecting the language of the input text.");
   }
-  final Language lang=Language.getLanguageForShortName(langParam);
+  if (autodetectParam != null && autodetectParam.equals("1")) {
+    lang=detectLanguageOfString(text,langParam);
+    print("auto-detected language: " + lang.getShortNameWithVariant());
+  }
+ else {
+    lang=Language.getLanguageForShortName(langParam);
+  }
   final String motherTongueParam=parameters.get("motherTongue");
   Language motherTongue=null;
   if (null != motherTongueParam) {
@@ -38,7 +46,7 @@
     matches=Tools.checkBitext(sourceText,text,sourceLt,targetLt,bRules);
   }
   httpExchange.getResponseHeaders().set("Content-Type",CONTENT_TYPE_VALUE);
-  final String response=StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE,StringTools.XmlPrintMode.NORMAL_XML);
+  String response=StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE,StringTools.XmlPrintMode.NORMAL_XML,lang,motherTongue);
   httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes(ENCODING).length);
   httpExchange.getResponseBody().write(response.getBytes(ENCODING));
 }

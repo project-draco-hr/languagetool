@@ -1,0 +1,19 @@
+{
+  final int MINLENGTHFORAUTODETECTION=60;
+  if (text.length() < MINLENGTHFORAUTODETECTION && fallbackLanguage != null) {
+    System.out.print("auto-detected language is not reasonably certain");
+    return Language.getLanguageForShortName(fallbackLanguage);
+  }
+  final LanguageIdentifier identifier=new LanguageIdentifier(text);
+  Language lang;
+  try {
+    lang=Language.getLanguageForShortName(identifier.getLanguage());
+  }
+ catch (  IllegalArgumentException e) {
+    lang=Language.AMERICAN_ENGLISH;
+  }
+  if (lang.getDefaultVariant() != null) {
+    lang=lang.getDefaultVariant();
+  }
+  return lang;
+}
