@@ -1,7 +1,6 @@
 {
-  final int MINLENGTHFORAUTODETECTION=60;
-  if (text.length() < MINLENGTHFORAUTODETECTION && fallbackLanguage != null) {
-    System.out.print("auto-detected language is not reasonably certain");
+  if (text.length() < MIN_LENGTH_FOR_AUTO_DETECTION && fallbackLanguage != null) {
+    print("Auto-detected language of text with length " + text.length() + " is not reasonably certain, using '"+ fallbackLanguage+ "' as fallback");
     return Language.getLanguageForShortName(fallbackLanguage);
   }
   final LanguageIdentifier identifier=new LanguageIdentifier(text);
