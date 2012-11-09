@@ -1,0 +1,4 @@
+{
+  super(messages,FILE_NAME,"This word is normally spelled with hyphen.","This word is normally spelled as one.","This expression is normally spelled as one or with hyphen.");
+  super.setShort("Hyphenation problem");
+}
