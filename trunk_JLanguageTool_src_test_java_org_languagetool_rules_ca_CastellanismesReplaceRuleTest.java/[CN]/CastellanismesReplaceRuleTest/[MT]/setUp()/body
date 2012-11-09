@@ -1,5 +1,0 @@
-{
-  super.setUp();
-  rule=new CastellanismesReplaceRule(TestTools.getMessages("ca"));
-  langTool=new JLanguageTool(Language.CATALAN);
-}

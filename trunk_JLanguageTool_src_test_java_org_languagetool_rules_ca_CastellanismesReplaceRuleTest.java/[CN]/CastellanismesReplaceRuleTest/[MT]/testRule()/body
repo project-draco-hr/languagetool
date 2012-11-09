@@ -1,5 +1,0 @@
-{
-  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Tot est?? b??.")).length);
-  checkSimpleReplaceRule("Despu??s de la mort de Lenin.","Despr??s");
-  checkSimpleReplaceRule("Un any despu??s.","despr??s");
-}

@@ -1,7 +1,0 @@
-{
-  RuleMatch[] matches;
-  matches=rule.match(langTool.getAnalyzedSentence(sentence));
-  assertEquals("Invalid matches.length while checking sentence: " + sentence,1,matches.length);
-  assertEquals("Invalid replacement count wile checking sentence: " + sentence,1,matches[0].getSuggestedReplacements().size());
-  assertEquals("Invalid suggested replacement while checking sentence: " + sentence,word,matches[0].getSuggestedReplacements().get(0));
-}

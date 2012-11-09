@@ -1,5 +1,0 @@
-{
-  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Tot est?? b??.")).length);
-  checkSimpleReplaceRule("Pneumonia v??rica.","Pneum??nia");
-  checkSimpleReplaceRule("Supercopa d'Europa de futb??l.","futbol");
-}

@@ -1,5 +1,0 @@
-{
-  super.setUp();
-  rule=new AccentuacioReplaceRule(TestTools.getMessages("ca"));
-  langTool=new JLanguageTool(Language.CATALAN);
-}
