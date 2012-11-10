@@ -4,7 +4,11 @@
   try {
     options=commandLineParser.parseOptions(args);
   }
- catch (  IllegalArgumentException e) {
+ catch (  WrongParameterNumberException e) {
+    commandLineParser.printUsage();
+    System.exit(1);
+  }
+catch (  IllegalArgumentException e) {
     System.err.println(e.toString());
     System.exit(1);
   }
