@@ -1,5 +1,0 @@
-int port
-boolean verbose
-boolean runInternally
-String host
-Set<String> allowedIps

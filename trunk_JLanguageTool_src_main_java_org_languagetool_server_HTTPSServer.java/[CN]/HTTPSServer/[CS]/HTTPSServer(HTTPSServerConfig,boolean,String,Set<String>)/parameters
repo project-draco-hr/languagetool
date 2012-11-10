@@ -1,0 +1,4 @@
+HTTPSServerConfig config
+boolean runInternally
+String host
+Set<String> allowedIps

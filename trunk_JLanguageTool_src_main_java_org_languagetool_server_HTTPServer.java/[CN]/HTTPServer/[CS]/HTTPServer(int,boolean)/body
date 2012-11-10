@@ -1,3 +1,0 @@
-{
-  this(port,verbose,false,DEFAULT_ALLOWED_IPS);
-}

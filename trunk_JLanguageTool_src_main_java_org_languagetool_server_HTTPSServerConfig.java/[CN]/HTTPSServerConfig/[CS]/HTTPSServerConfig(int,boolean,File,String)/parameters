@@ -1,0 +1,4 @@
+int serverPort
+boolean verbose
+File keystore
+String keyStorePassword

@@ -1,6 +1,6 @@
 {
   final String postData="language=" + lang.getShortName() + "&text="+ URLEncoder.encode(text,"UTF-8");
-  final URL url=new URL("http://localhost:" + HTTPServer.DEFAULT_PORT);
+  final URL url=new URL("http://localhost:" + DEFAULT_PORT);
   final URLConnection connection=url.openConnection();
   connection.setDoOutput(true);
   final OutputStreamWriter wr=new OutputStreamWriter(connection.getOutputStream());

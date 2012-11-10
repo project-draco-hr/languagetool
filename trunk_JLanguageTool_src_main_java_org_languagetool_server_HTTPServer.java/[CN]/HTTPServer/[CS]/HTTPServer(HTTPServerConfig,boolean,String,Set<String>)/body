@@ -1,0 +1,15 @@
+{
+  this.port=config.getPort();
+  try {
+    if (host == null) {
+      server=HttpServer.create(new InetSocketAddress(port),0);
+    }
+ else {
+      server=HttpServer.create(new InetSocketAddress(host,port),0);
+    }
+    server.createContext("/",new LanguageToolHttpHandler(config.isVerbose(),allowedIps,runInternally));
+  }
+ catch (  Exception e) {
+    throw new PortBindingException("LanguageTool HTTP server could not be started on host '" + host + "', port "+ port+ " - maybe something else is running on that port already?",e);
+  }
+}

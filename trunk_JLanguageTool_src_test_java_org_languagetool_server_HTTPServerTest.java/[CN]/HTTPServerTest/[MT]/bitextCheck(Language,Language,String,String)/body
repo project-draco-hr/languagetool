@@ -5,7 +5,7 @@
   if (null != motherTongue) {
     urlOptions+="&motherTongue=" + motherTongue.getShortName();
   }
-  final URL url=new URL("http://localhost:" + HTTPServer.DEFAULT_PORT + urlOptions);
+  final URL url=new URL("http://localhost:" + DEFAULT_PORT + urlOptions);
   final InputStream stream=(InputStream)url.getContent();
   final String result=StringTools.streamToString(stream,"UTF-8");
   return result;

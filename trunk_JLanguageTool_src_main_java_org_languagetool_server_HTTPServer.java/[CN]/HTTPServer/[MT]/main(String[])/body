@@ -5,33 +5,21 @@
     System.out.println("  --public    allow this server process to be connected from anywhere (not recommended)");
     System.exit(1);
   }
-  boolean verbose=false;
-  boolean publicAccess=false;
   final boolean runInternal=false;
-  int port=DEFAULT_PORT;
-  for (int i=0; i < args.length; i++) {
-    if ("-p".equals(args[i]) || "--port".equals(args[i])) {
-      port=Integer.parseInt(args[++i]);
-    }
- else     if ("-v".equals(args[i]) || "--verbose".equals(args[i])) {
-      verbose=true;
-    }
- else     if ("--public".equals(args[i])) {
-      publicAccess=true;
-    }
-  }
+  final HTTPServerConfig config=new HTTPServerConfig(args);
   try {
     final HTTPServer server;
-    if (publicAccess) {
+    System.out.println("WARNING: running in HTTP mode, consider using SSL by running " + HTTPSServer.class.getName() + " instead");
+    if (config.isPublicAccess()) {
       System.out.println("WARNING: running in public mode, LanguageTool API can be accessed without restrictions!");
-      server=new HTTPServer(port,verbose,runInternal,null,null);
+      server=new HTTPServer(config,runInternal,null,null);
     }
  else {
-      server=new HTTPServer(port,verbose,runInternal,DEFAULT_HOST,DEFAULT_ALLOWED_IPS);
+      server=new HTTPServer(config,runInternal,DEFAULT_HOST,DEFAULT_ALLOWED_IPS);
     }
     server.run();
   }
  catch (  Exception e) {
-    throw new RuntimeException("Could not start LanguageTool HTTP server on " + DEFAULT_HOST + ", port "+ port,e);
+    throw new RuntimeException("Could not start LanguageTool HTTP server on " + DEFAULT_HOST + ", port "+ config.getPort(),e);
   }
 }

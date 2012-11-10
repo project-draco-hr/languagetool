@@ -1,6 +1,6 @@
 {
   if (serverPortField == null) {
-    return HTTPServer.DEFAULT_PORT;
+    return HTTPServerConfig.DEFAULT_PORT;
   }
   return Integer.parseInt(serverPortField.getText());
 }

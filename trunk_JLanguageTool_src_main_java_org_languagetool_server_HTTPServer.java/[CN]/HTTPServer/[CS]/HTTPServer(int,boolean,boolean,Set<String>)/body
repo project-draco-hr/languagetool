@@ -1,3 +1,0 @@
-{
-  this(port,verbose,runInternally,DEFAULT_HOST,allowedIps);
-}

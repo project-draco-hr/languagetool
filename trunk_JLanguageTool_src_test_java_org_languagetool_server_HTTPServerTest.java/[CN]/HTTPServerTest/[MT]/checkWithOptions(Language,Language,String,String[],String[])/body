@@ -10,7 +10,7 @@
   if (enabledRules.length > 0) {
     urlOptions+="&enabled=" + join(enabledRules,",");
   }
-  final URL url=new URL("http://localhost:" + HTTPServer.DEFAULT_PORT + urlOptions);
+  final URL url=new URL("http://localhost:" + DEFAULT_PORT + urlOptions);
   final InputStream stream=(InputStream)url.getContent();
   final String result=StringTools.streamToString(stream,"UTF-8");
   return result;

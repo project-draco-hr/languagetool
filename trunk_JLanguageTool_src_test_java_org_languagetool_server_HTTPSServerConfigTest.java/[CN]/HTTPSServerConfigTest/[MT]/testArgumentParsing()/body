@@ -1,0 +1,20 @@
+{
+  try {
+    new HTTPSServerConfig(new String[]{});
+    fail();
+  }
+ catch (  IllegalArgumentException expected) {
+  }
+  final HTTPSServerConfig config1=new HTTPSServerConfig("--public --keystore foo --password xxx".split(" "));
+  assertThat(config1.getPort(),is(HTTPServerConfig.DEFAULT_PORT));
+  assertThat(config1.isPublicAccess(),is(true));
+  assertThat(config1.isVerbose(),is(false));
+  assertThat(config1.getKeystore().getName(),is("foo"));
+  assertThat(config1.getKeyStorePassword(),is("xxx"));
+  final HTTPSServerConfig config2=new HTTPSServerConfig("-p 9999 --keystore /tmp/foo.kjs --password pwd".split(" "));
+  assertThat(config2.getPort(),is(9999));
+  assertThat(config2.isPublicAccess(),is(false));
+  assertThat(config2.isVerbose(),is(false));
+  assertThat(config2.getKeystore().getAbsolutePath(),is("/tmp/foo.kjs"));
+  assertThat(config2.getKeyStorePassword(),is("pwd"));
+}

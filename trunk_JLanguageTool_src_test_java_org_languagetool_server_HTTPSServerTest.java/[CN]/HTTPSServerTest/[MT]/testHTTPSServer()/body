@@ -1,0 +1,17 @@
+{
+  disableCertChecks();
+  final URL keystore=HTTPSServerTest.class.getResource(KEYSTORE);
+  if (keystore == null) {
+    throw new RuntimeException("Not found in classpath : " + KEYSTORE);
+  }
+  final File keyStoreFile=new File(keystore.getFile());
+  final HTTPSServerConfig config=new HTTPSServerConfig(keyStoreFile,KEYSTORE_PASSWORD);
+  final HTTPSServer server=new HTTPSServer(config,false,HTTPServerConfig.DEFAULT_HOST,null);
+  try {
+    server.run();
+    runTests();
+  }
+  finally {
+    server.stop();
+  }
+}

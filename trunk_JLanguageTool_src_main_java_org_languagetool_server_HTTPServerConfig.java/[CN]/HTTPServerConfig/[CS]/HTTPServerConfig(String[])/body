@@ -1,0 +1,13 @@
+{
+  for (int i=0; i < args.length; i++) {
+    if ("-p".equals(args[i]) || "--port".equals(args[i])) {
+      port=Integer.parseInt(args[++i]);
+    }
+ else     if ("-v".equals(args[i]) || "--verbose".equals(args[i])) {
+      verbose=true;
+    }
+ else     if ("--public".equals(args[i])) {
+      publicAccess=true;
+    }
+  }
+}

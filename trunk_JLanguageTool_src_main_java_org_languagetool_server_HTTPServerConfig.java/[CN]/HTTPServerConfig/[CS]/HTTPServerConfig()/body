@@ -1,0 +1,5 @@
+{
+  this.port=DEFAULT_PORT;
+  this.verbose=false;
+  this.publicAccess=false;
+}

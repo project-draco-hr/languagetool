@@ -1,0 +1,3 @@
+HTTPServerConfig config
+boolean runInternally
+Set<String> allowedIps
