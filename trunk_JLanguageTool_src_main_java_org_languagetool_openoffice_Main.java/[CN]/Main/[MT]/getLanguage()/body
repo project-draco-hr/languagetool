@@ -32,7 +32,8 @@
       }
     }
     if (!langIsSupported) {
-      JOptionPane.showMessageDialog(null,"Error: Sorry, the document language '" + charLocale.Language + "' is not supported by LanguageTool.");
+      final String message=org.languagetool.gui.Tools.makeTexti18n(MESSAGES,"language_not_supported",charLocale.Language);
+      JOptionPane.showMessageDialog(null,message);
       return null;
     }
   }
