@@ -10,6 +10,8 @@
     server.createContext("/",new LanguageToolHttpHandler(config.isVerbose(),allowedIps,runInternally));
   }
  catch (  Exception e) {
-    throw new PortBindingException("LanguageTool HTTP server could not be started on host '" + host + "', port "+ port+ " - maybe something else is running on that port already?",e);
+    final ResourceBundle messages=JLanguageTool.getMessageBundle();
+    final String message=Tools.makeTexti18n(messages,"http_server_start_failed",host,Integer.toString(port));
+    throw new PortBindingException(message,e);
   }
 }

@@ -13,9 +13,13 @@
     server.createContext("/",new LanguageToolHttpHandler(config.isVerbose(),allowedIps,runInternally));
   }
  catch (  BindException e) {
-    throw new PortBindingException("LanguageTool HTTPS server could not be started on host '" + host + "', port "+ port+ " - maybe something else is running on that port already?",e);
+    final ResourceBundle messages=JLanguageTool.getMessageBundle();
+    final String message=Tools.makeTexti18n(messages,"https_server_start_failed",host,Integer.toString(port));
+    throw new PortBindingException(message,e);
   }
 catch (  Exception e) {
-    throw new RuntimeException("LanguageTool HTTPS server could not be started on host '" + host + "', port "+ port,e);
+    final ResourceBundle messages=JLanguageTool.getMessageBundle();
+    final String message=Tools.makeTexti18n(messages,"https_server_start_failed_unknown_reason",host,Integer.toString(port));
+    throw new RuntimeException(message,e);
   }
 }
