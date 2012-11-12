@@ -1,0 +1,13 @@
+{
+  final URLConnection connection=url.openConnection();
+  connection.setDoOutput(true);
+  final OutputStreamWriter writer=new OutputStreamWriter(connection.getOutputStream());
+  try {
+    writer.write(postData);
+    writer.flush();
+    return StringTools.streamToString(connection.getInputStream(),"UTF-8");
+  }
+  finally {
+    writer.close();
+  }
+}

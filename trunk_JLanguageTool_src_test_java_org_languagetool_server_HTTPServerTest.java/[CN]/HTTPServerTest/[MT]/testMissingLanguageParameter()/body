@@ -5,7 +5,7 @@
     try {
       System.out.println("Testing 'missing language parameter' now, please ignore the exception");
       final URL url=new URL("http://localhost:" + DEFAULT_PORT + "/?text=foo");
-      checkAtUrl(url);
+      HTTPTools.checkAtUrl(url);
       fail();
     }
  catch (    IOException expected) {

@@ -11,5 +11,5 @@
     urlOptions+="&enabled=" + StringUtils.join(enabledRules,",");
   }
   final URL url=new URL("http://localhost:" + DEFAULT_PORT + urlOptions);
-  return checkAtUrl(url);
+  return HTTPTools.checkAtUrl(url);
 }
