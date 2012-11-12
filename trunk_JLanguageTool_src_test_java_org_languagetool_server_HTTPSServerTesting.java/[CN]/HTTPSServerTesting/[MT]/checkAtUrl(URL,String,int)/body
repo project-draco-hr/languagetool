@@ -5,6 +5,6 @@ synchronized (this) {
     checkCount++;
   }
   final String result=HTTPTools.checkAtUrlByPost(url,data);
-  System.out.println(checkCount + ". Got " + url+ " with data ("+ data.length()+ " bytes) "+ startOfData+ "...: "+ (System.currentTimeMillis() - startTime)+ "ms");
+  System.out.println(checkCount + ". [" + threadNumber+ "] Got "+ url+ " with data ("+ data.length()+ " bytes) "+ startOfData+ "...: "+ (System.currentTimeMillis() - startTime)+ "ms");
   return result;
 }
