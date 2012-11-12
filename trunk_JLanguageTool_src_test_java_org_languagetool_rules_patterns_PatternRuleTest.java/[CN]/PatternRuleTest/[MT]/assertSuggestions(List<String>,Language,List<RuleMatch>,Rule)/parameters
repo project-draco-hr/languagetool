@@ -1,4 +1,4 @@
 List<String> suggestedCorrections
 Language lang
-RuleMatch[] matches
+List<RuleMatch> matches
 Rule rule

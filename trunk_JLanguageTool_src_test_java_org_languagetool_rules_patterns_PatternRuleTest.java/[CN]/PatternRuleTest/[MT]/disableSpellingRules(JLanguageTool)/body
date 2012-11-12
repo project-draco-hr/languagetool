@@ -1,0 +1,8 @@
+{
+  final List<Rule> allRules=languageTool.getAllRules();
+  for (  Rule rule : allRules) {
+    if (rule instanceof SpellingCheckRule) {
+      languageTool.disableRule(rule.getId());
+    }
+  }
+}

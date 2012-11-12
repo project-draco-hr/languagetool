@@ -5,6 +5,10 @@
     }
     System.out.println("Running tests for " + lang.getName() + "...");
     final JLanguageTool languageTool=new JLanguageTool(lang);
+    if (CHECK_WITH_SENTENCE_SPLITTING) {
+      languageTool.activateDefaultPatternRules();
+      disableSpellingRules(languageTool);
+    }
     final JLanguageTool allRulesLanguageTool=new JLanguageTool(lang);
     allRulesLanguageTool.activateDefaultPatternRules();
     final List<PatternRule> rules=new ArrayList<PatternRule>();

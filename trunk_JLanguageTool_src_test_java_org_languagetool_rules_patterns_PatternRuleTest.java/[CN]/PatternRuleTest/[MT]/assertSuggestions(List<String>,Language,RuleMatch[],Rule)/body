@@ -1,6 +1,0 @@
-{
-  if (suggestedCorrections != null && suggestedCorrections.size() > 0) {
-    final boolean isExpectedSuggestion=suggestedCorrections.equals(matches[0].getSuggestedReplacements());
-    assertTrue(lang + ": Incorrect suggestions: " + suggestedCorrections.toString()+ " != "+ matches[0].getSuggestedReplacements()+ " for rule "+ rule,isExpectedSuggestion);
-  }
-}

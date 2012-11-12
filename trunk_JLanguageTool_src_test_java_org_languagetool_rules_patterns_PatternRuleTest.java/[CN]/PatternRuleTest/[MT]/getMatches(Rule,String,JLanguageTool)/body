@@ -1,5 +1,22 @@
 {
   final AnalyzedSentence text=languageTool.getAnalyzedSentence(sentence);
   final RuleMatch[] matches=rule.match(text);
-  return matches;
+  if (CHECK_WITH_SENTENCE_SPLITTING) {
+    for (    Rule r : languageTool.getAllActiveRules()) {
+      languageTool.disableRule(r.getId());
+    }
+    languageTool.enableRule(rule.getId());
+    final List<RuleMatch> realMatches=languageTool.check(sentence);
+    final List<String> realMatchRuleIds=new ArrayList<String>();
+    for (    RuleMatch realMatch : realMatches) {
+      realMatchRuleIds.add(realMatch.getRule().getId());
+    }
+    for (    RuleMatch match : matches) {
+      final String ruleId=match.getRule().getId();
+      if (!match.getRule().isDefaultOff() && !realMatchRuleIds.contains(ruleId)) {
+        System.err.println("WARNING: " + languageTool.getLanguage().getName() + ": missing rule match "+ ruleId+ " when splitting sentences for test sentence '"+ sentence+ "'");
+      }
+    }
+  }
+  return Arrays.asList(matches);
 }
