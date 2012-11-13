@@ -4,7 +4,7 @@
   assertThat(config.getPort(),is(8081));
   assertThat(config.isPublicAccess(),is(false));
   assertThat(config.isVerbose(),is(false));
-  assertThat(config.getKeystore().toString(),is("src/test/resources/org/languagetool/test-keystore.jks"));
+  assertThat(config.getKeystore().toString(),is("src/test/resources/org/languagetool/server/test-keystore.jks"));
   assertThat(config.getKeyStorePassword(),is("mytest"));
   assertThat(config.getMaxTextLength(),is(Integer.MAX_VALUE));
 }
