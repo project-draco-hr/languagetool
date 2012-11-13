@@ -16,6 +16,7 @@
       props.load(fis);
       keystore=new File(getProperty(props,"keystore",config));
       keyStorePassword=getProperty(props,"password",config);
+      maxTextLength=Integer.parseInt(getOptionalProperty(props,"maxTextLength",Integer.toString(Integer.MAX_VALUE)));
     }
   finally {
       fis.close();

@@ -6,6 +6,7 @@
   }
   final File keyStoreFile=new File(keystore.getFile());
   final HTTPSServerConfig config=new HTTPSServerConfig(keyStoreFile,KEYSTORE_PASSWORD);
+  config.setMaxTextLength(500);
   final HTTPSServer server=new HTTPSServer(config,false,HTTPServerConfig.DEFAULT_HOST,null);
   try {
     server.run();

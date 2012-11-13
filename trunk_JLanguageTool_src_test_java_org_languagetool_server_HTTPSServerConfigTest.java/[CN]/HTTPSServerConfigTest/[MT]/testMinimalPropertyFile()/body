@@ -1,0 +1,10 @@
+{
+  final String propertyFile=HTTPSServerConfigTest.class.getResource("/org/languagetool/server/https-server-minimal.properties").getFile();
+  final HTTPSServerConfig config=new HTTPSServerConfig(("--config " + propertyFile).split(" "));
+  assertThat(config.getPort(),is(8081));
+  assertThat(config.isPublicAccess(),is(false));
+  assertThat(config.isVerbose(),is(false));
+  assertThat(config.getKeystore().toString(),is("src/test/resources/org/languagetool/test-keystore.jks"));
+  assertThat(config.getKeyStorePassword(),is("mytest"));
+  assertThat(config.getMaxTextLength(),is(Integer.MAX_VALUE));
+}

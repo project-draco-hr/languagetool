@@ -1,0 +1,7 @@
+{
+  final String propertyValue=(String)props.get(propertyName);
+  if (propertyValue == null) {
+    return defaultValue;
+  }
+  return propertyValue;
+}

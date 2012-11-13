@@ -10,7 +10,9 @@
     final SSLContext sslContext=getSslContext(config.getKeystore(),config.getKeyStorePassword());
     final HttpsConfigurator configurator=getConfigurator(sslContext);
     ((HttpsServer)server).setHttpsConfigurator(configurator);
-    server.createContext("/",new LanguageToolHttpHandler(config.isVerbose(),allowedIps,runInternally));
+    final LanguageToolHttpHandler httpHandler=new LanguageToolHttpHandler(config.isVerbose(),allowedIps,runInternally);
+    httpHandler.setMaxTextLength(config.getMaxTextLength());
+    server.createContext("/",httpHandler);
   }
  catch (  BindException e) {
     final ResourceBundle messages=JLanguageTool.getMessageBundle();

@@ -1,4 +1,7 @@
 {
+  if (text.length() > maxTextLength) {
+    throw new IllegalArgumentException("Text is " + text.length() + " characters long, exceeding maximum length of "+ maxTextLength);
+  }
   final String langParam=parameters.get("language");
   final String autodetectParam=parameters.get("autodetect");
   if (langParam == null && (autodetectParam == null || !autodetectParam.equals("1"))) {
