@@ -1,0 +1,9 @@
+{
+  final String propertyFile="/does-not-exist";
+  try {
+    new HTTPSServerConfig(("--config " + propertyFile).split(" "));
+    fail();
+  }
+ catch (  Exception expected) {
+  }
+}
