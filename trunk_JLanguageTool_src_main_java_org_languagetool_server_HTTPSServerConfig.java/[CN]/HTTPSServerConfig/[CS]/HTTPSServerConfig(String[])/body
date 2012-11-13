@@ -1,17 +1,27 @@
 {
   super(args);
+  File config=null;
   for (int i=0; i < args.length; i++) {
-    if ("--keystore".equals(args[i])) {
-      keystore=new File(args[++i]);
-    }
- else     if ("--password".equals(args[i])) {
-      keyStorePassword=args[++i];
+    if ("--config".equals(args[i])) {
+      config=new File(args[++i]);
     }
   }
-  if (keystore == null) {
-    throw new IllegalArgumentException("Parameter --keystore must be set");
+  if (config == null) {
+    throw new IllegalArgumentException("Parameter --config must be set and point to a property file");
   }
-  if (keyStorePassword == null) {
-    throw new IllegalArgumentException("Parameter --password must be set");
+  try {
+    final Properties props=new Properties();
+    final FileInputStream fis=new FileInputStream(config);
+    try {
+      props.load(fis);
+      keystore=new File(getProperty(props,"keystore",config));
+      keyStorePassword=getProperty(props,"password",config);
+    }
+  finally {
+      fis.close();
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Could not load properties from '" + config + "'",e);
   }
 }
