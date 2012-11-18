@@ -1,0 +1,4 @@
+{
+  DutchWrongWordInContextRule rule=new DutchWrongWordInContextRule(null);
+  JLanguageTool langTool=new JLanguageTool(Language.DUTCH);
+}
