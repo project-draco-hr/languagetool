@@ -1,5 +1,6 @@
 {
   this.port=config.getPort();
+  this.host=host;
   try {
     if (host == null) {
       server=HttpServer.create(new InetSocketAddress(port),0);
