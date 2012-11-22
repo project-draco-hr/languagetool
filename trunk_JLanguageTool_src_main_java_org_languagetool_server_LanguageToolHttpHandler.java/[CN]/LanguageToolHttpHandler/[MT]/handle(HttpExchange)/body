@@ -1,5 +1,4 @@
 {
-  final long timeStart=System.currentTimeMillis();
   String text=null;
   try {
     final URI requestedUri=httpExchange.getRequestURI();
@@ -34,5 +33,4 @@
  finally {
     httpExchange.close();
   }
-  print("Check done in " + (System.currentTimeMillis() - timeStart) + "ms");
 }
