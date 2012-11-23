@@ -8,6 +8,8 @@
   assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("Das Haus, auf das das M??dchen zeigt."));
   assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Warum fragen Sie sie nicht selbst?"));
+  assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("Die die S??tze zum testen."));
   assertEquals(1,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("Und die die S??tze zum testen."));
@@ -17,5 +19,7 @@
   matches=rule.match(langTool.getAnalyzedSentence("Das Buch, in in dem es steht."));
   assertEquals(1,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("Das Haus, auf auf das M??dchen zurennen."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Sie sie gehen nach Hause."));
   assertEquals(1,matches.length);
 }
