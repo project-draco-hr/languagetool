@@ -11,4 +11,17 @@
   assertEquals("This is <marker>foo bar</marker>.",incorrectExamples.get(0).getExample());
   final Rule demoRule2=getRuleById("API_OUTPUT_TEST_RULE",rules);
   assertNull(demoRule2.getUrl());
+  assertEquals("uncategorized",demoRule1.getLocQualityIssueType());
+  assertEquals("tag inheritance failed","addition",getRuleById("TEST_GO",rules).getLocQualityIssueType());
+  assertEquals("tag inheritance overwrite failed","uncategorized",getRuleById("TEST_PHRASES1",rules).getLocQualityIssueType());
+  assertEquals("tag inheritance overwrite failed","characters",getRuleById("test_include",rules).getLocQualityIssueType());
+  final List<Rule> groupRules1=getRulesById("test_spacebefore",rules);
+  assertEquals("tag inheritance form category failed","addition",groupRules1.get(0).getLocQualityIssueType());
+  assertEquals("tag inheritance overwrite failed","duplication",groupRules1.get(1).getLocQualityIssueType());
+  final List<Rule> groupRules2=getRulesById("test_unification_with_negation",rules);
+  assertEquals("tag inheritance from rulegroup failed","grammar",groupRules2.get(0).getLocQualityIssueType());
+  final Set<String> categories=getCategoryNames(rules);
+  assertEquals(2,categories.size());
+  assertTrue(categories.contains("misc"));
+  assertTrue(categories.contains("otherCategory"));
 }

@@ -1,7 +1,8 @@
 {
   final List<RuleMatch> matches=new ArrayList<RuleMatch>();
   final String text="This is an test sentence. Here's another sentence with more text.";
-  final RuleMatch match=new RuleMatch(new AvsAnRule(null),8,10,"myMessage");
+  final AvsAnRule rule=new AvsAnRule(null);
+  final RuleMatch match=new RuleMatch(rule,8,10,"myMessage");
   match.setColumn(99);
   match.setEndColumn(100);
   match.setLine(44);
@@ -12,5 +13,5 @@
   final Pattern matchesPattern=Pattern.compile(".*<matches software=\"LanguageTool\" version=\"" + JLanguageTool.VERSION + "\" buildDate=\".*?\">.*",Pattern.DOTALL);
   final Matcher matcher=matchesPattern.matcher(xml);
   assertTrue(matcher.matches());
-  assertTrue(xml.contains(">\n" + "<error fromy=\"44\" fromx=\"98\" toy=\"45\" tox=\"99\" ruleId=\"EN_A_VS_AN\" msg=\"myMessage\" " + "replacements=\"\" context=\"...s is an test...\" contextoffset=\"8\" offset=\"8\" errorlength=\"2\"/>\n"+ "</matches>\n"));
+  assertTrue(xml.contains(">\n" + "<error fromy=\"44\" fromx=\"98\" toy=\"45\" tox=\"99\" ruleId=\"EN_A_VS_AN\" msg=\"myMessage\" " + "replacements=\"\" context=\"...s is an test...\" contextoffset=\"8\" offset=\"8\" errorlength=\"2\" "+ "locqualityissuetype=\"terminology\"/>\n"+ "</matches>\n"));
 }

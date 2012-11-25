@@ -37,4 +37,13 @@
       throw new RuntimeException("Could not parse URL for rule: " + rule + ": '"+ url+ "'",e);
     }
   }
+  if (ruleIssueType != null) {
+    rule.setLocQualityIssueType(ruleIssueType);
+  }
+ else   if (ruleGroupIssueType != null) {
+    rule.setLocQualityIssueType(ruleGroupIssueType);
+  }
+ else   if (categoryIssueType != null) {
+    rule.setLocQualityIssueType(categoryIssueType);
+  }
 }

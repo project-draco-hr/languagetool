@@ -6,4 +6,5 @@
   this.withHyphenMessage=withHyphenMessage;
   this.withoutHyphenMessage=withoutHyphenMessage;
   this.withOrWithoutHyphenMessage=withOrWithoutHyphenMessage;
+  setLocQualityIssueType("misspelling");
 }

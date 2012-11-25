@@ -1,4 +1,5 @@
 {
   super(messages);
   this.language=language;
+  setLocQualityIssueType("misspelling");
 }

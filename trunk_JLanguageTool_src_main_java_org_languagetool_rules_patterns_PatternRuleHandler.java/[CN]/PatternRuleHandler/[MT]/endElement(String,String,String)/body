@@ -1,5 +1,8 @@
 {
-  if (RULE.equals(qName)) {
+  if ("category".equals(qName)) {
+    categoryIssueType=null;
+  }
+ else   if (RULE.equals(qName)) {
     phraseElementInit();
     if (phraseElementList.isEmpty()) {
       final PatternRule rule=new PatternRule(id,language,elementList,name,message.toString(),shortMessage.toString());
@@ -23,6 +26,7 @@
     if (phraseElementList != null) {
       phraseElementList.clear();
     }
+    ruleIssueType=null;
   }
  else   if (EXCEPTION.equals(qName)) {
     finalizeExceptions();
@@ -84,6 +88,7 @@
   }
  else   if (RULEGROUP.equals(qName)) {
     inRuleGroup=false;
+    ruleGroupIssueType=null;
   }
  else   if ("suggestion".equals(qName) && inMessage) {
     message.append("</suggestion>");
