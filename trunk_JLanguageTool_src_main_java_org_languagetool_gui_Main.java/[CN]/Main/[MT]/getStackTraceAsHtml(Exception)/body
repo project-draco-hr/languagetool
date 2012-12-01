@@ -1,0 +1,3 @@
+{
+  return "<br><br><b><font color=\"red\">" + org.languagetool.tools.Tools.getFullStackTrace(e).replace("\n","<br/>") + "</font></b><br>";
+}

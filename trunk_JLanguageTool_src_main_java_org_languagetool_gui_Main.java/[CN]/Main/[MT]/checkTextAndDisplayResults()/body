@@ -33,7 +33,7 @@
               resultArea.displayResult();
             }
  catch (            Exception e) {
-              final String error="<br><br><b><font color=\"red\">" + org.languagetool.tools.Tools.getFullStackTrace(e).replace("\n","<br/>") + "</font></b><br>";
+              final String error=getStackTraceAsHtml(e);
               resultArea.displayText(error);
             }
           }
