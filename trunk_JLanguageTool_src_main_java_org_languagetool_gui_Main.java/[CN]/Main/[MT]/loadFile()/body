@@ -4,8 +4,14 @@
     return;
   }
   try {
-    final String fileContents=StringTools.readFile(new FileInputStream(file.getAbsolutePath()));
-    textArea.setText(fileContents);
+    final FileInputStream inputStream=new FileInputStream(file);
+    try {
+      final String fileContents=StringTools.readFile(inputStream);
+      textArea.setText(fileContents);
+    }
+  finally {
+      inputStream.close();
+    }
     checkTextAndDisplayResults();
   }
  catch (  IOException e) {

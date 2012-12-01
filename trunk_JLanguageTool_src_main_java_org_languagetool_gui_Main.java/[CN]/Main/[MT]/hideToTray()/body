@@ -1,7 +1,8 @@
 {
   if (!isInTray) {
     final SystemTray tray=SystemTray.getSystemTray();
-    final Image img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl((tray.getTrayIconSize().height > 16) ? SYSTEM_TRAY_ICON_NAME : SYSTEM_TRAY_SMALL_ICON_NAME));
+    final String iconPath=tray.getTrayIconSize().height > 16 ? SYSTEM_TRAY_ICON_NAME : SYSTEM_TRAY_SMALL_ICON_NAME;
+    final Image img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(iconPath));
     final PopupMenu popup=makePopupMenu();
     try {
       final TrayIcon trayIcon=new TrayIcon(img,SYSTEM_TRAY_TOOLTIP,popup);
