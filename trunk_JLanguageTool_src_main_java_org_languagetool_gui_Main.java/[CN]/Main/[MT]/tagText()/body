@@ -1,5 +1,15 @@
 {
-  final Language currentLanguage=getCurrentLanguage();
-  final JLanguageTool langTool=getCurrentLanguageTool(currentLanguage);
-  tagTextAndDisplayResults(langTool);
+  new Thread(){
+    @Override public void run(){
+      setWaitCursor();
+      try {
+        final JLanguageTool langTool=getCurrentLanguageTool(getCurrentLanguage());
+        tagTextAndDisplayResults(langTool);
+      }
+  finally {
+        unsetWaitCursor();
+      }
+    }
+  }
+.start();
 }
