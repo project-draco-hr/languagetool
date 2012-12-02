@@ -1,0 +1,27 @@
+{
+  try {
+    final Language language=getCurrentLanguage();
+    final ConfigurationDialog configDialog=configDialogs.get(language);
+    if (e.getStateChange() == ItemEvent.SELECTED) {
+      config.setRunServer(true);
+      final boolean serverStarted=maybeStartServer();
+      config.setRunServer(serverStarted);
+      enableHttpsServerItem.setState(serverStarted);
+      config.saveConfiguration(language);
+      if (configDialog != null) {
+        configDialog.setRunServer(true);
+      }
+    }
+ else     if (e.getStateChange() == ItemEvent.DESELECTED) {
+      config.setRunServer(false);
+      config.saveConfiguration(language);
+      if (configDialog != null) {
+        configDialog.setRunServer(false);
+      }
+      stopServer();
+    }
+  }
+ catch (  IOException ex) {
+    Tools.showError(ex);
+  }
+}

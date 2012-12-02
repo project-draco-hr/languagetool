@@ -1,8 +1,7 @@
 {
   stopServer();
   try {
-    final Language currentLanguage=getCurrentLanguage();
-    config.saveConfiguration(getCurrentLanguageTool(currentLanguage).getLanguage());
+    config.saveConfiguration(getCurrentLanguage());
   }
  catch (  IOException e) {
     Tools.showError(e);

@@ -1,6 +1,10 @@
 {
   final PopupMenu popup=new PopupMenu();
   final ActionListener rmbListener=new TrayActionRMBListener();
+  enableHttpsServerItem=new CheckboxMenuItem(StringTools.getLabel(messages.getString("tray_menu_enable_server")));
+  enableHttpsServerItem.setState(config.getRunServer());
+  enableHttpsServerItem.addItemListener(new TrayActionItemListener());
+  popup.add(enableHttpsServerItem);
   final MenuItem checkClipboardItem=new MenuItem(StringTools.getLabel(messages.getString("guiMenuCheckClipboard")));
   checkClipboardItem.addActionListener(rmbListener);
   popup.add(checkClipboardItem);

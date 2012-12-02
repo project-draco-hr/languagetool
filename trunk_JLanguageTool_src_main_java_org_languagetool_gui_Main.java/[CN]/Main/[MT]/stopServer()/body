@@ -1,6 +1,7 @@
 {
   if (httpServer != null) {
     httpServer.stop();
+    enableHttpsServerItem.setState(false);
     httpServer=null;
   }
 }

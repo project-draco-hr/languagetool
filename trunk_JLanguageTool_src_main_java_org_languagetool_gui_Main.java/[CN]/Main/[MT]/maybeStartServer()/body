@@ -4,10 +4,18 @@
       final HTTPServerConfig serverConfig=new HTTPServerConfig(config.getServerPort(),false);
       httpServer=new HTTPServer(serverConfig,true);
       httpServer.run();
+      if (enableHttpsServerItem != null) {
+        enableHttpsServerItem.setState(true);
+      }
     }
  catch (    PortBindingException e) {
       final String message=e.getMessage();
       JOptionPane.showMessageDialog(null,message,"Error",JOptionPane.ERROR_MESSAGE);
+      return false;
     }
+    return true;
+  }
+ else {
+    return false;
   }
 }
