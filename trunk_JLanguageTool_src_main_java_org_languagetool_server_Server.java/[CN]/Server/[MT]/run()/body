@@ -2,5 +2,6 @@
   final String hostName=host != null ? host : "localhost";
   System.out.println("Starting server on " + getProtocol() + "://"+ hostName+ ":"+ port+ "...");
   server.start();
+  isRunning=true;
   System.out.println("Server started");
 }

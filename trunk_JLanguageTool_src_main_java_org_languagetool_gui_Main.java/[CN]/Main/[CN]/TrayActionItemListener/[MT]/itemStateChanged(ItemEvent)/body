@@ -5,8 +5,8 @@
     if (e.getStateChange() == ItemEvent.SELECTED) {
       config.setRunServer(true);
       final boolean serverStarted=maybeStartServer();
+      enableHttpServerItem.setState(serverStarted);
       config.setRunServer(serverStarted);
-      enableHttpsServerItem.setState(serverStarted);
       config.saveConfiguration(language);
       if (configDialog != null) {
         configDialog.setRunServer(true);
