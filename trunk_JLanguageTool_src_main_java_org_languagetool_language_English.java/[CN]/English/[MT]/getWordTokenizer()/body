@@ -1,6 +1,0 @@
-{
-  if (wordTokenizer == null) {
-    wordTokenizer=new EnglishWordTokenizer();
-  }
-  return wordTokenizer;
-}
