@@ -6,6 +6,7 @@
       httpServer.run();
       if (enableHttpServerItem != null) {
         enableHttpServerItem.setState(httpServer.isRunning());
+        setTrayIcon();
       }
     }
  catch (    PortBindingException e) {

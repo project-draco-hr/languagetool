@@ -3,6 +3,7 @@
     httpServer.stop();
     if (enableHttpServerItem != null) {
       enableHttpServerItem.setState(httpServer.isRunning());
+      setTrayIcon();
     }
     httpServer=null;
   }

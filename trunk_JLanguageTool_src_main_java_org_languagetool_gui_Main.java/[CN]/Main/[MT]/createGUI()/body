@@ -3,7 +3,7 @@
   setLookAndFeel();
   frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
   frame.addWindowListener(new CloseListener());
-  final URL iconUrl=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(SYSTEM_TRAY_ICON_NAME);
+  final URL iconUrl=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(TRAY_ICON);
   frame.setIconImage(new ImageIcon(iconUrl).getImage());
   frame.setJMenuBar(new MainMenuBar(this,messages));
   textArea=new JTextArea(messages.getString("guiDemoText"));

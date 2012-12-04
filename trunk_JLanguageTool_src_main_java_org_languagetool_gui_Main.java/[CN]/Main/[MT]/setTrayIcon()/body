@@ -1,0 +1,19 @@
+{
+  if (trayIcon != null) {
+    final SystemTray tray=SystemTray.getSystemTray();
+    final boolean httpServerRunning=httpServer != null && httpServer.isRunning();
+    final boolean smallTray=tray.getTrayIconSize().height <= 16;
+    final String iconPath;
+    if (httpServerRunning) {
+      trayIcon.setToolTip(messages.getString("tray_tooltip_server_running"));
+      iconPath=smallTray ? TRAY_SMALL_SERVER_ICON : TRAY_SERVER_ICON;
+    }
+ else {
+      trayIcon.setToolTip(TRAY_TOOLTIP);
+      iconPath=smallTray ? TRAY_SMALL_ICON : TRAY_ICON;
+    }
+    final URL iconUrl=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(iconPath);
+    final Image img=Toolkit.getDefaultToolkit().getImage(iconUrl);
+    trayIcon.setImage(img);
+  }
+}

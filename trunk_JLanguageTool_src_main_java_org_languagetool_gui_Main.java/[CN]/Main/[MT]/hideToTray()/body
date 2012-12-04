@@ -1,12 +1,14 @@
 {
   if (!isInTray) {
     final SystemTray tray=SystemTray.getSystemTray();
-    final String iconPath=tray.getTrayIconSize().height > 16 ? SYSTEM_TRAY_ICON_NAME : SYSTEM_TRAY_SMALL_ICON_NAME;
-    final Image img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(iconPath));
+    final String iconPath=tray.getTrayIconSize().height > 16 ? TRAY_ICON : TRAY_SMALL_ICON;
+    final URL iconUrl=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(iconPath);
+    final Image img=Toolkit.getDefaultToolkit().getImage(iconUrl);
     final PopupMenu popup=makePopupMenu();
     try {
-      final TrayIcon trayIcon=new TrayIcon(img,SYSTEM_TRAY_TOOLTIP,popup);
+      trayIcon=new TrayIcon(img,TRAY_TOOLTIP,popup);
       trayIcon.addMouseListener(new TrayActionListener());
+      setTrayIcon();
       tray.add(trayIcon);
     }
  catch (    AWTException e1) {
