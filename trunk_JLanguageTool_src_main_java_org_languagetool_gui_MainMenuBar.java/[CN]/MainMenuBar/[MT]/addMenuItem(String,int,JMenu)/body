@@ -1,0 +1,11 @@
+{
+  final String label=getLabel(key);
+  final JMenuItem openItem=new JMenuItem(label);
+  openItem.setMnemonic(getMnemonic(key));
+  openItem.addActionListener(this);
+  if (keyEvent != NO_KEY_EVENT) {
+    openItem.setAccelerator(getCtrlKeyStroke(keyEvent));
+  }
+  menu.add(openItem);
+  return label;
+}
