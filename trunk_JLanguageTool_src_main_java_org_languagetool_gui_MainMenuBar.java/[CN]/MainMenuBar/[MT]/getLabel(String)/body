@@ -1,0 +1,3 @@
+{
+  return StringTools.getLabel(messages.getString(key));
+}

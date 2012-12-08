@@ -1,0 +1,3 @@
+{
+  return StringTools.getMnemonic(messages.getString(key));
+}

@@ -1,12 +1,12 @@
 {
-  fileMenu=new JMenu(StringTools.getLabel(messages.getString("guiMenuFile")));
-  helpMenu=new JMenu(StringTools.getLabel(messages.getString("guiMenuHelp")));
-  openText=StringTools.getLabel(messages.getString("guiMenuOpen"));
-  checkClipboardText=StringTools.getLabel(messages.getString("guiMenuCheckClipboard"));
-  dockToTrayText=StringTools.getLabel(messages.getString("guiMenuHide"));
-  addLanguageText=StringTools.getLabel(messages.getString("guiMenuAddRules"));
-  tagText=StringTools.getLabel(messages.getString("guiTagText"));
-  optionsText=StringTools.getLabel(messages.getString("guiMenuOptions"));
-  quitText=StringTools.getLabel(messages.getString("guiMenuQuit"));
-  aboutText=StringTools.getLabel(messages.getString("guiMenuAbout"));
+  fileMenu=new JMenu(getLabel("guiMenuFile"));
+  helpMenu=new JMenu(getLabel("guiMenuHelp"));
+  openText=getLabel("guiMenuOpen");
+  checkClipboardText=getLabel("guiMenuCheckClipboard");
+  dockToTrayText=getLabel("guiMenuHide");
+  addLanguageText=getLabel("guiMenuAddRules");
+  tagText=getLabel("guiTagText");
+  optionsText=getLabel("guiMenuOptions");
+  quitText=getLabel("guiMenuQuit");
+  aboutText=getLabel("guiMenuAbout");
 }
