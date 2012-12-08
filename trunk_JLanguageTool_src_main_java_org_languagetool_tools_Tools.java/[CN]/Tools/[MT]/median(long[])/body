@@ -1,4 +1,5 @@
 {
+  Arrays.sort(m);
   final int middle=m.length / 2;
   if (m.length % 2 == 1) {
     return m[middle];

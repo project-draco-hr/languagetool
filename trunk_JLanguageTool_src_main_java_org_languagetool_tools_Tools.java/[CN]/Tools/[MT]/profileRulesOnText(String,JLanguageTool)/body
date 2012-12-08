@@ -15,7 +15,6 @@
       final long endTime=System.currentTimeMillis();
       workTime[k]=endTime - startTime;
     }
-    Arrays.sort(workTime);
     final long time=median(workTime);
     final float timeInSeconds=time / 1000.0f;
     final float sentencesPerSecond=sentences.size() / timeInSeconds;
