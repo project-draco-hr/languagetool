@@ -8,6 +8,7 @@
   testSplit("Das Schreiben ist auf den 31.1. datiert.");
   testSplit("Das Schreiben ist auf den 3.10.2000 datiert.");
   testSplit("Nat??rliche Vererbungsprozesse pr??gten sich erst im 18. und fr??hen 19. Jahrhundert aus.");
+  testSplit("Das ist ja 1a. ","Und das auch.");
   testSplit("Friedrich I., auch bekannt als Friedrich der Gro??e.");
   testSplit("Friedrich II., auch bekannt als Friedrich der Gro??e.");
   testSplit("Friedrich IIXC., auch bekannt als Friedrich der Gro??e.");
