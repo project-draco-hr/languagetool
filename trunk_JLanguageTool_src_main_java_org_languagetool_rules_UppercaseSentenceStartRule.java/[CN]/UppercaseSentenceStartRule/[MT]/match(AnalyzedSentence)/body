@@ -32,7 +32,7 @@
   if ((language == Language.RUSSIAN || language == Language.ITALIAN || language == Language.POLISH || language == Language.GERMAN || language == Language.UKRAINIAN || language == Language.BELARUSIAN) && (",".equals(lastParagraphString))) {
     noException=true;
   }
-  if ((language == Language.RUSSIAN) && !(lastToken.matches("[.?!???;,]"))) {
+  if ((language == Language.RUSSIAN || language == Language.ENGLISH) && !(lastToken.matches("[.?!???;,]"))) {
     noException=true;
   }
   lastParagraphString=lastToken;
