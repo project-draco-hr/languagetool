@@ -12,9 +12,15 @@
     if (matchPostagRegexp(tokens[i],NO_VERB))     continue loop;
     final Matcher mUpperCase=UPPERCASE.matcher(tokens[i].getToken());
     if (i > 1 && mUpperCase.matches())     continue loop;
+    if (i + 1 < tokens.length && matchPostagRegexp(tokens[i],VERB_INFGER) && isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && isTherePronounBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) && matchPostagRegexp(tokens[i + 1],PRONOM_REFLEXIU)) {
+      final String msg="En aquesta per??frasi verbal el pronom reflexiu posterior ??s redundant.<suggestion></suggestion>";
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i + 1].getStartPos(),tokens[i + 1].getStartPos() + tokens[i + 1].getToken().length(),msg,"Pronom redundant");
+      ruleMatches.add(ruleMatch);
+    }
     if (matchLemmaRegexp(tokens[i],VERBS_PRONOMINALS)) {
       if (matchLemmaRegexp(tokens[i],NO_VERBS_PRONOMINALS))       continue loop;
       if (matchPostagRegexp(tokens[i],VERB_PARTICIPI) && !matchLemmaRegexp(tokens[i - 1],VERB_HAVER))       continue loop;
+      if (isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && isTherePronounBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD))       continue loop;
       if (isThereReflexivePronoun(tokens,i))       continue loop;
       final String msg="Aquest verb ??s pronominal. Falta un pronom.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb pronominal: falta un pronom");

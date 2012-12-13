@@ -1,4 +1,7 @@
 {
+  assertCorrect("Fan que em malfi??.");
+  assertCorrect("Em fan malfiar.");
+  assertCorrect("El fan agenollar.");
   assertCorrect("ens anem a aferrissar");
   assertCorrect("anem a aferrissar-nos");
   assertCorrect("ens preparem per a anar");
@@ -93,6 +96,7 @@
   assertCorrect("A escola no es va a plorar.");
   assertCorrect("Al nostre pis de la Torre es pujava per aquella llarga escala");
   assertCorrect("Joan no es va a jugar la feina.");
+  assertIncorrect("L'has fet tornar-se vermell.");
   assertIncorrect("un dels pocs moviments que poden fer ??s intentar pujar-se al carro de la indignaci??.");
   assertIncorrect("??s intentar pujar-se al carro de la indignaci??.");
   assertIncorrect("Pujar-se al carro de la indignaci??.");
@@ -159,7 +163,7 @@
   assertIncorrect("no has de queixar-ne");
   assertIncorrect("no podeu deixar de queixar-ne");
   assertIncorrect("no li has de queixar");
-  assertIncorrect("no em podeu deixar de queixar");
+  assertIncorrect("no em podeu queixar");
   assertIncorrect("pareu de queixar-se'n");
   assertIncorrect("podent abstenir");
   assertIncorrect("poder queixar");
