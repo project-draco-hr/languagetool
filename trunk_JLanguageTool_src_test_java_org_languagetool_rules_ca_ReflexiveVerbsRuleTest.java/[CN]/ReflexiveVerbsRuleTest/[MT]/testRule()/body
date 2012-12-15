@@ -1,4 +1,7 @@
 {
+  assertCorrect("Ens portem for??a b??");
+  assertCorrect("Hem de portar-nos b??");
+  assertCorrect("Ells es porten tres anys");
   assertCorrect("Fan que em malfi??.");
   assertCorrect("Em fan malfiar.");
   assertCorrect("El fan agenollar.");
@@ -96,6 +99,9 @@
   assertCorrect("A escola no es va a plorar.");
   assertCorrect("Al nostre pis de la Torre es pujava per aquella llarga escala");
   assertCorrect("Joan no es va a jugar la feina.");
+  assertIncorrect("en aquesta vida ens portem moltes sorpreses");
+  assertIncorrect("Ens hem portat massa material al campament");
+  assertIncorrect("Hem de dur-nos tot aix??.");
   assertIncorrect("L'has fet tornar-se vermell.");
   assertIncorrect("un dels pocs moviments que poden fer ??s intentar pujar-se al carro de la indignaci??.");
   assertIncorrect("??s intentar pujar-se al carro de la indignaci??.");
