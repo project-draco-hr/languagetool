@@ -1,4 +1,20 @@
 {
+  assertCorrect("que s'havien anat instal??lant");
+  assertCorrect("gr??cies a la pres??ncia del Riu Set s'hi alberga una gran arboreda amb taules");
+  assertCorrect("no fa gaires anys tamb?? s'hi portaven alguns animals");
+  assertCorrect("el s??lid es va \"descomponent\".");
+  assertCorrect("la divisi?? s'ha d'anar amb cura per evitar ambig??itats");
+  assertCorrect("la senyera s'ha de baixar");
+  assertCorrect("Es van t??mer assalts a altres edificis de la CNT ");
+  assertCorrect("que Joan em dugu??s el mocador");
+  assertCorrect("que Joan es dugu??s el mocador");
+  assertCorrect("em dur??s un mocador de seda del teu color");
+  assertCorrect("El va deixar per a dedicar-se a la m??sica");
+  assertCorrect("Hermes s'encarregava de dur les ??nimes que acabaven de morir a l'Infram??n");
+  assertCorrect("aquest nom ??s poc adequat ja que es poden portar les propostes de l'escalada cl??ssica");
+  assertCorrect("en fer-lo girar se'n podia observar el moviment");
+  assertCorrect("el segon dia es duien a terme les carreres individuals");
+  assertCorrect("Normalment no es duu un registre oficial extern");
   assertCorrect("Ens portem for??a b??");
   assertCorrect("Hem de portar-nos b??");
   assertCorrect("Ells es porten tres anys");
@@ -99,6 +115,8 @@
   assertCorrect("A escola no es va a plorar.");
   assertCorrect("Al nostre pis de la Torre es pujava per aquella llarga escala");
   assertCorrect("Joan no es va a jugar la feina.");
+  assertIncorrect("Ells es volen dur les ??nimes a l'Infram??n");
+  assertIncorrect("Joan es va portar el carret??");
   assertIncorrect("en aquesta vida ens portem moltes sorpreses");
   assertIncorrect("Ens hem portat massa material al campament");
   assertIncorrect("Hem de dur-nos tot aix??.");

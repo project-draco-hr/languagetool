@@ -1,0 +1,3 @@
+{
+  return (matchPostagRegexp(aToken,VERB_1S) && matchPostagRegexp(aToken,VERB_3S)) || (matchPostagRegexp(aToken,VERB_2S) && matchPostagRegexp(aToken,VERB_3S));
+}
