@@ -1,5 +1,5 @@
 {
-  System.setIn(this.getClass().getResourceAsStream(ENGLISH_TEST_FILE));
+  System.setIn(new FileInputStream(enTestFile));
   String[] args=new String[]{"-l","en","--api","-"};
   Main.main(args);
   String output=new String(this.out.toByteArray());
