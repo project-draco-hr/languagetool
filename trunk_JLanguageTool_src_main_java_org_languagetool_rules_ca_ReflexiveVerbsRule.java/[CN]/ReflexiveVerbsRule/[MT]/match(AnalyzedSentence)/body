@@ -28,7 +28,7 @@
       ruleMatches.add(ruleMatch);
       continue loop;
     }
-    if (i + 1 < tokens.length && matchPostagRegexp(tokens[i],VERB_INFGER) && !matchPostagRegexp(tokens[i - 1],PREPOSICIO) && isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT)) {
+    if (i + 1 < tokens.length && matchPostagRegexp(tokens[i],VERB_INF) && !matchPostagRegexp(tokens[i - 1],PREPOSICIO) && isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT)) {
       final String msg="En aquesta per??frasi verbal el pronom reflexiu posterior ??s redundant.<suggestion></suggestion>";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i + 1].getStartPos(),tokens[i + 1].getStartPos() + tokens[i + 1].getToken().length(),msg,"Pronom redundant");
       ruleMatches.add(ruleMatch);
@@ -47,6 +47,7 @@
     if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS)) {
       if (matchLemmaRegexp(tokens[i],NO_VERBS_NO_PRONOMINALS))       continue loop;
       if (!isThereReflexivePronoun(tokens,i))       continue loop;
+      if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS_IMPERSONALS2) && isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereBefore(tokens,i,LEMMA_DE,POSTAG_DE)&& isThereVerbBefore(tokens,i,VERB_HAVER))       continue loop;
       if (isThereVerbBefore(tokens,i,VERBS_SOVINT_PRONOMINALS) || (isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) || isThereVerbBefore(tokens,i,VERBS_PRONOMINALS))       continue loop;
       if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS_IMPERSONALS) && isPhraseImpersonalVerbS(tokens,i))       continue loop;
       if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS_IMPERSONALS2) && isPhraseImpersonalVerbSP(tokens,i))       continue loop;
@@ -66,7 +67,7 @@
         if (isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && !isThereBefore(tokens,i,LEMMA_PRONOM_CI,POSTAG_PRONOM_CI) && !isTherePersonalSubjectBefore(tokens,i,TRENCA_COMPTE))         continue loop;
       }
       if (isThereReflexivePronoun(tokens,i) && (!isTherePronoun(tokens,i,LEMMA_EN,POSTAG_EN))) {
-        final String msg="Per a usar aquest verb com a pronominal, cal afegir-hi el pronom 'en'.";
+        final String msg="No useu com a pronominal aquest verb, o b?? afegiu-hi el pronom 'en'.";
         final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Falta el pronom 'en'");
         ruleMatches.add(ruleMatch);
       }

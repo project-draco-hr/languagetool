@@ -1,3 +1,3 @@
 {
-  return isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && !isThereBefore(tokens,i,LEMMA_PRONOM_CI,POSTAG_PRONOM_CI) && (!isTherePersonalSubjectBefore(tokens,i,TRENCA_COMPTE2) || isThereBefore(tokens,i,LEMMA_HI,POSTAG_HI))&& isVerbNumberPerson(tokens,i,VERB_3S);
+  return isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && !isThereBefore(tokens,i,LEMMA_PRONOM_CI,POSTAG_PRONOM_CI) && (!isThereSingularPersonalSubjectBefore(tokens,i,TRENCA_COMPTE2) || isThereBefore(tokens,i,LEMMA_HI,POSTAG_HI))&& isVerbNumberPerson(tokens,i,VERB_3S);
 }

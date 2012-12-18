@@ -1,4 +1,9 @@
 {
+  assertCorrect("Un altre dia s'anava a l'Ermita i un tercer dia se solia anar a altres indrets de car??cter comarcal.");
+  assertCorrect("La Nit de sant Joan es baixaven falles de la muntanya.");
+  assertCorrect("que no pertanyen a ells mateixos es cau en una contradicci??.");
+  assertCorrect("Els salts els fan impulsant-se amb les cames");
+  assertCorrect("Zheng, adonant-se que gaireb?? totes les forces singaleses");
   assertCorrect("que s'havien anat instal??lant");
   assertCorrect("gr??cies a la pres??ncia del Riu Set s'hi alberga una gran arboreda amb taules");
   assertCorrect("no fa gaires anys tamb?? s'hi portaven alguns animals");
