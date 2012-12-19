@@ -67,4 +67,6 @@
   assertBad("Das Dach meinem Autos.");
   assertBad("Das Dach meinem gro??en Autos.");
   assertBad("Das Dach mein gro??en Autos.");
+  assertBad("Das Klientel der Partei.");
+  assertGood("Die Klientel der Partei.");
 }
