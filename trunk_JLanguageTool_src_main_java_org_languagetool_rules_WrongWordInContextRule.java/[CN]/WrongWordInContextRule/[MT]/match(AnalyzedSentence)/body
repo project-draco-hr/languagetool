@@ -43,7 +43,7 @@
       final boolean[] matchedContext={false,false};
       matchers[foundWord]=contextWords.contexts[foundWord].matcher("");
       matchers[notFoundWord]=contextWords.contexts[notFoundWord].matcher("");
-      String token="";
+      String token;
       for (i=1; i < tokens.length && !matchedContext[foundWord]; i++) {
         token=tokens[i].getToken();
         matchedContext[foundWord]=matchers[foundWord].reset(token).find();
@@ -54,8 +54,7 @@
       }
       if (matchedContext[notFoundWord] && !matchedContext[foundWord]) {
         final String msg=getMessage(matchedToken,matchedToken.replaceFirst(contextWords.matches[foundWord],contextWords.matches[notFoundWord]),contextWords.explanations[notFoundWord],contextWords.explanations[foundWord]);
-        final String shortMsg=getShortMessage(matchedToken.replaceFirst(contextWords.matches[foundWord],contextWords.matches[notFoundWord]));
-        final RuleMatch ruleMatch=new RuleMatch(this,startPos,endPos,msg,shortMsg);
+        final RuleMatch ruleMatch=new RuleMatch(this,startPos,endPos,msg,getShortMessageString());
         ruleMatches.add(ruleMatch);
       }
     }
