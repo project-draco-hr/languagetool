@@ -1,6 +1,6 @@
 {
   final URL dictURL=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(originalPath);
-  String dictionaryPath=dictURL.getPath();
+  String dictionaryPath;
   if ("jar".equals(dictURL.getProtocol())) {
     final File tempDir=new File(System.getProperty("java.io.tmpdir"));
     File temporaryFile=new File(tempDir,dicName + ".dic");
