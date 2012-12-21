@@ -3,8 +3,7 @@
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   if (speller == null) {
     if (JLanguageTool.getDataBroker().resourceExists(getFileName())) {
-      final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(getFileName());
-      speller=new Speller(Dictionary.read(url));
+      speller=new MorfologikSpeller(getFileName(),conversionLocale);
     }
  else {
       return toRuleMatchArray(ruleMatches);
@@ -12,27 +11,25 @@
   }
   for (  AnalyzedTokenReadings token : tokens) {
     final String word=token.getToken();
-    if (ignoreWord(word)) {
+    if (ignoreWord(word) || token.isImmunized()) {
       continue;
     }
-    if (!token.isImmunized()) {
-      if (tokenizingPattern() == null) {
+    if (tokenizingPattern() == null) {
+      ruleMatches.addAll(getRuleMatch(word,token.getStartPos()));
+    }
+ else {
+      int index=0;
+      final Matcher m=tokenizingPattern().matcher(word);
+      while (m.find()) {
+        final String match=word.subSequence(index,m.start()).toString();
+        ruleMatches.addAll(getRuleMatch(match,token.getStartPos() + index));
+        index=m.end();
+      }
+      if (index == 0) {
         ruleMatches.addAll(getRuleMatch(word,token.getStartPos()));
       }
  else {
-        int index=0;
-        final Matcher m=tokenizingPattern().matcher(word);
-        while (m.find()) {
-          final String match=word.subSequence(index,m.start()).toString();
-          ruleMatches.addAll(getRuleMatch(match,token.getStartPos() + index));
-          index=m.end();
-        }
-        if (index == 0) {
-          ruleMatches.addAll(getRuleMatch(word,token.getStartPos()));
-        }
- else {
-          ruleMatches.addAll(getRuleMatch(word.subSequence(index,word.length()).toString(),token.getStartPos() + index));
-        }
+        ruleMatches.addAll(getRuleMatch(word.subSequence(index,word.length()).toString(),token.getStartPos() + index));
       }
     }
   }

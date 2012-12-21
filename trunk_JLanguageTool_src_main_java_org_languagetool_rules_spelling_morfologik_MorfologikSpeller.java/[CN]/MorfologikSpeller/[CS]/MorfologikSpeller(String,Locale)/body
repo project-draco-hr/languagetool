@@ -1,0 +1,5 @@
+{
+  final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(filename);
+  speller=new Speller(Dictionary.read(url));
+  this.conversionLocale=conversionLocale != null ? conversionLocale : Locale.getDefault();
+}

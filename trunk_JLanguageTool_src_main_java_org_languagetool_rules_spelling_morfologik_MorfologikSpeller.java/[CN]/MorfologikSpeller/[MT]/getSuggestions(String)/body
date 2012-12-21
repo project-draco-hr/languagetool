@@ -1,0 +1,14 @@
+{
+  final List<String> suggestions=new ArrayList<String>();
+  try {
+    suggestions.addAll(speller.findReplacements(word));
+    if (!word.toLowerCase(conversionLocale).equals(word)) {
+      suggestions.addAll(speller.findReplacements(word.toLowerCase(conversionLocale)));
+    }
+    suggestions.addAll(speller.replaceRunOnWords(word));
+  }
+ catch (  CharacterCodingException e) {
+    throw new RuntimeException(e);
+  }
+  return suggestions;
+}
