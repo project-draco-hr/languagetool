@@ -14,11 +14,7 @@
       }
     }
   }
- catch (  IOException e) {
-    System.err.println("IOException reading System.in" + e);
-    throw e;
-  }
- finally {
+  finally {
     if (in != null) {
       in.close();
     }
