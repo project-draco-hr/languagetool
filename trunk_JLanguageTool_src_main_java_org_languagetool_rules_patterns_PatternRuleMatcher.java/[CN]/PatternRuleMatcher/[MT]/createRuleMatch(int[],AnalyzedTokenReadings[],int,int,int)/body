@@ -28,7 +28,8 @@
   final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
   if (fromPos < toPos) {
     if (!(errMessage.contains("<pleasespellme/>") && errMessage.contains("<mistake/>"))) {
-      return new RuleMatch(rule,fromPos,toPos,errMessage,rule.getShortMessage(),startsWithUppercase);
+      final String clearMsg=errMessage.replaceAll("<pleasespellme/>","").replaceAll("<mistake/>","");
+      return new RuleMatch(rule,fromPos,toPos,clearMsg,rule.getShortMessage(),startsWithUppercase);
     }
   }
   return null;
