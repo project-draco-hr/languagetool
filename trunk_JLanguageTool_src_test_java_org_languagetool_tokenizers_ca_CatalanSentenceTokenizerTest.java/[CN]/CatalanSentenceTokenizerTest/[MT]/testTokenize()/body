@@ -1,0 +1,8 @@
+{
+  testSplit(new String[]{"A l'atenci?? d'A. Comes."});
+  testSplit(new String[]{"Desenganyeu-vos??? ","L?????nic problema seri??s de l'home en aquest m??n ??s el de subsistir."});
+  testSplit(new String[]{"Viu al n??m. 24 del carrer de l'Hort."});
+  testSplit(new String[]{"El Dr. Joan no vindr??."});
+  testSplit(new String[]{"Distingit Sr. Joan,"});
+  testSplit(new String[]{"Molt Hble. Sr. President"});
+}
