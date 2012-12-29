@@ -1,7 +1,7 @@
 {
   if (prevTokenIsDas && !nextTokenIsPersonalPronoun) {
     if (Character.isLowerCase(token.charAt(0)) && !substVerbenExceptions.contains(token)) {
-      final String msg="Substantivierte Verben werden gro?? geschrieben.";
+      final String msg="Substantivierte Verben werden gro??geschrieben.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokenReadings.getStartPos(),tokenReadings.getStartPos() + token.length(),msg);
       final String word=tokenReadings.getToken();
       final String fixedWord=StringTools.uppercaseFirstChar(word);
