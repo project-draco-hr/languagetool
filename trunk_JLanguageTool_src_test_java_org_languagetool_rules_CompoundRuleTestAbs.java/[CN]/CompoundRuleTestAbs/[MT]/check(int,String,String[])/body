@@ -2,13 +2,13 @@
   assertNotNull("Please initialize langTool!",langTool);
   assertNotNull("Please initialize 'rule'!",rule);
   final RuleMatch[] ruleMatches=rule.match(langTool.getAnalyzedSentence(text));
-  assertEquals(expectedErrors,ruleMatches.length);
+  assertEquals("Expected " + expectedErrors + "errors, but got: "+ Arrays.toString(ruleMatches),expectedErrors,ruleMatches.length);
   if (expSuggestions != null && expectedErrors != 1) {
     throw new RuntimeException("Sorry, test case can only check suggestion if there's one rule match");
   }
   if (expSuggestions != null) {
     final RuleMatch ruleMatch=ruleMatches[0];
-    assertEquals(String.format("Got these suggestions: %s, expected %d ",ruleMatch.getSuggestedReplacements(),expSuggestions.length),expSuggestions.length,ruleMatch.getSuggestedReplacements().size());
+    assertEquals(String.format("Got these suggestions: %s, expected %s ",ruleMatch.getSuggestedReplacements(),Arrays.toString(expSuggestions)),expSuggestions.length,ruleMatch.getSuggestedReplacements().size());
     int i=0;
     for (    final Object element : ruleMatch.getSuggestedReplacements()) {
       final String suggestion=(String)element;

@@ -9,6 +9,8 @@
   check(0,"Nur im Stand-by-Betrieb");
   check(0,"Start, Ziel, Sieg");
   check(0,"Roll-on-roll-off-Schiff");
+  check(0,"Halswirbels??ule");
+  check(0,"Hals-Wirbel-S??ule");
   check(1,"System Administrator",new String[]{"System-Administrator","Systemadministrator"});
   check(1,"bla bla bla bla bla System Administrator bla bla bla bla bla");
   check(1,"System Administrator blubb");
@@ -25,6 +27,7 @@
   check(2,"Der dumme System Administrator legt die CD ROM.");
   check(2,"Der dumme System Administrator legt die CD ROM ein blah");
   check(2,"System Administrator CD ROM");
+  check(2,"Hals Wirbel S??ule");
   check(1,"Spin off");
   check(1,"Das ist Haar str??ubend",new String[]{"Haarstr??ubend"});
   check(1,"Reality TV",new String[]{"Reality-TV"});
