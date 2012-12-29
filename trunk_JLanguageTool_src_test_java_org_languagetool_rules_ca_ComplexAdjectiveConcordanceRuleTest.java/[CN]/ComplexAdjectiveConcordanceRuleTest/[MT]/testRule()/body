@@ -37,6 +37,7 @@
   assertCorrect("una organitzaci?? paramilitar de protecci?? civil t??picament catalana");
   assertCorrect("un Do dues octaves m??s alt que l'anterior");
   assertCorrect("s??n pr??cticament dos graus m??s baixes");
+  assertCorrect("??s unes vint vegades m??s gran que l'espermatozou.");
   assertCorrect("??s unes 20 vegades m??s gran que l'espermatozou.");
   assertCorrect("eren quatre vegades m??s alts");
   assertCorrect("eren uns fets cada volta m??s inexplicables");
