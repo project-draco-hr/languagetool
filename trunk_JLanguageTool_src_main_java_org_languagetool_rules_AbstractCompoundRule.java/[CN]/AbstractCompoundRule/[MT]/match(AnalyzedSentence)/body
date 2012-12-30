@@ -4,7 +4,7 @@
   RuleMatch prevRuleMatch=null;
   final Queue<AnalyzedTokenReadings> prevTokens=new ArrayBlockingQueue<AnalyzedTokenReadings>(MAX_TERMS);
   for (int i=0; i < tokens.length + MAX_TERMS - 1; i++) {
-    AnalyzedTokenReadings token=null;
+    AnalyzedTokenReadings token;
     if (i >= tokens.length) {
       token=new AnalyzedTokenReadings(new AnalyzedToken("","",null),prevTokens.peek().getStartPos());
     }
@@ -46,7 +46,7 @@
           replacement.add(origStringToCheck.replace(' ','-'));
           msg=withHyphenMessage;
         }
-        if (!hasAllUppercaseParts(origStringToCheck) && countParts(stringToCheck) <= getMaxUnHyphenatedWordCount() && !onlyDashSuggestion.contains(stringToCheck)) {
+        if (!hasAllUppercaseParts(origStringToCheck) && !onlyDashSuggestion.contains(stringToCheck)) {
           replacement.add(mergeCompound(origStringToCheck));
           msg=withoutHyphenMessage;
         }
