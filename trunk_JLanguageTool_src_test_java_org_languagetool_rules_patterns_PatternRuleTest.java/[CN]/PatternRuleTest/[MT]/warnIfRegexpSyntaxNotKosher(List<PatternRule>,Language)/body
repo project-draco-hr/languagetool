@@ -6,8 +6,8 @@
       if (element.isReferenceElement()) {
         continue;
       }
-      warnIfElementNotKosher(element.getString(),element.isRegularExpression(),element.getCaseSensitive(),element.getNegation(),element.isInflected(),lang,rule.getId() + ":" + rule.getSubId());
-      warnIfElementNotKosher(element.getPOStag() == null ? "" : element.getPOStag(),element.isPOStagRegularExpression(),element.getCaseSensitive(),element.getPOSNegation(),false,lang,rule.getId() + ":" + rule.getSubId()+ " (POS tag)");
+      warnIfElementNotKosher(element.getString(),element.isRegularExpression(),element.getCaseSensitive(),element.getNegation(),element.isInflected(),lang,rule.getId() + ":" + rule.getSubId(),i);
+      warnIfElementNotKosher(element.getPOStag() == null ? "" : element.getPOStag(),element.isPOStagRegularExpression(),element.getCaseSensitive(),element.getPOSNegation(),false,lang,rule.getId() + ":" + rule.getSubId()+ " (POS tag)",i);
       List<Element> exceptionElements=new ArrayList<Element>();
       if (element.getExceptionList() != null) {
         for (        final Element exception : element.getExceptionList()) {
@@ -15,9 +15,9 @@
             System.err.println("The " + lang.toString() + " rule: "+ rule.getId()+ ":"+ rule.getSubId()+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies. "+ " Did you forget skip=\"...\"?");
           }
           if (!exception.getString().equals(".")) {
-            warnIfElementNotKosher(exception.getString(),exception.isRegularExpression(),exception.getCaseSensitive(),exception.getNegation(),exception.isInflected(),lang,rule.getId() + ":" + rule.getSubId()+ " (exception in token ["+ i+ "])");
+            warnIfElementNotKosher(exception.getString(),exception.isRegularExpression(),exception.getCaseSensitive(),exception.getNegation(),exception.isInflected(),lang,rule.getId() + ":" + rule.getSubId()+ " (exception in token ["+ i+ "])",i);
           }
-          warnIfElementNotKosher(exception.getPOStag() == null ? "" : exception.getPOStag(),exception.isPOStagRegularExpression(),exception.getCaseSensitive(),exception.getPOSNegation(),false,lang,rule.getId() + ":" + rule.getSubId()+ " (exception in POS tag of token ["+ i+ "])");
+          warnIfElementNotKosher(exception.getPOStag() == null ? "" : exception.getPOStag(),exception.isPOStagRegularExpression(),exception.getCaseSensitive(),exception.getPOSNegation(),false,lang,rule.getId() + ":" + rule.getSubId()+ " (exception in POS tag of token ["+ i+ "])",i);
           for (          final Element otherException : exceptionElements) {
             if (equalException(exception,otherException)) {
               System.err.println("The " + lang.toString() + " rule: "+ rule.getId()+ ":"+ rule.getSubId()+ " in token ["+ i+ "]"+ " contains duplicate exceptions with"+ " string=["+ exception.getString()+ "]"+ " POS tag=["+ exception.getPOStag()+ "]"+ " negate=["+ exception.getNegation()+ "]"+ " POS negate=["+ exception.getPOSNegation()+ "]");

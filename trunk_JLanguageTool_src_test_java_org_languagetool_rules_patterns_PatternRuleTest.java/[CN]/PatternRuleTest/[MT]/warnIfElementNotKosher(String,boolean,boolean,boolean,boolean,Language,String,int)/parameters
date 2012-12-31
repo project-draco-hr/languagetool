@@ -5,3 +5,4 @@ boolean isNegated
 boolean isInflected
 Language lang
 String ruleId
+int tokenIndex
