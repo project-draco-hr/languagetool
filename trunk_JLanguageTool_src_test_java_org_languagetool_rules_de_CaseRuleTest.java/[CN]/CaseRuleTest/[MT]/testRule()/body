@@ -13,6 +13,7 @@
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz. ??Ein Zitat.??")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz. (Noch einer.)")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier geht es nach Tel Aviv.")).length);
+  assertEquals(0,langTool.check("Karten werden vom Auswahlstapel gezogen. [???] Der Auswahlstapel geh??rt zum Inhalt.").size());
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ein Menschenfreund.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Der Nachfahre.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz, \"Ein Zitat.\"")).length);
@@ -32,4 +33,5 @@
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Ein Einfacher Satz zum Testen.")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das Winseln St??rt.")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Sein verhalten war okay.")).length);
+  assertEquals(1,langTool.check("Karten werden vom Auswahlstapel gezogen. Auch [???] Der Auswahlstapel geh??rt zum Inhalt.").size());
 }
