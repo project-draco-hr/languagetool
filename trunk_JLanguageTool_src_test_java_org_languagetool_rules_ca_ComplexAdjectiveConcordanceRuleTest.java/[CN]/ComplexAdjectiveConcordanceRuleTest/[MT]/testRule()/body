@@ -1,10 +1,11 @@
 {
+  assertCorrect("I s??, la crisi ser?? llarga, molt llarga, potser eterna.");
+  assertCorrect("El rei ha trobat l'excusa i l'explicaci?? adequada.");
   assertCorrect("t?? una manera de jugar aquestes gires tan femenina");
   assertCorrect("des de la tradicional divisi?? en dos regnes establida per Linnaeus");
   assertCorrect("aquestes activitats avui residuals donada ja la manca de territori");
   assertCorrect("instruments de c??lcul basats en boles anomenats yupana.");
   assertCorrect("El rei ha trobat l'excusa i l'explicaci?? adequades.");
-  assertCorrect("El rei ha trobat l'excusa i l'explicaci?? adequada.");
   assertCorrect("Copa del m??n femenina.");
   assertCorrect("Batalla entre asteques i espanyols coneguda com la Nit Trista.");
   assertCorrect("??s un informe sobre la cultura japonesa realitzat per enc??rrec de l'ex??rcit d'Estats Units.");
