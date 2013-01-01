@@ -4,6 +4,7 @@
   final boolean isSentEnd=oldAtr.isSentEnd();
   final boolean isParaEnd=oldAtr.isParaEnd();
   final boolean spaceBefore=oldAtr.isWhitespaceBefore();
+  final int startPosition=oldAtr.getStartPos();
   AnalyzedTokenReadings a=newAtr;
   if (isSentEnd) {
     a.setSentEnd();
@@ -12,6 +13,7 @@
     a.setParaEnd();
   }
   a.setWhitespaceBefore(spaceBefore);
+  a.setStartPos(startPosition);
   annotateChange(a,prevValue,prevAnot);
   return a;
 }
