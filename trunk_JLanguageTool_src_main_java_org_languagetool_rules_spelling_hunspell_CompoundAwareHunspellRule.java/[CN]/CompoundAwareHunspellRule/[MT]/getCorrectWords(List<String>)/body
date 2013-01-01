@@ -1,0 +1,17 @@
+{
+  final List<String> result=new ArrayList<String>();
+  for (  String wordOrPhrase : wordsOrPhrases) {
+    final String[] words=tokenizeText(wordOrPhrase);
+    boolean wordIsOkay=true;
+    for (    String word : words) {
+      if (dictionary.misspelled(word)) {
+        wordIsOkay=false;
+        break;
+      }
+    }
+    if (wordIsOkay) {
+      result.add(wordOrPhrase);
+    }
+  }
+  return result;
+}

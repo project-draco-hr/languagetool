@@ -1,0 +1,11 @@
+{
+  final Set<String> seen=new HashSet<String>();
+  final Iterator<String> iterator=words.iterator();
+  while (iterator.hasNext()) {
+    final String word=iterator.next();
+    if (seen.contains(word)) {
+      iterator.remove();
+    }
+    seen.add(word);
+  }
+}

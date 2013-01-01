@@ -1,0 +1,11 @@
+{
+  final ResourceBundle messages=ResourceBundle.getBundle("org.languagetool.MessagesBundle",new Locale("de"));
+  final CompoundAwareHunspellRule rule=new GermanSpellerRule(messages,Language.GERMANY_GERMAN);
+  rule.init();
+  final String[] words={"foo","warmup","Rechtschreipreform","Theatrekasse","Zoobesuck","Handselvertreter","M??ckenstick","gew??nlich","Traprennen","Autoverkehrr"};
+  for (  String word : words) {
+    final long startTime=System.currentTimeMillis();
+    final List<String> suggest=rule.getSuggestions(word);
+    System.out.println((System.currentTimeMillis() - startTime) + "ms for " + word+ ": "+ suggest);
+  }
+}

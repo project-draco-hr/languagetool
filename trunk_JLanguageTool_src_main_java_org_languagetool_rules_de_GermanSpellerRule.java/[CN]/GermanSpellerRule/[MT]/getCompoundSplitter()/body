@@ -1,0 +1,11 @@
+{
+  try {
+    final AbstractWordSplitter wordSplitter=new GermanWordSplitter(false);
+    wordSplitter.setStrictMode(false);
+    ((GermanWordSplitter)wordSplitter).setMinimumWordLength(3);
+    return wordSplitter;
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Could not set up German compound splitter",e);
+  }
+}

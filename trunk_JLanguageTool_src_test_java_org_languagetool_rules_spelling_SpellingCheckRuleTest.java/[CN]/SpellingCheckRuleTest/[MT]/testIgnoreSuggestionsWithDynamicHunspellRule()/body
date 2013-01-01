@@ -2,6 +2,7 @@
   final JLanguageTool langTool=new JLanguageTool(Language.GERMANY_GERMAN);
   final SpellingCheckRule rule=new HunspellNoSuggestionRule(TestTools.getEnglishMessages(),Language.GERMANY_GERMAN);
   langTool.addRule(rule);
+  langTool.disableRule(GermanSpellerRule.RULE_ID);
   final List<RuleMatch> matches=langTool.check("Das ist ein Tibbfehla.");
   assertEquals(1,matches.size());
   assertEquals(HunspellNoSuggestionRule.RULE_ID,matches.get(0).getRule().getId());

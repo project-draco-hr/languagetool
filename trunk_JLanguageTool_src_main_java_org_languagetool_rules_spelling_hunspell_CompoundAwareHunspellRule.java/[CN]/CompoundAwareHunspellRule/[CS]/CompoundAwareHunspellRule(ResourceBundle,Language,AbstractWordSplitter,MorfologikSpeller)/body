@@ -1,0 +1,5 @@
+{
+  super(messages,language);
+  this.wordSplitter=wordSplitter;
+  this.morfoSpeller=morfoSpeller;
+}

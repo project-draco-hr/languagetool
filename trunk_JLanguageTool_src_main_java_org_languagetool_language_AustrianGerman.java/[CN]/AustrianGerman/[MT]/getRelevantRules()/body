@@ -1,0 +1,5 @@
+{
+  final List<Class<? extends Rule>> rules=new ArrayList<Class<? extends Rule>>(super.getRelevantRules());
+  rules.add(GermanSpellerRule.class);
+  return rules;
+}

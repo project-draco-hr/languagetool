@@ -1,0 +1,13 @@
+{
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Der Waschmaschinentestversuch")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Der Waschmaschinentest-Versuch")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Der Arbeitnehmer")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die Verhaltens??nderung")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Der Waschmaschinentest-Dftgedgs")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Der Dftgedgs-Waschmaschinentest")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Der Waschmaschinentestdftgedgs")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Der Waschmaschinentestversuch orkt")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Der Arbeitsnehmer")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Die Verhalten??nderung")).length);
+  assertEquals(2,rule.match(langTool.getAnalyzedSentence("Der asdegfue orkt")).length);
+}

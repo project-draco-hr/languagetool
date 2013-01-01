@@ -1,0 +1,35 @@
+{
+  if (needsInit) {
+    init();
+  }
+  final List<String> candidates=new ArrayList<String>();
+  final List<String> noSplitSuggestions=morfoSpeller.getSuggestions(word);
+  candidates.addAll(noSplitSuggestions);
+  if (StringTools.startsWithUppercase(word) && !StringTools.isAllUppercase(word)) {
+    final List<String> noSplitLowercaseSuggestions=morfoSpeller.getSuggestions(word.toLowerCase());
+    int pos=0;
+    for (    String suggestion : noSplitLowercaseSuggestions) {
+      candidates.add(pos,StringTools.uppercaseFirstChar(suggestion));
+      pos=Math.min(pos + 2,candidates.size());
+    }
+  }
+  final Collection<String> parts=wordSplitter.splitWord(word);
+  int partCount=0;
+  for (  String part : parts) {
+    if (dictionary.misspelled(part)) {
+      List<String> suggestions=morfoSpeller.getSuggestions(part);
+      if (suggestions.size() == 0) {
+        suggestions=morfoSpeller.getSuggestions(StringTools.uppercaseFirstChar(part));
+      }
+      for (      String suggestion : suggestions) {
+        final List<String> partsCopy=new ArrayList<String>(parts);
+        partsCopy.set(partCount,suggestion);
+        candidates.add(StringTools.listToString(partsCopy,""));
+      }
+    }
+    partCount++;
+  }
+  filterDupes(candidates);
+  final List<String> correctWords=getCorrectWords(candidates);
+  return correctWords.subList(0,Math.min(MAX_SUGGESTIONS,correctWords.size()));
+}

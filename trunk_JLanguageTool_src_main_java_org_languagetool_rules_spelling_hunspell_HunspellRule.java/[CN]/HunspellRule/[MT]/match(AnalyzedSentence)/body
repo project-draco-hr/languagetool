@@ -19,11 +19,9 @@
     }
     if (isAlphabetic && dictionary.misspelled(word)) {
       final RuleMatch ruleMatch=new RuleMatch(this,len,len + word.length(),messages.getString("spelling"),messages.getString("desc_spelling_short"));
-      if (offerSuggestions()) {
-        final List<String> suggestions=dictionary.suggest(word);
-        if (suggestions != null) {
-          ruleMatch.setSuggestedReplacements(suggestions);
-        }
+      final List<String> suggestions=getSuggestions(word);
+      if (suggestions != null) {
+        ruleMatch.setSuggestedReplacements(suggestions);
       }
       ruleMatches.add(ruleMatch);
     }

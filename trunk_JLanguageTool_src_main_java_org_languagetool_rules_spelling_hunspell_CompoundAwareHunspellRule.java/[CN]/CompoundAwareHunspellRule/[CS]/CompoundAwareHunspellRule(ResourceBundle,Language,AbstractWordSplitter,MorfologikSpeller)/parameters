@@ -1,0 +1,4 @@
+ResourceBundle messages
+Language language
+AbstractWordSplitter wordSplitter
+MorfologikSpeller morfoSpeller

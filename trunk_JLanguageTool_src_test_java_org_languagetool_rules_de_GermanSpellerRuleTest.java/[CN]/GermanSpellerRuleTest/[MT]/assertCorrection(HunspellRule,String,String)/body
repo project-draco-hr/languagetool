@@ -1,0 +1,6 @@
+{
+  final List<String> suggestions=rule.getSuggestions(input);
+  for (  String expectedTerm : expectedTerms) {
+    assertTrue("Not found: '" + expectedTerm + "' in: "+ suggestions,suggestions.contains(expectedTerm));
+  }
+}

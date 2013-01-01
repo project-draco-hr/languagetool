@@ -1,0 +1,6 @@
+{
+  if (needsInit) {
+    init();
+  }
+  return dictionary.suggest(word);
+}
