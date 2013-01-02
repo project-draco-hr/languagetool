@@ -69,6 +69,7 @@
   cons.insets=new Insets(1,10,10,1);
   cons.gridy=3;
   contentPane.add(panel,cons);
+  warmUpChecker();
   frame.pack();
   frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
 }
