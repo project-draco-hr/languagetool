@@ -1,4 +1,5 @@
 {
+  assertCorrect("La part superior esquerra");
   assertCorrect("I s??, la crisi ser?? llarga, molt llarga, potser eterna.");
   assertCorrect("El rei ha trobat l'excusa i l'explicaci?? adequada.");
   assertCorrect("t?? una manera de jugar aquestes gires tan femenina");

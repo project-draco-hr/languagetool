@@ -1,0 +1,4 @@
+AnalyzedToken matchToken
+Map<String,List<String>> uFeatures
+boolean lastReading
+boolean isMatched

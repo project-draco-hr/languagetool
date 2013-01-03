@@ -1,0 +1,23 @@
+{
+  if (inUnification) {
+    if (isMatched) {
+      uniMatched|=isSatisfied(matchToken,uFeatures);
+    }
+    uniAllMatched=uniMatched;
+    if (lastReading) {
+      startNextToken();
+      unifiedTokens=getUnifiedTokens();
+      uniMatched=false;
+    }
+    return uniAllMatched;
+  }
+  if (isMatched) {
+    isSatisfied(matchToken,uFeatures);
+  }
+  if (lastReading) {
+    inUnification=true;
+    uniMatched=false;
+    startUnify();
+  }
+  return true;
+}

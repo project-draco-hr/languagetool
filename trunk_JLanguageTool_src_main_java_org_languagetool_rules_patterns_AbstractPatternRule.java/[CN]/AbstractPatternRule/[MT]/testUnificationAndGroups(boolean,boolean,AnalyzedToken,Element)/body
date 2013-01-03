@@ -1,16 +1,17 @@
 {
   boolean thisMatched=matched;
+  boolean elemIsMatched=elem.isMatched(matchToken);
   if (testUnification) {
     if (matched && elem.isUnified()) {
       if (elem.isUniNegated()) {
-        thisMatched=!(thisMatched && unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading));
+        thisMatched=!(thisMatched && unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading,elemIsMatched));
       }
  else {
         if (elem.isLastInUnification()) {
-          thisMatched=thisMatched && unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading);
+          thisMatched=thisMatched && unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading,elemIsMatched);
         }
  else {
-          unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading);
+          unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading,elemIsMatched);
         }
       }
     }
