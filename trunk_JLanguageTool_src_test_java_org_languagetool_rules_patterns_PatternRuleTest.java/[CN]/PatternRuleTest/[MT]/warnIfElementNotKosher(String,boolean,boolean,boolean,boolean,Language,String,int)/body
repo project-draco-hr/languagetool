@@ -22,7 +22,7 @@
     if (matcher.find()) {
       String s=matcher.group(2).replaceAll("\\\\p\\{[^}]*\\}","");
       if (s.indexOf('|') >= 0) {
-        System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains | (pipe) in "+ " regexp part ["+ matcher.group(2)+ "] which is unlikely to be correct.");
+        System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains | (pipe) in "+ " regexp bracket expression ["+ matcher.group(2)+ "] which is unlikely to be correct.");
       }
       char[] sorted=s.toCharArray();
       java.util.Arrays.sort(sorted);
