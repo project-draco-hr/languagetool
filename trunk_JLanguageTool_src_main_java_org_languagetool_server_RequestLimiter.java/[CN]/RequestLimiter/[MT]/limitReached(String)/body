@@ -1,0 +1,13 @@
+{
+  int requestsByIp=0;
+  final Date thresholdDate=new Date(System.currentTimeMillis() - requestLimitPeriodInSeconds * 1000);
+  for (  RequestEvent requestEvent : requestEvents) {
+    if (requestEvent.ip.equals(ipAddress) && requestEvent.date.after(thresholdDate)) {
+      requestsByIp++;
+      if (requestsByIp > requestLimit) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

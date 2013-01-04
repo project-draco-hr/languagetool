@@ -1,0 +1,4 @@
+{
+  this.requestLimit=requestLimit;
+  this.requestLimitPeriodInSeconds=requestLimitPeriodInSeconds;
+}

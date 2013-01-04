@@ -1,0 +1,7 @@
+{
+  final URL keystore=HTTPSServerTest.class.getResource(KEYSTORE);
+  if (keystore == null) {
+    throw new RuntimeException("Not found in classpath : " + KEYSTORE);
+  }
+  return new File(keystore.getFile());
+}

@@ -1,3 +1,4 @@
 boolean verbose
 Set<String> allowedIps
 boolean internal
+RequestLimiter requestLimiter

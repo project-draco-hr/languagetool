@@ -2,8 +2,13 @@
   String text=null;
   try {
     final URI requestedUri=httpExchange.getRequestURI();
-    final Map<String,String> parameters=getRequestQuery(httpExchange,requestedUri);
     final String remoteAddress=httpExchange.getRemoteAddress().getAddress().getHostAddress();
+    if (requestLimiter != null && !requestLimiter.isAccessOkay(remoteAddress)) {
+      final String errorMessage="Error: Access from " + StringTools.escapeXML(remoteAddress) + " denied - too many requests. Allowed maximum requests: "+ requestLimiter.getRequestLimit()+ " requests per "+ requestLimiter.getRequestLimitPeriodInSeconds()+ " seconds";
+      sendError(httpExchange,HttpURLConnection.HTTP_FORBIDDEN,errorMessage);
+      throw new RuntimeException(errorMessage);
+    }
+    final Map<String,String> parameters=getRequestQuery(httpExchange,requestedUri);
     if (allowedIps == null || allowedIps.contains(remoteAddress)) {
       if (requestedUri.getRawPath().endsWith("/Languages")) {
         printListOfLanguages(httpExchange);
