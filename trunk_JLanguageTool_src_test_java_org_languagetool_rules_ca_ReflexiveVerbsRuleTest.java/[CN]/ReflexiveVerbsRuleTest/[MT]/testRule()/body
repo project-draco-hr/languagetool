@@ -1,4 +1,5 @@
 {
+  assertCorrect("ens hem esfor??at molt per venir-vos a veure");
   assertCorrect("Un altre dia s'anava a l'Ermita i un tercer dia se solia anar a altres indrets de car??cter comarcal.");
   assertCorrect("La Nit de sant Joan es baixaven falles de la muntanya.");
   assertCorrect("que no pertanyen a ells mateixos es cau en una contradicci??.");

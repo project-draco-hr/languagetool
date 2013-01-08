@@ -1,4 +1,7 @@
 {
+  assertCorrect("Bernab?? i Saule, un cop acomplerta la seva missi?? a Jerusalem");
+  assertCorrect("he passat una nit i un dia sencers a la deriva");
+  assertCorrect("L'olor dels teus perfums, m??s agradable que tots els b??lsams.");
   assertCorrect("La part superior esquerra");
   assertCorrect("I s??, la crisi ser?? llarga, molt llarga, potser eterna.");
   assertCorrect("El rei ha trobat l'excusa i l'explicaci?? adequada.");

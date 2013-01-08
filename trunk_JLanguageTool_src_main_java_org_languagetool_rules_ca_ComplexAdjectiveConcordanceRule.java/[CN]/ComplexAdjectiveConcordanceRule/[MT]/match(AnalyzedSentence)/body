@@ -5,6 +5,10 @@
     if (matchPostagRegexp(tokens[i],ADJECTIU) && !matchPostagRegexp(tokens[i],CONCORDA)) {
       final String token=tokens[i].getToken();
       final String prevToken=tokens[i - 1].getToken();
+      String prevPrevToken="";
+      if (i > 2) {
+        prevPrevToken=tokens[i - 2].getToken();
+      }
       String nextToken="";
       if (i < tokens.length - 1) {
         nextToken=tokens[i + 1].getToken();
@@ -169,6 +173,9 @@
       if (!isException && matchRegexp(token,EXCEPCIONS_PARTICIPI)) {
         isException=true;
       }
+      if (!isException && ((prevPrevToken.equals("un") && prevToken.equals("cop") || prevToken.equals("colp")) || (prevPrevToken.equals("una") && prevToken.equals("volta") || prevToken.equals("vegada")))) {
+        isException=true;
+      }
       if (!isException && i < tokens.length - 1) {
         if ((token.equals("segur") || token.equals("major") || token.equals("menor")) && nextToken.equals("que")) {
           isException=true;
@@ -242,7 +249,7 @@
         }
       }
       if (theRuleMaches) {
-        final String msg="Reviseu la concordan??a de l'adjectiu \u00AB" + token + "\u00BB.";
+        final String msg="Reviseu la concordan??a de la paraula \u00AB" + token + "\u00BB.";
         final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Reviseu la concordan??a.");
         ruleMatches.add(ruleMatch);
       }
