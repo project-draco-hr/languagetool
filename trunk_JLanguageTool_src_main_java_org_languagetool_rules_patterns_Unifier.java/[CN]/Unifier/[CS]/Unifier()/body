@@ -4,6 +4,8 @@
   equivalencesMatched=new ArrayList<Map<String,Set<String>>>();
   equivalenceTypes=new HashMap<EquivalenceTypeLocator,Element>();
   equivalenceFeatures=new HashMap<String,List<String>>();
+  equivalencesToBeRemoved=new HashMap<String,Set<String>>();
+  equivalencesToBeKept=new HashMap<String,Set<String>>();
   featuresFound=new ArrayList<Boolean>();
   tmpFeaturesFound=new ArrayList<Boolean>();
   tokSequence=new ArrayList<AnalyzedTokenReadings>();

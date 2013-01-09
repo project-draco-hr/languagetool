@@ -1,4 +1,17 @@
 {
   featuresFound=new ArrayList<Boolean>(tmpFeaturesFound);
   readingsCounter++;
+  List<String> types;
+  for (int i=0; i <= tokCnt; i++) {
+    for (    Map.Entry<String,List<String>> feat : equivalenceFeatures.entrySet()) {
+      types=feat.getValue();
+      for (      final String typeName : types) {
+        if (featuresFound.get(i) && equivalencesToBeRemoved.containsKey(feat.getKey()) && equivalencesToBeRemoved.get(feat.getKey()).contains(typeName)&& !(equivalencesToBeKept.containsKey(feat.getKey()) && equivalencesToBeKept.get(feat.getKey()).contains(typeName))&& equivalencesMatched.get(i).containsKey(feat.getKey())&& equivalencesMatched.get(i).get(feat.getKey()).contains(typeName)) {
+          equivalencesMatched.get(i).get(feat.getKey()).remove(typeName);
+        }
+      }
+    }
+  }
+  equivalencesToBeRemoved.clear();
+  equivalencesToBeKept.clear();
 }

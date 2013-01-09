@@ -16,6 +16,26 @@
           if (featuresFound.get(i) && equivalencesMatched.get(i).containsKey(feat.getKey()) && equivalencesMatched.get(i).get(feat.getKey()).contains(typeName)) {
             final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
             featUnified=featUnified || testElem.isMatched(aToken);
+            if (!testElem.isMatched(aToken)) {
+              if (!equivalencesToBeRemoved.containsKey(feat.getKey())) {
+                final Set<String> typeSet=new HashSet<String>();
+                typeSet.add(typeName);
+                equivalencesToBeRemoved.put(feat.getKey(),typeSet);
+              }
+ else {
+                equivalencesToBeRemoved.get(feat.getKey()).add(typeName);
+              }
+            }
+ else {
+              if (!equivalencesToBeKept.containsKey(feat.getKey())) {
+                final Set<String> typeSet=new HashSet<String>();
+                typeSet.add(typeName);
+                equivalencesToBeKept.put(feat.getKey(),typeSet);
+              }
+ else {
+                equivalencesToBeKept.get(feat.getKey()).add(typeName);
+              }
+            }
           }
         }
         allFeatsUnified&=featUnified;
