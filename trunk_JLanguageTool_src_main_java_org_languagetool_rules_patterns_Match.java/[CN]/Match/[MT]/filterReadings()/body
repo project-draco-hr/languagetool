@@ -47,5 +47,7 @@
   if (l.isEmpty()) {
     return formattedToken;
   }
-  return new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]),formattedToken.getStartPos());
+  final AnalyzedTokenReadings anTkRead=new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]),formattedToken.getStartPos());
+  anTkRead.setWhitespaceBefore(formattedToken.isWhitespaceBefore());
+  return anTkRead;
 }
