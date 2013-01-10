@@ -1,20 +1,8 @@
 {
-  Map<String,String> parameters;
+  final Map<String,String> parameters;
   if ("post".equalsIgnoreCase(httpExchange.getRequestMethod())) {
-    final InputStreamReader isr=new InputStreamReader(httpExchange.getRequestBody(),ENCODING);
-    try {
-      final BufferedReader br=new BufferedReader(isr);
-      try {
-        final String query=br.readLine();
-        parameters=parseQuery(query);
-      }
-  finally {
-        br.close();
-      }
-    }
-  finally {
-      isr.close();
-    }
+    final String query=StringTools.streamToString(httpExchange.getRequestBody(),ENCODING);
+    parameters=parseQuery(query);
   }
  else {
     final String query=requestedUri.getRawQuery();
