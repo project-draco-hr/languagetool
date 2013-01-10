@@ -56,8 +56,12 @@
       ruleMatches.add(ruleMatch);
     }
     if (matchLemmaRegexp(tokens[i],VERBS_MOVIMENT) && !matchPostagRegexp(tokens[i],VERB_AUXILIAR)) {
+      if (matchLemmaRegexp(tokens[i],VERBS_NO_MOVIMENT))       continue loop;
       if (isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereBefore(tokens,i,LEMMA_DE,POSTAG_DE) && isThereVerbBefore(tokens,i,VERB_HAVER))       continue loop;
       if (isThereVerbBefore(tokens,i,VERBS_SOVINT_PRONOMINALS) || (isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) || isThereVerbBefore(tokens,i,VERBS_PRONOMINALS)|| isThereVerbAfter(tokens,i,VERBS_SOVINT_PRONOMINALS))       continue loop;
+      if (matchLemmaRegexp(tokens[i],VERB_VENIR)) {
+        if (isThereAfter(tokens,i,VERB_INF))         continue loop;
+      }
       if (matchLemmaRegexp(tokens[i],VERB_ANAR)) {
         if (isThereAfter(tokens,i,VERB_GERUNDI))         continue loop;
         if (isThereVerbAfter(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) || isThereVerbAfter(tokens,i,VERBS_PRONOMINALS))         continue loop;

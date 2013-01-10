@@ -1,4 +1,14 @@
 {
+  assertCorrect("i de venir-vos a trobar");
+  assertCorrect("el sol s'havia post, li anaven portant tots els malalts");
+  assertCorrect("que no em caigui la casa");
+  assertCorrect("que no em caigui al damunt res");
+  assertCorrect("Els qui s'havien dispersat van anar pertot arreu");
+  assertCorrect("Els qui volen enriquir-se cauen en temptacions");
+  assertCorrect("Despr??s d'acomiadar-nos vam pujar a la nau");
+  assertCorrect("Despr??s d'acomiadar-nos, vam pujar a la nau");
+  assertCorrect("que em vingui a ajudar");
+  assertCorrect("fins i tot us vendr??eu un amic");
   assertCorrect("ens hem esfor??at molt per venir-vos a veure");
   assertCorrect("Un altre dia s'anava a l'Ermita i un tercer dia se solia anar a altres indrets de car??cter comarcal.");
   assertCorrect("La Nit de sant Joan es baixaven falles de la muntanya.");
@@ -85,6 +95,7 @@
   assertCorrect("es vei?? obligat a marxar el 1512.");
   assertCorrect("Francesc III es va anar a asseure sobre el tron");
   assertCorrect("Va anar a dutxar-se");
+  assertCorrect("es va anar a dutxar");
   assertCorrect("es van deixar anar molts empresonats.");
   assertCorrect("A Joan se li'n va anar la m??");
   assertCorrect("se'ns en va anar la m??");
