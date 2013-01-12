@@ -1,4 +1,10 @@
 {
+  assertCorrect("Vaig perdut, tremolo de por.");
+  assertCorrect("l'home marra el cam??");
+  assertCorrect("vei?? que darrere venia el deixeble");
+  assertCorrect("Per?? el qui begui de l'aigua");
+  assertCorrect("a qualsevol qui en mati un altre");
+  assertCorrect("tu que prediques de no robar");
   assertCorrect("els seg??ents territoris externs habitats:");
   assertCorrect("Cap faria una cosa aix??.");
   assertCorrect("El cos genera suficient pressi?? interna.");

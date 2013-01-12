@@ -1,4 +1,5 @@
 {
+  assertCorrect("no m'he pogut endur l'espasa");
   assertCorrect("i de venir-vos a trobar");
   assertCorrect("el sol s'havia post, li anaven portant tots els malalts");
   assertCorrect("que no em caigui la casa");
