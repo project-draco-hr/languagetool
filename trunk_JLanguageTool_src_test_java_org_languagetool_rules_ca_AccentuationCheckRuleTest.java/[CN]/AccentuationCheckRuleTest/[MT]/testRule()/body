@@ -1,4 +1,5 @@
 {
+  assertCorrect("L??pez-Pic?? publica el seu llibre de poesies");
   assertCorrect("Vaig perdut, tremolo de por.");
   assertCorrect("l'home marra el cam??");
   assertCorrect("vei?? que darrere venia el deixeble");
