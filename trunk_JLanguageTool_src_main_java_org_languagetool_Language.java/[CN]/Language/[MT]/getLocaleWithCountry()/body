@@ -1,0 +1,8 @@
+{
+  if (getCountryVariants().length > 0) {
+    return new Locale(getShortName(),getCountryVariants()[0]);
+  }
+ else {
+    return getLocale();
+  }
+}

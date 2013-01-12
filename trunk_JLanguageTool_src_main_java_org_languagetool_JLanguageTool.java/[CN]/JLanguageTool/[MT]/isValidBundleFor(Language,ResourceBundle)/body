@@ -1,0 +1,3 @@
+{
+  return lang.getLocale().getLanguage().equals(bundle.getLocale().getLanguage());
+}

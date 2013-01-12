@@ -1,6 +1,16 @@
 {
   try {
-    final ResourceBundle bundle=ResourceBundle.getBundle("org.languagetool.MessagesBundle",lang.getLocale());
+    ResourceBundle bundle=ResourceBundle.getBundle("org.languagetool.MessagesBundle",lang.getLocaleWithCountry());
+    if (!isValidBundleFor(lang,bundle)) {
+      bundle=ResourceBundle.getBundle("org.languagetool.MessagesBundle",lang.getLocale());
+      if (!isValidBundleFor(lang,bundle)) {
+        final Language defaultVariant=lang.getDefaultVariant();
+        if (defaultVariant != null && defaultVariant.getCountryVariants().length > 0) {
+          final Locale locale=new Locale(defaultVariant.getShortName(),defaultVariant.getCountryVariants()[0]);
+          bundle=ResourceBundle.getBundle("org.languagetool.MessagesBundle",locale);
+        }
+      }
+    }
     final ResourceBundle fallbackBundle=ResourceBundle.getBundle("org.languagetool.MessagesBundle",Locale.ENGLISH);
     return new ResourceBundleWithFallback(bundle,fallbackBundle);
   }
