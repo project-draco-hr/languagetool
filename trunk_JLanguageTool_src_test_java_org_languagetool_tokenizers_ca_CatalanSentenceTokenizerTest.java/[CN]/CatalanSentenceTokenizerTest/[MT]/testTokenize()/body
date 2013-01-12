@@ -1,8 +1,13 @@
 {
   testSplit(new String[]{"A l'atenci?? d'A. Comes."});
+  testSplit(new String[]{"A l'atenci?? d'??. Comes."});
   testSplit(new String[]{"Desenganyeu-vos??? ","L?????nic problema seri??s de l'home en aquest m??n ??s el de subsistir."});
+  testSplit(new String[]{"??s clar??? traduir ??s una feina endimoniada"});
   testSplit(new String[]{"Viu al n??m. 24 del carrer de l'Hort."});
   testSplit(new String[]{"El Dr. Joan no vindr??."});
   testSplit(new String[]{"Distingit Sr. Joan,"});
   testSplit(new String[]{"Molt Hble. Sr. President"});
+  testSplit(new String[]{"El pou d'Avall. ","??s bonic."});
+  testSplit(new String[]{"El pou d???Avall. ","??s bonic."});
+  testSplit(new String[]{"Ell viu a l'u. ","Jo al dos."});
 }
