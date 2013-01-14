@@ -3,7 +3,7 @@
   boolean keepCounting=true;
   while (i + j < tokens.length && keepCounting) {
     if (matchPostagRegexp(tokens[i + j],postag))     return true;
-    keepCounting=matchPostagRegexp(tokens[i + j],PREP_VERB_PRONOM);
+    keepCounting=matchPostagRegexp(tokens[i + j],PREP_VERB_PRONOM_ADV);
     j++;
   }
   return false;

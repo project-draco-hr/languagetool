@@ -9,10 +9,10 @@
  else {
       token=tokens[i].getToken();
     }
-    if (matchPostagRegexp(tokens[i],NO_VERB))     continue loop;
+    if (matchPostagRegexp(tokens[i],NO_VERB) || !matchPostagRegexp(tokens[i],VERB))     continue loop;
     final Matcher mUpperCase=UPPERCASE.matcher(tokens[i].getToken());
     if (i > 1 && mUpperCase.matches())     continue loop;
-    if (i + 2 < tokens.length && matchLemmaRegexp(tokens[i],VERBS_PORTAR_DUR) && !hasVerbMultipleReadings(tokens[i]) && isThereReflexivePronoun(tokens,i) && isThereAfterWithoutPreposition(tokens,i,POSTAG_CD) && !isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && !(isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) && !matchPostagRegexp(tokens[i + 1],POSTAG_ADVERBI) && !matchPostagRegexp(tokens[i + 2],POSTAG_ADVERBI) && !matchLemmaRegexp(tokens[i + 2],ANYMESDIA) && !isPhraseImpersonalVerbSP(tokens,i)) {
+    if (i + 2 < tokens.length && matchLemmaRegexp(tokens[i],VERBS_PORTAR_DUR) && !(matchPostagRegexp(tokens[i],VERB_INF) && isThereBefore(tokens,i,LEMMA_PREP_A_PER,POSTAG_PREPOSICIO)) && !hasVerbMultipleReadings(tokens[i]) && isThereReflexivePronoun(tokens,i) && isThereAfterWithoutPreposition(tokens,i,POSTAG_CD) && !isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && !(isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) && !matchPostagRegexp(tokens[i + 1],POSTAG_ADVERBI) && !matchPostagRegexp(tokens[i + 2],POSTAG_ADVERBI) && !matchLemmaRegexp(tokens[i + 2],ANYMESDIA) && !isPhraseImpersonalVerbSP(tokens,i)) {
       String suggestion;
       if (matchLemmaRegexp(tokens[i],VERB_PORTAR)) {
         suggestion="em" + token;
@@ -28,7 +28,7 @@
       ruleMatches.add(ruleMatch);
       continue loop;
     }
-    if (i + 1 < tokens.length && matchPostagRegexp(tokens[i],VERB_INF) && !matchPostagRegexp(tokens[i - 1],PREPOSICIO) && isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT)) {
+    if (i + 1 < tokens.length && matchPostagRegexp(tokens[i],VERB_INF) && !matchPostagRegexp(tokens[i - 1],POSTAG_PREPOSICIO) && isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT)) {
       final String msg="En aquesta per??frasi verbal el pronom reflexiu posterior ??s redundant.<suggestion></suggestion>";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i + 1].getStartPos(),tokens[i + 1].getStartPos() + tokens[i + 1].getToken().length(),msg,"Pronom redundant");
       ruleMatches.add(ruleMatch);
@@ -48,7 +48,7 @@
       if (matchLemmaRegexp(tokens[i],NO_VERBS_NO_PRONOMINALS))       continue loop;
       if (!isThereReflexivePronoun(tokens,i))       continue loop;
       if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS_IMPERSONALS2) && isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereBefore(tokens,i,LEMMA_DE,POSTAG_DE)&& isThereVerbBefore(tokens,i,VERB_HAVER))       continue loop;
-      if (isThereVerbBefore(tokens,i,VERBS_SOVINT_PRONOMINALS) || (isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) || isThereVerbBefore(tokens,i,VERBS_PRONOMINALS))       continue loop;
+      if (isThereVerbBefore(tokens,i,VERBS_SOVINT_AMB_COMPLEMENT) || (isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) || isThereVerbBefore(tokens,i,VERBS_PRONOMINALS))       continue loop;
       if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS_IMPERSONALS) && isPhraseImpersonalVerbS(tokens,i))       continue loop;
       if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS_IMPERSONALS2) && isPhraseImpersonalVerbSP(tokens,i))       continue loop;
       final String msg="Aquest verb no ??s pronominal. Sobra un pronom.";
@@ -58,13 +58,14 @@
     if (matchLemmaRegexp(tokens[i],VERBS_MOVIMENT) && !matchPostagRegexp(tokens[i],VERB_AUXILIAR)) {
       if (matchLemmaRegexp(tokens[i],VERBS_NO_MOVIMENT))       continue loop;
       if (isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereBefore(tokens,i,LEMMA_DE,POSTAG_DE) && isThereVerbBefore(tokens,i,VERB_HAVER))       continue loop;
-      if (isThereVerbBefore(tokens,i,VERBS_SOVINT_PRONOMINALS) || (isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) || isThereVerbBefore(tokens,i,VERBS_PRONOMINALS)|| isThereVerbAfter(tokens,i,VERBS_SOVINT_PRONOMINALS))       continue loop;
+      if (isThereVerbBefore(tokens,i,VERBS_SOVINT_AMB_COMPLEMENT) || (isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) || isThereVerbBefore(tokens,i,VERBS_PRONOMINALS)|| isThereVerbAfter(tokens,i,VERBS_SOVINT_AMB_COMPLEMENT))       continue loop;
       if (matchLemmaRegexp(tokens[i],VERB_VENIR)) {
         if (isThereAfter(tokens,i,VERB_INF))         continue loop;
       }
       if (matchLemmaRegexp(tokens[i],VERB_ANAR)) {
         if (isThereAfter(tokens,i,VERB_GERUNDI))         continue loop;
         if (isThereVerbAfter(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) || isThereVerbAfter(tokens,i,VERBS_PRONOMINALS))         continue loop;
+        if (hasVerbMultipleReadings(tokens[i]) && isThereAfter(tokens,i,POSTAG_ADVERBI))         continue loop;
         if (isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && !isThereBefore(tokens,i,LEMMA_PRONOM_CI,POSTAG_PRONOM_CI) && (!isTherePersonalSubjectBefore(tokens,i,TRENCA_COMPTE) || isThereBefore(tokens,i,LEMMA_HI,POSTAG_HI))&& isVerbNumberPerson(tokens,i,VERB_3S))         continue loop;
       }
  else {
