@@ -17,7 +17,7 @@
       assertEquals(lang + ": Incorrect match position markup (end) for rule " + rule+ ", sentence: "+ badSentence,expectedMatchEnd,matches.get(0).getToPos());
       if (suggestedCorrections != null && suggestedCorrections.size() > 0) {
         assertTrue("You specified a correction but your message has no suggestions in rule " + rule,rule.getMessage().contains("<suggestion>"));
-        assertTrue(lang + ": Incorrect suggestions: " + suggestedCorrections.toString()+ " != "+ matches.get(0).getSuggestedReplacements()+ " for rule "+ rule+ " on input: "+ badSentence,suggestedCorrections.equals(matches.get(0).getSuggestedReplacements()));
+        assertTrue(lang + ": Incorrect suggestions: " + suggestedCorrections.toString()+ " != "+ matches.get(0).getSuggestedReplacements()+ " for rule "+ rule+ " on input: "+ badSentence,suggestedCorrections.toString().equals(matches.get(0).getSuggestedReplacements().toString()));
       }
       if (matches.get(0).getSuggestedReplacements().size() > 0) {
         final int fromPos=matches.get(0).getFromPos();
