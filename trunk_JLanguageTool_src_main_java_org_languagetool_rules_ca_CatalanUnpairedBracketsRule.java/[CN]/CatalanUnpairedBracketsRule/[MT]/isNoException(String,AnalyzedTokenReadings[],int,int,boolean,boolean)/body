@@ -1,0 +1,15 @@
+{
+  if (i < 1) {
+    return true;
+  }
+  if (i == 1 && tokenStr.equals("??"))   return false;
+  if (i > 1 && tokenStr.equals(")")) {
+    int nOpeningParenthesis=0;
+    for (int k=1; k < i; k++)     if (tokens[k].getToken().equals("("))     nOpeningParenthesis++;
+    if (nOpeningParenthesis % 2 == 0) {
+      final Matcher mValidBeforeClosingParenthesis=VALID_BEFORE_CLOSING_PARENTHESIS.matcher(tokens[i - 1].getToken());
+      if (mValidBeforeClosingParenthesis.matches())       return false;
+    }
+  }
+  return true;
+}

@@ -1,0 +1,6 @@
+{
+  super(messages,language);
+  startSymbols=CA_START_SYMBOLS;
+  endSymbols=CA_END_SYMBOLS;
+  uniqueMapInit();
+}
