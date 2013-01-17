@@ -17,11 +17,13 @@
   assertEquals(0,matches.size());
   matches=langTool.check("Sehr geehrte Frau Merkel,\nwie wir Ihnen schon fr??her mitgeteilt haben...");
   assertEquals(0,matches.size());
-  matches=langTool.check("Dies ist ein Satz. und hier kommt noch einer");
-  assertEquals(1,matches.size());
+  matches=langTool.check("Dies ist ein Satz. aber das hier noch nicht");
+  assertEquals(0,matches.size());
   matches=langTool.check("Dies ist ein Satz. ??tsch, noch einer mit Umlaut.");
   assertEquals(1,matches.size());
   matches=langTool.check("Dies ist ein Satz. \"aber der hier auch!\"");
+  assertEquals(1,matches.size());
+  matches=langTool.check("Dies ist ein Satz. ???aber der hier auch!???");
   assertEquals(1,matches.size());
   matches=langTool.check("\"dies ist ein Satz!\"");
   assertEquals(1,matches.size());

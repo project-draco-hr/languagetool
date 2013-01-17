@@ -1,0 +1,11 @@
+{
+  JLanguageTool langTool=new JLanguageTool(Language.ENGLISH);
+  assertEquals(0,langTool.check("a list item").size());
+  assertEquals(0,langTool.check("a list item,").size());
+  assertEquals(0,langTool.check("with trailing whitespace, ").size());
+  assertEquals(0,langTool.check("a list item;").size());
+  assertEquals(0,langTool.check("A sentence.").size());
+  assertEquals(0,langTool.check("A sentence!").size());
+  assertEquals(1,langTool.check("a sentence.").size());
+  assertEquals(1,langTool.check("a sentence!").size());
+}

@@ -5,7 +5,7 @@
   assertTrue("Got " + result1 + ", expected "+ emptyResultPattern,result1.matches(emptyResultPattern));
   final String result2=check(Language.GERMAN,"Ein kleiner test");
   assertTrue("Got " + result2 + ", expected "+ emptyResultPattern,result2.matches(emptyResultPattern));
-  assertTrue(check(Language.GERMAN,"ein kleiner test").contains("UPPERCASE_SENTENCE_START"));
+  assertTrue(check(Language.GERMAN,"ein kleiner test.").contains("UPPERCASE_SENTENCE_START"));
   final String result=check(Language.GERMAN,"ein kleiner test. Und wieder Erwarten noch was: \u00f6\u00e4\u00fc\u00df.");
   assertTrue(result.contains("UPPERCASE_SENTENCE_START"));
   assertTrue(result.contains("WIEDER_WILLEN"));
