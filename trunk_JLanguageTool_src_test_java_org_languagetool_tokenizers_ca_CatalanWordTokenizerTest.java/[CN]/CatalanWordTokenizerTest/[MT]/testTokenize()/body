@@ -12,4 +12,19 @@
   tokens=wordTokenizer.tokenize("Mont-ras");
   assertEquals(tokens.size(),1);
   assertEquals("[Mont-ras]",tokens.toString());
+  tokens=wordTokenizer.tokenize("??s d'1 km.");
+  assertEquals(tokens.size(),7);
+  assertEquals("[??s,  , d', 1,  , km, .]",tokens.toString());
+  tokens=wordTokenizer.tokenize("??s d'1,5 km.");
+  assertEquals(tokens.size(),7);
+  assertEquals("[??s,  , d', 1,5,  , km, .]",tokens.toString());
+  tokens=wordTokenizer.tokenize("la direcci?? E-SE");
+  assertEquals(tokens.size(),7);
+  assertEquals("[la,  , direcci??,  , E, -, SE]",tokens.toString());
+  tokens=wordTokenizer.tokenize("la direcci?? NW-SE");
+  assertEquals(tokens.size(),7);
+  assertEquals("[la,  , direcci??,  , NW, -, SE]",tokens.toString());
+  tokens=wordTokenizer.tokenize("Se'n d??na vergonya");
+  assertEquals(tokens.size(),6);
+  assertEquals("[Se, 'n,  , d??na,  , vergonya]",tokens.toString());
 }
