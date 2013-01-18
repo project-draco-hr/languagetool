@@ -1,14 +1,8 @@
 {
-  JLanguageTool langTool=new JLanguageTool(Language.DUTCH);
-  List<RuleMatch> matches;
-  matches=langTool.check("A sentence.");
-  assertEquals(1,matches.size());
-  matches=langTool.check("'s Morgens...");
-  assertEquals(0,matches.size());
-  matches=langTool.check("a sentence.");
-  assertEquals(2,matches.size());
-  matches=langTool.check("'s morgens...");
-  assertEquals(1,matches.size());
-  matches=langTool.check("s sentence.");
-  assertEquals(2,matches.size());
+  final JLanguageTool lt=new JLanguageTool(Language.DUTCH);
+  assertEquals(1,lt.check("A sentence.").size());
+  assertEquals(0,lt.check("'s Morgens...").size());
+  assertEquals(2,lt.check("a sentence.").size());
+  assertEquals(1,lt.check("'s morgens...").size());
+  assertEquals(2,lt.check("s sentence.").size());
 }
