@@ -21,4 +21,7 @@
   testSplit(new String[]{"Distingit Sr. Joan,"});
   testSplit(new String[]{"Molt Hble. Sr. President"});
   testSplit(new String[]{"Ell ??s el n??mero u. ","Jo el dos."});
+  testSplit(new String[]{"1 500 m/s. ","Neix a"});
+  testSplit(new String[]{"s'hi enfront?? quan G.Oueddei n'esdevingu?? l??der"});
+  testSplit(new String[]{"el jesu??ta alemany J.E. Nithard"});
 }

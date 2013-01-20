@@ -1,4 +1,8 @@
 {
+  assertCorrect("El lloc era, per??, habitat de molt abans,");
+  assertCorrect("i del bel canto del rococ??.");
+  assertCorrect("El lloc fou habitat de forma cont??nua");
+  assertCorrect("que havia estat habitat fins al regnat de Joan II");
   assertCorrect("L??pez-Pic?? publica el seu llibre de poesies");
   assertCorrect("Vaig perdut, tremolo de por.");
   assertCorrect("l'home marra el cam??");

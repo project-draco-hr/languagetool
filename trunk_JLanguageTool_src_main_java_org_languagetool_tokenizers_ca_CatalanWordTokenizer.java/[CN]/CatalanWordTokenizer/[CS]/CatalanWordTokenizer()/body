@@ -7,7 +7,7 @@
   patterns[4]=Pattern.compile("^([lnmtsd]')(.{2,})" + PF + PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   patterns[5]=Pattern.compile("^(.{2,})" + PF + PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   patterns[6]=Pattern.compile("^([lnmtsd]')(.{2,})" + PF + "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-  patterns[7]=Pattern.compile("^(.{2,})" + PF + "$",Pattern.UNICODE_CASE);
+  patterns[7]=Pattern.compile("^(.+[^cbfhjkovwyzCBFHJKOVWYZ])" + PF + "$",Pattern.UNICODE_CASE);
   patterns[8]=Pattern.compile("^([lnmtsd]')(.*)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   patterns[9]=Pattern.compile("^(a|de|pe)(ls?)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   patterns[10]=Pattern.compile("^(ca)(n)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);

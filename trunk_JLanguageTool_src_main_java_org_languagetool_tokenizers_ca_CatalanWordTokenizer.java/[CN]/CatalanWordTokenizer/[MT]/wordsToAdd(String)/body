@@ -1,0 +1,17 @@
+{
+  final List<String> l=new ArrayList<String>();
+  if (!s.contains("-"))   l.add(s);
+ else {
+    try {
+      if (tagger.existsWord(s))       l.add(s);
+ else {
+        final StringTokenizer st2=new StringTokenizer(s,"-",true);
+        while (st2.hasMoreElements())         l.add(st2.nextToken());
+      }
+    }
+ catch (    IOException e) {
+      e.printStackTrace();
+    }
+  }
+  return l;
+}

@@ -27,4 +27,10 @@
   tokens=wordTokenizer.tokenize("Se'n d??na vergonya");
   assertEquals(tokens.size(),6);
   assertEquals("[Se, 'n,  , d??na,  , vergonya]",tokens.toString());
+  tokens=wordTokenizer.tokenize("Em??lia-Romanya");
+  assertEquals(tokens.size(),3);
+  assertEquals("[Em??lia, -, Romanya]",tokens.toString());
+  tokens=wordTokenizer.tokenize("L'Em??lia-Romanya");
+  assertEquals(tokens.size(),4);
+  assertEquals("[L', Em??lia, -, Romanya]",tokens.toString());
 }
