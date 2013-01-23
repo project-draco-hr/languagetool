@@ -1,7 +1,0 @@
-{
-  final String string=bundle.getString(key);
-  if (string.trim().isEmpty()) {
-    return fallbackBundle.getString(key);
-  }
-  return string;
-}
