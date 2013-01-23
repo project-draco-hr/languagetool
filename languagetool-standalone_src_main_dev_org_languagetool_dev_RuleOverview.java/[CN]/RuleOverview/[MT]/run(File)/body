@@ -25,15 +25,16 @@
       continue;
     }
     System.out.print("<tr>");
-    final File langSpecificWebsite=new File(webRoot,lang.getShortName());
+    final String langCode=lang.getShortName();
+    final File langSpecificWebsite=new File(webRoot,langCode);
     if (langSpecificWebsite.isDirectory()) {
-      System.out.print("<td valign=\"top\"><a href=\"../" + lang.getShortName() + "/\">"+ lang.getName()+ "</a></td>");
+      System.out.print("<td valign=\"top\"><a href=\"../" + langCode + "/\">"+ lang.getName()+ "</a></td>");
       langSpecificWebsiteCount++;
     }
  else {
       System.out.print("<td valign=\"top\">" + lang.getName() + "</td>");
     }
-    final String xmlFile=JLanguageTool.getDataBroker().getRulesDir() + File.separator + lang.getShortName()+ File.separator+ "grammar.xml";
+    final String xmlFile=JLanguageTool.getDataBroker().getRulesDir() + File.separator + langCode+ File.separator+ "grammar.xml";
     final URL url=this.getClass().getResource(xmlFile);
     if (url == null) {
       System.out.println("<td valign=\"top\" align=\"right\">0</td>");
@@ -44,11 +45,11 @@
       xmlRules=xmlRules.replaceAll("(?s)<rules.*?>","");
       final int count=countXmlRules(xmlRules);
       final int countInRuleGroup=countXmlRuleGroupRules(xmlRules);
-      final String ruleBase="http://languagetool.svn.sourceforge.net/viewvc/languagetool/trunk/JLanguageTool/src/main/resources/org/languagetool/rules/";
+      final String ruleBase="http://languagetool.svn.sourceforge.net/viewvc/languagetool/trunk/languagetool/languagetool-language-modules/" + langCode + "/src/main/resources/org/languagetool/rules/";
       System.out.print("<td valign=\"top\" align=\"right\">" + (count + countInRuleGroup) + "</td>");
-      System.out.print("<td valign=\"top\" align=\"right\">" + "<a href=\"" + ruleBase + lang.getShortName()+ "/grammar.xml"+ "\">Show</a> / "+ "<a href=\""+ ruleBase+ lang.getShortName()+ "/grammar.xml?content-type=text%2Fplain"+ "\">XML</a> / "+ "<a href=\"http://community.languagetool.org/rule/list?lang="+ lang.getShortName()+ "\">Browse</a>"+ "</td>");
+      System.out.print("<td valign=\"top\" align=\"right\">" + "<a href=\"" + ruleBase + langCode+ "/grammar.xml?content-type=text%2Fplain"+ "\">XML</a> / "+ "<a href=\"http://community.languagetool.org/rule/list?lang="+ langCode+ "\">Browse</a>"+ "</td>");
     }
-    final File dir=new File("src/main/java" + JLanguageTool.getDataBroker().getRulesDir() + "/"+ lang.getShortName());
+    final File dir=new File("../languagetool-language-modules/" + langCode + "/src/main/java"+ JLanguageTool.getDataBroker().getRulesDir()+ "/"+ langCode);
     if (!dir.exists()) {
       System.out.print("<td valign=\"top\" align=\"right\">0</td>");
     }
@@ -56,7 +57,7 @@
       final File[] javaRules=dir.listFiles(new JavaFilter(langName));
       final int javaCount=javaRules.length;
       if (javaCount > 0) {
-        final String sourceCodeLink="http://languagetool.svn.sourceforge.net/viewvc/languagetool/trunk/JLanguageTool/src/main/java/org/languagetool/rules/" + lang.getShortName() + "/";
+        final String sourceCodeLink="http://languagetool.svn.sourceforge.net/viewvc/languagetool/trunk/languagetool/languagetool-language-modules/" + langCode + "/src/main/java/org/languagetool/rules/"+ langCode+ "/";
         System.out.print("<td valign=\"top\" align=\"right\"><a href=\"" + sourceCodeLink + "\">"+ javaCount+ "</a></td>");
       }
  else {
