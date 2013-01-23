@@ -1,0 +1,8 @@
+{
+  if (e.charAt(0) == '&') {
+    return MACRO_EXPANSIONS.valueOf(e.substring(1)).value;
+  }
+ else {
+    return e;
+  }
+}

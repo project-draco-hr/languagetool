@@ -1,0 +1,18 @@
+{
+  ArrayList<String> tags=new ArrayList<String>();
+  if (!this.single_tags.isEmpty()) {
+    for (    CgTag tag : this.single_tags) {
+      if (CgRuleConverter.isPostag(tag.tag)) {
+        tags.add(CgRuleConverter.tagToString(tag));
+      }
+    }
+  }
+  if (!this.tags.isEmpty()) {
+    for (    CgCompositeTag ctag : this.tags) {
+      if (CgRuleConverter.isCompositePostag(ctag)) {
+        tags.add(CgRuleConverter.compositePostagToString(ctag));
+      }
+    }
+  }
+  return tags.toArray(new String[tags.size()]);
+}

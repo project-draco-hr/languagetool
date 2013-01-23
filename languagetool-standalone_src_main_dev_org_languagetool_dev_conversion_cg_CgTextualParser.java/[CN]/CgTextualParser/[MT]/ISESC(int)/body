@@ -1,0 +1,7 @@
+{
+  int a=1;
+  while (((position - a) < inArray.length) && (inArray[position - a] == '\\')) {
+    a++;
+  }
+  return (a % 2 == 0);
+}

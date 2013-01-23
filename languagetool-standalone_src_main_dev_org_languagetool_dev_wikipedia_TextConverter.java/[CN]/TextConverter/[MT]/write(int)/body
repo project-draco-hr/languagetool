@@ -1,0 +1,3 @@
+{
+  writeWord(String.valueOf(num));
+}

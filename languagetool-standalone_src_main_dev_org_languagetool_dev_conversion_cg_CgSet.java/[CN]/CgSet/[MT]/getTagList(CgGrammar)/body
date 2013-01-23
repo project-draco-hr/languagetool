@@ -1,0 +1,17 @@
+{
+  HashSet<CgCompositeTag.AnyTag> theTags=new HashSet<CgCompositeTag.AnyTag>();
+  if (sets.isEmpty()) {
+    for (int i=0; i < sets.size(); i++) {
+      HashSet<CgCompositeTag.AnyTag> recursiveTags=grammar.getSet(i).getTagList(grammar);
+      for (      CgCompositeTag.AnyTag t : recursiveTags) {
+        theTags.add(t);
+      }
+    }
+  }
+ else {
+    for (    CgCompositeTag.AnyTag t : this.tags_list) {
+      theTags.add(t);
+    }
+  }
+  return theTags;
+}

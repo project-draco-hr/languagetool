@@ -1,0 +1,9 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: ExportGermanNouns <outputFile>");
+    System.exit(1);
+  }
+  final ExportGermanNouns prg=new ExportGermanNouns();
+  final Set<String> words=prg.getWords();
+  prg.serialize(words,new File(args[0]));
+}

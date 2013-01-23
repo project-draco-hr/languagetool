@@ -1,0 +1,8 @@
+{
+  finishLine();
+  for (int i=0; i < num; i++) {
+    sb.append('\n');
+  }
+  needNewlines=0;
+  needSpace=false;
+}

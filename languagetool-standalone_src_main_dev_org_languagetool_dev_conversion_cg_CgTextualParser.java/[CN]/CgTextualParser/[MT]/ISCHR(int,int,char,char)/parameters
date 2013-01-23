@@ -1,0 +1,4 @@
+int position
+int offset
+char c
+char d

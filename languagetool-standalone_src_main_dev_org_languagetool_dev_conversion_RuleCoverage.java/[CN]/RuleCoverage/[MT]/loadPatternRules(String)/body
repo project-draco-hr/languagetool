@@ -1,0 +1,10 @@
+{
+  final PatternRuleLoader ruleLoader=new PatternRuleLoader();
+  InputStream is=this.getClass().getResourceAsStream(filename);
+  if (is == null) {
+    return ruleLoader.getRules(new File(filename));
+  }
+ else {
+    return ruleLoader.getRules(is,filename);
+  }
+}

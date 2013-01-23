@@ -1,0 +1,45 @@
+{
+  String postags=postagsToString(token.postags);
+  String baseforms=glueWords(cleanForms(token.baseforms));
+  String surfaceforms=glueWords(cleanForms(token.surfaceforms));
+  CgCompositeTag[] compositeTags=token.compositeTags;
+  if (compositeTags.length != 0) {
+    ArrayList<String> baseformsList=new ArrayList<String>();
+    ArrayList<String> surfaceformsList=new ArrayList<String>();
+    for (    CgCompositeTag ctag : compositeTags) {
+      CgCompositeTag postagCompiled=new CgCompositeTag();
+      for (      CgTag tag : ctag.tags) {
+        if (isPostag(tag.tag)) {
+          postagCompiled.addTag(tag);
+        }
+ else         if (isBaseForm(tag.tag)) {
+          baseformsList.add(tag.tag);
+        }
+ else         if (isSurfaceForm(tag.tag)) {
+          surfaceformsList.add(tag.tag);
+        }
+      }
+      postags=compositePostagToString(postagCompiled);
+    }
+    baseforms=glueWords(cleanForms(baseformsList.toArray(new String[baseformsList.size()])));
+    surfaceforms=glueWords(cleanForms(surfaceformsList.toArray(new String[surfaceformsList.size()])));
+  }
+  boolean careful=token.careful;
+  boolean negate=token.negate;
+  String exceptions=token.exceptionString;
+  int skip=token.skip;
+  if (postags.equals("") && baseforms.equals("") && surfaceforms.equals("")) {
+    ltRule=addToken(ltRule,baseforms,postags,exceptions,careful,false,negate,skip,indent);
+    return ltRule;
+  }
+  if (!baseforms.equals("")) {
+    ltRule=addToken(ltRule,baseforms,postags,exceptions,careful,true,negate,skip,indent);
+  }
+ else   if (!surfaceforms.equals("")) {
+    ltRule=addToken(ltRule,surfaceforms,postags,exceptions,careful,false,negate,skip,indent);
+  }
+ else {
+    ltRule=addToken(ltRule,surfaceforms,postags,exceptions,careful,false,negate,skip,indent);
+  }
+  return ltRule;
+}

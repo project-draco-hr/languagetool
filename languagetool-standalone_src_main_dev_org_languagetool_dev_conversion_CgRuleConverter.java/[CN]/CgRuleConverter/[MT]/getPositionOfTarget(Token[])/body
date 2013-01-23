@@ -1,0 +1,4 @@
+{
+  Token firstToken=tokens[0];
+  return -1 * firstToken.offset;
+}

@@ -1,0 +1,9 @@
+{
+  if (args.length != 3) {
+    System.err.println("Usage: Indexer <textFile> <indexDir> <languageCode>");
+    System.err.println("\ttextFile path to a text file to be indexed");
+    System.err.println("\tindexDir path to a directory storing the index");
+    System.err.println("\tlanguageCode short language code, e.g. en for English");
+    System.exit(1);
+  }
+}

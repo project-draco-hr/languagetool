@@ -1,0 +1,4 @@
+{
+  final MarkerConverter2 converter=new MarkerConverter2();
+  converter.convert("/home/dnaber/languagetool/src/rules/de/grammar.xml");
+}

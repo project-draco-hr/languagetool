@@ -1,0 +1,9 @@
+{
+  final JLanguageTool langTool=new JLanguageTool(lang);
+  langTool.activateDefaultPatternRules();
+  for (  String disabledRuleId : disabledRuleIds) {
+    langTool.disableRule(disabledRuleId);
+  }
+  disableSpellingRules(langTool);
+  return langTool;
+}

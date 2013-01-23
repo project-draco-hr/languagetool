@@ -1,0 +1,11 @@
+{
+  if (ruleStrings == null || rulesBox.getSelectedItem() == null) {
+    return;
+  }
+  int index=getCurrentRuleIndex();
+  String rs=ruleStrings.get(index);
+  rs=rs.replace("<pattern>\n","<pattern>\n<token/>\n");
+  rs=rs.replace("</pattern>\n","<token/>\n</pattern>\n");
+  ruleStrings.set(index,rs);
+  displaySelectedRule();
+}

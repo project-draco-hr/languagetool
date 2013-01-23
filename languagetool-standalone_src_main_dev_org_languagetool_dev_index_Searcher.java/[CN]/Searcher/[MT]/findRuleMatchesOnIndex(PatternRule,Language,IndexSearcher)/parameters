@@ -1,0 +1,3 @@
+PatternRule rule
+Language language
+IndexSearcher indexSearcher

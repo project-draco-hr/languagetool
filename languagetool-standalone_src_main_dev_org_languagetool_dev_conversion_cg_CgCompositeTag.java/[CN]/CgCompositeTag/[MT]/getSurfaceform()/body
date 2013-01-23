@@ -1,0 +1,9 @@
+{
+  String surfaceform="";
+  for (  CgTag tag : this.tags) {
+    if (CgRuleConverter.isSurfaceForm(tag.tag)) {
+      surfaceform=tag.tag;
+    }
+  }
+  return surfaceform;
+}

@@ -1,0 +1,3 @@
+BufferedReader reader
+Indexer indexer
+boolean isSentence

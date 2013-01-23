@@ -1,0 +1,9 @@
+ArrayList<String> orig
+String token
+String postag
+String exceptions
+boolean careful
+boolean inflected
+boolean negate
+int skip
+int indent

@@ -1,0 +1,14 @@
+{
+  String line="";
+  while ((line=reader.readLine()) != null) {
+    if (isSentence) {
+      add(-1,line);
+    }
+ else {
+      final List<String> sentences=sentenceTokenizer.tokenize(line);
+      for (      String sentence : sentences) {
+        add(docCount,sentence);
+      }
+    }
+  }
+}

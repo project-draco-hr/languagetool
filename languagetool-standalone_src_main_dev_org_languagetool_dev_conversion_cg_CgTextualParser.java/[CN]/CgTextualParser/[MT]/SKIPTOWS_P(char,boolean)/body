@@ -1,0 +1,21 @@
+{
+  int s=0;
+  while (notDone() && !ISSPACE(index)) {
+    if (!allowhash && inArray[index] == '#' && !ISESC(index)) {
+      s+=SKIPLN();
+      index--;
+    }
+    if (ISNL(index)) {
+      ++s;
+      ++index;
+    }
+    if (inArray[index] == ';' && !ISESC(index)) {
+      break;
+    }
+    if (inArray[index] == b && !ISESC(index)) {
+      break;
+    }
+    ++index;
+  }
+  return s;
+}

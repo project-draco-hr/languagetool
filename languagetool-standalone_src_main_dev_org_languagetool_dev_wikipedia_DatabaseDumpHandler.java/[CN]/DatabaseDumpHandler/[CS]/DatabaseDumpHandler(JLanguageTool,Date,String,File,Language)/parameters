@@ -1,0 +1,5 @@
+JLanguageTool lt
+Date dumpDate
+String langCode
+File propertiesFile
+Language lang

@@ -1,0 +1,26 @@
+{
+  if (position == 0 && patternElement.getNegation()) {
+    throw new UnsupportedPatternRuleException("Pattern rules with negation in first element are not supported.");
+  }
+  if (patternElement.hasExceptionList()) {
+    throw new UnsupportedPatternRuleException("Pattern rules with token exceptions are not supported.");
+  }
+  if (patternElement.testWhitespace()) {
+    throw new UnsupportedPatternRuleException("Pattern rules with tokens testing \"Whitespace before\" are not supported.");
+  }
+  if (patternElement.hasAndGroup()) {
+    throw new UnsupportedPatternRuleException("Pattern rules with tokens in \"And Group\" are not supported.");
+  }
+  if (patternElement.isPartOfPhrase()) {
+    throw new UnsupportedPatternRuleException("Pattern rules with phrases are not supported.");
+  }
+  if (patternElement.isUnified()) {
+    throw new UnsupportedPatternRuleException("Pattern rules with unified tokens are not supported.");
+  }
+  if (patternElement.isInflected()) {
+    throw new UnsupportedPatternRuleException("Pattern rules with inflected tokens are not supported.");
+  }
+  if (patternElement.getString().matches("\\\\\\d+")) {
+    throw new UnsupportedPatternRuleException("Pattern rules with only match references are not supported.");
+  }
+}

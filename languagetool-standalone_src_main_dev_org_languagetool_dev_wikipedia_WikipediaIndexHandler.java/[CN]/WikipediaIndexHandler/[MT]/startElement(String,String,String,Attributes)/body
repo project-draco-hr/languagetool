@@ -1,0 +1,8 @@
+{
+  if (qName.equals("title")) {
+    inTitle=true;
+  }
+ else   if (qName.equals("text")) {
+    inText=true;
+  }
+}

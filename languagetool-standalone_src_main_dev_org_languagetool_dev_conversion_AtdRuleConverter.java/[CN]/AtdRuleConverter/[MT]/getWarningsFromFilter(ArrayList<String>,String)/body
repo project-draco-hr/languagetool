@@ -1,0 +1,18 @@
+{
+  if (filter.equals("indefarticle")) {
+    if (!curWarn.contains(WARNINGS.INDEFARTICLE.value)) {
+      curWarn.add(WARNINGS.INDEFARTICLE.value);
+    }
+  }
+ else   if (filter.equals("stats")) {
+    if (!curWarn.contains(WARNINGS.STATS.value)) {
+      curWarn.add(WARNINGS.STATS.value);
+    }
+  }
+ else   if (filter.equals("nextonly")) {
+    if (!curWarn.contains(WARNINGS.NEXTONLY.value)) {
+      curWarn.add(WARNINGS.NEXTONLY.value);
+    }
+  }
+  return curWarn;
+}

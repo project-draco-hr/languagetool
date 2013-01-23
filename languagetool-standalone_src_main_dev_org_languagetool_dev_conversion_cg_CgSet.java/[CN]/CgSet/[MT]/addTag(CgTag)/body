@@ -1,0 +1,4 @@
+{
+  this.single_tags.add(t);
+  this.hashContents();
+}

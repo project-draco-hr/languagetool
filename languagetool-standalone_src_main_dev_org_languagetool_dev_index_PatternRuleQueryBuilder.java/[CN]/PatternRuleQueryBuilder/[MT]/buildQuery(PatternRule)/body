@@ -1,0 +1,11 @@
+{
+  try {
+    return makeQuery(rule,true);
+  }
+ catch (  UnsupportedPatternRuleException e) {
+    throw e;
+  }
+catch (  Exception e) {
+    throw new RuntimeException("Could not convert rule " + rule,e);
+  }
+}

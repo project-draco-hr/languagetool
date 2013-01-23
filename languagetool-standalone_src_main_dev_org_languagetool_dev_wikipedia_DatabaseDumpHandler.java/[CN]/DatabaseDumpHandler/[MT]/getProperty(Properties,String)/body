@@ -1,0 +1,7 @@
+{
+  final String value=prop.getProperty(key);
+  if (value == null) {
+    throw new RuntimeException("required key '" + key + "' not found in properties");
+  }
+  return value;
+}

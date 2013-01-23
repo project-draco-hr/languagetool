@@ -1,0 +1,10 @@
+{
+  langTool=new JLanguageTool(Language.ENGLISH);
+  langTool.activateDefaultPatternRules();
+  final String[] disRules=new String[]{"UPPERCASE_SENTENCE_START","COMMA_PARENTHESIS_WHITESPACE","WORD_REPEAT_RULE","DOUBLE_PUNCTUATION"};
+  System.err.println("Note: disabling the following rules:");
+  for (  String disRule : disRules) {
+    langTool.disableRule(disRule);
+    System.err.println(" " + disRule);
+  }
+}

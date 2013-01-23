@@ -1,0 +1,19 @@
+{
+  if (e.getSource() == checkRulesCoveredButton) {
+    checkIfAllCurrentRulesCovered();
+  }
+ else   if (e.getSource() == writeRulesToFileButton) {
+    try {
+      writeRulesToFile();
+    }
+ catch (    IOException ex) {
+      showError(ex);
+    }
+  }
+ else   if (e.getSource() == recheckCurrentRuleCoverage) {
+    checkDisplayedRuleCoverage();
+  }
+ else   if (e.getSource() == disambigRules || e.getSource() == regularRules || e.getSource() == warningRules || e.getSource() == noWarningRules || e.getSource() == coveredRules || e.getSource() == notCoveredRules) {
+    populateRuleBox();
+  }
+}

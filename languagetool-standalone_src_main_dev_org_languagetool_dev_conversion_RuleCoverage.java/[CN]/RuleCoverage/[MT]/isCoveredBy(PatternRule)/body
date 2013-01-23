@@ -1,0 +1,11 @@
+{
+  ArrayList<String> coverages=new ArrayList<String>();
+  String example=generateIncorrectExample(rule);
+  List<RuleMatch> matches=tool.check(example);
+  if (matches.size() > 0) {
+    for (    RuleMatch match : matches) {
+      coverages.add(match.getRule().getId());
+    }
+  }
+  return coverages.toArray(new String[coverages.size()]);
+}

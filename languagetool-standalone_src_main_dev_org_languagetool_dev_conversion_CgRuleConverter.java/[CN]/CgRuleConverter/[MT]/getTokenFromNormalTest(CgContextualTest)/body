@@ -1,0 +1,32 @@
+{
+  CgSet testTarget=expandSetSets(grammar.getSet(test.target));
+  boolean testCareful=test.pos.contains(POS.POS_CAREFUL.value);
+  int testOffset=test.offset;
+  boolean testScanAhead=test.pos.contains(POS.POS_SCANFIRST.value) && testOffset >= 0;
+  boolean testScanBehind=test.pos.contains(POS.POS_SCANFIRST.value) && testOffset < 0;
+  boolean testNot=test.pos.contains(POS.POS_NOT.value);
+  CgSet testBarrier=grammar.getSet(test.barrier);
+  CgSet testCBarrier=grammar.getSet(test.cbarrier);
+  CgSet barrier=null;
+  boolean cbarrier=false;
+  if (testBarrier != null && testCBarrier != null) {
+    System.err.println("Can't have both a barrier and a careful barrier");
+    System.exit(1);
+  }
+  if (testBarrier != null) {
+    barrier=testBarrier;
+    cbarrier=false;
+  }
+ else   if (testCBarrier != null) {
+    barrier=testCBarrier;
+    cbarrier=true;
+  }
+ else {
+    barrier=new CgSet();
+    cbarrier=false;
+  }
+  if (test.line == 548 && test.offset == 1) {
+    System.out.println();
+  }
+  return new Token(testTarget,testCareful,testOffset,testScanAhead,testScanBehind,barrier,cbarrier,0,testNot);
+}

@@ -1,0 +1,27 @@
+{
+  if (checker == null) {
+    return;
+  }
+  JLanguageTool tool=checker.getLanguageTool();
+  String fetchedRuleString="<pre>";
+  List<Rule> rules=tool.getAllRules();
+  for (  String ruleId : ruleIds) {
+    for (    Rule rule : rules) {
+      if (rule.getId().equals(ruleId)) {
+        try {
+          PatternRule patternRule=(PatternRule)rule;
+          String tempRuleString=patternRule.toXML();
+          tempRuleString=tempRuleString.replaceAll("\\<","&lt;").replaceAll("\\>","&gt;");
+          fetchedRuleString=fetchedRuleString.concat(tempRuleString).concat("<br>");
+          break;
+        }
+ catch (        ClassCastException e) {
+          fetchedRuleString+="Can't display Java rules";
+          break;
+        }
+      }
+    }
+  }
+  fetchedRuleString=fetchedRuleString.concat("</pre>");
+  showDialog("<html>" + fetchedRuleString + "</html>","Existing LT Rule");
+}

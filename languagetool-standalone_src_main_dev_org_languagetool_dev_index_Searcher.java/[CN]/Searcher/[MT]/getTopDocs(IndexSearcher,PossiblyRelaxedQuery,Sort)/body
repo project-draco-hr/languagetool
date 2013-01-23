@@ -1,0 +1,12 @@
+{
+  final TopFieldCollector topCollector=TopFieldCollector.create(sort,maxHits,true,false,false,false);
+  final TimeLimitingCollector collector=new TimeLimitingCollector(topCollector,Counter.newCounter(),maxSearchTimeMillis);
+  boolean timeLimitActivated=false;
+  try {
+    indexSearcher.search(query.query,collector);
+  }
+ catch (  TimeLimitingCollector.TimeExceededException e) {
+    timeLimitActivated=true;
+  }
+  return new PossiblyLimitedTopDocs(topCollector.topDocs(),timeLimitActivated);
+}

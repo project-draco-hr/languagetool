@@ -1,0 +1,10 @@
+{
+  final BufferedReader br=new BufferedReader(new StringReader(content));
+  final Indexer indexer=new Indexer(dir,language);
+  try {
+    run(br,indexer,isSentence);
+  }
+  finally {
+    indexer.close();
+  }
+}

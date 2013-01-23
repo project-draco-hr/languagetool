@@ -1,0 +1,16 @@
+{
+  this.number=0;
+  this.line=0;
+  this.hash=0;
+  this.name=null;
+  this.setName(0);
+  this.type=new HashSet<Integer>();
+  this.chash=0;
+  this.tags=new HashSet<CgCompositeTag>();
+  this.single_tags=new HashSet<CgTag>();
+  this.single_tags_hash=new HashSet<Integer>();
+  this.sets=new ArrayList<Integer>();
+  this.set_ops=new ArrayList<Integer>();
+  this.tags_list=new ArrayList<CgCompositeTag.AnyTag>();
+  this.ff_tags=new HashSet<CgTag>();
+}

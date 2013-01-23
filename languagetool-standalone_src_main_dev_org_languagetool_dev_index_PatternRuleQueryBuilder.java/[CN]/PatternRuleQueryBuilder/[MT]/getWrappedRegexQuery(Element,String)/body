@@ -1,0 +1,17 @@
+{
+  if (element.getCaseSensitive()) {
+    final RegexpQuery query=getCaseSensitiveRegexQuery(str);
+    return new SpanMultiTermQueryWrapper<RegexpQuery>(query);
+  }
+ else {
+    try {
+      final RegexpQuery query=new RegexpQuery(new Term(FIELD_NAME_LOWERCASE,str.toLowerCase()));
+      return new SpanMultiTermQueryWrapper<RegexpQuery>(query);
+    }
+ catch (    IllegalArgumentException e) {
+      final RegexQuery query=new RegexQuery(new Term(FIELD_NAME_LOWERCASE,str));
+      query.setRegexImplementation(new JavaUtilRegexCapabilities(JavaUtilRegexCapabilities.FLAG_CASE_INSENSITIVE));
+      return new SpanMultiTermQueryWrapper<RegexQuery>(query);
+    }
+  }
+}

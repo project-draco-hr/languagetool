@@ -1,0 +1,8 @@
+{
+  Matcher m=postagToken.matcher(ruleString);
+  while (m.find()) {
+    String r=generateExclusiveException(m.group(2),m.group(3) != null);
+    ruleString=ruleString.replace(m.group(),m.group(1) + r + m.group(4));
+  }
+  return ruleString;
+}

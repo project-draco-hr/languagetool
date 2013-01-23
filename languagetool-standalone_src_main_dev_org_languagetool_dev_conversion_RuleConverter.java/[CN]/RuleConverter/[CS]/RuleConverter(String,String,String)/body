@@ -1,0 +1,12 @@
+{
+  this.inFileName=inFileName;
+  this.outFileName=outFileName;
+  if (ruleType == null) {
+    this.ruleType="default";
+  }
+ else {
+    this.ruleType=ruleType;
+  }
+  idIndex=0;
+  nameIndex=0;
+}

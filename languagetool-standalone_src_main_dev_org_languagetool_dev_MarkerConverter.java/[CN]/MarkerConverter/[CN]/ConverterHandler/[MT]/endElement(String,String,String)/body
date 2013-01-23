@@ -1,0 +1,15 @@
+{
+  System.out.print("</" + qName + ">");
+  if (qName.equals("rulegroup")) {
+    inRuleGroup=false;
+  }
+ else   if (qName.equals("category")) {
+    inCategory=false;
+  }
+ else   if (qName.equals("token") && inCategory) {
+    final String key=currentId + " " + currentSubId;
+    if (needsMarker && endPos.get(key) == currentTokenPos) {
+      System.out.print("\n</marker>");
+    }
+  }
+}

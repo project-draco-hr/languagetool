@@ -1,0 +1,117 @@
+{
+  if (e.hasAndGroup()) {
+    List<Element> andGroup=e.getAndGroup();
+    andGroup.add(e);
+    for (    Element and : andGroup) {
+      if (isJustToken(and)) {
+        return and.getString();
+      }
+      if (isPunctuation(and)) {
+        return getOnePunc(and);
+      }
+    }
+    ArrayList<Pattern> tokenPatterns=new ArrayList<Pattern>(andGroup.size());
+    ArrayList<Pattern> posPatterns=new ArrayList<Pattern>(andGroup.size());
+    ArrayList<Element> allExceptions=new ArrayList<Element>();
+    allExceptions.addAll(prevExceptions);
+    for (int a=0; a < andGroup.size(); a++) {
+      Element and=andGroup.get(a);
+      List<Element> ex=and.getExceptionList();
+      if (ex != null) {
+        allExceptions.addAll(and.getExceptionList());
+      }
+      if (and.isReferenceElement()) {
+        and=getReferenceElement(and,elements,examples);
+      }
+      String andPostag=and.getPOStag();
+      String andToken=and.getString();
+      tokenPatterns.add(Pattern.compile(andToken));
+      if (andPostag != null) {
+        if (and.isPOStagRegularExpression()) {
+          posPatterns.add(Pattern.compile(andPostag));
+        }
+ else {
+          posPatterns.add(Pattern.compile(Pattern.quote(andPostag)));
+        }
+      }
+ else {
+        posPatterns.add(null);
+      }
+      andGroup.set(a,and);
+    }
+    ArrayList<ArrayList<Pattern>> exceptionAttributes=getExceptionAttributes(allExceptions);
+    int numResets=0;
+    while (numResets < 2) {
+      if (!dictIterator.hasNext()) {
+        dictIterator=resetDictIterator();
+        numResets++;
+      }
+      String word=dictIterator.next().getWord().toString();
+      boolean matched=true;
+      for (int i=0; i < andGroup.size(); i++) {
+        if (!isExampleOf(word,tokenPatterns.get(i),posPatterns.get(i),andGroup.get(i))) {
+          matched=false;
+          break;
+        }
+      }
+      if (matched) {
+        if (!inExceptionList(word,exceptionAttributes,allExceptions)) {
+          return word;
+        }
+      }
+    }
+  }
+ else {
+    if (e.isReferenceElement()) {
+      e=getReferenceElement(e,elements,examples);
+    }
+    String token=e.getString();
+    String postag=e.getPOStag();
+    List<Element> exceptions=e.getExceptionList();
+    if (exceptions == null) {
+      exceptions=new ArrayList<Element>();
+    }
+    exceptions.addAll(prevExceptions);
+    ArrayList<ArrayList<Pattern>> exceptionAttributes=getExceptionAttributes(exceptions);
+    if (e.isSentStart()) {
+      return "";
+    }
+    if (isJustToken(e)) {
+      return token;
+    }
+    if (isPunctuation(e)) {
+      return getOnePunc(e);
+    }
+    if (isSimpleOrRegex(e)) {
+      return randomOredElement(e);
+    }
+    Pattern tokenPattern=Pattern.compile(token);
+    Pattern posPattern;
+    if (postag != null) {
+      if (e.isPOStagRegularExpression()) {
+        posPattern=Pattern.compile(postag);
+      }
+ else {
+        posPattern=Pattern.compile(Pattern.quote(postag));
+      }
+      if (postag.equals("SENT_END")) {
+        posPattern=null;
+      }
+    }
+ else {
+      posPattern=null;
+    }
+    int numResets=0;
+    while (numResets < 2) {
+      if (!dictIterator.hasNext()) {
+        dictIterator=resetDictIterator();
+        numResets++;
+      }
+      String word=dictIterator.next().getWord().toString();
+      if (isExampleOf(word,tokenPattern,posPattern,e) && !inExceptionList(word,exceptionAttributes,exceptions)) {
+        return word;
+      }
+    }
+  }
+  return null;
+}

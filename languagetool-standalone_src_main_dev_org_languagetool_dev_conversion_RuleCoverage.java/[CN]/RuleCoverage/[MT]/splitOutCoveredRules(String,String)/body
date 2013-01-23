@@ -1,0 +1,26 @@
+{
+  List<PatternRule> rules=loadPatternRules(grammarfile);
+  PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(grammarfile),"UTF-8"));
+  PrintWriter w2=null;
+  int discardedRules=0;
+  for (  PatternRule rule : rules) {
+    String example=generateIncorrectExample(rule);
+    if (isCoveredBy(example) == null) {
+      w.write(rule.toXML());
+    }
+ else {
+      if (w2 == null) {
+        w2=new PrintWriter(new OutputStreamWriter(new FileOutputStream(discardfile),"UTF-8"));
+      }
+      discardedRules++;
+      w2.write(rule.toXML());
+    }
+  }
+  if (discardedRules > 0) {
+    System.out.println(Integer.toString(discardedRules) + " rules already covered, written to " + discardfile);
+  }
+  w.close();
+  if (w2 != null) {
+    w2.close();
+  }
+}

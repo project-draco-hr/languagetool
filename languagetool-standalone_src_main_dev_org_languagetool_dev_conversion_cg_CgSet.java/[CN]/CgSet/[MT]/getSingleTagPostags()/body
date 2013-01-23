@@ -1,0 +1,9 @@
+{
+  ArrayList<CgTag> postags=new ArrayList<CgTag>();
+  if (!this.single_tags.isEmpty()) {
+    for (    CgTag tag : this.single_tags) {
+      if (CgRuleConverter.isPostag(tag.tag))       postags.add(tag);
+    }
+  }
+  return postags.toArray(new CgTag[postags.size()]);
+}

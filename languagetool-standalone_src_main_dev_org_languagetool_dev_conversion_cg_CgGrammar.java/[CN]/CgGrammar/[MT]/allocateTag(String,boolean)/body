@@ -1,0 +1,18 @@
+{
+  if (txt.startsWith("(")) {
+    System.err.println("Error: tag cannot start with (");
+    System.exit(1);
+  }
+  CgTag tag=new CgTag();
+  if (raw) {
+    tag=tag.parseTagRaw(tag,txt);
+  }
+ else {
+    tag=tag.parseTag(tag,txt,this);
+  }
+  tag.type.add(TAGS.T_GRAMMAR.value);
+  int hash=tag.rehash();
+  this.single_tags_list.add(tag);
+  this.single_tags.put(hash,tag);
+  return this.single_tags.get(hash);
+}

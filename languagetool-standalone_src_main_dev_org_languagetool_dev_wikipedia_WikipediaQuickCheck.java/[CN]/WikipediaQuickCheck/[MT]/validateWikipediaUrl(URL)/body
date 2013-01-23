@@ -1,0 +1,3 @@
+{
+  getUrlMatcher(wikipediaUrl.toString());
+}

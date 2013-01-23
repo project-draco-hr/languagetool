@@ -1,0 +1,16 @@
+{
+  final Document doc=new Document();
+  final FieldType type=new FieldType();
+  type.setStored(true);
+  type.setIndexed(true);
+  type.setTokenized(true);
+  doc.add(new Field(FIELD_NAME,sentence,type));
+  doc.add(new Field(FIELD_NAME_LOWERCASE,sentence.toLowerCase(),type));
+  if (docCount != -1) {
+    final FieldType countType=new FieldType();
+    countType.setStored(true);
+    countType.setIndexed(false);
+    doc.add(new Field("docCount",docCount + "",countType));
+  }
+  writer.addDocument(doc);
+}

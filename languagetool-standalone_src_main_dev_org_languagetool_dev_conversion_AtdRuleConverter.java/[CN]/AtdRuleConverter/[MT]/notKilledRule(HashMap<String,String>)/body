@@ -1,0 +1,8 @@
+{
+  if (rule.containsKey("filter")) {
+    if (rule.get("filter").equals("kill") || rule.get("filter").equals("die")) {
+      return false;
+    }
+  }
+  return true;
+}

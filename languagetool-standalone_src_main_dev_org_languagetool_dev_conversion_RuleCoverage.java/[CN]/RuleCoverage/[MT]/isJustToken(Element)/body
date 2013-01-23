@@ -1,0 +1,3 @@
+{
+  return (!e.getString().isEmpty() && !e.isRegularExpression() && !e.getNegation()&& e.getExceptionList() == null);
+}

@@ -1,0 +1,4 @@
+{
+  final String s=new String(buf,offset,len);
+  System.out.print("<!--" + s + "-->");
+}

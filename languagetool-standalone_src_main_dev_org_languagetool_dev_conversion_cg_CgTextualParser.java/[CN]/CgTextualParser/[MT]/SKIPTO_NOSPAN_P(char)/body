@@ -1,0 +1,10 @@
+{
+  int s=0;
+  while (notDone() && (inArray[index] != b || ISESC(index))) {
+    if (ISNL(index)) {
+      break;
+    }
+    ++index;
+  }
+  return s;
+}

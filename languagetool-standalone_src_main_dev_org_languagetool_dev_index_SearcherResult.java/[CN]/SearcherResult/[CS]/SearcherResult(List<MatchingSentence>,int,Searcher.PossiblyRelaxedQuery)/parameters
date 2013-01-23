@@ -1,0 +1,3 @@
+List<MatchingSentence> matchingSentences
+int checkedSentences
+Searcher.PossiblyRelaxedQuery relaxedQuery

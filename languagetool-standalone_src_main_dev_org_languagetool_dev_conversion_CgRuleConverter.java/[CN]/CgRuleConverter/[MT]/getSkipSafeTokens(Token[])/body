@@ -1,0 +1,25 @@
+{
+  ArrayList<List<Token>> list=new ArrayList<List<Token>>();
+  List<Token> tokenList=Arrays.asList(tokens);
+  list.add(tokenList);
+  boolean notdone=true;
+  while (notdone) {
+    for (int i=0; i < list.size(); i++) {
+      List<Token> insideList=list.get(i);
+      if (skipSafe(insideList.toArray(new Token[insideList.size()]))) {
+        if (i == list.size() - 1) {
+          notdone=false;
+        }
+      }
+ else {
+        list.remove(i);
+        ArrayList<List<Token>> splitTokens=splitOutSkipTokens(insideList);
+        for (        List<Token> isl : splitTokens) {
+          list.add(isl);
+        }
+        break;
+      }
+    }
+  }
+  return list;
+}

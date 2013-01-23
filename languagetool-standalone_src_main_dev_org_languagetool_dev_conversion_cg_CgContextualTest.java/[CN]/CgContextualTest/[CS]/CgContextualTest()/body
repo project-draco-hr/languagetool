@@ -1,0 +1,10 @@
+{
+  this.barrier=0;
+  this.cbarrier=0;
+  this.line=0;
+  this.name=0;
+  this.offset=0;
+  this.target=0;
+  this.pos=new HashSet<Integer>();
+  this.relation=0;
+}

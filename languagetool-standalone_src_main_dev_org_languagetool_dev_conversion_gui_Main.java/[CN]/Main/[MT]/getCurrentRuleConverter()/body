@@ -1,0 +1,15 @@
+{
+  RuleConverter rc=null;
+  String type=(String)ruleTypeBox.getSelectedItem();
+  String specificType=(String)specificRuleTypeBox.getSelectedItem();
+  if (specificType == null) {
+    specificType="default";
+  }
+  if (type.equals(atdString)) {
+    rc=new AtdRuleConverter(getCurrentFilename(),null,specificType);
+  }
+ else   if (type.equals(cgString)) {
+    rc=new CgRuleConverter(getCurrentFilename(),null,specificType);
+  }
+  return rc;
+}

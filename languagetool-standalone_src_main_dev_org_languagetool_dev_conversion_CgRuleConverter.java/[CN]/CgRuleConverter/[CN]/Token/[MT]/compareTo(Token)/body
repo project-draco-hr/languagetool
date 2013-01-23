@@ -1,0 +1,11 @@
+{
+  if (this.offset < token.offset) {
+    return -1;
+  }
+ else   if (this.offset == token.offset) {
+    return 0;
+  }
+ else {
+    return 1;
+  }
+}

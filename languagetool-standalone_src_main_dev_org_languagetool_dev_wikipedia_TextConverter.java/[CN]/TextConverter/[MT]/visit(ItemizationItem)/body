@@ -1,0 +1,4 @@
+{
+  newline(1);
+  iterate(i.getContent());
+}

@@ -1,0 +1,10 @@
+{
+  final RegexpQuery query;
+  if (element.getCaseSensitive()) {
+    query=new RegexpQuery(new Term(FIELD_NAME,".*"));
+  }
+ else {
+    query=new RegexpQuery(new Term(FIELD_NAME_LOWERCASE,".*"));
+  }
+  return new SpanMultiTermQueryWrapper<RegexpQuery>(query);
+}

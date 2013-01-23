@@ -1,0 +1,13 @@
+{
+  final JLanguageTool languageTool=new JLanguageTool(LANGUAGE);
+  languageTool.activateDefaultPatternRules();
+  final List<Rule> rules=languageTool.getAllRules();
+  for (  Rule rule : rules) {
+    if (rule instanceof PatternRule) {
+      final PatternRule pRule=(PatternRule)rule;
+      final String key=pRule.getId() + " " + pRule.getSubId();
+      startPos.put(key,pRule.getStartPositionCorrection());
+      endPos.put(key,pRule.getElements().size() + pRule.getEndPositionCorrection());
+    }
+  }
+}

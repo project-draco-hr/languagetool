@@ -1,0 +1,280 @@
+{
+  frame=new JFrame("Language Tool Rule Converter");
+  frame.addWindowListener(new CloseListener());
+  frame.setJMenuBar(new MainMenuBar(this));
+  setLookAndFeel();
+  resultArea=new XmlTextPane();
+  resultArea.requestFocusInWindow();
+  JScrollPane scrollPane=new JScrollPane(resultArea);
+  scrollPane.setPreferredSize(new Dimension(250,145));
+  scrollPane.setMinimumSize(new Dimension(10,10));
+  rulesBox=new JComboBox();
+  rulesBox.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      displaySelectedRule();
+      displayCoveredBy();
+      displayWarnings();
+    }
+  }
+);
+  ruleTypeBox=new JComboBox();
+  ruleTypeBox.addItem(atdString);
+  ruleTypeBox.addItem(cgString);
+  ruleTypeBox.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      populateSpecificRuleType();
+    }
+  }
+);
+  specificRuleTypeBox=new JComboBox();
+  populateSpecificRuleType();
+  mainRuleFilePane=new JTextPane();
+  mainRuleFilePane.setText(filename);
+  mainRuleFilePane.setBorder(new LineBorder(Color.BLACK,1));
+  outFilePane=new JTextPane();
+  outFilePane.setText(outfilename);
+  outFilePane.setBorder(new LineBorder(Color.BLACK,1));
+  disambigOutFilePane=new JTextPane();
+  disambigOutFilePane.setText(disambigOutFile);
+  disambigOutFilePane.setBorder(new LineBorder(Color.BLACK,1));
+  convert=new JButton("Convert");
+  convert.setMnemonic('C');
+  convert.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      convertRuleFile();
+      populateRuleBox();
+    }
+  }
+);
+  deleteCurrentRule=new JButton("Delete current rule");
+  deleteCurrentRule.setMnemonic('D');
+  deleteCurrentRule.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      deleteCurrentRule();
+    }
+  }
+);
+  toggleDefaultOff=new JButton("Toggle default=\"off\"");
+  toggleDefaultOff.setMnemonic('t');
+  toggleDefaultOff.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      if (!defaultOff) {
+        setDefaultOff();
+        defaultOff=true;
+      }
+ else {
+        setDefaultOn();
+        defaultOff=false;
+      }
+    }
+  }
+);
+  makeRuleExclusive=new JButton("Make rule exclusive");
+  makeRuleExclusive.setMnemonic('x');
+  makeRuleExclusive.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      makeCurrentRuleExclusive();
+    }
+  }
+);
+  toggleExtraTokens=new JButton("Toggle extra tokens");
+  toggleExtraTokens.setMnemonic('a');
+  toggleExtraTokens.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      if (!extraTokens) {
+        addExtraTokens();
+        extraTokens=true;
+      }
+ else {
+        removeExtraTokens();
+        extraTokens=false;
+      }
+    }
+  }
+);
+  saveEditedRule=new JButton("Save rule");
+  saveEditedRule.setMnemonic('S');
+  saveEditedRule.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      saveEditedVisibleRule();
+    }
+  }
+);
+  writeRulesToFileButton=new JButton("Write rules to file");
+  writeRulesToFileButton.setMnemonic('W');
+  writeRulesToFileButton.addActionListener(this);
+  coveredByPane=new JTextPane();
+  coveredByPane.setBorder(new LineBorder(Color.BLACK,1));
+  warningPane=new JTextPane();
+  warningPane.setBorder(new LineBorder(Color.BLACK,1));
+  JPanel coveredWarningPanel=new JPanel(new GridBagLayout());
+  GridBagConstraints cwcons=new GridBagConstraints();
+  cwcons.weightx=1f;
+  cwcons.fill=GridBagConstraints.BOTH;
+  cwcons.anchor=GridBagConstraints.WEST;
+  coveredWarningPanel.add(new JLabel("Covered by:"),cwcons);
+  cwcons.gridx=1;
+  coveredWarningPanel.add(new JLabel("Warnings:"),cwcons);
+  cwcons.gridy=1;
+  coveredWarningPanel.add(warningPane,cwcons);
+  cwcons.gridx=0;
+  coveredWarningPanel.add(coveredByPane,cwcons);
+  regularRules=new JCheckBox("Show regular rules",true);
+  disambigRules=new JCheckBox("Show disambiguation rules",true);
+  warningRules=new JCheckBox("Show rules with warnings",true);
+  noWarningRules=new JCheckBox("Show rules without warnings",true);
+  coveredRules=new JCheckBox("Show covered rules",true);
+  notCoveredRules=new JCheckBox("Show not covered rules",true);
+  regularRules.addActionListener(this);
+  disambigRules.addActionListener(this);
+  warningRules.addActionListener(this);
+  noWarningRules.addActionListener(this);
+  coveredRules.addActionListener(this);
+  notCoveredRules.addActionListener(this);
+  writeCoveredRules=new JCheckBox("Write duplicate rules to file");
+  editBeforeWriting=new JCheckBox("Edit rules before writing");
+  checkRulesCoveredButton=new JButton("Check rule coverage");
+  checkRulesCoveredButton.setMnemonic('E');
+  checkRulesCoveredButton.addActionListener(this);
+  recheckCurrentRuleCoverage=new JButton("Check displayed rule coverage");
+  recheckCurrentRuleCoverage.setMnemonic('R');
+  recheckCurrentRuleCoverage.addActionListener(this);
+  final JLabel numRulesLabel=new JLabel("Total number of rules:");
+  numRulesPane=new JTextPane();
+  final JLabel numDisplayedRulesLabel=new JLabel("Number of displayed rules:");
+  displayedNumRulesPane=new JTextPane();
+  final Container contentPane=frame.getContentPane();
+  final GridBagLayout gridLayout=new GridBagLayout();
+  contentPane.setLayout(gridLayout);
+  final GridBagConstraints cons=new GridBagConstraints();
+  cons.fill=GridBagConstraints.BOTH;
+  final GridBagConstraints buttonCons=new GridBagConstraints();
+  final JPanel insidePanel=new JPanel();
+  insidePanel.setOpaque(true);
+  insidePanel.setLayout(new GridBagLayout());
+  insidePanel.setBorder(new LineBorder(Color.BLACK,1));
+  buttonCons.fill=GridBagConstraints.BOTH;
+  JPanel ruleTypePanel=new JPanel(new GridBagLayout());
+  GridBagConstraints c=new GridBagConstraints();
+  ruleTypePanel.add(new JLabel("Rule type:"),c);
+  c.gridx=1;
+  ruleTypePanel.add(ruleTypeBox,c);
+  c.gridx=2;
+  ruleTypePanel.add(specificRuleTypeBox,c);
+  insidePanel.add(ruleTypePanel,buttonCons);
+  JPanel displayRulesPanel=new JPanel(new GridBagLayout());
+  c.anchor=GridBagConstraints.WEST;
+  c.gridx=0;
+  displayRulesPanel.add(regularRules,c);
+  c.gridx=1;
+  displayRulesPanel.add(disambigRules,c);
+  c.gridx=0;
+  c.gridy=1;
+  displayRulesPanel.add(warningRules,c);
+  c.gridx=1;
+  displayRulesPanel.add(noWarningRules,c);
+  c.gridx=0;
+  c.gridy=2;
+  displayRulesPanel.add(coveredRules,c);
+  c.gridx=1;
+  displayRulesPanel.add(notCoveredRules,c);
+  c.anchor=GridBagConstraints.CENTER;
+  buttonCons.gridy=1;
+  insidePanel.add(displayRulesPanel,buttonCons);
+  JPanel coveragePanel=new JPanel(new GridBagLayout());
+  c.gridx=0;
+  coveragePanel.add(checkRulesCoveredButton,c);
+  c.gridx=1;
+  coveragePanel.add(recheckCurrentRuleCoverage,c);
+  buttonCons.gridy=2;
+  buttonCons.fill=GridBagConstraints.NONE;
+  insidePanel.add(coveragePanel,buttonCons);
+  JPanel modifyRulesPanel=new JPanel(new GridBagLayout());
+  c.gridx=0;
+  modifyRulesPanel.add(toggleDefaultOff,c);
+  c.gridx=1;
+  modifyRulesPanel.add(makeRuleExclusive,c);
+  c.gridx=2;
+  modifyRulesPanel.add(toggleExtraTokens,c);
+  buttonCons.gridy=3;
+  insidePanel.add(modifyRulesPanel,buttonCons);
+  JPanel savePanel=new JPanel(new GridBagLayout());
+  c.gridx=0;
+  savePanel.add(saveEditedRule,c);
+  c.gridx=1;
+  savePanel.add(deleteCurrentRule,c);
+  buttonCons.gridy=4;
+  insidePanel.add(savePanel,buttonCons);
+  JPanel convertPanel=new JPanel(new GridBagLayout());
+  c.gridx=0;
+  convertPanel.add(convert,c);
+  c.gridx=1;
+  convertPanel.add(writeRulesToFileButton,c);
+  buttonCons.gridy=5;
+  insidePanel.add(convertPanel,buttonCons);
+  JPanel writeOptionsPanel=new JPanel(new GridBagLayout());
+  c.gridx=0;
+  writeOptionsPanel.add(writeCoveredRules,c);
+  c.gridx=1;
+  writeOptionsPanel.add(editBeforeWriting,c);
+  buttonCons.gridy=6;
+  insidePanel.add(writeOptionsPanel,buttonCons);
+  JPanel numRulesPanel=new JPanel(new GridBagLayout());
+  c.gridx=0;
+  numRulesPanel.add(numRulesLabel,c);
+  c.gridx=1;
+  numRulesPanel.add(numRulesPane,c);
+  c.gridx=2;
+  numRulesPanel.add(numDisplayedRulesLabel,c);
+  c.gridx=3;
+  numRulesPanel.add(displayedNumRulesPane,c);
+  buttonCons.gridy=7;
+  insidePanel.add(numRulesPanel,buttonCons);
+  cons.gridx=0;
+  cons.gridy=0;
+  cons.ipadx=1;
+  cons.ipady=1;
+  JLabel ruleLabel=new JLabel("Original rule:");
+  contentPane.add(ruleLabel,cons);
+  cons.gridx=0;
+  cons.gridy=2;
+  JLabel convertedRuleLabel=new JLabel("Converted rule:");
+  contentPane.add(convertedRuleLabel,cons);
+  cons.gridx=0;
+  cons.gridy=1;
+  cons.weightx=10f;
+  cons.weighty=2f;
+  contentPane.add(rulesBox,cons);
+  cons.gridx=0;
+  cons.gridy=3;
+  cons.weightx=10f;
+  cons.weighty=10f;
+  cons.ipady=150;
+  scrollPane.setMinimumSize(new Dimension(0,200));
+  contentPane.add(scrollPane,cons);
+  cons.gridx=0;
+  cons.gridy=4;
+  cons.ipady=0;
+  cons.ipadx=0;
+  cons.weightx=0;
+  cons.weighty=0;
+  cons.anchor=GridBagConstraints.WEST;
+  contentPane.add(coveredWarningPanel,cons);
+  cons.gridy=5;
+  contentPane.add(insidePanel,cons);
+  cons.gridx=0;
+  cons.gridy=6;
+  contentPane.add(new JLabel("Rule file:"),cons);
+  cons.gridy=7;
+  contentPane.add(mainRuleFilePane,cons);
+  cons.gridy=8;
+  contentPane.add(new JLabel("Out file:"),cons);
+  cons.gridy=9;
+  contentPane.add(outFilePane,cons);
+  cons.gridy=10;
+  contentPane.add(new JLabel("Disambiguation out file:"),cons);
+  cons.gridy=11;
+  contentPane.add(disambigOutFilePane,cons);
+  frame.pack();
+  frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+}

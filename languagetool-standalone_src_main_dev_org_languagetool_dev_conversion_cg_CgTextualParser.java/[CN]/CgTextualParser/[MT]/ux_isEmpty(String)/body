@@ -1,0 +1,11 @@
+{
+  int l=s.length();
+  if (l > 0) {
+    for (    char c : s.toCharArray()) {
+      if (!Character.isWhitespace(c)) {
+        return false;
+      }
+    }
+  }
+  return true;
+}

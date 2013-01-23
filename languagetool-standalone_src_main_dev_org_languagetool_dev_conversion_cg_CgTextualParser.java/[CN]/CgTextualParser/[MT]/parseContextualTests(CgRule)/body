@@ -1,0 +1,8 @@
+{
+  currentTest=null;
+  parentTest=null;
+  inParentTest=false;
+  inLinkedTest=false;
+  linkedTests=new ArrayList<Integer>();
+  return parseContextualTestList(rule);
+}

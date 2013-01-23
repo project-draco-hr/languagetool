@@ -1,0 +1,348 @@
+{
+  CgRule rule=result.allocateRule();
+  rule.line=result.lines;
+  rule.type=key;
+  lpindex=index;
+  BACKTONL_LP();
+  result.lines+=SKIPWS_LP((char)0,(char)0);
+  if (lpindex != index && lpindex < index) {
+    nindex=lpindex;
+    if (inArray[nindex] == '"') {
+      nindex++;
+      result.lines+=SKIPTO_NOSPAN_N('"');
+      if (inArray[nindex] != '"') {
+        System.err.println("Error: missing closing \" on line " + result.lines);
+        System.exit(1);
+      }
+    }
+    result.lines+=SKIPTOWS_N((char)0,true);
+    StringBuilder sb=new StringBuilder();
+    for (int i=lpindex; i < nindex; i++) {
+      sb.append(inArray[i]);
+    }
+    CgTag wform=result.allocateTag(sb.toString(),false);
+    rule.wordform=wform.hash;
+  }
+  index+=keywords[key.value].length();
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (inArray[index] == ':') {
+    ++index;
+    nindex=index;
+    result.lines+=SKIPTOWS_N('(',false);
+    StringBuilder strname=new StringBuilder();
+    for (int i=index; i < nindex; i++) {
+      strname.append(inArray[i]);
+    }
+    rule.setName(strname.toString());
+    index=nindex;
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (key == KEYWORDS.K_EXTERNAL) {
+    if (ISCHR(index,0,'O','o') && ISCHR(index,3,'E','e') && ISCHR(index,1,'N','n')&& ISCHR(index,2,'C','c')) {
+      index+=4;
+      rule.type=KEYWORDS.K_EXTERNAL_ONCE;
+    }
+ else     if (ISCHR(index,0,'A','a') && ISCHR(index,5,'S','s') && ISCHR(index,1,'L','l')&& ISCHR(index,2,'W','w')&& ISCHR(index,3,'A','a')&& ISCHR(index,4,'Y','y')) {
+      index+=6;
+      rule.type=KEYWORDS.K_EXTERNAL_ALWAYS;
+    }
+ else {
+      System.err.println("Error: missing keyword ONCE or ALWAYS on line " + result.lines);
+      System.exit(1);
+    }
+    result.lines+=SKIPWS((char)0,(char)0);
+    nindex=index;
+    if (inArray[nindex] == '"') {
+      ++nindex;
+      result.lines+=SKIPTO_NOSPAN_N('"');
+      if (inArray[nindex] != '"') {
+        System.err.println("Error: missing closing \" on line " + result.lines);
+        System.exit(1);
+      }
+    }
+    result.lines+=SKIPTOWS_N((char)0,true);
+    StringBuilder varname=new StringBuilder();
+    if (inArray[index] == '"') {
+      for (int i=index + 1; i < nindex - 1; i++) {
+        varname.append(inArray[i]);
+      }
+    }
+ else {
+      for (int i=index; i < nindex; i++) {
+        varname.append(inArray[i]);
+      }
+    }
+    CgTag ext=result.allocateTag(varname.toString(),true);
+    rule.varname=ext.hash;
+    index=nindex;
+  }
+  boolean setflag=true;
+  while (setflag) {
+    setflag=false;
+    for (    SFLAGS fl : SFLAGS.values()) {
+      if (ux_simplecasecmp(fl.name())) {
+        index+=fl.name().length();
+        rule.flags.add((1 << fl.value));
+        setflag=true;
+      }
+      result.lines+=SKIPWS((char)0,(char)0);
+      if (inArray[index] == '(' || inArray[index] == 'T' || inArray[index] == 't' || inArray[index] == ';') {
+        break;
+      }
+    }
+  }
+  if (rule.flags.contains(RFLAGS.RF_ENCL_OUTER.value) && rule.flags.contains(RFLAGS.RF_ENCL_INNER.value)) {
+    System.err.println("Error: Line " + result.lines + " ENCL_OUTER and ENCL_INNER are mutually exclusive");
+    System.exit(1);
+  }
+  if (rule.flags.contains(RFLAGS.RF_VARYORDER.value) && rule.flags.contains(RFLAGS.RF_KEEPORDER.value)) {
+    System.err.println("Error: Line " + result.lines + " KEEPORDER and VARYORDER are mutually exclusive");
+    System.exit(1);
+  }
+  if (rule.flags.contains(RFLAGS.RF_RESETX.value) && rule.flags.contains(RFLAGS.RF_REMEMBERX.value)) {
+    System.err.println("Error: Line " + result.lines + " REMEMBERX and RESETX are mutually exclusive");
+    System.exit(1);
+  }
+  if (rule.flags.contains(RFLAGS.RF_ALLOWLOOP.value) && rule.flags.contains(RFLAGS.RF_NEAREST.value)) {
+    System.err.println("Error: Line " + result.lines + " NEAREST and ALLOWLOOP are mutually exclusive");
+    System.exit(1);
+  }
+  if (rule.flags.contains(RFLAGS.RF_UNSAFE.value) && rule.flags.contains(RFLAGS.RF_SAFE.value)) {
+    System.err.println("Error: Line " + result.lines + " UNSAFE and SAFE are mutually exclusive");
+    System.exit(1);
+  }
+  if (rule.flags.contains(RFLAGS.RF_SAFE.value) && rule.flags.contains(RFLAGS.RF_UNMAPLAST.value)) {
+    System.err.println("Error: Line " + result.lines + " UNMAPLAST and SAFE are mutually exclusive");
+    System.exit(1);
+  }
+  if (rule.flags.contains(RFLAGS.RF_DELAYED.value) && rule.flags.contains(RFLAGS.RF_IMMEDIATE.value)) {
+    System.err.println("Error: Line " + result.lines + " DELAYED and IMMEDIATE are mutually exclusive");
+    System.exit(1);
+  }
+  if (rule.flags.contains(RFLAGS.RF_NOCHILD.value) && rule.flags.contains(RFLAGS.RF_WITHCHILD.value)) {
+    System.err.println("Error: Line " + result.lines + " NO_CHILD and WITH_CHILD are mutually exclusive");
+    System.exit(1);
+  }
+  if (rule.flags.contains(RFLAGS.RF_NOITERATE.value) && rule.flags.contains(RFLAGS.RF_ITERATE.value)) {
+    System.err.println("Error: Line " + result.lines + " NOITERATE and ITERATE are mutually exclusive");
+    System.exit(1);
+  }
+  if (!(rule.flags.contains(RFLAGS.RF_ITERATE.value) || rule.flags.contains(RFLAGS.RF_NOITERATE.value))) {
+    if (key != KEYWORDS.K_SELECT && key != KEYWORDS.K_REMOVE && key != KEYWORDS.K_IFF && key != KEYWORDS.K_DELIMIT && key != KEYWORDS.K_REMCOHORT && key != KEYWORDS.K_MOVE && key != KEYWORDS.K_SWITCH) {
+      rule.flags.add(RFLAGS.RF_NOITERATE.value);
+    }
+  }
+  if (key == KEYWORDS.K_UNMAP && !(rule.flags.contains(RFLAGS.RF_SAFE.value) || rule.flags.contains(RFLAGS.RF_UNSAFE.value))) {
+    rule.flags.add(RFLAGS.RF_SAFE.value);
+  }
+  if (rule.flags.contains(RFLAGS.RF_UNMAPLAST.value)) {
+    rule.flags.add(RFLAGS.RF_UNSAFE.value);
+  }
+  if (rule.flags.contains(RFLAGS.RF_ENCL_FINAL.value)) {
+    result.has_encl_final=true;
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (rule.flags.contains(RFLAGS.RF_WITHCHILD.value)) {
+    result.has_dep=true;
+    CgSet s=parseSetInlineWrapper();
+    rule.childset1=s.hash;
+    result.lines+=SKIPWS((char)0,(char)0);
+  }
+ else   if (rule.flags.contains(RFLAGS.RF_NOCHILD.value)) {
+    rule.childset1=0;
+  }
+  if (key == KEYWORDS.K_JUMP || key == KEYWORDS.K_EXECUTE) {
+    nindex=index;
+    result.lines+=SKIPTOWS_N('(',false);
+    if (!ux_isalnum(inArray[index])) {
+      System.err.println("Error: Anchor name for " + key.name() + " must be alphanumeric on line "+ result.lines);
+      System.exit(1);
+    }
+    StringBuilder sb=new StringBuilder();
+    for (int i=index; i < nindex; i++) {
+      sb.append(inArray[i]);
+    }
+    String jumpstart=sb.toString();
+    rule.jumpstart=jumpstart.hashCode();
+    index=nindex;
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (key == KEYWORDS.K_EXECUTE) {
+    nindex=index;
+    result.lines+=SKIPTOWS_N('(',false);
+    if (!ux_isalnum(inArray[index])) {
+      System.err.println("Error: anchor name for at line " + result.lines + " must be alphanumeric");
+      System.exit(1);
+    }
+    StringBuilder sb=new StringBuilder();
+    for (int i=index; i < nindex; i++) {
+      sb.append(inArray[i]);
+    }
+    String str=sb.toString();
+    int sh=str.hashCode();
+    rule.jumpend=sh;
+    index=nindex;
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (key == KEYWORDS.K_SUBSTITUTE) {
+    CgSet s=parseSetInlineWrapper();
+    System.out.println("Warning: substitute behavior not tested");
+    s.reindex(result);
+    rule.sublist=s;
+    if (s.isEmpty()) {
+      System.err.println("Error: empty substitute set on line " + result.lines);
+      System.exit(1);
+    }
+    if (s.tags_list.isEmpty() && !(s.type.contains(ST.ST_TAG_UNIFY.value) || s.type.contains(ST.ST_SET_UNIFY.value) || s.type.contains(ST.ST_CHILD_UNIFY.value))) {
+      System.err.println("Error: substitute set on line " + result.lines + " was neither unified nor of LIST type");
+      System.exit(1);
+    }
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (key == KEYWORDS.K_MAP || key == KEYWORDS.K_ADD || key == KEYWORDS.K_REPLACE || key == KEYWORDS.K_APPEND || key == KEYWORDS.K_SUBSTITUTE || key == KEYWORDS.K_COPY || key == KEYWORDS.K_ADDRELATIONS || key == KEYWORDS.K_ADDRELATION || key == KEYWORDS.K_SETRELATIONS || key == KEYWORDS.K_SETRELATION || key == KEYWORDS.K_REMRELATIONS || key == KEYWORDS.K_REMRELATION || key == KEYWORDS.K_ADDCOHORT) {
+    CgSet s=parseSetInlineWrapper();
+    s.reindex(result);
+    rule.maplist=s;
+    if (s.isEmpty()) {
+      System.err.println("Error: Empty mapping set on line " + result.lines);
+      System.exit(1);
+    }
+    if ((s.tags_list.isEmpty() && s.single_tags.isEmpty()) && !(s.type.contains(ST.ST_TAG_UNIFY.value) || s.type.contains(ST.ST_SET_UNIFY.value) || s.type.contains(ST.ST_CHILD_UNIFY.value))) {
+      System.err.println("Error: substitute set on line " + result.lines + " was neither unified nor of LIST type");
+      System.exit(1);
+    }
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (key == KEYWORDS.K_ADDRELATIONS || key == KEYWORDS.K_SETRELATIONS || key == KEYWORDS.K_REMRELATIONS) {
+    CgSet s=parseSetInlineWrapper();
+    s.reindex(result);
+    rule.sublist=s;
+    if (s.isEmpty()) {
+      System.err.println("Error: Empty mapping set on line " + result.lines);
+      System.exit(1);
+    }
+    if (s.tags_list.isEmpty() && !(s.type.contains(ST.ST_TAG_UNIFY.value) || s.type.contains(ST.ST_SET_UNIFY.value) || s.type.contains(ST.ST_CHILD_UNIFY.value))) {
+      System.err.println("Error: substitute set on line " + result.lines + " was neither unified nor of LIST type");
+      System.exit(1);
+    }
+  }
+  if (key == KEYWORDS.K_ADDCOHORT) {
+    if (ux_simplecasecmp(stringbits[STRINGS.S_AFTER.value])) {
+      index+=stringbits[STRINGS.S_AFTER.value].length();
+      rule.type=KEYWORDS.K_ADDCOHORT_AFTER;
+    }
+ else     if (ux_simplecasecmp(stringbits[STRINGS.S_BEFORE.value])) {
+      index+=stringbits[STRINGS.S_BEFORE.value].length();
+      rule.type=KEYWORDS.K_ADDCOHORT_BEFORE;
+    }
+ else {
+      System.err.println("Error: missing position keyword AFTER or BEFORE on line " + result.lines);
+      System.exit(1);
+    }
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (ux_simplecasecmp(stringbits[STRINGS.S_TARGET.value])) {
+    index+=stringbits[STRINGS.S_TARGET.value].length();
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  CgSet s=parseSetInlineWrapper();
+  rule.target=s.hash;
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (ux_simplecasecmp(stringbits[STRINGS.S_IF.value])) {
+    index+=stringbits[STRINGS.S_IF.value].length();
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  while (notDone() && inArray[index] == '(') {
+    ++index;
+    result.lines+=SKIPWS((char)0,(char)0);
+    rule=parseContextualTests(rule);
+    result.lines+=SKIPWS((char)0,(char)0);
+    if (inArray[index] != ')') {
+      System.err.println("Error: missing closing ) on line " + result.lines);
+      System.exit(1);
+    }
+    ++index;
+    result.lines+=SKIPWS((char)0,(char)0);
+  }
+  if (key == KEYWORDS.K_SETPARENT || key == KEYWORDS.K_SETCHILD || key == KEYWORDS.K_ADDRELATIONS || key == KEYWORDS.K_ADDRELATION || key == KEYWORDS.K_SETRELATIONS || key == KEYWORDS.K_SETRELATION || key == KEYWORDS.K_REMRELATIONS || key == KEYWORDS.K_REMRELATION || key == KEYWORDS.K_MOVE || key == KEYWORDS.K_SWITCH) {
+    result.lines+=SKIPWS((char)0,(char)0);
+    if (key == KEYWORDS.K_MOVE) {
+      if (ux_simplecasecmp(stringbits[STRINGS.S_AFTER.value])) {
+        index+=stringbits[STRINGS.S_AFTER.value].length();
+        rule.type=KEYWORDS.K_MOVE_AFTER;
+      }
+ else       if (ux_simplecasecmp(stringbits[STRINGS.S_BEFORE.value])) {
+        index+=stringbits[STRINGS.S_BEFORE.value].length();
+        rule.type=KEYWORDS.K_MOVE_BEFORE;
+      }
+ else {
+        System.err.println("Error: missing movement keyword AFTER or BEFORE on line " + result.lines);
+        System.exit(1);
+      }
+    }
+ else     if (key == KEYWORDS.K_SWITCH) {
+      if (ux_simplecasecmp(stringbits[STRINGS.S_WITH.value])) {
+        index+=stringbits[STRINGS.S_WITH.value].length();
+      }
+ else {
+        System.err.println("Error: missing movement keyword WITH on line " + result.lines);
+        System.exit(1);
+      }
+    }
+ else {
+      if (ux_simplecasecmp(stringbits[STRINGS.S_TO.value])) {
+        index+=stringbits[STRINGS.S_TO.value].length();
+      }
+ else       if (ux_simplecasecmp(stringbits[STRINGS.S_FROM.value])) {
+        index+=stringbits[STRINGS.S_FROM.value].length();
+        rule.flags.add(RFLAGS.RF_REVERSE.value);
+      }
+ else {
+        System.err.println("Error: missing dependency keyword TO or FROM on line " + result.lines);
+        System.exit(1);
+      }
+    }
+    result.lines+=SKIPWS((char)0,(char)0);
+    if (key == KEYWORDS.K_MOVE) {
+      if (ux_simplecasecmp(flags[SFLAGS.FL_WITHCHILD.value])) {
+        index+=flags[SFLAGS.FL_WITHCHILD.value].length();
+        result.has_dep=true;
+        CgSet s2=parseSetInlineWrapper();
+        rule.childset2=s2.hash;
+        result.lines+=SKIPWS((char)0,(char)0);
+      }
+ else       if (ux_simplecasecmp(flags[SFLAGS.FL_NOCHILD.value])) {
+        index+=flags[SFLAGS.FL_NOCHILD.value].length();
+        rule.childset2=0;
+        result.lines+=SKIPWS((char)0,(char)0);
+      }
+    }
+    while (notDone() && inArray[index] != '(') {
+      ++index;
+      result.lines+=SKIPWS((char)0,(char)0);
+      parseContextualDependencyTests(rule);
+      result.lines+=SKIPWS((char)0,(char)0);
+      if (inArray[index] != ')') {
+        System.err.println("Error: missing closing ) on line " + result.lines);
+        System.exit(1);
+      }
+      ++index;
+      result.lines+=SKIPWS((char)0,(char)0);
+    }
+    if (!(rule.dep_test_head != null)) {
+      System.err.println("Error: missing dependency target on line " + result.lines);
+      System.exit(1);
+    }
+    rule.dep_target=rule.dep_test_head;
+    while (rule.dep_target.next != 0) {
+      rule.dep_target=rule.test_map.get(rule.dep_target.next);
+    }
+    if (rule.dep_target == rule.dep_test_head) {
+      rule.dep_test_head=null;
+    }
+  }
+  if (key == KEYWORDS.K_SETPARENT || key == KEYWORDS.K_SETCHILD) {
+    result.has_dep=true;
+  }
+  addRuleToGrammar(rule);
+}

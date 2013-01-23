@@ -1,0 +1,12 @@
+{
+  if (outfilename.equals("")) {
+    outfilename=filename + ".grammar.xml";
+    return outfilename;
+  }
+ else {
+    if (!outFilePane.getText().equals(outfilename)) {
+      outfilename=outFilePane.getText();
+    }
+    return outfilename;
+  }
+}

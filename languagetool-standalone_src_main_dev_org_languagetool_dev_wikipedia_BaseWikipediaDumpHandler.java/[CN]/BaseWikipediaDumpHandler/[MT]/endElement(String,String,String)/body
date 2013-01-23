@@ -1,0 +1,34 @@
+{
+  if (qName.equals("title")) {
+    title=text.toString();
+    text=new StringBuilder();
+  }
+ else   if (qName.equals("text")) {
+    final String textToCheck=textFilter.filter(text.toString());
+    if (!textToCheck.contains("#REDIRECT")) {
+      try {
+        articleCount++;
+        if (maxArticles > 0 && articleCount > maxArticles) {
+          throw new ArticleLimitReachedException(maxArticles);
+        }
+        final List<RuleMatch> ruleMatches=languageTool.check(textToCheck);
+        System.out.println("Checking article " + articleCount + " ("+ textToCheck.length() / 1024 + "KB, '" + title + "')" + ", found " + ruleMatches.size() + " matches");
+        try {
+          handleResult(title,ruleMatches,textToCheck,languageTool.getLanguage());
+        }
+ catch (        ErrorLimitReachedException e) {
+          throw e;
+        }
+catch (        Exception e) {
+          throw new RuntimeException(e);
+        }
+        ruleMatchCount+=ruleMatches.size();
+      }
+ catch (      IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    text=new StringBuilder();
+  }
+  inText=false;
+}

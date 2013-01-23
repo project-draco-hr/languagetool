@@ -1,0 +1,17 @@
+{
+  char d=(char)0;
+  while ((sindex < inArray.length) && inArray[sindex] != a && inArray[sindex] != b) {
+    if (ISNL(sindex)) {
+      ++d;
+    }
+    if (inArray[sindex] == '#' && !ISESC(sindex)) {
+      d+=SKIPLN_S();
+      sindex--;
+    }
+    if (!ISSPACE(sindex)) {
+      break;
+    }
+    ++sindex;
+  }
+  return d;
+}

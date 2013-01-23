@@ -1,0 +1,8 @@
+{
+  for (  String s : pattern) {
+    if (s.contains("'") && s.contains("|")) {
+      return true;
+    }
+  }
+  return false;
+}

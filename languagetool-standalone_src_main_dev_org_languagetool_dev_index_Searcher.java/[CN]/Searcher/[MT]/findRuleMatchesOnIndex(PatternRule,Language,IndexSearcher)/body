@@ -1,0 +1,28 @@
+{
+  final PossiblyRelaxedQuery query=createQuery(rule);
+  if (query.query == null) {
+    throw new NullPointerException("Cannot search on null query for rule: " + rule);
+  }
+  final SearchRunnable runnable=new SearchRunnable(indexSearcher,query,language,rule);
+  final Thread searchThread=new Thread(runnable);
+  searchThread.start();
+  try {
+    searchThread.join(maxSearchTimeMillis);
+    searchThread.interrupt();
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException("Search thread got interrupted for query " + query,e);
+  }
+  if (searchThread.isInterrupted()) {
+    throw new SearchTimeoutException("Search timeout of " + maxSearchTimeMillis + "ms reached");
+  }
+  final Exception exception=runnable.getException();
+  if (exception != null) {
+    throw new RuntimeException("Exception during search for query " + query,exception);
+  }
+  final List<MatchingSentence> matchingSentences=runnable.getMatchingSentences();
+  final int sentencesChecked=getSentenceCheckCount(query,indexSearcher);
+  final SearcherResult searcherResult=new SearcherResult(matchingSentences,sentencesChecked,query);
+  searcherResult.setDocCount(getDocCount(indexSearcher));
+  return searcherResult;
+}

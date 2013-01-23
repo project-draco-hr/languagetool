@@ -1,0 +1,66 @@
+{
+  String[] se=element.split(":");
+  int numMatched=Integer.parseInt(se[0].replaceAll("\\\\",""));
+  if (Arrays.asList(pattern).contains("0BEGIN.0")) {
+    numMatched++;
+  }
+  String transform=se[1];
+  String retString=null;
+  String refWord=pattern[numMatched];
+  if (transform.equals("nosuffix")) {
+    if (refWord.endsWith("able") || refWord.endsWith("ible")) {
+      String strip=refWord.substring(0,refWord.length() - 4);
+      if (inDictionary(strip.concat("ated"))) {
+        retString=strip.concat("ated");
+      }
+ else       if (inDictionary(strip.concat("e"))) {
+        retString=strip.concat("e");
+      }
+ else       if (inDictionary(strip.concat("y"))) {
+        retString=strip.concat("y");
+      }
+ else       if (inDictionary(strip)) {
+        retString=strip;
+      }
+ else {
+        retString=refWord;
+      }
+    }
+ else {
+      retString=refWord;
+    }
+  }
+ else   if (transform.equals("upper")) {
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" case_conversion=\"startupper\" />";
+  }
+ else   if (transform.equals("lower")) {
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" case_conversion=\"alllower\" />";
+  }
+ else   if (transform.equals("singular")) {
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNP|NN(:U.?)?\" postag_regexp=\"yes\" />";
+  }
+ else   if (transform.equals("plural")) {
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNPS|NNS\" postag_regexp=\"yes\" />";
+  }
+ else   if (transform.equals("participle")) {
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBN\" />";
+  }
+ else   if (transform.equals("base")) {
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VB\" />";
+  }
+ else   if (transform.equals("past")) {
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBD\" />";
+  }
+ else   if (transform.equals("present")) {
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBG\" />";
+  }
+ else   if (transform.equals("determiner") || transform.equals("determiner2")) {
+    retString="the";
+  }
+ else   if (transform.equals("positive")) {
+  }
+ else   if (transform.equals("possessive")) {
+    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NN(:U.?)?\" postag_regexp=\"yes\" />'s";
+  }
+  return retString;
+}

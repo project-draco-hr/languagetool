@@ -1,0 +1,3 @@
+{
+  return CgRuleConverter.compositePostagToString(this);
+}

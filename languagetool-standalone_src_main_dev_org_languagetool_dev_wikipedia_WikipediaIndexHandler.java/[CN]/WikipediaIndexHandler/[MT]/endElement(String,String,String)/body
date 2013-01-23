@@ -1,0 +1,26 @@
+{
+  if (qName.equals("title")) {
+    inTitle=false;
+  }
+ else   if (qName.equals("text")) {
+    System.out.println(++articleCount + ": " + title);
+    title=new StringBuilder();
+    if (articleCount < start) {
+      return;
+    }
+ else     if (articleCount >= end && end != 0) {
+      throw new DocumentLimitReachedException(end);
+    }
+    try {
+      final String textToCheck=textFilter.filter(text.toString());
+      if (!textToCheck.contains("#REDIRECT") && !textToCheck.trim().equals("")) {
+        indexer.index(textToCheck,false,articleCount);
+      }
+    }
+ catch (    Exception e) {
+      throw new RuntimeException("Failed checking article " + articleCount,e);
+    }
+  }
+  text=new StringBuilder();
+  inText=false;
+}

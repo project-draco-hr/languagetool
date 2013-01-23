@@ -1,0 +1,26 @@
+{
+  if (exceptions.size() == 0) {
+    return new ArrayList<ArrayList<Pattern>>();
+  }
+  int size=exceptions.size();
+  ArrayList<ArrayList<Pattern>> ret=new ArrayList<ArrayList<Pattern>>(6);
+  ArrayList<Pattern> tokenPatterns=new ArrayList<Pattern>(size);
+  ArrayList<Pattern> posPatterns=new ArrayList<Pattern>(size);
+  for (  Element e : exceptions) {
+    String token=e.getString();
+    String postag=e.getPOStag();
+    Pattern tokenPattern=Pattern.compile(token);
+    Pattern posPattern;
+    if (postag != null) {
+      posPattern=Pattern.compile(postag);
+    }
+ else {
+      posPattern=null;
+    }
+    tokenPatterns.add(tokenPattern);
+    posPatterns.add(posPattern);
+  }
+  ret.add(tokenPatterns);
+  ret.add(posPatterns);
+  return ret;
+}

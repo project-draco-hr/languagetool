@@ -1,0 +1,8 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: " + RuleOverview.class.getName() + " <webRoot>");
+    System.exit(1);
+  }
+  final RuleOverview prg=new RuleOverview();
+  prg.run(new File(args[0]));
+}

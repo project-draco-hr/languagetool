@@ -1,0 +1,7 @@
+{
+  if (e == null) {
+    return false;
+  }
+  Matcher m=regex.matcher(e);
+  return m.find();
+}

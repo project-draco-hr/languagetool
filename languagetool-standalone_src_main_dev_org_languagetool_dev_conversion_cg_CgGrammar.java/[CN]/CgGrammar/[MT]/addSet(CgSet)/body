@@ -1,0 +1,15 @@
+{
+  if (this.delimiters == null && to.name.equals(CgTextualParser.stringbits[STRINGS.S_DELIMITSET.value])) {
+    this.delimiters=to;
+  }
+ else   if (this.soft_delimiters == null && to.name.equals(CgTextualParser.stringbits[STRINGS.S_SOFTDELIMITSET.value])) {
+    this.soft_delimiters=to;
+  }
+  to.hashContents();
+  if (!this.sets_all.contains(to)) {
+    this.sets_list.add(to);
+  }
+  this.sets_all.add(to);
+  this.sets_by_name.put(to.hash,to);
+  this.sets_by_contents.put(to.chash,to);
+}

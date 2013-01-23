@@ -1,0 +1,7 @@
+{
+  while (notDone() && !ISNL(index)) {
+    ++index;
+  }
+  ++index;
+  return 1;
+}

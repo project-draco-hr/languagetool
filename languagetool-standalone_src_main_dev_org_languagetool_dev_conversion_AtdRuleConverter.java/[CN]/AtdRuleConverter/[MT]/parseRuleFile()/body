@@ -1,0 +1,45 @@
+{
+  Scanner in=new Scanner(new FileInputStream(inFileName));
+  List<String> ruleList=new ArrayList<String>();
+  try {
+    int lineCount=0;
+    while (in.hasNextLine()) {
+      String line=in.nextLine().trim();
+      if (line.startsWith("#?") && lineCount == 0 && ruleType.equals("avoid")) {
+        avoidMessage=line.substring(2);
+      }
+ else       if (line.startsWith("#") || line.equals("")) {
+        continue;
+      }
+ else {
+        if (line.contains("#")) {
+          line=line.substring(0,line.indexOf("#"));
+        }
+        ruleList.add(line);
+      }
+      lineCount++;
+    }
+  }
+  finally {
+    in.close();
+  }
+  ruleObjects=ruleList;
+  allLtRules=new ArrayList<List<String>>();
+  ltRules=new ArrayList<List<String>>();
+  disambiguationRules=new ArrayList<List<String>>();
+  originalRuleStrings=new ArrayList<String>();
+  warnings=new ArrayList<String[]>();
+  for (  Object ruleObject : ruleObjects) {
+    String ruleString=(String)ruleObject;
+    HashMap<String,String> ruleMap=parseRule(ruleString);
+    List<String> ruleAsList=ltRuleAsList(ruleMap,getIdFromName(ruleMap.get("name")),fixName(ruleMap.get("name")),this.ruleType);
+    if (notKilledRule(ruleMap)) {
+      ltRules.add(ruleAsList);
+    }
+ else {
+      disambiguationRules.add(ruleAsList);
+    }
+    allLtRules.add(ruleAsList);
+    originalRuleStrings.add(ruleMap.get("ruleString"));
+  }
+}

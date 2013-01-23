@@ -1,0 +1,23 @@
+{
+  if (!reg.isEmpty()) {
+    PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(outfilename),"UTF-8"));
+    w.write(reg);
+    w.close();
+  }
+  if (!dis.isEmpty()) {
+    PrintWriter w=new PrintWriter(new OutputStreamWriter(new FileOutputStream(disambigOutFile),"UTF-8"));
+    w.write(dis);
+    w.close();
+  }
+  String message="";
+  if (numReg > 0) {
+    message+=Integer.toString(numReg) + " rules written to " + outfilename+ "<br>";
+  }
+  if (numDis > 0) {
+    message+=Integer.toString(numDis) + " rules written to " + disambigOutFile;
+  }
+  if (message.equals("")) {
+    message="No rules written";
+  }
+  showDialog(message,null);
+}

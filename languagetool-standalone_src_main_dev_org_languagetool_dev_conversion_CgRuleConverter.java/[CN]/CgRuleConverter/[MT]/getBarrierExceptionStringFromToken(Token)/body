@@ -1,0 +1,57 @@
+{
+  boolean not=token.negate;
+  boolean inflected=true;
+  String barrierPos=glueWords(expandSetSets(token.barrier).getPostagsString());
+  if (token.scanahead) {
+    barrierPos=barrierPos.concat("|" + SENT_END);
+  }
+  String barrierToken=glueWords(token.barrier.getSingleTagBaseformsString());
+  if (barrierToken.isEmpty()) {
+    barrierToken=glueWords(token.barrier.getSingleTagSurfaceformsString());
+    inflected=false;
+  }
+  String targetPos=glueWords(token.postags);
+  String targetToken=glueWords(token.baseforms);
+  if (targetToken.isEmpty()) {
+    targetToken=glueWords(token.surfaceforms);
+    if (not)     inflected=false;
+  }
+  String postagString="";
+  String tokenString="";
+  String inflectedString="";
+  String regexpString="";
+  String postagRegexpString="";
+  if (not) {
+    if (!targetPos.isEmpty()) {
+      postagString=" postag=\"" + targetPos + "\"";
+      if (isRegex(targetPos)) {
+        postagRegexpString=" postag_regexp=\"yes\"";
+      }
+    }
+    if (!targetToken.isEmpty()) {
+      tokenString=" ".concat(targetToken);
+      if (isRegex(tokenString)) {
+        regexpString=" regexp=\"yes\"";
+      }
+    }
+  }
+ else {
+    if (!barrierPos.isEmpty()) {
+      postagString=" postag=\"" + barrierPos + "\"";
+    }
+    if (isRegex(barrierPos)) {
+      postagRegexpString=" postag_regexp=\"yes\"";
+    }
+    if (!barrierToken.isEmpty()) {
+      tokenString=barrierToken;
+      if (isRegex(tokenString)) {
+        regexpString=" postag_regexp=\"yes\"";
+      }
+    }
+  }
+  if (inflected) {
+    inflectedString=" inflected=\"yes\"";
+  }
+  String retString="<exception" + postagString + inflectedString+ regexpString+ postagRegexpString+ " scope=\"next\">"+ tokenString+ "</exception>";
+  return retString;
+}

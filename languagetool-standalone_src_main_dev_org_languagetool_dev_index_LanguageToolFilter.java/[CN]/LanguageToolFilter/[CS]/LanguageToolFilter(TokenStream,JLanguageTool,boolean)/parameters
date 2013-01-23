@@ -1,0 +1,3 @@
+TokenStream input
+JLanguageTool languageTool
+boolean toLowerCase

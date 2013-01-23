@@ -1,0 +1,20 @@
+{
+  String token;
+  if (hasPosTag(element)) {
+    token=element.split("/")[0];
+  }
+ else {
+    token=element;
+  }
+  if (isRegex(token) && (token.contains("<") || token.contains(">"))) {
+    if (!curWarn.contains(WARNINGS.ANGLE_BRACKETS.value)) {
+      curWarn.add(WARNINGS.ANGLE_BRACKETS.value);
+    }
+  }
+  if (justPosTag(element)) {
+    if (!curWarn.contains(WARNINGS.EXCLUSIVE.value)) {
+      curWarn.add(WARNINGS.EXCLUSIVE.value);
+    }
+  }
+  return curWarn;
+}

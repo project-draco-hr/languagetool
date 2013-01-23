@@ -1,0 +1,10 @@
+{
+  try {
+    String fn=mainRuleFilePane.getText();
+    filename=fn;
+    return mainRuleFilePane.getText();
+  }
+ catch (  NullPointerException e) {
+    return "";
+  }
+}

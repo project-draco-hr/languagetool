@@ -1,0 +1,9 @@
+{
+  int h=this.name.hashCode();
+  if (!this.tags.isEmpty()) {
+    for (    CgCompositeTag t : this.tags) {
+      h=h << t.hashCode();
+    }
+  }
+  this.chash=h;
+}

@@ -1,0 +1,211 @@
+{
+  if (inLinkedTest) {
+    if (!linkedTests.isEmpty()) {
+      CgContextualTest lastTest=rule.test_map.get(linkedTests.get(linkedTests.size() - 1));
+      lastTest.next=currentTest.hashCode();
+      linkedTests.remove(linkedTests.get(linkedTests.size() - 1));
+      linkedTests.add(lastTest.hashCode());
+      currentTest.prev=lastTest.hashCode();
+      rule.test_map.put(currentTest.hashCode(),currentTest);
+      rule.test_map.put(lastTest.hashCode(),lastTest);
+    }
+    linkedTests.add(currentTest.hashCode());
+    rule.test_map.put(currentTest.hashCode(),currentTest);
+  }
+ else {
+    linkedTests=new ArrayList<Integer>();
+  }
+  currentTest=new CgContextualTest();
+  currentTest.line=result.lines;
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (ISCHR(index,0,'N','n') && ISCHR(index,5,'E','e') && ISCHR(index,1,'E','e')&& ISCHR(index,2,'G','g')&& ISCHR(index,3,'A','a')&& ISCHR(index,4,'T','t')) {
+    index+=6;
+    currentTest.pos.add(POS.POS_NEGATE.value);
+  }
+  if (ISCHR(index,0,'A','a') && ISCHR(index,2,'L','l') && ISCHR(index,1,'L','l')) {
+    index+=3;
+    currentTest.pos.add(POS.POS_ALL.value);
+  }
+  if (ISCHR(index,0,'N','n') && ISCHR(index,3,'E','e') && ISCHR(index,1,'O','o')&& ISCHR(index,2,'N','n')) {
+    index+=4;
+    currentTest.pos.add(POS.POS_NONE.value);
+  }
+  if (ISCHR(index,0,'N','n') && ISCHR(index,2,'T','t') && ISCHR(index,1,'O','o')) {
+    index+=3;
+    currentTest.pos.add(POS.POS_NOT.value);
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  nindex=index;
+  result.lines+=SKIPTOWS_N('(',false);
+  StringBuilder buf=new StringBuilder();
+  for (int i=index; i < nindex; i++) {
+    buf.append(inArray[i]);
+  }
+  String str=buf.toString();
+  if (ux_isEmpty(str)) {
+    index=nindex;
+    if (parentTest != null) {
+      System.err.println("Can't have two nested tests on line " + result.lines + "\nTry splitting it up.");
+      System.exit(1);
+    }
+    parentTest=currentTest;
+    inParentTest=true;
+    for (; ; ) {
+      if (inArray[index] != '(') {
+        System.err.println("Error: expected ( but found " + inArray[index] + " at line "+ result.lines);
+        System.exit(1);
+      }
+      ++index;
+      rule=parseContextualTestList(rule);
+      ++index;
+      if (linkedTests.isEmpty()) {
+        parentTest.ors.add(currentTest.hashCode());
+      }
+ else {
+        parentTest.ors.add(linkedTests.get(0));
+      }
+      result.lines+=SKIPWS((char)0,(char)0);
+      if (ISCHR(index,0,'O','o') && ISCHR(index,1,'R','r')) {
+        index+=2;
+      }
+ else {
+        inParentTest=false;
+        linkedTests=new ArrayList<Integer>();
+        break;
+      }
+      result.lines+=SKIPWS((char)0,(char)0);
+    }
+  }
+ else   if (str.compareToIgnoreCase("[") == 0) {
+    System.out.println("Warning: this feature may not work correctly in this implementation");
+    ++index;
+    result.lines+=SKIPWS((char)0,(char)0);
+    CgSet s1=parseSetInlineWrapper();
+    currentTest.offset=1;
+    currentTest.target=s1.hash;
+    result.lines+=SKIPWS((char)0,(char)0);
+    while (inArray[index] == ',') {
+      ++index;
+      result.lines+=SKIPWS((char)0,(char)0);
+      CgContextualTest lnk=currentTest.allocateContextualTest();
+      CgSet s=parseSetInlineWrapper();
+      lnk.offset=1;
+      lnk.target=s.hash;
+      currentTest.linked=lnk.hashCode();
+      currentTest=lnk;
+      result.lines+=SKIPWS((char)0,(char)0);
+    }
+    if (inArray[index] != ']') {
+      System.err.println("Error: expected ] on line " + result.lines + " but found "+ inArray[index]);
+      System.exit(1);
+    }
+    ++index;
+  }
+ else   if (str.charAt(0) == 'T' && str.charAt(1) == ':') {
+    System.err.println("Templates not supported in this CG parser. Sorry");
+    System.exit(1);
+  }
+ else {
+    parseContextualTestPosition();
+    index=nindex;
+    if (currentTest.pos.contains(POS.POS_DEP_CHILD.value) || currentTest.pos.contains(POS.POS_DEP_CHILD.value) || currentTest.pos.contains(POS.POS_DEP_SIBLING.value)) {
+      result.has_dep=true;
+    }
+    result.lines+=SKIPWS((char)0,(char)0);
+    if (inArray[index] == 'T' && inArray[index + 1] == ':') {
+      System.err.println("Templates not supported in this CG parser. Sorry");
+      System.exit(1);
+    }
+ else {
+      CgSet s=parseSetInlineWrapper();
+      currentTest.target=s.hash;
+    }
+    result.lines+=SKIPWS((char)0,(char)0);
+    if (ISCHR(index,0,'C','c') && ISCHR(index,7,'R','r') && ISCHR(index,1,'B','b')&& ISCHR(index,2,'A','a')&& ISCHR(index,3,'R','r')&& ISCHR(index,4,'R','r')&& ISCHR(index,5,'I','i')&& ISCHR(index,6,'E','e')) {
+      index+=8;
+      result.lines+=SKIPWS((char)0,(char)0);
+      CgSet s=parseSetInlineWrapper();
+      currentTest.cbarrier=s.hash;
+    }
+    result.lines+=SKIPWS((char)0,(char)0);
+    if (ISCHR(index,0,'B','b') && ISCHR(index,6,'R','r') && ISCHR(index,1,'A','a')&& ISCHR(index,2,'R','r')&& ISCHR(index,3,'R','r')&& ISCHR(index,4,'I','i')&& ISCHR(index,5,'E','e')) {
+      index+=7;
+      result.lines+=SKIPWS((char)0,(char)0);
+      CgSet s=parseSetInlineWrapper();
+      currentTest.barrier=s.hash;
+    }
+    result.lines+=SKIPWS((char)0,(char)0);
+  }
+  boolean linked=false;
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (ISCHR(index,0,'A','a') && ISCHR(index,2,'D','d') && ISCHR(index,1,'N','n')) {
+    System.err.println("AND is deprecated. Use LINK 0 or operator +. Found on line " + result.lines);
+    System.exit(1);
+  }
+  if (ISCHR(index,0,'L','l') && ISCHR(index,3,'K','k') && ISCHR(index,1,'I','i')&& ISCHR(index,2,'N','n')) {
+    index+=4;
+    linked=true;
+  }
+  result.lines+=SKIPWS((char)0,(char)0);
+  if (linked) {
+    if (currentTest.pos.contains(POS.POS_NONE.value)) {
+      System.err.println("Error: it does not make sense to link from a NONE test.");
+      System.exit(1);
+    }
+    inLinkedTest=true;
+    rule=parseContextualTestList(rule);
+    inLinkedTest=false;
+    return rule;
+  }
+  if (rule != null) {
+    if (rule.flags.contains(RFLAGS.RF_LOOKDELETED.value)) {
+      currentTest.pos.add(POS.POS_LOOK_DELETED.value);
+    }
+    if (rule.flags.contains(RFLAGS.RF_LOOKDELAYED.value)) {
+      currentTest.pos.add(POS.POS_LOOK_DELAYED.value);
+    }
+  }
+  if (!linkedTests.isEmpty()) {
+    CgContextualTest lastTest=rule.test_map.get(linkedTests.get(linkedTests.size() - 1));
+    lastTest.next=currentTest.hashCode();
+    linkedTests.remove(linkedTests.get(linkedTests.size() - 1));
+    linkedTests.add(lastTest.hashCode());
+    currentTest.prev=lastTest.hashCode();
+    rule.test_map.put(currentTest.hashCode(),currentTest);
+    rule.test_map.put(lastTest.hashCode(),lastTest);
+    linkedTests.add(currentTest.hashCode());
+    if (!inParentTest) {
+      for (      int testint : linkedTests) {
+        rule.all_tests.add(rule.test_map.get(testint));
+      }
+      rule.test_heads.add(rule.test_map.get(linkedTests.get(0)));
+    }
+  }
+  if (parentTest != null && !inParentTest) {
+    if (option_vislcg_compat && currentTest.pos.contains(POS.POS_NOT.value)) {
+      currentTest.pos.remove(POS.POS_NOT.value);
+      currentTest.pos.add(POS.POS_NEGATE.value);
+    }
+    rule.test_map.put(parentTest.hashCode(),parentTest);
+    rule.test_heads.add(parentTest);
+    linkedTests=new ArrayList<Integer>();
+  }
+  if (!inParentTest && !inLinkedTest && parentTest == null) {
+    if (option_vislcg_compat && currentTest.pos.contains(POS.POS_NOT.value)) {
+      currentTest.pos.remove(POS.POS_NOT.value);
+      currentTest.pos.add(POS.POS_NEGATE.value);
+    }
+    rule.all_tests.add(currentTest);
+    rule.test_heads.add(currentTest);
+    rule.test_map.put(currentTest.hashCode(),currentTest);
+  }
+  if (inParentTest && !inLinkedTest) {
+    if (option_vislcg_compat && currentTest.pos.contains(POS.POS_NOT.value)) {
+      currentTest.pos.remove(POS.POS_NOT.value);
+      currentTest.pos.add(POS.POS_NEGATE.value);
+    }
+    rule.all_tests.add(currentTest);
+    rule.test_map.put(currentTest.hashCode(),currentTest);
+  }
+  return rule;
+}

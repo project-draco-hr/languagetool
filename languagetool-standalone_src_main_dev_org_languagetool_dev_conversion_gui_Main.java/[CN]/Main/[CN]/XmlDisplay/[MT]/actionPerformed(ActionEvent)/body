@@ -1,0 +1,10 @@
+{
+  if (e.getSource() == done) {
+    this.text=pane.getText();
+    this.write();
+    xmlframe.setVisible(false);
+  }
+ else   if (e.getSource() == cancel) {
+    xmlframe.setVisible(false);
+  }
+}

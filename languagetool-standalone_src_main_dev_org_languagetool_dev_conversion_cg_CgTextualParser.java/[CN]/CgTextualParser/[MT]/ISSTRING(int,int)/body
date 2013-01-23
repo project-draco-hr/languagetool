@@ -1,0 +1,9 @@
+{
+  if (inArray[position - 1] == '"' && inArray[position + offset + 1] == '"') {
+    return true;
+  }
+  if (inArray[position - 1] == '<' && inArray[position + offset + 1] == '>') {
+    return true;
+  }
+  return false;
+}

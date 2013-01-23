@@ -1,0 +1,5 @@
+{
+  final Tokenizer tokenizer=new AnyCharTokenizer(this.matchVersion,reader);
+  final TokenStream result=new LanguageToolFilter(tokenizer,languageTool,toLowerCase);
+  return new TokenStreamComponents(tokenizer,result);
+}

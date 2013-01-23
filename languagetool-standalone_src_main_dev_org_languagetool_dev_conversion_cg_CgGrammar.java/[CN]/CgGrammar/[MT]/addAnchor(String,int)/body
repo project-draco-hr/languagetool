@@ -1,0 +1,12 @@
+{
+  int ah=s.hashCode();
+  if (this.anchor_by_hash.containsKey(ah)) {
+    System.err.println("Error: attempted to redefine anchor on line " + line);
+    System.exit(1);
+  }
+  CgAnchor anc=new CgAnchor();
+  anc.setName(s);
+  anc.line=line;
+  this.anchor_by_hash.put(ah,line);
+  this.anchor_by_line.put(line,anc);
+}

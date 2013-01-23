@@ -1,0 +1,3 @@
+{
+  return (form.matches("\"\\<.*\\>\"r?i?") || form.matches("\"\"\\<.*\\>\"r?i?\""));
+}
