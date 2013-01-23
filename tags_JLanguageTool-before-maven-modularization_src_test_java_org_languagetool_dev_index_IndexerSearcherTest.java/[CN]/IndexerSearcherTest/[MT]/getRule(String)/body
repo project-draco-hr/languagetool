@@ -1,3 +1,0 @@
-{
-  return errorSearcher.getRuleById(ruleId,ruleFile);
-}

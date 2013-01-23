@@ -1,9 +1,0 @@
-{
-  ArrayList<CgTag> forms=new ArrayList<CgTag>();
-  if (!this.single_tags.isEmpty()) {
-    for (    CgTag tag : this.single_tags) {
-      if (CgRuleConverter.isBaseForm(tag.tag))       forms.add(tag);
-    }
-  }
-  return forms.toArray(new CgTag[forms.size()]);
-}

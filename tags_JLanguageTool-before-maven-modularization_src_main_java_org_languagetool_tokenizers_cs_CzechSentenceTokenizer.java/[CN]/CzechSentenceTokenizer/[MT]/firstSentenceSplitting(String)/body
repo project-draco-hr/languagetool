@@ -1,7 +1,0 @@
-{
-  s=paragraph.matcher(s).replaceAll("$1" + EOS);
-  s=punctWhitespace.matcher(s).replaceAll("$1" + EOS);
-  s=punctUpperLower.matcher(s).replaceAll("$1" + EOS + "$2");
-  s=letterPunct.matcher(s).replaceAll("$1" + EOS);
-  return s;
-}

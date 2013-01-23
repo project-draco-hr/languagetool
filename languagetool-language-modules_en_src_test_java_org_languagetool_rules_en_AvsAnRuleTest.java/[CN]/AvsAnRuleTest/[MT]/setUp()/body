@@ -1,0 +1,4 @@
+{
+  rule=new AvsAnRule(null);
+  langTool=new JLanguageTool(new English());
+}

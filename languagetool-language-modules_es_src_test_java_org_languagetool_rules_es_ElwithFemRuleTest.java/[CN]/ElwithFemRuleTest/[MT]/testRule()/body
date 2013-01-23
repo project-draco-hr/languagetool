@@ -1,0 +1,33 @@
+{
+  ElwithFemRule rule=new ElwithFemRule(null);
+  RuleMatch[] matches;
+  JLanguageTool langTool=new JLanguageTool(new Spanish());
+  matches=rule.match(langTool.getAnalyzedSentence("El alma inmortal."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Tomar?? un agua."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Usa mejor el hacha."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Lo escond?? bajo el haya."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("La foto del \"aura\" se la debo a ??l."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Encontraron un ??nfora ..."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Ning??n acta ..."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("La alma inmortal."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Tomar?? una agua."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Usa mejor la hacha."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Lo escond?? bajo la haya."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("La foto de la \"aura\" se la debo a ??l."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Ninguna acta ..."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("En La Haya se vive muy bien."));
+  assertEquals(0,matches.length);
+}

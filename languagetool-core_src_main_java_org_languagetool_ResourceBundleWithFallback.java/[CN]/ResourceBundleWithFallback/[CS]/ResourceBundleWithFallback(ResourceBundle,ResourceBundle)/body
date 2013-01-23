@@ -1,0 +1,4 @@
+{
+  this.bundle=bundle;
+  this.fallbackBundle=fallbackBundle;
+}

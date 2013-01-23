@@ -1,4 +1,0 @@
-{
-  this.hashContents();
-  this.hash=this.hash << this.chash;
-}

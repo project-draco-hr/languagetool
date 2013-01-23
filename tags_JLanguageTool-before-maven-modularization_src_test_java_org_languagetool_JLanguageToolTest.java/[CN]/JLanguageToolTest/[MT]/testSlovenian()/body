@@ -1,4 +1,0 @@
-{
-  final JLanguageTool tool=new JLanguageTool(Language.SLOVENIAN);
-  assertEquals(1,tool.check("Kupil je npr. jajca, moko in mleko.").size());
-}

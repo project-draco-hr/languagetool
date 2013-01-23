@@ -1,5 +1,0 @@
-{
-  final WikipediaQuickCheck check=new WikipediaQuickCheck();
-  final String filteredContent=check.getPlainText("<?xml version=\"1.0\"?><api><query><normalized><n from=\"Benutzer_Diskussion:Dnaber\" to=\"Benutzer Diskussion:Dnaber\" />" + "</normalized><pages><page pageid=\"143424\" ns=\"3\" title=\"Benutzer Diskussion:Dnaber\"><revisions><rev xml:space=\"preserve\">\n" + "Test [[Link]] Foo&amp;nbsp;bar.\n"+ "</rev></revisions></page></pages></query></api>");
-  assertEquals("Test Link Foo bar.",filteredContent);
-}

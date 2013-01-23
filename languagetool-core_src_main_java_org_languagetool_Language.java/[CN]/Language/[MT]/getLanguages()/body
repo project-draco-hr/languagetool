@@ -1,0 +1,28 @@
+{
+  final List<Language> languages=new ArrayList<Language>();
+  try {
+    final Enumeration<URL> propertyFiles=Language.class.getClassLoader().getResources(PROPERTIES_PATH);
+    while (propertyFiles.hasMoreElements()) {
+      final URL url=propertyFiles.nextElement();
+      final InputStream inputStream=url.openStream();
+      try {
+        final Properties props=new Properties();
+        props.load(inputStream);
+        final String classNamesStr=props.getProperty(PROPERTIES_KEY);
+        if (classNamesStr == null) {
+          throw new RuntimeException("Key '" + PROPERTIES_KEY + "' not found in "+ url);
+        }
+        final String[] classNames=classNamesStr.split(",");
+        languages.addAll(createLanguageObject(url,classNames));
+      }
+  finally {
+        inputStream.close();
+      }
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  languages.add(DEMO);
+  return languages.toArray(new Language[languages.size()]);
+}

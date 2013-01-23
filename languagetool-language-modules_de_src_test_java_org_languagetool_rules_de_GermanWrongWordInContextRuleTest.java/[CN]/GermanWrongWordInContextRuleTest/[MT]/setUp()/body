@@ -1,0 +1,4 @@
+{
+  langTool=new JLanguageTool(new German());
+  rule=new GermanWrongWordInContextRule(null);
+}

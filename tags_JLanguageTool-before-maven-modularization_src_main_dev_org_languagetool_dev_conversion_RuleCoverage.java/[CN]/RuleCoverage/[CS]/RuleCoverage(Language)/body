@@ -1,6 +1,0 @@
-{
-  this.language=language;
-  tool=new JLanguageTool(language);
-  tool.activateDefaultPatternRules();
-  setupDictionaryFiles();
-}

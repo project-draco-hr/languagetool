@@ -1,3 +1,0 @@
-{
-  Language.getLanguageForShortName("xyz-xx");
-}

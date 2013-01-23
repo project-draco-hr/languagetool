@@ -1,5 +1,0 @@
-{
-  directory=new RAMDirectory();
-  Indexer.run(content,directory,Language.ENGLISH,false);
-  searcher=new IndexSearcher(DirectoryReader.open(directory));
-}

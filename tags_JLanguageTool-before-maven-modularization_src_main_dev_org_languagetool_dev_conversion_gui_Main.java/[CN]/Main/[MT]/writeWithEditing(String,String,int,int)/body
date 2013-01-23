@@ -1,6 +1,0 @@
-{
-  XmlDisplay regdisplay=new XmlDisplay(reg,getCurrentOutfile(),"Edit regular out file");
-  regdisplay.show();
-  XmlDisplay disdisplay=new XmlDisplay(dis,getCurrentDisambigFile(),"Edit disambiguation file");
-  disdisplay.show();
-}

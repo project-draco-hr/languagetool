@@ -1,0 +1,5 @@
+{
+  super.setUp();
+  langTool=new JLanguageTool(new Slovak());
+  rule=new CompoundRule(null);
+}

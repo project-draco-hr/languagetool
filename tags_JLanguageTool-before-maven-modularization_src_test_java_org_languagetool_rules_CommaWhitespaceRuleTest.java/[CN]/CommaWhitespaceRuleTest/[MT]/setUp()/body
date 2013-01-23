@@ -1,4 +1,0 @@
-{
-  rule=new CommaWhitespaceRule(TestTools.getEnglishMessages());
-  langTool=new JLanguageTool(Language.ENGLISH);
-}

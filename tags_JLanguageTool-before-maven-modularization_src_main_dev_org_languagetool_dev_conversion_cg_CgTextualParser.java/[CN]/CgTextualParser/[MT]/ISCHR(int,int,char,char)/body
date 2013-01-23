@@ -1,6 +1,0 @@
-{
-  if (position + offset >= length) {
-    return false;
-  }
-  return inArray[position + offset] == c || inArray[position + offset] == d;
-}

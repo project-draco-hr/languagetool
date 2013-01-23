@@ -1,4 +1,0 @@
-{
-  rule=new ComplexAdjectiveConcordanceRule(null);
-  langTool=new JLanguageTool(Language.CATALAN);
-}

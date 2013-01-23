@@ -1,3 +1,0 @@
-{
-  return (this.ors.isEmpty() && this.next == 0);
-}

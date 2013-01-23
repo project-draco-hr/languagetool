@@ -1,7 +1,0 @@
-{
-  tagger=new EnglishTagger();
-  tokenizer=new WordTokenizer();
-  sentenceTokenizer=new SentenceTokenizer();
-  disambiguator=new EnglishRuleDisambiguator();
-  disamb2=new DemoDisambiguator();
-}

@@ -1,0 +1,13 @@
+{
+  tagger=new FrenchTagger();
+  tokenizer=new WordTokenizer();
+  sentenceTokenizer=new SentenceTokenizer();
+  disambiguator=new FrenchRuleDisambiguator();
+  disamb2=new DemoDisambiguator();
+  try {
+    lt=new JLanguageTool(new French());
+  }
+ catch (  IOException e) {
+    fail(e.getMessage());
+  }
+}

@@ -1,6 +1,0 @@
-{
-  final PatternRuleQueryBuilder queryBuilder=new PatternRuleQueryBuilder();
-  final Query query=queryBuilder.buildQuery(patternRule);
-  final int matches=searcher.search(query,null,1000).totalHits;
-  assertEquals("Query failed: " + query,expectedMatches,matches);
-}

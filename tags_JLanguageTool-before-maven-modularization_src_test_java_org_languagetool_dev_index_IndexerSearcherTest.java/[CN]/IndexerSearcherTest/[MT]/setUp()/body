@@ -1,4 +1,0 @@
-{
-  super.setUp();
-  directory=new RAMDirectory();
-}

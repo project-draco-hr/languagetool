@@ -1,4 +1,0 @@
-{
-  tagger=new ItalianTagger();
-  tokenizer=new WordTokenizer();
-}

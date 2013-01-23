@@ -1,3 +1,0 @@
-{
-  return new RegexpQuery(new Term(FIELD_NAME,str));
-}

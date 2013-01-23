@@ -1,3 +1,0 @@
-{
-  System.out.println("Usage: java org.languagetool.dev.POSTagLanguageModel language");
-}

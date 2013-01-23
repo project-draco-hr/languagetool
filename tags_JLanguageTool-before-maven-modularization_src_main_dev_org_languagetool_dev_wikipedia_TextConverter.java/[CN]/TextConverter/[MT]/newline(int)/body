@@ -1,5 +1,0 @@
-{
-  if (pastBod) {
-    if (num > needNewlines)     needNewlines=num;
-  }
-}

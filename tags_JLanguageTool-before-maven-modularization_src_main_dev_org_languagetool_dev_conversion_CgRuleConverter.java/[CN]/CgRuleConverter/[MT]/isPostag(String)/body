@@ -1,3 +1,0 @@
-{
-  return !(tag.matches("\"\\<.*\\>\"r?i?") || tag.matches("\".*\"r?i?"));
-}

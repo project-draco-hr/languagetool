@@ -1,5 +1,0 @@
-{
-  super.setUp();
-  rule=new SimpleReplaceRule(TestTools.getMessages("ro"));
-  langTool=new JLanguageTool(Language.ROMANIAN);
-}

@@ -1,3 +1,0 @@
-{
-  return this.name.compareTo(r.name);
-}

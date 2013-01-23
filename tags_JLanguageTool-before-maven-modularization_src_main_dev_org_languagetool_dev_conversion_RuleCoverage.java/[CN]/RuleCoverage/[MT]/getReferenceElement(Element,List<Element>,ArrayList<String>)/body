@@ -1,6 +1,0 @@
-{
-  int r=e.getMatch().getTokenRef();
-  Element newElement=new Element(examples.get(r),elements.get(r).getCaseSensitive(),false,false);
-  newElement.setNegation(e.getNegation());
-  return newElement;
-}

@@ -1,7 +1,0 @@
-{
-  String[] args=new String[]{"-l","pl",getTestFilePath()};
-  Main.main(args);
-  String output=new String(this.out.toByteArray());
-  assertTrue(output.indexOf("Expected text language: Polish") == 0);
-  assertTrue(!output.contains("Unknown words: [This, an, is]"));
-}

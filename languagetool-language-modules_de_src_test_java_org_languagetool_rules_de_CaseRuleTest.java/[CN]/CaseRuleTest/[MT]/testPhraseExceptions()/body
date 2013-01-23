@@ -1,0 +1,12 @@
+{
+  CaseRule rule=new CaseRule(null);
+  JLanguageTool langTool=new JLanguageTool(new German());
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das gilt ohne Wenn und Aber.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("ohne Wenn und Aber")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das gilt ohne Wenn und Aber bla blubb.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das gilt ohne wenn")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das gilt ohne wenn und")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("wenn und aber")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("und aber")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("aber")).length);
+}

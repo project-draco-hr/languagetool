@@ -1,8 +1,0 @@
-{
-  if (args.length != 1) {
-    System.out.println("Usage: CheckBNC <directory>");
-    System.exit(1);
-  }
-  final CheckBNC prg=new CheckBNC();
-  prg.run(new File(args[0]));
-}

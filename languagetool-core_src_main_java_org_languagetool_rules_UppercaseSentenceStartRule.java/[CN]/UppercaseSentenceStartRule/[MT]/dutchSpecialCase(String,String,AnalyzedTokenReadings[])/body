@@ -1,0 +1,9 @@
+{
+  if (!language.getShortName().equals("nl")) {
+    return null;
+  }
+  if (tokens.length >= 3 && firstToken.equals("'") && secondToken.matches("k|m|n|r|s|t")) {
+    return tokens[3].getToken();
+  }
+  return null;
+}

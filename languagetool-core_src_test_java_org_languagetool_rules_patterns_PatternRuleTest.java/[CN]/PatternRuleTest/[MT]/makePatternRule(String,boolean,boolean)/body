@@ -1,0 +1,24 @@
+{
+  final List<Element> elements=new ArrayList<Element>();
+  final String[] parts=s.split(" ");
+  boolean pos=false;
+  Element se;
+  for (  final String element : parts) {
+    if (element.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
+      pos=true;
+    }
+    if (!pos) {
+      se=new Element(element,caseSensitive,regex,false);
+    }
+ else {
+      se=new Element("",caseSensitive,regex,false);
+    }
+    if (pos) {
+      se.setPosElement(element,false,false);
+    }
+    elements.add(se);
+    pos=false;
+  }
+  final PatternRule rule=new PatternRule("ID1",Language.DEMO,elements,"test rule","user visible message","short comment");
+  return rule;
+}

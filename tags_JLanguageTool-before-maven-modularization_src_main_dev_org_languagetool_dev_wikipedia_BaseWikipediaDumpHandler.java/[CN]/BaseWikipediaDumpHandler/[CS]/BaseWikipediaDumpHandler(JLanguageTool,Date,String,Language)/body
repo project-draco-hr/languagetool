@@ -1,6 +1,0 @@
-{
-  this.languageTool=languageTool;
-  this.dumpDate=dumpDate;
-  this.langCode=langCode;
-  textFilter=TextFilterTools.getTextFilter(lang);
-}

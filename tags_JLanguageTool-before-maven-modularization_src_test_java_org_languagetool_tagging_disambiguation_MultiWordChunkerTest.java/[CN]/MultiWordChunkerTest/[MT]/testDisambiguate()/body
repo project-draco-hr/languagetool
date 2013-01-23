@@ -1,9 +1,0 @@
-{
-  final Disambiguator chunker=new MultiWordChunker("/pl/multiwords.txt");
-  final JLanguageTool lt=new JLanguageTool(Language.ENGLISH);
-  final AnalyzedSentence analyzedSentence=lt.getAnalyzedSentence("A test... More.");
-  final AnalyzedSentence disambiguated=chunker.disambiguate(analyzedSentence);
-  final AnalyzedTokenReadings[] tokens=disambiguated.getTokens();
-  assertTrue(tokens[4].getReadings().toString().contains("<ELLIPSIS>"));
-  assertTrue(tokens[6].getReadings().toString().contains("</ELLIPSIS>"));
-}

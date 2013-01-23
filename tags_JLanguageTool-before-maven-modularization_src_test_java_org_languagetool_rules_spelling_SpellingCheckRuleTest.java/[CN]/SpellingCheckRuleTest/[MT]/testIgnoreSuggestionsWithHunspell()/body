@@ -1,8 +1,0 @@
-{
-  final JLanguageTool langTool=new JLanguageTool(Language.GERMANY_GERMAN);
-  final List<RuleMatch> matches=langTool.check("Das ist ein einPseudoWortF??rLanguageToolTests");
-  assertEquals(0,matches.size());
-  final List<RuleMatch> matches2=langTool.check("Das ist ein Tibbfehla");
-  assertEquals(1,matches2.size());
-  assertEquals(GermanSpellerRule.RULE_ID,matches2.get(0).getRule().getId());
-}

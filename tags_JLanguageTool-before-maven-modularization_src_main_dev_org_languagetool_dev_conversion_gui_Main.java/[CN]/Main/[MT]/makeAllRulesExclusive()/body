@@ -1,9 +1,0 @@
-{
-  if (ruleStrings == null || rulesBox.getSelectedItem() == null) {
-    return;
-  }
-  for (int i=0; i < ruleStrings.size(); i++) {
-    ruleStrings.set(i,makeTokensExclusive(ruleStrings.get(i)));
-  }
-  populateRuleBox();
-}

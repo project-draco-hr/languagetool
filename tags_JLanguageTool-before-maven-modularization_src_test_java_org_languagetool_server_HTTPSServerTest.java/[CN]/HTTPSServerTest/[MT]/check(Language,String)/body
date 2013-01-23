@@ -1,6 +1,0 @@
-{
-  String urlOptions="/?language=" + lang.getShortName();
-  urlOptions+="&disabled=HUNSPELL_RULE&text=" + URLEncoder.encode(text,"UTF-8");
-  final URL url=new URL("https://localhost:" + DEFAULT_PORT + urlOptions);
-  return HTTPTools.checkAtUrl(url);
-}

@@ -1,6 +1,0 @@
-{
-  if (this.sets_by_name.containsKey(which)) {
-    return this.sets_by_name.get(which);
-  }
-  return null;
-}

@@ -1,0 +1,15 @@
+{
+  PolishUnpairedBracketsRule rule=new PolishUnpairedBracketsRule(TestTools.getEnglishMessages(),new Polish());
+  RuleMatch[] matches;
+  JLanguageTool langTool=new JLanguageTool(new Polish());
+  matches=rule.match(langTool.getAnalyzedSentence("(To jest zdanie do testowania)."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Piosenka ta trafi??a na wiele list \"Best of...\", w????czaj??c w to te, kt??re zosta??y utworzone przez magazyn Rolling Stone."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("A \"B\" C."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("\"A\" B \"C\"."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("W tym zdaniu jest niesparowany ???cudzys????w."));
+  assertEquals(1,matches.length);
+}

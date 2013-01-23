@@ -1,0 +1,4 @@
+{
+  rule=new AccentuationCheckRule(null);
+  langTool=new JLanguageTool(new Catalan());
+}

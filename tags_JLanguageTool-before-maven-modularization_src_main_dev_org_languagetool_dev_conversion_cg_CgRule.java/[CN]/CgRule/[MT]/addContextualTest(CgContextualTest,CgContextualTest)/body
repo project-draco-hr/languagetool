@@ -1,3 +1,0 @@
-{
-  this.all_tests.add(t);
-}

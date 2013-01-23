@@ -1,8 +1,0 @@
-{
-  for (  CgTag tag : ctag.tags) {
-    if (isBaseForm(tag.tag) || isSurfaceForm(tag.tag)) {
-      return false;
-    }
-  }
-  return true;
-}

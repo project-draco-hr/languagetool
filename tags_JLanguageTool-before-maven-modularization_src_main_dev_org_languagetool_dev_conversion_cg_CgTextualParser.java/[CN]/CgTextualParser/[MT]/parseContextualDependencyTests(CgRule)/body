@@ -1,4 +1,0 @@
-{
-  System.out.println("Warning: dependency tests not tested in this implementation");
-  return parseContextualTestList(rule);
-}

@@ -1,0 +1,3 @@
+int fromPos
+int toPos
+String text

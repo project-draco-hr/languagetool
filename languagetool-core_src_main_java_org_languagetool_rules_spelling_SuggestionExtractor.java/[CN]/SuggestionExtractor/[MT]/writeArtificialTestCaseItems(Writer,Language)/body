@@ -1,0 +1,8 @@
+{
+  if (language.getShortName().equals("en-US")) {
+    writer.write("anArtificialTestWordForLanguageTool\n");
+  }
+ else   if (language.getShortName().equals("de-DE")) {
+    writer.write("einPseudoWortF??rLanguageToolTests\n");
+  }
+}

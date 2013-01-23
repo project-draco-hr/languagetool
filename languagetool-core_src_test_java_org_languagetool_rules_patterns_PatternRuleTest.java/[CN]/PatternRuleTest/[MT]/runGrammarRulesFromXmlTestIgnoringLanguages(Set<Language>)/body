@@ -1,0 +1,22 @@
+{
+  System.out.println("Known languages: " + Arrays.toString(Language.LANGUAGES));
+  for (  final Language lang : Language.LANGUAGES) {
+    if (ignoredLanguages != null && ignoredLanguages.contains(lang)) {
+      continue;
+    }
+    System.out.println("Running tests for " + lang.getName() + "...");
+    final JLanguageTool languageTool=new JLanguageTool(lang);
+    if (CHECK_WITH_SENTENCE_SPLITTING) {
+      languageTool.activateDefaultPatternRules();
+      disableSpellingRules(languageTool);
+    }
+    final JLanguageTool allRulesLanguageTool=new JLanguageTool(lang);
+    allRulesLanguageTool.activateDefaultPatternRules();
+    final List<PatternRule> rules=new ArrayList<PatternRule>();
+    for (    String patternRuleFileName : lang.getRuleFileName()) {
+      rules.addAll(languageTool.loadPatternRules(patternRuleFileName));
+    }
+    warnIfRegexpSyntaxNotKosher(rules,lang);
+    testGrammarRulesFromXML(rules,languageTool,allRulesLanguageTool,lang);
+  }
+}

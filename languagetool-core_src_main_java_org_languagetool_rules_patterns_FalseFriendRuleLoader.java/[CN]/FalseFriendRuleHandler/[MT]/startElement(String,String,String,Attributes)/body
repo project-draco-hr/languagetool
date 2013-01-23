@@ -1,0 +1,52 @@
+{
+  if (qName.equals(RULE)) {
+    translations=new ArrayList<StringBuilder>();
+    id=attrs.getValue("id");
+    if (!(inRuleGroup && defaultOff)) {
+      defaultOff="off".equals(attrs.getValue("default"));
+    }
+    if (inRuleGroup && id == null) {
+      id=ruleGroupId;
+    }
+    correctExamples=new ArrayList<String>();
+    incorrectExamples=new ArrayList<IncorrectExample>();
+  }
+ else   if (qName.equals(PATTERN)) {
+    inPattern=true;
+    final String languageStr=attrs.getValue("lang");
+    if (Language.isLanguageSupported(languageStr)) {
+      language=Language.getLanguageForShortName(languageStr);
+    }
+  }
+ else   if (qName.equals(TOKEN)) {
+    setToken(attrs);
+  }
+ else   if (qName.equals(TRANSLATION)) {
+    inTranslation=true;
+    final String languageStr=attrs.getValue("lang");
+    if (Language.isLanguageSupported(languageStr)) {
+      final Language tmpLang=Language.getLanguageForShortName(languageStr);
+      currentTranslationLanguage=tmpLang;
+      if (tmpLang.equalsConsiderVariantsIfSpecified(motherTongue)) {
+        translationLanguage=tmpLang;
+      }
+    }
+  }
+ else   if (qName.equals(EXAMPLE) && attrs.getValue(TYPE).equals("correct")) {
+    inCorrectExample=true;
+    correctExample=new StringBuilder();
+  }
+ else   if (qName.equals(EXAMPLE) && attrs.getValue(TYPE).equals("incorrect")) {
+    inIncorrectExample=true;
+    incorrectExample=new StringBuilder();
+  }
+ else   if (qName.equals(MESSAGE)) {
+    inMessage=true;
+    message=new StringBuilder();
+  }
+ else   if (qName.equals(RULEGROUP)) {
+    ruleGroupId=attrs.getValue("id");
+    inRuleGroup=true;
+    defaultOff="off".equals(attrs.getValue(DEFAULT));
+  }
+}

@@ -1,6 +1,0 @@
-{
-  if (tagger == null) {
-    tagger=new CzechTagger();
-  }
-  return tagger;
-}

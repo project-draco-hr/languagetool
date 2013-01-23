@@ -1,5 +1,0 @@
-{
-  super.setUp();
-  langTool=new JLanguageTool(Language.SWEDISH);
-  rule=new CompoundRule(null);
-}

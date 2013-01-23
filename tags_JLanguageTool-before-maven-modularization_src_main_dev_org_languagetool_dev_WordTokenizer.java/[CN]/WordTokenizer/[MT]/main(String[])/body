@@ -1,8 +1,0 @@
-{
-  final WordTokenizer prg=new WordTokenizer();
-  if (args.length != 1) {
-    System.err.println("Please supply the language code as the only argument.");
-    System.exit(-1);
-  }
-  prg.run(args[0]);
-}

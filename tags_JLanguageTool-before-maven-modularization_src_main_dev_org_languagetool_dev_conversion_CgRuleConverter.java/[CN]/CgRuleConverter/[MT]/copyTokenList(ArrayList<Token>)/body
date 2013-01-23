@@ -1,7 +1,0 @@
-{
-  ArrayList<Token> newList=new ArrayList<Token>();
-  for (  Token token : tokens) {
-    newList.add(new Token(token));
-  }
-  return newList;
-}

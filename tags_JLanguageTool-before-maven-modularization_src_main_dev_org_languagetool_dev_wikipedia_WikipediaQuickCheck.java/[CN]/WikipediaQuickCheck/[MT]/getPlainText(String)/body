@@ -1,7 +1,0 @@
-{
-  final String wikiContent=getRevisionContent(completeWikiContent);
-  final String cleanedWikiContent=removeInterLanguageLinks(wikiContent);
-  final TextFilter filter=new SwebleWikipediaTextFilter();
-  final String plainText=filter.filter(cleanedWikiContent);
-  return plainText;
-}

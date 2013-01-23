@@ -1,4 +1,0 @@
-{
-  super("There is no escape!");
-  this.status=status;
-}

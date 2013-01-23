@@ -1,7 +1,0 @@
-File propFile
-Set<String> disabledRules
-String langCode
-String xmlFileName
-String[] ruleIds
-int maxArticles
-int maxErrors

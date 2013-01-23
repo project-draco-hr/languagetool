@@ -1,4 +1,0 @@
-{
-  tagger=new CzechTagger();
-  tokenizer=new WordTokenizer();
-}

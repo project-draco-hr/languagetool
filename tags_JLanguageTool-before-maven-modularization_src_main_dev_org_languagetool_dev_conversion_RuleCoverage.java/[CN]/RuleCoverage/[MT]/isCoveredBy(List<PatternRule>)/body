@@ -1,8 +1,0 @@
-{
-  ArrayList<String[]> coverages=new ArrayList<String[]>();
-  for (  PatternRule rule : rules) {
-    String[] cov=isCoveredBy(rule);
-    coverages.add(cov);
-  }
-  return coverages;
-}

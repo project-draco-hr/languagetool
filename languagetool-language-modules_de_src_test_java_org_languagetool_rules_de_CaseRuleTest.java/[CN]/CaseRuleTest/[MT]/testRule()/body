@@ -1,0 +1,37 @@
+{
+  CaseRule rule=new CaseRule(null);
+  JLanguageTool langTool=new JLanguageTool(new German());
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ein einfacher Satz zum Testen.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das Laufen f??llt mir leicht.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das Winseln st??rt.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das schl??gt nicht so zu Buche.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Dirk Hetzel ist ein Name.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Sein Verhalten war okay.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz. \"Ein Zitat.\"")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz. 'Ein Zitat.'")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz. ??Ein Zitat.??")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz. ??Ein Zitat.??")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz. (Noch einer.)")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier geht es nach Tel Aviv.")).length);
+  assertEquals(0,langTool.check("Karten werden vom Auswahlstapel gezogen. [???] Der Auswahlstapel geh??rt zum Inhalt.").size());
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ein Menschenfreund.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Der Nachfahre.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz, \"Ein Zitat.\"")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier ein Satz, \"ein Zitat.\"")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Schon Le Monde schrieb das.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("In Blubberdorf macht man das so.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das sind Euroscheine.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("John Stallman isst.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist die neue Gesellschafterin hier.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist die neue Dienerin hier.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist die neue Geigerin hier.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die ersten Gespanne erreichen K??ln.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die Schlinge zieht sich zu.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die Schlingen ziehen sich zu.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist es: kein Satz.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist es: Kein Satz.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Ein Einfacher Satz zum Testen.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das Winseln St??rt.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Sein verhalten war okay.")).length);
+  assertEquals(1,langTool.check("Karten werden vom Auswahlstapel gezogen. Auch [???] Der Auswahlstapel geh??rt zum Inhalt.").size());
+}

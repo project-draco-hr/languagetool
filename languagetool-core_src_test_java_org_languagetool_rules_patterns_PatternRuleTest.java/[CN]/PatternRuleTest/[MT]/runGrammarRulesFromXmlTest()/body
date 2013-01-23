@@ -1,0 +1,5 @@
+{
+  for (  final Language lang : Language.REAL_LANGUAGES) {
+    runTestForLanguage(lang);
+  }
+}

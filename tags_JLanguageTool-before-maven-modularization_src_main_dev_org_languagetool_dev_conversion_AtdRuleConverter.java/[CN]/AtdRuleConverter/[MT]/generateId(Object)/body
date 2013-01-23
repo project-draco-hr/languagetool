@@ -1,5 +1,0 @@
-{
-  String name="rule_" + idIndex;
-  idIndex++;
-  return name;
-}

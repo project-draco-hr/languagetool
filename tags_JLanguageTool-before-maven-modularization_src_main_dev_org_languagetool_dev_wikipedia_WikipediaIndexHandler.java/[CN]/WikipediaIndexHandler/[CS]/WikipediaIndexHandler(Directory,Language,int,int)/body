@@ -1,9 +1,0 @@
-{
-  this.indexer=new Indexer(dir,language);
-  this.start=start;
-  this.end=end;
-  if (start > end && end != 0) {
-    throw new RuntimeException("\"start\" should be smaller than \"end\"");
-  }
-  textFilter=TextFilterTools.getTextFilter(language);
-}

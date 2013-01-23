@@ -1,4 +1,0 @@
-{
-  final VersionDiffGenerator generator=new VersionDiffGenerator();
-  generator.makeDiff(args[0]);
-}

@@ -1,9 +1,0 @@
-{
-  final JLanguageTool tool=new JLanguageTool(Language.GERMAN);
-  assertEquals(0,tool.check("Ein Test, der keine Fehler geben sollte.").size());
-  assertEquals(1,tool.check("Ein Test Test, der Fehler geben sollte.").size());
-  tool.activateDefaultPatternRules();
-  tool.setListUnknownWords(true);
-  assertEquals(0,tool.check("I can give you more a detailed description").size());
-  assertEquals("[I, can, detailed, give, more, you]",tool.getUnknownWords().toString());
-}

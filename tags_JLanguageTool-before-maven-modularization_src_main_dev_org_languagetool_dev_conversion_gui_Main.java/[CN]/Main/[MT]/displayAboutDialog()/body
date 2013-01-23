@@ -1,3 +1,0 @@
-{
-  showDialog("RuleConverterGUI:<br>Tool for converting rule files from other modalities to LT format.<br>" + "Currently supported: After the Deadline and Constraint Grammar\n","About");
-}

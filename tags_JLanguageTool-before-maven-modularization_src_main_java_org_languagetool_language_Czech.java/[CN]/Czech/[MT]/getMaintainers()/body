@@ -1,3 +1,0 @@
-{
-  return new Contributor[]{new Contributor("Jozef Li??ko")};
-}

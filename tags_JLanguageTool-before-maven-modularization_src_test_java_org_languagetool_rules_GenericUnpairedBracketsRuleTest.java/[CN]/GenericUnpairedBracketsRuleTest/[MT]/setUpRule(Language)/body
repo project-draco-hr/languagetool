@@ -1,4 +1,0 @@
-{
-  rule=new GenericUnpairedBracketsRule(TestTools.getEnglishMessages(),language);
-  langTool=new JLanguageTool(language);
-}

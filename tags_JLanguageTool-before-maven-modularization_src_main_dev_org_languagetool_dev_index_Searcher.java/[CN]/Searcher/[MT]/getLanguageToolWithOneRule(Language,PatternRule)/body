@@ -1,8 +1,0 @@
-{
-  final JLanguageTool langTool=new JLanguageTool(lang);
-  for (  Rule rule : langTool.getAllActiveRules()) {
-    langTool.disableRule(rule.getId());
-  }
-  langTool.addRule(patternRule);
-  return langTool;
-}

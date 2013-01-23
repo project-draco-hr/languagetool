@@ -1,0 +1,22 @@
+{
+  final List<RuleMatch> matches=new ArrayList<RuleMatch>();
+  final String text="This is an test sentence. Here's another sentence with more text.";
+  final RuleMatch match=new RuleMatch(new FakeRule(){
+    @Override public URL getUrl(){
+      try {
+        return new URL("http://server.org?id=1&foo=bar");
+      }
+ catch (      MalformedURLException e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+,8,10,"myMessage");
+  match.setColumn(99);
+  match.setEndColumn(100);
+  match.setLine(44);
+  match.setEndLine(45);
+  matches.add(match);
+  final String xml=StringTools.ruleMatchesToXML(matches,text,5,StringTools.XmlPrintMode.NORMAL_XML);
+  assertTrue(xml.contains(">\n" + "<error fromy=\"44\" fromx=\"98\" toy=\"45\" tox=\"99\" ruleId=\"FAKE_ID\" msg=\"myMessage\" " + "replacements=\"\" context=\"...s is an test...\" contextoffset=\"8\" offset=\"8\" errorlength=\"2\" url=\"http://server.org?id=1&amp;foo=bar\" "+ "locqualityissuetype=\"misspelling\"/>\n"+ "</matches>\n"));
+}

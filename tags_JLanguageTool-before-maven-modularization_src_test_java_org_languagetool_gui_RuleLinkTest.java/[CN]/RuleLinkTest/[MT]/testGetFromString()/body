@@ -1,8 +1,0 @@
-{
-  final RuleLink ruleLink1=RuleLink.getFromString("http://languagetool.org/reactivate/FOO_BAR_ID");
-  assertEquals("FOO_BAR_ID",ruleLink1.getId());
-  assertEquals("http://languagetool.org/reactivate/FOO_BAR_ID",ruleLink1.toString());
-  final RuleLink ruleLink2=RuleLink.getFromString("http://languagetool.org/deactivate/FOO_BAR_ID2");
-  assertEquals("FOO_BAR_ID2",ruleLink2.getId());
-  assertEquals("http://languagetool.org/deactivate/FOO_BAR_ID2",ruleLink2.toString());
-}

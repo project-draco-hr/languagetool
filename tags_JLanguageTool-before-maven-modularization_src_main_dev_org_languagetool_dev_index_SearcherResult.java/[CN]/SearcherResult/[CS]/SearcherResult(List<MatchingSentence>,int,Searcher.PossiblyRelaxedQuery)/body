@@ -1,5 +1,0 @@
-{
-  this.matchingSentences=matchingSentences;
-  this.checkedSentences=checkedSentences;
-  this.possiblyRelaxedQuery=relaxedQuery;
-}

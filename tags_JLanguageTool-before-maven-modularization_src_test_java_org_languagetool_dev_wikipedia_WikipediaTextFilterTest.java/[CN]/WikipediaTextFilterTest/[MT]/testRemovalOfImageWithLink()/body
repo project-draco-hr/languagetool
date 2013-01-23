@@ -1,5 +1,0 @@
-{
-  final String input="foo [[Datei:Bundesarchiv Bild 183-1990-0803-017.jpg|miniatur|Mit [[Lothar de Maizi??re]] im August 1990]] bar [[Link]]";
-  assertEquals("foo  bar Link",blikiFilter.filter(input));
-  assertEquals("foo bar Link",swebleFilter.filter(input));
-}

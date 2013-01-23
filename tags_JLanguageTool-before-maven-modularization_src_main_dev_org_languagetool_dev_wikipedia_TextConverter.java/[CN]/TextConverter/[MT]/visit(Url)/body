@@ -1,5 +1,0 @@
-{
-  write(url.getProtocol());
-  write(':');
-  write(url.getPath());
-}

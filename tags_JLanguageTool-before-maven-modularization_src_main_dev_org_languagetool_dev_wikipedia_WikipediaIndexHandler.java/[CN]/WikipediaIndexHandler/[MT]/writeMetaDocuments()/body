@@ -1,6 +1,0 @@
-{
-  final Document doc=new Document();
-  doc.add(new StringField(MAX_DOC_COUNT_FIELD,MAX_DOC_COUNT_FIELD_VAL,Field.Store.YES));
-  doc.add(new StringField(MAX_DOC_COUNT_VALUE,articleCount + "",Field.Store.YES));
-  indexer.add(doc);
-}

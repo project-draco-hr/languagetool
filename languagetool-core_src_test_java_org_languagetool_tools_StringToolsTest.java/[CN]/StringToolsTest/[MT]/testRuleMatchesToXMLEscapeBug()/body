@@ -1,0 +1,12 @@
+{
+  final List<RuleMatch> matches=new ArrayList<RuleMatch>();
+  final String text="This is \"an test sentence. Here's another sentence with more text.";
+  final RuleMatch match=new RuleMatch(new FakeRule(),9,11,"myMessage");
+  match.setColumn(99);
+  match.setEndColumn(100);
+  match.setLine(44);
+  match.setEndLine(45);
+  matches.add(match);
+  final String xml=StringTools.ruleMatchesToXML(matches,text,5,StringTools.XmlPrintMode.NORMAL_XML);
+  assertTrue(xml.contains(">\n" + "<error fromy=\"44\" fromx=\"98\" toy=\"45\" tox=\"99\" ruleId=\"FAKE_ID\" msg=\"myMessage\" " + "replacements=\"\" context=\"... is &quot;an test...\" contextoffset=\"8\" offset=\"9\" errorlength=\"2\" "+ "locqualityissuetype=\"misspelling\"/>\n"+ "</matches>\n"));
+}

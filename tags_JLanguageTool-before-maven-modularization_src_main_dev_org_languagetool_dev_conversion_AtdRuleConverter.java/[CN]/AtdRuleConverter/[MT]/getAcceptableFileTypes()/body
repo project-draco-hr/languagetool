@@ -1,4 +1,0 @@
-{
-  String[] ft={"default","avoid"};
-  return ft;
-}

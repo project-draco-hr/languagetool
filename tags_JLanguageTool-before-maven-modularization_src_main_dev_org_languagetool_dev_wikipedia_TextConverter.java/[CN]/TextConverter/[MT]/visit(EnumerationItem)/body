@@ -1,4 +1,0 @@
-{
-  newline(1);
-  iterate(item.getContent());
-}

@@ -1,9 +1,0 @@
-{
-  assertEquals(" ",StringTools.addSpace("word",Language.ENGLISH));
-  assertEquals("",StringTools.addSpace(",",Language.ENGLISH));
-  assertEquals("",StringTools.addSpace(",",Language.FRENCH));
-  assertEquals("",StringTools.addSpace(",",Language.ENGLISH));
-  assertEquals(" ",StringTools.addSpace(":",Language.FRENCH));
-  assertEquals("",StringTools.addSpace(",",Language.ENGLISH));
-  assertEquals(" ",StringTools.addSpace(";",Language.FRENCH));
-}

@@ -1,3 +1,0 @@
-{
-  throw new RuntimeException("This analyzer is not supposed to be called");
-}

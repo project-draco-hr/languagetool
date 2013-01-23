@@ -1,4 +1,0 @@
-{
-  this.sentence=sentence;
-  this.ruleId=ruleId;
-}

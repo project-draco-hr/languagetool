@@ -1,4 +1,0 @@
-{
-  char c=inArray[position];
-  return (c == (char)0x2028L || c == (char)0x2029L || c == (char)0x0085L || c == (char)0x000CL || c == (char)0x00AL);
-}

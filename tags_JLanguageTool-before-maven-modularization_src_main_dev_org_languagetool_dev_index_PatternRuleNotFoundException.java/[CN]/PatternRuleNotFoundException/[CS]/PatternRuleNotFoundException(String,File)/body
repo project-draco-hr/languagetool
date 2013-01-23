@@ -1,3 +1,0 @@
-{
-  super("Could not find pattern rule '" + ruleId + "' in rule file "+ ruleFile);
-}

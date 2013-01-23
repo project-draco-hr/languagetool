@@ -1,4 +1,0 @@
-{
-  iterate(p.getContent());
-  newline(2);
-}

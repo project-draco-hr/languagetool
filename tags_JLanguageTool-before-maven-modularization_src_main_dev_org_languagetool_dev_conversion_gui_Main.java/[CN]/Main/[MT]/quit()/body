@@ -1,4 +1,0 @@
-{
-  frame.setVisible(false);
-  System.exit(0);
-}

@@ -1,9 +1,0 @@
-CgSet target
-boolean careful
-int offset
-boolean scanahead
-boolean scanbehind
-CgSet barrier
-boolean cbarrier
-int skip
-boolean negate

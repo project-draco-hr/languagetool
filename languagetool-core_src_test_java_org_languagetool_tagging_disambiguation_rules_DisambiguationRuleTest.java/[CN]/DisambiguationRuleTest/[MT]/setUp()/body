@@ -1,0 +1,5 @@
+{
+  if (langTool == null) {
+    langTool=new JLanguageTool(Language.DEMO);
+  }
+}

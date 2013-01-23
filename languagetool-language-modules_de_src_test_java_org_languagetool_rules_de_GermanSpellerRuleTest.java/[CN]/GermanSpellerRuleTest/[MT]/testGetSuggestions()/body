@@ -1,0 +1,36 @@
+{
+  final HunspellRule rule=new GermanSpellerRule(TestTools.getMessages("German"),new GermanyGerman());
+  assertCorrection(rule,"Hauk","Haus","Haut");
+  assertCorrection(rule,"Hauk","Haus","Haut");
+  assertCorrection(rule,"Eisnbahn","Einbahn","Eisbahn","Eisenbahn");
+  assertCorrection(rule,"Rechtschreipreform","Rechtschreibreform");
+  assertCorrection(rule,"Theatrekasse","Theaterkasse");
+  assertCorrection(rule,"Traprennen","Trabrennen");
+  assertCorrection(rule,"Autuverkehr","Autoverkehr");
+  assertCorrection(rule,"hasslich","h??sslich","fasslich");
+  assertCorrection(rule,"Stru??e","Strau??e","Stra??e","Str??u??e");
+  assertCorrection(rule,"gewohnlich","gew??hnlich");
+  assertCorrection(rule,"gaw??hnlich","gew??hnlich");
+  assertCorrection(rule,"gw??hnlich","gew??hnlich");
+  assertCorrection(rule,"geew??hnlich","gew??hnlich");
+  assertCorrection(rule,"gew??nlich","gew??hnlich");
+  assertCorrection(rule,"au??ergew??hnkich","au??ergew??hnlich");
+  assertCorrection(rule,"agressiv","aggressiv");
+  assertCorrection(rule,"agressivster","aggressivster");
+  assertCorrection(rule,"agressiver","aggressiver");
+  assertCorrection(rule,"agressive","aggressive");
+  assertCorrection(rule,"Algorythmus","Algorithmus");
+  assertCorrection(rule,"Algorhythmus","Algorithmus");
+  assertCorrection(rule,"Amalgan","Amalgam");
+  assertCorrection(rule,"Amaturenbrett","Armaturenbrett");
+  assertCorrection(rule,"Aquise","Akquise");
+  assertCorrection(rule,"Artzt","Arzt");
+  assertCorrection(rule,"aufgrunddessen","aufgrund dessen");
+  assertCorrection(rule,"barfuss","barfu??");
+  assertCorrection(rule,"Batallion","Bataillon");
+  assertCorrection(rule,"Handselvertreter","Handelsvertreter");
+  assertCorrection(rule,"aul","auf");
+  assertCorrection(rule,"Icj","Ich");
+  assertCorrection(rule,"Handselvertretertreffen","Handelsvertretertreffen");
+  assertCorrection(rule,"Handelsvertretertrffen","Handelsvertretertreffen");
+}

@@ -1,7 +1,0 @@
-{
-  File input=populateFile("This < is is > filtered.");
-  String[] args=new String[]{input.getAbsolutePath()};
-  Main.main(args);
-  String output=new String(this.out.toByteArray());
-  assertTrue(output.contains("ENGLISH_WORD_REPEAT_RULE"));
-}

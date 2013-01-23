@@ -1,0 +1,7 @@
+{
+  final Language language=getLanguageForShortNameOrNull(langCode);
+  if (language == null) {
+    throw new IllegalArgumentException("'" + langCode + "' is not a language code known to LanguageTool. Supported languages: "+ Arrays.toString(REAL_LANGUAGES));
+  }
+  return language;
+}

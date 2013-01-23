@@ -1,4 +1,0 @@
-{
-  finishLine();
-  return sb.toString();
-}

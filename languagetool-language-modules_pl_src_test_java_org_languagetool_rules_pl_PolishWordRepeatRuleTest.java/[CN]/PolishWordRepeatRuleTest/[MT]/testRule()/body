@@ -1,0 +1,15 @@
+{
+  final PolishWordRepeatRule rule=new PolishWordRepeatRule(null);
+  RuleMatch[] matches;
+  JLanguageTool langTool=new JLanguageTool(new Polish());
+  matches=rule.match(langTool.getAnalyzedSentence("To jest zdanie pr??bne."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Na dyskotece ta??czy?? jeszcze, cho?? by?? na bani."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("??adnych ???ale???."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("By?? on bowiem pi??knym strzelcem bowiem."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("M??wi??a d??ugo, ??eby tylko m??wi?? d??ugo."));
+  assertEquals(2,matches.length);
+}

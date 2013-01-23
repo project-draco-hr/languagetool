@@ -1,9 +1,0 @@
-{
-  CgRule rule=(CgRule)ruleObject;
-  String name=rule.name;
-  if (name == null) {
-    name="rule_" + idIndex;
-    idIndex++;
-  }
-  return name;
-}

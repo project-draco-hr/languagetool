@@ -1,0 +1,10 @@
+{
+  final SlovakVesRule rule=new SlovakVesRule(null);
+  RuleMatch[] matches;
+  JLanguageTool langTool=new JLanguageTool(new Slovak());
+  matches=rule.match(langTool.getAnalyzedSentence("Nav??t??vil Z??horsk?? Ves."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Aj v Karlovej Vesi sme doma."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Spi??sk?? nov?? Ves je e??te ??aleko."));
+}

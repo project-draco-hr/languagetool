@@ -1,9 +1,0 @@
-{
-  final String propertyFile=HTTPSServerConfigTest.class.getResource("/org/languagetool/server/https-server-incomplete.properties").getFile();
-  try {
-    new HTTPSServerConfig(("--config " + propertyFile).split(" "));
-    fail();
-  }
- catch (  IllegalArgumentException expected) {
-  }
-}

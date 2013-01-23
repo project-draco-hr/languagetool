@@ -1,3 +1,0 @@
-{
-  TestTools.testSplit(sentences,stokenizer);
-}

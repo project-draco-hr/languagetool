@@ -1,3 +1,0 @@
-{
-  return URLEncoder.encode(text,"utf-8");
-}

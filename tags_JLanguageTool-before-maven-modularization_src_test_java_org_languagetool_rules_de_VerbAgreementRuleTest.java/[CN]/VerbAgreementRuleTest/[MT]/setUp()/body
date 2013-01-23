@@ -1,4 +1,0 @@
-{
-  rule=new VerbAgreementRule(null);
-  langTool=new JLanguageTool(Language.GERMAN);
-}

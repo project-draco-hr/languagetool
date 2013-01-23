@@ -1,5 +1,0 @@
-{
-  String rule=(String)ruleObject;
-  HashMap<String,String> ruleMap=parseRule(rule);
-  return (ruleMap.containsKey("filter") && (ruleMap.get("filter").equals("kill") || ruleMap.get("filter").equals("die")));
-}

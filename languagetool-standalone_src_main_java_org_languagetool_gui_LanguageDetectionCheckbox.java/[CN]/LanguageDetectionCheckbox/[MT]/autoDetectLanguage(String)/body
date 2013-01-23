@@ -1,0 +1,15 @@
+{
+  final LanguageIdentifier langIdentifier=new LanguageIdentifier(text);
+  Language lang;
+  try {
+    lang=Language.getLanguageForShortName(langIdentifier.getLanguage());
+  }
+ catch (  IllegalArgumentException e) {
+    lang=Language.getLanguageForLocale(Locale.getDefault());
+  }
+  if (lang.hasVariant()) {
+    lang=lang.getDefaultVariant();
+  }
+  languageBox.selectLanguage(lang);
+  return lang;
+}

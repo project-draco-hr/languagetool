@@ -1,3 +1,0 @@
-{
-  TestTools.testDictionary(tagger,Language.SLOVAK);
-}

@@ -1,4 +1,0 @@
-{
-  final InputStream stream=(InputStream)url.getContent();
-  return StringTools.streamToString(stream,"UTF-8");
-}

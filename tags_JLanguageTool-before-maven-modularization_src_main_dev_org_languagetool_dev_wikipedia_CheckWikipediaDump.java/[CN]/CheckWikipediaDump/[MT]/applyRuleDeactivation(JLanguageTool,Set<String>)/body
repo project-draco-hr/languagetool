@@ -1,6 +1,0 @@
-{
-  for (  String disabledRuleId : disabledRules) {
-    languageTool.disableRule(disabledRuleId);
-  }
-  System.out.println("These rules are disabled: " + languageTool.getDisabledRules());
-}

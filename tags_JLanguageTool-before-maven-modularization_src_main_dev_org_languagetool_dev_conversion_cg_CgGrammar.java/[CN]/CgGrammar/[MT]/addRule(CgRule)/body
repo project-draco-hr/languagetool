@@ -1,4 +1,0 @@
-{
-  rule.number=this.rule_by_number.size();
-  this.rule_by_number.add(rule);
-}

@@ -1,0 +1,27 @@
+{
+  final InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(ignoreFile);
+  try {
+    final Scanner scanner=new Scanner(inputStream,"utf-8");
+    try {
+      while (scanner.hasNextLine()) {
+        final String line=scanner.nextLine();
+        final boolean isComment=line.startsWith("#");
+        if (isComment) {
+          continue;
+        }
+        if (language.getShortNameWithVariant().equals("de-CH")) {
+          wordsToBeIgnored.add(line.replace("??","ss"));
+        }
+ else {
+          wordsToBeIgnored.add(line);
+        }
+      }
+    }
+  finally {
+      scanner.close();
+    }
+  }
+  finally {
+    inputStream.close();
+  }
+}

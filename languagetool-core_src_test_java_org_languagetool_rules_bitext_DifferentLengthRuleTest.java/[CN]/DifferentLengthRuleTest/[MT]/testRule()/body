@@ -1,0 +1,13 @@
+{
+  DifferentLengthRule rule=new DifferentLengthRule();
+  RuleMatch[] matches;
+  JLanguageTool trgLangTool=new JLanguageTool(Language.DEMO);
+  JLanguageTool srcLangTool=new JLanguageTool(new FakeLanguage());
+  rule.setSourceLang(Language.DEMO);
+  matches=rule.match(srcLangTool.getAnalyzedSentence("This is a test sentence."),trgLangTool.getAnalyzedSentence("To zdanie testowe."));
+  assertEquals(0,matches.length);
+  matches=rule.match(srcLangTool.getAnalyzedSentence("Click this button."),trgLangTool.getAnalyzedSentence("Kliknij ten przycisk."));
+  assertEquals(0,matches.length);
+  matches=rule.match(srcLangTool.getAnalyzedSentence("Open a file, and check if it is corrupt."),trgLangTool.getAnalyzedSentence("Otw??rz plik."));
+  assertEquals(1,matches.length);
+}

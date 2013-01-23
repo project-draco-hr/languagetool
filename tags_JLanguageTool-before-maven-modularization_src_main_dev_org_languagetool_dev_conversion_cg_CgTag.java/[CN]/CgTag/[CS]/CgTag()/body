@@ -1,8 +1,0 @@
-{
-  this.tag="";
-  this.type=new HashSet<Integer>();
-  this.hash=0;
-  this.plain_hash=0;
-  this.comparison_hash=0;
-  this.seed=0;
-}

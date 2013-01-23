@@ -1,5 +1,0 @@
-{
-  if ("rev".equals(qName)) {
-    inRevision=false;
-  }
-}

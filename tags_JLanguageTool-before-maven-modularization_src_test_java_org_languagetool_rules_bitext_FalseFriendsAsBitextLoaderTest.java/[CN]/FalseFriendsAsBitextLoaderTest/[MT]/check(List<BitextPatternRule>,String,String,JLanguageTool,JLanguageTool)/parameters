@@ -1,5 +1,0 @@
-List<BitextPatternRule> bRules
-String src
-String trg
-JLanguageTool srcTool
-JLanguageTool trgTool
