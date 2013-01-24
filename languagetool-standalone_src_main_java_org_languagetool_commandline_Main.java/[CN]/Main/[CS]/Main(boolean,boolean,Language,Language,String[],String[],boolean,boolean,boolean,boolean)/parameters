@@ -1,0 +1,10 @@
+boolean verbose
+boolean taggerOnly
+Language language
+Language motherTongue
+String[] disabledRules
+String[] enabledRules
+boolean apiFormat
+boolean applySuggestions
+boolean autoDetect
+boolean singleLineBreakMarksParagraph

@@ -1,0 +1,29 @@
+{
+  if (bitextMode) {
+    final TabBitextReader reader=new TabBitextReader(filename,encoding);
+    if (applySuggestions) {
+      Tools.correctBitext(reader,srcLt,lt,bRules);
+    }
+ else {
+      Tools.checkBitext(reader,srcLt,lt,bRules,apiFormat);
+    }
+  }
+ else {
+    final String text=getFilteredText(filename,encoding,xmlFiltering);
+    if (applySuggestions) {
+      System.out.print(Tools.correctText(text,lt));
+    }
+ else     if (profileRules) {
+      Tools.profileRulesOnText(text,lt);
+    }
+ else     if (!taggerOnly) {
+      Tools.checkText(text,lt,apiFormat,0);
+    }
+ else {
+      Tools.tagText(text,lt);
+    }
+    if (listUnknownWords) {
+      System.out.println("Unknown words: " + lt.getUnknownWords());
+    }
+  }
+}

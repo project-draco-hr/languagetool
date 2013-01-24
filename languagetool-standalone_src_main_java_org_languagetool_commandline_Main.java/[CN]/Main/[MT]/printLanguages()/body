@@ -1,0 +1,10 @@
+{
+  final List<String> languages=new ArrayList<String>();
+  for (  Language language : Language.REAL_LANGUAGES) {
+    languages.add(language.getShortNameWithVariant() + " " + language.getName());
+  }
+  Collections.sort(languages);
+  for (  String s : languages) {
+    System.out.println(s);
+  }
+}

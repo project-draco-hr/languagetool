@@ -1,0 +1,15 @@
+{
+  if (verbose) {
+    lt.setOutput(System.err);
+  }
+  if (!apiFormat && !applySuggestions) {
+    System.out.println("Working on " + filename + "...");
+  }
+  final String fileContents=StringTools.readFile(new FileInputStream(filename),encoding);
+  if (xmlFiltering) {
+    return StringTools.filterXML(fileContents);
+  }
+ else {
+    return fileContents;
+  }
+}

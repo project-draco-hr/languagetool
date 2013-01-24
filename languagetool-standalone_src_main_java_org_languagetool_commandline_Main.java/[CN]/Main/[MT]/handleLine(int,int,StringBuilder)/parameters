@@ -1,0 +1,3 @@
+int matchNo
+int lineOffset
+StringBuilder sb

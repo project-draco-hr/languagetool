@@ -1,0 +1,7 @@
+boolean listUnknownWords
+List<Rule> rules
+List<String> unknownWords
+int ruleIndex
+int matches
+long sentences
+long startTime
