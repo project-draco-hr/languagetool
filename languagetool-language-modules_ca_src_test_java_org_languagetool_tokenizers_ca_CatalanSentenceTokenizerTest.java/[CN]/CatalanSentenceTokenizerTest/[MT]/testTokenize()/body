@@ -20,6 +20,7 @@
   testSplit(new String[]{"El Dr. Joan no vindr??."});
   testSplit(new String[]{"Distingit Sr. Joan,"});
   testSplit(new String[]{"Molt Hble. Sr. President"});
+  testSplit(new String[]{"de Sant Nicolau (del s. XII; cor g??tic del s. XIV) i de Sant "});
   testSplit(new String[]{"Ell ??s el n??mero u. ","Jo el dos."});
   testSplit(new String[]{"1 500 m/s. ","Neix a"});
   testSplit(new String[]{"s'hi enfront?? quan G.Oueddei n'esdevingu?? l??der"});
