@@ -1,0 +1,8 @@
+{
+  final String shortName=lang.getShortNameWithVariant();
+  if (shortName.contains("-") && !shortName.endsWith("-ANY")) {
+    final String variantSpecificRuleFile=lang.getShortName() + "/" + shortName+ "/"+ JLanguageTool.PATTERN_FILE;
+    return !JLanguageTool.getDataBroker().ruleFileExists(variantSpecificRuleFile);
+  }
+  return false;
+}
