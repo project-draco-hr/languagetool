@@ -1,0 +1,21 @@
+{
+  final List<String> result=new ArrayList<String>();
+  for (  String suggestion : suggestions) {
+    boolean moveSuggestionToTop=false;
+    for (    Replacement replacement : REPL) {
+      final String modifiedMisspelling=misspelling.replace(replacement.key,replacement.value);
+      final boolean equalsAfterReplacement=modifiedMisspelling.equals(suggestion);
+      if (equalsAfterReplacement) {
+        moveSuggestionToTop=true;
+        break;
+      }
+    }
+    if (moveSuggestionToTop) {
+      result.add(0,suggestion);
+    }
+ else {
+      result.add(suggestion);
+    }
+  }
+  return result;
+}

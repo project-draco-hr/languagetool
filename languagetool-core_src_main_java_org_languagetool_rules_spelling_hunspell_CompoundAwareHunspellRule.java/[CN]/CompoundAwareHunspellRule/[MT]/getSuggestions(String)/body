@@ -30,6 +30,7 @@
     partCount++;
   }
   filterDupes(candidates);
-  final List<String> correctWords=getCorrectWords(candidates);
-  return correctWords.subList(0,Math.min(MAX_SUGGESTIONS,correctWords.size()));
+  final List<String> suggestions=getCorrectWords(candidates);
+  final List<String> sortedSuggestions=sortSuggestionByQuality(word,suggestions);
+  return sortedSuggestions.subList(0,Math.min(MAX_SUGGESTIONS,sortedSuggestions.size()));
 }

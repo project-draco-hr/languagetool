@@ -1,0 +1,3 @@
+HunspellRule rule
+String input
+String expectedTerms
