@@ -28,7 +28,7 @@ default :
 }
 final RuleMatch[] thisMatches=rule.match(analyzedText);
 for (final RuleMatch element1 : thisMatches) {
-  RuleMatch thisMatch=adjustRuleMatchPos(element1,tokenCount,columnCount,lineCount,sentence);
+  final RuleMatch thisMatch=adjustRuleMatchPos(element1,tokenCount,columnCount,lineCount,sentence);
   sentenceMatches.add(thisMatch);
   if (rule.isParagraphBackTrack()) {
     rule.addRuleMatch(thisMatch);
