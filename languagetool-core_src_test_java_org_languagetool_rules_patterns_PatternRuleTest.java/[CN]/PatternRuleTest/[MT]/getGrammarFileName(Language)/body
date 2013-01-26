@@ -1,0 +1,11 @@
+{
+  final String shortNameWithVariant=lang.getShortNameWithVariant();
+  final String fileName;
+  if (shortNameWithVariant.contains("-") && !shortNameWithVariant.endsWith("-ANY")) {
+    fileName=lang.getShortName() + "/" + shortNameWithVariant+ "/"+ JLanguageTool.PATTERN_FILE;
+  }
+ else {
+    fileName=lang.getShortName() + "/" + JLanguageTool.PATTERN_FILE;
+  }
+  return fileName;
+}

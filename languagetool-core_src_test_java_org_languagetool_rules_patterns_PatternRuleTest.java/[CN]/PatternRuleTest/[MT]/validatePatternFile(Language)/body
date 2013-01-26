@@ -1,0 +1,7 @@
+{
+  final XMLValidator validator=new XMLValidator();
+  final String grammarFile=getGrammarFileName(lang);
+  System.out.println("Running XML validation for " + grammarFile + "...");
+  final String rulesDir=JLanguageTool.getDataBroker().getRulesDir();
+  validator.validate(rulesDir + "/" + grammarFile,rulesDir + "/rules.xsd");
+}
