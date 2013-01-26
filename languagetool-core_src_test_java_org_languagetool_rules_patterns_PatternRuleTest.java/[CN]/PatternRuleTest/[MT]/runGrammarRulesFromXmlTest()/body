@@ -1,6 +1,6 @@
 {
   for (  final Language lang : Language.REAL_LANGUAGES) {
-    if (skipCountryVariant(lang) && Language.REAL_LANGUAGES.length > 1) {
+    if (skipCountryVariant(lang)) {
       System.out.println("Skipping " + lang + " because there are no specific rules for that variant");
       continue;
     }

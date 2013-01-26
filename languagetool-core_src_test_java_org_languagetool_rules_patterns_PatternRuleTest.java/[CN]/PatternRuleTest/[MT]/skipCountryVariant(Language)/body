@@ -1,4 +1,4 @@
 {
   final ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
-  return !dataBroker.ruleFileExists(getGrammarFileName(lang));
+  return !dataBroker.ruleFileExists(getGrammarFileName(lang)) && Language.REAL_LANGUAGES.length > 1;
 }
