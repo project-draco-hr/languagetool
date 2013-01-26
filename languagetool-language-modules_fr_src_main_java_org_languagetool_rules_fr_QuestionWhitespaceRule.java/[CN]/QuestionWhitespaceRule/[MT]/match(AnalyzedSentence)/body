@@ -6,7 +6,6 @@
     final String token=tokens[i].getToken();
     final boolean isWhiteBefore=tokens[i].isWhitespaceBefore();
     String msg=null;
-    final int fixPos=0;
     int fixLen=0;
     String suggestionText=null;
     if (isWhiteBefore) {
@@ -53,7 +52,7 @@
         fixLen=1;
       }
  else       if (token.equals(":") && !prevToken.equals("\u00a0") && !prevToken.equals("\u202f")) {
-        final Matcher matcherUrl=patternUrl.matcher(prevToken);
+        final Matcher matcherUrl=urlPattern.matcher(prevToken);
         if (!matcherUrl.find()) {
           msg="Deux-points pr??c??d??s d'une espace fine ins??cable.";
           suggestionText=prevToken + "???:";
@@ -77,8 +76,8 @@
       fixLen=0;
     }
     if (msg != null) {
-      final int fromPos=tokens[i - 1].getStartPos() + fixPos;
-      final int toPos=tokens[i - 1].getStartPos() + fixPos + fixLen+ tokens[i - 1].getToken().length();
+      final int fromPos=tokens[i - 1].getStartPos();
+      final int toPos=tokens[i - 1].getStartPos() + fixLen + tokens[i - 1].getToken().length();
       final RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,msg,"Ins??rer un espace ins??cable");
       if (suggestionText != null) {
         ruleMatch.setSuggestedReplacement(suggestionText);
