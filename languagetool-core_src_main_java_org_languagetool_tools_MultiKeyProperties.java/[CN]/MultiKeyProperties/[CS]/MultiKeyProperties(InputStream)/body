@@ -1,0 +1,26 @@
+{
+  final Scanner scanner=new Scanner(inStream);
+  try {
+    while (scanner.hasNextLine()) {
+      final String line=scanner.nextLine().trim();
+      if (line.startsWith("#") || line.isEmpty()) {
+        continue;
+      }
+      final String[] parts=line.split("\\s*=\\s*");
+      if (parts.length != 2) {
+        continue;
+      }
+      final String key=parts[0];
+      final String value=parts[1];
+      List<String> list=properties.get(key);
+      if (list == null) {
+        list=new ArrayList<String>();
+      }
+      list.add(value);
+      properties.put(key,list);
+    }
+  }
+  finally {
+    scanner.close();
+  }
+}

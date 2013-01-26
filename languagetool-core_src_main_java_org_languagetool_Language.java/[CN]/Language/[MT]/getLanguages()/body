@@ -6,14 +6,15 @@
       final URL url=propertyFiles.nextElement();
       final InputStream inputStream=url.openStream();
       try {
-        final Properties props=new Properties();
-        props.load(inputStream);
-        final String classNamesStr=props.getProperty(PROPERTIES_KEY);
+        final MultiKeyProperties props=new MultiKeyProperties(inputStream);
+        final List<String> classNamesStr=props.getProperty(PROPERTIES_KEY);
         if (classNamesStr == null) {
           throw new RuntimeException("Key '" + PROPERTIES_KEY + "' not found in "+ url);
         }
-        final String[] classNames=classNamesStr.split(",");
-        languages.addAll(createLanguageObject(url,classNames));
+        for (        String classNames : classNamesStr) {
+          final String[] classNamesSplit=classNames.split("\\s*,\\s*");
+          languages.addAll(createLanguageObject(url,classNamesSplit));
+        }
       }
   finally {
         inputStream.close();
