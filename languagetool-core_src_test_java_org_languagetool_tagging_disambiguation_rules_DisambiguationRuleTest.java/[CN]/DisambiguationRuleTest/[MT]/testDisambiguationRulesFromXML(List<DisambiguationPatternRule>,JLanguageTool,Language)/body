@@ -29,12 +29,12 @@
         final AnalyzedSentence cleanInput=languageTool.getRawAnalyzedSentence(cleanXML(example.getExample()));
         final AnalyzedSentence sent=disambiguateUntil(rules,id,languageTool.getRawAnalyzedSentence(cleanXML(example.getExample())));
         final AnalyzedSentence disambiguatedSent=rule.replace(disambiguateUntil(rules,id,languageTool.getRawAnalyzedSentence(cleanXML(example.getExample()))));
-        assertTrue("Disambiguated sentence is equal to the non-disambiguated sentence for rule :" + id,!cleanInput.equals(disambiguatedSent));
-        assertTrue("Disambiguated sentence is equal to the input sentence for rule :" + id,!sent.equals(disambiguatedSent));
+        assertTrue("Disambiguated sentence is equal to the non-disambiguated sentence for rule: " + id,!cleanInput.equals(disambiguatedSent));
+        assertTrue("Disambiguated sentence is equal to the input sentence for rule: " + id,!sent.equals(disambiguatedSent));
         String reading="";
         String annotations="";
         for (        final AnalyzedTokenReadings readings : sent.getTokens()) {
-          if (readings.isSentStart() && inputForms.indexOf("<S>") == -1) {
+          if (readings.isSentStart() && !inputForms.contains("<S>")) {
             continue;
           }
           if (readings.getStartPos() == expectedMatchStart) {
@@ -47,7 +47,7 @@
         }
         assertTrue("The input form for the rule " + id + " in the example: "+ example.toString()+ " is different than expected (expected "+ inputForms+ " but got "+ sortForms(reading)+ "). The token has been changed by the disambiguator: "+ annotations,sortForms(reading).equals(inputForms));
         for (        final AnalyzedTokenReadings readings : disambiguatedSent.getTokens()) {
-          if (readings.isSentStart() && outputForms.indexOf("<S>") == -1) {
+          if (readings.isSentStart() && !outputForms.contains("<S>")) {
             continue;
           }
           if (readings.getStartPos() == expectedMatchStart) {

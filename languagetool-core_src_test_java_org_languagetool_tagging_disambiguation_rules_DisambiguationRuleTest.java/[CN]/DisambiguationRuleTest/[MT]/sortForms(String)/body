@@ -2,9 +2,9 @@
   if (",[,]".equals(wordForms)) {
     return wordForms;
   }
-  String word=wordForms.substring(0,wordForms.indexOf('[') + 1);
-  String forms=wordForms.substring(wordForms.indexOf('[') + 1,wordForms.length() - 1);
-  String[] formToSort=forms.split(",");
+  final String word=wordForms.substring(0,wordForms.indexOf('[') + 1);
+  final String forms=wordForms.substring(wordForms.indexOf('[') + 1,wordForms.length() - 1);
+  final String[] formToSort=forms.split(",");
   Arrays.sort(formToSort);
-  return word + combine(formToSort,",") + "]";
+  return word + StringTools.listToString(Arrays.asList(formToSort),",") + "]";
 }

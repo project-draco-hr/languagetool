@@ -1,13 +1,13 @@
 {
-  final DisambiguationRuleTest prt=new DisambiguationRuleTest();
+  final DisambiguationRuleTest test=new DisambiguationRuleTest();
   System.out.println("Running disambiguator rule tests...");
-  prt.setUp();
+  test.setUp();
   if (args.length == 0) {
-    prt.testDisambiguationRulesFromXML(null,true);
+    test.testDisambiguationRulesFromXML(null,true);
   }
  else {
     final Set<Language> ignoredLanguages=TestTools.getLanguagesExcept(args);
-    prt.testDisambiguationRulesFromXML(ignoredLanguages,true);
+    test.testDisambiguationRulesFromXML(ignoredLanguages,true);
   }
   System.out.println("Tests successful.");
 }

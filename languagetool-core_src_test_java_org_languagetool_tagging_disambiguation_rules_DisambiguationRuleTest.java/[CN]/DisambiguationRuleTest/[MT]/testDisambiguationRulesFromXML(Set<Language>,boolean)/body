@@ -4,7 +4,7 @@
       continue;
     }
     if (verbose) {
-      System.out.println("Running tests for " + lang.getName() + "...");
+      System.out.println("Running disambiguation tests for " + lang.getName() + "...");
     }
     final DisambiguationRuleLoader ruleLoader=new DisambiguationRuleLoader();
     final JLanguageTool languageTool=new JLanguageTool(lang);
