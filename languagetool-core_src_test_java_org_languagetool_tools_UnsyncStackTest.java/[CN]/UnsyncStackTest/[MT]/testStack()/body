@@ -1,5 +1,5 @@
 {
-  UnsyncStack<String> stack=new UnsyncStack<String>();
+  final UnsyncStack<String> stack=new UnsyncStack<String>();
   assertTrue(stack.empty());
   stack.push("test");
   assertEquals("test",stack.peek());
