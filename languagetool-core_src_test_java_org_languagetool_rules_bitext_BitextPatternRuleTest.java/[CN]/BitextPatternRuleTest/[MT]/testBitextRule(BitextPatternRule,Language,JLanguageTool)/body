@@ -1,5 +1,5 @@
 {
-  JLanguageTool srcTool=new JLanguageTool(rule.getSourceLang());
+  final JLanguageTool srcTool=new JLanguageTool(rule.getSourceLang());
   final List<StringPair> goodSentences=rule.getCorrectBitextExamples();
   for (  StringPair goodSentence : goodSentences) {
     assertTrue(cleanSentence(goodSentence.getSource()).trim().length() > 0);
@@ -8,8 +8,8 @@
   }
   final List<IncorrectBitextExample> badSentences=rule.getIncorrectBitextExamples();
   for (  IncorrectBitextExample origBadExample : badSentences) {
-    String origBadSrcSentence=origBadExample.getExample().getSource().replaceAll("[\\n\\t]+","");
-    String origBadTrgSentence=origBadExample.getExample().getTarget().replaceAll("[\\n\\t]+","");
+    final String origBadSrcSentence=origBadExample.getExample().getSource().replaceAll("[\\n\\t]+","");
+    final String origBadTrgSentence=origBadExample.getExample().getTarget().replaceAll("[\\n\\t]+","");
     final List<String> suggestedCorrection=origBadExample.getCorrections();
     final int expectedSrcMatchStart=origBadSrcSentence.indexOf("<marker>");
     final int expectedSrcMatchEnd=origBadSrcSentence.indexOf("</marker>") - "<marker>".length();

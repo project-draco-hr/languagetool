@@ -1,7 +1,7 @@
 {
-  WhitespaceRule rule=new WhitespaceRule(TestTools.getEnglishMessages(),Language.DEMO);
+  final WhitespaceRule rule=new WhitespaceRule(TestTools.getEnglishMessages(),Language.DEMO);
   RuleMatch[] matches;
-  JLanguageTool langTool=new JLanguageTool(Language.DEMO);
+  final JLanguageTool langTool=new JLanguageTool(Language.DEMO);
   matches=rule.match(langTool.getAnalyzedSentence("This is a test sentence."));
   assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("This is a test sentence..."));

@@ -1,5 +1,5 @@
 {
-  AnalyzedTokenReadings tokenReadings=new AnalyzedTokenReadings(new AnalyzedToken("word","POS:FOO:BAR","lemma"));
+  final AnalyzedTokenReadings tokenReadings=new AnalyzedTokenReadings(new AnalyzedToken("word","POS:FOO:BAR","lemma"));
   assertTrue(tokenReadings.hasPosTag("POS:FOO:BAR"));
   assertFalse(tokenReadings.hasPosTag("POS:FOO:bar"));
   assertFalse(tokenReadings.hasPosTag("POS:FOO"));

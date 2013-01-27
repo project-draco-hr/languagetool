@@ -1,8 +1,8 @@
 {
-  SameTranslationRule rule=new SameTranslationRule();
+  final SameTranslationRule rule=new SameTranslationRule();
   RuleMatch[] matches;
-  JLanguageTool srcLangTool=new JLanguageTool(Language.DEMO);
-  JLanguageTool trgLangTool=new JLanguageTool(new FakeLanguage());
+  final JLanguageTool srcLangTool=new JLanguageTool(Language.DEMO);
+  final JLanguageTool trgLangTool=new JLanguageTool(new FakeLanguage());
   rule.setSourceLang(Language.DEMO);
   matches=rule.match(srcLangTool.getAnalyzedSentence("This is a test sentence."),trgLangTool.getAnalyzedSentence("C'est la vie !"));
   assertEquals(0,matches.length);

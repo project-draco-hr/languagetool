@@ -1,8 +1,8 @@
 {
-  DifferentLengthRule rule=new DifferentLengthRule();
+  final DifferentLengthRule rule=new DifferentLengthRule();
   RuleMatch[] matches;
-  JLanguageTool trgLangTool=new JLanguageTool(Language.DEMO);
-  JLanguageTool srcLangTool=new JLanguageTool(new FakeLanguage());
+  final JLanguageTool trgLangTool=new JLanguageTool(Language.DEMO);
+  final JLanguageTool srcLangTool=new JLanguageTool(new FakeLanguage());
   rule.setSourceLang(Language.DEMO);
   matches=rule.match(srcLangTool.getAnalyzedSentence("This is a test sentence."),trgLangTool.getAnalyzedSentence("To zdanie testowe."));
   assertEquals(0,matches.length);
