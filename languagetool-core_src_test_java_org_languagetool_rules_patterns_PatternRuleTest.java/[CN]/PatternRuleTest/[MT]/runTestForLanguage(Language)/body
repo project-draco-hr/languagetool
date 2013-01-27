@@ -1,4 +1,5 @@
 {
+  validatePatternFile(lang);
   System.out.print("Running pattern rule tests for " + lang.getName() + "... ");
   final JLanguageTool languageTool=new JLanguageTool(lang);
   if (CHECK_WITH_SENTENCE_SPLITTING) {

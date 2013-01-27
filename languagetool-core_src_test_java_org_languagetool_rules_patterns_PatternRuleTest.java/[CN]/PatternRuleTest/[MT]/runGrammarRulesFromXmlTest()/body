@@ -4,7 +4,6 @@
       System.out.println("Skipping " + lang + " because there are no specific rules for that variant");
       continue;
     }
-    validatePatternFile(lang);
     runTestForLanguage(lang);
   }
 }
