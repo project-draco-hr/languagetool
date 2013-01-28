@@ -1,7 +1,7 @@
 {
-  MorfologikBretonSpellerRule rule=new MorfologikBretonSpellerRule(TestTools.getMessages("Breton"),new Breton());
+  final MorfologikBretonSpellerRule rule=new MorfologikBretonSpellerRule(TestTools.getMessages("Breton"),new Breton());
   RuleMatch[] matches;
-  JLanguageTool langTool=new JLanguageTool(new Breton());
+  final JLanguageTool langTool=new JLanguageTool(new Breton());
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Penaos ema?? kont ganit?")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("C'hwerc'h merc'h gwerc'h war c'hwerc'h marc'h kalloc'h")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("C???hwerc???h merc???h gwerc???h war c???hwerc???h marc'h kalloc???h")).length);
