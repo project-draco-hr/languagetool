@@ -4,7 +4,7 @@
     textFilter=new BlikiWikipediaTextFilter(){
       @Override public String filter(      String arg0){
         final String tmp=super.filter(arg0);
-        return RomanianDiacriticsModifier.correctDiacritrics(tmp);
+        return RomanianDiacriticsModifier.correctDiacritics(tmp);
       }
     }
 ;
