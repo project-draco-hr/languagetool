@@ -1,5 +1,7 @@
 {
-  if (null == s)   return null;
+  if (null == s) {
+    return null;
+  }
   initCharMap();
   final int length=s.length();
   if (length > replacementBuff.length) {
