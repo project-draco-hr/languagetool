@@ -1,5 +1,5 @@
 {
-  messages=ResourceBundle.getBundle("org.languagetool.MessagesBundle",motherTongue.getLocale());
+  messages=ResourceBundle.getBundle(JLanguageTool.MESSAGE_BUNDLE,motherTongue.getLocale());
   formatter=new MessageFormat("");
   formatter.setLocale(motherTongue.getLocale());
   this.textLanguage=textLanguage;
