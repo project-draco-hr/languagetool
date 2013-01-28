@@ -25,12 +25,11 @@
       if (j <= positions.length) {
         nextTokenPos=firstMatchTok + repTokenPos + positions[j + 1];
       }
-      final List<Match> suggestionMatches=rule.getSuggestionMatches();
       if (suggestionMatches != null) {
         if (matchCounter < suggestionMatches.size()) {
           numbersToMatches[j]=matchCounter;
           if (suggestionMatches.get(matchCounter) != null) {
-            final String[] matches=concatMatches(matchCounter,j,firstMatchTok + repTokenPos,tokenReadings,nextTokenPos);
+            final String[] matches=concatMatches(matchCounter,j,firstMatchTok + repTokenPos,tokenReadings,nextTokenPos,suggestionMatches);
             final String leftSide=errorMessage.substring(0,backslashPos);
             final String rightSide=errorMessage.substring(backslashPos + numLen);
             if (matches.length == 1) {

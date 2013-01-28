@@ -3,9 +3,10 @@
     categoryIssueType=null;
   }
  else   if (RULE.equals(qName)) {
+    suggestionMatchesOutMsg=addLegacyMatches(suggestionMatchesOutMsg,suggestionsOutMsg.toString(),false);
     phraseElementInit();
     if (phraseElementList.isEmpty()) {
-      final PatternRule rule=new PatternRule(id,language,elementList,name,message.toString(),shortMessage.toString());
+      final PatternRule rule=new PatternRule(id,language,elementList,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString());
       prepareRule(rule);
       rules.add(rule);
     }
@@ -17,7 +18,7 @@
       }
       for (      final ArrayList<Element> phraseElement : phraseElementList) {
         processElement(phraseElement);
-        final PatternRule rule=new PatternRule(id,language,phraseElement,name,message.toString(),shortMessage.toString(),phraseElementList.size() > 1);
+        final PatternRule rule=new PatternRule(id,language,phraseElement,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString(),phraseElementList.size() > 1);
         prepareRule(rule);
         rules.add(rule);
       }
@@ -68,8 +69,12 @@
     exampleCorrection=new StringBuilder();
   }
  else   if (MESSAGE.equals(qName)) {
-    suggestionMatches=addLegacyMatches();
+    suggestionMatches=addLegacyMatches(suggestionMatches,message.toString(),true);
     inMessage=false;
+  }
+ else   if ("suggestion".equals(qName) && !inMessage) {
+    suggestionsOutMsg.append("</suggestion>");
+    inSuggestion=false;
   }
  else   if ("short".equals(qName)) {
     inShortMessage=false;
@@ -80,6 +85,9 @@
  else   if (MATCH.equals(qName)) {
     if (inMessage) {
       suggestionMatches.get(suggestionMatches.size() - 1).setLemmaString(match.toString());
+    }
+ else     if (inSuggestion && !inMessage) {
+      suggestionMatchesOutMsg.get(suggestionMatchesOutMsg.size() - 1).setLemmaString(match.toString());
     }
  else     if (inToken) {
       tokenReference.setLemmaString(match.toString());

@@ -18,6 +18,9 @@
  else   if (inMessage) {
     message.append(s);
   }
+ else   if (inSuggestion && !inMessage) {
+    suggestionsOutMsg.append(s);
+  }
  else   if (inShortMessage) {
     shortMessage.append(s);
   }

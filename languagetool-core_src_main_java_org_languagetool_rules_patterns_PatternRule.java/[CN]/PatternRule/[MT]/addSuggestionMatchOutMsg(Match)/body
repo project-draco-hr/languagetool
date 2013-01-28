@@ -1,0 +1,6 @@
+{
+  if (suggestionMatchesOutMsg == null) {
+    suggestionMatchesOutMsg=new ArrayList<Match>();
+  }
+  suggestionMatchesOutMsg.add(m);
+}

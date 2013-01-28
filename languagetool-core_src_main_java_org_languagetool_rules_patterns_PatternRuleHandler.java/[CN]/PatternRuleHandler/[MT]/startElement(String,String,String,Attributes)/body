@@ -21,6 +21,8 @@
   }
  else   if (RULE.equals(qName)) {
     shortMessage=new StringBuilder();
+    message=new StringBuilder();
+    suggestionsOutMsg=new StringBuilder();
     url=new StringBuilder();
     id=attrs.getValue("id");
     if (inRuleGroup) {
@@ -43,6 +45,9 @@
     incorrectExamples=new ArrayList<IncorrectExample>();
     if (suggestionMatches != null) {
       suggestionMatches.clear();
+    }
+    if (suggestionMatchesOutMsg != null) {
+      suggestionMatchesOutMsg.clear();
     }
     if (attrs.getValue("type") != null) {
       ruleIssueType=attrs.getValue("type");
@@ -92,6 +97,13 @@
     inMessage=true;
     inSuggestion=false;
     message=new StringBuilder();
+  }
+ else   if ("suggestion".equals(qName) && !inMessage) {
+    if (YES.equals(attrs.getValue("suppress_misspelled"))) {
+      suggestionsOutMsg.append("<pleasespellme/>");
+    }
+    suggestionsOutMsg.append("<suggestion>");
+    inSuggestion=true;
   }
  else   if ("short".equals(qName)) {
     inShortMessage=true;

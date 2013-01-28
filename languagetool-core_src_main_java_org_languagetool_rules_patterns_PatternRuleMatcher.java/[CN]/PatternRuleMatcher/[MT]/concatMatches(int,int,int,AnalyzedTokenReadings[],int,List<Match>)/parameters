@@ -3,3 +3,4 @@ int index
 int tokenIndex
 AnalyzedTokenReadings[] tokens
 int nextTokenPos
+List<Match> suggestionMatches

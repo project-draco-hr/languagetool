@@ -4,4 +4,5 @@ List<Element> elements
 String description
 String message
 String shortMessage
+String suggestionsOutMsg
 boolean isMember

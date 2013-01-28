@@ -1,9 +1,8 @@
 {
-  if (suggestionMatches == null || suggestionMatches.isEmpty()) {
+  if (existingSugMatches == null || existingSugMatches.isEmpty()) {
     return null;
   }
   final List<Match> sugMatch=new ArrayList<Match>();
-  final String messageStr=message.toString();
   int pos=0;
   int ind=0;
   int matchCounter=0;
@@ -17,8 +16,13 @@
           sugMatch.add(mWorker);
         }
  else         if (messageStr.charAt(pos - 1) == '\u0001') {
-          sugMatch.add(suggestionMatches.get(matchCounter));
-          message.deleteCharAt(pos - 1 - matchCounter);
+          sugMatch.add(existingSugMatches.get(matchCounter));
+          if (inMessage) {
+            message.deleteCharAt(pos - 1 - matchCounter);
+          }
+ else {
+            suggestionsOutMsg.deleteCharAt(pos - 1 - matchCounter);
+          }
           matchCounter++;
         }
       }
@@ -26,7 +30,7 @@
     ind=pos;
   }
   if (sugMatch.isEmpty()) {
-    return suggestionMatches;
+    return existingSugMatches;
   }
   return sugMatch;
 }

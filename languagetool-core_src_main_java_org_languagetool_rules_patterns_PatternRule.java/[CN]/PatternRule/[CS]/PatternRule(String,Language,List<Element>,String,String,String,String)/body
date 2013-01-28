@@ -1,4 +1,4 @@
 {
   this(id,language,elements,description,message,shortMessage);
-  this.isMemberOfDisjunctiveSet=isMember;
+  this.suggestionsOutMsg=suggestionsOutMsg;
 }

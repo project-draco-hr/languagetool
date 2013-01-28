@@ -23,6 +23,12 @@
       suggestionMatches.clear();
     }
   }
+  if (suggestionMatchesOutMsg != null) {
+    for (    final Match m : suggestionMatchesOutMsg) {
+      rule.addSuggestionMatchOutMsg(m);
+    }
+    suggestionMatchesOutMsg.clear();
+  }
   if (defaultOff) {
     rule.setDefaultOff();
   }

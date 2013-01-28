@@ -20,6 +20,15 @@
     message.append(attrs.getValue("no"));
     checkNumber(attrs);
   }
+ else   if (inSuggestion && !inMessage) {
+    if (suggestionMatchesOutMsg == null) {
+      suggestionMatchesOutMsg=new ArrayList<Match>();
+    }
+    suggestionMatchesOutMsg.add(mWorker);
+    suggestionsOutMsg.append("\u0001\\");
+    suggestionsOutMsg.append(attrs.getValue("no"));
+    checkNumber(attrs);
+  }
  else   if (inToken && attrs.getValue("no") != null) {
     final int refNumber=Integer.parseInt(attrs.getValue("no"));
     checkRefNumber(refNumber);

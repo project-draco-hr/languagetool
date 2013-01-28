@@ -7,6 +7,7 @@
   this.message=message;
   this.shortMessage=shortMessage;
   this.elementNo=new ArrayList<Integer>();
+  this.suggestionsOutMsg="";
   String prevName="";
   String curName="";
   int cnt=0;

@@ -1,5 +1,4 @@
 {
-  final List<Match> suggestionMatches=rule.getSuggestionMatches();
   if (suggestionMatches != null && !suggestionMatches.isEmpty()) {
     final int sugStart=rule.getMessage().indexOf(SUGGESTION_START_TAG) + SUGGESTION_START_TAG.length();
     for (    Match sMatch : suggestionMatches) {

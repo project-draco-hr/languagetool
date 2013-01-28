@@ -1,5 +1,6 @@
 {
-  final String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,rule.getMessage());
+  final String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,rule.getMessage(),rule.getSuggestionMatches());
+  final String suggestionsOutMsg=formatMatches(tokens,tokenPositions,firstMatchToken,rule.getSuggestionsOutMsg(),rule.getSuggestionMatchesOutMsg());
   int correctedStPos=0;
   if (rule.startPositionCorrection > 0) {
     for (int l=0; l <= rule.startPositionCorrection; l++) {
@@ -16,7 +17,7 @@
     }
   }
   AnalyzedTokenReadings firstMatchTokenObj=tokens[firstMatchToken + correctedStPos];
-  boolean startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.getToken()) && !matchConvertsCase();
+  boolean startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.getToken()) && !matchConvertsCase(rule.getSuggestionMatches()) && !matchConvertsCase(rule.getSuggestionMatchesOutMsg());
   if (firstMatchTokenObj.isSentStart() && tokens.length > firstMatchToken + correctedStPos + 1) {
     firstMatchTokenObj=tokens[firstMatchToken + correctedStPos + 1];
     startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.getToken());
@@ -29,7 +30,7 @@
   if (fromPos < toPos) {
     if (!(errMessage.contains("<pleasespellme/>") && errMessage.contains("<mistake/>"))) {
       final String clearMsg=errMessage.replaceAll("<pleasespellme/>","").replaceAll("<mistake/>","");
-      return new RuleMatch(rule,fromPos,toPos,clearMsg,rule.getShortMessage(),startsWithUppercase);
+      return new RuleMatch(rule,fromPos,toPos,clearMsg,rule.getShortMessage(),startsWithUppercase,suggestionsOutMsg);
     }
   }
   return null;

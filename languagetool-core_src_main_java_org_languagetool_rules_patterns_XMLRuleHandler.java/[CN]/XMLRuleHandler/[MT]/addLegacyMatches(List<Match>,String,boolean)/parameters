@@ -1,0 +1,3 @@
+List<Match> existingSugMatches
+String messageStr
+boolean inMessage

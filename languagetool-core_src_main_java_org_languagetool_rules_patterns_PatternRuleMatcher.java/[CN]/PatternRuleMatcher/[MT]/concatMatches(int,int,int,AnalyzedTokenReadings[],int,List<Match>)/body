@@ -1,6 +1,5 @@
 {
   String[] finalMatch=null;
-  final List<Match> suggestionMatches=rule.getSuggestionMatches();
   if (suggestionMatches.get(start) != null) {
     final int len=phraseLen(index);
     final Language language=rule.language;

@@ -2,3 +2,4 @@ AnalyzedTokenReadings[] tokenReadings
 int[] positions
 int firstMatchTok
 String errorMsg
+List<Match> suggestionMatches
