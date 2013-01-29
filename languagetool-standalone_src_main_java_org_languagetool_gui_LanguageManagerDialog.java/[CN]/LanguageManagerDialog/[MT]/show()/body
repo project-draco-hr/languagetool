@@ -1,6 +1,6 @@
 {
   dialog=new JDialog(owner,true);
-  dialog.setTitle(Messages.getString("guiLanguageManagerDialog"));
+  dialog.setTitle(messages.getString("guiLanguageManagerDialog"));
   final KeyStroke stroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
   final ActionListener actionListener=new ActionListener(){
     @Override @SuppressWarnings("unused") public void actionPerformed(    ActionEvent actionEvent){
@@ -26,17 +26,17 @@
   cons.fill=GridBagConstraints.HORIZONTAL;
   final JPanel buttonPanel=new JPanel();
   buttonPanel.setLayout(new GridBagLayout());
-  addButton=new JButton(Messages.getString("guiAddButton"));
+  addButton=new JButton(messages.getString("guiAddButton"));
   addButton.addActionListener(this);
   cons.gridx=1;
   cons.gridy=0;
   buttonPanel.add(addButton,cons);
-  removeButton=new JButton(Messages.getString("guiRemoveButton"));
+  removeButton=new JButton(messages.getString("guiRemoveButton"));
   removeButton.addActionListener(this);
   cons.gridx=1;
   cons.gridy=1;
   buttonPanel.add(removeButton,cons);
-  closeButton=new JButton(Messages.getString("guiCloseButton"));
+  closeButton=new JButton(messages.getString("guiCloseButton"));
   closeButton.addActionListener(this);
   cons.gridx=1;
   cons.gridy=2;

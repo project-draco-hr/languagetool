@@ -5,4 +5,5 @@
       ruleFiles.add(new File(ruleFile));
     }
   }
+  messages=JLanguageTool.getMessageBundle();
 }

@@ -7,7 +7,7 @@
     }
  else {
       JOptionPane jop=new JOptionPane();
-      JOptionPane.showMessageDialog(jop,Messages.getString("guiDuplicate"),Messages.getString("guiWarning"),JOptionPane.WARNING_MESSAGE);
+      JOptionPane.showMessageDialog(jop,messages.getString("guiDuplicate"),messages.getString("guiWarning"),JOptionPane.WARNING_MESSAGE);
     }
   }
  else   if (e.getSource() == removeButton) {
