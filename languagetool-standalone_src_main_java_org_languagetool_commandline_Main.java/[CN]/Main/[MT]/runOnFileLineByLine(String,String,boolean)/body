@@ -29,7 +29,7 @@
     long sentences=0;
     final long startTime=System.currentTimeMillis();
     try {
-      isr=getInputStreamReader(filename,encoding,isr);
+      isr=getInputStreamReader(filename,encoding);
       br=new BufferedReader(isr);
       String line;
       int lineCount=0;

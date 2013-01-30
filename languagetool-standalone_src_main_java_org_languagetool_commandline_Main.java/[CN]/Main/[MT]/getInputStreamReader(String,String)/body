@@ -1,4 +1,5 @@
 {
+  final InputStreamReader isr;
   if (!"-".equals(filename)) {
     final File file=new File(filename);
     if (encoding != null) {

@@ -1,9 +1,9 @@
 {
-  List<String> invalidSuggestions=new ArrayList<String>();
-  List<Map<String,String>> wrongWords=rule.getWrongWords();
+  final List<String> invalidSuggestions=new ArrayList<String>();
+  final List<Map<String,String>> wrongWords=rule.getWrongWords();
   for (  Map<String,String> ruleEntry : wrongWords) {
     for (    Map.Entry<String,String> fromWord : ruleEntry.entrySet()) {
-      String toWord=fromWord.getValue();
+      final String toWord=fromWord.getValue();
       if (toWord == null || fromWord.equals(toWord)) {
         invalidSuggestions.add(toWord);
       }
