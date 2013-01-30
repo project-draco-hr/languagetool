@@ -1,9 +1,9 @@
 {
-  AnalyzedToken testToken=new AnalyzedToken("word","POS","lemma");
+  final AnalyzedToken testToken=new AnalyzedToken("word","POS","lemma");
   assertEquals("lemma/POS",testToken.toString());
   assertEquals("lemma",testToken.getLemma());
-  testToken=new AnalyzedToken("word","POS",null);
-  assertEquals("word/POS",testToken.toString());
-  assertEquals(null,testToken.getLemma());
-  assertEquals("word",testToken.getToken());
+  final AnalyzedToken testToken2=new AnalyzedToken("word","POS",null);
+  assertEquals("word/POS",testToken2.toString());
+  assertEquals(null,testToken2.getLemma());
+  assertEquals("word",testToken2.getToken());
 }
