@@ -1,5 +1,5 @@
 {
-  Match match=new Match(posTag,posTagReplace,true,null,null,CaseConversion.NONE,false,false,includeRange);
+  final Match match=new Match(posTag,posTagReplace,true,null,null,CaseConversion.NONE,false,false,includeRange);
   match.setSynthesizer(synthesizer);
   return match;
 }

@@ -1,6 +1,6 @@
 {
   boolean thisMatched=matched;
-  boolean elemIsMatched=elem.isMatched(matchToken);
+  final boolean elemIsMatched=elem.isMatched(matchToken);
   if (testUnification) {
     if (matched && elem.isUnified()) {
       if (elem.isUniNegated()) {

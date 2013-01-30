@@ -20,14 +20,14 @@
   if (isRegularExpression) {
     final Matcher matcher=CHAR_SET_PATTERN.matcher(stringValue);
     if (matcher.find()) {
-      String s=matcher.group(2).replaceAll("\\\\p\\{[^}]*\\}","");
+      final String s=matcher.group(2).replaceAll("\\\\p\\{[^}]*\\}","");
       if (s.indexOf('|') >= 0) {
         System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains | (pipe) in "+ " regexp bracket expression ["+ matcher.group(2)+ "] which is unlikely to be correct.");
       }
-      char[] sorted=s.toCharArray();
+      final char[] sorted=s.toCharArray();
       java.util.Arrays.sort(sorted);
       for (int i=1; i < sorted.length; ++i) {
-        char c=sorted[i];
+        final char c=sorted[i];
         if ("&\\-|".indexOf(c) < 0 && sorted[i - 1] == c) {
           System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ " regexp part ["+ matcher.group(2)+ "] which contains duplicated char ["+ c+ "].");
           break;

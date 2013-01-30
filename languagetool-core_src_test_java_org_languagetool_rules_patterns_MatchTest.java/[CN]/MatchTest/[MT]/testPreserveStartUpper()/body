@@ -1,5 +1,5 @@
 {
-  Match match=getMatch("POS1","POS2",Match.CaseConversion.PRESERVE);
+  final Match match=getMatch("POS1","POS2",Match.CaseConversion.PRESERVE);
   match.setToken(getAnalyzedTokenReadings("InflectedForm11","POS1","Lemma1"));
   assertEquals("[Inflectedform121, Inflectedform122]",Arrays.toString(match.toFinalString(null)));
 }

@@ -1,4 +1,4 @@
 {
-  Match match=new Match(null,null,false,regexMatch,regexpReplace,CaseConversion.NONE,false,spell,IncludeRange.NONE);
+  final Match match=new Match(null,null,false,regexMatch,regexpReplace,CaseConversion.NONE,false,spell,IncludeRange.NONE);
   return match;
 }

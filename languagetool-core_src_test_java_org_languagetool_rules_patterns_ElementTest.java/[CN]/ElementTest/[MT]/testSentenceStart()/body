@@ -1,5 +1,5 @@
 {
-  Element element=new Element("",false,false,false);
+  final Element element=new Element("",false,false,false);
   element.setPosElement(JLanguageTool.SENTENCE_START_TAGNAME,false,false);
   assertTrue(element.isSentStart());
   element.setPosElement(JLanguageTool.SENTENCE_START_TAGNAME,false,true);
@@ -8,7 +8,7 @@
   assertTrue(element.isSentStart());
   element.setPosElement(JLanguageTool.SENTENCE_START_TAGNAME,true,true);
   assertFalse(element.isSentStart());
-  element=new Element("bla|blah",false,true,false);
-  element.setPosElement("foo",true,true);
-  assertFalse(element.isSentStart());
+  final Element element2=new Element("bla|blah",false,true,false);
+  element2.setPosElement("foo",true,true);
+  assertFalse(element2.isSentStart());
 }

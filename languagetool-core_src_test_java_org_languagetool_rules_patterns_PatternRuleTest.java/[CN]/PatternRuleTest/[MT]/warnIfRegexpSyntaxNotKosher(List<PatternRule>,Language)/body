@@ -8,7 +8,7 @@
       }
       warnIfElementNotKosher(element.getString(),element.isRegularExpression(),element.getCaseSensitive(),element.getNegation(),element.isInflected(),lang,rule.getId() + ":" + rule.getSubId(),i);
       warnIfElementNotKosher(element.getPOStag() == null ? "" : element.getPOStag(),element.isPOStagRegularExpression(),element.getCaseSensitive(),element.getPOSNegation(),false,lang,rule.getId() + ":" + rule.getSubId()+ " (POS tag)",i);
-      List<Element> exceptionElements=new ArrayList<Element>();
+      final List<Element> exceptionElements=new ArrayList<Element>();
       if (element.getExceptionList() != null) {
         for (        final Element exception : element.getExceptionList()) {
           if (exception.hasNextException() && element.getSkipNext() == 0) {

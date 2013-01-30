@@ -1,5 +1,5 @@
 {
-  Match match=getMatch("POS2","POS33",Match.IncludeRange.FOLLOWING);
+  final Match match=getMatch("POS2","POS33",Match.IncludeRange.FOLLOWING);
   match.setToken(getAnalyzedTokenReadings("inflectedform11 inflectedform2 inflectedform122 inflectedform122"),1,3);
   assertEquals("[inflectedform2 inflectedform122]",Arrays.toString(match.toFinalString(null)));
 }

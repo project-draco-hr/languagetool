@@ -4,7 +4,7 @@
   RuleMatch prevRuleMatch=null;
   final Queue<AnalyzedTokenReadings> prevTokens=new ArrayBlockingQueue<AnalyzedTokenReadings>(MAX_TERMS);
   for (int i=0; i < tokens.length + MAX_TERMS - 1; i++) {
-    AnalyzedTokenReadings token;
+    final AnalyzedTokenReadings token;
     if (i >= tokens.length) {
       token=new AnalyzedTokenReadings(new AnalyzedToken("","",null),prevTokens.peek().getStartPos());
     }
