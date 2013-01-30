@@ -1,7 +1,6 @@
 {
   String space=" ";
-  final int len=word.length();
-  if (len == 1) {
+  if (word.length() == 1) {
     final char c=word.charAt(0);
     if ("fr".equals(language.getShortName())) {
       if (c == '.' || c == ',') {
