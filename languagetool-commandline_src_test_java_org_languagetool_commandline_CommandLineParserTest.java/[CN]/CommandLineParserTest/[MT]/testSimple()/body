@@ -1,0 +1,24 @@
+{
+  final CommandLineParser parser=new CommandLineParser();
+  CommandLineOptions options;
+  options=parser.parseOptions(new String[]{"filename.txt"});
+  assertNull(options.getLanguage());
+  assertEquals("filename.txt",options.getFilename());
+  assertFalse(options.isVerbose());
+  options=parser.parseOptions(new String[]{"--language","de","filename.txt"});
+  assertEquals("de",options.getLanguage().getShortName());
+  assertEquals("filename.txt",options.getFilename());
+  assertFalse(options.isVerbose());
+  options=parser.parseOptions(new String[]{"-l","de","filename.txt"});
+  assertEquals("de",options.getLanguage().getShortName());
+  assertEquals("filename.txt",options.getFilename());
+  assertFalse(options.isVerbose());
+  options=parser.parseOptions(new String[]{"-v","-l","de","filename.txt"});
+  assertEquals("de",options.getLanguage().getShortName());
+  assertEquals("filename.txt",options.getFilename());
+  assertTrue(options.isVerbose());
+  options=parser.parseOptions(new String[]{"--version"});
+  assertTrue(options.isPrintVersion());
+  options=parser.parseOptions(new String[]{"--list"});
+  assertTrue(options.isPrintLanguages());
+}
