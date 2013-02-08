@@ -7,7 +7,6 @@
   if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
     word=parts[0];
   }
-  word=word.replaceAll("&quot|&amp|&lt|&gt|[^a-zA-Z0-9]","");
   if (StringTools.isEmpty(word)) {
     return word;
   }
