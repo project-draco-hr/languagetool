@@ -1,0 +1,3 @@
+{
+  return "\u00A0".equals(str);
+}
