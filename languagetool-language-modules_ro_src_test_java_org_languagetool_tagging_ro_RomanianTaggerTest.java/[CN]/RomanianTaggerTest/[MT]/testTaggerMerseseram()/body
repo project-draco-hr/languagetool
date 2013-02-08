@@ -1,3 +1,5 @@
 {
+  assertHasLemmaAndPos("merseser??m","merge",null);
+  assertHasLemmaAndPos("merseser??m","merge","V0p1000im0");
   TestTools.myAssert("merseser??m","merseser??m/[merge]V0p1000im0",getTokenizer(),getTagger());
 }
