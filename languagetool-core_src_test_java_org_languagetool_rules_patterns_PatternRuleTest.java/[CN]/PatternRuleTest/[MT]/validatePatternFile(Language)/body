@@ -3,5 +3,12 @@
   final String grammarFile=getGrammarFileName(lang);
   System.out.println("Running XML validation for " + grammarFile + "...");
   final String rulesDir=JLanguageTool.getDataBroker().getRulesDir();
-  validator.validate(rulesDir + "/" + grammarFile,rulesDir + "/rules.xsd");
+  final String ruleFilePath=rulesDir + "/" + grammarFile;
+  final InputStream xmlStream=this.getClass().getResourceAsStream(ruleFilePath);
+  if (xmlStream != null) {
+    validator.validate(ruleFilePath,rulesDir + "/rules.xsd");
+  }
+ else {
+    System.out.println("No rule file found at " + ruleFilePath);
+  }
 }
