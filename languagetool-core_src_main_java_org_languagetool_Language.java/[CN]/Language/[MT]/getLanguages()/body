@@ -1,5 +1,6 @@
 {
   final List<Language> languages=new ArrayList<Language>();
+  final Set<String> languageClassNames=new HashSet<String>();
   try {
     final Enumeration<URL> propertyFiles=Language.class.getClassLoader().getResources(PROPERTIES_PATH);
     while (propertyFiles.hasMoreElements()) {
@@ -13,7 +14,13 @@
         }
         for (        String classNames : classNamesStr) {
           final String[] classNamesSplit=classNames.split("\\s*,\\s*");
-          languages.addAll(createLanguageObject(url,classNamesSplit));
+          for (          String className : classNamesSplit) {
+            if (languageClassNames.contains(className)) {
+              continue;
+            }
+            languages.add(createLanguageObjects(url,className));
+            languageClassNames.add(className);
+          }
         }
       }
   finally {
