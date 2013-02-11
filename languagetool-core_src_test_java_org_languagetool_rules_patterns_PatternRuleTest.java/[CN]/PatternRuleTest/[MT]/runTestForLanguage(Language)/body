@@ -8,6 +8,7 @@
   }
   final JLanguageTool allRulesLanguageTool=new JLanguageTool(lang);
   allRulesLanguageTool.activateDefaultPatternRules();
+  validateRuleIds(lang,allRulesLanguageTool);
   final List<PatternRule> rules=new ArrayList<PatternRule>();
   for (  String patternRuleFileName : lang.getRuleFileName()) {
     rules.addAll(languageTool.loadPatternRules(patternRuleFileName));
