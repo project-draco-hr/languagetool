@@ -1,7 +1,7 @@
 {
-  String[] args=new String[]{"-adl",getTestFilePath()};
+  final String[] args=new String[]{"-adl",getTestFilePath()};
   Main.main(args);
-  String output=new String(this.out.toByteArray());
+  final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Using English for file") == 0);
   assertTrue(output.contains("1.) Line 1, column 9, Rule ID: EN_A_VS_AN"));
 }

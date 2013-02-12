@@ -1,7 +1,7 @@
 {
-  String[] args=new String[]{"-l","en","-e","EN_A_VS_AN",getTestFilePath()};
+  final String[] args=new String[]{"-l","en","-e","EN_A_VS_AN",getTestFilePath()};
   Main.main(args);
-  String output=new String(this.out.toByteArray());
+  final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: English") == 0);
   assertTrue(output.contains("Rule ID: EN_A_VS_AN"));
 }

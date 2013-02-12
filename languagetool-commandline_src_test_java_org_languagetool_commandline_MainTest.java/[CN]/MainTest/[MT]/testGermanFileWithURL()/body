@@ -1,13 +1,13 @@
 {
-  File input=populateFile("Ward ihr zufrieden damit?");
-  String[] args=new String[]{"-l","de","--api",input.getAbsolutePath()};
+  final File input=populateFile("Ward ihr zufrieden damit?");
+  final String[] args=new String[]{"-l","de","--api",input.getAbsolutePath()};
   Main.main(args);
-  String output=new String(this.out.toByteArray());
+  final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);
   assertTrue(output.contains("ruleId=\"WARD_VS_WART\" subId=\"1\""));
   assertTrue(output.contains("url=\"http://www.korrekturen.de/beliebte_fehler/ward.shtml\""));
-  args=new String[]{"-l","de",input.getAbsolutePath()};
-  Main.main(args);
-  output=new String(this.out.toByteArray());
-  assertTrue(output.contains("More info: http://www.korrekturen.de/beliebte_fehler/ward.shtml"));
+  final String[] args2=new String[]{"-l","de",input.getAbsolutePath()};
+  Main.main(args2);
+  final String output2=new String(this.out.toByteArray());
+  assertTrue(output2.contains("More info: http://www.korrekturen.de/beliebte_fehler/ward.shtml"));
 }

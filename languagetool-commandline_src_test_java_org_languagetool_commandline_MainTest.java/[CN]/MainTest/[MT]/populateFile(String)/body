@@ -1,6 +1,6 @@
 {
-  File tempFile=createTempFile();
-  PrintWriter writer=new PrintWriter(new OutputStreamWriter(new FileOutputStream(tempFile),"UTF-8"));
+  final File tempFile=createTempFile();
+  final PrintWriter writer=new PrintWriter(new OutputStreamWriter(new FileOutputStream(tempFile),"UTF-8"));
   try {
     writer.println(content);
   }

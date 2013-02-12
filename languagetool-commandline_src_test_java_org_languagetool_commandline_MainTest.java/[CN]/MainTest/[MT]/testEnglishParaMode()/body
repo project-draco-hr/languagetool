@@ -2,8 +2,8 @@
   final String test="This is what I mean\nand you know it.";
   final byte[] b=test.getBytes();
   System.setIn(new ByteArrayInputStream(b));
-  String[] args=new String[]{"-l","en","-a","-"};
+  final String[] args=new String[]{"-l","en","-a","-"};
   Main.main(args);
-  String output=new String(this.out.toByteArray());
+  final String output=new String(this.out.toByteArray());
   assertEquals("This is what I mean\nand you know it.\n",output);
 }

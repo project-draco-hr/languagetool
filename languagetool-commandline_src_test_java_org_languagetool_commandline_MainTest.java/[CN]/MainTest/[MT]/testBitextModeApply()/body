@@ -1,7 +1,7 @@
 {
-  File input=populateFile("There is a dog.\tNie ma psa.");
-  String[] args=new String[]{"-l","pl","--bitext","-m","en","--apply",input.getAbsolutePath()};
+  final File input=populateFile("There is a dog.\tNie ma psa.");
+  final String[] args=new String[]{"-l","pl","--bitext","-m","en","--apply",input.getAbsolutePath()};
   Main.main(args);
-  String output=new String(this.out.toByteArray());
+  final String output=new String(this.out.toByteArray());
   assertTrue(output.startsWith("Istnieje psa."));
 }

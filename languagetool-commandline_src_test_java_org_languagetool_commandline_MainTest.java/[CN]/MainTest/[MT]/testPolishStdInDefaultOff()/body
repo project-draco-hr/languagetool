@@ -2,9 +2,9 @@
   final String test="To jest test, kt??ry zrobi??em, kt??ry mi si?? podoba.";
   final byte[] b=test.getBytes();
   System.setIn(new ByteArrayInputStream(b));
-  String[] args=new String[]{"-l","pl","-e","PL_WORD_REPEAT","-"};
+  final String[] args=new String[]{"-l","pl","-e","PL_WORD_REPEAT","-"};
   Main.main(args);
-  String output=new String(this.out.toByteArray());
+  final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: Polish") == 0);
   assertTrue(output.contains("Working on STDIN..."));
   assertTrue(output.contains("1.) Line 1, column 31, Rule ID: PL_WORD_REPEAT"));
