@@ -1,0 +1,4 @@
+{
+  final ValidateFalseFriendsXmlTest test=new ValidateFalseFriendsXmlTest();
+  test.testFalseFriendsXML();
+}
