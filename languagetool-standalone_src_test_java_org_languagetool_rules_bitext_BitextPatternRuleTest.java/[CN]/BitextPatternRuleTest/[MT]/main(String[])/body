@@ -2,11 +2,11 @@
   final BitextPatternRuleTest prt=new BitextPatternRuleTest();
   System.out.println("Running XML bitext pattern tests...");
   if (args.length == 0) {
-    prt.testBitextRulesFromXML(null,true);
+    prt.testBitextRulesFromXML(null);
   }
  else {
     final Set<Language> ignoredLanguages=TestTools.getLanguagesExcept(args);
-    prt.testBitextRulesFromXML(ignoredLanguages,true);
+    prt.testBitextRulesFromXML(ignoredLanguages);
   }
   System.out.println("Tests successful.");
 }
