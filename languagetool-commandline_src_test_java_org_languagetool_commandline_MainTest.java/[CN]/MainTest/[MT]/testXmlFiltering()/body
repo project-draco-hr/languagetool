@@ -1,0 +1,7 @@
+{
+  File input=populateFile("This < is is > filtered.");
+  String[] args=new String[]{"--xmlfilter",input.getAbsolutePath()};
+  Main.main(args);
+  String output=new String(this.out.toByteArray());
+  assertFalse(output.contains("ENGLISH_WORD_REPEAT_RULE"));
+}

@@ -1,0 +1,9 @@
+{
+  final String test="This is an test.";
+  final byte[] b=test.getBytes();
+  System.setIn(new ByteArrayInputStream(b));
+  String[] args=new String[]{"-l","en","-a","-"};
+  Main.main(args);
+  String output=new String(this.out.toByteArray());
+  assertEquals("This is a test.\n",output);
+}

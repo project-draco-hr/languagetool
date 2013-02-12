@@ -1,0 +1,7 @@
+{
+  String[] args=new String[]{"-l","en","--api",getTestFilePath()};
+  Main.main(args);
+  String output=new String(this.out.toByteArray());
+  assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);
+  assertTrue(output.contains("<error fromy=\"0\" fromx=\"8\" toy=\"0\" tox=\"10\" ruleId=\"EN_A_VS_AN\" " + "msg=\"Use 'a' instead of 'an' if the following word doesn't start with a vowel sound, e.g. 'a sentence', " + "'a university'\" replacements=\"a\" context=\"This is an test.  This is a test of of language tool.  ...\" "+ "contextoffset=\"8\" offset=\"8\" errorlength=\"2\" category=\"Miscellaneous\" locqualityissuetype=\"misspelling\"/>"));
+}
