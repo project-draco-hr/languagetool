@@ -29,7 +29,7 @@
       continue loop;
     }
     if (i + 1 < tokens.length && matchPostagRegexp(tokens[i],VERB_INF) && !matchPostagRegexp(tokens[i - 1],POSTAG_PREPOSICIO) && isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT)) {
-      final String msg="En aquesta per??frasi verbal el pronom reflexiu posterior ??s redundant.<suggestion></suggestion>";
+      final String msg="En aquesta per??frasi verbal el pronom reflexiu posterior ??s redundant.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i + 1].getStartPos(),tokens[i + 1].getStartPos() + tokens[i + 1].getToken().length(),msg,"Pronom redundant");
       ruleMatches.add(ruleMatch);
       continue loop;
