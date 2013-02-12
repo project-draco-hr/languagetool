@@ -1,3 +1,0 @@
-{
-  testDisambiguationRulesFromXML(null,false);
-}

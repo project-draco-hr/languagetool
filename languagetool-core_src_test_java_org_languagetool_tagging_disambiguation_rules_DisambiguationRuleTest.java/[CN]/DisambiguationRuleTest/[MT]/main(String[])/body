@@ -3,11 +3,11 @@
   System.out.println("Running disambiguator rule tests...");
   test.setUp();
   if (args.length == 0) {
-    test.testDisambiguationRulesFromXML(null,true);
+    test.testDisambiguationRulesFromXML(null);
   }
  else {
     final Set<Language> ignoredLanguages=TestTools.getLanguagesExcept(args);
-    test.testDisambiguationRulesFromXML(ignoredLanguages,true);
+    test.testDisambiguationRulesFromXML(ignoredLanguages);
   }
   System.out.println("Tests successful.");
 }
