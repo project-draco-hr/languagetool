@@ -2,9 +2,9 @@
   assertEquals(0,synth.synthesize(dummyToken("blablabla"),"blablabla").length);
   assertEquals("[nostres]",synth("nostre","PX1CP0P0"));
   assertEquals("[presidents]",synth("president","NCMP000"));
-  assertEquals("[comprovat]",synth("comprovar","VMP00SM"));
+  assertEquals("[comprovat]",synth("comprovar","VMP00SM.?"));
   assertEquals("[comprovades, comprovats, comprovada, comprovat]",synthRegex("comprovar","V.P.*"));
-  assertEquals("[contestant, contestar]",synthRegex("contestar","VM[GN]0000"));
+  assertEquals("[contestant, contestar]",synthRegex("contestar","VM[GN]0000.?"));
   assertEquals("[les universitats, la universitat]",synthNonRegex("universitat","DT"));
   assertEquals("[les ??niques, l'??nica, els ??nics, l'??nic]",synthNonRegex("??nic","DT"));
   assertEquals("[per les ??niques, per l'??nica, pels ??nics, per l'??nic]",synthNonRegex("??nic","DTper"));
