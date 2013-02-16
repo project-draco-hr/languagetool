@@ -1,0 +1,28 @@
+{
+  if (args.length == 0) {
+    printUsageAndExit();
+  }
+ else {
+    final String[] remainingArgs=Arrays.copyOfRange(args,1,args.length);
+    final String command=args[0];
+    if (command.equals("check-dump")) {
+      CheckWikipediaDump.main(remainingArgs);
+    }
+ else     if (command.equals("wiki-index")) {
+      WikipediaIndexHandler.main(remainingArgs);
+    }
+ else     if (command.equals("wiki-check")) {
+      WikipediaQuickCheck.main(remainingArgs);
+    }
+ else     if (command.equals("index")) {
+      Indexer.main(remainingArgs);
+    }
+ else     if (command.equals("search")) {
+      Searcher.main(remainingArgs);
+    }
+ else {
+      System.out.println("Error: unknown command '" + command + "'");
+      printUsageAndExit();
+    }
+  }
+}

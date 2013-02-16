@@ -1,6 +1,10 @@
 {
+  if (args.length != 1) {
+    System.out.println("Usage: " + WikipediaQuickCheck.class.getName() + " <url>");
+    System.exit(1);
+  }
   final WikipediaQuickCheck check=new WikipediaQuickCheck();
-  final String urlString="https://secure.wikimedia.org/wikipedia/de/wiki/Benutzer_Diskussion:Dnaber";
+  final String urlString=args[0];
   final URL url=new URL(urlString);
   final String mediaWikiContent=check.getMediaWikiContent(url);
   final String plainText=check.getPlainText(mediaWikiContent);
