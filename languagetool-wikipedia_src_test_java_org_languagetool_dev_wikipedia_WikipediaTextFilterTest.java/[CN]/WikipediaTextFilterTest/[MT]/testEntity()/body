@@ -1,0 +1,4 @@
+{
+  final String input="rund 20&nbsp;Kilometer s??dlich";
+  assertEquals("rund 20 Kilometer s??dlich",swebleFilter.filter(input));
+}

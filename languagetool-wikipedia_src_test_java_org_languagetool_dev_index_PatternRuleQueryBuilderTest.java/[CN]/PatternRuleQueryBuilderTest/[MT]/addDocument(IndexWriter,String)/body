@@ -1,0 +1,10 @@
+{
+  final Document doc=new Document();
+  final FieldType type=new FieldType();
+  type.setStored(true);
+  type.setIndexed(true);
+  type.setTokenized(true);
+  doc.add(new Field(FIELD_NAME,content,type));
+  doc.add(new Field(FIELD_NAME_LOWERCASE,content.toLowerCase(),type));
+  writer.addDocument(doc);
+}

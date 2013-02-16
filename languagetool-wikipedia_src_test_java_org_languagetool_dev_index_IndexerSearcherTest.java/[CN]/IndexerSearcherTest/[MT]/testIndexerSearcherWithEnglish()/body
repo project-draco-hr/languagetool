@@ -1,0 +1,24 @@
+{
+  createIndex("How to move back and fourth from linux to xmb? Calcium deposits on eye lid.");
+  SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(getRule("BACK_AND_FOURTH"),new English(),searcher);
+  assertEquals(2,searcherResult.getCheckedSentences());
+  assertEquals(false,searcherResult.isResultIsTimeLimited());
+  assertEquals(1,searcherResult.getMatchingSentences().size());
+  assertEquals(false,searcherResult.isRelaxedQuery());
+  searcherResult=errorSearcher.findRuleMatchesOnIndex(getRule("EYE_BROW"),new English(),searcher);
+  assertEquals(2,searcherResult.getCheckedSentences());
+  assertEquals(false,searcherResult.isResultIsTimeLimited());
+  assertEquals(1,searcherResult.getMatchingSentences().size());
+  assertEquals(true,searcherResult.isRelaxedQuery());
+  searcherResult=errorSearcher.findRuleMatchesOnIndex(getRule("ALL_OVER_THE_WORD"),new English(),searcher);
+  assertEquals(2,searcherResult.getCheckedSentences());
+  assertEquals(false,searcherResult.isResultIsTimeLimited());
+  assertEquals(0,searcherResult.getMatchingSentences().size());
+  assertEquals(false,searcherResult.isRelaxedQuery());
+  try {
+    errorSearcher.findRuleMatchesOnIndex(getRule("Invalid Rule Id"),new English(),searcher);
+    fail("Exception should be thrown for invalid rule id.");
+  }
+ catch (  PatternRuleNotFoundException expected) {
+  }
+}

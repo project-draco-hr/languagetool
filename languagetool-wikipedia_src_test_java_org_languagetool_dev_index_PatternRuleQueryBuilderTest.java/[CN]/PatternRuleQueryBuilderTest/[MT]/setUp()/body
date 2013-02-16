@@ -1,0 +1,16 @@
+{
+  super.setUp();
+  directory=new RAMDirectory();
+  final LanguageToolAnalyzer analyzer=new LanguageToolAnalyzer(LUCENE_VERSION,new JLanguageTool(new English()),true);
+  final IndexWriterConfig config=new IndexWriterConfig(LUCENE_VERSION,analyzer);
+  final IndexWriter writer=new IndexWriter(directory,config);
+  try {
+    addDocument(writer,"How do you thin about this wonderful idea?");
+    addDocument(writer,"The are several grammar checkers for English, E.G. LanguageTool.");
+  }
+  finally {
+    writer.close();
+  }
+  reader=DirectoryReader.open(directory);
+  searcher=newSearcher(reader);
+}

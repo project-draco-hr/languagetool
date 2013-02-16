@@ -1,0 +1,3 @@
+{
+  return makeRule(ruleXml,true);
+}
