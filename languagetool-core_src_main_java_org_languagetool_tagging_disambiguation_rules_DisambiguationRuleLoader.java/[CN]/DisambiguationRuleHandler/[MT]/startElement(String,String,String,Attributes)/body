@@ -1,6 +1,9 @@
 {
   if (qName.equals("rule")) {
     id=attrs.getValue("id");
+    if (inRuleGroup) {
+      subId++;
+    }
     name=attrs.getValue("name");
     if (inRuleGroup && id == null) {
       id=ruleGroupId;
@@ -97,6 +100,7 @@
     ruleGroupId=attrs.getValue("id");
     ruleGroupName=attrs.getValue("name");
     inRuleGroup=true;
+    subId=0;
   }
  else   if (qName.equals(UNIFICATION)) {
     uFeature=attrs.getValue(FEATURE);

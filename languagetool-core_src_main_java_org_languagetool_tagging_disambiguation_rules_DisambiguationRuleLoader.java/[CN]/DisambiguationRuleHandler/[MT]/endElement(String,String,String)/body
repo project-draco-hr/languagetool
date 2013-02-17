@@ -10,6 +10,7 @@
       startPos=0;
       endPos=tokenCountForMarker;
     }
+    rule.setSubId(inRuleGroup ? Integer.toString(subId) : "1");
     final int matchedTokenCount=endPos - startPos;
     if (newWdList != null) {
       if (disambigAction == DisambiguatorAction.ADD || disambigAction == DisambiguatorAction.REMOVE || disambigAction == DisambiguatorAction.REPLACE) {
