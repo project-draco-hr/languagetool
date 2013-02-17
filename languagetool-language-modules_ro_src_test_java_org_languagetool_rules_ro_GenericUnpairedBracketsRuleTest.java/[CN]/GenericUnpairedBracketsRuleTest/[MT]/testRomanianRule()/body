@@ -1,0 +1,17 @@
+{
+  setUpRule(new Romanian());
+  assertMatches("A fost plecat (pentru pu??in timp).",0);
+  assertMatches("Nu's de prin locurile astea.",0);
+  assertMatches("A fost plecat pentru ???pu??in timp???.",0);
+  assertMatches("A fost plecat ???pentru... pu??in timp???.",0);
+  assertMatches("A fost plecat ???pentru... ??pu??in?? timp???.",0);
+  assertMatches("A fost plecat \"pentru pu??in timp.",0);
+  assertMatches("A fost )plecat( pentru (pu??in timp).",2);
+  assertMatches("A fost {plecat) pentru (pu??in timp}.",4);
+  assertMatches("A fost plecat ???pentru... pu??in timp.",1);
+  assertMatches("A fost plecat ??pu??in.",1);
+  assertMatches("A fost plecat ???pentru ??pu??in timp???.",3);
+  assertMatches("A fost plecat ???pentru pu??in?? timp???.",3);
+  assertMatches("A fost plecat ???pentru... pu??in?? timp???.",3);
+  assertMatches("A fost plecat ???pentru... ??pu??in??? timp??.",4);
+}
