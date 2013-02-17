@@ -1,0 +1,10 @@
+{
+  final Polish polish=new Polish();
+  final WordRepeatRule rule=new WordRepeatRule(TestTools.getEnglishMessages(),polish);
+  RuleMatch[] matches;
+  final JLanguageTool langTool=new JLanguageTool(polish);
+  matches=rule.match(langTool.getAnalyzedSentence("To jest zdanie."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("To jest jest zdanie."));
+  assertEquals(1,matches.length);
+}

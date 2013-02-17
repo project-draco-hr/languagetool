@@ -1,0 +1,26 @@
+{
+  final German german=new German();
+  final WordRepeatRule rule=new GermanWordRepeatRule(TestTools.getEnglishMessages(),german);
+  RuleMatch[] matches;
+  final JLanguageTool langTool=new JLanguageTool(german);
+  matches=rule.match(langTool.getAnalyzedSentence("Das sind die S??tze, die die testen sollen."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("S??tze, die die testen."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Das Haus, auf das das M??dchen zeigt."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Warum fragen Sie sie nicht selbst?"));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Die die S??tze zum testen."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Und die die S??tze zum testen."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Auf der der Fensterbank steht eine Blume."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Das Buch, in in dem es steht."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Das Haus, auf auf das M??dchen zurennen."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Sie sie gehen nach Hause."));
+  assertEquals(1,matches.length);
+}

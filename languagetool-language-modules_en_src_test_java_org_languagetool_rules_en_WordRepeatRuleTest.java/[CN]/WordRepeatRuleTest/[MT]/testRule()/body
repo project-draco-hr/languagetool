@@ -1,0 +1,16 @@
+{
+  final English english=new English();
+  final WordRepeatRule rule=new WordRepeatRule(TestTools.getEnglishMessages(),english);
+  RuleMatch[] matches;
+  final JLanguageTool langTool=new JLanguageTool(english);
+  matches=rule.match(langTool.getAnalyzedSentence("This is a test sentence."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("This is a test sentence..."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("This this is a test sentence."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("This is a test sentence sentence."));
+  assertEquals(1,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("This is is a a test sentence sentence."));
+  assertEquals(3,matches.length);
+}
