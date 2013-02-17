@@ -3,7 +3,7 @@
   this.start=start;
   this.end=end;
   if (start > end && end != 0) {
-    throw new RuntimeException("\"start\" should be smaller than \"end\"");
+    throw new RuntimeException("\"start\" should be smaller than \"end\": " + start + ", "+ end);
   }
   textFilter=TextFilterTools.getTextFilter(language);
 }
