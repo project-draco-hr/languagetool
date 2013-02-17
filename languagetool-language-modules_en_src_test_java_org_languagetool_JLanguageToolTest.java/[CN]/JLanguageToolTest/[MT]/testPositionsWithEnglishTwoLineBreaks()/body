@@ -1,0 +1,8 @@
+{
+  final JLanguageTool tool=new JLanguageTool(new AmericanEnglish());
+  final List<RuleMatch> matches=tool.check("This sentence.\n\n" + "A sentence. A typoh.");
+  assertEquals(1,matches.size());
+  final RuleMatch match=matches.get(0);
+  assertEquals(2,match.getLine());
+  assertEquals(14,match.getColumn());
+}

@@ -1,0 +1,6 @@
+{
+  assertEquals(0,JLanguageTool.countLineBreaks(""));
+  assertEquals(1,JLanguageTool.countLineBreaks("Hallo,\nn??chste Zeile"));
+  assertEquals(2,JLanguageTool.countLineBreaks("\nZweite\nDritte"));
+  assertEquals(4,JLanguageTool.countLineBreaks("\nZweite\nDritte\n\n"));
+}
