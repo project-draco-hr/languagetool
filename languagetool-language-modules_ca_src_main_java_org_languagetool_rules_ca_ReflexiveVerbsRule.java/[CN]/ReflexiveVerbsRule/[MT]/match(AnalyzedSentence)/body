@@ -39,7 +39,7 @@
       if (matchPostagRegexp(tokens[i],VERB_PARTICIPI) && !matchLemmaRegexp(tokens[i - 1],VERB_HAVER))       continue loop;
       if (isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD))       continue loop;
       if (isThereReflexivePronoun(tokens,i))       continue loop;
-      final String msg="Aquest verb ??s pronominal. Falta un pronom.";
+      final String msg="Aquest verb ??s pronominal. Probablement falta un pronom.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb pronominal: falta un pronom");
       ruleMatches.add(ruleMatch);
       continue loop;
@@ -51,8 +51,8 @@
       if (isThereVerbBefore(tokens,i,VERBS_SOVINT_AMB_COMPLEMENT) || (isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) || isThereVerbBefore(tokens,i,VERBS_PRONOMINALS))       continue loop;
       if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS_IMPERSONALS) && isPhraseImpersonalVerbS(tokens,i))       continue loop;
       if (matchLemmaRegexp(tokens[i],VERBS_NO_PRONOMINALS_IMPERSONALS2) && isPhraseImpersonalVerbSP(tokens,i))       continue loop;
-      final String msg="Aquest verb no ??s pronominal. Sobra un pronom.";
-      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb no pronominal: sobra un pronom");
+      final String msg="Aquest verb no ??s pronominal. Probablement sobra un pronom.";
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb no pronominal");
       ruleMatches.add(ruleMatch);
     }
     if (matchLemmaRegexp(tokens[i],VERBS_MOVIMENT) && !matchPostagRegexp(tokens[i],VERB_AUXILIAR)) {
