@@ -1,0 +1,3 @@
+int errorCount
+String s
+JLanguageTool langTool

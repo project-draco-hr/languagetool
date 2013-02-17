@@ -1,0 +1,7 @@
+{
+  final JLanguageTool langTool=new JLanguageTool(new German(),new English());
+  langTool.activateDefaultFalseFriendRules();
+  assertErrors(1,"Man sollte ihn nicht so beraten.",langTool);
+  assertErrors(0,"Man sollte ihn nicht so beschimpfen.",langTool);
+  assertErrors(1,"Ich gehe in Blubbstadt zur Hochschule.",langTool);
+}

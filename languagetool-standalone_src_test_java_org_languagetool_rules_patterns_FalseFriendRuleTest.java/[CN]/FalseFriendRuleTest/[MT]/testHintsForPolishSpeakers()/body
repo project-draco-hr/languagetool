@@ -1,0 +1,9 @@
+{
+  final JLanguageTool langTool=new JLanguageTool(new English(),new Polish());
+  langTool.activateDefaultFalseFriendRules();
+  assertErrors(1,"This is an absurd.",langTool);
+  assertErrors(0,"This is absurdity.",langTool);
+  assertSuggestions(0,"This is absurdity.",langTool);
+  assertErrors(1,"I have to speak to my advocate.",langTool);
+  assertSuggestions(3,"My brother is politic.",langTool);
+}

@@ -1,0 +1,16 @@
+{
+  final JLanguageTool langTool1=new JLanguageTool(new BritishEnglish(),new German());
+  langTool1.disableRule(MorfologikBritishSpellerRule.RULE_ID);
+  langTool1.activateDefaultFalseFriendRules();
+  final List<RuleMatch> matches1=assertErrors(1,"And forDemoOnly.",langTool1);
+  assertEquals("DEMO_ENTRY",matches1.get(0).getRule().getId());
+  final JLanguageTool langTool2=new JLanguageTool(new English(),new German());
+  langTool2.disableRule(MorfologikBritishSpellerRule.RULE_ID);
+  langTool2.activateDefaultFalseFriendRules();
+  final List<RuleMatch> matches2=assertErrors(1,"And forDemoOnly.",langTool2);
+  assertEquals("DEMO_ENTRY",matches2.get(0).getRule().getId());
+  final JLanguageTool langTool3=new JLanguageTool(new AmericanEnglish(),new German());
+  langTool3.disableRule(MorfologikAmericanSpellerRule.RULE_ID);
+  langTool3.activateDefaultFalseFriendRules();
+  assertErrors(0,"And forDemoOnly.",langTool3);
+}
