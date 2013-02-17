@@ -1,4 +1,5 @@
 {
+  assertCorrect("No li ho ensenyis, que el far??s delir.");
   assertCorrect("m'aniria b?? probablement posar els quilos");
   assertCorrect("per a portar-te aigua");
   assertCorrect("que no em costi d'anar al llit");
@@ -139,6 +140,7 @@
   assertCorrect("A escola no es va a plorar.");
   assertCorrect("Al nostre pis de la Torre es pujava per aquella llarga escala");
   assertCorrect("Joan no es va a jugar la feina.");
+  assertIncorrect("Delia per menjar-ne.");
   assertIncorrect("Ells es volen dur les ??nimes a l'Infram??n");
   assertIncorrect("Joan es va portar el carret??");
   assertIncorrect("en aquesta vida ens portem moltes sorpreses");
