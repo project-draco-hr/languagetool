@@ -1,0 +1,10 @@
+{
+  final List<RuleMatch> allMatches=new ArrayList<RuleMatch>();
+  for (  BitextPatternRule bRule : bRules) {
+    final RuleMatch[] matches=match(bRule,src,trg,srcTool,trgTool);
+    if (matches != null) {
+      Collections.addAll(allMatches,matches);
+    }
+  }
+  return allMatches;
+}

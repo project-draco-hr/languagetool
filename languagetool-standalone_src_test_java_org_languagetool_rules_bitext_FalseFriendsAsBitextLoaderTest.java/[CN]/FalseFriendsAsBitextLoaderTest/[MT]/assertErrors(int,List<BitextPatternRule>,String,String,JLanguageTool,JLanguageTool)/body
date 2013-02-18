@@ -1,0 +1,4 @@
+{
+  final List<RuleMatch> matches=check(rules,src,trg,srcTool,trgTool);
+  assertEquals(errorCount,matches.size());
+}

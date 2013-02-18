@@ -1,0 +1,5 @@
+BitextPatternRule rule
+String src
+String trg
+JLanguageTool srcLanguageTool
+JLanguageTool trgLanguageTool
