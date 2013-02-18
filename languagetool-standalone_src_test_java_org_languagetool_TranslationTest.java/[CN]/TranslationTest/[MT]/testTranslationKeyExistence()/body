@@ -1,5 +1,5 @@
 {
-  final File englishFile=getTranslationFile(new English());
+  final File englishFile=getEnglishTranslationFile();
   final Properties enProps=new Properties();
   enProps.load(new FileInputStream(englishFile));
   final Set<Object> englishKeys=enProps.keySet();

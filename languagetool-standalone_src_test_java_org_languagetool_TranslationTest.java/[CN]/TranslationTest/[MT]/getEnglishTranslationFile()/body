@@ -1,0 +1,4 @@
+{
+  final String name="../languagetool-core/src/main/resources/org/languagetool/MessagesBundle_en.properties";
+  return new File(name.replace("/",File.separator));
+}
