@@ -1,0 +1,6 @@
+{
+  assertTrue(Language.getLanguageForShortName("en-US").isVariant());
+  assertTrue(Language.getLanguageForShortName("de-CH").isVariant());
+  assertFalse(Language.getLanguageForShortName("en").isVariant());
+  assertFalse(Language.getLanguageForShortName("de").isVariant());
+}

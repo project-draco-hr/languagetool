@@ -1,0 +1,8 @@
+{
+  assertEquals("English",new English().getTranslatedName(TestTools.getMessages("en")));
+  assertEquals("English (British)",new BritishEnglish().getTranslatedName(TestTools.getMessages("en")));
+  assertEquals("Englisch",new English().getTranslatedName(TestTools.getMessages("de")));
+  assertEquals("Englisch (Gro??britannien)",new BritishEnglish().getTranslatedName(TestTools.getMessages("de")));
+  assertEquals("Deutsch",new German().getTranslatedName(TestTools.getMessages("de")));
+  assertEquals("Deutsch (Schweiz)",new SwissGerman().getTranslatedName(TestTools.getMessages("de")));
+}

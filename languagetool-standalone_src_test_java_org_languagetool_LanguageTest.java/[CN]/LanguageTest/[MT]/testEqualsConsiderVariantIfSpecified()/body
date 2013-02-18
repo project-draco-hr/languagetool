@@ -1,0 +1,10 @@
+{
+  assertTrue(new German().equalsConsiderVariantsIfSpecified(new German()));
+  assertTrue(new GermanyGerman().equalsConsiderVariantsIfSpecified(new GermanyGerman()));
+  assertTrue(new English().equalsConsiderVariantsIfSpecified(new English()));
+  assertTrue(new AmericanEnglish().equalsConsiderVariantsIfSpecified(new AmericanEnglish()));
+  assertTrue(new AmericanEnglish().equalsConsiderVariantsIfSpecified(new English()));
+  assertTrue(new English().equalsConsiderVariantsIfSpecified(new AmericanEnglish()));
+  assertFalse(new AmericanEnglish().equalsConsiderVariantsIfSpecified(new BritishEnglish()));
+  assertFalse(new English().equalsConsiderVariantsIfSpecified(new German()));
+}

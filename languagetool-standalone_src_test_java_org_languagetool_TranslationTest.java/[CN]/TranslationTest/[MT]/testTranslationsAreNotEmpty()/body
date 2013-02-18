@@ -1,0 +1,24 @@
+{
+  for (int i=0; i < Language.LANGUAGES.length; i++) {
+    final Language lang=Language.LANGUAGES[i];
+    if (lang == Language.DEMO) {
+      continue;
+    }
+    final File file=getTranslationFile(lang);
+    if (!file.exists()) {
+      System.err.println("Note: no translation available for " + lang);
+      continue;
+    }
+    final List<String> lines=loadFile(file);
+    for (    String line : lines) {
+      line=line.trim();
+      if (StringTools.isEmpty(line) || line.charAt(0) == '#') {
+        continue;
+      }
+      final String[] parts=line.split("=");
+      if (parts.length < 2) {
+        System.err.println("***** Empty translation: '" + line + "' in file "+ file);
+      }
+    }
+  }
+}

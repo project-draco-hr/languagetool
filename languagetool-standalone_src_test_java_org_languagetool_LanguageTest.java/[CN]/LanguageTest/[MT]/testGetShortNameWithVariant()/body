@@ -1,0 +1,4 @@
+{
+  assertEquals("en-US",new AmericanEnglish().getShortNameWithVariant());
+  assertEquals("de",new German().getShortNameWithVariant());
+}

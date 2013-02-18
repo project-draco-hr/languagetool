@@ -1,0 +1,6 @@
+{
+  assertEquals("[/org/languagetool/rules/en/grammar.xml, /org/languagetool/rules/en/en-GB/grammar.xml]",new BritishEnglish().getRuleFileName().toString());
+  assertEquals("[/org/languagetool/rules/en/grammar.xml]",new AmericanEnglish().getRuleFileName().toString());
+  assertEquals("[/org/languagetool/rules/en/grammar.xml]",new English().getRuleFileName().toString());
+  assertEquals("[/org/languagetool/rules/de/grammar.xml]",new German().getRuleFileName().toString());
+}

@@ -1,0 +1,23 @@
+{
+  Match match=getMatch("POS1","POS2",true);
+  final Polish polish=new Polish();
+  match.setSynthesizer(polish.getSynthesizer());
+  match.setToken(getAnalyzedTokenReadings("inflectedform11","POS1","Lemma1"));
+  assertEquals("[]",Arrays.toString(match.toFinalString(polish)));
+  match=getMatch("POS1","POS2",false);
+  match.setSynthesizer(polish.getSynthesizer());
+  match.setToken(getAnalyzedTokenReadings("inflectedform11","POS1","Lemma1"));
+  assertEquals("[(inflectedform11)]",Arrays.toString(match.toFinalString(polish)));
+  match=getMatch("subst:sg:acc.nom:m3","subst:sg:gen:m3",true);
+  match.setSynthesizer(polish.getSynthesizer());
+  match.setToken(getAnalyzedTokenReadings("AON","subst:sg:acc.nom:m3","AON"));
+  assertEquals("[AON-u]",Arrays.toString(match.toFinalString(polish)));
+  match=getTextMatch("^(.*)$","$0-u",true);
+  match.setSynthesizer(polish.getSynthesizer());
+  match.setLemmaString("AON");
+  assertEquals("[AON-u]",Arrays.toString(match.toFinalString(polish)));
+  match.setLemmaString("batalion");
+  assertEquals("[]",Arrays.toString(match.toFinalString(polish)));
+  match.setLemmaString("ASEAN");
+  assertEquals("[ASEAN-u]",Arrays.toString(match.toFinalString(polish)));
+}
