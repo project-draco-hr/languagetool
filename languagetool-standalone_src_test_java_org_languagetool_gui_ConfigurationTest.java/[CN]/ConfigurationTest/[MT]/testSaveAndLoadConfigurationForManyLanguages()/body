@@ -1,0 +1,32 @@
+{
+  final File tempFile=File.createTempFile(ConfigurationTest.class.getSimpleName(),".cfg");
+  createConfiguration(tempFile,new AmericanEnglish());
+  try {
+    Configuration conf=new Configuration(tempFile.getParentFile(),tempFile.getName(),new AmericanEnglish());
+    Set<String> disabledRuleIds=conf.getDisabledRuleIds();
+    assertTrue(disabledRuleIds.contains("FOO1"));
+    assertTrue(disabledRuleIds.contains("Foo2"));
+    assertEquals(2,disabledRuleIds.size());
+    Set<String> enabledRuleIds=conf.getEnabledRuleIds();
+    assertTrue(enabledRuleIds.contains("enabledRule"));
+    assertEquals(1,enabledRuleIds.size());
+    conf=new Configuration(tempFile.getParentFile(),tempFile.getName(),new Belarusian());
+    disabledRuleIds=conf.getDisabledRuleIds();
+    assertTrue(disabledRuleIds.isEmpty());
+    enabledRuleIds=conf.getEnabledRuleIds();
+    assertTrue(enabledRuleIds.isEmpty());
+    conf.setEnabledRuleIds(new HashSet<String>(Arrays.asList("enabledBYRule")));
+    conf.saveConfiguration(new Belarusian());
+    conf=new Configuration(tempFile.getParentFile(),tempFile.getName(),new AmericanEnglish());
+    disabledRuleIds=conf.getDisabledRuleIds();
+    assertTrue(disabledRuleIds.contains("FOO1"));
+    assertTrue(disabledRuleIds.contains("Foo2"));
+    assertEquals(2,disabledRuleIds.size());
+    enabledRuleIds=conf.getEnabledRuleIds();
+    assertTrue(enabledRuleIds.contains("enabledRule"));
+    assertEquals(1,enabledRuleIds.size());
+  }
+  finally {
+    tempFile.delete();
+  }
+}

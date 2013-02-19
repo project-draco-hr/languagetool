@@ -1,0 +1,16 @@
+{
+  final RequestLimiter limiter=new RequestLimiter(3,2);
+  final String firstIp="192.168.10.1";
+  final String secondIp="192.168.10.2";
+  assertTrue(limiter.isAccessOkay(firstIp));
+  assertTrue(limiter.isAccessOkay(firstIp));
+  assertTrue(limiter.isAccessOkay(firstIp));
+  assertFalse(limiter.isAccessOkay(firstIp));
+  assertTrue(limiter.isAccessOkay(secondIp));
+  Thread.sleep(2500);
+  assertTrue(limiter.isAccessOkay(firstIp));
+  assertTrue(limiter.isAccessOkay(secondIp));
+  assertTrue(limiter.isAccessOkay(secondIp));
+  assertTrue(limiter.isAccessOkay(secondIp));
+  assertFalse(limiter.isAccessOkay(secondIp));
+}

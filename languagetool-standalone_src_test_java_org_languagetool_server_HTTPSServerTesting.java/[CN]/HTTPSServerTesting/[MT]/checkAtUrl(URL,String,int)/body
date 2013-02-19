@@ -1,0 +1,10 @@
+{
+  final long startTime=System.currentTimeMillis();
+  final String startOfData=data.substring(0,Math.min(30,data.length()));
+synchronized (this) {
+    checkCount++;
+  }
+  final String result=HTTPTools.checkAtUrlByPost(url,data);
+  System.out.println(checkCount + ". [" + threadNumber+ "] Got "+ url+ " with data ("+ data.length()+ " bytes) "+ startOfData+ "...: "+ (System.currentTimeMillis() - startTime)+ "ms");
+  return result;
+}

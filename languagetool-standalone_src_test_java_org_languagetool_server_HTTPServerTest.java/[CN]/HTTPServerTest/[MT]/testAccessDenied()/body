@@ -1,0 +1,16 @@
+{
+  final HTTPServer server=new HTTPServer(new HTTPServerConfig(),false,new HashSet<String>());
+  try {
+    server.run();
+    try {
+      System.out.println("Testing 'access denied' check now, please ignore the exception");
+      check(new German(),"no ip address allowed, so this cannot work");
+      fail();
+    }
+ catch (    IOException expected) {
+    }
+  }
+  finally {
+    server.stop();
+  }
+}
