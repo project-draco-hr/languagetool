@@ -17,6 +17,9 @@
   if (isRegularExpression && ".*".equals(stringValue)) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], marked as regular expression contains "+ "regular expression \".*\" which is useless: "+ "(use an empty string without regexp=\"yes\" such as <token/>)");
   }
+  if (isRegularExpression && stringValue.contains("||")) {
+    System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], marked as regular expression contains "+ " '||', which is probably wrong");
+  }
   if (isRegularExpression) {
     final Matcher matcher=CHAR_SET_PATTERN.matcher(stringValue);
     if (matcher.find()) {
