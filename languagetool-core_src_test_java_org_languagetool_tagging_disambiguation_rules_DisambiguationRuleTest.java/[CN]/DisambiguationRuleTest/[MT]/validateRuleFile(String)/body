@@ -1,0 +1,14 @@
+{
+  final XMLValidator validator=new XMLValidator();
+  final InputStream stream=this.getClass().getResourceAsStream(filePath);
+  try {
+    if (stream != null) {
+      validator.validate(filePath,JLanguageTool.getDataBroker().getResourceDir() + "/disambiguation.xsd");
+    }
+  }
+  finally {
+    if (stream != null) {
+      stream.close();
+    }
+  }
+}

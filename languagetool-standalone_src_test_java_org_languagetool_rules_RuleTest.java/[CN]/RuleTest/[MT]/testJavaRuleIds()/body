@@ -1,0 +1,12 @@
+{
+  final Set<String> ids=new HashSet<String>();
+  final Set<Class> ruleClasses=new HashSet<Class>();
+  for (  Language language : Language.LANGUAGES) {
+    final JLanguageTool lt=new JLanguageTool(language);
+    final List<Rule> allRules=lt.getAllRules();
+    for (    Rule rule : allRules) {
+      assertIdUniqueness(ids,ruleClasses,language,rule);
+      assertIdValidity(language,rule);
+    }
+  }
+}

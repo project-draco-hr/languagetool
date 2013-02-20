@@ -1,0 +1,4 @@
+Set<String> ids
+Set<Class> ruleClasses
+Language language
+Rule rule

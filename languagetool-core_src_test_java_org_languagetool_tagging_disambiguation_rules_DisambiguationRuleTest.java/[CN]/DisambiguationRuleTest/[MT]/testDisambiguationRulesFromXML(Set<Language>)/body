@@ -8,6 +8,7 @@
     final JLanguageTool languageTool=new JLanguageTool(lang);
     if (!(languageTool.getLanguage().getDisambiguator() instanceof DemoDisambiguator) && !(languageTool.getLanguage().getDisambiguator() instanceof TrimDisambiguator)) {
       final String name=JLanguageTool.getDataBroker().getResourceDir() + "/" + lang.getShortName()+ "/disambiguation.xml";
+      validateRuleFile(name);
       final List<DisambiguationPatternRule> rules=ruleLoader.getRules(ruleLoader.getClass().getResourceAsStream(name));
       testDisambiguationRulesFromXML(rules,languageTool,lang);
     }
