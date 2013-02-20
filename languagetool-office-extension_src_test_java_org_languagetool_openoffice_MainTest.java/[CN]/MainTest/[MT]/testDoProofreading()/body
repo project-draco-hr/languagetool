@@ -1,10 +1,10 @@
 {
-  Main prog=new Main(null);
+  final Main prog=new Main(null);
   final String testString="To jest trudne zdanie. A to nast??pne.  A to przedostatnie jest.\u0002 Test ostatniego.";
   final Locale plLoc=new Locale("pl","PL","");
   final PropertyValue[] prop=new PropertyValue[0];
   for (int i=0; i <= testString.length(); i++) {
-    ProofreadingResult paRes=prog.doProofreading("1",testString,plLoc,i,testString.length(),prop);
+    final ProofreadingResult paRes=prog.doProofreading("1",testString,plLoc,i,testString.length(),prop);
     assertEquals("1",paRes.aDocumentIdentifier);
     assertTrue(paRes.nStartOfNextSentencePosition >= i);
     if (i < "To jest trudne zdanie. ".length()) {
@@ -12,13 +12,13 @@
       assertEquals(0,paRes.nStartOfSentencePosition);
     }
   }
-  ProofreadingResult paRes=prog.doProofreading("1",testString,plLoc,0,testString.length(),prop);
-  assertEquals("1",paRes.aDocumentIdentifier);
-  assertEquals(23,paRes.nStartOfNextSentencePosition);
-  assertEquals(0,paRes.nStartOfSentencePosition);
-  String testString2="To jest ???nowy problem???. A to inny jeszcze( ???problem. Co jest ????";
-  paRes=prog.doProofreading("1",testString2,plLoc,0,testString2.length(),prop);
-  assertEquals("1",paRes.aDocumentIdentifier);
-  assertEquals(24,paRes.nStartOfNextSentencePosition);
-  assertEquals(0,paRes.nStartOfSentencePosition);
+  final ProofreadingResult paRes1=prog.doProofreading("1",testString,plLoc,0,testString.length(),prop);
+  assertEquals("1",paRes1.aDocumentIdentifier);
+  assertEquals(23,paRes1.nStartOfNextSentencePosition);
+  assertEquals(0,paRes1.nStartOfSentencePosition);
+  final String testString2="To jest ???nowy problem???. A to inny jeszcze( ???problem. Co jest ????";
+  final ProofreadingResult paRes2=prog.doProofreading("1",testString2,plLoc,0,testString2.length(),prop);
+  assertEquals("1",paRes2.aDocumentIdentifier);
+  assertEquals(24,paRes2.nStartOfNextSentencePosition);
+  assertEquals(0,paRes2.nStartOfSentencePosition);
 }
