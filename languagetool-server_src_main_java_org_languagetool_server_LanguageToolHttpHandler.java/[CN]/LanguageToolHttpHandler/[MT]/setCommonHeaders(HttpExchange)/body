@@ -1,0 +1,6 @@
+{
+  httpExchange.getResponseHeaders().set("Content-Type",CONTENT_TYPE_VALUE);
+  if (allowOriginUrl != null) {
+    httpExchange.getResponseHeaders().set("Access-Control-Allow-Origin",allowOriginUrl);
+  }
+}

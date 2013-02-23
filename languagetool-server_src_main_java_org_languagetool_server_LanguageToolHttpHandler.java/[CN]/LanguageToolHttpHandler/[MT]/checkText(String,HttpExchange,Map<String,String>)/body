@@ -48,7 +48,7 @@
     final List<BitextRule> bRules=Tools.getBitextRules(motherTongue,lang);
     matches=Tools.checkBitext(sourceText,text,sourceLt,targetLt,bRules);
   }
-  httpExchange.getResponseHeaders().set("Content-Type",CONTENT_TYPE_VALUE);
+  setCommonHeaders(httpExchange);
   final String response=StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE,StringTools.XmlPrintMode.NORMAL_XML,lang,motherTongue);
   httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes(ENCODING).length);
   httpExchange.getResponseBody().write(response.getBytes(ENCODING));
