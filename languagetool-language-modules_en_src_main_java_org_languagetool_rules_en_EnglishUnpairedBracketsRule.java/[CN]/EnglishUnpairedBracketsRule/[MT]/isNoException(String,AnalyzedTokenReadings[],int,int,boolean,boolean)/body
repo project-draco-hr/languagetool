@@ -2,6 +2,10 @@
   if (i <= 1) {
     return true;
   }
+  final boolean superException=!super.isNoException(tokenStr,tokens,i,j,precSpace,follSpace);
+  if (superException) {
+    return false;
+  }
   if (!precSpace && follSpace) {
     final AnalyzedTokenReadings prevToken=tokens[i - 1];
     if ("\"".equals(tokenStr) && NUMBER.matcher(prevToken.getToken()).matches()) {

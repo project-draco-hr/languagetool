@@ -1,3 +1,9 @@
 {
+  if (i >= 2 && tokens[i - 2].getToken().equals(":") && tokens[i - 1].getToken().equals("-") && tokens[i].getToken().equals(")")) {
+    return false;
+  }
+  if (i >= 2 && tokens[i - 2].getToken().equals(";") && tokens[i - 1].getToken().equals("-") && tokens[i].getToken().equals(")")) {
+    return false;
+  }
   return true;
 }
