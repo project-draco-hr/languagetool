@@ -1,11 +1,12 @@
 {
-  if (!isRegularExpression && PROBABLE_PATTERN.matcher(stringValue).find()) {
+  final Pattern regexPattern=(isPos && lang.getShortName().equals("pl")) ? PROBABLE_PATTERN_PL_POS : PROBABLE_PATTERN;
+  if (!isRegularExpression && stringValue.length() > 1 && regexPattern.matcher(stringValue).find()) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ "\""+ stringValue+ "\" that is not marked as regular expression but probably is one.");
   }
   if (isRegularExpression && stringValue.isEmpty()) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains an empty string "+ "\""+ stringValue+ "\" that is marked as regular expression.");
   }
- else   if (isRegularExpression && !PROBABLE_PATTERN.matcher(stringValue).find()) {
+ else   if (isRegularExpression && stringValue.length() > 1 && !regexPattern.matcher(stringValue).find()) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ "\""+ stringValue+ "\" that is marked as regular expression but probably is not one.");
   }
   if (isNegated && stringValue.isEmpty()) {

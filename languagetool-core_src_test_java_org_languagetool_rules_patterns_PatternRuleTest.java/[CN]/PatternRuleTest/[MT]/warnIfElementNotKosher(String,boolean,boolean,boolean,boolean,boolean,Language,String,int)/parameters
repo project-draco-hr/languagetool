@@ -3,6 +3,7 @@ boolean isRegularExpression
 boolean isCaseSensitive
 boolean isNegated
 boolean isInflected
+boolean isPos
 Language lang
 String ruleId
 int tokenIndex
