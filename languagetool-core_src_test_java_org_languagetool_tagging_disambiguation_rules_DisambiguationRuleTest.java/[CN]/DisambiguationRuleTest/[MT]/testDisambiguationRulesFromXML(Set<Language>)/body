@@ -10,6 +10,9 @@
       final String name=JLanguageTool.getDataBroker().getResourceDir() + "/" + lang.getShortName()+ "/disambiguation.xml";
       validateRuleFile(name);
       final List<DisambiguationPatternRule> rules=ruleLoader.getRules(ruleLoader.getClass().getResourceAsStream(name));
+      for (      DisambiguationPatternRule rule : rules) {
+        PatternTestTools.warnIfRegexpSyntaxNotKosher(rule.getElements(),rule.getId(),rule.getSubId(),lang);
+      }
       testDisambiguationRulesFromXML(rules,languageTool,lang);
     }
   }

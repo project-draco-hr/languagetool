@@ -13,7 +13,9 @@
   for (  String patternRuleFileName : lang.getRuleFileName()) {
     rules.addAll(languageTool.loadPatternRules(patternRuleFileName));
   }
-  warnIfRegexpSyntaxNotKosher(rules,lang);
+  for (  PatternRule rule : rules) {
+    PatternTestTools.warnIfRegexpSyntaxNotKosher(rule.getElements(),rule.getId(),rule.getSubId(),lang);
+  }
   testGrammarRulesFromXML(rules,languageTool,allRulesLanguageTool,lang);
   System.out.println(rules.size() + " rules tested.");
 }
