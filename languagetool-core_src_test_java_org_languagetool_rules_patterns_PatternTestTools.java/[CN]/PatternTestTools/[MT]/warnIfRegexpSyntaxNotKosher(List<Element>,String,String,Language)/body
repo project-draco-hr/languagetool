@@ -6,7 +6,7 @@
       continue;
     }
     warnIfElementNotKosher(element.getString(),element.isRegularExpression(),element.getCaseSensitive(),element.getNegation(),element.isInflected(),false,lang,ruleId + ":" + ruleSubId,i);
-    warnIfElementNotKosher(element.getPOStag() == null ? "" : element.getPOStag(),element.isPOStagRegularExpression(),element.getCaseSensitive(),element.getPOSNegation(),true,false,lang,ruleId + ":" + ruleSubId+ " (POS tag)",i);
+    warnIfElementNotKosher(element.getPOStag() == null ? "" : element.getPOStag(),element.isPOStagRegularExpression(),element.getCaseSensitive(),element.getPOSNegation(),false,true,lang,ruleId + ":" + ruleSubId+ " (POS tag)",i);
     final List<Element> exceptionElements=new ArrayList<Element>();
     if (element.getExceptionList() != null) {
       for (      final Element exception : element.getExceptionList()) {
