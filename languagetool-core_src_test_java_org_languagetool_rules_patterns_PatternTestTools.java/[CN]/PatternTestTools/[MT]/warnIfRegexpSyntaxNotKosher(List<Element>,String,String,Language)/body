@@ -1,0 +1,30 @@
+{
+  int i=0;
+  for (  final Element element : elements) {
+    i++;
+    if (element.isReferenceElement()) {
+      continue;
+    }
+    warnIfElementNotKosher(element.getString(),element.isRegularExpression(),element.getCaseSensitive(),element.getNegation(),element.isInflected(),false,lang,ruleId + ":" + ruleSubId,i);
+    warnIfElementNotKosher(element.getPOStag() == null ? "" : element.getPOStag(),element.isPOStagRegularExpression(),element.getCaseSensitive(),element.getPOSNegation(),true,false,lang,ruleId + ":" + ruleSubId+ " (POS tag)",i);
+    final List<Element> exceptionElements=new ArrayList<Element>();
+    if (element.getExceptionList() != null) {
+      for (      final Element exception : element.getExceptionList()) {
+        if (exception.hasNextException() && element.getSkipNext() == 0) {
+          System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies. "+ " Did you forget skip=\"...\"?");
+        }
+        if (!exception.getString().equals(".")) {
+          warnIfElementNotKosher(exception.getString(),exception.isRegularExpression(),exception.getCaseSensitive(),exception.getNegation(),exception.isInflected(),false,lang,ruleId + ":" + ruleSubId+ " (exception in token ["+ i+ "])",i);
+        }
+        warnIfElementNotKosher(exception.getPOStag() == null ? "" : exception.getPOStag(),exception.isPOStagRegularExpression(),exception.getCaseSensitive(),exception.getPOSNegation(),false,true,lang,ruleId + ":" + ruleSubId+ " (exception in POS tag of token ["+ i+ "])",i);
+        for (        final Element otherException : exceptionElements) {
+          if (equalException(exception,otherException)) {
+            System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " in token ["+ i+ "]"+ " contains duplicate exceptions with"+ " string=["+ exception.getString()+ "]"+ " POS tag=["+ exception.getPOStag()+ "]"+ " negate=["+ exception.getNegation()+ "]"+ " POS negate=["+ exception.getPOSNegation()+ "]");
+            break;
+          }
+        }
+        exceptionElements.add(exception);
+      }
+    }
+  }
+}

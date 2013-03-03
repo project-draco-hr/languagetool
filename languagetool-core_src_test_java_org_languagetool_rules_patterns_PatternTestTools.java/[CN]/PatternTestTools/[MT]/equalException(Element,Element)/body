@@ -1,0 +1,24 @@
+{
+  String string1=exception1.getString() == null ? "" : exception1.getString();
+  String string2=exception2.getString() == null ? "" : exception2.getString();
+  if (!exception1.getCaseSensitive() || !exception2.getCaseSensitive()) {
+    string1=string1.toLowerCase();
+    string2=string2.toLowerCase();
+  }
+  if (!string1.isEmpty() && !string2.isEmpty()) {
+    if (!string1.equals(string2)) {
+      return false;
+    }
+  }
+  final String posTag1=exception1.getPOStag() == null ? "" : exception1.getPOStag();
+  final String posTag2=exception2.getPOStag() == null ? "" : exception2.getPOStag();
+  if (!posTag1.isEmpty() && !posTag2.isEmpty()) {
+    if (!posTag1.equals(posTag2)) {
+      return false;
+    }
+  }
+  if (string1.isEmpty() != string2.isEmpty() && posTag1.isEmpty() != posTag2.isEmpty()) {
+    return false;
+  }
+  return exception1.getNegation() == exception2.getNegation() && exception1.getPOSNegation() == exception2.getPOSNegation() && exception1.hasNextException() == exception2.hasNextException() && exception1.hasPreviousException() == exception2.hasPreviousException();
+}
