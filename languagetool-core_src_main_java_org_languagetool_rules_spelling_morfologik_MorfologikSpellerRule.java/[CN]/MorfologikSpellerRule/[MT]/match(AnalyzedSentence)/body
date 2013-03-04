@@ -9,10 +9,15 @@
       return toRuleMatchArray(ruleMatches);
     }
   }
-  for (  AnalyzedTokenReadings token : tokens) {
+  skip:   for (  AnalyzedTokenReadings token : tokens) {
     final String word=token.getToken();
     if (ignoreWord(word) || token.isImmunized()) {
       continue;
+    }
+    if (ignoreTaggedWords) {
+      for (      AnalyzedToken at : token.getReadings()) {
+        if (!at.hasNoTag())         continue skip;
+      }
     }
     if (tokenizingPattern() == null) {
       ruleMatches.addAll(getRuleMatch(word,token.getStartPos()));
