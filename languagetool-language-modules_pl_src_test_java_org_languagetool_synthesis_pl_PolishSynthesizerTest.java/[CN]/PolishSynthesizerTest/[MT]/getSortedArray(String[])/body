@@ -1,0 +1,5 @@
+{
+  String[] newAr=ar.clone();
+  Arrays.sort(newAr);
+  return newAr;
+}
