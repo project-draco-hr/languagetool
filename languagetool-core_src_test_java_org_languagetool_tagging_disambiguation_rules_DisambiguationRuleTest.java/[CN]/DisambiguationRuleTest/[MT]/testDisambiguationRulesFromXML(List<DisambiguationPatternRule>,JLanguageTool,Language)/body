@@ -8,7 +8,8 @@
         goodSentence=cleanXML(goodSentence);
         assertTrue(goodSentence.trim().length() > 0);
         final AnalyzedSentence sent=disambiguateUntil(rules,id,languageTool.getRawAnalyzedSentence(goodSentence));
-        assertTrue("The untouched example (" + goodSentence + ") for rule "+ id+ "was touched!",sent.equals(rule.replace(sent)));
+        final AnalyzedSentence sentToReplace=disambiguateUntil(rules,id,languageTool.getRawAnalyzedSentence(goodSentence));
+        assertEquals("The untouched example (" + goodSentence + ") for "+ lang.getName()+ " rule "+ id+ "["+ rule.getSubId()+ "] was touched!",sent.toString(),rule.replace(sentToReplace).toString());
       }
     }
     final List<DisambiguatedExample> examples=rule.getExamples();
