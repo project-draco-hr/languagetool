@@ -1,0 +1,27 @@
+{
+  final List<String> newList=new ArrayList<String>();
+  boolean inUrl=false;
+  final StringBuilder url=new StringBuilder();
+  for (int i=0; i < l.size(); i++) {
+    if (urlStartsAt(i,l)) {
+      inUrl=true;
+      url.append(l.get(i));
+    }
+ else     if (inUrl && urlEndsAt(i,l)) {
+      inUrl=false;
+      newList.add(url.toString());
+      url.setLength(0);
+      newList.add(l.get(i));
+    }
+ else     if (inUrl) {
+      url.append(l.get(i));
+    }
+ else {
+      newList.add(l.get(i));
+    }
+  }
+  if (url.length() > 0) {
+    newList.add(url.toString());
+  }
+  return newList;
+}
