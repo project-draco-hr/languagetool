@@ -7,5 +7,5 @@
   assertEquals("[brzydziej]",Arrays.toString(synth.synthesize(dummyToken("brzydko"),"adv:com")));
   assertEquals("[tonera]",Arrays.toString(getSortedArray(synth.synthesize(dummyToken("toner"),"subst:sg:gen:m.*",true))));
   assertEquals("[niedu??ego, niedu??y]",Arrays.toString(getSortedArray(synth.synthesize(dummyToken("niedu??y"),"adj:sg.*(m[0-9]?|m.n):pos",true))));
-  assertEquals("[mia??, mia??a, mia??aby, mia??abym, mia??aby??, mia??am, mia??a??, mia??by, mia??bym, mia??by??, mia??em, mia??e??, mia??o, mia??oby, mia??obym, mia??oby??, mia??om, mia??o??]",Arrays.toString(getSortedArray(synth.synthesize(dummyToken("mie??"),".*praet:sg.*",true))));
+  assertEquals("[mia??, mia??a, mia??am, mia??a??, mia??em, mia??e??, mia??o, mia??om, mia??o??]",Arrays.toString(getSortedArray(synth.synthesize(dummyToken("mie??"),".*praet:sg.*",true))));
 }
