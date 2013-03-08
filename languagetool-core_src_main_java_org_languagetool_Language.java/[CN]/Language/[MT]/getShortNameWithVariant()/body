@@ -1,6 +1,6 @@
 {
   String name=getShortName();
-  if (getCountryVariants().length == 1) {
+  if (getCountryVariants().length == 1 && !name.contains("-x-")) {
     name+="-" + getCountryVariants()[0];
   }
   return name;

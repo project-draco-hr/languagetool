@@ -1,7 +1,14 @@
 {
   StringTools.assureSet(langCode,"langCode");
   Language result=null;
-  if (langCode.indexOf('-') != -1) {
+  if (langCode.contains("-x-")) {
+    for (    Language element : Language.LANGUAGES) {
+      if (element.getShortName().equals(langCode)) {
+        return element;
+      }
+    }
+  }
+ else   if (langCode.contains("-")) {
     final String[] parts=langCode.split("-");
     if (parts.length != 2) {
       throw new IllegalArgumentException("'" + langCode + "' isn't a valid language code");
