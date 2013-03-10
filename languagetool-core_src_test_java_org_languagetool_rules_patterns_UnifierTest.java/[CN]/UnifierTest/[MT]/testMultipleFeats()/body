@@ -57,4 +57,13 @@
   assertEquals(true,uni.isUnified(sing2b,equiv,true));
   assertEquals("[osobiste[osobisty/adj:sg:nom.acc.voc:n:pos:aff*], god??o[god??o/subst:sg:nom.acc.voc:n*]]",Arrays.toString(uni.getFinalUnified()));
   uni.reset();
+  AnalyzedToken plur1=new AnalyzedToken("zgarbieni","adj:pl:foobar:m","zgarbiony");
+  AnalyzedToken plur2=new AnalyzedToken("zgarbieni","adj:pl:blabla:m","zgarbiony");
+  AnalyzedToken plur3=new AnalyzedToken("ludzie","subst:pl:blabla:m","cz??owiek");
+  AnalyzedToken plur4=new AnalyzedToken("ludzie","subst:pl:pampam:m","cz??owiek");
+  uni.isUnified(plur1,equiv,false);
+  uni.isUnified(plur2,equiv,true);
+  uni.isUnified(plur3,equiv,false);
+  assertTrue(uni.isUnified(plur4,equiv,true));
+  assertEquals("[zgarbieni[zgarbiony/adj:pl:foobar:m*,zgarbiony/adj:pl:blabla:m*], " + "ludzie[cz??owiek/subst:pl:blabla:m*,cz??owiek/subst:pl:pampam:m*]]",Arrays.toString(uni.getFinalUnified()));
 }

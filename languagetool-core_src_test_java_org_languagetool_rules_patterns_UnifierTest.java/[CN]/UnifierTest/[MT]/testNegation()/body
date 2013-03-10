@@ -17,7 +17,7 @@
   final AnalyzedToken plur_fem=new AnalyzedToken("parvae","adj:pl:blahblah:f","parvus");
   final AnalyzedToken sing_fem=new AnalyzedToken("parva","adj:sg:blahblah:f","parvus");
   final AnalyzedToken det_sing_fem=new AnalyzedToken("una","det:sg:blahblah:f","unus");
-  final AnalyzedToken det_plur_fem=new AnalyzedToken("unae","det:sg:blahblah:f","unus");
+  final AnalyzedToken det_plur_fem=new AnalyzedToken("unae","det:pl:blahblah:f","unus");
   final AnalyzedToken det_sing_masc=new AnalyzedToken("unus","det:sg:blahblah:m","unus");
   final AnalyzedToken det_plur_masc=new AnalyzedToken("uni","det:sg:blahblah:m","unus");
   final AnalyzedToken subst_sing_fem=new AnalyzedToken("discrepatio","subst:sg:blahblah:f","discrepatio");
