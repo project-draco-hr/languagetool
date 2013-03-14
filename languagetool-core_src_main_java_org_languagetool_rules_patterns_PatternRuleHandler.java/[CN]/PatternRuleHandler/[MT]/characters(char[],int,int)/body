@@ -18,7 +18,7 @@
  else   if (inMessage) {
     message.append(s);
   }
- else   if (inSuggestion && !inMessage) {
+ else   if (inSuggestion) {
     suggestionsOutMsg.append(s);
   }
  else   if (inShortMessage) {

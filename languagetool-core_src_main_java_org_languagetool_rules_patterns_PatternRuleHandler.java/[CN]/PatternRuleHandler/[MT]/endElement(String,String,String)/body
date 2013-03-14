@@ -86,7 +86,7 @@
     if (inMessage) {
       suggestionMatches.get(suggestionMatches.size() - 1).setLemmaString(match.toString());
     }
- else     if (inSuggestion && !inMessage) {
+ else     if (inSuggestion) {
       suggestionMatchesOutMsg.get(suggestionMatchesOutMsg.size() - 1).setLemmaString(match.toString());
     }
  else     if (inToken) {
