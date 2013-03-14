@@ -1,11 +1,11 @@
 {
-  CharTermAttribute term=stream.addAttribute(CharTermAttribute.class);
-  PositionIncrementAttribute posIncr=stream.addAttribute(PositionIncrementAttribute.class);
-  OffsetAttribute offset=stream.addAttribute(OffsetAttribute.class);
-  TypeAttribute type=stream.addAttribute(TypeAttribute.class);
+  final CharTermAttribute term=stream.addAttribute(CharTermAttribute.class);
+  final PositionIncrementAttribute posIncr=stream.addAttribute(PositionIncrementAttribute.class);
+  final OffsetAttribute offset=stream.addAttribute(OffsetAttribute.class);
+  final TypeAttribute type=stream.addAttribute(TypeAttribute.class);
   int position=0;
   while (stream.incrementToken()) {
-    int increment=posIncr.getPositionIncrement();
+    final int increment=posIncr.getPositionIncrement();
     if (increment > 0) {
       position=position + increment;
       System.out.println();
