@@ -1,4 +1,5 @@
 {
   super();
   setLocale(new Locale("ca"));
+  this.dontTagLowercaseWithUppercase();
 }

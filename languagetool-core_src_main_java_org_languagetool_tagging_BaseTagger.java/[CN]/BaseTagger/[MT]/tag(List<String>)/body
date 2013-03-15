@@ -19,7 +19,7 @@
       addTokens(lowerTaggerTokens,l);
     }
     if (lowerTaggerTokens.isEmpty() && taggerTokens.isEmpty()) {
-      if (isLowercase) {
+      if (tagLowercaseWithUppercase && isLowercase) {
         upperTaggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(StringTools.uppercaseFirstChar(word)));
         if (!upperTaggerTokens.isEmpty()) {
           addTokens(upperTaggerTokens,l);
