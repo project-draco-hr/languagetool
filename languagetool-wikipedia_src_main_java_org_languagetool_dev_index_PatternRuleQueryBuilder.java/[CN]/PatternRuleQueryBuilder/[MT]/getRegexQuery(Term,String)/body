@@ -1,0 +1,11 @@
+{
+  try {
+    if (str.contains("?iu") || str.contains("?-i")) {
+      return getFallbackRegexQuery(str);
+    }
+    return new RegexpQuery(term);
+  }
+ catch (  IllegalArgumentException e) {
+    return getFallbackRegexQuery(str);
+  }
+}

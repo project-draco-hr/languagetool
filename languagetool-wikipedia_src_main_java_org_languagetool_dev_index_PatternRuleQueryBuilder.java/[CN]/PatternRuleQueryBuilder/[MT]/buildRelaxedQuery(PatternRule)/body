@@ -1,0 +1,18 @@
+{
+  final BooleanQuery booleanQuery=new BooleanQuery();
+  for (  Element element : rule.getElements()) {
+    try {
+      final BooleanClause clause=makeQuery(element);
+      booleanQuery.add(clause);
+    }
+ catch (    UnsupportedPatternRuleException e) {
+    }
+catch (    Exception e) {
+      throw new RuntimeException("Could not create query for rule " + rule.getId(),e);
+    }
+  }
+  if (booleanQuery.clauses().size() == 0) {
+    throw new UnsupportedPatternRuleException("No items found in rule that can be used to build a search query: " + rule);
+  }
+  return booleanQuery;
+}

@@ -5,6 +5,6 @@
   type.setIndexed(true);
   type.setTokenized(true);
   doc.add(new Field(FIELD_NAME,content,type));
-  doc.add(new Field(FIELD_NAME_LOWERCASE,content.toLowerCase(),type));
+  doc.add(new Field(FIELD_NAME_LOWERCASE,content,type));
   writer.addDocument(doc);
 }

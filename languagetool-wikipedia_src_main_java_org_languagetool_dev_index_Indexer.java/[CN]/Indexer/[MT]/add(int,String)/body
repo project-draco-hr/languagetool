@@ -5,7 +5,7 @@
   type.setIndexed(true);
   type.setTokenized(true);
   doc.add(new Field(FIELD_NAME,sentence,type));
-  doc.add(new Field(FIELD_NAME_LOWERCASE,sentence.toLowerCase(),type));
+  doc.add(new Field(FIELD_NAME_LOWERCASE,sentence,type));
   if (docCount != -1) {
     final FieldType countType=new FieldType();
     countType.setStored(true);

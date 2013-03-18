@@ -1,0 +1,4 @@
+IndexSearcher indexSearcher
+Query query
+Language language
+PatternRule rule

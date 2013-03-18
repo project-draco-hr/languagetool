@@ -1,0 +1,4 @@
+{
+  reader=DirectoryReader.open(directory);
+  indexSearcher=new IndexSearcher(reader);
+}

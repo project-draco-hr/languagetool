@@ -11,10 +11,7 @@
   final InputStream input=new ByteArrayInputStream(sb.toString().getBytes());
   final PatternRuleLoader ruleLoader=new PatternRuleLoader();
   final List<PatternRule> rules=ruleLoader.getRules(input,"test.xml");
-  final PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder();
-  final Query query1=patternRuleQueryBuilder.buildQuery(rules.get(0));
-  final Query query2=patternRuleQueryBuilder.buildPossiblyRelaxedQuery(rules.get(0));
-  assertEquals(query1,query2);
-  assertEquals(1,searcher.search(query1,null,1000).totalHits);
-  assertEquals(1,searcher.search(query2,null,1000).totalHits);
+  final PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder(language);
+  final Query query=patternRuleQueryBuilder.buildRelaxedQuery(rules.get(0));
+  assertEquals("+fieldLowercase:how +fieldLowercase:_pos_prp +fieldLowercase:thin " + "+spanNear([fieldLowercase:this, SpanMultiTermQueryWrapper(fieldLowercase:/_pos_(jj|dt)/)], 0, false) " + "+fieldLowercase:/idea|proposal/",query.toString());
 }

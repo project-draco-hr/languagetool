@@ -1,0 +1,36 @@
+{
+  final TopFieldCollector topCollector=TopFieldCollector.create(sort,maxHits,true,false,false,false);
+  final Counter clock=Counter.newCounter(true);
+  final int waitMillis=1000;
+  final TimeLimitingCollector collector=new TimeLimitingCollector(topCollector,clock,maxSearchTimeMillis / waitMillis);
+  collector.setBaseline(0);
+  final Thread counterThread=new Thread(){
+    @Override public void run(){
+      final long startTime=System.currentTimeMillis();
+      while (true) {
+        final long runTimeMillis=System.currentTimeMillis() - startTime;
+        if (runTimeMillis > maxSearchTimeMillis) {
+          return;
+        }
+        clock.addAndGet(1);
+        try {
+          Thread.sleep(waitMillis);
+        }
+ catch (        InterruptedException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    }
+  }
+;
+  counterThread.setName("LuceneSearchTimeoutThread");
+  counterThread.start();
+  boolean timeLimitActivated=false;
+  try {
+    indexSearcher.search(query,collector);
+  }
+ catch (  TimeLimitingCollector.TimeExceededException e) {
+    timeLimitActivated=true;
+  }
+  return new PossiblyLimitedTopDocs(topCollector.topDocs(),timeLimitActivated);
+}

@@ -18,8 +18,8 @@
           fieldType.setStored(true);
           fieldType.setTokenized(true);
           fieldType.setIndexed(true);
-          doc.add(new Field(PatternRuleQueryBuilder.FIELD_NAME,example,fieldType));
-          doc.add(new Field(PatternRuleQueryBuilder.FIELD_NAME_LOWERCASE,example.toLowerCase(),fieldType));
+          doc.add(new Field(FIELD_NAME,example,fieldType));
+          doc.add(new Field(FIELD_NAME_LOWERCASE,example,fieldType));
         }
         indexer.add(doc);
         ruleCount++;
@@ -29,5 +29,6 @@
   finally {
     indexer.close();
   }
+  errorSearcher=new Searcher(directory);
   return ruleCount;
 }

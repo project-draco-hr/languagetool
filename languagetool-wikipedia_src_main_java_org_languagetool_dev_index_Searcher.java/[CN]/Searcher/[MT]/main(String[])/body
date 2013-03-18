@@ -1,16 +1,26 @@
 {
   ensureCorrectUsageOrExit(args);
-  final Searcher searcher=new Searcher();
-  final String ruleId=args[0];
+  final long startTime=System.currentTimeMillis();
+  final String[] ruleIds=args[0].split(",");
   final File ruleFile=new File(args[1]);
   final String languageCode=args[2];
   final Language language=Language.getLanguageForShortName(languageCode);
   final File indexDir=new File(args[3]);
-  final PatternRule rule=searcher.getRuleById(ruleId,ruleFile);
-  final SearcherResult searcherResult=searcher.findRuleMatchesOnIndex(rule,language,indexDir);
-  int i=1;
-  for (  MatchingSentence ruleMatch : searcherResult.getMatchingSentences()) {
-    System.out.println(i + ": " + ruleMatch.getSentence());
-    i++;
+  final Searcher searcher=new Searcher(new SimpleFSDirectory(indexDir));
+  for (  String ruleId : ruleIds) {
+    final long ruleStartTime=System.currentTimeMillis();
+    final PatternRule rule=searcher.getRuleById(ruleId,ruleFile);
+    final SearcherResult searcherResult=searcher.findRuleMatchesOnIndex(rule,language);
+    int i=1;
+    if (searcherResult.getMatchingSentences().size() == 0) {
+      System.out.println("[no matches]");
+    }
+    for (    MatchingSentence ruleMatch : searcherResult.getMatchingSentences()) {
+      System.out.println(i + ": " + ruleMatch.getSentence());
+      i++;
+    }
+    System.out.println("Time: " + (System.currentTimeMillis() - ruleStartTime) + "ms");
+    System.out.println("==============================================================");
   }
+  System.out.println("Total time: " + (System.currentTimeMillis() - startTime) + "ms");
 }

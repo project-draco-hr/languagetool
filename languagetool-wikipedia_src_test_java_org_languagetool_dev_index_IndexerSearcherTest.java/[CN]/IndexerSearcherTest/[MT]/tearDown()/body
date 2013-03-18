@@ -1,8 +1,5 @@
 {
   super.tearDown();
-  if (searcher != null) {
-    searcher.getIndexReader().close();
-  }
   if (directory != null) {
     directory.close();
   }

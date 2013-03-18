@@ -1,4 +1,0 @@
-{
-  this.query=query;
-  isRelaxed=relaxed;
-}

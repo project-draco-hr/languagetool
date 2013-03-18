@@ -1,0 +1,8 @@
+{
+  if (element.getCaseSensitive()) {
+    return new Term(FIELD_NAME,str);
+  }
+ else {
+    return new Term(FIELD_NAME_LOWERCASE,str.toLowerCase());
+  }
+}

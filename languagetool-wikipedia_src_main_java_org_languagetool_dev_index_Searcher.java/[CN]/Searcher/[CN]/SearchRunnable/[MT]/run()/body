@@ -1,9 +1,15 @@
 {
   try {
     final Sort sort=new Sort(new SortField("docCount",SortField.Type.INT));
-    final PossiblyLimitedTopDocs limitedTopDocs=getTopDocs(indexSearcher,query,sort);
+    final long t1=System.currentTimeMillis();
     final JLanguageTool languageTool=getLanguageToolWithOneRule(language,rule);
+    final long langToolCreationTime=System.currentTimeMillis() - t1;
+    final long t2=System.currentTimeMillis();
+    final PossiblyLimitedTopDocs limitedTopDocs=getTopDocs(query,sort);
+    final long luceneTime=System.currentTimeMillis() - t2;
+    final long t3=System.currentTimeMillis();
     matchingSentences=findMatchingSentences(indexSearcher,limitedTopDocs.topDocs,languageTool);
+    System.out.println("Check done in " + langToolCreationTime + "/"+ luceneTime+ "/"+ (System.currentTimeMillis() - t3)+ "ms (LT creation/Lucene/matching) for "+ limitedTopDocs.topDocs.scoreDocs.length+ " docs, query "+ query.toString(FIELD_NAME_LOWERCASE));
   }
  catch (  Exception e) {
     exception=e;

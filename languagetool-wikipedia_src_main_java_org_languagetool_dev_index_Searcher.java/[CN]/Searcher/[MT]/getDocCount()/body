@@ -1,0 +1,10 @@
+{
+  final DirectoryReader reader=DirectoryReader.open(directory);
+  try {
+    final IndexSearcher indexSearcher=new IndexSearcher(reader);
+    return getDocCount(indexSearcher);
+  }
+  finally {
+    reader.close();
+  }
+}

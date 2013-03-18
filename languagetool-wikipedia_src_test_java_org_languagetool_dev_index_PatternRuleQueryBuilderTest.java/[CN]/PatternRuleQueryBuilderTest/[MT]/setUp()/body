@@ -1,7 +1,11 @@
 {
   super.setUp();
+  language=new English();
   directory=new RAMDirectory();
-  final LanguageToolAnalyzer analyzer=new LanguageToolAnalyzer(LUCENE_VERSION,new JLanguageTool(new English()),true);
+  final Map<String,Analyzer> analyzerMap=new HashMap<String,Analyzer>();
+  analyzerMap.put(FIELD_NAME,new LanguageToolAnalyzer(LUCENE_VERSION,new JLanguageTool(language),false));
+  analyzerMap.put(FIELD_NAME_LOWERCASE,new LanguageToolAnalyzer(LUCENE_VERSION,new JLanguageTool(language),true));
+  final Analyzer analyzer=new PerFieldAnalyzerWrapper(new DoNotUseAnalyzer(),analyzerMap);
   final IndexWriterConfig config=new IndexWriterConfig(LUCENE_VERSION,analyzer);
   final IndexWriter writer=new IndexWriter(directory,config);
   try {

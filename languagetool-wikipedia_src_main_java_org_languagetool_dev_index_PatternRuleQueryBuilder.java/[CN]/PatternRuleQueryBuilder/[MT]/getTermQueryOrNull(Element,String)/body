@@ -1,0 +1,22 @@
+{
+  if (termStr == null || termStr.isEmpty()) {
+    return null;
+  }
+  final Query termQuery;
+  final Term termQueryTerm=getTermQueryTerm(element,termStr);
+  if (element.isInflected() && element.isRegularExpression()) {
+    return null;
+  }
+ else   if (element.isRegularExpression()) {
+    termQuery=getRegexQuery(termQueryTerm,termStr);
+  }
+ else {
+    termQuery=new TermQuery(termQueryTerm);
+  }
+  if (element.getNegation()) {
+    return null;
+  }
+ else {
+    return new BooleanClause(termQuery,BooleanClause.Occur.MUST);
+  }
+}

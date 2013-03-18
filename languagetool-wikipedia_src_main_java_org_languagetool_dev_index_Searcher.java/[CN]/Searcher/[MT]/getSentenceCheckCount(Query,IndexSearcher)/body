@@ -1,0 +1,5 @@
+{
+  final int indexSize=indexSearcher.getIndexReader().numDocs();
+  final int sentencesChecked=Math.min(maxHits,indexSize);
+  return sentencesChecked;
+}
