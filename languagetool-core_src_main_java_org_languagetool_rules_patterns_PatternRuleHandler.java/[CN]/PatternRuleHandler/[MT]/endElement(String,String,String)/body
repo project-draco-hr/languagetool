@@ -5,6 +5,12 @@
  else   if (RULE.equals(qName)) {
     suggestionMatchesOutMsg=addLegacyMatches(suggestionMatchesOutMsg,suggestionsOutMsg.toString(),false);
     phraseElementInit();
+    if (relaxedMode && id == null) {
+      id="";
+    }
+    if (relaxedMode && name == null) {
+      name="";
+    }
     if (phraseElementList.isEmpty()) {
       final PatternRule rule=new PatternRule(id,language,elementList,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString());
       prepareRule(rule);
