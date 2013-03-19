@@ -8,9 +8,9 @@
   while (i < tokens.length) {
     final boolean tokenIsTab=tokens[i].getToken().equals("\t");
     final boolean prevTokenIsLinebreak=tokens[i - 1].isLinebreak();
-    if (tokens[i].isWhitespace() && prevWhite && !tokenIsTab&& !prevTokenIsLinebreak) {
+    if ((tokens[i].isWhitespace() || StringTools.isNonBreakingWhitespace(tokens[i].getToken())) && prevWhite && !tokenIsTab&& !prevTokenIsLinebreak) {
       final int pos=tokens[i - 1].getStartPos();
-      while (i < tokens.length && tokens[i].isWhitespace()) {
+      while (i < tokens.length && (tokens[i].isWhitespace() || StringTools.isNonBreakingWhitespace(tokens[i].getToken()))) {
         prevLen+=tokens[i].getToken().length();
         i++;
       }
@@ -20,7 +20,7 @@
       ruleMatches.add(ruleMatch);
     }
     if (i < tokens.length) {
-      prevWhite=tokens[i].isWhitespace();
+      prevWhite=tokens[i].isWhitespace() || StringTools.isNonBreakingWhitespace(tokens[i].getToken());
       prevLen=tokens[i].getToken().length();
       prevPos=tokens[i].getStartPos();
       i++;
