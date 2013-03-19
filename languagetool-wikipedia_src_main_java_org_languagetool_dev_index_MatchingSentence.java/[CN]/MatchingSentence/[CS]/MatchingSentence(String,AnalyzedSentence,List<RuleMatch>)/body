@@ -1,4 +1,5 @@
 {
   this.sentence=sentence;
+  this.analyzedSentence=analyzedSentence;
   this.ruleMatches=ruleMatches;
 }
