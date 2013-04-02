@@ -39,10 +39,10 @@ catch (  ArticleLimitReachedException e) {
   }
  finally {
     if (xmlHandler != null) {
+      final float matchesPerDoc=(float)xmlHandler.getRuleMatchCount() / xmlHandler.getArticleCount();
+      System.out.printf(lang + ": %d total matches\n",xmlHandler.getRuleMatchCount());
+      System.out.printf(lang + ": ??%.2f rule matches per document\n",matchesPerDoc);
       xmlHandler.close();
     }
-    final float matchesPerDoc=(float)xmlHandler.getRuleMatchCount() / xmlHandler.getArticleCount();
-    System.out.printf(lang + ": %d total matches\n",xmlHandler.getRuleMatchCount());
-    System.out.printf(lang + ": ??%.2f rule matches per document\n",matchesPerDoc);
   }
 }
