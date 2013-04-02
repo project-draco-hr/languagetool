@@ -59,7 +59,7 @@
         if (newRule1.numberOfExamples() > oldRules.get(j).numberOfExamples()) {
           final Rule r=newRule1;
           for (int k=0; k < r.correct.size(); k++) {
-            for (int l=0; l < oldRules.get(j).correct.size(); l++) {
+            for (int l=0; l < oldRules.get(j).correct.size() && r.correct.size() > 0; l++) {
               if (r.correct.get(k).equals(oldRules.get(j).correct.get(l))) {
                 r.correct.remove(k);
                 if (k > 0)                 k--;
@@ -67,7 +67,7 @@
             }
           }
           for (int k=0; k < r.incorrect.size(); k++) {
-            for (int l=0; l < oldRules.get(j).incorrect.size(); l++) {
+            for (int l=0; l < oldRules.get(j).incorrect.size() && r.incorrect.size() > 0; l++) {
               if (r.incorrect.get(k).equals(oldRules.get(j).incorrect.get(l))) {
                 r.incorrect.remove(k);
                 if (k > 0)                 k--;
