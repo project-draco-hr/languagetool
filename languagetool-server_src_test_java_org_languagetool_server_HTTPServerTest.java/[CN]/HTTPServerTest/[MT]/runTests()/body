@@ -44,7 +44,7 @@
   disableAvsAn[0]="EN_A_VS_AN";
   assertTrue(!checkWithOptions(english,german,"This is an test",nothing,disableAvsAn).contains("an test"));
   assertTrue(checkWithOptions(english,german,"This is an test",disableAvsAn,nothing).contains("an test"));
-  assertTrue(!checkWithOptions(english,german,"We will berate you",disableAvsAn,nothing).contains("BERATE"));
+  assertTrue(checkWithOptions(english,german,"We will berate you",disableAvsAn,nothing).contains("BERATE"));
   final String[] twoRules=new String[2];
   twoRules[0]="EN_A_VS_AN";
   twoRules[1]="BERATE";
