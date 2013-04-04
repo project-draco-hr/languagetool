@@ -10,6 +10,9 @@
   if (enabledRules.length > 0) {
     urlOptions+="&enabled=" + StringUtils.join(enabledRules,",");
   }
+  if (useEnabledOnly) {
+    urlOptions+="&enabledOnly=yes";
+  }
   final URL url=new URL("http://localhost:" + DEFAULT_PORT + urlOptions);
   return HTTPTools.checkAtUrl(url);
 }

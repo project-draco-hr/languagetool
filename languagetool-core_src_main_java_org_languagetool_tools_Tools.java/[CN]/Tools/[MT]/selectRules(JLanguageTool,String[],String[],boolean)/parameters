@@ -1,4 +1,4 @@
 JLanguageTool lt
 String[] disabledRules
 String[] enabledRules
-boolean keepEnabledRulesByDefault
+boolean useEnabledOnly

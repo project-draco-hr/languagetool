@@ -3,3 +3,4 @@ Language motherTongue
 String text
 String[] enabledRules
 String[] disabledRules
+boolean useEnabledOnly

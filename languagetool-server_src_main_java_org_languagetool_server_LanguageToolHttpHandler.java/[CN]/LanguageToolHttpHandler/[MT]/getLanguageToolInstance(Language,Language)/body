@@ -7,7 +7,7 @@
     configureGUI(newLanguageTool);
   }
   if (useQuerySettings) {
-    Tools.selectRules(newLanguageTool,disabledRules,enabledRules,true);
+    Tools.selectRules(newLanguageTool,disabledRules,enabledRules,useEnabledOnly);
   }
   return newLanguageTool;
 }
