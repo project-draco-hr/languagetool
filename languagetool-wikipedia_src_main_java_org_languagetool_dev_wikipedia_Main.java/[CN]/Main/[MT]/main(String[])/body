@@ -20,6 +20,9 @@
  else     if (command.equals("search")) {
       Searcher.main(remainingArgs);
     }
+ else     if (command.equals("version")) {
+      System.out.println(JLanguageTool.VERSION + " (" + JLanguageTool.BUILD_DATE+ ")");
+    }
  else {
       System.out.println("Error: unknown command '" + command + "'");
       printUsageAndExit();
