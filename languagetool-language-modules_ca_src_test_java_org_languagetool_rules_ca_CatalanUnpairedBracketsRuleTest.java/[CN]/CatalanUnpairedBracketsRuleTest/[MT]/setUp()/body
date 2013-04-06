@@ -1,0 +1,4 @@
+{
+  rule=new CatalanUnpairedBracketsRule(TestTools.getEnglishMessages(),new Catalan());
+  langTool=new JLanguageTool(new Catalan());
+}

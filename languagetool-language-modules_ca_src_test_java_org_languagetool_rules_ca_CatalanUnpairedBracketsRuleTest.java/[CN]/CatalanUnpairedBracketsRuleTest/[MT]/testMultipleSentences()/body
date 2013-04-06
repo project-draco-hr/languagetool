@@ -1,0 +1,11 @@
+{
+  final JLanguageTool tool=new JLanguageTool(new Catalan());
+  tool.enableRule("CA_UNPAIRED_BRACKETS");
+  List<RuleMatch> matches;
+  matches=tool.check("Aquesta ??s una sent??ncia m??ltiple amb claud??tors: " + "[Ac?? hi ha un claud??tor. Amb algun text.] i ac?? continua.\n");
+  assertEquals(0,matches.size());
+  matches=tool.check("Aquesta ??s una sent??ncia m??ltiple amb claud??tors: " + "[Ac?? hi ha un claud??tor. Amb algun text. I ac?? continua.\n\n");
+  assertEquals(1,matches.size());
+  matches=tool.check("Aquesta ??s una sent??ncia m??ltiple amb par??ntesis " + "(Ac?? hi ha un par??ntesi. \n\n Amb algun text.) i ac?? continua.");
+  assertEquals(2,matches.size());
+}

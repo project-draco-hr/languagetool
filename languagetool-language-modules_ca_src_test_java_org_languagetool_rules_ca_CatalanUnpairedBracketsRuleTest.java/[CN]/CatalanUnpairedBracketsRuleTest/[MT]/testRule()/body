@@ -1,0 +1,32 @@
+{
+  assertCorrect("(Una frase de prova).");
+  assertCorrect("Aquesta ??s la paraula 'prova'.");
+  assertCorrect("This is a sentence with a smiley :-)");
+  assertCorrect("This is a sentence with a smiley ;-) and so on...");
+  assertCorrect("Aquesta ??s l'hora de les decisions.");
+  assertCorrect("Aquesta ??s l???hora de les decisions.");
+  assertCorrect("This is a [test] sentence...");
+  assertCorrect("The plight of Tamil refugees caused a surge of support from most of the Tamil political parties.[90]");
+  assertCorrect("This is what he said: \"We believe in freedom. This is what we do.\"");
+  assertCorrect("(([20] [20] [20]))");
+  assertCorrect("This is a \"special test\", right?");
+  assertCorrect("We discussed this in Chapter 1).");
+  assertCorrect("The jury recommended that: (1) Four additional deputies be employed.");
+  assertCorrect("We discussed this in section 1a).");
+  assertCorrect("We discussed this in section iv).");
+  assertCorrect("In addition, the government would pay a $1,000 \"cost of education\" grant to the schools.");
+  assertCorrect("Porta'l cap ac??.");
+  assertCorrect("Porta-me'n cinquanta!");
+  assertIncorrect("Aquesta ??s l???hora de les decisions.");
+  assertIncorrect("(This is a test sentence.");
+  assertIncorrect("This is a test with an apostrophe &'.");
+  assertIncorrect("&'");
+  assertIncorrect("!'");
+  assertIncorrect("What?'");
+  assertIncorrect("Some text (and some funny remark :-) with more text to follow");
+  RuleMatch[] matches;
+  matches=rule.match(langTool.getAnalyzedSentence("(This is a test??? sentence."));
+  assertEquals(2,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("This [is (a test} sentence."));
+  assertEquals(3,matches.length);
+}
