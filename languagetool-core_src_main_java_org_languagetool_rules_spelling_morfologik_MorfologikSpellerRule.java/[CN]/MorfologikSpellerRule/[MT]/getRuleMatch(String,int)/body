@@ -2,7 +2,19 @@
   final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
   if (speller.isMisspelled(word)) {
     final RuleMatch ruleMatch=new RuleMatch(this,startPos,startPos + word.length(),messages.getString("spelling"),messages.getString("desc_spelling_short"));
-    final List<String> suggestions=speller.getSuggestions(word);
+    List<String> suggestions=speller.getSuggestions(word);
+    final String wordWithoutDiacritics=removeAccents(word);
+    if (suggestions.size() < 5 && !word.equals(wordWithoutDiacritics)) {
+      List<String> moreSuggestions=speller.getSuggestions(wordWithoutDiacritics);
+      if (!speller.isMisspelled(wordWithoutDiacritics)) {
+        moreSuggestions.add(wordWithoutDiacritics);
+      }
+      for (int i=0; i < moreSuggestions.size(); i++) {
+        if (!suggestions.contains(moreSuggestions.get(i))) {
+          suggestions.add(moreSuggestions.get(i));
+        }
+      }
+    }
     if (!suggestions.isEmpty()) {
       ruleMatch.setSuggestedReplacements(suggestions);
     }
