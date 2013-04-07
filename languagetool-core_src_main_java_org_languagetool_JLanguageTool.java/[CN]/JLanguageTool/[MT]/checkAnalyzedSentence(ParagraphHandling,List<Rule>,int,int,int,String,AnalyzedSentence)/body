@@ -26,7 +26,7 @@ case ONLYPARA:
 case NORMAL:
 default :
 }
-final RuleMatch[] thisMatches=rule.match(analyzedText);
+final RuleMatch[] thisMatches=rule.match(analyzedSentence);
 for (final RuleMatch element1 : thisMatches) {
   final RuleMatch thisMatch=adjustRuleMatchPos(element1,tokenCount,columnCount,lineCount,sentence);
   sentenceMatches.add(thisMatch);

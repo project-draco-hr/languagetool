@@ -4,4 +4,4 @@ int tokenCount
 int lineCount
 int columnCount
 String sentence
-AnalyzedSentence analyzedText
+AnalyzedSentence analyzedSentence

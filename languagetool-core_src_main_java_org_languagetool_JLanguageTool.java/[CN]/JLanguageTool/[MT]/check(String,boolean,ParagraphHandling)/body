@@ -17,16 +17,16 @@
   unknownWords=new HashSet<String>();
   for (  final String sentence : sentences) {
     sentenceCount++;
-    AnalyzedSentence analyzedText=getAnalyzedSentence(sentence);
-    rememberUnknownWords(analyzedText);
+    AnalyzedSentence analyzedSentence=getAnalyzedSentence(sentence);
+    rememberUnknownWords(analyzedSentence);
     if (sentenceCount == sentences.size()) {
-      final AnalyzedTokenReadings[] anTokens=analyzedText.getTokens();
+      final AnalyzedTokenReadings[] anTokens=analyzedSentence.getTokens();
       anTokens[anTokens.length - 1].setParaEnd();
-      analyzedText=new AnalyzedSentence(anTokens);
+      analyzedSentence=new AnalyzedSentence(anTokens);
     }
-    printIfVerbose(analyzedText.toString());
-    printIfVerbose(analyzedText.getAnnotations());
-    final List<RuleMatch> sentenceMatches=checkAnalyzedSentence(paraMode,allRules,charCount,lineCount,columnCount,sentence,analyzedText);
+    printIfVerbose(analyzedSentence.toString());
+    printIfVerbose(analyzedSentence.getAnnotations());
+    final List<RuleMatch> sentenceMatches=checkAnalyzedSentence(paraMode,allRules,charCount,lineCount,columnCount,sentence,analyzedSentence);
     Collections.sort(sentenceMatches);
     ruleMatches.addAll(sentenceMatches);
     charCount+=sentence.length();

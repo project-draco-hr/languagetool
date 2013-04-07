@@ -1,2 +1,2 @@
-AnalyzedSentence sourceText
-AnalyzedSentence targetText
+AnalyzedSentence sourceSentence
+AnalyzedSentence targetSentence
