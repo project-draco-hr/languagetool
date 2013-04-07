@@ -14,23 +14,23 @@
     taggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(word));
     lowerTaggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(lowerWord));
     final boolean isLowercase=word.equals(lowerWord);
+    final boolean isMixedcase=StringTools.isMixedCase(word);
     addTokens(taggerTokens,l);
-    if (!isLowercase) {
+    if (!isLowercase && !isMixedcase) {
       addTokens(lowerTaggerTokens,l);
     }
-    if (lowerTaggerTokens.isEmpty() && taggerTokens.isEmpty()) {
-      if (tagLowercaseWithUppercase && isLowercase) {
-        upperTaggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(StringTools.uppercaseFirstChar(word)));
-        if (!upperTaggerTokens.isEmpty()) {
-          addTokens(upperTaggerTokens,l);
-        }
- else {
-          l.add(new AnalyzedToken(word,null,null));
+    if (tagLowercaseWithUppercase) {
+      if (lowerTaggerTokens.isEmpty() && taggerTokens.isEmpty()) {
+        if (isLowercase) {
+          upperTaggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(StringTools.uppercaseFirstChar(word)));
+          if (!upperTaggerTokens.isEmpty()) {
+            addTokens(upperTaggerTokens,l);
+          }
         }
       }
- else {
-        l.add(new AnalyzedToken(word,null,null));
-      }
+    }
+    if (l.isEmpty()) {
+      l.add(new AnalyzedToken(word,null,null));
     }
     tokenReadings.add(new AnalyzedTokenReadings(l,pos));
     pos+=word.length();

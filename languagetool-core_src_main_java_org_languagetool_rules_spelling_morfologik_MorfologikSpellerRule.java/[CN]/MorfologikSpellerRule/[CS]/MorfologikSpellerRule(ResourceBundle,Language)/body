@@ -1,5 +1,6 @@
 {
   super(messages,language);
   super.setCategory(new Category(messages.getString("category_typo")));
+  this.conversionLocale=conversionLocale != null ? conversionLocale : Locale.getDefault();
   init();
 }
