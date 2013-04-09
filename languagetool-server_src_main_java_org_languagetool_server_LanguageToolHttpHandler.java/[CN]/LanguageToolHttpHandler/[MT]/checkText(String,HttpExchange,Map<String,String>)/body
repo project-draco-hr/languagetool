@@ -29,7 +29,7 @@
   useEnabledOnly=false;
   final String enabledOnly=parameters.get("enabledOnly");
   if (null != enabledOnly) {
-    useEnabledOnly=(enabledOnly.equals("yes"));
+    useEnabledOnly=enabledOnly.equals("yes");
   }
   final String disabledParam=parameters.get("disabled");
   disabledRules=new String[0];
