@@ -1,0 +1,3 @@
+{
+  return messages.getString("desc_whitespace_before_punctuation");
+}
