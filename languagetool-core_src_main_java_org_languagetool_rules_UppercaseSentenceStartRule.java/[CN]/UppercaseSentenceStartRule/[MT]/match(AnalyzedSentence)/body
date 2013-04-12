@@ -30,7 +30,7 @@
   }
   boolean preventError=false;
   final String langCode=language.getShortName();
-  final boolean languageHasSpecialCases=langCode.equals("ru") || langCode.equals("pl") || langCode.equals("uk")|| langCode.equals("be")|| langCode.equals("en")|| langCode.equals("it")|| langCode.equals("de");
+  final boolean languageHasSpecialCases=langCode.equals("ru") || langCode.equals("pl") || langCode.equals("uk")|| langCode.equals("be")|| langCode.equals(Locale.ENGLISH.getLanguage())|| langCode.equals(Locale.ITALIAN.getLanguage())|| langCode.equals(Locale.GERMAN.getLanguage());
   if (languageHasSpecialCases) {
     if (";".equals(lastParagraphString) || ";".equals(lastToken) || ",".equals(lastParagraphString)|| ",".equals(lastToken)) {
       preventError=true;
