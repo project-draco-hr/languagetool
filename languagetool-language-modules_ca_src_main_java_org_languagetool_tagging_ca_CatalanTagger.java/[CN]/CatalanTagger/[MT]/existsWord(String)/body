@@ -1,12 +1,12 @@
 {
-  if (morfologik == null) {
+  if (dictLookup == null) {
     final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(DICT_FILENAME);
-    morfologik=new DictionaryLookup(Dictionary.read(url));
+    dictLookup=new DictionaryLookup(Dictionary.read(url));
   }
-  final String lowerWord=word.toLowerCase(plLocale);
-  List<WordData> posTagsFromDict=morfologik.lookup(lowerWord);
+  final String lowerWord=word.toLowerCase(conversionLocale);
+  List<WordData> posTagsFromDict=dictLookup.lookup(lowerWord);
   if (posTagsFromDict.isEmpty()) {
-    posTagsFromDict=morfologik.lookup(word);
+    posTagsFromDict=dictLookup.lookup(word);
     if (posTagsFromDict.isEmpty())     return false;
   }
   return true;
