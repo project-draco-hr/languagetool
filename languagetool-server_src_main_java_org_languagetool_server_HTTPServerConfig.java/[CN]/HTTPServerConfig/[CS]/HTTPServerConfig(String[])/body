@@ -9,5 +9,8 @@
  else     if ("--public".equals(args[i])) {
       publicAccess=true;
     }
+ else     if ("--allow-origin".equals(args[i])) {
+      allowOriginUrl=args[++i];
+    }
   }
 }
