@@ -1,5 +1,7 @@
 {
-  if (replacement == null)   throw new NullPointerException("replacement might be empty but not null");
+  if (replacement == null) {
+    throw new NullPointerException("replacement might be empty but not null");
+  }
   final List<String> replacements=new ArrayList<String>();
   replacements.add(replacement);
   setSuggestedReplacements(replacements);

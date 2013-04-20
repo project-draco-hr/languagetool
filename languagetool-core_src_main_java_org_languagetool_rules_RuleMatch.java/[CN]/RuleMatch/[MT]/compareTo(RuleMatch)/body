@@ -1,6 +1,12 @@
 {
-  if (other == null)   throw new ClassCastException();
-  if (getFromPos() < other.getFromPos())   return -1;
-  if (getFromPos() > other.getFromPos())   return 1;
+  if (other == null) {
+    throw new ClassCastException();
+  }
+  if (getFromPos() < other.getFromPos()) {
+    return -1;
+  }
+  if (getFromPos() > other.getFromPos()) {
+    return 1;
+  }
   return 0;
 }
