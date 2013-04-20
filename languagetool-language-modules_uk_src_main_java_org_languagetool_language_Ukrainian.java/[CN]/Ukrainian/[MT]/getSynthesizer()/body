@@ -1,0 +1,6 @@
+{
+  if (synthesizer == null) {
+    synthesizer=new UkrainianSynthesizer();
+  }
+  return synthesizer;
+}
