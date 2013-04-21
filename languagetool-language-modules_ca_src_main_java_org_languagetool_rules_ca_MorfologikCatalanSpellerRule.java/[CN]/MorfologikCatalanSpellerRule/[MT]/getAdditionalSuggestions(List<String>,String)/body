@@ -1,0 +1,16 @@
+{
+  final String wordWithoutDiacritics=removeAccents(word).toLowerCase(conversionLocale);
+  List<String> moreSuggestions=new ArrayList<String>();
+  if (suggestions.size() < 5 && !word.equals(wordWithoutDiacritics)) {
+    moreSuggestions=speller.getSuggestions(wordWithoutDiacritics);
+    if (!speller.isMisspelled(wordWithoutDiacritics)) {
+      moreSuggestions.add(wordWithoutDiacritics);
+    }
+  }
+  for (int i=0; i < moreSuggestions.size(); i++) {
+    if (!suggestions.contains(moreSuggestions.get(i))) {
+      suggestions.add(moreSuggestions.get(i));
+    }
+  }
+  return suggestions;
+}

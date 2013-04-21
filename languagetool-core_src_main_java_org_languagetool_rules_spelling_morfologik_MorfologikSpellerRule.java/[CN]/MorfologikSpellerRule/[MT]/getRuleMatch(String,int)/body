@@ -9,18 +9,7 @@
       return ruleMatches;
     }
     List<String> suggestions=speller.getSuggestions(word);
-    final String wordWithoutDiacritics=removeAccents(word).toLowerCase(conversionLocale);
-    if (suggestions.size() < 5 && !word.equals(wordWithoutDiacritics)) {
-      List<String> moreSuggestions=speller.getSuggestions(wordWithoutDiacritics);
-      if (!speller.isMisspelled(wordWithoutDiacritics)) {
-        moreSuggestions.add(wordWithoutDiacritics);
-      }
-      for (int i=0; i < moreSuggestions.size(); i++) {
-        if (!suggestions.contains(moreSuggestions.get(i))) {
-          suggestions.add(moreSuggestions.get(i));
-        }
-      }
-    }
+    suggestions=getAdditionalSuggestions(suggestions,word);
     if (!suggestions.isEmpty()) {
       ruleMatch.setSuggestedReplacements(suggestions);
     }
