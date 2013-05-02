@@ -1,0 +1,13 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  for (  AnalyzedTokenReadings tokenReadings : tokens) {
+    String tokenString=tokenReadings.getToken();
+    List<String> replacements=isCaseSensitive() ? wrongWords.get(tokenString) : wrongWords.get(tokenString.toLowerCase(getLocale()));
+    if (replacements != null && replacements.size() > 0) {
+      RuleMatch potentialRuleMatch=createRuleMatch(tokenReadings,replacements);
+      ruleMatches.add(potentialRuleMatch);
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}
