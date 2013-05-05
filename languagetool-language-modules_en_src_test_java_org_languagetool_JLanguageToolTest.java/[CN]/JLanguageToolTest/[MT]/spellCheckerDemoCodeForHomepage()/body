@@ -1,0 +1,13 @@
+{
+  JLanguageTool langTool=new JLanguageTool(new BritishEnglish());
+  for (  Rule rule : langTool.getAllRules()) {
+    if (!rule.isSpellingRule()) {
+      langTool.disableRule(rule.getId());
+    }
+  }
+  List<RuleMatch> matches=langTool.check("A speling error");
+  for (  RuleMatch match : matches) {
+    System.out.println("Potential typo at line " + match.getLine() + ", column "+ match.getColumn()+ ": "+ match.getMessage());
+    System.out.println("Suggested correction(s): " + match.getSuggestedReplacements());
+  }
+}
