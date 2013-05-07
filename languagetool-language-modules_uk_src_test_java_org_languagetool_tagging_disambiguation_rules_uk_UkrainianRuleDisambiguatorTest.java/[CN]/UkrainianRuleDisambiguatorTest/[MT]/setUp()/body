@@ -2,6 +2,6 @@
   tagger=new UkrainianTagger();
   tokenizer=new UkrainianWordTokenizer();
   sentenceTokenizer=new SRXSentenceTokenizer(new Ukrainian());
-  disambiguator=new UkrainianRuleDisambiguator();
+  disambiguator=new UkrainianHybridDisambiguator();
   demoDisambiguator=new DemoDisambiguator();
 }
