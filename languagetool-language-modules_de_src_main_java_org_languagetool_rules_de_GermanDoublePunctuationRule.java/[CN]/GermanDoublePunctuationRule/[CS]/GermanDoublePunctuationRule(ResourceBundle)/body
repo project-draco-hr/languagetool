@@ -1,3 +1,9 @@
 {
   super(messages);
+  try {
+    setUrl(new URL("http://www.canoo.net/services/GermanSpelling/Amtlich/Interpunktion/pgf101-105.html#pgf103"));
+  }
+ catch (  MalformedURLException e) {
+    throw new RuntimeException(e);
+  }
 }
