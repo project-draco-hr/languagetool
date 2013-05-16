@@ -1,0 +1,8 @@
+{
+  String tokenString=tokenReadings.getToken();
+  String msg=tokenString + getSuggestion(tokenString) + StringUtils.join(replacements,", ");
+  int pos=tokenReadings.getStartPos();
+  RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + tokenString.length(),msg,getShort());
+  potentialRuleMatch.setSuggestedReplacements(replacements);
+  return potentialRuleMatch;
+}

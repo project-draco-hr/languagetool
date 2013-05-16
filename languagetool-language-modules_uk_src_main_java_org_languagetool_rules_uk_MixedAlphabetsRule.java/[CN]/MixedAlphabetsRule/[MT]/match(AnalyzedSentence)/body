@@ -1,0 +1,21 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  for (  AnalyzedTokenReadings tokenReadings : tokens) {
+    String tokenString=tokenReadings.getToken();
+    if (MIXED_ALPHABETS.matcher(tokenString).matches()) {
+      List<String> replacements=new ArrayList<String>();
+      if (!LATIN_ONLY.matcher(tokenString).matches()) {
+        replacements.add(toCyrillic(tokenString));
+      }
+      if (!CYRILLIC_ONLY.matcher(tokenString).matches()) {
+        replacements.add(toLatin(tokenString));
+      }
+      if (replacements.size() > 0) {
+        RuleMatch potentialRuleMatch=createRuleMatch(tokenReadings,replacements);
+        ruleMatches.add(potentialRuleMatch);
+      }
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}

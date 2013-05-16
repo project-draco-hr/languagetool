@@ -1,0 +1,6 @@
+{
+  for (  Map.Entry<Character,Character> entry : toLatMap.entrySet()) {
+    word=word.replace(entry.getKey(),entry.getValue());
+  }
+  return word;
+}

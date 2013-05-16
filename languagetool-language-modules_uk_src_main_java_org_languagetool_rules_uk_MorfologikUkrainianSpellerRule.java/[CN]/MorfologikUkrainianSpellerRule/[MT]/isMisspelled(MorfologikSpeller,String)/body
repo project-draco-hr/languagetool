@@ -1,0 +1,11 @@
+{
+  if (!super.isMisspelled(speller,word))   return false;
+  if (word.contains(COMPOUND_CHAR)) {
+    String[] words=word.split(COMPOUND_CHAR);
+    for (    String singleWord : words) {
+      if (speller.isMisspelled(singleWord))       return true;
+    }
+    return false;
+  }
+  return true;
+}

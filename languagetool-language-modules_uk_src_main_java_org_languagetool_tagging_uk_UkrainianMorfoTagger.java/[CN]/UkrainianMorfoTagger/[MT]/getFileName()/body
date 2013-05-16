@@ -1,3 +1,0 @@
-{
-  return JLanguageTool.getDataBroker().getResourceDir() + RESOURCE_FILENAME;
-}

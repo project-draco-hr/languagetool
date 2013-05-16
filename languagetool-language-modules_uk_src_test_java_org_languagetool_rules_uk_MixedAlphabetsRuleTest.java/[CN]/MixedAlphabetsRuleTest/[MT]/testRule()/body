@@ -1,0 +1,13 @@
+{
+  final MixedAlphabetsRule rule=new MixedAlphabetsRule(TestTools.getMessages("Ukrainian"));
+  final JLanguageTool langTool=new JLanguageTool(new Ukrainian());
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("????????????")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("not mixed")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("123454")).length);
+  RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("????i??????"));
+  assertEquals(1,matches.length);
+  assertEquals(Arrays.asList("????????????"),matches[0].getSuggestedReplacements());
+  matches=rule.match(langTool.getAnalyzedSentence("m????ed"));
+  assertEquals(1,matches.length);
+  assertEquals(Arrays.asList("mixed"),matches[0].getSuggestedReplacements());
+}
