@@ -1,4 +1,5 @@
 {
+  assertCorrect("el cor m'anava a cent per hora.");
   assertCorrect("No li ho ensenyis, que el far??s delir.");
   assertCorrect("m'aniria b?? probablement posar els quilos");
   assertCorrect("per a portar-te aigua");
