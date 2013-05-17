@@ -1,4 +1,6 @@
 {
+  assertCorrect("(l'execuci?? a mans d'\"especialistes\")");
+  assertCorrect("\"Vine\", li va dir.");
   assertCorrect("(Una frase de prova).");
   assertCorrect("Aquesta ??s la paraula 'prova'.");
   assertCorrect("This is a sentence with a smiley :-)");
@@ -17,6 +19,7 @@
   assertCorrect("In addition, the government would pay a $1,000 \"cost of education\" grant to the schools.");
   assertCorrect("Porta'l cap ac??.");
   assertCorrect("Porta-me'n cinquanta!");
+  assertIncorrect("Vine\", li va dir.");
   assertIncorrect("Aquesta ??s l???hora de les decisions.");
   assertIncorrect("(This is a test sentence.");
   assertIncorrect("This is a test with an apostrophe &'.");
