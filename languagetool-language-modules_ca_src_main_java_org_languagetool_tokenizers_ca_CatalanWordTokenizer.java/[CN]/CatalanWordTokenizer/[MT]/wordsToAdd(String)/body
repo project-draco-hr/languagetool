@@ -1,16 +1,22 @@
 {
   final List<String> l=new ArrayList<String>();
-  if (!s.contains("-") && !s.isEmpty())   l.add(s);
+  if (!s.contains("-") && !s.isEmpty()) {
+    l.add(s);
+  }
  else {
     try {
-      if (tagger.existsWord(s))       l.add(s);
+      if (tagger.existsWord(s)) {
+        l.add(s);
+      }
  else {
         final StringTokenizer st2=new StringTokenizer(s,"-",true);
-        while (st2.hasMoreElements())         l.add(st2.nextToken());
+        while (st2.hasMoreElements()) {
+          l.add(st2.nextToken());
+        }
       }
     }
  catch (    IOException e) {
-      e.printStackTrace();
+      throw new RuntimeException(e);
     }
   }
   return l;

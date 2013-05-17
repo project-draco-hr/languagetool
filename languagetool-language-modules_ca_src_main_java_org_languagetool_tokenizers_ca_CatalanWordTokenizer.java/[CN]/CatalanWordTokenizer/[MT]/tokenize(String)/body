@@ -19,7 +19,9 @@
         l.addAll(wordsToAdd(groupStr));
       }
     }
- else     l.addAll(wordsToAdd(s));
+ else {
+      l.addAll(wordsToAdd(s));
+    }
   }
   return l;
 }
