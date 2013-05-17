@@ -1,6 +1,10 @@
 {
   CatalanWordTokenizer wordTokenizer=new CatalanWordTokenizer();
-  List<String> tokens=wordTokenizer.tokenize("Emporta-te'ls a l'observatori dels mars");
+  List<String> tokens;
+  tokens=wordTokenizer.tokenize("L'\"ala bastarda\".");
+  assertEquals(tokens.size(),7);
+  assertEquals("[L', \", ala,  , bastarda, \", .]",tokens.toString());
+  tokens=wordTokenizer.tokenize("Emporta-te'ls a l'observatori dels mars");
   assertEquals(tokens.size(),13);
   assertEquals("[Emporta, -te, 'ls,  , a,  , l', observatori,  , de, ls,  , mars]",tokens.toString());
   tokens=wordTokenizer.tokenize("El tren Barcelona-Val??ncia");

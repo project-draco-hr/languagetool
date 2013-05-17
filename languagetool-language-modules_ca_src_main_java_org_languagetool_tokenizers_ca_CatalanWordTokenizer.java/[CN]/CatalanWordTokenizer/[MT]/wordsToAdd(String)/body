@@ -1,6 +1,6 @@
 {
   final List<String> l=new ArrayList<String>();
-  if (!s.contains("-"))   l.add(s);
+  if (!s.contains("-") && !s.isEmpty())   l.add(s);
  else {
     try {
       if (tagger.existsWord(s))       l.add(s);
