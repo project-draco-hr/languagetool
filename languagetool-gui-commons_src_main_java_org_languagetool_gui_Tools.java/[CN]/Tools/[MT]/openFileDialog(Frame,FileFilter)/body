@@ -2,9 +2,5 @@
   final JFileChooser jfc=new JFileChooser();
   jfc.setFileFilter(fileFilter);
   jfc.showOpenDialog(frame);
-  final File file=jfc.getSelectedFile();
-  if (file == null) {
-    return null;
-  }
-  return file;
+  return jfc.getSelectedFile();
 }
