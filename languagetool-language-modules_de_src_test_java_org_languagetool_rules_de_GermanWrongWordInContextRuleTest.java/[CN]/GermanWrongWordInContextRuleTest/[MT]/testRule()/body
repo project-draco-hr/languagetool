@@ -11,6 +11,7 @@
   assertGood("Ich male ein Bild einer M??hle.");
   assertGood("Das Bild zeigt eine mahlende M??hle.");
   assertGood("Eine mahlende M??hle zeigt das Bild.");
+  assertGood("Wenn du mal etwas Mehl brauchst, kannst du zu mir kommen.");
   assertBad("Weizen ausmalen.");
   assertBad("Ich mahle das Bild aus.");
   assertBad("Eine M??hle wird zum Malen verwendet.");
