@@ -3,6 +3,7 @@
   assertCorrect("This is a word 'test'.");
   assertCorrect("This is a sentence with a smiley :-)");
   assertCorrect("This is a sentence with a smiley ;-) and so on...");
+  assertCorrect("I don't know.");
   assertCorrect("This is the joint presidents' declaration.");
   assertCorrect("The screen is 20\" wide.");
   assertCorrect("This is a [test] sentence...");
@@ -18,6 +19,9 @@
   assertCorrect("Paradise lost to the alleged water needs of Texas' big cities Thursday.");
   assertCorrect("Kill 'em all!");
   assertCorrect("Puttin' on the Ritz");
+  assertCorrect("(Ketab fi Isti'mal al-'Adad al-Hindi)");
+  assertCorrect("On their 'host' societies.");
+  assertCorrect("On their 'host society'.");
   assertIncorrect("(This is a test sentence.");
   assertIncorrect("This is a test with an apostrophe &'.");
   assertIncorrect("&'");
