@@ -7,9 +7,9 @@
       moreSuggestions.add(wordWithoutDiacritics);
     }
   }
-  for (int i=0; i < moreSuggestions.size(); i++) {
-    if (!suggestions.contains(moreSuggestions.get(i))) {
-      suggestions.add(moreSuggestions.get(i));
+  for (  String moreSuggestion : moreSuggestions) {
+    if (!suggestions.contains(moreSuggestion)) {
+      suggestions.add(moreSuggestion);
     }
   }
   return suggestions;
