@@ -1,3 +1,10 @@
 {
-  return text == null ? null : Normalizer.normalize(text,Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+","");
+  if (text == null) {
+    return null;
+  }
+ else {
+    final String normalized=Normalizer.normalize(text,Form.NFD);
+    final Matcher matcher=DIACRITICAL_REGEX.matcher(normalized);
+    return matcher.replaceAll("");
+  }
 }
