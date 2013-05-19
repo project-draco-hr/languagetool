@@ -19,7 +19,9 @@
     }
     if (ignoreTaggedWords) {
       for (      AnalyzedToken at : token.getReadings()) {
-        if (!at.hasNoTag())         continue skip;
+        if (!at.hasNoTag()) {
+          continue skip;
+        }
       }
     }
     if (tokenizingPattern() == null) {
