@@ -1,11 +1,27 @@
 {
   final List<String> l=new ArrayList<String>();
-  final StringTokenizer st=new StringTokenizer(text.replaceAll("([aeiou??????????????????])l[.\u2022-]l([aeiou??????????????????])","$1##ELA_GEMINADA##$2").replaceAll("([\\p{L}])['???]([\\p{L}\"????????])","$1##CA_APOS##$2").replaceAll("([dlDL])['???](1[\\s\\.,])","$1##CA_APOS##$2").replaceAll("([\\p{L}])-([\\p{L}])-([\\p{L}])","$1##CA_HYPHEN##$2##CA_HYPHEN##$3").replaceAll("([\\p{L}])-([\\p{L}\\d])","$1##CA_HYPHEN##$2").replaceAll("([\\d])\\.([\\d])","$1##CA_DECIMALPOINT##$2").replaceAll("([\\d]),([\\d])","$1##CA_DECIMALCOMMA##$2").replaceAll("([\\d]) ([\\d])","$1##CA_SPACE##$2"),"\u0020\u00A0\u115f\u1160\u1680" + "\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007" + "\u2008\u2009\u200A\u200B\u200c\u200d\u200e\u200f"+ "\u2013\u2014\u2015"+ "\u2028\u2029\u202a\u202b\u202c\u202d\u202e\u202f"+ "\u205F\u2060\u2061\u2062\u2063\u206A\u206b\u206c\u206d"+ "\u206E\u206F\u3000\u3164\ufeff\uffa0\ufff9\ufffa\ufffb"+ ",.;()[]{}<>!?:/\\\"'???????????????????`?????????\t\n\r-",true);
+  String auxText=text;
+  Matcher matcher=ELA_GEMINADA.matcher(auxText);
+  auxText=matcher.replaceAll("$1##ELA_GEMINADA##$2");
+  matcher=APOSTROPHE.matcher(auxText);
+  auxText=matcher.replaceAll("$1##CA_APOS##$2");
+  matcher=APOSTROPHE_1.matcher(auxText);
+  auxText=matcher.replaceAll("$1##CA_APOS##$2");
+  matcher=NEARBY_HYPHENS.matcher(auxText);
+  auxText=matcher.replaceAll("$1##CA_HYPHEN##$2##CA_HYPHEN##$3");
+  matcher=HYPHENS.matcher(auxText);
+  auxText=matcher.replaceAll("$1##CA_HYPHEN##$2");
+  matcher=DECIMAL_POINT.matcher(auxText);
+  auxText=matcher.replaceAll("$1##CA_DECIMALPOINT##$2");
+  matcher=DECIMAL_COMMA.matcher(auxText);
+  auxText=matcher.replaceAll("$1##CA_DECIMALCOMMA##$2");
+  matcher=SPACE_DIGITS.matcher(auxText);
+  auxText=matcher.replaceAll("$1##CA_SPACE##$2");
+  final StringTokenizer st=new StringTokenizer(auxText,"\u0020\u00A0\u115f\u1160\u1680" + "\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007" + "\u2008\u2009\u200A\u200B\u200c\u200d\u200e\u200f"+ "\u2013\u2014\u2015"+ "\u2028\u2029\u202a\u202b\u202c\u202d\u202e\u202f"+ "\u205F\u2060\u2061\u2062\u2063\u206A\u206b\u206c\u206d"+ "\u206E\u206F\u3000\u3164\ufeff\uffa0\ufff9\ufffa\ufffb"+ ",.;()[]{}<>!?:/\\\"'???????????????????`?????????\t\n\r-",true);
   String s;
   String groupStr;
   while (st.hasMoreElements()) {
     s=st.nextToken().replace("##CA_APOS##","'").replace("##CA_HYPHEN##","-").replace("##CA_DECIMALPOINT##",".").replace("##CA_DECIMALCOMMA##",",").replace("##CA_SPACE##"," ").replace("##ELA_GEMINADA##","l.l");
-    Matcher matcher=null;
     boolean matchFound=false;
     int j=0;
     while (j < maxPatterns && !matchFound) {
