@@ -1,5 +1,4 @@
 {
-  text=cleanupSentence(text);
   List<String> tokenList=new ArrayList<String>();
   StringTokenizer st=new StringTokenizer(text,SPLIT_CHARS,true);
   while (st.hasMoreElements()) {

@@ -1,3 +1,0 @@
-{
-  return !UKRAINIAN_LETTERS.matcher(word).matches() || super.ignoreWord(word);
-}

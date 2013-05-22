@@ -10,4 +10,13 @@
   matches=rule.match(langTool.getAnalyzedSentence("m????ed"));
   assertEquals(1,matches.length);
   assertEquals(Arrays.asList("mixed"),matches[0].getSuggestedReplacements());
+  matches=rule.match(langTool.getAnalyzedSentence("X??"));
+  assertEquals(1,matches.length);
+  assertEquals(Arrays.asList("XI"),matches[0].getSuggestedReplacements());
+  matches=rule.match(langTool.getAnalyzedSentence("??I"));
+  assertEquals(1,matches.length);
+  assertEquals(Arrays.asList("XI"),matches[0].getSuggestedReplacements());
+  matches=rule.match(langTool.getAnalyzedSentence("????"));
+  assertEquals(1,matches.length);
+  assertEquals(Arrays.asList("XI"),matches[0].getSuggestedReplacements());
 }

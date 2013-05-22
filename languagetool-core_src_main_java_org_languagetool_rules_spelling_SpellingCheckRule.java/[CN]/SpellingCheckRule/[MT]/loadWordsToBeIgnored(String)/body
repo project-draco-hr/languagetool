@@ -15,6 +15,9 @@
  else {
           wordsToBeIgnored.add(line);
         }
+        if (line.endsWith(".")) {
+          wordsWithDotsPresent=true;
+        }
       }
     }
   finally {

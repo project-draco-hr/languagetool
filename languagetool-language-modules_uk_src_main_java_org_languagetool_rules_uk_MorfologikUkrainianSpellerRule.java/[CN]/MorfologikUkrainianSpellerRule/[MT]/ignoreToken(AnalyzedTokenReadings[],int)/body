@@ -1,0 +1,10 @@
+{
+  String word=tokens[idx].getToken();
+  if (!UKRAINIAN_LETTERS.matcher(word).matches())   return true;
+  if (super.ignoreToken(tokens,idx))   return true;
+  if (idx < tokens.length - 1 && tokens[idx + 1].getToken().equals(ABBREVIATION_CHAR)) {
+    if (super.ignoreWord(word + ABBREVIATION_CHAR))     return true;
+    if (word.matches("[??-??????????]"))     return true;
+  }
+  return false;
+}
