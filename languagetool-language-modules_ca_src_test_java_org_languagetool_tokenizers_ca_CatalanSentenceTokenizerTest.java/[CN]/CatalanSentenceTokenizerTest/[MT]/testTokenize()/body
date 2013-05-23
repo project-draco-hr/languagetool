@@ -13,6 +13,7 @@
   testSplit(new String[]{"A l'atenci?? d'A. Comes."});
   testSplit(new String[]{"A l'atenci?? d'??. Comes."});
   testSplit(new String[]{"N??m. operaci?? 220130000138."});
+  testSplit(new String[]{"el vi no ??s gens propi de monjos, amb tot...\" vetllant, aix?? s??"});
   testSplit(new String[]{"Desenganyeu-vos??? ","L?????nic problema seri??s de l'home en aquest m??n ??s el de subsistir."});
   testSplit(new String[]{"??s clar??? traduir ??s una feina endimoniada"});
   testSplit(new String[]{"??El cord?? del frare????? surt d'una manera desguitarrada"});
