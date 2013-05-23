@@ -1,10 +1,8 @@
 {
   if (isLengthDifferent(getPureText(sourceText),getPureText(targetText))) {
-    final RuleMatch[] ruleMatch=new RuleMatch[1];
     final AnalyzedTokenReadings[] tokens=targetText.getTokens();
     final int len=tokens[tokens.length - 1].getStartPos() + tokens[tokens.length - 1].getToken().length();
-    ruleMatch[0]=new RuleMatch(this,1,len,getMessage());
-    return ruleMatch;
+    return new RuleMatch[]{new RuleMatch(this,1,len,getMessage())};
   }
   return new RuleMatch[0];
 }
