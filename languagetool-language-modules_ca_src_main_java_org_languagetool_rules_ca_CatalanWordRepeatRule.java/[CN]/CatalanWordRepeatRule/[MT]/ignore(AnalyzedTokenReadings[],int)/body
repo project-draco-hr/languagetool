@@ -1,0 +1,6 @@
+{
+  if (tokens[position].isImmunized() || tokens[position - 1].isImmunized()) {
+    return true;
+  }
+  return false;
+}

@@ -22,6 +22,9 @@
   tokens=wordTokenizer.tokenize("??s d'1,5 km.");
   assertEquals(tokens.size(),7);
   assertEquals("[??s,  , d', 1,5,  , km, .]",tokens.toString());
+  tokens=wordTokenizer.tokenize("??s d'5 km.");
+  assertEquals(tokens.size(),7);
+  assertEquals("[??s,  , d', 5,  , km, .]",tokens.toString());
   tokens=wordTokenizer.tokenize("la direcci?? E-SE");
   assertEquals(tokens.size(),7);
   assertEquals("[la,  , direcci??,  , E, -, SE]",tokens.toString());

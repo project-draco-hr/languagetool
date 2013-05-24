@@ -23,6 +23,9 @@
       Pattern gnPattern=null;
       Pattern adjPattern=null;
       Matcher isUpperCase=UPPERCASE.matcher(token);
+      if (prevPrevToken.equals("per") && prevToken.equals("molt")) {
+        break;
+      }
       int maxLevels=4;
       int[] cNt=new int[maxLevels];
       int[] cNMS=new int[maxLevels];

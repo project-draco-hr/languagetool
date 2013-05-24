@@ -1,4 +1,7 @@
 {
+  assertCorrect("un car??cter fix, per molt extraordin??ria que sigui la manera");
+  assertCorrect("una quantitat copiosa de llavors olioses");
+  assertCorrect("que cri?? sense variaci??, per molt lleugers que fossin");
   assertCorrect("Bernab?? i Saule, un cop acomplerta la seva missi?? a Jerusalem");
   assertCorrect("he passat una nit i un dia sencers a la deriva");
   assertCorrect("L'olor dels teus perfums, m??s agradable que tots els b??lsams.");

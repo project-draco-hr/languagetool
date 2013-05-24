@@ -1,4 +1,5 @@
 {
+  assertCorrect("cal que abans figuri inscrit en l'Ordre del dia");
   assertCorrect("El lloc era, per??, habitat de molt abans,");
   assertCorrect("i del bel canto del rococ??.");
   assertCorrect("El lloc fou habitat de forma cont??nua");

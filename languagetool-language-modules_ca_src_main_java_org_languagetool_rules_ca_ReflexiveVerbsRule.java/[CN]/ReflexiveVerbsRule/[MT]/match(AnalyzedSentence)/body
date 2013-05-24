@@ -12,6 +12,13 @@
     if (matchPostagRegexp(tokens[i],NO_VERB) || !matchPostagRegexp(tokens[i],VERB))     continue loop;
     final Matcher mUpperCase=UPPERCASE.matcher(tokens[i].getToken());
     if (i > 1 && mUpperCase.matches())     continue loop;
+    if (i + 2 < tokens.length && tokens[i].hasLemma("donar") && (tokens[i + 1].getToken().equals("compte") || tokens[i + 2].getToken().equals("compte"))) {
+      if (!isThereReflexivePronoun(tokens,i))       continue loop;
+      if (isPhraseImpersonalVerbS(tokens,i))       continue loop;
+      final String msg="Expressi?? incorrecta si equival a 'adonar-se', correcta si vol dir 'retre compte'.";
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Possible error");
+      ruleMatches.add(ruleMatch);
+    }
     if (i + 2 < tokens.length && matchLemmaRegexp(tokens[i],VERBS_PORTAR_DUR) && !(matchPostagRegexp(tokens[i],VERB_INF) && isThereBefore(tokens,i,LEMMA_PREP_A_PER,POSTAG_PREPOSICIO)) && !hasVerbMultipleReadings(tokens[i]) && isThereReflexivePronoun(tokens,i) && isThereAfterWithoutPreposition(tokens,i,POSTAG_CD) && !isThereVerbBefore(tokens,i,VERBS_DEIXAR_FER) && !(isThereVerbBefore(tokens,i,VERBS_POTENCIALMENT_PRONOMINALS) && !isThereVerbBefore(tokens,i,NO_VERBS_POTENCIALMENT_PRONOMINALS)) && !matchPostagRegexp(tokens[i + 1],POSTAG_ADVERBI) && !matchPostagRegexp(tokens[i + 2],POSTAG_ADVERBI) && !matchLemmaRegexp(tokens[i + 2],ANYMESDIA) && !isPhraseImpersonalVerbSP(tokens,i)) {
       String suggestion;
       if (matchLemmaRegexp(tokens[i],VERB_PORTAR)) {
