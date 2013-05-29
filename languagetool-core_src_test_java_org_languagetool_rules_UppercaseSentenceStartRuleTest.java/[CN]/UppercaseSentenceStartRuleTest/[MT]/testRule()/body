@@ -16,6 +16,8 @@
   assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence(""));
   assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("http://www.languagetool.org"));
+  assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("this is a test sentence."));
   assertEquals(1,matches.length);
   assertEquals(0,matches[0].getFromPos());
