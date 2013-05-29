@@ -1,0 +1,3 @@
+{
+  super.setCategory(new Category(messages.getString("category_misc")));
+}

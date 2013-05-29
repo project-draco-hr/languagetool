@@ -1,0 +1,3 @@
+{
+  return "Checks for missing space before some conjunctions";
+}

@@ -1,0 +1,19 @@
+{
+  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final AnalyzedTokenReadings[] tokens=text.getTokens();
+  for (int i=1; i < tokens.length; i++) {
+    final String token=tokens[i].getToken();
+    Matcher matcher=CONJUNCTIONS.matcher(token);
+    if (matcher.matches()) {
+      if (!tokens[i - 1].getToken().equals(" ")) {
+        final String replacement=" " + token;
+        final String msg=getSuggestion();
+        final int pos=tokens[i].getStartPos();
+        final RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + token.length(),msg,getShort());
+        potentialRuleMatch.setSuggestedReplacement(replacement);
+        ruleMatches.add(potentialRuleMatch);
+      }
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}
