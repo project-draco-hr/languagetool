@@ -7,7 +7,7 @@
     String word=itr.next().replace("##BR_APOS##","???");
     tokens.add(word);
     if (!word.equals("???") && word.endsWith("???")) {
-      word=itr.next();
+      itr.next();
     }
   }
   return tokens;
