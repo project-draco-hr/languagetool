@@ -1,4 +1,5 @@
 {
+  assertCorrect("Espero d'ell moltes coses");
   assertCorrect("cal que abans figuri inscrit en l'Ordre del dia");
   assertCorrect("El lloc era, per??, habitat de molt abans,");
   assertCorrect("i del bel canto del rococ??.");

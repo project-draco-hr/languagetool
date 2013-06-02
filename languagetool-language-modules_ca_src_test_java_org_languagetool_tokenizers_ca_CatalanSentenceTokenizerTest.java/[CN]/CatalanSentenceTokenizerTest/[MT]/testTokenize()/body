@@ -10,6 +10,7 @@
   testSplit(new String[]{"Qu?? vols dir? ","Ja ho tinc!"});
   testSplit(new String[]{"Ja ho tinc! ","Qu?? vols dir?"});
   testSplit(new String[]{"Us explicar?? com va anar: ","??La Maria va engegar el cotxe"});
+  testSplit(new String[]{"diu que va dir. ","A mi em feia estrany."});
   testSplit(new String[]{"A l'atenci?? d'A. Comes."});
   testSplit(new String[]{"A l'atenci?? d'??. Comes."});
   testSplit(new String[]{"N??m. operaci?? 220130000138."});
