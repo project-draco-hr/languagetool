@@ -10,6 +10,7 @@
   assertEquals(0,matches.size());
   matches=tool.check("Aquesta ??s una sent??ncia m??ltiple amb claud??tors: " + "[Ac?? hi ha un claud??tor. Amb algun text. I ac?? continua.\n\n");
   assertEquals(1,matches.size());
+  matches=tool.check("??Els manaments diuen: \"No desitjar??s la dona del teu ve??\"??");
   matches=tool.check("Aquesta ??s una sent??ncia m??ltiple amb par??ntesis " + "(Ac?? hi ha un par??ntesi. \n\n Amb algun text.) i ac?? continua.");
   assertEquals(2,matches.size());
 }

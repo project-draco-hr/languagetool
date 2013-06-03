@@ -9,6 +9,10 @@
   assertCorrect("Aquesta ??s l???hora de les decisions.");
   assertCorrect("(fig. 20)");
   assertCorrect("\"S??c la teva filla. El corc?? no et rosegar?? m??s.\"\n\n");
+  assertCorrect("???\"Club dels llagoters\" ???va repetir en Ron.");
+  assertCorrect("???\"Club dels llagoters\" ???va repetir en Ron.");
+  assertCorrect("??Aix?? em porta a demanar-t'ho.");
+  assertCorrect("??Aix?? em porta (s??) a demanar-t'ho.");
   assertCorrect("This is a [test] sentence...");
   assertCorrect("The plight of Tamil refugees caused a surge of support from most of the Tamil political parties.[90]");
   assertCorrect("This is what he said: \"We believe in freedom. This is what we do.\"");
