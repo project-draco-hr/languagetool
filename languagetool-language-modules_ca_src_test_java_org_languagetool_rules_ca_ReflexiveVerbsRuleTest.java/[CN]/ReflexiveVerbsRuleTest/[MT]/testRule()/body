@@ -1,5 +1,6 @@
 {
   assertCorrect("m'aniria b?? probablement posar els quilos");
+  assertCorrect("tot m'aniria b??");
   assertCorrect("el cor m'anava a cent per hora.");
   assertCorrect("D'aquest Decret se n'ha donat compte al Ple de l'Ajuntament");
   assertCorrect("Encara em cal donar compte d'un altre recull");
@@ -15,10 +16,16 @@
   assertCorrect("en sentir els plors s'encongeix autom??ticament,");
   assertCorrect("La penya de l'Ateneu es va de mica en mica reconstruint");
   assertCorrect("no m'he pogut endur l'espasa");
+  assertCorrect("un llop es podria haver endut la criatura");
+  assertCorrect("Quan se'l van haver endut a casa");
+  assertCorrect("Ja et deus haver adonat que no");
+  assertCorrect("fins que se'n va haver desempallegat");
+  assertCorrect("per haver-se deixat endur per l'orgull");
   assertCorrect("i de venir-vos a trobar");
   assertCorrect("el sol s'havia post, li anaven portant tots els malalts");
   assertCorrect("que no em caigui la casa");
   assertCorrect("que no em caigui al damunt res");
+  assertCorrect("Em queia b??.");
   assertCorrect("Els qui s'havien dispersat van anar pertot arreu");
   assertCorrect("Els qui volen enriquir-se cauen en temptacions");
   assertCorrect("Despr??s d'acomiadar-nos vam pujar a la nau");
@@ -58,6 +65,7 @@
   assertCorrect("ens preparem per a anar");
   assertCorrect("comencen queixant-se");
   assertCorrect("comenceu a queixar-vos");
+  assertCorrect("no em podia pas queixar");
   assertCorrect("em puc queixar");
   assertCorrect("en teniu prou amb queixar-vos");
   assertCorrect("ens en podem queixar");
