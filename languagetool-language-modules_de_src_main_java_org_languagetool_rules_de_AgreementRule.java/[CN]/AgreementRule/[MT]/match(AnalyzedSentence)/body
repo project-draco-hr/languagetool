@@ -9,11 +9,11 @@
     boolean ignore=couldBeRelativeClause(tokens,i);
     if (i > 0) {
       final String prevToken=tokens[i - 1].getToken().toLowerCase();
-      if ((prevToken.equals("der") || prevToken.equals("die") || prevToken.equals("das")) && (tokens[i].getToken().equals("eine") || tokens[i].getToken().equals("einen"))) {
+      if ((prevToken.equals("der") || prevToken.equals("die") || prevToken.equals("das")|| prevToken.equals("des")) && (tokens[i].getToken().equals("eine") || tokens[i].getToken().equals("einen"))) {
         ignore=true;
       }
     }
-    if (analyzedToken.getToken().equals("nichts")) {
+    if (analyzedToken.getToken().equals("nichts") || analyzedToken.getToken().equals("alles")) {
       ignore=true;
     }
     if ((analyzedToken.hasReadingOfType(POSType.DETERMINER) || relevantPronoun) && !ignore) {

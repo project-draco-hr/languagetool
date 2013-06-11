@@ -48,6 +48,9 @@
   assertGood("Das G??tersloher Radio.");
   assertGood("Das wirklich Wichtige kommt jetzt erst.");
   assertGood("Besonders wenn wir Wermut oder Absinth trinken.");
+  assertGood("Ich w??nsche dir alles Gute.");
+  assertGood("Es ist nicht bekannt, mit welchem Alter Kinder diese F??higkeit erlernen.");
+  assertGood("Dieser ist nun in den Ortungsbereich des einen Roboters gefahren.");
   assertBad("Es sind die Tisch.");
   assertBad("Es sind das Tisch.");
   assertBad("Es sind die Haus.");

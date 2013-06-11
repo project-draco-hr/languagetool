@@ -1,6 +1,6 @@
 {
   final String nextTerm=nextToken.getToken();
-  if (nextTerm.endsWith("er") && tokens.length > tokenPos + 1) {
+  if (nextTerm.endsWith("er") && tokens.length > tokenPos + 1 && !ER_TO_BE_IGNORED.contains(nextTerm)) {
     final AnalyzedGermanTokenReadings nextNextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos + 1];
     try {
       final AnalyzedGermanTokenReadings nextATR=tagger.lookup(nextTerm.substring(0,nextTerm.length() - 2));

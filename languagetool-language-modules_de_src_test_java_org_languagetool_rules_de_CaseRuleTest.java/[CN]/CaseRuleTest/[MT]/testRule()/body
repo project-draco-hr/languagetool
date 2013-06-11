@@ -28,6 +28,7 @@
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die ersten Gespanne erreichen K??ln.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die Schlinge zieht sich zu.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Die Schlingen ziehen sich zu.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Sie f??llt auf durch ihre hilfsbereite Art. Zudem zeigt sie soziale Kompetenz.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist es: kein Satz.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist es: Kein Satz.")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Ein Einfacher Satz zum Testen.")).length);
