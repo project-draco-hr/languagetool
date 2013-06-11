@@ -1,4 +1,5 @@
 {
+  JnaTools.setBugWorkaroundProperty();
   final CommandLineParser commandLineParser=new CommandLineParser();
   CommandLineOptions options=null;
   try {

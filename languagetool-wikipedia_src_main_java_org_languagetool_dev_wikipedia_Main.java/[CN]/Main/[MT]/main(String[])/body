@@ -1,4 +1,5 @@
 {
+  JnaTools.setBugWorkaroundProperty();
   if (args.length == 0) {
     printUsageAndExit();
   }
