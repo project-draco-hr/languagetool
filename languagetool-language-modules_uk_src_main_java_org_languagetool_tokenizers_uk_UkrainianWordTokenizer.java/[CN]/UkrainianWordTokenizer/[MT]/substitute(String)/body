@@ -1,0 +1,3 @@
+{
+  return DECIMAL_COMMA_PATTERN.matcher(text).replaceAll("$1" + DECIMAL_COMMA_SUBST + "2");
+}
