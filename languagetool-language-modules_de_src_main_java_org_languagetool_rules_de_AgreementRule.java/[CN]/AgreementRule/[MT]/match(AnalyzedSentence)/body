@@ -13,7 +13,7 @@
         ignore=true;
       }
     }
-    if (analyzedToken.getToken().equals("nichts") || analyzedToken.getToken().equals("alles")) {
+    if (analyzedToken.getToken().equals("nichts") || analyzedToken.getToken().equals("alles") || analyzedToken.getToken().equals("dies")) {
       ignore=true;
     }
     if ((analyzedToken.hasReadingOfType(POSType.DETERMINER) || relevantPronoun) && !ignore) {
