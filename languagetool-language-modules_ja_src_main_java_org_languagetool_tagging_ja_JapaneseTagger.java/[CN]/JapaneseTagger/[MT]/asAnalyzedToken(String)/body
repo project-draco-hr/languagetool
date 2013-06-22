@@ -1,5 +1,5 @@
 {
-  if (word.indexOf(" ") < 0) {
+  if (!word.contains(" ")) {
     return new AnalyzedToken(" ",null,null);
   }
   String[] parts=word.split(" ");
