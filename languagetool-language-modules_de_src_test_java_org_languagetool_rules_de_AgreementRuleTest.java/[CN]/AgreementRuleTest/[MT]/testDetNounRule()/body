@@ -52,6 +52,7 @@
   assertGood("Es ist nicht bekannt, mit welchem Alter Kinder diese F??higkeit erlernen.");
   assertGood("Dieser ist nun in den Ortungsbereich des einen Roboters gefahren.");
   assertGood("Wenn dies gro??en Erfolg hat, werden wir es weiter f??rdern.");
+  assertGood("Die Ereignisse dieses einen Jahres waren sehr schlimm.");
   assertBad("Es sind die Tisch.");
   assertBad("Es sind das Tisch.");
   assertBad("Es sind die Haus.");
