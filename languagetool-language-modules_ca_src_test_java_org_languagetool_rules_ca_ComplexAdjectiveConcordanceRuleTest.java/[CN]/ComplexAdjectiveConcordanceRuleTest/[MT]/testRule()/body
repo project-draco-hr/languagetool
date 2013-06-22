@@ -1,4 +1,9 @@
 {
+  assertCorrect("la meitat mascles i la meitat femelles");
+  assertCorrect("??s for??a amarg");
+  assertCorrect("Era poder??s, for??a estrabul??lat");
+  assertCorrect("S??n for??a desconegudes");
+  assertCorrect("Zeus, for??a cansat de tot");
   assertCorrect("un car??cter fix, per molt extraordin??ria que sigui la manera");
   assertCorrect("una quantitat copiosa de llavors olioses");
   assertCorrect("que cri?? sense variaci??, per molt lleugers que fossin");

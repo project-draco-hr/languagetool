@@ -170,6 +170,9 @@
       if (!isException && matchRegexp(prevToken,EXCEPCIONS_PREVIA)) {
         isException=true;
       }
+      if (!isException && matchPostagRegexp(tokens[i - 1],EXCEPCIONS_PREVIA_POSTAG)) {
+        isException=true;
+      }
       if (!isException && (((token.equals("tret") || token.equals("llevat")) && nextToken.equals("de")) || token.equals("primer") || token.equals("junts")|| isUpperCase.matches())) {
         isException=true;
       }
