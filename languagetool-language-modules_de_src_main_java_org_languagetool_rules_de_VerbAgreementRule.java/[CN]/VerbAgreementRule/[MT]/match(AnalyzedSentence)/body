@@ -3,8 +3,8 @@
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   if (tokens.length < 4)   return toRuleMatchArray(ruleMatches);
   int posIch=-1, posDu=-1, posEr=-1, posWir=-1;
-  int posVer1Sin=-1, posVer2Sin=-1, posVer1Plu=-1, posVer2Plu=-1;
-  int posPossibleVer1Sin=-1, posPossibleVer2Sin=-1, posPossibleVer3Sin=-1, posPossibleVer1Plu=-1, posPossibleVer2Plu=-1;
+  int posVer1Sin=-1, posVer2Sin=-1, posVer1Plu=-1;
+  int posPossibleVer1Sin=-1, posPossibleVer2Sin=-1, posPossibleVer3Sin=-1, posPossibleVer1Plu=-1;
   for (int i=1; i < tokens.length; ++i) {
     String strToken=tokens[i].getToken().toLowerCase();
     strToken=strToken.replace("???","");
@@ -30,14 +30,10 @@
  else       if (hasUnambiguouslyPersonAndNumber(tokens[i],"1","PLU")) {
         posVer1Plu=i;
       }
- else       if (hasUnambiguouslyPersonAndNumber(tokens[i],"2","PLU")) {
-        posVer2Plu=i;
-      }
       if (tokens[i].hasPartialPosTag(":1:SIN"))       posPossibleVer1Sin=i;
       if (tokens[i].hasPartialPosTag(":2:SIN"))       posPossibleVer2Sin=i;
       if (tokens[i].hasPartialPosTag(":3:SIN"))       posPossibleVer3Sin=i;
       if (tokens[i].hasPartialPosTag(":1:PLU"))       posPossibleVer1Plu=i;
-      if (tokens[i].hasPartialPosTag(":2:PLU"))       posPossibleVer2Plu=i;
     }
   }
   if (posVer1Sin != -1 && posIch == -1 && !isQuotationMark(tokens[posVer1Sin - 1])) {
