@@ -1,4 +1,7 @@
 {
+  assertBad("Eine Laiche ist ein toter K??rper.");
+  assertGood("Eine Leiche ist ein toter K??rper.");
+  assertGood("Die Leichen der Verstorbenen wurden ins Wasser geworfen.");
   assertGood("Ihre Lider sind entz??ndet.");
   assertGood("Er hat entz??ndete Lider.");
   assertGood("Wir singen gemeinsam Lieder.");
