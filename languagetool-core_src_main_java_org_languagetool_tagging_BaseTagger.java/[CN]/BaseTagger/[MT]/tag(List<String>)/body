@@ -30,10 +30,8 @@
       }
     }
     if (l.isEmpty()) {
-      AnalyzedToken aToken=additionalTag(word);
-      if (aToken != null) {
-        l.add(aToken);
-      }
+      List<AnalyzedToken> additionalTaggedTokens=additionalTags(word);
+      addTokens(additionalTaggedTokens,l);
     }
     if (l.isEmpty()) {
       l.add(new AnalyzedToken(word,null,null));

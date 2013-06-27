@@ -1,0 +1,37 @@
+{
+  List<AnalyzedToken> additionalTaggedTokens=new ArrayList<AnalyzedToken>();
+  if (word.endsWith("ment")) {
+    final String lowerWord=word.toLowerCase(conversionLocale);
+    final String possibleAdj=lowerWord.replaceAll("^(.+)ment$","$1");
+    List<AnalyzedToken> taggerTokens;
+    taggerTokens=asAnalyzedTokenList(possibleAdj,dictLookup.lookup(possibleAdj));
+    for (    AnalyzedToken taggerToken : taggerTokens) {
+      final String posTag=taggerToken.getPOSTag();
+      if (posTag != null) {
+        final Matcher m=ADJ_PART_FS.matcher(posTag);
+        if (m.matches()) {
+          additionalTaggedTokens.add(new AnalyzedToken(word,"RG",lowerWord));
+          return additionalTaggedTokens;
+        }
+      }
+    }
+  }
+  if (word.startsWith("auto")) {
+    final String lowerWord=word.toLowerCase(conversionLocale);
+    final String possibleVerb=lowerWord.replaceAll("^auto(.+)$","$1");
+    List<AnalyzedToken> taggerTokens;
+    taggerTokens=asAnalyzedTokenList(possibleVerb,dictLookup.lookup(possibleVerb));
+    for (    AnalyzedToken taggerToken : taggerTokens) {
+      final String posTag=taggerToken.getPOSTag();
+      if (posTag != null) {
+        final Matcher m=VERB.matcher(posTag);
+        if (m.matches()) {
+          String lemma="auto".concat(taggerToken.getLemma());
+          additionalTaggedTokens.add(new AnalyzedToken(word,posTag,lemma));
+        }
+      }
+    }
+    return additionalTaggedTokens;
+  }
+  return null;
+}

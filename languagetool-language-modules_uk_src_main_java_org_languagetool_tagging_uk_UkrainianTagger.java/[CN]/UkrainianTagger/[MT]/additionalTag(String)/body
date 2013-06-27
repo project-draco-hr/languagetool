@@ -1,6 +1,0 @@
-{
-  if (NUMBER.matcher(word).matches()) {
-    return new AnalyzedToken(word,IPOSTag.numr.toString(),word);
-  }
-  return null;
-}
