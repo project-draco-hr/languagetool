@@ -16,7 +16,7 @@
         prepSt.setNull(3,Types.VARCHAR);
       }
       prepSt.setString(4,rule.getDescription());
-      prepSt.setString(5,match.getMessage());
+      prepSt.setString(5,StringUtils.abbreviate(match.getMessage(),255));
       prepSt.setString(6,Tools.getContext(match.getFromPos(),match.getToPos(),text,CONTEXT_SIZE,MARKER_START,MARKER_END));
       prepSt.setDate(7,dumpSqlDate);
       prepSt.setDate(8,nowDate);
