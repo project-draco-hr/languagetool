@@ -7,6 +7,12 @@
     for (    Rule rule : allRules) {
       assertIdUniqueness(ids,ruleClasses,language,rule);
       assertIdValidity(language,rule);
+      if (rule instanceof PatternRule) {
+        assertFalse(rule.supportsLanguage(language));
+      }
+ else {
+        assertTrue(rule.supportsLanguage(language));
+      }
     }
   }
 }
