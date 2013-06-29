@@ -17,7 +17,7 @@
       }
       prepSt.setString(4,rule.getDescription());
       prepSt.setString(5,StringUtils.abbreviate(match.getMessage(),255));
-      prepSt.setString(6,Tools.getContext(match.getFromPos(),match.getToPos(),text,CONTEXT_SIZE,MARKER_START,MARKER_END));
+      prepSt.setString(6,contextTools.getContext(match.getFromPos(),match.getToPos(),text));
       prepSt.setDate(7,dumpSqlDate);
       prepSt.setDate(8,nowDate);
       prepSt.setString(9,URL_PREFIX.replaceAll(LANG_MARKER,langCode) + title);
