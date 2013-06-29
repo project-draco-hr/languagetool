@@ -24,4 +24,5 @@ catch (  SQLException e) {
   contextTools.setContextSize(CONTEXT_SIZE);
   contextTools.setErrorMarkerStart(MARKER_START);
   contextTools.setErrorMarkerEnd(MARKER_END);
+  contextTools.setEscapeHtml(false);
 }
