@@ -1,4 +1,4 @@
-RuleMatch rm
+RuleMatch match
 int sentLen
 int columnCount
 int lineCount

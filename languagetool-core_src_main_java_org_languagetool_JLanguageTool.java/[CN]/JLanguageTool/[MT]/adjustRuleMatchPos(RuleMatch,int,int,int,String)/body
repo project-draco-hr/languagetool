@@ -1,8 +1,8 @@
 {
-  final RuleMatch thisMatch=new RuleMatch(rm.getRule(),rm.getFromPos() + sentLen,rm.getToPos() + sentLen,rm.getMessage(),rm.getShortMessage());
-  thisMatch.setSuggestedReplacements(rm.getSuggestedReplacements());
-  final String sentencePartToError=sentence.substring(0,rm.getFromPos());
-  final String sentencePartToEndOfError=sentence.substring(0,rm.getToPos());
+  final RuleMatch thisMatch=new RuleMatch(match.getRule(),match.getFromPos() + sentLen,match.getToPos() + sentLen,match.getMessage(),match.getShortMessage());
+  thisMatch.setSuggestedReplacements(match.getSuggestedReplacements());
+  final String sentencePartToError=sentence.substring(0,match.getFromPos());
+  final String sentencePartToEndOfError=sentence.substring(0,match.getToPos());
   final int lastLineBreakPos=sentencePartToError.lastIndexOf('\n');
   final int column;
   final int endColumn;
@@ -25,6 +25,6 @@
   thisMatch.setEndLine(lineCount + lineBreaksToEndOfError);
   thisMatch.setColumn(column);
   thisMatch.setEndColumn(endColumn);
-  thisMatch.setOffset(rm.getFromPos() + sentLen);
+  thisMatch.setOffset(match.getFromPos() + sentLen);
   return thisMatch;
 }
