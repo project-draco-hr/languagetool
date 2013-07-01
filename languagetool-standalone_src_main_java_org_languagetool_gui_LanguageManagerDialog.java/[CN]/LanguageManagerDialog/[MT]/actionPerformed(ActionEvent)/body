@@ -3,7 +3,7 @@
     final File ruleFile=Tools.openFileDialog(null,new XMLFileFilter());
     if (!ruleFiles.contains(ruleFile)) {
       ruleFiles.add(ruleFile);
-      list.setListData(ruleFiles.toArray(new File[]{}));
+      list.setListData(ruleFiles.toArray(new File[ruleFiles.size()]));
     }
  else {
       final JOptionPane jop=new JOptionPane();
@@ -13,7 +13,7 @@
  else   if (e.getSource() == removeButton) {
     if (list.getSelectedIndex() != -1) {
       ruleFiles.remove(list.getSelectedIndex());
-      list.setListData(ruleFiles.toArray(new File[]{}));
+      list.setListData(ruleFiles.toArray(new File[ruleFiles.size()]));
     }
   }
  else   if (e.getSource() == closeButton) {
