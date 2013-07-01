@@ -21,7 +21,7 @@
     prg.quit();
   }
  else   if (e.getActionCommand().equals(aboutText)) {
-    final AboutDialog about=new AboutDialog(messages);
+    final AboutDialog about=new AboutDialog(messages,prg.getFrame());
     about.show();
   }
  else {

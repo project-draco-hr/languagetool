@@ -1,4 +1,4 @@
 {
   final String aboutText=StringTools.getLabel(messages.getString("guiMenuAbout"));
-  JOptionPane.showMessageDialog(null,getAboutText(),aboutText,JOptionPane.INFORMATION_MESSAGE);
+  JOptionPane.showMessageDialog(parent,getAboutText(),aboutText,JOptionPane.INFORMATION_MESSAGE);
 }

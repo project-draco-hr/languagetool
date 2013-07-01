@@ -1,3 +1,4 @@
 {
   this.messages=messages;
+  this.parent=parent;
 }
