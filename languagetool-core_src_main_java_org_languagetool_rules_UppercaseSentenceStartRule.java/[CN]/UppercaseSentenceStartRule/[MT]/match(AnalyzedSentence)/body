@@ -25,14 +25,14 @@
     checkToken=secondToken;
   }
   String lastToken=tokens[tokens.length - 1].getToken();
-  if (lastToken.matches("[ \"'??????????]") && tokens.length >= 2) {
+  if (lastToken.matches("[ \"'??????????\\n]") && tokens.length >= 2) {
     lastToken=tokens[tokens.length - 2].getToken();
   }
   boolean preventError=false;
   if (lastParagraphString.matches("[;,]")) {
     preventError=true;
   }
-  if (lastParagraphString.matches(":") && lastToken.matches("[;,]")) {
+  if (!lastParagraphString.matches("[.?!???]|") && !lastToken.matches("[.?!???]")) {
     preventError=true;
   }
   lastParagraphString=lastToken;
