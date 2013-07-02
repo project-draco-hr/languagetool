@@ -1,12 +1,3 @@
 {
-  final List<String> ruleFiles=new ArrayList<String>();
-  final ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
-  ruleFiles.add(dataBroker.getRulesDir() + "/" + getShortName()+ "/"+ JLanguageTool.PATTERN_FILE);
-  if (getShortNameWithVariant().length() > 2) {
-    final String fileName=getShortName() + "/" + getShortNameWithVariant()+ "/"+ JLanguageTool.PATTERN_FILE;
-    if (dataBroker.ruleFileExists(fileName)) {
-      ruleFiles.add(dataBroker.getRulesDir() + "/" + fileName);
-    }
-  }
-  return ruleFiles;
+  return getRuleFileNames();
 }
