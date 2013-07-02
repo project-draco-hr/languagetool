@@ -33,5 +33,22 @@
     }
     return additionalTaggedTokens;
   }
+  if (word.startsWith("ex")) {
+    final String lowerWord=word.toLowerCase(conversionLocale);
+    final String possibleNoun=lowerWord.replaceAll("^ex(.+)$","$1");
+    List<AnalyzedToken> taggerTokens;
+    taggerTokens=asAnalyzedTokenList(possibleNoun,dictLookup.lookup(possibleNoun));
+    for (    AnalyzedToken taggerToken : taggerTokens) {
+      final String posTag=taggerToken.getPOSTag();
+      if (posTag != null) {
+        final Matcher m=NOUN.matcher(posTag);
+        if (m.matches()) {
+          String lemma="ex".concat(taggerToken.getLemma());
+          additionalTaggedTokens.add(new AnalyzedToken(word,posTag,lemma));
+        }
+      }
+    }
+    return additionalTaggedTokens;
+  }
   return null;
 }
