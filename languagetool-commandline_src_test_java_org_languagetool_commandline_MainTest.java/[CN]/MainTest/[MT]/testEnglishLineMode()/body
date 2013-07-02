@@ -5,5 +5,5 @@
   final String[] args=new String[]{"-l","en","-a","-b","-"};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
-  assertEquals("This is what I mean\nand you know it.\n",output);
+  assertEquals("This is what I mean\nAnd you know it.\n",output);
 }

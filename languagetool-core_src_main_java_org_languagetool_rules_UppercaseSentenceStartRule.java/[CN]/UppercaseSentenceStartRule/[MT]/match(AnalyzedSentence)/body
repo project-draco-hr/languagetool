@@ -29,15 +29,11 @@
     lastToken=tokens[tokens.length - 2].getToken();
   }
   boolean preventError=false;
-  final String langCode=language.getShortName();
-  final boolean languageHasSpecialCases=langCode.equals("ru") || langCode.equals("pl") || langCode.equals("uk")|| langCode.equals("be")|| langCode.equals(Locale.ENGLISH.getLanguage())|| langCode.equals(Locale.ITALIAN.getLanguage())|| langCode.equals(Locale.GERMAN.getLanguage());
-  if (languageHasSpecialCases) {
-    if (";".equals(lastParagraphString) || ";".equals(lastToken) || ",".equals(lastParagraphString)|| ",".equals(lastToken)) {
-      preventError=true;
-    }
-    if (!lastToken.matches("[.?!???]")) {
-      preventError=true;
-    }
+  if (lastParagraphString.matches("[;,]")) {
+    preventError=true;
+  }
+  if (lastParagraphString.matches(":") && lastToken.matches("[;,]")) {
+    preventError=true;
   }
   lastParagraphString=lastToken;
   if (matchTokenPos + 1 < tokens.length && NUMERALS_EN.matcher(tokens[matchTokenPos].getToken()).matches() && (tokens[matchTokenPos + 1].getToken().equals(".") || tokens[matchTokenPos + 1].getToken().equals(")"))) {
