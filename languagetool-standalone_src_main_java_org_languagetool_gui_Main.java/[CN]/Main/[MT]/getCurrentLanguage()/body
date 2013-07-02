@@ -3,6 +3,6 @@
     return autoDetectBox.autoDetectLanguage(textArea.getText());
   }
  else {
-    return ((I18nLanguage)languageBox.getSelectedItem()).getLanguage();
+    return languageBox.getSelectedLanguage();
   }
 }
