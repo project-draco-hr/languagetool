@@ -8,6 +8,10 @@
     disabledRuleIds.addAll(getListFromProperties(props,DISABLED_RULES_CONFIG_KEY + qualifier));
     enabledRuleIds.addAll(getListFromProperties(props,ENABLED_RULES_CONFIG_KEY + qualifier));
     disabledCategoryNames.addAll(getListFromProperties(props,DISABLED_CATEGORIES_CONFIG_KEY + qualifier));
+    final String languageStr=(String)props.get(LANGUAGE_CONFIG_KEY);
+    if (languageStr != null) {
+      language=Language.getLanguageForShortName(languageStr);
+    }
     final String motherTongueStr=(String)props.get(MOTHER_TONGUE_CONFIG_KEY);
     if (motherTongueStr != null) {
       motherTongue=Language.getLanguageForShortName(motherTongueStr);

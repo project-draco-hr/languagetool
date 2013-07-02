@@ -1,4 +1,5 @@
 {
   this.messages=messages;
+  this.config=config;
   populateLanguageBox();
 }
