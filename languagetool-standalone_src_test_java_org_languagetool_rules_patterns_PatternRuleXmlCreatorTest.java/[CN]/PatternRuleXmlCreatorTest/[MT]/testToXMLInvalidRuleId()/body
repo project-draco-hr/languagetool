@@ -1,0 +1,10 @@
+{
+  PatternRuleXmlCreator creator=new PatternRuleXmlCreator();
+  PatternRuleId fakeRuleId=new PatternRuleId("FAKE_ID");
+  try {
+    creator.toXML(fakeRuleId,new Demo());
+    fail();
+  }
+ catch (  RuntimeException expected) {
+  }
+}

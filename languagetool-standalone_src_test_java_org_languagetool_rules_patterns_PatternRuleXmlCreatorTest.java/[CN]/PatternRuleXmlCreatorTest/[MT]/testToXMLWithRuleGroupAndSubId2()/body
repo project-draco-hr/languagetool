@@ -1,0 +1,8 @@
+{
+  PatternRuleId ruleId=new PatternRuleId("test_spacebefore","2");
+  PatternRuleXmlCreator creator=new PatternRuleXmlCreator();
+  String xml=creator.toXML(ruleId,new Demo());
+  assertFalse(xml.contains("<rulegroup id=\"test_spacebefore\""));
+  assertFalse(xml.contains("</rulegroup>"));
+  assertTrue(xml.contains("<message>This is a dummy message 2.</message>"));
+}

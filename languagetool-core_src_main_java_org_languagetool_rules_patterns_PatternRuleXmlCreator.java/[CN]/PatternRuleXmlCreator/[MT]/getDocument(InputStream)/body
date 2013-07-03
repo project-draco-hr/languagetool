@@ -1,0 +1,7 @@
+{
+  final InputSource inputSource=new InputSource(is);
+  final DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+  factory.setNamespaceAware(false);
+  final DocumentBuilder builder=factory.newDocumentBuilder();
+  return builder.parse(inputSource);
+}

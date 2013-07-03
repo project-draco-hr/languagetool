@@ -1,0 +1,10 @@
+{
+  PatternRuleId ruleId=new PatternRuleId("test_spacebefore");
+  PatternRuleXmlCreator creator=new PatternRuleXmlCreator();
+  String xml=creator.toXML(ruleId,new Demo());
+  assertTrue(xml.contains("<rulegroup id=\"test_spacebefore\""));
+  assertTrue(xml.contains("</rulegroup>"));
+  assertTrue(xml.contains("<rule>"));
+  assertTrue(xml.contains("<rule type=\"duplication\">"));
+  assertTrue(xml.contains("<token>blah</token>"));
+}

@@ -1,0 +1,9 @@
+{
+  PatternRuleId ruleId=new PatternRuleId("DEMO_RULE");
+  PatternRuleXmlCreator creator=new PatternRuleXmlCreator();
+  String xml=creator.toXML(ruleId,new Demo());
+  assertTrue(xml.contains("<token>foo</token>"));
+  assertTrue(xml.contains("<token>bar</token>"));
+  assertTrue(xml.contains("<example type=\"correct\">"));
+  assertTrue(xml.contains("type=\"incorrect\">"));
+}
