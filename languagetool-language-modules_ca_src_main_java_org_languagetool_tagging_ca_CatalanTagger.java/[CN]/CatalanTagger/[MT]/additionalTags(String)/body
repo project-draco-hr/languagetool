@@ -16,9 +16,9 @@
       }
     }
   }
-  if (word.startsWith("auto")) {
-    final String lowerWord=word.toLowerCase(conversionLocale);
-    final String possibleVerb=lowerWord.replaceAll("^auto(.+)$","$1");
+  Matcher matcher=PREFIXES_FOR_VERBS.matcher(word);
+  if (matcher.matches()) {
+    final String possibleVerb=matcher.group(2).toLowerCase();
     List<AnalyzedToken> taggerTokens;
     taggerTokens=asAnalyzedTokenList(possibleVerb,dictLookup.lookup(possibleVerb));
     for (    AnalyzedToken taggerToken : taggerTokens) {
@@ -26,7 +26,7 @@
       if (posTag != null) {
         final Matcher m=VERB.matcher(posTag);
         if (m.matches()) {
-          String lemma="auto".concat(taggerToken.getLemma());
+          String lemma=matcher.group(1).toLowerCase().concat(taggerToken.getLemma());
           additionalTaggedTokens.add(new AnalyzedToken(word,posTag,lemma));
         }
       }
