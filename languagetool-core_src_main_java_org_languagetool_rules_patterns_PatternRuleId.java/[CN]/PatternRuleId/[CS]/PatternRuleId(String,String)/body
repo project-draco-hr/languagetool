@@ -1,4 +1,6 @@
 {
+  Validate.notEmpty(id,"id must be set");
+  Validate.notEmpty(subId,"subId must be set, if specified");
   this.id=id;
   this.subId=subId;
 }
