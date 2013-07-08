@@ -1,6 +1,0 @@
-{
-  String cleanXml=xml;
-  cleanXml=cleanXml.replace("\n</","</");
-  cleanXml=cleanXml.replace("\n<","<");
-  return cleanXml;
-}

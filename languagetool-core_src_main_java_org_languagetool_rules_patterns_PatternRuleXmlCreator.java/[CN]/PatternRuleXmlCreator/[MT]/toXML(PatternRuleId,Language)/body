@@ -33,5 +33,5 @@
       is.close();
     }
   }
-  throw new RuntimeException("Could not find rule " + ruleId + " for language "+ language);
+  throw new RuntimeException("Could not find rule " + ruleId + " for language "+ language+ " in files: "+ filenames);
 }

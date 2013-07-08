@@ -1,7 +1,9 @@
 {
-  final InputSource inputSource=new InputSource(is);
-  final DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
-  factory.setNamespaceAware(false);
-  final DocumentBuilder builder=factory.newDocumentBuilder();
-  return builder.parse(inputSource);
+  final DOMImplementationRegistry registry=DOMImplementationRegistry.newInstance();
+  final DOMImplementationLS impl=(DOMImplementationLS)registry.getDOMImplementation("LS");
+  final LSParser parser=impl.createLSParser(DOMImplementationLS.MODE_SYNCHRONOUS,null);
+  parser.setFilter(new IgnoreWhitespaceFilter());
+  final DOMInputImpl domInput=new DOMInputImpl();
+  domInput.setByteStream(is);
+  return parser.parse(domInput);
 }

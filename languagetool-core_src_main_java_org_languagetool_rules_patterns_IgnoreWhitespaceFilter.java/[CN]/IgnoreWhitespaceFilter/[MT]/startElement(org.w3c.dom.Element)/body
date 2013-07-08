@@ -1,0 +1,3 @@
+{
+  return LSParserFilter.FILTER_ACCEPT;
+}

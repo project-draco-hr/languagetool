@@ -1,0 +1,9 @@
+{
+  final String textContent=nodeArg.getTextContent();
+  if (textContent.trim().isEmpty()) {
+    return LSParserFilter.FILTER_REJECT;
+  }
+ else {
+    return LSParserFilter.FILTER_ACCEPT;
+  }
+}
