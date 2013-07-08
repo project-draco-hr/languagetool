@@ -3,12 +3,11 @@
   try {
     final Transformer t=TransformerFactory.newInstance().newTransformer();
     t.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION,"yes");
-    t.setOutputProperty(OutputKeys.INDENT,"yes");
-    t.setOutputProperty("{http://xml.apache.org/xslt}indent-amount","2");
     t.transform(new DOMSource(node),new StreamResult(sw));
   }
  catch (  TransformerException e) {
     throw new RuntimeException(e);
   }
-  return sw.toString();
+  final String xml=sw.toString().replace("<token","\n    <token").replace("<pattern","\n  <pattern").replace("</pattern","\n  </pattern").replace("</rule>","\n</rule>").replace("<message","\n  <message").replace("<short","\n  <short").replace("<url","\n  <url").replace("<example","\n  <example").replace("</suggestion><suggestion>","</suggestion>\n  <suggestion>").replace("</message><suggestion>","</message>\n  <suggestion>");
+  return xml;
 }
