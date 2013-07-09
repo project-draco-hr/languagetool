@@ -8,6 +8,6 @@
  catch (  TransformerException e) {
     throw new RuntimeException(e);
   }
-  final String xml=sw.toString().replace("<token","\n    <token").replace("<pattern","\n  <pattern").replace("</pattern","\n  </pattern").replace("</rule>","\n</rule>").replace("<message","\n  <message").replace("<short","\n  <short").replace("<url","\n  <url").replace("<example","\n  <example").replace("</suggestion><suggestion>","</suggestion>\n  <suggestion>").replace("</message><suggestion>","</message>\n  <suggestion>");
+  final String xml=sw.toString().replace("<token","\n    <token").replace("<and","\n    <and").replace("</and>","\n    </and>").replace("<phraseref","\n    <phraseref").replace("<pattern","\n  <pattern").replace("</pattern","\n  </pattern").replace("</rule>","\n</rule>").replace("<message","\n  <message").replace("<short","\n  <short").replace("<url","\n  <url").replace("<example","\n  <example").replace("</suggestion><suggestion>","</suggestion>\n  <suggestion>").replace("</message><suggestion>","</message>\n  <suggestion>");
   return xml;
 }
