@@ -2,16 +2,20 @@
   final SAXParserFactory factory=SAXParserFactory.newInstance();
   factory.setValidating(true);
   final SAXParser saxParser=factory.newSAXParser();
-  xml=xml.replaceAll("<!DOCTYPE.+>","");
+  final String cleanXml=xml.replaceAll("<!DOCTYPE.+>","");
   final String decl="<?xml version=\"1.0\"";
   final String endDecl="?>";
-  final String dtd="<!DOCTYPE " + docType + " PUBLIC \"-//W3C//DTD Rules 0.1//EN\" \""+ this.getClass().getResource(dtdFile)+ "\">";
-  final int pos=xml.indexOf(decl);
-  final int endPos=xml.indexOf(endDecl);
-  if (pos == -1) {
-    throw new IOException("No XML declaration found in '" + xml.substring(0,Math.min(100,xml.length())) + "...'");
+  final URL dtdUrl=this.getClass().getResource(dtdPath);
+  if (dtdUrl == null) {
+    throw new RuntimeException("DTD not found in classpath: " + dtdPath);
   }
-  final String newXML=xml.substring(0,endPos + endDecl.length()) + "\r\n" + dtd+ xml.substring(endPos + endDecl.length());
+  final String dtd="<!DOCTYPE " + docType + " PUBLIC \"-//W3C//DTD Rules 0.1//EN\" \""+ dtdUrl+ "\">";
+  final int pos=cleanXml.indexOf(decl);
+  final int endPos=cleanXml.indexOf(endDecl);
+  if (pos == -1) {
+    throw new IOException("No XML declaration found in '" + cleanXml.substring(0,Math.min(100,cleanXml.length())) + "...'");
+  }
+  final String newXML=cleanXml.substring(0,endPos + endDecl.length()) + "\r\n" + dtd+ cleanXml.substring(endPos + endDecl.length());
   final InputSource is=new InputSource(new StringReader(newXML));
   saxParser.parse(is,new ErrorHandler());
 }

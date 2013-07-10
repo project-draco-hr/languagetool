@@ -3,7 +3,7 @@
   final InputStream stream=this.getClass().getResourceAsStream(filePath);
   try {
     if (stream != null) {
-      validator.validate(filePath,JLanguageTool.getDataBroker().getResourceDir() + "/disambiguation.xsd");
+      validator.validateWithXmlSchema(filePath,JLanguageTool.getDataBroker().getResourceDir() + "/disambiguation.xsd");
     }
   }
   finally {
