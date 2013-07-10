@@ -1,0 +1,13 @@
+{
+  try {
+    final URL schemaUrl=this.getClass().getResource(xmlSchemaPath);
+    if (schemaUrl == null) {
+      throw new IOException("XML schema not found in classpath: " + xmlSchemaPath);
+    }
+    final ByteArrayInputStream stream=new ByteArrayInputStream(xml.getBytes("utf-8"));
+    validateInternal(stream,schemaUrl);
+  }
+ catch (  SAXException e) {
+    throw new RuntimeException(e);
+  }
+}
