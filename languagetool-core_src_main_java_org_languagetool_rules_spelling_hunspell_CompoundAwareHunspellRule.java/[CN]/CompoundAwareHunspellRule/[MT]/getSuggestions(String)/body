@@ -7,7 +7,7 @@
   candidates.addAll(noSplitSuggestions);
   if (StringTools.startsWithUppercase(word) && !StringTools.isAllUppercase(word)) {
     final List<String> noSplitLowercaseSuggestions=morfoSpeller.getSuggestions(word.toLowerCase());
-    int pos=0;
+    int pos=candidates.size() == 0 ? 0 : 1;
     for (    String suggestion : noSplitLowercaseSuggestions) {
       candidates.add(pos,StringTools.uppercaseFirstChar(suggestion));
       pos=Math.min(pos + 2,candidates.size());
