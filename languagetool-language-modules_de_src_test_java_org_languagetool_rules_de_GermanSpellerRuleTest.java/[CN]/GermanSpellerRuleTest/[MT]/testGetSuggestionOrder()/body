@@ -1,6 +1,6 @@
 {
   final HunspellRule rule=new GermanSpellerRule(TestTools.getMessages("German"),new GermanyGerman());
-  assertCorrectionsByOrder(rule,"heisst","hei??t","heilst","heimst");
+  assertCorrectionsByOrder(rule,"heisst","hei??t");
   assertCorrectionsByOrder(rule,"heissen","hei??en");
   assertCorrectionsByOrder(rule,"m????te","m??sste","Mute");
   assertCorrectionsByOrder(rule,"schmohren","schmoren");
