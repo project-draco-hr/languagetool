@@ -1,5 +1,2 @@
 {
-  write("<");
-  write(n.getNodeName());
-  write(" />");
 }

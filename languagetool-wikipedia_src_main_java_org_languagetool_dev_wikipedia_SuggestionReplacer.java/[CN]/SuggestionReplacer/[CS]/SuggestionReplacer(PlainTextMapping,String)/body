@@ -1,4 +1,6 @@
 {
   this.textMapping=textMapping;
   this.originalText=originalText;
+  this.errorMarkerStart="<span class=\"error\">";
+  this.errorMarkerEnd="</span>";
 }

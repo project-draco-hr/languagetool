@@ -2,8 +2,8 @@
   PlainTextMapping mapping=filter.filter(text);
   List<RuleMatch> matches=langTool.check(mapping.getPlainText());
   assertThat("Expected 1 match, got: " + matches,matches.size(),is(1));
-  SuggestionReplacer replacer=new SuggestionReplacer(mapping,text);
-  List<String> newTexts=replacer.applySuggestionsToOriginalText(matches.get(0));
-  assertThat(newTexts.size(),is(1));
-  assertThat(newTexts.get(0),is(expected));
+  SuggestionReplacer replacer=new SuggestionReplacer(mapping,text,"<s>","</s>");
+  List<RuleApplication> ruleApplications=replacer.applySuggestionsToOriginalText(matches.get(0));
+  assertThat(ruleApplications.size(),is(1));
+  assertThat(ruleApplications.get(0).getTextWithCorrection(),is(expected));
 }

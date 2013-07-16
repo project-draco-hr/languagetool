@@ -1,0 +1,5 @@
+RuleMatch ruleMatch
+String text
+String textWithCorrection
+String errorMarkerStart
+String errorMarkerEnd

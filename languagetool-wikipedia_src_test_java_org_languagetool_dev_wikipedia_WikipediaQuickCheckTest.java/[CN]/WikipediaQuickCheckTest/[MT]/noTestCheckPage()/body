@@ -1,0 +1,14 @@
+{
+  final WikipediaQuickCheck check=new WikipediaQuickCheck();
+  final String url="http://de.wikipedia.org/wiki/Bielefeld";
+  final MarkupAwareWikipediaResult result=check.checkPage(new URL(url));
+  final List<RuleApplication> ruleApplications=result.getRuleApplications();
+  for (  RuleApplication ruleApplication : ruleApplications) {
+    System.out.println("Rule     : " + ruleApplication.getRuleMatch().getRule().getDescription());
+    System.out.println("Original : " + ruleApplication.getOriginalErrorContext().replace("\n"," "));
+    if (ruleApplication.isHasRealReplacement()) {
+      System.out.println("Corrected: " + ruleApplication.getCorrectedErrorContext().replace("\n"," "));
+    }
+    System.out.println();
+  }
+}

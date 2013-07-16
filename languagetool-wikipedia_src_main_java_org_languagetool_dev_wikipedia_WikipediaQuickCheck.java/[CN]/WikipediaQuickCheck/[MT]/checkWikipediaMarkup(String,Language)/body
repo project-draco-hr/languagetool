@@ -1,0 +1,12 @@
+{
+  final SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
+  final PlainTextMapping mapping=filter.filter(wikiMarkup);
+  final JLanguageTool langTool=getLanguageTool(language);
+  final List<RuleApplication> ruleApplications=new ArrayList<RuleApplication>();
+  final List<RuleMatch> matches=langTool.check(mapping.getPlainText());
+  for (  RuleMatch match : matches) {
+    final SuggestionReplacer replacer=new SuggestionReplacer(mapping,wikiMarkup);
+    ruleApplications.addAll(replacer.applySuggestionsToOriginalText(match));
+  }
+  return new MarkupAwareWikipediaResult(ruleApplications);
+}

@@ -1,0 +1,7 @@
+{
+  int errorStart=textWithCorrection.indexOf(errorMarkerStart);
+  int errorEnd=textWithCorrection.indexOf(errorMarkerEnd);
+  int errorContextStart=Math.max(errorStart - CONTEXT_SIZE,0);
+  int errorContentEnd=Math.min(errorEnd + CONTEXT_SIZE,text.length());
+  return text.substring(errorContextStart,errorContentEnd);
+}

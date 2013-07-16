@@ -1,4 +1,5 @@
 {
+  addMapping(er);
   String ch=EntityReferences.resolve(er.getName());
   if ("nbsp".equals(er.getName())) {
     write(' ');

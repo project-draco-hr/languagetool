@@ -22,6 +22,7 @@
     title=sb2.toString();
   }
   newline(2);
+  addMapping(s);
   write(title);
   newline(2);
   noWrap=saveNoWrap;

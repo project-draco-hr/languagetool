@@ -1,0 +1,20 @@
+{
+  InputStream stream=SuggestionReplacerTest.class.getResourceAsStream("/org/languagetool/dev/wikipedia/wikipedia2.txt");
+  String origMarkup=IOUtils.toString(stream);
+  JLanguageTool langTool=new JLanguageTool(new GermanyGerman());
+  langTool.activateDefaultPatternRules();
+  SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
+  PlainTextMapping mapping=filter.filter(origMarkup);
+  List<RuleMatch> matches=langTool.check(mapping.getPlainText());
+  assertTrue("Expected >= 30 matches, got: " + matches,matches.size() >= 30);
+  String markup=origMarkup;
+  for (  RuleMatch match : matches) {
+    SuggestionReplacer replacer=new SuggestionReplacer(mapping,markup,"<s>","</s>");
+    List<RuleApplication> ruleApplications=replacer.applySuggestionsToOriginalText(match);
+    if (ruleApplications.size() == 0) {
+      continue;
+    }
+    RuleApplication ruleApplication=ruleApplications.get(0);
+    assertThat(StringUtils.countMatches(ruleApplication.getTextWithCorrection(),"<s>"),is(1));
+  }
+}

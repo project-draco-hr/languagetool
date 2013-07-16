@@ -1,17 +1,29 @@
 {
   final List<String> replacements=match.getSuggestedReplacements();
-  final List<String> newTexts=new ArrayList<String>();
+  final boolean hasRealReplacements=replacements.size() > 0;
+  if (!hasRealReplacements) {
+    String plainText=textMapping.getPlainText();
+    replacements.add(plainText.substring(match.getFromPos(),match.getToPos()));
+  }
+  final List<RuleApplication> ruleApplications=new ArrayList<RuleApplication>();
   final Location fromPosLocation=textMapping.getOriginalTextPositionFor(match.getFromPos() + 1);
   final Location toPosLocation=textMapping.getOriginalTextPositionFor(match.getToPos() + 1);
   final int fromPos=LocationHelper.absolutePositionFor(fromPosLocation,originalText);
   final int toPos=LocationHelper.absolutePositionFor(toPosLocation,originalText);
-  final int contextSize=5;
   for (  String replacement : replacements) {
     final String errorText=textMapping.getPlainText().substring(match.getFromPos(),match.getToPos());
-    final int contextFrom=Math.max(fromPos - contextSize,0);
-    final int contextTo=Math.min(toPos + contextSize,originalText.length());
-    final String newText=originalText.substring(0,contextFrom) + originalText.substring(contextFrom,contextTo).replace(errorText,replacement) + originalText.substring(contextTo);
-    newTexts.add(newText);
+    final int contextFrom=findNextWhitespaceToTheLeft(originalText,fromPos);
+    final int contextTo=findNextWhitespaceToTheRight(originalText,toPos);
+    final String text=originalText.substring(0,contextFrom) + errorMarkerStart + originalText.substring(contextFrom,contextTo)+ errorMarkerEnd+ originalText.substring(contextTo);
+    final String newText=originalText.substring(0,contextFrom) + errorMarkerStart + originalText.substring(contextFrom,contextTo).replace(errorText,replacement)+ errorMarkerEnd+ originalText.substring(contextTo);
+    final RuleApplication application;
+    if (hasRealReplacements) {
+      application=RuleApplication.forMatchWithReplacement(match,text,newText,errorMarkerStart,errorMarkerEnd);
+    }
+ else {
+      application=RuleApplication.forMatchWithoutReplacement(match,text,newText,errorMarkerStart,errorMarkerEnd);
+    }
+    ruleApplications.add(application);
   }
-  return newTexts;
+  return ruleApplications;
 }

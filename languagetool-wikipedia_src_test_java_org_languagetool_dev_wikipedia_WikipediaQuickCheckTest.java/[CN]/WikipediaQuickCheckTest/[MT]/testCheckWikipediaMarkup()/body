@@ -1,0 +1,10 @@
+{
+  final WikipediaQuickCheck check=new WikipediaQuickCheck();
+  final String markup="== Beispiele ==\n\n" + "Eine kleine Auswahl von Fehlern.\n\n" + "Das Komma ist richtig, wegen dem Leerzeichen.";
+  final MarkupAwareWikipediaResult result=check.checkWikipediaMarkup(markup,new German());
+  final List<RuleApplication> ruleApplications=result.getRuleApplications();
+  assertThat(ruleApplications.size(),is(1));
+  for (  RuleApplication ruleApplication : ruleApplications) {
+    assertTrue("Got: " + ruleApplication.getTextWithCorrection(),ruleApplication.getTextWithCorrection().contains("<span class=\"error\">wegen dem Leerzeichen.</span>"));
+  }
+}

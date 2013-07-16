@@ -1,4 +1,5 @@
 {
+  addMapping(url);
   write(url.getProtocol());
   write(':');
   write(url.getPath());

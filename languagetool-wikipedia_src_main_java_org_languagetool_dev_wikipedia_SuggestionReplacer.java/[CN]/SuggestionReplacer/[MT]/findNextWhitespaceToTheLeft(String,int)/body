@@ -1,0 +1,8 @@
+{
+  for (int i=position; i >= 0; i--) {
+    if (Character.isWhitespace(text.charAt(i))) {
+      return i + 1;
+    }
+  }
+  return 1;
+}

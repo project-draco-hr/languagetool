@@ -2,7 +2,7 @@
   final WikipediaQuickCheck check=new WikipediaQuickCheck();
   final String text="Test [[Link]] und [[AnotherLink|noch einer]] und [http://test.org external link] Foo&amp;nbsp;bar.\n";
   final PlainTextMapping filteredContent=check.getPlainTextMapping("<?xml version=\"1.0\"?><api><query><normalized><n from=\"Benutzer_Diskussion:Dnaber\" to=\"Benutzer Diskussion:Dnaber\" />" + "</normalized><pages><page pageid=\"143424\" ns=\"3\" title=\"Benutzer Diskussion:Dnaber\"><revisions><rev xml:space=\"preserve\">" + text + "</rev></revisions></page></pages></query></api>");
-  assertEquals("Test Link und noch einer und Foo bar.",filteredContent.getPlainText());
+  assertEquals("Test Link und noch einer und external link Foo bar.",filteredContent.getPlainText());
   assertEquals(1,filteredContent.getOriginalTextPositionFor(1).line);
   assertEquals(1,filteredContent.getOriginalTextPositionFor(1).column);
   assertEquals(filteredContent.getPlainText().charAt(0),text.charAt(0));

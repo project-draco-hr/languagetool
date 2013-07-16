@@ -5,12 +5,14 @@
   }
  catch (  LinkTargetException e) {
   }
-  write(link.getPrefix());
   addMapping(link);
+  write(link.getPrefix());
   if (link.getTitle().getContent() == null || link.getTitle().getContent().isEmpty()) {
+    addMapping(link);
     write(link.getTarget());
   }
  else {
+    addMapping(link);
     iterate(link.getTitle());
   }
   write(link.getPostfix());

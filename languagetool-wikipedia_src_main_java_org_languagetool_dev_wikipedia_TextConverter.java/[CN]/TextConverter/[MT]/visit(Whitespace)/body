@@ -1,3 +1,4 @@
 {
+  addMapping(w);
   write(" ");
 }

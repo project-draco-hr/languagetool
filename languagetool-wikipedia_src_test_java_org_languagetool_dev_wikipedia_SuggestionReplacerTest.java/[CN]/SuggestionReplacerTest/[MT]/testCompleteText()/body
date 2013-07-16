@@ -16,13 +16,16 @@
   String markup=origMarkup;
   int oldPos=0;
   for (  RuleMatch match : matches) {
-    SuggestionReplacer replacer=new SuggestionReplacer(mapping,markup);
-    List<String> newTexts=replacer.applySuggestionsToOriginalText(match);
-    assertThat(newTexts.size(),is(1));
-    String newText=newTexts.get(0);
-    assertThat(StringUtils.countMatches(newText,"absichtlicher absichtlicher"),is(2));
-    int pos=newText.indexOf("in absichtlicher Fehler");
-    assertTrue(pos > oldPos);
+    SuggestionReplacer replacer=new SuggestionReplacer(mapping,markup,"<s>","</s>");
+    List<RuleApplication> ruleApplications=replacer.applySuggestionsToOriginalText(match);
+    assertThat(ruleApplications.size(),is(1));
+    RuleApplication ruleApplication=ruleApplications.get(0);
+    assertThat(StringUtils.countMatches(ruleApplication.getTextWithCorrection(),"absichtlicher absichtlicher"),is(2));
+    int pos=ruleApplication.getTextWithCorrection().indexOf("<s>absichtlicher</s> Fehler");
+    if (pos == -1) {
+      pos=ruleApplication.getTextWithCorrection().indexOf("<s>absichtlicher Fehler</s>");
+    }
+    assertTrue("Found correction at: " + pos,pos > oldPos);
     oldPos=pos;
   }
 }

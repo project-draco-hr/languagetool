@@ -2,5 +2,5 @@
   String markup="{{Dieser Artikel|behandelt die freie Onlineenzyklop??die Wikipedia; zu dem gleichnamigen Asteroiden siehe [[(274301) Wikipedia]].}}\n" + "\n" + "{{Infobox Website\n"+ "| Name = '''Wikipedia'''\n"+ "| Logo = [[Datei:Wikipedia-logo-v2-de.svg|180px|Das Wikipedia-Logo]]\n"+ "| url = [//de.wikipedia.org/ de.wikipedia.org] (deutschsprachige Version)<br />\n"+ "[//www.wikipedia.org/ www.wikipedia.org] (??bersicht aller Sprachen)\n"+ "| Kommerziell = nein\n"+ "| Beschreibung = [[Wiki]] einer freien kollektiv erstellten Online-Enzyklop??die\n"+ "}}\n"+ "\n"+ "'''Wikipedia''' [{{IPA|??v??ki??pe??dia}}] (auch: ''die Wikipedia'') ist ein am [[15. Januar|15.&nbsp;Januar]] [[2001]] gegr??ndetes Projekt. Und und so.\n";
   JLanguageTool langTool=getLanguageTool();
   SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
-  applySuggestion(langTool,filter,markup,markup.replace("Und und so.","Und so."));
+  applySuggestion(langTool,filter,markup,markup.replace("Und und so.","<s>Und so.</s>"));
 }

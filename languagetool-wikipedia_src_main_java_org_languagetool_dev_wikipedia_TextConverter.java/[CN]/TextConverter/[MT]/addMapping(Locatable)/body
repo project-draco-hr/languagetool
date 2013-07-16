@@ -1,5 +1,7 @@
 {
   String contentSoFar=sb.toString() + line;
   int textPos=contentSoFar.length() + 1 + (needSpace ? 1 : 0);
-  mapping.put(textPos,loc.getLocation());
+  if (loc.hasLocation()) {
+    mapping.put(textPos,loc.getLocation());
+  }
 }
