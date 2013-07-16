@@ -2,7 +2,8 @@
   try {
     final CompiledPage compiledPage=compiler.postprocess(pageId,wikiText,null);
     final TextConverter textConverter=new TextConverter(config,WRAP_COL);
-    return (String)textConverter.go(compiledPage.getPage());
+    final String plainText=(String)textConverter.go(compiledPage.getPage());
+    return new PlainTextMapping(plainText,textConverter.getMapping());
   }
  catch (  Exception e) {
     throw new RuntimeException("Could not extract plain text from MediaWiki syntax: " + wikiText,e);

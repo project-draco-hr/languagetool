@@ -1,0 +1,16 @@
+{
+  final WikipediaQuickCheck check=new WikipediaQuickCheck();
+  final String text="Test [[Link]] und [[AnotherLink|noch einer]].\n\nUnd [[NextLink]] Foobar.\n";
+  final PlainTextMapping filteredContent=check.getPlainTextMapping("<?xml version=\"1.0\"?><api><query><normalized><n from=\"Benutzer_Diskussion:Dnaber\" to=\"Benutzer Diskussion:Dnaber\" />" + "</normalized><pages><page pageid=\"143424\" ns=\"3\" title=\"Benutzer Diskussion:Dnaber\"><revisions><rev xml:space=\"preserve\">" + text + "</rev></revisions></page></pages></query></api>");
+  assertEquals("Test Link und noch einer.\n\nUnd NextLink Foobar.",filteredContent.getPlainText());
+  assertEquals(1,filteredContent.getOriginalTextPositionFor(1).line);
+  assertEquals(1,filteredContent.getOriginalTextPositionFor(1).column);
+  assertEquals(filteredContent.getPlainText().charAt(0),text.charAt(0));
+  assertEquals('U',text.charAt(47));
+  assertEquals('U',filteredContent.getPlainText().charAt(27));
+  assertEquals(3,filteredContent.getOriginalTextPositionFor(28).line);
+  assertEquals(45,filteredContent.getOriginalTextPositionFor(25).column);
+  assertEquals(46,filteredContent.getOriginalTextPositionFor(26).column);
+  assertEquals(1,filteredContent.getOriginalTextPositionFor(27).column);
+  assertEquals(2,filteredContent.getOriginalTextPositionFor(28).column);
+}

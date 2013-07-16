@@ -2,9 +2,10 @@
   final SwebleWikipediaTextFilter textFilter;
   if (lang.getShortName().equals("ro")) {
     textFilter=new SwebleWikipediaTextFilter(){
-      @Override public String filter(      String arg0){
-        final String tmp=super.filter(arg0);
-        return RomanianDiacriticsModifier.correctDiacritics(tmp);
+      @Override public PlainTextMapping filter(      String arg0){
+        final PlainTextMapping tmp=super.filter(arg0);
+        final String text=RomanianDiacriticsModifier.correctDiacritics(tmp.getPlainText());
+        return new PlainTextMapping(text,tmp.getMapping());
       }
     }
 ;

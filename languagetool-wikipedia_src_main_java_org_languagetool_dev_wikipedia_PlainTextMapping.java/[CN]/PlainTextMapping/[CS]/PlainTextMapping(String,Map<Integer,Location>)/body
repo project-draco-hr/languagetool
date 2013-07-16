@@ -1,0 +1,4 @@
+{
+  this.plainText=plainText;
+  this.mapping=mapping;
+}

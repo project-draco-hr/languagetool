@@ -1,0 +1,9 @@
+{
+  assertThat(checkLocation(1,1,"hallo"),is(0));
+  try {
+    checkLocation(2,2,"hallo");
+    fail();
+  }
+ catch (  RuntimeException ignored) {
+  }
+}

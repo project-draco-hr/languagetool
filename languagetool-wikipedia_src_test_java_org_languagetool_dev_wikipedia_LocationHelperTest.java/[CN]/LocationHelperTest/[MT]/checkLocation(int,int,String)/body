@@ -1,0 +1,3 @@
+{
+  return LocationHelper.absolutePositionFor(new Location("",line,col),text);
+}

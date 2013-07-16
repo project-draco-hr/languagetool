@@ -6,6 +6,7 @@
  catch (  LinkTargetException e) {
   }
   write(link.getPrefix());
+  addMapping(link);
   if (link.getTitle().getContent() == null || link.getTitle().getContent().isEmpty()) {
     write(link.getTarget());
   }

@@ -1,0 +1,11 @@
+{
+  JLanguageTool langTool=getLanguageTool();
+  SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
+  applySuggestion(langTool,filter,"Die CD ROM.","Die CD-ROM.");
+  applySuggestion(langTool,filter,"Die [[verlinkte]] CD ROM.","Die [[verlinkte]] CD-ROM.");
+  applySuggestion(langTool,filter,"Die [[Link|verlinkte]] CD ROM.","Die [[Link|verlinkte]] CD-ROM.");
+  applySuggestion(langTool,filter,"Die [[CD ROM]].","Die [[CD-ROM]].");
+  applySuggestion(langTool,filter,"Der [[Abschied]].\n\n==??berschrift==\n\nEin Ab schied.","Der [[Abschied]].\n\n==??berschrift==\n\nEin Abschied.");
+  applySuggestion(langTool,filter,"Ein ??konomischer Gottesdienst.","Ein ??kumenisch Gottesdienst.");
+  applySuggestion(langTool,filter,"Ein ??konomischer Gottesdienst mit ??konomischer Planung.","Ein ??kumenisch Gottesdienst mit ??konomischer Planung.");
+}

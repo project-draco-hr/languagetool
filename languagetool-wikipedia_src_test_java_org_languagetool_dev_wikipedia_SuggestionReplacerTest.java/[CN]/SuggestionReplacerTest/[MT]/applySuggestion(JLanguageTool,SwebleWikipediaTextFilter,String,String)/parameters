@@ -1,0 +1,4 @@
+JLanguageTool langTool
+SwebleWikipediaTextFilter filter
+String text
+String expected

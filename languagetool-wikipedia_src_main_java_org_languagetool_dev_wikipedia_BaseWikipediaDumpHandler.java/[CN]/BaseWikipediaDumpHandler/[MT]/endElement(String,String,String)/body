@@ -4,7 +4,8 @@
     text=new StringBuilder();
   }
  else   if (qName.equals("text")) {
-    final String textToCheck=textFilter.filter(text.toString());
+    final PlainTextMapping mapping=textFilter.filter(text.toString());
+    final String textToCheck=mapping.getPlainText();
     if (!textToCheck.contains("#REDIRECT")) {
       articleCount++;
       if (maxArticles > 0 && articleCount > maxArticles) {

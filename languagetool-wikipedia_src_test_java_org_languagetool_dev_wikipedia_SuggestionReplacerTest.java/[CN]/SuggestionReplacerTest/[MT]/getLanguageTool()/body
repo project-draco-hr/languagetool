@@ -1,0 +1,6 @@
+{
+  JLanguageTool langTool=new JLanguageTool(new GermanyGerman());
+  langTool.activateDefaultPatternRules();
+  langTool.disableRule("DE_CASE");
+  return langTool;
+}

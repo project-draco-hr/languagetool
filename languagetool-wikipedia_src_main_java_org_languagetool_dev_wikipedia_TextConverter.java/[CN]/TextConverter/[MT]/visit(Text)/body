@@ -1,3 +1,4 @@
 {
+  addMapping(text);
   write(text.getContent());
 }

@@ -15,7 +15,7 @@
     try {
       final String textToCheck;
       try {
-        textToCheck=textFilter.filter(text.toString());
+        textToCheck=textFilter.filter(text.toString()).getPlainText();
         if (!textToCheck.contains("#REDIRECT") && !textToCheck.trim().equals("")) {
           indexer.index(textToCheck,false,articleCount);
         }

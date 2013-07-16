@@ -1,4 +1,4 @@
 {
   final String input="foo [[Test]] bar";
-  assertEquals("foo Test bar",swebleFilter.filter(input));
+  assertEquals("foo Test bar",swebleFilter.filter(input).getPlainText());
 }

@@ -1,0 +1,4 @@
+{
+  this.textMapping=textMapping;
+  this.originalText=originalText;
+}

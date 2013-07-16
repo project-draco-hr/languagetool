@@ -1,0 +1,2 @@
+String plainText
+Map<Integer,Location> mapping

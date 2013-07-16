@@ -1,0 +1,25 @@
+{
+  if (plainTextPosition < 1) {
+    throw new RuntimeException("plainTextPosition must be > 0 - its value starts at 1");
+  }
+  final Location origPosition=mapping.get(plainTextPosition);
+  if (origPosition != null) {
+    return origPosition;
+  }
+  int minDiff=Integer.MAX_VALUE;
+  Location bestMatch=null;
+  for (  Map.Entry<Integer,Location> entry : mapping.entrySet()) {
+    int maybeClosePosition=entry.getKey();
+    if (plainTextPosition > maybeClosePosition) {
+      int diff=plainTextPosition - maybeClosePosition;
+      if (diff >= 0 && diff < minDiff) {
+        bestMatch=entry.getValue();
+        minDiff=diff;
+      }
+    }
+  }
+  if (bestMatch == null) {
+    throw new RuntimeException("Could not map " + plainTextPosition + " to original position. Mapping: "+ mapping);
+  }
+  return new Location(bestMatch.file,bestMatch.line,bestMatch.column + minDiff);
+}

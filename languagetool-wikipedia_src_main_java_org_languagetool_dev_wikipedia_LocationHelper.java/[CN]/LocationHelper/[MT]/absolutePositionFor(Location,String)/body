@@ -1,0 +1,33 @@
+{
+  int line=1;
+  int col=1;
+  int pos=0;
+  boolean ignoreMode=false;
+  for (int i=0; i < text.length(); i++) {
+    if (line == location.line && col == location.column) {
+      return pos;
+    }
+    char prevCh=i > 0 ? text.charAt(i - 1) : '-';
+    char ch=text.charAt(i);
+    if (ignoreMode) {
+      if (ch == '}' && prevCh == '}') {
+        ignoreMode=false;
+      }
+    }
+ else     if (ch == '{' && prevCh == '{') {
+      ignoreMode=true;
+    }
+ else     if (ch == '\n') {
+      line++;
+      col=1;
+    }
+ else {
+      col++;
+    }
+    pos++;
+  }
+  if (line == location.line && col == location.column) {
+    return pos;
+  }
+  throw new RuntimeException("Could not find location " + location + " in text: '"+ text+ "'. Max line/col was: "+ line+ "/"+ col);
+}
