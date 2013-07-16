@@ -1,1 +1,2 @@
 List<RuleApplication> ruleApplications
+int internalErrors

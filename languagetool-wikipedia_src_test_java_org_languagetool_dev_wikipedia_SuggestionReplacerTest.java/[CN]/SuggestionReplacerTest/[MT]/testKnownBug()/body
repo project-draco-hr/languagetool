@@ -1,0 +1,10 @@
+{
+  JLanguageTool langTool=getLanguageTool();
+  SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
+  String markup="{{HdBG GKZ|9761000}}.";
+  try {
+    applySuggestion(langTool,filter,markup,markup);
+  }
+ catch (  RuntimeException e) {
+  }
+}

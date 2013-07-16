@@ -4,9 +4,16 @@
   final JLanguageTool langTool=getLanguageTool(language);
   final List<RuleApplication> ruleApplications=new ArrayList<RuleApplication>();
   final List<RuleMatch> matches=langTool.check(mapping.getPlainText());
+  int internalErrors=0;
   for (  RuleMatch match : matches) {
     final SuggestionReplacer replacer=new SuggestionReplacer(mapping,wikiMarkup);
-    ruleApplications.addAll(replacer.applySuggestionsToOriginalText(match));
+    try {
+      ruleApplications.addAll(replacer.applySuggestionsToOriginalText(match));
+    }
+ catch (    Exception e) {
+      System.err.println("Failed to apply suggestion for rule match '" + match + "' for URL "+ url+ ": "+ e.toString());
+      internalErrors++;
+    }
   }
-  return new MarkupAwareWikipediaResult(ruleApplications);
+  return new MarkupAwareWikipediaResult(ruleApplications,internalErrors);
 }

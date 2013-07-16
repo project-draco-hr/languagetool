@@ -1,3 +1,4 @@
 {
   this.ruleApplications=ruleApplications;
+  this.internalErrors=internalErrors;
 }

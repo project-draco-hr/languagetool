@@ -3,5 +3,5 @@
   final WikipediaQuickCheck check=new WikipediaQuickCheck();
   final String xml=check.getMediaWikiContent(url);
   final String wikiMarkup=getRevisionContent(xml);
-  return checkWikipediaMarkup(wikiMarkup,getLanguage(url));
+  return checkWikipediaMarkup(url,wikiMarkup,getLanguage(url));
 }
