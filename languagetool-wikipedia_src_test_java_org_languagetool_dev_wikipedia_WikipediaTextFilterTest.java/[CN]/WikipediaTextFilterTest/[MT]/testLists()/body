@@ -1,6 +1,4 @@
 {
-  final String input1="# one\n# two\n";
-  assertEquals("one\n\ntwo",swebleFilter.filter(input1).getPlainText());
-  final String input2="* one\n* two\n";
-  assertEquals("one\n\ntwo",swebleFilter.filter(input2).getPlainText());
+  assertExtract("# one\n# two\n","one\n\ntwo");
+  assertExtract("* one\n* two\n","one\n\ntwo");
 }
