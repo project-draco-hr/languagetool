@@ -1,5 +1,6 @@
 {
   if ("rev".equals(qName)) {
+    timestamp=attrs.getValue("timestamp");
     inRevision=true;
   }
 }

@@ -2,6 +2,6 @@
   validateWikipediaUrl(url);
   final WikipediaQuickCheck check=new WikipediaQuickCheck();
   final String xml=check.getMediaWikiContent(url);
-  final String wikiMarkup=getRevisionContent(xml);
-  return checkWikipediaMarkup(url,wikiMarkup,getLanguage(url));
+  final MediaWikiContent wikiContent=getRevisionContent(xml);
+  return checkWikipediaMarkup(url,wikiContent,getLanguage(url));
 }

@@ -9,5 +9,5 @@
  catch (  Exception e) {
     throw new RuntimeException("Could not parse XML: " + completeWikiContent,e);
   }
-  return handler.getRevisionContent();
+  return new MediaWikiContent(handler.getRevisionContent(),handler.getTimestamp());
 }
