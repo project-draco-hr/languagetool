@@ -6,9 +6,9 @@
   System.out.println("ruleApplications: " + ruleApplications.size());
   for (  RuleApplication ruleApplication : ruleApplications) {
     System.out.println("Rule     : " + ruleApplication.getRuleMatch().getRule().getDescription());
-    System.out.println("Original : " + ruleApplication.getOriginalErrorContext().replace("\n"," "));
+    System.out.println("Original : " + ruleApplication.getOriginalErrorContext(10).replace("\n"," "));
     if (ruleApplication.hasRealReplacement()) {
-      System.out.println("Corrected: " + ruleApplication.getCorrectedErrorContext().replace("\n"," "));
+      System.out.println("Corrected: " + ruleApplication.getCorrectedErrorContext(10).replace("\n"," "));
     }
     System.out.println();
   }

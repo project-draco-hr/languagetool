@@ -4,7 +4,8 @@
   final MarkupAwareWikipediaResult result=check.checkWikipediaMarkup(new URL("http://fake-url.org"),markup,new German());
   final List<RuleApplication> ruleApplications=result.getRuleApplications();
   assertThat(ruleApplications.size(),is(1));
-  for (  RuleApplication ruleApplication : ruleApplications) {
-    assertTrue("Got: " + ruleApplication.getTextWithCorrection(),ruleApplication.getTextWithCorrection().contains("<span class=\"error\">wegen dem Leerzeichen.</span>"));
-  }
+  RuleApplication ruleApplication=ruleApplications.get(0);
+  assertTrue("Got: " + ruleApplication.getTextWithCorrection(),ruleApplication.getTextWithCorrection().contains("<span class=\"error\">wegen dem Leerzeichen.</span>"));
+  assertThat(ruleApplication.getOriginalErrorContext(10),is(" richtig, <span class=\"error\">wegen dem Leerzeichen.</span>"));
+  assertThat(ruleApplication.getCorrectedErrorContext(10),is(" richtig, <span class=\"error\">wegen dem Leerzeichen.</span>"));
 }

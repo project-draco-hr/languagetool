@@ -1,4 +1,5 @@
 {
+  this.originalWikiMarkup=originalWikiMarkup;
   this.ruleApplications=ruleApplications;
   this.internalErrors=internalErrors;
 }

@@ -15,5 +15,5 @@
       internalErrors++;
     }
   }
-  return new MarkupAwareWikipediaResult(ruleApplications,internalErrors);
+  return new MarkupAwareWikipediaResult(wikiMarkup,ruleApplications,internalErrors);
 }
