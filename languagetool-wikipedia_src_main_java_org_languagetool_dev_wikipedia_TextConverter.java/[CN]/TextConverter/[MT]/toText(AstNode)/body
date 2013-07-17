@@ -1,0 +1,13 @@
+{
+  StringBuilder out=new StringBuilder();
+  if (node instanceof StringContentNode) {
+    out.append(((StringContentNode)node).getContent());
+  }
+ else   if (node instanceof ContentNode) {
+    NodeList nodes=((ContentNode)node).getContent();
+    for (    AstNode subNode : nodes) {
+      out.append(toText(subNode));
+    }
+  }
+  return out.toString();
+}

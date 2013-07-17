@@ -2,7 +2,6 @@
   sb=new StringBuilder();
   line=new StringBuilder();
   mapping=new HashMap<Integer,Location>();
-  extLinkNum=1;
   pastBod=false;
   needNewlines=0;
   needSpace=false;

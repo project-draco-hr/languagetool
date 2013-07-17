@@ -2,12 +2,7 @@
   StringBuilder out=new StringBuilder();
   for (  AstNode node : link.getTitle()) {
     try {
-      if (node instanceof StringContentNode) {
-        out.append(((StringContentNode)node).getContent());
-      }
- else {
-        node.toString(out);
-      }
+      out.append(toText(node));
     }
  catch (    IOException e) {
       throw new RuntimeException("Error getting content of external link " + link,e);
