@@ -1,28 +1,3 @@
 {
-  InputStreamReader isr=null;
-  BufferedReader br=null;
-  final StringBuilder sb=new StringBuilder();
-  try {
-    if (encoding == null) {
-      isr=new InputStreamReader(file);
-    }
- else {
-      isr=new InputStreamReader(file,encoding);
-    }
-    br=new BufferedReader(isr);
-    String line;
-    while ((line=br.readLine()) != null) {
-      sb.append(line);
-      sb.append('\n');
-    }
-  }
-  finally {
-    if (br != null) {
-      br.close();
-    }
-    if (isr != null) {
-      isr.close();
-    }
-  }
-  return sb.toString();
+  return readStream(stream,encoding);
 }
