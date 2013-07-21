@@ -1,0 +1,6 @@
+{
+  if (!isCaseSensitive()) {
+    word=word.toLowerCase(getLocale());
+  }
+  return word;
+}
