@@ -1,5 +1,5 @@
 {
   this.originalWikiMarkup=wikiContent;
-  this.ruleApplications=ruleApplications;
+  this.appliedRuleMatch=appliedRuleMatch;
   this.internalErrors=internalErrors;
 }

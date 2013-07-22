@@ -1,0 +1,2 @@
+RuleMatch ruleMatch
+List<RuleApplication> ruleApplications
