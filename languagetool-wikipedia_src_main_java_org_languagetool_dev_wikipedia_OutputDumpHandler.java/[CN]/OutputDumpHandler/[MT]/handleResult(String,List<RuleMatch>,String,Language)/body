@@ -17,7 +17,7 @@
       if (!replacements.isEmpty()) {
         System.out.println("Suggestion: " + StringTools.listToString(replacements,"; "));
       }
-      System.out.println(contextTools.getPlainTextContext(match.getFromPos(),match.getToPos(),text,CONTEXT_SIZE));
+      System.out.println(contextTools.getPlainTextContext(match.getFromPos(),match.getToPos(),text));
       i++;
       errorCount++;
       if (maxErrors > 0 && errorCount >= maxErrors) {

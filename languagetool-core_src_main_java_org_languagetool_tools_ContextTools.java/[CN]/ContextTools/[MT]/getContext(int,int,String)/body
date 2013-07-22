@@ -1,5 +1,5 @@
 {
-  text=text.replace('\n',' ');
+  final String text=contents.replace('\n',' ');
   int startContent=fromPos - contextSize;
   String prefix="...";
   String postfix="...";
@@ -15,16 +15,7 @@
     postfix="";
     endContent=textLength;
   }
-  final StringBuilder marker=new StringBuilder();
-  final int totalLen=textLength + prefix.length();
-  for (int i=0; i < totalLen; i++) {
-    if (i >= fromPos && i < toPos) {
-      marker.append('^');
-    }
- else {
-      marker.append(' ');
-    }
-  }
+  final StringBuilder marker=getMarker(fromPos,toPos,textLength + prefix.length());
   final StringBuilder sb=new StringBuilder();
   sb.append(prefix);
   sb.append(text.substring(startContent,endContent));

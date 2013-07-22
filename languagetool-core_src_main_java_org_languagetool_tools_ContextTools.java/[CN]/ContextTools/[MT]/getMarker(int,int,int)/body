@@ -1,0 +1,12 @@
+{
+  final StringBuilder marker=new StringBuilder();
+  for (int i=0; i < textLength; i++) {
+    if (i >= fromPos && i < toPos) {
+      marker.append('^');
+    }
+ else {
+      marker.append(' ');
+    }
+  }
+  return marker;
+}

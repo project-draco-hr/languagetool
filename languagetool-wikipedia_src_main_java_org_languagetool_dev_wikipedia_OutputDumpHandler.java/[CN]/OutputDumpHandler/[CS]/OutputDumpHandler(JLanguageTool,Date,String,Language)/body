@@ -1,3 +1,4 @@
 {
   super(lt,dumpDate,langCode,lang);
+  contextTools.setContextSize(CONTEXT_SIZE);
 }
