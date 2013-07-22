@@ -1,0 +1,6 @@
+{
+  final ContextTools contextTools=new ContextTools();
+  final String input="This is a test sentence. Here's another sentence with more text.";
+  final String result=contextTools.getPlainTextContext(8,14,input,5);
+  assertEquals("...s is a test sent...\n        ^^^^^^     ",result);
+}

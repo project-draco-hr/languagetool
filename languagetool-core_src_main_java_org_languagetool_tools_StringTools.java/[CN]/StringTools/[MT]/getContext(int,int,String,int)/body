@@ -1,34 +1,4 @@
 {
-  final String fileContents=contents.replace('\n',' ');
-  int startContent=fromPos - contextSize;
-  String prefix="...";
-  String postfix="...";
-  String markerPrefix="   ";
-  if (startContent < 0) {
-    prefix="";
-    markerPrefix="";
-    startContent=0;
-  }
-  int endContent=toPos + contextSize;
-  if (endContent > fileContents.length()) {
-    postfix="";
-    endContent=fileContents.length();
-  }
-  final StringBuilder marker=new StringBuilder();
-  for (int i=0; i < fileContents.length() + prefix.length(); i++) {
-    if (i >= fromPos && i < toPos) {
-      marker.append('^');
-    }
- else {
-      marker.append(' ');
-    }
-  }
-  final StringBuilder sb=new StringBuilder();
-  sb.append(prefix);
-  sb.append(fileContents.substring(startContent,endContent));
-  sb.append(postfix);
-  sb.append('\n');
-  sb.append(markerPrefix);
-  sb.append(marker.substring(startContent,endContent));
-  return sb.toString();
+  ContextTools contextTools=new ContextTools();
+  return contextTools.getPlainTextContext(fromPos,toPos,contents,contextSize);
 }

@@ -9,9 +9,10 @@
   final String mediaWikiContent=check.getMediaWikiContent(url);
   final String plainText=check.getPlainText(mediaWikiContent);
   final WikipediaQuickCheckResult checkResult=check.checkPage(plainText,new German());
+  final ContextTools contextTools=new ContextTools();
   for (  RuleMatch ruleMatch : checkResult.getRuleMatches()) {
     System.out.println(ruleMatch.getMessage());
-    final String context=StringTools.getContext(ruleMatch.getFromPos(),ruleMatch.getToPos(),checkResult.getText());
+    final String context=contextTools.getPlainTextContext(ruleMatch.getFromPos(),ruleMatch.getToPos(),checkResult.getText(),CONTEXT_SIZE);
     System.out.println(context);
   }
 }
