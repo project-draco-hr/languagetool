@@ -7,9 +7,9 @@
   final List<AppliedRuleMatch> ruleWithApplications=result.getRuleApplications();
   assertThat(ruleWithApplications.size(),is(1));
   final AppliedRuleMatch firstRuleWithApplications=ruleWithApplications.get(0);
-  assertThat(firstRuleWithApplications.getRuleApplications().size(),is(1));
-  RuleApplication ruleApplication=firstRuleWithApplications.getRuleApplications().get(0);
-  assertTrue("Got: " + ruleApplication.getTextWithCorrection(),ruleApplication.getTextWithCorrection().contains("<span class=\"error\">wegen dem Leerzeichen.</span>"));
-  assertThat(ruleApplication.getOriginalErrorContext(10),is(" richtig, <span class=\"error\">wegen dem Leerzeichen.</span>"));
-  assertThat(ruleApplication.getCorrectedErrorContext(10),is(" richtig, <span class=\"error\">wegen dem Leerzeichen.</span>"));
+  assertThat(firstRuleWithApplications.getRuleMatchApplications().size(),is(1));
+  RuleMatchApplication ruleMatchApplication=firstRuleWithApplications.getRuleMatchApplications().get(0);
+  assertTrue("Got: " + ruleMatchApplication.getTextWithCorrection(),ruleMatchApplication.getTextWithCorrection().contains("<span class=\"error\">wegen dem Leerzeichen.</span>"));
+  assertThat(ruleMatchApplication.getOriginalErrorContext(10),is(" richtig, <span class=\"error\">wegen dem Leerzeichen.</span>"));
+  assertThat(ruleMatchApplication.getCorrectedErrorContext(10),is(" richtig, <span class=\"error\">wegen dem Leerzeichen.</span>"));
 }

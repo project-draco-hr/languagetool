@@ -17,13 +17,13 @@
   int oldPos=0;
   for (  RuleMatch match : matches) {
     SuggestionReplacer replacer=new SuggestionReplacer(mapping,markup,"<s>","</s>");
-    List<RuleApplication> ruleApplications=replacer.applySuggestionsToOriginalText(match);
-    assertThat(ruleApplications.size(),is(1));
-    RuleApplication ruleApplication=ruleApplications.get(0);
-    assertThat(StringUtils.countMatches(ruleApplication.getTextWithCorrection(),"absichtlicher absichtlicher"),is(2));
-    int pos=ruleApplication.getTextWithCorrection().indexOf("<s>absichtlicher</s> Fehler");
+    List<RuleMatchApplication> ruleMatchApplications=replacer.applySuggestionsToOriginalText(match);
+    assertThat(ruleMatchApplications.size(),is(1));
+    RuleMatchApplication ruleMatchApplication=ruleMatchApplications.get(0);
+    assertThat(StringUtils.countMatches(ruleMatchApplication.getTextWithCorrection(),"absichtlicher absichtlicher"),is(2));
+    int pos=ruleMatchApplication.getTextWithCorrection().indexOf("<s>absichtlicher</s> Fehler");
     if (pos == -1) {
-      pos=ruleApplication.getTextWithCorrection().indexOf("<s>absichtlicher Fehler</s>");
+      pos=ruleMatchApplication.getTextWithCorrection().indexOf("<s>absichtlicher Fehler</s>");
     }
     assertTrue("Found correction at: " + pos,pos > oldPos);
     oldPos=pos;

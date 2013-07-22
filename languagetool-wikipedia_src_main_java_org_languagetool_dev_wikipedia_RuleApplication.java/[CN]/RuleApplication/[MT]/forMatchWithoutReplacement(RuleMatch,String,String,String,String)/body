@@ -1,3 +1,0 @@
-{
-  return new RuleApplication(ruleMatch,text,textWithCorrection,errorMarkerStart,errorMarkerEnd,false);
-}

@@ -1,0 +1,4 @@
+{
+  this.ruleMatch=ruleMatch;
+  this.ruleMatchApplications=ruleMatchApplications;
+}

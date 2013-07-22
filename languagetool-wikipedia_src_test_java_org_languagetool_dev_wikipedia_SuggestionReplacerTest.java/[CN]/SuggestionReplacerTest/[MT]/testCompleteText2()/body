@@ -10,11 +10,11 @@
   String markup=origMarkup;
   for (  RuleMatch match : matches) {
     SuggestionReplacer replacer=new SuggestionReplacer(mapping,markup,"<s>","</s>");
-    List<RuleApplication> ruleApplications=replacer.applySuggestionsToOriginalText(match);
-    if (ruleApplications.size() == 0) {
+    List<RuleMatchApplication> ruleMatchApplications=replacer.applySuggestionsToOriginalText(match);
+    if (ruleMatchApplications.size() == 0) {
       continue;
     }
-    RuleApplication ruleApplication=ruleApplications.get(0);
-    assertThat(StringUtils.countMatches(ruleApplication.getTextWithCorrection(),"<s>"),is(1));
+    RuleMatchApplication ruleMatchApplication=ruleMatchApplications.get(0);
+    assertThat(StringUtils.countMatches(ruleMatchApplication.getTextWithCorrection(),"<s>"),is(1));
   }
 }
