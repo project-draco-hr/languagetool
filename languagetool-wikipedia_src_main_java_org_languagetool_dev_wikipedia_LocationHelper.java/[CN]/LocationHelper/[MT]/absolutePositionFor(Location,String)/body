@@ -3,6 +3,7 @@
   int col=1;
   int pos=0;
   int ignoreLevel=0;
+  boolean inReference=false;
   final StringBuilder relevantLine=new StringBuilder();
   for (int i=0; i < text.length(); i++) {
     char ch=text.charAt(i);
@@ -13,10 +14,21 @@
       return pos;
     }
     char prevCh=i > 0 ? text.charAt(i - 1) : '-';
-    if (i < text.length() - 4 && text.substring(i,i + 4).equals("<!--")) {
+    if (isReferenceStart(text,i)) {
+      ignoreLevel++;
+      inReference=true;
+    }
+ else     if (inReference && (isFullReferenceEndTag(text,i) || isShortReferenceEndTag(text,i))) {
+      ignoreLevel--;
+      inReference=false;
+      if (isShortReferenceEndTag(text,i)) {
+        col++;
+      }
+    }
+ else     if (isHtmlCommentStart(text,i)) {
       ignoreLevel++;
     }
- else     if (i < text.length() - 3 && text.substring(i,i + 3).equals("-->")) {
+ else     if (isHtmlCommentEnd(text,i)) {
       ignoreLevel--;
     }
  else     if (ch == '}' && prevCh == '}') {

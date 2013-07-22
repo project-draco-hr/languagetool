@@ -1,0 +1,3 @@
+{
+  return i < text.length() - 6 && text.substring(i,i + 6).equals("</ref>");
+}
