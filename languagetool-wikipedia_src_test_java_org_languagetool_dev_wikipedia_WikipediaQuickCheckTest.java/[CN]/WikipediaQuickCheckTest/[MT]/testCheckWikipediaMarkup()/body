@@ -4,7 +4,7 @@
   final MediaWikiContent wikiContent=new MediaWikiContent(markup,"2012-11-11T20:00:00");
   final MarkupAwareWikipediaResult result=check.checkWikipediaMarkup(new URL("http://fake-url.org"),wikiContent,new German());
   assertThat(result.getLastEditTimestamp(),is("2012-11-11T20:00:00"));
-  final List<AppliedRuleMatch> ruleWithApplications=result.getRuleApplications();
+  final List<AppliedRuleMatch> ruleWithApplications=result.getAppliedRuleMatches();
   assertThat(ruleWithApplications.size(),is(1));
   final AppliedRuleMatch firstRuleWithApplications=ruleWithApplications.get(0);
   assertThat(firstRuleWithApplications.getRuleMatchApplications().size(),is(1));

@@ -2,7 +2,7 @@
   final WikipediaQuickCheck check=new WikipediaQuickCheck();
   final String url="http://de.wikipedia.org/wiki/Augsburg";
   final MarkupAwareWikipediaResult result=check.checkPage(new URL(url));
-  final List<AppliedRuleMatch> ruleWithApplications=result.getRuleApplications();
+  final List<AppliedRuleMatch> ruleWithApplications=result.getAppliedRuleMatches();
   System.out.println("ruleApplications: " + ruleWithApplications.size());
   for (  AppliedRuleMatch ruleWithApplication : ruleWithApplications) {
     System.out.println("=====");
