@@ -1,0 +1,3 @@
+{
+  return tokenStr + " is not valid. Use: " + StringUtils.join(replacements,", ")+ ".";
+}

@@ -1,20 +1,26 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
-  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  for (int i=1; i < tokens.length; i++) {
-    final String token=tokens[i].getToken();
-    final String origToken=token;
-    final String replacement=isCaseSensitive() ? wrongWords.get(token) : wrongWords.get(token.toLowerCase(getLocale()));
-    if (replacement != null) {
-      final String msg=token + getSuggestion() + replacement;
-      final int pos=tokens[i].getStartPos();
-      final RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + origToken.length(),msg,getShort());
-      if (!isCaseSensitive() && StringTools.startsWithUppercase(token)) {
-        potentialRuleMatch.setSuggestedReplacement(StringTools.uppercaseFirstChar(replacement));
+  List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  List<String> replacements=new ArrayList<String>();
+  for (  AnalyzedTokenReadings tokenReadings : tokens) {
+    String tokenString=cleanup(tokenReadings.getToken());
+    if (!wrongWords.containsKey(tokenString)) {
+      for (      AnalyzedToken analyzedToken : tokenReadings.getReadings()) {
+        String lemma=analyzedToken.getLemma();
+        if (lemma != null) {
+          lemma=cleanup(lemma);
+          if (wrongWords.containsKey(lemma)) {
+            tokenString=lemma;
+            break;
+          }
+        }
       }
- else {
-        potentialRuleMatch.setSuggestedReplacement(replacement);
-      }
+    }
+    List<String> possibleReplacements=wrongWords.get(tokenString);
+    if (possibleReplacements != null && possibleReplacements.size() > 0) {
+      replacements.clear();
+      replacements.addAll(possibleReplacements);
+      RuleMatch potentialRuleMatch=createRuleMatch(tokenReadings,replacements);
       ruleMatches.add(potentialRuleMatch);
     }
   }

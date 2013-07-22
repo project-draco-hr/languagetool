@@ -1,9 +1,8 @@
 {
   String tokenString=tokenReadings.getToken();
   String origToken=tokenString;
-  String msg=tokenString + getSuggestion() + StringUtils.join(replacements,", ");
   int pos=tokenReadings.getStartPos();
-  RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + origToken.length(),msg,getShort());
+  RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + origToken.length(),getMessage(tokenString,replacements),getShort());
   if (!isCaseSensitive() && StringTools.startsWithUppercase(tokenString)) {
     for (int i=0; i < replacements.size(); i++) {
       replacements.set(i,StringTools.uppercaseFirstChar(replacements.get(i)));

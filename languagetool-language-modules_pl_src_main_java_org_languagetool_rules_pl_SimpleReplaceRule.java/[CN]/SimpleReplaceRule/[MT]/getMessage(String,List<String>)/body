@@ -1,0 +1,3 @@
+{
+  return tokenStr + " to typowa liter??wka, poprawnie: " + StringUtils.join(replacements,", ")+ ".";
+}

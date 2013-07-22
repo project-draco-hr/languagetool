@@ -1,17 +1,18 @@
 {
-  final Map<String,String> map=new HashMap<String,String>();
-  final Scanner scanner=new Scanner(stream,getEncoding());
+  Map<String,List<String>> map=new HashMap<String,List<String>>();
+  Scanner scanner=new Scanner(stream,getEncoding());
   try {
     while (scanner.hasNextLine()) {
-      final String line=scanner.nextLine();
+      String line=scanner.nextLine();
       if (line.length() < 1 || line.charAt(0) == '#') {
         continue;
       }
-      final String[] parts=line.split("=");
+      String[] parts=line.split("=");
       if (parts.length != 2) {
         throw new IOException("Format error in file " + JLanguageTool.getDataBroker().getFromRulesDirAsUrl(getFileName()) + ", line: "+ line);
       }
-      map.put(parts[0],parts[1]);
+      String[] replacements=parts[1].split("\\|");
+      map.put(parts[0],Arrays.asList(replacements));
     }
   }
   finally {

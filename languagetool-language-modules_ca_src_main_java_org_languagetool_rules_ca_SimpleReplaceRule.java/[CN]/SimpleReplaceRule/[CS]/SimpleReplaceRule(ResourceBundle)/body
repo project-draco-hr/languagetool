@@ -1,7 +1,5 @@
 {
-  if (messages != null) {
-    super.setCategory(new Category("Errors ortogr??fics"));
-    super.setLocQualityIssueType("misspelling");
-  }
-  wrongWords=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFileName()));
+  super(messages);
+  super.setCategory(new Category("Errors ortogr??fics"));
+  super.setLocQualityIssueType("misspelling");
 }

@@ -1,0 +1,3 @@
+{
+  return tokenStr + " is a common American expression, in British English it is more common to use: " + StringUtils.join(replacements,", ")+ ".";
+}
