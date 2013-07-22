@@ -1,6 +1,6 @@
 {
   final List<String> replacements=match.getSuggestedReplacements();
-  final boolean hasRealReplacements=replacements.size() > 0;
+  boolean hasRealReplacements=replacements.size() > 0;
   if (!hasRealReplacements) {
     String plainText=textMapping.getPlainText();
     replacements.add(plainText.substring(match.getFromPos(),match.getToPos()));
@@ -14,8 +14,17 @@
     final String errorText=textMapping.getPlainText().substring(match.getFromPos(),match.getToPos());
     final int contextFrom=findNextWhitespaceToTheLeft(originalText,fromPos);
     final int contextTo=findNextWhitespaceToTheRight(originalText,toPos);
-    final String text=originalText.substring(0,contextFrom) + errorMarkerStart + originalText.substring(contextFrom,contextTo)+ errorMarkerEnd+ originalText.substring(contextTo);
-    final String newText=originalText.substring(0,contextFrom) + errorMarkerStart + originalText.substring(contextFrom,contextTo).replace(errorText,replacement)+ errorMarkerEnd+ originalText.substring(contextTo);
+    final String context=originalText.substring(contextFrom,contextTo);
+    final String text=originalText.substring(0,contextFrom) + errorMarkerStart + context+ errorMarkerEnd+ originalText.substring(contextTo);
+    String newContext;
+    if (StringUtils.countMatches(context,errorText) == 1) {
+      newContext=context.replace(errorText,replacement);
+    }
+ else {
+      newContext=context;
+      hasRealReplacements=false;
+    }
+    final String newText=originalText.substring(0,contextFrom) + errorMarkerStart + newContext+ errorMarkerEnd+ originalText.substring(contextTo);
     final RuleMatchApplication application;
     if (hasRealReplacements) {
       application=RuleMatchApplication.forMatchWithReplacement(match,text,newText,errorMarkerStart,errorMarkerEnd);
