@@ -1,0 +1,5 @@
+{
+  JLanguageTool langTool=new JLanguageTool(language);
+  langTool.activateDefaultPatternRules();
+  return langTool;
+}

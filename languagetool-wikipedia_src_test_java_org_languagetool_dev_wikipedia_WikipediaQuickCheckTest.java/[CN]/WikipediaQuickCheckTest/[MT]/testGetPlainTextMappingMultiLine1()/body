@@ -11,6 +11,6 @@
   assertEquals('U',filteredContent.getPlainText().charAt(26));
   assertEquals(2,filteredContent.getOriginalTextPositionFor(27).line);
   assertEquals(45,filteredContent.getOriginalTextPositionFor(25).column);
-  assertEquals(46,filteredContent.getOriginalTextPositionFor(26).column);
-  assertEquals(1,filteredContent.getOriginalTextPositionFor(27).column);
+  assertEquals(1,filteredContent.getOriginalTextPositionFor(26).column);
+  assertEquals(2,filteredContent.getOriginalTextPositionFor(27).column);
 }

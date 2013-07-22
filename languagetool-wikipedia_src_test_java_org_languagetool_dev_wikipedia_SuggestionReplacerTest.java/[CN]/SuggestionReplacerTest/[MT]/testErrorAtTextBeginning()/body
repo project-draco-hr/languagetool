@@ -1,0 +1,6 @@
+{
+  JLanguageTool langTool=getLanguageTool(new English());
+  SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
+  String markup="A hour ago\n";
+  applySuggestion(langTool,filter,markup,markup.replace("A","<s>An</s>"));
+}
