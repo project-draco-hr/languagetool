@@ -11,7 +11,10 @@
     if (element.getExceptionList() != null) {
       for (      final Element exception : element.getExceptionList()) {
         if (exception.hasNextException() && element.getSkipNext() == 0) {
-          System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies. "+ " Did you forget skip=\"...\"?");
+          System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies."+ " Did you forget skip=\"...\"?");
+        }
+        if (!element.isRegularExpression() && !element.getString().isEmpty() && !element.getNegation()&& !element.isInflected()&& element.getSkipNext() == 0 && element.getPOStag() == null && exception.getPOStag() == null && element.getCaseSensitive() == exception.getCaseSensitive()) {
+          System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " exception in token ["+ i+ "] seems useless."+ " Did you forget skip=\"...\" or scope=\"previous\"?");
         }
         if (!exception.getString().equals(".")) {
           warnIfElementNotKosher(exception.getString(),exception.isRegularExpression(),exception.getCaseSensitive(),exception.getNegation(),exception.isInflected(),false,lang,ruleId + ":" + ruleSubId+ " (exception in token ["+ i+ "])",i);
