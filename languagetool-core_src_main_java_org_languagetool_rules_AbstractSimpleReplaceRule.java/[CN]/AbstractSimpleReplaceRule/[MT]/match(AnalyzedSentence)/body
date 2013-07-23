@@ -3,7 +3,8 @@
   AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   List<String> replacements=new ArrayList<String>();
   for (  AnalyzedTokenReadings tokenReadings : tokens) {
-    String tokenString=cleanup(tokenReadings.getToken());
+    String originalTokenStr=tokenReadings.getToken();
+    String tokenString=cleanup(originalTokenStr);
     if (!wrongWords.containsKey(tokenString)) {
       for (      AnalyzedToken analyzedToken : tokenReadings.getReadings()) {
         String lemma=analyzedToken.getLemma();
@@ -20,8 +21,13 @@
     if (possibleReplacements != null && possibleReplacements.size() > 0) {
       replacements.clear();
       replacements.addAll(possibleReplacements);
-      RuleMatch potentialRuleMatch=createRuleMatch(tokenReadings,replacements);
-      ruleMatches.add(potentialRuleMatch);
+      if (replacements.contains(originalTokenStr)) {
+        replacements.remove(originalTokenStr);
+      }
+      if (replacements.size() > 0) {
+        RuleMatch potentialRuleMatch=createRuleMatch(tokenReadings,replacements);
+        ruleMatches.add(potentialRuleMatch);
+      }
     }
   }
   return toRuleMatchArray(ruleMatches);
