@@ -1,4 +1,0 @@
-{
-  super(messages,null);
-  winPeer=parentWindowPeer;
-}

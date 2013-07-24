@@ -1,7 +1,0 @@
-{
-  final String aboutDialogTitle=StringTools.getLabel(messages.getString("guiMenuAbout"));
-  final XMessageBoxFactory messageBoxFactory=(XMessageBoxFactory)UnoRuntime.queryInterface(XMessageBoxFactory.class,winPeer.getToolkit());
-  final Rectangle messageBoxRectangle=new Rectangle();
-  final XMessageBox box=messageBoxFactory.createMessageBox(winPeer,messageBoxRectangle,"infobox",0,aboutDialogTitle,getAboutText());
-  box.execute();
-}
