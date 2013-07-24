@@ -14,9 +14,9 @@
     taggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(word));
     lowerTaggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(lowerWord));
     final boolean isLowercase=word.equals(lowerWord);
-    final boolean isMixedcase=StringTools.isMixedCase(word);
+    final boolean isMixedCase=StringTools.isMixedCase(word);
     addTokens(taggerTokens,l);
-    if (!isLowercase && !isMixedcase) {
+    if (!isLowercase && !isMixedCase) {
       addTokens(lowerTaggerTokens,l);
     }
     if (tagLowercaseWithUppercase) {
