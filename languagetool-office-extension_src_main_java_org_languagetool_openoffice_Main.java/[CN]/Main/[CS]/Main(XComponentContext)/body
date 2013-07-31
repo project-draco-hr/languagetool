@@ -1,4 +1,4 @@
 {
   changeContext(xCompContext);
-  xEventListeners=new ArrayList<XLinguServiceEventListener>();
+  xEventListeners=new ArrayList<>();
 }

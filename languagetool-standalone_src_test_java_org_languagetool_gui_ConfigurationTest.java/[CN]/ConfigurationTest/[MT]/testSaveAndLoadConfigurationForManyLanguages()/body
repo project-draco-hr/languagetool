@@ -15,7 +15,7 @@
     assertTrue(disabledRuleIds.isEmpty());
     enabledRuleIds=conf.getEnabledRuleIds();
     assertTrue(enabledRuleIds.isEmpty());
-    conf.setEnabledRuleIds(new HashSet<String>(Arrays.asList("enabledBYRule")));
+    conf.setEnabledRuleIds(new HashSet<>(Arrays.asList("enabledBYRule")));
     conf.saveConfiguration(new Belarusian());
     conf=new Configuration(tempFile.getParentFile(),tempFile.getName(),new AmericanEnglish());
     disabledRuleIds=conf.getDisabledRuleIds();

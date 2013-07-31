@@ -1,5 +1,5 @@
 {
-  final Set<String> categories=new HashSet<String>();
+  final Set<String> categories=new HashSet<>();
   for (  PatternRule rule : rules) {
     categories.add(rule.getCategory().getName());
   }

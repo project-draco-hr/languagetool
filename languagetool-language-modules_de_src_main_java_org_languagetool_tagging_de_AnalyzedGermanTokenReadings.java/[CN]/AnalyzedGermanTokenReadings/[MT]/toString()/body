@@ -3,7 +3,7 @@
     return super.getAnalyzedToken(0).getToken() + "[?]";
   }
   final StringBuilder sb=new StringBuilder(super.getAnalyzedToken(0).getToken());
-  final Set<String> printed=new HashSet<String>();
+  final Set<String> printed=new HashSet<>();
   sb.append('[');
   for (  AnalyzedToken reading : anTokReadings) {
     if (!printed.contains(reading.toString())) {

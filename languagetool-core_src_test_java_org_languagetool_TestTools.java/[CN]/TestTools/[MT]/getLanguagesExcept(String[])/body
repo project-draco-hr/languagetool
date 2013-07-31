@@ -1,5 +1,5 @@
 {
-  final Set<Language> languages=new HashSet<Language>();
+  final Set<Language> languages=new HashSet<>();
   languages.addAll(Arrays.asList(Language.LANGUAGES));
   if (langCodes != null) {
     for (    String langCode : langCodes) {

@@ -2,9 +2,9 @@
   if (mStartSpace != null) {
     return;
   }
-  mStartSpace=new HashMap<String,Integer>();
-  mStartNoSpace=new HashMap<String,Integer>();
-  mFull=new HashMap<String,String>();
+  mStartSpace=new HashMap<>();
+  mStartNoSpace=new HashMap<>();
+  mFull=new HashMap<>();
   final List<String> posTokens=loadWords(JLanguageTool.getDataBroker().getFromResourceDirAsStream(filename));
   for (  String posToken : posTokens) {
     final String[] tokenAndTag=posToken.split("\t");

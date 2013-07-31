@@ -1,5 +1,5 @@
 {
-  final List<String> l=new ArrayList<String>();
+  final List<String> l=new ArrayList<>();
   String auxText=text;
   Matcher matcher=ELA_GEMINADA.matcher(auxText);
   auxText=matcher.replaceAll("$1##ELA_GEMINADA##$2");

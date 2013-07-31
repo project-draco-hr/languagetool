@@ -2,7 +2,7 @@
   if (replacement == null) {
     throw new NullPointerException("replacement might be empty but not null");
   }
-  final List<String> replacements=new ArrayList<String>();
+  final List<String> replacements=new ArrayList<>();
   replacements.add(replacement);
   setSuggestedReplacements(replacements);
 }

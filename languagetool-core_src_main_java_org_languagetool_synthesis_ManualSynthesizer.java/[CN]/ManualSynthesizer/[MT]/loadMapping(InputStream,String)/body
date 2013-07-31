@@ -1,5 +1,5 @@
 {
-  final Map<String,List<String>> map=new HashMap<String,List<String>>();
+  final Map<String,List<String>> map=new HashMap<>();
   final Scanner scanner=new Scanner(inputStream,encoding);
   try {
     while (scanner.hasNextLine()) {

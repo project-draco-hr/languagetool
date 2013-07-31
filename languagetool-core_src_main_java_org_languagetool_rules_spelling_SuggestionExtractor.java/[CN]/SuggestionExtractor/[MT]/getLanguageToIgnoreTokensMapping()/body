@@ -1,7 +1,7 @@
 {
-  final Map<Language,Set<String>> langToIgnoreTokens=new HashMap<Language,Set<String>>();
+  final Map<Language,Set<String>> langToIgnoreTokens=new HashMap<>();
   for (  Language lang : Language.REAL_LANGUAGES) {
-    final Set<String> suggestionTokens=new HashSet<String>();
+    final Set<String> suggestionTokens=new HashSet<>();
     final JLanguageTool languageTool=new JLanguageTool(lang);
     final Rule spellcheckRule=getSpellcheckRule(languageTool);
     if (spellcheckRule == null) {

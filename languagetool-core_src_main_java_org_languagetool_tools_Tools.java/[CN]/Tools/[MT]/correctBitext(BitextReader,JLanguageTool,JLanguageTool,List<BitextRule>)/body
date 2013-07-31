@@ -1,7 +1,7 @@
 {
   for (  StringPair srcAndTrg : reader) {
     final List<RuleMatch> curMatches=checkBitext(srcAndTrg.getSource(),srcAndTrg.getTarget(),sourceLt,targetLt,bRules);
-    final List<RuleMatch> fixedMatches=new ArrayList<RuleMatch>();
+    final List<RuleMatch> fixedMatches=new ArrayList<>();
     for (    RuleMatch thisMatch : curMatches) {
       fixedMatches.add(targetLt.adjustRuleMatchPos(thisMatch,0,reader.getTargetColumnCount(),reader.getLineCount(),reader.getCurrentLine()));
     }

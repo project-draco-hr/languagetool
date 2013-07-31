@@ -1,5 +1,5 @@
 {
-  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
+  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
   if (morfologik == null) {
     final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(RESOURCE_FILENAME);
@@ -9,7 +9,7 @@
     manualTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(USER_DICT_FILENAME));
   }
   for (  final String word : sentenceTokens) {
-    final List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+    final List<AnalyzedToken> l=new ArrayList<>();
     final String lowerCaseWord=word.toLowerCase(roLocale);
     final List<WordData> taggerTokens=morfologik.lookup(lowerCaseWord);
     if (taggerTokens != null) {

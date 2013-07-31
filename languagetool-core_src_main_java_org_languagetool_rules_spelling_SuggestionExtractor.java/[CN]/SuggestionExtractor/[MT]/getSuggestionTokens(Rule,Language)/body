@@ -1,5 +1,5 @@
 {
-  final List<String> wordsToBeIgnored=new ArrayList<String>();
+  final List<String> wordsToBeIgnored=new ArrayList<>();
   if (rule instanceof PatternRule) {
     final PatternRule patternRule=(PatternRule)rule;
     final String message=patternRule.getMessage();

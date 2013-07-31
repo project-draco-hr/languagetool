@@ -1,6 +1,6 @@
 {
-  final List<Language> languages=new ArrayList<Language>();
-  final Set<String> languageClassNames=new HashSet<String>();
+  final List<Language> languages=new ArrayList<>();
+  final Set<String> languageClassNames=new HashSet<>();
   try {
     final Enumeration<URL> propertyFiles=Language.class.getClassLoader().getResources(PROPERTIES_PATH);
     while (propertyFiles.hasMoreElements()) {

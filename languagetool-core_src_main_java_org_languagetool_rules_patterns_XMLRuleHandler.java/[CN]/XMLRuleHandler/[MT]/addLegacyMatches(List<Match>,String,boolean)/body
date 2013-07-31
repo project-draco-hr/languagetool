@@ -2,7 +2,7 @@
   if (existingSugMatches == null || existingSugMatches.isEmpty()) {
     return null;
   }
-  final List<Match> sugMatch=new ArrayList<Match>();
+  final List<Match> sugMatch=new ArrayList<>();
   int pos=0;
   int ind=0;
   int matchCounter=0;

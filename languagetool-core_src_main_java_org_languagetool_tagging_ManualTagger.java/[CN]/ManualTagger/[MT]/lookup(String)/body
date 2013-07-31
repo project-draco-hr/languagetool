@@ -3,7 +3,7 @@
   if (l == null) {
     return null;
   }
-  final List<String> plainResult=new ArrayList<String>();
+  final List<String> plainResult=new ArrayList<>();
   for (  final Object element : l) {
     final LookedUpTerm lookedUpTerm=(LookedUpTerm)element;
     plainResult.add(lookedUpTerm.baseform);

@@ -1,5 +1,5 @@
 {
-  final List<String> outputList=new ArrayList<String>();
+  final List<String> outputList=new ArrayList<>();
   if (r == input.length) {
     final StringBuilder sb=new StringBuilder();
     for (int k=0; k < output.length; k++) {

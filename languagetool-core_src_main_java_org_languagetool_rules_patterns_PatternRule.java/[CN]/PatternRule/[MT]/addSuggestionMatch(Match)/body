@@ -1,6 +1,6 @@
 {
   if (suggestionMatches == null) {
-    suggestionMatches=new ArrayList<Match>();
+    suggestionMatches=new ArrayList<>();
   }
   suggestionMatches.add(m);
 }

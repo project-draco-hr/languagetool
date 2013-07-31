@@ -2,7 +2,7 @@
   BufferedReader srxReader=null;
   try {
     srxReader=new BufferedReader(new InputStreamReader(JLanguageTool.getDataBroker().getFromResourceDirAsStream(RULES),"utf-8"));
-    final Map<String,Object> parserParameters=new HashMap<String,Object>();
+    final Map<String,Object> parserParameters=new HashMap<>();
     parserParameters.put(Srx2SaxParser.VALIDATE_PARAMETER,true);
     final SrxParser srxParser=new Srx2SaxParser(parserParameters);
     final SrxDocument document=srxParser.parse(srxReader);

@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final List<RuleMatch> ruleMatches=new ArrayList<>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   final AnalyzedTokenReadings[] tokensWithWS=text.getTokens();
   String prevToken="";
@@ -18,7 +18,7 @@
       final int prevPos=tokens[i - 1].getStartPos();
       final int pos=tokens[i].getStartPos();
       final RuleMatch ruleMatch=new RuleMatch(this,prevPos,pos + prevToken.length(),msg,messages.getString("desc_repetition_short"));
-      final List<String> replacementSuggs=new ArrayList<String>();
+      final List<String> replacementSuggs=new ArrayList<>();
       replacementSuggs.add(prevToken + " " + token);
       replacementSuggs.add(prevToken);
       replacementSuggs.add(prevToken + "???");

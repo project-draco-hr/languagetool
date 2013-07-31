@@ -1,5 +1,5 @@
 {
-  final List<AnalyzedToken> aTokenList=new ArrayList<AnalyzedToken>();
+  final List<AnalyzedToken> aTokenList=new ArrayList<>();
   for (  WordData wd : wdList) {
     aTokenList.add(asAnalyzedToken(word,wd));
   }

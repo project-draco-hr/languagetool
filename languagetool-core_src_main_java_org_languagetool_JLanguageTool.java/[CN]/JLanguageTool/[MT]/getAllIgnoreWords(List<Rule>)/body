@@ -1,5 +1,5 @@
 {
-  final List<String> suggestionTokens=new ArrayList<String>();
+  final List<String> suggestionTokens=new ArrayList<>();
   for (  Rule activeRule : allActiveRules) {
     if (activeRule instanceof PatternRule) {
       final SuggestionExtractor extractor=new SuggestionExtractor();

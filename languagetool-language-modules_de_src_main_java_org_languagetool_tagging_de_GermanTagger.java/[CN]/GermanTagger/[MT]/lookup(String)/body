@@ -1,5 +1,5 @@
 {
-  final List<String> words=new ArrayList<String>();
+  final List<String> words=new ArrayList<>();
   words.add(word);
   final List<AnalyzedTokenReadings> result=tag(words,false);
   final AnalyzedGermanTokenReadings atr=(AnalyzedGermanTokenReadings)result.get(0);

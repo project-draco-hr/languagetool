@@ -11,7 +11,7 @@
       final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(RESOURCE_FILENAME);
       synthesizer=new DictionaryLookup(Dictionary.read(url));
     }
-    final ArrayList<String> results=new ArrayList<String>();
+    final ArrayList<String> results=new ArrayList<>();
     boolean isNegated=false;
     if (token.getPOSTag() != null) {
       isNegated=posTag.indexOf(NEGATION_TAG) > 0 || token.getPOSTag().indexOf(NEGATION_TAG) > 0 && !(posTag.indexOf(COMP_TAG) > 0) && !(posTag.indexOf(SUP_TAG) > 0);
@@ -29,7 +29,7 @@
         }
       }
     }
-    HashSet<String> hs=new HashSet<String>();
+    HashSet<String> hs=new HashSet<>();
     hs.addAll(results);
     results.clear();
     results.addAll(hs);

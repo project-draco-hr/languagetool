@@ -1,6 +1,6 @@
 {
   initSynthesizer();
-  final List<String> wordForms=new ArrayList<String>();
+  final List<String> wordForms=new ArrayList<>();
   lookup(token.getLemma(),posTag,wordForms);
   return wordForms.toArray(new String[wordForms.size()]);
 }

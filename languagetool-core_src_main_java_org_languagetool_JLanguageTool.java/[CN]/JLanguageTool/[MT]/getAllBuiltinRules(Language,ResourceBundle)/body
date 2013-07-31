@@ -1,5 +1,5 @@
 {
-  final List<Rule> rules=new ArrayList<Rule>();
+  final List<Rule> rules=new ArrayList<>();
   final List<Class<? extends Rule>> languageRules=language.getRelevantRules();
   for (  Class<? extends Rule> ruleClass : languageRules) {
     final Constructor[] constructors=ruleClass.getConstructors();

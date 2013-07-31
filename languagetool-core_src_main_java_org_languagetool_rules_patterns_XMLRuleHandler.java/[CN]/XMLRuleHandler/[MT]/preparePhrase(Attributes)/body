@@ -6,12 +6,12 @@
         e.setPhraseName(phraseIdRef);
       }
       if (elementList.isEmpty()) {
-        phraseElementList.add(new ArrayList<Element>(curPhrEl));
+        phraseElementList.add(new ArrayList<>(curPhrEl));
       }
  else {
-        final ArrayList<Element> prevList=new ArrayList<Element>(elementList);
+        final ArrayList<Element> prevList=new ArrayList<>(elementList);
         prevList.addAll(curPhrEl);
-        phraseElementList.add(new ArrayList<Element>(prevList));
+        phraseElementList.add(new ArrayList<>(prevList));
         prevList.clear();
       }
     }

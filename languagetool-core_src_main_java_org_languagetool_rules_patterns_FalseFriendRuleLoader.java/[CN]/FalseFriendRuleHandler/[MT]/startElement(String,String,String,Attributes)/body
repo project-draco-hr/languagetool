@@ -1,6 +1,6 @@
 {
   if (qName.equals(RULE)) {
-    translations=new ArrayList<StringBuilder>();
+    translations=new ArrayList<>();
     id=attrs.getValue("id");
     if (!(inRuleGroup && defaultOff)) {
       defaultOff="off".equals(attrs.getValue("default"));
@@ -8,8 +8,8 @@
     if (inRuleGroup && id == null) {
       id=ruleGroupId;
     }
-    correctExamples=new ArrayList<String>();
-    incorrectExamples=new ArrayList<IncorrectExample>();
+    correctExamples=new ArrayList<>();
+    incorrectExamples=new ArrayList<>();
   }
  else   if (qName.equals(PATTERN)) {
     inPattern=true;

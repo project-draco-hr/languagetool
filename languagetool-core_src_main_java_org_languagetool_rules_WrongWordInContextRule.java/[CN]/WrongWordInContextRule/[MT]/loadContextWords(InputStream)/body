@@ -1,5 +1,5 @@
 {
-  final List<ContextWords> set=new ArrayList<ContextWords>();
+  final List<ContextWords> set=new ArrayList<>();
   final Scanner scanner=new Scanner(file,"utf-8");
   try {
     while (scanner.hasNextLine()) {

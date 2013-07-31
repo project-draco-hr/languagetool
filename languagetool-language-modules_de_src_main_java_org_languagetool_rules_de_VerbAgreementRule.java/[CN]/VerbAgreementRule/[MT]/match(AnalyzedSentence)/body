@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final List<RuleMatch> ruleMatches=new ArrayList<>();
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   if (tokens.length < 4)   return toRuleMatchArray(ruleMatches);
   int posIch=-1, posDu=-1, posEr=-1, posWir=-1;

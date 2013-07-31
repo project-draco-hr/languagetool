@@ -1,5 +1,5 @@
 {
-  final List<String> categories=new ArrayList<String>();
+  final List<String> categories=new ArrayList<>();
   final List<GrammarCategory> categoriesToCheck=Arrays.asList(GrammarCategory.KASUS,GrammarCategory.GENUS,GrammarCategory.NUMERUS);
   for (  GrammarCategory category : categoriesToCheck) {
     if (agreementWithCategoryRelaxation(token1,token2,category)) {

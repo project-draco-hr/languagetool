@@ -9,7 +9,7 @@
     }
   }
   if (paragraphMatches != null && !paragraphMatches.isEmpty() && docID.equals(this.docID)) {
-    final List<SingleProofreadingError> errorList=new ArrayList<SingleProofreadingError>(paragraphMatches.size());
+    final List<SingleProofreadingError> errorList=new ArrayList<>(paragraphMatches.size());
     for (    final RuleMatch myRuleMatch : paragraphMatches) {
       final int startErrPos=myRuleMatch.getFromPos();
       final int endErrPos=myRuleMatch.getToPos();

@@ -1,5 +1,5 @@
 {
-  final Set<String> seen=new HashSet<String>();
+  final Set<String> seen=new HashSet<>();
   final Iterator<String> iterator=words.iterator();
   while (iterator.hasNext()) {
     final String word=iterator.next();

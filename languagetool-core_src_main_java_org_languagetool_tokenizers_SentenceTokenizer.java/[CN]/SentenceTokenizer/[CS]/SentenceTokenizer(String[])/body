@@ -1,5 +1,5 @@
 {
-  final List<String> allAbbreviations=new ArrayList<String>();
+  final List<String> allAbbreviations=new ArrayList<>();
   allAbbreviations.addAll(Arrays.asList(abbrevList));
   allAbbreviations.addAll(Arrays.asList(ABBREV_LIST));
   for (  String element : allAbbreviations) {

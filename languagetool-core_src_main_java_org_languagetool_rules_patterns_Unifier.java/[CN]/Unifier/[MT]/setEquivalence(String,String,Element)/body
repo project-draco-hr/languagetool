@@ -8,7 +8,7 @@
     lTypes=equivalenceFeatures.get(feature);
   }
  else {
-    lTypes=new ArrayList<String>();
+    lTypes=new ArrayList<>();
   }
   lTypes.add(type);
   equivalenceFeatures.put(feature,lTypes);

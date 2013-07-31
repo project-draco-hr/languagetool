@@ -2,7 +2,7 @@
   if (!listUnknownWords) {
     throw new IllegalStateException("listUnknownWords is set to false, unknown words not stored");
   }
-  final List<String> words=new ArrayList<String>(unknownWords);
+  final List<String> words=new ArrayList<>(unknownWords);
   Collections.sort(words);
   return words;
 }

@@ -1,5 +1,5 @@
 {
-  final Set<String> set=new TreeSet<String>();
+  final Set<String> set=new TreeSet<>();
   final Scanner scanner=new Scanner(file,"utf-8");
   try {
     while (scanner.hasNextLine()) {

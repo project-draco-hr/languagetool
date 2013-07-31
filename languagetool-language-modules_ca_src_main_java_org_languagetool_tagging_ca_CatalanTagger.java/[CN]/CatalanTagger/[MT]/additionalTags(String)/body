@@ -1,5 +1,5 @@
 {
-  List<AnalyzedToken> additionalTaggedTokens=new ArrayList<AnalyzedToken>();
+  List<AnalyzedToken> additionalTaggedTokens=new ArrayList<>();
   if (word.endsWith("ment")) {
     final String lowerWord=word.toLowerCase(conversionLocale);
     final String possibleAdj=lowerWord.replaceAll("^(.+)ment$","$1");

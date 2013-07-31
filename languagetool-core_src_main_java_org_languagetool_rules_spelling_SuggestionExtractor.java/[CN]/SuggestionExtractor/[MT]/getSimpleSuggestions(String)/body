@@ -1,7 +1,7 @@
 {
   final Matcher matcher=SUGGESTION_PATTERN.matcher(message);
   int startPos=0;
-  final List<String> suggestions=new ArrayList<String>();
+  final List<String> suggestions=new ArrayList<>();
   while (matcher.find(startPos)) {
     final String suggestion=matcher.group(1);
     startPos=matcher.end();

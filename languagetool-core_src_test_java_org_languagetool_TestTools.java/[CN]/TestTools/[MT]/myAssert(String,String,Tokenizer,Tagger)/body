@@ -1,6 +1,6 @@
 {
   final List<String> tokens=tokenizer.tokenize(input);
-  final List<String> noWhitespaceTokens=new ArrayList<String>();
+  final List<String> noWhitespaceTokens=new ArrayList<>();
   for (  final String token : tokens) {
     if (isWord(token)) {
       noWhitespaceTokens.add(token);
@@ -11,7 +11,7 @@
   for (final Iterator<AnalyzedTokenReadings> iter=output.iterator(); iter.hasNext(); ) {
     final AnalyzedTokenReadings token=iter.next();
     final int readingsNumber=token.getReadingsLength();
-    final List<String> readings=new ArrayList<String>();
+    final List<String> readings=new ArrayList<>();
     for (int j=0; j < readingsNumber; j++) {
       final StringBuilder readingStr=new StringBuilder();
       readingStr.append(token.getAnalyzedToken(j).getToken());

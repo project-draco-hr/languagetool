@@ -9,7 +9,7 @@
   final JLanguageTool allRulesLanguageTool=new JLanguageTool(lang);
   allRulesLanguageTool.activateDefaultPatternRules();
   validateRuleIds(lang,allRulesLanguageTool);
-  final List<PatternRule> rules=new ArrayList<PatternRule>();
+  final List<PatternRule> rules=new ArrayList<>();
   for (  String patternRuleFileName : lang.getRuleFileNames()) {
     rules.addAll(languageTool.loadPatternRules(patternRuleFileName));
   }

@@ -14,7 +14,7 @@
       final String value=parts[1];
       List<String> list=properties.get(key);
       if (list == null) {
-        list=new ArrayList<String>();
+        list=new ArrayList<>();
       }
       list.add(value);
       properties.put(key,list);

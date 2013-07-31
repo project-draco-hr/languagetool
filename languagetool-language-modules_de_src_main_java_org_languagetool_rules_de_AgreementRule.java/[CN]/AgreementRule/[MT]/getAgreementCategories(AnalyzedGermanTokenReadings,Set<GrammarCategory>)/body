@@ -1,5 +1,5 @@
 {
-  final Set<String> set=new HashSet<String>();
+  final Set<String> set=new HashSet<>();
   final List<AnalyzedGermanToken> readings=aToken.getGermanReadings();
   for (  AnalyzedGermanToken reading : readings) {
     if (reading.getCasus() == null && reading.getNumerus() == null && reading.getGenus() == null)     continue;

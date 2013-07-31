@@ -1,6 +1,6 @@
 {
-  final Set<String> ids=new HashSet<String>();
-  final Set<Class> ruleClasses=new HashSet<Class>();
+  final Set<String> ids=new HashSet<>();
+  final Set<Class> ruleClasses=new HashSet<>();
   for (  Language language : Language.LANGUAGES) {
     final JLanguageTool lt=new JLanguageTool(language);
     final List<Rule> allRules=lt.getAllRules();

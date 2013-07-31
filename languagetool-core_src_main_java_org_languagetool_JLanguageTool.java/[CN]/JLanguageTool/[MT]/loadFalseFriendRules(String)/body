@@ -1,6 +1,6 @@
 {
   if (motherTongue == null) {
-    return new ArrayList<PatternRule>();
+    return new ArrayList<>();
   }
   final FalseFriendRuleLoader ruleLoader=new FalseFriendRuleLoader();
   return ruleLoader.getRules(this.getClass().getResourceAsStream(filename),language,motherTongue);

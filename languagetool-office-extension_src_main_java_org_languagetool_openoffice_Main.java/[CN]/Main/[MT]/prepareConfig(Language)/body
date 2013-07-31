@@ -4,9 +4,9 @@
     config=new Configuration(homeDir,CONFIG_FILE,lang);
     disabledRules=config.getDisabledRuleIds();
     if (disabledRules == null) {
-      disabledRules=new HashSet<String>();
+      disabledRules=new HashSet<>();
     }
-    disabledRulesUI=new HashSet<String>(disabledRules);
+    disabledRulesUI=new HashSet<>(disabledRules);
   }
  catch (  final Throwable t) {
     showError(t);

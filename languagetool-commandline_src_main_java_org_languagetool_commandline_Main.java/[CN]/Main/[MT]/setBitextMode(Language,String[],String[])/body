@@ -7,7 +7,7 @@
   Tools.selectRules(lt,disabledRules,enabledRules);
   Tools.selectRules(srcLt,disabledRules,enabledRules);
   bRules=Tools.getBitextRules(sourceLang,lt.getLanguage());
-  List<BitextRule> bRuleList=new ArrayList<BitextRule>(bRules);
+  List<BitextRule> bRuleList=new ArrayList<>(bRules);
   for (  final BitextRule bitextRule : bRules) {
     for (    final String disabledRule : disabledRules) {
       if (bitextRule.getId().equals(disabledRule)) {
@@ -17,7 +17,7 @@
   }
   bRules=bRuleList;
   if (enabledRules.length > 0) {
-    bRuleList=new ArrayList<BitextRule>();
+    bRuleList=new ArrayList<>();
     for (    final String enabledRule : enabledRules) {
       for (      final BitextRule bitextRule : bRules) {
         if (bitextRule.getId().equals(enabledRule)) {

@@ -1,5 +1,5 @@
 {
-  final List<String> tokens=new ArrayList<String>();
+  final List<String> tokens=new ArrayList<>();
   tokenizer.yyreset(new StringReader(text));
   try {
     while (tokenizer.getNextToken() != GreekWordTokenizerImpl.YYEOF) {

@@ -1,5 +1,5 @@
 {
-  final List<BitextRule> bRules=new ArrayList<BitextRule>();
+  final List<BitextRule> bRules=new ArrayList<>();
   final BitextPatternRuleLoader ruleLoader=new BitextPatternRuleLoader();
   final String name="/" + target.getShortName() + "/bitext.xml";
   final InputStream is=JLanguageTool.getDataBroker().getFromRulesDirAsStream(name);

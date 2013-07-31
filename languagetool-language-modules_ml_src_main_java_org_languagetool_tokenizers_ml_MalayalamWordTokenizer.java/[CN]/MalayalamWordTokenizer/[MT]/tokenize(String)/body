@@ -1,5 +1,5 @@
 {
-  final List<String> tokens=new ArrayList<String>();
+  final List<String> tokens=new ArrayList<>();
   final StringTokenizer st=new StringTokenizer(text,"\u0020\u00A0\u115f\u1160\u1680" + ",.;()[]{}!?:\"'??????????????????\\/\t\n",true);
   while (st.hasMoreElements()) {
     tokens.add(st.nextToken());

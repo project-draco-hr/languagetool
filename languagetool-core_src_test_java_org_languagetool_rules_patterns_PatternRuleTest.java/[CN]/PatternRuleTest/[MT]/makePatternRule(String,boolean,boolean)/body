@@ -1,5 +1,5 @@
 {
-  final List<Element> elements=new ArrayList<Element>();
+  final List<Element> elements=new ArrayList<>();
   final String[] parts=s.split(" ");
   boolean pos=false;
   Element se;

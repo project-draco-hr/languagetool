@@ -6,7 +6,7 @@
   if (description == null)   throw new NullPointerException("description/name cannot be null");
   this.message=message;
   this.shortMessage=shortMessage;
-  this.elementNo=new ArrayList<Integer>();
+  this.elementNo=new ArrayList<>();
   this.suggestionsOutMsg="";
   String prevName="";
   String curName="";

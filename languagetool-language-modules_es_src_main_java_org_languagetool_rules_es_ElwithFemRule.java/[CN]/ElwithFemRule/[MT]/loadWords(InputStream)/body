@@ -1,6 +1,6 @@
 {
   BufferedReader br=null;
-  final TreeSet<String> set=new TreeSet<String>();
+  final TreeSet<String> set=new TreeSet<>();
   try {
     br=new BufferedReader(new InputStreamReader(file,"utf-8"));
     String line;

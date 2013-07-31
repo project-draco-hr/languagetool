@@ -1,5 +1,5 @@
 {
-  final List<String> strList=new ArrayList<String>();
+  final List<String> strList=new ArrayList<>();
   for (  Element patternElement : patternElements) {
     strList.add(patternElement.toString());
   }

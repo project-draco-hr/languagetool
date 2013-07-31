@@ -1,12 +1,12 @@
 {
   tokCnt=-1;
   readingsCounter=1;
-  equivalencesMatched=new ArrayList<Map<String,Set<String>>>();
-  equivalenceTypes=new HashMap<EquivalenceTypeLocator,Element>();
-  equivalenceFeatures=new HashMap<String,List<String>>();
-  equivalencesToBeRemoved=new HashMap<String,Set<String>>();
-  equivalencesToBeKept=new HashMap<String,Set<String>>();
-  featuresFound=new ArrayList<Boolean>();
-  tmpFeaturesFound=new ArrayList<Boolean>();
-  tokSequence=new ArrayList<AnalyzedTokenReadings>();
+  equivalencesMatched=new ArrayList<>();
+  equivalenceTypes=new HashMap<>();
+  equivalenceFeatures=new HashMap<>();
+  equivalencesToBeRemoved=new HashMap<>();
+  equivalencesToBeKept=new HashMap<>();
+  featuresFound=new ArrayList<>();
+  tmpFeaturesFound=new ArrayList<>();
+  tokSequence=new ArrayList<>();
 }

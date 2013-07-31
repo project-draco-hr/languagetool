@@ -1,5 +1,5 @@
 {
-  final List<String> ruleFiles=new ArrayList<String>();
+  final List<String> ruleFiles=new ArrayList<>();
   final ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
   ruleFiles.add(dataBroker.getRulesDir() + "/" + getShortName()+ "/"+ JLanguageTool.PATTERN_FILE);
   if (getShortNameWithVariant().length() > 2) {

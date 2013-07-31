@@ -5,8 +5,8 @@
   }
  else   if (qName.equals("rule")) {
     super.startElement(namespaceURI,lName,qName,attrs);
-    correctExamples=new ArrayList<StringPair>();
-    incorrectExamples=new ArrayList<IncorrectBitextExample>();
+    correctExamples=new ArrayList<>();
+    incorrectExamples=new ArrayList<>();
   }
  else   if (qName.equals("target")) {
     startPattern(attrs);

@@ -1,7 +1,7 @@
 {
   InputStreamReader isr=null;
   BufferedReader br=null;
-  final Set<String> words=new HashSet<String>();
+  final Set<String> words=new HashSet<>();
   try {
     isr=new InputStreamReader(file,"UTF-8");
     br=new BufferedReader(isr);

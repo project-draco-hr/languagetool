@@ -119,11 +119,11 @@
   }
  else   if ("feature".equals(qName)) {
     equivalenceFeatures.put(uFeature,uTypeList);
-    uTypeList=new ArrayList<String>();
+    uTypeList=new ArrayList<>();
   }
  else   if (qName.equals(UNIFY)) {
     inUnification=false;
-    equivalenceFeatures=new HashMap<String,List<String>>();
+    equivalenceFeatures=new HashMap<>();
     final int lastElement=elementList.size() - 1;
     elementList.get(lastElement).setLastInUnification();
     if (uniNegation) {

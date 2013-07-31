@@ -1,5 +1,5 @@
 {
-  final List<String> languages=new ArrayList<String>();
+  final List<String> languages=new ArrayList<>();
   for (  Language language : Language.REAL_LANGUAGES) {
     languages.add(language.getShortNameWithVariant() + " " + language.getName());
   }

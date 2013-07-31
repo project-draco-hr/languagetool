@@ -1,9 +1,9 @@
 {
   lazyInit();
   Matcher matcher;
-  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
+  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   for (  String word : sentenceTokens) {
-    final List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+    final List<AnalyzedToken> l=new ArrayList<>();
     if (word.length() > 1) {
       final String lWord=word.toLowerCase();
       final String[] manualTags=manualTagger.lookup(lWord);

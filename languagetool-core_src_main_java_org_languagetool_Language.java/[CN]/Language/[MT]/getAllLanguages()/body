@@ -1,5 +1,5 @@
 {
-  final List<Language> langList=new ArrayList<Language>();
+  final List<Language> langList=new ArrayList<>();
   Collections.addAll(langList,LANGUAGES);
   langList.addAll(externalLanguages);
   return langList;

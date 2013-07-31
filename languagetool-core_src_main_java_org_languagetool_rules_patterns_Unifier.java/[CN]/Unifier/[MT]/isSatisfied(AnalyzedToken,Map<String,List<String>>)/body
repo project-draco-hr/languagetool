@@ -27,7 +27,7 @@
         }
         if (testElem.isMatched(aToken)) {
           if (!equivalencesMatched.get(tokCnt).containsKey(feat.getKey())) {
-            final Set<String> typeSet=new HashSet<String>();
+            final Set<String> typeSet=new HashSet<>();
             typeSet.add(typeName);
             equivalencesMatched.get(tokCnt).put(feat.getKey(),typeSet);
           }

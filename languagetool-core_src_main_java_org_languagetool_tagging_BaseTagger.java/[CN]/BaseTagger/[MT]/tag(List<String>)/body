@@ -2,14 +2,14 @@
   List<AnalyzedToken> taggerTokens;
   List<AnalyzedToken> lowerTaggerTokens;
   List<AnalyzedToken> upperTaggerTokens;
-  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
+  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
   if (dictLookup == null) {
     final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(getFileName());
     dictLookup=new DictionaryLookup(Dictionary.read(url));
   }
   for (  String word : sentenceTokens) {
-    final List<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+    final List<AnalyzedToken> l=new ArrayList<>();
     final String lowerWord=word.toLowerCase(conversionLocale);
     taggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(word));
     lowerTaggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(lowerWord));

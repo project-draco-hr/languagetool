@@ -118,10 +118,10 @@
  else   if (qName.equals(EXAMPLE)) {
     inExample=true;
     if (untouchedExamples == null) {
-      untouchedExamples=new ArrayList<String>();
+      untouchedExamples=new ArrayList<>();
     }
     if (disambExamples == null) {
-      disambExamples=new ArrayList<DisambiguatedExample>();
+      disambExamples=new ArrayList<>();
     }
     untouched=attrs.getValue(TYPE).equals("untouched");
     if (attrs.getValue(TYPE).equals("ambiguous")) {

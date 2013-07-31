@@ -1,14 +1,14 @@
 {
   if (phraseMap == null) {
-    phraseMap=new HashMap<String,List<List<Element>>>();
+    phraseMap=new HashMap<>();
   }
   phraseElementInit();
   if (phraseElementList.isEmpty()) {
-    phraseElementList.add(new ArrayList<Element>(elementList));
+    phraseElementList.add(new ArrayList<>(elementList));
   }
  else {
     for (    final ArrayList<Element> ph : phraseElementList) {
-      ph.addAll(new ArrayList<Element>(elementList));
+      ph.addAll(new ArrayList<>(elementList));
     }
   }
   phraseMap.put(phraseId,new ArrayList<List<Element>>(phraseElementList));

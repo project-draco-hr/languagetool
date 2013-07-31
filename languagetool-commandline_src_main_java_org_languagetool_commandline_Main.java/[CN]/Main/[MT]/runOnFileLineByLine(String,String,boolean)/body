@@ -21,7 +21,7 @@
   BufferedReader br=null;
   int lineOffset=0;
   int tmpLineOffset=0;
-  final List<String> unknownWords=new ArrayList<String>();
+  final List<String> unknownWords=new ArrayList<>();
   StringBuilder sb=new StringBuilder();
   for (int ruleIndex=0; !rules.isEmpty() && ruleIndex < runCount; ruleIndex++) {
     currentRule=rules.get(ruleIndex);

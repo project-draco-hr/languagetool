@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> matches=new ArrayList<RuleMatch>();
+  final List<RuleMatch> matches=new ArrayList<>();
   final String text="This is a test sentence.";
   final List<Element> elements=Collections.emptyList();
   final Rule patternRule=new PatternRule("MY_ID",Language.DEMO,elements,"my description","my message","short message");

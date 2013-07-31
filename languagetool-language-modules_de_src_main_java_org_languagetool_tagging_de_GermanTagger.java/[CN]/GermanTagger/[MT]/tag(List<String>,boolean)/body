@@ -1,7 +1,7 @@
 {
   String[] taggerTokens;
   boolean firstWord=true;
-  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<AnalyzedTokenReadings>();
+  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
   if (morfologik == null) {
     final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(DICT_FILENAME);
@@ -14,7 +14,7 @@
     compoundTokenizer=new GermanCompoundTokenizer();
   }
   for (  String word : sentenceTokens) {
-    final List<AnalyzedGermanToken> l=new ArrayList<AnalyzedGermanToken>();
+    final List<AnalyzedGermanToken> l=new ArrayList<>();
     taggerTokens=lexiconLookup(word);
     if (firstWord && taggerTokens == null && ignoreCase) {
       taggerTokens=lexiconLookup(word.toLowerCase());

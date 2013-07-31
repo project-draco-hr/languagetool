@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> sentenceMatches=new ArrayList<RuleMatch>();
+  final List<RuleMatch> sentenceMatches=new ArrayList<>();
   for (  final Rule rule : allRules) {
     if (disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()))) {
       continue;

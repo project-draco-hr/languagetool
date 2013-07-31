@@ -1,6 +1,6 @@
 {
   String targetPosTag=posTag;
-  final List<String> posTags=new ArrayList<String>();
+  final List<String> posTags=new ArrayList<>();
   if (staticLemma) {
     final int numRead=matchedToken.getReadingsLength();
     for (int i=0; i < numRead; i++) {

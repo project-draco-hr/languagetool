@@ -1,10 +1,10 @@
 {
   final StringBuilder maintainersInfo=new StringBuilder();
-  final List<String> toSort=new ArrayList<String>();
+  final List<String> toSort=new ArrayList<>();
   for (  final Language lang : Language.REAL_LANGUAGES) {
     if (!lang.isVariant()) {
       if (lang.getMaintainers() != null) {
-        final List<String> names=new ArrayList<String>();
+        final List<String> names=new ArrayList<>();
         for (        Contributor contributor : lang.getMaintainers()) {
           names.add(contributor.getName());
         }

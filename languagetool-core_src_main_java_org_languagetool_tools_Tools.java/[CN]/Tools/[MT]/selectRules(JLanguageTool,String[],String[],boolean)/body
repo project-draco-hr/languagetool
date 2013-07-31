@@ -3,7 +3,7 @@
     lt.disableRule(disabledRule);
   }
   if (enabledRules.length > 0) {
-    final Set<String> enabledRuleIDs=new HashSet<String>(Arrays.asList(enabledRules));
+    final Set<String> enabledRuleIDs=new HashSet<>(Arrays.asList(enabledRules));
     for (    String ruleName : enabledRuleIDs) {
       lt.enableDefaultOffRule(ruleName);
       lt.enableRule(ruleName);

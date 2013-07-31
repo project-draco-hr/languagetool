@@ -8,8 +8,8 @@
   uni.setEquivalence("number","plural",plElement);
   final AnalyzedToken sing1=new AnalyzedToken("ma??y","adj:sg:blahblah","ma??y");
   final AnalyzedToken sing2=new AnalyzedToken("cz??owiek","subst:sg:blahblah","cz??owiek");
-  final Map<String,List<String>> equiv=new HashMap<String,List<String>>();
-  final List<String> list1=new ArrayList<String>();
+  final Map<String,List<String>> equiv=new HashMap<>();
+  final List<String> list1=new ArrayList<>();
   list1.add("singular");
   equiv.put("number",list1);
   boolean satisfied=uni.isSatisfied(sing1,equiv);

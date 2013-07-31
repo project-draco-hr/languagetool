@@ -1,5 +1,5 @@
 {
-  final List<BitextRule> rules=new ArrayList<BitextRule>();
+  final List<BitextRule> rules=new ArrayList<>();
   try {
     final List<Class<? extends BitextRule>> classes=BitextRule.getRelevantRules();
     for (    final Class class1 : classes) {

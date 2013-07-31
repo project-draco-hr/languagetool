@@ -1,5 +1,5 @@
 {
-  final List<Class<? extends Rule>> rules=new ArrayList<Class<? extends Rule>>();
+  final List<Class<? extends Rule>> rules=new ArrayList<>();
   rules.addAll(super.getRelevantRules());
   rules.add(MorfologikCanadianSpellerRule.class);
   return rules;

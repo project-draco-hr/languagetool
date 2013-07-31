@@ -8,7 +8,7 @@
  else {
     if (!elementList.isEmpty()) {
       for (      final ArrayList<Element> ph : phraseElementList) {
-        ph.addAll(new ArrayList<Element>(elementList));
+        ph.addAll(new ArrayList<>(elementList));
       }
     }
     for (    final ArrayList<Element> phraseElement : phraseElementList) {

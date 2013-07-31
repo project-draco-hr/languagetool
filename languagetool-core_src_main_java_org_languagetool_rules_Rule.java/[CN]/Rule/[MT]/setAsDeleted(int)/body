@@ -1,6 +1,6 @@
 {
   if (removedMatches == null) {
-    removedMatches=new ArrayList<RuleMatch>();
+    removedMatches=new ArrayList<>();
   }
   removedMatches.add(previousMatches.get(index));
 }

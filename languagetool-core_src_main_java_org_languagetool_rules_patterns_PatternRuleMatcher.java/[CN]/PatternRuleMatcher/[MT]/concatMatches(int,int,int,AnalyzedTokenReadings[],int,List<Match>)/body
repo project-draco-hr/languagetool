@@ -14,7 +14,7 @@
       }
     }
  else {
-      final List<String[]> matchList=new ArrayList<String[]>();
+      final List<String[]> matchList=new ArrayList<>();
       for (int i=0; i < len; i++) {
         final int skippedTokens=nextTokenPos - (tokenIndex + i);
         suggestionMatches.get(start).setToken(tokens,tokenIndex - 1 + i,skippedTokens);

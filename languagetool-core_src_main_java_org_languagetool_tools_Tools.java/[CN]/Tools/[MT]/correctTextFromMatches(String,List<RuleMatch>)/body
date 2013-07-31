@@ -1,6 +1,6 @@
 {
   final StringBuilder sb=new StringBuilder(contents);
-  final List<String> errors=new ArrayList<String>();
+  final List<String> errors=new ArrayList<>();
   for (  RuleMatch rm : matches) {
     final List<String> replacements=rm.getSuggestedReplacements();
     if (!replacements.isEmpty()) {

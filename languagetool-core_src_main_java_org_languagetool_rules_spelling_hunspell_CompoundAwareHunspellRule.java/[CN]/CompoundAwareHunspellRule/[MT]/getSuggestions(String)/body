@@ -2,7 +2,7 @@
   if (needsInit) {
     init();
   }
-  final List<String> candidates=new ArrayList<String>();
+  final List<String> candidates=new ArrayList<>();
   final List<String> noSplitSuggestions=morfoSpeller.getSuggestions(word);
   candidates.addAll(noSplitSuggestions);
   if (StringTools.startsWithUppercase(word) && !StringTools.isAllUppercase(word)) {
@@ -22,7 +22,7 @@
         suggestions=morfoSpeller.getSuggestions(StringTools.uppercaseFirstChar(part));
       }
       for (      String suggestion : suggestions) {
-        final List<String> partsCopy=new ArrayList<String>(parts);
+        final List<String> partsCopy=new ArrayList<>(parts);
         partsCopy.set(partCount,suggestion);
         candidates.add(StringTools.listToString(partsCopy,""));
       }

@@ -41,8 +41,8 @@
     if (inRuleGroup && name == null) {
       name=ruleGroupDescription;
     }
-    correctExamples=new ArrayList<String>();
-    incorrectExamples=new ArrayList<IncorrectExample>();
+    correctExamples=new ArrayList<>();
+    incorrectExamples=new ArrayList<>();
     if (suggestionMatches != null) {
       suggestionMatches.clear();
     }

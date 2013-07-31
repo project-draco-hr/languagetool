@@ -1,3 +1,3 @@
 {
-  shouldNotAppearWord=new HashMap<String,RuleMatch>();
+  shouldNotAppearWord=new HashMap<>();
 }

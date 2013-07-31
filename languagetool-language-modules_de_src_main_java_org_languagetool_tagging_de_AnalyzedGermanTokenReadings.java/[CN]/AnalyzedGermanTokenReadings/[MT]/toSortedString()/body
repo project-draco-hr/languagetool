@@ -3,7 +3,7 @@
     return super.getAnalyzedToken(0).getToken() + "[?]";
   }
   final StringBuilder sb=new StringBuilder(super.getAnalyzedToken(0).getToken());
-  final Set<String> elements=new TreeSet<String>();
+  final Set<String> elements=new TreeSet<>();
   sb.append('[');
   for (  AnalyzedToken reading : anTokReadings) {
     if (!elements.contains(reading.toString())) {

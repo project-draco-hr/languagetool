@@ -1,5 +1,5 @@
 {
-  final List<String> segments=new ArrayList<String>();
+  final List<String> segments=new ArrayList<>();
   final TextIterator textIterator=new SrxTextIterator(document,languageCode + parCode,text);
   while (textIterator.hasNext()) {
     segments.add(textIterator.next());

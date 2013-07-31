@@ -16,21 +16,21 @@
     }
     final Set<String> disabledRuleIds=config.getDisabledRuleIds();
     if (disabledRuleIds != null) {
-      final ArrayList<String> list=new ArrayList<String>(disabledRuleIds);
+      final ArrayList<String> list=new ArrayList<>(disabledRuleIds);
       for (      final String id : list) {
         langTool.disableRule(id);
       }
     }
     final Set<String> disabledCategories=config.getDisabledCategoryNames();
     if (disabledCategories != null) {
-      final ArrayList<String> list=new ArrayList<String>(disabledCategories);
+      final ArrayList<String> list=new ArrayList<>(disabledCategories);
       for (      final String categoryName : list) {
         langTool.disableCategory(categoryName);
       }
     }
     final Set<String> enabledRuleIds=config.getEnabledRuleIds();
     if (enabledRuleIds != null) {
-      final ArrayList<String> list=new ArrayList<String>(enabledRuleIds);
+      final ArrayList<String> list=new ArrayList<>(enabledRuleIds);
       for (      String ruleName : list) {
         langTool.enableDefaultOffRule(ruleName);
         langTool.enableRule(ruleName);

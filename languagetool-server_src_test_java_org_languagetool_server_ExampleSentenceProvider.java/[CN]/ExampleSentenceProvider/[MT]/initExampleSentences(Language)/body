@@ -2,7 +2,7 @@
   final JLanguageTool lt=new JLanguageTool(language);
   lt.activateDefaultPatternRules();
   final List<Rule> rules=lt.getAllActiveRules();
-  final List<ExampleSentence> sentences=new ArrayList<ExampleSentence>();
+  final List<ExampleSentence> sentences=new ArrayList<>();
   for (  Rule rule : rules) {
     if (rule instanceof PatternRule && !rule.isDefaultOff()) {
       final List<IncorrectExample> incorrectExamples=rule.getIncorrectExamples();

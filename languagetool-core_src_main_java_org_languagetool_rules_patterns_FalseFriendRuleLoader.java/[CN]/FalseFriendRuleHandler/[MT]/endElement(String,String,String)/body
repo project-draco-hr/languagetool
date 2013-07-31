@@ -52,7 +52,7 @@
   }
  else   if (qName.equals(RULEGROUP)) {
     if (!suggestions.isEmpty()) {
-      final List<String> l=new ArrayList<String>(suggestions);
+      final List<String> l=new ArrayList<>(suggestions);
       suggestionMap.put(id,l);
       suggestions.clear();
     }

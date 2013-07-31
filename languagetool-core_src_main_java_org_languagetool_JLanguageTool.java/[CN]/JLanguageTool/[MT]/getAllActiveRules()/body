@@ -1,6 +1,6 @@
 {
-  final List<Rule> rules=new ArrayList<Rule>();
-  final List<Rule> rulesActive=new ArrayList<Rule>();
+  final List<Rule> rules=new ArrayList<>();
+  final List<Rule> rulesActive=new ArrayList<>();
   rules.addAll(builtinRules);
   rules.addAll(userRules);
   for (  final Rule rule : rules) {

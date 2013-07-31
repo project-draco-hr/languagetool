@@ -1,5 +1,5 @@
 {
-  final ArrayList<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+  final ArrayList<AnalyzedToken> l=new ArrayList<>();
   if (formattedToken != null) {
     if (staticLemma) {
       matchedToken.leaveReading(new AnalyzedToken(matchedToken.getToken(),posTag,formattedToken.getToken()));

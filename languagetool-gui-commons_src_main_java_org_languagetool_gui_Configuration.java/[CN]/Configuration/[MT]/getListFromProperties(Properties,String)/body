@@ -1,6 +1,6 @@
 {
   final String value=(String)props.get(key);
-  final List<String> list=new ArrayList<String>();
+  final List<String> list=new ArrayList<>();
   if (value != null) {
     final String[] names=value.split(DELIMITER);
     list.addAll(Arrays.asList(names));

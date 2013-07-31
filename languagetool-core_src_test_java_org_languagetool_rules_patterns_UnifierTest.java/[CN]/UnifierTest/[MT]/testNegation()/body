@@ -24,7 +24,7 @@
   final AnalyzedToken subst_plur_fem=new AnalyzedToken("discrepationes","subst:sg:blahblah:f","discrepatio");
   final AnalyzedToken subst_sing_masc=new AnalyzedToken("homo","sg:sg:blahblah:m","homo");
   final AnalyzedToken subst_plur_masc=new AnalyzedToken("homines","sg:sg:blahblah:m","homo");
-  final Map<String,List<String>> equiv=new HashMap<String,List<String>>();
+  final Map<String,List<String>> equiv=new HashMap<>();
   equiv.put("number",null);
   equiv.put("gender",null);
   boolean satisfied=uni.isSatisfied(det_sing_masc,equiv);

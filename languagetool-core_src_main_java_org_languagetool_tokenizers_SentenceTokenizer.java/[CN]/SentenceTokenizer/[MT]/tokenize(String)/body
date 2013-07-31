@@ -3,7 +3,7 @@
   s=removeFalseEndOfSentence(s);
   s=splitUnsplitStuff(s);
   final StringTokenizer stringTokenizer=new StringTokenizer(s,EOS);
-  final List<String> l=new ArrayList<String>();
+  final List<String> l=new ArrayList<>();
   while (stringTokenizer.hasMoreTokens()) {
     final String sentence=stringTokenizer.nextToken();
     l.add(sentence);

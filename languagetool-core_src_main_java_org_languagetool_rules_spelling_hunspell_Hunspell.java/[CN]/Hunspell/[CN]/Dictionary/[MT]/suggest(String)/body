@@ -1,5 +1,5 @@
 {
-  List<String> res=new ArrayList<String>();
+  List<String> res=new ArrayList<>();
   try {
     int suggestionsCount=0;
     PointerByReference suggestions=new PointerByReference();

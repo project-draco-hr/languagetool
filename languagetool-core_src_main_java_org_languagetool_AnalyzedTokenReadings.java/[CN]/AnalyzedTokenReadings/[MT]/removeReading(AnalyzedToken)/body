@@ -1,5 +1,5 @@
 {
-  final ArrayList<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+  final ArrayList<AnalyzedToken> l=new ArrayList<>();
   final AnalyzedToken tmpTok=new AnalyzedToken(token.getToken(),token.getPOSTag(),token.getLemma());
   tmpTok.setWhitespaceBefore(isWhitespaceBefore);
   for (  AnalyzedToken anTokReading : anTokReadings) {

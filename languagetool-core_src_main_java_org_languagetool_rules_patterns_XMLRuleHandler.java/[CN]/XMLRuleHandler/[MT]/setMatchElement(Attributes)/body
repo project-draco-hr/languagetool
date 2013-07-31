@@ -13,7 +13,7 @@
   mWorker.setInMessageOnly(!inSuggestion);
   if (inMessage) {
     if (suggestionMatches == null) {
-      suggestionMatches=new ArrayList<Match>();
+      suggestionMatches=new ArrayList<>();
     }
     suggestionMatches.add(mWorker);
     message.append("\u0001\\");
@@ -22,7 +22,7 @@
   }
  else   if (inSuggestion && !inMessage) {
     if (suggestionMatchesOutMsg == null) {
-      suggestionMatchesOutMsg=new ArrayList<Match>();
+      suggestionMatchesOutMsg=new ArrayList<>();
     }
     suggestionMatchesOutMsg.add(mWorker);
     suggestionsOutMsg.append("\u0001\\");

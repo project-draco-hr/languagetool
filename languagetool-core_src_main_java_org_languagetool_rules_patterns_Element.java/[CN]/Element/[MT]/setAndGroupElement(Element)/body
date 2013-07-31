@@ -1,7 +1,7 @@
 {
   if (andToken != null) {
     if (andGroupList == null) {
-      andGroupList=new ArrayList<Element>();
+      andGroupList=new ArrayList<>();
     }
     if (!andGroupSet) {
       andGroupSet=true;

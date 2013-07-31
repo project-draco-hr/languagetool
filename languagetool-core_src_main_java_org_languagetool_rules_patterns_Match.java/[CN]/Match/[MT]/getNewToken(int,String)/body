@@ -1,5 +1,5 @@
 {
-  final List<AnalyzedToken> list=new ArrayList<AnalyzedToken>();
+  final List<AnalyzedToken> list=new ArrayList<>();
   String lemma="";
   for (int j=0; j < numRead; j++) {
     if (formattedToken.getAnalyzedToken(j).getPOSTag() != null) {

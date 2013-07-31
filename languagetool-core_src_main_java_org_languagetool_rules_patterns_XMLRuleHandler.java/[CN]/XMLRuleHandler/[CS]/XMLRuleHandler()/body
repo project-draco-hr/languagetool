@@ -1,5 +1,5 @@
 {
-  elementList=new ArrayList<Element>();
-  equivalenceFeatures=new HashMap<String,List<String>>();
-  uTypeList=new ArrayList<String>();
+  elementList=new ArrayList<>();
+  equivalenceFeatures=new HashMap<>();
+  uTypeList=new ArrayList<>();
 }

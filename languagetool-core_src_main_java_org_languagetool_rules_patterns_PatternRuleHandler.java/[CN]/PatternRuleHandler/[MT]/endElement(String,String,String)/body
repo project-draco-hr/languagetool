@@ -19,7 +19,7 @@
  else {
       if (!elementList.isEmpty()) {
         for (        final ArrayList<Element> ph : phraseElementList) {
-          ph.addAll(new ArrayList<Element>(elementList));
+          ph.addAll(new ArrayList<>(elementList));
         }
       }
       for (      final ArrayList<Element> phraseElement : phraseElementList) {
@@ -131,11 +131,11 @@
   }
  else   if (FEATURE.equals(qName)) {
     equivalenceFeatures.put(uFeature,uTypeList);
-    uTypeList=new ArrayList<String>();
+    uTypeList=new ArrayList<>();
   }
  else   if (UNIFY.equals(qName)) {
     inUnification=false;
-    equivalenceFeatures=new HashMap<String,List<String>>();
+    equivalenceFeatures=new HashMap<>();
     final int lastElement=elementList.size() - 1;
     elementList.get(lastElement).setLastInUnification();
     if (uniNegation) {

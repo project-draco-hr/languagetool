@@ -7,7 +7,7 @@
     }
     languageTool.enableRule(rule.getId());
     final List<RuleMatch> realMatches=languageTool.check(sentence);
-    final List<String> realMatchRuleIds=new ArrayList<String>();
+    final List<String> realMatchRuleIds=new ArrayList<>();
     for (    RuleMatch realMatch : realMatches) {
       realMatchRuleIds.add(realMatch.getRule().getId());
     }

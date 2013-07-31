@@ -2,7 +2,7 @@
   boolean unifiedNext=true;
   boolean anyFeatUnified=false;
   List<String> types;
-  final ArrayList<Boolean> tokenFeaturesFound=new ArrayList<Boolean>(tmpFeaturesFound);
+  final ArrayList<Boolean> tokenFeaturesFound=new ArrayList<>(tmpFeaturesFound);
   if (allFeatsIn) {
     for (int i=0; i <= tokCnt; i++) {
       boolean allFeatsUnified=true;
@@ -18,7 +18,7 @@
             featUnified=featUnified || testElem.isMatched(aToken);
             if (!testElem.isMatched(aToken)) {
               if (!equivalencesToBeRemoved.containsKey(feat.getKey())) {
-                final Set<String> typeSet=new HashSet<String>();
+                final Set<String> typeSet=new HashSet<>();
                 typeSet.add(typeName);
                 equivalencesToBeRemoved.put(feat.getKey(),typeSet);
               }
@@ -28,7 +28,7 @@
             }
  else {
               if (!equivalencesToBeKept.containsKey(feat.getKey())) {
-                final Set<String> typeSet=new HashSet<String>();
+                final Set<String> typeSet=new HashSet<>();
                 typeSet.add(typeName);
                 equivalencesToBeKept.put(feat.getKey(),typeSet);
               }

@@ -1,5 +1,5 @@
 {
   if (possibleTags == null) {
-    possibleTags=new ArrayList<String>(manualSynthesizer.getPossibleTags());
+    possibleTags=new ArrayList<>(manualSynthesizer.getPossibleTags());
   }
 }

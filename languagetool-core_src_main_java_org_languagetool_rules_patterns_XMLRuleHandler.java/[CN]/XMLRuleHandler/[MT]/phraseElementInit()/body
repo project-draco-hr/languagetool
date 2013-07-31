@@ -1,5 +1,5 @@
 {
   if (phraseElementList == null) {
-    phraseElementList=new ArrayList<ArrayList<Element>>();
+    phraseElementList=new ArrayList<>();
   }
 }

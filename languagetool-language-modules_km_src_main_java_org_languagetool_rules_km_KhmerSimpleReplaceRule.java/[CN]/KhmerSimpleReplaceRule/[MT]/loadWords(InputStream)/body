@@ -1,5 +1,5 @@
 {
-  final List<Map<String,String>> list=new ArrayList<Map<String,String>>();
+  final List<Map<String,String>> list=new ArrayList<>();
   InputStreamReader isr=null;
   BufferedReader br=null;
   try {
@@ -39,7 +39,7 @@
       isr.close();
     }
   }
-  List<Map<String,String>> result=new ArrayList<Map<String,String>>();
+  List<Map<String,String>> result=new ArrayList<>();
   for (  Map<String,String> map : list) {
     result.add(Collections.unmodifiableMap(map));
   }

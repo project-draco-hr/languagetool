@@ -1,5 +1,5 @@
 {
-  final ArrayList<AnalyzedToken> l=new ArrayList<AnalyzedToken>();
+  final ArrayList<AnalyzedToken> l=new ArrayList<>();
   for (int i=0; i < anTokReadings.length - 1; i++) {
     l.add(anTokReadings[i]);
   }

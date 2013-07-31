@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> matches=new ArrayList<RuleMatch>();
+  final List<RuleMatch> matches=new ArrayList<>();
   final String text="This is an test sentence. Here's another sentence with more text.";
   final FakeRule rule=new FakeRule();
   final RuleMatch match=new RuleMatch(rule,8,10,"myMessage");

@@ -1,12 +1,12 @@
 {
-  final HashMap<String,PatternRule> complexRules=new HashMap<String,PatternRule>();
+  final HashMap<String,PatternRule> complexRules=new HashMap<>();
   for (  final PatternRule rule : rules) {
     testCorrectSentences(languageTool,allRulesLanguageTool,lang,rule);
     testBadSentences(languageTool,allRulesLanguageTool,lang,complexRules,rule);
   }
   if (!complexRules.isEmpty()) {
     final Set<String> set=complexRules.keySet();
-    final List<PatternRule> badRules=new ArrayList<PatternRule>();
+    final List<PatternRule> badRules=new ArrayList<>();
     for (    String aSet : set) {
       final PatternRule badRule=complexRules.get(aSet);
       if (badRule != null) {

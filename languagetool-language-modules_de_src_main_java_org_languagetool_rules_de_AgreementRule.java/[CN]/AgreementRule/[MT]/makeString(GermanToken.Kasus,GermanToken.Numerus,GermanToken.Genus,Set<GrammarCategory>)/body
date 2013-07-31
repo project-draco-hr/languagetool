@@ -1,5 +1,5 @@
 {
-  final List<String> l=new ArrayList<String>();
+  final List<String> l=new ArrayList<>();
   if (casus != null && !omit.contains(GrammarCategory.KASUS)) {
     l.add(casus.toString());
   }

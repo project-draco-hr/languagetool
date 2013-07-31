@@ -1,5 +1,5 @@
 {
-  final List<Rule> result=new ArrayList<Rule>();
+  final List<Rule> result=new ArrayList<>();
   for (  Rule rule : rules) {
     if (rule.getId().equals(id)) {
       result.add(rule);

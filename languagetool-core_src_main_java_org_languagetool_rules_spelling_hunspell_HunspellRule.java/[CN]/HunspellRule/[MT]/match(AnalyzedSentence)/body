@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<RuleMatch>();
+  final List<RuleMatch> ruleMatches=new ArrayList<>();
   if (needsInit) {
     init();
   }

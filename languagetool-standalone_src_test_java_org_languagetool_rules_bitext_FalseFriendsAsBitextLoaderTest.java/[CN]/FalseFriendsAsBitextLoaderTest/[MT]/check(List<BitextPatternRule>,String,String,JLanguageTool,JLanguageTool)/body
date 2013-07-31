@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> allMatches=new ArrayList<RuleMatch>();
+  final List<RuleMatch> allMatches=new ArrayList<>();
   for (  BitextPatternRule bRule : bRules) {
     final RuleMatch[] matches=match(bRule,src,trg,srcTool,trgTool);
     if (matches != null) {

@@ -1,5 +1,5 @@
 {
-  List<String> tokenList=new ArrayList<String>();
+  List<String> tokenList=new ArrayList<>();
   text=substitute(text);
   StringTokenizer st=new StringTokenizer(text,SPLIT_CHARS,true);
   while (st.hasMoreElements()) {

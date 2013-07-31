@@ -1,5 +1,5 @@
 {
-  final List<Object> motherTongues=new ArrayList<Object>();
+  final List<Object> motherTongues=new ArrayList<>();
   motherTongues.add(NO_MOTHER_TONGUE);
   for (  final Language lang : Language.LANGUAGES) {
     if (lang != Language.DEMO) {

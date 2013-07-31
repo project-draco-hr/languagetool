@@ -20,7 +20,7 @@
   AnalyzedToken sing1b=new AnalyzedToken("ma??y","adj:pl:blahblah:f","ma??y");
   AnalyzedToken sing2=new AnalyzedToken("zgarbiony","adj:pl:blahblah:f","zgarbiony");
   final AnalyzedToken sing3=new AnalyzedToken("cz??owiek","subst:sg:blahblah:m","cz??owiek");
-  final Map<String,List<String>> equiv=new HashMap<String,List<String>>();
+  final Map<String,List<String>> equiv=new HashMap<>();
   equiv.put("number",null);
   equiv.put("gender",null);
   boolean satisfied=uni.isSatisfied(sing1,equiv);

@@ -1,5 +1,5 @@
 {
-  featuresFound=new ArrayList<Boolean>(tmpFeaturesFound);
+  featuresFound=new ArrayList<>(tmpFeaturesFound);
   readingsCounter++;
   List<String> types;
   for (int i=0; i <= tokCnt; i++) {

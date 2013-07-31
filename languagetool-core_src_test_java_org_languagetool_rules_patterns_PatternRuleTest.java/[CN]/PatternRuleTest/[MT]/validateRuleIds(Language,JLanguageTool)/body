@@ -1,7 +1,7 @@
 {
   final List<Rule> allRules=languageTool.getAllRules();
-  final Set<String> ids=new HashSet<String>();
-  final Set<Class> ruleClasses=new HashSet<Class>();
+  final Set<String> ids=new HashSet<>();
+  final Set<Class> ruleClasses=new HashSet<>();
   for (  Rule rule : allRules) {
     assertIdUniqueness(ids,ruleClasses,lang,rule);
   }

@@ -1,7 +1,7 @@
 {
   init();
-  final ArrayList<String> ret=new ArrayList<String>();
-  List<Token> tokens=new ArrayList<Token>();
+  final ArrayList<String> ret=new ArrayList<>();
+  List<Token> tokens=new ArrayList<>();
   String basicForm;
   try {
     stringtagger.analyze(text,tokens);
