@@ -45,8 +45,8 @@ break;
 case ADD:
 if (newTokenReadings != null) {
 if (newTokenReadings.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
-String lemma="";
-String token="";
+String lemma;
+String token;
 for (int i=0; i < newTokenReadings.length; i++) {
   final int position=text.getOriginalPosition(firstMatchToken + correctedStPos + i);
   if ("".equals(newTokenReadings[i].getToken())) {
@@ -102,8 +102,8 @@ default :
 if (!filtered) {
 if (newTokenReadings != null && newTokenReadings.length > 0) {
 if (newTokenReadings.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
-String lemma="";
-String token="";
+String lemma;
+String token;
 for (int i=0; i < newTokenReadings.length; i++) {
 final int position=text.getOriginalPosition(firstMatchToken + correctedStPos + i);
 if ("".equals(newTokenReadings[i].getToken())) {

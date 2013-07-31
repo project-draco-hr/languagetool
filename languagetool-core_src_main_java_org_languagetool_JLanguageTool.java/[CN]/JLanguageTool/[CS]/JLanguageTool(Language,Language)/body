@@ -1,8 +1,5 @@
 {
-  if (language == null) {
-    throw new NullPointerException("language cannot be null");
-  }
-  this.language=language;
+  this.language=Objects.requireNonNull(language,"language cannot be null");
   this.motherTongue=motherTongue;
   final ResourceBundle messages=getMessageBundle(language);
   final Rule[] allBuiltinRules=getAllBuiltinRules(language,messages);

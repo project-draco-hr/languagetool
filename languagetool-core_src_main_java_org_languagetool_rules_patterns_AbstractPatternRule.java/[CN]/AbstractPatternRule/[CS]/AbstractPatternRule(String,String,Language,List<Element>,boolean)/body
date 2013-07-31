@@ -1,8 +1,8 @@
 {
-  this.id=id;
-  this.description=description;
-  this.patternElements=new ArrayList<>(elements);
-  this.language=language;
+  this.id=Objects.requireNonNull(id,"id cannot be null");
+  this.description=Objects.requireNonNull(description,"description cannot be null");
+  this.patternElements=new ArrayList<>(Objects.requireNonNull(elements,"elements cannot be null"));
+  this.language=Objects.requireNonNull(language,"language cannot be null");
   this.getUnified=getUnified;
   unifier=language.getUnifier();
   testUnification=initUnifier();

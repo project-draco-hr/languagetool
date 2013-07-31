@@ -1,8 +1,5 @@
 {
-  if (token == null) {
-    throw new NullPointerException("Token cannot be null!");
-  }
-  this.token=token;
+  this.token=Objects.requireNonNull(token,"token cannot be null");
   this.posTag=posTag;
   this.lemma=lemma;
   if (lemma == null) {

@@ -1,6 +1,3 @@
 {
-  if (replacements == null) {
-    throw new NullPointerException("replacements might be empty but not null");
-  }
-  this.suggestedReplacements=replacements;
+  this.suggestedReplacements=Objects.requireNonNull(replacements,"replacements may be empty but not null");
 }

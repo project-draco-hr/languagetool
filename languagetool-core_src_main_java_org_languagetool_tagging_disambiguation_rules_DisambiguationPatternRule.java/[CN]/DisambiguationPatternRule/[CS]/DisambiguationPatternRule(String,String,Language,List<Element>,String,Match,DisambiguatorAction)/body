@@ -1,17 +1,5 @@
 {
   super(id,description,language,elements,true);
-  if (id == null) {
-    throw new NullPointerException("id cannot be null");
-  }
-  if (language == null) {
-    throw new NullPointerException("language cannot be null");
-  }
-  if (elements == null) {
-    throw new NullPointerException("elements cannot be null");
-  }
-  if (description == null) {
-    throw new NullPointerException("description cannot be null");
-  }
   if (disamb == null && posSelect == null && disambAction != DisambiguatorAction.UNIFY && disambAction != DisambiguatorAction.ADD && disambAction != DisambiguatorAction.REMOVE && disambAction != DisambiguatorAction.IMMUNIZE && disambAction != DisambiguatorAction.REPLACE && disambAction != DisambiguatorAction.FILTERALL) {
     throw new NullPointerException("disambiguated POS cannot be null");
   }

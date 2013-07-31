@@ -1,7 +1,5 @@
 {
-  if (file == null) {
-    throw new NullPointerException("file argument cannot be null");
-  }
+  Objects.requireNonNull(file,"file cannot be null");
   if (!file.getName().endsWith(".xml")) {
     throw new RuleFilenameException(file);
   }
@@ -36,7 +34,7 @@
     @Override public List<Class<? extends Rule>> getRelevantRules(){
       return Collections.emptyList();
     }
-    @Override public List<String> getRuleFileName(){
+    @Override public List<String> getRuleFileNames(){
       final List<String> ruleFiles=new ArrayList<>();
       ruleFiles.add(file.getAbsolutePath());
       return ruleFiles;
