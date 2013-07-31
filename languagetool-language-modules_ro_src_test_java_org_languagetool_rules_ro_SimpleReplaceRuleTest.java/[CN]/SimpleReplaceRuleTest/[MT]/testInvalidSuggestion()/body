@@ -10,6 +10,6 @@
     }
   }
   if (!invalidSuggestions.isEmpty()) {
-    fail("Invalid suggestions found for: " + Arrays.toString(invalidSuggestions.toArray(new String[]{})));
+    fail("Invalid suggestions found for: " + invalidSuggestions);
   }
 }
