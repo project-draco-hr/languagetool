@@ -5,7 +5,7 @@
     Language.reInit(lmd.getLanguages());
   }
  catch (  RuleFilenameException e) {
-    Tools.showErrorMessage(e);
+    Tools.showErrorMessage(e,frame);
   }
   languageBox.populateLanguageBox();
 }
