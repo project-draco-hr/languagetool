@@ -1,6 +1,6 @@
 {
   if (autoDetectBox.isSelected()) {
-    return autoDetectBox.autoDetectLanguage(textArea.getText());
+    return autoDetectLanguage(textArea.getText());
   }
  else {
     return languageBox.getSelectedLanguage();
