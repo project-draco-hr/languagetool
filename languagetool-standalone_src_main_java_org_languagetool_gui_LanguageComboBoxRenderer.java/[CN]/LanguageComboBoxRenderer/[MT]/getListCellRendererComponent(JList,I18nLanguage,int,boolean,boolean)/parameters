@@ -1,0 +1,5 @@
+JList list
+I18nLanguage value
+int index
+boolean isSelected
+boolean cellHasFocus

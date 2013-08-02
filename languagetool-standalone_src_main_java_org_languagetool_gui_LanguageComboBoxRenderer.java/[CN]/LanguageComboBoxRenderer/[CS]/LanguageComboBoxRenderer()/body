@@ -1,0 +1,5 @@
+{
+  super();
+  setOpaque(true);
+  setBorder(BORDER);
+}

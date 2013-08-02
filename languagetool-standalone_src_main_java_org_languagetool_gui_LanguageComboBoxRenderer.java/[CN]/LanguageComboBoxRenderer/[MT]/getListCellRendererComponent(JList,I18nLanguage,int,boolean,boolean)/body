@@ -1,0 +1,24 @@
+{
+  setComponentOrientation(list.getComponentOrientation());
+  if (isSelected) {
+    setBackground(list.getSelectionBackground());
+    setForeground(list.getSelectionForeground());
+  }
+ else {
+    setBackground(list.getBackground());
+    setForeground(list.getForeground());
+  }
+  setText(value.toString());
+  String country=value.getLanguage().getLocaleWithCountry().getCountry().toLowerCase();
+  String filename="flags/" + country + ".png";
+  ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
+  if (!dataBroker.resourceExists(filename)) {
+    filename="flags/empty.png";
+  }
+  ImageIcon icon=new ImageIcon(dataBroker.getFromResourceDirAsUrl(filename));
+  setIcon(icon);
+  setEnabled(list.isEnabled());
+  setFont(list.getFont());
+  setBorder(BORDER);
+  return this;
+}
