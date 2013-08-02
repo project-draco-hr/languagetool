@@ -1,7 +1,4 @@
 {
-  if (!enabled) {
-    return;
-  }
   int v=check.decrementAndGet();
   if (v != 0) {
     return;
@@ -10,6 +7,5 @@
     _check();
   }
  catch (  IOException ex) {
-    Logger.getLogger(LanguageToolSupport.class.getName()).log(Level.SEVERE,null,ex);
   }
 }

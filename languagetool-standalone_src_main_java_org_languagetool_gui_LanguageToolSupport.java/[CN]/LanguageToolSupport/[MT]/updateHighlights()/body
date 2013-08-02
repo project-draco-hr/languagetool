@@ -1,8 +1,5 @@
 {
   removeHighlights();
-  if (!enabled) {
-    return;
-  }
   Highlighter h=textComponent.getHighlighter();
   ArrayList<Span> spellErrors=new ArrayList();
   ArrayList<Span> grammarErrors=new ArrayList();

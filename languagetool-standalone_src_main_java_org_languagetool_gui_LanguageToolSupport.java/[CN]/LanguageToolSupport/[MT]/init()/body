@@ -16,15 +16,21 @@
   check=new AtomicInteger(0);
   this.textComponent.getDocument().addDocumentListener(documentListener=new DocumentListener(){
     @Override public void insertUpdate(    DocumentEvent e){
-      removeHighlights();
-      checkDelayed();
+      recalculateSpans(e.getOffset(),e.getLength(),false);
+      if (backgroundCheckEnabled) {
+        checkDelayed();
+      }
     }
     @Override public void removeUpdate(    DocumentEvent e){
-      removeHighlights();
-      checkDelayed();
+      recalculateSpans(e.getOffset(),e.getLength(),true);
+      if (backgroundCheckEnabled) {
+        checkDelayed();
+      }
     }
     @Override public void changedUpdate(    DocumentEvent e){
-      checkDelayed();
+      if (backgroundCheckEnabled) {
+        checkDelayed();
+      }
     }
   }
 );

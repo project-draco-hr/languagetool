@@ -4,9 +4,6 @@
   }
   this.backgroundCheckEnabled=backgroundCheckEnabled;
   if (backgroundCheckEnabled) {
-    textComponent.getDocument().addDocumentListener(documentListener);
-  }
- else {
-    textComponent.getDocument().removeDocumentListener(documentListener);
+    checkImmediately();
   }
 }

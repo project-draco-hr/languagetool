@@ -9,11 +9,11 @@
       final String fileContents=StringTools.readFile(inputStream);
       textArea.setText(fileContents);
       currentFile=file;
+      updateTitle();
     }
   finally {
       inputStream.close();
     }
-    checkTextAndDisplayResults();
   }
  catch (  IOException e) {
     Tools.showError(e);
