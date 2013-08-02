@@ -1,0 +1,10 @@
+{
+  if (undo.canRedo()) {
+    setEnabled(true);
+    putValue(Action.NAME,undo.getRedoPresentationName());
+  }
+ else {
+    setEnabled(false);
+    putValue(Action.NAME,"Redo");
+  }
+}

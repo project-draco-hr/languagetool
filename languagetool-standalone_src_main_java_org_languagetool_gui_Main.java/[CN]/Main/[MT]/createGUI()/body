@@ -11,6 +11,7 @@
   textArea.setWrapStyleWord(true);
   textArea.addKeyListener(new ControlReturnTextCheckingListener());
   resultArea=new ResultArea(messages,textArea,config);
+  undoRedo=new UndoRedoSupport(this.textArea);
   frame.setJMenuBar(createMenuBar());
   checkTextButton=new JButton(checkAction);
   final JPanel panel=new JPanel();

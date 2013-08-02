@@ -21,6 +21,13 @@
   grammarMenu.add(new AddRulesAction());
   grammarMenu.add(new OptionsAction());
   helpMenu.add(new AboutAction());
+  undoRedo.undoAction.putValue(Action.NAME,getLabel("guiMenuUndo"));
+  undoRedo.undoAction.putValue(Action.MNEMONIC_KEY,getMnemonic("guiMenuUndo"));
+  undoRedo.redoAction.putValue(Action.NAME,getLabel("guiMenuRedo"));
+  undoRedo.redoAction.putValue(Action.MNEMONIC_KEY,getMnemonic("guiMenuRedo"));
+  editMenu.add(undoRedo.undoAction);
+  editMenu.add(undoRedo.redoAction);
+  editMenu.addSeparator();
   Action a;
   Image img;
   a=this.textArea.getActionMap().get(DefaultEditorKit.cutAction);

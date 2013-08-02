@@ -1,0 +1,9 @@
+{
+  try {
+    undo.undo();
+  }
+ catch (  CannotUndoException ex) {
+  }
+  updateUndoState();
+  redoAction.updateRedoState();
+}
