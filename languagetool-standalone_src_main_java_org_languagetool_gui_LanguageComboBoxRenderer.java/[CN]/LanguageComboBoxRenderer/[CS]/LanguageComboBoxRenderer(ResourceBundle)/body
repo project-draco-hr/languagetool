@@ -2,4 +2,5 @@
   super();
   setOpaque(true);
   setBorder(BORDER);
+  this.messages=messages;
 }

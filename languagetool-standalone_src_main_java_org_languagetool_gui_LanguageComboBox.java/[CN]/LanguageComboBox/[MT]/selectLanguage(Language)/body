@@ -1,8 +1,0 @@
-{
-  final String translatedName=language.getTranslatedName(messages);
-  for (  final I18nLanguage i18nLanguage : i18nLanguages) {
-    if (i18nLanguage.toString().equals(translatedName)) {
-      setSelectedItem(i18nLanguage);
-    }
-  }
-}

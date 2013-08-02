@@ -1,0 +1,8 @@
+{
+  if (language.isExternal()) {
+    return language.getName() + Main.EXTERNAL_LANGUAGE_SUFFIX;
+  }
+ else {
+    return language.getTranslatedName(messages);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return getTranslatedName(o1).compareTo(getTranslatedName(o2));
+}

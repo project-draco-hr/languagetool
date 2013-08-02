@@ -1,0 +1,8 @@
+{
+  if (config.getLanguage() != null) {
+    return config.getLanguage();
+  }
+ else {
+    return Language.getLanguageForLocale(Locale.getDefault());
+  }
+}

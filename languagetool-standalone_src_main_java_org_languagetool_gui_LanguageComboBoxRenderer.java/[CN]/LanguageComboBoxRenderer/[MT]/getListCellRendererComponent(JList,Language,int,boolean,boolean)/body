@@ -8,8 +8,8 @@
     setBackground(list.getBackground());
     setForeground(list.getForeground());
   }
-  setText(value.toString());
-  String country=value.getLanguage().getLocaleWithCountry().getCountry().toLowerCase();
+  setText(getTranslatedName(value));
+  String country=value.getLocaleWithCountry().getCountry().toLowerCase();
   String filename="flags/" + country + ".png";
   ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
   if (!dataBroker.resourceExists(filename)) {

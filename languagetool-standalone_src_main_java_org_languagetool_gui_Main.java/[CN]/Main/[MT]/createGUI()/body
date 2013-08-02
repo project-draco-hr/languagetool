@@ -26,10 +26,13 @@
   buttonCons.anchor=GridBagConstraints.WEST;
   insidePanel.add(new JLabel(" " + messages.getString("textLanguage") + " "),buttonCons);
   languageBox=new LanguageComboBox(messages,config);
-  languageBox.setRenderer(new LanguageComboBoxRenderer());
+  languageBox.setRenderer(new LanguageComboBoxRenderer(messages));
   languageBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
-      langTool=null;
+      if (e.getStateChange() == ItemEvent.SELECTED) {
+        langTool=null;
+        currentLanguage=(Language)languageBox.getSelectedItem();
+      }
     }
   }
 );
@@ -43,10 +46,15 @@
   buttonCons.gridy=0;
   insidePanel.add(checkTextButton,buttonCons);
   autoDetectBox=new JCheckBox(messages.getString("atd"),config.getAutoDetect());
-  autoDetectBox.addActionListener(new ActionListener(){
-    @Override public void actionPerformed(    ActionEvent e){
-      languageBox.setEnabled(!autoDetectBox.isSelected());
-      config.setAutoDetect(autoDetectBox.isSelected());
+  autoDetectBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      boolean selected=(e.getStateChange() == ItemEvent.SELECTED);
+      languageBox.setEnabled(!selected);
+      config.setAutoDetect(selected);
+      if (selected) {
+        Language detected=autoDetectLanguage(textArea.getText());
+        languageBox.setSelectedItem(detected);
+      }
     }
   }
 );
@@ -77,6 +85,7 @@
   cons.insets=new Insets(1,10,10,1);
   cons.gridy=3;
   contentPane.add(panel,cons);
+  currentLanguage=getDefaultLanguage();
   warmUpChecker();
   frame.pack();
   frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);

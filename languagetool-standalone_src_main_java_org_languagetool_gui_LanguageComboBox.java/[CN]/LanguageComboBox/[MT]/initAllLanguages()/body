@@ -4,11 +4,11 @@
     final boolean skip=(language == Language.DEMO) || language.hasVariant();
     final boolean simpleGermanWorkaround=language.getShortNameWithVariant().equals("de-DE");
     if (!skip || simpleGermanWorkaround) {
-      i18nLanguages.add(new I18nLanguage(language,messages));
+      i18nLanguages.add(language);
     }
   }
-  Collections.sort(i18nLanguages);
-  for (  final I18nLanguage i18nLanguage : i18nLanguages) {
+  Collections.sort(i18nLanguages,new LanguageComparator(messages));
+  for (  final Language i18nLanguage : i18nLanguages) {
     addItem(i18nLanguage);
   }
 }

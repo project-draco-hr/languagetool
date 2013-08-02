@@ -1,7 +1,7 @@
 {
   stopServer();
   try {
-    config.setLanguage(languageBox.getSelectedLanguage());
+    config.setLanguage(currentLanguage);
     config.saveConfiguration(getCurrentLanguage());
   }
  catch (  IOException e) {
