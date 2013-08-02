@@ -1,0 +1,6 @@
+{
+  this.languageTool=languageTool;
+  if (backgroundCheckEnabled) {
+    checkImmediately();
+  }
+}

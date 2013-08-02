@@ -1,14 +1,14 @@
 {
-  i18nLanguages.clear();
+  languages.clear();
   for (  Language language : Language.LANGUAGES) {
     final boolean skip=(language == Language.DEMO) || language.hasVariant();
     final boolean simpleGermanWorkaround=language.getShortNameWithVariant().equals("de-DE");
     if (!skip || simpleGermanWorkaround) {
-      i18nLanguages.add(language);
+      languages.add(language);
     }
   }
-  Collections.sort(i18nLanguages,new LanguageComparator(messages));
-  for (  final Language i18nLanguage : i18nLanguages) {
-    addItem(i18nLanguage);
+  Collections.sort(languages,new LanguageComparator(messages));
+  for (  final Language language : languages) {
+    addItem(language);
   }
 }

@@ -1,0 +1,36 @@
+{
+  if (documentSpans.isEmpty()) {
+    return;
+  }
+  int offset=this.textComponent.viewToModel(event.getPoint());
+  for (int i=0; i < documentSpans.size(); i++) {
+    final Span span=documentSpans.get(i);
+    if (span.end > span.start) {
+      if ((span.start <= offset) && (offset < span.end)) {
+        JPopupMenu popup=new JPopupMenu("Grammar Menu");
+        JMenuItem msgItem=new JMenuItem(span.msg);
+        msgItem.setToolTipText(span.desc);
+        popup.add(msgItem);
+        popup.add(new JSeparator());
+        for (        String r : span.replacement) {
+          ReplaceMenuItem item=new ReplaceMenuItem(r,i);
+          popup.add(item);
+          item.addActionListener(actionListener);
+        }
+        textComponent.setCaretPosition(span.start);
+        textComponent.moveCaretPosition(span.end);
+        popup.addPopupMenuListener(new PopupMenuListener(){
+          @Override public void popupMenuWillBecomeVisible(          PopupMenuEvent e){
+          }
+          @Override public void popupMenuWillBecomeInvisible(          PopupMenuEvent e){
+          }
+          @Override public void popupMenuCanceled(          PopupMenuEvent e){
+            textComponent.setCaretPosition(span.start);
+          }
+        }
+);
+        popup.show(textComponent,event.getPoint().x,event.getPoint().y);
+      }
+    }
+  }
+}

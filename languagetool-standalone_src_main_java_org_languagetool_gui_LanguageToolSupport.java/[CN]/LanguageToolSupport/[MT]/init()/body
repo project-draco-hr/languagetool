@@ -1,0 +1,62 @@
+{
+  rhp=new HighlightPainter(Color.red);
+  bhp=new HighlightPainter(Color.blue);
+  ruleMatches=new ArrayList();
+  documentSpans=new ArrayList();
+  gcExecutor=new ScheduledThreadPoolExecutor(1,new ThreadFactory(){
+    @Override public Thread newThread(    Runnable r){
+      Thread t=new Thread(r);
+      t.setDaemon(true);
+      t.setPriority(Thread.MIN_PRIORITY);
+      t.setName(t.getName() + "-lt-background");
+      return t;
+    }
+  }
+);
+  check=new AtomicInteger(0);
+  this.textComponent.getDocument().addDocumentListener(documentListener=new DocumentListener(){
+    @Override public void insertUpdate(    DocumentEvent e){
+      System.out.println(e);
+      removeHighlights();
+      checkDelayed();
+    }
+    @Override public void removeUpdate(    DocumentEvent e){
+      System.out.println(e);
+      removeHighlights();
+      checkDelayed();
+    }
+    @Override public void changedUpdate(    DocumentEvent e){
+      System.out.println(e);
+      checkDelayed();
+    }
+  }
+);
+  this.textComponent.addMouseListener(mouseListener=new MouseListener(){
+    @Override public void mouseClicked(    MouseEvent me){
+    }
+    @Override public void mousePressed(    MouseEvent me){
+      if (me.isPopupTrigger()) {
+        showPopup(me);
+      }
+    }
+    @Override public void mouseReleased(    MouseEvent me){
+      if (me.isPopupTrigger()) {
+        showPopup(me);
+      }
+    }
+    @Override public void mouseEntered(    MouseEvent me){
+    }
+    @Override public void mouseExited(    MouseEvent me){
+    }
+  }
+);
+  actionListener=new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      _actionPerformed(e);
+    }
+  }
+;
+  if (backgroundCheckEnabled) {
+    checkImmediately();
+  }
+}

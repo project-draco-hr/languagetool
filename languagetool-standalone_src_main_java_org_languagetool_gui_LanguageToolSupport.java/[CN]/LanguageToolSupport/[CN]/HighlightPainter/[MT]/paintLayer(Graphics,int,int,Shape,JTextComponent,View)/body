@@ -1,0 +1,41 @@
+{
+  Rectangle rect;
+  if (offs0 == view.getStartOffset() && offs1 == view.getEndOffset()) {
+    if (bounds instanceof Rectangle) {
+      rect=(Rectangle)bounds;
+    }
+ else {
+      rect=bounds.getBounds();
+    }
+  }
+ else {
+    try {
+      Shape shape=view.modelToView(offs0,Position.Bias.Forward,offs1,Position.Bias.Backward,bounds);
+      rect=(shape instanceof Rectangle) ? (Rectangle)shape : shape.getBounds();
+    }
+ catch (    BadLocationException e) {
+      rect=null;
+    }
+  }
+  if (rect != null) {
+    Color color=getColor();
+    if (color == null) {
+      g.setColor(c.getSelectionColor());
+    }
+ else {
+      g.setColor(color);
+    }
+    rect.width=Math.max(rect.width,1);
+    int descent=c.getFontMetrics(c.getFont()).getDescent();
+    if (descent > 3) {
+      drawCurvedLine(g,rect);
+    }
+ else     if (descent > 2) {
+      drawCurvedLine(g,rect);
+    }
+ else {
+      drawLine(g,rect);
+    }
+  }
+  return rect;
+}

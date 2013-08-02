@@ -32,6 +32,7 @@
       if (e.getStateChange() == ItemEvent.SELECTED) {
         langTool=null;
         currentLanguage=(Language)languageBox.getSelectedItem();
+        ltSupport.setLanguageTool(getCurrentLanguageTool(currentLanguage));
       }
     }
   }
@@ -53,7 +54,7 @@
       config.setAutoDetect(selected);
       if (selected) {
         Language detected=autoDetectLanguage(textArea.getText());
-        languageBox.setSelectedItem(detected);
+        languageBox.selectLanguage(detected);
       }
     }
   }
@@ -87,6 +88,7 @@
   contentPane.add(panel,cons);
   currentLanguage=getDefaultLanguage();
   warmUpChecker();
+  ltSupport=new LanguageToolSupport(this.langTool,this.textArea);
   frame.pack();
   frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
   frame.setLocationByPlatform(true);

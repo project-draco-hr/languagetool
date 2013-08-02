@@ -1,0 +1,13 @@
+{
+  int x1=rect.x;
+  int x2=rect.x + rect.width;
+  int y=rect.y + rect.height;
+  Graphics2D g2=(Graphics2D)g;
+  g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+  g2.setStroke(OO_STROKE1);
+  g2.drawLine(x1,y - 1,x2,y - 1);
+  g2.setStroke(OO_STROKE2);
+  g2.drawLine(x1,y - 2,x2,y - 2);
+  g2.setStroke(OO_STROKE3);
+  g2.drawLine(x1,y - 3,x2,y - 3);
+}

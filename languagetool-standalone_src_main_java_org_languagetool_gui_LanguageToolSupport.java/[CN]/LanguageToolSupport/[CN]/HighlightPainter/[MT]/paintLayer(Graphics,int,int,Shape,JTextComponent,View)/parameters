@@ -1,0 +1,6 @@
+Graphics g
+int offs0
+int offs1
+Shape bounds
+JTextComponent c
+View view

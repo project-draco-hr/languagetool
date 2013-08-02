@@ -1,0 +1,34 @@
+{
+  removeHighlights();
+  if (!enabled) {
+    return;
+  }
+  Highlighter h=textComponent.getHighlighter();
+  ArrayList<Span> spellErrors=new ArrayList();
+  ArrayList<Span> grammarErrors=new ArrayList();
+  for (  Span span : documentSpans) {
+    if (span.start == span.end) {
+      continue;
+    }
+    if (span.spelling) {
+      spellErrors.add(span);
+    }
+ else {
+      grammarErrors.add(span);
+    }
+  }
+  for (  Span span : grammarErrors) {
+    try {
+      h.addHighlight(span.start,span.end,bhp);
+    }
+ catch (    BadLocationException ex) {
+    }
+  }
+  for (  Span span : spellErrors) {
+    try {
+      h.addHighlight(span.start,span.end,rhp);
+    }
+ catch (    BadLocationException ex) {
+    }
+  }
+}

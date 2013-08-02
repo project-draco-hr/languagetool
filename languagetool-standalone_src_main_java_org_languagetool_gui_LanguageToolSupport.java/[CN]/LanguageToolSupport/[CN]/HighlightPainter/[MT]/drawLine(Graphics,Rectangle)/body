@@ -1,0 +1,8 @@
+{
+  int x1=rect.x;
+  int x2=rect.x + rect.width;
+  int y=rect.y + rect.height;
+  Graphics2D g2=(Graphics2D)g;
+  g2.setStroke(ZIGZAG_STROKE1);
+  g2.drawLine(x1,y - 1,x2,y - 1);
+}

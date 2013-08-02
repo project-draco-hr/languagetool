@@ -1,0 +1,33 @@
+{
+  if (length == 0) {
+    return;
+  }
+  for (  Span span : this.documentSpans) {
+    if (offset >= span.end) {
+      continue;
+    }
+    if (!remove) {
+      if (offset <= span.start) {
+        span.start+=length;
+      }
+      span.end+=length;
+    }
+ else {
+      if (offset + length <= span.end) {
+        if (offset > span.start) {
+        }
+ else         if (offset + length <= span.start) {
+          span.start-=length;
+        }
+ else {
+          span.start=offset;
+        }
+        span.end-=length;
+      }
+ else {
+        span.end-=Math.min(length,span.end - offset);
+      }
+    }
+  }
+  updateHighlights();
+}

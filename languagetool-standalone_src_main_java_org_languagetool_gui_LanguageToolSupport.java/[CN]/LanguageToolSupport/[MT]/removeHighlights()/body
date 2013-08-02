@@ -1,0 +1,7 @@
+{
+  for (  Highlighter.Highlight hl : textComponent.getHighlighter().getHighlights()) {
+    if (hl.getPainter() == rhp || hl.getPainter() == bhp) {
+      textComponent.getHighlighter().removeHighlight(hl);
+    }
+  }
+}

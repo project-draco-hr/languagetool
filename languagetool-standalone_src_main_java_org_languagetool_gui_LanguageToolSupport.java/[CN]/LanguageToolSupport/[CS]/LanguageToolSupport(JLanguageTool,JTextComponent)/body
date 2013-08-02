@@ -1,0 +1,5 @@
+{
+  this.languageTool=languageTool;
+  this.textComponent=textComponent;
+  init();
+}

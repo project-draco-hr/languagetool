@@ -1,0 +1,12 @@
+{
+  if (this.popupMenuEnabled == popupMenuEnabled) {
+    return;
+  }
+  this.popupMenuEnabled=popupMenuEnabled;
+  if (popupMenuEnabled) {
+    textComponent.addMouseListener(mouseListener);
+  }
+ else {
+    textComponent.removeMouseListener(mouseListener);
+  }
+}

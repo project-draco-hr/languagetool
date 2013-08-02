@@ -1,0 +1,15 @@
+{
+  final List<RuleMatch> matches=this.languageTool.check(this.textComponent.getText());
+  if (!SwingUtilities.isEventDispatchThread()) {
+    SwingUtilities.invokeLater(new Runnable(){
+      @Override public void run(){
+        updateHighlights(matches);
+      }
+    }
+);
+  }
+ else {
+    updateHighlights(matches);
+  }
+  return matches;
+}

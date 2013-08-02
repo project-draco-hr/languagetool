@@ -1,0 +1,5 @@
+{
+  ReplaceMenuItem src=(ReplaceMenuItem)e.getSource();
+  Span xs=this.documentSpans.remove(src.idx);
+  applySuggestion(e.getActionCommand(),xs.start,xs.end);
+}
