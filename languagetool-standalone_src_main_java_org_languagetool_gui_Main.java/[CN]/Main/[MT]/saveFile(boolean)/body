@@ -1,0 +1,30 @@
+{
+  if (currentFile == null || newFile) {
+    final JFileChooser jfc=new JFileChooser();
+    jfc.setFileFilter(new PlainTextFileFilter());
+    jfc.showSaveDialog(frame);
+    File file=jfc.getSelectedFile();
+    if (file == null) {
+      return;
+    }
+    currentFile=file;
+  }
+  BufferedWriter writer=null;
+  try {
+    writer=new BufferedWriter(new FileWriter(currentFile));
+    writer.write(textArea.getText());
+  }
+ catch (  IOException ex) {
+    Tools.showError(ex);
+  }
+ finally {
+    if (writer != null) {
+      try {
+        writer.close();
+      }
+ catch (      IOException ex) {
+        Tools.showError(ex);
+      }
+    }
+  }
+}

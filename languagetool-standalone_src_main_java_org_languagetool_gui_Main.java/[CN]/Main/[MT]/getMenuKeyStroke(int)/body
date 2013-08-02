@@ -1,0 +1,3 @@
+{
+  return KeyStroke.getKeyStroke(keyEvent,Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
+}

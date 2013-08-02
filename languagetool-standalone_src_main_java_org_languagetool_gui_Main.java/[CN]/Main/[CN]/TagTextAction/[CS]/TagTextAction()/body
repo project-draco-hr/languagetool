@@ -1,0 +1,5 @@
+{
+  super(getLabel("guiTagText"));
+  putValue(Action.MNEMONIC_KEY,getMnemonic("guiTagText"));
+  putValue(Action.ACCELERATOR_KEY,getMenuKeyStroke(KeyEvent.VK_T));
+}

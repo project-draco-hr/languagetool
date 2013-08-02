@@ -1,0 +1,9 @@
+{
+  super(getLabel("checkText"));
+  putValue(Action.MNEMONIC_KEY,getMnemonic("checkText"));
+  Image img;
+  img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("sc_spelldialog.png"));
+  putValue(Action.SMALL_ICON,new ImageIcon(img));
+  img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("lc_spelldialog.png"));
+  putValue(Action.LARGE_ICON_KEY,new ImageIcon(img));
+}

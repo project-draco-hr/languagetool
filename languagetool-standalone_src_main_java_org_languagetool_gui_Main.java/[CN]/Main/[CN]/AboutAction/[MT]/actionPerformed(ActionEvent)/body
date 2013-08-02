@@ -1,0 +1,4 @@
+{
+  AboutDialog about=new AboutDialog(messages,getFrame());
+  about.show();
+}

@@ -1,0 +1,5 @@
+{
+  super(getLabel("guiMenuOptions"));
+  putValue(Action.MNEMONIC_KEY,getMnemonic("guiMenuOptions"));
+  putValue(Action.ACCELERATOR_KEY,getMenuKeyStroke(KeyEvent.VK_S));
+}

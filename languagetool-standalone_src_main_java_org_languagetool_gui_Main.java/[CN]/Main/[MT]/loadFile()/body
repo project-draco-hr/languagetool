@@ -8,6 +8,7 @@
     try {
       final String fileContents=StringTools.readFile(inputStream);
       textArea.setText(fileContents);
+      currentFile=file;
     }
   finally {
       inputStream.close();

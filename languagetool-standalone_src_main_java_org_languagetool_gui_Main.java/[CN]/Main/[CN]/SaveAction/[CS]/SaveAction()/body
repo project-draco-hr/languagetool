@@ -1,0 +1,10 @@
+{
+  super(getLabel("guiMenuSave"));
+  putValue(Action.MNEMONIC_KEY,getMnemonic("guiMenuSave"));
+  putValue(Action.ACCELERATOR_KEY,KeyStroke.getKeyStroke(KeyEvent.VK_S,Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+  Image img;
+  img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("sc_save.png"));
+  putValue(Action.SMALL_ICON,new ImageIcon(img));
+  img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("lc_save.png"));
+  putValue(Action.LARGE_ICON_KEY,new ImageIcon(img));
+}

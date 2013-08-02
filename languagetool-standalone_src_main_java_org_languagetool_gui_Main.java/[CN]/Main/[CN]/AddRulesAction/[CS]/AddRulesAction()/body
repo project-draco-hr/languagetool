@@ -1,0 +1,4 @@
+{
+  super(getLabel("guiMenuAddRules"));
+  putValue(Action.MNEMONIC_KEY,getMnemonic("guiMenuAddRules"));
+}

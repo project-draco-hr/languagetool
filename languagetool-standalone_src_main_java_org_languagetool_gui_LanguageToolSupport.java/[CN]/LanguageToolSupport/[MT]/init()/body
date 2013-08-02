@@ -16,17 +16,14 @@
   check=new AtomicInteger(0);
   this.textComponent.getDocument().addDocumentListener(documentListener=new DocumentListener(){
     @Override public void insertUpdate(    DocumentEvent e){
-      System.out.println(e);
       removeHighlights();
       checkDelayed();
     }
     @Override public void removeUpdate(    DocumentEvent e){
-      System.out.println(e);
       removeHighlights();
       checkDelayed();
     }
     @Override public void changedUpdate(    DocumentEvent e){
-      System.out.println(e);
       checkDelayed();
     }
   }

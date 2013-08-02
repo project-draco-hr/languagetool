@@ -1,0 +1,10 @@
+{
+  super(getLabel("guiMenuOpen"));
+  putValue(Action.MNEMONIC_KEY,getMnemonic("guiMenuOpen"));
+  putValue(Action.ACCELERATOR_KEY,getMenuKeyStroke(KeyEvent.VK_O));
+  Image img;
+  img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("sc_open.png"));
+  putValue(Action.SMALL_ICON,new ImageIcon(img));
+  img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("lc_open.png"));
+  putValue(Action.LARGE_ICON_KEY,new ImageIcon(img));
+}

@@ -16,7 +16,7 @@
         if (!isAlreadyChecking) {
           isAlreadyChecking=true;
           setWaitCursor();
-          checkTextButton.setEnabled(false);
+          checkAction.setEnabled(false);
           try {
             final long startTime=System.currentTimeMillis();
             final String startCheckText=HTML_GREY_FONT_START + Tools.makeTexti18n(messages,"startChecking",langName) + "..."+ HTML_FONT_END;
@@ -38,7 +38,7 @@
             }
           }
   finally {
-            checkTextButton.setEnabled(true);
+            checkAction.setEnabled(true);
             unsetWaitCursor();
             isAlreadyChecking=false;
           }
