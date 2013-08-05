@@ -1,5 +1,5 @@
 {
-  this(example);
-  inputForms=input;
-  outputForms=output;
+  this.example=example;
+  this.input=input;
+  this.output=output;
 }
