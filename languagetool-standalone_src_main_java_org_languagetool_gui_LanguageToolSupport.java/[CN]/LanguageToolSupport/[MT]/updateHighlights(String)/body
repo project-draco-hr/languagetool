@@ -1,6 +1,11 @@
 {
   ArrayList<Span> spans=new ArrayList();
-  for (  RuleMatch match : matches) {
+  ArrayList<RuleMatch> matches=new ArrayList();
+  for (  RuleMatch match : ruleMatches) {
+    if (match.getRule().getId().equals(rule)) {
+      continue;
+    }
+    matches.add(match);
     Span t=new Span();
     t.start=match.getFromPos();
     t.end=match.getToPos();

@@ -1,5 +1,7 @@
 {
   super(getLabel("guiMenuSaveAs"));
+  putValue(Action.SHORT_DESCRIPTION,messages.getString("guiMenuSaveAsShortDesc"));
+  putValue(Action.LONG_DESCRIPTION,messages.getString("guiMenuSaveAsLongDesc"));
   putValue(Action.MNEMONIC_KEY,getMnemonic("guiMenuSaveAs"));
   Image img;
   img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("sc_saveas.png"));

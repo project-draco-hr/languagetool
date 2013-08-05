@@ -1,5 +1,6 @@
 {
   this.languageTool=languageTool;
   this.textComponent=textComponent;
+  messages=JLanguageTool.getMessageBundle();
   init();
 }

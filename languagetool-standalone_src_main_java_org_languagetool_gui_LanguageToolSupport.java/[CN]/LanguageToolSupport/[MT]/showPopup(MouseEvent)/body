@@ -8,9 +8,19 @@
     if (span.end > span.start) {
       if ((span.start <= offset) && (offset < span.end)) {
         JPopupMenu popup=new JPopupMenu("Grammar Menu");
-        JMenuItem msgItem=new JMenuItem(span.msg);
+        JLabel msgItem=new JLabel(span.msg);
         msgItem.setToolTipText(span.desc);
+        msgItem.setBorder(new JMenuItem().getBorder());
         popup.add(msgItem);
+        popup.add(new JSeparator());
+        JMenuItem ignoreItem=new JMenuItem(messages.getString("guiOOoIgnoreButton"));
+        ignoreItem.addActionListener(new ActionListener(){
+          @Override public void actionPerformed(          ActionEvent e){
+            disableRule(span.rule);
+          }
+        }
+);
+        popup.add(ignoreItem);
         popup.add(new JSeparator());
         for (        String r : span.replacement) {
           ReplaceMenuItem item=new ReplaceMenuItem(r,i);

@@ -1,5 +1,7 @@
 {
   super(getLabel("autoCheckText"));
+  putValue(Action.SHORT_DESCRIPTION,messages.getString("autoCheckTextShortDesc"));
+  putValue(Action.LONG_DESCRIPTION,messages.getString("autoCheckTextLongDesc"));
   putValue(Action.MNEMONIC_KEY,getMnemonic("autoCheckText"));
   this.enable=initial;
   Image img;

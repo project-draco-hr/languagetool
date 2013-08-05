@@ -1,5 +1,7 @@
 {
   super(getLabel("checkText"));
+  putValue(Action.SHORT_DESCRIPTION,messages.getString("checkTextShortDesc"));
+  putValue(Action.LONG_DESCRIPTION,messages.getString("checkTextLongDesc"));
   putValue(Action.MNEMONIC_KEY,getMnemonic("checkText"));
   Image img;
   img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("sc_spelldialog.png"));

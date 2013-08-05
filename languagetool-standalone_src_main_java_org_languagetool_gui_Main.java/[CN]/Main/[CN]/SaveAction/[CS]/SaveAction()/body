@@ -1,5 +1,7 @@
 {
   super(getLabel("guiMenuSave"));
+  putValue(Action.SHORT_DESCRIPTION,messages.getString("guiMenuSaveShortDesc"));
+  putValue(Action.LONG_DESCRIPTION,messages.getString("guiMenuSaveLongDesc"));
   putValue(Action.MNEMONIC_KEY,getMnemonic("guiMenuSave"));
   putValue(Action.ACCELERATOR_KEY,KeyStroke.getKeyStroke(KeyEvent.VK_S,Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
   Image img;
