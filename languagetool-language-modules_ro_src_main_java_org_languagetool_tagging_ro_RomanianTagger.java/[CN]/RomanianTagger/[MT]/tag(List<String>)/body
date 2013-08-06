@@ -2,15 +2,15 @@
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
   if (morfologik == null) {
-    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(RESOURCE_FILENAME);
+    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(binaryDictPath);
     morfologik=new DictionaryLookup(Dictionary.read(url));
   }
-  if (manualTagger == null && USER_DICT_FILENAME != null) {
-    manualTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(USER_DICT_FILENAME));
+  if (manualTagger == null && plaintextDictPath != null) {
+    manualTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(plaintextDictPath));
   }
   for (  final String word : sentenceTokens) {
     final List<AnalyzedToken> l=new ArrayList<>();
-    final String lowerCaseWord=word.toLowerCase(roLocale);
+    final String lowerCaseWord=word.toLowerCase(RO_LOCALE);
     final List<WordData> taggerTokens=morfologik.lookup(lowerCaseWord);
     if (taggerTokens != null) {
       for (      WordData wd : taggerTokens) {

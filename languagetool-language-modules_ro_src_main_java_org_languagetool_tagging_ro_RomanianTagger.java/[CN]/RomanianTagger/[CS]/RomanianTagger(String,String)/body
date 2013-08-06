@@ -1,6 +1,5 @@
 {
-  super();
-  RESOURCE_FILENAME=dictFileName;
-  USER_DICT_FILENAME=userDictFileName;
-  setLocale(roLocale);
+  binaryDictPath=dictFileName;
+  plaintextDictPath=userDictFileName;
+  setLocale(RO_LOCALE);
 }

@@ -1,4 +1,3 @@
 {
-  super();
-  setLocale(roLocale);
+  this(DEFAULT_BINARY_DICT,DEFAULT_PLAINTEXT_DICT);
 }
