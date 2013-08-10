@@ -13,8 +13,8 @@
       if (!"".equals(dictionary.getWordChars())) {
         wordChars="(?![" + dictionary.getWordChars().replace("-","\\-") + "])";
       }
-      dictionary.addWord("LanguageTool");
-      dictionary.addWord("LanguageToolFx");
+      dictionary.addWord(SpellingCheckRule.LANGUAGETOOL);
+      dictionary.addWord(SpellingCheckRule.LANGUAGETOOL_FX);
     }
   }
   nonWordPattern=Pattern.compile(wordChars + NON_ALPHABETIC);
