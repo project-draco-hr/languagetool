@@ -1,8 +1,9 @@
 {
   init();
-  final String result;
+  String result;
   try {
     result=seg.split(chinesdJF.chineseFan2Jan(text)).getFinalResult();
+    result=result.replace("???##??????/t","???/t");
   }
  catch (  Exception e) {
     return new ArrayList<>();
