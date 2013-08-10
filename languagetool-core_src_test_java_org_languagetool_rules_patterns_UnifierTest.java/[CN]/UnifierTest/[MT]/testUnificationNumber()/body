@@ -1,11 +1,12 @@
 {
-  final Unifier uni=new Unifier();
+  final UnifierConfiguration unifierConfig=new UnifierConfiguration();
   final Element sgElement=new Element("",false,false,false);
   sgElement.setPosElement(".*[\\.:]sg:.*",true,false);
-  uni.setEquivalence("number","singular",sgElement);
+  unifierConfig.setEquivalence("number","singular",sgElement);
   final Element plElement=new Element("",false,false,false);
   plElement.setPosElement(".*[\\.:]pl:.*",true,false);
-  uni.setEquivalence("number","plural",plElement);
+  unifierConfig.setEquivalence("number","plural",plElement);
+  final Unifier uni=unifierConfig.createUnifier();
   final AnalyzedToken sing1=new AnalyzedToken("ma??y","adj:sg:blahblah","ma??y");
   final AnalyzedToken sing2=new AnalyzedToken("cz??owiek","subst:sg:blahblah","cz??owiek");
   final Map<String,List<String>> equiv=new HashMap<>();

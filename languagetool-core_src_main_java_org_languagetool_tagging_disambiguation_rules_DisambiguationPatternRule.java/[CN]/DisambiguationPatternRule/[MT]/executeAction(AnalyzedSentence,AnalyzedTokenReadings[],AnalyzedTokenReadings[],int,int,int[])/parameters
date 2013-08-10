@@ -1,6 +1,0 @@
-AnalyzedSentence text
-AnalyzedTokenReadings[] whiteTokens
-AnalyzedTokenReadings[] unifiedTokens
-int firstMatchToken
-int matchingTokens
-int[] tokenPositions

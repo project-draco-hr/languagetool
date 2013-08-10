@@ -1,0 +1,9 @@
+{
+  if (this.dictionary == null || this.manualTagger == null || this.compoundTokenizer == null) {
+synchronized (this) {
+      if (this.dictionary == null || this.manualTagger == null || this.compoundTokenizer == null) {
+        this.initialize();
+      }
+    }
+  }
+}

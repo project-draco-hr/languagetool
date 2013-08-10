@@ -1,8 +1,5 @@
 {
-  if (dictLookup == null) {
-    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(DICT_FILENAME);
-    dictLookup=new DictionaryLookup(Dictionary.read(url));
-  }
+  IStemmer dictLookup=new DictionaryLookup(getDictionary());
   final String lowerWord=word.toLowerCase(conversionLocale);
   List<WordData> posTagsFromDict=dictLookup.lookup(lowerWord);
   if (posTagsFromDict.isEmpty()) {

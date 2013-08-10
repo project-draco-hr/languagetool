@@ -1,12 +1,7 @@
 {
   final String testToken=getTestToken(token);
   if (stringRegExp) {
-    if (m == null) {
-      m=p.matcher(testToken);
-    }
- else {
-      m.reset(testToken);
-    }
+    Matcher m=p.matcher(testToken);
     return m.matches();
   }
   if (caseSensitive) {

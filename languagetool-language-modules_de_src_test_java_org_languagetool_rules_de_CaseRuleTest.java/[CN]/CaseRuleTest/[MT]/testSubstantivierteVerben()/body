@@ -1,5 +1,5 @@
 {
-  CaseRule rule=new CaseRule(null);
+  CaseRule rule=new CaseRule(null,new German());
   JLanguageTool langTool=new JLanguageTool(new German());
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das fahrende Auto.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das k??nnen wir so machen.")).length);

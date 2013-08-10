@@ -1,0 +1,11 @@
+{
+  if (messages != null)   super.setCategory(new Category(messages.getString("category_case")));
+  if (language == null) {
+    throw new IllegalArgumentException("A language is required");
+  }
+  Tagger tagger=language.getTagger();
+  if (!(tagger instanceof GermanTagger)) {
+    throw new IllegalArgumentException("Requires a german language");
+  }
+  this.tagger=(GermanTagger)tagger;
+}

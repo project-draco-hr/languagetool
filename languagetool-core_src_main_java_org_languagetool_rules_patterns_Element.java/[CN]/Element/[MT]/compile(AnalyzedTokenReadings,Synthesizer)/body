@@ -1,23 +1,11 @@
 {
-  m=null;
-  p=null;
-  tokenReference.setToken(token);
-  tokenReference.setSynthesizer(synth);
-  if (StringTools.isEmpty(referenceString)) {
-    referenceString=stringToken;
+  Element compiledElement=null;
+  try {
+    compiledElement=(Element)this.clone();
   }
-  if (tokenReference.setsPos()) {
-    final String posReference=tokenReference.getTargetPosTag();
-    if (posReference != null) {
-      if (mPos != null) {
-        mPos=null;
-      }
-      setPosElement(posReference,tokenReference.posRegExp(),negation);
-    }
-    setStringElement(referenceString.replace("\\" + tokenReference.getTokenRef(),""));
-    inflected=true;
+ catch (  CloneNotSupportedException e) {
+    throw new IllegalStateException("Could not clone element",e);
   }
- else {
-    setStringElement(referenceString.replace("\\" + tokenReference.getTokenRef(),tokenReference.toTokenString()));
-  }
+  compiledElement.doCompile(token,synth);
+  return compiledElement;
 }

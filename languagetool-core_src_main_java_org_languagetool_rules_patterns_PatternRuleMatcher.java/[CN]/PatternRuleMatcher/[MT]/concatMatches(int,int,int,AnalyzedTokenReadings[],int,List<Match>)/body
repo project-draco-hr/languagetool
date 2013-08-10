@@ -5,9 +5,8 @@
     final Language language=rule.language;
     if (len == 1) {
       final int skippedTokens=nextTokenPos - tokenIndex;
-      suggestionMatches.get(start).setToken(tokens,tokenIndex - 1,skippedTokens);
-      suggestionMatches.get(start).setSynthesizer(language.getSynthesizer());
-      finalMatch=suggestionMatches.get(start).toFinalString(language);
+      MatchState matchState=suggestionMatches.get(start).createState(language.getSynthesizer(),tokens,tokenIndex - 1,skippedTokens);
+      finalMatch=matchState.toFinalString(language);
       if (suggestionMatches.get(start).checksSpelling() && finalMatch.length == 1 && "".equals(finalMatch[0])) {
         finalMatch=new String[1];
         finalMatch[0]="<mistake/>";
@@ -17,9 +16,8 @@
       final List<String[]> matchList=new ArrayList<>();
       for (int i=0; i < len; i++) {
         final int skippedTokens=nextTokenPos - (tokenIndex + i);
-        suggestionMatches.get(start).setToken(tokens,tokenIndex - 1 + i,skippedTokens);
-        suggestionMatches.get(start).setSynthesizer(language.getSynthesizer());
-        matchList.add(suggestionMatches.get(start).toFinalString(language));
+        MatchState matchState=suggestionMatches.get(start).createState(language.getSynthesizer(),tokens,tokenIndex - 1 + i,skippedTokens);
+        matchList.add(matchState.toFinalString(language));
       }
       return combineLists(matchList.toArray(new String[matchList.size()][]),new String[matchList.size()],0,language);
     }

@@ -1,5 +1,6 @@
 {
   if (suggestionMatches != null && !suggestionMatches.isEmpty()) {
+    PatternRule rule=(PatternRule)this.rule;
     final int sugStart=rule.getMessage().indexOf(SUGGESTION_START_TAG) + SUGGESTION_START_TAG.length();
     for (    Match sMatch : suggestionMatches) {
       if (!sMatch.isInMessageOnly() && sMatch.convertsCase() && rule.getMessage().charAt(sugStart) == '\\') {

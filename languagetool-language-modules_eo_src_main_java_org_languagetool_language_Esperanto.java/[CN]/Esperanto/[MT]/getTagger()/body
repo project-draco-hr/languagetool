@@ -1,6 +1,3 @@
 {
-  if (tagger == null) {
-    tagger=new EsperantoTagger();
-  }
-  return tagger;
+  return new EsperantoTagger();
 }

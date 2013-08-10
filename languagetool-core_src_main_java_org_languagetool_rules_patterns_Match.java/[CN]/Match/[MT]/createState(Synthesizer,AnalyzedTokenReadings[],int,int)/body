@@ -1,0 +1,5 @@
+{
+  MatchState state=new MatchState(this,synthesizer);
+  state.setToken(tokens,index,next);
+  return state;
+}

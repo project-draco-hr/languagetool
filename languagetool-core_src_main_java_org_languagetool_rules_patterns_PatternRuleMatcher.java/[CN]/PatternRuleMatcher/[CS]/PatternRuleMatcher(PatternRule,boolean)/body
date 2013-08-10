@@ -1,4 +1,4 @@
 {
-  this.rule=rule;
+  super(rule,rule.getLanguage().getUnifier());
   this.useList=useList;
 }

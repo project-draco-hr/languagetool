@@ -1,6 +1,6 @@
 {
   if (!StringTools.isEmpty(lemmaString)) {
-    formattedToken=new AnalyzedTokenReadings(new AnalyzedToken(lemmaString,posTag,lemmaString),0);
+    this.lemma=lemmaString;
     staticLemma=true;
     postagRegexp=true;
     if (posTag != null) {

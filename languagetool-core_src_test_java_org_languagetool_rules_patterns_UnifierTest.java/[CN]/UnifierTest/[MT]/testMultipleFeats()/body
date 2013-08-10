@@ -1,20 +1,21 @@
 {
-  final Unifier uni=new Unifier();
+  final UnifierConfiguration unifierConfig=new UnifierConfiguration();
   final Element sgElement=new Element("",false,false,false);
   sgElement.setPosElement(".*[\\.:]sg:.*",true,false);
-  uni.setEquivalence("number","singular",sgElement);
+  unifierConfig.setEquivalence("number","singular",sgElement);
   final Element plElement=new Element("",false,false,false);
   plElement.setPosElement(".*[\\.:]pl:.*",true,false);
-  uni.setEquivalence("number","plural",plElement);
+  unifierConfig.setEquivalence("number","plural",plElement);
   final Element femElement=new Element("",false,false,false);
   femElement.setPosElement(".*[\\.:]f([\\.:].*)?",true,false);
-  uni.setEquivalence("gender","feminine",femElement);
+  unifierConfig.setEquivalence("gender","feminine",femElement);
   final Element mascElement=new Element("",false,false,false);
   mascElement.setPosElement(".*[\\.:]m([\\.:].*)?",true,false);
-  uni.setEquivalence("gender","masculine",mascElement);
+  unifierConfig.setEquivalence("gender","masculine",mascElement);
   final Element neutElement=new Element("",false,false,false);
   neutElement.setPosElement(".*[\\.:]n([\\.:].*)?",true,false);
-  uni.setEquivalence("gender","neutral",neutElement);
+  unifierConfig.setEquivalence("gender","neutral",neutElement);
+  final Unifier uni=unifierConfig.createUnifier();
   final AnalyzedToken sing1=new AnalyzedToken("ma??y","adj:sg:blahblah:m","ma??y");
   AnalyzedToken sing1a=new AnalyzedToken("ma??y","adj:pl:blahblah:f","ma??y");
   AnalyzedToken sing1b=new AnalyzedToken("ma??y","adj:pl:blahblah:f","ma??y");

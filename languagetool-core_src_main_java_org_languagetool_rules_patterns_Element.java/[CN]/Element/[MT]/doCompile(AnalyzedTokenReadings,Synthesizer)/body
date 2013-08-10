@@ -1,0 +1,18 @@
+{
+  this.p=null;
+  MatchState matchState=tokenReference.createState(synth,token);
+  if (StringTools.isEmpty(this.referenceString)) {
+    this.referenceString=this.stringToken;
+  }
+  if (this.tokenReference.setsPos()) {
+    final String posReference=matchState.getTargetPosTag();
+    if (posReference != null) {
+      this.setPosElement(posReference,tokenReference.posRegExp(),negation);
+    }
+    this.setStringElement(this.referenceString.replace("\\" + tokenReference.getTokenRef(),""));
+    this.inflected=true;
+  }
+ else {
+    this.setStringElement(this.referenceString.replace("\\" + tokenReference.getTokenRef(),matchState.toTokenString()));
+  }
+}
