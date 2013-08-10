@@ -1,26 +1,6 @@
 {
-  bytes.clear();
-  charBuffer.clear();
-  charBuffer=ensureCapacity(charBuffer,str.length() + 1);
-  for (int i=0; i < str.length(); i++) {
-    char chr=str.charAt(i);
-    charBuffer.put(chr);
-  }
-  charBuffer.put('\u0000');
-  charBuffer.flip();
-  final int maxCapacity=(int)(charBuffer.remaining() * encoder.maxBytesPerChar());
-  if (bytes.capacity() <= maxCapacity) {
-    bytes=ByteBuffer.allocate(maxCapacity);
-  }
-  charBuffer.mark();
-  encoder.reset();
-  if (encoder.encode(charBuffer,bytes,true).isError()) {
-    bytes.clear();
-  }
-  bytes.flip();
-  charBuffer.reset();
-  if (bytes.hasRemaining()) {
-    return bytes.array();
-  }
-  return new byte[0];
+  byte[] strBytes=str.getBytes(this.encoding);
+  byte[] zeroTerminated=Arrays.copyOf(strBytes,strBytes.length + 1);
+  zeroTerminated[zeroTerminated.length - 1]='\u0000';
+  return zeroTerminated;
 }
