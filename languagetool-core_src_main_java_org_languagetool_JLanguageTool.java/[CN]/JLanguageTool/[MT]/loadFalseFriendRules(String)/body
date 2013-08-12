@@ -3,5 +3,11 @@
     return new ArrayList<>();
   }
   final FalseFriendRuleLoader ruleLoader=new FalseFriendRuleLoader();
-  return ruleLoader.getRules(this.getClass().getResourceAsStream(filename),language,motherTongue);
+  final InputStream is=this.getClass().getResourceAsStream(filename);
+  if (is == null) {
+    return ruleLoader.getRules(new File(filename),language,motherTongue);
+  }
+ else {
+    return ruleLoader.getRules(is,language,motherTongue);
+  }
 }

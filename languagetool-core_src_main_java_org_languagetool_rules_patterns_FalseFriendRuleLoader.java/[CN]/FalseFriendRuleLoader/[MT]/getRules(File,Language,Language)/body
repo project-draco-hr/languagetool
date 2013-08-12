@@ -1,0 +1,8 @@
+{
+  try (InputStream inputStream=new FileInputStream(file)){
+    return getRules(inputStream,language,motherTongue);
+  }
+ catch (  ParserConfigurationException|SAXException e) {
+    throw new IOException("Could not load false friend rules from " + file,e);
+  }
+}
