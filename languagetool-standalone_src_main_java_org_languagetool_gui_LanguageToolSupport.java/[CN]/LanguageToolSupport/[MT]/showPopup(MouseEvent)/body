@@ -13,6 +13,14 @@
         msgItem.setBorder(new JMenuItem().getBorder());
         popup.add(msgItem);
         popup.add(new JSeparator());
+        JMenuItem moreItem=new JMenuItem("More...");
+        moreItem.addActionListener(new ActionListener(){
+          @Override public void actionPerformed(          ActionEvent e){
+            showDialog(textComponent,span.msg,span.desc,span.url);
+          }
+        }
+);
+        popup.add(moreItem);
         JMenuItem ignoreItem=new JMenuItem(messages.getString("guiOOoIgnoreButton"));
         ignoreItem.addActionListener(new ActionListener(){
           @Override public void actionPerformed(          ActionEvent e){

@@ -1,0 +1,30 @@
+{
+  int dialogWidth=320;
+  JTextPane textPane=new JTextPane();
+  textPane.setEditable(false);
+  textPane.setContentType("text/html");
+  textPane.setBorder(BorderFactory.createEmptyBorder());
+  textPane.setOpaque(false);
+  textPane.setBackground(new Color(0,0,0,0));
+  message=message.replaceAll("<suggestion>","<b>").replaceAll("</suggestion>","</b>");
+  textPane.addHyperlinkListener(new HyperlinkListener(){
+    @Override public void hyperlinkUpdate(    HyperlinkEvent e){
+      if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+        if (Desktop.isDesktopSupported()) {
+          try {
+            Desktop.getDesktop().browse(e.getURL().toURI());
+          }
+ catch (          Exception ex) {
+          }
+        }
+      }
+    }
+  }
+);
+  textPane.setSize(dialogWidth,Short.MAX_VALUE);
+  textPane.setText("<html>" + message + formatURL(url)+ "</html>");
+  JScrollPane scrollPane=new JScrollPane(textPane);
+  scrollPane.setPreferredSize(new Dimension(dialogWidth,textPane.getPreferredSize().height));
+  scrollPane.setBorder(BorderFactory.createEmptyBorder());
+  JOptionPane.showMessageDialog(parent,scrollPane,title,JOptionPane.INFORMATION_MESSAGE);
+}

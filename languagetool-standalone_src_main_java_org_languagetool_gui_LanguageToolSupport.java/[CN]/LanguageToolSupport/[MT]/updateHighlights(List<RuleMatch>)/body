@@ -4,13 +4,14 @@
     Span t=new Span();
     t.start=match.getFromPos();
     t.end=match.getToPos();
-    t.msg=match.getShortMessage() != null ? match.getShortMessage() : match.getMessage();
+    t.msg=(match.getShortMessage() != null && !match.getShortMessage().isEmpty()) ? match.getShortMessage() : match.getMessage();
     t.msg=shortenComment(t.msg);
     t.desc=match.getMessage();
     t.replacement=new ArrayList();
     t.replacement.addAll(match.getSuggestedReplacements());
     t.spelling=match.getRule().isSpellingRule();
     t.rule=match.getRule().getId();
+    t.url=match.getRule().getUrl();
     spans.add(t);
   }
   ruleMatches.clear();
