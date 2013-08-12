@@ -13,5 +13,5 @@
       list.get(list.size() - 1).setWhitespaceBefore(formattedToken.isWhitespaceBefore());
     }
   }
-  return list.toArray(new AnalyzedToken[list.size()]);
+  return list;
 }

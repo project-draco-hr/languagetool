@@ -18,10 +18,14 @@
   }
   if (thisMatched) {
     for (int l=0; l < numberOfReadings; l++) {
-      if (elem.isExceptionMatchedCompletely(tokens[tokenNo].getAnalyzedToken(l)))       return false;
+      if (elem.isExceptionMatchedCompletely(tokens[tokenNo].getAnalyzedToken(l))) {
+        return false;
+      }
     }
     if (tokenNo > 0 && elem.hasPreviousException()) {
-      if (elem.isMatchedByPreviousException(tokens[tokenNo - 1]))       return false;
+      if (elem.isMatchedByPreviousException(tokens[tokenNo - 1])) {
+        return false;
+      }
     }
   }
   return thisMatched;

@@ -1,4 +1,0 @@
-{
-  final Match match=new Match(posTag,posTagReplace,true,null,null,CaseConversion.NONE,false,spell,IncludeRange.NONE);
-  return match;
-}

@@ -13,7 +13,7 @@
     if (posTag != null) {
       final int numRead=formattedToken.getReadingsLength();
       if (postagRegexp) {
-        String targetPosTag=posTag;
+        String targetPosTag;
         for (int i=0; i < numRead; i++) {
           final String tst=formattedToken.getAnalyzedToken(i).getPOSTag();
           if (tst != null && pPosRegexMatch.matcher(tst).matches()) {
@@ -26,15 +26,11 @@
           }
         }
         if (l.isEmpty()) {
-          for (          final AnalyzedToken anaTok : getNewToken(numRead,token)) {
-            l.add(anaTok);
-          }
+          l.addAll(getNewToken(numRead,token));
         }
       }
  else {
-        for (        final AnalyzedToken anaTok : getNewToken(numRead,token)) {
-          l.add(anaTok);
-        }
+        l.addAll(getNewToken(numRead,token));
       }
       if (formattedToken.isSentEnd()) {
         l.add(new AnalyzedToken(formattedToken.getToken(),JLanguageTool.SENTENCE_END_TAGNAME,formattedToken.getAnalyzedToken(0).getLemma()));
