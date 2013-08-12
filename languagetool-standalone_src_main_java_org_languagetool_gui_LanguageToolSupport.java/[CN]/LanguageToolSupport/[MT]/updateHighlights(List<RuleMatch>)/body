@@ -5,6 +5,7 @@
     t.start=match.getFromPos();
     t.end=match.getToPos();
     t.msg=match.getShortMessage() != null ? match.getShortMessage() : match.getMessage();
+    t.msg=shortenComment(t.msg);
     t.desc=match.getMessage();
     t.replacement=new ArrayList();
     t.replacement.addAll(match.getSuggestedReplacements());

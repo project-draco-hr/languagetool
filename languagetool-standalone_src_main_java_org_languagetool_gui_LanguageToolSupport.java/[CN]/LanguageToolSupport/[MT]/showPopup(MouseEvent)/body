@@ -21,6 +21,32 @@
         }
 );
         popup.add(ignoreItem);
+        if (!this.languageTool.getDisabledRules().isEmpty()) {
+          JMenu activateRuleItem=new JMenu("Activate Rule");
+          int count=0;
+          for (          String ruleId : languageTool.getDisabledRules()) {
+            Rule rule=getRuleForId(ruleId);
+            if (rule == null) {
+              continue;
+            }
+            if (rule.isDefaultOff()) {
+              continue;
+            }
+            final String id=rule.getId();
+            JMenuItem ruleItem=new JMenuItem(rule.getDescription());
+            ruleItem.addActionListener(new ActionListener(){
+              @Override public void actionPerformed(              ActionEvent e){
+                enableRule(id);
+              }
+            }
+);
+            activateRuleItem.add(ruleItem);
+            count++;
+          }
+          if (count > 0) {
+            popup.add(activateRuleItem);
+          }
+        }
         popup.add(new JSeparator());
         for (        String r : span.replacement) {
           ReplaceMenuItem item=new ReplaceMenuItem(r,i);

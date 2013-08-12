@@ -1,0 +1,4 @@
+{
+  languageTool.enableRule(rule);
+  checkImmediately();
+}
