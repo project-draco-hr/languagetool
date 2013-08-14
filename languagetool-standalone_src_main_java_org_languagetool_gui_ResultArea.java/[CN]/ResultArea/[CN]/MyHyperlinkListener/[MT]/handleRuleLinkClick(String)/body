@@ -7,15 +7,15 @@
     final Set<String> disabledRuleIds=ltSupport.getConfig().getDisabledRuleIds();
     if (uri.startsWith(DEACTIVATE_URL)) {
       disabledRuleIds.add(ruleId);
-      ltSupport.getLanguageTool().disableRule(ruleId);
+      ltSupport.disableRule(ruleId);
     }
  else {
       disabledRuleIds.remove(ruleId);
-      ltSupport.getLanguageTool().enableRule(ruleId);
+      ltSupport.enableRule(ruleId);
     }
     ltSupport.getConfig().setDisabledRuleIds(disabledRuleIds);
     ltSupport.getConfig().saveConfiguration(ltSupport.getLanguageTool().getLanguage());
-    allRuleMatches=ltSupport.getLanguageTool().check(textArea.getText());
+    allRuleMatches=ltSupport._check();
     reDisplayRuleMatches();
   }
   finally {

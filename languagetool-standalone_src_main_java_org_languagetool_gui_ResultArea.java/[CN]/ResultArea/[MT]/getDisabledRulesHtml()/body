@@ -7,7 +7,7 @@
     if (ruleId.trim().isEmpty()) {
       continue;
     }
-    final Rule rule=getRuleForId(ruleId);
+    final Rule rule=ltSupport.getRuleForId(ruleId);
     if (rule == null || rule.isDefaultOff()) {
       continue;
     }
