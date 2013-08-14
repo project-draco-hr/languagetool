@@ -1,7 +1,7 @@
 {
-  if (undo.canRedo()) {
+  if (undoManager.canRedo()) {
     setEnabled(true);
-    putValue(Action.NAME,undo.getRedoPresentationName());
+    putValue(Action.NAME,undoManager.getRedoPresentationName());
   }
  else {
     setEnabled(false);

@@ -1,6 +1,6 @@
 {
   try {
-    undo.redo();
+    undoManager.redo();
   }
  catch (  CannotRedoException ex) {
   }

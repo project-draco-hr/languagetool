@@ -1,9 +1,10 @@
 {
+  undoManager=new UndoManager();
   undoAction=new UndoAction();
   redoAction=new RedoAction();
   textComponent.getDocument().addUndoableEditListener(new UndoableEditListener(){
     @Override public void undoableEditHappened(    UndoableEditEvent e){
-      undo.addEdit(e.getEdit());
+      undoManager.addEdit(e.getEdit());
       undoAction.updateUndoState();
       redoAction.updateRedoState();
     }

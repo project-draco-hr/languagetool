@@ -5,7 +5,8 @@
   putValue(Action.SMALL_ICON,new ImageIcon(img));
   img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("lc_undo.png"));
   putValue(Action.LARGE_ICON_KEY,new ImageIcon(img));
-  putValue(Action.ACCELERATOR_KEY,KeyStroke.getKeyStroke(KeyEvent.VK_Z,Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+  KeyStroke key=KeyStroke.getKeyStroke(KeyEvent.VK_Z,Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
+  putValue(Action.ACCELERATOR_KEY,key);
   putValue(Action.MNEMONIC_KEY,KeyEvent.VK_U);
   setEnabled(false);
 }

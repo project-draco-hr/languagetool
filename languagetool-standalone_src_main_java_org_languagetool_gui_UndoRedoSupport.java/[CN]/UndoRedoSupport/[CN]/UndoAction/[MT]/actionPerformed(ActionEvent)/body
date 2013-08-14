@@ -1,6 +1,6 @@
 {
   try {
-    undo.undo();
+    undoManager.undo();
   }
  catch (  CannotUndoException ex) {
   }

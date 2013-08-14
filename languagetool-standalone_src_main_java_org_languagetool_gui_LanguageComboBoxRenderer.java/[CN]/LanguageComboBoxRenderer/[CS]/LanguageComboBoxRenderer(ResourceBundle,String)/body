@@ -3,4 +3,5 @@
   setOpaque(true);
   setBorder(BORDER);
   this.messages=messages;
+  this.extLangSuffix=extLangSuffix;
 }
