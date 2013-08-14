@@ -2,12 +2,12 @@
   if (langTool == null) {
     try {
       config=new Configuration(new File(System.getProperty("user.home")),CONFIG_FILE,currentLanguage);
-      resultArea.setConfiguration(config);
+      resultAreaHelper.setConfiguration(config);
       final ConfigurationDialog configDialog=getCurrentConfigDialog(currentLanguage);
       langTool=new JLanguageTool(currentLanguage,configDialog.getMotherTongue());
       langTool.activateDefaultPatternRules();
       langTool.activateDefaultFalseFriendRules();
-      resultArea.setLanguageTool(langTool);
+      resultAreaHelper.setLanguageTool(langTool);
       final Set<String> disabledRules=configDialog.getDisabledRuleIds();
       if (disabledRules != null) {
         for (        final String ruleId : disabledRules) {

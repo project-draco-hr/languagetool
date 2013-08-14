@@ -1,6 +1,6 @@
 {
   try {
-    final Language language=getCurrentLanguage();
+    final Language language=currentLanguage;
     final ConfigurationDialog configDialog=configDialogs.get(language);
     if (e.getStateChange() == ItemEvent.SELECTED) {
       config.setRunServer(true);

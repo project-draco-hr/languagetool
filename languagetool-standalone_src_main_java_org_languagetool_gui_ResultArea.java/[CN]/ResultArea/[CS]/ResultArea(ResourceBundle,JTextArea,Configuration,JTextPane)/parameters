@@ -1,3 +1,4 @@
 ResourceBundle messages
 JTextArea textArea
 Configuration config
+JTextPane statusPane

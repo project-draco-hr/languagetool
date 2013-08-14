@@ -3,7 +3,7 @@
     @Override public void run(){
       setWaitCursor();
       try {
-        final JLanguageTool langTool=getCurrentLanguageTool(getCurrentLanguage());
+        final JLanguageTool langTool=getCurrentLanguageTool(currentLanguage);
         tagTextAndDisplayResults(langTool);
       }
   finally {

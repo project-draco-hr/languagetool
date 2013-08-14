@@ -1,5 +1,4 @@
 {
-  final Language currentLanguage=getCurrentLanguage();
   final JLanguageTool langTool=getCurrentLanguageTool(currentLanguage);
   final List<Rule> rules=langTool.getAllRules();
   final ConfigurationDialog configDialog=getCurrentConfigDialog(currentLanguage);

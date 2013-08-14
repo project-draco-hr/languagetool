@@ -1,6 +1,6 @@
 {
-  final Cursor prevCursor=getCursor();
-  setCursor(new Cursor(Cursor.WAIT_CURSOR));
+  final Cursor prevCursor=statusPane.getCursor();
+  statusPane.setCursor(new Cursor(Cursor.WAIT_CURSOR));
   try {
     final RuleLink ruleLink=RuleLink.getFromString(uri);
     final String ruleId=ruleLink.getId();
@@ -19,6 +19,6 @@
     reDisplayRuleMatches();
   }
   finally {
-    setCursor(prevCursor);
+    statusPane.setCursor(prevCursor);
   }
 }

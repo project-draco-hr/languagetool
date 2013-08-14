@@ -1,5 +1,5 @@
 {
-  final Language lang=getCurrentLanguage();
+  final Language lang=currentLanguage;
   if (StringTools.isEmpty(textArea.getText().trim())) {
     textArea.setText(messages.getString("enterText2"));
   }
@@ -24,17 +24,17 @@
             resultArea.repaint();
             try {
               final JLanguageTool langTool=getCurrentLanguageTool(lang);
-              ruleMatches=ltSupport._check();
-              resultArea.setStartText(startCheckText);
-              resultArea.setInputText(textArea.getText());
-              resultArea.setRuleMatches(ruleMatches);
-              resultArea.setRunTime(System.currentTimeMillis() - startTime);
-              resultArea.setLanguageTool(langTool);
-              resultArea.displayResult();
+              List<RuleMatch> ruleMatches=ltSupport._check();
+              resultAreaHelper.setStartText(startCheckText);
+              resultAreaHelper.setInputText(textArea.getText());
+              resultAreaHelper.setRuleMatches(ruleMatches);
+              resultAreaHelper.setRunTime(System.currentTimeMillis() - startTime);
+              resultAreaHelper.setLanguageTool(langTool);
+              resultAreaHelper.displayResult();
             }
  catch (            Exception e) {
               final String error=getStackTraceAsHtml(e);
-              resultArea.displayText(error);
+              resultAreaHelper.displayText(error);
             }
           }
   finally {
