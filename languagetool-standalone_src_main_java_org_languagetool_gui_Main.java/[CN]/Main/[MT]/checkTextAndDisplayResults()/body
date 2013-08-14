@@ -6,7 +6,7 @@
   if (isAlreadyChecking) {
     return;
   }
-  final Language lang=currentLanguage;
+  final Language lang=ltSupport.getLanguageTool().getLanguage();
   final String langName;
   if (lang.isExternal()) {
     langName=lang.getTranslatedName(messages) + EXTERNAL_LANGUAGE_SUFFIX;
@@ -24,13 +24,11 @@
     @Override public void run(){
       try {
         try {
-          final JLanguageTool langTool=getCurrentLanguageTool(lang);
           List<RuleMatch> ruleMatches=ltSupport._check();
           resultAreaHelper.setStartText(startCheckText);
           resultAreaHelper.setInputText(textArea.getText());
           resultAreaHelper.setRuleMatches(ruleMatches);
           resultAreaHelper.setRunTime(System.currentTimeMillis() - startTime);
-          resultAreaHelper.setLanguageTool(langTool);
           resultAreaHelper.displayResult();
         }
  catch (        Exception e) {

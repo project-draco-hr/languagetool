@@ -1,7 +1,7 @@
 {
   this.messages=messages;
   this.textArea=textArea;
-  this.config=config;
+  this.ltSupport=ltSupport;
   this.statusPane=statusPane;
   statusPane.setContentType("text/html");
   statusPane.setText(Main.HTML_GREY_FONT_START + messages.getString("resultAreaText") + Main.HTML_FONT_END);

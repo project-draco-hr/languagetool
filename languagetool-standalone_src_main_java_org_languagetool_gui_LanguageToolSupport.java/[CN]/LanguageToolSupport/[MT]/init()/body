@@ -1,4 +1,13 @@
 {
+  LanguageIdentifierTools.addLtProfiles();
+  try {
+    config=new Configuration(new File(System.getProperty("user.home")),CONFIG_FILE,null);
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException(ex);
+  }
+  currentLanguage=getDefaultLanguage();
+  warmUpChecker();
   rhp=new HighlightPainter(Color.red);
   bhp=new HighlightPainter(Color.blue);
   ruleMatches=new ArrayList();

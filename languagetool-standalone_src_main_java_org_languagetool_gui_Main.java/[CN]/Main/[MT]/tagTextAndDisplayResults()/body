@@ -1,5 +1,5 @@
 {
-  final JLanguageTool langTool=getCurrentLanguageTool(currentLanguage);
+  final JLanguageTool langTool=ltSupport.getLanguageTool();
   final List<String> sentences=langTool.sentenceTokenize(textArea.getText());
   final StringBuilder sb=new StringBuilder();
   try {

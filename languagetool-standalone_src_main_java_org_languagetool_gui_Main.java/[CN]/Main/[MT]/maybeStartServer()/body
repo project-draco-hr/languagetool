@@ -1,4 +1,5 @@
 {
+  Configuration config=ltSupport.getConfig();
   if (config.getRunServer()) {
     try {
       final HTTPServerConfig serverConfig=new HTTPServerConfig(config.getServerPort(),false);

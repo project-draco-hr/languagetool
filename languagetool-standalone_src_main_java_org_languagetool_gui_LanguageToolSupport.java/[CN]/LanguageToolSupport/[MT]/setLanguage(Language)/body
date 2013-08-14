@@ -1,0 +1,7 @@
+{
+  this.currentLanguage=language;
+  getCurrentLanguageTool();
+  if (backgroundCheckEnabled) {
+    checkImmediately();
+  }
+}

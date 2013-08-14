@@ -1,8 +1,9 @@
 {
-  final JLanguageTool langTool=getCurrentLanguageTool(currentLanguage);
+  final JLanguageTool langTool=ltSupport.getLanguageTool();
   final List<Rule> rules=langTool.getAllRules();
-  final ConfigurationDialog configDialog=getCurrentConfigDialog(currentLanguage);
+  final ConfigurationDialog configDialog=ltSupport.getCurrentConfigDialog();
   configDialog.show(rules);
+  Configuration config=ltSupport.getConfig();
   config.setDisabledRuleIds(configDialog.getDisabledRuleIds());
   config.setEnabledRuleIds(configDialog.getEnabledRuleIds());
   config.setDisabledCategoryNames(configDialog.getDisabledCategoryNames());

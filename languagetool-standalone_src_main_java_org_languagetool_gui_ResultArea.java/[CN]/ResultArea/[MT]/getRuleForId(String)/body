@@ -1,5 +1,5 @@
 {
-  final List<Rule> allRules=languageTool.getAllRules();
+  final List<Rule> allRules=ltSupport.getLanguageTool().getAllRules();
   for (  Rule rule : allRules) {
     if (rule.getId().equals(ruleId)) {
       return rule;

@@ -1,0 +1,6 @@
+{
+  this.frame=frame;
+  this.textComponent=textComponent;
+  this.messages=JLanguageTool.getMessageBundle();
+  init();
+}

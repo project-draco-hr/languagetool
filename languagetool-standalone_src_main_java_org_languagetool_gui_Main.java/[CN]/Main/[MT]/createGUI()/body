@@ -15,7 +15,6 @@
   textArea.setWrapStyleWord(true);
   textArea.addKeyListener(new ControlReturnTextCheckingListener());
   resultArea=new JTextPane();
-  resultAreaHelper=new ResultArea(messages,textArea,config,resultArea);
   undoRedo=new UndoRedoSupport(this.textArea);
   frame.setJMenuBar(createMenuBar());
   final JPanel panel=new JPanel();
@@ -29,14 +28,12 @@
   buttonCons.gridy=0;
   buttonCons.anchor=GridBagConstraints.WEST;
   insidePanel.add(new JLabel(" " + messages.getString("textLanguage") + " "),buttonCons);
-  languageBox=new LanguageComboBox(messages,config);
+  languageBox=new LanguageComboBox(messages);
   languageBox.setRenderer(new LanguageComboBoxRenderer(messages));
   languageBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
       if (e.getStateChange() == ItemEvent.SELECTED) {
-        langTool=null;
-        currentLanguage=(Language)languageBox.getSelectedItem();
-        ltSupport.setLanguageTool(getCurrentLanguageTool(currentLanguage));
+        ltSupport.setLanguage((Language)languageBox.getSelectedItem());
       }
     }
   }
@@ -49,12 +46,12 @@
   panel.add(insidePanel);
   buttonCons.gridx=2;
   buttonCons.gridy=0;
-  autoDetectBox=new JCheckBox(messages.getString("atd"),config.getAutoDetect());
+  autoDetectBox=new JCheckBox(messages.getString("atd"));
   autoDetectBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
       boolean selected=(e.getStateChange() == ItemEvent.SELECTED);
       languageBox.setEnabled(!selected);
-      config.setAutoDetect(selected);
+      ltSupport.getConfig().setAutoDetect(selected);
       if (selected) {
         Language detected=autoDetectLanguage(textArea.getText());
         languageBox.selectLanguage(detected);
@@ -117,13 +114,15 @@
   cons.insets=new Insets(1,10,10,1);
   cons.gridy=3;
   contentPane.add(panel,cons);
-  currentLanguage=getDefaultLanguage();
-  warmUpChecker();
-  ltSupport=new LanguageToolSupport(this.langTool,this.textArea);
-  if (config.getAutoDetect()) {
+  ltSupport=new LanguageToolSupport(this.frame,this.textArea);
+  if (ltSupport.getConfig().getAutoDetect()) {
     languageBox.selectLanguage(autoDetectLanguage(textArea.getText()));
   }
+  resultAreaHelper=new ResultArea(messages,textArea,ltSupport,resultArea);
+  autoDetectBox.setSelected(ltSupport.getConfig().getAutoDetect());
+  languageBox.selectLanguage(ltSupport.getLanguageTool().getLanguage());
   frame.pack();
   frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
   frame.setLocationByPlatform(true);
+  maybeStartServer();
 }

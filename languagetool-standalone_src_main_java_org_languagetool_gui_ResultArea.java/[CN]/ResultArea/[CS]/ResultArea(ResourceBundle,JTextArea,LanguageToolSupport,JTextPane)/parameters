@@ -1,4 +1,4 @@
 ResourceBundle messages
 JTextArea textArea
-Configuration config
+LanguageToolSupport ltSupport
 JTextPane statusPane

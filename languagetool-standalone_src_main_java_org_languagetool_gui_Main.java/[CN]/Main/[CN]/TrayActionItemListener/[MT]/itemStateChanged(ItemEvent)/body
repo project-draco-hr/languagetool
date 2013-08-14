@@ -1,20 +1,20 @@
 {
   try {
-    final Language language=currentLanguage;
-    final ConfigurationDialog configDialog=configDialogs.get(language);
+    final ConfigurationDialog configDialog=ltSupport.getCurrentConfigDialog();
+    final Configuration config=ltSupport.getConfig();
     if (e.getStateChange() == ItemEvent.SELECTED) {
       config.setRunServer(true);
       final boolean serverStarted=maybeStartServer();
       enableHttpServerItem.setState(serverStarted);
       config.setRunServer(serverStarted);
-      config.saveConfiguration(language);
+      config.saveConfiguration(ltSupport.getLanguageTool().getLanguage());
       if (configDialog != null) {
         configDialog.setRunServer(true);
       }
     }
  else     if (e.getStateChange() == ItemEvent.DESELECTED) {
       config.setRunServer(false);
-      config.saveConfiguration(language);
+      config.saveConfiguration(ltSupport.getLanguageTool().getLanguage());
       if (configDialog != null) {
         configDialog.setRunServer(false);
       }

@@ -1,0 +1,31 @@
+{
+  try {
+    config=new Configuration(new File(System.getProperty("user.home")),CONFIG_FILE,currentLanguage);
+    final ConfigurationDialog configDialog=getCurrentConfigDialog();
+    languageTool=new JLanguageTool(currentLanguage,configDialog.getMotherTongue());
+    languageTool.activateDefaultPatternRules();
+    languageTool.activateDefaultFalseFriendRules();
+    final Set<String> disabledRules=configDialog.getDisabledRuleIds();
+    if (disabledRules != null) {
+      for (      final String ruleId : disabledRules) {
+        languageTool.disableRule(ruleId);
+      }
+    }
+    final Set<String> disabledCategories=configDialog.getDisabledCategoryNames();
+    if (disabledCategories != null) {
+      for (      final String categoryName : disabledCategories) {
+        languageTool.disableCategory(categoryName);
+      }
+    }
+    final Set<String> enabledRules=configDialog.getEnabledRuleIds();
+    if (enabledRules != null) {
+      for (      String ruleName : enabledRules) {
+        languageTool.enableDefaultOffRule(ruleName);
+        languageTool.enableRule(ruleName);
+      }
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

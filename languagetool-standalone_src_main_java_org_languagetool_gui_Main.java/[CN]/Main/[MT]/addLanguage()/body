@@ -8,4 +8,5 @@
     Tools.showErrorMessage(e,frame);
   }
   languageBox.populateLanguageBox();
+  languageBox.selectLanguage(ltSupport.getLanguageTool().getLanguage());
 }

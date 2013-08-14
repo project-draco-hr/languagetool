@@ -4,18 +4,18 @@
   try {
     final RuleLink ruleLink=RuleLink.getFromString(uri);
     final String ruleId=ruleLink.getId();
-    final Set<String> disabledRuleIds=config.getDisabledRuleIds();
+    final Set<String> disabledRuleIds=ltSupport.getConfig().getDisabledRuleIds();
     if (uri.startsWith(DEACTIVATE_URL)) {
       disabledRuleIds.add(ruleId);
-      languageTool.disableRule(ruleId);
+      ltSupport.getLanguageTool().disableRule(ruleId);
     }
  else {
       disabledRuleIds.remove(ruleId);
-      languageTool.enableRule(ruleId);
+      ltSupport.getLanguageTool().enableRule(ruleId);
     }
-    config.setDisabledRuleIds(disabledRuleIds);
-    config.saveConfiguration(languageTool.getLanguage());
-    allRuleMatches=languageTool.check(textArea.getText());
+    ltSupport.getConfig().setDisabledRuleIds(disabledRuleIds);
+    ltSupport.getConfig().saveConfiguration(ltSupport.getLanguageTool().getLanguage());
+    allRuleMatches=ltSupport.getLanguageTool().check(textArea.getText());
     reDisplayRuleMatches();
   }
   finally {
