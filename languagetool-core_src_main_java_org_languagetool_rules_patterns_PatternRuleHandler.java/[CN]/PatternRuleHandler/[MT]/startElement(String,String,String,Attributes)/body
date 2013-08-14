@@ -98,7 +98,7 @@
     inSuggestion=false;
     message=new StringBuilder();
   }
- else   if ("suggestion".equals(qName) && !inMessage) {
+ else   if (SUGGESTION.equals(qName) && !inMessage) {
     if (YES.equals(attrs.getValue("suppress_misspelled"))) {
       suggestionsOutMsg.append("<pleasespellme/>");
     }
@@ -124,7 +124,7 @@
       ruleGroupIssueType=attrs.getValue("type");
     }
   }
- else   if ("suggestion".equals(qName) && inMessage) {
+ else   if (SUGGESTION.equals(qName) && inMessage) {
     if (YES.equals(attrs.getValue("suppress_misspelled"))) {
       message.append("<pleasespellme/>");
     }

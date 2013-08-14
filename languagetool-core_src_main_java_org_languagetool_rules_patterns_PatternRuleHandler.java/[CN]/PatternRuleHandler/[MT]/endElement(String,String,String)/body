@@ -78,7 +78,7 @@
     suggestionMatches=addLegacyMatches(suggestionMatches,message.toString(),true);
     inMessage=false;
   }
- else   if ("suggestion".equals(qName) && !inMessage) {
+ else   if (SUGGESTION.equals(qName) && !inMessage) {
     suggestionsOutMsg.append("</suggestion>");
     inSuggestion=false;
   }
@@ -104,7 +104,7 @@
     inRuleGroup=false;
     ruleGroupIssueType=null;
   }
- else   if ("suggestion".equals(qName) && inMessage) {
+ else   if (SUGGESTION.equals(qName) && inMessage) {
     message.append("</suggestion>");
     inSuggestion=false;
   }
