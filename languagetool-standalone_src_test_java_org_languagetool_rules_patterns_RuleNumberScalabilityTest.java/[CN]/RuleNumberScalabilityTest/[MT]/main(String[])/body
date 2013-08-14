@@ -1,0 +1,48 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + RuleNumberScalabilityTest.class.getSimpleName() + " <languageCode> <text_file>");
+    System.exit(1);
+  }
+  JLanguageTool langTool=new JLanguageTool(Language.getLanguageForShortName(args[0]));
+  String text=StringTools.readStream(new FileInputStream(args[1]),"utf-8");
+  langTool.activateDefaultPatternRules();
+  System.out.println("Warmup...");
+  langTool.check(text);
+  langTool.check(text);
+  long baselineTime=getBaselineTime(langTool,text);
+  System.out.println("Baseline: " + baselineTime + "ms (time with no pattern rules active)");
+  int ruleNumber=langTool.getAllActiveRules().size();
+  System.out.println("Total rules: " + ruleNumber);
+  int steps=5;
+  int prevActiveRules=-1;
+  long prevCleanRunTime=-1;
+  for (int i=steps; i > 0; i--) {
+    int targetActiveRules=ruleNumber / i;
+    deactivateAllRules(langTool);
+    for (    Rule rule : langTool.getAllRules()) {
+      langTool.enableRule(rule.getId());
+      if (langTool.getAllActiveRules().size() > targetActiveRules) {
+        break;
+      }
+    }
+    int activeRules=langTool.getAllActiveRules().size();
+    long startTime=System.currentTimeMillis();
+    langTool.check(text);
+    long runTime=System.currentTimeMillis() - startTime;
+    long cleanRunTime=runTime - baselineTime;
+    if (prevActiveRules != -1 && prevCleanRunTime != -1) {
+      float ruleFactor=(float)activeRules / prevActiveRules;
+      float cleanRuntimeFactor=(float)cleanRunTime / prevCleanRunTime;
+      System.out.println("Active rules: " + activeRules + ", runtime: "+ runTime+ "ms, cleanRunTime: "+ cleanRunTime+ ", ruleFactor: "+ ruleFactor+ ", cleanRuntimeFactor: "+ cleanRuntimeFactor);
+    }
+ else {
+      System.out.println("Active rules: " + activeRules + ", runtime: "+ runTime+ "ms, cleanRunTime: "+ cleanRunTime);
+    }
+    prevActiveRules=activeRules;
+    prevCleanRunTime=cleanRunTime;
+  }
+  System.out.println("ruleFactor = the number of rules compared to the previous run");
+  System.out.println("cleanRuntimeFactor = the runtime (without baseline) compared to the previous run");
+  System.out.println(" => cleanRuntimeFactor should not grow much more than ruleFactor, otherwise we scale");
+  System.out.println(" => badly with respect to the number of rules");
+}

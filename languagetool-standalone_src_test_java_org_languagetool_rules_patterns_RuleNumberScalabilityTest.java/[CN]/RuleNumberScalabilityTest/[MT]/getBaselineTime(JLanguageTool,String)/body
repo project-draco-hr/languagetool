@@ -1,0 +1,13 @@
+{
+  deactivateAllRules(langTool);
+  long baselineStartTime=System.currentTimeMillis();
+  langTool.check(text);
+  long baselineTime=System.currentTimeMillis() - baselineStartTime;
+  if (langTool.getAllActiveRules().size() > 0) {
+    throw new RuntimeException("Did not expect to get any pattern rules: " + langTool.getAllActiveRules().size());
+  }
+  for (  Rule rule : langTool.getAllRules()) {
+    langTool.enableRule(rule.getId());
+  }
+  return baselineTime;
+}
