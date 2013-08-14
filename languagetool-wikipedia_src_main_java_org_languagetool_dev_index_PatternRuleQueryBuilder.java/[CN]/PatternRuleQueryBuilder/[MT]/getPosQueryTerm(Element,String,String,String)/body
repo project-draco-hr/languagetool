@@ -1,5 +1,5 @@
 {
-  if (element.getCaseSensitive()) {
+  if (element.isCaseSensitive()) {
     return new Term(FIELD_NAME,prefix + pos + suffix);
   }
  else {

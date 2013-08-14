@@ -1,7 +1,7 @@
 {
   String string1=exception1.getString() == null ? "" : exception1.getString();
   String string2=exception2.getString() == null ? "" : exception2.getString();
-  if (!exception1.getCaseSensitive() || !exception2.getCaseSensitive()) {
+  if (!exception1.isCaseSensitive() || !exception2.isCaseSensitive()) {
     string1=string1.toLowerCase();
     string2=string2.toLowerCase();
   }
