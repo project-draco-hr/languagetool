@@ -1,6 +1,6 @@
 {
   if (language.isExternal()) {
-    return language.getName() + Main.EXTERNAL_LANGUAGE_SUFFIX;
+    return language.getName() + extLangSuffix;
   }
  else {
     return language.getTranslatedName(messages);

@@ -7,7 +7,7 @@
       languages.add(language);
     }
   }
-  Collections.sort(languages,new LanguageComparator(messages));
+  Collections.sort(languages,langComparator);
   for (  final Language language : languages) {
     addItem(language);
   }
