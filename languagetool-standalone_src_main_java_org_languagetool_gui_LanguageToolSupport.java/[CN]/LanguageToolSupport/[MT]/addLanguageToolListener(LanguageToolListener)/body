@@ -1,0 +1,3 @@
+{
+  listenerList.add(LanguageToolListener.class,l);
+}

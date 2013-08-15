@@ -1,0 +1,66 @@
+{
+  if (this.mustDetectLanguage) {
+    mustDetectLanguage=false;
+    if (!this.textComponent.getText().isEmpty()) {
+      Language detectedLanguage=autoDetectLanguage(this.textComponent.getText());
+      if (!detectedLanguage.equals(this.currentLanguage)) {
+        this.currentLanguage=detectedLanguage;
+        getCurrentLanguageTool();
+        if (SwingUtilities.isEventDispatchThread()) {
+          fireEvent(LanguageToolEvent.LANGUAGE_CHANGED,caller);
+        }
+ else {
+          try {
+            SwingUtilities.invokeAndWait(new Runnable(){
+              @Override public void run(){
+                fireEvent(LanguageToolEvent.LANGUAGE_CHANGED,caller);
+              }
+            }
+);
+          }
+ catch (          InterruptedException ex) {
+          }
+catch (          InvocationTargetException ex) {
+            throw new RuntimeException(ex);
+          }
+        }
+      }
+    }
+  }
+  if (SwingUtilities.isEventDispatchThread()) {
+    fireEvent(LanguageToolEvent.CHECKING_STARTED,caller);
+  }
+ else {
+    try {
+      SwingUtilities.invokeAndWait(new Runnable(){
+        @Override public void run(){
+          fireEvent(LanguageToolEvent.CHECKING_STARTED,caller);
+        }
+      }
+);
+    }
+ catch (    InterruptedException ex) {
+    }
+catch (    InvocationTargetException ex) {
+      throw new RuntimeException(ex);
+    }
+  }
+  final List<RuleMatch> matches=this.languageTool.check(this.textComponent.getText());
+  int v=check.get();
+  if (v == 0) {
+    if (!SwingUtilities.isEventDispatchThread()) {
+      SwingUtilities.invokeLater(new Runnable(){
+        @Override public void run(){
+          updateHighlights(matches);
+          fireEvent(LanguageToolEvent.CHECKING_FINISHED,caller);
+        }
+      }
+);
+    }
+ else {
+      updateHighlights(matches);
+      fireEvent(LanguageToolEvent.CHECKING_FINISHED,caller);
+    }
+  }
+  return matches;
+}

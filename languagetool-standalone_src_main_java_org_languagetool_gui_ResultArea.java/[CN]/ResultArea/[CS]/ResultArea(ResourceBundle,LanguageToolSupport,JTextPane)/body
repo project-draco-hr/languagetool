@@ -1,0 +1,46 @@
+{
+  this.messages=messages;
+  this.ltSupport=ltSupport;
+  this.statusPane=statusPane;
+  statusPane.setContentType("text/html");
+  statusPane.setText(Main.HTML_GREY_FONT_START + messages.getString("resultAreaText") + Main.HTML_FONT_END);
+  statusPane.setEditable(false);
+  statusPane.addHyperlinkListener(new MyHyperlinkListener());
+  statusPane.setTransferHandler(new RetainLineBreakTransferHandler());
+  ltSupport.addLanguageToolListener(new LanguageToolListener(){
+    @Override public void languageToolEventOccured(    LanguageToolEvent event){
+      if (event.getType() == LanguageToolEvent.CHECKING_STARTED) {
+        final Language lang=ltSupport.getLanguageTool().getLanguage();
+        final String langName;
+        if (lang.isExternal()) {
+          langName=lang.getTranslatedName(messages) + Main.EXTERNAL_LANGUAGE_SUFFIX;
+        }
+ else {
+          langName=lang.getTranslatedName(messages);
+        }
+        final String startCheckText=Main.HTML_GREY_FONT_START + Tools.makeTexti18n(messages,"startChecking",langName) + "..."+ Main.HTML_FONT_END;
+        statusPane.setText(startCheckText);
+        setStartText(startCheckText);
+        if (event.getCaller() == marker) {
+          statusPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        }
+      }
+ else       if (event.getType() == LanguageToolEvent.CHECKING_FINISHED) {
+        inputText=event.getSource().getTextComponent().getText();
+        setRuleMatches(event.getSource().getMatches());
+        if (event.getCaller() == marker || event.getCaller() == null) {
+          displayResult();
+          if (event.getCaller() == marker) {
+            statusPane.setCursor(Cursor.getDefaultCursor());
+          }
+        }
+      }
+ else       if (event.getType() == LanguageToolEvent.RULE_DISABLED || event.getType() == LanguageToolEvent.RULE_ENABLED) {
+        inputText=event.getSource().getTextComponent().getText();
+        setRuleMatches(event.getSource().getMatches());
+        displayResult();
+      }
+    }
+  }
+);
+}

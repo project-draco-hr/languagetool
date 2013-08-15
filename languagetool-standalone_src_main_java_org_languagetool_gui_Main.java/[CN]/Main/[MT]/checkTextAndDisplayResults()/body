@@ -3,50 +3,5 @@
     textArea.setText(messages.getString("enterText2"));
     return;
   }
-  if (isAlreadyChecking) {
-    return;
-  }
-  final Language lang=ltSupport.getLanguageTool().getLanguage();
-  final String langName;
-  if (lang.isExternal()) {
-    langName=lang.getTranslatedName(messages) + EXTERNAL_LANGUAGE_SUFFIX;
-  }
- else {
-    langName=lang.getTranslatedName(messages);
-  }
-  isAlreadyChecking=true;
-  setWaitCursor();
-  checkAction.setEnabled(false);
-  final long startTime=System.currentTimeMillis();
-  final String startCheckText=HTML_GREY_FONT_START + Tools.makeTexti18n(messages,"startChecking",langName) + "..."+ HTML_FONT_END;
-  resultArea.setText(startCheckText);
-  new Thread(){
-    @Override public void run(){
-      try {
-        try {
-          List<RuleMatch> ruleMatches=ltSupport._check();
-          resultAreaHelper.setStartText(startCheckText);
-          resultAreaHelper.setInputText(textArea.getText());
-          resultAreaHelper.setRuleMatches(ruleMatches);
-          resultAreaHelper.setRunTime(System.currentTimeMillis() - startTime);
-          resultAreaHelper.displayResult();
-        }
- catch (        Exception e) {
-          final String error=getStackTraceAsHtml(e);
-          resultAreaHelper.displayText(error);
-        }
-      }
-  finally {
-        SwingUtilities.invokeLater(new Runnable(){
-          @Override public void run(){
-            checkAction.setEnabled(true);
-            unsetWaitCursor();
-            isAlreadyChecking=false;
-          }
-        }
-);
-      }
-    }
-  }
-.start();
+  ltSupport.checkImmediately(getFrame());
 }

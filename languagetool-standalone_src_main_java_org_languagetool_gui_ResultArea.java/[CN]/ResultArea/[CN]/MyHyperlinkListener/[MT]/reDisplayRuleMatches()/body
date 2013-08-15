@@ -1,5 +1,0 @@
-{
-  ruleMatches=filterRuleMatches();
-  setInputText(textArea.getText());
-  displayResult();
-}

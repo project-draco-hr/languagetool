@@ -1,5 +1,5 @@
 {
-  frame.setCursor(prevCursor);
-  textArea.setCursor(prevCursor);
-  resultArea.setCursor(prevCursor);
+  frame.setCursor(Cursor.getDefaultCursor());
+  textArea.setCursor(Cursor.getDefaultCursor());
+  resultArea.setCursor(Cursor.getDefaultCursor());
 }

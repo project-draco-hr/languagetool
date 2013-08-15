@@ -25,20 +25,29 @@
   check=new AtomicInteger(0);
   this.textComponent.getDocument().addDocumentListener(documentListener=new DocumentListener(){
     @Override public void insertUpdate(    DocumentEvent e){
+      if (e.getDocument().getLength() == e.getLength() && config.getAutoDetect() == true) {
+        mustDetectLanguage=true;
+      }
       recalculateSpans(e.getOffset(),e.getLength(),false);
       if (backgroundCheckEnabled) {
-        checkDelayed();
+        checkDelayed(null);
       }
     }
     @Override public void removeUpdate(    DocumentEvent e){
+      if (e.getDocument().getLength() == 0 && config.getAutoDetect() == true) {
+        mustDetectLanguage=true;
+      }
       recalculateSpans(e.getOffset(),e.getLength(),true);
       if (backgroundCheckEnabled) {
-        checkDelayed();
+        checkDelayed(null);
       }
     }
     @Override public void changedUpdate(    DocumentEvent e){
+      if (e.getDocument().getLength() == e.getLength() && config.getAutoDetect() == true) {
+        mustDetectLanguage=true;
+      }
       if (backgroundCheckEnabled) {
-        checkDelayed();
+        checkDelayed(null);
       }
     }
   }
@@ -68,7 +77,8 @@
     }
   }
 ;
-  if (backgroundCheckEnabled) {
-    checkImmediately();
+  mustDetectLanguage=config.getAutoDetect();
+  if ((!this.textComponent.getText().isEmpty()) && backgroundCheckEnabled) {
+    checkImmediately(null);
   }
 }

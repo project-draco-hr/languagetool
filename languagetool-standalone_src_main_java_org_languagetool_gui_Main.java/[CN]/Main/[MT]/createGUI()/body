@@ -10,7 +10,7 @@
   frame.addWindowListener(new CloseListener());
   final URL iconUrl=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(TRAY_ICON);
   frame.setIconImage(new ImageIcon(iconUrl).getImage());
-  textArea=new JTextArea(messages.getString("guiDemoText"));
+  textArea=new JTextArea();
   textArea.setLineWrap(true);
   textArea.setWrapStyleWord(true);
   textArea.addKeyListener(new ControlReturnTextCheckingListener());
@@ -30,14 +30,6 @@
   insidePanel.add(new JLabel(" " + messages.getString("textLanguage") + " "),buttonCons);
   languageBox=new LanguageComboBox(messages,EXTERNAL_LANGUAGE_SUFFIX);
   languageBox.setRenderer(new LanguageComboBoxRenderer(messages,EXTERNAL_LANGUAGE_SUFFIX));
-  languageBox.addItemListener(new ItemListener(){
-    @Override public void itemStateChanged(    ItemEvent e){
-      if (e.getStateChange() == ItemEvent.SELECTED) {
-        ltSupport.setLanguage((Language)languageBox.getSelectedItem());
-      }
-    }
-  }
-);
   buttonCons.gridx=1;
   buttonCons.gridy=0;
   insidePanel.add(languageBox,buttonCons);
@@ -47,19 +39,6 @@
   buttonCons.gridx=2;
   buttonCons.gridy=0;
   autoDetectBox=new JCheckBox(messages.getString("atd"));
-  autoDetectBox.addItemListener(new ItemListener(){
-    @Override public void itemStateChanged(    ItemEvent e){
-      boolean selected=(e.getStateChange() == ItemEvent.SELECTED);
-      languageBox.setEnabled(!selected);
-      ltSupport.getConfig().setAutoDetect(selected);
-      if (selected) {
-        Language detected=autoDetectLanguage(textArea.getText());
-        languageBox.selectLanguage(detected);
-      }
-    }
-  }
-);
-  languageBox.setEnabled(!autoDetectBox.isSelected());
   buttonCons.gridx=1;
   buttonCons.gridy=1;
   buttonCons.gridwidth=2;
@@ -115,12 +94,54 @@
   cons.gridy=3;
   contentPane.add(panel,cons);
   ltSupport=new LanguageToolSupport(this.frame,this.textArea);
-  if (ltSupport.getConfig().getAutoDetect()) {
-    languageBox.selectLanguage(autoDetectLanguage(textArea.getText()));
-  }
-  resultAreaHelper=new ResultArea(messages,textArea,ltSupport,resultArea);
-  autoDetectBox.setSelected(ltSupport.getConfig().getAutoDetect());
+  resultAreaHelper=new ResultArea(messages,ltSupport,resultArea);
   languageBox.selectLanguage(ltSupport.getLanguageTool().getLanguage());
+  languageBox.setEnabled(!ltSupport.getConfig().getAutoDetect());
+  autoDetectBox.setSelected(ltSupport.getConfig().getAutoDetect());
+  languageBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      if (e.getStateChange() == ItemEvent.SELECTED) {
+        ltSupport.setLanguage((Language)languageBox.getSelectedItem());
+      }
+    }
+  }
+);
+  autoDetectBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      boolean selected=(e.getStateChange() == ItemEvent.SELECTED);
+      languageBox.setEnabled(!selected);
+      ltSupport.getConfig().setAutoDetect(selected);
+      if (selected) {
+        Language detected=ltSupport.autoDetectLanguage(textArea.getText());
+        languageBox.selectLanguage(detected);
+      }
+    }
+  }
+);
+  ltSupport.addLanguageToolListener(new LanguageToolListener(){
+    @Override public void languageToolEventOccured(    LanguageToolEvent event){
+      if (event.getType() == LanguageToolEvent.CHECKING_STARTED) {
+        if (event.getCaller() == getFrame()) {
+          startTime=System.currentTimeMillis();
+          setWaitCursor();
+          checkAction.setEnabled(false);
+        }
+      }
+ else       if (event.getType() == LanguageToolEvent.CHECKING_FINISHED) {
+        if (event.getCaller() == getFrame()) {
+          checkAction.setEnabled(true);
+          unsetWaitCursor();
+          resultAreaHelper.setRunTime(System.currentTimeMillis() - startTime);
+          resultAreaHelper.displayResult();
+        }
+      }
+ else       if (event.getType() == LanguageToolEvent.LANGUAGE_CHANGED) {
+        languageBox.selectLanguage(ltSupport.getLanguageTool().getLanguage());
+      }
+    }
+  }
+);
+  textArea.setText(messages.getString("guiDemoText"));
   frame.pack();
   frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
   frame.setLocationByPlatform(true);

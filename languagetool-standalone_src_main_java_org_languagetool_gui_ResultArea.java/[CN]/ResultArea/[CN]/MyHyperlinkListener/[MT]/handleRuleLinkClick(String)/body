@@ -1,24 +1,12 @@
 {
-  final Cursor prevCursor=statusPane.getCursor();
-  statusPane.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-  try {
-    final RuleLink ruleLink=RuleLink.getFromString(uri);
-    final String ruleId=ruleLink.getId();
-    final Set<String> disabledRuleIds=ltSupport.getConfig().getDisabledRuleIds();
-    if (uri.startsWith(DEACTIVATE_URL)) {
-      disabledRuleIds.add(ruleId);
-      ltSupport.disableRule(ruleId);
-    }
+  final RuleLink ruleLink=RuleLink.getFromString(uri);
+  final String ruleId=ruleLink.getId();
+  if (uri.startsWith(DEACTIVATE_URL)) {
+    ltSupport.disableRule(ruleId);
+  }
  else {
-      disabledRuleIds.remove(ruleId);
-      ltSupport.enableRule(ruleId);
-    }
-    ltSupport.getConfig().setDisabledRuleIds(disabledRuleIds);
-    ltSupport.getConfig().saveConfiguration(ltSupport.getLanguageTool().getLanguage());
-    allRuleMatches=ltSupport._check();
-    reDisplayRuleMatches();
+    ltSupport.enableRule(ruleId);
   }
-  finally {
-    statusPane.setCursor(prevCursor);
-  }
+  ltSupport.getConfig().saveConfiguration(ltSupport.getLanguageTool().getLanguage());
+  ltSupport.checkImmediately(marker);
 }

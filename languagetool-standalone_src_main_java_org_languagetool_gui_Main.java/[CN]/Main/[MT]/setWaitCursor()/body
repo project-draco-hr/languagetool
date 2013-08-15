@@ -1,6 +1,5 @@
 {
-  prevCursor=resultArea.getCursor();
-  frame.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-  textArea.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-  resultArea.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+  frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+  textArea.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+  resultArea.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 }

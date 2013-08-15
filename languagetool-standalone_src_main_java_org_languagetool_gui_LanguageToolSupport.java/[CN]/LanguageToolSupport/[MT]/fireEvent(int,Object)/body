@@ -1,0 +1,9 @@
+{
+  Object[] listeners=listenerList.getListenerList();
+  LanguageToolEvent event=new LanguageToolEvent(this,type,caller);
+  for (int i=listeners.length - 2; i >= 0; i-=2) {
+    if (listeners[i] == LanguageToolListener.class) {
+      ((LanguageToolListener)listeners[i + 1]).languageToolEventOccured(event);
+    }
+  }
+}

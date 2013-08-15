@@ -4,6 +4,6 @@
   }
   this.backgroundCheckEnabled=backgroundCheckEnabled;
   if (backgroundCheckEnabled) {
-    checkImmediately();
+    checkImmediately(null);
   }
 }
