@@ -1,0 +1,4 @@
+{
+  this.equivalenceTypes=new HashMap<EquivalenceTypeLocator,Element>();
+  this.equivalenceFeatures=new HashMap<String,List<String>>();
+}

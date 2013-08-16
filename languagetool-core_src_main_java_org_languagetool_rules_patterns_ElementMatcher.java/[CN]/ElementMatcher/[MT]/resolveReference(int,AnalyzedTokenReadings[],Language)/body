@@ -1,0 +1,8 @@
+{
+  if (this.baseElement.isReferenceElement()) {
+    final int refPos=firstMatchToken + this.baseElement.getMatch().getTokenRef();
+    if (refPos < tokens.length) {
+      this.element=this.baseElement.compile(tokens[refPos],language.getSynthesizer());
+    }
+  }
+}

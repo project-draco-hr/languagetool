@@ -1,0 +1,28 @@
+{
+  boolean thisMatched=false;
+  final int numberOfReadings=tokens[tokenNo].getReadingsLength();
+  elem.prepareAndGroup(firstMatchToken,tokens,rule.getLanguage());
+  for (int l=0; l < numberOfReadings; l++) {
+    final AnalyzedToken matchToken=tokens[tokenNo].getAnalyzedToken(l);
+    prevMatched=prevMatched || prevSkipNext > 0 && prevElement != null && prevElement.isMatchedByScopeNextException(matchToken);
+    if (prevMatched) {
+      return false;
+    }
+    thisMatched=thisMatched || elem.isMatched(matchToken);
+    if (!thisMatched && !elem.getElement().isInflected() && elem.getElement().getPOStag() == null && (prevElement != null && prevElement.getElement().getExceptionList() == null)) {
+      return false;
+    }
+    if (rule.isGroupsOrUnification()) {
+      thisMatched&=testUnificationAndGroups(thisMatched,l + 1 == numberOfReadings,matchToken,elem);
+    }
+  }
+  if (thisMatched) {
+    for (int l=0; l < numberOfReadings; l++) {
+      if (elem.isExceptionMatchedCompletely(tokens[tokenNo].getAnalyzedToken(l)))       return false;
+    }
+    if (tokenNo > 0 && elem.hasPreviousException()) {
+      if (elem.isMatchedByPreviousException(tokens[tokenNo - 1]))       return false;
+    }
+  }
+  return thisMatched;
+}

@@ -1,0 +1,50 @@
+{
+  String targetPosTag=match.getPosTag();
+  final List<String> posTags=new ArrayList<String>();
+  Pattern pPosRegexMatch=match.getPosRegexMatch();
+  String posTagReplace=match.getPosTagReplace();
+  if (match.isStaticLemma()) {
+    final int numRead=matchedToken.getReadingsLength();
+    for (int i=0; i < numRead; i++) {
+      final String tst=matchedToken.getAnalyzedToken(i).getPOSTag();
+      if (tst != null && pPosRegexMatch.matcher(tst).matches()) {
+        targetPosTag=matchedToken.getAnalyzedToken(i).getPOSTag();
+        posTags.add(targetPosTag);
+      }
+    }
+    if (pPosRegexMatch != null && posTagReplace != null) {
+      targetPosTag=pPosRegexMatch.matcher(targetPosTag).replaceAll(posTagReplace);
+    }
+  }
+ else {
+    final int numRead=formattedToken.getReadingsLength();
+    for (int i=0; i < numRead; i++) {
+      final String tst=formattedToken.getAnalyzedToken(i).getPOSTag();
+      if (tst != null && pPosRegexMatch.matcher(tst).matches()) {
+        targetPosTag=formattedToken.getAnalyzedToken(i).getPOSTag();
+        posTags.add(targetPosTag);
+      }
+    }
+    if (pPosRegexMatch != null && posTagReplace != null) {
+      if (posTags.isEmpty()) {
+        posTags.add(targetPosTag);
+      }
+      final StringBuilder sb=new StringBuilder();
+      final int posTagLen=posTags.size();
+      int l=0;
+      for (      String lposTag : posTags) {
+        l++;
+        lposTag=pPosRegexMatch.matcher(lposTag).replaceAll(posTagReplace);
+        if (match.setsPos()) {
+          lposTag=synthesizer.getPosTagCorrection(lposTag);
+        }
+        sb.append(lposTag);
+        if (l < posTagLen) {
+          sb.append('|');
+        }
+      }
+      targetPosTag=sb.toString();
+    }
+  }
+  return targetPosTag;
+}

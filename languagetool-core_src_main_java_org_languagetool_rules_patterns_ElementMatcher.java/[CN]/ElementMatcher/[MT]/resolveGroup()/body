@@ -1,0 +1,10 @@
+{
+  if (this.baseElement.hasAndGroup()) {
+    List<Element> elementAndGroup=this.baseElement.getAndGroup();
+    this.andGroup=new ArrayList<ElementMatcher>(elementAndGroup.size());
+    for (    Element el : elementAndGroup) {
+      ElementMatcher matcher=new ElementMatcher(el);
+      this.andGroup.add(matcher);
+    }
+  }
+}

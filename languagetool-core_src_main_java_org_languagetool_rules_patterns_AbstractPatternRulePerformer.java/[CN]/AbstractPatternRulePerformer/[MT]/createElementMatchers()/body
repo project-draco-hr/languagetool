@@ -1,0 +1,8 @@
+{
+  List<ElementMatcher> elementMatchers=new ArrayList<ElementMatcher>(rule.patternElements.size());
+  for (  Element el : rule.patternElements) {
+    ElementMatcher matcher=new ElementMatcher(el);
+    elementMatchers.add(matcher);
+  }
+  return elementMatchers;
+}

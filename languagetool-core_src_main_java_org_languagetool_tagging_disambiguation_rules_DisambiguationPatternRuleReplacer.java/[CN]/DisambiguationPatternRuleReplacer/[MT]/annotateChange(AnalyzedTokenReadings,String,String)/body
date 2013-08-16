@@ -1,0 +1,3 @@
+{
+  atr.setHistoricalAnnotations(prevAnot + "\n" + rule.getId()+ ":"+ rule.getSubId()+ " "+ prevValue+ " -> "+ atr.toString());
+}

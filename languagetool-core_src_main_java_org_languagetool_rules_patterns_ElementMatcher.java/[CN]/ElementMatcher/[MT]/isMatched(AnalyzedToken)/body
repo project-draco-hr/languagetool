@@ -1,0 +1,7 @@
+{
+  boolean matched=element.isMatched(token);
+  if (element.hasAndGroup()) {
+    andGroupCheck[0]|=matched;
+  }
+  return matched;
+}

@@ -1,0 +1,15 @@
+{
+  if (equivalenceTypes.containsKey(new EquivalenceTypeLocator(feature,type))) {
+    return;
+  }
+  equivalenceTypes.put(new EquivalenceTypeLocator(feature,type),elem);
+  final List<String> lTypes;
+  if (equivalenceFeatures.containsKey(feature)) {
+    lTypes=equivalenceFeatures.get(feature);
+  }
+ else {
+    lTypes=new ArrayList<String>();
+  }
+  lTypes.add(type);
+  equivalenceFeatures.put(feature,lTypes);
+}

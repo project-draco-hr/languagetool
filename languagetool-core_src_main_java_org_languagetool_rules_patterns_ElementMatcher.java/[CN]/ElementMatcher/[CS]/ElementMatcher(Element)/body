@@ -1,0 +1,5 @@
+{
+  this.baseElement=element;
+  this.element=this.baseElement;
+  this.resolveGroup();
+}

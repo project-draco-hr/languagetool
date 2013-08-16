@@ -1,0 +1,3 @@
+{
+  return new Unifier(this.equivalenceTypes,this.equivalenceFeatures);
+}
