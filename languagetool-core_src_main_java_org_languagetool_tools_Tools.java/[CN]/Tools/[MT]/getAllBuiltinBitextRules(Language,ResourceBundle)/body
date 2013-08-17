@@ -18,12 +18,12 @@
           rules.add((BitextRule)constructor.newInstance(messages,language));
           break;
         }
-        throw new RuntimeException("Unknown constructor for rule class: " + class1.getName());
+        throw new RuntimeException("Unknown constructor type for rule class: " + class1.getName());
       }
     }
   }
  catch (  final Exception e) {
-    throw new RuntimeException("Failed to load rules: " + e.getMessage(),e);
+    throw new RuntimeException("Failed to load bitext rules",e);
   }
   return rules;
 }
