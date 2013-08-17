@@ -1,10 +1,7 @@
 {
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
-  if (morfologik == null) {
-    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(binaryDictPath);
-    morfologik=new DictionaryLookup(Dictionary.read(url));
-  }
+  final IStemmer morfologik=new DictionaryLookup(getDictionary());
   if (manualTagger == null && plaintextDictPath != null) {
     manualTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(plaintextDictPath));
   }

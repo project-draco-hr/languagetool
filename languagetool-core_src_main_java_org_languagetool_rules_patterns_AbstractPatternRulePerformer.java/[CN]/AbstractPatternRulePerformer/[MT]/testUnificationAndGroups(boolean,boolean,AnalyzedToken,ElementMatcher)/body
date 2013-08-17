@@ -1,0 +1,31 @@
+{
+  boolean thisMatched=matched;
+  final boolean elemIsMatched=elemMatcher.isMatched(matchToken);
+  final Element elem=elemMatcher.getElement();
+  if (rule.testUnification) {
+    if (matched && elem.isUnified()) {
+      if (elem.isUniNegated()) {
+        thisMatched=!(thisMatched && unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading,elemIsMatched));
+      }
+ else {
+        if (elem.isLastInUnification()) {
+          thisMatched=thisMatched && unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading,elemIsMatched);
+        }
+ else {
+          unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading,elemIsMatched);
+        }
+      }
+    }
+    if (thisMatched && rule.isGetUnified()) {
+      unifiedTokens=unifier.getFinalUnified();
+    }
+    if (!elem.isUnified()) {
+      unifier.reset();
+    }
+  }
+  elemMatcher.addMemberAndGroup(matchToken);
+  if (lastReading) {
+    thisMatched&=elemMatcher.checkAndGroup(thisMatched);
+  }
+  return thisMatched;
+}

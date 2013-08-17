@@ -1,0 +1,4 @@
+Synthesizer synthesizer
+AnalyzedTokenReadings[] tokens
+int index
+int next

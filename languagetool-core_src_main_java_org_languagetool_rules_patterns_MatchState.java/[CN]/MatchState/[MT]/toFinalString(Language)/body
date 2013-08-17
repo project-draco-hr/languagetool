@@ -1,0 +1,104 @@
+{
+  String[] formattedString=new String[1];
+  if (formattedToken != null) {
+    final int readingCount=formattedToken.getReadingsLength();
+    formattedString[0]=formattedToken.getToken();
+    Pattern pRegexMatch=match.getRegexMatch();
+    String regexReplace=match.getRegexReplace();
+    if (pRegexMatch != null) {
+      formattedString[0]=pRegexMatch.matcher(formattedString[0]).replaceAll(regexReplace);
+    }
+    String posTag=match.getPosTag();
+    if (posTag != null) {
+      if (synthesizer == null) {
+        formattedString[0]=formattedToken.getToken();
+      }
+ else       if (match.isPostagRegexp()) {
+        final TreeSet<String> wordForms=new TreeSet<>();
+        boolean oneForm=false;
+        for (int k=0; k < readingCount; k++) {
+          if (formattedToken.getAnalyzedToken(k).getLemma() == null) {
+            final String posUnique=formattedToken.getAnalyzedToken(k).getPOSTag();
+            if (posUnique == null) {
+              wordForms.add(formattedToken.getToken());
+              oneForm=true;
+            }
+ else {
+              if (JLanguageTool.SENTENCE_START_TAGNAME.equals(posUnique) || JLanguageTool.SENTENCE_END_TAGNAME.equals(posUnique) || JLanguageTool.PARAGRAPH_END_TAGNAME.equals(posUnique)) {
+                if (!oneForm) {
+                  wordForms.add(formattedToken.getToken());
+                }
+                oneForm=true;
+              }
+ else {
+                oneForm=false;
+              }
+            }
+          }
+        }
+        final String targetPosTag=getTargetPosTag();
+        if (!oneForm) {
+          for (int i=0; i < readingCount; i++) {
+            final String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i),targetPosTag,true);
+            if (possibleWordForms != null) {
+              wordForms.addAll(Arrays.asList(possibleWordForms));
+            }
+          }
+        }
+        if (wordForms.isEmpty()) {
+          if (match.checksSpelling()) {
+            formattedString[0]="";
+          }
+ else {
+            formattedString[0]="(" + formattedToken.getToken() + ")";
+          }
+        }
+ else {
+          formattedString=wordForms.toArray(new String[wordForms.size()]);
+        }
+      }
+ else {
+        final TreeSet<String> wordForms=new TreeSet<>();
+        for (int i=0; i < readingCount; i++) {
+          final String[] possibleWordForms=synthesizer.synthesize(formattedToken.getAnalyzedToken(i),posTag);
+          if (possibleWordForms != null) {
+            wordForms.addAll(Arrays.asList(possibleWordForms));
+          }
+        }
+        formattedString=wordForms.toArray(new String[wordForms.size()]);
+      }
+    }
+  }
+  final String original;
+  if (match.isStaticLemma()) {
+    original=matchedToken != null ? matchedToken.getToken() : "";
+  }
+ else {
+    original=formattedToken != null ? formattedToken.getToken() : "";
+  }
+  for (int i=0; i < formattedString.length; i++) {
+    formattedString[i]=convertCase(formattedString[i],original);
+  }
+  IncludeRange includeSkipped=match.getIncludeSkipped();
+  if (includeSkipped != IncludeRange.NONE && skippedTokens != null && !"".equals(skippedTokens)) {
+    final String[] helper=new String[formattedString.length];
+    for (int i=0; i < formattedString.length; i++) {
+      if (formattedString[i] == null) {
+        formattedString[i]="";
+      }
+      helper[i]=formattedString[i] + skippedTokens;
+    }
+    formattedString=helper;
+  }
+  if (match.checksSpelling() && lang != null) {
+    final List<String> formattedStringElements=Arrays.asList(formattedString);
+    final List<AnalyzedTokenReadings> analyzed=lang.getTagger().tag(formattedStringElements);
+    for (int i=0; i < formattedString.length; i++) {
+      final AnalyzedToken analyzedToken=analyzed.get(i).getAnalyzedToken(0);
+      if (analyzedToken.getLemma() == null && analyzedToken.hasNoTag()) {
+        formattedString[i]="";
+      }
+    }
+  }
+  return formattedString;
+}

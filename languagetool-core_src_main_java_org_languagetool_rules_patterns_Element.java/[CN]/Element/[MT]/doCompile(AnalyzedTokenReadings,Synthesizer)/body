@@ -1,0 +1,18 @@
+{
+  p=null;
+  final MatchState matchState=tokenReference.createState(synth,token);
+  if (StringTools.isEmpty(referenceString)) {
+    referenceString=stringToken;
+  }
+  if (tokenReference.setsPos()) {
+    final String posReference=matchState.getTargetPosTag();
+    if (posReference != null) {
+      setPosElement(posReference,tokenReference.posRegExp(),negation);
+    }
+    setStringElement(referenceString.replace("\\" + tokenReference.getTokenRef(),""));
+    inflected=true;
+  }
+ else {
+    setStringElement(referenceString.replace("\\" + tokenReference.getTokenRef(),matchState.toTokenString()));
+  }
+}

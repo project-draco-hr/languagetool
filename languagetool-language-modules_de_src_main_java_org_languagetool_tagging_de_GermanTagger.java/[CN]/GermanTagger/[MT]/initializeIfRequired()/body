@@ -1,0 +1,9 @@
+{
+  if (dictionary == null || manualTagger == null || compoundTokenizer == null) {
+synchronized (this) {
+      if (dictionary == null || manualTagger == null || compoundTokenizer == null) {
+        initialize();
+      }
+    }
+  }
+}

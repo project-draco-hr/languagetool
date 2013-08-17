@@ -1,4 +1,5 @@
 {
+  final PatternRule rule=(PatternRule)this.rule;
   final List<Integer> elementNo=rule.getElementNo();
   if (!useList || i > (elementNo.size() - 1)) {
     return 1;

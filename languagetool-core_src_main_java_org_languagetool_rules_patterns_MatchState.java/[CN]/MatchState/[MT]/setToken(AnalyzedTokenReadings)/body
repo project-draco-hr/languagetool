@@ -1,0 +1,8 @@
+{
+  if (match.isStaticLemma()) {
+    this.matchedToken=token;
+  }
+ else {
+    this.formattedToken=token;
+  }
+}

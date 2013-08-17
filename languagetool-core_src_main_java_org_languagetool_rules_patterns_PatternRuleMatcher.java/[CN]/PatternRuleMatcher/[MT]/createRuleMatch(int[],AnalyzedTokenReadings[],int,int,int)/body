@@ -1,4 +1,5 @@
 {
+  final PatternRule rule=(PatternRule)this.rule;
   final String errMessage=formatMatches(tokens,tokenPositions,firstMatchToken,rule.getMessage(),rule.getSuggestionMatches());
   final String suggestionsOutMsg=formatMatches(tokens,tokenPositions,firstMatchToken,rule.getSuggestionsOutMsg(),rule.getSuggestionMatchesOutMsg());
   int correctedStPos=0;

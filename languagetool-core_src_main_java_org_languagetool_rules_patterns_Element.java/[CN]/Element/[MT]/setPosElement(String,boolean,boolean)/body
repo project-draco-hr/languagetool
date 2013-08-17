@@ -4,12 +4,7 @@
   posRegExp=regExp;
   if (posRegExp) {
     pPos=Pattern.compile(posToken);
-    if (mPos == null) {
-      mPos=pPos.matcher(UNKNOWN_TAG);
-    }
- else {
-      mPos.reset(UNKNOWN_TAG);
-    }
+    final Matcher mPos=pPos.matcher(UNKNOWN_TAG);
     posUnknown=mPos.matches();
   }
  else {

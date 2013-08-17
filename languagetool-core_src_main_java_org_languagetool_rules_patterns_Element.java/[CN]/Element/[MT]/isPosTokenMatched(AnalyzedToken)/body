@@ -10,12 +10,7 @@
   }
   boolean match;
   if (posRegExp) {
-    if (mPos == null) {
-      mPos=pPos.matcher(token.getPOSTag());
-    }
- else {
-      mPos.reset(token.getPOSTag());
-    }
+    final Matcher mPos=pPos.matcher(token.getPOSTag());
     match=mPos.matches();
   }
  else {

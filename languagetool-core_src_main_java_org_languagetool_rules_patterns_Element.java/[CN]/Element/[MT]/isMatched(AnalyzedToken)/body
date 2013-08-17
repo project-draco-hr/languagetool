@@ -9,8 +9,5 @@
  else {
     matched=(!negation) && (isPosTokenMatched(token) ^ posNegation);
   }
-  if (andGroupSet) {
-    andGroupCheck[0]|=matched;
-  }
   return matched;
 }

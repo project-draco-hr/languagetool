@@ -1,4 +1,11 @@
 {
+  final IStemmer dictLookup;
+  try {
+    dictLookup=new DictionaryLookup(getDictionary());
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Could not load Catalan dictionary from " + getFileName(),e);
+  }
   List<AnalyzedToken> additionalTaggedTokens=new ArrayList<>();
   if (word.endsWith("ment")) {
     final String lowerWord=word.toLowerCase(conversionLocale);

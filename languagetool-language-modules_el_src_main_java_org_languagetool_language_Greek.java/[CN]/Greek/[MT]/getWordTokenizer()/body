@@ -1,6 +1,3 @@
 {
-  if (wordTokenizer == null) {
-    wordTokenizer=new GreekWordTokenizer();
-  }
-  return wordTokenizer;
+  return new GreekWordTokenizer();
 }

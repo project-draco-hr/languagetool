@@ -4,10 +4,7 @@
   List<AnalyzedToken> upperTaggerTokens;
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
-  if (morfologik == null) {
-    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(getFileName());
-    morfologik=new DictionaryLookup(Dictionary.read(url));
-  }
+  final IStemmer morfologik=new DictionaryLookup(getDictionary());
   for (  String word : sentenceTokens) {
     final List<AnalyzedToken> l=new ArrayList<>();
     final String lowerWord=word.toLowerCase(plLocale);

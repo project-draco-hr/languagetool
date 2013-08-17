@@ -1,6 +1,6 @@
 {
   final Match match=getMatch("POS2","POS1",Match.CaseConversion.PRESERVE);
   match.setLemmaString("lemma2");
-  match.setToken(getAnalyzedTokenReadings("infleCtedForm121","POS2","Lemma1"));
-  assertEquals("[inflectedform2]",Arrays.toString(match.toFinalString(null)));
+  final MatchState state=match.createState(synthesizer,getAnalyzedTokenReadings("infleCtedForm121","POS2","Lemma1"));
+  assertEquals("[inflectedform2]",Arrays.toString(state.toFinalString(null)));
 }
