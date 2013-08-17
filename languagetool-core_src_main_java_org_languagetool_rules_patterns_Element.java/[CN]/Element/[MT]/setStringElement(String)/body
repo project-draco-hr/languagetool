@@ -1,5 +1,5 @@
 {
-  this.stringToken=token;
+  stringToken=token;
   testString=!StringTools.isEmpty(stringToken);
   if (testString && stringRegExp) {
     String regToken=stringToken;
