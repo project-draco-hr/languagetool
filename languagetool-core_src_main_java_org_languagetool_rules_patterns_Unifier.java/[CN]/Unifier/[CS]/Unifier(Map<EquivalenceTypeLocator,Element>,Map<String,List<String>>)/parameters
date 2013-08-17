@@ -1,0 +1,2 @@
+Map<EquivalenceTypeLocator,Element> equivalenceTypes
+Map<String,List<String>> equivalenceFeatures

@@ -1,23 +1,15 @@
 {
+  initializeIfRequired();
   String[] taggerTokens;
   boolean firstWord=true;
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
-  if (morfologik == null) {
-    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(DICT_FILENAME);
-    morfologik=new DictionaryLookup(Dictionary.read(url));
-  }
-  if (manualTagger == null) {
-    manualTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(USER_DICT_FILENAME));
-  }
-  if (compoundTokenizer == null) {
-    compoundTokenizer=new GermanCompoundTokenizer();
-  }
+  final IStemmer morfologik=new DictionaryLookup(dictionary);
   for (  String word : sentenceTokens) {
     final List<AnalyzedGermanToken> l=new ArrayList<>();
-    taggerTokens=lexiconLookup(word);
+    taggerTokens=lexiconLookup(word,morfologik);
     if (firstWord && taggerTokens == null && ignoreCase) {
-      taggerTokens=lexiconLookup(word.toLowerCase());
+      taggerTokens=lexiconLookup(word.toLowerCase(),morfologik);
       firstWord=false;
     }
     if (taggerTokens != null) {
@@ -34,7 +26,7 @@
           if (StringTools.startsWithUppercase(word)) {
             lastPart=StringTools.uppercaseFirstChar(lastPart);
           }
-          taggerTokens=lexiconLookup(lastPart);
+          taggerTokens=lexiconLookup(lastPart,morfologik);
           if (taggerTokens != null) {
             tagWord(taggerTokens,word,l,compoundParts);
           }

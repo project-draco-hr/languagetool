@@ -4,7 +4,6 @@
   this.patternElements=new ArrayList<>(Objects.requireNonNull(elements,"elements cannot be null"));
   this.language=Objects.requireNonNull(language,"language cannot be null");
   this.getUnified=getUnified;
-  unifier=language.getUnifier();
   testUnification=initUnifier();
   sentStart=patternElements.size() > 0 && patternElements.get(0).isSentStart();
   if (!testUnification) {

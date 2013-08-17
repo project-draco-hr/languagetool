@@ -12,8 +12,5 @@
  else   if ("ISCII-DEVANAGARI".equals(encoding)) {
     encoding="ISCII91";
   }
-  Charset charset=Charset.forName(encoding);
-  encoder=charset.newEncoder();
-  decoder=charset.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT);
   wordChars=getWordCharsFromFile(aff);
 }

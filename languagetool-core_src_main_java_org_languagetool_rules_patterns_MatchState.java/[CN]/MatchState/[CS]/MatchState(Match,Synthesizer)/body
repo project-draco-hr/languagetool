@@ -1,0 +1,8 @@
+{
+  this.match=match;
+  this.synthesizer=synthesizer;
+  final String lemma=match.getLemma();
+  if (!StringUtils.isEmpty(lemma)) {
+    formattedToken=new AnalyzedTokenReadings(new AnalyzedToken(lemma,match.getPosTag(),lemma),0);
+  }
+}

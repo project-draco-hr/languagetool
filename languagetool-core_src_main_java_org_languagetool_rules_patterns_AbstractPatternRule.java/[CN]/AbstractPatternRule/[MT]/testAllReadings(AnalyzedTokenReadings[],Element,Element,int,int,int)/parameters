@@ -1,6 +1,0 @@
-AnalyzedTokenReadings[] tokens
-Element elem
-Element prevElement
-int tokenNo
-int firstMatchToken
-int prevSkipNext

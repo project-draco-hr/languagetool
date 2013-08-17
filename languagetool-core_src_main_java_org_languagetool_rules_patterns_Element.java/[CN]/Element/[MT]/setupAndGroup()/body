@@ -1,6 +1,0 @@
-{
-  if (andGroupSet) {
-    andGroupCheck=new boolean[andGroupList.size() + 1];
-    Arrays.fill(andGroupCheck,false);
-  }
-}

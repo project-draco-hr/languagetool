@@ -1,0 +1,11 @@
+{
+  if (dictionary == null) {
+synchronized (this) {
+      if (dictionary == null) {
+        final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(getFileName());
+        dictionary=Dictionary.read(url);
+      }
+    }
+  }
+  return dictionary;
+}

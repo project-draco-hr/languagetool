@@ -1,0 +1,10 @@
+{
+  if (element.hasAndGroup()) {
+    boolean allConditionsMatch=true;
+    for (    final boolean testValue : andGroupCheck) {
+      allConditionsMatch&=testValue;
+    }
+    return allConditionsMatch;
+  }
+  return previousValue;
+}

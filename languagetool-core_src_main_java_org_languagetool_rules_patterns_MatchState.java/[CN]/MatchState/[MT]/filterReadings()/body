@@ -1,0 +1,54 @@
+{
+  final ArrayList<AnalyzedToken> l=new ArrayList<>();
+  if (formattedToken != null) {
+    if (match.isStaticLemma()) {
+      matchedToken.leaveReading(new AnalyzedToken(matchedToken.getToken(),match.getPosTag(),formattedToken.getToken()));
+      formattedToken=matchedToken;
+    }
+    String token=formattedToken.getToken();
+    Pattern regexMatch=match.getRegexMatch();
+    String regexReplace=match.getRegexReplace();
+    if (regexMatch != null && regexReplace != null) {
+      token=regexMatch.matcher(token).replaceAll(regexReplace);
+    }
+    token=convertCase(token,token);
+    String posTag=match.getPosTag();
+    if (posTag != null) {
+      final int numRead=formattedToken.getReadingsLength();
+      if (match.isPostagRegexp()) {
+        Pattern pPosRegexMatch=match.getPosRegexMatch();
+        String posTagReplace=match.getPosTagReplace();
+        String targetPosTag;
+        for (int i=0; i < numRead; i++) {
+          final String tst=formattedToken.getAnalyzedToken(i).getPOSTag();
+          if (tst != null && pPosRegexMatch.matcher(tst).matches()) {
+            targetPosTag=formattedToken.getAnalyzedToken(i).getPOSTag();
+            if (posTagReplace != null) {
+              targetPosTag=pPosRegexMatch.matcher(targetPosTag).replaceAll(posTagReplace);
+            }
+            l.add(new AnalyzedToken(token,targetPosTag,formattedToken.getAnalyzedToken(i).getLemma()));
+            l.get(l.size() - 1).setWhitespaceBefore(formattedToken.isWhitespaceBefore());
+          }
+        }
+        if (l.isEmpty()) {
+          l.addAll(getNewToken(numRead,token));
+        }
+      }
+ else {
+        l.addAll(getNewToken(numRead,token));
+      }
+      if (formattedToken.isSentEnd()) {
+        l.add(new AnalyzedToken(formattedToken.getToken(),JLanguageTool.SENTENCE_END_TAGNAME,formattedToken.getAnalyzedToken(0).getLemma()));
+      }
+      if (formattedToken.isParaEnd()) {
+        l.add(new AnalyzedToken(formattedToken.getToken(),JLanguageTool.PARAGRAPH_END_TAGNAME,formattedToken.getAnalyzedToken(0).getLemma()));
+      }
+    }
+  }
+  if (l.isEmpty()) {
+    return formattedToken;
+  }
+  final AnalyzedTokenReadings anTkRead=new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]),formattedToken.getStartPos());
+  anTkRead.setWhitespaceBefore(formattedToken.isWhitespaceBefore());
+  return anTkRead;
+}

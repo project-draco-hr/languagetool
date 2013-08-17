@@ -1,0 +1,9 @@
+{
+  if (baseElement.hasAndGroup()) {
+    for (    ElementMatcher andMatcher : andGroup) {
+      andMatcher.resolveReference(firstMatchToken,tokens,language);
+    }
+    andGroupCheck=new boolean[element.getAndGroup().size() + 1];
+    Arrays.fill(andGroupCheck,false);
+  }
+}

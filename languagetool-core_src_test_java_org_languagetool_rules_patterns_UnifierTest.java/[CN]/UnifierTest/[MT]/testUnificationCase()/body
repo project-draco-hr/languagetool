@@ -1,17 +1,18 @@
 {
-  final Unifier uni=new Unifier();
+  final UnifierConfiguration unifierConfig=new UnifierConfiguration();
   final Element elLower=new Element("\\p{Ll}+",true,true,false);
   final Element elUpper=new Element("\\p{Lu}\\p{Ll}+",true,true,false);
   final Element elAllUpper=new Element("\\p{Lu}+$",true,true,false);
-  uni.setEquivalence("case-sensitivity","lowercase",elLower);
-  uni.setEquivalence("case-sensitivity","uppercase",elUpper);
-  uni.setEquivalence("case-sensitivity","alluppercase",elAllUpper);
+  unifierConfig.setEquivalence("case-sensitivity","lowercase",elLower);
+  unifierConfig.setEquivalence("case-sensitivity","uppercase",elUpper);
+  unifierConfig.setEquivalence("case-sensitivity","alluppercase",elAllUpper);
   final AnalyzedToken lower1=new AnalyzedToken("lower","JJR","lower");
   final AnalyzedToken lower2=new AnalyzedToken("lowercase","JJ","lowercase");
   final AnalyzedToken upper1=new AnalyzedToken("Uppercase","JJ","Uppercase");
   final AnalyzedToken upper2=new AnalyzedToken("John","NNP","John");
   final AnalyzedToken upperAll1=new AnalyzedToken("JOHN","NNP","John");
   final AnalyzedToken upperAll2=new AnalyzedToken("JAMES","NNP","James");
+  final Unifier uni=unifierConfig.createUnifier();
   final Map<String,List<String>> equiv=new HashMap<>();
   final List<String> list1=new ArrayList<>();
   list1.add("lowercase");

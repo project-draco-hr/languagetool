@@ -1,0 +1,6 @@
+{
+  final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(DICT_FILENAME);
+  dictionary=Dictionary.read(url);
+  manualTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(USER_DICT_FILENAME));
+  compoundTokenizer=new GermanCompoundTokenizer();
+}

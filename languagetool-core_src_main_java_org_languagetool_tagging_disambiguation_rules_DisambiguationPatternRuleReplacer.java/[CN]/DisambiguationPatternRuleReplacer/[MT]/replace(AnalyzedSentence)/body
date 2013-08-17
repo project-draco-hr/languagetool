@@ -1,0 +1,57 @@
+{
+  List<ElementMatcher> elementMatchers=createElementMatchers();
+  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  AnalyzedTokenReadings[] whTokens=text.getTokens();
+  final int[] tokenPositions=new int[tokens.length + 1];
+  final int patternSize=elementMatchers.size();
+  final int limit=Math.max(0,tokens.length - patternSize + 1);
+  ElementMatcher elem=null;
+  boolean changed=false;
+  for (int i=0; i < limit && !(rule.isSentStart() && i > 0); i++) {
+    boolean allElementsMatch=false;
+    unifiedTokens=null;
+    int matchingTokens=0;
+    int skipShiftTotal=0;
+    int firstMatchToken=-1;
+    int prevSkipNext=0;
+    if (rule.isTestUnification()) {
+      unifier.reset();
+    }
+    for (int k=0; k < patternSize; k++) {
+      final ElementMatcher prevElement=elem;
+      elem=elementMatchers.get(k);
+      elem.resolveReference(firstMatchToken,tokens,rule.getLanguage());
+      final int nextPos=i + k + skipShiftTotal;
+      prevMatched=false;
+      if (prevSkipNext + nextPos >= tokens.length || prevSkipNext < 0) {
+        prevSkipNext=tokens.length - (nextPos + 1);
+      }
+      final int maxTok=Math.min(nextPos + prevSkipNext,tokens.length - (patternSize - k));
+      for (int m=nextPos; m <= maxTok; m++) {
+        allElementsMatch=testAllReadings(tokens,elem,prevElement,m,firstMatchToken,prevSkipNext);
+        if (allElementsMatch) {
+          final int skipShift=m - nextPos;
+          tokenPositions[matchingTokens]=skipShift + 1;
+          prevSkipNext=elem.getElement().getSkipNext();
+          matchingTokens++;
+          skipShiftTotal+=skipShift;
+          if (firstMatchToken == -1) {
+            firstMatchToken=m;
+          }
+          break;
+        }
+      }
+      if (!allElementsMatch) {
+        break;
+      }
+    }
+    if (allElementsMatch && matchingTokens == patternSize) {
+      whTokens=executeAction(text,whTokens,unifiedTokens,firstMatchToken,matchingTokens,tokenPositions);
+      changed=true;
+    }
+  }
+  if (changed) {
+    return new AnalyzedSentence(whTokens,text.getWhPositions());
+  }
+  return text;
+}

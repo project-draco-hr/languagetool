@@ -1,0 +1,4 @@
+{
+  equivalenceTypes=new HashMap<>();
+  equivalenceFeatures=new HashMap<>();
+}

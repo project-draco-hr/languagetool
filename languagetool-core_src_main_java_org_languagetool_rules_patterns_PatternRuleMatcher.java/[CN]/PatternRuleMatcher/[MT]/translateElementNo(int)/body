@@ -3,6 +3,7 @@
     return i;
   }
   int j=0;
+  final PatternRule rule=(PatternRule)this.rule;
   for (int k=0; k < i; k++) {
     j+=rule.getElementNo().get(k);
   }

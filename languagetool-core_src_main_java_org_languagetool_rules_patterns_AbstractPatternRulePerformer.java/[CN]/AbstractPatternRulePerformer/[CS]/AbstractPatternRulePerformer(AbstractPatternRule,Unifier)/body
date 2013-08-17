@@ -1,0 +1,4 @@
+{
+  this.unifier=unifier;
+  this.rule=rule;
+}
