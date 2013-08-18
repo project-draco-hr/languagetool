@@ -1,0 +1,4 @@
+ReadWriteLock waitLock
+Language language
+int testRuns
+String sampleText
