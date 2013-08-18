@@ -1,0 +1,6 @@
+{
+  this.waitLock=waitLock;
+  this.language=language;
+  this.testRuns=testRuns;
+  this.sampleText=sampleText;
+}

@@ -3,7 +3,7 @@
   final DOMImplementationLS impl=(DOMImplementationLS)registry.getDOMImplementation("LS");
   final LSParser parser=impl.createLSParser(DOMImplementationLS.MODE_SYNCHRONOUS,null);
   parser.setFilter(new IgnoreWhitespaceFilter());
-  final DOMInputImpl domInput=new DOMInputImpl();
+  LSInput domInput=impl.createLSInput();
   domInput.setByteStream(is);
   return parser.parse(domInput);
 }
