@@ -1,6 +1,6 @@
 {
   config.getDisabledRuleIds().remove(rule);
   languageTool.enableRule(rule);
-  fireEvent(LanguageToolEvent.RULE_ENABLED,null);
+  fireEvent(LanguageToolEvent.Type.RULE_ENABLED,null);
   checkImmediately(null);
 }

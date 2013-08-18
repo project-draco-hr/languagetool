@@ -2,5 +2,5 @@
   config.getDisabledRuleIds().add(rule);
   languageTool.disableRule(rule);
   updateHighlights(rule);
-  fireEvent(LanguageToolEvent.RULE_DISABLED,null);
+  fireEvent(LanguageToolEvent.Type.RULE_DISABLED,null);
 }

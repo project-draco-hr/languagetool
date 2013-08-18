@@ -7,13 +7,13 @@
         this.currentLanguage=detectedLanguage;
         getCurrentLanguageTool();
         if (SwingUtilities.isEventDispatchThread()) {
-          fireEvent(LanguageToolEvent.LANGUAGE_CHANGED,caller);
+          fireEvent(LanguageToolEvent.Type.LANGUAGE_CHANGED,caller);
         }
  else {
           try {
             SwingUtilities.invokeAndWait(new Runnable(){
               @Override public void run(){
-                fireEvent(LanguageToolEvent.LANGUAGE_CHANGED,caller);
+                fireEvent(LanguageToolEvent.Type.LANGUAGE_CHANGED,caller);
               }
             }
 );
@@ -28,13 +28,13 @@ catch (          InvocationTargetException ex) {
     }
   }
   if (SwingUtilities.isEventDispatchThread()) {
-    fireEvent(LanguageToolEvent.CHECKING_STARTED,caller);
+    fireEvent(LanguageToolEvent.Type.CHECKING_STARTED,caller);
   }
  else {
     try {
       SwingUtilities.invokeAndWait(new Runnable(){
         @Override public void run(){
-          fireEvent(LanguageToolEvent.CHECKING_STARTED,caller);
+          fireEvent(LanguageToolEvent.Type.CHECKING_STARTED,caller);
         }
       }
 );
@@ -52,14 +52,14 @@ catch (    InvocationTargetException ex) {
       SwingUtilities.invokeLater(new Runnable(){
         @Override public void run(){
           updateHighlights(matches);
-          fireEvent(LanguageToolEvent.CHECKING_FINISHED,caller);
+          fireEvent(LanguageToolEvent.Type.CHECKING_FINISHED,caller);
         }
       }
 );
     }
  else {
       updateHighlights(matches);
-      fireEvent(LanguageToolEvent.CHECKING_FINISHED,caller);
+      fireEvent(LanguageToolEvent.Type.CHECKING_FINISHED,caller);
     }
   }
   return matches;
