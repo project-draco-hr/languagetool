@@ -1,0 +1,3 @@
+{
+  langTool=new JLanguageTool(new Demo());
+}

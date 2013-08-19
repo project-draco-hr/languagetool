@@ -1,0 +1,21 @@
+{
+  final Element elementB=makeElement("b");
+  elementB.setMaxOccurrence(2);
+  final PatternRuleMatcher matcher=getMatcher(makeElement("a"),elementB);
+  assertNoMatch("a a",matcher);
+  assertCompleteMatch("a b",matcher);
+  assertCompleteMatch("a b b",matcher);
+  assertPartialMatch("a b c",matcher);
+  assertPartialMatch("a b b c",matcher);
+  assertPartialMatch("x a b b",matcher);
+  final RuleMatch[] matches1=matcher.match(langTool.getAnalyzedSentence("a b b b"));
+  assertThat(matches1.length,is(1));
+  assertThat(matches1[0].getFromPos(),is(0));
+  assertThat(matches1[0].getToPos(),is(5));
+  final RuleMatch[] matches2=matcher.match(langTool.getAnalyzedSentence("a b b b foo a b b"));
+  assertThat(matches2.length,is(2));
+  assertThat(matches2[0].getFromPos(),is(0));
+  assertThat(matches2[0].getToPos(),is(5));
+  assertThat(matches2[1].getFromPos(),is(12));
+  assertThat(matches2[1].getToPos(),is(17));
+}

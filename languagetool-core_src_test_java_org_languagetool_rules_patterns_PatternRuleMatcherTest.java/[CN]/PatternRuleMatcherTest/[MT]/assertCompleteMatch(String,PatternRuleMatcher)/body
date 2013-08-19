@@ -1,0 +1,6 @@
+{
+  final RuleMatch[] matches=matcher.match(langTool.getAnalyzedSentence(input));
+  assertThat(matches.length,is(1));
+  assertThat(matches[0].getFromPos(),is(0));
+  assertThat(matches[0].getToPos(),is(input.length()));
+}

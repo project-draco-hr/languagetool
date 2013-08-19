@@ -1,0 +1,6 @@
+{
+  if (i == 0) {
+    throw new IllegalArgumentException("maxOccurrences may not be 0: " + i);
+  }
+  maxOccurrence=i;
+}

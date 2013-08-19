@@ -10,6 +10,10 @@
     tokenElement.setSkipNext(skipPos);
     skipPos=0;
   }
+  if (maxOccurrence != 1) {
+    tokenElement.setMaxOccurrence(maxOccurrence);
+    maxOccurrence=1;
+  }
   if (posToken != null) {
     tokenElement.setPosElement(posToken,posRegExp,posNegation);
     posToken=null;

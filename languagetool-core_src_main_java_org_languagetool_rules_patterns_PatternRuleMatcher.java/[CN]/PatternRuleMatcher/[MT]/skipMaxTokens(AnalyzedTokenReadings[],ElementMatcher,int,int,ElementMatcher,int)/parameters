@@ -1,0 +1,6 @@
+AnalyzedTokenReadings[] tokens
+ElementMatcher elem
+int firstMatchToken
+int prevSkipNext
+ElementMatcher prevElement
+int m

@@ -1,0 +1,8 @@
+{
+  final String[] parts=pattern.split(" ");
+  List<Element> elements=new ArrayList<>();
+  for (  String part : parts) {
+    elements.add(new Element(part,false,false,false));
+  }
+  return getPatternRule(elements);
+}

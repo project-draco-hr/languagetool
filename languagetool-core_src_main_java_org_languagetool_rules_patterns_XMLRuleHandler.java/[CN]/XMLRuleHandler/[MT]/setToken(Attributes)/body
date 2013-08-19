@@ -9,6 +9,9 @@
   if (attrs.getValue(SKIP) != null) {
     skipPos=Integer.parseInt(attrs.getValue(SKIP));
   }
+  if (attrs.getValue(MAX) != null) {
+    maxOccurrence=Integer.parseInt(attrs.getValue(MAX));
+  }
   elements=new StringBuilder();
   if (attrs.getValue(POSTAG) != null) {
     posToken=attrs.getValue(POSTAG);

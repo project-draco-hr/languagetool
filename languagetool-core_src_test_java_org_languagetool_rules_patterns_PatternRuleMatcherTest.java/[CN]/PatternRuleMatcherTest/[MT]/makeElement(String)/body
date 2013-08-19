@@ -1,0 +1,3 @@
+{
+  return new Element(token,false,false,false);
+}

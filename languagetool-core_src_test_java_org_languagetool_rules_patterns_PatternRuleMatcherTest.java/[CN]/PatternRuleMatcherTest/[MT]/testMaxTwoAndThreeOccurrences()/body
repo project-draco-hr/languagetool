@@ -1,0 +1,15 @@
+{
+  final Element elementA=makeElement("a");
+  elementA.setMaxOccurrence(2);
+  final Element elementB=makeElement("b");
+  elementB.setMaxOccurrence(3);
+  final PatternRuleMatcher matcher=getMatcher(elementA,elementB);
+  assertCompleteMatch("a b",matcher);
+  assertCompleteMatch("a b b",matcher);
+  assertCompleteMatch("a b b b",matcher);
+  assertNoMatch("a a",matcher);
+  assertCompleteMatch("a a b",matcher);
+  assertCompleteMatch("a a b b",matcher);
+  assertCompleteMatch("a a b b b",matcher);
+  assertNoMatch("a x b b b",matcher);
+}
