@@ -28,7 +28,7 @@
     sb.append(suggestionLeft);
     sb.append(matches[z]);
     sb.append(suggestionRight);
-    if ((z < matches.length - 1) && lastLeftSugEnd < lastLeftSugStart) {
+    if (z < matches.length - 1 && lastLeftSugEnd < lastLeftSugStart) {
       sb.append(SUGGESTION_END_TAG);
       sb.append(", ");
       sb.append(SUGGESTION_START_TAG);
