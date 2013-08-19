@@ -9,6 +9,5 @@
   assertPartialMatch("a b b b b",matcher);
   final RuleMatch[] matches1=matcher.match(langTool.getAnalyzedSentence("a b b b b"));
   assertThat(matches1.length,is(1));
-  assertThat(matches1[0].getFromPos(),is(0));
-  assertThat(matches1[0].getToPos(),is(7));
+  assertPosition(matches1[0],0,7);
 }

@@ -1,0 +1,3 @@
+RuleMatch match
+int expectedFromPos
+int expectedToPos

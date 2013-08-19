@@ -1,0 +1,4 @@
+{
+  assertThat(match.getFromPos(),is(expectedFromPos));
+  assertThat(match.getToPos(),is(expectedToPos));
+}

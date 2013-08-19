@@ -9,6 +9,9 @@
   if (attrs.getValue(SKIP) != null) {
     skipPos=Integer.parseInt(attrs.getValue(SKIP));
   }
+  if (attrs.getValue(MIN) != null) {
+    minOccurrence=Integer.parseInt(attrs.getValue(MIN));
+  }
   if (attrs.getValue(MAX) != null) {
     maxOccurrence=Integer.parseInt(attrs.getValue(MAX));
   }

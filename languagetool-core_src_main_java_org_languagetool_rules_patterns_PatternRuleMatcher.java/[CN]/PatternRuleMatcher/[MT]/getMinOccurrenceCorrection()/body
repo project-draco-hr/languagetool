@@ -1,0 +1,9 @@
+{
+  int minOccurCorrection=0;
+  for (  Element element : rule.getPatternElements()) {
+    if (element.getMinOccurrence() == 0) {
+      minOccurCorrection++;
+    }
+  }
+  return minOccurCorrection;
+}

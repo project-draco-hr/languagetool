@@ -1,0 +1,6 @@
+{
+  if (i != 0 && i != 1) {
+    throw new IllegalArgumentException("minOccurrences must be 0 or 1: " + i);
+  }
+  minOccurrence=i;
+}
