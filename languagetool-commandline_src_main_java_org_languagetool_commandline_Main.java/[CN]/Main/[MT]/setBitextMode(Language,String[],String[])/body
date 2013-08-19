@@ -1,8 +1,8 @@
 {
   bitextMode=true;
   final Language target=lt.getLanguage();
-  lt=new JLanguageTool(target,null);
-  srcLt=new JLanguageTool(sourceLang);
+  lt=new MultiThreadedJLanguageTool(target,null);
+  srcLt=new MultiThreadedJLanguageTool(sourceLang);
   lt.activateDefaultPatternRules();
   Tools.selectRules(lt,disabledRules,enabledRules);
   Tools.selectRules(srcLt,disabledRules,enabledRules);

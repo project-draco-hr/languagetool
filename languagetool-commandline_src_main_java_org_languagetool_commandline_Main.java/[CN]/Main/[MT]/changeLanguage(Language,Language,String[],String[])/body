@@ -1,6 +1,6 @@
 {
   try {
-    lt=new JLanguageTool(language,motherTongue);
+    lt=new MultiThreadedJLanguageTool(language,motherTongue);
     lt.activateDefaultPatternRules();
     lt.activateDefaultFalseFriendRules();
     Tools.selectRules(lt,disabledRules,enabledRules);

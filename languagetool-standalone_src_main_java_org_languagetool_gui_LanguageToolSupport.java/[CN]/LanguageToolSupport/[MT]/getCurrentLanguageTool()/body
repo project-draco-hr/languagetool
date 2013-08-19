@@ -2,7 +2,7 @@
   try {
     config=new Configuration(new File(System.getProperty("user.home")),CONFIG_FILE,currentLanguage);
     final ConfigurationDialog configDialog=getCurrentConfigDialog();
-    languageTool=new JLanguageTool(currentLanguage,configDialog.getMotherTongue());
+    languageTool=new MultiThreadedJLanguageTool(currentLanguage,configDialog.getMotherTongue());
     languageTool.activateDefaultPatternRules();
     languageTool.activateDefaultFalseFriendRules();
     final Set<String> disabledRules=configDialog.getDisabledRuleIds();

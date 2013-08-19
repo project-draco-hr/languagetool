@@ -1,7 +1,7 @@
 {
   try {
     prepareConfig(docLanguage);
-    langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
+    langTool=new MultiThreadedJLanguageTool(docLanguage,config.getMotherTongue());
     langTool.activateDefaultPatternRules();
     langTool.activateDefaultFalseFriendRules();
     for (    Rule rule : langTool.getAllActiveRules()) {
