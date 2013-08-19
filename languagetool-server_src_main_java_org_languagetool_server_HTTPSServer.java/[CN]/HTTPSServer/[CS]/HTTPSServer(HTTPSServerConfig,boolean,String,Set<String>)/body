@@ -16,6 +16,7 @@
     httpHandler.setMaxTextLength(config.getMaxTextLength());
     httpHandler.setAllowOriginUrl(config.getAllowOriginUrl());
     server.createContext("/",httpHandler);
+    server.setExecutor(Executors.newFixedThreadPool(HTTPServer.THREAD_POOL_SIZE));
   }
  catch (  BindException e) {
     final ResourceBundle messages=JLanguageTool.getMessageBundle();
