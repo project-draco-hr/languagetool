@@ -5,5 +5,5 @@
   for (  final String string : input) {
     inputString.append(string);
   }
-  Assert.assertEquals(input,sTokenizer.tokenize(inputString.toString()));
+  assertEquals(input,sTokenizer.tokenize(inputString.toString()));
 }

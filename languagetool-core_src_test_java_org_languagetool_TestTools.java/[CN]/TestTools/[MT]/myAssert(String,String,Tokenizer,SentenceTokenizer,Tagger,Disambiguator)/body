@@ -54,5 +54,5 @@
       }
     }
   }
-  Assert.assertEquals(expected,outputStr.toString());
+  assertEquals(expected,outputStr.toString());
 }
