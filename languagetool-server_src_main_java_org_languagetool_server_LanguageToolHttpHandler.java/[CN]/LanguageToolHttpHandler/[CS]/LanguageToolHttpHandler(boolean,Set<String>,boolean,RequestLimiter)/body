@@ -3,5 +3,4 @@
   this.allowedIps=allowedIps;
   this.internalServer=internal;
   this.requestLimiter=requestLimiter;
-  config=new Configuration(null);
 }

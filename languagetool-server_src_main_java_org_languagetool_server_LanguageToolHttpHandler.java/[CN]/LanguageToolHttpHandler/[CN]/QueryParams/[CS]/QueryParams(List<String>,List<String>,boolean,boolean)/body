@@ -1,0 +1,6 @@
+{
+  this.enabledRules=enabledRules;
+  this.disabledRules=disabledRules;
+  this.useEnabledOnly=useEnabledOnly;
+  this.useQuerySettings=useQuerySettings;
+}

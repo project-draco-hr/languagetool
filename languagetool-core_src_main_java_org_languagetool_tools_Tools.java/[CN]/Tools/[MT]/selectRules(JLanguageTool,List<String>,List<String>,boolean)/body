@@ -1,0 +1,3 @@
+{
+  selectRules(lt,disabledRuleIds.toArray(new String[disabledRuleIds.size()]),enabledRuleIds.toArray(new String[enabledRuleIds.size()]),useEnabledOnly);
+}

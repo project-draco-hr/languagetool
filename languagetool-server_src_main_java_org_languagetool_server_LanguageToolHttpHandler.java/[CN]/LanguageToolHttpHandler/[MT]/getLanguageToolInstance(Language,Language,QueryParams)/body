@@ -1,0 +1,13 @@
+{
+  final JLanguageTool newLanguageTool=new JLanguageTool(lang,motherTongue);
+  newLanguageTool.activateDefaultPatternRules();
+  newLanguageTool.activateDefaultFalseFriendRules();
+  final Configuration config=new Configuration(lang);
+  if (!params.useQuerySettings && internalServer && config.getUseGUIConfig()) {
+    configureGUI(newLanguageTool,config);
+  }
+  if (params.useQuerySettings) {
+    Tools.selectRules(newLanguageTool,params.disabledRules,params.enabledRules,params.useEnabledOnly);
+  }
+  return newLanguageTool;
+}

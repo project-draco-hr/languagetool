@@ -1,0 +1,4 @@
+List<String> enabledRules
+List<String> disabledRules
+boolean useEnabledOnly
+boolean useQuerySettings

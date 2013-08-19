@@ -1,0 +1,4 @@
+JLanguageTool lt
+List<String> disabledRuleIds
+List<String> enabledRuleIds
+boolean useEnabledOnly
