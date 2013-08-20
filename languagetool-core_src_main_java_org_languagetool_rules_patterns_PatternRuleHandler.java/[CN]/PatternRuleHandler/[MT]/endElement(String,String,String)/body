@@ -12,7 +12,11 @@
       name="";
     }
     if (phraseElementList.isEmpty()) {
-      final PatternRule rule=new PatternRule(id,language,elementList,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString());
+      final List<Element> tmpElements=new ArrayList<>();
+      for (      Element element : elementList) {
+        tmpElements.add((Element)ObjectUtils.clone(element));
+      }
+      final PatternRule rule=new PatternRule(id,language,tmpElements,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString());
       prepareRule(rule);
       rules.add(rule);
     }
@@ -24,7 +28,11 @@
       }
       for (      final ArrayList<Element> phraseElement : phraseElementList) {
         processElement(phraseElement);
-        final PatternRule rule=new PatternRule(id,language,phraseElement,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString(),phraseElementList.size() > 1);
+        final List<Element> tmpElements=new ArrayList<>();
+        for (        Element element : phraseElement) {
+          tmpElements.add((Element)ObjectUtils.clone(element));
+        }
+        final PatternRule rule=new PatternRule(id,language,tmpElements,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString(),phraseElementList.size() > 1);
         prepareRule(rule);
         rules.add(rule);
       }
@@ -116,6 +124,7 @@
   }
  else   if (MARKER.equals(qName) && inPattern) {
     endPos=tokenCountForMarker;
+    inMarker=false;
   }
  else   if ("phrase".equals(qName) && inPhrases) {
     finalizePhrase();

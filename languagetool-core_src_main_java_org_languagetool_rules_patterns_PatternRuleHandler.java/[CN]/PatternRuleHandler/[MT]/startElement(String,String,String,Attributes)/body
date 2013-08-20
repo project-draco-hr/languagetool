@@ -142,6 +142,7 @@
   }
  else   if (MARKER.equals(qName) && inPattern) {
     startPos=tokenCounter;
+    inMarker=true;
   }
  else   if (UNIFICATION.equals(qName)) {
     uFeature=attrs.getValue("feature");

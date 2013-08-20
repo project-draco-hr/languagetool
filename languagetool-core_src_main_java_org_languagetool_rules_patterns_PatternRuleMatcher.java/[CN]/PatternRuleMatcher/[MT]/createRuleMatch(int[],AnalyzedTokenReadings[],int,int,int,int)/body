@@ -9,25 +9,24 @@
     }
     correctedStPos--;
   }
-  int correctedEndPos=0;
-  if (rule.endPositionCorrection < 0) {
-    int l=0;
-    while (l > rule.endPositionCorrection) {
-      correctedEndPos-=tokenPositions[matchingTokens + l - 1];
-      l--;
-    }
-  }
   AnalyzedTokenReadings firstMatchTokenObj=tokens[firstMatchToken + correctedStPos];
   boolean startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.getToken()) && !matchConvertsCase(rule.getSuggestionMatches()) && !matchConvertsCase(rule.getSuggestionMatchesOutMsg());
   if (firstMatchTokenObj.isSentStart() && tokens.length > firstMatchToken + correctedStPos + 1) {
     firstMatchTokenObj=tokens[firstMatchToken + correctedStPos + 1];
     startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.getToken());
   }
-  int fromPos=tokens[firstMatchToken + correctedStPos].getStartPos();
-  if (errMessage.contains(SUGGESTION_START_TAG + ",") && firstMatchToken + correctedStPos >= 1) {
-    fromPos=tokens[firstMatchToken + correctedStPos - 1].getStartPos() + tokens[firstMatchToken + correctedStPos - 1].getToken().length();
+  if (firstMarkerMatchToken == -1) {
+    firstMarkerMatchToken=firstMatchToken;
   }
-  final int toPos=tokens[lastMatchToken + correctedEndPos].getStartPos() + tokens[lastMatchToken + correctedEndPos].getToken().length();
+  int fromPos=tokens[firstMarkerMatchToken].getStartPos();
+  if (errMessage.contains(SUGGESTION_START_TAG + ",") && firstMarkerMatchToken >= 1) {
+    fromPos=tokens[firstMarkerMatchToken - 1].getStartPos() + tokens[firstMarkerMatchToken - 1].getToken().length();
+  }
+  if (lastMarkerMatchToken == -1) {
+    lastMarkerMatchToken=lastMatchToken;
+  }
+  final AnalyzedTokenReadings token=tokens[Math.min(lastMarkerMatchToken,tokens.length - 1)];
+  int toPos=token.getStartPos() + token.getToken().length();
   if (fromPos < toPos) {
     if (!(errMessage.contains("<pleasespellme/>") && errMessage.contains("<mistake/>"))) {
       final String clearMsg=errMessage.replaceAll("<pleasespellme/>","").replaceAll("<mistake/>","");

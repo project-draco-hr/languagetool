@@ -12,7 +12,9 @@
   while (i < limit + minOccurCorrection && !(rule.sentStart && i > 0)) {
     boolean allElementsMatch=false;
     int firstMatchToken=-1;
+    int firstMarkerMatchToken=-1;
     int lastMatchToken=-1;
+    int lastMarkerMatchToken=-1;
     int matchingTokens=0;
     int prevSkipNext=0;
     if (rule.testUnification) {
@@ -51,6 +53,12 @@
           if (firstMatchToken == -1) {
             firstMatchToken=lastMatchToken - skipForMax;
           }
+          if (firstMarkerMatchToken == -1 && elem.getElement().isInsideMarker()) {
+            firstMarkerMatchToken=lastMatchToken - skipForMax;
+          }
+          if (elem.getElement().isInsideMarker()) {
+            lastMarkerMatchToken=lastMatchToken;
+          }
           break;
         }
       }
@@ -59,7 +67,7 @@
       }
     }
     if ((allElementsMatch && matchingTokens == patternSize) || (matchingTokens == patternSize - minOccurSkip && firstMatchToken != -1)) {
-      final RuleMatch ruleMatch=createRuleMatch(tokenPositions,tokens,firstMatchToken,lastMatchToken,matchingTokens);
+      final RuleMatch ruleMatch=createRuleMatch(tokenPositions,tokens,firstMatchToken,lastMatchToken,firstMarkerMatchToken,lastMarkerMatchToken);
       if (ruleMatch != null) {
         ruleMatches.add(ruleMatch);
       }

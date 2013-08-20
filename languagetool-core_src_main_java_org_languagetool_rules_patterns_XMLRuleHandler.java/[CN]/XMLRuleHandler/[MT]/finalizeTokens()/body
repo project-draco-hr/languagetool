@@ -37,6 +37,7 @@
   if (inUnification) {
     tokenElement.setUnification(equivalenceFeatures);
   }
+  tokenElement.setInsideMarker(inMarker);
   if (inUnificationDef) {
     language.getUnifierConfiguration().setEquivalence(uFeature,uType,tokenElement);
     elementList.clear();

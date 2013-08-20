@@ -1,0 +1,13 @@
+{
+  final Element elementA=makeElement("a");
+  final Element elementB=makeElement("b");
+  elementB.setMinOccurrence(0);
+  final Element elementC=makeElement("c");
+  final PatternRuleMatcher matcher=getMatcher(elementA,elementB,elementC);
+  final RuleMatch[] matches1=matcher.match(langTool.getAnalyzedSentence("A B C ZZZ"));
+  assertThat(matches1.length,is(1));
+  assertPosition(matches1[0],0,5);
+  final RuleMatch[] matches2=matcher.match(langTool.getAnalyzedSentence("A C ZZZ"));
+  assertThat(matches2.length,is(1));
+  assertPosition(matches2[0],0,3);
+}

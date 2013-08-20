@@ -3,6 +3,9 @@
     phraseMap=new HashMap<>();
   }
   phraseElementInit();
+  for (  Element element : elementList) {
+    element.setInsideMarker(inMarker);
+  }
   if (phraseElementList.isEmpty()) {
     phraseElementList.add(new ArrayList<>(elementList));
   }
