@@ -1,0 +1,10 @@
+{
+  final Element elementB=makeElement("b");
+  elementB.setMinOccurrence(0);
+  final PatternRuleMatcher matcher=getMatcher(makeElement("a"),elementB,makeElement("c"),makeElement("d"),makeElement("e"));
+  assertCompleteMatch("a b c d e",matcher);
+  assertCompleteMatch("a c d e",matcher);
+  assertNoMatch("a d",matcher);
+  assertNoMatch("a c b d",matcher);
+  assertNoMatch("a c b d e",matcher);
+}
