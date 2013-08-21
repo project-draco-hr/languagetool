@@ -13,7 +13,7 @@
         msgItem.setBorder(new JMenuItem().getBorder());
         popup.add(msgItem);
         popup.add(new JSeparator());
-        JMenuItem moreItem=new JMenuItem("More...");
+        JMenuItem moreItem=new JMenuItem(messages.getString("guiMore"));
         moreItem.addActionListener(new ActionListener(){
           @Override public void actionPerformed(          ActionEvent e){
             showDialog(textComponent,span.msg,span.desc,span.url);
@@ -30,7 +30,7 @@
 );
         popup.add(ignoreItem);
         if (!this.languageTool.getDisabledRules().isEmpty()) {
-          JMenu activateRuleItem=new JMenu("Activate Rule");
+          JMenu activateRuleItem=new JMenu(messages.getString("guiActivateRule"));
           int count=0;
           for (          String ruleId : languageTool.getDisabledRules()) {
             Rule rule=getRuleForId(ruleId);
