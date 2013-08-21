@@ -40,7 +40,7 @@
           }
           if (readings.getStartPos() == expectedMatchStart) {
             final AnalyzedTokenReadings r[]={readings};
-            reading=new AnalyzedSentence(r).toString();
+            reading=new AnalyzedSentence(r).toShortString(",");
             annotations=readings.getHistoricalAnnotations();
             assertTrue("Wrong marker position in the example for the rule " + id,readings.getStartPos() == expectedMatchStart && readings.getStartPos() + readings.getToken().length() == expectedMatchEnd);
             break;
@@ -53,7 +53,7 @@
           }
           if (readings.getStartPos() == expectedMatchStart) {
             final AnalyzedTokenReadings r[]={readings};
-            reading=new AnalyzedSentence(r).toString();
+            reading=new AnalyzedSentence(r).toShortString(",");
             assertTrue(readings.getStartPos() == expectedMatchStart && readings.getStartPos() + readings.getToken().length() == expectedMatchEnd);
             break;
           }

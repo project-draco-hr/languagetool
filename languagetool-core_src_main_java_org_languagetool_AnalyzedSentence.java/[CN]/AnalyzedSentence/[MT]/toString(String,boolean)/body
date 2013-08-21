@@ -1,0 +1,44 @@
+{
+  final StringBuilder sb=new StringBuilder();
+  for (  final AnalyzedTokenReadings element : tokens) {
+    if (!element.isWhitespace()) {
+      sb.append(element.getToken());
+      sb.append('[');
+    }
+    for (int j=0; j < element.getReadingsLength(); j++) {
+      final String posTag=element.getAnalyzedToken(j).getPOSTag();
+      if (element.isSentStart()) {
+        sb.append("<S>");
+      }
+ else       if (JLanguageTool.SENTENCE_END_TAGNAME.equals(element.getAnalyzedToken(j).getPOSTag())) {
+        sb.append("</S>");
+      }
+ else       if (JLanguageTool.PARAGRAPH_END_TAGNAME.equals(element.getAnalyzedToken(j).getPOSTag())) {
+        sb.append("<P/>");
+      }
+ else       if (element.getAnalyzedToken(j) != null && posTag == null && !(element.getClass().getName().equals("org.languagetool.tagging.de.AnalyzedGermanTokenReadings"))) {
+        sb.append(element.getAnalyzedToken(j).getToken());
+      }
+ else {
+        if (!element.isWhitespace()) {
+          if (includeChunks) {
+            sb.append(element.getAnalyzedToken(j).toFullString());
+          }
+ else {
+            sb.append(element.getAnalyzedToken(j).toString());
+          }
+          if (j < element.getReadingsLength() - 1) {
+            sb.append(readingDelimiter);
+          }
+        }
+      }
+    }
+    if (!element.isWhitespace()) {
+      sb.append(']');
+    }
+ else {
+      sb.append(' ');
+    }
+  }
+  return sb.toString();
+}

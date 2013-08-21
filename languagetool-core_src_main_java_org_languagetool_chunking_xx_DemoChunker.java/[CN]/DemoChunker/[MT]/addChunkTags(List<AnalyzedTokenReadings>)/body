@@ -1,0 +1,10 @@
+{
+  for (  AnalyzedTokenReadings tokenReading : tokenReadings) {
+    if ("chunkbar".equals(tokenReading.getToken())) {
+      List<AnalyzedToken> readings=tokenReading.getReadings();
+      for (      AnalyzedToken reading : readings) {
+        reading.setChunkTag(new ChunkTag("B-NP-singular"));
+      }
+    }
+  }
+}

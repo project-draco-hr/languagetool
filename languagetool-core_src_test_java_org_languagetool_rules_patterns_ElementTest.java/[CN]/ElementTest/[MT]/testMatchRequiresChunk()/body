@@ -1,0 +1,7 @@
+{
+  Element element=new Element("token",false,false,false);
+  element.setChunkElement(new ChunkTag("chunk1"));
+  assertTrue(element.isMatched(makeToken("token","pos","lemma","chunk1")));
+  assertFalse(element.isMatched(makeToken("token","pos","lemma","chunk2")));
+  assertFalse(element.isMatched(makeToken("token","pos","lemma",null)));
+}

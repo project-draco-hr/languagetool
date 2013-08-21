@@ -1,0 +1,6 @@
+{
+  if (chunkToken == null) {
+    return true;
+  }
+  return chunkToken.equals(token.getChunkTag());
+}

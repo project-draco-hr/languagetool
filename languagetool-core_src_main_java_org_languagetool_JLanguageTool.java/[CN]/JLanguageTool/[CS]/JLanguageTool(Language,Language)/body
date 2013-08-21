@@ -12,4 +12,5 @@
   tagger=language.getTagger();
   sentenceTokenizer=language.getSentenceTokenizer();
   wordTokenizer=language.getWordTokenizer();
+  chunker=language.getChunker();
 }

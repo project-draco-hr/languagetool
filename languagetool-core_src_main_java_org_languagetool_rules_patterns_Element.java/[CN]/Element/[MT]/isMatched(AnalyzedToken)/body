@@ -4,10 +4,10 @@
   }
   final boolean matched;
   if (testString) {
-    matched=(isStringTokenMatched(token) ^ negation) && (isPosTokenMatched(token) ^ posNegation);
+    matched=(isStringTokenMatched(token) ^ negation) && (isPosTokenMatched(token) ^ posNegation) && isChunkTokenMatched(token);
   }
  else {
-    matched=(!negation) && (isPosTokenMatched(token) ^ posNegation);
+    matched=(!negation) && (isPosTokenMatched(token) ^ posNegation) && isChunkTokenMatched(token);
   }
   return matched;
 }

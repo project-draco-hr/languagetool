@@ -21,6 +21,9 @@
     posRegExp=YES.equals(attrs.getValue(POSTAG_REGEXP));
     posNegation=YES.equals(attrs.getValue(NEGATE_POS));
   }
+  if (attrs.getValue(CHUNKTAG) != null) {
+    chunkTag=new ChunkTag(attrs.getValue(CHUNKTAG));
+  }
   regExpression=YES.equals(attrs.getValue(REGEXP));
   if (attrs.getValue(SPACEBEFORE) != null) {
     tokenSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));

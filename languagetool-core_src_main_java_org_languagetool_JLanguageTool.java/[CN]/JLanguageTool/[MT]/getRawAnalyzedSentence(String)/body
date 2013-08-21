@@ -8,6 +8,9 @@
     }
   }
   final List<AnalyzedTokenReadings> aTokens=tagger.tag(tokens);
+  if (chunker != null) {
+    chunker.addChunkTags(aTokens);
+  }
   final int numTokens=aTokens.size();
   int posFix=0;
   for (int i=1; i < numTokens; i++) {

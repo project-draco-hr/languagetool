@@ -1,0 +1,7 @@
+{
+  AnalyzedToken analyzedToken=new AnalyzedToken(token,pos,lemma);
+  if (chunk != null) {
+    analyzedToken.setChunkTag(new ChunkTag(chunk));
+  }
+  return analyzedToken;
+}

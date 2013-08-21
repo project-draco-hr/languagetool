@@ -15,5 +15,8 @@
   if (an.getPOSTag() != null) {
     found&=an.getPOSTag().equals(this.posTag);
   }
+  if (an.getChunkTag() != null) {
+    found&=an.getChunkTag().equals(this.chunkTag);
+  }
   return found;
 }

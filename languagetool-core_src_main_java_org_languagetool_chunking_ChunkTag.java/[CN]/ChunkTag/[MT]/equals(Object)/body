@@ -1,0 +1,6 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  ChunkTag other=(ChunkTag)o;
+  return chunkTag.equals(other.chunkTag);
+}
