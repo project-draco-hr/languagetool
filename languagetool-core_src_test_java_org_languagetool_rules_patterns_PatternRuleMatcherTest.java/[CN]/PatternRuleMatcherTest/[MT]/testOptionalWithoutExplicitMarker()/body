@@ -4,10 +4,10 @@
   elementB.setMinOccurrence(0);
   final Element elementC=makeElement("c");
   final PatternRuleMatcher matcher=getMatcher(elementA,elementB,elementC);
-  final RuleMatch[] matches1=matcher.match(langTool.getAnalyzedSentence("A B C ZZZ"));
+  final RuleMatch[] matches1=getMatches("A B C ZZZ",matcher);
   assertThat(matches1.length,is(1));
   assertPosition(matches1[0],0,5);
-  final RuleMatch[] matches2=matcher.match(langTool.getAnalyzedSentence("A C ZZZ"));
+  final RuleMatch[] matches2=getMatches("A C ZZZ",matcher);
   assertThat(matches2.length,is(1));
   assertPosition(matches2[0],0,3);
 }

@@ -4,7 +4,7 @@
   final Element elementC=makeElement("c");
   elementC.setMinOccurrence(0);
   final PatternRuleMatcher matcher=getMatcher(elementA,makeElement("b"),elementC,makeElement("d"),makeElement("e"));
-  final RuleMatch[] matches=matcher.match(langTool.getAnalyzedSentence("a b c d e"));
+  final RuleMatch[] matches=getMatches("a b c d e",matcher);
   assertThat(matches.length,is(2));
   assertPosition(matches[0],0,9);
   assertPosition(matches[1],2,9);

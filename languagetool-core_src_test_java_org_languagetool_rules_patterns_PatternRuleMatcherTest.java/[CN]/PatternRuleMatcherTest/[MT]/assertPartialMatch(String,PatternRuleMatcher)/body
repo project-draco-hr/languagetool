@@ -1,5 +1,5 @@
 {
-  final RuleMatch[] matches=matcher.match(langTool.getAnalyzedSentence(input));
+  final RuleMatch[] matches=getMatches(input,matcher);
   assertThat(matches.length,is(1));
   assertTrue("Expected partial match, got '" + matches[0] + "' for '"+ input+ "'",matches[0].getFromPos() > 0 || matches[0].getToPos() < input.length());
 }

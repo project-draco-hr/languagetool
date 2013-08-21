@@ -1,5 +1,5 @@
 {
-  final RuleMatch[] matches=matcher.match(langTool.getAnalyzedSentence(input));
+  final RuleMatch[] matches=getMatches(input,matcher);
   assertThat("Got matches: " + Arrays.toString(matches),matches.length,is(1));
   assertThat("Wrong start position",matches[0].getFromPos(),is(0));
   assertThat("Wrong end position",matches[0].getToPos(),is(input.length()));

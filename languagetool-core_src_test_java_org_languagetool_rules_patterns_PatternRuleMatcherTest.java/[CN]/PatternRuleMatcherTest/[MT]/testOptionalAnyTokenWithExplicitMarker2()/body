@@ -7,10 +7,10 @@
   final Element elementC=makeElement("bike");
   elementC.setInsideMarker(false);
   final PatternRuleMatcher matcher=getMatcher(elementA,elementB,elementC);
-  final RuleMatch[] matches1=matcher.match(langTool.getAnalyzedSentence("the nice bike ZZZ"));
+  final RuleMatch[] matches1=getMatches("the nice bike ZZZ",matcher);
   assertThat(matches1.length,is(1));
   assertPosition(matches1[0],0,8);
-  final RuleMatch[] matches2=matcher.match(langTool.getAnalyzedSentence("the bike ZZZ"));
+  final RuleMatch[] matches2=getMatches("the bike ZZZ",matcher);
   assertThat(matches2.length,is(1));
   assertPosition(matches2[0],0,3);
 }

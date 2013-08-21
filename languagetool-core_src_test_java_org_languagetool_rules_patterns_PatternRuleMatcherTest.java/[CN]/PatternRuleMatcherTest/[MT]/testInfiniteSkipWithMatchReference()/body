@@ -19,11 +19,11 @@
   assertNoMatch("b x a",matcher);
   assertNoMatch("a x x b",matcher);
   assertNoMatch("b x x a",matcher);
-  final RuleMatch[] matches=matcher.match(langTool.getAnalyzedSentence("a foo a and b foo b"));
+  final RuleMatch[] matches=getMatches("a foo a and b foo b",matcher);
   assertThat(matches.length,is(2));
   assertPosition(matches[0],0,7);
   assertPosition(matches[1],12,19);
-  final RuleMatch[] matches2=matcher.match(langTool.getAnalyzedSentence("xx a b x x x b a"));
+  final RuleMatch[] matches2=getMatches("xx a b x x x b a",matcher);
   assertThat(matches2.length,is(2));
   assertPosition(matches2[0],3,16);
   assertPosition(matches2[1],5,14);

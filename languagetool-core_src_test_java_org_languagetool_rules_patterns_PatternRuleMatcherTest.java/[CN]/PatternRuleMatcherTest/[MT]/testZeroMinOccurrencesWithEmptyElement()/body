@@ -10,7 +10,7 @@
   assertCompleteMatch("a c",matcher);
   assertCompleteMatch("a b c",matcher);
   assertCompleteMatch("a X c",matcher);
-  final RuleMatch[] matches=matcher.match(langTool.getAnalyzedSentence("a b c FOO a X c"));
+  final RuleMatch[] matches=getMatches("a b c FOO a X c",matcher);
   assertThat(matches.length,is(2));
   assertPosition(matches[0],0,5);
   assertPosition(matches[1],10,15);
