@@ -11,7 +11,8 @@
     final LanguageToolHttpHandler httpHandler=new LanguageToolHttpHandler(config.isVerbose(),allowedIps,runInternally,null);
     httpHandler.setAllowOriginUrl(config.getAllowOriginUrl());
     server.createContext("/",httpHandler);
-    server.setExecutor(Executors.newFixedThreadPool(THREAD_POOL_SIZE));
+    executorService=Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+    server.setExecutor(executorService);
   }
  catch (  Exception e) {
     final ResourceBundle messages=JLanguageTool.getMessageBundle();

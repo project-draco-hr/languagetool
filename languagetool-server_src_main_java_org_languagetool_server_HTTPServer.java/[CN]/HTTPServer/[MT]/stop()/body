@@ -1,0 +1,6 @@
+{
+  super.stop();
+  if (executorService != null) {
+    executorService.shutdownNow();
+  }
+}
