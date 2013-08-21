@@ -6,7 +6,7 @@
   if (e.hasAndGroup())   return false;
   if (e.getExceptionList() != null)   return false;
   if (e.isReferenceElement())   return false;
-  if (e.isSentStart())   return false;
+  if (e.isSentenceStart())   return false;
   String token=e.getString();
   String[] ors=token.split("\\|");
   for (  String s : ors) {

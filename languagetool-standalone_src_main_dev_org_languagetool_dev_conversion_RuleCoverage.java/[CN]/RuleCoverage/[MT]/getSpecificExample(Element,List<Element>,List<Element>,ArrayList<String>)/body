@@ -73,7 +73,7 @@
     }
     exceptions.addAll(prevExceptions);
     ArrayList<ArrayList<Pattern>> exceptionAttributes=getExceptionAttributes(exceptions);
-    if (e.isSentStart()) {
+    if (e.isSentenceStart()) {
       return "";
     }
     if (isJustToken(e)) {
