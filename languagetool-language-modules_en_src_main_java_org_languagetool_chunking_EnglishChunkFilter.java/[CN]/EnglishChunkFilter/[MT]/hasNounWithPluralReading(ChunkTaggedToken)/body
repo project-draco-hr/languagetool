@@ -1,0 +1,10 @@
+{
+  if (token.getReadings() != null) {
+    for (    AnalyzedToken analyzedToken : token.getReadings().getReadings()) {
+      if ("NNS".equals(analyzedToken.getPOSTag())) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

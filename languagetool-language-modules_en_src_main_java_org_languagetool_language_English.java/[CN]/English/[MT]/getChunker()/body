@@ -1,0 +1,6 @@
+{
+  if (chunker == null) {
+    chunker=new EnglishChunker();
+  }
+  return chunker;
+}

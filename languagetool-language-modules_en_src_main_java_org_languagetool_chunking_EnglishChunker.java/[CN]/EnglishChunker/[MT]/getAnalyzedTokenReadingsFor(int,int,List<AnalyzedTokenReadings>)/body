@@ -1,0 +1,16 @@
+{
+  int pos=0;
+  for (  AnalyzedTokenReadings tokenReading : tokenReadings) {
+    String token=tokenReading.getToken();
+    if (token.trim().isEmpty()) {
+      continue;
+    }
+    int tokenStart=pos;
+    int tokenEnd=pos + token.length();
+    if (tokenStart == startPos && tokenEnd == endPos) {
+      return tokenReading;
+    }
+    pos=tokenEnd;
+  }
+  return null;
+}

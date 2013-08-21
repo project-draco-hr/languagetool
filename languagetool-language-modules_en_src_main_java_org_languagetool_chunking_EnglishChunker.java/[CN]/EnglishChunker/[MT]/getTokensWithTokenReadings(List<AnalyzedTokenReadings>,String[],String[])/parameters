@@ -1,0 +1,3 @@
+List<AnalyzedTokenReadings> tokenReadings
+String[] tokens
+String[] chunkTags

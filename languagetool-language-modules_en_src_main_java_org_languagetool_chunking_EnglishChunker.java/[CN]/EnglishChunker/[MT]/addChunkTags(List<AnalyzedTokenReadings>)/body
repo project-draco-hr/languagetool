@@ -1,0 +1,5 @@
+{
+  List<ChunkTaggedToken> origChunkTags=getChunkTagsForReadings(tokenReadings);
+  List<ChunkTaggedToken> chunkTags=chunkFilter.filter(origChunkTags);
+  assignChunksToReadings(chunkTags);
+}

@@ -1,0 +1,16 @@
+{
+  StringTokenizer tokenizer=new StringTokenizer(sentence," ",true);
+  List<AnalyzedTokenReadings> result=new ArrayList<>();
+  int pos=0;
+  while (tokenizer.hasMoreTokens()) {
+    String token=tokenizer.nextToken();
+    if (token.trim().isEmpty()) {
+      result.add(new AnalyzedTokenReadings(new AnalyzedToken(token,null,null),pos));
+    }
+ else {
+      result.add(new AnalyzedTokenReadings(new AnalyzedToken(token,"fake","fake"),pos));
+    }
+    pos+=token.length();
+  }
+  return result;
+}

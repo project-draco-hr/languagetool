@@ -1,0 +1,4 @@
+{
+  List<ChunkTaggedToken> tokens=makeTokens(input);
+  assertChunks(tokens,expected);
+}

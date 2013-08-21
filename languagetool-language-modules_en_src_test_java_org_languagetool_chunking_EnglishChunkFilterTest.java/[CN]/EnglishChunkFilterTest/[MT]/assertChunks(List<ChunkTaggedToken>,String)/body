@@ -1,0 +1,5 @@
+{
+  EnglishChunkFilter filter=new EnglishChunkFilter();
+  List<ChunkTaggedToken> result=filter.filter(tokens);
+  assertThat(StringUtils.join(result," "),is(expected));
+}

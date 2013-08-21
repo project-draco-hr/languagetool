@@ -1,0 +1,9 @@
+{
+  JLanguageTool langTool=new JLanguageTool(new English());
+  AnalyzedSentence analyzedSentence=langTool.getAnalyzedSentence("I'll be there");
+  AnalyzedTokenReadings[] tokens=analyzedSentence.getTokens();
+  assertThat(tokens[1].getReadings().get(0).getChunkTag(),is(new ChunkTag("B-NP-singular")));
+  assertNull(tokens[2].getReadings().get(0).getChunkTag());
+  assertNull(tokens[3].getReadings().get(0).getChunkTag());
+  assertThat(tokens[5].getReadings().get(0).getChunkTag(),is(new ChunkTag("I-VP")));
+}

@@ -1,0 +1,14 @@
+{
+  List<ChunkTaggedToken> result=new ArrayList<>();
+  int i=0;
+  int pos=0;
+  for (  String chunkTag : chunkTags) {
+    int startPos=pos;
+    int endPos=startPos + tokens[i].length();
+    AnalyzedTokenReadings readings=getAnalyzedTokenReadingsFor(startPos,endPos,tokenReadings);
+    result.add(new ChunkTaggedToken(tokens[i],new ChunkTag(chunkTag),readings));
+    pos=endPos;
+    i++;
+  }
+  return result;
+}

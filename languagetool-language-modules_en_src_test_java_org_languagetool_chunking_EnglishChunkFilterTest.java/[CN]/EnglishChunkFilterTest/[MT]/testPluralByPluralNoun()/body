@@ -1,0 +1,8 @@
+{
+  String input="I/X have/N-VP ten/B-NP books/I-NP ./.";
+  List<ChunkTaggedToken> tokens=makeTokens(input);
+  tokens.remove(3);
+  AnalyzedTokenReadings readings=new AnalyzedTokenReadings(Arrays.asList(new AnalyzedToken("books","NNS","book"),new AnalyzedToken("books","VBZ","book")),0);
+  tokens.add(3,new ChunkTaggedToken("books",new ChunkTag("I-NP"),readings));
+  assertChunks(tokens,"I/X have/N-VP ten/B-NP-plural books/I-NP-plural ./.");
+}

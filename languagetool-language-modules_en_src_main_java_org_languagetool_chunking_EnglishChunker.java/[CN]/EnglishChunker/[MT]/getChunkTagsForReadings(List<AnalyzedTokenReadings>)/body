@@ -1,0 +1,10 @@
+{
+  String sentence=getSentence(tokenReadings);
+  String[] tokens=tokenizer.tokenize(sentence);
+  String[] posTags=posTagger.tag(tokens);
+  String[] chunkTags=chunker.chunk(tokens,posTags);
+  if (tokens.length != posTags.length || tokens.length != chunkTags.length) {
+    throw new RuntimeException("Length of results must be the same: " + tokens.length + ", "+ posTags.length+ ", "+ chunkTags.length);
+  }
+  return getTokensWithTokenReadings(tokenReadings,tokens,chunkTags);
+}

@@ -1,0 +1,3 @@
+{
+  assertChunks("He/B-NP owns/B-VP a/B-NP nice/I-NP house/I-NP in/X Berlin/B-NP ./.","He/B-NP-singular owns/B-VP a/B-NP-singular nice/I-NP-singular house/I-NP-singular in/X Berlin/B-NP-singular ./.");
+}

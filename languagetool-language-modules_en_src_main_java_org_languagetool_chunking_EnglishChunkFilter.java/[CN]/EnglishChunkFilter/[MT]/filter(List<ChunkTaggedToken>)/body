@@ -1,0 +1,35 @@
+{
+  List<ChunkTaggedToken> result=new ArrayList<>();
+  String newChunkTag=null;
+  int i=0;
+  for (  ChunkTaggedToken taggedToken : tokens) {
+    if (isBeginningOfNounPhrase(taggedToken)) {
+      ChunkType chunkType=getChunkType(tokens,i);
+      if (chunkType == ChunkType.SINGULAR) {
+        result.add(new ChunkTaggedToken(taggedToken.getToken(),new ChunkTag("B-NP-singular"),taggedToken.getReadings()));
+        newChunkTag="I-NP-singular";
+      }
+ else       if (chunkType == ChunkType.PLURAL) {
+        result.add(new ChunkTaggedToken(taggedToken.getToken(),new ChunkTag("B-NP-plural"),taggedToken.getReadings()));
+        newChunkTag="I-NP-plural";
+      }
+ else {
+        throw new IllegalStateException("Unknown chunk type: " + chunkType);
+      }
+    }
+ else     if (isContinuationOfNounPhrase(taggedToken)) {
+      if (newChunkTag != null) {
+        result.add(new ChunkTaggedToken(taggedToken.getToken(),new ChunkTag(newChunkTag),taggedToken.getReadings()));
+      }
+ else {
+        result.add(taggedToken);
+      }
+    }
+ else {
+      newChunkTag=null;
+      result.add(taggedToken);
+    }
+    i++;
+  }
+  return result;
+}

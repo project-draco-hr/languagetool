@@ -1,0 +1,12 @@
+{
+  List<ChunkTaggedToken> result=new ArrayList<>();
+  for (  String token : tokensAsString.split(" ")) {
+    String[] parts=token.split("/");
+    if (parts.length != 2) {
+      throw new RuntimeException("Invalid token, form 'x/y' required: " + token);
+    }
+    ChunkTag chunkTag=new ChunkTag(parts[1]);
+    result.add(new ChunkTaggedToken(parts[0],chunkTag,null));
+  }
+  return result;
+}
