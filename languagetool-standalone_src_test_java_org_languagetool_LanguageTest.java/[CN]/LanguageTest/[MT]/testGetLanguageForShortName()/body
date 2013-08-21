@@ -1,4 +1,6 @@
 {
+  assertEquals("en-US",Language.getLanguageForShortName("en-us").getShortNameWithVariant());
+  assertEquals("en-US",Language.getLanguageForShortName("EN-US").getShortNameWithVariant());
   assertEquals("en-US",Language.getLanguageForShortName("en-US").getShortNameWithVariant());
   assertEquals("de",Language.getLanguageForShortName("de").getShortNameWithVariant());
   try {
