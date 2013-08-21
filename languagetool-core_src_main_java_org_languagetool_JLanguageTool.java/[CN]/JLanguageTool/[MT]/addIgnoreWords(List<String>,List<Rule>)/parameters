@@ -1,2 +1,2 @@
-List<String> suggestionTokens
+List<String> ignoreWords
 List<Rule> allActiveRules

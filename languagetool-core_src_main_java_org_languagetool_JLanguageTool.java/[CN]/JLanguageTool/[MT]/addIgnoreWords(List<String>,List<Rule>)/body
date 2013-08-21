@@ -1,7 +1,7 @@
 {
   for (  Rule activeRule : allActiveRules) {
     if (activeRule instanceof SpellingCheckRule) {
-      ((SpellingCheckRule)activeRule).addIgnoreTokens(suggestionTokens);
+      ((SpellingCheckRule)activeRule).addIgnoreTokens(ignoreWords);
     }
   }
 }
