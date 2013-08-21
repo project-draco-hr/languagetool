@@ -1,3 +1,0 @@
-{
-  return KeyStroke.getKeyStroke(keyEvent,InputEvent.CTRL_MASK);
-}
