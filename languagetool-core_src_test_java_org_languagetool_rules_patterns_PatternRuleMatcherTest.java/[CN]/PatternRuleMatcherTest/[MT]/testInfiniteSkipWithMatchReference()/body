@@ -1,0 +1,30 @@
+{
+  final Element elementAB=new Element("a|b",false,true,false);
+  elementAB.setSkipNext(-1);
+  final Element elementC=makeElement("\\0");
+  Match match=new Match(null,null,false,null,null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);
+  match.setTokenRef(0);
+  match.setInMessageOnly(true);
+  elementC.setMatch(match);
+  final PatternRuleMatcher matcher=getMatcher(elementAB,elementC);
+  assertCompleteMatch("a a",matcher);
+  assertCompleteMatch("b b",matcher);
+  assertCompleteMatch("a x a",matcher);
+  assertCompleteMatch("b x b",matcher);
+  assertCompleteMatch("a x x a",matcher);
+  assertCompleteMatch("b x x b",matcher);
+  assertNoMatch("a b",matcher);
+  assertNoMatch("b a",matcher);
+  assertNoMatch("b x a",matcher);
+  assertNoMatch("b x a",matcher);
+  assertNoMatch("a x x b",matcher);
+  assertNoMatch("b x x a",matcher);
+  final RuleMatch[] matches=matcher.match(langTool.getAnalyzedSentence("a foo a and b foo b"));
+  assertThat(matches.length,is(2));
+  assertPosition(matches[0],0,7);
+  assertPosition(matches[1],12,19);
+  final RuleMatch[] matches2=matcher.match(langTool.getAnalyzedSentence("xx a b x x x b a"));
+  assertThat(matches2.length,is(2));
+  assertPosition(matches2[0],3,16);
+  assertPosition(matches2[1],5,14);
+}

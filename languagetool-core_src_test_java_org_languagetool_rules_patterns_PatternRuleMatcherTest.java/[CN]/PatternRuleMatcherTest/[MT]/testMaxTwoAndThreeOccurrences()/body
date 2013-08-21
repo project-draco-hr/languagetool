@@ -8,8 +8,17 @@
   assertCompleteMatch("a b b",matcher);
   assertCompleteMatch("a b b b",matcher);
   assertNoMatch("a a",matcher);
-  assertCompleteMatch("a a b",matcher);
-  assertCompleteMatch("a a b b",matcher);
-  assertCompleteMatch("a a b b b",matcher);
   assertNoMatch("a x b b b",matcher);
+  final RuleMatch[] matches2=matcher.match(langTool.getAnalyzedSentence("a a b"));
+  assertThat(matches2.length,is(2));
+  assertPosition(matches2[0],0,5);
+  assertPosition(matches2[1],2,5);
+  final RuleMatch[] matches3=matcher.match(langTool.getAnalyzedSentence("a a b b"));
+  assertThat(matches3.length,is(2));
+  assertPosition(matches3[0],0,7);
+  assertPosition(matches3[1],2,7);
+  final RuleMatch[] matches4=matcher.match(langTool.getAnalyzedSentence("a a b b b"));
+  assertThat(matches4.length,is(2));
+  assertPosition(matches4[0],0,9);
+  assertPosition(matches4[1],2,9);
 }

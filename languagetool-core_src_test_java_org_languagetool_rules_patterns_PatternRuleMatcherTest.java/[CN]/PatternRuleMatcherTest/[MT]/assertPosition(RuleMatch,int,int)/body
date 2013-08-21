@@ -1,4 +1,4 @@
 {
-  assertThat(match.getFromPos(),is(expectedFromPos));
-  assertThat(match.getToPos(),is(expectedToPos));
+  assertThat("Wrong start position",match.getFromPos(),is(expectedFromPos));
+  assertThat("Wrong end position",match.getToPos(),is(expectedToPos));
 }
