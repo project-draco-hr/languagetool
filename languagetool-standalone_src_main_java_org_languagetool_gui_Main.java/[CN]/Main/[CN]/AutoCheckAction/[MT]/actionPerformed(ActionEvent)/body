@@ -1,4 +1,5 @@
 {
   enable=!enable;
+  putValue(Action.SELECTED_KEY,enable);
   ltSupport.setBackgroundCheckEnabled(enable);
 }

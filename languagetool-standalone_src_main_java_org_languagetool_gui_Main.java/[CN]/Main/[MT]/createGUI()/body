@@ -71,8 +71,7 @@
   spellbutton.setHideActionText(true);
   spellbutton.setFocusable(false);
   toolbar.add(spellbutton);
-  JToggleButton autospellbutton=new JToggleButton("AutoCheck",true);
-  autospellbutton.setAction(autoCheckAction);
+  JToggleButton autospellbutton=new JToggleButton(autoCheckAction);
   autospellbutton.setHideActionText(true);
   autospellbutton.setFocusable(false);
   toolbar.add(autospellbutton);

@@ -3,10 +3,11 @@
   putValue(Action.SHORT_DESCRIPTION,messages.getString("autoCheckTextShortDesc"));
   putValue(Action.LONG_DESCRIPTION,messages.getString("autoCheckTextLongDesc"));
   putValue(Action.MNEMONIC_KEY,getMnemonic("autoCheckText"));
-  this.enable=initial;
   Image img;
   img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("sc_spellonline.png"));
   putValue(Action.SMALL_ICON,new ImageIcon(img));
   img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("lc_spellonline.png"));
   putValue(Action.LARGE_ICON_KEY,new ImageIcon(img));
+  enable=initial;
+  putValue(Action.SELECTED_KEY,enable);
 }

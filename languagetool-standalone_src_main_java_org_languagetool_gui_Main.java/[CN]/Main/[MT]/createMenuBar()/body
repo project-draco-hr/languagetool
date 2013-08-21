@@ -16,9 +16,7 @@
   fileMenu.addSeparator();
   fileMenu.add(new QuitAction());
   grammarMenu.add(checkAction);
-  JCheckBoxMenuItem item=new JCheckBoxMenuItem();
-  item.setSelected(true);
-  item.setAction(autoCheckAction);
+  JCheckBoxMenuItem item=new JCheckBoxMenuItem(autoCheckAction);
   grammarMenu.add(item);
   grammarMenu.add(new CheckClipboardAction());
   grammarMenu.add(new TagTextAction());
