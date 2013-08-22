@@ -1,5 +1,5 @@
 {
-  int poolSize=this.threadPoolSize;
+  int poolSize=threadPoolSize;
   if (poolSize <= 0) {
     return Runtime.getRuntime().availableProcessors();
   }

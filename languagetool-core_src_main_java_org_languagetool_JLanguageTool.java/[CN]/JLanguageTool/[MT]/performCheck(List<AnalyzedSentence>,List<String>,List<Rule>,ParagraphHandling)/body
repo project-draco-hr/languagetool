@@ -1,5 +1,5 @@
 {
-  Callable<List<RuleMatch>> matcher=new TextCheckCallable(allRules,sentences,analyzedSentences,paraMode,0,0,1);
+  final Callable<List<RuleMatch>> matcher=new TextCheckCallable(allRules,sentences,analyzedSentences,paraMode,0,0,1);
   try {
     return matcher.call();
   }

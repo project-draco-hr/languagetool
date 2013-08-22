@@ -11,8 +11,8 @@
   printIfVerbose(allRules.size() + " rules activated for language " + language);
   sentenceCount=sentences.size();
   unknownWords=new HashSet<>();
-  final List<AnalyzedSentence> analyzedSentences=this.analyzeSentences(sentences);
-  List<RuleMatch> ruleMatches=performCheck(analyzedSentences,sentences,allRules,paraMode);
+  final List<AnalyzedSentence> analyzedSentences=analyzeSentences(sentences);
+  final List<RuleMatch> ruleMatches=performCheck(analyzedSentences,sentences,allRules,paraMode);
   if (!ruleMatches.isEmpty() && !paraMode.equals(ParagraphHandling.ONLYNONPARA)) {
     for (    final Rule rule : allRules) {
       if (rule.isParagraphBackTrack() && (rule.getMatches() != null)) {
