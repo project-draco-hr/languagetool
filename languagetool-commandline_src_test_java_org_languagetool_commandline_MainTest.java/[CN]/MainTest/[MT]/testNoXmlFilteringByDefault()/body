@@ -1,5 +1,5 @@
 {
-  final File input=populateFile("This < is is > filtered.");
+  final File input=writeToTempFile("This < is is > filtered.");
   final String[] args=new String[]{input.getAbsolutePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
