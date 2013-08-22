@@ -1,5 +1,5 @@
 {
   final JLanguageTool tool=new JLanguageTool(new English());
-  assertEquals("<S> This[this/DT]  is[be/VBZ]  a[a/DT]  test??ed[tested/JJ,test/VBD,test/VBN,test??ed]  sentence[sentence/NN,sentence/VB,sentence/VBP].[./.,</S>]",tool.getAnalyzedSentence("This is a test\u00aded sentence.").toString());
+  assertEquals("<S> This[this/DT]  is[be/VBZ/B-VP]  a[a/DT/B-NP-singular]  test??ed[tested/JJ/I-NP-singular,test/VBD/I-NP-singular,test/VBN/I-NP-singular,test??ed]  sentence[sentence/NN/I-NP-singular,sentence/VB/I-NP-singular,sentence/VBP/I-NP-singular].[././O,</S>]",tool.getAnalyzedSentence("This is a test\u00aded sentence.").toString());
   assertEquals("<S> </S><P/> ",tool.getAnalyzedSentence("\n").toString());
 }
