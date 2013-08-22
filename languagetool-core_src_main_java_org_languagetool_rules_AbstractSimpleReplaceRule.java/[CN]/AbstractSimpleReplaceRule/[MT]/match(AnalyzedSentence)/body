@@ -1,7 +1,6 @@
 {
   List<RuleMatch> ruleMatches=new ArrayList<>();
   AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  List<String> replacements=new ArrayList<>();
   for (  AnalyzedTokenReadings tokenReadings : tokens) {
     String originalTokenStr=tokenReadings.getToken();
     String tokenString=cleanup(originalTokenStr);
@@ -19,6 +18,7 @@
     }
     List<String> possibleReplacements=wrongWords.get(tokenString);
     if (possibleReplacements != null && possibleReplacements.size() > 0) {
+      List<String> replacements=new ArrayList<>();
       replacements.clear();
       replacements.addAll(possibleReplacements);
       if (replacements.contains(originalTokenStr)) {

@@ -1,0 +1,8 @@
+{
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Aix?? est?? for??a b??.")).length);
+  final RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("El recader fa huelga."));
+  assertEquals(2,matches.length);
+  assertEquals("ordinari",matches[0].getSuggestedReplacements().get(0));
+  assertEquals("transportista",matches[0].getSuggestedReplacements().get(1));
+  assertEquals("vaga",matches[1].getSuggestedReplacements().get(0));
+}
