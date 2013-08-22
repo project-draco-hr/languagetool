@@ -1,0 +1,12 @@
+{
+  Callable<List<RuleMatch>> matcher=new TextCheckCallable(allRules,sentences,analyzedSentences,paraMode,0,0,1);
+  try {
+    return matcher.call();
+  }
+ catch (  IOException e) {
+    throw e;
+  }
+catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

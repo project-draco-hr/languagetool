@@ -1,4 +1,5 @@
 ParagraphHandling paraMode
+List<AnalyzedSentence> analyzedSentences
 List<String> sentences
 List<Rule> allRules
 int charCount
