@@ -1,5 +1,5 @@
 {
-  final File input=populateFile("There is a dog.\tNie ma psa.");
+  final File input=writeToTempFile("There is a dog.\tNie ma psa.");
   final String[] args=new String[]{"-l","pl","--bitext","-m","en","--apply",input.getAbsolutePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());

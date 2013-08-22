@@ -1,5 +1,5 @@
 {
-  final File input=populateFile("Ward ihr zufrieden damit?");
+  final File input=writeToTempFile("Ward ihr zufrieden damit?");
   final String[] args=new String[]{"-l","de","--api",input.getAbsolutePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());

@@ -1,5 +1,5 @@
 {
-  final File input=populateFile("This is modelling.");
+  final File input=writeToTempFile("This is modelling.");
   final String[] args=new String[]{"-l","en-US",input.getAbsolutePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
