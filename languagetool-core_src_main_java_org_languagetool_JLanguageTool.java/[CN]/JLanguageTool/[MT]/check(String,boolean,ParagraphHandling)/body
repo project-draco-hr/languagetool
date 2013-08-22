@@ -7,29 +7,12 @@
     sentences=new ArrayList<>();
     sentences.add(text);
   }
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
   final List<Rule> allRules=getAllRules();
   printIfVerbose(allRules.size() + " rules activated for language " + language);
-  int charCount=0;
-  int lineCount=0;
-  int columnCount=1;
-  unknownWords=new HashSet<>();
   sentenceCount=sentences.size();
-  final int threads=getThreadPoolSize();
-  final ExecutorService executorService=getExecutorService(threads);
-  final List<Callable<List<RuleMatch>>> callables=createTextCheckCallables(paraMode,sentences,allRules,charCount,lineCount,columnCount,threads);
-  try {
-    final List<Future<List<RuleMatch>>> futures=executorService.invokeAll(callables);
-    for (    Future<List<RuleMatch>> future : futures) {
-      ruleMatches.addAll(future.get());
-    }
-  }
- catch (  InterruptedException|ExecutionException e) {
-    throw new RuntimeException(e);
-  }
- finally {
-    executorService.shutdownNow();
-  }
+  unknownWords=new HashSet<>();
+  final List<AnalyzedSentence> analyzedSentences=this.analyzeSentences(sentences);
+  List<RuleMatch> ruleMatches=performCheck(analyzedSentences,sentences,allRules,paraMode);
   if (!ruleMatches.isEmpty() && !paraMode.equals(ParagraphHandling.ONLYNONPARA)) {
     for (    final Rule rule : allRules) {
       if (rule.isParagraphBackTrack() && (rule.getMatches() != null)) {

@@ -1,0 +1,4 @@
+List<AnalyzedSentence> analyzedSentences
+List<String> sentences
+List<Rule> allRules
+ParagraphHandling paraMode
