@@ -1,6 +1,6 @@
 {
   boolean oneTime=false;
-  if (!"-".equals(filename)) {
+  if (!isStdIn(filename)) {
     if (autoDetect) {
       Language language=detectLanguageOfFile(filename,encoding);
       if (language == null) {

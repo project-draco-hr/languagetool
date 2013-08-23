@@ -3,7 +3,7 @@
     lt.setOutput(System.err);
   }
   if (!apiFormat && !applySuggestions) {
-    if ("-".equals(filename)) {
+    if (isStdIn(filename)) {
       System.out.println("Working on STDIN...");
     }
  else {
@@ -99,11 +99,13 @@
         }
       }
       printTimingInformation(listUnknownWords,rules,unknownWords,ruleIndex,matches,sentences,startTime);
-      if (br != null) {
-        br.close();
-      }
-      if (isr != null) {
-        isr.close();
+      if (!isStdIn(filename)) {
+        if (br != null) {
+          br.close();
+        }
+        if (isr != null) {
+          isr.close();
+        }
       }
     }
   }
