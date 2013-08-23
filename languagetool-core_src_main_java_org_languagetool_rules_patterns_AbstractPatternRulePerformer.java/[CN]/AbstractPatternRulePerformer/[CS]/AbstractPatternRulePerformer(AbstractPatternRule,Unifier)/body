@@ -1,4 +1,4 @@
 {
-  this.unifier=unifier;
   this.rule=rule;
+  this.unifier=unifier;
 }
