@@ -1,8 +1,8 @@
 {
   final StringBuilder sb=new StringBuilder();
   sb.append(toString());
-  if (chunkTag != null) {
-    sb.append('/').append(chunkTag);
+  if (chunkTags.size() > 0) {
+    sb.append('/').append(StringUtils.join(chunkTags,","));
   }
   return sb.toString();
 }

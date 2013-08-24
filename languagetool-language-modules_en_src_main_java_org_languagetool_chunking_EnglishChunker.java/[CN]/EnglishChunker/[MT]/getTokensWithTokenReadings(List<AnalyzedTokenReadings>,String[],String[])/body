@@ -6,7 +6,7 @@
     int startPos=pos;
     int endPos=startPos + tokens[i].length();
     AnalyzedTokenReadings readings=getAnalyzedTokenReadingsFor(startPos,endPos,tokenReadings);
-    result.add(new ChunkTaggedToken(tokens[i],new ChunkTag(chunkTag),readings));
+    result.add(new ChunkTaggedToken(tokens[i],Collections.singletonList(new ChunkTag(chunkTag)),readings));
     pos=endPos;
     i++;
   }

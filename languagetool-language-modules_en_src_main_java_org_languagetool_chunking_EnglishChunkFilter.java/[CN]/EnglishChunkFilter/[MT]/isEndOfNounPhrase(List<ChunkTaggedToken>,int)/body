@@ -1,0 +1,9 @@
+{
+  if (i > tokens.size() - 2) {
+    return true;
+  }
+  if (!isContinuationOfNounPhrase(tokens.get(i + 1))) {
+    return true;
+  }
+  return false;
+}

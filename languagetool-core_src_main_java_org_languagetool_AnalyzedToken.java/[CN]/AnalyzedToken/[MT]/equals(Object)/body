@@ -9,5 +9,5 @@
     return false;
   }
   final AnalyzedToken rhs=(AnalyzedToken)obj;
-  return new EqualsBuilder().append(token,rhs.token).append(posTag,rhs.posTag).append(lemma,rhs.lemma).append(chunkTag,rhs.chunkTag).append(isWhitespaceBefore,rhs.isWhitespaceBefore).isEquals();
+  return new EqualsBuilder().append(token,rhs.token).append(posTag,rhs.posTag).append(lemma,rhs.lemma).append(chunkTags,rhs.chunkTags).append(isWhitespaceBefore,rhs.isWhitespaceBefore).isEquals();
 }

@@ -1,3 +1,3 @@
 {
-  return IN_NOUN_PHRASE_TAG.equals(taggedToken.getChunkTag());
+  return taggedToken.getChunkTags().contains(IN_NOUN_PHRASE_TAG);
 }

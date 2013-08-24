@@ -5,6 +5,6 @@
   result=prime * result + ((lemma == null) ? 0 : lemma.hashCode());
   result=prime * result + ((posTag == null) ? 0 : posTag.hashCode());
   result=prime * result + ((token == null) ? 0 : token.hashCode());
-  result=prime * result + ((chunkTag == null) ? 0 : chunkTag.hashCode());
+  result=prime * result + chunkTags.hashCode();
   return result;
 }

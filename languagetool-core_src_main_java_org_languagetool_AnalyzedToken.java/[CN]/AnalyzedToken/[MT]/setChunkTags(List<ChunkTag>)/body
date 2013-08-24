@@ -1,0 +1,3 @@
+{
+  this.chunkTags=Objects.requireNonNull(chunkTags);
+}
