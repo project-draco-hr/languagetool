@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new AbstractRuleDisambiguator(new Dutch());
+    disambiguator=new XmlRuleDisambiguator(new Dutch());
   }
   return disambiguator;
 }

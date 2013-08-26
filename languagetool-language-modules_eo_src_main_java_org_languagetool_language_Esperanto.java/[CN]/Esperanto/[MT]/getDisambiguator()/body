@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new AbstractRuleDisambiguator(new Esperanto());
+    disambiguator=new XmlRuleDisambiguator(new Esperanto());
   }
   return disambiguator;
 }

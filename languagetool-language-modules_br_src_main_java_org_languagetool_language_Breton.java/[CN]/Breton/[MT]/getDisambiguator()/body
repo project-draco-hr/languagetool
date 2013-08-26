@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new AbstractRuleDisambiguator(new Breton());
+    disambiguator=new XmlRuleDisambiguator(new Breton());
   }
   return disambiguator;
 }
