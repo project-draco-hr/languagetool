@@ -1,6 +1,6 @@
 {
   super();
-  this.matchVersion=matchVersion;
+  this.luceneVersion=luceneVersion;
   this.languageTool=languageTool;
   this.toLowerCase=toLowerCase;
 }
