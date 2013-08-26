@@ -12,7 +12,10 @@
         throw new IOException("Format error in file " + JLanguageTool.getDataBroker().getFromRulesDirAsUrl(getFileName()) + ", line: "+ line);
       }
       String[] replacements=parts[1].split("\\|");
-      map.put(parts[0],Arrays.asList(replacements));
+      final String[] wrongForms=parts[0].split("\\|");
+      for (      String wrongForm : wrongForms) {
+        map.put(wrongForm,Arrays.asList(replacements));
+      }
     }
   }
   finally {
