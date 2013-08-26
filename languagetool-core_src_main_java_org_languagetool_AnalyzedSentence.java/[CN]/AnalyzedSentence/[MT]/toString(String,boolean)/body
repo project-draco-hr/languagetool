@@ -7,7 +7,7 @@
     }
     for (int j=0; j < element.getReadingsLength(); j++) {
       final String posTag=element.getAnalyzedToken(j).getPOSTag();
-      if (element.isSentStart()) {
+      if (element.isSentenceStart()) {
         sb.append("<S>");
       }
  else       if (JLanguageTool.SENTENCE_END_TAGNAME.equals(element.getAnalyzedToken(j).getPOSTag())) {

@@ -23,7 +23,7 @@
   clearAttributes();
   final AnalyzedTokenReadings tr=tokenIter.next();
   AnalyzedToken at=tr.getAnalyzedToken(0);
-  if (tr.isSentStart()) {
+  if (tr.isSentenceStart()) {
     typeAtt.setType("pos");
     if (toLowerCase) {
       termAtt.append(POS_PREFIX.toLowerCase() + tr.getAnalyzedToken(0).getPOSTag().toLowerCase());

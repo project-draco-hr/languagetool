@@ -11,7 +11,7 @@
     for (    AnalyzedTokenReadings aToken : tokens) {
       final String token=aToken.getToken();
       pos+=token.length();
-      if (!token.matches("[!-~]") && !aToken.isSentStart()) {
+      if (!token.matches("[!-~]") && !aToken.isSentenceStart()) {
         numWords++;
       }
     }

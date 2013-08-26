@@ -4,8 +4,9 @@
   assertEquals(false,tokenReadings.isSentEnd());
   assertEquals(false,tokenReadings.isParaEnd());
   assertEquals(false,tokenReadings.isSentStart());
+  assertEquals(false,tokenReadings.isSentenceStart());
   tokenReadings.setSentEnd();
-  assertEquals(false,tokenReadings.isSentStart());
+  assertEquals(false,tokenReadings.isSentenceStart());
   assertEquals(true,tokenReadings.isSentEnd());
   tokenReadings=new AnalyzedTokenReadings(new AnalyzedToken("word",null,"lemma"));
   tokenReadings.addReading(new AnalyzedToken("word","SENT_END",null));
@@ -13,9 +14,9 @@
   assertEquals(false,tokenReadings.isParaEnd());
   tokenReadings.addReading(new AnalyzedToken("word","PARA_END",null));
   assertEquals(true,tokenReadings.isParaEnd());
-  assertEquals(false,tokenReadings.isSentStart());
+  assertEquals(false,tokenReadings.isSentenceStart());
   tokenReadings.addReading(new AnalyzedToken("word","SENT_START",null));
-  assertEquals(false,tokenReadings.isSentStart());
+  assertEquals(false,tokenReadings.isSentenceStart());
   final AnalyzedToken aTok=new AnalyzedToken("word","POS","lemma");
   aTok.setWhitespaceBefore(true);
   tokenReadings=new AnalyzedTokenReadings(aTok);
