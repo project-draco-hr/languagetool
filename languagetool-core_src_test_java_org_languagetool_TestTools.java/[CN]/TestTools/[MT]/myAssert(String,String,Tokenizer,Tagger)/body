@@ -9,16 +9,15 @@
   final List<AnalyzedTokenReadings> output=tagger.tag(noWhitespaceTokens);
   final StringBuilder outputStr=new StringBuilder();
   for (final Iterator<AnalyzedTokenReadings> iter=output.iterator(); iter.hasNext(); ) {
-    final AnalyzedTokenReadings token=iter.next();
-    final int readingsNumber=token.getReadingsLength();
+    final AnalyzedTokenReadings tokenReadings=iter.next();
     final List<String> readings=new ArrayList<>();
-    for (int j=0; j < readingsNumber; j++) {
+    for (    AnalyzedToken analyzedToken : tokenReadings) {
       final StringBuilder readingStr=new StringBuilder();
-      readingStr.append(token.getAnalyzedToken(j).getToken());
+      readingStr.append(analyzedToken.getToken());
       readingStr.append("/[");
-      readingStr.append(token.getAnalyzedToken(j).getLemma());
+      readingStr.append(analyzedToken.getLemma());
       readingStr.append(']');
-      readingStr.append(token.getAnalyzedToken(j).getPOSTag());
+      readingStr.append(analyzedToken.getPOSTag());
       readings.add(readingStr.toString());
     }
     Collections.sort(readings);
