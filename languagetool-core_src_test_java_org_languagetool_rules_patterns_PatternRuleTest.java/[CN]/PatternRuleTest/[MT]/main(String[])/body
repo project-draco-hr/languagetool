@@ -1,7 +1,6 @@
 {
   final PatternRuleTest test=new PatternRuleTest();
   System.out.println("Running XML pattern tests...");
-  test.setUp();
   if (args.length == 0) {
     test.runGrammarRulesFromXmlTestIgnoringLanguages(null);
   }

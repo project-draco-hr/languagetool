@@ -1,4 +1,5 @@
 {
+  JLanguageTool langTool=new JLanguageTool(Language.DEMO);
   final PatternRule pr=makePatternRule("SENT_START One");
   RuleMatch[] matches=pr.match(langTool.getAnalyzedSentence("Not One word."));
   assertEquals(0,matches.length);

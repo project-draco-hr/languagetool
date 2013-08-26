@@ -6,4 +6,7 @@
     }
     runTestForLanguage(lang);
   }
+  if (Language.REAL_LANGUAGES.length == 0) {
+    System.err.println("Warning: no languages found in classpath - cannot run any grammar rule tests");
+  }
 }
