@@ -1,0 +1,9 @@
+{
+  final StringBuilder readingStr=new StringBuilder();
+  readingStr.append(analyzedToken.getToken());
+  readingStr.append("/[");
+  readingStr.append(analyzedToken.getLemma());
+  readingStr.append(']');
+  readingStr.append(analyzedToken.getPOSTag());
+  return readingStr.toString();
+}
