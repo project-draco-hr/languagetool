@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new GalicianRuleDisambiguator();
+    disambiguator=new AbstractRuleDisambiguator(new Galician());
   }
   return disambiguator;
 }

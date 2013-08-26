@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new BretonRuleDisambiguator();
+    disambiguator=new AbstractRuleDisambiguator(new Breton());
   }
   return disambiguator;
 }

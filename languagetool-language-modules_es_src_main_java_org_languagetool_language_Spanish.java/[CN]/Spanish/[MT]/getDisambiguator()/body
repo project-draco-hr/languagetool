@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new SpanishRuleDisambiguator();
+    disambiguator=new AbstractRuleDisambiguator(new Spanish());
   }
   return disambiguator;
 }

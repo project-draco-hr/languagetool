@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new GreekRuleDisambiguator();
+    disambiguator=new AbstractRuleDisambiguator(new Greek());
   }
   return disambiguator;
 }

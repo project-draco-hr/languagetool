@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new RomanianRuleDisambiguator();
+    disambiguator=new AbstractRuleDisambiguator(new Romanian());
   }
   return disambiguator;
 }

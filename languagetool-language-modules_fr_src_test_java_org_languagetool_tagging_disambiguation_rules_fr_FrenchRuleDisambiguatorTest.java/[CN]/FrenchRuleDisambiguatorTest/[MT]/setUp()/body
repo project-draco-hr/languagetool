@@ -2,7 +2,7 @@
   tagger=new FrenchTagger();
   tokenizer=new WordTokenizer();
   sentenceTokenizer=new SentenceTokenizer();
-  disambiguator=new FrenchRuleDisambiguator();
+  disambiguator=new AbstractRuleDisambiguator(new French());
   disamb2=new DemoDisambiguator();
   try {
     lt=new JLanguageTool(new French());

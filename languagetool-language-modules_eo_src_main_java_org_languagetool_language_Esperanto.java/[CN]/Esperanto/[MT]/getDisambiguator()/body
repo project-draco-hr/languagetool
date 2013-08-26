@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new EsperantoRuleDisambiguator();
+    disambiguator=new AbstractRuleDisambiguator(new Esperanto());
   }
   return disambiguator;
 }

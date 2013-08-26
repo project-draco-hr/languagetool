@@ -2,6 +2,6 @@
   tagger=new EnglishTagger();
   tokenizer=new WordTokenizer();
   sentenceTokenizer=new SentenceTokenizer();
-  disambiguator=new EnglishRuleDisambiguator();
+  disambiguator=new AbstractRuleDisambiguator(new English());
   disamb2=new DemoDisambiguator();
 }

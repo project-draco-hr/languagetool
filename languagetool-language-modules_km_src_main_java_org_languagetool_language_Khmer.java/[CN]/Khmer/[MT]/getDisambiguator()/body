@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new KhmerRuleDisambiguator();
+    disambiguator=new AbstractRuleDisambiguator(new Khmer());
   }
   return disambiguator;
 }
