@@ -1,14 +1,12 @@
 {
-  for (int i=0; i < Language.LANGUAGES.length; i++) {
-    final Language lang=Language.LANGUAGES[i];
-    if (lang == Language.DEMO) {
-      continue;
-    }
-    final File file=getTranslationFile(lang);
-    if (!file.exists()) {
+  for (  Language lang : Language.REAL_LANGUAGES) {
+    final File file1=getTranslationFile(lang);
+    final File file2=getTranslationFileWithVariant(lang);
+    if (!file1.exists() && !file2.exists()) {
       System.err.println("Note: no translation available for " + lang);
       continue;
     }
+    final File file=file1.exists() ? file1 : file2;
     final List<String> lines=loadFile(file);
     for (    String line : lines) {
       line=line.trim();

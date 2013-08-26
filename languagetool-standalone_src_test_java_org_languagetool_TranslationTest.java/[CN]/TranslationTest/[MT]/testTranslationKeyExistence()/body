@@ -3,9 +3,8 @@
   final Properties enProps=new Properties();
   enProps.load(new FileInputStream(englishFile));
   final Set<Object> englishKeys=enProps.keySet();
-  for (int i=0; i < Language.LANGUAGES.length; i++) {
-    final Language lang=Language.LANGUAGES[i];
-    if (lang.getShortName().equals("en") || lang == Language.DEMO) {
+  for (  Language lang : Language.REAL_LANGUAGES) {
+    if (lang.getShortName().equals("en")) {
       continue;
     }
     final Properties langProps=new Properties();
@@ -13,8 +12,7 @@
     if (!langFile.exists()) {
       continue;
     }
-    FileInputStream stream=new FileInputStream(langFile);
-    try {
+    try (FileInputStream stream=new FileInputStream(langFile)){
       langProps.load(stream);
       final Set<Object> langKeys=langProps.keySet();
       for (      Object englishKey : englishKeys) {
@@ -23,8 +21,5 @@
         }
       }
     }
-  finally {
-      stream.close();
-    }
-  }
+   }
 }
