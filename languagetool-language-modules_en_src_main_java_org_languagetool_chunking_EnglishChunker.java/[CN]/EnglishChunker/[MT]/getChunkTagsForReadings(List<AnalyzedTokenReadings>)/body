@@ -1,4 +1,7 @@
 {
+  TokenizerME tokenizer=new TokenizerME(tokenModel);
+  POSTaggerME posTagger=new POSTaggerME(posModel);
+  ChunkerME chunker=new ChunkerME(chunkerModel);
   String sentence=getSentence(tokenReadings);
   String[] tokens=tokenizer.tokenize(sentence);
   String[] posTags=posTagger.tag(tokens);

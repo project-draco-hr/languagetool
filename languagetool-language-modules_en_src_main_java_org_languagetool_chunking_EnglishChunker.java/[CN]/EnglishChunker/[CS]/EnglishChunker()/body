@@ -3,15 +3,12 @@
     if (tokenModel == null) {
       tokenModel=new TokenizerModel(Tools.getStream(TOKENIZER_MODEL));
     }
-    tokenizer=new TokenizerME(tokenModel);
     if (posModel == null) {
       posModel=new POSModel(Tools.getStream(POS_TAGGER_MODEL));
     }
-    posTagger=new POSTaggerME(posModel);
     if (chunkerModel == null) {
       chunkerModel=new ChunkerModel(Tools.getStream(CHUNKER_MODEL));
     }
-    chunker=new ChunkerME(chunkerModel);
     chunkFilter=new EnglishChunkFilter();
   }
  catch (  IOException e) {
