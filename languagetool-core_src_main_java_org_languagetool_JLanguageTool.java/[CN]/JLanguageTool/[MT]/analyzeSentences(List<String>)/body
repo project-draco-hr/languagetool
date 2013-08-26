@@ -6,7 +6,7 @@
     rememberUnknownWords(analyzedSentence);
     if (++j == sentences.size()) {
       final AnalyzedTokenReadings[] anTokens=analyzedSentence.getTokens();
-      anTokens[anTokens.length - 1].setParaEnd();
+      anTokens[anTokens.length - 1].setParagraphEnd();
       analyzedSentence=new AnalyzedSentence(anTokens);
     }
     analyzedSentences.add(analyzedSentence);
