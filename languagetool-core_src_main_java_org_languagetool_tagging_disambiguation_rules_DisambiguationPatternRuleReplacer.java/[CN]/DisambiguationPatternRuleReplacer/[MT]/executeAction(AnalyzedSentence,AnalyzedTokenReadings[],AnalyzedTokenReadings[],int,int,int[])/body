@@ -22,7 +22,7 @@ switch (disAction) {
 case UNIFY:
     if (unifiedTokens != null) {
       if (unifiedTokens.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
-        if (whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + unifiedTokens.length - 1)].isSentEnd()) {
+        if (whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + unifiedTokens.length - 1)].isSentenceEnd()) {
           unifiedTokens[unifiedTokens.length - 1].setSentEnd();
         }
         for (int i=0; i < unifiedTokens.length; i++) {

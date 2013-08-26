@@ -1,7 +1,7 @@
 {
   final String prevValue=oldAtr.toString();
   final String prevAnot=oldAtr.getHistoricalAnnotations();
-  final boolean isSentEnd=oldAtr.isSentEnd();
+  final boolean isSentEnd=oldAtr.isSentenceEnd();
   final boolean isParaEnd=oldAtr.isParagraphEnd();
   final boolean spaceBefore=oldAtr.isWhitespaceBefore();
   final int startPosition=oldAtr.getStartPos();
