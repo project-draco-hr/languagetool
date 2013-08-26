@@ -2,7 +2,7 @@
   super(input);
   this.languageTool=languageTool;
   this.toLowerCase=toLowerCase;
-  posStack=new Stack<String>();
+  posStack=new Stack<>();
   termAtt=addAttribute(CharTermAttribute.class);
   offsetAtt=addAttribute(OffsetAttribute.class);
   posIncrAtt=addAttribute(PositionIncrementAttribute.class);

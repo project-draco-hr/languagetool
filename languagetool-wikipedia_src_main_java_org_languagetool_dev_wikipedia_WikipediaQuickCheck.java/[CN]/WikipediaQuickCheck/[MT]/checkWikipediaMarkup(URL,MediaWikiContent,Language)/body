@@ -2,7 +2,7 @@
   final SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
   final PlainTextMapping mapping=filter.filter(wikiContent.getContent());
   final JLanguageTool langTool=getLanguageTool(language);
-  final List<AppliedRuleMatch> appliedMatches=new ArrayList<AppliedRuleMatch>();
+  final List<AppliedRuleMatch> appliedMatches=new ArrayList<>();
   final List<RuleMatch> matches=langTool.check(mapping.getPlainText());
   int internalErrors=0;
   for (  RuleMatch match : matches) {

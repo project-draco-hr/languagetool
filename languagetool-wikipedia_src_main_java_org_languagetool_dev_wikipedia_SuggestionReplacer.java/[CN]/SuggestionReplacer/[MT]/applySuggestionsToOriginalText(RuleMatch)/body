@@ -5,7 +5,7 @@
     String plainText=textMapping.getPlainText();
     replacements.add(plainText.substring(match.getFromPos(),match.getToPos()));
   }
-  final List<RuleMatchApplication> ruleMatchApplications=new ArrayList<RuleMatchApplication>();
+  final List<RuleMatchApplication> ruleMatchApplications=new ArrayList<>();
   final Location fromPosLocation=textMapping.getOriginalTextPositionFor(match.getFromPos() + 1);
   final Location toPosLocation=textMapping.getOriginalTextPositionFor(match.getToPos() + 1);
   final int fromPos=LocationHelper.absolutePositionFor(fromPosLocation,originalText);

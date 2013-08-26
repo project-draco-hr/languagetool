@@ -1,11 +1,11 @@
 {
   sb=new StringBuilder();
   line=new StringBuilder();
-  mapping=new HashMap<Integer,Location>();
+  mapping=new HashMap<>();
   pastBod=false;
   needNewlines=0;
   needSpace=false;
   noWrap=false;
-  sections=new LinkedList<Integer>();
+  sections=new LinkedList<>();
   return super.before(node);
 }

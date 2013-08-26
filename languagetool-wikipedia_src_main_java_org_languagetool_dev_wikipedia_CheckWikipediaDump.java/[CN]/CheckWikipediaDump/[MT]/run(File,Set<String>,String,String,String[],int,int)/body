@@ -31,10 +31,7 @@
     final SAXParser saxParser=factory.newSAXParser();
     saxParser.parse(file,xmlHandler);
   }
- catch (  ErrorLimitReachedException e) {
-    System.out.println(e);
-  }
-catch (  ArticleLimitReachedException e) {
+ catch (  ErrorLimitReachedException|ArticleLimitReachedException e) {
     System.out.println(e);
   }
  finally {

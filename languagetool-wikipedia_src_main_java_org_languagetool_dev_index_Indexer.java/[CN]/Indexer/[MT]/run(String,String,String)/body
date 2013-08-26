@@ -4,26 +4,14 @@
     System.out.println("Text file '" + file.getAbsolutePath() + "' does not exist or is not readable, please check the path");
     System.exit(1);
   }
-  final BufferedReader reader=new BufferedReader(new FileReader(file));
-  try {
+  try (BufferedReader reader=new BufferedReader(new FileReader(file))){
     System.out.println("Indexing to directory '" + indexDir + "'...");
-    final FSDirectory directory=FSDirectory.open(new File(indexDir));
-    try {
+    try (FSDirectory directory=FSDirectory.open(new File(indexDir))){
       final Language language=Language.getLanguageForShortName(languageCode);
-      final Indexer indexer=new Indexer(directory,language);
-      try {
+      try (Indexer indexer=new Indexer(directory,language)){
         run(reader,indexer,false);
       }
-  finally {
-        indexer.close();
-      }
-    }
-  finally {
-      directory.close();
-    }
-  }
-  finally {
-    reader.close();
-  }
-  System.out.println("Index complete!");
+     }
+   }
+   System.out.println("Index complete!");
 }

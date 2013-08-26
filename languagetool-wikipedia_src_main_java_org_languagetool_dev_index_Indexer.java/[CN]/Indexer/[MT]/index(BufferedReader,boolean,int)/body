@@ -1,5 +1,5 @@
 {
-  String line="";
+  String line;
   while ((line=reader.readLine()) != null) {
     if (isSentence) {
       add(-1,line);
