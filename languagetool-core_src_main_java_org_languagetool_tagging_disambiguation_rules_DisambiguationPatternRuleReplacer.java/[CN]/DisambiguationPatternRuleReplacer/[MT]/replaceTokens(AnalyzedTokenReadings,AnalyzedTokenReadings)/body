@@ -5,6 +5,7 @@
   final boolean isParaEnd=oldAtr.isParagraphEnd();
   final boolean spaceBefore=oldAtr.isWhitespaceBefore();
   final int startPosition=oldAtr.getStartPos();
+  final List<ChunkTag> chunkTags=oldAtr.getChunkTags();
   if (isSentEnd) {
     newAtr.setSentEnd();
   }
@@ -13,6 +14,7 @@
   }
   newAtr.setWhitespaceBefore(spaceBefore);
   newAtr.setStartPos(startPosition);
+  newAtr.setChunkTags(chunkTags);
   annotateChange(newAtr,prevValue,prevAnot);
   return newAtr;
 }

@@ -1,6 +1,0 @@
-{
-  if (chunkToken == null) {
-    return true;
-  }
-  return token.getChunkTags().contains(chunkToken);
-}

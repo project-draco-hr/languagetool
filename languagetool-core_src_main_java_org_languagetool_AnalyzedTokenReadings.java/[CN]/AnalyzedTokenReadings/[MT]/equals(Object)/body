@@ -12,6 +12,9 @@
   if (isWhitespaceBefore != other.isWhitespaceBefore)   return false;
   if (isImmunized != other.isImmunized)   return false;
   if (startPos != other.startPos)   return false;
+  if (!chunkTags.equals(other.chunkTags)) {
+    return false;
+  }
   if (token == null) {
     if (other.token != null)     return false;
   }

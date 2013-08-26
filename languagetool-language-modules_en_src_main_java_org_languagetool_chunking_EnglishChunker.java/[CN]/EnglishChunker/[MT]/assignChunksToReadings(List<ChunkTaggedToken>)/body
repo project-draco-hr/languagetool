@@ -2,9 +2,7 @@
   for (  ChunkTaggedToken taggedToken : chunkTaggedTokens) {
     AnalyzedTokenReadings readings=taggedToken.getReadings();
     if (readings != null) {
-      for (      AnalyzedToken analyzedToken : readings.getReadings()) {
-        analyzedToken.setChunkTags(taggedToken.getChunkTags());
-      }
+      readings.setChunkTags(taggedToken.getChunkTags());
     }
   }
 }

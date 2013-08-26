@@ -8,6 +8,7 @@
   result=prime * result + (isSentStart ? 1231 : 1237);
   result=prime * result + (isWhitespace ? 1231 : 1237);
   result=prime * result + (isWhitespaceBefore ? 1231 : 1237);
+  result=prime * result + chunkTags.hashCode();
   result=prime * result + startPos;
   result=prime * result + ((token == null) ? 0 : token.hashCode());
   return result;

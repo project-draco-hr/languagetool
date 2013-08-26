@@ -68,7 +68,6 @@ for (int i=0; i < newTokenReadings.length; i++) {
     lemma=newTokenReadings[i].getLemma();
   }
   final AnalyzedToken newTok=new AnalyzedToken(token,newTokenReadings[i].getPOSTag(),lemma);
-  newTok.setChunkTags(newTokenReadings[i].getChunkTags());
   final String prevValue=whTokens[position].toString();
   final String prevAnot=whTokens[position].getHistoricalAnnotations();
   whTokens[position].addReading(newTok);
@@ -125,7 +124,6 @@ lemma=token;
 lemma=newTokenReadings[i].getLemma();
 }
 final AnalyzedToken analyzedToken=new AnalyzedToken(token,newTokenReadings[i].getPOSTag(),lemma);
-analyzedToken.setChunkTags(newTokenReadings[i].getChunkTags());
 final AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(analyzedToken,whTokens[fromPos].getStartPos());
 whTokens[position]=replaceTokens(whTokens[position],toReplace);
 }
@@ -142,7 +140,6 @@ if (StringTools.isEmpty(lemma)) {
 lemma=whTokens[fromPos].getAnalyzedToken(0).getLemma();
 }
 final AnalyzedToken analyzedToken=new AnalyzedToken(whTokens[fromPos].getToken(),disambiguatedPOS,lemma);
-analyzedToken.setChunkTags(whTokens[fromPos].getAnalyzedToken(0).getChunkTags());
 final AnalyzedTokenReadings toReplace=new AnalyzedTokenReadings(analyzedToken,whTokens[fromPos].getStartPos());
 whTokens[fromPos]=replaceTokens(whTokens[fromPos],toReplace);
 }

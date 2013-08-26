@@ -23,12 +23,7 @@
       }
  else {
         if (!element.isWhitespace()) {
-          if (includeChunks) {
-            sb.append(token.toFullString());
-          }
- else {
-            sb.append(token.toString());
-          }
+          sb.append(token.toString());
           if (iterator.hasNext()) {
             sb.append(readingDelimiter);
           }

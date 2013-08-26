@@ -1,0 +1,10 @@
+{
+  Element chunkElement=new Element(null,false,false,false);
+  chunkElement.setChunkElement(new ChunkTag("myChunk"));
+  PatternRule simpleRule=new PatternRule("FAKE",new Demo(),Collections.singletonList(chunkElement),"descr","message","short");
+  ElementMatcher elemMatcher=new ElementMatcher(chunkElement);
+  AbstractPatternRulePerformer p=new MockAbstractPatternRulePerformer(simpleRule,null);
+  assertFalse(p.testAllReadings(tokenReadings("bar",null),elemMatcher,null,0,0,0));
+  assertTrue(p.testAllReadings(tokenReadings("bar","myChunk"),elemMatcher,null,0,0,0));
+  assertFalse(p.testAllReadings(tokenReadings("bar","otherChunk"),elemMatcher,null,0,0,0));
+}

@@ -1,0 +1,7 @@
+{
+  AnalyzedTokenReadings tokenReadings1=new AnalyzedTokenReadings(new AnalyzedToken(token,"pos","lemma"),0);
+  if (chunkTag != null) {
+    tokenReadings1.setChunkTags(Collections.singletonList(new ChunkTag(chunkTag)));
+  }
+  return new AnalyzedTokenReadings[]{tokenReadings1};
+}
