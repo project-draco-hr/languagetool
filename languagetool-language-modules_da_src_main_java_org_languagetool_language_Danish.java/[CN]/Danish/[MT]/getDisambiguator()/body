@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new DanishRuleDisambiguator();
+    disambiguator=new XmlRuleDisambiguator(new Danish());
   }
   return disambiguator;
 }

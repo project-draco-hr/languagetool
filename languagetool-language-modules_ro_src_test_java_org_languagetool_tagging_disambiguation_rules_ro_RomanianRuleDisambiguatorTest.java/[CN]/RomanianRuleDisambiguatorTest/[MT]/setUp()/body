@@ -2,6 +2,6 @@
   tagger=new RomanianTagger();
   tokenizer=new RomanianWordTokenizer();
   sentenceTokenizer=new SentenceTokenizer();
-  disambiguator=new RomanianRuleDisambiguator();
+  disambiguator=new XmlRuleDisambiguator(new Romanian());
   disamb2=new DemoDisambiguator();
 }

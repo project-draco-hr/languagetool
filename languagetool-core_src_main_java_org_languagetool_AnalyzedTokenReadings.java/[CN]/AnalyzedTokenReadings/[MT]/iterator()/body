@@ -1,0 +1,20 @@
+{
+  final AtomicInteger i=new AtomicInteger(0);
+  return new Iterator<AnalyzedToken>(){
+    @Override public boolean hasNext(){
+      return i.get() < getReadingsLength();
+    }
+    @Override public AnalyzedToken next(){
+      try {
+        return anTokReadings[i.getAndAdd(1)];
+      }
+ catch (      ArrayIndexOutOfBoundsException e) {
+        throw new NoSuchElementException("No such element: " + i + ", element count: "+ anTokReadings.length);
+      }
+    }
+    @Override public void remove(){
+      throw new UnsupportedOperationException();
+    }
+  }
+;
+}

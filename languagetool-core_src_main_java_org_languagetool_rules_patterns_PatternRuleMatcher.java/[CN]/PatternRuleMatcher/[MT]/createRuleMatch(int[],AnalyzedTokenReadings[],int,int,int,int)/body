@@ -11,7 +11,7 @@
   }
   AnalyzedTokenReadings firstMatchTokenObj=tokens[firstMatchToken + correctedStPos];
   boolean startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.getToken()) && !matchConvertsCase(rule.getSuggestionMatches()) && !matchConvertsCase(rule.getSuggestionMatchesOutMsg());
-  if (firstMatchTokenObj.isSentStart() && tokens.length > firstMatchToken + correctedStPos + 1) {
+  if (firstMatchTokenObj.isSentenceStart() && tokens.length > firstMatchToken + correctedStPos + 1) {
     firstMatchTokenObj=tokens[firstMatchToken + correctedStPos + 1];
     startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.getToken());
   }

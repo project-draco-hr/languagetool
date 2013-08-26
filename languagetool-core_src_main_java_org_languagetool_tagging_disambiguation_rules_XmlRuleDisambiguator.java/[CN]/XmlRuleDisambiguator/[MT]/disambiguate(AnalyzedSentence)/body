@@ -1,0 +1,16 @@
+{
+  AnalyzedSentence sentence=input;
+  if (disambiguationRules == null) {
+    final String disambiguationFile=JLanguageTool.getDataBroker().getResourceDir() + "/" + language.getShortName()+ "/"+ DISAMBIGUATION_FILE;
+    try {
+      disambiguationRules=loadPatternRules(disambiguationFile);
+    }
+ catch (    final Exception e) {
+      throw new RuntimeException("Problems with loading disambiguation file: " + disambiguationFile,e);
+    }
+  }
+  for (  final DisambiguationPatternRule patternRule : disambiguationRules) {
+    sentence=patternRule.replace(sentence);
+  }
+  return sentence;
+}

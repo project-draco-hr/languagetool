@@ -3,17 +3,12 @@
   final List<String> sentences=sentenceTokenizer.tokenize(input);
   for (  final String sentence : sentences) {
     final List<String> tokens=tokenizer.tokenize(sentence);
-    final List<String> noWhitespaceTokens=new ArrayList<>();
-    for (    final String token : tokens) {
-      if (isWord(token)) {
-        noWhitespaceTokens.add(token);
-      }
-    }
+    final List<String> noWhitespaceTokens=getNoWhitespaceTokens(tokens);
     final List<AnalyzedTokenReadings> aTokens=tagger.tag(noWhitespaceTokens);
     final AnalyzedTokenReadings[] tokenArray=new AnalyzedTokenReadings[tokens.size() + 1];
     final AnalyzedToken[] startTokenArray=new AnalyzedToken[1];
     int toArrayCount=0;
-    final AnalyzedToken sentenceStartToken=new AnalyzedToken("","SENT_START",null);
+    final AnalyzedToken sentenceStartToken=new AnalyzedToken("",JLanguageTool.SENTENCE_START_TAGNAME,null);
     startTokenArray[0]=sentenceStartToken;
     tokenArray[toArrayCount++]=new AnalyzedTokenReadings(startTokenArray,0);
     int startPos=0;
@@ -35,19 +30,8 @@
     finalSentence=disambiguator.disambiguate(finalSentence);
     final AnalyzedTokenReadings[] output=finalSentence.getTokens();
     for (int i=0; i < output.length; i++) {
-      final AnalyzedTokenReadings token=output[i];
-      final int readingsNumber=token.getReadingsLength();
-      final List<String> readings=new ArrayList<>();
-      for (int j=0; j < readingsNumber; j++) {
-        final StringBuilder readingStr=new StringBuilder();
-        readingStr.append(token.getAnalyzedToken(j).getToken());
-        readingStr.append("/[");
-        readingStr.append(token.getAnalyzedToken(j).getLemma());
-        readingStr.append(']');
-        readingStr.append(token.getAnalyzedToken(j).getPOSTag());
-        readings.add(readingStr.toString());
-      }
-      Collections.sort(readings);
+      final AnalyzedTokenReadings tokenReadings=output[i];
+      final List<String> readings=getAsStrings(tokenReadings);
       outputStr.append(StringTools.listToString(readings,"|"));
       if (i < output.length - 1) {
         outputStr.append(' ');

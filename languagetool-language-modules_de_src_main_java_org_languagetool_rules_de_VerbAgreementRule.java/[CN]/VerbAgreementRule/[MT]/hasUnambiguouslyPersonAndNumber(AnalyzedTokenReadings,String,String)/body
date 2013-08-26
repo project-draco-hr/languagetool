@@ -1,7 +1,7 @@
 {
-  if (token.getToken().length() == 0 || (Character.isUpperCase(token.getToken().charAt(0)) && !(token.getStartPos() == 0)) || !token.hasPartialPosTag("VER"))   return false;
-  for (int i=0; i < token.getReadingsLength(); ++i) {
-    final String postag=token.getReadings().get(i).getPOSTag();
+  if (tokenReadings.getToken().length() == 0 || (Character.isUpperCase(tokenReadings.getToken().charAt(0)) && !(tokenReadings.getStartPos() == 0)) || !tokenReadings.hasPartialPosTag("VER"))   return false;
+  for (  AnalyzedToken analyzedToken : tokenReadings) {
+    final String postag=analyzedToken.getPOSTag();
     if (postag.contains("_END"))     continue;
     if (!postag.contains(":" + person + ":"+ number))     return false;
   }

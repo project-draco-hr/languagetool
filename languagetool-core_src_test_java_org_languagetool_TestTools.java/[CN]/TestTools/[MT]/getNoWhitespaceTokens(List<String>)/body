@@ -1,0 +1,9 @@
+{
+  final List<String> noWhitespaceTokens=new ArrayList<>();
+  for (  final String token : tokens) {
+    if (isWord(token)) {
+      noWhitespaceTokens.add(token);
+    }
+  }
+  return noWhitespaceTokens;
+}

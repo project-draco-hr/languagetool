@@ -1,0 +1,20 @@
+{
+  final List<AnalyzedTokenReadings> tags=tagger.tag(Arrays.asList(inflected));
+  final StringBuilder allTags=new StringBuilder();
+  boolean found=false;
+  for (  AnalyzedTokenReadings analyzedTokenReadings : tags) {
+    for (    AnalyzedToken token : analyzedTokenReadings) {
+      final String crtLemma=token.getLemma();
+      final String crtPOSTag=token.getPOSTag();
+      allTags.append(String.format("[%s/%s]",crtLemma,crtPOSTag));
+      found=((null == lemma) || (lemma.equals(crtLemma))) && ((null == posTag) || (posTag.equals(crtPOSTag)));
+      if (found) {
+        break;
+      }
+    }
+    if (found) {
+      break;
+    }
+  }
+  assertTrue(String.format("Lemma and POS not found for word [%s]! " + "Expected [%s/%s]. Actual: %s",inflected,lemma,posTag,allTags.toString()),found);
+}

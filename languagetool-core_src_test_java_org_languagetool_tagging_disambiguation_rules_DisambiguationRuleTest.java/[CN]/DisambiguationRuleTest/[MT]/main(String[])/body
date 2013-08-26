@@ -1,7 +1,6 @@
 {
   final DisambiguationRuleTest test=new DisambiguationRuleTest();
   System.out.println("Running disambiguator rule tests...");
-  test.setUp();
   if (args.length == 0) {
     test.testDisambiguationRulesFromXML(null);
   }

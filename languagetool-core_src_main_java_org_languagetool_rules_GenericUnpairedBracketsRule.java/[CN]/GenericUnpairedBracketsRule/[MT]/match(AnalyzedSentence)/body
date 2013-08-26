@@ -11,7 +11,7 @@
       if (token.equals(startSymbols[j]) || token.equals(endSymbols[j])) {
         boolean precededByWhitespace=true;
         if (startSymbols[j].equals(endSymbols[j])) {
-          precededByWhitespace=tokens[i - 1].isSentStart() || tokens[i].isWhitespaceBefore() || PUNCTUATION_NO_DOT.matcher(tokens[i - 1].getToken()).matches();
+          precededByWhitespace=tokens[i - 1].isSentenceStart() || tokens[i].isWhitespaceBefore() || PUNCTUATION_NO_DOT.matcher(tokens[i - 1].getToken()).matches();
         }
         boolean followedByWhitespace=true;
         if (i < tokens.length - 1 && startSymbols[j].equals(endSymbols[j])) {
@@ -60,7 +60,7 @@
     }
   }
   symbolStack.clear();
-  if (tokens[tokens.length - 1].isParaEnd()) {
+  if (tokens[tokens.length - 1].isParagraphEnd()) {
     endOfParagraph=true;
   }
   return toRuleMatchArray(ruleMatches);

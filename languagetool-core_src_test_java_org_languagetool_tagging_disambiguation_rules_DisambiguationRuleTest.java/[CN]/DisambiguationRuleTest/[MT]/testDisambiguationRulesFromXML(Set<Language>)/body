@@ -1,5 +1,5 @@
 {
-  for (  final Language lang : Language.LANGUAGES) {
+  for (  final Language lang : Language.REAL_LANGUAGES) {
     if (ignoredLanguages != null && ignoredLanguages.contains(lang)) {
       continue;
     }

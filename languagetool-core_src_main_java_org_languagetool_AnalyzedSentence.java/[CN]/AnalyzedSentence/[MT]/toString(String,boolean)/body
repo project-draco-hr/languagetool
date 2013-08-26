@@ -5,29 +5,31 @@
       sb.append(element.getToken());
       sb.append('[');
     }
-    for (int j=0; j < element.getReadingsLength(); j++) {
-      final String posTag=element.getAnalyzedToken(j).getPOSTag();
-      if (element.isSentStart()) {
+    Iterator<AnalyzedToken> iterator=element.iterator();
+    while (iterator.hasNext()) {
+      final AnalyzedToken token=iterator.next();
+      final String posTag=token.getPOSTag();
+      if (element.isSentenceStart()) {
         sb.append("<S>");
       }
- else       if (JLanguageTool.SENTENCE_END_TAGNAME.equals(element.getAnalyzedToken(j).getPOSTag())) {
+ else       if (JLanguageTool.SENTENCE_END_TAGNAME.equals(token.getPOSTag())) {
         sb.append("</S>");
       }
- else       if (JLanguageTool.PARAGRAPH_END_TAGNAME.equals(element.getAnalyzedToken(j).getPOSTag())) {
+ else       if (JLanguageTool.PARAGRAPH_END_TAGNAME.equals(token.getPOSTag())) {
         sb.append("<P/>");
       }
- else       if (element.getAnalyzedToken(j) != null && posTag == null && !(element.getClass().getName().equals("org.languagetool.tagging.de.AnalyzedGermanTokenReadings"))) {
-        sb.append(element.getAnalyzedToken(j).getToken());
+ else       if (posTag == null && !(element.getClass().getName().equals("org.languagetool.tagging.de.AnalyzedGermanTokenReadings"))) {
+        sb.append(token.getToken());
       }
  else {
         if (!element.isWhitespace()) {
           if (includeChunks) {
-            sb.append(element.getAnalyzedToken(j).toFullString());
+            sb.append(token.toFullString());
           }
  else {
-            sb.append(element.getAnalyzedToken(j).toString());
+            sb.append(token.toString());
           }
-          if (j < element.getReadingsLength() - 1) {
+          if (iterator.hasNext()) {
             sb.append(readingDelimiter);
           }
         }
