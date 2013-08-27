@@ -1,3 +1,3 @@
 {
-  runGrammarRulesFromXmlTest();
+  runGrammarRulesFromXmlTest(new German());
 }

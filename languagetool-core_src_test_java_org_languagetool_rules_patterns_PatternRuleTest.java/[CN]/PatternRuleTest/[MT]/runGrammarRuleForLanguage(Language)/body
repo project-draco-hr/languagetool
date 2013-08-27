@@ -1,0 +1,7 @@
+{
+  if (skipCountryVariant(lang)) {
+    System.out.println("Skipping " + lang + " because there are no specific rules for that variant");
+    return;
+  }
+  runTestForLanguage(lang);
+}

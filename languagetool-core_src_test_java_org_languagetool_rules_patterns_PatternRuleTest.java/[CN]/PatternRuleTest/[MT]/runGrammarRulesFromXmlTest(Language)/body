@@ -1,8 +1,13 @@
 {
+  int count=0;
   for (  final Language lang : Language.REAL_LANGUAGES) {
+    if (ignoredLanguage.getShortNameWithVariant().equals(lang.getShortNameWithVariant())) {
+      continue;
+    }
     runGrammarRuleForLanguage(lang);
+    count++;
   }
-  if (Language.REAL_LANGUAGES.length == 0) {
+  if (count == 0) {
     System.err.println("Warning: no languages found in classpath - cannot run any grammar rule tests");
   }
 }
