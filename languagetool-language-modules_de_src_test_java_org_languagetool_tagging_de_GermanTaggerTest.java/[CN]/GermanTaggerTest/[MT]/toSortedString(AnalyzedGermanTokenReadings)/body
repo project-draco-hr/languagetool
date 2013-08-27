@@ -1,11 +1,8 @@
 {
-  if (anTokReadings == null) {
-    return super.getAnalyzedToken(0).getToken() + "[?]";
-  }
-  final StringBuilder sb=new StringBuilder(super.getAnalyzedToken(0).getToken());
+  final StringBuilder sb=new StringBuilder(tokenReadings.getToken());
   final Set<String> elements=new TreeSet<>();
   sb.append('[');
-  for (  AnalyzedToken reading : anTokReadings) {
+  for (  AnalyzedToken reading : tokenReadings) {
     if (!elements.contains(reading.toString())) {
       elements.add(reading.toString());
     }

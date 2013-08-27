@@ -1,8 +1,0 @@
-{
-  if (anTokReadings == null)   return false;
-  for (  AnalyzedToken reading : anTokReadings) {
-    final AnalyzedGermanToken germanReading=(AnalyzedGermanToken)reading;
-    if (germanReading.getGenus() == genus)     return true;
-  }
-  return false;
-}

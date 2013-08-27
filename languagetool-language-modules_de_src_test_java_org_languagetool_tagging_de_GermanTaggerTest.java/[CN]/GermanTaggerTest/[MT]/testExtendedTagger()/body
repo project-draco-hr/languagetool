@@ -1,9 +1,9 @@
 {
   final GermanTagger tagger=new GermanTagger();
-  assertEquals("Ku??[Ku??/SUB:AKK:SIN:MAS, Ku??/SUB:DAT:SIN:MAS, Ku??/SUB:NOM:SIN:MAS]",tagger.lookup("Ku??").toSortedString());
-  assertEquals("Kuss[Kuss/SUB:AKK:SIN:MAS, Kuss/SUB:DAT:SIN:MAS, Kuss/SUB:NOM:SIN:MAS]",tagger.lookup("Kuss").toSortedString());
-  assertEquals("Ha??[Ha??/SUB:AKK:SIN:MAS, Ha??/SUB:DAT:SIN:MAS, Ha??/SUB:NOM:SIN:MAS]",tagger.lookup("Ha??").toSortedString());
-  assertEquals("Hass[Hass/SUB:AKK:SIN:MAS, Hass/SUB:DAT:SIN:MAS, Hass/SUB:NOM:SIN:MAS]",tagger.lookup("Hass").toSortedString());
-  assertEquals("mu??[m??ssen/VER:MOD:1:SIN:PR??, m??ssen/VER:MOD:3:SIN:PR??]",tagger.lookup("mu??").toSortedString());
-  assertEquals("muss[m??ssen/VER:MOD:1:SIN:PR??, m??ssen/VER:MOD:3:SIN:PR??]",tagger.lookup("muss").toSortedString());
+  assertEquals("Ku??[Ku??/SUB:AKK:SIN:MAS, Ku??/SUB:DAT:SIN:MAS, Ku??/SUB:NOM:SIN:MAS]",toSortedString(tagger.lookup("Ku??")));
+  assertEquals("Kuss[Kuss/SUB:AKK:SIN:MAS, Kuss/SUB:DAT:SIN:MAS, Kuss/SUB:NOM:SIN:MAS]",toSortedString(tagger.lookup("Kuss")));
+  assertEquals("Ha??[Ha??/SUB:AKK:SIN:MAS, Ha??/SUB:DAT:SIN:MAS, Ha??/SUB:NOM:SIN:MAS]",toSortedString(tagger.lookup("Ha??")));
+  assertEquals("Hass[Hass/SUB:AKK:SIN:MAS, Hass/SUB:DAT:SIN:MAS, Hass/SUB:NOM:SIN:MAS]",toSortedString(tagger.lookup("Hass")));
+  assertEquals("mu??[m??ssen/VER:MOD:1:SIN:PR??, m??ssen/VER:MOD:3:SIN:PR??]",toSortedString(tagger.lookup("mu??")));
+  assertEquals("muss[m??ssen/VER:MOD:1:SIN:PR??, m??ssen/VER:MOD:3:SIN:PR??]",toSortedString(tagger.lookup("muss")));
 }
