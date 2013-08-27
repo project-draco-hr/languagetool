@@ -1,9 +1,14 @@
 {
   final List<String> goodSentences=rule.getCorrectExamples();
+  List<PatternRule> rules=allRulesLanguageTool.getPatternRulesByIdAndSubId(rule.getId(),rule.getSubId());
   for (  String goodSentence : goodSentences) {
     goodSentence=goodSentence.replaceAll("[\\n\\t]+","");
     goodSentence=cleanXML(goodSentence);
     assertTrue(goodSentence.trim().length() > 0);
-    assertFalse(lang + ": Did not expect error in: " + goodSentence+ " (Rule: "+ rule+ ")",match(rule,goodSentence,languageTool));
+    boolean isMatched=false;
+    for (    Rule auxRule : rules) {
+      isMatched=isMatched || match(auxRule,goodSentence,languageTool);
+    }
+    assertFalse(lang + ": Did not expect error in: " + goodSentence+ " (Rule: "+ rule+ ")",isMatched);
   }
 }

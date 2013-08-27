@@ -1,5 +1,6 @@
 {
   final List<IncorrectExample> badSentences=rule.getIncorrectExamples();
+  List<PatternRule> rules=allRulesLanguageTool.getPatternRulesByIdAndSubId(rule.getId(),rule.getSubId());
   for (  IncorrectExample origBadExample : badSentences) {
     final String origBadSentence=origBadExample.getExample().replaceAll("[\\n\\t]+","");
     final List<String> suggestedCorrections=origBadExample.getCorrections();
@@ -10,7 +11,10 @@
     }
     final String badSentence=cleanXML(origBadSentence);
     assertTrue(badSentence.trim().length() > 0);
-    List<RuleMatch> matches=getMatches(rule,badSentence,languageTool);
+    List<RuleMatch> matches=new ArrayList<>();
+    for (    Rule auxRule : rules) {
+      matches.addAll(getMatches(auxRule,badSentence,languageTool));
+    }
     if (!rule.isWithComplexPhrase()) {
       assertTrue(lang + ": Did expect one error in: \"" + badSentence+ "\" (Rule: "+ rule+ "), but found "+ matches.size()+ ". Additional info:"+ rule.getMessage()+ ", Matches: "+ matches,matches.size() == 1);
       assertEquals(lang + ": Incorrect match position markup (start) for rule " + rule+ ", sentence: "+ badSentence,expectedMatchStart,matches.get(0).getFromPos());
