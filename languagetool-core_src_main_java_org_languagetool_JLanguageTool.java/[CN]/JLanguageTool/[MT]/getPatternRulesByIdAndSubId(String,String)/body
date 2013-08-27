@@ -1,0 +1,13 @@
+{
+  final List<Rule> rules=getAllRules();
+  final List<PatternRule> rulesById=new ArrayList<>();
+  for (  final Rule rule : rules) {
+    rule.reset();
+    if (rule instanceof PatternRule) {
+      if (rule.getId().equals(Id) && ((PatternRule)rule).getSubId().equals(subId)) {
+        rulesById.add((PatternRule)rule);
+      }
+    }
+  }
+  return rulesById;
+}

@@ -29,7 +29,7 @@
     tokenSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
     tokenSpaceBeforeSet=!IGNORE.equals(attrs.getValue(SPACEBEFORE));
   }
-  if (!inAndGroup) {
+  if (!inAndGroup && !inOrGroup) {
     tokenCounter++;
   }
 }

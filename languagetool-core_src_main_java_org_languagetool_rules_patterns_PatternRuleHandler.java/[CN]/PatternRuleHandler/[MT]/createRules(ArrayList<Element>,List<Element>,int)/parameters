@@ -1,0 +1,3 @@
+ArrayList<Element> phraseElement
+List<Element> tmpElements
+int numElement
