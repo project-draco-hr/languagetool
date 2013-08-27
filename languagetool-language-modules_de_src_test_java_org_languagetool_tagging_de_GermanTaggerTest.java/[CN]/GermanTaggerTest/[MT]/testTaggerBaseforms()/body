@@ -1,14 +1,14 @@
 {
   final GermanTagger tagger=new GermanTagger();
-  List<AnalyzedGermanToken> readings=tagger.lookup("??brigbleibst").getGermanReadings();
+  List<AnalyzedToken> readings=tagger.lookup("??brigbleibst").getReadings();
   assertEquals(1,readings.size());
   assertEquals("??brigbleiben",readings.get(0).getLemma());
-  readings=tagger.lookup("Haus").getGermanReadings();
+  readings=tagger.lookup("Haus").getReadings();
   assertEquals(3,readings.size());
   assertEquals("Haus",readings.get(0).getLemma());
   assertEquals("Haus",readings.get(1).getLemma());
   assertEquals("Haus",readings.get(2).getLemma());
-  readings=tagger.lookup("H??user").getGermanReadings();
+  readings=tagger.lookup("H??user").getReadings();
   assertEquals(3,readings.size());
   assertEquals("Haus",readings.get(0).getLemma());
   assertEquals("Haus",readings.get(1).getLemma());

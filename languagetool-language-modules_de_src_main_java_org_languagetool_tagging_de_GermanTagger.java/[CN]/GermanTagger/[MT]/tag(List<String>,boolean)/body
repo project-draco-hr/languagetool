@@ -39,7 +39,7 @@
         l.add(new AnalyzedGermanToken(word,null,null));
       }
     }
-    tokenReadings.add(new AnalyzedGermanTokenReadings(l.toArray(new AnalyzedGermanToken[l.size()]),pos));
+    tokenReadings.add(new AnalyzedTokenReadings(l.toArray(new AnalyzedGermanToken[l.size()]),pos));
     pos+=word.length();
   }
   return tokenReadings;

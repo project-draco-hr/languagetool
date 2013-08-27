@@ -16,18 +16,18 @@
     if (i > 0 && (tokens[i - 1].getToken().equals("Herr") || tokens[i - 1].getToken().equals("Herrn") || tokens[i - 1].getToken().equals("Frau"))) {
       continue;
     }
-    final AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[i];
+    final AnalyzedTokenReadings analyzedToken=tokens[i];
     final String token=analyzedToken.getToken();
-    List<AnalyzedGermanToken> readings=analyzedToken.getGermanReadings();
-    AnalyzedGermanTokenReadings analyzedGermanToken2;
+    List<AnalyzedToken> readings=analyzedToken.getReadings();
+    AnalyzedTokenReadings analyzedGermanToken2;
     boolean isBaseform=false;
     if (analyzedToken.getReadingsLength() >= 1 && analyzedToken.hasLemma(token)) {
       isBaseform=true;
     }
-    if ((readings == null || analyzedToken.getAnalyzedToken(0).getPOSTag() == null || analyzedToken.hasReadingOfType(GermanToken.POSType.VERB)) && isBaseform) {
+    if ((readings == null || analyzedToken.getAnalyzedToken(0).getPOSTag() == null || GermanHelper.hasReadingOfType(analyzedToken,GermanToken.POSType.VERB)) && isBaseform) {
       analyzedGermanToken2=tagger.lookup(token.toLowerCase());
       if (analyzedGermanToken2 != null) {
-        readings=analyzedGermanToken2.getGermanReadings();
+        readings=analyzedGermanToken2.getReadings();
       }
       boolean nextTokenIsPersonalPronoun=false;
       if (i < tokens.length - 1) {
@@ -39,7 +39,7 @@
     if (readings == null) {
       continue;
     }
-    final boolean hasNounReading=analyzedToken.hasReadingOfType(GermanToken.POSType.NOMEN);
+    final boolean hasNounReading=GermanHelper.hasReadingOfType(analyzedToken,GermanToken.POSType.NOMEN);
     if (hasNounReading) {
       continue;
     }

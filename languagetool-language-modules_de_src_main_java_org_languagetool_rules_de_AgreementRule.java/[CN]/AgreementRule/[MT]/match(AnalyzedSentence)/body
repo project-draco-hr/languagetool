@@ -4,7 +4,7 @@
   for (int i=0; i < tokens.length; i++) {
     final String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
     if (posToken != null && posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME))     continue;
-    final AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[i];
+    final AnalyzedTokenReadings analyzedToken=tokens[i];
     final boolean relevantPronoun=isRelevantPronoun(tokens,i);
     boolean ignore=couldBeRelativeClause(tokens,i);
     if (i > 0) {
@@ -16,24 +16,24 @@
     if (analyzedToken.getToken().equals("nichts") || analyzedToken.getToken().equals("alles") || analyzedToken.getToken().equals("dies")) {
       ignore=true;
     }
-    if ((analyzedToken.hasReadingOfType(POSType.DETERMINER) || relevantPronoun) && !ignore) {
+    if ((GermanHelper.hasReadingOfType(analyzedToken,POSType.DETERMINER) || relevantPronoun) && !ignore) {
       int tokenPos=i + 1;
       if (tokenPos >= tokens.length)       break;
-      AnalyzedGermanTokenReadings nextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos];
+      AnalyzedTokenReadings nextToken=tokens[tokenPos];
       nextToken=maybeAddAdjectiveReadings(nextToken,tokens,tokenPos);
       if (isNonPredicativeAdjective(nextToken)) {
         tokenPos=i + 2;
         if (tokenPos >= tokens.length)         break;
-        final AnalyzedGermanTokenReadings nextNextToken=(AnalyzedGermanTokenReadings)tokens[tokenPos];
-        if (nextNextToken.hasReadingOfType(POSType.NOMEN)) {
-          final RuleMatch ruleMatch=checkDetAdjNounAgreement((AnalyzedGermanTokenReadings)tokens[i],nextToken,(AnalyzedGermanTokenReadings)tokens[i + 2]);
+        final AnalyzedTokenReadings nextNextToken=tokens[tokenPos];
+        if (GermanHelper.hasReadingOfType(nextNextToken,POSType.NOMEN)) {
+          final RuleMatch ruleMatch=checkDetAdjNounAgreement(tokens[i],nextToken,tokens[i + 2]);
           if (ruleMatch != null) {
             ruleMatches.add(ruleMatch);
           }
         }
       }
- else       if (nextToken.hasReadingOfType(POSType.NOMEN)) {
-        final RuleMatch ruleMatch=checkDetNounAgreement((AnalyzedGermanTokenReadings)tokens[i],(AnalyzedGermanTokenReadings)tokens[i + 1]);
+ else       if (GermanHelper.hasReadingOfType(nextToken,POSType.NOMEN)) {
+        final RuleMatch ruleMatch=checkDetNounAgreement(tokens[i],tokens[i + 1]);
         if (ruleMatch != null) {
           ruleMatches.add(ruleMatch);
         }

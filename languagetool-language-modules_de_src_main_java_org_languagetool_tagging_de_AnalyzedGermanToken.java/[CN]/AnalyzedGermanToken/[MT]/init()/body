@@ -1,0 +1,32 @@
+{
+  if (getPOSTag() == null) {
+    return;
+  }
+  final String[] parts=getPOSTag().split(":");
+  if (parts.length < 3) {
+    return;
+  }
+  for (  String part : parts) {
+    if (part.equals("EIG"))     type=POSType.PROPER_NOUN;
+ else     if (part.equals("SUB") && type == null)     type=POSType.NOMEN;
+ else     if (part.equals("PA1") || part.equals("PA2"))     type=POSType.PARTIZIP;
+ else     if (part.equals("VER") && type == null)     type=POSType.VERB;
+ else     if (part.equals("ADJ") && type == null)     type=POSType.ADJEKTIV;
+ else     if (part.equals("PRO") && type == null)     type=POSType.PRONOMEN;
+ else     if (part.equals("ART") && type == null)     type=POSType.DETERMINER;
+ else     if (part.equals("AKK"))     casus=Kasus.AKKUSATIV;
+ else     if (part.equals("GEN"))     casus=Kasus.GENITIV;
+ else     if (part.equals("NOM"))     casus=Kasus.NOMINATIV;
+ else     if (part.equals("DAT"))     casus=Kasus.DATIV;
+ else     if (part.equals("PLU"))     numerus=Numerus.PLURAL;
+ else     if (part.equals("SIN"))     numerus=Numerus.SINGULAR;
+ else     if (part.equals("MAS"))     genus=Genus.MASKULINUM;
+ else     if (part.equals("FEM"))     genus=Genus.FEMININUM;
+ else     if (part.equals("NEU"))     genus=Genus.NEUTRUM;
+ else     if (part.equals("NOG"))     genus=Genus.FEMININUM;
+ else     if (part.equals("ALG"))     genus=Genus.ALLGEMEIN;
+ else     if (part.equals("DEF"))     ;
+ else     if (part.equals("DEM"))     ;
+ else     if (part.equals("PER"))     ;
+  }
+}

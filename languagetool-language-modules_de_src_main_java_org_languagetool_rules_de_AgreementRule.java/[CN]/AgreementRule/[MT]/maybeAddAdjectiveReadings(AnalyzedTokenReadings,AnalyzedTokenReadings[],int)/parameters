@@ -1,0 +1,3 @@
+AnalyzedTokenReadings nextToken
+AnalyzedTokenReadings[] tokens
+int tokenPos

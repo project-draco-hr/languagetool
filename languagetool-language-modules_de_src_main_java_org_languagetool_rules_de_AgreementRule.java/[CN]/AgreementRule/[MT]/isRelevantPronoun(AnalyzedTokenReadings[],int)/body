@@ -1,6 +1,6 @@
 {
-  final AnalyzedGermanTokenReadings analyzedToken=(AnalyzedGermanTokenReadings)tokens[pos];
-  boolean relevantPronoun=analyzedToken.hasReadingOfType(POSType.PRONOMEN);
+  final AnalyzedTokenReadings analyzedToken=tokens[pos];
+  boolean relevantPronoun=GermanHelper.hasReadingOfType(analyzedToken,POSType.PRONOMEN);
   final String token=tokens[pos].getToken();
   if (pos > 0 && tokens[pos - 1].getToken().equalsIgnoreCase("vor") && tokens[pos].getToken().equalsIgnoreCase("allem")) {
     relevantPronoun=false;

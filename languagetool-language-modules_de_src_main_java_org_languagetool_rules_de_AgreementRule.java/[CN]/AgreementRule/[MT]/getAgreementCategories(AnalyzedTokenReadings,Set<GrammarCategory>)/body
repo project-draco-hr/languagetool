@@ -1,0 +1,17 @@
+{
+  final Set<String> set=new HashSet<>();
+  final List<AnalyzedToken> readings=aToken.getReadings();
+  for (  AnalyzedToken tmpReading : readings) {
+    final AnalyzedGermanToken reading=new AnalyzedGermanToken(tmpReading);
+    if (reading.getCasus() == null && reading.getNumerus() == null && reading.getGenus() == null)     continue;
+    if (reading.getGenus() == GermanToken.Genus.ALLGEMEIN) {
+      set.add(makeString(reading.getCasus(),reading.getNumerus(),GermanToken.Genus.MASKULINUM,omit));
+      set.add(makeString(reading.getCasus(),reading.getNumerus(),GermanToken.Genus.FEMININUM,omit));
+      set.add(makeString(reading.getCasus(),reading.getNumerus(),GermanToken.Genus.NEUTRUM,omit));
+    }
+ else {
+      set.add(makeString(reading.getCasus(),reading.getNumerus(),reading.getGenus(),omit));
+    }
+  }
+  return set;
+}

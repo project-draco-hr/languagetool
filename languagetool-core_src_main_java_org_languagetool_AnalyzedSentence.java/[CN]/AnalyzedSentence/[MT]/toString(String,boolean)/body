@@ -18,7 +18,7 @@
  else       if (JLanguageTool.PARAGRAPH_END_TAGNAME.equals(token.getPOSTag())) {
         sb.append("<P/>");
       }
- else       if (posTag == null && !(element.getClass().getName().equals("org.languagetool.tagging.de.AnalyzedGermanTokenReadings"))) {
+ else       if (posTag == null) {
         sb.append(token.getToken());
       }
  else {

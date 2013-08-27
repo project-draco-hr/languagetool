@@ -1,5 +1,0 @@
-List<RuleMatch> ruleMatches
-AnalyzedTokenReadings[] tokens
-int i
-AnalyzedGermanTokenReadings analyzedToken
-String token
