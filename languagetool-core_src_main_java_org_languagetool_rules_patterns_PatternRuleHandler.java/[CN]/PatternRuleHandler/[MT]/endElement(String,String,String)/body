@@ -13,12 +13,7 @@
     }
     if (phraseElementList.isEmpty()) {
       final List<Element> tmpElements=new ArrayList<>();
-      for (      Element element : elementList) {
-        tmpElements.add((Element)ObjectUtils.clone(element));
-      }
-      final PatternRule rule=new PatternRule(id,language,tmpElements,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString());
-      prepareRule(rule);
-      rules.add(rule);
+      createRules(new ArrayList<>(elementList),tmpElements,0);
     }
  else {
       if (!elementList.isEmpty()) {
@@ -29,12 +24,7 @@
       for (      final ArrayList<Element> phraseElement : phraseElementList) {
         processElement(phraseElement);
         final List<Element> tmpElements=new ArrayList<>();
-        for (        Element element : phraseElement) {
-          tmpElements.add((Element)ObjectUtils.clone(element));
-        }
-        final PatternRule rule=new PatternRule(id,language,tmpElements,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString(),phraseElementList.size() > 1);
-        prepareRule(rule);
-        rules.add(rule);
+        createRules(phraseElement,tmpElements,0);
       }
     }
     elementList.clear();
