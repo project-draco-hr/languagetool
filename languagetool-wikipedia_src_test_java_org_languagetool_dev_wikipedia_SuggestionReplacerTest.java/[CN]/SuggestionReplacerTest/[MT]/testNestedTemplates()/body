@@ -1,5 +1,4 @@
 {
-  JLanguageTool langTool=getLanguageTool();
   SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
   String markup="{{FNBox|\n" + "  {{FNZ|1|1979 und 1984}}\n" + "  {{FNZ|2|[[Rundungsfehler]]}}\n"+ "}}\n\nEin ??konomischer Gottesdienst.\n";
   applySuggestion(langTool,filter,markup,markup.replace("??konomischer","<s>??kumenisch</s>"));

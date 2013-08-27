@@ -1,5 +1,4 @@
 {
-  JLanguageTool langTool=getLanguageTool();
   SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
   applySuggestion(langTool,filter,"Die CD ROM.","Die <s>CD-ROM.</s>");
   applySuggestion(langTool,filter,"Die [[verlinkte]] CD ROM.","Die [[verlinkte]] <s>CD-ROM.</s>");

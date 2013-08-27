@@ -1,5 +1,10 @@
 {
-  JLanguageTool langTool=new JLanguageTool(language);
-  langTool.activateDefaultPatternRules();
-  return langTool;
+  try {
+    JLanguageTool langTool=new JLanguageTool(language);
+    langTool.activateDefaultPatternRules();
+    return langTool;
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
 }
