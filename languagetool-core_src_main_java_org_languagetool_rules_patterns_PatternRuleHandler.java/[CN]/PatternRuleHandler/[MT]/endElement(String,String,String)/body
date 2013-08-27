@@ -51,6 +51,11 @@
     andGroupCounter=0;
     tokenCounter++;
   }
+ else   if (OR.equals(qName)) {
+    inOrGroup=false;
+    orGroupCounter=0;
+    tokenCounter++;
+  }
  else   if (TOKEN.equals(qName)) {
     finalizeTokens();
   }

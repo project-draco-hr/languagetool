@@ -61,6 +61,10 @@
     inAndGroup=true;
     tokenCountForMarker++;
   }
+ else   if (OR.equals(qName)) {
+    inOrGroup=true;
+    tokenCountForMarker++;
+  }
  else   if (UNIFY.equals(qName)) {
     inUnification=true;
     uniNegation=YES.equals(attrs.getValue(NEGATE));
@@ -74,7 +78,7 @@
   }
  else   if (TOKEN.equals(qName)) {
     setToken(attrs);
-    if (!inAndGroup) {
+    if (!inAndGroup && !inOrGroup) {
       tokenCountForMarker++;
     }
   }

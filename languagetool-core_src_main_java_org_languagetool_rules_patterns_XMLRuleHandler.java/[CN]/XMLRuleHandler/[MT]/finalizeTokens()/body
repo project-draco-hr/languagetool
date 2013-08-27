@@ -32,11 +32,17 @@
   if (inAndGroup && andGroupCounter > 0) {
     elementList.get(elementList.size() - 1).setAndGroupElement(tokenElement);
   }
+ else   if (inOrGroup && orGroupCounter > 0) {
+    elementList.get(elementList.size() - 1).setOrGroupElement(tokenElement);
+  }
  else {
     elementList.add(tokenElement);
   }
   if (inAndGroup) {
     andGroupCounter++;
+  }
+  if (inOrGroup) {
+    orGroupCounter++;
   }
   if (inUnification) {
     tokenElement.setUnification(equivalenceFeatures);
