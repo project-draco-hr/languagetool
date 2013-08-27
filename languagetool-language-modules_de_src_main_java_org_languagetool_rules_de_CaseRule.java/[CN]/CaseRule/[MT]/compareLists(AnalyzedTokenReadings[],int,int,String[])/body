@@ -4,7 +4,9 @@
   }
   int i=0;
   for (int j=startIndex; j <= endIndex; j++) {
-    if (i >= parts.length)     return false;
+    if (i >= parts.length) {
+      return false;
+    }
     if (!tokens[j].getToken().equals(parts[i])) {
       return false;
     }

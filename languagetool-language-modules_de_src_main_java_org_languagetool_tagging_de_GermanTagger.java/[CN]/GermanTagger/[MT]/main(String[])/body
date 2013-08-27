@@ -1,7 +1,0 @@
-{
-  final GermanTagger gt=new GermanTagger();
-  final List<String> l=new ArrayList<>();
-  l.add("Einfacher");
-  final List<AnalyzedTokenReadings> res=gt.tag(l);
-  System.err.println(res);
-}

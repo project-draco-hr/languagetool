@@ -1,5 +1,7 @@
 {
-  if (tokenReadings == null)   return false;
+  if (tokenReadings == null) {
+    return false;
+  }
   for (  AnalyzedToken reading : tokenReadings) {
     if (reading.getPOSTag() != null) {
       if (reading.getPOSTag().equals(JLanguageTool.SENTENCE_END_TAGNAME) || reading.getPOSTag().equals(JLanguageTool.PARAGRAPH_END_TAGNAME)) {
@@ -7,7 +9,9 @@
       }
     }
     final AnalyzedGermanToken germanReading=(AnalyzedGermanToken)reading;
-    if (germanReading.getType() == type)     return true;
+    if (germanReading.getType() == type) {
+      return true;
+    }
   }
   return false;
 }
