@@ -1,0 +1,5 @@
+{
+  AnalyzedTokenReadings readings=new AnalyzedTokenReadings(new AnalyzedToken("der","ART:DEF:DAT:SIN:FEM",null),0);
+  assertTrue(GermanHelper.hasReadingOfType(readings,GermanToken.POSType.DETERMINER));
+  assertFalse(GermanHelper.hasReadingOfType(readings,GermanToken.POSType.NOMEN));
+}
