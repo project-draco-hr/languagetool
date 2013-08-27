@@ -3,7 +3,7 @@
   final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   boolean repetition=false;
   final TreeSet<String> inflectedWords=new TreeSet<>();
-  String prevLemma, curLemma;
+  String prevLemma;
   int curToken=0;
   for (int i=1; i < tokens.length; i++) {
     final String token=tokens[i].getToken();
@@ -24,12 +24,12 @@
           hasLemma=false;
           break;
         }
-        final Matcher m1=EXC_WORDS.matcher(lemma);
+        final Matcher m1=getExcludedWordsPattern().matcher(lemma);
         if (m1.matches()) {
           isWord=false;
           break;
         }
-        final Matcher m2=EXC_POS.matcher(posTag);
+        final Matcher m2=getExcludedPos().matcher(posTag);
         if (m2.matches()) {
           isWord=false;
           break;
@@ -39,7 +39,7 @@
         hasLemma=false;
       }
     }
-    final Matcher m1=EXC_NONWORDS.matcher(tokens[i].getToken());
+    final Matcher m1=getExcludedNonWordsPattern().matcher(tokens[i].getToken());
     if (m1.matches()) {
       isWord=false;
     }
@@ -49,10 +49,10 @@
       for (      AnalyzedToken analyzedToken : tokens[i]) {
         final String pos=analyzedToken.getPOSTag();
         if (pos != null) {
-          notSentEnd|="SENT_END".equals(pos);
+          notSentEnd|=JLanguageTool.SENTENCE_END_TAGNAME.equals(pos);
         }
         if (hasLemma) {
-          curLemma=analyzedToken.getLemma();
+          final String curLemma=analyzedToken.getLemma();
           if (!prevLemma.equals(curLemma) && !notSentEnd) {
             if (inflectedWords.contains(curLemma) && curToken != i) {
               repetition=true;
@@ -75,9 +75,8 @@
       }
     }
     if (repetition) {
-      final String msg="Powt??rzony wyraz w zdaniu";
       final int pos=tokens[i].getStartPos();
-      final RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),msg,"Powt??rzenie wyrazu");
+      final RuleMatch ruleMatch=new RuleMatch(this,pos,pos + token.length(),getMessage(),getShortMessage());
       ruleMatches.add(ruleMatch);
       repetition=false;
     }
