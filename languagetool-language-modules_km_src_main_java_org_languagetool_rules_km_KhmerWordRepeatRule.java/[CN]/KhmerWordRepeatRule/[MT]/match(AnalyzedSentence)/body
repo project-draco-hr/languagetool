@@ -5,15 +5,9 @@
   String prevToken="";
   for (int i=1; i < tokens.length; i++) {
     final String token=tokens[i].getToken();
-    boolean isWord=true;
-    if (token.length() == 1) {
-      final char c=token.charAt(0);
-      if (!Character.isLetter(c)) {
-        isWord=false;
-      }
-    }
+    boolean isWord=isWord(token);
     final boolean isException=ignore(text,tokensWithWS,i);
-    if (isWord && prevToken.toLowerCase().equals(token.toLowerCase()) && (isException != true)) {
+    if (isWord && prevToken.equalsIgnoreCase(token) && !isException) {
       final String msg=messages.getString("repetition");
       final int prevPos=tokens[i - 1].getStartPos();
       final int pos=tokens[i].getStartPos();

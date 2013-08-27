@@ -1,0 +1,10 @@
+{
+  boolean isWord=true;
+  if (token.length() == 1) {
+    final char c=token.charAt(0);
+    if (!Character.isLetter(c)) {
+      isWord=false;
+    }
+  }
+  return isWord;
+}
