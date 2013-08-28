@@ -1,0 +1,8 @@
+{
+  for (  AnalyzedToken element : anTokReadings) {
+    if (!element.hasNoTag()) {
+      return true;
+    }
+  }
+  return false;
+}

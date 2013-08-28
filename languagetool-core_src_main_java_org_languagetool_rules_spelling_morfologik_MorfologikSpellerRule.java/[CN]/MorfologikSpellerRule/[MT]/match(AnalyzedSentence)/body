@@ -10,7 +10,7 @@
     }
   }
   int idx=-1;
-  skip:   for (  AnalyzedTokenReadings token : tokens) {
+  for (  AnalyzedTokenReadings token : tokens) {
     idx++;
     if (isUrl(token.getToken())) {
       continue;
@@ -18,12 +18,8 @@
     if (ignoreToken(tokens,idx) || token.isImmunized()) {
       continue;
     }
-    if (ignoreTaggedWords) {
-      for (      AnalyzedToken at : token.getReadings()) {
-        if (!at.hasNoTag()) {
-          continue skip;
-        }
-      }
+    if (ignoreTaggedWords && token.isTagged()) {
+      continue;
     }
     final String word=token.getToken();
     if (tokenizingPattern() == null) {

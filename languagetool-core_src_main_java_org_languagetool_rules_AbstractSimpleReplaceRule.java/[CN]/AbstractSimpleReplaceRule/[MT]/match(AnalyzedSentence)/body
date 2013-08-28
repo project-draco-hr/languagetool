@@ -3,6 +3,9 @@
   AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   for (  AnalyzedTokenReadings tokenReadings : tokens) {
     String originalTokenStr=tokenReadings.getToken();
+    if (ignoreTaggedWords && tokenReadings.isTagged()) {
+      continue;
+    }
     String tokenString=cleanup(originalTokenStr);
     if (!wrongWords.containsKey(tokenString)) {
       for (      AnalyzedToken analyzedToken : tokenReadings.getReadings()) {

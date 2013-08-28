@@ -1,5 +1,6 @@
 {
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Aix?? est?? for??a b??.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Joan Navarro no ??s de Navarra ni de Jerez.")).length);
   final RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("El recader fa huelga."));
   assertEquals(2,matches.length);
   assertEquals("ordinari",matches[0].getSuggestedReplacements().get(0));
