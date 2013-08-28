@@ -1,0 +1,6 @@
+{
+  if (disambiguator == null) {
+    disambiguator=new GermanRuleDisambiguator();
+  }
+  return disambiguator;
+}
