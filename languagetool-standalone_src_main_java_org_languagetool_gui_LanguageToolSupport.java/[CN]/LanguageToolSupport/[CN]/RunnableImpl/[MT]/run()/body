@@ -7,5 +7,6 @@
     _check(caller);
   }
  catch (  IOException ex) {
+    ex.printStackTrace();
   }
 }

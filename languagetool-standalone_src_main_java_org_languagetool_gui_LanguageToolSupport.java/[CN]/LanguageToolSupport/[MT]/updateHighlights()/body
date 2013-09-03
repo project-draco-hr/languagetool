@@ -19,6 +19,7 @@
       h.addHighlight(span.start,span.end,bluePainter);
     }
  catch (    BadLocationException ex) {
+      ex.printStackTrace();
     }
   }
   for (  Span span : spellErrors) {
@@ -26,6 +27,7 @@
       h.addHighlight(span.start,span.end,redPainter);
     }
  catch (    BadLocationException ex) {
+      ex.printStackTrace();
     }
   }
 }
