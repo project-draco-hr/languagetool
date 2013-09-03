@@ -8,8 +8,7 @@
     if (!JLanguageTool.getDataBroker().resourceExists(detectionFile)) {
       return;
     }
-    final InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(detectionFile);
-    try {
+    try (InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(detectionFile)){
       final InputStreamReader in=new InputStreamReader(stream,PROFILE_ENCODING);
       final BufferedReader reader=new BufferedReader(in);
       String line=reader.readLine();
@@ -21,10 +20,7 @@
         line=reader.readLine();
       }
     }
-  finally {
-      stream.close();
-    }
-    LanguageIdentifier.addProfile(languageCode,profile);
+     LanguageIdentifier.addProfile(languageCode,profile);
   }
  catch (  Exception e) {
     throw new RuntimeException("Failed trying to load language profile for language \"" + language + "\".",e);

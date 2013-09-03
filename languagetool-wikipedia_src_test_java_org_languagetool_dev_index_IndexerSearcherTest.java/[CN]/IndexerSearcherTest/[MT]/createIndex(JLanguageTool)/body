@@ -1,7 +1,6 @@
 {
-  final Indexer indexer=new Indexer(directory,lt.getLanguage());
   int ruleCount=0;
-  try {
+  try (Indexer indexer=new Indexer(directory,lt.getLanguage())){
     final List<Rule> rules=lt.getAllActiveRules();
     for (    Rule rule : rules) {
       if (rule instanceof PatternRule && !rule.isDefaultOff()) {
@@ -26,9 +25,6 @@
       }
     }
   }
-  finally {
-    indexer.close();
-  }
-  errorSearcher=new Searcher(directory);
+   errorSearcher=new Searcher(directory);
   return ruleCount;
 }

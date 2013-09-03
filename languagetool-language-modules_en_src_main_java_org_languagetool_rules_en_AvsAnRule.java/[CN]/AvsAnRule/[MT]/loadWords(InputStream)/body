@@ -1,7 +1,6 @@
 {
   final Set<String> set=new TreeSet<>();
-  final Scanner scanner=new Scanner(file,"utf-8");
-  try {
+  try (Scanner scanner=new Scanner(file,"utf-8")){
     while (scanner.hasNextLine()) {
       final String line=scanner.nextLine().trim();
       if (line.length() < 1 || line.charAt(0) == '#') {
@@ -15,8 +14,5 @@
       }
     }
   }
-  finally {
-    scanner.close();
-  }
-  return set;
+   return set;
 }

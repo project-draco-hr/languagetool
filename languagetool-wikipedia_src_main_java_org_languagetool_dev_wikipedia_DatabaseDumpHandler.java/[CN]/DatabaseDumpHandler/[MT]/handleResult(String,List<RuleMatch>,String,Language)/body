@@ -1,7 +1,6 @@
 {
   final String sql="INSERT INTO corpus_match " + "(version, language_code, ruleid, rule_subid, rule_description, message, error_context, corpus_date, " + "check_date, sourceuri, is_visible) "+ "VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
-  final PreparedStatement prepSt=conn.prepareStatement(sql);
-  try {
+  try (PreparedStatement prepSt=conn.prepareStatement(sql)){
     final java.sql.Date dumpSqlDate=new java.sql.Date(dumpDate.getTime());
     final java.sql.Date nowDate=new java.sql.Date(new Date().getTime());
     for (    RuleMatch match : ruleMatches) {
@@ -32,7 +31,4 @@
       }
     }
   }
-  finally {
-    prepSt.close();
-  }
-}
+ }

@@ -1,8 +1,7 @@
 {
   super(lt,dumpDate,langCode,lang);
   final Properties dbProperties=new Properties();
-  final FileInputStream inStream=new FileInputStream(propertiesFile);
-  try {
+  try (FileInputStream inStream=new FileInputStream(propertiesFile)){
     dbProperties.load(inStream);
     final String dbDriver=getProperty(dbProperties,"dbDriver");
     final String dbUrl=getProperty(dbProperties,"dbUrl");
@@ -11,14 +10,8 @@
     Class.forName(dbDriver);
     conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
   }
- catch (  ClassNotFoundException e) {
+ catch (  ClassNotFoundException|SQLException e) {
     throw new RuntimeException(e);
-  }
-catch (  SQLException e) {
-    throw new RuntimeException(e);
-  }
- finally {
-    inStream.close();
   }
   contextTools=new ContextTools();
   contextTools.setContextSize(CONTEXT_SIZE);

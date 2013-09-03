@@ -1,7 +1,6 @@
 {
   Map<String,List<String>> map=new HashMap<>();
-  Scanner scanner=new Scanner(stream,getEncoding());
-  try {
+  try (Scanner scanner=new Scanner(stream,getEncoding())){
     while (scanner.hasNextLine()) {
       String line=scanner.nextLine();
       if (line.length() < 1 || line.charAt(0) == '#') {
@@ -18,8 +17,5 @@
       }
     }
   }
-  finally {
-    scanner.close();
-  }
-  return map;
+   return map;
 }

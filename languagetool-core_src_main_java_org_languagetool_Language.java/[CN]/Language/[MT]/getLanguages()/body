@@ -5,8 +5,7 @@
     final Enumeration<URL> propertyFiles=Language.class.getClassLoader().getResources(PROPERTIES_PATH);
     while (propertyFiles.hasMoreElements()) {
       final URL url=propertyFiles.nextElement();
-      final InputStream inputStream=url.openStream();
-      try {
+      try (InputStream inputStream=url.openStream()){
         final MultiKeyProperties props=new MultiKeyProperties(inputStream);
         final List<String> classNamesStr=props.getProperty(PROPERTIES_KEY);
         if (classNamesStr == null) {
@@ -23,10 +22,7 @@
           }
         }
       }
-  finally {
-        inputStream.close();
-      }
-    }
+     }
   }
  catch (  IOException e) {
     throw new RuntimeException(e);
