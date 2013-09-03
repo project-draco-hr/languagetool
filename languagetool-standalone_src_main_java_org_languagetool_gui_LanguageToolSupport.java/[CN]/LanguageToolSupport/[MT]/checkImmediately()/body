@@ -1,4 +1,4 @@
 {
   check.getAndIncrement();
-  gcExecutor.schedule(new RunnableImpl(null),0,TimeUnit.MILLISECONDS);
+  checkExecutor.schedule(new RunnableImpl(null),0,TimeUnit.MILLISECONDS);
 }

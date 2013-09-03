@@ -1,8 +1,6 @@
 {
   final String qualifier=getQualifier(lang);
-  FileInputStream fis=null;
-  try {
-    fis=new FileInputStream(configFile);
+  try (FileInputStream fis=new FileInputStream(configFile)){
     final Properties props=new Properties();
     props.load(fis);
     disabledRuleIds.addAll(getListFromProperties(props,DISABLED_RULES_CONFIG_KEY + qualifier));
@@ -26,10 +24,5 @@
     loadConfigForOtherLanguages(lang,props);
   }
  catch (  final FileNotFoundException e) {
-  }
- finally {
-    if (fis != null) {
-      fis.close();
-    }
   }
 }
