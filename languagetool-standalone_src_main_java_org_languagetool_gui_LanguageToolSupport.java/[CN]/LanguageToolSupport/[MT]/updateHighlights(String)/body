@@ -1,27 +1,12 @@
 {
-  ArrayList<Span> spans=new ArrayList<>();
-  ArrayList<RuleMatch> matches=new ArrayList<>();
+  List<Span> spans=new ArrayList<>();
+  List<RuleMatch> matches=new ArrayList<>();
   for (  RuleMatch match : ruleMatches) {
-    if (match.getRule().getId().equals(rule)) {
+    if (match.getRule().getId().equals(disabledRule)) {
       continue;
     }
     matches.add(match);
-    Span span=new Span();
-    span.start=match.getFromPos();
-    span.end=match.getToPos();
-    span.msg=(match.getShortMessage() != null && !match.getShortMessage().isEmpty()) ? match.getShortMessage() : match.getMessage();
-    span.msg=org.languagetool.gui.Tools.shortenComment(span.msg);
-    span.desc=match.getMessage();
-    span.replacement=new ArrayList<>();
-    span.replacement.addAll(match.getSuggestedReplacements());
-    span.spelling=match.getRule().isSpellingRule();
-    span.rule=match.getRule().getId();
-    span.url=match.getRule().getUrl();
-    spans.add(span);
+    createSpan(spans,match);
   }
-  ruleMatches.clear();
-  documentSpans.clear();
-  ruleMatches.addAll(matches);
-  documentSpans.addAll(spans);
-  updateHighlights();
+  prepareUpdateHighlights(matches,spans);
 }

@@ -1,0 +1,7 @@
+{
+  ruleMatches.clear();
+  documentSpans.clear();
+  ruleMatches.addAll(matches);
+  documentSpans.addAll(spans);
+  updateHighlights();
+}

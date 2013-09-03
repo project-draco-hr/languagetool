@@ -1,4 +1,3 @@
 {
-  check.getAndIncrement();
-  checkExecutor.schedule(new RunnableImpl(null),millisecondDelay,TimeUnit.MILLISECONDS);
+  checkDelayed(null);
 }

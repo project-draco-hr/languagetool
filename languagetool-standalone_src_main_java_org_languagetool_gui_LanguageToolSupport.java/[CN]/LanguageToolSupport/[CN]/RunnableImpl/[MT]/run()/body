@@ -4,7 +4,7 @@
     return;
   }
   try {
-    _check(caller);
+    checkText(caller);
   }
  catch (  IOException ex) {
     ex.printStackTrace();
