@@ -9,7 +9,11 @@
     }
     correctedStPos--;
   }
-  AnalyzedTokenReadings firstMatchTokenObj=tokens[firstMatchToken + correctedStPos];
+  int idx=firstMatchToken + correctedStPos;
+  if (idx >= tokens.length) {
+    idx=tokens.length - 1;
+  }
+  AnalyzedTokenReadings firstMatchTokenObj=tokens[idx];
   boolean startsWithUppercase=StringTools.startsWithUppercase(firstMatchTokenObj.getToken()) && !matchConvertsCase(rule.getSuggestionMatches()) && !matchConvertsCase(rule.getSuggestionMatchesOutMsg());
   if (firstMatchTokenObj.isSentenceStart() && tokens.length > firstMatchToken + correctedStPos + 1) {
     firstMatchTokenObj=tokens[firstMatchToken + correctedStPos + 1];
