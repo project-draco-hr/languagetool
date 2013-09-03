@@ -6,18 +6,18 @@
       continue;
     }
     matches.add(match);
-    Span t=new Span();
-    t.start=match.getFromPos();
-    t.end=match.getToPos();
-    t.msg=(match.getShortMessage() != null && !match.getShortMessage().isEmpty()) ? match.getShortMessage() : match.getMessage();
-    t.msg=org.languagetool.gui.Tools.shortenComment(t.msg);
-    t.desc=match.getMessage();
-    t.replacement=new ArrayList<>();
-    t.replacement.addAll(match.getSuggestedReplacements());
-    t.spelling=match.getRule().isSpellingRule();
-    t.rule=match.getRule().getId();
-    t.url=match.getRule().getUrl();
-    spans.add(t);
+    Span span=new Span();
+    span.start=match.getFromPos();
+    span.end=match.getToPos();
+    span.msg=(match.getShortMessage() != null && !match.getShortMessage().isEmpty()) ? match.getShortMessage() : match.getMessage();
+    span.msg=org.languagetool.gui.Tools.shortenComment(span.msg);
+    span.desc=match.getMessage();
+    span.replacement=new ArrayList<>();
+    span.replacement.addAll(match.getSuggestedReplacements());
+    span.spelling=match.getRule().isSpellingRule();
+    span.rule=match.getRule().getId();
+    span.url=match.getRule().getUrl();
+    spans.add(span);
   }
   ruleMatches.clear();
   documentSpans.clear();

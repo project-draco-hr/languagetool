@@ -15,6 +15,7 @@
             Desktop.getDesktop().browse(e.getURL().toURI());
           }
  catch (          Exception ex) {
+            Tools.showError(ex);
           }
         }
       }
