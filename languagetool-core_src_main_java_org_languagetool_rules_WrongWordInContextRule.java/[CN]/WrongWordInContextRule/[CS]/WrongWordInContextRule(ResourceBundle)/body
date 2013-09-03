@@ -2,7 +2,6 @@
   if (messages != null) {
     super.setCategory(new Category(getCategoryString()));
   }
-  final String filename=getFilename();
-  contextWordsSet=loadContextWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(filename));
+  contextWordsSet=loadContextWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFilename()));
   setLocQualityIssueType("misspelling");
 }

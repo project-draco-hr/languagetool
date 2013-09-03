@@ -12,5 +12,5 @@
   if (plainResult.isEmpty()) {
     return null;
   }
-  return plainResult.toArray(new String[]{});
+  return plainResult.toArray(new String[plainResult.size()]);
 }
