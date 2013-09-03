@@ -1,8 +1,8 @@
 {
   removeHighlights();
   Highlighter h=textComponent.getHighlighter();
-  ArrayList<Span> spellErrors=new ArrayList();
-  ArrayList<Span> grammarErrors=new ArrayList();
+  ArrayList<Span> spellErrors=new ArrayList<>();
+  ArrayList<Span> grammarErrors=new ArrayList<>();
   for (  Span span : documentSpans) {
     if (span.start == span.end) {
       continue;

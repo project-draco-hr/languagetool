@@ -1,6 +1,6 @@
 {
   if (end < start) {
-    throw new IllegalArgumentException("end before start");
+    throw new IllegalArgumentException("end before start: " + end + " < "+ start);
   }
   Document doc=this.textComponent.getDocument();
   if (doc != null) {

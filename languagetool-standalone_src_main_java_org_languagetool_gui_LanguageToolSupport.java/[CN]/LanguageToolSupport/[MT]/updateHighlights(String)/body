@@ -1,6 +1,6 @@
 {
-  ArrayList<Span> spans=new ArrayList();
-  ArrayList<RuleMatch> matches=new ArrayList();
+  ArrayList<Span> spans=new ArrayList<>();
+  ArrayList<RuleMatch> matches=new ArrayList<>();
   for (  RuleMatch match : ruleMatches) {
     if (match.getRule().getId().equals(rule)) {
       continue;
@@ -12,7 +12,7 @@
     t.msg=(match.getShortMessage() != null && !match.getShortMessage().isEmpty()) ? match.getShortMessage() : match.getMessage();
     t.msg=org.languagetool.gui.Tools.shortenComment(t.msg);
     t.desc=match.getMessage();
-    t.replacement=new ArrayList();
+    t.replacement=new ArrayList<>();
     t.replacement.addAll(match.getSuggestedReplacements());
     t.spelling=match.getRule().isSpellingRule();
     t.rule=match.getRule().getId();

@@ -10,8 +10,8 @@
   warmUpChecker();
   rhp=new HighlightPainter(Color.red);
   bhp=new HighlightPainter(Color.blue);
-  ruleMatches=new ArrayList();
-  documentSpans=new ArrayList();
+  ruleMatches=new ArrayList<>();
+  documentSpans=new ArrayList<>();
   gcExecutor=new ScheduledThreadPoolExecutor(1,new ThreadFactory(){
     @Override public Thread newThread(    Runnable r){
       Thread t=new Thread(r);
@@ -25,7 +25,7 @@
   check=new AtomicInteger(0);
   this.textComponent.getDocument().addDocumentListener(documentListener=new DocumentListener(){
     @Override public void insertUpdate(    DocumentEvent e){
-      if (e.getDocument().getLength() == e.getLength() && config.getAutoDetect() == true) {
+      if (e.getDocument().getLength() == e.getLength() && config.getAutoDetect()) {
         mustDetectLanguage=true;
       }
       recalculateSpans(e.getOffset(),e.getLength(),false);
@@ -34,7 +34,7 @@
       }
     }
     @Override public void removeUpdate(    DocumentEvent e){
-      if (e.getDocument().getLength() == 0 && config.getAutoDetect() == true) {
+      if (e.getDocument().getLength() == 0 && config.getAutoDetect()) {
         mustDetectLanguage=true;
       }
       recalculateSpans(e.getOffset(),e.getLength(),true);
@@ -43,7 +43,7 @@
       }
     }
     @Override public void changedUpdate(    DocumentEvent e){
-      if (e.getDocument().getLength() == e.getLength() && config.getAutoDetect() == true) {
+      if (e.getDocument().getLength() == e.getLength() && config.getAutoDetect()) {
         mustDetectLanguage=true;
       }
       if (backgroundCheckEnabled) {
