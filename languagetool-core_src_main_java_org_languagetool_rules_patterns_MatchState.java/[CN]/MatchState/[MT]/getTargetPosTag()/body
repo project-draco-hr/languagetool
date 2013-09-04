@@ -30,13 +30,13 @@
       final StringBuilder sb=new StringBuilder();
       final int posTagLen=posTags.size();
       int l=0;
-      for (      String lposTag : posTags) {
+      for (      String lPosTag : posTags) {
         l++;
-        lposTag=pPosRegexMatch.matcher(lposTag).replaceAll(posTagReplace);
+        lPosTag=pPosRegexMatch.matcher(lPosTag).replaceAll(posTagReplace);
         if (match.setsPos()) {
-          lposTag=synthesizer.getPosTagCorrection(lposTag);
+          lPosTag=synthesizer.getPosTagCorrection(lPosTag);
         }
-        sb.append(lposTag);
+        sb.append(lPosTag);
         if (l < posTagLen) {
           sb.append('|');
         }
