@@ -54,10 +54,10 @@
     inDisambiguation=true;
     disambiguatedPOS=attrs.getValue(POSTAG);
     if (attrs.getValue(ACTION) == null) {
-      disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction("REPLACE");
+      disambigAction=DisambiguationPatternRule.DisambiguatorAction.valueOf("REPLACE");
     }
  else {
-      disambigAction=DisambiguationPatternRule.DisambiguatorAction.toAction(attrs.getValue(ACTION).toUpperCase());
+      disambigAction=DisambiguationPatternRule.DisambiguatorAction.valueOf(attrs.getValue(ACTION).toUpperCase());
     }
     disamb=new StringBuilder();
   }
