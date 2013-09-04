@@ -1,0 +1,13 @@
+{
+  this.rules=rules;
+  if (sentences.size() != analyzedSentences.size()) {
+    throw new IllegalArgumentException("sentences and analyzedSentences do not have the same length : " + sentences.size() + " != "+ analyzedSentences.size());
+  }
+  this.sentences=sentences;
+  this.analyzedSentences=analyzedSentences;
+  this.paraMode=paraMode;
+  this.annotatedText=annotatedText;
+  this.charCount=charCount;
+  this.lineCount=lineCount;
+  this.columnCount=columnCount;
+}

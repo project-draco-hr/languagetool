@@ -1,0 +1,4 @@
+{
+  this.part=Objects.requireNonNull(part);
+  this.typ=Objects.requireNonNull(typ);
+}

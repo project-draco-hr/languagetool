@@ -1,0 +1,9 @@
+ParagraphHandling paraMode
+AnnotatedText annotatedText
+List<AnalyzedSentence> analyzedSentences
+List<String> sentences
+List<Rule> allRules
+int charCount
+int lineCount
+int columnCount
+int threads

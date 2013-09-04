@@ -1,7 +1,0 @@
-List<Rule> rules
-List<String> sentences
-List<AnalyzedSentence> analyzedSentences
-ParagraphHandling paraMode
-int charCount
-int lineCount
-int columnCount

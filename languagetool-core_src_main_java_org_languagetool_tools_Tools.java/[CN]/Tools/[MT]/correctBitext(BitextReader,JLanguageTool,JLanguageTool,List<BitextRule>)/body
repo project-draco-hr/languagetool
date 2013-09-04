@@ -3,7 +3,7 @@
     final List<RuleMatch> curMatches=checkBitext(srcAndTrg.getSource(),srcAndTrg.getTarget(),sourceLt,targetLt,bRules);
     final List<RuleMatch> fixedMatches=new ArrayList<>();
     for (    RuleMatch thisMatch : curMatches) {
-      fixedMatches.add(targetLt.adjustRuleMatchPos(thisMatch,0,reader.getTargetColumnCount(),reader.getLineCount(),reader.getCurrentLine()));
+      fixedMatches.add(targetLt.adjustRuleMatchPos(thisMatch,0,reader.getTargetColumnCount(),reader.getLineCount(),reader.getCurrentLine(),null));
     }
     if (fixedMatches.size() > 0) {
       System.out.println(correctTextFromMatches(srcAndTrg.getTarget(),fixedMatches));

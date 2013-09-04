@@ -1,0 +1,4 @@
+{
+  this.parts=Objects.requireNonNull(parts);
+  this.mapping=Objects.requireNonNull(mapping);
+}

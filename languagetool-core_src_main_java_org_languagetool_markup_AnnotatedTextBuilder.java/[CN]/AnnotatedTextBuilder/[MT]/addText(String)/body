@@ -1,0 +1,4 @@
+{
+  parts.add(new TextPart(text,TextPart.Type.TEXT));
+  return this;
+}

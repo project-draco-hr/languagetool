@@ -1,0 +1,6 @@
+RuleMatch match
+int charCount
+int columnCount
+int lineCount
+String sentence
+AnnotatedText annotatedText

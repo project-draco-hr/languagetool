@@ -5,3 +5,4 @@ int lineCount
 int columnCount
 String sentence
 AnalyzedSentence analyzedSentence
+AnnotatedText annotatedText

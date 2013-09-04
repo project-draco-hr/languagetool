@@ -9,7 +9,7 @@
     final List<RuleMatch> curMatches=checkBitext(srcAndTrg.getSource(),srcAndTrg.getTarget(),srcLt,trgLt,bRules);
     final List<RuleMatch> fixedMatches=new ArrayList<>();
     for (    RuleMatch thisMatch : curMatches) {
-      fixedMatches.add(trgLt.adjustRuleMatchPos(thisMatch,reader.getSentencePosition(),reader.getColumnCount(),reader.getLineCount(),reader.getCurrentLine()));
+      fixedMatches.add(trgLt.adjustRuleMatchPos(thisMatch,reader.getSentencePosition(),reader.getColumnCount(),reader.getLineCount(),reader.getCurrentLine(),null));
     }
     ruleMatches.addAll(fixedMatches);
     if (fixedMatches.size() > 0) {

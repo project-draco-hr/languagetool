@@ -1,0 +1,40 @@
+{
+  final List<RuleMatch> sentenceMatches=new ArrayList<>();
+  for (  final Rule rule : allRules) {
+    if (disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()))) {
+      continue;
+    }
+    final Category category=rule.getCategory();
+    if (category != null && disabledCategories.contains(category.getName())) {
+      continue;
+    }
+switch (paraMode) {
+case ONLYNONPARA:
+{
+        if (rule.isParagraphBackTrack()) {
+          continue;
+        }
+        break;
+      }
+case ONLYPARA:
+{
+      if (!rule.isParagraphBackTrack()) {
+        continue;
+      }
+      break;
+    }
+case NORMAL:
+default :
+}
+final RuleMatch[] thisMatches=rule.match(analyzedSentence);
+for (final RuleMatch element1 : thisMatches) {
+  final RuleMatch thisMatch=adjustRuleMatchPos(element1,charCount,columnCount,lineCount,sentence,annotatedText);
+  sentenceMatches.add(thisMatch);
+  if (rule.isParagraphBackTrack()) {
+    rule.addRuleMatch(thisMatch);
+  }
+}
+}
+final RuleMatchFilter filter=new SameRuleGroupFilter();
+return filter.filter(sentenceMatches);
+}

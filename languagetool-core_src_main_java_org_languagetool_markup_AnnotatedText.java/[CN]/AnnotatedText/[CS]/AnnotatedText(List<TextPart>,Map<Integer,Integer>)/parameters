@@ -1,0 +1,2 @@
+List<TextPart> parts
+Map<Integer,Integer> mapping

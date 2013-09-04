@@ -1,0 +1,3 @@
+AnnotatedText annotatedText
+boolean tokenizeText
+ParagraphHandling paraMode

@@ -1,0 +1,9 @@
+{
+  StringBuilder sb=new StringBuilder();
+  for (  TextPart part : parts) {
+    if (part.getType() == TextPart.Type.TEXT) {
+      sb.append(part.getPart());
+    }
+  }
+  return sb.toString();
+}

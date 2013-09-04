@@ -1,0 +1,30 @@
+{
+  final List<String> sentences;
+  if (tokenizeText) {
+    sentences=sentenceTokenize(annotatedText.getPlainText());
+  }
+ else {
+    sentences=new ArrayList<>();
+    sentences.add(annotatedText.getPlainText());
+  }
+  final List<Rule> allRules=getAllRules();
+  printIfVerbose(allRules.size() + " rules activated for language " + language);
+  sentenceCount=sentences.size();
+  unknownWords=new HashSet<>();
+  final List<AnalyzedSentence> analyzedSentences=analyzeSentences(sentences);
+  final List<RuleMatch> ruleMatches=performCheck(analyzedSentences,sentences,allRules,paraMode,annotatedText);
+  if (!ruleMatches.isEmpty() && !paraMode.equals(ParagraphHandling.ONLYNONPARA)) {
+    for (    final Rule rule : allRules) {
+      if (rule.isParagraphBackTrack() && (rule.getMatches() != null)) {
+        final List<RuleMatch> rm=rule.getMatches();
+        for (        final RuleMatch r : rm) {
+          if (rule.isInRemoved(r)) {
+            ruleMatches.remove(r);
+          }
+        }
+      }
+    }
+  }
+  Collections.sort(ruleMatches);
+  return ruleMatches;
+}

@@ -1,0 +1,36 @@
+{
+  int fromPos=match.getFromPos() + charCount;
+  int toPos=match.getToPos() + charCount;
+  if (annotatedText != null) {
+    fromPos=annotatedText.getOriginalTextPositionFor(fromPos);
+    toPos=annotatedText.getOriginalTextPositionFor(toPos - 1) + 1;
+  }
+  final RuleMatch thisMatch=new RuleMatch(match.getRule(),fromPos,toPos,match.getMessage(),match.getShortMessage());
+  thisMatch.setSuggestedReplacements(match.getSuggestedReplacements());
+  final String sentencePartToError=sentence.substring(0,match.getFromPos());
+  final String sentencePartToEndOfError=sentence.substring(0,match.getToPos());
+  final int lastLineBreakPos=sentencePartToError.lastIndexOf('\n');
+  final int column;
+  final int endColumn;
+  if (lastLineBreakPos == -1) {
+    column=sentencePartToError.length() + columnCount;
+  }
+ else {
+    column=sentencePartToError.length() - lastLineBreakPos;
+  }
+  final int lastLineBreakPosInError=sentencePartToEndOfError.lastIndexOf('\n');
+  if (lastLineBreakPosInError == -1) {
+    endColumn=sentencePartToEndOfError.length() + columnCount;
+  }
+ else {
+    endColumn=sentencePartToEndOfError.length() - lastLineBreakPosInError;
+  }
+  final int lineBreaksToError=countLineBreaks(sentencePartToError);
+  final int lineBreaksToEndOfError=countLineBreaks(sentencePartToEndOfError);
+  thisMatch.setLine(lineCount + lineBreaksToError);
+  thisMatch.setEndLine(lineCount + lineBreaksToEndOfError);
+  thisMatch.setColumn(column);
+  thisMatch.setEndColumn(endColumn);
+  thisMatch.setOffset(match.getFromPos() + charCount);
+  return thisMatch;
+}

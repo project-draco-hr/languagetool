@@ -4,7 +4,7 @@
   final List<RuleMatch> ruleMatches=checkBitext(src,trg,srcLt,trgLt,bRules);
   final List<RuleMatch> adaptedMatches=new ArrayList<>();
   for (  RuleMatch match : ruleMatches) {
-    match=trgLt.adjustRuleMatchPos(match,0,0,0,trg);
+    match=trgLt.adjustRuleMatchPos(match,0,0,0,trg,null);
     adaptedMatches.add(match);
   }
   if (apiFormat) {

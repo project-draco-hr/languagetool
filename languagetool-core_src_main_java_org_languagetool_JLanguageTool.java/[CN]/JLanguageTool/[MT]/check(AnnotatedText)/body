@@ -1,0 +1,3 @@
+{
+  return check(text,true,ParagraphHandling.NORMAL);
+}
