@@ -50,6 +50,9 @@
  else       if (i > 2 && matchPostagRegexp(tokens[i - 2],VERB_CONJUGAT) && ((matchPostagRegexp(tokens[i - 1],DETERMINANT_MS) && matchPostagRegexp(relevantWords.get(token),NOM_MS)) || (matchPostagRegexp(tokens[i - 1],DETERMINANT_MP) && matchPostagRegexp(relevantWords.get(token),NOM_MP)) || (matchPostagRegexp(tokens[i - 1],DETERMINANT_FS) && matchPostagRegexp(relevantWords.get(token),NOM_FS))|| (matchPostagRegexp(tokens[i - 1],DETERMINANT_FP) && matchPostagRegexp(relevantWords.get(token),NOM_FP)))) {
         replacement=relevantWords.get(token).getToken();
       }
+ else       if (i > 2 && matchPostagRegexp(tokens[i - 2],VERB_CONJUGAT) && ((mArticleELMS.matches() && matchPostagRegexp(relevantWords.get(token),NOM_MS)) || (mArticleELMP.matches() && matchPostagRegexp(relevantWords.get(token),NOM_MP)) || (mArticleELFS.matches() && matchPostagRegexp(relevantWords.get(token),NOM_FS))|| (mArticleELFP.matches() && matchPostagRegexp(relevantWords.get(token),NOM_FP)))) {
+        replacement=relevantWords.get(token).getToken();
+      }
  else       if (!matchPostagRegexp(tokens[i],PARTICIPI_MS) && !token.equals("venia") && !token.equals("venies")&& !token.equals("tenia")&& !token.equals("tenies")&& !token.equals("faria")&& !token.equals("faries")&& !token.equals("espero")&& !token.equals("continua")&& !token.equals("continues")&& !token.equals("cantar")&& !prevToken.equals("que")&& !prevToken.equals("qui")&& !prevToken.equals("qu??")&& mPreposicioDE.matches()&& !matchPostagRegexp(tokens[i - 1],NOT_IN_PREV_TOKEN)&& !matchPostagRegexp(tokens[i + 1],LOCUCIONS)&& (i < tokens.length - 2)&& !matchPostagRegexp(tokens[i + 2],INFINITIU)&& !mExcepcionsDE.matches()&& !tokens[i - 1].hasPosTag("RG")) {
         replacement=relevantWords.get(token).getToken();
       }

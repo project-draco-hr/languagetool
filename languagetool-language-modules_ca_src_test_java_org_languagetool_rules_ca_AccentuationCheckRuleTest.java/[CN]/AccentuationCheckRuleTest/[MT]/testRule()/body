@@ -39,6 +39,7 @@
   assertCorrect("Els h??bitats de la comarca.");
   assertCorrect("Joan Pau II beatifica Paula Montal.");
   assertCorrect("La magn??fica conservaci?? del palau.");
+  assertIncorrect("Porta-la i nosaltres fem la copia i la compulsem.");
   assertIncorrect("Carrega d'arxius.");
   assertIncorrect("Vaig arribar a fer una radio que no va funcionar mai.");
   assertIncorrect("No em fumar?? cap faria com feia abans.");
