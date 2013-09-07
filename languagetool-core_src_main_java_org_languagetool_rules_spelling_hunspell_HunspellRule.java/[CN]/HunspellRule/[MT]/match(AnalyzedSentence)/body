@@ -17,7 +17,7 @@
     if (word.length() == 1) {
       isAlphabetic=StringTools.isAlphabetic(word.charAt(0));
     }
-    if (isAlphabetic && dictionary.misspelled(word)) {
+    if (isAlphabetic && !word.equals("--") && dictionary.misspelled(word)) {
       final RuleMatch ruleMatch=new RuleMatch(this,len,len + word.length(),messages.getString("spelling"),messages.getString("desc_spelling_short"));
       final List<String> suggestions=getSuggestions(word);
       if (suggestions != null) {
