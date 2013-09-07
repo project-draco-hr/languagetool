@@ -19,12 +19,15 @@
   testSplit(new String[]{"??s clar??? traduir ??s una feina endimoniada"});
   testSplit(new String[]{"??El cord?? del frare????? surt d'una manera desguitarrada"});
   testSplit(new String[]{"convidar el seu heroi ???del ram que sigui?????? a prendre caf??."});
+  testSplit(new String[]{"Vegeu el cap. 24 del llibre."});
+  testSplit(new String[]{"Vegeu el cap. IX del llibre."});
   testSplit(new String[]{"Viu al n??m. 24 del carrer de l'Hort."});
   testSplit(new String[]{"El Dr. Joan no vindr??."});
   testSplit(new String[]{"Distingit Sr. Joan,"});
   testSplit(new String[]{"Molt Hble. Sr. President"});
   testSplit(new String[]{"de Sant Nicolau (del s. XII; cor g??tic del s. XIV) i de Sant "});
   testSplit(new String[]{"Ell ??s el n??mero u. ","Jo el dos."});
+  testSplit(new String[]{"T?? un trau al cap. ","Cal portar-lo a l'hospital."});
   testSplit(new String[]{"1 500 m/s. ","Neix a"});
   testSplit(new String[]{"s'hi enfront?? quan G.Oueddei n'esdevingu?? l??der"});
   testSplit(new String[]{"el jesu??ta alemany J.E. Nithard"});
