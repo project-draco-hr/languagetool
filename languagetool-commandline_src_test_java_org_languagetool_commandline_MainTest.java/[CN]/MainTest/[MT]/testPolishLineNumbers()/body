@@ -1,6 +1,6 @@
 {
   final File input=writeToTempFile("Test.\n" + "Test.\n" + "Test.\n"+ "Test.\n"+ "Test.\n"+ "Test.\n"+ "\n"+ "Test kt??ry wyka??e b????d.");
-  final String[] args=new String[]{"-l","pl","-c","utf-8",input.getAbsolutePath()};
+  final String[] args={"-l","pl","-c","utf-8",input.getAbsolutePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray(),"UTF-8");
   assertTrue(output.indexOf("Expected text language: Polish") == 0);

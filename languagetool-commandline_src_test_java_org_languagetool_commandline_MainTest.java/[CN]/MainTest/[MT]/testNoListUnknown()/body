@@ -1,5 +1,5 @@
 {
-  final String[] args=new String[]{"-l","pl",getTestFilePath()};
+  final String[] args={"-l","pl",getTestFilePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: Polish") == 0);

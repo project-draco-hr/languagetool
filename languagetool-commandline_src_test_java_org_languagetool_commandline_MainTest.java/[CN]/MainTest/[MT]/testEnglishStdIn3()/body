@@ -2,7 +2,7 @@
   final String test="This is an test.";
   final byte[] b=test.getBytes();
   System.setIn(new ByteArrayInputStream(b));
-  final String[] args=new String[]{"-l","en","-a","-"};
+  final String[] args={"-l","en","-a","-"};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertEquals("This is a test.\n",output);

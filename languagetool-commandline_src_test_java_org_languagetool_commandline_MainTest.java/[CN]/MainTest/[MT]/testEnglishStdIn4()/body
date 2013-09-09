@@ -1,6 +1,6 @@
 {
   System.setIn(new FileInputStream(enTestFile));
-  final String[] args=new String[]{"-l","en","--api","-"};
+  final String[] args={"-l","en","--api","-"};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertTrue("Got: " + output,output.contains("<error fromy=\"4\" fromx=\"5\" toy=\"4\" tox=\"10\" " + "ruleId=\"ENGLISH_WORD_REPEAT_RULE\" msg=\"Possible typo: you repeated a word\" replacements=\"is\" " + "context=\"This is is a test of language tool. \" contextoffset=\"5\" offset=\"5\" errorlength=\"5\" "+ "category=\"Miscellaneous\" locqualityissuetype=\"duplication\"/>"));

@@ -1,5 +1,5 @@
 {
-  final String[] args=new String[]{"-l","en","--taggeronly",getTestFilePath()};
+  final String[] args={"-l","en","--taggeronly",getTestFilePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: English") == 0);

@@ -1,6 +1,6 @@
 {
   final File input=writeToTempFile("This < is is > filtered.");
-  final String[] args=new String[]{"--xmlfilter",input.getAbsolutePath()};
+  final String[] args={"--xmlfilter",input.getAbsolutePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertFalse(output.contains("ENGLISH_WORD_REPEAT_RULE"));

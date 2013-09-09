@@ -1,6 +1,6 @@
 {
   final File input=writeToTempFile("To jest ??winia kt??ra si?? ??lini.");
-  final String[] args=new String[]{"-l","pl","--api","-c","utf-8",input.getAbsolutePath()};
+  final String[] args={"-l","pl","--api","-c","utf-8",input.getAbsolutePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray(),"UTF-8");
   assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);

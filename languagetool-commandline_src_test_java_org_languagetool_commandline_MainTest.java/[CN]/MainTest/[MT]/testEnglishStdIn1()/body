@@ -2,7 +2,7 @@
   final String test="This is an test.";
   final byte[] b=test.getBytes();
   System.setIn(new ByteArrayInputStream(b));
-  final String[] args=new String[]{"-l","en"};
+  final String[] args={"-l","en"};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: English") == 0);

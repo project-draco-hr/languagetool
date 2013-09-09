@@ -1,5 +1,5 @@
 {
-  final String[] args=new String[]{"-l","en","--apply",getTestFilePath()};
+  final String[] args={"-l","en","--apply",getTestFilePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertEquals("This is a test.\n\n" + "This is a test of language tool.\n\n" + "This is a test of language tool.\n",output);

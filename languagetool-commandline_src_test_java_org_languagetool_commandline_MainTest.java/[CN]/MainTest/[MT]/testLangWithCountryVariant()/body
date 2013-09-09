@@ -1,6 +1,6 @@
 {
   final File input=writeToTempFile("This is modelling.");
-  final String[] args=new String[]{"-l","en-US",input.getAbsolutePath()};
+  final String[] args={"-l","en-US",input.getAbsolutePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: English (US)") == 0);

@@ -1,5 +1,5 @@
 {
-  final String[] args=new String[]{"-adl",getTestFilePath()};
+  final String[] args={"-adl",getTestFilePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Using English for file") == 0);

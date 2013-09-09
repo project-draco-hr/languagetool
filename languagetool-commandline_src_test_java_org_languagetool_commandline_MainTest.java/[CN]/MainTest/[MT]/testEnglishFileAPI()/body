@@ -1,5 +1,5 @@
 {
-  final String[] args=new String[]{"-l","en","--api",getTestFilePath()};
+  final String[] args={"-l","en","--api",getTestFilePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>") == 0);

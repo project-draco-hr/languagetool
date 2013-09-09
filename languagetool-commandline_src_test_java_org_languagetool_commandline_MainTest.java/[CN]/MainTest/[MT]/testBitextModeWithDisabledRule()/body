@@ -1,6 +1,6 @@
 {
   final File input=writeToTempFile("this is not actual.\tTo nie jest aktualne.\n" + "test\tTest\n" + "ab\tVery strange data indeed, much longer than input");
-  final String[] args=new String[]{"-l","pl","--bitext","-m","en","-d","UPPERCASE_SENTENCE_START,TRANSLATION_LENGTH",input.getAbsolutePath()};
+  final String[] args={"-l","pl","--bitext","-m","en","-d","UPPERCASE_SENTENCE_START,TRANSLATION_LENGTH",input.getAbsolutePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: Polish") == 0);

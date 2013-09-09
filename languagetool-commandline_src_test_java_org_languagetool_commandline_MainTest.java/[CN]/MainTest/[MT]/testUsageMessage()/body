@@ -1,6 +1,6 @@
 {
   try {
-    final String[] args=new String[]{"-h"};
+    final String[] args={"-h"};
     Main.main(args);
     fail("LT should have exited with status 0!");
   }

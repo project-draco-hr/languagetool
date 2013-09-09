@@ -2,7 +2,7 @@
   final String test="To jest test, kt??ry zrobi??em, kt??ry mi si?? podoba.";
   final byte[] b=test.getBytes();
   System.setIn(new ByteArrayInputStream(b));
-  final String[] args=new String[]{"-l","pl","-e","PL_WORD_REPEAT","-"};
+  final String[] args={"-l","pl","-e","PL_WORD_REPEAT","-"};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: Polish") == 0);
