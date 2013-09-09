@@ -3,11 +3,11 @@
   match=new StringBuilder();
   Match.CaseConversion caseConversion=Match.CaseConversion.NONE;
   if (attrs.getValue("case_conversion") != null) {
-    caseConversion=Match.CaseConversion.valueOf(attrs.getValue("case_conversion").toUpperCase());
+    caseConversion=Match.CaseConversion.valueOf(attrs.getValue("case_conversion").toUpperCase(Locale.ENGLISH));
   }
   Match.IncludeRange includeRange=Match.IncludeRange.NONE;
   if (attrs.getValue("include_skipped") != null) {
-    includeRange=Match.IncludeRange.valueOf(attrs.getValue("include_skipped").toUpperCase());
+    includeRange=Match.IncludeRange.valueOf(attrs.getValue("include_skipped").toUpperCase(Locale.ENGLISH));
   }
   final Match mWorker=new Match(attrs.getValue(POSTAG),attrs.getValue("postag_replace"),YES.equals(attrs.getValue(POSTAG_REGEXP)),attrs.getValue("regexp_match"),attrs.getValue("regexp_replace"),caseConversion,YES.equals(attrs.getValue("setpos")),YES.equals(attrs.getValue("suppress_misspelled")),includeRange);
   mWorker.setInMessageOnly(!inSuggestion);
