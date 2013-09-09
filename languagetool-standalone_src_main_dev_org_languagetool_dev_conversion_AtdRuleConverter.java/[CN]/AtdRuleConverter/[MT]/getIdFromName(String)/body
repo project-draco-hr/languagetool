@@ -1,6 +1,6 @@
 {
   name=name.replaceAll("\\ +","_");
   name=name.replaceAll("<|>|!|&|\\.|\\*|\\+|/|\\[.*?\\]","");
-  name=name.toUpperCase();
+  name=name.toUpperCase(Locale.ENGLISH);
   return name;
 }
