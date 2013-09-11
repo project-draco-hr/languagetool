@@ -1,5 +1,5 @@
 {
-  final JLanguageTool langTool=new JLanguageTool(lang);
+  final JLanguageTool langTool=new MultiThreadedJLanguageTool(lang);
   langTool.activateDefaultPatternRules();
   for (  String disabledRuleId : disabledRuleIds) {
     langTool.disableRule(disabledRuleId);
