@@ -1,4 +1,4 @@
 {
-  CaseRule rule=new CaseRule(null);
+  CaseRule rule=new CaseRule(null,new German());
   assertTrue(rule.supportsLanguage(new German()));
 }
