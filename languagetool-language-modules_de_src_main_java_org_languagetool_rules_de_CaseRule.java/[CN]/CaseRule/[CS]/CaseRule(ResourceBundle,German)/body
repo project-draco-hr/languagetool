@@ -1,3 +1,4 @@
 {
   if (messages != null)   super.setCategory(new Category(messages.getString("category_case")));
+  this.tagger=(GermanTagger)german.getTagger();
 }

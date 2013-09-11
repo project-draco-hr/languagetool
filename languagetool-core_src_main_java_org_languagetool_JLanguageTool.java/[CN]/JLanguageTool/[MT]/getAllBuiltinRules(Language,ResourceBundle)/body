@@ -10,7 +10,7 @@
         if (paramTypes.length == 1 && paramTypes[0].equals(ResourceBundle.class)) {
           rules.add((Rule)constructor.newInstance(messages));
         }
- else         if (paramTypes.length == 2 && paramTypes[0].equals(ResourceBundle.class) && paramTypes[1].equals(Language.class)) {
+ else         if (paramTypes.length == 2 && paramTypes[0].equals(ResourceBundle.class) && (paramTypes[1].equals(Language.class) || Language.class.isAssignableFrom(paramTypes[1]))) {
           rules.add((Rule)constructor.newInstance(messages,language));
         }
  else {
