@@ -13,6 +13,8 @@
   assertCorrect("???\"Club dels llagoters\" ???va repetir en Ron.");
   assertCorrect("??Aix?? em porta a demanar-t'ho.");
   assertCorrect("??Aix?? em porta (s??) a demanar-t'ho.");
+  assertCorrect("el grau en 60 parts iguals, tenim el minut (1'):");
+  assertCorrect("el minut en 60 parts iguals, tenim el segon (1\"):");
   assertCorrect("This is a [test] sentence...");
   assertCorrect("The plight of Tamil refugees caused a surge of support from most of the Tamil political parties.[90]");
   assertCorrect("This is what he said: \"We believe in freedom. This is what we do.\"");
@@ -25,6 +27,7 @@
   assertCorrect("In addition, the government would pay a $1,000 \"cost of education\" grant to the schools.");
   assertCorrect("Porta'l cap ac??.");
   assertCorrect("Porta-me'n cinquanta!");
+  assertIncorrect("Aquesta ??s l555???hora de les decisions.");
   assertIncorrect("Vine\", li va dir.");
   assertIncorrect("Aquesta ??s l???hora de les decisions.");
   assertIncorrect("(This is a test sentence.");
