@@ -1,0 +1,17 @@
+{
+  final CatalanWordRepeatRule rule=new CatalanWordRepeatRule(TestTools.getMessages("Catalan"),new Catalan());
+  RuleMatch[] matches;
+  JLanguageTool langTool=new JLanguageTool(new Catalan());
+  matches=rule.match(langTool.getAnalyzedSentence("Sempre pensa en en Joan."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Els els portar?? aviat."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Maximili?? I i Maria de Borgonya"));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("De la A a la z"));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Entre I i II."));
+  assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("Tots els els homes s??n iguals."));
+  assertEquals(1,matches.length);
+}
