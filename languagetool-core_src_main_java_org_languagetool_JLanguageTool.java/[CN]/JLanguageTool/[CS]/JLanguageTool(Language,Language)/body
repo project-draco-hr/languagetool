@@ -1,7 +1,7 @@
 {
   this.language=Objects.requireNonNull(language,"language cannot be null");
   this.motherTongue=motherTongue;
-  final ResourceBundle messages=getMessageBundle(language);
+  final ResourceBundle messages=ResourceBundleTools.getMessageBundle(language);
   final Rule[] allBuiltinRules=getAllBuiltinRules(language,messages);
   for (  final Rule element : allBuiltinRules) {
     if (element.supportsLanguage(language)) {
