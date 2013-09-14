@@ -4,4 +4,4 @@ JLanguageTool srcLt
 JLanguageTool trgLt
 List<BitextRule> bRules
 boolean apiFormat
-XmlPrintMode xmlMode
+StringTools.XmlPrintMode xmlMode

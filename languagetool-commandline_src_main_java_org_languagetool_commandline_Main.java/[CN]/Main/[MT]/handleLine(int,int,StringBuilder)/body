@@ -8,14 +8,14 @@
   }
  else   if (!taggerOnly) {
     if (matches == 0) {
-      matches+=Tools.checkText(StringTools.filterXML(sb.toString()),lt,apiFormat,-1,lineOffset,matches,StringTools.XmlPrintMode.START_XML);
+      matches+=CommandLineTools.checkText(StringTools.filterXML(sb.toString()),lt,apiFormat,-1,lineOffset,matches,StringTools.XmlPrintMode.START_XML);
     }
  else {
-      matches+=Tools.checkText(StringTools.filterXML(sb.toString()),lt,apiFormat,-1,lineOffset,matches,StringTools.XmlPrintMode.CONTINUE_XML);
+      matches+=CommandLineTools.checkText(StringTools.filterXML(sb.toString()),lt,apiFormat,-1,lineOffset,matches,StringTools.XmlPrintMode.CONTINUE_XML);
     }
   }
  else {
-    Tools.tagText(StringTools.filterXML(sb.toString()),lt);
+    CommandLineTools.tagText(StringTools.filterXML(sb.toString()),lt);
   }
   return matches;
 }

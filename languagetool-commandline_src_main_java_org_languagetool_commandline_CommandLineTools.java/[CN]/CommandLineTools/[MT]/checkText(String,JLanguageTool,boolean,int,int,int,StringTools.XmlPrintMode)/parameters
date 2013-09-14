@@ -4,4 +4,4 @@ boolean apiFormat
 int contextSize
 int lineOffset
 int prevMatches
-XmlPrintMode xmlMode
+StringTools.XmlPrintMode xmlMode

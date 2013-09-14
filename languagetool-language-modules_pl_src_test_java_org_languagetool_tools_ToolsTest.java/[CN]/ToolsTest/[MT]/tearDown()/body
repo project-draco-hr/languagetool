@@ -1,5 +1,0 @@
-{
-  super.tearDown();
-  System.setOut(this.stdout);
-  System.setErr(this.stderr);
-}
