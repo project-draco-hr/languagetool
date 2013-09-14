@@ -58,8 +58,10 @@
             sentences+=lt.sentenceTokenize(sb.toString()).size();
           }
           if (listUnknownWords && !taggerOnly) {
-            for (            String word : lt.getUnknownWords())             if (!unknownWords.contains(word)) {
-              unknownWords.add(word);
+            for (            String word : lt.getUnknownWords()) {
+              if (!unknownWords.contains(word)) {
+                unknownWords.add(word);
+              }
             }
           }
           sb=new StringBuilder();
@@ -73,8 +75,10 @@
               sentences+=lt.sentenceTokenize(sb.toString()).size();
             }
             if (listUnknownWords && !taggerOnly) {
-              for (              String word : lt.getUnknownWords())               if (!unknownWords.contains(word)) {
-                unknownWords.add(word);
+              for (              String word : lt.getUnknownWords()) {
+                if (!unknownWords.contains(word)) {
+                  unknownWords.add(word);
+                }
               }
             }
             sb=new StringBuilder();
