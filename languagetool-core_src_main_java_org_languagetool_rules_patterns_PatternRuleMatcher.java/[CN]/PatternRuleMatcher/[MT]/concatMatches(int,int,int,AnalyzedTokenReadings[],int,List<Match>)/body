@@ -9,7 +9,7 @@
       finalMatch=matchState.toFinalString(language);
       if (suggestionMatches.get(start).checksSpelling() && finalMatch.length == 1 && "".equals(finalMatch[0])) {
         finalMatch=new String[1];
-        finalMatch[0]="<mistake/>";
+        finalMatch[0]=MISTAKE;
       }
     }
  else {
