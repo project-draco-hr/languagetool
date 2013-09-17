@@ -1,7 +1,6 @@
 {
   if (qName.equals("title")) {
-    title=text.toString();
-    text=new StringBuilder();
+    location=Location.OTHER;
   }
  else   if (qName.equals("text")) {
     try {
@@ -10,8 +9,8 @@
  catch (    Exception e) {
       System.err.println("Error checking text of '" + title + "', ignoring document. Stacktrace:");
       e.printStackTrace();
-      text=new StringBuilder();
     }
+    text=new StringBuilder();
+    location=Location.OTHER;
   }
-  inText=false;
 }

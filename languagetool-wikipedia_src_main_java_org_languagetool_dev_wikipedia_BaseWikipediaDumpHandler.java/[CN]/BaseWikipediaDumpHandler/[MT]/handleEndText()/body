@@ -10,7 +10,7 @@
       final List<RuleMatch> ruleMatches=languageTool.check(textToCheck);
       ruleMatchCount+=ruleMatches.size();
       System.out.println("Checking article " + articleCount + " ("+ textToCheck.length() / 1024 + "KB, '" + title + "')" + ", found " + ruleMatches.size() + " matches");
-      handleResult(title,ruleMatches,textToCheck,languageTool.getLanguage());
+      handleResult(title.toString(),ruleMatches,textToCheck,languageTool.getLanguage());
     }
  catch (    ErrorLimitReachedException e) {
       throw e;

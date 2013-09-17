@@ -1,6 +1,9 @@
 {
   final String s=new String(buf,offset,len);
-  if (inText) {
+  if (location == Location.TITLE) {
+    title.append(s);
+  }
+ else   if (location == Location.TEXT) {
     text.append(s);
   }
 }

@@ -1,8 +1,10 @@
 {
   if (qName.equals("title")) {
-    inText=true;
+    title=new StringBuilder();
+    location=Location.TITLE;
   }
  else   if (qName.equals("text")) {
-    inText=true;
+    text=new StringBuilder();
+    location=Location.TEXT;
   }
 }
