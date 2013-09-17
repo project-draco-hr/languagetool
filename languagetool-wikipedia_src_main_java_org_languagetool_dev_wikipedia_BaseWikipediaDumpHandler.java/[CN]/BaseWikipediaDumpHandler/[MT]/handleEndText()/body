@@ -1,0 +1,22 @@
+{
+  final PlainTextMapping mapping=textFilter.filter(text.toString());
+  final String textToCheck=mapping.getPlainText();
+  if (!textToCheck.contains("#REDIRECT")) {
+    articleCount++;
+    if (maxArticles > 0 && articleCount > maxArticles) {
+      throw new ArticleLimitReachedException(maxArticles);
+    }
+    try {
+      final List<RuleMatch> ruleMatches=languageTool.check(textToCheck);
+      ruleMatchCount+=ruleMatches.size();
+      System.out.println("Checking article " + articleCount + " ("+ textToCheck.length() / 1024 + "KB, '" + title + "')" + ", found " + ruleMatches.size() + " matches");
+      handleResult(title,ruleMatches,textToCheck,languageTool.getLanguage());
+    }
+ catch (    ErrorLimitReachedException e) {
+      throw e;
+    }
+catch (    Exception e) {
+      throw new RuntimeException("Error checking '" + title + "' ("+ articleCount+ ")",e);
+    }
+  }
+}
