@@ -6,9 +6,6 @@
   if (superException) {
     return false;
   }
-  if (("\"".equals(tokenStr) || "'".equals(tokenStr)) && NUMBER.matcher(tokens[i - 1].getToken()).matches()) {
-    return false;
-  }
   if (i == 1 && tokenStr.equals("??"))   return false;
   if (i > 1 && tokenStr.equals(")")) {
     boolean isThereOpeningParenthesis=false;

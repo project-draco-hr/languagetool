@@ -13,8 +13,8 @@
   assertCorrect("???\"Club dels llagoters\" ???va repetir en Ron.");
   assertCorrect("??Aix?? em porta a demanar-t'ho.");
   assertCorrect("??Aix?? em porta (s??) a demanar-t'ho.");
-  assertCorrect("el grau en 60 parts iguals, tenim el minut (1'):");
-  assertCorrect("el minut en 60 parts iguals, tenim el segon (1\"):");
+  assertCorrect("al cap??tol 12 \"Llavors i fruits oleaginosos\"");
+  assertCorrect("\"Per qu?? serveixen les forquilles?\" i aquest respon \"per menjar\".");
   assertCorrect("This is a [test] sentence...");
   assertCorrect("The plight of Tamil refugees caused a surge of support from most of the Tamil political parties.[90]");
   assertCorrect("This is what he said: \"We believe in freedom. This is what we do.\"");
