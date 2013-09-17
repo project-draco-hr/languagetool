@@ -14,5 +14,8 @@
   if (wordRepetitionOf("Duran",tokens,position)) {
     return true;
   }
+  if (wordRepetitionOf("sapiens",tokens,position)) {
+    return true;
+  }
   return false;
 }
