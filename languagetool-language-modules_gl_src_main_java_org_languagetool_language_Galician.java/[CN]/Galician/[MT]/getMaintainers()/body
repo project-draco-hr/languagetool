@@ -1,5 +1,3 @@
 {
-  final Contributor contributor=new Contributor("Susana Sotelo Doc??o");
-  contributor.setUrl("http://www.linguarum.net/projects/languagetool-gl");
-  return new Contributor[]{contributor};
+  return new Contributor[]{new Contributor("Susana Sotelo Doc??o")};
 }
