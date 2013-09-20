@@ -1,5 +1,5 @@
 {
-  final String shortNameWithVariant=lang.getShortNameWithVariant();
+  final String shortNameWithVariant=lang.getShortNameWithCountryAndVariant();
   final String fileName;
   if (shortNameWithVariant.contains("-x-")) {
     fileName=lang.getShortName() + "/" + JLanguageTool.PATTERN_FILE;

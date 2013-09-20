@@ -39,7 +39,12 @@
     return null;
   }
   try {
-    return Language.getLanguageForShortName(charLocale.Language + "-" + charLocale.Country);
+    if (!charLocale.Variant.isEmpty()) {
+      return Language.getLanguageForShortName(charLocale.Language + "-" + charLocale.Country+ "-"+ charLocale.Variant);
+    }
+ else {
+      return Language.getLanguageForShortName(charLocale.Language + "-" + charLocale.Country);
+    }
   }
  catch (  java.lang.IllegalArgumentException e) {
     return Language.getLanguageForShortName(charLocale.Language);

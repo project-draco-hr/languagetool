@@ -11,7 +11,7 @@
   final Language lang;
   if (autodetectParam != null && autodetectParam.equals("1")) {
     lang=detectLanguageOfString(text,langParam);
-    print("Auto-detected language: " + lang.getShortNameWithVariant());
+    print("Auto-detected language: " + lang.getShortNameWithCountryAndVariant());
   }
  else {
     lang=Language.getLanguageForShortName(langParam);
@@ -61,9 +61,9 @@
   final String response=StringTools.ruleMatchesToXML(matches,text,CONTEXT_SIZE,StringTools.XmlPrintMode.NORMAL_XML,lang,motherTongue);
   httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK,response.getBytes(ENCODING).length);
   httpExchange.getResponseBody().write(response.getBytes(ENCODING));
-  String languageMessage=lang.getShortNameWithVariant();
+  String languageMessage=lang.getShortNameWithCountryAndVariant();
   if (motherTongue != null) {
-    languageMessage+=" (mother tongue: " + motherTongue.getShortNameWithVariant() + ")";
+    languageMessage+=" (mother tongue: " + motherTongue.getShortNameWithCountryAndVariant() + ")";
   }
   final String referrer=httpExchange.getRequestHeaders().getFirst("Referer");
   print("Check done: " + text.length() + " chars, "+ languageMessage+ ", "+ referrer+ ", "+ (System.currentTimeMillis() - timeStart)+ "ms");

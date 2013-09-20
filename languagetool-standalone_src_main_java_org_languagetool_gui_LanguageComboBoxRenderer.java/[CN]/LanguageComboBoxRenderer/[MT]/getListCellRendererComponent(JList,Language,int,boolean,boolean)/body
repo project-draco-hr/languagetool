@@ -8,9 +8,9 @@
     setBackground(list.getBackground());
     setForeground(list.getForeground());
   }
-  setText(getTranslatedName(value));
-  String langTag=value.getLocaleWithCountry().toLanguageTag();
-  String country=value.getLocaleWithCountry().getCountry().toLowerCase();
+  setText(getTranslatedName(lang));
+  String langTag=lang.getLocaleWithCountryAndVariant().toLanguageTag();
+  String country=lang.getLocaleWithCountryAndVariant().getCountry().toLowerCase();
   ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
   String filename="flags/bytag/" + langTag + ".png";
   if (!dataBroker.resourceExists(filename)) {

@@ -2,7 +2,12 @@
   if (!StringTools.isEmpty(paraText) && hasLocale(locale)) {
     Language langForShortName;
     try {
-      langForShortName=Language.getLanguageForShortName(locale.Language + "-" + locale.Country);
+      if (!locale.Variant.isEmpty()) {
+        langForShortName=Language.getLanguageForShortName(locale.Language + "-" + locale.Country+ "-"+ locale.Variant);
+      }
+ else {
+        langForShortName=Language.getLanguageForShortName(locale.Language + "-" + locale.Country);
+      }
     }
  catch (    java.lang.IllegalArgumentException e) {
       langForShortName=Language.getLanguageForShortName(locale.Language);

@@ -10,7 +10,7 @@
     }
   }
   for (  Language aLanguage : REAL_LANGUAGES) {
-    if (aLanguage.getShortNameWithVariant().equals("en-US")) {
+    if (aLanguage.getShortNameWithCountryAndVariant().equals("en-US")) {
       return aLanguage;
     }
   }
