@@ -2,7 +2,7 @@
   if (!StringTools.isEmpty(paraText) && hasLocale(locale)) {
     Language langForShortName;
     try {
-      langForShortName=Language.getLanguageForShortName(locale.Language + "-" + locale.Variant);
+      langForShortName=Language.getLanguageForShortName(locale.Language + "-" + locale.Country);
     }
  catch (    java.lang.IllegalArgumentException e) {
       langForShortName=Language.getLanguageForShortName(locale.Language);

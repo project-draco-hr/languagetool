@@ -39,7 +39,7 @@
     return null;
   }
   try {
-    return Language.getLanguageForShortName(charLocale.Language + "-" + charLocale.Variant);
+    return Language.getLanguageForShortName(charLocale.Language + "-" + charLocale.Country);
   }
  catch (  java.lang.IllegalArgumentException e) {
     return Language.getLanguageForShortName(charLocale.Language);
