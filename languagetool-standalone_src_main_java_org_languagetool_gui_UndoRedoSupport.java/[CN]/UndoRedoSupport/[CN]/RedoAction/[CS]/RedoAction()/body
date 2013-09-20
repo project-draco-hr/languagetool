@@ -1,5 +1,5 @@
 {
-  super("Redo");
+  super(messages.getString("guiRedo"));
   Image img;
   img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("sc_redo.png"));
   putValue(Action.SMALL_ICON,new ImageIcon(img));

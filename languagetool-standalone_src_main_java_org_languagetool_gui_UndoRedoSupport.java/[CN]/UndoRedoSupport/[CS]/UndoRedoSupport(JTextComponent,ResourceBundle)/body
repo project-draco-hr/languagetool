@@ -1,4 +1,5 @@
 {
+  this.messages=messages;
   undoManager=new UndoManager();
   undoAction=new UndoAction();
   redoAction=new RedoAction();

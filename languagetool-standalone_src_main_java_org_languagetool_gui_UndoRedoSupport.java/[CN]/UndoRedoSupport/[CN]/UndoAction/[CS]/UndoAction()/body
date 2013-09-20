@@ -1,5 +1,5 @@
 {
-  super("Undo");
+  super(messages.getString("guiUndo"));
   Image img;
   img=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl("sc_undo.png"));
   putValue(Action.SMALL_ICON,new ImageIcon(img));
