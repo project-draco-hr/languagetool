@@ -4,7 +4,7 @@
     if (!isValidBundleFor(lang,bundle)) {
       bundle=ResourceBundle.getBundle(MESSAGE_BUNDLE,lang.getLocale());
       if (!isValidBundleFor(lang,bundle)) {
-        final Language defaultVariant=lang.getDefaultCountry();
+        final Language defaultVariant=lang.getDefaultLanguageVariant();
         if (defaultVariant != null && defaultVariant.getCountries().length > 0) {
           final Locale locale=new Locale(defaultVariant.getShortName(),defaultVariant.getCountries()[0]);
           bundle=ResourceBundle.getBundle(MESSAGE_BUNDLE,locale);

@@ -1,6 +1,9 @@
 {
   try {
     for (    final Language element : Language.LANGUAGES) {
+      if (locale.Language.equalsIgnoreCase("qlt") && element.getShortNameWithCountryAndVariant().equals(locale.Variant)) {
+        return true;
+      }
       if (element.getShortName().equals(locale.Language)) {
         return true;
       }

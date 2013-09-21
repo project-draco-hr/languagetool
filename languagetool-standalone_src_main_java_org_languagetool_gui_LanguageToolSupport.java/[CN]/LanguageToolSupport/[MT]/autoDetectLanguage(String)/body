@@ -8,7 +8,7 @@
     lang=Language.getLanguageForLocale(Locale.getDefault());
   }
   if (lang.hasVariant()) {
-    lang=lang.getDefaultCountry();
+    lang=lang.getDefaultLanguageVariant();
   }
   return lang;
 }

@@ -2,8 +2,8 @@
   if (!StringTools.isEmpty(paraText) && hasLocale(locale)) {
     Language langForShortName;
     try {
-      if (!locale.Variant.isEmpty()) {
-        langForShortName=Language.getLanguageForShortName(locale.Language + "-" + locale.Country+ "-"+ locale.Variant);
+      if (locale.Language.equalsIgnoreCase("qlt")) {
+        langForShortName=Language.getLanguageForShortName(locale.Variant);
       }
  else {
         langForShortName=Language.getLanguageForShortName(locale.Language + "-" + locale.Country);

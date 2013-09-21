@@ -8,7 +8,12 @@
     int cnt=0;
     for (    final Language element : Language.LANGUAGES) {
       for (      final String country : element.getCountries()) {
-        aLocales[cnt]=new Locale(element.getShortName(),country,element.getVariant());
+        if (!element.getVariant().isEmpty()) {
+          aLocales[cnt]=new Locale("qlt",country,element.getShortNameWithCountryAndVariant());
+        }
+ else {
+          aLocales[cnt]=new Locale(element.getShortName(),country,"");
+        }
         cnt++;
       }
     }
