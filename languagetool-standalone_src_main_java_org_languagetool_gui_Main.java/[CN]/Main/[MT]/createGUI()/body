@@ -38,7 +38,7 @@
   panel.add(insidePanel);
   buttonCons.gridx=2;
   buttonCons.gridy=0;
-  autoDetectBox=new JCheckBox(messages.getString("atd"));
+  final JCheckBox autoDetectBox=new JCheckBox(messages.getString("atd"));
   buttonCons.gridx=1;
   buttonCons.gridy=1;
   buttonCons.gridwidth=2;
