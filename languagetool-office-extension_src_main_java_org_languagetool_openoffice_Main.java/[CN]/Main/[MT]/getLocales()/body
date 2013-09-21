@@ -8,8 +8,8 @@
     int cnt=0;
     for (    final Language element : Language.LANGUAGES) {
       for (      final String country : element.getCountries()) {
-        if (!element.getVariant().isEmpty()) {
-          aLocales[cnt]=new Locale("qlt",country,element.getShortNameWithCountryAndVariant());
+        if (element.getVariant() != null) {
+          aLocales[cnt]=new Locale(LIBREOFFICE_SPECIAL_LANGUAGE_TAG,country,element.getShortNameWithCountryAndVariant());
         }
  else {
           aLocales[cnt]=new Locale(element.getShortName(),country,"");

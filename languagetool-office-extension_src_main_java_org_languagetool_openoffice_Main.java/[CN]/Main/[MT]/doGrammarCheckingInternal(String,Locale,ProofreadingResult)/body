@@ -2,7 +2,7 @@
   if (!StringTools.isEmpty(paraText) && hasLocale(locale)) {
     Language langForShortName;
     try {
-      if (locale.Language.equalsIgnoreCase("qlt")) {
+      if (locale.Language.equalsIgnoreCase(LIBREOFFICE_SPECIAL_LANGUAGE_TAG)) {
         langForShortName=Language.getLanguageForShortName(locale.Variant);
       }
  else {

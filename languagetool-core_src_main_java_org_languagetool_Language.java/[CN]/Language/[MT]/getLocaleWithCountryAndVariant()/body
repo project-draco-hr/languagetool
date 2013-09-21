@@ -1,6 +1,6 @@
 {
   if (getCountries().length > 0) {
-    if (!getVariant().isEmpty()) {
+    if (getVariant() != null) {
       return new Locale(getShortName(),getCountries()[0],getVariant());
     }
  else {

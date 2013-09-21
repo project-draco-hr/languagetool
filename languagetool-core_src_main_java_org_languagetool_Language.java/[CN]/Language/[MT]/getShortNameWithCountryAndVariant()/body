@@ -2,7 +2,7 @@
   String name=getShortName();
   if (getCountries().length == 1 && !name.contains("-x-")) {
     name+="-" + getCountries()[0];
-    if (!getVariant().isEmpty()) {
+    if (getVariant() != null) {
       name+="-" + getVariant();
     }
   }

@@ -1,7 +1,7 @@
 {
   try {
     for (    final Language element : Language.LANGUAGES) {
-      if (locale.Language.equalsIgnoreCase("qlt") && element.getShortNameWithCountryAndVariant().equals(locale.Variant)) {
+      if (locale.Language.equalsIgnoreCase(LIBREOFFICE_SPECIAL_LANGUAGE_TAG) && element.getShortNameWithCountryAndVariant().equals(locale.Variant)) {
         return true;
       }
       if (element.getShortName().equals(locale.Language)) {

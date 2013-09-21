@@ -23,7 +23,7 @@
     charLocale=(Locale)obj;
     boolean langIsSupported=false;
     for (    Language element : Language.LANGUAGES) {
-      if (charLocale.Language.equalsIgnoreCase("qlt") && element.getShortNameWithCountryAndVariant().equalsIgnoreCase(charLocale.Variant)) {
+      if (charLocale.Language.equalsIgnoreCase(LIBREOFFICE_SPECIAL_LANGUAGE_TAG) && element.getShortNameWithCountryAndVariant().equalsIgnoreCase(charLocale.Variant)) {
         langIsSupported=true;
         break;
       }
@@ -43,7 +43,7 @@
     return null;
   }
   try {
-    if (charLocale.Language.equalsIgnoreCase("qlt")) {
+    if (charLocale.Language.equalsIgnoreCase(LIBREOFFICE_SPECIAL_LANGUAGE_TAG)) {
       return Language.getLanguageForShortName(charLocale.Variant);
     }
  else {
