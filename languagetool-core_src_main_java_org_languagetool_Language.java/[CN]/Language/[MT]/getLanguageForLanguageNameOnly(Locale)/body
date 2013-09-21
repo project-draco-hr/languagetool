@@ -1,7 +1,7 @@
 {
   for (  Language language : Language.REAL_LANGUAGES) {
     if (language.getShortName().equals(locale.getLanguage()) && language.hasVariant()) {
-      final Language defaultVariant=language.getDefaultVariant();
+      final Language defaultVariant=language.getDefaultLanguageVariant();
       if (defaultVariant != null) {
         return defaultVariant;
       }

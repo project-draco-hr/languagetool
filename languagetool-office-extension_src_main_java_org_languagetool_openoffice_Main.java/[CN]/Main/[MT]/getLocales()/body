@@ -2,13 +2,18 @@
   try {
     int dims=0;
     for (    final Language element : Language.LANGUAGES) {
-      dims+=element.getCountryVariants().length;
+      dims+=element.getCountries().length;
     }
     final Locale[] aLocales=new Locale[dims];
     int cnt=0;
     for (    final Language element : Language.LANGUAGES) {
-      for (      final String variant : element.getCountryVariants()) {
-        aLocales[cnt]=new Locale(element.getShortName(),variant,"");
+      for (      final String country : element.getCountries()) {
+        if (!element.getVariant().isEmpty()) {
+          aLocales[cnt]=new Locale("qlt",country,element.getShortNameWithCountryAndVariant());
+        }
+ else {
+          aLocales[cnt]=new Locale(element.getShortName(),country,"");
+        }
         cnt++;
       }
     }

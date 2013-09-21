@@ -1,5 +1,5 @@
 JList list
-Language value
+Language lang
 int index
 boolean isSelected
 boolean cellHasFocus

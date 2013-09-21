@@ -1,0 +1,3 @@
+{
+  return getCountries().length == 1 && !(getCountries().length == 1 && getCountries()[0].equals("ANY"));
+}

@@ -1,8 +1,8 @@
 {
-  assertEquals("en-US",Language.getLanguageForShortName("en-us").getShortNameWithVariant());
-  assertEquals("en-US",Language.getLanguageForShortName("EN-US").getShortNameWithVariant());
-  assertEquals("en-US",Language.getLanguageForShortName("en-US").getShortNameWithVariant());
-  assertEquals("de",Language.getLanguageForShortName("de").getShortNameWithVariant());
+  assertEquals("en-US",Language.getLanguageForShortName("en-us").getShortNameWithCountryAndVariant());
+  assertEquals("en-US",Language.getLanguageForShortName("EN-US").getShortNameWithCountryAndVariant());
+  assertEquals("en-US",Language.getLanguageForShortName("en-US").getShortNameWithCountryAndVariant());
+  assertEquals("de",Language.getLanguageForShortName("de").getShortNameWithCountryAndVariant());
   try {
     Language.getLanguageForShortName("xy");
     fail();

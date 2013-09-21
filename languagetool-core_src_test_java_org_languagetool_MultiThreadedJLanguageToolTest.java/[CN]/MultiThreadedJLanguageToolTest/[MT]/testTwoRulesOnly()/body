@@ -6,7 +6,7 @@
     @Override public String getName(){
       return "Fake Language";
     }
-    @Override public String[] getCountryVariants(){
+    @Override public String[] getCountries(){
       return new String[0];
     }
     @Override public Contributor[] getMaintainers(){

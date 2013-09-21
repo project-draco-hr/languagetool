@@ -1,7 +1,7 @@
 {
   String qualifier="";
   if (lang != null) {
-    qualifier="." + lang.getShortNameWithVariant();
+    qualifier="." + lang.getShortNameWithCountryAndVariant();
   }
   return qualifier;
 }

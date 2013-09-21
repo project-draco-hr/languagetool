@@ -7,7 +7,7 @@
         if (isComment) {
           continue;
         }
-        if (language.getShortNameWithVariant().equals("de-CH")) {
+        if (language.getShortNameWithCountryAndVariant().equals("de-CH")) {
           wordsToBeIgnored.add(line.replace("??","ss"));
         }
  else {

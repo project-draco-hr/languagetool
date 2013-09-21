@@ -1,0 +1,13 @@
+{
+  if (getCountries().length > 0) {
+    if (!getVariant().isEmpty()) {
+      return new Locale(getShortName(),getCountries()[0],getVariant());
+    }
+ else {
+      return new Locale(getShortName(),getCountries()[0]);
+    }
+  }
+ else {
+    return getLocale();
+  }
+}

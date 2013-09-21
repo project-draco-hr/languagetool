@@ -1,0 +1,18 @@
+{
+  final Main prog=new Main(null);
+  final String testString="Sigui quina siga la teva intenci??. Aix?? ??s una prova.";
+  final Locale cavaLoc=new Locale("qlt","ES","ca-ES-valencia");
+  final PropertyValue[] prop=new PropertyValue[0];
+  for (int i=0; i <= testString.length(); i++) {
+    final ProofreadingResult paRes=prog.doProofreading("1",testString,cavaLoc,i,testString.length(),prop);
+    assertEquals("1",paRes.aDocumentIdentifier);
+    assertTrue(paRes.nStartOfNextSentencePosition >= i);
+    if (i < "Sigui quina siga la teva intenci??. ".length()) {
+      assertEquals("Sigui quina siga la teva intenci??. ".length(),paRes.nStartOfNextSentencePosition);
+      assertEquals(0,paRes.nStartOfSentencePosition);
+    }
+  }
+  final Locale caLoc=new Locale("ca","ES","");
+  final ProofreadingResult paRes=prog.doProofreading("1",testString,caLoc,0,testString.length(),prop);
+  assertEquals("1",paRes.aDocumentIdentifier);
+}

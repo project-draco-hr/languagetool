@@ -1,6 +1,6 @@
 {
   try {
-    return messages.getString(getShortNameWithVariant());
+    return messages.getString(getShortNameWithCountryAndVariant());
   }
  catch (  final MissingResourceException e) {
     try {

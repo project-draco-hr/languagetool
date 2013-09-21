@@ -11,8 +11,8 @@
  catch (  IllegalArgumentException e) {
     lang=Language.getLanguageForLocale(Locale.ENGLISH);
   }
-  if (lang.getDefaultVariant() != null) {
-    lang=lang.getDefaultVariant();
+  if (lang.getDefaultLanguageVariant() != null) {
+    lang=lang.getDefaultLanguageVariant();
   }
   return lang;
 }
