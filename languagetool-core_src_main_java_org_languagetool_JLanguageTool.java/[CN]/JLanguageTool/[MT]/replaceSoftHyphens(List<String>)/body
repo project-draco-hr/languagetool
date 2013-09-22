@@ -1,0 +1,10 @@
+{
+  final Map<Integer,String> softHyphenTokens=new HashMap<>();
+  for (int i=0; i < tokens.size(); i++) {
+    if (tokens.get(i).indexOf('\u00ad') != -1) {
+      softHyphenTokens.put(i,tokens.get(i));
+      tokens.set(i,tokens.get(i).replaceAll("\u00ad",""));
+    }
+  }
+  return softHyphenTokens;
+}
