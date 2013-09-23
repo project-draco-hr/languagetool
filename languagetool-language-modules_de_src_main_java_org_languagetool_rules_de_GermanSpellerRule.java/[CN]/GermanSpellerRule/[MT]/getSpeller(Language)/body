@@ -4,7 +4,12 @@
   }
   try {
     final String morfoFile="/de/hunspell/de_" + language.getCountries()[0] + ".dict";
-    return new MorfologikSpeller(morfoFile,Locale.getDefault(),MAX_EDIT_DISTANCE);
+    if (JLanguageTool.getDataBroker().resourceExists(morfoFile)) {
+      return new MorfologikSpeller(morfoFile,Locale.getDefault(),MAX_EDIT_DISTANCE);
+    }
+ else {
+      return null;
+    }
   }
  catch (  IOException e) {
     throw new RuntimeException("Could not set up morfologik spell checker",e);
