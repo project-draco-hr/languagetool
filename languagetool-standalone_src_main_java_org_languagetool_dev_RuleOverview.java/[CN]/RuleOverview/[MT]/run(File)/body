@@ -68,7 +68,10 @@
     System.out.print("<td valign=\"top\" align=\"right\">" + count + "</td>");
     final StringBuilder maintainerInfo=getMaintainerInfo(lang);
     final String maintainerText;
-    if (LANGUAGES_WITH_NEW_MAINTAINER_NEED.contains(langCode)) {
+    if (langCode.equals("pt")) {
+      maintainerText=" - <span class='maintainerNeeded'><a href='http://wiki.languagetool.org/tasks-for-language-maintainers'>Looking for a maintainer for Brazilian Portuguese</a></span>";
+    }
+ else     if (LANGUAGES_WITH_NEW_MAINTAINER_NEED.contains(langCode)) {
       maintainerText=" - <span class='maintainerNeeded'><a href='http://wiki.languagetool.org/tasks-for-language-maintainers'>Looking for new maintainer</a></span>";
     }
  else     if (LANGUAGES_WITH_CO_MAINTAINER_NEED.contains(langCode)) {
