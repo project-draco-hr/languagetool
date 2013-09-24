@@ -1,0 +1,5 @@
+{
+  super.setUp();
+  rule=new NewZealandReplaceRule(TestTools.getMessages("en"));
+  langTool=new JLanguageTool(new NewZealandEnglish());
+}

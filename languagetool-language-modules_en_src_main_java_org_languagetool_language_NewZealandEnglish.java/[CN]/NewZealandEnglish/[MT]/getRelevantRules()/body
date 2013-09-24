@@ -2,5 +2,6 @@
   final List<Class<? extends Rule>> rules=new ArrayList<>();
   rules.addAll(super.getRelevantRules());
   rules.add(MorfologikNewZealandSpellerRule.class);
+  rules.add(NewZealandReplaceRule.class);
   return rules;
 }

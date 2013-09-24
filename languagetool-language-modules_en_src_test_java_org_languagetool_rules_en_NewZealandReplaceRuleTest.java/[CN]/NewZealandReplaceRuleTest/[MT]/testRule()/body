@@ -1,0 +1,4 @@
+{
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Walk on the footpath.")).length);
+  checkSimpleReplaceRule("I walked on the sidewalk","footpath");
+}
