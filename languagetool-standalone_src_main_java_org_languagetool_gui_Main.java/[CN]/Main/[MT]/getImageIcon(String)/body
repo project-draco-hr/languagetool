@@ -1,0 +1,4 @@
+{
+  Image image=Toolkit.getDefaultToolkit().getImage(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(filename));
+  return new ImageIcon(image);
+}
