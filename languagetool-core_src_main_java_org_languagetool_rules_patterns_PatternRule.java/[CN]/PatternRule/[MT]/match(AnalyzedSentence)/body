@@ -1,4 +1,12 @@
 {
-  final PatternRuleMatcher matcher=new PatternRuleMatcher(this,useList);
-  return matcher.match(text);
+  try {
+    final PatternRuleMatcher matcher=new PatternRuleMatcher(this,useList);
+    return matcher.match(text);
+  }
+ catch (  IOException e) {
+    throw new IOException("Error analyzing sentence: '" + text + "'",e);
+  }
+catch (  Exception e) {
+    throw new RuntimeException("Error analyzing sentence: '" + text + "'",e);
+  }
 }
