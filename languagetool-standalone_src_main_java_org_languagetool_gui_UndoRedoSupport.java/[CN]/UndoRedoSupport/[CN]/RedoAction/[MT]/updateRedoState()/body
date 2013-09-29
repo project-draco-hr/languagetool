@@ -1,10 +1,8 @@
 {
   if (undoManager.canRedo()) {
     setEnabled(true);
-    putValue(Action.NAME,undoManager.getRedoPresentationName());
   }
  else {
     setEnabled(false);
-    putValue(Action.NAME,messages.getString("guiRedo"));
   }
 }
