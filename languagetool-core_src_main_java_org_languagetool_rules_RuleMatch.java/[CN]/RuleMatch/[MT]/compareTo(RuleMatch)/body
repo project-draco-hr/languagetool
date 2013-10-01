@@ -1,6 +1,6 @@
 {
   if (other == null) {
-    throw new ClassCastException();
+    throw new NullPointerException();
   }
   return Integer.compare(getFromPos(),other.getFromPos());
 }

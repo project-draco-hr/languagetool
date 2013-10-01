@@ -3,8 +3,12 @@
   final StringBuilder sb=new StringBuilder();
   for (int k=0; k < stringParts.length; k++) {
     if (isHyphenIgnored() || !"-".equals(stringParts[k])) {
-      if (k == 0)       sb.append(stringParts[k]);
- else       sb.append(stringParts[k].toLowerCase());
+      if (k == 0) {
+        sb.append(stringParts[k]);
+      }
+ else {
+        sb.append(stringParts[k].toLowerCase());
+      }
     }
   }
   return sb.toString();

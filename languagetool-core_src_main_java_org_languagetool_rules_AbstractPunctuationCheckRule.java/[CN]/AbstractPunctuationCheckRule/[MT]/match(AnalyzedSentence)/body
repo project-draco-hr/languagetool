@@ -7,8 +7,12 @@
     final String tokenStr=tokens[i].getToken();
     if (isPunctuation(tokenStr)) {
       tkns+=tokenStr;
-      if (startTokenIdx == -1)       startTokenIdx=i;
-      if (i < tokens.length - 1)       continue;
+      if (startTokenIdx == -1) {
+        startTokenIdx=i;
+      }
+      if (i < tokens.length - 1) {
+        continue;
+      }
     }
     if (tkns.length() >= 2 && !isPunctsJoinOk(tkns)) {
       final String msg="bad duplication or combination of punctuation signs";

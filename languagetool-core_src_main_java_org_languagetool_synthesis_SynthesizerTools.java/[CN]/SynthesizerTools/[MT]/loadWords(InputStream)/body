@@ -1,13 +1,13 @@
 {
-  final ArrayList<String> set=new ArrayList<>();
+  final List<String> result=new ArrayList<>();
   try (Scanner scanner=new Scanner(stream,"UTF-8")){
     while (scanner.hasNextLine()) {
       final String line=scanner.nextLine().trim();
       if (line.length() < 1 || line.charAt(0) == '#') {
         continue;
       }
-      set.add(line);
+      result.add(line);
     }
   }
-   return set;
+   return result;
 }

@@ -1,4 +1,4 @@
 {
   this.baseform=baseform;
-  this.postags=postags;
+  this.posTags=posTags;
 }

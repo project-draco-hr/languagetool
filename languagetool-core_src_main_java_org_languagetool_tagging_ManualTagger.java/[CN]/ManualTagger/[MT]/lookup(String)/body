@@ -7,7 +7,7 @@
   for (  final Object element : l) {
     final LookedUpTerm lookedUpTerm=(LookedUpTerm)element;
     plainResult.add(lookedUpTerm.baseform);
-    plainResult.add(lookedUpTerm.postags);
+    plainResult.add(lookedUpTerm.posTags);
   }
   if (plainResult.isEmpty()) {
     return null;

@@ -1,3 +1,3 @@
 {
-  this.name=Objects.requireNonNull(name,"name cannot be null");
+  this.name=Objects.requireNonNull(fullName,"name cannot be null");
 }
