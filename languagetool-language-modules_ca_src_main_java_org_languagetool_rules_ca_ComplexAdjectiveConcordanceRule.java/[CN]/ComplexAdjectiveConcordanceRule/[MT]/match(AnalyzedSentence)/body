@@ -173,7 +173,7 @@
       if (!isException && matchPostagRegexp(tokens[i - 1],EXCEPCIONS_PREVIA_POSTAG)) {
         isException=true;
       }
-      if (!isException && (((token.equals("tret") || token.equals("llevat")) && nextToken.equals("de")) || token.equals("primer") || token.equals("junts")|| token.equals("plegats")|| isUpperCase.matches())) {
+      if (!isException && (((token.equals("tret") || token.equals("llevat")) && (nextToken.equals("de") || nextToken.equals("que"))) || token.equals("primer") || token.equals("junts")|| token.equals("plegats")|| isUpperCase.matches())) {
         isException=true;
       }
       if (!isException && matchRegexp(token,EXCEPCIONS_PARTICIPI)) {

@@ -1,4 +1,8 @@
 {
+  assertCorrect("no s'atorguen drets de visita tret que ho consenta el progenitor");
+  assertCorrect("La meua filla viu amb mi la major part del temps");
+  assertCorrect("que en l'actualitat viu a la ciutat de Santa Cruz");
+  assertCorrect("s??n submarines i la nostra gent viu al fons del mar.");
   assertCorrect("la meitat mascles i la meitat femelles");
   assertCorrect("??s for??a amarg");
   assertCorrect("Era poder??s, for??a estrabul??lat");
