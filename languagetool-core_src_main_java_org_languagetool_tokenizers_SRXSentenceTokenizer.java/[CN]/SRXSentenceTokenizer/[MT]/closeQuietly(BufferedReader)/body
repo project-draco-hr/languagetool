@@ -4,7 +4,6 @@
       srxReader.close();
     }
  catch (    IOException e) {
-      System.err.println("Error closing SRX file reader.");
     }
   }
 }
