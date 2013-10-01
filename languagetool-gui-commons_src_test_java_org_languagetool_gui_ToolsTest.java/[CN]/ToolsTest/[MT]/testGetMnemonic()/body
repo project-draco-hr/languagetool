@@ -1,0 +1,6 @@
+{
+  assertEquals('F',Tools.getMnemonic("&File"));
+  assertEquals('O',Tools.getMnemonic("&OK"));
+  assertEquals('\u0000',Tools.getMnemonic("File && String operations"));
+  assertEquals('O',Tools.getMnemonic("File && String &Operations"));
+}

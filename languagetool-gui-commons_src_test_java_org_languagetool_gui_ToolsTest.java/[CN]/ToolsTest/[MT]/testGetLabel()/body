@@ -1,0 +1,4 @@
+{
+  assertEquals("This is a Label",Tools.getLabel("This is a &Label"));
+  assertEquals("Bits & Pieces",Tools.getLabel("Bits && Pieces"));
+}

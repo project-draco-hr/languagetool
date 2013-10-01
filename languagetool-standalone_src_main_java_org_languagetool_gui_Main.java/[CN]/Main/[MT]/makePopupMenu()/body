@@ -1,17 +1,17 @@
 {
   final PopupMenu popup=new PopupMenu();
   final ActionListener rmbListener=new TrayActionRMBListener();
-  enableHttpServerItem=new CheckboxMenuItem(StringTools.getLabel(messages.getString("tray_menu_enable_server")));
+  enableHttpServerItem=new CheckboxMenuItem(Tools.getLabel(messages.getString("tray_menu_enable_server")));
   enableHttpServerItem.setState(httpServer != null && httpServer.isRunning());
   enableHttpServerItem.addItemListener(new TrayActionItemListener());
   popup.add(enableHttpServerItem);
-  final MenuItem checkClipboardItem=new MenuItem(StringTools.getLabel(messages.getString("guiMenuCheckClipboard")));
+  final MenuItem checkClipboardItem=new MenuItem(Tools.getLabel(messages.getString("guiMenuCheckClipboard")));
   checkClipboardItem.addActionListener(rmbListener);
   popup.add(checkClipboardItem);
-  final MenuItem restoreItem=new MenuItem(StringTools.getLabel(messages.getString("guiMenuShowMainWindow")));
+  final MenuItem restoreItem=new MenuItem(Tools.getLabel(messages.getString("guiMenuShowMainWindow")));
   restoreItem.addActionListener(rmbListener);
   popup.add(restoreItem);
-  final MenuItem exitItem=new MenuItem(StringTools.getLabel(messages.getString("guiMenuQuit")));
+  final MenuItem exitItem=new MenuItem(Tools.getLabel(messages.getString("guiMenuQuit")));
   exitItem.addActionListener(rmbListener);
   popup.add(exitItem);
   return popup;
