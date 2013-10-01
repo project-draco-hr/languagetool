@@ -7,7 +7,7 @@
     }
   }
   if (config == null) {
-    throw new IllegalArgumentException("Parameter --config must be set and point to a property file");
+    throw new IllegalConfigurationException("Parameter --config must be set and point to a property file");
   }
   try {
     final Properties props=new Properties();
