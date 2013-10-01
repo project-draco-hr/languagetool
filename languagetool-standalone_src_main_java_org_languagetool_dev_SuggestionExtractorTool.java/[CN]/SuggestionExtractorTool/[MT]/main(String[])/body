@@ -6,6 +6,6 @@
   if (!dirs.contains("en") || !dirs.contains("de")) {
     throw new RuntimeException("Please set the working directory to 'languagetool-language-modules' when running this class");
   }
-  final SuggestionExtractor extractor=new SuggestionExtractor();
+  final SuggestionExtractorTool extractor=new SuggestionExtractorTool();
   extractor.writeIgnoreTokensForLanguages();
 }

@@ -1,5 +1,6 @@
 {
   final Map<Language,Set<String>> langToIgnoreTokens=new HashMap<>();
+  SuggestionExtractor extractor=new SuggestionExtractor();
   for (  Language lang : Language.REAL_LANGUAGES) {
     final Set<String> suggestionTokens=new HashSet<>();
     final JLanguageTool languageTool=new JLanguageTool(lang);
@@ -13,7 +14,7 @@
     int tokenCount=0;
     int noErrorCount=0;
     for (    Rule rule : rules) {
-      final List<String> tokens=getSuggestionTokens(rule,lang);
+      final List<String> tokens=extractor.getSuggestionTokens(rule,lang);
       tokenCount+=tokens.size();
       for (      String token : tokens) {
         final AnalyzedSentence sentence=languageTool.getAnalyzedSentence(token);
