@@ -1,4 +1,4 @@
 {
-  equivalenceTypes=new HashMap<>();
-  equivalenceFeatures=new HashMap<>();
+  equivalenceTypes=new ConcurrentHashMap<>();
+  equivalenceFeatures=new ConcurrentHashMap<>();
 }
