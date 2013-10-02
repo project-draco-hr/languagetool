@@ -1,8 +1,8 @@
 {
-  final File input=writeToTempFile("Que sigui aix??.");
-  final String[] args={"-l","ca-ES-valencia",input.getAbsolutePath()};
+  File input=writeToTempFile("Que sigui aix??.");
+  String[] args={"-l","ca-ES-valencia",input.getAbsolutePath()};
   Main.main(args);
-  final String output=new String(this.out.toByteArray());
+  String output=new String(this.out.toByteArray());
   assertTrue(output.indexOf("Expected text language: Catalan (Valencian)") == 0);
   assertTrue(output.contains("EXIGEIX_VERBS_VALENCIANS"));
 }
