@@ -1,0 +1,6 @@
+{
+  LongSentenceRule rule=new LongSentenceRule(TestTools.getEnglishMessages());
+  JLanguageTool languageTool=new JLanguageTool(new Demo());
+  assertThat(rule.match(languageTool.getAnalyzedSentence("This is a rather short text.")).length,is(0));
+  assertThat(rule.match(languageTool.getAnalyzedSentence("Now this is not " + "a a a a a a a a a a a " + "a a a a a a a a a a a "+ "a a a a a a a a a a a "+ "rather short text.")).length,is(1));
+}
