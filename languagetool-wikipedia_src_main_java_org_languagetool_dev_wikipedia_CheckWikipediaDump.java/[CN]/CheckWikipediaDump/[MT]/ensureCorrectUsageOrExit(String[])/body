@@ -1,15 +1,23 @@
 {
-  if (args.length != 7) {
-    System.err.println("Usage: CheckWikipediaDump <propertyFile> <rulePropertyFile> <language> <filename> <ruleIds> <maxArticles> <maxErrors>");
-    System.err.println("  propertyFile      A file to set database access properties. Use '-' to print results to stdout.");
-    System.err.println("                    The file needs to set dbDriver (fully qualified driver class), dbUrl ('jdbc:...'), dbUser, and dbPassword.");
-    System.err.println("  rulePropertyFile  A file to set rules which should be disabled per language (e.g. en=RULE1,RULE2 or all=RULE3,RULE4). Use '-' to ignore.");
-    System.err.println("  language          language code like 'en' or 'de'");
-    System.err.println("  filename          path to unpacked Wikipedia XML dump;");
-    System.err.println("                    dumps are available from http://dumps.wikimedia.org/backup-index.html");
-    System.err.println("  ruleIds           comma-separated list of rule-ids to activate. Use '-' to activate the default rules.");
-    System.err.println("  maxArticles       maximum number of articles to check, 0 for no limit");
-    System.err.println("  maxErrors         stop when reaching this many errors, 0 for no limit");
+  Options options=new Options();
+  options.addOption(OptionBuilder.withLongOpt("language").withArgName("code").hasArg().withDescription("language code like 'en' or 'de'").isRequired().create("l"));
+  options.addOption(OptionBuilder.withLongOpt("db-properties").withArgName("file").hasArg().withDescription("A file to set database access properties. If not set, the output will be written to STDOUT. " + "The file needs to set dbDriver (fully qualified driver class), dbUrl ('jdbc:...'), dbUser, and dbPassword.").create("d"));
+  options.addOption(OptionBuilder.withLongOpt("rule-properties").withArgName("file").hasArg().withDescription("A file to set rules which should be disabled per language (e.g. en=RULE1,RULE2 or all=RULE3,RULE4)").create());
+  options.addOption(OptionBuilder.withLongOpt("rule-ids").withArgName("id").hasArg().withDescription("comma-separated list of rule-ids to activate").create("r"));
+  options.addOption(OptionBuilder.withLongOpt("file").withArgName("xmlfile").hasArg().withDescription("an unpacked Wikipedia XML dump; dumps are available from http://dumps.wikimedia.org/backup-index.html").isRequired().create("f"));
+  options.addOption(OptionBuilder.withLongOpt("max-articles").withArgName("number").hasArg().withDescription("maximum number of articles to check").create());
+  options.addOption(OptionBuilder.withLongOpt("max-errors").withArgName("number").hasArg().withDescription("maximum number of errors, stop when finding more").create());
+  try {
+    CommandLineParser parser=new GnuParser();
+    return parser.parse(options,args);
+  }
+ catch (  org.apache.commons.cli.ParseException e) {
+    System.err.println("Error: " + e.getMessage());
+    HelpFormatter formatter=new HelpFormatter();
+    formatter.setWidth(80);
+    formatter.setSyntaxPrefix("Usage: ");
+    formatter.printHelp(CheckWikipediaDump.class.getSimpleName() + " [OPTION]... --file <xmlfile> --language <code>",options);
     System.exit(1);
   }
+  return null;
 }
