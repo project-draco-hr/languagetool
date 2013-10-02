@@ -39,6 +39,7 @@
   assertCorrect("Els h??bitats de la comarca.");
   assertCorrect("Joan Pau II beatifica Paula Montal.");
   assertCorrect("La magn??fica conservaci?? del palau.");
+  assertIncorrect("Cal una nova formula que substitueixi el caduc Estat del benestar.");
   assertIncorrect("Porta-la i nosaltres fem la copia i la compulsem.");
   assertIncorrect("Carrega d'arxius.");
   assertIncorrect("Vaig arribar a fer una radio que no va funcionar mai.");
