@@ -2,10 +2,7 @@
   if (posTag == null) {
     return null;
   }
-  if (synthesizer == null) {
-    final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(RESOURCE_FILENAME);
-    synthesizer=new DictionaryLookup(Dictionary.read(url));
-  }
+  final IStemmer synthesizer=new DictionaryLookup(getDictionary());
   boolean isNegated=false;
   if (token.getPOSTag() != null) {
     isNegated=posTag.indexOf(NEGATION_TAG) > 0 || token.getPOSTag().indexOf(NEGATION_TAG) > 0 && !(posTag.indexOf(COMP_TAG) > 0) && !(posTag.indexOf(SUP_TAG) > 0);
@@ -13,6 +10,6 @@
   if (posTag.indexOf('+') > 0) {
     return synthesize(token,posTag,true);
   }
-  final List<String> forms=getWordForms(token,posTag,isNegated);
+  final List<String> forms=getWordForms(token,posTag,isNegated,synthesizer);
   return forms.toArray(new String[forms.size()]);
 }

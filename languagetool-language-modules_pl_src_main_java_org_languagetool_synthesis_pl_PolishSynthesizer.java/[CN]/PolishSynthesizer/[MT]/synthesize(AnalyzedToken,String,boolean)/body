@@ -7,10 +7,7 @@
     if (possibleTags == null) {
       possibleTags=SynthesizerTools.loadWords(JLanguageTool.getDataBroker().getFromResourceDirAsStream(TAGS_FILE_NAME));
     }
-    if (synthesizer == null) {
-      final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(RESOURCE_FILENAME);
-      synthesizer=new DictionaryLookup(Dictionary.read(url));
-    }
+    final IStemmer synthesizer=new DictionaryLookup(getDictionary());
     final ArrayList<String> results=new ArrayList<>();
     boolean isNegated=false;
     if (token.getPOSTag() != null) {
@@ -23,7 +20,7 @@
     for (    final String tag : possibleTags) {
       final Matcher m=p.matcher(tag);
       if (m.matches()) {
-        final List<String> wordForms=getWordForms(token,tag,isNegated);
+        final List<String> wordForms=getWordForms(token,tag,isNegated,synthesizer);
         if (wordForms != null) {
           results.addAll(wordForms);
         }

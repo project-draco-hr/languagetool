@@ -1,3 +1,4 @@
 AnalyzedToken token
 String posTag
 boolean isNegated
+IStemmer synthesizer
