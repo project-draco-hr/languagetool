@@ -1,3 +1,3 @@
 {
-  return "Readability: sentence over " + MAX_WORDS + " words";
+  return "Readability: sentence over " + maxWords + " words";
 }
