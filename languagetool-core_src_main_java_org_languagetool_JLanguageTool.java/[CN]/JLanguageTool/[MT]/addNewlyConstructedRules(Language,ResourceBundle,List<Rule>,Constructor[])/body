@@ -1,0 +1,14 @@
+{
+  for (  Constructor constructor : constructors) {
+    final Class[] paramTypes=constructor.getParameterTypes();
+    if (paramTypes.length == 1 && paramTypes[0].equals(ResourceBundle.class)) {
+      rules.add((Rule)constructor.newInstance(messages));
+      return true;
+    }
+ else     if (paramTypes.length == 2 && paramTypes[0].equals(ResourceBundle.class) && (paramTypes[1].equals(Language.class) || Language.class.isAssignableFrom(paramTypes[1]))) {
+      rules.add((Rule)constructor.newInstance(messages,language));
+      return true;
+    }
+  }
+  return false;
+}
