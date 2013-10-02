@@ -1,0 +1,8 @@
+{
+  File input=writeToTempFile("Que siga aix??.");
+  String[] args={"-l","ca-ES",input.getAbsolutePath()};
+  Main.main(args);
+  String output=new String(this.out.toByteArray());
+  assertTrue(output.indexOf("Expected text language: Catalan") == 0);
+  assertTrue(output.contains("EXIGEIX_VERBS_CENTRAL"));
+}
