@@ -8,10 +8,7 @@
     return new String[]{rule.suggestAorAn(token.getToken())};
   }
  else {
-    if (synthesizer == null) {
-      final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(RESOURCE_FILENAME);
-      synthesizer=new DictionaryLookup(Dictionary.read(url));
-    }
+    final IStemmer synthesizer=createStemmer();
     final List<WordData> wordData=synthesizer.lookup(token.getLemma() + "|" + posTag);
     final List<String> wordForms=new ArrayList<>();
     for (    WordData wd : wordData) {

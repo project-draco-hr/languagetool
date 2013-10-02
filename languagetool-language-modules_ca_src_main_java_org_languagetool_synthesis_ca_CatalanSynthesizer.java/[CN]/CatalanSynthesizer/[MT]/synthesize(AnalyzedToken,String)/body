@@ -18,11 +18,12 @@
     p=Pattern.compile(posTag);
   }
   final ArrayList<String> results=new ArrayList<>();
+  final IStemmer synthesizer=createStemmer();
   for (  final String tag : possibleTags) {
     final Matcher m=p.matcher(tag);
     if (m.matches()) {
       if (addDt) {
-        lookupWithEl(token.getLemma(),tag,prep,results);
+        lookupWithEl(token.getLemma(),tag,prep,results,synthesizer);
       }
  else {
         lookup(token.getLemma(),tag,results);

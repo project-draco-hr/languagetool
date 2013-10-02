@@ -1,5 +1,9 @@
 {
   if (possibleTags == null) {
-    possibleTags=SynthesizerTools.loadWords(JLanguageTool.getDataBroker().getFromResourceDirAsStream(tagFileName));
+synchronized (this) {
+      if (this.possibleTags == null) {
+        possibleTags=SynthesizerTools.loadWords(JLanguageTool.getDataBroker().getFromResourceDirAsStream(tagFileName));
+      }
+    }
   }
 }

@@ -2,3 +2,4 @@ String lemma
 String posTag
 String prep
 List<String> results
+IStemmer synthesizer
