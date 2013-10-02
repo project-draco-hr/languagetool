@@ -13,7 +13,7 @@
       pos=Math.min(pos + 2,candidates.size());
     }
   }
-  final Collection<String> parts=wordSplitter.splitWord(word);
+  final Collection<String> parts=wordSplitter.tokenize(word);
   int partCount=0;
   for (  String part : parts) {
     if (dictionary.misspelled(part)) {

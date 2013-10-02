@@ -3,7 +3,12 @@
     final AbstractWordSplitter wordSplitter=new GermanWordSplitter(false);
     wordSplitter.setStrictMode(false);
     ((GermanWordSplitter)wordSplitter).setMinimumWordLength(3);
-    return wordSplitter;
+    return new CompoundWordTokenizer(){
+      @Override public List<String> tokenize(      String word){
+        return new ArrayList<>(wordSplitter.splitWord(word));
+      }
+    }
+;
   }
  catch (  IOException e) {
     throw new RuntimeException("Could not set up German compound splitter",e);
