@@ -19,7 +19,7 @@
     }
   }
   if (matchPostagRegexp(tokens[i],VERB_PARTICIPI)) {
-    if (matchLemmaRegexp(tokens[i - 1],VERB_HAVER)) {
+    if (tokens[i - 1].hasLemma("haver")) {
       if (matchPostagRegexp(tokens[i - 1],VERB_INDSUBJ)) {
         pPronomBuscat=pronomPattern(tokens[i - 1]);
         if (pPronomBuscat != null) {

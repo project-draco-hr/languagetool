@@ -1,0 +1,10 @@
+{
+  int j=1;
+  boolean keepCounting=true;
+  while (i - j > 0 && keepCounting) {
+    if (matchRegexp(tokens[i - j].getToken(),SUBJECTE_3S_TOKEN) || matchPostagRegexp(tokens[i - j],SUBJECTE_3S_POSTAG) && !matchPostagRegexp(tokens[i - j],SUBJECTE_3S_NO_POSTAG) && !matchRegexp(tokens[i - j].getToken(),SUBJECTE_3S_NO_TOKEN)&& !matchLemmaRegexp(tokens[i - j],SUBJECTE_PERSONAL_NO_LEMMA))     return true;
+    keepCounting=!matchPostagRegexp(tokens[i - j],pTrenca);
+    j++;
+  }
+  return false;
+}

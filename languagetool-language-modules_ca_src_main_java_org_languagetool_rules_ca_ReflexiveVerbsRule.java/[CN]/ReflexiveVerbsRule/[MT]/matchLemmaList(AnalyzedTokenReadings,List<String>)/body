@@ -1,0 +1,10 @@
+{
+  boolean matches=false;
+  for (  AnalyzedToken analyzedToken : aToken) {
+    if (list.contains(analyzedToken.getLemma())) {
+      matches=true;
+      break;
+    }
+  }
+  return matches;
+}
