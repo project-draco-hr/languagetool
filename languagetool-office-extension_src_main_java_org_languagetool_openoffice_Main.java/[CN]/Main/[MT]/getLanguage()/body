@@ -3,14 +3,14 @@
   final Locale charLocale;
   final XPropertySet xCursorProps;
   try {
-    final XModel model=(XModel)UnoRuntime.queryInterface(XModel.class,xComponent);
-    final XTextViewCursorSupplier xViewCursorSupplier=(XTextViewCursorSupplier)UnoRuntime.queryInterface(XTextViewCursorSupplier.class,model.getCurrentController());
+    final XModel model=UnoRuntime.queryInterface(XModel.class,xComponent);
+    final XTextViewCursorSupplier xViewCursorSupplier=UnoRuntime.queryInterface(XTextViewCursorSupplier.class,model.getCurrentController());
     final XTextViewCursor xCursor=xViewCursorSupplier.getViewCursor();
     if (xCursor.isCollapsed()) {
-      xCursorProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,xCursor);
+      xCursorProps=UnoRuntime.queryInterface(XPropertySet.class,xCursor);
     }
  else {
-      xCursorProps=(XPropertySet)UnoRuntime.queryInterface(XPropertySet.class,xCursor.getText().createTextCursorByRange(xCursor.getStart()));
+      xCursorProps=UnoRuntime.queryInterface(XPropertySet.class,xCursor.getText().createTextCursorByRange(xCursor.getStart()));
     }
     final KhmerDetector khmerDetector=new KhmerDetector();
     if (khmerDetector.isKhmer(xCursor.getText().getString())) {
