@@ -7,6 +7,9 @@
   assertIncorrect("Jo m'anava a cent per hora.");
   assertIncorrect("M'anava a casa a cent per hora.");
   assertCorrect("potser em vindria de gust fer un mossec");
+  assertCorrect("li ho va fer empassar de cop");
+  assertCorrect("i matar-se caient de m??s de vuitanta peus d'altura");
+  assertCorrect("Deixa de portar-me la contra.");
   assertCorrect("D'aquest Decret se n'ha donat compte al Ple de l'Ajuntament");
   assertCorrect("Encara em cal donar compte d'un altre recull");
   assertCorrect("Michael Kirby ens d??na compte a An??lisi estructural");

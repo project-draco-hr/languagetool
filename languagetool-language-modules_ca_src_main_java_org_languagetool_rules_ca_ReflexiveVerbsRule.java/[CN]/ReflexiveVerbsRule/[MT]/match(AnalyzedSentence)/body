@@ -39,7 +39,7 @@
     if (matchLemmaRegexp(tokens[i],VERB_AUTO) || matchLemmaList(tokens[i],verbsPronominals)) {
       if (matchLemmaList(tokens[i],excepVerbsPronominals))       continue loop;
       if (matchPostagRegexp(tokens[i],VERB_PARTICIPI) && !tokens[i - 1].hasLemma("haver"))       continue loop;
-      if (isThereVerbBeforeList(tokens,i,verbsDeixarFer) && isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD))       continue loop;
+      if (isThereVerbBeforeList(tokens,i,verbsDeixarFer) && (isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) || isThereBefore(tokens,i,LEMMA_PRONOM_CI,POSTAG_PRONOM_CI)))       continue loop;
       if (isThereReflexivePronoun(tokens,i))       continue loop;
       final String msg="Aquest verb ??s pronominal. Probablement falta un pronom.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb pronominal: falta un pronom");
@@ -62,7 +62,7 @@
       if (isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereBefore(tokens,i,LEMMA_DE,POSTAG_DE) && isThereVerbBeforeList(tokens,i,verbHaver))       continue loop;
       if (isThereVerbBeforeList(tokens,i,verbsSovintAmbComplement) || (isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals)) || isThereVerbBefore(tokens,i,VERB_AUTO)|| isThereVerbBeforeList(tokens,i,verbsPronominals)|| isThereVerbAfterList(tokens,i,verbsSovintAmbComplement))       continue loop;
       if (tokens[i].hasLemma("venir")) {
-        if (tokens[i + 1].getToken().equals("de") && tokens[i + 2].getToken().equals("gust"))         continue loop;
+        if (i + 2 < tokens.length && tokens[i + 1].getToken().equals("de") && tokens[i + 2].getToken().equals("gust"))         continue loop;
         if (isThereAfter(tokens,i,VERB_INF))         continue loop;
       }
       if (tokens[i].hasLemma("anar")) {
