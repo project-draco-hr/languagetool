@@ -1,0 +1,4 @@
+{
+  if ((isThereAfterWithoutPreposition(tokens,i,PRONOM_FEBLE_1S) && isThereBeforePostag(tokens,i,PRONOM_FEBLE_1S)) || (isThereAfterWithoutPreposition(tokens,i,PRONOM_FEBLE_2S) && isThereBeforePostag(tokens,i,PRONOM_FEBLE_2S)) || (isThereAfterWithoutPreposition(tokens,i,PRONOM_FEBLE_3S_TOTS) && isThereBeforePostag(tokens,i,PRONOM_FEBLE_3S_TOTS))|| (isThereAfterWithoutPreposition(tokens,i,PRONOM_FEBLE_1P) && isThereBeforePostag(tokens,i,PRONOM_FEBLE_1P))|| (isThereAfterWithoutPreposition(tokens,i,PRONOM_FEBLE_2P) && isThereBeforePostag(tokens,i,PRONOM_FEBLE_2P))|| (isThereAfterWithoutPreposition(tokens,i,PRONOM_FEBLE_3P) && isThereBeforePostag(tokens,i,PRONOM_FEBLE_3P)))   return true;
+  return false;
+}

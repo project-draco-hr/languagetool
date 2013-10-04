@@ -1,0 +1,17 @@
+{
+  int j=1;
+  boolean keepCounting=true;
+  while (i + j < tokens.length && keepCounting) {
+    if (matchLemmaList(tokens[i + j],lemmas))     return true;
+    keepCounting=!matchPostagRegexp(tokens[i + j],TRENCA_COMPTE);
+    j++;
+  }
+  j=1;
+  keepCounting=true;
+  while (i - j > 0 && keepCounting) {
+    if (matchLemmaList(tokens[i - j],lemmas))     return true;
+    keepCounting=!matchPostagRegexp(tokens[i - j],TRENCA_COMPTE);
+    j++;
+  }
+  return false;
+}

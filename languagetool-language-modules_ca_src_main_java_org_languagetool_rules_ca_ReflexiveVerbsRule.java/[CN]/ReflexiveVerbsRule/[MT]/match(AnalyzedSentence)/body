@@ -15,6 +15,7 @@
       ruleMatches.add(ruleMatch);
     }
     if (i + 2 < tokens.length && matchLemmaList(tokens[i],verbsPortarDur) && !(matchPostagRegexp(tokens[i],VERB_INF) && isThereBefore(tokens,i,LEMMA_PREP_A_PER,POSTAG_PREPOSICIO)) && !hasVerbMultipleReadings(tokens[i]) && isThereReflexivePronoun(tokens,i) && isThereAfterWithoutPreposition(tokens,i,POSTAG_CD) && !isThereVerbBeforeList(tokens,i,verbsDeixarFer) && !(isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals)) && !matchPostagRegexp(tokens[i + 1],POSTAG_ADVERBI) && !matchPostagRegexp(tokens[i + 2],POSTAG_ADVERBI) && !matchLemmaRegexp(tokens[i + 2],ANYMESDIA) && !isPhraseImpersonalVerbSP(tokens,i)) {
+      if (isVerbNumberPerson(tokens,i,VERB_3S) && !isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereSubject3SBefore(tokens,i,TRENCA_COMPTE))       continue loop;
       String suggestion;
       if (tokens[i].hasLemma("portar")) {
         suggestion="em" + token;
@@ -30,7 +31,7 @@
       ruleMatches.add(ruleMatch);
       continue loop;
     }
-    if (i + 1 < tokens.length && matchPostagRegexp(tokens[i],VERB_INF) && !matchPostagRegexp(tokens[i - 1],POSTAG_PREPOSICIO) && isThereVerbBeforeList(tokens,i,verbsDeixarFer) && isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT)) {
+    if (i + 1 < tokens.length && matchPostagRegexp(tokens[i],VERB_INF) && !matchPostagRegexp(tokens[i - 1],POSTAG_PREPOSICIO) && isThereVerbBeforeListLimit(tokens,i,verbsDeixarFer,3) && isThereRedundantPronoun(tokens,i) && isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT)) {
       final String msg="En aquesta per??frasi verbal el pronom reflexiu posterior ??s redundant.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i + 1].getStartPos(),tokens[i + 1].getStartPos() + tokens[i + 1].getToken().length(),msg,"Pronom redundant");
       ruleMatches.add(ruleMatch);
@@ -39,7 +40,7 @@
     if (matchLemmaRegexp(tokens[i],VERB_AUTO) || matchLemmaList(tokens[i],verbsPronominals)) {
       if (matchLemmaList(tokens[i],excepVerbsPronominals))       continue loop;
       if (matchPostagRegexp(tokens[i],VERB_PARTICIPI) && !tokens[i - 1].hasLemma("haver"))       continue loop;
-      if (isThereVerbBeforeList(tokens,i,verbsDeixarFer) && (isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) || isThereBefore(tokens,i,LEMMA_PRONOM_CI,POSTAG_PRONOM_CI)))       continue loop;
+      if (isThereVerbBeforeList(tokens,i,verbsDeixarFer) && (isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) || isThereBefore(tokens,i,LEMMA_PRONOM_CI,POSTAG_PRONOM_CI) || isThereAfterWithoutPreposition(tokens,i,POSTAG_CD)))       continue loop;
       if (isThereReflexivePronoun(tokens,i))       continue loop;
       final String msg="Aquest verb ??s pronominal. Probablement falta un pronom.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb pronominal: falta un pronom");
@@ -53,6 +54,7 @@
       if (isThereVerbBeforeList(tokens,i,verbsSovintAmbComplement) || (isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals)) || isThereVerbBefore(tokens,i,VERB_AUTO)|| isThereVerbBeforeList(tokens,i,verbsPronominals))       continue loop;
       if (matchLemmaList(tokens[i],verbsNoPronominalsImpersonals) && isPhraseImpersonalVerbS(tokens,i))       continue loop;
       if (matchLemmaList(tokens[i],verbsNoPronominalsImpersonals2) && isPhraseImpersonalVerbSP(tokens,i))       continue loop;
+      if (tokens[i].hasLemma("olorar") && isThereNearLemma(tokens,i,partsCos))       continue loop;
       final String msg="Aquest verb no ??s pronominal. Probablement sobra un pronom.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb no pronominal");
       ruleMatches.add(ruleMatch);
@@ -60,9 +62,14 @@
     if (matchLemmaList(tokens[i],verbsMoviment) && !matchPostagRegexp(tokens[i],VERB_AUXILIAR)) {
       if (matchLemmaList(tokens[i],excepVerbsMoviment))       continue loop;
       if (isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereBefore(tokens,i,LEMMA_DE,POSTAG_DE) && isThereVerbBeforeList(tokens,i,verbHaver))       continue loop;
-      if (isThereVerbBeforeList(tokens,i,verbsSovintAmbComplement) || (isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals)) || isThereVerbBefore(tokens,i,VERB_AUTO)|| isThereVerbBeforeList(tokens,i,verbsPronominals)|| isThereVerbAfterList(tokens,i,verbsSovintAmbComplement))       continue loop;
+      if (isThereVerbBeforeList(tokens,i,verbsSovintAmbComplement) || (isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals)) || isThereVerbBefore(tokens,i,VERB_AUTO)|| isThereVerbBeforeList(tokens,i,verbsPronominals))       continue loop;
+      if (isVerbNumberPerson(tokens,i,VERB_3S) && !isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereNearLemma(tokens,i,partsCos))       continue loop;
+      if (tokens[i].hasLemma("venir") || tokens[i].hasLemma("anar")) {
+        if (isVerbNumberPerson(tokens,i,VERB_3S) && !isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && matchPostagRegexp(tokens[i + 1],POSTAG_ADVERBI)&& !isThereNearWord(tokens,i,pronomJo))         continue loop;
+      }
       if (tokens[i].hasLemma("venir")) {
         if (i + 2 < tokens.length && tokens[i + 1].getToken().equals("de") && tokens[i + 2].getToken().equals("gust"))         continue loop;
+        if (isVerbNumberPerson(tokens,i,VERB_3S) && !isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereAfterWithoutPreposition(tokens,i,POSTAG_CD)&& !isThereNearWord(tokens,i,pronomJo))         continue loop;
         if (isThereAfter(tokens,i,VERB_INF))         continue loop;
       }
       if (tokens[i].hasLemma("anar")) {

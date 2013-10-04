@@ -54,19 +54,28 @@
       foundVerb=matchPostagRegexp(tokens[i - k],VERB_INDSUBJIMP);
       keepCounting=matchPostagRegexp(tokens[i - k],PREP_VERB_PRONOM);
       if (matchPostagRegexp(tokens[i - k],VERB_INDSUBJ) && matchPostagRegexp(tokens[i - k + 1],VERB_INFGER))       keepCounting=false;
+      if (matchPostagRegexp(tokens[i - k],VERB_INFGER) && matchPostagRegexp(tokens[i - k + 1],PRONOM_FEBLE) && !matchRegexp(tokens[i - k + 1].getToken(),PRONOMFEBLE_POSPOSAT)) {
+        keepCounting=false;
+      }
       k++;
     }
     if (foundVerb) {
-      pPronomBuscat=pronomPattern(tokens[i - k + 1]);
+      k--;
+      pPronomBuscat=pronomPattern(tokens[i - k]);
       if (pPronomBuscat != null) {
         if (i + 1 < tokens.length && matchPostagRegexp(tokens[i + 1],pPronomBuscat) && matchRegexp(tokens[i + 1].getToken(),REFLEXIU_POSPOSAT))         return true;
         int j=1;
         keepCounting=true;
         while (i - j > 0 && keepCounting) {
           if (j == 1 && matchPostagRegexp(tokens[i - j],pPronomBuscat))           return true;
-          if (j > 1 && matchPostagRegexp(tokens[i - j],pPronomBuscat) && matchRegexp(tokens[i - j].getToken(),REFLEXIU_ANTEPOSAT))           return true;
+          if (j > 1 && matchPostagRegexp(tokens[i - j],pPronomBuscat) && !(matchRegexp(tokens[i - j].getToken(),REFLEXIU_POSPOSAT) && j > k))           return true;
           keepCounting=matchPostagRegexp(tokens[i - j],PREP_VERB_PRONOM) && !(j > k - 1 && matchPostagRegexp(tokens[i - j],VERB_PARTICIPI)) && !matchPostagRegexp(tokens[i - j],TRENCA_COMPTE2);
-          if (tokens[i - j].getToken().equalsIgnoreCase("per") && tokens[i - j + 1].getToken().equalsIgnoreCase("a"))           keepCounting=false;
+          if (tokens[i - j].getToken().equalsIgnoreCase("per") && tokens[i - j + 1].getToken().equalsIgnoreCase("a")) {
+            keepCounting=false;
+          }
+          if (matchPostagRegexp(tokens[i - j],VERB_INFGER) && matchPostagRegexp(tokens[i - j + 1],PRONOM_FEBLE) && !matchRegexp(tokens[i - j + 1].getToken(),PRONOMFEBLE_POSPOSAT)) {
+            keepCounting=false;
+          }
           j++;
         }
       }
@@ -79,6 +88,9 @@
         if (matchPostagRegexp(tokens[i - j],PRONOM_REFLEXIU))         return true;
         keepCounting=matchPostagRegexp(tokens[i - j],PREP_VERB_PRONOM);
         if (tokens[i - j].getToken().equalsIgnoreCase("per") && tokens[i - j + 1].getToken().equalsIgnoreCase("a")) {
+          keepCounting=false;
+        }
+        if (matchPostagRegexp(tokens[i - j],VERB_INFGER) && matchPostagRegexp(tokens[i - j + 1],PRONOM_FEBLE) && !matchRegexp(tokens[i - j + 1].getToken(),PRONOMFEBLE_POSPOSAT)) {
           keepCounting=false;
         }
         j++;

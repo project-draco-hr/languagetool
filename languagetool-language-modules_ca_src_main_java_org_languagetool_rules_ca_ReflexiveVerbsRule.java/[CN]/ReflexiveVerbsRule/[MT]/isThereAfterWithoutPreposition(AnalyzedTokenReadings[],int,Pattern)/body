@@ -3,7 +3,7 @@
   boolean keepCounting=true;
   while (i + j < tokens.length && keepCounting) {
     if (matchPostagRegexp(tokens[i + j],postag))     return true;
-    keepCounting=matchPostagRegexp(tokens[i + j],VERB_PRONOM);
+    keepCounting=matchPostagRegexp(tokens[i + j],VERB_PRONOM) || cometes.contains(tokens[i + j].getToken());
     j++;
   }
   return false;
