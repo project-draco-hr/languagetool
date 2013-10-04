@@ -1,4 +1,6 @@
 {
+  assertCorrect("cada zona m??s meridional esdevingu?? adient per als ??ssers ??rtics");
+  assertCorrect("cereals, garrofers, vinya i olivar.");
   assertCorrect("m'aniria b?? probablement posar els quilos");
   assertCorrect("tot m'aniria b??");
   assertCorrect("tot m'havia anat b??");
