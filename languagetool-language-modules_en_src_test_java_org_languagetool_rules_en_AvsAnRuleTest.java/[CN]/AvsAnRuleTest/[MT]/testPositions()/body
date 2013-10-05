@@ -8,6 +8,9 @@
   matches=rule.match(langTool.getAnalyzedSentence("a \"industry standard\"."));
   assertEquals(0,matches[0].getFromPos());
   assertEquals(1,matches[0].getToPos());
+  matches=rule.match(langTool.getAnalyzedSentence("a - industry standard\"."));
+  assertEquals(0,matches[0].getFromPos());
+  assertEquals(1,matches[0].getToPos());
   matches=rule.match(langTool.getAnalyzedSentence("This is a \"industry standard\"."));
   assertEquals(8,matches[0].getFromPos());
   assertEquals(9,matches[0].getToPos());
