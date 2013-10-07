@@ -1,0 +1,5 @@
+{
+  assertMatches(makeRule("<token inflected=\"yes\">think</token>"),0);
+  assertMatches(makeRule("<token inflected=\"yes\">LanguageTool</token>"),1);
+  assertMatches(makeRule("<token inflected=\"yes\">checker</token>"),1);
+}

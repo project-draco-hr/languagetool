@@ -2,9 +2,6 @@
   if (patternElement.isUnified()) {
     throw new UnsupportedPatternRuleException("Elements with unified tokens are not supported.");
   }
-  if (patternElement.isInflected()) {
-    throw new UnsupportedPatternRuleException("Elements with inflected tokens are not supported");
-  }
   if (patternElement.getString().contains("\\d")) {
     throw new UnsupportedPatternRuleException("Elements with regex containing \\d are not supported.");
   }

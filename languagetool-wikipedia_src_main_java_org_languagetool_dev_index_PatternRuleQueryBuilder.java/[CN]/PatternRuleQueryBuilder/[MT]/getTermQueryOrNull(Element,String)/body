@@ -7,6 +7,20 @@
   if (element.isInflected() && element.isRegularExpression()) {
     return null;
   }
+ else   if (element.isInflected() && !element.isRegularExpression()) {
+    final Synthesizer synthesizer=language.getSynthesizer();
+    if (synthesizer != null) {
+      try {
+        final String[] synthesized=synthesizer.synthesize(new AnalyzedToken(termStr,null,termStr),".*",true);
+        final RegexpQuery regexpQuery=new RegexpQuery(new Term(FIELD_NAME,StringUtils.join(synthesized,"|")));
+        return new BooleanClause(regexpQuery,BooleanClause.Occur.MUST);
+      }
+ catch (      IOException e) {
+        throw new RuntimeException("Could not build Lucene query for '" + element + "' and '"+ termStr+ "'",e);
+      }
+    }
+    return null;
+  }
  else   if (element.isRegularExpression()) {
     termQuery=getRegexQuery(termQueryTerm,termStr);
   }
