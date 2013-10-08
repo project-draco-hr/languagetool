@@ -65,7 +65,7 @@
       if (isThereVerbBeforeList(tokens,i,verbsSovintAmbComplement) || (isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals)) || isThereVerbBefore(tokens,i,VERB_AUTO)|| isThereVerbBeforeList(tokens,i,verbsPronominals))       continue loop;
       if (isVerbNumberPerson(tokens,i,VERB_3S) && !isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereNearLemma(tokens,i,partsCos))       continue loop;
       if (tokens[i].hasLemma("venir") || tokens[i].hasLemma("anar")) {
-        if (isVerbNumberPerson(tokens,i,VERB_3S) && !isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && matchPostagRegexp(tokens[i + 1],POSTAG_ADVERBI)&& !isThereNearWord(tokens,i,pronomJo))         continue loop;
+        if (i + 1 < tokens.length && isVerbNumberPerson(tokens,i,VERB_3S) && !isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && matchPostagRegexp(tokens[i + 1],POSTAG_ADVERBI) && !isThereNearWord(tokens,i,pronomJo))         continue loop;
       }
       if (tokens[i].hasLemma("venir")) {
         if (i + 2 < tokens.length && tokens[i + 1].getToken().equals("de") && tokens[i + 2].getToken().equals("gust"))         continue loop;
