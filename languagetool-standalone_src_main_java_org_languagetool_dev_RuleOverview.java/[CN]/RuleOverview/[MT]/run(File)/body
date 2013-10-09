@@ -4,7 +4,7 @@
   System.out.println("<table class=\"tablesorter sortable\">");
   System.out.println("<thead>");
   System.out.println("<tr>");
-  System.out.println("  <th valign='bottom' width=\"70\">Language</th>");
+  System.out.println("  <th valign='bottom' width=\"200\">Language</th>");
   System.out.println("  <th valign='bottom' align=\"left\" width=\"60\">XML<br/>rules</th>");
   System.out.println("  <th></th>");
   System.out.println("  <th align=\"left\" width=\"60\">Java<br/>rules</th>");
@@ -25,12 +25,17 @@
     System.out.print("<tr>");
     final String langCode=lang.getShortName();
     final File langSpecificWebsite=new File(webRoot,langCode);
+    final List<String> variants=getVariants(sortedLanguages,lang);
+    String variantsText="";
+    if (variants.size() > 0) {
+      variantsText="<br/><span class='langVariants'>Variants for: " + StringUtils.join(variants,", ") + "</span>";
+    }
     if (langSpecificWebsite.isDirectory()) {
-      System.out.print("<td valign=\"top\"><a href=\"../" + langCode + "/\">"+ lang.getName()+ "</a></td>");
+      System.out.print("<td valign=\"top\"><a href=\"../" + langCode + "/\">"+ lang.getName()+ "</a>"+ variantsText+ "</td>");
       langSpecificWebsiteCount++;
     }
  else {
-      System.out.print("<td valign=\"top\">" + lang.getName() + "</td>");
+      System.out.print("<td valign=\"top\">" + lang.getName() + " "+ variantsText+ "</td>");
     }
     final String xmlFile=JLanguageTool.getDataBroker().getRulesDir() + File.separator + langCode+ File.separator+ "grammar.xml";
     final URL url=this.getClass().getResource(xmlFile);

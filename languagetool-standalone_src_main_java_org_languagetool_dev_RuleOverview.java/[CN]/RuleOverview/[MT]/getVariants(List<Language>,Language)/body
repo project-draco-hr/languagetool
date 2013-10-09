@@ -1,0 +1,9 @@
+{
+  List<String> variants=new ArrayList<>();
+  for (  Language sortedLanguage : allLanguages) {
+    if (sortedLanguage.isVariant() && lang.getShortName().equals(sortedLanguage.getShortName())) {
+      variants.add(sortedLanguage.getName().replaceAll(".*\\((.*?)\\).*","$1").trim());
+    }
+  }
+  return variants;
+}
