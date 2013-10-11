@@ -78,7 +78,7 @@
   }
 ;
   mustDetectLanguage=config.getAutoDetect();
-  if ((!this.textComponent.getText().isEmpty()) && backgroundCheckEnabled) {
+  if (!this.textComponent.getText().isEmpty() && backgroundCheckEnabled) {
     checkImmediately(null);
   }
 }

@@ -6,7 +6,7 @@
   for (int i=0; i < documentSpans.size(); i++) {
     final Span span=documentSpans.get(i);
     if (span.end > span.start) {
-      if ((span.start <= offset) && (offset < span.end)) {
+      if (span.start <= offset && offset < span.end) {
         JPopupMenu popup=new JPopupMenu("Grammar Menu");
         JLabel msgItem=new JLabel("<html>" + span.msg.replace("<suggestion>","<b>").replace("</suggestion>","</b>") + "</html>");
         msgItem.setToolTipText(span.desc.replace("<suggestion>","").replace("</suggestion>",""));

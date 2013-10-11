@@ -16,7 +16,9 @@
   }
   for (  Span span : grammarErrors) {
     try {
-      h.addHighlight(span.start,span.end,bluePainter);
+      if (span.start < span.end) {
+        h.addHighlight(span.start,span.end,bluePainter);
+      }
     }
  catch (    BadLocationException ex) {
       ex.printStackTrace();
@@ -24,7 +26,9 @@
   }
   for (  Span span : spellErrors) {
     try {
-      h.addHighlight(span.start,span.end,redPainter);
+      if (span.start < span.end) {
+        h.addHighlight(span.start,span.end,redPainter);
+      }
     }
  catch (    BadLocationException ex) {
       ex.printStackTrace();
