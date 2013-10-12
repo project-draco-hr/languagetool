@@ -6,4 +6,5 @@
   }
   maxWords=maxSentenceLength;
   setDefaultOff();
+  setLocQualityIssueType("style");
 }
