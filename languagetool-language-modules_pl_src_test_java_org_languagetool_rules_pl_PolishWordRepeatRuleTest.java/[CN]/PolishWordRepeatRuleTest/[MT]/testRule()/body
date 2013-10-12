@@ -4,6 +4,8 @@
   JLanguageTool langTool=new JLanguageTool(new Polish());
   matches=rule.match(langTool.getAnalyzedSentence("To jest zdanie pr??bne."));
   assertEquals(0,matches.length);
+  matches=rule.match(langTool.getAnalyzedSentence("On tak si?? bardzo nie martwi??, bo przecie?? musia?? si?? umy??."));
+  assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("Na dyskotece ta??czy?? jeszcze, cho?? by?? na bani."));
   assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("??adnych ???ale???."));
