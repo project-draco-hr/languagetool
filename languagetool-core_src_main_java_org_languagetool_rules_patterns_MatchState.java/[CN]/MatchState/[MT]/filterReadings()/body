@@ -50,5 +50,8 @@
   }
   final AnalyzedTokenReadings anTkRead=new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]),formattedToken.getStartPos());
   anTkRead.setWhitespaceBefore(formattedToken.isWhitespaceBefore());
+  if (!formattedToken.getChunkTags().isEmpty()) {
+    anTkRead.setChunkTags(formattedToken.getChunkTags());
+  }
   return anTkRead;
 }
