@@ -1,7 +1,6 @@
 {
-  createIndex("I thin so");
+  useRealIndex();
   final PatternRule rule=getRule("I_THIN",ruleFile);
   final SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(rule,new German());
   System.out.println("Matches: " + searcherResult.getMatchingSentences());
-  assertEquals(1,searcherResult.getMatchingSentences().size());
 }

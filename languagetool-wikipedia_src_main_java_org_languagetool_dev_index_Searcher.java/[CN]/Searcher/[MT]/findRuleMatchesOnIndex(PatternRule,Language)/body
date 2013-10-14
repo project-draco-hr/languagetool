@@ -29,7 +29,13 @@
     final List<MatchingSentence> matchingSentences=runnable.getMatchingSentences();
     final int sentencesChecked=getSentenceCheckCount(query,indexSearcher);
     final SearcherResult searcherResult=new SearcherResult(matchingSentences,sentencesChecked,query);
-    searcherResult.setDocCount(getDocCount(indexSearcher));
+    searcherResult.setHasTooManyLuceneMatches(runnable.hasTooManyLuceneMatches());
+    if (runnable.hasTooManyLuceneMatches()) {
+      searcherResult.setDocCount(maxHits);
+    }
+ else {
+      searcherResult.setDocCount(getDocCount(indexSearcher));
+    }
     return searcherResult;
   }
   finally {
