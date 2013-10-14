@@ -1,0 +1,4 @@
+{
+  directory=FSDirectory.open(new File("/home/languagetool/corpus/en/"));
+  errorSearcher=new Searcher(directory);
+}
