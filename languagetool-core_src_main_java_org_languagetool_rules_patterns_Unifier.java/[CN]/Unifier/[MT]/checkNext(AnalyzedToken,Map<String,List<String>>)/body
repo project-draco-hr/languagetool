@@ -40,7 +40,7 @@
         }
         allFeatsUnified&=featUnified;
       }
-      tokenFeaturesFound.set(i,allFeatsUnified);
+      tokenFeaturesFound.set(i,tokenFeaturesFound.get(i) & allFeatsUnified);
       anyFeatUnified=anyFeatUnified || allFeatsUnified;
     }
     unifiedNext&=anyFeatUnified;
