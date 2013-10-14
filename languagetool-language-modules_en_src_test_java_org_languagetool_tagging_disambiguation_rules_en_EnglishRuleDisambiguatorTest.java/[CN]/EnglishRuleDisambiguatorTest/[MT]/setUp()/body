@@ -1,7 +1,7 @@
 {
   tagger=new EnglishTagger();
   tokenizer=new WordTokenizer();
-  sentenceTokenizer=new SentenceTokenizer();
+  sentenceTokenizer=new SRXSentenceTokenizer(new English());
   disambiguator=new XmlRuleDisambiguator(new English());
   disamb2=new DemoDisambiguator();
 }
