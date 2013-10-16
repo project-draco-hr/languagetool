@@ -1,4 +1,42 @@
 {
   final String aboutText=Tools.getLabel(messages.getString("guiMenuAbout"));
-  JOptionPane.showMessageDialog(parent,getAboutText(),aboutText,JOptionPane.INFORMATION_MESSAGE);
+  JTextPane aboutPane=new JTextPane();
+  aboutPane.setBackground(new Color(0,0,0,0));
+  aboutPane.setBorder(BorderFactory.createEmptyBorder());
+  aboutPane.setContentType("text/html");
+  aboutPane.setEditable(false);
+  aboutPane.setOpaque(false);
+  aboutPane.setText(String.format("<html>" + "<p>LanguageTool %s (%s)<br>" + "Copyright (C) 2005-2013 Daniel Naber<br>"+ "This software is licensed under the GNU Lesser General Public License.<br>"+ "LanguageTool Homepage: "+ "<a href=\"http://www.languagetool.org\">http://www.languagetool.org</a></p>"+ "<p>Maintainers of the language modules:</p>"+ "</html>",JLanguageTool.VERSION,JLanguageTool.BUILD_DATE));
+  aboutPane.addHyperlinkListener(new HyperlinkListener(){
+    @Override public void hyperlinkUpdate(    HyperlinkEvent e){
+      if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+        if (Desktop.isDesktopSupported()) {
+          try {
+            Desktop.getDesktop().browse(e.getURL().toURI());
+          }
+ catch (          Exception ex) {
+            Tools.showError(ex);
+          }
+        }
+      }
+    }
+  }
+);
+  JTextPane maintainersPane=new JTextPane();
+  maintainersPane.setBackground(new Color(0,0,0,0));
+  maintainersPane.setBorder(BorderFactory.createEmptyBorder());
+  maintainersPane.setContentType("text/html");
+  maintainersPane.setEditable(false);
+  maintainersPane.setOpaque(false);
+  maintainersPane.setText(getMaintainers());
+  int maxheight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height / 2;
+  if (maintainersPane.getPreferredSize().height > maxheight) {
+    maintainersPane.setPreferredSize(new Dimension(maintainersPane.getPreferredSize().width,maxheight));
+  }
+  JScrollPane scrollPane=new JScrollPane(maintainersPane);
+  JPanel panel=new JPanel();
+  panel.setLayout(new BoxLayout(panel,BoxLayout.PAGE_AXIS));
+  panel.add(aboutPane);
+  panel.add(scrollPane);
+  JOptionPane.showMessageDialog(parent,panel,aboutText,JOptionPane.INFORMATION_MESSAGE);
 }

@@ -1,0 +1,31 @@
+{
+  final TreeMap<String,Language> list=new TreeMap<>();
+  for (  final Language lang : Language.REAL_LANGUAGES) {
+    if (!lang.isVariant()) {
+      if (lang.getMaintainers() != null) {
+        list.put(messages.getString(lang.getShortName()),lang);
+      }
+    }
+  }
+  final StringBuilder maintainersInfo=new StringBuilder();
+  maintainersInfo.append("<table border=0 cellspacing=0 cellpadding=0>");
+  for (  String lang : list.keySet()) {
+    maintainersInfo.append("<tr valign=\"top\"><td>");
+    maintainersInfo.append(lang);
+    maintainersInfo.append(":</td><td>");
+    int i=0;
+    for (    Contributor contributor : list.get(lang).getMaintainers()) {
+      if (i > 0) {
+        maintainersInfo.append(", ");
+        if (0 == (i % 3)) {
+          maintainersInfo.append("<br>");
+        }
+      }
+      maintainersInfo.append(contributor.getName());
+      i++;
+    }
+    maintainersInfo.append("</td></tr>");
+  }
+  maintainersInfo.append("</table>");
+  return maintainersInfo.toString();
+}
