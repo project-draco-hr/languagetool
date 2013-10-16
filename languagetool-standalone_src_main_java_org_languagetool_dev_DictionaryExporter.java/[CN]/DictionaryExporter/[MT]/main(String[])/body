@@ -1,0 +1,14 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: " + DictionaryExporter.class.getSimpleName() + " <dictionary>");
+    System.out.println("   <dictionary> is a binary dictionary file, typically ending with .dict");
+    System.exit(1);
+  }
+  String filename=args[0];
+  if (new File(filename).getAbsolutePath().contains("hunspell")) {
+    FSADumpTool.main(new String[]{"--raw-data","-d",args[0]});
+  }
+ else {
+    FSADumpTool.main(new String[]{"--raw-data","-x","-d",args[0]});
+  }
+}

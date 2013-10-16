@@ -1,0 +1,10 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + POSDictionaryBuilder.class.getSimpleName() + " <dictionary> <infoFile>");
+    System.out.println("   <dictionary> is a plain text dictionary file");
+    System.out.println("   <infoFile> is the properties file, see http://wiki.languagetool.org/developing-a-tagger-dictionary");
+    System.exit(1);
+  }
+  POSDictionaryBuilder builder=new POSDictionaryBuilder();
+  builder.build(new File(args[0]),new File(args[1]));
+}
