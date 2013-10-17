@@ -12,7 +12,9 @@
   for (  String lang : list.keySet()) {
     maintainersInfo.append("<tr valign=\"top\"><td>");
     maintainersInfo.append(lang);
-    maintainersInfo.append(":</td><td>");
+    maintainersInfo.append(":</td>");
+    maintainersInfo.append("<td>&nbsp;</td>");
+    maintainersInfo.append("<td>");
     int i=0;
     for (    Contributor contributor : list.get(lang).getMaintainers()) {
       if (i > 0) {
