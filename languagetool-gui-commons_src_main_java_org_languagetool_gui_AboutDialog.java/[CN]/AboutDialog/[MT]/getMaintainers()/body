@@ -17,7 +17,7 @@
     for (    Contributor contributor : list.get(lang).getMaintainers()) {
       if (i > 0) {
         maintainersInfo.append(", ");
-        if (0 == (i % 3)) {
+        if (i % 3 == 0) {
           maintainersInfo.append("<br>");
         }
       }

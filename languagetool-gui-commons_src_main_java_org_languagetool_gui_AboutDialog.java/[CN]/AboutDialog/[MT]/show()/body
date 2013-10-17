@@ -6,7 +6,7 @@
   aboutPane.setContentType("text/html");
   aboutPane.setEditable(false);
   aboutPane.setOpaque(false);
-  aboutPane.setText(String.format("<html>" + "<p>LanguageTool %s (%s)<br>" + "Copyright (C) 2005-2013 Daniel Naber<br>"+ "This software is licensed under the GNU Lesser General Public License.<br>"+ "LanguageTool Homepage: "+ "<a href=\"http://www.languagetool.org\">http://www.languagetool.org</a></p>"+ "<p>Maintainers of the language modules:</p>"+ "</html>",JLanguageTool.VERSION,JLanguageTool.BUILD_DATE));
+  aboutPane.setText(String.format("<html>" + "<p>LanguageTool %s (%s)<br>" + "Copyright (C) 2005-2013 Daniel Naber<br>"+ "This software is licensed under the GNU Lesser General Public License.<br>"+ "<a href=\"http://www.languagetool.org\">http://www.languagetool.org</a></p>"+ "<p>Maintainers of the language modules:</p>"+ "</html>",JLanguageTool.VERSION,JLanguageTool.BUILD_DATE));
   aboutPane.addHyperlinkListener(new HyperlinkListener(){
     @Override public void hyperlinkUpdate(    HyperlinkEvent e){
       if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
@@ -29,9 +29,9 @@
   maintainersPane.setEditable(false);
   maintainersPane.setOpaque(false);
   maintainersPane.setText(getMaintainers());
-  int maxheight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height / 2;
-  if (maintainersPane.getPreferredSize().height > maxheight) {
-    maintainersPane.setPreferredSize(new Dimension(maintainersPane.getPreferredSize().width,maxheight));
+  int maxHeight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height / 2;
+  if (maintainersPane.getPreferredSize().height > maxHeight) {
+    maintainersPane.setPreferredSize(new Dimension(maintainersPane.getPreferredSize().width,maxHeight));
   }
   JScrollPane scrollPane=new JScrollPane(maintainersPane);
   JPanel panel=new JPanel();
