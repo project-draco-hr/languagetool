@@ -8,7 +8,7 @@
       if (tagger.existsWord(s)) {
         l.add(s);
       }
- else       if (tagger.existsWord(s.replace("-","??"))) {
+ else       if (tagger.existsWord(s.replace("l-l","l??l"))) {
         l.add(s);
       }
  else {

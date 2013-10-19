@@ -23,7 +23,7 @@
   String s;
   String groupStr;
   while (st.hasMoreElements()) {
-    s=st.nextToken().replace("##CA_APOS##","'").replace("##CA_HYPHEN##","-").replace("##CA_DECIMALPOINT##",".").replace("##CA_DECIMALCOMMA##",",").replace("##CA_SPACE##"," ").replace("##ELA_GEMINADA##","l-l").replace("##ELA_GEMINADA_UPPERCASE##","L-L");
+    s=st.nextToken().replace("##CA_APOS##","'").replace("##CA_HYPHEN##","-").replace("##CA_DECIMALPOINT##",".").replace("##CA_DECIMALCOMMA##",",").replace("##CA_SPACE##"," ").replace("##ELA_GEMINADA##","l.l").replace("##ELA_GEMINADA_UPPERCASE##","L.L");
     boolean matchFound=false;
     int j=0;
     while (j < maxPatterns && !matchFound) {
