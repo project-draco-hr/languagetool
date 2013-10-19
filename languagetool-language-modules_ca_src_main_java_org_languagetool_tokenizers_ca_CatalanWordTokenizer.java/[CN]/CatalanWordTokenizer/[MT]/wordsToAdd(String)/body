@@ -8,6 +8,9 @@
       if (tagger.existsWord(s)) {
         l.add(s);
       }
+ else       if (tagger.existsWord(s.replace("-","??"))) {
+        l.add(s);
+      }
  else {
         final StringTokenizer st2=new StringTokenizer(s,"-",true);
         while (st2.hasMoreElements()) {
