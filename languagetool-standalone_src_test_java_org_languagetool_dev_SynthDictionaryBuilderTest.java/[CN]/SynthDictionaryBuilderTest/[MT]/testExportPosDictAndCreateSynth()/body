@@ -1,0 +1,29 @@
+{
+  for (  Language language : Language.REAL_LANGUAGES) {
+    if (language.getShortName().equals("pl")) {
+      System.out.println("WARN: skipping Polish. TODO: make it work for Polish, too (problem: synth file is too large: 36MB!)");
+      continue;
+    }
+    String langCode=language.getShortName();
+    File dir=new File("./languagetool-language-modules/" + langCode + "/src/main/resources/org/languagetool/resource/"+ langCode);
+    File oldBinarySynthFile=new File(dir,language.getName().toLowerCase() + "_synth.dict");
+    if (!oldBinarySynthFile.exists()) {
+      System.out.println("Ignoring " + language + ", no synth file found");
+      continue;
+    }
+    File oldBinaryFile=new File(dir,language.getName().toLowerCase() + ".dict");
+    File infoFile=new File(dir,language.getName().toLowerCase() + "_synth.info");
+    File exportFile=exportDictionaryContents(oldBinaryFile);
+    if (exportFile.length() == 0) {
+      System.out.println("Zero-size output for " + language + ", skipping dictionary generation");
+      exportFile.delete();
+      continue;
+    }
+    SynthDictionaryBuilder builder=new SynthDictionaryBuilder(infoFile);
+    File newBinarySynthFile=builder.build(exportFile,infoFile);
+    exportFile.delete();
+    System.out.println(language + " old binary file size: " + oldBinarySynthFile.length()+ " bytes ("+ oldBinarySynthFile.getName()+ ")");
+    System.out.println(language + " new binary file size: " + newBinarySynthFile.length()+ " bytes ("+ newBinarySynthFile.getAbsolutePath()+ ")");
+    System.out.println("");
+  }
+}

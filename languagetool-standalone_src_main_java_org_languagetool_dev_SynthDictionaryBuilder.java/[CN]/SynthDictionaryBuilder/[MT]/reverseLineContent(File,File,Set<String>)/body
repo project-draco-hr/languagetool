@@ -1,0 +1,22 @@
+{
+  String encoding=getOption("fsa.dict.encoding");
+  Scanner scanner=new Scanner(plainTextDictFile,encoding);
+  try (Writer out=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(reversedFile),encoding))){
+    while (scanner.hasNextLine()) {
+      String line=scanner.nextLine();
+      if (itemsToBeIgnored.contains(line)) {
+        System.out.println("Ignoring: " + line);
+        continue;
+      }
+      String[] parts=line.split("\t");
+      if (parts.length == 3) {
+        out.write(parts[1] + "|" + parts[2]+ "\t"+ parts[0]);
+        out.write("\n");
+      }
+ else {
+        System.err.println("Invalid input, expected three tab-separated columns in " + plainTextDictFile + ": "+ line+ " => ignoring");
+      }
+    }
+    scanner.close();
+  }
+ }

@@ -1,0 +1,19 @@
+{
+  List<String> tab2morphOptions=new ArrayList<>();
+  String separator=getOption("fsa.dict.separator");
+  if (separator != null && !separator.trim().isEmpty()) {
+    tab2morphOptions.add("--annotation");
+    tab2morphOptions.add(separator);
+  }
+  if (hasOption("fsa.dict.uses-prefixes")) {
+    tab2morphOptions.add("-pre");
+  }
+  if (hasOption("fsa.dict.uses-infixes")) {
+    tab2morphOptions.add("-inf");
+  }
+  tab2morphOptions.add("-i");
+  tab2morphOptions.add(dictFile.getAbsolutePath());
+  tab2morphOptions.add("-o");
+  tab2morphOptions.add(outputFile.getAbsolutePath());
+  return tab2morphOptions;
+}

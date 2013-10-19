@@ -1,0 +1,4 @@
+{
+  System.out.println("Running Morfologik Launcher.main with these options: " + tab2morphOptions);
+  Launcher.main(tab2morphOptions.toArray(new String[tab2morphOptions.size()]));
+}

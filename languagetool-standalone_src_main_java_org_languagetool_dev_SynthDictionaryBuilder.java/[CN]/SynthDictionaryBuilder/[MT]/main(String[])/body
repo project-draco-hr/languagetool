@@ -1,0 +1,6 @@
+{
+  checkUsageOrExit(SynthDictionaryBuilder.class.getSimpleName(),args);
+  File infoFile=new File(args[1]);
+  SynthDictionaryBuilder builder=new SynthDictionaryBuilder(infoFile);
+  builder.build(new File(args[0]),infoFile);
+}

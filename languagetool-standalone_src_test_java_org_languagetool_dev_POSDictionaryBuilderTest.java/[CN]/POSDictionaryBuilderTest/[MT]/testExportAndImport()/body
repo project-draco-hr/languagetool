@@ -10,8 +10,8 @@
       exportFile.delete();
       continue;
     }
-    POSDictionaryBuilder builder=new POSDictionaryBuilder();
-    File newBinaryFile=builder.build(exportFile,infoFile);
+    POSDictionaryBuilder builder=new POSDictionaryBuilder(infoFile);
+    File newBinaryFile=builder.build(exportFile);
     exportFile.delete();
     System.out.println(language + " old binary file size: " + oldBinaryFile.length()+ " bytes ("+ oldBinaryFile.getName()+ ")");
     System.out.println(language + " new binary file size: " + newBinaryFile.length()+ " bytes ("+ newBinaryFile.getAbsolutePath()+ ")");

@@ -1,0 +1,8 @@
+{
+  File resultFile=File.createTempFile(DictionaryBuilder.class.getSimpleName(),".dict");
+  String[] buildToolOptions={"-f","cfsa2","-i",tempFile.getAbsolutePath(),"-o",resultFile.getAbsolutePath()};
+  System.out.println("Running Morfologik FSABuildTool.main with these options: " + Arrays.toString(buildToolOptions));
+  FSABuildTool.main(buildToolOptions);
+  System.out.println("Done. The binary dictionary has been written to " + resultFile.getAbsolutePath());
+  return resultFile;
+}

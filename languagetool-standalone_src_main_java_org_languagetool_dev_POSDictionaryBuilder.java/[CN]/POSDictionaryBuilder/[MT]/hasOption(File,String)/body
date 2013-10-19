@@ -1,5 +1,0 @@
-{
-  Properties props=new Properties();
-  props.load(new FileInputStream(infoFile));
-  return props.getProperty(option).trim().equals("true");
-}
