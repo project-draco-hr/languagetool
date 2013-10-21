@@ -2,5 +2,5 @@
   final String completePath=this.getCompleteResourceUrl(path);
   final URL resource=ResourceDataBroker.class.getResource(completePath);
   assertNotNull(resource,path,completePath);
-  return getFixedJarURL(resource);
+  return resource;
 }
