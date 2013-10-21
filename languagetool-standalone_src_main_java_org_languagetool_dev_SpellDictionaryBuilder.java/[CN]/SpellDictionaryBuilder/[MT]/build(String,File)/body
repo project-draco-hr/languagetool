@@ -1,0 +1,13 @@
+{
+  Language language=Language.getLanguageForShortName(languageCode);
+  File tempFile=null;
+  try {
+    tempFile=tokenizeInput(plainTextDictFile,language);
+    return buildDict(tempFile);
+  }
+  finally {
+    if (tempFile != null) {
+      tempFile.delete();
+    }
+  }
+}

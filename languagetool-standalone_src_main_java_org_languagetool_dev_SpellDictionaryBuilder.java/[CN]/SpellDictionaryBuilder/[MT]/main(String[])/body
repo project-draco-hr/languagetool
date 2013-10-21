@@ -1,0 +1,8 @@
+{
+  checkUsageOrExit(SpellDictionaryBuilder.class.getSimpleName(),args);
+  String languageCode=args[0];
+  String plainTextFile=args[1];
+  String infoFile=args[2];
+  SpellDictionaryBuilder builder=new SpellDictionaryBuilder(new File(infoFile));
+  builder.build(languageCode,new File(plainTextFile));
+}
