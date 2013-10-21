@@ -1,5 +1,7 @@
 {
+  File reversedFile=File.createTempFile(SynthDictionaryBuilder.class.getSimpleName() + "_reversed",".txt");
   String encoding=getOption("fsa.dict.encoding");
+  int posIgnoreCount=0;
   Scanner scanner=new Scanner(plainTextDictFile,encoding);
   try (Writer out=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(reversedFile),encoding))){
     while (scanner.hasNextLine()) {
@@ -10,7 +12,12 @@
       }
       String[] parts=line.split("\t");
       if (parts.length == 3) {
-        out.write(parts[1] + "|" + parts[2]+ "\t"+ parts[0]);
+        String posTag=parts[2];
+        if (ignorePosRegex != null && ignorePosRegex.matcher(posTag).find()) {
+          posIgnoreCount++;
+          continue;
+        }
+        out.write(parts[1] + "|" + posTag+ "\t"+ parts[0]);
         out.write("\n");
       }
  else {
@@ -19,4 +26,6 @@
     }
     scanner.close();
   }
- }
+   System.out.println("Number of lines ignored due to POS tag filter ('" + ignorePosRegex + "'): "+ posIgnoreCount);
+  return reversedFile;
+}

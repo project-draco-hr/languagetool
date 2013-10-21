@@ -1,9 +1,10 @@
 {
-  File reversedFile=File.createTempFile(SynthDictionaryBuilder.class.getSimpleName() + "_reversed",".txt");
   File tempFile=File.createTempFile(SynthDictionaryBuilder.class.getSimpleName(),".txt");
+  File reversedFile=null;
   try {
     Set<String> itemsToBeIgnored=getIgnoreItems(new File(infoFile.getParent(),"filter-archaic.txt"));
-    reverseLineContent(plainTextDictFile,reversedFile,itemsToBeIgnored);
+    Pattern ignorePosRegex=getPosTagIgnoreRegex(infoFile);
+    reversedFile=reverseLineContent(plainTextDictFile,itemsToBeIgnored,ignorePosRegex);
     List<String> tab2morphOptions=getTab2MorphOptions(reversedFile,tempFile);
     tab2morphOptions.add(0,"tab2morph");
     tab2morphOptions.add(1,"-nw");
@@ -13,6 +14,8 @@
   }
   finally {
     tempFile.delete();
-    reversedFile.delete();
+    if (reversedFile != null) {
+      reversedFile.delete();
+    }
   }
 }
