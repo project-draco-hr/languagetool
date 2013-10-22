@@ -1,0 +1,9 @@
+{
+  InputStream stream=WikipediaSentenceSourceTest.class.getResourceAsStream("/org/languagetool/dev/wikipedia/tatoeba-en.txt");
+  TatoebaSentenceSource source=new TatoebaSentenceSource(stream);
+  assertTrue(source.hasNext());
+  assertThat(source.next().getSentence(),is("\"What is your wish?\" asked the little white rabbit."));
+  assertThat(source.next().getSentence(),is("The mother wakes up her daughter."));
+  assertThat(source.next().getSentence(),is("Ken beat me at chess."));
+  assertFalse(source.hasNext());
+}

@@ -1,0 +1,13 @@
+{
+  while (sentences.size() == 0 && scanner.hasNextLine()) {
+    String line=scanner.nextLine();
+    String[] parts=line.split("\t");
+    if (parts.length != 3) {
+      continue;
+    }
+    String sentence=parts[2];
+    if (acceptSentence(sentence)) {
+      sentences.add(sentence);
+    }
+  }
+}
