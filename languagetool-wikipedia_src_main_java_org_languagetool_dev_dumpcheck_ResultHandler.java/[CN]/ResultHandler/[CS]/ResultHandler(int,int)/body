@@ -1,0 +1,4 @@
+{
+  this.maxSentences=maxSentences;
+  this.maxErrors=maxErrors;
+}

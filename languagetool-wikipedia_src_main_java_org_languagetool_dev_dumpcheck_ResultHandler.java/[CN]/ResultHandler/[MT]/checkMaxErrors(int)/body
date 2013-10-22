@@ -1,0 +1,5 @@
+{
+  if (maxErrors > 0 && errorCount >= maxErrors) {
+    throw new ErrorLimitReachedException(maxErrors);
+  }
+}

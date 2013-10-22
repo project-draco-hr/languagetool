@@ -1,6 +1,5 @@
 {
-  System.err.println("*** Note: this class has been deprecated - please use option 'check-data' instead");
-  final CheckWikipediaDump prg=new CheckWikipediaDump();
+  final SentenceSourceChecker prg=new SentenceSourceChecker();
   final CommandLine commandLine=ensureCorrectUsageOrExit(args);
   File propFile=null;
   if (commandLine.hasOption('d')) {
@@ -23,11 +22,12 @@
       addDisabledRules(languageCode,disabledRuleIds,disabledRules);
     }
    }
-  final int maxArticles=Integer.parseInt(commandLine.getOptionValue("max-articles","0"));
+  final int maxArticles=Integer.parseInt(commandLine.getOptionValue("max-sentences","0"));
   final int maxErrors=Integer.parseInt(commandLine.getOptionValue("max-errors","0"));
   String[] ruleIds=null;
   if (commandLine.hasOption('r')) {
     ruleIds=commandLine.getOptionValue('r').split(",");
   }
-  prg.run(propFile,disabledRuleIds,languageCode,commandLine.getOptionValue('f'),ruleIds,maxArticles,maxErrors);
+  String[] fileNames=commandLine.getOptionValues('f');
+  prg.run(propFile,disabledRuleIds,languageCode,Arrays.asList(fileNames),ruleIds,maxArticles,maxErrors);
 }

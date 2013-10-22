@@ -1,0 +1,6 @@
+{
+  this.sentence=sentence.trim();
+  this.source=source;
+  this.title=title;
+  this.url=url;
+}

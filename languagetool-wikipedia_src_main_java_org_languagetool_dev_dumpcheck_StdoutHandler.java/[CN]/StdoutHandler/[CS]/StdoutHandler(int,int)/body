@@ -1,0 +1,4 @@
+{
+  super(maxSentences,maxErrors);
+  contextTools.setContextSize(CONTEXT_SIZE);
+}

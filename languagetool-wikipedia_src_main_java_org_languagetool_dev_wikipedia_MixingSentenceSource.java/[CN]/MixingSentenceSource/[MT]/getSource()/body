@@ -1,3 +1,0 @@
-{
-  return "mixing:" + StringUtils.join(sources,", ");
-}

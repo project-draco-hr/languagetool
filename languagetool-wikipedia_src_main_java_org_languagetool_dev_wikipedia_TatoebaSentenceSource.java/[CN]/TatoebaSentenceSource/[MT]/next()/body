@@ -1,7 +1,0 @@
-{
-  fillSentences();
-  if (sentences.size() == 0) {
-    throw new NoSuchElementException();
-  }
-  return new Sentence(sentences.remove(0),getSource());
-}

@@ -1,0 +1,5 @@
+{
+  if (maxSentences > 0 && sentenceCount >= maxSentences) {
+    throw new DocumentLimitReachedException(maxSentences);
+  }
+}
