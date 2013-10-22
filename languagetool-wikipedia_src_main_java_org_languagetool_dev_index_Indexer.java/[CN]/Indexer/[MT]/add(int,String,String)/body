@@ -1,0 +1,23 @@
+{
+  final Document doc=new Document();
+  final FieldType type=new FieldType();
+  type.setStored(true);
+  type.setIndexed(true);
+  type.setTokenized(true);
+  doc.add(new Field(FIELD_NAME,sentence,type));
+  doc.add(new Field(FIELD_NAME_LOWERCASE,sentence,type));
+  if (docCount != -1) {
+    final FieldType countType=new FieldType();
+    countType.setStored(true);
+    countType.setIndexed(false);
+    doc.add(new Field("docCount",docCount + "",countType));
+  }
+  if (source != null) {
+    final FieldType sourceType=new FieldType();
+    sourceType.setStored(true);
+    sourceType.setIndexed(true);
+    sourceType.setTokenized(false);
+    doc.add(new Field(SOURCE_FIELD_NAME,source,sourceType));
+  }
+  writer.addDocument(doc);
+}

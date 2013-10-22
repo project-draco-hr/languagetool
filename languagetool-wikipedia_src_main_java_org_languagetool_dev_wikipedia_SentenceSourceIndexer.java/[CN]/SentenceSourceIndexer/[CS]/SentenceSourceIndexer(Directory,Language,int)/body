@@ -1,0 +1,4 @@
+{
+  this.indexer=new Indexer(dir,language);
+  this.maxDocs=maxDocs;
+}

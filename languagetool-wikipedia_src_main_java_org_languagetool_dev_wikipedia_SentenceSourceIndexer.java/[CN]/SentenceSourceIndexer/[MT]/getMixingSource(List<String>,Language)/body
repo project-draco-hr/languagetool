@@ -1,0 +1,15 @@
+{
+  List<SentenceSource> sources=new ArrayList<>();
+  for (  String dumpFilesName : dumpFilesNames) {
+    if (dumpFilesName.endsWith(".xml")) {
+      sources.add(new WikipediaSentenceSource(new FileInputStream(dumpFilesName),language));
+    }
+ else     if (dumpFilesName.startsWith("tatoeba")) {
+      throw new RuntimeException("Could not find a source handler for " + dumpFilesName);
+    }
+ else {
+      throw new RuntimeException("Could not find a source handler for " + dumpFilesName);
+    }
+  }
+  return new MixingSentenceSource(sources);
+}

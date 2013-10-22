@@ -1,0 +1,6 @@
+{
+  XMLInputFactory factory=XMLInputFactory.newInstance();
+  reader=factory.createXMLEventReader(xmlInput);
+  sentenceTokenizer=language.getSentenceTokenizer();
+  sentences=new ArrayList<>();
+}

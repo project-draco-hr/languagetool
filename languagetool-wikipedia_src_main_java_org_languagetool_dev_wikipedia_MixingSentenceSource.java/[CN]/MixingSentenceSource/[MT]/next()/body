@@ -1,0 +1,13 @@
+{
+  SentenceSource sentenceSource=sources.get(count % sources.size());
+  while (!sentenceSource.hasNext()) {
+    sources.remove(sentenceSource);
+    if (sources.size() == 0) {
+      throw new NoSuchElementException();
+    }
+    count++;
+    sentenceSource=sources.get(count % sources.size());
+  }
+  count++;
+  return sentenceSource.next();
+}

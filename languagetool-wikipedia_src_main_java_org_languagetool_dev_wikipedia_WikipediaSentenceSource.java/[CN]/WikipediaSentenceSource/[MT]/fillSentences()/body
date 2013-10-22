@@ -1,0 +1,19 @@
+{
+  while (sentences.size() == 0 && reader.hasNext()) {
+    XMLEvent event=reader.nextEvent();
+    if (event.getEventType() == XMLStreamConstants.START_ELEMENT && event.asStartElement().getName().getLocalPart().equals("text")) {
+      event=reader.nextEvent();
+      StringBuilder sb=new StringBuilder();
+      while (event.isCharacters()) {
+        sb.append(event.asCharacters().getData());
+        event=reader.nextEvent();
+      }
+      String textToCheck=textFilter.filter(sb.toString()).getPlainText();
+      for (      String sentence : sentenceTokenizer.tokenize(textToCheck)) {
+        if (acceptSentence(sentence)) {
+          sentences.add(sentence);
+        }
+      }
+    }
+  }
+}

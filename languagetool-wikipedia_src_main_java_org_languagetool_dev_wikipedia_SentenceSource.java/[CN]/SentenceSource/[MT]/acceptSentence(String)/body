@@ -1,0 +1,4 @@
+{
+  String trimSentence=sentence.trim();
+  return trimSentence.length() >= MIN_SENTENCE_SIZE && trimSentence.length() <= MAX_SENTENCE_LENGTH && countWords(trimSentence) >= MIN_SENTENCE_WORD_COUNT;
+}

@@ -1,0 +1,4 @@
+String content
+String source
+boolean isSentence
+int docCount

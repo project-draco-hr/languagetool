@@ -1,0 +1,12 @@
+{
+  try {
+    fillSentences();
+    if (sentences.size() == 0) {
+      throw new NoSuchElementException();
+    }
+    return new Sentence(sentences.remove(0),getSource());
+  }
+ catch (  XMLStreamException e) {
+    throw new RuntimeException(e);
+  }
+}

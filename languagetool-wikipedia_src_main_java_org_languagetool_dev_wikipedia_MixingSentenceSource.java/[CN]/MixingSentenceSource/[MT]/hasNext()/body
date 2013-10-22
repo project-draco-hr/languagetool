@@ -1,0 +1,8 @@
+{
+  for (  SentenceSource source : sources) {
+    if (source.hasNext()) {
+      return true;
+    }
+  }
+  return false;
+}

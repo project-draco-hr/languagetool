@@ -9,6 +9,9 @@
     if (command.equals("check-dump")) {
       CheckWikipediaDump.main(remainingArgs);
     }
+ else     if (command.equals("data-index")) {
+      SentenceSourceIndexer.main(remainingArgs);
+    }
  else     if (command.equals("wiki-index")) {
       WikipediaIndexHandler.main(remainingArgs);
     }

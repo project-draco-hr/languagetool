@@ -1,0 +1,4 @@
+BufferedReader reader
+String source
+boolean isSentence
+int docCount

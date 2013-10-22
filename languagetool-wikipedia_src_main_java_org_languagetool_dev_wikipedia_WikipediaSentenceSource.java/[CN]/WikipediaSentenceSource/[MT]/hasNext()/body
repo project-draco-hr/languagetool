@@ -1,0 +1,9 @@
+{
+  try {
+    fillSentences();
+  }
+ catch (  XMLStreamException e) {
+    throw new RuntimeException(e);
+  }
+  return sentences.size() > 0;
+}
