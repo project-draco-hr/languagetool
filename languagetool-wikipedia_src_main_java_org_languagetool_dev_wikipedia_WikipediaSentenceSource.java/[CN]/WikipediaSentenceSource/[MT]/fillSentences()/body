@@ -8,11 +8,16 @@
         sb.append(event.asCharacters().getData());
         event=reader.nextEvent();
       }
-      String textToCheck=textFilter.filter(sb.toString()).getPlainText();
-      for (      String sentence : sentenceTokenizer.tokenize(textToCheck)) {
-        if (acceptSentence(sentence)) {
-          sentences.add(sentence);
+      try {
+        String textToCheck=textFilter.filter(sb.toString()).getPlainText();
+        for (        String sentence : sentenceTokenizer.tokenize(textToCheck)) {
+          if (acceptSentence(sentence)) {
+            sentences.add(sentence);
+          }
         }
+      }
+ catch (      Exception e) {
+        System.err.println("Could not extract text, skipping document: " + e.toString());
       }
     }
   }
