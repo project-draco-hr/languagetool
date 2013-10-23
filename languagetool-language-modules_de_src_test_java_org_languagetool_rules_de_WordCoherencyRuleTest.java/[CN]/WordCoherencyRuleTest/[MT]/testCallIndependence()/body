@@ -1,0 +1,5 @@
+{
+  final JLanguageTool langTool=new JLanguageTool(new German());
+  assertGood("Das ist aufwendig.",langTool);
+  assertGood("Aber nicht zu aufw??ndig.",langTool);
+}
