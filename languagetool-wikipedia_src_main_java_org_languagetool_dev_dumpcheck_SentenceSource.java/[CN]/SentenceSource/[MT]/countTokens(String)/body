@@ -1,0 +1,10 @@
+{
+  int realTokens=0;
+  List<String> allTokens=wordTokenizer.tokenize(sentence);
+  for (  String token : allTokens) {
+    if (token.trim().isEmpty()) {
+      realTokens++;
+    }
+  }
+  return realTokens;
+}

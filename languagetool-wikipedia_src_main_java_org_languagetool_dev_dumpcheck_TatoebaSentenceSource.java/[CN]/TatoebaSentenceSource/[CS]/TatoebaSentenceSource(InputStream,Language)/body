@@ -1,4 +1,5 @@
 {
+  super(language);
   scanner=new Scanner(textInput);
   sentences=new ArrayList<>();
 }
