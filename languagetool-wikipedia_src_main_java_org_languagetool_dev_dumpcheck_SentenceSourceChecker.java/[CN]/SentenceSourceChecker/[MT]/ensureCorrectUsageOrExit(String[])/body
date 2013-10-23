@@ -1,7 +1,7 @@
 {
   Options options=new Options();
   options.addOption(OptionBuilder.withLongOpt("language").withArgName("code").hasArg().withDescription("language code like 'en' or 'de'").isRequired().create("l"));
-  options.addOption(OptionBuilder.withLongOpt("db-properties").withArgName("file").hasArg().withDescription("A file to set database access properties. If not set, the output will be written to STDOUT. " + "The file needs to set dbDriver (fully qualified driver class), dbUrl ('jdbc:...'), dbUser, and dbPassword.").create("d"));
+  options.addOption(OptionBuilder.withLongOpt("db-properties").withArgName("file").hasArg().withDescription("A file to set database access properties. If not set, the output will be written to STDOUT. " + "The file needs to set the properties dbUrl ('jdbc:...'), dbUser, and dbPassword.").create("d"));
   options.addOption(OptionBuilder.withLongOpt("rule-properties").withArgName("file").hasArg().withDescription("A file to set rules which should be disabled per language (e.g. en=RULE1,RULE2 or all=RULE3,RULE4)").create());
   options.addOption(OptionBuilder.withLongOpt("rule-ids").withArgName("id").hasArg().withDescription("comma-separated list of rule-ids to activate").create("r"));
   options.addOption(OptionBuilder.withLongOpt("file").withArgName("file").hasArg().withDescription("an unpacked Wikipedia XML dump; (must be named *.xml, dumps are available from http://dumps.wikimedia.org/backup-index.html) " + "or a Tatoeba CSV file filtered to contain only one language (must be named tatoeba-*). You can specify this option more than once.").isRequired().create("f"));
