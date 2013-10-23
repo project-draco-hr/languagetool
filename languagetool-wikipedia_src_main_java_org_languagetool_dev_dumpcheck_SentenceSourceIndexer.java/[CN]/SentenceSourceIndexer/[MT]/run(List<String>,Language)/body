@@ -1,5 +1,5 @@
 {
-  MixingSentenceSource mixingSource=MixingSentenceSource.create(dumpFilesNames,language);
+  MixingSentenceSource mixingSource=MixingSentenceSource.create(dumpFileNames,language);
   while (mixingSource.hasNext()) {
     Sentence sentence=mixingSource.next();
     if (sentenceCount % 100 == 0) {
@@ -8,8 +8,8 @@
     }
     indexer.index(sentence.getText(),sentence.getSource(),true,sentenceCount);
     sentenceCount++;
-    if (sentenceCount >= maxDocs) {
-      throw new DocumentLimitReachedException(maxDocs);
+    if (sentenceCount >= maxSentences) {
+      throw new DocumentLimitReachedException(maxSentences);
     }
   }
 }

@@ -1,32 +1,32 @@
 {
   if (args.length != 4) {
-    System.out.println("Usage: " + SentenceSourceIndexer.class.getSimpleName() + " <dataFile...> <indexDir> <languageCode> <maxDocs>");
+    System.out.println("Usage: " + SentenceSourceIndexer.class.getSimpleName() + " <dataFile...> <indexDir> <languageCode> <maxSentences>");
     System.out.println("\t<dataFiles> comma-separated list of a Wikipedia XML dumps (*.xml) and/or Tatoeba files (tatoeba-*)");
     System.out.println("\t<indexDir> directory where Lucene index will be written to, existing index content will be removed");
     System.out.println("\t<languageCode> short code like en for English, de for German etc");
-    System.out.println("\t<maxDocs> maximum number of documents to be indexed, use 0 for no limit");
+    System.out.println("\t<maxSentences> maximum number of sentences to be indexed, use 0 for no limit");
     System.exit(1);
   }
   final List<String> dumpFilesNames=Arrays.asList(args[0].split(","));
   final File indexDir=new File(args[1]);
   final String languageCode=args[2];
-  final int maxDocs=Integer.parseInt(args[3]);
+  final int maxSentences=Integer.parseInt(args[3]);
   final Language language=Language.getLanguageForShortName(languageCode);
-  if (maxDocs == 0) {
+  if (maxSentences == 0) {
     System.out.println("Going to index contents from " + dumpFilesNames);
   }
  else {
-    System.out.println("Going to index up to " + maxDocs + " documents from "+ dumpFilesNames);
+    System.out.println("Going to index up to " + maxSentences + " sentences from "+ dumpFilesNames);
   }
   System.out.println("Output index dir: " + indexDir);
   final long start=System.currentTimeMillis();
   try (FSDirectory fsDirectory=FSDirectory.open(indexDir)){
-    final SentenceSourceIndexer indexer=new SentenceSourceIndexer(fsDirectory,language,maxDocs);
+    final SentenceSourceIndexer indexer=new SentenceSourceIndexer(fsDirectory,language,maxSentences);
     try {
       indexer.run(dumpFilesNames,language);
     }
  catch (    DocumentLimitReachedException e) {
-      System.out.println("Document limit (" + e.getLimit() + ") reached, stopping indexing");
+      System.out.println("Sentence limit (" + e.getLimit() + ") reached, stopping indexing");
     }
  finally {
       indexer.writeMetaDocuments();
