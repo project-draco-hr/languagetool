@@ -1,9 +1,10 @@
 {
   final List<String> lines=new ArrayList<>();
-  try (Scanner scanner=new Scanner(stream,"UTF-8")){
-    while (scanner.hasNextLine()) {
-      final String line=scanner.nextLine().trim();
-      if (line.length() < 1) {
+  try (BufferedReader reader=new BufferedReader(new InputStreamReader(stream,"UTF-8"))){
+    String line;
+    while ((line=reader.readLine()) != null) {
+      line=line.trim();
+      if (line.isEmpty()) {
         continue;
       }
       if (line.charAt(0) == '#') {
@@ -12,5 +13,7 @@
       lines.add(line);
     }
   }
-   return lines;
+ catch (  IOException e) {
+  }
+  return lines;
 }
