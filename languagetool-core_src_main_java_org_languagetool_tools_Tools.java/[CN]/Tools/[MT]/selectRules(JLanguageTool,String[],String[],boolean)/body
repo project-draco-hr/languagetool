@@ -9,11 +9,13 @@
       lt.enableRule(ruleName);
     }
     if (useEnabledOnly) {
+      List<String> rulesToBeDisabled=new ArrayList<>();
       for (      Rule rule : lt.getAllRules()) {
         if (!enabledRuleIDs.contains(rule.getId())) {
-          lt.disableRule(rule.getId());
+          rulesToBeDisabled.add(rule.getId());
         }
       }
+      lt.disableRules(rulesToBeDisabled);
     }
   }
 }
