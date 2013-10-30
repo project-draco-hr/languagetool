@@ -1,0 +1,3 @@
+{
+  return paraText.replaceAll("([.!?])\\d ","$1?? ");
+}

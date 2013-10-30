@@ -16,7 +16,7 @@
     return "";
   }
   currentPara=paraText;
-  tokenizedSentences=langTool.sentenceTokenize(paraText);
+  tokenizedSentences=langTool.sentenceTokenize(cleanFootnotes(paraText));
   position=0;
   if (!tokenizedSentences.isEmpty()) {
     return tokenizedSentences.get(0);
