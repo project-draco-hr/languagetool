@@ -25,14 +25,14 @@
     checkToken=secondToken;
   }
   String lastToken=tokens[tokens.length - 1].getToken();
-  if (lastToken.matches("[ \"'??????????\\n]") && tokens.length >= 2) {
+  if (tokens.length >= 2 && WHITESPACE_OR_QUOTE.matcher(lastToken).matches()) {
     lastToken=tokens[tokens.length - 2].getToken();
   }
   boolean preventError=false;
-  if (lastParagraphString.matches("[;,]")) {
+  if (lastParagraphString.equals(",") || lastParagraphString.equals(";")) {
     preventError=true;
   }
-  if (!lastParagraphString.matches("[.?!???]|") && !lastToken.matches("[.?!???]")) {
+  if (!SENTENCE_END1.matcher(lastParagraphString).matches() && !SENTENCE_END2.matcher(lastToken).matches()) {
     preventError=true;
   }
   lastParagraphString=lastToken;

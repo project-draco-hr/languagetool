@@ -2,7 +2,7 @@
   if (!language.getShortName().equals("nl")) {
     return null;
   }
-  if (tokens.length >= 3 && firstToken.equals("'") && secondToken.matches("k|m|n|r|s|t")) {
+  if (tokens.length >= 3 && firstToken.equals("'") && DUTCH_SPECIAL_CASE.matcher(secondToken).matches()) {
     return tokens[3].getToken();
   }
   return null;
