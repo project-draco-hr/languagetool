@@ -1,0 +1,4 @@
+{
+  ChunkerME chunker=new ChunkerME(chunkerModel);
+  return chunker.chunk(tokens,posTags);
+}

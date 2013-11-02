@@ -1,0 +1,6 @@
+{
+  EnglishChunker chunker=new EnglishChunker();
+  String expected="[I, 'm, going, to, London]";
+  assertThat(Arrays.toString(chunker.tokenize("I'm going to London")),is(expected));
+  assertThat(Arrays.toString(chunker.tokenize("I???m going to London")),is(expected));
+}

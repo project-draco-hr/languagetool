@@ -1,11 +1,8 @@
 {
-  TokenizerME tokenizer=new TokenizerME(tokenModel);
-  POSTaggerME posTagger=new POSTaggerME(posModel);
-  ChunkerME chunker=new ChunkerME(chunkerModel);
   String sentence=getSentence(tokenReadings);
-  String[] tokens=tokenizer.tokenize(sentence);
-  String[] posTags=posTagger.tag(tokens);
-  String[] chunkTags=chunker.chunk(tokens,posTags);
+  String[] tokens=tokenize(sentence);
+  String[] posTags=posTag(tokens);
+  String[] chunkTags=chunk(tokens,posTags);
   if (tokens.length != posTags.length || tokens.length != chunkTags.length) {
     throw new RuntimeException("Length of results must be the same: " + tokens.length + ", "+ posTags.length+ ", "+ chunkTags.length);
   }

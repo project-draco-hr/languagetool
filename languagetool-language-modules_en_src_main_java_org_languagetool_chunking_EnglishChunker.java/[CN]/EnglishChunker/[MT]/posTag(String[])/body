@@ -1,0 +1,4 @@
+{
+  POSTaggerME posTagger=new POSTaggerME(posModel);
+  return posTagger.tag(tokens);
+}
