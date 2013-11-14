@@ -13,8 +13,15 @@
         if (exception.hasNextException() && element.getSkipNext() == 0) {
           System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies."+ " Did you forget skip=\"...\"?");
         }
-        if (!element.isRegularExpression() && !element.getString().isEmpty() && !element.getNegation()&& !element.isInflected()&& element.getSkipNext() == 0 && element.getPOStag() == null && exception.getPOStag() == null && element.isCaseSensitive() == exception.isCaseSensitive()) {
-          System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " exception in token ["+ i+ "] seems useless."+ " Did you forget skip=\"...\" or scope=\"previous\"?");
+        if (!element.getString().isEmpty() && !element.getNegation() && !element.isInflected()&& element.getSkipNext() == 0 && element.getPOStag() == null && exception.getPOStag() == null && !exception.isRegularExpression() && element.isCaseSensitive() == exception.isCaseSensitive()) {
+          if (element.isRegularExpression()) {
+            if (!exception.getString().matches((exception.isCaseSensitive() ? "" : "(?i)") + element.getString())) {
+              System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " exception word ["+ exception.getString()+ "] cannot match the regexp token ["+ i+ "] ["+ element.getString()+ "] so exception seems useless. "+ "Did you forget skip=\"...\" or scope=\"previous\"?");
+            }
+          }
+ else {
+            System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " exception word ["+ exception.getString()+ "] in token word ["+ i+ "] ["+ element.getString()+ "] seems useless. Did you forget skip=\"...\" or scope=\"previous\"?");
+          }
         }
         if (!exception.getString().equals(".")) {
           warnIfElementNotKosher(exception.getString(),exception.isRegularExpression(),exception.isCaseSensitive(),exception.getNegation(),exception.isInflected(),false,lang,ruleId + ":" + ruleSubId+ " (exception in token ["+ i+ "])",i);
