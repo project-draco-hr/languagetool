@@ -16,9 +16,12 @@
         if (!element.getString().isEmpty() && !element.getNegation() && !element.isInflected()&& element.getSkipNext() == 0 && element.getPOStag() == null && exception.getPOStag() == null) {
           if (exception.isRegularExpression()) {
             if (element.isRegularExpression()) {
-              if (exception.getString().indexOf('|') >= 0 && exception.getString().matches("[^()]*")) {
+              if (exception.getString().indexOf('|') >= 0) {
                 final String[] alt=exception.getString().split("\\|");
                 for (                final String part : alt) {
+                  if (exception.getString().indexOf('(') >= 0) {
+                    break;
+                  }
                   if (part.matches("[^.*?{}\\[\\]]+")) {
                     if (!part.matches("(?i)" + element.getString())) {
                       System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " has exception regexp ["+ exception.getString()+ "] which contains disjunction part ["+ part+ "] which seems useless since it does not match "+ "the regexp of token word ["+ i+ "] "+ "["+ element.getString()+ "]. Did you forget skip=\"...\" or scope=\"previous\"?");
