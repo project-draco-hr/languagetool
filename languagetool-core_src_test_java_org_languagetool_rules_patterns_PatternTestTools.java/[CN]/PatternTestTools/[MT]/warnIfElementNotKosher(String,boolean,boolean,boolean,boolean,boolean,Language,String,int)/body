@@ -35,7 +35,7 @@
         }
       }
     }
-    if (stringValue.contains("|")) {
+    if (stringValue.indexOf('|') >= 0) {
       if (stringValue.indexOf("||") >= 0 || stringValue.charAt(0) == '|' || stringValue.charAt(stringValue.length() - 1) == '|') {
         System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains empty "+ "disjunction | within "+ "\""+ stringValue+ "\".");
       }
