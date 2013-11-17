@@ -13,7 +13,7 @@
         if (exception.hasNextException() && element.getSkipNext() == 0) {
           System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies."+ " Did you forget skip=\"...\"?");
         }
-        if (!element.getString().isEmpty() && !element.getNegation() && !element.isInflected()&& element.getSkipNext() == 0 && element.getPOStag() == null && exception.getPOStag() == null) {
+        if (!element.getString().isEmpty() && !exception.getString().isEmpty() && !element.getNegation()&& !element.isInflected()&& element.getSkipNext() == 0) {
           if (exception.isRegularExpression()) {
             if (element.isRegularExpression()) {
               if (exception.getString().indexOf('|') >= 0) {
