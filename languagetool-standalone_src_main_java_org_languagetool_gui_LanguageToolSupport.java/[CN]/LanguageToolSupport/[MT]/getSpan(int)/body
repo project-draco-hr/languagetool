@@ -1,0 +1,9 @@
+{
+  for (int i=0; i < documentSpans.size(); i++) {
+    final Span cur=documentSpans.get(i);
+    if (cur.end > cur.start && cur.start <= offset && offset < cur.end) {
+      return cur;
+    }
+  }
+  return null;
+}
