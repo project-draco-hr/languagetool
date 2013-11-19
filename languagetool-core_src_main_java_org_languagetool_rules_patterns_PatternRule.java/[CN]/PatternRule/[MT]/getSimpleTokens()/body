@@ -1,0 +1,14 @@
+{
+  if (tokenSet == null) {
+    tokenSet=new HashSet<>();
+    for (    Element element : patternElements) {
+      if (!element.getNegation() && !element.isRegularExpression() && !element.isReferenceElement()&& !element.isInflected()&& element.getMinOccurrence() > 0) {
+        String str=element.getString();
+        if (!str.isEmpty()) {
+          tokenSet.add(str.toLowerCase());
+        }
+      }
+    }
+  }
+  return tokenSet;
+}

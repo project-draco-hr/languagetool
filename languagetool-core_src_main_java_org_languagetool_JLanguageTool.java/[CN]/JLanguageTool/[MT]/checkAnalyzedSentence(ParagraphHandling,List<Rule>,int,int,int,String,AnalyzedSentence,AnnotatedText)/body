@@ -8,6 +8,9 @@
     if (category != null && disabledCategories.contains(category.getName())) {
       continue;
     }
+    if (rule instanceof PatternRule && ((PatternRule)rule).canBeIgnoredFor(analyzedSentence)) {
+      continue;
+    }
 switch (paraMode) {
 case ONLYNONPARA:
 {

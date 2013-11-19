@@ -1,0 +1,10 @@
+{
+  Set<String> simpleRuleTokens=getSimpleTokens();
+  if (simpleRuleTokens.isEmpty()) {
+    return false;
+  }
+  if (!sentence.getTokenSet().containsAll(simpleRuleTokens)) {
+    return true;
+  }
+  return false;
+}
