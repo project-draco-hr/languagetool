@@ -8,6 +8,7 @@
  else {
     applyRuleDeactivation(languageTool,disabledRules);
   }
+  activateAdditionalCategories(additionalCategoryIds,languageTool);
   disableSpellingRules(languageTool);
   System.out.println("Working on: " + StringUtils.join(fileNames,", "));
   System.out.println("Sentence limit: " + (maxSentences > 0 ? maxSentences : "no limit"));

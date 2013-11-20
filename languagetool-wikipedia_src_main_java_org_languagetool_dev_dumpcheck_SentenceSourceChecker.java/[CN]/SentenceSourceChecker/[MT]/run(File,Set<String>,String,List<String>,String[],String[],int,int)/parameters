@@ -3,5 +3,6 @@ Set<String> disabledRules
 String langCode
 List<String> fileNames
 String[] ruleIds
+String[] additionalCategoryIds
 int maxSentences
 int maxErrors

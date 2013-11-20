@@ -28,6 +28,10 @@
   if (commandLine.hasOption('r')) {
     ruleIds=commandLine.getOptionValue('r').split(",");
   }
+  String[] categoryIds=null;
+  if (commandLine.hasOption("also-enable-categories")) {
+    categoryIds=commandLine.getOptionValue("also-enable-categories").split(",");
+  }
   String[] fileNames=commandLine.getOptionValues('f');
-  prg.run(propFile,disabledRuleIds,languageCode,Arrays.asList(fileNames),ruleIds,maxArticles,maxErrors);
+  prg.run(propFile,disabledRuleIds,languageCode,Arrays.asList(fileNames),ruleIds,categoryIds,maxArticles,maxErrors);
 }
