@@ -3,7 +3,7 @@
   final JLanguageTool languageTool=new MultiThreadedJLanguageTool(lang);
   languageTool.activateDefaultPatternRules();
   if (ruleIds != null) {
-    enableSpecifiedRules(ruleIds,languageTool);
+    enableOnlySpecifiedRules(ruleIds,languageTool);
   }
  else {
     applyRuleDeactivation(languageTool,disabledRules);

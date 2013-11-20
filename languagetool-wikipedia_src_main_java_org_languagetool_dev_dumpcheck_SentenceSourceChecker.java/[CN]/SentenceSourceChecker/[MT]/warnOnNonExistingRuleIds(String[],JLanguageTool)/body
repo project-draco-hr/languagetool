@@ -1,0 +1,14 @@
+{
+  for (  String ruleId : ruleIds) {
+    boolean found=false;
+    for (    Rule rule : languageTool.getAllRules()) {
+      if (rule.getId().equals(ruleId)) {
+        found=true;
+        break;
+      }
+    }
+    if (!found) {
+      System.out.println("WARNING: Could not find rule '" + ruleId + "'");
+    }
+  }
+}
