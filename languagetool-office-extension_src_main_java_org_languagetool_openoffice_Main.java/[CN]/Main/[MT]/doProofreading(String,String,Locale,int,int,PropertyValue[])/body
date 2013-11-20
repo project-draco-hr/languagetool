@@ -6,7 +6,7 @@
     paRes.aLocale=locale;
     paRes.aDocumentIdentifier=docID;
     paRes.aText=paraText;
-    paRes.aProperties=props;
+    paRes.aProperties=propertyValues;
     return doGrammarCheckingInternal(paraText,locale,paRes);
   }
  catch (  final Throwable t) {

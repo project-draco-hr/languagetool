@@ -1,22 +1,22 @@
 {
   try {
     List<Locale> locales=new ArrayList<>();
-    for (    final Language element : Language.LANGUAGES) {
-      if (element.getCountries().length == 0) {
-        if (element.getVariant() != null) {
-          locales.add(new Locale(LIBREOFFICE_SPECIAL_LANGUAGE_TAG,"",element.getShortNameWithCountryAndVariant()));
+    for (    final Language lang : Language.LANGUAGES) {
+      if (lang.getCountries().length == 0) {
+        if (lang.getVariant() != null) {
+          locales.add(new Locale(LIBREOFFICE_SPECIAL_LANGUAGE_TAG,"",lang.getShortNameWithCountryAndVariant()));
         }
  else {
-          locales.add(new Locale(element.getShortName(),"",""));
+          locales.add(new Locale(lang.getShortName(),"",""));
         }
       }
  else {
-        for (        final String country : element.getCountries()) {
-          if (element.getVariant() != null) {
-            locales.add(new Locale(LIBREOFFICE_SPECIAL_LANGUAGE_TAG,country,element.getShortNameWithCountryAndVariant()));
+        for (        final String country : lang.getCountries()) {
+          if (lang.getVariant() != null) {
+            locales.add(new Locale(LIBREOFFICE_SPECIAL_LANGUAGE_TAG,country,lang.getShortNameWithCountryAndVariant()));
           }
  else {
-            locales.add(new Locale(element.getShortName(),country,""));
+            locales.add(new Locale(lang.getShortName(),country,""));
           }
         }
       }

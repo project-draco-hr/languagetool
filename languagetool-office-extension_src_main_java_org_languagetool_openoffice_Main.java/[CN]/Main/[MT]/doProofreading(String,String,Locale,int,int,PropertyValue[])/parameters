@@ -3,4 +3,4 @@ String paraText
 Locale locale
 int startOfSentencePos
 int nSuggestedBehindEndOfSentencePosition
-PropertyValue[] props
+PropertyValue[] propertyValues

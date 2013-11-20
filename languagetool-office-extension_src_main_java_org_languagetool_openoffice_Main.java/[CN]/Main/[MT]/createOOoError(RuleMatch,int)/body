@@ -1,21 +1,21 @@
 {
   final SingleProofreadingError aError=new SingleProofreadingError();
   aError.nErrorType=com.sun.star.text.TextMarkupType.PROOFREADING;
-  final String comment=myMatch.getMessage().replaceAll("<suggestion>","\"").replaceAll("</suggestion>","\"").replaceAll("([\r]*\n)"," ");
+  final String comment=ruleMatch.getMessage().replaceAll("<suggestion>","\"").replaceAll("</suggestion>","\"").replaceAll("([\r]*\n)"," ");
   aError.aFullComment=comment;
-  if (!StringTools.isEmpty(myMatch.getShortMessage())) {
-    aError.aShortComment=myMatch.getShortMessage();
+  if (!StringTools.isEmpty(ruleMatch.getShortMessage())) {
+    aError.aShortComment=ruleMatch.getShortMessage();
   }
  else {
     aError.aShortComment=aError.aFullComment;
   }
   aError.aShortComment=org.languagetool.gui.Tools.shortenComment(aError.aShortComment);
-  aError.aSuggestions=myMatch.getSuggestedReplacements().toArray(new String[myMatch.getSuggestedReplacements().size()]);
-  aError.nErrorStart=myMatch.getFromPos() + startIndex;
-  aError.nErrorLength=myMatch.getToPos() - myMatch.getFromPos();
-  aError.aRuleIdentifier=myMatch.getRule().getId();
-  if (myMatch.getRule().getUrl() != null) {
-    aError.aProperties=new PropertyValue[]{new PropertyValue("FullCommentURL",-1,myMatch.getRule().getUrl().toString(),PropertyState.DIRECT_VALUE)};
+  aError.aSuggestions=ruleMatch.getSuggestedReplacements().toArray(new String[ruleMatch.getSuggestedReplacements().size()]);
+  aError.nErrorStart=ruleMatch.getFromPos() + startIndex;
+  aError.nErrorLength=ruleMatch.getToPos() - ruleMatch.getFromPos();
+  aError.aRuleIdentifier=ruleMatch.getRule().getId();
+  if (ruleMatch.getRule().getUrl() != null) {
+    aError.aProperties=new PropertyValue[]{new PropertyValue("FullCommentURL",-1,ruleMatch.getRule().getUrl().toString(),PropertyState.DIRECT_VALUE)};
   }
  else {
     aError.aProperties=new PropertyValue[0];
