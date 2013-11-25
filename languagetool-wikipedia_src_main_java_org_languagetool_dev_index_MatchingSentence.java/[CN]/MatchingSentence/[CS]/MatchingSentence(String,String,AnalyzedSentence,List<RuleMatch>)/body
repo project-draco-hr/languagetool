@@ -1,5 +1,6 @@
 {
   this.sentence=sentence;
+  this.source=source;
   this.analyzedSentence=analyzedSentence;
   this.ruleMatches=ruleMatches;
 }
