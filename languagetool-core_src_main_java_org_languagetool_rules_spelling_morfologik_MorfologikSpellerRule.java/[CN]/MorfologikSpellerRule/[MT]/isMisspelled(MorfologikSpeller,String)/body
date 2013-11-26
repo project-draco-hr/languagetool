@@ -1,3 +1,15 @@
 {
-  return speller.isMisspelled(word);
+  if (!speller.isMisspelled(word))   return false;
+  if (checkCompound) {
+    if (word.contains(compoundChar)) {
+      String[] words=word.split(compoundChar);
+      for (      String singleWord : words) {
+        if (speller.isMisspelled(singleWord)) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+  return true;
 }
