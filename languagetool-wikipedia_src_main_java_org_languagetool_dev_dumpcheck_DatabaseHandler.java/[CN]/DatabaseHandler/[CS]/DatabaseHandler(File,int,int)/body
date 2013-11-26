@@ -12,7 +12,7 @@
     throw new RuntimeException(e);
   }
   contextTools=new ContextTools();
-  contextTools.setContextSize(CONTEXT_SIZE);
+  contextTools.setContextSize(MAX_CONTEXT_LENGTH);
   contextTools.setErrorMarkerStart(MARKER_START);
   contextTools.setErrorMarkerEnd(MARKER_END);
   contextTools.setEscapeHtml(false);

@@ -17,7 +17,7 @@
       prepSt.setString(5,rule.getDescription());
       prepSt.setString(6,StringUtils.abbreviate(match.getMessage(),255));
       final String context=contextTools.getContext(match.getFromPos(),match.getToPos(),sentence.getText());
-      if (context.length() > 255) {
+      if (context.length() > MAX_CONTEXT_LENGTH) {
         continue;
       }
       prepSt.setString(7,context);
