@@ -1,8 +1,8 @@
 {
-  assertBad("Das Fahrrads.","bez??glich Kasus");
-  assertBad("Der Fahrrad.","bez??glich Genus");
-  assertBad("Das Fahrr??der.","bez??glich Numerus");
-  assertBad("Die Tischen sind ecking.","bez??glich Kasus");
-  assertBad("Die Tischen sind ecking.","und Genus");
-  assertBad("Bei dem Papierabz??ge von Digitalbildern bestellte werden.","bez??glich Kasus, Genus oder Numerus.");
+  assertBadWithMessage("Das Fahrrads.","bez??glich Kasus");
+  assertBadWithMessage("Der Fahrrad.","bez??glich Genus");
+  assertBadWithMessage("Das Fahrr??der.","bez??glich Numerus");
+  assertBadWithMessage("Die Tischen sind ecking.","bez??glich Kasus");
+  assertBadWithMessage("Die Tischen sind ecking.","und Genus");
+  assertBadWithMessage("Bei dem Papierabz??ge von Digitalbildern bestellte werden.","bez??glich Kasus, Genus oder Numerus.");
 }

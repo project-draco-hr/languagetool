@@ -1,3 +1,0 @@
-{
-  assertEquals("Did not find one match in sentence '" + s + "'",1,rule.match(langTool.getAnalyzedSentence(s)).length);
-}

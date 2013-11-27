@@ -1,0 +1,4 @@
+String nounCase
+String nounNumber
+String nounGender
+AnalyzedToken pronoun

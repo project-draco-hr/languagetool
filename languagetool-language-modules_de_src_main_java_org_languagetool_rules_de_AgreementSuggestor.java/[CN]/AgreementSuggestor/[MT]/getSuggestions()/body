@@ -1,0 +1,24 @@
+{
+  Set<String> suggestionSet=new HashSet<>();
+  try {
+    for (    AnalyzedToken token2Reading : nounToken.getReadings()) {
+      String nounCase=GermanHelper.getNounCase(token2Reading.getPOSTag());
+      String nounNumber=GermanHelper.getNounNumber(token2Reading.getPOSTag());
+      String nounGender=GermanHelper.getNounGender(token2Reading.getPOSTag());
+      for (      AnalyzedToken token1Reading : determinerToken.getReadings()) {
+        List<String> articleSuggestions=getArticleSuggestions(nounCase,nounNumber,nounGender,token1Reading);
+        suggestionSet.addAll(articleSuggestions);
+        List<String> pronounSuggestions=getPronounSuggestions(nounCase,nounNumber,nounGender,token1Reading);
+        suggestionSet.addAll(pronounSuggestions);
+        List<String> nounSuggestions=getNounSuggestions(token2Reading,token1Reading);
+        suggestionSet.addAll(nounSuggestions);
+      }
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  List<String> suggestions=new ArrayList<>(suggestionSet);
+  Collections.sort(suggestions);
+  return suggestions;
+}

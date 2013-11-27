@@ -1,0 +1,12 @@
+{
+  List<String> suggestions=new ArrayList<>();
+  String[] correctedDeterminer=synthesizer.synthesize(token1Reading,correctPosTag);
+  for (  String determiner : correctedDeterminer) {
+    if (startsWith != null && !determiner.startsWith(startsWith)) {
+      continue;
+    }
+    String correctDeterminer=StringTools.isCapitalizedWord(determinerToken.getToken()) ? StringTools.uppercaseFirstChar(determiner) : determiner;
+    suggestions.add(correctDeterminer + " " + nounToken.getToken());
+  }
+  return suggestions;
+}

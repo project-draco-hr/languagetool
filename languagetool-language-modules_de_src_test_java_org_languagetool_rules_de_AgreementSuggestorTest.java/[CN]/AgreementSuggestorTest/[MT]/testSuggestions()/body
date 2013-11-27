@@ -1,0 +1,7 @@
+{
+  assertSuggestion("das/der/ART:DEF:NOM:SIN:NEU Haus/Haus/SUB:NOM:SIN:NEU","[das Haus]");
+  assertSuggestion("der/der/ART:DEF:NOM:SIN:MAS Haus/Haus/SUB:NOM:SIN:NEU","[das Haus]");
+  assertSuggestion("die/der/ART:DEF:NOM:PLU:FEM Haus/Haus/SUB:NOM:SIN:NEU","[das Haus]");
+  assertSuggestion("das/der/ART:DEF:NOM:PLU:FEM H??user/Haus/SUB:NOM:PLU:NEU","[die H??user]");
+  assertSuggestion("das/der/ART:DEF:NOM:PLU:FEM H??usern/Haus/SUB:DAT:PLU:NEU","[den H??usern]");
+}

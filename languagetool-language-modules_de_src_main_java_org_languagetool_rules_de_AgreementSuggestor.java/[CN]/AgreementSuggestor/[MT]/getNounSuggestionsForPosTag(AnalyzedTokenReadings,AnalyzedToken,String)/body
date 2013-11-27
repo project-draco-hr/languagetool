@@ -1,0 +1,8 @@
+{
+  List<String> suggestions=new ArrayList<>();
+  String[] correctedNouns=synthesizer.synthesize(token2Reading,correctPosTag);
+  for (  String correctedNoun : correctedNouns) {
+    suggestions.add(token1.getToken() + " " + correctedNoun);
+  }
+  return suggestions;
+}

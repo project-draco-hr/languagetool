@@ -1,0 +1,8 @@
+{
+  if (array.length > idx) {
+    return array[idx];
+  }
+ else {
+    return "";
+  }
+}

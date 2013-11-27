@@ -1,0 +1,4 @@
+{
+  String correctPosTag="PRO:POS:" + nounCase + ":"+ nounNumber+ ":"+ nounGender+ ":BEG";
+  return getDeterminerSuggestionsForPosTag(pronoun,correctPosTag,determinerToken.getToken().substring(0,1));
+}

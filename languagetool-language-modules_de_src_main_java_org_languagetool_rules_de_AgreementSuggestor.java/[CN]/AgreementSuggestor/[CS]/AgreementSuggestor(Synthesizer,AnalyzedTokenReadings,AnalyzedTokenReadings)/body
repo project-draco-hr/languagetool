@@ -1,0 +1,5 @@
+{
+  this.synthesizer=synthesizer;
+  this.determinerToken=determinerToken;
+  this.nounToken=nounToken;
+}

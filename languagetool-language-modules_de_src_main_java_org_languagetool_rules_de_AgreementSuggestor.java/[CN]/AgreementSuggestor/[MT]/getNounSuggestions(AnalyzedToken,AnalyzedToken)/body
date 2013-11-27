@@ -1,0 +1,10 @@
+{
+  if (determiner.getPOSTag().endsWith(":STV")) {
+    return Collections.emptyList();
+  }
+  String determinerCase=GermanHelper.getDeterminerCase(determiner.getPOSTag());
+  String determinerNumber=GermanHelper.getDeterminerNumber(determiner.getPOSTag());
+  String determinerGender=GermanHelper.getDeterminerGender(determiner.getPOSTag());
+  String correctPosTag="SUB:" + determinerCase + ":"+ determinerNumber+ ":"+ determinerGender;
+  return getNounSuggestionsForPosTag(determinerToken,token2Reading,correctPosTag);
+}

@@ -1,0 +1,3 @@
+{
+  return getIndexOrEmptyString(posTag.split(":"),2);
+}

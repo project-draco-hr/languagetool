@@ -1,0 +1,5 @@
+{
+  String determinerDefiniteness=GermanHelper.getDeterminerDefiniteness(article.getPOSTag());
+  String correctPosTag="ART:" + determinerDefiniteness + ":"+ nounCase+ ":"+ nounNumber+ ":"+ nounGender;
+  return getDeterminerSuggestionsForPosTag(article,correctPosTag,null);
+}

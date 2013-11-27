@@ -1,0 +1,18 @@
+{
+  String[] tokens=input.split(" ");
+  List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
+  int pos=0;
+  for (  String inputToken : tokens) {
+    String[] parts=inputToken.split("/");
+    String token=parts[0];
+    String lemma=parts[1];
+    String posTag=parts[2];
+    tokenReadings.add(new AnalyzedTokenReadings(new AnalyzedGermanToken(token,posTag,lemma),pos++));
+  }
+  if (tokenReadings.size() != 2) {
+    throw new RuntimeException("Size of input not yet supported: " + tokenReadings.size());
+  }
+  AgreementSuggestor suggestor=new AgreementSuggestor(new German().getSynthesizer(),tokenReadings.get(0),tokenReadings.get(1));
+  List<String> suggestions=suggestor.getSuggestions();
+  assertThat(suggestions.toString(),is(expectedSuggestions));
+}
