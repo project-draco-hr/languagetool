@@ -1,5 +1,5 @@
 {
   SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
-  String markup="Hier <ref name=\"NPOVxxx\" /> steht der Haus.";
-  applySuggestion(langTool,filter,markup,markup.replace("steht der Haus.","steht <s>der Haus.</s>"));
+  String markup="Hier <ref name=\"NPOVxxx\" /> steht,, das Haus.";
+  applySuggestion(langTool,filter,markup,markup.replace("steht,, das Haus.","<s>steht, das</s> Haus."));
 }

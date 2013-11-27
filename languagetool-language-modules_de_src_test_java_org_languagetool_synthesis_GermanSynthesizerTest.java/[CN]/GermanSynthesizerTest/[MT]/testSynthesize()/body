@@ -1,0 +1,6 @@
+{
+  assertThat(synth("??u??erung","SUB:NOM:PLU:FEM"),is("[??u??erungen]"));
+  assertThat(synth("??u??erung","SUB:NOM:PLU:MAS"),is("[]"));
+  assertThat(synth("Haus","SUB:AKK:PLU:NEU"),is("[H??user]"));
+  assertThat(synth("Haus",".*",true),is("[H??user, Haus, H??usern, Haus, Hause, H??user, Hauses, H??user, Haus]"));
+}

@@ -1,0 +1,6 @@
+{
+  if (synthesizer == null) {
+    synthesizer=new GermanSynthesizer();
+  }
+  return synthesizer;
+}

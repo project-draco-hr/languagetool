@@ -1,0 +1,3 @@
+{
+  return Arrays.toString(synthesizer.synthesize(dummyToken(word),posTag,regEx));
+}
