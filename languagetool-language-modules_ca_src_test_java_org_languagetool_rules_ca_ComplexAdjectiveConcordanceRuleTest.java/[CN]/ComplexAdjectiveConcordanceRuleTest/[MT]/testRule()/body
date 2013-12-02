@@ -1,4 +1,6 @@
 {
+  assertCorrect("a la infermeria, d'all?? m??s interessat");
+  assertCorrect("el record, i absolutament fascinats");
   assertCorrect("no s'atorguen drets de visita tret que ho consenta el progenitor");
   assertCorrect("La meua filla viu amb mi la major part del temps");
   assertCorrect("que en l'actualitat viu a la ciutat de Santa Cruz");
@@ -84,8 +86,7 @@
   assertIncorrect("eren uns fets cada volta m??s inexplicable");
   assertIncorrect("Unes explotacions ramaderes porcina.");
   assertIncorrect("amb un rendiment del 5,62%, m??s alta que el 5,44%");
-  assertIncorrect("En efecte, hi ha consideracions, llavors for??a comuns");
-  assertIncorrect("En efecte, hi ha consideracions racistes, llavors for??a comuns");
+  assertIncorrect("En efecte, hi ha consideracions llavors for??a comuns");
   assertIncorrect("amb una alineaci?? impr??piament habituals");
   assertIncorrect("amb una alineaci?? poc habituals");
   assertIncorrect("amb una alineaci?? molt poc habituals");
