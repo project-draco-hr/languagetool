@@ -23,7 +23,7 @@
   }
 );
   textPane.setSize(dialogWidth,Short.MAX_VALUE);
-  textPane.setText("<html>" + message + formatURL(url)+ "</html>");
+  textPane.setText("<html>" + message + formatURL(rule.getUrl())+ "</html>");
   JScrollPane scrollPane=new JScrollPane(textPane);
   scrollPane.setPreferredSize(new Dimension(dialogWidth,textPane.getPreferredSize().height));
   scrollPane.setBorder(BorderFactory.createEmptyBorder());

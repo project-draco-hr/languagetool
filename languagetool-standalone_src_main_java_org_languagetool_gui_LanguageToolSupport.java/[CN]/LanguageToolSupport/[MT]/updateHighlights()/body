@@ -7,7 +7,7 @@
     if (span.start == span.end) {
       continue;
     }
-    if (span.spelling) {
+    if (span.rule.isSpellingRule()) {
       spellErrors.add(span);
     }
  else {

@@ -7,8 +7,6 @@
   span.desc=match.getMessage();
   span.replacement=new ArrayList<>();
   span.replacement.addAll(match.getSuggestedReplacements());
-  span.spelling=match.getRule().isSpellingRule();
-  span.rule=match.getRule().getId();
-  span.url=match.getRule().getUrl();
+  span.rule=match.getRule();
   spans.add(span);
 }

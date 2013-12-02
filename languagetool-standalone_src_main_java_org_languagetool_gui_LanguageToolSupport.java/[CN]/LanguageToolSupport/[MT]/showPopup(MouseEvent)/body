@@ -14,7 +14,7 @@
     JMenuItem moreItem=new JMenuItem(messages.getString("guiMore"));
     moreItem.addActionListener(new ActionListener(){
       @Override public void actionPerformed(      ActionEvent e){
-        showDialog(textComponent,span.msg,span.desc,span.url);
+        showDialog(textComponent,span.msg,span.desc,span.rule);
       }
     }
 );
@@ -22,7 +22,7 @@
     JMenuItem ignoreItem=new JMenuItem(messages.getString("guiOOoIgnoreButton"));
     ignoreItem.addActionListener(new ActionListener(){
       @Override public void actionPerformed(      ActionEvent e){
-        disableRule(span.rule);
+        disableRule(span.rule.getId());
       }
     }
 );
