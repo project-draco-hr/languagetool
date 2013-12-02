@@ -2,5 +2,5 @@
   if (url == null) {
     return "";
   }
-  return String.format("<br/><br/><a href=\"%s\">%s</a>",url.toExternalForm(),"external link");
+  return String.format("<br/><br/><a href=\"%s\">%s</a>",url.toExternalForm(),StringUtils.abbreviate(url.toString(),50));
 }
