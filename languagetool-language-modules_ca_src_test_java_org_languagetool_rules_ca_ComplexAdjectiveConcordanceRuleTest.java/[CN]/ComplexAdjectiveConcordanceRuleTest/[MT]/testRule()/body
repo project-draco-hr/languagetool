@@ -1,4 +1,6 @@
 {
+  assertCorrect("amb la veu i el posat cada cop m??s agressius");
+  assertCorrect("l'experi??ncia sensitiva i la ra??, degudament combinades.");
   assertCorrect("a la infermeria, d'all?? m??s interessat");
   assertCorrect("el record, i absolutament fascinats");
   assertCorrect("no s'atorguen drets de visita tret que ho consenta el progenitor");
