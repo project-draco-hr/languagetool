@@ -3,8 +3,8 @@
     return false;
   }
   if (checkCompound) {
-    if (word.contains(compoundChar)) {
-      String[] words=word.split(compoundChar);
+    if (compoundRegex.matcher(word).find()) {
+      String[] words=compoundRegex.split(word);
       for (      String singleWord : words) {
         if (speller.isMisspelled(singleWord)) {
           return true;
