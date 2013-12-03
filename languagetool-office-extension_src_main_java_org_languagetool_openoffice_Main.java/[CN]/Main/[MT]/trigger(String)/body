@@ -1,4 +1,7 @@
 {
+  if (Thread.currentThread().getContextClassLoader() == null) {
+    Thread.currentThread().setContextClassLoader(Main.class.getClassLoader());
+  }
   if (!javaVersionOkay()) {
     return;
   }
