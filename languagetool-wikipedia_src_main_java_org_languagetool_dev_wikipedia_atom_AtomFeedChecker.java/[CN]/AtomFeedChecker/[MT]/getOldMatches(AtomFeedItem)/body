@@ -1,0 +1,9 @@
+{
+  List<WikipediaRuleMatch> oldMatches=new ArrayList<>();
+  for (  String oldContent : item.getOldContent()) {
+    PlainTextMapping filteredContent=textFilter.filter(oldContent);
+    List<RuleMatch> ruleMatches=langTool.check(filteredContent.getPlainText());
+    oldMatches.addAll(toWikipediaRuleMatches(oldContent,filteredContent,ruleMatches));
+  }
+  return oldMatches;
+}

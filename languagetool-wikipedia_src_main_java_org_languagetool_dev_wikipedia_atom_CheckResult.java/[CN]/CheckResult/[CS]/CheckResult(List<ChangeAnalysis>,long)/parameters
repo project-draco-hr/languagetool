@@ -1,0 +1,2 @@
+List<ChangeAnalysis> checkResults
+long latestDiffId

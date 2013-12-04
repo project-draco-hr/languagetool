@@ -1,0 +1,7 @@
+{
+  AtomFeedItem item=getSummary("summary1.txt");
+  assertThat(item.getOldContent().size(),is(1));
+  assertThat(item.getOldContent().get(0),is("}}added"));
+  assertThat(item.getNewContent().size(),is(1));
+  assertThat(item.getNewContent().get(0),is("}}"));
+}

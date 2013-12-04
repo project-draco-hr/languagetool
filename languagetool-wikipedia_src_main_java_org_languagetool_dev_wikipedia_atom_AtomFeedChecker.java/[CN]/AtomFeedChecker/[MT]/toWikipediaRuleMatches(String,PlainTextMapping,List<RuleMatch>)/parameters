@@ -1,0 +1,3 @@
+String content
+PlainTextMapping filteredContent
+List<RuleMatch> ruleMatches

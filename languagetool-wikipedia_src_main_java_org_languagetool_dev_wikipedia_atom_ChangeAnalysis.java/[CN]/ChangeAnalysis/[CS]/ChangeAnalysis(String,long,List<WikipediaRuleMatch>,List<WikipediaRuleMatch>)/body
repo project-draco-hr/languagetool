@@ -1,0 +1,6 @@
+{
+  this.title=Objects.requireNonNull(title);
+  this.diffId=Objects.requireNonNull(diffId);
+  this.oldMatches=Objects.requireNonNull(oldMatches);
+  this.newMatches=Objects.requireNonNull(newMatches);
+}

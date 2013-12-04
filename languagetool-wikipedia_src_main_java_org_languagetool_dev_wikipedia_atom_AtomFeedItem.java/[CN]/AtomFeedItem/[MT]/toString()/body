@@ -1,0 +1,3 @@
+{
+  return "AtomFeedItem{" + "id='" + id + '\''+ ", title='"+ title+ "\'}";
+}

@@ -1,0 +1,22 @@
+{
+  List<String> result=new ArrayList<>();
+  String[] lines=summary.split("\n");
+  boolean expectingChange=false;
+  for (  String line : lines) {
+    if (line.trim().startsWith("<td class=\"diff-marker\">" + plusMinusMarker + "</td>")) {
+      expectingChange=true;
+    }
+ else     if (expectingChange) {
+      Matcher matcher=TABLE_DATA_CONTENT.matcher(line);
+      if (matcher.find()) {
+        String cleanContent=matcher.group(1).replaceAll("<span.*?>","").replace("</span>","").replaceAll("<div.*?>","").replace("</div>","");
+        result.add(cleanContent);
+      }
+ else {
+        throw new RuntimeException("Expected change ('" + plusMinusMarker + "') not found in line: "+ line);
+      }
+      expectingChange=false;
+    }
+  }
+  return result;
+}

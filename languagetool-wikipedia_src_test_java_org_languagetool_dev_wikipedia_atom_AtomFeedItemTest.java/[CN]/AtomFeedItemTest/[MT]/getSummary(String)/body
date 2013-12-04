@@ -1,0 +1,4 @@
+{
+  InputStream stream=Tools.getStream("/org/languagetool/dev/wikipedia/atom/" + filename);
+  return new AtomFeedItem("fakeId","fakeTitle",StringTools.streamToString(stream,"UTF-8"));
+}

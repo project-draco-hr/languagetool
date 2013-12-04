@@ -1,0 +1,9 @@
+{
+  List<WikipediaRuleMatch> oldMatches=makeMatches(1,2,3);
+  List<WikipediaRuleMatch> newMatches=makeMatches(1,3,2);
+  ChangeAnalysis analysis=new ChangeAnalysis("fakeTitle",123L,oldMatches,newMatches);
+  assertThat(analysis.getAddedMatches().size(),is(1));
+  assertThat(analysis.getAddedMatches().get(0).getRule().getId(),is("ID_2"));
+  assertThat(analysis.getRemovedMatches().size(),is(1));
+  assertThat(analysis.getRemovedMatches().get(0).getRule().getId(),is("ID_2"));
+}

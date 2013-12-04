@@ -1,0 +1,6 @@
+{
+  if (other instanceof WikipediaRuleMatch) {
+    return new EqualsBuilder().append(getRule().getId(),((WikipediaRuleMatch)other).getRule().getId()).isEquals();
+  }
+  return false;
+}

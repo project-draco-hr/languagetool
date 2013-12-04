@@ -1,0 +1,5 @@
+{
+  System.out.println("Getting atom feed from " + atomFeedUrl);
+  InputStream xml=getXmlStream(atomFeedUrl);
+  return checkChanges(xml,lastCheckedDiffId);
+}

@@ -1,0 +1,32 @@
+{
+  List<ChangeAnalysis> result=new ArrayList<>();
+  long latestDiffId=0;
+  try {
+    List<AtomFeedItem> items=new AtomFeedParser().getAtomFeedItems(xml);
+    Collections.reverse(items);
+    for (    AtomFeedItem item : items) {
+      if (lastCheckedDiffId > 0 && item.getDiffId() < lastCheckedDiffId) {
+        System.out.println("Skipping " + item.getTitle() + ", diff id "+ item.getDiffId()+ " < "+ lastCheckedDiffId);
+      }
+ else {
+        try {
+          System.out.println("Checking " + item.getTitle() + ", diff id "+ item.getDiffId());
+          List<WikipediaRuleMatch> oldMatches=getOldMatches(item);
+          List<WikipediaRuleMatch> newMatches=getNewMatches(item);
+          ChangeAnalysis changeAnalysis=new ChangeAnalysis(item.getTitle(),item.getDiffId(),oldMatches,newMatches);
+          result.add(changeAnalysis);
+          if (item.getDiffId() > latestDiffId) {
+            latestDiffId=item.getDiffId();
+          }
+        }
+ catch (        Exception e) {
+          e.printStackTrace();
+        }
+      }
+    }
+  }
+ catch (  XMLStreamException e) {
+    throw new RuntimeException(e);
+  }
+  return new CheckResult(result,latestDiffId);
+}

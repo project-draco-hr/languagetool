@@ -1,0 +1,4 @@
+String title
+long diffId
+List<WikipediaRuleMatch> oldMatches
+List<WikipediaRuleMatch> newMatches

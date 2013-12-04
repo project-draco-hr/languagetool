@@ -1,0 +1,21 @@
+{
+  CheckResult checkResult=atomFeedChecker.checkChanges(new URL(url),latestDiffId);
+  List<ChangeAnalysis> checkResults=checkResult.getCheckResults();
+  System.out.println("Check results:");
+  for (  ChangeAnalysis result : checkResults) {
+    List<WikipediaRuleMatch> addedMatches=result.getAddedMatches();
+    List<WikipediaRuleMatch> removedMatches=result.getRemovedMatches();
+    if (addedMatches.size() > 0 || removedMatches.size() > 0) {
+      System.out.println("'" + result.getTitle() + "' new and removed matches:");
+      for (      WikipediaRuleMatch match : addedMatches) {
+        System.out.println("    [+] " + match.getRule().getId() + ": "+ match.getErrorContext());
+      }
+      for (      WikipediaRuleMatch match : removedMatches) {
+        System.out.println("    [-] " + match.getRule().getId() + ": "+ match.getErrorContext());
+      }
+      String diffLink="https://" + language.getShortName() + ".wikipedia.org/w/index.php?title="+ URLEncoder.encode(result.getTitle().replace(" ","_"),"UTF-8")+ "&diff="+ result.getDiffId();
+      System.out.println("    " + diffLink);
+    }
+  }
+  return checkResult;
+}

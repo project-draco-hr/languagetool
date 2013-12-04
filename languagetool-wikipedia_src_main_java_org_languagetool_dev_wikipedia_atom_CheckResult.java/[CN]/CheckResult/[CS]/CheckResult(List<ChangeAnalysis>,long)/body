@@ -1,0 +1,7 @@
+{
+  this.checkResults=Objects.requireNonNull(checkResults);
+  if (latestDiffId < 0) {
+    throw new IllegalArgumentException("latestDiffId must be >= 0: " + latestDiffId);
+  }
+  this.latestDiffId=latestDiffId;
+}

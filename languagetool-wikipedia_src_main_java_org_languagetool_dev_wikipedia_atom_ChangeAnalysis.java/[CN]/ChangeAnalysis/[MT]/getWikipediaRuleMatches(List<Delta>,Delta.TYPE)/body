@@ -1,0 +1,10 @@
+{
+  List<WikipediaRuleMatch> matches=new ArrayList<>();
+  for (  Delta delta : deltas) {
+    if (delta.getType().equals(changeType)) {
+      List<?> lines=changeType == Delta.TYPE.INSERT ? delta.getRevised().getLines() : delta.getOriginal().getLines();
+      matches.addAll((Collection<WikipediaRuleMatch>)lines);
+    }
+  }
+  return matches;
+}

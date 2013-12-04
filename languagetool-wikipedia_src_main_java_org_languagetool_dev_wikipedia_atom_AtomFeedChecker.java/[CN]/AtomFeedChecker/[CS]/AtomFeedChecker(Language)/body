@@ -1,0 +1,9 @@
+{
+  langTool=new JLanguageTool(language);
+  langTool.activateDefaultPatternRules();
+  langTool.disableRule("UNPAIRED_BRACKETS");
+  contextTools.setContextSize(60);
+  contextTools.setErrorMarkerStart("<err>");
+  contextTools.setErrorMarkerEnd("</err>");
+  contextTools.setEscapeHtml(false);
+}

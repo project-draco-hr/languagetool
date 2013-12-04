@@ -1,0 +1,15 @@
+{
+  AtomFeedChecker atomFeedChecker=new AtomFeedChecker(new German());
+  InputStream xmlStream=Tools.getStream("/org/languagetool/dev/wikipedia/atom/feed1.xml");
+  CheckResult checkResult=atomFeedChecker.checkChanges(xmlStream,0L);
+  List<ChangeAnalysis> changeAnalysis=checkResult.getCheckResults();
+  assertThat(changeAnalysis.size(),is(3));
+  assertThat(changeAnalysis.get(0).getAddedMatches().size(),is(1));
+  assertThat(changeAnalysis.get(0).getAddedMatches().get(0).getRule().getId(),is("DE_AGREEMENT"));
+  assertTrue(changeAnalysis.get(0).getAddedMatches().get(0).getErrorContext().contains("Fehler: <err>der Haus</err>"));
+  assertThat(changeAnalysis.get(0).getRemovedMatches().size(),is(0));
+  assertThat(changeAnalysis.get(1).getAddedMatches().size(),is(0));
+  assertThat(changeAnalysis.get(1).getRemovedMatches().size(),is(0));
+  assertThat(changeAnalysis.get(2).getAddedMatches().size(),is(0));
+  assertThat(changeAnalysis.get(2).getRemovedMatches().size(),is(0));
+}

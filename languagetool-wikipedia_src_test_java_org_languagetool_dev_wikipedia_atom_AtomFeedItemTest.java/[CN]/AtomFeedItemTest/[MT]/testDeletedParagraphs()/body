@@ -1,0 +1,8 @@
+{
+  AtomFeedItem item=getSummary("summary3.txt");
+  assertThat(item.getOldContent().size(),is(3));
+  assertThat(item.getOldContent().get(0),is("* [http://www.rp-online.de/nrw/staedte/]"));
+  assertThat(item.getOldContent().get(1),is("* [http://www.vmtubes.com]"));
+  assertThat(item.getOldContent().get(2),is(""));
+  assertThat(item.getNewContent().size(),is(0));
+}

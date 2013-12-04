@@ -1,0 +1,30 @@
+{
+  List<AtomFeedItem> items=new ArrayList<>();
+  String id=null;
+  String title=null;
+  XMLInputFactory inputFactory=XMLInputFactory.newInstance();
+  XMLEventReader eventReader=inputFactory.createXMLEventReader(xml);
+  while (eventReader.hasNext()) {
+    XMLEvent event=eventReader.nextEvent();
+    if (event.isStartElement()) {
+      String localPart=event.asStartElement().getName().getLocalPart();
+switch (localPart) {
+case "id":
+        id=getCharacterData(eventReader);
+      break;
+case "title":
+    title=getCharacterData(eventReader);
+  break;
+case "summary":
+if (id == null || title == null) {
+  throw new RuntimeException("id and/or title is null: id=" + id + ", title="+ title);
+}
+items.add(new AtomFeedItem(id,title,getCharacterData(eventReader)));
+id=null;
+title=null;
+break;
+}
+}
+}
+return items;
+}

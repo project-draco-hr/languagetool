@@ -1,0 +1,4 @@
+{
+  List<Delta> deltas=getDeltas();
+  return getWikipediaRuleMatches(deltas,Delta.TYPE.DELETE);
+}

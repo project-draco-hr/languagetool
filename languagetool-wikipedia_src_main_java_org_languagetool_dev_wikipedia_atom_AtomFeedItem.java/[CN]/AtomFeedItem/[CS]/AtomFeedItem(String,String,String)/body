@@ -1,0 +1,5 @@
+{
+  this.id=Objects.requireNonNull(id);
+  this.title=Objects.requireNonNull(title);
+  this.summary=Objects.requireNonNull(summary);
+}

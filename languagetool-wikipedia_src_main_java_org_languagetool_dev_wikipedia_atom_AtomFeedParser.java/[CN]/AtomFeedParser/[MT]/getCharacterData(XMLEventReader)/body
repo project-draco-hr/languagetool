@@ -1,0 +1,9 @@
+{
+  XMLEvent event=eventReader.nextEvent();
+  StringBuilder sb=new StringBuilder();
+  while (event.isCharacters()) {
+    sb.append(event.asCharacters().getData());
+    event=eventReader.nextEvent();
+  }
+  return sb.toString();
+}
