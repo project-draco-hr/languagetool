@@ -133,11 +133,11 @@
             k++;
           }
         }
-        j++;
-        keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j],ADVERBIS_ACCEPTATS)) && !matchRegexp(tokens[i - j].getToken(),STOP_COUNT);
         adverbAppeared|=matchPostagRegexp(tokens[i - j],ADVERBI);
         conjunctionAppeared|=matchPostagRegexp(tokens[i - j],CONJUNCIO);
         punctuationAppeared|=matchPostagRegexp(tokens[i - j],PUNTUACIO);
+        j++;
+        keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j],ADVERBIS_ACCEPTATS)) && !matchRegexp(tokens[i - j].getToken(),STOP_COUNT);
         if ((adverbAppeared && conjunctionAppeared) || (adverbAppeared && punctuationAppeared) || (conjunctionAppeared && punctuationAppeared)) {
           keepCounting=false;
         }
