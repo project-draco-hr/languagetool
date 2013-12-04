@@ -1,7 +1,7 @@
 {
   boolean loopMode=true;
   if (args.length != 1 && args.length != 2) {
-    System.out.println("Usage: " + AtomFeedChecker.class.getSimpleName() + " <atomFeedUrl> [database.properties]");
+    System.out.println("Usage: " + AtomFeedCheckerCmd.class.getSimpleName() + " <atomFeedUrl> [database.properties]");
     System.out.println("  <atomFeedUrl> is a Wikipedia URL to the latest changes, for example:");
     System.out.println("  https://de.wikipedia.org/w/index.php?title=Spezial:Letzte_%C3%84nderungen&feed=atom&namespace=0");
     System.exit(1);

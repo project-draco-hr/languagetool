@@ -11,8 +11,8 @@
  else {
         try {
           System.out.println("Checking " + item.getTitle() + ", diff id "+ item.getDiffId());
-          List<WikipediaRuleMatch> oldMatches=getOldMatches(item);
-          List<WikipediaRuleMatch> newMatches=getNewMatches(item);
+          List<WikipediaRuleMatch> oldMatches=getMatches(item,item.getOldContent());
+          List<WikipediaRuleMatch> newMatches=getMatches(item,item.getNewContent());
           ChangeAnalysis changeAnalysis=new ChangeAnalysis(item.getTitle(),item.getDiffId(),oldMatches,newMatches);
           result.add(changeAnalysis);
           if (item.getDiffId() > latestDiffId) {
