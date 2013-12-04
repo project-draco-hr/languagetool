@@ -1,4 +1,5 @@
 {
+  this.language=Objects.requireNonNull(language);
   langTool=new JLanguageTool(language);
   langTool.activateDefaultPatternRules();
   langTool.disableRule("UNPAIRED_BRACKETS");
@@ -8,7 +9,7 @@
  else {
     matchDatabase=null;
   }
-  contextTools.setContextSize(60);
+  contextTools.setContextSize(CONTEXT_SIZE);
   contextTools.setErrorMarkerStart("<err>");
   contextTools.setErrorMarkerEnd("</err>");
   contextTools.setEscapeHtml(false);
