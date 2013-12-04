@@ -1,0 +1,16 @@
+{
+  try (PreparedStatement prepSt=conn.prepareStatement("SELECT * FROM feed_matches")){
+    ResultSet resultSet=prepSt.executeQuery();
+    List<StoredWikipediaRuleMatch> result=new ArrayList<>();
+    while (resultSet.next()) {
+      String ruleId=resultSet.getString("rule_id");
+      String errorContext=resultSet.getString("error_context");
+      String title=resultSet.getString("title");
+      Date editDate=new Date(resultSet.getTimestamp("edit_date").getTime());
+      Timestamp fixTimeStamp=resultSet.getTimestamp("fix_date");
+      Date fixDate=fixTimeStamp != null ? new Date(resultSet.getTimestamp("fix_date").getTime()) : null;
+      result.add(new StoredWikipediaRuleMatch(ruleId,errorContext,title,editDate,fixDate));
+    }
+    return result;
+  }
+ }

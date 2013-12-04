@@ -1,0 +1,15 @@
+{
+  langTool=new JLanguageTool(language);
+  langTool.activateDefaultPatternRules();
+  langTool.disableRule("UNPAIRED_BRACKETS");
+  if (dbConfig != null) {
+    matchDatabase=new MatchDatabase(dbConfig.getUrl(),dbConfig.getUser(),dbConfig.getPassword());
+  }
+ else {
+    matchDatabase=null;
+  }
+  contextTools.setContextSize(60);
+  contextTools.setErrorMarkerStart("<err>");
+  contextTools.setErrorMarkerEnd("</err>");
+  contextTools.setEscapeHtml(false);
+}

@@ -1,0 +1,5 @@
+String ruleId
+String errorContext
+String title
+Date editDate
+Date fixDate

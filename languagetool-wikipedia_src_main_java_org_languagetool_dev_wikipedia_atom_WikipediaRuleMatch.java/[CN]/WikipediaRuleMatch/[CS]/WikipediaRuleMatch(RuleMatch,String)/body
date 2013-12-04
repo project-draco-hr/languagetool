@@ -1,4 +1,0 @@
-{
-  super(ruleMatch.getRule(),ruleMatch.getFromPos(),ruleMatch.getToPos(),ruleMatch.getMessage());
-  this.errorContext=Objects.requireNonNull(errorContext);
-}

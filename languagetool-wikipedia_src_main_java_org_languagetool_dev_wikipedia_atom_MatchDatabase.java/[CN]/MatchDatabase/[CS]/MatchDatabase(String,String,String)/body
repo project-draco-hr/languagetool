@@ -1,0 +1,8 @@
+{
+  try {
+    conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
+  }
+ catch (  SQLException e) {
+    throw new RuntimeException("Could not get database connection to " + dbUrl,e);
+  }
+}

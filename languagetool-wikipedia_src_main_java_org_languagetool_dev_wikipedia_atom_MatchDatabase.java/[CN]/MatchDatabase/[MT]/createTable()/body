@@ -1,0 +1,10 @@
+{
+  try (PreparedStatement prepSt=conn.prepareStatement("CREATE TABLE feed_matches (" + "  id SMALLINT NOT NULL," + "  title VARCHAR(255) NOT NULL,"+ "  rule_id VARCHAR(255) NOT NULL,"+ "  error_context VARCHAR(500) NOT NULL,"+ "  edit_date TIMESTAMP NOT NULL,"+ "  fix_date TIMESTAMP"+ ")")){
+    prepSt.executeUpdate();
+  }
+ catch (  SQLException e) {
+    if (!e.getSQLState().equals("X0Y32")) {
+      throw e;
+    }
+  }
+}

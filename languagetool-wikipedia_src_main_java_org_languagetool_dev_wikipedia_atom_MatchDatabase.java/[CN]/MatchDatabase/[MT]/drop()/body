@@ -1,0 +1,5 @@
+{
+  try (PreparedStatement prepSt=conn.prepareStatement("DROP TABLE feed_matches")){
+    prepSt.execute();
+  }
+ }

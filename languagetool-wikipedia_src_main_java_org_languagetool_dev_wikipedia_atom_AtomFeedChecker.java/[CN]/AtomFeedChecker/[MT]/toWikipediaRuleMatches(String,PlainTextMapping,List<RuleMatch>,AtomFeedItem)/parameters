@@ -1,0 +1,4 @@
+String content
+PlainTextMapping filteredContent
+List<RuleMatch> ruleMatches
+AtomFeedItem item

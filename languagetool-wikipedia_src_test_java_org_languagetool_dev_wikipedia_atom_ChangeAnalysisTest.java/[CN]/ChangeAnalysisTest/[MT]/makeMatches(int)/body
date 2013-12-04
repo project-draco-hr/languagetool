@@ -2,7 +2,7 @@
   List<WikipediaRuleMatch> matches=new ArrayList<>();
   for (  int id : ids) {
     RuleMatch ruleMatch=new RuleMatch(new FakeRule(id),10,20,"error1");
-    matches.add(new WikipediaRuleMatch(ruleMatch,"error context"));
+    matches.add(new WikipediaRuleMatch(ruleMatch,"error context","Article Title",new Date(100000)));
   }
   return matches;
 }

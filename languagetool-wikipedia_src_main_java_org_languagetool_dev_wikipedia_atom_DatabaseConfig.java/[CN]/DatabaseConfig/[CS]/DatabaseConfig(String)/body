@@ -1,0 +1,9 @@
+{
+  Properties properties=new Properties();
+  try (FileInputStream fis=new FileInputStream(propFile)){
+    properties.load(fis);
+  }
+   this.url=getRequiredProperty(properties,"dbUrl");
+  this.user=getRequiredProperty(properties,"dbUser");
+  this.password=getRequiredProperty(properties,"dbPassword");
+}

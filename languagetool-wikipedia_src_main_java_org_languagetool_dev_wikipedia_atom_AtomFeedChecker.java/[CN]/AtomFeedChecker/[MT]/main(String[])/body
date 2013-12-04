@@ -1,7 +1,7 @@
 {
   boolean loopMode=true;
-  if (args.length != 1) {
-    System.out.println("Usage: " + AtomFeedChecker.class.getSimpleName() + " <atomFeedUrl>");
+  if (args.length != 1 && args.length != 2) {
+    System.out.println("Usage: " + AtomFeedChecker.class.getSimpleName() + " <atomFeedUrl> [database.properties]");
     System.out.println("  <atomFeedUrl> is a Wikipedia URL to the latest changes, for example:");
     System.out.println("  https://de.wikipedia.org/w/index.php?title=Spezial:Letzte_%C3%84nderungen&feed=atom&namespace=0");
     System.exit(1);
@@ -10,19 +10,25 @@
   String langCode=url.substring(url.indexOf("//") + 2,url.indexOf("."));
   System.out.println("Using URL: " + url);
   System.out.println("Language code: " + langCode);
+  DatabaseConfig databaseConfig=null;
+  if (args.length == 2) {
+    String propFile=args[1];
+    databaseConfig=new DatabaseConfig(propFile);
+    System.out.println("Writing results to database at: " + databaseConfig.getUrl());
+  }
   Language language=Language.getLanguageForShortName(langCode);
-  AtomFeedChecker atomFeedChecker=new AtomFeedChecker(language);
+  AtomFeedChecker atomFeedChecker=new AtomFeedChecker(language,databaseConfig);
   long latestDiffId=0;
   if (loopMode) {
     System.out.println("Running in loop mode until stopped...");
     while (true) {
       System.out.println("\nRunning with latestDiffId " + latestDiffId);
-      CheckResult checkResult=runCheck(url,atomFeedChecker,latestDiffId,language);
+      CheckResult checkResult=atomFeedChecker.runCheck(url,latestDiffId,language);
       latestDiffId=checkResult.getLatestDiffId();
       Thread.sleep(60 * 1000);
     }
   }
  else {
-    CheckResult checkResult=runCheck(url,atomFeedChecker,0,language);
+    CheckResult checkResult=atomFeedChecker.runCheck(url,0,language);
   }
 }

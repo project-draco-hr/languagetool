@@ -1,0 +1,7 @@
+{
+  String value=properties.getProperty(propName);
+  if (value == null) {
+    throw new RuntimeException("Property key '" + propName + "' not found");
+  }
+  return value;
+}

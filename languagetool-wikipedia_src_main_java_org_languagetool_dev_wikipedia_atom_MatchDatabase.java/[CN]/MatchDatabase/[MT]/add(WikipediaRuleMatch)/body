@@ -1,0 +1,14 @@
+{
+  String sql="INSERT INTO feed_matches (id, title, rule_id, error_context, edit_date) VALUES (?, ?, ?, ?, ?)";
+  try (PreparedStatement prepSt=conn.prepareStatement(sql)){
+    prepSt.setInt(1,idCounter++);
+    prepSt.setString(2,ruleMatch.getTitle());
+    prepSt.setString(3,ruleMatch.getRule().getId());
+    prepSt.setString(4,ruleMatch.getErrorContext());
+    prepSt.setTimestamp(5,new Timestamp(ruleMatch.getEditDate().getTime()));
+    prepSt.execute();
+  }
+ catch (  SQLException e) {
+    throw new RuntimeException("Could not add rule match " + ruleMatch + " to database",e);
+  }
+}

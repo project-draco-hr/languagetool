@@ -3,7 +3,7 @@
   for (  String newContent : item.getNewContent()) {
     PlainTextMapping filteredContent=textFilter.filter(newContent);
     List<RuleMatch> ruleMatches=langTool.check(filteredContent.getPlainText());
-    newMatches.addAll(toWikipediaRuleMatches(newContent,filteredContent,ruleMatches));
+    newMatches.addAll(toWikipediaRuleMatches(newContent,filteredContent,ruleMatches,item));
   }
   return newMatches;
 }
