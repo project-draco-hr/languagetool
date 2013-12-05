@@ -1,5 +1,0 @@
-{
-  try (PreparedStatement prepSt=conn.prepareStatement("DELETE FROM feed_matches")){
-    prepSt.execute();
-  }
- }
