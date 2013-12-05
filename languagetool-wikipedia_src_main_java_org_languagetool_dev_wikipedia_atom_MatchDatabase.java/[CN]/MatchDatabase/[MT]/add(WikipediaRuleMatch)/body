@@ -1,12 +1,13 @@
 {
-  String sql="INSERT INTO feed_matches (title, language_code, rule_id, error_context, edit_date, diff_id) VALUES (?, ?, ?, ?, ?, ?)";
+  String sql="INSERT INTO feed_matches (title, language_code, rule_id, rule_message, error_context, edit_date, diff_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
   try (PreparedStatement prepSt=conn.prepareStatement(sql)){
-    prepSt.setString(1,ruleMatch.getTitle());
+    prepSt.setString(1,StringUtils.abbreviate(ruleMatch.getTitle(),255));
     prepSt.setString(2,ruleMatch.getLanguage().getShortName());
     prepSt.setString(3,ruleMatch.getRule().getId());
-    prepSt.setString(4,ruleMatch.getErrorContext());
-    prepSt.setTimestamp(5,new Timestamp(ruleMatch.getEditDate().getTime()));
-    prepSt.setLong(6,ruleMatch.getDiffId());
+    prepSt.setString(4,StringUtils.abbreviate(ruleMatch.getMessage(),255));
+    prepSt.setString(5,ruleMatch.getErrorContext());
+    prepSt.setTimestamp(6,new Timestamp(ruleMatch.getEditDate().getTime()));
+    prepSt.setLong(7,ruleMatch.getDiffId());
     prepSt.execute();
   }
  catch (  SQLException e) {

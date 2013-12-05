@@ -1,4 +1,5 @@
 String ruleId
+String ruleMessage
 String errorContext
 String title
 Date editDate
