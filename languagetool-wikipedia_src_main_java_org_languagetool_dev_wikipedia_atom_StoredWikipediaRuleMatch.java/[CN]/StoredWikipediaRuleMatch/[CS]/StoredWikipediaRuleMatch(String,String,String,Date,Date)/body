@@ -1,7 +1,0 @@
-{
-  this.ruleId=Objects.requireNonNull(ruleId);
-  this.errorContext=Objects.requireNonNull(errorContext);
-  this.title=Objects.requireNonNull(title);
-  this.editDate=Objects.requireNonNull(editDate);
-  this.fixDate=fixDate;
-}

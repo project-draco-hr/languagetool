@@ -1,6 +1,5 @@
 {
-  Pattern idPattern=Pattern.compile("diff=(\\d+)");
-  Matcher matcher=idPattern.matcher(id);
+  Matcher matcher=DIFF_ID_PATTERN.matcher(id);
   if (matcher.find()) {
     return Long.parseLong(matcher.group(1));
   }

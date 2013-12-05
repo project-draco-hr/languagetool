@@ -9,7 +9,9 @@
       Date editDate=new Date(resultSet.getTimestamp("edit_date").getTime());
       Timestamp fixTimeStamp=resultSet.getTimestamp("fix_date");
       Date fixDate=fixTimeStamp != null ? new Date(resultSet.getTimestamp("fix_date").getTime()) : null;
-      result.add(new StoredWikipediaRuleMatch(ruleId,errorContext,title,editDate,fixDate));
+      long diffId=resultSet.getLong("diff_id");
+      long fixDiffId=resultSet.getLong("fix_diff_id");
+      result.add(new StoredWikipediaRuleMatch(ruleId,errorContext,title,editDate,fixDate,diffId,fixDiffId));
     }
     return result;
   }

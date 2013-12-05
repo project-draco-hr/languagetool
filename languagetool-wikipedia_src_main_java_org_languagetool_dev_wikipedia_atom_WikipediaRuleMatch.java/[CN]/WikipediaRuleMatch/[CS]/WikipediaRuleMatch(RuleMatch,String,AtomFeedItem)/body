@@ -1,0 +1,7 @@
+{
+  super(ruleMatch.getRule(),ruleMatch.getFromPos(),ruleMatch.getToPos(),ruleMatch.getMessage());
+  this.errorContext=Objects.requireNonNull(errorContext);
+  this.title=Objects.requireNonNull(feedItem.getTitle());
+  this.editDate=Objects.requireNonNull(feedItem.getDate());
+  this.diffId=feedItem.getDiffId();
+}

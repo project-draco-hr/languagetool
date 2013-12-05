@@ -3,3 +3,5 @@ String errorContext
 String title
 Date editDate
 Date fixDate
+long diffId
+long fixDiffId

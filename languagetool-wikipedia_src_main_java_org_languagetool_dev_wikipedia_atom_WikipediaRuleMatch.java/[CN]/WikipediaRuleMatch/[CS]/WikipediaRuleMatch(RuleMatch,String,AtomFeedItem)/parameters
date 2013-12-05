@@ -1,4 +1,3 @@
 RuleMatch ruleMatch
 String errorContext
-String title
-Date editDate
+AtomFeedItem feedItem
