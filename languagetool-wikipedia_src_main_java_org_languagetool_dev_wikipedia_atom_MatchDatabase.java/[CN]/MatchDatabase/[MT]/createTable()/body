@@ -1,5 +1,5 @@
 {
-  try (PreparedStatement prepSt=conn.prepareStatement("CREATE TABLE feed_matches (" + "  id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," + "  language_code VARCHAR(5) NOT NULL,"+ "  title VARCHAR(255) NOT NULL,"+ "  rule_id VARCHAR(255) NOT NULL,"+ "  rule_message VARCHAR(255) NOT NULL,"+ "  error_context VARCHAR(500) NOT NULL,"+ "  edit_date TIMESTAMP NOT NULL,"+ "  diff_id INT NOT NULL,"+ "  fix_date TIMESTAMP,"+ "  fix_diff_id INT"+ ")")){
+  try (PreparedStatement prepSt=conn.prepareStatement("CREATE TABLE feed_matches (" + "  id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," + "  language_code VARCHAR(5) NOT NULL,"+ "  title VARCHAR(255) NOT NULL,"+ "  rule_id VARCHAR(255) NOT NULL,"+ "  rule_message VARCHAR(255) NOT NULL,"+ "  rule_category VARCHAR(255) NOT NULL,"+ "  error_context VARCHAR(500) NOT NULL,"+ "  edit_date TIMESTAMP NOT NULL,"+ "  diff_id INT NOT NULL,"+ "  fix_date TIMESTAMP,"+ "  fix_diff_id INT"+ ")")){
     prepSt.executeUpdate();
   }
  }
