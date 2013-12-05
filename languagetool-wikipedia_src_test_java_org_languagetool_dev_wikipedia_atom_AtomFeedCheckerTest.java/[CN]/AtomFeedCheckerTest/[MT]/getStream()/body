@@ -1,0 +1,3 @@
+{
+  return Tools.getStream("/org/languagetool/dev/wikipedia/atom/feed1.xml");
+}

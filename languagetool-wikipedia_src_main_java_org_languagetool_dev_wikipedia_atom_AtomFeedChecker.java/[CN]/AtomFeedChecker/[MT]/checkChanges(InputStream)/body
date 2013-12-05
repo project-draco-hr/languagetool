@@ -4,9 +4,15 @@
   try {
     List<AtomFeedItem> items=new AtomFeedParser().getAtomFeedItems(xml);
     Collections.reverse(items);
+    int i=0;
     for (    AtomFeedItem item : items) {
-      if (lastCheckedDiffId > 0 && item.getDiffId() < lastCheckedDiffId) {
-        System.out.println("Skipping " + item.getTitle() + ", diff id "+ item.getDiffId()+ " < "+ lastCheckedDiffId);
+      if (i++ == 0) {
+        System.out.println("First date in Atom Feed: " + item.getDate());
+        System.out.println("Latest date in database: " + lastDateOfPreviousRun);
+        item.getDate();
+      }
+      if (lastDateOfPreviousRun != null && (item.getDate().before(lastDateOfPreviousRun) || item.getDate().equals(lastDateOfPreviousRun))) {
+        System.out.println("Skipping " + item.getTitle() + ", date "+ item.getDate()+ " <= "+ lastDateOfPreviousRun);
       }
  else {
         try {

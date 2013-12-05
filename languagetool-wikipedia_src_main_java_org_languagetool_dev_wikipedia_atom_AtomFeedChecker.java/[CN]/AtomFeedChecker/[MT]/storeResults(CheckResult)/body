@@ -1,5 +1,4 @@
 {
-  CheckResult checkResult=checkChanges(new URL(url),latestDiffId);
   List<ChangeAnalysis> checkResults=checkResult.getCheckResults();
   System.out.println("Check results:");
   for (  ChangeAnalysis result : checkResults) {
@@ -23,5 +22,4 @@
       System.out.println("    " + diffLink);
     }
   }
-  return checkResult;
 }

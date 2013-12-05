@@ -1,0 +1,5 @@
+{
+  CheckResult checkResult=checkChanges(feedStream);
+  storeResults(checkResult);
+  return checkResult;
+}

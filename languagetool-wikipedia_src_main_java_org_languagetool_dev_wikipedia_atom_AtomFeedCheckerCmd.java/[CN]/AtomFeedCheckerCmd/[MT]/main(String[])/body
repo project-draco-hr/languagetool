@@ -1,5 +1,4 @@
 {
-  boolean loopMode=true;
   if (args.length != 1 && args.length != 2) {
     System.out.println("Usage: " + AtomFeedCheckerCmd.class.getSimpleName() + " <atomFeedUrl> [database.properties]");
     System.out.println("  <atomFeedUrl> is a Wikipedia URL to the latest changes, for example:");
@@ -18,17 +17,5 @@
   }
   Language language=Language.getLanguageForShortName(langCode);
   AtomFeedChecker atomFeedChecker=new AtomFeedChecker(language,databaseConfig);
-  long latestDiffId=0;
-  if (loopMode) {
-    System.out.println("Running in loop mode until stopped...");
-    while (true) {
-      System.out.println("\nRunning with latestDiffId " + latestDiffId);
-      CheckResult checkResult=atomFeedChecker.runCheck(url,latestDiffId);
-      latestDiffId=checkResult.getLatestDiffId();
-      Thread.sleep(60 * 1000);
-    }
-  }
- else {
-    CheckResult checkResult=atomFeedChecker.runCheck(url,0);
-  }
+  atomFeedChecker.runCheck(url);
 }

@@ -1,0 +1,5 @@
+{
+  this.url=dbUrl;
+  this.user=dbUser;
+  this.password=dbPassword;
+}

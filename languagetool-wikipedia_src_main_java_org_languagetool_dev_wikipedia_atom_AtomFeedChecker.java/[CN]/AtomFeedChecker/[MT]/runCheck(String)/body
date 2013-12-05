@@ -1,0 +1,5 @@
+{
+  CheckResult checkResult=checkChanges(new URL(url));
+  storeResults(checkResult);
+  return checkResult;
+}
