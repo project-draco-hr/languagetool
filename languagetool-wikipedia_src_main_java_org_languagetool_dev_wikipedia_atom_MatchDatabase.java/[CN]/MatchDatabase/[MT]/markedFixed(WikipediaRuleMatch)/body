@@ -1,11 +1,12 @@
 {
-  String sql="UPDATE feed_matches SET fix_date = ?, fix_diff_id = ? WHERE title = ? AND rule_id = ? AND error_context = ?";
+  String sql="UPDATE feed_matches SET fix_date = ?, fix_diff_id = ? WHERE language_code = ? AND title = ? AND rule_id = ? AND error_context = ?";
   try (PreparedStatement prepSt=conn.prepareStatement(sql)){
     prepSt.setTimestamp(1,new Timestamp(ruleMatch.getEditDate().getTime()));
     prepSt.setLong(2,ruleMatch.getDiffId());
-    prepSt.setString(3,ruleMatch.getTitle());
-    prepSt.setString(4,ruleMatch.getRule().getId());
-    prepSt.setString(5,ruleMatch.getErrorContext());
+    prepSt.setString(3,ruleMatch.getLanguage().getShortName());
+    prepSt.setString(4,ruleMatch.getTitle());
+    prepSt.setString(5,ruleMatch.getRule().getId());
+    prepSt.setString(6,ruleMatch.getErrorContext());
     return prepSt.executeUpdate();
   }
  catch (  SQLException e) {
