@@ -1,4 +1,5 @@
 {
+  handleCount++;
   String text=null;
   try {
     final URI requestedUri=httpExchange.getRequestURI();
@@ -37,6 +38,7 @@
     sendError(httpExchange,HttpURLConnection.HTTP_INTERNAL_ERROR,response);
   }
  finally {
+    handleCount--;
     httpExchange.close();
   }
 }

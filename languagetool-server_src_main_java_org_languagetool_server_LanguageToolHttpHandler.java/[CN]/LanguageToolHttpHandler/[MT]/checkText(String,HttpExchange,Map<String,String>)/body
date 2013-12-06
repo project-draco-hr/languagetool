@@ -66,5 +66,5 @@
     languageMessage+=" (mother tongue: " + motherTongue.getShortNameWithCountryAndVariant() + ")";
   }
   final String referrer=httpExchange.getRequestHeaders().getFirst("Referer");
-  print("Check done: " + text.length() + " chars, "+ languageMessage+ ", "+ referrer+ ", "+ (System.currentTimeMillis() - timeStart)+ "ms");
+  print("Check done: " + text.length() + " chars, "+ languageMessage+ ", "+ referrer+ ", "+ "handlers:"+ handleCount+ ", "+ matches.size()+ " matches, "+ (System.currentTimeMillis() - timeStart)+ "ms");
 }
