@@ -1,5 +1,6 @@
 String ruleId
 String ruleSubId
+String ruleDescription
 String ruleMessage
 String errorContext
 String title

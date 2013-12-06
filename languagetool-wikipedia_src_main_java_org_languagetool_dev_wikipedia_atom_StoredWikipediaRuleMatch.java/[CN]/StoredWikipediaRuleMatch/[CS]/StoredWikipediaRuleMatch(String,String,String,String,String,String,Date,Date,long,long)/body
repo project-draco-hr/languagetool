@@ -1,6 +1,7 @@
 {
   this.ruleId=Objects.requireNonNull(ruleId);
   this.ruleSubId=ruleSubId;
+  this.ruleDescription=Objects.requireNonNull(ruleDescription);
   this.ruleMessage=Objects.requireNonNull(ruleMessage);
   this.errorContext=Objects.requireNonNull(errorContext);
   this.title=Objects.requireNonNull(title);

@@ -5,6 +5,7 @@
     while (resultSet.next()) {
       String ruleId=resultSet.getString("rule_id");
       String ruleSubId=resultSet.getString("rule_sub_id");
+      String ruleDescription=resultSet.getString("rule_description");
       String ruleMessage=resultSet.getString("rule_message");
       String errorContext=resultSet.getString("error_context");
       String title=resultSet.getString("title");
@@ -13,7 +14,7 @@
       Date fixDate=fixTimeStamp != null ? new Date(resultSet.getTimestamp("fix_date").getTime()) : null;
       long diffId=resultSet.getLong("diff_id");
       long fixDiffId=resultSet.getLong("fix_diff_id");
-      result.add(new StoredWikipediaRuleMatch(ruleId,ruleSubId,ruleMessage,errorContext,title,editDate,fixDate,diffId,fixDiffId));
+      result.add(new StoredWikipediaRuleMatch(ruleId,ruleSubId,ruleDescription,ruleMessage,errorContext,title,editDate,fixDate,diffId,fixDiffId));
     }
     return result;
   }
