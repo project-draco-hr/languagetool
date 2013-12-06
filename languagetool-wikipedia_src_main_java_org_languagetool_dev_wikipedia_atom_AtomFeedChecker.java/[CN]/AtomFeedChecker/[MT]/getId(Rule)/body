@@ -1,0 +1,8 @@
+{
+  if (rule instanceof PatternRule) {
+    return rule.getId() + "[" + ((PatternRule)rule).getSubId()+ "]";
+  }
+ else {
+    return rule.getId();
+  }
+}

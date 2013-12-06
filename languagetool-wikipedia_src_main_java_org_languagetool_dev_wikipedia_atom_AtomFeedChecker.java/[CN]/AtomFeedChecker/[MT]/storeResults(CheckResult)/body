@@ -7,13 +7,13 @@
     if (addedMatches.size() > 0 || removedMatches.size() > 0) {
       System.out.println("'" + result.getTitle() + "' new and removed matches:");
       for (      WikipediaRuleMatch match : addedMatches) {
-        System.out.println("    [+] " + match.getRule().getId() + ": "+ match.getErrorContext());
+        System.out.println("    [+] " + getId(match.getRule()) + ": "+ match.getErrorContext());
         if (matchDatabase != null) {
           matchDatabase.add(match);
         }
       }
       for (      WikipediaRuleMatch match : removedMatches) {
-        System.out.println("    [-] " + match.getRule().getId() + ": "+ match.getErrorContext());
+        System.out.println("    [-] " + getId(match.getRule()) + ": "+ match.getErrorContext());
         if (matchDatabase != null) {
           matchDatabase.markedFixed(match);
         }
