@@ -1,4 +1,5 @@
 {
   this.sentence=sentence;
   this.title=title;
+  this.articleCount=articleCount;
 }

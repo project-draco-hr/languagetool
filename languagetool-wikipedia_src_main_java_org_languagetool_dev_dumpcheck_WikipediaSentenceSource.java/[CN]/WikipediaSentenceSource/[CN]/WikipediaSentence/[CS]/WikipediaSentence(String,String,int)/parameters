@@ -1,2 +1,3 @@
 String sentence
 String title
+int articleCount

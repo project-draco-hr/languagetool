@@ -7,9 +7,10 @@
       if (elementName.equals("title")) {
         event=reader.nextEvent();
         title=event.asCharacters().getData();
+        articleCount++;
       }
  else       if (elementName.equals("text")) {
-        handleTextElement(title);
+        handleTextElement(title,articleCount);
       }
     }
   }

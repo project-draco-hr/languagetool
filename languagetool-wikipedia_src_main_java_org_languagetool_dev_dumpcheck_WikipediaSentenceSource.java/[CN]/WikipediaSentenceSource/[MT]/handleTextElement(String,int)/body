@@ -9,7 +9,7 @@
     String textToCheck=textFilter.filter(sb.toString()).getPlainText();
     for (    String sentence : sentenceTokenizer.tokenize(textToCheck)) {
       if (acceptSentence(sentence)) {
-        sentences.add(new WikipediaSentence(sentence,title));
+        sentences.add(new WikipediaSentence(sentence,title,articleCount));
       }
     }
   }

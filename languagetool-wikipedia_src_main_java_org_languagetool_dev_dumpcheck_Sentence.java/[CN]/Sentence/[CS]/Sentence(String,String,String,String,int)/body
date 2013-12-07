@@ -3,4 +3,5 @@
   this.source=source;
   this.title=title;
   this.url=url;
+  this.articleCount=articleCount;
 }
