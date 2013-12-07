@@ -3,6 +3,7 @@
   langTool=new JLanguageTool(language);
   langTool.activateDefaultPatternRules();
   langTool.disableRule("UNPAIRED_BRACKETS");
+  activateCategory("Wikipedia",langTool);
   if (dbConfig != null) {
     matchDatabase=new MatchDatabase(dbConfig.getUrl(),dbConfig.getUser(),dbConfig.getPassword());
     lastDateOfPreviousRun=matchDatabase.getLatestDate();
