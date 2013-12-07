@@ -1,6 +1,7 @@
 {
   List<ChangeAnalysis> result=new ArrayList<>();
   long latestDiffId=0;
+  int skipCount=0;
   try {
     List<AtomFeedItem> items=new AtomFeedParser().getAtomFeedItems(xml);
     Collections.reverse(items);
@@ -13,6 +14,7 @@
       }
       if (lastDateOfPreviousRun != null && (item.getDate().before(lastDateOfPreviousRun) || item.getDate().equals(lastDateOfPreviousRun))) {
         System.out.println("Skipping " + item.getTitle() + ", date "+ item.getDate()+ " <= "+ lastDateOfPreviousRun);
+        skipCount++;
       }
  else {
         try {
@@ -33,6 +35,9 @@
   }
  catch (  XMLStreamException e) {
     throw new RuntimeException(e);
+  }
+  if (lastDateOfPreviousRun != null && skipCount == 0) {
+    System.err.println("Warning: no items from the Atom feed were skipped - this means that changes might be missing");
   }
   return new CheckResult(result,latestDiffId);
 }
