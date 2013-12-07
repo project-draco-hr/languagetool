@@ -1,0 +1,30 @@
+{
+  File tempFile=File.createTempFile(POSDictionaryBuilder.class.getSimpleName(),"WithFrequencies.txt");
+  BufferedReader br;
+  FileWriter fw=new FileWriter(tempFile.getAbsoluteFile());
+  BufferedWriter bw=new BufferedWriter(fw);
+  try {
+    br=new BufferedReader(new FileReader(dictFile));
+    String line;
+    while ((line=br.readLine()) != null) {
+      Matcher m=pTaggerEntry.matcher(line);
+      if (m.matches()) {
+        int freq=0;
+        String key=m.group(1);
+        if (freqList.containsKey(key)) {
+          freq=freqList.get(key);
+        }
+        bw.write(line + "\t" + freq+ "\n");
+      }
+    }
+    br.close();
+    bw.close();
+  }
+ catch (  FileNotFoundException e) {
+    e.printStackTrace();
+  }
+catch (  IOException e) {
+    e.printStackTrace();
+  }
+  return tempFile;
+}

@@ -1,0 +1,20 @@
+{
+  BufferedReader br;
+  try {
+    br=new BufferedReader(new FileReader(freqListFile));
+    String line;
+    while ((line=br.readLine()) != null) {
+      Matcher m=pFreqEntry.matcher(line);
+      if (m.matches()) {
+        freqList.put(m.group(3),Integer.parseInt(m.group(1)));
+      }
+    }
+    br.close();
+  }
+ catch (  FileNotFoundException e) {
+    e.printStackTrace();
+  }
+catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

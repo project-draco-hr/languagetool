@@ -1,5 +1,11 @@
 {
   checkUsageOrExit(POSDictionaryBuilder.class.getSimpleName(),args);
   POSDictionaryBuilder builder=new POSDictionaryBuilder(new File(args[1]));
-  builder.build(new File(args[0]));
+  if (args.length == 3) {
+    builder.readFreqList(new File(args[2]));
+    builder.build(builder.addFreqData(new File(args[0])));
+  }
+ else {
+    builder.build(new File(args[0]));
+  }
 }
