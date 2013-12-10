@@ -1,0 +1,9 @@
+{
+  lookupSt.setString(1,language.getShortName());
+  lookupSt.setString(2,url);
+  lookupSt.setString(3,match.getRule().getId());
+  lookupSt.setString(4,smallContext);
+  try (ResultSet resultSet=lookupSt.executeQuery()){
+    return resultSet.first();
+  }
+ }

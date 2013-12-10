@@ -1,34 +1,41 @@
 {
-  final String sql="INSERT INTO corpus_match " + "(version, language_code, ruleid, rule_category, rule_subid, rule_description, message, error_context, corpus_date, " + "check_date, sourceuri, source_type, is_visible) "+ "VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
-  try (PreparedStatement prepSt=conn.prepareStatement(sql)){
+  final String lookupSql="SELECT id FROM corpus_match_hidden WHERE " + "language_code = ? AND sourceuri = ? AND ruleid = ? AND small_error_context = ?";
+  final String insertSql="INSERT INTO corpus_match " + "(version, language_code, ruleid, rule_category, rule_subid, rule_description, message, error_context, small_error_context, corpus_date, " + "check_date, sourceuri, source_type, is_visible) "+ "VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
+  try (PreparedStatement lookupSt=conn.prepareStatement(lookupSql);PreparedStatement insertSt=conn.prepareStatement(insertSql)){
     final java.sql.Date nowDate=new java.sql.Date(new Date().getTime());
     for (    RuleMatch match : ruleMatches) {
-      prepSt.setString(1,language.getShortName());
+      final String smallContext=smallContextTools.getContext(match.getFromPos(),match.getToPos(),sentence.getText());
+      if (ruleIsMarkedHidden(language,sentence.getUrl(),match,smallContext,lookupSt)) {
+        System.out.println("Skipping match " + match.getRule().getId() + " for "+ sentence.getTitle()+ " as it is hidden");
+        continue;
+      }
+      insertSt.setString(1,language.getShortName());
       final Rule rule=match.getRule();
-      prepSt.setString(2,rule.getId());
-      prepSt.setString(3,rule.getCategory().getName());
+      insertSt.setString(2,rule.getId());
+      insertSt.setString(3,rule.getCategory().getName());
       if (rule instanceof PatternRule) {
         final PatternRule patternRule=(PatternRule)rule;
-        prepSt.setString(4,patternRule.getSubId());
+        insertSt.setString(4,patternRule.getSubId());
       }
  else {
-        prepSt.setNull(4,Types.VARCHAR);
+        insertSt.setNull(4,Types.VARCHAR);
       }
-      prepSt.setString(5,rule.getDescription());
-      prepSt.setString(6,StringUtils.abbreviate(match.getMessage(),255));
+      insertSt.setString(5,rule.getDescription());
+      insertSt.setString(6,StringUtils.abbreviate(match.getMessage(),255));
       final String context=contextTools.getContext(match.getFromPos(),match.getToPos(),sentence.getText());
       if (context.length() > MAX_CONTEXT_LENGTH) {
         continue;
       }
-      prepSt.setString(7,context);
-      prepSt.setDate(8,nowDate);
-      prepSt.setDate(9,nowDate);
-      prepSt.setString(10,sentence.getUrl());
-      prepSt.setString(11,sentence.getSource());
-      prepSt.executeUpdate();
+      insertSt.setString(7,context);
+      insertSt.setString(8,smallContext);
+      insertSt.setDate(9,nowDate);
+      insertSt.setDate(10,nowDate);
+      insertSt.setString(11,sentence.getUrl());
+      insertSt.setString(12,sentence.getSource());
+      insertSt.executeUpdate();
       checkMaxErrors(++errorCount);
       if (errorCount % 100 == 0) {
-        System.out.println("Storing error #" + errorCount + " for text from "+ sentence.getSource()+ " article #"+ sentence.getArticleCount()+ ":");
+        System.out.println("Storing error #" + errorCount + " for text:");
         System.out.println("  " + sentence.getText());
       }
     }
