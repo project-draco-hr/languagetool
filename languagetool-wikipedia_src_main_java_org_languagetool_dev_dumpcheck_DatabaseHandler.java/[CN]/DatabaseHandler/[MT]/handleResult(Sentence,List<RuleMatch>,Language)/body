@@ -27,7 +27,7 @@
         continue;
       }
       insertSt.setString(7,context);
-      insertSt.setString(8,smallContext);
+      insertSt.setString(8,StringUtils.abbreviate(smallContext,255));
       insertSt.setDate(9,nowDate);
       insertSt.setDate(10,nowDate);
       insertSt.setString(11,sentence.getUrl());
