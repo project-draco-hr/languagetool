@@ -78,6 +78,7 @@
   assertCorrect("sota les grans persianes de color verd recalcades");
   assertCorrect("que seria en pocs anys for??a hegem??nica a Catalunya");
   assertCorrect("Era un home for??a misteri??s");
+  assertIncorrect("hi ha hagut una certa recuperaci?? (3,2%), efecte en part de la descongesti?? madrilenya cap a les prov??ncies lim??trofs de Toledo i Guadalajara.");
   assertIncorrect("Son molt boniques");
   assertIncorrect("La casa destrossat");
   assertIncorrect("pantalons curt o llargs");

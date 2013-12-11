@@ -138,7 +138,7 @@
         punctuationAppeared|=matchPostagRegexp(tokens[i - j],PUNTUACIO);
         j++;
         keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j],ADVERBIS_ACCEPTATS)) && !matchRegexp(tokens[i - j].getToken(),STOP_COUNT);
-        if ((adverbAppeared && conjunctionAppeared) || (adverbAppeared && punctuationAppeared) || (conjunctionAppeared && punctuationAppeared)) {
+        if ((adverbAppeared && conjunctionAppeared) || (adverbAppeared && punctuationAppeared) || (conjunctionAppeared && punctuationAppeared)|| (punctuationAppeared && matchPostagRegexp(tokens[i - j],PUNTUACIO))) {
           keepCounting=false;
         }
       }
