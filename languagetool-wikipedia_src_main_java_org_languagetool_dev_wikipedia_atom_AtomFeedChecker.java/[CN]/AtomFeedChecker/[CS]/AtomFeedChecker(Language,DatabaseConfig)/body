@@ -6,11 +6,9 @@
   activateCategory("Wikipedia",langTool);
   if (dbConfig != null) {
     matchDatabase=new MatchDatabase(dbConfig.getUrl(),dbConfig.getUser(),dbConfig.getPassword());
-    lastDateOfPreviousRun=matchDatabase.getLatestDate();
   }
  else {
     matchDatabase=null;
-    lastDateOfPreviousRun=null;
   }
   contextTools.setContextSize(CONTEXT_SIZE);
   contextTools.setErrorMarkerStart("<err>");

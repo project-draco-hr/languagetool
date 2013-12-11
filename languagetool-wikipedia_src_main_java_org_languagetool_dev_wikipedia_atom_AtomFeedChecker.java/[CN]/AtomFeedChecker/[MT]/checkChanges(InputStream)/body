@@ -1,4 +1,5 @@
 {
+  Date lastDateOfPreviousRun=matchDatabase != null ? matchDatabase.getLatestDate() : null;
   List<ChangeAnalysis> result=new ArrayList<>();
   long latestDiffId=0;
   int skipCount=0;
@@ -10,15 +11,14 @@
       if (i++ == 0) {
         System.out.println("First date in Atom Feed: " + item.getDate());
         System.out.println("Latest date in database: " + lastDateOfPreviousRun);
-        item.getDate();
       }
       if (lastDateOfPreviousRun != null && (item.getDate().before(lastDateOfPreviousRun) || item.getDate().equals(lastDateOfPreviousRun))) {
-        System.out.println("Skipping " + item.getTitle() + ", date "+ item.getDate()+ " <= "+ lastDateOfPreviousRun);
+        System.out.println("Skipping " + item.getTitle() + ", date "+ item.getDate());
         skipCount++;
       }
  else {
         try {
-          System.out.println("Checking " + item.getTitle() + ", diff id "+ item.getDiffId());
+          System.out.println("Checking " + item.getTitle() + ", diff #"+ item.getDiffId());
           List<WikipediaRuleMatch> oldMatches=getMatches(item,item.getOldContent());
           List<WikipediaRuleMatch> newMatches=getMatches(item,item.getNewContent());
           ChangeAnalysis changeAnalysis=new ChangeAnalysis(item.getTitle(),item.getDiffId(),oldMatches,newMatches);
