@@ -4,5 +4,12 @@
   String plainTextFile=args[1];
   String infoFile=args[2];
   SpellDictionaryBuilder builder=new SpellDictionaryBuilder(new File(infoFile));
-  builder.build(languageCode,new File(plainTextFile));
+  if (args.length == 4) {
+    String freqListFile=args[3];
+    builder.readFreqList(new File(freqListFile));
+    builder.build(languageCode,builder.addFreqData(new File(plainTextFile)));
+  }
+ else {
+    builder.build(languageCode,new File(plainTextFile));
+  }
 }

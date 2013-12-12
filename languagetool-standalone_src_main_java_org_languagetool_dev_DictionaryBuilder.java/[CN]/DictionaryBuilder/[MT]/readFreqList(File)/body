@@ -12,9 +12,9 @@
     br.close();
   }
  catch (  FileNotFoundException e) {
-    e.printStackTrace();
+    System.out.println("Frequencies wordlist file does not exist: " + freqListFile.getAbsolutePath().toString());
   }
 catch (  IOException e) {
-    e.printStackTrace();
+    System.out.println("Cannot read file: " + freqListFile.getAbsolutePath().toString());
   }
 }

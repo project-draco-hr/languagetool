@@ -2,6 +2,10 @@
   if (!isOptionTrue("fsa.dict.frequency-included")) {
     throw new IOException("In order to use frequency data add the line 'dict.fsa.frequency-included=true' to the dictionary info file.");
   }
+  String separator=getOption("fsa.dict.separator");
+  if (separator == null || separator.trim().isEmpty()) {
+    throw new IOException("A separator character must be defined in the dictionary info file.");
+  }
   File tempFile=File.createTempFile(POSDictionaryBuilder.class.getSimpleName(),"WithFrequencies.txt");
   BufferedReader br;
   FileWriter fw=new FileWriter(tempFile.getAbsoluteFile());
@@ -20,7 +24,7 @@
           freqValuesApplied++;
         }
         String freqChar=Character.toString((char)(FIRST_RANGE_CODE + freq * FREQ_RANGES_OUT / FREQ_RANGES_IN));
-        bw.write(line + freqChar + "\n");
+        bw.write(line + separator + freqChar+ "\n");
       }
     }
     br.close();
@@ -28,10 +32,11 @@
     System.out.println(freqList.size() + " frequency values applied in " + freqValuesApplied+ " word forms.");
   }
  catch (  FileNotFoundException e) {
-    e.printStackTrace();
+    System.out.println("File not found: " + dictFile.getAbsolutePath().toString());
   }
 catch (  IOException e) {
-    e.printStackTrace();
+    System.out.println("Cannot read file: " + dictFile.getAbsolutePath().toString());
   }
+  tempFile.deleteOnExit();
   return tempFile;
 }
