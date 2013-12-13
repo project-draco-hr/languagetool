@@ -1,0 +1,8 @@
+{
+  if (items.size() > 0) {
+    Date firstDate=items.get(0).getDate();
+    Date lastDate=items.get(items.size() - 1).getDate();
+    System.out.println("Latest date in database: " + lastDateOfPreviousRun);
+    System.out.println("Dates in Atom Feed:      " + firstDate + " - "+ lastDate);
+  }
+}

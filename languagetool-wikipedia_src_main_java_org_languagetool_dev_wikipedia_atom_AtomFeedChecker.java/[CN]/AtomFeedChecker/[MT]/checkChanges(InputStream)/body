@@ -6,12 +6,8 @@
   try {
     List<AtomFeedItem> items=new AtomFeedParser().getAtomFeedItems(xml);
     Collections.reverse(items);
-    int i=0;
+    printDates(items,lastDateOfPreviousRun);
     for (    AtomFeedItem item : items) {
-      if (i++ == 0) {
-        System.out.println("First date in Atom Feed: " + item.getDate());
-        System.out.println("Latest date in database: " + lastDateOfPreviousRun);
-      }
       if (lastDateOfPreviousRun != null && (item.getDate().before(lastDateOfPreviousRun) || item.getDate().equals(lastDateOfPreviousRun))) {
         System.out.println("Skipping " + item.getTitle() + ", date "+ item.getDate());
         skipCount++;
