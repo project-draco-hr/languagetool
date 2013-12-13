@@ -1,3 +1,5 @@
 {
-  return (InputStream)atomFeedUrl.getContent();
+  URLConnection conn=url.openConnection();
+  conn.setRequestProperty("User-Agent",USER_AGENT);
+  return conn.getInputStream();
 }
