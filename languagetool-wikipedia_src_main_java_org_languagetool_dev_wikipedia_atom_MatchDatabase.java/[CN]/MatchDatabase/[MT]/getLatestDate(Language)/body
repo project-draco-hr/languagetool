@@ -1,0 +1,8 @@
+{
+  Date editDate=getLatestDate("edit_date",language);
+  Date fixDate=getLatestDate("fix_date",language);
+  if (editDate.after(fixDate)) {
+    return editDate;
+  }
+  return fixDate;
+}

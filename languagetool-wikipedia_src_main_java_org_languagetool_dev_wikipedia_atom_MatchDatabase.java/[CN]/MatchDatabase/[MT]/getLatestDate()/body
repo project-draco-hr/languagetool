@@ -1,8 +1,0 @@
-{
-  Date editDate=getLatestDate("edit_date");
-  Date fixDate=getLatestDate("fix_date");
-  if (editDate.after(fixDate)) {
-    return editDate;
-  }
-  return fixDate;
-}

@@ -1,7 +1,8 @@
 {
   try {
-    String sql="SELECT " + dateField + " FROM feed_matches ORDER BY "+ dateField+ " DESC";
+    String sql="SELECT " + dateField + " FROM feed_matches WHERE language_code = ? ORDER BY "+ dateField+ " DESC";
     try (PreparedStatement prepSt=conn.prepareStatement(sql)){
+      prepSt.setString(1,language.getShortName());
       ResultSet resultSet=prepSt.executeQuery();
       if (resultSet.next() && resultSet.getTimestamp(dateField) != null) {
         return new Date(resultSet.getTimestamp(dateField).getTime());
