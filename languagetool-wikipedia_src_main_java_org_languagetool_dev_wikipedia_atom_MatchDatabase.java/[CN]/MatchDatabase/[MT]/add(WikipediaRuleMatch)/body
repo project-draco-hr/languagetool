@@ -24,6 +24,12 @@
     prepSt.execute();
   }
  catch (  SQLException e) {
-    throw new RuntimeException("Could not add rule match " + ruleMatch + " to database",e);
+    if (e.toString().contains("Incorrect string value")) {
+      System.err.println("Could not add rule match " + ruleMatch + " to database - stacktrace follows:");
+      e.printStackTrace();
+    }
+ else {
+      throw new RuntimeException("Could not add rule match " + ruleMatch + " to database",e);
+    }
   }
 }
