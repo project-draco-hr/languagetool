@@ -1,6 +1,7 @@
 {
   final JLanguageTool langTool=new MultiThreadedJLanguageTool(lang);
   langTool.activateDefaultPatternRules();
+  enableWikipediaRules(langTool);
   for (  String disabledRuleId : disabledRuleIds) {
     langTool.disableRule(disabledRuleId);
   }
