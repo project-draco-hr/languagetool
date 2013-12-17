@@ -1,7 +1,6 @@
 {
-  BufferedReader br;
   try {
-    br=new BufferedReader(new FileReader(freqListFile));
+    BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(freqListFile.getAbsoluteFile()),"utf-8"));
     String line;
     while ((line=br.readLine()) != null) {
       Matcher m=pFreqEntry.matcher(line);

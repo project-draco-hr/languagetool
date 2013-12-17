@@ -7,12 +7,10 @@
     throw new IOException("A separator character (fsa.dict.separator) must be defined in the dictionary info file.");
   }
   File tempFile=File.createTempFile(DictionaryBuilder.class.getSimpleName(),"WithFrequencies.txt");
-  BufferedReader br;
-  FileWriter fw=new FileWriter(tempFile.getAbsoluteFile());
-  BufferedWriter bw=new BufferedWriter(fw);
+  BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempFile.getAbsoluteFile()),getOption("fsa.dict.encoding")));
   int freqValuesApplied=0;
   try {
-    br=new BufferedReader(new FileReader(dictFile));
+    BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(dictFile.getAbsoluteFile()),getOption("fsa.dict.encoding")));
     String line;
     while ((line=br.readLine()) != null) {
       Matcher m=pTaggerEntry.matcher(line);
