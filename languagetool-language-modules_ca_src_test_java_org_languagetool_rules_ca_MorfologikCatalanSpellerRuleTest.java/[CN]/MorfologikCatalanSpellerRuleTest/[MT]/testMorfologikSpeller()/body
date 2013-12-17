@@ -24,6 +24,9 @@
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("McDonald")).length);
   matches=rule.match(langTool.getAnalyzedSentence("quna"));
   assertEquals(1,matches.length);
+  assertEquals("que",matches[0].getSuggestedReplacements().get(0));
+  assertEquals("una",matches[0].getSuggestedReplacements().get(1));
+  assertEquals("quan",matches[0].getSuggestedReplacements().get(2));
   matches=rule.match(langTool.getAnalyzedSentence("Video"));
   assertEquals(1,matches.length);
   assertEquals("v??deo",matches[0].getSuggestedReplacements().get(0));
@@ -40,8 +43,8 @@
   assertEquals("pla??a",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("De??"));
   assertEquals(1,matches.length);
-  assertEquals("Deu",matches[0].getSuggestedReplacements().get(0));
-  assertEquals("D??u",matches[0].getSuggestedReplacements().get(1));
+  assertEquals("deu",matches[0].getSuggestedReplacements().get(0));
+  assertEquals("d??u",matches[0].getSuggestedReplacements().get(1));
   matches=rule.match(langTool.getAnalyzedSentence("joan"));
   assertEquals(1,matches.length);
   assertEquals(0,matches[0].getFromPos());
@@ -62,8 +65,8 @@
   assertEquals(0,matches[0].getFromPos());
   assertEquals(6,matches[0].getToPos());
   assertEquals("argu??t",matches[0].getSuggestedReplacements().get(0));
-  assertEquals("argu??a",matches[0].getSuggestedReplacements().get(1));
-  assertEquals("argu??m",matches[0].getSuggestedReplacements().get(2));
+  assertEquals("arg??ir",matches[0].getSuggestedReplacements().get(1));
+  assertEquals("arg??int",matches[0].getSuggestedReplacements().get(2));
   matches=rule.match(langTool.getAnalyzedSentence("??ngel"));
   assertEquals(1,matches.length);
   assertEquals("??ngel",matches[0].getSuggestedReplacements().get(0));
@@ -77,7 +80,7 @@
   matches=rule.match(langTool.getAnalyzedSentence("cantar????"));
   assertEquals(1,matches.length);
   assertEquals("cantaria",matches[0].getSuggestedReplacements().get(0));
-  assertEquals("Cant??bria",matches[0].getSuggestedReplacements().get(1));
+  assertEquals("cantera",matches[0].getSuggestedReplacements().get(1));
   matches=rule.match(langTool.getAnalyzedSentence("poguem"));
   assertEquals(1,matches.length);
   assertEquals("puguem",matches[0].getSuggestedReplacements().get(0));
@@ -96,10 +99,19 @@
   matches=rule.match(langTool.getAnalyzedSentence("col??labor??"));
   assertEquals(1,matches.length);
   assertEquals("col??labor??",matches[0].getSuggestedReplacements().get(0));
+  matches=rule.match(langTool.getAnalyzedSentence("despu??s"));
+  assertEquals(1,matches.length);
+  assertEquals("despr??s",matches[0].getSuggestedReplacements().get(0));
+  matches=rule.match(langTool.getAnalyzedSentence("especialisats"));
+  assertEquals(1,matches.length);
+  assertEquals("especialitzats",matches[0].getSuggestedReplacements().get(0));
+  matches=rule.match(langTool.getAnalyzedSentence("matitzava"));
+  assertEquals(1,matches.length);
+  assertEquals("matisava",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("En la Pecra"));
   assertEquals(1,matches.length);
-  assertEquals("Macra",matches[0].getSuggestedReplacements().get(0));
-  assertEquals("Paci??",matches[0].getSuggestedReplacements().get(1));
+  assertEquals("para",matches[0].getSuggestedReplacements().get(0));
+  assertEquals("pare",matches[0].getSuggestedReplacements().get(1));
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("a??h")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("a")).length);
 }
