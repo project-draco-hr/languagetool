@@ -105,9 +105,9 @@
   matches=rule.match(langTool.getAnalyzedSentence("especialisats"));
   assertEquals(1,matches.length);
   assertEquals("especialitzats",matches[0].getSuggestedReplacements().get(0));
-  matches=rule.match(langTool.getAnalyzedSentence("matitzava"));
+  matches=rule.match(langTool.getAnalyzedSentence("matitz??rem"));
   assertEquals(1,matches.length);
-  assertEquals("matisava",matches[0].getSuggestedReplacements().get(0));
+  assertEquals("matis??rem",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("En la Pecra"));
   assertEquals(1,matches.length);
   assertEquals("para",matches[0].getSuggestedReplacements().get(0));
