@@ -108,6 +108,10 @@
   matches=rule.match(langTool.getAnalyzedSentence("matitz??rem"));
   assertEquals(1,matches.length);
   assertEquals("matis??rem",matches[0].getSuggestedReplacements().get(0));
+  matches=rule.match(langTool.getAnalyzedSentence("adquireixquen"));
+  assertEquals(1,matches.length);
+  assertEquals("adquirisquen",matches[0].getSuggestedReplacements().get(0));
+  assertEquals("adquiresquen",matches[0].getSuggestedReplacements().get(1));
   matches=rule.match(langTool.getAnalyzedSentence("En la Pecra"));
   assertEquals(1,matches.length);
   assertEquals("para",matches[0].getSuggestedReplacements().get(0));
