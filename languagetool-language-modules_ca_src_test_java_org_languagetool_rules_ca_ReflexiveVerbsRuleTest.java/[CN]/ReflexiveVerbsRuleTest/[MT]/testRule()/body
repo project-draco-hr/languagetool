@@ -86,7 +86,6 @@
   assertCorrect("la senyera s'ha de baixar");
   assertCorrect("Es van t??mer assalts a altres edificis de la CNT ");
   assertCorrect("que Joan em dugu??s el mocador");
-  assertCorrect("que Joan es dugu??s el mocador");
   assertCorrect("em dur??s un mocador de seda del teu color");
   assertCorrect("El va deixar per a dedicar-se a la m??sica");
   assertCorrect("Hermes s'encarregava de dur les ??nimes que acabaven de morir a l'Infram??n");
