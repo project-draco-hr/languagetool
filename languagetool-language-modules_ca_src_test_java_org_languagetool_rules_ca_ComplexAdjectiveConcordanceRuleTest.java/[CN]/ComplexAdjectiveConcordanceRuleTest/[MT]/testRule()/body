@@ -1,4 +1,5 @@
 {
+  assertCorrect("constitueix l'??nica comunitat aut??noma amb menys aturats");
   assertCorrect("durant tot l'any, i del sud-est, m??s notoris a la primavera");
   assertCorrect("amb la veu i el posat cada cop m??s agressius");
   assertCorrect("l'experi??ncia sensitiva i la ra??, degudament combinades.");
