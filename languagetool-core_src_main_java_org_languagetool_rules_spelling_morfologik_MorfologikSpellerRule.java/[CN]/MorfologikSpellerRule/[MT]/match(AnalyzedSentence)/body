@@ -12,6 +12,9 @@
   int idx=-1;
   for (  AnalyzedTokenReadings token : tokens) {
     idx++;
+    if (token.isSentenceStart()) {
+      continue;
+    }
     if (isUrl(token.getToken())) {
       continue;
     }
