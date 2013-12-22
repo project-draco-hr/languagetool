@@ -3,6 +3,10 @@
   langTool=new JLanguageTool(language);
   langTool.activateDefaultPatternRules();
   langTool.disableRule("UNPAIRED_BRACKETS");
+  langTool.disableRule("EN_UNPAIRED_BRACKETS");
+  langTool.disableRule("EN_QUOTES");
+  langTool.disableRule("COMMA_PARENTHESIS_WHITESPACE");
+  langTool.disableRule("UPPERCASE_SENTENCE_START");
   activateCategory("Wikipedia",langTool);
   if (dbConfig != null) {
     matchDatabase=new MatchDatabase(dbConfig.getUrl(),dbConfig.getUser(),dbConfig.getPassword());
