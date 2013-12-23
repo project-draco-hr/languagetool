@@ -4,7 +4,7 @@
   if (incorrectExamples.size() > 0) {
     String incorrectExample=incorrectExamples.iterator().next().getExample();
     String sentence=incorrectExample.replace("<marker>","<span style='color:red'>").replace("</marker>","</span>");
-    examples.append("<br/>").append(sentence).append("&nbsp;<span style='color:red'>x</span>");
+    examples.append("<br/>").append(sentence).append("&nbsp;<span style='color:red;font-style:italic;font-weight:bold'>x</span>");
   }
   List<String> correctExamples=rule.getCorrectExamples();
   if (correctExamples.size() > 0) {
