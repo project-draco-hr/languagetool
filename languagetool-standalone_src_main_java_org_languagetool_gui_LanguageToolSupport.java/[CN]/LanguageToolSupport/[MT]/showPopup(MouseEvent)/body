@@ -11,6 +11,12 @@
     msgItem.setBorder(new JMenuItem().getBorder());
     popup.add(msgItem);
     popup.add(new JSeparator());
+    for (    String r : span.replacement) {
+      ReplaceMenuItem item=new ReplaceMenuItem(r,span);
+      popup.add(item);
+      item.addActionListener(actionListener);
+    }
+    popup.add(new JSeparator());
     JMenuItem moreItem=new JMenuItem(messages.getString("guiMore"));
     moreItem.addActionListener(new ActionListener(){
       @Override public void actionPerformed(      ActionEvent e){
@@ -54,13 +60,7 @@
       popup.add(activateRuleItem);
     }
   }
-  popup.add(new JSeparator());
   if (span != null) {
-    for (    String r : span.replacement) {
-      ReplaceMenuItem item=new ReplaceMenuItem(r,span);
-      popup.add(item);
-      item.addActionListener(actionListener);
-    }
     textComponent.setCaretPosition(span.start);
     textComponent.moveCaretPosition(span.end);
   }
