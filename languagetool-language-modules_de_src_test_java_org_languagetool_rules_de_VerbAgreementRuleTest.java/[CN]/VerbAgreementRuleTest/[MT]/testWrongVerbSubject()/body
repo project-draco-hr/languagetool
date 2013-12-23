@@ -61,6 +61,7 @@
   assertGood("Wobei wir benutzt haben, dass der Satz gilt.");
   assertGood("W??nschst du dir mehr Zeit?");
   assertGood("Wyrjtjbst du?");
+  assertGood("Wenn ich du w??re, w??rde ich das nicht machen.");
   assertBad("Auch morgen leben du.");
   assertBad("Auch morgen leben du");
   assertBad("Auch morgen leben er.");
