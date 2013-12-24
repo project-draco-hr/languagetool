@@ -108,6 +108,9 @@
   matches=rule.match(langTool.getAnalyzedSentence("matitz??rem"));
   assertEquals(1,matches.length);
   assertEquals("matis??rem",matches[0].getSuggestedReplacements().get(0));
+  matches=rule.match(langTool.getAnalyzedSentence("tamitz??ssim"));
+  assertEquals(1,matches.length);
+  assertEquals("tamis??ssim",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("adquireixquen"));
   assertEquals(1,matches.length);
   assertEquals("adquirisquen",matches[0].getSuggestedReplacements().get(0));
