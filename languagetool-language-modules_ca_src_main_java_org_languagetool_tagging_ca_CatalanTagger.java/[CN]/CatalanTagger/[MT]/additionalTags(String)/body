@@ -57,5 +57,11 @@
     }
     return additionalTaggedTokens;
   }
+  if (word.contains("\u0140") || word.contains("\u013f")) {
+    final String lowerWord=word.toLowerCase(conversionLocale);
+    final String possibleWord=lowerWord.replaceAll("\u0140","l??");
+    List<AnalyzedToken> taggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(possibleWord));
+    return taggerTokens;
+  }
   return null;
 }
