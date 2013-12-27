@@ -1,0 +1,3 @@
+{
+  return POLISH_TOKENIZING_CHARS;
+}
