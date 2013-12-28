@@ -1,0 +1,13 @@
+{
+  for (  Rule rule : disabledRules) {
+    final String id=rule.getId();
+    JMenuItem ruleItem=new JMenuItem(rule.getDescription());
+    ruleItem.addActionListener(new ActionListener(){
+      @Override public void actionPerformed(      ActionEvent e){
+        enableRule(id);
+      }
+    }
+);
+    menu.add(ruleItem);
+  }
+}

@@ -1,0 +1,17 @@
+{
+  List<Rule> disabledRules=new ArrayList<>();
+  for (  String ruleId : languageTool.getDisabledRules()) {
+    Rule rule=getRuleForId(ruleId);
+    if (rule == null || rule.isDefaultOff()) {
+      continue;
+    }
+    disabledRules.add(rule);
+  }
+  Collections.sort(disabledRules,new Comparator<Rule>(){
+    @Override public int compare(    Rule r1,    Rule r2){
+      return r1.getDescription().compareTo(r2.getDescription());
+    }
+  }
+);
+  return disabledRules;
+}

@@ -34,31 +34,11 @@
 );
     popup.add(ignoreItem);
   }
-  if (!this.languageTool.getDisabledRules().isEmpty()) {
-    JMenu activateRuleItem=new JMenu(messages.getString("guiActivateRule"));
-    int count=0;
-    for (    String ruleId : languageTool.getDisabledRules()) {
-      Rule rule=getRuleForId(ruleId);
-      if (rule == null) {
-        continue;
-      }
-      if (rule.isDefaultOff()) {
-        continue;
-      }
-      final String id=rule.getId();
-      JMenuItem ruleItem=new JMenuItem(rule.getDescription());
-      ruleItem.addActionListener(new ActionListener(){
-        @Override public void actionPerformed(        ActionEvent e){
-          enableRule(id);
-        }
-      }
-);
-      activateRuleItem.add(ruleItem);
-      count++;
-    }
-    if (count > 0) {
-      popup.add(activateRuleItem);
-    }
+  List<Rule> disabledRules=getDisabledRules();
+  if (!disabledRules.isEmpty()) {
+    JMenu activateRuleMenu=new JMenu(messages.getString("guiActivateRule"));
+    addDisabledRulesToMenu(disabledRules,activateRuleMenu);
+    popup.add(activateRuleMenu);
   }
   if (span != null) {
     textComponent.setCaretPosition(span.start);
