@@ -1,0 +1,8 @@
+{
+  assertEquals("foo| |(|http://ex.net/p?a=x#i|)| |bar",tokenize("foo (http://ex.net/p?a=x#i) bar"));
+  assertEquals("foo| |http://ex.net/p?a=x#i|,| |bar",tokenize("foo http://ex.net/p?a=x#i, bar"));
+  assertEquals("foo| |http://ex.net/p?a=x#i|.| |bar",tokenize("foo http://ex.net/p?a=x#i. bar"));
+  assertEquals("foo| |http://ex.net/p?a=x#i|:| |bar",tokenize("foo http://ex.net/p?a=x#i: bar"));
+  assertEquals("foo| |http://ex.net/p?a=x#i|?| |bar",tokenize("foo http://ex.net/p?a=x#i? bar"));
+  assertEquals("foo| |http://ex.net/p?a=x#i|!| |bar",tokenize("foo http://ex.net/p?a=x#i! bar"));
+}

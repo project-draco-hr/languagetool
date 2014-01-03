@@ -1,0 +1,5 @@
+{
+  super(messages);
+  super.setCategory(new Category("Possible Typo"));
+  setLocQualityIssueType("misspelling");
+}

@@ -1,0 +1,5 @@
+{
+  super.setUp();
+  rule=new ContractionSpellingRule(TestTools.getMessages("en"));
+  langTool=new JLanguageTool(new English());
+}

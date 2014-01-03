@@ -1,0 +1,6 @@
+{
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("It wasn't me.")).length);
+  checkSimpleReplaceRule("It wasnt me","wasn't");
+  checkSimpleReplaceRule("You neednt do this","needn't");
+  checkSimpleReplaceRule("Wasnt this great","Wasn't");
+}

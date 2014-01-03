@@ -1,0 +1,11 @@
+{
+  assertEquals("http|:|/",tokenize("http:/"));
+  assertEquals("http://",tokenize("http://"));
+  assertEquals("http://a",tokenize("http://a"));
+  assertEquals("foo| |http| |bar",tokenize("foo http bar"));
+  assertEquals("foo| |http|:| |bar",tokenize("foo http: bar"));
+  assertEquals("foo| |http|:|/| |bar",tokenize("foo http:/ bar"));
+  assertEquals("foo| |http://| |bar",tokenize("foo http:// bar"));
+  assertEquals("foo| |http://a| |bar",tokenize("foo http://a bar"));
+  assertEquals("foo| |http://|?| |bar",tokenize("foo http://? bar"));
+}
