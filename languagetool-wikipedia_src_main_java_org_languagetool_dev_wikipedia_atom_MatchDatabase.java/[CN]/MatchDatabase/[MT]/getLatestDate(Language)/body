@@ -1,8 +1,16 @@
 {
-  Date editDate=getLatestDate("edit_date",language);
-  Date fixDate=getLatestDate("fix_date",language);
-  if (editDate.after(fixDate)) {
-    return editDate;
+  try {
+    String sql="SELECT check_date FROM feed_checks WHERE language_code = ?";
+    try (PreparedStatement prepSt=conn.prepareStatement(sql)){
+      prepSt.setString(1,language.getShortName());
+      ResultSet resultSet=prepSt.executeQuery();
+      if (resultSet.next() && resultSet.getTimestamp("check_date") != null) {
+        return new Date(resultSet.getTimestamp("check_date").getTime());
+      }
+    }
+   }
+ catch (  Exception e) {
+    throw new RuntimeException("Could not get check_date from database for " + language,e);
   }
-  return fixDate;
+  return new Date(0);
 }

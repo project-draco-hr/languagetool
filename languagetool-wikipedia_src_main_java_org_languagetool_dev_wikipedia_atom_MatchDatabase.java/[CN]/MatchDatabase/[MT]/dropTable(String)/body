@@ -1,5 +1,5 @@
 {
-  try (PreparedStatement prepSt=conn.prepareStatement("DROP TABLE feed_matches")){
+  try (PreparedStatement prepSt=conn.prepareStatement("DROP TABLE " + tableName)){
     prepSt.execute();
   }
  catch (  SQLException e) {
