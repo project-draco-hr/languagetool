@@ -12,9 +12,11 @@
     if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
       token=parts[0];
     }
-    token=token.replaceAll("[^??a-zA-Z0-9\\.;,:']","");
-    if (StringTools.isEmpty(token)) {
-      continue;
+    if (tokens[i].isWhitespaceBefore() || !"-".equals(token)) {
+      token=token.replaceAll("[^??a-zA-Z0-9\\.;,:']","");
+      if (StringTools.isEmpty(token)) {
+        continue;
+      }
     }
     final char tokenFirstChar=token.charAt(0);
     if (requiresA.contains(token.toLowerCase()) || requiresA.contains(token)) {
