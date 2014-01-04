@@ -1,0 +1,4 @@
+{
+  dropTable("feed_matches");
+  dropTable("feed_checks");
+}

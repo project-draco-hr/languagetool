@@ -1,4 +1,6 @@
 {
+  SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+  dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
   initDatabase();
   DatabaseConfig databaseConfig=new DatabaseConfig(DB_URL,"user","pass");
   AtomFeedChecker atomFeedChecker1=new AtomFeedChecker(new German(),databaseConfig);
@@ -13,8 +15,13 @@
   assertThat(changeAnalysis.get(1).getRemovedMatches().size(),is(0));
   assertThat(changeAnalysis.get(2).getAddedMatches().size(),is(0));
   assertThat(changeAnalysis.get(2).getRemovedMatches().size(),is(0));
+  Date latestCheckDate1=atomFeedChecker1.getDatabase().getCheckDates().get("de");
+  assertThat(dateFormat.format(latestCheckDate1),is("2013-12-03 10:48"));
   AtomFeedChecker atomFeedChecker2=new AtomFeedChecker(new German(),databaseConfig);
   CheckResult checkResult2=atomFeedChecker2.runCheck(getStream());
   List<ChangeAnalysis> changeAnalysis2=checkResult2.getCheckResults();
-  assertThat(changeAnalysis2.size(),is(2));
+  assertThat(changeAnalysis2.size(),is(0));
+  assertThat(atomFeedChecker2.getDatabase().getCheckDates().size(),is(1));
+  Date latestCheckDate2=atomFeedChecker2.getDatabase().getCheckDates().get("de");
+  assertThat(dateFormat.format(latestCheckDate2),is("2013-12-03 10:48"));
 }

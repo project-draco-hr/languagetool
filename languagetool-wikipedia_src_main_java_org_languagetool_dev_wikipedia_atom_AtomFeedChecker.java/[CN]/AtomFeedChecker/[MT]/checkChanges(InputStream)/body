@@ -13,6 +13,9 @@
         skipCount++;
       }
  else {
+        if (matchDatabase != null) {
+          matchDatabase.updateRuleMatchCheckDate(language,item.getDate());
+        }
         try {
           System.out.println("Checking " + item.getTitle() + ", diff #"+ item.getDiffId());
           List<WikipediaRuleMatch> oldMatches=getMatches(item,item.getOldContent());

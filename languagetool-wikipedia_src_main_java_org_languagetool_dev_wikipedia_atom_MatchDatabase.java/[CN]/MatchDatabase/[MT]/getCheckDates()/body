@@ -1,0 +1,12 @@
+{
+  try (PreparedStatement prepSt=conn.prepareStatement("SELECT * FROM feed_checks")){
+    Map<String,Date> result=new HashMap<>();
+    ResultSet resultSet=prepSt.executeQuery();
+    while (resultSet.next()) {
+      String langCode=resultSet.getString("language_code");
+      Date checkDate=new Date(resultSet.getTimestamp("check_date").getTime());
+      result.put(langCode,checkDate);
+    }
+    return result;
+  }
+ }

@@ -1,5 +1,5 @@
 {
   MatchDatabase database=new MatchDatabase(DB_URL,"user","pass");
-  database.drop();
-  database.createTable();
+  database.dropTables();
+  database.createTables();
 }
