@@ -1,0 +1,15 @@
+{
+  final BretonWordTokenizer wordTokenizer=new BretonWordTokenizer();
+  List<String> tokens=wordTokenizer.tokenize("Test c'h");
+  assertEquals(3,tokens.size());
+  assertEquals("[Test,  , c???h]",tokens.toString());
+  tokens=wordTokenizer.tokenize("Test c???h");
+  assertEquals(3,tokens.size());
+  assertEquals("[Test,  , c???h]",tokens.toString());
+  tokens=wordTokenizer.tokenize("C'hwerc'h merc'h gwerc'h war c'hwerc'h marc'h kalloc'h");
+  assertEquals(13,tokens.size());
+  assertEquals("[C???hwerc???h,  , merc???h,  , gwerc???h,  , war,  , c???hwerc???h,  , marc???h,  , kalloc???h]",tokens.toString());
+  final List<String> tokens2=wordTokenizer.tokenize("Test n???eo");
+  assertEquals(4,tokens2.size());
+  assertEquals("[Test,  , n???, eo]",tokens2.toString());
+}
