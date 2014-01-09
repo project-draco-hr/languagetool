@@ -7,7 +7,7 @@
     if (span.start == span.end) {
       continue;
     }
-    if (span.rule.isSpellingRule()) {
+    if ("misspelling".equals(span.rule.getLocQualityIssueType())) {
       spellErrors.add(span);
     }
  else {
