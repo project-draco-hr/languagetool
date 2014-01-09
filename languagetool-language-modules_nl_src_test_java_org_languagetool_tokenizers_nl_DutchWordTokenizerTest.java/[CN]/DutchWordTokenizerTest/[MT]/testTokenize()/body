@@ -6,4 +6,10 @@
   testList=wordTokenizer.tokenize("Bla bla oma's bla bla 'test");
   assertEquals(testList.size(),12);
   assertEquals("[Bla,  , bla,  , oma's,  , bla,  , bla,  , ', test]",testList.toString());
+  testList=wordTokenizer.tokenize("Ik zie het''");
+  assertEquals(7,testList.size());
+  assertEquals("[Ik,  , zie,  , het, ', ']",testList.toString());
+  testList=wordTokenizer.tokenize("''Ik zie het");
+  assertEquals(7,testList.size());
+  assertEquals("[', ', Ik,  , zie,  , het]",testList.toString());
 }
