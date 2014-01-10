@@ -1,13 +1,29 @@
 {
+  if (disabledRules.size() <= MAX_RULES_NO_CATEGORY_MENU) {
+    createRulesMenu(menu,disabledRules);
+    return;
+  }
+  TreeMap<String,ArrayList<Rule>> categories=new TreeMap<String,ArrayList<Rule>>();
   for (  Rule rule : disabledRules) {
-    final String id=rule.getId();
-    JMenuItem ruleItem=new JMenuItem(rule.getDescription());
-    ruleItem.addActionListener(new ActionListener(){
-      @Override public void actionPerformed(      ActionEvent e){
-        enableRule(id);
-      }
+    if (!categories.containsKey(rule.getCategory().getName())) {
+      categories.put(rule.getCategory().getName(),new ArrayList<Rule>());
     }
-);
-    menu.add(ruleItem);
+    categories.get(rule.getCategory().getName()).add(rule);
+  }
+  JMenu parent=menu;
+  int count=0;
+  for (  String category : categories.keySet()) {
+    count++;
+    JMenu submenu=new JMenu(category);
+    parent.add(submenu);
+    createRulesMenu(submenu,categories.get(category));
+    if (categories.keySet().size() <= MAX_CATEGORIES_PER_MENU) {
+      continue;
+    }
+    if ((count % (MAX_CATEGORIES_PER_MENU - 1) == 0) && (categories.keySet().size() - count > 1)) {
+      JMenu more=new JMenu(messages.getString("guiActivateRuleMoreCategories"));
+      parent.add(more);
+      parent=more;
+    }
   }
 }
