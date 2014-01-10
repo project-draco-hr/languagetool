@@ -40,4 +40,12 @@
   tokens=wordTokenizer.tokenize("L'Em??lia-Romanya");
   assertEquals(tokens.size(),4);
   assertEquals("[L', Em??lia, -, Romanya]",tokens.toString());
+  tokens=wordTokenizer.tokenize("col??laboraci??");
+  assertEquals(tokens.size(),1);
+  tokens=wordTokenizer.tokenize("col.laboraci??");
+  assertEquals(tokens.size(),1);
+  tokens=wordTokenizer.tokenize("col???laboraci??");
+  assertEquals(tokens.size(),1);
+  tokens=wordTokenizer.tokenize("col??Laboraci??");
+  assertEquals(tokens.size(),1);
 }
