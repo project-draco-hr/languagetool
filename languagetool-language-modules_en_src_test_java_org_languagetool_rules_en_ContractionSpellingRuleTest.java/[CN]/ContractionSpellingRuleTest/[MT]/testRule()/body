@@ -1,5 +1,7 @@
 {
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("It wasn't me.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("I'm ill.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Staatszerfall im s??dlichen Afrika.")).length);
   checkSimpleReplaceRule("Wasnt this great","Wasn't");
   checkSimpleReplaceRule("YOURE WRONG","YOU'RE");
   checkSimpleReplaceRule("Dont do this","Don't");
