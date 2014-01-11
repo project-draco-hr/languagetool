@@ -1,7 +1,3 @@
 {
-  boolean isAlphabetic=true;
-  if (word.length() == 1) {
-    isAlphabetic=StringTools.isAlphabetic(word.charAt(0));
-  }
-  return word.length() > 0 && isAlphabetic && !containsDigit(word) && !SpellingCheckRule.LANGUAGETOOL.equals(word) && !SpellingCheckRule.LANGUAGETOOL_FX.equals(word) && !speller.isInDictionary(word) && !(!StringTools.isMixedCase(word) && speller.isInDictionary(word.toLowerCase(conversionLocale)));
+  return word.length() > 0 && !SpellingCheckRule.LANGUAGETOOL.equals(word) && !SpellingCheckRule.LANGUAGETOOL_FX.equals(word) && speller.isMisspelled(word);
 }
