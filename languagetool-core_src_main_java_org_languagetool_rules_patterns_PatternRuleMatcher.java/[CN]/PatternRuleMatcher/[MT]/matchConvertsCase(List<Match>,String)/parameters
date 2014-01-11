@@ -1,1 +1,2 @@
 List<Match> suggestionMatches
+String msg
