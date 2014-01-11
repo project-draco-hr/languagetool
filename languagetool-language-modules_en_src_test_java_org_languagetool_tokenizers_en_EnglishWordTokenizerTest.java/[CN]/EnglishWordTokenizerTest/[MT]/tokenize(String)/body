@@ -1,4 +1,0 @@
-{
-  final List<String> tokens=wordTokenizer.tokenize(text);
-  return StringTools.listToString(tokens,"|");
-}

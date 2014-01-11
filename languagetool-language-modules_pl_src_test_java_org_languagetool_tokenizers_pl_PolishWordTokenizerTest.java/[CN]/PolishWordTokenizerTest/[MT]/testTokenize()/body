@@ -1,0 +1,18 @@
+{
+  final PolishWordTokenizer wordTokenizer=new PolishWordTokenizer();
+  final List<String> tokens=wordTokenizer.tokenize("To jest\u00A0 test");
+  assertEquals(tokens.size(),6);
+  assertEquals("[To,  , jest, \u00A0,  , test]",tokens.toString());
+  final List<String> tokens2=wordTokenizer.tokenize("To\r??amie");
+  assertEquals(3,tokens2.size());
+  assertEquals("[To, \r, ??amie]",tokens2.toString());
+  final List<String> tokens3=wordTokenizer.tokenize("A to jest-naprawd??-test!");
+  assertEquals(tokens3.size(),6);
+  assertEquals("[A,  , to,  , jest-naprawd??-test, !]",tokens3.toString());
+  final List<String> tokens4=wordTokenizer.tokenize("Niemiecko- i angielsko-polski");
+  assertEquals(tokens4.size(),6);
+  assertEquals("[Niemiecko, -,  , i,  , angielsko-polski]",tokens4.toString());
+  final List<String> tokens5=wordTokenizer.tokenize("A to jest zdanie???rzeczywi??cie???z wtr??ceniem.");
+  assertEquals(tokens5.size(),14);
+  assertEquals("[A,  , to,  , jest,  , zdanie, ???, rzeczywi??cie, ???, z,  , wtr??ceniem, .]",tokens5.toString());
+}

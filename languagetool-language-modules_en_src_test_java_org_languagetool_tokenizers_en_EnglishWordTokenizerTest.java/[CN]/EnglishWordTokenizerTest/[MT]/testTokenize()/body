@@ -12,4 +12,7 @@
   final List<String> tokens4=wordTokenizer.tokenize("Now this is- really!- a test.");
   assertEquals(tokens4.size(),15);
   assertEquals("[Now,  , this,  , is, -,  , really, !, -,  , a,  , test, .]",tokens4.toString());
+  final List<String> tokens5=wordTokenizer.tokenize("Now this is???really!???a test.");
+  assertEquals(tokens5.size(),13);
+  assertEquals("[Now,  , this,  , is, ???, really, !, ???, a,  , test, .]",tokens5.toString());
 }
