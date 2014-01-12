@@ -6,6 +6,9 @@
   if (superException) {
     return false;
   }
+  if (("\"".equals(tokenStr) || "'".equals(tokenStr)) && NUMBER.matcher(tokens[i - 1].getToken()).matches() && !tokens[i].isWhitespaceBefore()&& ((i > 3 && tokens[i - 2].getToken().contains("??") || tokens[i - 2].getToken().contains("??")) || (i > 5 && tokens[i - 4].getToken().contains("??") || tokens[i - 4].getToken().contains("??")))) {
+    return false;
+  }
   if (i == 1 && tokenStr.equals("??"))   return false;
   if (i > 1 && tokenStr.equals(")")) {
     boolean isThereOpeningParenthesis=false;

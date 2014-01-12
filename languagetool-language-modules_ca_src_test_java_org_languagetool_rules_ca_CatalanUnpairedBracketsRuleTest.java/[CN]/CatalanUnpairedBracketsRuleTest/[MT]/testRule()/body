@@ -15,6 +15,10 @@
   assertCorrect("??Aix?? em porta (s??) a demanar-t'ho.");
   assertCorrect("al cap??tol 12 \"Llavors i fruits oleaginosos\"");
   assertCorrect("\"Per qu?? serveixen les forquilles?\" i aquest respon \"per menjar\".");
+  assertCorrect("??s a 60?? 50' 23\"");
+  assertCorrect("??s a 60?? 50' 23'");
+  assertCorrect("60?? 50' 23'");
+  assertCorrect("60?? 50'");
   assertCorrect("This is a [test] sentence...");
   assertCorrect("The plight of Tamil refugees caused a surge of support from most of the Tamil political parties.[90]");
   assertCorrect("This is what he said: \"We believe in freedom. This is what we do.\"");
