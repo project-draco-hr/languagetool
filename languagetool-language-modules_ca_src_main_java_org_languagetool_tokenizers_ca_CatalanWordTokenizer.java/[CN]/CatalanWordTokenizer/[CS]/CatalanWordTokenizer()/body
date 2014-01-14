@@ -5,7 +5,7 @@
         speller=new MorfologikSpeller(DICT_FILENAME);
       }
  catch (      IOException e) {
-        e.printStackTrace();
+        throw new RuntimeException(e);
       }
     }
   }
