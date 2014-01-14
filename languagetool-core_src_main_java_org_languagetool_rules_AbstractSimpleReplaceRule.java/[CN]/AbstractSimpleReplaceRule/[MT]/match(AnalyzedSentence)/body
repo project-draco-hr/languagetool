@@ -19,7 +19,10 @@
         }
       }
     }
-    List<String> possibleReplacements=wrongWords.get(tokenString);
+    List<String> possibleReplacements=wrongWords.get(originalTokenStr);
+    if (possibleReplacements == null) {
+      possibleReplacements=wrongWords.get(tokenString);
+    }
     if (possibleReplacements != null && possibleReplacements.size() > 0) {
       List<String> replacements=new ArrayList<>();
       replacements.addAll(possibleReplacements);
