@@ -1,5 +1,14 @@
 {
-  tagger=new CatalanTagger();
+  if (speller == null) {
+    if (JLanguageTool.getDataBroker().resourceExists(DICT_FILENAME)) {
+      try {
+        speller=new MorfologikSpeller(DICT_FILENAME);
+      }
+ catch (      IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
   patterns[0]=Pattern.compile("^([lnmtsd]')([^'\\-]*)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   patterns[1]=Pattern.compile("^(qui-sap-lo|qui-sap-la|qui-sap-los|qui-sap-les)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   patterns[2]=Pattern.compile("^([lnmtsd]')(.{2,})" + PF + PF+ PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);

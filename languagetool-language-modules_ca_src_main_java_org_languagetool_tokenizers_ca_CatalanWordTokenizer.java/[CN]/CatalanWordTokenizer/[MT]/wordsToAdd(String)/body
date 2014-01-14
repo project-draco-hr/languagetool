@@ -1,14 +1,14 @@
 {
   final List<String> l=new ArrayList<>();
-  if (!s.contains("-") && !s.isEmpty()) {
-    l.add(s);
-  }
+  if (!s.isEmpty()) {
+    if (!s.contains("-")) {
+      l.add(s);
+    }
  else {
-    try {
-      if (tagger.existsWord(s)) {
+      if (!speller.isMisspelled(s)) {
         l.add(s);
       }
- else       if (tagger.existsWord(s.replace("l-l","l??l"))) {
+ else       if (!speller.isMisspelled(s.replace("l-l","l??l"))) {
         l.add(s);
       }
  else {
@@ -17,9 +17,6 @@
           l.add(st2.nextToken());
         }
       }
-    }
- catch (    IOException e) {
-      throw new RuntimeException(e);
     }
   }
   return l;
