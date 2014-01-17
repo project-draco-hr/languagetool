@@ -1,0 +1,33 @@
+{
+  initializeIfRequired();
+  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
+  int pos=0;
+  final IStemmer dictLookup=new DictionaryLookup(getDictionary());
+  for (  String word : sentenceTokens) {
+    final List<AnalyzedToken> l=new ArrayList<>();
+    final String lowerWord=word.toLowerCase(conversionLocale);
+    final boolean isLowercase=word.equals(lowerWord);
+    final boolean isMixedCase=StringTools.isMixedCase(word);
+    List<AnalyzedToken> manualTaggerTokens=manualTagsAsAnalyzedTokenList(word,manualTagger.lookup(word));
+    List<AnalyzedToken> manualLowerTaggerTokens=manualTagsAsAnalyzedTokenList(lowerWord,manualTagger.lookup(lowerWord));
+    addTokens(manualTaggerTokens,l);
+    if (manualTaggerTokens.isEmpty()) {
+      addTokens(asAnalyzedTokenList(word,dictLookup.lookup(word)),l);
+    }
+    if (!isLowercase && !isMixedCase) {
+      addTokens(manualLowerTaggerTokens,l);
+      if (manualLowerTaggerTokens.isEmpty()) {
+        addTokens(asAnalyzedTokenList(word,dictLookup.lookup(lowerWord)),l);
+      }
+    }
+    if (l.isEmpty() && !isMixedCase) {
+      addTokens(additionalTags(word),l);
+    }
+    if (l.isEmpty()) {
+      l.add(new AnalyzedToken(word,null,null));
+    }
+    tokenReadings.add(new AnalyzedTokenReadings(l,pos));
+    pos+=word.length();
+  }
+  return tokenReadings;
+}
