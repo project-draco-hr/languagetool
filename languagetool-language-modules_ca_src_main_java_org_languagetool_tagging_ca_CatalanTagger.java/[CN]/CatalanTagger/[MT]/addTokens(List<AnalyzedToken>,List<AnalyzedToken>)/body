@@ -1,0 +1,7 @@
+{
+  if (taggedTokens != null) {
+    for (    AnalyzedToken at : taggedTokens) {
+      l.add(at);
+    }
+  }
+}
