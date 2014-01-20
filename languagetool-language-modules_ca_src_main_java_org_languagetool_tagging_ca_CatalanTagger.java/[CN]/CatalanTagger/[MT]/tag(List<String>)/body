@@ -9,7 +9,7 @@
     final boolean isLowercase=word.equals(lowerWord);
     final boolean isMixedCase=StringTools.isMixedCase(word);
     List<AnalyzedToken> manualTaggerTokens=manualTagsAsAnalyzedTokenList(word,manualTagger.lookup(word));
-    List<AnalyzedToken> manualLowerTaggerTokens=manualTagsAsAnalyzedTokenList(lowerWord,manualTagger.lookup(lowerWord));
+    List<AnalyzedToken> manualLowerTaggerTokens=manualTagsAsAnalyzedTokenList(word,manualTagger.lookup(lowerWord));
     addTokens(manualTaggerTokens,l);
     if (manualTaggerTokens.isEmpty()) {
       addTokens(asAnalyzedTokenList(word,dictLookup.lookup(word)),l);
