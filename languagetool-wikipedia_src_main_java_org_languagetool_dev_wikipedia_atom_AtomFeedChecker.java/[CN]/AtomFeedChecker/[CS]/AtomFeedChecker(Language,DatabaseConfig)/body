@@ -8,6 +8,7 @@
   langTool.disableRule("COMMA_PARENTHESIS_WHITESPACE");
   langTool.disableRule("UPPERCASE_SENTENCE_START");
   langTool.disableRule("HUNSPELL_NO_SUGGEST_RULE");
+  langTool.disableRule("FRENCH_WHITESPACE");
   activateCategory("Wikipedia",langTool);
   if (dbConfig != null) {
     matchDatabase=new MatchDatabase(dbConfig.getUrl(),dbConfig.getUser(),dbConfig.getPassword());
