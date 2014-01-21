@@ -1,0 +1,3 @@
+{
+  ltSupport.getTextComponent().setText("");
+}

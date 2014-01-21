@@ -75,6 +75,10 @@
   autoSpellButton.setHideActionText(true);
   autoSpellButton.setFocusable(false);
   toolbar.add(autoSpellButton);
+  JButton clearTextButton=new JButton(new ClearTextAction());
+  clearTextButton.setHideActionText(true);
+  clearTextButton.setFocusable(false);
+  toolbar.add(clearTextButton);
   cons.insets=new Insets(5,5,5,5);
   cons.fill=GridBagConstraints.BOTH;
   cons.weightx=10.0f;

@@ -1,0 +1,6 @@
+{
+  super(getLabel("clearText"));
+  putValue(Action.SHORT_DESCRIPTION,messages.getString("clearText"));
+  putValue(Action.SMALL_ICON,getImageIcon("sc_closedoc.png"));
+  putValue(Action.LARGE_ICON_KEY,getImageIcon("lc_closedoc.png"));
+}
