@@ -1,4 +1,5 @@
 {
   this.resourceFileName=resourceFileName;
   this.tagFileName=tagFileName;
+  this.stemmer=createStemmer();
 }

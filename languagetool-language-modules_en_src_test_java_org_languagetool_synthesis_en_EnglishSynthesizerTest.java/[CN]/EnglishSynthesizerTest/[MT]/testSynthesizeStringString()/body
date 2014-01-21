@@ -10,4 +10,6 @@
   assertEquals("[a university, the university]",Arrays.toString(synth.synthesize(dummyToken("university"),"+DT",false)));
   assertEquals("[an hour, the hour]",Arrays.toString(synth.synthesize(dummyToken("hour"),"+DT",false)));
   assertEquals("[an hour]",Arrays.toString(synth.synthesize(dummyToken("hour"),"+INDT",false)));
+  assertEquals("[an hour]",Arrays.toString(synth.synthesize(dummyToken("hours","hour"),"NN\\+INDT",true)));
+  assertEquals("[the hour]",Arrays.toString(synth.synthesize(dummyToken("hours","hour"),"NN\\+DT",true)));
 }

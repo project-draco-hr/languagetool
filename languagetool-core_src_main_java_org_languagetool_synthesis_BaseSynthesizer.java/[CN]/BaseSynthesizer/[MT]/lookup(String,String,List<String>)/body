@@ -1,5 +1,4 @@
 {
-  final IStemmer stemmer=createStemmer();
   final List<WordData> wordForms=stemmer.lookup(lemma + "|" + posTag);
   for (  WordData wd : wordForms) {
     results.add(wd.getStem().toString());

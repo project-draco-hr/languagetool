@@ -7,13 +7,11 @@
     final AvsAnRule rule=new AvsAnRule(null);
     return new String[]{rule.suggestAorAn(token.getToken())};
   }
- else {
-    final IStemmer synthesizer=createStemmer();
-    final List<WordData> wordData=synthesizer.lookup(token.getLemma() + "|" + posTag);
-    final List<String> wordForms=new ArrayList<>();
-    for (    WordData wd : wordData) {
-      wordForms.add(wd.getStem().toString());
-    }
-    return wordForms.toArray(new String[wordForms.size()]);
+  final IStemmer synthesizer=createStemmer();
+  final List<WordData> wordData=synthesizer.lookup(token.getLemma() + "|" + posTag);
+  final List<String> wordForms=new ArrayList<>();
+  for (  WordData wd : wordData) {
+    wordForms.add(wd.getStem().toString());
   }
+  return wordForms.toArray(new String[wordForms.size()]);
 }

@@ -1,0 +1,4 @@
+String lemma
+String posTag
+List<String> results
+String determiner

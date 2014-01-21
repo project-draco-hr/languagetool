@@ -1,0 +1,6 @@
+{
+  final List<WordData> wordForms=getStemmer().lookup(lemma + "|" + posTag);
+  for (  WordData wd : wordForms) {
+    results.add(determiner + wd.getStem().toString());
+  }
+}
