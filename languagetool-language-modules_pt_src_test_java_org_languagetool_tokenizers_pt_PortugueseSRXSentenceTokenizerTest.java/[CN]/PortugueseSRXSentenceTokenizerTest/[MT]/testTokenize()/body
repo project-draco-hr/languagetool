@@ -1,0 +1,4 @@
+{
+  testSplit("Cola o teu pr??prio texto aqui.");
+  testSplit("Cola o teu pr??prio texto aqui. ","Ou verifica este texto.");
+}
