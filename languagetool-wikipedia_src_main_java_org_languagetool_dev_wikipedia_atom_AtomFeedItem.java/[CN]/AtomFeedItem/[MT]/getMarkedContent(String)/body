@@ -9,7 +9,7 @@
  else     if (expectingChange) {
       Matcher matcher=TABLE_DATA_CONTENT.matcher(line);
       if (matcher.find()) {
-        String cleanContent=matcher.group(1).replaceAll("<span.*?>","").replace("</span>","").replaceAll("<div.*?>","").replace("</div>","");
+        String cleanContent=matcher.group(1).replaceAll("<span.*?>","").replace("</span>","").replaceAll("<div.*?>","").replace("</div>","").replaceAll("<!--.*?-->","");
         result.add(cleanContent);
       }
  else {
