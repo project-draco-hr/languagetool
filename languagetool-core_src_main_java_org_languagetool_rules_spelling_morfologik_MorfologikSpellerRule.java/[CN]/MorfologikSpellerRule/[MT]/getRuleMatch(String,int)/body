@@ -9,7 +9,7 @@
       return ruleMatches;
     }
     List<String> suggestions=speller.getSuggestions(word);
-    suggestions=getAdditionalSuggestions(suggestions,word);
+    suggestions.addAll(getAdditionalSuggestions(suggestions,word));
     if (!suggestions.isEmpty()) {
       ruleMatch.setSuggestedReplacements(orderSuggestions(suggestions,word));
     }
