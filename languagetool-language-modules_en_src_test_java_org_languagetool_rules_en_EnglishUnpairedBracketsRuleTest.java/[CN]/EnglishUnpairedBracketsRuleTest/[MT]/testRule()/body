@@ -22,6 +22,9 @@
   assertCorrect("(Ketab fi Isti'mal al-'Adad al-Hindi)");
   assertCorrect("On their 'host' societies.");
   assertCorrect("On their 'host society'.");
+  assertCorrect("Burke-rostagno the Richard S. Burkes' home in Wayne may be the setting for the wedding reception for their daughter.");
+  assertCorrect("The '49 team was off to a so-so 5-5 beginning");
+  assertCorrect("A Republican survey says Kennedy won the '60 election on the religious issue.");
   assertIncorrect("(This is a test sentence.");
   assertIncorrect("This is a test with an apostrophe &'.");
   assertIncorrect("&'");

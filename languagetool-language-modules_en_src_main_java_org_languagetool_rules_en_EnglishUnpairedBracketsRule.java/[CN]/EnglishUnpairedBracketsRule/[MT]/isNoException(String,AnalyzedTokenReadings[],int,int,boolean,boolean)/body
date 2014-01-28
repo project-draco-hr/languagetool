@@ -26,8 +26,13 @@
     }
   }
   if (precSpace && !follSpace) {
-    if ("'".equals(tokenStr) && i + 1 < tokens.length && "em".equals(tokens[i + 1].getToken())) {
-      return false;
+    if ("'".equals(tokenStr) && i + 1 < tokens.length) {
+      if ("em".equals(tokens[i + 1].getToken())) {
+        return false;
+      }
+ else       if (YEAR_NUMBER.matcher(tokens[i + 1].getToken()).matches()) {
+        return false;
+      }
     }
   }
   return true;
