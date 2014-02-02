@@ -1,0 +1,69 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  for (  AnalyzedTokenReadings tokenReadings : tokens) {
+    String originalTokenStr=tokenReadings.getToken();
+    if (ignoreTaggedWords && tokenReadings.isTagged()) {
+      continue;
+    }
+    String tokenString=originalTokenStr.toLowerCase(getLocale());
+    AnalyzedTokenReadings analyzedTokenReadings=null;
+    String infinitive=null;
+    int i=0;
+    while (i < 2 && analyzedTokenReadings == null) {
+      Matcher m=desinencies_1conj[i].matcher(tokenString);
+      if (m.matches()) {
+        String lexeme=m.group(1);
+        String desinence=m.group(2);
+        if (desinence.startsWith("e") || desinence.startsWith("??") || desinence.startsWith("i")|| desinence.startsWith("??")) {
+          if (lexeme.endsWith("c")) {
+            lexeme=lexeme.substring(0,lexeme.length() - 1).concat("??");
+          }
+ else           if (lexeme.endsWith("qu")) {
+            lexeme=lexeme.substring(0,lexeme.length() - 2).concat("c");
+          }
+ else           if (lexeme.endsWith("g")) {
+            lexeme=lexeme.substring(0,lexeme.length() - 1).concat("j");
+          }
+ else           if (lexeme.endsWith("g??")) {
+            lexeme=lexeme.substring(0,lexeme.length() - 2).concat("gu");
+          }
+        }
+        infinitive=lexeme.concat("ar");
+        if (wrongWords.containsKey(infinitive)) {
+          List<String> wordAsArray=Arrays.asList("cant".concat(desinence));
+          List<AnalyzedTokenReadings> analyzedTokenReadingsList=tagger.tag(wordAsArray);
+          if (analyzedTokenReadingsList != null) {
+            analyzedTokenReadings=analyzedTokenReadingsList.get(0);
+          }
+        }
+      }
+      i++;
+    }
+    if (analyzedTokenReadings != null) {
+      List<String> possibleReplacements=new ArrayList<>();
+      String[] synthesized=null;
+      List<String> replacementInfinitives=wrongWords.get(infinitive);
+      for (      String replacementInfinitive : replacementInfinitives) {
+        String[] parts=replacementInfinitive.split(" ");
+        AnalyzedToken infinitiveAsAnTkn=new AnalyzedToken(parts[0],"V.*",parts[0]);
+        for (        AnalyzedToken analyzedToken : analyzedTokenReadings) {
+          synthesized=synth.synthesize(infinitiveAsAnTkn,analyzedToken.getPOSTag());
+          for (          String s : synthesized) {
+            for (int j=1; j < parts.length; j++) {
+              s=s.concat(" ").concat(parts[j]);
+            }
+            if (!possibleReplacements.contains(s)) {
+              possibleReplacements.add(s);
+            }
+          }
+        }
+      }
+      if (possibleReplacements != null && possibleReplacements.size() > 0) {
+        RuleMatch potentialRuleMatch=createRuleMatch(tokenReadings,possibleReplacements);
+        ruleMatches.add(potentialRuleMatch);
+      }
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}

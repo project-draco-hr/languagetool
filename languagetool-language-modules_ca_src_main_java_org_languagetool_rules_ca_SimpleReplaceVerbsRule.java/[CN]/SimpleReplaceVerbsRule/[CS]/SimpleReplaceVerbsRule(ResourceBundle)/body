@@ -1,0 +1,11 @@
+{
+  super.setLocQualityIssueType("misspelling");
+  if (messages != null) {
+    super.setCategory(new Category("Errors ortogr??fics"));
+  }
+  wrongWords=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFileName()));
+  tagger=new CatalanTagger();
+  synth=new CatalanSynthesizer();
+  desinencies_1conj[0]=Pattern.compile("(.+?)(a|??|ada|ades|am|ant|ar|ara|ar??|aran|ar??s|ar??|arem|??rem|aren|ares|areu|??reu|aria|ar??em|arien|aries|ar??eu|??s|??ssem|assen|asses|??sseu|??ssim|assin|assis|??ssiu|at|ats|au|ava|??vem|aven|aves|??veu|e|em|en|es|??s|??ssem|essen|esses|??sseu|??ssim|essin|essis|??ssiu|eu|i|??|in|is|o)");
+  desinencies_1conj[1]=Pattern.compile("(.+)(a|??|ada|ades|am|ant|ar|ara|ar??|aran|ar??s|ar??|arem|??rem|aren|ares|areu|??reu|aria|ar??em|arien|aries|ar??eu|??s|??ssem|assen|asses|??sseu|??ssim|assin|assis|??ssiu|at|ats|au|ava|??vem|aven|aves|??veu|e|em|en|es|??s|??ssem|essen|esses|??sseu|??ssim|essin|essis|??ssiu|eu|i|??|in|is|o)");
+}

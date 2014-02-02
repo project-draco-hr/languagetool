@@ -1,0 +1,5 @@
+{
+  super.setUp();
+  rule=new SimpleReplaceVerbsRule(TestTools.getMessages("ca"));
+  langTool=new JLanguageTool(new Catalan());
+}
