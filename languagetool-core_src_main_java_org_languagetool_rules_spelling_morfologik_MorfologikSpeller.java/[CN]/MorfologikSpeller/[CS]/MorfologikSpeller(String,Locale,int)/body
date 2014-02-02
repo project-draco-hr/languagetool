@@ -3,6 +3,7 @@
     throw new RuntimeException("maxEditDistance must be > 0: " + maxEditDistance);
   }
   final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(filename);
-  speller=new Speller(Dictionary.read(url),maxEditDistance);
+  dictionary=Dictionary.read(url);
+  speller=new Speller(dictionary,maxEditDistance);
   this.conversionLocale=conversionLocale != null ? conversionLocale : Locale.getDefault();
 }
