@@ -1,12 +1,22 @@
 {
   super(maxSentences,maxErrors);
+  final String lookupSql="SELECT id FROM corpus_match_hidden WHERE " + "language_code = ? AND sourceuri = ? AND ruleid = ? AND small_error_context = ?";
+  final String insertSql="INSERT INTO corpus_match " + "(version, language_code, ruleid, rule_category, rule_subid, rule_description, message, error_context, small_error_context, corpus_date, " + "check_date, sourceuri, source_type, is_visible) "+ "VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
   final Properties dbProperties=new Properties();
   try (FileInputStream inStream=new FileInputStream(propertiesFile)){
     dbProperties.load(inStream);
     final String dbUrl=getProperty(dbProperties,"dbUrl");
     final String dbUser=getProperty(dbProperties,"dbUser");
     final String dbPassword=getProperty(dbProperties,"dbPassword");
+    try {
+      batchSize=Integer.decode(dbProperties.getProperty("batchSize","1"));
+    }
+ catch (    NumberFormatException e) {
+      batchSize=1;
+    }
     conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
+    lookupSt=conn.prepareStatement(lookupSql);
+    insertSt=conn.prepareStatement(insertSql);
   }
  catch (  SQLException|IOException e) {
     throw new RuntimeException(e);
