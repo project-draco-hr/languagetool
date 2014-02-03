@@ -3,7 +3,7 @@
   final AnalyzedTokenReadings[] sentenceTokens=sentence.getTokens();
   for (int i=1; i < sentenceTokens.length; i++) {
     final String token=sentenceTokens[i].getToken();
-    if (isUrl(token)) {
+    if (isUrl(token) || sentenceTokens[i].isImmunized()) {
       for (int j=0; j < token.length(); j++) {
         sb.append(" ");
       }
