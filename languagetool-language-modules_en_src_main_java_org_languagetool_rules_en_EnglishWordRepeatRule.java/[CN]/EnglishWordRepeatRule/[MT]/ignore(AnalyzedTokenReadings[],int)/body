@@ -2,7 +2,7 @@
   if (wordRepetitionOf("had",tokens,position)) {
     return true;
   }
-  if (wordRepetitionOf("that",tokens,position)) {
+  if (wordRepetitionOf("that",tokens,position) && previousWordIsIn(tokens,position,"think","thinks","believe","believes")) {
     return true;
   }
   if (wordRepetitionOf("Pago",tokens,position)) {

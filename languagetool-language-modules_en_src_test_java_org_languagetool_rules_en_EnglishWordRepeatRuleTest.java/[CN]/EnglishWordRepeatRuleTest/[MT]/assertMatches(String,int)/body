@@ -1,0 +1,4 @@
+{
+  AnalyzedSentence aSentence=langTool.getAnalyzedSentence(sentence);
+  assertThat(rule.match(aSentence).length,is(expectedMatches));
+}

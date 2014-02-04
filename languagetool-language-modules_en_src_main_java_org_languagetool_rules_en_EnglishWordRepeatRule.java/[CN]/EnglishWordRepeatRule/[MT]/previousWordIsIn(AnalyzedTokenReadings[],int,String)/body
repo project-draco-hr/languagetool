@@ -1,0 +1,11 @@
+{
+  if (position >= 2) {
+    String prevWord=tokens[position - 2].getToken();
+    for (    String word : words) {
+      if (prevWord.equals(word)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
