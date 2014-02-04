@@ -32,7 +32,7 @@
       insertSt.setString(12,sentence.getSource());
       insertSt.addBatch();
       if (++batchCount >= batchSize) {
-        insertSt.executeBatch();
+        executeBatch();
         batchCount=0;
       }
       checkMaxErrors(++errorCount);

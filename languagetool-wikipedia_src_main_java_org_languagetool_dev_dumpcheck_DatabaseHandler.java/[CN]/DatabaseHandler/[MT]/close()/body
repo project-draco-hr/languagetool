@@ -1,7 +1,7 @@
 {
   if (insertSt != null) {
     if (batchCount > 0) {
-      insertSt.executeBatch();
+      executeBatch();
     }
     insertSt.close();
   }
