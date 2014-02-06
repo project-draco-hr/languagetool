@@ -1,0 +1,13 @@
+{
+  boolean matchedOptional=false;
+  if (prevSkipNext > 0 && optionalElement != null && optionalElement.hasOptionalException()) {
+    int numberOfReadings=tokens[tokenNo].getReadingsLength();
+    for (int l=0; l < numberOfReadings; l++) {
+      final AnalyzedToken matchToken=tokens[tokenNo].getAnalyzedToken(l);
+      if (!optionalElement.isMatchedByOptionalException(matchToken)) {
+        matchedOptional=true;
+      }
+    }
+  }
+  return matchedOptional;
+}

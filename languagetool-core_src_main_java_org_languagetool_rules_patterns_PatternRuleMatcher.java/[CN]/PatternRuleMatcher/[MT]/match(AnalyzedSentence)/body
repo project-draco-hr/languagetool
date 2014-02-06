@@ -33,6 +33,9 @@
       final int maxTok=Math.min(nextPos + prevSkipNext,tokens.length - (patternSize - k) + minOccurCorrection);
       for (int m=nextPos; m <= maxTok; m++) {
         allElementsMatch=!tokens[m].isImmunized() && testAllReadings(tokens,elem,prevElement,m,firstMatchToken,prevSkipNext);
+        if (!allElementsMatch && testOptionalTokens(tokens,prevElement,m,prevSkipNext)) {
+          break;
+        }
         if (elem.getElement().getMinOccurrence() == 0) {
           final ElementMatcher nextElement=elementMatchers.get(k + 1);
           final boolean nextElementMatch=!tokens[m].isImmunized() && testAllReadings(tokens,nextElement,elem,m,firstMatchToken,prevSkipNext);
@@ -66,7 +69,7 @@
         break;
       }
     }
-    if ((allElementsMatch && matchingTokens == patternSize) || (matchingTokens == patternSize - minOccurSkip && firstMatchToken != -1)) {
+    if (allElementsMatch && matchingTokens == patternSize || matchingTokens == patternSize - minOccurSkip && firstMatchToken != -1) {
       final RuleMatch ruleMatch=createRuleMatch(tokenPositions,tokens,firstMatchToken,lastMatchToken,firstMarkerMatchToken,lastMarkerMatchToken);
       if (ruleMatch != null) {
         ruleMatches.add(ruleMatch);

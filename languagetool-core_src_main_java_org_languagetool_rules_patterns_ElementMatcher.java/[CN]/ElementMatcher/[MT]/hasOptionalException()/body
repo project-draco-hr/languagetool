@@ -1,0 +1,11 @@
+{
+  boolean hasSubEx=false;
+  if (element.getExceptionList() != null) {
+    for (    Element e : element.getExceptionList()) {
+      if (e.hasOptionalException()) {
+        return true;
+      }
+    }
+  }
+  return hasSubEx;
+}

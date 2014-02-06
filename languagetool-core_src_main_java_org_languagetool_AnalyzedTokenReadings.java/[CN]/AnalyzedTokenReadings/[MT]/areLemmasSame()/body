@@ -1,0 +1,17 @@
+{
+  String previousLemma=anTokReadings[0].getLemma();
+  if (previousLemma == null) {
+    for (    AnalyzedToken element : anTokReadings) {
+      if (element.getLemma() == null) {
+        continue;
+      }
+    }
+    return true;
+  }
+  for (  AnalyzedToken element : anTokReadings) {
+    if (!previousLemma.equals(element.getLemma())) {
+      return false;
+    }
+  }
+  return true;
+}

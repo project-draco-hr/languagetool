@@ -1,7 +1,7 @@
 {
   if (exceptionValidPrevious) {
     for (    final Element testException : previousExceptionList) {
-      if (!testException.exceptionValidNext) {
+      if (!(testException.exceptionValidNext || testException.exceptionValidOptional)) {
         if (testException.isMatched(token)) {
           return true;
         }

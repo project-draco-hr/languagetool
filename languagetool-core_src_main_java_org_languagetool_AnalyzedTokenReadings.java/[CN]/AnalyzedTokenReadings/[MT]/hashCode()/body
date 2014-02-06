@@ -10,6 +10,6 @@
   result=prime * result + (isWhitespaceBefore ? 1231 : 1237);
   result=prime * result + chunkTags.hashCode();
   result=prime * result + startPos;
-  result=prime * result + ((token == null) ? 0 : token.hashCode());
+  result=prime * result + (token == null ? 0 : token.hashCode());
   return result;
 }

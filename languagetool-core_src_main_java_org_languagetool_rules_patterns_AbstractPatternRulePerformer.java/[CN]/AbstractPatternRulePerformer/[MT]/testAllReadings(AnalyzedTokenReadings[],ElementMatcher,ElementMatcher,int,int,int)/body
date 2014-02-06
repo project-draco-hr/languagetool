@@ -9,8 +9,13 @@
       return false;
     }
     thisMatched=thisMatched || elem.isMatched(matchToken);
-    if (!thisMatched && !elem.getElement().isInflected() && elem.getElement().getPOStag() == null && (prevElement != null && prevElement.getElement().getExceptionList() == null)) {
-      return false;
+    if (!thisMatched && prevElement != null && prevElement.getElement().getExceptionList() == null) {
+      if (elem.getElement().isInflected() && tokens[tokenNo].hasSameLemmas() && elem.getElement().getPOStag() == null) {
+        return false;
+      }
+      if (!elem.getElement().isInflected() && elem.getElement().getPOStag() == null) {
+        return false;
+      }
     }
     if (rule.isGroupsOrUnification()) {
       thisMatched&=testUnificationAndGroups(thisMatched,l + 1 == numberOfReadings,matchToken,elem);
