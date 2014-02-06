@@ -5,7 +5,6 @@
   exceptionPosRegExp=false;
   exceptionStringRegExp=false;
   exceptionValidNext=false;
-  exceptionOptional=false;
   exceptionValidPrev=false;
   exceptionSpaceBefore=false;
   exceptionSpaceBeforeSet=false;

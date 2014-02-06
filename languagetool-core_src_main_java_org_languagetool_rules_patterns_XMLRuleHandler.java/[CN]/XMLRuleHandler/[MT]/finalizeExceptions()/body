@@ -6,12 +6,7 @@
   }
   tokenElement.setNegation(tokenNegated);
   if (!StringTools.isEmpty(exceptions.toString()) || exceptionPosToken != null) {
-    if (exceptionOptional) {
-      tokenElement.setOptionalException(StringTools.trimWhitespace(exceptions.toString()),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionPosToken,exceptionPosRegExp,exceptionPosNegation);
-    }
- else {
-      tokenElement.setStringPosException(StringTools.trimWhitespace(exceptions.toString()),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev,exceptionPosToken,exceptionPosRegExp,exceptionPosNegation);
-    }
+    tokenElement.setStringPosException(StringTools.trimWhitespace(exceptions.toString()),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev,exceptionPosToken,exceptionPosRegExp,exceptionPosNegation);
     exceptionPosToken=null;
   }
   if (exceptionSpaceBeforeSet) {

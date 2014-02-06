@@ -4,7 +4,6 @@
   resetException();
   exceptionStringNegation=YES.equals(attrs.getValue(NEGATE));
   exceptionValidNext="next".equals(attrs.getValue(SCOPE));
-  exceptionOptional="optional".equals(attrs.getValue(SCOPE));
   exceptionValidPrev="previous".equals(attrs.getValue(SCOPE));
   exceptionStringInflected=YES.equals(attrs.getValue(INFLECTED));
   if (attrs.getValue(POSTAG) != null) {

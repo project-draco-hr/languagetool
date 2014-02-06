@@ -1,4 +1,0 @@
-AnalyzedTokenReadings[] tokens
-ElementMatcher optionalElement
-int tokenNo
-int prevSkipNext
