@@ -43,7 +43,7 @@
           }
         }
         if (allElementsMatch) {
-          int skipForMax=skipMaxTokens(tokens,elem,firstMatchToken,prevSkipNext,prevElement,m);
+          int skipForMax=skipMaxTokens(tokens,elem,firstMatchToken,prevSkipNext,prevElement,m,patternSize - k - 1);
           lastMatchToken=m + skipForMax;
           final int skipShift=lastMatchToken - nextPos;
           tokenPositions[matchingTokens]=skipShift + 1;

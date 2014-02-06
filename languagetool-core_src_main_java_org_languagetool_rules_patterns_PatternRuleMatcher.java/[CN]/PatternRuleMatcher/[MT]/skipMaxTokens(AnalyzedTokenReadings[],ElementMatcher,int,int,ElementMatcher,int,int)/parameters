@@ -4,3 +4,4 @@ int firstMatchToken
 int prevSkipNext
 ElementMatcher prevElement
 int m
+int remainingElems
