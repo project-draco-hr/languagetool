@@ -2,6 +2,9 @@
   List<RuleMatch> ruleMatches=new ArrayList<>();
   AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   for (  AnalyzedTokenReadings tokenReadings : tokens) {
+    if (tokenReadings.isImmunized()) {
+      continue;
+    }
     String originalTokenStr=tokenReadings.getToken();
     if (ignoreTaggedWords && tokenReadings.isTagged()) {
       continue;
