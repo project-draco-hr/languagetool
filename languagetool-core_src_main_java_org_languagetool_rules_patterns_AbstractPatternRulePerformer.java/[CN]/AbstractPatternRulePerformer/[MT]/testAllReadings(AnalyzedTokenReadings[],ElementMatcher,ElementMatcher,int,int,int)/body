@@ -9,14 +9,16 @@
       return false;
     }
     thisMatched=thisMatched || elem.isMatched(matchToken);
-    if (!thisMatched && prevElement != null && prevElement.getElement().getExceptionList() == null) {
-      if (elem.getElement().isInflected() && tokens[tokenNo].hasSameLemmas() && elem.getElement().getPOStag() == null) {
-        return false;
+    if (!thisMatched && (prevElement == null || prevElement != null && prevElement.getElement().getExceptionList() == null)) {
+      if (elem.getElement().getPOStag() == null) {
+        if (elem.getElement().isInflected()) {
+          if (tokens[tokenNo].hasSameLemmas()) {
+            return false;
+          }
+        }
+ else         return false;
       }
-      if (!elem.getElement().isInflected() && elem.getElement().getPOStag() == null) {
-        return false;
-      }
-      if (elem.getElement().getPOStag() != null && !tokens[tokenNo].isTagged() && !elem.getElement().getPOSNegation()) {
+ else       if (!elem.getElement().getPOSNegation() && !tokens[tokenNo].isTagged()) {
         return false;
       }
     }
