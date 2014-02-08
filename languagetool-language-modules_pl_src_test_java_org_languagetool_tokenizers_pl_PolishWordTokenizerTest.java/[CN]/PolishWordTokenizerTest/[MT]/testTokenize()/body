@@ -18,4 +18,13 @@
   final List<String> tokens6=wordTokenizer.tokenize("A to jest zdanie???rzeczywi??cie???z wtr??ceniem.");
   assertEquals(tokens6.size(),14);
   assertEquals("[A,  , to,  , jest,  , zdanie, ???, rzeczywi??cie, ???, z,  , wtr??ceniem, .]",tokens6.toString());
+  final String compoundSentence="To jest kobieta-wojownik w polsko-czeskim ubraniu, kt??ra wys??a??a dwa SMS-y.";
+  List<String> compoundTokens=wordTokenizer.tokenize(compoundSentence);
+  assertEquals(21,compoundTokens.size());
+  assertEquals("[To,  , jest,  , kobieta-wojownik,  , w,  , polsko-czeskim,  , ubraniu, ,,  , kt??ra,  , wys??a??a,  , dwa,  , SMS-y, .]",compoundTokens.toString());
+  Language pl=new Polish();
+  wordTokenizer.setupTagger(pl.getTagger());
+  compoundTokens=wordTokenizer.tokenize(compoundSentence);
+  assertEquals(25,compoundTokens.size());
+  assertEquals("[To,  , jest,  , kobieta, -, wojownik,  , " + "w,  , polsko, -, czeskim,  , ubraniu, ,,  " + ", kt??ra,  , wys??a??a,  , dwa,  , SMS-y, .]",compoundTokens.toString());
 }

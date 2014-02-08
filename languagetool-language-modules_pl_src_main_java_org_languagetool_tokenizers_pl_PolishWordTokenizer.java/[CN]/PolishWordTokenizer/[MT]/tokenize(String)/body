@@ -12,6 +12,37 @@
         l.add("-");
         l.add(token.substring(1,token.length()));
       }
+ else       if (token.contains("-")) {
+        String[] tokenParts=token.split("-");
+        if (tokenParts.length == 2) {
+          List<String> testedTokens=new ArrayList<>(2);
+          testedTokens.add(tokenParts[0]);
+          testedTokens.add(tokenParts[1]);
+          testedTokens.add(token);
+          if (prefixes.contains(tokenParts[0]) || tagger == null) {
+            l.add(token);
+          }
+ else {
+            try {
+              List<AnalyzedTokenReadings> taggedToks=tagger.tag(testedTokens);
+              if (taggedToks.size() == 3 && !taggedToks.get(2).isTagged() && (taggedToks.get(0).hasPosTag("adv:pos") && taggedToks.get(1).hasPartialPosTag("adj:") || taggedToks.get(0).hasPartialPosTag("subst:") && taggedToks.get(1).hasPartialPosTag("subst:"))) {
+                l.add(tokenParts[0]);
+                l.add("-");
+                l.add(tokenParts[1]);
+              }
+ else {
+                l.add(token);
+              }
+            }
+ catch (            IOException e) {
+              l.add(token);
+            }
+          }
+        }
+ else {
+          l.add(token);
+        }
+      }
  else {
         l.add(token);
       }
