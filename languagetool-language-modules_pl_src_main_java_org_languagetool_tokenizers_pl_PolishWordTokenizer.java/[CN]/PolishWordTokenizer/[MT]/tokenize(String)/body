@@ -15,7 +15,7 @@
  else       if (token.contains("-")) {
         String[] tokenParts=token.split("-");
         if (tokenParts.length == 2) {
-          List<String> testedTokens=new ArrayList<>(2);
+          List<String> testedTokens=new ArrayList<>(3);
           testedTokens.add(tokenParts[0]);
           testedTokens.add(tokenParts[1]);
           testedTokens.add(token);
