@@ -4,11 +4,15 @@
   elem.prepareAndGroup(firstMatchToken,tokens,rule.getLanguage());
   for (int l=0; l < numberOfReadings; l++) {
     final AnalyzedToken matchToken=tokens[tokenNo].getAnalyzedToken(l);
+    boolean tested=false;
     prevMatched=prevMatched || prevSkipNext > 0 && prevElement != null && prevElement.isMatchedByScopeNextException(matchToken);
     if (prevMatched) {
       return false;
     }
-    thisMatched=thisMatched || elem.isMatched(matchToken);
+    if (!thisMatched) {
+      thisMatched=elem.isMatched(matchToken);
+      tested=true;
+    }
     if (!thisMatched && (prevElement == null || prevElement != null && prevElement.getElement().getExceptionList() == null)) {
       if (elem.getElement().getPOStag() == null) {
         if (elem.getElement().isInflected()) {
@@ -23,7 +27,7 @@
       }
     }
     if (rule.isGroupsOrUnification()) {
-      thisMatched&=testUnificationAndGroups(thisMatched,l + 1 == numberOfReadings,matchToken,elem);
+      thisMatched&=testUnificationAndGroups(thisMatched,l + 1 == numberOfReadings,matchToken,elem,tested);
     }
   }
   if (thisMatched) {

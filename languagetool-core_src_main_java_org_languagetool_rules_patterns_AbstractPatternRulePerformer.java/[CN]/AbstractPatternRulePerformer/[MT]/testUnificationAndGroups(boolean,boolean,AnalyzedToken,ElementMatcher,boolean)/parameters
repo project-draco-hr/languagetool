@@ -2,3 +2,4 @@ boolean matched
 boolean lastReading
 AnalyzedToken matchToken
 ElementMatcher elemMatcher
+boolean alreadyTested

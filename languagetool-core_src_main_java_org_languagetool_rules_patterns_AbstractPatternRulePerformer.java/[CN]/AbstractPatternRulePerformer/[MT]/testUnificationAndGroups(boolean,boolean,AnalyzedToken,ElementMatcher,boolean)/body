@@ -1,6 +1,6 @@
 {
   boolean thisMatched=matched;
-  final boolean elemIsMatched=elemMatcher.isMatched(matchToken);
+  final boolean elemIsMatched=alreadyTested || elemMatcher.isMatched(matchToken);
   final Element elem=elemMatcher.getElement();
   if (rule.testUnification) {
     if (matched && elem.isUnified()) {
