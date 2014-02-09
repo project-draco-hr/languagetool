@@ -2,7 +2,7 @@
   List<RuleMatch> ruleMatches=new ArrayList<>();
   AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
   for (  AnalyzedTokenReadings tokenReadings : tokens) {
-    if (tokenReadings.isImmunized()) {
+    if (tokenReadings.isImmunized() || tokenReadings.isIgnoredBySpeller()) {
       continue;
     }
     String originalTokenStr=tokenReadings.getToken();

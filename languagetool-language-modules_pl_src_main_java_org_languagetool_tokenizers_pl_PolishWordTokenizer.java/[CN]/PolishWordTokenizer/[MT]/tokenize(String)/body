@@ -25,7 +25,7 @@
  else {
             try {
               List<AnalyzedTokenReadings> taggedToks=tagger.tag(testedTokens);
-              if (taggedToks.size() == 3 && !taggedToks.get(2).isTagged() && (taggedToks.get(0).hasPosTag("adv:pos") && taggedToks.get(1).hasPartialPosTag("adj:") || taggedToks.get(0).hasPartialPosTag("subst:") && taggedToks.get(1).hasPartialPosTag("subst:"))) {
+              if (taggedToks.size() == 3 && !taggedToks.get(2).isTagged() && (taggedToks.get(0).hasPosTag("adja") && taggedToks.get(1).hasPartialPosTag("adj:") || taggedToks.get(0).hasPartialPosTag("subst:") && taggedToks.get(1).hasPartialPosTag("subst:"))) {
                 l.add(tokenParts[0]);
                 l.add("-");
                 l.add(tokenParts[1]);

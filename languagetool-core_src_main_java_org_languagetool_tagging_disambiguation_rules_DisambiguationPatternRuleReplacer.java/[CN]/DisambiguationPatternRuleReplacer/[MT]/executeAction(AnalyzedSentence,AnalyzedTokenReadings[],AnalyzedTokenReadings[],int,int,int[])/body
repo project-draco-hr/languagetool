@@ -93,6 +93,11 @@ for (int i=0; i < matchingTokens - startPositionCorrection + endPositionCorrecti
 whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].immunize();
 }
 break;
+case IGNORE_SPELLING:
+for (int i=0; i < matchingTokens - startPositionCorrection + endPositionCorrection; i++) {
+whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].ignoreSpelling();
+}
+break;
 case FILTER:
 if (matchElement == null) {
 final Match tmpMatchToken=new Match(disambiguatedPOS,null,true,disambiguatedPOS,null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);
@@ -133,7 +138,7 @@ whTokens[position]=replaceTokens(whTokens[position],toReplace);
  else if (matchElement == null) {
 String lemma="";
 for (AnalyzedToken analyzedToken : whTokens[fromPos]) {
-if (analyzedToken.getPOSTag() != null && (analyzedToken.getPOSTag().equals(disambiguatedPOS) && (analyzedToken.getLemma() != null))) {
+if (analyzedToken.getPOSTag() != null && analyzedToken.getPOSTag().equals(disambiguatedPOS) && analyzedToken.getLemma() != null) {
 lemma=analyzedToken.getLemma();
 }
 }

@@ -6,6 +6,7 @@
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("LanguageTool jest ??wietny!")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence(",")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("123454")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Bogactwo nie ro??nie proporcjonalnie do jej rozwoju techniczno-terytorialnego.")).length);
   final RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("Zolw"));
   assertEquals(1,matches.length);
   assertEquals(0,matches[0].getFromPos());
