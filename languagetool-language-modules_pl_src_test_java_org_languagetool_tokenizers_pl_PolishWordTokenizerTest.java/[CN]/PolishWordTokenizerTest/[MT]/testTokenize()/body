@@ -23,7 +23,7 @@
   assertEquals(21,compoundTokens.size());
   assertEquals("[To,  , jest,  , kobieta-wojownik,  , w,  , polsko-czeskim,  , ubraniu, ,,  , kt??ra,  , wys??a??a,  , dwa,  , SMS-y, .]",compoundTokens.toString());
   Language pl=new Polish();
-  wordTokenizer.setupTagger(pl.getTagger());
+  wordTokenizer.setTagger(pl.getTagger());
   compoundTokens=wordTokenizer.tokenize(compoundSentence);
   assertEquals(25,compoundTokens.size());
   assertEquals("[To,  , jest,  , kobieta, -, wojownik,  , " + "w,  , polsko, -, czeskim,  , ubraniu, ,,  " + ", kt??ra,  , wys??a??a,  , dwa,  , SMS-y, .]",compoundTokens.toString());
