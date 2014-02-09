@@ -36,6 +36,7 @@
             }
  catch (            IOException e) {
               l.add(token);
+              throw new RuntimeException(e);
             }
           }
         }
