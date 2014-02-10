@@ -13,7 +13,7 @@
       thisMatched=elem.isMatched(matchToken);
       tested=true;
     }
-    if (!thisMatched && (prevElement == null || prevElement != null && prevElement.getElement().getExceptionList() == null)) {
+    if (!thisMatched && (prevElement == null || prevElement.getElement().getExceptionList() == null)) {
       if (elem.getElement().getPOStag() == null) {
         if (elem.getElement().isInflected()) {
           if (tokens[tokenNo].hasSameLemmas()) {
