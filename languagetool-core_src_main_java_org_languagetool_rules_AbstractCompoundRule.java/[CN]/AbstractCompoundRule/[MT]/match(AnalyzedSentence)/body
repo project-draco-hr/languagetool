@@ -46,7 +46,7 @@
           replacement.add(origStringToCheck.replace(' ','-'));
           msg=withHyphenMessage;
         }
-        if (!hasAllUppercaseParts(origStringToCheck) && !onlyDashSuggestion.contains(stringToCheck)) {
+        if (isNotAllUppercase(origStringToCheck) && !onlyDashSuggestion.contains(stringToCheck)) {
           replacement.add(mergeCompound(origStringToCheck));
           msg=withoutHyphenMessage;
         }

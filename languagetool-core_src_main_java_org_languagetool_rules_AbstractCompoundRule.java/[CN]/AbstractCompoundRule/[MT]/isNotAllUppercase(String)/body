@@ -3,9 +3,9 @@
   for (  String part : parts) {
     if (isHyphenIgnored() || !"-".equals(part)) {
       if (StringTools.isAllUppercase(part)) {
-        return true;
+        return false;
       }
     }
   }
-  return false;
+  return true;
 }

@@ -3,9 +3,9 @@
     final int sugStart=msg.indexOf(SUGGESTION_START_TAG) + SUGGESTION_START_TAG.length();
     for (    Match sMatch : suggestionMatches) {
       if (!sMatch.isInMessageOnly() && sMatch.convertsCase() && msg.charAt(sugStart) == '\\') {
-        return true;
+        return false;
       }
     }
   }
-  return false;
+  return true;
 }
