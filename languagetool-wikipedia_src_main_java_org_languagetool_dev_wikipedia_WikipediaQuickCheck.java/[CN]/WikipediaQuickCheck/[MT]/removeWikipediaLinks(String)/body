@@ -1,0 +1,3 @@
+{
+  return wikiContent.replaceAll("\\[\\[[a-z]{2,6}:.*?\\]\\]","").replaceAll("\\[\\[(Category|Categoria|Categor??a|Cat??gorie|Kategorie):.*?\\]\\]","").replaceAll("(File|Fitxer|Fichero|Ficheiro|Fichier|Datei):.*?\\.(png|jpg|svg|jpeg|tiff|PNG|JPG|SVG|JPEG|TIFF)\\|((thumb|miniatur)\\|)?((right|left)\\|)?","");
+}

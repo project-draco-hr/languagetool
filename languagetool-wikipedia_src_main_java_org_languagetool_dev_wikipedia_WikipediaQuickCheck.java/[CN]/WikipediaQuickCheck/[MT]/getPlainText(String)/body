@@ -1,6 +1,6 @@
 {
   final MediaWikiContent wikiContent=getRevisionContent(completeWikiContent);
-  final String cleanedWikiContent=removeInterLanguageLinks(wikiContent.getContent());
+  final String cleanedWikiContent=removeWikipediaLinks(wikiContent.getContent());
   final TextMapFilter filter=new SwebleWikipediaTextFilter();
   return filter.filter(cleanedWikiContent).getPlainText();
 }

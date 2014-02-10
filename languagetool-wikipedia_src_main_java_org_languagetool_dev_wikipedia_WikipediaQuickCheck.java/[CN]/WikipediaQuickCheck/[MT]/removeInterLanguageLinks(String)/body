@@ -1,3 +1,0 @@
-{
-  return wikiContent.replaceAll("\\[\\[[a-z]{2,6}:.*?\\]\\]","");
-}
