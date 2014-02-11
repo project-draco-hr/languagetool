@@ -1,5 +1,4 @@
 {
-  boolean unifiedNext=true;
   boolean anyFeatUnified=false;
   List<String> types;
   final ArrayList<Boolean> tokenFeaturesFound=new ArrayList<>(tmpFeaturesFound);
@@ -43,8 +42,7 @@
       tokenFeaturesFound.set(i,tokenFeaturesFound.get(i) & allFeatsUnified);
       anyFeatUnified=anyFeatUnified || allFeatsUnified;
     }
-    unifiedNext=anyFeatUnified;
-    if (unifiedNext) {
+    if (anyFeatUnified) {
       if (tokSequence.size() == readingsCounter) {
         tokSequence.add(new AnalyzedTokenReadings(aToken,0));
       }
@@ -53,11 +51,11 @@
           tokSequence.get(readingsCounter).addReading(aToken);
         }
  else {
-          unifiedNext=false;
+          anyFeatUnified=false;
         }
       }
       tmpFeaturesFound=tokenFeaturesFound;
     }
   }
-  return unifiedNext;
+  return anyFeatUnified;
 }
