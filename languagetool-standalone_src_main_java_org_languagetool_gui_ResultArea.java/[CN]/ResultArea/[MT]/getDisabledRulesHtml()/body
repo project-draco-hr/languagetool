@@ -1,5 +1,5 @@
 {
-  final StringBuilder sb=new StringBuilder();
+  final StringBuilder sb=new StringBuilder(40);
   sb.append(messages.getString("deactivatedRulesText"));
   int i=0;
   int deactivatedRuleCount=0;

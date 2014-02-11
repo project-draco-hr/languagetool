@@ -1,13 +1,11 @@
 {
   int counter=0;
   for (  final Element elTest : elList) {
-    if (elTest.getPhraseName() != null && counter > 0) {
-      if (elTest.isReferenceElement()) {
-        final int tokRef=elTest.getMatch().getTokenRef();
-        elTest.getMatch().setTokenRef(tokRef + counter - 1);
-        final String offsetToken=elTest.getString().replace("\\" + tokRef,"\\" + (tokRef + counter - 1));
-        elTest.setStringElement(offsetToken);
-      }
+    if (elTest.getPhraseName() != null && counter > 0 && elTest.isReferenceElement()) {
+      final int tokRef=elTest.getMatch().getTokenRef();
+      elTest.getMatch().setTokenRef(tokRef + counter - 1);
+      final String offsetToken=elTest.getString().replace("\\" + tokRef,"\\" + (tokRef + counter - 1));
+      elTest.setStringElement(offsetToken);
     }
     counter++;
   }

@@ -5,7 +5,7 @@
   if (rule.testUnification) {
     if (matched && elem.isUnified()) {
       if (elem.isUniNegated()) {
-        thisMatched=!(unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading,elemIsMatched));
+        thisMatched=!unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading,elemIsMatched);
       }
  else {
         if (elem.isLastInUnification()) {

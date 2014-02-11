@@ -1,18 +1,16 @@
 {
-  if (posTagRegExp) {
+  if (posTag != null && posTagRegExp) {
     String myPosTag=posTag;
     String det="";
-    if (posTag != null) {
-      if (posTag.endsWith(ADD_IND_DETERMINER)) {
-        myPosTag=myPosTag.substring(0,myPosTag.indexOf(ADD_IND_DETERMINER) - "\\".length());
-        final AvsAnRule rule=new AvsAnRule(null);
-        det=rule.suggestAorAn(token.getLemma());
-        det=det.substring(0,det.indexOf(' ') + " ".length());
-      }
- else       if (posTag.endsWith(ADD_DETERMINER)) {
-        myPosTag=myPosTag.substring(0,myPosTag.indexOf(ADD_DETERMINER) - "\\".length());
-        det="the ";
-      }
+    if (posTag.endsWith(ADD_IND_DETERMINER)) {
+      myPosTag=myPosTag.substring(0,myPosTag.indexOf(ADD_IND_DETERMINER) - "\\".length());
+      final AvsAnRule rule=new AvsAnRule(null);
+      det=rule.suggestAorAn(token.getLemma());
+      det=det.substring(0,det.indexOf(' ') + " ".length());
+    }
+ else     if (posTag.endsWith(ADD_DETERMINER)) {
+      myPosTag=myPosTag.substring(0,myPosTag.indexOf(ADD_DETERMINER) - "\\".length());
+      det="the ";
     }
     initSynthesizer();
     initPossibleTags();

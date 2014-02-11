@@ -1,6 +1,6 @@
 {
   final ContextTools contextTools=new ContextTools();
-  final StringBuilder sb=new StringBuilder();
+  final StringBuilder sb=new StringBuilder(200);
   sb.append(startCheckText);
   sb.append("<br>\n");
   int i=0;

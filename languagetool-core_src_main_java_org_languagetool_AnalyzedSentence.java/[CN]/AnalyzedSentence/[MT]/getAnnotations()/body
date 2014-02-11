@@ -1,5 +1,5 @@
 {
-  final StringBuilder sb=new StringBuilder();
+  final StringBuilder sb=new StringBuilder(40);
   sb.append("Disambiguator log: \n");
   for (  final AnalyzedTokenReadings element : tokens) {
     if (!element.isWhitespace() && !"".equals(element.getHistoricalAnnotations())) {

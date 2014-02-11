@@ -8,10 +8,8 @@
   }
  else   if (l.size() > i + 1) {
     final String nToken=l.get(i + 1);
-    if (StringTools.isWhitespace(nToken)) {
-      if (token.equals(".") || token.equals(",") || token.equals(";")|| token.equals(":")|| token.equals("!")|| token.equals("?")) {
-        return true;
-      }
+    if (StringTools.isWhitespace(nToken) && (token.equals(".") || token.equals(",") || token.equals(";")|| token.equals(":")|| token.equals("!")|| token.equals("?"))) {
+      return true;
     }
   }
  else {

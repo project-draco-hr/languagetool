@@ -11,8 +11,8 @@
     if ("off".equals(attrs.getValue(DEFAULT))) {
       category.setDefaultOff();
     }
-    if (attrs.getValue("type") != null) {
-      categoryIssueType=attrs.getValue("type");
+    if (attrs.getValue(TYPE) != null) {
+      categoryIssueType=attrs.getValue(TYPE);
     }
   }
  else   if ("rules".equals(qName)) {
@@ -49,8 +49,8 @@
     if (suggestionMatchesOutMsg != null) {
       suggestionMatchesOutMsg.clear();
     }
-    if (attrs.getValue("type") != null) {
-      ruleIssueType=attrs.getValue("type");
+    if (attrs.getValue(TYPE) != null) {
+      ruleIssueType=attrs.getValue(TYPE);
     }
   }
  else   if (PATTERN.equals(qName)) {
@@ -124,8 +124,8 @@
     defaultOn="on".equals(attrs.getValue(DEFAULT));
     inRuleGroup=true;
     subId=0;
-    if (attrs.getValue("type") != null) {
-      ruleGroupIssueType=attrs.getValue("type");
+    if (attrs.getValue(TYPE) != null) {
+      ruleGroupIssueType=attrs.getValue(TYPE);
     }
   }
  else   if (SUGGESTION.equals(qName) && inMessage) {
