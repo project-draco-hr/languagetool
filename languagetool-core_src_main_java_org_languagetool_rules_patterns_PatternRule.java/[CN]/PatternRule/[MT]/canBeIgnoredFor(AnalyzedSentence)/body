@@ -1,7 +1,4 @@
 {
   Set<String> simpleRuleTokens=getSimpleTokens();
-  if (simpleRuleTokens.isEmpty()) {
-    return false;
-  }
-  return !sentence.getTokenSet().containsAll(simpleRuleTokens);
+  return !simpleRuleTokens.isEmpty() && !sentence.getTokenSet().containsAll(simpleRuleTokens);
 }

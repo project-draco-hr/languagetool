@@ -7,7 +7,7 @@
   }
   boolean found=true;
   if (!"".equals(an.getToken())) {
-    found&=an.getToken().equals(this.token);
+    found=an.getToken().equals(this.token);
   }
   if (an.getLemma() != null) {
     found&=an.getLemma().equals(this.lemma);

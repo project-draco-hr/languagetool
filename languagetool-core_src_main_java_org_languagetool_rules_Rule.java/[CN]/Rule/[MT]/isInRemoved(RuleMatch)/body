@@ -1,6 +1,3 @@
 {
-  if (removedMatches == null) {
-    return false;
-  }
-  return removedMatches.contains(ruleMatch);
+  return removedMatches != null && removedMatches.contains(ruleMatch);
 }

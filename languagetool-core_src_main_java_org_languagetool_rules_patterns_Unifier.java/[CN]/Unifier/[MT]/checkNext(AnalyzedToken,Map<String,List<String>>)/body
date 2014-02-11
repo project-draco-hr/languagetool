@@ -43,7 +43,7 @@
       tokenFeaturesFound.set(i,tokenFeaturesFound.get(i) & allFeatsUnified);
       anyFeatUnified=anyFeatUnified || allFeatsUnified;
     }
-    unifiedNext&=anyFeatUnified;
+    unifiedNext=anyFeatUnified;
     if (unifiedNext) {
       if (tokSequence.size() == readingsCounter) {
         tokSequence.add(new AnalyzedTokenReadings(aToken,0));

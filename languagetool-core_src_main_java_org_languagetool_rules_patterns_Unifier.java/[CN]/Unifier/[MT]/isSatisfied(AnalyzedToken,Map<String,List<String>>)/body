@@ -8,7 +8,7 @@
   boolean unified=true;
   List<String> types;
   if (allFeatsIn) {
-    unified&=checkNext(aToken,uFeatures);
+    unified=checkNext(aToken,uFeatures);
   }
  else {
     tokCnt++;
@@ -36,7 +36,7 @@
           }
         }
       }
-      unified&=equivalencesMatched.get(tokCnt).containsKey(feat.getKey());
+      unified=equivalencesMatched.get(tokCnt).containsKey(feat.getKey());
       if (!unified) {
         break;
       }

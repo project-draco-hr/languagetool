@@ -2,8 +2,5 @@
   if (previousMatches == null) {
     return false;
   }
-  if (previousMatches.size() > index) {
-    return previousMatches.get(index) != null;
-  }
-  return false;
+  return previousMatches.size() > index && previousMatches.get(index) != null;
 }
