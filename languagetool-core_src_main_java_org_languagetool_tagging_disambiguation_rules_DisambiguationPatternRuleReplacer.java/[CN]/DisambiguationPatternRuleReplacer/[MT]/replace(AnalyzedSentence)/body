@@ -17,11 +17,12 @@
     if (rule.isTestUnification()) {
       unifier.reset();
     }
+    int minOccurSkip=0;
     for (int k=0; k < patternSize; k++) {
       final ElementMatcher prevElement=elem;
       elem=elementMatchers.get(k);
       elem.resolveReference(firstMatchToken,tokens,rule.getLanguage());
-      final int nextPos=i + k + skipShiftTotal;
+      final int nextPos=i + k + skipShiftTotal - minOccurSkip;
       prevMatched=false;
       if (prevSkipNext + nextPos >= tokens.length || prevSkipNext < 0) {
         prevSkipNext=tokens.length - (nextPos + 1);
@@ -29,6 +30,15 @@
       final int maxTok=Math.min(nextPos + prevSkipNext,tokens.length - (patternSize - k));
       for (int m=nextPos; m <= maxTok; m++) {
         allElementsMatch=testAllReadings(tokens,elem,prevElement,m,firstMatchToken,prevSkipNext);
+        if (elem.getElement().getMinOccurrence() == 0) {
+          final ElementMatcher nextElement=elementMatchers.get(k + 1);
+          final boolean nextElementMatch=!tokens[m].isImmunized() && testAllReadings(tokens,nextElement,elem,m,firstMatchToken,prevSkipNext);
+          if (nextElementMatch) {
+            allElementsMatch=true;
+            minOccurSkip++;
+            break;
+          }
+        }
         if (allElementsMatch) {
           final int skipShift=m - nextPos;
           tokenPositions[matchingTokens]=skipShift + 1;
@@ -45,7 +55,7 @@
         break;
       }
     }
-    if (allElementsMatch && matchingTokens == patternSize) {
+    if (allElementsMatch && matchingTokens == patternSize || matchingTokens == patternSize - minOccurSkip && firstMatchToken != -1) {
       whTokens=executeAction(text,whTokens,unifiedTokens,firstMatchToken,matchingTokens,tokenPositions);
       changed=true;
     }
