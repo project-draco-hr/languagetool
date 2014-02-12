@@ -27,4 +27,7 @@
   compoundTokens=wordTokenizer.tokenize(compoundSentence);
   assertEquals(25,compoundTokens.size());
   assertEquals("[To,  , jest,  , kobieta, -, wojownik,  , " + "w,  , polsko, -, czeskim,  , ubraniu, ,,  " + ", kt??ra,  , wys??a??a,  , dwa,  , SMS-y, .]",compoundTokens.toString());
+  compoundTokens=wordTokenizer.tokenize("Mia??a osiemna??cie-dwadzie??cia lat.");
+  assertEquals(8,compoundTokens.size());
+  assertEquals("[Mia??a,  , osiemna??cie, -, dwadzie??cia,  , lat, .]",compoundTokens.toString());
 }
