@@ -12,7 +12,7 @@
       testedTokens.add(first);
       testedTokens.add(second);
       List<AnalyzedTokenReadings> taggedToks=language.getTagger().tag(testedTokens);
-      if (taggedToks.size() == 2 && (taggedToks.get(0).hasPosTag("adja") || taggedToks.get(0).hasPosTag("num:comp")) && taggedToks.get(1).hasPartialPosTag("adj:")) {
+      if (taggedToks.size() == 2 && (taggedToks.get(0).hasPosTag("adja") || (taggedToks.get(0).hasPosTag("num:comp") && !taggedToks.get(0).hasPosTag("adv"))) && taggedToks.get(1).hasPartialPosTag("adj:")) {
         probablyCorrectWords.add(word);
       }
     }

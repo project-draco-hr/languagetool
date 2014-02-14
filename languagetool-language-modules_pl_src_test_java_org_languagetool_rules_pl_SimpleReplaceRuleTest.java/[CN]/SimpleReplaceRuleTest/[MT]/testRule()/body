@@ -1,5 +1,6 @@
 {
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Wszystko w porz??dku.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Pola lodowe")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Witamy prez. Komorowskiego!")).length);
   checkSimpleReplaceRule("Piaty przypadek.","Pi??ty");
   checkSimpleReplaceRule("To piaty przypadek.","pi??ty");

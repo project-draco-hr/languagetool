@@ -10,7 +10,7 @@
       continue;
     }
     String tokenString=cleanup(originalTokenStr);
-    if (!wrongWords.containsKey(tokenString)) {
+    if (!wrongWords.containsKey(tokenString) && checkLemmas) {
       for (      AnalyzedToken analyzedToken : tokenReadings.getReadings()) {
         String lemma=analyzedToken.getLemma();
         if (lemma != null) {
