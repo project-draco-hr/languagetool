@@ -32,7 +32,7 @@
     }
     if (!element.isWhitespace()) {
       if (includeChunks) {
-        sb.append(",");
+        sb.append(',');
         sb.append(StringUtils.join(element.getChunkTags(),"|"));
       }
       sb.append(']');

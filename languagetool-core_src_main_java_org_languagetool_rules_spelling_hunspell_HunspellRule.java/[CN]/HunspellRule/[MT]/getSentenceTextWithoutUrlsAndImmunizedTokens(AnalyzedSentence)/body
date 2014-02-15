@@ -5,7 +5,7 @@
     final String token=sentenceTokens[i].getToken();
     if (isUrl(token) || sentenceTokens[i].isImmunized() || sentenceTokens[i].isIgnoredBySpeller()) {
       for (int j=0; j < token.length(); j++) {
-        sb.append(" ");
+        sb.append(' ');
       }
     }
  else {

@@ -6,7 +6,7 @@
     for (    String sent : sentences) {
       final AnalyzedSentence analyzedText=langTool.getAnalyzedSentence(sent);
       final String analyzedTextString=StringTools.escapeHTML(analyzedText.toString(",")).replace("&lt;S&gt;","&lt;S&gt;<br>").replace("[","<font color='" + TAG_COLOR + "'>[").replace("]","]</font><br>");
-      sb.append(analyzedTextString).append("\n");
+      sb.append(analyzedTextString).append('\n');
     }
   }
  catch (  Exception e) {
