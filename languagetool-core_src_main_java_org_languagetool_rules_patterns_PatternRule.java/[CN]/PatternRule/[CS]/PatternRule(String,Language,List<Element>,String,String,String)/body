@@ -35,4 +35,5 @@
     }
   }
   simpleRuleTokens=getSimpleTokens();
+  inflectedRuleTokens=getInflectedTokens();
 }

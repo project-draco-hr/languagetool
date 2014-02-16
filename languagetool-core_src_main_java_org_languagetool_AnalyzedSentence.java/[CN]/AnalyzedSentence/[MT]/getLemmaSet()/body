@@ -1,0 +1,11 @@
+{
+  if (lemmaSet == null) {
+    lemmaSet=new HashSet<>();
+    for (    AnalyzedTokenReadings token : tokens) {
+      for (      AnalyzedToken lemmaTok : token.getReadings())       if (lemmaTok.getLemma() != null) {
+        lemmaSet.add(lemmaTok.getLemma().toLowerCase());
+      }
+    }
+  }
+  return lemmaSet;
+}
