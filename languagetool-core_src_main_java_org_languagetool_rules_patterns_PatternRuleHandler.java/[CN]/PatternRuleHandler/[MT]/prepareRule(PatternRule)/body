@@ -47,12 +47,12 @@
     }
   }
   if (ruleIssueType != null) {
-    rule.setLocQualityIssueType(ruleIssueType);
+    rule.setLocQualityIssueType(ITSIssueType.getIssueType(ruleIssueType));
   }
  else   if (ruleGroupIssueType != null) {
-    rule.setLocQualityIssueType(ruleGroupIssueType);
+    rule.setLocQualityIssueType(ITSIssueType.getIssueType(ruleGroupIssueType));
   }
  else   if (categoryIssueType != null) {
-    rule.setLocQualityIssueType(categoryIssueType);
+    rule.setLocQualityIssueType(ITSIssueType.getIssueType(categoryIssueType));
   }
 }

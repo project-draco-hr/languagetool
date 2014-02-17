@@ -1,5 +1,5 @@
 {
-  super.setLocQualityIssueType("misspelling");
+  super.setLocQualityIssueType(ITSIssueType.Misspelling);
   if (messages != null) {
     super.setCategory(new Category("Errors ortogr??fics"));
   }

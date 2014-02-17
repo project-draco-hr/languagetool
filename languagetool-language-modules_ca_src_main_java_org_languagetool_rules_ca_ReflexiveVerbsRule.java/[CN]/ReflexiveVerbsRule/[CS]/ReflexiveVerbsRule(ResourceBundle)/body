@@ -2,5 +2,5 @@
   if (messages != null) {
     super.setCategory(new Category("Verbs"));
   }
-  setLocQualityIssueType("grammar");
+  setLocQualityIssueType(ITSIssueType.Grammar);
 }

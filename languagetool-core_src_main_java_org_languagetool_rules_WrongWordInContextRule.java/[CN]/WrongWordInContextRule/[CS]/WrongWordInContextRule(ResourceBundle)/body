@@ -3,5 +3,5 @@
     super.setCategory(new Category(getCategoryString()));
   }
   contextWordsSet=loadContextWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFilename()));
-  setLocQualityIssueType("misspelling");
+  setLocQualityIssueType(ITSIssueType.Misspelling);
 }

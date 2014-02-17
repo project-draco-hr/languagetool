@@ -47,9 +47,9 @@
     if (category != null) {
       xml.append(" category=\"").append(escapeXMLForAPIOutput(category.getName())).append('"');
     }
-    final String type=match.getRule().getLocQualityIssueType();
+    final ITSIssueType type=match.getRule().getLocQualityIssueType();
     if (type != null) {
-      xml.append(" locqualityissuetype=\"").append(escapeXMLForAPIOutput(type)).append('"');
+      xml.append(" locqualityissuetype=\"").append(escapeXMLForAPIOutput(type.toString())).append('"');
     }
     xml.append("/>\n");
   }

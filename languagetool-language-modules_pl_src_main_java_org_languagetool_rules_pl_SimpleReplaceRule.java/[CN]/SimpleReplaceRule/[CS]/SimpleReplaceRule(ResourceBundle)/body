@@ -1,5 +1,5 @@
 {
   super(messages);
-  setLocQualityIssueType("misspelling");
+  setLocQualityIssueType(ITSIssueType.Misspelling);
   setCheckLemmas(false);
 }

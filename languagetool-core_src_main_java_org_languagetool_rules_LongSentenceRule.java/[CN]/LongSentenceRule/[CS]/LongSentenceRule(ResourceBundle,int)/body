@@ -6,5 +6,5 @@
   }
   maxWords=maxSentenceLength;
   setDefaultOff();
-  setLocQualityIssueType("style");
+  setLocQualityIssueType(ITSIssueType.Style);
 }

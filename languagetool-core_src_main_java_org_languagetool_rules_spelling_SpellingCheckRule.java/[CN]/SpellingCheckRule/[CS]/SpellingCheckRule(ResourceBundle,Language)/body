@@ -1,5 +1,5 @@
 {
   super(messages);
   this.language=language;
-  setLocQualityIssueType("misspelling");
+  setLocQualityIssueType(ITSIssueType.Misspelling);
 }
