@@ -78,4 +78,5 @@
   assertGood("Die Klientel der Partei.");
   assertBad("Der Haus ist gro??","Das Haus","Dem Haus","Der H??user");
   assertBad("Aber der Haus ist gro??","das Haus","dem Haus","der H??user");
+  assertBad("Ich habe einen Feder gefunden.","eine Feder","einer Feder");
 }
