@@ -1,0 +1,13 @@
+{
+  boolean ac=conn.getAutoCommit();
+  conn.setAutoCommit(false);
+  try {
+    insertSt.executeBatch();
+    if (ac) {
+      conn.commit();
+    }
+  }
+  finally {
+    conn.setAutoCommit(ac);
+  }
+}

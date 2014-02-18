@@ -1,4 +1,13 @@
 {
+  if (insertSt != null) {
+    if (batchCount > 0) {
+      executeBatch();
+    }
+    insertSt.close();
+  }
+  if (lookupSt != null) {
+    lookupSt.close();
+  }
   if (conn != null) {
     conn.close();
   }

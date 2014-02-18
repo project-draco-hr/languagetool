@@ -1,7 +1,5 @@
 {
-  final String lookupSql="SELECT id FROM corpus_match_hidden WHERE " + "language_code = ? AND sourceuri = ? AND ruleid = ? AND small_error_context = ?";
-  final String insertSql="INSERT INTO corpus_match " + "(version, language_code, ruleid, rule_category, rule_subid, rule_description, message, error_context, small_error_context, corpus_date, " + "check_date, sourceuri, source_type, is_visible) "+ "VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
-  try (PreparedStatement lookupSt=conn.prepareStatement(lookupSql);PreparedStatement insertSt=conn.prepareStatement(insertSql)){
+  try {
     final java.sql.Date nowDate=new java.sql.Date(new Date().getTime());
     for (    RuleMatch match : ruleMatches) {
       final String smallContext=smallContextTools.getContext(match.getFromPos(),match.getToPos(),sentence.getText());
@@ -32,7 +30,11 @@
       insertSt.setDate(10,nowDate);
       insertSt.setString(11,sentence.getUrl());
       insertSt.setString(12,sentence.getSource());
-      insertSt.executeUpdate();
+      insertSt.addBatch();
+      if (++batchCount >= batchSize) {
+        executeBatch();
+        batchCount=0;
+      }
       checkMaxErrors(++errorCount);
       if (errorCount % 100 == 0) {
         System.out.println("Storing error #" + errorCount + " for text:");
