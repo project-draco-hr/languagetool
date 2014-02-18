@@ -1,13 +1,13 @@
 {
-  boolean ac=conn.getAutoCommit();
+  boolean autoCommit=conn.getAutoCommit();
   conn.setAutoCommit(false);
   try {
     insertSt.executeBatch();
-    if (ac) {
+    if (autoCommit) {
       conn.commit();
     }
   }
   finally {
-    conn.setAutoCommit(ac);
+    conn.setAutoCommit(autoCommit);
   }
 }
