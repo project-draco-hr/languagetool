@@ -5,6 +5,7 @@
   List<RuleMatch> matches=tool.check("To jest ca??kowicie prawid??owe zdanie.");
   assertEquals(0,matches.size());
   matches=tool.check("To jest jest problem.");
+  assertEquals(0,tool.check("A teraz ka??cie mi da?? jaki b??d?? posi??ek.").size());
   assertEquals(1,matches.size());
   matches=tool.check("By?? on bowiem pi??knym strzelcem bowiem.");
   assertEquals(0,matches.size());
