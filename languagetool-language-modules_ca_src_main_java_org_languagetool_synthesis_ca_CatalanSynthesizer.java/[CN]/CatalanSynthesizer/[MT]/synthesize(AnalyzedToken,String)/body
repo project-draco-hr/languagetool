@@ -17,7 +17,7 @@
  else {
     p=Pattern.compile(posTag);
   }
-  final ArrayList<String> results=new ArrayList<>();
+  final List<String> results=new ArrayList<>();
   final IStemmer synthesizer=createStemmer();
   for (  final String tag : possibleTags) {
     final Matcher m=p.matcher(tag);

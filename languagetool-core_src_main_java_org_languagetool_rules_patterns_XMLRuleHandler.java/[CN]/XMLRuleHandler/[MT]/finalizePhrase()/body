@@ -10,7 +10,7 @@
     phraseElementList.add(new ArrayList<>(elementList));
   }
  else {
-    for (    final ArrayList<Element> ph : phraseElementList) {
+    for (    List<Element> ph : phraseElementList) {
       ph.addAll(new ArrayList<>(elementList));
     }
   }

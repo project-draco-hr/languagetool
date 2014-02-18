@@ -13,7 +13,7 @@
         phraseElementList.add(new ArrayList<>(copy));
       }
  else {
-        final ArrayList<Element> prevList=new ArrayList<>(elementList);
+        final List<Element> prevList=new ArrayList<>(elementList);
         prevList.addAll(copy);
         phraseElementList.add(new ArrayList<>(prevList));
         prevList.clear();
