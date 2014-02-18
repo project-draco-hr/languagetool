@@ -1,9 +1,15 @@
 {
-  if (tokenReadings.getToken().length() == 0 || (Character.isUpperCase(tokenReadings.getToken().charAt(0)) && !(tokenReadings.getStartPos() == 0)) || !tokenReadings.hasPartialPosTag("VER"))   return false;
+  if (tokenReadings.getToken().length() == 0 || (Character.isUpperCase(tokenReadings.getToken().charAt(0)) && !(tokenReadings.getStartPos() == 0)) || !tokenReadings.hasPartialPosTag("VER")) {
+    return false;
+  }
   for (  AnalyzedToken analyzedToken : tokenReadings) {
     final String postag=analyzedToken.getPOSTag();
-    if (postag.contains("_END"))     continue;
-    if (!postag.contains(":" + person + ":"+ number))     return false;
+    if (postag.contains("_END")) {
+      continue;
+    }
+    if (!postag.contains(":" + person + ":"+ number)) {
+      return false;
+    }
   }
   return true;
 }
