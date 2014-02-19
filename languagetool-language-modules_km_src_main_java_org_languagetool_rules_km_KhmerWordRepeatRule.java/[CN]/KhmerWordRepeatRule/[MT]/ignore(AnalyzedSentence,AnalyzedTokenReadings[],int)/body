@@ -1,5 +1,5 @@
 {
-  final int origPos=text.getOriginalPosition(position);
+  final int origPos=sentence.getOriginalPosition(position);
   if (position >= 1 && "\u0020".equals(tokensWithWhiteSpace[origPos - 1].getToken())) {
     return true;
   }

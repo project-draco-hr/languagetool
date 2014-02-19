@@ -6,8 +6,8 @@
   if (dictionary == null) {
     return toRuleMatchArray(ruleMatches);
   }
-  final String[] tokens=tokenizeText(getSentenceTextWithoutUrlsAndImmunizedTokens(text));
-  int len=text.getTokens()[1].getStartPos();
+  final String[] tokens=tokenizeText(getSentenceTextWithoutUrlsAndImmunizedTokens(sentence));
+  int len=sentence.getTokens()[1].getStartPos();
   for (  final String word : tokens) {
     if (ignoreWord(word)) {
       len+=word.length() + 1;

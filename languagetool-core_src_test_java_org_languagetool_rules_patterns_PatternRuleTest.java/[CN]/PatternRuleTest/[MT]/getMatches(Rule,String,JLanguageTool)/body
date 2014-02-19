@@ -1,6 +1,6 @@
 {
-  final AnalyzedSentence text=languageTool.getAnalyzedSentence(sentence);
-  final RuleMatch[] matches=rule.match(text);
+  final AnalyzedSentence analyzedSentence=languageTool.getAnalyzedSentence(sentence);
+  final RuleMatch[] matches=rule.match(analyzedSentence);
   if (CHECK_WITH_SENTENCE_SPLITTING) {
     for (    Rule r : languageTool.getAllActiveRules()) {
       languageTool.disableRule(r.getId());

@@ -1,6 +1,6 @@
 {
   final StringBuilder sb=new StringBuilder();
-  for (  AnalyzedTokenReadings token : text.getTokens()) {
+  for (  AnalyzedTokenReadings token : sentence.getTokens()) {
     sb.append(token.getToken());
   }
   return sb.toString();

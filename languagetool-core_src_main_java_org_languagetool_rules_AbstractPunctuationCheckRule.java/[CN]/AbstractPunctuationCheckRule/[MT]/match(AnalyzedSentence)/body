@@ -1,6 +1,6 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=text.getTokens();
+  final AnalyzedTokenReadings[] tokens=sentence.getTokens();
   int startTokenIdx=-1;
   String tkns="";
   for (int i=0; i < tokens.length; i++) {

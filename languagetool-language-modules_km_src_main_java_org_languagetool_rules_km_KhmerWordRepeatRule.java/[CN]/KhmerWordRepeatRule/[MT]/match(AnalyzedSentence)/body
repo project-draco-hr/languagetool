@@ -1,12 +1,12 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  final AnalyzedTokenReadings[] tokensWithWS=text.getTokens();
+  final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  final AnalyzedTokenReadings[] tokensWithWS=sentence.getTokens();
   String prevToken="";
   for (int i=1; i < tokens.length; i++) {
     final String token=tokens[i].getToken();
     boolean isWord=isWord(token);
-    final boolean isException=ignore(text,tokensWithWS,i);
+    final boolean isException=ignore(sentence,tokensWithWS,i);
     if (isWord && prevToken.equalsIgnoreCase(token) && !isException) {
       final String msg=messages.getString("repetition");
       final int prevPos=tokens[i - 1].getStartPos();

@@ -1,7 +1,7 @@
 {
   List<ElementMatcher> elementMatchers=createElementMatchers();
-  final AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
-  AnalyzedTokenReadings[] whTokens=text.getTokens();
+  final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  AnalyzedTokenReadings[] whTokens=sentence.getTokens();
   final int[] tokenPositions=new int[tokens.length + 1];
   final int patternSize=elementMatchers.size();
   final int limit=Math.max(0,tokens.length - patternSize + 1);
@@ -56,12 +56,12 @@
       }
     }
     if (allElementsMatch && matchingTokens == patternSize || matchingTokens == patternSize - minOccurSkip && firstMatchToken != -1) {
-      whTokens=executeAction(text,whTokens,unifiedTokens,firstMatchToken,matchingTokens,tokenPositions);
+      whTokens=executeAction(sentence,whTokens,unifiedTokens,firstMatchToken,matchingTokens,tokenPositions);
       changed=true;
     }
   }
   if (changed) {
-    return new AnalyzedSentence(whTokens,text.getWhPositions());
+    return new AnalyzedSentence(whTokens,sentence.getWhPositions());
   }
-  return text;
+  return sentence;
 }

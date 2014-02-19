@@ -1,4 +1,4 @@
 {
   final DisambiguationPatternRuleReplacer replacer=new DisambiguationPatternRuleReplacer(this);
-  return replacer.replace(text);
+  return replacer.replace(sentence);
 }

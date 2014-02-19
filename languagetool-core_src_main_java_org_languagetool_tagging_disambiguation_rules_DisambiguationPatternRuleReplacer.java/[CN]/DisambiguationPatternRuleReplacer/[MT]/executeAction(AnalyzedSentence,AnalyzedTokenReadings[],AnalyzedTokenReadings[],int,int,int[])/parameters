@@ -1,4 +1,4 @@
-AnalyzedSentence text
+AnalyzedSentence sentence
 AnalyzedTokenReadings[] whiteTokens
 AnalyzedTokenReadings[] unifiedTokens
 int firstMatchToken

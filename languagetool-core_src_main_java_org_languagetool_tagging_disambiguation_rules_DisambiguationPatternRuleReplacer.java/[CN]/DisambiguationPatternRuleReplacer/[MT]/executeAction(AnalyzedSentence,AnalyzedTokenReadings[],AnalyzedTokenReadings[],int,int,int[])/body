@@ -10,7 +10,7 @@
     }
     correctedStPos--;
   }
-  final int fromPos=text.getOriginalPosition(firstMatchToken + correctedStPos);
+  final int fromPos=sentence.getOriginalPosition(firstMatchToken + correctedStPos);
   final boolean spaceBefore=whTokens[fromPos].isWhitespaceBefore();
   boolean filtered=false;
   final DisambiguationPatternRule.DisambiguatorAction disAction=rule.getAction();
@@ -21,11 +21,11 @@ switch (disAction) {
 case UNIFY:
     if (unifiedTokens != null) {
       if (unifiedTokens.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
-        if (whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + unifiedTokens.length - 1)].isSentenceEnd()) {
+        if (whTokens[sentence.getOriginalPosition(firstMatchToken + correctedStPos + unifiedTokens.length - 1)].isSentenceEnd()) {
           unifiedTokens[unifiedTokens.length - 1].setSentEnd();
         }
         for (int i=0; i < unifiedTokens.length; i++) {
-          final int position=text.getOriginalPosition(firstMatchToken + correctedStPos + i);
+          final int position=sentence.getOriginalPosition(firstMatchToken + correctedStPos + i);
           unifiedTokens[i].setStartPos(whTokens[position].getStartPos());
           final String prevValue=whTokens[position].toString();
           final String prevAnot=whTokens[position].getHistoricalAnnotations();
@@ -39,7 +39,7 @@ case REMOVE:
 if (newTokenReadings != null) {
   if (newTokenReadings.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
     for (int i=0; i < newTokenReadings.length; i++) {
-      final int position=text.getOriginalPosition(firstMatchToken + correctedStPos + i);
+      final int position=sentence.getOriginalPosition(firstMatchToken + correctedStPos + i);
       final String prevValue=whTokens[position].toString();
       final String prevAnot=whTokens[position].getHistoricalAnnotations();
       whTokens[position].removeReading(newTokenReadings[i]);
@@ -53,7 +53,7 @@ if (newTokenReadings != null) {
 if (newTokenReadings.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
 for (int i=0; i < newTokenReadings.length; i++) {
   final String token;
-  final int position=text.getOriginalPosition(firstMatchToken + correctedStPos + i);
+  final int position=sentence.getOriginalPosition(firstMatchToken + correctedStPos + i);
   if ("".equals(newTokenReadings[i].getToken())) {
     token=whTokens[position].getToken();
   }
@@ -78,7 +78,7 @@ for (int i=0; i < newTokenReadings.length; i++) {
 break;
 case FILTERALL:
 for (int i=0; i < matchingTokens - startPositionCorrection + endPositionCorrection; i++) {
-final int position=text.getOriginalPosition(firstMatchToken + correctedStPos + i);
+final int position=sentence.getOriginalPosition(firstMatchToken + correctedStPos + i);
 final Element myEl=rule.getPatternElements().get(i + startPositionCorrection);
 final Match tmpMatchToken=new Match(myEl.getPOStag(),null,true,myEl.getPOStag(),null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);
 MatchState matchState=tmpMatchToken.createState(rule.getLanguage().getSynthesizer(),whTokens[position]);
@@ -90,12 +90,12 @@ annotateChange(whTokens[position],prevValue,prevAnot);
 break;
 case IMMUNIZE:
 for (int i=0; i < matchingTokens - startPositionCorrection + endPositionCorrection; i++) {
-whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].immunize();
+whTokens[sentence.getOriginalPosition(firstMatchToken + correctedStPos + i)].immunize();
 }
 break;
 case IGNORE_SPELLING:
 for (int i=0; i < matchingTokens - startPositionCorrection + endPositionCorrection; i++) {
-whTokens[text.getOriginalPosition(firstMatchToken + correctedStPos + i)].ignoreSpelling();
+whTokens[sentence.getOriginalPosition(firstMatchToken + correctedStPos + i)].ignoreSpelling();
 }
 break;
 case FILTER:
@@ -115,7 +115,7 @@ if (newTokenReadings != null && newTokenReadings.length > 0) {
 if (newTokenReadings.length == matchingTokens - startPositionCorrection + endPositionCorrection) {
 for (int i=0; i < newTokenReadings.length; i++) {
 final String token;
-final int position=text.getOriginalPosition(firstMatchToken + correctedStPos + i);
+final int position=sentence.getOriginalPosition(firstMatchToken + correctedStPos + i);
 if ("".equals(newTokenReadings[i].getToken())) {
 token=whTokens[position].getToken();
 }

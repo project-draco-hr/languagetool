@@ -1,6 +1,6 @@
 {
   List<RuleMatch> ruleMatches=new ArrayList<>();
-  AnalyzedTokenReadings[] tokens=text.getTokens();
+  AnalyzedTokenReadings[] tokens=sentence.getTokens();
   if (isFirstSentence) {
     isFirstSentence=false;
   }
