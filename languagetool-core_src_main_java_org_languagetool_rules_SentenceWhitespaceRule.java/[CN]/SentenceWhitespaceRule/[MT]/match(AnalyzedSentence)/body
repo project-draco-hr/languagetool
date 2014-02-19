@@ -1,0 +1,22 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=text.getTokens();
+  if (isFirstSentence) {
+    isFirstSentence=false;
+  }
+ else {
+    if (!prevSentenceEndsWithWhitespace && tokens.length > 1) {
+      int startPos=0;
+      String firsToken=tokens[1].getToken();
+      int endPos=firsToken.length();
+      RuleMatch ruleMatch=new RuleMatch(this,startPos,endPos,messages.getString("addSpaceBetweenSentences"));
+      ruleMatch.setSuggestedReplacement(" " + firsToken);
+      ruleMatches.add(ruleMatch);
+    }
+  }
+  if (tokens.length > 0) {
+    String lastToken=tokens[tokens.length - 1].getToken();
+    prevSentenceEndsWithWhitespace=lastToken.trim().isEmpty() && lastToken.length() == 1;
+  }
+  return toRuleMatchArray(ruleMatches);
+}

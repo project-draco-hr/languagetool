@@ -1,0 +1,4 @@
+{
+  assertThat(languageTool.check(text).size(),is(0));
+  rule.reset();
+}
