@@ -13,6 +13,7 @@
   assertGood("Des gro??en Mannes.");
   assertGood("Und nach der Nummerierung kommt die ??berschrift.");
   assertGood("Sie wiesen dieselben Verzierungen auf.");
+  assertGood("Die erw??hnte Konferenz ist am Samstag.");
   assertGood("Das Dach von meinem Auto.");
   assertGood("Das Dach von meinen Autos.");
   assertGood("Das Dach meines Autos.");
@@ -68,6 +69,10 @@
   assertBad("Das Auto einem Mannes.","einem Mann","einem Manne","eines Mannes");
   assertBad("Das Auto einer Mannes.","eines Mannes");
   assertBad("Das Auto einen Mannes.","einen Mann","eines Mannes");
+  assertBad("Die erw??hnt Konferenz ist am Samstag.");
+  assertBad("Die erw??hntes Konferenz ist am Samstag.");
+  assertBad("Die erw??hnten Konferenz ist am Samstag.");
+  assertBad("Die erw??hnter Konferenz ist am Samstag.");
   assertBad("Des gro??er Mannes.");
   assertBad("Das Dach von meine Auto.","mein Auto","meine Autos","meinem Auto");
   assertBad("Das Dach von meinen Auto.","mein Auto","meinem Auto","meinen Autos");
