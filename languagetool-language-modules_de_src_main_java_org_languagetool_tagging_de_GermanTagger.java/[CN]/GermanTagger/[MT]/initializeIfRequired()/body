@@ -1,7 +1,13 @@
 {
-  if (dictionary == null || manualTagger == null || compoundTokenizer == null) {
+  Dictionary dict=dictionary;
+  ManualTagger mTagger=manualTagger;
+  GermanCompoundTokenizer gTokenizer=compoundTokenizer;
+  if (dict == null || mTagger == null || gTokenizer == null) {
 synchronized (this) {
-      if (dictionary == null || manualTagger == null || compoundTokenizer == null) {
+      dict=dictionary;
+      mTagger=manualTagger;
+      gTokenizer=compoundTokenizer;
+      if (dict == null || mTagger == null || gTokenizer == null) {
         initialize();
       }
     }

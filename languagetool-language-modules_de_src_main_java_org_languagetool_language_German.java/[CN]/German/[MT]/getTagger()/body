@@ -1,10 +1,12 @@
 {
-  if (tagger == null) {
+  Tagger t=tagger;
+  if (t == null) {
 synchronized (this) {
-      if (tagger == null) {
-        tagger=new GermanTagger();
+      t=tagger;
+      if (t == null) {
+        tagger=t=new GermanTagger();
       }
     }
   }
-  return tagger;
+  return t;
 }

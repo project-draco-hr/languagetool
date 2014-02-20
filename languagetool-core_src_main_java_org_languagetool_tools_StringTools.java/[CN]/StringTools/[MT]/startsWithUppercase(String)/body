@@ -2,6 +2,5 @@
   if (isEmpty(str)) {
     return false;
   }
-  final char firstChar=str.charAt(0);
-  return Character.isUpperCase(firstChar);
+  return Character.isUpperCase(str.charAt(0));
 }

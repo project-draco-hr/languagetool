@@ -1,7 +1,9 @@
 {
-  if (manualTagger == null) {
+  ManualTagger mTagger=manualTagger;
+  if (mTagger == null) {
 synchronized (this) {
-      if (manualTagger == null) {
+      mTagger=manualTagger;
+      if (mTagger == null) {
         manualTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(USER_DICT_FILENAME));
       }
     }

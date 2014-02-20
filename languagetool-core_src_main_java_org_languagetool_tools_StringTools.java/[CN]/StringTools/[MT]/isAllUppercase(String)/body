@@ -1,3 +1,9 @@
 {
-  return str.equals(str.toUpperCase(Locale.ENGLISH));
+  for (int i=0; i < str.length(); i++) {
+    char c=str.charAt(i);
+    if (Character.isLetter(c) && Character.isLowerCase(c)) {
+      return false;
+    }
+  }
+  return true;
 }
