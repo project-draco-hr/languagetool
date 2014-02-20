@@ -1,7 +1,9 @@
 {
-  if (possibleTags == null) {
+  List<String> tags=possibleTags;
+  if (tags == null) {
 synchronized (this) {
-      if (this.possibleTags == null) {
+      tags=possibleTags;
+      if (tags == null) {
         possibleTags=SynthesizerTools.loadWords(JLanguageTool.getDataBroker().getFromResourceDirAsStream(tagFileName));
       }
     }
