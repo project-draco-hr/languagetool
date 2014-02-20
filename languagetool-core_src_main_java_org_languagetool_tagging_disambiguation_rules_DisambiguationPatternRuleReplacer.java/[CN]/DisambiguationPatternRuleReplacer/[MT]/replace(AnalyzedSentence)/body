@@ -32,7 +32,7 @@
         allElementsMatch=testAllReadings(tokens,elem,prevElement,m,firstMatchToken,prevSkipNext);
         if (elem.getElement().getMinOccurrence() == 0) {
           final ElementMatcher nextElement=elementMatchers.get(k + 1);
-          final boolean nextElementMatch=!tokens[m].isImmunized() && testAllReadings(tokens,nextElement,elem,m,firstMatchToken,prevSkipNext);
+          final boolean nextElementMatch=testAllReadings(tokens,nextElement,elem,m,firstMatchToken,prevSkipNext);
           if (nextElementMatch) {
             allElementsMatch=true;
             minOccurSkip++;

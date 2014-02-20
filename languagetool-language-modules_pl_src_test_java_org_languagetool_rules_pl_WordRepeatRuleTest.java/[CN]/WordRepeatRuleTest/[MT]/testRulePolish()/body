@@ -5,6 +5,9 @@
   final JLanguageTool langTool=new JLanguageTool(polish);
   matches=rule.match(langTool.getAnalyzedSentence("To jest zdanie."));
   assertEquals(0,matches.length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("W w. XVI j??zyk jest jak kipi??cy kocio??.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Co jeszcze by??o smutniejsze, to to, ??e im si?? je???? chcia??o pot????nie.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Tra ta ta!")).length);
   matches=rule.match(langTool.getAnalyzedSentence("To jest jest zdanie."));
   assertEquals(1,matches.length);
 }
