@@ -5,5 +5,5 @@
   if (!wordsWithDotsPresent) {
     word=word.endsWith(".") ? word.substring(0,word.length() - 1) : word;
   }
-  return wordsToBeIgnored.contains(word);
+  return (wordsToBeIgnored.contains(word) || (convertsCase && wordsToBeIgnored.contains(word.toLowerCase(language.getLocale()))));
 }
