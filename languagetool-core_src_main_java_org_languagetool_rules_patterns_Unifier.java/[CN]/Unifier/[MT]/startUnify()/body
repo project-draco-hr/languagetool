@@ -1,6 +1,6 @@
 {
   allFeatsIn=true;
-  for (int i=0; i <= tokCnt; i++) {
+  for (int i=0; i < tokCnt; i++) {
     featuresFound.add(true);
   }
   tmpFeaturesFound=new ArrayList<>(featuresFound);

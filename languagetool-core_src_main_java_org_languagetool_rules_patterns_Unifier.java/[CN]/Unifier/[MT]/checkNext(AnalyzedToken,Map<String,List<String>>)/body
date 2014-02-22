@@ -3,7 +3,7 @@
   List<String> types;
   final List<Boolean> tokenFeaturesFound=new ArrayList<>(tmpFeaturesFound);
   if (allFeatsIn) {
-    for (int i=0; i <= tokCnt; i++) {
+    for (int i=0; i < tokCnt; i++) {
       boolean allFeatsUnified=true;
       for (      Map.Entry<String,List<String>> feat : uFeatures.entrySet()) {
         boolean featUnified=false;
@@ -14,18 +14,9 @@
         for (        final String typeName : types) {
           if (featuresFound.get(i) && equivalencesMatched.get(i).containsKey(feat.getKey()) && equivalencesMatched.get(i).get(feat.getKey()).contains(typeName)) {
             final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
-            featUnified=featUnified || testElem.isMatched(aToken);
-            if (!testElem.isMatched(aToken)) {
-              if (!equivalencesToBeRemoved.containsKey(feat.getKey())) {
-                final Set<String> typeSet=new HashSet<>();
-                typeSet.add(typeName);
-                equivalencesToBeRemoved.put(feat.getKey(),typeSet);
-              }
- else {
-                equivalencesToBeRemoved.get(feat.getKey()).add(typeName);
-              }
-            }
- else {
+            boolean matched=testElem.isMatched(aToken);
+            featUnified=featUnified || matched;
+            if (matched) {
               if (!equivalencesToBeKept.containsKey(feat.getKey())) {
                 final Set<String> typeSet=new HashSet<>();
                 typeSet.add(typeName);
@@ -39,7 +30,7 @@
         }
         allFeatsUnified&=featUnified;
       }
-      tokenFeaturesFound.set(i,tokenFeaturesFound.get(i) & allFeatsUnified);
+      tokenFeaturesFound.set(i,tokenFeaturesFound.get(i) && allFeatsUnified);
       anyFeatUnified=anyFeatUnified || allFeatsUnified;
     }
     if (anyFeatUnified) {

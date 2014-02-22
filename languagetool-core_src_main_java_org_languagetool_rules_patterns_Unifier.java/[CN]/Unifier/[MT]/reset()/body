@@ -1,7 +1,7 @@
 {
   equivalencesMatched.clear();
   allFeatsIn=false;
-  tokCnt=-1;
+  tokCnt=0;
   featuresFound.clear();
   tmpFeaturesFound.clear();
   tokSequence.clear();

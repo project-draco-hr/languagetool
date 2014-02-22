@@ -1,10 +1,9 @@
 {
-  tokCnt=-1;
+  tokCnt=0;
   readingsCounter=1;
   equivalencesMatched=new ArrayList<>();
   this.equivalenceTypes=equivalenceTypes;
   this.equivalenceFeatures=equivalenceFeatures;
-  equivalencesToBeRemoved=new HashMap<>();
   equivalencesToBeKept=new HashMap<>();
   featuresFound=new ArrayList<>();
   tmpFeaturesFound=new ArrayList<>();
