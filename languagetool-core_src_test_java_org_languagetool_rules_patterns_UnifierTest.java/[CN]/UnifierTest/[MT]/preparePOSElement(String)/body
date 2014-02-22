@@ -1,5 +1,5 @@
 {
   final Element el=new Element("",false,false,false);
-  el.setPosElement(".*[\\.:]sg:.*",true,false);
+  el.setPosElement(posString,true,false);
   return el;
 }

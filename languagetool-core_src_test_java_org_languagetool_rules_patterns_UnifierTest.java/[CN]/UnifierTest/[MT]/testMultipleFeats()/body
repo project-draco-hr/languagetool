@@ -1,20 +1,10 @@
 {
   final UnifierConfiguration unifierConfig=new UnifierConfiguration();
-  final Element sgElement=new Element("",false,false,false);
-  sgElement.setPosElement(".*[\\.:]sg:.*",true,false);
-  unifierConfig.setEquivalence("number","singular",sgElement);
-  final Element plElement=new Element("",false,false,false);
-  plElement.setPosElement(".*[\\.:]pl:.*",true,false);
-  unifierConfig.setEquivalence("number","plural",plElement);
-  final Element femElement=new Element("",false,false,false);
-  femElement.setPosElement(".*[\\.:]f([\\.:].*)?",true,false);
-  unifierConfig.setEquivalence("gender","feminine",femElement);
-  final Element mascElement=new Element("",false,false,false);
-  mascElement.setPosElement(".*[\\.:]m([\\.:].*)?",true,false);
-  unifierConfig.setEquivalence("gender","masculine",mascElement);
-  final Element neutElement=new Element("",false,false,false);
-  neutElement.setPosElement(".*[\\.:]n([\\.:].*)?",true,false);
-  unifierConfig.setEquivalence("gender","neutral",neutElement);
+  unifierConfig.setEquivalence("number","singular",preparePOSElement(".*[\\.:]sg:.*"));
+  unifierConfig.setEquivalence("number","plural",preparePOSElement(".*[\\.:]pl:.*"));
+  unifierConfig.setEquivalence("gender","feminine",preparePOSElement(".*[\\.:]f([\\.:].*)?"));
+  unifierConfig.setEquivalence("gender","masculine",preparePOSElement(".*[\\.:]m([\\.:].*)?"));
+  unifierConfig.setEquivalence("gender","neutral",preparePOSElement(".*[\\.:]n([\\.:].*)?"));
   final Unifier uni=unifierConfig.createUnifier();
   final AnalyzedToken sing1=new AnalyzedToken("ma??y","adj:sg:blahblah:m","ma??y");
   AnalyzedToken sing1a=new AnalyzedToken("ma??y","adj:pl:blahblah:f","ma??y");
@@ -82,5 +72,5 @@
   uni.isUnified(case2c,equiv,false);
   uni.isUnified(case2d,equiv,false);
   assertTrue(uni.isUnified(case2e,equiv,true));
-  assertEquals(Arrays.toString(uni.getFinalUnified()),"[xx[xx/abc:sg:f*,xx/cde:pl:f*], yy[yy/abc:pl:f*,yy/abc:sg:f*]]");
+  assertEquals("[xx[xx/abc:sg:f*,xx/cde:pl:f*], yy[yy/abc:pl:f*,yy/abc:sg:f*]]",Arrays.toString(uni.getFinalUnified()));
 }

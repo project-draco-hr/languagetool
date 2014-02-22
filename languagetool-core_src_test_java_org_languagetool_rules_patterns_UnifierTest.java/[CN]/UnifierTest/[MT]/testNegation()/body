@@ -1,17 +1,9 @@
 {
   final UnifierConfiguration unifierConfig=new UnifierConfiguration();
-  final Element sgElement=new Element("",false,false,false);
-  sgElement.setPosElement(".*[\\.:]sg:.*",true,false);
-  unifierConfig.setEquivalence("number","singular",sgElement);
-  final Element plElement=new Element("",false,false,false);
-  plElement.setPosElement(".*[\\.:]pl:.*",true,false);
-  unifierConfig.setEquivalence("number","plural",plElement);
-  final Element femElement=new Element("",false,false,false);
-  femElement.setPosElement(".*:f",true,false);
-  unifierConfig.setEquivalence("gender","feminine",femElement);
-  final Element mascElement=new Element("",false,false,false);
-  mascElement.setPosElement(".*:m",true,false);
-  unifierConfig.setEquivalence("gender","masculine",mascElement);
+  unifierConfig.setEquivalence("number","singular",preparePOSElement(".*[\\.:]sg:.*"));
+  unifierConfig.setEquivalence("number","plural",preparePOSElement(".*[\\.:]pl:.*"));
+  unifierConfig.setEquivalence("gender","feminine",preparePOSElement(".*:f"));
+  unifierConfig.setEquivalence("gender","masculine",preparePOSElement(".*:m"));
   final Unifier uni=unifierConfig.createUnifier();
   final AnalyzedToken sing_masc=new AnalyzedToken("parvus","adj:sg:blahblah:m","parvus");
   final AnalyzedToken plur_masc=new AnalyzedToken("parvi","adj:sg:blahblah:m","parvus");
