@@ -22,6 +22,7 @@
   uni.startNextToken();
   satisfied&=uni.isSatisfied(sing3,equiv);
   uni.startNextToken();
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(false,satisfied);
   uni.reset();
   uni.isUnified(sing1,equiv,false);

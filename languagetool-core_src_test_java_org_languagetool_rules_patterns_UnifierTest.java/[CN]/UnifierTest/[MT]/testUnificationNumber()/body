@@ -12,6 +12,7 @@
   boolean satisfied=uni.isSatisfied(sing1,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(sing2,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(true,satisfied);
   uni.reset();
   AnalyzedToken sing1a=new AnalyzedToken("ma??y","adj:pl:blahblah","ma??y");
@@ -19,6 +20,7 @@
   satisfied|=uni.isSatisfied(sing1a,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(sing2,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(true,satisfied);
   uni.reset();
   list1.add("plural");
@@ -29,6 +31,7 @@
   satisfied|=uni.isSatisfied(sing1a,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(sing2,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(true,satisfied);
   uni.reset();
   sing1a=new AnalyzedToken("ma??y","adj:pl:blahblah","ma??y");
@@ -38,11 +41,13 @@
   satisfied|=uni.isSatisfied(sing1a,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(sing2,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(true,satisfied);
   uni.reset();
   satisfied=uni.isSatisfied(sing1a,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(sing2,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(false,satisfied);
   uni.reset();
 }

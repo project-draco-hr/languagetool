@@ -20,21 +20,25 @@
   boolean satisfied=uni.isSatisfied(lower1,equiv);
   satisfied&=uni.isSatisfied(lower2,equiv);
   uni.startUnify();
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(true,satisfied);
   uni.reset();
   satisfied=uni.isSatisfied(upper2,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(lower2,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(false,satisfied);
   uni.reset();
   satisfied=uni.isSatisfied(upper1,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(lower1,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(false,satisfied);
   uni.reset();
   satisfied=uni.isSatisfied(upper2,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(upper1,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(false,satisfied);
   uni.reset();
   equiv.clear();
@@ -44,6 +48,7 @@
   satisfied=uni.isSatisfied(upper2,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(upper1,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(true,satisfied);
   uni.reset();
   equiv.clear();
@@ -53,10 +58,12 @@
   satisfied=uni.isSatisfied(upper2,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(upper1,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(false,satisfied);
   uni.reset();
   satisfied=uni.isSatisfied(upperAll2,equiv);
   uni.startUnify();
   satisfied&=uni.isSatisfied(upperAll1,equiv);
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(true,satisfied);
 }

@@ -12,7 +12,7 @@
           types=equivalenceFeatures.get(feat.getKey());
         }
         for (        final String typeName : types) {
-          if (featuresFound.get(i) && equivalencesMatched.get(i).containsKey(feat.getKey()) && equivalencesMatched.get(i).get(feat.getKey()).contains(typeName)) {
+          if (equivalencesMatched.get(i).containsKey(feat.getKey()) && equivalencesMatched.get(i).get(feat.getKey()).contains(typeName)) {
             final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
             boolean matched=testElem.isMatched(aToken);
             featUnified=featUnified || matched;
@@ -30,7 +30,7 @@
         }
         allFeatsUnified&=featUnified;
       }
-      tokenFeaturesFound.set(i,tokenFeaturesFound.get(i) && allFeatsUnified);
+      tokenFeaturesFound.set(i,tokenFeaturesFound.get(i) || allFeatsUnified);
       anyFeatUnified=anyFeatUnified || allFeatsUnified;
     }
     if (anyFeatUnified) {

@@ -9,7 +9,7 @@
       unifiedTokens=getUnifiedTokens();
       uniMatched=false;
     }
-    return uniAllMatched;
+    return uniAllMatched && getFinalUnificationValue(uFeatures);
   }
  else {
     if (isMatched) {

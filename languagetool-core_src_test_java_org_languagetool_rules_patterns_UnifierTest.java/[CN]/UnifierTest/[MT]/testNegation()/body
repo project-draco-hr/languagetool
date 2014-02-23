@@ -26,6 +26,7 @@
   uni.startNextToken();
   satisfied&=uni.isSatisfied(subst_sing_masc,equiv);
   uni.startNextToken();
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(true,satisfied);
   uni.reset();
   uni.isUnified(det_sing_masc,equiv,true);
@@ -38,6 +39,7 @@
   uni.startNextToken();
   satisfied&=uni.isSatisfied(subst_sing_masc,equiv);
   uni.startNextToken();
+  satisfied&=uni.getFinalUnificationValue(equiv);
   assertEquals(false,!satisfied);
   uni.reset();
   uni.isUnified(det_sing_masc,equiv,true);
