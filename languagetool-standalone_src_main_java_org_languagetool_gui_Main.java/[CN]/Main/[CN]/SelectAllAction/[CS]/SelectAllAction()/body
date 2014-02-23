@@ -1,0 +1,4 @@
+{
+  super(getLabel("guiMenuSelectAll"));
+  putValue(Action.MNEMONIC_KEY,KeyEvent.VK_A);
+}

@@ -1,0 +1,4 @@
+{
+  JTextComponent component=getFocusedComponent();
+  component.selectAll();
+}
