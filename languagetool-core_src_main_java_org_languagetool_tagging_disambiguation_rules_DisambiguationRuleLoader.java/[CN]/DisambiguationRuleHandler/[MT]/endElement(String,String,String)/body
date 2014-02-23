@@ -1,5 +1,5 @@
 {
-  if ("rule".equals(qName)) {
+  if (RULE.equals(qName)) {
     final DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,elementList,disambiguatedPOS,posSelector,disambigAction);
     endPositionCorrection=endPos - tokenCountForMarker;
     if (startPos != -1 && endPos != -1) {

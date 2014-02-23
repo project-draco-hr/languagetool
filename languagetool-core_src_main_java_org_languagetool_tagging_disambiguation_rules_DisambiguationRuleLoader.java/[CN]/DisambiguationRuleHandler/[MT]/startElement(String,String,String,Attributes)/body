@@ -1,6 +1,6 @@
 {
 switch (qName) {
-case "rule":
+case RULE:
     id=attrs.getValue("id");
   if (inRuleGroup) {
     subId++;
