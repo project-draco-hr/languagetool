@@ -1,11 +1,11 @@
 {
 switch (qName) {
 case RULE:
-    id=attrs.getValue("id");
+    id=attrs.getValue(ID);
   if (inRuleGroup) {
     subId++;
   }
-name=attrs.getValue("name");
+name=attrs.getValue(NAME);
 if (inRuleGroup && id == null) {
 id=ruleGroupId;
 }
@@ -39,10 +39,10 @@ uniNegation=YES.equals(attrs.getValue(NEGATE));
 uniCounter=0;
 break;
 case "feature":
-uFeature=attrs.getValue("id");
+uFeature=attrs.getValue(ID);
 break;
 case TYPE:
-uType=attrs.getValue("id");
+uType=attrs.getValue(ID);
 uTypeList.add(uType);
 break;
 case TOKEN:
@@ -94,8 +94,8 @@ elements.append(refNumber);
 }
 break;
 case RULEGROUP:
-ruleGroupId=attrs.getValue("id");
-ruleGroupName=attrs.getValue("name");
+ruleGroupId=attrs.getValue(ID);
+ruleGroupName=attrs.getValue(NAME);
 inRuleGroup=true;
 subId=0;
 break;
@@ -127,7 +127,7 @@ output=attrs.getValue("outputform");
 }
 example=new StringBuilder();
 break;
-case "marker":
+case MARKER:
 example.append("<marker>");
 if (inPattern) {
 startPos=tokenCounter;

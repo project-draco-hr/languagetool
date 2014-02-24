@@ -1,6 +1,6 @@
 {
   if ("category".equals(qName)) {
-    final String catName=attrs.getValue("name");
+    final String catName=attrs.getValue(NAME);
     final String priorityStr=attrs.getValue("priority");
     if (priorityStr == null) {
       category=new Category(catName);
@@ -24,7 +24,7 @@
     message=new StringBuilder();
     suggestionsOutMsg=new StringBuilder();
     url=new StringBuilder();
-    id=attrs.getValue("id");
+    id=attrs.getValue(ID);
     if (inRuleGroup) {
       subId++;
     }
@@ -37,7 +37,7 @@
     if (inRuleGroup && id == null) {
       id=ruleGroupId;
     }
-    name=attrs.getValue("name");
+    name=attrs.getValue(NAME);
     if (inRuleGroup && name == null) {
       name=ruleGroupDescription;
     }
@@ -70,10 +70,10 @@
     uniNegation=YES.equals(attrs.getValue(NEGATE));
   }
  else   if (FEATURE.equals(qName)) {
-    uFeature=attrs.getValue("id");
+    uFeature=attrs.getValue(ID);
   }
  else   if (TYPE.equals(qName)) {
-    uType=attrs.getValue("id");
+    uType=attrs.getValue(ID);
     uTypeList.add(uType);
   }
  else   if (TOKEN.equals(qName)) {
@@ -118,8 +118,8 @@
     url=new StringBuilder();
   }
  else   if (RULEGROUP.equals(qName)) {
-    ruleGroupId=attrs.getValue("id");
-    ruleGroupDescription=attrs.getValue("name");
+    ruleGroupId=attrs.getValue(ID);
+    ruleGroupDescription=attrs.getValue(NAME);
     defaultOff="off".equals(attrs.getValue(DEFAULT));
     defaultOn="on".equals(attrs.getValue(DEFAULT));
     inRuleGroup=true;
@@ -139,10 +139,10 @@
     setMatchElement(attrs);
   }
  else   if (MARKER.equals(qName) && inCorrectExample) {
-    correctExample.append("<marker>");
+    correctExample.append(MARKER_TAG);
   }
  else   if (MARKER.equals(qName) && inIncorrectExample) {
-    incorrectExample.append("<marker>");
+    incorrectExample.append(MARKER_TAG);
   }
  else   if (MARKER.equals(qName) && inPattern) {
     startPos=tokenCounter;
@@ -162,7 +162,7 @@
     phraseElementInit();
   }
  else   if ("phrase".equals(qName) && inPhrases) {
-    phraseId=attrs.getValue("id");
+    phraseId=attrs.getValue(ID);
   }
  else   if ("phraseref".equals(qName) && attrs.getValue("idref") != null) {
     preparePhrase(attrs);
