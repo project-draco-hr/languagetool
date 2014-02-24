@@ -30,8 +30,9 @@
     }
   }
  catch (  Exception e) {
+    print("An error has occurred. Stacktrace follows:",System.err);
     if (verbose) {
-      print("Exception was caused by this text: " + text);
+      print("Exception was caused by this text: " + text,System.err);
     }
     e.printStackTrace();
     final String response="Error: " + StringTools.escapeXML(Tools.getFullStackTrace(e));

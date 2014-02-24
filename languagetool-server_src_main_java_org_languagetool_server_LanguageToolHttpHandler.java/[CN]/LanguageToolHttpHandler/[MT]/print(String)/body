@@ -1,5 +1,3 @@
 {
-  final SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-  final String now=dateFormat.format(new Date());
-  System.out.println(now + " " + s);
+  print(s,System.out);
 }
