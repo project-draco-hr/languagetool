@@ -25,7 +25,8 @@
   String messageWithBold=message.replaceAll("<suggestion>","<b>").replaceAll("</suggestion>","</b>");
   String exampleSentences=getExampleSentences(rule);
   String url="http://community.languagetool.org/rule/show/" + encodeUrl(rule) + "?lang="+ languageTool.getLanguage().getShortNameWithCountryAndVariant()+ "&amp;ref=standalone-gui";
-  textPane.setText("<html>" + messageWithBold + exampleSentences+ formatURL(rule.getUrl())+ "<br><br>"+ "<a href='"+ url+ "'>"+ messages.getString("ruleDetailsLink")+ "</a>"+ "</html>");
+  String ruleDetailLink=rule instanceof FalseFriendPatternRule ? "" : "<a href='" + url + "'>"+ messages.getString("ruleDetailsLink")+ "</a>";
+  textPane.setText("<html>" + messageWithBold + exampleSentences+ formatURL(rule.getUrl())+ "<br><br>"+ ruleDetailLink+ "</html>");
   JScrollPane scrollPane=new JScrollPane(textPane);
   scrollPane.setPreferredSize(new Dimension(dialogWidth,textPane.getPreferredSize().height));
   scrollPane.setBorder(BorderFactory.createEmptyBorder());
