@@ -80,8 +80,8 @@
   matches=rule.match(langTool.getAnalyzedSentence("ca??essim"));
   assertEquals(1,matches.length);
   assertEquals("cac??ssim",matches[0].getSuggestedReplacements().get(0));
-  assertEquals("cas??ssim",matches[0].getSuggestedReplacements().get(1));
-  assertEquals("cass??ssim",matches[0].getSuggestedReplacements().get(2));
+  assertEquals("cas??ssim",matches[0].getSuggestedReplacements().get(2));
+  assertEquals("cass??ssim",matches[0].getSuggestedReplacements().get(1));
   assertEquals("cess??ssim",matches[0].getSuggestedReplacements().get(3));
   matches=rule.match(langTool.getAnalyzedSentence("cantar????"));
   assertEquals(1,matches.length);
@@ -113,7 +113,6 @@
   assertEquals("especialitzats",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("matitz??rem"));
   assertEquals(1,matches.length);
-  assertEquals("matis??rem",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("tamitz??ssim"));
   assertEquals(1,matches.length);
   assertEquals("tamis??ssim",matches[0].getSuggestedReplacements().get(0));
