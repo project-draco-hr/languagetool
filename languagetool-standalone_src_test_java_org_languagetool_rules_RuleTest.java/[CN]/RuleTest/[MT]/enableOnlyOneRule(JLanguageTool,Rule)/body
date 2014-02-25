@@ -1,0 +1,6 @@
+{
+  for (  Rule rule : lt.getAllRules()) {
+    lt.disableRule(rule.getId());
+  }
+  lt.enableRule(ruleToActivate.getId());
+}

@@ -1,0 +1,4 @@
+{
+  testCorrectExamples(rule,lt);
+  testIncorrectExamples(rule,lt);
+}

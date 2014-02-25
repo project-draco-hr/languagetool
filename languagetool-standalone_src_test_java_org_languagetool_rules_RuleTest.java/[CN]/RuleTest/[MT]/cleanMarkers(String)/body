@@ -1,0 +1,3 @@
+{
+  return example.replace("<marker>","").replace("</marker>","");
+}

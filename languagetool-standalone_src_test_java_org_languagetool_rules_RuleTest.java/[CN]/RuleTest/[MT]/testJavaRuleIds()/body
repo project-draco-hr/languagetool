@@ -18,6 +18,7 @@
       }
  else {
         assertTrue(rule.supportsLanguage(language));
+        testExamples(rule,lt);
       }
     }
   }

@@ -1,0 +1,9 @@
+{
+  List<String> correctExamples=rule.getCorrectExamples();
+  for (  String correctExample : correctExamples) {
+    String input=cleanMarkers(correctExample);
+    enableOnlyOneRule(lt,rule);
+    List<RuleMatch> ruleMatches=lt.check(input);
+    assertEquals("Got unexpected rule match for correct example sentence:\n" + "Text: " + input + "\n"+ "Rule: "+ rule.getId()+ "\n"+ "Matches: "+ ruleMatches,0,ruleMatches.size());
+  }
+}
