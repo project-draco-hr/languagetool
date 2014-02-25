@@ -4,6 +4,7 @@
   if (speller == null) {
     if (JLanguageTool.getDataBroker().resourceExists(getFileName())) {
       speller=new MorfologikSpeller(getFileName(),conversionLocale);
+      setConvertsCase(speller.convertsCase());
     }
  else {
       return toRuleMatchArray(ruleMatches);
