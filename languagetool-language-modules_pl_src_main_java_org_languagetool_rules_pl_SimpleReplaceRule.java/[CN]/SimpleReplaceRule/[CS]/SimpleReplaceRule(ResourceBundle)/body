@@ -2,4 +2,5 @@
   super(messages);
   setLocQualityIssueType(ITSIssueType.Misspelling);
   setCheckLemmas(false);
+  addExamplePair(Example.wrong("Uspok??j <marker>sie</marker>."),Example.fixed("Uspok??j <marker>si??</marker>."));
 }

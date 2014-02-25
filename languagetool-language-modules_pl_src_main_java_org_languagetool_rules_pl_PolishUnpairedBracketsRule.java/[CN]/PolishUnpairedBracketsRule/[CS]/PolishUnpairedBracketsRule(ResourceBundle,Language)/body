@@ -3,4 +3,5 @@
   startSymbols=PL_START_SYMBOLS;
   endSymbols=PL_END_SYMBOLS;
   uniqueMapInit();
+  addExamplePair(Example.wrong("To jest zdanie z <marker>???</marker>cudzys??owem."),Example.fixed("To jest zdanie z <marker>???</marker>cudzys??owem???."));
 }
