@@ -3,4 +3,5 @@
   startSymbols=EN_START_SYMBOLS;
   endSymbols=EN_END_SYMBOLS;
   uniqueMapInit();
+  addExamplePair(Example.wrong("<marker>\"</marker>I'm over here, she said."),Example.fixed("\"I'm over here,<marker>\"</marker> she said."));
 }

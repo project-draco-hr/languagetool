@@ -2,4 +2,5 @@
   super(messages);
   super.setCategory(new Category("Possible Typo"));
   setLocQualityIssueType(ITSIssueType.Misspelling);
+  addExamplePair(Example.wrong("We <marker>havent</marker> earned anything."),Example.fixed("We <marker>haven't</marker> earned anything."));
 }

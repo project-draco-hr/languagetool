@@ -1,3 +1,4 @@
 {
   super(messages,language);
+  addExamplePair(Example.wrong("Moreover, the street is almost entirely residential. <marker>Moreover</marker>, it was named after a poet."),Example.fixed("Moreover, the street is almost entirely residential. <marker>It</marker> was named after a poet."));
 }

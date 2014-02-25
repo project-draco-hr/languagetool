@@ -1,4 +1,5 @@
 {
   super(messages);
   setLocQualityIssueType(ITSIssueType.LocaleViolation);
+  addExamplePair(Example.wrong("A <marker>sidewalk</marker> is a path along the side of a road."),Example.fixed("A <marker>footpath</marker> is a path along the side of a road."));
 }

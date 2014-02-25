@@ -1,4 +1,5 @@
 {
   super(messages);
   setLocQualityIssueType(ITSIssueType.LocaleViolation);
+  addExamplePair(Example.wrong("Where's the <marker>bathroom</marker> on the Enterprise?"),Example.fixed("Where's the <marker>toilet</marker> on the Enterprise?"));
 }
