@@ -1,4 +1,6 @@
 {
-  if (messages != null)   super.setCategory(new Category(messages.getString("category_misc")));
+  if (messages != null) {
+    super.setCategory(new Category(messages.getString("category_misc")));
+  }
   addExamplePair(Example.wrong("Bundestag beschlie??t <marker>Di??ten- Erh??hung</marker>"),Example.fixed("Bundestag beschlie??t <marker>Di??ten-Erh??hung</marker>"));
 }
