@@ -3,4 +3,5 @@
     super.setCategory(new Category(messages.getString("category_misc")));
   }
   relevantWords=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(FILE_NAME));
+  addExamplePair(Example.wrong("Die Delfine geh??ren zu den Zahnwalen. <marker>Delphine</marker> sind in allen Meeren verbreitet."),Example.fixed("Die Delfine geh??ren zu den Zahnwalen. <marker>Delfine</marker> sind in allen Meeren verbreitet."));
 }

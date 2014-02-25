@@ -6,4 +6,5 @@
  catch (  MalformedURLException e) {
     throw new RuntimeException(e);
   }
+  addExamplePair(Example.wrong("Sein Vater ist Regierungsrat <marker>a. D..</marker>"),Example.fixed("Sein Vater ist Regierungsrat <marker>a. D.</marker>"));
 }

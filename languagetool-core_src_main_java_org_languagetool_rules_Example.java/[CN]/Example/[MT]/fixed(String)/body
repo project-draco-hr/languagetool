@@ -1,0 +1,4 @@
+{
+  requireMarkup(example);
+  return example;
+}

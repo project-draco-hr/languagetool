@@ -1,3 +1,4 @@
 {
   super(messages,language);
+  addExamplePair(Example.wrong("Dann hatten wir Freizeit. Dann gab es Essen. <marker>Dann</marker> gingen wir schlafen."),Example.fixed("Dann hatten wir Freizeit. Danach gab es Essen. <marker>Schlie??lich</marker> gingen wir schlafen."));
 }

@@ -1,4 +1,5 @@
 {
   if (messages != null)   super.setCategory(new Category(messages.getString("category_case")));
   this.tagger=(GermanTagger)german.getTagger();
+  addExamplePair(Example.wrong("<marker>Das laufen</marker> f??llt mir schwer."),Example.fixed("<marker>Das Laufen</marker> f??llt mir schwer."));
 }

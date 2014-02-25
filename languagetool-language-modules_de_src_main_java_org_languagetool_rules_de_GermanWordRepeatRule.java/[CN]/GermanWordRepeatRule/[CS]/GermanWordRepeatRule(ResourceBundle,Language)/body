@@ -1,3 +1,4 @@
 {
   super(messages,language);
+  addExamplePair(Example.wrong("In diesem Satz <marker>ist ist</marker> ein Wort doppelt."),Example.fixed("In diesem Satz <marker>ist</marker> ein Wort doppelt."));
 }
