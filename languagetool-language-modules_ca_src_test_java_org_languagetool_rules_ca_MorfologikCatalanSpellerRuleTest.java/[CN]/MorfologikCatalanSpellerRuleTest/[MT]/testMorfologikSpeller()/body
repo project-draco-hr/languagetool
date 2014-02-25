@@ -84,8 +84,9 @@
   assertEquals(1,matches.length);
   assertEquals("cac??ssim",matches[0].getSuggestedReplacements().get(0));
   assertEquals("cass??ssim",matches[0].getSuggestedReplacements().get(1));
-  assertEquals("cas??ssim",matches[0].getSuggestedReplacements().get(2));
-  assertEquals("cess??ssim",matches[0].getSuggestedReplacements().get(3));
+  assertEquals("cass??ssim",matches[0].getSuggestedReplacements().get(2));
+  assertEquals("cas??ssim",matches[0].getSuggestedReplacements().get(3));
+  assertEquals("cas??ssim",matches[0].getSuggestedReplacements().get(4));
   matches=rule.match(langTool.getAnalyzedSentence("coche"));
   assertEquals(1,matches.length);
   assertEquals("cotxe",matches[0].getSuggestedReplacements().get(0));
