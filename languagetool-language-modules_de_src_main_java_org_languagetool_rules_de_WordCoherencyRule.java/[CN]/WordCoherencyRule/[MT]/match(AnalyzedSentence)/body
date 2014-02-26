@@ -4,9 +4,7 @@
   int pos=0;
   for (  AnalyzedTokenReadings tmpToken : tokens) {
     String token=tmpToken.getToken();
-    if (tmpToken.isWhitespace()) {
-    }
- else {
+    if (!tmpToken.isWhitespace()) {
       final String origToken=token;
       final List<AnalyzedToken> readings=tmpToken.getReadings();
       if (readings != null && readings.size() > 0) {

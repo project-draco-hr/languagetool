@@ -7,11 +7,17 @@
     categoryToRelaxSet=Collections.emptySet();
   }
   final Set<String> set1=getAgreementCategories(token1,categoryToRelaxSet);
-  if (set1 == null)   return null;
+  if (set1 == null) {
+    return null;
+  }
   final Set<String> set2=getAgreementCategories(token2,categoryToRelaxSet);
-  if (set2 == null)   return null;
+  if (set2 == null) {
+    return null;
+  }
   final Set<String> set3=getAgreementCategories(token3,categoryToRelaxSet);
-  if (set3 == null)   return null;
+  if (set3 == null) {
+    return null;
+  }
   set1.retainAll(set2);
   set1.retainAll(set3);
   return set1;

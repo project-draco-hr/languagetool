@@ -5,7 +5,9 @@
     comma=tokens[pos - 1].getToken().equals(",");
     final String term=tokens[pos].getToken().toLowerCase();
     relPronoun=REL_PRONOUN.contains(term);
-    if (comma && relPronoun)     return true;
+    if (comma && relPronoun) {
+      return true;
+    }
   }
   if (pos >= 2) {
     comma=tokens[pos - 2].getToken().equals(",");
