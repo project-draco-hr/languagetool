@@ -104,6 +104,9 @@
       if (!inAndGroup) {
         uniCounter++;
       }
+      if (inUnificationNeutral) {
+        tokenElement.setUnificationNeutral();
+      }
     }
     if (inUnificationDef) {
       language.getDisambiguationUnifierConfiguration().setEquivalence(uFeature,uType,tokenElement);
@@ -149,6 +152,9 @@
     if (uniNegation) {
       elementList.get(lastElement).setUniNegation();
     }
+  }
+ else   if (UNIFY_IGNORE.equals(qName)) {
+    inUnificationNeutral=false;
   }
  else   if (WD.equals(qName)) {
     addNewWord(wd.toString(),wdLemma,wdPos);

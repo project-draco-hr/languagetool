@@ -38,6 +38,9 @@ inUnification=true;
 uniNegation=YES.equals(attrs.getValue(NEGATE));
 uniCounter=0;
 break;
+case UNIFY_IGNORE:
+inUnificationNeutral=true;
+break;
 case "feature":
 uFeature=attrs.getValue(ID);
 break;
