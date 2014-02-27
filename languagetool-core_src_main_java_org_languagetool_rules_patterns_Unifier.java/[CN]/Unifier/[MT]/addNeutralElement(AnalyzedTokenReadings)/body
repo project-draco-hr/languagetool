@@ -1,0 +1,4 @@
+{
+  tokSequence.add(analyzedTokenReadings);
+  readingsCounter++;
+}
