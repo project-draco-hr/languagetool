@@ -36,4 +36,5 @@
   }
   simpleRuleTokens=getSimpleTokens();
   inflectedRuleTokens=getInflectedTokens();
+  antiPatterns=new ArrayList<>();
 }

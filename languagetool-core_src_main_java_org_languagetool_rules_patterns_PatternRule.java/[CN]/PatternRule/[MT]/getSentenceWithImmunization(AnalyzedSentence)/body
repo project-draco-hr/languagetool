@@ -1,0 +1,8 @@
+{
+  if (antiPatterns != null && !antiPatterns.isEmpty()) {
+    for (    final DisambiguationPatternRule patternRule : antiPatterns) {
+      sentence=patternRule.replace(sentence);
+    }
+  }
+  return sentence;
+}

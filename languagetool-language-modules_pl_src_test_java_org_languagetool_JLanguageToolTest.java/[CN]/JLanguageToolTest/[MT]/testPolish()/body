@@ -9,6 +9,9 @@
   assertEquals(0,tool.check("Maj?? one niema??e znaczenie.").size());
   assertEquals(0,tool.check("A teraz ka??cie mi da?? jaki b??d?? posi??ek.").size());
   assertEquals(0,tool.check("Kiedym w??z zobaczy??, by??bym przysi??g??, ??e wielka przygoda mnie czeka.").size());
+  assertEquals(0,tool.check("Jurek wygl??da wypisz wymaluj babcia.").size());
+  assertEquals(1,tool.check("Jurek wygl??da wypisz wypisz wymaluj babcia.").size());
+  assertEquals(1,tool.check("Jurek wygl??da wypisz wymaluj wymaluj babcia.").size());
   matches=tool.check("By?? on bowiem pi??knym strzelcem bowiem.");
   assertEquals(0,matches.size());
   tool.enableDefaultOffRule("PL_WORD_REPEAT");

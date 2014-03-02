@@ -1,0 +1,3 @@
+{
+  this.antiPatterns.addAll(antiPatterns);
+}

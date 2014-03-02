@@ -8,6 +8,13 @@
   rule.setCorrectExamples(correctExamples);
   rule.setIncorrectExamples(incorrectExamples);
   rule.setCategory(category);
+  if (rulegroupAntiPatterns != null && !rulegroupAntiPatterns.isEmpty()) {
+    rule.setAntiPatterns(rulegroupAntiPatterns);
+  }
+  if (ruleAntiPatterns != null && !ruleAntiPatterns.isEmpty()) {
+    rule.setAntiPatterns(ruleAntiPatterns);
+    ruleAntiPatterns.clear();
+  }
   if (inRuleGroup) {
     rule.setSubId(Integer.toString(subId));
   }

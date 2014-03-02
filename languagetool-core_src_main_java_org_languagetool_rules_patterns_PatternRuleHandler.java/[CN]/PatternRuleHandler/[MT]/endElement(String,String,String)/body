@@ -33,6 +33,7 @@ if (phraseElementList != null) {
 phraseElementList.clear();
 }
 ruleIssueType=null;
+inRule=false;
 break;
 case EXCEPTION:
 finalizeExceptions();
@@ -56,6 +57,28 @@ if (lastPhrase) {
 elementList.clear();
 }
 tokenCounter=0;
+break;
+case ANTIPATTERN:
+final DisambiguationPatternRule rule=new DisambiguationPatternRule(id + "_antipattern:" + antiPatternCounter,"antipattern",language,elementList,null,null,DisambiguationPatternRule.DisambiguatorAction.IMMUNIZE);
+if (startPos != -1 && endPos != -1) {
+rule.setStartPositionCorrection(startPos);
+rule.setEndPositionCorrection(endPos - tokenCountForMarker);
+}
+elementList.clear();
+if (inRule) {
+if (ruleAntiPatterns == null) {
+ruleAntiPatterns=new ArrayList<>();
+}
+ruleAntiPatterns.add(rule);
+}
+ else {
+if (rulegroupAntiPatterns == null) {
+rulegroupAntiPatterns=new ArrayList<>();
+}
+rulegroupAntiPatterns.add(rule);
+}
+tokenCounter=0;
+inAntiPattern=false;
 break;
 case EXAMPLE:
 if (inCorrectExample) {
@@ -112,6 +135,10 @@ break;
 case RULEGROUP:
 inRuleGroup=false;
 ruleGroupIssueType=null;
+if (rulegroupAntiPatterns != null) {
+rulegroupAntiPatterns.clear();
+}
+antiPatternCounter=0;
 break;
 case MARKER:
 if (inCorrectExample) {
@@ -120,7 +147,7 @@ correctExample.append("</marker>");
  else if (inIncorrectExample) {
 incorrectExample.append("</marker>");
 }
- else if (inPattern) {
+ else if (inPattern || inAntiPattern) {
 endPos=tokenCountForMarker;
 inMarker=false;
 }

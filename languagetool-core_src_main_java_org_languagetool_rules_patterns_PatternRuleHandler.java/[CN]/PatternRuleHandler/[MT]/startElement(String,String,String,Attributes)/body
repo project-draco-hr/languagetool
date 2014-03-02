@@ -21,6 +21,7 @@ final String languageStr=attrs.getValue("lang");
 language=Language.getLanguageForShortName(languageStr);
 break;
 case RULE:
+inRule=true;
 shortMessage=new StringBuilder();
 message=new StringBuilder();
 suggestionsOutMsg=new StringBuilder();
@@ -56,6 +57,13 @@ ruleIssueType=attrs.getValue(TYPE);
 break;
 case PATTERN:
 startPattern(attrs);
+tokenCountForMarker=0;
+break;
+case ANTIPATTERN:
+inAntiPattern=true;
+antiPatternCounter++;
+caseSensitive=YES.equals(attrs.getValue(CASE_SENSITIVE));
+tokenCounter=0;
 tokenCountForMarker=0;
 break;
 case AND:
@@ -149,7 +157,7 @@ incorrectExample.append(MARKER_TAG);
  else if (inCorrectExample) {
 correctExample.append(MARKER_TAG);
 }
- else if (inPattern) {
+ else if (inPattern || inAntiPattern) {
 startPos=tokenCounter;
 inMarker=true;
 }
