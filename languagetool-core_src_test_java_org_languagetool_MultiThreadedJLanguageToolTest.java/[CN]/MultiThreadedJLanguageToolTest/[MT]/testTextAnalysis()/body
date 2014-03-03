@@ -1,0 +1,9 @@
+{
+  JLanguageTool tool=new MultiThreadedJLanguageTool(new Demo());
+  List<AnalyzedSentence> analyzedSentences=tool.analyzeText("This is a sentence. And another one.");
+  assertThat(analyzedSentences.size(),is(2));
+  assertThat(analyzedSentences.get(0).getTokens().length,is(10));
+  assertThat(analyzedSentences.get(0).getTokensWithoutWhitespace().length,is(6));
+  assertThat(analyzedSentences.get(1).getTokens().length,is(7));
+  assertThat(analyzedSentences.get(1).getTokensWithoutWhitespace().length,is(5));
+}

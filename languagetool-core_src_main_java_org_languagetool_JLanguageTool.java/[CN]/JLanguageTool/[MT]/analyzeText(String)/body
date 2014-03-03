@@ -1,0 +1,4 @@
+{
+  final List<String> sentences=sentenceTokenize(text);
+  return analyzeSentences(sentences);
+}
