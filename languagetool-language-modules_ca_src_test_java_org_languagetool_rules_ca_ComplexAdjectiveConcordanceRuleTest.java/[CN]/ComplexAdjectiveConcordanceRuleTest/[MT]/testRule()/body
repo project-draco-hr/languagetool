@@ -1,4 +1,12 @@
 {
+  assertCorrect("El 1967 una partida de liberals rebel al govern");
+  assertCorrect("El 1640 una junta de nobles reunida a Lisboa");
+  assertCorrect("amb una expressi?? de dolor i de por barrejats.");
+  assertCorrect("un tram m??s tou, amb morfologia i color diferents.");
+  assertCorrect("Especialment en mat??ria de policia i finan??ament auton??mics");
+  assertCorrect("Especialment en mat??ria de policia i just??cia auton??mics");
+  assertCorrect("Especialment en mat??ria de policia i just??cia auton??miques");
+  assertCorrect("l'obra de Boeci amb espontane??tat i vigor notables");
   assertCorrect("tenen en canvi altres parts de llur estructura certament molt anormals:");
   assertCorrect("constitueix l'??nica comunitat aut??noma amb menys aturats");
   assertCorrect("durant tot l'any, i del sud-est, m??s notoris a la primavera");
@@ -65,6 +73,7 @@
   assertCorrect("??s unes 20 vegades m??s gran que l'espermatozou.");
   assertCorrect("eren quatre vegades m??s alts");
   assertCorrect("eren uns fets cada volta m??s inexplicables");
+  assertCorrect("El castell est?? totalment en ru??nes i completament cobert de vegetaci??.");
   assertCorrect("han estat tant elogiades per la cr??tica teatral, com pol??miques");
   assertCorrect("Del segle XVIII per?? reconstru??da recentment");
   assertCorrect("La ind??stria, tradicionalment dedicada al t??xtil i ara molt diversificada,");

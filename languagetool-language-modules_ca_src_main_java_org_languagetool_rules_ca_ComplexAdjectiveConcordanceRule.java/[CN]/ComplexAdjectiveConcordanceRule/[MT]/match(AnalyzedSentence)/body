@@ -32,6 +32,8 @@
       int[] cNFS=new int[maxLevels];
       int[] cNMP=new int[maxLevels];
       int[] cNFP=new int[maxLevels];
+      int[] cNCS=new int[maxLevels];
+      int[] cNCP=new int[maxLevels];
       int[] cDMS=new int[maxLevels];
       int[] cDFS=new int[maxLevels];
       int[] cDMP=new int[maxLevels];
@@ -83,6 +85,12 @@
             }
  else             if (matchPostagRegexp(tokens[i - j],NOM_FP)) {
               cNFP[level]++;
+            }
+ else             if (matchPostagRegexp(tokens[i - j],NOM_CS)) {
+              cNCS[level]++;
+            }
+ else             if (matchPostagRegexp(tokens[i - j],NOM_CP)) {
+              cNCP[level]++;
             }
           }
         }
@@ -150,11 +158,11 @@
       int cNtotal=0;
       int cDtotal=0;
       while (j < level) {
-        cN[j]=cNMS[j] + cNFS[j] + cNMP[j]+ cNFP[j];
+        cN[j]=cNMS[j] + cNFS[j] + cNMP[j]+ cNFP[j]+ cNCS[j]+ cNCP[j];
         cD[j]=cDMS[j] + cDFS[j] + cDMP[j]+ cDFP[j];
         cNtotal+=cN[j];
         cDtotal+=cD[j];
-        if (matchPostagRegexp(tokens[i],ADJECTIU_MP) && (cN[j] > 1 || cD[j] > 1) && (cNMS[j] + cNMP[j] + cDMS[j]+ cDMP[j]) > 0 && (cNFS[j] + cNFP[j] <= cNt[j])) {
+        if (matchPostagRegexp(tokens[i],ADJECTIU_MP) && (cN[j] > 1 || cD[j] > 1) && (cNMS[j] + cNMP[j] + cNCS[j]+ cNCP[j]+ cDMS[j]+ cDMP[j]) > 0 && (cNFS[j] + cNFP[j] <= cNt[j])) {
           isException=true;
           break;
         }
