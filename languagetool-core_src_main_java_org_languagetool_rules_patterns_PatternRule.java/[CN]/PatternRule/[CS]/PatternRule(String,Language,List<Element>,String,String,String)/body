@@ -5,7 +5,7 @@
   this.elementNo=new ArrayList<>();
   this.suggestionsOutMsg="";
   String prevName="";
-  String curName="";
+  String curName;
   int cnt=0;
   int loopCnt=0;
   for (  final Element e : patternElements) {
