@@ -16,6 +16,16 @@
     maxPosCorrection=Math.max((lastMatchToken + 1 - (firstMatchToken + correctedStPos)) - matchingTokens,0);
     matchingTokensWithCorrection+=maxPosCorrection;
   }
+  for (int j=0; j < startPositionCorrection; j++) {
+    if (!elementsMatched.get(j)) {
+      correctedStPos--;
+    }
+  }
+  int j=0;
+  while (startPositionCorrection + j < rule.getPatternElements().size() && !elementsMatched.get(startPositionCorrection + j)) {
+    correctedStPos++;
+    j++;
+  }
   final int fromPos=sentence.getOriginalPosition(firstMatchToken + correctedStPos);
   final boolean spaceBefore=whTokens[fromPos].isWhitespaceBefore();
   boolean filtered=false;
@@ -101,9 +111,16 @@ break;
 case FILTERALL:
 for (int i=0; i < matchingTokensWithCorrection - startPositionCorrection + endPositionCorrection; i++) {
 final int position=sentence.getOriginalPosition(firstMatchToken + correctedStPos + i);
-Element myEl=rule.getPatternElements().get(i + startPositionCorrection);
-if (myEl.getMinOccurrence() == 0 && rule.getPatternElements().size() > matchingTokensWithCorrection) {
-myEl=rule.getPatternElements().get(i + 1 + startPositionCorrection);
+Element myEl;
+if (elementsMatched.get(i + startPositionCorrection)) {
+myEl=rule.getPatternElements().get(i + startPositionCorrection);
+}
+ else {
+int k=1;
+while (i + startPositionCorrection + k < rule.getPatternElements().size() && !elementsMatched.get(i + startPositionCorrection + k)) {
+k++;
+}
+myEl=rule.getPatternElements().get(i + k + startPositionCorrection);
 }
 final Match tmpMatchToken=new Match(myEl.getPOStag(),null,true,myEl.getPOStag(),null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);
 MatchState matchState=tmpMatchToken.createState(rule.getLanguage().getSynthesizer(),whTokens[position]);

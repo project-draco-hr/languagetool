@@ -7,11 +7,18 @@
   final int limit=Math.max(0,tokens.length - patternSize + 1);
   ElementMatcher elem=null;
   boolean changed=false;
+  elementsMatched.clear();
+  for (int j=0; j <= patternSize; j++) {
+    elementsMatched.add(false);
+  }
   int i=0;
   int minOccurCorrection=getMinOccurrenceCorrection();
   while (i < limit + minOccurCorrection && !(rule.isSentStart() && i > 0)) {
     boolean allElementsMatch=false;
     unifiedTokens=null;
+    for (    boolean elementMatched : elementsMatched) {
+      elementMatched=false;
+    }
     int matchingTokens=0;
     int skipShiftTotal=0;
     int firstMatchToken=-1;
@@ -41,10 +48,12 @@
           if (nextElementMatch) {
             allElementsMatch=true;
             minOccurSkip++;
+            elementsMatched.set(k,false);
             break;
           }
         }
         if (allElementsMatch) {
+          elementsMatched.set(k,true);
           int skipForMax=skipMaxTokens(tokens,elem,firstMatchToken,prevSkipNext,prevElement,m,patternSize - k - 1);
           lastMatchToken=m + skipForMax;
           final int skipShift=lastMatchToken - nextPos;
