@@ -8,4 +8,5 @@
   assertEquals("[[[[Palau de la M??sica Catalana]], entrada]]",check.removeWikipediaLinks("[[Fitxer:Palau_de_musica_2.JPG|thumb|[[Palau de la M??sica Catalana]], entrada]]"));
   assertEquals("foo  bar",check.removeWikipediaLinks("foo [[Kategorie:Kurgeb??ude]] bar"));
   assertEquals("foo [[''Kursaal Palace'' in San Sebasti??n]] bar",check.removeWikipediaLinks("foo [[Datei:FestivalSS.jpg|miniatur|''Kursaal Palace'' in San Sebasti??n]] bar"));
+  assertEquals("[[Yupana, emprat pels [[Inques]].]]",check.removeWikipediaLinks("[[Fitxer:Yupana 1.GIF|thumb|Yupana, emprat pels [[Inques]].]]"));
 }
