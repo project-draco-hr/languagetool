@@ -4,7 +4,6 @@
   assertCorrect("amb una expressi?? de dolor i de por barrejats.");
   assertCorrect("un tram m??s tou, amb morfologia i color diferents.");
   assertCorrect("Especialment en mat??ria de policia i finan??ament auton??mics");
-  assertCorrect("Especialment en mat??ria de policia i just??cia auton??mics");
   assertCorrect("Especialment en mat??ria de policia i just??cia auton??miques");
   assertCorrect("l'obra de Boeci amb espontane??tat i vigor notables");
   assertCorrect("tenen en canvi altres parts de llur estructura certament molt anormals:");
@@ -89,6 +88,8 @@
   assertCorrect("sota les grans persianes de color verd recalcades");
   assertCorrect("que seria en pocs anys for??a hegem??nica a Catalunya");
   assertCorrect("Era un home for??a misteri??s");
+  assertIncorrect("Especialment en mat??ria de policia i just??cia auton??mics");
+  assertIncorrect("amb rigor i honor barrejades.");
   assertIncorrect("hi ha hagut una certa recuperaci?? (3,2%), efecte en part de la descongesti?? madrilenya cap a les prov??ncies lim??trofs de Toledo i Guadalajara.");
   assertIncorrect("Son molt boniques");
   assertIncorrect("La casa destrossat");
