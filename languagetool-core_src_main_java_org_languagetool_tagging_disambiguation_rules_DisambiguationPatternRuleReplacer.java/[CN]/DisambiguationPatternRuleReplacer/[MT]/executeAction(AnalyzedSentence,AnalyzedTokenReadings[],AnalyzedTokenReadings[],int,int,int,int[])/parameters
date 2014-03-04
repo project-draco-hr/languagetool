@@ -2,5 +2,6 @@ AnalyzedSentence sentence
 AnalyzedTokenReadings[] whiteTokens
 AnalyzedTokenReadings[] unifiedTokens
 int firstMatchToken
+int lastMatchToken
 int matchingTokens
 int[] tokenPositions

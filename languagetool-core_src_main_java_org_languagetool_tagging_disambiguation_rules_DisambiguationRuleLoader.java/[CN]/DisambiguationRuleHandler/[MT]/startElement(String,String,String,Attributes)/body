@@ -134,6 +134,7 @@ case MARKER:
 example.append("<marker>");
 if (inPattern) {
 startPos=tokenCounter;
+inMarker=true;
 }
 break;
 }

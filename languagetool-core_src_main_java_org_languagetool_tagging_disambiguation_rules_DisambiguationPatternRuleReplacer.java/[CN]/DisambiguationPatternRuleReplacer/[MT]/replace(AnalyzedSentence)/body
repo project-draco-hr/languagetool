@@ -7,12 +7,17 @@
   final int limit=Math.max(0,tokens.length - patternSize + 1);
   ElementMatcher elem=null;
   boolean changed=false;
-  for (int i=0; i < limit && !(rule.isSentStart() && i > 0); i++) {
+  int i=0;
+  int minOccurCorrection=getMinOccurrenceCorrection();
+  while (i < limit + minOccurCorrection && !(rule.isSentStart() && i > 0)) {
     boolean allElementsMatch=false;
     unifiedTokens=null;
     int matchingTokens=0;
     int skipShiftTotal=0;
     int firstMatchToken=-1;
+    int lastMatchToken=-1;
+    int firstMarkerMatchToken=-1;
+    int lastMarkerMatchToken=-1;
     int prevSkipNext=0;
     if (rule.isTestUnification()) {
       unifier.reset();
@@ -27,7 +32,7 @@
       if (prevSkipNext + nextPos >= tokens.length || prevSkipNext < 0) {
         prevSkipNext=tokens.length - (nextPos + 1);
       }
-      final int maxTok=Math.min(nextPos + prevSkipNext,tokens.length - (patternSize - k));
+      final int maxTok=Math.min(nextPos + prevSkipNext,tokens.length - (patternSize - k) + minOccurCorrection);
       for (int m=nextPos; m <= maxTok; m++) {
         allElementsMatch=testAllReadings(tokens,elem,prevElement,m,firstMatchToken,prevSkipNext);
         if (elem.getElement().getMinOccurrence() == 0) {
@@ -40,13 +45,21 @@
           }
         }
         if (allElementsMatch) {
-          final int skipShift=m - nextPos;
+          int skipForMax=skipMaxTokens(tokens,elem,firstMatchToken,prevSkipNext,prevElement,m,patternSize - k - 1);
+          lastMatchToken=m + skipForMax;
+          final int skipShift=lastMatchToken - nextPos;
           tokenPositions[matchingTokens]=skipShift + 1;
           prevSkipNext=elem.getElement().getSkipNext();
           matchingTokens++;
           skipShiftTotal+=skipShift;
           if (firstMatchToken == -1) {
-            firstMatchToken=m;
+            firstMatchToken=lastMatchToken - skipForMax;
+          }
+          if (firstMarkerMatchToken == -1 && elem.getElement().isInsideMarker()) {
+            firstMarkerMatchToken=lastMatchToken - skipForMax;
+          }
+          if (elem.getElement().isInsideMarker()) {
+            lastMarkerMatchToken=lastMatchToken;
           }
           break;
         }
@@ -56,9 +69,10 @@
       }
     }
     if (allElementsMatch && matchingTokens == patternSize || matchingTokens == patternSize - minOccurSkip && firstMatchToken != -1) {
-      whTokens=executeAction(sentence,whTokens,unifiedTokens,firstMatchToken,matchingTokens,tokenPositions);
+      whTokens=executeAction(sentence,whTokens,unifiedTokens,firstMatchToken,lastMarkerMatchToken,matchingTokens,tokenPositions);
       changed=true;
     }
+    i++;
   }
   if (changed) {
     return new AnalyzedSentence(whTokens,sentence.getWhPositions());

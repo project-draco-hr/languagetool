@@ -113,6 +113,7 @@ if (inUnificationDef) {
 language.getDisambiguationUnifierConfiguration().setEquivalence(uFeature,uType,tokenElement);
 elementList.clear();
 }
+tokenElement.setInsideMarker(inMarker);
 if (tokenSpaceBeforeSet) {
 tokenElement.setWhitespaceBefore(tokenSpaceBefore);
 }
@@ -176,6 +177,7 @@ case MARKER:
 example.append("</marker>");
 if (inPattern) {
 endPos=tokenCountForMarker;
+inMarker=false;
 }
 break;
 }
