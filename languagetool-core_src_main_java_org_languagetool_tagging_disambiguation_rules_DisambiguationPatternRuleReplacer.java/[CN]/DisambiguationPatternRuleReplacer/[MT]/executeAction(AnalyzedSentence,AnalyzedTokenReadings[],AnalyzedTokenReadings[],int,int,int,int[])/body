@@ -4,27 +4,35 @@
   int correctedStPos=0;
   int startPositionCorrection=rule.getStartPositionCorrection();
   int endPositionCorrection=rule.getEndPositionCorrection();
+  int matchingTokensWithCorrection=matchingTokens;
+  if (matchingTokensWithCorrection - startPositionCorrection + endPositionCorrection == 0) {
+    int k=startPositionCorrection;
+    for (int j=0; j < k; j++) {
+      if (!elementsMatched.get(j)) {
+        startPositionCorrection--;
+      }
+    }
+  }
   if (startPositionCorrection > 0) {
     for (int l=0; l <= startPositionCorrection; l++) {
       correctedStPos+=tokenPositions[l];
     }
     correctedStPos--;
   }
-  int matchingTokensWithCorrection=matchingTokens;
-  if (lastMatchToken != -1) {
-    int maxPosCorrection=0;
-    maxPosCorrection=Math.max((lastMatchToken + 1 - (firstMatchToken + correctedStPos)) - matchingTokens,0);
-    matchingTokensWithCorrection+=maxPosCorrection;
-  }
-  for (int j=0; j < startPositionCorrection; j++) {
+  for (int j=0; j <= startPositionCorrection; j++) {
     if (!elementsMatched.get(j)) {
-      correctedStPos--;
+      correctedStPos-=tokenPositions[j];
     }
   }
   int j=0;
   while (startPositionCorrection + j < rule.getPatternElements().size() && !elementsMatched.get(startPositionCorrection + j)) {
     correctedStPos++;
     j++;
+  }
+  if (lastMatchToken != -1) {
+    int maxPosCorrection=0;
+    maxPosCorrection=Math.max((lastMatchToken + 1 - (firstMatchToken + correctedStPos)) - matchingTokens,0);
+    matchingTokensWithCorrection+=maxPosCorrection;
   }
   final int fromPos=sentence.getOriginalPosition(firstMatchToken + correctedStPos);
   final boolean spaceBefore=whTokens[fromPos].isWhitespaceBefore();
@@ -117,9 +125,10 @@ myEl=rule.getPatternElements().get(i + startPositionCorrection);
 }
  else {
 int k=1;
-while (i + startPositionCorrection + k < rule.getPatternElements().size() && !elementsMatched.get(i + startPositionCorrection + k)) {
+while (i + startPositionCorrection + k < rule.getPatternElements().size() + endPositionCorrection && !elementsMatched.get(i + startPositionCorrection + k)) {
 k++;
 }
+assert(i + k + startPositionCorrection < rule.getPatternElements().size());
 myEl=rule.getPatternElements().get(i + k + startPositionCorrection);
 }
 final Match tmpMatchToken=new Match(myEl.getPOStag(),null,true,myEl.getPOStag(),null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);

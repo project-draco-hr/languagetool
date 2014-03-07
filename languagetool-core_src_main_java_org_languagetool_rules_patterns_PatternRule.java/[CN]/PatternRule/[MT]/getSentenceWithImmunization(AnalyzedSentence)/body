@@ -1,9 +1,10 @@
 {
-  AnalyzedSentence immunizedSentence=sentence;
   if (antiPatterns != null && !antiPatterns.isEmpty()) {
+    AnalyzedSentence immunizedSentence=sentence.copy(sentence);
     for (    final DisambiguationPatternRule patternRule : antiPatterns) {
       immunizedSentence=patternRule.replace(immunizedSentence);
     }
+    return immunizedSentence;
   }
-  return immunizedSentence;
+  return sentence;
 }

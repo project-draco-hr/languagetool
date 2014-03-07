@@ -8,7 +8,7 @@
   ElementMatcher elem=null;
   boolean changed=false;
   elementsMatched.clear();
-  for (int j=0; j <= patternSize; j++) {
+  for (int j=0; j < patternSize; j++) {
     elementsMatched.add(false);
   }
   int i=0;

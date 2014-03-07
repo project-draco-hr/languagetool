@@ -1,0 +1,10 @@
+{
+  AnalyzedTokenReadings[] copyTokens=new AnalyzedTokenReadings[sentence.getTokens().length];
+  for (int i=0; i < copyTokens.length; i++) {
+    copyTokens[i]=new AnalyzedTokenReadings(sentence.getTokens()[i].getReadings(),sentence.getTokens()[i].getStartPos());
+  }
+  AnalyzedSentence copy=new AnalyzedSentence(copyTokens);
+  copy.setWhPositions(sentence.getWhPositions());
+  copy.getTokensWithoutWhitespace();
+  return copy;
+}
