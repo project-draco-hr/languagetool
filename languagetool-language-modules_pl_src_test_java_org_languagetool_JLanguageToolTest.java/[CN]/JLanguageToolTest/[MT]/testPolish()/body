@@ -12,6 +12,9 @@
   assertEquals(0,tool.check("Jurek wygl??da wypisz wymaluj babcia.").size());
   assertEquals(1,tool.check("Jurek wygl??da wypisz wypisz wymaluj babcia.").size());
   assertEquals(1,tool.check("Jurek wygl??da wypisz wymaluj wymaluj babcia.").size());
+  tool.activateDefaultPatternRules();
+  assertEquals(0,tool.check("Nudne brednie tak zam??ci??y g??ow?? ch??opu, ??e kl???? na czym ziemia stoi, zmuszonym b??d??c s??ucha?? tego wszystkiego.").size());
+  assertEquals(1,tool.check("Chc??c, nie chc??c zjad??em pstr??ga.").size());
   matches=tool.check("By?? on bowiem pi??knym strzelcem bowiem.");
   assertEquals(0,matches.size());
   tool.enableDefaultOffRule("PL_WORD_REPEAT");
