@@ -1,2 +1,3 @@
 AnalyzedTokenReadings subject
 AnalyzedTokenReadings verb
+String expectedVerbPOS

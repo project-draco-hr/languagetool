@@ -1,0 +1,12 @@
+{
+  RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence(s));
+  assertEquals("Did not find " + n + " match(es) in sentence '"+ s+ "'",n,matches.length);
+  if (expectedSuggestions.length > 0) {
+    RuleMatch match=matches[0];
+    if (matches.length > 1 && match.getSuggestedReplacements().size() == 0) {
+      match=matches[1];
+    }
+    List<String> suggestions=match.getSuggestedReplacements();
+    assertThat(suggestions,is(Arrays.asList(expectedSuggestions)));
+  }
+}

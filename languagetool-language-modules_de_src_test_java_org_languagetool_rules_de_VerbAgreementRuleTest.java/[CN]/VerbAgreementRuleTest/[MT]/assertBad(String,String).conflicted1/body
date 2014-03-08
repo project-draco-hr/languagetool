@@ -1,0 +1,3 @@
+{
+  assertBad(s,1,expectedSuggestions);
+}
