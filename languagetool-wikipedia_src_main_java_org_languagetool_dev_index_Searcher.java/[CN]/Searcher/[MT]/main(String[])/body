@@ -6,7 +6,7 @@
   final String languageCode=args[2];
   final Language language=Language.getLanguageForShortName(languageCode);
   final File indexDir=new File(args[3]);
-  if (args.length > 3 && "--no_limit".equals(args[4])) {
+  if (args.length > 4 && "--no_limit".equals(args[4])) {
     limitSearch=false;
   }
   final Searcher searcher=new Searcher(new SimpleFSDirectory(indexDir));

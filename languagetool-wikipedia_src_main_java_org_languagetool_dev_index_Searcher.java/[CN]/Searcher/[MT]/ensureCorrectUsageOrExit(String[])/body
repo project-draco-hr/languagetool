@@ -1,5 +1,5 @@
 {
-  if (args.length < 4 || !(args.length == 5 || !"--no_limit".equals(args[4]))) {
+  if (args.length < 4 || (args.length == 5 && !"--no_limit".equals(args[4]))) {
     System.err.println("Usage: Searcher <ruleId> <ruleXML> <languageCode> <indexDir> <--no_limit>");
     System.err.println("\truleId       Id of the rule to search for");
     System.err.println("\truleXML      path to a rule file, e.g. en/grammar.xml");
