@@ -4,5 +4,7 @@
   result=prime * result + Arrays.hashCode(nonBlankTokens);
   result=prime * result + Arrays.hashCode(tokens);
   result=prime * result + Arrays.hashCode(whPositions);
+  result=prime * result + tokenSet.hashCode();
+  result=prime * result + lemmaSet.hashCode();
   return result;
 }

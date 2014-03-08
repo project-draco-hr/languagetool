@@ -6,5 +6,11 @@
   if (!Arrays.equals(nonBlankTokens,other.nonBlankTokens))   return false;
   if (!Arrays.equals(tokens,other.tokens))   return false;
   if (!Arrays.equals(whPositions,other.whPositions))   return false;
+  if (tokenSet != null && !tokenSet.equals(other.tokenSet)) {
+    return false;
+  }
+  if (lemmaSet != null && !lemmaSet.equals(other.lemmaSet)) {
+    return false;
+  }
   return true;
 }

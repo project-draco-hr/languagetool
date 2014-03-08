@@ -1,0 +1,13 @@
+{
+  final AnalyzedTokenReadings[] words=new AnalyzedTokenReadings[3];
+  words[0]=new AnalyzedTokenReadings(new AnalyzedToken("","SENT_START",null));
+  words[1]=new AnalyzedTokenReadings(new AnalyzedToken("word","POS","lemma"));
+  words[2]=new AnalyzedTokenReadings(new AnalyzedToken(".","INTERP",null));
+  words[2].addReading(new AnalyzedToken(".","SENT_END",null));
+  final AnalyzedSentence sentence=new AnalyzedSentence(words);
+  final AnalyzedSentence copySentence=sentence.copy(sentence);
+  assertEquals(sentence,copySentence);
+  words[1].immunize();
+  assertEquals("<S> word[lemma/POS,{!},].[./INTERP,</S>,]",sentence.toString());
+  assertNotEquals(sentence,copySentence);
+}
