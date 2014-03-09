@@ -28,6 +28,10 @@
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("pH")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("McDonald")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Aix????sUnError")).length);
+  matches=rule.match(langTool.getAnalyzedSentence("Malaysia"));
+  assertEquals(1,matches.length);
+  assertEquals("Mal??isia",matches[0].getSuggestedReplacements().get(0));
+  assertEquals(1,matches[0].getSuggestedReplacements().size());
   matches=rule.match(langTool.getAnalyzedSentence("quna"));
   assertEquals(1,matches.length);
   assertEquals("que",matches[0].getSuggestedReplacements().get(0));
