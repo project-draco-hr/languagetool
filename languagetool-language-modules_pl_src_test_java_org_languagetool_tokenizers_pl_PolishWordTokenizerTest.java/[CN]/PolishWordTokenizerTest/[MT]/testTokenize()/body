@@ -30,4 +30,7 @@
   compoundTokens=wordTokenizer.tokenize("Mia??a osiemna??cie-dwadzie??cia lat.");
   assertEquals(8,compoundTokens.size());
   assertEquals("[Mia??a,  , osiemna??cie, -, dwadzie??cia,  , lat, .]",compoundTokens.toString());
+  compoundTokens=wordTokenizer.tokenize("S??ownik polsko-niemiecko-indonezyjski");
+  assertEquals(7,compoundTokens.size());
+  assertEquals("[S??ownik,  , polsko, -, niemiecko, -, indonezyjski]",compoundTokens.toString());
 }
