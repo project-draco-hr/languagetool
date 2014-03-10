@@ -1,29 +1,29 @@
 {
-  ArrayList<String> al=new ArrayList<>();
+  List<String> result=new ArrayList<>();
   if (verb.hasPartialPosTag(":1:SIN")) {
-    al.add("ich");
+    result.add("ich");
   }
   if (verb.hasPartialPosTag(":2:SIN")) {
-    al.add("du");
+    result.add("du");
   }
   if (verb.hasPartialPosTag(":3:SIN")) {
-    al.add("er");
-    al.add("sie");
-    al.add("es");
+    result.add("er");
+    result.add("sie");
+    result.add("es");
   }
   if (verb.hasPartialPosTag(":1:PLU")) {
-    al.add("wir");
+    result.add("wir");
   }
   if (verb.hasPartialPosTag(":2:PLU")) {
-    al.add("ihr");
+    result.add("ihr");
   }
-  if (verb.hasPartialPosTag(":3:PLU") && !al.contains("sie")) {
-    al.add("sie");
+  if (verb.hasPartialPosTag(":3:PLU") && !result.contains("sie")) {
+    result.add("sie");
   }
   if (toUppercase) {
-    for (int i=0; i < al.size(); ++i) {
-      al.set(i,StringTools.uppercaseFirstChar(al.get(i)));
+    for (int i=0; i < result.size(); ++i) {
+      result.set(i,StringTools.uppercaseFirstChar(result.get(i)));
     }
   }
-  return al;
+  return result;
 }

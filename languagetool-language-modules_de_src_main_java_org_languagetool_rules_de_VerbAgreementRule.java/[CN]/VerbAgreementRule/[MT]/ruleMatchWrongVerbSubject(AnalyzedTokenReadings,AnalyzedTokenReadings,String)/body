@@ -1,30 +1,30 @@
 {
   final String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Subjekt (" + subject.getToken() + ") und Pr??dikat ("+ verb.getToken()+ ") bez??glich Person oder Numerus (Einzahl, Mehrzahl - Beispiel: "+ "'ich sind' statt 'ich bin').";
-  ArrayList suggestions=new ArrayList();
-  ArrayList verbSuggestions=new ArrayList();
-  ArrayList pronounSuggestions=new ArrayList();
+  List<String> suggestions=new ArrayList<>();
+  List<String> verbSuggestions=new ArrayList<>();
+  List<String> pronounSuggestions=new ArrayList<>();
   RuleMatch ruleMatch;
   if (subject.getStartPos() < verb.getStartPos()) {
     ruleMatch=new RuleMatch(this,subject.getStartPos(),verb.getStartPos() + verb.getToken().length(),msg);
     verbSuggestions.addAll(getVerbSuggestions(verb,expectedVerbPOS,false));
-    for (int i=0; i < verbSuggestions.size(); ++i) {
-      suggestions.add(subject.getToken() + " " + verbSuggestions.get(i));
+    for (    String verbSuggestion : verbSuggestions) {
+      suggestions.add(subject.getToken() + " " + verbSuggestion);
     }
     pronounSuggestions.addAll(getPronounSuggestions(verb,Character.isUpperCase(subject.getToken().charAt(0))));
-    for (int i=0; i < pronounSuggestions.size(); ++i) {
-      suggestions.add(pronounSuggestions.get(i) + " " + verb.getToken());
+    for (    String pronounSuggestion : pronounSuggestions) {
+      suggestions.add(pronounSuggestion + " " + verb.getToken());
     }
     ruleMatch.setSuggestedReplacements(suggestions);
   }
  else {
     ruleMatch=new RuleMatch(this,verb.getStartPos(),subject.getStartPos() + subject.getToken().length(),msg);
     verbSuggestions.addAll(getVerbSuggestions(verb,expectedVerbPOS,Character.isUpperCase(verb.getToken().charAt(0))));
-    for (int i=0; i < verbSuggestions.size(); ++i) {
-      suggestions.add(verbSuggestions.get(i) + " " + subject.getToken());
+    for (    String verbSuggestion : verbSuggestions) {
+      suggestions.add(verbSuggestion + " " + subject.getToken());
     }
     pronounSuggestions.addAll(getPronounSuggestions(verb,false));
-    for (int i=0; i < pronounSuggestions.size(); ++i) {
-      suggestions.add(verb.getToken() + " " + pronounSuggestions.get(i));
+    for (    String pronounSuggestion : pronounSuggestions) {
+      suggestions.add(verb.getToken() + " " + pronounSuggestion);
     }
     ruleMatch.setSuggestedReplacements(suggestions);
   }

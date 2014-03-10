@@ -1,24 +1,24 @@
 {
   AnalyzedToken verbToken=new AnalyzedToken("","","");
-  for (  AnalyzedToken v : verb.getReadings()) {
-    if (v.getPOSTag().startsWith("VER:")) {
-      verbToken=v;
+  for (  AnalyzedToken token : verb.getReadings()) {
+    if (token.getPOSTag().startsWith("VER:")) {
+      verbToken=token;
       break;
     }
   }
   try {
     String[] synthesized=german.getSynthesizer().synthesize(verbToken,"VER.*:" + expectedVerbPOS + ".*",true);
-    HashSet hs=new HashSet();
-    hs.addAll(Arrays.asList(synthesized));
-    ArrayList<String> al=new ArrayList<>();
-    al.addAll(hs);
+    Set<String> suggestionSet=new HashSet<>();
+    suggestionSet.addAll(Arrays.asList(synthesized));
+    List<String> suggestions=new ArrayList<>();
+    suggestions.addAll(suggestionSet);
     if (toUppercase) {
-      for (int i=0; i < al.size(); ++i) {
-        al.set(i,StringTools.uppercaseFirstChar(al.get(i)));
+      for (int i=0; i < suggestions.size(); ++i) {
+        suggestions.set(i,StringTools.uppercaseFirstChar(suggestions.get(i)));
       }
     }
-    Collections.sort(al);
-    return al;
+    Collections.sort(suggestions);
+    return suggestions;
   }
  catch (  IOException e) {
     throw new RuntimeException(e);
