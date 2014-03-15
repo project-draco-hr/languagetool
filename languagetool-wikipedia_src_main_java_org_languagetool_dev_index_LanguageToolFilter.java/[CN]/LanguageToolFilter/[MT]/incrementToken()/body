@@ -24,11 +24,19 @@
   final AnalyzedTokenReadings tr=tokenIter.next();
   if (tr.isSentenceStart()) {
     typeAtt.setType("pos");
+    String posTag=tr.getAnalyzedToken(0).getPOSTag();
+    String lemma=tr.getAnalyzedToken(0).getLemma();
     if (toLowerCase) {
-      termAtt.append(POS_PREFIX.toLowerCase()).append(tr.getAnalyzedToken(0).getPOSTag().toLowerCase());
+      termAtt.append(POS_PREFIX.toLowerCase()).append(posTag.toLowerCase());
+      if (lemma != null) {
+        termAtt.append(LEMMA_PREFIX.toLowerCase()).append(lemma.toLowerCase());
+      }
     }
  else {
-      termAtt.append(POS_PREFIX).append(tr.getAnalyzedToken(0).getPOSTag());
+      termAtt.append(POS_PREFIX).append(posTag);
+      if (lemma != null) {
+        termAtt.append(LEMMA_PREFIX).append(lemma);
+      }
     }
     return true;
   }
@@ -44,6 +52,14 @@
       }
  else {
         posStack.push(POS_PREFIX + token.getPOSTag());
+      }
+    }
+    if (token.getLemma() != null) {
+      if (toLowerCase) {
+        posStack.push(LEMMA_PREFIX.toLowerCase() + token.getLemma().toLowerCase());
+      }
+ else {
+        posStack.push(LEMMA_PREFIX + token.getLemma());
       }
     }
   }

@@ -5,11 +5,11 @@
   final Query posQuery;
   final Term posQueryTerm;
   if (element.isPOStagRegularExpression()) {
-    posQueryTerm=getPosQueryTerm(element,POS_PREFIX + "(",pos,")");
+    posQueryTerm=getQueryTerm(element,POS_PREFIX + "(",pos,")");
     posQuery=getRegexQuery(posQueryTerm,pos);
   }
  else {
-    posQueryTerm=getPosQueryTerm(element,POS_PREFIX,pos,"");
+    posQueryTerm=getQueryTerm(element,POS_PREFIX,pos,"");
     posQuery=new TermQuery(posQueryTerm);
   }
   if (element.getPOSNegation()) {

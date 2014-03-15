@@ -1,4 +1,4 @@
 Element element
 String prefix
-String pos
+String str
 String suffix
