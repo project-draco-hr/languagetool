@@ -1,9 +1,9 @@
 {
   final StringBuilder sb=new StringBuilder();
-  sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-  sb.append("<rules lang=\"en\"> <category name=\"Test\"> <rule id=\"TEST_RULE\" name=\"test\">");
+  sb.append("<?xml version='1.0' encoding='UTF-8'?>");
+  sb.append("<rules lang='en'> <category name='Test'> <rule id='TEST_RULE' name='test'>");
   if (caseSensitive) {
-    sb.append("<pattern case_sensitive=\"yes\">");
+    sb.append("<pattern case_sensitive='yes'>");
   }
  else {
     sb.append("<pattern>");

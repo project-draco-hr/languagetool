@@ -1,5 +1,5 @@
 {
-  final String ruleXml="<token skip=\"-1\">How</token>" + "<token postag=\"PRP\"></token>" + "<token skip=\"1\">thin</token>"+ "<token postag_regexp=\"yes\" postag=\"JJ|DT\">this</token>"+ "<token regexp=\"yes\" negate=\"yes\">bad|good</token>"+ "<token regexp=\"yes\">idea|proposal</token>";
+  final String ruleXml="<token skip='-1'>How</token>" + "<token postag='PRP'></token>" + "<token skip='1'>thin</token>"+ "<token postag_regexp='yes' postag='JJ|DT'>this</token>"+ "<token regexp='yes' negate='yes'>bad|good</token>"+ "<token regexp='yes'>idea|proposal</token>";
   final PatternRule patternRule=makeRule(ruleXml);
   final PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder(language);
   final Query query=patternRuleQueryBuilder.buildRelaxedQuery(patternRule);
