@@ -4,7 +4,7 @@
   }
   final Query termQuery;
   final Term termQueryTerm=getTermQueryTerm(element,termStr);
-  if (element.getNegation()) {
+  if (element.getNegation() || element.getMinOccurrence() == 0) {
     return null;
   }
  else   if (element.isInflected() && element.isRegularExpression()) {

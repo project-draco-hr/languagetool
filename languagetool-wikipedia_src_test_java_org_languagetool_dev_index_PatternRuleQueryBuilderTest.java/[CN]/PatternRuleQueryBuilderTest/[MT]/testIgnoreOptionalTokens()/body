@@ -1,0 +1,3 @@
+{
+  assertMatches(makeRule("<token min='0'>optional</token><token>idea</token>"),1);
+}

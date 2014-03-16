@@ -4,7 +4,10 @@
   }
   final Query posQuery;
   final Term posQueryTerm;
-  if (element.isPOStagRegularExpression()) {
+  if (element.getPOSNegation() || element.getMinOccurrence() == 0) {
+    return null;
+  }
+ else   if (element.isPOStagRegularExpression()) {
     posQueryTerm=getQueryTerm(element,POS_PREFIX + "(",pos,")");
     posQuery=getRegexQuery(posQueryTerm,pos);
   }
@@ -12,10 +15,5 @@
     posQueryTerm=getQueryTerm(element,POS_PREFIX,pos,"");
     posQuery=new TermQuery(posQueryTerm);
   }
-  if (element.getPOSNegation()) {
-    return null;
-  }
- else {
-    return new BooleanClause(posQuery,BooleanClause.Occur.MUST);
-  }
+  return new BooleanClause(posQuery,BooleanClause.Occur.MUST);
 }
