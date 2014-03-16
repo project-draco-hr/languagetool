@@ -1,4 +1,7 @@
 {
+  if (patternElement.hasOrGroup()) {
+    throw new UnsupportedPatternRuleException("<or> not yet supported.");
+  }
   if (patternElement.isUnified()) {
     throw new UnsupportedPatternRuleException("Elements with unified tokens are not supported.");
   }

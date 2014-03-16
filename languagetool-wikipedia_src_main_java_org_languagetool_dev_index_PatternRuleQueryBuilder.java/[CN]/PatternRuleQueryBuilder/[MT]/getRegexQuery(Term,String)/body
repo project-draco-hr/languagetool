@@ -1,5 +1,8 @@
 {
   try {
+    if (str.contains("(?:")) {
+      return new RegexpQuery(new Term(term.field(),term.text().replace("(?:","(")));
+    }
     if (str.contains("?iu") || str.contains("?-i") || str.contains("\\d")) {
       return getFallbackRegexQuery(str);
     }
