@@ -12,7 +12,7 @@
       return new BooleanClause(new SpanNearQuery(spanClauses,0,false),BooleanClause.Occur.MUST);
     }
  else {
-      throw new UnsupportedPatternRuleException("FIXME: Term/POS combination not supported yet: " + element);
+      throw new UnsupportedPatternRuleException("Term/POS combination not supported yet: " + element);
     }
   }
  else   if (termQuery != null) {
