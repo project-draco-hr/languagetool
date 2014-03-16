@@ -1,9 +1,10 @@
 {
   try {
-    if (str.contains("(?:")) {
-      return new RegexpQuery(new Term(term.field(),term.text().replace("(?:","(")));
+    if (str.contains("(?:") || str.contains("\\d")) {
+      Term newTerm=new Term(term.field(),term.text().replace("(?:","(").replace("\\d","[0-9]"));
+      return new RegexpQuery(newTerm);
     }
-    if (str.contains("?iu") || str.contains("?-i") || str.contains("\\d")) {
+    if (str.contains("?iu") || str.contains("?-i")) {
       return getFallbackRegexQuery(str);
     }
     return new RegexpQuery(term);
