@@ -1,6 +1,6 @@
 {
   try {
-    if (str.contains("?iu") || str.contains("?-i")) {
+    if (str.contains("?iu") || str.contains("?-i") || str.contains("\\d")) {
       return getFallbackRegexQuery(str);
     }
     return new RegexpQuery(term);

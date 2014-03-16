@@ -1,0 +1,4 @@
+{
+  assertMatches(makeRule("<token regexp='yes'>13\\d</token>"),0);
+  assertMatches(makeRule("<token regexp='yes'>12\\d</token>"),1);
+}
