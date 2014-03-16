@@ -23,9 +23,16 @@
     }
   }
   int j=0;
-  while (startPositionCorrection + j < rule.getPatternElements().size() && !elementsMatched.get(startPositionCorrection + j)) {
-    correctedStPos++;
+  while (startPositionCorrection + j < elementsMatched.size() && !elementsMatched.get(startPositionCorrection + j)) {
+    correctedStPos+=tokenPositions[j];
     j++;
+  }
+  if (endPositionCorrection < 0) {
+    for (int d=startPositionCorrection; d < elementsMatched.size(); d++) {
+      if (!elementsMatched.get(d)) {
+        endPositionCorrection++;
+      }
+    }
   }
   if (lastMatchToken != -1) {
     int maxPosCorrection=0;
