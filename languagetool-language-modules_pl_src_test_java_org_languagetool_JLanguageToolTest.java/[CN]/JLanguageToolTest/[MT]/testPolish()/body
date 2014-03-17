@@ -7,6 +7,7 @@
   matches=tool.check("To jest jest problem.");
   assertEquals(1,matches.size());
   assertEquals(0,tool.check("Maj?? one niema??e znaczenie.").size());
+  assertEquals(0,tool.check("Cz??sto wystarczy obr??ci?? na wspak wyroki ??wiata, aby trafnie os??dzi?? jak???? osob??.").size());
   assertEquals(0,tool.check("A teraz ka??cie mi da?? jaki b??d?? posi??ek.").size());
   assertEquals(0,tool.check("Kiedym w??z zobaczy??, by??bym przysi??g??, ??e wielka przygoda mnie czeka.").size());
   assertEquals(0,tool.check("Jurek wygl??da wypisz wymaluj babcia.").size());
