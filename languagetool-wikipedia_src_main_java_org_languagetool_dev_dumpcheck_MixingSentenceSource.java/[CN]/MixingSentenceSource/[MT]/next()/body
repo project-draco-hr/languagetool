@@ -9,5 +9,7 @@
     sentenceSource=sources.get(count % sources.size());
   }
   count++;
-  return sentenceSource.next();
+  Sentence next=sentenceSource.next();
+  updateDistributionMap(next);
+  return next;
 }

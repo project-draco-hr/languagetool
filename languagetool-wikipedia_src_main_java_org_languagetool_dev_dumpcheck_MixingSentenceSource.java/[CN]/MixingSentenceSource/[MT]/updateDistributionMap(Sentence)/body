@@ -1,0 +1,9 @@
+{
+  Integer prevCount=sourceDistribution.get(next.getSource());
+  if (prevCount != null) {
+    sourceDistribution.put(next.getSource(),prevCount + 1);
+  }
+ else {
+    sourceDistribution.put(next.getSource(),1);
+  }
+}
