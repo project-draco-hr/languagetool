@@ -74,6 +74,7 @@
               }
             }
           }
+          r.removeCorrectExamplesWithRelatedIncorrectExample();
           modifiedRules.add(r);
         }
       }
