@@ -1,0 +1,3 @@
+{
+  return regex.replace("(?:","(").replace("\\d","[0-9]").replace("\\w","[a-zA-Z_0-9]");
+}

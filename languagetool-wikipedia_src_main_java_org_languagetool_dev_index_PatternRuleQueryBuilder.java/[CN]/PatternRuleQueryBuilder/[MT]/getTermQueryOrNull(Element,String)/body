@@ -8,7 +8,7 @@
     return null;
   }
  else   if (element.isInflected() && element.isRegularExpression()) {
-    Term lemmaQueryTerm=getQueryTerm(element,LEMMA_PREFIX + "(",termStr,")");
+    Term lemmaQueryTerm=getQueryTerm(element,LEMMA_PREFIX + "(",simplifyRegex(termStr),")");
     final RegexpQuery regexpQuery=new RegexpQuery(lemmaQueryTerm);
     return new BooleanClause(regexpQuery,BooleanClause.Occur.MUST);
   }
@@ -33,7 +33,7 @@
     return null;
   }
  else   if (element.isRegularExpression()) {
-    termQuery=getRegexQuery(termQueryTerm,termStr);
+    termQuery=getRegexQuery(termQueryTerm,termStr,element);
   }
  else {
     termQuery=new TermQuery(termQueryTerm);

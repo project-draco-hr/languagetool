@@ -1,0 +1,3 @@
+{
+  return regex.contains("(?:") || regex.contains("\\d") || regex.contains("\\w");
+}

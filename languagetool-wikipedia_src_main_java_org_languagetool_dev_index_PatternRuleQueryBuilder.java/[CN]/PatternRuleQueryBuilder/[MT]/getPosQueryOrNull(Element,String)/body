@@ -9,7 +9,7 @@
   }
  else   if (element.isPOStagRegularExpression()) {
     posQueryTerm=getQueryTerm(element,POS_PREFIX + "(",pos,")");
-    posQuery=getRegexQuery(posQueryTerm,pos);
+    posQuery=getRegexQuery(posQueryTerm,pos,element);
   }
  else {
     posQueryTerm=getQueryTerm(element,POS_PREFIX,pos,"");

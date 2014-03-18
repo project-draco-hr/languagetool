@@ -1,5 +1,5 @@
 {
-  final RegexQuery query=new RegexQuery(new Term(FIELD_NAME_LOWERCASE,str));
+  final RegexQuery query=new RegexQuery(new Term(element.isCaseSensitive() ? FIELD_NAME : FIELD_NAME_LOWERCASE,str));
   query.setRegexImplementation(new JavaUtilRegexCapabilities(JavaUtilRegexCapabilities.FLAG_CASE_INSENSITIVE));
   return query;
 }
