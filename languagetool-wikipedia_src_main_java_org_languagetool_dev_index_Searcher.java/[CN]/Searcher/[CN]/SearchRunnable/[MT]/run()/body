@@ -8,6 +8,7 @@
     final PossiblyLimitedTopDocs limitedTopDocs=getTopDocs(query,sort);
     final long luceneTime=System.currentTimeMillis() - t2;
     final long t3=System.currentTimeMillis();
+    luceneMatchCount=limitedTopDocs.topDocs.totalHits;
     if (limitedTopDocs.topDocs.scoreDocs.length >= maxHits) {
       tooManyLuceneMatches=true;
     }
