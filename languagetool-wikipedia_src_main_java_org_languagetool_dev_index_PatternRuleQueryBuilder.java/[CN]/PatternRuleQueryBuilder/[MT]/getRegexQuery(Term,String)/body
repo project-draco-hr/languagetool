@@ -1,7 +1,8 @@
 {
   try {
-    if (str.contains("(?:") || str.contains("\\d")) {
-      Term newTerm=new Term(term.field(),term.text().replace("(?:","(").replace("\\d","[0-9]"));
+    if (str.contains("(?:") || str.contains("\\d") || str.contains("\\w")) {
+      String termVal=term.text().replace("(?:","(").replace("\\d","[0-9]").replace("\\w","[a-zA-Z_0-9]");
+      Term newTerm=new Term(term.field(),termVal);
       return new RegexpQuery(newTerm);
     }
     if (str.contains("?iu") || str.contains("?-i")) {
