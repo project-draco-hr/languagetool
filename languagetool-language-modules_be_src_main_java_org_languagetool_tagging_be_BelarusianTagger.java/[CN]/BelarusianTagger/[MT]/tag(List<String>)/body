@@ -1,9 +1,0 @@
-{
-  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
-  for (  String word : sentenceTokens) {
-    final List<AnalyzedToken> l=new ArrayList<>();
-    l.add(new AnalyzedToken(word,null,null));
-    tokenReadings.add(new AnalyzedTokenReadings(l,0));
-  }
-  return tokenReadings;
-}
