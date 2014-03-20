@@ -1,0 +1,6 @@
+{
+  for (  AnalyzedToken token : tokenReadings) {
+    if (IPOSTag.adv.match(token.getPOSTag()) || IPOSTag.insert_sl.match(token.getPOSTag()))     return true;
+  }
+  return false;
+}

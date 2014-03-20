@@ -1,0 +1,3 @@
+{
+  return token.length() > 1 && Character.isUpperCase(token.charAt(0)) && Character.isLowerCase(token.charAt(1));
+}

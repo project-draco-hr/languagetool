@@ -1,0 +1,3 @@
+AnalyzedTokenReadings tokenReadings
+AnalyzedTokenReadings reqTokenReadings
+List<String> posTagsToFind

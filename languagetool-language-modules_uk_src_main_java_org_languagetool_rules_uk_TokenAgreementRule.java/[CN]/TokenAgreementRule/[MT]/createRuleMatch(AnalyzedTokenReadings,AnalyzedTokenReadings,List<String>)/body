@@ -1,0 +1,31 @@
+{
+  String tokenString=tokenReadings.getToken();
+  Synthesizer ukrainianSynthesizer=ukrainian.getSynthesizer();
+  ArrayList<String> suggestions=new ArrayList<String>();
+  String oldPosTag=tokenReadings.getAnalyzedToken(0).getPOSTag();
+  String requiredPostTagsRegEx=":(" + StringUtils.join(posTagsToFind,"|") + ")";
+  String posTag=oldPosTag.replaceFirst(":v_[a-z]+",requiredPostTagsRegEx);
+  try {
+    String[] synthesized=ukrainianSynthesizer.synthesize(tokenReadings.getAnalyzedToken(0),posTag,true);
+    suggestions.addAll(Arrays.asList(synthesized));
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  ArrayList<String> reqVidminkyNames=new ArrayList<String>();
+  for (  String vidm : posTagsToFind) {
+    reqVidminkyNames.add(UkrainianTagger.VIDMINKY_MAP.get(vidm));
+  }
+  ArrayList<String> foundVidminkyNames=new ArrayList<String>();
+  for (  AnalyzedToken token : tokenReadings) {
+    String posTag2=token.getPOSTag();
+    if (posTag2.contains(VIDMINOK_SUBSTR)) {
+      foundVidminkyNames.add(UkrainianTagger.VIDMINKY_MAP.get(posTag2.replaceFirst("^.*" + VIDMINOK_REGEX + ".*$","$1")));
+    }
+  }
+  String msg=MessageFormat.format("???????????????????? ??{0}?? ?????????????? ???????????? ????????????????: {1}, ?? ????????????????: {2}",reqTokenReadings.getToken(),StringUtils.join(reqVidminkyNames,", "),StringUtils.join(foundVidminkyNames,", "));
+  int pos=tokenReadings.getStartPos();
+  RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + tokenString.length(),msg,getShort());
+  potentialRuleMatch.setSuggestedReplacements(suggestions);
+  return potentialRuleMatch;
+}

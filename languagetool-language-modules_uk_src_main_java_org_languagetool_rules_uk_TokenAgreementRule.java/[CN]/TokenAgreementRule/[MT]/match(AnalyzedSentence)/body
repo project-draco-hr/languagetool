@@ -1,0 +1,74 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  AnalyzedTokenReadings reqTokenReadings=null;
+  int i=-1;
+  for (  AnalyzedTokenReadings tokenReadings : tokens) {
+    i++;
+    String posTag=tokenReadings.getAnalyzedToken(0).getPOSTag();
+    if (posTag == null || posTag.equals(IPOSTag.todo.getText()) || posTag.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
+      reqTokenReadings=null;
+      continue;
+    }
+    String token=tokenReadings.getAnalyzedToken(0).getToken();
+    if (posTag.contains(REQUIRE_VIDMINOK_SUBSTR) && tokenReadings.getReadingsLength() == 1) {
+      String prep=token;
+      if (prep.equals("????") && reverseSearch(tokens,i,"????"))       continue;
+      if (prep.equalsIgnoreCase("??????????"))       continue;
+      if ((prep.equalsIgnoreCase("??????????") || prep.equalsIgnoreCase("????????")) && tokens.length > i + 1 && tokens[i + 1].getAnalyzedToken(0).getToken().equalsIgnoreCase("????")) {
+        reqTokenReadings=null;
+        continue;
+      }
+      reqTokenReadings=tokenReadings;
+      continue;
+    }
+    if (reqTokenReadings == null)     continue;
+    ArrayList<String> posTagsToFind=new ArrayList<String>();
+    if (reqTokenReadings.getAnalyzedToken(0).getToken().equalsIgnoreCase("??????????")) {
+      posTagsToFind.add("v_naz");
+    }
+    String reqPosTag=reqTokenReadings.getAnalyzedToken(0).getPOSTag();
+    Matcher matcher=REQUIRE_VIDMINOK_REGEX.matcher(reqPosTag);
+    while (matcher.find()) {
+      posTagsToFind.add(matcher.group(1));
+    }
+    for (    AnalyzedToken readingToken : tokenReadings) {
+      if (IPOSTag.numr.match(readingToken.getPOSTag())) {
+        posTagsToFind.add("v_naz");
+        break;
+      }
+    }
+    if (!hasRequiredPosTag(posTagsToFind,tokenReadings)) {
+      if (isTokenToSkip(tokenReadings))       continue;
+      String prep=reqTokenReadings.getAnalyzedToken(0).getToken();
+      if (prep.equalsIgnoreCase("??") || prep.equalsIgnoreCase("??")) {
+        if (hasRequiredPosTag(Arrays.asList("p:v_naz"),tokenReadings)) {
+          reqTokenReadings=null;
+          continue;
+        }
+      }
+      if (isCapitalized(token) && tokens.length > i + 1 && STREETS.contains(tokens[i + 1].getAnalyzedToken(0).getToken())) {
+        reqTokenReadings=null;
+        continue;
+      }
+      if (tokens.length > i + 1 && IPOSTag.numr.match(tokens[i + 1].getAnalyzedToken(0).getPOSTag()) && token.equals("??????????") || token.equals("????????")) {
+        reqTokenReadings=null;
+        continue;
+      }
+      if (reqTokenReadings.getAnalyzedToken(0).getToken().equalsIgnoreCase("??????????") && token.equals("??????????") && tokens.length > i + 1 && IPOSTag.numr.match(tokens[i + 1].getAnalyzedToken(0).getPOSTag())) {
+        reqTokenReadings=null;
+        continue;
+      }
+      if ((token.equals("????????") || token.equals("????????")) && tokens.length > i + 1 && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("????????????????")) {
+        continue;
+      }
+      if ((token.equals("????????") || token.equals("????????")) && tokens.length > i + 1 && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("??????????")) {
+        continue;
+      }
+      RuleMatch potentialRuleMatch=createRuleMatch(tokenReadings,reqTokenReadings,posTagsToFind);
+      ruleMatches.add(potentialRuleMatch);
+    }
+    reqTokenReadings=null;
+  }
+  return toRuleMatchArray(ruleMatches);
+}

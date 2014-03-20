@@ -1,0 +1,2 @@
+Collection<String> posTagsToFind
+AnalyzedTokenReadings tokenReadings

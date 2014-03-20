@@ -1,0 +1,14 @@
+{
+  boolean vidminokFound=false;
+  for (  AnalyzedToken token : tokenReadings) {
+    String posTag=token.getPOSTag();
+    if (posTag == null || posTag.contains(NO_VIDMINOK_SUBSTR))     return true;
+    if (posTag.contains(VIDMINOK_SUBSTR)) {
+      vidminokFound=true;
+      for (      String posTagToFind : posTagsToFind) {
+        if (posTag.contains(posTagToFind))         return true;
+      }
+    }
+  }
+  return !vidminokFound;
+}
