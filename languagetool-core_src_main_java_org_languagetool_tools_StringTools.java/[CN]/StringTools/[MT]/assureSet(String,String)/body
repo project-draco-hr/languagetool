@@ -1,7 +1,5 @@
 {
-  if (s == null) {
-    throw new NullPointerException(varName + " cannot be null");
-  }
+  Objects.requireNonNull(varName);
   if (isEmpty(s.trim())) {
     throw new IllegalArgumentException(varName + " cannot be empty or whitespace only");
   }

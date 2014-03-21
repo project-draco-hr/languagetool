@@ -1,6 +1,4 @@
 {
-  if (other == null) {
-    throw new NullPointerException();
-  }
+  Objects.requireNonNull(other);
   return Integer.compare(getFromPos(),other.getFromPos());
 }
