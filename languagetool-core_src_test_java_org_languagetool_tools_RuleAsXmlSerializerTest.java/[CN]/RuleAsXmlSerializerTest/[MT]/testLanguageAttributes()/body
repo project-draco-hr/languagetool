@@ -1,0 +1,10 @@
+{
+  final String xml1=SERIALIZER.ruleMatchesToXml(Collections.<RuleMatch>emptyList(),"Fake",5,Language.DEMO);
+  assertTrue(xml1.contains("shortname=\"xx-XX\""));
+  assertTrue(xml1.contains("name=\"Testlanguage\""));
+  final String xml2=SERIALIZER.ruleMatchesToXml(Collections.<RuleMatch>emptyList(),"Fake",5,Language.DEMO,new FakeLanguage());
+  assertTrue(xml2.contains("shortname=\"xx-XX\""));
+  assertTrue(xml2.contains("name=\"Testlanguage\""));
+  assertTrue(xml2.contains("shortname=\"ZZ\""));
+  assertTrue(xml2.contains("name=\"Fakelanguage\""));
+}

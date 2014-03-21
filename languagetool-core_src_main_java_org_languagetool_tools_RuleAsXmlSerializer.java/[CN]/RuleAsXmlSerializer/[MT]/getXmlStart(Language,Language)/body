@@ -1,0 +1,16 @@
+{
+  StringBuilder xml=new StringBuilder(CAPACITY);
+  xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n").append("<matches software=\"LanguageTool\" version=\"" + JLanguageTool.VERSION + "\""+ " buildDate=\"").append(JLanguageTool.BUILD_DATE).append("\">\n");
+  if (lang != null || motherTongue != null) {
+    String languageXml="<language ";
+    if (lang != null) {
+      languageXml+="shortname=\"" + lang.getShortNameWithCountryAndVariant() + "\" name=\""+ lang.getName()+ "\"";
+    }
+    if (motherTongue != null && (lang == null || !motherTongue.getShortName().equals(lang.getShortNameWithCountryAndVariant()))) {
+      languageXml+=" mothertongueshortname=\"" + motherTongue.getShortName() + "\" mothertonguename=\""+ motherTongue.getName()+ "\"";
+    }
+    languageXml+="/>\n";
+    xml.append(languageXml);
+  }
+  return xml.toString();
+}

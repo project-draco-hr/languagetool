@@ -1,0 +1,5 @@
+List<RuleMatch> ruleMatches
+String text
+int contextSize
+Language lang
+Language motherTongue

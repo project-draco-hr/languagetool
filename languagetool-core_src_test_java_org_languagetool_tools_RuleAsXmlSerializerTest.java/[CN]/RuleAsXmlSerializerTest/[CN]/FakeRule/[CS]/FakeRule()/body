@@ -1,0 +1,3 @@
+{
+  super("FAKE_ID",Language.DEMO,Collections.singletonList(new Element("foo",true,false,false)),"My fake description","Fake message","Fake short message");
+}

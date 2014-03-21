@@ -1,0 +1,41 @@
+{
+  StringBuilder xml=new StringBuilder(CAPACITY);
+  ContextTools contextTools=new ContextTools();
+  contextTools.setEscapeHtml(false);
+  contextTools.setContextSize(contextSize);
+  String startMarker="__languagetool_start_marker";
+  contextTools.setErrorMarkerStart(startMarker);
+  contextTools.setErrorMarkerEnd("");
+  for (  RuleMatch match : ruleMatches) {
+    String subId="";
+    if (match.getRule() instanceof PatternRule) {
+      PatternRule pRule=(PatternRule)match.getRule();
+      if (pRule.getSubId() != null) {
+        subId=" subId=\"" + escapeXMLForAPIOutput(pRule.getSubId()) + "\" ";
+      }
+    }
+    xml.append("<error fromy=\"").append(match.getLine()).append('"').append(" fromx=\"").append(match.getColumn() - 1).append('"').append(" toy=\"").append(match.getEndLine()).append('"').append(" tox=\"").append(match.getEndColumn() - 1).append('"').append(" ruleId=\"").append(match.getRule().getId()).append('"');
+    String msg=match.getMessage().replaceAll("</?suggestion>","'");
+    xml.append(subId);
+    xml.append(" msg=\"").append(escapeXMLForAPIOutput(msg)).append('"');
+    String context=contextTools.getContext(match.getFromPos(),match.getToPos(),text);
+    xml.append(" replacements=\"").append(escapeXMLForAPIOutput(StringTools.listToString(match.getSuggestedReplacements(),"#"))).append('"');
+    int contextOffset=context.indexOf(startMarker);
+    context=context.replaceFirst(startMarker,"");
+    context=context.replaceAll("[\n\r]"," ");
+    xml.append(" context=\"").append(StringTools.escapeXML(context)).append('"').append(" contextoffset=\"").append(contextOffset).append('"').append(" offset=\"").append(match.getFromPos()).append('"').append(" errorlength=\"").append(match.getToPos() - match.getFromPos()).append('"');
+    if (match.getRule().getUrl() != null) {
+      xml.append(" url=\"").append(escapeXMLForAPIOutput(match.getRule().getUrl().toString())).append('"');
+    }
+    Category category=match.getRule().getCategory();
+    if (category != null) {
+      xml.append(" category=\"").append(escapeXMLForAPIOutput(category.getName())).append('"');
+    }
+    ITSIssueType type=match.getRule().getLocQualityIssueType();
+    if (type != null) {
+      xml.append(" locqualityissuetype=\"").append(escapeXMLForAPIOutput(type.toString())).append('"');
+    }
+    xml.append("/>\n");
+  }
+  return xml.toString();
+}

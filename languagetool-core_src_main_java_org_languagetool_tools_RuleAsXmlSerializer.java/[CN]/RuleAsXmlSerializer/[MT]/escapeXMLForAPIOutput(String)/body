@@ -1,0 +1,3 @@
+{
+  return StringTools.escapeXML(s).replaceAll("[\n\r]"," ");
+}

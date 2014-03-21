@@ -1,0 +1,7 @@
+{
+  StringBuilder xml=new StringBuilder(CAPACITY);
+  xml.append(getXmlStart(lang,null));
+  xml.append(ruleMatchesToXmlSnippet(ruleMatches,text,contextSize));
+  xml.append(getXmlEnd());
+  return xml.toString();
+}
