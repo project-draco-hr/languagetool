@@ -1,5 +1,6 @@
 {
   super.initPossibleTags();
+  initSynth();
   for (  String tag : manualSynthesizer.getPossibleTags()) {
     if (!possibleTags.contains(tag)) {
       possibleTags.add(tag);

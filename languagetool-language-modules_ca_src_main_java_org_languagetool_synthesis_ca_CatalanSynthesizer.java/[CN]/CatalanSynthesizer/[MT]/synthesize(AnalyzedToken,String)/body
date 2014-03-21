@@ -1,5 +1,4 @@
 {
-  initSynthesizer();
   initPossibleTags();
   Pattern p;
   boolean addDt=false;

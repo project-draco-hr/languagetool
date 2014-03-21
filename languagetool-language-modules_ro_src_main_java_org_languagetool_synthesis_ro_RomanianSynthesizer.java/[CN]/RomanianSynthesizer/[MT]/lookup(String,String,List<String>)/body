@@ -1,5 +1,6 @@
 {
   super.lookup(lemma,posTag,results);
+  initSynth();
   final List<String> manualForms=manualSynthesizer.lookup(lemma,posTag);
   if (manualForms != null) {
     results.addAll(manualForms);

@@ -12,7 +12,6 @@
       myPosTag=myPosTag.substring(0,myPosTag.indexOf(ADD_DETERMINER) - "\\".length());
       det="the ";
     }
-    initSynthesizer();
     initPossibleTags();
     final Pattern p=Pattern.compile(myPosTag);
     final List<String> results=new ArrayList<>();

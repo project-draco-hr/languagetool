@@ -1,0 +1,10 @@
+{
+  if (manualSynthesizer == null) {
+    try {
+      manualSynthesizer=new ManualSynthesizer(JLanguageTool.getDataBroker().getFromResourceDirAsStream(USER_DICT_FILENAME));
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}

@@ -1,6 +1,5 @@
 {
   if (posTagRegExp) {
-    initSynthesizer();
     initPossibleTags();
     final Pattern p=Pattern.compile(posTag);
     final List<String> results=new ArrayList<>();
