@@ -9,7 +9,8 @@
     r.setEndLine(r.getEndLine() + lineOffset);
   }
   if (apiFormat) {
-    final String xml=StringTools.ruleMatchesToXML(ruleMatches,contents,contextSize,xmlMode);
+    final RuleAsXmlSerializer serializer=new RuleAsXmlSerializer();
+    final String xml=serializer.ruleMatchesToXml(ruleMatches,contents,contextSize,lt.getLanguage());
     final PrintStream out=new PrintStream(System.out,true,"UTF-8");
     out.print(xml);
   }
