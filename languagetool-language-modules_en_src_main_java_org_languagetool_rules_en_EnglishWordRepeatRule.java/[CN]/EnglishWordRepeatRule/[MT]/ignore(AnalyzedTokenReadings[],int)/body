@@ -2,7 +2,7 @@
   if (wordRepetitionOf("had",tokens,position)) {
     return true;
   }
-  if (wordRepetitionOf("that",tokens,position) && previousWordIsIn(tokens,position,"think","thinks","believe","believes")) {
+  if (wordRepetitionOf("that",tokens,position) && nextPOSIsIn(tokens,position,"NN","PRP$","JJ","VBZ","VBD")) {
     return true;
   }
   if (wordRepetitionOf("Pago",tokens,position)) {
@@ -15,6 +15,9 @@
     return true;
   }
   if (wordRepetitionOf("sapiens",tokens,position)) {
+    return true;
+  }
+  if (wordRepetitionOf("tse",tokens,position)) {
     return true;
   }
   return false;
