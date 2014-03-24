@@ -18,7 +18,7 @@
     if ("\"".equals(tokenStr) && NUMBER.matcher(prevToken.getToken()).matches()) {
       return false;
     }
-    if ("'".equals(tokenStr) && tokens[i].hasPosTag("POS")) {
+    if (("'".equals(tokenStr) || "???".equals(tokenStr)) && tokens[i].hasPosTag("POS")) {
       return false;
     }
     if ("'".equals(tokenStr) && prevToken.hasPosTag("VBG") && prevToken.getToken().endsWith("in")) {
