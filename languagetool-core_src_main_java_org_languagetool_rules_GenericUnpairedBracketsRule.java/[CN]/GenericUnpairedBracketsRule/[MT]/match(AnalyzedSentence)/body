@@ -22,7 +22,7 @@
           symbolStack.push(new SymbolLocator(startSymbols[j],i));
           break;
         }
- else         if (noException && followedByWhitespace && token.equals(endSymbols[j])) {
+ else         if (noException && (followedByWhitespace || tokens[i].isSentenceEnd()) && token.equals(endSymbols[j])) {
           if (i > 1 && endSymbols[j].equals(")") && (numerals.matcher(tokens[i - 1].getToken()).matches() && !(!symbolStack.empty() && "(".equals(symbolStack.peek().symbol)))) {
           }
  else {
