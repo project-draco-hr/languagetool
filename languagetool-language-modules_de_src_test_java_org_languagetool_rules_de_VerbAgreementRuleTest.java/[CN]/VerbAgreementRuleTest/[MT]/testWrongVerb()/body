@@ -7,6 +7,12 @@
   assertGood("Osama bin Laden stammt aus Saudi-Arabien.");
   assertGood("Solltet ihr das machen?");
   assertGood("Ein Geschenk, das er einst von Aphrodite erhalten hatte.");
+  assertGood("Wenn ich sterben sollte, wer w??rde sich dann um die Katze k??mmern?");
+  assertGood("Wenn er sterben sollte, wer w??rde sich dann um die Katze k??mmern?");
+  assertGood("Wenn sie sterben sollte, wer w??rde sich dann um die Katze k??mmern?");
+  assertGood("Wenn es sterben sollte, wer w??rde sich dann um die Katze k??mmern?");
+  assertGood("Wenn ihr sterben solltet, wer w??rde sich dann um die Katze k??mmern?");
+  assertGood("Wenn wir sterben sollten, wer w??rde sich dann um die Katze k??mmern?");
   assertGood("/usr/bin/firefox");
   assertBad("Als Borcarbid wei??t es eine hohe H??rte auf.");
   assertBad("Das greift auf Vorl??uferinstitutionen bist auf die Zeit von 1234 zur??ck.");

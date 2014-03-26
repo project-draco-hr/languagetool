@@ -1,0 +1,3 @@
+{
+  return pos < tokens.length - 2 && tokens[pos + 2].hasPartialPosTag(":MOD:");
+}
