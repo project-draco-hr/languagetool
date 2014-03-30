@@ -38,6 +38,7 @@
   assertGood("Die Verschiebung des bisherigen Art. 1 ist geplant.");
   assertGood("Das Recht, das Frauen einger??umt wird.");
   assertGood("Der Mann, in dem quadratische Fische schwammen.");
+  assertGood("Der Mann, durch den quadratische Fische schwammen.");
   assertGood("Gutenberg, der quadratische Mann.");
   assertGood("Das M??nchener Fest.");
   assertGood("Das M??nchner Fest.");
