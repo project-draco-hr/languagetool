@@ -1,0 +1,16 @@
+{
+  XMLInputFactory inputFactory=XMLInputFactory.newInstance();
+  XMLEventReader eventReader=inputFactory.createXMLEventReader(in);
+  while (eventReader.hasNext()) {
+    XMLEvent event=eventReader.nextEvent();
+    if (event.isStartElement()) {
+      String elementName=event.asStartElement().getName().getLocalPart();
+      add(elementName);
+      Iterator attributes=event.asStartElement().getAttributes();
+      while (attributes.hasNext()) {
+        Attribute att=(Attribute)attributes.next();
+        add(elementName + "/" + att.getName());
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  if (map.containsKey(name)) {
+    int oldCount=map.get(name);
+    map.put(name,oldCount + 1);
+  }
+ else {
+    map.put(name,1);
+  }
+}

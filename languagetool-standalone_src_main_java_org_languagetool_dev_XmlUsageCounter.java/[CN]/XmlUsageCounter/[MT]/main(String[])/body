@@ -1,0 +1,17 @@
+{
+  XmlUsageCounter counter=new XmlUsageCounter();
+  Set<String> countedFiles=new HashSet<>();
+  for (  Language language : Language.REAL_LANGUAGES) {
+    List<String> ruleFileNames=language.getRuleFileNames();
+    for (    String ruleFileName : ruleFileNames) {
+      if (countedFiles.contains(ruleFileName)) {
+        continue;
+      }
+      System.err.println("Counting elements for " + ruleFileName);
+      InputStream ruleStream=XmlUsageCounter.class.getResourceAsStream(ruleFileName);
+      counter.countElementsAndAttributes(ruleStream);
+      countedFiles.add(ruleFileName);
+    }
+  }
+  counter.printResult();
+}
