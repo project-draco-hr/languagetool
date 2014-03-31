@@ -1,0 +1,15 @@
+{
+  List<String> ruleFileNames=lang.getRuleFileNames();
+  int count=0;
+  for (  String ruleFileName : ruleFileNames) {
+    final URL url=this.getClass().getResource(ruleFileName);
+    if (url != null) {
+      String xmlRules=StringTools.readStream(Tools.getStream(ruleFileName),"utf-8");
+      xmlRules=xmlRules.replaceAll("(?s)<!--.*?-->","");
+      xmlRules=xmlRules.replaceAll("(?s)<rules.*?>","");
+      count+=countXmlRules(xmlRules);
+      count+=countXmlRuleGroupRules(xmlRules);
+    }
+  }
+  return count;
+}
