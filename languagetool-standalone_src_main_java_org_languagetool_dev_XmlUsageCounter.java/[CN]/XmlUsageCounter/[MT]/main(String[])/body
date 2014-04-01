@@ -9,6 +9,10 @@
       }
       System.err.println("Counting elements for " + ruleFileName);
       InputStream ruleStream=XmlUsageCounter.class.getResourceAsStream(ruleFileName);
+      if (ruleStream == null) {
+        System.err.println("Not found, ignoring: " + ruleFileName);
+        continue;
+      }
       counter.countElementsAndAttributes(ruleStream);
       countedFiles.add(ruleFileName);
     }
