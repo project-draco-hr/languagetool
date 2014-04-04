@@ -9,40 +9,47 @@
   if (!startsWithRules || !secondPartHasCorrectLength) {
     throw new RuleFilenameException(file);
   }
-  final Language newLanguage=new Language(){
-    @Override public Locale getLocale(){
-      return new Locale(getShortName());
-    }
-    @Override public Contributor[] getMaintainers(){
-      return null;
-    }
-    @Override public String getShortName(){
-      if (parts[1].length() == 2) {
-        return parts[1];
-      }
-      return parts[1].split("_")[0];
-    }
-    @Override public String[] getCountries(){
-      if (parts[1].length() == 2) {
-        return new String[]{""};
-      }
-      return new String[]{parts[1].split("_")[1]};
-    }
-    @Override public String getName(){
-      return parts[2].replace(".xml","");
-    }
-    @Override public List<Class<? extends Rule>> getRelevantRules(){
-      return Collections.emptyList();
-    }
-    @Override public List<String> getRuleFileNames(){
-      final List<String> ruleFiles=new ArrayList<>();
-      ruleFiles.add(file.getAbsolutePath());
-      return ruleFiles;
-    }
-    @Override public boolean isExternal(){
-      return isAdditional;
-    }
+  Language newLanguage;
+  if (Language.isLanguageSupported(parts[1])) {
+    newLanguage=Language.getLanguageForShortName(parts[1]);
+    newLanguage.addExternalRuleFiles(file.getAbsolutePath());
   }
+ else {
+    newLanguage=new Language(){
+      @Override public Locale getLocale(){
+        return new Locale(getShortName());
+      }
+      @Override public Contributor[] getMaintainers(){
+        return null;
+      }
+      @Override public String getShortName(){
+        if (parts[1].length() == 2) {
+          return parts[1];
+        }
+        return parts[1].split("_")[0];
+      }
+      @Override public String[] getCountries(){
+        if (parts[1].length() == 2) {
+          return new String[]{""};
+        }
+        return new String[]{parts[1].split("_")[1]};
+      }
+      @Override public String getName(){
+        return parts[2].replace(".xml","");
+      }
+      @Override public List<Class<? extends Rule>> getRelevantRules(){
+        return Collections.emptyList();
+      }
+      @Override public List<String> getRuleFileNames(){
+        final List<String> ruleFiles=new ArrayList<>();
+        ruleFiles.add(file.getAbsolutePath());
+        return ruleFiles;
+      }
+      @Override public boolean isExternal(){
+        return isAdditional;
+      }
+    }
 ;
+  }
   return newLanguage;
 }

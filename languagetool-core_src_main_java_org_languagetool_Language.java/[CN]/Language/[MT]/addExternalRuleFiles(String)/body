@@ -1,0 +1,3 @@
+{
+  externalRuleFiles.add(externalRuleFile);
+}
