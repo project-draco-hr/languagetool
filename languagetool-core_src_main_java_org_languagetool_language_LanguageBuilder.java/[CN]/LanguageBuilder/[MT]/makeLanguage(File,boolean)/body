@@ -12,7 +12,7 @@
   Language newLanguage;
   if (Language.isLanguageSupported(parts[1])) {
     newLanguage=Language.getLanguageForShortName(parts[1]);
-    newLanguage.addExternalRuleFiles(file.getAbsolutePath());
+    newLanguage.addExternalRuleFile(file.getAbsolutePath());
   }
  else {
     newLanguage=new Language(){
