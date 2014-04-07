@@ -1,0 +1,22 @@
+{
+  try {
+    final InputStream xmlStream=this.getClass().getResourceAsStream(filename);
+    final InputStream baseXmlStream=this.getClass().getResourceAsStream(baseFilename);
+    if (xmlStream == null || baseXmlStream == null) {
+      throw new IOException("File not found in classpath: " + filename);
+    }
+    try {
+      final URL schemaUrl=this.getClass().getResource(xmlSchemaPath);
+      if (schemaUrl == null) {
+        throw new IOException("XML schema not found in classpath: " + xmlSchemaPath);
+      }
+      validateInternal(mergeIntoSource(baseXmlStream,xmlStream,this.getClass().getResource(xmlSchemaPath)),schemaUrl);
+    }
+  finally {
+      xmlStream.close();
+    }
+  }
+ catch (  Exception e) {
+    throw new IOException("Cannot load or parse '" + filename + "'",e);
+  }
+}

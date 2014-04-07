@@ -1,0 +1,3 @@
+InputStream baseXmlStream
+InputStream xmlStream
+URL xmlSchema
