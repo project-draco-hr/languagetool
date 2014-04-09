@@ -1,6 +1,35 @@
 {
   if (e.getSource() == addButton) {
-    final File ruleFile=Tools.openFileDialog(owner,new XMLFileFilter());
+    Configuration config=null;
+    try {
+      config=new Configuration(null);
+    }
+ catch (    IOException e1) {
+      throw new RuntimeException(e1);
+    }
+    File initialDir;
+    File ruleFile;
+    if (config.getExternalRuleDirectory() != null) {
+      initialDir=new File(config.getExternalRuleDirectory());
+      if (initialDir.isDirectory()) {
+        ruleFile=Tools.openFileDialog(owner,new XMLFileFilter(),initialDir);
+      }
+ else {
+        ruleFile=Tools.openFileDialog(owner,new XMLFileFilter());
+      }
+    }
+ else {
+      ruleFile=Tools.openFileDialog(owner,new XMLFileFilter());
+    }
+    if (config != null) {
+      config.setExternalRuleDirectory(ruleFile.getParent());
+      try {
+        config.saveConfiguration(null);
+      }
+ catch (      IOException e1) {
+        throw new RuntimeException(e1);
+      }
+    }
     if (!ruleFiles.contains(ruleFile)) {
       ruleFiles.add(ruleFile);
       list.setListData(ruleFiles.toArray(new File[ruleFiles.size()]));

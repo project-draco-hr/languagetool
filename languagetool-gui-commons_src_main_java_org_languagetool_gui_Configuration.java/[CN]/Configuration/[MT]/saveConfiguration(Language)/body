@@ -14,6 +14,9 @@
   props.setProperty(USE_GUI_CONFIG_KEY,Boolean.valueOf(guiConfig).toString());
   props.setProperty(SERVER_RUN_CONFIG_KEY,Boolean.valueOf(runServer).toString());
   props.setProperty(SERVER_PORT_CONFIG_KEY,Integer.valueOf(serverPort).toString());
+  if (externalRuleDirectory != null) {
+    props.setProperty(EXTERNAL_RULE_DIRECTORY,externalRuleDirectory);
+  }
   for (  final String key : configForOtherLangs.keySet()) {
     props.setProperty(key,configForOtherLangs.get(key));
   }

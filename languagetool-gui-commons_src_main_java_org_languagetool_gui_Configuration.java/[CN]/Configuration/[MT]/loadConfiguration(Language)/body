@@ -21,6 +21,10 @@
     if (serverPortString != null) {
       serverPort=Integer.parseInt(serverPortString);
     }
+    final String extRules=(String)props.get(EXTERNAL_RULE_DIRECTORY);
+    if (extRules != null) {
+      externalRuleDirectory=extRules;
+    }
     loadConfigForOtherLanguages(lang,props);
   }
  catch (  final FileNotFoundException e) {
