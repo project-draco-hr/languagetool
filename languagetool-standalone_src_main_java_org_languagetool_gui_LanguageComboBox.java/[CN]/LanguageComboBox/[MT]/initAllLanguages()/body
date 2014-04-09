@@ -1,7 +1,7 @@
 {
   languages.clear();
-  for (  Language language : Language.REAL_LANGUAGES) {
-    final boolean skip=language.hasVariant();
+  for (  Language language : Language.LANGUAGES) {
+    final boolean skip=language.hasVariant() || "Testlanguage".equals(language.getName());
     final boolean simpleGermanWorkaround=language.getShortNameWithCountryAndVariant().equals("de-DE");
     if (!skip || simpleGermanWorkaround) {
       languages.add(language);
