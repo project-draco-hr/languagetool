@@ -1,7 +1,0 @@
-String src
-String trg
-JLanguageTool srcLt
-JLanguageTool trgLt
-List<BitextRule> bRules
-boolean apiFormat
-StringTools.XmlPrintMode xmlMode

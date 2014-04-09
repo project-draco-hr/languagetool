@@ -1,3 +1,0 @@
-{
-  return readStream(stream,encoding);
-}

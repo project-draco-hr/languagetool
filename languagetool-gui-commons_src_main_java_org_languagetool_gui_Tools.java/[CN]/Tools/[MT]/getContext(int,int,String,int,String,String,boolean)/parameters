@@ -1,7 +1,0 @@
-int fromPos
-int toPos
-String text
-int contextSize
-String markerStart
-String markerEnd
-boolean escapeHTML

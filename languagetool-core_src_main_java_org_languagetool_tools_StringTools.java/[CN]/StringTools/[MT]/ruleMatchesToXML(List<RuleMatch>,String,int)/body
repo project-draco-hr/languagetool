@@ -1,3 +1,0 @@
-{
-  return ruleMatchesToXML(ruleMatches,text,contextSize,XmlPrintMode.NORMAL_XML);
-}

@@ -6,13 +6,7 @@
  else {
     final String[] remainingArgs=Arrays.copyOfRange(args,1,args.length);
     final String command=args[0];
-    if (command.equals("check-dump")) {
-      CheckWikipediaDump.main(remainingArgs);
-    }
- else     if (command.equals("wiki-index")) {
-      WikipediaIndexHandler.main(remainingArgs);
-    }
- else     if (command.equals("check-data")) {
+    if (command.equals("check-data")) {
       SentenceSourceChecker.main(remainingArgs);
     }
  else     if (command.equals("index-data")) {

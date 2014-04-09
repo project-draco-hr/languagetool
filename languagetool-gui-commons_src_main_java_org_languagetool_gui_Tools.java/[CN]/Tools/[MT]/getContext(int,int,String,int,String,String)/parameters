@@ -1,6 +1,0 @@
-int fromPos
-int toPos
-String fileContents
-int contextSize
-String markerStart
-String markerEnd

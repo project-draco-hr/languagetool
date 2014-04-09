@@ -1,5 +1,0 @@
-{
-  try (InputStreamReader isr=new InputStreamReader(is)){
-    return readerToString(isr);
-  }
- }

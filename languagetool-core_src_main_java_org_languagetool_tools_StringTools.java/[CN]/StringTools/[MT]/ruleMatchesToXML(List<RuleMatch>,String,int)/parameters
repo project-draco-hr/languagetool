@@ -1,3 +1,0 @@
-List<RuleMatch> ruleMatches
-String text
-int contextSize

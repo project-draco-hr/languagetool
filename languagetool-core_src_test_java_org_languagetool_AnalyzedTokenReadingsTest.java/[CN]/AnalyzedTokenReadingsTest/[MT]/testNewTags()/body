@@ -4,9 +4,6 @@
   assertEquals(false,tokenReadings.isSentenceEnd());
   assertEquals(false,tokenReadings.isParagraphEnd());
   assertEquals(false,tokenReadings.isSentenceStart());
-  assertEquals(false,tokenReadings.isSentStart());
-  assertEquals(false,tokenReadings.isSentEnd());
-  assertEquals(false,tokenReadings.isParaEnd());
   tokenReadings.setSentEnd();
   assertEquals(false,tokenReadings.isSentenceStart());
   assertEquals(true,tokenReadings.isSentenceEnd());

@@ -1,5 +1,0 @@
-{
-  final ContextTools contextTools=new ContextTools();
-  contextTools.setContextSize(DEFAULT_CONTEXT_SIZE);
-  return contextTools.getPlainTextContext(fromPos,toPos,contents);
-}

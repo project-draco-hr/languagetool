@@ -1,3 +1,0 @@
-{
-  assertTrue(Language.getAllMaintainers(TestTools.getMessages("en")).length() > 100);
-}

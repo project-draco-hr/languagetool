@@ -1,3 +1,0 @@
-{
-  return getContext(fromPos,toPos,text,DEFAULT_CONTEXT_SIZE);
-}

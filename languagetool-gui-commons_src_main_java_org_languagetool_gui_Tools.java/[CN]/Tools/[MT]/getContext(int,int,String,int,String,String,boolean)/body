@@ -1,8 +1,0 @@
-{
-  final ContextTools contextTools=new ContextTools();
-  contextTools.setContextSize(contextSize);
-  contextTools.setEscapeHtml(escapeHTML);
-  contextTools.setErrorMarkerStart(markerStart);
-  contextTools.setErrorMarkerEnd(markerEnd);
-  return contextTools.getContext(fromPos,toPos,text);
-}

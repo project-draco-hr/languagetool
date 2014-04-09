@@ -1,4 +1,0 @@
-int fromPos
-int toPos
-String contents
-int contextSize

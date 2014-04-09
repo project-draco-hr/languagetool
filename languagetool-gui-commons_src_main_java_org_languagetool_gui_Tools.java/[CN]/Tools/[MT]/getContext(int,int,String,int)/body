@@ -1,3 +1,0 @@
-{
-  return getContext(fromPos,toPos,fileContents,contextSize,MARKER_START,MARKER_END,true);
-}
