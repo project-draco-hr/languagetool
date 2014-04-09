@@ -27,6 +27,5 @@
  catch (  IOException e) {
     throw new RuntimeException(e);
   }
-  languages.add(DEMO);
   return languages.toArray(new Language[languages.size()]);
 }
