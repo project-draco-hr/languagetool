@@ -6,4 +6,14 @@
   assertFalse(stack.empty());
   assertEquals("test",stack.pop());
   assertTrue(stack.empty());
+  try {
+    stack.pop();
+  }
+ catch (  EmptyStackException expected) {
+  }
+  try {
+    stack.peek();
+  }
+ catch (  EmptyStackException expected) {
+  }
 }

@@ -31,7 +31,9 @@
         final String stringToCheck=normalize(sb.toString());
         stringsToCheck.add(stringToCheck);
         origStringsToCheck.add(sb.toString().trim());
-        if (!stringToToken.containsKey(stringToCheck))         stringToToken.put(stringToCheck,atr);
+        if (!stringToToken.containsKey(stringToCheck)) {
+          stringToToken.put(stringToCheck,atr);
+        }
       }
       j++;
     }
