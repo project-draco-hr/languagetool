@@ -1,23 +1,9 @@
 {
-  MultiThreadedJLanguageTool langTool=new MultiThreadedJLanguageTool(new Language(){
-    @Override public String getShortName(){
-      return "zz";
-    }
-    @Override public String getName(){
-      return "Fake Language";
-    }
-    @Override public void setName(    final String name){
-    }
-    @Override public String[] getCountries(){
-      return new String[0];
-    }
-    @Override public Contributor[] getMaintainers(){
-      return null;
-    }
+  MultiThreadedJLanguageTool langTool=new MultiThreadedJLanguageTool(new FakeLanguage(){
     @Override public List<Class<? extends Rule>> getRelevantRules(){
       return Arrays.asList(UppercaseSentenceStartRule.class,WhitespaceRule.class);
     }
   }
 );
-  langTool.check("my test text");
+  assertThat(langTool.check("my test  text").size(),is(2));
 }
