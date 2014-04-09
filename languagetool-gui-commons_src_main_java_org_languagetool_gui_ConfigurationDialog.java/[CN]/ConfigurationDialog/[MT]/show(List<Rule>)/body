@@ -85,12 +85,7 @@
   motherTonguePanel.add(new JLabel(messages.getString("guiMotherTongue")),cons);
   motherTongueBox=new JComboBox(getPossibleMotherTongues());
   if (motherTongue != null) {
-    if (motherTongue == Language.DEMO) {
-      motherTongueBox.setSelectedItem(NO_MOTHER_TONGUE);
-    }
- else {
-      motherTongueBox.setSelectedItem(motherTongue.getTranslatedName(messages));
-    }
+    motherTongueBox.setSelectedItem(motherTongue.getTranslatedName(messages));
   }
   motherTonguePanel.add(motherTongueBox,cons);
   final JPanel portPanel=new JPanel();

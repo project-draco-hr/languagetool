@@ -1,8 +1,5 @@
 {
-  for (  final Language element : Language.LANGUAGES) {
-    if (NO_MOTHER_TONGUE.equals(languageName)) {
-      return Language.DEMO;
-    }
+  for (  final Language element : Language.REAL_LANGUAGES) {
     if (languageName.equals(element.getTranslatedName(messages))) {
       return element;
     }

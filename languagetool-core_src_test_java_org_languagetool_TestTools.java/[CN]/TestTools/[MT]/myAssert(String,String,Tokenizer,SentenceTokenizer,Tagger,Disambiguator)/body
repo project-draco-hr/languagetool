@@ -14,7 +14,7 @@
     int startPos=0;
     int noWhitespaceCount=0;
     for (    final String tokenStr : tokens) {
-      AnalyzedTokenReadings posTag=null;
+      AnalyzedTokenReadings posTag;
       if (isWord(tokenStr)) {
         posTag=aTokens.get(noWhitespaceCount);
         posTag.setStartPos(startPos);

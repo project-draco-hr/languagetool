@@ -1,6 +1,6 @@
 {
   SentenceWhitespaceRule rule=new SentenceWhitespaceRule(TestTools.getEnglishMessages());
-  JLanguageTool languageTool=new JLanguageTool(new Demo());
+  JLanguageTool languageTool=new JLanguageTool(TestTools.getDemoLanguage());
   languageTool.addRule(rule);
   assertGood("This is a text. And there's the next sentence.",rule,languageTool);
   assertGood("This is a text! And there's the next sentence.",rule,languageTool);

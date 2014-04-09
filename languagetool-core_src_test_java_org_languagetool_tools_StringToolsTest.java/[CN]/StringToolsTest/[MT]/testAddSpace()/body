@@ -1,8 +1,9 @@
 {
-  assertEquals(" ",StringTools.addSpace("word",Language.DEMO));
-  assertEquals("",StringTools.addSpace(",",Language.DEMO));
-  assertEquals("",StringTools.addSpace(",",Language.DEMO));
-  assertEquals("",StringTools.addSpace(",",Language.DEMO));
+  Language demoLanguage=TestTools.getDemoLanguage();
+  assertEquals(" ",StringTools.addSpace("word",demoLanguage));
+  assertEquals("",StringTools.addSpace(",",demoLanguage));
+  assertEquals("",StringTools.addSpace(",",demoLanguage));
+  assertEquals("",StringTools.addSpace(",",demoLanguage));
   assertEquals("",StringTools.addSpace(".",new FakeLanguage("fr")));
   assertEquals("",StringTools.addSpace(".",new FakeLanguage("de")));
   assertEquals(" ",StringTools.addSpace("!",new FakeLanguage("fr")));

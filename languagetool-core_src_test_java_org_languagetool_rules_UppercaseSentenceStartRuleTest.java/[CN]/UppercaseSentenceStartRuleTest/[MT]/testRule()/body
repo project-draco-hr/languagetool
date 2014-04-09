@@ -1,7 +1,7 @@
 {
-  final UppercaseSentenceStartRule rule=new UppercaseSentenceStartRule(TestTools.getEnglishMessages(),Language.DEMO);
+  final UppercaseSentenceStartRule rule=new UppercaseSentenceStartRule(TestTools.getEnglishMessages(),TestTools.getDemoLanguage());
   RuleMatch[] matches;
-  final JLanguageTool langTool=new JLanguageTool(Language.DEMO);
+  final JLanguageTool langTool=new JLanguageTool(TestTools.getDemoLanguage());
   matches=rule.match(langTool.getAnalyzedSentence("a) This is a test sentence."));
   assertEquals(0,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("iv. This is a test sentence..."));

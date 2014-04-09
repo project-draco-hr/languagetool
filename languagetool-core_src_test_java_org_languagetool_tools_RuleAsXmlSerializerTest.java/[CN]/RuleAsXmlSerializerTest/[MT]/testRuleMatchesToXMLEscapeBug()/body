@@ -7,6 +7,6 @@
   match.setLine(44);
   match.setEndLine(45);
   matches.add(match);
-  final String xml=SERIALIZER.ruleMatchesToXml(matches,text,5,Language.DEMO);
+  final String xml=SERIALIZER.ruleMatchesToXml(matches,text,5,language);
   assertTrue(xml.contains(">\n" + "<error fromy=\"44\" fromx=\"98\" toy=\"45\" tox=\"99\" ruleId=\"FAKE_ID\" msg=\"myMessage\" " + "replacements=\"\" context=\"... is &quot;an test...\" contextoffset=\"8\" offset=\"9\" errorlength=\"2\" "+ "locqualityissuetype=\"misspelling\"/>\n"+ "</matches>\n"));
 }
