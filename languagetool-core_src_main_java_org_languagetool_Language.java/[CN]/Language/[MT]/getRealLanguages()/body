@@ -1,0 +1,9 @@
+{
+  List<Language> result=new ArrayList<>();
+  for (  Language lang : LANGUAGES) {
+    if (!lang.getShortName().equals("xx")) {
+      result.add(lang);
+    }
+  }
+  return result.toArray(new Language[result.size()]);
+}
