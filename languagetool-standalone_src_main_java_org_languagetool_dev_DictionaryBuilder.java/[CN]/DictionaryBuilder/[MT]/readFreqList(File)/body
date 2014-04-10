@@ -10,10 +10,7 @@
     }
     br.close();
   }
- catch (  FileNotFoundException e) {
-    System.out.println("Frequencies wordlist file does not exist: " + freqListFile.getAbsolutePath());
-  }
-catch (  IOException e) {
+ catch (  IOException e) {
     System.out.println("Cannot read file: " + freqListFile.getAbsolutePath());
   }
 }
