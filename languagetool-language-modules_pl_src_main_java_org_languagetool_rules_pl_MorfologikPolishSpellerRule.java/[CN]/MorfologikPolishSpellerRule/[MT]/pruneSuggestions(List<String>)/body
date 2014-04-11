@@ -1,0 +1,15 @@
+{
+  List<String> prunedSuggestions=new ArrayList<String>(suggestions.size());
+  for (  final String suggestion : suggestions) {
+    if (suggestion.indexOf(' ') == -1) {
+      prunedSuggestions.add(suggestion);
+    }
+ else {
+      String[] complexSug=suggestion.split(" ");
+      if (!bannedSuffixes.contains(complexSug[1])) {
+        prunedSuggestions.add(suggestion);
+      }
+    }
+  }
+  return prunedSuggestions;
+}

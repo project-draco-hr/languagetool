@@ -11,7 +11,7 @@
     List<String> suggestions=speller.getSuggestions(word);
     suggestions.addAll(getAdditionalSuggestions(suggestions,word));
     if (!suggestions.isEmpty()) {
-      ruleMatch.setSuggestedReplacements(orderSuggestions(suggestions,word));
+      ruleMatch.setSuggestedReplacements(pruneSuggestions(orderSuggestions(suggestions,word)));
     }
     ruleMatches.add(ruleMatch);
   }

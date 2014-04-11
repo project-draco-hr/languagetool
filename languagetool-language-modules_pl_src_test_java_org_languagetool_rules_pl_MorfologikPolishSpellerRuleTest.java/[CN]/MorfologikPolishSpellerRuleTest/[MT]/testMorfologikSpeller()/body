@@ -17,4 +17,12 @@
   assertEquals("??????w",matches[0].getSuggestedReplacements().get(0));
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("a??h")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Niby-artysta spotka?? si?? z quasi-opiekunem i niby-Francuzem.")).length);
+  final RuleMatch[] prunedMatches=rule.match(langTool.getAnalyzedSentence("Clarkem"));
+  assertEquals(1,prunedMatches.length);
+  assertEquals(5,prunedMatches[0].getSuggestedReplacements().size());
+  assertEquals("Ciark??",prunedMatches[0].getSuggestedReplacements().get(0));
+  assertEquals("Czark??",prunedMatches[0].getSuggestedReplacements().get(1));
+  assertEquals("Clarke",prunedMatches[0].getSuggestedReplacements().get(2));
+  assertEquals("Clarkiem",prunedMatches[0].getSuggestedReplacements().get(3));
+  assertEquals("Clarkom",prunedMatches[0].getSuggestedReplacements().get(4));
 }
