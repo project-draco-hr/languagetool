@@ -1,0 +1,3 @@
+{
+  testSplit("Onkel Toms stuga ??r en roman skriven av Harriet Beecher Stowe, publicerad den 1852. ","Den handlar om slaveriet i USA sett ur slavarnas perspektiv och bidrog starkt till att slaveriet avskaffades 1865 efter amerikanska inb??rdeskriget.");
+}
