@@ -1,0 +1,3 @@
+{
+  testSplit("Linux ??? laisvos operacin??s sistemos branduolio (kernel) pavadinimas. ","Da??nai taip sutrumpintai vadinama ir bendrai visa Unix-tipo operacin?? sistema naudojanti Linux branduol?? kartu su sistemin??mis programomis bei bibliotekomis i?? GNU projekto.");
+}
