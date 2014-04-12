@@ -1,2 +1,15 @@
 {
+  Object data=n.getAttribute("RTD");
+  if (data != null && data instanceof RtData) {
+    RtData rtd=(RtData)data;
+    Object[][] rts=rtd.getRts();
+    if (rts.length > 0 && rts[0].length > 0) {
+      if ("<gallery".equals(rts[0][0])) {
+        inGallery=true;
+      }
+ else       if ("</gallery>".equals(rts[0][0])) {
+        inGallery=false;
+      }
+    }
+  }
 }

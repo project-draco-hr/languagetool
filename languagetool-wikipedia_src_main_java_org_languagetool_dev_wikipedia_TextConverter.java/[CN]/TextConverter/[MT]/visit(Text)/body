@@ -1,4 +1,7 @@
 {
+  if (inGallery) {
+    return;
+  }
   addMapping(text);
   write(text.getContent());
 }
