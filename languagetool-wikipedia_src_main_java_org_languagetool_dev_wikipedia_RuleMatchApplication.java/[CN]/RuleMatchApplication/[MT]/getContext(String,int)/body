@@ -1,6 +1,6 @@
 {
-  int errorStart=textWithCorrection.indexOf(errorMarkerStart);
-  int errorEnd=textWithCorrection.indexOf(errorMarkerEnd);
+  int errorStart=textWithCorrection.indexOf(errorMarker.getStartMarker());
+  int errorEnd=textWithCorrection.indexOf(errorMarker.getEndMarker());
   int errorContextStart=Math.max(errorStart - contextSize,0);
   int errorContentEnd=Math.min(errorEnd + contextSize,text.length());
   return text.substring(errorContextStart,errorContentEnd);

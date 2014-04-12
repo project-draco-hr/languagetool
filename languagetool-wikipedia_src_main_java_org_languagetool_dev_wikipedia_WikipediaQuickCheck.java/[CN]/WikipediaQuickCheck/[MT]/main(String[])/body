@@ -3,18 +3,24 @@
     System.out.println("Usage: " + WikipediaQuickCheck.class.getName() + " <url>");
     System.exit(1);
   }
-  final WikipediaQuickCheck check=new WikipediaQuickCheck();
-  final String urlString=args[0];
-  final URL url=new URL(urlString);
-  final String mediaWikiContent=check.getMediaWikiContent(url);
-  final String plainText=check.getPlainText(mediaWikiContent);
-  final Language lang=check.getLanguage(url);
-  final WikipediaQuickCheckResult checkResult=check.checkPage(plainText,lang);
-  final ContextTools contextTools=new ContextTools();
-  contextTools.setContextSize(CONTEXT_SIZE);
-  for (  RuleMatch ruleMatch : checkResult.getRuleMatches()) {
-    System.out.println(ruleMatch.getMessage());
-    final String context=contextTools.getPlainTextContext(ruleMatch.getFromPos(),ruleMatch.getToPos(),checkResult.getText());
-    System.out.println(context);
+  WikipediaQuickCheck check=new WikipediaQuickCheck();
+  String urlString=args[0];
+  MarkupAwareWikipediaResult result=check.checkPage(new URL(urlString),new ErrorMarker("***","***"));
+  int errorCount=0;
+  for (  AppliedRuleMatch match : result.getAppliedRuleMatches()) {
+    RuleMatchApplication matchApplication=match.getRuleMatchApplications().get(0);
+    RuleMatch ruleMatch=match.getRuleMatch();
+    Rule rule=ruleMatch.getRule();
+    System.out.println("");
+    String message=ruleMatch.getMessage().replace("<suggestion>","'").replace("</suggestion>","'");
+    errorCount++;
+    System.out.print(errorCount + ". " + message);
+    if (rule instanceof PatternRule) {
+      System.out.println(" (" + rule.getId() + "["+ ((PatternRule)rule).getSubId()+ "])");
+    }
+ else {
+      System.out.println(" (" + rule.getId() + ")");
+    }
+    System.out.println("    ..." + matchApplication.getOriginalErrorContext(50).replace("\n","\\n") + "...");
   }
 }

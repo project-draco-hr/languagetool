@@ -1,0 +1,4 @@
+{
+  this.startMarker=Objects.requireNonNull(startMarker);
+  this.endMarker=Objects.requireNonNull(endMarker);
+}

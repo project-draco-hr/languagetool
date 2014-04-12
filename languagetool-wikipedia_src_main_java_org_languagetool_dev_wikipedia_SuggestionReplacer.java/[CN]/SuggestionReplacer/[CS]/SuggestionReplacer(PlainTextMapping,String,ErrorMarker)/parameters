@@ -1,0 +1,3 @@
+PlainTextMapping textMapping
+String originalText
+ErrorMarker errorMarker

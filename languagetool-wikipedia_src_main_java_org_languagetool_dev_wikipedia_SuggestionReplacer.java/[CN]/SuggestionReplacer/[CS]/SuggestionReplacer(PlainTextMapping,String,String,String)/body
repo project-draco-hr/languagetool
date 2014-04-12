@@ -1,6 +1,3 @@
 {
-  this.textMapping=textMapping;
-  this.originalText=originalText;
-  this.errorMarkerStart=errorMarkerStart;
-  this.errorMarkerEnd=errorMarkerEnd;
+  this(textMapping,originalText,new ErrorMarker(errorMarkerStart,errorMarkerEnd));
 }

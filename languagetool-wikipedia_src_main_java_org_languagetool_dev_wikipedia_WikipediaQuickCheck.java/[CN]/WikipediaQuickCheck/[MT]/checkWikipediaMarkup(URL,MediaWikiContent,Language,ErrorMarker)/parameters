@@ -1,3 +1,4 @@
 URL url
 MediaWikiContent wikiContent
 Language language
+ErrorMarker errorMarker

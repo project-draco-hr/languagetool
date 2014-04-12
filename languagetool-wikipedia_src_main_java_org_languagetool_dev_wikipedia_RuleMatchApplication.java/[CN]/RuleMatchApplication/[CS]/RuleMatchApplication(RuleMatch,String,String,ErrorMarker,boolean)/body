@@ -1,0 +1,13 @@
+{
+  if (!textWithCorrection.contains(errorMarker.getStartMarker())) {
+    throw new IllegalArgumentException("No start error marker (" + errorMarker.getStartMarker() + ") found in text with correction");
+  }
+  if (!textWithCorrection.contains(errorMarker.getEndMarker())) {
+    throw new IllegalArgumentException("No end error marker (" + errorMarker.getEndMarker() + ") found in text with correction");
+  }
+  this.ruleMatch=ruleMatch;
+  this.text=text;
+  this.textWithCorrection=textWithCorrection;
+  this.errorMarker=errorMarker;
+  this.hasRealReplacement=hasRealReplacement;
+}

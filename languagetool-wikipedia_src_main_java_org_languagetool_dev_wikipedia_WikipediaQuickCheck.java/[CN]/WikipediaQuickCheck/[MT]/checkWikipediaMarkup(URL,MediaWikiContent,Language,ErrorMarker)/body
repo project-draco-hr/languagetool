@@ -6,7 +6,7 @@
   final List<RuleMatch> matches=langTool.check(mapping.getPlainText());
   int internalErrors=0;
   for (  RuleMatch match : matches) {
-    final SuggestionReplacer replacer=new SuggestionReplacer(mapping,wikiContent.getContent());
+    final SuggestionReplacer replacer=errorMarker != null ? new SuggestionReplacer(mapping,wikiContent.getContent(),errorMarker) : new SuggestionReplacer(mapping,wikiContent.getContent());
     try {
       final List<RuleMatchApplication> ruleMatchApplications=replacer.applySuggestionsToOriginalText(match);
       appliedMatches.add(new AppliedRuleMatch(match,ruleMatchApplications));

@@ -1,0 +1,5 @@
+{
+  this.textMapping=textMapping;
+  this.originalText=originalText;
+  this.errorMarker=errorMarker;
+}
