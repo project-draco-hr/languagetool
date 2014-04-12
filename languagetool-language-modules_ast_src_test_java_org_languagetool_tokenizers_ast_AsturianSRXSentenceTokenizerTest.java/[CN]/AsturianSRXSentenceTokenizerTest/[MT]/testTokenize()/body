@@ -1,3 +1,9 @@
 {
   testSplit("De secute, los hackers de Minix aportaron idegues y c??digu al n??cleu Linux, y g??ey recibiera contribuciones de miles de programadores. ","Torvalds sigue lliberando nueves versiones del n??cleu, consolidando aportes d'otros programadores y faciendo cambios el mesmu.");
+  stokenizer.setSingleLineBreaksMarksParagraph(false);
+  testSplit("De secute,\nlos hackers de Minix...");
+  testSplit("De secute,\n\n","los hackers de Minix...");
+  stokenizer.setSingleLineBreaksMarksParagraph(true);
+  testSplit("De secute,\n","los hackers de Minix...");
+  testSplit("De secute,\n","\n","los hackers de Minix...");
 }
