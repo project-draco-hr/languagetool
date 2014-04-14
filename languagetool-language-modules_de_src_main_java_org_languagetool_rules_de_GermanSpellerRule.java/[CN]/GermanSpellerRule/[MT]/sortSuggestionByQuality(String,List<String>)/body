@@ -1,23 +1,5 @@
 {
-  final List<String> result=new ArrayList<>();
-  for (  String suggestion : suggestions) {
-    boolean moveSuggestionToTop=false;
-    for (    Replacement replacement : REPL) {
-      final String modifiedMisspelling=misspelling.replace(replacement.key,replacement.value);
-      final boolean equalsAfterReplacement=modifiedMisspelling.equals(suggestion);
-      if (equalsAfterReplacement) {
-        moveSuggestionToTop=true;
-        break;
-      }
-    }
-    if (!ignoreSuggestion(suggestion)) {
-      if (moveSuggestionToTop) {
-        result.add(0,suggestion);
-      }
- else {
-        result.add(suggestion);
-      }
-    }
-  }
-  return result;
+  List<String> sorted1=sortByReplacements(misspelling,suggestions);
+  List<String> sorted2=sortByCase(misspelling,sorted1);
+  return sorted2;
 }

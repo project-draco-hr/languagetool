@@ -6,6 +6,8 @@
   assertCorrection(rule,"Theatrekasse","Theaterkasse");
   assertCorrection(rule,"Traprennen","Trabrennen");
   assertCorrection(rule,"Autuverkehr","Autoverkehr");
+  assertCorrection(rule,"Rechtschreibpr??fun","Rechtschreibpr??fung");
+  assertCorrection(rule,"Rechtschreib-Pr??fun","Rechtschreib-Pr??fung");
   assertCorrection(rule,"hasslich","h??sslich","fasslich");
   assertCorrection(rule,"Stru??e","Strau??e","Stra??e","Str??u??e");
   assertCorrection(rule,"gewohnlich","gew??hnlich");
