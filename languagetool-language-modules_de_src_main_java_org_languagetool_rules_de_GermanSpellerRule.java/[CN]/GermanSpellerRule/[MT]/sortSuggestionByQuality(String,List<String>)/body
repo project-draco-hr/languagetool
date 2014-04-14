@@ -10,11 +10,13 @@
         break;
       }
     }
-    if (moveSuggestionToTop) {
-      result.add(0,suggestion);
-    }
+    if (!ignoreSuggestion(suggestion)) {
+      if (moveSuggestionToTop) {
+        result.add(0,suggestion);
+      }
  else {
-      result.add(suggestion);
+        result.add(suggestion);
+      }
     }
   }
   return result;

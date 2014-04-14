@@ -1,0 +1,11 @@
+{
+  String[] parts=suggestion.split(" ");
+  if (parts.length > 1) {
+    for (    String part : parts) {
+      if (part.length() < SUGGESTION_MIN_LENGTH) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
