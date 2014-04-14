@@ -1,9 +1,8 @@
 {
-  final HunspellRule rule=new GermanSpellerRule(TestTools.getMessages("German"),new GermanyGerman());
+  final HunspellRule rule=new GermanSpellerRule(TestTools.getMessages("German"),GERMAN_DE);
   assertCorrection(rule,"Hauk","Haus","Haut");
   assertCorrection(rule,"Hauk","Haus","Haut");
   assertCorrection(rule,"Eisnbahn","Einbahn","Eisbahn","Eisenbahn");
-  assertCorrection(rule,"Rechtschreipreform","Rechtschreibreform");
   assertCorrection(rule,"Theatrekasse","Theaterkasse");
   assertCorrection(rule,"Traprennen","Trabrennen");
   assertCorrection(rule,"Autuverkehr","Autoverkehr");

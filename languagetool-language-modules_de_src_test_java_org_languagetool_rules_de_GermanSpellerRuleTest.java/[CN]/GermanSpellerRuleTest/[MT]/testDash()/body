@@ -1,7 +1,6 @@
 {
-  final GermanyGerman language=new GermanyGerman();
-  final HunspellRule rule=new GermanSpellerRule(TestTools.getMessages("German"),language);
-  final JLanguageTool langTool=new JLanguageTool(language);
+  final HunspellRule rule=new GermanSpellerRule(TestTools.getMessages("German"),GERMAN_DE);
+  final JLanguageTool langTool=new JLanguageTool(GERMAN_DE);
   commonGermanAsserts(rule,langTool);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ist doch - gut")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ist doch -- gut")).length);
