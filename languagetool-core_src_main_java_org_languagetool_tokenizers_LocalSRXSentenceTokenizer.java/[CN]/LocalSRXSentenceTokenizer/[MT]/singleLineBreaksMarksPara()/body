@@ -1,0 +1,3 @@
+{
+  return "_one".equals(parCode);
+}

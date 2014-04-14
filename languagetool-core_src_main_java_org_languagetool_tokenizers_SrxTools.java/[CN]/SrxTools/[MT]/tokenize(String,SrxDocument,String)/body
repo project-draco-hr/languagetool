@@ -1,0 +1,8 @@
+{
+  List<String> segments=new ArrayList<>();
+  TextIterator textIterator=new SrxTextIterator(srxDocument,code,text);
+  while (textIterator.hasNext()) {
+    segments.add(textIterator.next());
+  }
+  return segments;
+}

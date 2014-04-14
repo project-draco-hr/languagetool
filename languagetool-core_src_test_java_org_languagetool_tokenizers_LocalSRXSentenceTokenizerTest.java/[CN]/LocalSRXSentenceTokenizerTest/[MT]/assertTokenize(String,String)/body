@@ -1,0 +1,3 @@
+{
+  assertThat(tokenizer.tokenize(input).toString(),is(output));
+}

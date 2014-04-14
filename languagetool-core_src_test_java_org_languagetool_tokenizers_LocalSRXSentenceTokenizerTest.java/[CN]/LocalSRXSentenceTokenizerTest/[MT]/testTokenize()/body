@@ -1,0 +1,11 @@
+{
+  assertTokenize("A sentence. Another one.","[A sentence. , Another one.]");
+  assertTokenize("A fooabbr. doesn't end a sentence.","[A fooabbr. doesn't end a sentence.]");
+  assertTokenize("A barabbr. doesn't end a sentence.","[A barabbr. doesn't end a sentence.]");
+  tokenizer.setSingleLineBreaksMarksParagraph(true);
+  assertTokenize("A sentence.\nAnother one.","[A sentence.\n, Another one.]");
+  assertTokenize("A sentence.\n\nAnother one.","[A sentence.\n, \n, Another one.]");
+  tokenizer.setSingleLineBreaksMarksParagraph(false);
+  assertTokenize("A sentence\nwhich goes on here.","[A sentence\nwhich goes on here.]");
+  assertTokenize("A sentence.\n\nAnother one.","[A sentence.\n, \nAnother one.]");
+}

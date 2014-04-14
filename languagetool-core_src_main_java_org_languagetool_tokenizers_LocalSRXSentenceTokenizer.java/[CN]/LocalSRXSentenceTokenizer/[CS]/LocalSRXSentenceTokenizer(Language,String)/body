@@ -1,0 +1,9 @@
+{
+  this.language=Objects.requireNonNull(language);
+  InputStream stream=this.getClass().getResourceAsStream(srxInClassPath);
+  if (stream == null) {
+    throw new RuntimeException("Could not find SRX file in classpath: " + srxInClassPath);
+  }
+  this.srxDocument=SrxTools.createSrxDocument(stream);
+  setSingleLineBreaksMarksParagraph(false);
+}
