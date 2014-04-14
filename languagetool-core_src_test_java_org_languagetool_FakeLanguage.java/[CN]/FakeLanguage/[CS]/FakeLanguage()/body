@@ -1,3 +1,4 @@
 {
   this.langCode="yy";
+  this.country="YY";
 }
