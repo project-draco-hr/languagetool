@@ -1,18 +1,10 @@
 {
   addMapping(er);
-  String ch=EntityReferences.resolve(er.getName());
   if ("nbsp".equals(er.getName())) {
     write(' ');
   }
- else   if ("ndash".equals(er.getName()) || "mdash".equals(er.getName())) {
-    write('-');
-  }
- else   if (ch == null) {
-    write('&');
-    write(er.getName());
-    write(';');
-  }
  else {
+    String ch=StringEscapeUtils.unescapeHtml("&" + er.getName() + ";");
     write(ch);
   }
 }
