@@ -7,7 +7,7 @@
   }
  else {
     System.out.println("Checking " + file.getAbsolutePath());
-    String text=StringTools.readStream(new FileInputStream(file.getAbsolutePath()));
+    String text=StringTools.readStream(new FileInputStream(file.getAbsolutePath()),"utf-8");
     text=textFilter.filter(text);
     if (CHECK_BY_SENTENCE) {
       final Tokenizer sentenceTokenizer=langTool.getLanguage().getSentenceTokenizer();
@@ -17,7 +17,7 @@
       }
     }
  else {
-      Tools.checkText(text,langTool);
+      CommandLineTools.checkText(text,langTool);
     }
   }
 }

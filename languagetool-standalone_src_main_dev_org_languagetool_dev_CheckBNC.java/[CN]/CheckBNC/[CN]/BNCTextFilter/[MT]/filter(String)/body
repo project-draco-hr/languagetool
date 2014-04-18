@@ -1,0 +1,11 @@
+{
+  String fText=text.replaceAll("(?s)<header.*?>.*?</header>","");
+  fText=fText.replaceAll("<w.*?>","");
+  fText=fText.replaceAll("<c.*?>","");
+  fText=fText.replaceAll("<.*?>","");
+  fText=fText.replaceAll(" +"," ");
+  fText=fText.replaceAll("&bquo|&equo","\"");
+  fText=fText.replaceAll("&mdash;?","--");
+  fText=fText.replaceAll("&amp;?","&");
+  return fText;
+}

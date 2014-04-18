@@ -1,7 +1,6 @@
 {
   int count=0;
-  final Scanner scanner=new Scanner(svnOutput);
-  try {
+  try (Scanner scanner=new Scanner(svnOutput)){
     while (scanner.hasNextLine()) {
       final String line=scanner.nextLine();
       if (line.matches("^r\\d+.*")) {
@@ -9,8 +8,5 @@
       }
     }
   }
-  finally {
-    scanner.close();
-  }
-  return count;
+   return count;
 }
