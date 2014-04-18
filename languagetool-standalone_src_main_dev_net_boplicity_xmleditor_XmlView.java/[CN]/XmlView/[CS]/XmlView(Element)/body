@@ -1,0 +1,4 @@
+{
+  super(element);
+  getDocument().putProperty(PlainDocument.tabSizeAttribute,4);
+}

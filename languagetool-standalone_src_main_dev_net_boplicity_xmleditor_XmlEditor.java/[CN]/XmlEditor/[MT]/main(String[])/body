@@ -1,0 +1,4 @@
+{
+  XmlEditor xmlEditor=new XmlEditor();
+  xmlEditor.setVisible(true);
+}

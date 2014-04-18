@@ -1,0 +1,5 @@
+{
+  this.setEditorKitForContentType("text/xml",new XmlEditorKit());
+  this.setContentType("text/xml");
+  addKeyListener(new IndentKeyListener());
+}
