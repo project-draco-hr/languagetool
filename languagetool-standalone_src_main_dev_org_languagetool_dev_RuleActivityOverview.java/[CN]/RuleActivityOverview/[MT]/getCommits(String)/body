@@ -3,7 +3,7 @@
   try (Scanner scanner=new Scanner(svnOutput)){
     while (scanner.hasNextLine()) {
       final String line=scanner.nextLine();
-      if (line.matches("^r\\d+.*")) {
+      if (line.startsWith("commit ")) {
         count++;
       }
     }
