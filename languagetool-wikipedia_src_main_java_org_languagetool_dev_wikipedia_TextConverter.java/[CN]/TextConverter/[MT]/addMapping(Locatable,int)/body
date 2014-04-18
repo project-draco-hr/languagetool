@@ -1,0 +1,8 @@
+{
+  String contentSoFar=sb.toString() + line;
+  int textPos=contentSoFar.length() + needNewlines + 1;
+  if (loc.hasLocation()) {
+    Location location=loc.getLocation();
+    mapping.put(textPos,new Location(location.file,location.line,location.column + columnCorrection));
+  }
+}
