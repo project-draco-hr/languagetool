@@ -1,6 +1,6 @@
 {
-  ArrayList<List<Token>> list=new ArrayList<List<Token>>();
-  ArrayList<Token> tokenList=new ArrayList<Token>(Arrays.asList(tokens));
+  List<List<Token>> list=new ArrayList<>();
+  List<Token> tokenList=new ArrayList<>(Arrays.asList(tokens));
   list.add(tokenList);
   boolean notdone=true;
   while (notdone) {
@@ -12,7 +12,7 @@
       }
  else {
         list.remove(i);
-        ArrayList<List<Token>> splitTokens=splitListForSingleRule(insideList);
+        Iterable<List<Token>> splitTokens=splitListForSingleRule(insideList);
         for (        List<Token> ind : splitTokens) {
           list.add(ind);
         }

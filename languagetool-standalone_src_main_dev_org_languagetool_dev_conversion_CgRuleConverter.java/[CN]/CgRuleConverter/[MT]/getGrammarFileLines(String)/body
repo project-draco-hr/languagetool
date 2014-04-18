@@ -19,5 +19,4 @@
   }
   String[] lines=inArray.split("\n");
   this.lines=lines;
-  ;
 }

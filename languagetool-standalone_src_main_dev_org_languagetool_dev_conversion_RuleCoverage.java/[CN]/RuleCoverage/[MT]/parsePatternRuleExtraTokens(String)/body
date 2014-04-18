@@ -9,6 +9,6 @@
     return ruleLoader.getRules(is,null);
   }
  catch (  IOException e) {
-    return new ArrayList<PatternRule>();
+    return new ArrayList<>();
   }
 }

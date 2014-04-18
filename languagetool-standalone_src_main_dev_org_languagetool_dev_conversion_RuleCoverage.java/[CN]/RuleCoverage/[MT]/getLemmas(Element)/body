@@ -4,7 +4,7 @@
   }
  else {
     if (isOrRegex(e)) {
-      ArrayList<String> lemmas=new ArrayList<String>();
+      ArrayList<String> lemmas=new ArrayList<>();
       String[] words=e.getString().split("\\|");
       for (      String word : words) {
         lemmas.addAll(getLemmas(word));

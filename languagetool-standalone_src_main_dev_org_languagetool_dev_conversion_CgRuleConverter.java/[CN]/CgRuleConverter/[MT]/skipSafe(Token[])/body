@@ -1,7 +1,7 @@
 {
-  HashSet<Token> scanningTokens=new HashSet<Token>();
-  HashSet<Token> reverseScanningTokens=new HashSet<Token>();
-  HashSet<Token> normalTokens=new HashSet<Token>();
+  Collection<Token> scanningTokens=new HashSet<>();
+  Collection<Token> reverseScanningTokens=new HashSet<>();
+  Collection<Token> normalTokens=new HashSet<>();
   for (  Token token : tokens) {
     if (token.scanahead) {
       scanningTokens.add(token);

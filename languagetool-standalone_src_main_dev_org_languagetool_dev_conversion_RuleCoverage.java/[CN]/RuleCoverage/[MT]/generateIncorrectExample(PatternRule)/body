@@ -1,14 +1,14 @@
 {
-  ArrayList<String> examples=new ArrayList<String>();
+  ArrayList<String> examples=new ArrayList<>();
   List<Element> elements=patternrule.getElements();
   for (int i=0; i < elements.size(); i++) {
     List<Element> prevExceptions;
     if (i == elements.size() - 1) {
-      prevExceptions=new ArrayList<Element>();
+      prevExceptions=new ArrayList<>();
     }
  else {
       prevExceptions=elements.get(i + 1).getPreviousExceptionList();
-      if (prevExceptions == null)       prevExceptions=new ArrayList<Element>();
+      if (prevExceptions == null)       prevExceptions=new ArrayList<>();
     }
     examples.add(getSpecificExample(elements.get(i),prevExceptions,elements,examples));
   }

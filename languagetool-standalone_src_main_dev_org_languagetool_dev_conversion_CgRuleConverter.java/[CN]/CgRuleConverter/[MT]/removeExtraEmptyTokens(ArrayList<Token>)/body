@@ -3,7 +3,7 @@
     return tokens;
   }
  else {
-    ArrayList<Token> newTokenList=new ArrayList<Token>();
+    ArrayList<Token> newTokenList=new ArrayList<>();
     for (    Token token : tokens) {
       if (!token.isEmpty()) {
         newTokenList.add(token);

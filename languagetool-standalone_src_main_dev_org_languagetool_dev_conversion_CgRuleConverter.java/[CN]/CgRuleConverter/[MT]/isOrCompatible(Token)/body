@@ -8,9 +8,9 @@
   if (token.compositeTags.length > 0 && (token.postags.length > 0 || token.baseforms.length > 0 || token.surfaceforms.length > 0)) {
     return false;
   }
-  HashSet<String> pos=new HashSet<String>();
-  HashSet<String> base=new HashSet<String>();
-  HashSet<String> surf=new HashSet<String>();
+  Collection<String> pos=new HashSet<>();
+  Collection<String> base=new HashSet<>();
+  Collection<String> surf=new HashSet<>();
   for (  CgCompositeTag ctag : token.compositeTags) {
     CgCompositeTag postagCompile=new CgCompositeTag();
     for (    CgTag tag : ctag.tags) {

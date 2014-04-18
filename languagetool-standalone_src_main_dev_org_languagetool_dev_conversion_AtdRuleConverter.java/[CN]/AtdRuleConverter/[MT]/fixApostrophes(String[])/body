@@ -1,5 +1,5 @@
 {
-  ArrayList<String> retList=new ArrayList<String>();
+  ArrayList<String> retList=new ArrayList<>();
   for (  String s : p) {
     if (s.equals("'")) {
       retList.add(s);

@@ -1,5 +1,5 @@
 {
-  ArrayList<CgSet> newSets=new ArrayList<CgSet>();
+  List<CgSet> newSets=new ArrayList<>();
   CgTag[] postags=target.getSingleTagPostags();
   CgTag[] baseforms=target.getSingleTagBaseforms();
   CgTag[] surfaceforms=target.getSingleTagSurfaceforms();

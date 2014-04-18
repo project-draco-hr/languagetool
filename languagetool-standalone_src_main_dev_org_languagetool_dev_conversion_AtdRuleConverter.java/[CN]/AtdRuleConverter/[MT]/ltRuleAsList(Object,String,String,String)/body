@@ -1,14 +1,14 @@
 {
-  ArrayList<HashMap<String,String>> outerList=new ArrayList<HashMap<String,String>>();
+  Collection<HashMap<String,String>> outerList=new ArrayList<>();
   HashMap<String,String> mainRule=(HashMap<String,String>)ruleObject;
-  ArrayList<String> currentWarnings=new ArrayList<String>();
+  ArrayList<String> currentWarnings=new ArrayList<>();
   String[] mainPattern=mainRule.get("pattern").split("\\ +");
   for (int i=0; i < mainPattern.length; i++) {
     mainPattern[i]=expandMacro(mainPattern[i]);
   }
   mainRule.put("pattern",gluePattern(mainPattern));
   if (isApostropheCase(mainRule.get("pattern").split("\\ +"))) {
-    ArrayList<HashMap<String,String>> splitRules=handleApostropheCase(mainRule,ruleObject,type);
+    Iterable<HashMap<String,String>> splitRules=handleApostropheCase(mainRule,ruleObject,type);
     for (    HashMap<String,String> splitRule : splitRules) {
       outerList.add(splitRule);
     }
@@ -16,13 +16,13 @@
  else {
     outerList.add(mainRule);
   }
-  ArrayList<String> bigLtRule=new ArrayList<String>();
+  List<String> bigLtRule=new ArrayList<>();
   bigLtRule.add("<!-- " + mainRule.get("ruleString") + " -->");
   if (outerList.size() > 1) {
     bigLtRule.add("<rulegroup id=\"" + id + "\" name=\""+ name+ "\">");
   }
   for (  HashMap<String,String> rule : outerList) {
-    ArrayList<String> ltRule=new ArrayList<String>();
+    ArrayList<String> ltRule=new ArrayList<>();
     if (outerList.size() == 1) {
       ltRule.add(firstIndent + "<rule id=\"" + id+ "\" name=\""+ name+ "\">");
     }
@@ -51,8 +51,7 @@
       }
     }
     pattern=newpattern;
-    for (int i=0; i < pattern.length; i++) {
-      String e=pattern[i];
+    for (    String e : pattern) {
       currentWarnings=getWarningsFromPatternElement(currentWarnings,e);
       ltRule=addTokenHelper(ltRule,e,thirdIndentInt,exceptions);
     }

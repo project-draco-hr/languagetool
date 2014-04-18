@@ -1,7 +1,7 @@
 {
   Matcher m;
   Pattern lemmaPattern=Pattern.compile(RuleConverter.glueWords(getLemmas(e)));
-  ArrayList<String> wordLemmas=getLemmas(word);
+  List<String> wordLemmas=getLemmas(word);
   for (  String lemma : wordLemmas) {
     m=lemmaPattern.matcher(lemma);
     if (m.matches()) {

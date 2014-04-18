@@ -4,8 +4,8 @@
   String surfaceforms=glueWords(cleanForms(token.surfaceforms));
   CgCompositeTag[] compositeTags=token.compositeTags;
   if (compositeTags.length != 0) {
-    ArrayList<String> baseformsList=new ArrayList<String>();
-    ArrayList<String> surfaceformsList=new ArrayList<String>();
+    ArrayList<String> baseformsList=new ArrayList<>();
+    ArrayList<String> surfaceformsList=new ArrayList<>();
     for (    CgCompositeTag ctag : compositeTags) {
       CgCompositeTag postagCompiled=new CgCompositeTag();
       for (      CgTag tag : ctag.tags) {

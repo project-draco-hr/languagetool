@@ -1,5 +1,5 @@
 {
-  ArrayList<Token> tokens=new ArrayList<Token>(Arrays.asList(ts));
+  ArrayList<Token> tokens=new ArrayList<>(Arrays.asList(ts));
   boolean notdone=true;
   while (notdone) {
     for (int i=0; i < tokens.size(); i++) {

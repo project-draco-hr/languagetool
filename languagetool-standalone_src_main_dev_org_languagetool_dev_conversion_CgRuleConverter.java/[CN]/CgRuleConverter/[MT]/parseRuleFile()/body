@@ -1,15 +1,15 @@
 {
   parseCgFile();
-  List<CgRule> ruleList=new ArrayList<CgRule>();
+  List<CgRule> ruleList=new ArrayList<>();
   for (  CgRule rule : grammar.rule_by_number) {
     ruleList.add(rule);
   }
   ruleObjects=ruleList;
-  ltRules=new ArrayList<List<String>>();
-  allLtRules=new ArrayList<List<String>>();
-  disambiguationRules=new ArrayList<List<String>>();
-  originalRuleStrings=new ArrayList<String>();
-  warnings=new ArrayList<String[]>();
+  ltRules=new ArrayList<>();
+  allLtRules=new ArrayList<>();
+  disambiguationRules=new ArrayList<>();
+  originalRuleStrings=new ArrayList<>();
+  warnings=new ArrayList<>();
   for (  Object ruleObject : ruleObjects) {
     CgRule cgrule=(CgRule)ruleObject;
     List<String> ruleAsList=ltRuleAsList(cgrule,generateId(ruleObject),generateName(ruleObject),cgrule.type.name());

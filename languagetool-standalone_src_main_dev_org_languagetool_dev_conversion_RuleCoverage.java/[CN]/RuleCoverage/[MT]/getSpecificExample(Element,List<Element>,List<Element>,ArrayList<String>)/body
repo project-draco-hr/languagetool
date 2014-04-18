@@ -10,9 +10,9 @@
         return getOnePunc(and);
       }
     }
-    ArrayList<Pattern> tokenPatterns=new ArrayList<Pattern>(andGroup.size());
-    ArrayList<Pattern> posPatterns=new ArrayList<Pattern>(andGroup.size());
-    ArrayList<Element> allExceptions=new ArrayList<Element>();
+    List<Pattern> tokenPatterns=new ArrayList<>(andGroup.size());
+    List<Pattern> posPatterns=new ArrayList<>(andGroup.size());
+    List<Element> allExceptions=new ArrayList<>();
     allExceptions.addAll(prevExceptions);
     for (int a=0; a < andGroup.size(); a++) {
       Element and=andGroup.get(a);
@@ -39,7 +39,7 @@
       }
       andGroup.set(a,and);
     }
-    ArrayList<ArrayList<Pattern>> exceptionAttributes=getExceptionAttributes(allExceptions);
+    List<List<Pattern>> exceptionAttributes=getExceptionAttributes(allExceptions);
     int numResets=0;
     while (numResets < 2) {
       if (!dictIterator.hasNext()) {
@@ -69,10 +69,10 @@
     String postag=e.getPOStag();
     List<Element> exceptions=e.getExceptionList();
     if (exceptions == null) {
-      exceptions=new ArrayList<Element>();
+      exceptions=new ArrayList<>();
     }
     exceptions.addAll(prevExceptions);
-    ArrayList<ArrayList<Pattern>> exceptionAttributes=getExceptionAttributes(exceptions);
+    List<List<Pattern>> exceptionAttributes=getExceptionAttributes(exceptions);
     if (e.isSentenceStart()) {
       return "";
     }

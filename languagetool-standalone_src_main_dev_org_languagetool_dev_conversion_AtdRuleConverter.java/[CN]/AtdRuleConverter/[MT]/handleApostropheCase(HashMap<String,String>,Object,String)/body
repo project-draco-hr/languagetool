@@ -15,7 +15,7 @@
     }
   }
   String[] brokenToken=offendingToken.split("\\|");
-  HashMap<String,ArrayList<String>> suffixMap=new HashMap<String,ArrayList<String>>();
+  HashMap<String,ArrayList<String>> suffixMap=new HashMap<>();
   for (  String token : brokenToken) {
     if (!token.contains("'")) {
       suffixMap=addItemSmart(suffixMap,"regular",token);
@@ -30,12 +30,12 @@
       }
     }
   }
-  ArrayList<String> newPatterns=new ArrayList<String>();
+  Collection<String> newPatterns=new ArrayList<>();
   for (  String suffix : suffixMap.keySet()) {
     String newPattern="";
     for (int i=0; i < pattern.length; i++) {
       if (i == offendingTokenIndex) {
-        ArrayList<String> prefixes=suffixMap.get(suffix);
+        Iterable<String> prefixes=suffixMap.get(suffix);
         String prefixString="";
         for (        String prefix : prefixes) {
           prefixString=prefixString + prefix + "|";
@@ -55,9 +55,9 @@
     newPattern=newPattern.trim();
     newPatterns.add(newPattern);
   }
-  ArrayList<HashMap<String,String>> allRules=new ArrayList<HashMap<String,String>>();
+  List<HashMap<String,String>> allRules=new ArrayList<>();
   for (  String newPattern : newPatterns) {
-    HashMap<String,String> r=new HashMap<String,String>(rule);
+    HashMap<String,String> r=new HashMap<>(rule);
     r.put("pattern",newPattern);
     if (oldSuggestion != null) {
     }

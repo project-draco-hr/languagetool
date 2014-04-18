@@ -1,6 +1,6 @@
 {
-  ArrayList<String> ltRule=new ArrayList<String>();
-  TreeMap<Integer,ArrayList<Token>> tokenmap=new TreeMap<Integer,ArrayList<Token>>();
+  ArrayList<String> ltRule=new ArrayList<>();
+  TreeMap<Integer,ArrayList<Token>> tokenmap=new TreeMap<>();
   for (  Token token : tokens) {
     tokenmap=(TreeMap)smartPut(tokenmap,token.offset,token);
   }

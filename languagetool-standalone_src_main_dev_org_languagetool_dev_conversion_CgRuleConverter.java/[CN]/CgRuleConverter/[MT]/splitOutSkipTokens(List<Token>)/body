@@ -1,8 +1,8 @@
 {
-  ArrayList<List<Token>> list=new ArrayList<List<Token>>();
-  ArrayList<Token> scanningTokens=new ArrayList<Token>();
-  ArrayList<Token> reverseScanningTokens=new ArrayList<Token>();
-  ArrayList<Token> normalTokens=new ArrayList<Token>();
+  ArrayList<List<Token>> list=new ArrayList<>();
+  ArrayList<Token> scanningTokens=new ArrayList<>();
+  ArrayList<Token> reverseScanningTokens=new ArrayList<>();
+  ArrayList<Token> normalTokens=new ArrayList<>();
   for (  Token token : tokens) {
     if (token.scanahead)     scanningTokens.add(token);
  else     if (token.scanbehind)     reverseScanningTokens.add(token);
@@ -13,8 +13,8 @@
     for (int n=0; n < normalTokens.size(); n++) {
       final Token normal=normalTokens.get(n);
       if (normal.offset >= scanning.offset) {
-        ArrayList<Token> newTokenList1=new ArrayList<Token>();
-        ArrayList<Token> newTokenList2=new ArrayList<Token>();
+        List<Token> newTokenList1=new ArrayList<>();
+        List<Token> newTokenList2=new ArrayList<>();
         for (        Token ntoken : normalTokens) {
           newTokenList1.add(ntoken);
           newTokenList2.add(ntoken);
@@ -35,8 +35,8 @@
     for (int n=0; n < normalTokens.size(); n++) {
       final Token normal=normalTokens.get(n);
       if (normal.offset <= scanning.offset) {
-        ArrayList<Token> newTokenList1=new ArrayList<Token>();
-        ArrayList<Token> newTokenList2=new ArrayList<Token>();
+        List<Token> newTokenList1=new ArrayList<>();
+        List<Token> newTokenList2=new ArrayList<>();
         for (        Token ntoken : normalTokens) {
           newTokenList1.add(ntoken);
           newTokenList2.add(ntoken);

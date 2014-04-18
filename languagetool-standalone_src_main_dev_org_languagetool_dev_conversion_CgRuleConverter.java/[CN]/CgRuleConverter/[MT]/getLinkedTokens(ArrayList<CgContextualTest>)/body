@@ -1,5 +1,5 @@
 {
-  ArrayList<Token> tokens=new ArrayList<Token>();
+  ArrayList<Token> tokens=new ArrayList<>();
   for (int i=0; i < tests.size(); i++) {
     if (i == 0) {
       tokens.add(getTokenFromNormalTest(tests.get(i)));

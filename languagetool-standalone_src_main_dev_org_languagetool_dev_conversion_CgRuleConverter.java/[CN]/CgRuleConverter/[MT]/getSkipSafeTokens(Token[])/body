@@ -1,5 +1,5 @@
 {
-  ArrayList<List<Token>> list=new ArrayList<List<Token>>();
+  List<List<Token>> list=new ArrayList<>();
   List<Token> tokenList=Arrays.asList(tokens);
   list.add(tokenList);
   boolean notdone=true;
@@ -13,7 +13,7 @@
       }
  else {
         list.remove(i);
-        ArrayList<List<Token>> splitTokens=splitOutSkipTokens(insideList);
+        Iterable<List<Token>> splitTokens=splitOutSkipTokens(insideList);
         for (        List<Token> isl : splitTokens) {
           list.add(isl);
         }

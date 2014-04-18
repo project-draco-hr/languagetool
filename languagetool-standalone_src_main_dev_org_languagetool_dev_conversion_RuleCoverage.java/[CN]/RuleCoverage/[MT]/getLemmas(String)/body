@@ -1,6 +1,6 @@
 {
   List<WordData> lwd=dictLookup.lookup(word);
-  ArrayList<String> lemmas=new ArrayList<String>();
+  ArrayList<String> lemmas=new ArrayList<>();
   for (  WordData wd : lwd) {
     if (!lemmas.contains(wd.getStem())) {
       lemmas.add(wd.getStem().toString());

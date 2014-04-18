@@ -5,7 +5,7 @@
     map.put(key,original);
   }
  else {
-    ArrayList<V> newcollection=new ArrayList<V>();
+    ArrayList<V> newcollection=new ArrayList<>();
     newcollection.add(value);
     map.put(key,newcollection);
   }

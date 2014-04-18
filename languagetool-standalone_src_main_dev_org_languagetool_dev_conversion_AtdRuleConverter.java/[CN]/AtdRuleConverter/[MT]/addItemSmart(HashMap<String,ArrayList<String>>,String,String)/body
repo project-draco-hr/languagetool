@@ -5,7 +5,7 @@
     map.put(key,existing);
   }
  else {
-    ArrayList<String> newList=new ArrayList<String>();
+    ArrayList<String> newList=new ArrayList<>();
     newList.add(item);
     map.put(key,newList);
   }

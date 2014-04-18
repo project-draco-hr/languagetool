@@ -1,5 +1,5 @@
 {
-  ArrayList<String> coverages=new ArrayList<String>();
+  ArrayList<String> coverages=new ArrayList<>();
   String example=generateIncorrectExample(rule);
   List<RuleMatch> matches=tool.check(example);
   if (matches.size() > 0) {

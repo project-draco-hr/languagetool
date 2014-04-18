@@ -1,6 +1,6 @@
 {
   List<WordData> lwd=dictLookup.lookup(word);
-  ArrayList<String> postags=new ArrayList<String>();
+  ArrayList<String> postags=new ArrayList<>();
   for (  WordData wd : lwd) {
     postags.add(wd.getTag().toString());
   }

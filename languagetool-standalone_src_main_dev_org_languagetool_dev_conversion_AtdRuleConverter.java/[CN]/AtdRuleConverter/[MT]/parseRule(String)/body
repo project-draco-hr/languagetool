@@ -1,6 +1,6 @@
 {
-  HashMap<String,String> outRule=new HashMap<String,String>();
-  if (this.ruleType == "default") {
+  HashMap<String,String> outRule=new HashMap<>();
+  if (this.ruleType.equals("default")) {
     String[] splitRule=rule.split("::");
     outRule.put("pattern",splitRule[0]);
     outRule.put("name",getNameFromPattern(splitRule[0]));
@@ -16,7 +16,7 @@
       }
     }
   }
- else   if (this.ruleType == "avoid") {
+ else   if (this.ruleType.equals("avoid")) {
     if (rule.contains("::word")) {
       String[] splitRule=rule.split("::");
       outRule.put("pattern",splitRule[0]);

@@ -1,7 +1,7 @@
 {
-  HashMap<String,ArrayList<CgCompositeTag>> bf=new HashMap<String,ArrayList<CgCompositeTag>>();
-  HashMap<String,ArrayList<CgCompositeTag>> sf=new HashMap<String,ArrayList<CgCompositeTag>>();
-  HashMap<String,CgCompositeTag> dict=new HashMap<String,CgCompositeTag>();
+  HashMap<String,ArrayList<CgCompositeTag>> bf=new HashMap<>();
+  Map<String,ArrayList<CgCompositeTag>> sf=new HashMap<>();
+  Map<String,CgCompositeTag> dict=new HashMap<>();
   for (  CgCompositeTag ctag : target.tags) {
     CgCompositeTag postags=new CgCompositeTag();
     CgCompositeTag baseforms=new CgCompositeTag();
@@ -27,11 +27,11 @@
     }
     dict.put(postags.toString(),postags);
   }
-  ArrayList<CgSet> ret=new ArrayList<CgSet>();
+  List<CgSet> ret=new ArrayList<>();
   for (  String postagSet : bf.keySet()) {
     CgSet newSet=new CgSet(target);
-    newSet.tags=new HashSet<CgCompositeTag>();
-    ArrayList<CgCompositeTag> bfs=bf.get(postagSet);
+    newSet.tags=new HashSet<>();
+    Iterable<CgCompositeTag> bfs=bf.get(postagSet);
     for (    CgCompositeTag singleBf : bfs) {
       CgCompositeTag newTotalTag=new CgCompositeTag();
       for (      CgTag tag : dict.get(postagSet).tags) {

@@ -1,6 +1,6 @@
 {
   Scanner in=new Scanner(new FileInputStream(inFileName));
-  List<String> ruleList=new ArrayList<String>();
+  List<String> ruleList=new ArrayList<>();
   try {
     int lineCount=0;
     while (in.hasNextLine()) {
@@ -24,11 +24,11 @@
     in.close();
   }
   ruleObjects=ruleList;
-  allLtRules=new ArrayList<List<String>>();
-  ltRules=new ArrayList<List<String>>();
-  disambiguationRules=new ArrayList<List<String>>();
-  originalRuleStrings=new ArrayList<String>();
-  warnings=new ArrayList<String[]>();
+  allLtRules=new ArrayList<>();
+  ltRules=new ArrayList<>();
+  disambiguationRules=new ArrayList<>();
+  originalRuleStrings=new ArrayList<>();
+  warnings=new ArrayList<>();
   for (  Object ruleObject : ruleObjects) {
     String ruleString=(String)ruleObject;
     HashMap<String,String> ruleMap=parseRule(ruleString);

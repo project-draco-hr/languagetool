@@ -1,5 +1,5 @@
 {
-  ArrayList<Token> newList=new ArrayList<Token>();
+  ArrayList<Token> newList=new ArrayList<>();
   for (  Token token : tokens) {
     newList.add(new Token(token));
   }
