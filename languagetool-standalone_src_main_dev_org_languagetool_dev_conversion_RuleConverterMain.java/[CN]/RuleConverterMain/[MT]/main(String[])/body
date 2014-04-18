@@ -10,7 +10,7 @@
   }
   try {
     if (args[0].equals("--check")) {
-      RuleCoverage checker=new RuleCoverage(Language.ENGLISH);
+      RuleCoverage checker=new RuleCoverage(new English());
       String inFile=args[1];
       checker.evaluateRules(inFile);
       System.exit(1);

@@ -1,5 +1,5 @@
 {
-  language=Language.ENGLISH;
+  language=new English();
   tool=new JLanguageTool(language);
   tool.activateDefaultPatternRules();
   tool.disableRule("UPPERCASE_SENTENCE_START");
