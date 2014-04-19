@@ -1,0 +1,8 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: " + RealWordCorpusEvaluator.class.getSimpleName() + " <corpusDirectory>");
+    System.exit(1);
+  }
+  RealWordCorpusEvaluator evaluator=new RealWordCorpusEvaluator();
+  evaluator.run(new File(args[0]));
+}

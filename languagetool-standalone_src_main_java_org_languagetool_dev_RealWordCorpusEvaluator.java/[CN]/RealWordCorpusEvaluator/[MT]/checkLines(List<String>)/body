@@ -1,0 +1,23 @@
+{
+  for (  String line : lines) {
+    if (!line.contains("<ERR ")) {
+      System.out.println("No error markup found, ignoring: " + line);
+      continue;
+    }
+    ErrorSentence sentence=getIncorrectSentence(line);
+    List<RuleMatch> matches=langTool.check(sentence.annotatedText);
+    sentenceCount++;
+    System.out.println(sentence.markupText + " => " + matches.size());
+    boolean hasGoodMatch=false;
+    for (    RuleMatch match : matches) {
+      if (sentence.hasErrorCoveredByMatch(match)) {
+        hasGoodMatch=true;
+        System.out.println("    [+] " + match + ": "+ match.getSuggestedReplacements());
+      }
+ else {
+        System.out.println("    [ ] " + match + ": "+ match.getSuggestedReplacements());
+      }
+    }
+    goodMatches+=hasGoodMatch ? 1 : 0;
+  }
+}

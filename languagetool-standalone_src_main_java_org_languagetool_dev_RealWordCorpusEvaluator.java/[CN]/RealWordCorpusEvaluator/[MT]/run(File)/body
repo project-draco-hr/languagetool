@@ -1,0 +1,13 @@
+{
+  File[] files=dir.listFiles();
+  for (  File file : files) {
+    if (!file.getName().endsWith(".txt")) {
+      System.out.println("Ignoring " + file + ", does not match *.txt");
+      continue;
+    }
+    try (FileInputStream fis=new FileInputStream(file)){
+      checkLines(IOUtils.readLines(fis));
+    }
+   }
+  printResults();
+}

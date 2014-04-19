@@ -1,0 +1,13 @@
+{
+  String normalized=line.replaceAll(NORMALIZE_REGEX," <ERR targ=$1>$2</ERR> ").replaceAll("\\s+"," ").trim();
+  List<Error> errors=new ArrayList<>();
+  int startPos=0;
+  while (normalized.indexOf("<ERR targ=",startPos) != -1) {
+    int startTagStart=normalized.indexOf("<ERR targ=",startPos);
+    int startTagEnd=normalized.indexOf(">",startPos + startTagStart);
+    int endTagStart=normalized.indexOf("</ERR>",startPos + startTagStart);
+    errors.add(new Error(startTagEnd + 1,endTagStart));
+    startPos=startTagStart + 1;
+  }
+  return new ErrorSentence(normalized,makeAnnotatedText(normalized),errors);
+}

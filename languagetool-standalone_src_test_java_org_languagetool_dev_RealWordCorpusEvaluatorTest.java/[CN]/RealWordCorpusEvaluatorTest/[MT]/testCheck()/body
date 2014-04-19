@@ -1,0 +1,7 @@
+{
+  RealWordCorpusEvaluator evaluator=new RealWordCorpusEvaluator();
+  URL errors=RealWordCorpusEvaluatorTest.class.getResource("/org/languagetool/dev/");
+  evaluator.run(new File(errors.getFile()));
+  assertThat(evaluator.getSentencesChecked(),is(2));
+  assertThat(evaluator.getRealErrorsFound(),is(1));
+}

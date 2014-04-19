@@ -1,0 +1,4 @@
+{
+  langTool=new JLanguageTool(new BritishEnglish());
+  langTool.activateDefaultPatternRules();
+}

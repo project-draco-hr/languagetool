@@ -1,0 +1,5 @@
+{
+  this.markupText=markupText;
+  this.annotatedText=annotatedText;
+  this.errors=errors;
+}

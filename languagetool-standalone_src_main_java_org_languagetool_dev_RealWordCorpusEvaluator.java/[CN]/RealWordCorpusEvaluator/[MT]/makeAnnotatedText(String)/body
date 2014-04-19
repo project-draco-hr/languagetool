@@ -1,0 +1,25 @@
+{
+  AnnotatedTextBuilder builder=new AnnotatedTextBuilder();
+  StringTokenizer tokenizer=new StringTokenizer(pseudoXml,"<>",true);
+  boolean inMarkup=false;
+  while (tokenizer.hasMoreTokens()) {
+    String part=tokenizer.nextToken();
+    if (part.startsWith("<")) {
+      builder.addMarkup(part);
+      inMarkup=true;
+    }
+ else     if (part.startsWith(">")) {
+      inMarkup=false;
+      builder.addMarkup(part);
+    }
+ else {
+      if (inMarkup) {
+        builder.addMarkup(part);
+      }
+ else {
+        builder.addText(part);
+      }
+    }
+  }
+  return builder.build();
+}
