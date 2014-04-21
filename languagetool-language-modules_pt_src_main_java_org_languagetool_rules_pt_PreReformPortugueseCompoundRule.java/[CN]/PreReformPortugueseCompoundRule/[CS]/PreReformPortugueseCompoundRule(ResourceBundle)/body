@@ -1,0 +1,4 @@
+{
+  super(messages,FILE_NAME,"Esta palavra ?? hifenizada.","Esta palavra ?? escrita em conjunto.","Esta palavra ?? uma palavra ou com um h??fen.");
+  super.setShort("Juntos grafias de palavras");
+}
