@@ -14,7 +14,7 @@
   assertThat("Expected 3 matches, got: " + matches,matches.size(),is(3));
   int oldPos=0;
   for (  RuleMatch match : matches) {
-    SuggestionReplacer replacer=new SuggestionReplacer(mapping,origMarkup,"<s>","</s>");
+    SuggestionReplacer replacer=new SuggestionReplacer(mapping,origMarkup,new ErrorMarker("<s>","</s>"));
     List<RuleMatchApplication> ruleMatchApplications=replacer.applySuggestionsToOriginalText(match);
     assertThat(ruleMatchApplications.size(),is(1));
     RuleMatchApplication ruleMatchApplication=ruleMatchApplications.get(0);
