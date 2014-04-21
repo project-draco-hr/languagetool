@@ -1,5 +1,4 @@
 {
-  SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
   String markup="Hier <ref name=isfdb>\n" + "Retrieved 2012-07-31.</ref> steht,, das Haus.";
   applySuggestion(langTool,filter,markup,markup.replace("steht,, das Haus.","<s>steht,</s> das Haus."));
 }
