@@ -1,4 +1,5 @@
 {
   super(messages,language);
+  setCheckCompound(true);
   addExamplePair(Example.wrong("This <marker>sentenc</marker> contains a spelling mistake."),Example.fixed("This <marker>sentence</marker> contains a spelling mistake."));
 }
