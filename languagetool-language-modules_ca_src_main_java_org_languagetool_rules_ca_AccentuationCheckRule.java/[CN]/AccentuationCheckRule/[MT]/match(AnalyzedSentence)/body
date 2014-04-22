@@ -33,6 +33,12 @@
     if (relevantWords2.containsKey(token)) {
       isRelevantWord2=true;
     }
+    if (!isRelevantWord && !isRelevantWord2) {
+      continue;
+    }
+    if (matchPostagRegexp(tokens[i - 1],PRONOM_FEBLE) && !prevToken.startsWith("'") && !prevToken.startsWith("-")) {
+      continue;
+    }
     String replacement=null;
     final Matcher mPreposicioDE=PREPOSICIO_DE.matcher(nextToken);
     final Matcher mExcepcionsDE=EXCEPCIONS_DARRERE_DE.matcher(nextNextToken);
