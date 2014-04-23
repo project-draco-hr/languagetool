@@ -1,6 +1,3 @@
 {
-  if (serverCheckbox == null) {
-    return false;
-  }
-  return serverCheckbox.isSelected();
+  return config.getRunServer();
 }

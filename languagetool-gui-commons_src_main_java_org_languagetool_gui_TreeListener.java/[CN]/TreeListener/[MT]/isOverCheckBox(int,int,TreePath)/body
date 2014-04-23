@@ -1,0 +1,7 @@
+{
+  int offset=tree.getPathBounds(path).x + checkBoxDimension.width;
+  if (x > offset) {
+    return false;
+  }
+  return true;
+}

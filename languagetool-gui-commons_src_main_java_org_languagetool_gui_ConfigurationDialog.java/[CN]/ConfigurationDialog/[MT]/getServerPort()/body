@@ -1,6 +1,3 @@
 {
-  if (serverPortField == null) {
-    return Configuration.DEFAULT_SERVER_PORT;
-  }
-  return Integer.parseInt(serverPortField.getText());
+  return config.getServerPort();
 }

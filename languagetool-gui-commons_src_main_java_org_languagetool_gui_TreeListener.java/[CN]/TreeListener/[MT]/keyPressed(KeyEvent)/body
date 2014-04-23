@@ -1,0 +1,10 @@
+{
+  if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+    TreePath[] paths=tree.getSelectionPaths();
+    if (paths != null) {
+      for (      TreePath path : paths) {
+        handle(path);
+      }
+    }
+  }
+}

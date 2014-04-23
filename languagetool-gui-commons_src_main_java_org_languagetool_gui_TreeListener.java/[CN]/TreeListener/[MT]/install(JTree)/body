@@ -1,0 +1,5 @@
+{
+  TreeListener listener=new TreeListener(tree);
+  tree.addMouseListener(listener);
+  tree.addKeyListener(listener);
+}

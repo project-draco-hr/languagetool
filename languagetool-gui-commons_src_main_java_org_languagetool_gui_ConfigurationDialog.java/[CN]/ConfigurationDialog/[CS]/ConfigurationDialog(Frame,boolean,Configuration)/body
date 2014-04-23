@@ -1,0 +1,7 @@
+{
+  this.owner=owner;
+  this.insideOOo=insideOOo;
+  this.original=config;
+  this.config=original.copy(original);
+  messages=JLanguageTool.getMessageBundle();
+}

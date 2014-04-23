@@ -4,13 +4,6 @@
   final ConfigurationDialog configDialog=ltSupport.getCurrentConfigDialog();
   configDialog.show(rules);
   Configuration config=ltSupport.getConfig();
-  config.setDisabledRuleIds(configDialog.getDisabledRuleIds());
-  config.setEnabledRuleIds(configDialog.getEnabledRuleIds());
-  config.setDisabledCategoryNames(configDialog.getDisabledCategoryNames());
-  config.setMotherTongue(configDialog.getMotherTongue());
-  config.setRunServer(configDialog.getRunServer());
-  config.setUseGUIConfig(configDialog.getUseGUIConfig());
-  config.setServerPort(configDialog.getServerPort());
   try {
     config.saveConfiguration(langTool.getLanguage());
   }

@@ -1,0 +1,23 @@
+{
+  boolean ret=true;
+  if (config.getDisabledRuleIds().contains(rule.getId())) {
+    ret=false;
+  }
+  if (config.getDisabledCategoryNames().contains(rule.getCategory().getName())) {
+    ret=false;
+  }
+  if (rule.isDefaultOff() && !config.getEnabledRuleIds().contains(rule.getId())) {
+    ret=false;
+  }
+  if (rule.isDefaultOff()) {
+    if (rule.getCategory().isDefaultOff()) {
+      config.getDisabledCategoryNames().add(rule.getCategory().getName());
+    }
+  }
+ else {
+    if (rule.getCategory().isDefaultOff()) {
+      config.getDisabledCategoryNames().remove(rule.getCategory().getName());
+    }
+  }
+  return ret;
+}

@@ -1,0 +1,24 @@
+{
+  Component component=renderer.getTreeCellRendererComponent(tree,value,selected,expanded,leaf,row,hasFocus);
+  if (value instanceof CategoryNode) {
+    if (defaultComponent != null) {
+      remove(defaultComponent);
+    }
+    defaultComponent=component;
+    add(component,BorderLayout.CENTER);
+    CategoryNode node=(CategoryNode)value;
+    checkBox.setSelected(node.isEnabled());
+    return this;
+  }
+  if (value instanceof RuleNode) {
+    if (defaultComponent != null) {
+      remove(defaultComponent);
+    }
+    defaultComponent=component;
+    add(component,BorderLayout.CENTER);
+    RuleNode node=(RuleNode)value;
+    checkBox.setSelected(node.isEnabled());
+    return this;
+  }
+  return component;
+}

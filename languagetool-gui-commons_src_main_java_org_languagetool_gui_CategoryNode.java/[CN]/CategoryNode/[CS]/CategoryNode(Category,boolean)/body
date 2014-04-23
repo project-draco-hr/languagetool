@@ -1,0 +1,5 @@
+{
+  super(category);
+  this.category=category;
+  this.enabled=enabled;
+}

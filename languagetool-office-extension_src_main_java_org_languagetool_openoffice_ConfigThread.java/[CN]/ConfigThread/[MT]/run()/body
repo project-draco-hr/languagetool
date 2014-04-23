@@ -1,13 +1,9 @@
 {
   try {
-    final JLanguageTool langTool=new JLanguageTool(docLanguage,cfgDialog.getMotherTongue());
+    final JLanguageTool langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
     langTool.activateDefaultPatternRules();
     langTool.activateDefaultFalseFriendRules();
     cfgDialog.show(langTool.getAllRules());
-    config.setDisabledRuleIds(cfgDialog.getDisabledRuleIds());
-    config.setEnabledRuleIds(cfgDialog.getEnabledRuleIds());
-    config.setDisabledCategoryNames(cfgDialog.getDisabledCategoryNames());
-    config.setMotherTongue(cfgDialog.getMotherTongue());
     config.saveConfiguration(docLanguage);
     if (mainThread != null) {
       mainThread.resetDocument();

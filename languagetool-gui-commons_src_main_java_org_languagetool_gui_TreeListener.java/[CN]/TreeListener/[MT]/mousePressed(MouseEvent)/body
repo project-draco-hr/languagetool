@@ -1,0 +1,10 @@
+{
+  TreePath path=tree.getPathForLocation(e.getX(),e.getY());
+  if ((path != null) && (path.getPathCount() > 0)) {
+    if (isValidNode(path.getLastPathComponent())) {
+      if (isOverCheckBox(e.getX(),e.getY(),path)) {
+        handle(path);
+      }
+    }
+  }
+}

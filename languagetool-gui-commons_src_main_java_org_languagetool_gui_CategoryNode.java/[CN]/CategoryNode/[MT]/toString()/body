@@ -1,0 +1,11 @@
+{
+  int childs=this.getChildCount();
+  int selected=0;
+  for (int i=0; i < childs; i++) {
+    RuleNode child=(RuleNode)this.getChildAt(i);
+    if (child.isEnabled()) {
+      selected++;
+    }
+  }
+  return String.format("%s (%d/%d)",category.getName(),selected,childs);
+}

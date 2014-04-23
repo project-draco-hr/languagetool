@@ -1,0 +1,28 @@
+{
+  if ((path != null) && (path.getPathCount() > 0)) {
+    if (path.getLastPathComponent() instanceof CategoryNode) {
+      DefaultTreeModel model=(DefaultTreeModel)tree.getModel();
+      CategoryNode node=(CategoryNode)path.getLastPathComponent();
+      node.setEnabled(!node.isEnabled());
+      model.nodeChanged(node);
+      for (int i=0; i < node.getChildCount(); i++) {
+        RuleNode child=(RuleNode)node.getChildAt(i);
+        if (child.isEnabled() != node.isEnabled()) {
+          child.setEnabled(node.isEnabled());
+          model.nodeChanged(child);
+        }
+      }
+    }
+    if (path.getLastPathComponent() instanceof RuleNode) {
+      DefaultTreeModel model=(DefaultTreeModel)tree.getModel();
+      RuleNode node=(RuleNode)path.getLastPathComponent();
+      node.setEnabled(!node.isEnabled());
+      model.nodeChanged(node);
+      if (node.isEnabled()) {
+        CategoryNode parent=(CategoryNode)node.getParent();
+        parent.setEnabled(true);
+      }
+      model.nodeChanged(node.getParent());
+    }
+  }
+}

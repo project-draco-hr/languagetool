@@ -1,0 +1,20 @@
+{
+  this.configFile=configuration.configFile;
+  this.language=configuration.language;
+  this.motherTongue=configuration.motherTongue;
+  this.runServer=configuration.runServer;
+  this.autoDetect=configuration.autoDetect;
+  this.guiConfig=configuration.guiConfig;
+  this.serverPort=configuration.serverPort;
+  this.externalRuleDirectory=configuration.externalRuleDirectory;
+  this.disabledRuleIds.clear();
+  this.disabledRuleIds.addAll(configuration.disabledRuleIds);
+  this.enabledRuleIds.clear();
+  this.enabledRuleIds.addAll(configuration.enabledRuleIds);
+  this.disabledCategoryNames.clear();
+  this.disabledCategoryNames.addAll(configuration.disabledCategoryNames);
+  this.configForOtherLangs.clear();
+  for (  String key : configuration.configForOtherLangs.keySet()) {
+    this.configForOtherLangs.put(key,configuration.configForOtherLangs.get(key));
+  }
+}

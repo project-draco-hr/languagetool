@@ -1,6 +1,5 @@
 {
   try {
-    final ConfigurationDialog configDialog=ltSupport.getCurrentConfigDialog();
     final Configuration config=ltSupport.getConfig();
     if (e.getStateChange() == ItemEvent.SELECTED) {
       config.setRunServer(true);
@@ -8,16 +7,10 @@
       enableHttpServerItem.setState(serverStarted);
       config.setRunServer(serverStarted);
       config.saveConfiguration(ltSupport.getLanguageTool().getLanguage());
-      if (configDialog != null) {
-        configDialog.setRunServer(true);
-      }
     }
  else     if (e.getStateChange() == ItemEvent.DESELECTED) {
       config.setRunServer(false);
       config.saveConfiguration(ltSupport.getLanguageTool().getLanguage());
-      if (configDialog != null) {
-        configDialog.setRunServer(false);
-      }
       stopServer();
     }
   }

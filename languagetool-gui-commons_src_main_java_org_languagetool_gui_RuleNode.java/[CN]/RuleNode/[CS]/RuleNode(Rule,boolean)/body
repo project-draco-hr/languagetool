@@ -1,0 +1,5 @@
+{
+  super(rule);
+  this.rule=rule;
+  this.enabled=enabled;
+}

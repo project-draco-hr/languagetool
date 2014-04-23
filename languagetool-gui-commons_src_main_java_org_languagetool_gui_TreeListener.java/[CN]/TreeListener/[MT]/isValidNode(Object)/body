@@ -1,0 +1,3 @@
+{
+  return ((c instanceof CategoryNode) || (c instanceof RuleNode));
+}

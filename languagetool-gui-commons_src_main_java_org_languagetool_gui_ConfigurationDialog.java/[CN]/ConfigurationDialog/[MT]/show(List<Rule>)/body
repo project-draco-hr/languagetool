@@ -1,10 +1,7 @@
 {
+  if (original != null)   config.restoreState(original);
   dialog=new JDialog(owner,true);
   dialog.setTitle(messages.getString("guiConfigWindowTitle"));
-  checkBoxes.clear();
-  checkBoxesRuleIds.clear();
-  categoryCheckBoxes.clear();
-  checkBoxesCategoryNames.clear();
   Collections.sort(rules,new CategoryComparator());
   final KeyStroke stroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
   final ActionListener actionListener=new ActionListener(){
@@ -20,73 +17,80 @@
   GridBagConstraints cons=new GridBagConstraints();
   cons.anchor=GridBagConstraints.NORTHWEST;
   cons.gridx=0;
-  int row=0;
-  String prevID=null;
-  String prevCategory=null;
-  for (  final Rule rule : rules) {
-    if (prevID == null || !rule.getId().equals(prevID)) {
-      cons.gridy=row;
-      final JCheckBox checkBox=new JCheckBox(rule.getDescription());
-      if (inactiveRuleIds != null && (inactiveRuleIds.contains(rule.getId()) || inactiveCategoryNames.contains(rule.getCategory().getName()))) {
-        checkBox.setSelected(false);
-      }
+  cons.weightx=1.0;
+  cons.weighty=1.0;
+  cons.fill=GridBagConstraints.BOTH;
+  DefaultMutableTreeNode rootNode=createTree(rules);
+  DefaultTreeModel treeModel=new DefaultTreeModel(rootNode);
+  treeModel.addTreeModelListener(new TreeModelListener(){
+    @Override public void treeNodesChanged(    TreeModelEvent e){
+      DefaultMutableTreeNode node=(DefaultMutableTreeNode)e.getTreePath().getLastPathComponent();
+      int index=e.getChildIndices()[0];
+      node=(DefaultMutableTreeNode)(node.getChildAt(index));
+      if (node instanceof RuleNode) {
+        RuleNode o=(RuleNode)node;
+        if (o.getRule().isDefaultOff()) {
+          if (o.isEnabled()) {
+            config.getEnabledRuleIds().add(o.getRule().getId());
+          }
  else {
-        checkBox.setSelected(true);
-      }
-      if (rule.isDefaultOff()) {
-        if (enabledRuleIds.contains(rule.getId())) {
-          checkBox.setSelected(true);
-        }
- else {
-          checkBox.setSelected(false);
-        }
-      }
-      if (rule.isDefaultOff()) {
-        defaultOffRules.add(rule.getId());
-        if (rule.getCategory().isDefaultOff()) {
-          inactiveCategoryNames.add(rule.getCategory().getName());
-        }
-      }
- else {
-        if (rule.getCategory().isDefaultOff()) {
-          inactiveCategoryNames.remove(rule.getCategory().getName());
-        }
-      }
-      final ActionListener ruleCheckBoxListener=makeRuleCheckboxListener();
-      checkBox.addActionListener(ruleCheckBoxListener);
-      checkBoxes.add(checkBox);
-      checkBoxesRuleIds.add(rule.getId());
-      checkBoxesCategories.add(rule.getCategory().getName());
-      final boolean showHeadline=rule.getCategory() != null && !rule.getCategory().getName().equals(prevCategory);
-      if ((showHeadline || prevCategory == null) && rule.getCategory() != null) {
-        final JCheckBox categoryCheckBox=new JCheckBox(rule.getCategory().getName());
-        if (inactiveCategoryNames != null && inactiveCategoryNames.contains(rule.getCategory().getName())) {
-          categoryCheckBox.setSelected(false);
+            config.getEnabledRuleIds().remove(o.getRule().getId());
+          }
         }
  else {
-          categoryCheckBox.setSelected(true);
+          if (o.isEnabled()) {
+            config.getDisabledRuleIds().remove(o.getRule().getId());
+          }
+ else {
+            config.getDisabledRuleIds().add(o.getRule().getId());
+          }
         }
-        final ActionListener categoryCheckBoxListener=makeCategoryCheckboxListener();
-        categoryCheckBox.addActionListener(categoryCheckBoxListener);
-        categoryCheckBoxes.add(categoryCheckBox);
-        checkBoxesCategoryNames.add(rule.getCategory().getName());
-        checkBoxPanel.add(categoryCheckBox,cons);
-        prevCategory=rule.getCategory().getName();
-        cons.gridy++;
-        row++;
       }
-      checkBox.setMargin(new Insets(0,20,0,0));
-      checkBoxPanel.add(checkBox,cons);
-      row++;
+      if (node instanceof CategoryNode) {
+        CategoryNode o=(CategoryNode)node;
+        if (o.isEnabled()) {
+          config.getDisabledCategoryNames().remove(o.getCategory().getName());
+        }
+ else {
+          config.getDisabledCategoryNames().add(o.getCategory().getName());
+        }
+      }
     }
-    prevID=rule.getId();
+    @Override public void treeNodesInserted(    TreeModelEvent e){
+    }
+    @Override public void treeNodesRemoved(    TreeModelEvent e){
+    }
+    @Override public void treeStructureChanged(    TreeModelEvent e){
+    }
   }
+);
+  configTree=new JTree(treeModel);
+  configTree.setRootVisible(false);
+  configTree.setEditable(false);
+  configTree.setCellRenderer(new CheckBoxTreeCellRenderer());
+  TreeListener.install(configTree);
+  checkBoxPanel.add(configTree,cons);
   final JPanel motherTonguePanel=new JPanel();
   motherTonguePanel.add(new JLabel(messages.getString("guiMotherTongue")),cons);
   motherTongueBox=new JComboBox(getPossibleMotherTongues());
-  if (motherTongue != null) {
-    motherTongueBox.setSelectedItem(motherTongue.getTranslatedName(messages));
+  if (config.getMotherTongue() != null) {
+    motherTongueBox.setSelectedItem(config.getMotherTongue().getTranslatedName(messages));
   }
+  motherTongueBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      if (e.getStateChange() == ItemEvent.SELECTED) {
+        Language motherTongue;
+        if (motherTongueBox.getSelectedItem() instanceof String) {
+          motherTongue=getLanguageForLocalizedName(motherTongueBox.getSelectedItem().toString());
+        }
+ else {
+          motherTongue=(Language)motherTongueBox.getSelectedItem();
+        }
+        config.setMotherTongue(motherTongue);
+      }
+    }
+  }
+);
   motherTonguePanel.add(motherTongueBox,cons);
   final JPanel portPanel=new JPanel();
   portPanel.setLayout(new GridBagLayout());
@@ -100,13 +104,8 @@
   if (!insideOOo) {
     serverCheckbox=new JCheckBox(Tools.getLabel(messages.getString("guiRunOnPort")));
     serverCheckbox.setMnemonic(Tools.getMnemonic(messages.getString("guiRunOnPort")));
-    serverCheckbox.setSelected(serverMode);
+    serverCheckbox.setSelected(config.getRunServer());
     portPanel.add(serverCheckbox,cons);
-    serverPortField=new JTextField(Integer.toString(serverPort));
-    serverPortField.setEnabled(serverCheckbox.isSelected());
-    serverSettingsCheckbox=new JCheckBox(Tools.getLabel(messages.getString("useGUIConfig")));
-    serverPortField.setMinimumSize(new Dimension(100,25));
-    cons.gridx=1;
     serverCheckbox.addActionListener(new ActionListener(){
       @Override public void actionPerformed(      @SuppressWarnings("unused") ActionEvent e){
         serverPortField.setEnabled(serverCheckbox.isSelected());
@@ -114,12 +113,53 @@
       }
     }
 );
+    serverCheckbox.addItemListener(new ItemListener(){
+      @Override public void itemStateChanged(      ItemEvent e){
+        config.setRunServer(serverCheckbox.isSelected());
+      }
+    }
+);
+    serverPortField=new JTextField(Integer.toString(config.getServerPort()));
+    serverPortField.setEnabled(serverCheckbox.isSelected());
+    serverSettingsCheckbox=new JCheckBox(Tools.getLabel(messages.getString("useGUIConfig")));
+    serverPortField.setMinimumSize(new Dimension(100,25));
+    cons.gridx=1;
     portPanel.add(serverPortField,cons);
+    serverPortField.getDocument().addDocumentListener(new DocumentListener(){
+      @Override public void insertUpdate(      DocumentEvent e){
+        changedUpdate(e);
+      }
+      @Override public void removeUpdate(      DocumentEvent e){
+        changedUpdate(e);
+      }
+      @Override public void changedUpdate(      DocumentEvent e){
+        try {
+          int serverPort=Integer.parseInt(serverPortField.getText());
+          if (serverPort > -1 && serverPort < 65536) {
+            serverPortField.setForeground(null);
+            config.setServerPort(serverPort);
+          }
+ else {
+            serverPortField.setForeground(Color.RED);
+          }
+        }
+ catch (        NumberFormatException ex) {
+          serverPortField.setForeground(Color.RED);
+        }
+      }
+    }
+);
     cons.gridx=0;
     cons.gridy=10;
     serverSettingsCheckbox.setMnemonic(Tools.getMnemonic(messages.getString("useGUIConfig")));
-    serverSettingsCheckbox.setSelected(useGUIConfig);
-    serverSettingsCheckbox.setEnabled(serverMode);
+    serverSettingsCheckbox.setSelected(config.getUseGUIConfig());
+    serverSettingsCheckbox.setEnabled(config.getRunServer());
+    serverSettingsCheckbox.addItemListener(new ItemListener(){
+      @Override public void itemStateChanged(      ItemEvent e){
+        config.setUseGUIConfig(serverSettingsCheckbox.isSelected());
+      }
+    }
+);
     portPanel.add(serverSettingsCheckbox,cons);
   }
   final JPanel buttonPanel=new JPanel();
