@@ -1,0 +1,6 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + WikipediaSentenceExtractor.class.getSimpleName() + " <langCode> <wikipediaXmlDump>");
+    System.exit(1);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return sentence.trim().length() == 0 || Character.isLowerCase(sentence.trim().charAt(0));
+}

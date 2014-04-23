@@ -1,0 +1,17 @@
+{
+  try (FileInputStream fis=new FileInputStream(xmlDumpPath)){
+    int sentenceCount=0;
+    WikipediaSentenceSource source=new WikipediaSentenceSource(fis,language);
+    while (source.hasNext()) {
+      String sentence=source.next().getText();
+      if (skipSentence(sentence)) {
+        continue;
+      }
+      System.out.println(sentence);
+      sentenceCount++;
+      if (sentenceCount % 1000 == 0) {
+        System.err.println("Exporting sentence #" + sentenceCount + "...");
+      }
+    }
+  }
+ }
