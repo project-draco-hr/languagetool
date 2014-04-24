@@ -1,4 +1,5 @@
 {
   super(messages,language);
+  setCategory(new Category("Prawdopodobne liter??wki"));
   addExamplePair(Example.wrong("To jest zdanie z <marker>bledem</marker>"),Example.fixed("To jest zdanie z <marker>b????dem</marker>."));
 }

@@ -1,6 +1,7 @@
 {
   super(messages);
   setLocQualityIssueType(ITSIssueType.Misspelling);
+  setCategory(new Category("Prawdopodobne liter??wki"));
   setCheckLemmas(false);
   addExamplePair(Example.wrong("Uspok??j <marker>sei</marker>."),Example.fixed("Uspok??j <marker>si??</marker>."));
 }
