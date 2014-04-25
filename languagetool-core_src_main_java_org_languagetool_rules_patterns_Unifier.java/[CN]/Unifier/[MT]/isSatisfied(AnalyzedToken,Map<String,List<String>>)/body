@@ -5,6 +5,7 @@
   if (uFeatures == null) {
     return false;
   }
+  unificationFeats=uFeatures;
   boolean unified=true;
   List<String> types;
   if (allFeatsIn) {
@@ -43,9 +44,13 @@
     if (unified) {
       if (tokCnt == 0 || tokSequence.isEmpty()) {
         tokSequence.add(new AnalyzedTokenReadings(aToken,0));
+        List<Map<String,Set<String>>> equivList=new ArrayList<>();
+        equivList.add(equivalencesMatched.get(tokCnt));
+        tokSequenceEquivalences.add(equivList);
       }
  else {
         tokSequence.get(0).addReading(aToken);
+        tokSequenceEquivalences.get(0).add(equivalencesMatched.get(tokCnt));
       }
       tokCnt++;
     }

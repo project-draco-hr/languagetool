@@ -8,4 +8,5 @@
   featuresFound=new ArrayList<>();
   tmpFeaturesFound=new ArrayList<>();
   tokSequence=new ArrayList<>();
+  tokSequenceEquivalences=new ArrayList<>();
 }

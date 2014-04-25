@@ -4,6 +4,7 @@
     for (    final Map.Entry<String,List<String>> feat : uFeatures.entrySet()) {
       if (equivalencesMatched.get(i).containsKey(feat.getKey()) && equivalencesMatched.get(i).get(feat.getKey()).isEmpty()) {
         featUnified=0;
+        tmpFeaturesFound.set(i,false);
       }
  else {
         featUnified++;

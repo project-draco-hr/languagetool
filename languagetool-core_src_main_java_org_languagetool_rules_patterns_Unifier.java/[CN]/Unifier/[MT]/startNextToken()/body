@@ -1,20 +1,22 @@
 {
   featuresFound=new ArrayList<>(tmpFeaturesFound);
   readingsCounter++;
-  for (int i=0; i < tokCnt; i++) {
-    for (    Map.Entry<String,List<String>> feat : equivalenceFeatures.entrySet()) {
-      if (featuresFound.get(i)) {
-        if (equivalencesMatched.get(i).containsKey(feat.getKey())) {
-          if (equivalencesToBeKept.containsKey(feat.getKey())) {
-            equivalencesMatched.get(i).get(feat.getKey()).retainAll(equivalencesToBeKept.get(feat.getKey()));
-          }
+  for (int j=0; j < tokSequence.size(); j++) {
+    for (int i=0; i < tokSequenceEquivalences.get(j).size(); i++) {
+      for (      Map.Entry<String,List<String>> feat : equivalenceFeatures.entrySet()) {
+        if (!UNIFY_IGNORE.equals(feat.getKey())) {
+          if (tokSequenceEquivalences.get(j).get(i).containsKey(feat.getKey())) {
+            if (equivalencesToBeKept.containsKey(feat.getKey())) {
+              tokSequenceEquivalences.get(j).get(i).get(feat.getKey()).retainAll(equivalencesToBeKept.get(feat.getKey()));
+            }
  else {
-            equivalencesMatched.get(i).remove(feat.getKey());
+              tokSequenceEquivalences.get(j).get(i).remove(feat.getKey());
+            }
           }
         }
-      }
  else {
-        equivalencesMatched.get(i).remove(feat.getKey());
+          tokSequenceEquivalences.get(j).get(i).remove(feat.getKey());
+        }
       }
     }
   }

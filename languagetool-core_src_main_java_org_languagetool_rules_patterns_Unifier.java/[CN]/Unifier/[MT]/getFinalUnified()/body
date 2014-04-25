@@ -1,6 +1,6 @@
 {
   if (inUnification) {
-    return unifiedTokens;
+    return getUnifiedTokens();
   }
   return null;
 }

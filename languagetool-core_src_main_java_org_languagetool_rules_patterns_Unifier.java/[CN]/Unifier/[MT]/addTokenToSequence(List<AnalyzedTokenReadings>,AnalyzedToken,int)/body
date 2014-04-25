@@ -1,0 +1,9 @@
+{
+  if (tokenSequence.size() <= pos || tokenSequence.isEmpty()) {
+    AnalyzedTokenReadings tmpATR=new AnalyzedTokenReadings(token,0);
+    tokenSequence.add(tmpATR);
+  }
+ else {
+    tokenSequence.get(pos).addReading(token);
+  }
+}

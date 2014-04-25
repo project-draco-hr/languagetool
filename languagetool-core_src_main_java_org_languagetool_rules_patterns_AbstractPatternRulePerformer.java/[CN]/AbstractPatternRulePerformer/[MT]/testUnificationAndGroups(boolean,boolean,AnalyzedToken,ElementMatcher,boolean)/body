@@ -10,13 +10,13 @@
  else {
         if (elem.isLastInUnification()) {
           thisMatched=unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading,elemIsMatched);
+          if (thisMatched && rule.isGetUnified()) {
+            unifiedTokens=unifier.getFinalUnified();
+          }
         }
  else {
           unifier.isUnified(matchToken,elem.getUniFeatures(),lastReading,elemIsMatched);
         }
-      }
-      if (thisMatched && rule.isGetUnified()) {
-        unifiedTokens=unifier.getFinalUnified();
       }
     }
     if (!elem.isUnified()) {

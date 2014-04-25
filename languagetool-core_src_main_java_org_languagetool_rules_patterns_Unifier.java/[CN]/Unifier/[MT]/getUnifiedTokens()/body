@@ -2,28 +2,27 @@
   if (tokSequence.isEmpty()) {
     return null;
   }
-  if (!firstUnified) {
-    final AnalyzedTokenReadings tmpATR;
-    int first=0;
-    tmpFeaturesFound.add(true);
-    while (!tmpFeaturesFound.get(first)) {
-      first++;
-    }
-    if (first > tmpFeaturesFound.size() - 1) {
-      return null;
-    }
-    tmpFeaturesFound.remove(tmpFeaturesFound.size() - 1);
-    final int numRead=tokSequence.get(0).getReadingsLength();
-    if (numRead > 1 && first < numRead) {
-      tmpATR=new AnalyzedTokenReadings(tokSequence.get(0).getAnalyzedToken(first),0);
-      for (int i=first + 1; i < tokCnt; i++) {
-        if (tmpFeaturesFound.get(i)) {
-          tmpATR.addReading(tokSequence.get(0).getAnalyzedToken(i));
+  List<AnalyzedTokenReadings> uTokens=new ArrayList<>();
+  for (int j=0; j < tokSequence.size(); j++) {
+    for (int i=0; i < tokSequenceEquivalences.get(j).size(); i++) {
+      int featUnified=0;
+      if (tokSequenceEquivalences.get(j).get(i).containsKey(UNIFY_IGNORE)) {
+        addTokenToSequence(uTokens,tokSequence.get(j).getAnalyzedToken(i),j);
+      }
+ else {
+        for (        final Map.Entry<String,List<String>> feat : unificationFeats.entrySet()) {
+          if (tokSequenceEquivalences.get(j).get(i).containsKey(feat.getKey()) && tokSequenceEquivalences.get(j).get(i).get(feat.getKey()).isEmpty()) {
+            featUnified=0;
+          }
+ else {
+            featUnified++;
+          }
+          if (featUnified == unificationFeats.entrySet().size()) {
+            addTokenToSequence(uTokens,tokSequence.get(j).getAnalyzedToken(i),j);
+          }
         }
       }
-      tokSequence.set(0,tmpATR);
     }
-    firstUnified=true;
   }
-  return tokSequence.toArray(new AnalyzedTokenReadings[tokSequence.size()]);
+  return uTokens.toArray(new AnalyzedTokenReadings[uTokens.size()]);
 }

@@ -5,8 +5,8 @@
   featuresFound.clear();
   tmpFeaturesFound.clear();
   tokSequence.clear();
+  tokSequenceEquivalences.clear();
   readingsCounter=1;
-  firstUnified=false;
   uniMatched=false;
   uniAllMatched=false;
   inUnification=false;

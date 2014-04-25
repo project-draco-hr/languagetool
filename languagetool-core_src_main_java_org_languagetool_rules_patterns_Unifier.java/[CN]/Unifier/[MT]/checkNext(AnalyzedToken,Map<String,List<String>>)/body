@@ -2,6 +2,7 @@
   boolean anyFeatUnified=false;
   List<String> types;
   final List<Boolean> tokenFeaturesFound=new ArrayList<>(tmpFeaturesFound);
+  final Map<String,Set<String>> equivalencesMatchedHere=new HashMap<>();
   if (allFeatsIn) {
     for (int i=0; i < tokCnt; i++) {
       boolean allFeatsUnified=true;
@@ -25,6 +26,14 @@
  else {
                 equivalencesToBeKept.get(feat.getKey()).add(typeName);
               }
+              if (!equivalencesMatchedHere.containsKey(feat.getKey())) {
+                final Set<String> typeSet=new HashSet<>();
+                typeSet.add(typeName);
+                equivalencesMatchedHere.put(feat.getKey(),typeSet);
+              }
+ else {
+                equivalencesMatchedHere.get(feat.getKey()).add(typeName);
+              }
             }
           }
         }
@@ -36,10 +45,14 @@
     if (anyFeatUnified) {
       if (tokSequence.size() == readingsCounter) {
         tokSequence.add(new AnalyzedTokenReadings(aToken,0));
+        List<Map<String,Set<String>>> equivList=new ArrayList<>();
+        equivList.add(equivalencesMatchedHere);
+        tokSequenceEquivalences.add(equivList);
       }
  else {
         if (readingsCounter < tokSequence.size()) {
           tokSequence.get(readingsCounter).addReading(aToken);
+          tokSequenceEquivalences.get(readingsCounter).add(equivalencesMatchedHere);
         }
  else {
           anyFeatUnified=false;

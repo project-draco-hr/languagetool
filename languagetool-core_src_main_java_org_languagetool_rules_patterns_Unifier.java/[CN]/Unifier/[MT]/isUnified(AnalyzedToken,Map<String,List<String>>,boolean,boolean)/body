@@ -6,7 +6,6 @@
     uniAllMatched=uniMatched;
     if (lastReading) {
       startNextToken();
-      unifiedTokens=getUnifiedTokens();
       uniMatched=false;
     }
     return uniAllMatched && getFinalUnificationValue(uFeatures);
