@@ -5,6 +5,9 @@
   this.runServer=configuration.runServer;
   this.autoDetect=configuration.autoDetect;
   this.guiConfig=configuration.guiConfig;
+  this.fontName=configuration.fontName;
+  this.fontStyle=configuration.fontStyle;
+  this.fontSize=configuration.fontSize;
   this.serverPort=configuration.serverPort;
   this.externalRuleDirectory=configuration.externalRuleDirectory;
   this.disabledRuleIds.clear();

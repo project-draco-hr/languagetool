@@ -1,0 +1,14 @@
+{
+switch (font.getStyle()) {
+case Font.PLAIN:
+    return fontStylesArray[0];
+case Font.BOLD:
+  return fontStylesArray[1];
+case Font.ITALIC:
+return fontStylesArray[2];
+case Font.BOLD | Font.ITALIC:
+return fontStylesArray[3];
+default :
+return fontStylesArray[0];
+}
+}

@@ -22,6 +22,7 @@
   grammarMenu.add(new TagTextAction());
   grammarMenu.add(new AddRulesAction());
   grammarMenu.add(new OptionsAction());
+  grammarMenu.add(new SelectFontAction());
   helpMenu.add(new AboutAction());
   undoRedo.undoAction.putValue(Action.NAME,getLabel("guiMenuUndo"));
   undoRedo.undoAction.putValue(Action.MNEMONIC_KEY,getMnemonic("guiMenuUndo"));

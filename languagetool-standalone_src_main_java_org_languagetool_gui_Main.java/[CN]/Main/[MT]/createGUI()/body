@@ -154,6 +154,17 @@
 );
   ResourceBundle textLanguageMessageBundle=JLanguageTool.getMessageBundle(ltSupport.getLanguageTool().getLanguage());
   textArea.setText(textLanguageMessageBundle.getString("guiDemoText"));
+  Configuration config=ltSupport.getConfig();
+  if (config.getFontName() != null || config.getFontStyle() != Configuration.FONT_STYLE_INVALID || config.getFontSize() != Configuration.FONT_SIZE_INVALID) {
+    String fontName=config.getFontName();
+    if (fontName == null)     fontName=textArea.getFont().getFamily();
+    int fontSize=config.getFontSize();
+    if (fontSize == Configuration.FONT_SIZE_INVALID) {
+      fontSize=textArea.getFont().getSize();
+    }
+    Font font=new Font(fontName,config.getFontStyle(),fontSize);
+    textArea.setFont(font);
+  }
   frame.pack();
   frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
   frame.setLocationByPlatform(true);

@@ -1,0 +1,21 @@
+{
+  Configuration config=ltSupport.getConfig();
+  if (fontChooserDialog == null) {
+    fontChooserDialog=new FontChooser(frame,true);
+    Tools.centerDialog(fontChooserDialog);
+  }
+  fontChooserDialog.setSelectedFont(this.textArea.getFont());
+  fontChooserDialog.setVisible(true);
+  if (fontChooserDialog.getSelectedFont() != null) {
+    this.textArea.setFont(fontChooserDialog.getSelectedFont());
+    config.setFontName(fontChooserDialog.getSelectedFont().getFamily());
+    config.setFontStyle(fontChooserDialog.getSelectedFont().getStyle());
+    config.setFontSize(fontChooserDialog.getSelectedFont().getSize());
+    try {
+      config.saveConfiguration(ltSupport.getLanguageTool().getLanguage());
+    }
+ catch (    IOException e) {
+      Tools.showError(e);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  String fontName=this.fontNameTextField.getText();
+  String styleName=this.fontStyleTextField.getText();
+  Integer fontSize=null;
+  try {
+    fontSize=Integer.parseInt(this.fontSizeTextField.getText());
+  }
+ catch (  NumberFormatException ex) {
+  }
+  int style=Font.PLAIN;
+  if (fontStylesArray[1].equals(styleName)) {
+    style=Font.BOLD;
+  }
+ else   if (fontStylesArray[2].equals(styleName)) {
+    style=Font.ITALIC;
+  }
+ else   if (fontStylesArray[3].equals(styleName)) {
+    style=Font.BOLD | Font.ITALIC;
+  }
+  if (fontName != null && fontSize != null) {
+    Font newFont=new Font(fontName,style,fontSize);
+    this.selectedFont=newFont;
+    previewArea.setFont(newFont);
+  }
+}

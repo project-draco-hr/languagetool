@@ -1,0 +1,5 @@
+{
+  super(owner,modal);
+  messages=JLanguageTool.getMessageBundle();
+  initComponents();
+}

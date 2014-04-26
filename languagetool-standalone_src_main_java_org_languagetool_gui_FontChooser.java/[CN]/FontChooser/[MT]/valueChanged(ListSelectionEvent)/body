@@ -1,0 +1,23 @@
+{
+  if (e.getValueIsAdjusting() == true) {
+    return;
+  }
+  if (e.getSource() == this.fontNameList) {
+    String fontName=this.fontNameList.getSelectedValue();
+    if (fontName != null) {
+      this.fontNameTextField.setText(fontName);
+    }
+  }
+ else   if (e.getSource() == this.fontStyleList) {
+    String fontStyle=this.fontStyleList.getSelectedValue();
+    if (fontStyle != null) {
+      this.fontStyleTextField.setText(fontStyle);
+    }
+  }
+ else   if (e.getSource() == this.fontSizeList) {
+    Integer fontSize=this.fontSizeList.getSelectedValue();
+    if (fontSize != null) {
+      this.fontSizeTextField.setText(fontSize.toString());
+    }
+  }
+}

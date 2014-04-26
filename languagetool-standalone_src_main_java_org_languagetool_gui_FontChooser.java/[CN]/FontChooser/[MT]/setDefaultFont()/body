@@ -1,0 +1,6 @@
+{
+  this.selectedFont=defaultFont;
+  fontNameList.setSelectedValue(defaultFont.getFontName(),true);
+  fontStyleList.setSelectedValue(getStyle(defaultFont),true);
+  fontSizeList.setSelectedValue(defaultFont.getSize(),true);
+}

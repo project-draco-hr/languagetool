@@ -17,6 +17,21 @@
     autoDetect="true".equals(props.get(AUTO_DETECT_CONFIG_KEY));
     guiConfig="true".equals(props.get(USE_GUI_CONFIG_KEY));
     runServer="true".equals(props.get(SERVER_RUN_CONFIG_KEY));
+    fontName=(String)props.get(FONT_NAME_CONFIG_KEY);
+    if (props.get(FONT_STYLE_CONFIG_KEY) != null) {
+      try {
+        fontStyle=Integer.parseInt((String)props.get(FONT_STYLE_CONFIG_KEY));
+      }
+ catch (      NumberFormatException e) {
+      }
+    }
+    if (props.get(FONT_SIZE_CONFIG_KEY) != null) {
+      try {
+        fontSize=Integer.parseInt((String)props.get(FONT_SIZE_CONFIG_KEY));
+      }
+ catch (      NumberFormatException e) {
+      }
+    }
     final String serverPortString=(String)props.get(SERVER_PORT_CONFIG_KEY);
     if (serverPortString != null) {
       serverPort=Integer.parseInt(serverPortString);

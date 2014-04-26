@@ -1,0 +1,12 @@
+{
+  if ("CANCEL".equals(e.getActionCommand())) {
+    this.selectedFont=null;
+    setVisible(false);
+  }
+ else   if ("OK".equals(e.getActionCommand())) {
+    setVisible(false);
+  }
+ else   if ("RESET".equals(e.getActionCommand())) {
+    setDefaultFont();
+  }
+}

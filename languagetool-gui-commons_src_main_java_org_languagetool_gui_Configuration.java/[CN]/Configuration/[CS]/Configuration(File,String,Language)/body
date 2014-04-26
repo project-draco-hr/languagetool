@@ -1,4 +1,5 @@
 {
+  this();
   if (!baseDir.isDirectory()) {
     throw new IllegalArgumentException("Not a directory: " + baseDir);
   }
