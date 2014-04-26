@@ -70,6 +70,40 @@
   configTree.setCellRenderer(new CheckBoxTreeCellRenderer());
   TreeListener.install(configTree);
   checkBoxPanel.add(configTree,cons);
+  final JPanel treeButtonPanel=new JPanel();
+  cons=new GridBagConstraints();
+  cons.gridx=0;
+  cons.gridy=0;
+  final JButton expandAllButton=new JButton(messages.getString("guiExpandAll"));
+  treeButtonPanel.add(expandAllButton,cons);
+  expandAllButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      TreeNode root=(TreeNode)configTree.getModel().getRoot();
+      TreePath parent=new TreePath(root);
+      for (Enumeration categ=root.children(); categ.hasMoreElements(); ) {
+        TreeNode n=(TreeNode)categ.nextElement();
+        TreePath child=parent.pathByAddingChild(n);
+        configTree.expandPath(child);
+      }
+    }
+  }
+);
+  cons.gridx=1;
+  cons.gridy=0;
+  final JButton collapseAllbutton=new JButton(messages.getString("guiCollapseAll"));
+  treeButtonPanel.add(collapseAllbutton,cons);
+  collapseAllbutton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      TreeNode root=(TreeNode)configTree.getModel().getRoot();
+      TreePath parent=new TreePath(root);
+      for (Enumeration categ=root.children(); categ.hasMoreElements(); ) {
+        TreeNode n=(TreeNode)categ.nextElement();
+        TreePath child=parent.pathByAddingChild(n);
+        configTree.collapsePath(child);
+      }
+    }
+  }
+);
   final JPanel motherTonguePanel=new JPanel();
   motherTonguePanel.add(new JLabel(messages.getString("guiMotherTongue")),cons);
   motherTongueBox=new JComboBox(getPossibleMotherTongues());
@@ -189,17 +223,24 @@
   cons.weightx=0.0f;
   cons.weighty=0.0f;
   cons.fill=GridBagConstraints.NONE;
-  cons.anchor=GridBagConstraints.WEST;
-  contentPane.add(motherTonguePanel,cons);
+  cons.anchor=GridBagConstraints.LINE_END;
+  contentPane.add(treeButtonPanel,cons);
   cons.gridx=0;
   cons.gridy=2;
   cons.weightx=0.0f;
   cons.weighty=0.0f;
   cons.fill=GridBagConstraints.NONE;
   cons.anchor=GridBagConstraints.WEST;
-  contentPane.add(portPanel,cons);
+  contentPane.add(motherTonguePanel,cons);
   cons.gridx=0;
   cons.gridy=3;
+  cons.weightx=0.0f;
+  cons.weighty=0.0f;
+  cons.fill=GridBagConstraints.NONE;
+  cons.anchor=GridBagConstraints.WEST;
+  contentPane.add(portPanel,cons);
+  cons.gridx=0;
+  cons.gridy=4;
   cons.weightx=0.0f;
   cons.weighty=0.0f;
   cons.fill=GridBagConstraints.NONE;
