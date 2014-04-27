@@ -1,0 +1,13 @@
+{
+  start=match.getFromPos();
+  end=match.getToPos();
+  String tmp=match.getShortMessage();
+  if (StringUtils.isEmpty(tmp)) {
+    tmp=match.getMessage();
+  }
+  msg=Tools.shortenComment(tmp);
+  desc=match.getMessage();
+  replacement=new ArrayList<>();
+  replacement.addAll(match.getSuggestedReplacements());
+  rule=match.getRule();
+}

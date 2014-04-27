@@ -6,7 +6,7 @@
       continue;
     }
     matches.add(match);
-    createSpan(spans,match);
+    spans.add(new Span(match));
   }
   prepareUpdateHighlights(matches,spans);
 }

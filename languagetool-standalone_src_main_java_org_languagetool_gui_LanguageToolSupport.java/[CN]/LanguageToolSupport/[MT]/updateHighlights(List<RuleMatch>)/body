@@ -1,7 +1,7 @@
 {
   List<Span> spans=new ArrayList<>();
   for (  RuleMatch match : matches) {
-    createSpan(spans,match);
+    spans.add(new Span(match));
   }
   prepareUpdateHighlights(matches,spans);
 }

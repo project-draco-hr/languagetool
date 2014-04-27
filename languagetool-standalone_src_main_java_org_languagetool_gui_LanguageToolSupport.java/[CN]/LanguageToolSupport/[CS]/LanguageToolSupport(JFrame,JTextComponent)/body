@@ -2,5 +2,7 @@
   this.frame=frame;
   this.textComponent=textComponent;
   this.messages=JLanguageTool.getMessageBundle();
+  ruleMatches=new ArrayList<>();
+  documentSpans=new ArrayList<>();
   init();
 }
