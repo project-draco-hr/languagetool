@@ -2,7 +2,7 @@
   boolean anyFeatUnified=false;
   List<String> types;
   final List<Boolean> tokenFeaturesFound=new ArrayList<>(tmpFeaturesFound);
-  final Map<String,Set<String>> equivalencesMatchedHere=new HashMap<>();
+  final Map<String,Set<String>> equivalencesMatchedHere=new ConcurrentHashMap<>();
   if (allFeatsIn) {
     for (int i=0; i < tokCnt; i++) {
       boolean allFeatsUnified=true;

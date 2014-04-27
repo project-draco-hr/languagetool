@@ -1,8 +1,9 @@
 {
   tokSequence.add(analyzedTokenReadings);
   List<Map<String,Set<String>>> tokEquivs=new ArrayList<>(analyzedTokenReadings.getReadingsLength());
-  Map<String,Set<String>> dummy=new HashMap<>();
-  dummy.put(UNIFY_IGNORE,null);
+  Map<String,Set<String>> dummy=new ConcurrentHashMap<>();
+  Set<String> dummySet=new HashSet<>();
+  dummy.put(UNIFY_IGNORE,dummySet);
   for (int i=0; i < analyzedTokenReadings.getReadingsLength(); i++) {
     tokEquivs.add(dummy);
   }

@@ -4,7 +4,7 @@
   equivalencesMatched=new ArrayList<>();
   this.equivalenceTypes=equivalenceTypes;
   this.equivalenceFeatures=equivalenceFeatures;
-  equivalencesToBeKept=new HashMap<>();
+  equivalencesToBeKept=new ConcurrentHashMap<>();
   featuresFound=new ArrayList<>();
   tmpFeaturesFound=new ArrayList<>();
   tokSequence=new ArrayList<>();
