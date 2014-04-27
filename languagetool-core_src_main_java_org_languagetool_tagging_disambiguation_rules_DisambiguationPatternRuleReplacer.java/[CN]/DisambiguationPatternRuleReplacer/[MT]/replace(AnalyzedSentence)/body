@@ -8,7 +8,7 @@
   ElementMatcher elem=null;
   boolean changed=false;
   elementsMatched.clear();
-  for (int j=0; j < patternSize; j++) {
+  for (  ElementMatcher elementMatcher : elementMatchers) {
     elementsMatched.add(false);
   }
   int i=0;
@@ -16,13 +16,10 @@
   while (i < limit + minOccurCorrection && !(rule.isSentStart() && i > 0)) {
     boolean allElementsMatch=false;
     unifiedTokens=null;
-    for (    boolean elementMatched : elementsMatched) {
-      elementMatched=false;
-    }
     int matchingTokens=0;
     int skipShiftTotal=0;
     int firstMatchToken=-1;
-    int lastMatchToken=-1;
+    int lastMatchToken;
     int firstMarkerMatchToken=-1;
     int lastMarkerMatchToken=-1;
     int prevSkipNext=0;

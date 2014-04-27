@@ -5,27 +5,26 @@
   int startPositionCorrection=rule.getStartPositionCorrection();
   int endPositionCorrection=rule.getEndPositionCorrection();
   int matchingTokensWithCorrection=matchingTokens;
-  int w=startPositionCorrection;
-  for (int j=0; j < w; j++) {
-    if (!elementsMatched.get(j)) {
-      startPositionCorrection--;
-    }
+  List<Integer> tokenPositionList=new ArrayList<>();
+  for (  int i : tokenPositions) {
+    tokenPositionList.add(i);
   }
   if (startPositionCorrection > 0) {
-    for (int l=0; l <= startPositionCorrection; l++) {
-      correctedStPos+=tokenPositions[l];
-    }
     correctedStPos--;
-  }
-  for (int j=0; j <= startPositionCorrection && j < elementsMatched.size(); j++) {
-    if (!elementsMatched.get(j)) {
-      correctedStPos-=tokenPositions[j];
+    for (int j=0; j < elementsMatched.size(); j++) {
+      if (!elementsMatched.get(j)) {
+        tokenPositionList.add(j,0);
+      }
     }
-  }
-  int j=0;
-  while (startPositionCorrection + j < elementsMatched.size() && !elementsMatched.get(startPositionCorrection + j)) {
-    correctedStPos+=tokenPositions[j];
-    j++;
+    for (int l=0; l <= startPositionCorrection; l++) {
+      correctedStPos+=tokenPositionList.get(l);
+    }
+    int w=startPositionCorrection;
+    for (int j=0; j <= w; j++) {
+      if (j < elementsMatched.size() && !elementsMatched.get(j)) {
+        startPositionCorrection--;
+      }
+    }
   }
   if (endPositionCorrection < 0) {
     for (int d=startPositionCorrection; d < elementsMatched.size(); d++) {
@@ -35,8 +34,7 @@
     }
   }
   if (lastMatchToken != -1) {
-    int maxPosCorrection=0;
-    maxPosCorrection=Math.max((lastMatchToken + 1 - (firstMatchToken + correctedStPos)) - matchingTokens,0);
+    int maxPosCorrection=Math.max((lastMatchToken + 1 - (firstMatchToken + correctedStPos)) - matchingTokens,0);
     matchingTokensWithCorrection+=maxPosCorrection;
   }
   final int fromPos=sentence.getOriginalPosition(firstMatchToken + correctedStPos);
