@@ -1,5 +1,5 @@
 {
-  if (e.getValueIsAdjusting() == true) {
+  if (e.getValueIsAdjusting()) {
     return;
   }
   if (e.getSource() == this.fontNameList) {
