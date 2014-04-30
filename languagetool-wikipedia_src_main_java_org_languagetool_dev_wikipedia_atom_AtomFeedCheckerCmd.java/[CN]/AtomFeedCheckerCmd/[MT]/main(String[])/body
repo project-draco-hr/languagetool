@@ -45,7 +45,7 @@
         Thread.sleep(sleepTimeMillis);
       }
     }
- catch (    IOException e) {
+ catch (    Exception e) {
       e.printStackTrace();
       System.out.println("Sleeping " + sleepTimeMillis + "ms...");
       Thread.sleep(sleepTimeMillis);
