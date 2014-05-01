@@ -3,12 +3,12 @@
   String dictionaryPath;
   if ("jar".equals(dictURL.getProtocol())) {
     final File tempDir=new File(System.getProperty("java.io.tmpdir"));
-    File temporaryFile=new File(tempDir,dicName + ".dic");
-    JLanguageTool.addTemporaryFile(temporaryFile);
-    fileCopy(JLanguageTool.getDataBroker().getFromResourceDirAsStream(originalPath),temporaryFile);
-    temporaryFile=new File(tempDir,dicName + ".aff");
-    JLanguageTool.addTemporaryFile(temporaryFile);
-    fileCopy(JLanguageTool.getDataBroker().getFromResourceDirAsStream(originalPath.replaceFirst(".dic$",".aff")),temporaryFile);
+    File tempDicFile=new File(tempDir,dicName + ".dic");
+    JLanguageTool.addTemporaryFile(tempDicFile);
+    fileCopy(JLanguageTool.getDataBroker().getFromResourceDirAsStream(originalPath),tempDicFile);
+    File tempAffFile=new File(tempDir,dicName + ".aff");
+    JLanguageTool.addTemporaryFile(tempAffFile);
+    fileCopy(JLanguageTool.getDataBroker().getFromResourceDirAsStream(originalPath.replaceFirst(".dic$",".aff")),tempAffFile);
     dictionaryPath=tempDir.getAbsolutePath() + "/" + dicName;
   }
  else {
