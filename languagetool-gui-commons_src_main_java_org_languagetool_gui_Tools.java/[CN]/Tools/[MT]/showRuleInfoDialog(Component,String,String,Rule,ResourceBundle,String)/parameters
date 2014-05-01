@@ -1,0 +1,6 @@
+Component parent
+String title
+String message
+Rule rule
+ResourceBundle messages
+String lang
