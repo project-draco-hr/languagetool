@@ -1,7 +1,7 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<>();
   final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
-  final String msg="Sentence is over " + maxWords + " words long, consider revising.";
+  final String msg=MessageFormat.format(messages.getString("long_sentence_rule_msg"),maxWords);
   int numWords=0;
   int pos=0;
   if (tokens.length < maxWords + 1) {
