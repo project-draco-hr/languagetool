@@ -49,7 +49,17 @@
         final String[] alt=group.split("\\|");
         final Set<String> partSet=new HashSet<>();
         final Set<String> partSetNoCase=new HashSet<>();
+        boolean hasSingleChar=false;
+        boolean hasSingleDot=false;
         for (        String part : alt) {
+          if (part.length() == 1) {
+            if (part.equals(".")) {
+              hasSingleDot=true;
+            }
+ else {
+              hasSingleChar=true;
+            }
+          }
           final String partNoCase=isCaseSensitive ? part : part.toLowerCase();
           if (partSetNoCase.contains(partNoCase)) {
             if (partSet.contains(part)) {
@@ -61,6 +71,9 @@
           }
           partSetNoCase.add(partNoCase);
           partSet.add(part);
+        }
+        if (hasSingleDot && hasSingleChar) {
+          System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains a single dot (matching any char) "+ "so other single char disjunction are useless within "+ "\""+ stringValue+ "\". Did you forget forget a backslash before the dot?");
         }
       }
     }
