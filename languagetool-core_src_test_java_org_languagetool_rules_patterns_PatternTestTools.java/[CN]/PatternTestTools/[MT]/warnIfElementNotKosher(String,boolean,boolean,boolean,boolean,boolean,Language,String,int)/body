@@ -1,4 +1,9 @@
 {
+  if (!isPos && !isRegularExpression && stringValue.length() > 1) {
+    if (TOKEN_SEPARATOR_PATTERN.matcher(stringValue).find()) {
+      System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ "\""+ stringValue+ "\" that contains token separators, so can't possibly be matched.");
+    }
+  }
   final Pattern regexPattern=(isPos && lang.getShortName().equals("pl")) ? PROBABLE_PATTERN_PL_POS : PROBABLE_PATTERN;
   if (!isRegularExpression && stringValue.length() > 1 && regexPattern.matcher(stringValue).find()) {
     System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ "\""+ stringValue+ "\" that is not marked as regular expression but probably is one.");
