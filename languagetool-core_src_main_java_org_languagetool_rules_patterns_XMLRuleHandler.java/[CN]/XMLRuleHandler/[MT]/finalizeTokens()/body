@@ -1,10 +1,10 @@
 {
   if (!exceptionSet || tokenElement == null) {
-    tokenElement=new Element(StringTools.trimWhitespace(elements.toString()),caseSensitive,regExpression,tokenInflected);
+    tokenElement=new Element(elements.toString(),caseSensitive,regExpression,tokenInflected);
     tokenElement.setNegation(tokenNegated);
   }
  else {
-    tokenElement.setStringElement(StringTools.trimWhitespace(elements.toString()));
+    tokenElement.setStringElement(elements.toString());
   }
   if (skipPos != 0) {
     tokenElement.setSkipNext(skipPos);

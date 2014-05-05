@@ -1,12 +1,12 @@
 {
   inException=false;
   if (!exceptionSet) {
-    tokenElement=new Element(StringTools.trimWhitespace(elements.toString()),caseSensitive,regExpression,tokenInflected);
+    tokenElement=new Element(elements.toString(),caseSensitive,regExpression,tokenInflected);
     exceptionSet=true;
   }
   tokenElement.setNegation(tokenNegated);
   if (!StringTools.isEmpty(exceptions.toString()) || exceptionPosToken != null) {
-    tokenElement.setStringPosException(StringTools.trimWhitespace(exceptions.toString()),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev,exceptionPosToken,exceptionPosRegExp,exceptionPosNegation);
+    tokenElement.setStringPosException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev,exceptionPosToken,exceptionPosRegExp,exceptionPosNegation);
     exceptionPosToken=null;
   }
   if (exceptionSpaceBeforeSet) {
