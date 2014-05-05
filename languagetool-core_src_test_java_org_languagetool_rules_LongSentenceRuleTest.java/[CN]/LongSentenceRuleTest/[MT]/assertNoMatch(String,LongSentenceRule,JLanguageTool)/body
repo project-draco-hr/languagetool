@@ -1,0 +1,3 @@
+{
+  assertThat(rule.match(languageTool.getAnalyzedSentence(input)).length,is(0));
+}
