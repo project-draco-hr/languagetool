@@ -1,0 +1,9 @@
+{
+  if (args.length != 2) {
+    System.err.println("Usage: " + AfterTheDeadlineEvaluator.class.getSimpleName() + " <langCode> <urlPrefix>");
+    System.err.println("  <urlPrefix> After the Deadline instance, e.g. 'http://de.service.afterthedeadline.com/checkDocument?key=test&data='");
+    System.exit(1);
+  }
+  AfterTheDeadlineEvaluator evaluator=new AfterTheDeadlineEvaluator(args[1]);
+  evaluator.run(Language.getLanguageForShortName(args[0]));
+}

@@ -1,0 +1,14 @@
+{
+  String sentence=removeMarker(example.getExample());
+  try {
+    URL url=new URL(urlPrefix + URLEncoder.encode(sentence,"UTF-8"));
+    String result=getContent(url);
+    if (isExpectedErrorFound(example,result)) {
+      return true;
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return false;
+}

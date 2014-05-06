@@ -1,0 +1,10 @@
+{
+  List<Integer> posList=new ArrayList<>();
+  int pos=0;
+  String sentence=removeMarker(example.getExample());
+  while ((pos=sentence.indexOf(searchStr,pos)) != -1) {
+    posList.add(pos);
+    pos++;
+  }
+  return posList;
+}

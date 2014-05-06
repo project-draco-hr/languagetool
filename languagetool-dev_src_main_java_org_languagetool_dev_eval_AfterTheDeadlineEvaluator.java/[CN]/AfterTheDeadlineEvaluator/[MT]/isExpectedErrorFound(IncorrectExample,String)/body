@@ -1,0 +1,29 @@
+{
+  String example=incorrectExample.getExample();
+  Document document=getDocument(resultXml);
+  XPath xPath=XPathFactory.newInstance().newXPath();
+  NodeList errorStrings=(NodeList)xPath.evaluate("//string/text()",document,XPathConstants.NODESET);
+  for (int i=0; i < errorStrings.getLength(); i++) {
+    String errorStr=errorStrings.item(i).getNodeValue();
+    if (errorStr.isEmpty()) {
+      continue;
+    }
+    List<Integer> errorStartPosList=getStartPositions(incorrectExample,errorStr);
+    List<String> mismatches=new ArrayList<>();
+    for (    Integer errorStartPos : errorStartPosList) {
+      int errorEndPos=errorStartPos + errorStr.length();
+      int expectedErrorStartPos=example.indexOf("<marker>");
+      int expectedErrorEndPos=errorStartPos + errorStr.length();
+      if (errorStartPos == expectedErrorStartPos && errorEndPos == expectedErrorEndPos) {
+        return true;
+      }
+ else {
+        mismatches.add("Position mismatch: " + errorStartPos + "-"+ errorEndPos+ " != "+ expectedErrorStartPos+ "-"+ expectedErrorEndPos);
+      }
+    }
+    for (    String mismatch : mismatches) {
+      System.out.println("  " + mismatch);
+    }
+  }
+  return false;
+}
