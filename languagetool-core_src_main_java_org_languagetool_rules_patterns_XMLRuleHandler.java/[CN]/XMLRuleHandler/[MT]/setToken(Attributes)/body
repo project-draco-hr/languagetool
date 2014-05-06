@@ -32,4 +32,11 @@
   if (!inAndGroup && !inOrGroup) {
     tokenCounter++;
   }
+  if (attrs.getValue(CASE_SENSITIVE) != null) {
+    tokenLevelCaseSet=true;
+    tokenLevelCaseSensitive=YES.equals(attrs.getValue(CASE_SENSITIVE));
+  }
+ else {
+    tokenLevelCaseSet=false;
+  }
 }

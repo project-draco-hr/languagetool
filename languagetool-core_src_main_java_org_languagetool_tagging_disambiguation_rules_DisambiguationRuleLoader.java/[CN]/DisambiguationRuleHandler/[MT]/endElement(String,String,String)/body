@@ -54,7 +54,11 @@ tokenCounter++;
 break;
 case TOKEN:
 if (!exceptionSet || tokenElement == null) {
-tokenElement=new Element(elements.toString(),caseSensitive,regExpression,tokenInflected);
+boolean tokenCase=caseSensitive;
+if (tokenLevelCaseSet) {
+tokenCase=tokenLevelCaseSensitive;
+}
+tokenElement=new Element(elements.toString(),tokenCase,regExpression,tokenInflected);
 tokenElement.setNegation(tokenNegated);
 }
  else {

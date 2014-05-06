@@ -16,4 +16,11 @@
     exceptionSpaceBefore=YES.equals(attrs.getValue(SPACEBEFORE));
     exceptionSpaceBeforeSet=!IGNORE.equals(attrs.getValue(SPACEBEFORE));
   }
+  if (attrs.getValue(CASE_SENSITIVE) != null) {
+    exceptionLevelCaseSet=true;
+    exceptionLevelCaseSensitive=YES.equals(attrs.getValue(CASE_SENSITIVE));
+  }
+ else {
+    exceptionLevelCaseSet=false;
+  }
 }
