@@ -1,6 +1,6 @@
 {
   try {
-    filename="." + JLanguageTool.getDataBroker().getResourceDir() + "/"+ language.getShortName()+ "/"+ language.getName().toLowerCase()+ ".dict";
+    filename="" + JLanguageTool.getDataBroker().getResourceDir() + "/"+ language.getShortName()+ "/"+ language.getName().toLowerCase()+ ".dict";
     dictFile=new File(filename);
     dictLookup=(DictionaryLookup)loadDictionary();
     dictIterator=resetDictIterator();

@@ -16,6 +16,6 @@
   for (  String example : examples) {
     sb.append(example + " ");
   }
-  String s=sb.toString().replaceAll("\\ \\.\\ ",".").trim();
+  String s=sb.toString().replaceAll("\\ \\.\\ ","").trim();
   return s;
 }
