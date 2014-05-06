@@ -59,7 +59,11 @@ elementList.clear();
 tokenCounter=0;
 break;
 case ANTIPATTERN:
-final DisambiguationPatternRule rule=new DisambiguationPatternRule(id + "_antipattern:" + antiPatternCounter,"antipattern",language,elementList,null,null,DisambiguationPatternRule.DisambiguatorAction.IMMUNIZE);
+String antiId=id;
+if (inRuleGroup) {
+id=ruleGroupId;
+}
+final DisambiguationPatternRule rule=new DisambiguationPatternRule(antiId + "_antipattern:" + antiPatternCounter,"antipattern",language,elementList,null,null,DisambiguationPatternRule.DisambiguatorAction.IMMUNIZE);
 if (startPos != -1 && endPos != -1) {
 rule.setStartPositionCorrection(startPos);
 rule.setEndPositionCorrection(endPos - tokenCountForMarker);

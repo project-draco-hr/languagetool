@@ -27,21 +27,19 @@ message=new StringBuilder();
 suggestionsOutMsg=new StringBuilder();
 url=new StringBuilder();
 id=attrs.getValue(ID);
+name=attrs.getValue(NAME);
 if (inRuleGroup) {
 subId++;
-}
-if (!(inRuleGroup && defaultOff)) {
-defaultOff="off".equals(attrs.getValue(DEFAULT));
-}
-if (!(inRuleGroup && defaultOn)) {
-defaultOn="on".equals(attrs.getValue(DEFAULT));
-}
-if (inRuleGroup && id == null) {
+if (id == null) {
 id=ruleGroupId;
 }
-name=attrs.getValue(NAME);
-if (inRuleGroup && name == null) {
+if (name == null) {
 name=ruleGroupDescription;
+}
+}
+ else {
+defaultOff="off".equals(attrs.getValue(DEFAULT));
+defaultOn="on".equals(attrs.getValue(DEFAULT));
 }
 correctExamples=new ArrayList<>();
 incorrectExamples=new ArrayList<>();
