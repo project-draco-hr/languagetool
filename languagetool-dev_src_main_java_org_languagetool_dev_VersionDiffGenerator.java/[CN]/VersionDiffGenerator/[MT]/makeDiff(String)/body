@@ -1,7 +1,7 @@
 {
-  final List<Rule> oldRules=new ArrayList<Rule>();
-  final List<Rule> newRules=new ArrayList<Rule>();
-  final List<Rule> modifiedRules=new ArrayList<Rule>();
+  final List<Rule> oldRules=new ArrayList<>();
+  final List<Rule> newRules=new ArrayList<>();
+  final List<Rule> modifiedRules=new ArrayList<>();
   for (int i=0; i < 2; i++) {
     final List<Rule> rules;
     if (i == 0) {
