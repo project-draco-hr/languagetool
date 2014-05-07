@@ -6,7 +6,9 @@
     int startTagStart=normalized.indexOf("<ERR targ=",startPos);
     int startTagEnd=normalized.indexOf(">",startTagStart);
     int endTagStart=normalized.indexOf("</ERR>",startTagStart);
-    errors.add(new Error(startTagEnd + 1,endTagStart));
+    int correctionEnd=normalized.indexOf(">",startTagStart);
+    String correction=normalized.substring(startTagStart + "<ERR targ=".length(),correctionEnd);
+    errors.add(new Error(startTagEnd + 1,endTagStart,correction));
     startPos=startTagStart + 1;
   }
   return new ErrorSentence(normalized,makeAnnotatedText(normalized),errors);

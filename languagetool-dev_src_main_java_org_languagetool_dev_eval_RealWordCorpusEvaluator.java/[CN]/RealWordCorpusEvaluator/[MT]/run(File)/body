@@ -1,4 +1,9 @@
 {
+  System.out.println("Output explanation:");
+  System.out.println("    [  ] = this is not an expected error");
+  System.out.println("    [+ ] = this is an expected error");
+  System.out.println("    [++] = this is an expected error and the first suggestion is correct");
+  System.out.println("");
   File[] files=dir.listFiles();
   if (files == null) {
     throw new RuntimeException("Directory not found: " + dir);

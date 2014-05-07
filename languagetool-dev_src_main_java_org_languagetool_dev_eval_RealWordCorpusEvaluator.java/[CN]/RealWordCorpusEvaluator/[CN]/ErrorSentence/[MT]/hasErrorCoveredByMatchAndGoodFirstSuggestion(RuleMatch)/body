@@ -1,0 +1,14 @@
+{
+  if (hasErrorCoveredByMatch(match)) {
+    List<String> suggestion=match.getSuggestedReplacements();
+    if (suggestion.size() > 0) {
+      String firstSuggestion=suggestion.get(0);
+      for (      Error error : errors) {
+        if (error.correction.equals(firstSuggestion)) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
