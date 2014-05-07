@@ -5,8 +5,8 @@
   final String suggestionsOutMsg=formatMatches(tokens,tokenPositions,firstMatchToken,rule.getSuggestionsOutMsg(),rule.getSuggestionMatchesOutMsg());
   int correctedStPos=0;
   if (rule.startPositionCorrection > 0) {
-    for (int l=0; l <= rule.startPositionCorrection; l++) {
-      correctedStPos+=tokenPositions[l];
+    for (int l=0; l <= Math.min(rule.startPositionCorrection,tokenPositions.size() - 1); l++) {
+      correctedStPos+=tokenPositions.get(l);
     }
     correctedStPos--;
   }

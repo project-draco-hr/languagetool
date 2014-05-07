@@ -1,4 +1,4 @@
-int[] tokenPositions
+List<Integer> tokenPositions
 AnalyzedTokenReadings[] tokens
 int firstMatchToken
 int lastMatchToken

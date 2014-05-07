@@ -67,13 +67,7 @@
       }
     }
     if (allElementsMatch && tokenPositions.size() == patternSize) {
-      final int[] tokenPos=new int[tokens.length + 1 + minOccurSkip];
-      int x=0;
-      for (      Integer j : tokenPositions) {
-        tokenPos[x]=j;
-        x++;
-      }
-      final RuleMatch ruleMatch=createRuleMatch(tokenPos,tokens,firstMatchToken,lastMatchToken,firstMarkerMatchToken,lastMarkerMatchToken);
+      final RuleMatch ruleMatch=createRuleMatch(tokenPositions,tokens,firstMatchToken,lastMatchToken,firstMarkerMatchToken,lastMarkerMatchToken);
       if (ruleMatch != null) {
         ruleMatches.add(ruleMatch);
       }
