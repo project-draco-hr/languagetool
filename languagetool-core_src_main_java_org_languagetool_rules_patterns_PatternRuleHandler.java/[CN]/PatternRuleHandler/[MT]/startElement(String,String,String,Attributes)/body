@@ -37,8 +37,10 @@ if (name == null) {
 name=ruleGroupDescription;
 }
 }
- else {
+if (!(inRuleGroup && defaultOff)) {
 defaultOff="off".equals(attrs.getValue(DEFAULT));
+}
+if (!(inRuleGroup && defaultOn)) {
 defaultOn="on".equals(attrs.getValue(DEFAULT));
 }
 correctExamples=new ArrayList<>();
