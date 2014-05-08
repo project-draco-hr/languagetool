@@ -26,6 +26,9 @@
       if (prevPrevToken.equals("per") && prevToken.equals("molt")) {
         break;
       }
+      if (i < tokens.length - 2 && token.equalsIgnoreCase("esquerra") && (nextToken.equals("-") || nextToken.equals("/")) && tokens[i + 2].getToken().equalsIgnoreCase("dreta")) {
+        break;
+      }
       int maxLevels=4;
       int[] cNt=new int[maxLevels];
       int[] cNMS=new int[maxLevels];
