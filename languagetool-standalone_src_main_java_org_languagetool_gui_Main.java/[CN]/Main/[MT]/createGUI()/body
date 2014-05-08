@@ -98,7 +98,7 @@
   contentPane.add(insidePanel,cons);
   ltSupport=new LanguageToolSupport(this.frame,this.textArea);
   resultAreaHelper=new ResultArea(messages,ltSupport,resultArea);
-  languageBox.selectLanguage(ltSupport.getLanguageTool().getLanguage());
+  languageBox.selectLanguage(ltSupport.getLanguage());
   languageBox.setEnabled(!ltSupport.getConfig().getAutoDetect());
   autoDetectBox.setSelected(ltSupport.getConfig().getAutoDetect());
   languageBox.addItemListener(new ItemListener(){
@@ -147,12 +147,12 @@
         }
       }
  else       if (event.getType() == LanguageToolEvent.Type.LANGUAGE_CHANGED) {
-        languageBox.selectLanguage(ltSupport.getLanguageTool().getLanguage());
+        languageBox.selectLanguage(ltSupport.getLanguage());
       }
     }
   }
 );
-  ResourceBundle textLanguageMessageBundle=JLanguageTool.getMessageBundle(ltSupport.getLanguageTool().getLanguage());
+  ResourceBundle textLanguageMessageBundle=JLanguageTool.getMessageBundle(ltSupport.getLanguage());
   textArea.setText(textLanguageMessageBundle.getString("guiDemoText"));
   Configuration config=ltSupport.getConfig();
   if (config.getFontName() != null || config.getFontStyle() != Configuration.FONT_STYLE_INVALID || config.getFontSize() != Configuration.FONT_SIZE_INVALID) {

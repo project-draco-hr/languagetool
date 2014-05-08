@@ -2,8 +2,8 @@
   stopServer();
   try {
     Configuration config=ltSupport.getConfig();
-    config.setLanguage(ltSupport.getLanguageTool().getLanguage());
-    config.saveConfiguration(ltSupport.getLanguageTool().getLanguage());
+    config.setLanguage(ltSupport.getLanguage());
+    config.saveConfiguration(ltSupport.getLanguage());
   }
  catch (  IOException e) {
     Tools.showError(e);

@@ -3,9 +3,8 @@
     mustDetectLanguage=false;
     if (!this.textComponent.getText().isEmpty()) {
       Language detectedLanguage=autoDetectLanguage(this.textComponent.getText());
-      if (!detectedLanguage.equals(this.currentLanguage)) {
-        this.currentLanguage=detectedLanguage;
-        getCurrentLanguageTool();
+      if (!detectedLanguage.equals(this.languageTool.getLanguage())) {
+        reloadLanguageTool(detectedLanguage);
         if (SwingUtilities.isEventDispatchThread()) {
           fireEvent(LanguageToolEvent.Type.LANGUAGE_CHANGED,caller);
         }

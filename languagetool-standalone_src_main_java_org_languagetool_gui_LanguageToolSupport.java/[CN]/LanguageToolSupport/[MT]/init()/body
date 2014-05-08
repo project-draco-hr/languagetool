@@ -6,8 +6,11 @@
  catch (  IOException ex) {
     throw new RuntimeException("Could not load configuration",ex);
   }
-  currentLanguage=getDefaultLanguage();
-  warmUpChecker();
+  Language defaultLanguage=config.getLanguage();
+  if (defaultLanguage == null) {
+    defaultLanguage=Language.getLanguageForLocale(Locale.getDefault());
+  }
+  reloadLanguageTool(defaultLanguage);
   redPainter=new HighlightPainter(Color.red);
   bluePainter=new HighlightPainter(Color.blue);
   checkExecutor=new ScheduledThreadPoolExecutor(1,new ThreadFactory(){

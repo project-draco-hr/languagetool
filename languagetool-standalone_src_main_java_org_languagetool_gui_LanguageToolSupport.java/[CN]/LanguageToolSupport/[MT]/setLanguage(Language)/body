@@ -1,6 +1,5 @@
 {
-  this.currentLanguage=language;
-  getCurrentLanguageTool();
+  reloadLanguageTool(language);
   if (backgroundCheckEnabled) {
     checkImmediately(null);
   }

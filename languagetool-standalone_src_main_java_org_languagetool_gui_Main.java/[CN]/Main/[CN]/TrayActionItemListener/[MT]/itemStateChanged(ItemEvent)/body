@@ -6,11 +6,11 @@
       final boolean serverStarted=maybeStartServer();
       enableHttpServerItem.setState(serverStarted);
       config.setRunServer(serverStarted);
-      config.saveConfiguration(ltSupport.getLanguageTool().getLanguage());
+      config.saveConfiguration(ltSupport.getLanguage());
     }
  else     if (e.getStateChange() == ItemEvent.DESELECTED) {
       config.setRunServer(false);
-      config.saveConfiguration(ltSupport.getLanguageTool().getLanguage());
+      config.saveConfiguration(ltSupport.getLanguage());
       stopServer();
     }
   }

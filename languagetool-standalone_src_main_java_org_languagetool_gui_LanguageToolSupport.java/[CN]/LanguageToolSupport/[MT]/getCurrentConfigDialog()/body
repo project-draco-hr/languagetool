@@ -1,5 +1,5 @@
 {
-  Language language=this.currentLanguage;
+  Language language=this.languageTool.getLanguage();
   final ConfigurationDialog configDialog;
   this.config.setLanguage(language);
   if (configDialogs.containsKey(language)) {

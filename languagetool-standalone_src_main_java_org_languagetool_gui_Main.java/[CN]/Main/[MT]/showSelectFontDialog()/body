@@ -12,7 +12,7 @@
     config.setFontStyle(fontChooserDialog.getSelectedFont().getStyle());
     config.setFontSize(fontChooserDialog.getSelectedFont().getSize());
     try {
-      config.saveConfiguration(ltSupport.getLanguageTool().getLanguage());
+      config.saveConfiguration(ltSupport.getLanguage());
     }
  catch (    IOException e) {
       Tools.showError(e);

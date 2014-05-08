@@ -7,6 +7,6 @@
  else {
     ltSupport.enableRule(ruleId);
   }
-  ltSupport.getConfig().saveConfiguration(ltSupport.getLanguageTool().getLanguage());
+  ltSupport.getConfig().saveConfiguration(ltSupport.getLanguage());
   ltSupport.checkImmediately(marker);
 }
