@@ -1,6 +1,16 @@
 {
-  config.getDisabledRuleIds().remove(rule);
-  languageTool.enableRule(rule);
+  Rule rule=this.getRuleForId(ruleId);
+  if (rule == null) {
+    return;
+  }
+  if (rule.isDefaultOff()) {
+    config.getEnabledRuleIds().add(ruleId);
+    languageTool.enableDefaultOffRule(ruleId);
+  }
+ else {
+    config.getDisabledRuleIds().remove(ruleId);
+  }
+  languageTool.enableRule(ruleId);
   fireEvent(LanguageToolEvent.Type.RULE_ENABLED,null);
   checkImmediately(null);
 }

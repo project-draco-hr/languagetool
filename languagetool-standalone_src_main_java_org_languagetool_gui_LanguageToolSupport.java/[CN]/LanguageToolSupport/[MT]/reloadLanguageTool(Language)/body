@@ -1,10 +1,11 @@
 {
   try {
     config=new Configuration(new File(System.getProperty("user.home")),CONFIG_FILE,language);
+    this.config.setLanguage(language);
     languageTool=new MultiThreadedJLanguageTool(language,config.getMotherTongue());
     languageTool.activateDefaultPatternRules();
     languageTool.activateDefaultFalseFriendRules();
-    reloadConfiguration();
+    loadConfig();
   }
  catch (  Exception e) {
     throw new RuntimeException(e);

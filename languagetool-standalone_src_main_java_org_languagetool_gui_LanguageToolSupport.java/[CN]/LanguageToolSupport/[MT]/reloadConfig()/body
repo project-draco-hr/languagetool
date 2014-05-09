@@ -1,0 +1,53 @@
+{
+  boolean update=false;
+  Set<String> disabledRules=config.getDisabledRuleIds();
+  if (disabledRules == null) {
+    disabledRules=Collections.EMPTY_SET;
+  }
+  Set<String> common=new HashSet<String>(disabledRules);
+  common.retainAll(languageTool.getDisabledRules());
+  Set<String> toDisable=new HashSet<String>(disabledRules);
+  toDisable.removeAll(common);
+  Set<String> toEnable=new HashSet<String>(languageTool.getDisabledRules());
+  toEnable.removeAll(common);
+  for (  final String ruleId : toDisable) {
+    languageTool.disableRule(ruleId);
+    update=true;
+  }
+  for (  final String ruleId : toEnable) {
+    languageTool.enableRule(ruleId);
+    update=true;
+  }
+  Set<String> disabledCategories=config.getDisabledCategoryNames();
+  if (disabledCategories == null) {
+    disabledCategories=Collections.EMPTY_SET;
+  }
+  common=new HashSet<String>(disabledCategories);
+  common.retainAll(languageTool.getDisabledCategories());
+  toDisable=new HashSet<String>(disabledCategories);
+  toDisable.removeAll(common);
+  toEnable=new HashSet<String>(languageTool.getDisabledCategories());
+  toEnable.removeAll(common);
+  if (!toDisable.isEmpty()) {
+    languageTool.getDisabledCategories().addAll(toDisable);
+    languageTool.disableRules(new ArrayList());
+    update=true;
+  }
+  if (!toEnable.isEmpty()) {
+    languageTool.getDisabledCategories().removeAll(toEnable);
+    languageTool.disableRules(new ArrayList());
+    update=true;
+  }
+  Set<String> enabledRules=config.getEnabledRuleIds();
+  if (enabledRules == null) {
+    enabledRules=Collections.EMPTY_SET;
+  }
+  for (  String ruleName : enabledRules) {
+    languageTool.enableDefaultOffRule(ruleName);
+    languageTool.enableRule(ruleName);
+  }
+  if (update) {
+    checkImmediately(null);
+    fireEvent(LanguageToolEvent.Type.RULE_ENABLED,null);
+  }
+}

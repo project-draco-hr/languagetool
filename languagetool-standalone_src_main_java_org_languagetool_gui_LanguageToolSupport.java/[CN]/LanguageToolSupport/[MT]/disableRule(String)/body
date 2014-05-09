@@ -1,6 +1,15 @@
 {
-  config.getDisabledRuleIds().add(rule);
-  languageTool.disableRule(rule);
-  updateHighlights(rule);
+  Rule rule=this.getRuleForId(ruleId);
+  if (rule == null) {
+    return;
+  }
+  if (rule.isDefaultOff()) {
+    config.getEnabledRuleIds().remove(ruleId);
+  }
+ else {
+    config.getDisabledRuleIds().add(ruleId);
+  }
+  languageTool.disableRule(ruleId);
+  updateHighlights(ruleId);
   fireEvent(LanguageToolEvent.Type.RULE_DISABLED,null);
 }
