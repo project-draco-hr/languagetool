@@ -1,0 +1,6 @@
+{
+  if (match.getFromPos() <= nextMatch.getFromPos() && match.getToPos() >= nextMatch.getToPos()) {
+    return true;
+  }
+  return false;
+}

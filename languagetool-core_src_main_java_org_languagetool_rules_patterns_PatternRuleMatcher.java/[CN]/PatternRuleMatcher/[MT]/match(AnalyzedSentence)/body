@@ -74,5 +74,7 @@
     }
     i++;
   }
-  return ruleMatches.toArray(new RuleMatch[ruleMatches.size()]);
+  RuleMatchFilter maxFilter=new RuleWithMaxFilter();
+  List<RuleMatch> filteredMatches=maxFilter.filter(ruleMatches);
+  return filteredMatches.toArray(new RuleMatch[filteredMatches.size()]);
 }

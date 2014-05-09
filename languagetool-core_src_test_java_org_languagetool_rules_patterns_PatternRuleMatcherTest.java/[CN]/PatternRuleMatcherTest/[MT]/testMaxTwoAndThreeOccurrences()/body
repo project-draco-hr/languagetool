@@ -10,15 +10,12 @@
   assertNoMatch("a a",matcher);
   assertNoMatch("a x b b b",matcher);
   final RuleMatch[] matches2=getMatches("a a b",matcher);
-  assertThat(matches2.length,is(2));
+  assertThat(matches2.length,is(1));
   assertPosition(matches2[0],0,5);
-  assertPosition(matches2[1],2,5);
   final RuleMatch[] matches3=getMatches("a a b b",matcher);
-  assertThat(matches3.length,is(2));
+  assertThat(matches3.length,is(1));
   assertPosition(matches3[0],0,7);
-  assertPosition(matches3[1],2,7);
   final RuleMatch[] matches4=getMatches("a a b b b",matcher);
-  assertThat(matches4.length,is(2));
+  assertThat(matches4.length,is(1));
   assertPosition(matches4[0],0,9);
-  assertPosition(matches4[1],2,9);
 }

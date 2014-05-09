@@ -24,7 +24,6 @@
   assertPosition(matches[0],0,7);
   assertPosition(matches[1],12,19);
   final RuleMatch[] matches2=getMatches("xx a b x x x b a",matcher);
-  assertThat(matches2.length,is(2));
+  assertThat(matches2.length,is(1));
   assertPosition(matches2[0],3,16);
-  assertPosition(matches2[1],5,14);
 }

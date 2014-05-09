@@ -1,0 +1,18 @@
+{
+  Collections.sort(ruleMatches);
+  final List<RuleMatch> filteredRules=new ArrayList<>();
+  for (int i=0; i < ruleMatches.size(); i++) {
+    final RuleMatch match=ruleMatches.get(i);
+    if (i < ruleMatches.size() - 1) {
+      RuleMatch nextMatch=ruleMatches.get(i + 1);
+      while (includes(match,nextMatch) && haveSameRule(match,nextMatch) && i < ruleMatches.size()) {
+        i++;
+        if (i < ruleMatches.size() - 1) {
+          nextMatch=ruleMatches.get(i + 1);
+        }
+      }
+    }
+    filteredRules.add(match);
+  }
+  return filteredRules;
+}
