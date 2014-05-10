@@ -3,7 +3,7 @@
     createRulesMenu(menu,disabledRules);
     return;
   }
-  TreeMap<String,ArrayList<Rule>> categories=new TreeMap<String,ArrayList<Rule>>();
+  TreeMap<String,ArrayList<Rule>> categories=new TreeMap<>();
   for (  Rule rule : disabledRules) {
     if (!categories.containsKey(rule.getCategory().getName())) {
       categories.put(rule.getCategory().getName(),new ArrayList<Rule>());

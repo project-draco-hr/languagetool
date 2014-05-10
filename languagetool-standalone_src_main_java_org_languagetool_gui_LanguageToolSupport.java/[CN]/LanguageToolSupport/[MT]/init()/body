@@ -53,7 +53,7 @@
     }
   }
 );
-  this.textComponent.addMouseListener(mouseListener=new MouseListener(){
+  mouseListener=new MouseListener(){
     @Override public void mouseClicked(    MouseEvent me){
     }
     @Override public void mousePressed(    MouseEvent me){
@@ -71,7 +71,8 @@
     @Override public void mouseExited(    MouseEvent me){
     }
   }
-);
+;
+  this.textComponent.addMouseListener(mouseListener);
   actionListener=new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
       _actionPerformed(e);

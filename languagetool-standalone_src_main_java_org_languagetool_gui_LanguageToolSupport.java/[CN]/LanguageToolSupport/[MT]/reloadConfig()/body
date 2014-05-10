@@ -2,13 +2,13 @@
   boolean update=false;
   Set<String> disabledRules=config.getDisabledRuleIds();
   if (disabledRules == null) {
-    disabledRules=Collections.EMPTY_SET;
+    disabledRules=Collections.emptySet();
   }
-  Set<String> common=new HashSet<String>(disabledRules);
+  Set<String> common=new HashSet<>(disabledRules);
   common.retainAll(languageTool.getDisabledRules());
-  Set<String> toDisable=new HashSet<String>(disabledRules);
+  Set<String> toDisable=new HashSet<>(disabledRules);
   toDisable.removeAll(common);
-  Set<String> toEnable=new HashSet<String>(languageTool.getDisabledRules());
+  Set<String> toEnable=new HashSet<>(languageTool.getDisabledRules());
   toEnable.removeAll(common);
   for (  final String ruleId : toDisable) {
     languageTool.disableRule(ruleId);
@@ -20,27 +20,27 @@
   }
   Set<String> disabledCategories=config.getDisabledCategoryNames();
   if (disabledCategories == null) {
-    disabledCategories=Collections.EMPTY_SET;
+    disabledCategories=Collections.emptySet();
   }
-  common=new HashSet<String>(disabledCategories);
+  common=new HashSet<>(disabledCategories);
   common.retainAll(languageTool.getDisabledCategories());
-  toDisable=new HashSet<String>(disabledCategories);
+  toDisable=new HashSet<>(disabledCategories);
   toDisable.removeAll(common);
-  toEnable=new HashSet<String>(languageTool.getDisabledCategories());
+  toEnable=new HashSet<>(languageTool.getDisabledCategories());
   toEnable.removeAll(common);
   if (!toDisable.isEmpty()) {
     languageTool.getDisabledCategories().addAll(toDisable);
-    languageTool.disableRules(new ArrayList());
+    languageTool.disableRules(new ArrayList<String>());
     update=true;
   }
   if (!toEnable.isEmpty()) {
     languageTool.getDisabledCategories().removeAll(toEnable);
-    languageTool.disableRules(new ArrayList());
+    languageTool.disableRules(new ArrayList<String>());
     update=true;
   }
   Set<String> enabledRules=config.getEnabledRuleIds();
   if (enabledRules == null) {
-    enabledRules=Collections.EMPTY_SET;
+    enabledRules=Collections.emptySet();
   }
   for (  String ruleName : enabledRules) {
     languageTool.enableDefaultOffRule(ruleName);
