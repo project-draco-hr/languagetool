@@ -1,4 +1,5 @@
 {
+  assertCorrect("a confondre en un mateix amor amics i enemics");
   assertCorrect("En l'eix esquerra-dreta.");
   assertCorrect("podrien tamb?? esdevenir correlacionades");
   assertCorrect("Cada polinomi en forma expandida");
