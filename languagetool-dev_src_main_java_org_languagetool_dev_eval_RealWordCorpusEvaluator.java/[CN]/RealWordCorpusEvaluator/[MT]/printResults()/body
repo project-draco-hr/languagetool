@@ -1,10 +1,10 @@
 {
   System.out.println("");
-  System.out.println(sentenceCount + " lines checked.");
+  System.out.println(sentenceCount + " lines checked with " + errorsInCorpusCount+ " errors.");
   System.out.println(goodMatches + " errors found that are marked as errors in the corpus " + "(not counting whether LanguageTool's correction was useful)");
-  float goodRecall=(float)goodMatches / sentenceCount * 100;
+  float goodRecall=(float)goodMatches / errorsInCorpusCount * 100;
   System.out.printf(" => %.2f%% recall\n",goodRecall);
-  float perfectRecall=(float)perfectMatches / sentenceCount * 100;
+  float perfectRecall=(float)perfectMatches / errorsInCorpusCount * 100;
   System.out.println(perfectMatches + " errors found where the first suggestion was the correct one");
   System.out.printf(" => %.2f%% recall\n",perfectRecall);
 }

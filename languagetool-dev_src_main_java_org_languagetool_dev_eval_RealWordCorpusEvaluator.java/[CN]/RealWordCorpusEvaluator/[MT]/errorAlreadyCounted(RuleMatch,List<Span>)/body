@@ -1,0 +1,9 @@
+{
+  for (  Span span : detectedErrorPositions) {
+    Span matchSpan=new Span(match.getFromPos(),match.getToPos());
+    if (span.covers(matchSpan) || matchSpan.covers(span)) {
+      return true;
+    }
+  }
+  return false;
+}

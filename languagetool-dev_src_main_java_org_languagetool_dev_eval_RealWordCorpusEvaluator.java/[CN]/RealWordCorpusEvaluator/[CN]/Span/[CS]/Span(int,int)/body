@@ -1,0 +1,4 @@
+{
+  this.startPos=startPos;
+  this.endPos=endPos;
+}

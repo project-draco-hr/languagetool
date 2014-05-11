@@ -1,0 +1,3 @@
+{
+  return startPos <= other.startPos && endPos >= other.endPos;
+}

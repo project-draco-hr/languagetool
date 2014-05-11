@@ -7,24 +7,24 @@
     ErrorSentence sentence=getIncorrectSentence(line);
     List<RuleMatch> matches=langTool.check(sentence.annotatedText);
     sentenceCount++;
+    errorsInCorpusCount+=sentence.errors.size();
     System.out.println(sentence.markupText + " => " + matches.size());
-    boolean hasPerfectMatch=false;
-    boolean hasGoodMatch=false;
+    List<Span> detectedErrorPositions=new ArrayList<>();
     for (    RuleMatch match : matches) {
-      if (sentence.hasErrorCoveredByMatchAndGoodFirstSuggestion(match)) {
-        hasGoodMatch=true;
-        hasPerfectMatch=true;
+      boolean alreadyCounted=errorAlreadyCounted(match,detectedErrorPositions);
+      if (!alreadyCounted && sentence.hasErrorCoveredByMatchAndGoodFirstSuggestion(match)) {
+        goodMatches++;
+        perfectMatches++;
         System.out.println("    [++] " + match + ": "+ match.getSuggestedReplacements());
       }
- else       if (sentence.hasErrorCoveredByMatch(match)) {
-        hasGoodMatch=true;
+ else       if (!alreadyCounted && sentence.hasErrorCoveredByMatch(match)) {
+        goodMatches++;
         System.out.println("    [+ ] " + match + ": "+ match.getSuggestedReplacements());
       }
  else {
         System.out.println("    [  ] " + match + ": "+ match.getSuggestedReplacements());
       }
+      detectedErrorPositions.add(new Span(match.getFromPos(),match.getToPos()));
     }
-    goodMatches+=hasGoodMatch ? 1 : 0;
-    perfectMatches+=hasPerfectMatch ? 1 : 0;
   }
 }
