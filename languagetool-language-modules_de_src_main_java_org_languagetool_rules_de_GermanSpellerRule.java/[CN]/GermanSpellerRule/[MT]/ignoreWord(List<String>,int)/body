@@ -1,0 +1,5 @@
+{
+  boolean ignore=super.ignoreWord(words,idx);
+  boolean ignoreByHyphen=!ignore && words.get(idx).endsWith("-") && ignoreByHangingHyphen(words,idx);
+  return ignore || ignoreByHyphen;
+}

@@ -1,0 +1,10 @@
+{
+  for (int i=idx; i < words.size(); i++) {
+    String word=words.get(i);
+    boolean inEnumeration=",".equals(word) || "und".equals(word) || "oder".equals(word)|| word.trim().isEmpty()|| word.endsWith("-");
+    if (!inEnumeration) {
+      return word;
+    }
+  }
+  return null;
+}

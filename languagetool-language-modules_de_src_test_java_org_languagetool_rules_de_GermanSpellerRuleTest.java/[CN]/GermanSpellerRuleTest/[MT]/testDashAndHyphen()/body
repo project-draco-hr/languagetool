@@ -1,0 +1,15 @@
+{
+  final HunspellRule rule=new GermanSpellerRule(TestTools.getMessages("German"),GERMAN_DE);
+  final JLanguageTool langTool=new JLanguageTool(GERMAN_DE);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ist doch - gut")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ist doch -- gut")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Stil- und Grammatikpr??fung gut")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Stil-, Text- und Grammatikpr??fung gut")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Stil-, Text- und Grammatikpr??fung")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Stil-, Text- oder Grammatikpr??fung")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Miet- und Zinseink??nfte")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Haupt- und Nebensatz")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Miet und Zinseink??nfte")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Stil- und Grammatik gut")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Flasch- und Grammatikpr??fung gut")).length);
+}

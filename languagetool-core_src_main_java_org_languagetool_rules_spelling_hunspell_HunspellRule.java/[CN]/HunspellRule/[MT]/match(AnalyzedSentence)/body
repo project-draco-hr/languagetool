@@ -8,8 +8,9 @@
   }
   final String[] tokens=tokenizeText(getSentenceTextWithoutUrlsAndImmunizedTokens(sentence));
   int len=sentence.getTokens()[1].getStartPos();
-  for (  final String word : tokens) {
-    if (ignoreWord(word)) {
+  for (int i=0; i < tokens.length; i++) {
+    String word=tokens[i];
+    if (ignoreWord(Arrays.asList(tokens),i) || ignoreWord(word)) {
       len+=word.length() + 1;
       continue;
     }

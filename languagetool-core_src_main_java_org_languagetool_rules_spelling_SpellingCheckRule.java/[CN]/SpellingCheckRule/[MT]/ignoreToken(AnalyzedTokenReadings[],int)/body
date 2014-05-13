@@ -1,3 +1,7 @@
 {
-  return ignoreWord(tokens[idx].getToken());
+  List<String> words=new ArrayList<>();
+  for (  AnalyzedTokenReadings token : tokens) {
+    words.add(token.getToken());
+  }
+  return ignoreWord(words,idx);
 }
