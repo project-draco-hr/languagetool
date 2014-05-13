@@ -1,0 +1,16 @@
+{
+  if (args.length < 4) {
+    System.out.println("Usage: " + AfterTheDeadlineChecker.class.getSimpleName() + " <langCode> <atdUrlPrefix> <file...>");
+    System.out.println("   <langCode>      a language code like 'en' for English");
+    System.out.println("   <atdUrlPrefix>  URL prefix of After the Deadline server, like 'http://localhost:1059/checkDocument?data='");
+    System.out.println("   <sentenceLimit> Maximum number of sentences to check, or 0 for no limit");
+    System.out.println("   <file...>       Wikipedia and/or Tatoeba file(s)");
+    System.exit(1);
+  }
+  Language language=Language.getLanguageForShortName(args[0]);
+  String urlPrefix=args[1];
+  int maxSentenceCount=Integer.parseInt(args[2]);
+  List<String> files=Arrays.asList(args).subList(3,args.length);
+  AfterTheDeadlineChecker atdChecker=new AfterTheDeadlineChecker(urlPrefix,maxSentenceCount);
+  atdChecker.run(language,files);
+}

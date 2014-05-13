@@ -1,0 +1,4 @@
+{
+  this.urlPrefix=urlPrefix;
+  this.maxSentenceCount=maxSentenceCount;
+}

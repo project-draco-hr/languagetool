@@ -1,0 +1,19 @@
+{
+  MixingSentenceSource mixingSource=MixingSentenceSource.create(fileNames,lang);
+  int sentenceCount=0;
+  while (mixingSource.hasNext()) {
+    Sentence sentence=mixingSource.next();
+    String resultXml=queryAtDServer(sentence.getText());
+    System.out.println("==========================");
+    System.out.println(sentence.getSource() + ": " + sentence.getText());
+    List<String> matches=getMatches(resultXml);
+    for (    String match : matches) {
+      System.out.println("  " + match);
+    }
+    sentenceCount++;
+    if (maxSentenceCount > 0 && sentenceCount > maxSentenceCount) {
+      System.err.println("Limit reached, stopping at sentence #" + sentenceCount);
+      break;
+    }
+  }
+}

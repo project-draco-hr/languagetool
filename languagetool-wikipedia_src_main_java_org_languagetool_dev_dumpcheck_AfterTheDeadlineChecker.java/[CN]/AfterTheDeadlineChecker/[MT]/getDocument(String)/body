@@ -1,0 +1,11 @@
+{
+  try {
+    DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+    DocumentBuilder builder=factory.newDocumentBuilder();
+    InputSource inputSource=new InputSource(new StringReader(xml));
+    return builder.parse(inputSource);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Could not parse XML: " + xml);
+  }
+}

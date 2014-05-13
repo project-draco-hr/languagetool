@@ -1,0 +1,13 @@
+{
+  List<String> matches=new ArrayList<>();
+  Document document=getDocument(resultXml);
+  XPath xPath=XPathFactory.newInstance().newXPath();
+  NodeList errors=(NodeList)xPath.evaluate("//error",document,XPathConstants.NODESET);
+  for (int i=0; i < errors.getLength(); i++) {
+    Node error=errors.item(i);
+    String string=xPath.evaluate("string",error);
+    String description=xPath.evaluate("description",error);
+    matches.add(description + ": " + string);
+  }
+  return matches;
+}
