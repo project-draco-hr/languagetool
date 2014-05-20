@@ -1,4 +1,4 @@
 String[] taggerTokens
 String word
-List<AnalyzedGermanToken> l
+List<AnalyzedToken> l
 List<String> compoundParts

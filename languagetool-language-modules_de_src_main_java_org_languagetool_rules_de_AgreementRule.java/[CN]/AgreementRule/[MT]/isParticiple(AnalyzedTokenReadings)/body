@@ -1,10 +1,8 @@
 {
   for (  AnalyzedToken reading : tokensReadings.getReadings()) {
-    if (reading instanceof AnalyzedGermanToken) {
-      final AnalyzedGermanToken germanReading=(AnalyzedGermanToken)reading;
-      if (germanReading.getType() == POSType.PARTIZIP) {
-        return true;
-      }
+    AnalyzedGermanToken germanReading=new AnalyzedGermanToken(reading);
+    if (germanReading.getType() == POSType.PARTIZIP) {
+      return true;
     }
   }
   return false;

@@ -6,7 +6,7 @@
   int pos=0;
   final IStemmer morfologik=new DictionaryLookup(dictionary);
   for (  String word : sentenceTokens) {
-    final List<AnalyzedGermanToken> l=new ArrayList<>();
+    final List<AnalyzedToken> l=new ArrayList<>();
     taggerTokens=lexiconLookup(word,morfologik);
     if (firstWord && taggerTokens == null && ignoreCase) {
       taggerTokens=lexiconLookup(word.toLowerCase(),morfologik);
@@ -19,7 +19,7 @@
       if (!StringTools.isEmpty(word.trim())) {
         final List<String> compoundParts=compoundTokenizer.tokenize(word);
         if (compoundParts.size() <= 1) {
-          l.add(new AnalyzedGermanToken(word,null,null));
+          l.add(new AnalyzedToken(word,null,null));
         }
  else {
           String lastPart=compoundParts.get(compoundParts.size() - 1);
@@ -31,15 +31,15 @@
             tagWord(taggerTokens,word,l,compoundParts);
           }
  else {
-            l.add(new AnalyzedGermanToken(word,null,null));
+            l.add(new AnalyzedToken(word,null,null));
           }
         }
       }
  else {
-        l.add(new AnalyzedGermanToken(word,null,null));
+        l.add(new AnalyzedToken(word,null,null));
       }
     }
-    tokenReadings.add(new AnalyzedTokenReadings(l.toArray(new AnalyzedGermanToken[l.size()]),pos));
+    tokenReadings.add(new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]),pos));
     pos+=word.length();
   }
   return tokenReadings;

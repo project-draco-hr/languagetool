@@ -6,9 +6,9 @@
       final AnalyzedTokenReadings nextATR=tagger.lookup(nextTerm.substring(0,nextTerm.length() - 2));
       final AnalyzedTokenReadings nextNextATR=tagger.lookup(nextNextToken.getToken());
       if ("M??nchner".equals(nextTerm) || (nextATR != null && (GermanHelper.hasReadingOfType(nextATR,POSType.PROPER_NOUN) || GermanHelper.hasReadingOfType(nextATR,POSType.NOMEN) && nextNextATR != null && GermanHelper.hasReadingOfType(nextNextATR,POSType.NOMEN)))) {
-        final AnalyzedGermanToken[] adjReadings=new AnalyzedGermanToken[ADJ_READINGS.length];
+        final AnalyzedToken[] adjReadings=new AnalyzedToken[ADJ_READINGS.length];
         for (int j=0; j < ADJ_READINGS.length; j++) {
-          adjReadings[j]=new AnalyzedGermanToken(nextTerm,ADJ_READINGS[j],null);
+          adjReadings[j]=new AnalyzedToken(nextTerm,ADJ_READINGS[j],null);
         }
         nextToken=new AnalyzedTokenReadings(adjReadings,nextToken.getStartPos());
       }
