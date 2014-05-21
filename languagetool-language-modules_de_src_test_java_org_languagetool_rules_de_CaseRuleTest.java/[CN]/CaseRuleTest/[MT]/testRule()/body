@@ -1,6 +1,7 @@
 {
   CaseRule rule=new CaseRule(null,new German());
   JLanguageTool langTool=new JLanguageTool(new German());
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Dem Hund Futter geben")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Heute spricht Frau Stieg.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Ein einfacher Satz zum Testen.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das Laufen f??llt mir leicht.")).length);
@@ -32,6 +33,9 @@
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Sie f??llt auf durch ihre hilfsbereite Art. Zudem zeigt sie soziale Kompetenz.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist es: kein Satz.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Das ist es: Kein Satz.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Die Sch??ne T??r")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das Blaue Auto.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("Der Gr??ne Baum.")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Ein Einfacher Satz zum Testen.")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Das Winseln St??rt.")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Sein verhalten war okay.")).length);

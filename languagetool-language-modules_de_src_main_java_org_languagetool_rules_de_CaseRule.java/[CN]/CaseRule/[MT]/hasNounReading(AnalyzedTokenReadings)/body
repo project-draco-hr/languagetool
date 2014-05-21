@@ -1,0 +1,3 @@
+{
+  return readings.hasPartialPosTag("SUB:") && !readings.hasPartialPosTag(":ADJ");
+}

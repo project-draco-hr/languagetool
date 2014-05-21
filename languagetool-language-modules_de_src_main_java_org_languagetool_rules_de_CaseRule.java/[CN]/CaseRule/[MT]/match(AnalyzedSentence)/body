@@ -39,8 +39,7 @@
     if (readings == null) {
       continue;
     }
-    final boolean hasNounReading=GermanHelper.hasReadingOfType(analyzedToken,GermanToken.POSType.NOMEN);
-    if (hasNounReading) {
+    if (hasNounReading(analyzedToken)) {
       continue;
     }
     analyzedGermanToken2=tagger.lookup(token.toLowerCase());
