@@ -1,0 +1,3 @@
+{
+  return token.equals("Herr") || token.equals("Herrn") || token.equals("Frau");
+}

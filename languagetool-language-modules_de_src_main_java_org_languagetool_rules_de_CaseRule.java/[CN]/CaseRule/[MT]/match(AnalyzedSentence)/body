@@ -13,7 +13,7 @@
       }
       continue;
     }
-    if (i > 0 && (tokens[i - 1].getToken().equals("Herr") || tokens[i - 1].getToken().equals("Herrn") || tokens[i - 1].getToken().equals("Frau"))) {
+    if (i > 0 && isSalutation(tokens[i - 1].getToken())) {
       continue;
     }
     final AnalyzedTokenReadings analyzedToken=tokens[i];
