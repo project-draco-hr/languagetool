@@ -1,0 +1,4 @@
+{
+  rule=new CaseRule(null,new German());
+  langTool=new JLanguageTool(new German());
+}

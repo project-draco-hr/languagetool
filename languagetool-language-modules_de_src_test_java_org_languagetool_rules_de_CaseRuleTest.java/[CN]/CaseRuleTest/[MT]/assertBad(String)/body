@@ -1,0 +1,3 @@
+{
+  assertEquals("Did not find expected error in: '" + input + "'",1,rule.match(langTool.getAnalyzedSentence(input)).length);
+}
