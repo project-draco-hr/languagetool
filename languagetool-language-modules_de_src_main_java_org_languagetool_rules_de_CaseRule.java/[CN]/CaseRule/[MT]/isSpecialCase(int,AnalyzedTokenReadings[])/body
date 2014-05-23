@@ -1,6 +1,6 @@
 {
-  String token=tokens[i].getToken();
   String prevToken=i > 1 ? tokens[i - 1].getToken() : "";
+  String token=tokens[i].getToken();
   AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
   return "im".equalsIgnoreCase(prevToken) && "Allgemeinen".equals(token) && !hasNounReading(nextReadings);
 }
