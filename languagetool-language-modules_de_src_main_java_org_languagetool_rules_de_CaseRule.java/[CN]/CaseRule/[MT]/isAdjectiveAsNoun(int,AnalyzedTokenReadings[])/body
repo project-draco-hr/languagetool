@@ -1,5 +1,5 @@
 {
-  AnalyzedTokenReadings prevToken=i > 1 ? tokens[i - 1] : null;
+  AnalyzedTokenReadings prevToken=i > 0 ? tokens[i - 1] : null;
   boolean isPrevDeterminer=prevToken != null && prevToken.hasPartialPosTag("ART");
   AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
   for (  AnalyzedToken reading : tokens[i].getReadings()) {
