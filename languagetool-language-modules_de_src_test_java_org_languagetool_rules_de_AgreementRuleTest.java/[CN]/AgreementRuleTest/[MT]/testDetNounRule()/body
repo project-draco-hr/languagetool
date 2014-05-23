@@ -20,6 +20,16 @@
   assertGood("Das Dach meiner Autos.");
   assertGood("Das Dach meines gro??en Autos.");
   assertGood("Das Dach meiner gro??en Autos.");
+  assertGood("Dann schlug er so kr??ftig wie er konnte mit den Schwingen.");
+  assertGood("Also wenn wir Gl??ck haben, ...");
+  assertGood("Wenn wir Pech haben, ...");
+  assertGood("Ledorn ??ffnete eines der an ihr vorhandenen F??cher.");
+  assertGood("Auf der einen Seite endlose D??nen");
+  assertGood("In seinem Maul hielt er einen blutigen Fleischklumpen.");
+  assertGood("Gleichzeitig dachte er intensiv an Nebelschwaden, aus denen Wolken ja bestanden.");
+  assertGood("Warum stellte der blo?? immer wieder dieselben Fragen?");
+  assertGood("Bei der Hinreise.");
+  assertGood("Schlie??lich tauchten in einem Waldst??ck unter ihnen Schienen auf.");
   assertGood("Das Wahlrecht, das Frauen damals zugesprochen bekamen.");
   assertGood("Es war Karl, dessen Leiche Donnerstag gefunden wurde.");
   assertGood("Erst recht ich Arbeiter.");
