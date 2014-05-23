@@ -8,7 +8,14 @@
   assertGood("Dem riesigen Tisch fehlt was.");
   assertGood("Die riesigen Tische sind gro??.");
   assertGood("Der riesigen Tische wegen.");
+  assertGood("An der roten Ampel.");
+  assertGood("Dann hat das nat??rlich Nachteile.");
   assertBad("Es sind die riesigen Tisch.");
   assertBad("Als die riesigen Tischs kamen.");
   assertBad("Als die riesigen Tisches kamen.");
+  assertBad("Der riesigen Tisch und so.");
+  assertBad("An der roter Ampel.");
+  assertBad("An der rote Ampel.");
+  assertBad("An der rotes Ampel.");
+  assertBad("An der rotem Ampel.");
 }

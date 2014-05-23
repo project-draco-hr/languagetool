@@ -2,6 +2,9 @@
   final Set<String> set=new HashSet<>();
   final List<AnalyzedToken> readings=aToken.getReadings();
   for (  AnalyzedToken tmpReading : readings) {
+    if (tmpReading.getPOSTag().endsWith(":SOL")) {
+      continue;
+    }
     final AnalyzedGermanToken reading=new AnalyzedGermanToken(tmpReading);
     if (reading.getCasus() == null && reading.getNumerus() == null && reading.getGenus() == null) {
       continue;
