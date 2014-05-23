@@ -1,0 +1,12 @@
+{
+  AnalyzedTokenReadings prevToken=i > 1 ? tokens[i - 1] : null;
+  boolean isPrevDeterminer=prevToken != null && prevToken.hasPartialPosTag("ART");
+  AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
+  for (  AnalyzedToken reading : tokens[i].getReadings()) {
+    String posTag=reading.getPOSTag();
+    if (isPrevDeterminer && posTag != null && posTag.contains(":ADJ") && !hasNounReading(nextReadings)) {
+      return true;
+    }
+  }
+  return false;
+}

@@ -28,6 +28,8 @@
   assertGood("Das ist die neue Dienerin hier.");
   assertGood("Das ist die neue Geigerin hier.");
   assertGood("Die ersten Gespanne erreichen K??ln.");
+  assertGood("Er beschrieb den Angeklagten wie einen Schuldigen");
+  assertGood("Er beschrieb den Angeklagten wie einen Schuldigen.");
   assertGood("Das ist das D??mmste, was ich je gesagt habe.");
   assertBad("Das ist das D??mmste Kind.");
   assertGood("Man sagt, Liebe mache blind.");
@@ -35,6 +37,9 @@
   assertGood("Der Lesestoff bestimmt die Leseweise.");
   assertGood("Ich habe nicht viel von einem Reisenden.");
   assertGood("Die Vereinigten Staaten");
+  assertGood("Die Ausgew??hlten werden gut betreut.");
+  assertGood("Die ausgew??hlten Leute werden gut betreut.");
+  assertBad("Die Ausgew??hlten Leute werden gut betreut.");
   assertGood("Die Schlinge zieht sich zu.");
   assertGood("Die Schlingen ziehen sich zu.");
   assertGood("Sie f??llt auf durch ihre hilfsbereite Art. Zudem zeigt sie soziale Kompetenz.");
