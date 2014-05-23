@@ -1,3 +1,9 @@
 {
-  return readings.hasPartialPosTag("SUB:") && !readings.hasPartialPosTag(":ADJ");
+  for (  AnalyzedToken reading : readings) {
+    String posTag=reading.getPOSTag();
+    if (posTag != null && posTag.contains("SUB:") && !posTag.contains(":ADJ")) {
+      return true;
+    }
+  }
+  return false;
 }

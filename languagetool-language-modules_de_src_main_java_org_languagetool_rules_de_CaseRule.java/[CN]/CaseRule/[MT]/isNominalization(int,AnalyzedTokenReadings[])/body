@@ -1,0 +1,6 @@
+{
+  String token=tokens[i].getToken();
+  String prevToken=i > 1 ? tokens[i - 1].getToken() : "";
+  AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
+  return "das".equalsIgnoreCase(prevToken) && StringTools.startsWithUppercase(token) && !hasNounReading(nextReadings);
+}
