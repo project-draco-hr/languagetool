@@ -1,0 +1,14 @@
+{
+  JLanguageTool langTool=new JLanguageTool(new Demo());
+  langTool.activateDefaultPatternRules();
+  List<String> ruleIds=getActiveRuleIds(langTool);
+  assertTrue(ruleIds.contains("DEMO_RULE"));
+  assertFalse(ruleIds.contains("DEMO_RULE_OFF"));
+  for (  Rule rule : langTool.getAllRules()) {
+    if (rule.getId().equals("DEMO_RULE_OFF")) {
+      rule.setDefaultOn();
+    }
+  }
+  List<String> ruleIds2=getActiveRuleIds(langTool);
+  assertTrue(ruleIds2.contains("DEMO_RULE_OFF"));
+}

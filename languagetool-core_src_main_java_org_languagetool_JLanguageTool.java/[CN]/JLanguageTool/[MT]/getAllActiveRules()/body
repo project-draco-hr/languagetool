@@ -5,7 +5,8 @@
   rules.addAll(userRules);
   for (  final Rule rule : rules) {
     rule.reset();
-    if (!disabledRules.contains(rule.getId())) {
+    boolean isDisabled=disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()));
+    if (!isDisabled) {
       rulesActive.add(rule);
     }
   }

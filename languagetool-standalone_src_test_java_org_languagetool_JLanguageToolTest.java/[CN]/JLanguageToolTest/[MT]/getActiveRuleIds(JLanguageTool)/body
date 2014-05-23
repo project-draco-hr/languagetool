@@ -1,0 +1,7 @@
+{
+  List<String> ruleIds=new ArrayList<>();
+  for (  Rule rule : langTool.getAllActiveRules()) {
+    ruleIds.add(rule.getId());
+  }
+  return ruleIds;
+}
