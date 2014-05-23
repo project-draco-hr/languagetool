@@ -1,0 +1,3 @@
+{
+  return ((tokens[i - 1].getToken().equals("]") || tokens[i - 1].getToken().equals(")")) && ((i == 4 && tokens[i - 2].getToken().equals("???")) || (i == 6 && tokens[i - 2].getToken().equals("."))));
+}
