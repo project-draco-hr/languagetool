@@ -1,0 +1,4 @@
+{
+  String phrase=token1.getToken() + " " + token2.getToken();
+  return "allen Grund".equals(phrase);
+}

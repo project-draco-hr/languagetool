@@ -16,8 +16,10 @@
     final AgreementSuggestor suggestor=new AgreementSuggestor(german.getSynthesizer(),token1,token2);
     final List<String> suggestions=suggestor.getSuggestions();
     final String shortMsg="M??glicherweise keine ??bereinstimmung bez??glich " + errorDetails;
-    ruleMatch=new RuleMatch(this,token1.getStartPos(),token2.getStartPos() + token2.getToken().length(),msg,shortMsg);
-    ruleMatch.setSuggestedReplacements(suggestions);
+    if (!isException(token1,token2)) {
+      ruleMatch=new RuleMatch(this,token1.getStartPos(),token2.getStartPos() + token2.getToken().length(),msg,shortMsg);
+      ruleMatch.setSuggestedReplacements(suggestions);
+    }
   }
   return ruleMatch;
 }
