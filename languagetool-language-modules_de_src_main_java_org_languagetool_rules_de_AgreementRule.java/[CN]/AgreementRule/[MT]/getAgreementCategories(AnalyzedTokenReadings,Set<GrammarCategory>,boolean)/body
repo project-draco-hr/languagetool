@@ -2,7 +2,7 @@
   final Set<String> set=new HashSet<>();
   final List<AnalyzedToken> readings=aToken.getReadings();
   for (  AnalyzedToken tmpReading : readings) {
-    if (tmpReading.getPOSTag().endsWith(":SOL")) {
+    if (skipSol && tmpReading.getPOSTag().endsWith(":SOL")) {
       continue;
     }
     final AnalyzedGermanToken reading=new AnalyzedGermanToken(tmpReading);

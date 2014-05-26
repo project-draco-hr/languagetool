@@ -6,11 +6,11 @@
  else {
     categoryToRelaxSet=Collections.emptySet();
   }
-  final Set<String> set1=getAgreementCategories(token1,categoryToRelaxSet);
+  final Set<String> set1=getAgreementCategories(token1,categoryToRelaxSet,true);
   if (set1 == null) {
     return true;
   }
-  final Set<String> set2=getAgreementCategories(token2,categoryToRelaxSet);
+  final Set<String> set2=getAgreementCategories(token2,categoryToRelaxSet,true);
   if (set2 == null) {
     return true;
   }

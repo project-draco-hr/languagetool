@@ -1,2 +1,3 @@
 AnalyzedTokenReadings aToken
 Set<GrammarCategory> omit
+boolean skipSol

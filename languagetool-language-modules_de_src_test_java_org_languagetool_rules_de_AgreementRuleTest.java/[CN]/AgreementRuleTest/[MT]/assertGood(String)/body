@@ -1,3 +1,4 @@
 {
-  assertEquals("Found unexpected match in sentence '" + s + "'",0,rule.match(langTool.getAnalyzedSentence(s)).length);
+  RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence(s));
+  assertEquals("Found unexpected match in sentence '" + s + "': "+ Arrays.toString(matches),0,matches.length);
 }

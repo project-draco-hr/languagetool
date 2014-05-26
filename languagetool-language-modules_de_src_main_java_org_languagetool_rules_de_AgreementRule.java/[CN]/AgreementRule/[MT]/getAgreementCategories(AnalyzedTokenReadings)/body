@@ -1,3 +1,3 @@
 {
-  return getAgreementCategories(aToken,new HashSet<GrammarCategory>());
+  return getAgreementCategories(aToken,new HashSet<GrammarCategory>(),false);
 }
