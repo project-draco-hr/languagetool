@@ -1,6 +1,6 @@
 {
-  String prevToken=i > 0 ? tokens[i - 1].getToken() : "";
+  AnalyzedTokenReadings prevToken=i > 0 ? tokens[i - 1] : null;
   String token=tokens[i].getToken();
   AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
-  return "das".equalsIgnoreCase(prevToken) && StringTools.startsWithUppercase(token) && !hasNounReading(nextReadings);
+  return prevToken != null && prevToken.hasPartialPosTag("PRO") && StringTools.startsWithUppercase(token) && !hasNounReading(nextReadings);
 }
