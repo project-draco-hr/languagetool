@@ -1,0 +1,12 @@
+{
+  try {
+    final Properties props=new Properties();
+    try (FileInputStream fis=new FileInputStream(file)){
+      props.load(fis);
+      maxTextLength=Integer.parseInt(getOptionalProperty(props,"maxTextLength",Integer.toString(Integer.MAX_VALUE)));
+    }
+   }
+ catch (  IOException e) {
+    throw new RuntimeException("Could not load properties from '" + file + "'",e);
+  }
+}

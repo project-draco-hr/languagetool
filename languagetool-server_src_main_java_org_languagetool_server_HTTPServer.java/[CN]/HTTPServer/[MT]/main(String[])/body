@@ -1,5 +1,5 @@
 {
-  if (args.length > 3 || usageRequested(args)) {
+  if (args.length > 5 || usageRequested(args)) {
     System.out.println("Usage: " + HTTPServer.class.getSimpleName() + " [--port|-p port] [--public]");
     printCommonOptions();
     System.exit(1);
