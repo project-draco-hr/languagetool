@@ -1,0 +1,9 @@
+{
+  List<Rule> rules=lt.getAllActiveRules();
+  for (  Rule rule : rules) {
+    if (rule.isDictionaryBasedSpellingRule()) {
+      return true;
+    }
+  }
+  return false;
+}
