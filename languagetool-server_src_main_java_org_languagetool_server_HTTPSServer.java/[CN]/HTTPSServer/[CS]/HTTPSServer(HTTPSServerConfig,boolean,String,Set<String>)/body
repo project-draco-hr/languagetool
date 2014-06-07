@@ -12,9 +12,10 @@
     final HttpsConfigurator configurator=getConfigurator(sslContext);
     ((HttpsServer)server).setHttpsConfigurator(configurator);
     final RequestLimiter limiter=getRequestLimiterOrNull(config);
-    final LanguageToolHttpHandler httpHandler=new LanguageToolHttpHandler(config.isVerbose(),allowedIps,runInternally,limiter);
+    httpHandler=new LanguageToolHttpHandler(config.isVerbose(),allowedIps,runInternally,limiter);
     httpHandler.setMaxTextLength(config.getMaxTextLength());
     httpHandler.setAllowOriginUrl(config.getAllowOriginUrl());
+    httpHandler.setMaxCheckTimeMillis(config.getMaxCheckTimeMillis());
     server.createContext("/",httpHandler);
     executorService=Executors.newFixedThreadPool(THREAD_POOL_SIZE);
     server.setExecutor(executorService);

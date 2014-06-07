@@ -3,6 +3,7 @@
     System.out.println("Usage: " + HTTPServer.class.getSimpleName() + " [--config propertyFile] [--port|-p port] [--public]");
     System.out.println("  --config file  a Java property file with values for:");
     System.out.println("                 'maxTextLength' - maximum text length, longer texts will cause an error (optional)");
+    System.out.println("                 'maxCheckTimeMillis' - maximum time in milliseconds allowed per check (optional)");
     printCommonOptions();
     System.exit(1);
   }

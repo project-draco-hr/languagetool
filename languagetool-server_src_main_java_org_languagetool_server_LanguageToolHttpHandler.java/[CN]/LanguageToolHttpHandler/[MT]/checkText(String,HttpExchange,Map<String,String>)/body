@@ -34,7 +34,24 @@
   }
   final boolean useQuerySettings=enabledRules.size() > 0 || disabledRules.size() > 0;
   final QueryParams params=new QueryParams(enabledRules,disabledRules,useEnabledOnly,useQuerySettings);
-  final List<RuleMatch> matches=getRuleMatches(text,parameters,lang,motherTongue,params);
+  final Future<List<RuleMatch>> future=executorService.submit(new Callable<List<RuleMatch>>(){
+    @Override public List<RuleMatch> call() throws Exception {
+      return getRuleMatches(text,parameters,lang,motherTongue,params);
+    }
+  }
+);
+  final List<RuleMatch> matches;
+  if (maxCheckTimeMillis < 0) {
+    matches=future.get();
+  }
+ else {
+    try {
+      matches=future.get(maxCheckTimeMillis,TimeUnit.MILLISECONDS);
+    }
+ catch (    TimeoutException e) {
+      throw new RuntimeException("Text checking took longer than allowed maximum of " + maxCheckTimeMillis + " milliseconds",e);
+    }
+  }
   setCommonHeaders(httpExchange);
   final RuleAsXmlSerializer serializer=new RuleAsXmlSerializer();
   final String xmlResponse=serializer.ruleMatchesToXml(matches,text,CONTEXT_SIZE,lang,motherTongue);

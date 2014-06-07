@@ -3,4 +3,5 @@
   this.allowedIps=allowedIps;
   this.internalServer=internal;
   this.requestLimiter=requestLimiter;
+  this.executorService=Executors.newCachedThreadPool();
 }

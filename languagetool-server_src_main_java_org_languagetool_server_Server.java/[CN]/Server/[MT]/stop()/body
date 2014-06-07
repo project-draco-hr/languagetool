@@ -1,4 +1,7 @@
 {
+  if (httpHandler != null) {
+    httpHandler.shutdown();
+  }
   if (server != null) {
     System.out.println("Stopping server");
     server.stop(0);

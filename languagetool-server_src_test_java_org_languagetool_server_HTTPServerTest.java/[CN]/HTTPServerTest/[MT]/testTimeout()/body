@@ -1,0 +1,18 @@
+{
+  HTTPServerConfig config=new HTTPServerConfig();
+  config.setMaxCheckTimeMillis(1);
+  final HTTPServer server=new HTTPServer(config,false);
+  try {
+    server.run();
+    try {
+      System.out.println("Testing timeout now, please ignore the exception");
+      check(new GermanyGerman(),"Einq Tesz miit fieln Fehlan, desshalb sehee laagnsam bee dr Rechtschriebp??rfung");
+      fail("Check was expected to be stopped because it took too long");
+    }
+ catch (    IOException expected) {
+    }
+  }
+  finally {
+    server.stop();
+  }
+}
