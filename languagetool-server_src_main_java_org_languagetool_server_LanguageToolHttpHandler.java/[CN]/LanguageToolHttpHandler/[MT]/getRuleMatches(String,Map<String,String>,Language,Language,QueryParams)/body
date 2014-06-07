@@ -1,0 +1,17 @@
+{
+  final String sourceText=parameters.get("srctext");
+  if (sourceText == null) {
+    final JLanguageTool lt=getLanguageToolInstance(lang,motherTongue,params);
+    return lt.check(text);
+  }
+ else {
+    if (parameters.get("motherTongue") == null) {
+      throw new IllegalArgumentException("Missing 'motherTongue' parameter for bilingual checks");
+    }
+    print("Checking bilingual text, with source length " + sourceText.length() + " and target length "+ text.length()+ " (characters), source language "+ motherTongue+ " and target language "+ lang.getShortNameWithCountryAndVariant());
+    final JLanguageTool sourceLt=getLanguageToolInstance(motherTongue,null,params);
+    final JLanguageTool targetLt=getLanguageToolInstance(lang,null,params);
+    final List<BitextRule> bRules=Tools.getBitextRules(motherTongue,lang);
+    return Tools.checkBitext(sourceText,text,sourceLt,targetLt,bRules);
+  }
+}

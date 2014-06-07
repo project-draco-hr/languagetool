@@ -1,0 +1,5 @@
+String text
+Map<String,String> parameters
+Language lang
+Language motherTongue
+QueryParams params

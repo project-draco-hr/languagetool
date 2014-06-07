@@ -17,19 +17,12 @@
     lang=Language.getLanguageForShortName(langParam);
   }
   final String motherTongueParam=parameters.get("motherTongue");
-  Language motherTongue=null;
-  if (motherTongueParam != null) {
-    motherTongue=Language.getLanguageForShortName(motherTongueParam);
-  }
+  final Language motherTongue=motherTongueParam != null ? Language.getLanguageForShortName(motherTongueParam) : null;
+  final boolean useEnabledOnly="yes".equals(parameters.get("enabledOnly"));
   final String enabledParam=parameters.get("enabled");
   final List<String> enabledRules=new ArrayList<>();
   if (enabledParam != null) {
     enabledRules.addAll(Arrays.asList(enabledParam.split(",")));
-  }
-  boolean useEnabledOnly=false;
-  final String enabledOnlyParam=parameters.get("enabledOnly");
-  if (enabledOnlyParam != null) {
-    useEnabledOnly=enabledOnlyParam.equals("yes");
   }
   final String disabledParam=parameters.get("disabled");
   final List<String> disabledRules=new ArrayList<>();
@@ -41,22 +34,7 @@
   }
   final boolean useQuerySettings=enabledRules.size() > 0 || disabledRules.size() > 0;
   final QueryParams params=new QueryParams(enabledRules,disabledRules,useEnabledOnly,useQuerySettings);
-  final List<RuleMatch> matches;
-  final String sourceText=parameters.get("srctext");
-  if (sourceText == null) {
-    final JLanguageTool lt=getLanguageToolInstance(lang,motherTongue,params);
-    matches=lt.check(text);
-  }
- else {
-    if (motherTongueParam == null) {
-      throw new IllegalArgumentException("Missing 'motherTongue' for bilingual checks");
-    }
-    print("Checking bilingual text, with source length " + sourceText.length() + " and target length "+ text.length()+ " (characters), source language "+ motherTongue+ " and target language "+ langParam);
-    final JLanguageTool sourceLt=getLanguageToolInstance(motherTongue,null,params);
-    final JLanguageTool targetLt=getLanguageToolInstance(lang,null,params);
-    final List<BitextRule> bRules=Tools.getBitextRules(motherTongue,lang);
-    matches=Tools.checkBitext(sourceText,text,sourceLt,targetLt,bRules);
-  }
+  final List<RuleMatch> matches=getRuleMatches(text,parameters,lang,motherTongue,params);
   setCommonHeaders(httpExchange);
   final RuleAsXmlSerializer serializer=new RuleAsXmlSerializer();
   final String xmlResponse=serializer.ruleMatchesToXml(matches,text,CONTEXT_SIZE,lang,motherTongue);
