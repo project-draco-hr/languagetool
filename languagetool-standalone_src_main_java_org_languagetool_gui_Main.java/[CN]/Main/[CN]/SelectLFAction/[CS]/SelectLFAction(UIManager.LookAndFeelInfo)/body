@@ -1,0 +1,4 @@
+{
+  super(lf.getName());
+  this.lf=lf;
+}

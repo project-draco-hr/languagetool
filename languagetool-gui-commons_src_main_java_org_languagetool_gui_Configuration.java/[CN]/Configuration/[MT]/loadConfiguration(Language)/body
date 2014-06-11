@@ -32,6 +32,7 @@
  catch (      NumberFormatException e) {
       }
     }
+    lookAndFeelName=(String)props.get(LF_NAME_CONFIG_KEY);
     final String serverPortString=(String)props.get(SERVER_PORT_CONFIG_KEY);
     if (serverPortString != null) {
       serverPort=Integer.parseInt(serverPortString);

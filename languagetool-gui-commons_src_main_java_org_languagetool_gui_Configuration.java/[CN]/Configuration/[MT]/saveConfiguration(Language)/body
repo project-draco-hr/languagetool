@@ -23,6 +23,9 @@
   if (fontSize != FONT_SIZE_INVALID) {
     props.setProperty(FONT_SIZE_CONFIG_KEY,Integer.toString(fontSize));
   }
+  if (null != this.lookAndFeelName) {
+    props.setProperty(LF_NAME_CONFIG_KEY,lookAndFeelName);
+  }
   if (externalRuleDirectory != null) {
     props.setProperty(EXTERNAL_RULE_DIRECTORY,externalRuleDirectory);
   }
