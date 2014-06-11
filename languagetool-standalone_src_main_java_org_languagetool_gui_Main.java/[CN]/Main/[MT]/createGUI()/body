@@ -157,7 +157,9 @@
   Configuration config=ltSupport.getConfig();
   if (config.getFontName() != null || config.getFontStyle() != Configuration.FONT_STYLE_INVALID || config.getFontSize() != Configuration.FONT_SIZE_INVALID) {
     String fontName=config.getFontName();
-    if (fontName == null)     fontName=textArea.getFont().getFamily();
+    if (fontName == null) {
+      fontName=textArea.getFont().getFamily();
+    }
     int fontSize=config.getFontSize();
     if (fontSize == Configuration.FONT_SIZE_INVALID) {
       fontSize=textArea.getFont().getSize();
