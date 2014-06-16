@@ -1,5 +1,7 @@
 {
-  RuleMatch ruleMatch=null;
+  if (NOUNS_TO_BE_IGNORED.contains(token2.getToken())) {
+    return null;
+  }
   final Set<String> set1=getAgreementCategories(token1);
   if (set1 == null) {
     return null;
@@ -9,6 +11,7 @@
     return null;
   }
   set1.retainAll(set2);
+  RuleMatch ruleMatch=null;
   if (set1.size() == 0) {
     final List<String> errorCategories=getCategoriesCausingError(token1,token2);
     final String errorDetails=errorCategories.size() > 0 ? StringTools.listToString(errorCategories," und ") : "Kasus, Genus oder Numerus";
