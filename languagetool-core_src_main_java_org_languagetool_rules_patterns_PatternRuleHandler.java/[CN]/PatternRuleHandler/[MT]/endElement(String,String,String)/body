@@ -128,6 +128,7 @@ inShortMessage=false;
 break;
 case "url":
 inUrl=false;
+inUrlForRuleGroup=false;
 break;
 case MATCH:
 if (inMessage) {
@@ -142,6 +143,7 @@ tokenReference.setLemmaString(match.toString());
 inMatch=false;
 break;
 case RULEGROUP:
+urlForRuleGroup=new StringBuilder();
 inRuleGroup=false;
 ruleGroupIssueType=null;
 if (rulegroupAntiPatterns != null) {

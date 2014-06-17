@@ -27,4 +27,7 @@
  else   if (inUrl) {
     url.append(s);
   }
+ else   if (inUrlForRuleGroup) {
+    urlForRuleGroup.append(s);
+  }
 }
