@@ -1,3 +1,3 @@
 {
-  super(messages,FILE_NAME,"Dessa ord skrivs samman med bindestr??ck.","Dessa ord skrivs samman.","Dessa ord skrivs samman med eller utan bindestr??ck.");
+  super(messages,FILE_NAME,"Dessa ord skrivs samman med bindestreck.","Dessa ord skrivs samman.","Dessa ord skrivs samman med eller utan bindestreck.");
 }
