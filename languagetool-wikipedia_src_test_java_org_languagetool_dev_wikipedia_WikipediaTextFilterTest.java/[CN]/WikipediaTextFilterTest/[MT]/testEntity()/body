@@ -1,5 +1,5 @@
 {
-  assertExtract("rund 20&nbsp;Kilometer s??dlich","rund 20 Kilometer s??dlich");
+  assertExtract("rund 20&nbsp;Kilometer s??dlich","rund 20\u00A0Kilometer s??dlich");
   assertExtract("one&lt;br/&gt;two","one<br/>two");
   assertExtract("one &ndash; two","one ??? two");
   assertExtract("one &mdash; two","one ??? two");

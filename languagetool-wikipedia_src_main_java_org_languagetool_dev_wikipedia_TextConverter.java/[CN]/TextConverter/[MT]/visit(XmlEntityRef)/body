@@ -1,7 +1,7 @@
 {
   addMapping(er);
   if ("nbsp".equals(er.getName())) {
-    write(' ');
+    write('\u00A0');
   }
  else {
     String ch=StringEscapeUtils.unescapeHtml("&" + er.getName() + ";");
