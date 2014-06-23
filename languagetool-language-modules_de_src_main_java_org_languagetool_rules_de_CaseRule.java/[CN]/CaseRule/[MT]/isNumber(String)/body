@@ -1,0 +1,9 @@
+{
+  try {
+    AnalyzedTokenReadings lookup=tagger.lookup(StringTools.lowercaseFirstChar(token));
+    return lookup != null && lookup.hasPosTag("ZAL");
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

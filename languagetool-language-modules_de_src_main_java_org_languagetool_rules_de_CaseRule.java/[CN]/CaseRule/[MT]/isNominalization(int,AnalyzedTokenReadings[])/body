@@ -1,7 +1,7 @@
 {
   String token=tokens[i].getToken();
   AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
-  if (StringTools.startsWithUppercase(token) && !hasNounReading(nextReadings)) {
+  if (StringTools.startsWithUppercase(token) && !isNumber(token) && !hasNounReading(nextReadings)) {
     AnalyzedTokenReadings prevToken=i > 0 ? tokens[i - 1] : null;
     AnalyzedTokenReadings prevPrevToken=i > 1 ? tokens[i - 2] : null;
     return hasPartialTag(prevToken,"PRO") || (hasPartialTag(prevPrevToken,"PRO") && hasPartialTag(prevToken,"ADJ","ADV"));

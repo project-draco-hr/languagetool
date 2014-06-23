@@ -19,6 +19,8 @@
   assertGood("Er wird etwas Verr??cktes tr??umen.");
   assertGood("Er wird etwas sch??n Verr??cktes tr??umen.");
   assertGood("Er wird etwas so Verr??cktes tr??umen.");
+  assertGood("Tom ist etwas ??ber drei??ig.");
+  assertBad("Tom ist etwas ??ber Drei??ig.");
   assertGood("Ein Menschenfreund.");
   assertGood("Der Nachfahre.");
   assertGood("Hier ein Satz, \"Ein Zitat.\"");
