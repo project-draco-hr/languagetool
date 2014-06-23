@@ -16,6 +16,9 @@
   assertGood("Unser J??ngster ist da.");
   assertGood("Alles Erfundene ist wahr.");
   assertGood("Sie hat immer ihr Bestes getan.");
+  assertGood("Er wird etwas Verr??cktes tr??umen.");
+  assertGood("Er wird etwas sch??n Verr??cktes tr??umen.");
+  assertGood("Er wird etwas so Verr??cktes tr??umen.");
   assertGood("Ein Menschenfreund.");
   assertGood("Der Nachfahre.");
   assertGood("Hier ein Satz, \"Ein Zitat.\"");
