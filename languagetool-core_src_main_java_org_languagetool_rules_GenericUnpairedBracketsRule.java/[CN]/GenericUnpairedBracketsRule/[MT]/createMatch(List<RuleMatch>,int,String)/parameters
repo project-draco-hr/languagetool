@@ -1,0 +1,3 @@
+List<RuleMatch> ruleMatches
+int startPos
+String symbol
