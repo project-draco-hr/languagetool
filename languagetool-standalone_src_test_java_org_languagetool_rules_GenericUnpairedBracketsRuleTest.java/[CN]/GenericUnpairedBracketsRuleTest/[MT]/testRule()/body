@@ -2,6 +2,8 @@
   setUpRule(new MyDemo());
   assertMatches("This is ??correct??.",0);
   assertMatches("??Correct??\n??And ??here?? it ends.??",0);
+  assertMatches("??Correct. This is more than one sentence.??",0);
+  assertMatches("??Correct. This is more than one sentence.??\n??And ??here?? it ends.??",0);
   assertMatches("??Correct??\n\n??And here it ends.??\n\nMore text.",0);
   assertMatches("This ??is also ??correct????.",0);
   assertMatches("Good.\n\nThis ??is also ??correct????.",0);
@@ -11,4 +13,6 @@
   assertMatches("This is correct.\n\nBut this is not??",1);
   assertMatches("??This is correct??\n\nBut this is not??",1);
   assertMatches("??This is correct??\n\nBut this ??is?? not??",1);
+  assertMatches("This is not correct. No matter if it's more than one sentence??",1);
+  assertMatches("??This is not correct. No matter if it's more than one sentence",1);
 }

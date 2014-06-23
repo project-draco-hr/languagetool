@@ -1,9 +1,4 @@
 {
-  List<AnalyzedSentence> analyzedSentence=langTool.analyzeText(input);
-  List<RuleMatch> matches=new ArrayList<>();
-  for (  AnalyzedSentence sentence : analyzedSentence) {
-    RuleMatch[] sentenceMatches=rule.match(sentence);
-    Collections.addAll(matches,sentenceMatches);
-  }
-  assertEquals("Expected " + expectedMatches + " matches, got: "+ matches,expectedMatches,matches.size());
+  List<RuleMatch> ruleMatches=langTool.check(input);
+  assertEquals("Expected " + expectedMatches + " matches, got: "+ ruleMatches,expectedMatches,ruleMatches.size());
 }

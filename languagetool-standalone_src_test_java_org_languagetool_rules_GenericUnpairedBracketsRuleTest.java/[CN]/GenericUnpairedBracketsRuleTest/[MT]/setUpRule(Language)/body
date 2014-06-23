@@ -1,4 +1,8 @@
 {
-  rule=new GenericUnpairedBracketsRule(TestTools.getEnglishMessages(),language);
   langTool=new JLanguageTool(language);
+  for (  Rule rule : langTool.getAllRules()) {
+    langTool.disableRule(rule.getId());
+  }
+  GenericUnpairedBracketsRule rule=new GenericUnpairedBracketsRule(TestTools.getEnglishMessages(),language);
+  langTool.addRule(rule);
 }
