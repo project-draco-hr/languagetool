@@ -1,0 +1,8 @@
+{
+  JRadioButtonMenuItem lfItem=new JRadioButtonMenuItem(new SelectLFAction(laf));
+  lafMenu.add(lfItem);
+  buttonGroup.add(lfItem);
+  if (laf.getName().equals(UIManager.getLookAndFeel().getName())) {
+    buttonGroup.setSelected(lfItem.getModel(),true);
+  }
+}

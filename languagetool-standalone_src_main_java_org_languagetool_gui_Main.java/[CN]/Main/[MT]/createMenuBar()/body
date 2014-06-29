@@ -25,8 +25,18 @@
   grammarMenu.add(new SelectFontAction());
   JMenu lafMenu=new JMenu(messages.getString("guiLookAndFeelMenu"));
   UIManager.LookAndFeelInfo[] lafInfo=UIManager.getInstalledLookAndFeels();
+  ButtonGroup buttonGroup=new ButtonGroup();
   for (  UIManager.LookAndFeelInfo laf : lafInfo) {
-    lafMenu.add(new JMenuItem(new SelectLFAction(laf)));
+    if (!"Nimbus".equals(laf.getName())) {
+      continue;
+    }
+    addLookAndFeelMenuItem(lafMenu,laf,buttonGroup);
+  }
+  for (  UIManager.LookAndFeelInfo laf : lafInfo) {
+    if ("Nimbus".equals(laf.getName())) {
+      continue;
+    }
+    addLookAndFeelMenuItem(lafMenu,laf,buttonGroup);
   }
   grammarMenu.add(lafMenu);
   helpMenu.add(new AboutAction());
