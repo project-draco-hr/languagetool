@@ -1,0 +1,40 @@
+{
+  final List<Rule> rules=new ArrayList<>();
+  final Scanner scanner=new Scanner(file);
+  Rule r=new Rule();
+  while (scanner.hasNextLine()) {
+    String line=scanner.nextLine();
+    if (line.contains("id=\"") && line.contains("rule")) {
+      if (!line.contains("name=\"")) {
+        line+=scanner.nextLine();
+      }
+      if (r.numberOfExamples() > 0) {
+        rules.add(r);
+        r=new Rule();
+      }
+      r.id=line;
+      r.name=line;
+      r.id=r.id.replaceAll(".*id=\"","").replaceAll("\".*","");
+      r.name=r.name.replaceAll(".*name=\"","").replaceAll("\".*","");
+      for (      Rule rule : rules) {
+        if (r.name.equals(rule.name)) {
+          r.name+=" ";
+        }
+      }
+    }
+ else     if (line.contains("type=\"correct\"") || line.contains("type='correct'")) {
+      while (!line.contains("</example>")) {
+        line+=scanner.nextLine();
+      }
+      r.correct.add(line.replaceAll("marker","b").replaceAll(".*<example.*?>","").replaceAll("</example>.*",""));
+    }
+ else     if (line.contains("type=\"incorrect\"") || line.contains("type='incorrect'")) {
+      while (!line.contains("</example>")) {
+        line+=scanner.nextLine();
+      }
+      r.incorrect.add(line.replaceAll("marker","b").replaceAll(".*<example.*?>","").replaceAll("</example>.*",""));
+    }
+  }
+  scanner.close();
+  return rules;
+}
