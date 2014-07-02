@@ -19,6 +19,7 @@
   testSplit("??s clar??? traduir ??s una feina endimoniada");
   testSplit("??El cord?? del frare????? surt d'una manera desguitarrada");
   testSplit("convidar el seu heroi ???del ram que sigui?????? a prendre caf??.");
+  testSplit("No Mr. Spock sin?? un altre.");
   testSplit("Vegeu el cap. 24 del llibre.");
   testSplit("Vegeu el cap. IX del llibre.");
   testSplit("Viu al n??m. 24 del carrer de l'Hort.");
