@@ -1,3 +1,3 @@
 {
-  return "WHITESPACE_RULE";
+  return "OLD_WHITESPACE_RULE";
 }
