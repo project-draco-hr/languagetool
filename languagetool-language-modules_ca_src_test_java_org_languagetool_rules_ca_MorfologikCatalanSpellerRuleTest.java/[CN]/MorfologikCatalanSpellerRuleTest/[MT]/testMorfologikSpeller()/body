@@ -56,6 +56,9 @@
   matches=rule.match(langTool.getAnalyzedSentence("colaborassi??"));
   assertEquals(1,matches.length);
   assertEquals("col??laboraci??",matches[0].getSuggestedReplacements().get(0));
+  matches=rule.match(langTool.getAnalyzedSentence("colaboraci??"));
+  assertEquals(1,matches.length);
+  assertEquals("col??laboraci??",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"));
   assertEquals(1,matches.length);
   matches=rule.match(langTool.getAnalyzedSentence("plassa"));
