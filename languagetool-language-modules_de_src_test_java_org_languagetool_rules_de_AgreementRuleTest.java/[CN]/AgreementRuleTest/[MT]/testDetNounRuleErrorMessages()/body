@@ -4,5 +4,5 @@
   assertBadWithMessage("Das Fahrr??der.","bez??glich Numerus");
   assertBadWithMessage("Die Tischen sind ecking.","bez??glich Kasus");
   assertBadWithMessage("Die Tischen sind ecking.","und Genus");
-  assertBadWithMessage("Bei dem Papierabz??ge von Digitalbildern bestellte werden.","bez??glich Kasus, Genus oder Numerus.");
+  assertBadWithMessage("Bei dem Papierabz??ge von Digitalbildern bestellt werden.","bez??glich Kasus, Genus oder Numerus.");
 }
