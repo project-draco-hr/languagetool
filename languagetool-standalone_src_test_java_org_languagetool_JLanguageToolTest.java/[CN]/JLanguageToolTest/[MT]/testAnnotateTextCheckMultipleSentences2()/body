@@ -1,5 +1,5 @@
 {
-  JLanguageTool languageTool=new JLanguageTool(new English());
+  JLanguageTool languageTool=new JLanguageTool(english);
   AnnotatedText annotatedText=new AnnotatedTextBuilder().addText("here").addText(" is an error. And ").addMarkup("<i attr='foo'/>").addText("here is also ").addMarkup("<i>").addText("a").addMarkup("</i>").addText(" error.").build();
   List<RuleMatch> matches=languageTool.check(annotatedText);
   assertThat(matches.size(),is(2));

@@ -1,0 +1,5 @@
+{
+  JLanguageTool languageTool=new JLanguageTool(english);
+  List<RuleMatch> matches=languageTool.check("??");
+  assertThat(matches.size(),is(0));
+}

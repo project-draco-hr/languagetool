@@ -1,5 +1,5 @@
 {
-  JLanguageTool languageTool=new JLanguageTool(new English());
+  JLanguageTool languageTool=new JLanguageTool(english);
   List<String> sentences=languageTool.sentenceTokenize("This is a sentence! This is another one.");
   assertEquals(2,sentences.size());
   assertEquals("This is a sentence! ",sentences.get(0));
