@@ -1,0 +1,8 @@
+{
+  if (args.length != 2) {
+    System.err.println("Usage: " + SentenceChecker.class.getSimpleName() + " <langCode> <sentenceFile>");
+    System.exit(1);
+  }
+  SentenceChecker checker=new SentenceChecker();
+  checker.run(Language.getLanguageForShortName(args[0]),new File(args[1]));
+}
