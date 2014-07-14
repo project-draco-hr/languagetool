@@ -5,7 +5,7 @@
   try {
     server.run();
     try {
-      System.out.println("Testing timeout now, please ignore the exception");
+      System.out.println("=== Testing timeout now, please ignore the following exception ===");
       check(new GermanyGerman(),"Einq Tesz miit fieln Fehlan, desshalb sehee laagnsam bee dr Rechtschriebp??rfung");
       fail("Check was expected to be stopped because it took too long");
     }
