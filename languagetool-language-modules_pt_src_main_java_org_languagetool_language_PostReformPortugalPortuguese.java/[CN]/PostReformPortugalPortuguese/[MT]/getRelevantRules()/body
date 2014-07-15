@@ -1,6 +1,0 @@
-{
-  final List<Class<? extends Rule>> rules=new ArrayList<>(super.getRelevantRules());
-  rules.remove(PortugueseCompoundRule.class);
-  rules.add(PostReformPortugueseCompoundRule.class);
-  return rules;
-}

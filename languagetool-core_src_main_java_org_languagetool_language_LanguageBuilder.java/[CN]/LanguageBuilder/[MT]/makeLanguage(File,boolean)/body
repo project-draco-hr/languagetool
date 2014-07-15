@@ -41,7 +41,7 @@
       }
       @Override public void setName(      final String name){
       }
-      @Override public List<Class<? extends Rule>> getRelevantRules(){
+      @Override public List<Rule> getRelevantRules(      ResourceBundle messages){
         return Collections.emptyList();
       }
       @Override public List<String> getRuleFileNames(){

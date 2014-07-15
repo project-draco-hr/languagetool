@@ -1,7 +1,0 @@
-{
-  final List<Class<? extends Rule>> rules=new ArrayList<>();
-  rules.addAll(super.getRelevantRules());
-  rules.add(BritishReplaceRule.class);
-  rules.add(MorfologikBritishSpellerRule.class);
-  return rules;
-}

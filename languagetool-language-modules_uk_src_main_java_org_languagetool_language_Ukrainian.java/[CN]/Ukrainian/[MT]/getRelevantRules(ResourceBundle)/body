@@ -1,0 +1,3 @@
+{
+  return Arrays.asList(new CommaWhitespaceRule(messages),new MorfologikUkrainianSpellerRule(messages,this),new MixedAlphabetsRule(messages),new MultipleWhitespaceRule(messages,this),new SimpleReplaceRule(messages),new TokenAgreementRule(messages));
+}

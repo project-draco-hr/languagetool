@@ -3,9 +3,9 @@
   this.motherTongue=motherTongue;
   final ResourceBundle messages=ResourceBundleTools.getMessageBundle(language);
   final Rule[] allBuiltinRules=getAllBuiltinRules(language,messages);
-  for (  final Rule element : allBuiltinRules) {
-    if (element.supportsLanguage(language)) {
-      builtinRules.add(element);
+  for (  final Rule rule : allBuiltinRules) {
+    if (rule.supportsLanguage(language)) {
+      builtinRules.add(rule);
     }
   }
   disambiguator=language.getDisambiguator();
