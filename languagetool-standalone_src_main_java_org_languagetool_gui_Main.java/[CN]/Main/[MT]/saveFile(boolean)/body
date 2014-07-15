@@ -10,22 +10,10 @@
     currentFile=file;
     updateTitle();
   }
-  BufferedWriter writer=null;
-  try {
-    writer=new BufferedWriter(new FileWriter(currentFile));
+  try (BufferedWriter writer=new BufferedWriter(new FileWriter(currentFile))){
     writer.write(textArea.getText());
   }
  catch (  IOException ex) {
     Tools.showError(ex);
-  }
- finally {
-    if (writer != null) {
-      try {
-        writer.close();
-      }
- catch (      IOException ex) {
-        Tools.showError(ex);
-      }
-    }
   }
 }
