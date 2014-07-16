@@ -1,5 +1,5 @@
 {
-  try (InputStreamReader reader=new InputStreamReader(file,encoding);BufferedReader br=new BufferedReader(reader)){
+  try (InputStreamReader reader=new InputStreamReader(stream,encoding);BufferedReader br=new BufferedReader(reader)){
     String line;
     while ((line=br.readLine()) != null) {
       if (line.length() < 1 || line.charAt(0) == '#') {

@@ -3,7 +3,7 @@
   BufferedReader br=null;
   final Set<String> words=new HashSet<>();
   try {
-    isr=new InputStreamReader(file,"UTF-8");
+    isr=new InputStreamReader(stream,"UTF-8");
     br=new BufferedReader(isr);
     String line;
     while ((line=br.readLine()) != null) {

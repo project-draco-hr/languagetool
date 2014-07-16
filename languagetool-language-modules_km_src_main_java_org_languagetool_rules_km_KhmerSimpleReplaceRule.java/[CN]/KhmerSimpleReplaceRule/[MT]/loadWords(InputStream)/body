@@ -3,7 +3,7 @@
   InputStreamReader isr=null;
   BufferedReader br=null;
   try {
-    isr=new InputStreamReader(file,getEncoding());
+    isr=new InputStreamReader(stream,getEncoding());
     br=new BufferedReader(isr);
     String line;
     while ((line=br.readLine()) != null) {

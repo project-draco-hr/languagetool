@@ -2,6 +2,6 @@
   final DisambiguationRuleHandler handler=new DisambiguationRuleHandler();
   final SAXParserFactory factory=SAXParserFactory.newInstance();
   final SAXParser saxParser=factory.newSAXParser();
-  saxParser.parse(file,handler);
+  saxParser.parse(stream,handler);
   return handler.getDisambRules();
 }

@@ -3,7 +3,7 @@
   final SAXParserFactory factory=SAXParserFactory.newInstance();
   final SAXParser saxParser=factory.newSAXParser();
   saxParser.getXMLReader().setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd",false);
-  saxParser.parse(file,handler);
+  saxParser.parse(stream,handler);
   final List<PatternRule> rules=handler.getRules();
   final ResourceBundle messages=ResourceBundle.getBundle(JLanguageTool.MESSAGE_BUNDLE,motherTongue.getLocale());
   for (  final PatternRule rule : rules) {
