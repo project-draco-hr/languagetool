@@ -1,10 +1,8 @@
 {
-  final List<Rule> rules=new ArrayList<>();
   try {
-    rules.addAll(language.getRelevantRules(messages));
+    return language.getRelevantRules(messages);
   }
  catch (  IOException e) {
     throw new RuntimeException("Could not get rules of language " + language,e);
   }
-  return rules.toArray(new Rule[rules.size()]);
 }
