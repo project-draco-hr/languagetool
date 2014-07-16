@@ -27,7 +27,7 @@
       }
     }
   }
-   List<Map<String,String>> result=new ArrayList<>();
+   final List<Map<String,String>> result=new ArrayList<>();
   for (  Map<String,String> map : list) {
     result.add(Collections.unmodifiableMap(map));
   }
