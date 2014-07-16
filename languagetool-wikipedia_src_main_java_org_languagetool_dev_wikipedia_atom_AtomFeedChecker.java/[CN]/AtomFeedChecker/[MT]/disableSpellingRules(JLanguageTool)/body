@@ -1,0 +1,8 @@
+{
+  for (  Rule rule : langTool.getAllActiveRules()) {
+    if (rule.isDictionaryBasedSpellingRule()) {
+      langTool.disableRule(rule.getId());
+      System.out.println("Disabled spelling rule: " + rule.getId());
+    }
+  }
+}
