@@ -1,8 +1,8 @@
 {
   final Map<String,List<LookedUpTerm>> map=new HashMap<>();
-  try (Scanner scanner=new Scanner(inputStream,encoding)){
-    while (scanner.hasNextLine()) {
-      final String line=scanner.nextLine();
+  try (InputStreamReader reader=new InputStreamReader(inputStream,encoding);BufferedReader br=new BufferedReader(reader)){
+    String line;
+    while ((line=br.readLine()) != null) {
       if (StringTools.isEmpty(line) || line.charAt(0) == '#') {
         continue;
       }
