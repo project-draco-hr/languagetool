@@ -1,10 +1,6 @@
 {
   final List<Map<String,String>> list=new ArrayList<>();
-  InputStreamReader isr=null;
-  BufferedReader br=null;
-  try {
-    isr=new InputStreamReader(stream,getEncoding());
-    br=new BufferedReader(isr);
+  try (InputStreamReader isr=new InputStreamReader(stream,getEncoding());BufferedReader br=new BufferedReader(isr)){
     String line;
     while ((line=br.readLine()) != null) {
       line=line.trim();
@@ -31,15 +27,7 @@
       }
     }
   }
-  finally {
-    if (br != null) {
-      br.close();
-    }
-    if (isr != null) {
-      isr.close();
-    }
-  }
-  final List<Map<String,String>> result=new ArrayList<>();
+   final List<Map<String,String>> result=new ArrayList<>();
   for (  Map<String,String> map : list) {
     result.add(Collections.unmodifiableMap(map));
   }
