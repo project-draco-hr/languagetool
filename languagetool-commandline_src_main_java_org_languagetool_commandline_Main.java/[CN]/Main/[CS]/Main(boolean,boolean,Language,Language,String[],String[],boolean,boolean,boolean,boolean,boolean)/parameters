@@ -4,6 +4,7 @@ Language language
 Language motherTongue
 String[] disabledRules
 String[] enabledRules
+boolean enabledOnly
 boolean apiFormat
 boolean applySuggestions
 boolean autoDetect

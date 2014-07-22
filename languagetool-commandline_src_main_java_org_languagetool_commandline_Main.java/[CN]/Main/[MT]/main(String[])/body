@@ -49,7 +49,7 @@ catch (  UnknownParameterException e) {
     languageHint="Expected text language: " + options.getLanguage().getName();
   }
   options.getLanguage().getSentenceTokenizer().setSingleLineBreaksMarksParagraph(options.isSingleLineBreakMarksParagraph());
-  final Main prg=new Main(options.isVerbose(),options.isTaggerOnly(),options.getLanguage(),options.getMotherTongue(),options.getDisabledRules(),options.getEnabledRules(),options.isApiFormat(),options.isApplySuggestions(),options.isAutoDetect(),options.isSingleLineBreakMarksParagraph());
+  final Main prg=new Main(options.isVerbose(),options.isTaggerOnly(),options.getLanguage(),options.getMotherTongue(),options.getDisabledRules(),options.getEnabledRules(),options.getUseEnabledOnly(),options.isApiFormat(),options.isApplySuggestions(),options.isAutoDetect(),options.isSingleLineBreakMarksParagraph());
   if (languageHint != null) {
     String spellHint=prg.isSpellCheckingActive() ? "" : " (no spell checking active, specify a language variant if available)";
     System.out.println(languageHint + spellHint);

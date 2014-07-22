@@ -15,5 +15,5 @@
   lt=new MultiThreadedJLanguageTool(language,motherTongue);
   lt.activateDefaultPatternRules();
   lt.activateDefaultFalseFriendRules();
-  Tools.selectRules(lt,disabledRules,enabledRules);
+  Tools.selectRules(lt,disabledRules,enabledRules,enabledOnly);
 }
