@@ -30,7 +30,7 @@
     System.out.println(freqList.size() + " frequency values applied in " + freqValuesApplied+ " word forms.");
   }
  catch (  IOException e) {
-    System.out.println("Cannot read file: " + dictFile.getAbsolutePath());
+    throw new RuntimeException("Cannot read file: " + dictFile.getAbsolutePath());
   }
   tempFile.deleteOnExit();
   return tempFile;

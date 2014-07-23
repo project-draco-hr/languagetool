@@ -11,6 +11,6 @@
     br.close();
   }
  catch (  IOException e) {
-    System.out.println("Cannot read file: " + freqListFile.getAbsolutePath());
+    throw new RuntimeException("Cannot read file: " + freqListFile.getAbsolutePath());
   }
 }
