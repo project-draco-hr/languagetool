@@ -1,0 +1,16 @@
+{
+  String preText=text.substring(0,fromPos);
+  String[] parts=preText.trim().split("\\s");
+  if (parts.length == 0) {
+    return "";
+  }
+ else {
+    String lastPart=parts[parts.length - 1];
+    if (lastPart.matches(".*[()\\[\\],;:/-].*")) {
+      return "";
+    }
+ else {
+      return lastPart;
+    }
+  }
+}

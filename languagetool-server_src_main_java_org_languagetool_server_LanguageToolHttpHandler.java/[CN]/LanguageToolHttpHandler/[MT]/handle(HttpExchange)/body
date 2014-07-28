@@ -18,9 +18,18 @@ synchronized (this) {
         printListOfLanguages(httpExchange);
       }
  else {
-        text=parameters.get("text");
-        if (text == null) {
-          throw new IllegalArgumentException("Missing 'text' parameter");
+        if (afterTheDeadlineMode) {
+          text=parameters.get("data");
+          if (text == null) {
+            throw new IllegalArgumentException("Missing 'data' parameter");
+          }
+          text=text.replaceAll("</p>","\n\n").replaceAll("<.*?>","");
+        }
+ else {
+          text=parameters.get("text");
+          if (text == null) {
+            throw new IllegalArgumentException("Missing 'text' parameter");
+          }
         }
         checkText(text,httpExchange,parameters);
       }

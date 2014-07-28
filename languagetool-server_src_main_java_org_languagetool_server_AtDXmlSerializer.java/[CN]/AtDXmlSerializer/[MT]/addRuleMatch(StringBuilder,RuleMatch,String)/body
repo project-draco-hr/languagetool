@@ -1,0 +1,27 @@
+{
+  String errorText=text.substring(match.getFromPos(),match.getToPos());
+  if (errorText.contains("(") || errorText.contains(")")) {
+    return;
+  }
+  sb.append("  <error>\n");
+  sb.append("    <string>").append(escapeXML(errorText)).append("</string>\n");
+  String cleanMessage=match.getShortMessage() != null ? match.getShortMessage() : match.getMessage().replace("<suggestion>","'").replace("</suggestion>","'");
+  sb.append("    <description>").append(escapeXML(cleanMessage)).append("</description>\n");
+  String preContext=getPreContext(text,match.getFromPos());
+  if (preContext.isEmpty()) {
+    sb.append("    <precontext/>\n");
+  }
+ else {
+    sb.append("    <precontext>").append(escapeXML(preContext)).append("</precontext>\n");
+  }
+  if (match.getSuggestedReplacements().size() > 0) {
+    sb.append("    <suggestions>\n");
+    for (    String suggestion : match.getSuggestedReplacements()) {
+      sb.append("      <option>").append(escapeXML(suggestion)).append("</option>\n");
+    }
+    sb.append("    </suggestions>\n");
+  }
+  String type=match.getRule().isDictionaryBasedSpellingRule() ? "spelling" : "grammar";
+  sb.append("    <type>").append(escapeXML(type)).append("</type>\n");
+  sb.append("  </error>\n");
+}

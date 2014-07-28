@@ -1,4 +1,11 @@
 {
-  httpExchange.sendResponseHeaders(returnCode,response.getBytes(ENCODING).length);
-  httpExchange.getResponseBody().write(response.getBytes(ENCODING));
+  if (afterTheDeadlineMode) {
+    String xmlResponse="<results><message>" + escapeXml(response) + "</message></results>";
+    httpExchange.sendResponseHeaders(returnCode,xmlResponse.getBytes(ENCODING).length);
+    httpExchange.getResponseBody().write(xmlResponse.getBytes(ENCODING));
+  }
+ else {
+    httpExchange.sendResponseHeaders(returnCode,response.getBytes(ENCODING).length);
+    httpExchange.getResponseBody().write(response.getBytes(ENCODING));
+  }
 }
