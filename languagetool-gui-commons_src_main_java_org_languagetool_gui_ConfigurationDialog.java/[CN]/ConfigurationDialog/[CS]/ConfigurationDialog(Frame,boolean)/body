@@ -1,6 +1,6 @@
 {
   this.owner=owner;
-  this.insideOOo=insideOOo;
+  this.insideOffice=insideOffice;
   this.original=null;
   this.config=new Configuration();
   messages=JLanguageTool.getMessageBundle();
