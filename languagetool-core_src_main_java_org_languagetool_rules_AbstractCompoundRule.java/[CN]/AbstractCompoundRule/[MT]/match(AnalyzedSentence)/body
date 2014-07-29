@@ -18,28 +18,10 @@
     if (token.isImmunized()) {
       continue;
     }
-    final StringBuilder sb=new StringBuilder();
-    int j=0;
-    AnalyzedTokenReadings firstMatchToken=null;
+    final AnalyzedTokenReadings firstMatchToken=prevTokens.peek();
     final List<String> stringsToCheck=new ArrayList<>();
     final List<String> origStringsToCheck=new ArrayList<>();
-    final Map<String,AnalyzedTokenReadings> stringToToken=new HashMap<>();
-    for (    AnalyzedTokenReadings atr : prevTokens) {
-      if (j == 0) {
-        firstMatchToken=atr;
-      }
-      sb.append(' ');
-      sb.append(atr.getToken());
-      if (j >= 1) {
-        final String stringToCheck=normalize(sb.toString());
-        stringsToCheck.add(stringToCheck);
-        origStringsToCheck.add(sb.toString().trim());
-        if (!stringToToken.containsKey(stringToCheck)) {
-          stringToToken.put(stringToCheck,atr);
-        }
-      }
-      j++;
-    }
+    final Map<String,AnalyzedTokenReadings> stringToToken=getStringToTokenMap(prevTokens,stringsToCheck,origStringsToCheck);
     for (int k=stringsToCheck.size() - 1; k >= 0; k--) {
       final String stringToCheck=stringsToCheck.get(k);
       final String origStringToCheck=origStringsToCheck.get(k);
