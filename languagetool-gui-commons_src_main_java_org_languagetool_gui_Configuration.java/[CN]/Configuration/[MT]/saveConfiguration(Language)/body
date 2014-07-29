@@ -33,6 +33,6 @@
     props.setProperty(key,configForOtherLangs.get(key));
   }
   try (FileOutputStream fos=new FileOutputStream(configFile)){
-    props.store(fos,"LanguageTool configuration");
+    props.store(fos,"LanguageTool configuration (" + JLanguageTool.VERSION + "/"+ JLanguageTool.BUILD_DATE+ ")");
   }
  }
