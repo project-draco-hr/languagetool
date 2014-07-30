@@ -1,0 +1,9 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append("<results>\n");
+  for (  RuleMatch match : matches) {
+    addRuleMatch(sb,match,text);
+  }
+  sb.append("</results>\n");
+  return sb.toString();
+}

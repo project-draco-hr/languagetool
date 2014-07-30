@@ -37,6 +37,9 @@
           break;
         }
         if (GermanHelper.hasReadingOfType(tokens[tokenPos],POSType.NOMEN)) {
+          if (i >= 2 && GermanHelper.hasReadingOfType(tokens[i - 2],POSType.ADJEKTIV) && "als".equals(tokens[i - 1].getToken()) && "das".equals(tokens[i].getToken())) {
+            continue;
+          }
           final RuleMatch ruleMatch=checkDetAdjNounAgreement(tokens[i],nextToken,tokens[i + 2]);
           if (ruleMatch != null) {
             ruleMatches.add(ruleMatch);

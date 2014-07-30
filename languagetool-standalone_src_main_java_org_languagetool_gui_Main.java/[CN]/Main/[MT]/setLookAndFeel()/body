@@ -1,12 +1,28 @@
 {
+  String lookAndFeelName=null;
+  String className=null;
   try {
-    for (    UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-      if ("Nimbus".equals(info.getName())) {
-        UIManager.setLookAndFeel(info.getClassName());
-        break;
-      }
+    Configuration config=new Configuration(new File(System.getProperty("user.home")),LanguageToolSupport.CONFIG_FILE,null);
+    if (config.getLookAndFeelName() != null) {
+      lookAndFeelName=config.getLookAndFeelName();
     }
   }
- catch (  Exception ignored) {
+ catch (  IOException ex) {
+  }
+  if (lookAndFeelName == null) {
+    lookAndFeelName="Nimbus";
+  }
+  for (  UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+    if (lookAndFeelName.equals(info.getName())) {
+      className=info.getClassName();
+      break;
+    }
+  }
+  if (className != null) {
+    try {
+      UIManager.setLookAndFeel(className);
+    }
+ catch (    Exception ignored) {
+    }
   }
 }

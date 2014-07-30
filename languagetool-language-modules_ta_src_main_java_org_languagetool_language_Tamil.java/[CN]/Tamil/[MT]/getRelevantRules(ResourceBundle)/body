@@ -1,0 +1,3 @@
+{
+  return Arrays.asList(new CommaWhitespaceRule(messages),new DoublePunctuationRule(messages),new MultipleWhitespaceRule(messages,this),new LongSentenceRule(messages),new SentenceWhitespaceRule(messages));
+}

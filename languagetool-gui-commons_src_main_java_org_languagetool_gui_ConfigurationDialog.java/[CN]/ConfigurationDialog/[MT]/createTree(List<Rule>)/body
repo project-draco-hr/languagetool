@@ -1,6 +1,6 @@
 {
   DefaultMutableTreeNode root=new DefaultMutableTreeNode("Rules");
-  String lastRule=null;
+  String lastRuleId=null;
   TreeMap<String,DefaultMutableTreeNode> parents=new TreeMap<>();
   for (  final Rule rule : rules) {
     if (!parents.containsKey(rule.getCategory().getName())) {
@@ -12,11 +12,11 @@
       root.add(categoryNode);
       parents.put(rule.getCategory().getName(),categoryNode);
     }
-    if (!rule.getId().equals(lastRule)) {
+    if (!rule.getId().equals(lastRuleId)) {
       RuleNode ruleNode=new RuleNode(rule,getState(rule));
       parents.get(rule.getCategory().getName()).add(ruleNode);
     }
-    lastRule=rule.getId();
+    lastRuleId=rule.getId();
   }
   return root;
 }

@@ -1,0 +1,3 @@
+Queue<AnalyzedTokenReadings> prevTokens
+List<String> stringsToCheck
+List<String> origStringsToCheck

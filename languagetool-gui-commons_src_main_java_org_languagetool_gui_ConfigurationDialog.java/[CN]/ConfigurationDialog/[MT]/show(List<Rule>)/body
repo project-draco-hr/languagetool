@@ -1,5 +1,7 @@
 {
-  if (original != null)   config.restoreState(original);
+  if (original != null) {
+    config.restoreState(original);
+  }
   dialog=new JDialog(owner,true);
   dialog.setTitle(messages.getString("guiConfigWindowTitle"));
   Collections.sort(rules,new CategoryComparator());
@@ -142,9 +144,9 @@
 );
   cons.gridx=1;
   cons.gridy=0;
-  final JButton collapseAllbutton=new JButton(messages.getString("guiCollapseAll"));
-  treeButtonPanel.add(collapseAllbutton,cons);
-  collapseAllbutton.addActionListener(new ActionListener(){
+  final JButton collapseAllButton=new JButton(messages.getString("guiCollapseAll"));
+  treeButtonPanel.add(collapseAllButton,cons);
+  collapseAllButton.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
       TreeNode root=(TreeNode)configTree.getModel().getRoot();
       TreePath parent=new TreePath(root);
@@ -187,7 +189,7 @@
   cons.anchor=GridBagConstraints.WEST;
   cons.fill=GridBagConstraints.NONE;
   cons.weightx=0.0f;
-  if (!insideOOo) {
+  if (!insideOffice) {
     serverCheckbox=new JCheckBox(Tools.getLabel(messages.getString("guiRunOnPort")));
     serverCheckbox.setMnemonic(Tools.getMnemonic(messages.getString("guiRunOnPort")));
     serverCheckbox.setSelected(config.getRunServer());

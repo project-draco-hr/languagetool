@@ -1,4 +1,13 @@
 {
-  final List<Class<? extends Rule>> relevantRuleClasses=language.getRelevantRules();
-  return relevantRuleClasses != null && relevantRuleClasses.contains(this.getClass());
+  try {
+    List<Class<? extends Rule>> relevantRuleClasses=new ArrayList<>();
+    List<Rule> relevantRules=language.getRelevantRules(JLanguageTool.getMessageBundle());
+    for (    Rule relevantRule : relevantRules) {
+      relevantRuleClasses.add(relevantRule.getClass());
+    }
+    return relevantRuleClasses.contains(this.getClass());
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
 }

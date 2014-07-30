@@ -2,4 +2,7 @@
   if (previousMatches != null) {
     previousMatches.clear();
   }
+  if (removedMatches != null) {
+    removedMatches.clear();
+  }
 }

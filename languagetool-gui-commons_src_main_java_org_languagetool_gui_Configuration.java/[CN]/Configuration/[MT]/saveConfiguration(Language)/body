@@ -14,7 +14,7 @@
   props.setProperty(USE_GUI_CONFIG_KEY,Boolean.toString(guiConfig));
   props.setProperty(SERVER_RUN_CONFIG_KEY,Boolean.toString(runServer));
   props.setProperty(SERVER_PORT_CONFIG_KEY,Integer.toString(serverPort));
-  if (null != fontName) {
+  if (fontName != null) {
     props.setProperty(FONT_NAME_CONFIG_KEY,fontName);
   }
   if (fontStyle != FONT_STYLE_INVALID) {
@@ -23,6 +23,9 @@
   if (fontSize != FONT_SIZE_INVALID) {
     props.setProperty(FONT_SIZE_CONFIG_KEY,Integer.toString(fontSize));
   }
+  if (this.lookAndFeelName != null) {
+    props.setProperty(LF_NAME_CONFIG_KEY,lookAndFeelName);
+  }
   if (externalRuleDirectory != null) {
     props.setProperty(EXTERNAL_RULE_DIRECTORY,externalRuleDirectory);
   }
@@ -30,6 +33,6 @@
     props.setProperty(key,configForOtherLangs.get(key));
   }
   try (FileOutputStream fos=new FileOutputStream(configFile)){
-    props.store(fos,"LanguageTool configuration");
+    props.store(fos,"LanguageTool configuration (" + JLanguageTool.VERSION + "/"+ JLanguageTool.BUILD_DATE+ ")");
   }
  }

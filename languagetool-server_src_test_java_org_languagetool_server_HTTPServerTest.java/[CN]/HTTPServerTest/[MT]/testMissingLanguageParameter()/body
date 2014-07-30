@@ -3,7 +3,7 @@
   try {
     server.run();
     try {
-      System.out.println("Testing 'missing language parameter' now, please ignore the exception");
+      System.out.println("=== Testing 'missing language parameter' now, please ignore the following exception ===");
       final URL url=new URL("http://localhost:" + DEFAULT_PORT + "/?text=foo");
       HTTPTools.checkAtUrl(url);
       fail();

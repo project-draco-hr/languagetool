@@ -8,6 +8,9 @@
       if (rule.isDictionaryBasedSpellingRule()) {
         langTool.disableRule(rule.getId());
       }
+      if (rule.useInOffice()) {
+        langTool.enableRule(rule.getId());
+      }
     }
     recheck=false;
   }

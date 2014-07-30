@@ -1,13 +1,12 @@
 {
   initializeIfRequired();
-  String[] taggerTokens;
   boolean firstWord=true;
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
   final IStemmer morfologik=new DictionaryLookup(dictionary);
   for (  String word : sentenceTokens) {
     final List<AnalyzedToken> l=new ArrayList<>();
-    taggerTokens=lexiconLookup(word,morfologik);
+    String[] taggerTokens=lexiconLookup(word,morfologik);
     if (firstWord && taggerTokens == null && ignoreCase) {
       taggerTokens=lexiconLookup(word.toLowerCase(),morfologik);
       firstWord=false;

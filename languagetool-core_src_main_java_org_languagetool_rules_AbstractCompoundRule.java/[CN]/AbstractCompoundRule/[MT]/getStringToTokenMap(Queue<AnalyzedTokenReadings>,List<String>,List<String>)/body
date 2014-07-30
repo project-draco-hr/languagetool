@@ -1,0 +1,19 @@
+{
+  final StringBuilder sb=new StringBuilder();
+  final Map<String,AnalyzedTokenReadings> stringToToken=new HashMap<>();
+  int j=0;
+  for (  AnalyzedTokenReadings atr : prevTokens) {
+    sb.append(' ');
+    sb.append(atr.getToken());
+    if (j >= 1) {
+      final String stringToCheck=normalize(sb.toString());
+      stringsToCheck.add(stringToCheck);
+      origStringsToCheck.add(sb.toString().trim());
+      if (!stringToToken.containsKey(stringToCheck)) {
+        stringToToken.put(stringToCheck,atr);
+      }
+    }
+    j++;
+  }
+  return stringToToken;
+}

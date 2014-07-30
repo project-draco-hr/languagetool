@@ -13,6 +13,7 @@
   assertGood("Das haben wir schon.");
   assertGood("Das lesen sie doch sicher in einer Minute durch.");
   assertGood("Das lesen Sie doch sicher in einer Minute durch!");
+  assertGood("Formationswasser, das oxidiert war.");
   assertGood("Das Lesen f??llt mir schwer.");
   assertGood("Sie h??rten ein starkes Klopfen.");
   assertGood("Wer erledigt das Fensterputzen?");

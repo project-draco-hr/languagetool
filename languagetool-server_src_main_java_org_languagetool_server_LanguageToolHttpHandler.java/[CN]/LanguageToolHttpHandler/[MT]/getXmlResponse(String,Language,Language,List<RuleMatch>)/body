@@ -1,0 +1,10 @@
+{
+  if (afterTheDeadlineMode) {
+    AtDXmlSerializer serializer=new AtDXmlSerializer();
+    return serializer.ruleMatchesToXml(matches,text);
+  }
+ else {
+    RuleAsXmlSerializer serializer=new RuleAsXmlSerializer();
+    return serializer.ruleMatchesToXml(matches,text,CONTEXT_SIZE,lang,motherTongue);
+  }
+}

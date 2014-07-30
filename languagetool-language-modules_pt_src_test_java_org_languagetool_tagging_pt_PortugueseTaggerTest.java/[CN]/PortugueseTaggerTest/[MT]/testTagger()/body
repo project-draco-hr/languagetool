@@ -1,0 +1,3 @@
+{
+  TestTools.myAssert("Estes s??o os meus amigos.","Estes/[este]DD0MP0|Estes/[este]PD0MP000 -- " + "s??o/[ser]VMIP3P0|s??o/[s??o]AQ0MS0|s??o/[s??o]NCMS000 -- " + "os/[o]DA0MP0|os/[o]PD0MP000|os/[o]PP3MPA00 -- "+ "meus/[meu]DP1MPS|meus/[meu]PX1MP0S0 -- "+ "amigos/[amigo]AQ0MP0|amigos/[amigo]NCMP000",tokenizer,tagger);
+}

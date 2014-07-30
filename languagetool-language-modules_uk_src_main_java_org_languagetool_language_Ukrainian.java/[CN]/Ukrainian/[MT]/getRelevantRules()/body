@@ -1,3 +1,0 @@
-{
-  return Arrays.asList(CommaWhitespaceRule.class,MorfologikUkrainianSpellerRule.class,MixedAlphabetsRule.class,WhitespaceRule.class,SimpleReplaceRule.class,TokenAgreementRule.class);
-}

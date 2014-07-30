@@ -8,14 +8,11 @@
   aToken=tagger.lookup("Hauses");
   assertEquals("Hauses[Haus/SUB:GEN:SIN:NEU]",toSortedString(aToken));
   assertEquals("Haus",aToken.getReadings().get(0).getLemma());
-  aToken=tagger.lookup("hauses");
-  assertNull(aToken);
-  aToken=tagger.lookup("Gro??");
-  assertNull(aToken);
-  aToken=tagger.lookup("Lieblingsbuchstabe");
-  assertEquals("Lieblingsbuchstabe[Lieblingsbuchstabe/SUB:NOM:SIN:MAS]",toSortedString(aToken));
+  assertNull(tagger.lookup("hauses"));
+  assertNull(tagger.lookup("Gro??"));
+  assertEquals("Lieblingsbuchstabe[Lieblingsbuchstabe/SUB:NOM:SIN:MAS]",toSortedString(tagger.lookup("Lieblingsbuchstabe")));
   aToken=tagger.lookup("gro??er");
-  assertEquals("gro??er[gro??/ADJ:DAT:SIN:FEM:GRU:SOL, gro??/ADJ:GEN:PLU:FEM:GRU:SOL, gro??/ADJ:GEN:PLU:MAS:GRU:SOL, " + "gro??/ADJ:GEN:PLU:NEU:GRU:SOL, gro??/ADJ:GEN:SIN:FEM:GRU:SOL, gro??/ADJ:NOM:SIN:MAS:GRU:IND, " + "gro??/ADJ:NOM:SIN:MAS:GRU:SOL]",toSortedString(aToken));
+  assertEquals("gro??er[gro??/ADJ:DAT:SIN:FEM:GRU:SOL, gro??/ADJ:GEN:PLU:FEM:GRU:SOL, gro??/ADJ:GEN:PLU:MAS:GRU:SOL, " + "gro??/ADJ:GEN:PLU:NEU:GRU:SOL, gro??/ADJ:GEN:SIN:FEM:GRU:SOL, gro??/ADJ:NOM:SIN:MAS:GRU:IND, " + "gro??/ADJ:NOM:SIN:MAS:GRU:SOL]",toSortedString(tagger.lookup("gro??er")));
   assertEquals("gro??",aToken.getReadings().get(0).getLemma());
   aToken=tagger.lookup("Interessen");
   assertEquals("Interessen[Interesse/SUB:AKK:PLU:NEU, Interesse/SUB:DAT:PLU:NEU, " + "Interesse/SUB:GEN:PLU:NEU, Interesse/SUB:NOM:PLU:NEU]",toSortedString(aToken));

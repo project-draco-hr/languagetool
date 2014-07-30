@@ -1,4 +1,6 @@
 {
+  assertGood("Wobei er ??u??erst selten dar??ber spricht.");
+  assertGood("Wobei er ??u??erst selten ??ber seine erste Frau spricht.");
   assertGood("Das Wort ???schreibst??? ist sch??n.");
   assertGood("Die Jagd nach bin Laden.");
   assertGood("Die Unterlagen solltet ihr gr??ndlich durcharbeiten.");

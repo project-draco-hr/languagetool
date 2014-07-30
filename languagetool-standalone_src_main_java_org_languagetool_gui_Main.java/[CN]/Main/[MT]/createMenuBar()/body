@@ -23,6 +23,22 @@
   grammarMenu.add(new AddRulesAction());
   grammarMenu.add(new OptionsAction());
   grammarMenu.add(new SelectFontAction());
+  JMenu lafMenu=new JMenu(messages.getString("guiLookAndFeelMenu"));
+  UIManager.LookAndFeelInfo[] lafInfo=UIManager.getInstalledLookAndFeels();
+  ButtonGroup buttonGroup=new ButtonGroup();
+  for (  UIManager.LookAndFeelInfo laf : lafInfo) {
+    if (!"Nimbus".equals(laf.getName())) {
+      continue;
+    }
+    addLookAndFeelMenuItem(lafMenu,laf,buttonGroup);
+  }
+  for (  UIManager.LookAndFeelInfo laf : lafInfo) {
+    if ("Nimbus".equals(laf.getName())) {
+      continue;
+    }
+    addLookAndFeelMenuItem(lafMenu,laf,buttonGroup);
+  }
+  grammarMenu.add(lafMenu);
   helpMenu.add(new AboutAction());
   undoRedo.undoAction.putValue(Action.NAME,getLabel("guiMenuUndo"));
   undoRedo.undoAction.putValue(Action.MNEMONIC_KEY,getMnemonic("guiMenuUndo"));

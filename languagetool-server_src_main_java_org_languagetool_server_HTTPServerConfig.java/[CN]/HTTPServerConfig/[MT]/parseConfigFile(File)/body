@@ -5,6 +5,10 @@
       props.load(fis);
       maxTextLength=Integer.parseInt(getOptionalProperty(props,"maxTextLength",Integer.toString(Integer.MAX_VALUE)));
       maxCheckTimeMillis=Long.parseLong(getOptionalProperty(props,"maxCheckTimeMillis","-1"));
+      mode=getOptionalProperty(props,"mode","LanguageTool").equalsIgnoreCase("AfterTheDeadline") ? Mode.AfterTheDeadline : Mode.LanguageTool;
+      if (mode == Mode.AfterTheDeadline) {
+        atdLanguage=Language.getLanguageForShortName(getProperty(props,"afterTheDeadlineLanguage",file));
+      }
     }
    }
  catch (  IOException e) {

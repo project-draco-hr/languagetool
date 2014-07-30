@@ -1,5 +1,5 @@
 {
-  if (args.length < 1 || args.length > 10) {
+  if (args.length < 1 || args.length > 12) {
     throw new WrongParameterNumberException();
   }
   final CommandLineOptions options=new CommandLineOptions();
@@ -35,18 +35,21 @@
  else     if (args[i].equals("-b2") || args[i].equals("--bitext")) {
       options.setBitext(true);
     }
+ else     if (args[i].equals("-eo") || args[i].equals("--enabledonly")) {
+      if (options.getDisabledRules().length > 0) {
+        throw new IllegalArgumentException("You cannot specify both disabled rules and enabledonly");
+      }
+      options.setUseEnabledOnly();
+    }
  else     if (args[i].equals("-d") || args[i].equals("--disable")) {
-      if (options.getEnabledRules().length > 0) {
-        throw new IllegalArgumentException("You cannot specify both enabled and disabled rules");
+      if (options.getUseEnabledOnly()) {
+        throw new IllegalArgumentException("You cannot specify both disabled rules and enabledonly");
       }
       checkArguments("-d/--disable",i,args);
       final String rules=args[++i];
       options.setDisabledRules(rules.split(","));
     }
  else     if (args[i].equals("-e") || args[i].equals("--enable")) {
-      if (options.getDisabledRules().length > 0) {
-        throw new IllegalArgumentException("You cannot specify both enabled and disabled rules");
-      }
       checkArguments("-e/--enable",i,args);
       final String rules=args[++i];
       options.setEnabledRules(rules.split(","));

@@ -1,0 +1,3 @@
+{
+  return Arrays.asList(new HunspellRule(messages,this),new KhmerSimpleReplaceRule(messages),new KhmerWordRepeatRule(messages,this),new KhmerUnpairedBracketsRule(messages,this),new KhmerSpaceBeforeRule(messages,this));
+}

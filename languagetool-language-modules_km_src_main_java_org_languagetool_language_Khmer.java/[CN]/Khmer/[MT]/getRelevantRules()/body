@@ -1,3 +1,0 @@
-{
-  return Arrays.asList(HunspellRule.class,KhmerSimpleReplaceRule.class,KhmerWordRepeatRule.class,KhmerUnpairedBracketsRule.class,KhmerSpaceBeforeRule.class);
-}

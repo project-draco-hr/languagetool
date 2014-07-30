@@ -1,0 +1,6 @@
+{
+  final MultipleWhitespaceRule rule=new MultipleWhitespaceRule(TestTools.getEnglishMessages(),new Polish());
+  final JLanguageTool langTool=new JLanguageTool(new Polish());
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("To jest test.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("To jest   test.")).length);
+}

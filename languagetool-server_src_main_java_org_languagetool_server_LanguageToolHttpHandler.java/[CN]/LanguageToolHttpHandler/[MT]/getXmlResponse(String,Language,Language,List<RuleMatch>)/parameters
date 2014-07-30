@@ -1,0 +1,4 @@
+String text
+Language lang
+Language motherTongue
+List<RuleMatch> matches

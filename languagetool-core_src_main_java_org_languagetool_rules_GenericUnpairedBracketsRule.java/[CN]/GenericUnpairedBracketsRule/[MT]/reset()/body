@@ -1,8 +1,6 @@
 {
   ruleMatchStack.clear();
   symbolStack.clear();
-  if (!endOfParagraph) {
-    clearMatches();
-  }
+  clearMatches();
   endOfParagraph=false;
 }

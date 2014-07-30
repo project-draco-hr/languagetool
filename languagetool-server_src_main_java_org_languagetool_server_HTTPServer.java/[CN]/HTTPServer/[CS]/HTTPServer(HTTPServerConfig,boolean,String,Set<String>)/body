@@ -8,6 +8,9 @@
     httpHandler.setMaxTextLength(config.getMaxTextLength());
     httpHandler.setAllowOriginUrl(config.getAllowOriginUrl());
     httpHandler.setMaxCheckTimeMillis(config.getMaxCheckTimeMillis());
+    if (config.getMode() == HTTPServerConfig.Mode.AfterTheDeadline) {
+      httpHandler.setAfterTheDeadlineMode(config.getAfterTheDeadlineLanguage());
+    }
     server.createContext("/",httpHandler);
     executorService=Executors.newFixedThreadPool(THREAD_POOL_SIZE);
     server.setExecutor(executorService);

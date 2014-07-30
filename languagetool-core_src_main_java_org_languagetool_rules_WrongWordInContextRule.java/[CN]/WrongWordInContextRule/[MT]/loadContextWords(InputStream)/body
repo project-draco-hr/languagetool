@@ -1,6 +1,6 @@
 {
   final List<ContextWords> set=new ArrayList<>();
-  try (Scanner scanner=new Scanner(file,"utf-8")){
+  try (Scanner scanner=new Scanner(stream,"utf-8")){
     while (scanner.hasNextLine()) {
       final String line=scanner.nextLine();
       if (line.charAt(0) == '#') {

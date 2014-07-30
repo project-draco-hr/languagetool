@@ -1,0 +1,3 @@
+{
+  return Arrays.asList(new CommaWhitespaceRule(messages),new DoublePunctuationRule(messages),new CatalanUnpairedBracketsRule(messages,this),new UppercaseSentenceStartRule(messages,this),new MultipleWhitespaceRule(messages,this),new LongSentenceRule(messages),new CatalanWordRepeatRule(messages,this),new MorfologikCatalanSpellerRule(messages,this),new CatalanUnpairedQuestionMarksRule(messages,this),new CatalanUnpairedExclamationMarksRule(messages,this),new AccentuationCheckRule(messages),new ComplexAdjectiveConcordanceRule(messages),new CatalanWrongWordInContextRule(messages),new ReflexiveVerbsRule(messages),new SimpleReplaceVerbsRule(messages),new SimpleReplaceRule(messages));
+}

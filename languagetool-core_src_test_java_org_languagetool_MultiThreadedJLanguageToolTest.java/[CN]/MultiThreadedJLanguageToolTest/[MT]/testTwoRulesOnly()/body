@@ -1,7 +1,7 @@
 {
   MultiThreadedJLanguageTool langTool=new MultiThreadedJLanguageTool(new FakeLanguage(){
-    @Override public List<Class<? extends Rule>> getRelevantRules(){
-      return Arrays.asList(UppercaseSentenceStartRule.class,WhitespaceRule.class);
+    @Override public List<Rule> getRelevantRules(    ResourceBundle messages){
+      return Arrays.asList(new UppercaseSentenceStartRule(messages,this),new MultipleWhitespaceRule(messages,this));
     }
   }
 );

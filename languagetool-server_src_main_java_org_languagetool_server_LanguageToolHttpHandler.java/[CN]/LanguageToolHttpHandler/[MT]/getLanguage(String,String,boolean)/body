@@ -1,0 +1,16 @@
+{
+  final Language lang;
+  if (autoDetect) {
+    lang=detectLanguageOfString(text,langParam);
+    print("Auto-detected language: " + lang.getShortNameWithCountryAndVariant());
+  }
+ else {
+    if (afterTheDeadlineMode) {
+      lang=afterTheDeadlineLanguage;
+    }
+ else {
+      lang=Language.getLanguageForShortName(langParam);
+    }
+  }
+  return lang;
+}

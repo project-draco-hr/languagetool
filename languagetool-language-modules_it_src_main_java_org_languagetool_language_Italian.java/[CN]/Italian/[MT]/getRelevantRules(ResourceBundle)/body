@@ -1,0 +1,3 @@
+{
+  return Arrays.asList(new WhitespaceBeforePunctuationRule(messages),new CommaWhitespaceRule(messages),new DoublePunctuationRule(messages),new GenericUnpairedBracketsRule(messages,this),new MorfologikItalianSpellerRule(messages,this),new UppercaseSentenceStartRule(messages,this),new ItalianWordRepeatRule(messages,this),new MultipleWhitespaceRule(messages,this));
+}

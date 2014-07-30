@@ -1,0 +1,4 @@
+{
+  tagger=new PortugueseTagger();
+  tokenizer=new WordTokenizer();
+}

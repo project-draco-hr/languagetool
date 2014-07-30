@@ -1,0 +1,8 @@
+{
+  if (maxEditDistance <= 0) {
+    throw new RuntimeException("maxEditDistance must be > 0: " + maxEditDistance);
+  }
+  final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(filename);
+  dictionary=Dictionary.read(url);
+  speller=new Speller(dictionary,maxEditDistance);
+}

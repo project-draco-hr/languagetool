@@ -1,5 +1,5 @@
 ParagraphHandling paraMode
-List<Rule> allRules
+List<Rule> rules
 int charCount
 int lineCount
 int columnCount

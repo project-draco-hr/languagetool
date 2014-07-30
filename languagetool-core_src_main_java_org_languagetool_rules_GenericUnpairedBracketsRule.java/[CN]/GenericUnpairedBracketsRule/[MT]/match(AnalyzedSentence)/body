@@ -1,5 +1,5 @@
 {
-  ruleMatches=new ArrayList<>();
+  final List<RuleMatch> ruleMatches=new ArrayList<>();
   final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
   if (endOfParagraph) {
     reset();
@@ -9,14 +9,8 @@
     for (int j=0; j < startSymbols.length; j++) {
       final String token=tokens[i].getToken();
       if (token.equals(startSymbols[j]) || token.equals(endSymbols[j])) {
-        boolean precededByWhitespace=true;
-        if (startSymbols[j].equals(endSymbols[j])) {
-          precededByWhitespace=tokens[i - 1].isSentenceStart() || tokens[i].isWhitespaceBefore() || PUNCTUATION_NO_DOT.matcher(tokens[i - 1].getToken()).matches();
-        }
-        boolean followedByWhitespace=true;
-        if (i < tokens.length - 1 && startSymbols[j].equals(endSymbols[j])) {
-          followedByWhitespace=tokens[i + 1].isWhitespaceBefore() || PUNCTUATION.matcher(tokens[i + 1].getToken()).matches();
-        }
+        boolean precededByWhitespace=getPrecededByWhitespace(tokens,i,j);
+        boolean followedByWhitespace=getFollowedByWhitespace(tokens,i,j);
         final boolean noException=isNoException(token,tokens,i,j,precededByWhitespace,followedByWhitespace);
         if (noException && precededByWhitespace && token.equals(startSymbols[j])) {
           symbolStack.push(new SymbolLocator(startSymbols[j],i));
@@ -54,7 +48,7 @@
     }
   }
   for (  final SymbolLocator sLoc : symbolStack) {
-    final RuleMatch rMatch=createMatch(tokens[sLoc.index].getStartPos(),sLoc.symbol);
+    final RuleMatch rMatch=createMatch(ruleMatches,tokens[sLoc.index].getStartPos(),sLoc.symbol);
     if (rMatch != null) {
       ruleMatches.add(rMatch);
     }

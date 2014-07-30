@@ -1,6 +1,10 @@
 {
-  AnalyzedTokenReadings prevToken=i > 0 ? tokens[i - 1] : null;
   String token=tokens[i].getToken();
   AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
-  return prevToken != null && prevToken.hasPartialPosTag("PRO") && StringTools.startsWithUppercase(token) && !hasNounReading(nextReadings);
+  if (StringTools.startsWithUppercase(token) && !isNumber(token) && !hasNounReading(nextReadings)) {
+    AnalyzedTokenReadings prevToken=i > 0 ? tokens[i - 1] : null;
+    AnalyzedTokenReadings prevPrevToken=i > 1 ? tokens[i - 2] : null;
+    return (prevToken != null && "aufs".equals(prevToken.getToken())) || hasPartialTag(prevToken,"PRO") || (hasPartialTag(prevPrevToken,"PRO") && hasPartialTag(prevToken,"ADJ","ADV"));
+  }
+  return false;
 }

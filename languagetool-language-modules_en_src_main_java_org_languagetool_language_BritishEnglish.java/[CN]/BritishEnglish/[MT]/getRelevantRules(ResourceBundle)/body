@@ -1,0 +1,7 @@
+{
+  final List<Rule> rules=new ArrayList<>();
+  rules.addAll(super.getRelevantRules(messages));
+  rules.add(new BritishReplaceRule(messages));
+  rules.add(new MorfologikBritishSpellerRule(messages,this));
+  return rules;
+}

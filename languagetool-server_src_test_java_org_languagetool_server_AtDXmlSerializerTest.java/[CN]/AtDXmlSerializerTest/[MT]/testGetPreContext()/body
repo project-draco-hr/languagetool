@@ -1,0 +1,19 @@
+{
+  AtDXmlSerializer serializer=new AtDXmlSerializer();
+  assertThat(serializer.getPreContext("test",0),is(""));
+  assertThat(serializer.getPreContext("a hour",0),is(""));
+  assertThat(serializer.getPreContext("is a hour",3),is("is"));
+  assertThat(serializer.getPreContext("an test",0),is(""));
+  assertThat(serializer.getPreContext("is an test",3),is("is"));
+  assertThat(serializer.getPreContext(" an test",1),is(""));
+  assertThat(serializer.getPreContext("  an test",2),is(""));
+  assertThat(serializer.getPreContext("  is an test",5),is("is"));
+  assertThat(serializer.getPreContext("This is an test",8),is("is"));
+  assertThat(serializer.getPreContext("This is  an test",9),is("is"));
+  assertThat(serializer.getPreContext("This is   an test",10),is("is"));
+  assertThat(serializer.getPreContext("This was a hour ago.",9),is("was"));
+  assertThat(serializer.getPreContext("This  was  a hour ago.",11),is("was"));
+  assertThat(serializer.getPreContext("This is, an test",9),is(""));
+  assertThat(serializer.getPreContext("This is: an test",9),is(""));
+  assertThat(serializer.getPreContext("Das hier hier ist ein Test.",4),is("Das"));
+}

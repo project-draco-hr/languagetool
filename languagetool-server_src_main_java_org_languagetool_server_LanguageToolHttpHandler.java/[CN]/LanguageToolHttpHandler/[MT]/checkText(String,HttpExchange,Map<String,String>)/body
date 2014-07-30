@@ -3,19 +3,8 @@
   if (text.length() > maxTextLength) {
     throw new IllegalArgumentException("Text is " + text.length() + " characters long, exceeding maximum length of "+ maxTextLength);
   }
-  final String langParam=parameters.get("language");
-  final String autodetectParam=parameters.get("autodetect");
-  if (langParam == null && (autodetectParam == null || !autodetectParam.equals("1"))) {
-    throw new IllegalArgumentException("Missing 'language' parameter. Specify language or use autodetect=1 for auto-detecting the language of the input text.");
-  }
-  final Language lang;
-  if (autodetectParam != null && autodetectParam.equals("1")) {
-    lang=detectLanguageOfString(text,langParam);
-    print("Auto-detected language: " + lang.getShortNameWithCountryAndVariant());
-  }
- else {
-    lang=Language.getLanguageForShortName(langParam);
-  }
+  final boolean autoDetectLanguage=getLanguageAutoDetect(parameters);
+  final Language lang=getLanguage(text,parameters.get("language"),autoDetectLanguage);
   final String motherTongueParam=parameters.get("motherTongue");
   final Language motherTongue=motherTongueParam != null ? Language.getLanguageForShortName(motherTongueParam) : null;
   final boolean useEnabledOnly="yes".equals(parameters.get("enabledOnly"));
@@ -49,12 +38,11 @@
       matches=future.get(maxCheckTimeMillis,TimeUnit.MILLISECONDS);
     }
  catch (    TimeoutException e) {
-      throw new RuntimeException("Text checking took longer than allowed maximum of " + maxCheckTimeMillis + " milliseconds",e);
+      throw new RuntimeException("Text checking took longer than allowed maximum of " + maxCheckTimeMillis + " milliseconds (handleCount: "+ handleCount+ ", language: "+ lang.getShortNameWithCountryAndVariant()+ ", "+ text.length()+ " characters of text)",e);
     }
   }
   setCommonHeaders(httpExchange);
-  final RuleAsXmlSerializer serializer=new RuleAsXmlSerializer();
-  final String xmlResponse=serializer.ruleMatchesToXml(matches,text,CONTEXT_SIZE,lang,motherTongue);
+  String xmlResponse=getXmlResponse(text,lang,motherTongue,matches);
   String messageSent="sent";
   String languageMessage=lang.getShortNameWithCountryAndVariant();
   final String referrer=httpExchange.getRequestHeaders().getFirst("Referer");

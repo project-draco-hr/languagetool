@@ -1,0 +1,3 @@
+{
+  super("/fr/french_synth.dict","/fr/french_tags.txt");
+}

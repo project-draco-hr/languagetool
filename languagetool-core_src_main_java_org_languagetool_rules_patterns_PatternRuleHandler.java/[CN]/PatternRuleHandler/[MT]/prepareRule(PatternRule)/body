@@ -53,6 +53,14 @@
       throw new RuntimeException("Could not parse URL for rule: " + rule + ": '"+ url+ "'",e);
     }
   }
+ else   if (urlForRuleGroup != null && urlForRuleGroup.length() > 0) {
+    try {
+      rule.setUrl(new URL(urlForRuleGroup.toString()));
+    }
+ catch (    MalformedURLException e) {
+      throw new RuntimeException("Could not parse URL for rule: " + rule + ": '"+ urlForRuleGroup+ "'",e);
+    }
+  }
   if (ruleIssueType != null) {
     rule.setLocQualityIssueType(ITSIssueType.getIssueType(ruleIssueType));
   }

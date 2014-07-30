@@ -1,0 +1,4 @@
+{
+  List<RuleMatch> ruleMatches=langTool.check(input);
+  assertEquals("Expected " + expectedMatches + " matches, got: "+ ruleMatches,expectedMatches,ruleMatches.size());
+}

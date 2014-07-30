@@ -133,14 +133,21 @@ inShortMessage=true;
 shortMessage=new StringBuilder();
 break;
 case "url":
+if (inRule) {
 inUrl=true;
 url=new StringBuilder();
+}
+ else {
+inUrlForRuleGroup=true;
+urlForRuleGroup=new StringBuilder();
+}
 break;
 case RULEGROUP:
 ruleGroupId=attrs.getValue(ID);
 ruleGroupDescription=attrs.getValue(NAME);
 defaultOff="off".equals(attrs.getValue(DEFAULT));
 defaultOn="on".equals(attrs.getValue(DEFAULT));
+urlForRuleGroup=new StringBuilder();
 inRuleGroup=true;
 subId=0;
 if (attrs.getValue(TYPE) != null) {

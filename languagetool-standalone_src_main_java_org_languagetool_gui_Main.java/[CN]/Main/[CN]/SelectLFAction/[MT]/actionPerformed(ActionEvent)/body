@@ -1,0 +1,11 @@
+{
+  try {
+    UIManager.setLookAndFeel(lf.getClassName());
+    SwingUtilities.updateComponentTreeUI(frame);
+    frame.pack();
+    ltSupport.getConfig().setLookAndFeelName(lf.getName());
+  }
+ catch (  ClassNotFoundException|InstantiationException|IllegalAccessException|UnsupportedLookAndFeelException ex) {
+    Tools.showError(ex);
+  }
+}
