@@ -1,0 +1,7 @@
+{
+  if (compoundMode) {
+    throw new RuntimeException("already in compound mode");
+  }
+  ce=new CompoundEdit();
+  compoundMode=true;
+}
