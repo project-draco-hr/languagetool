@@ -1,27 +1,14 @@
 {
   IrregularForms irregularFormsOrNull=getIrregularFormsOrNull(word,"ed",Arrays.asList("ed"),"VBD","verb");
-  if (irregularFormsOrNull != null) {
-    return irregularFormsOrNull;
-  }
+  if (irregularFormsOrNull != null)   return irregularFormsOrNull;
   irregularFormsOrNull=getIrregularFormsOrNull(word,"ed",Arrays.asList("d"),"VBD","verb");
-  if (irregularFormsOrNull != null) {
-    return irregularFormsOrNull;
-  }
+  if (irregularFormsOrNull != null)   return irregularFormsOrNull;
   irregularFormsOrNull=getIrregularFormsOrNull(word,"s",Arrays.asList("s"),"NNS","noun");
-  if (irregularFormsOrNull != null) {
-    return irregularFormsOrNull;
-  }
+  if (irregularFormsOrNull != null)   return irregularFormsOrNull;
   irregularFormsOrNull=getIrregularFormsOrNull(word,"es",Arrays.asList("es"),"NNS","noun");
-  if (irregularFormsOrNull != null) {
-    return irregularFormsOrNull;
-  }
+  if (irregularFormsOrNull != null)   return irregularFormsOrNull;
   irregularFormsOrNull=getIrregularFormsOrNull(word,"er",Arrays.asList("er"),"JJR","adjective");
-  if (irregularFormsOrNull != null) {
-    return irregularFormsOrNull;
-  }
+  if (irregularFormsOrNull != null)   return irregularFormsOrNull;
   irregularFormsOrNull=getIrregularFormsOrNull(word,"est",Arrays.asList("est"),"JJS","adjective");
-  if (irregularFormsOrNull != null) {
-    return irregularFormsOrNull;
-  }
   return irregularFormsOrNull;
 }

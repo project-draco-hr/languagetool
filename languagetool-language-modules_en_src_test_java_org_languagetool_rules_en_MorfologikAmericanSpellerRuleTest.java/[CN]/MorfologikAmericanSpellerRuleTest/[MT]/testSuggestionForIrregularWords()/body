@@ -15,6 +15,7 @@
   assertSuggestion("He maked","made");
   assertSuggestion("She runed","ran");
   assertSuggestion("She selled","sold");
+  assertSuggestion("He speaked","spoke");
   assertSuggestion("auditory stimuluses","stimuli");
   assertSuggestion("analysises","analyses");
   assertSuggestion("parenthesises","parentheses");

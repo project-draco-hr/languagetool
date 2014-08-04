@@ -9,6 +9,7 @@
         result.remove(word);
         result.remove("badder");
         result.remove("baddest");
+        result.remove("spake");
         if (forms.length > 0) {
           return new IrregularForms(baseForm,posName,result);
         }
