@@ -15,7 +15,7 @@
         result.remove("baddest");
         result.remove("spake");
         if (result.size() > 0) {
-          return new IrregularForms(baseForm,posName,result);
+          return new IrregularForms(baseForm,posName,formName,result);
         }
       }
     }

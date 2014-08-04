@@ -1,14 +1,14 @@
 {
-  IrregularForms irregularFormsOrNull=getIrregularFormsOrNull(word,"ed",Arrays.asList("ed"),"VBD","verb");
+  IrregularForms irregularFormsOrNull=getIrregularFormsOrNull(word,"ed",Arrays.asList("ed"),"VBD","verb","past tense");
   if (irregularFormsOrNull != null)   return irregularFormsOrNull;
-  irregularFormsOrNull=getIrregularFormsOrNull(word,"ed",Arrays.asList("d"),"VBD","verb");
+  irregularFormsOrNull=getIrregularFormsOrNull(word,"ed",Arrays.asList("d"),"VBD","verb","past tense");
   if (irregularFormsOrNull != null)   return irregularFormsOrNull;
-  irregularFormsOrNull=getIrregularFormsOrNull(word,"s",Arrays.asList("s"),"NNS","noun");
+  irregularFormsOrNull=getIrregularFormsOrNull(word,"s",Arrays.asList("s"),"NNS","noun","plural");
   if (irregularFormsOrNull != null)   return irregularFormsOrNull;
-  irregularFormsOrNull=getIrregularFormsOrNull(word,"es",Arrays.asList("es"),"NNS","noun");
+  irregularFormsOrNull=getIrregularFormsOrNull(word,"es",Arrays.asList("es"),"NNS","noun","plural");
   if (irregularFormsOrNull != null)   return irregularFormsOrNull;
-  irregularFormsOrNull=getIrregularFormsOrNull(word,"er",Arrays.asList("er"),"JJR","adjective");
+  irregularFormsOrNull=getIrregularFormsOrNull(word,"er",Arrays.asList("er"),"JJR","adjective","comparative");
   if (irregularFormsOrNull != null)   return irregularFormsOrNull;
-  irregularFormsOrNull=getIrregularFormsOrNull(word,"est",Arrays.asList("est"),"JJS","adjective");
+  irregularFormsOrNull=getIrregularFormsOrNull(word,"est",Arrays.asList("est"),"JJS","adjective","superlative");
   return irregularFormsOrNull;
 }
