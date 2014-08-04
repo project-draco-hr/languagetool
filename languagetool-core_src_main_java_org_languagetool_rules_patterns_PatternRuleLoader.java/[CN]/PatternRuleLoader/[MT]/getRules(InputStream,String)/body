@@ -4,6 +4,7 @@
     handler.setRelaxedMode(relaxedMode);
     final SAXParserFactory factory=SAXParserFactory.newInstance();
     final SAXParser saxParser=factory.newSAXParser();
+    Authenticator.setDefault(new PasswordAuthenticator());
     saxParser.getXMLReader().setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd",false);
     saxParser.parse(is,handler);
     return handler.getRules();

@@ -1,0 +1,13 @@
+{
+  String userInfo=getRequestingURL().getUserInfo();
+  if (StringTools.isEmpty(userInfo)) {
+    return null;
+  }
+  String[] parts=userInfo.split(":");
+  if (parts.length != 2) {
+    throw new RuntimeException("Invalid userInfo format, expected 'user:password': " + userInfo);
+  }
+  String username=parts[0];
+  String password=parts[1];
+  return new PasswordAuthentication(username,password.toCharArray());
+}
