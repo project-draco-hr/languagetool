@@ -5,12 +5,16 @@
         String baseForm=word.substring(0,word.length() - suffix.length());
         String[] forms=synthesizer.synthesize(new AnalyzedToken(word,null,baseForm),posTag);
         List<String> result=new ArrayList<>();
-        result.addAll(Arrays.asList(forms));
+        for (        String form : forms) {
+          if (!speller.isMisspelled(form)) {
+            result.add(form);
+          }
+        }
         result.remove(word);
         result.remove("badder");
         result.remove("baddest");
         result.remove("spake");
-        if (forms.length > 0) {
+        if (result.size() > 0) {
           return new IrregularForms(baseForm,posName,result);
         }
       }
