@@ -21,4 +21,10 @@
   assertSuggestion("childs","children");
   assertSuggestion("womans","women");
   assertSuggestion("criterions","criteria");
+  assertSuggestion("gooder","better");
+  assertSuggestion("bader","worse");
+  assertSuggestion("farer","further","farther");
+  assertSuggestion("goodest","best");
+  assertSuggestion("badest","worst");
+  assertSuggestion("farest","furthest","farthest");
 }

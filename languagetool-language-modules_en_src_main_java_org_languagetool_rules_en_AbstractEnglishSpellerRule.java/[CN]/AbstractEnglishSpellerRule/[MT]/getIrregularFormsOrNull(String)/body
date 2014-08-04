@@ -15,5 +15,13 @@
   if (irregularFormsOrNull != null) {
     return irregularFormsOrNull;
   }
+  irregularFormsOrNull=getIrregularFormsOrNull(word,"er",Arrays.asList("er"),"JJR","adjective");
+  if (irregularFormsOrNull != null) {
+    return irregularFormsOrNull;
+  }
+  irregularFormsOrNull=getIrregularFormsOrNull(word,"est",Arrays.asList("est"),"JJS","adjective");
+  if (irregularFormsOrNull != null) {
+    return irregularFormsOrNull;
+  }
   return irregularFormsOrNull;
 }

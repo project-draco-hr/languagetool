@@ -7,6 +7,8 @@
         List<String> result=new ArrayList<>();
         result.addAll(Arrays.asList(forms));
         result.remove(word);
+        result.remove("badder");
+        result.remove("baddest");
         if (forms.length > 0) {
           return new IrregularForms(baseForm,posName,result);
         }
