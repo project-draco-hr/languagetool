@@ -1,0 +1,5 @@
+{
+  this.baseform=baseform;
+  this.type=type;
+  this.forms=forms;
+}

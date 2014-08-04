@@ -1,0 +1,12 @@
+{
+  List<RuleMatch> ruleMatches=super.getRuleMatch(word,startPos);
+  if (ruleMatches.size() > 0) {
+    IrregularForms irregularForms=getIrregularFormsOrNull(word);
+    if (irregularForms != null) {
+      RuleMatch match=new RuleMatch(this,startPos,startPos + word.length(),"'" + irregularForms.baseform + "' is an irregular "+ irregularForms.type+ ".");
+      match.setSuggestedReplacements(irregularForms.forms);
+      ruleMatches=Collections.singletonList(match);
+    }
+  }
+  return ruleMatches;
+}

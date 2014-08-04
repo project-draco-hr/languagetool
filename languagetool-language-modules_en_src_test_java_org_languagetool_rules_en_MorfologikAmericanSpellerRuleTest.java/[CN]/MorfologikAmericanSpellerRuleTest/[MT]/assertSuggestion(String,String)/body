@@ -1,0 +1,6 @@
+{
+  RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence(input));
+  assertThat(matches.length,is(1));
+  assertThat("Expected 1, got: " + matches[0].getSuggestedReplacements(),matches[0].getSuggestedReplacements().size(),is(1));
+  assertThat(matches[0].getSuggestedReplacements().get(0),is(expectedSuggestion));
+}

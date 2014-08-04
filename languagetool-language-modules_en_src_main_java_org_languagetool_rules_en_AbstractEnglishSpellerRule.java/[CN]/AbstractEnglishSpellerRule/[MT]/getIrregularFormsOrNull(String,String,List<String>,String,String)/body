@@ -1,0 +1,20 @@
+{
+  try {
+    for (    String suffix : suffixes) {
+      if (word.endsWith(wordSuffix)) {
+        String baseForm=word.substring(0,word.length() - suffix.length());
+        String[] forms=synthesizer.synthesize(new AnalyzedToken(word,null,baseForm),posTag);
+        List<String> result=new ArrayList<>();
+        result.addAll(Arrays.asList(forms));
+        result.remove(word);
+        if (forms.length > 0) {
+          return new IrregularForms(baseForm,posName,result);
+        }
+      }
+    }
+    return null;
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}
