@@ -1,5 +1,5 @@
 {
-  List<RuleMatch> ruleMatches=super.getRuleMatch(word,startPos);
+  List<RuleMatch> ruleMatches=super.getRuleMatches(word,startPos);
   if (ruleMatches.size() > 0) {
     IrregularForms irregularForms=getIrregularFormsOrNull(word);
     if (irregularForms != null) {

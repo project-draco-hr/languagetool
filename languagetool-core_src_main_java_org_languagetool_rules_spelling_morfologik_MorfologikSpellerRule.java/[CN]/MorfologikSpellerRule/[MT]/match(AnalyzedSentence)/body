@@ -27,21 +27,21 @@
     }
     final String word=token.getToken();
     if (tokenizingPattern() == null) {
-      ruleMatches.addAll(getRuleMatch(word,token.getStartPos()));
+      ruleMatches.addAll(getRuleMatches(word,token.getStartPos()));
     }
  else {
       int index=0;
       final Matcher m=tokenizingPattern().matcher(word);
       while (m.find()) {
         final String match=word.subSequence(index,m.start()).toString();
-        ruleMatches.addAll(getRuleMatch(match,token.getStartPos() + index));
+        ruleMatches.addAll(getRuleMatches(match,token.getStartPos() + index));
         index=m.end();
       }
       if (index == 0) {
-        ruleMatches.addAll(getRuleMatch(word,token.getStartPos()));
+        ruleMatches.addAll(getRuleMatches(word,token.getStartPos()));
       }
  else {
-        ruleMatches.addAll(getRuleMatch(word.subSequence(index,word.length()).toString(),token.getStartPos() + index));
+        ruleMatches.addAll(getRuleMatches(word.subSequence(index,word.length()).toString(),token.getStartPos() + index));
       }
     }
   }
