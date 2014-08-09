@@ -1,0 +1,6 @@
+String word
+String wordSuffix
+List<String> suffixes
+String posTag
+String posName
+String formName

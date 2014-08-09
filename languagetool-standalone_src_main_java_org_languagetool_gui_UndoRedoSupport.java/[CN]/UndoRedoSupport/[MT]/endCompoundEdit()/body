@@ -1,0 +1,9 @@
+{
+  if (!compoundMode) {
+    throw new RuntimeException("not in compound mode");
+  }
+  ce.end();
+  undoManager.addEdit(ce);
+  ce=null;
+  compoundMode=false;
+}

@@ -1,0 +1,4 @@
+String baseform
+String posName
+String formName
+List<String> forms

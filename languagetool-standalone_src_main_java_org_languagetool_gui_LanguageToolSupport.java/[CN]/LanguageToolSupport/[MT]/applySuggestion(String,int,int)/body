@@ -5,6 +5,9 @@
   Document doc=this.textComponent.getDocument();
   if (doc != null) {
     try {
+      if (this.undo != null) {
+        this.undo.startCompoundEdit();
+      }
       if (doc instanceof AbstractDocument) {
         ((AbstractDocument)doc).replace(start,end - start,str,null);
       }
@@ -15,6 +18,11 @@
     }
  catch (    BadLocationException e) {
       throw new IllegalArgumentException(e);
+    }
+ finally {
+      if (this.undo != null) {
+        this.undo.endCompoundEdit();
+      }
     }
   }
 }

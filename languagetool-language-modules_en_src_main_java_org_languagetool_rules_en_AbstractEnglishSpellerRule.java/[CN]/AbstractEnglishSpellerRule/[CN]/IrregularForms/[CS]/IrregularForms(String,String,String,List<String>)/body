@@ -1,0 +1,6 @@
+{
+  this.baseform=baseform;
+  this.posName=posName;
+  this.formName=formName;
+  this.forms=forms;
+}

@@ -20,5 +20,8 @@
   if (wordRepetitionOf("tse",tokens,position)) {
     return true;
   }
+  if (wordRepetitionOf("Li",tokens,position)) {
+    return true;
+  }
   return false;
 }

@@ -1,0 +1,31 @@
+{
+  assertSuggestion("He teached us.","taught");
+  assertSuggestion("He buyed the wrong brand","bought");
+  assertSuggestion("I thinked so.","thought");
+  assertSuggestion("She awaked","awoke");
+  assertSuggestion("She becomed","became");
+  assertSuggestion("It begined","began");
+  assertSuggestion("It bited","bit");
+  assertSuggestion("She dealed","dealt");
+  assertSuggestion("She drived","drove");
+  assertSuggestion("He drawed","drew");
+  assertSuggestion("She finded","found");
+  assertSuggestion("It hurted","hurt");
+  assertSuggestion("It was keeped","kept");
+  assertSuggestion("He maked","made");
+  assertSuggestion("She runed","ran");
+  assertSuggestion("She selled","sold");
+  assertSuggestion("He speaked","spoke");
+  assertSuggestion("auditory stimuluses","stimuli");
+  assertSuggestion("analysises","analyses");
+  assertSuggestion("parenthesises","parentheses");
+  assertSuggestion("childs","children");
+  assertSuggestion("womans","women");
+  assertSuggestion("criterions","criteria");
+  assertSuggestion("gooder","better");
+  assertSuggestion("bader","worse");
+  assertSuggestion("farer","further","farther");
+  assertSuggestion("goodest","best");
+  assertSuggestion("badest","worst");
+  assertSuggestion("farest","furthest","farthest");
+}
