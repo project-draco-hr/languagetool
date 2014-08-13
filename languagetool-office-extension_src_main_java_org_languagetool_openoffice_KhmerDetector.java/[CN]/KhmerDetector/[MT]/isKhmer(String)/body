@@ -1,10 +1,3 @@
 {
-  final int maxCheckLength=Math.min(str.length(),MAX_CHECK_LENGTH);
-  for (int i=0; i < maxCheckLength; i++) {
-    final int numericValue=str.charAt(i);
-    if (numericValue >= 6016 && numericValue <= 6143) {
-      return true;
-    }
-  }
-  return false;
+  return isThisLanguage(str);
 }

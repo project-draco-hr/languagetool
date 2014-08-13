@@ -1,0 +1,15 @@
+{
+  final TamilDetector detector=new TamilDetector();
+  assertTrue(detector.isThisLanguage("????????????"));
+  assertTrue(detector.isThisLanguage("???"));
+  assertTrue(detector.isThisLanguage("\"??????????????????????????????"));
+  assertFalse(detector.isThisLanguage("Hallo"));
+  assertFalse(detector.isThisLanguage("??????"));
+  assertFalse(detector.isThisLanguage(""));
+  try {
+    assertFalse(detector.isThisLanguage(null));
+    fail();
+  }
+ catch (  NullPointerException expected) {
+  }
+}
