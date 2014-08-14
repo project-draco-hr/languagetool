@@ -5,5 +5,5 @@
   tool.activateDefaultPatternRules();
   tool.setListUnknownWords(true);
   assertEquals(6,tool.check("I can give you more a detailed description").size());
-  assertEquals("[I, can, detailed, give, more, you]",tool.getUnknownWords().toString());
+  assertEquals("[I, can, description, detailed, give, more, you]",tool.getUnknownWords().toString());
 }
