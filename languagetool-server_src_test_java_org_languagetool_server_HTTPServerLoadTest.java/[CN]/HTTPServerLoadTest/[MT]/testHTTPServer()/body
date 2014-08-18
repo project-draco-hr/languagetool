@@ -1,13 +1,14 @@
 {
   final long startTime=System.currentTimeMillis();
-  final HTTPServer server=new HTTPServer();
+  HTTPServerConfig config=new HTTPServerConfig(HTTPServerConfig.DEFAULT_PORT,true);
+  final HTTPServer server=new HTTPServer(config);
   assertFalse(server.isRunning());
   try {
     server.run();
     assertTrue(server.isRunning());
-    final ExecutorService executorService=Executors.newFixedThreadPool(THREAD_COUNT);
+    final ExecutorService executorService=Executors.newFixedThreadPool(getThreadCount());
     final List<Future> futures=new ArrayList<>();
-    for (int i=0; i < THREAD_COUNT; i++) {
+    for (int i=0; i < getThreadCount(); i++) {
       final Future<?> future=executorService.submit(new TestRunnable());
       futures.add(future);
     }
@@ -19,6 +20,6 @@
     server.stop();
     assertFalse(server.isRunning());
     final long runtime=System.currentTimeMillis() - startTime;
-    System.out.println("Running with " + THREAD_COUNT + " threads in "+ runtime+ "ms");
+    System.out.println("Running with " + getThreadCount() + " threads in "+ runtime+ "ms");
   }
 }

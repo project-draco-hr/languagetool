@@ -1,0 +1,15 @@
+{
+  File dir=new File("/media/Data/tatoeba/");
+  for (  Language language : Language.REAL_LANGUAGES) {
+    File file=new File(dir,"tatoeba-" + language.getShortName() + ".txt");
+    if (!file.exists()) {
+      System.err.println("No data found for " + language + ", language will not be tested");
+    }
+ else {
+      String content=StringTools.readerToString(new FileReader(file));
+      langCodeToText.put(language,content);
+      System.err.println("Using " + content.length() + " bytes of data for "+ language);
+    }
+  }
+  super.testHTTPServer();
+}

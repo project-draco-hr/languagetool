@@ -1,0 +1,18 @@
+{
+  Language language=getRandomLanguage();
+  String text=langCodeToText.get(language);
+  int fromPos=random.nextInt(text.length());
+  int toPos=fromPos + random.nextInt(MAX_TEXT_LENGTH);
+  String textSubstring=text.substring(fromPos,Math.min(toPos,text.length()));
+  long sleepTime=random.nextInt(MAX_SLEEP_MILLIS);
+  try {
+    Thread.sleep(sleepTime);
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException(e);
+  }
+  long startTime=System.currentTimeMillis();
+  counter.incrementAndGet();
+  checkByPOST(language,textSubstring);
+  System.out.println(counter.get() + ". Sleep: " + sleepTime+ "ms, Lang: "+ language.getShortNameWithCountryAndVariant()+ ", Time: "+ (System.currentTimeMillis() - startTime)+ "ms");
+}

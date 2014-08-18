@@ -1,0 +1,11 @@
+{
+  Random rnd=new Random();
+  int randomNumber=rnd.nextInt(langCodeToText.size());
+  int i=0;
+  for (  Language lang : langCodeToText.keySet()) {
+    if (i++ == randomNumber) {
+      return lang;
+    }
+  }
+  throw new RuntimeException("Could not find a random language (" + i + ")");
+}
