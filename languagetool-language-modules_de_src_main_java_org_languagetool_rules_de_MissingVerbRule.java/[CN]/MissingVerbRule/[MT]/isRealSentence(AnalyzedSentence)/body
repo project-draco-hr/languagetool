@@ -1,0 +1,11 @@
+{
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  if (tokens.length > 0) {
+    AnalyzedTokenReadings lastToken=tokens[tokens.length - 1];
+    String lastTokenStr=lastToken.getToken();
+    if (lastTokenStr.equals(".") || lastTokenStr.equals("?") || lastTokenStr.equals("!")) {
+      return true;
+    }
+  }
+  return false;
+}

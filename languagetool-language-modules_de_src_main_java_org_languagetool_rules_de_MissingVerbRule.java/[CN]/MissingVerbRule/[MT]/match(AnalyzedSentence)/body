@@ -1,0 +1,28 @@
+{
+  if (!isRealSentence(sentence)) {
+    return new RuleMatch[0];
+  }
+  if (isSpecialCase(sentence)) {
+    return new RuleMatch[0];
+  }
+  boolean verbFound=false;
+  AnalyzedTokenReadings lastToken=null;
+  int i=0;
+  for (  AnalyzedTokenReadings readings : sentence.getTokensWithoutWhitespace()) {
+    if (readings.hasPartialPosTag("VER") || (!readings.isTagged() && !StringTools.isCapitalizedWord(readings.getToken()))) {
+      verbFound=true;
+      break;
+    }
+ else     if (i == 1 && verbAtSentenceStart(readings)) {
+      verbFound=true;
+      break;
+    }
+    lastToken=readings;
+    i++;
+  }
+  if (!verbFound && lastToken != null && i - 1 >= MIN_TOKENS_FOR_ERROR) {
+    RuleMatch match=new RuleMatch(this,0,lastToken.getStartPos() + lastToken.getToken().length(),"Dieser Satz scheint kein Verb zu enthalten");
+    return new RuleMatch[]{match};
+  }
+  return new RuleMatch[0];
+}

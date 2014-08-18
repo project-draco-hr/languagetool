@@ -1,0 +1,14 @@
+{
+  JLanguageTool lt=new JLanguageTool(new German());
+  assertGood("Da ist ein Verb, mal so zum testen.",lt);
+  assertGood("??berschrift ohne Verb aber doch nicht zu kurz",lt);
+  assertGood("Sprechen Sie vielleicht zuf??llig T??rkisch?",lt);
+  assertGood("Leg den Tresor in den Koffer im Kofferraum.",lt);
+  assertGood("Bring doch einfach deine Kinder mit.",lt);
+  assertGood("Gut so.",lt);
+  assertGood("Ja!",lt);
+  assertGood("Vielen Dank f??r alles, was Du f??r mich getan hast.",lt);
+  assertGood("Herzlichen Gl??ckwunsch zu Deinem zwanzigsten Geburtstag.",lt);
+  assertBad("Dieser Satz kein Verb.",lt);
+  assertBad("Aus einer Idee sich erste Wortgruppen, aus Wortgruppen einzelne S??tze, aus S??tzen ganze Texte.",lt);
+}
