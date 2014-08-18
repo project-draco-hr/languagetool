@@ -1,5 +1,8 @@
 {
   this.rule=rule;
+  if (toPos <= fromPos) {
+    throw new RuntimeException("fromPos (" + fromPos + ") must be less than toPos ("+ toPos+ ")");
+  }
   this.fromPos=fromPos;
   this.toPos=toPos;
   this.message=message;
