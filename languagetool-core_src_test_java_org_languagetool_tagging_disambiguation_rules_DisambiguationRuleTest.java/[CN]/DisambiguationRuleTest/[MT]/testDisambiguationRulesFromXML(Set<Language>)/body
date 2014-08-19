@@ -6,7 +6,7 @@
     System.out.println("Running disambiguation tests for " + lang.getName() + "...");
     final DisambiguationRuleLoader ruleLoader=new DisambiguationRuleLoader();
     final JLanguageTool languageTool=new JLanguageTool(lang);
-    if (!(languageTool.getLanguage().getDisambiguator() instanceof DemoDisambiguator) && !(languageTool.getLanguage().getDisambiguator() instanceof TrimDisambiguator)) {
+    if (!(languageTool.getLanguage().getDisambiguator() instanceof DemoDisambiguator)) {
       final String name=JLanguageTool.getDataBroker().getResourceDir() + "/" + lang.getShortName()+ "/disambiguation.xml";
       validateRuleFile(name);
       final List<DisambiguationPatternRule> rules=ruleLoader.getRules(ruleLoader.getClass().getResourceAsStream(name));

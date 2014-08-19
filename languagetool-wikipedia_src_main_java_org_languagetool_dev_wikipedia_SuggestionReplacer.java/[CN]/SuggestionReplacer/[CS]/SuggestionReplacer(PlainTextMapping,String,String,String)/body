@@ -1,3 +1,0 @@
-{
-  this(textMapping,originalText,new ErrorMarker(errorMarkerStart,errorMarkerEnd));
-}

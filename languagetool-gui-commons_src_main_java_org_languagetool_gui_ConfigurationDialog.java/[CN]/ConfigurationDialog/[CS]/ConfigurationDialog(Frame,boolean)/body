@@ -1,7 +1,0 @@
-{
-  this.owner=owner;
-  this.insideOffice=insideOffice;
-  this.original=null;
-  this.config=new Configuration();
-  messages=JLanguageTool.getMessageBundle();
-}
