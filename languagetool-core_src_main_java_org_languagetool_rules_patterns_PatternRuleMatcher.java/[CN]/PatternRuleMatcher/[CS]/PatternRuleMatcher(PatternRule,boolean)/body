@@ -1,4 +1,6 @@
 {
   super(rule,rule.getLanguage().getUnifier());
   this.useList=useList;
+  this.elementMatchers=createElementMatchers();
+  this.patternSize=elementMatchers.size();
 }
