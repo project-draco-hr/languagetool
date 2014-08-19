@@ -56,5 +56,5 @@
  catch (  IOException exception) {
     messageSent="notSent: " + exception.getMessage();
   }
-  print("Check done: " + text.length() + " chars, "+ languageMessage+ ", "+ referrer+ ", "+ "handlers:"+ handleCount+ ", "+ matches.size()+ " matches, "+ (System.currentTimeMillis() - timeStart)+ "ms"+ ", "+ messageSent);
+  print("Check done: " + text.length() + " chars, "+ languageMessage+ ", "+ referrer+ ", "+ "handlers:"+ handleCount+ ", queue:"+ workQueue.size()+ ", "+ matches.size()+ " matches, "+ (System.currentTimeMillis() - timeStart)+ "ms"+ ", "+ messageSent);
 }
