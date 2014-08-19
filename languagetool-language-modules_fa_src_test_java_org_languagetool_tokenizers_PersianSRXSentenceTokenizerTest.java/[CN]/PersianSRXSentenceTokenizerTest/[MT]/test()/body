@@ -1,0 +1,3 @@
+{
+  testSplit("a sentence. ","the next sentence");
+}
