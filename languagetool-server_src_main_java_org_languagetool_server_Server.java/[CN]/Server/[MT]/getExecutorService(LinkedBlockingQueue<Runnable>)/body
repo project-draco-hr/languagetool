@@ -1,3 +1,0 @@
-{
-  return new ThreadPoolExecutor(THREAD_POOL_SIZE,THREAD_POOL_SIZE,0L,TimeUnit.MILLISECONDS,workQueue);
-}

@@ -5,6 +5,10 @@
       props.load(fis);
       maxTextLength=Integer.parseInt(getOptionalProperty(props,"maxTextLength",Integer.toString(Integer.MAX_VALUE)));
       maxCheckTimeMillis=Long.parseLong(getOptionalProperty(props,"maxCheckTimeMillis","-1"));
+      maxCheckThreads=Integer.parseInt(getOptionalProperty(props,"maxCheckThreads","10"));
+      if (maxCheckThreads < 1) {
+        throw new IllegalArgumentException("Invalid value for maxCheckThreads: " + maxCheckThreads);
+      }
       mode=getOptionalProperty(props,"mode","LanguageTool").equalsIgnoreCase("AfterTheDeadline") ? Mode.AfterTheDeadline : Mode.LanguageTool;
       if (mode == Mode.AfterTheDeadline) {
         atdLanguage=Language.getLanguageForShortName(getProperty(props,"afterTheDeadlineLanguage",file));

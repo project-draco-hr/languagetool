@@ -1,1 +1,2 @@
 LinkedBlockingQueue<Runnable> workQueue
+HTTPServerConfig config

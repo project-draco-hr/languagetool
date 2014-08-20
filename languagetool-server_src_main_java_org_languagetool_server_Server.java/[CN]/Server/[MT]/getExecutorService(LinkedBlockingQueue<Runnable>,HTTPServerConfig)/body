@@ -1,0 +1,5 @@
+{
+  int threadPoolSize=config.getMaxCheckThreads();
+  System.out.println("Setting up thread pool with " + threadPoolSize + " threads");
+  return new ThreadPoolExecutor(threadPoolSize,threadPoolSize,0L,TimeUnit.MILLISECONDS,workQueue);
+}

@@ -13,7 +13,7 @@
       httpHandler.setAfterTheDeadlineMode(config.getAfterTheDeadlineLanguage());
     }
     server.createContext("/",httpHandler);
-    executorService=getExecutorService(workQueue);
+    executorService=getExecutorService(workQueue,config);
     server.setExecutor(executorService);
   }
  catch (  Exception e) {
