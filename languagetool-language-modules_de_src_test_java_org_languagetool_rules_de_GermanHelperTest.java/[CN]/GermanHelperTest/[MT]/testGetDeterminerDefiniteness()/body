@@ -1,0 +1,3 @@
+{
+  assertThat(GermanHelper.getDeterminerDefiniteness("ART:DEF:DAT:SIN:FEM"),is("DEF"));
+}

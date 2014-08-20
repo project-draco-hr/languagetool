@@ -1,0 +1,3 @@
+{
+  assertThat(GermanHelper.getDeterminerCase("ART:DEF:DAT:SIN:FEM"),is("DAT"));
+}
