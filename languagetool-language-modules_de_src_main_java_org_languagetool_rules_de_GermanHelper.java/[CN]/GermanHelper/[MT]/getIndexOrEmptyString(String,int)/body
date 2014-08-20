@@ -1,4 +1,8 @@
 {
+  if (posTag == null) {
+    return "";
+  }
+  String[] array=posTag.split(":");
   if (array.length > idx) {
     return array[idx];
   }

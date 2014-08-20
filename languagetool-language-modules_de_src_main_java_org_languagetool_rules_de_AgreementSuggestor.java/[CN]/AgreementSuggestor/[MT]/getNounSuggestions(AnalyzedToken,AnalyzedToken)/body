@@ -1,5 +1,5 @@
 {
-  if (determiner.getPOSTag().endsWith(":STV")) {
+  if (determiner.getPOSTag() != null && determiner.getPOSTag().endsWith(":STV")) {
     return Collections.emptyList();
   }
   String determinerCase=GermanHelper.getDeterminerCase(determiner.getPOSTag());

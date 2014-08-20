@@ -1,0 +1,5 @@
+{
+  assertThat(GermanHelper.getDeterminerGender(null),is(""));
+  assertThat(GermanHelper.getDeterminerGender(""),is(""));
+  assertThat(GermanHelper.getDeterminerGender("ART:DEF:DAT:SIN:FEM"),is("FEM"));
+}
