@@ -12,17 +12,15 @@
   }
   set1.retainAll(set2);
   RuleMatch ruleMatch=null;
-  if (set1.size() == 0) {
+  if (set1.size() == 0 && !isException(token1,token2)) {
     final List<String> errorCategories=getCategoriesCausingError(token1,token2);
     final String errorDetails=errorCategories.size() > 0 ? StringTools.listToString(errorCategories," und ") : "Kasus, Genus oder Numerus";
     final String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Artikel und Nomen " + "bez??glich " + errorDetails + ".";
+    final String shortMsg="M??glicherweise keine ??bereinstimmung bez??glich " + errorDetails;
+    ruleMatch=new RuleMatch(this,token1.getStartPos(),token2.getStartPos() + token2.getToken().length(),msg,shortMsg);
     final AgreementSuggestor suggestor=new AgreementSuggestor(german.getSynthesizer(),token1,token2);
     final List<String> suggestions=suggestor.getSuggestions();
-    final String shortMsg="M??glicherweise keine ??bereinstimmung bez??glich " + errorDetails;
-    if (!isException(token1,token2)) {
-      ruleMatch=new RuleMatch(this,token1.getStartPos(),token2.getStartPos() + token2.getToken().length(),msg,shortMsg);
-      ruleMatch.setSuggestedReplacements(suggestions);
-    }
+    ruleMatch.setSuggestedReplacements(suggestions);
   }
   return ruleMatch;
 }
