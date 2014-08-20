@@ -11,7 +11,7 @@
     if (regexMatch != null && regexReplace != null) {
       token=regexMatch.matcher(token).replaceAll(regexReplace);
     }
-    token=convertCase(token,token);
+    token=convertCase(token,token,null);
     String posTag=match.getPosTag();
     if (posTag != null) {
       final int numRead=formattedToken.getReadingsLength();

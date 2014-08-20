@@ -1,0 +1,22 @@
+{
+  return new Language(){
+    @Override public String getShortName(){
+      return langCode;
+    }
+    @Override public String getName(){
+      return null;
+    }
+    @Override public void setName(    String name){
+    }
+    @Override public String[] getCountries(){
+      return new String[0];
+    }
+    @Override public Contributor[] getMaintainers(){
+      return new Contributor[0];
+    }
+    @Override public List<Rule> getRelevantRules(    ResourceBundle messages){
+      return null;
+    }
+  }
+;
+}

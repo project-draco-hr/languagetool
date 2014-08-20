@@ -1,0 +1,8 @@
+{
+  if (language != null && "nl".equals(language.getShortName()) && str != null && str.toLowerCase().startsWith("ij")) {
+    return "IJ" + str.substring(2);
+  }
+ else {
+    return changeFirstCharCase(str,true);
+  }
+}
