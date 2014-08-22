@@ -104,7 +104,9 @@
   languageBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
       if (e.getStateChange() == ItemEvent.SELECTED) {
-        ltSupport.setLanguage((Language)languageBox.getSelectedItem());
+        Language lang=(Language)languageBox.getSelectedItem();
+        frame.applyComponentOrientation(ComponentOrientation.getOrientation(lang.getLocale()));
+        ltSupport.setLanguage(lang);
       }
     }
   }
@@ -152,6 +154,7 @@
     }
   }
 );
+  frame.applyComponentOrientation(ComponentOrientation.getOrientation(ltSupport.getLanguage().getLocale()));
   ResourceBundle textLanguageMessageBundle=JLanguageTool.getMessageBundle(ltSupport.getLanguage());
   textArea.setText(textLanguageMessageBundle.getString("guiDemoText"));
   Configuration config=ltSupport.getConfig();
