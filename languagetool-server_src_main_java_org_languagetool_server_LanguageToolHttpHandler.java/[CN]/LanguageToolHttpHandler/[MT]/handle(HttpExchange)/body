@@ -46,8 +46,14 @@ synchronized (this) {
       print("Exception was caused by this text: " + text,System.err);
     }
     e.printStackTrace();
-    final String response="Error: " + StringTools.escapeXML(Tools.getFullStackTrace(e));
-    sendError(httpExchange,HttpURLConnection.HTTP_INTERNAL_ERROR,response);
+    String response;
+    if (e.getCause() != null && e.getCause() instanceof TimeoutException) {
+      response="Checking took longer than " + maxCheckTimeMillis / 1000 + " seconds, which is this server's limit. " + "Please make sure you have selected the proper language or consider submitting a shorter text.";
+    }
+ else {
+      response=Tools.getFullStackTrace(e);
+    }
+    sendError(httpExchange,HttpURLConnection.HTTP_INTERNAL_ERROR,"Error: " + response);
   }
  finally {
 synchronized (this) {
