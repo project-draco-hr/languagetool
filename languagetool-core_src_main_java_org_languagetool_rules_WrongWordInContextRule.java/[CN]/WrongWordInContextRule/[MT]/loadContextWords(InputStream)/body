@@ -3,7 +3,7 @@
   try (Scanner scanner=new Scanner(stream,"utf-8")){
     while (scanner.hasNextLine()) {
       final String line=scanner.nextLine();
-      if (line.charAt(0) == '#') {
+      if (line.trim().isEmpty() || line.charAt(0) == '#') {
         continue;
       }
       final String[] column=line.split("\t");
