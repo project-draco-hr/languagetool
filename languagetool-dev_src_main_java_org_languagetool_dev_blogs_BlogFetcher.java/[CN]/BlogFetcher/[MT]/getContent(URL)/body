@@ -1,0 +1,5 @@
+{
+  try (InputStream inputStream=pageUrl.openStream()){
+    return StringTools.streamToString(inputStream,"utf-8");
+  }
+ }

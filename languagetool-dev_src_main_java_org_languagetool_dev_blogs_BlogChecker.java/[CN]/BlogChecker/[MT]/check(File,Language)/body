@@ -1,0 +1,13 @@
+{
+  JLanguageTool lt=new JLanguageTool(lang);
+  lt.disableRule("WHITESPACE_RULE");
+  lt.disableRule("UNPAIRED_BRACKETS");
+  File[] files=dir.listFiles();
+  for (  File file : files) {
+    try (FileInputStream is=new FileInputStream(file)){
+      System.out.println("\n=== " + file.getName() + " ================================");
+      String content=cleanup(FileTools.loadFile(is,"utf-8"));
+      CommandLineTools.checkText(content,lt);
+    }
+   }
+}

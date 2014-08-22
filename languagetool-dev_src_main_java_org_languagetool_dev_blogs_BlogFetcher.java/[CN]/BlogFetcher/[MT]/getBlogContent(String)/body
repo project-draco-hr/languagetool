@@ -1,0 +1,27 @@
+{
+  List<String> result=new ArrayList<>();
+  String content=getContent(new URL(url));
+  Matcher matcher=linkPattern.matcher(content);
+  if (matcher.find()) {
+    String linkContent=matcher.group();
+    Matcher hrefMatcher=linkHrefPattern.matcher(linkContent);
+    if (hrefMatcher.find()) {
+      String feedUrl=hrefMatcher.group(1);
+      SyndFeedInput input=new SyndFeedInput();
+      try {
+        SyndFeed feed=input.build(new XmlReader(new URL(feedUrl)));
+        List<String> contentList=getContent(feed.getEntries());
+        result.addAll(contentList);
+        return result;
+      }
+ catch (      Exception e) {
+        throw new RuntimeException("Could not get feed data from " + feedUrl,e);
+      }
+    }
+ else {
+      System.err.println("No 'href' found for feed: " + url);
+    }
+  }
+  System.err.println("No '<link>' found for feed: " + url);
+  return result;
+}

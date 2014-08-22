@@ -1,0 +1,32 @@
+{
+  if (args.length != 2) {
+    System.err.println("Usage: " + BlogFetcher.class.getSimpleName() + " <urlListFile> <outputDir>");
+    System.exit(1);
+  }
+  String secret=FileTools.loadFile(new FileInputStream(READABILITY_API_KEY_FILE),"utf-8").trim();
+  BlogFetcher fetcher=new BlogFetcher(secret);
+  File outputDir=new File(args[1]);
+  if (!outputDir.exists() || !outputDir.isDirectory()) {
+    System.err.println("Output directory does not exist or is not a directory: " + outputDir);
+    System.exit(1);
+  }
+  try (Scanner scanner=new Scanner(new File(args[0]))){
+    while (scanner.hasNextLine()) {
+      String url=scanner.nextLine();
+      try {
+        File output=new File(outputDir,new URL(url).getHost());
+        System.out.println("Working on " + url + ", writing result to "+ output);
+        List<String> blogContentList=fetcher.getBlogContent(url);
+        try (FileWriter writer=new FileWriter(output)){
+          for (          String content : blogContentList) {
+            writer.write(content);
+            writer.write("\n");
+          }
+        }
+       }
+ catch (      Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+ }

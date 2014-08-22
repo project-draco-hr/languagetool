@@ -1,0 +1,7 @@
+{
+  if (!pageUrl.startsWith("http")) {
+    throw new IllegalArgumentException("Invalid feed URL: " + pageUrl);
+  }
+  URL url=new URL("https://www.readability.com/api/content/v1/parser?url=" + pageUrl + "&token="+ secretReadabilityToken);
+  return getContent(url);
+}

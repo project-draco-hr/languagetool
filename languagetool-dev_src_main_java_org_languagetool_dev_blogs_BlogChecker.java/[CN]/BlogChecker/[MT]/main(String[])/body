@@ -1,0 +1,9 @@
+{
+  if (args.length != 2) {
+    System.err.println("Usage: " + BlogChecker.class.getSimpleName() + " <langCode> <contentDir>");
+    System.exit(1);
+  }
+  BlogChecker checker=new BlogChecker();
+  Language lang=Language.getLanguageForShortName(args[0]);
+  checker.check(new File(args[1]),lang);
+}

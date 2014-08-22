@@ -1,0 +1,4 @@
+{
+  String result=content.replaceAll("\\s+"," ").replaceAll("<div.*?>","").replaceAll("</div>","\n\n").replaceAll("</h[1-6]>","\n\n").replaceAll("<li>","\n").replaceAll("<p.*?>","").replaceAll("</p>","\n\n").replaceAll("<a.*?>","").replaceAll("</a>","").replaceAll("<br\\s*/>","").replaceAll("<br>","").replaceAll("<.*?>","");
+  return StringEscapeUtils.unescapeHtml(result).replace("??"," ");
+}

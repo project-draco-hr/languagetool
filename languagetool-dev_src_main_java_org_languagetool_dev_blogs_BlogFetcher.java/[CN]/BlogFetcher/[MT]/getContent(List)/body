@@ -1,0 +1,12 @@
+{
+  List<String> result=new ArrayList<>();
+  for (  Object entry : entries) {
+    SyndEntryImpl syndEntry=(SyndEntryImpl)entry;
+    System.out.println("  Getting " + syndEntry.getUri());
+    String json=getPageContent(syndEntry.getUri());
+    ObjectMapper mapper=new ObjectMapper();
+    Map map=mapper.readValue(json,Map.class);
+    result.add(map.get("content").toString());
+  }
+  return result;
+}
