@@ -1,6 +1,6 @@
 {
   if (disambiguator == null) {
-    disambiguator=new XmlRuleDisambiguator(new Spanish());
+    disambiguator=new SpanishHybridDisambiguator();
   }
   return disambiguator;
 }
