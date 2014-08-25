@@ -1,0 +1,13 @@
+{
+  assertThat(filter.getDayOfWeek("So"),is(1));
+  assertThat(filter.getDayOfWeek("Mo"),is(2));
+  assertThat(filter.getDayOfWeek("mo"),is(2));
+  assertThat(filter.getDayOfWeek("Mon."),is(2));
+  assertThat(filter.getDayOfWeek("Montag"),is(2));
+  assertThat(filter.getDayOfWeek("Montag"),is(2));
+  assertThat(filter.getDayOfWeek("montag"),is(2));
+  assertThat(filter.getDayOfWeek("Di"),is(3));
+  assertThat(filter.getDayOfWeek("Fr"),is(6));
+  assertThat(filter.getDayOfWeek("Samstag"),is(7));
+  assertThat(filter.getDayOfWeek("Sonnabend"),is(7));
+}

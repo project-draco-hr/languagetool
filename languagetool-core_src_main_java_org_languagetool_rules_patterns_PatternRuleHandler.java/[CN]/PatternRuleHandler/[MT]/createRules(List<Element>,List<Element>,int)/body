@@ -1,6 +1,12 @@
 {
   if (numElement >= elemList.size()) {
     final PatternRule rule=new PatternRule(id,language,tmpElements,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString(),phraseElementList.size() > 1);
+    if (filterClassName != null && filterArgs != null) {
+      RuleFilterCreator creator=new RuleFilterCreator();
+      RuleFilter filter=creator.getFilter(filterClassName);
+      rule.setFilter(filter);
+      rule.setFilterArguments(filterArgs);
+    }
     prepareRule(rule);
     rules.add(rule);
   }

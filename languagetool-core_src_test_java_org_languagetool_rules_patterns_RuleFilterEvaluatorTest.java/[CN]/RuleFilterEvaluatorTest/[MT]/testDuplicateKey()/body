@@ -1,0 +1,4 @@
+{
+  AnalyzedTokenReadings[] readingsList={new AnalyzedTokenReadings(new AnalyzedToken("fake1","SENT_START",null),0),new AnalyzedTokenReadings(new AnalyzedToken("fake1","pos",null),0),new AnalyzedTokenReadings(new AnalyzedToken("fake2","pos",null),0)};
+  eval.getResolvedArguments("year:\\1 year:\\2",readingsList,Arrays.asList(1,2));
+}

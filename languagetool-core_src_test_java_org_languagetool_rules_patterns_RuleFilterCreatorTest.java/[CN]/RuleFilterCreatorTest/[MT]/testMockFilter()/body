@@ -1,0 +1,4 @@
+{
+  RuleFilter filter=creator.getFilter(MockFilter.class.getName());
+  assertNotNull(filter);
+}

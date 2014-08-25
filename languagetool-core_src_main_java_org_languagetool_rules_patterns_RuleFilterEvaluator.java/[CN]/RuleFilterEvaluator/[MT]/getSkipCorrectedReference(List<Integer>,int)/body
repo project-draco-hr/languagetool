@@ -1,0 +1,11 @@
+{
+  int correctedRef=0;
+  int i=0;
+  for (  int tokenPosition : tokenPositions) {
+    if (i++ >= refNumber) {
+      break;
+    }
+    correctedRef+=tokenPosition;
+  }
+  return correctedRef - 1;
+}

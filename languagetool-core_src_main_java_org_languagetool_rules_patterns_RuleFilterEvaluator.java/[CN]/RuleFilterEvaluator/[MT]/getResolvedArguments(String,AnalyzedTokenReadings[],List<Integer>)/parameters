@@ -1,0 +1,3 @@
+String filterArgs
+AnalyzedTokenReadings[] tokenReadings
+List<Integer> tokenPositions

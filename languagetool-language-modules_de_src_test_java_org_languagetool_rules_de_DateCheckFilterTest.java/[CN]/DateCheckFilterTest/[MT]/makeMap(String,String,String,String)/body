@@ -1,0 +1,8 @@
+{
+  Map<String,String> map=new HashMap<>();
+  map.put("year",year);
+  map.put("month",month);
+  map.put("day",dayOfMonth);
+  map.put("weekDay",weekDay);
+  return map;
+}

@@ -111,6 +111,10 @@ exampleCorrection.append(attrs.getValue("correction"));
 }
 }
 break;
+case "filter":
+filterClassName=attrs.getValue("class");
+filterArgs=attrs.getValue("args");
+break;
 case MESSAGE:
 inMessage=true;
 inSuggestion=false;

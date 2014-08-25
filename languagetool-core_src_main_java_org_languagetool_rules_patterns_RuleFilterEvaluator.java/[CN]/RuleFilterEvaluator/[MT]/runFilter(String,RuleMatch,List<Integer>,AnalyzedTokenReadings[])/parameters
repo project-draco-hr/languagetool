@@ -1,0 +1,4 @@
+String filterArgs
+RuleMatch ruleMatch
+List<Integer> tokenPositions
+AnalyzedTokenReadings[] tokenReadings

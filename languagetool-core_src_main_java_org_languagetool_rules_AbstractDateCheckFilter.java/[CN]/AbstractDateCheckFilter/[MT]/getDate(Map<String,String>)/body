@@ -1,0 +1,8 @@
+{
+  int year=Integer.parseInt(getRequired("year",args));
+  int month=getMonthFromArguments(args);
+  int dayOfMonth=Integer.parseInt(getRequired("day",args));
+  Calendar calendar=getCalendar();
+  calendar.set(year,month,dayOfMonth,0,0,0);
+  return calendar;
+}

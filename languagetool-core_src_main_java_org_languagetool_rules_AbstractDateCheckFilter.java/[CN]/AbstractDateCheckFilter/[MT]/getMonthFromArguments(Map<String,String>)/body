@@ -1,0 +1,11 @@
+{
+  String monthStr=getRequired("month",args);
+  int month;
+  if (monthStr.matches("\\d+")) {
+    month=Integer.parseInt(monthStr);
+  }
+ else {
+    month=getMonth(monthStr);
+  }
+  return month - 1;
+}

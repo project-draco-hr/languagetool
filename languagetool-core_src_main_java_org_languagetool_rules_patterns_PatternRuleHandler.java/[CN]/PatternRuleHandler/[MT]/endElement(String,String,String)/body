@@ -34,6 +34,8 @@ phraseElementList.clear();
 }
 ruleIssueType=null;
 inRule=false;
+filterClassName=null;
+filterArgs=null;
 break;
 case EXCEPTION:
 finalizeExceptions();

@@ -1,0 +1,7 @@
+{
+  String result=map.get(key);
+  if (result == null) {
+    throw new IllegalArgumentException("Missing key '" + key + "'");
+  }
+  return result;
+}
