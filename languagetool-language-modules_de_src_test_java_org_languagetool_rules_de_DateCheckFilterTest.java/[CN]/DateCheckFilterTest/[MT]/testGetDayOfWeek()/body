@@ -4,7 +4,6 @@
   assertThat(filter.getDayOfWeek("mo"),is(2));
   assertThat(filter.getDayOfWeek("Mon."),is(2));
   assertThat(filter.getDayOfWeek("Montag"),is(2));
-  assertThat(filter.getDayOfWeek("Montag"),is(2));
   assertThat(filter.getDayOfWeek("montag"),is(2));
   assertThat(filter.getDayOfWeek("Di"),is(3));
   assertThat(filter.getDayOfWeek("Fr"),is(6));

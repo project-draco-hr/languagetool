@@ -1,0 +1,10 @@
+{
+  assertThat(filter.getMonth("Januar"),is(1));
+  assertThat(filter.getMonth("Jan"),is(1));
+  assertThat(filter.getMonth("Jan."),is(1));
+  assertThat(filter.getMonth("Dezember"),is(12));
+  assertThat(filter.getMonth("Dez"),is(12));
+  assertThat(filter.getMonth("dez"),is(12));
+  assertThat(filter.getMonth("DEZEMBER"),is(12));
+  assertThat(filter.getMonth("dezember"),is(12));
+}
