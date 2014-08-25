@@ -13,11 +13,15 @@
         List<String> tokens=wordTokenizer.tokenize(lineWithoutOcc);
         for (        String token : tokens) {
           if (token.length() > 0) {
-            if (tokens.size() == 1) {
-              out.write(token + separatorChar + occurrences);
-            }
+            out.write(token);
+            if (sepPos != -1) {
+              out.write(separatorChar);
+              if (tokens.size() == 1) {
+                out.write(occurrences);
+              }
  else {
-              out.write(token + separatorChar + "A");
+                out.write("A");
+              }
             }
             out.write("\n");
           }
