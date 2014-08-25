@@ -1,0 +1,8 @@
+{
+  DateCheckFilter filter=new DateCheckFilter();
+  assertThat(filter.getMonth("jan"),is(1));
+  assertThat(filter.getMonth("dec"),is(12));
+  assertThat(filter.getMonth("december"),is(12));
+  assertThat(filter.getMonth("December"),is(12));
+  assertThat(filter.getMonth("DECEMBER"),is(12));
+}
