@@ -22,7 +22,7 @@
         for (        AnalyzedTokenReadings atr : analyzedSentence.getTokens()) {
           sb.append(" ").append(atr.toString());
         }
-        fail(lang + " rule " + rule.getId()+ ":\n\""+ badSentence+ "\"\n"+ "Errors expected: 1\n"+ "Errors found   : "+ matches.size()+ "\n"+ "Message: "+ rule.getMessage()+ "\n"+ sb.toString()+ "\nMatches: "+ matches);
+        fail(lang + " rule " + rule.getId()+ "["+ rule.getSubId()+ "]"+ ":\n\""+ badSentence+ "\"\n"+ "Errors expected: 1\n"+ "Errors found   : "+ matches.size()+ "\n"+ "Message: "+ rule.getMessage()+ "\n"+ sb.toString()+ "\nMatches: "+ matches);
       }
       assertEquals(lang + ": Incorrect match position markup (start) for rule " + rule+ ", sentence: "+ badSentence,expectedMatchStart,matches.get(0).getFromPos());
       assertEquals(lang + ": Incorrect match position markup (end) for rule " + rule+ ", sentence: "+ badSentence,expectedMatchEnd,matches.get(0).getToPos());
