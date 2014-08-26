@@ -16,7 +16,7 @@
   final List<String> parts=wordSplitter.tokenize(word);
   int partCount=0;
   for (  String part : parts) {
-    if (dictionary.misspelled(part)) {
+    if (hunspellDict.misspelled(part)) {
       List<String> suggestions=morfoSpeller.getSuggestions(part);
       if (suggestions.size() == 0) {
         suggestions=morfoSpeller.getSuggestions(StringTools.uppercaseFirstChar(part));

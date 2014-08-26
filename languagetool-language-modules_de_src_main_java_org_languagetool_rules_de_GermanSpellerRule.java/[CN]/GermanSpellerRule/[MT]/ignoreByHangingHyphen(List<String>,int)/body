@@ -3,7 +3,7 @@
   String nextWord=getWordAfterEnumerationOrNull(words,idx);
   boolean isCompound=nextWord != null && compoundTokenizer.tokenize(nextWord).size() > 1;
   if (isCompound) {
-    return !dictionary.misspelled(word.replaceFirst("-$",""));
+    return !hunspellDict.misspelled(word.replaceFirst("-$",""));
   }
   return false;
 }

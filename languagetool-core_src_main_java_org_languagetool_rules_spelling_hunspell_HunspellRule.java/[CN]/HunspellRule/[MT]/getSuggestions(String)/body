@@ -2,5 +2,5 @@
   if (needsInit) {
     init();
   }
-  return dictionary.suggest(word);
+  return hunspellDict.suggest(word);
 }

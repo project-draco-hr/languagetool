@@ -4,7 +4,7 @@
     final String[] words=tokenizeText(wordOrPhrase);
     boolean wordIsOkay=true;
     for (    String word : words) {
-      if (dictionary.misspelled(word)) {
+      if (hunspellDict.misspelled(word)) {
         wordIsOkay=false;
         break;
       }

@@ -3,7 +3,7 @@
   if (needsInit) {
     init();
   }
-  if (dictionary == null) {
+  if (hunspellDict == null) {
     return toRuleMatchArray(ruleMatches);
   }
   final String[] tokens=tokenizeText(getSentenceTextWithoutUrlsAndImmunizedTokens(sentence));
@@ -18,7 +18,7 @@
     if (word.length() == 1) {
       isAlphabetic=Character.isAlphabetic(word.charAt(0));
     }
-    if (isAlphabetic && !word.equals("--") && dictionary.misspelled(word)) {
+    if (isAlphabetic && !word.equals("--") && hunspellDict.misspelled(word)) {
       final RuleMatch ruleMatch=new RuleMatch(this,len,len + word.length(),messages.getString("spelling"),messages.getString("desc_spelling_short"));
       final List<String> suggestions=getSuggestions(word);
       suggestions.addAll(getAdditionalSuggestions(suggestions,word));
