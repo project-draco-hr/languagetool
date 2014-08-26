@@ -1,0 +1,3 @@
+{
+  return ADVERBS.contains(token.getToken());
+}
