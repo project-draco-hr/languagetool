@@ -1,0 +1,12 @@
+{
+  DateCheckFilter filter=new DateCheckFilter();
+  assertThat(filter.getDayOfWeek("niedz"),is(1));
+  assertThat(filter.getDayOfWeek("pon"),is(2));
+  assertThat(filter.getDayOfWeek("Pon"),is(2));
+  assertThat(filter.getDayOfWeek("pon."),is(2));
+  assertThat(filter.getDayOfWeek("poniedzia??ek"),is(2));
+  assertThat(filter.getDayOfWeek("Poniedzia??ek"),is(2));
+  assertThat(filter.getDayOfWeek("wtorek"),is(3));
+  assertThat(filter.getDayOfWeek("pt"),is(6));
+  assertThat(filter.getDayOfWeek("pi??tek"),is(6));
+}
