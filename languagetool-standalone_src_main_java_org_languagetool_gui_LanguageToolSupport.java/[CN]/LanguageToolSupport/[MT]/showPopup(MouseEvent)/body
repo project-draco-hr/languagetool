@@ -33,6 +33,7 @@
     }
 );
     popup.add(ignoreItem);
+    popup.applyComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
   }
   List<Rule> disabledRules=getDisabledRules();
   if (!disabledRules.isEmpty()) {
