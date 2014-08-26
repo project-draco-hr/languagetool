@@ -2,7 +2,7 @@
   final HunspellRule rule=new GermanSpellerRule(TestTools.getMessages("German"),GERMAN_DE);
   assertCorrectionsByOrder(rule,"heisst","hei??t");
   assertCorrectionsByOrder(rule,"heissen","hei??en");
-  assertCorrectionsByOrder(rule,"m????te","m??sste","Mute");
+  assertCorrectionsByOrder(rule,"m????te","m??sste");
   assertCorrectionsByOrder(rule,"schmohren","schmoren");
   assertCorrectionsByOrder(rule,"F??nomen","Ph??nomen");
   assertCorrectionsByOrder(rule,"homofob","homophob");
