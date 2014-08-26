@@ -142,5 +142,6 @@
   this.defaultFont=previewArea.getFont();
   setDefaultFont();
   getRootPane().setDefaultButton(cancelButton);
+  this.applyComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
   pack();
 }

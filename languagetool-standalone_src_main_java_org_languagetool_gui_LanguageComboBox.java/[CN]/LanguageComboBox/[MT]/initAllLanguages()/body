@@ -1,4 +1,5 @@
 {
+  applyComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
   languages.clear();
   for (  Language language : Language.getRealLanguages()) {
     final boolean skip=language.hasVariant();
