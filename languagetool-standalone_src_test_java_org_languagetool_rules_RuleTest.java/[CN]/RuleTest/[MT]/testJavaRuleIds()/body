@@ -14,7 +14,7 @@
       assertIdUniqueness(ids,ruleClasses,language,rule);
       assertIdValidity(language,rule);
       if (rule instanceof PatternRule) {
-        assertFalse(rule.supportsLanguage(language));
+        throw new RuntimeException("Did not expect PatternRule here: " + rule);
       }
  else {
         assertTrue(rule.supportsLanguage(language));
