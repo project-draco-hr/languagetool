@@ -1,5 +1,4 @@
 {
-  init();
   final List<String> ret=new ArrayList<>();
   List<Token> tokens=new ArrayList<>();
   String basicForm;
