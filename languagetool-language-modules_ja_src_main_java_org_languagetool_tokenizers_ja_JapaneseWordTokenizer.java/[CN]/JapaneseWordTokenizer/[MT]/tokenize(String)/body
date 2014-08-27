@@ -1,14 +1,14 @@
 {
   final List<String> ret=new ArrayList<>();
   List<Token> tokens=new ArrayList<>();
-  String basicForm;
   try {
-    stringtagger.analyze(text,tokens);
+    stringTagger.analyze(text,tokens);
   }
  catch (  Exception e) {
     return ret;
   }
   for (  Token token : tokens) {
+    String basicForm;
     if (token.getMorpheme().getBasicForm().equalsIgnoreCase("*")) {
       basicForm=token.getSurface();
     }
