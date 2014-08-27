@@ -1,3 +1,3 @@
 {
-  return Arrays.asList(new CommaWhitespaceRule(messages),new DoublePunctuationRule(messages),new MultipleWhitespaceRule(messages,this),new LongSentenceRule(messages),new PersianCommaWhitespaceRule(messages),new PersianWordRepeatBeginningRule(messages,this),new PersianWordRepeatRule(messages,this),new SimpleReplaceRule(messages),new PersianSpaceBeforeRule(messages,this));
+  return Arrays.asList(new CommaWhitespaceRule(messages),new DoublePunctuationRule(messages),new MultipleWhitespaceRule(messages,this),new LongSentenceRule(messages),new PersianCommaWhitespaceRule(messages),new PersianDoublePunctuationRule(messages),new PersianWordRepeatBeginningRule(messages,this),new PersianWordRepeatRule(messages,this),new SimpleReplaceRule(messages),new PersianSpaceBeforeRule(messages,this));
 }
