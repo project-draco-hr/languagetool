@@ -1,0 +1,21 @@
+{
+  if (wordRepetitionOf("????",tokens,position)) {
+    return true;
+  }
+  if (wordRepetitionOf("????",tokens,position)) {
+    return true;
+  }
+  if (wordRepetitionOf("????",tokens,position)) {
+    return true;
+  }
+  if (wordRepetitionOf("??????",tokens,position)) {
+    return true;
+  }
+  if (wordRepetitionOf("????",tokens,position)) {
+    return true;
+  }
+  if (wordRepetitionOf("????",tokens,position)) {
+    return true;
+  }
+  return false;
+}
