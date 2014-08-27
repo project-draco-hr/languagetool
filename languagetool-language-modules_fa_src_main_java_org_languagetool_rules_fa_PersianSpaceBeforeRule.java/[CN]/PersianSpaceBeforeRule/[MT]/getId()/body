@@ -1,3 +1,3 @@
 {
-  return "Fa_SPACE_BEFORE_CONJUNCTION";
+  return "FA_SPACE_BEFORE_CONJUNCTION";
 }
