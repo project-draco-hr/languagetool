@@ -1,0 +1,3 @@
+{
+  return "'" + word1 + "' und '"+ word2+ "' sollten nicht gleichzeitig benutzt werden";
+}
