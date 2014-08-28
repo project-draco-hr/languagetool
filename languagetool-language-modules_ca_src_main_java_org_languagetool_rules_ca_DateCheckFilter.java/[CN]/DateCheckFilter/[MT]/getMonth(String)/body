@@ -1,0 +1,16 @@
+{
+  String mon=monthStr.toLowerCase();
+  if (mon.startsWith("gen"))   return 1;
+  if (mon.startsWith("febr"))   return 2;
+  if (mon.startsWith("mar??"))   return 3;
+  if (mon.startsWith("abr"))   return 4;
+  if (mon.startsWith("maig"))   return 5;
+  if (mon.startsWith("juny"))   return 6;
+  if (mon.startsWith("jul"))   return 7;
+  if (mon.startsWith("ag"))   return 8;
+  if (mon.startsWith("set"))   return 9;
+  if (mon.startsWith("oct"))   return 10;
+  if (mon.startsWith("nov"))   return 11;
+  if (mon.startsWith("des"))   return 12;
+  throw new RuntimeException("Could not find month '" + monthStr + "'");
+}
