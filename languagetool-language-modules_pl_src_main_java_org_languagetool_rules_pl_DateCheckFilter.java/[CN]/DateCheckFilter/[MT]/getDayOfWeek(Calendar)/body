@@ -1,0 +1,3 @@
+{
+  return date.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.LONG,Locale.forLanguageTag("pl"));
+}

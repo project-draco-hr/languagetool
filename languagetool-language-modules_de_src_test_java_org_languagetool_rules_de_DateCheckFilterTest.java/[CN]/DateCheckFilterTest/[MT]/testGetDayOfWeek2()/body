@@ -1,0 +1,7 @@
+{
+  Calendar calendar=Calendar.getInstance();
+  calendar.set(2014,8 - 1,29);
+  assertThat(filter.getDayOfWeek(calendar),is("Freitag"));
+  calendar.set(2014,8 - 1,30);
+  assertThat(filter.getDayOfWeek(calendar),is("Samstag"));
+}
