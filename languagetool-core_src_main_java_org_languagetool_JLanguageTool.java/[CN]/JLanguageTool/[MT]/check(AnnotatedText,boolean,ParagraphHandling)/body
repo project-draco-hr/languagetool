@@ -15,7 +15,7 @@
   final List<RuleMatch> ruleMatches=performCheck(analyzedSentences,sentences,allRules,paraMode,annotatedText);
   if (!ruleMatches.isEmpty() && !paraMode.equals(ParagraphHandling.ONLYNONPARA)) {
     for (    final Rule rule : allRules) {
-      if (rule.isParagraphBackTrack() && (rule.getMatches() != null)) {
+      if (rule.isParagraphBackTrack() && rule.getMatches() != null) {
         final List<RuleMatch> rm=rule.getMatches();
         for (        final RuleMatch r : rm) {
           if (rule.isInRemoved(r)) {
