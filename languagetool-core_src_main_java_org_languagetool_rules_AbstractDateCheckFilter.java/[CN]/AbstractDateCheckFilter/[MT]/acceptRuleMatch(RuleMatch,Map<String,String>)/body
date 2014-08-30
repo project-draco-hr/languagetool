@@ -1,7 +1,13 @@
 {
   int dayOfWeekFromString=getDayOfWeek(getRequired("weekDay",args));
   Calendar dateFromDate=getDate(args);
-  int dayOfWeekFromDate=dateFromDate.get(Calendar.DAY_OF_WEEK);
+  int dayOfWeekFromDate;
+  try {
+    dayOfWeekFromDate=dateFromDate.get(Calendar.DAY_OF_WEEK);
+  }
+ catch (  IllegalArgumentException ignore) {
+    return null;
+  }
   if (dayOfWeekFromString != dayOfWeekFromDate) {
     String realDayName=getDayOfWeek(dateFromDate);
     String message=match.getMessage().replace("\\realDay",realDayName);

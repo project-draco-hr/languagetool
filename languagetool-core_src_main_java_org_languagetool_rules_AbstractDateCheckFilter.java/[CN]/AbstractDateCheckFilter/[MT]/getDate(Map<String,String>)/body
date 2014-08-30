@@ -3,6 +3,7 @@
   int month=getMonthFromArguments(args);
   int dayOfMonth=Integer.parseInt(getRequired("day",args));
   Calendar calendar=getCalendar();
+  calendar.setLenient(false);
   calendar.set(year,month,dayOfMonth,0,0,0);
   return calendar;
 }
