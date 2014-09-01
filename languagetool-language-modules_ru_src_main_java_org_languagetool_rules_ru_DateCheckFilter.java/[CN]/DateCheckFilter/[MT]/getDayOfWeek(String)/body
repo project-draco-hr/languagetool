@@ -1,0 +1,11 @@
+{
+  String day=dayStr.toLowerCase();
+  if (day.startsWith("????"))   return Calendar.MONDAY;
+  if (day.startsWith("????"))   return Calendar.TUESDAY;
+  if (day.startsWith("????"))   return Calendar.WEDNESDAY;
+  if (day.startsWith("????"))   return Calendar.THURSDAY;
+  if (day.equals("????") || day.equals("??????????????"))   return Calendar.FRIDAY;
+  if (day.startsWith("????"))   return Calendar.SATURDAY;
+  if (day.startsWith("??????"))   return Calendar.SUNDAY;
+  throw new RuntimeException("Could not find day of week for '" + dayStr + "'");
+}
