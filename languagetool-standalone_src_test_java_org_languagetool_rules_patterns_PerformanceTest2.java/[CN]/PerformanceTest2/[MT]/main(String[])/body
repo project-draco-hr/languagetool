@@ -1,0 +1,9 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + PerformanceTest2.class.getSimpleName() + " <languageCode> <text_file>");
+    System.exit(1);
+  }
+  PerformanceTest2 test=new PerformanceTest2();
+  File textFile=new File(args[1]);
+  test.run(args[0],textFile);
+}
