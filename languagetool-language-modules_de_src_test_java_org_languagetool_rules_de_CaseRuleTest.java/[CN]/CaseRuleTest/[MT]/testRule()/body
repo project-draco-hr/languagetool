@@ -20,6 +20,7 @@
   assertGood("Er wird etwas sch??n Verr??cktes tr??umen.");
   assertGood("Er wird etwas so Verr??cktes tr??umen.");
   assertGood("Tom ist etwas ??ber drei??ig.");
+  assertGood("Diese Angriffe bleiben im Verborgenen.");
   assertBad("Tom ist etwas ??ber Drei??ig.");
   assertGood("Ein Menschenfreund.");
   assertGood("Der Nachfahre.");
