@@ -3,9 +3,4 @@
   this.motherTongue=motherTongue;
   final ResourceBundle messages=ResourceBundleTools.getMessageBundle(language);
   builtinRules=getAllBuiltinRules(language,messages);
-  disambiguator=language.getDisambiguator();
-  tagger=language.getTagger();
-  sentenceTokenizer=language.getSentenceTokenizer();
-  wordTokenizer=language.getWordTokenizer();
-  chunker=language.getChunker();
 }

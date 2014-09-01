@@ -1,9 +1,9 @@
 {
-  final List<String> tokens=wordTokenizer.tokenize(sentence);
+  final List<String> tokens=language.getWordTokenizer().tokenize(sentence);
   final Map<Integer,String> softHyphenTokens=replaceSoftHyphens(tokens);
-  final List<AnalyzedTokenReadings> aTokens=tagger.tag(tokens);
-  if (chunker != null) {
-    chunker.addChunkTags(aTokens);
+  final List<AnalyzedTokenReadings> aTokens=language.getTagger().tag(tokens);
+  if (language.getChunker() != null) {
+    language.getChunker().addChunkTags(aTokens);
   }
   final int numTokens=aTokens.size();
   int posFix=0;
@@ -12,7 +12,7 @@
     aTokens.get(i).setStartPos(aTokens.get(i).getStartPos() + posFix);
     if (!softHyphenTokens.isEmpty()) {
       if (softHyphenTokens.get(i) != null) {
-        aTokens.get(i).addReading(tagger.createToken(softHyphenTokens.get(i),null));
+        aTokens.get(i).addReading(language.getTagger().createToken(softHyphenTokens.get(i),null));
         posFix+=softHyphenTokens.get(i).length() - aTokens.get(i).getToken().length();
       }
     }
