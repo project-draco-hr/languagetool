@@ -1,7 +1,9 @@
 {
   int year=Integer.parseInt(getRequired("year",args));
   int month=getMonthFromArguments(args);
-  int dayOfMonth=Integer.parseInt(getRequired("day",args));
+  String dayOfMonthString=args.get("day");
+  Matcher matcherDayOfMonth=patternDayOfMonth.matcher(dayOfMonthString);
+  int dayOfMonth=matcherDayOfMonth.matches() ? Integer.parseInt(matcherDayOfMonth.group(1)) : 0;
   Calendar calendar=getCalendar();
   calendar.setLenient(false);
   calendar.set(year,month,dayOfMonth,0,0,0);
