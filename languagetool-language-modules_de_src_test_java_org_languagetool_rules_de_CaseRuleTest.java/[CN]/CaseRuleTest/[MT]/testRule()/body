@@ -64,4 +64,8 @@
   assertBad("Sein verhalten war okay.");
   assertEquals(1,langTool.check("Karten werden vom Auswahlstapel gezogen. Auch [???] Der Auswahlstapel geh??rt zum Inhalt.").size());
   assertEquals(0,langTool.check("Karten werden vom Auswahlstapel gezogen. [???] Der Auswahlstapel geh??rt zum Inhalt.").size());
+  assertGood("Im Norwegischen klingt das sch??ner.");
+  assertGood("??bersetzt aus dem Norwegischen von Ingenieur Frederik Dingsbums.");
+  assertGood("Dem norwegischen Ingenieur gelingt das gut.");
+  assertBad("Dem Norwegischen Ingenieur gelingt das gut.");
 }
