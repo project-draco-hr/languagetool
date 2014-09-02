@@ -57,13 +57,7 @@
           if (profileRules) {
             sentences+=lt.sentenceTokenize(sb.toString()).size();
           }
-          if (listUnknownWords && !taggerOnly) {
-            for (            String word : lt.getUnknownWords()) {
-              if (!unknownWords.contains(word)) {
-                unknownWords.add(word);
-              }
-            }
-          }
+          rememberUnknownWords(listUnknownWords,unknownWords);
           sb=new StringBuilder();
           lineOffset=tmpLineOffset;
         }
@@ -74,13 +68,7 @@
             if (profileRules) {
               sentences+=lt.sentenceTokenize(sb.toString()).size();
             }
-            if (listUnknownWords && !taggerOnly) {
-              for (              String word : lt.getUnknownWords()) {
-                if (!unknownWords.contains(word)) {
-                  unknownWords.add(word);
-                }
-              }
-            }
+            rememberUnknownWords(listUnknownWords,unknownWords);
             sb=new StringBuilder();
             lineOffset=tmpLineOffset;
           }
@@ -97,13 +85,7 @@
         if (apiFormat && !taggerOnly && !applySuggestions) {
           System.out.println("</matches>");
         }
-        if (listUnknownWords && !taggerOnly) {
-          for (          String word : lt.getUnknownWords()) {
-            if (!unknownWords.contains(word)) {
-              unknownWords.add(word);
-            }
-          }
-        }
+        rememberUnknownWords(listUnknownWords,unknownWords);
       }
       printTimingInformation(listUnknownWords,rules,unknownWords,ruleIndex,matches,sentences,startTime);
       if (br != null) {
