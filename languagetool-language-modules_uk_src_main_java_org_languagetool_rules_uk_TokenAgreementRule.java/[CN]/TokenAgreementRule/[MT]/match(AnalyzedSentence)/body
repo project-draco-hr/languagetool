@@ -6,7 +6,7 @@
   for (  AnalyzedTokenReadings tokenReadings : tokens) {
     i++;
     String posTag=tokenReadings.getAnalyzedToken(0).getPOSTag();
-    if (posTag == null || posTag.equals(IPOSTag.todo.getText()) || posTag.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
+    if (posTag == null || posTag.contains(IPOSTag.todo.getText()) || posTag.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
       reqTokenReadings=null;
       continue;
     }
