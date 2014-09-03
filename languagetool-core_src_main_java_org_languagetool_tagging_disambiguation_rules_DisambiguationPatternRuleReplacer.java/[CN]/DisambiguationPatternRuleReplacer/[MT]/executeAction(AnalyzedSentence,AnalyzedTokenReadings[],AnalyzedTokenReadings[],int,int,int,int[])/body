@@ -39,7 +39,6 @@
   }
   final int fromPos=sentence.getOriginalPosition(firstMatchToken + correctedStPos);
   final boolean spaceBefore=whTokens[fromPos].isWhitespaceBefore();
-  boolean filtered=false;
   final DisambiguationPatternRule.DisambiguatorAction disAction=rule.getAction();
   final AnalyzedToken[] newTokenReadings=rule.getNewTokenReadings();
   final Match matchElement=rule.getMatchElement();
@@ -162,11 +161,10 @@ final String prevValue=whTokens[fromPos].toString();
 final String prevAnot=whTokens[fromPos].getHistoricalAnnotations();
 whTokens[fromPos]=matchState.filterReadings();
 annotateChange(whTokens[fromPos],prevValue,prevAnot);
-filtered=true;
+break;
 }
 case REPLACE:
 default :
-if (!filtered) {
 if (newTokenReadings != null && newTokenReadings.length > 0) {
 if (newTokenReadings.length == matchingTokensWithCorrection - startPositionCorrection + endPositionCorrection) {
 for (int i=0; i < newTokenReadings.length; i++) {
@@ -212,7 +210,6 @@ final String prevAnot=whTokens[fromPos].getHistoricalAnnotations();
 whTokens[fromPos]=matchElementState.filterReadings();
 whTokens[fromPos].setWhitespaceBefore(spaceBefore);
 annotateChange(whTokens[fromPos],prevValue,prevAnot);
-}
 }
 }
 return whTokens;
