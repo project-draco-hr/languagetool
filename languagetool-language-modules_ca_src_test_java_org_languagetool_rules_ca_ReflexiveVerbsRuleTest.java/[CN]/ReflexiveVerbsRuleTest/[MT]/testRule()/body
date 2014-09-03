@@ -169,6 +169,7 @@
   assertCorrect("Joan ha anat a dutxar-se.");
   assertCorrect("Joan s'ha anat a dutxar.");
   assertCorrect("amb els Confederats intentant burlar el bloqueig a Maryland.");
+  assertCorrect("Es pot baixar la darrera versi??.");
   assertCorrect("Se'l va fer callar.");
   assertCorrect("Se li va fer callar.");
   assertCorrect("Se'ns va fer callar.");
