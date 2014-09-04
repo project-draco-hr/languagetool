@@ -32,6 +32,8 @@
   testSplit("Ell ??s el n??mero u. ","Jo el dos.");
   testSplit("T?? un trau al cap. ","Cal portar-lo a l'hospital.");
   testSplit("1 500 m/s. ","Neix a");
+  testSplit("S??n d'1 g. ","Han estat condicionades.");
+  testSplit("S??n d'1 m. ","Han estat condicionades.");
   testSplit("s'hi enfront?? quan G.Oueddei n'esdevingu?? l??der");
   testSplit("el jesu??ta alemany J.E. Nithard");
 }
