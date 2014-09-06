@@ -1,0 +1,38 @@
+{
+  if (posTagRegExp) {
+    initPossibleTags();
+    Pattern p=Pattern.compile(posTag);
+    final List<String> results=new ArrayList<>();
+    for (    final String tag : possibleTags) {
+      final Matcher m=p.matcher(tag);
+      if (m.matches()) {
+        lookup(token.getLemma(),tag,results);
+      }
+    }
+    if ((results.size() == 0)) {
+      final Matcher mVerb=pVerb.matcher(posTag);
+      if (mVerb.matches()) {
+        if (!posTag.endsWith("0")) {
+          p=Pattern.compile(posTag.substring(0,posTag.length() - 1).concat("0"));
+          for (          final String tag : possibleTags) {
+            final Matcher m=p.matcher(tag);
+            if (m.matches()) {
+              lookup(token.getLemma(),tag,results);
+            }
+          }
+        }
+        if (results.size() == 0) {
+          p=Pattern.compile(posTag.substring(0,posTag.length() - 1).concat("."));
+          for (          final String tag : possibleTags) {
+            final Matcher m=p.matcher(tag);
+            if (m.matches()) {
+              lookup(token.getLemma(),tag,results);
+            }
+          }
+        }
+      }
+    }
+    return results.toArray(new String[results.size()]);
+  }
+  return synthesize(token,posTag);
+}

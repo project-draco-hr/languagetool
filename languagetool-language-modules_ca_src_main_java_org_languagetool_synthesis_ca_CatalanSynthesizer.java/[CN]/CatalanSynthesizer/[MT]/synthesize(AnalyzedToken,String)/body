@@ -29,13 +29,12 @@
       }
     }
   }
-  if ((results.size() == 0) && posTag.startsWith("V") && !posTag.endsWith(".")&& !posTag.endsWith("*")) {
-    p=Pattern.compile(posTag.substring(0,posTag.length() - 1).concat("0"));
-    for (    final String tag : possibleTags) {
-      final Matcher m=p.matcher(tag);
-      if (m.matches()) {
-        lookup(token.getLemma(),tag,results);
-      }
+  if ((results.size() == 0) && posTag.startsWith("V")) {
+    if (!posTag.endsWith("0")) {
+      lookup(token.getLemma(),posTag.substring(0,posTag.length() - 1).concat("0"),results);
+    }
+    if (results.size() == 0) {
+      return synthesize(token,posTag.substring(0,posTag.length() - 1).concat("."),true);
     }
   }
   return results.toArray(new String[results.size()]);
