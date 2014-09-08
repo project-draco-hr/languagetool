@@ -1,0 +1,9 @@
+{
+  int thisYear=Calendar.getInstance().get(Calendar.YEAR);
+  int maxYear=thisYear - Integer.parseInt(arguments.get("maxYearsBack"));
+  int year=Integer.parseInt(arguments.get("year"));
+  if (year < thisYear && year >= maxYear) {
+    return match;
+  }
+  return null;
+}

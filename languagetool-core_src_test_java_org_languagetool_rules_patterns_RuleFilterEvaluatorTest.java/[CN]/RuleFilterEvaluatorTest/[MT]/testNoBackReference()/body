@@ -1,3 +1,7 @@
 {
-  eval.getResolvedArguments("year:2",null,Collections.<Integer>emptyList());
+  Map<String,String> args=eval.getResolvedArguments("year:2 foo:bar",null,Collections.<Integer>emptyList());
+  Map<String,String> expected=new HashMap<>();
+  expected.put("year","2");
+  expected.put("foo","bar");
+  assertThat(args,is(expected));
 }
