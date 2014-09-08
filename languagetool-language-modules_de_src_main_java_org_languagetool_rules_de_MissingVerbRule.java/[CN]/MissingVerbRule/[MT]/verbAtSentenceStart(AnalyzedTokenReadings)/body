@@ -1,11 +1,11 @@
 {
   String lowercased=StringTools.lowercaseFirstChar(readings.getToken());
-  List<AnalyzedTokenReadings> lcReadings=tagger.tag(Collections.singletonList(lowercased));
+  List<AnalyzedTokenReadings> lcReadings=language.getTagger().tag(Collections.singletonList(lowercased));
   if (lcReadings.size() > 0 && lcReadings.get(0).hasPartialPosTag("VER")) {
     return true;
   }
   if (!lowercased.endsWith("e")) {
-    List<AnalyzedTokenReadings> lcImperativeReadings=tagger.tag(Collections.singletonList(lowercased + "e"));
+    List<AnalyzedTokenReadings> lcImperativeReadings=language.getTagger().tag(Collections.singletonList(lowercased + "e"));
     if (lcImperativeReadings.size() > 0 && lcImperativeReadings.get(0).hasPartialPosTag("VER")) {
       return true;
     }

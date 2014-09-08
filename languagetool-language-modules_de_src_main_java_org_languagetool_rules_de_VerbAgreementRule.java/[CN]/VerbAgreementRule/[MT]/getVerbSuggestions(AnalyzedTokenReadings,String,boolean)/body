@@ -7,7 +7,7 @@
     }
   }
   try {
-    String[] synthesized=german.getSynthesizer().synthesize(verbToken,"VER.*:" + expectedVerbPOS + ".*",true);
+    String[] synthesized=language.getSynthesizer().synthesize(verbToken,"VER.*:" + expectedVerbPOS + ".*",true);
     Set<String> suggestionSet=new HashSet<>();
     suggestionSet.addAll(Arrays.asList(synthesized));
     List<String> suggestions=new ArrayList<>();
