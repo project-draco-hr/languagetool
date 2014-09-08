@@ -9,6 +9,6 @@
     for (    Rule auxRule : rules) {
       isMatched=isMatched || match(auxRule,goodSentence,languageTool);
     }
-    assertFalse(lang + ": Did not expect error in: " + goodSentence+ " (Rule: "+ rule+ ")",isMatched);
+    assertFalse(lang + ": Did not expect error in:\n" + "  "+ goodSentence+ "\n"+ "Matching Rule: "+ rule,isMatched);
   }
 }
