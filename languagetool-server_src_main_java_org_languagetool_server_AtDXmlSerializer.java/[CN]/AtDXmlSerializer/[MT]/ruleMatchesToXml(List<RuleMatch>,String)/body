@@ -1,6 +1,7 @@
 {
   StringBuilder sb=new StringBuilder();
   sb.append("<results>\n");
+  sb.append("<!-- Server: LanguageTool " + JLanguageTool.VERSION + " ("+ JLanguageTool.BUILD_DATE+ ") -->\n");
   for (  RuleMatch match : matches) {
     addRuleMatch(sb,match,text);
   }
