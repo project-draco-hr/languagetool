@@ -14,13 +14,13 @@
         throw new RuntimeException("Your reference number " + refNumber + " is bigger than the number of tokens: "+ tokenPositions.size());
       }
       int correctedRef=getSkipCorrectedReference(tokenPositions,refNumber);
-      if (correctedRef >= tokenReadings.length) {
-        throw new RuntimeException("Your reference number " + refNumber + " is bigger than number of matching tokens: "+ tokenReadings.length);
+      if (correctedRef >= patternTokens.length) {
+        throw new RuntimeException("Your reference number " + refNumber + " is bigger than number of matching tokens: "+ patternTokens.length);
       }
       if (result.containsKey(key)) {
         throw new RuntimeException("Duplicate key '" + key + "'");
       }
-      result.put(key,tokenReadings[correctedRef].getToken());
+      result.put(key,patternTokens[correctedRef].getToken());
     }
  else {
       result.put(key,val);
