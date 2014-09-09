@@ -1,2 +1,3 @@
 RuleMatch match
 Map<String,String> arguments
+AnalyzedTokenReadings[] patternTokens

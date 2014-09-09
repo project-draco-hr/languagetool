@@ -1,3 +1,3 @@
 {
-  filter.acceptRuleMatch(match,makeMap("2014","8","23","invalid"));
+  filter.acceptRuleMatch(match,makeMap("2014","8","23","invalid"),null);
 }

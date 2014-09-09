@@ -10,5 +10,5 @@
   args.put("day",parts[0]);
   args.put("month",parts[1]);
   args.put("year",parts[2]);
-  return super.acceptRuleMatch(match,args);
+  return super.acceptRuleMatch(match,args,patternTokens);
 }

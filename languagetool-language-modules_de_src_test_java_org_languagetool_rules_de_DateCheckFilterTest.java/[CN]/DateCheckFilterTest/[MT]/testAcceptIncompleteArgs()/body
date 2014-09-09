@@ -1,5 +1,5 @@
 {
   Map<String,String> map=makeMap("2014","8","23","Samstag");
   map.remove("weekDay");
-  filter.acceptRuleMatch(match,map);
+  filter.acceptRuleMatch(match,map,null);
 }

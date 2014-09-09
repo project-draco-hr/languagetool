@@ -1,4 +1,4 @@
 {
   Map<String,String> args=getResolvedArguments(filterArgs,patternTokens,tokenPositions);
-  return filter.acceptRuleMatch(ruleMatch,args);
+  return filter.acceptRuleMatch(ruleMatch,args,patternTokens);
 }
