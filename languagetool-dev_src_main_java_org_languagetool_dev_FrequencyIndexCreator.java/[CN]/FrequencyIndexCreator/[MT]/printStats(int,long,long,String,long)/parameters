@@ -1,0 +1,5 @@
+int i
+long docCount
+long lineCount
+String prevText
+long startTimeMicros

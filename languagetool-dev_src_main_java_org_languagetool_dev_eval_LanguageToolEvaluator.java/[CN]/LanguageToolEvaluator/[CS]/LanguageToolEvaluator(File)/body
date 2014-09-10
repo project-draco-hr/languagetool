@@ -1,0 +1,19 @@
+{
+  langTool=new JLanguageTool(new BritishEnglish());
+  langTool.activateDefaultPatternRules();
+  disableRules();
+  if (indexTopDir != null) {
+    if (indexTopDir.isDirectory()) {
+      languageModel=new LuceneLanguageModel(indexTopDir);
+      System.out.println("Using Lucene language model from " + languageModel);
+      EnglishConfusionProbabilityRule probabilityRule=new EnglishConfusionProbabilityRule(JLanguageTool.getMessageBundle(),languageModel,new English());
+      langTool.addRule(probabilityRule);
+    }
+ else {
+      throw new RuntimeException("Does not exist or not a directory: " + indexTopDir);
+    }
+  }
+ else {
+    languageModel=null;
+  }
+}

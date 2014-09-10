@@ -1,0 +1,12 @@
+{
+  Directory directory=FSDirectory.open(tempDir);
+  IndexWriterConfig config=new IndexWriterConfig(Version.LUCENE_4_9,new FakeAnalyzer());
+  try (IndexWriter writer=new IndexWriter(directory,config)){
+    addDoc(writer,"is an caf??","1");
+    addDoc(writer,"an caf?? in","2");
+    addDoc(writer,"caf?? in Berlin","1");
+    addDoc(writer,"is a caf??","5000");
+    addDoc(writer,"a caf?? in","1000");
+    addDoc(writer,"caf?? in Berlin","20");
+  }
+ }

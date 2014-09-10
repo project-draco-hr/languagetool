@@ -1,0 +1,20 @@
+{
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  List<RuleMatch> matches=new ArrayList<>();
+  int pos=0;
+  for (  AnalyzedTokenReadings token : tokens) {
+    ConfusionSet confusionSet=wordToSet.get(token.getToken());
+    boolean isEasilyConfused=confusionSet != null;
+    if (isEasilyConfused) {
+      String betterAlternative=getBetterAlternativeOrNull(tokens,pos,confusionSet);
+      if (betterAlternative != null) {
+        int endPos=token.getStartPos() + token.getToken().length();
+        RuleMatch match=new RuleMatch(this,token.getStartPos(),endPos,getMessage(betterAlternative));
+        match.setSuggestedReplacement(betterAlternative);
+        matches.add(match);
+      }
+    }
+    pos++;
+  }
+  return matches.toArray(new RuleMatch[matches.size()]);
+}

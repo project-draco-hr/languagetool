@@ -1,0 +1,41 @@
+{
+  for (  ErrorSentence sentence : corpus) {
+    List<RuleMatch> matches=checker.check(sentence.getAnnotatedText());
+    sentenceCount++;
+    errorsInCorpusCount+=sentence.getErrors().size();
+    System.out.println(sentence.getMarkupText() + " => " + matches.size());
+    List<Span> detectedErrorPositions=new ArrayList<>();
+    for (    RuleMatch match : matches) {
+      boolean alreadyCounted=errorAlreadyCounted(match,detectedErrorPositions);
+      if (!alreadyCounted && sentence.hasErrorCoveredByMatchAndGoodFirstSuggestion(match)) {
+        goodMatches++;
+        perfectMatches++;
+        matchCount++;
+        if (isConfusionRule(match)) {
+          perfectConfusionMatches++;
+        }
+        System.out.println("    [++] " + match + ": "+ match.getSuggestedReplacements());
+      }
+ else       if (!alreadyCounted && sentence.hasErrorCoveredByMatch(match)) {
+        goodMatches++;
+        matchCount++;
+        if (isConfusionRule(match)) {
+          goodConfusionMatches++;
+        }
+        System.out.println("    [+ ] " + match + ": "+ match.getSuggestedReplacements());
+      }
+ else       if (alreadyCounted) {
+        System.out.println("    [//]  " + match + ": "+ match.getSuggestedReplacements());
+      }
+ else {
+        System.out.println("    [  ] " + match + ": "+ match.getSuggestedReplacements());
+        matchCount++;
+        if (isConfusionRule(match)) {
+          badConfusionMatches++;
+          badConfusionMatchWords.add(sentence.getMarkupText().substring(match.getFromPos(),match.getToPos()));
+        }
+      }
+      detectedErrorPositions.add(new Span(match.getFromPos(),match.getToPos()));
+    }
+  }
+}

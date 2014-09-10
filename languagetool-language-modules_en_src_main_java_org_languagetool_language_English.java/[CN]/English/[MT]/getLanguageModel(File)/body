@@ -1,0 +1,6 @@
+{
+  if (languageModel == null) {
+    languageModel=new LuceneLanguageModel(indexDir);
+  }
+  return languageModel;
+}

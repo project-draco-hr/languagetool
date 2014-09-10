@@ -1,0 +1,16 @@
+{
+  Map<String,ConfusionProbabilityRule.ConfusionSet> confusionSet=getConfusionSet();
+  try (FileReader reader=new FileReader(filename)){
+    String text=StringTools.readerToString(reader);
+    JLanguageTool languageTool=new JLanguageTool(new English());
+    List<AnalyzedSentence> analyzedSentences=languageTool.analyzeText(text);
+    for (    AnalyzedSentence sentence : analyzedSentences) {
+      runOnSentence(sentence,confusionSet);
+    }
+  }
+   System.out.println("Homophones set: " + confusionSet.size() + " items");
+  System.out.println("Sentences: " + sentences);
+  System.out.println("Homophones: " + homophones + " = "+ ((float)homophones / sentences)+ " per sentence");
+  System.out.println("Lookups: " + lookupsNeeded + " = "+ ((float)lookupsNeeded / sentences)+ " per sentence");
+  System.out.println(" (Lookups is the number of lookups needed to see which word in the homophones set " + "is more common. Actually even more ngram lookups will be needed, depending on what ngrams we have.)");
+}

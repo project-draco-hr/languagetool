@@ -1,0 +1,7 @@
+{
+  File indexDir=new File(topIndexDir,ngramSize + "grams");
+  if (indexDir.exists() && indexDir.isDirectory()) {
+    luceneSearcherMap.put(ngramSize,new LuceneSearcher(indexDir));
+    indexes.add(indexDir);
+  }
+}

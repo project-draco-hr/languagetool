@@ -1,0 +1,10 @@
+{
+  try {
+    String text=annotatedText.getPlainText();
+    String xml=queryAtDServer(text);
+    return getRuleMatches(xml,annotatedText);
+  }
+ catch (  XPathExpressionException e) {
+    throw new RuntimeException(e);
+  }
+}

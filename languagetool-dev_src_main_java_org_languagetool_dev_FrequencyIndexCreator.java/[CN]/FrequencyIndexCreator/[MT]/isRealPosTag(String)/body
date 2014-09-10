@@ -1,0 +1,17 @@
+{
+  int idx=text.indexOf('_');
+  if (idx == -1) {
+    return false;
+  }
+ else {
+    String tag=idx + 7 <= text.length() ? text.substring(idx,idx + 7) : "";
+    if (tag.equals(LanguageModel.GOOGLE_SENTENCE_START)) {
+      return false;
+    }
+    String tag2=idx + 5 <= text.length() ? text.substring(idx,idx + 5) : "";
+    if (tag2.equals(LanguageModel.GOOGLE_SENTENCE_END)) {
+      return false;
+    }
+    return true;
+  }
+}

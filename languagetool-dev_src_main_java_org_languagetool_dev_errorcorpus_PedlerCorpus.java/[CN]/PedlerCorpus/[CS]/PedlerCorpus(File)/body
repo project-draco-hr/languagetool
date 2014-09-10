@@ -1,0 +1,15 @@
+{
+  File[] files=dir.listFiles();
+  if (files == null) {
+    throw new RuntimeException("Directory not found: " + dir);
+  }
+  for (  File file : files) {
+    if (!file.getName().endsWith(".txt")) {
+      System.out.println("Ignoring " + file + ", does not match *.txt");
+      continue;
+    }
+    try (FileInputStream fis=new FileInputStream(file)){
+      lines.addAll(IOUtils.readLines(fis));
+    }
+   }
+}

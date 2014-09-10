@@ -1,0 +1,8 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: " + ConfusionSetCoverage.class.getSimpleName() + " <textfile>");
+    System.exit(1);
+  }
+  ConfusionSetCoverage coverage=new ConfusionSetCoverage();
+  coverage.run(args[0]);
+}

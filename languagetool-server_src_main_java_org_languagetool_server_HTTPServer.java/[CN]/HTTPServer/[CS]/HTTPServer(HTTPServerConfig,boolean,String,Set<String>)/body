@@ -12,6 +12,7 @@
     if (config.getMode() == HTTPServerConfig.Mode.AfterTheDeadline) {
       httpHandler.setAfterTheDeadlineMode(config.getAfterTheDeadlineLanguage());
     }
+    httpHandler.setLanguageModel(config.getLanguageModelDir());
     server.createContext("/",httpHandler);
     executorService=getExecutorService(workQueue,config);
     server.setExecutor(executorService);

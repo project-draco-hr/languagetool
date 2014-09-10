@@ -1,0 +1,10 @@
+{
+  super(messages);
+  ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader(MIN_SENTENCES,MAX_ERROR_RATE);
+  ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
+  String prefix="/" + language.getShortName() + "/";
+  InputStream homophonesStream=dataBroker.getFromResourceDirAsStream(prefix + HOMOPHONES);
+  InputStream homophonesInfoStream=dataBroker.getFromResourceDirAsStream(prefix + HOMOPHONES_INFO);
+  this.wordToSet=confusionSetLoader.loadConfusionSet(homophonesStream,homophonesInfoStream);
+  this.languageModel=languageModel;
+}

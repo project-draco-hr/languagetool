@@ -1,8 +1,0 @@
-{
-  for (  Error error : errors) {
-    if (match.getFromPos() <= error.startPos && match.getToPos() >= error.endPos) {
-      return true;
-    }
-  }
-  return false;
-}

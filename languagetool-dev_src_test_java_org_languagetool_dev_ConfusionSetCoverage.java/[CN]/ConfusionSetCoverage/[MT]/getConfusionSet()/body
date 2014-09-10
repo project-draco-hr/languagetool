@@ -1,0 +1,5 @@
+{
+  ConfusionSetLoader loader=new ConfusionSetLoader(0,100);
+  InputStream homophoneStream=JLanguageTool.getDataBroker().getFromRulesDirAsStream("homophones.txt");
+  return loader.loadConfusionSet(homophoneStream,null);
+}

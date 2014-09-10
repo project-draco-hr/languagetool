@@ -1,0 +1,19 @@
+{
+  String prevPart=null;
+  String prevPrevPart=null;
+  for (  String part : parts) {
+    if (prevPart != null && prevPrevPart != null) {
+      String ngram=prevPrevPart + " " + prevPart+ " "+ part;
+      long startTime=System.currentTimeMillis();
+      Query query=new TermQuery(new Term("ngram",ngram));
+      ScoreDoc[] hits=searcher.search(query,null,10).scoreDocs;
+      for (      ScoreDoc hit : hits) {
+        Document hitDoc=searcher.doc(hit.doc);
+        long runTime=System.currentTimeMillis() - startTime;
+        System.out.println(ngram + ": " + hitDoc.getField("count").stringValue()+ " ("+ runTime+ "ms)");
+      }
+    }
+    prevPrevPart=prevPart;
+    prevPart=part;
+  }
+}

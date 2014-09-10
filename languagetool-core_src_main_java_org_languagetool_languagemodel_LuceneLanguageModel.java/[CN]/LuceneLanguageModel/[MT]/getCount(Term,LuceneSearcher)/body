@@ -1,0 +1,15 @@
+{
+  try {
+    TopDocs docs=luceneSearcher.searcher.search(new TermQuery(term),1);
+    if (docs.totalHits > 0) {
+      int docId=docs.scoreDocs[0].doc;
+      return Long.parseLong(luceneSearcher.reader.document(docId).get("count"));
+    }
+ else {
+      return 0;
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

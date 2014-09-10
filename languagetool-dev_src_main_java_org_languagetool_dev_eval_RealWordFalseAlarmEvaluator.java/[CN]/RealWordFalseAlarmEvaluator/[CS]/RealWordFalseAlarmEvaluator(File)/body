@@ -1,0 +1,20 @@
+{
+  InputStream inputStream=JLanguageTool.getDataBroker().getFromRulesDirAsStream("homophones.txt");
+  if (EVAL_MODE) {
+    ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader(MIN_SENTENCES,MAX_ERROR_RATE);
+    InputStream infoStream=JLanguageTool.getDataBroker().getFromRulesDirAsStream("homophones-info.txt");
+    confusionSet=confusionSetLoader.loadConfusionSet(inputStream,infoStream);
+  }
+ else {
+    ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
+    confusionSet=confusionSetLoader.loadConfusionSet(inputStream);
+  }
+  langTool=new JLanguageTool(new BritishEnglish());
+  List<Rule> rules=langTool.getAllActiveRules();
+  for (  Rule rule : rules) {
+    langTool.disableRule(rule.getId());
+  }
+  languageModel=new LuceneLanguageModel(languageModelIndexDir);
+  confusionRule=new EnglishConfusionProbabilityRule(JLanguageTool.getMessageBundle(),languageModel,new English());
+  langTool.addRule(confusionRule);
+}

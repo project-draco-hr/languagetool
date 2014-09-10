@@ -1,0 +1,19 @@
+{
+  Set<String> result=new HashSet<>();
+  try (InputStreamReader reader=new InputStreamReader(infoStream,CHARSET);BufferedReader br=new BufferedReader(reader)){
+    String line;
+    while ((line=br.readLine()) != null) {
+      if (line.startsWith("#") || line.isEmpty()) {
+        continue;
+      }
+      String[] parts=line.split(";");
+      String word=parts[0];
+      int sentences=Integer.parseInt(parts[1]);
+      float errorRate=Float.parseFloat(parts[3]);
+      if (sentences >= minSentences && errorRate <= maxErrorRate) {
+        result.add(word);
+      }
+    }
+  }
+   return result;
+}

@@ -1,0 +1,11 @@
+{
+  if (!topIndexDir.exists() || !topIndexDir.isDirectory()) {
+    throw new RuntimeException("Not found or is not a directory: " + topIndexDir);
+  }
+  this.topIndexDir=topIndexDir;
+  addIndex(topIndexDir,2);
+  addIndex(topIndexDir,3);
+  if (luceneSearcherMap.size() == 0) {
+    throw new RuntimeException("No directories '2grams' and/or '3grams' found in " + topIndexDir);
+  }
+}

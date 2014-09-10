@@ -1,0 +1,15 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + RealWordFalseAlarmEvaluator.class.getSimpleName() + " <languageModel> <sentenceDirectory>");
+    System.out.println("   <languageModel> is a Lucene index with ngram frequency information");
+    System.out.println("   <sentenceDirectory> is a directory with filenames like 'xx.txt' where 'xx' is the homophone");
+    System.exit(1);
+  }
+  RealWordFalseAlarmEvaluator evaluator=new RealWordFalseAlarmEvaluator(new File(args[0]));
+  File dir=new File(args[1]);
+  if (!dir.isDirectory()) {
+    throw new RuntimeException("Not a directory: " + dir);
+  }
+  evaluator.run(dir);
+  evaluator.close();
+}

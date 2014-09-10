@@ -1,0 +1,11 @@
+{
+  langTool.disableRule("COMMA_PARENTHESIS_WHITESPACE");
+  langTool.disableRule("SENT_START_CONJUNCTIVE_LINKING_ADVERB_COMMA");
+  langTool.disableRule("EN_QUOTES");
+  langTool.disableRule("I_LOWERCASE");
+  langTool.disableRule("LITTLE_BIT");
+  langTool.disableRule("ALL_OF_THE");
+  langTool.disableRule("SOME_OF_THE");
+  langTool.disableRule("EN_GB_SIMPLE_REPLACE");
+  langTool.disableRule("APARTMENT-FLAT");
+}

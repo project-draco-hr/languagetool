@@ -1,0 +1,10 @@
+{
+  sentences++;
+  for (  AnalyzedTokenReadings token : sentence.getTokensWithoutWhitespace()) {
+    String tokenStr=token.getToken();
+    if (confusionSet.containsKey(tokenStr)) {
+      homophones++;
+      lookupsNeeded+=confusionSet.get(tokenStr).getSet().size();
+    }
+  }
+}

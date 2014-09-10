@@ -1,0 +1,37 @@
+{
+  ConfusionProbabilityRule.ConfusionSet subConfusionSet=confusionSet.get(name);
+  if (subConfusionSet == null) {
+    System.out.println("Skipping '" + name + "', homophone not loaded");
+    return;
+  }
+  confusionRule.setConfusionSet(subConfusionSet);
+  int sentenceCount=0;
+  int ruleMatches=0;
+  for (  String line : lines) {
+    List<RuleMatch> matches=langTool.check(line);
+    sentenceCount++;
+    globalSentenceCount++;
+    if (matches.size() > 0) {
+      Set<String> suggestions=new HashSet<>();
+      for (      RuleMatch match : matches) {
+        suggestions.addAll(match.getSuggestedReplacements());
+        ruleMatches++;
+        globalRuleMatches++;
+      }
+      if (ruleMatches <= MAX_ERROR_DISPLAY) {
+        System.out.println("[" + name + "] "+ line+ " => "+ suggestions);
+      }
+    }
+    if (sentenceCount > MAX_SENTENCES) {
+      System.out.println("Max sentences (" + MAX_SENTENCES + ") reached, stopping");
+      break;
+    }
+  }
+  System.out.println(sentenceCount + " sentences checked");
+  System.out.println(ruleMatches + " errors found");
+  float percentage=((float)ruleMatches / (float)sentenceCount * 100);
+  System.out.printf("%.2f%% of sentences have a match\n",percentage);
+  if (!EVAL_MODE) {
+    System.out.printf(Locale.ENGLISH,"DATA;%s;%d;%d;%.2f\n\n",name,sentenceCount,ruleMatches,percentage);
+  }
+}

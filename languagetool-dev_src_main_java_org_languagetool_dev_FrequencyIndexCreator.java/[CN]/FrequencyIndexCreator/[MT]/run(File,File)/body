@@ -1,0 +1,39 @@
+{
+  List<File> files=Arrays.asList(inputDir.listFiles());
+  Collections.sort(files);
+  for (  File file : files) {
+    String name=file.getName();
+    if (name.matches(".*_[A-Z]+_.*")) {
+      System.out.println("Skipping POS tag file " + name);
+      continue;
+    }
+    File indexDir;
+    boolean hiveMode;
+    if (name.matches(NAME_REGEX1)) {
+      indexDir=new File(indexBaseDir,name.replaceAll(NAME_REGEX1,"$1"));
+      hiveMode=false;
+      System.out.println("Running in corpus mode (i.e. aggregation of years)");
+    }
+ else     if (name.matches(NAME_REGEX2)) {
+      indexDir=new File(indexBaseDir,name.replaceAll(NAME_REGEX2,"$1"));
+      hiveMode=true;
+      System.out.println("Running in Hive mode (i.e. no aggregation of years)");
+    }
+ else {
+      System.out.println("Skipping " + name + " - doesn't match regex "+ NAME_REGEX1+ " or "+ NAME_REGEX2);
+      continue;
+    }
+    if (indexDir.exists() && indexDir.isDirectory()) {
+      System.out.println("Skipping " + name + " - index dir '"+ indexDir+ "' already exists");
+      continue;
+    }
+    System.out.println("Index dir: " + indexDir);
+    Directory directory=FSDirectory.open(indexDir);
+    Analyzer analyzer=new StandardAnalyzer(Version.LUCENE_4_9);
+    IndexWriterConfig config=new IndexWriterConfig(Version.LUCENE_4_9,analyzer);
+    config.setUseCompoundFile(false);
+    try (IndexWriter writer=new IndexWriter(directory,config)){
+      indexLinesFromGoogleFile(writer,file,hiveMode);
+    }
+   }
+}

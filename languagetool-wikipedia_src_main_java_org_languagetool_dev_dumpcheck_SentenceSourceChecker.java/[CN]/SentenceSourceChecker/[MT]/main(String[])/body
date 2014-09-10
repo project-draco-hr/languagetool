@@ -24,14 +24,9 @@
    }
   final int maxArticles=Integer.parseInt(commandLine.getOptionValue("max-sentences","0"));
   final int maxErrors=Integer.parseInt(commandLine.getOptionValue("max-errors","0"));
-  String[] ruleIds=null;
-  if (commandLine.hasOption('r')) {
-    ruleIds=commandLine.getOptionValue('r').split(",");
-  }
-  String[] categoryIds=null;
-  if (commandLine.hasOption("also-enable-categories")) {
-    categoryIds=commandLine.getOptionValue("also-enable-categories").split(",");
-  }
+  String[] ruleIds=commandLine.hasOption('r') ? commandLine.getOptionValue('r').split(",") : null;
+  String[] categoryIds=commandLine.hasOption("also-enable-categories") ? commandLine.getOptionValue("also-enable-categories").split(",") : null;
   String[] fileNames=commandLine.getOptionValues('f');
-  prg.run(propFile,disabledRuleIds,languageCode,Arrays.asList(fileNames),ruleIds,categoryIds,maxArticles,maxErrors);
+  File languageModelDir=commandLine.hasOption("languagemodel") ? new File(commandLine.getOptionValue("languagemodel")) : null;
+  prg.run(propFile,disabledRuleIds,languageCode,Arrays.asList(fileNames),ruleIds,categoryIds,maxArticles,maxErrors,languageModelDir);
 }

@@ -8,6 +8,7 @@
   options.addOption(OptionBuilder.withLongOpt("file").withArgName("file").hasArg().withDescription("an unpacked Wikipedia XML dump; (must be named *.xml, dumps are available from http://dumps.wikimedia.org/backup-index.html) " + "or a Tatoeba CSV file filtered to contain only one language (must be named tatoeba-*). You can specify this option more than once.").isRequired().create("f"));
   options.addOption(OptionBuilder.withLongOpt("max-sentences").withArgName("number").hasArg().withDescription("maximum number of sentences to check").create());
   options.addOption(OptionBuilder.withLongOpt("max-errors").withArgName("number").hasArg().withDescription("maximum number of errors, stop when finding more").create());
+  options.addOption(OptionBuilder.withLongOpt("languagemodel").withArgName("indexDir").hasArg().withDescription("directory with a '3grams' sub directory that contains an ngram index").create());
   try {
     CommandLineParser parser=new GnuParser();
     return parser.parse(options,args);

@@ -1,0 +1,4 @@
+{
+  LanguageModel model=new LuceneLanguageModel(new File("/data/google-gram-index/"));
+  super.testPerformance(model,3);
+}

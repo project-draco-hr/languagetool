@@ -1,0 +1,3 @@
+AnalyzedTokenReadings[] tokens
+int pos
+ConfusionSet confusionSet

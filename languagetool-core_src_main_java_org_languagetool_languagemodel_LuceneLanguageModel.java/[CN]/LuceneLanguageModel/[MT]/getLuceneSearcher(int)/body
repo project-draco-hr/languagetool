@@ -1,0 +1,7 @@
+{
+  LuceneSearcher luceneSearcher=luceneSearcherMap.get(ngramSize);
+  if (luceneSearcher == null) {
+    throw new RuntimeException("No " + ngramSize + "grams directory found in "+ topIndexDir);
+  }
+  return luceneSearcher;
+}

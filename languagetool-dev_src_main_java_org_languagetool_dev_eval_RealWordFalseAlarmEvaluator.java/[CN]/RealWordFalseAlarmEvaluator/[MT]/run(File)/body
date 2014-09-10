@@ -1,0 +1,24 @@
+{
+  if (EVAL_MODE) {
+    System.out.println("Running in eval mode, no 'DATA' lines will be printed, only a subset of the homophones will be used.");
+  }
+ else {
+    System.out.println("grep for '^DATA;' to get results in CVS format:");
+    System.out.println("DATA;word;sentence_count;errors_found;errors_percent");
+  }
+  File[] files=dir.listFiles();
+  int fileCount=1;
+  for (  File file : files) {
+    if (!file.getName().endsWith(".txt")) {
+      System.out.println("Ignoring " + file + ", does not match *.txt");
+      continue;
+    }
+    try (FileInputStream fis=new FileInputStream(file)){
+      System.out.println("===== Working on " + file.getName() + " ("+ fileCount+ "/"+ files.length+ ") =====");
+      checkLines(IOUtils.readLines(fis),file.getName().replace(".txt",""));
+      fileCount++;
+    }
+   }
+  System.out.println(globalSentenceCount + " sentences checked");
+  System.out.println(globalRuleMatches + " errors found");
+}

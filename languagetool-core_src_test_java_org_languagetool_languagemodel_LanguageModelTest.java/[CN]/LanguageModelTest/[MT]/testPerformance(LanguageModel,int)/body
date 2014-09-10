@@ -1,0 +1,48 @@
+{
+  try (FileInputStream fis=new FileInputStream(FILE)){
+    String content=StringTools.readStream(fis,"UTF-8");
+    WordTokenizer wordTokenizer=new WordTokenizer();
+    List<String> words=wordTokenizer.tokenize(content);
+    String prevPrevWord=null;
+    String prevWord=null;
+    int i=0;
+    long totalMicros=0;
+    for (    String word : words) {
+      if (word.trim().isEmpty()) {
+        continue;
+      }
+      if (prevWord != null) {
+        long t1=System.nanoTime() / 1000;
+        long count=0;
+        if (ngramLength == 2) {
+          count=model.getCount(prevWord,word);
+        }
+ else         if (ngramLength == 3) {
+          if (prevPrevWord != null) {
+            count=model.getCount(prevPrevWord,prevWord,word);
+          }
+        }
+ else {
+          throw new IllegalArgumentException("ngram length not supported: " + ngramLength);
+        }
+        long timeMicros=(System.nanoTime() / 1000) - t1;
+        long timeMillis=timeMicros / 1000;
+        if (ngramLength == 2) {
+          System.out.println(count + "\t\t" + prevWord+ " "+ word+ ": "+ timeMicros+ "??s = "+ timeMillis+ "ms");
+        }
+ else         if (ngramLength == 3) {
+          System.out.println(count + "\t\t" + prevPrevWord+ " "+ prevWord+ " "+ word+ ": "+ timeMicros+ "??s = "+ timeMillis+ "ms");
+        }
+        if (i > SKIP_FIRST_ITEMS) {
+          totalMicros+=timeMicros;
+        }
+        if (++i % 25 == 0) {
+          printStats(i,totalMicros);
+        }
+      }
+      prevPrevWord=prevWord;
+      prevWord=word;
+    }
+    printStats(i,totalMicros);
+  }
+ }

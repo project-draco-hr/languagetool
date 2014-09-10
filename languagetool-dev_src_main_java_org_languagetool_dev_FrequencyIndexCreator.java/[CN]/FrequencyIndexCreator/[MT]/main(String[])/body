@@ -1,0 +1,10 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + FrequencyIndexCreator.class.getSimpleName() + " <inputDir> <outputDir>");
+    System.out.println("    <inputDir> is the Google ngram data aggregated by Hive,");
+    System.out.println("               please see http://wiki.languagetool.org/finding-errors-using-big-data");
+    System.exit(1);
+  }
+  FrequencyIndexCreator creator=new FrequencyIndexCreator();
+  creator.run(new File(args[0]),new File(args[1]));
+}

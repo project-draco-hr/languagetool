@@ -1,0 +1,4 @@
+{
+  String correctionApplied=markupText.substring(0,startPos) + correction + markupText.substring(endPos);
+  return correctionApplied.replaceAll("<.*?>","");
+}

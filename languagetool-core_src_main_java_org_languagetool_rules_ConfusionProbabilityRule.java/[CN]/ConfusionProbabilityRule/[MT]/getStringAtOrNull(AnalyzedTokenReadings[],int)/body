@@ -1,0 +1,12 @@
+{
+  if (i == -1) {
+    return null;
+  }
+ else   if (i >= tokens.length) {
+    return null;
+  }
+ else   if (i >= 0 && i < tokens.length) {
+    return tokens[i].getToken();
+  }
+  return null;
+}

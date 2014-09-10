@@ -1,0 +1,6 @@
+{
+  wordToSet.clear();
+  for (  String word : set.set) {
+    wordToSet.put(word,set);
+  }
+}

@@ -1,0 +1,11 @@
+{
+  Objects.requireNonNull(option);
+  long ngram3=(prev1 != null && next1 != null) ? languageModel.getCount(prev1,option,next1) : 0;
+  long ngram3left=(prev2 != null && prev1 != null) ? languageModel.getCount(prev2,prev1,option) : 0;
+  long ngram3right=(next1 != null && next2 != null) ? languageModel.getCount(option,next1,next2) : 0;
+  double val3=Math.log(Math.max(1,ngram3));
+  double val4=Math.log(Math.max(1,ngram3left));
+  double val5=Math.log(Math.max(1,ngram3right));
+  double val=val3 + val4 + val5;
+  return val;
+}

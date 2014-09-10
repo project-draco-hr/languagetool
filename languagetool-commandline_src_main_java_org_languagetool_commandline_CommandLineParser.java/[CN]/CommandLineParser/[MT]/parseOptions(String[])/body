@@ -62,6 +62,10 @@
       checkArguments("-m/--mothertongue",i,args);
       options.setMotherTongue(getLanguage(args[++i]));
     }
+ else     if (args[i].equals("--languagemodel")) {
+      checkArguments("--languagemodel",i,args);
+      options.setLanguageModel(new File(args[++i]));
+    }
  else     if (args[i].equals("-c") || args[i].equals("--encoding")) {
       checkArguments("-c/--encoding",i,args);
       options.setEncoding(args[++i]);

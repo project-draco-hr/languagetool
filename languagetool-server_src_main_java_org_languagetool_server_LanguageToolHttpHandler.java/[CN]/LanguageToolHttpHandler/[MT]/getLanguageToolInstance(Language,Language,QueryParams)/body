@@ -2,6 +2,9 @@
   final JLanguageTool newLanguageTool=new JLanguageTool(lang,motherTongue);
   newLanguageTool.activateDefaultPatternRules();
   newLanguageTool.activateDefaultFalseFriendRules();
+  if (languageModelDir != null) {
+    newLanguageTool.activateLanguageModelRules(languageModelDir);
+  }
   final Configuration config=new Configuration(lang);
   if (!params.useQuerySettings && internalServer && config.getUseGUIConfig()) {
     configureGUI(newLanguageTool,config);

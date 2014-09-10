@@ -1,0 +1,24 @@
+{
+  AnalyzedTokenReadings token=tokens[pos];
+  String next=getStringAtOrNull(tokens,pos + 1);
+  String next2=getStringAtOrNull(tokens,pos + 2);
+  String prev=getStringAtOrNull(tokens,pos - 1);
+  String prev2=getStringAtOrNull(tokens,pos - 2);
+  if ((next + next2 + prev+ prev2).contains(",")) {
+    return null;
+  }
+  @SuppressWarnings("UnnecessaryLocalVariable") double textScore=score(token.getToken(),next,next2,prev,prev2);
+  double bestScore=textScore;
+  String betterAlternative=null;
+  for (  String alternative : confusionSet.set) {
+    if (alternative.equalsIgnoreCase(token.getToken())) {
+      continue;
+    }
+    double alternativeScore=score(alternative,next,next2,prev,prev2);
+    if (alternativeScore >= bestScore + MIN_SCORE_DIFF && alternativeScore >= MIN_ALTERNATIVE_SCORE) {
+      betterAlternative=alternative;
+      bestScore=alternativeScore;
+    }
+  }
+  return betterAlternative;
+}

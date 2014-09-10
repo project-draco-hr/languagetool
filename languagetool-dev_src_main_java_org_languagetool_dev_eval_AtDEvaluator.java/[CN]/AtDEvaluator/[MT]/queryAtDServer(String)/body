@@ -1,0 +1,15 @@
+{
+  try {
+    System.out.println("Sleeping " + WAIT_MILLIS + " before connecting "+ urlPrefix+ "...");
+    Thread.sleep(WAIT_MILLIS);
+    URL url=new URL(urlPrefix + URLEncoder.encode(text,"UTF-8"));
+    URLConnection conn=url.openConnection();
+    String atSign="@";
+    conn.setRequestProperty("User-Agent","AtDEvalChecker, contact daniel.naber " + atSign + " languagetool.org");
+    InputStream contentStream=(InputStream)conn.getContent();
+    return StringTools.streamToString(contentStream,"UTF-8");
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

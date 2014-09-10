@@ -1,0 +1,4 @@
+{
+  long averageMicros=totalMicros / i;
+  System.out.println("*** Average: " + averageMicros + "??s = "+ (averageMicros / 1000)+ "ms");
+}

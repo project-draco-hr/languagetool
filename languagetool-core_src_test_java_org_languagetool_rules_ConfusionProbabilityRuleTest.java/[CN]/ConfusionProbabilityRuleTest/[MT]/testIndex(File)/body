@@ -1,0 +1,16 @@
+{
+  LanguageModel languageModel=new LuceneLanguageModel(languageModelIndex);
+  ConfusionProbabilityRule rule=new ConfusionProbabilityRule(TestTools.getEnglishMessages(),languageModel,new FakeLanguage()){
+    @Override public String getDescription(){
+      return null;
+    }
+    @Override public String getMessage(    String suggestion){
+      return null;
+    }
+  }
+;
+  ConfusionProbabilityRule.ConfusionSet confusionSet=new ConfusionProbabilityRule.ConfusionSet("a","an");
+  AnalyzedTokenReadings[] tokens={reading("is"),reading("an"),reading("caf??"),reading("in"),reading("Berlin")};
+  String alternative=rule.getBetterAlternativeOrNull(tokens,1,confusionSet);
+  assertThat(alternative,is("a"));
+}

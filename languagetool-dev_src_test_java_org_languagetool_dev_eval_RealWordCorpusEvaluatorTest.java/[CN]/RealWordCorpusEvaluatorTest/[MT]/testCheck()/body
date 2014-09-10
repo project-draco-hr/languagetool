@@ -1,5 +1,5 @@
 {
-  RealWordCorpusEvaluator evaluator=new RealWordCorpusEvaluator();
+  RealWordCorpusEvaluator evaluator=new RealWordCorpusEvaluator(new File("/data/google-ngram-index/"));
   URL errors=RealWordCorpusEvaluatorTest.class.getResource("/org/languagetool/dev/eval");
   evaluator.run(new File(errors.getFile()));
   assertThat(evaluator.getSentencesChecked(),is(3));

@@ -1,0 +1,24 @@
+{
+  List<RuleMatch> matches=new ArrayList<>();
+  Document document=getDocument(resultXml);
+  XPath xPath=XPathFactory.newInstance().newXPath();
+  NodeList errors=(NodeList)xPath.evaluate("//error",document,XPathConstants.NODESET);
+  for (int i=0; i < errors.getLength(); i++) {
+    Node error=errors.item(i);
+    String string=xPath.evaluate("string",error);
+    String description=xPath.evaluate("description",error);
+    String preContext=xPath.evaluate("precontext",error);
+    String errorText=preContext + " " + string;
+    int fromPos=text.getPlainText().indexOf(errorText) + preContext.length() + 1;
+    int toPos=fromPos + string.length();
+    NodeList suggestions=(NodeList)xPath.evaluate("suggestions",error,XPathConstants.NODESET);
+    RuleMatch ruleMatch=new RuleMatch(new AtdRule(),text.getOriginalTextPositionFor(fromPos),text.getOriginalTextPositionFor(toPos),description);
+    for (int j=0; j < suggestions.getLength(); j++) {
+      Node option=suggestions.item(j);
+      String optionStr=xPath.evaluate("option",option);
+      ruleMatch.setSuggestedReplacement(optionStr);
+    }
+    matches.add(ruleMatch);
+  }
+  return matches;
+}

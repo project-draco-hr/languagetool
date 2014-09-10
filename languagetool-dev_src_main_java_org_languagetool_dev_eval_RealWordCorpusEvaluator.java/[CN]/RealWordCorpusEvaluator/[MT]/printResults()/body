@@ -1,10 +1,17 @@
 {
   System.out.println("");
   System.out.println(sentenceCount + " lines checked with " + errorsInCorpusCount+ " errors.");
-  System.out.println(goodMatches + " errors found that are marked as errors in the corpus " + "(not counting whether LanguageTool's correction was useful)");
-  float goodRecall=(float)goodMatches / errorsInCorpusCount * 100;
-  System.out.printf(" => %.2f%% recall\n",goodRecall);
-  float perfectRecall=(float)perfectMatches / errorsInCorpusCount * 100;
-  System.out.println(perfectMatches + " errors found where the first suggestion was the correct one");
-  System.out.printf(" => %.2f%% recall\n",perfectRecall);
+  System.out.println("Confusion rule matches: " + perfectConfusionMatches + " perfect, "+ goodConfusionMatches+ " good, "+ badConfusionMatches+ " bad ("+ badConfusionMatchWords+ ")");
+  System.out.println("\nCounting matches, no matter whether the first suggestion is correct:");
+  System.out.print("  " + goodMatches + " out of "+ matchCount+ " matches are real errors");
+  float goodPrecision=(float)goodMatches / matchCount;
+  float goodRecall=(float)goodMatches / errorsInCorpusCount;
+  System.out.printf(" => %.2f precision, %.2f recall\n",goodPrecision,goodRecall);
+  System.out.printf("  => %.4f F(0.5) measure\n",FMeasure.getWeightedFMeasure(goodPrecision,goodRecall));
+  System.out.println("\nCounting only matches with a perfect first suggestion:");
+  System.out.print("  " + perfectMatches + " out of "+ matchCount+ " matches are real errors");
+  float perfectPrecision=(float)perfectMatches / matchCount;
+  float perfectRecall=(float)perfectMatches / errorsInCorpusCount;
+  System.out.printf(" => %.2f precision, %.2f recall\n",perfectPrecision,perfectRecall);
+  System.out.printf("  => %.4f F(0.5) measure\n",FMeasure.getWeightedFMeasure(perfectPrecision,perfectRecall));
 }
