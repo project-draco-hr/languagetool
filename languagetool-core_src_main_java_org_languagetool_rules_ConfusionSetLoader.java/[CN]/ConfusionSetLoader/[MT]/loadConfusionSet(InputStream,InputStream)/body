@@ -1,7 +1,0 @@
-{
-  Set<String> usefulHomophones=null;
-  if (infoStream != null) {
-    usefulHomophones=getUsefulHomophones(infoStream);
-  }
-  return getStringConfusionMap(stream,usefulHomophones);
-}

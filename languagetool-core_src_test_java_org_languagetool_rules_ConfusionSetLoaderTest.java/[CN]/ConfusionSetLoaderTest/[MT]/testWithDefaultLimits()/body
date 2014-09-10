@@ -1,7 +1,6 @@
 {
   InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/yy/homophones.txt");
-  InputStream infoStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/yy/homophones-info.txt");
   ConfusionSetLoader loader=new ConfusionSetLoader();
-  Map<String,ConfusionProbabilityRule.ConfusionSet> map=loader.loadConfusionSet(inputStream,infoStream);
+  Map<String,ConfusionProbabilityRule.ConfusionSet> map=loader.loadConfusionSet(inputStream);
   assertTrue(map.size() == 2);
 }

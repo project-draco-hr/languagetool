@@ -1,3 +1,19 @@
 {
-  return loadConfusionSet(stream,null);
+  Map<String,ConfusionProbabilityRule.ConfusionSet> map=new HashMap<>();
+  try (InputStreamReader reader=new InputStreamReader(stream,CHARSET);BufferedReader br=new BufferedReader(reader)){
+    String line;
+    while ((line=br.readLine()) != null) {
+      if (line.startsWith("#")) {
+        continue;
+      }
+      String[] words=line.split(",\\s*");
+      ConfusionProbabilityRule.ConfusionSet confusionSet=new ConfusionProbabilityRule.ConfusionSet(words);
+      for (      String word : words) {
+        if (usefulHomophones == null || usefulHomophones.contains(word)) {
+          map.put(word,confusionSet);
+        }
+      }
+    }
+  }
+   return map;
 }

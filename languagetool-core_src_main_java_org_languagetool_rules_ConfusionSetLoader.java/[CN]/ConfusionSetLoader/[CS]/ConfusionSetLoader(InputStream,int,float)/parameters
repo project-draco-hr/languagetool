@@ -1,2 +1,3 @@
+InputStream infoStream
 int minSentences
 float maxErrorRate

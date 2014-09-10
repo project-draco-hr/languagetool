@@ -1,4 +1,0 @@
-{
-  this.minSentences=minSentences;
-  this.maxErrorRate=maxErrorRate;
-}
