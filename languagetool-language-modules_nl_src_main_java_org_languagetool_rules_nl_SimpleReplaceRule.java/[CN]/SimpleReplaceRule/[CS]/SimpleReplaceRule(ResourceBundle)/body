@@ -1,0 +1,7 @@
+{
+  super(messages);
+  setLocQualityIssueType(ITSIssueType.Misspelling);
+  setCategory(new Category("Vergissingen"));
+  setCheckLemmas(false);
+  addExamplePair(Example.wrong("<marker>ofzo</marker>."),Example.fixed("<marker>of zo</marker>."));
+}

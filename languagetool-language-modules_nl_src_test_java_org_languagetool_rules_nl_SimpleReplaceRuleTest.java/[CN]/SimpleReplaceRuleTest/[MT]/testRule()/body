@@ -1,0 +1,4 @@
+{
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("all right")).length);
+  checkSimpleReplaceRule("ofzo","of zo");
+}
