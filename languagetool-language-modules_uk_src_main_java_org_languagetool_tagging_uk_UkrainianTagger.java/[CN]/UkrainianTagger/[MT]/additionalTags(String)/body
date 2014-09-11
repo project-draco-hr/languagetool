@@ -1,7 +1,7 @@
 {
   if (NUMBER.matcher(word).matches()) {
     List<AnalyzedToken> additionalTaggedTokens=new ArrayList<>();
-    additionalTaggedTokens.add(new AnalyzedToken(word,IPOSTag.numr.toString(),word));
+    additionalTaggedTokens.add(new AnalyzedToken(word,IPOSTag.number.getText(),word));
     return additionalTaggedTokens;
   }
   return null;

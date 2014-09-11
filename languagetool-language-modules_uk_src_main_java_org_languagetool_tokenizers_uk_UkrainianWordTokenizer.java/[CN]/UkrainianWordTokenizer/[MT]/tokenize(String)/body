@@ -1,9 +1,12 @@
 {
+  text=cleanup(text);
+  text=DECIMAL_COMMA_PATTERN.matcher(text).replaceAll("$1" + DECIMAL_COMMA_SUBST + "$2");
   List<String> tokenList=new ArrayList<>();
-  text=substitute(text);
   StringTokenizer st=new StringTokenizer(text,SPLIT_CHARS,true);
   while (st.hasMoreElements()) {
-    tokenList.add(clean(st.nextToken()));
+    String token=st.nextToken();
+    token=token.replace(DECIMAL_COMMA_SUBST,',');
+    tokenList.add(token);
   }
   return tokenList;
 }

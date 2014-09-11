@@ -6,7 +6,7 @@
   for (  AnalyzedTokenReadings tokenReadings : tokens) {
     i++;
     String posTag=tokenReadings.getAnalyzedToken(0).getPOSTag();
-    if (posTag == null || posTag.contains(IPOSTag.todo.getText()) || posTag.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
+    if (posTag == null || posTag.contains(IPOSTag.unknown.getText()) || posTag.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
       reqTokenReadings=null;
       continue;
     }
@@ -47,26 +47,28 @@
           continue;
         }
       }
-      if (isCapitalized(token) && tokens.length > i + 1 && STREETS.contains(tokens[i + 1].getAnalyzedToken(0).getToken())) {
-        reqTokenReadings=null;
-        continue;
-      }
-      if (tokens.length > i + 1 && IPOSTag.numr.match(tokens[i + 1].getAnalyzedToken(0).getPOSTag()) && token.equals("??????????") || token.equals("????????")) {
-        reqTokenReadings=null;
-        continue;
-      }
-      if (reqTokenReadings.getAnalyzedToken(0).getToken().equalsIgnoreCase("??????????") && token.equals("??????????") && tokens.length > i + 1 && IPOSTag.numr.match(tokens[i + 1].getAnalyzedToken(0).getPOSTag())) {
-        reqTokenReadings=null;
-        continue;
-      }
-      if ((token.equals("????????") || token.equals("????????")) && tokens.length > i + 1 && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("????????????")) {
-        continue;
-      }
-      if ((token.equals("????????") || token.equals("????????")) && tokens.length > i + 1 && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("??????????")) {
-        continue;
-      }
-      if (tokens.length > i + 2 && ((token.equals("????????????") || token.equals("??????????") || token.equals("??????????")|| token.equals("????????????")) && tokens[i + 1].getAnalyzedToken(0).getToken().equals("????"))) {
-        continue;
+      if (tokens.length > i + 1) {
+        if (isCapitalized(token) && STREETS.contains(tokens[i + 1].getAnalyzedToken(0).getToken())) {
+          reqTokenReadings=null;
+          continue;
+        }
+        if (IPOSTag.isNum(tokens[i + 1].getAnalyzedToken(0).getPOSTag()) && token.equals("??????????") || token.equals("????????")) {
+          reqTokenReadings=null;
+          continue;
+        }
+        if (reqTokenReadings.getAnalyzedToken(0).getToken().equalsIgnoreCase("??????????") && token.equals("??????????") && IPOSTag.isNum(tokens[i + 1].getAnalyzedToken(0).getPOSTag())) {
+          reqTokenReadings=null;
+          continue;
+        }
+        if ((token.equals("????????") || token.equals("????????")) && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("????????????")) {
+          continue;
+        }
+        if ((token.equals("????????") || token.equals("????????")) && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("??????????")) {
+          continue;
+        }
+        if (tokens.length > i + 2 && ((token.equals("????????????") || token.equals("??????????") || token.equals("??????????")|| token.equals("????????????")) && tokens[i + 1].getAnalyzedToken(0).getToken().equals("????"))) {
+          continue;
+        }
       }
       RuleMatch potentialRuleMatch=createRuleMatch(tokenReadings,reqTokenReadings,posTagsToFind);
       ruleMatches.add(potentialRuleMatch);

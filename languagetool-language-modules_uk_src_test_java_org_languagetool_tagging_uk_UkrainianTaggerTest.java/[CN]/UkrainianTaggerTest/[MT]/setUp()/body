@@ -1,4 +1,4 @@
 {
   tagger=new UkrainianTagger();
-  tokenizer=new WordTokenizer();
+  tokenizer=new UkrainianWordTokenizer();
 }
