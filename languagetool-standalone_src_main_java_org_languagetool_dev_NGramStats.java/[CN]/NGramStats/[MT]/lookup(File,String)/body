@@ -1,0 +1,16 @@
+{
+  try (LanguageModel lm=new LuceneLanguageModel(dir)){
+    String[] tokens=phrase.split(" ");
+    long count;
+    if (tokens.length == 2) {
+      count=lm.getCount(tokens[0],tokens[1]);
+    }
+ else     if (tokens.length == 3) {
+      count=lm.getCount(tokens[0],tokens[1],tokens[2]);
+    }
+ else {
+      throw new RuntimeException("Phrases of length " + tokens.length + " are not yet supported: '"+ phrase+ "'");
+    }
+    System.out.println(phrase + ": " + count);
+  }
+ }
