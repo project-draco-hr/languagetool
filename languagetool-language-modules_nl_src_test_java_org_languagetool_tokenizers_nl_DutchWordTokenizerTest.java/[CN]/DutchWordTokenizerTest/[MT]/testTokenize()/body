@@ -3,4 +3,8 @@
   assertTokenize("Bla bla oma's bla bla 'test","[Bla,  , bla,  , oma's,  , bla,  , bla,  , ', test]");
   assertTokenize("Ik zie het''","[Ik,  , zie,  , het, ', ']");
   assertTokenize("''Ik zie het","[', ', Ik,  , zie,  , het]");
+  assertTokenize("Ik 'zie' het","[Ik,  , ', zie, ',  , het]");
+  assertTokenize("'","[']");
+  assertTokenize("''","[, ', ']");
+  assertTokenize("'x'","[', x, ']");
 }
