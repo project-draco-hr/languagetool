@@ -1,0 +1,4 @@
+{
+  List<String> result=wordTokenizer.tokenize(input);
+  assertEquals(result.toString(),expected);
+}
