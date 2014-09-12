@@ -3,7 +3,7 @@
   final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
   if (speller == null) {
     if (JLanguageTool.getDataBroker().resourceExists(getFileName())) {
-      speller=new MorfologikSpeller(getFileName());
+      speller=new MorfologikSpeller(getFileName(),MAX_EDIT_DISTANCE);
       setConvertsCase(speller.convertsCase());
     }
  else {
