@@ -1,5 +1,5 @@
 {
-  final MorfologikGermanyGermanSpellerRule rule=new MorfologikGermanyGermanSpellerRule(TestTools.getMessages("English"),new German());
+  final MorfologikGermanyGermanSpellerRule rule=new MorfologikGermanyGermanSpellerRule(TestTools.getMessages("en"),new German());
   final JLanguageTool langTool=new JLanguageTool(new German());
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Hier stimmt jedes Wort!")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Hir nicht so ganz.")).length);

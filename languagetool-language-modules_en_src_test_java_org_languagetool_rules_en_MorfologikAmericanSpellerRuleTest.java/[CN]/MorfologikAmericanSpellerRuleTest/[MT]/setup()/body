@@ -1,4 +1,4 @@
 {
-  rule=new MorfologikAmericanSpellerRule(TestTools.getMessages("English"),language);
+  rule=new MorfologikAmericanSpellerRule(TestTools.getMessages("en"),language);
   langTool=new JLanguageTool(language);
 }

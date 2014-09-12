@@ -1,5 +1,5 @@
 {
-  final HunspellRule rule=new GermanSpellerRule(TestTools.getMessages("German"),GERMAN_DE);
+  final HunspellRule rule=new GermanSpellerRule(TestTools.getMessages("de"),GERMAN_DE);
   assertCorrection(rule,"Hauk","Haus","Haut");
   assertCorrection(rule,"Hauk","Haus","Haut");
   assertCorrection(rule,"Eisnbahn","Einbahn","Eisbahn","Eisenbahn");

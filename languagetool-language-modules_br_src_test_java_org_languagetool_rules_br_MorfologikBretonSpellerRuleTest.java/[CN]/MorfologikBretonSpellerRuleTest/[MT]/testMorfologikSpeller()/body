@@ -1,5 +1,5 @@
 {
-  final MorfologikBretonSpellerRule rule=new MorfologikBretonSpellerRule(TestTools.getMessages("Breton"),new Breton());
+  final MorfologikBretonSpellerRule rule=new MorfologikBretonSpellerRule(TestTools.getMessages("br"),new Breton());
   RuleMatch[] matches;
   final JLanguageTool langTool=new JLanguageTool(new Breton());
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Penaos ema?? kont ganit?")).length);

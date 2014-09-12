@@ -1,6 +1,6 @@
 {
   final French french=new French();
-  final HunspellRule rule=new HunspellRule(TestTools.getMessages("French"),french);
+  final HunspellRule rule=new HunspellRule(TestTools.getMessages("fr"),french);
   final JLanguageTool langTool=new JLanguageTool(french);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Un test simple.")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Un test simpple.")).length);

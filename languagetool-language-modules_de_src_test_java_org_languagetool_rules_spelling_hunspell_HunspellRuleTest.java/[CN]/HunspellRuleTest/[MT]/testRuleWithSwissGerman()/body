@@ -1,5 +1,5 @@
 {
-  final HunspellRule rule=new HunspellRule(TestTools.getMessages("German"),new SwissGerman());
+  final HunspellRule rule=new HunspellRule(TestTools.getMessages("de"),new SwissGerman());
   final JLanguageTool langTool=new JLanguageTool(new German());
   commonGermanAsserts(rule,langTool);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Der ??u??ere ??belt??ter.")).length);

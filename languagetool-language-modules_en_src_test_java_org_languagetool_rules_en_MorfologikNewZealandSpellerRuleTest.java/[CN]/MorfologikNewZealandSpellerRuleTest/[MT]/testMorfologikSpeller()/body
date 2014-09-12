@@ -1,6 +1,6 @@
 {
   final NewZealandEnglish language=new NewZealandEnglish();
-  final MorfologikNewZealandSpellerRule rule=new MorfologikNewZealandSpellerRule(TestTools.getMessages("English"),language);
+  final MorfologikNewZealandSpellerRule rule=new MorfologikNewZealandSpellerRule(TestTools.getMessages("en"),language);
   final JLanguageTool langTool=new JLanguageTool(language);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("This is an example: we get behaviour as a dictionary word.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Why don't we speak today.")).length);

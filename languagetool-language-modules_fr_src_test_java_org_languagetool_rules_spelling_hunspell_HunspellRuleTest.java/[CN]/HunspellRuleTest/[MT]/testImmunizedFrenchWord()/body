@@ -1,6 +1,6 @@
 {
   final French french=new French();
-  final HunspellRule rule=new HunspellRule(TestTools.getMessages("French"),french);
+  final HunspellRule rule=new HunspellRule(TestTools.getMessages("fr"),french);
   JLanguageTool langTool=new JLanguageTool(french);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("languageTool est g??nial.")).length);
   final French frenchWithDisambiguator=new French(){

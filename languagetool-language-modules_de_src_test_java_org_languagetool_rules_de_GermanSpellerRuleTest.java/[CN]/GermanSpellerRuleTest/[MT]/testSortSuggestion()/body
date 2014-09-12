@@ -1,5 +1,5 @@
 {
-  final GermanSpellerRule rule=new GermanSpellerRule(TestTools.getMessages("German"),GERMAN_DE);
+  final GermanSpellerRule rule=new GermanSpellerRule(TestTools.getMessages("de"),GERMAN_DE);
   assertThat(rule.sortSuggestionByQuality("fehler",Arrays.asList("Fehler","fehl er","fehle r")).toString(),is("[Fehler, fehl er]"));
   assertThat(rule.sortSuggestionByQuality("m??lleimer",Arrays.asList("M??lheimer","-m??lheimer","Melkeimer","M??hlheimer","M??lleimer")).toString(),is("[M??lleimer, M??lheimer, -m??lheimer, Melkeimer, M??hlheimer]"));
 }

@@ -1,5 +1,5 @@
 {
-  MorfologikCatalanSpellerRule rule=new MorfologikCatalanSpellerRule(TestTools.getMessages("Catalan"),new Catalan());
+  MorfologikCatalanSpellerRule rule=new MorfologikCatalanSpellerRule(TestTools.getMessages("ca"),new Catalan());
   RuleMatch[] matches;
   JLanguageTool langTool=new JLanguageTool(new Catalan());
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("S'autodefineixin com a populars.")).length);
