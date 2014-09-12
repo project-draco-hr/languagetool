@@ -1,0 +1,5 @@
+{
+  Language language=new CanadianEnglish();
+  Rule rule=new MorfologikCanadianSpellerRule(TestTools.getMessages("en"),language);
+  super.testNonVariantSpecificSuggestions(rule,language);
+}

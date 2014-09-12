@@ -1,0 +1,6 @@
+{
+  RuleMatch[] matches=rule.match(lt.getAnalyzedSentence(text));
+  assertTrue("Expected 1 match for '" + text + "', got "+ matches.length,matches.length == 1);
+  assertTrue("Expected at least one suggestion for '" + text + "'",matches[0].getSuggestedReplacements().size() > 0);
+  assertThat(matches[0].getSuggestedReplacements().get(0),is(expectedFirstSuggestion));
+}
