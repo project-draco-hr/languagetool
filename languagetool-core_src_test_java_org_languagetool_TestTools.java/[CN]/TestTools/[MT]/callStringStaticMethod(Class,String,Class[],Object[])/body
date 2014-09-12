@@ -1,5 +1,0 @@
-{
-  final Method method=targetClass.getDeclaredMethod(methodName,argClasses);
-  method.setAccessible(true);
-  return (String)method.invoke(null,argObjects);
-}
