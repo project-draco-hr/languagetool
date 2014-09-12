@@ -1,0 +1,26 @@
+{
+  List<PairRatio> ratios=new ArrayList<>();
+  for (  Map.Entry<String,Long> entry : contexts.entrySet()) {
+    String wholeTerm=entry.getKey();
+    String[] parts=wholeTerm.split(" ");
+    String term=parts[1];
+    long count=entry.getValue();
+    for (    String similarWord : similarWords) {
+      if (similarWord.equals(term)) {
+        continue;
+      }
+      Long alternativeCountObj=contexts.get(parts[0] + " " + similarWord+ " "+ parts[2]);
+      long alternativeCount=alternativeCountObj == null ? 0 : alternativeCountObj;
+      long ratio=count / Math.max(alternativeCount,1);
+      PairRatio pairRatio=new PairRatio();
+      pairRatio.ngram=wholeTerm;
+      pairRatio.term1=term;
+      pairRatio.term1Count=count;
+      pairRatio.term2=similarWord;
+      pairRatio.term2Count=alternativeCount;
+      pairRatio.ratio=ratio;
+      ratios.add(pairRatio);
+    }
+  }
+  return ratios;
+}

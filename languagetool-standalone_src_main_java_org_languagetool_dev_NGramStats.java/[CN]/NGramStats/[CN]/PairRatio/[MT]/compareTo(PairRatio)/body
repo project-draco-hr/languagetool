@@ -1,0 +1,11 @@
+{
+  if (ratio > o.ratio) {
+    return -1;
+  }
+ else   if (ratio < o.ratio) {
+    return 1;
+  }
+ else {
+    return 0;
+  }
+}

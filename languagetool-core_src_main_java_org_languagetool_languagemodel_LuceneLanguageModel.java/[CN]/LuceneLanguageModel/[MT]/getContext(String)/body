@@ -1,0 +1,23 @@
+{
+  Objects.requireNonNull(tokens);
+  LuceneSearcher luceneSearcher=getLuceneSearcher(3);
+  Fields fields=MultiFields.getFields(luceneSearcher.reader);
+  Terms terms=fields.terms("ngram");
+  TermsEnum iterator=terms.iterator(null);
+  Map<String,Long> result=new HashMap<>();
+  BytesRef byteRef;
+  int i=0;
+  while ((byteRef=iterator.next()) != null) {
+    String term=new String(byteRef.bytes,byteRef.offset,byteRef.length);
+    for (    String token : tokens) {
+      if (term.contains(" " + token + " ")) {
+        String[] split=term.split(" ");
+        if (split.length == 3) {
+          long count=getCount(split[0],split[1],split[2]);
+          result.put(term,count);
+        }
+      }
+    }
+  }
+  return result;
+}

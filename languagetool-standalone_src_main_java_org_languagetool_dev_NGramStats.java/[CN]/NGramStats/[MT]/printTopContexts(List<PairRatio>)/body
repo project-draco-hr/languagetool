@@ -1,0 +1,11 @@
+{
+  int max=500;
+  int i=0;
+  System.out.println("Top " + max + " contexts:");
+  for (  PairRatio ratio : ratios) {
+    System.out.printf(Locale.ENGLISH,"%dx advantage (%d/%d) for '%s' in: %s\n",ratio.ratio,ratio.term1Count,ratio.term2Count,ratio.term1,ratio.ngram);
+    if (++i >= max) {
+      break;
+    }
+  }
+}

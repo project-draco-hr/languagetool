@@ -1,8 +1,10 @@
 {
-  if (args.length != 2) {
+  if (args.length != 1 && args.length != 2) {
     System.out.println("Usage: " + NGramStats.class.getSimpleName() + " <dir> <phrase>");
     System.out.println("  'dir' is a directory with e.g. a '3grams' sub directory with a Lucene index of ngrams");
-    System.out.println("  'phrase' is a 2 or 3-word case-sensitive phrase, e.g. \"the tall boy\" (include the quotes)");
+    System.out.println("  'phrase' is one of:");
+    System.out.println("      - a 2 or 3-word case-sensitive phrase, e.g. \"the tall boy\" (include the quotes) or");
+    System.out.println("      - a pipe-separated list of similar words (e.g. 'calender|calendar') to be compared (slow!)");
     System.exit(1);
   }
   String dir=args[0];
