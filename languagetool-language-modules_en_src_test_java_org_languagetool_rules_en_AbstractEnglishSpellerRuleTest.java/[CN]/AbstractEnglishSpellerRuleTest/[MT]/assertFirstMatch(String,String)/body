@@ -1,6 +1,11 @@
 {
   RuleMatch[] matches=rule.match(lt.getAnalyzedSentence(text));
   assertTrue("Expected 1 match for '" + text + "', got "+ matches.length,matches.length == 1);
-  assertTrue("Expected at least one suggestion for '" + text + "'",matches[0].getSuggestedReplacements().size() > 0);
-  assertThat(matches[0].getSuggestedReplacements().get(0),is(expectedFirstSuggestion));
+  List<String> suggestions=matches[0].getSuggestedReplacements();
+  assertTrue("Expected at least one suggestion for '" + text + "'",suggestions.size() > 0);
+  int i=0;
+  for (  String expectedSuggestion : expectedSuggestions) {
+    assertThat("Expected suggestion '" + expectedSuggestion + "' not found in suggestions"+ suggestions,suggestions.get(i),is(expectedSuggestion));
+    i++;
+  }
 }

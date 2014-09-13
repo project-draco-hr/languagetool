@@ -1,10 +1,11 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<>();
   final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
-  if (speller == null) {
+  if (speller1 == null) {
     if (JLanguageTool.getDataBroker().resourceExists(getFileName())) {
-      speller=new MorfologikSpeller(getFileName(),MAX_EDIT_DISTANCE);
-      setConvertsCase(speller.convertsCase());
+      speller1=new MorfologikSpeller(getFileName(),1);
+      speller2=new MorfologikSpeller(getFileName(),2);
+      setConvertsCase(speller1.convertsCase());
     }
  else {
       return toRuleMatchArray(ruleMatches);

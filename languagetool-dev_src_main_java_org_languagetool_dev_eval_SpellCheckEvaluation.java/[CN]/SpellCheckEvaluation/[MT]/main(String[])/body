@@ -1,0 +1,8 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + SpellCheckEvaluation.class.getSimpleName() + " <langCode> <textFile>");
+    System.exit(1);
+  }
+  SpellCheckEvaluation eval=new SpellCheckEvaluation();
+  eval.run(Language.getLanguageForShortName(args[0]),new File(args[1]));
+}

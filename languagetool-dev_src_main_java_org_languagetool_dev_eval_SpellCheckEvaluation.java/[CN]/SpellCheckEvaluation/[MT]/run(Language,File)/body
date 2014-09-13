@@ -1,0 +1,4 @@
+{
+  JLanguageTool lt=getLanguageToolForSpellCheck(language);
+  checkFile(file,lt);
+}

@@ -1,0 +1,9 @@
+{
+  JLanguageTool lt=new JLanguageTool(language);
+  for (  Rule rule : lt.getAllActiveRules()) {
+    if (!rule.isDictionaryBasedSpellingRule()) {
+      lt.disableRule(rule.getId());
+    }
+  }
+  return lt;
+}

@@ -1,8 +1,11 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<>();
-  if (isMisspelled(speller,word)) {
+  if (isMisspelled(speller1,word)) {
     final RuleMatch ruleMatch=new RuleMatch(this,startPos,startPos + word.length(),messages.getString("spelling"),messages.getString("desc_spelling_short"));
-    List<String> suggestions=speller.getSuggestions(word);
+    List<String> suggestions=speller1.getSuggestions(word);
+    if (suggestions.size() == 0 && word.length() >= 5) {
+      suggestions.addAll(speller2.getSuggestions(word));
+    }
     suggestions.addAll(getAdditionalSuggestions(suggestions,word));
     if (!suggestions.isEmpty()) {
       ruleMatch.setSuggestedReplacements(orderSuggestions(suggestions,word));

@@ -15,9 +15,20 @@
   assertFirstMatch("occurence","occurrence");
   assertFirstMatch("commision","commission");
   assertFirstMatch("assocation","association");
+  assertFirstMatch("Cincinatti","Cincinnati");
   assertFirstMatch("milennium","millennium");
   assertFirstMatch("accomodation","accommodation");
   assertFirstMatch("foriegn","foreign");
   assertFirstMatch("chemcial","chemical");
   assertFirstMatch("developement","development");
+  assertFirstMatch("maintainance","maintenance");
+  assertFirstMatch("restaraunt","restaurant");
+  assertFirstMatch("garentee","guarantee");
+  assertFirstMatch("greatful","grateful");
+  assertFirstMatch("hipocrit","hypocrite");
+  assertFirstMatch("mischevious","mischievous");
+  assertFirstMatch("hygeine","hygiene");
+  assertFirstMatch("vehical","medical","vehicle");
+  assertFirstMatch("rythem","them","rather","rhythm");
+  assertFirstMatch("vacume","value","volume","acute","vacuum");
 }

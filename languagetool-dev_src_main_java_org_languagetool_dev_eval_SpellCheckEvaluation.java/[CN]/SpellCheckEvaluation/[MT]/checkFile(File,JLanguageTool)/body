@@ -1,0 +1,14 @@
+{
+  try (FileInputStream fis=new FileInputStream(file);InputStreamReader reader=new InputStreamReader(fis,"utf-8");BufferedReader br=new BufferedReader(reader)){
+    String line;
+    while ((line=br.readLine()) != null) {
+      List<RuleMatch> matches=lt.check(line);
+      for (      RuleMatch match : matches) {
+        String covered=line.substring(match.getFromPos(),match.getToPos());
+        List<String> suggestions=match.getSuggestedReplacements();
+        List<String> limitedSuggestions=suggestions.subList(0,Math.min(MAX_SUGGESTIONS,suggestions.size()));
+        System.out.println(covered + ": " + limitedSuggestions);
+      }
+    }
+  }
+ }
