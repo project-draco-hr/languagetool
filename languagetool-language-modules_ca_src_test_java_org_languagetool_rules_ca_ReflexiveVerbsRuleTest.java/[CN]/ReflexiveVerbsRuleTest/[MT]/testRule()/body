@@ -198,6 +198,7 @@
   assertCorrect("Joan no es va a jugar la feina.");
   assertCorrect("I aquella flaire que em pujava al cap");
   assertCorrect("el que no s'olora, el que no es tasta");
+  assertIncorrect("Ha arribat l'hora de saltar-se la legalitat.");
   assertIncorrect("Delia per menjar-ne.");
   assertIncorrect("Ells es volen dur les ??nimes a l'Infram??n");
   assertIncorrect("Joan es va portar el carret??");
