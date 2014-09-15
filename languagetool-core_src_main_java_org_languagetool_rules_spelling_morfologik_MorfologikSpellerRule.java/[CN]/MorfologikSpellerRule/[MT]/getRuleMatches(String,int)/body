@@ -6,6 +6,7 @@
     if (suggestions.size() == 0 && word.length() >= 5) {
       suggestions.addAll(speller2.getSuggestions(word));
     }
+    suggestions.addAll(0,getAdditionalTopSuggestions(suggestions,word));
     suggestions.addAll(getAdditionalSuggestions(suggestions,word));
     if (!suggestions.isEmpty()) {
       ruleMatch.setSuggestedReplacements(orderSuggestions(suggestions,word));

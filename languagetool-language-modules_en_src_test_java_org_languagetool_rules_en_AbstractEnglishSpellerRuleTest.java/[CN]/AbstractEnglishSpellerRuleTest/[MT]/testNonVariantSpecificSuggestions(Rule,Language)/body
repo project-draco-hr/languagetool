@@ -29,6 +29,8 @@
   assertFirstMatch("mischevious","mischievous");
   assertFirstMatch("hygeine","hygiene");
   assertFirstMatch("vehical","medical","vehicle");
+  assertFirstMatch("alot","a lot");
+  assertFirstMatch("speach","speech");
   assertFirstMatch("rythem","them","rather","rhythm");
   assertFirstMatch("vacume","value","volume","acute","vacuum");
 }

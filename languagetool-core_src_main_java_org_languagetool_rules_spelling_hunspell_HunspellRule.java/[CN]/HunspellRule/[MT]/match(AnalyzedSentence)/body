@@ -21,6 +21,7 @@
     if (isAlphabetic && !word.equals("--") && hunspellDict.misspelled(word)) {
       final RuleMatch ruleMatch=new RuleMatch(this,len,len + word.length(),messages.getString("spelling"),messages.getString("desc_spelling_short"));
       final List<String> suggestions=getSuggestions(word);
+      suggestions.addAll(0,getAdditionalTopSuggestions(suggestions,word));
       suggestions.addAll(getAdditionalSuggestions(suggestions,word));
       if (!suggestions.isEmpty()) {
         ruleMatch.setSuggestedReplacements(suggestions);

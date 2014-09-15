@@ -1,7 +1,3 @@
 {
-  List<String> moreSuggestions=new ArrayList<>();
-  if ("Languagetool".equals(word) && !suggestions.contains(LANGUAGETOOL)) {
-    moreSuggestions.add(LANGUAGETOOL);
-  }
-  return moreSuggestions;
+  return Collections.emptyList();
 }
