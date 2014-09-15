@@ -13,8 +13,13 @@
     langTool.activateDefaultPatternRules();
     List<RuleMatch> matches=langTool.check(subText);
     long runTime=System.currentTimeMillis() - startTime;
-    totalTime+=runTime;
-    System.out.println("Time: " + runTime + "ms ("+ matches.size()+ " matches)");
+    if (i >= SKIP) {
+      totalTime+=runTime;
+      System.out.println("Time: " + runTime + "ms ("+ matches.size()+ " matches)");
+    }
+ else {
+      System.out.println("Time: " + runTime + "ms ("+ matches.size()+ " matches) - skipped because of warm-up");
+    }
   }
   System.out.println("Avg. Time: " + (float)totalTime / RUNS);
 }
