@@ -1,0 +1,11 @@
+{
+  if (patternRules == null) {
+    patternRules=new ArrayList<>();
+    PatternRuleLoader ruleLoader=new PatternRuleLoader();
+    for (    String fileName : getRuleFileNames()) {
+      InputStream is=this.getClass().getResourceAsStream(fileName);
+      patternRules.addAll(ruleLoader.getRules(is,fileName));
+    }
+  }
+  return patternRules;
+}

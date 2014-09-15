@@ -1,0 +1,20 @@
+{
+  String input=examples.get(lang.getShortNameWithCountryAndVariant());
+  if (input != null) {
+    try {
+      JLanguageTool lt=new JLanguageTool(lang);
+      lt.activateDefaultPatternRules();
+      List<RuleMatch> matches=lt.check(input);
+      String expected=expectedResults.get(lang.getShortNameWithCountryAndVariant());
+      String real=MultiThreadingTest1.toString(matches);
+      if (!expectedResults.get(lang.getShortNameWithCountryAndVariant()).equals(real)) {
+        fail(lang + ": got '" + real+ "', expected '"+ expected+ "'");
+      }
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+ else {
+  }
+}

@@ -1,0 +1,11 @@
+{
+  for (  Language lang : languages) {
+    JLanguageTool lt=new JLanguageTool(lang);
+    lt.activateDefaultPatternRules();
+    String input=examples.get(lang.getShortNameWithCountryAndVariant());
+    if (input != null) {
+      List<RuleMatch> matches=lt.check(input);
+      expectedResults.put(lang.getShortNameWithCountryAndVariant(),toString(matches));
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  List<Language> languages1=new ArrayList<>(Arrays.asList(Language.REAL_LANGUAGES));
+  initExpectedResults(languages1);
+  List<Language> languages2=new ArrayList<>(Arrays.asList(Language.REAL_LANGUAGES));
+  ExecutorService executor=Executors.newFixedThreadPool(THREADS);
+  for (int i=0; i < RUNS; i++) {
+    System.out.println("Run #" + i);
+    Collections.shuffle(languages1,rnd);
+    Collections.shuffle(languages2,rnd);
+    List<Future> futures=new ArrayList<>();
+    for (int j=0; j < languages1.size(); j++) {
+      Language lang1=languages1.get(j);
+      Language lang2=languages2.get(j);
+      futures.add(executor.submit(new Handler(lang1)));
+      futures.add(executor.submit(new Handler(lang2)));
+    }
+    for (    Future future : futures) {
+      future.get();
+    }
+  }
+}

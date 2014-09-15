@@ -1,0 +1,8 @@
+{
+  JLanguageTool lt=new JLanguageTool(LANG);
+  lt.activateDefaultPatternRules();
+  for (  String sentence : sentences) {
+    List<RuleMatch> matches=lt.check(sentence);
+    expectedResults.put(sentence,matches.toString());
+  }
+}

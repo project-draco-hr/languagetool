@@ -1,0 +1,15 @@
+{
+  try {
+    JLanguageTool lt=new JLanguageTool(lang);
+    lt.activateDefaultPatternRules();
+    List<RuleMatch> matches=lt.check(sentence);
+    String expected=expectedResults.get(sentence);
+    String real=matches.toString();
+    if (!expectedResults.get(sentence).equals(real)) {
+      fail("Got '" + real + "', expected '"+ expected+ "' for input: "+ sentence);
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

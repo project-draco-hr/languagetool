@@ -1,0 +1,7 @@
+{
+  List<String> result=new ArrayList<>();
+  for (  RuleMatch match : matches) {
+    result.add(toString(match));
+  }
+  return StringUtils.join(result,",");
+}
