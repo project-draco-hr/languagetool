@@ -7,12 +7,14 @@
   testUnification=initUnifier();
   sentStart=patternElements.size() > 0 && patternElements.get(0).isSentenceStart();
   if (!testUnification) {
+    boolean found=false;
     for (    Element elem : patternElements) {
       if (elem.hasAndGroup()) {
-        groupsOrUnification=true;
+        found=true;
         break;
       }
     }
+    groupsOrUnification=found;
   }
  else {
     groupsOrUnification=true;
