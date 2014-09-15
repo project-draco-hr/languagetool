@@ -1,0 +1,15 @@
+{
+  URL errors=PedlerCorpusTest.class.getResource("/org/languagetool/dev/eval");
+  PedlerCorpus corpus=new PedlerCorpus(new File(errors.getFile()));
+  Iterator<ErrorSentence> iterator=corpus.iterator();
+  assertTrue(iterator.hasNext());
+  ErrorSentence sentence1=iterator.next();
+  assertThat(sentence1.getAnnotatedText().getPlainText(),is("But also please not that grammar checkers aren't perfect."));
+  assertThat(sentence1.getMarkupText(),is("But <ERR targ=foo>also</ERR> please <ERR targ=note>not</ERR> that grammar checkers aren't perfect."));
+  ErrorSentence sentence2=iterator.next();
+  assertThat(sentence2.getAnnotatedText().getPlainText(),is("But also also please note note that grammar checkers aren't perfect."));
+  assertThat(sentence2.getMarkupText(),is("But <ERR targ=bad suggestion>also also</ERR> please <ERR targ=note>note note</ERR> that grammar checkers aren't perfect."));
+  assertTrue(iterator.hasNext());
+  iterator.next();
+  assertFalse(iterator.hasNext());
+}
