@@ -1,6 +1,6 @@
 {
   final List<String> l=new ArrayList<>();
-  final StringTokenizer st=new StringTokenizer(text,nlTokenizing,true);
+  final StringTokenizer st=new StringTokenizer(text,nlTokenizingChars,true);
   while (st.hasMoreElements()) {
     String token=st.nextToken();
     if (token.length() > 1) {
