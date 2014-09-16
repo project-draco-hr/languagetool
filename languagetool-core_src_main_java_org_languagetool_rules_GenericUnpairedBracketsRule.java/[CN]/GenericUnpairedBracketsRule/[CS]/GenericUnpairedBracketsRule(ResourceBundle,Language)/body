@@ -1,7 +1,6 @@
 {
   super(messages);
   super.setCategory(new Category(messages.getString("category_misc")));
-  setParagraphBackTrack(true);
   startSymbols=language.getUnpairedRuleStartSymbols();
   endSymbols=language.getUnpairedRuleEndSymbols();
   numerals=NUMERALS_EN;

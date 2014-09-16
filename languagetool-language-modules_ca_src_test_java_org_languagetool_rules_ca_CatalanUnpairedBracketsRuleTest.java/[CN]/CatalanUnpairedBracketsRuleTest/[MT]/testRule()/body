@@ -42,8 +42,8 @@
   assertIncorrect("What?'");
   assertIncorrect("Some text (and some funny remark :-) with more text to follow");
   RuleMatch[] matches;
-  matches=rule.match(langTool.getAnalyzedSentence("(This is a test??? sentence."));
+  matches=rule.match(Collections.singletonList(langTool.getAnalyzedSentence("(This is a test??? sentence.")));
   assertEquals(2,matches.length);
-  matches=rule.match(langTool.getAnalyzedSentence("This [is (a test} sentence."));
+  matches=rule.match(Collections.singletonList(langTool.getAnalyzedSentence("This [is (a test} sentence.")));
   assertEquals(3,matches.length);
 }

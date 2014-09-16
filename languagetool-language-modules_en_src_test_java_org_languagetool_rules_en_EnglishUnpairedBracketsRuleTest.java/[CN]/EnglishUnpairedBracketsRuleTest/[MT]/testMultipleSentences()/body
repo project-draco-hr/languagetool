@@ -7,5 +7,5 @@
   matches=tool.check("This is multiple sentence text that contains a bracket: " + "[This is bracket. With some text. And this continues.\n\n");
   assertEquals(1,matches.size());
   matches=tool.check("This is multiple sentence text that contains a bracket. " + "(This is bracket. \n\n With some text.) and this continues.");
-  assertEquals(2,matches.size());
+  assertEquals(0,matches.size());
 }

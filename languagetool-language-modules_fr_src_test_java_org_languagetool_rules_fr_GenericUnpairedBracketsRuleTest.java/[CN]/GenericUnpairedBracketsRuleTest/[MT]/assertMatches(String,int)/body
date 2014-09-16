@@ -1,4 +1,4 @@
 {
-  final RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence(input));
+  final RuleMatch[] matches=rule.match(Collections.singletonList(langTool.getAnalyzedSentence(input)));
   assertEquals(expectedMatches,matches.length);
 }

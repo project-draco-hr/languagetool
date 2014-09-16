@@ -1,0 +1,4 @@
+int startPosBase
+AnalyzedTokenReadings[] tokens
+int i
+int j

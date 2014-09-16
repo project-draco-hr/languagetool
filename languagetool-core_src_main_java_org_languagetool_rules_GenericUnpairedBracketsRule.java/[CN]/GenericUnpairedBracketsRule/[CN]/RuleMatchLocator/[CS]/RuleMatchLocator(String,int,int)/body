@@ -1,4 +1,0 @@
-{
-  super(symbol,index);
-  this.myIndex=myIndex;
-}

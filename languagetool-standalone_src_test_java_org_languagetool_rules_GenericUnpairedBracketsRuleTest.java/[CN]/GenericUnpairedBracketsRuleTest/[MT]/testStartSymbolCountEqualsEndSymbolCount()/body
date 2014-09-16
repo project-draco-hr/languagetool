@@ -1,7 +1,7 @@
 {
   for (  Language language : Language.LANGUAGES) {
-    final int startSymbols=language.getUnpairedRuleStartSymbols().length;
-    final int endSymbols=language.getUnpairedRuleEndSymbols().length;
+    int startSymbols=language.getUnpairedRuleStartSymbols().length;
+    int endSymbols=language.getUnpairedRuleEndSymbols().length;
     assertEquals("Different number of start and end symbols for " + language,startSymbols,endSymbols);
   }
 }

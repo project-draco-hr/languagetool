@@ -1,4 +1,0 @@
-{
-  this.symbol=symbol;
-  this.index=index;
-}

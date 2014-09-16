@@ -1,6 +1,0 @@
-{
-  if (previousMatches == null) {
-    previousMatches=new ArrayList<>();
-  }
-  previousMatches.add(ruleMatch);
-}

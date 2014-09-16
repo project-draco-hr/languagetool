@@ -1,0 +1,4 @@
+List<RuleMatch> ruleMatches
+UnsyncStack<SymbolLocator> ruleMatchStack
+int startPos
+String symbol

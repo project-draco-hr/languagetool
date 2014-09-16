@@ -1,43 +1,24 @@
 {
   final List<RuleMatch> sentenceMatches=new ArrayList<>();
   for (  final Rule rule : rules) {
-    if (disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()))) {
+    if (rule instanceof TextLevelRule) {
       continue;
     }
-    final Category category=rule.getCategory();
-    if (category != null && disabledCategories.contains(category.getName())) {
+    if (ignoreRule(rule)) {
       continue;
     }
     if (rule instanceof PatternRule && ((PatternRule)rule).canBeIgnoredFor(analyzedSentence)) {
       continue;
     }
-switch (paraMode) {
-case ONLYNONPARA:
-{
-        if (rule.isParagraphBackTrack()) {
-          continue;
-        }
-        break;
-      }
-case ONLYPARA:
-{
-      if (!rule.isParagraphBackTrack()) {
-        continue;
-      }
-      break;
+    if (paraMode == ParagraphHandling.ONLYPARA) {
+      continue;
     }
-case NORMAL:
-default :
-}
-final RuleMatch[] thisMatches=rule.match(analyzedSentence);
-for (final RuleMatch element1 : thisMatches) {
-  final RuleMatch thisMatch=adjustRuleMatchPos(element1,charCount,columnCount,lineCount,sentence,annotatedText);
-  sentenceMatches.add(thisMatch);
-  if (rule.isParagraphBackTrack()) {
-    rule.addRuleMatch(thisMatch);
+    final RuleMatch[] thisMatches=rule.match(analyzedSentence);
+    for (    final RuleMatch element1 : thisMatches) {
+      final RuleMatch thisMatch=adjustRuleMatchPos(element1,charCount,columnCount,lineCount,sentence,annotatedText);
+      sentenceMatches.add(thisMatch);
+    }
   }
-}
-}
-final RuleMatchFilter filter=new SameRuleGroupFilter();
-return filter.filter(sentenceMatches);
+  final RuleMatchFilter filter=new SameRuleGroupFilter();
+  return filter.filter(sentenceMatches);
 }

@@ -1,6 +1,18 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<>();
   int i=0;
+  for (  Rule rule : rules) {
+    if (rule instanceof TextLevelRule && !ignoreRule(rule) && paraMode != ParagraphHandling.ONLYNONPARA) {
+      RuleMatch[] matches=((TextLevelRule)rule).match(analyzedSentences);
+      for (      RuleMatch match : matches) {
+        match.setColumn(columnCount);
+        match.setEndColumn(columnCount);
+        match.setLine(lineCount);
+        match.setEndLine(lineCount);
+      }
+      ruleMatches.addAll(Arrays.asList(matches));
+    }
+  }
   for (  final AnalyzedSentence analyzedSentence : analyzedSentences) {
     final String sentence=sentences.get(i++);
     try {

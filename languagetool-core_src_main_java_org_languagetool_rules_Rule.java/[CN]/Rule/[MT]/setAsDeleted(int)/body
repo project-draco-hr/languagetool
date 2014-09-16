@@ -1,6 +1,0 @@
-{
-  if (removedMatches == null) {
-    removedMatches=new ArrayList<>();
-  }
-  removedMatches.add(previousMatches.get(index));
-}

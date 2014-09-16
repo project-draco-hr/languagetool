@@ -1,5 +1,4 @@
 {
-  uniqueMap=new HashMap<>();
   for (  String endSymbol : endSymbols) {
     int found=0;
     for (    String endSymbol1 : endSymbols) {

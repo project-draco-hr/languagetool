@@ -1,0 +1,26 @@
+{
+  UnsyncStack<SymbolLocator> ruleMatchStack=new UnsyncStack<>();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  int startPosBase=0;
+  for (  AnalyzedSentence sentence : sentences) {
+    AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+    for (int i=1; i < tokens.length; i++) {
+      for (int j=0; j < startSymbols.length; j++) {
+        if (fillSymbolStack(startPosBase,tokens,i,j)) {
+          break;
+        }
+      }
+    }
+    for (    AnalyzedTokenReadings readings : sentence.getTokens()) {
+      startPosBase+=readings.getToken().length();
+    }
+  }
+  for (  final SymbolLocator sLoc : symbolStack) {
+    final RuleMatch rMatch=createMatch(ruleMatches,ruleMatchStack,sLoc.startPos,sLoc.symbol);
+    if (rMatch != null) {
+      ruleMatches.add(rMatch);
+    }
+  }
+  symbolStack.clear();
+  return toRuleMatchArray(ruleMatches);
+}
