@@ -1,3 +1,7 @@
 {
-  nlTokenizingChars=super.getTokenizingCharacters().replace("'","");
+  String chars=super.getTokenizingCharacters();
+  for (  String quote : QUOTES) {
+    chars=chars.replace(quote,"");
+  }
+  nlTokenizingChars=chars;
 }

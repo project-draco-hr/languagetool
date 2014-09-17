@@ -1,0 +1,8 @@
+{
+  for (  String quote : QUOTES) {
+    if (token.startsWith(quote)) {
+      return true;
+    }
+  }
+  return false;
+}
