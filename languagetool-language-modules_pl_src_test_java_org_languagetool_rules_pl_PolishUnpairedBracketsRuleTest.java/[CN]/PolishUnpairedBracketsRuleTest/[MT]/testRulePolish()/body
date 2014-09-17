@@ -1,15 +1,10 @@
 {
-  PolishUnpairedBracketsRule rule=new PolishUnpairedBracketsRule(TestTools.getEnglishMessages(),new Polish());
-  RuleMatch[] matches;
-  JLanguageTool langTool=new JLanguageTool(new Polish());
-  matches=rule.match(Collections.singletonList(langTool.getAnalyzedSentence("(To jest zdanie do testowania).")));
-  assertEquals(0,matches.length);
-  matches=rule.match(Collections.singletonList(langTool.getAnalyzedSentence("Piosenka ta trafi??a na wiele list \"Best of...\", w????czaj??c w to te, kt??re zosta??y utworzone przez magazyn Rolling Stone.")));
-  assertEquals(0,matches.length);
-  matches=rule.match(Collections.singletonList(langTool.getAnalyzedSentence("A \"B\" C.")));
-  assertEquals(0,matches.length);
-  matches=rule.match(Collections.singletonList(langTool.getAnalyzedSentence("\"A\" B \"C\".")));
-  assertEquals(0,matches.length);
-  matches=rule.match(Collections.singletonList(langTool.getAnalyzedSentence("W tym zdaniu jest niesparowany ???cudzys????w.")));
-  assertEquals(1,matches.length);
+  Polish language=new Polish();
+  PolishUnpairedBracketsRule rule=new PolishUnpairedBracketsRule(TestTools.getEnglishMessages(),language);
+  JLanguageTool lt=new JLanguageTool(language);
+  assertEquals(0,getMatches("(To jest zdanie do testowania).",rule,lt));
+  assertEquals(0,getMatches("Piosenka ta trafi??a na wiele list \"Best of...\", w????czaj??c w to te, kt??re zosta??y utworzone przez magazyn Rolling Stone.",rule,lt));
+  assertEquals(0,getMatches("A \"B\" C.",rule,lt));
+  assertEquals(0,getMatches("\"A\" B \"C\".",rule,lt));
+  assertEquals(1,getMatches("W tym zdaniu jest niesparowany ???cudzys????w.",rule,lt));
 }
