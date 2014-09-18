@@ -5,10 +5,11 @@
     if (rule instanceof TextLevelRule && !ignoreRule(rule) && paraMode != ParagraphHandling.ONLYNONPARA) {
       RuleMatch[] matches=((TextLevelRule)rule).match(analyzedSentences);
       for (      RuleMatch match : matches) {
-        match.setColumn(columnCount);
-        match.setEndColumn(columnCount);
-        match.setLine(lineCount);
-        match.setEndLine(lineCount);
+        LineColumnRange range=getLineColumnRange(match);
+        match.setColumn(range.from.column);
+        match.setEndColumn(range.to.column);
+        match.setLine(range.from.line);
+        match.setEndLine(range.to.line);
       }
       ruleMatches.addAll(Arrays.asList(matches));
     }
