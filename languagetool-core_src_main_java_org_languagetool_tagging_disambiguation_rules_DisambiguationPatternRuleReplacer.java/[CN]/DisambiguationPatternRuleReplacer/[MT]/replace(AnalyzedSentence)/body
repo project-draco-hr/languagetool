@@ -19,7 +19,7 @@
     int matchingTokens=0;
     int skipShiftTotal=0;
     int firstMatchToken=-1;
-    int lastMatchToken;
+    int lastMatchToken=-1;
     int firstMarkerMatchToken=-1;
     int lastMarkerMatchToken=-1;
     int prevSkipNext=0;
@@ -75,7 +75,8 @@
       }
     }
     if (allElementsMatch && matchingTokens == patternSize || matchingTokens == patternSize - minOccurSkip && firstMatchToken != -1) {
-      whTokens=executeAction(sentence,whTokens,unifiedTokens,firstMatchToken,lastMarkerMatchToken,matchingTokens,tokenPositions);
+      int lastMatchTokenTmp=lastMarkerMatchToken != -1 ? lastMarkerMatchToken : lastMatchToken;
+      whTokens=executeAction(sentence,whTokens,unifiedTokens,firstMatchToken,lastMatchTokenTmp,matchingTokens,tokenPositions);
       changed=true;
     }
     i++;
