@@ -49,7 +49,7 @@
       if (!StringTools.isEmpty(sentence)) {
         AnnotatedText annotatedText=getAnnotatedText(sentence,footnotePositions,paRes);
         final List<RuleMatch> ruleMatches=langTool.check(annotatedText,false,JLanguageTool.ParagraphHandling.ONLYNONPARA);
-        final SingleProofreadingError[] pErrors=checkParaRules(paraText,locale,paRes.nStartOfSentencePosition,paRes.nStartOfNextSentencePosition,paRes.aDocumentIdentifier);
+        final SingleProofreadingError[] pErrors=checkParaRules(paraText,paRes.nStartOfSentencePosition,paRes.nStartOfNextSentencePosition,paRes.aDocumentIdentifier);
         int pErrorCount=0;
         if (pErrors != null) {
           pErrorCount=pErrors.length;
