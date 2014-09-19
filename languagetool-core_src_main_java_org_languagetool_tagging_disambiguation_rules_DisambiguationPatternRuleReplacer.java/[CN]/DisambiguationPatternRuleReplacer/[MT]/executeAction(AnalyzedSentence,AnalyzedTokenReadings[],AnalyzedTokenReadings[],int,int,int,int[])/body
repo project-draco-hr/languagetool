@@ -33,8 +33,10 @@
       }
     }
   }
-  int maxPosCorrection=Math.max((lastMatchToken + 1 - (firstMatchToken + correctedStPos)) - matchingTokens,0);
-  matchingTokensWithCorrection+=maxPosCorrection;
+  if (lastMatchToken != -1) {
+    int maxPosCorrection=Math.max((lastMatchToken + 1 - (firstMatchToken + correctedStPos)) - matchingTokens,0);
+    matchingTokensWithCorrection+=maxPosCorrection;
+  }
   final int fromPos=sentence.getOriginalPosition(firstMatchToken + correctedStPos);
   final boolean spaceBefore=whTokens[fromPos].isWhitespaceBefore();
   final DisambiguationPatternRule.DisambiguatorAction disAction=rule.getAction();
