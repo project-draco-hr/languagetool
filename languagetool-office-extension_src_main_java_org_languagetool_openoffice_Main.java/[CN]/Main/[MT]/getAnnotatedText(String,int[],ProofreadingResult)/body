@@ -1,0 +1,16 @@
+{
+  Set<Integer> correctedPos=new HashSet<>();
+  for (  int pos : footnotePos) {
+    correctedPos.add(pos - paRes.nStartOfSentencePosition);
+  }
+  AnnotatedTextBuilder annotations=new AnnotatedTextBuilder();
+  for (int i=0; i < sentence.length(); i++) {
+    if (correctedPos.contains(i)) {
+      annotations.addMarkup("\u200B");
+    }
+ else {
+      annotations.addText(String.valueOf(sentence.charAt(i)));
+    }
+  }
+  return annotations.build();
+}

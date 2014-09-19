@@ -47,7 +47,8 @@
       paRes.nStartOfNextSentencePosition=position + sentence.length();
       paRes.nBehindEndOfSentencePosition=paRes.nStartOfNextSentencePosition;
       if (!StringTools.isEmpty(sentence)) {
-        final List<RuleMatch> ruleMatches=langTool.check(sentence,false,JLanguageTool.ParagraphHandling.ONLYNONPARA);
+        AnnotatedText annotatedText=getAnnotatedText(sentence,footnotePositions,paRes);
+        final List<RuleMatch> ruleMatches=langTool.check(annotatedText,false,JLanguageTool.ParagraphHandling.ONLYNONPARA);
         final SingleProofreadingError[] pErrors=checkParaRules(paraText,locale,paRes.nStartOfSentencePosition,paRes.nStartOfNextSentencePosition,paRes.aDocumentIdentifier);
         int pErrorCount=0;
         if (pErrors != null) {

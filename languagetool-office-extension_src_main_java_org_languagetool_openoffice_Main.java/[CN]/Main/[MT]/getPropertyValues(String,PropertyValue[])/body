@@ -1,0 +1,13 @@
+{
+  for (  PropertyValue propertyValue : propertyValues) {
+    if (propName.equals(propertyValue.Name)) {
+      if (propertyValue.Value instanceof int[]) {
+        return (int[])propertyValue.Value;
+      }
+ else {
+        System.err.println("Not of expected type int[]: " + propertyValue.Name + ": "+ propertyValue.Value.getClass());
+      }
+    }
+  }
+  return new int[]{};
+}
