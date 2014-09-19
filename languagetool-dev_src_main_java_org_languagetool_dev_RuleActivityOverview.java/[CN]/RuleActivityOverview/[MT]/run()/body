@@ -1,30 +1,14 @@
 {
   System.out.println("Commits per language in the last " + PAST_DAYS + " days");
   System.out.println("Date: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
-  final List<String> sortedLanguages=new ArrayList<>();
+  List<String> sortedLanguages=new ArrayList<>();
   for (  Language element : Language.REAL_LANGUAGES) {
     sortedLanguages.add(element.getName());
   }
   Collections.sort(sortedLanguages);
-  final Calendar past=GregorianCalendar.getInstance();
-  past.add(Calendar.DAY_OF_MONTH,-PAST_DAYS);
-  final SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
-  final String pastString=dateFormat.format(past.getTime());
-  final Runtime runtime=Runtime.getRuntime();
-  for (  final String langName : sortedLanguages) {
-    final Language lang=Language.getLanguageForName(langName);
-    String langCode=lang.getShortName();
-    List<String> ruleFileNames=lang.getRuleFileNames();
-    int commits=0;
-    for (    String ruleFileName : ruleFileNames) {
-      final File xmlFile=new File("languagetool-language-modules/" + langCode + "/src/main/resources/"+ ruleFileName);
-      final String command="git log --after=" + pastString + " "+ xmlFile;
-      final Process process=runtime.exec(command);
-      final InputStream inputStream=process.getInputStream();
-      final String output=StringTools.readStream(inputStream,"utf-8");
-      process.waitFor();
-      commits+=getCommits(output);
-    }
-    System.out.println(commits + "\t" + langName+ (lang.isVariant() ? " (including the parent language)" : ""));
+  for (  String langName : sortedLanguages) {
+    Language lang=Language.getLanguageForName(langName);
+    int commits=getActivityFor(lang,PAST_DAYS);
+    System.out.println(commits + "\t" + lang.getName()+ (lang.isVariant() ? " (including the parent language)" : ""));
   }
 }

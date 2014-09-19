@@ -2,7 +2,7 @@
   int count=0;
   try (Scanner scanner=new Scanner(svnOutput)){
     while (scanner.hasNextLine()) {
-      final String line=scanner.nextLine();
+      String line=scanner.nextLine();
       if (line.startsWith("commit ")) {
         count++;
       }
