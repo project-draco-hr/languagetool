@@ -75,6 +75,11 @@ if (startPos != -1 && endPos != -1) {
 rule.setStartPositionCorrection(startPos);
 rule.setEndPositionCorrection(endPos - tokenCountForMarker);
 }
+ else {
+for (Element element : elementList) {
+element.setInsideMarker(true);
+}
+}
 elementList.clear();
 if (inRule) {
 if (ruleAntiPatterns == null) {
