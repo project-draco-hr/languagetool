@@ -44,15 +44,5 @@
     showError(t);
     return null;
   }
-  try {
-    if (charLocale.Language.equalsIgnoreCase(LIBREOFFICE_SPECIAL_LANGUAGE_TAG)) {
-      return Language.getLanguageForShortName(charLocale.Variant);
-    }
- else {
-      return Language.getLanguageForShortName(charLocale.Language + "-" + charLocale.Country);
-    }
-  }
- catch (  java.lang.IllegalArgumentException e) {
-    return Language.getLanguageForShortName(charLocale.Language);
-  }
+  return getLanguage(charLocale);
 }
