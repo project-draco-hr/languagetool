@@ -1,0 +1,12 @@
+{
+  List<File> files=new ArrayList<>();
+  List<String> ruleFileNames=lang.getRuleFileNames();
+  for (  String ruleFileName : ruleFileNames) {
+    files.add(new File("../languagetool-language-modules/" + langCode + "/src/main/resources/"+ ruleFileName));
+  }
+  File disambiguationFile=new File("../languagetool-language-modules/" + langCode + "/src/main/resources/org/languagetool/resource/"+ langCode+ "/disambiguation.xml");
+  if (disambiguationFile.exists()) {
+    files.add(disambiguationFile);
+  }
+  return files;
+}
