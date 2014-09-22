@@ -1,0 +1,11 @@
+{
+  String englishDay=date.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.LONG,Locale.UK);
+  if (englishDay.equals("Sunday"))   return "Sul";
+  if (englishDay.equals("Monday"))   return "Lun";
+  if (englishDay.equals("Tuesday"))   return "Meurzh";
+  if (englishDay.equals("Wednesday"))   return "Merc???her";
+  if (englishDay.equals("Thursday"))   return "Yaou";
+  if (englishDay.equals("Friday"))   return "Gwener";
+  if (englishDay.equals("Saturday"))   return "Sadorn";
+  return "";
+}
