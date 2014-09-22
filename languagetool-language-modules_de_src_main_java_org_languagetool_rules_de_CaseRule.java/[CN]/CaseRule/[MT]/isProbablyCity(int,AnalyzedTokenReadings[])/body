@@ -1,0 +1,9 @@
+{
+  String token=tokens[i].getToken();
+  boolean hasCityPrefix="Klein".equals(token) || "Gro??".equals(token) || "Neu".equals(token);
+  if (hasCityPrefix) {
+    AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
+    return nextReadings != null && (!nextReadings.isTagged() || nextReadings.hasPartialPosTag("EIG"));
+  }
+  return false;
+}
