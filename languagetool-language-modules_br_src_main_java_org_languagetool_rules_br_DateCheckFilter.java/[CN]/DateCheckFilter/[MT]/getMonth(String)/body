@@ -1,7 +1,7 @@
 {
   String mon=monthStr.toLowerCase();
   if (mon.equals("genver"))   return 1;
-  if (mon.equals("c'hwevrer"))   return 2;
+  if (mon.equals("c???hwevrer"))   return 2;
   if (mon.equals("meurzh"))   return 3;
   if (mon.equals("ebrel"))   return 4;
   if (mon.equals("mae"))   return 5;
