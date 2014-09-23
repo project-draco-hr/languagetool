@@ -1,0 +1,4 @@
+{
+  rule=new PersianSpaceBeforeRule(TestTools.getEnglishMessages(),TestTools.getDemoLanguage());
+  langTool=new JLanguageTool(TestTools.getDemoLanguage());
+}
