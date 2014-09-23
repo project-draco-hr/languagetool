@@ -3,7 +3,7 @@
   final AnalyzedTokenReadings[] tokens=sentence.getTokens();
   for (int i=1; i < tokens.length; i++) {
     final String token=tokens[i].getToken();
-    Matcher matcher=getConjuntions().matcher(token);
+    Matcher matcher=getConjunctions().matcher(token);
     if (matcher.matches()) {
       final String previousToken=tokens[i - 1].getToken();
       if (!(previousToken.equals(" ") || previousToken.equals("("))) {
