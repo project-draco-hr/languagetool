@@ -1,0 +1,16 @@
+{
+  List<PatternRule> rules=new ArrayList<>();
+  JLanguageTool langTool=new JLanguageTool(language);
+  langTool.activateDefaultPatternRules();
+  for (  Rule rule : langTool.getAllRules()) {
+    if (rule.getId().equals(ruleId) && rule instanceof PatternRule) {
+      rules.add((PatternRule)rule);
+    }
+  }
+  if (rules.size() > 0) {
+    return rules;
+  }
+ else {
+    throw new PatternRuleNotFoundException(ruleId,language);
+  }
+}

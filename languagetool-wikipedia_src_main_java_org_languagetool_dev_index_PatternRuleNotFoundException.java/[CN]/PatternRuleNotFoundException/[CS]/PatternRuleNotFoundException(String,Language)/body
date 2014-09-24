@@ -1,0 +1,3 @@
+{
+  super("Could not find pattern rule '" + ruleId + "' for language "+ language);
+}

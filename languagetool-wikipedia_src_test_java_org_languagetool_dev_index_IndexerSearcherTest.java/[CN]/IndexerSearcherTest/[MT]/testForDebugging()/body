@@ -1,6 +1,7 @@
 {
   useRealIndex();
-  final PatternRule rule=getRule("I_THIN",ruleFile).get(0);
-  final SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(rule,new German());
+  German language=new German();
+  PatternRule rule=getFirstRule("I_THIN",language);
+  SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(rule,language);
   System.out.println("Matches: " + searcherResult.getMatchingSentences());
 }

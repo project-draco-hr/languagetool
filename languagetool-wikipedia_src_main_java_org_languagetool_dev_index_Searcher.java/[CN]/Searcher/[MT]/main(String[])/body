@@ -2,11 +2,10 @@
   ensureCorrectUsageOrExit(args);
   final long startTime=System.currentTimeMillis();
   final String[] ruleIds=args[0].split(",");
-  final File ruleFile=new File(args[1]);
-  final String languageCode=args[2];
+  final String languageCode=args[1];
   final Language language=Language.getLanguageForShortName(languageCode);
-  final File indexDir=new File(args[3]);
-  if (args.length > 4 && "--no_limit".equals(args[4])) {
+  final File indexDir=new File(args[2]);
+  if (args.length > 3 && "--no_limit".equals(args[3])) {
     limitSearch=false;
   }
   final Searcher searcher=new Searcher(new SimpleFSDirectory(indexDir));
@@ -15,7 +14,7 @@
   }
   for (  String ruleId : ruleIds) {
     final long ruleStartTime=System.currentTimeMillis();
-    for (    PatternRule rule : searcher.getRuleById(ruleId,ruleFile)) {
+    for (    PatternRule rule : searcher.getRuleById(ruleId,language)) {
       final SearcherResult searcherResult=searcher.findRuleMatchesOnIndex(rule,language);
       int i=1;
       if (searcherResult.getMatchingSentences().size() == 0) {
