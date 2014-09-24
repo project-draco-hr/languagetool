@@ -1,4 +1,8 @@
 {
+  if (ONLY_ARTICLES && !ARTICLE_NAMESPACE.equals(namespace)) {
+    namespaceSkipCount++;
+    return;
+  }
   XMLEvent event=reader.nextEvent();
   StringBuilder sb=new StringBuilder();
   while (event.isCharacters()) {
@@ -6,6 +10,10 @@
     event=reader.nextEvent();
   }
   try {
+    if (sb.toString().trim().toLowerCase().startsWith("#redirect")) {
+      redirectSkipCount++;
+      return;
+    }
     String textToCheck=textFilter.filter(sb.toString()).getPlainText();
     for (    String sentence : sentenceTokenizer.tokenize(textToCheck)) {
       if (acceptSentence(sentence)) {

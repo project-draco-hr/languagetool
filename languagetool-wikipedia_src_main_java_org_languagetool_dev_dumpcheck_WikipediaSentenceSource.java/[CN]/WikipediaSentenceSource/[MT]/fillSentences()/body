@@ -1,5 +1,6 @@
 {
   String title=null;
+  String namespace=null;
   while (sentences.size() == 0 && reader.hasNext()) {
     XMLEvent event=reader.nextEvent();
     if (event.getEventType() == XMLStreamConstants.START_ELEMENT) {
@@ -9,8 +10,12 @@
         title=event.asCharacters().getData();
         articleCount++;
       }
+ else       if (elementName.equals("ns")) {
+        event=reader.nextEvent();
+        namespace=event.asCharacters().getData();
+      }
  else       if (elementName.equals("text")) {
-        handleTextElement(title,articleCount);
+        handleTextElement(namespace,title,articleCount);
       }
     }
   }
