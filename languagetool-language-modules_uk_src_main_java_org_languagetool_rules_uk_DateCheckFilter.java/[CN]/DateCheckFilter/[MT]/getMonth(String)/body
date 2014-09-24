@@ -1,0 +1,16 @@
+{
+  String mon=monthStr.toLowerCase();
+  if (mon.startsWith("????"))   return Calendar.JANUARY + 1;
+  if (mon.startsWith("????"))   return Calendar.FEBRUARY + 1;
+  if (mon.startsWith("????"))   return Calendar.MARCH + 1;
+  if (mon.startsWith("????"))   return Calendar.APRIL + 1;
+  if (mon.startsWith("????"))   return Calendar.MAY + 1;
+  if (mon.startsWith("????"))   return Calendar.JUNE + 1;
+  if (mon.startsWith("????"))   return Calendar.JULY + 1;
+  if (mon.startsWith("????"))   return Calendar.AUGUST + 1;
+  if (mon.startsWith("????"))   return Calendar.SEPTEMBER + 1;
+  if (mon.startsWith("????"))   return Calendar.OCTOBER + 1;
+  if (mon.startsWith("????"))   return Calendar.NOVEMBER + 1;
+  if (mon.startsWith("????"))   return Calendar.DECEMBER + 1;
+  throw new RuntimeException("Could not find month '" + monthStr + "'");
+}
