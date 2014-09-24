@@ -9,12 +9,7 @@
     final long luceneTime=System.currentTimeMillis() - t2;
     final long t3=System.currentTimeMillis();
     luceneMatchCount=limitedTopDocs.topDocs.totalHits;
-    if (limitedTopDocs.topDocs.scoreDocs.length >= maxHits) {
-      tooManyLuceneMatches=true;
-    }
- else {
-      tooManyLuceneMatches=false;
-    }
+    tooManyLuceneMatches=limitedTopDocs.topDocs.scoreDocs.length >= maxHits;
     matchingSentences=findMatchingSentences(indexSearcher,limitedTopDocs.topDocs,languageTool);
     System.out.println("Check done in " + langToolCreationTime + "/"+ luceneTime+ "/"+ (System.currentTimeMillis() - t3)+ "ms (LT creation/Lucene/matching) for "+ limitedTopDocs.topDocs.scoreDocs.length+ " docs, query "+ query.toString(FIELD_NAME_LOWERCASE));
   }
