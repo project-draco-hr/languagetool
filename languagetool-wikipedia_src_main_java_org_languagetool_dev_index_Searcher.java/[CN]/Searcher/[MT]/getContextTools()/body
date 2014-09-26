@@ -1,0 +1,8 @@
+{
+  final ContextTools contextTools=new ContextTools();
+  contextTools.setEscapeHtml(false);
+  contextTools.setContextSize(140);
+  contextTools.setErrorMarkerStart("**");
+  contextTools.setErrorMarkerEnd("**");
+  return contextTools;
+}

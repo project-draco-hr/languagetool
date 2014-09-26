@@ -4,5 +4,6 @@
     langTool.disableRule(rule.getId());
   }
   langTool.addRule(patternRule);
+  langTool.enableDefaultOffRule(patternRule.getId());
   return langTool;
 }

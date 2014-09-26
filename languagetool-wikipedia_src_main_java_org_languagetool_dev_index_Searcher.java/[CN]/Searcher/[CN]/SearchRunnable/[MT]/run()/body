@@ -11,7 +11,7 @@
     luceneMatchCount=limitedTopDocs.topDocs.totalHits;
     tooManyLuceneMatches=limitedTopDocs.topDocs.scoreDocs.length >= maxHits;
     matchingSentences=findMatchingSentences(indexSearcher,limitedTopDocs.topDocs,languageTool);
-    System.out.println("Check done in " + langToolCreationTime + "/"+ luceneTime+ "/"+ (System.currentTimeMillis() - t3)+ "ms (LT creation/Lucene/matching) for "+ limitedTopDocs.topDocs.scoreDocs.length+ " docs, query "+ query.toString(FIELD_NAME_LOWERCASE));
+    System.out.println("Check done in " + langToolCreationTime + "/"+ luceneTime+ "/"+ (System.currentTimeMillis() - t3)+ "ms (LT creation/Lucene/matching) for "+ limitedTopDocs.topDocs.scoreDocs.length+ " docs");
   }
  catch (  Exception e) {
     exception=e;

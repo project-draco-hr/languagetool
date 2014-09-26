@@ -6,6 +6,7 @@
     if (query == null) {
       throw new NullPointerException("Cannot search on null query for rule: " + rule.getId());
     }
+    System.out.println("Running query: " + query.toString(FIELD_NAME_LOWERCASE));
     final SearchRunnable runnable=new SearchRunnable(indexSearcher,query,language,rule);
     final Thread searchThread=new Thread(runnable);
     searchThread.start();
