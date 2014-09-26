@@ -5,6 +5,6 @@
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Amsterdam")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("ipv")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("voorzover")).length);
-  assertEquals(0,rule.match(langTool.getAnalyzedSentence("FoobarWrongxx")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("FoobarWrongxx")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("foobarwrong")).length);
 }
