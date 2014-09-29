@@ -18,7 +18,9 @@
     printMatches(ruleMatches,prevMatches,contents,contextSize);
   }
   if (xmlMode == StringTools.XmlPrintMode.NORMAL_XML) {
-    displayTimeStats(startTime,lt.getSentenceCount(),apiFormat);
+    SentenceTokenizer sentenceTokenizer=lt.getLanguage().getSentenceTokenizer();
+    int sentenceCount=sentenceTokenizer.tokenize(contents).size();
+    displayTimeStats(startTime,sentenceCount,apiFormat);
   }
   return ruleMatches.size();
 }
