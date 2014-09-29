@@ -1,3 +1,0 @@
-{
-  return getRuleMatches(word,startPos);
-}

@@ -1,5 +1,0 @@
-{
-  super(messages,language);
-  super.setCategory(new Category(messages.getString("category_misc")));
-  setLocQualityIssueType(ITSIssueType.Whitespace);
-}
