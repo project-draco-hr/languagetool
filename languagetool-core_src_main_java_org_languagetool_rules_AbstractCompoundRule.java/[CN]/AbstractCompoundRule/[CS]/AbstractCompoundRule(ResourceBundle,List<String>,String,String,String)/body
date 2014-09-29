@@ -1,0 +1,12 @@
+{
+  if (messages != null) {
+    super.setCategory(new Category(messages.getString("category_misc")));
+  }
+  for (  String fileName : fileNames) {
+    loadCompoundFile(JLanguageTool.getDataBroker().getFromResourceDirAsStream(fileName),"UTF-8");
+  }
+  this.withHyphenMessage=withHyphenMessage;
+  this.withoutHyphenMessage=withoutHyphenMessage;
+  this.withOrWithoutHyphenMessage=withOrWithoutHyphenMessage;
+  setLocQualityIssueType(ITSIssueType.Misspelling);
+}
