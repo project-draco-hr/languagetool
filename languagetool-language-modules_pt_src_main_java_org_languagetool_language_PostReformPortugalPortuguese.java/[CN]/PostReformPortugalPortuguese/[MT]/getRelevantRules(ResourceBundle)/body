@@ -1,7 +1,7 @@
 {
   final List<Rule> filteredRules=new ArrayList<>();
   for (  Rule rule : super.getRelevantRules(messages)) {
-    if (rule.getClass() != PortugueseCompoundRule.class) {
+    if (rule.getClass() != PreReformPortugueseCompoundRule.class) {
       filteredRules.add(rule);
     }
   }
