@@ -1,6 +1,6 @@
 {
   if (!ruleMatchStack.empty()) {
-    final int index=findSymbolNum(symbol);
+    final int index=findSymbolNum(symbol,endSymbols);
     if (index >= 0) {
       final SymbolLocator rLoc=ruleMatchStack.peek();
       if (rLoc.symbol.equals(startSymbols[index])) {
@@ -13,5 +13,7 @@
     }
   }
   ruleMatchStack.push(new SymbolLocator(symbol,ruleMatches.size(),startPos));
-  return new RuleMatch(this,startPos,startPos + symbol.length(),messages.getString("unpaired_brackets"));
+  String otherSymbol=findCorrespondingSymbol(symbol);
+  String message=MessageFormat.format(messages.getString("unpaired_brackets"),otherSymbol);
+  return new RuleMatch(this,startPos,startPos + symbol.length(),message);
 }

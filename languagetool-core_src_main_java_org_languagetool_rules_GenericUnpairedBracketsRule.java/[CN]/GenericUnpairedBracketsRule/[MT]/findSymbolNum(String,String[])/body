@@ -1,0 +1,8 @@
+{
+  for (int i=0; i < symbols.length; i++) {
+    if (ch.equals(symbols[i])) {
+      return i;
+    }
+  }
+  return -1;
+}

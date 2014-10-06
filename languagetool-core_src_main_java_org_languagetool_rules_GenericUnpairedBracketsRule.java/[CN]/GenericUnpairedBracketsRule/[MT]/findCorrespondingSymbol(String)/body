@@ -1,0 +1,10 @@
+{
+  int idx1=findSymbolNum(symbol,startSymbols);
+  if (idx1 >= 0) {
+    return endSymbols[idx1];
+  }
+ else {
+    int idx2=findSymbolNum(symbol,endSymbols);
+    return startSymbols[idx2];
+  }
+}
