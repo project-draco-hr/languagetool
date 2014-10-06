@@ -1,0 +1,8 @@
+{
+  if (prevSentenceEndsWithNumber) {
+    return "F??gen Sie nach Ordnungszahlen (1., 2. usw.) ein Leerzeichen ein";
+  }
+ else {
+    return "F??gen Sie zwischen S??tzen ein Leerzeichen ein";
+  }
+}
