@@ -1,4 +1,5 @@
 {
+  InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(fileName);
   try (InputStreamReader reader=new InputStreamReader(stream,encoding);BufferedReader br=new BufferedReader(reader)){
     String line;
     while ((line=br.readLine()) != null) {
@@ -8,10 +9,10 @@
       line=line.replace('-',' ');
       final String[] parts=line.split(" ");
       if (parts.length > MAX_TERMS) {
-        throw new IOException("Too many compound parts: " + line + ", maximum allowed: "+ MAX_TERMS);
+        throw new IOException("Too many compound parts in file " + fileName + ": "+ line+ ", maximum allowed: "+ MAX_TERMS);
       }
       if (parts.length == 1) {
-        throw new IOException("Not a compound: " + line);
+        throw new IOException("Not a compound in file " + fileName + ": "+ line);
       }
       if (line.endsWith("+")) {
         line=removeLastCharacter(line);
