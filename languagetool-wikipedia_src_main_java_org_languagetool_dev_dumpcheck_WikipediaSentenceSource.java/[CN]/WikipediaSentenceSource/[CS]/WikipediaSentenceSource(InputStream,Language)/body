@@ -1,5 +1,6 @@
 {
   super(language);
+  textFilter.enableMapping(false);
   try {
     XMLInputFactory factory=XMLInputFactory.newInstance();
     reader=factory.createXMLEventReader(xmlInput);

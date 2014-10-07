@@ -1,4 +1,7 @@
 {
+  if (!enableMapping) {
+    return;
+  }
   String contentSoFar=sb.toString() + line;
   int textPos=contentSoFar.length() + needNewlines + 1;
   if (loc.hasLocation()) {

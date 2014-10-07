@@ -1,3 +1,6 @@
 {
+  if (!enableMapping) {
+    throw new IllegalStateException("enableMapping not activated");
+  }
   return mapping;
 }
