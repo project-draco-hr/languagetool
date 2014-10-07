@@ -1,4 +1,5 @@
 String sentence
 String source
+String title
 AnalyzedSentence analyzedSentence
 List<RuleMatch> ruleMatches

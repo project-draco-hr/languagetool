@@ -6,8 +6,9 @@
     final List<RuleMatch> ruleMatches=languageTool.check(sentence);
     if (ruleMatches.size() > 0) {
       final String source=doc.get(SOURCE_FIELD_NAME);
+      final String title=doc.get(Indexer.TITLE_FIELD_NAME);
       final AnalyzedSentence analyzedSentence=languageTool.getAnalyzedSentence(sentence);
-      final MatchingSentence matchingSentence=new MatchingSentence(sentence,source,analyzedSentence,ruleMatches);
+      final MatchingSentence matchingSentence=new MatchingSentence(sentence,source,title,analyzedSentence,ruleMatches);
       matchingSentences.add(matchingSentence);
     }
   }
