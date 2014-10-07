@@ -1,6 +1,6 @@
 {
   final BufferedReader br=new BufferedReader(new StringReader(content));
   try (Indexer indexer=new Indexer(dir,language)){
-    run(br,indexer,isSentence);
+    indexer.indexText(br,null);
   }
  }

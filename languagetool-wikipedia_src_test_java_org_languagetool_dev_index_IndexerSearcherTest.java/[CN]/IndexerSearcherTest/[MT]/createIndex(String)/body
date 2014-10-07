@@ -1,5 +1,5 @@
 {
   directory=new RAMDirectory();
-  Indexer.run(content,directory,new English(),false);
+  Indexer.run(content,directory,new English());
   errorSearcher=new Searcher(directory);
 }
