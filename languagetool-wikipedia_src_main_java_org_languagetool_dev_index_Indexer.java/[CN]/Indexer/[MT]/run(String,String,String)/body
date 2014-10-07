@@ -9,7 +9,7 @@
     try (FSDirectory directory=FSDirectory.open(new File(indexDir))){
       final Language language=Language.getLanguageForShortName(languageCode);
       try (Indexer indexer=new Indexer(directory,language)){
-        indexer.indexText(reader,null);
+        indexer.indexText(reader);
       }
      }
    }

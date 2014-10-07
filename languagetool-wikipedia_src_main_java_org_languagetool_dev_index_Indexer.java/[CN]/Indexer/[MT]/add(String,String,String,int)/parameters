@@ -1,3 +1,4 @@
 String sentence
 String source
+String title
 int docCount
