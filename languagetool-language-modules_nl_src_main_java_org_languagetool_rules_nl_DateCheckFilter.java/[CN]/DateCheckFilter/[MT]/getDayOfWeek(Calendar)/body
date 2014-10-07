@@ -1,0 +1,11 @@
+{
+  String englishDay=date.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.LONG,Locale.UK);
+  if (englishDay.equals("Sunday"))   return "zondag";
+  if (englishDay.equals("Monday"))   return "maandag";
+  if (englishDay.equals("Tuesday"))   return "dinsdag";
+  if (englishDay.equals("Wednesday"))   return "woensdag";
+  if (englishDay.equals("Thursday"))   return "donderdag";
+  if (englishDay.equals("Friday"))   return "vrijdag";
+  if (englishDay.equals("Saturday"))   return "zaterdag";
+  return "";
+}

@@ -1,0 +1,11 @@
+{
+  String day=dayStr.toLowerCase();
+  if (day.equals("zo") || day.equals("zondag"))   return Calendar.SUNDAY;
+  if (day.equals("ma") || day.equals("maandag"))   return Calendar.MONDAY;
+  if (day.equals("di") || day.equals("dinsdag"))   return Calendar.TUESDAY;
+  if (day.equals("wo") || day.equals("woensdag"))   return Calendar.WEDNESDAY;
+  if (day.equals("do") || day.equals("donderdag"))   return Calendar.THURSDAY;
+  if (day.equals("vr") || day.equals("vrijdag"))   return Calendar.FRIDAY;
+  if (day.equals("za") || day.equals("zaterdag"))   return Calendar.SATURDAY;
+  throw new RuntimeException("Could not find day of week for '" + dayStr + "'");
+}

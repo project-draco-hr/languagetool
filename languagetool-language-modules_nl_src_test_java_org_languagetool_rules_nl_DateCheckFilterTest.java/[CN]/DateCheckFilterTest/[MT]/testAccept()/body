@@ -1,0 +1,4 @@
+{
+  assertNull(filter.acceptRuleMatch(match,makeMap("2014","8","23","zaterdag"),null));
+  assertNotNull(filter.acceptRuleMatch(match,makeMap("2014","8","23","zondag"),null));
+}

@@ -1,0 +1,4 @@
+String year
+String month
+String dayOfMonth
+String weekDay
