@@ -1,10 +1,10 @@
 {
-  final HTTPServer server=new HTTPServer(new HTTPServerConfig(),false);
+  final HTTPServer server=new HTTPServer(new HTTPServerConfig(HTTPTools.getDefaultPort()),false);
   try {
     server.run();
     try {
       System.out.println("=== Testing 'missing language parameter' now, please ignore the following exception ===");
-      final URL url=new URL("http://localhost:" + DEFAULT_PORT + "/?text=foo");
+      final URL url=new URL("http://localhost:" + HTTPTools.getDefaultPort() + "/?text=foo");
       HTTPTools.checkAtUrl(url);
       fail();
     }

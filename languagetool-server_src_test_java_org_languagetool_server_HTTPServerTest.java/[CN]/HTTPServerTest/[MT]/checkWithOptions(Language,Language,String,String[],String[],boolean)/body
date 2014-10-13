@@ -13,6 +13,6 @@
   if (useEnabledOnly) {
     urlOptions+="&enabledOnly=yes";
   }
-  final URL url=new URL("http://localhost:" + DEFAULT_PORT + urlOptions);
+  final URL url=new URL("http://localhost:" + HTTPTools.getDefaultPort() + urlOptions);
   return HTTPTools.checkAtUrl(url);
 }

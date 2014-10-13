@@ -1,5 +1,5 @@
 {
-  final HTTPServer server=new HTTPServer(new HTTPServerConfig(),false,new HashSet<String>());
+  final HTTPServer server=new HTTPServer(new HTTPServerConfig(HTTPTools.getDefaultPort()),false,new HashSet<String>());
   try {
     server.run();
     try {

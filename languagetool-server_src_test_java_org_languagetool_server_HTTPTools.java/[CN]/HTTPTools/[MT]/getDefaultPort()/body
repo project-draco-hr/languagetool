@@ -1,0 +1,4 @@
+{
+  String defaultPort=System.getProperty("lt.default.port");
+  return defaultPort != null ? Integer.parseInt(defaultPort) : HTTPServerConfig.DEFAULT_PORT;
+}

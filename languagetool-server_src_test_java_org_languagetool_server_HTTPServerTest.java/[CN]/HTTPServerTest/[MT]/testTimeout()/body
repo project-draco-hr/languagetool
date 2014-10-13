@@ -1,5 +1,5 @@
 {
-  HTTPServerConfig config=new HTTPServerConfig();
+  HTTPServerConfig config=new HTTPServerConfig(HTTPTools.getDefaultPort(),false);
   config.setMaxCheckTimeMillis(1);
   final HTTPServer server=new HTTPServer(config,false);
   try {

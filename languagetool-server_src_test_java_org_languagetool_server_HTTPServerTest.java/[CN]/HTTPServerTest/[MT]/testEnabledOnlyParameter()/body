@@ -1,10 +1,10 @@
 {
-  final HTTPServer server=new HTTPServer(new HTTPServerConfig(),false);
+  final HTTPServer server=new HTTPServer(new HTTPServerConfig(HTTPTools.getDefaultPort()),false);
   try {
     server.run();
     try {
       System.out.println("=== Testing 'enabledOnly parameter' now, please ignore the following exception ===");
-      final URL url=new URL("http://localhost:" + DEFAULT_PORT + "/?text=foo&language=en-US&disabled=EN_A_VS_AN&enabledOnly=yes");
+      final URL url=new URL("http://localhost:" + HTTPTools.getDefaultPort() + "/?text=foo&language=en-US&disabled=EN_A_VS_AN&enabledOnly=yes");
       HTTPTools.checkAtUrl(url);
       fail();
     }

@@ -1,5 +1,4 @@
 {
   this.port=serverPort;
   this.verbose=verbose;
-  this.publicAccess=false;
 }

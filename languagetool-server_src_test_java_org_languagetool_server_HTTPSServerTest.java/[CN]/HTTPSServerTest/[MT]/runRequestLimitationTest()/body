@@ -1,6 +1,6 @@
 {
   HTTPTools.disableCertChecks();
-  final HTTPSServerConfig serverConfig=new HTTPSServerConfig(HTTPServerConfig.DEFAULT_PORT,false,getKeystoreFile(),KEYSTORE_PASSWORD,2,120);
+  final HTTPSServerConfig serverConfig=new HTTPSServerConfig(HTTPTools.getDefaultPort(),false,getKeystoreFile(),KEYSTORE_PASSWORD,2,120);
   final HTTPSServer server=new HTTPSServer(serverConfig,false,HTTPServerConfig.DEFAULT_HOST,null);
   try {
     server.run();
