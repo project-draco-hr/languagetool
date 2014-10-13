@@ -1,0 +1,4 @@
+{
+  rule=new MorfologikSpanishSpellerRule(TestTools.getMessages("en"),language);
+  langTool=new JLanguageTool(language);
+}
