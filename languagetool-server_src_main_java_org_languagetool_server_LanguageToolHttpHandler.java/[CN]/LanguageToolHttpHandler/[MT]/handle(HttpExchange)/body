@@ -42,8 +42,8 @@ synchronized (this) {
   }
  catch (  Exception e) {
     print("An error has occurred. Stacktrace follows:",System.err);
-    if (verbose) {
-      print("Exception was caused by this text: " + text,System.err);
+    if (verbose && text != null) {
+      print("Exception was caused by this text (" + text.length() + " chars, showing up to 500):\n"+ StringUtils.abbreviate(text,500),System.err);
     }
     e.printStackTrace();
     String response;
