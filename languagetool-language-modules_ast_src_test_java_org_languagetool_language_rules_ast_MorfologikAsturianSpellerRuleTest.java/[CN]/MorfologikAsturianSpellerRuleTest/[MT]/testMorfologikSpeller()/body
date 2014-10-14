@@ -1,0 +1,11 @@
+{
+  Asturian language=new Asturian();
+  MorfologikAsturianSpellerRule rule=new MorfologikAsturianSpellerRule(TestTools.getMessages("en"),language);
+  JLanguageTool langTool=new JLanguageTool(language);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("??Festeyate colos correutores gramaticales?")).length);
+  RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("??Af??yeste colos correutores gramaticales?"));
+  assertEquals(1,matches.length);
+  assertEquals(1,matches[0].getFromPos());
+  assertEquals(9,matches[0].getToPos());
+  assertEquals("Afayesti",matches[0].getSuggestedReplacements().get(0));
+}
