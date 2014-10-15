@@ -41,6 +41,12 @@
     if (!hasRequiredPosTag(posTagsToFind,tokenReadings)) {
       if (isTokenToSkip(tokenReadings))       continue;
       String prep=reqTokenReadings.getAnalyzedToken(0).getToken();
+      if (prep.equalsIgnoreCase("????")) {
+        if (tokenReadings.getAnalyzedToken(0).getToken().compareToIgnoreCase("??") == 0) {
+          reqTokenReadings=null;
+          continue;
+        }
+      }
       if (prep.equalsIgnoreCase("??") || prep.equalsIgnoreCase("??")) {
         if (hasRequiredPosTag(Arrays.asList("p:v_naz"),tokenReadings)) {
           reqTokenReadings=null;
@@ -52,7 +58,7 @@
           reqTokenReadings=null;
           continue;
         }
-        if (IPOSTag.isNum(tokens[i + 1].getAnalyzedToken(0).getPOSTag()) && token.equals("??????????") || token.equals("????????")) {
+        if (IPOSTag.isNum(tokens[i + 1].getAnalyzedToken(0).getPOSTag()) && (token.equals("??????????") || token.equals("????????") || token.equals("??????????????")|| token.equals("????????????????"))) {
           reqTokenReadings=null;
           continue;
         }
@@ -66,8 +72,18 @@
         if ((token.equals("????????") || token.equals("????????")) && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("??????????")) {
           continue;
         }
-        if (tokens.length > i + 2 && ((token.equals("????????????") || token.equals("??????????") || token.equals("??????????")|| token.equals("????????????")) && tokens[i + 1].getAnalyzedToken(0).getToken().equals("????"))) {
+        if (prep.equalsIgnoreCase("????") && token.equals("????????") && tokens[i + 1].getAnalyzedToken(0).getToken().equals("??????????")) {
+          reqTokenReadings=null;
           continue;
+        }
+        if (tokens[i + 1].getAnalyzedToken(0).getToken().equals("??") && tokens[i].getAnalyzedToken(0).getPOSTag().contains(":abbr")) {
+          reqTokenReadings=null;
+          continue;
+        }
+        if (tokens.length > i + 2) {
+          if ((token.equals("????????????") || token.equals("??????????") || token.equals("??????????")|| token.equals("????????????")) && tokens[i + 1].getAnalyzedToken(0).getToken().equals("????")) {
+            continue;
+          }
         }
       }
       RuleMatch potentialRuleMatch=createRuleMatch(tokenReadings,reqTokenReadings,posTagsToFind);
