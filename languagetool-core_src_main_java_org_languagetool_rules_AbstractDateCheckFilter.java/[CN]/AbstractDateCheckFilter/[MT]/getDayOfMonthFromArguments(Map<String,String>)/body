@@ -1,0 +1,12 @@
+{
+  String dayOfMonthString=getRequired("day",args);
+  int dayOfMonth;
+  Matcher matcherDayOfMonth=DAY_OF_MONTH_PATTERN.matcher(dayOfMonthString);
+  if (matcherDayOfMonth.matches()) {
+    dayOfMonth=Integer.parseInt(matcherDayOfMonth.group(1));
+  }
+ else {
+    dayOfMonth=getDayOfMonth(dayOfMonthString);
+  }
+  return dayOfMonth;
+}
