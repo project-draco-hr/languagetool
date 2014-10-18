@@ -5,6 +5,9 @@
  else   if ("alot".equals(word)) {
     return Arrays.asList("a lot");
   }
+ else   if ("thru".equals(word)) {
+    return Arrays.asList("through");
+  }
  else   if ("speach".equals(word)) {
     return Arrays.asList("speech");
   }
