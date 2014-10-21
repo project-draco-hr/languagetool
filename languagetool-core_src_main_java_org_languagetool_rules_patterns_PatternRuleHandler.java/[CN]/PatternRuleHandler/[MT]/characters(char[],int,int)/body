@@ -24,6 +24,9 @@
  else   if (inShortMessage) {
     shortMessage.append(s);
   }
+ else   if (inShortMessageForRuleGroup) {
+    shortMessageForRuleGroup.append(s);
+  }
  else   if (inUrl) {
     url.append(s);
   }

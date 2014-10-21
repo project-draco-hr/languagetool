@@ -132,6 +132,7 @@ inSuggestion=false;
 break;
 case "short":
 inShortMessage=false;
+inShortMessageForRuleGroup=false;
 break;
 case "url":
 inUrl=false;
@@ -151,6 +152,7 @@ inMatch=false;
 break;
 case RULEGROUP:
 urlForRuleGroup=new StringBuilder();
+shortMessageForRuleGroup=new StringBuilder();
 inRuleGroup=false;
 ruleGroupIssueType=null;
 if (rulegroupAntiPatterns != null) {

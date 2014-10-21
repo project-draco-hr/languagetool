@@ -1,6 +1,13 @@
 {
+  String shortMessage="";
+  if (this.shortMessage != null && this.shortMessage.length() > 0) {
+    shortMessage=this.shortMessage.toString();
+  }
+ else   if (shortMessageForRuleGroup != null && shortMessageForRuleGroup.length() > 0) {
+    shortMessage=this.shortMessageForRuleGroup.toString();
+  }
   if (numElement >= elemList.size()) {
-    final PatternRule rule=new PatternRule(id,language,tmpElements,name,message.toString(),shortMessage.toString(),suggestionsOutMsg.toString(),phraseElementList.size() > 1);
+    final PatternRule rule=new PatternRule(id,language,tmpElements,name,message.toString(),shortMessage,suggestionsOutMsg.toString(),phraseElementList.size() > 1);
     if (filterClassName != null && filterArgs != null) {
       RuleFilterCreator creator=new RuleFilterCreator();
       RuleFilter filter=creator.getFilter(filterClassName);
