@@ -5,7 +5,9 @@ synchronized (this) {
   String text=null;
   try {
     final URI requestedUri=httpExchange.getRequestURI();
-    final String remoteAddress=httpExchange.getRemoteAddress().getAddress().getHostAddress();
+    final String origAddress=httpExchange.getRemoteAddress().getAddress().getHostAddress();
+    final String realAddressOrNull=getRealRemoteAddressOrNull(httpExchange);
+    final String remoteAddress=realAddressOrNull != null ? realAddressOrNull : origAddress;
     final Map<String,String> parameters=getRequestQuery(httpExchange,requestedUri);
     if (requestLimiter != null && !requestLimiter.isAccessOkay(remoteAddress)) {
       final String errorMessage="Error: Access from " + StringTools.escapeXML(remoteAddress) + " denied - too many requests. Allowed maximum requests: "+ requestLimiter.getRequestLimit()+ " requests per "+ requestLimiter.getRequestLimitPeriodInSeconds()+ " seconds";
@@ -13,7 +15,7 @@ synchronized (this) {
       print(errorMessage);
       return;
     }
-    if (allowedIps == null || allowedIps.contains(remoteAddress)) {
+    if (allowedIps == null || allowedIps.contains(origAddress)) {
       if (requestedUri.getRawPath().endsWith("/Languages")) {
         printListOfLanguages(httpExchange);
       }
@@ -35,7 +37,7 @@ synchronized (this) {
       }
     }
  else {
-      final String errorMessage="Error: Access from " + StringTools.escapeXML(remoteAddress) + " denied";
+      final String errorMessage="Error: Access from " + StringTools.escapeXML(origAddress) + " denied";
       sendError(httpExchange,HttpURLConnection.HTTP_FORBIDDEN,errorMessage);
       throw new RuntimeException(errorMessage);
     }

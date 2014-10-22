@@ -1,0 +1,10 @@
+{
+  String lastIp=null;
+  for (  String ip : forwardedIps) {
+    if (ownIps.contains(ip)) {
+      continue;
+    }
+    lastIp=ip;
+  }
+  return lastIp;
+}

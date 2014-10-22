@@ -1,0 +1,18 @@
+{
+  Set<String> ownIps=new HashSet<>();
+  try {
+    Enumeration e=NetworkInterface.getNetworkInterfaces();
+    while (e.hasMoreElements()) {
+      NetworkInterface netInterface=(NetworkInterface)e.nextElement();
+      Enumeration addresses=netInterface.getInetAddresses();
+      while (addresses.hasMoreElements()) {
+        InetAddress address=(InetAddress)addresses.nextElement();
+        ownIps.add(address.getHostAddress());
+      }
+    }
+  }
+ catch (  SocketException e1) {
+    throw new RuntimeException("Could not get the servers own IP addresses",e1);
+  }
+  return ownIps;
+}
