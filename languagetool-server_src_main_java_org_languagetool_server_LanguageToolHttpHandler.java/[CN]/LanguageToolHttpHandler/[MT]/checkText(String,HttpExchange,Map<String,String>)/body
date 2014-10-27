@@ -1,7 +1,7 @@
 {
   final long timeStart=System.currentTimeMillis();
   if (text.length() > maxTextLength) {
-    throw new IllegalArgumentException("Text is " + text.length() + " characters long, exceeding maximum length of "+ maxTextLength);
+    throw new TextTooLongException("Your text is " + text.length() + " characters long, which longer "+ "than this server's limit of "+ maxTextLength+ " characters. Please consider submitting a shorter text.");
   }
   final boolean autoDetectLanguage=getLanguageAutoDetect(parameters);
   final Language lang=getLanguage(text,parameters.get("language"),autoDetectLanguage);
