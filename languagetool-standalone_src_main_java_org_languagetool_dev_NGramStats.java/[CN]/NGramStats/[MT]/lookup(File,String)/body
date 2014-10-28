@@ -1,5 +1,5 @@
 {
-  try (LuceneLanguageModel lm=new LuceneLanguageModel(dir)){
+  try (HomophoneOccurrenceDumper lm=new HomophoneOccurrenceDumper(dir)){
     String[] tokens=phrase.split(" ");
     if (tokens.length == 1) {
       String[] parts=phrase.split("\\|");

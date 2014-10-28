@@ -1,0 +1,8 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: " + HomophoneOccurrenceDumper.class.getSimpleName() + " <indexDir>");
+    System.exit(1);
+  }
+  HomophoneOccurrenceDumper dumper=new HomophoneOccurrenceDumper(new File(args[0]));
+  dumper.run("/en/homophones.txt");
+}

@@ -1,9 +1,6 @@
 {
   Objects.requireNonNull(tokens);
-  LuceneSearcher luceneSearcher=getLuceneSearcher(3);
-  Fields fields=MultiFields.getFields(luceneSearcher.reader);
-  Terms terms=fields.terms("ngram");
-  TermsEnum iterator=terms.iterator(null);
+  TermsEnum iterator=getIterator();
   Map<String,Long> result=new HashMap<>();
   BytesRef byteRef;
   int i=0;

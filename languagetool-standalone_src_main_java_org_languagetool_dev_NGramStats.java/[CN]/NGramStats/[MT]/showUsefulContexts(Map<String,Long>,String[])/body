@@ -1,5 +1,7 @@
 {
   List<PairRatio> ratios=getContexts(contexts,similarWords);
   Collections.sort(ratios);
-  printTopContexts(ratios);
+  for (  String word : similarWords) {
+    printTopContexts(word,ratios);
+  }
 }
