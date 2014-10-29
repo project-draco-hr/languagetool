@@ -1,0 +1,11 @@
+{
+  if (args.length < 1 || args.length > 2) {
+    System.out.println("Usage: " + RuleCreator.class.getSimpleName() + " <homophoneResultFile> [minErrorProbability]");
+    System.out.println("    homophoneResultFile   the output of org.languagetool.dev.HomophoneOccurrenceDumper");
+    System.out.println("    minErrorProbability   the minimal error probability (0.0-1.0), other rules will be ignored");
+    System.exit(1);
+  }
+  float minErrorProb=args.length >= 2 ? Float.parseFloat(args[1]) : 0.0f;
+  RuleCreator creator=new RuleCreator(minErrorProb);
+  creator.run(new File(args[0]),"/en/homophones-subset.txt");
+}

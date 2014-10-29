@@ -1,0 +1,4 @@
+{
+  this.ngram=ngram;
+  this.occurrence=occurrence;
+}

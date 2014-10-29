@@ -1,0 +1,28 @@
+{
+  String term=parts[1];
+  String termPhrase=parts[0] + " " + parts[1]+ " "+ parts[2];
+  String variantPhrase=parts[0] + " " + variant+ " "+ parts[2];
+  List<String> tokens=wordTokenizer.tokenize(variantPhrase);
+  if (tokens.size() != 3 + 2) {
+    System.err.println("Skipping '" + variantPhrase + "', does not tokenize to 3 tokens: "+ tokens);
+    tokenFilteredRules++;
+    return;
+  }
+  Long variantOccObj=ngramToOccurrence.get(variantPhrase);
+  long variantOcc=variantOccObj != null ? variantOccObj : 0;
+  long totalOcc=occurrenceInfo.occurrence + variantOcc;
+  float variantProb=(float)variantOcc / totalOcc;
+  float variantErrorProb=1.0f - variantProb;
+  if (variantErrorProb < minErrorProb) {
+    System.err.println("Skipping '" + variantPhrase + "', error probability too low: "+ variantErrorProb+ " < "+ minErrorProb);
+    probFilteredRules++;
+    return;
+  }
+  if (XML_MODE) {
+    System.out.printf(Locale.ENGLISH,"  <rule case_sensitive='yes'>\n" + "    <!-- auto-generated, error probability: %.3f, correct phrase occurrences: %d -->\n" + "    <pattern>\n"+ "      <token>%s</token>\n"+ "      <marker><token>%s</token></marker>\n"+ "      <token>%s</token>\n"+ "    </pattern>\n"+ "    <message>Did you mean <suggestion>%s</suggestion>?</message>\n"+ "    <example type='incorrect'>%s</example>\n"+ "    <example type='correct'>%s</example>\n"+ "  </rule>\n\n",variantErrorProb,occurrenceInfo.occurrence,StringTools.escapeXML(parts[0]),StringTools.escapeXML(variant),StringTools.escapeXML(parts[2]),StringTools.escapeXML(term),StringTools.escapeXML(variantPhrase),StringTools.escapeXML(termPhrase));
+    ruleCount++;
+  }
+ else {
+    System.out.printf(Locale.ENGLISH,"%.3f\t%s\t%s\n",variantErrorProb,variantPhrase,parts[0]);
+  }
+}
