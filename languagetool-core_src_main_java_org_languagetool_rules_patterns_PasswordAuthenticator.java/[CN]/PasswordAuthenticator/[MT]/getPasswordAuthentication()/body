@@ -1,4 +1,7 @@
 {
+  if (getRequestingURL() == null) {
+    return null;
+  }
   String userInfo=getRequestingURL().getUserInfo();
   if (StringTools.isEmpty(userInfo)) {
     return null;
