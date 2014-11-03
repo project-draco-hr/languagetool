@@ -20,9 +20,9 @@
   }
   if (XML_MODE) {
     System.out.printf(Locale.ENGLISH,"  <rule case_sensitive='yes'>\n" + "    <!-- auto-generated, error probability: %.3f, correct phrase occurrences: %d -->\n" + "    <pattern>\n"+ "      <token>%s</token>\n"+ "      <marker><token>%s</token></marker>\n"+ "      <token>%s</token>\n"+ "    </pattern>\n"+ "    <message>Did you mean <suggestion>%s</suggestion>?</message>\n"+ "    <example type='incorrect'>%s</example>\n"+ "    <example type='correct'>%s</example>\n"+ "  </rule>\n\n",variantErrorProb,occurrenceInfo.occurrence,StringTools.escapeXML(parts[0]),StringTools.escapeXML(variant),StringTools.escapeXML(parts[2]),StringTools.escapeXML(term),StringTools.escapeXML(variantPhrase),StringTools.escapeXML(termPhrase));
-    ruleCount++;
   }
  else {
-    System.out.printf(Locale.ENGLISH,"%.3f\t%s\t%s\n",variantErrorProb,variantPhrase,parts[0]);
+    System.out.printf(Locale.ENGLISH,"%.2f\t%s\t%s\n",variantErrorProb,variantPhrase,term);
   }
+  ruleCount++;
 }
