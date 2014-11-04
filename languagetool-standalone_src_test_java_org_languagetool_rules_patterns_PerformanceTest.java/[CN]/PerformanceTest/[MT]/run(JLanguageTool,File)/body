@@ -2,7 +2,7 @@
   String text=StringTools.readStream(new FileInputStream(textFile),"utf-8");
   int sentenceCount=langTool.sentenceTokenize(text).size();
   langTool.activateDefaultPatternRules();
-  System.out.println("Text length: " + text.length() + " chars, "+ sentenceCount+ " sentences");
+  System.out.println("Language: " + langTool.getLanguage() + ", Text length: "+ text.length()+ " chars, "+ sentenceCount+ " sentences");
   System.out.println("Warmup...");
   long startTime1=System.currentTimeMillis();
   langTool.check(text);
