@@ -21,6 +21,9 @@
  else {
       ruleFile=Tools.openFileDialog(owner,new XMLFileFilter());
     }
+    if (ruleFile == null) {
+      return;
+    }
     if (config != null) {
       config.setExternalRuleDirectory(ruleFile.getParent());
       try {
