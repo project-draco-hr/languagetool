@@ -1,5 +1,5 @@
 {
-  final Contributor contributor=new Contributor("Zdenko Podobn??");
+  Contributor contributor=new Contributor("Zdenko Podobn??");
   contributor.setUrl("http://sk-spell.sk.cx");
   return new Contributor[]{contributor};
 }

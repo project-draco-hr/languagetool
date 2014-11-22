@@ -1,4 +1,3 @@
 {
-  final Contributor contributorFulup=new Contributor("Fulup Jakez");
-  return new Contributor[]{Contributors.DOMINIQUE_PELLE,contributorFulup};
+  return new Contributor[]{Contributors.DOMINIQUE_PELLE,new Contributor("Fulup Jakez")};
 }

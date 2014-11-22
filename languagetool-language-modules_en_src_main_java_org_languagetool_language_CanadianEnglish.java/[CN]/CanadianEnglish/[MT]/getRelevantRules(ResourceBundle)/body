@@ -1,5 +1,5 @@
 {
-  final List<Rule> rules=new ArrayList<>();
+  List<Rule> rules=new ArrayList<>();
   rules.addAll(super.getRelevantRules(messages));
   rules.add(new MorfologikCanadianSpellerRule(messages,this));
   return rules;

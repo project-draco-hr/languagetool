@@ -1,4 +1,4 @@
 {
-  final Contributor contributor=new Contributor("Paolo Bianchini");
+  Contributor contributor=new Contributor("Paolo Bianchini");
   return new Contributor[]{contributor};
 }

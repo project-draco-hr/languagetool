@@ -1,5 +1,5 @@
 {
-  final Contributor hVoisard=new Contributor("Hugo Voisard");
+  Contributor hVoisard=new Contributor("Hugo Voisard");
   hVoisard.setRemark("2006-2007");
   return new Contributor[]{Contributors.DOMINIQUE_PELLE,new Contributor("Agnes Souque"),hVoisard};
 }

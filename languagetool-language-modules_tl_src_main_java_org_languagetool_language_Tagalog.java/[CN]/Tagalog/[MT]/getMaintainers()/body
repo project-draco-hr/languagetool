@@ -1,7 +1,7 @@
 {
-  final Contributor contributor1=new Contributor("Nathaniel Oco");
+  Contributor contributor1=new Contributor("Nathaniel Oco");
   contributor1.setUrl("http://www.dlsu.edu.ph/research/centers/adric/nlp/");
-  final Contributor contributor2=new Contributor("Allan Borra");
+  Contributor contributor2=new Contributor("Allan Borra");
   contributor2.setUrl("http://www.dlsu.edu.ph/research/centers/adric/nlp/faculty/borra.asp");
   return new Contributor[]{contributor1,contributor2};
 }
