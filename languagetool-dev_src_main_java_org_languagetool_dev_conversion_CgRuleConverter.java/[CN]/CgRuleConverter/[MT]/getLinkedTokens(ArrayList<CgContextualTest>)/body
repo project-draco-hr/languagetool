@@ -14,9 +14,9 @@
   }
   Token[] ts=tokens.toArray(new Token[tokens.size()]);
   Arrays.sort(ts);
-  for (int i=0; i < ts.length; i++) {
-    if (ts[i].scanahead) {
-      ts[i].scanahead=false;
+  for (  Token t : ts) {
+    if (t.scanahead) {
+      t.scanahead=false;
       ts[0].scanahead=true;
       break;
     }

@@ -43,8 +43,8 @@
           }
  else {
             CgCompositeTag ct=result.allocateCompositeTag();
-            for (int i=0; i < tags.size(); i++) {
-              ct.addTag(tags.get(i));
+            for (            CgTag tag : tags) {
+              ct.addTag(tag);
             }
             set_c.addCompositeTag(ct);
           }
@@ -97,13 +97,13 @@
           CgSet set_c=result.allocateSet();
           set_c.line=result.lines;
           set_c.setName(sets_counter++);
-          for (int i=0; i < r.size(); i++) {
-            if (r.get(i).which == CgCompositeTag.ANYTAG_TYPE.ANYTAG_TAG.value) {
-              CgTag t=r.get(i).getTag();
+          for (          CgCompositeTag.AnyTag aR : r) {
+            if (aR.which == CgCompositeTag.ANYTAG_TYPE.ANYTAG_TAG.value) {
+              CgTag t=aR.getTag();
               set_c.addTag(t);
             }
  else {
-              CgCompositeTag t=r.get(i).getCompositeTag();
+              CgCompositeTag t=aR.getCompositeTag();
               set_c.addCompositeTag(t);
             }
           }

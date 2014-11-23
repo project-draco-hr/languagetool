@@ -81,8 +81,8 @@
       }
     }
   }
-  for (int i=0; i < outerList.size(); i++) {
-    Token[] tokens=outerList.get(i).toArray(new Token[outerList.get(i).size()]);
+  for (  ArrayList<Token> anOuterList : outerList) {
+    Token[] tokens=anOuterList.toArray(new Token[anOuterList.size()]);
     Arrays.sort(tokens);
     tokens=addGapTokens(tokens);
     if (skipSafe(tokens)) {

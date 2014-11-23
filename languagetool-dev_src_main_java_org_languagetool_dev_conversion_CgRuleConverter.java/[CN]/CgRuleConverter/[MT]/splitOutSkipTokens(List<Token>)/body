@@ -8,8 +8,7 @@
  else     if (token.scanbehind)     reverseScanningTokens.add(token);
  else     normalTokens.add(token);
   }
-  for (int s=0; s < scanningTokens.size(); s++) {
-    final Token scanning=scanningTokens.get(s);
+  for (  final Token scanning : scanningTokens) {
     for (int n=0; n < normalTokens.size(); n++) {
       final Token normal=normalTokens.get(n);
       if (normal.offset >= scanning.offset) {
@@ -30,8 +29,7 @@
       }
     }
   }
-  for (int s=0; s < reverseScanningTokens.size(); s++) {
-    final Token scanning=reverseScanningTokens.get(s);
+  for (  final Token scanning : reverseScanningTokens) {
     for (int n=0; n < normalTokens.size(); n++) {
       final Token normal=normalTokens.get(n);
       if (normal.offset <= scanning.offset) {

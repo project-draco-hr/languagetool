@@ -12,8 +12,7 @@
   }
   int mark=getPositionOfTarget(tokens);
   ltRule.add(firstIndent + "<pattern mark=\"" + mark+ "\">");
-  for (Iterator<Integer> iter=tokenmap.keySet().iterator(); iter.hasNext(); ) {
-    int key=iter.next();
+  for (  Integer key : tokenmap.keySet()) {
     ArrayList<Token> value=tokenmap.get(key);
     value=removeExtraEmptyTokens(value);
     if (value.size() == 1) {
