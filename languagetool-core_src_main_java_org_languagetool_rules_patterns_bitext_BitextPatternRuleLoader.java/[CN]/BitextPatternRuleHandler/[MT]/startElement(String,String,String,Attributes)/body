@@ -1,20 +1,22 @@
 {
-  if (qName.equals("rules")) {
+switch (qName) {
+case "rules":
     final String languageStr=attrs.getValue("targetLang");
-    language=Language.getLanguageForShortName(languageStr);
-  }
- else   if (qName.equals("rule")) {
-    super.startElement(namespaceURI,lName,qName,attrs);
-    correctExamples=new ArrayList<>();
-    incorrectExamples=new ArrayList<>();
-  }
- else   if (qName.equals("target")) {
-    startPattern(attrs);
-  }
- else   if (qName.equals("source")) {
-    srcLang=Language.getLanguageForShortName(attrs.getValue("lang"));
-  }
- else {
-    super.startElement(namespaceURI,lName,qName,attrs);
-  }
+  language=Language.getLanguageForShortName(languageStr);
+break;
+case "rule":
+super.startElement(namespaceURI,lName,qName,attrs);
+correctExamples=new ArrayList<>();
+incorrectExamples=new ArrayList<>();
+break;
+case "target":
+startPattern(attrs);
+break;
+case "source":
+srcLang=Language.getLanguageForShortName(attrs.getValue("lang"));
+break;
+default :
+super.startElement(namespaceURI,lName,qName,attrs);
+break;
+}
 }
