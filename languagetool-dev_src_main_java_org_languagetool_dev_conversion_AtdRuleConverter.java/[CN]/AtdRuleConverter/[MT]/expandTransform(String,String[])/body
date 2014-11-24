@@ -7,7 +7,8 @@
   String transform=se[1];
   String retString=null;
   String refWord=pattern[numMatched];
-  if (transform.equals("nosuffix")) {
+switch (transform) {
+case "nosuffix":
     if (refWord.endsWith("able") || refWord.endsWith("ible")) {
       String strip=refWord.substring(0,refWord.length() - 4);
       if (inDictionary(strip.concat("ated"))) {
@@ -29,38 +30,40 @@
  else {
       retString=refWord;
     }
-  }
- else   if (transform.equals("upper")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" case_conversion=\"startupper\" />";
-  }
- else   if (transform.equals("lower")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" case_conversion=\"alllower\" />";
-  }
- else   if (transform.equals("singular")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNP|NN(:U.?)?\" postag_regexp=\"yes\" />";
-  }
- else   if (transform.equals("plural")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNPS|NNS\" postag_regexp=\"yes\" />";
-  }
- else   if (transform.equals("participle")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBN\" />";
-  }
- else   if (transform.equals("base")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VB\" />";
-  }
- else   if (transform.equals("past")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBD\" />";
-  }
- else   if (transform.equals("present")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBG\" />";
-  }
- else   if (transform.equals("determiner") || transform.equals("determiner2")) {
-    retString="the";
-  }
- else   if (transform.equals("positive")) {
-  }
- else   if (transform.equals("possessive")) {
-    retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NN(:U.?)?\" postag_regexp=\"yes\" />'s";
-  }
-  return retString;
+  break;
+case "upper":
+retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" case_conversion=\"startupper\" />";
+break;
+case "lower":
+retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" case_conversion=\"alllower\" />";
+break;
+case "singular":
+retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNP|NN(:U.?)?\" postag_regexp=\"yes\" />";
+break;
+case "plural":
+retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NNPS|NNS\" postag_regexp=\"yes\" />";
+break;
+case "participle":
+retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBN\" />";
+break;
+case "base":
+retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VB\" />";
+break;
+case "past":
+retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBD\" />";
+break;
+case "present":
+retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"VBG\" />";
+break;
+case "determiner":
+case "determiner2":
+retString="the";
+break;
+case "positive":
+break;
+case "possessive":
+retString="<match no=\"" + Integer.toString(numMatched + 1) + "\" postag=\"NN(:U.?)?\" postag_regexp=\"yes\" />'s";
+break;
+}
+return retString;
 }

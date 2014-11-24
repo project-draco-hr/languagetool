@@ -4,22 +4,24 @@
     String[] suggestionParts=ss.split("\\ +");
     for (    String sp : suggestionParts) {
       String transform=getTransformString(sp);
-      if (transform.equals(":positive")) {
+switch (transform) {
+case ":positive":
         if (!curWarn.contains(WARNINGS.POSITIVE.value)) {
           curWarn.add(WARNINGS.POSITIVE.value);
         }
-      }
- else       if (transform.equals(":determiner")) {
-        if (!curWarn.contains(WARNINGS.DETERMINER.value)) {
-          curWarn.add(WARNINGS.DETERMINER.value);
-        }
-      }
- else       if (transform.equals(":nosuffix")) {
-        if (!curWarn.contains(WARNINGS.NO_SUFFIX.value)) {
-          curWarn.add(WARNINGS.NO_SUFFIX.value);
-        }
-      }
+      break;
+case ":determiner":
+    if (!curWarn.contains(WARNINGS.DETERMINER.value)) {
+      curWarn.add(WARNINGS.DETERMINER.value);
     }
-  }
-  return curWarn;
+  break;
+case ":nosuffix":
+if (!curWarn.contains(WARNINGS.NO_SUFFIX.value)) {
+  curWarn.add(WARNINGS.NO_SUFFIX.value);
+}
+break;
+}
+}
+}
+return curWarn;
 }

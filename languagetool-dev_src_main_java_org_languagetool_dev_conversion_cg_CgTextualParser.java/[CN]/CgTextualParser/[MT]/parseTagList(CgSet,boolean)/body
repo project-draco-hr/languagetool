@@ -42,8 +42,8 @@
         }
  else {
           CgCompositeTag ct=result.allocateCompositeTag();
-          for (int i=0; i < tags.size(); i++) {
-            ct.addTag(tags.get(i));
+          for (          CgTag tag : tags) {
+            ct.addTag(tag);
           }
           s.addCompositeTag(ct);
         }
