@@ -14,7 +14,7 @@
   }
   StringBuilder sb=new StringBuilder();
   for (  String example : examples) {
-    sb.append(example + " ");
+    sb.append(example).append(" ");
   }
   String s=sb.toString().replaceAll("\\ \\.\\ ","").trim();
   return s;

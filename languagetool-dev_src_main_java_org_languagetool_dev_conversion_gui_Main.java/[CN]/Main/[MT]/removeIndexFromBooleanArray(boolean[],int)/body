@@ -1,10 +1,6 @@
 {
   boolean[] n=new boolean[array.length - 1];
-  for (int i=0; i < index; i++) {
-    n[i]=array[i];
-  }
-  for (int i=index + 1; i < array.length; i++) {
-    n[i - 1]=array[i];
-  }
+  System.arraycopy(array,0,n,0,index);
+  System.arraycopy(array,index + 1,n,index + 1 - 1,array.length - (index + 1));
   return n;
 }

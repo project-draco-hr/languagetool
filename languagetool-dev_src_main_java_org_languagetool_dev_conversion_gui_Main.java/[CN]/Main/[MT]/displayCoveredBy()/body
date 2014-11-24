@@ -8,7 +8,7 @@
       String[] cov=coveredByList.get(index);
       StringBuilder sb=new StringBuilder();
       for (      String s : cov) {
-        sb.append(s + ", ");
+        sb.append(s).append(", ");
       }
       coveredByPane.setText(sb.toString().trim());
     }

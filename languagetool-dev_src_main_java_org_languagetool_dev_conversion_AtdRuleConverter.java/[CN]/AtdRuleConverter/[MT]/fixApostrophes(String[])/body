@@ -6,9 +6,7 @@
     }
  else     if (s.contains("'")) {
       String[] temp=s.replaceAll("'"," ' ").split("\\ +");
-      for (      String sTemp : temp) {
-        retList.add(sTemp);
-      }
+      Collections.addAll(retList,temp);
     }
  else {
       retList.add(s);

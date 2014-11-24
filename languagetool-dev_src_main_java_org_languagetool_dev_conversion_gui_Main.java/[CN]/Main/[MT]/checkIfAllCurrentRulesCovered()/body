@@ -12,9 +12,7 @@
       ArrayList<String[]> allCoveringRules=checker.isCoveredBy(patternRules);
       ArrayList<String> coveringRules=new ArrayList<String>();
       for (      String[] s : allCoveringRules) {
-        for (        String ss : s) {
-          coveringRules.add(ss);
-        }
+        Collections.addAll(coveringRules,s);
       }
       coveredByList.set(i,coveringRules.toArray(new String[coveringRules.size()]));
       displayCoveredBy();

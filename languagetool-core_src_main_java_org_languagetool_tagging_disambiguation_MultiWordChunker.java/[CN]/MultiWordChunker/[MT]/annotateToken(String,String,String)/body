@@ -1,9 +1,3 @@
 {
-  final StringBuilder sb=new StringBuilder(40);
-  sb.append(prevAnot);
-  sb.append("\nMULTIWORD_CHUNKER: ");
-  sb.append(oldReading);
-  sb.append(" -> ");
-  sb.append(newReading);
-  return sb.toString();
+  return prevAnot + "\nMULTIWORD_CHUNKER: " + oldReading+ " -> "+ newReading;
 }

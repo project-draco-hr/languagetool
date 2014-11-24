@@ -8,14 +8,14 @@
     System.err.println("Error: something went wrong here.");
   }
   if (lemmas.length > 0) {
-    sb.append("<disambig action=\"filter\"><match no=\"" + targetNo + "\">"+ glueWords(lemmas)+ "</match></disambig>");
+    sb.append("<disambig action=\"filter\"><match no=\"").append(targetNo).append("\">").append(glueWords(lemmas)).append("</match></disambig>");
   }
   if (postags.length > 0) {
     String postagRegexp="";
     if (isRegex(glueWords(postags))) {
       postagRegexp=" postag_regexp=\"yes\"";
     }
-    sb.append("<disambig postag=\"" + glueWords(postags) + "\""+ postagRegexp+ "/>");
+    sb.append("<disambig postag=\"").append(glueWords(postags)).append("\"").append(postagRegexp).append("/>");
   }
   return sb.toString();
 }

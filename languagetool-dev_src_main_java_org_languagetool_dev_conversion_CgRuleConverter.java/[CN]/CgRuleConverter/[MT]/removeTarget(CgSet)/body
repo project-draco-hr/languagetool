@@ -9,10 +9,10 @@
     System.err.println("Error: something went wrong here.");
   }
   if (lemmas.length > 0) {
-    sb.append("lemma=" + glueWords(lemmas));
+    sb.append("lemma=").append(glueWords(lemmas));
   }
   if (postags.length > 0) {
-    sb.append("pos=\"" + glueWords(postags) + "\"");
+    sb.append("pos=\"").append(glueWords(postags)).append("\"");
   }
   sb.append("/>");
   return sb.toString();
