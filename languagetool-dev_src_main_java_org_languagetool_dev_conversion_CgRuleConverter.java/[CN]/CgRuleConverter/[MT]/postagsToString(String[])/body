@@ -4,7 +4,7 @@
   }
   StringBuilder sb=new StringBuilder();
   for (  String pos : postags) {
-    sb.append(pos + "|");
+    sb.append(pos).append("|");
   }
   String ret=sb.toString();
   return ret.substring(0,ret.length() - 1);
