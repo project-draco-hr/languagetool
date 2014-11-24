@@ -1,0 +1,6 @@
+{
+  if ("unzwar".equals(word)) {
+    return Collections.singletonList("und zwar");
+  }
+  return Collections.emptyList();
+}
