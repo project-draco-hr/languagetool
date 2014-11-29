@@ -1,0 +1,12 @@
+{
+  final Element elementB=makeElement("b");
+  elementB.setMinOccurrence(0);
+  List<Element> elements=Arrays.asList(makeElement("a"),elementB,makeElement("c"));
+  PatternRule rule=new PatternRule("",new Demo(),elements,"my description","<suggestion>\\1 \\2 \\3</suggestion>","short message");
+  PatternRuleMatcher matcher=new PatternRuleMatcher(rule,false);
+  rule.addSuggestionMatch(new Match(null,null,false,null,null,CaseConversion.NONE,false,false,IncludeRange.NONE));
+  RuleMatch[] matches=getMatches("a b c",matcher);
+  assertEquals(Arrays.asList("a b c"),matches[0].getSuggestedReplacements());
+  RuleMatch[] matches2=getMatches("a c",matcher);
+  assertEquals(Arrays.asList("a c"),matches2[0].getSuggestedReplacements());
+}
