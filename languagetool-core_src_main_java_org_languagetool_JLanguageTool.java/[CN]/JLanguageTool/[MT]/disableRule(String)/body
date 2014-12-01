@@ -1,4 +1,3 @@
 {
   disabledRules.add(ruleId);
-  reInitSpellCheckIgnoreWords();
 }

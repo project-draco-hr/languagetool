@@ -1,4 +1,3 @@
 {
   disabledCategories.add(categoryName);
-  reInitSpellCheckIgnoreWords();
 }
