@@ -1,7 +1,5 @@
 {
   for (  Highlighter.Highlight hl : textComponent.getHighlighter().getHighlights()) {
-    if (hl.getPainter() == redPainter || hl.getPainter() == bluePainter) {
-      textComponent.getHighlighter().removeHighlight(hl);
-    }
+    textComponent.getHighlighter().removeHighlight(hl);
   }
 }

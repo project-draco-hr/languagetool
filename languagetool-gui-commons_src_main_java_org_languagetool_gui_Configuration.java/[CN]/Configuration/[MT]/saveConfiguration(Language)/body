@@ -29,6 +29,13 @@
   if (externalRuleDirectory != null) {
     props.setProperty(EXTERNAL_RULE_DIRECTORY,externalRuleDirectory);
   }
+  StringBuilder sb=new StringBuilder();
+  for (  Map.Entry<ITSIssueType,Color> entry : errorColors.entrySet()) {
+    String rgb=Integer.toHexString(entry.getValue().getRGB());
+    rgb=rgb.substring(2,rgb.length());
+    sb.append(entry.getKey()).append(":").append("#").append(rgb).append(", ");
+  }
+  props.setProperty(ERROR_COLORS_CONFIG_KEY,sb.toString());
   for (  final String key : configForOtherLangs.keySet()) {
     props.setProperty(key,configForOtherLangs.get(key));
   }

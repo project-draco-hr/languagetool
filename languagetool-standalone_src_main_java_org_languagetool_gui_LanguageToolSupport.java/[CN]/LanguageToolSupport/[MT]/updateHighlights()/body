@@ -1,33 +1,18 @@
 {
   removeHighlights();
   Highlighter h=textComponent.getHighlighter();
-  List<Span> spellErrors=new ArrayList<>();
-  List<Span> grammarErrors=new ArrayList<>();
   for (  Span span : documentSpans) {
     if (span.start == span.end) {
       continue;
     }
-    if (ITSIssueType.Misspelling.equals(span.rule.getLocQualityIssueType())) {
-      spellErrors.add(span);
-    }
- else {
-      grammarErrors.add(span);
-    }
-  }
-  for (  Span span : grammarErrors) {
     try {
       if (span.start < span.end) {
-        h.addHighlight(span.start,span.end,bluePainter);
-      }
-    }
- catch (    BadLocationException ex) {
-      ex.printStackTrace();
-    }
-  }
-  for (  Span span : spellErrors) {
-    try {
-      if (span.start < span.end) {
-        h.addHighlight(span.start,span.end,redPainter);
+        ITSIssueType issueType=span.rule.getLocQualityIssueType();
+        Color colorForIssueType=getConfig().getErrorColors().get(issueType);
+        Color bgColor=colorForIssueType != null ? colorForIssueType : null;
+        Color underlineColor=ITSIssueType.Misspelling.equals(span.rule.getLocQualityIssueType()) ? Color.red : Color.blue;
+        HighlightPainter painter=new HighlightPainter(bgColor,underlineColor);
+        h.addHighlight(span.start,span.end,painter);
       }
     }
  catch (    BadLocationException ex) {

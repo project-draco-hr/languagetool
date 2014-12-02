@@ -1,0 +1,14 @@
+{
+  if (StringUtils.isNotEmpty(colorsString)) {
+    String[] typeToColorList=colorsString.split(",\\s*");
+    for (    String typeToColor : typeToColorList) {
+      String[] typeAndColor=typeToColor.split(":");
+      if (typeAndColor.length != 2) {
+        throw new RuntimeException("Could not parse type and color, colon expected: '" + typeToColor + "'");
+      }
+      ITSIssueType type=ITSIssueType.getIssueType(typeAndColor[0]);
+      String hexColor=typeAndColor[1];
+      errorColors.put(type,Color.decode(hexColor));
+    }
+  }
+}

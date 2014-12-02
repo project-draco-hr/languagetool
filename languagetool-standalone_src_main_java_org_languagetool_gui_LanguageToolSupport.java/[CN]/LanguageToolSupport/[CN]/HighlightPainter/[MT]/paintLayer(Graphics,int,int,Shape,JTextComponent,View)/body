@@ -1,4 +1,7 @@
 {
+  if (backgroundColor != null) {
+    super.paintLayer(g,offs0,offs1,bounds,c,view);
+  }
   Rectangle rect;
   if (offs0 == view.getStartOffset() && offs1 == view.getEndOffset()) {
     if (bounds instanceof Rectangle) {
@@ -18,7 +21,7 @@
     }
   }
   if (rect != null) {
-    Color color=getColor();
+    Color color=underlineColor;
     if (color == null) {
       g.setColor(c.getSelectionColor());
     }

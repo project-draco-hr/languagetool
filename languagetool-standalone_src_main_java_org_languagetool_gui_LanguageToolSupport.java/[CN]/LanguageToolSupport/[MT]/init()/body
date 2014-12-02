@@ -11,8 +11,6 @@
     defaultLanguage=Language.getLanguageForLocale(Locale.getDefault());
   }
   reloadLanguageTool(defaultLanguage);
-  redPainter=new HighlightPainter(Color.red);
-  bluePainter=new HighlightPainter(Color.blue);
   checkExecutor=new ScheduledThreadPoolExecutor(1,new ThreadFactory(){
     @Override public Thread newThread(    Runnable r){
       Thread t=new Thread(r);

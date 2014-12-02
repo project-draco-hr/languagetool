@@ -41,6 +41,8 @@
     if (extRules != null) {
       externalRuleDirectory=extRules;
     }
+    String colorsString=(String)props.get(ERROR_COLORS_CONFIG_KEY);
+    parseErrorColors(colorsString);
     loadConfigForOtherLanguages(lang,props);
   }
  catch (  final FileNotFoundException e) {
