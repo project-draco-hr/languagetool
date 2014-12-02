@@ -1,0 +1,2 @@
+List<AnalyzedTokenReadings> tags
+String requiredTagRegexp

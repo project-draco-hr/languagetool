@@ -1,0 +1,10 @@
+{
+  if ("accurate".equals(token)) {
+    AnalyzedToken resultToken=new AnalyzedToken(token,"JJ","fake");
+    List<AnalyzedToken> resultTokens=Collections.singletonList(resultToken);
+    List<AnalyzedTokenReadings> result=new ArrayList<>();
+    result.add(new AnalyzedTokenReadings(resultTokens,0));
+    return result;
+  }
+  return null;
+}

@@ -1,0 +1,11 @@
+{
+  for (  AnalyzedTokenReadings tag : tags) {
+    for (    AnalyzedToken analyzedToken : tag.getReadings()) {
+      boolean tagFound=analyzedToken.getPOSTag() != null && analyzedToken.getPOSTag().matches(requiredTagRegexp);
+      if (tagFound) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

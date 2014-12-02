@@ -1,0 +1,8 @@
+{
+  try {
+    return tagger.tag(Collections.singletonList(token));
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Could not tag '" + token + "'",e);
+  }
+}
