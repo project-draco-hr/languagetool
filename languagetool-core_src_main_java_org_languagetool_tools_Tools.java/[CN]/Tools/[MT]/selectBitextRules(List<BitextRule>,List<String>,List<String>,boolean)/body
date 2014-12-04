@@ -1,0 +1,27 @@
+{
+  List<BitextRule> newBRules=new ArrayList<>(bRules.size());
+  newBRules.addAll(bRules);
+  if (useEnabledOnly) {
+    List<BitextRule> rulesToBeDisabled=new ArrayList<>();
+    for (    final String enabledRule : enabledRules) {
+      for (      BitextRule b : bRules) {
+        if (!b.getId().equals(enabledRule)) {
+          rulesToBeDisabled.add(b);
+        }
+      }
+    }
+    newBRules.removeAll(rulesToBeDisabled);
+  }
+ else {
+    List<BitextRule> rulesToDisable=new ArrayList<>();
+    for (    final String disabledRule : disabledRules) {
+      for (      final BitextRule b : newBRules) {
+        if (b.getId().equals(disabledRule)) {
+          rulesToDisable.add(b);
+        }
+      }
+    }
+    newBRules.removeAll(rulesToDisable);
+  }
+  return newBRules;
+}

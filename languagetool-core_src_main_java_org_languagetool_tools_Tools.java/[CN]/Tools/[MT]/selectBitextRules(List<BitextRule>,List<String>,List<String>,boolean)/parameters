@@ -1,0 +1,4 @@
+List<BitextRule> bRules
+List<String> disabledRules
+List<String> enabledRules
+boolean useEnabledOnly
