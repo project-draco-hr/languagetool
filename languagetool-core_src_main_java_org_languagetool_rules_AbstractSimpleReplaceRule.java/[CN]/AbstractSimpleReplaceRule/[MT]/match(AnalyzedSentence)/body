@@ -6,7 +6,7 @@
       continue;
     }
     String originalTokenStr=tokenReadings.getToken();
-    if (ignoreTaggedWords && tokenReadings.isTagged()) {
+    if (ignoreTaggedWords && isTagged(tokenReadings)) {
       continue;
     }
     String tokenString=cleanup(originalTokenStr);
