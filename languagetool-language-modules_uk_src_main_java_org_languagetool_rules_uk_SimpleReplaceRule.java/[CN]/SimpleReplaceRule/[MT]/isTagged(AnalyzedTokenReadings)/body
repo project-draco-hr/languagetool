@@ -1,0 +1,9 @@
+{
+  for (  AnalyzedToken token : tokenReadings.getReadings()) {
+    String posTag=token.getPOSTag();
+    if (isGoodPosTag(posTag)) {
+      return true;
+    }
+  }
+  return false;
+}
