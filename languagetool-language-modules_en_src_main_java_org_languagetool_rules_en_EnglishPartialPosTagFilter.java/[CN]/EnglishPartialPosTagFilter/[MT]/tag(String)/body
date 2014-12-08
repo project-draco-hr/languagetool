@@ -1,8 +1,11 @@
 {
   try {
-    return tagger.tag(Collections.singletonList(token));
+    List<AnalyzedTokenReadings> tags=tagger.tag(Collections.singletonList(token));
+    AnalyzedTokenReadings[] atr=tags.toArray(new AnalyzedTokenReadings[tags.size()]);
+    AnalyzedSentence disambiguated=disambiguator.disambiguate(new AnalyzedSentence(atr));
+    return Arrays.asList(disambiguated.getTokens());
   }
  catch (  IOException e) {
-    throw new RuntimeException("Could not tag '" + token + "'",e);
+    throw new RuntimeException("Could not tag and disambiguate '" + token + "'",e);
   }
 }
