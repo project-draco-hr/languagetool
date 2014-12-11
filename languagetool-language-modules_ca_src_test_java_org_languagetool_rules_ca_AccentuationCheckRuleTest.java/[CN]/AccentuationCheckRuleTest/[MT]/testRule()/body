@@ -59,7 +59,6 @@
   assertIncorrect("Un home adulter.");
   assertIncorrect("La sureda ocupa amplies extensions en la muntanya.");
   assertIncorrect("F??u una magnifica digitaci??.");
-  assertIncorrect("Els habitats de la comarca.");
   assertIncorrect("La magnifica conservaci?? del palau.");
   final RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("Les circumstancies que ens envolten s??n circumstancies extraordin??ries."));
   assertEquals(2,matches.length);
