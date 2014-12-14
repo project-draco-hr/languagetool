@@ -1,4 +1,9 @@
 {
+  assertCorrect("Tesis doctorals");
+  assertCorrect("Va veure una cara rosada i arrugada, una boca sense dents oberta");
+  assertCorrect("la vista en el magn??fic ocell de potes i bec vermells");
+  assertCorrect("-Male??t ximple! -va exclamar Tom");
+  assertCorrect("-Aix??, ??viatges sola? -va dir");
   assertCorrect("amb alguns motllurats de guixeria classicitzants");
   assertCorrect("amb alguns motllurats de guixeria classicitzant");
   assertCorrect("amb alguns motllurats de guixeria retallats");
@@ -99,6 +104,8 @@
   assertCorrect("sota les grans persianes de color verd recalcades");
   assertCorrect("que seria en pocs anys for??a hegem??nica a Catalunya");
   assertCorrect("Era un home for??a misteri??s");
+  assertIncorrect("Tesis doctoral");
+  assertIncorrect("vaig posar mans a l'obra: a dins de casa mateix vaig cavar un sot per enterrar");
   assertIncorrect("amb alguns motllurats de guixeria retallat");
   assertIncorrect("amb alguns motllurats de guixeria retallades");
   assertIncorrect("Aquella va ser la seva pe??a mestre.");

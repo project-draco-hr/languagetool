@@ -1,7 +1,7 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<>();
   final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
-  for (int i=1; i < tokens.length; i++) {
+  goToNextToken:   for (int i=1; i < tokens.length; i++) {
     if (matchPostagRegexp(tokens[i],ADJECTIU) && !matchPostagRegexp(tokens[i],CONCORDA) && !matchPostagRegexp(tokens[i],VERB)) {
       final String token=tokens[i].getToken();
       final String prevToken=tokens[i - 1].getToken();
@@ -14,9 +14,6 @@
         nextToken=tokens[i + 1].getToken();
       }
       int j;
-      boolean adjectiveAgrees=false;
-      boolean theRuleMaches=false;
-      boolean isException=false;
       boolean isPlural=true;
       boolean isPrevNoun=false;
       Pattern substPattern=null;
@@ -24,10 +21,10 @@
       Pattern adjPattern=null;
       Matcher isUpperCase=UPPERCASE.matcher(token);
       if (prevPrevToken.equals("per") && prevToken.equals("molt")) {
-        break;
+        continue goToNextToken;
       }
       if (i < tokens.length - 2 && token.equalsIgnoreCase("esquerra") && (nextToken.equals("-") || nextToken.equals("/")) && tokens[i + 2].getToken().equalsIgnoreCase("dreta")) {
-        break;
+        continue goToNextToken;
       }
       int maxLevels=4;
       int[] cNt=new int[maxLevels];
@@ -45,23 +42,22 @@
       int[] cD=new int[maxLevels];
       int level=0;
       j=1;
-      boolean keepCounting=true;
-      boolean adverbAppeared=false;
-      boolean conjunctionAppeared=false;
-      boolean punctuationAppeared=false;
-      while (keepCounting && i - j > 0 && level < maxLevels) {
+      initializeApparitions();
+      while (i - j > 0 && keepCounting(tokens[i - j]) && level < maxLevels) {
         if (!isPrevNoun && !matchPostagRegexp(tokens[i - j],VERB)) {
-          if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],_GN_MS)) {
-            cNMS[level]++;
-          }
-          if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],_GN_FS)) {
-            cNFS[level]++;
-          }
-          if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],_GN_MP)) {
-            cNMP[level]++;
-          }
-          if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],_GN_FP)) {
-            cNFP[level]++;
+          if (matchPostagRegexp(tokens[i - j],NOM) || (i - j - 1 > 0 && !matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],ADJECTIU) && matchPostagRegexp(tokens[i - j - 1],DET))) {
+            if (matchPostagRegexp(tokens[i - j],_GN_MS)) {
+              cNMS[level]++;
+            }
+            if (matchPostagRegexp(tokens[i - j],_GN_FS)) {
+              cNFS[level]++;
+            }
+            if (matchPostagRegexp(tokens[i - j],_GN_MP)) {
+              cNMP[level]++;
+            }
+            if (matchPostagRegexp(tokens[i - j],_GN_FP)) {
+              cNFP[level]++;
+            }
           }
           if (!matchPostagRegexp(tokens[i - j],_GN_)) {
             if (matchPostagRegexp(tokens[i - j],NOM_MS)) {
@@ -87,9 +83,7 @@
         if (matchPostagRegexp(tokens[i - j],NOM) && !matchPostagRegexp(tokens[i - j],VERB)) {
           cNt[level]++;
           isPrevNoun=true;
-          adverbAppeared=false;
-          conjunctionAppeared=false;
-          punctuationAppeared=false;
+          initializeApparitions();
         }
  else {
           isPrevNoun=false;
@@ -131,14 +125,8 @@
             k++;
           }
         }
-        adverbAppeared|=matchPostagRegexp(tokens[i - j],ADVERBI);
-        conjunctionAppeared|=matchPostagRegexp(tokens[i - j],CONJUNCIO);
-        punctuationAppeared|=matchPostagRegexp(tokens[i - j],PUNTUACIO);
+        updateApparitions(tokens[i - j]);
         j++;
-        keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j],ADVERBIS_ACCEPTATS)) && (!matchRegexp(tokens[i - j].getToken(),STOP_COUNT) && !matchPostagRegexp(tokens[i - j],VERB));
-        if ((adverbAppeared && conjunctionAppeared) || (adverbAppeared && punctuationAppeared) || (conjunctionAppeared && punctuationAppeared)|| (punctuationAppeared && matchPostagRegexp(tokens[i - j],PUNTUACIO))) {
-          keepCounting=false;
-        }
       }
       level++;
       if (level > maxLevels) {
@@ -153,12 +141,10 @@
         cNtotal+=cN[j];
         cDtotal+=cD[j];
         if (matchPostagRegexp(tokens[i],ADJECTIU_MP) && (cN[j] > 1 || cD[j] > 1) && (cNMS[j] + cNMP[j] + cNCS[j]+ cNCP[j]+ cDMS[j]+ cDMP[j]) > 0 && (cNFS[j] + cNFP[j] <= cNt[j])) {
-          isException=true;
-          break;
+          continue goToNextToken;
         }
-        if (!isException && matchPostagRegexp(tokens[i],ADJECTIU_FP) && (cN[j] > 1 || cD[j] > 1)&& ((cNMS[j] + cNMP[j] + cDMS[j]+ cDMP[j]) == 0 || (cNt[j] > 0 && cNFS[j] + cNFP[j] >= cNt[j]))) {
-          isException=true;
-          break;
+        if (matchPostagRegexp(tokens[i],ADJECTIU_FP) && (cN[j] > 1 || cD[j] > 1) && ((cNMS[j] + cNMP[j] + cDMS[j]+ cDMP[j]) == 0 || (cNt[j] > 0 && cNFS[j] + cNFP[j] >= cNt[j]))) {
+          continue goToNextToken;
         }
         if (cN[j] + cD[j] > 0) {
           isPlural=isPlural && cD[j] > 1;
@@ -166,108 +152,104 @@
         j++;
       }
       if (cNtotal == 0 && cDtotal == 0) {
-        isException=true;
+        continue goToNextToken;
       }
-      if (!isException && i < tokens.length - 2) {
+      if (i < tokens.length - 2) {
         Matcher pCoordina=COORDINACIO.matcher(nextToken);
         if (pCoordina.matches()) {
           if (((matchPostagRegexp(tokens[i - 1],NOM_MP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_MP)) && matchPostagRegexp(tokens[i],ADJECTIU_MS) && matchPostagRegexp(tokens[i + 2],ADJECTIU_MS)) || ((matchPostagRegexp(tokens[i - 1],NOM_MP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_MP)) && matchPostagRegexp(tokens[i],ADJECTIU_MP) && matchPostagRegexp(tokens[i + 2],ADJECTIU_MP)) || ((matchPostagRegexp(tokens[i - 1],NOM_FP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_FP)) && matchPostagRegexp(tokens[i],ADJECTIU_FS) && matchPostagRegexp(tokens[i + 2],ADJECTIU_FS))|| ((matchPostagRegexp(tokens[i - 1],NOM_FP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_FP)) && matchPostagRegexp(tokens[i],ADJECTIU_FP) && matchPostagRegexp(tokens[i + 2],ADJECTIU_FP))) {
-            isException=true;
+            continue goToNextToken;
           }
         }
       }
-      if (!isException && matchRegexp(prevToken,EXCEPCIONS_PREVIA)) {
-        isException=true;
+      if (matchRegexp(prevToken,EXCEPCIONS_PREVIA)) {
+        continue goToNextToken;
       }
-      if (!isException && matchPostagRegexp(tokens[i - 1],EXCEPCIONS_PREVIA_POSTAG)) {
-        isException=true;
+      if (matchPostagRegexp(tokens[i - 1],EXCEPCIONS_PREVIA_POSTAG)) {
+        continue goToNextToken;
       }
-      if (!isException && (((token.equals("tret") || token.equals("llevat")) && (nextToken.equals("de") || nextToken.equals("que"))) || token.equals("primer") || token.equals("junts")|| token.equals("plegats")|| isUpperCase.matches())) {
-        isException=true;
+      if ((((token.equals("tret") || token.equals("llevat")) && (nextToken.equals("de") || nextToken.equals("que"))) || token.equals("primer") || token.equals("junts")|| token.equals("plegats")|| isUpperCase.matches())) {
+        continue goToNextToken;
       }
-      if (!isException && matchRegexp(token,EXCEPCIONS_PARTICIPI)) {
-        isException=true;
+      if (matchRegexp(token,EXCEPCIONS_PARTICIPI)) {
+        continue goToNextToken;
       }
-      if (!isException && ((prevPrevToken.equals("un") && (prevToken.equals("cop") || prevToken.equals("colp"))) || (prevPrevToken.equals("una") && (prevToken.equals("volta") || prevToken.equals("vegada"))))) {
-        isException=true;
+      if (((prevPrevToken.equals("un") && (prevToken.equals("cop") || prevToken.equals("colp"))) || (prevPrevToken.equals("una") && (prevToken.equals("volta") || prevToken.equals("vegada"))))) {
+        continue goToNextToken;
       }
-      if (!isException && i < tokens.length - 1) {
+      if (i < tokens.length - 1) {
         if ((token.equals("segur") || token.equals("major") || token.equals("menor")) && nextToken.equals("que")) {
-          isException=true;
+          continue goToNextToken;
         }
       }
-      if (!isException && token.equals("mateix") && matchPostagRegexp(tokens[i - 1],ADVERBI)) {
-        isException=true;
+      if (token.equals("mateix") && matchPostagRegexp(tokens[i - 1],ADVERBI)) {
+        continue goToNextToken;
       }
-      if (!isException) {
-        if (matchPostagRegexp(tokens[i],ADJECTIU_CS)) {
-          substPattern=GN_CS;
-          adjPattern=ADJECTIU_S;
-          gnPattern=_GN_CS;
+      if (matchPostagRegexp(tokens[i],ADJECTIU_CS)) {
+        substPattern=GN_CS;
+        adjPattern=ADJECTIU_S;
+        gnPattern=_GN_CS;
+      }
+ else       if (matchPostagRegexp(tokens[i],ADJECTIU_CP)) {
+        substPattern=GN_CP;
+        adjPattern=ADJECTIU_P;
+        gnPattern=_GN_CP;
+      }
+ else       if (matchPostagRegexp(tokens[i],ADJECTIU_MS)) {
+        substPattern=GN_MS;
+        adjPattern=ADJECTIU_MS;
+        gnPattern=_GN_MS;
+      }
+ else       if (matchPostagRegexp(tokens[i],ADJECTIU_FS)) {
+        substPattern=GN_FS;
+        adjPattern=ADJECTIU_FS;
+        gnPattern=_GN_FS;
+      }
+ else       if (matchPostagRegexp(tokens[i],ADJECTIU_MP)) {
+        substPattern=GN_MP;
+        adjPattern=ADJECTIU_MP;
+        gnPattern=_GN_MP;
+      }
+ else       if (matchPostagRegexp(tokens[i],ADJECTIU_FP)) {
+        substPattern=GN_FP;
+        adjPattern=ADJECTIU_FP;
+        gnPattern=_GN_FP;
+      }
+      if (substPattern == null) {
+        continue goToNextToken;
+      }
+      j=1;
+      boolean keepCount=true;
+      while (i - j > 0 && keepCount) {
+        if (gnPattern != null && matchPostagRegexp(tokens[i - j],NOM_DET) && matchPostagRegexp(tokens[i - j],gnPattern)) {
+          continue goToNextToken;
         }
- else         if (matchPostagRegexp(tokens[i],ADJECTIU_CP)) {
-          substPattern=GN_CP;
-          adjPattern=ADJECTIU_P;
-          gnPattern=_GN_CP;
+ else         if (!matchPostagRegexp(tokens[i - j],_GN_) && matchPostagRegexp(tokens[i - j],substPattern)) {
+          continue goToNextToken;
         }
- else         if (matchPostagRegexp(tokens[i],ADJECTIU_MS)) {
-          substPattern=GN_MS;
-          adjPattern=ADJECTIU_MS;
-          gnPattern=_GN_MS;
-        }
- else         if (matchPostagRegexp(tokens[i],ADJECTIU_FS)) {
-          substPattern=GN_FS;
-          adjPattern=ADJECTIU_FS;
-          gnPattern=_GN_FS;
-        }
- else         if (matchPostagRegexp(tokens[i],ADJECTIU_MP)) {
-          substPattern=GN_MP;
-          adjPattern=ADJECTIU_MP;
-          gnPattern=_GN_MP;
-        }
- else         if (matchPostagRegexp(tokens[i],ADJECTIU_FP)) {
-          substPattern=GN_FP;
-          adjPattern=ADJECTIU_FP;
-          gnPattern=_GN_FP;
-        }
-        if (substPattern != null) {
-          j=1;
-          keepCounting=true;
-          while (i - j > 0 && !isException && keepCounting) {
-            if (gnPattern != null && matchPostagRegexp(tokens[i - j],NOM_DET) && matchPostagRegexp(tokens[i - j],gnPattern)) {
-              isException=true;
-            }
- else             if (!matchPostagRegexp(tokens[i - j],_GN_) && matchPostagRegexp(tokens[i - j],substPattern)) {
-              isException=true;
-            }
-            keepCounting=!matchPostagRegexp(tokens[i - j],NOM_DET);
-            j++;
+        keepCount=!matchPostagRegexp(tokens[i - j],NOM_DET);
+        j++;
+      }
+      if (!(((matchPostagRegexp(tokens[i - 1],NOM) && !matchPostagRegexp(tokens[i - 1],substPattern)) || (i > 2 && ((matchPostagRegexp(tokens[i - 1],ADJECTIU) && !matchPostagRegexp(tokens[i - 1],adjPattern)) || matchPostagRegexp(tokens[i - 1],ADVERBIS_ACCEPTATS) || matchPostagRegexp(tokens[i - 1],LOC_ADV)) && !matchPostagRegexp(tokens[i - 2],VERB) && !matchPostagRegexp(tokens[i - 3],VERB))))) {
+        continue goToNextToken;
+      }
+      if (!(isPlural && matchPostagRegexp(tokens[i],ADJECTIU_S))) {
+        j=1;
+        initializeApparitions();
+        while (i - j > 0 && keepCounting(tokens[i - j])) {
+          if (gnPattern != null && matchPostagRegexp(tokens[i - j],NOM_ADJ) && matchPostagRegexp(tokens[i - j],gnPattern)) {
+            continue goToNextToken;
           }
-          if (!isException && ((matchPostagRegexp(tokens[i - 1],NOM) && !matchPostagRegexp(tokens[i - 1],substPattern)) || (i > 2 && ((matchPostagRegexp(tokens[i - 1],ADJECTIU) && !matchPostagRegexp(tokens[i - 1],adjPattern)) || matchPostagRegexp(tokens[i - 1],ADVERBIS_ACCEPTATS) || matchPostagRegexp(tokens[i - 1],LOC_ADV)) && !matchPostagRegexp(tokens[i - 2],VERB) && !matchPostagRegexp(tokens[i - 3],VERB)))) {
-            j=1;
-            keepCounting=true;
-            while (i - j > 0 && !adjectiveAgrees && keepCounting) {
-              if (gnPattern != null && matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],gnPattern)) {
-                adjectiveAgrees=true;
-              }
- else               if (!matchPostagRegexp(tokens[i - j],_GN_) && matchPostagRegexp(tokens[i - j],substPattern)) {
-                adjectiveAgrees=true;
-              }
-              j++;
-              keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j],ADVERBIS_ACCEPTATS)) && (!matchRegexp(tokens[i - j].getToken(),STOP_COUNT) && !matchPostagRegexp(tokens[i - j],VERB));
-            }
-            theRuleMaches=!adjectiveAgrees;
-            if (isPlural && matchPostagRegexp(tokens[i],ADJECTIU_S)) {
-              theRuleMaches=true;
-            }
+ else           if (!matchPostagRegexp(tokens[i - j],_GN_) && matchPostagRegexp(tokens[i - j],substPattern)) {
+            continue goToNextToken;
           }
+          updateApparitions(tokens[i - j]);
+          j++;
         }
       }
-      if (theRuleMaches) {
-        final String msg="Reviseu la concordan??a de la paraula \u00AB" + token + "\u00BB.";
-        final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Reviseu la concordan??a.");
-        ruleMatches.add(ruleMatch);
-      }
+      final String msg="Reviseu la concordan??a de la paraula \u00AB" + token + "\u00BB.";
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Reviseu la concordan??a.");
+      ruleMatches.add(ruleMatch);
     }
   }
   return toRuleMatchArray(ruleMatches);

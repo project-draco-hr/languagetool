@@ -1,0 +1,5 @@
+{
+  adverbAppeared=false;
+  conjunctionAppeared=false;
+  punctuationAppeared=false;
+}

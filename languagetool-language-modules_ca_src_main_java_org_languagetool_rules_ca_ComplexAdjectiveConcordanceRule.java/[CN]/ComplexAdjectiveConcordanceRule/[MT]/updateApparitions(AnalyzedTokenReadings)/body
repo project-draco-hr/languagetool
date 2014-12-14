@@ -1,0 +1,5 @@
+{
+  adverbAppeared|=matchPostagRegexp(aTr,ADVERBI);
+  conjunctionAppeared|=matchPostagRegexp(aTr,CONJUNCIO);
+  punctuationAppeared|=matchPostagRegexp(aTr,PUNTUACIO);
+}
