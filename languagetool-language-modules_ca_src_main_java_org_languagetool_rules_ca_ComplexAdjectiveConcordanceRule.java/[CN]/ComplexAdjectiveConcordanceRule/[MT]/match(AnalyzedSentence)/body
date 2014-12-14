@@ -2,7 +2,7 @@
   final List<RuleMatch> ruleMatches=new ArrayList<>();
   final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
   goToNextToken:   for (int i=1; i < tokens.length; i++) {
-    if (matchPostagRegexp(tokens[i],ADJECTIU) && !matchPostagRegexp(tokens[i],CONCORDA) && !matchPostagRegexp(tokens[i],VERB)) {
+    if (matchPostagRegexp(tokens[i],ADJECTIU) && !matchPostagRegexp(tokens[i],CONCORDA) && !matchPostagRegexp(tokens[i],GV)) {
       final String token=tokens[i].getToken();
       final String prevToken=tokens[i - 1].getToken();
       String prevPrevToken="";
@@ -44,7 +44,7 @@
       j=1;
       initializeApparitions();
       while (i - j > 0 && keepCounting(tokens[i - j]) && level < maxLevels) {
-        if (!isPrevNoun && !matchPostagRegexp(tokens[i - j],VERB)) {
+        if (!isPrevNoun) {
           if (matchPostagRegexp(tokens[i - j],NOM) || (i - j - 1 > 0 && !matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],ADJECTIU) && matchPostagRegexp(tokens[i - j - 1],DET))) {
             if (matchPostagRegexp(tokens[i - j],_GN_MS)) {
               cNMS[level]++;
@@ -80,7 +80,7 @@
             }
           }
         }
-        if (matchPostagRegexp(tokens[i - j],NOM) && !matchPostagRegexp(tokens[i - j],VERB)) {
+        if (matchPostagRegexp(tokens[i - j],NOM)) {
           cNt[level]++;
           isPrevNoun=true;
           initializeApparitions();
@@ -117,7 +117,7 @@
         }
         if (level > 0 && matchRegexp(tokens[i - j].getToken(),COORDINACIO_IONI)) {
           int k=1;
-          while (k < 4 && i - j - k > 0 && (matchPostagRegexp(tokens[i - j - k],KEEP_COUNT) || matchRegexp(tokens[i - j - k].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j - k],ADVERBIS_ACCEPTATS)) && (!matchRegexp(tokens[i - j - k].getToken(),STOP_COUNT) && !matchPostagRegexp(tokens[i - j - k],VERB))) {
+          while (k < 4 && i - j - k > 0 && (matchPostagRegexp(tokens[i - j - k],KEEP_COUNT) || matchRegexp(tokens[i - j - k].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j - k],ADVERBIS_ACCEPTATS)) && (!matchRegexp(tokens[i - j - k].getToken(),STOP_COUNT))) {
             if (matchPostagRegexp(tokens[i - j - k],PREPOSICIONS)) {
               j=j + k;
               break;
@@ -215,7 +215,7 @@
         adjPattern=ADJECTIU_FP;
         gnPattern=_GN_FP;
       }
-      if (substPattern == null) {
+      if (substPattern == null || gnPattern == null || adjPattern == null) {
         continue goToNextToken;
       }
       j=1;
@@ -237,10 +237,10 @@
         j=1;
         initializeApparitions();
         while (i - j > 0 && keepCounting(tokens[i - j])) {
-          if (gnPattern != null && matchPostagRegexp(tokens[i - j],NOM_ADJ) && matchPostagRegexp(tokens[i - j],gnPattern)) {
+          if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],substPattern)) {
             continue goToNextToken;
           }
- else           if (!matchPostagRegexp(tokens[i - j],_GN_) && matchPostagRegexp(tokens[i - j],substPattern)) {
+ else           if (matchPostagRegexp(tokens[i - j],ADJECTIU) && matchPostagRegexp(tokens[i - j],gnPattern)) {
             continue goToNextToken;
           }
           updateApparitions(tokens[i - j]);

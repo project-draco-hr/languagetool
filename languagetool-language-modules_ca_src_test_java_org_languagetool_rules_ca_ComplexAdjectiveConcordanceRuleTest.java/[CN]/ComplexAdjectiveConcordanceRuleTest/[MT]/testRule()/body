@@ -1,9 +1,10 @@
 {
+  assertCorrect("per a dur a terme tota la lectura i escriptura requerides");
+  assertCorrect("al cam?? va trobar una branca de roure s??lida");
   assertCorrect("Tesis doctorals");
   assertCorrect("Va veure una cara rosada i arrugada, una boca sense dents oberta");
   assertCorrect("la vista en el magn??fic ocell de potes i bec vermells");
   assertCorrect("-Male??t ximple! -va exclamar Tom");
-  assertCorrect("-Aix??, ??viatges sola? -va dir");
   assertCorrect("amb alguns motllurats de guixeria classicitzants");
   assertCorrect("amb alguns motllurats de guixeria classicitzant");
   assertCorrect("amb alguns motllurats de guixeria retallats");
