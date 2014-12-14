@@ -2,7 +2,7 @@
   final List<RuleMatch> ruleMatches=new ArrayList<>();
   final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
   for (int i=1; i < tokens.length; i++) {
-    if (matchPostagRegexp(tokens[i],ADJECTIU) && !matchPostagRegexp(tokens[i],CONCORDA)) {
+    if (matchPostagRegexp(tokens[i],ADJECTIU) && !matchPostagRegexp(tokens[i],CONCORDA) && !matchPostagRegexp(tokens[i],VERB)) {
       final String token=tokens[i].getToken();
       final String prevToken=tokens[i - 1].getToken();
       String prevPrevToken="";
@@ -43,19 +43,6 @@
       int[] cDFP=new int[maxLevels];
       int[] cN=new int[maxLevels];
       int[] cD=new int[maxLevels];
-      for (j=0; j < maxLevels; j++) {
-        cNt[j]=0;
-        cNMS[j]=0;
-        cNFS[j]=0;
-        cNMP[j]=0;
-        cNFP[j]=0;
-        cDMS[j]=0;
-        cDFS[j]=0;
-        cDMP[j]=0;
-        cDFP[j]=0;
-        cN[j]=0;
-        cD[j]=0;
-      }
       int level=0;
       j=1;
       boolean keepCounting=true;
@@ -63,7 +50,7 @@
       boolean conjunctionAppeared=false;
       boolean punctuationAppeared=false;
       while (keepCounting && i - j > 0 && level < maxLevels) {
-        if (!isPrevNoun) {
+        if (!isPrevNoun && !matchPostagRegexp(tokens[i - j],VERB)) {
           if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],_GN_MS)) {
             cNMS[level]++;
           }
@@ -97,7 +84,7 @@
             }
           }
         }
-        if (matchPostagRegexp(tokens[i - j],NOM)) {
+        if (matchPostagRegexp(tokens[i - j],NOM) && !matchPostagRegexp(tokens[i - j],VERB)) {
           cNt[level]++;
           isPrevNoun=true;
           adverbAppeared=false;
@@ -136,7 +123,7 @@
         }
         if (level > 0 && matchRegexp(tokens[i - j].getToken(),COORDINACIO_IONI)) {
           int k=1;
-          while (k < 4 && i - j - k > 0 && (matchPostagRegexp(tokens[i - j - k],KEEP_COUNT) || matchRegexp(tokens[i - j - k].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j - k],ADVERBIS_ACCEPTATS)) && !matchRegexp(tokens[i - j - k].getToken(),STOP_COUNT)) {
+          while (k < 4 && i - j - k > 0 && (matchPostagRegexp(tokens[i - j - k],KEEP_COUNT) || matchRegexp(tokens[i - j - k].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j - k],ADVERBIS_ACCEPTATS)) && (!matchRegexp(tokens[i - j - k].getToken(),STOP_COUNT) && !matchPostagRegexp(tokens[i - j - k],VERB))) {
             if (matchPostagRegexp(tokens[i - j - k],PREPOSICIONS)) {
               j=j + k;
               break;
@@ -148,7 +135,7 @@
         conjunctionAppeared|=matchPostagRegexp(tokens[i - j],CONJUNCIO);
         punctuationAppeared|=matchPostagRegexp(tokens[i - j],PUNTUACIO);
         j++;
-        keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j],ADVERBIS_ACCEPTATS)) && !matchRegexp(tokens[i - j].getToken(),STOP_COUNT);
+        keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j],ADVERBIS_ACCEPTATS)) && (!matchRegexp(tokens[i - j].getToken(),STOP_COUNT) && !matchPostagRegexp(tokens[i - j],VERB));
         if ((adverbAppeared && conjunctionAppeared) || (adverbAppeared && punctuationAppeared) || (conjunctionAppeared && punctuationAppeared)|| (punctuationAppeared && matchPostagRegexp(tokens[i - j],PUNTUACIO))) {
           keepCounting=false;
         }
@@ -267,7 +254,7 @@
                 adjectiveAgrees=true;
               }
               j++;
-              keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j],ADVERBIS_ACCEPTATS)) && !matchRegexp(tokens[i - j].getToken(),STOP_COUNT);
+              keepCounting=(matchPostagRegexp(tokens[i - j],KEEP_COUNT) || matchRegexp(tokens[i - j].getToken(),KEEP_COUNT2) || matchPostagRegexp(tokens[i - j],ADVERBIS_ACCEPTATS)) && (!matchRegexp(tokens[i - j].getToken(),STOP_COUNT) && !matchPostagRegexp(tokens[i - j],VERB));
             }
             theRuleMaches=!adjectiveAgrees;
             if (isPlural && matchPostagRegexp(tokens[i],ADJECTIU_S)) {
