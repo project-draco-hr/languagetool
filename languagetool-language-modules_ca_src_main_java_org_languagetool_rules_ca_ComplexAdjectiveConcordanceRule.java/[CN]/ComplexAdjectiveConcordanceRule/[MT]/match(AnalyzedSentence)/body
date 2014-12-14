@@ -201,7 +201,7 @@
       if (!isException && matchRegexp(token,EXCEPCIONS_PARTICIPI)) {
         isException=true;
       }
-      if (!isException && ((prevPrevToken.equals("un") && prevToken.equals("cop") || prevToken.equals("colp")) || (prevPrevToken.equals("una") && prevToken.equals("volta") || prevToken.equals("vegada")))) {
+      if (!isException && ((prevPrevToken.equals("un") && (prevToken.equals("cop") || prevToken.equals("colp"))) || (prevPrevToken.equals("una") && (prevToken.equals("volta") || prevToken.equals("vegada"))))) {
         isException=true;
       }
       if (!isException && i < tokens.length - 1) {
