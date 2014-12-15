@@ -1,4 +1,5 @@
 {
+  assertCorrect("despres de la revolta contra el poder pontifici iniciada a Bolonya");
   assertCorrect("-Aix??, ??viatges sola? -va dir");
   assertCorrect("El riu passa engorjat en aquest sector ");
   assertCorrect("i ronda amagat pels carrers");
