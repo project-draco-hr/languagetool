@@ -47,7 +47,7 @@
           continue;
         }
       }
-      if (prep.equalsIgnoreCase("??") || prep.equalsIgnoreCase("??")) {
+      if (prep.equalsIgnoreCase("??") || prep.equalsIgnoreCase("??") || prep.equals("????????")|| prep.equals("??????")) {
         if (hasRequiredPosTag(Arrays.asList("p:v_naz"),tokenReadings)) {
           reqTokenReadings=null;
           continue;
