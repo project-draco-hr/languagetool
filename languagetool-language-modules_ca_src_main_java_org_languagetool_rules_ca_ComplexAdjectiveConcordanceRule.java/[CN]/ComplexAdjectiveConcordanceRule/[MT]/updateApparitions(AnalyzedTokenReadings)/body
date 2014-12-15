@@ -1,4 +1,8 @@
 {
+  if (matchPostagRegexp(aTr,NOM) || matchPostagRegexp(aTr,ADJECTIU)) {
+    initializeApparitions();
+    return;
+  }
   adverbAppeared|=matchPostagRegexp(aTr,ADVERBI);
   conjunctionAppeared|=matchPostagRegexp(aTr,CONJUNCIO);
   punctuationAppeared|=matchPostagRegexp(aTr,PUNTUACIO);

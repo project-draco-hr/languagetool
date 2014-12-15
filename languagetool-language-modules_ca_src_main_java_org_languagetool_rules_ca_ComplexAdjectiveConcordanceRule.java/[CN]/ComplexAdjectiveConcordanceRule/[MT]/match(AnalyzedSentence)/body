@@ -83,7 +83,6 @@
         if (matchPostagRegexp(tokens[i - j],NOM)) {
           cNt[level]++;
           isPrevNoun=true;
-          initializeApparitions();
         }
  else {
           isPrevNoun=false;
@@ -221,7 +220,7 @@
       j=1;
       boolean keepCount=true;
       while (i - j > 0 && keepCount) {
-        if (gnPattern != null && matchPostagRegexp(tokens[i - j],NOM_DET) && matchPostagRegexp(tokens[i - j],gnPattern)) {
+        if (matchPostagRegexp(tokens[i - j],NOM_DET) && matchPostagRegexp(tokens[i - j],gnPattern)) {
           continue goToNextToken;
         }
  else         if (!matchPostagRegexp(tokens[i - j],_GN_) && matchPostagRegexp(tokens[i - j],substPattern)) {
@@ -237,7 +236,7 @@
         j=1;
         initializeApparitions();
         while (i - j > 0 && keepCounting(tokens[i - j])) {
-          if (matchPostagRegexp(tokens[i - j],NOM) && matchPostagRegexp(tokens[i - j],substPattern)) {
+          if (matchPostagRegexp(tokens[i - j],NOM_DET) && matchPostagRegexp(tokens[i - j],substPattern)) {
             continue goToNextToken;
           }
  else           if (matchPostagRegexp(tokens[i - j],ADJECTIU) && matchPostagRegexp(tokens[i - j],gnPattern)) {

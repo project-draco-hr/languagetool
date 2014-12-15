@@ -1,4 +1,20 @@
 {
+  assertCorrect("-Aix??, ??viatges sola? -va dir");
+  assertCorrect("El riu passa engorjat en aquest sector ");
+  assertCorrect("i ronda amagat pels carrers");
+  assertCorrect("Setmanari il??lustrat d'art, literatura i actualitats fundat a Barcelona");
+  assertCorrect("Entitat oficial de cr??dit a mitj?? i llarg termini constitu??da l'any 1920");
+  assertCorrect("edificacions superposades d'??poca romana republicanes i imperials");
+  assertCorrect("Fou un dels primers barris de barraques sorgit despr??s del 1939");
+  assertCorrect("i el premi a la investigaci?? m??dica atorgat per la Funadaci??");
+  assertCorrect("no arriben als 300 mm de pluja anuals");
+  assertCorrect("un dibuix de colors vius d'un noi ben plantat i una noia preciosa drets");
+  assertCorrect("de la captura i l'assassinat recents");
+  assertCorrect("donar estocades sense ordre ni concert mal dirigides");
+  assertCorrect("trobarien un dels nanos mort de fred");
+  assertCorrect("aquest text, el m??s antic de l'obra fins ara conegut");
+  assertCorrect("va reaccionar, la molt astuta, aix??");
+  assertCorrect("S??n de barba i cabellera blanques");
   assertCorrect("per a dur a terme tota la lectura i escriptura requerides");
   assertCorrect("al cam?? va trobar una branca de roure s??lida");
   assertCorrect("Tesis doctorals");
@@ -105,6 +121,7 @@
   assertCorrect("sota les grans persianes de color verd recalcades");
   assertCorrect("que seria en pocs anys for??a hegem??nica a Catalunya");
   assertCorrect("Era un home for??a misteri??s");
+  assertIncorrect("??s tan ple d'urg??ncies, tan ple de desitj??s materials");
   assertIncorrect("Tesis doctoral");
   assertIncorrect("vaig posar mans a l'obra: a dins de casa mateix vaig cavar un sot per enterrar");
   assertIncorrect("amb alguns motllurats de guixeria retallat");
