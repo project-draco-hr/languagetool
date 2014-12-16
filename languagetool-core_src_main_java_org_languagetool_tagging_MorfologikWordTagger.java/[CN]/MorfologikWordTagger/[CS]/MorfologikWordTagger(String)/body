@@ -1,0 +1,3 @@
+{
+  dictUrl=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(Objects.requireNonNull(dictPath));
+}

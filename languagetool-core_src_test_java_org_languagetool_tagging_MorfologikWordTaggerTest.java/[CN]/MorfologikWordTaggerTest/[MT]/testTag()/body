@@ -1,0 +1,18 @@
+{
+  URL url=MorfologikWordTaggerTest.class.getResource("/org/languagetool/tagging/test.dict");
+  MorfologikWordTagger tagger=new MorfologikWordTagger(url);
+  List<TaggedWord> result1=tagger.tag("lowercase");
+  assertThat(result1.size(),is(2));
+  assertThat(result1.get(0).getLemma(),is("lclemma"));
+  assertThat(result1.get(0).getPosTag(),is("POS1"));
+  assertThat(result1.get(1).getLemma(),is("lclemma2"));
+  assertThat(result1.get(1).getPosTag(),is("POS1a"));
+  List<TaggedWord> result2=tagger.tag("Lowercase");
+  assertThat(result2.size(),is(0));
+  List<TaggedWord> result3=tagger.tag("sch??n");
+  assertThat(result3.size(),is(1));
+  assertThat(result3.get(0).getLemma(),is("testlemma"));
+  assertThat(result3.get(0).getPosTag(),is("POSTEST"));
+  List<TaggedWord> noResult=tagger.tag("noSuchWord");
+  assertThat(noResult.size(),is(0));
+}
