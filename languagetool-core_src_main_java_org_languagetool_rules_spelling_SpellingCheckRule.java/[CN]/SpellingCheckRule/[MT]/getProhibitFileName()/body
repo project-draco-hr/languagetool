@@ -1,0 +1,3 @@
+{
+  return language.getShortName() + SPELLING_PROHIBIT_FILE;
+}

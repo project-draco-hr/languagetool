@@ -1,0 +1,6 @@
+{
+  if (word.endsWith(".")) {
+    return word.substring(0,word.length() - 1);
+  }
+  return word;
+}

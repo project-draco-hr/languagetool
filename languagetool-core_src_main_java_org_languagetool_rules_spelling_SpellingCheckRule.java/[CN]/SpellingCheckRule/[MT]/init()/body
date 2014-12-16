@@ -1,3 +1,4 @@
 {
-  loadFileIfExists(getIgnoreFileName());
+  loadWordsToBeIgnored(getIgnoreFileName());
+  loadWordsToBeProhibited(getProhibitFileName());
 }

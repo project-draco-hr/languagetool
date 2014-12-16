@@ -1,0 +1,7 @@
+{
+  boolean isAlphabetic=true;
+  if (word.length() == 1) {
+    isAlphabetic=Character.isAlphabetic(word.charAt(0));
+  }
+  return (isAlphabetic && !word.equals("--") && hunspellDict.misspelled(word)) || isProhibited(removeTrailingDot(word));
+}

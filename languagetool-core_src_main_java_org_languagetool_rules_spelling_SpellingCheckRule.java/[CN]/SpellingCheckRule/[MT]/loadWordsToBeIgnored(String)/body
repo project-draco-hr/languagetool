@@ -1,4 +1,7 @@
 {
+  if (!JLanguageTool.getDataBroker().resourceExists(ignoreFile)) {
+    return;
+  }
   try (InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(ignoreFile)){
     try (Scanner scanner=new Scanner(inputStream,"utf-8")){
       while (scanner.hasNextLine()) {
