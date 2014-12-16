@@ -1,0 +1,2 @@
+List<WordData> posTagsFromDict
+String[] allPosTags
