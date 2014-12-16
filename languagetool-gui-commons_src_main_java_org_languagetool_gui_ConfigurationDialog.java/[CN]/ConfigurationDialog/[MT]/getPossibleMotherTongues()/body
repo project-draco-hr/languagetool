@@ -1,8 +1,8 @@
 {
-  final List<Object> motherTongues=new ArrayList<>();
+  final List<String> motherTongues=new ArrayList<>();
   motherTongues.add(NO_MOTHER_TONGUE);
   for (  final Language lang : Language.REAL_LANGUAGES) {
     motherTongues.add(lang.getTranslatedName(messages));
   }
-  return motherTongues.toArray();
+  return motherTongues.toArray(new String[motherTongues.size()]);
 }
