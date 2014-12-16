@@ -1,0 +1,30 @@
+{
+  final List<AnalyzedToken> result=new ArrayList<>();
+  final String lowerWord=word.toLowerCase(conversionLocale);
+  final boolean isLowercase=word.equals(lowerWord);
+  final boolean isMixedCase=StringTools.isMixedCase(word);
+  List<AnalyzedToken> taggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(word));
+  List<AnalyzedToken> lowerTaggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(lowerWord));
+  addTokens(taggerTokens,result);
+  if (!isLowercase && !isMixedCase) {
+    addTokens(lowerTaggerTokens,result);
+  }
+  if (tagLowercaseWithUppercase) {
+    if (lowerTaggerTokens.isEmpty() && taggerTokens.isEmpty()) {
+      if (isLowercase) {
+        List<AnalyzedToken> upperTaggerTokens=asAnalyzedTokenList(word,dictLookup.lookup(StringTools.uppercaseFirstChar(word)));
+        if (!upperTaggerTokens.isEmpty()) {
+          addTokens(upperTaggerTokens,result);
+        }
+      }
+    }
+  }
+  if (result.isEmpty()) {
+    List<AnalyzedToken> additionalTaggedTokens=additionalTags(word);
+    addTokens(additionalTaggedTokens,result);
+  }
+  if (result.isEmpty()) {
+    result.add(new AnalyzedToken(word,null,null));
+  }
+  return result;
+}
