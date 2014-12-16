@@ -1,4 +1,9 @@
 {
+  assertCorrect("les causes per primera vegada explicades");
+  assertCorrect("per les causes explicades fa molt dif??cil");
+  assertCorrect("a Fran??a mateix");
+  assertCorrect("tenen moltes m??s dificultats");
+  assertCorrect("l'endeutament que gener?? fou for??a elevat");
   assertCorrect("el text de m??s ??mplia i persistent influ??ncia");
   assertCorrect("el text de m??s ??mplia influ??ncia");
   assertCorrect("Ell i jo som una altra vegada partidaris del rei");
@@ -14,6 +19,9 @@
   assertCorrect("no arriben als 300 mm de pluja anuals");
   assertCorrect("un dibuix de colors vius d'un noi ben plantat i una noia preciosa drets");
   assertCorrect("de la captura i l'assassinat recents");
+  assertCorrect("la captura i l'assassinat recents");
+  assertCorrect("era la defensa i seguretat m??tues");
+  assertCorrect("la revolta contra el poder pontifici iniciada a Bolonya");
   assertCorrect("donar estocades sense ordre ni concert mal dirigides");
   assertCorrect("trobarien un dels nanos mort de fred");
   assertCorrect("aquest text, el m??s antic de l'obra fins ara conegut");
@@ -125,6 +133,10 @@
   assertCorrect("sota les grans persianes de color verd recalcades");
   assertCorrect("que seria en pocs anys for??a hegem??nica a Catalunya");
   assertCorrect("Era un home for??a misteri??s");
+  assertIncorrect("Fran??a mateix ho necessita.");
+  assertIncorrect("recull de llegendes i can??ons populars en part inventats per ell");
+  assertIncorrect("amb dos conjunts territorial diferents entre si");
+  assertIncorrect("per mitj?? de g??metes haploides obtingudes per meiosi");
   assertIncorrect("??s tan ple d'urg??ncies, tan ple de desitj??s materials");
   assertIncorrect("Tesis doctoral");
   assertIncorrect("vaig posar mans a l'obra: a dins de casa mateix vaig cavar un sot per enterrar");

@@ -2,5 +2,5 @@
   if ((adverbAppeared && conjunctionAppeared) || (adverbAppeared && punctuationAppeared) || (conjunctionAppeared && punctuationAppeared)|| (punctuationAppeared && matchPostagRegexp(aTr,PUNTUACIO))) {
     return false;
   }
-  return (matchPostagRegexp(aTr,KEEP_COUNT) || matchRegexp(aTr.getToken(),KEEP_COUNT2) || matchPostagRegexp(aTr,ADVERBIS_ACCEPTATS)) && !matchRegexp(aTr.getToken(),STOP_COUNT) && !matchPostagRegexp(aTr,GV);
+  return (matchPostagRegexp(aTr,KEEP_COUNT) || matchRegexp(aTr.getToken(),KEEP_COUNT2) || matchPostagRegexp(aTr,ADVERBIS_ACCEPTATS)) && !matchRegexp(aTr.getToken(),STOP_COUNT) && (!matchPostagRegexp(aTr,GV) || matchPostagRegexp(aTr,_GN_));
 }

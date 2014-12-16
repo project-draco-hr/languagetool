@@ -26,6 +26,43 @@
       if (i < tokens.length - 2 && token.equalsIgnoreCase("esquerra") && (nextToken.equals("-") || nextToken.equals("/")) && tokens[i + 2].getToken().equalsIgnoreCase("dreta")) {
         continue goToNextToken;
       }
+      if (i < tokens.length - 2) {
+        Matcher pCoordina=COORDINACIO.matcher(nextToken);
+        if (pCoordina.matches()) {
+          if (((matchPostagRegexp(tokens[i - 1],NOM_MP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_MP)) && matchPostagRegexp(tokens[i],ADJECTIU_MS) && matchPostagRegexp(tokens[i + 2],ADJECTIU_MS)) || ((matchPostagRegexp(tokens[i - 1],NOM_MP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_MP)) && matchPostagRegexp(tokens[i],ADJECTIU_MP) && matchPostagRegexp(tokens[i + 2],ADJECTIU_MP)) || ((matchPostagRegexp(tokens[i - 1],NOM_FP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_FP)) && matchPostagRegexp(tokens[i],ADJECTIU_FS) && matchPostagRegexp(tokens[i + 2],ADJECTIU_FS))|| ((matchPostagRegexp(tokens[i - 1],NOM_FP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_FP)) && matchPostagRegexp(tokens[i],ADJECTIU_FP) && matchPostagRegexp(tokens[i + 2],ADJECTIU_FP))) {
+            continue goToNextToken;
+          }
+        }
+      }
+      if (matchRegexp(prevToken,EXCEPCIONS_PREVIA)) {
+        continue goToNextToken;
+      }
+      if (matchPostagRegexp(tokens[i - 1],EXCEPCIONS_PREVIA_POSTAG)) {
+        continue goToNextToken;
+      }
+      if ((((token.equals("tret") || token.equals("llevat")) && (nextToken.equals("de") || nextToken.equals("que"))) || token.equals("primer") || token.equals("junts")|| token.equals("plegats")|| isUpperCase.matches())) {
+        continue goToNextToken;
+      }
+      if (matchRegexp(token,EXCEPCIONS_PARTICIPI)) {
+        continue goToNextToken;
+      }
+      if ((((prevPrevToken.equals("un") || prevPrevToken.equals("altre")) && (prevToken.equals("cop") || prevToken.equals("colp"))) || ((prevPrevToken.equals("una") || prevPrevToken.equals("altra") || prevPrevToken.equals("aquesta")) && (prevToken.equals("volta") || prevToken.equals("vegada"))))) {
+        continue goToNextToken;
+      }
+      if (i > 2 && tokens[i - 2].getToken().equalsIgnoreCase("per") && matchPostagRegexp(tokens[i - 1],ORDINAL) && (prevToken.equals("volta") || prevToken.equals("vegada") || prevToken.equals("cop")|| prevToken.equals("colp"))) {
+        continue goToNextToken;
+      }
+      if (i < tokens.length - 1) {
+        if ((token.equals("segur") || token.equals("major") || token.equals("menor")) && nextToken.equals("que")) {
+          continue goToNextToken;
+        }
+      }
+      if (token.equals("mateix") && matchPostagRegexp(tokens[i - 1],ADVERBI)) {
+        continue goToNextToken;
+      }
+      if (token.equals("mateix") && matchPostagRegexp(tokens[i - 1],TOPONIM) && prevPrevToken.equals("a")) {
+        continue goToNextToken;
+      }
       int maxLevels=4;
       int[] cNt=new int[maxLevels];
       int[] cNMS=new int[maxLevels];
@@ -153,37 +190,6 @@
       if (cNtotal == 0 && cDtotal == 0) {
         continue goToNextToken;
       }
-      if (i < tokens.length - 2) {
-        Matcher pCoordina=COORDINACIO.matcher(nextToken);
-        if (pCoordina.matches()) {
-          if (((matchPostagRegexp(tokens[i - 1],NOM_MP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_MP)) && matchPostagRegexp(tokens[i],ADJECTIU_MS) && matchPostagRegexp(tokens[i + 2],ADJECTIU_MS)) || ((matchPostagRegexp(tokens[i - 1],NOM_MP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_MP)) && matchPostagRegexp(tokens[i],ADJECTIU_MP) && matchPostagRegexp(tokens[i + 2],ADJECTIU_MP)) || ((matchPostagRegexp(tokens[i - 1],NOM_FP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_FP)) && matchPostagRegexp(tokens[i],ADJECTIU_FS) && matchPostagRegexp(tokens[i + 2],ADJECTIU_FS))|| ((matchPostagRegexp(tokens[i - 1],NOM_FP) || matchPostagRegexp(tokens[i - 1],ADJECTIU_FP)) && matchPostagRegexp(tokens[i],ADJECTIU_FP) && matchPostagRegexp(tokens[i + 2],ADJECTIU_FP))) {
-            continue goToNextToken;
-          }
-        }
-      }
-      if (matchRegexp(prevToken,EXCEPCIONS_PREVIA)) {
-        continue goToNextToken;
-      }
-      if (matchPostagRegexp(tokens[i - 1],EXCEPCIONS_PREVIA_POSTAG)) {
-        continue goToNextToken;
-      }
-      if ((((token.equals("tret") || token.equals("llevat")) && (nextToken.equals("de") || nextToken.equals("que"))) || token.equals("primer") || token.equals("junts")|| token.equals("plegats")|| isUpperCase.matches())) {
-        continue goToNextToken;
-      }
-      if (matchRegexp(token,EXCEPCIONS_PARTICIPI)) {
-        continue goToNextToken;
-      }
-      if ((((prevPrevToken.equals("un") || prevPrevToken.equals("altre")) && (prevToken.equals("cop") || prevToken.equals("colp"))) || ((prevPrevToken.equals("una") || prevPrevToken.equals("altra")) && (prevToken.equals("volta") || prevToken.equals("vegada"))))) {
-        continue goToNextToken;
-      }
-      if (i < tokens.length - 1) {
-        if ((token.equals("segur") || token.equals("major") || token.equals("menor")) && nextToken.equals("que")) {
-          continue goToNextToken;
-        }
-      }
-      if (token.equals("mateix") && matchPostagRegexp(tokens[i - 1],ADVERBI)) {
-        continue goToNextToken;
-      }
       if (matchPostagRegexp(tokens[i],ADJECTIU_CS)) {
         substPattern=GN_CS;
         adjPattern=ADJECTIU_S;
@@ -229,7 +235,7 @@
         keepCount=!matchPostagRegexp(tokens[i - j],NOM_DET);
         j++;
       }
-      if ((matchPostagRegexp(tokens[i - 1],NOM) && !matchPostagRegexp(tokens[i - 1],substPattern)) || (i > 2 && matchPostagRegexp(tokens[i - 1],ADJECTIU) && !matchPostagRegexp(tokens[i - 1],adjPattern)) || (i > 2 && matchPostagRegexp(tokens[i - 1],ADVERBIS_ACCEPTATS) && !matchPostagRegexp(tokens[i - 2],VERB) && !matchPostagRegexp(tokens[i - 2],PREPOSICIONS))|| (i > 3 && matchPostagRegexp(tokens[i - 1],LOC_ADV) && matchPostagRegexp(tokens[i - 2],LOC_ADV) && !matchPostagRegexp(tokens[i - 3],VERB) && !matchPostagRegexp(tokens[i - 3],PREPOSICIONS))) {
+      if ((matchPostagRegexp(tokens[i - 1],NOM) && !matchPostagRegexp(tokens[i - 1],substPattern)) || (matchPostagRegexp(tokens[i - 1],ADJECTIU) && !matchPostagRegexp(tokens[i - 1],gnPattern)) || (matchPostagRegexp(tokens[i - 1],ADJECTIU) && !matchPostagRegexp(tokens[i - 1],adjPattern))|| (i > 2 && matchPostagRegexp(tokens[i - 1],ADVERBIS_ACCEPTATS) && !matchPostagRegexp(tokens[i - 2],VERB) && !matchPostagRegexp(tokens[i - 2],PREPOSICIONS))|| (i > 3 && matchPostagRegexp(tokens[i - 1],LOC_ADV) && matchPostagRegexp(tokens[i - 2],LOC_ADV) && !matchPostagRegexp(tokens[i - 3],VERB) && !matchPostagRegexp(tokens[i - 3],PREPOSICIONS))) {
       }
  else {
         continue goToNextToken;
@@ -238,10 +244,10 @@
         j=1;
         initializeApparitions();
         while (i - j > 0 && keepCounting(tokens[i - j])) {
-          if (matchPostagRegexp(tokens[i - j],NOM_DET) && matchPostagRegexp(tokens[i - j],substPattern)) {
+          if (!matchPostagRegexp(tokens[i - j],_GN_) && matchPostagRegexp(tokens[i - j],NOM_DET) && matchPostagRegexp(tokens[i - j],substPattern)) {
             continue goToNextToken;
           }
- else           if (matchPostagRegexp(tokens[i - j],ADJECTIU) && matchPostagRegexp(tokens[i - j],gnPattern)) {
+ else           if (matchPostagRegexp(tokens[i - j],gnPattern)) {
             continue goToNextToken;
           }
           updateApparitions(tokens[i - j]);
