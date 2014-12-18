@@ -5,10 +5,14 @@
   auxText=matcher.replaceAll("$1\u0001\u0001ELA_GEMINADA\u0001\u0001$2");
   matcher=ELA_GEMINADA_UPPERCASE.matcher(auxText);
   auxText=matcher.replaceAll("$1\u0001\u0001ELA_GEMINADA_UPPERCASE\u0001\u0001$2");
-  matcher=APOSTROPHE.matcher(auxText);
-  auxText=matcher.replaceAll("$1\u0001\u0001CA_APOS\u0001\u0001$2");
-  matcher=APOSTROPHE_1.matcher(auxText);
-  auxText=matcher.replaceAll("$1\u0001\u0001CA_APOS\u0001\u0001$2");
+  matcher=APOSTROF_RECTE.matcher(auxText);
+  auxText=matcher.replaceAll("$1\u0001\u0001CA_APOS_RECTE\u0001\u0001$2");
+  matcher=APOSTROF_RECTE_1.matcher(auxText);
+  auxText=matcher.replaceAll("$1\u0001\u0001CA_APOS_RECTE\u0001\u0001$2");
+  matcher=APOSTROF_RODO.matcher(auxText);
+  auxText=matcher.replaceAll("$1\u0001\u0001CA_APOS_RODO\u0001\u0001$2");
+  matcher=APOSTROF_RODO_1.matcher(auxText);
+  auxText=matcher.replaceAll("$1\u0001\u0001CA_APOS_RODO\u0001\u0001$2");
   matcher=NEARBY_HYPHENS.matcher(auxText);
   auxText=matcher.replaceAll("$1\u0001\u0001CA_HYPHEN\u0001\u0001$2\u0001\u0001CA_HYPHEN\u0001\u0001$3");
   matcher=HYPHENS.matcher(auxText);
@@ -23,7 +27,7 @@
   String s;
   String groupStr;
   while (st.hasMoreElements()) {
-    s=st.nextToken().replace("\u0001\u0001CA_APOS\u0001\u0001","'").replace("\u0001\u0001CA_HYPHEN\u0001\u0001","-").replace("\u0001\u0001CA_DECIMALPOINT\u0001\u0001",".").replace("\u0001\u0001CA_DECIMALCOMMA\u0001\u0001",",").replace("\u0001\u0001CA_SPACE\u0001\u0001"," ").replace("\u0001\u0001ELA_GEMINADA\u0001\u0001","l.l").replace("\u0001\u0001ELA_GEMINADA_UPPERCASE\u0001\u0001","L.L");
+    s=st.nextToken().replace("\u0001\u0001CA_APOS_RECTE\u0001\u0001","'").replace("\u0001\u0001CA_APOS_RODO\u0001\u0001","???").replace("\u0001\u0001CA_HYPHEN\u0001\u0001","-").replace("\u0001\u0001CA_DECIMALPOINT\u0001\u0001",".").replace("\u0001\u0001CA_DECIMALCOMMA\u0001\u0001",",").replace("\u0001\u0001CA_SPACE\u0001\u0001"," ").replace("\u0001\u0001ELA_GEMINADA\u0001\u0001","l.l").replace("\u0001\u0001ELA_GEMINADA_UPPERCASE\u0001\u0001","L.L");
     boolean matchFound=false;
     int j=0;
     while (j < maxPatterns && !matchFound) {

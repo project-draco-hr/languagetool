@@ -4,6 +4,13 @@
   int pos=0;
   final IStemmer dictLookup=new DictionaryLookup(getDictionary());
   for (  String word : sentenceTokens) {
+    boolean containsTypewriterApostrophe=false;
+    if (word.length() > 1) {
+      if (word.contains("'")) {
+        containsTypewriterApostrophe=true;
+      }
+      word=word.replace("???","'");
+    }
     final List<AnalyzedToken> l=new ArrayList<>();
     final String lowerWord=word.toLowerCase(conversionLocale);
     final boolean isLowercase=word.equals(lowerWord);
@@ -26,7 +33,13 @@
     if (l.isEmpty()) {
       l.add(new AnalyzedToken(word,null,null));
     }
-    tokenReadings.add(new AnalyzedTokenReadings(l,pos));
+    AnalyzedTokenReadings atr=new AnalyzedTokenReadings(l,pos);
+    if (containsTypewriterApostrophe) {
+      List<ChunkTag> listChunkTags=new ArrayList<>();
+      listChunkTags.add(new ChunkTag("containsTypewriterApostrophe"));
+      atr.setChunkTags(listChunkTags);
+    }
+    tokenReadings.add(atr);
     pos+=word.length();
   }
   return tokenReadings;
