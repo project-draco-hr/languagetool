@@ -8,7 +8,7 @@
   final String firstToken=tokens[matchTokenPos].getToken();
   String secondToken=null;
   String thirdToken=null;
-  if (tokens.length >= 3 && ("'".equals(firstToken) || "\"".equals(firstToken) || "???".equals(firstToken))) {
+  if (tokens.length >= 3 && QUOTE_START.matcher(firstToken).matches()) {
     matchTokenPos=2;
     secondToken=tokens[matchTokenPos].getToken();
   }
