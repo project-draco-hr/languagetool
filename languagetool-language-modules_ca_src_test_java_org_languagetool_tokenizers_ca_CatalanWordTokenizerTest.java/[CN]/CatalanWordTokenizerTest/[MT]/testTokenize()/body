@@ -16,6 +16,9 @@
   tokens=wordTokenizer.tokenize("El tren Barcelona-Val??ncia");
   assertEquals(tokens.size(),7);
   assertEquals("[El,  , tren,  , Barcelona, -, Val??ncia]",tokens.toString());
+  tokens=wordTokenizer.tokenize("No acabava d???entendre???l b??");
+  assertEquals(tokens.size(),9);
+  assertEquals("[No,  , acabava,  , d???, entendre, ???l,  , b??]",tokens.toString());
   tokens=wordTokenizer.tokenize("N'hi ha vint-i-quatre");
   assertEquals(tokens.size(),6);
   assertEquals("[N', hi,  , ha,  , vint-i-quatre]",tokens.toString());

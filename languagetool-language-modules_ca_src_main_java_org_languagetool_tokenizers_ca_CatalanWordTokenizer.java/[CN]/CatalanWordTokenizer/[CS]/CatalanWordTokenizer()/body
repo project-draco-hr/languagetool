@@ -9,7 +9,7 @@
       }
     }
   }
-  patterns[0]=Pattern.compile("^([lnmtsd]['???])([^'\\-]*)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  patterns[0]=Pattern.compile("^([lnmtsd]['???])([^'???\\-]*)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   patterns[1]=Pattern.compile("^(qui-sap-lo|qui-sap-la|qui-sap-los|qui-sap-les)$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   patterns[2]=Pattern.compile("^([lnmtsd]['???])(.{2,})" + PF + PF+ PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   patterns[3]=Pattern.compile("^(.{2,})" + PF + PF+ PF+ "$",Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
