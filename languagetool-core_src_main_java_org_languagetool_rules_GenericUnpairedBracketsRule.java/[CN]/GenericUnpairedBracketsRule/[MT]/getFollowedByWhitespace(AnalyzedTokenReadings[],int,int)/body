@@ -1,7 +1,7 @@
 {
   boolean followedByWhitespace=true;
   if (i < tokens.length - 1 && startSymbols[j].equals(endSymbols[j])) {
-    followedByWhitespace=tokens[i + 1].isWhitespaceBefore() || PUNCTUATION.matcher(tokens[i + 1].getToken()).matches();
+    followedByWhitespace=tokens[i + 1].isWhitespaceBefore() || PUNCTUATION.matcher(tokens[i + 1].getToken()).matches() || Arrays.asList(endSymbols).contains(tokens[i + 1].getToken());
   }
   return followedByWhitespace;
 }

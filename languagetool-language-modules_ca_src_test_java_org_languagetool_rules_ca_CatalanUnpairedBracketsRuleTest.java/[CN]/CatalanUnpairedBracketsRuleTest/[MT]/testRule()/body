@@ -1,4 +1,7 @@
 {
+  assertCorrect("??\"??s aix??\" o no??");
+  assertCorrect("??\"??s aix??\", va dir.??");
+  assertCorrect("????s \"aix??\" o no??");
   assertCorrect("(l'execuci?? a mans d'\"especialistes\")");
   assertCorrect("\"Vine\", li va dir.");
   assertCorrect("(Una frase de prova).");
