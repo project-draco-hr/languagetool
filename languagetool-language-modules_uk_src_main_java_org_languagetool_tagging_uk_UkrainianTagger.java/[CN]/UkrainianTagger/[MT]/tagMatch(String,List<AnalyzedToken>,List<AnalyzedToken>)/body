@@ -10,6 +10,9 @@
         }
  else         if (leftPosTag.startsWith(IPOSTag.noun.getText()) && rightPosTag.startsWith(IPOSTag.noun.getText())) {
           String agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag);
+          if (agreedPosTag == null && rightPosTag.startsWith(IPOSTag.noun.getText() + ":m:v_naz") && (rightAnalyzedToken.getToken().equals("????????????????") || rightAnalyzedToken.getToken().equals("??????????????"))) {
+            agreedPosTag=leftPosTag;
+          }
           if (agreedPosTag != null) {
             newAnalyzedTokens.add(new AnalyzedToken(word,agreedPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
           }

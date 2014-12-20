@@ -1,0 +1,3 @@
+{
+  return leftPosTag.contains(":ist") && rightPosTag.contains(":ist") || !leftPosTag.contains(":ist") && !rightPosTag.contains(":ist");
+}
