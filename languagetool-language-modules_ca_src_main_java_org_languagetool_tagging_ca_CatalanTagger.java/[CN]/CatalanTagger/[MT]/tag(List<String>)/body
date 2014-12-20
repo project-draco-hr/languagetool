@@ -28,7 +28,7 @@
       }
     }
     if (l.isEmpty() && !isMixedCase) {
-      addTokens(additionalTags(word),l);
+      addTokens(additionalTags(word,dictLookup),l);
     }
     if (l.isEmpty()) {
       l.add(new AnalyzedToken(word,null,null));
