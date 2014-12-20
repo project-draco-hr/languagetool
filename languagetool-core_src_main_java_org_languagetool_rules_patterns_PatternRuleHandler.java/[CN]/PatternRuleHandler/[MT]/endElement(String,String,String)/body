@@ -159,6 +159,9 @@ if (rulegroupAntiPatterns != null) {
 rulegroupAntiPatterns.clear();
 }
 antiPatternCounter=0;
+ruleGroupDefaultOff=false;
+defaultOff=false;
+defaultOn=false;
 break;
 case MARKER:
 if (inCorrectExample) {

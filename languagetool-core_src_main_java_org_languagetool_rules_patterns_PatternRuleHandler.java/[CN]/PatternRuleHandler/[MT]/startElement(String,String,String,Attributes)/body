@@ -37,10 +37,15 @@ if (name == null) {
 name=ruleGroupDescription;
 }
 }
-if (!(inRuleGroup && defaultOff)) {
-defaultOff="off".equals(attrs.getValue(DEFAULT));
+if (inRuleGroup && ruleGroupDefaultOff && attrs.getValue(DEFAULT) != null) {
+throw new RuntimeException("Rule group " + ruleGroupId + " is off by default, thus rule "+ id+ " cannot specify 'default=...'");
 }
-if (!(inRuleGroup && defaultOn)) {
+if (inRuleGroup && ruleGroupDefaultOff) {
+defaultOff=true;
+defaultOn=false;
+}
+ else {
+defaultOff="off".equals(attrs.getValue(DEFAULT));
 defaultOn="on".equals(attrs.getValue(DEFAULT));
 }
 correctExamples=new ArrayList<>();
@@ -155,8 +160,7 @@ break;
 case RULEGROUP:
 ruleGroupId=attrs.getValue(ID);
 ruleGroupDescription=attrs.getValue(NAME);
-defaultOff="off".equals(attrs.getValue(DEFAULT));
-defaultOn="on".equals(attrs.getValue(DEFAULT));
+ruleGroupDefaultOff="off".equals(attrs.getValue(DEFAULT));
 urlForRuleGroup=new StringBuilder();
 shortMessageForRuleGroup=new StringBuilder();
 inRuleGroup=true;
