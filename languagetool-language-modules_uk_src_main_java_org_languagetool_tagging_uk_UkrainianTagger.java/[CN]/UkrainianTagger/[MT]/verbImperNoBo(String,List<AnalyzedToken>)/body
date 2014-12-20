@@ -1,0 +1,10 @@
+{
+  List<AnalyzedToken> newAnalyzedTokens=new ArrayList<AnalyzedToken>(leftAnalyzedTokens.size());
+  for (  AnalyzedToken analyzedToken : leftAnalyzedTokens) {
+    String posTag=analyzedToken.getPOSTag();
+    if (posTag.startsWith(VERB_TAG_FOR_IMPR) || posTag.startsWith(VERB_TAG_FOR_REV_IMPR)) {
+      newAnalyzedTokens.add(new AnalyzedToken(word,posTag,analyzedToken.getLemma()));
+    }
+  }
+  return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
+}

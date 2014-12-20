@@ -1,0 +1,3 @@
+{
+  return istotaNeistota(leftPosTag,rightPosTag) && (isPlural(leftPosTag) && isPlural(rightPosTag) || rightPosTag.contains(":m:") || rightPosTag.contains(":n:")) && leftPosTag.contains(":v_naz")&& rightPosTag.contains(":v_zna");
+}

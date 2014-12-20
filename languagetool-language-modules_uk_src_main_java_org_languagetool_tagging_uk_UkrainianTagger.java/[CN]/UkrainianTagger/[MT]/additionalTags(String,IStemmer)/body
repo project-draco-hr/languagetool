@@ -1,0 +1,57 @@
+{
+  if (NUMBER.matcher(word).matches()) {
+    List<AnalyzedToken> additionalTaggedTokens=new ArrayList<>();
+    additionalTaggedTokens.add(new AnalyzedToken(word,IPOSTag.number.getText(),word));
+    return additionalTaggedTokens;
+  }
+  if (word.contains("-")) {
+    int dashIdx=word.lastIndexOf('-');
+    if (dashIdx == 0 || dashIdx == word.length() - 1)     return null;
+    int firstDashIdx=word.indexOf('-');
+    if (dashIdx != firstDashIdx)     return null;
+    String leftWord=word.substring(0,dashIdx);
+    String rightWord=word.substring(dashIdx + 1);
+    if (rightWord.equals("????") || rightWord.equals("????")) {
+      List<WordData> leftWdList=stemmer.lookup(leftWord);
+      if (leftWdList.isEmpty())       return null;
+      List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenList(leftWord,leftWdList);
+      return verbImperNoBo(word,leftAnalyzedTokens);
+    }
+    if (leftWord.equalsIgnoreCase("????") && rightWord.endsWith("????????")) {
+      rightWord+="??";
+    }
+    List<WordData> wdList=stemmer.lookup(rightWord);
+    if (wdList.isEmpty())     return null;
+    List<AnalyzedToken> rightAnalyzedTokens=asAnalyzedTokenList(rightWord,wdList);
+    if (leftWord.equalsIgnoreCase("????")) {
+      if (rightWord.endsWith("??????")) {
+        return poAdvMatch(word,rightAnalyzedTokens,ADJ_TAG_FOR_PO_ADV_MIS);
+      }
+ else       if (rightWord.endsWith("??????????")) {
+        return poAdvMatch(word,rightAnalyzedTokens,ADJ_TAG_FOR_PO_ADV_NAZ);
+      }
+      return null;
+    }
+    if (dashPrefixes.contains(leftWord.toLowerCase())) {
+      return eksNounMatch(word,rightAnalyzedTokens,leftWord);
+    }
+    if (Character.isUpperCase(leftWord.charAt(0)) && cityAvenue.contains(rightWord)) {
+      List<WordData> leftWdList=stemmer.lookup(leftWord);
+      if (leftWdList.isEmpty())       return null;
+      List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenList(leftWord,leftWdList);
+      return cityAvenueMatch(word,leftAnalyzedTokens);
+    }
+    List<WordData> leftWdList=stemmer.lookup(leftWord);
+    if (!leftWdList.isEmpty()) {
+      List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenList(leftWord,leftWdList);
+      List<AnalyzedToken> tagMatch=tagMatch(word,leftAnalyzedTokens,rightAnalyzedTokens);
+      if (tagMatch != null) {
+        return tagMatch;
+      }
+    }
+    if (leftWord.endsWith("??")) {
+      return oAdjMatch(word,rightAnalyzedTokens,leftWord);
+    }
+  }
+  return null;
+}

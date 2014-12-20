@@ -20,7 +20,7 @@
     }
   }
   if (result.isEmpty()) {
-    List<AnalyzedToken> additionalTaggedTokens=additionalTags(word);
+    List<AnalyzedToken> additionalTaggedTokens=additionalTags(word,dictLookup);
     addTokens(additionalTaggedTokens,result);
   }
   if (result.isEmpty()) {

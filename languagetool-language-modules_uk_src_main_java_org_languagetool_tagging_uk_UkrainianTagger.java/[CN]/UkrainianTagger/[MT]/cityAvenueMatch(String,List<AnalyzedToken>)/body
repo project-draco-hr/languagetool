@@ -1,0 +1,10 @@
+{
+  List<AnalyzedToken> newAnalyzedTokens=new ArrayList<AnalyzedToken>(leftAnalyzedTokens.size());
+  for (  AnalyzedToken analyzedToken : leftAnalyzedTokens) {
+    String posTag=analyzedToken.getPOSTag();
+    if (posTag.matches(IPOSTag.noun.getText() + ":.:v_naz.*")) {
+      newAnalyzedTokens.add(new AnalyzedToken(word,posTag.replaceFirst("v_naz","nv"),word));
+    }
+  }
+  return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
+}

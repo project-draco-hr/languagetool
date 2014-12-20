@@ -1,0 +1,21 @@
+{
+  List<AnalyzedToken> newAnalyzedTokens=new ArrayList<AnalyzedToken>();
+  for (  AnalyzedToken leftAnalyzedToken : leftAnalyzedTokens) {
+    String leftPosTag=leftAnalyzedToken.getPOSTag();
+    for (    AnalyzedToken rightAnalyzedToken : rightAnalyzedTokens) {
+      String rightPosTag=rightAnalyzedToken.getPOSTag();
+      if (leftPosTag != null && rightPosTag != null) {
+        if (leftPosTag.equals(rightPosTag) && (leftPosTag.startsWith(IPOSTag.numr.getText()) || leftPosTag.startsWith(IPOSTag.adv.getText()) || leftPosTag.startsWith(IPOSTag.adj.getText()))) {
+          newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+        }
+ else         if (leftPosTag.startsWith(IPOSTag.noun.getText()) && rightPosTag.startsWith(IPOSTag.noun.getText())) {
+          String agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag);
+          if (agreedPosTag != null) {
+            newAnalyzedTokens.add(new AnalyzedToken(word,agreedPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+          }
+        }
+      }
+    }
+  }
+  return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
+}

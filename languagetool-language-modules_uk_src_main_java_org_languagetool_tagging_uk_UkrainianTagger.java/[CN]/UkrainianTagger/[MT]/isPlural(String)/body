@@ -1,0 +1,3 @@
+{
+  return posTag.startsWith(IPOSTag.noun.getText() + ":p:");
+}

@@ -1,0 +1,3 @@
+String word
+List<AnalyzedToken> leftAnalyzedTokens
+List<AnalyzedToken> rightAnalyzedTokens

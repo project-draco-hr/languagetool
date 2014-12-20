@@ -1,0 +1,9 @@
+{
+  for (  AnalyzedToken analyzedToken : analyzedTokens) {
+    String posTag=analyzedToken.getPOSTag();
+    if (posTag.startsWith(adjTag)) {
+      return Arrays.asList(new AnalyzedToken(word,IPOSTag.adv.getText(),word));
+    }
+  }
+  return null;
+}

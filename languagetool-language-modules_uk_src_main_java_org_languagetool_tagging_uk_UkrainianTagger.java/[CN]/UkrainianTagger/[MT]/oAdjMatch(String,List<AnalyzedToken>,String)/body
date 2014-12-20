@@ -1,0 +1,10 @@
+{
+  List<AnalyzedToken> newAnalyzedTokens=new ArrayList<AnalyzedToken>(analyzedTokens.size());
+  for (  AnalyzedToken analyzedToken : analyzedTokens) {
+    String posTag=analyzedToken.getPOSTag();
+    if (posTag.startsWith(IPOSTag.adj.getText())) {
+      newAnalyzedTokens.add(new AnalyzedToken(word,posTag,leftWord + "-" + analyzedToken.getLemma()));
+    }
+  }
+  return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
+}
