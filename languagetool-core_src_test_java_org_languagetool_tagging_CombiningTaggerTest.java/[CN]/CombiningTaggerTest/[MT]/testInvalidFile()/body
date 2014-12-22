@@ -1,0 +1,3 @@
+{
+  new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream("/xx/added-invalid.txt"));
+}

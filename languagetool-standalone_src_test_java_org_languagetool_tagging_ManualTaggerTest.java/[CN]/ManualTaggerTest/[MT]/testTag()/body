@@ -1,0 +1,7 @@
+{
+  ManualTagger tagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(MANUAL_DICT_FILENAME));
+  assertThat(tagger.tag("").size(),is(0));
+  assertThat(tagger.tag("gibtsnicht").size(),is(0));
+  assertEquals("[Ableitung/SUB:NOM:PLU:FEM, Ableitung/SUB:GEN:PLU:FEM, Ableitung/SUB:DAT:PLU:FEM, Ableitung/SUB:AKK:PLU:FEM]",tagger.tag("Ableitungen").toString());
+  assertThat(tagger.tag("ableitungen").size(),is(0));
+}
