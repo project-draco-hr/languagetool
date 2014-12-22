@@ -1,7 +1,3 @@
 {
-  if (priority < 0 || priority > 100) {
-    throw new IllegalArgumentException("priority must be in range 0 - 100: " + priority);
-  }
-  this.name=name;
-  this.priority=priority;
+  this(name,priority,Location.INTERNAL);
 }

@@ -3,11 +3,12 @@ switch (qName) {
 case "category":
     final String catName=attrs.getValue(NAME);
   final String priorityStr=attrs.getValue("priority");
+Category.Location location=YES.equals(attrs.getValue(EXTERNAL)) ? Category.Location.EXTERNAL : Category.Location.INTERNAL;
 if (priorityStr == null) {
-  category=new Category(catName);
+category=new Category(catName,location);
 }
  else {
-  category=new Category(catName,Integer.parseInt(priorityStr));
+category=new Category(catName,Integer.parseInt(priorityStr),location);
 }
 if ("off".equals(attrs.getValue(DEFAULT))) {
 category.setDefaultOff();
