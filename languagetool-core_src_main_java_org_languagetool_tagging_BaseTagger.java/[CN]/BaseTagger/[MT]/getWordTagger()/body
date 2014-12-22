@@ -1,0 +1,6 @@
+{
+  if (morfologikTagger == null) {
+    morfologikTagger=new MorfologikTagger(getFileName());
+  }
+  return morfologikTagger;
+}

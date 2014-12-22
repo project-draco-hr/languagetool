@@ -1,0 +1,6 @@
+{
+  if (dictionary == null) {
+    dictionary=Dictionary.read(dictUrl);
+  }
+  return dictionary;
+}

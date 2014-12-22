@@ -1,0 +1,6 @@
+{
+  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
+  final List<AnalyzedToken> l=getAnalyzedTokens(token);
+  tokenReadings.add(new AnalyzedTokenReadings(l,0));
+  return tokenReadings;
+}

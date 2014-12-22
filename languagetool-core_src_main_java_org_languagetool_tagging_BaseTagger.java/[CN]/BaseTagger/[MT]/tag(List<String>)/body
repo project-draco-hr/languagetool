@@ -1,9 +1,8 @@
 {
   final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
-  final IStemmer dictLookup=new DictionaryLookup(getDictionary());
   for (  String word : sentenceTokens) {
-    final List<AnalyzedToken> l=getAnalyzedTokens(dictLookup,word);
+    final List<AnalyzedToken> l=getAnalyzedTokens(word);
     tokenReadings.add(new AnalyzedTokenReadings(l,pos));
     pos+=word.length();
   }

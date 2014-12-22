@@ -1,0 +1,15 @@
+{
+  List<TaggedWord> result=new ArrayList<>();
+  try {
+    IStemmer dictLookup=new DictionaryLookup(getDictionary());
+    List<WordData> lookup=dictLookup.lookup(word);
+    for (    WordData wordData : lookup) {
+      TaggedWord taggedWord=new TaggedWord(wordData.getStem() == null ? null : wordData.getStem().toString(),wordData.getTag() == null ? null : wordData.getTag().toString());
+      result.add(taggedWord);
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  return result;
+}

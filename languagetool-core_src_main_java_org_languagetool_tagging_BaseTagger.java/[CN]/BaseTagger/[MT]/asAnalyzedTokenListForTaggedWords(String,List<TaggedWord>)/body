@@ -1,0 +1,7 @@
+{
+  final List<AnalyzedToken> aTokenList=new ArrayList<>();
+  for (  TaggedWord taggedWord : taggedWords) {
+    aTokenList.add(asAnalyzedToken(word,taggedWord));
+  }
+  return aTokenList;
+}

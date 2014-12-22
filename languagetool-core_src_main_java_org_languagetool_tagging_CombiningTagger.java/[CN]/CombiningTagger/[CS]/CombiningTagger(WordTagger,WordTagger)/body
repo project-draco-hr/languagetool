@@ -1,0 +1,4 @@
+{
+  this.tagger1=tagger1;
+  this.tagger2=tagger2;
+}
