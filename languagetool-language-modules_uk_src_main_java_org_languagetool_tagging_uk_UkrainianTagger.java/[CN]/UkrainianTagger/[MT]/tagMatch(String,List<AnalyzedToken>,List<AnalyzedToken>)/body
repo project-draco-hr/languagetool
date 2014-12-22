@@ -1,5 +1,5 @@
 {
-  List<AnalyzedToken> newAnalyzedTokens=new ArrayList<AnalyzedToken>();
+  List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>();
   for (  AnalyzedToken leftAnalyzedToken : leftAnalyzedTokens) {
     String leftPosTag=leftAnalyzedToken.getPOSTag();
     for (    AnalyzedToken rightAnalyzedToken : rightAnalyzedTokens) {
