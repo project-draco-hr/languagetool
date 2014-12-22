@@ -1,0 +1,7 @@
+{
+  List<AnalyzedToken> result=new ArrayList<>();
+  for (  TaggedWord taggedWord : taggedWords) {
+    result.add(new AnalyzedToken(word,taggedWord.getPosTag(),taggedWord.getLemma()));
+  }
+  return result;
+}

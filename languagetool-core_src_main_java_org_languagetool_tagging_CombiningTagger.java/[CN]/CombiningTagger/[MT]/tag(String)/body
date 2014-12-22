@@ -1,3 +1,6 @@
 {
-  return null;
+  List<TaggedWord> result=new ArrayList<>();
+  result.addAll(tagger1.tag(word));
+  result.addAll(tagger2.tag(word));
+  return result;
 }

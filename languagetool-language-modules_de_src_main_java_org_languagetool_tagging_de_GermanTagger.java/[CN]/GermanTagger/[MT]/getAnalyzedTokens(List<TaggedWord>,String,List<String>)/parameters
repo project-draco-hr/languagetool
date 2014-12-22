@@ -1,0 +1,3 @@
+List<TaggedWord> taggedWords
+String word
+List<String> compoundParts

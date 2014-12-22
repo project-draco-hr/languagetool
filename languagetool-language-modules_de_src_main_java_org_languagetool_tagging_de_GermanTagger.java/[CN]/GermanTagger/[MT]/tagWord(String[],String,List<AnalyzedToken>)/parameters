@@ -1,3 +1,0 @@
-String[] taggerTokens
-String word
-List<AnalyzedToken> l

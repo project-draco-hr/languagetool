@@ -1,6 +1,6 @@
 {
-  final List<AnalyzedTokenReadings> result=tag(Collections.singletonList(word),false);
-  final AnalyzedTokenReadings atr=result.get(0);
+  List<AnalyzedTokenReadings> result=tag(Collections.singletonList(word),false);
+  AnalyzedTokenReadings atr=result.get(0);
   if (atr.getAnalyzedToken(0).getPOSTag() == null) {
     return null;
   }

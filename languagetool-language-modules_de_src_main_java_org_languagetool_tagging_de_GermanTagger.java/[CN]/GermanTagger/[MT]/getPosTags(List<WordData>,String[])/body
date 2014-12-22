@@ -1,8 +1,0 @@
-{
-  int i=0;
-  for (  WordData wd : posTagsFromDict) {
-    allPosTags[i]=wd.getStem().toString();
-    allPosTags[i + 1]=wd.getTag().toString();
-    i=i + 2;
-  }
-}

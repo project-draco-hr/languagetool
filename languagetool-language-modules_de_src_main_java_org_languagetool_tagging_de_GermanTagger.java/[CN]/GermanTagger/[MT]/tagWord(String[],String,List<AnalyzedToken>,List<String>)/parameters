@@ -1,4 +1,0 @@
-String[] taggerTokens
-String word
-List<AnalyzedToken> l
-List<String> compoundParts

@@ -1,41 +1,40 @@
 {
   initializeIfRequired();
   boolean firstWord=true;
-  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
+  List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
-  final IStemmer morfologik=new DictionaryLookup(dictionary);
   for (  String word : sentenceTokens) {
-    final List<AnalyzedToken> l=new ArrayList<>();
-    String[] taggerTokens=lexiconLookup(word,morfologik);
-    if (firstWord && taggerTokens == null && ignoreCase) {
-      taggerTokens=lexiconLookup(word.toLowerCase(),morfologik);
+    List<AnalyzedToken> l=new ArrayList<>();
+    List<TaggedWord> taggerTokens=getWordTagger().tag(word);
+    if (firstWord && taggerTokens.size() == 0 && ignoreCase) {
+      taggerTokens=getWordTagger().tag(word.toLowerCase());
       firstWord=false;
     }
-    if (taggerTokens != null) {
-      tagWord(taggerTokens,word,l);
+    if (taggerTokens.size() > 0) {
+      l.addAll(getAnalyzedTokens(taggerTokens,word));
     }
  else {
       if (!StringTools.isEmpty(word.trim())) {
-        final List<String> compoundParts=compoundTokenizer.tokenize(word);
+        List<String> compoundParts=compoundTokenizer.tokenize(word);
         if (compoundParts.size() <= 1) {
-          l.add(new AnalyzedToken(word,null,null));
+          l.add(getNoInfoToken(word));
         }
  else {
           String lastPart=compoundParts.get(compoundParts.size() - 1);
           if (StringTools.startsWithUppercase(word)) {
             lastPart=StringTools.uppercaseFirstChar(lastPart);
           }
-          taggerTokens=lexiconLookup(lastPart,morfologik);
-          if (taggerTokens != null) {
-            tagWord(taggerTokens,word,l,compoundParts);
+          List<TaggedWord> partTaggerTokens=getWordTagger().tag(lastPart);
+          if (partTaggerTokens.size() > 0) {
+            l.addAll(getAnalyzedTokens(partTaggerTokens,word,compoundParts));
           }
  else {
-            l.add(new AnalyzedToken(word,null,null));
+            l.add(getNoInfoToken(word));
           }
         }
       }
  else {
-        l.add(new AnalyzedToken(word,null,null));
+        l.add(getNoInfoToken(word));
       }
     }
     tokenReadings.add(new AnalyzedTokenReadings(l.toArray(new AnalyzedToken[l.size()]),pos));

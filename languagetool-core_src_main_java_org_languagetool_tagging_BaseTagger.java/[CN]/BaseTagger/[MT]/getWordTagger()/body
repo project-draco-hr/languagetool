@@ -1,6 +1,20 @@
 {
-  if (morfologikTagger == null) {
-    morfologikTagger=new MorfologikTagger(getFileName());
+  if (wordTagger == null) {
+    MorfologikTagger morfologikTagger=new MorfologikTagger(getFileName());
+    try {
+      String manualFileName=getManualFileName();
+      if (manualFileName != null) {
+        InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(manualFileName);
+        ManualTagger manualTagger=new ManualTagger(stream);
+        wordTagger=new CombiningTagger(morfologikTagger,manualTagger);
+      }
+ else {
+        wordTagger=morfologikTagger;
+      }
+    }
+ catch (    IOException e) {
+      throw new RuntimeException("Could not load manual tagger data from " + getManualFileName(),e);
+    }
   }
-  return morfologikTagger;
+  return wordTagger;
 }

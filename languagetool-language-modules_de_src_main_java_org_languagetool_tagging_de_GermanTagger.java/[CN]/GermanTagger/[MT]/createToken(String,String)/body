@@ -1,3 +1,0 @@
-{
-  return new AnalyzedToken(token,posTag,null);
-}

@@ -1,15 +1,5 @@
 {
-  Dictionary dict=dictionary;
-  ManualTagger mTagger=manualTagger;
-  GermanCompoundTokenizer gTokenizer=compoundTokenizer;
-  if (dict == null || mTagger == null || gTokenizer == null) {
-synchronized (this) {
-      dict=dictionary;
-      mTagger=manualTagger;
-      gTokenizer=compoundTokenizer;
-      if (dict == null || mTagger == null || gTokenizer == null) {
-        initialize();
-      }
-    }
+  if (compoundTokenizer == null) {
+    compoundTokenizer=new GermanCompoundTokenizer();
   }
 }
