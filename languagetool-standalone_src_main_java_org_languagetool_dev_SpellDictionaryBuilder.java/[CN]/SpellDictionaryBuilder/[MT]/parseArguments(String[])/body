@@ -1,0 +1,9 @@
+{
+  Options options=new Options();
+  Option option=new Option("o",true,"output file");
+  option.setRequired(true);
+  options.addOption(option);
+  CommandLineParser parser=new BasicParser();
+  CommandLine cmd=parser.parse(options,args);
+  return cmd;
+}

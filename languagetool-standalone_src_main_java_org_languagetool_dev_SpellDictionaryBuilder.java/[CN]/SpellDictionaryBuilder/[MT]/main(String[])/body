@@ -1,10 +1,12 @@
 {
-  checkUsageOrExit(SpellDictionaryBuilder.class.getSimpleName(),args);
+  CommandLine cmdLine=SpellDictionaryBuilder.parseArguments(args);
+  checkUsageOrExit(SpellDictionaryBuilder.class.getSimpleName(),cmdLine);
   String languageCode=args[0];
   String plainTextFile=args[1];
   String infoFile=args[2];
   SpellDictionaryBuilder builder=new SpellDictionaryBuilder(new File(infoFile));
-  if (args.length == 4) {
+  builder.setOutputFilename(cmdLine.getOptionValue("o"));
+  if (args.length >= 4) {
     String freqListFile=args[3];
     builder.readFreqList(new File(freqListFile));
     builder.build(languageCode,builder.addFreqData(new File(plainTextFile)));
