@@ -6,6 +6,9 @@
   System.out.println("Rule ID\tTime\tSentences\tMatches\tSentences per sec.");
   final List<String> sentences=lt.sentenceTokenize(contents);
   for (  Rule rule : rules) {
+    if (rule instanceof TextLevelRule) {
+      continue;
+    }
     int matchCount=0;
     for (int k=0; k < 10; k++) {
       final long startTime=System.currentTimeMillis();
