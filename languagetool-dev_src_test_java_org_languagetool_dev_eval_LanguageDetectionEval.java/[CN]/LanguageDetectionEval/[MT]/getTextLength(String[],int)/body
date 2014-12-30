@@ -1,0 +1,11 @@
+{
+  int i=0;
+  int charCount=0;
+  for (  String token : tokens) {
+    if (i++ > tokenPos) {
+      return charCount;
+    }
+    charCount+=token.length();
+  }
+  return charCount;
+}

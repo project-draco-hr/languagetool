@@ -1,0 +1,29 @@
+{
+  if (language.isVariant()) {
+    return;
+  }
+  String evalTextFile="/org/languagetool/dev/eval/lang/" + language.getShortName() + ".txt";
+  InputStream stream=LanguageDetectionEval.class.getResourceAsStream(evalTextFile);
+  System.out.println("=== " + language + " ===");
+  if (stream == null) {
+    System.out.println("No eval data for " + language);
+  }
+ else {
+    int minChars=0;
+    int failures=0;
+    List<String> list=getLines(stream);
+    for (    String line : list) {
+      try {
+        int minChar=getShortestCorrectDetection(line,language);
+        minChars+=minChar;
+      }
+ catch (      DetectionException e) {
+        failures++;
+      }
+    }
+    int avgMinChars=minChars / list.size();
+    System.out.println("Average minimum size still correctly detected: " + avgMinChars);
+    System.out.println("Detection failures: " + failures + " of "+ list.size());
+    totalFailures+=failures;
+  }
+}

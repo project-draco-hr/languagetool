@@ -1,0 +1,18 @@
+{
+  String[] tokens=line.split("\\s+");
+  for (int i=tokens.length; i > 0; i--) {
+    String text=StringTools.listToString(Arrays.asList(tokens).subList(0,i)," ");
+    LanguageIdentifier identifier=new LanguageIdentifier(text);
+    String detectedLang=identifier.getLanguage();
+    if (!detectedLang.equals(expectedLanguage.getShortName())) {
+      if (i == tokens.length) {
+        throw new DetectionException("Detection failed for '" + line + "', detected "+ detectedLang);
+      }
+ else {
+        int textLength=getTextLength(tokens,i + 1);
+        return textLength;
+      }
+    }
+  }
+  return tokens[0].length();
+}

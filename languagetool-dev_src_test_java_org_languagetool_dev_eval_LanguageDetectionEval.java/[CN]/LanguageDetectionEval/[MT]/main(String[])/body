@@ -1,0 +1,10 @@
+{
+  LanguageDetectionEval eval=new LanguageDetectionEval();
+  long startTime=System.currentTimeMillis();
+  for (  Language language : Language.REAL_LANGUAGES) {
+    eval.evaluate(language);
+  }
+  long endTime=System.currentTimeMillis();
+  System.out.println("Time: " + (endTime - startTime) + "ms");
+  System.out.println("Total detection failures: " + eval.totalFailures);
+}

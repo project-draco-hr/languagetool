@@ -1,0 +1,10 @@
+{
+  List<String> lines=IOUtils.readLines(stream,"utf-8");
+  List<String> result=new ArrayList<>();
+  for (  String line : lines) {
+    if (!line.startsWith("#")) {
+      result.add(line);
+    }
+  }
+  return result;
+}
