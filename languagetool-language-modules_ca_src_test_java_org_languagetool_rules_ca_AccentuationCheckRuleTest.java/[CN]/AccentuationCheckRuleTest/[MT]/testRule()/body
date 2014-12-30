@@ -41,6 +41,7 @@
   assertCorrect("Els h??bitats de la comarca.");
   assertCorrect("Joan Pau II beatifica Paula Montal.");
   assertCorrect("La magn??fica conservaci?? del palau.");
+  assertIncorrect("Les continues al??lusions a la vict??ria.");
   assertIncorrect("De positiva influencia en ell.");
   assertIncorrect("tren de llarga distancia");
   assertIncorrect("Cal una nova formula que substitueixi el caduc Estat del benestar.");
