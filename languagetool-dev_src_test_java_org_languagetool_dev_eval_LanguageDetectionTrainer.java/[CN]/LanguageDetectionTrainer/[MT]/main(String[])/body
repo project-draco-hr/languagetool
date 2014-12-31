@@ -1,0 +1,16 @@
+{
+  if (args.length != 3) {
+    System.out.println("Usage: " + LanguageDetectionTrainer.class.getName() + " <languageCode> <plainTextFile> <minimalFrequency>");
+    System.exit(1);
+  }
+  String langCode=args[0];
+  String fileName=args[1];
+  int minimalFrequency=Integer.parseInt(args[2]);
+  String text=IOUtils.toString(new FileReader(fileName));
+  TextObjectFactory textObjectFactory=CommonTextObjectFactories.forIndexingCleanText();
+  TextObject inputText=textObjectFactory.create().append(text);
+  LanguageProfile languageProfile=new LanguageProfileBuilder(langCode).ngramExtractor(NgramExtractors.standard()).minimalFrequency(minimalFrequency).addText(inputText).build();
+  File outputDir=new File(System.getProperty("user.dir"));
+  new LanguageProfileWriter().writeToDirectory(languageProfile,outputDir);
+  System.out.println("Language profile written to " + new File(outputDir,langCode).getAbsolutePath());
+}

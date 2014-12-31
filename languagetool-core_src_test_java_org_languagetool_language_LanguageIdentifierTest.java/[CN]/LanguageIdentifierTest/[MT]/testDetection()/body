@@ -1,0 +1,7 @@
+{
+  LanguageIdentifier identifier=new LanguageIdentifier(Arrays.asList("en","de"));
+  assertNull(identifier.detectLanguageCode(""));
+  assertNull(identifier.detectLanguageCode("X"));
+  assertThat(identifier.detectLanguageCode("This is an English text"),is("en"));
+  assertThat(identifier.detectLanguageCode("Das ist ein deutscher Text"),is("de"));
+}

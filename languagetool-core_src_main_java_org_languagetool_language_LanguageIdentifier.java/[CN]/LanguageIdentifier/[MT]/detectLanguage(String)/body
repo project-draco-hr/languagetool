@@ -1,0 +1,9 @@
+{
+  String languageCode=detectLanguageCode(text);
+  if (languageCode != null) {
+    return Language.getLanguageForShortName(languageCode);
+  }
+ else {
+    return null;
+  }
+}

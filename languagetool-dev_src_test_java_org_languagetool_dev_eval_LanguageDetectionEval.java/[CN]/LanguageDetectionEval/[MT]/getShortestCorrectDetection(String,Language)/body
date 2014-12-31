@@ -1,10 +1,17 @@
 {
+  totalInputs++;
   String[] tokens=line.split("\\s+");
   for (int i=tokens.length; i > 0; i--) {
     String text=StringTools.listToString(Arrays.asList(tokens).subList(0,i)," ");
-    LanguageIdentifier identifier=new LanguageIdentifier(text);
-    String detectedLang=identifier.getLanguage();
-    if (!detectedLang.equals(expectedLanguage.getShortName())) {
+    Language detectedLangObj=languageIdentifier.detectLanguage(text);
+    String detectedLang=null;
+    if (detectedLangObj != null) {
+      detectedLang=detectedLangObj.getShortName();
+    }
+    if (detectedLang == null && i == tokens.length) {
+      throw new DetectionException("Detection failed for '" + line + "', detected <null>");
+    }
+ else     if (detectedLang != null && !expectedLanguage.getShortName().equals(detectedLang)) {
       if (i == tokens.length) {
         throw new DetectionException("Detection failed for '" + line + "', detected "+ detectedLang);
       }

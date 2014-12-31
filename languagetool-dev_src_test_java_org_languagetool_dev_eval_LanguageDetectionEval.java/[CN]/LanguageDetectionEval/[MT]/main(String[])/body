@@ -5,6 +5,7 @@
     eval.evaluate(language);
   }
   long endTime=System.currentTimeMillis();
+  System.out.println();
   System.out.println("Time: " + (endTime - startTime) + "ms");
-  System.out.println("Total detection failures: " + eval.totalFailures);
+  System.out.println("Total detection failures: " + eval.totalFailures + "/"+ eval.totalInputs);
 }
