@@ -1,10 +1,6 @@
 {
-  final LanguageIdentifier langIdentifier=new LanguageIdentifier(text);
-  Language lang;
-  try {
-    lang=Language.getLanguageForShortName(langIdentifier.getLanguage());
-  }
- catch (  IllegalArgumentException e) {
+  Language lang=langIdentifier.detectLanguage(text);
+  if (lang == null) {
     lang=Language.getLanguageForLocale(Locale.getDefault());
   }
   if (lang.hasVariant()) {

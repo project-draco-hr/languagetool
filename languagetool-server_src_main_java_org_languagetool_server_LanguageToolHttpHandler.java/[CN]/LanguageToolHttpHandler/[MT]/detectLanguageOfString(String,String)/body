@@ -3,12 +3,8 @@
     print("Auto-detected language of text with length " + text.length() + " is not reasonably certain, using '"+ fallbackLanguage+ "' as fallback");
     return Language.getLanguageForShortName(fallbackLanguage);
   }
-  final LanguageIdentifier identifier=new LanguageIdentifier(text);
-  Language lang;
-  try {
-    lang=Language.getLanguageForShortName(identifier.getLanguage());
-  }
- catch (  IllegalArgumentException e) {
+  Language lang=identifier.detectLanguage(text);
+  if (lang == null) {
     lang=Language.getLanguageForLocale(Locale.ENGLISH);
   }
   if (lang.getDefaultLanguageVariant() != null) {

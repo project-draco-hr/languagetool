@@ -1,5 +1,0 @@
-{
-  for (  Language language : Language.REAL_LANGUAGES) {
-    addProfile(language);
-  }
-}

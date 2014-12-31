@@ -1,8 +1,0 @@
-{
-  LanguageIdentifier.initProfiles();
-  final int numLanguagesBefore=LanguageIdentifier.getSupportedLanguages().size();
-  assertEquals(27,numLanguagesBefore);
-  LanguageIdentifierTools.addLtProfiles();
-  final int numLanguagesAfter=LanguageIdentifier.getSupportedLanguages().size();
-  assertNotSame(numLanguagesAfter,numLanguagesBefore);
-}

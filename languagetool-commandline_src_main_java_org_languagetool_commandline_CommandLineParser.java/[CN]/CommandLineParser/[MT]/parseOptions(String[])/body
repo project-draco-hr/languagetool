@@ -14,7 +14,6 @@
       options.setPrintUsage(true);
     }
  else     if (args[i].equals("-adl") || args[i].equals("--autoDetect")) {
-      LanguageIdentifierTools.addLtProfiles();
       options.setAutoDetect(true);
     }
  else     if (args[i].equals("-v") || args[i].equals("--verbose")) {

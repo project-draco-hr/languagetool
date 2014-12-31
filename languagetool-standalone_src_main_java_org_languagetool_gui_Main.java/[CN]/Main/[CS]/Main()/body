@@ -1,4 +1,3 @@
 {
-  LanguageIdentifierTools.addLtProfiles();
   messages=JLanguageTool.getMessageBundle();
 }
