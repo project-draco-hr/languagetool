@@ -1,11 +1,7 @@
 {
-  if (text.length() < MIN_LENGTH_FOR_AUTO_DETECTION && fallbackLanguage != null) {
-    print("Auto-detected language of text with length " + text.length() + " is not reasonably certain, using '"+ fallbackLanguage+ "' as fallback");
-    return Language.getLanguageForShortName(fallbackLanguage);
-  }
   Language lang=identifier.detectLanguage(text);
   if (lang == null) {
-    lang=Language.getLanguageForLocale(Locale.ENGLISH);
+    lang=Language.getLanguageForShortName(fallbackLanguage != null ? fallbackLanguage : "en");
   }
   if (lang.getDefaultLanguageVariant() != null) {
     lang=lang.getDefaultLanguageVariant();
