@@ -1,5 +1,5 @@
 {
-  try (PreparedStatement prepSt=conn.prepareStatement("CREATE TABLE pings (" + "  language_code VARCHAR(5) NOT NULL," + "  ping_date TIMESTAMP NOT NULL"+ ")")){
+  try (PreparedStatement prepSt=conn.prepareStatement("CREATE TABLE pings (" + "  language_code VARCHAR(5) NOT NULL," + "  check_date TIMESTAMP NOT NULL"+ ")")){
     prepSt.executeUpdate();
   }
    try (PreparedStatement prepSt=conn.prepareStatement("CREATE TABLE feed_checks (" + "  language_code VARCHAR(5) NOT NULL," + "  check_date TIMESTAMP NOT NULL"+ ")")){
