@@ -1,0 +1,6 @@
+{
+  String detectedLangCode=identifier.detectLanguageCode(text);
+  if (!Objects.equals(expectedLangCode,detectedLangCode)) {
+    fail("Got '" + detectedLangCode + "', expected '"+ expectedLangCode+ "' for '"+ text+ "'");
+  }
+}
