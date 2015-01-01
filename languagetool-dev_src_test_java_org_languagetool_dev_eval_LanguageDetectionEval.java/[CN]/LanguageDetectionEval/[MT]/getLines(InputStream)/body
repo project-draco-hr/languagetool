@@ -1,5 +1,5 @@
 {
-  List<String> lines=IOUtils.readLines(stream,"utf-8");
+  List<String> lines=CharStreams.readLines(new InputStreamReader(stream));
   List<String> result=new ArrayList<>();
   for (  String line : lines) {
     if (!line.startsWith("#")) {
