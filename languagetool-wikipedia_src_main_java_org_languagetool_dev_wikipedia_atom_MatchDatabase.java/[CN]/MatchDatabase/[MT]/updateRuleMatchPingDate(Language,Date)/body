@@ -1,0 +1,3 @@
+{
+  updateRuleMatchDate("pings",language,date);
+}

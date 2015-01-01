@@ -1,0 +1,19 @@
+{
+  String updateSql="UPDATE " + tableName + " SET check_date = ? WHERE language_code = ?";
+  try (PreparedStatement updateSt=conn.prepareStatement(updateSql)){
+    updateSt.setTimestamp(1,new Timestamp(date.getTime()));
+    updateSt.setString(2,language.getShortName());
+    int affected=updateSt.executeUpdate();
+    if (affected == 0) {
+      String insertSql="INSERT INTO " + tableName + " (language_code, check_date) VALUES (?, ?)";
+      try (PreparedStatement insertSt=conn.prepareStatement(insertSql)){
+        insertSt.setString(1,language.getShortName());
+        insertSt.setTimestamp(2,new Timestamp(date.getTime()));
+        insertSt.execute();
+      }
+     }
+  }
+ catch (  SQLException e) {
+    throw new RuntimeException("Could not store date for " + language + " to database, table "+ tableName,e);
+  }
+}

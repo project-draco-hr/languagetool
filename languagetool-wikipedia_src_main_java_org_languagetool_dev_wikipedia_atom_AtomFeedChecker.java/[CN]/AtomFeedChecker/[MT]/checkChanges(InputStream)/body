@@ -7,6 +7,9 @@
     List<AtomFeedItem> items=new AtomFeedParser().getAtomFeedItems(xml);
     Collections.reverse(items);
     printDates(items,lastDateOfPreviousRun);
+    if (matchDatabase != null) {
+      matchDatabase.updateRuleMatchPingDate(language,new Date());
+    }
     for (    AtomFeedItem item : items) {
       if (lastDateOfPreviousRun != null && (item.getDate().before(lastDateOfPreviousRun) || item.getDate().equals(lastDateOfPreviousRun))) {
         System.out.println("Skipping " + item.getTitle() + ", date "+ item.getDate());
