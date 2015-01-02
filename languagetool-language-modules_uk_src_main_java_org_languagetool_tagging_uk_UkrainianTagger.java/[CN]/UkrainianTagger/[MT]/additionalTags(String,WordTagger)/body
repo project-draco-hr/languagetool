@@ -4,6 +4,11 @@
     additionalTaggedTokens.add(new AnalyzedToken(word,IPOSTag.number.getText(),word));
     return additionalTaggedTokens;
   }
+  if (DATE.matcher(word).matches()) {
+    List<AnalyzedToken> additionalTaggedTokens=new ArrayList<>();
+    additionalTaggedTokens.add(new AnalyzedToken(word,IPOSTag.date.getText(),word));
+    return additionalTaggedTokens;
+  }
   if (word.contains("-")) {
     int dashIdx=word.lastIndexOf('-');
     if (dashIdx == 0 || dashIdx == word.length() - 1)     return null;

@@ -1,11 +1,13 @@
 {
   text=cleanup(text);
   text=DECIMAL_COMMA_PATTERN.matcher(text).replaceAll("$1" + DECIMAL_COMMA_SUBST + "$2");
+  text=DATE_PATTERN.matcher(text).replaceAll("$1" + DATE_DOT_SUBST + "$2"+ DATE_DOT_SUBST+ "$3");
   List<String> tokenList=new ArrayList<>();
   StringTokenizer st=new StringTokenizer(text,SPLIT_CHARS,true);
   while (st.hasMoreElements()) {
     String token=st.nextToken();
     token=token.replace(DECIMAL_COMMA_SUBST,',');
+    token=token.replace(DATE_DOT_SUBST,'.');
     tokenList.add(token);
   }
   return tokenList;
