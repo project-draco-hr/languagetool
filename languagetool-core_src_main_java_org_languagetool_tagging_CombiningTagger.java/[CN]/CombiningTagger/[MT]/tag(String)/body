@@ -1,6 +1,8 @@
 {
   List<TaggedWord> result=new ArrayList<>();
-  result.addAll(tagger1.tag(word));
   result.addAll(tagger2.tag(word));
+  if (!(overwriteWithSecondTagger && result.size() > 0)) {
+    result.addAll(tagger1.tag(word));
+  }
   return result;
 }

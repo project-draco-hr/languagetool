@@ -6,7 +6,7 @@
       if (manualFileName != null) {
         InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(manualFileName);
         ManualTagger manualTagger=new ManualTagger(stream);
-        wordTagger=new CombiningTagger(morfologikTagger,manualTagger);
+        wordTagger=new CombiningTagger(morfologikTagger,manualTagger,overwriteWithManualTagger());
       }
  else {
         wordTagger=morfologikTagger;
