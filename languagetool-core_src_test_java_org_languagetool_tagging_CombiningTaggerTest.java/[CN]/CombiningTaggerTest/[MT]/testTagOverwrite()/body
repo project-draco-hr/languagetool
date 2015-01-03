@@ -1,0 +1,8 @@
+{
+  CombiningTagger tagger=getCombiningTagger(true);
+  assertThat(tagger.tag("nosuchword").size(),is(0));
+  List<TaggedWord> result=tagger.tag("fullform");
+  assertThat(result.size(),is(1));
+  String asString=getAsString(result);
+  assertTrue(asString.contains("baseform2/POSTAG2"));
+}
