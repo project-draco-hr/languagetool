@@ -1,0 +1,18 @@
+{
+  List<String> langCodes=new ArrayList<>();
+  for (  Language lang : Language.REAL_LANGUAGES) {
+    String langCode=lang.getShortName();
+    boolean ignore=lang.isVariant() || ignoreLangCodes.contains(langCode) || externalLangCodes.contains(langCode);
+    if (ignore) {
+      continue;
+    }
+    if ("zh".equals(langCode)) {
+      langCodes.add("zh-cn");
+      langCodes.add("zh-tw");
+    }
+ else {
+      langCodes.add(langCode);
+    }
+  }
+  return langCodes;
+}

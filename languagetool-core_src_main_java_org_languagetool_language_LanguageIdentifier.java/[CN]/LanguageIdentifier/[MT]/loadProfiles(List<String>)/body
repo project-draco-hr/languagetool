@@ -1,8 +1,8 @@
 {
   LanguageProfileReader profileReader=new LanguageProfileReader();
-  List<LanguageProfile> profiles=profileReader.read(langNames);
-  for (  String externalLangName : externalLangNames) {
-    String profilePath="/" + externalLangName + "/"+ externalLangName+ ".profile";
+  List<LanguageProfile> profiles=profileReader.read(langCodes);
+  for (  String externalLangCode : externalLangCodes) {
+    String profilePath="/" + externalLangCode + "/"+ externalLangCode+ ".profile";
     InputStream profile=JLanguageTool.getDataBroker().getFromResourceDirAsStream(profilePath);
     profiles.add(new LanguageProfileReader().read(profile));
   }

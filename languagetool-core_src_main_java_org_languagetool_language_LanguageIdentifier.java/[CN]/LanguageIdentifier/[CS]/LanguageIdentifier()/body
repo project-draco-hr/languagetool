@@ -1,3 +1,10 @@
 {
-  this(getLanguageNames());
+  try {
+    List<LanguageProfile> profiles=loadProfiles(getLanguageCodes());
+    languageDetector=LanguageDetectorBuilder.create(NgramExtractors.standard()).minimalConfidence(MINIMAL_CONFIDENCE).withProfiles(profiles).build();
+    textObjectFactory=CommonTextObjectFactories.forDetectingOnLargeText();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Could not set up language identifier",e);
+  }
 }

@@ -1,6 +1,7 @@
 {
-  String detectedLangCode=identifier.detectLanguageCode(text);
-  if (!Objects.equals(expectedLangCode,detectedLangCode)) {
-    fail("Got '" + detectedLangCode + "', expected '"+ expectedLangCode+ "' for '"+ text+ "'");
+  Language expectedLang=expectedLangCode != null ? Language.getLanguageForShortName(expectedLangCode) : null;
+  Language detectedLang=identifier.detectLanguage(text);
+  if (!Objects.equals(expectedLang,detectedLang)) {
+    fail("Got '" + detectedLang + "', expected '"+ expectedLangCode+ "' for '"+ text+ "'");
   }
 }
