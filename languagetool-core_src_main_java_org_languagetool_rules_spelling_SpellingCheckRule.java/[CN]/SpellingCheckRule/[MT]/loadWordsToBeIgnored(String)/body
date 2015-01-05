@@ -10,6 +10,7 @@
         if (isComment) {
           continue;
         }
+        failOnSpace(ignoreFile,line);
         if (language.getShortNameWithCountryAndVariant().equals("de-CH")) {
           wordsToBeIgnored.add(line.replace("??","ss"));
         }

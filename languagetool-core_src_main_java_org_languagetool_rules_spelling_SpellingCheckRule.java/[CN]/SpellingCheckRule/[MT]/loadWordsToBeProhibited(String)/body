@@ -10,6 +10,7 @@
         if (isComment) {
           continue;
         }
+        failOnSpace(prohibitFile,line);
         wordsToBeProhibited.add(line);
       }
     }
