@@ -21,6 +21,8 @@
   assertGood("Er wird etwas so Verr??cktes tr??umen.");
   assertGood("Tom ist etwas ??ber drei??ig.");
   assertGood("Diese Angriffe bleiben im Verborgenen.");
+  assertGood("Ihr sollt mich das wissen lassen.");
+  assertGood("Wenn er mich das rechtzeitig wissen l??sst, gerne.");
   assertBad("Tom ist etwas ??ber Drei??ig.");
   assertGood("Ein Menschenfreund.");
   assertGood("Der Nachfahre.");

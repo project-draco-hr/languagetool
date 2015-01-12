@@ -23,6 +23,9 @@
       boolean nextTokenIsPersonalPronoun=false;
       if (i < tokens.length - 1) {
         nextTokenIsPersonalPronoun=tokens[i + 1].hasPartialPosTag("PRO:PER") || tokens[i + 1].getToken().equals("Sie");
+        if (tokens[i + 1].hasLemma("lassen")) {
+          continue;
+        }
       }
       potentiallyAddLowercaseMatch(ruleMatches,tokens[i],prevTokenIsDas,token,nextTokenIsPersonalPronoun);
     }
