@@ -1,0 +1,4 @@
+Rule rule
+List<String> correctExamples
+IncorrectExample incorrectExample
+List<String> xmlLines

@@ -1,0 +1,3 @@
+Rule rule
+String sentenceToRemove
+List<String> xmlLines

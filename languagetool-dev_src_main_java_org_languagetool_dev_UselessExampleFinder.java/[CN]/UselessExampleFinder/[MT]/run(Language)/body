@@ -1,0 +1,23 @@
+{
+  File basePath=new File("/lt/git/languagetool/languagetool-language-modules");
+  if (!basePath.exists()) {
+    throw new RuntimeException("basePath does not exist: " + basePath);
+  }
+  String langCode=lang.getShortName();
+  File xml=new File(basePath,"/" + langCode + "/src/main/resources/org/languagetool/rules/"+ langCode+ "/grammar.xml");
+  List<String> xmlLines=IOUtils.readLines(new FileReader(xml));
+  JLanguageTool tool=new JLanguageTool(lang);
+  tool.activateDefaultPatternRules();
+  for (  Rule rule : tool.getAllActiveRules()) {
+    List<String> correctExamples=rule.getCorrectExamples();
+    List<IncorrectExample> incorrectExamples=rule.getIncorrectExamples();
+    for (    IncorrectExample incorrectExample : incorrectExamples) {
+      checkCorrections(rule,correctExamples,incorrectExample,xmlLines);
+    }
+  }
+  System.err.println("Useless examples: " + uselessExampleCount);
+  System.err.println("Removed lines: " + removedLinesCount);
+  for (  String xmlLine : xmlLines) {
+    System.out.println(xmlLine);
+  }
+}

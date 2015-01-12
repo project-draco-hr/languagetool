@@ -1,0 +1,52 @@
+{
+  List<Integer> linesToRemove=new ArrayList<>();
+  String currentRuleId=null;
+  Pattern pattern=Pattern.compile(".*id=[\"'](.*?)[\"'].*");
+  String expectedSubId=((AbstractPatternRule)rule).getSubId();
+  int lineCount=0;
+  int subRuleCount=0;
+  int removedCount=0;
+  boolean inRuleGroup=false;
+  for (  String xmlLine : xmlLines) {
+    if (xmlLine.contains("<rulegroup")) {
+      subRuleCount=0;
+      inRuleGroup=true;
+    }
+ else     if (xmlLine.contains("</rulegroup>")) {
+      subRuleCount=0;
+      inRuleGroup=false;
+    }
+ else     if ((xmlLine.contains("<rule ") || xmlLine.contains("<rule>")) && inRuleGroup) {
+      subRuleCount++;
+    }
+    Matcher m=pattern.matcher(xmlLine);
+    if (m.matches()) {
+      currentRuleId=m.group(1);
+    }
+    if ((xmlLine.contains("type=\"correct\"") || xmlLine.contains("type='correct'")) && xmlLine.contains(sentenceToRemove + "</example>")) {
+      if (currentRuleId != null && !currentRuleId.equals(rule.getId())) {
+        lineCount++;
+        continue;
+      }
+      if (!inRuleGroup) {
+        subRuleCount=1;
+      }
+      if (!expectedSubId.equals("0") && !expectedSubId.equals(String.valueOf(subRuleCount))) {
+        lineCount++;
+        continue;
+      }
+      linesToRemove.add(lineCount);
+      break;
+    }
+    lineCount++;
+  }
+  Collections.reverse(linesToRemove);
+  for (  Integer s : linesToRemove) {
+    xmlLines.remove(s.intValue());
+    removedLinesCount++;
+    removedCount++;
+  }
+  if (removedCount == 0) {
+    System.err.println("No line removed: " + rule + "["+ expectedSubId+ "]");
+  }
+}
