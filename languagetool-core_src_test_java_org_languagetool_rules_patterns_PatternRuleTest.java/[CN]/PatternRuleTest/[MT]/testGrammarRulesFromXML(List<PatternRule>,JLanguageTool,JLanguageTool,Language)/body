@@ -1,5 +1,5 @@
 {
-  final HashMap<String,PatternRule> complexRules=new HashMap<>();
+  final Map<String,PatternRule> complexRules=new HashMap<>();
   for (  final PatternRule rule : rules) {
     testCorrectSentences(languageTool,allRulesLanguageTool,lang,rule);
     testBadSentences(languageTool,allRulesLanguageTool,lang,complexRules,rule);
