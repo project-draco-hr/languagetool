@@ -2,5 +2,5 @@
   tagger=new CatalanTagger();
   tokenizer=new CatalanWordTokenizer();
   sentenceTokenizer=new SRXSentenceTokenizer(new Catalan());
-  disambiguator=new MultiWordChunker("/ca/multiwords.txt");
+  disambiguator=new MultiWordChunker("/ca/multiwords.txt",true);
 }
