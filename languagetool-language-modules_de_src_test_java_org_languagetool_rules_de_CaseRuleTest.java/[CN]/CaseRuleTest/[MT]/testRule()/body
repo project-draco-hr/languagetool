@@ -24,6 +24,7 @@
   assertGood("Ihr sollt mich das wissen lassen.");
   assertGood("Wenn er mich das rechtzeitig wissen l??sst, gerne.");
   assertBad("Tom ist etwas ??ber Drei??ig.");
+  assertBad("Unser warten wird sich lohnen.");
   assertGood("Ein Menschenfreund.");
   assertGood("Der Nachfahre.");
   assertGood("Hier ein Satz, \"Ein Zitat.\"");
