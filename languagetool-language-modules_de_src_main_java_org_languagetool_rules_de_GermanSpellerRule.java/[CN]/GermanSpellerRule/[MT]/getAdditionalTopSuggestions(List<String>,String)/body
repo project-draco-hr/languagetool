@@ -11,5 +11,8 @@
  else   if ("wievielen".equals(word)) {
     return Collections.singletonList("wie vielen");
   }
+ else   if ("vorteilen".equals(word)) {
+    return Collections.singletonList("Vorteilen");
+  }
   return Collections.emptyList();
 }
