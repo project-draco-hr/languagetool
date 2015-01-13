@@ -6,8 +6,8 @@
   String infoFile=args[2];
   SpellDictionaryBuilder builder=new SpellDictionaryBuilder(new File(infoFile));
   builder.setOutputFilename(cmdLine.getOptionValue("o"));
-  if (args.length >= 4) {
-    String freqListFile=args[3];
+  String freqListFile=args[3];
+  if (!freqListFile.equals("-")) {
     builder.readFreqList(new File(freqListFile));
     builder.build(languageCode,builder.addFreqData(new File(plainTextFile)));
   }
