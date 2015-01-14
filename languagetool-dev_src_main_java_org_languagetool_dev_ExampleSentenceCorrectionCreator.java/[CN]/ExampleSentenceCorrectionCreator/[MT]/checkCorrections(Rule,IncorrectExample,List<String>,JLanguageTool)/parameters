@@ -1,0 +1,4 @@
+Rule rule
+IncorrectExample incorrectExample
+List<String> xmlLines
+JLanguageTool tool

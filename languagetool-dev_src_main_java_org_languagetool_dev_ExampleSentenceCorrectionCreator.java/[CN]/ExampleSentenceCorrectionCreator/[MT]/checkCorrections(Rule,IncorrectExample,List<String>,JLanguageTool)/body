@@ -1,0 +1,19 @@
+{
+  List<String> corrections=incorrectExample.getCorrections();
+  if (corrections != null && corrections.size() == 0) {
+    for (    Rule r : tool.getAllActiveRules()) {
+      tool.disableRule(r.getId());
+    }
+    tool.enableRule(rule.getId());
+    tool.enableDefaultOffRule(rule.getId());
+    String incorrectSentence=incorrectExample.getExample().replaceAll("</?marker>","");
+    List<RuleMatch> matches=tool.check(incorrectSentence);
+    System.err.println("no corrections: " + rule.getId() + ", "+ matches.size()+ " matches");
+    if (matches.size() == 0) {
+      throw new RuntimeException("Got no rule match: " + incorrectSentence);
+    }
+    List<String> suggestedReplacements=matches.get(0).getSuggestedReplacements();
+    String newAttribute="correction=\"" + StringTools.listToString(suggestedReplacements,"|") + "\"";
+    addAttribute(rule,newAttribute,xmlLines);
+  }
+}
