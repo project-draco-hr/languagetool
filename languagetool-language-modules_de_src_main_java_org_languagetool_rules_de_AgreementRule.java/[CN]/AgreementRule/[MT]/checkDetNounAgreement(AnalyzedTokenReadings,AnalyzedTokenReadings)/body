@@ -2,6 +2,9 @@
   if (NOUNS_TO_BE_IGNORED.contains(token2.getToken())) {
     return null;
   }
+  if (token2.isImmunized()) {
+    return null;
+  }
   final Set<String> set1=getAgreementCategories(token1);
   if (set1 == null) {
     return null;

@@ -6,6 +6,9 @@
     if (posToken != null && posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
       continue;
     }
+    if (tokens[i].isImmunized()) {
+      continue;
+    }
     final AnalyzedTokenReadings tokenReadings=tokens[i];
     final boolean relevantPronoun=isRelevantPronoun(tokens,i);
     boolean ignore=couldBeRelativeClause(tokens,i);
