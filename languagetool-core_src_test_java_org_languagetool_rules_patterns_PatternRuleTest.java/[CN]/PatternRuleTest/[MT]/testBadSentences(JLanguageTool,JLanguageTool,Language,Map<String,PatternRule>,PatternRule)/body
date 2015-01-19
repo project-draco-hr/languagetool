@@ -1,5 +1,7 @@
 {
   final List<IncorrectExample> badSentences=rule.getIncorrectExamples();
+  if (badSentences.size() == 0) {
+  }
   List<PatternRule> rules=allRulesLanguageTool.getPatternRulesByIdAndSubId(rule.getId(),rule.getSubId());
   for (  IncorrectExample origBadExample : badSentences) {
     final String origBadSentence=origBadExample.getExample().replaceAll("[\\n\\t]+","");
