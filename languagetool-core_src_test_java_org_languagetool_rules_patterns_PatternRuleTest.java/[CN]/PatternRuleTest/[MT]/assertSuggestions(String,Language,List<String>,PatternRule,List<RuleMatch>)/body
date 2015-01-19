@@ -1,0 +1,16 @@
+{
+  if (expectedCorrections != null && expectedCorrections.size() > 0) {
+    boolean expectedNonEmptyCorrection=expectedCorrections.get(0).length() > 0;
+    if (expectedNonEmptyCorrection) {
+      assertTrue("You specified a correction but your message has no suggestions in rule " + rule,rule.getMessage().contains("<suggestion>") || rule.getSuggestionsOutMsg().contains("<suggestion>"));
+    }
+    List<String> realSuggestions=matches.get(0).getSuggestedReplacements();
+    if (realSuggestions.size() == 0) {
+      boolean expectedEmptyCorrection=expectedCorrections.size() == 1 && expectedCorrections.get(0).length() == 0;
+      assertTrue(lang + ": Incorrect suggestions: " + expectedCorrections.toString()+ " != "+ " <no suggestion> for rule "+ rule+ "["+ rule.getSubId()+ "] on input: "+ sentence,expectedEmptyCorrection);
+    }
+ else {
+      assertEquals(lang + ": Incorrect suggestions: " + expectedCorrections.toString()+ " != "+ realSuggestions+ " for rule "+ rule+ "["+ rule.getSubId()+ "] on input: "+ sentence,expectedCorrections,realSuggestions);
+    }
+  }
+}

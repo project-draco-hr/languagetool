@@ -3,7 +3,7 @@
   List<PatternRule> rules=allRulesLanguageTool.getPatternRulesByIdAndSubId(rule.getId(),rule.getSubId());
   for (  IncorrectExample origBadExample : badSentences) {
     final String origBadSentence=origBadExample.getExample().replaceAll("[\\n\\t]+","");
-    final List<String> suggestedCorrections=origBadExample.getCorrections();
+    final List<String> expectedCorrections=origBadExample.getCorrections();
     final int expectedMatchStart=origBadSentence.indexOf("<marker>");
     final int expectedMatchEnd=origBadSentence.indexOf("</marker>") - "<marker>".length();
     if (expectedMatchStart == -1 || expectedMatchEnd == -1) {
@@ -26,10 +26,7 @@
       }
       assertEquals(lang + ": Incorrect match position markup (start) for rule " + rule+ ", sentence: "+ badSentence,expectedMatchStart,matches.get(0).getFromPos());
       assertEquals(lang + ": Incorrect match position markup (end) for rule " + rule+ ", sentence: "+ badSentence,expectedMatchEnd,matches.get(0).getToPos());
-      if (suggestedCorrections != null && suggestedCorrections.size() > 0) {
-        assertTrue("You specified a correction but your message has no suggestions in rule " + rule,rule.getMessage().contains("<suggestion>") || rule.getSuggestionsOutMsg().contains("<suggestion>"));
-        assertEquals(lang + ": Incorrect suggestions: " + suggestedCorrections.toString()+ " != "+ matches.get(0).getSuggestedReplacements()+ " for rule "+ rule+ "["+ rule.getSubId()+ "] on input: "+ badSentence,suggestedCorrections,matches.get(0).getSuggestedReplacements());
-      }
+      assertSuggestions(badSentence,lang,expectedCorrections,rule,matches);
       if (matches.get(0).getSuggestedReplacements().size() > 0) {
         final int fromPos=matches.get(0).getFromPos();
         final int toPos=matches.get(0).getToPos();
@@ -52,8 +49,8 @@
         assertTrue(lang + ": Did expect one error in: \"" + badSentence+ "\" (Rule: "+ rule+ "), got "+ matches.size(),matches.size() == 1);
         assertEquals(lang + ": Incorrect match position markup (start) for rule " + rule,expectedMatchStart,matches.get(0).getFromPos());
         assertEquals(lang + ": Incorrect match position markup (end) for rule " + rule,expectedMatchEnd,matches.get(0).getToPos());
-        assertSuggestions(suggestedCorrections,lang,matches,rule);
-        assertSuggestionsDoNotCreateErrors(languageTool,rule,badSentence,matches);
+        assertSuggestions(badSentence,lang,expectedCorrections,rule,matches);
+        assertSuggestionsDoNotCreateErrors(badSentence,languageTool,rule,matches);
       }
     }
   }

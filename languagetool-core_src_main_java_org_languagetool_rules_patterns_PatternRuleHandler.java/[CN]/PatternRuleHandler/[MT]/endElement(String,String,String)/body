@@ -104,7 +104,7 @@ correctExamples.add(correctExample.toString());
 final IncorrectExample example;
 final List<String> corrections=new ArrayList<>();
 corrections.addAll(Arrays.asList(exampleCorrection.toString().split("\\|")));
-if (corrections.size() > 0 && corrections.get(0).length() > 0) {
+if (corrections.size() > 0) {
 if (exampleCorrection.toString().endsWith("|")) {
 corrections.add("");
 }

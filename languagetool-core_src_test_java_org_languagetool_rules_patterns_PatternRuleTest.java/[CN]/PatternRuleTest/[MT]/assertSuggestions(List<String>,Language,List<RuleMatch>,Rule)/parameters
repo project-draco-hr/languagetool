@@ -1,4 +1,0 @@
-List<String> suggestedCorrections
-Language lang
-List<RuleMatch> matches
-Rule rule
