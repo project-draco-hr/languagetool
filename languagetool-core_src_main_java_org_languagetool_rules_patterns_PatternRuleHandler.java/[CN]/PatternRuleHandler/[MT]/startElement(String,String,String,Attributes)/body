@@ -105,11 +105,7 @@ setExceptions(attrs);
 break;
 case EXAMPLE:
 String typeVal=attrs.getValue(TYPE);
-if ("correct".equals(typeVal)) {
-inCorrectExample=true;
-correctExample=new StringBuilder();
-}
- else if ("incorrect".equals(typeVal) || attrs.getValue("correction") != null) {
+if ("incorrect".equals(typeVal) || attrs.getValue("correction") != null) {
 inIncorrectExample=true;
 incorrectExample=new StringBuilder();
 exampleCorrection=new StringBuilder();
@@ -120,7 +116,8 @@ exampleCorrection.append(attrs.getValue("correction"));
  else if ("triggers_error".equals(typeVal)) {
 }
  else {
-throw new RuntimeException("Example in rule " + id + "["+ subId+ "] needs a 'type' or a 'correction' attribute");
+inCorrectExample=true;
+correctExample=new StringBuilder();
 }
 break;
 case "filter":
