@@ -1,0 +1,9 @@
+{
+  final Disambiguator chunker=new MultiWordChunker("/uk/multiwords.txt");
+  final JLanguageTool lt=new JLanguageTool(new Ukrainian());
+  final AnalyzedSentence analyzedSentence=lt.getAnalyzedSentence("??????  ????????????????.");
+  final AnalyzedSentence disambiguated=chunker.disambiguate(analyzedSentence);
+  final AnalyzedTokenReadings[] tokens=disambiguated.getTokens();
+  assertTrue(tokens[1].getReadings().toString().contains("<adv>"));
+  assertTrue(tokens[4].getReadings().toString().contains("</adv>"));
+}
