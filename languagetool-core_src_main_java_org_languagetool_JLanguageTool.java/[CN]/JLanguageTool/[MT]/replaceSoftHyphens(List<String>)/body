@@ -1,10 +1,12 @@
 {
-  final Map<Integer,String> softHyphenTokens=new HashMap<>();
+  Pattern ignoredCharacterRegex=language.getIgnoredCharactersRegex();
+  final Map<Integer,String> ignoredCharsTokens=new HashMap<>();
+  if (ignoredCharacterRegex == null)   return ignoredCharsTokens;
   for (int i=0; i < tokens.size(); i++) {
-    if (tokens.get(i).indexOf('\u00ad') != -1) {
-      softHyphenTokens.put(i,tokens.get(i));
-      tokens.set(i,tokens.get(i).replaceAll("\u00ad",""));
+    if (ignoredCharacterRegex.matcher(tokens.get(i)).find()) {
+      ignoredCharsTokens.put(i,tokens.get(i));
+      tokens.set(i,ignoredCharacterRegex.matcher(tokens.get(i)).replaceAll(""));
     }
   }
-  return softHyphenTokens;
+  return ignoredCharsTokens;
 }

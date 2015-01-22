@@ -1,0 +1,3 @@
+{
+  this.ignoredCharactersRegex=Pattern.compile(ignoredCharactersRegex);
+}
