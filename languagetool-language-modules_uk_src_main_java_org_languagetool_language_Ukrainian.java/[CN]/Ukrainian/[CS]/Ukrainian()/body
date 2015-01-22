@@ -1,0 +1,3 @@
+{
+  setIgnoredCharactersRegex("[\u00AD\u0301]");
+}
