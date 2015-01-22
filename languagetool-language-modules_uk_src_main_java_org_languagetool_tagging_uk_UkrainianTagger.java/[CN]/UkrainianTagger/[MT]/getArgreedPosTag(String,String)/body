@@ -1,21 +1,14 @@
 {
-  if (isPlural(leftPosTag) && !isPlural(rightPosTag))   return null;
+  if (isPlural(leftPosTag) && !isPlural(rightPosTag) || !isPlural(leftPosTag) && isPlural(rightPosTag))   return null;
   if (!istotaNeistotaMatch(leftPosTag,rightPosTag))   return null;
   if (stdNounTagRegex.matcher(leftPosTag).matches()) {
     if (stdNounTagRegex.matcher(rightPosTag).matches()) {
       String substring1=leftPosTag.substring(stdNounTagLen,stdNounTagLen + 3);
       String substring2=rightPosTag.substring(stdNounTagLen,stdNounTagLen + 3);
       if (substring1.equals(substring2)) {
+        if (leftPosTag.contains(":nv"))         return rightPosTag;
         return leftPosTag;
       }
-    }
- else     if (stdNounNvTagRegex.matcher(rightPosTag).matches()) {
-      return leftPosTag;
-    }
-  }
- else   if (stdNounNvTagRegex.matcher(leftPosTag).matches()) {
-    if (stdNounTagRegex.matcher(rightPosTag).matches()) {
-      return rightPosTag;
     }
   }
   return null;

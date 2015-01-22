@@ -4,5 +4,5 @@
   sentenceTokenizer=new SRXSentenceTokenizer(new Ukrainian());
   disambiguator=new UkrainianHybridDisambiguator();
   demoDisambiguator=new DemoDisambiguator();
-  chunker=new MultiWordChunker("/uk/multiwords.txt");
+  chunker=new MultiWordChunker("/uk/multiwords.txt",true);
 }

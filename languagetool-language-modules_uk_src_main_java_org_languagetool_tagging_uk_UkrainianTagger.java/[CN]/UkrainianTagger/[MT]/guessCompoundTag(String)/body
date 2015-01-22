@@ -1,0 +1,95 @@
+{
+  int dashIdx=word.lastIndexOf('-');
+  if (dashIdx == 0 || dashIdx == word.length() - 1)   return null;
+  int firstDashIdx=word.indexOf('-');
+  if (dashIdx != firstDashIdx)   return null;
+  String leftWord=word.substring(0,dashIdx);
+  String rightWord=word.substring(dashIdx + 1);
+  List<TaggedWord> leftWdList=wordTagger.tag(leftWord);
+  String leftLowerCase=leftWord.toLowerCase(conversionLocale);
+  if (!leftWord.equals(leftLowerCase)) {
+    leftWdList.addAll(wordTagger.tag(leftLowerCase));
+  }
+  if (rightWord.equals("????") || rightWord.equals("????")) {
+    if (leftWdList.isEmpty())     return null;
+    List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
+    return verbImperNoBo(word,leftAnalyzedTokens);
+  }
+  if (rightWord.equals("????????")) {
+    if (leftWdList.isEmpty())     return null;
+    List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
+    List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(leftAnalyzedTokens.size());
+    for (    AnalyzedToken analyzedToken : leftAnalyzedTokens) {
+      String posTag=analyzedToken.getPOSTag();
+      newAnalyzedTokens.add(new AnalyzedToken(word,posTag,analyzedToken.getLemma()));
+    }
+    return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
+  }
+  if (leftWord.equalsIgnoreCase("????") && rightWord.endsWith("????????")) {
+    rightWord+="??";
+  }
+  List<TaggedWord> rightWdList=wordTagger.tag(rightWord);
+  if (rightWdList.isEmpty())   return null;
+  List<AnalyzedToken> rightAnalyzedTokens=asAnalyzedTokenListForTaggedWords(rightWord,rightWdList);
+  if (leftWord.equalsIgnoreCase("????")) {
+    if (rightWord.endsWith("??????")) {
+      return poAdvMatch(word,rightAnalyzedTokens,ADJ_TAG_FOR_PO_ADV_MIS);
+    }
+ else     if (rightWord.endsWith("??????????")) {
+      return poAdvMatch(word,rightAnalyzedTokens,ADJ_TAG_FOR_PO_ADV_NAZ);
+    }
+    return null;
+  }
+  if (NUMBER.matcher(leftWord).matches()) {
+    List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(rightAnalyzedTokens.size());
+    if (NUMR_ENDING_MAP.containsKey(rightWord)) {
+      List<String> tags=NUMR_ENDING_MAP.get(rightWord);
+      for (      String tag : tags) {
+        newAnalyzedTokens.add(new AnalyzedToken(word,IPOSTag.adj.getText() + tag,leftWord + "-" + "??"));
+      }
+    }
+ else {
+      for (      AnalyzedToken analyzedToken : rightAnalyzedTokens) {
+        if (analyzedToken.getPOSTag().startsWith(IPOSTag.adj.getText())) {
+          newAnalyzedTokens.add(new AnalyzedToken(word,analyzedToken.getPOSTag(),leftWord + "-" + analyzedToken.getLemma()));
+        }
+      }
+    }
+    return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
+  }
+  if (dashPrefixes.contains(leftWord) || dashPrefixes.contains(leftWord.toLowerCase())) {
+    return eksNounMatch(word,rightAnalyzedTokens,leftWord);
+  }
+  if (word.startsWith("??????-") && Character.isUpperCase(word.charAt(4))) {
+    List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(rightAnalyzedTokens.size());
+    for (    AnalyzedToken rightAnalyzedToken : rightAnalyzedTokens) {
+      String rightPosTag=rightAnalyzedToken.getPOSTag();
+      if (rightPosTag == null)       continue;
+      if (rightPosTag.matches("^noun:[mfn]:v_rod.*")) {
+        for (        String vid : VIDMINKY_MAP.keySet()) {
+          if (vid.equals("v_kly"))           continue;
+          String posTag=rightPosTag.replaceFirst("v_...",vid);
+          newAnalyzedTokens.add(new AnalyzedToken(word,posTag,word));
+        }
+      }
+    }
+    return newAnalyzedTokens;
+  }
+  if (Character.isUpperCase(leftWord.charAt(0)) && cityAvenue.contains(rightWord)) {
+    if (leftWdList.isEmpty())     return null;
+    List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
+    return cityAvenueMatch(word,leftAnalyzedTokens);
+  }
+  if (!leftWdList.isEmpty()) {
+    List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
+    List<AnalyzedToken> tagMatch=tagMatch(word,leftAnalyzedTokens,rightAnalyzedTokens);
+    if (tagMatch != null) {
+      return tagMatch;
+    }
+  }
+  if (leftWord.endsWith("??")) {
+    return oAdjMatch(word,rightAnalyzedTokens,leftWord);
+  }
+  debug_compound_write(word);
+  return null;
+}

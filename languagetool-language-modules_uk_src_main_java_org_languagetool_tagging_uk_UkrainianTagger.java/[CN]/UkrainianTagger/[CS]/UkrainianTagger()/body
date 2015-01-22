@@ -2,4 +2,5 @@
   super();
   setLocale(new Locale("uk","UA"));
   dontTagLowercaseWithUppercase();
+  debugCompounds();
 }

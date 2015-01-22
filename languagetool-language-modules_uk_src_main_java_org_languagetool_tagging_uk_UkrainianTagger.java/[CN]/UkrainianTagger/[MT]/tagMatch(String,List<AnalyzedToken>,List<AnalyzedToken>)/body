@@ -1,24 +1,36 @@
 {
   List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>();
+  boolean anim_inanim=false;
   for (  AnalyzedToken leftAnalyzedToken : leftAnalyzedTokens) {
     String leftPosTag=leftAnalyzedToken.getPOSTag();
     for (    AnalyzedToken rightAnalyzedToken : rightAnalyzedTokens) {
       String rightPosTag=rightAnalyzedToken.getPOSTag();
-      if (leftPosTag != null && rightPosTag != null) {
-        if (leftPosTag.equals(rightPosTag) && (leftPosTag.startsWith(IPOSTag.numr.getText()) || leftPosTag.startsWith(IPOSTag.adv.getText()) || leftPosTag.startsWith(IPOSTag.adj.getText()))) {
-          newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+      if (leftPosTag == null || rightPosTag == null)       continue;
+      if (leftPosTag.equals(rightPosTag) && (leftPosTag.startsWith(IPOSTag.numr.getText()) || leftPosTag.startsWith(IPOSTag.adv.getText()) || leftPosTag.startsWith(IPOSTag.adj.getText()))) {
+        newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+      }
+ else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && rightPosTag.startsWith(IPOSTag.noun.getText())) {
+        String agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag);
+        if (agreedPosTag == null && !istotaNeistotaMatch(leftPosTag,rightPosTag)) {
+          anim_inanim=true;
         }
- else         if (leftPosTag.startsWith(IPOSTag.noun.getText()) && rightPosTag.startsWith(IPOSTag.noun.getText())) {
-          String agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag);
-          if (agreedPosTag == null && rightPosTag.startsWith(IPOSTag.noun.getText() + ":m:v_naz") && (rightAnalyzedToken.getToken().equals("????????????????") || rightAnalyzedToken.getToken().equals("??????????????"))) {
-            agreedPosTag=leftPosTag;
-          }
-          if (agreedPosTag != null) {
-            newAnalyzedTokens.add(new AnalyzedToken(word,agreedPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
-          }
+        if (agreedPosTag == null && rightPosTag.startsWith(IPOSTag.noun.getText() + ":m:v_naz") && (rightAnalyzedToken.getToken().equals("????????????????") || rightAnalyzedToken.getToken().equals("??????????????"))) {
+          agreedPosTag=leftPosTag;
+        }
+        if (agreedPosTag != null) {
+          newAnalyzedTokens.add(new AnalyzedToken(word,agreedPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+        }
+      }
+ else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && IPOSTag.startsWith(rightPosTag,IPOSTag.adj,IPOSTag.numr)) {
+        String leftGenderConj=getGenderConj(leftPosTag);
+        if (leftGenderConj != null && leftGenderConj.equals(getGenderConj(rightPosTag))) {
+          newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
         }
       }
     }
+  }
+  if (anim_inanim && newAnalyzedTokens.isEmpty()) {
+    debug_compound_write(word + " anim-inanim");
   }
   return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
 }

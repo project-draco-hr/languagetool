@@ -10,53 +10,7 @@
     return additionalTaggedTokens;
   }
   if (word.contains("-")) {
-    int dashIdx=word.lastIndexOf('-');
-    if (dashIdx == 0 || dashIdx == word.length() - 1)     return null;
-    int firstDashIdx=word.indexOf('-');
-    if (dashIdx != firstDashIdx)     return null;
-    String leftWord=word.substring(0,dashIdx);
-    String rightWord=word.substring(dashIdx + 1);
-    if (rightWord.equals("????") || rightWord.equals("????")) {
-      List<TaggedWord> leftWdList=wordTagger.tag(leftWord);
-      if (leftWdList.isEmpty())       return null;
-      List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
-      return verbImperNoBo(word,leftAnalyzedTokens);
-    }
-    if (leftWord.equalsIgnoreCase("????") && rightWord.endsWith("????????")) {
-      rightWord+="??";
-    }
-    List<TaggedWord> wdList=wordTagger.tag(rightWord);
-    if (wdList.isEmpty())     return null;
-    List<AnalyzedToken> rightAnalyzedTokens=asAnalyzedTokenListForTaggedWords(rightWord,wdList);
-    if (leftWord.equalsIgnoreCase("????")) {
-      if (rightWord.endsWith("??????")) {
-        return poAdvMatch(word,rightAnalyzedTokens,ADJ_TAG_FOR_PO_ADV_MIS);
-      }
- else       if (rightWord.endsWith("??????????")) {
-        return poAdvMatch(word,rightAnalyzedTokens,ADJ_TAG_FOR_PO_ADV_NAZ);
-      }
-      return null;
-    }
-    if (dashPrefixes.contains(leftWord.toLowerCase())) {
-      return eksNounMatch(word,rightAnalyzedTokens,leftWord);
-    }
-    if (Character.isUpperCase(leftWord.charAt(0)) && cityAvenue.contains(rightWord)) {
-      List<TaggedWord> leftWdList=wordTagger.tag(leftWord);
-      if (leftWdList.isEmpty())       return null;
-      List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
-      return cityAvenueMatch(word,leftAnalyzedTokens);
-    }
-    List<TaggedWord> leftWdList=wordTagger.tag(leftWord);
-    if (!leftWdList.isEmpty()) {
-      List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
-      List<AnalyzedToken> tagMatch=tagMatch(word,leftAnalyzedTokens,rightAnalyzedTokens);
-      if (tagMatch != null) {
-        return tagMatch;
-      }
-    }
-    if (leftWord.endsWith("??")) {
-      return oAdjMatch(word,rightAnalyzedTokens,leftWord);
-    }
+    return guessCompoundTag(word);
   }
   return null;
 }
