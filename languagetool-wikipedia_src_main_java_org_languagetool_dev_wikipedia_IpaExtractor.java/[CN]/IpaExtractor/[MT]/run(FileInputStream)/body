@@ -1,0 +1,21 @@
+{
+  XMLInputFactory factory=XMLInputFactory.newInstance();
+  XMLEventReader reader=factory.createXMLEventReader(fis);
+  String title=null;
+  while (reader.hasNext()) {
+    XMLEvent event=reader.nextEvent();
+    if (event.getEventType() == XMLStreamConstants.START_ELEMENT) {
+      String elementName=event.asStartElement().getName().getLocalPart();
+switch (elementName) {
+case "title":
+        XMLEvent nextEvent=reader.nextEvent();
+      title=nextEvent.asCharacters().getData();
+    articleCount++;
+  break;
+case "text":
+ipaCount+=handleTextElement(title,reader);
+break;
+}
+}
+}
+}

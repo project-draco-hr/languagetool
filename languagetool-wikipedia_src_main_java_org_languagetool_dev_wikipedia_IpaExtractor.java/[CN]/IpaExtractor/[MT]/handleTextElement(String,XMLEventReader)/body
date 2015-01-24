@@ -1,0 +1,28 @@
+{
+  XMLEvent event=reader.nextEvent();
+  StringBuilder sb=new StringBuilder();
+  while (event.isCharacters()) {
+    sb.append(event.asCharacters().getData());
+    event=reader.nextEvent();
+  }
+  String wikiText=sb.toString();
+  int index=wikiText.indexOf("{{IPA");
+  if (index != -1) {
+    Matcher matcher=FULL_IPA_PATTERN.matcher(wikiText);
+    if (matcher.find()) {
+      System.out.println(title + ": " + matcher.group(1)+ " -> "+ matcher.group(2));
+      return 1;
+    }
+ else {
+      Matcher matcher2=IPA_PATTERN.matcher(wikiText);
+      if (matcher2.find()) {
+        System.out.println(title + ": " + matcher2.group(1));
+        return 1;
+      }
+ else {
+        System.out.println(title + ": (no pattern found)");
+      }
+    }
+  }
+  return 0;
+}

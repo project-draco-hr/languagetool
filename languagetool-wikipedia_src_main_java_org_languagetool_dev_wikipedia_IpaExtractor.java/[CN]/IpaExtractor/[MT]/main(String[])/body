@@ -1,0 +1,13 @@
+{
+  if (args.length == 0) {
+    System.out.println("Usage: " + IpaExtractor.class.getSimpleName() + " <xml-dump...>");
+    System.exit(1);
+  }
+  IpaExtractor extractor=new IpaExtractor();
+  for (  String filename : args) {
+    FileInputStream fis=new FileInputStream(filename);
+    extractor.run(fis);
+  }
+  System.err.println("articleCount: " + extractor.articleCount);
+  System.err.println("IPA count: " + extractor.ipaCount);
+}
