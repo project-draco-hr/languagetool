@@ -26,6 +26,9 @@
         if (tokens[i + 1].hasLemma("lassen")) {
           continue;
         }
+        if (tokens[i + 1].isSentenceEnd()) {
+          continue;
+        }
       }
       potentiallyAddLowercaseMatch(ruleMatches,tokens[i],prevTokenIsDas,token,nextTokenIsPersonalPronoun);
     }
