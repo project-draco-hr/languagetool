@@ -3,7 +3,7 @@
   try {
     Files.deleteIfExists(newFile);
     newFile=Files.createFile(newFile);
-    writer=Files.newBufferedWriter(newFile,Charset.defaultCharset());
+    compoundDebugWriter=Files.newBufferedWriter(newFile,Charset.defaultCharset());
   }
  catch (  IOException ex) {
     throw new RuntimeException(ex);

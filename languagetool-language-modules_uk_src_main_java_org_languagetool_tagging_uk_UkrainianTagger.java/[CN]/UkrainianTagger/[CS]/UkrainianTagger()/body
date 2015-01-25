@@ -2,5 +2,7 @@
   super();
   setLocale(new Locale("uk","UA"));
   dontTagLowercaseWithUppercase();
-  debugCompounds();
+  if (Boolean.valueOf(System.getProperty(DEBUG_COMPOUNDS_PROPERTY))) {
+    debugCompounds();
+  }
 }
