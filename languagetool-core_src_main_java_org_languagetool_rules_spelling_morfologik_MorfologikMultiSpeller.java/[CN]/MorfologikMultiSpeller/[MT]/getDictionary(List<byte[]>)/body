@@ -1,0 +1,9 @@
+{
+  Collections.sort(lines,FSABuilder.LEXICAL_ORDERING);
+  FSA fsa=FSABuilder.build(lines);
+  ByteArrayOutputStream fsaOutStream=new CFSA2Serializer().serialize(fsa,new ByteArrayOutputStream());
+  ByteArrayInputStream fsaInStream=new ByteArrayInputStream(fsaOutStream.toByteArray());
+  String metaData="fsa.dict.separator=+\n" + "fsa.dict.encoding=utf-8\n";
+  ByteArrayInputStream metaDataStream=new ByteArrayInputStream(metaData.getBytes("utf-8"));
+  return Dictionary.readAndClose(fsaInStream,metaDataStream);
+}

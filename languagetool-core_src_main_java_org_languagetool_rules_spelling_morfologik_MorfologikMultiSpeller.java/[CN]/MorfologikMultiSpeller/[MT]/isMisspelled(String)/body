@@ -1,0 +1,8 @@
+{
+  for (  MorfologikSpeller speller : spellers) {
+    if (!speller.isMisspelled(word)) {
+      return false;
+    }
+  }
+  return true;
+}

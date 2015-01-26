@@ -1,0 +1,7 @@
+{
+  if (maxEditDistance <= 0) {
+    throw new RuntimeException("maxEditDistance must be > 0: " + maxEditDistance);
+  }
+  this.dictionary=dictionary;
+  speller=new Speller(dictionary,maxEditDistance);
+}

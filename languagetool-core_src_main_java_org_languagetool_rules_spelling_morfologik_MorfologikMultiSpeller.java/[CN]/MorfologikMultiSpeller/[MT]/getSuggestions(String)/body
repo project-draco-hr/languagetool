@@ -1,0 +1,12 @@
+{
+  List<String> result=new ArrayList<>();
+  for (  MorfologikSpeller speller : spellers) {
+    List<String> suggestions=speller.getSuggestions(word);
+    for (    String suggestion : suggestions) {
+      if (!result.contains(suggestion)) {
+        result.add(suggestion);
+      }
+    }
+  }
+  return result;
+}

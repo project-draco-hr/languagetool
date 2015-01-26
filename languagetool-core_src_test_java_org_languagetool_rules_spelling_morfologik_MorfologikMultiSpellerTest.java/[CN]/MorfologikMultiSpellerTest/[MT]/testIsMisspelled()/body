@@ -1,0 +1,18 @@
+{
+  MorfologikMultiSpeller speller=getSpeller();
+  assertFalse(speller.isMisspelled("wordone"));
+  assertFalse(speller.isMisspelled("wordtwo"));
+  assertFalse(speller.isMisspelled("Abc"));
+  assertFalse(speller.isMisspelled("wordthree"));
+  assertFalse(speller.isMisspelled("wordfour"));
+  assertFalse(speller.isMisspelled("??blich"));
+  assertFalse(speller.isMisspelled("sch??n"));
+  assertFalse(speller.isMisspelled("F??n"));
+  assertFalse(speller.isMisspelled("F??n"));
+  assertFalse(speller.isMisspelled("F??n"));
+  assertFalse(speller.isMisspelled("H??user"));
+  assertTrue(speller.isMisspelled("notthere"));
+  assertTrue(speller.isMisspelled("Fun"));
+  assertTrue(speller.isMisspelled("F??ns"));
+  assertTrue(speller.isMisspelled("AF??n"));
+}

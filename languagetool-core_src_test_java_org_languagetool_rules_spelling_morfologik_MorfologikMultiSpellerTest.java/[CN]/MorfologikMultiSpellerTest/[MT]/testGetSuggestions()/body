@@ -1,0 +1,8 @@
+{
+  MorfologikMultiSpeller speller=getSpeller();
+  assertThat(speller.getSuggestions("wordone").toString(),is("[]"));
+  assertThat(speller.getSuggestions("wordones").toString(),is("[wordone]"));
+  assertThat(speller.getSuggestions("Abd").toString(),is("[Abc]"));
+  assertThat(speller.getSuggestions("Fxn").toString(),is("[F??n, F??n, F??n]"));
+  assertThat(speller.getSuggestions("H??users").toString(),is("[H??user]"));
+}

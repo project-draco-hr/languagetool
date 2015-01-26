@@ -1,0 +1,3 @@
+{
+  new MorfologikMultiSpeller(Arrays.asList("/xx/spelling/test.dict.README"),1);
+}
