@@ -1,0 +1,3 @@
+String plainTextPath
+String infoFile
+int maxEditDistance

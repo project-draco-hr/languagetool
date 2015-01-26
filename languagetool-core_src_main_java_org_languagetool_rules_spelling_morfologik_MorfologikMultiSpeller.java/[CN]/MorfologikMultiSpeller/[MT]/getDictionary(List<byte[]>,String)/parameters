@@ -1,1 +1,2 @@
 List<byte[]> lines
+String infoFile

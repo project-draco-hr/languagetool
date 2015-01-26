@@ -1,0 +1,3 @@
+{
+  new MorfologikMultiSpeller("/xx/spelling/test.dict.README","/xx/spelling/test2.txt",1);
+}

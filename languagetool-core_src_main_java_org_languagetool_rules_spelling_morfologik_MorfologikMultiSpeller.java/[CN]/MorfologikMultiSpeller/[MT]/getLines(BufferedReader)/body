@@ -2,7 +2,9 @@
   List<byte[]> lines=new ArrayList<>();
   String line;
   while ((line=br.readLine()) != null) {
-    lines.add(line.getBytes("utf-8"));
+    if (!line.startsWith("#")) {
+      lines.add(line.getBytes("utf-8"));
+    }
   }
   return lines;
 }

@@ -1,0 +1,8 @@
+{
+  if (binaryDictPath.endsWith(".dict")) {
+    return new MorfologikSpeller(binaryDictPath,maxEditDistance);
+  }
+ else {
+    throw new RuntimeException("Unsupported dictionary, binary Morfologik file needs to have suffix .dict: " + binaryDictPath);
+  }
+}

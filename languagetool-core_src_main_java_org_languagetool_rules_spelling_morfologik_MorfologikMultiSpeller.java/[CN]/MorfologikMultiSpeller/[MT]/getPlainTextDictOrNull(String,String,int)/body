@@ -1,0 +1,16 @@
+{
+  if (plainTextPath.endsWith(".txt")) {
+    InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(plainTextPath);
+    try (BufferedReader br=new BufferedReader(new InputStreamReader(stream,"utf-8"))){
+      List<byte[]> lines=getLines(br);
+      if (lines.size() == 0) {
+        return null;
+      }
+      Dictionary dictionary=getDictionary(lines,infoFile);
+      return new MorfologikSpeller(dictionary,maxEditDistance);
+    }
+   }
+ else {
+    throw new RuntimeException("Unsupported dictionary, plain text file needs to have suffix .txt: " + plainTextPath);
+  }
+}
