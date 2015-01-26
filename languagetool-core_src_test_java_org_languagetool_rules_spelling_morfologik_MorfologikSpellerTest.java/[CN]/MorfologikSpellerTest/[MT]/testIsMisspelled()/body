@@ -1,0 +1,13 @@
+{
+  MorfologikSpeller speller=new MorfologikSpeller("/xx/spelling/test.dict");
+  assertTrue(speller.convertsCase());
+  assertFalse(speller.isMisspelled("wordone"));
+  assertFalse(speller.isMisspelled("Wordone"));
+  assertFalse(speller.isMisspelled("wordtwo"));
+  assertFalse(speller.isMisspelled("Wordtwo"));
+  assertFalse(speller.isMisspelled("Uppercase"));
+  assertFalse(speller.isMisspelled("H??user"));
+  assertTrue(speller.isMisspelled("Hauser"));
+  assertTrue(speller.isMisspelled("wordones"));
+  assertTrue(speller.isMisspelled("nosuchword"));
+}
