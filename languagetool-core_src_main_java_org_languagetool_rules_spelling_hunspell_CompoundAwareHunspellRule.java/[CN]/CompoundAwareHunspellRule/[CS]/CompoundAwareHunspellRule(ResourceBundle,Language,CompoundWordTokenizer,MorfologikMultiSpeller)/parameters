@@ -1,4 +1,4 @@
 ResourceBundle messages
 Language language
 CompoundWordTokenizer wordSplitter
-MorfologikSpeller morfoSpeller
+MorfologikMultiSpeller morfoSpeller
