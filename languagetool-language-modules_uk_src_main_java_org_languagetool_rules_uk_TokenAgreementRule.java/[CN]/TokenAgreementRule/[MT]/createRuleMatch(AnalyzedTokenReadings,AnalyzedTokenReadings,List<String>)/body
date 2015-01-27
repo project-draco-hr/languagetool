@@ -1,7 +1,7 @@
 {
   String tokenString=tokenReadings.getToken();
   Synthesizer ukrainianSynthesizer=ukrainian.getSynthesizer();
-  ArrayList<String> suggestions=new ArrayList<String>();
+  ArrayList<String> suggestions=new ArrayList<>();
   String oldPosTag=tokenReadings.getAnalyzedToken(0).getPOSTag();
   String requiredPostTagsRegEx=":(" + StringUtils.join(posTagsToFind,"|") + ")";
   String posTag=oldPosTag.replaceFirst(":v_[a-z]+",requiredPostTagsRegEx);
@@ -12,11 +12,11 @@
  catch (  IOException e) {
     throw new RuntimeException(e);
   }
-  ArrayList<String> reqVidminkyNames=new ArrayList<String>();
+  ArrayList<String> reqVidminkyNames=new ArrayList<>();
   for (  String vidm : posTagsToFind) {
     reqVidminkyNames.add(UkrainianTagger.VIDMINKY_MAP.get(vidm));
   }
-  ArrayList<String> foundVidminkyNames=new ArrayList<String>();
+  ArrayList<String> foundVidminkyNames=new ArrayList<>();
   for (  AnalyzedToken token : tokenReadings) {
     String posTag2=token.getPOSTag();
     if (posTag2 != null && posTag2.contains(VIDMINOK_SUBSTR)) {

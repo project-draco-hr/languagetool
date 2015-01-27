@@ -1,6 +1,6 @@
 {
-  ArrayList<Integer> set_ops=new ArrayList<Integer>();
-  ArrayList<Integer> sets=new ArrayList<Integer>();
+  ArrayList<Integer> set_ops=new ArrayList<>();
+  ArrayList<Integer> sets=new ArrayList<>();
   boolean wantop=false;
   while (notDone() && inArray[index] != ';' && inArray[index] != ')') {
     result.lines+=SKIPWS(';',')');
@@ -11,7 +11,7 @@
           CgSet set_c=result.allocateSet();
           set_c.line=result.lines;
           set_c.setName(sets_counter++);
-          ArrayList<CgTag> tags=new ArrayList<CgTag>();
+          ArrayList<CgTag> tags=new ArrayList<>();
           while (notDone() && inArray[index] != ';' && inArray[index] != ')') {
             result.lines+=SKIPWS(';',')');
             nindex=index;
@@ -70,9 +70,9 @@
           System.out.println("Warning: intersection and symmetric difference with sets may not work correctly");
           final HashSet<CgCompositeTag.AnyTag> a=result.getSet(sets.get(sets.size() - 1)).getTagList(result);
           final HashSet<CgCompositeTag.AnyTag> b=result.getSet(sets.get(sets.size() - 2)).getTagList(result);
-          ArrayList<CgCompositeTag.AnyTag> r=new ArrayList<CgCompositeTag.AnyTag>();
+          ArrayList<CgCompositeTag.AnyTag> r=new ArrayList<>();
           if (set_ops.get(set_ops.size() - 1) == STRINGS.S_SET_ISECT_U.value) {
-            HashSet<CgCompositeTag.AnyTag> c=new HashSet<CgCompositeTag.AnyTag>();
+            HashSet<CgCompositeTag.AnyTag> c=new HashSet<>();
             c.addAll(a);
             c.addAll(b);
             for (            CgCompositeTag.AnyTag itag : c) {

@@ -23,7 +23,7 @@
       continue;
     }
     if (reqTokenReadings == null)     continue;
-    ArrayList<String> posTagsToFind=new ArrayList<String>();
+    ArrayList<String> posTagsToFind=new ArrayList<>();
     if (reqTokenReadings.getAnalyzedToken(0).getToken().equalsIgnoreCase("??????????")) {
       posTagsToFind.add("v_naz");
     }

@@ -3,6 +3,6 @@
   parentTest=null;
   inParentTest=false;
   inLinkedTest=false;
-  linkedTests=new ArrayList<Integer>();
+  linkedTests=new ArrayList<>();
   return parseContextualTestList(rule);
 }

@@ -5,7 +5,7 @@
     rc.parseRuleFile();
     ruleObjects=rc.getRules();
     allRulesList=rc.getAllLtRules();
-    ruleStrings=new ArrayList<String>();
+    ruleStrings=new ArrayList<>();
     originalRuleStrings=rc.getOriginalRuleStrings();
     warnings=rc.getWarnings();
     for (    List<String> ruleList : allRulesList) {
@@ -14,7 +14,7 @@
     }
     removeDuplicateRules();
     disambigRuleIndices=new boolean[allRulesList.size()];
-    coveredByList=new ArrayList<String[]>();
+    coveredByList=new ArrayList<>();
     numberOfRules=allRulesList.size();
     numRulesPane.setText(Integer.toString(numberOfRules));
     for (int i=0; i < ruleObjects.size(); i++) {

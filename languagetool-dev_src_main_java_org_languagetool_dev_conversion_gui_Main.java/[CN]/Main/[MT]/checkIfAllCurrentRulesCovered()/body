@@ -10,7 +10,7 @@
       }
       List<PatternRule> patternRules=checker.parsePatternRule(ruleStrings.get(i));
       ArrayList<String[]> allCoveringRules=checker.isCoveredBy(patternRules);
-      ArrayList<String> coveringRules=new ArrayList<String>();
+      ArrayList<String> coveringRules=new ArrayList<>();
       for (      String[] s : allCoveringRules) {
         Collections.addAll(coveringRules,s);
       }

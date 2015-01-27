@@ -1,6 +1,6 @@
 {
   this.tag="";
-  this.type=new HashSet<Integer>();
+  this.type=new HashSet<>();
   this.hash=0;
   this.plain_hash=0;
   this.comparison_hash=0;

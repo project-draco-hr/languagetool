@@ -11,7 +11,7 @@
     if (notDone() && inArray[index] != ';' && inArray[index] != ')') {
       if (inArray[index] == '(') {
         ++index;
-        ArrayList<CgTag> tags=new ArrayList<CgTag>();
+        ArrayList<CgTag> tags=new ArrayList<>();
         while (notDone() && inArray[index] != ';' && inArray[index] != ')') {
           nindex=index;
           if (inArray[nindex] == '"') {

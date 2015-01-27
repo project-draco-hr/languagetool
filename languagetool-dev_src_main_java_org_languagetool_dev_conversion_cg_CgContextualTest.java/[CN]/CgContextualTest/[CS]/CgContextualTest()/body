@@ -5,6 +5,6 @@
   this.name=0;
   this.offset=0;
   this.target=0;
-  this.pos=new HashSet<Integer>();
+  this.pos=new HashSet<>();
   this.relation=0;
 }

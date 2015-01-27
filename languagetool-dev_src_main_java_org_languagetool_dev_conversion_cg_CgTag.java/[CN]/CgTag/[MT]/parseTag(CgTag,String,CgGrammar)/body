@@ -1,5 +1,5 @@
 {
-  tag.type=new HashSet<Integer>();
+  tag.type=new HashSet<>();
   ;
   if (to != null && to.length() > 0) {
     char[] tmp=to.toCharArray();

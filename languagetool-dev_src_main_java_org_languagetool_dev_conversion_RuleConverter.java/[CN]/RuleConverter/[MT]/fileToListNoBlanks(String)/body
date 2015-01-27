@@ -1,5 +1,5 @@
 {
-  ArrayList<String> returnList=new ArrayList<String>();
+  ArrayList<String> returnList=new ArrayList<>();
   Scanner in=null;
   InputStream is;
   try {

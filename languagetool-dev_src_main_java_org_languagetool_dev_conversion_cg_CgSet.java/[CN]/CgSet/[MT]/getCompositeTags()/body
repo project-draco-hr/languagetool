@@ -1,5 +1,5 @@
 {
-  ArrayList<CgCompositeTag> tags=new ArrayList<CgCompositeTag>();
+  ArrayList<CgCompositeTag> tags=new ArrayList<>();
   if (!this.tags.isEmpty()) {
     for (    CgCompositeTag ctag : this.tags) {
       if (!CgRuleConverter.isCompositePostag(ctag)) {

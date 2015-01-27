@@ -2,8 +2,8 @@
   Document doc=getDocument();
   String text=doc.getText(p0,p1 - p0);
   Segment segment=getLineBuffer();
-  SortedMap<Integer,Integer> startMap=new TreeMap<Integer,Integer>();
-  SortedMap<Integer,Color> colorMap=new TreeMap<Integer,Color>();
+  SortedMap<Integer,Integer> startMap=new TreeMap<>();
+  SortedMap<Integer,Color> colorMap=new TreeMap<>();
   for (  Map.Entry<Pattern,Color> entry : patternColors.entrySet()) {
     Matcher matcher=entry.getKey().matcher(text);
     while (matcher.find()) {

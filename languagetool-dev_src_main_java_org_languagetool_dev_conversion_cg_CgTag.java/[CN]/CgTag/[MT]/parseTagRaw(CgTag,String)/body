@@ -1,5 +1,5 @@
 {
-  tag.type=new HashSet<Integer>();
+  tag.type=new HashSet<>();
   if (to.length() > 0) {
     String tmp=to;
     int len=tmp.length();

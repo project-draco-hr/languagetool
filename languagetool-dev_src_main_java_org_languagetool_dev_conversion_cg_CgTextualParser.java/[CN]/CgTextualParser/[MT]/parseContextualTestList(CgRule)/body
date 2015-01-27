@@ -13,7 +13,7 @@
     rule.test_map.put(currentTest.hashCode(),currentTest);
   }
  else {
-    linkedTests=new ArrayList<Integer>();
+    linkedTests=new ArrayList<>();
   }
   currentTest=new CgContextualTest();
   currentTest.line=result.lines;
@@ -70,7 +70,7 @@
       }
  else {
         inParentTest=false;
-        linkedTests=new ArrayList<Integer>();
+        linkedTests=new ArrayList<>();
         break;
       }
       result.lines+=SKIPWS((char)0,(char)0);
@@ -188,7 +188,7 @@
     }
     rule.test_map.put(parentTest.hashCode(),parentTest);
     rule.test_heads.add(parentTest);
-    linkedTests=new ArrayList<Integer>();
+    linkedTests=new ArrayList<>();
   }
   if (!inParentTest && !inLinkedTest && parentTest == null) {
     if (option_vislcg_compat && currentTest.pos.contains(POS.POS_NOT.value)) {
