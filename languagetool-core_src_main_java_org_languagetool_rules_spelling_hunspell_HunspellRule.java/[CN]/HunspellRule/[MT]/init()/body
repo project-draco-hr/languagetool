@@ -19,8 +19,7 @@
       if (!"".equals(hunspellDict.getWordChars())) {
         wordChars="(?![" + hunspellDict.getWordChars().replace("-","\\-") + "])";
       }
-      hunspellDict.addWord(SpellingCheckRule.LANGUAGETOOL);
-      hunspellDict.addWord(SpellingCheckRule.LANGUAGETOOL_FX);
+      addIgnoreWords();
     }
   }
   nonWordPattern=Pattern.compile(wordChars + NON_ALPHABETIC);
