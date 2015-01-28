@@ -26,7 +26,7 @@
         final String inputForms=example.getAmbiguous();
         assertTrue("No input form found for: " + id,inputForms != null);
         assertTrue(inputForms.trim().length() > 0);
-        assertTrue("Input and output forms for rule " + id + "are the same!",!outputForms.equals(inputForms));
+        assertTrue("Input and output forms for rule " + id + " are the same!",!outputForms.equals(inputForms));
         final AnalyzedSentence cleanInput=languageTool.getRawAnalyzedSentence(cleanXML(example.getExample()));
         final AnalyzedSentence sent=disambiguateUntil(rules,id,languageTool.getRawAnalyzedSentence(cleanXML(example.getExample())));
         final AnalyzedSentence disambiguatedSent=rule.replace(disambiguateUntil(rules,id,languageTool.getRawAnalyzedSentence(cleanXML(example.getExample()))));
