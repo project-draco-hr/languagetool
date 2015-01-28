@@ -3,10 +3,6 @@
     final java.sql.Date nowDate=new java.sql.Date(new Date().getTime());
     for (    RuleMatch match : ruleMatches) {
       final String smallContext=smallContextTools.getContext(match.getFromPos(),match.getToPos(),sentence.getText());
-      if (ruleIsMarkedHidden(language,sentence.getUrl(),match,smallContext,lookupSt)) {
-        System.out.println("Skipping match " + match.getRule().getId() + " for "+ sentence.getTitle()+ " as it is hidden");
-        continue;
-      }
       insertSt.setString(1,language.getShortName());
       final Rule rule=match.getRule();
       insertSt.setString(2,rule.getId());
