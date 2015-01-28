@@ -1,0 +1,3 @@
+{
+  return "Source and target translation have different ending punctuation";
+}
