@@ -1,0 +1,3 @@
+{
+  return "/nl/spelling/spelling.txt";
+}
