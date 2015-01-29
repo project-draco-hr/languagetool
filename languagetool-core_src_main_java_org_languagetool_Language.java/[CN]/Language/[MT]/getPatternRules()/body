@@ -4,6 +4,9 @@
     PatternRuleLoader ruleLoader=new PatternRuleLoader();
     for (    String fileName : getRuleFileNames()) {
       InputStream is=this.getClass().getResourceAsStream(fileName);
+      if (is == null) {
+        is=new FileInputStream(fileName);
+      }
       patternRules.addAll(ruleLoader.getRules(is,fileName));
     }
   }
