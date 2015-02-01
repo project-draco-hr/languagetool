@@ -11,6 +11,15 @@
   testSplit("Ja ho tinc! ","Qu?? vols dir?");
   testSplit("Us explicar?? com va anar: ","??La Maria va engegar el cotxe");
   testSplit("diu que va dir. ","A mi em feia estrany.");
+  testSplit("V??s-te???n. ","A mi em feia estrany.");
+  testSplit("V??s-te'n. ","A mi em feia estrany.");
+  testSplit("V??S-TE'N. ","A mi em feia estrany.");
+  testSplit("Canten. ","A mi em feia estrany.");
+  testSplit("Despr??n. ","A mi em feia estrany.");
+  testSplit("(n. 3).");
+  testSplit(" n. 3");
+  testSplit("n. 3");
+  testSplit("(\"n. 3\".");
   testSplit("A l'atenci?? d'A. Comes.");
   testSplit("A l'atenci?? d'??. Comes.");
   testSplit("N??m. operaci?? 220130000138.");
