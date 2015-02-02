@@ -1,0 +1,4 @@
+{
+  List<String> suggestions=speller.findReplacements(word);
+  System.out.println(word + ": " + StringUtils.join(suggestions,", "));
+}
