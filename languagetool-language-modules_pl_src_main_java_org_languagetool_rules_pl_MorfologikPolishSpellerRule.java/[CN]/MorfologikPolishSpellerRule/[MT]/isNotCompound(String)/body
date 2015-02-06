@@ -4,7 +4,7 @@
   for (int i=2; i < word.length(); i++) {
     final String first=word.substring(0,i);
     final String second=word.substring(i,word.length());
-    if (prefixes.contains(first.toLowerCase(conversionLocale)) && !isMisspelled(speller1,second)) {
+    if (prefixes.contains(first.toLowerCase(conversionLocale)) && !isMisspelled(speller1,second) && second.length() > first.length()) {
       probablyCorrectWords.add(word);
     }
  else {
