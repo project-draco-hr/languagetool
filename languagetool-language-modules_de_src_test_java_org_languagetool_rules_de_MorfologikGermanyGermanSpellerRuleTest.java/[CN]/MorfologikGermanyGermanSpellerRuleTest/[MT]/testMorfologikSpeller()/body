@@ -5,4 +5,7 @@
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Hir nicht so ganz.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("??berall ??u??erst b??se Umlaute!")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("??perall ??u??erst b??se Umlaute!")).length);
+  final RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("da??"));
+  assertEquals(1,matches.length);
+  assertEquals("dass",matches[0].getSuggestedReplacements().get(0));
 }
