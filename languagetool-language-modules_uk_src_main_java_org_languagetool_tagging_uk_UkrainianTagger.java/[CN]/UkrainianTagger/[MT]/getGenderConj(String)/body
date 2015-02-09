@@ -1,5 +1,5 @@
 {
-  if (posTag.matches("(noun|adjp|numr):.:v_....*"))   return posTag.substring(5,11);
-  if (posTag.matches("adj:.:v_....*"))   return posTag.substring(4,10);
+  Matcher pos4matcher=Pattern.compile("(noun|adjp?|numr):(.:v_...).*").matcher(posTag);
+  if (pos4matcher.matches())   return pos4matcher.group(2);
   return null;
 }

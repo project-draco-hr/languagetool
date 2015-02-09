@@ -1,0 +1,11 @@
+{
+  if (compoundUnknownDebugWriter == null)   return;
+  try {
+    compoundUnknownDebugWriter.append(word);
+    compoundUnknownDebugWriter.newLine();
+    compoundUnknownDebugWriter.flush();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

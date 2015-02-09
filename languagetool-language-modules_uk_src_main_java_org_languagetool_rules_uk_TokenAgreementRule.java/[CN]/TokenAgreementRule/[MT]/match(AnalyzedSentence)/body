@@ -27,6 +27,9 @@
     if (reqTokenReadings.getAnalyzedToken(0).getToken().equalsIgnoreCase("??????????")) {
       posTagsToFind.add("v_naz");
     }
+    if (reqTokenReadings.getAnalyzedToken(0).getToken().equalsIgnoreCase("??????????????")) {
+      posTagsToFind.add("v_naz");
+    }
     String reqPosTag=reqTokenReadings.getAnalyzedToken(0).getPOSTag();
     Matcher matcher=REQUIRE_VIDMINOK_REGEX.matcher(reqPosTag);
     while (matcher.find()) {

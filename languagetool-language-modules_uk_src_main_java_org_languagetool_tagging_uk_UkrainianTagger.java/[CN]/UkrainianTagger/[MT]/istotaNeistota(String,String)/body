@@ -1,3 +1,0 @@
-{
-  return leftPosTag.contains(TAG_ANIM) && !rightPosTag.contains(TAG_ANIM);
-}

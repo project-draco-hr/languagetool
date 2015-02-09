@@ -1,0 +1,6 @@
+String leftPosTag
+String rightPosTag
+String leftLemma
+String rightLemma
+boolean leftNv
+boolean rightNv

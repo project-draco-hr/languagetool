@@ -10,18 +10,16 @@
   if (!leftWord.equals(leftLowerCase)) {
     leftWdList.addAll(wordTagger.tag(leftLowerCase));
   }
-  if (rightWord.equals("????") || rightWord.equals("????")) {
+  if (rightPartsWithLeftTagMap.containsKey(rightWord)) {
     if (leftWdList.isEmpty())     return null;
-    List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
-    return verbImperNoBo(word,leftAnalyzedTokens);
-  }
-  if (rightWord.equals("????????")) {
-    if (leftWdList.isEmpty())     return null;
+    String leftTagRegex=rightPartsWithLeftTagMap.get(rightWord);
     List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
     List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(leftAnalyzedTokens.size());
     for (    AnalyzedToken analyzedToken : leftAnalyzedTokens) {
       String posTag=analyzedToken.getPOSTag();
-      newAnalyzedTokens.add(new AnalyzedToken(word,posTag,analyzedToken.getLemma()));
+      if (posTag.matches(leftTagRegex)) {
+        newAnalyzedTokens.add(new AnalyzedToken(word,posTag,analyzedToken.getLemma()));
+      }
     }
     return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
   }
@@ -58,7 +56,7 @@
     return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
   }
   if (dashPrefixes.contains(leftWord) || dashPrefixes.contains(leftWord.toLowerCase())) {
-    return eksNounMatch(word,rightAnalyzedTokens,leftWord);
+    return getNvPrefixNounMatch(word,rightAnalyzedTokens,leftWord);
   }
   if (word.startsWith("??????-") && Character.isUpperCase(word.charAt(4))) {
     List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(rightAnalyzedTokens.size());
@@ -90,6 +88,6 @@
   if (leftWord.endsWith("??")) {
     return oAdjMatch(word,rightAnalyzedTokens,leftWord);
   }
-  debug_compound_write(word);
+  debug_compound_unknown_write(word);
   return null;
 }

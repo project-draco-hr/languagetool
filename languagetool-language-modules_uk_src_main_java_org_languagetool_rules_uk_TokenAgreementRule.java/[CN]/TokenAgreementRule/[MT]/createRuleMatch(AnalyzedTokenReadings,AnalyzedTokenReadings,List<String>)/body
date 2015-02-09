@@ -20,7 +20,16 @@
   for (  AnalyzedToken token : tokenReadings) {
     String posTag2=token.getPOSTag();
     if (posTag2 != null && posTag2.contains(VIDMINOK_SUBSTR)) {
-      foundVidminkyNames.add(UkrainianTagger.VIDMINKY_MAP.get(posTag2.replaceFirst("^.*" + VIDMINOK_REGEX + ".*$","$1")));
+      String vidmName=UkrainianTagger.VIDMINKY_MAP.get(posTag2.replaceFirst("^.*" + VIDMINOK_REGEX + ".*$","$1"));
+      if (foundVidminkyNames.contains(vidmName)) {
+        if (posTag2.contains(":p:")) {
+          vidmName=vidmName + " (????.)";
+          foundVidminkyNames.add(vidmName);
+        }
+      }
+ else {
+        foundVidminkyNames.add(vidmName);
+      }
     }
   }
   String msg=MessageFormat.format("???????????????????? ??{0}?? ?????????????? ???????????? ????????????????: {1}, ?? ????????????????: {2}",reqTokenReadings.getToken(),StringUtils.join(reqVidminkyNames,", "),StringUtils.join(foundVidminkyNames,", "));
@@ -33,6 +42,27 @@
     }
  catch (    IOException e) {
       throw new RuntimeException(e);
+    }
+  }
+ else   if (reqTokenReadings.getToken().equalsIgnoreCase("??")) {
+    for (    AnalyzedToken token : tokenReadings.getReadings()) {
+      String posTag2=token.getPOSTag();
+      if (posTag2.matches(".*:v_naz.*:anim.*")) {
+        msg+=". ?????????????? ?????? ?????? ??? ???? ?????????? ?? ???????????????? ?????????????? ?????????????????";
+        try {
+          String newPostag=posTag2.replace("v_naz","v_kly");
+          String[] synthesized=ukrainianSynthesizer.synthesize(token,newPostag,false);
+          for (          String string : synthesized) {
+            if (!string.equals(token.getToken()) && !suggestions.contains(synthesized)) {
+              suggestions.addAll(Arrays.asList(synthesized));
+            }
+          }
+          break;
+        }
+ catch (        IOException e) {
+          throw new RuntimeException(e);
+        }
+      }
     }
   }
   int pos=tokenReadings.getStartPos();

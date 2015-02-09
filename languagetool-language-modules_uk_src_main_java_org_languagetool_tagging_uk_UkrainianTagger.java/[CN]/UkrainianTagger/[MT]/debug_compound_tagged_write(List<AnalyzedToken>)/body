@@ -1,0 +1,36 @@
+{
+  if (compoundTaggedDebugWriter == null || guessedCompoundTags == null)   return;
+  try {
+    String prevToken="";
+    String prevLemma="";
+    for (    AnalyzedToken analyzedToken : guessedCompoundTags) {
+      String token=analyzedToken.getToken();
+      boolean firstTag=false;
+      if (!prevToken.equals(token)) {
+        if (prevToken.length() > 0) {
+          compoundTaggedDebugWriter.append(";  ");
+          prevLemma="";
+        }
+        compoundTaggedDebugWriter.append(token).append(" ");
+        prevToken=token;
+        firstTag=true;
+      }
+      String lemma=analyzedToken.getLemma();
+      if (!prevLemma.equals(lemma)) {
+        if (prevLemma.length() > 0) {
+          compoundTaggedDebugWriter.append(", ");
+        }
+        compoundTaggedDebugWriter.append(lemma);
+        prevLemma=lemma;
+        firstTag=true;
+      }
+      compoundTaggedDebugWriter.append(firstTag ? " " : "|").append(analyzedToken.getPOSTag());
+      firstTag=false;
+    }
+    compoundTaggedDebugWriter.newLine();
+    compoundTaggedDebugWriter.flush();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

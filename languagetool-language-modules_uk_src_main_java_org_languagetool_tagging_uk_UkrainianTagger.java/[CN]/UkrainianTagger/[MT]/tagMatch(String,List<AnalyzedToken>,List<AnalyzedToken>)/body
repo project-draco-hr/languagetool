@@ -1,36 +1,95 @@
 {
   List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>();
-  boolean anim_inanim=false;
+  List<AnalyzedToken> newAnalyzedTokensAnimInanim=new ArrayList<>();
+  String animInanimNotTagged=null;
   for (  AnalyzedToken leftAnalyzedToken : leftAnalyzedTokens) {
     String leftPosTag=leftAnalyzedToken.getPOSTag();
+    if (leftPosTag == null)     continue;
+    String leftPosTagExtra="";
+    boolean leftNv=false;
+    if (leftPosTag.contains(NV_TAG)) {
+      leftNv=true;
+      leftPosTag=leftPosTag.replace(NV_TAG,"");
+    }
+    Matcher matcher=EXTRA_TAGS.matcher(leftPosTag);
+    if (matcher.find()) {
+      leftPosTagExtra+=matcher.group();
+      leftPosTag=matcher.replaceAll("");
+    }
+    if (leftPosTag.contains(COMPB_TAG)) {
+      leftPosTag=leftPosTag.replace(COMPB_TAG,"");
+    }
     for (    AnalyzedToken rightAnalyzedToken : rightAnalyzedTokens) {
       String rightPosTag=rightAnalyzedToken.getPOSTag();
-      if (leftPosTag == null || rightPosTag == null)       continue;
-      if (leftPosTag.equals(rightPosTag) && (leftPosTag.startsWith(IPOSTag.numr.getText()) || leftPosTag.startsWith(IPOSTag.adv.getText()) || leftPosTag.startsWith(IPOSTag.adj.getText()))) {
-        newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+      if (rightPosTag == null)       continue;
+      String extraNvTag="";
+      boolean rightNv=false;
+      if (rightPosTag.contains(NV_TAG)) {
+        rightNv=true;
+        if (leftNv) {
+          extraNvTag+=NV_TAG;
+        }
+      }
+      Matcher matcherR=EXTRA_TAGS.matcher(rightPosTag);
+      if (matcherR.find()) {
+        rightPosTag=matcherR.replaceAll("");
+      }
+      if (rightPosTag.contains(COMPB_TAG)) {
+        rightPosTag=rightPosTag.replace(COMPB_TAG,"");
+      }
+      if (leftPosTag.equals(rightPosTag) && IPOSTag.startsWith(leftPosTag,IPOSTag.numr,IPOSTag.adv,IPOSTag.adj,IPOSTag.excl,IPOSTag.verb)) {
+        newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
       }
  else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && rightPosTag.startsWith(IPOSTag.noun.getText())) {
-        String agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag);
-        if (agreedPosTag == null && !istotaNeistotaMatch(leftPosTag,rightPosTag)) {
-          anim_inanim=true;
-        }
-        if (agreedPosTag == null && rightPosTag.startsWith(IPOSTag.noun.getText() + ":m:v_naz") && (rightAnalyzedToken.getToken().equals("????????????????") || rightAnalyzedToken.getToken().equals("??????????????"))) {
+        String agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag,leftNv);
+        if (agreedPosTag == null && rightPosTag.startsWith(IPOSTag.noun.getText() + ":m:v_naz") && isMinMax(rightAnalyzedToken.getToken())) {
           agreedPosTag=leftPosTag;
         }
+        if (agreedPosTag == null && !isSameAnimStatus(leftPosTag,rightPosTag)) {
+          agreedPosTag=tryAnimInanim(leftPosTag,rightPosTag,leftAnalyzedToken.getLemma(),rightAnalyzedToken.getLemma(),leftNv,rightNv);
+          if (agreedPosTag == null) {
+            animInanimNotTagged=leftPosTag.contains(":anim") ? "anim-inanim" : "inanim-anim";
+          }
+ else {
+            newAnalyzedTokensAnimInanim.add(new AnalyzedToken(word,agreedPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+            continue;
+          }
+        }
         if (agreedPosTag != null) {
-          newAnalyzedTokens.add(new AnalyzedToken(word,agreedPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+          newAnalyzedTokens.add(new AnalyzedToken(word,agreedPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+        }
+      }
+ else       if (leftPosTag.startsWith(IPOSTag.numr.getText()) && rightPosTag.startsWith(IPOSTag.numr.getText())) {
+        String agreedPosTag=getNumAgreedPosTag(leftPosTag,rightPosTag,leftNv);
+        if (agreedPosTag != null) {
+          newAnalyzedTokens.add(new AnalyzedToken(word,agreedPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+        }
+      }
+ else       if (IPOSTag.startsWith(leftPosTag,IPOSTag.noun) && IPOSTag.startsWith(rightPosTag,IPOSTag.numr)) {
+        String leftGenderConj=getGenderConj(leftPosTag);
+        if (leftGenderConj != null && leftGenderConj.equals(getGenderConj(rightPosTag))) {
+          newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+        }
+ else {
+          String agreedPosTag=getNumAgreedPosTag(leftPosTag,rightPosTag,leftNv);
+          if (agreedPosTag != null) {
+            newAnalyzedTokens.add(new AnalyzedToken(word,agreedPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+          }
         }
       }
  else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && IPOSTag.startsWith(rightPosTag,IPOSTag.adj,IPOSTag.numr)) {
         String leftGenderConj=getGenderConj(leftPosTag);
         if (leftGenderConj != null && leftGenderConj.equals(getGenderConj(rightPosTag))) {
-          newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+          newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
         }
       }
     }
   }
-  if (anim_inanim && newAnalyzedTokens.isEmpty()) {
-    debug_compound_write(word + " anim-inanim");
+  if (newAnalyzedTokens.isEmpty()) {
+    newAnalyzedTokens=newAnalyzedTokensAnimInanim;
+  }
+  if (animInanimNotTagged != null && newAnalyzedTokens.isEmpty()) {
+    debug_compound_unknown_write(word + " " + animInanimNotTagged);
   }
   return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
 }

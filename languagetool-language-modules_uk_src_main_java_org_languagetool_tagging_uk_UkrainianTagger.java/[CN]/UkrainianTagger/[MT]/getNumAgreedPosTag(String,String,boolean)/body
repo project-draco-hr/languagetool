@@ -1,0 +1,9 @@
+{
+  String agreedPosTag=null;
+  if (leftPosTag.matches(".*:p:.*") && rightPosTag.matches(".*:[mfn]:.*") || leftPosTag.matches(".*:[mfn]:.*") && rightPosTag.matches(".*:p:.*")) {
+    if (getConj(leftPosTag).equals(getConj(rightPosTag))) {
+      agreedPosTag=leftPosTag;
+    }
+  }
+  return agreedPosTag;
+}

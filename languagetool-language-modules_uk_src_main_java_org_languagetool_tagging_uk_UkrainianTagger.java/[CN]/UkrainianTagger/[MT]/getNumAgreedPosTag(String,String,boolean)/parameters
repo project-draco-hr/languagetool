@@ -1,2 +1,3 @@
 String leftPosTag
 String rightPosTag
+boolean leftNv

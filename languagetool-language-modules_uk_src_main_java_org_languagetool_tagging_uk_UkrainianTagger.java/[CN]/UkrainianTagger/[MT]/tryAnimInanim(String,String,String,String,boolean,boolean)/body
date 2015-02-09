@@ -1,0 +1,42 @@
+{
+  String agreedPosTag=null;
+  if (leftMasterSet.contains(leftLemma)) {
+    if (leftPosTag.contains(TAG_ANIM)) {
+      rightPosTag=rightPosTag.concat(TAG_ANIM);
+    }
+ else {
+      rightPosTag=rightPosTag.replace(TAG_ANIM,"");
+    }
+    agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag,leftNv);
+    if (agreedPosTag == null) {
+      if (!leftPosTag.contains(TAG_ANIM)) {
+        if (leftPosTag.matches(".*:[mnp]:v_zna.*") && rightPosTag.matches(".*:[mnp]:v_naz.*") && !leftNv&& !rightNv) {
+          agreedPosTag=leftPosTag;
+        }
+      }
+    }
+  }
+ else   if (slaveSet.contains(rightLemma)) {
+    rightPosTag=rightPosTag.replace(":anim","");
+    agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag,false);
+    if (agreedPosTag == null) {
+      if (!leftPosTag.contains(TAG_ANIM)) {
+        if (leftPosTag.matches(".*:[mnp]:v_zna.*") && rightPosTag.matches(".*:[mnp]:v_naz.*") && getNum(leftPosTag).equals(getNum(rightPosTag))&& !leftNv&& !rightNv) {
+          agreedPosTag=leftPosTag;
+        }
+      }
+    }
+  }
+ else   if (slaveSet.contains(leftLemma)) {
+    leftPosTag=leftPosTag.replace(":anim","");
+    agreedPosTag=getArgreedPosTag(rightPosTag,leftPosTag,false);
+    if (agreedPosTag == null) {
+      if (!rightPosTag.contains(TAG_ANIM)) {
+        if (rightPosTag.matches(".*:[mnp]:v_zna.*") && leftPosTag.matches(".*:[mnp]:v_naz.*") && getNum(leftPosTag).equals(getNum(rightPosTag))&& !leftNv&& !rightNv) {
+          agreedPosTag=rightPosTag;
+        }
+      }
+    }
+  }
+  return agreedPosTag;
+}
