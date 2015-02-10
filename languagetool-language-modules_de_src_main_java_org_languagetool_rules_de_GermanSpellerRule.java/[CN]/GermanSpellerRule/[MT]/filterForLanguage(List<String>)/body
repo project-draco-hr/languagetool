@@ -1,0 +1,8 @@
+{
+  if (language.getShortNameWithCountryAndVariant().equals("de-CH")) {
+    for (int i=0; i < suggestions.size(); i++) {
+      String s=suggestions.get(i);
+      suggestions.set(i,s.replace("??","ss"));
+    }
+  }
+}

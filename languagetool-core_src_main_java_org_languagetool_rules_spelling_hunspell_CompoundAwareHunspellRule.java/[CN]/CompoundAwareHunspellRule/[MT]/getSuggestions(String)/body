@@ -36,6 +36,7 @@
   }
   suggestions.addAll(0,noSplitSuggestions);
   filterDupes(suggestions);
+  filterForLanguage(suggestions);
   final List<String> sortedSuggestions=sortSuggestionByQuality(word,suggestions);
   return sortedSuggestions.subList(0,Math.min(MAX_SUGGESTIONS,sortedSuggestions.size()));
 }
