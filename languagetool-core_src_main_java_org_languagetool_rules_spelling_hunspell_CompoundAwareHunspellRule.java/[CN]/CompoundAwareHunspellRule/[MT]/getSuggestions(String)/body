@@ -3,16 +3,6 @@
     init();
   }
   final List<String> candidates=new ArrayList<>();
-  final List<String> noSplitSuggestions=morfoSpeller.getSuggestions(word);
-  candidates.addAll(noSplitSuggestions);
-  if (StringTools.startsWithUppercase(word) && !StringTools.isAllUppercase(word)) {
-    final List<String> noSplitLowercaseSuggestions=morfoSpeller.getSuggestions(word.toLowerCase());
-    int pos=candidates.size() == 0 ? 0 : 1;
-    for (    String suggestion : noSplitLowercaseSuggestions) {
-      candidates.add(pos,StringTools.uppercaseFirstChar(suggestion));
-      pos=Math.min(pos + 2,candidates.size());
-    }
-  }
   final List<String> parts=wordSplitter.tokenize(word);
   int partCount=0;
   for (  String part : parts) {
@@ -34,8 +24,18 @@
     }
     partCount++;
   }
-  filterDupes(candidates);
   final List<String> suggestions=getCorrectWords(candidates);
+  final List<String> noSplitSuggestions=morfoSpeller.getSuggestions(word);
+  if (StringTools.startsWithUppercase(word) && !StringTools.isAllUppercase(word)) {
+    final List<String> noSplitLowercaseSuggestions=morfoSpeller.getSuggestions(word.toLowerCase());
+    int pos=noSplitSuggestions.size() == 0 ? 0 : 1;
+    for (    String suggestion : noSplitLowercaseSuggestions) {
+      noSplitSuggestions.add(pos,StringTools.uppercaseFirstChar(suggestion));
+      pos=Math.min(pos + 2,noSplitSuggestions.size());
+    }
+  }
+  suggestions.addAll(0,noSplitSuggestions);
+  filterDupes(suggestions);
   final List<String> sortedSuggestions=sortSuggestionByQuality(word,suggestions);
   return sortedSuggestions.subList(0,Math.min(MAX_SUGGESTIONS,sortedSuggestions.size()));
 }
