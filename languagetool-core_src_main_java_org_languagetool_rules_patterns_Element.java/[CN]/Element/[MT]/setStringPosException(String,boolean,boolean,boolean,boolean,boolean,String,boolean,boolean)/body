@@ -1,7 +1,3 @@
 {
-  final Element exception=new Element(token,caseSensitive,regExp,inflected);
-  exception.setNegation(negation);
-  exception.setPosElement(posToken,posRegExp,posNegation);
-  exception.exceptionValidNext=scopeNext;
-  setException(exception,scopePrevious);
+  setStringPosException(token,regExp,inflected,negation,scopeNext,scopePrevious,posToken,posRegExp,posNegation,Boolean.valueOf(caseSensitive));
 }
