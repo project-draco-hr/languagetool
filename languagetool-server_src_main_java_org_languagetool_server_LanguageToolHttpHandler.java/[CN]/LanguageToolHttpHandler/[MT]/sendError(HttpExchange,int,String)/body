@@ -1,6 +1,6 @@
 {
   if (afterTheDeadlineMode) {
-    String xmlResponse="<results><message>" + escapeXml(response) + "</message></results>";
+    String xmlResponse="<results><message>" + escapeForXmlContent(response) + "</message></results>";
     httpExchange.sendResponseHeaders(returnCode,xmlResponse.getBytes(ENCODING).length);
     httpExchange.getResponseBody().write(xmlResponse.getBytes(ENCODING));
   }

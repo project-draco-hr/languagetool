@@ -1,0 +1,3 @@
+{
+  return XmlEscapers.xmlContentEscaper().escape(s);
+}
