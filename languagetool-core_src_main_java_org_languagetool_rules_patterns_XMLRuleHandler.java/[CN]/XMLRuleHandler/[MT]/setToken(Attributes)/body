@@ -37,6 +37,7 @@
     tokenLevelCaseSensitive=YES.equals(attrs.getValue(CASE_SENSITIVE));
   }
  else {
+    tokenLevelCaseSensitive=false;
     tokenLevelCaseSet=false;
   }
 }
