@@ -1,0 +1,5 @@
+{
+  MyGermanSpellerRule rule=new MyGermanSpellerRule(TestTools.getMessages("de"),GERMAN_DE);
+  assertTrue(rule.doIgnoreWord("einPseudoWortF??rLanguageToolTests"));
+  assertTrue(rule.doIgnoreWord("Ligafu??ball"));
+}

@@ -1,4 +1,5 @@
 {
   loadWordsToBeIgnored(getIgnoreFileName());
+  loadWordsToBeIgnored(getSpellingFileName());
   loadWordsToBeProhibited(getProhibitFileName());
 }

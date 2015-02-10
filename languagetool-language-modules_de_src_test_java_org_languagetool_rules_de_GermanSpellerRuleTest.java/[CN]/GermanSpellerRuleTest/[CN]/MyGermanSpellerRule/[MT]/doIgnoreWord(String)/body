@@ -1,0 +1,3 @@
+{
+  return super.ignoreWord(Arrays.asList(word),0);
+}
