@@ -42,7 +42,7 @@
       }
  else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && rightPosTag.startsWith(IPOSTag.noun.getText())) {
         String agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag,leftNv);
-        if (agreedPosTag == null && rightPosTag.startsWith(IPOSTag.noun.getText() + ":m:v_naz") && isMinMax(rightAnalyzedToken.getToken())) {
+        if (agreedPosTag == null && rightPosTag.startsWith("noun:m:v_naz") && isMinMax(rightAnalyzedToken.getToken())) {
           agreedPosTag=leftPosTag;
         }
         if (agreedPosTag == null && !isSameAnimStatus(leftPosTag,rightPosTag)) {

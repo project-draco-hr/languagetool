@@ -1,6 +1,6 @@
 {
   String agreedPosTag=null;
-  if (leftPosTag.matches(".*:p:.*") && rightPosTag.matches(".*:[mfn]:.*") || leftPosTag.matches(".*:[mfn]:.*") && rightPosTag.matches(".*:p:.*")) {
+  if (leftPosTag.contains(":p:") && SING_REGEX_F.matcher(rightPosTag).find() || SING_REGEX_F.matcher(leftPosTag).find() && rightPosTag.contains(":p:")) {
     if (getConj(leftPosTag).equals(getConj(rightPosTag))) {
       agreedPosTag=leftPosTag;
     }

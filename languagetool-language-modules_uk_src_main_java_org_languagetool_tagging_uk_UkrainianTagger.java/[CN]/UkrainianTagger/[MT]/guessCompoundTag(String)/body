@@ -63,10 +63,10 @@
     for (    AnalyzedToken rightAnalyzedToken : rightAnalyzedTokens) {
       String rightPosTag=rightAnalyzedToken.getPOSTag();
       if (rightPosTag == null)       continue;
-      if (rightPosTag.matches("^noun:[mfn]:v_rod.*")) {
+      if (NOUN_SING_V_ROD_REGEX.matcher(rightPosTag).matches()) {
         for (        String vid : VIDMINKY_MAP.keySet()) {
           if (vid.equals("v_kly"))           continue;
-          String posTag=rightPosTag.replaceFirst("v_...",vid);
+          String posTag=rightPosTag.replace("v_rod",vid);
           newAnalyzedTokens.add(new AnalyzedToken(word,posTag,word));
         }
       }
