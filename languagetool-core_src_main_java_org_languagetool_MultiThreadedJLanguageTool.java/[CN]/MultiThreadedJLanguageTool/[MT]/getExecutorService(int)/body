@@ -1,3 +1,13 @@
 {
-  return Executors.newFixedThreadPool(threads);
+  if (newFixedThreadPool == null) {
+    newFixedThreadPool=Executors.newFixedThreadPool(threads,new ThreadFactory(){
+      @Override public Thread newThread(      Runnable r){
+        Thread thread=new Thread(r);
+        thread.setDaemon(true);
+        return thread;
+      }
+    }
+);
+  }
+  return newFixedThreadPool;
 }
