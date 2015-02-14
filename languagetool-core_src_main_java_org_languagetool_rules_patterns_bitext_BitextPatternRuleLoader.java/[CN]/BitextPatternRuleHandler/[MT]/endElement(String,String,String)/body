@@ -1,6 +1,6 @@
 {
 switch (qName) {
-case "rule":
+case RULE:
     trgRule.setMessage(message.toString());
   if (suggestionMatches != null) {
     for (    final Match m : suggestionMatches) {
@@ -16,19 +16,19 @@ bRule.setIncorrectBitextExamples(incorrectExamples);
 bRule.setSourceLang(srcLang);
 rules.add(bRule);
 break;
-case "trgExample":
-trgExample=setExample();
-break;
-case "srcExample":
+case SRC_EXAMPLE:
 srcExample=setExample();
 break;
-case "source":
+case TRG_EXAMPLE:
+trgExample=setExample();
+break;
+case SOURCE:
 srcRule=finalizeRule();
 break;
-case "target":
+case TARGET:
 trgRule=finalizeRule();
 break;
-case "example":
+case EXAMPLE:
 if (inCorrectExample) {
 correctExamples.add(new StringPair(srcExample.getExample(),trgExample.getExample()));
 }
@@ -39,8 +39,7 @@ incorrectExamples.add(new IncorrectBitextExample(examplePair));
 }
  else {
 final List<String> corrections=trgExample.getCorrections();
-final String[] correctionArray=corrections.toArray(new String[corrections.size()]);
-incorrectExamples.add(new IncorrectBitextExample(examplePair,correctionArray));
+incorrectExamples.add(new IncorrectBitextExample(examplePair,corrections));
 }
 }
 inCorrectExample=false;

@@ -1,4 +1,4 @@
 {
   this.example=example;
-  this.corrections=Arrays.asList(corrections);
+  this.corrections=Collections.unmodifiableList(Arrays.asList(corrections));
 }
