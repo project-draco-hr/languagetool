@@ -1,0 +1,6 @@
+{
+  if (newFixedThreadPool == null) {
+    newFixedThreadPool=Executors.newFixedThreadPool(getThreadPoolSize(),new DaemonThreadFactory());
+  }
+  return newFixedThreadPool;
+}
