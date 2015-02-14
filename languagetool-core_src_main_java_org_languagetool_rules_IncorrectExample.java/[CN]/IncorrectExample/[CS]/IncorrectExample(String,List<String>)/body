@@ -1,0 +1,4 @@
+{
+  this.example=example;
+  this.corrections=Collections.unmodifiableList(new ArrayList<>(corrections));
+}

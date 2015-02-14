@@ -1,7 +1,6 @@
 {
   try {
-    final Dictionary dict=getDictionary();
-    return new DictionaryLookup(dict);
+    return new DictionaryLookup(getDictionary());
   }
  catch (  IOException e) {
     throw new RuntimeException("Could not load dictionary",e);

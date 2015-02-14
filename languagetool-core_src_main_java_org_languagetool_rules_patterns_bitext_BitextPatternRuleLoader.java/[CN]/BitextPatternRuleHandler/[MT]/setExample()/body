@@ -6,7 +6,7 @@
  else   if (inIncorrectExample) {
     final String[] corrections=exampleCorrection.toString().split("\\|");
     if (corrections.length > 0 && corrections[0].length() > 0) {
-      example=new IncorrectExample(incorrectExample.toString(),corrections);
+      example=new IncorrectExample(incorrectExample.toString(),Arrays.asList(corrections));
     }
  else {
       example=new IncorrectExample(incorrectExample.toString());

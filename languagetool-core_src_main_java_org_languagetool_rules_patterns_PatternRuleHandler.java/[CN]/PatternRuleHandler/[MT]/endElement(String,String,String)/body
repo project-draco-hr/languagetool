@@ -108,7 +108,7 @@ if (corrections.size() > 0) {
 if (exampleCorrection.toString().endsWith("|")) {
 corrections.add("");
 }
-example=new IncorrectExample(incorrectExample.toString(),corrections.toArray(new String[corrections.size()]));
+example=new IncorrectExample(incorrectExample.toString(),corrections);
 }
  else {
 example=new IncorrectExample(incorrectExample.toString());

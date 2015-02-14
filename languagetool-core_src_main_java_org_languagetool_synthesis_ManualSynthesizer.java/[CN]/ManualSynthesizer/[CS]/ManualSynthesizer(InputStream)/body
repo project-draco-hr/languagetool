@@ -1,4 +1,5 @@
 {
-  mapping=loadMapping(inputStream,"utf8");
-  possibleTags=Collections.unmodifiableSet(possibleTags);
+  MappingAndTags mappingAndTags=loadMapping(inputStream,"utf8");
+  mapping=mappingAndTags.mapping;
+  possibleTags=Collections.unmodifiableSet(mappingAndTags.tags);
 }
