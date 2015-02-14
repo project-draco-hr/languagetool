@@ -1,0 +1,13 @@
+{
+  final StringBuilder completePath=new StringBuilder(baseDir);
+  if (!this.rulesDir.endsWith("/") && !path.startsWith("/")) {
+    completePath.append('/');
+  }
+  if (this.rulesDir.endsWith("/") && path.startsWith("/") && path.length() > 1) {
+    completePath.append(path.substring(1));
+  }
+ else {
+    completePath.append(path);
+  }
+  return completePath.toString();
+}

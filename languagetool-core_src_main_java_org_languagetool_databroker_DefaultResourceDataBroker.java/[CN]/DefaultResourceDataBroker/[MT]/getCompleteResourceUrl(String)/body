@@ -1,13 +1,3 @@
 {
-  final StringBuilder completePath=new StringBuilder(resourceDir);
-  if (!resourceDir.endsWith("/") && !path.startsWith("/")) {
-    completePath.append('/');
-  }
-  if (resourceDir.endsWith("/") && path.startsWith("/") && path.length() > 1) {
-    completePath.append(path.substring(1));
-  }
- else {
-    completePath.append(path);
-  }
-  return completePath.toString();
+  return appendPath(resourceDir,path);
 }
