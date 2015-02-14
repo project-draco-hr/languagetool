@@ -1,9 +1,9 @@
 {
-  final StringBuilder completePath=new StringBuilder(this.getResourceDir());
-  if (!this.getResourceDir().endsWith("/") && !(path.charAt(0) == '/')) {
+  final StringBuilder completePath=new StringBuilder(resourceDir);
+  if (!resourceDir.endsWith("/") && !path.startsWith("/")) {
     completePath.append('/');
   }
-  if (this.getResourceDir().endsWith("/") && (path.charAt(0) == '/') && path.length() > 1) {
+  if (resourceDir.endsWith("/") && path.startsWith("/") && path.length() > 1) {
     completePath.append(path.substring(1));
   }
  else {

@@ -1,5 +1,5 @@
 {
-  final String completePath=this.getCompleteRulesUrl(path);
+  final String completePath=getCompleteRulesUrl(path);
   final InputStream resourceAsStream=ResourceDataBroker.class.getResourceAsStream(completePath);
   assertNotNull(resourceAsStream,path,completePath);
   return resourceAsStream;

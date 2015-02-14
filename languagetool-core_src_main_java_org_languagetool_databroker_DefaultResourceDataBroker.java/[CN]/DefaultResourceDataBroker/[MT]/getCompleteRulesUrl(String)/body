@@ -1,9 +1,9 @@
 {
-  final StringBuilder completePath=new StringBuilder(this.getRulesDir());
-  if (!this.getRulesDir().endsWith("/") && !(path.charAt(0) == '/')) {
+  final StringBuilder completePath=new StringBuilder(rulesDir);
+  if (!rulesDir.endsWith("/") && !path.startsWith("/")) {
     completePath.append('/');
   }
-  if (this.getRulesDir().endsWith("/") && (path.charAt(0) == '/') && path.length() > 1) {
+  if (rulesDir.endsWith("/") && path.startsWith("/") && path.length() > 1) {
     completePath.append(path.substring(1));
   }
  else {
