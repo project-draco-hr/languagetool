@@ -14,9 +14,6 @@
       if (contributor.getUrl() != null) {
         maintainerInfo.append("</a>");
       }
-      if (contributor.getRemark() != null) {
-        maintainerInfo.append("&nbsp;(" + contributor.getRemark() + ")");
-      }
     }
   }
   return maintainerInfo;

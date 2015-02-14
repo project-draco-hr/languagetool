@@ -1,0 +1,4 @@
+{
+  this.name=Objects.requireNonNull(name,"name cannot be null");
+  this.url=url;
+}
