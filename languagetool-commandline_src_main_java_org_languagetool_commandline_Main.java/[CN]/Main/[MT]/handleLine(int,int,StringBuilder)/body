@@ -1,21 +1,23 @@
 {
   int matches=matchNo;
+  String string=sb.toString();
+  string=StringTools.filterXML(string);
   if (applySuggestions) {
-    System.out.print(Tools.correctText(StringTools.filterXML(sb.toString()),lt));
+    System.out.print(Tools.correctText(string,lt));
   }
  else   if (profileRules) {
-    matches+=Tools.profileRulesOnLine(StringTools.filterXML(sb.toString()),lt,currentRule);
+    matches+=Tools.profileRulesOnLine(string,lt,currentRule);
   }
  else   if (!taggerOnly) {
     if (matches == 0) {
-      matches+=CommandLineTools.checkText(StringTools.filterXML(sb.toString()),lt,apiFormat,-1,lineOffset,matches,StringTools.XmlPrintMode.START_XML);
+      matches+=CommandLineTools.checkText(string,lt,apiFormat,-1,lineOffset,matches,StringTools.XmlPrintMode.START_XML);
     }
  else {
-      matches+=CommandLineTools.checkText(StringTools.filterXML(sb.toString()),lt,apiFormat,-1,lineOffset,matches,StringTools.XmlPrintMode.CONTINUE_XML);
+      matches+=CommandLineTools.checkText(string,lt,apiFormat,-1,lineOffset,matches,StringTools.XmlPrintMode.CONTINUE_XML);
     }
   }
  else {
-    CommandLineTools.tagText(StringTools.filterXML(sb.toString()),lt);
+    CommandLineTools.tagText(string,lt);
   }
   return matches;
 }

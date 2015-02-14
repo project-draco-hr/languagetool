@@ -1,0 +1,6 @@
+{
+  if (printStream != null) {
+    printIfVerbose(analyzedSentence.toString());
+    printIfVerbose(analyzedSentence.getAnnotations());
+  }
+}
