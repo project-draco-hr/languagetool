@@ -1,4 +1,4 @@
 {
-  this.setResourceDir(resourceDir);
-  this.setRulesDir(rulesDir);
+  this.resourceDir=(resourceDir == null) ? "" : resourceDir;
+  this.rulesDir=(rulesDir == null) ? "" : rulesDir;
 }
