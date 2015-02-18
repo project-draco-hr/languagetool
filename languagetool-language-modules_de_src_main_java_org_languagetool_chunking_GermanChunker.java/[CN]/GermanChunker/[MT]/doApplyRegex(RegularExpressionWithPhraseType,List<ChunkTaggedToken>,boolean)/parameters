@@ -1,3 +1,0 @@
-RegularExpressionWithPhraseType regex
-List<ChunkTaggedToken> tokens
-boolean overwrite

@@ -1,0 +1,39 @@
+{
+  List<Match<ChunkTaggedToken>> matches=regex.expression.findAll(tokens);
+  List<Span> affectedSpans=new ArrayList<>();
+  for (  Match<ChunkTaggedToken> match : matches) {
+    affectedSpans.add(new Span(match.startIndex(),match.endIndex()));
+    for (int i=match.startIndex(); i < match.endIndex(); i++) {
+      ChunkTaggedToken token=tokens.get(i);
+      List<ChunkTag> newChunkTags=new ArrayList<>();
+      newChunkTags.addAll(token.getChunkTags());
+      if (regex.overwrite) {
+        List<ChunkTag> filtered=new ArrayList<>();
+        for (        ChunkTag newChunkTag : newChunkTags) {
+          if (!FILTER_TAGS.contains(newChunkTag.getChunkTag())) {
+            filtered.add(newChunkTag);
+          }
+        }
+        newChunkTags=filtered;
+      }
+      ChunkTag newTag;
+      if (regex.phraseType == NP) {
+        if (i == match.startIndex()) {
+          newTag=new ChunkTag("B-NP");
+        }
+ else {
+          newTag=new ChunkTag("I-NP");
+        }
+      }
+ else {
+        newTag=new ChunkTag(regex.phraseType.name());
+      }
+      if (!newChunkTags.contains(newTag)) {
+        newChunkTags.add(newTag);
+        newChunkTags.remove(new ChunkTag("O"));
+      }
+      tokens.set(i,new ChunkTaggedToken(token.getToken(),newChunkTags,token.getReadings()));
+    }
+  }
+  return new AffectedSpans(affectedSpans);
+}

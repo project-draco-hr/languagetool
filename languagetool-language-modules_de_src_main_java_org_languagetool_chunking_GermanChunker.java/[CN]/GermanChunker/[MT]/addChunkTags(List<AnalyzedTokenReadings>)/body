@@ -1,11 +1,7 @@
 {
-  List<AnalyzedTokenReadings> noWhitespaceTokens=new ArrayList<>();
-  for (  AnalyzedTokenReadings tokenReading : tokenReadings) {
-    if (!tokenReading.isWhitespace()) {
-      noWhitespaceTokens.add(tokenReading);
-    }
+  List<ChunkTaggedToken> chunkTaggedTokens=getBasicChunks(tokenReadings);
+  for (  RegularExpressionWithPhraseType regex : REGEXES2) {
+    apply(regex,chunkTaggedTokens);
   }
-  List<ChunkTaggedToken> origChunkTags=getChunkTagsForReadings(noWhitespaceTokens);
-  List<ChunkTaggedToken> chunkTags=chunkFilter.filter(origChunkTags);
-  assignChunksToReadings(chunkTags);
+  assignChunksToReadings(chunkTaggedTokens);
 }

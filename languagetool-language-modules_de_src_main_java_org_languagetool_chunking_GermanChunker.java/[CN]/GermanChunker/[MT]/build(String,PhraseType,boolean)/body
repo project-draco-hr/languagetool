@@ -1,0 +1,5 @@
+{
+  String expandedExpr=expr.replace("<NP>","<chunk=B-NP> <chunk=I-NP>*").replace("&prozent;","Prozent|Kilo|Kilogramm|Gramm|Euro|Pfund");
+  RegularExpression<ChunkTaggedToken> expression=RegularExpression.compile(expandedExpr,FACTORY);
+  return new RegularExpressionWithPhraseType(expression,phraseType,overwrite);
+}

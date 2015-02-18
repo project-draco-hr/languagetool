@@ -1,7 +1,6 @@
 {
-  if (!GermanChunker.DEBUG && !GermanChunkFilter.DEBUG) {
-    GermanChunker.DEBUG=true;
-    GermanChunkFilter.DEBUG=true;
+  if (!GermanChunker.isDebug()) {
+    GermanChunker.setDebug(true);
     getMatches(input);
   }
   Assert.fail(message);

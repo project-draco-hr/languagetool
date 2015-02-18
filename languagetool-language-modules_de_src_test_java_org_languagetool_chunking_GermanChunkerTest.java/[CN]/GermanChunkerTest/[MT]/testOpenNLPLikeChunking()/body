@@ -1,5 +1,4 @@
 {
-  GermanChunker.DEBUG=true;
   assertChunks("Ein/B Haus/I");
   assertChunks("Da steht ein/B Haus/I");
   assertChunks("Da steht ein/B sch??nes/I Haus/I");

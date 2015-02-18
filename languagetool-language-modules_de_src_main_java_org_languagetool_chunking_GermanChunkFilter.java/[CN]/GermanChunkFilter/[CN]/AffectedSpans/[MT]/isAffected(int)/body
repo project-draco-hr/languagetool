@@ -1,8 +1,0 @@
-{
-  for (  Span span : spans) {
-    if (pos >= span.startIndex && pos < span.endIndex) {
-      return true;
-    }
-  }
-  return false;
-}
