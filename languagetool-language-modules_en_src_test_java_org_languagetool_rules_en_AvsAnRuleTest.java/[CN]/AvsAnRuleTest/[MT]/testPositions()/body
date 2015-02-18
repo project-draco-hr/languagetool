@@ -1,5 +1,4 @@
 {
-  final AvsAnRule rule=new AvsAnRule(null);
   RuleMatch[] matches;
   final JLanguageTool langTool=new JLanguageTool(new English());
   matches=rule.match(langTool.getAnalyzedSentence("a industry standard."));
