@@ -1,0 +1,8 @@
+{
+  assertTrue(rule.prevChunkIsNominative(getTokens("Die Katze ist s????"),2));
+  assertTrue(rule.prevChunkIsNominative(getTokens("Das Fell der Katzen ist s????"),4));
+  assertFalse(rule.prevChunkIsNominative(getTokens("Dem Mann geht es gut."),2));
+  assertFalse(rule.prevChunkIsNominative(getTokens("Dem alten Mann geht es gut."),2));
+  assertFalse(rule.prevChunkIsNominative(getTokens("Beiden Filmen war kein Erfolg beschieden."),2));
+  assertFalse(rule.prevChunkIsNominative(getTokens("Aber beiden Filmen war kein Erfolg beschieden."),3));
+}

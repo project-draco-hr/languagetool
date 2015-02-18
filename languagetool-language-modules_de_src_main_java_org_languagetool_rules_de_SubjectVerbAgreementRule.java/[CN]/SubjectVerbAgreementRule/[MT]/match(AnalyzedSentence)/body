@@ -1,0 +1,17 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  for (int i=1; i < tokens.length; i++) {
+    AnalyzedTokenReadings token=tokens[i];
+    String tokenStr=token.getToken();
+    RuleMatch singularMatch=getSingularMatchOrNull(tokens,i,token,tokenStr);
+    if (singularMatch != null) {
+      ruleMatches.add(singularMatch);
+    }
+    RuleMatch pluralMatch=getPluralMatchOrNull(tokens,i,token,tokenStr);
+    if (pluralMatch != null) {
+      ruleMatches.add(pluralMatch);
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}

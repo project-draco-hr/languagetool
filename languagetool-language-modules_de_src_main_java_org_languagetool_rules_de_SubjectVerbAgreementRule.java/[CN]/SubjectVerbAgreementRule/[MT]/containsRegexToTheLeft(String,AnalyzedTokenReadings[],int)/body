@@ -1,0 +1,10 @@
+{
+  Pattern p=Pattern.compile(regex);
+  for (int i=startPos; i > 0; i--) {
+    String token=tokens[i].getToken();
+    if (p.matcher(token).matches()) {
+      return true;
+    }
+  }
+  return false;
+}

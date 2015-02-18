@@ -1,0 +1,8 @@
+{
+  try {
+    return new URL("http://www.canoo.net/services/OnlineGrammar/Wort/Verb/Numerus-Person/ProblemNum.html");
+  }
+ catch (  MalformedURLException e) {
+    throw new RuntimeException(e);
+  }
+}

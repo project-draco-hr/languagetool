@@ -1,0 +1,5 @@
+String regexStr
+PhraseType newChunkName
+boolean overwrite
+AffectedSpans affectedSpans
+String debug

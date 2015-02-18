@@ -1,0 +1,21 @@
+{
+  List<ChunkTaggedToken> tokens=new ArrayList<>();
+  for (  AnalyzedTokenReadings tokenReading : tokenReadings) {
+    ChunkTaggedToken chunkTaggedToken=new ChunkTaggedToken(tokenReading.getToken(),Collections.singletonList(new ChunkTag("O")),tokenReading);
+    tokens.add(chunkTaggedToken);
+  }
+  if (DEBUG) {
+    System.out.println("=============== CHUNKER INPUT ===============");
+    System.out.println(getDebugString(tokens));
+  }
+  apply("(<posre=^ART.*>|<pos=PRO>)? <pos=ADV>* <pos=PA2>* <pos=ADJ>* <pos=SUB>+",PhraseType.NP,tokens);
+  apply("<pos=SUB> (<und|oder>|(<bzw> <.>)) <pos=SUB>",PhraseType.NP,tokens);
+  apply("<pos=ADJ> (<und|oder>|(<bzw> <.>)) <pos=PA2> <pos=SUB>",PhraseType.NP,tokens);
+  apply("<pos=ADJ> (<und|oder>|(<bzw> <.>)) <pos=ADJ> <pos=SUB>",PhraseType.NP,tokens);
+  apply("<posre=^ART.*> <pos=ADV>* <pos=ADJ>* <regexCS=[A-Z??????][a-z??????]+>",PhraseType.NP,tokens);
+  apply("<pos=PRO>? <pos=ZAL> <pos=SUB>",PhraseType.NP,tokens);
+  apply("<Herr|Herrn|Frau> <pos=EIG>+",PhraseType.NP,tokens);
+  apply("<Herr|Herrn|Frau> <regexCS=[A-Z??????][a-z??????-]+>+",PhraseType.NP,tokens);
+  apply("<der>",PhraseType.NP,tokens);
+  return tokens;
+}

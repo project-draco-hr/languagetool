@@ -1,0 +1,9 @@
+{
+  for (int i=startPos; i > 0; i--) {
+    AnalyzedTokenReadings token=tokens[i];
+    if (QUESTION_PRONOUNS.contains(token.getToken().toLowerCase())) {
+      return true;
+    }
+  }
+  return false;
+}

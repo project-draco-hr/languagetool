@@ -1,0 +1,6 @@
+{
+  List<String> sentences=Arrays.asList("So mancher Mitarbeiter und manche F??hrungskraft ist im Urlaub.","So mancher Mitarbeiter und manche F??hrungskraft sind im Urlaub.","Jeder Sch??ler und jede Sch??lerin ist mal schlecht gelaunt.","Jeder Sch??ler und jede Sch??lerin sind mal schlecht gelaunt.","Kaum mehr als vier Prozent der Fl??che ist f??r landwirtschaftliche Nutzung geeignet.","Kaum mehr als vier Prozent der Fl??che sind f??r landwirtschaftliche Nutzung geeignet.","Kaum mehr als vier Millionen Euro des Haushalts ist verplant.","Kaum mehr als vier Millionen Euro des Haushalts sind verplant.","80 Cent ist nicht genug.","80 Cent sind nicht genug.","1,5 Pfund ist nicht genug.","1,5 Pfund sind nicht genug.");
+  for (  String sentence : sentences) {
+    assertGood(sentence);
+  }
+}

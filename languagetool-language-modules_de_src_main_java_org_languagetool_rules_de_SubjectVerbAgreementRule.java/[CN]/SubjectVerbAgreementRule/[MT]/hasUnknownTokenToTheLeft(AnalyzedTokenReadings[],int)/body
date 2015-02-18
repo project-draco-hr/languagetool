@@ -1,0 +1,3 @@
+{
+  return hasUnknownTokenAt(tokens,0,startPos);
+}

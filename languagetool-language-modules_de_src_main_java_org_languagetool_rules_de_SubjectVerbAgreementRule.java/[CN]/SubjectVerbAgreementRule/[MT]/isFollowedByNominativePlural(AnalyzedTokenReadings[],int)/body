@@ -1,0 +1,11 @@
+{
+  for (int i=startPos; i < tokens.length; i++) {
+    AnalyzedTokenReadings token=tokens[i];
+    if (token.hasPartialPosTag("SUB") || token.hasPartialPosTag("PRO")) {
+      if (token.hasPartialPosTag("NOM") && token.hasPartialPosTag("PLU")) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

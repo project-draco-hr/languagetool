@@ -1,0 +1,13 @@
+{
+  if (tokenStr.equals("ist") || tokenStr.equals("war")) {
+    AnalyzedTokenReadings prevToken=tokens[i - 1];
+    AnalyzedTokenReadings nextToken=i + 1 < tokens.length ? tokens[i + 1] : null;
+    List<ChunkTag> prevChunkTags=prevToken.getChunkTags();
+    boolean match=prevChunkTags.contains(NPP) && !prevChunkTags.contains(PP) && !prevToken.getToken().equals("Uhr")&& !isCurrency(prevToken)&& !(nextToken != null && nextToken.getToken().equals("es"))&& prevChunkIsNominative(tokens,i - 1)&& !hasUnknownTokenToTheLeft(tokens,i)&& !hasQuestionPronounToTheLeft(tokens,i - 1)&& !containsRegexToTheLeft("wer",tokens,i - 1)&& !containsRegexToTheLeft("(?i)alle[nr]?",tokens,i - 1)&& !containsRegexToTheLeft("(?i)jede[rs]?",tokens,i - 1)&& !containsRegexToTheLeft("(?i)manche[nrs]?",tokens,i - 1);
+    if (match) {
+      String message="Bitte pr??fen, ob hier <suggestion>" + (tokenStr.equals("ist") ? "sind" : "waren") + "</suggestion> stehen sollte.";
+      return new RuleMatch(this,token.getStartPos(),token.getEndPos(),message);
+    }
+  }
+  return null;
+}

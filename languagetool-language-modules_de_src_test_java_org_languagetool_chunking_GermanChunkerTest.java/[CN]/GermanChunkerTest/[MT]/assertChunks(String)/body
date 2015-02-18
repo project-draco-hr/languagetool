@@ -1,0 +1,24 @@
+{
+  String plainInput=input.replaceAll("/[A-Z-]*","").replace(" ,",",");
+  AnalyzedSentence analyzedSentence=lt.getAnalyzedSentence(plainInput);
+  AnalyzedTokenReadings[] result=analyzedSentence.getTokensWithoutWhitespace();
+  List<List<String>> outputChunks=new ArrayList<>();
+  for (  AnalyzedTokenReadings analyzedTokens : result) {
+    List<String> chunks=new ArrayList<>();
+    for (    ChunkTag chunk : analyzedTokens.getChunkTags()) {
+      chunks.add(chunk.getChunkTag());
+    }
+    outputChunks.add(chunks);
+  }
+  List<String> expectedChunks=getExpectedChunks(input);
+  int i=1;
+  for (  String expectedChunk : expectedChunks) {
+    List<String> outputChunksHere=outputChunks.get(i);
+    if (!outputChunksHere.contains(expectedChunk)) {
+      List<List<String>> displayOutput=new ArrayList<>(outputChunks);
+      displayOutput.remove(0);
+      fail("Expected " + expectedChunk + " but got "+ outputChunksHere+ " at position "+ i+ " for input:\n  "+ input+ "\nPlain input:\n  "+ plainInput+ "\nOutput:\n  "+ StringUtils.join(displayOutput," "));
+    }
+    i++;
+  }
+}

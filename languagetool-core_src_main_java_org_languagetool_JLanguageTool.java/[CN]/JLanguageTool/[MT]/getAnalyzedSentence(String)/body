@@ -1,3 +1,7 @@
 {
-  return language.getDisambiguator().disambiguate(getRawAnalyzedSentence(sentence));
+  AnalyzedSentence analyzedSentence=language.getDisambiguator().disambiguate(getRawAnalyzedSentence(sentence));
+  if (language.getPostDisambiguationChunker() != null) {
+    language.getPostDisambiguationChunker().addChunkTags(Arrays.asList(analyzedSentence.getTokens()));
+  }
+  return analyzedSentence;
 }

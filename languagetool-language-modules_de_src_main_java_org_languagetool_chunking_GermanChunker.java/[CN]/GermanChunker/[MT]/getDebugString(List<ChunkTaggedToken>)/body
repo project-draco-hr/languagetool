@@ -1,0 +1,10 @@
+{
+  if (!DEBUG) {
+    return "";
+  }
+  StringBuilder sb=new StringBuilder();
+  for (  ChunkTaggedToken token : tokens) {
+    sb.append("  " + token + " -- "+ token.getReadings().toString().replaceFirst(Pattern.quote(token.getToken()) + "\\[","[")+ "\n");
+  }
+  return sb.toString();
+}

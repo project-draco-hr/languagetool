@@ -1,0 +1,3 @@
+{
+  return token + '/' + StringUtils.join(chunkTags,",");
+}

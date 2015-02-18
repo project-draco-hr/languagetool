@@ -1,0 +1,6 @@
+{
+  RuleMatch[] matches=getMatches(input);
+  if (matches.length != 0) {
+    fail("Got unexpected match(es) for '" + input + "': "+ Arrays.toString(matches),input);
+  }
+}
