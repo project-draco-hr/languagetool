@@ -1,4 +1,0 @@
-String regexStr
-PhraseType newChunkName
-List<ChunkTaggedToken> tokens
-boolean overwrite

@@ -1,0 +1,3 @@
+{
+  return apply(regex,tokens,false);
+}

@@ -1,0 +1,5 @@
+{
+  this.expression=expression;
+  this.phraseType=phraseType;
+  this.overwrite=overwrite;
+}

@@ -1,0 +1,4 @@
+RegularExpressionWithPhraseType regex
+boolean overwrite
+AffectedSpans affectedSpans
+String debug

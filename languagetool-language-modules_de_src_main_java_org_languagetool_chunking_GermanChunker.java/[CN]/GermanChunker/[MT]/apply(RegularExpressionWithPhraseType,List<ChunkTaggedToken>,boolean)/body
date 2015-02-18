@@ -1,0 +1,14 @@
+{
+  String prevDebug=getDebugString(tokens);
+  try {
+    AffectedSpans affectedSpans=doApplyRegex(regex,tokens,overwrite);
+    String debug=getDebugString(tokens);
+    if (!debug.equals(prevDebug)) {
+      printDebugInfo(regex,overwrite,affectedSpans,debug);
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Could not apply chunk regexp '" + regex + "' to tokens: "+ tokens,e);
+  }
+  return tokens;
+}
