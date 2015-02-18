@@ -1,9 +1,11 @@
 {
   List<ChunkTaggedToken> chunkTaggedTokens=new ArrayList<>();
   for (  AnalyzedTokenReadings tokenReading : tokenReadings) {
-    List<ChunkTag> chunkTags=Collections.singletonList(new ChunkTag("O"));
-    ChunkTaggedToken chunkTaggedToken=new ChunkTaggedToken(tokenReading.getToken(),chunkTags,tokenReading);
-    chunkTaggedTokens.add(chunkTaggedToken);
+    if (!tokenReading.isWhitespace()) {
+      List<ChunkTag> chunkTags=Collections.singletonList(new ChunkTag("O"));
+      ChunkTaggedToken chunkTaggedToken=new ChunkTaggedToken(tokenReading.getToken(),chunkTags,tokenReading);
+      chunkTaggedTokens.add(chunkTaggedToken);
+    }
   }
   if (debug) {
     System.out.println("=============== CHUNKER INPUT ===============");
