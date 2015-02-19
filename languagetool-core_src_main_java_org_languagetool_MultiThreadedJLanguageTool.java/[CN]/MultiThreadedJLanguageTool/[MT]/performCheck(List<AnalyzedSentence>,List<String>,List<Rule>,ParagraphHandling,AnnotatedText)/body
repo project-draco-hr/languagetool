@@ -3,10 +3,9 @@
   int lineCount=0;
   int columnCount=1;
   final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final int threads=getThreadPoolSize();
-  final ExecutorService executorService=getExecutorService(threads);
+  final ExecutorService executorService=getExecutorService();
   try {
-    final List<Callable<List<RuleMatch>>> callables=createTextCheckCallables(paraMode,annotatedText,analyzedSentences,sentences,allRules,charCount,lineCount,columnCount,threads);
+    final List<Callable<List<RuleMatch>>> callables=createTextCheckCallables(paraMode,annotatedText,analyzedSentences,sentences,allRules,charCount,lineCount,columnCount);
     final List<Future<List<RuleMatch>>> futures=executorService.invokeAll(callables);
     for (    Future<List<RuleMatch>> future : futures) {
       ruleMatches.addAll(future.get());
@@ -14,9 +13,6 @@
   }
  catch (  InterruptedException|ExecutionException e) {
     throw new RuntimeException(e);
-  }
- finally {
-    executorService.shutdownNow();
   }
   return ruleMatches;
 }

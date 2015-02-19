@@ -1,4 +1,5 @@
 {
+  final int threads=getThreadPoolSize();
   final int totalRules=allRules.size();
   final int chunkSize=totalRules / threads;
   int firstItem=0;

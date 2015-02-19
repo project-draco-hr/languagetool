@@ -1,0 +1,23 @@
+{
+  final List<AnalyzedSentence> analyzedSentences=new ArrayList<>();
+  final ExecutorService executorService=getExecutorService();
+  int j=0;
+  List<Callable<AnalyzedSentence>> callables=new ArrayList<Callable<AnalyzedSentence>>();
+  for (  final String sentence : sentences) {
+    AnalyzeSentenceCallable analyzeSentenceCallable=++j < sentences.size() ? new AnalyzeSentenceCallable(sentence) : new ParagraphEndAnalyzeSentenceCallable(sentence);
+    callables.add(analyzeSentenceCallable);
+  }
+  try {
+    List<Future<AnalyzedSentence>> futures=executorService.invokeAll(callables);
+    for (    Future<AnalyzedSentence> future : futures) {
+      AnalyzedSentence analyzedSentence=future.get();
+      rememberUnknownWords(analyzedSentence);
+      printSentenceInfo(analyzedSentence);
+      analyzedSentences.add(analyzedSentence);
+    }
+  }
+ catch (  InterruptedException|ExecutionException e) {
+    throw new RuntimeException(e);
+  }
+  return analyzedSentences;
+}
