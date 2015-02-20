@@ -1,0 +1,5 @@
+{
+  ByteArrayInputStream stream=new ByteArrayInputStream("just a text".getBytes("utf-8"));
+  TatoebaSentenceSource source=new TatoebaSentenceSource(stream,new English());
+  source.hasNext();
+}
