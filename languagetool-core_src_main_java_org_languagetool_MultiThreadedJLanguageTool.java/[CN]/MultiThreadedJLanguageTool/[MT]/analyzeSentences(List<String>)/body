@@ -2,7 +2,7 @@
   final List<AnalyzedSentence> analyzedSentences=new ArrayList<>();
   final ExecutorService executorService=getExecutorService();
   int j=0;
-  List<Callable<AnalyzedSentence>> callables=new ArrayList<Callable<AnalyzedSentence>>();
+  List<Callable<AnalyzedSentence>> callables=new ArrayList<>();
   for (  final String sentence : sentences) {
     AnalyzeSentenceCallable analyzeSentenceCallable=++j < sentences.size() ? new AnalyzeSentenceCallable(sentence) : new ParagraphEndAnalyzeSentenceCallable(sentence);
     callables.add(analyzeSentenceCallable);
