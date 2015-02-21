@@ -8,6 +8,9 @@
       languages.add(language);
     }
   }
+  for (  Language externalLanguage : externalLanguages) {
+    addItem(externalLanguage);
+  }
   Collections.sort(languages,langComparator);
   for (  final Language language : languages) {
     addItem(language);

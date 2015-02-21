@@ -1,0 +1,5 @@
+{
+  assertEquals("en-US",Languages.getLanguageForName("English (US)").getShortNameWithCountryAndVariant());
+  assertEquals("de",Languages.getLanguageForName("German").getShortNameWithCountryAndVariant());
+  assertEquals(null,Languages.getLanguageForName("Foobar"));
+}

@@ -1,0 +1,14 @@
+{
+  Assert.assertTrue(Languages.isLanguageSupported("xx"));
+  Assert.assertTrue(Languages.isLanguageSupported("XX"));
+  Assert.assertTrue(Languages.isLanguageSupported("en-US"));
+  Assert.assertTrue(Languages.isLanguageSupported("en-us"));
+  Assert.assertTrue(Languages.isLanguageSupported("EN-US"));
+  Assert.assertTrue(Languages.isLanguageSupported("de"));
+  Assert.assertTrue(Languages.isLanguageSupported("de-DE"));
+  Assert.assertTrue(Languages.isLanguageSupported("de-DE-x-simple-language"));
+  Assert.assertTrue(Languages.isLanguageSupported("de-DE-x-simple-LANGUAGE"));
+  assertFalse(Languages.isLanguageSupported("yy-ZZ"));
+  assertFalse(Languages.isLanguageSupported("zz"));
+  assertFalse(Languages.isLanguageSupported("somthing totally invalid"));
+}
