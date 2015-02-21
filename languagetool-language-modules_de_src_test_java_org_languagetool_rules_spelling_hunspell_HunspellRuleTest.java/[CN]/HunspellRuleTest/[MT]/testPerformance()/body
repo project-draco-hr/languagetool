@@ -1,5 +1,5 @@
 {
-  final List<Language> allLanguages=Language.getAllLanguages();
+  final List<Language> allLanguages=Languages.get();
   for (  Language language : allLanguages) {
     final JLanguageTool langTool=new JLanguageTool(language);
     langTool.check("warmup");

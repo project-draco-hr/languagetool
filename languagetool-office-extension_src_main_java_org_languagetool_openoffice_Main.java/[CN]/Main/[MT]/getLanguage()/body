@@ -13,18 +13,18 @@
       xCursorProps=UnoRuntime.queryInterface(XPropertySet.class,xCursor.getText().createTextCursorByRange(xCursor.getStart()));
     }
     if (new KhmerDetector().isThisLanguage(xCursor.getText().getString())) {
-      return Language.getLanguageForShortName("km");
+      return Languages.getLanguageForShortName("km");
     }
     if (new TamilDetector().isThisLanguage(xCursor.getText().getString())) {
-      return Language.getLanguageForShortName("ta");
+      return Languages.getLanguageForShortName("ta");
     }
     final Object obj=xCursorProps.getPropertyValue("CharLocale");
     if (obj == null) {
-      return Language.getLanguageForShortName("en-US");
+      return Languages.getLanguageForShortName("en-US");
     }
     charLocale=(Locale)obj;
     boolean langIsSupported=false;
-    for (    Language element : Language.LANGUAGES) {
+    for (    Language element : Languages.get()) {
       if (charLocale.Language.equalsIgnoreCase(LIBREOFFICE_SPECIAL_LANGUAGE_TAG) && element.getShortNameWithCountryAndVariant().equalsIgnoreCase(charLocale.Variant)) {
         langIsSupported=true;
         break;

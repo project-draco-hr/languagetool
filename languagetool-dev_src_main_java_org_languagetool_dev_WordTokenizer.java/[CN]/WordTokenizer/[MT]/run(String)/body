@@ -1,5 +1,5 @@
 {
-  JLanguageTool langTool=new JLanguageTool(Language.getLanguageForShortName(lang));
+  JLanguageTool langTool=new JLanguageTool(Languages.getLanguageForShortName(lang));
   BufferedReader in=null;
   BufferedWriter out=null;
   try {

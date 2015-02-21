@@ -1,4 +1,4 @@
 {
   ExampleSentenceCorrectionCreator prg=new ExampleSentenceCorrectionCreator();
-  prg.run(Language.getLanguageForShortName("de"));
+  prg.run(Languages.getLanguageForShortName("de"));
 }

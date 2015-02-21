@@ -31,7 +31,7 @@
     databaseConfig=new DatabaseConfig(propFile);
     System.out.println("Writing results to database at: " + databaseConfig.getUrl());
   }
-  Language language=Language.getLanguageForShortName(langCode);
+  Language language=Languages.getLanguageForShortName(langCode);
   AtomFeedChecker atomFeedChecker=new AtomFeedChecker(language,databaseConfig);
   while (true) {
     long startTime=System.currentTimeMillis();

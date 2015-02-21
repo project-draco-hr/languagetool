@@ -17,7 +17,7 @@ categoryIssueType=attrs.getValue(TYPE);
 break;
 case "rules":
 final String languageStr=attrs.getValue("lang");
-language=Language.getLanguageForShortName(languageStr);
+language=Languages.getLanguageForShortName(languageStr);
 break;
 case RULE:
 inRule=true;

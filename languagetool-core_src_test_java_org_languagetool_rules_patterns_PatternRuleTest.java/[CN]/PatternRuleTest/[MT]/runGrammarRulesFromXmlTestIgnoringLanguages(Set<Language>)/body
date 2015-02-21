@@ -1,6 +1,6 @@
 {
-  System.out.println("Known languages: " + Arrays.toString(Language.LANGUAGES));
-  for (  final Language lang : Language.LANGUAGES) {
+  System.out.println("Known languages: " + Languages.getWithDemoLanguage());
+  for (  final Language lang : Languages.getWithDemoLanguage()) {
     if (ignoredLanguages != null && ignoredLanguages.contains(lang)) {
       continue;
     }

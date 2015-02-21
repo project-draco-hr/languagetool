@@ -1,7 +1,7 @@
 {
   LanguageDetectionEval eval=new LanguageDetectionEval();
   long startTime=System.currentTimeMillis();
-  for (  Language language : Language.REAL_LANGUAGES) {
+  for (  Language language : Languages.get()) {
     eval.evaluate(language);
   }
   long endTime=System.currentTimeMillis();

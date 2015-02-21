@@ -1,5 +1,5 @@
 {
-  for (  Language lang : Language.REAL_LANGUAGES) {
+  for (  Language lang : Languages.get()) {
     final File file1=getTranslationFile(lang);
     final File file2=getTranslationFileWithVariant(lang);
     if (!file1.exists() && !file2.exists()) {

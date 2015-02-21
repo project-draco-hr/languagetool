@@ -1,6 +1,6 @@
 {
   int count=0;
-  for (  final Language lang : Language.REAL_LANGUAGES) {
+  for (  final Language lang : Languages.get()) {
     if (ignoredLanguage.getShortNameWithCountryAndVariant().equals(lang.getShortNameWithCountryAndVariant())) {
       continue;
     }

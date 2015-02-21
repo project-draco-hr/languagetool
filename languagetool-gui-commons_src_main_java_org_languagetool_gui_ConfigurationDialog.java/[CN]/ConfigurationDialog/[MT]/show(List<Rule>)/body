@@ -69,7 +69,7 @@
   configTree=new JTree(treeModel);
   Language lang=config.getLanguage();
   if (lang == null) {
-    lang=Language.getLanguageForLocale(Locale.getDefault());
+    lang=Languages.getLanguageForLocale(Locale.getDefault());
   }
   configTree.applyComponentOrientation(ComponentOrientation.getOrientation(lang.getLocale()));
   configTree.setRootVisible(false);
@@ -106,7 +106,7 @@
             Rule rule=node.getRule();
             Language lang=config.getLanguage();
             if (lang == null) {
-              lang=Language.getLanguageForLocale(Locale.getDefault());
+              lang=Languages.getLanguageForLocale(Locale.getDefault());
             }
             Tools.showRuleInfoDialog(tree,messages.getString("guiAboutRuleTitle"),rule.getDescription(),rule,messages,lang.getShortNameWithCountryAndVariant());
           }

@@ -1,5 +1,5 @@
 {
-  for (  Language language : Language.REAL_LANGUAGES) {
+  for (  Language language : Languages.get()) {
     String langCode=language.getShortName();
     File dir=new File("./languagetool-language-modules/" + langCode + "/src/main/resources/org/languagetool/resource/"+ langCode);
     File oldBinaryFile=new File(dir,language.getName().toLowerCase() + ".dict");

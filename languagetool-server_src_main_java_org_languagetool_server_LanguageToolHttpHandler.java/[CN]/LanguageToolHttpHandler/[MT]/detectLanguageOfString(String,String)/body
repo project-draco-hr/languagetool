@@ -1,7 +1,7 @@
 {
   Language lang=identifier.detectLanguage(text);
   if (lang == null) {
-    lang=Language.getLanguageForShortName(fallbackLanguage != null ? fallbackLanguage : "en");
+    lang=Languages.getLanguageForShortName(fallbackLanguage != null ? fallbackLanguage : "en");
   }
   if (lang.getDefaultLanguageVariant() != null) {
     lang=lang.getDefaultLanguageVariant();

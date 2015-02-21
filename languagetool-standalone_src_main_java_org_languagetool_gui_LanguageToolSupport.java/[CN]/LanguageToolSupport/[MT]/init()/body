@@ -7,7 +7,7 @@
   }
   Language defaultLanguage=config.getLanguage();
   if (defaultLanguage == null) {
-    defaultLanguage=Language.getLanguageForLocale(Locale.getDefault());
+    defaultLanguage=Languages.getLanguageForLocale(Locale.getDefault());
   }
   reloadLanguageTool(defaultLanguage);
   checkExecutor=new ScheduledThreadPoolExecutor(1,new ThreadFactory(){

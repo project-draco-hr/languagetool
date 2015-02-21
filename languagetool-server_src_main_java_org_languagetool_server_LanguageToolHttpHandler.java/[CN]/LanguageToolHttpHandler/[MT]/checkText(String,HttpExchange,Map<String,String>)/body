@@ -6,7 +6,7 @@
   final boolean autoDetectLanguage=getLanguageAutoDetect(parameters);
   final Language lang=getLanguage(text,parameters.get("language"),autoDetectLanguage);
   final String motherTongueParam=parameters.get("motherTongue");
-  final Language motherTongue=motherTongueParam != null ? Language.getLanguageForShortName(motherTongueParam) : null;
+  final Language motherTongue=motherTongueParam != null ? Languages.getLanguageForShortName(motherTongueParam) : null;
   final boolean useEnabledOnly="yes".equals(parameters.get("enabledOnly"));
   final String enabledParam=parameters.get("enabled");
   final List<String> enabledRules=new ArrayList<>();

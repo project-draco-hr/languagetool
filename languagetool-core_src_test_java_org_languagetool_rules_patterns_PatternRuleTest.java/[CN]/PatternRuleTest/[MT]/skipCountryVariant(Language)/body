@@ -6,5 +6,5 @@
       hasGrammarFiles=true;
     }
   }
-  return !hasGrammarFiles && Language.REAL_LANGUAGES.length > 1;
+  return !hasGrammarFiles && Languages.get().size() > 1;
 }

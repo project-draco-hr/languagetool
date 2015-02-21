@@ -1,6 +1,6 @@
 {
   int count=0;
-  for (  Language language : Language.REAL_LANGUAGES) {
+  for (  Language language : Languages.get()) {
     if (language.getSentenceTokenizer().getClass() != SRXSentenceTokenizer.class) {
       continue;
     }

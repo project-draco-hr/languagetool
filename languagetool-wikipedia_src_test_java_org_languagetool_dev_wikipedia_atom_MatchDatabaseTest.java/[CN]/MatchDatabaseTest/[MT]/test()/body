@@ -1,5 +1,5 @@
 {
-  Language language=Language.getLanguageForShortName("de");
+  Language language=Languages.getLanguageForShortName("de");
   MatchDatabase database=new MatchDatabase("jdbc:derby:atomFeedChecksDB;create=true","user","pass");
   database.dropTables();
   database.createTables();

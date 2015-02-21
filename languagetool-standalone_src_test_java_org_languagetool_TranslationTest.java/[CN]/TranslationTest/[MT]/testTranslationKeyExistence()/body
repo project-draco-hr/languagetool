@@ -3,7 +3,7 @@
   final Properties enProps=new Properties();
   enProps.load(new FileInputStream(englishFile));
   final Set<Object> englishKeys=enProps.keySet();
-  for (  Language lang : Language.REAL_LANGUAGES) {
+  for (  Language lang : Languages.get()) {
     if (lang.getShortName().equals("en")) {
       continue;
     }

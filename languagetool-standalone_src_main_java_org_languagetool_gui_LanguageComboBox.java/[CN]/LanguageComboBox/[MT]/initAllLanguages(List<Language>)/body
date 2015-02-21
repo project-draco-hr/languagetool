@@ -1,7 +1,7 @@
 {
   applyComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
   languages.clear();
-  for (  Language language : Language.getRealLanguages()) {
+  for (  Language language : Languages.get()) {
     final boolean skip=language.hasVariant();
     final boolean simpleGermanWorkaround=language.getShortNameWithCountryAndVariant().equals("de-DE");
     if (!skip || simpleGermanWorkaround) {

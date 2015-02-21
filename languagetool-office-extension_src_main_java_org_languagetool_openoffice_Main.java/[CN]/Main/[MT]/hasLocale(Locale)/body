@@ -1,6 +1,6 @@
 {
   try {
-    for (    final Language element : Language.LANGUAGES) {
+    for (    final Language element : Languages.get()) {
       if (locale.Language.equalsIgnoreCase(LIBREOFFICE_SPECIAL_LANGUAGE_TAG) && element.getShortNameWithCountryAndVariant().equals(locale.Variant)) {
         return true;
       }
