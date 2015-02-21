@@ -1,0 +1,3 @@
+{
+  return overlaps(match,nextMatch) && haveSameRuleGroup(match,nextMatch);
+}
