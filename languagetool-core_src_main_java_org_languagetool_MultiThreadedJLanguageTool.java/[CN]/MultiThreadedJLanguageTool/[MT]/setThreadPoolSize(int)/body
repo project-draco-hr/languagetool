@@ -1,9 +1,0 @@
-{
-  if (newFixedThreadPool != null)   throw new IllegalStateException("Thread pool already initialized");
-  if (threadPoolSize >= 1) {
-    this.threadPoolSize=threadPoolSize;
-  }
- else {
-    this.threadPoolSize=getDefaultThreadCount();
-  }
-}
