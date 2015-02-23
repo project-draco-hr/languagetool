@@ -1,5 +1,5 @@
 {
   super.setUp();
   langTool=new JLanguageTool(new English());
-  rule=new CompoundRule(null);
+  rule=new CompoundRule(TestTools.getEnglishMessages());
 }

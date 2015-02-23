@@ -19,6 +19,5 @@
       sentenceMatches.add(thisMatch);
     }
   }
-  final RuleMatchFilter filter=new SameRuleGroupFilter();
-  return filter.filter(sentenceMatches);
+  return new SameRuleGroupFilter().filter(sentenceMatches);
 }

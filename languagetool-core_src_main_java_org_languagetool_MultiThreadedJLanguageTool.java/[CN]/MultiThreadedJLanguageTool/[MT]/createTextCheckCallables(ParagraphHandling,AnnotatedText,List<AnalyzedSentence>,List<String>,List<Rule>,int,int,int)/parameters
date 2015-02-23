@@ -6,4 +6,3 @@ List<Rule> allRules
 int charCount
 int lineCount
 int columnCount
-int threads

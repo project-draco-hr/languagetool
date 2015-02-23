@@ -51,7 +51,7 @@
         }
         sb.append('\n');
         tmpLineOffset++;
-        if (lt.getLanguage().getSentenceTokenizer().singleLineBreaksMarksPara()) {
+        if (isBreakPoint(sb,line)) {
           matches=handleLine(matches,lineOffset,sb);
           sentences+=lt.getSentenceCount();
           if (profileRules) {
@@ -60,18 +60,6 @@
           rememberUnknownWords(listUnknownWords,unknownWords);
           sb=new StringBuilder();
           lineOffset=tmpLineOffset;
-        }
- else {
-          if ("".equals(line) || sb.length() >= MAX_FILE_SIZE) {
-            matches=handleLine(matches,lineOffset,sb);
-            sentences+=lt.getSentenceCount();
-            if (profileRules) {
-              sentences+=lt.sentenceTokenize(sb.toString()).size();
-            }
-            rememberUnknownWords(listUnknownWords,unknownWords);
-            sb=new StringBuilder();
-            lineOffset=tmpLineOffset;
-          }
         }
       }
     }
