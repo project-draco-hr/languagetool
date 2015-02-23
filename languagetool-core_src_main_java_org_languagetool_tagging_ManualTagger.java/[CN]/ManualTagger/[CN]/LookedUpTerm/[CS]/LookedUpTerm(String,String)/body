@@ -1,4 +1,0 @@
-{
-  this.baseform=baseform;
-  this.posTags=posTags;
-}
