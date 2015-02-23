@@ -1,5 +1,8 @@
 {
   MultiThreadedJLanguageTool langTool=new MultiThreadedJLanguageTool(new FakeLanguage(){
+    @Override synchronized List<PatternRule> getPatternRules(){
+      return Collections.emptyList();
+    }
     @Override public List<Rule> getRelevantRules(    ResourceBundle messages){
       return Arrays.asList(new UppercaseSentenceStartRule(messages,this),new MultipleWhitespaceRule(messages,this));
     }

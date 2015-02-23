@@ -1,7 +1,6 @@
 {
   try {
     JLanguageTool lt=new JLanguageTool(lang);
-    lt.activateDefaultPatternRules();
     List<RuleMatch> matches=lt.check(sentence);
     String expected=expectedResults.get(sentence);
     String real=matches.toString();

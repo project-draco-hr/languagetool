@@ -2,7 +2,6 @@
   final long startTime=System.currentTimeMillis();
   final Language language=new English();
   final JLanguageTool lt=new JLanguageTool(language);
-  lt.activateDefaultPatternRules();
   System.out.println("Creating index for " + language + "...");
   final int ruleCount=createIndex(lt);
   System.out.println("Index created with " + ruleCount + " rules");

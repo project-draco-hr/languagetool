@@ -1,7 +1,5 @@
 {
   final JLanguageTool newLanguageTool=new JLanguageTool(lang,motherTongue);
-  newLanguageTool.activateDefaultPatternRules();
-  newLanguageTool.activateDefaultFalseFriendRules();
   if (languageModelDir != null) {
     newLanguageTool.activateLanguageModelRules(languageModelDir);
   }

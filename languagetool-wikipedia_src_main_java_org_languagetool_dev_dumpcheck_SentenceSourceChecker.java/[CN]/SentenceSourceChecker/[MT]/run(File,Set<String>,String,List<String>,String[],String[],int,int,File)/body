@@ -1,7 +1,6 @@
 {
   final Language lang=Languages.getLanguageForShortName(langCode);
   final JLanguageTool languageTool=new MultiThreadedJLanguageTool(lang);
-  languageTool.activateDefaultPatternRules();
   if (languageModelDir != null) {
     languageTool.activateLanguageModelRules(languageModelDir);
   }

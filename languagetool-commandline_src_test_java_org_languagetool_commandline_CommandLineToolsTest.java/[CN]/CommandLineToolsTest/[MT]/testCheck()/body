@@ -1,7 +1,5 @@
 {
   final JLanguageTool tool=new JLanguageTool(TestTools.getDemoLanguage());
-  tool.activateDefaultPatternRules();
-  tool.activateDefaultFalseFriendRules();
   int matches=CommandLineTools.checkText("Foo.",tool);
   String output=new String(this.out.toByteArray());
   assertEquals(0,output.indexOf("Time:"));

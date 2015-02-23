@@ -1,7 +1,5 @@
 {
   JLanguageTool tool=new JLanguageTool(new Polish());
-  tool.activateDefaultPatternRules();
-  tool.activateDefaultFalseFriendRules();
   String correct=Tools.correctText("To jest ca??kowicie prawid??owe zdanie.",tool);
   assertEquals("To jest ca??kowicie prawid??owe zdanie.",correct);
   correct=Tools.correctText("To jest jest problem.",tool);

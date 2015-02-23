@@ -1,6 +1,5 @@
 {
   langTool=new JLanguageTool(new BritishEnglish());
-  langTool.activateDefaultPatternRules();
   disableRules();
   if (indexTopDir != null) {
     if (indexTopDir.isDirectory()) {

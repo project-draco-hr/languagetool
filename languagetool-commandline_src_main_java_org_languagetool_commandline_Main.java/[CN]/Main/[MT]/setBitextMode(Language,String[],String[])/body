@@ -3,7 +3,6 @@
   final Language target=lt.getLanguage();
   lt=new MultiThreadedJLanguageTool(target,null);
   srcLt=new MultiThreadedJLanguageTool(sourceLang);
-  lt.activateDefaultPatternRules();
   Tools.selectRules(lt,disabledRules,enabledRules);
   Tools.selectRules(srcLt,disabledRules,enabledRules);
   bRules=Tools.getBitextRules(sourceLang,lt.getLanguage());

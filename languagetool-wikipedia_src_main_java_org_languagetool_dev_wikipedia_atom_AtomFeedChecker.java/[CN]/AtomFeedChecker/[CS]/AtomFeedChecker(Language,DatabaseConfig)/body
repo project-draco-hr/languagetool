@@ -1,7 +1,6 @@
 {
   this.language=Objects.requireNonNull(language);
   langTool=new JLanguageTool(language);
-  langTool.activateDefaultPatternRules();
   langTool.disableRule("UNPAIRED_BRACKETS");
   langTool.disableRule("EN_UNPAIRED_BRACKETS");
   langTool.disableRule("EN_QUOTES");

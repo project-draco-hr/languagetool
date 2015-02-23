@@ -1,6 +1,5 @@
 {
   final JLanguageTool langTool=new JLanguageTool(language);
-  langTool.activateDefaultPatternRules();
   final Element element=new Element("Were",false,false,false);
   final String message="Did you mean: <suggestion>where</suggestion> or <suggestion>we</suggestion>?";
   final PatternRule rule=new PatternRule("MY_ID",language,Collections.singletonList(element),"desc",message,"msg");

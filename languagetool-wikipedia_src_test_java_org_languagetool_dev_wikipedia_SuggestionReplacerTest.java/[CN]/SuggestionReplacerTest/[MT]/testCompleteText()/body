@@ -1,7 +1,12 @@
 {
   InputStream stream=SuggestionReplacerTest.class.getResourceAsStream("/org/languagetool/dev/wikipedia/wikipedia.txt");
   String origMarkup=IOUtils.toString(stream,"utf-8");
-  JLanguageTool langTool=new JLanguageTool(germanyGerman);
+  JLanguageTool langTool=new JLanguageTool(new GermanyGerman(){
+    @Override protected synchronized List<PatternRule> getPatternRules(){
+      return Collections.emptyList();
+    }
+  }
+);
   langTool.disableRule(GermanSpellerRule.RULE_ID);
   langTool.disableRule("DE_AGREEMENT");
   langTool.disableRule("GERMAN_WORD_REPEAT_BEGINNING_RULE");
