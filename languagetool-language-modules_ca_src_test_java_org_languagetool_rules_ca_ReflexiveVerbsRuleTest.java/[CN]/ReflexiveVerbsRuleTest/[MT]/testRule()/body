@@ -1,4 +1,5 @@
 {
+  assertCorrect("Durant el 2010 s'ha crescut molt");
   assertCorrect("de qu?? tant ens queixem");
   assertCorrect("cada zona m??s meridional esdevingu?? adient per als ??ssers ??rtics");
   assertCorrect("cereals, garrofers, vinya i olivar.");
@@ -199,6 +200,12 @@
   assertCorrect("Joan no es va a jugar la feina.");
   assertCorrect("I aquella flaire que em pujava al cap");
   assertCorrect("el que no s'olora, el que no es tasta");
+  assertIncorrect("Ells s'han crescut molt");
+  assertIncorrect("Em vaig cr??ixer davant les dificultats");
+  assertIncorrect("Joan s'ha crescut molt");
+  assertIncorrect("Joana s'ha crescut molt");
+  assertIncorrect("Ada Mart??nez s'ha crescut molt");
+  assertIncorrect("Ada Colau s'ha crescut molt");
   assertIncorrect("Ha arribat l'hora de saltar-se la legalitat.");
   assertIncorrect("Delia per menjar-ne.");
   assertIncorrect("Ells es volen dur les ??nimes a l'Infram??n");
