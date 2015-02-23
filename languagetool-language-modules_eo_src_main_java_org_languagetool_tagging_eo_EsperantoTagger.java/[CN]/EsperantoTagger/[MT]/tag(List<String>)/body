@@ -6,12 +6,10 @@
     final List<AnalyzedToken> l=new ArrayList<>();
     if (word.length() > 1) {
       final String lWord=word.toLowerCase();
-      final String[] manualTags=manualTagger.lookup(lWord);
-      if (manualTags != null) {
-        for (int i=0; i < manualTags.length; i+=2) {
-          final String lemma=manualTags[2 * i];
-          final String postag=manualTags[2 * i + 1];
-          l.add(new AnalyzedToken(word,postag,lemma));
+      final List<TaggedWord> manualTags=manualTagger.tag(lWord);
+      if (manualTags.size() > 0) {
+        for (        TaggedWord manualTag : manualTags) {
+          l.add(new AnalyzedToken(word,manualTag.getPosTag(),manualTag.getLemma()));
         }
       }
  else {

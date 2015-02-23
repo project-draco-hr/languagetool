@@ -1,11 +1,5 @@
 {
-  final Set<GrammarCategory> categoryToRelaxSet;
-  if (categoryToRelax == null) {
-    categoryToRelaxSet=Collections.singleton(categoryToRelax);
-  }
- else {
-    categoryToRelaxSet=Collections.emptySet();
-  }
+  final Set<GrammarCategory> categoryToRelaxSet=Collections.emptySet();
   final Set<String> set1=getAgreementCategories(token1,categoryToRelaxSet,true);
   if (set1 == null) {
     return null;
