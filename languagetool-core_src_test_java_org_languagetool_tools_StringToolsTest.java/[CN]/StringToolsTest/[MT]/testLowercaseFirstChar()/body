@@ -1,4 +1,5 @@
 {
+  assertEquals(null,StringTools.lowercaseFirstChar(null));
   assertEquals("",StringTools.lowercaseFirstChar(""));
   assertEquals("a",StringTools.lowercaseFirstChar("A"));
   assertEquals("??????",StringTools.lowercaseFirstChar("??????"));
