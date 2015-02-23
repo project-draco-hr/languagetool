@@ -1,6 +1,6 @@
 {
   MultiThreadedJLanguageTool langTool=new MultiThreadedJLanguageTool(new FakeLanguage(){
-    @Override synchronized List<PatternRule> getPatternRules(){
+    @Override protected synchronized List<PatternRule> getPatternRules(){
       return Collections.emptyList();
     }
     @Override public List<Rule> getRelevantRules(    ResourceBundle messages){
