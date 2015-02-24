@@ -1,9 +1,0 @@
-{
-  super(messages);
-  super.setCategory(new Category(messages.getString("category_misc")));
-  startSymbols=language.getUnpairedRuleStartSymbols();
-  endSymbols=language.getUnpairedRuleEndSymbols();
-  numerals=NUMERALS_EN;
-  uniqueMapInit();
-  setLocQualityIssueType(ITSIssueType.Typographical);
-}

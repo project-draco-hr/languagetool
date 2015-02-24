@@ -1,5 +1,6 @@
 {
-  setUpRule(new Spanish());
+  langTool=new JLanguageTool(new Spanish());
+  rule=org.languagetool.rules.GenericUnpairedBracketsRuleTest.getBracketsRule(langTool);
   assertMatches("Soy un hombre (muy honrado).",0);
   assertMatches("De d??nde vas?",1);
   assertMatches("??Atenci??n",1);

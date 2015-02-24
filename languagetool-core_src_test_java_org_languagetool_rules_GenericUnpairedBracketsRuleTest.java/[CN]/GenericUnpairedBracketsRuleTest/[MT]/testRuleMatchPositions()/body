@@ -1,5 +1,5 @@
 {
-  setUpRule(new MyDemo());
+  setUpRule(new FakeLanguage());
   RuleMatch match1=langTool.check("This ??is a test.").get(0);
   assertThat(match1.getFromPos(),is(5));
   assertThat(match1.getToPos(),is(6));

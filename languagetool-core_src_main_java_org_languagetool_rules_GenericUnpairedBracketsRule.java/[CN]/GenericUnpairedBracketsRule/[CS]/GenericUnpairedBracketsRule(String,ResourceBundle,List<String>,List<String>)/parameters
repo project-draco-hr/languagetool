@@ -1,0 +1,4 @@
+String ruleId
+ResourceBundle messages
+List<String> startSymbols
+List<String> endSymbols

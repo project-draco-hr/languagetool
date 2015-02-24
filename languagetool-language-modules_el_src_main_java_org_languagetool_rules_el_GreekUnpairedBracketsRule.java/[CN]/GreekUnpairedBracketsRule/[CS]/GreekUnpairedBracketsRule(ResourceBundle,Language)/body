@@ -1,6 +1,0 @@
-{
-  super(messages,language);
-  startSymbols=EL_START_SYMBOLS;
-  endSymbols=EL_END_SYMBOLS;
-  uniqueMapInit();
-}

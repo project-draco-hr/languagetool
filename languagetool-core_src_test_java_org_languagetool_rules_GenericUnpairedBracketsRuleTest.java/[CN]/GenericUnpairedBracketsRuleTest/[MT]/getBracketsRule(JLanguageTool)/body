@@ -1,0 +1,8 @@
+{
+  for (  Rule rule : langTool.getAllActiveRules()) {
+    if (rule instanceof GenericUnpairedBracketsRule) {
+      return (GenericUnpairedBracketsRule)rule;
+    }
+  }
+  throw new RuntimeException("Rule not found: " + GenericUnpairedBracketsRule.class);
+}

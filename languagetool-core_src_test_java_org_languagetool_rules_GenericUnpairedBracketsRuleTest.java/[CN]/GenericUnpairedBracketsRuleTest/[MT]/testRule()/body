@@ -1,5 +1,5 @@
 {
-  setUpRule(new MyDemo());
+  setUpRule(new FakeLanguage());
   assertMatches(0,"This is ??correct??.");
   assertMatches(0,"??Correct??\n??And ??here?? it ends.??");
   assertMatches(0,"??Correct. This is more than one sentence.??");

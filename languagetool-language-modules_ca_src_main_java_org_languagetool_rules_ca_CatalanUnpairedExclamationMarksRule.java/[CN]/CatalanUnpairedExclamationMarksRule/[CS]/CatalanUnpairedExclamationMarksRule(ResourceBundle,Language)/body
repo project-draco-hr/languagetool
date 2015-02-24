@@ -1,8 +1,5 @@
 {
-  super(messages,language);
+  super(messages,CA_START_SYMBOLS,CA_END_SYMBOLS);
   setLocQualityIssueType(ITSIssueType.Style);
   setDefaultOff();
-  startSymbols=CA_START_SYMBOLS;
-  endSymbols=CA_END_SYMBOLS;
-  uniqueMapInit();
 }

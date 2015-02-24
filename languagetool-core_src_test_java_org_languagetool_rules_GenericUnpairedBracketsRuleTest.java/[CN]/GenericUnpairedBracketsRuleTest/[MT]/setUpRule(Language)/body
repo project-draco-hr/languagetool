@@ -3,6 +3,6 @@
   for (  Rule rule : langTool.getAllRules()) {
     langTool.disableRule(rule.getId());
   }
-  GenericUnpairedBracketsRule rule=new GenericUnpairedBracketsRule(TestTools.getEnglishMessages(),language);
+  GenericUnpairedBracketsRule rule=new GenericUnpairedBracketsRule(TestTools.getEnglishMessages(),Arrays.asList("??"),Arrays.asList("??"));
   langTool.addRule(rule);
 }
