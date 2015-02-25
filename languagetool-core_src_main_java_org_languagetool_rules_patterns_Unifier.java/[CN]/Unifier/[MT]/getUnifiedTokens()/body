@@ -3,6 +3,7 @@
     return null;
   }
   List<AnalyzedTokenReadings> uTokens=new ArrayList<>();
+  int counter=0;
   for (int j=0; j < tokSequence.size(); j++) {
     for (int i=0; i < tokSequenceEquivalences.get(j).size(); i++) {
       int featUnified=0;
