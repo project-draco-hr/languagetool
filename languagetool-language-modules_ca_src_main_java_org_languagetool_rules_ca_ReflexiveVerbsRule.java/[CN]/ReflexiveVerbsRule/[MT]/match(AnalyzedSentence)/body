@@ -16,6 +16,7 @@
     }
     if (i + 2 < tokens.length && matchLemmaList(tokens[i],verbsPortarDur) && !(matchPostagRegexp(tokens[i],VERB_INF) && isThereBefore(tokens,i,LEMMA_PREP_A_PER,POSTAG_PREPOSICIO)) && !hasVerbMultipleReadings(tokens[i]) && isThereReflexivePronoun(tokens,i) && isThereAfterWithoutPreposition(tokens,i,POSTAG_CD) && !isThereVerbBeforeList(tokens,i,verbsDeixarFer) && !(isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals)) && !matchPostagRegexp(tokens[i + 1],POSTAG_ADVERBI) && !matchPostagRegexp(tokens[i + 2],POSTAG_ADVERBI) && !matchLemmaRegexp(tokens[i + 2],ANYMESDIA) && !isPhraseImpersonalVerbSP(tokens,i)) {
       if (isVerbNumberPerson(tokens,i,VERB_3S) && !isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereSubject3SBefore(tokens,i,TRENCA_COMPTE))       continue loop;
+      if (isThereNearLemma(tokens,i,partsCos))       continue loop;
       String suggestion;
       if (tokens[i].hasLemma("portar")) {
         suggestion="em" + token;

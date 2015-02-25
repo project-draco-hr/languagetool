@@ -1,4 +1,6 @@
 {
+  assertCorrect("-Deixa't caure al canal i prou");
+  assertCorrect("Deixa't caure al canal i prou");
   assertCorrect("Durant el 2010 s'ha crescut molt");
   assertCorrect("de qu?? tant ens queixem");
   assertCorrect("cada zona m??s meridional esdevingu?? adient per als ??ssers ??rtics");
@@ -171,6 +173,8 @@
   assertCorrect("Joan ha anat a dutxar-se.");
   assertCorrect("Joan s'ha anat a dutxar.");
   assertCorrect("amb els Confederats intentant burlar el bloqueig a Maryland.");
+  assertCorrect("l'altre es duu la m?? al llavi inferior");
+  assertCorrect("l'altre s'olora les mans");
   assertCorrect("Es pot baixar la darrera versi??.");
   assertCorrect("Se'l va fer callar.");
   assertCorrect("Se li va fer callar.");
