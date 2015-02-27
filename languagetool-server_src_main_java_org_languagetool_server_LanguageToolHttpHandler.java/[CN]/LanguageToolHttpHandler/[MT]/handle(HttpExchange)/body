@@ -15,6 +15,12 @@ synchronized (this) {
       print(errorMessage);
       return;
     }
+    if (maxWorkQueueSize != 0 && workQueue.size() > maxWorkQueueSize) {
+      String response="Error: There are currently too many parallel requests. Please try again later.";
+      print(response + " Queue size: " + workQueue.size()+ ", maximum size: "+ maxWorkQueueSize);
+      sendError(httpExchange,HttpURLConnection.HTTP_UNAVAILABLE,"Error: " + response);
+      return;
+    }
     if (allowedIps == null || allowedIps.contains(origAddress)) {
       if (requestedUri.getRawPath().endsWith("/Languages")) {
         printListOfLanguages(httpExchange);
