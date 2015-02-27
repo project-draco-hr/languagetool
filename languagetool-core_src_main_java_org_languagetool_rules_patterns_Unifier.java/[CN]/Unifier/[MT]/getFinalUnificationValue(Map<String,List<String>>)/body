@@ -1,12 +1,14 @@
 {
   int tokUnified=0;
   for (int j=0; j < tokSequence.size(); j++) {
+    boolean unifiedTokensFound=false;
     for (int i=0; i < tokSequenceEquivalences.get(j).size(); i++) {
       int featUnified=0;
       if (tokSequenceEquivalences.get(j).get(i).containsKey(UNIFY_IGNORE)) {
         if (i == 0) {
           tokUnified++;
         }
+        unifiedTokensFound=true;
         continue;
       }
  else {
@@ -19,6 +21,7 @@
           }
           if (featUnified == unificationFeats.entrySet().size() && tokUnified <= j) {
             tokUnified++;
+            unifiedTokensFound=true;
             break;
           }
         }
@@ -27,6 +30,7 @@
         return true;
       }
     }
+    if (!unifiedTokensFound)     return false;
   }
   return false;
 }
