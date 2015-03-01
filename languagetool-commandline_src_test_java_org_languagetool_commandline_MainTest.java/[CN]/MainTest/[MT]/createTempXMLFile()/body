@@ -1,0 +1,5 @@
+{
+  final File input=File.createTempFile("rules-xx-",".xml");
+  input.deleteOnExit();
+  return input;
+}

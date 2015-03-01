@@ -65,6 +65,10 @@
       checkArguments("--languagemodel",i,args);
       options.setLanguageModel(new File(args[++i]));
     }
+ else     if (args[i].equals("--rulefile")) {
+      checkArguments("--rulefile",i,args);
+      options.setRuleFile(args[++i]);
+    }
  else     if (args[i].equals("-c") || args[i].equals("--encoding")) {
       checkArguments("-c/--encoding",i,args);
       options.setEncoding(args[++i]);
