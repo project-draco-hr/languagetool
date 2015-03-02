@@ -1,0 +1,3 @@
+{
+  externalBitextRules.add(externalBitextRuleFile);
+}

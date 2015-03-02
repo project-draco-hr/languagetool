@@ -73,6 +73,10 @@
       checkArguments("--falsefriends",i,args);
       options.setFalseFriendFile(args[++i]);
     }
+ else     if (args[i].equals("--bitextrules")) {
+      checkArguments("--bitextrules",i,args);
+      options.setBitextRuleFile(args[++i]);
+    }
  else     if (args[i].equals("-c") || args[i].equals("--encoding")) {
       checkArguments("-c/--encoding",i,args);
       options.setEncoding(args[++i]);
