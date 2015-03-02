@@ -3,11 +3,10 @@
     return false;
   }
   if (uFeatures == null) {
-    return false;
+    throw new RuntimeException("isSatisfied called without features being set");
   }
   unificationFeats=uFeatures;
   boolean unified=true;
-  List<String> types;
   if (allFeatsIn) {
     unified=checkNext(aToken,uFeatures);
   }
@@ -16,7 +15,7 @@
       equivalencesMatched.add(new ConcurrentHashMap<String,Set<String>>());
     }
     for (    final Map.Entry<String,List<String>> feat : uFeatures.entrySet()) {
-      types=feat.getValue();
+      List<String> types=feat.getValue();
       if (types == null || types.isEmpty()) {
         types=equivalenceFeatures.get(feat.getKey());
       }

@@ -1,6 +1,5 @@
 {
   boolean anyFeatUnified=false;
-  List<String> types;
   final List<Boolean> tokenFeaturesFound=new ArrayList<>(tmpFeaturesFound);
   final Map<String,Set<String>> equivalencesMatchedHere=new ConcurrentHashMap<>();
   if (allFeatsIn) {
@@ -8,7 +7,7 @@
       boolean allFeatsUnified=true;
       for (      Map.Entry<String,List<String>> feat : uFeatures.entrySet()) {
         boolean featUnified=false;
-        types=feat.getValue();
+        List<String> types=feat.getValue();
         if (types == null || types.isEmpty()) {
           types=equivalenceFeatures.get(feat.getKey());
         }
