@@ -8,6 +8,6 @@
   final AnalyzedSentence copySentence=sentence.copy(sentence);
   assertEquals(sentence,copySentence);
   words[1].immunize();
-  assertEquals("<S> word[lemma/POS,{!},].[./INTERP,</S>,]",sentence.toString());
+  assertEquals("<S> word[lemma/POS{!}].[./INTERP,</S>]",sentence.toString());
   assertNotEquals(sentence,copySentence);
 }

@@ -5,5 +5,5 @@
   words[2]=new AnalyzedTokenReadings(new AnalyzedToken(".","INTERP",null));
   words[2].addReading(new AnalyzedToken(".","SENT_END",null));
   final AnalyzedSentence sentence=new AnalyzedSentence(words);
-  assertEquals("<S> word[lemma/POS,].[./INTERP,</S>,]",sentence.toString());
+  assertEquals("<S> word[lemma/POS].[./INTERP,</S>]",sentence.toString());
 }
