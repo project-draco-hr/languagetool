@@ -1,20 +1,26 @@
 {
+  final Polish noXmlRulesPolish=new Polish(){
+    @Override public List<PatternRule> getPatternRules(){
+      return Collections.emptyList();
+    }
+  }
+;
   final Polish polish=new Polish();
-  JLanguageTool tool=new JLanguageTool(polish);
+  JLanguageTool tool=new JLanguageTool(new Polish());
+  JLanguageTool noRulesTool=new JLanguageTool(noXmlRulesPolish);
   assertEquals("[PL]",Arrays.toString(polish.getCountries()));
-  List<RuleMatch> matches=tool.check("To jest ca??kowicie prawid??owe zdanie.");
+  List<RuleMatch> matches=noRulesTool.check("To jest ca??kowicie prawid??owe zdanie.");
   assertEquals(0,matches.size());
-  matches=tool.check("To jest jest problem.");
+  matches=noRulesTool.check("To jest jest problem.");
   assertEquals(1,matches.size());
-  assertEquals(0,tool.check("Maj?? one niema??e znaczenie.").size());
-  assertEquals(0,tool.check("Cz??sto wystarczy obr??ci?? na wspak wyroki ??wiata, aby trafnie os??dzi?? jak???? osob??.").size());
-  assertEquals(0,tool.check("A teraz ka??cie mi da?? jaki b??d?? posi??ek.").size());
-  assertEquals(0,tool.check("Kiedym w??z zobaczy??, by??bym przysi??g??, ??e wielka przygoda mnie czeka.").size());
-  assertEquals(0,tool.check("Jurek wygl??da wypisz wymaluj babcia.").size());
-  assertEquals(1,tool.check("Jurek wygl??da wypisz wypisz wymaluj babcia.").size());
-  assertEquals(1,tool.check("Jurek wygl??da wypisz wymaluj wymaluj babcia.").size());
-  assertEquals(0,tool.check("Zawar?? w niej, opr??cz swojej tw??rczo??ci, wybrane epigramaty czterdziestu o??miu innych greckich poet??w i poetek.").size());
-  tool.activateDefaultPatternRules();
+  assertEquals(0,noRulesTool.check("Maj?? one niema??e znaczenie.").size());
+  assertEquals(0,noRulesTool.check("Cz??sto wystarczy obr??ci?? na wspak wyroki ??wiata, aby trafnie os??dzi?? jak???? osob??.").size());
+  assertEquals(0,noRulesTool.check("A teraz ka??cie mi da?? jaki b??d?? posi??ek.").size());
+  assertEquals(0,noRulesTool.check("Kiedym w??z zobaczy??, by??bym przysi??g??, ??e wielka przygoda mnie czeka.").size());
+  assertEquals(0,noRulesTool.check("Jurek wygl??da wypisz wymaluj babcia.").size());
+  assertEquals(1,noRulesTool.check("Jurek wygl??da wypisz wypisz wymaluj babcia.").size());
+  assertEquals(1,noRulesTool.check("Jurek wygl??da wypisz wymaluj wymaluj babcia.").size());
+  assertEquals(0,noRulesTool.check("Zawar?? w niej, opr??cz swojej tw??rczo??ci, wybrane epigramaty czterdziestu o??miu innych greckich poet??w i poetek.").size());
   assertEquals(0,tool.check("Nudne brednie tak zam??ci??y g??ow?? ch??opu, ??e kl???? na czym ziemia stoi, zmuszonym b??d??c s??ucha?? tego wszystkiego.").size());
   assertEquals(1,tool.check("Chc??c, nie chc??c zjad??em pstr??ga.").size());
   matches=tool.check("By?? on bowiem pi??knym strzelcem bowiem.");
@@ -22,7 +28,6 @@
   tool.enableDefaultOffRule("PL_WORD_REPEAT");
   matches=tool.check("By?? on bowiem pi??knym strzelcem bowiem.");
   assertEquals(1,matches.size());
-  tool.activateDefaultPatternRules();
   matches=tool.check("Premier drapie si?? w ucho co i rusz.");
   assertEquals(1,matches.size());
   matches=tool.check("I can give you more a detailed description");
@@ -39,7 +44,6 @@
   assertEquals(32,matches.get(0).getColumn());
   polish.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(true);
   tool=new JLanguageTool(polish);
-  tool.activateDefaultPatternRules();
   matches=tool.check("To jest tekst.\nTest 1. To jest linia w kt??rej nie ma przecinka.");
   assertEquals(17,matches.get(0).getColumn());
   matches=tool.check("To jest tekst. \nTest 1. To jest linia w kt??rej nie ma przecinka.");

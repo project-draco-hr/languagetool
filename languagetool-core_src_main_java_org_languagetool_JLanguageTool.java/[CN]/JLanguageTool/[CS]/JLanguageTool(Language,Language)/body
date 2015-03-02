@@ -3,4 +3,11 @@
   this.motherTongue=motherTongue;
   final ResourceBundle messages=ResourceBundleTools.getMessageBundle(language);
   builtinRules=getAllBuiltinRules(language,messages);
+  try {
+    activateDefaultPatternRules();
+    activateDefaultFalseFriendRules();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Could not activate rules",e);
+  }
 }

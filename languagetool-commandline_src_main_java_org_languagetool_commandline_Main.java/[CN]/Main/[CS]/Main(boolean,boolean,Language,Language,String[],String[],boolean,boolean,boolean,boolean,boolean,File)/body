@@ -13,8 +13,6 @@
   srcLt=null;
   bRules=null;
   lt=new MultiThreadedJLanguageTool(language,motherTongue);
-  lt.activateDefaultPatternRules();
-  lt.activateDefaultFalseFriendRules();
   if (languageModelIndexDir != null) {
     lt.activateLanguageModelRules(languageModelIndexDir);
   }

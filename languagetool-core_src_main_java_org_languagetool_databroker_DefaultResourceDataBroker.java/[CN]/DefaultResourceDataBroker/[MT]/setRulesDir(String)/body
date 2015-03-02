@@ -1,3 +1,0 @@
-{
-  this.rulesDir=(rulesDir == null) ? "" : rulesDir;
-}

@@ -4,10 +4,12 @@
   }
   List<AnalyzedTokenReadings> uTokens=new ArrayList<>();
   for (int j=0; j < tokSequence.size(); j++) {
+    boolean unifiedTokensFound=false;
     for (int i=0; i < tokSequenceEquivalences.get(j).size(); i++) {
       int featUnified=0;
       if (tokSequenceEquivalences.get(j).get(i).containsKey(UNIFY_IGNORE)) {
         addTokenToSequence(uTokens,tokSequence.get(j).getAnalyzedToken(i),j);
+        unifiedTokensFound=true;
       }
  else {
         for (        final Map.Entry<String,List<String>> feat : unificationFeats.entrySet()) {
@@ -19,9 +21,13 @@
           }
           if (featUnified == unificationFeats.entrySet().size()) {
             addTokenToSequence(uTokens,tokSequence.get(j).getAnalyzedToken(i),j);
+            unifiedTokensFound=true;
           }
         }
       }
+    }
+    if (!unifiedTokensFound) {
+      return null;
     }
   }
   return uTokens.toArray(new AnalyzedTokenReadings[uTokens.size()]);

@@ -14,7 +14,7 @@ name=ruleGroupName;
 }
 break;
 case "rules":
-language=Language.getLanguageForShortName(attrs.getValue("lang"));
+language=Languages.getLanguageForShortName(attrs.getValue("lang"));
 break;
 case PATTERN:
 inPattern=true;

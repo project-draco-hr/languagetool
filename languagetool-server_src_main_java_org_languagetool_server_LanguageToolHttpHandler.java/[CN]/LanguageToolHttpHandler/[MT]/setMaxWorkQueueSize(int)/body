@@ -1,0 +1,6 @@
+{
+  if (size < 0) {
+    throw new IllegalArgumentException("Max queue size must be >= 0: " + size);
+  }
+  this.maxWorkQueueSize=size;
+}

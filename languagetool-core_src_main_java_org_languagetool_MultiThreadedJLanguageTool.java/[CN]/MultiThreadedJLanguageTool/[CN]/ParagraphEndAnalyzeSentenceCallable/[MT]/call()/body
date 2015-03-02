@@ -1,0 +1,7 @@
+{
+  AnalyzedSentence analyzedSentence=super.call();
+  AnalyzedTokenReadings[] anTokens=analyzedSentence.getTokens();
+  anTokens[anTokens.length - 1].setParagraphEnd();
+  analyzedSentence=new AnalyzedSentence(anTokens);
+  return analyzedSentence;
+}

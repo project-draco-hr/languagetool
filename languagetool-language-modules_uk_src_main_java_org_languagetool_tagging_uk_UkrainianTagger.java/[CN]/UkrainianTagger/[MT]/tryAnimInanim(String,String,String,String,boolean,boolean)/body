@@ -7,7 +7,7 @@
  else {
       rightPosTag=rightPosTag.replace(TAG_ANIM,"");
     }
-    agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag,leftNv);
+    agreedPosTag=getAgreedPosTag(leftPosTag,rightPosTag,leftNv);
     if (agreedPosTag == null) {
       if (!leftPosTag.contains(TAG_ANIM)) {
         if (MNP_ZNA_REGEX.matcher(leftPosTag).matches() && MNP_NAZ_REGEX.matcher(rightPosTag).matches() && !leftNv&& !rightNv) {
@@ -23,7 +23,7 @@
   }
  else   if (slaveSet.contains(rightLemma)) {
     rightPosTag=rightPosTag.replace(":anim","");
-    agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag,false);
+    agreedPosTag=getAgreedPosTag(leftPosTag,rightPosTag,false);
     if (agreedPosTag == null) {
       if (!leftPosTag.contains(TAG_ANIM)) {
         if (MNP_ZNA_REGEX.matcher(leftPosTag).matches() && MNP_NAZ_REGEX.matcher(rightPosTag).matches() && getNum(leftPosTag).equals(getNum(rightPosTag))&& !leftNv&& !rightNv) {
@@ -34,7 +34,7 @@
   }
  else   if (slaveSet.contains(leftLemma)) {
     leftPosTag=leftPosTag.replace(":anim","");
-    agreedPosTag=getArgreedPosTag(rightPosTag,leftPosTag,false);
+    agreedPosTag=getAgreedPosTag(rightPosTag,leftPosTag,false);
     if (agreedPosTag == null) {
       if (!rightPosTag.contains(TAG_ANIM)) {
         if (MNP_ZNA_REGEX.matcher(rightPosTag).matches() && MNP_NAZ_REGEX.matcher(leftPosTag).matches() && getNum(leftPosTag).equals(getNum(rightPosTag))&& !leftNv&& !rightNv) {

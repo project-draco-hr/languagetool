@@ -3,9 +3,9 @@
     final int index=findSymbolNum(symbol,endSymbols);
     if (index >= 0) {
       final SymbolLocator rLoc=ruleMatchStack.peek();
-      if (rLoc.symbol.equals(startSymbols[index])) {
-        if (ruleMatches.size() > rLoc.index) {
-          ruleMatches.remove(rLoc.index);
+      if (rLoc.getSymbol().equals(startSymbols[index])) {
+        if (ruleMatches.size() > rLoc.getIndex()) {
+          ruleMatches.remove(rLoc.getIndex());
           ruleMatchStack.pop();
           return null;
         }

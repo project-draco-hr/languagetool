@@ -1,0 +1,6 @@
+{
+  List<String> sentences=Arrays.asList("Die Autos ist schnell.","Der Hund und die Katze ist drau??en.","Ein Hund und eine Katze ist sch??n.","Der Hund und die Katze ist sch??n.","Der gro??e Hund und die Katze ist sch??n.","Der Hund und die graue Katze ist sch??n.","Der gro??e Hund und die graue Katze ist sch??n.","Die Kenntnisse ist je nach Bildungsgrad verschieden.","Die Kenntnisse der Sprachen ist je nach Bildungsgrad verschieden.","Die Kenntnisse der Sprache ist je nach Bildungsgrad verschieden.","Die Kenntnisse der europ??ischen Sprachen ist je nach Bildungsgrad verschieden.","Die Kenntnisse der neuen europ??ischen Sprachen ist je nach Bildungsgrad verschieden.","Die Kenntnisse der deutschen Sprache ist je nach Bildungsgrad verschieden.","Die Kenntnisse der aktuellen deutschen Sprache ist je nach Bildungsgrad verschieden.","Drei Katzen ist im Haus.","Drei kleine Katzen ist im Haus.","Viele Katzen ist sch??n.","Drei Viertel der Erdoberfl??che ist Wasser.","Die ??ltesten und bekanntesten Ma??nahmen ist die Einrichtung von Schutzgebieten.","Ein Gramm Pfeffer waren fr??her wertvoll.","Isolation und ihre ??berwindung ist ein h??ufiges Thema in der Literatur.");
+  for (  String sentence : sentences) {
+    assertBad(sentence);
+  }
+}

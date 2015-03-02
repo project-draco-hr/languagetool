@@ -1,0 +1,15 @@
+{
+  for (int i=startPos; i > 0; i--) {
+    AnalyzedTokenReadings token=tokens[i];
+    List<ChunkTag> chunkTags=token.getChunkTags();
+    if (chunkTags.contains(NPS) || chunkTags.contains(NPP)) {
+      if (token.hasPartialPosTag("NOM")) {
+        return true;
+      }
+    }
+ else {
+      return false;
+    }
+  }
+  return false;
+}

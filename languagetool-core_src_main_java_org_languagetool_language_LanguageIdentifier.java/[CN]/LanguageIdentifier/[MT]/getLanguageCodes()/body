@@ -1,6 +1,6 @@
 {
   List<String> langCodes=new ArrayList<>();
-  for (  Language lang : Language.REAL_LANGUAGES) {
+  for (  Language lang : Languages.get()) {
     String langCode=lang.getShortName();
     boolean ignore=lang.isVariant() || ignoreLangCodes.contains(langCode) || externalLangCodes.contains(langCode);
     if (ignore) {

@@ -1,0 +1,7 @@
+{
+  if (!GermanChunker.isDebug()) {
+    GermanChunker.setDebug(true);
+    getMatches(input);
+  }
+  Assert.fail(message);
+}

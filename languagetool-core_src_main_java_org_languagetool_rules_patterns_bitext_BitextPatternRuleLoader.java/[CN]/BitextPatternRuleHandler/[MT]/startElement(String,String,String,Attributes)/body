@@ -1,19 +1,19 @@
 {
 switch (qName) {
-case "rules":
+case RULES:
     final String languageStr=attrs.getValue("targetLang");
-  language=Language.getLanguageForShortName(languageStr);
+  language=Languages.getLanguageForShortName(languageStr);
 break;
-case "rule":
+case RULE:
 super.startElement(namespaceURI,lName,qName,attrs);
 correctExamples=new ArrayList<>();
 incorrectExamples=new ArrayList<>();
 break;
-case "target":
+case TARGET:
 startPattern(attrs);
 break;
-case "source":
-srcLang=Language.getLanguageForShortName(attrs.getValue("lang"));
+case SOURCE:
+srcLang=Languages.getLanguageForShortName(attrs.getValue("lang"));
 break;
 default :
 super.startElement(namespaceURI,lName,qName,attrs);

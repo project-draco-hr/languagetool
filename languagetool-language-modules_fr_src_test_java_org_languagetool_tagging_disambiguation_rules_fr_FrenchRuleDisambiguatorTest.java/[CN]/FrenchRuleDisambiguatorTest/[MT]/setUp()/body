@@ -5,5 +5,4 @@
   sentenceTokenizer=new SRXSentenceTokenizer(language);
   disambiguator=new XmlRuleDisambiguator(language);
   disamb2=new DemoDisambiguator();
-  lt=new JLanguageTool(language);
 }

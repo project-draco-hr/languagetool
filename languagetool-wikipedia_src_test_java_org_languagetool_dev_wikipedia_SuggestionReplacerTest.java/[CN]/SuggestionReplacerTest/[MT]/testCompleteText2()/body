@@ -2,7 +2,6 @@
   InputStream stream=SuggestionReplacerTest.class.getResourceAsStream("/org/languagetool/dev/wikipedia/wikipedia2.txt");
   String origMarkup=IOUtils.toString(stream,"utf-8");
   JLanguageTool langTool=new JLanguageTool(germanyGerman);
-  langTool.activateDefaultPatternRules();
   PlainTextMapping mapping=filter.filter(origMarkup);
   List<RuleMatch> matches=langTool.check(mapping.getPlainText());
   assertTrue("Expected >= 30 matches, got: " + matches,matches.size() >= 30);

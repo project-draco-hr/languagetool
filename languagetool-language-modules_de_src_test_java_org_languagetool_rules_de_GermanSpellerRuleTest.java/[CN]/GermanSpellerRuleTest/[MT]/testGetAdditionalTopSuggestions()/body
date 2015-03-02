@@ -1,0 +1,10 @@
+{
+  final GermanSpellerRule rule=new GermanSpellerRule(TestTools.getMessages("de"),GERMAN_DE);
+  final JLanguageTool langTool=new JLanguageTool(GERMAN_DE);
+  RuleMatch[] matches1=rule.match(langTool.getAnalyzedSentence("konservierungsstoffe"));
+  assertThat(matches1[0].getSuggestedReplacements().toString(),is("[Konservierungsstoffe]"));
+  RuleMatch[] matches2=rule.match(langTool.getAnalyzedSentence("konservierungsstoffstatistik"));
+  assertThat(matches2[0].getSuggestedReplacements().toString(),is("[Konservierungsstoffstatistik]"));
+  RuleMatch[] matches3=rule.match(langTool.getAnalyzedSentence("konservierungsstoffsasdsasda"));
+  assertThat(matches3[0].getSuggestedReplacements().size(),is(0));
+}

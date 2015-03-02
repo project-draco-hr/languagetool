@@ -1,5 +1,4 @@
 {
-  final AvsAnRule rule=new AvsAnRule(null);
   assertEquals("a string",rule.suggestAorAn("string"));
   assertEquals("a university",rule.suggestAorAn("university"));
   assertEquals("an hour",rule.suggestAorAn("hour"));

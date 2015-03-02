@@ -1,0 +1,9 @@
+{
+  List<AnalyzedTokenReadings> readings=tagger.tag(Collections.singletonList(word));
+  for (  AnalyzedTokenReadings reading : readings) {
+    if (reading.hasPartialPosTag("ADJ:NOM")) {
+      return true;
+    }
+  }
+  return false;
+}

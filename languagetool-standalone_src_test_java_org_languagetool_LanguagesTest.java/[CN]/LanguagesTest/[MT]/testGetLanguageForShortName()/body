@@ -1,0 +1,18 @@
+{
+  assertEquals("en-US",Languages.getLanguageForShortName("en-us").getShortNameWithCountryAndVariant());
+  assertEquals("en-US",Languages.getLanguageForShortName("EN-US").getShortNameWithCountryAndVariant());
+  assertEquals("en-US",Languages.getLanguageForShortName("en-US").getShortNameWithCountryAndVariant());
+  assertEquals("de",Languages.getLanguageForShortName("de").getShortNameWithCountryAndVariant());
+  try {
+    Languages.getLanguageForShortName("xy");
+    fail();
+  }
+ catch (  IllegalArgumentException expected) {
+  }
+  try {
+    Languages.getLanguageForShortName("YY-KK");
+    fail();
+  }
+ catch (  IllegalArgumentException expected) {
+  }
+}

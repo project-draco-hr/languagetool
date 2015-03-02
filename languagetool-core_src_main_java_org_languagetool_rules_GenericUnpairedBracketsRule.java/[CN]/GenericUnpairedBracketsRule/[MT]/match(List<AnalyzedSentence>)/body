@@ -16,7 +16,7 @@
     }
   }
   for (  final SymbolLocator sLoc : symbolStack) {
-    final RuleMatch rMatch=createMatch(ruleMatches,ruleMatchStack,sLoc.startPos,sLoc.symbol);
+    final RuleMatch rMatch=createMatch(ruleMatches,ruleMatchStack,sLoc.getStartPos(),sLoc.getSymbol());
     if (rMatch != null) {
       ruleMatches.add(rMatch);
     }

@@ -1,0 +1,7 @@
+{
+  List<ChunkTaggedToken> chunkTaggedTokens=getBasicChunks(tokenReadings);
+  for (  RegularExpressionWithPhraseType regex : REGEXES2) {
+    apply(regex,chunkTaggedTokens);
+  }
+  assignChunksToReadings(chunkTaggedTokens);
+}

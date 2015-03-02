@@ -1,5 +1,5 @@
 {
-  final Map<String,List<LookedUpTerm>> map=new HashMap<>();
+  final Map<String,List<TaggedWord>> map=new HashMap<>();
   try (InputStreamReader reader=new InputStreamReader(inputStream,encoding);BufferedReader br=new BufferedReader(reader)){
     String line;
     while ((line=br.readLine()) != null) {
@@ -10,11 +10,11 @@
       if (parts.length != 3) {
         throw new IOException("Unknown line format when loading manual tagger dictionary, expected three tab-separated fields: '" + line + "'");
       }
-      List<LookedUpTerm> terms=map.get(parts[0]);
+      List<TaggedWord> terms=map.get(parts[0]);
       if (terms == null) {
         terms=new ArrayList<>();
       }
-      terms.add(new LookedUpTerm(parts[1],parts[2]));
+      terms.add(new TaggedWord(parts[1],parts[2]));
       map.put(parts[0],terms);
     }
   }

@@ -1,0 +1,6 @@
+{
+  List<String> sentences=Arrays.asList("Die Katze sind sch??n.","Die Katze waren sch??n.","Der Text sind gut.","Das Auto sind schnell.","Herr Schr??der sind alt.","Julia und Karsten ist alt.","Julia, Heike und Karsten ist alt.","Herr Karsten Schr??der sind alt.");
+  for (  String sentence : sentences) {
+    assertBad(sentence);
+  }
+}

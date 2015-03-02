@@ -41,7 +41,7 @@
         newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
       }
  else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && rightPosTag.startsWith(IPOSTag.noun.getText())) {
-        String agreedPosTag=getArgreedPosTag(leftPosTag,rightPosTag,leftNv);
+        String agreedPosTag=getAgreedPosTag(leftPosTag,rightPosTag,leftNv);
         if (agreedPosTag == null && rightPosTag.startsWith("noun:m:v_naz") && isMinMax(rightAnalyzedToken.getToken())) {
           agreedPosTag=leftPosTag;
         }

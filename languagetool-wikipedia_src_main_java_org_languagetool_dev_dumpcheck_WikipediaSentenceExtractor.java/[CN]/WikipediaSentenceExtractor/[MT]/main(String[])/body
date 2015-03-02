@@ -1,5 +1,5 @@
 {
   checkUsageOrExit(args);
   WikipediaSentenceExtractor extractor=new WikipediaSentenceExtractor();
-  extractor.extract(Language.getLanguageForShortName(args[0]),args[1]);
+  extractor.extract(Languages.getLanguageForShortName(args[0]),args[1]);
 }

@@ -8,11 +8,11 @@
     disabledCategoryNames.addAll(getListFromProperties(props,DISABLED_CATEGORIES_CONFIG_KEY + qualifier));
     final String languageStr=(String)props.get(LANGUAGE_CONFIG_KEY);
     if (languageStr != null) {
-      language=Language.getLanguageForShortName(languageStr);
+      language=Languages.getLanguageForShortName(languageStr);
     }
     final String motherTongueStr=(String)props.get(MOTHER_TONGUE_CONFIG_KEY);
     if (motherTongueStr != null && !motherTongueStr.equals("xx")) {
-      motherTongue=Language.getLanguageForShortName(motherTongueStr);
+      motherTongue=Languages.getLanguageForShortName(motherTongueStr);
     }
     autoDetect="true".equals(props.get(AUTO_DETECT_CONFIG_KEY));
     guiConfig="true".equals(props.get(USE_GUI_CONFIG_KEY));

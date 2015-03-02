@@ -1,6 +1,5 @@
 {
   JLanguageTool langTool=new JLanguageTool(new BritishEnglish());
-  langTool.activateDefaultPatternRules();
   List<RuleMatch> matches=langTool.check("A sentence " + "with a error in the Hitchhiker's Guide tot he Galaxy");
   for (  RuleMatch match : matches) {
     System.out.println("Potential error at line " + match.getLine() + ", column "+ match.getColumn()+ ": "+ match.getMessage());

@@ -1,7 +1,7 @@
 {
   final Map<Language,Set<String>> langToIgnoreTokens=new HashMap<>();
   SuggestionExtractor extractor=new SuggestionExtractor();
-  for (  Language lang : Language.REAL_LANGUAGES) {
+  for (  Language lang : Languages.get()) {
     final Set<String> suggestionTokens=new HashSet<>();
     final JLanguageTool languageTool=new JLanguageTool(lang);
     final Rule spellcheckRule=getSpellcheckRule(languageTool);
@@ -9,7 +9,6 @@
       System.out.println("No spellchecker rule found for " + lang);
       continue;
     }
-    languageTool.activateDefaultPatternRules();
     final List<Rule> rules=languageTool.getAllRules();
     int tokenCount=0;
     int noErrorCount=0;

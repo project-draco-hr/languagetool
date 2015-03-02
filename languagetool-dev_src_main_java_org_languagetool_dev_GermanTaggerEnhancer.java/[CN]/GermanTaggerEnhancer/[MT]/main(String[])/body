@@ -1,0 +1,4 @@
+{
+  GermanTaggerEnhancer enhancer=new GermanTaggerEnhancer();
+  enhancer.run();
+}

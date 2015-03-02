@@ -16,6 +16,7 @@
     }
     if (i + 2 < tokens.length && matchLemmaList(tokens[i],verbsPortarDur) && !(matchPostagRegexp(tokens[i],VERB_INF) && isThereBefore(tokens,i,LEMMA_PREP_A_PER,POSTAG_PREPOSICIO)) && !hasVerbMultipleReadings(tokens[i]) && isThereReflexivePronoun(tokens,i) && isThereAfterWithoutPreposition(tokens,i,POSTAG_CD) && !isThereVerbBeforeList(tokens,i,verbsDeixarFer) && !(isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals)) && !matchPostagRegexp(tokens[i + 1],POSTAG_ADVERBI) && !matchPostagRegexp(tokens[i + 2],POSTAG_ADVERBI) && !matchLemmaRegexp(tokens[i + 2],ANYMESDIA) && !isPhraseImpersonalVerbSP(tokens,i)) {
       if (isVerbNumberPerson(tokens,i,VERB_3S) && !isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereSubject3SBefore(tokens,i,TRENCA_COMPTE))       continue loop;
+      if (isThereNearLemma(tokens,i,partsCos))       continue loop;
       String suggestion;
       if (tokens[i].hasLemma("portar")) {
         suggestion="em" + token;
@@ -57,6 +58,13 @@
       if (tokens[i].hasLemma("olorar") && isThereNearLemma(tokens,i,partsCos))       continue loop;
       final String msg="Aquest verb no ??s pronominal. Probablement sobra un pronom.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb no pronominal");
+      if (tokens[i].hasLemma("cr??ixer")) {
+        ArrayList<String> replacements=new ArrayList<String>();
+        replacements.add("(encoratjar-se)");
+        replacements.add("(animar-se)");
+        replacements.add("(agafar ??nim)");
+        ruleMatch.setSuggestedReplacements(replacements);
+      }
       ruleMatches.add(ruleMatch);
     }
     if (matchLemmaList(tokens[i],verbsMoviment) && !matchPostagRegexp(tokens[i],VERB_AUXILIAR)) {
@@ -76,7 +84,7 @@
         if (isThereAfter(tokens,i,VERB_GERUNDI))         continue loop;
         if (isThereVerbAfterList(tokens,i,verbsPotencialmentPronominals) || isThereVerbAfter(tokens,i,VERB_AUTO) || isThereVerbAfterList(tokens,i,verbsPronominals))         continue loop;
         if (isVerbNumberPerson(tokens,i,VERB_3S) && !isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereSubject3SBefore(tokens,i,TRENCA_COMPTE))         continue loop;
-        if (isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && !isThereBefore(tokens,i,LEMMA_PRONOM_CI,POSTAG_PRONOM_CI) && (!isTherePersonalSubjectBefore(tokens,i,TRENCA_COMPTE) || isThereBefore(tokens,i,LEMMA_HI,POSTAG_HI))&& isVerbNumberPerson(tokens,i,VERB_3S))         continue loop;
+        if (isPhraseImpersonalVerbS(tokens,i))         continue loop;
       }
  else {
         if (isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && !isThereBefore(tokens,i,LEMMA_PRONOM_CI,POSTAG_PRONOM_CI) && !isTherePersonalSubjectBefore(tokens,i,TRENCA_COMPTE))         continue loop;

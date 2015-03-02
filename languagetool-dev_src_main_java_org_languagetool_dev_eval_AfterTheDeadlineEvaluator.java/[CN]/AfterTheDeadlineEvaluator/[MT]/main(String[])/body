@@ -5,5 +5,5 @@
     System.exit(1);
   }
   AfterTheDeadlineEvaluator evaluator=new AfterTheDeadlineEvaluator(args[1]);
-  evaluator.run(Language.getLanguageForShortName(args[0]));
+  evaluator.run(Languages.getLanguageForShortName(args[0]));
 }

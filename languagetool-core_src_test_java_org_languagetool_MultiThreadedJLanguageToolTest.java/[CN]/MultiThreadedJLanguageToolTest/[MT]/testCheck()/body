@@ -2,10 +2,10 @@
   JLanguageTool tool;
   tool=new MultiThreadedJLanguageTool(new Demo());
   final List<String> ruleMatchIds1=getRuleMatchIds(tool);
-  assertTrue(ruleMatchIds1.size() == 10);
+  assertEquals(9,ruleMatchIds1.size());
   Assert.assertEquals(4,tool.getSentenceCount());
   tool=new JLanguageTool(new Demo());
   final List<String> ruleMatchIds2=getRuleMatchIds(tool);
-  assertThat(ruleMatchIds1,is(ruleMatchIds2));
+  assertEquals(ruleMatchIds1,ruleMatchIds2);
   Assert.assertEquals(4,tool.getSentenceCount());
 }

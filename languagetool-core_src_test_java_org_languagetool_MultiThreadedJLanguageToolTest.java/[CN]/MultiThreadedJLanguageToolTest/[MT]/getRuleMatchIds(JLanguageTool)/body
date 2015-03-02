@@ -1,5 +1,4 @@
 {
-  langTool.activateDefaultPatternRules();
   final String input="A small toast. No error here. Foo go bar. First goes last there, please!";
   final List<RuleMatch> matches=langTool.check(input);
   final List<String> ruleMatchIds=new ArrayList<>();

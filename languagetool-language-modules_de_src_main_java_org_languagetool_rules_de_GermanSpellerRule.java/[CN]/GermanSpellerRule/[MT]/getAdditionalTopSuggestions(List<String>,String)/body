@@ -24,5 +24,11 @@
  else   if ("einzigste".equals(w)) {
     return Collections.singletonList("einzige");
   }
+ else   if (!StringTools.startsWithUppercase(word)) {
+    String ucWord=StringTools.uppercaseFirstChar(word);
+    if (!hunspellDict.misspelled(ucWord)) {
+      return Collections.singletonList(ucWord);
+    }
+  }
   return Collections.emptyList();
 }

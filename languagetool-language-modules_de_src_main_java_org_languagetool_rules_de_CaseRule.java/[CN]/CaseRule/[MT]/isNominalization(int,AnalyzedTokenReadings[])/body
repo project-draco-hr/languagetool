@@ -1,10 +1,11 @@
 {
   String token=tokens[i].getToken();
   AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
-  if (StringTools.startsWithUppercase(token) && !isNumber(token) && !hasNounReading(nextReadings)) {
+  if (StringTools.startsWithUppercase(token) && !isNumber(token) && !hasNounReading(nextReadings)&& !token.matches("Alle[nm]")) {
     AnalyzedTokenReadings prevToken=i > 0 ? tokens[i - 1] : null;
-    AnalyzedTokenReadings prevPrevToken=i > 1 ? tokens[i - 2] : null;
-    return (prevToken != null && ("irgendwas".equals(prevToken.getToken()) || "aufs".equals(prevToken.getToken()))) || hasPartialTag(prevToken,"PRO") || (hasPartialTag(prevPrevToken,"PRO") && hasPartialTag(prevToken,"ADJ","ADV"));
+    AnalyzedTokenReadings prevPrevToken=i >= 2 ? tokens[i - 2] : null;
+    AnalyzedTokenReadings prevPrevPrevToken=i >= 3 ? tokens[i - 3] : null;
+    return (prevToken != null && ("irgendwas".equals(prevToken.getToken()) || "aufs".equals(prevToken.getToken()))) || hasPartialTag(prevToken,"PRO") || (hasPartialTag(prevPrevToken,"PRO","PRP") && hasPartialTag(prevToken,"ADJ","ADV","PA2"))|| (hasPartialTag(prevPrevPrevToken,"PRO","PRP") && hasPartialTag(prevPrevToken,"ADJ","ADV") && hasPartialTag(prevToken,"ADJ","ADV","PA2"));
   }
   return false;
 }

@@ -1,0 +1,4 @@
+{
+  TokenPredicate predicate=new TokenPredicate(expr,false);
+  assertFalse(predicate.apply(chunkTaggedToken));
+}

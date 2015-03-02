@@ -1,9 +1,12 @@
 {
   while (sentences.size() == 0 && scanner.hasNextLine()) {
     String line=scanner.nextLine();
+    if (line.isEmpty()) {
+      continue;
+    }
     String[] parts=line.split("\t");
     if (parts.length != 3) {
-      continue;
+      throw new RuntimeException("Unexpected line format: expected three tab-separated columns: '" + line + "'");
     }
     String sentence=parts[2];
     if (acceptSentence(sentence)) {

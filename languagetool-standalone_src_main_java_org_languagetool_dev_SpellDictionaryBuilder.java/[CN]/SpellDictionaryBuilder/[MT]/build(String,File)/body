@@ -1,5 +1,5 @@
 {
-  Language language=Language.getLanguageForShortName(languageCode);
+  Language language=Languages.getLanguageForShortName(languageCode);
   File tempFile=null;
   try {
     tempFile=tokenizeInput(plainTextDictFile,language);

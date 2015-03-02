@@ -1,0 +1,5 @@
+{
+  this.token=Objects.requireNonNull(token);
+  this.chunkTags=Objects.requireNonNull(chunkTags);
+  this.readings=readings;
+}

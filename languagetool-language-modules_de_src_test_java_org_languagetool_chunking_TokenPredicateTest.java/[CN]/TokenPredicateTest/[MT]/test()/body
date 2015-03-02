@@ -1,0 +1,24 @@
+{
+  List<ChunkTag> chunkTags=Arrays.asList(new ChunkTag("CHUNK1"),new ChunkTag("CHUNK2"));
+  AnalyzedTokenReadings readings=new AnalyzedTokenReadings(new AnalyzedToken("mytoken","MYPOS","mylemma"),0);
+  ChunkTaggedToken chunkTaggedToken=new ChunkTaggedToken("mytoken",chunkTags,readings);
+  assertMatch("mytoken",chunkTaggedToken);
+  assertNoMatch("mytoken2",chunkTaggedToken);
+  assertMatch("string=mytoken",chunkTaggedToken);
+  assertNoMatch("string=mytoken2",chunkTaggedToken);
+  assertMatch("regex=my[abct]oken",chunkTaggedToken);
+  assertNoMatch("regex=my[abc]oken",chunkTaggedToken);
+  assertMatch("chunk=CHUNK1",chunkTaggedToken);
+  assertMatch("chunk=CHUNK2",chunkTaggedToken);
+  assertNoMatch("chunk=OTHERCHUNK",chunkTaggedToken);
+  assertMatch("pos=MYPOS",chunkTaggedToken);
+  assertNoMatch("pos=OTHER",chunkTaggedToken);
+  assertMatch("posre=M.POS",chunkTaggedToken);
+  assertNoMatch("posre=O.HER",chunkTaggedToken);
+  try {
+    assertNoMatch("invalid=token",chunkTaggedToken);
+    fail();
+  }
+ catch (  RuntimeException expected) {
+  }
+}

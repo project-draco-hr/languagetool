@@ -1,9 +1,17 @@
 {
-  for (  AnalyzedToken reading : readings) {
-    String posTag=reading.getPOSTag();
-    if (posTag != null && posTag.contains("SUB:") && !posTag.contains(":ADJ")) {
-      return true;
+  try {
+    AnalyzedTokenReadings allReadings=tagger.lookup(readings.getToken());
+    if (allReadings != null) {
+      for (      AnalyzedToken reading : allReadings) {
+        String posTag=reading.getPOSTag();
+        if (posTag != null && posTag.contains("SUB:") && !posTag.contains(":ADJ")) {
+          return true;
+        }
+      }
     }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Could not lookup " + readings.getToken(),e);
   }
   return false;
 }

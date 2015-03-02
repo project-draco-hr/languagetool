@@ -1,0 +1,9 @@
+{
+  List<AnalyzedTokenReadings> readings=tagger.tag(Collections.singletonList(word));
+  for (  AnalyzedTokenReadings reading : readings) {
+    if (reading.hasPartialPosTag("EIG")) {
+      return true;
+    }
+  }
+  return false;
+}

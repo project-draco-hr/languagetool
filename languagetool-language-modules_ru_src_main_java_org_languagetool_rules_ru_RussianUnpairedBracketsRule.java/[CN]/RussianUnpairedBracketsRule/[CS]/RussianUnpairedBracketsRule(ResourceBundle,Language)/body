@@ -1,7 +1,4 @@
 {
-  super(messages,language);
-  startSymbols=RU_START_SYMBOLS;
-  endSymbols=RU_END_SYMBOLS;
+  super(messages,RU_START_SYMBOLS,RU_END_SYMBOLS);
   numerals=NUMERALS_RU;
-  uniqueMapInit();
 }

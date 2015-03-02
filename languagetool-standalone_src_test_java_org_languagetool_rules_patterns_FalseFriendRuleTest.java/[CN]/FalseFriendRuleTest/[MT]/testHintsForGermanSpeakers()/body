@@ -1,6 +1,5 @@
 {
   final JLanguageTool langTool=new JLanguageTool(new English(),new German());
-  langTool.activateDefaultFalseFriendRules();
   final List<RuleMatch> matches=assertErrors(1,"We will berate you.",langTool);
   assertEquals(matches.get(0).getSuggestedReplacements().toString(),"[to provide advice, to give advice]");
   assertErrors(0,"We will give you advice.",langTool);

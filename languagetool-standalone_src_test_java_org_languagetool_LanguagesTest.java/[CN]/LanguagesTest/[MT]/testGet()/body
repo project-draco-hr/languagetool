@@ -1,0 +1,5 @@
+{
+  List<Language> languages=Languages.get();
+  List<Language> languagesWithDemo=Languages.getWithDemoLanguage();
+  assertThat(languages.size() + 1,is(languagesWithDemo.size()));
+}

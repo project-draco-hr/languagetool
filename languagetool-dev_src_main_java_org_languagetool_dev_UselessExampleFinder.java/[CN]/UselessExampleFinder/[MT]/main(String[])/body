@@ -1,4 +1,4 @@
 {
   UselessExampleFinder prg=new UselessExampleFinder();
-  prg.run(Language.getLanguageForShortName("de"));
+  prg.run(Languages.getLanguageForShortName("de"));
 }

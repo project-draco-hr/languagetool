@@ -1,7 +1,6 @@
 {
-  JLanguageTool gramCheckerEngine=new JLanguageTool(new German());
-  gramCheckerEngine.activateDefaultPatternRules();
+  JLanguageTool lt=new JLanguageTool(new German());
   String str="Und so.\r\nDie Bier.";
-  List<RuleMatch> matches=gramCheckerEngine.check(str);
+  List<RuleMatch> matches=lt.check(str);
   assertEquals(1,matches.size());
 }

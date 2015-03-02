@@ -7,7 +7,7 @@
     if (shortNameWithVariant.contains("-x-")) {
       fileName=lang.getShortName() + "/" + nameOnly;
     }
- else     if (shortNameWithVariant.contains("-") && !shortNameWithVariant.equals("xx-XX") && !shortNameWithVariant.endsWith("-ANY")&& Language.REAL_LANGUAGES.length > 1) {
+ else     if (shortNameWithVariant.contains("-") && !shortNameWithVariant.equals("xx-XX") && !shortNameWithVariant.endsWith("-ANY")&& Languages.get().size() > 1) {
       fileName=lang.getShortName() + "/" + shortNameWithVariant+ "/"+ nameOnly;
     }
  else {

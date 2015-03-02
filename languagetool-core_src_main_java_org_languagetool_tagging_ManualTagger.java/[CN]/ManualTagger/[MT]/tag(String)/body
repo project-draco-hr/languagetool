@@ -1,10 +1,9 @@
 {
-  List<TaggedWord> result=new ArrayList<>();
-  List<LookedUpTerm> lookedUpTerms=mapping.get(word);
+  List<TaggedWord> lookedUpTerms=mapping.get(word);
   if (lookedUpTerms != null) {
-    for (    LookedUpTerm term : lookedUpTerms) {
-      result.add(new TaggedWord(term.baseform,term.posTags));
-    }
+    return Collections.unmodifiableList(lookedUpTerms);
   }
-  return result;
+ else {
+    return Collections.emptyList();
+  }
 }

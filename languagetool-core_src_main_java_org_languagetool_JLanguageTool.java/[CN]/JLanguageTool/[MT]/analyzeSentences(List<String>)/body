@@ -10,8 +10,7 @@
       analyzedSentence=new AnalyzedSentence(anTokens);
     }
     analyzedSentences.add(analyzedSentence);
-    printIfVerbose(analyzedSentence.toString());
-    printIfVerbose(analyzedSentence.getAnnotations());
+    printSentenceInfo(analyzedSentence);
   }
   return analyzedSentences;
 }

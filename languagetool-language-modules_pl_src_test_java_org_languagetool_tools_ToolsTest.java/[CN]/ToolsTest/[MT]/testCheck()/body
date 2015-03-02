@@ -1,7 +1,5 @@
 {
   final JLanguageTool tool=new JLanguageTool(new Polish());
-  tool.activateDefaultPatternRules();
-  tool.activateDefaultFalseFriendRules();
   List<RuleMatch> matches=tool.check("To jest ca??kowicie prawid??owe zdanie.");
   assertEquals(0,matches.size());
   List<RuleMatch> matches2=tool.check("To jest problem problem.");

@@ -3,9 +3,8 @@
     System.out.println("Usage: " + RuleNumberScalabilityTest.class.getSimpleName() + " <languageCode> <text_file>");
     System.exit(1);
   }
-  JLanguageTool langTool=new JLanguageTool(Language.getLanguageForShortName(args[0]));
+  JLanguageTool langTool=new JLanguageTool(Languages.getLanguageForShortName(args[0]));
   String text=StringTools.readStream(new FileInputStream(args[1]),"utf-8");
-  langTool.activateDefaultPatternRules();
   System.out.println("Warmup...");
   langTool.check(text);
   langTool.check(text);

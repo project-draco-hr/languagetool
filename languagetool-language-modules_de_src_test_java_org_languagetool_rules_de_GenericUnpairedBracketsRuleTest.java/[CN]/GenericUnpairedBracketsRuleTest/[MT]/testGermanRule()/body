@@ -1,7 +1,6 @@
 {
-  German language=new German();
-  rule=new GenericUnpairedBracketsRule(TestTools.getEnglishMessages(),language);
-  langTool=new JLanguageTool(language);
+  langTool=new JLanguageTool(new German());
+  rule=org.languagetool.rules.GenericUnpairedBracketsRuleTest.getBracketsRule(langTool);
   assertMatches("(Das sind die S??tze, die sie testen sollen).",0);
   assertMatches("(Das sind die ??S??tze??, die sie testen sollen).",0);
   assertMatches("(Das sind die ??S??tze??, die sie testen sollen).",0);

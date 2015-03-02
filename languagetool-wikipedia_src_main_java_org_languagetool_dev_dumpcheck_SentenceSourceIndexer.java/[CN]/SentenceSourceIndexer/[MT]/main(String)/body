@@ -11,7 +11,7 @@
   final File indexDir=new File(args[1]);
   final String languageCode=args[2];
   final int maxSentences=Integer.parseInt(args[3]);
-  final Language language=Language.getLanguageForShortName(languageCode);
+  final Language language=Languages.getLanguageForShortName(languageCode);
   if (maxSentences == 0) {
     System.out.println("Going to index contents from " + dumpFilesNames);
   }

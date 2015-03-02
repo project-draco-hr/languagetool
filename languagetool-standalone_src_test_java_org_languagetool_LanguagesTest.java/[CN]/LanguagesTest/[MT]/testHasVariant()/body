@@ -1,0 +1,13 @@
+{
+  Assert.assertTrue(Languages.getLanguageForShortName("en").hasVariant());
+  Assert.assertTrue(Languages.getLanguageForShortName("de").hasVariant());
+  assertFalse(Languages.getLanguageForShortName("en-US").hasVariant());
+  assertFalse(Languages.getLanguageForShortName("de-CH").hasVariant());
+  assertFalse(Languages.getLanguageForShortName("ast").hasVariant());
+  assertFalse(Languages.getLanguageForShortName("pl").hasVariant());
+  for (  Language language : Language.LANGUAGES) {
+    if (language.hasVariant()) {
+      assertNotNull("Language " + language + " needs a default variant",language.getDefaultLanguageVariant());
+    }
+  }
+}

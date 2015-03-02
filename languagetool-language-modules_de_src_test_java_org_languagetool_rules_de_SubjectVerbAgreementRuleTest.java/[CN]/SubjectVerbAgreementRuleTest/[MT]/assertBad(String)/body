@@ -1,0 +1,6 @@
+{
+  int matchCount=getMatches(input).length;
+  if (matchCount == 0) {
+    fail("Did not get the expected match for '" + input + "'",input);
+  }
+}

@@ -13,7 +13,7 @@
       msg=messages.getString("no_space_after");
       suggestionText=prevToken;
     }
- else     if (!isWhitespace && prevToken.equals(getCommaCharacter()) && isNotQuoteOrHyphen(token)&& containsNoNumber(prevPrevToken)&& containsNoNumber(token)&& !",".equals(prevPrevToken)) {
+ else     if (!isWhitespace && prevToken.equals(getCommaCharacter()) && !isQuoteOrHyphenOrComma(token)&& !containsDigit(prevPrevToken)&& !containsDigit(token)&& !",".equals(prevPrevToken)) {
       msg=messages.getString("missing_space_after_comma");
       suggestionText=getCommaCharacter() + " " + tokens[i].getToken();
     }
@@ -32,7 +32,7 @@
  else       if (token.equals(".")) {
         msg=messages.getString("no_space_before_dot");
         suggestionText=".";
-        if (i + 1 < tokens.length && isNumberOrDot(tokens[i + 1].getToken())) {
+        if (i + 1 < tokens.length && isDigitOrDot(tokens[i + 1].getToken())) {
           msg=null;
         }
       }

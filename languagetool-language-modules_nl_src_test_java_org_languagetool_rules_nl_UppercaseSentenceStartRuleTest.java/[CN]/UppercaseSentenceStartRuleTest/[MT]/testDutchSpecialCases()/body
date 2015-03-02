@@ -1,5 +1,10 @@
 {
-  final JLanguageTool lt=new JLanguageTool(new Dutch());
+  final JLanguageTool lt=new JLanguageTool(new Dutch(){
+    @Override protected synchronized List<PatternRule> getPatternRules(){
+      return Collections.emptyList();
+    }
+  }
+);
   assertEquals(1,lt.check("A sentence.").size());
   assertEquals(0,lt.check("'s Morgens...").size());
   assertEquals(2,lt.check("a sentence.").size());

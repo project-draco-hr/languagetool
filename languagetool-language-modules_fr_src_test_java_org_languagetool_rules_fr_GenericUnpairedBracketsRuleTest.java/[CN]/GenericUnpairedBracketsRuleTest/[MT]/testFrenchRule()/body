@@ -1,5 +1,6 @@
 {
-  setUpRule(new French());
+  langTool=new JLanguageTool(new French());
+  rule=org.languagetool.rules.GenericUnpairedBracketsRuleTest.getBracketsRule(langTool);
   assertMatches("(Qu'est ce que c'est???)",0);
   assertMatches("(Qu'est ce que c'est???",1);
 }

@@ -1,0 +1,8 @@
+{
+  String expandedExpr=expr;
+  for (  Map.Entry<String,String> entry : SYNTAX_EXPANSION.entrySet()) {
+    expandedExpr=expandedExpr.replace(entry.getKey(),entry.getValue());
+  }
+  RegularExpression<ChunkTaggedToken> expression=RegularExpression.compile(expandedExpr,FACTORY);
+  return new RegularExpressionWithPhraseType(expression,phraseType,overwrite);
+}

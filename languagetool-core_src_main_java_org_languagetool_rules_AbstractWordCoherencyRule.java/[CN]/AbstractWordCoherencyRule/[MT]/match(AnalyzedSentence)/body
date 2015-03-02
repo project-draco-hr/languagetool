@@ -5,7 +5,7 @@
     String token=tmpToken.getToken();
     final String origToken=token;
     final List<AnalyzedToken> readings=tmpToken.getReadings();
-    if (readings != null && readings.size() > 0) {
+    if (readings.size() > 0) {
       final String baseform=readings.get(0).getLemma();
       if (baseform != null) {
         token=baseform;

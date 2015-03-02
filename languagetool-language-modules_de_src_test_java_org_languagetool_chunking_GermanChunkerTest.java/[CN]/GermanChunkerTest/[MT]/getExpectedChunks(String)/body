@@ -1,0 +1,23 @@
+{
+  List<String> expectedChunks=new ArrayList<>();
+  String[] parts=input.split(" ");
+  for (  String part : parts) {
+    String[] tokenParts=part.split("/");
+    if (tokenParts.length == 2) {
+      String chunk=tokenParts[1];
+      if (chunk.equals("B")) {
+        expectedChunks.add("B-NP");
+      }
+ else       if (chunk.equals("I")) {
+        expectedChunks.add("I-NP");
+      }
+ else {
+        throw new RuntimeException("Unknown chunk type: '" + chunk + "'");
+      }
+    }
+ else {
+      expectedChunks.add("O");
+    }
+  }
+  return expectedChunks;
+}

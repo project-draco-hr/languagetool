@@ -1,7 +1,5 @@
 {
-  if (messages != null) {
-    super.setCategory(new Category(messages.getString("category_misc")));
-  }
+  super.setCategory(new Category(messages.getString("category_misc")));
   for (  String fileName : fileNames) {
     loadCompoundFile(fileName,"UTF-8");
   }

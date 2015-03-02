@@ -1,7 +1,4 @@
 {
-  super(messages,language);
-  startSymbols=PL_START_SYMBOLS;
-  endSymbols=PL_END_SYMBOLS;
-  uniqueMapInit();
+  super(messages,PL_START_SYMBOLS,PL_END_SYMBOLS);
   addExamplePair(Example.wrong("To jest zdanie z <marker>???</marker>cudzys??owem."),Example.fixed("To jest zdanie z <marker>???</marker>cudzys??owem???."));
 }

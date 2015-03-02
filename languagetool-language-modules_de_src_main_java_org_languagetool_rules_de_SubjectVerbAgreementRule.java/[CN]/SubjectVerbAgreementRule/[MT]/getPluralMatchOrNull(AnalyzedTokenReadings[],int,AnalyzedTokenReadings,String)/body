@@ -1,0 +1,12 @@
+{
+  if (tokenStr.equals("sind") || tokenStr.equals("waren")) {
+    AnalyzedTokenReadings prevToken=tokens[i - 1];
+    List<ChunkTag> prevChunkTags=prevToken.getChunkTags();
+    boolean match=prevChunkTags.contains(NPS) && !prevChunkTags.contains(NPP) && !prevChunkTags.contains(PP)&& !isCurrency(prevToken)&& prevChunkIsNominative(tokens,i - 1)&& !hasUnknownTokenToTheLeft(tokens,i)&& !hasUnknownTokenToTheRight(tokens,i + 1)&& !isFollowedByNominativePlural(tokens,i + 1);
+    if (match) {
+      String message="Bitte pr??fen, ob hier <suggestion>" + (tokenStr.equals("sind") ? "ist" : "war") + "</suggestion> stehen sollte.";
+      return new RuleMatch(this,token.getStartPos(),token.getEndPos(),message);
+    }
+  }
+  return null;
+}

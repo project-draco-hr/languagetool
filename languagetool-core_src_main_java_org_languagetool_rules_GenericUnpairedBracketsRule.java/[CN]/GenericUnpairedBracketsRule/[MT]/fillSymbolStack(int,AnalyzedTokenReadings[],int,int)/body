@@ -10,7 +10,7 @@
       return true;
     }
  else     if (noException && (followedByWhitespace || tokens[i].isSentenceEnd()) && token.equals(endSymbols[j])) {
-      if (i > 1 && endSymbols[j].equals(")") && (numerals.matcher(tokens[i - 1].getToken()).matches() && !(!symbolStack.empty() && "(".equals(symbolStack.peek().symbol)))) {
+      if (i > 1 && endSymbols[j].equals(")") && (numerals.matcher(tokens[i - 1].getToken()).matches() && !(!symbolStack.empty() && "(".equals(symbolStack.peek().getSymbol())))) {
       }
  else {
         if (symbolStack.empty()) {
@@ -18,7 +18,7 @@
           return true;
         }
  else {
-          if (symbolStack.peek().symbol.equals(startSymbols[j])) {
+          if (symbolStack.peek().getSymbol().equals(startSymbols[j])) {
             symbolStack.pop();
             return true;
           }

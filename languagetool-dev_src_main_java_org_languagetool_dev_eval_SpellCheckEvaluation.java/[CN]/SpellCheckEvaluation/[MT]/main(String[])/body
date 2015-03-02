@@ -4,5 +4,5 @@
     System.exit(1);
   }
   SpellCheckEvaluation eval=new SpellCheckEvaluation();
-  eval.run(Language.getLanguageForShortName(args[0]),new File(args[1]));
+  eval.run(Languages.getLanguageForShortName(args[0]),new File(args[1]));
 }

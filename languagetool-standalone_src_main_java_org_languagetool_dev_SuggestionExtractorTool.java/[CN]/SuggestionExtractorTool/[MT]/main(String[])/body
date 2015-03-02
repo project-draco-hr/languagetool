@@ -1,6 +1,6 @@
 {
-  if (Language.REAL_LANGUAGES.length < 5) {
-    throw new RuntimeException("Found only " + Language.REAL_LANGUAGES.length + " languages in classpath. "+ "Please run this class with the classpath of 'languagetool-standalone' to have access to all languages.");
+  if (Languages.get().size() < 5) {
+    throw new RuntimeException("Found only " + Languages.get().size() + " languages in classpath. "+ "Please run this class with the classpath of 'languagetool-standalone' to have access to all languages.");
   }
   final List<String> dirs=Arrays.asList(new File(".").list());
   if (!dirs.contains("en") || !dirs.contains("de")) {

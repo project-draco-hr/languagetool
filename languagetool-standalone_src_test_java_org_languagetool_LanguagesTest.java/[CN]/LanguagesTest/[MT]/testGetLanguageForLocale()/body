@@ -1,0 +1,13 @@
+{
+  assertEquals("de",Languages.getLanguageForLocale(Locale.GERMAN).getShortName());
+  assertEquals("de",Languages.getLanguageForLocale(Locale.GERMANY).getShortName());
+  assertEquals("de-DE",Languages.getLanguageForLocale(new Locale("de","DE")).getShortNameWithCountryAndVariant());
+  assertEquals("de-AT",Languages.getLanguageForLocale(new Locale("de","AT")).getShortNameWithCountryAndVariant());
+  assertEquals("en-US",Languages.getLanguageForLocale(new Locale("en","US")).getShortNameWithCountryAndVariant());
+  assertEquals("en-GB",Languages.getLanguageForLocale(new Locale("en","GB")).getShortNameWithCountryAndVariant());
+  assertEquals("en-US",Languages.getLanguageForLocale(new Locale("en")).getShortNameWithCountryAndVariant());
+  assertEquals("de-DE",Languages.getLanguageForLocale(new Locale("de")).getShortNameWithCountryAndVariant());
+  assertEquals("pl-PL",Languages.getLanguageForLocale(new Locale("pl")).getShortNameWithCountryAndVariant());
+  assertEquals("en-US",Languages.getLanguageForLocale(Locale.KOREAN).getShortNameWithCountryAndVariant());
+  assertEquals("en-US",Languages.getLanguageForLocale(new Locale("zz")).getShortNameWithCountryAndVariant());
+}

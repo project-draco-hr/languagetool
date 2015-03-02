@@ -9,7 +9,7 @@
       lang=afterTheDeadlineLanguage;
     }
  else {
-      lang=Language.getLanguageForShortName(langParam);
+      lang=Languages.getLanguageForShortName(langParam);
     }
   }
   return lang;

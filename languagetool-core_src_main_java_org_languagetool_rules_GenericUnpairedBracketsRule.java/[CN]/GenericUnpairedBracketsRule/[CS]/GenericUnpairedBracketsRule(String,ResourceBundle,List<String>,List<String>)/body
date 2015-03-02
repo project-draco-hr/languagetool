@@ -1,0 +1,13 @@
+{
+  super(messages);
+  this.ruleId=ruleId != null ? ruleId : "UNPAIRED_BRACKETS";
+  super.setCategory(new Category(messages.getString("category_misc")));
+  if (startSymbols.size() != endSymbols.size()) {
+    throw new IllegalArgumentException("Different number of start and end symbols: " + startSymbols + " vs. "+ endSymbols);
+  }
+  this.startSymbols=startSymbols.toArray(new String[startSymbols.size()]);
+  this.endSymbols=endSymbols.toArray(new String[endSymbols.size()]);
+  numerals=NUMERALS_EN;
+  uniqueMapInit();
+  setLocQualityIssueType(ITSIssueType.Typographical);
+}

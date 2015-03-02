@@ -2,7 +2,7 @@
   Language language=null;
   boolean foundLanguage=false;
   final List<String> supportedLanguages=new ArrayList<>();
-  for (  final Language tmpLang : Language.LANGUAGES) {
+  for (  final Language tmpLang : Languages.get()) {
     supportedLanguages.add(tmpLang.getShortName());
     if (lang.equals(tmpLang.getShortName())) {
       language=tmpLang;

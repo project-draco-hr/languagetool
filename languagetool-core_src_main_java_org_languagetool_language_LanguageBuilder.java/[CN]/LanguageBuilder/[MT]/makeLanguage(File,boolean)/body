@@ -10,8 +10,8 @@
     throw new RuleFilenameException(file);
   }
   Language newLanguage;
-  if (Language.isLanguageSupported(parts[1])) {
-    newLanguage=Language.getLanguageForShortName(parts[1]).getClass().newInstance();
+  if (Languages.isLanguageSupported(parts[1])) {
+    newLanguage=Languages.getLanguageForShortName(parts[1]).getClass().newInstance();
     newLanguage.addExternalRuleFile(file.getAbsolutePath());
     newLanguage.setName(parts[2].replace(".xml",""));
     newLanguage.makeExternal();

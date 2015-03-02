@@ -1,5 +1,6 @@
 {
-  setUpRule(new Romanian());
+  langTool=new JLanguageTool(new Romanian());
+  rule=org.languagetool.rules.GenericUnpairedBracketsRuleTest.getBracketsRule(langTool);
   assertMatches("A fost plecat (pentru pu??in timp).",0);
   assertMatches("Nu's de prin locurile astea.",0);
   assertMatches("A fost plecat pentru ???pu??in timp???.",0);

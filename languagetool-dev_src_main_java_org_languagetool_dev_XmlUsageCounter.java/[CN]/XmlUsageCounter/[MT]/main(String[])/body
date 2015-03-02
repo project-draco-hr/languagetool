@@ -1,7 +1,7 @@
 {
   XmlUsageCounter counter=new XmlUsageCounter();
   Set<String> countedFiles=new HashSet<>();
-  for (  Language language : Language.REAL_LANGUAGES) {
+  for (  Language language : Languages.get()) {
     List<String> ruleFileNames=language.getRuleFileNames();
     for (    String ruleFileName : ruleFileNames) {
       if (countedFiles.contains(ruleFileName)) {

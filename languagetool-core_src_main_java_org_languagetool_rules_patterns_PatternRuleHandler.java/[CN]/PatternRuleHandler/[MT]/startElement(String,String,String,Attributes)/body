@@ -4,14 +4,12 @@ case "category":
     final String catName=attrs.getValue(NAME);
   final String priorityStr=attrs.getValue("priority");
 Category.Location location=YES.equals(attrs.getValue(EXTERNAL)) ? Category.Location.EXTERNAL : Category.Location.INTERNAL;
+final boolean onByDefault=!OFF.equals(attrs.getValue(DEFAULT));
 if (priorityStr == null) {
-category=new Category(catName,location);
+category=new Category(catName,location,onByDefault);
 }
  else {
-category=new Category(catName,Integer.parseInt(priorityStr),location);
-}
-if (OFF.equals(attrs.getValue(DEFAULT))) {
-category.setDefaultOff();
+category=new Category(catName,Integer.parseInt(priorityStr),location,onByDefault);
 }
 if (attrs.getValue(TYPE) != null) {
 categoryIssueType=attrs.getValue(TYPE);
@@ -19,7 +17,7 @@ categoryIssueType=attrs.getValue(TYPE);
 break;
 case "rules":
 final String languageStr=attrs.getValue("lang");
-language=Language.getLanguageForShortName(languageStr);
+language=Languages.getLanguageForShortName(languageStr);
 break;
 case RULE:
 inRule=true;

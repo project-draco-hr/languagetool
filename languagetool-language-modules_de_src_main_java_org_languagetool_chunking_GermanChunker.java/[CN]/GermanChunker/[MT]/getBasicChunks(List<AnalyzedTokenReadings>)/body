@@ -1,0 +1,18 @@
+{
+  List<ChunkTaggedToken> chunkTaggedTokens=new ArrayList<>();
+  for (  AnalyzedTokenReadings tokenReading : tokenReadings) {
+    if (!tokenReading.isWhitespace()) {
+      List<ChunkTag> chunkTags=Collections.singletonList(new ChunkTag("O"));
+      ChunkTaggedToken chunkTaggedToken=new ChunkTaggedToken(tokenReading.getToken(),chunkTags,tokenReading);
+      chunkTaggedTokens.add(chunkTaggedToken);
+    }
+  }
+  if (debug) {
+    System.out.println("=============== CHUNKER INPUT ===============");
+    System.out.println(getDebugString(chunkTaggedTokens));
+  }
+  for (  RegularExpressionWithPhraseType regex : REGEXES1) {
+    apply(regex,chunkTaggedTokens);
+  }
+  return chunkTaggedTokens;
+}

@@ -1,3 +1,3 @@
 {
-  return Arrays.asList(new CommaWhitespaceRule(messages),new DoublePunctuationRule(messages),new GenericUnpairedBracketsRule(messages,this),new HunspellNoSuggestionRule(messages,this),new UppercaseSentenceStartRule(messages,this),new MultipleWhitespaceRule(messages,this));
+  return Arrays.asList(new CommaWhitespaceRule(messages),new DoublePunctuationRule(messages),new GenericUnpairedBracketsRule(messages,Arrays.asList("[","(","{","\"","???"),Arrays.asList("]",")","}","\"","???")),new HunspellNoSuggestionRule(messages,this),new UppercaseSentenceStartRule(messages,this),new MultipleWhitespaceRule(messages,this));
 }

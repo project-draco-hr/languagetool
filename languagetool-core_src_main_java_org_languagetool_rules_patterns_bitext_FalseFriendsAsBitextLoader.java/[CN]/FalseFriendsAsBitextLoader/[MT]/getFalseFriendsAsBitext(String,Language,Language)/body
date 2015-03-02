@@ -3,14 +3,14 @@
   final List<BitextPatternRule> bRules=new ArrayList<>();
   final List<PatternRule> rules1=ruleLoader.getRules(JLanguageTool.getDataBroker().getFromRulesDirAsStream(filename),motherTongue,language);
   final List<PatternRule> rules2=ruleLoader.getRules(JLanguageTool.getDataBroker().getFromRulesDirAsStream(filename),language,motherTongue);
-  final HashMap<String,PatternRule> srcRules=new HashMap<>();
+  final Map<String,PatternRule> srcRules=new HashMap<>();
   for (  PatternRule rule : rules1) {
     srcRules.put(rule.getId(),rule);
   }
   for (  PatternRule rule : rules2) {
     if (srcRules.containsKey(rule.getId())) {
       final BitextPatternRule bRule=new BitextPatternRule(srcRules.get(rule.getId()),rule);
-      bRule.setSourceLang(motherTongue);
+      bRule.setSourceLanguage(motherTongue);
       bRule.setCategory(rule.getCategory());
       bRules.add(bRule);
     }
