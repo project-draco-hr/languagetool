@@ -69,6 +69,10 @@
       checkArguments("--rulefile",i,args);
       options.setRuleFile(args[++i]);
     }
+ else     if (args[i].equals("--falsefriends")) {
+      checkArguments("--falsefriends",i,args);
+      options.setFalseFriendFile(args[++i]);
+    }
  else     if (args[i].equals("-c") || args[i].equals("--encoding")) {
       checkArguments("-c/--encoding",i,args);
       options.setEncoding(args[++i]);
