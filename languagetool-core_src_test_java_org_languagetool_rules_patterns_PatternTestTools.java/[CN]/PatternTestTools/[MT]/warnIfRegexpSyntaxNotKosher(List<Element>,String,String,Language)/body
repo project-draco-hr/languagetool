@@ -5,13 +5,13 @@
     if (element.isReferenceElement()) {
       continue;
     }
-    warnIfElementNotKosher(element.getString(),element.isRegularExpression(),element.isCaseSensitive(),element.getNegation(),element.isInflected(),false,lang,ruleId + ":" + ruleSubId,i);
-    warnIfElementNotKosher(element.getPOStag() == null ? "" : element.getPOStag(),element.isPOStagRegularExpression(),element.isCaseSensitive(),element.getPOSNegation(),false,true,lang,ruleId + ":" + ruleSubId+ " (POS tag)",i);
+    warnIfElementNotKosher(element.getString(),element.isRegularExpression(),element.isCaseSensitive(),element.getNegation(),element.isInflected(),false,lang,ruleId + "[" + ruleSubId+ "]",i);
+    warnIfElementNotKosher(element.getPOStag() == null ? "" : element.getPOStag(),element.isPOStagRegularExpression(),element.isCaseSensitive(),element.getPOSNegation(),false,true,lang,ruleId + "[" + ruleSubId+ "] (POS tag)",i);
     final List<Element> exceptionElements=new ArrayList<>();
     if (element.getExceptionList() != null) {
       for (      final Element exception : element.getExceptionList()) {
         if (exception.hasNextException() && element.getSkipNext() == 0) {
-          System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies. "+ " Did you forget skip=\"...\"?");
+          System.err.println("The " + lang.toString() + " rule: "+ ruleId+ "["+ ruleSubId+ "]"+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies. "+ " Did you forget skip=\"...\"?");
         }
         if (!element.getString().isEmpty() && !exception.getString().isEmpty() && !element.getNegation()&& !element.isInflected()&& !exception.getNegation()&& !exception.isInflected()&& element.getSkipNext() == 0 && element.isCaseSensitive() == exception.isCaseSensitive()) {
           if (exception.isRegularExpression()) {
@@ -24,34 +24,34 @@
                   }
                   if (part.matches("[^.*?{}\\[\\]]+")) {
                     if (!part.matches("(?i)" + element.getString())) {
-                      System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " has exception regexp ["+ exception.getString()+ "] which contains disjunction part ["+ part+ "] which seems useless since it does not match "+ "the regexp of token word ["+ i+ "] "+ "["+ element.getString()+ "], or did you forget skip=\"...\" or scope=\"previous\"?");
+                      System.err.println("The " + lang.toString() + " rule: "+ ruleId+ "["+ ruleSubId+ "]"+ " has exception regexp ["+ exception.getString()+ "] which contains disjunction part ["+ part+ "] which seems useless since it does not match "+ "the regexp of token word ["+ i+ "] "+ "["+ element.getString()+ "], or did you forget skip=\"...\" or scope=\"previous\"?");
                     }
                   }
                 }
               }
             }
  else {
-              System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " has exception regexp ["+ exception.getString()+ "] in token word ["+ i+ "] ["+ element.getString()+ "] which seems useless, or "+ "did you forget skip=\"...\" or scope=\"previous\"?");
+              System.err.println("The " + lang.toString() + " rule: "+ ruleId+ "["+ ruleSubId+ "]"+ " has exception regexp ["+ exception.getString()+ "] in token word ["+ i+ "] ["+ element.getString()+ "] which seems useless, or "+ "did you forget skip=\"...\" or scope=\"previous\"?");
             }
           }
  else {
             if (element.isRegularExpression()) {
               if (!exception.getString().matches((exception.isCaseSensitive() ? "" : "(?i)") + element.getString())) {
-                System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " has exception word ["+ exception.getString()+ "] which cannot match the"+ "regexp token ["+ i+ "] ["+ element.getString()+ "] so exception seems useless, "+ "or did you forget skip=\"...\" or scope=\"previous\"?");
+                System.err.println("The " + lang.toString() + " rule: "+ ruleId+ "["+ ruleSubId+ "] has exception word ["+ exception.getString()+ "] which cannot match the"+ "regexp token ["+ i+ "] ["+ element.getString()+ "] so exception seems useless, "+ "or did you forget skip=\"...\" or scope=\"previous\"?");
               }
             }
  else {
-              System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " has exception word ["+ exception.getString()+ "] in token word ["+ i+ "] ["+ element.getString()+ "] which seems useless, "+ "or did you forget skip=\"...\" or scope=\"previous\"?");
+              System.err.println("The " + lang.toString() + " rule: "+ ruleId+ "["+ ruleSubId+ "] has exception word ["+ exception.getString()+ "] in token word ["+ i+ "] ["+ element.getString()+ "] which seems useless, "+ "or did you forget skip=\"...\" or scope=\"previous\"?");
             }
           }
         }
         if (!exception.getString().equals(".")) {
-          warnIfElementNotKosher(exception.getString(),exception.isRegularExpression(),exception.isCaseSensitive(),exception.getNegation(),exception.isInflected(),false,lang,ruleId + ":" + ruleSubId+ " (exception in token ["+ i+ "])",i);
+          warnIfElementNotKosher(exception.getString(),exception.isRegularExpression(),exception.isCaseSensitive(),exception.getNegation(),exception.isInflected(),false,lang,ruleId + "[" + ruleSubId+ "] (exception in token ["+ i+ "])",i);
         }
-        warnIfElementNotKosher(exception.getPOStag() == null ? "" : exception.getPOStag(),exception.isPOStagRegularExpression(),exception.isCaseSensitive(),exception.getPOSNegation(),false,true,lang,ruleId + ":" + ruleSubId+ " (exception in POS tag of token ["+ i+ "])",i);
+        warnIfElementNotKosher(exception.getPOStag() == null ? "" : exception.getPOStag(),exception.isPOStagRegularExpression(),exception.isCaseSensitive(),exception.getPOSNegation(),false,true,lang,ruleId + "[" + ruleSubId+ "] (exception in POS tag of token ["+ i+ "])",i);
         for (        final Element otherException : exceptionElements) {
           if (equalException(exception,otherException)) {
-            System.err.println("The " + lang.toString() + " rule: "+ ruleId+ ":"+ ruleSubId+ " in token ["+ i+ "]"+ " contains duplicate exceptions with"+ " string=["+ exception.getString()+ "]"+ " POS tag=["+ exception.getPOStag()+ "]"+ " negate=["+ exception.getNegation()+ "]"+ " POS negate=["+ exception.getPOSNegation()+ "]");
+            System.err.println("The " + lang.toString() + " rule: "+ ruleId+ "["+ ruleSubId+ "]"+ " in token ["+ i+ "]"+ " contains duplicate exceptions with"+ " string=["+ exception.getString()+ "]"+ " POS tag=["+ exception.getPOStag()+ "]"+ " negate=["+ exception.getNegation()+ "]"+ " POS negate=["+ exception.getPOSNegation()+ "]");
             break;
           }
         }
