@@ -1,0 +1,3 @@
+{
+  new MultiThreadedJLanguageTool(new Demo(),null,0);
+}
