@@ -1,0 +1,22 @@
+{
+  assertFullChunks("Ein/B Haus/I");
+  assertFullChunks("Ein/NPP Hund/NPP und/NPP eine/NPP Katze/NPP stehen dort");
+  assertFullChunks("Es war die/NPS gr????te/NPS und/NPS erfolgreichste/NPS Erfindung/NPS");
+  assertFullChunks("Ger??te/B , deren/NPS Bestimmung/NPS und/NPS Funktion/NPS unklar sind.");
+  assertFullChunks("Julia/NPP und/NPP Karsten/NPP sind alt");
+  assertFullChunks("Es ist die/NPS ??lteste/NPS und/NPS bekannteste/NPS Ma??nahme/NPS");
+  assertFullChunks("Das ist eine/NPS Masseeinheit/NPS und/NPS keine/NPS Gewichtseinheit/NPS");
+  assertFullChunks("Sie f??hrt nur eins/NPS ihrer/NPS drei/NPS Autos/NPS");
+  assertFullChunks("Da sind er/NPP und/NPP seine/NPP Schwester/NPP");
+  assertFullChunks("Rekonstruktionen/NPP oder/NPP der/NPP Wiederaufbau/NPP sind das/NPS Ziel/NPS");
+  assertFullChunks("Isolation/NPP und/NPP ihre/NPP ??berwindung/NPP ist das/NPS Thema/NPS");
+  assertFullChunks("Es gibt weder/NPP Gerechtigkeit/NPP noch/NPP Freiheit/NPP");
+  assertFullChunks("Da sitzen drei/NPP Katzen/NPP");
+  assertFullChunks("Der/NPS von/NPS der/NPS Regierung/NPS gepr??fte/NPS Hund/NPS ist gr??n");
+  assertFullChunks("Herr/NPP und/NPP Frau/NPP Schr??der/NPP sind betrunken");
+  assertFullChunks("Das sind 37/NPS Prozent/NPS");
+  assertFullChunks("Das sind 37/NPP Prozent/NPP");
+  assertFullChunks("Er will die/NPP Arbeitspl??tze/NPP so umgestalten , dass/NPP sie/NPP wie/NPP ein/NPP Spiel/NPP sind.");
+  assertFullChunks("So dass Knochenbr??che/NPP und/NPP Platzwunden/NPP die/NPP Regel/NPP sind");
+  assertFullChunks("Eine/NPS Veranstaltung/NPS ,/NPP die/NPP immer/NPP wieder/NPP ein/NPP kultureller/NPP H??hepunkt/NPP war");
+}

@@ -11,6 +11,12 @@
  else       if (chunk.equals("I")) {
         expectedChunks.add("I-NP");
       }
+ else       if (chunk.equals("NPP")) {
+        expectedChunks.add("NPP");
+      }
+ else       if (chunk.equals("NPS")) {
+        expectedChunks.add("NPS");
+      }
  else {
         throw new RuntimeException("Unknown chunk type: '" + chunk + "'");
       }
