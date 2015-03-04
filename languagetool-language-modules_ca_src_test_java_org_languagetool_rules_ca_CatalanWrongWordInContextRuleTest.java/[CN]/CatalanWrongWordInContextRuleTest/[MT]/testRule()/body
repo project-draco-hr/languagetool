@@ -14,4 +14,5 @@
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("??s un terreny abonat per als problemes.")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("No li va cosir b?? les betes.")).length);
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("Sempre li seguia la beta.")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("un any en el qual la reina Victoria encara era al tro brit??nic")).length);
 }
