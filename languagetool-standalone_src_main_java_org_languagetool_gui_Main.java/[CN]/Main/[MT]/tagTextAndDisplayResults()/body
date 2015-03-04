@@ -55,7 +55,7 @@
       }
       taggerDialog.applyComponentOrientation(ComponentOrientation.getOrientation(((Language)languageBox.getSelectedItem()).getLocale()));
       taggerDialog.setVisible(true);
-      taggerArea.setText(HTML_FONT_START + sb.toString() + HTML_FONT_END);
+      taggerArea.setText(HTML_FONT_START + sb + HTML_FONT_END);
     }
   }
 );

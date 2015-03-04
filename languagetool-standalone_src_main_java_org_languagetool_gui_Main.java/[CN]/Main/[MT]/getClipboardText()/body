@@ -16,12 +16,7 @@
     }
   }
  catch (  Exception ex) {
-    if (data != null) {
-      s=data.toString();
-    }
- else {
-      s="";
-    }
+    s=data.toString();
   }
   return s;
 }
