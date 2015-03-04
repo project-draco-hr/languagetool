@@ -37,6 +37,7 @@
       }
       unified=equivalencesMatched.get(tokCnt).containsKey(feat.getKey());
       if (!unified) {
+        equivalencesMatched.remove(tokCnt);
         break;
       }
     }

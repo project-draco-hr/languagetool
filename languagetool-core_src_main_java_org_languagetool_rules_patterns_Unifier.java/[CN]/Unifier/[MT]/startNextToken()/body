@@ -13,9 +13,9 @@
               tokSequenceEquivalences.get(j).get(i).remove(feat.getKey());
             }
           }
-        }
  else {
-          tokSequenceEquivalences.get(j).get(i).remove(feat.getKey());
+            tokSequenceEquivalences.get(j).get(i).remove(feat.getKey());
+          }
         }
       }
     }

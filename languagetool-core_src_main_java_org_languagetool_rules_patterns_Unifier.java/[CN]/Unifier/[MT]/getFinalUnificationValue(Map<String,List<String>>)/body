@@ -26,11 +26,11 @@
           }
         }
       }
-      if (tokUnified == tokSequence.size()) {
-        return true;
-      }
     }
     if (!unifiedTokensFound)     return false;
+  }
+  if (tokUnified == tokSequence.size()) {
+    return true;
   }
   return false;
 }
