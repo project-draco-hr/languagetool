@@ -1,8 +1,7 @@
 {
   final File input=writeToTempFile("This is a red herring.\tTo jest czerwony ??led??.");
-  final File bitextFile=writeToTempXMLFile("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<rules targetLang=\"pl\" xsi:noNamespaceSchemaLocation=\"../bitext.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n" + "<category name=\"idioms\">\n"+ "<rule lang=\"pl\" id=\"red_herring\" name=\"Red herring -> odwraca uwag??\">\n"+ "<pattern>\n"+ "\t<source lang=\"en\">\n"+ "\t\t<token>is</token>\n"+ "\t\t<token>a</token>\n"+ "\t\t<token>red</token>\n"+ "\t\t<token>herring</token>\n"+ "\t</source>\n"+ "\t<target>\n"+ "\t\t<token>jest</token>\n"+ "\t\t<token>czerwony</token>\n"+ "\t\t<token>??led??</token>\n"+ "\t</target>\n"+ "</pattern>\n"+ "<message>Czy chodzi??o o <suggestion>odwraca uwag??</suggestion>?</message>\n"+ "<example type=\"correct\"><srcExample>This is a red herring.</srcExample>\n"+ "\t\t\t\t\t<trgExample>To odwraca uwag??.</trgExample></example>\n"+ "<example type=\"incorrect\" correction=\"odwraca uwag??\"><srcExample>This <marker>is a red herring</marker>.</srcExample>\n"+ "<trgExample>To <marker>jest czerwony ??led??</marker>.</trgExample></example>\n"+ "</rule></category></rules>\n");
-  final String[] args={"-l","pl","--bitext","-m","en","--bitextrules",bitextFile.getAbsolutePath(),input.getAbsolutePath()};
+  final String[] args={"-l","pl","-c","UTF-8","--bitext","-m","en","--bitextrules",bitextFile.getAbsolutePath(),input.getAbsolutePath()};
   Main.main(args);
   final String output=new String(this.out.toByteArray());
-  assertTrue(output.contains("Rule ID: red_herring"));
+  assertTrue("red_herring rule should be in the output" + output,output.contains("Rule ID: red_herring"));
 }
