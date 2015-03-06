@@ -1,5 +1,4 @@
 {
-  boolean matches=false;
   for (  AnalyzedToken analyzedToken : aToken) {
     String posTag=analyzedToken.getPOSTag();
     if (posTag == null) {
@@ -7,9 +6,8 @@
     }
     final Matcher m=pattern.matcher(posTag);
     if (m.matches()) {
-      matches=true;
-      break;
+      return true;
     }
   }
-  return matches;
+  return false;
 }
