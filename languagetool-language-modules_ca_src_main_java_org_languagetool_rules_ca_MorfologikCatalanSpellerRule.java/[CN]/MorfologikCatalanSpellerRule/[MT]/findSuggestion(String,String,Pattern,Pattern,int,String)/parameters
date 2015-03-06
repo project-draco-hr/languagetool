@@ -1,0 +1,6 @@
+String suggestion
+String word
+Pattern wordPattern
+Pattern postagPattern
+int suggestionPosition
+String separator
