@@ -1,5 +1,6 @@
 {
   final Main prog=new Main(null);
+  Main.setTestMode(true);
   final String testString="Sigui quina siga la teva intenci??. Aix?? ??s una prova.";
   final Locale cavaLoc=new Locale("qlt","ES","ca-ES-valencia");
   final PropertyValue[] prop=new PropertyValue[0];
