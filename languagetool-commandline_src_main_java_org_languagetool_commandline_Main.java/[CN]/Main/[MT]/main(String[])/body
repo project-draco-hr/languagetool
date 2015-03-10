@@ -52,9 +52,6 @@ catch (  UnknownParameterException e) {
   if (options.getRuleFile() != null) {
     options.getLanguage().addExternalRuleFile(options.getRuleFile());
   }
-  if (options.getBitextRuleFile() != null) {
-    options.getLanguage().addExternalBitextRules(options.getBitextRuleFile());
-  }
   if (options.getFalseFriendFile() != null) {
     options.getLanguage().addExternalFalseFriendFile(options.getFalseFriendFile());
   }
@@ -74,7 +71,8 @@ catch (  UnknownParameterException e) {
     if (options.getMotherTongue() == null) {
       throw new IllegalArgumentException("You have to set the source language (as mother tongue) in bitext mode");
     }
-    prg.setBitextMode(options.getMotherTongue(),options.getDisabledRules(),options.getEnabledRules());
+    File bitextRuleFile=options.getBitextRuleFile() != null ? new File(options.getBitextRuleFile()) : null;
+    prg.setBitextMode(options.getMotherTongue(),options.getDisabledRules(),options.getEnabledRules(),bitextRuleFile);
   }
   if (options.isRecursive()) {
     prg.runRecursive(options.getFilename(),options.getEncoding(),options.isListUnknown(),options.isXmlFiltering());

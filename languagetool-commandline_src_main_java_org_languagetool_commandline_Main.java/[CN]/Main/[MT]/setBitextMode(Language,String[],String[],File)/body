@@ -5,7 +5,7 @@
   srcLt=new MultiThreadedJLanguageTool(sourceLang);
   Tools.selectRules(lt,disabledRules,enabledRules);
   Tools.selectRules(srcLt,disabledRules,enabledRules);
-  bRules=Tools.getBitextRules(sourceLang,lt.getLanguage());
+  bRules=Tools.getBitextRules(sourceLang,lt.getLanguage(),bitextRuleFile);
   List<BitextRule> bRuleList=new ArrayList<>(bRules);
   for (  final BitextRule bitextRule : bRules) {
     for (    final String disabledRule : disabledRules) {
