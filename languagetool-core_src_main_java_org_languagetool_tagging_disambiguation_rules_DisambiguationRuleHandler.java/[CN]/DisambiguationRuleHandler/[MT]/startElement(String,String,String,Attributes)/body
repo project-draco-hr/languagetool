@@ -58,10 +58,10 @@ case DISAMBIG:
 inDisambiguation=true;
 disambiguatedPOS=attrs.getValue(POSTAG);
 if (attrs.getValue(ACTION) == null) {
-disambigAction=DisambiguatorAction.REPLACE;
+disambigAction=DisambiguationPatternRule.DisambiguatorAction.REPLACE;
 }
  else {
-disambigAction=DisambiguatorAction.valueOf(attrs.getValue(ACTION).toUpperCase(Locale.ENGLISH));
+disambigAction=DisambiguationPatternRule.DisambiguatorAction.valueOf(attrs.getValue(ACTION).toUpperCase(Locale.ENGLISH));
 }
 disamb=new StringBuilder();
 break;

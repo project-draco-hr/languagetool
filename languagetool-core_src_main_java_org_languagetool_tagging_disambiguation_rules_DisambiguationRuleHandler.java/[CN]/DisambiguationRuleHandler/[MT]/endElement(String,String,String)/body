@@ -14,8 +14,8 @@ if (startPos != -1 && endPos != -1) {
 rule.setSubId(inRuleGroup ? Integer.toString(subId) : "1");
 final int matchedTokenCount=endPos - startPos;
 if (newWdList != null) {
-if (disambigAction == DisambiguatorAction.ADD || disambigAction == DisambiguatorAction.REMOVE || disambigAction == DisambiguatorAction.REPLACE) {
-if ((!newWdList.isEmpty() && disambigAction == DisambiguatorAction.REPLACE) && newWdList.size() != matchedTokenCount) {
+if (disambigAction == DisambiguationPatternRule.DisambiguatorAction.ADD || disambigAction == DisambiguationPatternRule.DisambiguatorAction.REMOVE || disambigAction == DisambiguationPatternRule.DisambiguatorAction.REPLACE) {
+if ((!newWdList.isEmpty() && disambigAction == DisambiguationPatternRule.DisambiguatorAction.REPLACE) && newWdList.size() != matchedTokenCount) {
 throw new SAXException(language.getName() + " rule error. The number of interpretations specified with wd: " + newWdList.size()+ " must be equal to the number of matched tokens ("+ matchedTokenCount+ ")"+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
 }
 rule.setNewInterpretations(newWdList.toArray(new AnalyzedToken[newWdList.size()]));
@@ -30,11 +30,11 @@ if (untouchedExamples != null) {
 rule.setUntouchedExamples(untouchedExamples);
 }
 rules.add(rule);
-if (disambigAction == DisambiguatorAction.UNIFY && matchedTokenCount != uniCounter) {
+if (disambigAction == DisambiguationPatternRule.DisambiguatorAction.UNIFY && matchedTokenCount != uniCounter) {
 throw new SAXException(language.getName() + " rule error. The number unified tokens: " + uniCounter+ " must be equal to the number of matched tokens: "+ matchedTokenCount+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
 }
 final boolean singleTokenCorrection=endPos - startPos > 1;
-if ((!singleTokenCorrection && (disambigAction == DisambiguatorAction.FILTER || disambigAction == DisambiguatorAction.REPLACE)) && (matchedTokenCount > 1)) {
+if ((!singleTokenCorrection && (disambigAction == DisambiguationPatternRule.DisambiguatorAction.FILTER || disambigAction == DisambiguationPatternRule.DisambiguatorAction.REPLACE)) && (matchedTokenCount > 1)) {
 throw new SAXException(language.getName() + " rule error. Cannot replace or filter more than one token at a time." + "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
 }
 elementList.clear();
