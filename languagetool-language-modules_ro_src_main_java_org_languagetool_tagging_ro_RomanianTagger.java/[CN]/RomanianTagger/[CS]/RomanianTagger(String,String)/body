@@ -1,4 +1,0 @@
-{
-  super(dictFileName,RO_LOCALE);
-  plaintextDictPath=userDictFileName;
-}
