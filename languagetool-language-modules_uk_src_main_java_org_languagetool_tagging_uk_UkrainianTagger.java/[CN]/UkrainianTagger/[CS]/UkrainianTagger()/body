@@ -1,7 +1,5 @@
 {
-  super();
-  setLocale(new Locale("uk","UA"));
-  dontTagLowercaseWithUppercase();
+  super("/uk/ukrainian.dict",new Locale("uk","UA"),false);
   if (Boolean.valueOf(System.getProperty(DEBUG_COMPOUNDS_PROPERTY))) {
     debugCompounds();
   }

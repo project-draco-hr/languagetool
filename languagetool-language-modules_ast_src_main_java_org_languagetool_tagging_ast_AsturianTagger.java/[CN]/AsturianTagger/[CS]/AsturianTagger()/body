@@ -1,4 +1,3 @@
 {
-  super();
-  setLocale(new Locale("ast"));
+  super("/ast/asturian.dict",new Locale("ast"));
 }

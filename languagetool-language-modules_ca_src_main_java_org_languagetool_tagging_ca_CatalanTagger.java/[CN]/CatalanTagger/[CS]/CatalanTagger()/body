@@ -1,5 +1,3 @@
 {
-  super();
-  setLocale(new Locale("ca"));
-  dontTagLowercaseWithUppercase();
+  super("/ca/catalan.dict",new Locale("ca"),false);
 }

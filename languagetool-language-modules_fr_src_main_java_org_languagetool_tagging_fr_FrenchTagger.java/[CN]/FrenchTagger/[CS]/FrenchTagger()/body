@@ -1,5 +1,3 @@
 {
-  super();
-  setLocale(Locale.FRENCH);
-  dontTagLowercaseWithUppercase();
+  super("/fr/french.dict",Locale.FRENCH,false);
 }

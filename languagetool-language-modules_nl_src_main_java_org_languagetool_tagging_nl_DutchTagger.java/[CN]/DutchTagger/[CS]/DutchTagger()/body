@@ -1,4 +1,3 @@
 {
-  super();
-  setLocale(new Locale("nl"));
+  super("/nl/dutch.dict",new Locale("nl"));
 }

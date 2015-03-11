@@ -1,4 +1,3 @@
 {
-  super();
-  setLocale(new Locale("ru"));
+  super("/ru/russian.dict",new Locale("ru"));
 }

@@ -1,5 +1,4 @@
 {
-  binaryDictPath=dictFileName;
+  super(dictFileName,RO_LOCALE);
   plaintextDictPath=userDictFileName;
-  setLocale(RO_LOCALE);
 }

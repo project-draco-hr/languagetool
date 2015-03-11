@@ -1,4 +1,3 @@
 {
-  super();
-  setLocale(Locale.ENGLISH);
+  super("/tl/tagalog.dict",Locale.ENGLISH);
 }
