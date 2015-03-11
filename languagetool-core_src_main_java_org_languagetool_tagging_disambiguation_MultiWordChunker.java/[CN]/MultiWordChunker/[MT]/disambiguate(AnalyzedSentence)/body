@@ -63,7 +63,7 @@
         }
       }
       myCount++;
-      if (bAllowFirstCapitalized && StringTools.isCapitalizedWord(tok) && myCount == 1) {
+      if (allowFirstCapitalized && StringTools.isCapitalizedWord(tok) && myCount == 1) {
         tok=tok.toLowerCase();
       }
  else {

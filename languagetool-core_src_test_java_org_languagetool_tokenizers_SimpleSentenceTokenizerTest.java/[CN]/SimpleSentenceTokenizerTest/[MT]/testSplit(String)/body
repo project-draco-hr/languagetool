@@ -1,3 +1,4 @@
 {
+  SimpleSentenceTokenizer tokenizer=new SimpleSentenceTokenizer();
   TestTools.testSplit(sentences,tokenizer);
 }
