@@ -1,3 +1,19 @@
 {
   this.tokens=tokens;
+  int whCounter=0;
+  int nonWhCounter=0;
+  final int[] mapping=new int[tokens.length + 1];
+  final List<AnalyzedTokenReadings> l=new ArrayList<>();
+  for (  final AnalyzedTokenReadings token : tokens) {
+    if (!token.isWhitespace() || token.isSentenceStart() || token.isSentenceEnd()|| token.isParagraphEnd()) {
+      l.add(token);
+      mapping[nonWhCounter]=whCounter;
+      nonWhCounter++;
+    }
+    whCounter++;
+  }
+  this.whPositions=mapping;
+  this.nonBlankTokens=l.toArray(new AnalyzedTokenReadings[l.size()]);
+  this.tokenSet=getTokenSet(tokens);
+  this.lemmaSet=getLemmaSet(tokens);
 }

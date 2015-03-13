@@ -1,21 +1,3 @@
 {
-synchronized (this) {
-    if (nonBlankTokens == null) {
-      int whCounter=0;
-      int nonWhCounter=0;
-      final int[] mapping=new int[tokens.length + 1];
-      final List<AnalyzedTokenReadings> l=new ArrayList<>();
-      for (      final AnalyzedTokenReadings token : tokens) {
-        if (!token.isWhitespace() || token.isSentenceStart() || token.isSentenceEnd()|| token.isParagraphEnd()) {
-          l.add(token);
-          mapping[nonWhCounter]=whCounter;
-          nonWhCounter++;
-        }
-        whCounter++;
-      }
-      setNonBlankTokens(l.toArray(new AnalyzedTokenReadings[l.size()]));
-      setWhPositions(mapping.clone());
-    }
-  }
   return nonBlankTokens.clone();
 }

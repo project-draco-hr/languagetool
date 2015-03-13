@@ -1,5 +1,0 @@
-{
-  this.tokens=tokens;
-  this.setWhPositions(Objects.requireNonNull(whPositions));
-  getTokensWithoutWhitespace();
-}

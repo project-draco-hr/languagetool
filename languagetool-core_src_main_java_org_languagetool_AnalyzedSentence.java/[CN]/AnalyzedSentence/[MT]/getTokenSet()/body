@@ -1,9 +1,3 @@
 {
-  if (tokenSet == null) {
-    tokenSet=new HashSet<>();
-    for (    AnalyzedTokenReadings token : tokens) {
-      tokenSet.add(token.getToken().toLowerCase());
-    }
-  }
   return tokenSet;
 }

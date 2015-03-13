@@ -1,0 +1,7 @@
+{
+  Set<String> tokenSet=new HashSet<>();
+  for (  AnalyzedTokenReadings token : tokens) {
+    tokenSet.add(token.getToken().toLowerCase());
+  }
+  return Collections.unmodifiableSet(tokenSet);
+}
