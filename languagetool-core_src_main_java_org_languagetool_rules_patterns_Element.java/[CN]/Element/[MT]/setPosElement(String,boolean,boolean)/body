@@ -3,9 +3,8 @@
   this.posNegation=negation;
   posRegExp=regExp;
   if (posRegExp) {
-    pPos=Pattern.compile(posToken);
-    final Matcher mPos=pPos.matcher(UNKNOWN_TAG);
-    posUnknown=mPos.matches();
+    posPattern=Pattern.compile(posToken);
+    posUnknown=posPattern.matcher(UNKNOWN_TAG).matches();
   }
  else {
     posUnknown=UNKNOWN_TAG.equals(posToken);

@@ -12,7 +12,7 @@
       regToken=CASE_INSENSITIVE + stringToken;
     }
     if (!"\\0".equals(token)) {
-      p=Pattern.compile(regToken);
+      pattern=Pattern.compile(regToken);
     }
   }
 }

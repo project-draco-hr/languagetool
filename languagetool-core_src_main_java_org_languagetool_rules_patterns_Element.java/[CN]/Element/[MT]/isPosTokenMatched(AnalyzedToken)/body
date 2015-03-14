@@ -7,7 +7,7 @@
   }
   boolean match;
   if (posRegExp) {
-    final Matcher mPos=pPos.matcher(token.getPOSTag());
+    final Matcher mPos=posPattern.matcher(token.getPOSTag());
     match=mPos.matches();
   }
  else {

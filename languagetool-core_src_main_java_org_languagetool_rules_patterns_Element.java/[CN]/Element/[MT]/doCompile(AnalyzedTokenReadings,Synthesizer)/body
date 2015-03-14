@@ -1,5 +1,5 @@
 {
-  p=null;
+  pattern=null;
   final MatchState matchState=tokenReference.createState(synth,token);
   if (StringTools.isEmpty(referenceString)) {
     referenceString=stringToken;
