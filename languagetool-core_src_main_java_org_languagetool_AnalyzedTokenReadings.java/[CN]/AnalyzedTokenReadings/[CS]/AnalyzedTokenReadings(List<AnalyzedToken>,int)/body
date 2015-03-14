@@ -1,5 +1,12 @@
 {
   anTokReadings=tokens.toArray(new AnalyzedToken[tokens.size()]);
   this.startPos=startPos;
-  init();
+  token=anTokReadings[0].getToken();
+  isWhitespace=StringTools.isWhitespace(token);
+  isLinebreak="\n".equals(token) || "\r\n".equals(token) || "\r".equals(token)|| "\n\r".equals(token);
+  isSentStart=JLanguageTool.SENTENCE_START_TAGNAME.equals(anTokReadings[0].getPOSTag());
+  isParaEnd=hasPosTag(JLanguageTool.PARAGRAPH_END_TAGNAME);
+  isSentEnd=hasPosTag(JLanguageTool.SENTENCE_END_TAGNAME);
+  setNoRealPOStag();
+  hasSameLemmas=areLemmasSame();
 }

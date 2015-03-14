@@ -1,6 +1,3 @@
 {
-  anTokReadings=new AnalyzedToken[1];
-  anTokReadings[0]=token;
-  isWhitespaceBefore=token.isWhitespaceBefore();
-  init();
+  this(Collections.singletonList(token),0);
 }

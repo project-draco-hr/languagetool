@@ -1,5 +1,3 @@
 {
-  anTokReadings=token.clone();
-  this.startPos=startPos;
-  init();
+  this(Arrays.asList(tokens),startPos);
 }
