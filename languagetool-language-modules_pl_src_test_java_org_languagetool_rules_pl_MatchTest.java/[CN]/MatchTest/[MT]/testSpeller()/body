@@ -13,7 +13,6 @@
   matchState.setToken(getAnalyzedTokenReadings("AON","subst:sg:acc.nom:m3","AON"));
   assertEquals("[AON-u]",Arrays.toString(matchState.toFinalString(polish)));
   match=getTextMatch("^(.*)$","$0-u",true);
-  match.setSynthesizer(polish.getSynthesizer());
   match.setLemmaString("AON");
   matchState=new MatchState(match,polish.getSynthesizer());
   assertEquals("[AON-u]",Arrays.toString(matchState.toFinalString(polish)));
