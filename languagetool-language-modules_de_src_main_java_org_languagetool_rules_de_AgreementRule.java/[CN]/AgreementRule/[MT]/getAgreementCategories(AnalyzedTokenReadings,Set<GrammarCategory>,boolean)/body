@@ -9,7 +9,7 @@
     if (reading.getCasus() == null && reading.getNumerus() == null && reading.getGenus() == null) {
       continue;
     }
-    if (reading.getGenus() == GermanToken.Genus.ALLGEMEIN && reading.getPOSTag() != null && !reading.getPOSTag().endsWith(":STV")) {
+    if (reading.getGenus() == GermanToken.Genus.ALLGEMEIN && tmpReading.getPOSTag() != null && !tmpReading.getPOSTag().endsWith(":STV")) {
       set.add(makeString(reading.getCasus(),reading.getNumerus(),GermanToken.Genus.MASKULINUM,omit));
       set.add(makeString(reading.getCasus(),reading.getNumerus(),GermanToken.Genus.FEMININUM,omit));
       set.add(makeString(reading.getCasus(),reading.getNumerus(),GermanToken.Genus.NEUTRUM,omit));
