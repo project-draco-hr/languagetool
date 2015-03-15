@@ -164,6 +164,8 @@
   assertEquals("atemptats",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("contable"));
   assertEquals("comptable",matches[0].getSuggestedReplacements().get(0));
+  matches=rule.match(langTool.getAnalyzedSentence("desici??"));
+  assertEquals("decisi??",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("Espa??a"));
   assertEquals("Espanya",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("En la Pecra"));
