@@ -132,7 +132,6 @@ int k=1;
 while (i + startPositionCorrection + k < rule.getPatternTokens().size() + endPositionCorrection && !pTokensMatched.get(i + startPositionCorrection + k)) {
 k++;
 }
-assert(i + k + startPositionCorrection < rule.getPatternTokens().size());
 pToken=rule.getPatternTokens().get(i + k + startPositionCorrection);
 }
 final Match tmpMatchToken=new Match(pToken.getPOStag(),null,true,pToken.getPOStag(),null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);
