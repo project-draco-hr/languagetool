@@ -1,9 +1,0 @@
-{
-  super(id,description,language,elements,true);
-  if (disamb == null && posSelect == null && disambAction != DisambiguatorAction.UNIFY && disambAction != DisambiguatorAction.ADD && disambAction != DisambiguatorAction.REMOVE && disambAction != DisambiguatorAction.IMMUNIZE && disambAction != DisambiguatorAction.REPLACE && disambAction != DisambiguatorAction.FILTERALL && disambAction != DisambiguatorAction.IGNORE_SPELLING) {
-    throw new NullPointerException("disambiguated POS cannot be null");
-  }
-  this.disambiguatedPOS=disamb;
-  this.matchElement=posSelect;
-  this.disAction=disambAction;
-}

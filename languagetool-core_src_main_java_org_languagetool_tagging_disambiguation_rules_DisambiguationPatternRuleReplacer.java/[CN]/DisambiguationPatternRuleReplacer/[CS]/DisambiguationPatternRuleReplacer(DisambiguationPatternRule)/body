@@ -1,4 +1,4 @@
 {
   super(rule,rule.getLanguage().getDisambiguationUnifier());
-  elementsMatched=new ArrayList<>(rule.getPatternElements().size());
+  pTokensMatched=new ArrayList<>(rule.getPatternTokens().size());
 }

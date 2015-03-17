@@ -1,0 +1,5 @@
+{
+  basePatternToken=patternToken;
+  this.patternToken=basePatternToken;
+  resolveGroup();
+}

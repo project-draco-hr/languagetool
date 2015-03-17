@@ -1,52 +1,52 @@
 {
-  if (!exceptionSet || tokenElement == null) {
+  if (!exceptionSet || patternToken == null) {
     boolean tokenCase=caseSensitive;
     if (tokenLevelCaseSet) {
       tokenCase=tokenLevelCaseSensitive;
     }
-    tokenElement=new Element(elements.toString(),tokenCase,regExpression,tokenInflected);
-    tokenElement.setNegation(tokenNegated);
+    patternToken=new PatternToken(elements.toString(),tokenCase,regExpression,tokenInflected);
+    patternToken.setNegation(tokenNegated);
   }
  else {
-    tokenElement.setStringElement(elements.toString());
+    patternToken.setStringElement(elements.toString());
   }
   if (skipPos != 0) {
-    tokenElement.setSkipNext(skipPos);
+    patternToken.setSkipNext(skipPos);
     skipPos=0;
   }
   if (minOccurrence == 0) {
-    tokenElement.setMinOccurrence(0);
+    patternToken.setMinOccurrence(0);
   }
   if (maxOccurrence != 1) {
-    tokenElement.setMaxOccurrence(maxOccurrence);
+    patternToken.setMaxOccurrence(maxOccurrence);
     maxOccurrence=1;
   }
   if (posToken != null) {
-    tokenElement.setPosElement(posToken,posRegExp,posNegation);
+    patternToken.setPosElement(posToken,posRegExp,posNegation);
     posToken=null;
   }
   if (chunkTag != null) {
-    tokenElement.setChunkElement(chunkTag);
+    patternToken.setChunkElement(chunkTag);
     chunkTag=null;
   }
   if (tokenReference != null) {
-    tokenElement.setMatch(tokenReference);
+    patternToken.setMatch(tokenReference);
   }
   if (inAndGroup && andGroupCounter > 0) {
-    elementList.get(elementList.size() - 1).setAndGroupElement(tokenElement);
+    patternTokens.get(patternTokens.size() - 1).setAndGroupElement(patternToken);
     if (minOccurrence != 1 || maxOccurrence != 1) {
       throw new SAXException("Please set min and max attributes on the " + "first token in the AND group.\n You attempted to set these " + "attributes on the token no. " + (andGroupCounter + 1) + "."+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
     }
   }
  else   if (inOrGroup && orGroupCounter > 0) {
-    elementList.get(elementList.size() - 1).setOrGroupElement(tokenElement);
+    patternTokens.get(patternTokens.size() - 1).setOrGroupElement(patternToken);
   }
  else {
     if (minOccurrence < 1) {
-      elementList.add(tokenElement);
+      patternTokens.add(patternToken);
     }
     for (int i=1; i <= minOccurrence; i++) {
-      elementList.add(tokenElement);
+      patternTokens.add(patternToken);
     }
     minOccurrence=1;
   }
@@ -57,18 +57,18 @@
     orGroupCounter++;
   }
   if (inUnification) {
-    tokenElement.setUnification(equivalenceFeatures);
+    patternToken.setUnification(equivalenceFeatures);
   }
   if (inUnificationNeutral) {
-    tokenElement.setUnificationNeutral();
+    patternToken.setUnificationNeutral();
   }
-  tokenElement.setInsideMarker(inMarker);
+  patternToken.setInsideMarker(inMarker);
   if (inUnificationDef) {
-    language.getUnifierConfiguration().setEquivalence(uFeature,uType,tokenElement);
-    elementList.clear();
+    language.getUnifierConfiguration().setEquivalence(uFeature,uType,patternToken);
+    patternTokens.clear();
   }
   if (tokenSpaceBeforeSet) {
-    tokenElement.setWhitespaceBefore(tokenSpaceBefore);
+    patternToken.setWhitespaceBefore(tokenSpaceBefore);
   }
   resetToken();
 }

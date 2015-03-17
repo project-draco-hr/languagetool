@@ -1,7 +1,7 @@
 {
   int minOccurCorrection=0;
-  for (  Element element : rule.getPatternElements()) {
-    if (element.getMinOccurrence() == 0) {
+  for (  PatternToken patternToken : rule.getPatternTokens()) {
+    if (patternToken.getMinOccurrence() == 0) {
       minOccurCorrection++;
     }
   }

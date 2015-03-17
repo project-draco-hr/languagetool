@@ -13,7 +13,7 @@
         }
         for (        final String typeName : types) {
           if (equivalencesMatched.get(i).containsKey(feat.getKey()) && equivalencesMatched.get(i).get(feat.getKey()).contains(typeName)) {
-            final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
+            final PatternToken testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
             boolean matched=testElem.isMatched(aToken);
             featUnified=featUnified || matched;
             if (matched) {

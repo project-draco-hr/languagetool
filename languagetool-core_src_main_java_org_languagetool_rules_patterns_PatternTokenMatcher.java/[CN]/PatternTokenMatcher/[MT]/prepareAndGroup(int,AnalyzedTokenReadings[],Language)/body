@@ -1,0 +1,9 @@
+{
+  if (basePatternToken.hasAndGroup()) {
+    for (    PatternTokenMatcher andMatcher : andGroup) {
+      andMatcher.resolveReference(firstMatchToken,tokens,language);
+    }
+    andGroupCheck=new boolean[patternToken.getAndGroup().size() + 1];
+    Arrays.fill(andGroupCheck,false);
+  }
+}

@@ -3,18 +3,18 @@
     phraseMap=new HashMap<>();
   }
   phraseElementInit();
-  for (  Element element : elementList) {
-    element.setInsideMarker(inMarker);
+  for (  PatternToken patternToken : patternTokens) {
+    patternToken.setInsideMarker(inMarker);
   }
-  if (phraseElementList.isEmpty()) {
-    phraseElementList.add(new ArrayList<>(elementList));
+  if (phrasePatternTokens.isEmpty()) {
+    phrasePatternTokens.add(new ArrayList<>(patternTokens));
   }
  else {
-    for (    List<Element> ph : phraseElementList) {
-      ph.addAll(new ArrayList<>(elementList));
+    for (    List<PatternToken> ph : phrasePatternTokens) {
+      ph.addAll(new ArrayList<>(patternTokens));
     }
   }
-  phraseMap.put(phraseId,new ArrayList<List<Element>>(phraseElementList));
-  elementList.clear();
-  phraseElementList.clear();
+  phraseMap.put(phraseId,new ArrayList<List<PatternToken>>(phrasePatternTokens));
+  patternTokens.clear();
+  phrasePatternTokens.clear();
 }

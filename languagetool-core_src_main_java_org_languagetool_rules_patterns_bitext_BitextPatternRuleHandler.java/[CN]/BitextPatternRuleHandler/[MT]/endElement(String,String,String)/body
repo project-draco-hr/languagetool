@@ -6,7 +6,7 @@ case RULE:
     for (    final Match m : suggestionMatches) {
       trgRule.addSuggestionMatch(m);
     }
-    if (phraseElementList.size() <= 1) {
+    if (phrasePatternTokens.size() <= 1) {
       suggestionMatches.clear();
     }
   }

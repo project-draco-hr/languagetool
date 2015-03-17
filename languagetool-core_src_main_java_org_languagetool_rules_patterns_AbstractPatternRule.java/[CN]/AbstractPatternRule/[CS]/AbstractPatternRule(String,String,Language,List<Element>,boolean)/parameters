@@ -1,5 +1,0 @@
-String id
-String description
-Language language
-List<Element> elements
-boolean getUnified

@@ -1,0 +1,14 @@
+{
+  int maxSkip=0;
+  int maxOccurrences=elem.getPatternToken().getMaxOccurrence() == -1 ? Integer.MAX_VALUE : elem.getPatternToken().getMaxOccurrence();
+  for (int j=1; j < maxOccurrences && m + j < tokens.length - remainingElems; j++) {
+    boolean nextAllElementsMatch=!tokens[m + j].isImmunized() && testAllReadings(tokens,elem,prevElement,m + j,firstMatchToken,prevSkipNext);
+    if (nextAllElementsMatch) {
+      maxSkip++;
+    }
+ else {
+      break;
+    }
+  }
+  return maxSkip;
+}

@@ -1,0 +1,3 @@
+{
+  super(id,language,patternTokens,description,message,shortMessage);
+}

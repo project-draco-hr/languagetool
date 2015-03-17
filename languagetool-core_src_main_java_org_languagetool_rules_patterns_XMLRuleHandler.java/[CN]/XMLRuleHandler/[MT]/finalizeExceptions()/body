@@ -5,17 +5,17 @@
     if (tokenLevelCaseSet) {
       tokenCase=tokenLevelCaseSensitive;
     }
-    tokenElement=new Element(elements.toString(),tokenCase,regExpression,tokenInflected);
+    patternToken=new PatternToken(elements.toString(),tokenCase,regExpression,tokenInflected);
     exceptionSet=true;
   }
-  tokenElement.setNegation(tokenNegated);
+  patternToken.setNegation(tokenNegated);
   if (!StringTools.isEmpty(exceptions.toString()) || exceptionPosToken != null) {
-    tokenElement.setStringPosException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev,exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionLevelCaseSensitive);
+    patternToken.setStringPosException(exceptions.toString(),exceptionStringRegExp,exceptionStringInflected,exceptionStringNegation,exceptionValidNext,exceptionValidPrev,exceptionPosToken,exceptionPosRegExp,exceptionPosNegation,exceptionLevelCaseSensitive);
     exceptionPosToken=null;
     exceptionLevelCaseSensitive=null;
   }
   if (exceptionSpaceBeforeSet) {
-    tokenElement.setExceptionSpaceBefore(exceptionSpaceBefore);
+    patternToken.setExceptionSpaceBefore(exceptionSpaceBefore);
   }
   resetException();
 }

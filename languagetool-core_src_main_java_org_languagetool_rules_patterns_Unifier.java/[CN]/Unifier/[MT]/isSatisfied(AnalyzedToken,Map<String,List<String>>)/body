@@ -20,7 +20,7 @@
         types=equivalenceFeatures.get(feat.getKey());
       }
       for (      final String typeName : types) {
-        final Element testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
+        final PatternToken testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
         if (testElem == null) {
           return false;
         }

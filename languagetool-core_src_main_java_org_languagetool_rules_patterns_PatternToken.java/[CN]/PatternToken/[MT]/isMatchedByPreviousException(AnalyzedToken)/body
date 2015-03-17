@@ -1,0 +1,12 @@
+{
+  if (exceptionValidPrevious) {
+    for (    final PatternToken testException : previousExceptionList) {
+      if (!testException.exceptionValidNext) {
+        if (testException.isMatched(token)) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}

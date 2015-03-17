@@ -1,0 +1,12 @@
+{
+  int counter=0;
+  for (  final PatternToken pToken : patternTokens) {
+    if (pToken.getPhraseName() != null && counter > 0 && pToken.isReferenceElement()) {
+      final int tokRef=pToken.getMatch().getTokenRef();
+      pToken.getMatch().setTokenRef(tokRef + counter - 1);
+      final String offsetToken=pToken.getString().replace("\\" + tokRef,"\\" + (tokRef + counter - 1));
+      pToken.setStringElement(offsetToken);
+    }
+    counter++;
+  }
+}

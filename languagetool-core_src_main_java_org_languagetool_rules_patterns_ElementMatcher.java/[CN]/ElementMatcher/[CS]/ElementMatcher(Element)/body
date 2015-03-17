@@ -1,5 +1,0 @@
-{
-  baseElement=element;
-  this.element=baseElement;
-  resolveGroup();
-}

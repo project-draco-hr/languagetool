@@ -1,8 +1,8 @@
 {
   final String[] parts=pattern.split(" ");
-  List<Element> elements=new ArrayList<>();
+  List<PatternToken> patternTokens=new ArrayList<>();
   for (  String part : parts) {
-    elements.add(new Element(part,false,false,false));
+    patternTokens.add(new PatternToken(part,false,false,false));
   }
-  return getPatternRule(elements);
+  return getPatternRule(patternTokens);
 }

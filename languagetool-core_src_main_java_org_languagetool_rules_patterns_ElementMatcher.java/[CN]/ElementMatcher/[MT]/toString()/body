@@ -1,3 +1,0 @@
-{
-  return "ElementMatcher for " + baseElement;
-}

@@ -1,0 +1,22 @@
+{
+  this.id=Objects.requireNonNull(id,"id cannot be null");
+  this.description=Objects.requireNonNull(description,"description cannot be null");
+  this.patternTokens=new ArrayList<>(Objects.requireNonNull(patternTokens,"patternTokens cannot be null"));
+  this.language=Objects.requireNonNull(language,"language cannot be null");
+  this.getUnified=getUnified;
+  testUnification=initUnifier();
+  sentStart=this.patternTokens.size() > 0 && this.patternTokens.get(0).isSentenceStart();
+  if (!testUnification) {
+    boolean found=false;
+    for (    PatternToken elem : this.patternTokens) {
+      if (elem.hasAndGroup()) {
+        found=true;
+        break;
+      }
+    }
+    groupsOrUnification=found;
+  }
+ else {
+    groupsOrUnification=true;
+  }
+}

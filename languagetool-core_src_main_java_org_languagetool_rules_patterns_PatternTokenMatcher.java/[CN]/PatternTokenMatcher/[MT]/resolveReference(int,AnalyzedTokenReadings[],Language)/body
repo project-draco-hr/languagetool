@@ -1,0 +1,8 @@
+{
+  if (basePatternToken.isReferenceElement()) {
+    final int refPos=firstMatchToken + basePatternToken.getMatch().getTokenRef();
+    if (refPos < tokens.length) {
+      patternToken=basePatternToken.compile(tokens[refPos],language.getSynthesizer());
+    }
+  }
+}

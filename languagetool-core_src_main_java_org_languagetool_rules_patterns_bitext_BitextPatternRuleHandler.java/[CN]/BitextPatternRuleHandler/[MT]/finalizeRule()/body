@@ -1,25 +1,25 @@
 {
   PatternRule rule=null;
   phraseElementInit();
-  if (phraseElementList.isEmpty()) {
-    rule=new PatternRule(id,language,elementList,name,"",shortMessage.toString());
+  if (phrasePatternTokens.isEmpty()) {
+    rule=new PatternRule(id,language,patternTokens,name,"",shortMessage.toString());
     prepareRule(rule);
   }
  else {
-    if (!elementList.isEmpty()) {
-      for (      List<Element> ph : phraseElementList) {
-        ph.addAll(new ArrayList<>(elementList));
+    if (!patternTokens.isEmpty()) {
+      for (      List<PatternToken> ph : phrasePatternTokens) {
+        ph.addAll(new ArrayList<>(patternTokens));
       }
     }
-    for (    List<Element> phraseElement : phraseElementList) {
-      processElement(phraseElement);
-      rule=new PatternRule(id,language,phraseElement,name,message.toString(),shortMessage.toString(),"",phraseElementList.size() > 1);
+    for (    List<PatternToken> phrasePatternToken : phrasePatternTokens) {
+      processElement(phrasePatternToken);
+      rule=new PatternRule(id,language,phrasePatternToken,name,message.toString(),shortMessage.toString(),"",phrasePatternTokens.size() > 1);
       prepareRule(rule);
     }
   }
-  elementList.clear();
-  if (phraseElementList != null) {
-    phraseElementList.clear();
+  patternTokens.clear();
+  if (phrasePatternTokens != null) {
+    phrasePatternTokens.clear();
   }
   startPositionCorrection=0;
   endPositionCorrection=0;

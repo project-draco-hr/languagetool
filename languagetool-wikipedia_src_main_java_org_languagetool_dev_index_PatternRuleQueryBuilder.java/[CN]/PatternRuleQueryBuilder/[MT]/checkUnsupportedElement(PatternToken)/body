@@ -1,0 +1,11 @@
+{
+  if (patternPatternToken.hasOrGroup()) {
+    throw new UnsupportedPatternRuleException("<or> not yet supported.");
+  }
+  if (patternPatternToken.isUnified()) {
+    throw new UnsupportedPatternRuleException("Elements with unified tokens are not supported.");
+  }
+  if (patternPatternToken.getString().matches("\\\\\\d+")) {
+    throw new UnsupportedPatternRuleException("Elements with only match references (e.g. \\1) are not supported.");
+  }
+}

@@ -1,0 +1,10 @@
+{
+  if (andGroupSet) {
+    for (    final PatternToken testAndGroup : andGroupList) {
+      if (testAndGroup.isExceptionMatched(token)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

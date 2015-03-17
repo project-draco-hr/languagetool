@@ -1,8 +1,8 @@
 {
   final UnifierConfiguration unifierConfig=new UnifierConfiguration();
-  final Element elLower=new Element("\\p{Ll}+",true,true,false);
-  final Element elUpper=new Element("\\p{Lu}\\p{Ll}+",true,true,false);
-  final Element elAllUpper=new Element("\\p{Lu}+$",true,true,false);
+  final PatternToken elLower=new PatternToken("\\p{Ll}+",true,true,false);
+  final PatternToken elUpper=new PatternToken("\\p{Lu}\\p{Ll}+",true,true,false);
+  final PatternToken elAllUpper=new PatternToken("\\p{Lu}+$",true,true,false);
   unifierConfig.setEquivalence("case-sensitivity","lowercase",elLower);
   unifierConfig.setEquivalence("case-sensitivity","uppercase",elUpper);
   unifierConfig.setEquivalence("case-sensitivity","alluppercase",elAllUpper);

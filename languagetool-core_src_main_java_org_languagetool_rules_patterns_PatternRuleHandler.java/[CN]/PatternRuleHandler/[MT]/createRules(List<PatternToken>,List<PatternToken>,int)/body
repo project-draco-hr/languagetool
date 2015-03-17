@@ -1,0 +1,33 @@
+{
+  String shortMessage="";
+  if (this.shortMessage != null && this.shortMessage.length() > 0) {
+    shortMessage=this.shortMessage.toString();
+  }
+ else   if (shortMessageForRuleGroup != null && shortMessageForRuleGroup.length() > 0) {
+    shortMessage=this.shortMessageForRuleGroup.toString();
+  }
+  if (numElement >= elemList.size()) {
+    final PatternRule rule=new PatternRule(id,language,tmpPatternTokens,name,message.toString(),shortMessage,suggestionsOutMsg.toString(),phrasePatternTokens.size() > 1);
+    if (filterClassName != null && filterArgs != null) {
+      RuleFilterCreator creator=new RuleFilterCreator();
+      RuleFilter filter=creator.getFilter(filterClassName);
+      rule.setFilter(filter);
+      rule.setFilterArguments(filterArgs);
+    }
+    prepareRule(rule);
+    rules.add(rule);
+  }
+ else {
+    PatternToken patternToken=elemList.get(numElement);
+    if (patternToken.hasOrGroup()) {
+      for (      PatternToken patternTokenOfOrGroup : patternToken.getOrGroup()) {
+        final List<PatternToken> tmpElements2=new ArrayList<>();
+        tmpElements2.addAll(tmpPatternTokens);
+        tmpElements2.add((PatternToken)ObjectUtils.clone(patternTokenOfOrGroup));
+        createRules(elemList,tmpElements2,numElement + 1);
+      }
+    }
+    tmpPatternTokens.add((PatternToken)ObjectUtils.clone(patternToken));
+    createRules(elemList,tmpPatternTokens,numElement + 1);
+  }
+}

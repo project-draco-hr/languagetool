@@ -1,12 +1,12 @@
 {
-  final Element elementAB=new Element("a|b",false,true,false);
-  elementAB.setSkipNext(-1);
-  final Element elementC=makeElement("\\0");
+  final PatternToken patternTokenAB=new PatternToken("a|b",false,true,false);
+  patternTokenAB.setSkipNext(-1);
+  final PatternToken patternTokenC=makeElement("\\0");
   Match match=new Match(null,null,false,null,null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);
   match.setTokenRef(0);
   match.setInMessageOnly(true);
-  elementC.setMatch(match);
-  final PatternRuleMatcher matcher=getMatcher(elementAB,elementC);
+  patternTokenC.setMatch(match);
+  final PatternRuleMatcher matcher=getMatcher(patternTokenAB,patternTokenC);
   assertCompleteMatch("a a",matcher);
   assertCompleteMatch("b b",matcher);
   assertCompleteMatch("a x a",matcher);

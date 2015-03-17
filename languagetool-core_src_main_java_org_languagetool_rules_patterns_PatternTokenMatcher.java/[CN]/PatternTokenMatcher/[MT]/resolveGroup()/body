@@ -1,0 +1,10 @@
+{
+  if (basePatternToken.hasAndGroup()) {
+    List<PatternToken> patternTokenAndGroup=basePatternToken.getAndGroup();
+    andGroup=new ArrayList<>(patternTokenAndGroup.size());
+    for (    PatternToken el : patternTokenAndGroup) {
+      PatternTokenMatcher matcher=new PatternTokenMatcher(el);
+      andGroup.add(matcher);
+    }
+  }
+}

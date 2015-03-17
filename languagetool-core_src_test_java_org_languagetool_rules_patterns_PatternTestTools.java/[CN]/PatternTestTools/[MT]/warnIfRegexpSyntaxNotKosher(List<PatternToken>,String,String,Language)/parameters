@@ -1,0 +1,4 @@
+List<PatternToken> patternTokens
+String ruleId
+String ruleSubId
+Language lang

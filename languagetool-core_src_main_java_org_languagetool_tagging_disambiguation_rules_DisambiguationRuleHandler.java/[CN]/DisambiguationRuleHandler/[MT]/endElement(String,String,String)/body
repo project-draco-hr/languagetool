@@ -1,7 +1,7 @@
 {
 switch (qName) {
 case RULE:
-    final DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,elementList,disambiguatedPOS,posSelector,disambigAction);
+    final DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,patternTokens,disambiguatedPOS,posSelector,disambigAction);
   endPositionCorrection=endPos - tokenCountForMarker;
 if (startPos != -1 && endPos != -1) {
   rule.setStartPositionCorrection(startPos);
@@ -37,7 +37,7 @@ final boolean singleTokenCorrection=endPos - startPos > 1;
 if ((!singleTokenCorrection && (disambigAction == DisambiguationPatternRule.DisambiguatorAction.FILTER || disambigAction == DisambiguationPatternRule.DisambiguatorAction.REPLACE)) && (matchedTokenCount > 1)) {
 throw new SAXException(language.getName() + " rule error. Cannot replace or filter more than one token at a time." + "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
 }
-elementList.clear();
+patternTokens.clear();
 posSelector=null;
 disambExamples=null;
 untouchedExamples=null;
@@ -53,51 +53,51 @@ andGroupCounter=0;
 tokenCounter++;
 break;
 case TOKEN:
-if (!exceptionSet || tokenElement == null) {
+if (!exceptionSet || patternToken == null) {
 boolean tokenCase=caseSensitive;
 if (tokenLevelCaseSet) {
 tokenCase=tokenLevelCaseSensitive;
 }
-tokenElement=new Element(elements.toString(),tokenCase,regExpression,tokenInflected);
-tokenElement.setNegation(tokenNegated);
+patternToken=new PatternToken(elements.toString(),tokenCase,regExpression,tokenInflected);
+patternToken.setNegation(tokenNegated);
 }
  else {
-tokenElement.setStringElement(elements.toString());
+patternToken.setStringElement(elements.toString());
 }
 if (skipPos != 0) {
-tokenElement.setSkipNext(skipPos);
+patternToken.setSkipNext(skipPos);
 skipPos=0;
 }
 if (minOccurrence == 0) {
-tokenElement.setMinOccurrence(0);
+patternToken.setMinOccurrence(0);
 }
 if (maxOccurrence != 1) {
-tokenElement.setMaxOccurrence(maxOccurrence);
+patternToken.setMaxOccurrence(maxOccurrence);
 maxOccurrence=1;
 }
 if (posToken != null) {
-tokenElement.setPosElement(posToken,posRegExp,posNegation);
+patternToken.setPosElement(posToken,posRegExp,posNegation);
 posToken=null;
 }
 if (chunkTag != null) {
-tokenElement.setChunkElement(chunkTag);
+patternToken.setChunkElement(chunkTag);
 chunkTag=null;
 }
 if (tokenReference != null) {
-tokenElement.setMatch(tokenReference);
+patternToken.setMatch(tokenReference);
 }
 if (inAndGroup && andGroupCounter > 0) {
-elementList.get(elementList.size() - 1).setAndGroupElement(tokenElement);
+patternTokens.get(patternTokens.size() - 1).setAndGroupElement(patternToken);
 if (minOccurrence != 1 || maxOccurrence != 1) {
 throw new SAXException("Please set min and max attributes on the " + "first token in the AND group.\n You attempted to set these " + "attributes on the token no. " + (andGroupCounter + 1) + "."+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
 }
 }
  else {
 if (minOccurrence < 1) {
-elementList.add(tokenElement);
+patternTokens.add(patternToken);
 }
 for (int i=1; i <= minOccurrence; i++) {
-elementList.add(tokenElement);
+patternTokens.add(patternToken);
 }
 minOccurrence=1;
 }
@@ -105,21 +105,21 @@ if (inAndGroup) {
 andGroupCounter++;
 }
 if (inUnification) {
-tokenElement.setUnification(equivalenceFeatures);
+patternToken.setUnification(equivalenceFeatures);
 if (!inAndGroup) {
 uniCounter++;
 }
 if (inUnificationNeutral) {
-tokenElement.setUnificationNeutral();
+patternToken.setUnificationNeutral();
 }
 }
 if (inUnificationDef) {
-language.getDisambiguationUnifierConfiguration().setEquivalence(uFeature,uType,tokenElement);
-elementList.clear();
+language.getDisambiguationUnifierConfiguration().setEquivalence(uFeature,uType,patternToken);
+patternTokens.clear();
 }
-tokenElement.setInsideMarker(inMarker);
+patternToken.setInsideMarker(inMarker);
 if (tokenSpaceBeforeSet) {
-tokenElement.setWhitespaceBefore(tokenSpaceBefore);
+patternToken.setWhitespaceBefore(tokenSpaceBefore);
 }
 resetToken();
 break;
@@ -155,10 +155,10 @@ break;
 case UNIFY:
 inUnification=false;
 equivalenceFeatures=new HashMap<>();
-final int lastElement=elementList.size() - 1;
-elementList.get(lastElement).setLastInUnification();
+final int lastElement=patternTokens.size() - 1;
+patternTokens.get(lastElement).setLastInUnification();
 if (uniNegation) {
-elementList.get(lastElement).setUniNegation();
+patternTokens.get(lastElement).setUniNegation();
 }
 break;
 case UNIFY_IGNORE:
