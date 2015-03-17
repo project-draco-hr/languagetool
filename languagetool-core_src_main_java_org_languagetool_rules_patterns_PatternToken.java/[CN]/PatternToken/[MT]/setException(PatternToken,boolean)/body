@@ -7,12 +7,12 @@
     previousExceptionList=new ArrayList<>();
   }
   if (scopePrevious) {
-    previousExceptionList.add(elem);
+    previousExceptionList.add(pToken);
   }
  else {
     if (!exceptionSet) {
       exceptionSet=true;
     }
-    exceptionList.add(elem);
+    exceptionList.add(pToken);
   }
 }

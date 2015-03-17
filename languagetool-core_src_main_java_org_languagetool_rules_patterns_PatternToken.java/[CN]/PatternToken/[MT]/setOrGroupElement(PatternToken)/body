@@ -1,11 +1,3 @@
 {
-  if (orToken != null) {
-    if (orGroupList == null) {
-      orGroupList=new ArrayList<>();
-    }
-    if (!orGroupSet) {
-      orGroupSet=true;
-    }
-    orGroupList.add(orToken);
-  }
+  orGroupList.add(Objects.requireNonNull(orToken));
 }

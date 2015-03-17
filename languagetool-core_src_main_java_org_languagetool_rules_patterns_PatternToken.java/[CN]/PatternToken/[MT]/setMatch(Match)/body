@@ -1,4 +1,3 @@
 {
-  tokenReference=match;
-  containsMatches=true;
+  tokenReference=Objects.requireNonNull(match);
 }

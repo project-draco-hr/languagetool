@@ -1,11 +1,3 @@
 {
-  if (andToken != null) {
-    if (andGroupList == null) {
-      andGroupList=new ArrayList<>();
-    }
-    if (!andGroupSet) {
-      andGroupSet=true;
-    }
-    andGroupList.add(andToken);
-  }
+  andGroupList.add(Objects.requireNonNull(andToken));
 }

@@ -1,4 +1,3 @@
 {
-  unificationFeatures=uniFeatures;
-  unified=true;
+  unificationFeatures=Objects.requireNonNull(uniFeatures);
 }
