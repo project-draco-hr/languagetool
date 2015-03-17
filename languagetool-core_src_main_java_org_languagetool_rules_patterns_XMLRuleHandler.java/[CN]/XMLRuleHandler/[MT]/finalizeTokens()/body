@@ -26,7 +26,7 @@
     posToken=null;
   }
   if (chunkTag != null) {
-    patternToken.setChunkElement(chunkTag);
+    patternToken.setChunkTag(chunkTag);
     chunkTag=null;
   }
   if (tokenReference != null) {

@@ -80,7 +80,7 @@ patternToken.setPosToken(new PatternToken.PosToken(posToken,posRegExp,posNegatio
 posToken=null;
 }
 if (chunkTag != null) {
-patternToken.setChunkElement(chunkTag);
+patternToken.setChunkTag(chunkTag);
 chunkTag=null;
 }
 if (tokenReference != null) {
