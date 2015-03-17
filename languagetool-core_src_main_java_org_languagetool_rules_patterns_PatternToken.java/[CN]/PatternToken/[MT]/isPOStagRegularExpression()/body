@@ -1,3 +1,3 @@
 {
-  return posRegExp;
+  return posToken != null && posToken.regExp;
 }

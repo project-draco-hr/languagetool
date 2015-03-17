@@ -3,6 +3,7 @@
     return false;
   }
   final boolean matched;
+  boolean posNegation=posToken != null && posToken.negation;
   if (testString) {
     matched=isStringTokenMatched(token) ^ negation && isPosTokenMatched(token) ^ posNegation;
   }

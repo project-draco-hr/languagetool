@@ -1,6 +1,6 @@
 {
   final PatternToken exception=new PatternToken(token,caseSensitive,regExp,inflected);
   exception.setNegation(negation);
-  exception.setPosElement(posToken,posRegExp,posNegation);
+  exception.setPosToken(new PosToken(posToken,posRegExp,posNegation));
   setException(exception,false);
 }

@@ -13,9 +13,9 @@
     sb.append('/');
     sb.append(posToken);
   }
-  if (chunkToken != null) {
+  if (chunkTag != null) {
     sb.append('/');
-    sb.append(chunkToken);
+    sb.append(chunkTag);
   }
   if (exceptionList != null) {
     sb.append("/exceptions=");

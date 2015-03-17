@@ -1,12 +1,3 @@
 {
-  this.posToken=posToken;
-  this.posNegation=negation;
-  posRegExp=regExp;
-  if (posRegExp) {
-    posPattern=Pattern.compile(posToken);
-    posUnknown=posPattern.matcher(UNKNOWN_TAG).matches();
-  }
- else {
-    posUnknown=UNKNOWN_TAG.equals(posToken);
-  }
+  this.posToken=new PosToken(posToken,regExp,negation);
 }

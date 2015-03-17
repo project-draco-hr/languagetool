@@ -7,7 +7,7 @@
   if (tokenReference.setsPos()) {
     final String posReference=matchState.getTargetPosTag();
     if (posReference != null) {
-      setPosElement(posReference,tokenReference.posRegExp(),negation);
+      setPosToken(new PosToken(posReference,tokenReference.posRegExp(),negation));
     }
     setStringElement(referenceString.replace("\\" + tokenReference.getTokenRef(),""));
     inflected=true;
