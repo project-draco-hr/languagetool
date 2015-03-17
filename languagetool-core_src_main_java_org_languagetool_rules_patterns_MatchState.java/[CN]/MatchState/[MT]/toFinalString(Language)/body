@@ -80,7 +80,7 @@
     formattedString[i]=convertCase(formattedString[i],original,lang);
   }
   IncludeRange includeSkipped=match.getIncludeSkipped();
-  if (includeSkipped != IncludeRange.NONE && skippedTokens != null && !"".equals(skippedTokens)) {
+  if (includeSkipped != IncludeRange.NONE && skippedTokens != null && !skippedTokens.isEmpty()) {
     final String[] helper=new String[formattedString.length];
     for (int i=0; i < formattedString.length; i++) {
       if (formattedString[i] == null) {
