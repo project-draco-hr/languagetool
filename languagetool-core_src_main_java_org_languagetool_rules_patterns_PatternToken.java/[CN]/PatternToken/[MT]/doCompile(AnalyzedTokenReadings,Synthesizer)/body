@@ -1,5 +1,4 @@
 {
-  pattern=null;
   final MatchState matchState=tokenReference.createState(synth,token);
   if (StringTools.isEmpty(referenceString)) {
     referenceString=stringToken;
@@ -11,7 +10,6 @@
       setPosToken(new PosToken(posReference,tokenReference.posRegExp(),negation));
     }
     setStringElement(referenceString.replace(reference,""));
-    inflected=true;
   }
  else {
     setStringElement(referenceString.replace(reference,matchState.toTokenString()));
