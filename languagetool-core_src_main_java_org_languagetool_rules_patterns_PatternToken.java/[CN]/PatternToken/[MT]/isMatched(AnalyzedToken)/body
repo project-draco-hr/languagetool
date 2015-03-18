@@ -2,13 +2,11 @@
   if (testWhitespace && !isWhitespaceBefore(token)) {
     return false;
   }
-  final boolean matched;
   boolean posNegation=posToken != null && posToken.negation;
   if (testString) {
-    matched=isStringTokenMatched(token) ^ negation && isPosTokenMatched(token) ^ posNegation;
+    return isStringTokenMatched(token) ^ negation && isPosTokenMatched(token) ^ posNegation;
   }
  else {
-    matched=!negation && isPosTokenMatched(token) ^ posNegation;
+    return !negation && isPosTokenMatched(token) ^ posNegation;
   }
-  return matched;
 }

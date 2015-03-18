@@ -4,15 +4,16 @@
   if (StringTools.isEmpty(referenceString)) {
     referenceString=stringToken;
   }
+  String reference="\\" + tokenReference.getTokenRef();
   if (tokenReference.setsPos()) {
     final String posReference=matchState.getTargetPosTag();
     if (posReference != null) {
       setPosToken(new PosToken(posReference,tokenReference.posRegExp(),negation));
     }
-    setStringElement(referenceString.replace("\\" + tokenReference.getTokenRef(),""));
+    setStringElement(referenceString.replace(reference,""));
     inflected=true;
   }
  else {
-    setStringElement(referenceString.replace("\\" + tokenReference.getTokenRef(),matchState.toTokenString()));
+    setStringElement(referenceString.replace(reference,matchState.toTokenString()));
   }
 }
