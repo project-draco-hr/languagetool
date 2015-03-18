@@ -8,12 +8,13 @@
   String curName;
   int cnt=0;
   int loopCnt=0;
-  for (  final PatternToken e : this.patternTokens) {
-    if (e.isPartOfPhrase()) {
-      curName=e.getPhraseName();
-      if (prevName.equals(curName) || StringTools.isEmpty(prevName)) {
+  boolean tempUseList=false;
+  for (  final PatternToken pToken : this.patternTokens) {
+    if (pToken.isPartOfPhrase()) {
+      curName=pToken.getPhraseName();
+      if (StringTools.isEmpty(prevName) || prevName.equals(curName)) {
         cnt++;
-        useList=true;
+        tempUseList=true;
       }
  else {
         elementNo.add(cnt);
@@ -34,7 +35,7 @@
       loopCnt++;
     }
   }
+  useList=tempUseList;
   simpleRuleTokens=getSimpleTokens();
   inflectedRuleTokens=getInflectedTokens();
-  antiPatterns=new ArrayList<>();
 }
