@@ -3,8 +3,9 @@
   final List<AnalyzedToken> list=new ArrayList<>();
   String lemma="";
   for (int j=0; j < numRead; j++) {
-    if (formattedToken.getAnalyzedToken(j).getPOSTag() != null) {
-      if (formattedToken.getAnalyzedToken(j).getPOSTag().equals(posTag) && formattedToken.getAnalyzedToken(j).getLemma() != null) {
+    String tempPosTag=formattedToken.getAnalyzedToken(j).getPOSTag();
+    if (tempPosTag != null) {
+      if (tempPosTag.equals(posTag) && formattedToken.getAnalyzedToken(j).getLemma() != null) {
         lemma=formattedToken.getAnalyzedToken(j).getLemma();
       }
       if (StringTools.isEmpty(lemma)) {

@@ -24,7 +24,7 @@
               oneForm=true;
             }
  else {
-              if (JLanguageTool.SENTENCE_START_TAGNAME.equals(posUnique) || JLanguageTool.SENTENCE_END_TAGNAME.equals(posUnique) || JLanguageTool.PARAGRAPH_END_TAGNAME.equals(posUnique)) {
+              if (SENTENCE_START_TAGNAME.equals(posUnique) || SENTENCE_END_TAGNAME.equals(posUnique) || PARAGRAPH_END_TAGNAME.equals(posUnique)) {
                 if (!oneForm) {
                   wordForms.add(formattedToken.getToken());
                 }
