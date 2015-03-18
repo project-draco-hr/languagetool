@@ -1,6 +1,6 @@
 {
   if (qName.equals(RULE)) {
-    translations=new ArrayList<>();
+    translations.clear();
     id=attrs.getValue("id");
     if (!(inRuleGroup && defaultOff)) {
       defaultOff="off".equals(attrs.getValue("default"));
