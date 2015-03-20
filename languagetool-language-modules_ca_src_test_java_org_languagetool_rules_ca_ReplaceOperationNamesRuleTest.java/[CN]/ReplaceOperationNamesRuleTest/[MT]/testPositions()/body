@@ -1,0 +1,8 @@
+{
+  final AccentuationCheckRule rule=new AccentuationCheckRule(null);
+  final RuleMatch[] matches;
+  final JLanguageTool langTool=new JLanguageTool(new Catalan());
+  matches=rule.match(langTool.getAnalyzedSentence("S??n circumstancies extraordin??ries."));
+  assertEquals(4,matches[0].getFromPos());
+  assertEquals(18,matches[0].getToPos());
+}

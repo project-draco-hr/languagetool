@@ -1,0 +1,44 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  loop:   for (int i=1; i < tokens.length; i++) {
+    List<String> replacementLemmas=null;
+    String token=tokens[i].getToken().toLowerCase();
+    if (token.length() > 3 && token.endsWith("s")) {
+      token=token.substring(0,token.length() - 1);
+    }
+    if (possibleWrongWords.containsKey(token)) {
+      replacementLemmas=possibleWrongWords.get(token);
+    }
+ else {
+      continue loop;
+    }
+    if (tokens[i].hasPosTag("_GV_")) {
+      continue loop;
+    }
+    if (i + 1 < tokens.length && (tokens[i + 1].hasLemma("per") || tokens[i + 1].hasLemma("com") || tokens[i + 1].hasLemma("des")|| matchPostagRegexp(tokens[i + 1],NextToken_POS_Excep))) {
+      continue loop;
+    }
+    if (!matchPostagRegexp(tokens[i - 1],PrevToken_POS) || matchPostagRegexp(tokens[i - 1],PrevToken_POS_Excep)) {
+      continue loop;
+    }
+    if (replacementLemmas != null) {
+      List<String> possibleReplacements=new ArrayList<>();
+      String[] synthesized=null;
+      if (!token.endsWith("s")) {
+        possibleReplacements.addAll(replacementLemmas);
+      }
+ else {
+        for (        String replacementLemma : replacementLemmas) {
+          synthesized=synth.synthesize(new AnalyzedToken(replacementLemma,"NCMS000",replacementLemma),"NC.P.*");
+        }
+        possibleReplacements.addAll(Arrays.asList(synthesized));
+      }
+      if (possibleReplacements.size() > 0) {
+        RuleMatch potentialRuleMatch=createRuleMatch(tokens[i],possibleReplacements);
+        ruleMatches.add(potentialRuleMatch);
+      }
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}

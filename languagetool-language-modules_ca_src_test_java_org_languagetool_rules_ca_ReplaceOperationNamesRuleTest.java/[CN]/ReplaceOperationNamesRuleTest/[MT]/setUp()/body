@@ -1,0 +1,4 @@
+{
+  rule=new ReplaceOperationNamesRule(null);
+  langTool=new JLanguageTool(new Catalan());
+}
