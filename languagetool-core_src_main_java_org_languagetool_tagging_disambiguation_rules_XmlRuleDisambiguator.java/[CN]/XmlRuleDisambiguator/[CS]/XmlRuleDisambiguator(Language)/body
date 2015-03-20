@@ -1,3 +1,10 @@
 {
-  this.language=Objects.requireNonNull(language);
+  Objects.requireNonNull(language);
+  final String disambiguationFile=JLanguageTool.getDataBroker().getResourceDir() + "/" + language.getShortName()+ "/"+ DISAMBIGUATION_FILE;
+  try {
+    disambiguationRules=loadPatternRules(disambiguationFile);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Problems with loading disambiguation file: " + disambiguationFile,e);
+  }
 }

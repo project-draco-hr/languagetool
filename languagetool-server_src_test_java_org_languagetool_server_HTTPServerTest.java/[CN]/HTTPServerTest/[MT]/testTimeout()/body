@@ -10,6 +10,9 @@
       fail("Check was expected to be stopped because it took too long");
     }
  catch (    IOException expected) {
+      if (!expected.toString().contains(" 503 ")) {
+        fail("Expected exception with error 503, got: " + expected);
+      }
     }
   }
   finally {

@@ -1,4 +1,3 @@
 {
-  this(token);
-  this.startPos=startPos;
+  this(Collections.singletonList(token),startPos);
 }

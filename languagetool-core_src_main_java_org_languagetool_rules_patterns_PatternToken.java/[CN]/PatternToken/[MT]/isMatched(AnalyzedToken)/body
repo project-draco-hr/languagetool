@@ -1,0 +1,12 @@
+{
+  if (testWhitespace && !isWhitespaceBefore(token)) {
+    return false;
+  }
+  boolean posNegation=posToken != null && posToken.negation;
+  if (testString) {
+    return isStringTokenMatched(token) ^ negation && isPosTokenMatched(token) ^ posNegation;
+  }
+ else {
+    return !negation && isPosTokenMatched(token) ^ posNegation;
+  }
+}

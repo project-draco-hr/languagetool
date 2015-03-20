@@ -1,0 +1,4 @@
+{
+  this(id,language,patternTokens,description,message,shortMessage);
+  this.suggestionsOutMsg=suggestionsOutMsg;
+}

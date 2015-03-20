@@ -1,3 +1,0 @@
-{
-  return new PatternRule("",new Demo(),elements,"my description","my message","short message");
-}

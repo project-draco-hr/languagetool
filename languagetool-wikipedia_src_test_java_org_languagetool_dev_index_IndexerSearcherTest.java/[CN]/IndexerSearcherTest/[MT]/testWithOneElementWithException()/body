@@ -1,9 +1,9 @@
 {
   createIndex("How to move back and fourth from linux to xmb?");
-  final Element exceptionElem=new Element("",false,true,false);
+  final PatternToken exceptionElem=new PatternToken("",false,true,false);
   exceptionElem.setStringPosException("exception",false,false,false,false,false,"POS",false,false,null);
-  final List<Element> elements=Arrays.asList(exceptionElem);
-  final PatternRule rule1=new PatternRule("RULE1",new English(),elements,"desc","msg","shortMsg");
+  final List<PatternToken> patternTokens=Arrays.asList(exceptionElem);
+  final PatternRule rule1=new PatternRule("RULE1",new English(),patternTokens,"desc","msg","shortMsg");
   final Searcher errorSearcher=new Searcher(directory);
   try {
     errorSearcher.findRuleMatchesOnIndex(rule1,new English());

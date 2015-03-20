@@ -1,0 +1,17 @@
+{
+  String plainInput=getPlainInput(input);
+  AnalyzedSentence analyzedSentence=lt.getAnalyzedSentence(plainInput);
+  AnalyzedTokenReadings[] result=analyzedSentence.getTokensWithoutWhitespace();
+  chunker.addChunkTags(Arrays.asList(result));
+  List<String> expectedChunks=getExpectedChunks(input);
+  List<ChunkTaggedToken> result2=new ArrayList<>();
+  int i=0;
+  for (  AnalyzedTokenReadings readings : result) {
+    if (i > 0) {
+      ChunkTaggedToken chunkTaggedToken=new ChunkTaggedToken(readings.getToken(),readings.getChunkTags(),readings);
+      result2.add(chunkTaggedToken);
+    }
+    i++;
+  }
+  assertChunks(input,plainInput,result2,expectedChunks);
+}

@@ -1,8 +1,8 @@
 {
   final List<RuleMatch> matches=new ArrayList<>();
   final String text="This is a test sentence.";
-  final List<Element> elements=Collections.emptyList();
-  final Rule patternRule=new PatternRule("MY_ID",language,elements,"my description","my message","short message");
+  final List<PatternToken> patternTokens=Collections.emptyList();
+  final Rule patternRule=new PatternRule("MY_ID",language,patternTokens,"my description","my message","short message");
   patternRule.setCategory(new Category("MyCategory"));
   final RuleMatch match=new RuleMatch(patternRule,8,10,"myMessage");
   match.setColumn(99);

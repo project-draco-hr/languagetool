@@ -1,4 +1,4 @@
 String input
 String plainInput
-List<ChunkTaggedToken> basicChunks
+List<ChunkTaggedToken> chunks
 List<String> expectedChunks

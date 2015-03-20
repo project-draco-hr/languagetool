@@ -1,6 +1,6 @@
 {
-  for (  final Element elem : patternElements) {
-    if (elem.isUnified()) {
+  for (  final PatternToken pToken : patternTokens) {
+    if (pToken.isUnified()) {
       return true;
     }
   }

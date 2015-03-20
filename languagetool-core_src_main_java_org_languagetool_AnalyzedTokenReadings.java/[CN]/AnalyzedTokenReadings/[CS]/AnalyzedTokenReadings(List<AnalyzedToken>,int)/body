@@ -1,5 +1,13 @@
 {
   anTokReadings=tokens.toArray(new AnalyzedToken[tokens.size()]);
   this.startPos=startPos;
-  init();
+  token=anTokReadings[0].getToken();
+  isWhitespace=StringTools.isWhitespace(token);
+  isWhitespaceBefore=anTokReadings[0].isWhitespaceBefore();
+  isLinebreak="\n".equals(token) || "\r\n".equals(token) || "\r".equals(token)|| "\n\r".equals(token);
+  isSentStart=SENTENCE_START_TAGNAME.equals(anTokReadings[0].getPOSTag());
+  isParaEnd=hasPosTag(PARAGRAPH_END_TAGNAME);
+  isSentEnd=hasPosTag(SENTENCE_END_TAGNAME);
+  setNoRealPOStag();
+  hasSameLemmas=areLemmasSame();
 }

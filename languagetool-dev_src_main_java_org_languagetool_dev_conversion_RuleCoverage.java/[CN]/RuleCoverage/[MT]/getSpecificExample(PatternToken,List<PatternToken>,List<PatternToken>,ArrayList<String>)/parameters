@@ -1,0 +1,4 @@
+PatternToken e
+List<PatternToken> prevExceptions
+List<PatternToken> patternTokens
+ArrayList<String> examples

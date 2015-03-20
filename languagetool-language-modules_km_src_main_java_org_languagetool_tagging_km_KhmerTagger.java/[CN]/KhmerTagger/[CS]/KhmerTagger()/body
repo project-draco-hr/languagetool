@@ -1,4 +1,3 @@
 {
-  super();
-  setLocale(new Locale("km"));
+  super("/km/khmer.dict",new Locale("km"));
 }

@@ -1,0 +1,14 @@
+{
+  final PatternToken patternToken=new PatternToken("",false,false,false);
+  patternToken.setPosToken(new PatternToken.PosToken(SENTENCE_START_TAGNAME,false,false));
+  assertTrue(patternToken.isSentenceStart());
+  patternToken.setPosToken(new PatternToken.PosToken(SENTENCE_START_TAGNAME,false,true));
+  assertFalse(patternToken.isSentenceStart());
+  patternToken.setPosToken(new PatternToken.PosToken(SENTENCE_START_TAGNAME,true,false));
+  assertTrue(patternToken.isSentenceStart());
+  patternToken.setPosToken(new PatternToken.PosToken(SENTENCE_START_TAGNAME,true,true));
+  assertFalse(patternToken.isSentenceStart());
+  final PatternToken patternToken2=new PatternToken("bla|blah",false,true,false);
+  patternToken2.setPosToken(new PatternToken.PosToken("foo",true,true));
+  assertFalse(patternToken2.isSentenceStart());
+}

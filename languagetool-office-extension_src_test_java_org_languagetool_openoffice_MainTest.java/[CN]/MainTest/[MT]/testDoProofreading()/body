@@ -1,5 +1,6 @@
 {
   final Main prog=new Main(null);
+  Main.setTestMode(true);
   final String testString="To jest trudne zdanie. A to nast??pne.  A to przedostatnie jest.\u0002 Test ostatniego.";
   final Locale plLoc=new Locale("pl","PL","");
   final PropertyValue[] prop=new PropertyValue[0];

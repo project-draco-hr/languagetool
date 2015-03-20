@@ -1,0 +1,3 @@
+List<PatternToken> elemList
+List<PatternToken> tmpPatternTokens
+int numElement

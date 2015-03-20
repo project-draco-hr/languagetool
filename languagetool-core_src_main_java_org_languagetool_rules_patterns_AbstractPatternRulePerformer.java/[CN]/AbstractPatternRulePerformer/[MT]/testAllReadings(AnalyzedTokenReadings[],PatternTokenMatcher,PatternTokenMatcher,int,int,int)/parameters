@@ -1,0 +1,6 @@
+AnalyzedTokenReadings[] tokens
+PatternTokenMatcher matcher
+PatternTokenMatcher prevElement
+int tokenNo
+int firstMatchToken
+int prevSkipNext

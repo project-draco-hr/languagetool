@@ -1,0 +1,4 @@
+PatternToken patternToken
+String prefix
+String str
+String suffix

@@ -1,2 +1,2 @@
-AnalyzedToken[] token
+AnalyzedToken[] tokens
 int startPos

@@ -1,0 +1,13 @@
+{
+  for (  AnalyzedToken analyzedToken : aToken) {
+    String posTag=analyzedToken.getPOSTag();
+    if (posTag == null) {
+      posTag="UNKNOWN";
+    }
+    final Matcher m=pattern.matcher(posTag);
+    if (m.matches()) {
+      return true;
+    }
+  }
+  return false;
+}

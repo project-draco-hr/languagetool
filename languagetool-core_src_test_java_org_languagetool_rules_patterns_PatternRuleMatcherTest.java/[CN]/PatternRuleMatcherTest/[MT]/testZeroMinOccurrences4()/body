@@ -1,9 +1,9 @@
 {
-  final Element elementA=makeElement("a");
-  elementA.setMinOccurrence(0);
-  final Element elementC=makeElement("c");
-  elementC.setMinOccurrence(0);
-  final PatternRuleMatcher matcher=getMatcher(elementA,makeElement("b"),elementC,makeElement("d"),makeElement("e"));
+  final PatternToken patternTokenA=makeElement("a");
+  patternTokenA.setMinOccurrence(0);
+  final PatternToken patternTokenC=makeElement("c");
+  patternTokenC.setMinOccurrence(0);
+  final PatternRuleMatcher matcher=getMatcher(patternTokenA,makeElement("b"),patternTokenC,makeElement("d"),makeElement("e"));
   final RuleMatch[] matches=getMatches("a b c d e",matcher);
   assertThat(matches.length,is(1));
   assertPosition(matches[0],0,9);

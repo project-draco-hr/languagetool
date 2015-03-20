@@ -1,0 +1,18 @@
+{
+  if (token != null) {
+    stringToken=StringTools.trimWhitespace(token);
+  }
+ else {
+    stringToken=null;
+  }
+  testString=!StringTools.isEmpty(stringToken);
+  if (testString && stringRegExp) {
+    String regToken=stringToken;
+    if (!caseSensitive) {
+      regToken=CASE_INSENSITIVE + stringToken;
+    }
+    if (!"\\0".equals(token)) {
+      pattern=Pattern.compile(regToken);
+    }
+  }
+}

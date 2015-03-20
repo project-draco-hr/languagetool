@@ -1,7 +1,7 @@
 {
-  Element element1=new Element("foo",false,false,false);
-  PatternRule simpleRule=new PatternRule("FAKE",new Demo(),Collections.singletonList(element1),"descr","message","short");
-  ElementMatcher elemMatcher=new ElementMatcher(element1);
+  PatternToken patternToken1=new PatternToken("foo",false,false,false);
+  PatternRule simpleRule=new PatternRule("FAKE",new Demo(),Collections.singletonList(patternToken1),"descr","message","short");
+  PatternTokenMatcher elemMatcher=new PatternTokenMatcher(patternToken1);
   AbstractPatternRulePerformer p=new MockAbstractPatternRulePerformer(simpleRule,null);
   assertTrue(p.testAllReadings(tokenReadings("foo",null),elemMatcher,null,0,0,0));
   assertFalse(p.testAllReadings(tokenReadings("bar",null),elemMatcher,null,0,0,0));

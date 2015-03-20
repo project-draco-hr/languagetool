@@ -1,0 +1,11 @@
+{
+  final PatternToken compiledPatternToken;
+  try {
+    compiledPatternToken=(PatternToken)clone();
+  }
+ catch (  CloneNotSupportedException e) {
+    throw new IllegalStateException("Could not clone element",e);
+  }
+  compiledPatternToken.doCompile(token,synth);
+  return compiledPatternToken;
+}

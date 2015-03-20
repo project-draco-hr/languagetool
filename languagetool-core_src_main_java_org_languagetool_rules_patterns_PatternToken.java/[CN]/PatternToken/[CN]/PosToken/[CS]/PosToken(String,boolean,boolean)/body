@@ -1,0 +1,13 @@
+{
+  this.posTag=posTag;
+  this.regExp=regExp;
+  this.negation=negation;
+  if (regExp) {
+    posPattern=Pattern.compile(posTag);
+    posUnknown=posPattern.matcher(UNKNOWN_TAG).matches();
+  }
+ else {
+    posPattern=null;
+    posUnknown=UNKNOWN_TAG.equals(posTag);
+  }
+}

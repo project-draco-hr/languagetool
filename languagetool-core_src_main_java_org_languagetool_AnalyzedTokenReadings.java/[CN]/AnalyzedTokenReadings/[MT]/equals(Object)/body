@@ -1,25 +1,13 @@
 {
-  if (this == obj)   return true;
-  if (obj == null)   return false;
-  if (getClass() != obj.getClass())   return false;
-  final AnalyzedTokenReadings other=(AnalyzedTokenReadings)obj;
-  if (!Arrays.equals(anTokReadings,other.anTokReadings))   return false;
-  if (isLinebreak != other.isLinebreak)   return false;
-  if (isParaEnd != other.isParaEnd)   return false;
-  if (isSentEnd != other.isSentEnd)   return false;
-  if (isSentStart != other.isSentStart)   return false;
-  if (isWhitespace != other.isWhitespace)   return false;
-  if (isWhitespaceBefore != other.isWhitespaceBefore)   return false;
-  if (isImmunized != other.isImmunized)   return false;
-  if (startPos != other.startPos)   return false;
-  if (!chunkTags.equals(other.chunkTags))   return false;
-  if (hasSameLemmas != other.hasSameLemmas)   return false;
-  if (isIgnoredBySpeller != other.isIgnoredBySpeller)   return false;
-  if (token == null) {
-    if (other.token != null)     return false;
+  if (this == obj) {
+    return true;
   }
- else   if (!token.equals(other.token)) {
+  if (obj == null) {
     return false;
   }
-  return true;
+  if (getClass() != obj.getClass()) {
+    return false;
+  }
+  final AnalyzedTokenReadings other=(AnalyzedTokenReadings)obj;
+  return new EqualsBuilder().append(anTokReadings,other.anTokReadings).append(isLinebreak,other.isLinebreak).append(isParaEnd,other.isParaEnd).append(isSentEnd,other.isSentEnd).append(isSentStart,other.isSentStart).append(isWhitespace,other.isWhitespace).append(isWhitespaceBefore,other.isWhitespaceBefore).append(isImmunized,other.isImmunized).append(startPos,other.startPos).append(chunkTags,other.chunkTags).append(hasSameLemmas,other.hasSameLemmas).append(isIgnoredBySpeller,other.isIgnoredBySpeller).append(token,other.token).isEquals();
 }

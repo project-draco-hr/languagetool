@@ -1,0 +1,27 @@
+{
+  PatternRule rule=null;
+  phraseElementInit();
+  if (phrasePatternTokens.isEmpty()) {
+    rule=new PatternRule(id,language,patternTokens,name,"",shortMessage.toString());
+    prepareRule(rule);
+  }
+ else {
+    if (!patternTokens.isEmpty()) {
+      for (      List<PatternToken> ph : phrasePatternTokens) {
+        ph.addAll(new ArrayList<>(patternTokens));
+      }
+    }
+    for (    List<PatternToken> phrasePatternToken : phrasePatternTokens) {
+      processElement(phrasePatternToken);
+      rule=new PatternRule(id,language,phrasePatternToken,name,message.toString(),shortMessage.toString(),"",phrasePatternTokens.size() > 1);
+      prepareRule(rule);
+    }
+  }
+  patternTokens.clear();
+  if (phrasePatternTokens != null) {
+    phrasePatternTokens.clear();
+  }
+  startPositionCorrection=0;
+  endPositionCorrection=0;
+  return rule;
+}

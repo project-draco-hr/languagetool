@@ -1,5 +1,3 @@
 {
-  super(language,motherTongue);
-  threadPoolSize=getDefaultThreadCount();
-  threadPool=Executors.newFixedThreadPool(getThreadPoolSize(),new DaemonThreadFactory());
+  this(language,motherTongue,getDefaultThreadCount());
 }

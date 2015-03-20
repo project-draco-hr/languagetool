@@ -1,0 +1,6 @@
+{
+  int r=e.getMatch().getTokenRef();
+  PatternToken newPatternToken=new PatternToken(examples.get(r),patternTokens.get(r).isCaseSensitive(),false,false);
+  newPatternToken.setNegation(e.getNegation());
+  return newPatternToken;
+}

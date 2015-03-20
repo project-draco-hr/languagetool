@@ -2,7 +2,7 @@
   final StringBuilder sb=new StringBuilder();
   sb.append(token);
   sb.append('[');
-  for (  final AnalyzedToken element : anTokReadings) {
+  for (  AnalyzedToken element : anTokReadings) {
     sb.append(element);
     if (!element.isWhitespaceBefore()) {
       sb.append('*');

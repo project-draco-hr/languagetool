@@ -44,6 +44,8 @@
   testSplit("1 500 m/s. ","Neix a");
   testSplit("S??n d'1 g. ","Han estat condicionades.");
   testSplit("S??n d'1 m. ","Han estat condicionades.");
+  testSplit("Hi vivien 50 h. ","Despr??s el poble va cr??ixer.");
+  testSplit("L'acte ser?? a les 15.30 h. de la vesprada.");
   testSplit("s'hi enfront?? quan G.Oueddei n'esdevingu?? l??der");
   testSplit("el jesu??ta alemany J.E. Nithard");
 }

@@ -1,16 +1,16 @@
 {
   ArrayList<String> examples=new ArrayList<>();
-  List<Element> elements=patternrule.getElements();
-  for (int i=0; i < elements.size(); i++) {
-    List<Element> prevExceptions;
-    if (i == elements.size() - 1) {
+  List<PatternToken> patternTokens=patternrule.getPatternTokens();
+  for (int i=0; i < patternTokens.size(); i++) {
+    List<PatternToken> prevExceptions;
+    if (i == patternTokens.size() - 1) {
       prevExceptions=new ArrayList<>();
     }
  else {
-      prevExceptions=elements.get(i + 1).getPreviousExceptionList();
+      prevExceptions=patternTokens.get(i + 1).getPreviousExceptionList();
       if (prevExceptions == null)       prevExceptions=new ArrayList<>();
     }
-    examples.add(getSpecificExample(elements.get(i),prevExceptions,elements,examples));
+    examples.add(getSpecificExample(patternTokens.get(i),prevExceptions,patternTokens,examples));
   }
   StringBuilder sb=new StringBuilder();
   for (  String example : examples) {

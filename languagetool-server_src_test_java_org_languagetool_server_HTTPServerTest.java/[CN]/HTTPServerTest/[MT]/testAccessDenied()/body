@@ -8,6 +8,9 @@
       fail();
     }
  catch (    IOException expected) {
+      if (!expected.toString().contains(" 403 ")) {
+        fail("Expected exception with error 403, got: " + expected);
+      }
     }
   }
   finally {

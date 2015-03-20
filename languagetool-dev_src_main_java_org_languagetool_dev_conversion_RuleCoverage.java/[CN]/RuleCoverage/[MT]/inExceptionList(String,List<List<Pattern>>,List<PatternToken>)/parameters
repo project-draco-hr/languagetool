@@ -1,0 +1,3 @@
+String word
+List<List<Pattern>> exceptionAttributes
+List<PatternToken> exceptions

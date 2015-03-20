@@ -1,0 +1,3 @@
+{
+  return patternToken.hasPreviousException();
+}

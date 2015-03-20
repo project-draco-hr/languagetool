@@ -9,6 +9,9 @@
       fail();
     }
  catch (    IOException expected) {
+      if (!expected.toString().contains(" 500 ")) {
+        fail("Expected exception with error 500, got: " + expected);
+      }
     }
   }
   finally {

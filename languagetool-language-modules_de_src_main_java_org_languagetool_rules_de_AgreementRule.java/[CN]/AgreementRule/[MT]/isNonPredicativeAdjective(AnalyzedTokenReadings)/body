@@ -1,7 +1,7 @@
 {
   for (  AnalyzedToken reading : tokensReadings.getReadings()) {
-    AnalyzedGermanToken germanReading=new AnalyzedGermanToken(reading);
-    if (germanReading.getType() == POSType.ADJEKTIV && !germanReading.getPOSTag().contains("PRD")) {
+    String posTag=reading.getPOSTag();
+    if (posTag != null && posTag.startsWith("ADJ:") && !posTag.contains("PRD")) {
       return true;
     }
   }

@@ -1,0 +1,7 @@
+{
+  boolean matched=patternToken.isMatched(token);
+  if (patternToken.hasAndGroup()) {
+    andGroupCheck[0]|=matched;
+  }
+  return matched;
+}

@@ -1,0 +1,3 @@
+{
+  return SPELLING_FILE;
+}

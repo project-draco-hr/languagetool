@@ -1,0 +1,5 @@
+boolean matched
+boolean lastReading
+AnalyzedToken matchToken
+PatternTokenMatcher elemMatcher
+boolean alreadyTested

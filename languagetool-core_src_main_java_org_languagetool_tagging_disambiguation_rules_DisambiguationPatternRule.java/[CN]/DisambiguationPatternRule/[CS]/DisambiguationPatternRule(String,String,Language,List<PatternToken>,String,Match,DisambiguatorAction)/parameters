@@ -1,0 +1,7 @@
+String id
+String description
+Language language
+List<PatternToken> patternTokens
+String disamb
+Match posSelect
+DisambiguatorAction disambAction

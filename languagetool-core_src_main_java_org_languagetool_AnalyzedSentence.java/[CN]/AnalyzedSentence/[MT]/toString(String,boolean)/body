@@ -1,6 +1,6 @@
 {
   final StringBuilder sb=new StringBuilder();
-  for (  final AnalyzedTokenReadings element : tokens) {
+  for (  AnalyzedTokenReadings element : tokens) {
     if (!element.isWhitespace()) {
       sb.append(element.getToken());
       sb.append('[');

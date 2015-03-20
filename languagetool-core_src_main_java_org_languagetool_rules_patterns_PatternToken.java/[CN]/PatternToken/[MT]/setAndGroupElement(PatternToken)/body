@@ -1,0 +1,3 @@
+{
+  andGroupList.add(Objects.requireNonNull(andToken));
+}

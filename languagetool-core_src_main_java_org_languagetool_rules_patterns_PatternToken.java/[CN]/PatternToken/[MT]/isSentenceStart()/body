@@ -1,0 +1,3 @@
+{
+  return posToken != null && JLanguageTool.SENTENCE_START_TAGNAME.equals(posToken.posTag) && !posToken.negation;
+}

@@ -1,0 +1,3 @@
+{
+  super(dictPath,new Locale("ro"));
+}

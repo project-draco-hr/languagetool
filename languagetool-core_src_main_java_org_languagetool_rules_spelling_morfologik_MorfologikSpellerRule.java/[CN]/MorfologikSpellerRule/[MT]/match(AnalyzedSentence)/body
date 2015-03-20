@@ -39,7 +39,7 @@
     if (ignoreTaggedWords && token.isTagged()) {
       continue;
     }
-    final String word=token.getToken();
+    final String word=token.getAnalyzedToken(0).getToken();
     if (tokenizingPattern() == null) {
       ruleMatches.addAll(getRuleMatches(word,token.getStartPos()));
     }

@@ -1,9 +1,3 @@
 {
-  for (  AnalyzedToken reading : tokensReadings.getReadings()) {
-    AnalyzedGermanToken germanReading=new AnalyzedGermanToken(reading);
-    if (germanReading.getType() == POSType.PARTIZIP) {
-      return true;
-    }
-  }
-  return false;
+  return tokensReadings.hasPartialPosTag("PA1") || tokensReadings.hasPartialPosTag("PA2");
 }

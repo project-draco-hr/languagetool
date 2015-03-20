@@ -1,4 +1,3 @@
 {
-  super();
-  setLocale(new Locale("gl"));
+  super("/gl/galician.dict",new Locale("gl"));
 }

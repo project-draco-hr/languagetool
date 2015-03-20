@@ -1,0 +1,7 @@
+{
+  final File input=writeToTempFile("This is a red herring.\tTo jest czerwony ??led??.");
+  final String[] args={"-l","pl","-c","UTF-8","--bitext","-m","en","--bitextrules",bitextFile.getAbsolutePath(),input.getAbsolutePath()};
+  Main.main(args);
+  final String output=new String(this.out.toByteArray());
+  assertTrue("red_herring rule should be in the output" + output,output.contains("Rule ID: red_herring"));
+}

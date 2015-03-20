@@ -1,15 +1,3 @@
 {
-  final int prime=31;
-  int result=1;
-  result=prime * result + Arrays.hashCode(anTokReadings);
-  result=prime * result + (isLinebreak ? 1231 : 1237);
-  result=prime * result + (isParaEnd ? 1231 : 1237);
-  result=prime * result + (isSentEnd ? 1231 : 1237);
-  result=prime * result + (isSentStart ? 1231 : 1237);
-  result=prime * result + (isWhitespace ? 1231 : 1237);
-  result=prime * result + (isWhitespaceBefore ? 1231 : 1237);
-  result=prime * result + chunkTags.hashCode();
-  result=prime * result + startPos;
-  result=prime * result + (token == null ? 0 : token.hashCode());
-  return result;
+  return Arrays.hashCode(anTokReadings) + Objects.hash(isLinebreak,isParaEnd,isSentEnd,isSentStart,isWhitespace,isWhitespaceBefore,chunkTags,startPos,token);
 }

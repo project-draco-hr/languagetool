@@ -12,25 +12,25 @@ id="";
 if (relaxedMode && name == null) {
 name="";
 }
-if (phraseElementList.isEmpty()) {
-final List<Element> tmpElements=new ArrayList<>();
-createRules(new ArrayList<>(elementList),tmpElements,0);
+if (phrasePatternTokens.isEmpty()) {
+final List<PatternToken> tmpPatternTokens=new ArrayList<>();
+createRules(new ArrayList<>(patternTokens),tmpPatternTokens,0);
 }
  else {
-if (!elementList.isEmpty()) {
-for (List<Element> ph : phraseElementList) {
-ph.addAll(new ArrayList<>(elementList));
+if (!patternTokens.isEmpty()) {
+for (List<PatternToken> ph : phrasePatternTokens) {
+ph.addAll(new ArrayList<>(patternTokens));
 }
 }
-for (List<Element> phraseElement : phraseElementList) {
-processElement(phraseElement);
-final List<Element> tmpElements=new ArrayList<>();
-createRules(phraseElement,tmpElements,0);
+for (List<PatternToken> phrasePatternToken : phrasePatternTokens) {
+processElement(phrasePatternToken);
+final List<PatternToken> tmpPatternTokens=new ArrayList<>();
+createRules(phrasePatternToken,tmpPatternTokens,0);
 }
 }
-elementList.clear();
-if (phraseElementList != null) {
-phraseElementList.clear();
+patternTokens.clear();
+if (phrasePatternTokens != null) {
+phrasePatternTokens.clear();
 }
 ruleIssueType=null;
 inRule=false;
@@ -56,7 +56,7 @@ break;
 case PATTERN:
 inPattern=false;
 if (lastPhrase) {
-elementList.clear();
+patternTokens.clear();
 }
 tokenCounter=0;
 break;
@@ -70,17 +70,17 @@ antiId=ruleGroupId + "[" + subId+ "]";
 antiId=ruleGroupId;
 }
 }
-final DisambiguationPatternRule rule=new DisambiguationPatternRule(antiId + "_antipattern:" + antiPatternCounter,"antipattern",language,elementList,null,null,DisambiguationPatternRule.DisambiguatorAction.IMMUNIZE);
+final DisambiguationPatternRule rule=new DisambiguationPatternRule(antiId + "_antipattern:" + antiPatternCounter,"antipattern",language,patternTokens,null,null,DisambiguationPatternRule.DisambiguatorAction.IMMUNIZE);
 if (startPos != -1 && endPos != -1) {
 rule.setStartPositionCorrection(startPos);
 rule.setEndPositionCorrection(endPos - tokenCountForMarker);
 }
  else {
-for (Element element : elementList) {
-element.setInsideMarker(true);
+for (PatternToken patternToken : patternTokens) {
+patternToken.setInsideMarker(true);
 }
 }
-elementList.clear();
+patternTokens.clear();
 if (inRule) {
 if (ruleAntiPatterns == null) {
 ruleAntiPatterns=new ArrayList<>();
@@ -185,7 +185,7 @@ finalizePhrase();
 }
 break;
 case "includephrases":
-elementList.clear();
+patternTokens.clear();
 break;
 case PHRASES:
 if (inPhrases) {
@@ -202,10 +202,10 @@ break;
 case UNIFY:
 inUnification=false;
 equivalenceFeatures=new HashMap<>();
-final int lastElement=elementList.size() - 1;
-elementList.get(lastElement).setLastInUnification();
+final int lastElement=patternTokens.size() - 1;
+patternTokens.get(lastElement).setLastInUnification();
 if (uniNegation) {
-elementList.get(lastElement).setUniNegation();
+patternTokens.get(lastElement).setUniNegation();
 }
 break;
 case UNIFY_IGNORE:

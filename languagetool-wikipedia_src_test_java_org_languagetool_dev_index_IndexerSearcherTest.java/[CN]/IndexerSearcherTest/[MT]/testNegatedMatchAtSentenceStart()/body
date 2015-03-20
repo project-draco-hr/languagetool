@@ -1,10 +1,10 @@
 {
   createIndex("How to move?");
-  final Element negatedElement=new Element("Negated",false,false,false);
-  negatedElement.setNegation(true);
-  final List<Element> elements=Arrays.asList(negatedElement,new Element("How",false,false,false));
+  final PatternToken negatedPatternToken=new PatternToken("Negated",false,false,false);
+  negatedPatternToken.setNegation(true);
+  final List<PatternToken> patternTokens=Arrays.asList(negatedPatternToken,new PatternToken("How",false,false,false));
   final Searcher errorSearcher=new Searcher(directory);
-  final PatternRule rule1=new PatternRule("RULE1",new English(),elements,"desc","msg","shortMsg");
+  final PatternRule rule1=new PatternRule("RULE1",new English(),patternTokens,"desc","msg","shortMsg");
   final SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(rule1,new English());
   assertEquals(1,searcherResult.getCheckedSentences());
   assertEquals(1,searcherResult.getMatchingSentences().size());

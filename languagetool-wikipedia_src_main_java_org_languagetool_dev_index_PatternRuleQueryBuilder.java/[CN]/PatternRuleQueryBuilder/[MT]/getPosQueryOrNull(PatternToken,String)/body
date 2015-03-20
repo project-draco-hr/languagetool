@@ -1,0 +1,19 @@
+{
+  if (pos == null || pos.isEmpty()) {
+    return null;
+  }
+  final Query posQuery;
+  final Term posQueryTerm;
+  if (patternToken.getPOSNegation() || patternToken.getMinOccurrence() == 0) {
+    return null;
+  }
+ else   if (patternToken.isPOStagRegularExpression()) {
+    posQueryTerm=getQueryTerm(patternToken,POS_PREFIX + "(",pos,")");
+    posQuery=getRegexQuery(posQueryTerm,pos,patternToken);
+  }
+ else {
+    posQueryTerm=getQueryTerm(patternToken,POS_PREFIX,pos,"");
+    posQuery=new TermQuery(posQueryTerm);
+  }
+  return new BooleanClause(posQuery,BooleanClause.Occur.MUST);
+}

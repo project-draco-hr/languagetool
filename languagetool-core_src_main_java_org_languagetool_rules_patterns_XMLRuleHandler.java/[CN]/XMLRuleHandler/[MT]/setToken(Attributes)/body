@@ -1,7 +1,7 @@
 {
   inToken=true;
   if (lastPhrase) {
-    elementList.clear();
+    patternTokens.clear();
   }
   lastPhrase=false;
   tokenNegated=YES.equals(attrs.getValue(NEGATE));

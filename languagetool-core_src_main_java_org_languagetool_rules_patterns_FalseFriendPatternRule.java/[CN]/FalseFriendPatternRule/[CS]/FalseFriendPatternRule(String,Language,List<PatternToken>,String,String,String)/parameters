@@ -1,0 +1,6 @@
+String id
+Language language
+List<PatternToken> patternTokens
+String description
+String message
+String shortMessage

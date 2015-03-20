@@ -1,12 +1,12 @@
 {
-  final Element elementA=makeElement("a");
-  elementA.setInsideMarker(true);
-  final Element elementB=makeElement(null);
-  elementB.setMinOccurrence(0);
-  elementB.setInsideMarker(true);
-  final Element elementC=makeElement("c");
-  elementC.setInsideMarker(false);
-  final PatternRuleMatcher matcher=getMatcher(elementA,elementB,elementC);
+  final PatternToken patternTokenA=makeElement("a");
+  patternTokenA.setInsideMarker(true);
+  final PatternToken patternTokenB=makeElement(null);
+  patternTokenB.setMinOccurrence(0);
+  patternTokenB.setInsideMarker(true);
+  final PatternToken patternTokenC=makeElement("c");
+  patternTokenC.setInsideMarker(false);
+  final PatternRuleMatcher matcher=getMatcher(patternTokenA,patternTokenB,patternTokenC);
   final RuleMatch[] matches1=getMatches("A x C ZZZ",matcher);
   assertThat(matches1.length,is(1));
   assertPosition(matches1[0],0,3);

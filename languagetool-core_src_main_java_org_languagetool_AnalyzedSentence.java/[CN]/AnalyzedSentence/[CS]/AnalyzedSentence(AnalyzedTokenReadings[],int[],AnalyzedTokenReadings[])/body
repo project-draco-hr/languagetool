@@ -1,0 +1,7 @@
+{
+  this.tokens=tokens;
+  this.whPositions=mapping;
+  this.nonBlankTokens=nonBlankTokens;
+  this.tokenSet=getTokenSet(tokens);
+  this.lemmaSet=getLemmaSet(tokens);
+}

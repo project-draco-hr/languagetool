@@ -1,0 +1,11 @@
+{
+  try (FileInputStream inputStream=new FileInputStream(file)){
+    final String fileContents=StringTools.readStream(inputStream,null);
+    textArea.setText(fileContents);
+    currentFile=file;
+    updateTitle();
+  }
+ catch (  IOException e) {
+    Tools.showError(e);
+  }
+}

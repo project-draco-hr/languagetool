@@ -1,4 +1,3 @@
 {
-  super();
-  setLocale(new Locale("es"));
+  super("/es/spanish.dict",new Locale("es"));
 }

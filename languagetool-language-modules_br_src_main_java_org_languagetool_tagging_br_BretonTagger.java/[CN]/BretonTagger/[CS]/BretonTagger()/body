@@ -1,4 +1,3 @@
 {
-  super();
-  setLocale(new Locale("br"));
+  super("/br/breton.dict",new Locale("br"));
 }

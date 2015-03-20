@@ -1,0 +1,25 @@
+{
+  final StringBuilder sb=new StringBuilder();
+  if (negation) {
+    sb.append('!');
+  }
+  sb.append(stringToken);
+  if (phraseName != null) {
+    sb.append(" {");
+    sb.append(phraseName);
+    sb.append('}');
+  }
+  if (posToken != null) {
+    sb.append('/');
+    sb.append(posToken);
+  }
+  if (chunkTag != null) {
+    sb.append('/');
+    sb.append(chunkTag);
+  }
+  if (exceptionList != null) {
+    sb.append("/exceptions=");
+    sb.append(exceptionList);
+  }
+  return sb.toString();
+}

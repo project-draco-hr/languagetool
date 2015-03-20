@@ -1,0 +1,20 @@
+{
+  this.verbose=options.isVerbose();
+  this.apiFormat=options.isApiFormat();
+  this.taggerOnly=options.isTaggerOnly();
+  this.applySuggestions=options.isApplySuggestions();
+  this.autoDetect=options.isAutoDetect();
+  this.enabledRules=options.getEnabledRules();
+  this.disabledRules=options.getDisabledRules();
+  this.motherTongue=options.getMotherTongue();
+  this.singleLineBreakMarksParagraph=options.isSingleLineBreakMarksParagraph();
+  profileRules=false;
+  bitextMode=false;
+  srcLt=null;
+  bRules=null;
+  lt=new MultiThreadedJLanguageTool(options.getLanguage(),motherTongue);
+  if (options.getLanguageModel() != null) {
+    lt.activateLanguageModelRules(options.getLanguageModel());
+  }
+  Tools.selectRules(lt,disabledRules,enabledRules,options.isUseEnabledOnly());
+}

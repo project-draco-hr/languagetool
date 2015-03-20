@@ -1,0 +1,4 @@
+Language sourceLang
+String[] disabledRules
+String[] enabledRules
+File bitextRuleFile

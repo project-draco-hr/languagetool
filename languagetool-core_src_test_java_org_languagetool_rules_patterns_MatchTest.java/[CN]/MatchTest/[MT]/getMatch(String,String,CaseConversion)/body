@@ -1,5 +1,3 @@
 {
-  final Match match=new Match(posTag,posTagReplace,true,null,null,caseConversion,false,false,IncludeRange.NONE);
-  match.setSynthesizer(synthesizer);
-  return match;
+  return new Match(posTag,posTagReplace,true,null,null,caseConversion,false,false,IncludeRange.NONE);
 }

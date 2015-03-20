@@ -1,6 +1,3 @@
 {
-  if (nonBlankTokens == null) {
-    getTokensWithoutWhitespace();
-  }
-  return getWhPositions()[nonWhPosition];
+  return whPositions[nonWhPosition];
 }

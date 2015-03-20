@@ -1,4 +1,3 @@
 {
-  super();
-  setLocale(Locale.ITALIAN);
+  super("/it/italian.dict",Locale.ITALIAN);
 }

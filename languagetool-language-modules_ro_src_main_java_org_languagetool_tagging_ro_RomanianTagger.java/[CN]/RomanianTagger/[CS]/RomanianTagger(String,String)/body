@@ -1,5 +1,0 @@
-{
-  binaryDictPath=dictFileName;
-  plaintextDictPath=userDictFileName;
-  setLocale(RO_LOCALE);
-}

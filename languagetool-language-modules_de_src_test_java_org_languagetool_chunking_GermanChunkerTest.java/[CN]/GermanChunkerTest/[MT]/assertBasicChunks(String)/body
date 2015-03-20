@@ -1,0 +1,8 @@
+{
+  String plainInput=getPlainInput(input);
+  AnalyzedSentence analyzedSentence=lt.getAnalyzedSentence(plainInput);
+  AnalyzedTokenReadings[] result=analyzedSentence.getTokensWithoutWhitespace();
+  List<ChunkTaggedToken> basicChunks=chunker.getBasicChunks(Arrays.asList(result));
+  List<String> expectedChunks=getExpectedChunks(input);
+  assertChunks(input,plainInput,basicChunks,expectedChunks);
+}

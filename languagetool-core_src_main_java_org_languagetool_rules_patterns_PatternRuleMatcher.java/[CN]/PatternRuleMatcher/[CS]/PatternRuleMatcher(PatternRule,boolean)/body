@@ -1,5 +1,5 @@
 {
   super(rule,rule.getLanguage().getUnifier());
   this.useList=useList;
-  this.elementMatchers=createElementMatchers();
+  this.patternTokenMatchers=createElementMatchers();
 }

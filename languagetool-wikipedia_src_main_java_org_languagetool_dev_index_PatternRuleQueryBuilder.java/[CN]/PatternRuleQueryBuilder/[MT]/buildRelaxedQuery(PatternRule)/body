@@ -1,8 +1,8 @@
 {
   final BooleanQuery booleanQuery=new BooleanQuery();
-  for (  Element element : rule.getElements()) {
+  for (  PatternToken patternToken : rule.getPatternTokens()) {
     try {
-      final BooleanClause clause=makeQuery(element);
+      final BooleanClause clause=makeQuery(patternToken);
       booleanQuery.add(clause);
     }
  catch (    UnsupportedPatternRuleException e) {

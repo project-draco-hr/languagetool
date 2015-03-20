@@ -1,0 +1,3 @@
+{
+  return new PatternRule("",new Demo(),patternTokens,"my description","my message","short message");
+}
