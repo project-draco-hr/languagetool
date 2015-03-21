@@ -1,0 +1,17 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + OccurrenceAdder.class.getName() + " <wordfile> <dir>");
+    System.exit(1);
+  }
+  OccurrenceAdder occurrenceAdder=new OccurrenceAdder();
+  Map<String,Integer> map=new HashMap<>();
+  List<String> words=IOUtils.readLines(new FileInputStream(args[0]));
+  for (  String word : words) {
+    map.put(word,0);
+  }
+  occurrenceAdder.run(map,new File(args[1]));
+  System.out.println("-------------------------");
+  for (  Map.Entry<String,Integer> entry : map.entrySet()) {
+    System.out.println(entry.getValue() + "\t" + entry.getKey());
+  }
+}

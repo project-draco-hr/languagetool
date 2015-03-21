@@ -1,0 +1,15 @@
+{
+  System.out.println("Working on " + file);
+  try (InputStream fileStream=new FileInputStream(file);InputStream gzipStream=new GZIPInputStream(fileStream,BUFFER_SIZE);Reader decoder=new InputStreamReader(gzipStream,"utf-8");BufferedReader buffered=new BufferedReader(decoder,BUFFER_SIZE)){
+    String line;
+    while ((line=buffered.readLine()) != null) {
+      String[] parts=line.split("\t");
+      String word=parts[0];
+      int occurrences=Integer.parseInt(parts[2]);
+      Integer val=map.get(word);
+      if (val != null) {
+        map.put(word,val + occurrences);
+      }
+    }
+  }
+ }

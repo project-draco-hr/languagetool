@@ -1,0 +1,6 @@
+{
+  File[] files=dir.listFiles();
+  for (  File file : files) {
+    runOnFile(map,file);
+  }
+}
