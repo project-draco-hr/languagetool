@@ -1,0 +1,7 @@
+{
+  for (  AnalyzedToken analyzedToken : tokens) {
+    String posTag=analyzedToken.getPOSTag();
+    if (posTag != null && !posTag.equals(JLanguageTool.SENTENCE_START_TAGNAME) && !posTag.equals(JLanguageTool.SENTENCE_END_TAGNAME) && !posTag.contains(IPOSTag.bad.getText()))     return true;
+  }
+  return false;
+}

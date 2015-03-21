@@ -10,5 +10,8 @@
       return true;
     }
   }
+  if (word.contains("-")) {
+    return hasGoodTag(tokens[idx]);
+  }
   return false;
 }
