@@ -1,0 +1,3 @@
+{
+  assertEquals(EMPTY_MATCH_LIST,Arrays.asList(rule.match(langTool.getAnalyzedSentence(text))));
+}

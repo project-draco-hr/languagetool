@@ -1,0 +1,12 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  for (  AnalyzedTokenReadings tokenReadings : tokens) {
+    String tokenString=tokenReadings.getToken();
+    if (tokenString.indexOf(HIDDEN_CHAR) != -1) {
+      RuleMatch potentialRuleMatch=createRuleMatch(tokenReadings);
+      ruleMatches.add(potentialRuleMatch);
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}

@@ -1,0 +1,14 @@
+{
+  AnalyzedTokenReadings analyzedTokenReadings=tokens[position];
+  String token=analyzedTokenReadings.getToken();
+  if (position > 1 && token.equals("??????????") && tokens[position - 2].getToken().equalsIgnoreCase("??????"))   return true;
+  if (REPEAT_ALLOWED_SET.contains(token.toLowerCase()))   return true;
+  if (REPEAT_ALLOWED_CAPS_SET.contains(token))   return true;
+  for (  AnalyzedToken analyzedToken : analyzedTokenReadings.getReadings()) {
+    String posTag=analyzedToken.getPOSTag();
+    if (posTag != null) {
+      if (!posTag.equals(IPOSTag.number.getText()) && !isInitial(analyzedToken,tokens,position) && !posTag.equals(JLanguageTool.SENTENCE_END_TAGNAME))       return false;
+    }
+  }
+  return true;
+}

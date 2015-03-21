@@ -1,0 +1,3 @@
+{
+  return analyzedToken.getPOSTag().contains(IPOSTag.abbr.getText()) || (analyzedToken.getToken().length() == 1 && Character.isUpperCase(analyzedToken.getToken().charAt(0)) && position < tokens.length - 1 && tokens[position + 1].getToken().equals("."));
+}

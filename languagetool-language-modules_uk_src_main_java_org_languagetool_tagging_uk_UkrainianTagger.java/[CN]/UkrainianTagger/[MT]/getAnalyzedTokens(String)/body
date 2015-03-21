@@ -1,0 +1,25 @@
+{
+  List<AnalyzedToken> tkns=super.getAnalyzedTokens(word);
+  if (tkns.get(0).getPOSTag() == null) {
+    if ((word.indexOf('\u2013') != -1) && word.matches(".*[??-??????????][\u2013][??-??????????].*")) {
+      String newWord=word.replace('\u2013','-');
+      List<AnalyzedToken> newTokens=super.getAnalyzedTokens(newWord);
+      for (int i=0; i < newTokens.size(); i++) {
+        AnalyzedToken analyzedToken=newTokens.get(i);
+        if (newWord.equals(analyzedToken.getToken())) {
+          String lemma=analyzedToken.getLemma();
+          if (lemma != null) {
+            lemma=lemma.replace('-','\u2013');
+          }
+          AnalyzedToken newToken=new AnalyzedToken(word,analyzedToken.getPOSTag(),lemma);
+          newTokens.set(i,newToken);
+        }
+      }
+      tkns=newTokens;
+    }
+  }
+  if (taggedDebugWriter != null && !tkns.isEmpty()) {
+    debug_tagged_write(tkns,taggedDebugWriter);
+  }
+  return tkns;
+}

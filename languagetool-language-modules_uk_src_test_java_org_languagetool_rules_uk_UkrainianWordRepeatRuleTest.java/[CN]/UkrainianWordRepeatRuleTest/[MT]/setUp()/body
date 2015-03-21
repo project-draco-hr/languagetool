@@ -1,0 +1,4 @@
+{
+  langTool=new JLanguageTool(new Ukrainian());
+  rule=new UkrainianWordRepeatRule(TestTools.getMessages("uk"),langTool.getLanguage());
+}

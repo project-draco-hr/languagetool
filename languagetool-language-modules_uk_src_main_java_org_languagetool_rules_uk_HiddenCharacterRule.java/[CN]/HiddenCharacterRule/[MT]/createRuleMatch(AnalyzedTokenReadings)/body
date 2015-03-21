@@ -1,0 +1,9 @@
+{
+  String tokenString=tokenReadings.getToken();
+  String replacement=tokenString.replace(HIDDEN_CHAR.toString(),"");
+  String msg=tokenString + getSuggestion(tokenString) + replacement;
+  int pos=tokenReadings.getStartPos();
+  RuleMatch potentialRuleMatch=new RuleMatch(this,pos,pos + tokenString.length(),msg,getShort());
+  potentialRuleMatch.setSuggestedReplacements(Arrays.asList(replacement));
+  return potentialRuleMatch;
+}

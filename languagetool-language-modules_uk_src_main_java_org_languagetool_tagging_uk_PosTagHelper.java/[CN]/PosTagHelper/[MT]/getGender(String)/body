@@ -1,0 +1,7 @@
+{
+  Matcher pos4matcher=GENDER_REGEX.matcher(posTag);
+  if (pos4matcher.matches()) {
+    return pos4matcher.group(2);
+  }
+  return null;
+}

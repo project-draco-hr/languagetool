@@ -1,22 +1,42 @@
 {
   List<RuleMatch> ruleMatches=new ArrayList<>();
   AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  boolean insideMultiword=false;
   AnalyzedTokenReadings reqTokenReadings=null;
-  int i=-1;
-  for (  AnalyzedTokenReadings tokenReadings : tokens) {
-    i++;
+  for (int i=0; i < tokens.length; i++) {
+    AnalyzedTokenReadings tokenReadings=tokens[i];
     String posTag=tokenReadings.getAnalyzedToken(0).getPOSTag();
     if (posTag == null || posTag.contains(IPOSTag.unknown.getText()) || posTag.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
       reqTokenReadings=null;
       continue;
     }
+    AnalyzedToken multiwordReqToken=getMultiwordToken(tokenReadings);
+    if (multiwordReqToken != null) {
+      String mwPosTag=multiwordReqToken.getPOSTag();
+      if (mwPosTag.startsWith("</")) {
+        insideMultiword=false;
+      }
+ else {
+        insideMultiword=true;
+      }
+      if (mwPosTag.startsWith("</") && mwPosTag.contains(REQUIRE_VIDMINOK_SUBSTR)) {
+        posTag=multiwordReqToken.getPOSTag();
+        reqTokenReadings=tokenReadings;
+        continue;
+      }
+ else {
+        if (!mwPosTag.contains("adv") && !mwPosTag.contains("insert")) {
+          reqTokenReadings=null;
+        }
+        continue;
+      }
+    }
+    if (insideMultiword) {
+      continue;
+    }
     String token=tokenReadings.getAnalyzedToken(0).getToken();
     if (posTag.contains(REQUIRE_VIDMINOK_SUBSTR) && tokenReadings.getReadingsLength() == 1) {
       String prep=token;
-      if (hasMultiword(tokenReadings)) {
-        reqTokenReadings=null;
-        continue;
-      }
       if (prep.equals("????") && reverseSearch(tokens,i,"????"))       continue;
       if (prep.equalsIgnoreCase("??????????"))       continue;
       if ((prep.equalsIgnoreCase("??????????") || prep.equalsIgnoreCase("????????")) && tokens.length > i + 1 && tokens[i + 1].getAnalyzedToken(0).getToken().equalsIgnoreCase("????")) {
@@ -28,14 +48,14 @@
     }
     if (reqTokenReadings == null)     continue;
     ArrayList<String> posTagsToFind=new ArrayList<>();
-    String prep=reqTokenReadings.getAnalyzedToken(0).getToken();
+    String reqPosTag=reqTokenReadings.getAnalyzedToken(0).getPOSTag();
+    String prep=reqTokenReadings.getAnalyzedToken(0).getLemma();
     if (prep.equalsIgnoreCase("??????????")) {
       posTagsToFind.add("v_naz");
     }
-    if (prep.equalsIgnoreCase("??????????????")) {
+ else     if (prep.equalsIgnoreCase("??????????????")) {
       posTagsToFind.add("v_naz");
     }
-    String reqPosTag=reqTokenReadings.getAnalyzedToken(0).getPOSTag();
     Matcher matcher=REQUIRE_VIDMINOK_REGEX.matcher(reqPosTag);
     while (matcher.find()) {
       posTagsToFind.add(matcher.group(1));
@@ -48,14 +68,30 @@
     }
     if (!hasRequiredPosTag(posTagsToFind,tokenReadings)) {
       if (isTokenToSkip(tokenReadings))       continue;
-      if (prep.equalsIgnoreCase("????")) {
-        if (tokenReadings.getAnalyzedToken(0).getToken().compareToIgnoreCase("??") == 0) {
+      if (prep.equalsIgnoreCase("??") || prep.equalsIgnoreCase("??") || prep.equals("????????")|| prep.equals("??????")) {
+        if (hasRequiredPosTag(Arrays.asList("p:v_naz"),tokenReadings)) {
           reqTokenReadings=null;
           continue;
         }
       }
-      if (prep.equalsIgnoreCase("??") || prep.equalsIgnoreCase("??") || prep.equals("????????")|| prep.equals("??????")) {
-        if (hasRequiredPosTag(Arrays.asList("p:v_naz"),tokenReadings)) {
+      if (prep.equalsIgnoreCase("????") && Character.isUpperCase(token.charAt(0)) && posTag.matches("noun:.:v_rod.*")) {
+        reqTokenReadings=null;
+        continue;
+      }
+      if (prep.equalsIgnoreCase("??")) {
+        if (token.equals("????????")) {
+          reqTokenReadings=null;
+          continue;
+        }
+      }
+      if (prep.equalsIgnoreCase("??????")) {
+        if (token.equalsIgnoreCase("??") || token.equals("????????") || token.equals("??????????")|| token.equals("????????")) {
+          reqTokenReadings=null;
+          continue;
+        }
+      }
+ else       if (prep.equalsIgnoreCase("????")) {
+        if (token.equalsIgnoreCase("??") || token.equals("??????????") || token.equals("????????????")) {
           reqTokenReadings=null;
           continue;
         }
@@ -69,11 +105,17 @@
           reqTokenReadings=null;
           continue;
         }
+        if (PosTagHelper.hasPosTag(tokenReadings,"noun:.:v_oru.*") && tokens[i + 1].hasPartialPosTag("adjp")) {
+          continue;
+        }
         if ((prep.equalsIgnoreCase("??????????") || prep.equalsIgnoreCase("????")) && (posTag.startsWith("noun:p:v_naz") || posTag.startsWith("noun:p:v_rod")) && IPOSTag.isNum(tokens[i + 1].getAnalyzedToken(0).getPOSTag())) {
           reqTokenReadings=null;
           continue;
         }
-        if ((token.equals("????????") || token.equals("????????")) && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("????????????")) {
+        if ((token.equals("????????") || token.equals("??????????") || token.equals("??????")) && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("??")) {
+          continue;
+        }
+        if ((token.equals("????????") || token.equals("????????") || token.equals("????")) && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("????????????")) {
           continue;
         }
         if ((token.equals("????????") || token.equals("????????")) && tokens[i + 1].getAnalyzedToken(0).getToken().startsWith("??????????")) {
@@ -88,6 +130,13 @@
           continue;
         }
         if (tokens.length > i + 2) {
+          if (posTag.matches("adj.*:[mfn]:v_rod.*")) {
+            String gender=PosTagHelper.getGender(posTag);
+            if (PosTagHelper.hasPosTag(tokens[i + 1],"noun.*:" + gender + ":v_rod.*")) {
+              i+=1;
+              continue;
+            }
+          }
           if ((token.equals("????????????") || token.equals("??????????") || token.equals("??????????")|| token.equals("????????????")) && tokens[i + 1].getAnalyzedToken(0).getToken().equals("????")) {
             continue;
           }

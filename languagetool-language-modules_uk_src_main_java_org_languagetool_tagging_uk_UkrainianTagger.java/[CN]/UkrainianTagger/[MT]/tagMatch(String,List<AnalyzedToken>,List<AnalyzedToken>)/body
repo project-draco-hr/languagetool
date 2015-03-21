@@ -66,8 +66,8 @@
         }
       }
  else       if (IPOSTag.startsWith(leftPosTag,IPOSTag.noun) && IPOSTag.startsWith(rightPosTag,IPOSTag.numr)) {
-        String leftGenderConj=getGenderConj(leftPosTag);
-        if (leftGenderConj != null && leftGenderConj.equals(getGenderConj(rightPosTag))) {
+        String leftGenderConj=PosTagHelper.getGenderConj(leftPosTag);
+        if (leftGenderConj != null && leftGenderConj.equals(PosTagHelper.getGenderConj(rightPosTag))) {
           newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
         }
  else {
@@ -78,8 +78,8 @@
         }
       }
  else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && IPOSTag.startsWith(rightPosTag,IPOSTag.adj,IPOSTag.numr)) {
-        String leftGenderConj=getGenderConj(leftPosTag);
-        if (leftGenderConj != null && leftGenderConj.equals(getGenderConj(rightPosTag))) {
+        String leftGenderConj=PosTagHelper.getGenderConj(leftPosTag);
+        if (leftGenderConj != null && leftGenderConj.equals(PosTagHelper.getGenderConj(rightPosTag))) {
           newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
         }
       }

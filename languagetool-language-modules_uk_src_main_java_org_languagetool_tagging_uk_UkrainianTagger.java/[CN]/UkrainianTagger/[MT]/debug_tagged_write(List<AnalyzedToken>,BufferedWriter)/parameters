@@ -1,0 +1,2 @@
+List<AnalyzedToken> analyzedTokens
+BufferedWriter writer

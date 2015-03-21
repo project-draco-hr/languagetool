@@ -1,0 +1,4 @@
+{
+  rule=new TokenAgreementRule(TestTools.getMessages("uk"));
+  langTool=new JLanguageTool(new Ukrainian());
+}

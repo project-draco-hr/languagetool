@@ -1,0 +1,4 @@
+{
+  String posTag=analyzedToken.getPOSTag();
+  return posTag != null && posTag.matches(posTagRegex);
+}

@@ -1,0 +1,11 @@
+{
+  List<AnalyzedToken> newTokens=new ArrayList<>();
+  for (  AnalyzedToken lnameToken : lnameTokens.getReadings()) {
+    String lnamePosTag=lnameToken.getPOSTag();
+    if (lnamePosTag == null || !lnamePosTag.contains(LAST_NAME_TAG))     continue;
+    String initialsToken=initialsReadings.getAnalyzedToken(0).getToken();
+    AnalyzedToken newToken=new AnalyzedToken(initialsToken,lnamePosTag.replace(LAST_NAME_TAG,":" + initialType + ":abbr"),initialsToken);
+    newTokens.add(newToken);
+  }
+  return new AnalyzedTokenReadings(newTokens,initialsReadings.getStartPos());
+}

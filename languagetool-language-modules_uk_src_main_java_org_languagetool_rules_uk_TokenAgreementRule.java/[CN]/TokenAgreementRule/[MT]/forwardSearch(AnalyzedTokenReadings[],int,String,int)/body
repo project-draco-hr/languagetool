@@ -1,0 +1,6 @@
+{
+  for (int i=pos + 1; i < tokens.length && i <= pos + maxSkip; i++) {
+    if (tokens[i].getAnalyzedToken(0).getToken().equalsIgnoreCase(string))     return true;
+  }
+  return false;
+}

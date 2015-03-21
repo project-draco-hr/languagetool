@@ -1,0 +1,3 @@
+AnalyzedToken analyzedToken
+AnalyzedTokenReadings[] tokens
+int position

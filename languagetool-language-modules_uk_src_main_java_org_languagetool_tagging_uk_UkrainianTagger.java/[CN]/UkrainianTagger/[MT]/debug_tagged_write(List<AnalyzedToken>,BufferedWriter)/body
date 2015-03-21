@@ -1,0 +1,36 @@
+{
+  if (analyzedTokens.get(0).getLemma() == null || analyzedTokens.get(0).getToken().trim().isEmpty())   return;
+  try {
+    String prevToken="";
+    String prevLemma="";
+    for (    AnalyzedToken analyzedToken : analyzedTokens) {
+      String token=analyzedToken.getToken();
+      boolean firstTag=false;
+      if (!prevToken.equals(token)) {
+        if (prevToken.length() > 0) {
+          writer.append(";  ");
+          prevLemma="";
+        }
+        writer.append(token).append(" ");
+        prevToken=token;
+        firstTag=true;
+      }
+      String lemma=analyzedToken.getLemma();
+      if (!prevLemma.equals(lemma)) {
+        if (prevLemma.length() > 0) {
+          writer.append(", ");
+        }
+        writer.append(lemma);
+        prevLemma=lemma;
+        firstTag=true;
+      }
+      writer.append(firstTag ? " " : "|").append(analyzedToken.getPOSTag());
+      firstTag=false;
+    }
+    writer.newLine();
+    writer.flush();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

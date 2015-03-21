@@ -1,7 +1,7 @@
 {
   for (  AnalyzedToken analyzedToken : analyzedTokenReadings) {
     String posTag=analyzedToken.getPOSTag();
-    if (posTag != null && posTag.startsWith("<"))     return true;
+    if (posTag != null && posTag.startsWith("<"))     return analyzedToken;
   }
-  return false;
+  return null;
 }

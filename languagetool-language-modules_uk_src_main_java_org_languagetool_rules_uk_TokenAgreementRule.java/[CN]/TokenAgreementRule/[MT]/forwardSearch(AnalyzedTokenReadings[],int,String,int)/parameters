@@ -1,0 +1,4 @@
+AnalyzedTokenReadings[] tokens
+int pos
+String string
+int maxSkip

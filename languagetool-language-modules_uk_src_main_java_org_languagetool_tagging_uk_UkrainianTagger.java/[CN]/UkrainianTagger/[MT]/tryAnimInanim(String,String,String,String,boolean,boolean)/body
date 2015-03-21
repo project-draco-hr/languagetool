@@ -26,7 +26,7 @@
     agreedPosTag=getAgreedPosTag(leftPosTag,rightPosTag,false);
     if (agreedPosTag == null) {
       if (!leftPosTag.contains(TAG_ANIM)) {
-        if (MNP_ZNA_REGEX.matcher(leftPosTag).matches() && MNP_NAZ_REGEX.matcher(rightPosTag).matches() && getNum(leftPosTag).equals(getNum(rightPosTag))&& !leftNv&& !rightNv) {
+        if (MNP_ZNA_REGEX.matcher(leftPosTag).matches() && MNP_NAZ_REGEX.matcher(rightPosTag).matches() && PosTagHelper.getNum(leftPosTag).equals(PosTagHelper.getNum(rightPosTag))&& !leftNv&& !rightNv) {
           agreedPosTag=leftPosTag;
         }
       }
@@ -37,7 +37,7 @@
     agreedPosTag=getAgreedPosTag(rightPosTag,leftPosTag,false);
     if (agreedPosTag == null) {
       if (!rightPosTag.contains(TAG_ANIM)) {
-        if (MNP_ZNA_REGEX.matcher(rightPosTag).matches() && MNP_NAZ_REGEX.matcher(leftPosTag).matches() && getNum(leftPosTag).equals(getNum(rightPosTag))&& !leftNv&& !rightNv) {
+        if (MNP_ZNA_REGEX.matcher(rightPosTag).matches() && MNP_NAZ_REGEX.matcher(leftPosTag).matches() && PosTagHelper.getNum(leftPosTag).equals(PosTagHelper.getNum(rightPosTag))&& !leftNv&& !rightNv) {
           agreedPosTag=rightPosTag;
         }
       }
