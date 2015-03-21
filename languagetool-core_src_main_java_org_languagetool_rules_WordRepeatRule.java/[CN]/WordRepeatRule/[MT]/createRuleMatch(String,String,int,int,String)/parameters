@@ -1,0 +1,5 @@
+String prevToken
+String token
+int prevPos
+int pos
+String msg
