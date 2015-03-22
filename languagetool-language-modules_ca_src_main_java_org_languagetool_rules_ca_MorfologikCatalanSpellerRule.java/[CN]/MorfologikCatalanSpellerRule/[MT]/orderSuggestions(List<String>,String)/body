@@ -1,0 +1,13 @@
+{
+  if (suggestions.size() < 3) {
+    return suggestions;
+  }
+  for (  String suggestion : suggestions) {
+    if (PARTICULA_INICIAL.matcher(suggestion).matches()) {
+      int index=suggestions.indexOf(suggestion);
+      suggestions.remove(index);
+      suggestions.add(0,suggestion);
+    }
+  }
+  return suggestions;
+}

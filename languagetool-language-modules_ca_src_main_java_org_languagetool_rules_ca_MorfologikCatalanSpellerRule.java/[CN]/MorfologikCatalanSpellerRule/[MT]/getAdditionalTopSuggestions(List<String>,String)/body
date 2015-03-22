@@ -1,12 +1,14 @@
 {
-  if (word.length() < 5 || word.endsWith("as")) {
+  if (word.length() < 5) {
     return Collections.emptyList();
   }
   String suggestion="";
   suggestion=findSuggestion(suggestion,word,APOSTROF_INICI_VERBS,VERB_INDSUBJ,2,"'");
   suggestion=findSuggestion(suggestion,word,APOSTROF_INICI_NOM_SING,NOM_SING,2,"'");
   suggestion=findSuggestion(suggestion,word,APOSTROF_INICI_NOM_PLURAL,NOM_PLURAL,2,"'");
-  suggestion=findSuggestion(suggestion,word,APOSTROF_FINAL,VERB_INFGERIMP,1,"'");
+  if (!word.endsWith("as") && !word.endsWith("et")) {
+    suggestion=findSuggestion(suggestion,word,APOSTROF_FINAL,VERB_INFGERIMP,1,"'");
+  }
   suggestion=findSuggestion(suggestion,word,GUIONET_FINAL,VERB_INFGERIMP,1,"-");
   if (!suggestion.isEmpty()) {
     return Collections.singletonList(suggestion);
