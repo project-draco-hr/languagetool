@@ -1,4 +1,6 @@
 {
+  assertCorrect("Ho van fer per duplicat.");
+  assertCorrect("Assecat el bra?? del riu");
   assertCorrect("Va aconseguir el liderat de primera divisi??.");
   assertCorrect("el llibre empaquetat");
   assertCorrect("un resultat equilibrat");
@@ -28,6 +30,7 @@
   assertCorrect("filtrat per Wikileaks");
   assertCorrect("una vegada filtrat");
   assertCorrect("no equilibrat");
+  assertIncorrect("Assecat del bra?? del riu");
   assertIncorrect("Cal vigilar el filtrat del vi");
   assertIncorrect("El proc??s d'empaquetat");
   assertIncorrect("Els equilibrats de les rodes");
