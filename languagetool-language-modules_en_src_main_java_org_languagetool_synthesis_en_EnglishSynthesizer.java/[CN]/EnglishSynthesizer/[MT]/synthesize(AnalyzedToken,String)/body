@@ -1,11 +1,9 @@
 {
   if (ADD_DETERMINER.equals(posTag)) {
-    final AvsAnRule rule=new AvsAnRule(null);
-    return new String[]{rule.suggestAorAn(token.getToken()),"the " + token.getToken()};
+    return new String[]{aVsAnRule.suggestAorAn(token.getToken()),"the " + token.getToken()};
   }
  else   if (ADD_IND_DETERMINER.equals(posTag)) {
-    final AvsAnRule rule=new AvsAnRule(null);
-    return new String[]{rule.suggestAorAn(token.getToken())};
+    return new String[]{aVsAnRule.suggestAorAn(token.getToken())};
   }
   final IStemmer synthesizer=createStemmer();
   final List<WordData> wordData=synthesizer.lookup(token.getLemma() + "|" + posTag);

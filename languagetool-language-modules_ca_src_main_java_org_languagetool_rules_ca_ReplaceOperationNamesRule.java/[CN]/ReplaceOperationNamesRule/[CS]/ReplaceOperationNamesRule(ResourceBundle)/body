@@ -1,8 +1,6 @@
 {
   super.setLocQualityIssueType(ITSIssueType.Style);
-  if (messages != null) {
-    super.setCategory(new Category("C8) Formes secund??ries"));
-  }
+  super.setCategory(new Category("C8) Formes secund??ries"));
   possibleWrongWords=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFileName()));
   synth=new CatalanSynthesizer();
 }

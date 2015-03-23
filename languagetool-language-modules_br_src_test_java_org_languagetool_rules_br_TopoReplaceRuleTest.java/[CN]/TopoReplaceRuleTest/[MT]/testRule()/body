@@ -1,5 +1,5 @@
 {
-  TopoReplaceRule rule=new TopoReplaceRule(null);
+  TopoReplaceRule rule=new TopoReplaceRule(TestTools.getEnglishMessages());
   JLanguageTool langTool=new JLanguageTool(new Breton());
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("France a zo ur vro.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("France 3 a zo ur chadenn skinwel.")).length);

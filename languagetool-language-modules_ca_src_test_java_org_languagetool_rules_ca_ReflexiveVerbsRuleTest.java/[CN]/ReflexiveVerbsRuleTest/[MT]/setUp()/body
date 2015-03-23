@@ -1,4 +1,4 @@
 {
-  rule=new ReflexiveVerbsRule(null);
+  rule=new ReflexiveVerbsRule(TestTools.getEnglishMessages());
   langTool=new JLanguageTool(new Catalan());
 }

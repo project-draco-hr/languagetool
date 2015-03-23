@@ -1,4 +1,4 @@
 {
-  rule=new ReplaceOperationNamesRule(null);
+  rule=new ReplaceOperationNamesRule(TestTools.getEnglishMessages());
   langTool=new JLanguageTool(new Catalan());
 }

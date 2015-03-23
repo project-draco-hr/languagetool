@@ -1,7 +1,5 @@
 {
-  if (messages != null) {
-    super.setCategory(new Category(getCategoryString()));
-  }
+  super.setCategory(new Category(getCategoryString()));
   contextWordsSet=loadContextWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFilename()));
   setLocQualityIssueType(ITSIssueType.Misspelling);
 }

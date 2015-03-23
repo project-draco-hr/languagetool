@@ -1,6 +1,4 @@
 {
-  if (messages != null) {
-    super.setCategory(new Category("Verbs"));
-  }
+  super.setCategory(new Category("Verbs"));
   setLocQualityIssueType(ITSIssueType.Grammar);
 }

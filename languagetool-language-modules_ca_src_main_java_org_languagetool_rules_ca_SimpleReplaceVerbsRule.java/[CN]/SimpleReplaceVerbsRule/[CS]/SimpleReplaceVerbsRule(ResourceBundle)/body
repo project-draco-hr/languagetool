@@ -1,8 +1,6 @@
 {
   super.setLocQualityIssueType(ITSIssueType.Misspelling);
-  if (messages != null) {
-    super.setCategory(new Category("Errors ortogr??fics"));
-  }
+  super.setCategory(new Category("Errors ortogr??fics"));
   wrongWords=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFileName()));
   tagger=new CatalanTagger();
   synth=new CatalanSynthesizer();

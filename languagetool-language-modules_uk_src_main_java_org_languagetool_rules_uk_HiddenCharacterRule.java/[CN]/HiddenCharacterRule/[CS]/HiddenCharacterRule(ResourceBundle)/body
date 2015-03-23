@@ -1,5 +1,3 @@
 {
-  if (messages != null) {
-    super.setCategory(new Category(messages.getString("category_misc")));
-  }
+  super.setCategory(new Category(messages.getString("category_misc")));
 }

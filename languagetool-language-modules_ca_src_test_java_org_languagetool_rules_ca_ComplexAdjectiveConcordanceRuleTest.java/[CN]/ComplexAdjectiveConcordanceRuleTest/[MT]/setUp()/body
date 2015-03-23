@@ -1,4 +1,4 @@
 {
-  rule=new ComplexAdjectiveConcordanceRule(null);
+  rule=new ComplexAdjectiveConcordanceRule(TestTools.getEnglishMessages());
   langTool=new JLanguageTool(new Catalan());
 }
