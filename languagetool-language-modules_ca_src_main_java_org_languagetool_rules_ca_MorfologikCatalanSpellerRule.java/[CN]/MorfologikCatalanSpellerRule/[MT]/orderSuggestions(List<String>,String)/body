@@ -1,13 +1,12 @@
 {
-  if (suggestions.size() < 3) {
-    return suggestions;
-  }
+  List<String> newSuggestions=new ArrayList<String>();
   for (  String suggestion : suggestions) {
     if (PARTICULA_INICIAL.matcher(suggestion).matches()) {
-      int index=suggestions.indexOf(suggestion);
-      suggestions.remove(index);
-      suggestions.add(0,suggestion);
+      newSuggestions.add(0,suggestion);
+    }
+ else {
+      newSuggestions.add(suggestion);
     }
   }
-  return suggestions;
+  return newSuggestions;
 }
