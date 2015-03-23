@@ -1,8 +1,9 @@
 {
-  final Set<String> set=new TreeSet<>();
+  InputStream stream=JLanguageTool.getDataBroker().getFromRulesDirAsStream(path);
+  Set<String> set=new TreeSet<>();
   try (Scanner scanner=new Scanner(stream,"utf-8")){
     while (scanner.hasNextLine()) {
-      final String line=scanner.nextLine().trim();
+      String line=scanner.nextLine().trim();
       if (line.length() < 1 || line.charAt(0) == '#') {
         continue;
       }
@@ -14,5 +15,5 @@
       }
     }
   }
-   return set;
+   return Collections.unmodifiableSet(set);
 }
