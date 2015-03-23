@@ -1,0 +1,6 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  RuleMatch other=(RuleMatch)o;
+  return new EqualsBuilder().append(rule.getId(),other.rule.getId()).append(fromPos,other.fromPos).append(toPos,other.toPos).append(message,other.message).append(suggestedReplacements,other.suggestedReplacements).isEquals();
+}

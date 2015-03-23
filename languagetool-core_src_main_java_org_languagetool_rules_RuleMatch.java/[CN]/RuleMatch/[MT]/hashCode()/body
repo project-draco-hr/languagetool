@@ -1,0 +1,3 @@
+{
+  return new HashCodeBuilder().append(rule.getId()).append(fromPos).append(toPos).append(message).append(suggestedReplacements).toHashCode();
+}
