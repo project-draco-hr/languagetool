@@ -1,5 +1,5 @@
 {
-  if (tokenReadings.getToken().length() == 0 || (Character.isUpperCase(tokenReadings.getToken().charAt(0)) && !(tokenReadings.getStartPos() == 0)) || !tokenReadings.hasPartialPosTag("VER")) {
+  if (tokenReadings.getToken().length() == 0 || (Character.isUpperCase(tokenReadings.getToken().charAt(0)) && tokenReadings.getStartPos() != 0) || !tokenReadings.hasPartialPosTag("VER")) {
     return false;
   }
   for (  AnalyzedToken analyzedToken : tokenReadings) {

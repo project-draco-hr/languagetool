@@ -2,5 +2,5 @@
   if (token.getToken().length() == 0 || (Character.isUpperCase(token.getToken().charAt(0)) && token.getStartPos() != 0) || !token.hasPartialPosTag("VER") || token.hasPartialPosTag("PA2") || token.hasPartialPosTag("PRO:") || token.hasPartialPosTag("ZAL") || "einst".equals(token.getToken())) {
     return false;
   }
-  return (token.hasPartialPosTag(":1:") || token.hasPartialPosTag(":2:") || token.hasPartialPosTag(":3:"));
+  return token.hasPartialPosTag(":1:") || token.hasPartialPosTag(":2:") || token.hasPartialPosTag(":3:");
 }
