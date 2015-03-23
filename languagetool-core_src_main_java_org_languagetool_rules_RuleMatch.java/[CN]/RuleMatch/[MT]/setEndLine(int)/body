@@ -1,3 +1,3 @@
 {
-  this.endLine=endLine;
+  linePosition=new LinePosition(linePosition.getStart(),endLine);
 }

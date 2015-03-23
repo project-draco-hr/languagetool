@@ -1,0 +1,8 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  MatchPosition position=(MatchPosition)o;
+  if (end != position.end)   return false;
+  if (start != position.start)   return false;
+  return true;
+}
