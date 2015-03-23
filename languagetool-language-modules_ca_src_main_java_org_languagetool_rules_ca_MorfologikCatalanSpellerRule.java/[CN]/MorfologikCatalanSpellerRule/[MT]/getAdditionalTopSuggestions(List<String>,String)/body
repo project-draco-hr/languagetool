@@ -1,7 +1,4 @@
 {
-  if (word.length() < 5) {
-    return Collections.emptyList();
-  }
   String suggestion="";
   suggestion=findSuggestion(suggestion,word,APOSTROF_INICI_VERBS,VERB_INDSUBJ,2,"'");
   suggestion=findSuggestion(suggestion,word,APOSTROF_INICI_NOM_SING,NOM_SING,2,"'");
