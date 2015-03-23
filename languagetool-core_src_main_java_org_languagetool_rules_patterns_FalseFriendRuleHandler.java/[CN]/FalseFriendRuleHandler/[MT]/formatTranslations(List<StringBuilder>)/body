@@ -3,7 +3,7 @@
   for (final Iterator<StringBuilder> iter=translations.iterator(); iter.hasNext(); ) {
     final StringBuilder trans=iter.next();
     sb.append('"');
-    sb.append(trans.toString());
+    sb.append(trans);
     sb.append('"');
     if (iter.hasNext()) {
       sb.append(", ");
