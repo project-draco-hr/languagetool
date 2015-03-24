@@ -10,12 +10,7 @@
           continue;
         }
         failOnSpace(ignoreFile,line);
-        if (language.getShortNameWithCountryAndVariant().equals("de-CH")) {
-          wordsToBeIgnored.add(line.replace("??","ss"));
-        }
- else {
-          wordsToBeIgnored.add(line);
-        }
+        addIgnoreWords(line,wordsToBeIgnored);
         if (line.endsWith(".")) {
           wordsWithDotsPresent=true;
         }

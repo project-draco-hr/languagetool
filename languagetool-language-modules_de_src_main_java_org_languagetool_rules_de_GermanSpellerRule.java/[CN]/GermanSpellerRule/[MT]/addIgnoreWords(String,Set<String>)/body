@@ -1,0 +1,8 @@
+{
+  if (language.getShortNameWithCountryAndVariant().equals("de-CH")) {
+    wordsToBeIgnored.add(line.replace("??","ss"));
+  }
+ else {
+    wordsToBeIgnored.add(line);
+  }
+}
