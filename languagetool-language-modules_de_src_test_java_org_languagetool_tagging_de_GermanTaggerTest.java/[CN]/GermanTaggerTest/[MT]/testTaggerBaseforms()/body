@@ -1,16 +1,16 @@
 {
   final GermanTagger tagger=new GermanTagger();
-  List<AnalyzedToken> readings=tagger.lookup("??brigbleibst").getReadings();
-  assertEquals(1,readings.size());
-  assertEquals("??brigbleiben",readings.get(0).getLemma());
-  readings=tagger.lookup("Haus").getReadings();
-  assertEquals(3,readings.size());
-  assertEquals("Haus",readings.get(0).getLemma());
-  assertEquals("Haus",readings.get(1).getLemma());
-  assertEquals("Haus",readings.get(2).getLemma());
-  readings=tagger.lookup("H??user").getReadings();
-  assertEquals(3,readings.size());
-  assertEquals("Haus",readings.get(0).getLemma());
-  assertEquals("Haus",readings.get(1).getLemma());
-  assertEquals("Haus",readings.get(2).getLemma());
+  List<AnalyzedToken> readings1=tagger.lookup("??brigbleibst").getReadings();
+  assertEquals(1,readings1.size());
+  assertEquals("??brigbleiben",readings1.get(0).getLemma());
+  List<AnalyzedToken> readings2=tagger.lookup("Haus").getReadings();
+  assertEquals(3,readings2.size());
+  assertEquals("Haus",readings2.get(0).getLemma());
+  assertEquals("Haus",readings2.get(1).getLemma());
+  assertEquals("Haus",readings2.get(2).getLemma());
+  List<AnalyzedToken> readings3=tagger.lookup("H??user").getReadings();
+  assertEquals(3,readings3.size());
+  assertEquals("Haus",readings3.get(0).getLemma());
+  assertEquals("Haus",readings3.get(1).getLemma());
+  assertEquals("Haus",readings3.get(2).getLemma());
 }

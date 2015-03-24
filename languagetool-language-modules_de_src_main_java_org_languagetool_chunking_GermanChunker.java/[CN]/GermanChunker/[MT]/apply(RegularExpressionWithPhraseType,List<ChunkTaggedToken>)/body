@@ -10,5 +10,4 @@
  catch (  Exception e) {
     throw new RuntimeException("Could not apply chunk regexp '" + regex + "' to tokens: "+ tokens,e);
   }
-  return tokens;
 }
