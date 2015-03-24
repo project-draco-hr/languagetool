@@ -1,0 +1,10 @@
+{
+  assertTrue(isUrl("http://www.test.de"));
+  assertTrue(isUrl("http://www.test-dash.com"));
+  assertTrue(isUrl("https://www.test-dash.com"));
+  assertTrue(isUrl("ftp://www.test-dash.com"));
+  assertTrue(isUrl("http://www.test-dash.com/foo/path-dash"));
+  assertTrue(isUrl("http://www.test-dash.com/foo/??????-dash"));
+  assertTrue(isUrl("http://www.test-dash.com/foo/%C3%B-dash"));
+  assertFalse(isUrl("www.languagetool.org"));
+}

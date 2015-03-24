@@ -1,0 +1,4 @@
+{
+  MySpellCheckingRule rule=new MySpellCheckingRule();
+  rule.test();
+}
