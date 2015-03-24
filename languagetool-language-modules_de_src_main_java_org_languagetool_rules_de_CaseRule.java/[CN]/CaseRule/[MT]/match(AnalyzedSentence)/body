@@ -30,6 +30,9 @@
           continue;
         }
       }
+      if (isPrevProbablyRelativePronoun(tokens,i)) {
+        continue;
+      }
       potentiallyAddLowercaseMatch(ruleMatches,tokens[i],prevTokenIsDas,token,nextTokenIsPersonalPronoun);
     }
     prevTokenIsDas=nounIndicators.contains(tokens[i].getToken().toLowerCase());

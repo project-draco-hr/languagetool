@@ -1,0 +1,13 @@
+{
+  Pattern pattern=Pattern.compile(posTagRegex);
+  boolean found=false;
+  for (  AnalyzedToken reading : anTokReadings) {
+    if (reading.getPOSTag() != null) {
+      found=pattern.matcher(reading.getPOSTag()).matches();
+      if (found) {
+        break;
+      }
+    }
+  }
+  return found;
+}
