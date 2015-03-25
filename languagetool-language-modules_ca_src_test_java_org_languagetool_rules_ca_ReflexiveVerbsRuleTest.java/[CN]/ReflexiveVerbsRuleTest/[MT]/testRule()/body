@@ -1,4 +1,5 @@
 {
+  assertCorrect("No em plantejo anar a un altre partit");
   assertCorrect("-Deixa't caure al canal i prou");
   assertCorrect("Deixa't caure al canal i prou");
   assertCorrect("Durant el 2010 s'ha crescut molt");
