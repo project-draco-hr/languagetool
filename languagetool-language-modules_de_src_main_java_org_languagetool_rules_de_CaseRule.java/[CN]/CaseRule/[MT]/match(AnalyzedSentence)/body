@@ -8,7 +8,7 @@
       continue;
     }
     if (i == 1) {
-      if (nounIndicators.contains(tokens[i].getToken().toLowerCase())) {
+      if (nounIndicators.contains(tokens[1].getToken().toLowerCase())) {
         prevTokenIsDas=true;
       }
       continue;
