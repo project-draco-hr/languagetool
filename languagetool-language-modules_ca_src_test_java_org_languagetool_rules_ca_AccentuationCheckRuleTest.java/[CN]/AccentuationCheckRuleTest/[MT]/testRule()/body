@@ -41,6 +41,8 @@
   assertCorrect("Els h??bitats de la comarca.");
   assertCorrect("Joan Pau II beatifica Paula Montal.");
   assertCorrect("La magn??fica conservaci?? del palau.");
+  assertIncorrect("Com s'ha dit les primaries auton??miques s'han ajornat");
+  assertIncorrect("Com sabeu les primaries s'han ajornat");
   assertIncorrect("Les continues al??lusions a la vict??ria.");
   assertIncorrect("De positiva influencia en ell.");
   assertIncorrect("tren de llarga distancia");
