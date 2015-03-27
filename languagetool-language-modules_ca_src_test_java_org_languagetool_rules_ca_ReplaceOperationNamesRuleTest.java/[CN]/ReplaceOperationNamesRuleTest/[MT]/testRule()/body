@@ -28,7 +28,6 @@
   assertIncorrect("Cal vigilar el filtrat del vi");
   assertIncorrect("El proc??s d'empaquetat");
   assertIncorrect("Els equilibrats de les rodes");
-  assertIncorrect("Duplicat de claus");
   assertIncorrect("El proc??s d'etiquetat de les ampolles");
   assertIncorrect("El rentat de cotes");
   RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("El repicat i el rejuntat."));
