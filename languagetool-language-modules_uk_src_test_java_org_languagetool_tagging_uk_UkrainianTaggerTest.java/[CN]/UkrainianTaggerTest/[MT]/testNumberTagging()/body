@@ -3,4 +3,6 @@
   TestTools.myAssert("3,5-5,6% 7?? 7,4????","3,5-5,6%/[3,5-5,6%]number -- 7??/[7??]number -- 7,4????/[7,4????]number",tokenizer,tagger);
   TestTools.myAssert("XIX","XIX/[XIX]number",tokenizer,tagger);
   TestTools.myAssert("14.07.2001","14.07.2001/[14.07.2001]date",tokenizer,tagger);
+  TestTools.myAssert("?? 15.33","??/[??]excl|??/[??]prep:rv_zna:rv_mis -- 15.33/[15.33]time",tokenizer,tagger);
+  TestTools.myAssert("?? 1:05","??/[??]excl|??/[??]prep:rv_zna:rv_mis -- 1:05/[1:05]time",tokenizer,tagger);
 }

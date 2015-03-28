@@ -12,12 +12,12 @@
   }
   if (rightPartsWithLeftTagMap.containsKey(rightWord)) {
     if (leftWdList.isEmpty())     return null;
-    String leftTagRegex=rightPartsWithLeftTagMap.get(rightWord);
+    Pattern leftTagRegex=rightPartsWithLeftTagMap.get(rightWord);
     List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
     List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(leftAnalyzedTokens.size());
     for (    AnalyzedToken analyzedToken : leftAnalyzedTokens) {
       String posTag=analyzedToken.getPOSTag();
-      if (posTag.matches(leftTagRegex)) {
+      if (posTag != null && leftTagRegex.matcher(posTag).matches()) {
         newAnalyzedTokens.add(new AnalyzedToken(word,posTag,analyzedToken.getLemma()));
       }
     }
@@ -85,7 +85,7 @@
       return tagMatch;
     }
   }
-  if (leftWord.endsWith("??")) {
+  if (O_ADJ_PATTERN.matcher(leftWord).matches()) {
     return oAdjMatch(word,rightAnalyzedTokens,leftWord);
   }
   debug_compound_unknown_write(word);

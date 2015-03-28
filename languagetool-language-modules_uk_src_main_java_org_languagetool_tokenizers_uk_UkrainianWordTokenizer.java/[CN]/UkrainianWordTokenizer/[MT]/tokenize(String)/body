@@ -5,9 +5,17 @@
   }
   if (text.contains(".")) {
     text=DATE_PATTERN.matcher(text).replaceAll("$1" + DATE_DOT_SUBST + "$2"+ DATE_DOT_SUBST+ "$3");
+    text=DOTTED_NUMBERS_PATTERN.matcher(text).replaceAll("$1" + NUMBER_DOT_SUBST + "$2");
+    text=ABBR_DOT_PATTERN.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + " $2");
+  }
+  if (text.contains(":")) {
+    text=COLON_NUMBERS_PATTERN.matcher(text).replaceAll("$1" + COLON_DOT_SUBST + "$2");
   }
   if (text.contains("(")) {
     text=BRACE_IN_WORD_PATTERN.matcher(text).replaceAll("$1" + LEFT_BRACE_SUBST + "$2"+ RIGHT_BRACE_SUBST);
+  }
+  if (text.contains(ELLIPSIS)) {
+    text=text.replace(ELLIPSIS,ELLIPSIS_SUBST);
   }
   List<String> tokenList=new ArrayList<>();
   StringTokenizer st=new StringTokenizer(text,SPLIT_CHARS,true);
@@ -15,8 +23,12 @@
     String token=st.nextToken();
     token=token.replace(DECIMAL_COMMA_SUBST,',');
     token=token.replace(DATE_DOT_SUBST,'.');
+    token=token.replace(NUMBER_DOT_SUBST,'.');
+    token=token.replace(ABBR_DOT_SUBST,'.');
+    token=token.replace(COLON_DOT_SUBST,':');
     token=token.replace(LEFT_BRACE_SUBST,'(');
     token=token.replace(RIGHT_BRACE_SUBST,')');
+    token=token.replaceAll(ELLIPSIS_SUBST,ELLIPSIS);
     tokenList.add(token);
   }
   return tokenList;
