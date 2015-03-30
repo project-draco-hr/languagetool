@@ -1,0 +1,10 @@
+{
+  MorfologikSpeller speller=getBinaryDict(binaryDictPath,maxEditDistance);
+  spellers.add(speller);
+  convertsCase=speller.convertsCase();
+  String infoFile=binaryDictPath.replace(".dict",".info");
+  MorfologikSpeller plainTextDict=getPlainTextDictOrNull(plainTextReader,infoFile,maxEditDistance);
+  if (plainTextDict != null) {
+    spellers.add(plainTextDict);
+  }
+}

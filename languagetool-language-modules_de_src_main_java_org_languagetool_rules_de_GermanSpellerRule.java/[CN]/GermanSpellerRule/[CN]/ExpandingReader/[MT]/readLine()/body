@@ -1,0 +1,13 @@
+{
+  if (buffer.size() > 0) {
+    return buffer.remove(0);
+  }
+ else {
+    String line=super.readLine();
+    if (line == null) {
+      return null;
+    }
+    buffer.addAll(expandLine(line));
+    return buffer.remove(0);
+  }
+}

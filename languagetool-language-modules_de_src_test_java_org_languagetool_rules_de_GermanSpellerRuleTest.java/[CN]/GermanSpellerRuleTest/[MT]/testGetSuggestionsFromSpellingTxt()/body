@@ -3,4 +3,6 @@
   assertThat(ruleGermany.getSuggestions("Ligafu??boll").toString(),is("[Ligafu??ball, Ligafu??balls]"));
   MyGermanSpellerRule ruleSwiss=new MyGermanSpellerRule(TestTools.getMessages("de"),GERMAN_CH);
   assertThat(ruleSwiss.getSuggestions("Ligafu??boll").toString(),is("[Ligafussball, Ligafussballs]"));
+  assertThat(ruleSwiss.getSuggestions("konfliktbereid").toString(),is("[konfliktbereit, konfliktbereite]"));
+  assertThat(ruleSwiss.getSuggestions("konfliktbereitel").toString(),is("[konfliktbereite, konfliktbereitem, konfliktbereiten, konfliktbereiter, konfliktbereites, konfliktbereit]"));
 }

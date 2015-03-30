@@ -1,0 +1,3 @@
+String binaryDictPath
+BufferedReader plainTextReader
+int maxEditDistance
