@@ -1,3 +1,18 @@
 {
-  return Language.getLanguageForLocale(locale);
+  final Language language=getLanguageForLanguageNameAndCountry(locale);
+  if (language != null) {
+    return language;
+  }
+ else {
+    final Language firstFallbackLanguage=getLanguageForLanguageNameOnly(locale);
+    if (firstFallbackLanguage != null) {
+      return firstFallbackLanguage;
+    }
+  }
+  for (  Language aLanguage : LANGUAGES) {
+    if (aLanguage.getShortNameWithCountryAndVariant().equals("en-US")) {
+      return aLanguage;
+    }
+  }
+  throw new RuntimeException("No appropriate language found, not even en-US. Supported languages: " + get());
 }

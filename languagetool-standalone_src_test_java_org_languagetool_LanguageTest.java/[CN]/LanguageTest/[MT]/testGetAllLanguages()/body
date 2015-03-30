@@ -1,3 +1,0 @@
-{
-  assertTrue(Language.getAllLanguages().size() > 35);
-}

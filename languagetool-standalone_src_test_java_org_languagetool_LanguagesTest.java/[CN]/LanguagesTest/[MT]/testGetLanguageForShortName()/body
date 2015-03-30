@@ -7,12 +7,12 @@
     Languages.getLanguageForShortName("xy");
     fail();
   }
- catch (  IllegalArgumentException expected) {
+ catch (  IllegalArgumentException ignored) {
   }
   try {
     Languages.getLanguageForShortName("YY-KK");
     fail();
   }
- catch (  IllegalArgumentException expected) {
+ catch (  IllegalArgumentException ignored) {
   }
 }

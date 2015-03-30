@@ -1,9 +1,0 @@
-{
-  LANGUAGES=new Language[BUILTIN_LANGUAGES.length + languages.size()];
-  int i=BUILTIN_LANGUAGES.length;
-  System.arraycopy(BUILTIN_LANGUAGES,0,LANGUAGES,0,BUILTIN_LANGUAGES.length);
-  for (  final Language lang : languages) {
-    LANGUAGES[i++]=lang;
-  }
-  externalLanguages=languages;
-}

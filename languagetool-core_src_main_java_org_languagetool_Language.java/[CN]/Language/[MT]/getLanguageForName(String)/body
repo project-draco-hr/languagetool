@@ -1,8 +1,0 @@
-{
-  for (  Language element : Language.LANGUAGES) {
-    if (languageName.equals(element.getName())) {
-      return element;
-    }
-  }
-  return null;
-}

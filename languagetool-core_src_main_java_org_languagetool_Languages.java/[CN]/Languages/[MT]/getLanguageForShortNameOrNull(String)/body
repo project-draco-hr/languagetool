@@ -2,7 +2,7 @@
   StringTools.assureSet(langCode,"langCode");
   Language result=null;
   if (langCode.contains("-x-")) {
-    for (    Language element : Language.LANGUAGES) {
+    for (    Language element : LANGUAGES) {
       if (element.getShortName().equalsIgnoreCase(langCode)) {
         return element;
       }
@@ -11,7 +11,7 @@
  else   if (langCode.contains("-")) {
     final String[] parts=langCode.split("-");
     if (parts.length == 2) {
-      for (      Language element : Language.LANGUAGES) {
+      for (      Language element : LANGUAGES) {
         if (parts[0].equalsIgnoreCase(element.getShortName()) && element.getCountries().length == 1 && parts[1].equalsIgnoreCase(element.getCountries()[0])) {
           result=element;
           break;
@@ -19,7 +19,7 @@
       }
     }
  else     if (parts.length == 3) {
-      for (      Language element : Language.LANGUAGES) {
+      for (      Language element : LANGUAGES) {
         if (parts[0].equalsIgnoreCase(element.getShortName()) && element.getCountries().length == 1 && parts[1].equalsIgnoreCase(element.getCountries()[0]) && parts[2].equalsIgnoreCase(element.getVariant())) {
           result=element;
           break;
@@ -31,7 +31,7 @@
     }
   }
  else {
-    for (    Language element : Language.LANGUAGES) {
+    for (    Language element : LANGUAGES) {
       if (langCode.equalsIgnoreCase(element.getShortName())) {
         result=element;
         break;

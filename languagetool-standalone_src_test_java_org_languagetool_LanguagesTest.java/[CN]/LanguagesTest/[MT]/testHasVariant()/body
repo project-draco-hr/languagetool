@@ -5,7 +5,7 @@
   assertFalse(Languages.getLanguageForShortName("de-CH").hasVariant());
   assertFalse(Languages.getLanguageForShortName("ast").hasVariant());
   assertFalse(Languages.getLanguageForShortName("pl").hasVariant());
-  for (  Language language : Language.LANGUAGES) {
+  for (  Language language : Languages.getWithDemoLanguage()) {
     if (language.hasVariant()) {
       assertNotNull("Language " + language + " needs a default variant",language.getDefaultLanguageVariant());
     }
