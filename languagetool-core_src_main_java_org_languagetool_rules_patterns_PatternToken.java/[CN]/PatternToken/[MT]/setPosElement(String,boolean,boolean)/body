@@ -1,3 +1,0 @@
-{
-  this.posToken=new PosToken(posToken,regExp,negation);
-}

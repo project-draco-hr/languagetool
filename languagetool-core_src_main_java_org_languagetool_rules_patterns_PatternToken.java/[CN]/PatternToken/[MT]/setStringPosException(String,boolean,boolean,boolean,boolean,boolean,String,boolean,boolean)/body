@@ -1,3 +1,0 @@
-{
-  setStringPosException(token,regExp,inflected,negation,scopeNext,scopePrevious,posToken,posRegExp,posNegation,Boolean.valueOf(caseSensitive));
-}

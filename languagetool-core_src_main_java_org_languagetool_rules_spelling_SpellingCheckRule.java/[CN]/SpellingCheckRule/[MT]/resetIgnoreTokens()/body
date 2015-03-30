@@ -1,9 +1,0 @@
-{
-  wordsToBeIgnored.clear();
-  try {
-    init();
-  }
- catch (  IOException e) {
-    throw new RuntimeException(e);
-  }
-}

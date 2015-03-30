@@ -9,11 +9,11 @@
   try {
     stack.pop();
   }
- catch (  EmptyStackException expected) {
+ catch (  EmptyStackException ignored) {
   }
   try {
     stack.peek();
   }
- catch (  EmptyStackException expected) {
+ catch (  EmptyStackException ignored) {
   }
 }
