@@ -1,46 +1,16 @@
 {
-  String word=noun;
-  boolean doesRequireA=false;
-  boolean doesRequireAn=false;
-  boolean isException=false;
-  final String[] parts=word.split("[-']");
-  if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
-    word=parts[0];
+  AnalyzedTokenReadings token=new AnalyzedTokenReadings(new AnalyzedToken(origWord,null,null),0);
+  Determiner determiner=getCorrectDeterminerFor(token);
+  if (determiner == Determiner.A) {
+    return "a " + origWord;
   }
-  if (StringTools.isEmpty(word)) {
-    return word;
+ else   if (determiner == Determiner.AN) {
+    return "an " + origWord;
   }
-  final char tokenFirstChar=word.charAt(0);
-  if (getWordsRequiringA().contains(word.toLowerCase()) || getWordsRequiringA().contains(word)) {
-    isException=true;
-    doesRequireA=true;
-  }
-  if (getWordsRequiringAn().contains(word.toLowerCase()) || getWordsRequiringAn().contains(word)) {
-    if (isException) {
-      throw new IllegalStateException(word + " is listed in both det_a.txt and det_an.txt");
-    }
-    isException=true;
-    doesRequireAn=true;
-  }
-  if (!isException) {
-    if (StringTools.isAllUppercase(word) || StringTools.isMixedCase(word)) {
-      doesRequireAn=false;
-      doesRequireA=false;
-    }
- else     if (isVowel(tokenFirstChar)) {
-      doesRequireAn=true;
-    }
- else {
-      doesRequireA=true;
-    }
-  }
-  if (doesRequireA) {
-    return "a " + noun;
-  }
- else   if (doesRequireAn) {
-    return "an " + noun;
+ else   if (determiner == Determiner.A_OR_AN) {
+    return "a " + origWord;
   }
  else {
-    return noun;
+    return origWord;
   }
 }

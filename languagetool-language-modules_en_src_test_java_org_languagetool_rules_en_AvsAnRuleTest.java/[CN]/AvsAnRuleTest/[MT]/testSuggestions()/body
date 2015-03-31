@@ -4,4 +4,5 @@
   assertEquals("an hour",rule.suggestAorAn("hour"));
   assertEquals("an all-terrain",rule.suggestAorAn("all-terrain"));
   assertEquals("a UNESCO",rule.suggestAorAn("UNESCO"));
+  assertEquals("a historical",rule.suggestAorAn("historical"));
 }

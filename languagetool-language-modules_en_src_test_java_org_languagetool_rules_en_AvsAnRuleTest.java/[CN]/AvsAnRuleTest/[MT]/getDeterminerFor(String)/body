@@ -1,0 +1,4 @@
+{
+  AnalyzedTokenReadings token=new AnalyzedTokenReadings(new AnalyzedToken(word,"fake-postag","fake-lemma"),0);
+  return rule.getCorrectDeterminerFor(token);
+}

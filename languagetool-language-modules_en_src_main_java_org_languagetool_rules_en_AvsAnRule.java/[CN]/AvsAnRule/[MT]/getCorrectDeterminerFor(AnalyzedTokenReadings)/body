@@ -1,0 +1,38 @@
+{
+  String word=token.getToken();
+  Determiner determiner=Determiner.UNKNOWN;
+  String[] parts=word.split("[-']");
+  if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
+    word=parts[0];
+  }
+  if (token.isWhitespaceBefore() || !"-".equals(word)) {
+    word=cleanupPattern.matcher(word).replaceAll("");
+    if (StringTools.isEmpty(word)) {
+      return Determiner.UNKNOWN;
+    }
+  }
+  if (getWordsRequiringA().contains(word.toLowerCase()) || getWordsRequiringA().contains(word)) {
+    determiner=Determiner.A;
+  }
+  if (getWordsRequiringAn().contains(word.toLowerCase()) || getWordsRequiringAn().contains(word)) {
+    if (determiner == Determiner.A) {
+      determiner=Determiner.A_OR_AN;
+    }
+ else {
+      determiner=Determiner.AN;
+    }
+  }
+  if (determiner == Determiner.UNKNOWN) {
+    char tokenFirstChar=word.charAt(0);
+    if (StringTools.isAllUppercase(word) || StringTools.isMixedCase(word)) {
+      determiner=Determiner.UNKNOWN;
+    }
+ else     if (isVowel(tokenFirstChar)) {
+      determiner=Determiner.AN;
+    }
+ else {
+      determiner=Determiner.A;
+    }
+  }
+  return determiner;
+}

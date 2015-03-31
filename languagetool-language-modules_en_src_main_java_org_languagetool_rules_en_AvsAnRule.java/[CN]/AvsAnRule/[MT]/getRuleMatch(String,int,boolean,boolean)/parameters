@@ -1,4 +1,0 @@
-String prevToken
-int prevPos
-boolean doesRequireA
-boolean doesRequireAn

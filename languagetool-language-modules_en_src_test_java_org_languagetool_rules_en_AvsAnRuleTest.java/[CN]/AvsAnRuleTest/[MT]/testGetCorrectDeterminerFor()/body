@@ -1,0 +1,13 @@
+{
+  assertEquals(Determiner.A,getDeterminerFor("string"));
+  assertEquals(Determiner.A,getDeterminerFor("university"));
+  assertEquals(Determiner.A,getDeterminerFor("UNESCO"));
+  assertEquals(Determiner.A,getDeterminerFor("one-way"));
+  assertEquals(Determiner.AN,getDeterminerFor("interesting"));
+  assertEquals(Determiner.AN,getDeterminerFor("hour"));
+  assertEquals(Determiner.AN,getDeterminerFor("all-terrain"));
+  assertEquals(Determiner.A_OR_AN,getDeterminerFor("historical"));
+  assertEquals(Determiner.UNKNOWN,getDeterminerFor(""));
+  assertEquals(Determiner.UNKNOWN,getDeterminerFor("-way"));
+  assertEquals(Determiner.UNKNOWN,getDeterminerFor("camelCase"));
+}

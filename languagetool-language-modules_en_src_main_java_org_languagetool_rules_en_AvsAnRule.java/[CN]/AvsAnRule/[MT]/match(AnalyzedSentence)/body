@@ -1,61 +1,35 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<>();
   final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
-  String prevToken="";
-  int prevPos=0;
+  AnalyzedTokenReadings prevToken=null;
   for (int i=1; i < tokens.length; i++) {
-    String token=tokens[i].getToken();
-    boolean doesRequireA=false;
-    boolean doesRequireAn=false;
-    boolean isException=false;
-    final String[] parts=token.split("[-']");
-    if (parts.length >= 1 && !parts[0].equalsIgnoreCase("a")) {
-      token=parts[0];
-    }
-    if (tokens[i].isWhitespaceBefore() || !"-".equals(token)) {
-      token=token.replaceAll("[^??a-zA-Z0-9\\.;,:']","");
-      if (StringTools.isEmpty(token)) {
-        continue;
+    AnalyzedTokenReadings token=tokens[i];
+    String prevTokenStr=prevToken != null ? prevToken.getToken() : null;
+    if ("a".equalsIgnoreCase(prevTokenStr) || "an".equalsIgnoreCase(prevTokenStr)) {
+      Determiner determiner=getCorrectDeterminerFor(token);
+      if (prevTokenStr != null) {
+        String msg=null;
+        if ("a".equalsIgnoreCase(prevTokenStr) && determiner == Determiner.AN) {
+          String replacement=StringTools.startsWithUppercase(prevTokenStr) ? "An" : "an";
+          msg="Use <suggestion>" + replacement + "</suggestion> instead of '"+ prevTokenStr+ "' if the following "+ "word starts with a vowel sound, e.g. 'an article', 'an hour'";
+        }
+ else         if ("an".equalsIgnoreCase(prevTokenStr) && determiner == Determiner.A) {
+          String replacement=StringTools.startsWithUppercase(prevTokenStr) ? "A" : "a";
+          msg="Use <suggestion>" + replacement + "</suggestion> instead of '"+ prevTokenStr+ "' if the following "+ "word doesn't start with a vowel sound, e.g. 'a sentence', 'a university'";
+        }
+        if (msg != null) {
+          RuleMatch match=new RuleMatch(this,prevToken.getStartPos(),prevToken.getEndPos(),msg,"Wrong article");
+          ruleMatches.add(match);
+        }
       }
     }
-    final char tokenFirstChar=token.charAt(0);
-    if (getWordsRequiringA().contains(token.toLowerCase()) || getWordsRequiringA().contains(token)) {
-      isException=true;
-      doesRequireA=true;
-    }
-    if (getWordsRequiringAn().contains(token.toLowerCase()) || getWordsRequiringAn().contains(token)) {
-      if (isException) {
-        isException=true;
-        doesRequireA=false;
-        doesRequireAn=false;
-      }
- else {
-        isException=true;
-        doesRequireAn=true;
-      }
-    }
-    if (!isException) {
-      if (StringTools.isAllUppercase(token) || StringTools.isMixedCase(token)) {
-        doesRequireAn=false;
-        doesRequireA=false;
-      }
- else       if (isVowel(tokenFirstChar)) {
-        doesRequireAn=true;
-      }
- else {
-        doesRequireA=true;
-      }
-    }
-    RuleMatch match=getRuleMatch(prevToken,prevPos,doesRequireA,doesRequireAn);
-    if (match != null) {
-      ruleMatches.add(match);
-    }
-    if (tokens[i].hasPosTag("DT")) {
+    if (token.hasPosTag("DT")) {
       prevToken=token;
-      prevPos=tokens[i].getStartPos();
+    }
+ else     if (token.getToken().matches("[-\"()\\[\\]]+")) {
     }
  else {
-      prevToken="";
+      prevToken=null;
     }
   }
   return toRuleMatchArray(ruleMatches);
