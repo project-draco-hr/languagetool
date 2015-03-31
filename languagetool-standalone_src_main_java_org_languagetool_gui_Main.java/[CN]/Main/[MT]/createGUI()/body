@@ -116,7 +116,7 @@
 );
   autoDetectBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
-      boolean selected=(e.getStateChange() == ItemEvent.SELECTED);
+      boolean selected=e.getStateChange() == ItemEvent.SELECTED;
       languageBox.setEnabled(!selected);
       ltSupport.getConfig().setAutoDetect(selected);
       if (selected) {
