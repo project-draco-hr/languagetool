@@ -1,0 +1,3 @@
+{
+  return Pattern.compile("[\u00AD\u0301]");
+}
