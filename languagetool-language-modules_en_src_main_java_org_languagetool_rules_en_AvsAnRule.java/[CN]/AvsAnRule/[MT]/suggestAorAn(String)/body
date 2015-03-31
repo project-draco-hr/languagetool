@@ -11,11 +11,11 @@
     return word;
   }
   final char tokenFirstChar=word.charAt(0);
-  if (requiresA.contains(word.toLowerCase()) || requiresA.contains(word)) {
+  if (getWordsRequiringA().contains(word.toLowerCase()) || getWordsRequiringA().contains(word)) {
     isException=true;
     doesRequireA=true;
   }
-  if (requiresAn.contains(word.toLowerCase()) || requiresAn.contains(word)) {
+  if (getWordsRequiringAn().contains(word.toLowerCase()) || getWordsRequiringAn().contains(word)) {
     if (isException) {
       throw new IllegalStateException(word + " is listed in both det_a.txt and det_an.txt");
     }

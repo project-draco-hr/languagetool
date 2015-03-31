@@ -19,11 +19,11 @@
       }
     }
     final char tokenFirstChar=token.charAt(0);
-    if (requiresA.contains(token.toLowerCase()) || requiresA.contains(token)) {
+    if (getWordsRequiringA().contains(token.toLowerCase()) || getWordsRequiringA().contains(token)) {
       isException=true;
       doesRequireA=true;
     }
-    if (requiresAn.contains(token.toLowerCase()) || requiresAn.contains(token)) {
+    if (getWordsRequiringAn().contains(token.toLowerCase()) || getWordsRequiringAn().contains(token)) {
       if (isException) {
         isException=true;
         doesRequireA=false;
