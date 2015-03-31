@@ -1,0 +1,6 @@
+{
+  if (exceptions == null) {
+    exceptions=loadExceptions("/de/case_rule_exceptions.txt");
+  }
+  return exceptions;
+}
