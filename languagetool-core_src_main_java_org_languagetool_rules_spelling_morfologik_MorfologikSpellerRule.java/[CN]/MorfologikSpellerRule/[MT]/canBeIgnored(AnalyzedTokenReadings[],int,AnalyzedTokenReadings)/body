@@ -1,0 +1,3 @@
+{
+  return token.isSentenceStart() || token.isImmunized() || token.isIgnoredBySpeller()|| isUrl(token.getToken())|| (ignoreTaggedWords && token.isTagged())|| ignoreToken(tokens,idx);
+}
