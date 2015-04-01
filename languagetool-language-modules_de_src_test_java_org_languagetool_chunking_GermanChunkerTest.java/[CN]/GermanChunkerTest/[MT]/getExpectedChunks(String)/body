@@ -17,6 +17,9 @@
  else       if (chunk.equals("NPS")) {
         expectedChunks.add("NPS");
       }
+ else       if (chunk.equals("PP")) {
+        expectedChunks.add("PP");
+      }
  else {
         throw new RuntimeException("Unknown chunk type: '" + chunk + "'");
       }
