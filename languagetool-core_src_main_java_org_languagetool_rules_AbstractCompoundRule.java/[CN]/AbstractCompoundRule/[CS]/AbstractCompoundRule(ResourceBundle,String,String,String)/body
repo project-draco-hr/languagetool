@@ -1,7 +1,3 @@
 {
-  super.setCategory(new Category(messages.getString("category_misc")));
-  this.withHyphenMessage=withHyphenMessage;
-  this.withoutHyphenMessage=withoutHyphenMessage;
-  this.withOrWithoutHyphenMessage=withOrWithoutHyphenMessage;
-  setLocQualityIssueType(ITSIssueType.Misspelling);
+  this(messages,withHyphenMessage,withoutHyphenMessage,withOrWithoutHyphenMessage,null);
 }

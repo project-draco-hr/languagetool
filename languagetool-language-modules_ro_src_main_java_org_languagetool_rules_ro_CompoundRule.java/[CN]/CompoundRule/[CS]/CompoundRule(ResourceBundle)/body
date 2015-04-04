@@ -1,4 +1,3 @@
 {
-  super(messages,"Cuv??ntul se scrie cu cratim??.","Cuv??ntul se scrie legat.","Cuv??ntul se scrie legat sau cu cratim??.");
-  super.setShort("Problem?? de scriere (cratim??, spa??iu, etc.)");
+  super(messages,"Cuv??ntul se scrie cu cratim??.","Cuv??ntul se scrie legat.","Cuv??ntul se scrie legat sau cu cratim??.","Problem?? de scriere (cratim??, spa??iu, etc.)");
 }

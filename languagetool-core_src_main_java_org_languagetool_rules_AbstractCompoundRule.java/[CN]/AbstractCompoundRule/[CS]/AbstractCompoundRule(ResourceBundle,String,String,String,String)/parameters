@@ -1,0 +1,5 @@
+ResourceBundle messages
+String withHyphenMessage
+String withoutHyphenMessage
+String withOrWithoutHyphenMessage
+String shortMessage

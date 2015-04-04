@@ -1,5 +1,4 @@
 {
-  super(messages,"Ten wyraz pisze si?? z ????cznikiem.","Ten wyraz pisze si?? razem (bez spacji ani ????cznika).","Ten wyraz pisze si?? z ????cznikiem lub bez niego.");
-  super.setShort("Brak ????cznika lub zb??dny ????cznik");
+  super(messages,"Ten wyraz pisze si?? z ????cznikiem.","Ten wyraz pisze si?? razem (bez spacji ani ????cznika).","Ten wyraz pisze si?? z ????cznikiem lub bez niego.","Brak ????cznika lub zb??dny ????cznik");
   addExamplePair(Example.wrong("Witamy w <marker>Rabce Zdroju</marker>."),Example.fixed("Witamy w <marker>Rabce-Zdroju</marker>."));
 }
