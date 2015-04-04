@@ -1,4 +1,3 @@
 {
-  InputStream stream=JLanguageTool.getDataBroker().getFromRulesDirAsStream(path);
-  return new SimpleReplaceDataLoader().loadWords(stream);
+  return new SimpleReplaceDataLoader().loadWords(path);
 }

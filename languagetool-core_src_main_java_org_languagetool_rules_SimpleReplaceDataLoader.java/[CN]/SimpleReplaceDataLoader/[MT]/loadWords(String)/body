@@ -1,4 +1,5 @@
 {
+  InputStream stream=JLanguageTool.getDataBroker().getFromRulesDirAsStream(path);
   Map<String,List<String>> map=new HashMap<>();
   try (Scanner scanner=new Scanner(stream,"utf-8")){
     while (scanner.hasNextLine()) {
@@ -8,7 +9,7 @@
       }
       String[] parts=line.split("=");
       if (parts.length != 2) {
-        throw new RuntimeException("Could not load simple replacement data. Error in line '" + line + "', expected format 'word=replacement'");
+        throw new RuntimeException("Could not load simple replacement data from: " + path + ". "+ "Error in line '"+ line+ "', expected format 'word=replacement'");
       }
       String[] wrongForms=parts[0].split("\\|");
       List<String> replacements=Arrays.asList(parts[1].split("\\|"));
