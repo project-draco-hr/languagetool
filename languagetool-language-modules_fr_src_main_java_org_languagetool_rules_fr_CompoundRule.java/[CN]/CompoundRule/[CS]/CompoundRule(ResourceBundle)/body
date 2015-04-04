@@ -1,5 +1,5 @@
 {
-  super(messages,FILE_NAME,"??crivez avec un trait d???union.","??crivez avec un mot seul sans espace ni trait d???union.","??crivez avec un mot seul ou avec trait d???union.");
+  super(messages,"??crivez avec un trait d???union.","??crivez avec un mot seul sans espace ni trait d???union.","??crivez avec un mot seul ou avec trait d???union.");
   super.setShort("Erreur de trait d???union");
   addExamplePair(Example.wrong("Le <marker>Haut Rhin</marker>."),Example.fixed("Le <marker>Haut-Rhin</marker>."));
 }

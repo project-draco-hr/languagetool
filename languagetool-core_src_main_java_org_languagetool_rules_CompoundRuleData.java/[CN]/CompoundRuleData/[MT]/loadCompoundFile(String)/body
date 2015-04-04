@@ -1,6 +1,6 @@
 {
-  InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(fileName);
-  try (InputStreamReader reader=new InputStreamReader(stream,encoding);BufferedReader br=new BufferedReader(reader)){
+  InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(path);
+  try (InputStreamReader reader=new InputStreamReader(stream,"utf-8");BufferedReader br=new BufferedReader(reader)){
     String line;
     while ((line=br.readLine()) != null) {
       if (line.length() < 1 || line.charAt(0) == '#') {
@@ -8,11 +8,11 @@
       }
       line=line.replace('-',' ');
       final String[] parts=line.split(" ");
-      if (parts.length > MAX_TERMS) {
-        throw new IOException("Too many compound parts in file " + fileName + ": "+ line+ ", maximum allowed: "+ MAX_TERMS);
+      if (parts.length > AbstractCompoundRule.MAX_TERMS) {
+        throw new IOException("Too many compound parts in file " + path + ": "+ line+ ", maximum allowed: "+ AbstractCompoundRule.MAX_TERMS);
       }
       if (parts.length == 1) {
-        throw new IOException("Not a compound in file " + fileName + ": "+ line);
+        throw new IOException("Not a compound in file " + path + ": "+ line);
       }
       if (line.endsWith("+")) {
         line=removeLastCharacter(line);
@@ -23,7 +23,7 @@
         onlyDashSuggestion.add(line.toLowerCase());
       }
       if (incorrectCompounds.contains(line.toLowerCase())) {
-        throw new RuntimeException("Duplicated word in file " + fileName + ": "+ line);
+        throw new RuntimeException("Duplicated word in file " + path + ": "+ line);
       }
       incorrectCompounds.add(line.toLowerCase());
     }

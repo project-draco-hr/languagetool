@@ -1,5 +1,0 @@
-ResourceBundle messages
-String fileName
-String withHyphenMessage
-String withoutHyphenMessage
-String withOrWithoutHyphenMessage

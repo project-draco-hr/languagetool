@@ -25,15 +25,15 @@
     for (int k=stringsToCheck.size() - 1; k >= 0; k--) {
       final String stringToCheck=stringsToCheck.get(k);
       final String origStringToCheck=origStringsToCheck.get(k);
-      if (incorrectCompounds.contains(stringToCheck)) {
+      if (getCompoundRuleData().getIncorrectCompounds().contains(stringToCheck)) {
         final AnalyzedTokenReadings atr=stringToToken.get(stringToCheck);
         String msg=null;
         final List<String> replacement=new ArrayList<>();
-        if (!noDashSuggestion.contains(stringToCheck)) {
+        if (!getCompoundRuleData().getNoDashSuggestion().contains(stringToCheck)) {
           replacement.add(origStringToCheck.replace(' ','-'));
           msg=withHyphenMessage;
         }
-        if (isNotAllUppercase(origStringToCheck) && !onlyDashSuggestion.contains(stringToCheck)) {
+        if (isNotAllUppercase(origStringToCheck) && !getCompoundRuleData().getOnlyDashSuggestion().contains(stringToCheck)) {
           replacement.add(mergeCompound(origStringToCheck));
           msg=withoutHyphenMessage;
         }
