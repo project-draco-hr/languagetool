@@ -4,7 +4,7 @@
   try (InputStreamReader reader=new InputStreamReader(stream,"utf-8");BufferedReader br=new BufferedReader(reader)){
     String line;
     while ((line=br.readLine()) != null) {
-      if (line.length() == 0 || line.startsWith("#")) {
+      if (line.isEmpty() || line.startsWith("#")) {
         continue;
       }
       if (line.matches("^\\s.*") || line.matches(".*\\s$")) {

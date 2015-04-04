@@ -1,5 +1,5 @@
 {
-  if (explanationSuggestion.equals("") || explanationWrongWord.equals("")) {
+  if (explanationSuggestion.isEmpty() || explanationWrongWord.isEmpty()) {
     return getMessageString().replaceFirst("\\$SUGGESTION",suggestion).replaceFirst("\\$WRONGWORD",wrongWord);
   }
  else {
