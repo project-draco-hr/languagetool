@@ -19,8 +19,8 @@
       ruleMatch.setSuggestedReplacement(otherSpelling);
       ruleMatches.add(ruleMatch);
     }
- else     if (relevantWords.containsKey(token)) {
-      final String shouldNotAppear=relevantWords.get(token);
+ else     if (getWordMap().containsKey(token)) {
+      final String shouldNotAppear=getWordMap().get(token);
       final RuleMatch potentialRuleMatch=new RuleMatch(this,tmpToken.getStartPos(),tmpToken.getStartPos() + origToken.length(),token);
       shouldNotAppearWord.put(shouldNotAppear,potentialRuleMatch);
     }
