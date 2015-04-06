@@ -1,4 +1,5 @@
 {
   langAssert("es","L'Iberorrom??nicu o Iberromance ye un subgrupu de lling??es romances que posiblemente ...");
   langAssert(null,"Dodro ?? un concello da provincia da Coru??a pertencente ?? comarca do Sar ...");
+  langAssert("tl","Dhammaan garoomada caalamka ayaa loo isticmaalaa. Ururku waxa uu qabtaa ama uu ku shaqaleeyahay " + "isusocodka diyaaradaha aduunka ee iskaga gooshaya xuduudaha iyo ka hortagga wixii qalad ah iyo baaritaanka " + "marka ay dhacdo dhibaato la xiriirta dulimaad.");
 }
