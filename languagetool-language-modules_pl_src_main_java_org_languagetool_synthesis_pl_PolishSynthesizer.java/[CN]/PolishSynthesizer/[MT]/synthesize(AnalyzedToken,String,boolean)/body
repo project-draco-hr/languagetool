@@ -5,8 +5,10 @@
   String posTag=pos;
   if (posTagRegExp) {
     if (possibleTags == null) {
-      possibleTags=SynthesizerTools.loadWords(JLanguageTool.getDataBroker().getFromResourceDirAsStream(TAGS_FILE_NAME));
-    }
+      try (InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(TAGS_FILE_NAME)){
+        possibleTags=SynthesizerTools.loadWords(stream);
+      }
+     }
     final IStemmer synthesizer=new DictionaryLookup(getDictionary());
     final List<String> results=new ArrayList<>();
     boolean isNegated=false;

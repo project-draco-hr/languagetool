@@ -1,7 +1,6 @@
 {
   Set<String> result=new HashSet<>();
-  InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(path);
-  try (InputStreamReader reader=new InputStreamReader(stream,"utf-8");BufferedReader br=new BufferedReader(reader)){
+  try (InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(path);InputStreamReader reader=new InputStreamReader(stream,"utf-8");BufferedReader br=new BufferedReader(reader)){
     String line;
     while ((line=br.readLine()) != null) {
       if (line.isEmpty() || line.startsWith("#")) {

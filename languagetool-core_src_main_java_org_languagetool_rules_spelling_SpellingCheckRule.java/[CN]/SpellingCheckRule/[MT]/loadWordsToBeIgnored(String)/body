@@ -2,19 +2,17 @@
   if (!JLanguageTool.getDataBroker().resourceExists(ignoreFile)) {
     return;
   }
-  try (InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(ignoreFile)){
-    try (Scanner scanner=new Scanner(inputStream,"utf-8")){
-      while (scanner.hasNextLine()) {
-        final String line=scanner.nextLine();
-        if (isComment(line)) {
-          continue;
-        }
-        failOnSpace(ignoreFile,line);
-        addIgnoreWords(line,wordsToBeIgnored);
-        if (line.endsWith(".")) {
-          wordsWithDotsPresent=true;
-        }
+  try (InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(ignoreFile);Scanner scanner=new Scanner(inputStream,"utf-8")){
+    while (scanner.hasNextLine()) {
+      final String line=scanner.nextLine();
+      if (isComment(line)) {
+        continue;
+      }
+      failOnSpace(ignoreFile,line);
+      addIgnoreWords(line,wordsToBeIgnored);
+      if (line.endsWith(".")) {
+        wordsWithDotsPresent=true;
       }
     }
-   }
+  }
  }

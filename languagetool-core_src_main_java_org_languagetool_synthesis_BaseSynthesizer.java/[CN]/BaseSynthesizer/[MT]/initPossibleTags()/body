@@ -4,8 +4,10 @@
 synchronized (this) {
       tags=possibleTags;
       if (tags == null) {
-        possibleTags=SynthesizerTools.loadWords(JLanguageTool.getDataBroker().getFromResourceDirAsStream(tagFileName));
-      }
+        try (InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(tagFileName)){
+          possibleTags=SynthesizerTools.loadWords(stream);
+        }
+       }
     }
   }
 }
