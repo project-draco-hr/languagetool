@@ -1,6 +1,14 @@
 {
-  CommandLine cmdLine=SpellDictionaryBuilder.parseArguments(args);
-  checkUsageOrExit(SpellDictionaryBuilder.class.getSimpleName(),cmdLine);
+  CommandLine cmdLine=null;
+  try {
+    cmdLine=SpellDictionaryBuilder.parseArguments(args);
+  }
+ catch (  ParseException e) {
+    System.err.println(e.getMessage());
+    printUsage();
+    System.exit(1);
+  }
+  checkUsageOrExit(cmdLine);
   String languageCode=args[0];
   String plainTextFile=args[1];
   String infoFile=args[2];

@@ -1,0 +1,10 @@
+{
+  String[] args=cmdLine.getArgs();
+  if (args.length < 4 || !cmdLine.hasOption("o")) {
+    printUsage();
+  }
+  File dictFile=new File(args[2]);
+  if (!dictFile.exists()) {
+    throw new IOException("File does not exist: " + dictFile);
+  }
+}
