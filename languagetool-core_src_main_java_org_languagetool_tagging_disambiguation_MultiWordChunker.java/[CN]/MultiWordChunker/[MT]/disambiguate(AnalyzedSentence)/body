@@ -8,7 +8,7 @@
       continue;
     }
     if (i + 1 < anTokens.length && !anTokens[i + 1].isWhitespace()) {
-      tok=tok.concat(output[i + 1].getToken());
+      tok=tok + output[i + 1].getToken();
     }
     int myCount=0;
     while (myCount < 2) {

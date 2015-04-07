@@ -4,10 +4,7 @@
     String line;
     while ((line=reader.readLine()) != null) {
       line=line.trim();
-      if (line.isEmpty()) {
-        continue;
-      }
-      if (line.charAt(0) == '#') {
+      if (line.isEmpty() || line.charAt(0) == '#') {
         continue;
       }
       lines.add(line);
