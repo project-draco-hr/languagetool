@@ -11,10 +11,8 @@
   }
   Language newLanguage;
   if (Languages.isLanguageSupported(parts[1])) {
-    newLanguage=Languages.getLanguageForShortName(parts[1]).getClass().newInstance();
-    newLanguage.addExternalRuleFile(file.getAbsolutePath());
-    newLanguage.setName(parts[2].replace(".xml",""));
-    newLanguage.makeExternal();
+    Language baseLanguage=Languages.getLanguageForShortName(parts[1]).getClass().newInstance();
+    newLanguage=new ExtendedLanguage(baseLanguage,parts[2].replace(".xml",""),file);
   }
  else {
     newLanguage=new Language(){
@@ -38,8 +36,6 @@
       }
       @Override public String getName(){
         return parts[2].replace(".xml","");
-      }
-      @Override public void setName(      final String name){
       }
       @Override public List<Rule> getRelevantRules(      ResourceBundle messages){
         return Collections.emptyList();

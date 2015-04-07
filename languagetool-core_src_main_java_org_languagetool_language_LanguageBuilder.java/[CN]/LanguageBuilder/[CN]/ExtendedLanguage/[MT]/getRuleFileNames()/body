@@ -1,0 +1,6 @@
+{
+  final List<String> ruleFiles=new ArrayList<>();
+  ruleFiles.addAll(baseLanguage.getRuleFileNames());
+  ruleFiles.add(ruleFile.getAbsolutePath());
+  return ruleFiles;
+}

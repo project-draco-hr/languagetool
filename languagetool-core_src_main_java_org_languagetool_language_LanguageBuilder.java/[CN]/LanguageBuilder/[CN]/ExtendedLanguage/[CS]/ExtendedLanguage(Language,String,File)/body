@@ -1,0 +1,5 @@
+{
+  this.baseLanguage=baseLanguage;
+  this.name=name;
+  this.ruleFile=ruleFile;
+}
