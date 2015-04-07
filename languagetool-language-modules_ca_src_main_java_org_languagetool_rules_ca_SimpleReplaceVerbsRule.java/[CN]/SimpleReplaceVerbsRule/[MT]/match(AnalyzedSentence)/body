@@ -28,6 +28,9 @@
  else           if (lexeme.endsWith("g??")) {
             lexeme=lexeme.substring(0,lexeme.length() - 2).concat("gu");
           }
+ else           if (lexeme.endsWith("gu")) {
+            lexeme=lexeme.substring(0,lexeme.length() - 2).concat("g");
+          }
         }
         infinitive=lexeme.concat("ar");
         if (wrongWords.containsKey(infinitive)) {
