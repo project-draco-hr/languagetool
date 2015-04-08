@@ -4,7 +4,7 @@
     parser.parseOptions(new String[]{});
     fail();
   }
- catch (  WrongParameterNumberException expected) {
+ catch (  WrongParameterNumberException ignored) {
   }
   final CommandLineOptions commandLineOptions=parser.parseOptions(new String[]{"--help"});
   assertTrue(commandLineOptions.isPrintUsage());

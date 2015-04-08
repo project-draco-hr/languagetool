@@ -3,7 +3,7 @@
     assertEquals(null,StringTools.trimWhitespace(null));
     fail();
   }
- catch (  NullPointerException expected) {
+ catch (  NullPointerException ignored) {
   }
   assertEquals("",StringTools.trimWhitespace(""));
   assertEquals("",StringTools.trimWhitespace(" "));

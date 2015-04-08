@@ -4,6 +4,6 @@
     patternRuleQueryBuilder.buildRelaxedQuery(makeRule("<token skip='-1'><exception>and</exception></token>",false));
     fail("Exception should be thrown for unsupported PatternRule");
   }
- catch (  UnsupportedPatternRuleException expected) {
+ catch (  UnsupportedPatternRuleException ignored) {
   }
 }

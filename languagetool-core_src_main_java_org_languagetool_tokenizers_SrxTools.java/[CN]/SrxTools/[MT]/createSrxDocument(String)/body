@@ -1,0 +1,13 @@
+{
+  try {
+    try (InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(path);BufferedReader srxReader=new BufferedReader(new InputStreamReader(inputStream,"utf-8"))){
+      Map<String,Object> parserParameters=new HashMap<>();
+      parserParameters.put(Srx2SaxParser.VALIDATE_PARAMETER,true);
+      SrxParser srxParser=new Srx2SaxParser(parserParameters);
+      return srxParser.parse(srxReader);
+    }
+   }
+ catch (  IOException e) {
+    throw new RuntimeException("Could not load SRX rules",e);
+  }
+}

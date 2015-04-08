@@ -4,6 +4,6 @@
     new HTTPSServerConfig(("--config " + propertyFile).split(" "));
     fail();
   }
- catch (  Exception expected) {
+ catch (  Exception ignored) {
   }
 }

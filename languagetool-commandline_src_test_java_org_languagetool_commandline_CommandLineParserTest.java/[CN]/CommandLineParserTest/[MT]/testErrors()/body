@@ -4,6 +4,6 @@
     parser.parseOptions(new String[]{"--apply","--taggeronly"});
     fail();
   }
- catch (  IllegalArgumentException expected) {
+ catch (  IllegalArgumentException ignored) {
   }
 }

@@ -1,11 +1,5 @@
 {
   this.language=Objects.requireNonNull(language);
-  try {
-    InputStream stream=Tools.getStream(srxInClassPath);
-    this.srxDocument=SrxTools.createSrxDocument(stream);
-  }
- catch (  IOException e) {
-    throw new RuntimeException(e);
-  }
+  this.srxDocument=SrxTools.createSrxDocument(srxInClassPath);
   setSingleLineBreaksMarksParagraph(false);
 }

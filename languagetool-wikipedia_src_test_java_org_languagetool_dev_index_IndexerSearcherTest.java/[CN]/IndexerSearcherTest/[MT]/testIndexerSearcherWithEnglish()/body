@@ -17,6 +17,6 @@
     errorSearcher.findRuleMatchesOnIndex(getFirstRule("Invalid Rule Id",language),language);
     fail("Exception should be thrown for invalid rule id.");
   }
- catch (  PatternRuleNotFoundException expected) {
+ catch (  PatternRuleNotFoundException ignored) {
   }
 }

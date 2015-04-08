@@ -9,6 +9,6 @@
     errorSearcher.findRuleMatchesOnIndex(rule1,new English());
     fail();
   }
- catch (  UnsupportedPatternRuleException expected) {
+ catch (  UnsupportedPatternRuleException ignored) {
   }
 }

@@ -1,9 +1,0 @@
-{
-  if (srxReader != null) {
-    try {
-      srxReader.close();
-    }
- catch (    IOException e) {
-    }
-  }
-}
