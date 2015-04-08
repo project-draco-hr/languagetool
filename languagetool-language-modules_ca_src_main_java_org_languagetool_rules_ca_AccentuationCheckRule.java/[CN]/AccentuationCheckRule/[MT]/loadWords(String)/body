@@ -4,10 +4,7 @@
   try (Scanner scanner=new Scanner(inputStream,FILE_ENCODING)){
     while (scanner.hasNextLine()) {
       final String line=scanner.nextLine().trim();
-      if (line.length() < 1) {
-        continue;
-      }
-      if (line.charAt(0) == '#') {
+      if (line.isEmpty() || line.charAt(0) == '#') {
         continue;
       }
       final String[] parts=line.split(";");
