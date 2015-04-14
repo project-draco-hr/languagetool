@@ -19,11 +19,11 @@
     xml.append(subId);
     xml.append(" msg=\"").append(escapeXMLForAPIOutput(msg)).append('"');
     String context=contextTools.getContext(match.getFromPos(),match.getToPos(),text);
-    xml.append(" replacements=\"").append(escapeXMLForAPIOutput(StringTools.listToString(match.getSuggestedReplacements(),"#"))).append('"');
+    xml.append(" replacements=\"").append(escapeXMLForAPIOutput(listToString(match.getSuggestedReplacements(),"#"))).append('"');
     int contextOffset=context.indexOf(startMarker);
     context=context.replaceFirst(startMarker,"");
     context=context.replaceAll("[\n\r]"," ");
-    xml.append(" context=\"").append(StringTools.escapeForXmlAttribute(context)).append('"').append(" contextoffset=\"").append(contextOffset).append('"').append(" offset=\"").append(match.getFromPos()).append('"').append(" errorlength=\"").append(match.getToPos() - match.getFromPos()).append('"');
+    xml.append(" context=\"").append(escapeForXmlAttribute(context)).append('"').append(" contextoffset=\"").append(contextOffset).append('"').append(" offset=\"").append(match.getFromPos()).append('"').append(" errorlength=\"").append(match.getToPos() - match.getFromPos()).append('"');
     if (match.getRule().getUrl() != null) {
       xml.append(" url=\"").append(escapeXMLForAPIOutput(match.getRule().getUrl().toString())).append('"');
     }

@@ -8,7 +8,7 @@
   match.setLine(44);
   match.setEndLine(45);
   matches.add(match);
-  final String xml=SERIALIZER.ruleMatchesToXml(matches,text,5,language);
+  final String xml=SERIALIZER.ruleMatchesToXml(matches,text,5,NORMAL_XML,language);
   assertTrue(xml.startsWith("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"));
   final Pattern matchesPattern=Pattern.compile(".*<matches software=\"LanguageTool\" version=\"" + JLanguageTool.VERSION + "\" buildDate=\".*?\">.*",Pattern.DOTALL);
   final Matcher matcher=matchesPattern.matcher(xml);

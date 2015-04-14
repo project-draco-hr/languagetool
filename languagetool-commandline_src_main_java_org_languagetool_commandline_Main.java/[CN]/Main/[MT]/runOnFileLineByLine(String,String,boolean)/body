@@ -23,6 +23,7 @@
   int lineOffset=0;
   int tmpLineOffset=0;
   final List<String> unknownWords=new ArrayList<>();
+  handleLine(XmlPrintMode.START_XML,0,new StringBuilder());
   StringBuilder sb=new StringBuilder();
   for (int ruleIndex=0; !rules.isEmpty() && ruleIndex < runCount; ruleIndex++) {
     currentRule=rules.get(ruleIndex);
@@ -48,7 +49,7 @@
         sb.append('\n');
         tmpLineOffset++;
         if (isBreakPoint(sb,line)) {
-          matches=handleLine(matches,lineOffset,sb);
+          matches+=handleLine(XmlPrintMode.CONTINUE_XML,lineOffset,sb);
           sentences+=lt.getSentenceCount();
           if (profileRules) {
             sentences+=lt.sentenceTokenize(sb.toString()).size();
@@ -60,8 +61,8 @@
       }
     }
   finally {
+      matches+=handleLine(XmlPrintMode.END_XML,tmpLineOffset - 1,sb);
       if (sb.length() > 0) {
-        matches=handleLine(matches,tmpLineOffset - 1,sb);
         sentences+=lt.getSentenceCount();
         if (profileRules) {
           sentences+=lt.sentenceTokenize(sb.toString()).size();

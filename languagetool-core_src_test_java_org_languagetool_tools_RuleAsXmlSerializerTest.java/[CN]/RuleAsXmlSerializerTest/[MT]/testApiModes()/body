@@ -1,0 +1,14 @@
+{
+  String xmlStart=SERIALIZER.ruleMatchesToXml(Collections.<RuleMatch>emptyList(),"Fake",5,START_XML,language);
+  assertThat(StringUtils.countMatches(xmlStart,"<matches"),is(1));
+  assertThat(StringUtils.countMatches(xmlStart,"</matches>"),is(0));
+  String xmlMiddle=SERIALIZER.ruleMatchesToXml(Collections.<RuleMatch>emptyList(),"Fake",5,CONTINUE_XML,language);
+  assertThat(StringUtils.countMatches(xmlMiddle,"<matches"),is(0));
+  assertThat(StringUtils.countMatches(xmlMiddle,"</matches>"),is(0));
+  String xmlEnd=SERIALIZER.ruleMatchesToXml(Collections.<RuleMatch>emptyList(),"Fake",5,END_XML,language);
+  assertThat(StringUtils.countMatches(xmlEnd,"<matches"),is(0));
+  assertThat(StringUtils.countMatches(xmlEnd,"</matches>"),is(1));
+  String xml=SERIALIZER.ruleMatchesToXml(Collections.<RuleMatch>emptyList(),"Fake",5,NORMAL_XML,language);
+  assertThat(StringUtils.countMatches(xml,"<matches"),is(1));
+  assertThat(StringUtils.countMatches(xml,"</matches>"),is(1));
+}

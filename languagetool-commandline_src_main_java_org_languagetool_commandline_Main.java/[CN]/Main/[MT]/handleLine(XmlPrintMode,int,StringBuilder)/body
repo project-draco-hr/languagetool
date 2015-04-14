@@ -1,0 +1,18 @@
+{
+  int matches=0;
+  String string=sb.toString();
+  string=filterXML(string);
+  if (applySuggestions) {
+    System.out.print(Tools.correctText(string,lt));
+  }
+ else   if (profileRules) {
+    matches+=Tools.profileRulesOnLine(string,lt,currentRule);
+  }
+ else   if (!taggerOnly) {
+    matches+=CommandLineTools.checkText(string,lt,apiFormat,-1,lineOffset,matches,mode);
+  }
+ else {
+    CommandLineTools.tagText(string,lt);
+  }
+  return matches;
+}

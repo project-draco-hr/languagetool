@@ -5,9 +5,9 @@
   if (!apiFormat && !applySuggestions) {
     System.out.println("Working on " + filename + "...");
   }
-  final String fileContents=StringTools.streamToString(new FileInputStream(filename),encoding != null ? encoding : Charset.defaultCharset().name());
+  final String fileContents=streamToString(new FileInputStream(filename),encoding != null ? encoding : Charset.defaultCharset().name());
   if (xmlFiltering) {
-    return StringTools.filterXML(fileContents);
+    return filterXML(fileContents);
   }
  else {
     return fileContents;

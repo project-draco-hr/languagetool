@@ -1,0 +1,14 @@
+{
+  String xmlSnippet=ruleMatchesToXmlSnippet(ruleMatches,text,contextSize);
+switch (xmlMode) {
+case START_XML:
+    return getXmlStart(lang,null) + xmlSnippet;
+case CONTINUE_XML:
+  return xmlSnippet;
+case END_XML:
+return xmlSnippet + getXmlEnd();
+case NORMAL_XML:
+return getXmlStart(lang,null) + xmlSnippet + getXmlEnd();
+}
+throw new IllegalArgumentException("Unknown XML mode: " + xmlMode);
+}
