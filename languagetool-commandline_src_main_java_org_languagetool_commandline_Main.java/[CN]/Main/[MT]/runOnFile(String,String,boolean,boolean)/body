@@ -8,7 +8,7 @@
         language=new English();
       }
       changeLanguage(language,motherTongue,disabledRules,enabledRules);
-      System.out.println("Using " + language.getName() + " for file "+ filename);
+      System.err.println("Using " + language.getName() + " for file "+ filename);
     }
     final File file=new File(filename);
     oneTime=file.length() < MAX_FILE_SIZE || bitextMode;

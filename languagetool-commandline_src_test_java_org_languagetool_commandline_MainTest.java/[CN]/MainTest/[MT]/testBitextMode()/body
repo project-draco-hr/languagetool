@@ -2,9 +2,10 @@
   final File input=writeToTempFile("This is not actual.\tTo nie jest aktualne.\n" + "Test\tTest\n" + "ab\tVery strange data indeed, much longer than input");
   final String[] args={"-l","pl","-c","UTF-8","--bitext","-m","en",input.getAbsolutePath()};
   Main.main(args);
-  final String output=new String(this.out.toByteArray());
-  assertTrue(output.indexOf("Expected text language: Polish") == 0);
-  assertTrue(output.contains("Message: Hint: \"aktualny\" (Polish) means \"current\", \"(the) latest\", \"up-to-date\" (English). Did you mean 'rzeczywisty'?"));
-  assertTrue(output.contains("Line 1, column 32, Rule ID: ACTUAL"));
-  assertTrue(output.contains("Line 3, column 3, Rule ID: TRANSLATION_LENGTH"));
+  final String stdout=new String(this.out.toByteArray());
+  final String stderr=new String(this.err.toByteArray());
+  assertTrue(stderr.indexOf("Expected text language: Polish") == 0);
+  assertTrue(stdout.contains("Message: Hint: \"aktualny\" (Polish) means \"current\", \"(the) latest\", \"up-to-date\" (English). Did you mean 'rzeczywisty'?"));
+  assertTrue(stdout.contains("Line 1, column 32, Rule ID: ACTUAL"));
+  assertTrue(stdout.contains("Line 3, column 3, Rule ID: TRANSLATION_LENGTH"));
 }

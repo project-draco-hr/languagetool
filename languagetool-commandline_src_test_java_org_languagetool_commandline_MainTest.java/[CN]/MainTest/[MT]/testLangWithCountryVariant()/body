@@ -2,7 +2,8 @@
   final File input=writeToTempFile("This is modelling.");
   final String[] args={"-l","en-US",input.getAbsolutePath()};
   Main.main(args);
-  final String output=new String(this.out.toByteArray());
-  assertTrue(output.indexOf("Expected text language: English (US)") == 0);
-  assertTrue(output.contains("MORFOLOGIK_RULE_EN_US"));
+  final String stdout=new String(this.out.toByteArray());
+  final String stderr=new String(this.err.toByteArray());
+  assertTrue(stderr.indexOf("Expected text language: English (US)") == 0);
+  assertTrue(stdout.contains("MORFOLOGIK_RULE_EN_US"));
 }

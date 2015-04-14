@@ -4,10 +4,10 @@
   }
   if (!apiFormat && !applySuggestions) {
     if (isStdIn(filename)) {
-      System.out.println("Working on STDIN...");
+      System.err.println("Working on STDIN...");
     }
  else {
-      System.out.println("Working on " + filename + "...");
+      System.err.println("Working on " + filename + "...");
     }
   }
   if (profileRules && isStdIn(filename)) {
@@ -42,7 +42,7 @@
             System.err.println("Could not detect language well enough, using English");
             language=new English();
           }
-          System.out.println("Language used is: " + language.getName());
+          System.err.println("Language used is: " + language.getName());
           language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(singleLineBreakMarksParagraph);
           changeLanguage(language,motherTongue,disabledRules,enabledRules);
         }

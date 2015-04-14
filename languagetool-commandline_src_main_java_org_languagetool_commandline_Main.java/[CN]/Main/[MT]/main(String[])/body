@@ -64,7 +64,7 @@ catch (  UnknownParameterException e) {
   }
   if (languageHint != null) {
     String spellHint=prg.isSpellCheckingActive() ? "" : " (no spell checking active, specify a language variant like 'en-GB' if available)";
-    System.out.println(languageHint + spellHint);
+    System.err.println(languageHint + spellHint);
   }
   prg.setListUnknownWords(options.isListUnknown());
   if (options.isProfile()) {

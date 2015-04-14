@@ -1,7 +1,8 @@
 {
   final String[] args={"-l","pl",getTestFilePath()};
   Main.main(args);
-  final String output=new String(this.out.toByteArray());
-  assertTrue(output.indexOf("Expected text language: Polish") == 0);
-  assertTrue(!output.contains("Unknown words: [This, an, is]"));
+  final String stdout=new String(this.out.toByteArray());
+  final String stderr=new String(this.err.toByteArray());
+  assertTrue(stderr.indexOf("Expected text language: Polish") == 0);
+  assertTrue(!stdout.contains("Unknown words: [This, an, is]"));
 }
