@@ -2,7 +2,7 @@
   final List<RuleMatch> matches=new ArrayList<>();
   final String text="This is a test sentence.";
   final List<PatternToken> patternTokens=Collections.emptyList();
-  final Rule patternRule=new PatternRule("MY_ID",language,patternTokens,"my description","my message","short message");
+  final Rule patternRule=new PatternRule("MY_ID",LANG,patternTokens,"my description","my message","short message");
   patternRule.setCategory(new Category("MyCategory"));
   final RuleMatch match=new RuleMatch(patternRule,8,10,"myMessage");
   match.setColumn(99);
@@ -10,6 +10,6 @@
   match.setLine(44);
   match.setEndLine(45);
   matches.add(match);
-  final String xml=SERIALIZER.ruleMatchesToXml(matches,text,5,language,language);
+  final String xml=SERIALIZER.ruleMatchesToXml(matches,text,5,LANG,LANG);
   assertTrue(xml.contains(">\n" + "<error fromy=\"44\" fromx=\"98\" toy=\"45\" tox=\"99\" ruleId=\"MY_ID\" msg=\"myMessage\" " + "replacements=\"\" context=\"...s is a test ...\" contextoffset=\"8\" offset=\"8\" errorlength=\"2\" category=\"MyCategory\" "+ "locqualityissuetype=\"uncategorized\"/>\n"+ "</matches>\n"));
 }
