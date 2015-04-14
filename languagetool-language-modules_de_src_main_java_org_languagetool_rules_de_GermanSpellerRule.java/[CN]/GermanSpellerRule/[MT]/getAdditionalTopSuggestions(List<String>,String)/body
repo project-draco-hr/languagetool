@@ -26,7 +26,7 @@
   }
  else   if (!StringTools.startsWithUppercase(word)) {
     String ucWord=StringTools.uppercaseFirstChar(word);
-    if (!hunspellDict.misspelled(ucWord)) {
+    if (!suggestions.contains(ucWord) && !hunspellDict.misspelled(ucWord)) {
       return Collections.singletonList(ucWord);
     }
   }
