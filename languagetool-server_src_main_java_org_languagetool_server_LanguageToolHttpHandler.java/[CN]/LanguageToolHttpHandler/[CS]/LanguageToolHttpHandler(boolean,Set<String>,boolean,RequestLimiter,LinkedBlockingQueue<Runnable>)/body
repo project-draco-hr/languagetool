@@ -5,6 +5,5 @@
   this.requestLimiter=requestLimiter;
   this.workQueue=workQueue;
   this.executorService=Executors.newCachedThreadPool();
-  this.ownIps=getServersOwnIps();
   this.identifier=new LanguageIdentifier();
 }
