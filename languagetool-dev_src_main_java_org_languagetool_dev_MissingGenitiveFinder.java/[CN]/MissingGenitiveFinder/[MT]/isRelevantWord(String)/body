@@ -1,0 +1,3 @@
+{
+  return word.endsWith("s") && !word.endsWith("es") && !word.endsWith("ens")&& !word.endsWith("ems")&& !word.endsWith("els")&& !word.endsWith("ers")&& !word.endsWith("lings")&& !word.endsWith("leins")&& !word.endsWith("chens")&& !word.endsWith("erns")&& !word.endsWith("elns")&& !word.endsWith("os")&& !word.endsWith("us")&& !word.endsWith("is")&& !word.endsWith("as")&& !word.endsWith("ols");
+}

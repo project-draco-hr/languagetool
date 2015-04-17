@@ -1,0 +1,3 @@
+{
+  occurrences=loadOccurrences("/media/Data/google-ngram/de/1gram-aggregated/all_without_underscore");
+}

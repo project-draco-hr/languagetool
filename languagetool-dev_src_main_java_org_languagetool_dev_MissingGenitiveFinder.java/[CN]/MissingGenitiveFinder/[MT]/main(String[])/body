@@ -1,0 +1,4 @@
+{
+  MissingGenitiveFinder prg=new MissingGenitiveFinder();
+  prg.run();
+}

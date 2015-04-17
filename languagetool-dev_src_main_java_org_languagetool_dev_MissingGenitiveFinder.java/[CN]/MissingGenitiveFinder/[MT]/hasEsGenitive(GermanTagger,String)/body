@@ -1,0 +1,10 @@
+{
+  String esForm=word.replaceFirst("s$","es");
+  List<AnalyzedTokenReadings> readings=tagger.tag(Collections.singletonList(esForm));
+  for (  AnalyzedTokenReadings reading : readings) {
+    if (reading.isTagged()) {
+      return true;
+    }
+  }
+  return false;
+}

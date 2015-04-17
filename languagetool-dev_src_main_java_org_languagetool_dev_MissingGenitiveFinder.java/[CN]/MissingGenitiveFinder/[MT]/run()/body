@@ -1,0 +1,25 @@
+{
+  GermanTagger tagger=new GermanTagger();
+  final FSA fsa=FSA.read(JLanguageTool.getDataBroker().getFromResourceDirAsStream(DICT_FILENAME));
+  int i=0;
+  for (  ByteBuffer buffer : fsa) {
+    final byte[] sequence=new byte[buffer.remaining()];
+    buffer.get(sequence);
+    final String output=new String(sequence,"iso-8859-1");
+    boolean isNoun=output.contains("+SUB:") || (output.contains("+EIG:") && output.contains("COU"));
+    if (isNoun && output.contains(":GEN:")) {
+      final String[] parts=output.split("\\+");
+      String word=parts[0];
+      String esWord=parts[0].replaceFirst("s$","es");
+      if (isRelevantWord(word)) {
+        boolean hasEsGenitive=hasEsGenitive(tagger,word);
+        boolean ignore1=word.endsWith("els") && !word.endsWith("iels");
+        Integer occurrence=occurrences.get(esWord);
+        if (!hasEsGenitive && !ignore1 && occurrence != null) {
+          System.out.println(esWord + "\t" + word.replaceFirst("s$","")+ "\t"+ parts[2]);
+          i++;
+        }
+      }
+    }
+  }
+}
