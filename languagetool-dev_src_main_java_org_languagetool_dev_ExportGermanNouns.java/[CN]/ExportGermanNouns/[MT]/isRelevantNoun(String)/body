@@ -1,0 +1,4 @@
+{
+  boolean isNoun=output.contains("SUB:") || (output.contains("EIG:") && output.contains("COU"));
+  return isNoun && !output.contains(":ADJ") && !StringTools.isAllUppercase(output);
+}

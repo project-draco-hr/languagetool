@@ -1,0 +1,12 @@
+{
+  final Set<String> set=new HashSet<>();
+  List<String> lines=Files.readAllLines(FileSystems.getDefault().getPath(ADDED_DICT_FILENAME),Charsets.UTF_8);
+  for (  String line : lines) {
+    if (isRelevantNoun(line)) {
+      final String[] parts=line.split("\t");
+      final String term=parts[0].toLowerCase();
+      set.add(term);
+    }
+  }
+  return set;
+}

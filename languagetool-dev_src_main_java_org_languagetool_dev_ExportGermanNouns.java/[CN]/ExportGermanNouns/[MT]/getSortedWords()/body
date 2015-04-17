@@ -1,6 +1,9 @@
 {
-  Set<String> words=getWords();
-  List<String> sortedWords=new ArrayList<>(words);
+  Set<String> words1=getBinaryDictWords();
+  Set<String> words2=getAddedDictWords();
+  List<String> sortedWords=new ArrayList<>();
+  sortedWords.addAll(words1);
+  sortedWords.addAll(words2);
   Collections.sort(sortedWords);
   return sortedWords;
 }
