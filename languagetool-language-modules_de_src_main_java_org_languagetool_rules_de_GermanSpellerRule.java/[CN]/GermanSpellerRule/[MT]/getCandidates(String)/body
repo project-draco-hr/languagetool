@@ -1,0 +1,10 @@
+{
+  List<String> suggestions=new ArrayList<>();
+  List<List<String>> partList=splitter.getAllSplits(word);
+  final List<String> candidates=new ArrayList<>();
+  for (  List<String> parts : partList) {
+    candidates.addAll(super.getCandidates(parts));
+  }
+  suggestions.addAll(candidates);
+  return suggestions;
+}

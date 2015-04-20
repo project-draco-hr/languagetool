@@ -3,7 +3,7 @@
     try {
       final AbstractWordSplitter wordSplitter=new GermanWordSplitter(false);
       wordSplitter.setStrictMode(false);
-      ((GermanWordSplitter)wordSplitter).setMinimumWordLength(3);
+      wordSplitter.setMinimumWordLength(3);
       compoundTokenizer=new CompoundWordTokenizer(){
         @Override public List<String> tokenize(        String word){
           return new ArrayList<>(wordSplitter.splitWord(word));

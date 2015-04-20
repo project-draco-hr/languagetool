@@ -2,28 +2,7 @@
   if (needsInit) {
     init();
   }
-  final List<String> candidates=new ArrayList<>();
-  final List<String> parts=wordSplitter.tokenize(word);
-  int partCount=0;
-  for (  String part : parts) {
-    if (hunspellDict.misspelled(part)) {
-      List<String> suggestions=morfoSpeller.getSuggestions(part);
-      if (suggestions.size() == 0) {
-        suggestions=morfoSpeller.getSuggestions(StringTools.uppercaseFirstChar(part));
-      }
-      for (      String suggestion : suggestions) {
-        final List<String> partsCopy=new ArrayList<>(parts);
-        if (partCount > 0 && !parts.get(partCount - 1).endsWith("-")) {
-          partsCopy.set(partCount,suggestion.toLowerCase());
-        }
- else {
-          partsCopy.set(partCount,suggestion);
-        }
-        candidates.add(StringTools.listToString(partsCopy,""));
-      }
-    }
-    partCount++;
-  }
+  final List<String> candidates=getCandidates(word);
   final List<String> suggestions=getCorrectWords(candidates);
   final List<String> noSplitSuggestions=morfoSpeller.getSuggestions(word);
   if (StringTools.startsWithUppercase(word) && !StringTools.isAllUppercase(word)) {

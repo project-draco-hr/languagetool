@@ -2,4 +2,10 @@
   super(messages,language,language.getNonStrictCompoundSplitter(),getSpeller(language));
   addExamplePair(Example.wrong("LanguageTool kann mehr als eine <marker>nromale</marker> Rechtschreibpr??fung."),Example.fixed("LanguageTool kann mehr als eine <marker>normale</marker> Rechtschreibpr??fung."));
   compoundTokenizer=language.getStrictCompoundTokenizer();
+  try {
+    splitter=new GermanWordSplitter(false);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
 }
