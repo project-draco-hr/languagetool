@@ -5,7 +5,9 @@
   }
   RuleMatch ruleMatch=super.createRuleMatch(prevToken,token,prevPos,pos,msg);
   if (doubleI) {
-    ruleMatch.getSuggestedReplacements().add("I ??");
+    List<String> replacements=new ArrayList<>(ruleMatch.getSuggestedReplacements());
+    replacements.add("I ??");
+    ruleMatch.setSuggestedReplacements(replacements);
   }
   return ruleMatch;
 }

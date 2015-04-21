@@ -1,5 +1,5 @@
 {
-  final List<String> replacements=match.getSuggestedReplacements();
+  final List<String> replacements=new ArrayList<>(match.getSuggestedReplacements());
   boolean hasRealReplacements=replacements.size() > 0;
   if (!hasRealReplacements) {
     String plainText=textMapping.getPlainText();
