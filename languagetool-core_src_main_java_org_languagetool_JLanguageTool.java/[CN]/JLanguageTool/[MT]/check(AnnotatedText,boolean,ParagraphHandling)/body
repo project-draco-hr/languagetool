@@ -9,6 +9,9 @@
   }
   final List<Rule> allRules=getAllRules();
   printIfVerbose(allRules.size() + " rules activated for language " + language);
+  for (  final Rule rule : allRules) {
+    rule.reset();
+  }
   sentenceCount=sentences.size();
   unknownWords=new HashSet<>();
   final List<AnalyzedSentence> analyzedSentences=analyzeSentences(sentences);

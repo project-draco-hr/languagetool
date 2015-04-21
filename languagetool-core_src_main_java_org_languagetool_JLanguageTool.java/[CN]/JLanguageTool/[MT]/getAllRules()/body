@@ -2,8 +2,5 @@
   final List<Rule> rules=new ArrayList<>();
   rules.addAll(builtinRules);
   rules.addAll(userRules);
-  for (  final Rule rule : rules) {
-    rule.reset();
-  }
   return rules;
 }
