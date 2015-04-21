@@ -1,5 +1,5 @@
 {
-  Set<String> set=new TreeSet<>();
+  Set<String> set=new HashSet<>();
   InputStream stream=JLanguageTool.getDataBroker().getFromRulesDirAsStream(path);
   try (Scanner scanner=new Scanner(stream,"utf-8")){
     while (scanner.hasNextLine()) {
