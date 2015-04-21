@@ -1,16 +1,14 @@
 {
-  InputStream xmlStream=this.getClass().getResourceAsStream(filename);
-  if (xmlStream == null) {
-    throw new IOException("Not found in classpath: " + filename);
+  try (InputStream xmlStream=this.getClass().getResourceAsStream(filename)){
+    if (xmlStream == null) {
+      throw new IOException("Not found in classpath: " + filename);
+    }
+    try {
+      final String xml=StringTools.readStream(xmlStream,"utf-8");
+      validateInternal(xml,dtdPath,docType);
+    }
+ catch (    Exception e) {
+      throw new IOException("Cannot load or parse '" + filename + "'",e);
+    }
   }
-  try {
-    final String xml=StringTools.readStream(xmlStream,"utf-8");
-    validateInternal(xml,dtdPath,docType);
-  }
- catch (  Exception e) {
-    throw new IOException("Cannot load or parse '" + filename + "'",e);
-  }
- finally {
-    xmlStream.close();
-  }
-}
+ }

@@ -1,13 +1,14 @@
 {
   if (motherTongue == null) {
-    return new ArrayList<>();
+    return Collections.emptyList();
   }
   final FalseFriendRuleLoader ruleLoader=new FalseFriendRuleLoader();
-  final InputStream is=this.getClass().getResourceAsStream(filename);
-  if (is == null) {
-    return ruleLoader.getRules(new File(filename),language,motherTongue);
-  }
+  try (InputStream is=this.getClass().getResourceAsStream(filename)){
+    if (is == null) {
+      return ruleLoader.getRules(new File(filename),language,motherTongue);
+    }
  else {
-    return ruleLoader.getRules(is,language,motherTongue);
+      return ruleLoader.getRules(is,language,motherTongue);
+    }
   }
-}
+ }

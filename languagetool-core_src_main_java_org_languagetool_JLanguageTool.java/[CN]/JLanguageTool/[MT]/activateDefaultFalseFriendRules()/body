@@ -1,5 +1,4 @@
 {
-  final String falseFriendRulesFilename=JLanguageTool.getDataBroker().getRulesDir() + "/" + FALSE_FRIEND_FILE;
-  final List<PatternRule> patternRules=loadFalseFriendRules(falseFriendRulesFilename);
-  userRules.addAll(patternRules);
+  String falseFriendRulesFilename=JLanguageTool.getDataBroker().getRulesDir() + "/" + FALSE_FRIEND_FILE;
+  userRules.addAll(loadFalseFriendRules(falseFriendRulesFilename));
 }
