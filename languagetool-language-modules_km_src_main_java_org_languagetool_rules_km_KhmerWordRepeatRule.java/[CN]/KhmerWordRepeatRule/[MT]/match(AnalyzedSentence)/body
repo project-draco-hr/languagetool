@@ -6,10 +6,9 @@
   for (int i=1; i < tokens.length; i++) {
     final String token=tokens[i].getToken();
     if (isWord(token) && prevToken.equalsIgnoreCase(token) && !ignore(sentence,tokensWithWS,i)) {
-      final String msg=messages.getString("repetition");
       final int prevPos=tokens[i - 1].getStartPos();
       final int pos=tokens[i].getStartPos();
-      final RuleMatch ruleMatch=new RuleMatch(this,prevPos,pos + prevToken.length(),msg,messages.getString("desc_repetition_short"));
+      final RuleMatch ruleMatch=new RuleMatch(this,prevPos,pos + prevToken.length(),messages.getString("repetition"),messages.getString("desc_repetition_short"));
       final List<String> replacements=new ArrayList<>();
       replacements.add(prevToken + " " + token);
       replacements.add(prevToken);
