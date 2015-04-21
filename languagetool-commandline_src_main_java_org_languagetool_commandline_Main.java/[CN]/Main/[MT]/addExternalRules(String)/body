@@ -1,0 +1,9 @@
+{
+  PatternRuleLoader ruleLoader=new PatternRuleLoader();
+  try (InputStream is=new FileInputStream(filename)){
+    List<PatternRule> externalRules=ruleLoader.getRules(is,filename);
+    for (    PatternRule externalRule : externalRules) {
+      lt.addRule(externalRule);
+    }
+  }
+ }

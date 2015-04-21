@@ -49,9 +49,6 @@ catch (  UnknownParameterException e) {
     languageHint="Expected text language: " + options.getLanguage().getName();
   }
   options.getLanguage().getSentenceTokenizer().setSingleLineBreaksMarksParagraph(options.isSingleLineBreakMarksParagraph());
-  if (options.getRuleFile() != null) {
-    options.getLanguage().addExternalRuleFile(options.getRuleFile());
-  }
   final Main prg=new Main(options);
   if (options.getFalseFriendFile() != null) {
     List<PatternRule> ffRules=prg.lt.loadFalseFriendRules(options.getFalseFriendFile());

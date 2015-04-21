@@ -13,6 +13,9 @@
   srcLt=null;
   bRules=null;
   lt=new MultiThreadedJLanguageTool(options.getLanguage(),motherTongue);
+  if (options.getRuleFile() != null) {
+    addExternalRules(options.getRuleFile());
+  }
   if (options.getLanguageModel() != null) {
     lt.activateLanguageModelRules(options.getLanguageModel());
   }
