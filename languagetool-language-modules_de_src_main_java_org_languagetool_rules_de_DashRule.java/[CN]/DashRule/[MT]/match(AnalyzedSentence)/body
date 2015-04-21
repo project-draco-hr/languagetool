@@ -11,7 +11,8 @@
       final char firstChar=token.charAt(0);
       if (Character.isUpperCase(firstChar)) {
         final String msg="M??glicherweise fehlt ein 'und' oder ein Komma, oder es wurde nach dem Wort " + "ein ??berfl??ssiges Leerzeichen eingef??gt. Eventuell haben Sie auch versehentlich einen Bindestrich statt eines Punktes eingef??gt.";
-        final RuleMatch ruleMatch=new RuleMatch(this,tokens[i - 1].getStartPos(),tokens[i - 1].getStartPos() + prevToken.length() + 1,msg);
+        final String shortMsg="Fehlendes 'und' oder Komma oder ??berfl??ssiges Leerzeichen?";
+        final RuleMatch ruleMatch=new RuleMatch(this,tokens[i - 1].getStartPos(),tokens[i - 1].getStartPos() + prevToken.length() + 1,msg,shortMsg);
         String prevTokenStr=tokens[i - 1].getToken();
         ruleMatch.setSuggestedReplacements(Arrays.asList(prevTokenStr,prevTokenStr + ", "));
         ruleMatches.add(ruleMatch);
