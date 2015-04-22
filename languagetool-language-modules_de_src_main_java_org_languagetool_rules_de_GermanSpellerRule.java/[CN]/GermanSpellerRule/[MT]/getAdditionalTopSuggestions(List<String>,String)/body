@@ -36,5 +36,9 @@
       return Collections.singletonList(ucWord);
     }
   }
+  String verbSuggestion=getPastTenseVerbSuggestion(word);
+  if (verbSuggestion != null) {
+    return Collections.singletonList(verbSuggestion);
+  }
   return Collections.emptyList();
 }

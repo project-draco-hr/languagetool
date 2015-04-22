@@ -1,0 +1,9 @@
+{
+  List<AnalyzedTokenReadings> readings=tagger.tag(Collections.singletonList(word));
+  for (  AnalyzedTokenReadings reading : readings) {
+    if (reading.hasPartialPosTag("VER:3:SIN:")) {
+      return reading.getReadings().get(0).getLemma();
+    }
+  }
+  return null;
+}

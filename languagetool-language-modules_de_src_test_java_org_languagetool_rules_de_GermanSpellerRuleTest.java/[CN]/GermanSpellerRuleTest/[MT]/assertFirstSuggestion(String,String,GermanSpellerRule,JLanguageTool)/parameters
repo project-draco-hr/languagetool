@@ -1,0 +1,4 @@
+String input
+String expected
+GermanSpellerRule rule
+JLanguageTool langTool

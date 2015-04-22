@@ -1,0 +1,19 @@
+{
+  if (word.endsWith("e")) {
+    String wordStem=word.replaceAll("e$","");
+    try {
+      String lemma=baseForThirdPersonSingularVerb(wordStem);
+      if (lemma != null) {
+        AnalyzedToken token=new AnalyzedToken(lemma,null,lemma);
+        String[] forms=synthesizer.synthesize(token,"VER:3:SIN:PRT:.*",true);
+        if (forms.length > 0) {
+          return forms[0];
+        }
+      }
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+  return null;
+}
