@@ -1,5 +1,4 @@
 {
-  super(messages);
+  super(messages,new Romanian());
   super.setCategory(new Category(messages.getString("category_misc")));
-  wrongWords=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFileName()));
 }
