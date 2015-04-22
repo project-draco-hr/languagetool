@@ -1,0 +1,17 @@
+{
+  for (  String name : namesSoFar) {
+    if (name.equals(nameHere)) {
+      continue;
+    }
+    int lenDiff=Math.abs(name.length() - nameHere.length());
+    boolean nameEndsWithS=name.endsWith("s") && !nameHere.endsWith("s");
+    boolean otherNameEndsWithS=!name.endsWith("s") && nameHere.endsWith("s");
+    if (nameEndsWithS || otherNameEndsWithS) {
+      continue;
+    }
+    if (lenDiff <= maxDiff && StringUtils.getLevenshteinDistance(name,nameHere) <= maxDiff) {
+      return name;
+    }
+  }
+  return null;
+}

@@ -1,0 +1,6 @@
+{
+  super(messages);
+  super.setCategory(new Category(messages.getString("category_typo")));
+  addExamplePair(Example.wrong("Angela M??ller ist CEO. <marker>Miller</marker> wurde in Hamburg geboren."),Example.fixed("Angela M??ller ist CEO. <marker>M??ller</marker> wurde in Hamburg geboren."));
+  setDefaultOff();
+}

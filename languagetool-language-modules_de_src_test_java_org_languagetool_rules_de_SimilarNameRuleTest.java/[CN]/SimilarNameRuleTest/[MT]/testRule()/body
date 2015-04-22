@@ -1,0 +1,7 @@
+{
+  SimilarNameRule rule=new SimilarNameRule(TestTools.getEnglishMessages());
+  JLanguageTool lt=new JLanguageTool(new German());
+  assertErrors("Hier steht Angela M??ller. Im n??chsten Satz dann Miller.",1,rule,lt);
+  assertErrors("Hier steht Angela M??ller. Im n??chsten Satz dann M??llers Ehemann.",0,rule,lt);
+  assertErrors("Hier steht Angela M??ller. Dann Mulla, nicht ??hnlich genug.",0,rule,lt);
+}

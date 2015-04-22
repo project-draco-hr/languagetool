@@ -1,0 +1,4 @@
+String input
+int expectedMatches
+SimilarNameRule rule
+JLanguageTool lt

@@ -1,0 +1,4 @@
+{
+  assertThat(rule.match(lt.getAnalyzedSentence(input)).length,is(expectedMatches));
+  rule.reset();
+}
