@@ -45,8 +45,8 @@ catch (      Exception e) {
       }
     }
   }
- catch (  ErrorLimitReachedException|DocumentLimitReachedException e) {
-    System.out.println(e);
+ catch (  DocumentLimitReachedException|ErrorLimitReachedException e) {
+    System.out.println(getClass().getSimpleName() + ": " + e);
   }
  finally {
     if (resultHandler != null) {
