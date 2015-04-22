@@ -31,7 +31,7 @@
     lastMarkerMatchToken=lastMatchToken;
   }
   final AnalyzedTokenReadings token=tokens[Math.min(lastMarkerMatchToken,tokens.length - 1)];
-  int toPos=token.getStartPos() + token.getToken().length();
+  int toPos=token.getEndPos();
   if (fromPos < toPos) {
     if (!(errMessage.contains(PatternRuleHandler.PLEASE_SPELL_ME) && errMessage.contains(MISTAKE))) {
       final String clearMsg=errMessage.replaceAll(PatternRuleHandler.PLEASE_SPELL_ME,"").replaceAll(MISTAKE,"");

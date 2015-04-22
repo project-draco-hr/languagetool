@@ -11,7 +11,7 @@
       if (!isThereReflexivePronoun(tokens,i))       continue loop;
       if (isPhraseImpersonalVerbS(tokens,i))       continue loop;
       final String msg="Expressi?? incorrecta si equival a 'adonar-se', correcta si vol dir 'retre compte'.";
-      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Possible error");
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getEndPos(),msg,"Possible error");
       ruleMatches.add(ruleMatch);
     }
     if (i + 2 < tokens.length && matchLemmaList(tokens[i],verbsPortarDur) && !(matchPostagRegexp(tokens[i],VERB_INF) && isThereBefore(tokens,i,LEMMA_PREP_A_PER,POSTAG_PREPOSICIO)) && !hasVerbMultipleReadings(tokens[i]) && isThereReflexivePronoun(tokens,i) && isThereAfterWithoutPreposition(tokens,i,POSTAG_CD) && !isThereVerbBeforeList(tokens,i,verbsDeixarFer) && !(isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals)) && !matchPostagRegexp(tokens[i + 1],POSTAG_ADVERBI) && !matchPostagRegexp(tokens[i + 2],POSTAG_ADVERBI) && !matchLemmaRegexp(tokens[i + 2],ANYMESDIA) && !isPhraseImpersonalVerbSP(tokens,i)) {
@@ -28,7 +28,7 @@
         suggestion="en" + token;
       }
       final String msg="??Vol??eu dir <suggestion>" + suggestion + "</suggestion>?";
-      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Possible error");
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getEndPos(),msg,"Possible error");
       ruleMatches.add(ruleMatch);
       continue loop;
     }
@@ -44,7 +44,7 @@
       if (isThereVerbBeforeList(tokens,i,verbsDeixarFer) && (isThereBefore(tokens,i,LEMMA_PRONOM_CD,POSTAG_PRONOM_CD) || isThereBefore(tokens,i,LEMMA_PRONOM_CI,POSTAG_PRONOM_CI) || isThereAfterWithoutPreposition(tokens,i,POSTAG_CD)))       continue loop;
       if (isThereReflexivePronoun(tokens,i))       continue loop;
       final String msg="Aquest verb ??s pronominal. Probablement falta un pronom.";
-      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb pronominal: falta un pronom");
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getEndPos(),msg,"Verb pronominal: falta un pronom");
       ruleMatches.add(ruleMatch);
       continue loop;
     }
@@ -57,7 +57,7 @@
       if (matchLemmaList(tokens[i],verbsNoPronominalsImpersonals2) && isPhraseImpersonalVerbSP(tokens,i))       continue loop;
       if (tokens[i].hasLemma("olorar") && isThereNearLemma(tokens,i,partsCos))       continue loop;
       final String msg="Aquest verb no ??s pronominal. Probablement sobra un pronom.";
-      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Verb no pronominal");
+      final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getEndPos(),msg,"Verb no pronominal");
       if (tokens[i].hasLemma("cr??ixer")) {
         ArrayList<String> replacements=new ArrayList<String>();
         replacements.add("(encoratjar-se)");
@@ -91,7 +91,7 @@
       }
       if (isThereReflexivePronoun(tokens,i) && (!isTherePronoun(tokens,i,LEMMA_EN,POSTAG_EN))) {
         final String msg="No useu com a pronominal aquest verb, o b?? afegiu-hi el pronom 'en'.";
-        final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getStartPos() + token.length(),msg,"Falta el pronom 'en'");
+        final RuleMatch ruleMatch=new RuleMatch(this,tokens[i].getStartPos(),tokens[i].getEndPos(),msg,"Falta el pronom 'en'");
         ruleMatches.add(ruleMatch);
       }
     }

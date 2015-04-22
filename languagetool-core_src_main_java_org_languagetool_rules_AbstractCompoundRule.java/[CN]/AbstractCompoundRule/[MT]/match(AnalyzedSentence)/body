@@ -46,7 +46,7 @@
  else         if (replacement.isEmpty() || replacement.size() == 2) {
           msg=withOrWithoutHyphenMessage;
         }
-        final RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),atr.getStartPos() + atr.getToken().length(),msg,shortDesc);
+        final RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),atr.getEndPos(),msg,shortDesc);
         ruleMatch.setSuggestedReplacements(replacement);
         if (prevRuleMatch != null && prevRuleMatch.getFromPos() == ruleMatch.getFromPos()) {
           prevRuleMatch=ruleMatch;

@@ -1,2 +1,2 @@
-AnalyzedTokenReadings tokenReadings
+AnalyzedTokenReadings readings
 List<String> replacements
