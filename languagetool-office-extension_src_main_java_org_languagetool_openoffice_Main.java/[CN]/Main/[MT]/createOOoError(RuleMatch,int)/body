@@ -1,6 +1,6 @@
 {
   final SingleProofreadingError aError=new SingleProofreadingError();
-  aError.nErrorType=com.sun.star.text.TextMarkupType.PROOFREADING;
+  aError.nErrorType=TextMarkupType.PROOFREADING;
   aError.aFullComment=ruleMatch.getMessage().replaceAll("<suggestion>","\"").replaceAll("</suggestion>","\"").replaceAll("([\r]*\n)"," ");
   if (!StringTools.isEmpty(ruleMatch.getShortMessage())) {
     aError.aShortComment=ruleMatch.getShortMessage();

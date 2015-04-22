@@ -2,8 +2,8 @@
   if (!xEventListeners.isEmpty()) {
     for (    final XLinguServiceEventListener xEvLis : xEventListeners) {
       if (xEvLis != null) {
-        final com.sun.star.linguistic2.LinguServiceEvent xEvent=new com.sun.star.linguistic2.LinguServiceEvent();
-        xEvent.nEvent=com.sun.star.linguistic2.LinguServiceEventFlags.PROOFREAD_AGAIN;
+        final LinguServiceEvent xEvent=new LinguServiceEvent();
+        xEvent.nEvent=LinguServiceEventFlags.PROOFREAD_AGAIN;
         xEvLis.processLinguServiceEvent(xEvent);
       }
     }
