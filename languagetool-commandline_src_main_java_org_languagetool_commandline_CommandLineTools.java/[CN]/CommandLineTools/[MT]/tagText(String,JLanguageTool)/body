@@ -3,6 +3,6 @@
   final List<String> sentences=lt.sentenceTokenize(contents);
   for (  final String sentence : sentences) {
     analyzedText=lt.getAnalyzedSentence(sentence);
-    System.out.println(analyzedText.toString());
+    System.out.println(analyzedText);
   }
 }

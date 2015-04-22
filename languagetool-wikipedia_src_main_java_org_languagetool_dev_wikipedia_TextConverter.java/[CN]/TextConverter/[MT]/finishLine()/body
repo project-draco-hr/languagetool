@@ -1,4 +1,4 @@
 {
-  sb.append(line.toString());
+  sb.append(line);
   line.setLength(0);
 }

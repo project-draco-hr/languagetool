@@ -2,7 +2,7 @@
   if (testMode) {
     throw new RuntimeException(e);
   }
-  String msg="An error has occurred in LanguageTool " + JLanguageTool.VERSION + ":\n"+ e.toString()+ "\nStacktrace:\n";
+  String msg="An error has occurred in LanguageTool " + JLanguageTool.VERSION + ":\n"+ e+ "\nStacktrace:\n";
   msg+=Tools.getFullStackTrace(e);
   final String metaInfo="OS: " + System.getProperty("os.name") + " on "+ System.getProperty("os.arch")+ ", Java version "+ System.getProperty("java.version")+ " from "+ System.getProperty("java.vm.vendor");
   msg+=metaInfo;

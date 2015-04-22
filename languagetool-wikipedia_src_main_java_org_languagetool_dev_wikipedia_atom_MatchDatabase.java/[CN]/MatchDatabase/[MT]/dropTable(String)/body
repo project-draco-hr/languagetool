@@ -3,6 +3,6 @@
     prepSt.execute();
   }
  catch (  SQLException e) {
-    System.err.println("Note: could not drop table 'feed_matches' - this is okay on the first run: " + e.toString());
+    System.err.println("Note: could not drop table 'feed_matches' - this is okay on the first run: " + e);
   }
 }

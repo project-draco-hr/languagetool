@@ -1,6 +1,5 @@
 {
-  try (PreparedStatement prepSt=conn.prepareStatement("SELECT * FROM feed_matches")){
-    ResultSet resultSet=prepSt.executeQuery();
+  try (PreparedStatement prepSt=conn.prepareStatement("SELECT * FROM feed_matches");ResultSet resultSet=prepSt.executeQuery()){
     List<StoredWikipediaRuleMatch> result=new ArrayList<>();
     while (resultSet.next()) {
       String ruleId=resultSet.getString("rule_id");

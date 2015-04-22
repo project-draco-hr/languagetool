@@ -11,7 +11,7 @@
       System.out.println();
       System.out.print(position + ": ");
     }
-    System.out.print("[" + term.toString() + ":"+ offset.startOffset()+ "->"+ offset.endOffset()+ ":"+ type.type()+ "] ");
+    System.out.print("[" + term + ":"+ offset.startOffset()+ "->"+ offset.endOffset()+ ":"+ type.type()+ "] ");
   }
   System.out.println();
 }
