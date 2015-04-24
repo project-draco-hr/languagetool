@@ -29,7 +29,7 @@
   maintainersPane.setEditable(false);
   maintainersPane.setOpaque(false);
   maintainersPane.setText(getMaintainers());
-  int maxHeight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height / 2;
+  int maxHeight=Toolkit.getDefaultToolkit().getScreenSize().height / 2;
   if (maintainersPane.getPreferredSize().height > maxHeight) {
     maintainersPane.setPreferredSize(new Dimension(maintainersPane.getPreferredSize().width,maxHeight));
   }
