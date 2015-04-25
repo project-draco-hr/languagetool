@@ -1,4 +1,6 @@
 {
+  assertCorrect("els fitxers de traducci?? es baixaran autom??ticament");
+  assertCorrect("Baixeu-vos el programa de l'enlla??");
   assertCorrect("No em plantejo anar a un altre partit");
   assertCorrect("-Deixa't caure al canal i prou");
   assertCorrect("Deixa't caure al canal i prou");

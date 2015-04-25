@@ -1,4 +1,7 @@
 {
+  assertCorrect("com a base de la categoria faria que els enlla??os");
+  assertCorrect("De jove faria amistat amb ells");
+  assertCorrect("De jove tenia admiraci??");
   assertCorrect("Per tant, espero ansi??s.");
   assertCorrect("M'espero qualsevol cosa.");
   assertCorrect("Carrega de nou l'arxiu.");

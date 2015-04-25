@@ -51,6 +51,7 @@
     if (matchLemmaList(tokens[i],verbsNoPronominals)) {
       if (matchLemmaList(tokens[i],excepVerbsNoPronominals))       continue loop;
       if (!isThereReflexivePronoun(tokens,i))       continue loop;
+      if (tokens[i].hasLemma("baixar") && isThereNearLemma(tokens,i,contextBaixar))       continue loop;
       if (matchLemmaList(tokens[i],verbsNoPronominalsImpersonals2) && isThereBefore(tokens,i,LEMMA_ES,POSTAG_ES) && isThereBefore(tokens,i,LEMMA_DE,POSTAG_DE)&& isThereVerbBeforeList(tokens,i,verbHaver))       continue loop;
       if (isThereVerbBeforeList(tokens,i,verbsSovintAmbComplement) || (isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals)) || isThereVerbBefore(tokens,i,VERB_AUTO)|| isThereVerbBeforeList(tokens,i,verbsPronominals))       continue loop;
       if (matchLemmaList(tokens[i],verbsNoPronominalsImpersonals) && isPhraseImpersonalVerbS(tokens,i))       continue loop;
