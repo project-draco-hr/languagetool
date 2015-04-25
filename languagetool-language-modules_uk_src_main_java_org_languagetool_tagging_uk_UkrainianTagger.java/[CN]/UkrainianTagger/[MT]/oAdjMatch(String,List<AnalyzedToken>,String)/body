@@ -1,5 +1,7 @@
 {
   List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(analyzedTokens.size());
+  String leftBase=leftWord.substring(0,leftWord.length() - 1);
+  if (!LEFT_O_ADJ.contains(leftWord.toLowerCase(conversionLocale)) && tagBothCases(leftWord).isEmpty() && tagBothCases(oToYj(leftWord)).isEmpty()&& tagBothCases(leftBase).isEmpty()&& tagBothCases(leftBase + "??").isEmpty())   return null;
   for (  AnalyzedToken analyzedToken : analyzedTokens) {
     String posTag=analyzedToken.getPOSTag();
     if (posTag.startsWith(IPOSTag.adj.getText())) {

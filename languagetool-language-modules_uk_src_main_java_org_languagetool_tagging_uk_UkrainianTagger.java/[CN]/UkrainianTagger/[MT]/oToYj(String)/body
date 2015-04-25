@@ -1,0 +1,3 @@
+{
+  return leftWord.endsWith("????") ? leftWord.substring(0,leftWord.length() - 2) + "????" : leftWord.substring(0,leftWord.length() - 1) + "????";
+}

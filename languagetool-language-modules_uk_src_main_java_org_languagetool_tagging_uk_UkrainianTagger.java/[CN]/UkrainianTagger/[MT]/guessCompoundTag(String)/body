@@ -5,11 +5,7 @@
   if (dashIdx != firstDashIdx)   return null;
   String leftWord=word.substring(0,dashIdx);
   String rightWord=word.substring(dashIdx + 1);
-  List<TaggedWord> leftWdList=wordTagger.tag(leftWord);
-  String leftLowerCase=leftWord.toLowerCase(conversionLocale);
-  if (!leftWord.equals(leftLowerCase)) {
-    leftWdList.addAll(wordTagger.tag(leftLowerCase));
-  }
+  List<TaggedWord> leftWdList=tagBothCases(leftWord);
   if (rightPartsWithLeftTagMap.containsKey(rightWord)) {
     if (leftWdList.isEmpty())     return null;
     Pattern leftTagRegex=rightPartsWithLeftTagMap.get(rightWord);
@@ -19,6 +15,26 @@
       String posTag=analyzedToken.getPOSTag();
       if (posTag != null && leftTagRegex.matcher(posTag).matches()) {
         newAnalyzedTokens.add(new AnalyzedToken(word,posTag,analyzedToken.getLemma()));
+      }
+    }
+    return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
+  }
+  if (NUMBER.matcher(leftWord).matches()) {
+    List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>();
+    if (NUMR_ENDING_MAP.containsKey(rightWord)) {
+      List<String> tags=NUMR_ENDING_MAP.get(rightWord);
+      for (      String tag : tags) {
+        newAnalyzedTokens.add(new AnalyzedToken(word,IPOSTag.adj.getText() + tag,leftWord + "-" + "??"));
+      }
+    }
+ else {
+      List<TaggedWord> rightWdList=wordTagger.tag(rightWord);
+      if (rightWdList.isEmpty())       return null;
+      List<AnalyzedToken> rightAnalyzedTokens=asAnalyzedTokenListForTaggedWords(rightWord,rightWdList);
+      for (      AnalyzedToken analyzedToken : rightAnalyzedTokens) {
+        if (analyzedToken.getPOSTag().startsWith(IPOSTag.adj.getText())) {
+          newAnalyzedTokens.add(new AnalyzedToken(word,analyzedToken.getPOSTag(),leftWord + "-" + analyzedToken.getLemma()));
+        }
       }
     }
     return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
@@ -37,23 +53,6 @@
       return poAdvMatch(word,rightAnalyzedTokens,ADJ_TAG_FOR_PO_ADV_NAZ);
     }
     return null;
-  }
-  if (NUMBER.matcher(leftWord).matches()) {
-    List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(rightAnalyzedTokens.size());
-    if (NUMR_ENDING_MAP.containsKey(rightWord)) {
-      List<String> tags=NUMR_ENDING_MAP.get(rightWord);
-      for (      String tag : tags) {
-        newAnalyzedTokens.add(new AnalyzedToken(word,IPOSTag.adj.getText() + tag,leftWord + "-" + "??"));
-      }
-    }
- else {
-      for (      AnalyzedToken analyzedToken : rightAnalyzedTokens) {
-        if (analyzedToken.getPOSTag().startsWith(IPOSTag.adj.getText())) {
-          newAnalyzedTokens.add(new AnalyzedToken(word,analyzedToken.getPOSTag(),leftWord + "-" + analyzedToken.getLemma()));
-        }
-      }
-    }
-    return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
   }
   if (dashPrefixes.contains(leftWord) || dashPrefixes.contains(leftWord.toLowerCase())) {
     return getNvPrefixNounMatch(word,rightAnalyzedTokens,leftWord);
