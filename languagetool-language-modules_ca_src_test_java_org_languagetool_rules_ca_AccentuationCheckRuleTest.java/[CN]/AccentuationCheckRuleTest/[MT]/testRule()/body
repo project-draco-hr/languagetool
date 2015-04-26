@@ -1,4 +1,5 @@
 {
+  assertCorrect("A ponent continua la serra de Fontpobra");
   assertCorrect("com a base de la categoria faria que els enlla??os");
   assertCorrect("De jove faria amistat amb ells");
   assertCorrect("De jove tenia admiraci??");
