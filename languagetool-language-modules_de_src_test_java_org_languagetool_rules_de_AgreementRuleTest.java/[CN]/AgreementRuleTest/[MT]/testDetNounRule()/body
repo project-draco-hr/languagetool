@@ -103,4 +103,6 @@
   assertBad("Ich habe einen Feder gefunden.","eine Feder","einer Feder");
   assertGood("Wenn die Gott zugeschriebenen Eigenschaften stimmen, dann...");
   assertGood("Dieses Gr??nkern genannte Getreide ist aber nicht backbar.");
+  assertGood("Au??erdem unterst??tzt mich Herr M??ller beim abheften");
+  assertGood("Au??erdem unterst??tzt mich Frau M??ller beim abheften");
 }
