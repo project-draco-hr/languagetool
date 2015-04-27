@@ -1,4 +1,5 @@
 {
+  assertCorrect("baixeu-vos l'Aspell des de http://aspell.net/win32/");
   assertCorrect("els fitxers de traducci?? es baixaran autom??ticament");
   assertCorrect("Baixeu-vos el programa de l'enlla??");
   assertCorrect("No em plantejo anar a un altre partit");
