@@ -4,7 +4,7 @@
     Sentence sentence=sentenceSource.next();
     if (sentence.getText().matches(".*\\b" + token + "\\b.*")) {
       sentences.add(sentence);
-      if (sentences.size() % 25 == 0) {
+      if (sentences.size() % 100 == 0) {
         System.out.println("Loaded sentence " + sentences.size() + " with '"+ token+ "' from "+ corpusFile.getName());
       }
       if (sentences.size() >= maxSentences) {

@@ -13,16 +13,23 @@
   System.out.println("Found " + homophoneTestSentences.size() + " test sentences with '"+ homophoneToken+ "'");
   for (int i=0; i < ITERATIONS; i++) {
     System.out.println("===== Iteration " + i + " ===========================================================");
-    try (MachineLearning machineLearning=new MachineLearning(FEATURES)){
-      trainSentences(token,token,trainingSentences,machineLearning,1);
-      trainSentences(homophoneToken,token,homophoneTrainingSentences,machineLearning,0);
-      System.out.println("Training neural network (" + new Date() + ")...");
-      machineLearning.train(new File(NEURAL_NETWORK_OUTPUT));
-      System.out.println("Saved neural network to " + NEURAL_NETWORK_OUTPUT + " ("+ new Date()+ ")");
-      List<ValidationSentence> validationSentences=new ArrayList<>();
-      validationSentences.addAll(getValidationSentences(testSentences,true));
-      validationSentences.addAll(getValidationSentences(homophoneTestSentences,false));
-      crossValidate(validationSentences,token,homophoneToken,trainingSentences,homophoneTrainingSentences);
+    if (TRAIN) {
+      try (MachineLearning machineLearning=new MachineLearning(FEATURES)){
+        trainSentences(token,token,trainingSentences,machineLearning,1);
+        trainSentences(homophoneToken,token,homophoneTrainingSentences,machineLearning,0);
+        System.out.println("Training neural network (" + new Date() + ")...");
+        machineLearning.train(new File(NEURAL_NETWORK_OUTPUT));
+        System.out.println("Saved neural network to " + NEURAL_NETWORK_OUTPUT + " ("+ new Date()+ ")");
+      }
+     }
+ else {
+      System.err.println("-----------------------------------------------------------------------");
+      System.err.println("NOTE: no training, using old data");
+      System.err.println("-----------------------------------------------------------------------");
     }
-   }
+    List<ValidationSentence> validationSentences=new ArrayList<>();
+    validationSentences.addAll(getValidationSentences(testSentences,true));
+    validationSentences.addAll(getValidationSentences(homophoneTestSentences,false));
+    crossValidate(validationSentences,token,homophoneToken,trainingSentences,homophoneTrainingSentences);
+  }
 }

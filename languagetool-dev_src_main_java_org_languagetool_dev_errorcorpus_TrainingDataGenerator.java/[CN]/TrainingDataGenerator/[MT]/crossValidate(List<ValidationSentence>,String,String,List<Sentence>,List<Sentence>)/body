@@ -18,7 +18,7 @@
       }
       BasicMLData data=new BasicMLData(features);
       double result=loadedNet.compute(data).getData(0);
-      boolean consideredCorrect=result > 0.5f;
+      boolean consideredCorrect=result > THRESHOLD;
       String sentenceStr=sentence.sentence.toString().replaceFirst(textToken,"**" + token + "**");
       String marker=consideredCorrect == expectCorrect ? " " : "#";
       System.out.println("[" + featuresToString(features) + "] "+ String.format(ENGLISH,"%.2f",result)+ " "+ asString(consideredCorrect)+ marker+ " "+ sentenceStr);
