@@ -1,0 +1,5 @@
+File corpusFileOrDir
+String token
+String homophoneToken
+int maxSentencesCorrect
+int maxSentencesError
