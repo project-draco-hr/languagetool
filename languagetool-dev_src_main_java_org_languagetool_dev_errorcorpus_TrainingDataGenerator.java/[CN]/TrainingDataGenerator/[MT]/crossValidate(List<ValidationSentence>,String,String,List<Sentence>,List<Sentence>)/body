@@ -18,10 +18,10 @@
       }
       BasicMLData data=new BasicMLData(features);
       double result=loadedNet.compute(data).getData(0);
-      String resultStr=String.format("%.2f",result);
       boolean consideredCorrect=result > 0.5f;
       String sentenceStr=sentence.sentence.toString().replaceFirst(textToken,"**" + token + "**");
-      System.out.println("[" + featuresToString(features) + "] "+ resultStr+ " cross val "+ asString(consideredCorrect)+ ", expected "+ asString(expectCorrect)+ ": "+ sentenceStr);
+      String marker=consideredCorrect == expectCorrect ? " " : "#";
+      System.out.println("[" + featuresToString(features) + "] "+ String.format(ENGLISH,"%.2f",result)+ " "+ asString(consideredCorrect)+ marker+ " "+ sentenceStr);
       if (consideredCorrect && expectCorrect) {
         truePositives++;
       }
@@ -37,10 +37,10 @@
   System.out.println("Cross validation results for " + TOKEN + "/"+ TOKEN_HOMOPHONE+ ":");
   float recall=(float)truePositives / (truePositives + falseNegatives);
   double fMeasure=FMeasure.getWeightedFMeasure(precision,recall);
-  System.out.printf(Locale.ENGLISH,"%d;%d;%.3f;%.3f;%.3f;CSV\n",trainingSentences.size(),trainingSentences.size(),precision,recall,fMeasure);
-  System.out.printf(Locale.ENGLISH,"  Training sentences 1: %d\n",trainingSentences.size());
-  System.out.printf(Locale.ENGLISH,"  Training sentences 2: %d\n",homophoneTrainingSentences.size());
-  System.out.printf(Locale.ENGLISH,"  Precision: %.3f\n",precision);
-  System.out.printf(Locale.ENGLISH,"  Recall:    %.3f\n",recall);
-  System.out.printf(Locale.ENGLISH,"  F-measure: %.3f (beta=0.5)\n",fMeasure);
+  System.out.printf(ENGLISH,"CSV;%d;%d;%.3f;%.3f;%.3f;\n",trainingSentences.size(),trainingSentences.size(),precision,recall,fMeasure);
+  System.out.printf(ENGLISH,"  Training sentences 1: %d\n",trainingSentences.size());
+  System.out.printf(ENGLISH,"  Training sentences 2: %d\n",homophoneTrainingSentences.size());
+  System.out.printf(ENGLISH,"  Precision: %.3f\n",precision);
+  System.out.printf(ENGLISH,"  Recall:    %.3f\n",recall);
+  System.out.printf(ENGLISH,"  F-measure: %.3f (beta=0.5)\n",fMeasure);
 }
