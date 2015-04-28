@@ -1,0 +1,7 @@
+{
+  TrainingDataGenerator prg=new TrainingDataGenerator(new English(),new FakeLanguageModel());
+  assertThat(prg.getContext("This is a test.",2,"XX",1,1).toString(),is("[is, XX, test]"));
+  assertThat(prg.getContext("This is a test.",2,"XX",0,2).toString(),is("[XX, test, _END_]"));
+  assertThat(prg.getContext("This is a test.",2,"XX",2,0).toString(),is("[This, is, XX]"));
+  assertThat(prg.getContext("This is a test.",2,"XX",3,0).toString(),is("[_START_, This, is, XX]"));
+}

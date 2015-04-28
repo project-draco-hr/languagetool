@@ -1,4 +1,4 @@
-Sentence sentence
+String plainText
 int pos
 String newToken
 int toLeft
