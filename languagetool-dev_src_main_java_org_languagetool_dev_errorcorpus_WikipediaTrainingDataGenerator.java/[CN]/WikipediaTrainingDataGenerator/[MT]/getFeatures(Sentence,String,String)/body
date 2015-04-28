@@ -1,0 +1,10 @@
+{
+  long maxVal=123200814;
+  int position=getLastPosition(sentence,token);
+  double ngram2Left=getCountForTuple(getContext(sentence,position,newToken,1,0),maxVal);
+  double ngram2Right=getCountForTuple(getContext(sentence,position,newToken,0,1),maxVal);
+  double ngram3Left=getCountForTriple(getContext(sentence,position,newToken,0,2),maxVal);
+  double ngram3Middle=getCountForTriple(getContext(sentence,position,newToken,1,1),maxVal);
+  double ngram3Right=getCountForTriple(getContext(sentence,position,newToken,2,0),maxVal);
+  return new double[]{ngram2Left,ngram2Right,ngram3Middle,ngram3Left,ngram3Right};
+}

@@ -1,0 +1,5 @@
+String token
+String newToken
+List<Sentence> sentences
+MachineLearning machineLearning
+float targetValue

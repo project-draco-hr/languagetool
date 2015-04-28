@@ -1,0 +1,9 @@
+{
+  List<String> result=new ArrayList<>();
+  for (  String token : tokens) {
+    if (!token.trim().isEmpty()) {
+      result.add(token);
+    }
+  }
+  return result;
+}

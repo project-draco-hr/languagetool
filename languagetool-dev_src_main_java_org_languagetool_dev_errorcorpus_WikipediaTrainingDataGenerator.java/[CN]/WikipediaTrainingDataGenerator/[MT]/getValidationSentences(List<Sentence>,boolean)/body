@@ -1,0 +1,7 @@
+{
+  List<ValidationSentence> validationSentences=new ArrayList<>();
+  for (  Sentence sentence : sentences) {
+    validationSentences.add(new ValidationSentence(sentence,isCorrect));
+  }
+  return validationSentences;
+}

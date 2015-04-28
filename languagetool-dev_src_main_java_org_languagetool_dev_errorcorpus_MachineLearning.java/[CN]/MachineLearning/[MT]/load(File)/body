@@ -1,0 +1,7 @@
+{
+  EncogPersistor persistor=new PersistBasicNetwork();
+  try (FileInputStream inputStream=new FileInputStream(inputFile)){
+    Object read=persistor.read(inputStream);
+    return (BasicML)read;
+  }
+ }

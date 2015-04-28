@@ -1,0 +1,2 @@
+List<Sentence> sentences
+boolean isCorrect

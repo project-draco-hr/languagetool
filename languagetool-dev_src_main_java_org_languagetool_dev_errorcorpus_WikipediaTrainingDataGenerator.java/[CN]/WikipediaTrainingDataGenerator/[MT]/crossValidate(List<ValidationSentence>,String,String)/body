@@ -1,0 +1,35 @@
+{
+  System.out.println("Starting cross validation on " + sentences.size() + " sentences");
+  int truePositives=0;
+  int falsePositives=0;
+  int falseNegatives=0;
+  try (MachineLearning machineLearning=new MachineLearning(FEATURES)){
+    BasicNetwork loadedNet=(BasicNetwork)machineLearning.load(new File(NEURAL_NETWORK_OUTPUT));
+    for (    ValidationSentence sentence : sentences) {
+      boolean expectCorrect=sentence.isCorrect;
+      String textToken=expectCorrect ? token : homophoneToken;
+      double[] features=getFeatures(sentence.sentence,textToken,token);
+      BasicMLData data=new BasicMLData(features);
+      double result=loadedNet.compute(data).getData(0);
+      String resultStr=String.format("%.2f",result);
+      boolean consideredCorrect=result > 0.5f;
+      String sentenceStr=sentence.sentence.toString().replaceFirst(textToken,"**" + token + "**");
+      System.out.println("[" + featuresToString(features) + "] "+ resultStr+ " cross val "+ asString(consideredCorrect)+ ", expected "+ asString(expectCorrect)+ ": "+ sentenceStr);
+      if (consideredCorrect && expectCorrect) {
+        truePositives++;
+      }
+ else       if (!consideredCorrect && expectCorrect) {
+        falseNegatives++;
+      }
+ else       if (consideredCorrect && !expectCorrect) {
+        falsePositives++;
+      }
+    }
+  }
+   float precision=(float)truePositives / (truePositives + falsePositives);
+  System.out.println("Cross validation results:");
+  System.out.printf("  Precision: %.3f\n",precision);
+  float recall=(float)truePositives / (truePositives + falseNegatives);
+  System.out.printf("  Recall: %.3f\n",recall);
+  System.out.printf("  F-measure(beta=0.5): %.3f\n",FMeasure.getWeightedFMeasure(precision,recall));
+}

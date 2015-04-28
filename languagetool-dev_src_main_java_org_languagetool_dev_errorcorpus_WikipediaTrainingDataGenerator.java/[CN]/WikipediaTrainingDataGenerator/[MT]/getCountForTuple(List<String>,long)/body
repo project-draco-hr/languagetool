@@ -1,0 +1,7 @@
+{
+  if (context.size() != 2) {
+    throw new IllegalArgumentException("Context size != 2: " + context.size());
+  }
+  long result=languageModel.getCount(context.get(0),context.get(1));
+  return (double)result / maxVal;
+}

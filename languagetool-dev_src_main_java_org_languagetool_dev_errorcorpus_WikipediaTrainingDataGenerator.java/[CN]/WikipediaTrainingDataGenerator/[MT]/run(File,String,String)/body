@@ -1,0 +1,28 @@
+{
+  List<Sentence> allSentences=getRelevantSentences(corpusFile,token,MAX_SENTENCES_CORRECT);
+  ListSplit<Sentence> split=split(allSentences,TEST_SET_FACTOR);
+  List<Sentence> trainingSentences=split.trainingList;
+  List<Sentence> testSentences=split.testList;
+  System.out.println("Found " + trainingSentences.size() + " training sentences with '"+ token+ "'");
+  System.out.println("Found " + testSentences.size() + " test sentences with '"+ token+ "'");
+  List<Sentence> allHomophoneSentences=getRelevantSentences(corpusFile,homophoneToken,MAX_SENTENCES_ERROR);
+  ListSplit<Sentence> homophoneSplit=split(allHomophoneSentences,TEST_SET_FACTOR);
+  List<Sentence> homophoneTrainingSentences=homophoneSplit.trainingList;
+  List<Sentence> homophoneTestSentences=homophoneSplit.testList;
+  System.out.println("Found " + homophoneTrainingSentences.size() + " training sentences with '"+ homophoneToken+ "' (will be turned into errors)");
+  System.out.println("Found " + homophoneTestSentences.size() + " test sentences with '"+ homophoneToken+ "'");
+  for (int i=0; i < ITERATIONS; i++) {
+    System.out.println("===== Iteration " + i + " ===========================================================");
+    try (MachineLearning machineLearning=new MachineLearning(FEATURES)){
+      trainSentences(token,token,trainingSentences,machineLearning,1);
+      trainSentences(homophoneToken,token,homophoneTrainingSentences,machineLearning,0);
+      System.out.println("Training neural network (" + new Date() + ")...");
+      machineLearning.train(new File(NEURAL_NETWORK_OUTPUT));
+      System.out.println("Saved neural network to " + NEURAL_NETWORK_OUTPUT + " ("+ new Date()+ ")");
+      List<ValidationSentence> validationSentences=new ArrayList<>();
+      validationSentences.addAll(getValidationSentences(testSentences,true));
+      validationSentences.addAll(getValidationSentences(homophoneTestSentences,false));
+      crossValidate(validationSentences,token,homophoneToken);
+    }
+   }
+}

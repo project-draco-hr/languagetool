@@ -1,0 +1,3 @@
+List<ValidationSentence> sentences
+String token
+String homophoneToken

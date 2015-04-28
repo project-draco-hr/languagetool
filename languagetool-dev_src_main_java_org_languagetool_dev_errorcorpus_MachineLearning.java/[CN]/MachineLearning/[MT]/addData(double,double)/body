@@ -1,0 +1,4 @@
+{
+  BasicMLData idealData=new BasicMLData(new double[]{idealValue});
+  trainingSet.add(new BasicMLData(input),idealData);
+}

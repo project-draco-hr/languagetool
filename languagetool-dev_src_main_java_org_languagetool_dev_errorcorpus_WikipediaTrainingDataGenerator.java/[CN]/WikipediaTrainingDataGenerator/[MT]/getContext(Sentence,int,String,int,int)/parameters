@@ -1,0 +1,5 @@
+Sentence sentence
+int pos
+String newToken
+int toLeft
+int toRight

@@ -1,0 +1,13 @@
+{
+  for (  Sentence sentence : sentences) {
+    try {
+      double[] features=getFeatures(sentence,token,newToken);
+      machineLearning.addData(targetValue,features);
+      String featuresStr=featuresToString(features);
+      System.out.println(targetValue + " [" + featuresStr+ "] "+ sentence.getText().replaceFirst(token,"**" + newToken + "**"));
+    }
+ catch (    Exception e) {
+      e.printStackTrace();
+    }
+  }
+}
