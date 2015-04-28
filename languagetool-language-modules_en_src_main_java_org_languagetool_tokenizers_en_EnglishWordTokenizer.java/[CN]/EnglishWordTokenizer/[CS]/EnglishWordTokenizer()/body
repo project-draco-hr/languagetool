@@ -1,3 +1,2 @@
 {
-  enTokenizing=super.getTokenizingCharacters() + "???";
 }
