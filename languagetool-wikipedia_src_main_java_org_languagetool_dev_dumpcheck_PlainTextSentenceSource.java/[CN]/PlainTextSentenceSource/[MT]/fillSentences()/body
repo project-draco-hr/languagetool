@@ -1,0 +1,11 @@
+{
+  while (sentences.size() == 0 && scanner.hasNextLine()) {
+    String line=scanner.nextLine();
+    if (line.isEmpty()) {
+      continue;
+    }
+    if (acceptSentence(line)) {
+      sentences.add(line);
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  fillSentences();
+  return sentences.size() > 0;
+}
