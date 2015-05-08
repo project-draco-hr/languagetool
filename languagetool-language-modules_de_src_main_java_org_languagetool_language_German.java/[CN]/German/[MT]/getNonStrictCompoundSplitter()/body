@@ -1,12 +1,10 @@
 {
   if (compoundTokenizer == null) {
     try {
-      final AbstractWordSplitter wordSplitter=new GermanWordSplitter(false);
-      wordSplitter.setStrictMode(false);
-      wordSplitter.setMinimumWordLength(3);
+      final GermanCompoundTokenizer tokenizer=new GermanCompoundTokenizer(false);
       compoundTokenizer=new CompoundWordTokenizer(){
         @Override public List<String> tokenize(        String word){
-          return new ArrayList<>(wordSplitter.splitWord(word));
+          return new ArrayList<>(tokenizer.tokenize(word));
         }
       }
 ;
