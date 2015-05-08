@@ -1,4 +1,0 @@
-{
-  wordTokenizer=new PolishWordTokenizer();
-  wordTokenizer.setTagger(getTagger());
-}

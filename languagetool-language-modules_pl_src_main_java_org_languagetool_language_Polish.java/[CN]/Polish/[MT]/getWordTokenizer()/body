@@ -1,6 +1,7 @@
 {
   if (wordTokenizer == null) {
     wordTokenizer=new PolishWordTokenizer();
+    wordTokenizer.setTagger(getTagger());
   }
   return wordTokenizer;
 }
