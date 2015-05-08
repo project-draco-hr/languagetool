@@ -48,7 +48,9 @@
               break;
             }
           }
-          if (foundNext)           break;
+          if (foundNext) {
+            break;
+          }
         }
         if (allElementsMatch) {
           int skipForMax=skipMaxTokens(tokens,pTokenMatcher,firstMatchToken,prevSkipNext,prevTokenMatcher,m,patternSize - k - 1);
