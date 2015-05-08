@@ -1,0 +1,18 @@
+{
+  MyGermanSpellerRule rule=new MyGermanSpellerRule(TestTools.getMessages("de"),GERMAN_DE);
+  Set<String> set=new HashSet<>();
+  rule.addIgnoreWords("Fu??elmappse",set);
+  assertTrue(set.contains("Fu??elmappse"));
+  rule.addIgnoreWords("Fu??elmappse/N",set);
+  assertTrue(set.contains("Fu??elmappse"));
+  assertTrue(set.contains("Fu??elmappsen"));
+  rule.addIgnoreWords("Toggeltr??t/NS",set);
+  assertTrue(set.contains("Toggeltr??t"));
+  assertTrue(set.contains("Toggeltr??ts"));
+  assertTrue(set.contains("Toggeltr??tn"));
+  rule.addIgnoreWords("Toggeltr??t/NS",set);
+  MyGermanSpellerRule ruleCH=new MyGermanSpellerRule(TestTools.getMessages("de"),GERMAN_CH);
+  ruleCH.addIgnoreWords("Fu??elmappse/N",set);
+  assertTrue(set.contains("Fusselmappse"));
+  assertTrue(set.contains("Fusselmappsen"));
+}
