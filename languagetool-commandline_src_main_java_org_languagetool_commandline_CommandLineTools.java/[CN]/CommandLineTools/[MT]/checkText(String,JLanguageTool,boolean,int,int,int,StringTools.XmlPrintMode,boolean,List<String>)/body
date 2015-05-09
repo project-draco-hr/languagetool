@@ -9,8 +9,11 @@
     r.setEndLine(r.getEndLine() + lineOffset);
   }
   if (apiFormat) {
+    if (listUnknownWords && xmlMode == StringTools.XmlPrintMode.NORMAL_XML) {
+      unknownWords=lt.getUnknownWords();
+    }
     final RuleAsXmlSerializer serializer=new RuleAsXmlSerializer();
-    final String xml=serializer.ruleMatchesToXml(ruleMatches,contents,contextSize,xmlMode,lt.getLanguage());
+    final String xml=serializer.ruleMatchesToXml(ruleMatches,contents,contextSize,xmlMode,lt.getLanguage(),unknownWords);
     final PrintStream out=new PrintStream(System.out,true,"UTF-8");
     out.print(xml);
   }

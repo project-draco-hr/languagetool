@@ -7,10 +7,10 @@
   for (  final File file : files) {
     try {
       if (file.isDirectory()) {
-        runRecursive(file.getAbsolutePath(),encoding,listUnknown,xmlFiltering);
+        runRecursive(file.getAbsolutePath(),encoding,xmlFiltering);
       }
  else {
-        runOnFile(file.getAbsolutePath(),encoding,listUnknown,xmlFiltering);
+        runOnFile(file.getAbsolutePath(),encoding,xmlFiltering);
       }
     }
  catch (    Exception e) {

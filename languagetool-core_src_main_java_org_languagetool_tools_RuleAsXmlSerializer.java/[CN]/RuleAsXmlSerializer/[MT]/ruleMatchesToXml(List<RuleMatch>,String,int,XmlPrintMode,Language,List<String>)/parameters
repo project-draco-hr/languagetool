@@ -3,3 +3,4 @@ String text
 int contextSize
 XmlPrintMode xmlMode
 Language lang
+List<String> unknownWords

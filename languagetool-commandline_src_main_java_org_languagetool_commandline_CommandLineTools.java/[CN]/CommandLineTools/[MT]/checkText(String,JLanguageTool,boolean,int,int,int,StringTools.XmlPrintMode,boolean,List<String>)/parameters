@@ -5,3 +5,5 @@ int contextSize
 int lineOffset
 int prevMatches
 StringTools.XmlPrintMode xmlMode
+boolean listUnknownWords
+List<String> unknownWords

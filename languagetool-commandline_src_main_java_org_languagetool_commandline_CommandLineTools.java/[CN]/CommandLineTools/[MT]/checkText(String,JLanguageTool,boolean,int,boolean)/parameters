@@ -1,0 +1,5 @@
+String contents
+JLanguageTool lt
+boolean apiFormat
+int lineOffset
+boolean listUnknownWords

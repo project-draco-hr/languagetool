@@ -6,9 +6,9 @@ case START_XML:
 case CONTINUE_XML:
   return xmlSnippet;
 case END_XML:
-return xmlSnippet + getXmlEnd();
+return xmlSnippet + getXmlUnknownWords(unknownWords) + getXmlEnd();
 case NORMAL_XML:
-return getXmlStart(lang,null) + xmlSnippet + getXmlEnd();
+return getXmlStart(lang,null) + xmlSnippet + getXmlUnknownWords(unknownWords)+ getXmlEnd();
 }
 throw new IllegalArgumentException("Unknown XML mode: " + xmlMode);
 }

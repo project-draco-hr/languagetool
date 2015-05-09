@@ -15,7 +15,7 @@
       System.out.printf(Locale.ENGLISH,"Time: %dms for %d sentences (%.1f sentences/sec)",time,sentences,sentencesPerSecond);
       System.out.println();
     }
-    if (listUnknownWords) {
+    if (listUnknownWords && !apiFormat) {
       Collections.sort(unknownWords);
       System.out.println("Unknown words: " + unknownWords);
     }

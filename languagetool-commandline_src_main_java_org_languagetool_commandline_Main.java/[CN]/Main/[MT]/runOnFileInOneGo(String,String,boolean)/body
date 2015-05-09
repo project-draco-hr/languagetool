@@ -17,19 +17,13 @@
       CommandLineTools.profileRulesOnText(text,lt);
     }
  else     if (!taggerOnly) {
-      CommandLineTools.checkText(text,lt,apiFormat,0);
+      CommandLineTools.checkText(text,lt,apiFormat,0,listUnknownWords);
     }
  else {
       CommandLineTools.tagText(text,lt);
     }
-    if (apiFormat) {
-      System.out.println("<!--");
-    }
-    if (listUnknownWords) {
+    if (listUnknownWords && !apiFormat) {
       System.out.println("Unknown words: " + lt.getUnknownWords());
-    }
-    if (apiFormat) {
-      System.out.println("-->");
     }
   }
 }

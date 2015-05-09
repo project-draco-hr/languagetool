@@ -8,7 +8,7 @@
     matches+=Tools.profileRulesOnLine(s,lt,currentRule);
   }
  else   if (!taggerOnly) {
-    matches+=CommandLineTools.checkText(s,lt,apiFormat,-1,lineOffset,matches,mode);
+    matches+=CommandLineTools.checkText(s,lt,apiFormat,-1,lineOffset,matches,mode,listUnknownWords,unknownWords);
   }
  else {
     CommandLineTools.tagText(s,lt);

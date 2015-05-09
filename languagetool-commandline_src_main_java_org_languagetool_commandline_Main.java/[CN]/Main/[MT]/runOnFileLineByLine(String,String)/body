@@ -22,7 +22,6 @@
   }
   int lineOffset=0;
   int tmpLineOffset=0;
-  final List<String> unknownWords=new ArrayList<>();
   handleLine(XmlPrintMode.START_XML,0,new StringBuilder());
   StringBuilder sb=new StringBuilder();
   for (int ruleIndex=0; !rules.isEmpty() && ruleIndex < runCount; ruleIndex++) {
@@ -54,22 +53,22 @@
           if (profileRules) {
             sentences+=lt.sentenceTokenize(sb.toString()).size();
           }
-          rememberUnknownWords(listUnknownWords,unknownWords);
+          rememberUnknownWords();
           sb=new StringBuilder();
           lineOffset=tmpLineOffset;
         }
       }
     }
   finally {
-      matches+=handleLine(XmlPrintMode.END_XML,tmpLineOffset - 1,sb);
       if (sb.length() > 0) {
         sentences+=lt.getSentenceCount();
         if (profileRules) {
           sentences+=lt.sentenceTokenize(sb.toString()).size();
         }
-        rememberUnknownWords(listUnknownWords,unknownWords);
+        rememberUnknownWords();
       }
-      printTimingInformation(listUnknownWords,rules,unknownWords,ruleIndex,matches,sentences,startTime);
+      matches+=handleLine(XmlPrintMode.END_XML,tmpLineOffset - 1,sb);
+      printTimingInformation(rules,ruleIndex,matches,sentences,startTime);
     }
   }
 }

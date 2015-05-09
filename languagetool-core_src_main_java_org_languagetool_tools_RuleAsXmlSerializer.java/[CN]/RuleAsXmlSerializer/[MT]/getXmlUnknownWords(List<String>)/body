@@ -1,0 +1,13 @@
+{
+  StringBuilder xml=new StringBuilder(CAPACITY);
+  if (!unknownWords.isEmpty()) {
+    xml.append("<unknown_words>\n");
+    for (    String word : unknownWords) {
+      xml.append("    <word>");
+      xml.append(escapeForXmlAttribute(word));
+      xml.append("</word>\n");
+    }
+    xml.append("</unknown_words>\n");
+  }
+  return xml.toString();
+}
