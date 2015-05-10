@@ -1,7 +1,7 @@
 {
   try {
     prepareConfig(docLanguage);
-    langTool=new MultiThreadedJLanguageTool(docLanguage,config.getMotherTongue());
+    langTool=new JLanguageTool(docLanguage,config.getMotherTongue());
     for (    Rule rule : langTool.getAllActiveRules()) {
       if (rule.isDictionaryBasedSpellingRule()) {
         langTool.disableRule(rule.getId());
