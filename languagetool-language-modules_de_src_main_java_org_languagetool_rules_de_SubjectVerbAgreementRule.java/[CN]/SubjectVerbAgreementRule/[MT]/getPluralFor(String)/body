@@ -1,0 +1,8 @@
+{
+  for (  SingularPluralPair pair : PAIRS) {
+    if (pair.singular.equals(token)) {
+      return pair.plural;
+    }
+  }
+  throw new RuntimeException("No plural found for '" + token + "'");
+}

@@ -1,0 +1,4 @@
+{
+  this.singular=singular;
+  this.plural=plural;
+}
