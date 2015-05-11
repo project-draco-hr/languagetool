@@ -7,3 +7,4 @@ String[] additionalCategoryIds
 int maxSentences
 int maxErrors
 File languageModelDir
+Pattern filter

@@ -1,0 +1,14 @@
+{
+  super(language,filter);
+  textFilter.enableMapping(false);
+  try {
+    XMLInputFactory factory=XMLInputFactory.newInstance();
+    reader=factory.createXMLEventReader(xmlInput);
+    sentenceTokenizer=language.getSentenceTokenizer();
+    sentences=new ArrayList<>();
+    this.language=language;
+  }
+ catch (  XMLStreamException e) {
+    throw new RuntimeException(e);
+  }
+}

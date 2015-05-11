@@ -1,0 +1,4 @@
+{
+  wordTokenizer=language.getWordTokenizer();
+  this.acceptPattern=acceptPattern;
+}

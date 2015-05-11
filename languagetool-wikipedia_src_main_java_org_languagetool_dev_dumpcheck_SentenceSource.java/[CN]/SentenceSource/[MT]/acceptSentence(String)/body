@@ -1,4 +1,9 @@
 {
+  if (acceptPattern != null) {
+    if (!acceptPattern.matcher(sentence).find()) {
+      return false;
+    }
+  }
   String trimSentence=sentence.trim();
   return trimSentence.length() >= MIN_SENTENCE_SIZE && trimSentence.length() <= MAX_SENTENCE_LENGTH && countTokens(trimSentence) >= MIN_SENTENCE_TOKEN_COUNT;
 }

@@ -1,16 +1,3 @@
 {
-  List<SentenceSource> sources=new ArrayList<>();
-  for (  String dumpFileName : dumpFileNames) {
-    File file=new File(dumpFileName);
-    if (file.getName().endsWith(".xml")) {
-      sources.add(new WikipediaSentenceSource(new FileInputStream(dumpFileName),language));
-    }
- else     if (file.getName().startsWith("tatoeba-")) {
-      sources.add(new TatoebaSentenceSource(new FileInputStream(dumpFileName),language));
-    }
- else {
-      throw new RuntimeException("Could not find a source handler for " + dumpFileName + " - Wikipedia files must be named '*.xml', Tatoeba files must be named 'tatoeba-*'");
-    }
-  }
-  return new MixingSentenceSource(sources,language);
+  return create(dumpFileNames,language,null);
 }

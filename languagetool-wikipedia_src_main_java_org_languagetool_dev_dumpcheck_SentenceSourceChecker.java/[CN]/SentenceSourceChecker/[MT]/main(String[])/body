@@ -28,5 +28,6 @@
   String[] categoryIds=commandLine.hasOption("also-enable-categories") ? commandLine.getOptionValue("also-enable-categories").split(",") : null;
   String[] fileNames=commandLine.getOptionValues('f');
   File languageModelDir=commandLine.hasOption("languagemodel") ? new File(commandLine.getOptionValue("languagemodel")) : null;
-  prg.run(propFile,disabledRuleIds,languageCode,Arrays.asList(fileNames),ruleIds,categoryIds,maxArticles,maxErrors,languageModelDir);
+  Pattern filter=commandLine.hasOption("filter") ? Pattern.compile(commandLine.getOptionValue("filter")) : null;
+  prg.run(propFile,disabledRuleIds,languageCode,Arrays.asList(fileNames),ruleIds,categoryIds,maxArticles,maxErrors,languageModelDir,filter);
 }

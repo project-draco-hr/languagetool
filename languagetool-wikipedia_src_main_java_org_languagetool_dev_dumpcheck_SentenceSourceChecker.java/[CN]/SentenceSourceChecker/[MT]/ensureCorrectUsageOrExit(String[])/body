@@ -9,6 +9,7 @@
   options.addOption(OptionBuilder.withLongOpt("max-sentences").withArgName("number").hasArg().withDescription("maximum number of sentences to check").create());
   options.addOption(OptionBuilder.withLongOpt("max-errors").withArgName("number").hasArg().withDescription("maximum number of errors, stop when finding more").create());
   options.addOption(OptionBuilder.withLongOpt("languagemodel").withArgName("indexDir").hasArg().withDescription("directory with a '3grams' sub directory that contains an ngram index").create());
+  options.addOption(OptionBuilder.withLongOpt("filter").withArgName("regex").hasArg().withDescription("Consider only sentences that contain this regular expression (for speed up)").create());
   try {
     CommandLineParser parser=new GnuParser();
     return parser.parse(options,args);
