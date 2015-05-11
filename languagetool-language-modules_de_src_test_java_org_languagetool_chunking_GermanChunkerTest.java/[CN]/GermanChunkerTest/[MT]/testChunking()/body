@@ -18,7 +18,7 @@
   assertFullChunks("Das sind 37/NPP Prozent/NPP");
   assertFullChunks("Er will die/NPP Arbeitspl??tze/NPP so umgestalten , dass/NPP sie/NPP wie/NPP ein/NPP Spiel/NPP sind.");
   assertFullChunks("So dass Knochenbr??che/NPP und/NPP Platzwunden/NPP die/NPP Regel/NPP sind");
-  assertFullChunks("Eine/NPS Veranstaltung/NPS ,/NPP die/NPP immer/NPP wieder/NPP ein/NPP kultureller/NPP H??hepunkt/NPP war");
+  assertFullChunks("Eine/NPS Veranstaltung/NPS ,/NPS die/NPS immer/NPS wieder/NPS ein/NPS kultureller/NPS H??hepunkt/NPS war");
   assertFullChunks("Und die/NPS ??ltere/NPS der/NPS beiden/NPS T??chter/NPS ist 20.");
   assertFullChunks("Der/NPS Synthese/NPS organischer/NPS Verbindungen/NPS steht nichts im/PP Weg/NPS");
   assertFullChunks("Aber die/NPP Kenntnisse/NPP der/NPP Sprache/NPP sind n??tig.");
@@ -56,4 +56,5 @@
   assertFullChunks("Letztes/PP Jahr/PP war es kalt");
   assertFullChunks("Es sind Atome/NPP ,/NPP welche/NPP der/NPP Urstoff/NPP aller/NPP K??rper/NPP sind");
   assertFullChunks("Kommentare/NPP ,/NPP Korrekturen/NPP ,/NPP Kritik/NPP bitte nach /dev/null");
+  assertFullChunks("Einer/NPS der/NPS beiden/NPS H??fe/NPS war sch??n");
 }
