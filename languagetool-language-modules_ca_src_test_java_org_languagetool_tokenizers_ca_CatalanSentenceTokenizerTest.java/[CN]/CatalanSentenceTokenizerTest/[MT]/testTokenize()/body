@@ -41,6 +41,8 @@
   testSplit("Art. 2.1: S??n obligats els...");
   testSplit("Arriba fins a les pp. 50-52.");
   testSplit("Arriba fins a les pp. XI-XII.");
+  testSplit("i no ho vol. ","Malgrat que ??s aix??.");
+  testSplit("i ??s del vol. 3 de la col??lecci??");
   testSplit("Ell ??s el n??mero u. ","Jo el dos.");
   testSplit("T?? un trau al cap. ","Cal portar-lo a l'hospital.");
   testSplit("Aix?? passa en el PP. ","Per??, per altra banda,");
