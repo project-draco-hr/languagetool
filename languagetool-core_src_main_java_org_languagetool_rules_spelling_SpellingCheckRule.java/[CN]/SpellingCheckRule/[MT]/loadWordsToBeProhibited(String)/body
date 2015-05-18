@@ -9,7 +9,7 @@
         continue;
       }
       failOnSpace(prohibitFile,line);
-      wordsToBeProhibited.add(line);
+      wordsToBeProhibited.addAll(expandLine(line));
     }
   }
  }
