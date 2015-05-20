@@ -1,8 +1,11 @@
 {
-  if (wordRepetitionOf("had",tokens,position)) {
+  if (wordRepetitionOf("had",tokens,position) && posIsIn(tokens,position - 2,"PRP")) {
     return true;
   }
-  if (wordRepetitionOf("that",tokens,position) && nextPOSIsIn(tokens,position,"NN","PRP$","JJ","VBZ","VBD")) {
+  if (wordRepetitionOf("that",tokens,position) && posIsIn(tokens,position + 1,"NN","PRP$","JJ","VBZ","VBD")) {
+    return true;
+  }
+  if (wordRepetitionOf("can",tokens,position) && posIsIn(tokens,position - 1,"NN")) {
     return true;
   }
   if (wordRepetitionOf("Pago",tokens,position)) {
