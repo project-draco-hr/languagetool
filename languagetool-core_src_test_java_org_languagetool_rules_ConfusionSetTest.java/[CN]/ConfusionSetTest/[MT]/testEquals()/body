@@ -1,0 +1,10 @@
+{
+  ConfusionSet confusionSet1a=new ConfusionSet(1,"one","two");
+  ConfusionSet confusionSet1b=new ConfusionSet(1,"two","one");
+  ConfusionSet confusionSet3=new ConfusionSet(1,"Two","one");
+  ConfusionSet confusionSet4=new ConfusionSet(2,"Two","one");
+  assertTrue(confusionSet1a.equals(confusionSet1b));
+  assertFalse(confusionSet1a.equals(confusionSet3));
+  assertFalse(confusionSet1b.equals(confusionSet3));
+  assertFalse(confusionSet3.equals(confusionSet4));
+}

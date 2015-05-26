@@ -1,4 +1,0 @@
-{
-  this.trainingList=trainingList;
-  this.testList=testList;
-}

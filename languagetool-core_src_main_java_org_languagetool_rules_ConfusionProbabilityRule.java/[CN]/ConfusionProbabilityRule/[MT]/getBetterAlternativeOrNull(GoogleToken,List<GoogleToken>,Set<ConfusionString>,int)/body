@@ -1,0 +1,7 @@
+{
+  if (confusionSet.size() != 2) {
+    throw new RuntimeException("Confusion set must be of size 2: " + confusionSet);
+  }
+  ConfusionString other=getAlternativeTerm(confusionSet,token);
+  return getBetterAlternativeOrNull(token,tokens,other,factor);
+}

@@ -1,0 +1,9 @@
+{
+  List<Sentence> allTokenSentences=getRelevantSentences(inputsOrDir,token,maxSentences);
+  List<Sentence> allHomophoneSentences=getRelevantSentences(inputsOrDir,homophoneToken,maxSentences);
+  evaluate(allTokenSentences,true,token,homophoneToken);
+  evaluate(allTokenSentences,false,homophoneToken,token);
+  evaluate(allHomophoneSentences,false,token,homophoneToken);
+  evaluate(allHomophoneSentences,true,homophoneToken,token);
+  printEvalResult(allTokenSentences,allHomophoneSentences,inputsOrDir);
+}

@@ -1,20 +1,8 @@
 {
-  File topTempDir=new File(System.getProperty("java.io.tmpdir"),ConfusionProbabilityRuleTest.class.getName() + "-" + System.currentTimeMillis());
-  File tempDir=new File(topTempDir,"3grams");
-  try {
-    create3gramIndex(tempDir);
-    testIndex(topTempDir);
-  }
-  finally {
-    System.out.println("Deleting " + topTempDir);
-    for (    File file : tempDir.listFiles()) {
-      String name=file.getName();
-      if (!name.matches("^(write\\.lock|segments\\.gen|segments_.*|_\\d+\\..{2,3}?)$")) {
-        throw new RuntimeException("Sanity check failed: unexpected file name '" + file.getAbsoluteFile() + "'");
-      }
-      file.delete();
-    }
-    tempDir.delete();
-    topTempDir.delete();
-  }
+  assertMatch("Their are new ideas to explore.");
+  assertGood("There are new ideas to explore.");
+  assertMatch("Why is there car broken again?");
+  assertGood("Why is their car broken again?");
+  assertGood("Is this their useful test?");
+  assertGood("Is this there useful test?");
 }

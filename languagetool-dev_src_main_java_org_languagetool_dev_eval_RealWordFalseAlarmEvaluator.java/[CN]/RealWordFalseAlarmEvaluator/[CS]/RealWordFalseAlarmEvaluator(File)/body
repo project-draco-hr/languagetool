@@ -1,15 +1,9 @@
 {
-  InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/en/homophones.txt");
-  ConfusionSetLoader confusionSetLoader;
-  if (EVAL_MODE) {
-    InputStream infoStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/en/homophones-info.txt");
-    confusionSetLoader=new ConfusionSetLoader(infoStream,MIN_SENTENCES,MAX_ERROR_RATE);
+  try (InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/en/confusion_sets.txt")){
+    ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
+    confusionSet=confusionSetLoader.loadConfusionSet(inputStream);
   }
- else {
-    confusionSetLoader=new ConfusionSetLoader();
-  }
-  confusionSet=confusionSetLoader.loadConfusionSet(inputStream);
-  langTool=new JLanguageTool(new BritishEnglish());
+   langTool=new JLanguageTool(new BritishEnglish());
   List<Rule> rules=langTool.getAllActiveRules();
   for (  Rule rule : rules) {
     langTool.disableRule(rule.getId());

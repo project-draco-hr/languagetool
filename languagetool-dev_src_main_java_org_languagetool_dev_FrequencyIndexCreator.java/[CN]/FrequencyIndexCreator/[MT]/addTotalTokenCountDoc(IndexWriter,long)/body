@@ -1,0 +1,9 @@
+{
+  FieldType fieldType=new FieldType();
+  fieldType.setIndexed(true);
+  fieldType.setStored(true);
+  Field countField=new Field("totalTokenCount",String.valueOf(totalTokenCount),fieldType);
+  Document doc=new Document();
+  doc.add(countField);
+  writer.addDocument(doc);
+}

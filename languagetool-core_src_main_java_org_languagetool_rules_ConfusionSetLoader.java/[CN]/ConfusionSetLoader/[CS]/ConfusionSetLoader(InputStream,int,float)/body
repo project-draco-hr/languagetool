@@ -1,5 +1,0 @@
-{
-  this.minSentences=minSentences;
-  this.maxErrorRate=maxErrorRate;
-  usefulHomophones=infoStream != null ? getUsefulHomophones(infoStream) : null;
-}

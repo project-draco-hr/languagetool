@@ -1,0 +1,9 @@
+{
+  ConfusionSet confusionSet=new ConfusionSet(1,"one","two");
+  assertThat(confusionSet.getSet().size(),is(2));
+  assertTrue(confusionSet.getSet().toString().contains("one"));
+  assertTrue(confusionSet.getSet().toString().contains("two"));
+  assertThat(confusionSet.getUppercaseFirstCharSet().size(),is(2));
+  assertTrue(confusionSet.getUppercaseFirstCharSet().toString().contains("One"));
+  assertTrue(confusionSet.getUppercaseFirstCharSet().toString().contains("Two"));
+}

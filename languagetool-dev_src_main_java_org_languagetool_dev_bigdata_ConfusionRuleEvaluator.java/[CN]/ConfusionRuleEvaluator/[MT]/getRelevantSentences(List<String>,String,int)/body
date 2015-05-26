@@ -1,0 +1,20 @@
+{
+  List<Sentence> sentences=new ArrayList<>();
+  for (  String input : inputs) {
+    if (new File(input).isDirectory()) {
+      File file=new File(input,token + ".txt");
+      if (!file.exists()) {
+        throw new RuntimeException("File with example sentences not found: " + file);
+      }
+      try (FileInputStream fis=new FileInputStream(file)){
+        SentenceSource sentenceSource=new PlainTextSentenceSource(fis,language);
+        sentences=getSentencesFromSource(inputs,token,maxSentences,sentenceSource);
+      }
+     }
+ else {
+      SentenceSource sentenceSource=MixingSentenceSource.create(inputs,language);
+      sentences=getSentencesFromSource(inputs,token,maxSentences,sentenceSource);
+    }
+  }
+  return sentences;
+}

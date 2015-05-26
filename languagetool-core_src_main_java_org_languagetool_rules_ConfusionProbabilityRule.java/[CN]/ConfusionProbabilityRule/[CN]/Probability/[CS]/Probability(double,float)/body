@@ -1,0 +1,4 @@
+{
+  this.prob=prob;
+  this.coverage=coverage;
+}

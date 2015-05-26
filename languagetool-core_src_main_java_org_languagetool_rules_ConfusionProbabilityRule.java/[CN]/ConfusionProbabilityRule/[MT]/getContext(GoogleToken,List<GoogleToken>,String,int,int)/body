@@ -1,0 +1,32 @@
+{
+  int pos=tokens.indexOf(token);
+  if (pos == -1) {
+    throw new RuntimeException("Token not found: " + token);
+  }
+  List<String> result=new ArrayList<>();
+  for (int i=1, added=0; added < toLeft; i++) {
+    if (pos - i < 0) {
+      return toStrings(tokens.subList(0,3));
+    }
+ else {
+      if (!tokens.get(pos - i).isWhitespace()) {
+        result.add(0,tokens.get(pos - i).token);
+        added++;
+      }
+    }
+  }
+  result.add(newToken);
+  for (int i=1, added=0; added < toRight; i++) {
+    if (pos + i >= tokens.size()) {
+      result.add(".");
+      added++;
+    }
+ else {
+      if (!tokens.get(pos + i).isWhitespace()) {
+        result.add(tokens.get(pos + i).token);
+        added++;
+      }
+    }
+  }
+  return result;
+}

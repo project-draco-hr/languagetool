@@ -1,0 +1,5 @@
+{
+  this.token=token;
+  this.startPos=startPos;
+  this.endPos=endPos;
+}

@@ -1,0 +1,5 @@
+{
+  int result=set.hashCode();
+  result=31 * result + factor;
+  return result;
+}

@@ -1,0 +1,8 @@
+{
+  String word=token.token;
+  double p1=getProbabilityFor(token,tokens,word);
+  double p2=getProbabilityFor(token,tokens,otherWord.getString());
+  debug("P(" + word + ") = %.50f\n",p1);
+  debug("P(" + otherWord + ") = %.50f\n",p2);
+  return p2 > p1 * factor ? otherWord : null;
+}

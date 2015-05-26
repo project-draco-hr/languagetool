@@ -1,6 +1,0 @@
-{
-  int boundary=(int)(all.size() * testSetFactor);
-  List<Sentence> trainingList=all.subList(boundary,all.size());
-  List<Sentence> testList=all.subList(0,boundary);
-  return new ListSplit<>(trainingList,testList);
-}

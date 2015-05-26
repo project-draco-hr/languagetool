@@ -1,6 +1,16 @@
 {
-  InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/yy/homophones.txt");
-  InputStream infoStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/yy/homophones-info.txt");
-  ConfusionSetLoader loader2=new ConfusionSetLoader(infoStream,1002,10.0f);
-  assertTrue(loader2.loadConfusionSet(inputStream).size() == 0);
-}
+  try (InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/yy/confusion_sets.txt")){
+    ConfusionSetLoader loader=new ConfusionSetLoader();
+    Map<String,ConfusionSet> map=loader.loadConfusionSet(inputStream);
+    assertTrue(map.size() == 2);
+    assertThat(map.get("there").getFactor(),is(10));
+    assertThat(map.get("their").getFactor(),is(10));
+    Set<ConfusionString> there=map.get("there").getSet();
+    assertTrue(getAsString(there).contains("there - example 1"));
+    assertTrue(getAsString(there).contains("their - example 2"));
+    Set<ConfusionString> their=map.get("their").getSet();
+    assertTrue(getAsString(their).contains("there - example 1"));
+    assertTrue(getAsString(their).contains("their - example 2"));
+    assertFalse(getAsString(their).contains("comment"));
+  }
+ }

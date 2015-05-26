@@ -1,0 +1,4 @@
+List<String> inputsOrDir
+String token
+String homophoneToken
+int maxSentences

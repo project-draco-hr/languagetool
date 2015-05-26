@@ -1,8 +1,8 @@
 {
-  System.err.println("Loading homophones from " + homophonePath + ", minimum occurrence: "+ MIN_COUNT);
+  System.err.println("Loading confusion sets from " + confusionSetPath + ", minimum occurrence: "+ MIN_COUNT);
   ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
-  InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(homophonePath);
-  Map<String,ConfusionProbabilityRule.ConfusionSet> map=confusionSetLoader.loadConfusionSet(inputStream);
+  InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(confusionSetPath);
+  Map<String,ConfusionSet> map=confusionSetLoader.loadConfusionSet(inputStream);
   Set<String> confusionTerms=map.keySet();
   dumpOccurrences(confusionTerms);
 }

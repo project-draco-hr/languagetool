@@ -1,0 +1,3 @@
+List<String> inputs
+String token
+int maxSentences

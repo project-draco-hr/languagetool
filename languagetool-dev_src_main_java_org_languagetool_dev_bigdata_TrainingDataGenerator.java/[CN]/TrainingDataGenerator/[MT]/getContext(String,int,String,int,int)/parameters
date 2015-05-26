@@ -1,5 +1,0 @@
-String plainText
-int pos
-String newToken
-int toLeft
-int toRight

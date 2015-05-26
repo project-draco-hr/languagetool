@@ -1,5 +1,0 @@
-List<ValidationSentence> sentences
-String token
-String homophoneToken
-List<Sentence> trainingSentences
-List<Sentence> homophoneTrainingSentences

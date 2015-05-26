@@ -1,0 +1,4 @@
+{
+  this.str=Objects.requireNonNull(str);
+  this.description=description;
+}

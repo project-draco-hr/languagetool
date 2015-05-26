@@ -1,0 +1,9 @@
+{
+  StringBuilder sb=new StringBuilder();
+  for (  ConfusionString confusionString : their) {
+    sb.append(confusionString.getString()).append(" - ");
+    sb.append(confusionString.getDescription());
+    sb.append(" ");
+  }
+  return sb.toString();
+}

@@ -1,0 +1,3 @@
+{
+  rule.getPseudoProbability(Collections.<String>emptyList());
+}

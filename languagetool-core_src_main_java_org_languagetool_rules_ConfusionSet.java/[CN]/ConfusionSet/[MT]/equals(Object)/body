@@ -1,0 +1,8 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  ConfusionSet that=(ConfusionSet)o;
+  if (factor != that.factor)   return false;
+  if (!set.equals(that.set))   return false;
+  return true;
+}

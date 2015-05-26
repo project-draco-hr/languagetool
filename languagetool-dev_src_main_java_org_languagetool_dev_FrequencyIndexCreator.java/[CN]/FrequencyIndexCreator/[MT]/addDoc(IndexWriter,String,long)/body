@@ -1,0 +1,10 @@
+{
+  Document doc=new Document();
+  doc.add(new Field("ngram",text,StringField.TYPE_NOT_STORED));
+  FieldType fieldType=new FieldType();
+  fieldType.setStored(true);
+  Field countField=new Field("count",String.valueOf(count),fieldType);
+  doc.add(countField);
+  totalTokenCount+=count;
+  writer.addDocument(doc);
+}

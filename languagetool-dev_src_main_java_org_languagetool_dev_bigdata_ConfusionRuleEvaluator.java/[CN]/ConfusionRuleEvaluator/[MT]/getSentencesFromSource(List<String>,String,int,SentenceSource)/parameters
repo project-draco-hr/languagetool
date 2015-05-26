@@ -1,0 +1,4 @@
+List<String> inputs
+String token
+int maxSentences
+SentenceSource sentenceSource

@@ -1,17 +1,31 @@
 {
-  Map<String,ConfusionProbabilityRule.ConfusionSet> map=new HashMap<>();
+  Map<String,ConfusionSet> map=new HashMap<>();
   try (InputStreamReader reader=new InputStreamReader(stream,CHARSET);BufferedReader br=new BufferedReader(reader)){
     String line;
     while ((line=br.readLine()) != null) {
-      if (line.startsWith("#")) {
+      if (line.startsWith("#") || line.trim().isEmpty()) {
         continue;
       }
-      String[] words=line.split(",\\s*");
-      ConfusionProbabilityRule.ConfusionSet confusionSet=new ConfusionProbabilityRule.ConfusionSet(words);
-      for (      String word : words) {
-        if (usefulHomophones == null || usefulHomophones.contains(word)) {
-          map.put(word,confusionSet);
+      String[] parts=line.replaceFirst("\\s*#.*","").split(";\\s*");
+      if (parts.length != 3) {
+        throw new RuntimeException("Unexpected format: " + line);
+      }
+      List<ConfusionString> confusionStrings=new ArrayList<>();
+      for (      String part : Arrays.asList(parts).subList(0,parts.length - 1)) {
+        String[] subParts=part.split("\\|");
+        if (subParts.length != 2) {
+          throw new RuntimeException("Unexpected format, expected 'word|some description': " + part);
         }
+        String word=subParts[0];
+        String description=subParts[1];
+        if (map.containsKey(part)) {
+          throw new RuntimeException("Cannot add " + part + " to confusion set: already exists");
+        }
+        confusionStrings.add(new ConfusionString(word,description));
+      }
+      ConfusionSet confusionSet=new ConfusionSet(Integer.parseInt(parts[parts.length - 1]),confusionStrings);
+      for (      ConfusionString confusionString : confusionStrings) {
+        map.put(confusionString.getString(),confusionSet);
       }
     }
   }

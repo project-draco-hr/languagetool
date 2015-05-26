@@ -1,0 +1,5 @@
+{
+  AnalyzedSentence errorSentence=lt.getAnalyzedSentence(input);
+  RuleMatch[] matches=rule.match(errorSentence);
+  assertThat("Got " + matches.length + " match(es) for: "+ input,matches.length,is(expectedMatches));
+}

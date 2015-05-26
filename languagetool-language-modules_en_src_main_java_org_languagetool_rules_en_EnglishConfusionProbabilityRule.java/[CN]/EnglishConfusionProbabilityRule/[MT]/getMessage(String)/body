@@ -1,3 +1,0 @@
-{
-  return "Statistic suggests that '" + suggestion + "' might be the right word here. Please check.";
-}

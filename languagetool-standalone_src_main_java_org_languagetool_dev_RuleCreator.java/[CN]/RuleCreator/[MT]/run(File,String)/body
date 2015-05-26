@@ -1,14 +1,14 @@
 {
   ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
   InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(homophonePath);
-  Map<String,ConfusionProbabilityRule.ConfusionSet> confusionSetMap=confusionSetLoader.loadConfusionSet(inputStream);
+  Map<String,ConfusionSet> confusionSetMap=confusionSetLoader.loadConfusionSet(inputStream);
   initMaps(homophoneOccurrences);
   int groupCount=0;
   if (XML_MODE) {
     System.out.println("<rules lang='en'>\n");
     System.out.println("<category name='Auto-generated rules'>\n");
   }
-  for (  Map.Entry<String,ConfusionProbabilityRule.ConfusionSet> entry : confusionSetMap.entrySet()) {
+  for (  Map.Entry<String,ConfusionSet> entry : confusionSetMap.entrySet()) {
     System.err.println(" === " + entry + " === ");
     List<OccurrenceInfo> infos=occurrenceInfos.get(entry.getKey());
     if (infos == null) {
@@ -24,11 +24,11 @@
     groupCount++;
     for (    OccurrenceInfo occurrenceInfo : infos) {
       String[] parts=occurrenceInfo.ngram.split(" ");
-      for (      String variant : entry.getValue().getSet()) {
-        if (variant.equals(entry.getKey())) {
+      for (      ConfusionString variant : entry.getValue().getSet()) {
+        if (variant.getString().equals(entry.getKey())) {
           continue;
         }
-        printRule(occurrenceInfo,parts,variant);
+        printRule(occurrenceInfo,parts,variant.getString());
       }
     }
     if (XML_MODE) {

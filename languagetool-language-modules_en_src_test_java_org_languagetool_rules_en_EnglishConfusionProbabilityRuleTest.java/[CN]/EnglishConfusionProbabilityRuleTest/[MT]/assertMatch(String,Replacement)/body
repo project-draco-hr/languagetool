@@ -1,0 +1,14 @@
+{
+  assertMatch(errorInput,1);
+  String fixedInput;
+  if (errorInput.matches(".*\\b" + rep.newsString + "\\b.*")) {
+    fixedInput=errorInput.replaceFirst("\\b" + rep.newsString + "\\b",rep.oldString);
+  }
+ else {
+    fixedInput=errorInput.replaceFirst("\\b" + rep.oldString + "\\b",rep.newsString);
+  }
+  if (fixedInput.equals(errorInput)) {
+    throw new RuntimeException("Could not fix sentence: '" + errorInput + "' with "+ rep);
+  }
+  assertMatch(fixedInput,0);
+}

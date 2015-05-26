@@ -1,2 +1,0 @@
-AnalyzedSentence sentence
-Map<String,ConfusionProbabilityRule.ConfusionSet> confusionSet

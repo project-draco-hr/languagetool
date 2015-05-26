@@ -1,0 +1,23 @@
+{
+  File indexDir=new File("/data/google-ngram-index");
+  if (!indexDir.exists()) {
+    throw new RuntimeException("ngram data not found at " + indexDir + ", get it at http://wiki.languagetool.org/finding-errors-using-big-data");
+  }
+  rule=new EnglishConfusionProbabilityRule(TestTools.getEnglishMessages(),new LuceneLanguageModel(indexDir),english);
+  Replacement theirThere=new Replacement("there","their");
+  assertMatch("Is their a telephone anywhere?",theirThere);
+  assertMatch("I can't remember how to go their.",theirThere);
+  assertMatch("Can you please tell me why their seems to be two churches in every village?",theirThere);
+  assertMatch("Why do American parents praise there children?",theirThere);
+  assertMatch("The British supplied there native allies with muskets, gunpowder and advice.",theirThere);
+  Replacement knowNow=new Replacement("know","now");
+  assertMatch("From know on let us study in the morning.",knowNow);
+  assertMatch("I am from Hiroshima, but know I live in Tokyo.",knowNow);
+  assertMatch("I didn't now where it came from.",knowNow);
+  assertMatch("Let me now if I need to make any changes.",knowNow);
+  Replacement fourFor=new Replacement("four","for");
+  assertMatch("This gives us a minimum date four the age of Afroasiatic.",fourFor);
+  assertMatch("Agassi admitted that he used and tested positive four methamphetamine in 1997.",fourFor);
+  assertMatch("Alabama has for of the world's largest stadiums.",fourFor);
+  assertMatch("There are no male actors and the for leading actresses dubbed themselves in the Castilian version.",fourFor);
+}

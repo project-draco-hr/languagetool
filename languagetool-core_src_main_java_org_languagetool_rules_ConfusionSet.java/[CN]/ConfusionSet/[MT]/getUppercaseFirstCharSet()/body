@@ -1,0 +1,8 @@
+{
+  Set<ConfusionString> result=new HashSet<>();
+  for (  ConfusionString s : set) {
+    ConfusionString newString=new ConfusionString(StringTools.uppercaseFirstChar(s.getString()),s.getDescription());
+    result.add(newString);
+  }
+  return Collections.unmodifiableSet(result);
+}

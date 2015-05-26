@@ -1,15 +1,23 @@
 {
-  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  List<GoogleToken> tokens=getGoogleTokens(sentence.getText());
   List<RuleMatch> matches=new ArrayList<>();
   int pos=0;
-  for (  AnalyzedTokenReadings token : tokens) {
-    ConfusionSet confusionSet=wordToSet.get(token.getToken());
+  for (  GoogleToken googleToken : tokens) {
+    String token=googleToken.token;
+    ConfusionSet confusionSet=wordToSet.get(token);
+    boolean uppercase=false;
+    if (confusionSet == null && token.length() > 0 && Character.isUpperCase(token.charAt(0))) {
+      confusionSet=wordToSet.get(StringTools.lowercaseFirstChar(token));
+      uppercase=true;
+    }
     boolean isEasilyConfused=confusionSet != null;
     if (isEasilyConfused) {
-      String betterAlternative=getBetterAlternativeOrNull(tokens,pos,confusionSet);
+      Set<ConfusionString> set=uppercase ? confusionSet.getUppercaseFirstCharSet() : confusionSet.getSet();
+      ConfusionString betterAlternative=getBetterAlternativeOrNull(tokens.get(pos),tokens,set,confusionSet.getFactor());
       if (betterAlternative != null) {
-        RuleMatch match=new RuleMatch(this,token.getStartPos(),token.getEndPos(),getMessage(betterAlternative));
-        match.setSuggestedReplacement(betterAlternative);
+        String message=getMessage(betterAlternative.getString(),betterAlternative.getDescription());
+        RuleMatch match=new RuleMatch(this,googleToken.startPos,googleToken.endPos,message);
+        match.setSuggestedReplacement(betterAlternative.getString());
         matches.add(match);
       }
     }

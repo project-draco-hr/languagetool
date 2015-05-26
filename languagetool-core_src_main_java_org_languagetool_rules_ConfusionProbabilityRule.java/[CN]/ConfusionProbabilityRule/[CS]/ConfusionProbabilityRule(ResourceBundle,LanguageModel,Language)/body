@@ -1,10 +1,14 @@
 {
   super(messages);
   ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
-  String prefix="/" + language.getShortName() + "/";
-  try (InputStream homophonesInfoStream=dataBroker.getFromResourceDirAsStream(prefix + HOMOPHONES_INFO);InputStream homophonesStream=dataBroker.getFromResourceDirAsStream(prefix + HOMOPHONES)){
-    ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader(homophonesInfoStream,MIN_SENTENCES,MAX_ERROR_RATE);
-    this.wordToSet=confusionSetLoader.loadConfusionSet(homophonesStream);
-    this.languageModel=languageModel;
+  String path="/" + language.getShortName() + "/confusion_sets.txt";
+  try (InputStream confusionSetStream=dataBroker.getFromResourceDirAsStream(path)){
+    ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
+    this.wordToSet=confusionSetLoader.loadConfusionSet(confusionSetStream);
   }
- }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  this.lm=Objects.requireNonNull(languageModel);
+  totalTokenCount=languageModel.getTotalTokenCount();
+}

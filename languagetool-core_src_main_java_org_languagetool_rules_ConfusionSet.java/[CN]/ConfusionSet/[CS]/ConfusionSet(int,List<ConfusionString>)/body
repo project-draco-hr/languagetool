@@ -1,0 +1,4 @@
+{
+  this.factor=factor;
+  set.addAll(confusionStrings);
+}

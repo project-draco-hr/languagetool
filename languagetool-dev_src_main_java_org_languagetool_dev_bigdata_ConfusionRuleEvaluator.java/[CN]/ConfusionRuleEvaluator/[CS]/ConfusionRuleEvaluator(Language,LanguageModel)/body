@@ -1,0 +1,4 @@
+{
+  this.language=language;
+  this.rule=new EnglishConfusionProbabilityRule(JLanguageTool.getMessageBundle(),languageModel,language);
+}

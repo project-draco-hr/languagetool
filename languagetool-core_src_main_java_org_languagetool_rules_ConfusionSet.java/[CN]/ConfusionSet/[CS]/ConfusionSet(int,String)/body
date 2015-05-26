@@ -1,0 +1,6 @@
+{
+  this.factor=factor;
+  for (  String word : words) {
+    set.add(new ConfusionString(word,null));
+  }
+}

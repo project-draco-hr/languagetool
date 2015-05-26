@@ -1,0 +1,4 @@
+{
+  this.oldString=oldString;
+  this.newsString=newsString;
+}
