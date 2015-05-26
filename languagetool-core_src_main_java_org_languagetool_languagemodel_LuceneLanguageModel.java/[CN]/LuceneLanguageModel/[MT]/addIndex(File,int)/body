@@ -1,7 +1,10 @@
 {
   File indexDir=new File(topIndexDir,ngramSize + "grams");
   if (indexDir.exists() && indexDir.isDirectory()) {
-    luceneSearcherMap.put(ngramSize,new LuceneSearcher(indexDir));
+    if (luceneSearcherMap.containsKey(ngramSize)) {
+      throw new RuntimeException("Searcher for ngram size " + ngramSize + " already exists");
+    }
+    luceneSearcherMap.put(ngramSize,getCachedLuceneSearcher(indexDir));
     indexes.add(indexDir);
   }
 }
