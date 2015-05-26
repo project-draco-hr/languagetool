@@ -1,0 +1,8 @@
+{
+  List<ConfusionProbabilityRule.GoogleToken> tokens=Arrays.asList(new ConfusionProbabilityRule.GoogleToken("This",0,0));
+  ConfusionProbabilityRule.GoogleToken token=tokens.get(0);
+  assertThat(rule.getContext(token,tokens,"XX",1,1).toString(),is("[XX]"));
+  assertThat(rule.getContext(token,tokens,"XX",0,2).toString(),is("[XX, ., .]"));
+  assertThat(rule.getContext(token,tokens,"XX",2,0).toString(),is("[XX]"));
+  assertThat(rule.getContext(token,tokens,"XX",3,0).toString(),is("[XX]"));
+}

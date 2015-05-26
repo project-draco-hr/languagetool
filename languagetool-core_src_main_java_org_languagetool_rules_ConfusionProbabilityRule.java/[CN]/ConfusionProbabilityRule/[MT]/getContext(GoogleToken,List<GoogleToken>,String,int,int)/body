@@ -6,7 +6,12 @@
   List<String> result=new ArrayList<>();
   for (int i=1, added=0; added < toLeft; i++) {
     if (pos - i < 0) {
-      return toStrings(tokens.subList(0,3));
+      result.clear();
+      result.add(newToken);
+      for (int j=pos - 1; j >= 0; j--) {
+        result.add(0,tokens.get(j).token);
+      }
+      return result;
     }
  else {
       if (!tokens.get(pos - i).isWhitespace()) {

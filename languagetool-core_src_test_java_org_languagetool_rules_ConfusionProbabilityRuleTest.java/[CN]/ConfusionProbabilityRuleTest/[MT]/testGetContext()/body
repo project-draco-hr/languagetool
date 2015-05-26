@@ -4,5 +4,5 @@
   assertThat(rule.getContext(token,tokens,"XX",1,1).toString(),is("[is, XX, test]"));
   assertThat(rule.getContext(token,tokens,"XX",0,2).toString(),is("[XX, test, .]"));
   assertThat(rule.getContext(token,tokens,"XX",2,0).toString(),is("[This, is, XX]"));
-  assertThat(rule.getContext(token,tokens,"XX",3,0).toString(),is("[This, is, a]"));
+  assertThat(rule.getContext(token,tokens,"XX",3,0).toString(),is("[This, is, XX]"));
 }
