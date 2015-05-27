@@ -1,25 +1,12 @@
 {
   try (HomophoneOccurrenceDumper lm=new HomophoneOccurrenceDumper(dir)){
     String[] tokens=phrase.split(" ");
-    if (tokens.length == 1) {
-      String[] parts=phrase.split("\\|");
-      if (parts.length < 2) {
-        throw new RuntimeException("Please specify at least two words like 'there|their': " + phrase);
-      }
-      System.out.println("Will iterate all terms to find the relevant pairs (this may take some minutes)...");
-      Map<String,Long> contexts=lm.getContext(parts);
-      showUsefulContexts(contexts,parts);
-    }
- else     if (tokens.length == 2) {
-      long count=lm.getCount(tokens[0],tokens[1]);
-      System.out.println(phrase + ": " + count);
-    }
- else     if (tokens.length == 3) {
-      long count=lm.getCount(tokens[0],tokens[1],tokens[2]);
-      System.out.println(phrase + ": " + count);
+    if (tokens.length > 3) {
+      throw new RuntimeException("Phrases of length " + tokens.length + " are not yet supported: '"+ phrase+ "'");
     }
  else {
-      throw new RuntimeException("Phrases of length " + tokens.length + " are not yet supported: '"+ phrase+ "'");
+      long count=lm.getCount(Arrays.asList(tokens));
+      System.out.println(phrase + ": " + count);
     }
   }
  }
