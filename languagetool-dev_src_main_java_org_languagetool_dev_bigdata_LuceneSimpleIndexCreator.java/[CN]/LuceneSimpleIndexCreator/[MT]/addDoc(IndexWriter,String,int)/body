@@ -1,0 +1,6 @@
+{
+  Document document=new Document();
+  document.add(new TextField("ngram",ngram,Field.Store.YES));
+  document.add(new TextField("count",String.valueOf(count),Field.Store.YES));
+  iw.addDocument(document);
+}

@@ -1,0 +1,3 @@
+IndexWriter iw
+String ngram
+int count
