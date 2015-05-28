@@ -32,6 +32,9 @@
             lexeme=lexeme.substring(0,lexeme.length() - 2).concat("g");
           }
         }
+        if (desinence.startsWith("??")) {
+          desinence="i" + desinence.substring(1,desinence.length());
+        }
         infinitive=lexeme.concat("ar");
         if (wrongWords.containsKey(infinitive)) {
           List<String> wordAsArray=Arrays.asList("cant".concat(desinence));
@@ -48,16 +51,21 @@
       String[] synthesized=null;
       List<String> replacementInfinitives=wrongWords.get(infinitive);
       for (      String replacementInfinitive : replacementInfinitives) {
-        String[] parts=replacementInfinitive.split(" ");
-        AnalyzedToken infinitiveAsAnTkn=new AnalyzedToken(parts[0],"V.*",parts[0]);
-        for (        AnalyzedToken analyzedToken : analyzedTokenReadings) {
-          synthesized=synth.synthesize(infinitiveAsAnTkn,analyzedToken.getPOSTag());
-          for (          String s : synthesized) {
-            for (int j=1; j < parts.length; j++) {
-              s=s.concat(" ").concat(parts[j]);
-            }
-            if (!possibleReplacements.contains(s)) {
-              possibleReplacements.add(s);
+        if (replacementInfinitive.startsWith("(")) {
+          possibleReplacements.add(replacementInfinitive);
+        }
+ else {
+          String[] parts=replacementInfinitive.split(" ");
+          AnalyzedToken infinitiveAsAnTkn=new AnalyzedToken(parts[0],"V.*",parts[0]);
+          for (          AnalyzedToken analyzedToken : analyzedTokenReadings) {
+            synthesized=synth.synthesize(infinitiveAsAnTkn,analyzedToken.getPOSTag());
+            for (            String s : synthesized) {
+              for (int j=1; j < parts.length; j++) {
+                s=s.concat(" ").concat(parts[j]);
+              }
+              if (!possibleReplacements.contains(s)) {
+                possibleReplacements.add(s);
+              }
             }
           }
         }
