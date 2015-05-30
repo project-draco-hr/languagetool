@@ -1,7 +1,0 @@
-{
-  List<String> result=new ArrayList<>();
-  for (  GoogleToken reading : analyzedTokenReadings) {
-    result.add(reading.token);
-  }
-  return result;
-}
