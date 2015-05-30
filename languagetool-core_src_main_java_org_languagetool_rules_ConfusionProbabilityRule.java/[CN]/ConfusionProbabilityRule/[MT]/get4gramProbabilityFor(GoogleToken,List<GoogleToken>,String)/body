@@ -1,0 +1,12 @@
+{
+  Probability ngram4Left=getPseudoProbability(getContext(token,tokens,term,0,3));
+  Probability ngram4Middle=getPseudoProbability(getContext(token,tokens,term,1,2));
+  Probability ngram4Right=getPseudoProbability(getContext(token,tokens,term,3,0));
+  if (ngram4Left.coverage < MIN_COVERAGE && ngram4Middle.coverage < MIN_COVERAGE && ngram4Right.coverage < MIN_COVERAGE) {
+    debug("  Min coverage of %.2f not reached: %.2f, %.2f, %.2f, assuming p=0\n",MIN_COVERAGE,ngram4Left.coverage,ngram4Middle.coverage,ngram4Right.coverage);
+    return 0.0;
+  }
+ else {
+    return ngram4Left.prob * ngram4Middle.prob * ngram4Right.prob;
+  }
+}

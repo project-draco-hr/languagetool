@@ -1,0 +1,17 @@
+{
+  super(messages);
+  setCategory(new Category(messages.getString("category_typo")));
+  setLocQualityIssueType(ITSIssueType.NonConformance);
+  ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
+  String path="/" + language.getShortName() + "/confusion_sets.txt";
+  try (InputStream confusionSetStream=dataBroker.getFromResourceDirAsStream(path)){
+    ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
+    this.wordToSet=confusionSetLoader.loadConfusionSet(confusionSetStream);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  this.lm=Objects.requireNonNull(languageModel);
+  this.grams=grams;
+  totalTokenCount=languageModel.getTotalTokenCount();
+}

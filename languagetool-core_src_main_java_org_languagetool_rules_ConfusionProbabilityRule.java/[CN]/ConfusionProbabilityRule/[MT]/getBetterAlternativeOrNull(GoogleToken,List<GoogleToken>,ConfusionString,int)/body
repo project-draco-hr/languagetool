@@ -1,7 +1,18 @@
 {
   String word=token.token;
-  double p1=getProbabilityFor(token,tokens,word);
-  double p2=getProbabilityFor(token,tokens,otherWord.getString());
+  double p1;
+  double p2;
+  if (grams == 3) {
+    p1=get3gramProbabilityFor(token,tokens,word);
+    p2=get3gramProbabilityFor(token,tokens,otherWord.getString());
+  }
+ else   if (grams == 4) {
+    p1=get4gramProbabilityFor(token,tokens,word);
+    p2=get4gramProbabilityFor(token,tokens,otherWord.getString());
+  }
+ else {
+    throw new RuntimeException("Only 3grams and 4grams are supported");
+  }
   debug("P(" + word + ") = %.50f\n",p1);
   debug("P(" + otherWord + ") = %.50f\n",p2);
   return p2 > p1 * factor ? otherWord : null;

@@ -14,6 +14,6 @@
   if (args.length >= 4) {
     inputsFiles.add(args[3]);
   }
-  ConfusionRuleEvaluator generator=new ConfusionRuleEvaluator(lang,languageModel);
+  ConfusionRuleEvaluator generator=new ConfusionRuleEvaluator(lang,languageModel,3);
   generator.run(inputsFiles,TOKEN,TOKEN_HOMOPHONE,MAX_SENTENCES);
 }
