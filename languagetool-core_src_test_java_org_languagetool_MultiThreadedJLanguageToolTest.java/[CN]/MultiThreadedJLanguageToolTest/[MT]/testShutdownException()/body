@@ -1,0 +1,11 @@
+{
+  MultiThreadedJLanguageTool tool=new MultiThreadedJLanguageTool(new Demo());
+  getRuleMatchIds(tool);
+  tool.shutdown();
+  try {
+    getRuleMatchIds(tool);
+    fail("should have been rejected as the thread pool has been shut down");
+  }
+ catch (  RejectedExecutionException ignore) {
+  }
+}
