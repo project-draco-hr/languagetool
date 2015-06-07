@@ -1,5 +1,5 @@
 {
-  MultiThreadedJLanguageTool langTool=new MultiThreadedJLanguageTool(new FakeLanguage(){
+  MultiThreadedJLanguageTool lt=new MultiThreadedJLanguageTool(new FakeLanguage(){
     @Override protected synchronized List<PatternRule> getPatternRules(){
       return Collections.emptyList();
     }
@@ -8,5 +8,6 @@
     }
   }
 );
-  assertThat(langTool.check("my test  text").size(),is(2));
+  assertThat(lt.check("my test  text").size(),is(2));
+  lt.shutdown();
 }

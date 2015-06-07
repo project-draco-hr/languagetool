@@ -1,4 +1,5 @@
 {
-  MultiThreadedJLanguageTool tool=new MultiThreadedJLanguageTool(new Demo());
-  Assert.assertEquals(Runtime.getRuntime().availableProcessors(),tool.getThreadPoolSize());
+  MultiThreadedJLanguageTool lt=new MultiThreadedJLanguageTool(new Demo());
+  Assert.assertEquals(Runtime.getRuntime().availableProcessors(),lt.getThreadPoolSize());
+  lt.shutdown();
 }
