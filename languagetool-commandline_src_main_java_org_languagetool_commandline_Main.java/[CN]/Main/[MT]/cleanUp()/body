@@ -1,3 +1,9 @@
 {
+  if (lt != null) {
+    lt.shutdown();
+  }
+  if (srcLt != null) {
+    srcLt.shutdown();
+  }
   JLanguageTool.removeTemporaryFiles();
 }

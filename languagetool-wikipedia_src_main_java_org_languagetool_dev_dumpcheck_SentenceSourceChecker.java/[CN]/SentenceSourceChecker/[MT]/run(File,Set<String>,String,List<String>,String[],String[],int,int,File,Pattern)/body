@@ -1,6 +1,6 @@
 {
   final Language lang=Languages.getLanguageForShortName(langCode);
-  final JLanguageTool languageTool=new MultiThreadedJLanguageTool(lang);
+  final MultiThreadedJLanguageTool languageTool=new MultiThreadedJLanguageTool(lang);
   if (languageModelDir != null) {
     languageTool.activateLanguageModelRules(languageModelDir);
   }
@@ -52,6 +52,7 @@ catch (      Exception e) {
     System.out.println(getClass().getSimpleName() + ": " + e);
   }
  finally {
+    languageTool.shutdown();
     if (resultHandler != null) {
       final float matchesPerSentence=(float)ruleMatchCount / sentenceCount;
       System.out.printf(lang + ": %d total matches\n",ruleMatchCount);
