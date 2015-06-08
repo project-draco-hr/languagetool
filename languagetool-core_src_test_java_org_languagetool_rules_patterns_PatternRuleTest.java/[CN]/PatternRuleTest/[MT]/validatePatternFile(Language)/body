@@ -5,12 +5,11 @@
     System.out.println("Running XML validation for " + grammarFile + "...");
     final String rulesDir=JLanguageTool.getDataBroker().getRulesDir();
     final String ruleFilePath=rulesDir + "/" + grammarFile;
-    final InputStream xmlStream=this.getClass().getResourceAsStream(ruleFilePath);
-    if (xmlStream == null) {
-      System.out.println("No rule file found at " + ruleFilePath + " in classpath");
-      continue;
-    }
-    try {
+    try (InputStream xmlStream=this.getClass().getResourceAsStream(ruleFilePath)){
+      if (xmlStream == null) {
+        System.out.println("No rule file found at " + ruleFilePath + " in classpath");
+        continue;
+      }
       if (grammarFiles.size() > 1 && !grammarFiles.get(0).equals(grammarFile)) {
         validator.validateWithXmlSchema(rulesDir + "/" + grammarFiles.get(0),ruleFilePath,rulesDir + "/rules.xsd");
       }
@@ -18,8 +17,5 @@
         validator.validateWithXmlSchema(ruleFilePath,rulesDir + "/rules.xsd");
       }
     }
-  finally {
-      xmlStream.close();
-    }
-  }
+   }
 }
