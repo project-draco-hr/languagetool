@@ -11,5 +11,6 @@
   assertCorrectionsByOrder(rule,"Aerger","??rger");
   assertCorrectionsByOrder(rule,"Walt","Wald");
   assertCorrectionsByOrder(rule,"Rythmus","Rhythmus");
-  assertCorrectionsByOrder(rule,"Rytmus","Rhythmus","Remus");
+  assertCorrectionsByOrder(rule,"Rytmus","Rhythmus");
+  assertCorrectionsByOrder(rule,"is","iss","in","im","ist");
 }
