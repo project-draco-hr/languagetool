@@ -8,4 +8,7 @@
  catch (    SecurityException e) {
     }
   }
+ else {
+    Authenticator.setDefault(new PasswordAuthenticator());
+  }
 }
