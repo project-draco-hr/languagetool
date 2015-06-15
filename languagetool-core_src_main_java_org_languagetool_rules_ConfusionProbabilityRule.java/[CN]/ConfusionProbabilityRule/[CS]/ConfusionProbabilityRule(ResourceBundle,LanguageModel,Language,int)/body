@@ -6,7 +6,7 @@
   String path="/" + language.getShortName() + "/confusion_sets.txt";
   try (InputStream confusionSetStream=dataBroker.getFromResourceDirAsStream(path)){
     ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
-    this.wordToSet=confusionSetLoader.loadConfusionSet(confusionSetStream);
+    this.wordToSets=confusionSetLoader.loadConfusionSet(confusionSetStream);
   }
  catch (  IOException e) {
     throw new RuntimeException(e);

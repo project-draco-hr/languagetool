@@ -1,10 +1,13 @@
 {
-  ConfusionSet subConfusionSet=confusionSet.get(name);
+  List<ConfusionSet> subConfusionSet=confusionSets.get(name);
   if (subConfusionSet == null) {
     System.out.println("Skipping '" + name + "', homophone not loaded");
     return;
   }
-  confusionRule.setConfusionSet(subConfusionSet);
+  if (subConfusionSet.size() > 1) {
+    System.err.println("WARN: will only use first confusion set of " + subConfusionSet.size() + ": "+ subConfusionSet.get(0));
+  }
+  confusionRule.setConfusionSet(subConfusionSet.get(0));
   int sentenceCount=0;
   int ruleMatches=0;
   for (  String line : lines) {

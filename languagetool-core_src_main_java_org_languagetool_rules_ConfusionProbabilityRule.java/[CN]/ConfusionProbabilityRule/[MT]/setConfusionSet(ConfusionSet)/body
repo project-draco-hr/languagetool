@@ -1,6 +1,6 @@
 {
-  wordToSet.clear();
+  wordToSets.clear();
   for (  ConfusionString word : set.getSet()) {
-    wordToSet.put(word.getString(),set);
+    wordToSets.put(word.getString(),Collections.singletonList(set));
   }
 }

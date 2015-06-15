@@ -1,7 +1,7 @@
 {
   try (InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/en/confusion_sets.txt")){
     ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
-    confusionSet=confusionSetLoader.loadConfusionSet(inputStream);
+    confusionSets=confusionSetLoader.loadConfusionSet(inputStream);
   }
    langTool=new JLanguageTool(new BritishEnglish());
   List<Rule> rules=langTool.getAllActiveRules();
