@@ -2,7 +2,7 @@
   final DisambiguationRuleHandler handler=new DisambiguationRuleHandler();
   final SAXParserFactory factory=SAXParserFactory.newInstance();
   final SAXParser saxParser=factory.newSAXParser();
-  Authenticator.setDefault(new PasswordAuthenticator());
+  Tools.setPasswordAuthenticator();
   saxParser.parse(stream,handler);
   return handler.getDisambRules();
 }

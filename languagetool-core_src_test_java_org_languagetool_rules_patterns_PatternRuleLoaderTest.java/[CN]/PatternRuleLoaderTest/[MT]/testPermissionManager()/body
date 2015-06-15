@@ -1,0 +1,11 @@
+{
+  Policy.setPolicy(new MyPolicy());
+  System.setSecurityManager(new SecurityManager());
+  try {
+    PatternRuleLoader loader=new PatternRuleLoader();
+    loader.getRules(new ByteArrayInputStream("<rules lang='xx'></rules>".getBytes("utf-8")),"fakeName");
+  }
+  finally {
+    System.setSecurityManager(null);
+  }
+}

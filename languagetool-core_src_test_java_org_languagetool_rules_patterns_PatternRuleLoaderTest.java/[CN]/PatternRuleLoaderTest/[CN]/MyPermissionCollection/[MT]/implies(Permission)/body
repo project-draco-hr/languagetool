@@ -1,0 +1,8 @@
+{
+  for (  Permission perm : perms) {
+    if (perm.implies(p)) {
+      return true;
+    }
+  }
+  return false;
+}

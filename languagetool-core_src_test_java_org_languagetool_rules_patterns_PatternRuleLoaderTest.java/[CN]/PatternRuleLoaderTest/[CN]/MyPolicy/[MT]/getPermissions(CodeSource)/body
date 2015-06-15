@@ -1,0 +1,7 @@
+{
+  PermissionCollection perms=new MyPermissionCollection();
+  perms.add(new RuntimePermission("setIO"));
+  perms.add(new RuntimePermission("setSecurityManager"));
+  perms.add(new FilePermission("<<ALL FILES>>","read"));
+  return perms;
+}

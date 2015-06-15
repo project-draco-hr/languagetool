@@ -1,0 +1,11 @@
+{
+  SecurityManager security=System.getSecurityManager();
+  if (security != null) {
+    try {
+      security.checkPermission(new NetPermission("setDefaultAuthenticator"));
+      Authenticator.setDefault(new PasswordAuthenticator());
+    }
+ catch (    SecurityException e) {
+    }
+  }
+}
