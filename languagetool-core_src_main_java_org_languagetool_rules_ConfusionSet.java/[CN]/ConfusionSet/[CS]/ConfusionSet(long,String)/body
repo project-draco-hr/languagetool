@@ -1,4 +1,7 @@
 {
+  if (factor < 1) {
+    throw new IllegalArgumentException("factor must be >= 1: " + factor);
+  }
   Objects.requireNonNull(words);
   this.factor=factor;
   for (  String word : words) {

@@ -1,5 +1,7 @@
 {
-  Objects.requireNonNull(confusionStrings);
+  if (factor < 1) {
+    throw new IllegalArgumentException("factor must be >= 1: " + factor);
+  }
   this.factor=factor;
-  set.addAll(confusionStrings);
+  set.addAll(Objects.requireNonNull(confusionStrings));
 }
