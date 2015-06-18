@@ -1,5 +1,5 @@
 {
   int result=set.hashCode();
-  result=31 * result + factor;
+  result=31 * result + (int)(factor ^ (factor >>> 32));
   return result;
 }

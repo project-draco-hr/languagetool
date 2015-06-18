@@ -1,2 +1,2 @@
-int factor
+long factor
 String words

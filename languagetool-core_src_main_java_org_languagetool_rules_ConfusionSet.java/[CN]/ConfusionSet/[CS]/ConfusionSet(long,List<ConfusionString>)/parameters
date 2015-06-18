@@ -1,2 +1,2 @@
-int factor
+long factor
 List<ConfusionString> confusionStrings

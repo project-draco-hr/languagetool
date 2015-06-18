@@ -1,4 +1,4 @@
 GoogleToken token
 List<GoogleToken> tokens
 Set<ConfusionString> confusionSet
-int factor
+long factor

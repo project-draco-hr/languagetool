@@ -1,4 +1,5 @@
 {
+  Objects.requireNonNull(confusionStrings);
   this.factor=factor;
   set.addAll(confusionStrings);
 }
