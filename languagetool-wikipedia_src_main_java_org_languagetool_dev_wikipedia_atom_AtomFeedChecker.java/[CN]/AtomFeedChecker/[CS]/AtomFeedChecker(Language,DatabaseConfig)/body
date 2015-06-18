@@ -1,22 +1,3 @@
 {
-  this.language=Objects.requireNonNull(language);
-  langTool=new JLanguageTool(language);
-  langTool.disableRule("UNPAIRED_BRACKETS");
-  langTool.disableRule("EN_UNPAIRED_BRACKETS");
-  langTool.disableRule("EN_QUOTES");
-  langTool.disableRule("COMMA_PARENTHESIS_WHITESPACE");
-  langTool.disableRule("UPPERCASE_SENTENCE_START");
-  langTool.disableRule("FRENCH_WHITESPACE");
-  activateCategory("Wikipedia",langTool);
-  disableSpellingRules(langTool);
-  if (dbConfig != null) {
-    matchDatabase=new MatchDatabase(dbConfig.getUrl(),dbConfig.getUser(),dbConfig.getPassword());
-  }
- else {
-    matchDatabase=null;
-  }
-  contextTools.setContextSize(CONTEXT_SIZE);
-  contextTools.setErrorMarkerStart("<err>");
-  contextTools.setErrorMarkerEnd("</err>");
-  contextTools.setEscapeHtml(false);
+  this(language,dbConfig,null);
 }
