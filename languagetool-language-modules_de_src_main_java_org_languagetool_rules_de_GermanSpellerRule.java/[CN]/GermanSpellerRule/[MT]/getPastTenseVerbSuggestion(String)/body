@@ -1,6 +1,6 @@
 {
   if (word.endsWith("e")) {
-    String wordStem=word.replaceAll("e$","");
+    String wordStem=word.replaceFirst("e$","");
     try {
       String lemma=baseForThirdPersonSingularVerb(wordStem);
       if (lemma != null) {

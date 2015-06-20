@@ -1,0 +1,15 @@
+{
+  if (word.startsWith("ge") && word.endsWith("t")) {
+    String baseform=word.replaceFirst("^ge","").replaceFirst("t$","en");
+    try {
+      String participle=getParticipleForBaseform(baseform);
+      if (participle != null) {
+        return participle;
+      }
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+  return null;
+}

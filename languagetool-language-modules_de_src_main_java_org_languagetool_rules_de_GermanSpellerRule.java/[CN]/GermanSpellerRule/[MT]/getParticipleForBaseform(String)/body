@@ -1,0 +1,8 @@
+{
+  AnalyzedToken token=new AnalyzedToken(baseform,null,baseform);
+  String[] forms=synthesizer.synthesize(token,"VER:PA2:.*",true);
+  if (forms.length > 0 && !hunspellDict.misspelled(forms[0])) {
+    return forms[0];
+  }
+  return null;
+}

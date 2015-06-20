@@ -43,5 +43,9 @@
   if (verbSuggestion != null) {
     return Collections.singletonList(verbSuggestion);
   }
+  String participleSuggestion=getParticipleSuggestion(word);
+  if (participleSuggestion != null) {
+    return Collections.singletonList(participleSuggestion);
+  }
   return Collections.emptyList();
 }
