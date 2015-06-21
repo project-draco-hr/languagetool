@@ -18,8 +18,5 @@
       tkns=newTokens;
     }
   }
-  if (taggedDebugWriter != null && !tkns.isEmpty()) {
-    debug_tagged_write(tkns,taggedDebugWriter);
-  }
   return tkns;
 }

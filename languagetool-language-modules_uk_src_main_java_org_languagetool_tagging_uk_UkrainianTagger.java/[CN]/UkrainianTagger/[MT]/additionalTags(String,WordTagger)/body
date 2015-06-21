@@ -15,8 +15,7 @@
     return additionalTaggedTokens;
   }
   if (word.contains("-")) {
-    List<AnalyzedToken> guessedCompoundTags=guessCompoundTag(word);
-    debug_compound_tagged_write(guessedCompoundTags);
+    List<AnalyzedToken> guessedCompoundTags=compoundTagger.guessCompoundTag(word);
     return guessedCompoundTags;
   }
   return null;

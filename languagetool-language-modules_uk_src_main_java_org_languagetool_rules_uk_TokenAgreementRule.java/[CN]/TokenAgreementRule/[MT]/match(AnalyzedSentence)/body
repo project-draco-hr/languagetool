@@ -10,6 +10,11 @@
       reqTokenReadings=null;
       continue;
     }
+    String thisToken=tokenReadings.getToken();
+    if (i > 1 && thisToken.length() == 1 && Character.isUpperCase(thisToken.charAt(0)) && tokenReadings.isWhitespaceBefore() && !tokens[i - 1].getToken().matches("[:??????-]")) {
+      reqTokenReadings=null;
+      continue;
+    }
     AnalyzedToken multiwordReqToken=getMultiwordToken(tokenReadings);
     if (multiwordReqToken != null) {
       String mwPosTag=multiwordReqToken.getPOSTag();
@@ -66,10 +71,10 @@
         break;
       }
     }
-    if (!hasRequiredPosTag(posTagsToFind,tokenReadings)) {
+    if (!getReadingWithVidmPosTag(posTagsToFind,tokenReadings)) {
       if (isTokenToSkip(tokenReadings))       continue;
       if (prep.equalsIgnoreCase("??") || prep.equalsIgnoreCase("??") || prep.equals("????????")|| prep.equals("??????")) {
-        if (hasRequiredPosTag(Arrays.asList("p:v_naz"),tokenReadings)) {
+        if (PosTagHelper.hasPosTag(tokenReadings,".*p:v_naz[^&]*")) {
           reqTokenReadings=null;
           continue;
         }
@@ -132,6 +137,9 @@
         if (tokens.length > i + 2) {
           if (posTag.matches("adj.*:[mfn]:v_rod.*")) {
             String gender=PosTagHelper.getGender(posTag);
+            if (gender == null) {
+              System.err.println("unknown gender for " + token);
+            }
             if (PosTagHelper.hasPosTag(tokens[i + 1],"noun.*:" + gender + ":v_rod.*")) {
               i+=1;
               continue;

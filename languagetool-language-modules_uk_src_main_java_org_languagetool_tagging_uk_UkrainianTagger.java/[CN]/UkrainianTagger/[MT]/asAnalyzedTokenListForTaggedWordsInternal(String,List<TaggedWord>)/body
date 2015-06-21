@@ -1,0 +1,3 @@
+{
+  return super.asAnalyzedTokenListForTaggedWords(word,taggedWords);
+}

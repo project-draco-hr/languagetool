@@ -10,7 +10,7 @@
       return true;
     }
   }
-  if (word.contains("-")) {
+  if (word.contains("-") || word.endsWith(".")) {
     return hasGoodTag(tokens[idx]);
   }
   return false;

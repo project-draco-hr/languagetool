@@ -14,13 +14,13 @@
   }
   ArrayList<String> reqVidminkyNames=new ArrayList<>();
   for (  String vidm : posTagsToFind) {
-    reqVidminkyNames.add(UkrainianTagger.VIDMINKY_MAP.get(vidm));
+    reqVidminkyNames.add(PosTagHelper.VIDMINKY_MAP.get(vidm));
   }
   ArrayList<String> foundVidminkyNames=new ArrayList<>();
   for (  AnalyzedToken token : tokenReadings) {
     String posTag2=token.getPOSTag();
     if (posTag2 != null && posTag2.contains(VIDMINOK_SUBSTR)) {
-      String vidmName=UkrainianTagger.VIDMINKY_MAP.get(posTag2.replaceFirst("^.*" + VIDMINOK_REGEX + ".*$","$1"));
+      String vidmName=PosTagHelper.VIDMINKY_MAP.get(posTag2.replaceFirst("^.*" + VIDMINOK_REGEX + ".*$","$1"));
       if (foundVidminkyNames.contains(vidmName)) {
         if (posTag2.contains(":p:")) {
           vidmName=vidmName + " (????.)";
@@ -37,7 +37,7 @@
     msg+=". ?????????????? ?????? ???????????????? ???????????????????? ?????????????????? ???????????????";
     try {
       String newYihPostag="adj:p" + requiredPostTagsRegEx + ".*";
-      String[] synthesized=ukrainianSynthesizer.synthesize(new AnalyzedToken("??????????","adj:m:v_naz:&pron","??????????"),newYihPostag,true);
+      String[] synthesized=ukrainianSynthesizer.synthesize(new AnalyzedToken("??????????","adj:m:v_naz:&pron:pos","??????????"),newYihPostag,true);
       suggestions.addAll(Arrays.asList(synthesized));
     }
  catch (    IOException e) {

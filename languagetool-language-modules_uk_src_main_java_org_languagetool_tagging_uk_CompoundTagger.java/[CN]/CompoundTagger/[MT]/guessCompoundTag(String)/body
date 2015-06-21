@@ -1,0 +1,5 @@
+{
+  List<AnalyzedToken> guessedCompoundTags=doGuessCompoundTag(word);
+  debug_compound_tagged_write(guessedCompoundTags);
+  return guessedCompoundTags;
+}

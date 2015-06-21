@@ -1,13 +1,40 @@
 {
+  HashMap<String,String> urls=new HashMap<String,String>();
   text=cleanup(text);
   if (text.contains(",")) {
     text=DECIMAL_COMMA_PATTERN.matcher(text).replaceAll("$1" + DECIMAL_COMMA_SUBST + "$2");
   }
+  if (text.contains("tp")) {
+    Matcher matcher=URL_PATTERN.matcher(text);
+    int urlReplaceChar=URL_START_REPLACE_CHAR;
+    while (matcher.find()) {
+      String urlGroup=matcher.group();
+      String replaceChar=String.valueOf((char)urlReplaceChar);
+      urls.put(replaceChar,urlGroup);
+      text=matcher.replaceAll(replaceChar);
+      urlReplaceChar++;
+    }
+  }
+  if (text.contains(ELLIPSIS)) {
+    text=text.replace(ELLIPSIS,ELLIPSIS_SUBST);
+  }
+  if (text.contains(ELLIPSIS2)) {
+    text=text.replace(ELLIPSIS2,ELLIPSIS2_SUBST);
+  }
+  if (text.contains(ELLIPSIS3)) {
+    text=text.replace(ELLIPSIS3,ELLIPSIS3_SUBST);
+  }
   if (text.contains(".")) {
     text=DATE_PATTERN.matcher(text).replaceAll("$1" + DATE_DOT_SUBST + "$2"+ DATE_DOT_SUBST+ "$3");
     text=DOTTED_NUMBERS_PATTERN.matcher(text).replaceAll("$1" + NUMBER_DOT_SUBST + "$2");
-    text=ABBR_DOT_PATTERN.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + " $2");
-    text=ABBR_DOT_PATTERN2.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + " $2");
+    text=ABBR_DOT_PATTERN4.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + BREAKING_PLACEHOLDER+ "$2"+ ABBR_DOT_SUBST);
+    text=ABBR_DOT_PATTERN.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2");
+    text=ABBR_DOT_PATTERN1.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2");
+    text=ABBR_DOT_PATTERN2.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2");
+    text=ABBR_DOT_PATTERN5.matcher(text).replaceAll("$1" + BREAKING_PLACEHOLDER + ABBR_DOT_SUBST);
+    text=ABBR_DOT_PATTERN3.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2"+ ABBR_DOT_SUBST);
+    text=ABBR_DOT_PATTERN6.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST);
+    text=ABBR_DOT_PATTERN7.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2"+ ABBR_DOT_SUBST);
   }
   if (text.contains(":")) {
     text=COLON_NUMBERS_PATTERN.matcher(text).replaceAll("$1" + COLON_DOT_SUBST + "$2");
@@ -15,13 +42,11 @@
   if (text.contains("(")) {
     text=BRACE_IN_WORD_PATTERN.matcher(text).replaceAll("$1" + LEFT_BRACE_SUBST + "$2"+ RIGHT_BRACE_SUBST);
   }
-  if (text.contains(ELLIPSIS)) {
-    text=text.replace(ELLIPSIS,ELLIPSIS_SUBST);
-  }
   List<String> tokenList=new ArrayList<>();
   StringTokenizer st=new StringTokenizer(text,SPLIT_CHARS,true);
   while (st.hasMoreElements()) {
     String token=st.nextToken();
+    if (token.equals(BREAKING_PLACEHOLDER))     continue;
     token=token.replace(DECIMAL_COMMA_SUBST,',');
     token=token.replace(DATE_DOT_SUBST,'.');
     token=token.replace(NUMBER_DOT_SUBST,'.');
@@ -30,6 +55,13 @@
     token=token.replace(LEFT_BRACE_SUBST,'(');
     token=token.replace(RIGHT_BRACE_SUBST,')');
     token=token.replaceAll(ELLIPSIS_SUBST,ELLIPSIS);
+    token=token.replaceAll(ELLIPSIS2_SUBST,ELLIPSIS2);
+    token=token.replaceAll(ELLIPSIS3_SUBST,ELLIPSIS3);
+    if (!urls.isEmpty()) {
+      for (      Entry<String,String> entry : urls.entrySet()) {
+        token=token.replace(entry.getKey(),entry.getValue());
+      }
+    }
     tokenList.add(token);
   }
   return tokenList;

@@ -1,7 +1,8 @@
 {
   String agreedPosTag=null;
   if (leftPosTag.contains(":p:") && SING_REGEX_F.matcher(rightPosTag).find() || SING_REGEX_F.matcher(leftPosTag).find() && rightPosTag.contains(":p:")) {
-    if (PosTagHelper.getConj(leftPosTag).equals(PosTagHelper.getConj(rightPosTag))) {
+    String leftConj=PosTagHelper.getConj(leftPosTag);
+    if (leftConj != null && leftConj.equals(PosTagHelper.getConj(rightPosTag))) {
       agreedPosTag=leftPosTag;
     }
   }

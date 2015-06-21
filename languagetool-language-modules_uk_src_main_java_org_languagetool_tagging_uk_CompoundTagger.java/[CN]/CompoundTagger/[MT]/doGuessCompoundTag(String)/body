@@ -9,7 +9,7 @@
   if (rightPartsWithLeftTagMap.containsKey(rightWord)) {
     if (leftWdList.isEmpty())     return null;
     Pattern leftTagRegex=rightPartsWithLeftTagMap.get(rightWord);
-    List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
+    List<AnalyzedToken> leftAnalyzedTokens=ukrainianTagger.asAnalyzedTokenListForTaggedWordsInternal(leftWord,leftWdList);
     List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(leftAnalyzedTokens.size());
     for (    AnalyzedToken analyzedToken : leftAnalyzedTokens) {
       String posTag=analyzedToken.getPOSTag();
@@ -19,7 +19,7 @@
     }
     return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;
   }
-  if (NUMBER.matcher(leftWord).matches()) {
+  if (UkrainianTagger.NUMBER.matcher(leftWord).matches()) {
     List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>();
     if (NUMR_ENDING_MAP.containsKey(rightWord)) {
       List<String> tags=NUMR_ENDING_MAP.get(rightWord);
@@ -30,7 +30,7 @@
  else {
       List<TaggedWord> rightWdList=wordTagger.tag(rightWord);
       if (rightWdList.isEmpty())       return null;
-      List<AnalyzedToken> rightAnalyzedTokens=asAnalyzedTokenListForTaggedWords(rightWord,rightWdList);
+      List<AnalyzedToken> rightAnalyzedTokens=ukrainianTagger.asAnalyzedTokenListForTaggedWordsInternal(rightWord,rightWdList);
       for (      AnalyzedToken analyzedToken : rightAnalyzedTokens) {
         if (analyzedToken.getPOSTag().startsWith(IPOSTag.adj.getText())) {
           newAnalyzedTokens.add(new AnalyzedToken(word,analyzedToken.getPOSTag(),leftWord + "-" + analyzedToken.getLemma()));
@@ -44,7 +44,7 @@
   }
   List<TaggedWord> rightWdList=wordTagger.tag(rightWord);
   if (rightWdList.isEmpty())   return null;
-  List<AnalyzedToken> rightAnalyzedTokens=asAnalyzedTokenListForTaggedWords(rightWord,rightWdList);
+  List<AnalyzedToken> rightAnalyzedTokens=ukrainianTagger.asAnalyzedTokenListForTaggedWordsInternal(rightWord,rightWdList);
   if (leftWord.equalsIgnoreCase("????")) {
     if (rightWord.endsWith("??????")) {
       return poAdvMatch(word,rightAnalyzedTokens,ADJ_TAG_FOR_PO_ADV_MIS);
@@ -54,7 +54,7 @@
     }
     return null;
   }
-  if (dashPrefixes.contains(leftWord) || dashPrefixes.contains(leftWord.toLowerCase())) {
+  if (dashPrefixes.contains(leftWord) || dashPrefixes.contains(leftWord.toLowerCase()) || DASH_PREFIX_LAT_PATTERN.matcher(leftWord).matches()) {
     return getNvPrefixNounMatch(word,rightAnalyzedTokens,leftWord);
   }
   if (word.startsWith("??????-") && Character.isUpperCase(word.charAt(4))) {
@@ -63,7 +63,7 @@
       String rightPosTag=rightAnalyzedToken.getPOSTag();
       if (rightPosTag == null)       continue;
       if (NOUN_SING_V_ROD_REGEX.matcher(rightPosTag).matches()) {
-        for (        String vid : VIDMINKY_MAP.keySet()) {
+        for (        String vid : PosTagHelper.VIDMINKY_MAP.keySet()) {
           if (vid.equals("v_kly"))           continue;
           String posTag=rightPosTag.replace("v_rod",vid);
           newAnalyzedTokens.add(new AnalyzedToken(word,posTag,word));
@@ -74,11 +74,11 @@
   }
   if (Character.isUpperCase(leftWord.charAt(0)) && cityAvenue.contains(rightWord)) {
     if (leftWdList.isEmpty())     return null;
-    List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
+    List<AnalyzedToken> leftAnalyzedTokens=ukrainianTagger.asAnalyzedTokenListForTaggedWordsInternal(leftWord,leftWdList);
     return cityAvenueMatch(word,leftAnalyzedTokens);
   }
   if (!leftWdList.isEmpty()) {
-    List<AnalyzedToken> leftAnalyzedTokens=asAnalyzedTokenListForTaggedWords(leftWord,leftWdList);
+    List<AnalyzedToken> leftAnalyzedTokens=ukrainianTagger.asAnalyzedTokenListForTaggedWordsInternal(leftWord,leftWdList);
     List<AnalyzedToken> tagMatch=tagMatch(word,leftAnalyzedTokens,rightAnalyzedTokens);
     if (tagMatch != null) {
       return tagMatch;
