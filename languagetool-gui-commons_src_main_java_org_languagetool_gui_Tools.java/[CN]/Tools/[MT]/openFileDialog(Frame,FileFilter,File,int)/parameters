@@ -1,0 +1,4 @@
+Frame frame
+FileFilter fileFilter
+File initialDir
+int mode

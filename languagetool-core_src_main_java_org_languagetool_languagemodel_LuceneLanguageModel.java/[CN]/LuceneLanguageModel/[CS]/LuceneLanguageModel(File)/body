@@ -1,7 +1,5 @@
 {
-  if (!topIndexDir.exists() || !topIndexDir.isDirectory()) {
-    throw new RuntimeException("Not found or is not a directory: " + topIndexDir);
-  }
+  validateDirectory(topIndexDir);
   this.topIndexDir=topIndexDir;
   addIndex(topIndexDir,1);
   addIndex(topIndexDir,2);

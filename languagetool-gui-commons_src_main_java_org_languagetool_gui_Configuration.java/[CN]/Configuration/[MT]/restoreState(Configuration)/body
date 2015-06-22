@@ -2,6 +2,7 @@
   this.configFile=configuration.configFile;
   this.language=configuration.language;
   this.motherTongue=configuration.motherTongue;
+  this.ngramDirectory=configuration.ngramDirectory;
   this.runServer=configuration.runServer;
   this.autoDetect=configuration.autoDetect;
   this.guiConfig=configuration.guiConfig;

@@ -1,0 +1,30 @@
+{
+  JPanel panel=new JPanel();
+  panel.add(new JLabel(messages.getString("guiNgramDir")),cons);
+  final File dir=config.getNgramDirectory();
+  final int maxDirDisplayLength=45;
+  String buttonText=dir != null ? StringUtils.abbreviate(dir.getAbsolutePath(),maxDirDisplayLength) : messages.getString("guiNgramDirSelect");
+  final JButton ngramDirButton=new JButton(buttonText);
+  ngramDirButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      File newDir=Tools.openDirectoryDialog(owner,dir);
+      if (newDir != null) {
+        try {
+          LuceneLanguageModel.validateDirectory(newDir);
+          config.setNgramDirectory(newDir);
+          ngramDirButton.setText(StringUtils.abbreviate(newDir.getAbsolutePath(),maxDirDisplayLength));
+        }
+ catch (        Exception ex) {
+          Tools.showErrorMessage(ex);
+        }
+      }
+ else {
+        config.setNgramDirectory(null);
+        ngramDirButton.setText(StringUtils.abbreviate(messages.getString("guiNgramDirSelect"),maxDirDisplayLength));
+      }
+    }
+  }
+);
+  panel.add(ngramDirButton,cons);
+  return panel;
+}

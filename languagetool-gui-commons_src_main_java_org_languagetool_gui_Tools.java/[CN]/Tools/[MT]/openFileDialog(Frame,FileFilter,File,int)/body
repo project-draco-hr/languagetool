@@ -1,0 +1,8 @@
+{
+  final JFileChooser jfc=new JFileChooser();
+  jfc.setFileSelectionMode(mode);
+  jfc.setCurrentDirectory(initialDir);
+  jfc.setFileFilter(fileFilter);
+  jfc.showOpenDialog(frame);
+  return jfc.getSelectedFile();
+}

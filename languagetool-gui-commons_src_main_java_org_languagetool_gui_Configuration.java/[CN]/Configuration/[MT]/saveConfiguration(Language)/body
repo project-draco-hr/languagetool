@@ -10,6 +10,9 @@
   if (motherTongue != null) {
     props.setProperty(MOTHER_TONGUE_CONFIG_KEY,motherTongue.getShortName());
   }
+  if (ngramDirectory != null) {
+    props.setProperty(NGRAM_DIR_CONFIG_KEY,ngramDirectory.getAbsolutePath());
+  }
   props.setProperty(AUTO_DETECT_CONFIG_KEY,Boolean.toString(autoDetect));
   props.setProperty(USE_GUI_CONFIG_KEY,Boolean.toString(guiConfig));
   props.setProperty(SERVER_RUN_CONFIG_KEY,Boolean.toString(runServer));

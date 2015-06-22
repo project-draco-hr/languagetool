@@ -1,0 +1,3 @@
+{
+  return openFileDialog(frame,null,initialDir,JFileChooser.DIRECTORIES_ONLY);
+}

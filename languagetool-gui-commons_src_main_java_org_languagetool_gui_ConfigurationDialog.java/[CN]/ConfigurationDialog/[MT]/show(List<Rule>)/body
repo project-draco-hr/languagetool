@@ -69,6 +69,8 @@
   cons.weighty=10.0f;
   cons.fill=GridBagConstraints.BOTH;
   contentPane.add(new JScrollPane(checkBoxPanel),cons);
+  cons.weightx=0.0f;
+  cons.weighty=0.0f;
   cons.gridx=0;
   cons.gridy++;
   cons.fill=GridBagConstraints.NONE;
@@ -77,6 +79,9 @@
   cons.gridy++;
   cons.anchor=GridBagConstraints.WEST;
   contentPane.add(getMotherTonguePanel(cons),cons);
+  cons.gridy++;
+  cons.anchor=GridBagConstraints.WEST;
+  contentPane.add(getNgramPanel(cons),cons);
   cons.gridy++;
   cons.anchor=GridBagConstraints.WEST;
   contentPane.add(portPanel,cons);

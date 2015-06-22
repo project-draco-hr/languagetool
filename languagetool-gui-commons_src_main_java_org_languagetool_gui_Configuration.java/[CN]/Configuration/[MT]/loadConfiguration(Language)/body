@@ -14,6 +14,10 @@
     if (motherTongueStr != null && !motherTongueStr.equals("xx")) {
       motherTongue=Languages.getLanguageForShortName(motherTongueStr);
     }
+    final String ngramDir=(String)props.get(NGRAM_DIR_CONFIG_KEY);
+    if (ngramDir != null) {
+      ngramDirectory=new File(ngramDir);
+    }
     autoDetect="true".equals(props.get(AUTO_DETECT_CONFIG_KEY));
     guiConfig="true".equals(props.get(USE_GUI_CONFIG_KEY));
     runServer="true".equals(props.get(SERVER_RUN_CONFIG_KEY));
