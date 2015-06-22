@@ -1,15 +1,16 @@
 {
   final int maxCommentLength=100;
-  if (comment.length() > maxCommentLength) {
-    while (comment.lastIndexOf(" [") > 0 && comment.lastIndexOf(']') > comment.lastIndexOf(" [") && comment.length() > maxCommentLength) {
-      comment=comment.substring(0,comment.lastIndexOf(" [")) + comment.substring(comment.lastIndexOf(']') + 1);
+  String shortComment=comment;
+  if (shortComment.length() > maxCommentLength) {
+    while (shortComment.lastIndexOf(" [") > 0 && shortComment.lastIndexOf(']') > shortComment.lastIndexOf(" [") && shortComment.length() > maxCommentLength) {
+      shortComment=shortComment.substring(0,shortComment.lastIndexOf(" [")) + shortComment.substring(comment.lastIndexOf(']') + 1);
     }
-    while (comment.lastIndexOf(" (") > 0 && comment.lastIndexOf(')') > comment.lastIndexOf(" (") && comment.length() > maxCommentLength) {
-      comment=comment.substring(0,comment.lastIndexOf(" (")) + comment.substring(comment.lastIndexOf(')') + 1);
+    while (shortComment.lastIndexOf(" (") > 0 && shortComment.lastIndexOf(')') > shortComment.lastIndexOf(" (") && shortComment.length() > maxCommentLength) {
+      shortComment=shortComment.substring(0,shortComment.lastIndexOf(" (")) + shortComment.substring(comment.lastIndexOf(')') + 1);
     }
-    if (comment.length() > maxCommentLength) {
-      comment=comment.substring(0,maxCommentLength - 1) + "???";
+    if (shortComment.length() > maxCommentLength) {
+      shortComment=shortComment.substring(0,maxCommentLength - 1) + "???";
     }
   }
-  return comment;
+  return shortComment;
 }
