@@ -1,0 +1,25 @@
+{
+  final JPanel motherTonguePanel=new JPanel();
+  motherTonguePanel.add(new JLabel(messages.getString("guiMotherTongue")),cons);
+  motherTongueBox=new JComboBox<>(getPossibleMotherTongues());
+  if (config.getMotherTongue() != null) {
+    motherTongueBox.setSelectedItem(config.getMotherTongue().getTranslatedName(messages));
+  }
+  motherTongueBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      if (e.getStateChange() == ItemEvent.SELECTED) {
+        Language motherTongue;
+        if (motherTongueBox.getSelectedItem() instanceof String) {
+          motherTongue=getLanguageForLocalizedName(motherTongueBox.getSelectedItem().toString());
+        }
+ else {
+          motherTongue=(Language)motherTongueBox.getSelectedItem();
+        }
+        config.setMotherTongue(motherTongue);
+      }
+    }
+  }
+);
+  motherTonguePanel.add(motherTongueBox,cons);
+  return motherTonguePanel;
+}

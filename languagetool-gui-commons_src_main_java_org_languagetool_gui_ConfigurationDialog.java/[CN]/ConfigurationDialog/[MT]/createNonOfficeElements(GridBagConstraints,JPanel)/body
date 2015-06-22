@@ -1,0 +1,61 @@
+{
+  serverCheckbox=new JCheckBox(Tools.getLabel(messages.getString("guiRunOnPort")));
+  serverCheckbox.setMnemonic(Tools.getMnemonic(messages.getString("guiRunOnPort")));
+  serverCheckbox.setSelected(config.getRunServer());
+  portPanel.add(serverCheckbox,cons);
+  serverCheckbox.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    @SuppressWarnings("unused") ActionEvent e){
+      serverPortField.setEnabled(serverCheckbox.isSelected());
+      serverSettingsCheckbox.setEnabled(serverCheckbox.isSelected());
+    }
+  }
+);
+  serverCheckbox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      config.setRunServer(serverCheckbox.isSelected());
+    }
+  }
+);
+  serverPortField=new JTextField(Integer.toString(config.getServerPort()));
+  serverPortField.setEnabled(serverCheckbox.isSelected());
+  serverSettingsCheckbox=new JCheckBox(Tools.getLabel(messages.getString("useGUIConfig")));
+  serverPortField.setMinimumSize(new Dimension(100,25));
+  cons.gridx=1;
+  portPanel.add(serverPortField,cons);
+  serverPortField.getDocument().addDocumentListener(new DocumentListener(){
+    @Override public void insertUpdate(    DocumentEvent e){
+      changedUpdate(e);
+    }
+    @Override public void removeUpdate(    DocumentEvent e){
+      changedUpdate(e);
+    }
+    @Override public void changedUpdate(    DocumentEvent e){
+      try {
+        int serverPort=Integer.parseInt(serverPortField.getText());
+        if (serverPort > -1 && serverPort < MAX_PORT) {
+          serverPortField.setForeground(null);
+          config.setServerPort(serverPort);
+        }
+ else {
+          serverPortField.setForeground(Color.RED);
+        }
+      }
+ catch (      NumberFormatException ex) {
+        serverPortField.setForeground(Color.RED);
+      }
+    }
+  }
+);
+  cons.gridx=0;
+  cons.gridy=10;
+  serverSettingsCheckbox.setMnemonic(Tools.getMnemonic(messages.getString("useGUIConfig")));
+  serverSettingsCheckbox.setSelected(config.getUseGUIConfig());
+  serverSettingsCheckbox.setEnabled(config.getRunServer());
+  serverSettingsCheckbox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      config.setUseGUIConfig(serverSettingsCheckbox.isSelected());
+    }
+  }
+);
+  portPanel.add(serverSettingsCheckbox,cons);
+}

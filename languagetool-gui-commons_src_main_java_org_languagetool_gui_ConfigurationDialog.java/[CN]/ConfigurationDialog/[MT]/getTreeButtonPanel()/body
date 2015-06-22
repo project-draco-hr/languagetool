@@ -1,0 +1,38 @@
+{
+  GridBagConstraints cons;
+  final JPanel treeButtonPanel=new JPanel();
+  cons=new GridBagConstraints();
+  cons.gridx=0;
+  cons.gridy=0;
+  final JButton expandAllButton=new JButton(messages.getString("guiExpandAll"));
+  treeButtonPanel.add(expandAllButton,cons);
+  expandAllButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      TreeNode root=(TreeNode)configTree.getModel().getRoot();
+      TreePath parent=new TreePath(root);
+      for (Enumeration cat=root.children(); cat.hasMoreElements(); ) {
+        TreeNode n=(TreeNode)cat.nextElement();
+        TreePath child=parent.pathByAddingChild(n);
+        configTree.expandPath(child);
+      }
+    }
+  }
+);
+  cons.gridx=1;
+  cons.gridy=0;
+  final JButton collapseAllButton=new JButton(messages.getString("guiCollapseAll"));
+  treeButtonPanel.add(collapseAllButton,cons);
+  collapseAllButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      TreeNode root=(TreeNode)configTree.getModel().getRoot();
+      TreePath parent=new TreePath(root);
+      for (Enumeration categ=root.children(); categ.hasMoreElements(); ) {
+        TreeNode n=(TreeNode)categ.nextElement();
+        TreePath child=parent.pathByAddingChild(n);
+        configTree.collapsePath(child);
+      }
+    }
+  }
+);
+  return treeButtonPanel;
+}

@@ -4,7 +4,6 @@
   }
   dialog=new JDialog(owner,true);
   dialog.setTitle(messages.getString("guiConfigWindowTitle"));
-  Collections.sort(rules,new CategoryComparator());
   final KeyStroke stroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
   final ActionListener actionListener=new ActionListener(){
     @Override public void actionPerformed(    @SuppressWarnings("unused") ActionEvent actionEvent){
@@ -22,51 +21,9 @@
   cons.weightx=1.0;
   cons.weighty=1.0;
   cons.fill=GridBagConstraints.BOTH;
+  Collections.sort(rules,new CategoryComparator());
   DefaultMutableTreeNode rootNode=createTree(rules);
-  DefaultTreeModel treeModel=new DefaultTreeModel(rootNode);
-  treeModel.addTreeModelListener(new TreeModelListener(){
-    @Override public void treeNodesChanged(    TreeModelEvent e){
-      DefaultMutableTreeNode node=(DefaultMutableTreeNode)e.getTreePath().getLastPathComponent();
-      int index=e.getChildIndices()[0];
-      node=(DefaultMutableTreeNode)node.getChildAt(index);
-      if (node instanceof RuleNode) {
-        RuleNode o=(RuleNode)node;
-        if (o.getRule().isDefaultOff()) {
-          if (o.isEnabled()) {
-            config.getEnabledRuleIds().add(o.getRule().getId());
-          }
- else {
-            config.getEnabledRuleIds().remove(o.getRule().getId());
-          }
-        }
- else {
-          if (o.isEnabled()) {
-            config.getDisabledRuleIds().remove(o.getRule().getId());
-          }
- else {
-            config.getDisabledRuleIds().add(o.getRule().getId());
-          }
-        }
-      }
-      if (node instanceof CategoryNode) {
-        CategoryNode o=(CategoryNode)node;
-        if (o.isEnabled()) {
-          config.getDisabledCategoryNames().remove(o.getCategory().getName());
-        }
- else {
-          config.getDisabledCategoryNames().add(o.getCategory().getName());
-        }
-      }
-    }
-    @Override public void treeNodesInserted(    TreeModelEvent e){
-    }
-    @Override public void treeNodesRemoved(    TreeModelEvent e){
-    }
-    @Override public void treeStructureChanged(    TreeModelEvent e){
-    }
-  }
-);
-  configTree=new JTree(treeModel);
+  configTree=new JTree(getTreeModel(rootNode));
   Language lang=config.getLanguage();
   if (lang == null) {
     lang=Languages.getLanguageForLocale(Locale.getDefault());
@@ -77,114 +34,7 @@
   configTree.setCellRenderer(new CheckBoxTreeCellRenderer());
   TreeListener.install(configTree);
   checkBoxPanel.add(configTree,cons);
-  MouseAdapter ma=new MouseAdapter(){
-    private void handlePopupEvent(    MouseEvent e){
-      final JTree tree=(JTree)e.getSource();
-      TreePath path=tree.getPathForLocation(e.getX(),e.getY());
-      if (path == null) {
-        return;
-      }
-      DefaultMutableTreeNode node=(DefaultMutableTreeNode)path.getLastPathComponent();
-      TreePath[] paths=tree.getSelectionPaths();
-      boolean isSelected=false;
-      if (paths != null) {
-        for (        TreePath selectionPath : paths) {
-          if (selectionPath.equals(path)) {
-            isSelected=true;
-          }
-        }
-      }
-      if (!isSelected) {
-        tree.setSelectionPath(path);
-      }
-      if (node.isLeaf()) {
-        JPopupMenu popup=new JPopupMenu();
-        final JMenuItem aboutRuleMenuItem=new JMenuItem(messages.getString("guiAboutRuleMenu"));
-        aboutRuleMenuItem.addActionListener(new ActionListener(){
-          @Override public void actionPerformed(          ActionEvent actionEvent){
-            RuleNode node=(RuleNode)tree.getSelectionPath().getLastPathComponent();
-            Rule rule=node.getRule();
-            Language lang=config.getLanguage();
-            if (lang == null) {
-              lang=Languages.getLanguageForLocale(Locale.getDefault());
-            }
-            Tools.showRuleInfoDialog(tree,messages.getString("guiAboutRuleTitle"),rule.getDescription(),rule,messages,lang.getShortNameWithCountryAndVariant());
-          }
-        }
-);
-        popup.add(aboutRuleMenuItem);
-        popup.show(tree,e.getX(),e.getY());
-      }
-    }
-    @Override public void mousePressed(    MouseEvent e){
-      if (e.isPopupTrigger()) {
-        handlePopupEvent(e);
-      }
-    }
-    @Override public void mouseReleased(    MouseEvent e){
-      if (e.isPopupTrigger()) {
-        handlePopupEvent(e);
-      }
-    }
-  }
-;
-  configTree.addMouseListener(ma);
-  final JPanel treeButtonPanel=new JPanel();
-  cons=new GridBagConstraints();
-  cons.gridx=0;
-  cons.gridy=0;
-  final JButton expandAllButton=new JButton(messages.getString("guiExpandAll"));
-  treeButtonPanel.add(expandAllButton,cons);
-  expandAllButton.addActionListener(new ActionListener(){
-    @Override public void actionPerformed(    ActionEvent e){
-      TreeNode root=(TreeNode)configTree.getModel().getRoot();
-      TreePath parent=new TreePath(root);
-      for (Enumeration cat=root.children(); cat.hasMoreElements(); ) {
-        TreeNode n=(TreeNode)cat.nextElement();
-        TreePath child=parent.pathByAddingChild(n);
-        configTree.expandPath(child);
-      }
-    }
-  }
-);
-  cons.gridx=1;
-  cons.gridy=0;
-  final JButton collapseAllButton=new JButton(messages.getString("guiCollapseAll"));
-  treeButtonPanel.add(collapseAllButton,cons);
-  collapseAllButton.addActionListener(new ActionListener(){
-    @Override public void actionPerformed(    ActionEvent e){
-      TreeNode root=(TreeNode)configTree.getModel().getRoot();
-      TreePath parent=new TreePath(root);
-      for (Enumeration categ=root.children(); categ.hasMoreElements(); ) {
-        TreeNode n=(TreeNode)categ.nextElement();
-        TreePath child=parent.pathByAddingChild(n);
-        configTree.collapsePath(child);
-      }
-    }
-  }
-);
-  final JPanel motherTonguePanel=new JPanel();
-  motherTonguePanel.add(new JLabel(messages.getString("guiMotherTongue")),cons);
-  motherTongueBox=new JComboBox<>(getPossibleMotherTongues());
-  if (config.getMotherTongue() != null) {
-    motherTongueBox.setSelectedItem(config.getMotherTongue().getTranslatedName(messages));
-  }
-  motherTongueBox.addItemListener(new ItemListener(){
-    @Override public void itemStateChanged(    ItemEvent e){
-      if (e.getStateChange() == ItemEvent.SELECTED) {
-        Language motherTongue;
-        if (motherTongueBox.getSelectedItem() instanceof String) {
-          motherTongue=getLanguageForLocalizedName(motherTongueBox.getSelectedItem().toString());
-        }
- else {
-          motherTongue=(Language)motherTongueBox.getSelectedItem();
-        }
-        config.setMotherTongue(motherTongue);
-      }
-    }
-  }
-);
-  motherTonguePanel.add(motherTongueBox,cons);
+  configTree.addMouseListener(getMouseAdapter());
   final JPanel portPanel=new JPanel();
   portPanel.setLayout(new GridBagLayout());
   cons=new GridBagConstraints();
@@ -195,65 +45,7 @@
   cons.fill=GridBagConstraints.NONE;
   cons.weightx=0.0f;
   if (!insideOffice) {
-    serverCheckbox=new JCheckBox(Tools.getLabel(messages.getString("guiRunOnPort")));
-    serverCheckbox.setMnemonic(Tools.getMnemonic(messages.getString("guiRunOnPort")));
-    serverCheckbox.setSelected(config.getRunServer());
-    portPanel.add(serverCheckbox,cons);
-    serverCheckbox.addActionListener(new ActionListener(){
-      @Override public void actionPerformed(      @SuppressWarnings("unused") ActionEvent e){
-        serverPortField.setEnabled(serverCheckbox.isSelected());
-        serverSettingsCheckbox.setEnabled(serverCheckbox.isSelected());
-      }
-    }
-);
-    serverCheckbox.addItemListener(new ItemListener(){
-      @Override public void itemStateChanged(      ItemEvent e){
-        config.setRunServer(serverCheckbox.isSelected());
-      }
-    }
-);
-    serverPortField=new JTextField(Integer.toString(config.getServerPort()));
-    serverPortField.setEnabled(serverCheckbox.isSelected());
-    serverSettingsCheckbox=new JCheckBox(Tools.getLabel(messages.getString("useGUIConfig")));
-    serverPortField.setMinimumSize(new Dimension(100,25));
-    cons.gridx=1;
-    portPanel.add(serverPortField,cons);
-    serverPortField.getDocument().addDocumentListener(new DocumentListener(){
-      @Override public void insertUpdate(      DocumentEvent e){
-        changedUpdate(e);
-      }
-      @Override public void removeUpdate(      DocumentEvent e){
-        changedUpdate(e);
-      }
-      @Override public void changedUpdate(      DocumentEvent e){
-        try {
-          int serverPort=Integer.parseInt(serverPortField.getText());
-          if (serverPort > -1 && serverPort < MAX_PORT) {
-            serverPortField.setForeground(null);
-            config.setServerPort(serverPort);
-          }
- else {
-            serverPortField.setForeground(Color.RED);
-          }
-        }
- catch (        NumberFormatException ex) {
-          serverPortField.setForeground(Color.RED);
-        }
-      }
-    }
-);
-    cons.gridx=0;
-    cons.gridy=10;
-    serverSettingsCheckbox.setMnemonic(Tools.getMnemonic(messages.getString("useGUIConfig")));
-    serverSettingsCheckbox.setSelected(config.getUseGUIConfig());
-    serverSettingsCheckbox.setEnabled(config.getRunServer());
-    serverSettingsCheckbox.addItemListener(new ItemListener(){
-      @Override public void itemStateChanged(      ItemEvent e){
-        config.setUseGUIConfig(serverSettingsCheckbox.isSelected());
-      }
-    }
-);
-    portPanel.add(serverSettingsCheckbox,cons);
+    createNonOfficeElements(cons,portPanel);
   }
   final JPanel buttonPanel=new JPanel();
   buttonPanel.setLayout(new GridBagLayout());
@@ -281,10 +73,10 @@
   cons.gridy++;
   cons.fill=GridBagConstraints.NONE;
   cons.anchor=GridBagConstraints.LINE_END;
-  contentPane.add(treeButtonPanel,cons);
+  contentPane.add(getTreeButtonPanel(),cons);
   cons.gridy++;
   cons.anchor=GridBagConstraints.WEST;
-  contentPane.add(motherTonguePanel,cons);
+  contentPane.add(getMotherTonguePanel(cons),cons);
   cons.gridy++;
   cons.anchor=GridBagConstraints.WEST;
   contentPane.add(portPanel,cons);
