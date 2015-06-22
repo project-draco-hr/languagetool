@@ -2,7 +2,7 @@
   String agreedPosTag=null;
   if (leftMasterSet.contains(leftLemma)) {
     if (leftPosTag.contains(TAG_ANIM)) {
-      rightPosTag=rightPosTag.concat(TAG_ANIM);
+      rightPosTag=rightPosTag + TAG_ANIM;
     }
  else {
       rightPosTag=rightPosTag.replace(TAG_ANIM,"");

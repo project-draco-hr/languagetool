@@ -1,5 +1,5 @@
 {
-  HashMap<String,String> urls=new HashMap<String,String>();
+  HashMap<String,String> urls=new HashMap<>();
   text=cleanup(text);
   if (text.contains(",")) {
     text=DECIMAL_COMMA_PATTERN.matcher(text).replaceAll("$1" + DECIMAL_COMMA_SUBST + "$2");

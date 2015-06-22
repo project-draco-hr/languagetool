@@ -1,6 +1,6 @@
 {
-  List<AnalyzedToken> tkns=super.getAnalyzedTokens(word);
-  if (tkns.get(0).getPOSTag() == null) {
+  List<AnalyzedToken> tokens=super.getAnalyzedTokens(word);
+  if (tokens.get(0).getPOSTag() == null) {
     if ((word.indexOf('\u2013') != -1) && word.matches(".*[??-??????????][\u2013][??-??????????].*")) {
       String newWord=word.replace('\u2013','-');
       List<AnalyzedToken> newTokens=super.getAnalyzedTokens(newWord);
@@ -15,8 +15,8 @@
           newTokens.set(i,newToken);
         }
       }
-      tkns=newTokens;
+      tokens=newTokens;
     }
   }
-  return tkns;
+  return tokens;
 }
