@@ -1,33 +1,33 @@
 {
   final Properties props=new Properties();
   final String qualifier=getQualifier(lang);
-  addListToProperties(props,DISABLED_RULES_CONFIG_KEY + qualifier,disabledRuleIds);
-  addListToProperties(props,ENABLED_RULES_CONFIG_KEY + qualifier,enabledRuleIds);
-  addListToProperties(props,DISABLED_CATEGORIES_CONFIG_KEY + qualifier,disabledCategoryNames);
+  addListToProperties(props,DISABLED_RULES_KEY + qualifier,disabledRuleIds);
+  addListToProperties(props,ENABLED_RULES_KEY + qualifier,enabledRuleIds);
+  addListToProperties(props,DISABLED_CATEGORIES_KEY + qualifier,disabledCategoryNames);
   if (language != null && !language.isExternal()) {
-    props.setProperty(LANGUAGE_CONFIG_KEY,language.getShortNameWithCountryAndVariant());
+    props.setProperty(LANGUAGE_KEY,language.getShortNameWithCountryAndVariant());
   }
   if (motherTongue != null) {
-    props.setProperty(MOTHER_TONGUE_CONFIG_KEY,motherTongue.getShortName());
+    props.setProperty(MOTHER_TONGUE_KEY,motherTongue.getShortName());
   }
   if (ngramDirectory != null) {
-    props.setProperty(NGRAM_DIR_CONFIG_KEY,ngramDirectory.getAbsolutePath());
+    props.setProperty(NGRAM_DIR_KEY,ngramDirectory.getAbsolutePath());
   }
-  props.setProperty(AUTO_DETECT_CONFIG_KEY,Boolean.toString(autoDetect));
-  props.setProperty(USE_GUI_CONFIG_KEY,Boolean.toString(guiConfig));
-  props.setProperty(SERVER_RUN_CONFIG_KEY,Boolean.toString(runServer));
-  props.setProperty(SERVER_PORT_CONFIG_KEY,Integer.toString(serverPort));
+  props.setProperty(AUTO_DETECT_KEY,Boolean.toString(autoDetect));
+  props.setProperty(USE_GUI_KEY,Boolean.toString(guiConfig));
+  props.setProperty(SERVER_RUN_KEY,Boolean.toString(runServer));
+  props.setProperty(SERVER_PORT_KEY,Integer.toString(serverPort));
   if (fontName != null) {
-    props.setProperty(FONT_NAME_CONFIG_KEY,fontName);
+    props.setProperty(FONT_NAME_KEY,fontName);
   }
   if (fontStyle != FONT_STYLE_INVALID) {
-    props.setProperty(FONT_STYLE_CONFIG_KEY,Integer.toString(fontStyle));
+    props.setProperty(FONT_STYLE_KEY,Integer.toString(fontStyle));
   }
   if (fontSize != FONT_SIZE_INVALID) {
-    props.setProperty(FONT_SIZE_CONFIG_KEY,Integer.toString(fontSize));
+    props.setProperty(FONT_SIZE_KEY,Integer.toString(fontSize));
   }
   if (this.lookAndFeelName != null) {
-    props.setProperty(LF_NAME_CONFIG_KEY,lookAndFeelName);
+    props.setProperty(LF_NAME_KEY,lookAndFeelName);
   }
   if (externalRuleDirectory != null) {
     props.setProperty(EXTERNAL_RULE_DIRECTORY,externalRuleDirectory);
@@ -38,9 +38,9 @@
     rgb=rgb.substring(2,rgb.length());
     sb.append(entry.getKey()).append(":").append("#").append(rgb).append(", ");
   }
-  props.setProperty(ERROR_COLORS_CONFIG_KEY,sb.toString());
-  for (  final String key : configForOtherLangs.keySet()) {
-    props.setProperty(key,configForOtherLangs.get(key));
+  props.setProperty(ERROR_COLORS_KEY,sb.toString());
+  for (  final String key : configForOtherLanguages.keySet()) {
+    props.setProperty(key,configForOtherLanguages.get(key));
   }
   try (FileOutputStream fos=new FileOutputStream(configFile)){
     props.store(fos,"LanguageTool configuration (" + JLanguageTool.VERSION + "/"+ JLanguageTool.BUILD_DATE+ ")");

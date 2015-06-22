@@ -3,41 +3,41 @@
   try (FileInputStream fis=new FileInputStream(configFile)){
     final Properties props=new Properties();
     props.load(fis);
-    disabledRuleIds.addAll(getListFromProperties(props,DISABLED_RULES_CONFIG_KEY + qualifier));
-    enabledRuleIds.addAll(getListFromProperties(props,ENABLED_RULES_CONFIG_KEY + qualifier));
-    disabledCategoryNames.addAll(getListFromProperties(props,DISABLED_CATEGORIES_CONFIG_KEY + qualifier));
-    final String languageStr=(String)props.get(LANGUAGE_CONFIG_KEY);
+    disabledRuleIds.addAll(getListFromProperties(props,DISABLED_RULES_KEY + qualifier));
+    enabledRuleIds.addAll(getListFromProperties(props,ENABLED_RULES_KEY + qualifier));
+    disabledCategoryNames.addAll(getListFromProperties(props,DISABLED_CATEGORIES_KEY + qualifier));
+    final String languageStr=(String)props.get(LANGUAGE_KEY);
     if (languageStr != null) {
       language=Languages.getLanguageForShortName(languageStr);
     }
-    final String motherTongueStr=(String)props.get(MOTHER_TONGUE_CONFIG_KEY);
+    final String motherTongueStr=(String)props.get(MOTHER_TONGUE_KEY);
     if (motherTongueStr != null && !motherTongueStr.equals("xx")) {
       motherTongue=Languages.getLanguageForShortName(motherTongueStr);
     }
-    final String ngramDir=(String)props.get(NGRAM_DIR_CONFIG_KEY);
+    final String ngramDir=(String)props.get(NGRAM_DIR_KEY);
     if (ngramDir != null) {
       ngramDirectory=new File(ngramDir);
     }
-    autoDetect="true".equals(props.get(AUTO_DETECT_CONFIG_KEY));
-    guiConfig="true".equals(props.get(USE_GUI_CONFIG_KEY));
-    runServer="true".equals(props.get(SERVER_RUN_CONFIG_KEY));
-    fontName=(String)props.get(FONT_NAME_CONFIG_KEY);
-    if (props.get(FONT_STYLE_CONFIG_KEY) != null) {
+    autoDetect="true".equals(props.get(AUTO_DETECT_KEY));
+    guiConfig="true".equals(props.get(USE_GUI_KEY));
+    runServer="true".equals(props.get(SERVER_RUN_KEY));
+    fontName=(String)props.get(FONT_NAME_KEY);
+    if (props.get(FONT_STYLE_KEY) != null) {
       try {
-        fontStyle=Integer.parseInt((String)props.get(FONT_STYLE_CONFIG_KEY));
+        fontStyle=Integer.parseInt((String)props.get(FONT_STYLE_KEY));
       }
  catch (      NumberFormatException e) {
       }
     }
-    if (props.get(FONT_SIZE_CONFIG_KEY) != null) {
+    if (props.get(FONT_SIZE_KEY) != null) {
       try {
-        fontSize=Integer.parseInt((String)props.get(FONT_SIZE_CONFIG_KEY));
+        fontSize=Integer.parseInt((String)props.get(FONT_SIZE_KEY));
       }
  catch (      NumberFormatException e) {
       }
     }
-    lookAndFeelName=(String)props.get(LF_NAME_CONFIG_KEY);
-    final String serverPortString=(String)props.get(SERVER_PORT_CONFIG_KEY);
+    lookAndFeelName=(String)props.get(LF_NAME_KEY);
+    final String serverPortString=(String)props.get(SERVER_PORT_KEY);
     if (serverPortString != null) {
       serverPort=Integer.parseInt(serverPortString);
     }
@@ -45,7 +45,7 @@
     if (extRules != null) {
       externalRuleDirectory=extRules;
     }
-    String colorsString=(String)props.get(ERROR_COLORS_CONFIG_KEY);
+    String colorsString=(String)props.get(ERROR_COLORS_KEY);
     parseErrorColors(colorsString);
     loadConfigForOtherLanguages(lang,props);
   }

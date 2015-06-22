@@ -1,5 +1,5 @@
 {
   if (prop.containsKey(key)) {
-    configForOtherLangs.put(key,prop.getProperty(key));
+    configForOtherLanguages.put(key,prop.getProperty(key));
   }
 }

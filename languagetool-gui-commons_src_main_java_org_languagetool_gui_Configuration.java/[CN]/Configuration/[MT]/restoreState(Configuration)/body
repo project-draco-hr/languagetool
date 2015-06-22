@@ -18,8 +18,8 @@
   this.enabledRuleIds.addAll(configuration.enabledRuleIds);
   this.disabledCategoryNames.clear();
   this.disabledCategoryNames.addAll(configuration.disabledCategoryNames);
-  this.configForOtherLangs.clear();
-  for (  String key : configuration.configForOtherLangs.keySet()) {
-    this.configForOtherLangs.put(key,configuration.configForOtherLangs.get(key));
+  this.configForOtherLanguages.clear();
+  for (  String key : configuration.configForOtherLanguages.keySet()) {
+    this.configForOtherLanguages.put(key,configuration.configForOtherLanguages.get(key));
   }
 }
