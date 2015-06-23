@@ -6,5 +6,6 @@
   assertTrue(isUrl("http://www.test-dash.com/foo/path-dash"));
   assertTrue(isUrl("http://www.test-dash.com/foo/??????-dash"));
   assertTrue(isUrl("http://www.test-dash.com/foo/%C3%B-dash"));
-  assertFalse(isUrl("www.languagetool.org"));
+  assertTrue(isUrl("www.languagetool.org"));
+  assertFalse(isUrl("languagetool.org"));
 }

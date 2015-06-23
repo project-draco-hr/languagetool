@@ -1,0 +1,7 @@
+{
+  assertTrue(WordTokenizer.isUrl("www.languagetool.org"));
+  assertTrue(WordTokenizer.isUrl("http://www.languagetool.org"));
+  assertTrue(WordTokenizer.isUrl("https://www.languagetool.org"));
+  assertFalse(WordTokenizer.isUrl("languagetool.org"));
+  assertFalse(WordTokenizer.isUrl("something-else"));
+}

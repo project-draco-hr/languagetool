@@ -1,0 +1,8 @@
+{
+  for (  String protocol : WordTokenizer.getProtocols()) {
+    if (token.startsWith(protocol + "://") || token.startsWith("www.")) {
+      return true;
+    }
+  }
+  return false;
+}

@@ -3,7 +3,7 @@
   if (StringTools.isWhitespace(token)) {
     return true;
   }
- else   if (token.equals(")")) {
+ else   if (token.equals(")") || token.equals("]")) {
     return true;
   }
  else   if (l.size() > i + 1) {
