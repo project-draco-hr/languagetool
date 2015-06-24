@@ -81,4 +81,6 @@
   assertBad("Dem Norwegischen Ingenieur gelingt das gut.");
   assertGood("Peter Peterson, dessen Namen auf Griechisch Stein bedeutet.");
   assertGood("Peter Peterson, dessen Namen auf Griechisch gut klingt.");
+  assertGood("Das dabei Erlernte und Erlebte ist sehr n??tzlich.");
+  assertBad("Das dabei erlernte und Erlebte Wissen ist sehr n??tzlich.");
 }
