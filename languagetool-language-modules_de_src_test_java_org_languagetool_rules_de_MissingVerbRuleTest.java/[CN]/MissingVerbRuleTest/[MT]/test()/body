@@ -11,4 +11,5 @@
   assertGood("Herzlichen Gl??ckwunsch zu Deinem zwanzigsten Geburtstag.",lt);
   assertBad("Dieser Satz kein Verb.",lt);
   assertBad("Aus einer Idee sich erste Wortgruppen, aus Wortgruppen einzelne S??tze, aus S??tzen ganze Texte.",lt);
+  assertBad("Ich ein neues Rad.",lt);
 }
