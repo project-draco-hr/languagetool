@@ -1,8 +1,3 @@
 {
-  for (  String protocol : WordTokenizer.getProtocols()) {
-    if (token.startsWith(protocol + "://")) {
-      return true;
-    }
-  }
-  return false;
+  return WordTokenizer.isUrl(token);
 }
