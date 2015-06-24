@@ -16,6 +16,7 @@
   assertGood("Wenn ihr sterben solltet, wer w??rde sich dann um die Katze k??mmern?");
   assertGood("Wenn wir sterben sollten, wer w??rde sich dann um die Katze k??mmern?");
   assertGood("Daf??r erhielten er sowie der Hofgoldschmied Theodor Heiden einen Preis.");
+  assertGood("Probst wurde deshalb in den Medien gefeiert.");
   assertGood("/usr/bin/firefox");
   assertBad("Als Borcarbid wei??t es eine hohe H??rte auf.");
   assertBad("Das greift auf Vorl??uferinstitutionen bist auf die Zeit von 1234 zur??ck.");

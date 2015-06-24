@@ -8,10 +8,8 @@
   }
   try {
     String[] synthesized=language.getSynthesizer().synthesize(verbToken,"VER.*:" + expectedVerbPOS + ".*",true);
-    Set<String> suggestionSet=new HashSet<>();
-    suggestionSet.addAll(Arrays.asList(synthesized));
-    List<String> suggestions=new ArrayList<>();
-    suggestions.addAll(suggestionSet);
+    Set<String> suggestionSet=new HashSet<>(Arrays.asList(synthesized));
+    List<String> suggestions=new ArrayList<>(suggestionSet);
     if (toUppercase) {
       for (int i=0; i < suggestions.size(); ++i) {
         suggestions.set(i,StringTools.uppercaseFirstChar(suggestions.get(i)));

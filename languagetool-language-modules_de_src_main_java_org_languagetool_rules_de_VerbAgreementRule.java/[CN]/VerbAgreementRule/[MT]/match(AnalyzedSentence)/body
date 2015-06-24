@@ -36,7 +36,7 @@ if (tokens[i].hasPartialPosTag("VER") && (Character.isLowerCase(tokens[i].getTok
 if (hasUnambiguouslyPersonAndNumber(tokens[i],"1","SIN") && !(strToken.equals("bin") && (BIN_IGNORE.contains(tokens[i - 1].getToken()) || (tokens.length != i + 1 && tokens[i + 1].getToken().startsWith("Laden"))))) {
 posVer1Sin=i;
 }
- else if (hasUnambiguouslyPersonAndNumber(tokens[i],"2","SIN")) {
+ else if (hasUnambiguouslyPersonAndNumber(tokens[i],"2","SIN") && !"Probst".equals(tokens[i].getToken())) {
 posVer2Sin=i;
 }
  else if (hasUnambiguouslyPersonAndNumber(tokens[i],"1","PLU")) {
