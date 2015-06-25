@@ -3,9 +3,13 @@
   if (languageModelDir != null) {
     newLanguageTool.activateLanguageModelRules(languageModelDir);
   }
-  final Configuration config=new Configuration(lang);
-  if (!params.useQuerySettings && internalServer && config.getUseGUIConfig()) {
-    configureFromGUI(newLanguageTool,config);
+  if (!params.useQuerySettings) {
+    if (rulesConfigurationFile != null) {
+      configureFromRulesFile(newLanguageTool,lang);
+    }
+ else {
+      configureFromGUI(newLanguageTool,lang);
+    }
   }
   if (params.useQuerySettings) {
     Tools.selectRules(newLanguageTool,params.disabledRules,params.enabledRules,params.useEnabledOnly);

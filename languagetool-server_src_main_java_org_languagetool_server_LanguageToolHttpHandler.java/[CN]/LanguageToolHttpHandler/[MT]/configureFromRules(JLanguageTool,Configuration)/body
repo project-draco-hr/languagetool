@@ -1,5 +1,4 @@
 {
-  print("Using options configured in the GUI");
   final Set<String> disabledRules=config.getDisabledRuleIds();
   if (disabledRules != null) {
     for (    final String ruleId : disabledRules) {
