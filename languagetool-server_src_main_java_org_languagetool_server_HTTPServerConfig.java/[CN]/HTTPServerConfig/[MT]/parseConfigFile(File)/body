@@ -24,6 +24,13 @@
       if (mode == Mode.AfterTheDeadline) {
         atdLanguage=Languages.getLanguageForShortName(getProperty(props,"afterTheDeadlineLanguage",file));
       }
+      String rulesConfigFilePath=getOptionalProperty(props,"rulesFile",null);
+      if (rulesConfigFilePath != null) {
+        rulesConfigFile=new File(rulesConfigFilePath);
+        if (!rulesConfigFile.exists() || !rulesConfigFile.isFile()) {
+          throw new RuntimeException("Rules Configuration file can not be found: " + rulesConfigFile);
+        }
+      }
     }
    }
  catch (  IOException e) {

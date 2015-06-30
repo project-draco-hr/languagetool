@@ -1,0 +1,7 @@
+{
+  Configuration config=new Configuration(lang);
+  if (internalServer && config.getUseGUIConfig()) {
+    print("Using options configured in the GUI");
+    configureFromRules(langTool,config);
+  }
+}
