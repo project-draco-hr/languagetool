@@ -1,0 +1,9 @@
+{
+  String[] parts=value.toString().split("\t");
+  int year=Integer.parseInt(parts[1]);
+  if (year >= MIN_YEAR) {
+    word.set(parts[0]);
+    count.set(Long.parseLong(parts[2]));
+    context.write(word,count);
+  }
+}
