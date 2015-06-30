@@ -1,0 +1,4 @@
+{
+  assertEquals("This| |'|http://foo.org|'| |blah",tokenize("This 'http://foo.org' blah"));
+  assertEquals("This| |\"|http://foo.org|\"| |blah",tokenize("This \"http://foo.org\" blah"));
+}

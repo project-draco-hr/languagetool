@@ -2,13 +2,18 @@
   final List<String> newList=new ArrayList<>();
   boolean inUrl=false;
   final StringBuilder url=new StringBuilder();
+  String urlQuote=null;
   for (int i=0; i < l.size(); i++) {
     if (urlStartsAt(i,l)) {
       inUrl=true;
+      if (i - 1 >= 0) {
+        urlQuote=l.get(i - 1);
+      }
       url.append(l.get(i));
     }
- else     if (inUrl && urlEndsAt(i,l)) {
+ else     if (inUrl && urlEndsAt(i,l,urlQuote)) {
       inUrl=false;
+      urlQuote=null;
       newList.add(url.toString());
       url.setLength(0);
       newList.add(l.get(i));
