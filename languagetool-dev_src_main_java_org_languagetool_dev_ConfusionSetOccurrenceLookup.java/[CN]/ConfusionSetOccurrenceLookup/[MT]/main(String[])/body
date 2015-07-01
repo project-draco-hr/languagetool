@@ -1,0 +1,23 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + ConfusionSetOccurrenceLookup.class.getName() + " <confusion-file> <ngram-data-dir>");
+    System.exit(1);
+  }
+  try (Scanner sc=new Scanner(new File(args[0]));LuceneLanguageModel lm=new LuceneLanguageModel(new File(args[1]))){
+    while (sc.hasNextLine()) {
+      String line=sc.nextLine();
+      String[] words=line.split(";\\s*");
+      long total=0;
+      List<Long> counts=new ArrayList<>();
+      StringBuilder sb=new StringBuilder();
+      for (      String word : words) {
+        long count=lm.getCount(word);
+        total+=count;
+        sb.append(word).append(":").append(count).append(" ");
+        counts.add(count);
+      }
+      float factor=(float)Collections.max(counts) / Collections.min(counts);
+      System.out.printf(Locale.ENGLISH,total + " " + line+ "    "+ sb.toString().trim()+ " factor:%.1f\n",factor);
+    }
+  }
+ }
