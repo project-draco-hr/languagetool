@@ -1,5 +1,5 @@
 {
-  final String text=contents.replace('\n',' ');
+  final String text=contents.replace('\n',' ').replace('\r',' ');
   int startContent=fromPos - contextSize;
   String prefix="...";
   String postfix="...";
