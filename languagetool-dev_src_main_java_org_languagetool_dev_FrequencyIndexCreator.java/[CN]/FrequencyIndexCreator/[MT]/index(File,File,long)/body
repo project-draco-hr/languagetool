@@ -22,8 +22,14 @@
     return;
   }
   if (indexDir.exists() && indexDir.isDirectory()) {
-    System.out.println("Skipping " + name + " - index dir '"+ indexDir+ "' already exists");
-    return;
+    if (isIndexComplete(indexDir)) {
+      System.out.println("Skipping " + name + " - index dir '"+ indexDir+ "' already exists and is complete");
+      bytesProcessed.addAndGet(file.length());
+      return;
+    }
+ else {
+      System.out.println("Not skipping " + name + " - index dir '"+ indexDir+ "' already exists but is not complete");
+    }
   }
   System.out.println("Index dir: " + indexDir);
   try {
@@ -31,10 +37,12 @@
     Analyzer analyzer=new StandardAnalyzer(Version.LUCENE_4_10_3);
     IndexWriterConfig config=new IndexWriterConfig(Version.LUCENE_4_10_3,analyzer);
     config.setUseCompoundFile(false);
+    config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
     try (IndexWriter writer=new IndexWriter(directory,config)){
       indexLinesFromGoogleFile(writer,file,totalBytes,hiveMode);
     }
-   }
+     markIndexAsComplete(indexDir);
+  }
  catch (  Exception e) {
     throw new RuntimeException("Could not index " + file,e);
   }

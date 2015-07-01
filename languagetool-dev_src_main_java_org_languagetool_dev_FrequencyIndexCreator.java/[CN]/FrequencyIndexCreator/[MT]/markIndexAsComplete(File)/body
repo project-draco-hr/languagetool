@@ -1,0 +1,5 @@
+{
+  try (FileWriter fw=new FileWriter(new File(directory,LT_COMPLETE_MARKER))){
+    fw.write(new Date().toString());
+  }
+ }
