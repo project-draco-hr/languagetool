@@ -1,0 +1,5 @@
+{
+  indexDir.mkdir();
+  fw=new FileWriter(new File(indexDir,indexDir.getName() + "-output.csv"));
+  writer=new BufferedWriter(fw);
+}

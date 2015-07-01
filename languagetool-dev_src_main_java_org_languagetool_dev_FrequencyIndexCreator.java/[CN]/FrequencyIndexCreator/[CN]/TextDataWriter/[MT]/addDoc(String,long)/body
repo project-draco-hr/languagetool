@@ -1,0 +1,3 @@
+{
+  fw.write(text + "\t" + count+ "\n");
+}

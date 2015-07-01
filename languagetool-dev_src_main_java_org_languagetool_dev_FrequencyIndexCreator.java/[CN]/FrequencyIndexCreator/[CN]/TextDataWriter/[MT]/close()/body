@@ -1,0 +1,8 @@
+{
+  if (fw != null) {
+    fw.close();
+  }
+  if (writer != null) {
+    writer.close();
+  }
+}

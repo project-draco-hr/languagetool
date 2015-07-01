@@ -33,15 +33,17 @@
   }
   System.out.println("Index dir: " + indexDir);
   try {
-    Directory directory=FSDirectory.open(indexDir);
-    Analyzer analyzer=new StandardAnalyzer(Version.LUCENE_4_10_3);
-    IndexWriterConfig config=new IndexWriterConfig(Version.LUCENE_4_10_3,analyzer);
-    config.setUseCompoundFile(false);
-    config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
-    try (IndexWriter writer=new IndexWriter(directory,config)){
-      indexLinesFromGoogleFile(writer,file,totalBytes,hiveMode);
-    }
-     markIndexAsComplete(indexDir);
+    if (TEXT_MODE) {
+      try (DataWriter dw=new TextDataWriter(indexDir)){
+        indexLinesFromGoogleFile(dw,file,totalBytes,hiveMode);
+      }
+     }
+ else {
+      try (DataWriter dw=new LuceneDataWriter(indexDir)){
+        indexLinesFromGoogleFile(dw,file,totalBytes,hiveMode);
+      }
+     }
+    markIndexAsComplete(indexDir);
   }
  catch (  Exception e) {
     throw new RuntimeException("Could not index " + file,e);

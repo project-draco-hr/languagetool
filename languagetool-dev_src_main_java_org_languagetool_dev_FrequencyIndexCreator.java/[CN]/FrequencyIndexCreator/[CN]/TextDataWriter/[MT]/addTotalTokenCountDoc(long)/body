@@ -1,0 +1,3 @@
+{
+  System.err.println("Note: not writing totalTokenCount (" + totalTokenCount + ") in file mode");
+}

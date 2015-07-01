@@ -1,4 +1,4 @@
-IndexWriter writer
+DataWriter writer
 File inputFile
 long totalBytes
 boolean hiveMode

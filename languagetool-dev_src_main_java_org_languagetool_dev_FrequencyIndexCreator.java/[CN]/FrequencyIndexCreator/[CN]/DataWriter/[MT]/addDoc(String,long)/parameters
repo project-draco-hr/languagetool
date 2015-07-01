@@ -1,3 +1,2 @@
-IndexWriter writer
 String text
 long count

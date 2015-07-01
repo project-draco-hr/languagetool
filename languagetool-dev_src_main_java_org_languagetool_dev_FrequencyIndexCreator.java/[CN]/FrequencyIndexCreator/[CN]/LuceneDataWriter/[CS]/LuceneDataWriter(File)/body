@@ -1,0 +1,8 @@
+{
+  Analyzer analyzer=new StandardAnalyzer(Version.LUCENE_4_10_3);
+  IndexWriterConfig config=new IndexWriterConfig(Version.LUCENE_4_10_3,analyzer);
+  config.setUseCompoundFile(false);
+  config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
+  Directory directory=FSDirectory.open(indexDir);
+  writer=new IndexWriter(directory,config);
+}
