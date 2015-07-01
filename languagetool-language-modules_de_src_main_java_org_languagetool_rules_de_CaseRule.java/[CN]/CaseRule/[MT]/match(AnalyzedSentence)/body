@@ -18,6 +18,7 @@
     }
     final AnalyzedTokenReadings analyzedToken=tokens[i];
     final String token=analyzedToken.getToken();
+    markLowerCaseNounErrors(ruleMatches,tokens,i,analyzedToken);
     boolean isBaseform=analyzedToken.getReadingsLength() >= 1 && analyzedToken.hasLemma(token);
     if ((analyzedToken.getAnalyzedToken(0).getPOSTag() == null || GermanHelper.hasReadingOfType(analyzedToken,GermanToken.POSType.VERB)) && isBaseform) {
       boolean nextTokenIsPersonalPronoun=false;

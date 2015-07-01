@@ -1,0 +1,4 @@
+List<RuleMatch> ruleMatches
+AnalyzedTokenReadings[] tokens
+int i
+AnalyzedTokenReadings analyzedToken
