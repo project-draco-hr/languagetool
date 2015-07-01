@@ -4,3 +4,4 @@ long docCount
 long lineCount
 String prevText
 long startTimeMicros
+long totalBytes

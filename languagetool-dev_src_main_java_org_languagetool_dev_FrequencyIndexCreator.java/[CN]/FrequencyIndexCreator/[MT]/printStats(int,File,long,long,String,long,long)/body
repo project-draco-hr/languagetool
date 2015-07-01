@@ -1,0 +1,7 @@
+{
+  long microsNow=System.nanoTime() / 1000;
+  float millisPerDoc=(microsNow - startTimeMicros) / Math.max(1,i);
+  NumberFormat format=NumberFormat.getNumberInstance(Locale.US);
+  float progress=(float)bytesProcessed.get() / totalBytes * 100;
+  System.out.printf("%.2f%% input:%s doc:%s line:%s ngram:%s occ:%s (%.0f??s/doc)\n",progress,inputFile.getName(),format.format(i),format.format(lineCount),prevText,format.format(docCount),millisPerDoc);
+}

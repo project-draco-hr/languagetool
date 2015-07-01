@@ -32,10 +32,11 @@
     IndexWriterConfig config=new IndexWriterConfig(Version.LUCENE_4_10_3,analyzer);
     config.setUseCompoundFile(false);
     try (IndexWriter writer=new IndexWriter(directory,config)){
-      indexLinesFromGoogleFile(writer,file,hiveMode);
+      indexLinesFromGoogleFile(writer,file,totalBytes,hiveMode);
     }
    }
  catch (  Exception e) {
     throw new RuntimeException("Could not index " + file,e);
   }
+  bytesProcessed.addAndGet(file.length());
 }

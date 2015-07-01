@@ -1,3 +1,4 @@
 IndexWriter writer
 File inputFile
+long totalBytes
 boolean hiveMode
