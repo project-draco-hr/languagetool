@@ -1,21 +1,15 @@
 {
-  ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
-  InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/en/homophones.txt");
-  Map<String,List<ConfusionSet>> map=confusionSetLoader.loadConfusionSet(inputStream);
-  String url="http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-2gram-20120701-<XX>.gz";
-  Set<String> nameSet=new HashSet<>();
-  for (  String s : map.keySet()) {
-    if (s.length() < 2) {
-      nameSet.add(s.substring(0,1).toLowerCase() + "_");
-    }
- else {
-      nameSet.add(s.substring(0,2).toLowerCase());
+  String url="http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-4gram-20120701-<XX>.gz";
+  String chars="abcdefghijklmnopqrstuvwxyz";
+  String chars2="abcdefghijklmnopqrstuvwxyz_";
+  for (int i=0; i <= 9; i++) {
+    System.out.println(url.replace("<XX>",String.valueOf(i)));
+  }
+  for (int i=0; i < chars.length(); i++) {
+    for (int j=0; j < chars2.length(); j++) {
+      String name=String.valueOf(chars.charAt(i)) + String.valueOf(chars2.charAt(j));
+      System.out.println(url.replace("<XX>",name));
     }
   }
-  List<String> nameList=new ArrayList<>(nameSet);
-  Collections.sort(nameList);
-  for (  String name : nameList) {
-    System.out.println(url.replace("<XX>",name));
-  }
-  System.err.println("Number of files: " + nameList.size());
+  System.out.println(url.replace("<XX>","punctuation"));
 }
