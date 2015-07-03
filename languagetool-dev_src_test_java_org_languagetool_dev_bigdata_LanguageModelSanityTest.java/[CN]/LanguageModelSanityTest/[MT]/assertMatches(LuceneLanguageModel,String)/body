@@ -1,0 +1,8 @@
+{
+  String[] words=phrase.split(" ");
+  long count=lm.getCount(Arrays.asList(words));
+  System.out.println(Arrays.toString(words) + ": " + count);
+  if (count < 10) {
+    fail("Only got " + count + " matches for "+ Arrays.toString(words));
+  }
+}

@@ -1,0 +1,15 @@
+{
+  LuceneLanguageModel lm=new LuceneLanguageModel(new File(NGRAM_DIR));
+  assertMatches(lm,"the");
+  assertMatches(lm,"The");
+  assertMatches(lm,",");
+  assertMatches(lm,"the man");
+  assertMatches(lm,"The man");
+  assertMatches(lm,"_START_ the");
+  assertMatches(lm,"_START_ The");
+  assertMatches(lm,"Also ,");
+  assertMatches(lm,"the man who");
+  assertMatches(lm,"The man who");
+  assertMatches(lm,"the man who could");
+  assertMatches(lm,"The man who could");
+}
