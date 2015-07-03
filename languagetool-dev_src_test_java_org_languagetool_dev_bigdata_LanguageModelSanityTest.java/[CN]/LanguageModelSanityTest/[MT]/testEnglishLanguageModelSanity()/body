@@ -3,13 +3,26 @@
   assertMatches(lm,"the");
   assertMatches(lm,"The");
   assertMatches(lm,",");
+  assertMatches(lm,"0");
+  assertMatches(lm,"1");
+  assertMatches(lm,"2");
+  assertMatches(lm,"3");
+  assertMatches(lm,"4");
+  assertMatches(lm,"5");
+  assertMatches(lm,"6");
+  assertMatches(lm,"7");
+  assertMatches(lm,"8");
+  assertMatches(lm,"9");
   assertMatches(lm,"the man");
   assertMatches(lm,"The man");
   assertMatches(lm,"_START_ the");
   assertMatches(lm,"_START_ The");
   assertMatches(lm,"Also ,");
+  assertMatches(lm,"is 0");
   assertMatches(lm,"the man who");
   assertMatches(lm,"The man who");
+  assertMatches(lm,"it is 0");
   assertMatches(lm,"the man who could");
   assertMatches(lm,"The man who could");
+  assertMatches(lm,"when it is 0");
 }
