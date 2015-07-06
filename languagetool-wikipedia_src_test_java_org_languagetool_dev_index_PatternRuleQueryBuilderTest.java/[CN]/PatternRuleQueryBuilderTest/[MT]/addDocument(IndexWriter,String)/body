@@ -2,7 +2,7 @@
   final Document doc=new Document();
   final FieldType type=new FieldType();
   type.setStored(true);
-  type.setIndexed(true);
+  type.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);
   type.setTokenized(true);
   doc.add(new Field(FIELD_NAME,content,type));
   doc.add(new Field(FIELD_NAME_LOWERCASE,content,type));

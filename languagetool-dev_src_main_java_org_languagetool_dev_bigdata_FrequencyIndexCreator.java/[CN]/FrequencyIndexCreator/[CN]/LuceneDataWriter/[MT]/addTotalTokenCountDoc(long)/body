@@ -1,6 +1,6 @@
 {
   FieldType fieldType=new FieldType();
-  fieldType.setIndexed(true);
+  fieldType.setIndexOptions(IndexOptions.DOCS);
   fieldType.setStored(true);
   Field countField=new Field("totalTokenCount",String.valueOf(totalTokenCount),fieldType);
   Document doc=new Document();

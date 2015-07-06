@@ -1,11 +1,10 @@
 {
   try {
-    final Sort sort=new Sort(new SortField("docCount",SortField.Type.INT));
     final long t1=System.currentTimeMillis();
     final JLanguageTool languageTool=getLanguageToolWithOneRule(language,rule);
     final long langToolCreationTime=System.currentTimeMillis() - t1;
     final long t2=System.currentTimeMillis();
-    final PossiblyLimitedTopDocs limitedTopDocs=getTopDocs(query,sort);
+    final PossiblyLimitedTopDocs limitedTopDocs=getTopDocs(query);
     final long luceneTime=System.currentTimeMillis() - t2;
     final long t3=System.currentTimeMillis();
     luceneMatchCount=limitedTopDocs.topDocs.totalHits;

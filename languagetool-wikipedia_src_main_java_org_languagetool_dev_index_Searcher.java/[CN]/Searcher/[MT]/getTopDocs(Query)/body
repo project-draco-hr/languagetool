@@ -1,5 +1,5 @@
 {
-  final TopFieldCollector topCollector=TopFieldCollector.create(sort,maxHits,true,false,false,false);
+  final TopScoreDocCollector topCollector=TopScoreDocCollector.create(maxHits);
   final Counter clock=Counter.newCounter(true);
   final int waitMillis=1000;
   final TimeLimitingCollector collector=new TimeLimitingCollector(topCollector,clock,maxSearchTimeMillis / waitMillis);

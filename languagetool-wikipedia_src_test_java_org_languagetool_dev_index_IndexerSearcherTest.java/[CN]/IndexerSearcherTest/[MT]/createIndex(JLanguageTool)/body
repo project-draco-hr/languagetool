@@ -16,7 +16,7 @@
           final FieldType fieldType=new FieldType();
           fieldType.setStored(true);
           fieldType.setTokenized(true);
-          fieldType.setIndexed(true);
+          fieldType.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);
           doc.add(new Field(FIELD_NAME,example,fieldType));
           doc.add(new Field(FIELD_NAME_LOWERCASE,example,fieldType));
         }

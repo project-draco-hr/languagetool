@@ -1,5 +1,5 @@
 {
-  this.directory=FSDirectory.open(indexDir);
+  this.directory=FSDirectory.open(indexDir.toPath());
   this.reader=DirectoryReader.open(directory);
   this.searcher=new IndexSearcher(reader);
 }
