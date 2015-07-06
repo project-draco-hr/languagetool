@@ -17,12 +17,10 @@
   assertMatches(lm,"The man");
   assertMatches(lm,"_START_ the");
   assertMatches(lm,"_START_ The");
+  assertMatches(lm,"it _END_");
   assertMatches(lm,"Also ,");
   assertMatches(lm,"is 0");
   assertMatches(lm,"the man who");
   assertMatches(lm,"The man who");
   assertMatches(lm,"it is 0");
-  assertMatches(lm,"the man who could");
-  assertMatches(lm,"The man who could");
-  assertMatches(lm,"when it is 0");
 }
