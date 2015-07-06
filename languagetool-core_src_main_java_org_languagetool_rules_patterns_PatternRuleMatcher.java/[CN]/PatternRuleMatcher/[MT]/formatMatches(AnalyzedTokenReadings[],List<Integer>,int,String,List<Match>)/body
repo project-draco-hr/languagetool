@@ -25,27 +25,25 @@
       if (j + 1 < positions.size()) {
         nextTokenPos=firstMatchTok + repTokenPos + positions.get(j + 1);
       }
-      if (suggestionMatches != null) {
+      if (suggestionMatches != null && suggestionMatches.size() > 0) {
         if (matchCounter < suggestionMatches.size()) {
           numbersToMatches[j]=matchCounter;
-          if (suggestionMatches.get(matchCounter) != null) {
-            final String[] matches=j >= positions.size() || positions.get(j) != 0 ? concatMatches(matchCounter,j,firstMatchTok + repTokenPos,tokenReadings,nextTokenPos,suggestionMatches) : new String[]{""};
-            final String leftSide=errorMessage.substring(0,backslashPos);
-            final String rightSide=errorMessage.substring(backslashPos + numLen);
-            if (matches.length == 1) {
-              if (matches[0].isEmpty() && leftSide.endsWith(" ") && rightSide.startsWith(" ")) {
-                errorMessage=leftSide.substring(0,leftSide.length() - 1) + rightSide;
-              }
- else {
-                errorMessage=leftSide + matches[0] + rightSide;
-              }
+          final String[] matches=j >= positions.size() || positions.get(j) != 0 ? concatMatches(matchCounter,j,firstMatchTok + repTokenPos,tokenReadings,nextTokenPos,suggestionMatches) : new String[]{""};
+          final String leftSide=errorMessage.substring(0,backslashPos);
+          final String rightSide=errorMessage.substring(backslashPos + numLen);
+          if (matches.length == 1) {
+            if (matches[0].isEmpty() && leftSide.endsWith(" ") && rightSide.startsWith(" ")) {
+              errorMessage=leftSide.substring(0,leftSide.length() - 1) + rightSide;
             }
  else {
-              errorMessage=formatMultipleSynthesis(matches,leftSide,rightSide);
+              errorMessage=leftSide + matches[0] + rightSide;
             }
-            matchCounter++;
-            newWay=true;
           }
+ else {
+            errorMessage=formatMultipleSynthesis(matches,leftSide,rightSide);
+          }
+          matchCounter++;
+          newWay=true;
         }
  else {
           suggestionMatches.add(suggestionMatches.get(numbersToMatches[j]));
