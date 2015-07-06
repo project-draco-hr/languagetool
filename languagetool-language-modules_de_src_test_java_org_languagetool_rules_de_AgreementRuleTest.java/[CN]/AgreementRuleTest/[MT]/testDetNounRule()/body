@@ -105,4 +105,5 @@
   assertGood("Dieses Gr??nkern genannte Getreide ist aber nicht backbar.");
   assertGood("Au??erdem unterst??tzt mich Herr M??ller beim abheften");
   assertGood("Au??erdem unterst??tzt mich Frau M??ller beim abheften");
+  assertBad("Der Zustand meiner Gehirns.");
 }

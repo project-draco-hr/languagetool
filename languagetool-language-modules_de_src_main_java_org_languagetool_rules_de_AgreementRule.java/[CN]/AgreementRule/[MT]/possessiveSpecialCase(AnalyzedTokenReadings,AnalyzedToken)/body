@@ -1,0 +1,3 @@
+{
+  return aToken.hasPartialPosTag("PRO:POS") && ("ich".equals(tmpReading.getLemma()) || "sich".equals(tmpReading.getLemma()));
+}
