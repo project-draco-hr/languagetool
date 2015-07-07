@@ -1,14 +1,6 @@
 {
   if (lemmaSet == null) {
-    lemmaSet=new HashSet<>();
-    for (    PatternToken patternToken : patternTokens) {
-      if (!patternToken.getNegation() && !patternToken.isRegularExpression() && !patternToken.isReferenceElement()&& patternToken.isInflected()&& patternToken.getMinOccurrence() > 0) {
-        String str=patternToken.getString();
-        if (!StringTools.isEmpty(str)) {
-          lemmaSet.add(str.toLowerCase());
-        }
-      }
-    }
+    lemmaSet=getSet(true);
   }
   return lemmaSet;
 }

@@ -1,14 +1,6 @@
 {
   if (tokenSet == null) {
-    tokenSet=new HashSet<>();
-    for (    PatternToken patternToken : patternTokens) {
-      if (!patternToken.getNegation() && !patternToken.isRegularExpression() && !patternToken.isReferenceElement()&& !patternToken.isInflected()&& patternToken.getMinOccurrence() > 0) {
-        String str=patternToken.getString();
-        if (!StringTools.isEmpty(str)) {
-          tokenSet.add(str.toLowerCase());
-        }
-      }
-    }
+    tokenSet=getSet(false);
   }
   return tokenSet;
 }

@@ -1,0 +1,13 @@
+{
+  Set<String> set=new HashSet<>();
+  for (  PatternToken patternToken : patternTokens) {
+    boolean acceptInflectionValue=isInflected ? patternToken.isInflected() : !patternToken.isInflected();
+    if (acceptInflectionValue && !patternToken.getNegation() && !patternToken.isRegularExpression()&& !patternToken.isReferenceElement()&& patternToken.getMinOccurrence() > 0) {
+      String str=patternToken.getString();
+      if (!StringTools.isEmpty(str)) {
+        set.add(str.toLowerCase());
+      }
+    }
+  }
+  return set;
+}

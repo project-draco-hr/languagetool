@@ -3,7 +3,7 @@
   this.message=message;
   this.shortMessage=shortMessage;
   this.elementNo=new ArrayList<>();
-  this.suggestionsOutMsg=suggestionsOutMsg;
+  this.suggestionsOutMsg=Objects.requireNonNull(suggestionsOutMsg);
   String prevName="";
   String curName;
   int cnt=0;
