@@ -1,6 +1,0 @@
-{
-  if (tokenSet == null) {
-    tokenSet=getSet(false);
-  }
-  return tokenSet;
-}

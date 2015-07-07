@@ -36,6 +36,6 @@
     }
   }
   useList=tempUseList;
-  simpleRuleTokens=getSimpleTokens();
-  inflectedRuleTokens=getInflectedTokens();
+  simpleRuleTokens=getSet(false);
+  inflectedRuleTokens=getSet(true);
 }

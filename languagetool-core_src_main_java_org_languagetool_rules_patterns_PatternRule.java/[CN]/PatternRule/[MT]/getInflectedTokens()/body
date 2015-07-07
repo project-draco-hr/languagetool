@@ -1,6 +1,0 @@
-{
-  if (lemmaSet == null) {
-    lemmaSet=getSet(true);
-  }
-  return lemmaSet;
-}
