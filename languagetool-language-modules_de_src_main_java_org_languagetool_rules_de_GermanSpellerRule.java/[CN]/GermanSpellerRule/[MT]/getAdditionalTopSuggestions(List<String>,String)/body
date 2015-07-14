@@ -33,6 +33,12 @@
  else   if (word.equals("Rolladen")) {
     return Collections.singletonList("Rollladen");
   }
+ else   if (word.equals("Ma??name")) {
+    return Collections.singletonList("Ma??nahme");
+  }
+ else   if (word.equals("Ma??namen")) {
+    return Collections.singletonList("Ma??nahmen");
+  }
  else   if (!StringTools.startsWithUppercase(word)) {
     String ucWord=StringTools.uppercaseFirstChar(word);
     if (!suggestions.contains(ucWord) && !hunspellDict.misspelled(ucWord)) {
