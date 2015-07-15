@@ -1,0 +1,3 @@
+{
+  return tokenStr + " ?? um estrangeirismo. Em Portugu??s ?? mais comum usar: " + StringUtils.join(replacements,", ")+ ".";
+}
