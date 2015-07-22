@@ -17,8 +17,14 @@
     hiveMode=true;
     System.out.println("Running in Hive mode (i.e. no aggregation of years)");
   }
+ else   if (name.matches(NAME_REGEX3) && file.isDirectory()) {
+    file=new File(file,file.getName() + "-output.csv.gz");
+    indexDir=new File(indexBaseDir,name.replaceAll(NAME_REGEX1,"$1"));
+    hiveMode=true;
+    System.out.println("Running in Hive/Text mode (i.e. no aggregation of years)");
+  }
  else {
-    System.out.println("Skipping " + name + " - doesn't match regex "+ NAME_REGEX1+ " or "+ NAME_REGEX2);
+    System.out.println("Skipping " + name + " - doesn't match regex "+ NAME_REGEX1+ ", "+ NAME_REGEX2+ ", or "+ NAME_REGEX3);
     return;
   }
   if (indexDir.exists() && indexDir.isDirectory()) {
