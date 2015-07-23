@@ -1,6 +1,6 @@
 {
   final PatternRule patternRule=makeRule("<token regexp='yes' inflected='yes'>\\p{Lu}\\p{Ll}+</token>",false);
-  final PatternRuleQueryBuilder queryBuilder=new PatternRuleQueryBuilder(language);
+  final PatternRuleQueryBuilder queryBuilder=new PatternRuleQueryBuilder(language,searcher);
   final Query query=queryBuilder.buildRelaxedQuery(patternRule);
   assertEquals("+fieldLowercase:\\p{Lu}\\p{Ll}+",query.toString());
   assertEquals(RegexQuery.class,((BooleanQuery)query).clauses().get(0).getQuery().getClass());

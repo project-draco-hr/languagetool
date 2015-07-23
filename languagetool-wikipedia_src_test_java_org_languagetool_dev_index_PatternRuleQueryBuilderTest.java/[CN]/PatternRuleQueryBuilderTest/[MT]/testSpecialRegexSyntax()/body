@@ -1,6 +1,6 @@
 {
   final PatternRule patternRule=makeRule("<token regexp='yes'>\\p{Punct}</token>",false);
-  final PatternRuleQueryBuilder queryBuilder=new PatternRuleQueryBuilder(language);
+  final PatternRuleQueryBuilder queryBuilder=new PatternRuleQueryBuilder(language,searcher);
   final Query query=queryBuilder.buildRelaxedQuery(patternRule);
   assertEquals("+fieldLowercase:\\p{Punct}",query.toString());
   assertEquals(RegexQuery.class,((BooleanQuery)query).clauses().get(0).getQuery().getClass());

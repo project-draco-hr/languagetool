@@ -1,7 +1,7 @@
 {
   open();
   try {
-    final PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder(language);
+    final PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder(language,indexSearcher);
     final Query query=patternRuleQueryBuilder.buildRelaxedQuery(rule);
     if (query == null) {
       throw new NullPointerException("Cannot search on null query for rule: " + rule.getId());
