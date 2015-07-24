@@ -1,0 +1,3 @@
+{
+  return "A demo rule that just prints the text analysis";
+}

@@ -1,0 +1,17 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  for (  AnalyzedTokenReadings token : tokens) {
+    System.out.println("Token: " + token.getToken());
+    for (    AnalyzedToken analyzedToken : token.getReadings()) {
+      System.out.println("  Lemma: " + analyzedToken.getLemma());
+      System.out.println("  POS: " + analyzedToken.getPOSTag());
+    }
+    if (token.getToken().equals("demo")) {
+      RuleMatch ruleMatch=new RuleMatch(this,token.getStartPos(),token.getEndPos(),"The demo rule thinks this looks wrong");
+      ruleMatch.setSuggestedReplacement("blablah");
+      ruleMatches.add(ruleMatch);
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}
