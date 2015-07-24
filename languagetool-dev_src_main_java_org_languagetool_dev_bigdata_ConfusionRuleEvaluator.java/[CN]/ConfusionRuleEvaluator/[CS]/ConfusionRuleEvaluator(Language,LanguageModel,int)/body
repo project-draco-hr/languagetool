@@ -1,6 +1,5 @@
 {
   this.language=language;
   this.rule=new EnglishConfusionProbabilityRule(JLanguageTool.getMessageBundle(),languageModel,language,grams);
-  rule.setConfusionSet(new ConfusionSet(FACTOR,TOKEN_HOMOPHONE,TOKEN));
   this.grams=grams;
 }

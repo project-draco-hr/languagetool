@@ -1,6 +1,6 @@
 {
-  System.out.println("======================");
-  System.out.printf("Starting evaluation on " + sentences.size() + " sentences with %s/%s:\n",token,homophoneToken);
+  println("======================");
+  printf("Starting evaluation on " + sentences.size() + " sentences with %s/%s:\n",token,homophoneToken);
   JLanguageTool lt=new JLanguageTool(new English());
   for (  Sentence sentence : sentences) {
     String textToken=isCorrect ? token : homophoneToken;
@@ -16,7 +16,7 @@
     }
  else     if (!consideredCorrect && isCorrect) {
       falsePositives++;
-      System.out.println("false positive: " + displayStr);
+      println("false positive: " + displayStr);
     }
  else     if (consideredCorrect && !isCorrect) {
       falseNegatives++;

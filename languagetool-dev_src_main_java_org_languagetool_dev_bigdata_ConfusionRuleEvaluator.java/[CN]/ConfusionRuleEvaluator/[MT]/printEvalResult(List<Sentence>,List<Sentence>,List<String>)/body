@@ -1,14 +1,18 @@
 {
-  int sentences=allTokenSentences.size() + allHomophoneSentences.size();
-  System.out.println("======================");
-  System.out.println("Evaluation results for " + TOKEN + "/"+ TOKEN_HOMOPHONE+ " with "+ sentences+ " sentences as of "+ new Date()+ ":");
   float precision=(float)truePositives / (truePositives + falsePositives);
   float recall=(float)truePositives / (truePositives + falseNegatives);
-  double fMeasure=FMeasure.getWeightedFMeasure(precision,recall);
-  System.out.printf(ENGLISH,"  Precision: %.3f (%d false positives)\n",precision,falsePositives);
-  System.out.printf(ENGLISH,"  Recall:    %.3f (%d false negatives)\n",recall,falseNegatives);
-  System.out.printf(ENGLISH,"  F-measure: %.3f (beta=0.5)\n",fMeasure);
-  System.out.printf(ENGLISH,"  Matches:   %d (true positives)\n",truePositives);
-  System.out.printf(ENGLISH,"  Inputs:    %s\n",inputsOrDir);
-  System.out.printf(ENGLISH,"  Summary:   precision=%.3f, recall=%.3f (%s) using %dgrams\n",precision,recall,new SimpleDateFormat("yyyy-MM-dd").format(new Date()),grams);
+  String summary=String.format(ENGLISH,"precision=%.3f, recall=%.3f (%s) using %dgrams",precision,recall,new SimpleDateFormat("yyyy-MM-dd").format(new Date()),grams);
+  if (verbose) {
+    int sentences=allTokenSentences.size() + allHomophoneSentences.size();
+    System.out.println("======================");
+    System.out.println("Evaluation results for " + TOKEN + "/"+ TOKEN_HOMOPHONE+ " with "+ sentences+ " sentences as of "+ new Date()+ ":");
+    System.out.printf(ENGLISH,"  Precision: %.3f (%d false positives)\n",precision,falsePositives);
+    System.out.printf(ENGLISH,"  Recall:    %.3f (%d false negatives)\n",recall,falseNegatives);
+    double fMeasure=FMeasure.getWeightedFMeasure(precision,recall);
+    System.out.printf(ENGLISH,"  F-measure: %.3f (beta=0.5)\n",fMeasure);
+    System.out.printf(ENGLISH,"  Matches:   %d (true positives)\n",truePositives);
+    System.out.printf(ENGLISH,"  Inputs:    %s\n",inputsOrDir);
+    System.out.printf("  Summary:   " + summary + "\n");
+  }
+  return summary;
 }

@@ -4,14 +4,14 @@
     Sentence sentence=sentenceSource.next();
     if (sentence.getText().toLowerCase().matches(".*\\b" + token + "\\b.*")) {
       sentences.add(sentence);
-      if (sentences.size() % 100 == 0) {
-        System.out.println("Loaded sentence " + sentences.size() + " with '"+ token+ "' from "+ inputs);
+      if (sentences.size() % 250 == 0) {
+        println("Loaded sentence " + sentences.size() + " with '"+ token+ "' from "+ inputs);
       }
       if (sentences.size() >= maxSentences) {
         break;
       }
     }
   }
-  System.out.println("Loaded " + sentences.size() + " sentences with '"+ token+ "' from "+ inputs);
+  println("Loaded " + sentences.size() + " sentences with '"+ token+ "' from "+ inputs);
   return sentences;
 }
