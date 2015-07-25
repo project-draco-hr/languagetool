@@ -13,6 +13,9 @@
   assertMatches(lm,"7");
   assertMatches(lm,"8");
   assertMatches(lm,"9");
+  assertMatches(lm,":");
+  assertMatches(lm,"(");
+  assertMatches(lm,")");
   assertMatches(lm,"the man");
   assertMatches(lm,"The man");
   assertMatches(lm,"_START_ the");
@@ -20,7 +23,16 @@
   assertMatches(lm,"it _END_");
   assertMatches(lm,"Also ,");
   assertMatches(lm,"is 0");
+  assertMatches(lm,": it");
+  assertMatches(lm,"( it");
+  assertMatches(lm,"it )");
   assertMatches(lm,"the man who");
   assertMatches(lm,"The man who");
+  assertMatches(lm,"_START_ The man");
+  assertMatches(lm,"it was _END_");
+  assertMatches(lm,"Also , it");
   assertMatches(lm,"it is 0");
+  assertMatches(lm,": it is");
+  assertMatches(lm,"( it is");
+  assertMatches(lm,"it is )");
 }
