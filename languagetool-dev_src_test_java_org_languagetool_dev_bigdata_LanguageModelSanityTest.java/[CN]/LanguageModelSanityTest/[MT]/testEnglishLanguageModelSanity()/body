@@ -35,4 +35,5 @@
   assertMatches(lm,": it is");
   assertMatches(lm,"( it is");
   assertMatches(lm,"it is )");
+  assertMatches(lm,"five - pound");
 }
