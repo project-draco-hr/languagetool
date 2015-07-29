@@ -17,7 +17,8 @@
           Set<ConfusionString> set=uppercase ? confusionSet.getUppercaseFirstCharSet() : confusionSet.getSet();
           ConfusionString betterAlternative=getBetterAlternativeOrNull(tokens.get(pos),tokens,set,confusionSet.getFactor());
           if (betterAlternative != null) {
-            String message=getMessage(betterAlternative.getString(),betterAlternative.getDescription());
+            ConfusionString stringFromText=getConfusionString(set,tokens.get(pos));
+            String message=getMessage(stringFromText,betterAlternative);
             RuleMatch match=new RuleMatch(this,googleToken.startPos,googleToken.endPos,message);
             match.setSuggestedReplacement(betterAlternative.getString());
             matches.add(match);

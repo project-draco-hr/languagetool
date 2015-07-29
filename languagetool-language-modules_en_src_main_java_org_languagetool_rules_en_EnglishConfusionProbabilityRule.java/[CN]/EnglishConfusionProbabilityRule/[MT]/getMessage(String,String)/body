@@ -1,8 +1,0 @@
-{
-  if (description != null) {
-    return "Statistic suggests that '" + suggestion + "' ("+ description+ ") might be the correct word here. Please check.";
-  }
- else {
-    return "Statistic suggests that '" + suggestion + "' might be the correct word here. Please check.";
-  }
-}
