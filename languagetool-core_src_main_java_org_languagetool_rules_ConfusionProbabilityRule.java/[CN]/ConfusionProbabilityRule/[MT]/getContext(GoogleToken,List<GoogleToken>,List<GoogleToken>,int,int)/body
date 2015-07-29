@@ -1,0 +1,41 @@
+{
+  int pos=tokens.indexOf(token);
+  if (pos == -1) {
+    throw new RuntimeException("Token not found: " + token);
+  }
+  List<String> result=new ArrayList<>();
+  for (int i=1, added=0; added < toLeft; i++) {
+    if (pos - i < 0) {
+      result.clear();
+      for (      GoogleToken googleToken : newTokens) {
+        result.add(googleToken.token);
+      }
+      for (int j=pos - 1; j >= 0; j--) {
+        result.add(0,tokens.get(j).token);
+      }
+      return result;
+    }
+ else {
+      if (!tokens.get(pos - i).isWhitespace()) {
+        result.add(0,tokens.get(pos - i).token);
+        added++;
+      }
+    }
+  }
+  for (  GoogleToken googleToken : newTokens) {
+    result.add(googleToken.token);
+  }
+  for (int i=1, added=0; added < toRight; i++) {
+    if (pos + i >= tokens.size()) {
+      result.add(".");
+      added++;
+    }
+ else {
+      if (!tokens.get(pos + i).isWhitespace()) {
+        result.add(tokens.get(pos + i).token);
+        added++;
+      }
+    }
+  }
+  return result;
+}
