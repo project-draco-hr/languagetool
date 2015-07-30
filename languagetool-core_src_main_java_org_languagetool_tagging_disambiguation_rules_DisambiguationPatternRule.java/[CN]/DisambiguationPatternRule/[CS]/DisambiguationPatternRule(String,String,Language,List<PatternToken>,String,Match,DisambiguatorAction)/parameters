@@ -2,6 +2,6 @@ String id
 String description
 Language language
 List<PatternToken> patternTokens
-String disamb
+String disambiguatedPOS
 Match posSelect
 DisambiguatorAction disambAction
