@@ -86,4 +86,6 @@
   assertGood("Ein Kapit??n verl??sst als Letzter das sinkende Schiff.");
   assertBad("Die Dolmetscherin und Der Vorleser gehen spazieren.");
   assertGood("Es hilft, die Harmonie zwischen F??hrer und Gef??hrten zu st??tzen.");
+  assertGood("Das Geb??ude des Ausw??rtigen Amts.");
+  assertGood("Das Geb??ude des Ausw??rtigen Amtes.");
 }
