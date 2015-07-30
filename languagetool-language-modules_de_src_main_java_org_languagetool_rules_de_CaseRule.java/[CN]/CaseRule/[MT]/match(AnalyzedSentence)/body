@@ -1,6 +1,6 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  final AnalyzedTokenReadings[] tokens=getSentenceWithImmunization(sentence).getTokensWithoutWhitespace();
   boolean prevTokenIsDas=false;
   for (int i=0; i < tokens.length; i++) {
     final String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();

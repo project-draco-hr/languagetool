@@ -1,0 +1,5 @@
+{
+  token=new PatternToken(null,false,false,false);
+  token.setPosToken(new PatternToken.PosToken(posTag,regex,false));
+  return this;
+}

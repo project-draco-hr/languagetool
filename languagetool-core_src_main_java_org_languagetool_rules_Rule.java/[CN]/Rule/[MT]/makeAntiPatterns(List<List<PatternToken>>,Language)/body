@@ -1,0 +1,7 @@
+{
+  List<DisambiguationPatternRule> rules=new ArrayList<>();
+  for (  List<PatternToken> patternTokens : patternList) {
+    rules.add(new DisambiguationPatternRule("INTERNAL_ANTIPATTERN","(no description)",language,patternTokens,null,null,DisambiguationPatternRule.DisambiguatorAction.IMMUNIZE));
+  }
+  return Collections.unmodifiableList(rules);
+}

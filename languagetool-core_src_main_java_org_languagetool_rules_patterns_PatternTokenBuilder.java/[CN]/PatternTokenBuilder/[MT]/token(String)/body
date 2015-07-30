@@ -1,0 +1,4 @@
+{
+  this.token=new PatternToken(token,false,false,false);
+  return this;
+}

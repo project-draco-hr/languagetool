@@ -1,6 +1,6 @@
 {
   if (prevTokenIsDas && !nextTokenIsPersonalPronoun) {
-    if (Character.isLowerCase(token.charAt(0)) && !substVerbenExceptions.contains(token) && tokenReadings.hasPartialPosTag("VER:INF")&& !tokenReadings.isIgnoredBySpeller()) {
+    if (Character.isLowerCase(token.charAt(0)) && !substVerbenExceptions.contains(token) && tokenReadings.hasPartialPosTag("VER:INF")&& !tokenReadings.isIgnoredBySpeller()&& !tokenReadings.isImmunized()) {
       final String msg="Substantivierte Verben werden gro??geschrieben.";
       final RuleMatch ruleMatch=new RuleMatch(this,tokenReadings.getStartPos(),tokenReadings.getEndPos(),msg);
       final String word=tokenReadings.getToken();
