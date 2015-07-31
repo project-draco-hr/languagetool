@@ -3,6 +3,7 @@
     config=new Configuration(new File(System.getProperty("user.home")),CONFIG_FILE,language);
     this.config.setLanguage(language);
     if (languageTool != null) {
+      languageTool.shutdownWhenDone();
     }
     languageTool=new MultiThreadedJLanguageTool(language,config.getMotherTongue());
     loadConfig();
