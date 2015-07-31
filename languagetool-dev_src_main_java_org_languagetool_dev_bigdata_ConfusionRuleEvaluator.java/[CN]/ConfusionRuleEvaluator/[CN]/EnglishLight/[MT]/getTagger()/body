@@ -1,0 +1,6 @@
+{
+  if (tagger == null) {
+    tagger=new DemoTagger();
+  }
+  return tagger;
+}

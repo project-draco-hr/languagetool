@@ -7,7 +7,8 @@
     System.err.println("                      You can specify both a Wikipedia file and a Tatoeba file.");
     System.exit(1);
   }
-  Language lang=Languages.getLanguageForShortName(args[0]);
+  long startTime=System.currentTimeMillis();
+  Language lang=new EnglishLight();
   LanguageModel languageModel=new LuceneLanguageModel(new File(args[1]));
   List<String> inputsFiles=new ArrayList<>();
   inputsFiles.add(args[2]);
@@ -16,4 +17,6 @@
   }
   ConfusionRuleEvaluator generator=new ConfusionRuleEvaluator(lang,languageModel,3);
   generator.run(inputsFiles,TOKEN,TOKEN_HOMOPHONE,FACTOR,MAX_SENTENCES);
+  long endTime=System.currentTimeMillis();
+  System.out.println("Time: " + (endTime - startTime) + "ms");
 }
