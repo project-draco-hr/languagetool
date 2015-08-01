@@ -15,7 +15,7 @@
   if (args.length >= 4) {
     inputsFiles.add(args[3]);
   }
-  ConfusionRuleEvaluator generator=new ConfusionRuleEvaluator(lang,languageModel,3);
+  ConfusionRuleEvaluator generator=new ConfusionRuleEvaluator(lang,languageModel,NGRAM_LEVEL);
   generator.run(inputsFiles,TOKEN,TOKEN_HOMOPHONE,FACTOR,MAX_SENTENCES);
   long endTime=System.currentTimeMillis();
   System.out.println("Time: " + (endTime - startTime) + "ms");
