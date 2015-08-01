@@ -1,5 +1,9 @@
 {
-  this.directory=FSDirectory.open(indexDir.toPath());
+  Path path=indexDir.toPath();
+  if (Files.isSymbolicLink(path)) {
+    path=indexDir.getCanonicalFile().toPath();
+  }
+  this.directory=FSDirectory.open(path);
   this.reader=DirectoryReader.open(directory);
   this.searcher=new IndexSearcher(reader);
 }
