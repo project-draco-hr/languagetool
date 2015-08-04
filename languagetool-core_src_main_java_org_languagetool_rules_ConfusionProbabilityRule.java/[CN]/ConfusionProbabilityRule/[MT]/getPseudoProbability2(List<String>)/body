@@ -1,0 +1,11 @@
+{
+  long firstWordCount=lm.getCount(context.get(0));
+  double p=(double)(firstWordCount + 1) / (totalTokenCount + 1);
+  for (int i=2; i <= context.size(); i++) {
+    List<String> subList=context.subList(0,i);
+    long phraseCount=lm.getCount(subList);
+    double thisP=(double)(phraseCount + 1) / (firstWordCount + 1);
+    p*=thisP;
+  }
+  return p;
+}
