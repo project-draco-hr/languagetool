@@ -36,4 +36,11 @@
   assertMatches(lm,"( it is");
   assertMatches(lm,"it is )");
   assertMatches(lm,"five - pound");
+  assertMatches(lm,"the man who could");
+  assertMatches(lm,"The man who could");
+  assertMatches(lm,"five - pound note");
+  assertMatches(lm,"_START_ The man who");
+  assertMatches(lm,"which it was _END_");
+  assertMatches(lm,"Also , it is");
+  assertMatches(lm,"when it is 0");
 }
