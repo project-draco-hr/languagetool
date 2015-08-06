@@ -9,5 +9,8 @@
       isWord=false;
     }
   }
+ else   if (token.matches("0+")) {
+    isWord=false;
+  }
   return isWord;
 }
