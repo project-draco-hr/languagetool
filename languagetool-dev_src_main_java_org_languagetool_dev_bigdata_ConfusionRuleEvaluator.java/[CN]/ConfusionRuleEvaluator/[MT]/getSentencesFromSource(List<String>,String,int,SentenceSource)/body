@@ -1,8 +1,10 @@
 {
   List<Sentence> sentences=new ArrayList<>();
+  Pattern pattern=Pattern.compile(".*\\b" + token.toLowerCase() + "\\b.*");
   while (sentenceSource.hasNext()) {
     Sentence sentence=sentenceSource.next();
-    if (sentence.getText().toLowerCase().matches(".*\\b" + token + "\\b.*")) {
+    Matcher matcher=pattern.matcher(sentence.getText().toLowerCase());
+    if (matcher.matches()) {
       sentences.add(sentence);
       if (sentences.size() % 250 == 0) {
         println("Loaded sentence " + sentences.size() + " with '"+ token+ "' from "+ inputs);
