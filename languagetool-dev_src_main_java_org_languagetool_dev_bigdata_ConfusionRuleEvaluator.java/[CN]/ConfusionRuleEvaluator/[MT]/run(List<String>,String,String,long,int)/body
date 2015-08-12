@@ -10,5 +10,5 @@
   evaluate(allTokenSentences,false,homophoneToken,token);
   evaluate(allHomophoneSentences,false,token,homophoneToken);
   evaluate(allHomophoneSentences,true,homophoneToken,token);
-  return printEvalResult(allTokenSentences,allHomophoneSentences,inputsOrDir);
+  return printEvalResult(allTokenSentences,allHomophoneSentences,inputsOrDir,factor);
 }

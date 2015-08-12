@@ -1,3 +1,4 @@
 List<Sentence> allTokenSentences
 List<Sentence> allHomophoneSentences
 List<String> inputsOrDir
+long factor
