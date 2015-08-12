@@ -1,5 +1,5 @@
 {
-  List<GoogleToken> tokens=getGoogleTokens(sentence.getText());
+  List<GoogleToken> tokens=getGoogleTokens(sentence.getText(),true);
   List<RuleMatch> matches=new ArrayList<>();
   int pos=0;
   for (  GoogleToken googleToken : tokens) {

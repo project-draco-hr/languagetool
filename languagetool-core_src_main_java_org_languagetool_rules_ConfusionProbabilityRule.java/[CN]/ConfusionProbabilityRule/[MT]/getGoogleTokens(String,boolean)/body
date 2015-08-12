@@ -1,5 +1,8 @@
 {
   List<GoogleToken> result=new ArrayList<>();
+  if (addStartToken) {
+    result.add(new GoogleToken(LanguageModel.GOOGLE_SENTENCE_START,0,0));
+  }
   List<String> tokens=getTokenizer().tokenize(sentence);
   int startPos=0;
   for (  String token : tokens) {
