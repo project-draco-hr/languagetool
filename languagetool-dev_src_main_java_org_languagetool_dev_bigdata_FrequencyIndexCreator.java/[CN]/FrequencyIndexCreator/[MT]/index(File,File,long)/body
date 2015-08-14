@@ -39,7 +39,7 @@
   }
   System.out.println("Index dir: " + indexDir);
   try {
-    if (TEXT_MODE) {
+    if (mode == Mode.PlainText) {
       try (DataWriter dw=new TextDataWriter(indexDir)){
         indexLinesFromGoogleFile(dw,file,totalBytes,hiveMode);
       }

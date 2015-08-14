@@ -1,11 +1,23 @@
 {
-  if (args.length != 2) {
-    System.out.println("Usage: " + FrequencyIndexCreator.class.getSimpleName() + " <inputDir> <outputDir>");
-    System.out.println("    <inputDir> is the Google ngram data aggregated by Hive,");
+  if (args.length != 3) {
+    System.out.println("Usage: " + FrequencyIndexCreator.class.getSimpleName() + " <text|lucene> <inputDir> <outputDir>");
+    System.out.println("    <text|lucene> 'text' will write plain text files, 'lucene' will write Lucene indexes");
+    System.out.println("    <inputDir> is the Google ngram data, optionally already aggregated by Hive (lucene mode),");
     System.out.println("               please see http://wiki.languagetool.org/finding-errors-using-big-data");
     System.exit(1);
   }
-  FrequencyIndexCreator creator=new FrequencyIndexCreator();
-  System.out.println("TEXT_MODE: " + TEXT_MODE);
-  creator.run(new File(args[0]),new File(args[1]));
+  Mode mode;
+  if (args[0].equals("text")) {
+    mode=Mode.PlainText;
+  }
+ else   if (args[0].equals("lucene")) {
+    mode=Mode.Lucene;
+  }
+ else {
+    throw new RuntimeException("Unknown mode: " + args[0]);
+  }
+  FrequencyIndexCreator creator=new FrequencyIndexCreator(mode);
+  System.out.println("Mode: " + mode);
+  System.out.println("Minimum year: " + MIN_YEAR);
+  creator.run(new File(args[1]),new File(args[2]));
 }
