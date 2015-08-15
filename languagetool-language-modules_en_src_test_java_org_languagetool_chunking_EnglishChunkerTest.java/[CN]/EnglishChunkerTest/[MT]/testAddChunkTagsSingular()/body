@@ -1,0 +1,10 @@
+{
+  EnglishChunker chunker=new EnglishChunker();
+  JLanguageTool lt=new JLanguageTool(new English());
+  List<AnalyzedSentence> sentences=lt.analyzeText("The abacus shows how numbers can be stored");
+  List<AnalyzedTokenReadings> readingsList=Arrays.asList(sentences.get(0).getTokens());
+  chunker.addChunkTags(readingsList);
+  assertThat(readingsList.get(1).getChunkTags().toString(),is("[B-NP-singular]"));
+  assertThat(readingsList.get(3).getChunkTags().toString(),is("[E-NP-singular]"));
+  assertThat(readingsList.get(9).getChunkTags().toString(),is("[B-NP-plural, E-NP-plural]"));
+}
