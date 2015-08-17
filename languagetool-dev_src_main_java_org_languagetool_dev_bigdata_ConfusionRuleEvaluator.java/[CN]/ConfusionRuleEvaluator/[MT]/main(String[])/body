@@ -8,8 +8,15 @@
     System.exit(1);
   }
   long startTime=System.currentTimeMillis();
-  Language lang=new EnglishLight();
-  LanguageModel languageModel=new LuceneLanguageModel(new File(args[1]));
+  String langCode=args[0];
+  Language lang;
+  if ("en".equals(langCode)) {
+    lang=new EnglishLight();
+  }
+ else {
+    lang=Languages.getLanguageForShortName(langCode);
+  }
+  LanguageModel languageModel=new LuceneLanguageModel(new File(args[1],lang.getShortName()));
   List<String> inputsFiles=new ArrayList<>();
   inputsFiles.add(args[2]);
   if (args.length >= 4) {
