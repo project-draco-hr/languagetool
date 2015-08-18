@@ -12,8 +12,9 @@
     double fMeasure=FMeasure.getWeightedFMeasure(precision,recall);
     System.out.printf(ENGLISH,"  F-measure:    %.3f (beta=0.5)\n",fMeasure);
     System.out.printf(ENGLISH,"  Good Matches: %d (true positives)\n",truePositives);
-    System.out.printf(ENGLISH,"  All matches:  %d\n",(truePositives + falsePositives));
+    System.out.printf(ENGLISH,"  All matches:  %d\n",truePositives + falsePositives);
     System.out.printf(ENGLISH,"  Factor:       %d\n",factor);
+    System.out.printf(ENGLISH,"  Case sensit.: %s\n",CASE_SENSITIVE);
     System.out.printf(ENGLISH,"  Inputs:       %s\n",inputsOrDir);
     System.out.printf("  Summary:      " + summary + "\n");
   }

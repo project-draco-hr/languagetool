@@ -1,9 +1,10 @@
 {
   List<Sentence> sentences=new ArrayList<>();
-  Pattern pattern=Pattern.compile(".*\\b" + token.toLowerCase() + "\\b.*");
+  Pattern pattern=Pattern.compile(".*\\b" + (CASE_SENSITIVE ? token : token.toLowerCase()) + "\\b.*");
   while (sentenceSource.hasNext()) {
     Sentence sentence=sentenceSource.next();
-    Matcher matcher=pattern.matcher(sentence.getText().toLowerCase());
+    String sentenceText=CASE_SENSITIVE ? sentence.getText() : sentence.getText().toLowerCase();
+    Matcher matcher=pattern.matcher(sentenceText);
     if (matcher.matches()) {
       sentences.add(sentence);
       if (sentences.size() % 250 == 0) {
