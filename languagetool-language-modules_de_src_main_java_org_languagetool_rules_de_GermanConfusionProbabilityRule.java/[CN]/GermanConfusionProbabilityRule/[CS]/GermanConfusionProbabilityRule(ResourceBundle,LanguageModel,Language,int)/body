@@ -1,4 +1,4 @@
 {
   super(messages,languageModel,language,grams);
-  addExamplePair(Example.wrong("Dort habe ich <marker>denn</marker> Mann gesehen."),Example.fixed("Dort habe ich <marker>den</marker> Mann gesehen."));
+  addExamplePair(Example.wrong("W??hrend Sie das Ganze <marker>mir</marker> einem Holzl??ffel r??hren???"),Example.fixed("W??hrend Sie das Ganze <marker>mit</marker> einem Holzl??ffel r??hren???"));
 }
