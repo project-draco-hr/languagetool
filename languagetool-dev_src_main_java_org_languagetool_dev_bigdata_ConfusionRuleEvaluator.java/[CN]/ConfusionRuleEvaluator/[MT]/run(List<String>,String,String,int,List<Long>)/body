@@ -1,0 +1,12 @@
+{
+  for (  Long evalFactor : evalFactors) {
+    evalValues.put(evalFactor,new EvalValues());
+  }
+  List<Sentence> allTokenSentences=getRelevantSentences(inputsOrDir,token,maxSentences);
+  List<Sentence> allHomophoneSentences=getRelevantSentences(inputsOrDir,homophoneToken,maxSentences);
+  evaluate(allTokenSentences,true,token,homophoneToken,evalFactors);
+  evaluate(allTokenSentences,false,homophoneToken,token,evalFactors);
+  evaluate(allHomophoneSentences,false,token,homophoneToken,evalFactors);
+  evaluate(allHomophoneSentences,true,homophoneToken,token,evalFactors);
+  return printEvalResult(allTokenSentences,allHomophoneSentences,inputsOrDir);
+}

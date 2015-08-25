@@ -12,21 +12,24 @@
     String replacement=plainText.indexOf(textToken) == 0 ? StringTools.uppercaseFirstChar(token) : token;
     String replacedTokenSentence=isCorrect ? plainText : plainText.replaceFirst("(?i)\\b" + textToken + "\\b",replacement);
     AnalyzedSentence analyzedSentence=lt.getAnalyzedSentence(replacedTokenSentence);
-    RuleMatch[] matches=rule.match(analyzedSentence);
-    boolean consideredCorrect=matches.length == 0;
-    String displayStr=plainText.replaceFirst("(?i)\\b" + textToken + "\\b","**" + replacement + "**");
-    if (consideredCorrect && isCorrect) {
-      trueNegatives++;
-    }
- else     if (!consideredCorrect && isCorrect) {
-      falsePositives++;
-      println("false positive: " + displayStr);
-    }
- else     if (consideredCorrect && !isCorrect) {
-      falseNegatives++;
-    }
+    for (    Long factor : evalFactors) {
+      rule.setConfusionSet(new ConfusionSet(factor,homophoneToken,token));
+      RuleMatch[] matches=rule.match(analyzedSentence);
+      boolean consideredCorrect=matches.length == 0;
+      String displayStr=plainText.replaceFirst("(?i)\\b" + textToken + "\\b","**" + replacement + "**");
+      if (consideredCorrect && isCorrect) {
+        evalValues.get(factor).trueNegatives++;
+      }
+ else       if (!consideredCorrect && isCorrect) {
+        evalValues.get(factor).falsePositives++;
+        println(factor + " false positive: " + displayStr);
+      }
+ else       if (consideredCorrect && !isCorrect) {
+        evalValues.get(factor).falseNegatives++;
+      }
  else {
-      truePositives++;
+        evalValues.get(factor).truePositives++;
+      }
     }
   }
 }

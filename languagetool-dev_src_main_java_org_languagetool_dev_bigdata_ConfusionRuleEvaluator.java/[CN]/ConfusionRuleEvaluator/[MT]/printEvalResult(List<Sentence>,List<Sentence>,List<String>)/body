@@ -1,0 +1,21 @@
+{
+  String summary=null;
+  int sentences=allTokenSentences.size() + allHomophoneSentences.size();
+  System.out.println("\nEvaluation results for " + TOKEN + "/"+ TOKEN_HOMOPHONE+ " with "+ sentences+ " sentences as of "+ new Date()+ ":");
+  System.out.printf(ENGLISH,"Inputs:       %s\n",inputsOrDir);
+  System.out.printf(ENGLISH,"Case sensit.: %s\n",CASE_SENSITIVE);
+  List<Long> factors=evalValues.keySet().stream().sorted().collect(toList());
+  for (  Long factor : factors) {
+    EvalValues evalValues=this.evalValues.get(factor);
+    float precision=(float)evalValues.truePositives / (evalValues.truePositives + evalValues.falsePositives);
+    float recall=(float)evalValues.truePositives / (evalValues.truePositives + evalValues.falseNegatives);
+    String date=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+    summary=String.format(ENGLISH,"p=%.3f, r=%.3f, %d, %dgrams, %s",precision,recall,allTokenSentences.size() + allHomophoneSentences.size(),grams,date);
+    if (verbose) {
+      System.out.println();
+      System.out.printf(ENGLISH,"Factor:   %d - %d false positives, %d false negatives\n",factor,evalValues.falsePositives,evalValues.falseNegatives);
+      System.out.printf("Summary:  " + summary + "\n");
+    }
+  }
+  return summary;
+}

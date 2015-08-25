@@ -23,7 +23,7 @@
     inputsFiles.add(args[3]);
   }
   ConfusionRuleEvaluator generator=new ConfusionRuleEvaluator(lang,languageModel,NGRAM_LEVEL);
-  generator.run(inputsFiles,TOKEN,TOKEN_HOMOPHONE,FACTOR,MAX_SENTENCES);
+  generator.run(inputsFiles,TOKEN,TOKEN_HOMOPHONE,MAX_SENTENCES,EVAL_FACTORS);
   long endTime=System.currentTimeMillis();
-  System.out.println("Time: " + (endTime - startTime) + "ms");
+  System.out.println("\nTime: " + (endTime - startTime) + "ms");
 }

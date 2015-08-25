@@ -2,3 +2,4 @@ List<Sentence> sentences
 boolean isCorrect
 String token
 String homophoneToken
+List<Long> evalFactors
