@@ -5,7 +5,7 @@
   assertEquals(0,output.indexOf("Time:"));
   assertEquals(0,matches);
   tool.disableRule("test_unification_with_negation");
-  tool.addRule(new WordRepeatRule(getMessages("en"),TestTools.getDemoLanguage()));
+  tool.addRule(new WordRepeatRule(TestTools.getEnglishMessages(),TestTools.getDemoLanguage()));
   matches=CommandLineTools.checkText("To jest problem problem.",tool);
   output=new String(this.out.toByteArray());
   assertTrue(output.contains("Rule ID: WORD_REPEAT_RULE"));

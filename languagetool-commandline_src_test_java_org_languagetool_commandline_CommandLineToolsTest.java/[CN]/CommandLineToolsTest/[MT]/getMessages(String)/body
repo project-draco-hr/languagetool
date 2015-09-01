@@ -1,4 +1,0 @@
-{
-  final ResourceBundle messages=ResourceBundle.getBundle(JLanguageTool.MESSAGE_BUNDLE,new Locale(language));
-  return messages;
-}
