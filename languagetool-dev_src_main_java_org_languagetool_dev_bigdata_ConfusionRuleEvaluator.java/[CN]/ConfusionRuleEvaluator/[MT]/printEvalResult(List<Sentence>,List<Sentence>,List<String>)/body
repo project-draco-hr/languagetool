@@ -10,7 +10,7 @@
     float precision=(float)evalValues.truePositives / (evalValues.truePositives + evalValues.falsePositives);
     float recall=(float)evalValues.truePositives / (evalValues.truePositives + evalValues.falseNegatives);
     String date=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-    summary=String.format(ENGLISH,"p=%.3f, r=%.3f, %d, %dgrams, %s",precision,recall,allTokenSentences.size() + allHomophoneSentences.size(),grams,date);
+    summary=String.format(ENGLISH,"p=%.3f, r=%.3f, %d, %dgrams, %s",precision,recall,allTokenSentences.size() + allHomophoneSentences.size(),rule.getNGrams(),date);
     if (verbose) {
       System.out.println();
       System.out.printf(ENGLISH,"Factor:   %d - %d false positives, %d false negatives\n",factor,evalValues.falsePositives,evalValues.falseNegatives);
