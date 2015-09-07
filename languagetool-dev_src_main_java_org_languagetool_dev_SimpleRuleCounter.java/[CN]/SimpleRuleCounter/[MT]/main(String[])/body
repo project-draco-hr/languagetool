@@ -1,0 +1,4 @@
+{
+  SimpleRuleCounter finder=new SimpleRuleCounter();
+  finder.run(Languages.get());
+}

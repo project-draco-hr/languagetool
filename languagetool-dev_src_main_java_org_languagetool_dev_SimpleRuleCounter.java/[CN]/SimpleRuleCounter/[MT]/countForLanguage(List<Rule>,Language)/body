@@ -1,0 +1,21 @@
+{
+  int simpleCount=0;
+  for (  Rule rule : allRules) {
+    boolean isSimple=true;
+    if (rule instanceof PatternRule) {
+      PatternRule patternRule=(PatternRule)rule;
+      List<PatternToken> tokens=patternRule.getPatternTokens();
+      for (      PatternToken token : tokens) {
+        if (!isSimple(token)) {
+          isSimple=false;
+          break;
+        }
+      }
+      if (isSimple) {
+        simpleCount++;
+      }
+    }
+  }
+  float percent=(float)simpleCount / allRules.size() * 100;
+  System.out.printf("%.0f%% for " + language + "\n",percent);
+}
