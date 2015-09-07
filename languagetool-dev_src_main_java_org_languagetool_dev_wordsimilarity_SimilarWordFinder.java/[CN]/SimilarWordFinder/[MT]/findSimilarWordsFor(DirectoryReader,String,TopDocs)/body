@@ -1,0 +1,16 @@
+{
+  List<String> result=new ArrayList<>();
+  for (  ScoreDoc scoreDoc : topDocs.scoreDocs) {
+    String simWord=reader.document(scoreDoc.doc).get("word");
+    if (!simWord.equalsIgnoreCase(word)) {
+      int firstDiffPos=getDiffPos(simWord.toLowerCase(),word.toLowerCase());
+      int limit=Math.min(word.length(),simWord.length()) - 1;
+      if (firstDiffPos > limit) {
+      }
+ else {
+        System.out.println(word + " -> " + simWord+ " ["+ firstDiffPos+ "]");
+        result.add(simWord);
+      }
+    }
+  }
+}

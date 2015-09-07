@@ -1,0 +1,15 @@
+{
+  FSDirectory dir=FSDirectory.open(path.toPath());
+  IndexWriterConfig indexWriterConfig=new IndexWriterConfig(new StandardAnalyzer());
+  System.out.println("Creating index...");
+  int docs=0;
+  try (IndexWriter writer=new IndexWriter(dir,indexWriterConfig)){
+    for (    String word : words) {
+      Document doc=new Document();
+      doc.add(new TextField("word",word,Field.Store.YES));
+      writer.addDocument(doc);
+      docs++;
+    }
+  }
+   System.out.println("Index created: " + docs + " docs");
+}

@@ -1,0 +1,3 @@
+{
+  return Math.abs(column - other.column) + Math.abs(row - other.row);
+}

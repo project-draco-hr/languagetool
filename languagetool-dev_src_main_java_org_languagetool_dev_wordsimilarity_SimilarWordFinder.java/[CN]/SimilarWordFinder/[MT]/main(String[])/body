@@ -1,0 +1,10 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: " + SimilarWordFinder.class.getSimpleName() + " <file>");
+    System.exit(1);
+  }
+  List<String> words=FileUtils.readLines(new File(args[0]));
+  SimilarWordFinder simWordFinder=new SimilarWordFinder();
+  File path=new File("/tmp/test");
+  simWordFinder.findSimilarWords(path,words);
+}

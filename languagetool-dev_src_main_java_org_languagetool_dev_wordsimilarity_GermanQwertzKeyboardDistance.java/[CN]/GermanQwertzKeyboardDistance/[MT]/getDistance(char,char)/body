@@ -1,0 +1,5 @@
+{
+  Position p1=getPosition(c1);
+  Position p2=getPosition(c2);
+  return p1.distanceTo(p2);
+}

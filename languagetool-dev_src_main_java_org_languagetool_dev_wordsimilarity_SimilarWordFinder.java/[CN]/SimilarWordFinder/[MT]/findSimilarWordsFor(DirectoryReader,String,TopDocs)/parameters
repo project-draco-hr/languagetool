@@ -1,0 +1,3 @@
+DirectoryReader reader
+String word
+TopDocs topDocs
