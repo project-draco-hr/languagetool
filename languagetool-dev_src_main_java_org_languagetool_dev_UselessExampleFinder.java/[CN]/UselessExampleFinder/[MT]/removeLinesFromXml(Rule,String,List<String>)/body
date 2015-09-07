@@ -23,7 +23,7 @@
     if (m.matches()) {
       currentRuleId=m.group(1);
     }
-    if ((xmlLine.contains("type=\"correct\"") || xmlLine.contains("type='correct'")) && xmlLine.contains(sentenceToRemove + "</example>")) {
+    if (!xmlLine.contains("correction=") && xmlLine.contains(sentenceToRemove + "</example>")) {
       if (currentRuleId != null && !currentRuleId.equals(rule.getId())) {
         lineCount++;
         continue;

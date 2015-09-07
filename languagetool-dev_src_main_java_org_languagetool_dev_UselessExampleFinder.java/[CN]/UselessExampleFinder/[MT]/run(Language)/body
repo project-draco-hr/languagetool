@@ -8,6 +8,9 @@
   List<String> xmlLines=IOUtils.readLines(new FileReader(xml));
   JLanguageTool tool=new JLanguageTool(lang);
   for (  Rule rule : tool.getAllActiveRules()) {
+    if (!(rule instanceof PatternRule)) {
+      continue;
+    }
     List<String> correctExamples=rule.getCorrectExamples();
     List<IncorrectExample> incorrectExamples=rule.getIncorrectExamples();
     for (    IncorrectExample incorrectExample : incorrectExamples) {

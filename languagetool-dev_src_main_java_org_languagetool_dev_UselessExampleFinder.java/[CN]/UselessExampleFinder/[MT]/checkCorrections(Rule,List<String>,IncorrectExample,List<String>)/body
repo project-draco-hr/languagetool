@@ -1,11 +1,17 @@
 {
   List<String> corrections=incorrectExample.getCorrections();
-  if (corrections != null && corrections.size() == 1) {
+  if (corrections != null) {
     for (    String correction : corrections) {
       String fixedSentence=incorrectExample.getExample().replaceAll("<marker>.*?</marker>","<marker>" + correction.replace("$","\\$") + "</marker>");
+      String fixedSentenceNoMarker=incorrectExample.getExample().replaceAll("<marker>.*?</marker>",correction.replace("$","\\$"));
       if (correctExamples.contains(fixedSentence)) {
         System.err.println("Useless: " + fixedSentence + " in "+ rule.getId());
         removeLinesFromXml(rule,fixedSentence,xmlLines);
+        uselessExampleCount++;
+      }
+      if (correctExamples.contains(fixedSentenceNoMarker)) {
+        System.err.println("Useless: " + fixedSentenceNoMarker + " in "+ rule.getId());
+        removeLinesFromXml(rule,fixedSentenceNoMarker,xmlLines);
         uselessExampleCount++;
       }
     }
