@@ -4,6 +4,9 @@
   for (  String disabledRuleId : disabledRuleIds) {
     langTool.disableRule(disabledRuleId);
   }
+  if (ngramDir != null) {
+    langTool.activateLanguageModelRules(ngramDir);
+  }
   disableSpellingRules(langTool);
   return langTool;
 }
