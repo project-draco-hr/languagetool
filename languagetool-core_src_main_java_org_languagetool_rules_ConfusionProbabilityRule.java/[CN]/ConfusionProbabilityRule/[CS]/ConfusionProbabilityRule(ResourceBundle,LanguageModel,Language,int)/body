@@ -12,6 +12,7 @@
     throw new RuntimeException(e);
   }
   this.lm=Objects.requireNonNull(languageModel);
+  this.language=Objects.requireNonNull(language);
   if (grams < 1 || grams > 5) {
     throw new IllegalArgumentException("grams must be between 1 and 5: " + grams);
   }
