@@ -1,0 +1,4 @@
+{
+  System.out.println("Java version: " + System.getProperty("java.version") + ", "+ System.getProperty("java.vendor"));
+  System.out.println("OS: " + System.getProperty("os.arch") + ", "+ System.getProperty("os.name")+ ", "+ System.getProperty("os.version"));
+}
