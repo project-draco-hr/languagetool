@@ -1,0 +1,11 @@
+{
+  if (textString.getDescription() != null && suggestion.getDescription() != null) {
+    return "Statistic suggests that '" + suggestion.getString() + "' ("+ suggestion.getDescription()+ ") might be the correct word here, not '"+ textString.getString()+ "' ("+ textString.getDescription()+ "). Please check.";
+  }
+ else   if (suggestion.getDescription() != null) {
+    return "Statistic suggests that '" + suggestion.getString() + "' ("+ suggestion.getDescription()+ ") might be the correct word here. Please check.";
+  }
+ else {
+    return "Statistic suggests that '" + suggestion.getString() + "' might be the correct word here. Please check.";
+  }
+}
