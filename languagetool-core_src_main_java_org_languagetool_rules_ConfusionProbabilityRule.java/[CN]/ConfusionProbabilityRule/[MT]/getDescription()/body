@@ -1,0 +1,3 @@
+{
+  return Tools.i18n(messages,"statistics_rule_description");
+}

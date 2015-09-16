@@ -1,0 +1,11 @@
+{
+  if (textString.getDescription() != null && suggestion.getDescription() != null) {
+    return Tools.i18n(messages,"statistics_suggest1",suggestion.getString(),suggestion.getDescription(),textString.getString(),textString.getDescription());
+  }
+ else   if (suggestion.getDescription() != null) {
+    return Tools.i18n(messages,"statistics_suggest2",suggestion.getString(),suggestion.getDescription());
+  }
+ else {
+    return Tools.i18n(messages,"statistics_suggest3",suggestion.getString());
+  }
+}

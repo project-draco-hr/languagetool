@@ -1,5 +1,3 @@
 {
-  final MessageFormat formatter=new MessageFormat("");
-  formatter.applyPattern(messages.getString(key).replaceAll("'","''"));
-  return formatter.format(messageArguments);
+  return org.languagetool.tools.Tools.i18n(messages,key,messageArguments);
 }
