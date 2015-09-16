@@ -1,0 +1,3 @@
+{
+  return Arrays.<Rule>asList(new FrenchConfusionProbabilityRule(messages,languageModel,this));
+}
