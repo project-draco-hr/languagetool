@@ -1,0 +1,10 @@
+{
+  for (  AnalyzedTokenReadings tag : tags) {
+    for (    AnalyzedToken analyzedToken : tag.getReadings()) {
+      if (analyzedToken.getPOSTag() != null && analyzedToken.getPOSTag().matches(requiredTagRegexp)) {
+        return !negatePos;
+      }
+    }
+  }
+  return negatePos;
+}
