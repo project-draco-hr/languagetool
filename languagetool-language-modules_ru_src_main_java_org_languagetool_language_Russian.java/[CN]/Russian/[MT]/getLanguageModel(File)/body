@@ -1,6 +1,6 @@
 {
   if (languageModel == null) {
-    languageModel=new LuceneLanguageModel(new File(indexDir,"ru"));
+    languageModel=new LuceneLanguageModel(new File(indexDir,getShortName()));
   }
   return languageModel;
 }
