@@ -53,10 +53,10 @@
   testSplit("Zij fluisterde iets van 'eeuwig trouw' en 'altijd blijven houden van'.");
   testSplit("'Heb je dat boek al gelezen?', vroeg hij.");
   testSplit("De auteur vermeldt: 'Deze opvatting van het vorstendom heeft lang doorgewerkt.'");
-  testSplit("'Gaat u zitten', zei zij. 'De dokter komt zo.'");
-  testSplit("'Mijn broer woont ook in Den Haag', vertelde ze. 'Hij woont al een paar jaar samen.'");
-  testSplit("'Je bent grappig', zei ze. 'Echt, ik vind je grappig.'");
-  testSplit("'Is Jan thuis?', vroeg Piet. 'Ik wil hem wat vragen.'");
-  testSplit("'Ik denk er niet over!', riep ze. 'Dat gaat echt te ver, hoor!'");
+  testSplit("'Gaat u zitten', zei zij. ","'De dokter komt zo.'");
+  testSplit("'Mijn broer woont ook in Den Haag', vertelde ze. ","'Hij woont al een paar jaar samen.'");
+  testSplit("'Je bent grappig', zei ze. ","'Echt, ik vind je grappig.'");
+  testSplit("'Is Jan thuis?', vroeg Piet. ","'Ik wil hem wat vragen.'");
+  testSplit("'Ik denk er niet over!', riep ze. ","'Dat gaat echt te ver, hoor!'");
   testSplit("'Ik vermoed', zei Piet, 'dat Jan al wel thuis is.'");
 }
