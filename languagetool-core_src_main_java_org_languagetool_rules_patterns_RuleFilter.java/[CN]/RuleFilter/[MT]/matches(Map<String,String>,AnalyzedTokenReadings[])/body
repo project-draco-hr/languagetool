@@ -1,0 +1,4 @@
+{
+  RuleMatch fakeMatch=new RuleMatch(new FakeRule(),0,1,"(internal rule)");
+  return acceptRuleMatch(fakeMatch,arguments,patternTokens) != null;
+}

@@ -19,7 +19,7 @@
     unifiedTokens=null;
     int matchingTokens=0;
     int firstMatchToken=-1;
-    int lastMatchToken;
+    int lastMatchToken=-1;
     int firstMarkerMatchToken=-1;
     int lastMarkerMatchToken=-1;
     int prevSkipNext=0;
@@ -75,8 +75,11 @@
       }
     }
     if (allElementsMatch && matchingTokens == patternSize || matchingTokens == patternSize - minOccurSkip && firstMatchToken != -1) {
-      whTokens=executeAction(sentence,whTokens,unifiedTokens,firstMatchToken,lastMarkerMatchToken,matchingTokens,tokenPositions);
-      changed=true;
+      boolean keepMatch=keepDespiteFilter(tokens,tokenPositions,firstMatchToken,lastMatchToken);
+      if (keepMatch) {
+        whTokens=executeAction(sentence,whTokens,unifiedTokens,firstMatchToken,lastMarkerMatchToken,matchingTokens,tokenPositions);
+        changed=true;
+      }
     }
     i++;
   }

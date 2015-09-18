@@ -29,6 +29,12 @@ rule.setExamples(disambExamples);
 if (untouchedExamples != null) {
 rule.setUntouchedExamples(untouchedExamples);
 }
+if (filterClassName != null && filterArgs != null) {
+RuleFilterCreator creator=new RuleFilterCreator();
+RuleFilter filter=creator.getFilter(filterClassName);
+rule.setFilter(filter);
+rule.setFilterArguments(filterArgs);
+}
 rules.add(rule);
 if (disambigAction == DisambiguationPatternRule.DisambiguatorAction.UNIFY && matchedTokenCount != uniCounter) {
 throw new SAXException(language.getName() + " rule error. The number unified tokens: " + uniCounter+ " must be equal to the number of matched tokens: "+ matchedTokenCount+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
@@ -43,6 +49,8 @@ disambExamples=null;
 untouchedExamples=null;
 startPos=-1;
 endPos=-1;
+filterClassName=null;
+filterArgs=null;
 break;
 case EXCEPTION:
 finalizeExceptions();

@@ -130,6 +130,10 @@ output=attrs.getValue("outputform");
 }
 example=new StringBuilder();
 break;
+case "filter":
+filterClassName=attrs.getValue("class");
+filterArgs=attrs.getValue("args");
+break;
 case MARKER:
 example.append("<marker>");
 if (inPattern) {

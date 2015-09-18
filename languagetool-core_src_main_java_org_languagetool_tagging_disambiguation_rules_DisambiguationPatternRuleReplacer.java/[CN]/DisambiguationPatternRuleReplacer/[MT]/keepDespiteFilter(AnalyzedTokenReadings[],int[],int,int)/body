@@ -1,0 +1,14 @@
+{
+  RuleFilter filter=rule.getFilter();
+  if (filter != null) {
+    RuleFilterEvaluator ruleFilterEval=new RuleFilterEvaluator(filter);
+    List<Integer> tokensPos=new ArrayList<>();
+    for (    int tokenPosition : tokenPositions) {
+      tokensPos.add(tokenPosition);
+    }
+    Map<String,String> resolvedArguments=ruleFilterEval.getResolvedArguments(rule.getFilterArguments(),tokens,tokensPos);
+    AnalyzedTokenReadings[] relevantTokens=Arrays.copyOfRange(tokens,firstMatchToken,lastMatchToken + 1);
+    return filter.matches(resolvedArguments,relevantTokens);
+  }
+  return true;
+}
