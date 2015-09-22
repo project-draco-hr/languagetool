@@ -1,0 +1,3 @@
+{
+  return makeAntiPatterns(ANTI_PATTERNS,language);
+}

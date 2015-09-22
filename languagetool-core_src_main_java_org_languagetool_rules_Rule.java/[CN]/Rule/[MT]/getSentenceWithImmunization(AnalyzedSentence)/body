@@ -2,7 +2,12 @@
   if (!getAntiPatterns().isEmpty()) {
     AnalyzedSentence immunizedSentence=sentence.copy(sentence);
     for (    DisambiguationPatternRule patternRule : getAntiPatterns()) {
-      immunizedSentence=patternRule.replace(immunizedSentence);
+      try {
+        immunizedSentence=patternRule.replace(immunizedSentence);
+      }
+ catch (      IOException e) {
+        throw new RuntimeException(e);
+      }
     }
     return immunizedSentence;
   }
