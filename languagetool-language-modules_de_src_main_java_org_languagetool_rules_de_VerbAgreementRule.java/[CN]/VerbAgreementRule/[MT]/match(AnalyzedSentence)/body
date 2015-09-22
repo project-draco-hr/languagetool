@@ -1,6 +1,6 @@
 {
   final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  final AnalyzedTokenReadings[] tokens=getSentenceWithImmunization(sentence).getTokensWithoutWhitespace();
   if (tokens.length < 4) {
     return toRuleMatchArray(ruleMatches);
   }
@@ -16,6 +16,9 @@
   int posPossibleVer3Sin=-1;
   int posPossibleVer1Plu=-1;
   for (int i=1; i < tokens.length; ++i) {
+    if (tokens[i].isImmunized()) {
+      continue;
+    }
     String strToken=tokens[i].getToken().toLowerCase();
     strToken=strToken.replace("???","");
 switch (strToken) {

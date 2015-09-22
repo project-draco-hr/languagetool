@@ -18,6 +18,7 @@
   assertGood("Daf??r erhielten er sowie der Hofgoldschmied Theodor Heiden einen Preis.");
   assertGood("Probst wurde deshalb in den Medien gefeiert.");
   assertGood("/usr/bin/firefox");
+  assertGood("Das sind Leute, die viel mehr als ich wissen.");
   assertBad("Als Borcarbid wei??t es eine hohe H??rte auf.");
   assertBad("Das greift auf Vorl??uferinstitutionen bist auf die Zeit von 1234 zur??ck.");
   assertBad("Die Eisenbahn dienst ??berwiegend dem G??terverkehr.");
