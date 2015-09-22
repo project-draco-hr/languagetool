@@ -5,4 +5,11 @@
   assertGood("Why is their car broken again?");
   assertGood("Is this their useful test?");
   assertGood("Is this there useful test?");
+  ConfusionProbabilityRule ruleWithException=new FakeRule(new FakeLanguageModel(),new FakeLanguage()){
+    @Override protected boolean isException(    String sentenceText){
+      return sentenceText.contains("Their are");
+    }
+  }
+;
+  assertGood("Their are new ideas to explore.",ruleWithException);
 }

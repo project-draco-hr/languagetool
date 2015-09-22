@@ -1,4 +1,3 @@
 {
-  RuleMatch[] matches=rule.match(lt.getAnalyzedSentence(input));
-  assertThat("Got unexpected match in: " + input,matches.length,is(0));
+  assertGood(input,rule);
 }

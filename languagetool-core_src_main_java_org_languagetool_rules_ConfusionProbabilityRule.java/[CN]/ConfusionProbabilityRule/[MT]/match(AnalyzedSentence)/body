@@ -1,5 +1,6 @@
 {
-  List<GoogleToken> tokens=getGoogleTokens(sentence.getText(),true);
+  String text=sentence.getText();
+  List<GoogleToken> tokens=getGoogleTokens(text,true);
   List<RuleMatch> matches=new ArrayList<>();
   int pos=0;
   for (  GoogleToken googleToken : tokens) {
@@ -16,7 +17,7 @@
         if (isEasilyConfused) {
           Set<ConfusionString> set=uppercase ? confusionSet.getUppercaseFirstCharSet() : confusionSet.getSet();
           ConfusionString betterAlternative=getBetterAlternativeOrNull(tokens.get(pos),tokens,set,confusionSet.getFactor());
-          if (betterAlternative != null) {
+          if (betterAlternative != null && !isException(text)) {
             ConfusionString stringFromText=getConfusionString(set,tokens.get(pos));
             String message=getMessage(stringFromText,betterAlternative);
             RuleMatch match=new RuleMatch(this,googleToken.startPos,googleToken.endPos,message);

@@ -1,0 +1,4 @@
+{
+  RuleMatch[] matches=rule.match(lt.getAnalyzedSentence(input));
+  assertThat("Did not find match in: " + input,matches.length,is(1));
+}

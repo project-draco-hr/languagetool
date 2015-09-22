@@ -1,0 +1,9 @@
+{
+  for (  Pattern pattern : EXCEPTION_PATTERNS) {
+    Matcher m=pattern.matcher(sentenceText);
+    if (m.find()) {
+      return true;
+    }
+  }
+  return false;
+}
