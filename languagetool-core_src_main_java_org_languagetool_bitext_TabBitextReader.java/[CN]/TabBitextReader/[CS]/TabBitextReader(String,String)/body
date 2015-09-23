@@ -11,6 +11,6 @@
     nextPair=tab2StringPair(nextLine);
   }
  catch (  IOException e) {
-    throw new IllegalArgumentException(e);
+    throw new RuntimeException(e);
   }
 }
