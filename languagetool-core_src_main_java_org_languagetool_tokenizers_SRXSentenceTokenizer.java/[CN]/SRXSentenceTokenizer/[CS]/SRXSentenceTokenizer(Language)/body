@@ -1,4 +1,4 @@
 {
-  this.languageCode=language.getShortName();
+  this.language=language;
   setSingleLineBreaksMarksParagraph(false);
 }
