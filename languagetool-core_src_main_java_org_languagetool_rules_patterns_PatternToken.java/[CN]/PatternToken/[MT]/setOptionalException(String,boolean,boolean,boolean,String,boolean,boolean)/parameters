@@ -1,7 +1,0 @@
-String token
-boolean regExp
-boolean inflected
-boolean negation
-String posToken
-boolean posRegExp
-boolean posNegation

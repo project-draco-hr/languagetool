@@ -18,7 +18,7 @@
  else {
           langName=lang.getTranslatedName(messages);
         }
-        final String startCheckText=Main.HTML_GREY_FONT_START + Tools.makeTexti18n(messages,"startChecking",langName) + "..."+ Main.HTML_FONT_END;
+        final String startCheckText=Main.HTML_GREY_FONT_START + org.languagetool.tools.Tools.i18n(messages,"startChecking",langName) + "..."+ Main.HTML_FONT_END;
         statusPane.setText(startCheckText);
         setStartText(startCheckText);
         if (event.getCaller() == marker) {

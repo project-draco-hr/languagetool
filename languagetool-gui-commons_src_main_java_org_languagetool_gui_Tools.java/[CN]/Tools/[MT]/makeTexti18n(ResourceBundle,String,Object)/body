@@ -1,3 +1,0 @@
-{
-  return org.languagetool.tools.Tools.i18n(messages,key,messageArguments);
-}

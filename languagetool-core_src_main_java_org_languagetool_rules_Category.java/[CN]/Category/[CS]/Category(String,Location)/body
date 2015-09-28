@@ -1,3 +1,3 @@
 {
-  this(name,DEFAULT_PRIORITY,location,true);
+  this(name,location,true);
 }

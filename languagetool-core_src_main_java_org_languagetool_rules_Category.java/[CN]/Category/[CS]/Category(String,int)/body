@@ -1,3 +1,0 @@
-{
-  this(name,priority,Location.INTERNAL,true);
-}

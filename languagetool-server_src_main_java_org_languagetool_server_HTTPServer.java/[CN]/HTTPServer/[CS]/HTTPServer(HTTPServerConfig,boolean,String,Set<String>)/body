@@ -23,7 +23,7 @@
   }
  catch (  Exception e) {
     final ResourceBundle messages=JLanguageTool.getMessageBundle();
-    final String message=Tools.makeTexti18n(messages,"http_server_start_failed",host,Integer.toString(port));
+    final String message=Tools.i18n(messages,"http_server_start_failed",host,Integer.toString(port));
     throw new PortBindingException(message,e);
   }
 }

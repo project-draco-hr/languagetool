@@ -1,3 +1,5 @@
 {
-  this(name,DEFAULT_PRIORITY,location,onByDefault);
+  this.name=name;
+  this.location=location;
+  this.defaultOff=!onByDefault;
 }
