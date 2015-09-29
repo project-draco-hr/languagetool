@@ -5,7 +5,8 @@
     result.addAll(tagger1.tag(word));
   }
   if (removalTagger != null) {
-    removeReadings(word,result);
+    List<TaggedWord> removalTags=removalTagger.tag(word);
+    result.removeAll(removalTags);
   }
   return result;
 }
