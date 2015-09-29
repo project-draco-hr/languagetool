@@ -1,11 +1,18 @@
 {
   MorfologikTagger morfologikTagger=new MorfologikTagger(filename);
   try {
-    String manualFileName=getManualAdditionsFileName();
-    if (manualFileName != null) {
-      try (InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(manualFileName)){
+    String manualRemovalFileName=getManualRemovalsFileName();
+    ManualTagger removalTagger=null;
+    if (manualRemovalFileName != null) {
+      try (InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(manualRemovalFileName)){
+        removalTagger=new ManualTagger(stream);
+      }
+     }
+    String manualAdditionFileName=getManualAdditionsFileName();
+    if (manualAdditionFileName != null) {
+      try (InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(manualAdditionFileName)){
         ManualTagger manualTagger=new ManualTagger(stream);
-        return new CombiningTagger(morfologikTagger,manualTagger,overwriteWithManualTagger());
+        return new CombiningTagger(morfologikTagger,manualTagger,removalTagger,overwriteWithManualTagger());
       }
      }
  else {

@@ -1,5 +1,5 @@
 {
-  CombiningTagger tagger=getCombiningTagger(true);
+  CombiningTagger tagger=getCombiningTagger(true,null);
   assertThat(tagger.tag("nosuchword").size(),is(0));
   List<TaggedWord> result=tagger.tag("fullform");
   assertThat(result.size(),is(1));

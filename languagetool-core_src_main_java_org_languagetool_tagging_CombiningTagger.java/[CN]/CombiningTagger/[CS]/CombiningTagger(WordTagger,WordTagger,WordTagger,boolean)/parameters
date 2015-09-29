@@ -1,0 +1,4 @@
+WordTagger tagger1
+WordTagger tagger2
+WordTagger removalTagger
+boolean overwriteWithSecondTagger

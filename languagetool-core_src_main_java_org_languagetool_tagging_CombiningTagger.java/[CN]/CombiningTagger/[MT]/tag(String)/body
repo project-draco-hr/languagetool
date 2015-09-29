@@ -4,5 +4,8 @@
   if (!(overwriteWithSecondTagger && result.size() > 0)) {
     result.addAll(tagger1.tag(word));
   }
+  if (removalTagger != null) {
+    removeReadings(word,result);
+  }
   return result;
 }

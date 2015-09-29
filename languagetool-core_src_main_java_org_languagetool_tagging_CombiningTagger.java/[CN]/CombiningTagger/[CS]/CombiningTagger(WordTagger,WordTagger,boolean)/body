@@ -1,5 +1,3 @@
 {
-  this.tagger1=tagger1;
-  this.tagger2=tagger2;
-  this.overwriteWithSecondTagger=overwriteWithSecondTagger;
+  this(tagger1,tagger2,null,overwriteWithSecondTagger);
 }

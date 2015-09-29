@@ -1,0 +1,6 @@
+{
+  this.tagger1=tagger1;
+  this.tagger2=tagger2;
+  this.removalTagger=removalTagger;
+  this.overwriteWithSecondTagger=overwriteWithSecondTagger;
+}

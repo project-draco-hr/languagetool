@@ -1,0 +1,9 @@
+{
+  ManualTagger tagger1=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream("/xx/added1.txt"));
+  ManualTagger tagger2=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream("/xx/added2.txt"));
+  ManualTagger removalTagger=null;
+  if (removalPath != null) {
+    removalTagger=new ManualTagger(JLanguageTool.getDataBroker().getFromResourceDirAsStream(removalPath));
+  }
+  return new CombiningTagger(tagger1,tagger2,removalTagger,overwrite);
+}
