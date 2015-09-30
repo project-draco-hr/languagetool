@@ -27,7 +27,9 @@
         }
       }
     }
-    if (!unifiedTokensFound)     return false;
+    if (!unifiedTokensFound) {
+      return false;
+    }
   }
   if (tokUnified == tokSequence.size()) {
     return true;
