@@ -5,7 +5,7 @@
     final XDesktop xDesktop=UnoRuntime.queryInterface(XDesktop.class,desktop);
     return xDesktop.getCurrentComponent();
   }
- catch (  final Throwable t) {
+ catch (  Throwable t) {
     showError(t);
     return null;
   }

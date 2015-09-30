@@ -9,7 +9,7 @@
     saxParser.parse(is,handler);
     return handler.getRules();
   }
- catch (  final Exception e) {
+ catch (  Exception e) {
     throw new IOException("Cannot load or parse input stream of '" + filename + "'",e);
   }
 }

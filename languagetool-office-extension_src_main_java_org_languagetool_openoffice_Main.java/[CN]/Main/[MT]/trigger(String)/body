@@ -17,7 +17,7 @@
       System.err.println("Sorry, don't know what to do, sEvent = " + sEvent);
     }
   }
- catch (  final Throwable e) {
+ catch (  Throwable e) {
     showError(e);
   }
 }

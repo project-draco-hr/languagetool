@@ -49,6 +49,6 @@
     parseErrorColors(colorsString);
     loadConfigForOtherLanguages(lang,props);
   }
- catch (  final FileNotFoundException e) {
+ catch (  FileNotFoundException e) {
   }
 }

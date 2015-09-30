@@ -19,7 +19,7 @@
     }
     recheck=false;
   }
- catch (  final Throwable t) {
+ catch (  Throwable t) {
     showError(t);
   }
 }

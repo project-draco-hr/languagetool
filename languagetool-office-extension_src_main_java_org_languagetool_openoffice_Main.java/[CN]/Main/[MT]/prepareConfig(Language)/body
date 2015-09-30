@@ -8,7 +8,7 @@
     }
     disabledRulesUI=new HashSet<>(disabledRules);
   }
- catch (  final Throwable t) {
+ catch (  Throwable t) {
     showError(t);
   }
 }

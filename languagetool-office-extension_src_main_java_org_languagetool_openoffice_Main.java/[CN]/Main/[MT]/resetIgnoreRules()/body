@@ -3,7 +3,7 @@
   try {
     config.saveConfiguration(langTool.getLanguage());
   }
- catch (  final Throwable t) {
+ catch (  Throwable t) {
     showError(t);
   }
   recheck=true;

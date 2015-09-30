@@ -23,7 +23,7 @@
     }
     return locales.toArray(new Locale[locales.size()]);
   }
- catch (  final Throwable t) {
+ catch (  Throwable t) {
     showError(t);
     return new Locale[0];
   }

@@ -10,7 +10,7 @@
     int[] footnotePositions=getPropertyValues("FootnotePositions",propertyValues);
     return doGrammarCheckingInternal(paraText,locale,paRes,footnotePositions);
   }
- catch (  final Throwable t) {
+ catch (  Throwable t) {
     showError(t);
     return paRes;
   }
