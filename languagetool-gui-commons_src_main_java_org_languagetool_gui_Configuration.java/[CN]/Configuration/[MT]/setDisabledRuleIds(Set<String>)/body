@@ -1,3 +1,4 @@
 {
   disabledRuleIds=ruleIDs;
+  enabledRuleIds.removeAll(ruleIDs);
 }
