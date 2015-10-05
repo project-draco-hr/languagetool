@@ -51,8 +51,8 @@ catch (  UnknownParameterException e) {
   options.getLanguage().getSentenceTokenizer().setSingleLineBreaksMarksParagraph(options.isSingleLineBreakMarksParagraph());
   final Main prg=new Main(options);
   if (options.getFalseFriendFile() != null) {
-    List<PatternRule> ffRules=prg.lt.loadFalseFriendRules(options.getFalseFriendFile());
-    for (    PatternRule ffRule : ffRules) {
+    List<AbstractPatternRule> ffRules=prg.lt.loadFalseFriendRules(options.getFalseFriendFile());
+    for (    AbstractPatternRule ffRule : ffRules) {
       prg.lt.addRule(ffRule);
     }
   }

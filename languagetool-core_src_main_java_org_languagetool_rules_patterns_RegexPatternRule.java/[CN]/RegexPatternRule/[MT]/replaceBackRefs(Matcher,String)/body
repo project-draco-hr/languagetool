@@ -1,0 +1,10 @@
+{
+  String replacedMsg=msg;
+  for (int i=0; i <= matcher.groupCount(); i++) {
+    String replacement=matcher.group(i);
+    if (replacement != null) {
+      replacedMsg=replacedMsg.replace("\\" + i,replacement);
+    }
+  }
+  return replacedMsg;
+}

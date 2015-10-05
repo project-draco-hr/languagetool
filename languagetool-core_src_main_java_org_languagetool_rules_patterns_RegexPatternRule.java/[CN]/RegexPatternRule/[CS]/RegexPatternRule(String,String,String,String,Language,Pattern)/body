@@ -1,0 +1,6 @@
+{
+  super(id,description,language,regex);
+  this.message=message;
+  this.pattern=regex;
+  this.suggestionsOutMsg=suggestionsOutMsg;
+}

@@ -2,7 +2,7 @@
   InputStream stream=SuggestionReplacerTest.class.getResourceAsStream("/org/languagetool/dev/wikipedia/wikipedia.txt");
   String origMarkup=IOUtils.toString(stream,"utf-8");
   JLanguageTool langTool=new JLanguageTool(new GermanyGerman(){
-    @Override protected synchronized List<PatternRule> getPatternRules(){
+    @Override protected synchronized List<AbstractPatternRule> getPatternRules(){
       return Collections.emptyList();
     }
   }

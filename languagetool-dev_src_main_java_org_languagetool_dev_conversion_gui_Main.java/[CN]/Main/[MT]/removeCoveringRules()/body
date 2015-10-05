@@ -1,5 +1,0 @@
-{
-  int index=getCurrentRuleIndex();
-  coveredByList.set(index,new String[0]);
-  displayCoveredBy();
-}

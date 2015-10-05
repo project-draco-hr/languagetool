@@ -1,5 +1,0 @@
-JLanguageTool languageTool
-JLanguageTool allRulesLanguageTool
-Language lang
-Map<String,PatternRule> complexRules
-PatternRule rule

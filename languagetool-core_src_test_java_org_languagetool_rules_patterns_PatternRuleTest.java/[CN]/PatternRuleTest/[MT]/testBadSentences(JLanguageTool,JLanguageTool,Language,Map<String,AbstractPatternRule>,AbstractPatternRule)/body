@@ -1,0 +1,60 @@
+{
+  final List<IncorrectExample> badSentences=rule.getIncorrectExamples();
+  if (badSentences.size() == 0) {
+    fail("No incorrect examples found for rule " + rule);
+  }
+  List<AbstractPatternRule> rules=allRulesLanguageTool.getPatternRulesByIdAndSubId(rule.getId(),rule.getSubId());
+  for (  IncorrectExample origBadExample : badSentences) {
+    final String origBadSentence=origBadExample.getExample().replaceAll("[\\n\\t]+","");
+    final List<String> expectedCorrections=origBadExample.getCorrections();
+    final int expectedMatchStart=origBadSentence.indexOf("<marker>");
+    final int expectedMatchEnd=origBadSentence.indexOf("</marker>") - "<marker>".length();
+    if (expectedMatchStart == -1 || expectedMatchEnd == -1) {
+      fail(lang + ": No error position markup ('<marker>...</marker>') in bad example in rule " + rule);
+    }
+    final String badSentence=cleanXML(origBadSentence);
+    assertTrue(badSentence.trim().length() > 0);
+    List<RuleMatch> matches=new ArrayList<>();
+    for (    Rule auxRule : rules) {
+      matches.addAll(getMatches(auxRule,badSentence,languageTool));
+    }
+    if (rule instanceof RegexPatternRule || rule instanceof PatternRule && !((PatternRule)rule).isWithComplexPhrase()) {
+      if (matches.size() != 1) {
+        final AnalyzedSentence analyzedSentence=languageTool.getAnalyzedSentence(badSentence);
+        final StringBuilder sb=new StringBuilder("Analyzed token readings:");
+        for (        AnalyzedTokenReadings atr : analyzedSentence.getTokens()) {
+          sb.append(" ").append(atr);
+        }
+        fail(lang + " rule " + rule.getId()+ "/"+ rule.getSubId()+ ":\n\""+ badSentence+ "\"\n"+ "Errors expected: 1\n"+ "Errors found   : "+ matches.size()+ "\n"+ "Message: "+ rule.getMessage()+ "\n"+ sb+ "\nMatches: "+ matches);
+      }
+      assertEquals(lang + ": Incorrect match position markup (start) for rule " + rule.getId()+ "/"+ rule.getSubId()+ ", sentence: "+ badSentence,expectedMatchStart,matches.get(0).getFromPos());
+      assertEquals(lang + ": Incorrect match position markup (end) for rule " + rule.getId()+ "/"+ rule.getSubId()+ ", sentence: "+ badSentence,expectedMatchEnd,matches.get(0).getToPos());
+      assertSuggestions(badSentence,lang,expectedCorrections,rule,matches);
+      if (matches.get(0).getSuggestedReplacements().size() > 0) {
+        final int fromPos=matches.get(0).getFromPos();
+        final int toPos=matches.get(0).getToPos();
+        for (        final String replacement : matches.get(0).getSuggestedReplacements()) {
+          final String fixedSentence=badSentence.substring(0,fromPos) + replacement + badSentence.substring(toPos);
+          matches=getMatches(rule,fixedSentence,languageTool);
+          if (matches.size() > 0) {
+            fail("Incorrect input:\n" + "  " + badSentence + "\nCorrected sentence:\n"+ "  "+ fixedSentence+ "\nBy Rule:\n"+ "  "+ rule+ "\nThe correction triggered an error itself:\n"+ "  "+ matches.get(0)+ "\n");
+          }
+        }
+      }
+    }
+ else {
+      matches=getMatches(rule,badSentence,languageTool);
+      if (matches.size() == 0 && !complexRules.containsKey(rule.getId() + badSentence)) {
+        complexRules.put(rule.getId() + badSentence,rule);
+      }
+      if (matches.size() != 0) {
+        complexRules.put(rule.getId() + badSentence,null);
+        assertTrue(lang + ": Did expect one error in: \"" + badSentence+ "\" (Rule: "+ rule+ "), got "+ matches.size(),matches.size() == 1);
+        assertEquals(lang + ": Incorrect match position markup (start) for rule " + rule,expectedMatchStart,matches.get(0).getFromPos());
+        assertEquals(lang + ": Incorrect match position markup (end) for rule " + rule,expectedMatchEnd,matches.get(0).getToPos());
+        assertSuggestions(badSentence,lang,expectedCorrections,rule,matches);
+        assertSuggestionsDoNotCreateErrors(badSentence,languageTool,rule,matches);
+      }
+    }
+  }
+}

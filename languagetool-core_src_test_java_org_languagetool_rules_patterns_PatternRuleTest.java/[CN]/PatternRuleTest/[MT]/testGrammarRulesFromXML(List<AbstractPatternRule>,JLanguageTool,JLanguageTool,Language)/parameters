@@ -1,0 +1,4 @@
+List<AbstractPatternRule> rules
+JLanguageTool languageTool
+JLanguageTool allRulesLanguageTool
+Language lang

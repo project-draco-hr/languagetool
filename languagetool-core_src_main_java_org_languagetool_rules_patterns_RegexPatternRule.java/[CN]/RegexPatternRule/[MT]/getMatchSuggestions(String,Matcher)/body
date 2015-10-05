@@ -1,0 +1,13 @@
+{
+  List<String> matchSuggestions=new ArrayList<>();
+  for (  Match match : getSuggestionMatches()) {
+    String errorText=sentence.substring(matcher.start(),matcher.end());
+    String regexReplace=match.getRegexReplace();
+    if (regexReplace != null) {
+      String suggestion=match.getRegexMatch().matcher(errorText).replaceFirst(regexReplace);
+      suggestion=CaseConversionHelper.convertCase(match.getCaseConversionType(),suggestion,errorText,getLanguage());
+      matchSuggestions.add(suggestion);
+    }
+  }
+  return matchSuggestions;
+}

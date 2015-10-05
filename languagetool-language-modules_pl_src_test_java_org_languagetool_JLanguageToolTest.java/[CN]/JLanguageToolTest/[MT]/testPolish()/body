@@ -1,6 +1,6 @@
 {
   final Polish noXmlRulesPolish=new Polish(){
-    @Override public List<PatternRule> getPatternRules(){
+    @Override public List<AbstractPatternRule> getPatternRules(){
       return Collections.emptyList();
     }
   }

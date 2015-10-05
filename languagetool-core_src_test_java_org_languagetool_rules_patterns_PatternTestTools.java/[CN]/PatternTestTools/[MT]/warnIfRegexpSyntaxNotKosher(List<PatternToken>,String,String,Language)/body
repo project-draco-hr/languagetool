@@ -1,4 +1,7 @@
 {
+  if (patternTokens == null) {
+    return;
+  }
   int i=0;
   for (  final PatternToken pToken : patternTokens) {
     i++;

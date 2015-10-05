@@ -1,9 +1,9 @@
 {
-  final List<PatternRule> patternRules=language.getPatternRules();
+  final List<AbstractPatternRule> patternRules=language.getPatternRules();
   final List<String> enabledRules=language.getDefaultEnabledRulesForVariant();
   final List<String> disabledRules=language.getDefaultDisabledRulesForVariant();
   if (!enabledRules.isEmpty() || !disabledRules.isEmpty()) {
-    for (    PatternRule patternRule : patternRules) {
+    for (    AbstractPatternRule patternRule : patternRules) {
       if (enabledRules.contains(patternRule.getId())) {
         patternRule.setDefaultOn();
       }

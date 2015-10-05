@@ -1,0 +1,8 @@
+{
+  if (str.contains("|") || setAllParenthesis) {
+    sb.append("(").append(str).append(")");
+  }
+ else {
+    sb.append(str);
+  }
+}

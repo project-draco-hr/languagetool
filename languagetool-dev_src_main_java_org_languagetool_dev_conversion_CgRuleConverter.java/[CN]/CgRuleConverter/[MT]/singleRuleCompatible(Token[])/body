@@ -1,6 +1,0 @@
-{
-  for (  Token token : tokens) {
-    if (!isOrCompatible(token))     return false;
-  }
-  return true;
-}

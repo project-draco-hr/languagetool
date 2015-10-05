@@ -1,3 +1,0 @@
-{
-  return (this.postags.length == 0) && (this.baseforms.length == 0) && (this.surfaceforms.length == 0)&& (this.compositeTags.length == 0);
-}

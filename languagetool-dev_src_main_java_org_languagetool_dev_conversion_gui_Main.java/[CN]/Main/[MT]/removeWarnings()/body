@@ -1,5 +1,0 @@
-{
-  int index=getCurrentRuleIndex();
-  warnings.set(index,new String[0]);
-  displayWarnings();
-}

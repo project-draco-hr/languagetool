@@ -1,4 +1,0 @@
-{
-  String[] ft={"default"};
-  return ft;
-}

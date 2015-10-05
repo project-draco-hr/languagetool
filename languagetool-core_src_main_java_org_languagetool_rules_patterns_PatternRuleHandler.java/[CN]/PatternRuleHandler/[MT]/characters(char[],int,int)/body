@@ -33,4 +33,7 @@
  else   if (inUrlForRuleGroup) {
     urlForRuleGroup.append(s);
   }
+ else   if (inRegex) {
+    regex.append(s);
+  }
 }

@@ -1,0 +1,4 @@
+{
+  this(id,description,language,patternTokens,null,getUnified);
+  this.message=message;
+}

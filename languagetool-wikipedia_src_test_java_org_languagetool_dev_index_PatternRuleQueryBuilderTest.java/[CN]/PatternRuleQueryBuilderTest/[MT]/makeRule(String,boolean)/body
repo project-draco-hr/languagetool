@@ -12,7 +12,7 @@
   sb.append("</pattern> </rule> </category> </rules>");
   final InputStream input=new ByteArrayInputStream(sb.toString().getBytes());
   final PatternRuleLoader ruleLoader=new PatternRuleLoader();
-  final List<PatternRule> rules=ruleLoader.getRules(input,"test.xml");
+  final List<AbstractPatternRule> rules=ruleLoader.getRules(input,"test.xml");
   assertEquals(1,rules.size());
   return rules.get(0);
 }

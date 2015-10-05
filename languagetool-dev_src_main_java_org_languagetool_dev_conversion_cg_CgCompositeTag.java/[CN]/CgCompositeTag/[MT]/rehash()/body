@@ -1,8 +1,0 @@
-{
-  int retval=0;
-  for (  CgTag t : this.tags) {
-    retval=CgStrings.hash_sdbm_uint32_t(t.hash,retval);
-  }
-  this.hash=retval;
-  return retval;
-}

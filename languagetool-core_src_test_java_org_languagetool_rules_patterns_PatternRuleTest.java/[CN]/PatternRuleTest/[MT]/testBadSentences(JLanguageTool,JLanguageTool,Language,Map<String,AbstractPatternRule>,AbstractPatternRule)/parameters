@@ -1,0 +1,5 @@
+JLanguageTool languageTool
+JLanguageTool allRulesLanguageTool
+Language lang
+Map<String,AbstractPatternRule> complexRules
+AbstractPatternRule rule

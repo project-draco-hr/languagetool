@@ -1,4 +1,0 @@
-String badSentence
-JLanguageTool languageTool
-PatternRule rule
-List<RuleMatch> matches

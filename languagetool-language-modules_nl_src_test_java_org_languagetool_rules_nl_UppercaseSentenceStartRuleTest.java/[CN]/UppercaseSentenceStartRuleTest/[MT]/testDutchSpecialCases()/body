@@ -1,6 +1,6 @@
 {
   final JLanguageTool lt=new JLanguageTool(new Dutch(){
-    @Override protected synchronized List<PatternRule> getPatternRules(){
+    @Override protected synchronized List<AbstractPatternRule> getPatternRules(){
       return Collections.emptyList();
     }
   }

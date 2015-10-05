@@ -1,5 +1,0 @@
-{
-  this.language=language;
-  tool=new JLanguageTool(language);
-  setupDictionaryFiles();
-}

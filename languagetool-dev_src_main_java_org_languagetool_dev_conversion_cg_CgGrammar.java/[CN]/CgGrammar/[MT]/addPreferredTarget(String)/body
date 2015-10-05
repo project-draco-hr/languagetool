@@ -1,4 +1,0 @@
-{
-  CgTag tag=allocateTag(s,false);
-  preferred_targets.add(tag.hash);
-}

@@ -1,3 +1,0 @@
-{
-  return (this.single_tags.isEmpty() && this.tags.isEmpty() && this.sets.isEmpty());
-}

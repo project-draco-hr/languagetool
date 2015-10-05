@@ -1,5 +1,0 @@
-String sentence
-Language lang
-List<String> expectedCorrections
-PatternRule rule
-List<RuleMatch> matches

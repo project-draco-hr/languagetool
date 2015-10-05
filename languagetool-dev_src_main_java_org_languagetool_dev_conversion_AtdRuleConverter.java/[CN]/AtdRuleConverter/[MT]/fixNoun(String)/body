@@ -1,7 +1,0 @@
-{
-  Matcher m=nounInPattern.matcher(postag);
-  if (m.find()) {
-    postag=postag.replaceFirst("NN(?!P|S|\\.)","NN|NN:UN?");
-  }
-  return postag;
-}

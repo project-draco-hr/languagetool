@@ -1,9 +1,0 @@
-{
-  int cn=name.hashCode();
-  if (this.templates.containsKey(cn)) {
-    System.err.println("Error: attempted to redefine template " + name + " on line "+ this.lines);
-    System.exit(1);
-  }
-  this.templates.put(cn,test);
-  this.template_list.add(test);
-}

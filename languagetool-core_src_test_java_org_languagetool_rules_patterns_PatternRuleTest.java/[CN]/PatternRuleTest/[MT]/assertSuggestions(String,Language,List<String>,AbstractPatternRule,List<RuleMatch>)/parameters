@@ -1,0 +1,5 @@
+String sentence
+Language lang
+List<String> expectedCorrections
+AbstractPatternRule rule
+List<RuleMatch> matches

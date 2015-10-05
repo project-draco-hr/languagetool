@@ -7,11 +7,11 @@
   }
   final MultiThreadedJLanguageTool allRulesLanguageTool=new MultiThreadedJLanguageTool(lang);
   validateRuleIds(lang,allRulesLanguageTool);
-  final List<PatternRule> rules=new ArrayList<>();
+  final List<AbstractPatternRule> rules=new ArrayList<>();
   for (  String patternRuleFileName : lang.getRuleFileNames()) {
     rules.addAll(languageTool.loadPatternRules(patternRuleFileName));
   }
-  for (  PatternRule rule : rules) {
+  for (  AbstractPatternRule rule : rules) {
     PatternTestTools.warnIfRegexpSyntaxNotKosher(rule.getPatternTokens(),rule.getId(),rule.getSubId(),lang);
     List<DisambiguationPatternRule> antiPatterns=rule.getAntiPatterns();
     for (    DisambiguationPatternRule antiPattern : antiPatterns) {

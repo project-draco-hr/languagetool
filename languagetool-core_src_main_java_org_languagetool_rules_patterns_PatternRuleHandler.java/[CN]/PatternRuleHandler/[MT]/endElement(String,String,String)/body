@@ -3,6 +3,9 @@ switch (qName) {
 case "category":
     categoryIssueType=null;
   break;
+case "regexp":
+inRegex=false;
+break;
 case RULE:
 suggestionMatchesOutMsg=addLegacyMatches(suggestionMatchesOutMsg,suggestionsOutMsg.toString(),false);
 phraseElementInit();

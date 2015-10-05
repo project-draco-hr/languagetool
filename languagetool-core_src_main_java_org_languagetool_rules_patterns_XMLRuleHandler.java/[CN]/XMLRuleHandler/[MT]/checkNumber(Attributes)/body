@@ -2,7 +2,7 @@
   if (StringTools.isEmpty(attrs.getValue("no"))) {
     throw new SAXException("References cannot be empty: " + "\n Line: " + pLocator.getLineNumber() + ", column: "+ pLocator.getColumnNumber()+ ".");
   }
- else   if (Integer.parseInt(attrs.getValue("no")) < 1) {
+ else   if (Integer.parseInt(attrs.getValue("no")) < 1 && regex.length() == 0) {
     throw new SAXException("References must be larger than 0: " + attrs.getValue("no") + "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
   }
 }

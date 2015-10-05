@@ -1,0 +1,17 @@
+{
+  Pattern suggestionPattern=Pattern.compile("<suggestion>(.*?)</suggestion>");
+  Matcher sMatcher=suggestionPattern.matcher(msg);
+  int startPos=0;
+  List<String> result=new ArrayList<>();
+  while (sMatcher.find(startPos)) {
+    String suggestion=sMatcher.group(1);
+    if (matcher.start() == 0) {
+      result.add(replaceBackRefs(matcher,StringTools.uppercaseFirstChar(suggestion)));
+    }
+ else {
+      result.add(replaceBackRefs(matcher,suggestion));
+    }
+    startPos=sMatcher.end();
+  }
+  return result;
+}

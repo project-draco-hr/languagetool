@@ -1,0 +1,4 @@
+String badSentence
+JLanguageTool languageTool
+AbstractPatternRule rule
+List<RuleMatch> matches

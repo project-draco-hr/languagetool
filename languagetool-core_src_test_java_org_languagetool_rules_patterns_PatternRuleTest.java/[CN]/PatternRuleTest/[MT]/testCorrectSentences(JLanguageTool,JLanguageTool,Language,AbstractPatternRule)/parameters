@@ -1,0 +1,4 @@
+JLanguageTool languageTool
+JLanguageTool allRulesLanguageTool
+Language lang
+AbstractPatternRule rule

@@ -1,8 +1,0 @@
-{
-  if (to == 0) {
-    Random gen=new Random();
-    to=gen.nextInt();
-  }
-  this.name="_G_" + line + "_"+ to;
-  this.hash=this.name.hashCode();
-}

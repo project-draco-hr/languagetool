@@ -1,0 +1,26 @@
+{
+  String sentence=sentenceObj.getText();
+  Matcher matcher=pattern.matcher(sentence);
+  int startPos=0;
+  List<RuleMatch> matches=new ArrayList<>();
+  while (matcher.find(startPos)) {
+    String msg=replaceBackRefs(matcher,message);
+    boolean sentenceStart=matcher.start(0) == 0;
+    RuleMatch ruleMatch=new RuleMatch(this,matcher.start(),matcher.end(),msg,null,sentenceStart,null);
+    List<String> matchSuggestions=getMatchSuggestions(sentence,matcher);
+    List<String> allSuggestions=new ArrayList<>();
+    if (matchSuggestions.size() > 0) {
+      allSuggestions.addAll(matchSuggestions);
+    }
+ else {
+      List<String> suggestions=extractSuggestions(matcher,msg);
+      allSuggestions.addAll(suggestions);
+      List<String> extendedSuggestions=extractSuggestions(matcher,getSuggestionsOutMsg());
+      allSuggestions.addAll(extendedSuggestions);
+    }
+    ruleMatch.setSuggestedReplacements(allSuggestions);
+    matches.add(ruleMatch);
+    startPos=matcher.end();
+  }
+  return matches.toArray(new RuleMatch[matches.size()]);
+}

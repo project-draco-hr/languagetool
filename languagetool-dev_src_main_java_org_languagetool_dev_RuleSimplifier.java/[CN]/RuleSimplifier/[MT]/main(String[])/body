@@ -1,0 +1,4 @@
+{
+  RuleSimplifier prg=new RuleSimplifier();
+  prg.run(Languages.getLanguageForShortName("de"));
+}

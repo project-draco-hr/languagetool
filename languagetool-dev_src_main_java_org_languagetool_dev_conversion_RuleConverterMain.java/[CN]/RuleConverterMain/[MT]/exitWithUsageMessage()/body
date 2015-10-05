@@ -1,4 +1,0 @@
-{
-  System.out.println("Usage: java org.languagetool.tools.RuleConverterMain " + "[-h|--help] [-g|--generalFiletype] [-s|--specificFiletype] [-i|--inputFile] [-a|--disambigFile] " + "[-d|--discardFile] [-o|--outputFile]");
-  System.exit(1);
-}

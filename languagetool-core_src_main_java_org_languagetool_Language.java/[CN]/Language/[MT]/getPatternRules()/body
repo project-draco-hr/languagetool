@@ -1,6 +1,6 @@
 {
   if (patternRules == null) {
-    List<PatternRule> rules=new ArrayList<>();
+    List<AbstractPatternRule> rules=new ArrayList<>();
     PatternRuleLoader ruleLoader=new PatternRuleLoader();
     for (    String fileName : getRuleFileNames()) {
       InputStream is=null;

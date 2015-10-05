@@ -1,0 +1,6 @@
+String id
+String description
+Language language
+List<PatternToken> patternTokens
+Pattern regex
+boolean getUnified

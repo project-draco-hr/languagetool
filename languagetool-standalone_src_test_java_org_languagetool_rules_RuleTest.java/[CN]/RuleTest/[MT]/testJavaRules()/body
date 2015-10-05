@@ -11,7 +11,7 @@
     final JLanguageTool lt=new JLanguageTool(language);
     final List<Rule> allRules=lt.getAllRules();
     for (    Rule rule : allRules) {
-      if (!(rule instanceof PatternRule)) {
+      if (!(rule instanceof AbstractPatternRule)) {
         assertIdUniqueness(ids,ruleClasses,language,rule);
         assertIdValidity(language,rule);
         assertTrue(rule.supportsLanguage(language));

@@ -1,0 +1,6 @@
+String id
+String description
+String message
+String suggestionsOutMsg
+Language language
+Pattern regex

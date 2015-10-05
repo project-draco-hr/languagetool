@@ -1,0 +1,7 @@
+String origBadSentence
+List<String> suggestedCorrection
+int expectedMatchStart
+int expectedMatchEnd
+AbstractPatternRule rule
+Language lang
+JLanguageTool languageTool

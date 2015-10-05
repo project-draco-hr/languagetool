@@ -1,4 +1,0 @@
-{
-  List<RuleMatch> matches=tool.check(str);
-  return (matches.size() > 0);
-}

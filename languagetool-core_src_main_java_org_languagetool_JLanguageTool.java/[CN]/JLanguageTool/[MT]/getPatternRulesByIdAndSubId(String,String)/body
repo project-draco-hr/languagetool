@@ -1,10 +1,10 @@
 {
   final List<Rule> rules=getAllRules();
-  final List<PatternRule> rulesById=new ArrayList<>();
+  final List<AbstractPatternRule> rulesById=new ArrayList<>();
   for (  final Rule rule : rules) {
-    if (rule instanceof PatternRule) {
-      if (rule.getId().equals(Id) && ((PatternRule)rule).getSubId().equals(subId)) {
-        rulesById.add((PatternRule)rule);
+    if (rule instanceof AbstractPatternRule) {
+      if (rule.getId().equals(Id) && ((AbstractPatternRule)rule).getSubId().equals(subId)) {
+        rulesById.add((AbstractPatternRule)rule);
       }
     }
   }

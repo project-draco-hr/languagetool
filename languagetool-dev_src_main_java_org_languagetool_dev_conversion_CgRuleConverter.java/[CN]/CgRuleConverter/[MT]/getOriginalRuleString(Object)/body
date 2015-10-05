@@ -1,4 +1,0 @@
-{
-  CgRule rule=(CgRule)ruleObject;
-  return lines[rule.line];
-}

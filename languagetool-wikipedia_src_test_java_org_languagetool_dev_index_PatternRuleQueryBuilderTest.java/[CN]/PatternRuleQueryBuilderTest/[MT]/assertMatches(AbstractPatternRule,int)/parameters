@@ -1,0 +1,2 @@
+AbstractPatternRule patternRule
+int expectedMatches

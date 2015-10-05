@@ -13,6 +13,11 @@ case "rules":
 final String languageStr=attrs.getValue("lang");
 language=Languages.getLanguageForShortName(languageStr);
 break;
+case "regexp":
+inRegex=true;
+regex=new StringBuilder();
+regexCaseSensitive=attrs.getValue(CASE_SENSITIVE) != null && YES.equals(attrs.getValue(CASE_SENSITIVE));
+break;
 case RULE:
 inRule=true;
 shortMessage=new StringBuilder();

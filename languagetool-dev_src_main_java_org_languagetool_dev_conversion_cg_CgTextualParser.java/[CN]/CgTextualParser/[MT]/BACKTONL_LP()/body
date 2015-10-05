@@ -1,6 +1,0 @@
-{
-  while (lpindex < inArray.length && !ISNL(lpindex) && (inArray[lpindex] != ';' || ISESC(lpindex))) {
-    lpindex--;
-  }
-  lpindex++;
-}

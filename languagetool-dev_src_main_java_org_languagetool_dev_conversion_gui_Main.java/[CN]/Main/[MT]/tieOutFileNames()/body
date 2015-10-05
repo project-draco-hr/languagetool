@@ -1,7 +1,0 @@
-{
-  filename=getCurrentFilename();
-  outfilename=filename + ".grammar.xml";
-  disambigOutFile=filename + ".disambig.xml";
-  outFilePane.setText(outfilename);
-  disambigOutFilePane.setText(disambigOutFile);
-}
