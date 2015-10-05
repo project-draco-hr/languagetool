@@ -1,6 +1,6 @@
 {
-  if (rule instanceof PatternRule) {
-    return rule.getId() + "[" + ((PatternRule)rule).getSubId()+ "]";
+  if (rule instanceof AbstractPatternRule) {
+    return ((AbstractPatternRule)rule).getFullId();
   }
  else {
     return rule.getId();

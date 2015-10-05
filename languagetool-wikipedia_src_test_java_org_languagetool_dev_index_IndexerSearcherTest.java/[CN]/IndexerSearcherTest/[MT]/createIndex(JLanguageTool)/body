@@ -10,7 +10,7 @@
         final FieldType idType=new FieldType();
         idType.setStored(true);
         idType.setTokenized(false);
-        doc.add(new Field("ruleId",getFullId(patternRule),idType));
+        doc.add(new Field("ruleId",patternRule.getFullId(),idType));
         for (        IncorrectExample incorrectExample : incorrectExamples) {
           final String example=incorrectExample.getExample().replaceAll("</?marker>","");
           final FieldType fieldType=new FieldType();

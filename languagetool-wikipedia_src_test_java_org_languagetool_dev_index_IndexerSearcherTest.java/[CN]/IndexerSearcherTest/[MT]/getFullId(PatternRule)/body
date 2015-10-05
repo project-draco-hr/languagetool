@@ -1,3 +1,0 @@
-{
-  return patternRule.getId() + "[" + patternRule.getSubId()+ "]";
-}

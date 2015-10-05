@@ -4,11 +4,11 @@
   for (  String goodSentence : goodSentences) {
     goodSentence=goodSentence.replaceAll("[\\n\\t]+","");
     goodSentence=cleanXML(goodSentence);
-    assertTrue(lang + ": Empty correct example in rule " + rule.getId(),goodSentence.trim().length() > 0);
+    assertTrue(lang + ": Empty correct example in rule " + rule.getFullId(),goodSentence.trim().length() > 0);
     boolean isMatched=false;
     for (    Rule auxRule : rules) {
       isMatched=isMatched || match(auxRule,goodSentence,languageTool);
     }
-    assertFalse(lang + ": Did not expect error in:\n" + "  "+ goodSentence+ "\n"+ "Matching Rule: "+ rule.getId()+ "/"+ rule.getSubId(),isMatched);
+    assertFalse(lang + ": Did not expect error in:\n" + "  "+ goodSentence+ "\n"+ "Matching Rule: "+ rule.getFullId(),isMatched);
   }
 }

@@ -15,8 +15,8 @@
     String message=ruleMatch.getMessage().replace("<suggestion>","'").replace("</suggestion>","'");
     errorCount++;
     System.out.print(errorCount + ". " + message);
-    if (rule instanceof PatternRule) {
-      System.out.println(" (" + rule.getId() + "["+ ((PatternRule)rule).getSubId()+ "])");
+    if (rule instanceof AbstractPatternRule) {
+      System.out.println(" (" + ((AbstractPatternRule)rule).getFullId() + ")");
     }
  else {
       System.out.println(" (" + rule.getId() + ")");

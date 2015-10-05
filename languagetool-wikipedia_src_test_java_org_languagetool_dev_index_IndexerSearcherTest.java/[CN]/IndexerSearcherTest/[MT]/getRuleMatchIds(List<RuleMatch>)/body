@@ -3,7 +3,7 @@
   for (  RuleMatch ruleMatch : ruleMatches) {
     if (ruleMatch.getRule() instanceof PatternRule) {
       final PatternRule patternRule=(PatternRule)ruleMatch.getRule();
-      ids.add(getFullId(patternRule));
+      ids.add(patternRule.getFullId());
     }
   }
   return ids;

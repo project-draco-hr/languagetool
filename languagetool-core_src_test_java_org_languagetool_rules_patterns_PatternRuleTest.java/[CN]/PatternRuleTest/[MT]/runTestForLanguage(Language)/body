@@ -26,7 +26,7 @@
         }
       }
       if (!correctionExists) {
-        fail("Rule " + rule + " in language "+ lang+ " needs at least one <example> with a 'correction' attribute"+ " or one <example> of type='correct'.");
+        fail("Rule " + rule.getFullId() + " in language "+ lang+ " needs at least one <example> with a 'correction' attribute"+ " or one <example> of type='correct'.");
       }
     }
   }

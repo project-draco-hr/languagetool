@@ -20,7 +20,7 @@
         for (        MatchingSentence matchingSentence : matchingSentences) {
           final List<RuleMatch> ruleMatches=matchingSentence.getRuleMatches();
           final List<String> ruleMatchIds=getRuleMatchIds(ruleMatches);
-          if (ruleMatchIds.contains(getFullId(patternRule))) {
+          if (ruleMatchIds.contains(patternRule.getFullId())) {
             foundExpectedMatch=true;
             break;
           }
@@ -39,11 +39,11 @@
         }
       }
  catch (      UnsupportedPatternRuleException e) {
-        System.out.println("UnsupportedPatternRuleException searching for rule " + getFullId(patternRule) + ": "+ e.getMessage());
+        System.out.println("UnsupportedPatternRuleException searching for rule " + patternRule.getFullId() + ": "+ e.getMessage());
         ruleProblems++;
       }
 catch (      Exception e) {
-        System.out.println("Exception searching for rule " + getFullId(patternRule) + ": "+ e.getMessage());
+        System.out.println("Exception searching for rule " + patternRule.getFullId() + ": "+ e.getMessage());
         e.printStackTrace(System.out);
         exceptionCount++;
       }
