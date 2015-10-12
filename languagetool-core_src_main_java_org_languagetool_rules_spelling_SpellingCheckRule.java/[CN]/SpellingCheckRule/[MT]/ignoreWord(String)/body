@@ -2,8 +2,8 @@
   if (!considerIgnoreWords) {
     return false;
   }
-  if (!wordsWithDotsPresent) {
-    word=word.endsWith(".") ? word.substring(0,word.length() - 1) : word;
+  if (word.endsWith(".") && !wordsToBeIgnored.contains(word)) {
+    return isIgnoredNoCase(word.substring(0,word.length() - 1));
   }
-  return (wordsToBeIgnored.contains(word) || (convertsCase && wordsToBeIgnored.contains(word.toLowerCase(language.getLocale()))));
+  return isIgnoredNoCase(word);
 }

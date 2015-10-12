@@ -10,9 +10,6 @@
       }
       failOnSpace(ignoreFile,line);
       addIgnoreWords(line,wordsToBeIgnored);
-      if (line.endsWith(".")) {
-        wordsWithDotsPresent=true;
-      }
     }
   }
  }

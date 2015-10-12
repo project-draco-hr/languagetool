@@ -1,0 +1,3 @@
+{
+  return wordsToBeIgnored.contains(word) || (convertsCase && wordsToBeIgnored.contains(word.toLowerCase(language.getLocale())));
+}
