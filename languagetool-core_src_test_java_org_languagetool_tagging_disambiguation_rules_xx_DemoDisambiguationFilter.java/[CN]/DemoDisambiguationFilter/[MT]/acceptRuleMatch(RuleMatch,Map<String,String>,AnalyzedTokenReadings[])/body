@@ -1,0 +1,6 @@
+{
+  if ("X9".equals(patternTokens[0].getToken())) {
+    return match;
+  }
+  return null;
+}
