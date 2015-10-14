@@ -16,6 +16,7 @@ break;
 case "regexp":
 inRegex=true;
 regex=new StringBuilder();
+regexMode="exact".equals(attrs.getValue("type")) ? RegexpMode.EXACT : RegexpMode.SMART;
 regexCaseSensitive=attrs.getValue(CASE_SENSITIVE) != null && YES.equals(attrs.getValue(CASE_SENSITIVE));
 break;
 case RULE:

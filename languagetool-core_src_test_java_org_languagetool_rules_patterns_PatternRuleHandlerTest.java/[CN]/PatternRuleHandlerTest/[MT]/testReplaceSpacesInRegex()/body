@@ -1,0 +1,8 @@
+{
+  PatternRuleHandler handler=new PatternRuleHandler();
+  String s="(?:\\s+)";
+  assertThat(handler.replaceSpacesInRegex("foo bar"),is("foo" + s + "bar"));
+  assertThat(handler.replaceSpacesInRegex("foo bar x"),is("foo" + s + "bar"+ s+ "x"));
+  assertThat(handler.replaceSpacesInRegex("foo  bar"),is("foo" + s + s+ "bar"));
+  assertThat(handler.replaceSpacesInRegex("fo[xy ] bar"),is("fo[xy ]" + s + "bar"));
+}
