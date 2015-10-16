@@ -6,14 +6,15 @@
   while (matcher.find(startPos)) {
     String msg=replaceBackRefs(matcher,message);
     boolean sentenceStart=matcher.start(0) == 0;
-    RuleMatch ruleMatch=new RuleMatch(this,matcher.start(),matcher.end(),msg,null,sentenceStart,null);
+    List<String> suggestions=extractSuggestions(matcher,msg);
     List<String> matchSuggestions=getMatchSuggestions(sentence,matcher);
+    msg=replaceMatchElements(msg,matchSuggestions);
+    RuleMatch ruleMatch=new RuleMatch(this,matcher.start(),matcher.end(),msg,null,sentenceStart,null);
     List<String> allSuggestions=new ArrayList<>();
     if (matchSuggestions.size() > 0) {
       allSuggestions.addAll(matchSuggestions);
     }
  else {
-      List<String> suggestions=extractSuggestions(matcher,msg);
       allSuggestions.addAll(suggestions);
       List<String> extendedSuggestions=extractSuggestions(matcher,getSuggestionsOutMsg());
       allSuggestions.addAll(extendedSuggestions);

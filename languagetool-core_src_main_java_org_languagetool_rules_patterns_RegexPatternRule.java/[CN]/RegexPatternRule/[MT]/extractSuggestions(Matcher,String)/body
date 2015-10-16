@@ -1,5 +1,4 @@
 {
-  Pattern suggestionPattern=Pattern.compile("<suggestion>(.*?)</suggestion>");
   Matcher sMatcher=suggestionPattern.matcher(msg);
   int startPos=0;
   List<String> result=new ArrayList<>();
