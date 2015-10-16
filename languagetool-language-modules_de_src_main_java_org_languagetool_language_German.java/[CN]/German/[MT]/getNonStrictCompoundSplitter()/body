@@ -1,17 +1,2 @@
 {
-  if (compoundTokenizer == null) {
-    try {
-      final GermanCompoundTokenizer tokenizer=new GermanCompoundTokenizer(false);
-      compoundTokenizer=new CompoundWordTokenizer(){
-        @Override public List<String> tokenize(        String word){
-          return new ArrayList<>(tokenizer.tokenize(word));
-        }
-      }
-;
-    }
- catch (    IOException e) {
-      throw new RuntimeException("Could not set up German compound splitter",e);
-    }
-  }
-  return compoundTokenizer;
 }

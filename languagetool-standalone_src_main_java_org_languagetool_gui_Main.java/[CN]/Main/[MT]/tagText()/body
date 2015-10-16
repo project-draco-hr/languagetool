@@ -1,23 +1,2 @@
 {
-  if (StringTools.isEmpty(textArea.getText().trim())) {
-    textArea.setText(messages.getString("enterText2"));
-    return;
-  }
-  setWaitCursor();
-  new Thread(){
-    @Override public void run(){
-      try {
-        tagTextAndDisplayResults();
-      }
-  finally {
-        SwingUtilities.invokeLater(new Runnable(){
-          @Override public void run(){
-            unsetWaitCursor();
-          }
-        }
-);
-      }
-    }
-  }
-.start();
 }
