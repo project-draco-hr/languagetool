@@ -6,5 +6,6 @@
       replacedMsg=replacedMsg.replace("\\" + i,replacement);
     }
   }
+  replacedMsg=replacedMsg.replaceAll("\\\\[0-9]","");
   return replacedMsg;
 }
