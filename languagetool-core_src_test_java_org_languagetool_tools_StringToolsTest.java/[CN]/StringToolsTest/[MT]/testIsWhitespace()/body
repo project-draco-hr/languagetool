@@ -6,4 +6,5 @@
   assertEquals(false,StringTools.isWhitespace("abc"));
   assertEquals(false,StringTools.isWhitespace("\\u02"));
   assertEquals(false,StringTools.isWhitespace("\u0001"));
+  assertEquals(true,StringTools.isWhitespace("\u202F"));
 }

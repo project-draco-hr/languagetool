@@ -10,7 +10,7 @@
     if ("\u200B".equals(str)) {
       return true;
     }
- else     if ("\u00A0".equals(str)) {
+ else     if ("\u00A0".equals(str) || "\u202F".equals(str)) {
       return true;
     }
     return Character.isWhitespace(trimStr.charAt(0));
