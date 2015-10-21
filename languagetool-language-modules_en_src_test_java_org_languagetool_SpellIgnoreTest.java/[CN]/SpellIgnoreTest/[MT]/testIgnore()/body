@@ -1,0 +1,12 @@
+{
+  String text="This is a text with specialword and myotherword";
+  JLanguageTool lt=new JLanguageTool(new AmericanEnglish());
+  assertThat(lt.check(text).size(),is(2));
+  for (  Rule rule : lt.getAllActiveRules()) {
+    if (rule instanceof SpellingCheckRule) {
+      List<String> wordsToIgnore=Arrays.asList("specialword","myotherword");
+      ((SpellingCheckRule)rule).addIgnoreTokens(wordsToIgnore);
+    }
+  }
+  assertThat(lt.check(text).size(),is(0));
+}
