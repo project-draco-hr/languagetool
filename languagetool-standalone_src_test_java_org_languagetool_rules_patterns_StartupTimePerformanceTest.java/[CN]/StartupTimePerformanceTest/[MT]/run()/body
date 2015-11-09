@@ -1,0 +1,6 @@
+{
+  List<Language> languages=Languages.get();
+  for (  Language language : languages) {
+    run(language);
+  }
+}

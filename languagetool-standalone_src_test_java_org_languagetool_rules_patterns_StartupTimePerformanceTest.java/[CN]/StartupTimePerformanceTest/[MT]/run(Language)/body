@@ -1,0 +1,17 @@
+{
+  long totalTime=0;
+  for (int i=0; i < RUNS; i++) {
+    long startTime=System.currentTimeMillis();
+    MultiThreadedJLanguageTool langTool=new MultiThreadedJLanguageTool(language);
+    List<RuleMatch> matches=langTool.check("");
+    if (matches.size() > 0) {
+      throw new RuntimeException("Got matches on empty input for " + language + ": "+ matches);
+    }
+    long runTime=System.currentTimeMillis() - startTime;
+    langTool.shutdown();
+    if (i >= SKIP) {
+      totalTime+=runTime;
+    }
+  }
+  System.out.println(language.getShortNameWithCountryAndVariant() + ": avg. Time: " + (float)totalTime / RUNS + "ms");
+}

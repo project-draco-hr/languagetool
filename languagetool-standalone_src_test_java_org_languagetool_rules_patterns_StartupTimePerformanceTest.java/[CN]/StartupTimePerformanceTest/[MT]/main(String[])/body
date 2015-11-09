@@ -1,0 +1,4 @@
+{
+  StartupTimePerformanceTest test=new StartupTimePerformanceTest();
+  test.run();
+}
