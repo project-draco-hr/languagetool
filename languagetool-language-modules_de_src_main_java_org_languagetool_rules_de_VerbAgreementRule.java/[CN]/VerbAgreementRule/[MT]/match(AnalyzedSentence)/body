@@ -65,7 +65,7 @@ ruleMatches.add(ruleMatchWrongVerb(tokens[posVer1Sin]));
  else if (posIch > 0 && !isNear(posPossibleVer1Sin,posIch) && (tokens[posIch].getToken().equals("ich") || tokens[posIch].getStartPos() == 0) && !isQuotationMark(tokens[posIch - 1])) {
 final int plus1=((posIch + 1) == tokens.length) ? 0 : +1;
 if (!verbDoesMatchPersonAndNumber(tokens[posIch - 1],tokens[posIch + plus1],"1","SIN")) {
-if (!nextButOneIsModal(tokens,posIch)) {
+if (!nextButOneIsModal(tokens,posIch) && !"??u??erst".equals(finiteVerb.getToken())) {
 ruleMatches.add(ruleMatchWrongVerbSubject(tokens[posIch],finiteVerb,"1:SIN"));
 }
 }

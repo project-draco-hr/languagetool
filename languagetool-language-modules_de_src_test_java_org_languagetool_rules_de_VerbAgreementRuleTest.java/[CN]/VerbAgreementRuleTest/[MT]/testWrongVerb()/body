@@ -1,4 +1,7 @@
 {
+  assertGood("Wobei ich ??u??erst vorsichtig bin.");
+  assertGood("Es ist klar, dass ich ??u??erst vorsichtig mit den Informationen umgehe");
+  assertGood("Es ist klar, dass ich ??u??erst vorsichtig bin.");
   assertGood("Wobei er ??u??erst selten dar??ber spricht.");
   assertGood("Wobei er ??u??erst selten ??ber seine erste Frau spricht.");
   assertGood("Das Wort ???schreibst??? ist sch??n.");
