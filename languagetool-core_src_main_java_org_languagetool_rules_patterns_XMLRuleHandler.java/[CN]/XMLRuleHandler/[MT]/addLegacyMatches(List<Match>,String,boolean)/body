@@ -1,6 +1,6 @@
 {
   if (existingSugMatches == null || existingSugMatches.isEmpty()) {
-    return null;
+    return new ArrayList<>();
   }
   final List<Match> sugMatch=new ArrayList<>();
   int pos=0;

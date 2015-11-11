@@ -1,6 +1,5 @@
 {
   PatternRule rule=null;
-  phraseElementInit();
   if (phrasePatternTokens.isEmpty()) {
     rule=new PatternRule(id,language,patternTokens,name,"",shortMessage.toString());
     prepareRule(rule);

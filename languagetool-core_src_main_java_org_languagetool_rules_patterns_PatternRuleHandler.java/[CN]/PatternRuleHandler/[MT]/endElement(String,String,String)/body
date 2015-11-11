@@ -8,7 +8,6 @@ inRegex=false;
 break;
 case RULE:
 suggestionMatchesOutMsg=addLegacyMatches(suggestionMatchesOutMsg,suggestionsOutMsg.toString(),false);
-phraseElementInit();
 if (relaxedMode && id == null) {
 id="";
 }

@@ -2,14 +2,12 @@
 switch (qName) {
 case RULE:
     trgRule.setMessage(message.toString());
-  if (suggestionMatches != null) {
-    for (    final Match m : suggestionMatches) {
-      trgRule.addSuggestionMatch(m);
-    }
-    if (phrasePatternTokens.size() <= 1) {
-      suggestionMatches.clear();
-    }
+  for (  final Match m : suggestionMatches) {
+    trgRule.addSuggestionMatch(m);
   }
+if (phrasePatternTokens.size() <= 1) {
+  suggestionMatches.clear();
+}
 final BitextPatternRule bRule=new BitextPatternRule(srcRule,trgRule);
 bRule.setCorrectBitextExamples(correctExamples);
 bRule.setIncorrectBitextExamples(incorrectExamples);

@@ -1,5 +1,2 @@
 {
-  patternTokens=new ArrayList<>();
-  equivalenceFeatures=new HashMap<>();
-  uTypeList=new ArrayList<>();
 }

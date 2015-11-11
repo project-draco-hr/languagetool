@@ -1,5 +1,0 @@
-{
-  if (phrasePatternTokens == null) {
-    phrasePatternTokens=new ArrayList<>();
-  }
-}

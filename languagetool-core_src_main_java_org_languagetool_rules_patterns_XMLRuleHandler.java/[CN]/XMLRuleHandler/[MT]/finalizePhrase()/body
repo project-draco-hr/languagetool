@@ -2,7 +2,6 @@
   if (phraseMap == null) {
     phraseMap=new HashMap<>();
   }
-  phraseElementInit();
   for (  PatternToken patternToken : patternTokens) {
     patternToken.setInsideMarker(inMarker);
   }
@@ -14,7 +13,7 @@
       ph.addAll(new ArrayList<>(patternTokens));
     }
   }
-  phraseMap.put(phraseId,new ArrayList<List<PatternToken>>(phrasePatternTokens));
+  phraseMap.put(phraseId,new ArrayList<>(phrasePatternTokens));
   patternTokens.clear();
   phrasePatternTokens.clear();
 }

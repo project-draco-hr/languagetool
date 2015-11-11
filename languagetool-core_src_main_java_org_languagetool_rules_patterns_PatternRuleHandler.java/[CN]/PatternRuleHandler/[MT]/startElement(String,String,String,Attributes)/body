@@ -49,12 +49,8 @@ defaultOn=ON.equals(attrs.getValue(DEFAULT));
 }
 correctExamples=new ArrayList<>();
 incorrectExamples=new ArrayList<>();
-if (suggestionMatches != null) {
 suggestionMatches.clear();
-}
-if (suggestionMatchesOutMsg != null) {
 suggestionMatchesOutMsg.clear();
-}
 if (attrs.getValue(TYPE) != null) {
 ruleIssueType=attrs.getValue(TYPE);
 }
@@ -197,7 +193,6 @@ case PHRASES:
 inPhrases=true;
 break;
 case "includephrases":
-phraseElementInit();
 break;
 case "phrase":
 if (inPhrases) {
