@@ -17,6 +17,9 @@
       if (regexMode == RegexpMode.SMART) {
         regexStr=replaceSpacesInRegex(regexStr);
       }
+      if (ruleAntiPatterns != null && ruleAntiPatterns.size() > 0) {
+        throw new RuntimeException("<regexp> rules currently cannot be used together with <antipattern>. Rule id: " + id);
+      }
       rule=new RegexPatternRule(id,name,message.toString(),suggestionsOutMsg.toString(),language,Pattern.compile(regexStr,flags));
     }
  else {
