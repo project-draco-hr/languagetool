@@ -8,10 +8,10 @@
   rule.setCorrectExamples(correctExamples);
   rule.setIncorrectExamples(incorrectExamples);
   rule.setCategory(category);
-  if (rulegroupAntiPatterns != null && !rulegroupAntiPatterns.isEmpty()) {
+  if (!rulegroupAntiPatterns.isEmpty()) {
     rule.setAntiPatterns(rulegroupAntiPatterns);
   }
-  if (ruleAntiPatterns != null && !ruleAntiPatterns.isEmpty()) {
+  if (!ruleAntiPatterns.isEmpty()) {
     rule.setAntiPatterns(ruleAntiPatterns);
     ruleAntiPatterns.clear();
   }

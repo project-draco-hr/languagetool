@@ -85,15 +85,9 @@ patternToken.setInsideMarker(true);
 }
 patternTokens.clear();
 if (inRule) {
-if (ruleAntiPatterns == null) {
-ruleAntiPatterns=new ArrayList<>();
-}
 ruleAntiPatterns.add(rule);
 }
  else {
-if (rulegroupAntiPatterns == null) {
-rulegroupAntiPatterns=new ArrayList<>();
-}
 rulegroupAntiPatterns.add(rule);
 }
 tokenCounter=0;
@@ -162,9 +156,7 @@ urlForRuleGroup=new StringBuilder();
 shortMessageForRuleGroup=new StringBuilder();
 inRuleGroup=false;
 ruleGroupIssueType=null;
-if (rulegroupAntiPatterns != null) {
 rulegroupAntiPatterns.clear();
-}
 antiPatternCounter=0;
 ruleGroupDefaultOff=false;
 defaultOff=false;
