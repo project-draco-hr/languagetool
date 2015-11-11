@@ -1,28 +1,29 @@
 {
-  List<AtomFeedItem> items=new ArrayList<>();
   String id=null;
   String title=null;
   Date date=null;
   XMLInputFactory inputFactory=XMLInputFactory.newInstance();
   XMLEventReader eventReader=inputFactory.createXMLEventReader(xml);
-  while (eventReader.hasNext()) {
-    XMLEvent event=eventReader.nextEvent();
-    if (event.isStartElement()) {
-      String localPart=event.asStartElement().getName().getLocalPart();
+  try {
+    List<AtomFeedItem> items=new ArrayList<>();
+    while (eventReader.hasNext()) {
+      XMLEvent event=eventReader.nextEvent();
+      if (event.isStartElement()) {
+        String localPart=event.asStartElement().getName().getLocalPart();
 switch (localPart) {
 case "id":
-        id=getCharacterData(eventReader);
-      break;
+          id=getCharacterData(eventReader);
+        break;
 case "title":
-    title=getCharacterData(eventReader);
-  break;
+      title=getCharacterData(eventReader);
+    break;
 case "updated":
-String dateString=getCharacterData(eventReader);
+  String dateString=getCharacterData(eventReader);
 try {
-date=DatatypeFactory.newInstance().newXMLGregorianCalendar(dateString).toGregorianCalendar().getTime();
+  date=DatatypeFactory.newInstance().newXMLGregorianCalendar(dateString).toGregorianCalendar().getTime();
 }
  catch (Exception e) {
-throw new RuntimeException("Could not parse date string '" + dateString + "'",e);
+  throw new RuntimeException("Could not parse date string '" + dateString + "'",e);
 }
 break;
 case "summary":
@@ -38,4 +39,8 @@ break;
 }
 }
 return items;
+}
+  finally {
+eventReader.close();
+}
 }

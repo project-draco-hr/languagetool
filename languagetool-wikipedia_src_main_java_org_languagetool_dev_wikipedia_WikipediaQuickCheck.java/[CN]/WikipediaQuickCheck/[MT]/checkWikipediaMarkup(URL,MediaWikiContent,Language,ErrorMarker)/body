@@ -3,8 +3,13 @@
   final PlainTextMapping mapping=filter.filter(wikiContent.getContent());
   final MultiThreadedJLanguageTool langTool=getLanguageTool(language);
   final List<AppliedRuleMatch> appliedMatches=new ArrayList<>();
-  final List<RuleMatch> matches=langTool.check(mapping.getPlainText());
-  langTool.shutdown();
+  final List<RuleMatch> matches;
+  try {
+    matches=langTool.check(mapping.getPlainText());
+  }
+  finally {
+    langTool.shutdown();
+  }
   int internalErrors=0;
   for (  RuleMatch match : matches) {
     final SuggestionReplacer replacer=errorMarker != null ? new SuggestionReplacer(mapping,wikiContent.getContent(),errorMarker) : new SuggestionReplacer(mapping,wikiContent.getContent());
