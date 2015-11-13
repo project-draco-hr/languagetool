@@ -1,0 +1,33 @@
+{
+  List<String> tokens=super.tokenize(text);
+  String prev=null;
+  final Stack<String> l=new Stack<>();
+  for (  String token : tokens) {
+    if ("'".equals(prev)) {
+      if (token.equals("m")) {
+        l.pop();
+        l.push("'m");
+      }
+ else       if (token.equals("re")) {
+        l.pop();
+        l.push("'re");
+      }
+ else       if (token.equals("ve")) {
+        l.pop();
+        l.push("'ve");
+      }
+ else       if (token.equals("ll")) {
+        l.pop();
+        l.push("'ll");
+      }
+ else {
+        l.push(token);
+      }
+    }
+ else {
+      l.push(token);
+    }
+    prev=token;
+  }
+  return l;
+}

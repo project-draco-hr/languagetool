@@ -1,6 +1,6 @@
 {
   String text=sentence.getText();
-  List<GoogleToken> tokens=GoogleToken.getGoogleTokens(text,true,getWordTokenizer());
+  List<GoogleToken> tokens=GoogleToken.getGoogleTokens(text,true,getGoogleStyleWordTokenizer());
   List<RuleMatch> matches=new ArrayList<>();
   int pos=0;
   for (  GoogleToken googleToken : tokens) {
