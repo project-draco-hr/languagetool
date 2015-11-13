@@ -3,7 +3,7 @@
   if (addStartToken) {
     result.add(new GoogleToken(LanguageModel.GOOGLE_SENTENCE_START,0,0));
   }
-  List<String> tokens=getWordTokenizer().tokenize(sentence);
+  List<String> tokens=wordTokenizer.tokenize(sentence);
   int startPos=0;
   for (  String token : tokens) {
     if (!StringTools.isWhitespace(token)) {

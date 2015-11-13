@@ -1,5 +1,5 @@
 {
-  List<GoogleToken> newTokens=getGoogleTokens(term,false);
+  List<GoogleToken> newTokens=GoogleToken.getGoogleTokens(term,false,getWordTokenizer());
   Probability ngram3Left;
   Probability ngram3Middle;
   Probability ngram3Right;
