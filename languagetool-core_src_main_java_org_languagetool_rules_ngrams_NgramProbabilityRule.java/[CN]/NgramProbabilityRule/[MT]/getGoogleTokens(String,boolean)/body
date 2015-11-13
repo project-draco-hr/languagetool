@@ -1,0 +1,15 @@
+{
+  List<GoogleToken> result=new ArrayList<>();
+  if (addStartToken) {
+    result.add(new GoogleToken(LanguageModel.GOOGLE_SENTENCE_START,0,0));
+  }
+  List<String> tokens=getWordTokenizer().tokenize(sentence);
+  int startPos=0;
+  for (  String token : tokens) {
+    if (!StringTools.isWhitespace(token)) {
+      result.add(new GoogleToken(token,startPos,startPos + token.length()));
+    }
+    startPos+=token.length();
+  }
+  return result;
+}

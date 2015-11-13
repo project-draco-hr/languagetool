@@ -1,0 +1,3 @@
+{
+  return "Assume errors for ngrams that occur rarely in the reference index";
+}

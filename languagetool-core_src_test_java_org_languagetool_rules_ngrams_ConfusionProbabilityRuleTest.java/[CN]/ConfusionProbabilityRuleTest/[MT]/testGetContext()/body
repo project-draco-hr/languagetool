@@ -1,0 +1,8 @@
+{
+  List<GoogleToken> tokens=Arrays.asList(new GoogleToken(LanguageModel.GOOGLE_SENTENCE_START,0,0),new GoogleToken("This",0,0),new GoogleToken("is",0,0),new GoogleToken("a",0,0),new GoogleToken("test",0,0));
+  GoogleToken token=tokens.get(3);
+  assertThat(rule.getContext(token,tokens,"XX",1,1).toString(),is("[is, XX, test]"));
+  assertThat(rule.getContext(token,tokens,"XX",0,2).toString(),is("[XX, test, .]"));
+  assertThat(rule.getContext(token,tokens,"XX",2,0).toString(),is("[This, is, XX]"));
+  assertThat(rule.getContext(token,tokens,"XX",3,0).toString(),is("[_START_, This, is, XX]"));
+}
