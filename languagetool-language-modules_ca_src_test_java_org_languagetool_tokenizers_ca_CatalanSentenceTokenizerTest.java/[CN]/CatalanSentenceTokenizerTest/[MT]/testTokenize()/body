@@ -46,6 +46,7 @@
   testSplit("Ell ??s el n??mero u. ","Jo el dos.");
   testSplit("T?? un trau al cap. ","Cal portar-lo a l'hospital.");
   testSplit("Aix?? passa en el PP. ","Per??, per altra banda,");
+  testSplit("Ceba, all, carabassa, etc. ","En comprem a la fruiteria.");
   testSplit("1 500 m/s. ","Neix a");
   testSplit("S??n d'1 g. ","Han estat condicionades.");
   testSplit("S??n d'1 m. ","Han estat condicionades.");
