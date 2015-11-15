@@ -8,6 +8,8 @@
   testSplit("??s d???abans-d???ahir? ","B??, b??.");
   testSplit("??s d???abans-d???ahir! ","B??, b??.");
   testSplit("Qu?? vols dir? ","Ja ho tinc!");
+  testSplit("Qu??? ","Ja ho tinc!");
+  testSplit("Ah! ","Ja ho tinc!");
   testSplit("Ja ho tinc! ","Qu?? vols dir?");
   testSplit("Us explicar?? com va anar: ","??La Maria va engegar el cotxe");
   testSplit("diu que va dir. ","A mi em feia estrany.");
