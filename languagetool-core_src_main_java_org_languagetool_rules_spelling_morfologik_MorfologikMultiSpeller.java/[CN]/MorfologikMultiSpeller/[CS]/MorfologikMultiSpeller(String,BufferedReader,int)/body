@@ -1,5 +1,6 @@
 {
   MorfologikSpeller speller=getBinaryDict(binaryDictPath,maxEditDistance);
+  List<MorfologikSpeller> spellers=new ArrayList<>();
   spellers.add(speller);
   convertsCase=speller.convertsCase();
   String infoFile=binaryDictPath.replace(".dict",".info");
@@ -7,4 +8,5 @@
   if (plainTextDict != null) {
     spellers.add(plainTextDict);
   }
+  this.spellers=Collections.unmodifiableList(spellers);
 }
