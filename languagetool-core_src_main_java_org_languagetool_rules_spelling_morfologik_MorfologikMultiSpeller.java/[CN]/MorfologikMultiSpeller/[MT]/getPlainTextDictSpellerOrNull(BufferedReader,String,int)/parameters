@@ -1,3 +1,3 @@
 BufferedReader plainTextReader
-String infoFile
+String dictPath
 int maxEditDistance

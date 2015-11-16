@@ -3,10 +3,9 @@
   List<MorfologikSpeller> spellers=new ArrayList<>();
   spellers.add(speller);
   convertsCase=speller.convertsCase();
-  String infoFile=binaryDictPath.replace(".dict",".info");
-  MorfologikSpeller plainTextDict=getPlainTextDictOrNull(plainTextReader,infoFile,maxEditDistance);
-  if (plainTextDict != null) {
-    spellers.add(plainTextDict);
+  MorfologikSpeller plainTextSpeller=getPlainTextDictSpellerOrNull(plainTextReader,binaryDictPath,maxEditDistance);
+  if (plainTextSpeller != null) {
+    spellers.add(plainTextSpeller);
   }
   this.spellers=Collections.unmodifiableList(spellers);
 }

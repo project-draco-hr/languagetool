@@ -1,2 +1,2 @@
 List<byte[]> lines
-String infoFile
+String dictPath

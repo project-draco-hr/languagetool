@@ -3,6 +3,6 @@
   if (lines.size() == 0) {
     return null;
   }
-  Dictionary dictionary=getDictionary(lines,infoFile);
+  Dictionary dictionary=getDictionary(lines,dictPath);
   return new MorfologikSpeller(dictionary,maxEditDistance);
 }

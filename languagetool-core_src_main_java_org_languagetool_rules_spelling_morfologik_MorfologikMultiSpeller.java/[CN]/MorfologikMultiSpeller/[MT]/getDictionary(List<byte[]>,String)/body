@@ -1,7 +1,16 @@
 {
-  Collections.sort(lines,FSABuilder.LEXICAL_ORDERING);
-  FSA fsa=FSABuilder.build(lines);
-  ByteArrayOutputStream fsaOutStream=new CFSA2Serializer().serialize(fsa,new ByteArrayOutputStream());
-  ByteArrayInputStream fsaInStream=new ByteArrayInputStream(fsaOutStream.toByteArray());
-  return Dictionary.readAndClose(fsaInStream,JLanguageTool.getDataBroker().getFromResourceDirAsStream(infoFile));
+  Dictionary dictFromCache=dicPathToDict.get(dictPath);
+  if (dictFromCache != null) {
+    return dictFromCache;
+  }
+ else {
+    Collections.sort(lines,FSABuilder.LEXICAL_ORDERING);
+    FSA fsa=FSABuilder.build(lines);
+    ByteArrayOutputStream fsaOutStream=new CFSA2Serializer().serialize(fsa,new ByteArrayOutputStream());
+    ByteArrayInputStream fsaInStream=new ByteArrayInputStream(fsaOutStream.toByteArray());
+    String infoFile=dictPath.replace(".dict",".info");
+    Dictionary dict=Dictionary.readAndClose(fsaInStream,JLanguageTool.getDataBroker().getFromResourceDirAsStream(infoFile));
+    dicPathToDict.put(dictPath,dict);
+    return dict;
+  }
 }
