@@ -1,0 +1,6 @@
+{
+  if (word.endsWith("??") || word.endsWith("??")) {
+    word=word.substring(0,word.length() - 1);
+  }
+  return super.isMisspelled(speller,word);
+}
