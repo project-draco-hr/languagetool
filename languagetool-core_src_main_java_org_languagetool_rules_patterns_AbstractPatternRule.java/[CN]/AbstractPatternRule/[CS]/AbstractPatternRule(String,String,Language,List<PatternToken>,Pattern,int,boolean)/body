@@ -24,9 +24,14 @@
       groupsOrUnification=true;
     }
     this.regex=null;
+    this.regexMark=0;
   }
  else {
     this.regex=regex;
+    if (regexMark < 0) {
+      throw new IllegalArgumentException("mark must be >= 0: " + regexMark);
+    }
+    this.regexMark=regexMark;
     this.patternTokens=null;
     groupsOrUnification=false;
     sentStart=false;

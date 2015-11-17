@@ -1,4 +1,4 @@
 {
-  this(id,description,language,patternTokens,null,getUnified);
+  this(id,description,language,patternTokens,null,0,getUnified);
   this.message=message;
 }

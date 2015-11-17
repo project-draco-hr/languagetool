@@ -1,6 +1,7 @@
 {
-  super(id,description,language,regex);
+  super(id,description,language,regex,regexpMark);
   this.message=message;
   this.pattern=regex;
   this.suggestionsOutMsg=suggestionsOutMsg;
+  markGroup=regexpMark;
 }

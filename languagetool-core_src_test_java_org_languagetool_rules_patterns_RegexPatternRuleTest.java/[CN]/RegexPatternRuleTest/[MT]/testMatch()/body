@@ -1,5 +1,5 @@
 {
-  RegexPatternRule rule=new RegexPatternRule("ID","desc","msg: <suggestion>a suggestion \\1</suggestion>","<suggestion>another suggestion \\2</suggestion>",TestTools.getDemoLanguage(),Pattern.compile("(fo.) (bar)"));
+  RegexPatternRule rule=new RegexPatternRule("ID","desc","msg: <suggestion>a suggestion \\1</suggestion>","<suggestion>another suggestion \\2</suggestion>",TestTools.getDemoLanguage(),Pattern.compile("(fo.) (bar)"),0);
   JLanguageTool lt=new JLanguageTool(TestTools.getDemoLanguage());
   RuleMatch[] matches1=rule.match(lt.getAnalyzedSentence("This is a test"));
   assertThat(matches1.length,is(0));

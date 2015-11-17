@@ -9,7 +9,9 @@
     List<String> suggestions=extractSuggestions(matcher,msg);
     List<String> matchSuggestions=getMatchSuggestions(sentence,matcher);
     msg=replaceMatchElements(msg,matchSuggestions);
-    RuleMatch ruleMatch=new RuleMatch(this,matcher.start(),matcher.end(),msg,null,sentenceStart,null);
+    int markStart=matcher.start(markGroup);
+    int markEnd=matcher.end(markGroup);
+    RuleMatch ruleMatch=new RuleMatch(this,markStart,markEnd,msg,null,sentenceStart,null);
     List<String> allSuggestions=new ArrayList<>();
     if (matchSuggestions.size() > 0) {
       allSuggestions.addAll(matchSuggestions);
