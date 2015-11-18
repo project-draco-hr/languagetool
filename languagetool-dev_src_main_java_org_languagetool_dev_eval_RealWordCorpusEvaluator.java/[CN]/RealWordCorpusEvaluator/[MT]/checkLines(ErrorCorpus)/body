@@ -1,6 +1,6 @@
 {
   for (  ErrorSentence sentence : corpus) {
-    List<RuleMatch> matches=checker.check(sentence.getAnnotatedText());
+    List<RuleMatch> matches=evaluator.check(sentence.getAnnotatedText());
     sentenceCount++;
     errorsInCorpusCount+=sentence.getErrors().size();
     System.out.println(sentence.getMarkupText() + " => " + matches.size());
