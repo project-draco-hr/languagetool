@@ -11,22 +11,9 @@
       if (i < tokens.size() - 1) {
         GoogleToken next=tokens.get(i + 1);
         long occurrences=lm.getCount(prevToken.token,token,next.token);
-        long leftOccurrences=lm.getCount(prevPrevToken.token,prevToken.token,token);
-        long rightOccurrences=0;
-        if (i < tokens.size() - 2) {
-          GoogleToken nextNext=tokens.get(i + 2);
-          rightOccurrences=lm.getCount(token,next.token,nextNext.token);
-        }
         String ngram=prevToken + " " + token+ " "+ next.token;
-        long allOccurrences=leftOccurrences + occurrences + rightOccurrences;
-        if (i < tokens.size() - 2) {
-          GoogleToken nextNext=tokens.get(i + 2);
-          debug("lookup: " + ngram + " => "+ occurrences+ ", "+ prevPrevToken.token+ " "+ prevToken.token+ " "+ token+ " => "+ leftOccurrences+ ", "+ token+ " "+ next.token+ " "+ nextNext.token+ " => "+ rightOccurrences+ "\n");
-        }
- else {
-          debug("lookup: " + ngram + " => "+ occurrences+ ", "+ prevPrevToken.token+ " "+ prevToken.token+ " "+ token+ " => "+ leftOccurrences+ " + 0\n");
-        }
-        if (allOccurrences < MIN_OKAY_OCCURRENCES) {
+        debug("lookup: " + ngram + " => "+ occurrences+ "\n");
+        if (occurrences < MIN_OKAY_OCCURRENCES) {
           String message="ngram '" + ngram + "' rarely occurs in ngram reference corpus (occurrences: "+ occurrences+ ")";
           RuleMatch match=new RuleMatch(this,prevToken.startPos,next.endPos,message);
           matches.add(match);
