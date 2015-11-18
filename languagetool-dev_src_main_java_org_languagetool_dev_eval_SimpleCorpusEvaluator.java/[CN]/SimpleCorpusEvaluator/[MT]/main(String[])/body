@@ -1,0 +1,13 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + SimpleCorpusEvaluator.class.getSimpleName() + " <corpusFile> <languageModelDir>");
+    System.out.println("   [languageModel] is a Lucene index directory with ngram frequency information");
+    System.exit(1);
+  }
+  File inputFile=new File(args[0]);
+  File languageModelTopDir=new File(args[1]);
+  System.out.println("Running with language model from " + languageModelTopDir);
+  SimpleCorpusEvaluator evaluator=new SimpleCorpusEvaluator(languageModelTopDir);
+  evaluator.run(inputFile);
+  evaluator.close();
+}

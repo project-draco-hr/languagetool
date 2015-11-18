@@ -1,0 +1,15 @@
+{
+  return new Iterator<ErrorSentence>(){
+    @Override public boolean hasNext(){
+      return pos < lines.size();
+    }
+    @Override public ErrorSentence next(){
+      String line=lines.get(pos++);
+      return getIncorrectSentence(line);
+    }
+    @Override public void remove(){
+      throw new UnsupportedOperationException();
+    }
+  }
+;
+}

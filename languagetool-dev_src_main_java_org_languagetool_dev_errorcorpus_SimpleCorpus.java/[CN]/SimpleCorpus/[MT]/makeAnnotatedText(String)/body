@@ -1,0 +1,5 @@
+{
+  AnnotatedTextBuilder builder=new AnnotatedTextBuilder();
+  builder.addText(text.replace("_"," ").replaceAll("\\s+"," "));
+  return builder.build();
+}

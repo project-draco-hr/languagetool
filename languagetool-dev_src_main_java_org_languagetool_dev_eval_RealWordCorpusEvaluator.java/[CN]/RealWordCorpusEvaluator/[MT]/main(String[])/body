@@ -1,7 +1,7 @@
 {
   if (args.length != 1 && args.length != 2) {
     System.out.println("Usage: " + RealWordCorpusEvaluator.class.getSimpleName() + " <corpusDirectory> [languageModel]");
-    System.out.println("   [languageModel] is a morfologik file or Lucene index directory with ngram frequency information (optional)");
+    System.out.println("   [languageModel] is a Lucene index directory with ngram frequency information (optional)");
     System.exit(1);
   }
   File languageModelTopDir=null;

@@ -1,0 +1,4 @@
+{
+  Evaluator checker=new LanguageToolEvaluator(indexTopDir);
+  return checker;
+}

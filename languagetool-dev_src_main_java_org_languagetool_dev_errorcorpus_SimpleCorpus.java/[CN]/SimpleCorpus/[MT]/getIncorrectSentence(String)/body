@@ -1,0 +1,13 @@
+{
+  String normalized=line.replaceFirst("\\d+\\.\\s*","");
+  String normalizedNoCorrection=normalized.replaceFirst("=>.*","").trim();
+  int startError=normalized.indexOf('_');
+  int endError=normalized.indexOf('_',startError + 1);
+  int startCorrectionMarker=normalized.indexOf("=>");
+  if (startCorrectionMarker == -1) {
+    throw new RuntimeException("No '=>' marker found: " + line);
+  }
+  String correction=normalized.substring(startCorrectionMarker + "=>".length());
+  List<Error> errors=Arrays.asList(new Error(startError + 1,endError - 1,correction));
+  return new ErrorSentence(normalizedNoCorrection,makeAnnotatedText(normalizedNoCorrection),errors);
+}

@@ -5,7 +5,7 @@
   System.out.println("    [++] = this is an expected error and the first suggestion is correct");
   System.out.println("    [//]  = not counted because already matches by a different rule");
   System.out.println("");
-  ErrorCorpus corpus=new PedlerCorpus(dir);
+  ErrorCorpus corpus=getCorpus(dir);
   checkLines(corpus);
   printResults();
 }

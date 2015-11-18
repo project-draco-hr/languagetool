@@ -1,0 +1,5 @@
+{
+  for (  Rule rule : langTool.getAllActiveRules()) {
+    langTool.disableRule(rule.getId());
+  }
+}
