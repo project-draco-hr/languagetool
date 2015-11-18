@@ -1,0 +1,3 @@
+{
+  super("FAKE_ID",TestTools.getDemoLanguage(),Collections.singletonList(new PatternToken("foo",true,false,false)),"My fake description","Fake message","Fake short message");
+}
