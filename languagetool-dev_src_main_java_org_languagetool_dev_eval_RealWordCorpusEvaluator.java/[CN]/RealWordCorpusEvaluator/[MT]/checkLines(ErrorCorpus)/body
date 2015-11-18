@@ -4,6 +4,10 @@
     sentenceCount++;
     errorsInCorpusCount+=sentence.getErrors().size();
     System.out.println(sentence.getMarkupText() + " => " + matches.size());
+    for (    RuleMatch match : matches) {
+      int length=match.getToPos() - match.getFromPos();
+      System.out.println(StringUtils.repeat(" ",match.getFromPos()) + StringUtils.repeat("^",length));
+    }
     List<Span> detectedErrorPositions=new ArrayList<>();
     for (    RuleMatch match : matches) {
       boolean alreadyCounted=errorAlreadyCounted(match,detectedErrorPositions);
