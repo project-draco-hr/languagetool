@@ -1,0 +1,13 @@
+{
+  ErrorSentence s=new ErrorSentence("this is an test",null,Arrays.asList(new Error(8,10,null)));
+  assertTrue(s.hasErrorOverlappingWithMatch(new RuleMatch(null,8,10,"msg")));
+  assertTrue(s.hasErrorOverlappingWithMatch(new RuleMatch(null,8,12,"msg")));
+  assertTrue(s.hasErrorOverlappingWithMatch(new RuleMatch(null,7,10,"msg")));
+  assertTrue(s.hasErrorOverlappingWithMatch(new RuleMatch(null,7,11,"msg")));
+  assertTrue(s.hasErrorOverlappingWithMatch(new RuleMatch(null,9,10,"msg")));
+  assertTrue(s.hasErrorOverlappingWithMatch(new RuleMatch(null,8,9,"msg")));
+  assertTrue(s.hasErrorOverlappingWithMatch(new RuleMatch(null,6,8,"msg")));
+  assertTrue(s.hasErrorOverlappingWithMatch(new RuleMatch(null,10,12,"msg")));
+  assertFalse(s.hasErrorOverlappingWithMatch(new RuleMatch(null,6,7,"msg")));
+  assertFalse(s.hasErrorOverlappingWithMatch(new RuleMatch(null,11,13,"msg")));
+}
