@@ -39,6 +39,9 @@
  else   if (word.equals("Ma??namen")) {
     return Collections.singletonList("Ma??nahmen");
   }
+ else   if (word.equals("nanten")) {
+    return Collections.singletonList("nannten");
+  }
  else   if (!StringTools.startsWithUppercase(word)) {
     String ucWord=StringTools.uppercaseFirstChar(word);
     if (!suggestions.contains(ucWord) && !hunspellDict.misspelled(ucWord)) {
