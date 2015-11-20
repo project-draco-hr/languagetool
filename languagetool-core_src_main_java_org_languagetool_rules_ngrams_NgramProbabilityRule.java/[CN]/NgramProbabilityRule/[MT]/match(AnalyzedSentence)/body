@@ -10,26 +10,11 @@
     if (prevPrevToken != null && prevToken != null) {
       if (i < tokens.size() - 1) {
         GoogleToken next=tokens.get(i + 1);
-        long occurrences=lm.getCount(prevToken.token,token,next.token);
-        long leftOccurrences=lm.getCount(prevPrevToken.token,prevToken.token,token);
-        long rightOccurrences=0;
-        if (i < tokens.size() - 2) {
-          GoogleToken nextNext=tokens.get(i + 2);
-          rightOccurrences=lm.getCount(token,next.token,nextNext.token);
-        }
-        String ngram=prevToken + " " + token+ " "+ next.token;
         Probability p=getPseudoProbability(Arrays.asList(prevToken.token,token,next.token));
-        if (i < tokens.size() - 2) {
-          GoogleToken nextNext=tokens.get(i + 2);
-          debug("lookup: " + ngram + " => "+ occurrences+ ", "+ prevPrevToken.token+ " "+ prevToken.token+ " "+ token+ " => "+ leftOccurrences+ ", "+ token+ " "+ next.token+ " "+ nextNext.token+ " => "+ rightOccurrences+ "\n");
-        }
- else {
-          debug("lookup: " + ngram + " => "+ occurrences+ ", "+ prevPrevToken.token+ " "+ prevToken.token+ " "+ token+ " => "+ leftOccurrences+ " + 0\n");
-        }
-        Probability bigramLeftP=getPseudoProbability(Arrays.asList(prevToken.token,token));
-        Probability bigramRightP=getPseudoProbability(Arrays.asList(token,next.token));
-        double prob=p.getProb() * bigramLeftP.getProb() * bigramRightP.getProb();
+        String ngram=prevToken + " " + token+ " "+ next.token;
+        double prob=p.getProb();
         if (prob < minProbability) {
+          long occurrences=lm.getCount(prevToken.token,token,next.token);
           String message="ngram '" + ngram + "' rarely occurs in ngram reference corpus (occurrences: "+ occurrences+ ")";
           RuleMatch match=new RuleMatch(this,prevToken.startPos,next.endPos,message);
           matches.add(match);

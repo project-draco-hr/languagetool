@@ -13,7 +13,7 @@
   while (threshold >= END_THRESHOLD) {
     probabilityRule.setMinProbability(threshold);
     PrecisionRecall res=evaluator.run(inputFile);
-    String thresholdStr=String.valueOf(threshold);
+    String thresholdStr=StringUtils.rightPad(String.valueOf(threshold),22);
     double fMeasure=FMeasure.getFMeasure(res.getPrecision(),res.getRecall(),1.0f);
     String fMeasureStr=String.format(Locale.ENGLISH,"%.3f",fMeasure);
     String precision=String.format(Locale.ENGLISH,"%.3f",res.getPrecision());
