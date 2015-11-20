@@ -26,7 +26,10 @@
  else {
           debug("lookup: " + ngram + " => "+ occurrences+ ", "+ prevPrevToken.token+ " "+ prevToken.token+ " "+ token+ " => "+ leftOccurrences+ " + 0\n");
         }
-        if (p.getProb() < minProbability) {
+        Probability bigramLeftP=getPseudoProbability(Arrays.asList(prevToken.token,token));
+        Probability bigramRightP=getPseudoProbability(Arrays.asList(token,next.token));
+        double prob=p.getProb() * bigramLeftP.getProb() * bigramRightP.getProb();
+        if (prob < minProbability) {
           String message="ngram '" + ngram + "' rarely occurs in ngram reference corpus (occurrences: "+ occurrences+ ")";
           RuleMatch match=new RuleMatch(this,prevToken.startPos,next.endPos,message);
           matches.add(match);
