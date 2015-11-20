@@ -1,0 +1,24 @@
+{
+  int maxCoverage=0;
+  int coverage=0;
+  long firstWordCount=lm.getCount(context.get(0));
+  maxCoverage++;
+  if (firstWordCount > 0) {
+    coverage++;
+  }
+  double p=(double)(firstWordCount + 1) / (totalTokenCount + 1);
+  debug("    P for %s: %.20f (%d)\n",context.get(0),p,firstWordCount);
+  for (int i=2; i <= context.size(); i++) {
+    List<String> subList=context.subList(0,i);
+    long phraseCount=lm.getCount(subList);
+    double thisP=(double)(phraseCount + 1) / (firstWordCount + 1);
+    maxCoverage++;
+    debug("    P for " + subList + ": %.20f (%d)\n",thisP,phraseCount);
+    if (phraseCount > 0) {
+      coverage++;
+    }
+    p*=thisP;
+  }
+  debug("  " + StringTools.listToString(context," ") + " => %.20f\n",p);
+  return new Probability(p,(float)coverage / maxCoverage);
+}
