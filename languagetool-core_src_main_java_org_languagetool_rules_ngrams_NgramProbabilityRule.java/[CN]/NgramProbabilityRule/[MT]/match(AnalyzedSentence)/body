@@ -26,7 +26,13 @@
  else {
           debug("lookup: " + ngram + " => "+ occurrences+ ", "+ prevPrevToken.token+ " "+ prevToken.token+ " "+ token+ " => "+ leftOccurrences+ " + 0\n");
         }
-        if (allOccurrences < MIN_OKAY_OCCURRENCES) {
+        long biGramLeft=lm.getCount(prevToken.token,token);
+        long biGramRight=lm.getCount(token,next.token);
+        allOccurrences+=biGramLeft;
+        allOccurrences+=biGramRight;
+        if (allOccurrences < minOkayOccurrences) {
+          debug("biGramLeft : " + biGramLeft + " for '"+ prevToken.token+ " "+ token+ "'");
+          debug("biGramRight: " + biGramRight + " for '"+ token+ " "+ next.token+ "'");
           String message="ngram '" + ngram + "' rarely occurs in ngram reference corpus (occurrences: "+ occurrences+ ")";
           RuleMatch match=new RuleMatch(this,prevToken.startPos,next.endPos,message);
           matches.add(match);

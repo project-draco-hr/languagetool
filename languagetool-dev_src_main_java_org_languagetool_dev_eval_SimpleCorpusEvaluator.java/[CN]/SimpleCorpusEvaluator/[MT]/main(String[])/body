@@ -8,6 +8,22 @@
   File languageModelTopDir=new File(args[1]);
   System.out.println("Running with language model from " + languageModelTopDir);
   SimpleCorpusEvaluator evaluator=new SimpleCorpusEvaluator(languageModelTopDir);
-  evaluator.run(inputFile);
+  List<String> results=new ArrayList<>();
+  long threshold=MIN_THRESHOLD;
+  while (threshold <= MAX_THRESHOLD) {
+    probabilityRule.setMinOkayOccurrences(threshold);
+    PrecisionRecall res=evaluator.run(inputFile);
+    String thresholdStr=StringUtils.leftPad(String.valueOf(threshold),20);
+    double fMeasure=FMeasure.getFMeasure(res.getPrecision(),res.getRecall(),1.0f);
+    String fMeasureStr=String.format(Locale.ENGLISH,"%.3f",fMeasure);
+    String precision=String.format(Locale.ENGLISH,"%.3f",res.getPrecision());
+    String recall=String.format(Locale.ENGLISH,"%.3f",res.getRecall());
+    results.add(thresholdStr + ": f=" + fMeasureStr+ ", precision="+ precision+ ", recall="+ recall);
+    threshold=threshold * 10;
+  }
+  System.out.println("=== Results: ==================================");
+  for (  String result : results) {
+    System.out.println(result);
+  }
   evaluator.close();
 }

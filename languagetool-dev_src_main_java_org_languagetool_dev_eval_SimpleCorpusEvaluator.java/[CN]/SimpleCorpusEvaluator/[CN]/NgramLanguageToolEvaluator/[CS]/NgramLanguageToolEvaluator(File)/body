@@ -3,6 +3,6 @@
   disableAllRules();
   languageModel=new LuceneLanguageModel(indexTopDir);
   System.out.println("Using Lucene language model from " + languageModel);
-  EnglishNgramProbabilityRule probabilityRule=new EnglishNgramProbabilityRule(JLanguageTool.getMessageBundle(),languageModel,new English());
+  probabilityRule=new EnglishNgramProbabilityRule(JLanguageTool.getMessageBundle(),languageModel,new English());
   langTool.addRule(probabilityRule);
 }

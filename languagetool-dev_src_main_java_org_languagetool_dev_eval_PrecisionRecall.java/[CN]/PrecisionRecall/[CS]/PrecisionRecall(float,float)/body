@@ -1,0 +1,4 @@
+{
+  this.precision=precision;
+  this.recall=recall;
+}
