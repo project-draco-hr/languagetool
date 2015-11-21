@@ -16,5 +16,5 @@
       }
     }
   }
-  return maintainerInfo;
+  return maintainerInfo.toString();
 }
