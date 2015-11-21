@@ -1,9 +1,0 @@
-{
-  enterFlag=false;
-  if ((event.getKeyCode() == KeyEvent.VK_ENTER) && (event.getModifiers() == 0)) {
-    if (getSelectionStart() == getSelectionEnd()) {
-      enterFlag=true;
-      event.consume();
-    }
-  }
-}
