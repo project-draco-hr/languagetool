@@ -1,0 +1,12 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + CommonCrawlToNgram.class + " <langCode> <input.xz>");
+    System.exit(1);
+  }
+  Language language=Languages.getLanguageForShortName(args[0]);
+  File input=new File(args[1]);
+  File outputDir=new File(args[2]);
+  try (CommonCrawlToNgram prg=new CommonCrawlToNgram(language,input,outputDir)){
+    prg.indexInputFile();
+  }
+ }

@@ -1,0 +1,7 @@
+{
+  FieldType fieldType=new FieldType();
+  fieldType.setStored(true);
+  fieldType.setNumericType(FieldType.NumericType.LONG);
+  fieldType.setDocValuesType(DocValuesType.NUMERIC);
+  return new LongField("count",count,fieldType);
+}

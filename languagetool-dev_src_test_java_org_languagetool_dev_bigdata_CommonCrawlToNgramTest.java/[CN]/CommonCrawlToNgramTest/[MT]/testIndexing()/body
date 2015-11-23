@@ -1,0 +1,14 @@
+{
+  File tempDir=new File(FileUtils.getTempDirectory(),"common-crawl-test");
+  try {
+    tempDir.mkdir();
+    String filename=CommonCrawlToNgramTest.class.getResource("/org/languagetool/dev/bigdata/ngram-input.txt.xz").getFile();
+    try (CommonCrawlToNgram prg=new CommonCrawlToNgram(new German(),new File(filename),tempDir)){
+      prg.setLimit(1);
+      prg.indexInputFile();
+    }
+   }
+  finally {
+    FileUtils.deleteDirectory(tempDir);
+  }
+}
