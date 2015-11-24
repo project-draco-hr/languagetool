@@ -5,7 +5,6 @@
   System.out.println("    [++] = this is an expected error and the first suggestion is correct");
   System.out.println("    [//]  = not counted because already matches by a different rule");
   System.out.println("");
-  ErrorCorpus corpus=getCorpus(dir);
-  checkLines(corpus);
+  checkLines(getCorpus(file));
   return printAndResetResults();
 }

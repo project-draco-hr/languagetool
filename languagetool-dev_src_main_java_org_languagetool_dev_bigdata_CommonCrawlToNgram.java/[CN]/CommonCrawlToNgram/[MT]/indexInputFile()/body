@@ -2,14 +2,13 @@
   FileInputStream fin=new FileInputStream(input);
   BufferedInputStream in=new BufferedInputStream(fin);
   Tokenizer wordTokenizer=language.getWordTokenizer();
-  Map<String,Long> ngramToCount=new HashMap<>();
   try (XZInputStream xzIn=new XZInputStream(in)){
     final byte[] buffer=new byte[8192];
     int n;
     while ((n=xzIn.read(buffer)) != -1) {
       String buf=new String(buffer,0,n);
       String[] lines=buf.split("\n");
-      indexLine(wordTokenizer,lines,ngramToCount);
+      indexLine(wordTokenizer,lines);
     }
   }
  }

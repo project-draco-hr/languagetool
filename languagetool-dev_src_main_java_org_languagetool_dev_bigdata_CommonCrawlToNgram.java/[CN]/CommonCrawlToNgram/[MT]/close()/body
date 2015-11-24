@@ -1,5 +1,5 @@
 {
-  indexWriter.close();
-  reader.close();
-  directory.close();
+  for (  LuceneLiveIndex index : indexes.values()) {
+    index.close();
+  }
 }

@@ -1,0 +1,12 @@
+{
+  writeToLucene(1,unigramToCount);
+  writeToLucene(2,bigramToCount);
+  writeToLucene(3,trigramToCount);
+  if (evalFile != null) {
+    SimpleCorpusEvaluator evaluator=new SimpleCorpusEvaluator(indexTopDir);
+    evaluator.run(evalFile);
+  }
+ else {
+    System.out.println("Skipping evaluation, no evaluation file specified");
+  }
+}

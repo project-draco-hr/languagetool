@@ -1,1 +1,2 @@
+int ngramSize
 Map<String,Long> ngramToCount

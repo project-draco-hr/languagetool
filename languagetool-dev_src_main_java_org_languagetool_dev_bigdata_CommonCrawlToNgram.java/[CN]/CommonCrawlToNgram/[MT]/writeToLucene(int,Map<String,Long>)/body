@@ -1,0 +1,25 @@
+{
+  LuceneLiveIndex index=indexes.get(ngramSize);
+  for (  Map.Entry<String,Long> entry : ngramToCount.entrySet()) {
+    Term ngram=new Term("ngram",entry.getKey());
+    index.reader=DirectoryReader.open(index.indexWriter,true);
+    index.searcher=new IndexSearcher(index.reader);
+    TopDocs topDocs=index.searcher.search(new TermQuery(ngram),2);
+    if (topDocs.totalHits == 0) {
+      Document doc=getDoc(entry.getKey(),entry.getValue());
+      index.indexWriter.addDocument(doc);
+    }
+ else     if (topDocs.totalHits == 1) {
+      int docNumber=topDocs.scoreDocs[0].doc;
+      Document document=index.reader.document(docNumber);
+      long oldCount=Long.parseLong(document.getField("count").stringValue());
+      index.indexWriter.deleteDocuments(ngram);
+      index.indexWriter.addDocument(getDoc(entry.getKey(),oldCount + entry.getValue()));
+    }
+ else     if (topDocs.totalHits > 1) {
+      throw new RuntimeException("Got more than one hit for: " + ngram);
+    }
+  }
+  index.indexWriter.commit();
+  ngramToCount.clear();
+}

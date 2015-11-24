@@ -1,9 +1,7 @@
 {
-  this.language=language;
-  this.input=input;
   Analyzer analyzer=new StandardAnalyzer();
   IndexWriterConfig config=new IndexWriterConfig(analyzer);
-  directory=FSDirectory.open(outputDir.toPath());
+  directory=FSDirectory.open(dir.toPath());
   indexWriter=new IndexWriter(directory,config);
   reader=DirectoryReader.open(indexWriter,true);
   searcher=new IndexSearcher(reader);

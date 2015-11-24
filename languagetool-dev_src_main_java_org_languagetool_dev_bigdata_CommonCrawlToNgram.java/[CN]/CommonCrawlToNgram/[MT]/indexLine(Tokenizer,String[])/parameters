@@ -1,3 +1,2 @@
 Tokenizer wordTokenizer
 String[] lines
-Map<String,Long> ngramToCount
