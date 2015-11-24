@@ -5,10 +5,14 @@
   System.out.printf(ENGLISH,"Inputs:       %s\n",inputsOrDir);
   System.out.printf(ENGLISH,"Case sensit.: %s\n",CASE_SENSITIVE);
   List<Long> factors=evalValues.keySet().stream().sorted().collect(toList());
+  float latestPrecision=0.0f;
+  float latestRecall=0.0f;
   for (  Long factor : factors) {
     EvalValues evalValues=this.evalValues.get(factor);
     float precision=(float)evalValues.truePositives / (evalValues.truePositives + evalValues.falsePositives);
+    latestPrecision=precision;
     float recall=(float)evalValues.truePositives / (evalValues.truePositives + evalValues.falseNegatives);
+    latestRecall=recall;
     String date=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     summary=String.format(ENGLISH,"p=%.3f, r=%.3f, %d, %dgrams, %s",precision,recall,allTokenSentences.size() + allHomophoneSentences.size(),rule.getNGrams(),date);
     if (verbose) {
@@ -17,5 +21,5 @@
       System.out.printf("Summary:  " + summary + "\n");
     }
   }
-  return summary;
+  return new EvalResult(summary,latestPrecision,latestRecall);
 }
