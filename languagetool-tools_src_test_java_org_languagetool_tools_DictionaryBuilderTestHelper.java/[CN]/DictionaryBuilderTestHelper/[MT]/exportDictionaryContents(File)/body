@@ -1,0 +1,15 @@
+{
+  File outputFile;
+  trackOutput();
+  try {
+    DictionaryExporter.main(new String[]{file.getAbsolutePath()});
+  }
+  finally {
+    resetOutput();
+  }
+  outputFile=File.createTempFile(POSDictionaryBuilder.class.getSimpleName(),".export");
+  FileOutputStream fos=new FileOutputStream(outputFile);
+  fos.write(out.toByteArray());
+  fos.close();
+  return outputFile;
+}

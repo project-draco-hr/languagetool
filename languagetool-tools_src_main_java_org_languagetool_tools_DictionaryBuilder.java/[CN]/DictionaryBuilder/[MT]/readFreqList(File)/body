@@ -1,0 +1,14 @@
+{
+  try (FileInputStream fis=new FileInputStream(freqListFile.getAbsoluteFile());InputStreamReader reader=new InputStreamReader(fis,"utf-8");BufferedReader br=new BufferedReader(reader)){
+    String line;
+    while ((line=br.readLine()) != null) {
+      Matcher m=pFreqEntry.matcher(line);
+      if (m.matches()) {
+        freqList.put(m.group(3),Integer.parseInt(m.group(1)));
+      }
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Cannot read file: " + freqListFile.getAbsolutePath());
+  }
+}

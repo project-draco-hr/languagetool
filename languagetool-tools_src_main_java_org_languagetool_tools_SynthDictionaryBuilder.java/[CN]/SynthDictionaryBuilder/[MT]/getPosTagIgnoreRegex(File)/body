@@ -1,0 +1,12 @@
+{
+  String fileName=infoFile.getName();
+  int underscorePos=fileName.indexOf('_');
+  if (underscorePos == -1) {
+    throw new IllegalArgumentException("Please specify an .info file for a synthesizer as the second parameter, named '<xyz>_synth.info', with <xyz> being a language'");
+  }
+  String baseName=fileName.substring(0,underscorePos);
+  if (baseName.equals("polish")) {
+    return Pattern.compile(POLISH_IGNORE_REGEX);
+  }
+  return null;
+}

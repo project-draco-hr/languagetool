@@ -1,0 +1,13 @@
+{
+  CommandLine cmdLine=new BuilderWithFreqOptions().parseArguments(args,SpellDictionaryBuilder.class);
+  String plainTextFile=cmdLine.getOptionValue(BuilderOptions.INPUT_OPTION);
+  String infoFile=cmdLine.getOptionValue(BuilderOptions.INFO_OPTION);
+  SpellDictionaryBuilder builder=new SpellDictionaryBuilder(new File(infoFile));
+  builder.setOutputFilename(cmdLine.getOptionValue(BuilderOptions.OUTPUT_OPTION));
+  File inputFile=new File(plainTextFile);
+  if (cmdLine.hasOption(BuilderWithFreqOptions.FREQ_OPTION)) {
+    builder.readFreqList(new File(cmdLine.getOptionValue(BuilderWithFreqOptions.FREQ_OPTION)));
+    inputFile=builder.addFreqData(inputFile);
+  }
+  builder.build(inputFile);
+}

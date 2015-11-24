@@ -1,0 +1,47 @@
+{
+  if (!isOptionTrue("fsa.dict.frequency-included")) {
+    throw new IOException("In order to use frequency data add the line 'fsa.dict.frequency-included=true' to the dictionary info file.");
+  }
+  String separator=getOption("fsa.dict.separator");
+  if (separator == null || separator.trim().isEmpty()) {
+    throw new IOException("A separator character (fsa.dict.separator) must be defined in the dictionary info file.");
+  }
+  File tempFile=File.createTempFile(DictionaryBuilder.class.getSimpleName(),"WithFrequencies.txt");
+  BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempFile.getAbsoluteFile()),getOption("fsa.dict.encoding")));
+  int freqValuesApplied=0;
+  try {
+    BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(dictFile.getAbsoluteFile()),getOption("fsa.dict.encoding")));
+    String line;
+    int maxFreq=Collections.max(freqList.values());
+    double maxFreqLog=Math.log(maxFreq);
+    while ((line=br.readLine()) != null) {
+      Matcher m=pTaggerEntry.matcher(line);
+      if (m.matches()) {
+        int freq=0;
+        String key=m.group(1);
+        if (freqList.containsKey(key)) {
+          freq=freqList.get(key);
+          freqValuesApplied++;
+        }
+        int normalizedFreq=freq;
+        if (freq > 0 && maxFreq > 255) {
+          double freqZeroToOne=Math.log(freq) / maxFreqLog;
+          normalizedFreq=(int)(freqZeroToOne * (FREQ_RANGES_IN - 1));
+        }
+        if (normalizedFreq < 0 || normalizedFreq > 255) {
+          throw new RuntimeException("Frequency out of range (0-255): " + normalizedFreq + " in word "+ key);
+        }
+        String freqChar=Character.toString((char)(FIRST_RANGE_CODE + normalizedFreq * FREQ_RANGES_OUT / FREQ_RANGES_IN));
+        bw.write(line + separator + freqChar+ "\n");
+      }
+    }
+    br.close();
+    bw.close();
+    System.out.println(freqList.size() + " frequency values applied in " + freqValuesApplied+ " word forms.");
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Cannot read file: " + dictFile.getAbsolutePath());
+  }
+  tempFile.deleteOnExit();
+  return tempFile;
+}

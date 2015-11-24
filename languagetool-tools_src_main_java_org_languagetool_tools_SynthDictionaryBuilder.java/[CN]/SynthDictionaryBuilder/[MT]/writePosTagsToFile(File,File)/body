@@ -1,0 +1,12 @@
+{
+  Set<String> posTags=collectTags(plainTextDictFile);
+  List<String> sortedTags=new ArrayList<>(posTags);
+  Collections.sort(sortedTags);
+  System.out.println("Writing tag file to " + tagFile);
+  try (FileWriter out=new FileWriter(tagFile)){
+    for (    String tag : sortedTags) {
+      out.write(tag);
+      out.write("\n");
+    }
+  }
+ }

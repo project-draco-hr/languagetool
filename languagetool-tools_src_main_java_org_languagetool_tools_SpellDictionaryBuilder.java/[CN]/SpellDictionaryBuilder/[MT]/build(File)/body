@@ -1,0 +1,12 @@
+{
+  File tempFile=null;
+  try {
+    tempFile=tokenizeInput(plainTextDictFile);
+    return buildDict(tempFile);
+  }
+  finally {
+    if (tempFile != null) {
+      tempFile.delete();
+    }
+  }
+}

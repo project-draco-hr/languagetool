@@ -1,0 +1,11 @@
+{
+  CommandLine cmdLine=new BuilderWithFreqOptions().parseArguments(args,POSDictionaryBuilder.class);
+  POSDictionaryBuilder builder=new POSDictionaryBuilder(new File(cmdLine.getOptionValue(BuilderOptions.INFO_OPTION)));
+  builder.setOutputFilename(cmdLine.getOptionValue(BuilderOptions.OUTPUT_OPTION));
+  File inputFile=new File(cmdLine.getOptionValue(BuilderOptions.INPUT_OPTION));
+  if (cmdLine.hasOption(BuilderWithFreqOptions.FREQ_OPTION)) {
+    builder.readFreqList(new File(cmdLine.getOptionValue(BuilderWithFreqOptions.FREQ_OPTION)));
+    inputFile=builder.addFreqData(inputFile);
+  }
+  builder.build(inputFile);
+}
