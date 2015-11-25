@@ -2,6 +2,7 @@
   FieldType fieldType=new FieldType();
   fieldType.setIndexOptions(IndexOptions.DOCS);
   fieldType.setStored(true);
+  fieldType.setOmitNorms(true);
   Field countField=new Field("totalTokenCount",String.valueOf(totalTokenCount),fieldType);
   Document doc=new Document();
   doc.add(countField);

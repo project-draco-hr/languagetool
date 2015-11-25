@@ -3,6 +3,6 @@
   IndexWriterConfig config=new IndexWriterConfig(analyzer);
   directory=FSDirectory.open(dir.toPath());
   indexWriter=new IndexWriter(directory,config);
-  reader=DirectoryReader.open(indexWriter,true);
+  reader=DirectoryReader.open(indexWriter,false);
   searcher=new IndexSearcher(reader);
 }
