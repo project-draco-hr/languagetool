@@ -1,4 +1,5 @@
 {
+  writeAndEvaluate();
   FileInputStream fin=new FileInputStream(input);
   BufferedInputStream in=new BufferedInputStream(fin);
   Tokenizer wordTokenizer=language.getWordTokenizer();
@@ -11,4 +12,5 @@
       indexLine(wordTokenizer,lines);
     }
   }
- }
+   writeAndEvaluate();
+}

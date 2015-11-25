@@ -11,8 +11,7 @@
   List<String> results=new ArrayList<>();
   double threshold=START_THRESHOLD;
   while (threshold >= END_THRESHOLD) {
-    probabilityRule.setMinProbability(threshold);
-    PrecisionRecall res=evaluator.run(inputFile);
+    PrecisionRecall res=evaluator.run(inputFile,threshold);
     String thresholdStr=StringUtils.rightPad(String.valueOf(threshold),22);
     double fMeasure=FMeasure.getFMeasure(res.getPrecision(),res.getRecall(),1.0f);
     String fMeasureStr=String.format(Locale.ENGLISH,"%.3f",fMeasure);

@@ -1,4 +1,5 @@
 {
+  probabilityRule.setMinProbability(threshold);
   System.out.println("Output explanation:");
   System.out.println("    [  ] = this is not an expected error");
   System.out.println("    [+ ] = this is an expected error");

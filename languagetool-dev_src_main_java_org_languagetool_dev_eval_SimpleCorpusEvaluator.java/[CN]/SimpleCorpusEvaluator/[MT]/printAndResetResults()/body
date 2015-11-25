@@ -6,9 +6,8 @@
   System.out.print("  " + goodMatches + " out of "+ matchCount+ " matches are real errors");
   float precision=(float)goodMatches / matchCount;
   float recall=(float)goodMatches / errorsInCorpusCount;
-  System.out.printf(" => %.2f precision, %.2f recall\n",precision,recall);
   double fMeasure=FMeasure.getFMeasure(precision,recall,1.0f);
-  System.out.printf("  => %.4f F measure\n",fMeasure);
+  System.out.printf(" => %.3f precision, %.3f recall, %.5f f-measure\n",precision,recall,fMeasure);
   sentenceCount=0;
   errorsInCorpusCount=0;
   perfectMatches=0;

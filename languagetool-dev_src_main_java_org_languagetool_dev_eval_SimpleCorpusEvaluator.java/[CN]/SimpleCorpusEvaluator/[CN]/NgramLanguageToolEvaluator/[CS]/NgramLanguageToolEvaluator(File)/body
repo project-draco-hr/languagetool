@@ -2,6 +2,7 @@
   langTool=new JLanguageTool(new English());
   disableAllRules();
   languageModel=new LuceneLanguageModel(indexTopDir);
+  LuceneLanguageModel.clearCaches();
   System.out.println("Using Lucene language model from " + languageModel);
   probabilityRule=new EnglishNgramProbabilityRule(JLanguageTool.getMessageBundle(),languageModel,new English());
   langTool.addRule(probabilityRule);
