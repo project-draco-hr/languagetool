@@ -18,7 +18,7 @@
     String precision=String.format(Locale.ENGLISH,"%.3f",res.getPrecision());
     String recall=String.format(Locale.ENGLISH,"%.3f",res.getRecall());
     results.add(thresholdStr + ": f=" + fMeasureStr+ ", precision="+ precision+ ", recall="+ recall);
-    threshold=threshold * 0.1;
+    threshold=threshold * STEP_FACTOR;
   }
   System.out.println("=== Results: ==================================");
   for (  String result : results) {
