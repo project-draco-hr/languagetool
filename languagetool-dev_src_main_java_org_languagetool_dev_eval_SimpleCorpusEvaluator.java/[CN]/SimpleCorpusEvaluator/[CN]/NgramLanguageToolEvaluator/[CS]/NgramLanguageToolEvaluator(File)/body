@@ -1,7 +1,11 @@
 {
   langTool=new JLanguageTool(new English());
   disableAllRules();
-  languageModel=new LuceneLanguageModel(indexTopDir);
+  List<LanguageModel> lms=new ArrayList<>();
+  for (  File indexTopDir : indexTopDirs) {
+    lms.add(new LuceneLanguageModel(indexTopDir));
+  }
+  languageModel=new MultiLanguageModel(lms);
   LuceneLanguageModel.clearCaches();
   System.out.println("Using Lucene language model from " + languageModel);
   probabilityRule=new EnglishNgramProbabilityRule(JLanguageTool.getMessageBundle(),languageModel,new English());

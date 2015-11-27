@@ -1,0 +1,6 @@
+{
+  if (lms.size() == 0) {
+    throw new IllegalArgumentException("List of language models is empty");
+  }
+  this.lms=lms;
+}

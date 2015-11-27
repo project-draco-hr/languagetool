@@ -1,0 +1,10 @@
+{
+  LanguageModel lm1=new FakeLanguageModel(10);
+  LanguageModel lm2=new FakeLanguageModel(15);
+  MultiLanguageModel lm=new MultiLanguageModel(Arrays.asList(lm1,lm2));
+  assertThat(lm.getCount("foo"),is(25L));
+  assertThat(lm.getCount("foo","bar"),is(4L));
+  assertThat(lm.getCount("foo","bar","blah"),is(6L));
+  assertThat(lm.getCount(Arrays.asList("a","b","c")),is(8L));
+  assertThat(lm.getTotalTokenCount(),is(18L));
+}

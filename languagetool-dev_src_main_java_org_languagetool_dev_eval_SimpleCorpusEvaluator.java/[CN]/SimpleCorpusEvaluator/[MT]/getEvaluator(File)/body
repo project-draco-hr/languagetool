@@ -1,3 +1,3 @@
 {
-  return new NgramLanguageToolEvaluator(indexTopDir);
+  return new NgramLanguageToolEvaluator(indexTopDirs);
 }
