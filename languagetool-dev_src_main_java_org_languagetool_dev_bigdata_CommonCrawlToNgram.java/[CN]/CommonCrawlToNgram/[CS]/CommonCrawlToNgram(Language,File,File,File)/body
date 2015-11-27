@@ -3,7 +3,7 @@
   this.indexTopDir=indexTopDir;
   this.evalFile=evalFile;
   this.sentenceTokenizer=language.getSentenceTokenizer();
-  this.wordTokenizer=language.getWordTokenizer();
+  this.wordTokenizer=new GoogleStyleWordTokenizer();
   indexes.put(1,new LuceneLiveIndex(new File(indexTopDir,"1grams")));
   indexes.put(2,new LuceneLiveIndex(new File(indexTopDir,"2grams")));
   indexes.put(3,new LuceneLiveIndex(new File(indexTopDir,"3grams")));
