@@ -1,0 +1,5 @@
+{
+  reader.close();
+  indexWriter.close();
+  directory.close();
+}

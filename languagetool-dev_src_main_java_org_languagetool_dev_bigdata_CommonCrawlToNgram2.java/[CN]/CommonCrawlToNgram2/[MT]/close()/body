@@ -1,0 +1,5 @@
+{
+  for (  LuceneLiveIndex index : indexes.values()) {
+    index.close();
+  }
+}

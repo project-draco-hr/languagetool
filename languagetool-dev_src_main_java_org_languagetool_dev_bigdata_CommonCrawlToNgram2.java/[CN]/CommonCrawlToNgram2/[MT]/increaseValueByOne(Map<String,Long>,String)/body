@@ -1,0 +1,9 @@
+{
+  Long val=map.get(token);
+  if (val != null) {
+    map.put(token,val + 1);
+  }
+ else {
+    map.put(token,1L);
+  }
+}

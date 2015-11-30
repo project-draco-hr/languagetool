@@ -1,0 +1,34 @@
+{
+  List<String> tokens=wordTokenizer.tokenize(sentence);
+  tokens.add(0,LanguageModel.GOOGLE_SENTENCE_START);
+  tokens.add(LanguageModel.GOOGLE_SENTENCE_END);
+  String prevPrev=null;
+  String prev=null;
+  for (  String token : tokens) {
+    if (token.trim().isEmpty()) {
+      continue;
+    }
+    if (token.length() <= MAX_TOKEN_LENGTH) {
+      increaseValueByOne(unigramToCount,token);
+    }
+    if (prev != null) {
+      if (token.length() <= MAX_TOKEN_LENGTH && prev.length() <= MAX_TOKEN_LENGTH) {
+        String ngram=prev + " " + token;
+        increaseValueByOne(bigramToCount,ngram);
+      }
+    }
+    if (prevPrev != null && prev != null) {
+      if (token.length() <= MAX_TOKEN_LENGTH && prev.length() <= MAX_TOKEN_LENGTH && prevPrev.length() <= MAX_TOKEN_LENGTH) {
+        String ngram=prevPrev + " " + prev+ " "+ token;
+        increaseValueByOne(trigramToCount,ngram);
+        trigramToCounter++;
+      }
+      if (++trigramToCounter % cacheLimit == 0) {
+        writeAndEvaluate();
+        trigramToCounter=0;
+      }
+    }
+    prevPrev=prev;
+    prev=token;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  writeToLucene(1,unigramToCount);
+  writeToLucene(2,bigramToCount);
+  writeToLucene(3,trigramToCount);
+  if (evalFile != null) {
+    System.out.println("Running evaluation...");
+    long startTime=System.currentTimeMillis();
+    SimpleCorpusEvaluator evaluator=new SimpleCorpusEvaluator(indexTopDir);
+    evaluator.run(evalFile,THRESHOLD);
+    System.out.println("Eval time: " + (System.currentTimeMillis() - startTime) + "ms");
+  }
+ else {
+    System.out.println("Skipping evaluation, no evaluation file specified");
+  }
+}
