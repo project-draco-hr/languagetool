@@ -1,9 +1,14 @@
 {
   LuceneSearcher luceneSearcher=dirToSearcherMap.get(indexDir);
   if (luceneSearcher == null) {
-    LuceneSearcher newSearcher=new LuceneSearcher(indexDir);
-    dirToSearcherMap.put(indexDir,newSearcher);
-    return newSearcher;
+    try {
+      LuceneSearcher newSearcher=new LuceneSearcher(indexDir);
+      dirToSearcherMap.put(indexDir,newSearcher);
+      return newSearcher;
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
   }
  else {
     return luceneSearcher;

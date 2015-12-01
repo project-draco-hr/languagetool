@@ -1,0 +1,3 @@
+{
+  return new Probability(fakeValue,0.5f);
+}

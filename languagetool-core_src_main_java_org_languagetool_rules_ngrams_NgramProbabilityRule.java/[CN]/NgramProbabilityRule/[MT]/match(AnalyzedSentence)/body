@@ -10,12 +10,11 @@
     if (prevPrevToken != null && prevToken != null) {
       if (i < tokens.size() - 1) {
         GoogleToken next=tokens.get(i + 1);
-        Probability p=getPseudoProbability(Arrays.asList(prevToken.token,token,next.token));
+        Probability p=lm.getPseudoProbability(Arrays.asList(prevToken.token,token,next.token));
         String ngram=prevToken + " " + token+ " "+ next.token;
         double prob=p.getProb();
         if (prob < minProbability) {
-          long occurrences=lm.getCount(prevToken.token,token,next.token);
-          String message="ngram '" + ngram + "' rarely occurs in ngram reference corpus (occurrences: "+ occurrences+ ")";
+          String message="ngram '" + ngram + "' rarely occurs in ngram reference corpus";
           RuleMatch match=new RuleMatch(this,prevToken.startPos,next.endPos,message);
           matches.add(match);
         }

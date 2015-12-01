@@ -1,4 +1,5 @@
 {
+  super(3);
   map.put("There are",10);
   map.put("There are new",5);
   map.put("Their are",2);

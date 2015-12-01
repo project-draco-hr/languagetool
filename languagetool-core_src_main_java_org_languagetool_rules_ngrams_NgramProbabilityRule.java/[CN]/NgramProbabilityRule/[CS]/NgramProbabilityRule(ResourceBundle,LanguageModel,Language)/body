@@ -4,5 +4,4 @@
   setLocQualityIssueType(ITSIssueType.NonConformance);
   this.lm=Objects.requireNonNull(languageModel);
   this.language=Objects.requireNonNull(language);
-  totalTokenCount=lm.getTotalTokenCount();
 }

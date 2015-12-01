@@ -1,0 +1,4 @@
+{
+  this.maxNgram=maxNgram;
+  this.topIndexDir=null;
+}
