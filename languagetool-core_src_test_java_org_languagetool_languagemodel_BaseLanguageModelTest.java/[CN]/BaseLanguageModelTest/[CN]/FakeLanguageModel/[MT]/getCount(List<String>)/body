@@ -1,0 +1,4 @@
+{
+  Integer count=map.get(StringTools.listToString(tokens," "));
+  return count == null ? 0 : count;
+}

@@ -1,0 +1,11 @@
+{
+  map.put("There are",10);
+  map.put("There are new",5);
+  map.put("Their are",2);
+  map.put("Their are new",1);
+  map.put("Why is",50);
+  map.put("Why is there",5);
+  map.put("Why is their",5);
+  map.put("their car",11);
+  map.put("their car broken",2);
+}

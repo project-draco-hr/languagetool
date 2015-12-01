@@ -4,13 +4,13 @@
   Probability ngram3Middle;
   Probability ngram3Right;
   if (newTokens.size() == 1) {
-    ngram3Left=getPseudoProbability(getContext(token,tokens,term,0,2));
-    ngram3Middle=getPseudoProbability(getContext(token,tokens,term,1,1));
-    ngram3Right=getPseudoProbability(getContext(token,tokens,term,2,0));
+    ngram3Left=lm.getPseudoProbability(getContext(token,tokens,term,0,2));
+    ngram3Middle=lm.getPseudoProbability(getContext(token,tokens,term,1,1));
+    ngram3Right=lm.getPseudoProbability(getContext(token,tokens,term,2,0));
   }
  else   if (newTokens.size() == 2) {
-    ngram3Left=getPseudoProbability(getContext(token,tokens,newTokens,0,1));
-    ngram3Right=getPseudoProbability(getContext(token,tokens,newTokens,1,0));
+    ngram3Left=lm.getPseudoProbability(getContext(token,tokens,newTokens,0,1));
+    ngram3Right=lm.getPseudoProbability(getContext(token,tokens,newTokens,1,0));
     ngram3Middle=new Probability((ngram3Left.getProb() + ngram3Right.getProb()) / 2,1.0f);
   }
  else {

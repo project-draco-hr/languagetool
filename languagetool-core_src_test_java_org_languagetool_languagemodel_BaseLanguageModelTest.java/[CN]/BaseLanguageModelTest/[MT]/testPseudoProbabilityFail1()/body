@@ -1,0 +1,5 @@
+{
+  try (FakeLanguageModel lm=new FakeLanguageModel()){
+    lm.getPseudoProbability(Collections.<String>emptyList());
+  }
+ }
