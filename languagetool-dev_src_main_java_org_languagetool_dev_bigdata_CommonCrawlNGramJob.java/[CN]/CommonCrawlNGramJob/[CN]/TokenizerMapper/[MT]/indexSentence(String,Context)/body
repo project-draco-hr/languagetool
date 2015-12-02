@@ -1,0 +1,23 @@
+{
+  List<String> tokens=wordTokenizer.tokenize(sentence);
+  tokens.add(0,LanguageModel.GOOGLE_SENTENCE_START);
+  tokens.add(LanguageModel.GOOGLE_SENTENCE_END);
+  String prevPrev=null;
+  String prev=null;
+  for (  String token : tokens) {
+    if (token.trim().isEmpty()) {
+      continue;
+    }
+    if (token.length() <= MAX_TOKEN_LENGTH) {
+      write(token,context);
+    }
+    if (prev != null && token.length() <= MAX_TOKEN_LENGTH && prev.length() <= MAX_TOKEN_LENGTH) {
+      write(prev + " " + token,context);
+    }
+    if (prevPrev != null && token.length() <= MAX_TOKEN_LENGTH && prev.length() <= MAX_TOKEN_LENGTH && prevPrev.length() <= MAX_TOKEN_LENGTH) {
+      write(prevPrev + " " + prev+ " "+ token,context);
+    }
+    prevPrev=prev;
+    prev=token;
+  }
+}

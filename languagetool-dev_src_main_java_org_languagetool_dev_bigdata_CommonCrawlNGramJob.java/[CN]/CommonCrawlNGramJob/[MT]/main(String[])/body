@@ -1,0 +1,14 @@
+{
+  Configuration conf=new Configuration();
+  conf.set("io.compression.codecs","io.sensesecure.hadoop.xz.XZCodec");
+  Job job=Job.getInstance(conf,"CommonCrawl ngram indexer (see http://data.statmt.org/ngrams/)");
+  job.setJarByClass(CommonCrawlNGramJob.class);
+  job.setMapperClass(TokenizerMapper.class);
+  job.setCombinerClass(LongSumReducer.class);
+  job.setReducerClass(LongSumReducer.class);
+  job.setOutputKeyClass(Text.class);
+  job.setOutputValueClass(LongWritable.class);
+  FileInputFormat.addInputPath(job,new Path(args[0]));
+  FileOutputFormat.setOutputPath(job,new Path(args[1]));
+  System.exit(job.waitForCompletion(true) ? 0 : 1);
+}

@@ -1,0 +1,5 @@
+{
+  word.set(ngram);
+  count.set(1);
+  context.write(word,count);
+}

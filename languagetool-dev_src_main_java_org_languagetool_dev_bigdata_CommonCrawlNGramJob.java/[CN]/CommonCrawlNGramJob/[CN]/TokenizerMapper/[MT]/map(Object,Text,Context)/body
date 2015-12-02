@@ -1,0 +1,6 @@
+{
+  List<String> sentences=sentenceTokenizer.tokenize(value.toString());
+  for (  String sentence : sentences) {
+    indexSentence(sentence,context);
+  }
+}

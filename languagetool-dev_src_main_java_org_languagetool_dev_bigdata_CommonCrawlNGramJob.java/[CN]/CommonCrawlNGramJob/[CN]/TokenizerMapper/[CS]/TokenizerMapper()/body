@@ -1,0 +1,4 @@
+{
+  this.sentenceTokenizer=new English().getSentenceTokenizer();
+  this.wordTokenizer=new GoogleStyleWordTokenizer();
+}
