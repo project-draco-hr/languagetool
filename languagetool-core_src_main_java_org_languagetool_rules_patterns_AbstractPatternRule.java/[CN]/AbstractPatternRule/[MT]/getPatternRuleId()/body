@@ -1,0 +1,8 @@
+{
+  if (subId != null) {
+    return new PatternRuleId(id,subId);
+  }
+ else {
+    return new PatternRuleId(id);
+  }
+}
