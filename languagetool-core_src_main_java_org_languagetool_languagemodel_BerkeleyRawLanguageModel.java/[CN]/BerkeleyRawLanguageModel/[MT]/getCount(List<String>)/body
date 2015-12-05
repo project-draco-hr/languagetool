@@ -1,0 +1,11 @@
+{
+  LongRef count=map.get(tokens);
+  long result;
+  if (count == null) {
+    result=0;
+  }
+ else {
+    result=count.asLong();
+  }
+  return result;
+}

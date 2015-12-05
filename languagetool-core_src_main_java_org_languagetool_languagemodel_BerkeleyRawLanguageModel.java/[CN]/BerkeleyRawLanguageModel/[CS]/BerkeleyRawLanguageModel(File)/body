@@ -1,0 +1,10 @@
+{
+  if (!berkeleyLm.isFile()) {
+    throw new RuntimeException("You need to specify a BerkeleyLM file: " + berkeleyLm);
+  }
+  File vocabFile=new File(berkeleyLm.getParent(),"vocab_cs.gz");
+  if (!vocabFile.exists()) {
+    throw new RuntimeException("No vocabulary file 'vocab_cs.gz' found in the BerkeleyLM directory: " + vocabFile);
+  }
+  map=LmReaders.readNgramMapFromBinary(berkeleyLm.getAbsolutePath(),vocabFile.getAbsolutePath());
+}

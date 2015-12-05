@@ -1,0 +1,9 @@
+{
+  float logProb=lm.getLogProb(context);
+  if (Float.isNaN(logProb)) {
+    return new Probability(0,1.0f);
+  }
+ else {
+    return new Probability(Math.pow(10,logProb),1.0f);
+  }
+}

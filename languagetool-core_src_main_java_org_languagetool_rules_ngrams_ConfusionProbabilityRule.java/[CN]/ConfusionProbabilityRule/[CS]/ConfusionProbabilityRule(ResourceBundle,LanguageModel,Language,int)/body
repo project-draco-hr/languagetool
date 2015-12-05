@@ -17,5 +17,4 @@
     throw new IllegalArgumentException("grams must be between 1 and 5: " + grams);
   }
   this.grams=grams;
-  totalTokenCount=languageModel.getTotalTokenCount();
 }

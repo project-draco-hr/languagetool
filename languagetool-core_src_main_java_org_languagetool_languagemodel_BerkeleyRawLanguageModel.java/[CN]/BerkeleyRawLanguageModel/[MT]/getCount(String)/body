@@ -1,0 +1,3 @@
+{
+  return getCount(Arrays.asList(token1));
+}
