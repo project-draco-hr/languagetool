@@ -1,2 +1,5 @@
 {
+  if (DEBUG) {
+    System.out.printf(Locale.ENGLISH,message,vars);
+  }
 }
