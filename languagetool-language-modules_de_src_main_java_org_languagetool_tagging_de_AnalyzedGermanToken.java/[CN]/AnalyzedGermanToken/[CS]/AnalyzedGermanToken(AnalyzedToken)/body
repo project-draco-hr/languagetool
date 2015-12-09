@@ -5,6 +5,7 @@
     casus=null;
     numerus=null;
     genus=null;
+    determination=null;
     return;
   }
   final String[] parts=posTag.split(":");
@@ -12,6 +13,7 @@
   Kasus tempCasus=null;
   Numerus tempNumerus=null;
   Genus tempGenus=null;
+  Determination tempDetermination=null;
   for (  String part : parts) {
     if (part.equals("EIG")) {
       tempType=POSType.PROPER_NOUN;
@@ -67,9 +69,16 @@
  else     if (part.equals("ALG")) {
       tempGenus=Genus.ALLGEMEIN;
     }
+ else     if (part.equals("IND")) {
+      tempDetermination=Determination.INDEFINITE;
+    }
+ else     if (part.equals("DEF")) {
+      tempDetermination=Determination.DEFINITE;
+    }
   }
   type=tempType != null ? tempType : null;
   casus=tempCasus != null ? tempCasus : null;
   numerus=tempNumerus != null ? tempNumerus : null;
   genus=tempGenus != null ? tempGenus : null;
+  determination=tempDetermination != null ? tempDetermination : null;
 }

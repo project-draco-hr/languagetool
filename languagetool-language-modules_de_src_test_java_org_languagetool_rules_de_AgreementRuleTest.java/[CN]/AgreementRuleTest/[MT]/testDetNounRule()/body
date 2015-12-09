@@ -106,4 +106,13 @@
   assertGood("Au??erdem unterst??tzt mich Herr M??ller beim abheften");
   assertGood("Au??erdem unterst??tzt mich Frau M??ller beim abheften");
   assertBad("Der Zustand meiner Gehirns.");
+  assertBad("Ich gebe dir ein kleine Kaninchen.");
+  assertBad("Ich gebe dir ein kleinen Kaninchen.");
+  assertBad("Ich gebe dir ein kleinem Kaninchen.");
+  assertBad("Ich gebe dir ein kleiner Kaninchen.");
+  assertGood("Ich gebe dir ein kleines Kaninchen.");
+  assertBad("Ich gebe dir das kleinen Kaninchen.");
+  assertBad("Ich gebe dir das kleinem Kaninchen.");
+  assertBad("Ich gebe dir das kleiner Kaninchen.");
+  assertGood("Ich gebe dir das kleine Kaninchen.");
 }

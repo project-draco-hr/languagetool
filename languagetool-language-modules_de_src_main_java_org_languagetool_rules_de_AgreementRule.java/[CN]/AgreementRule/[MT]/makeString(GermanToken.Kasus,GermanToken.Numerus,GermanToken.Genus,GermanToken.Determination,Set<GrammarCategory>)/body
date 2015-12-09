@@ -9,5 +9,8 @@
   if (gen != null && !omit.contains(GrammarCategory.GENUS)) {
     l.add(gen.toString());
   }
+  if (determination != null) {
+    l.add(determination.toString());
+  }
   return StringTools.listToString(l,"/");
 }
