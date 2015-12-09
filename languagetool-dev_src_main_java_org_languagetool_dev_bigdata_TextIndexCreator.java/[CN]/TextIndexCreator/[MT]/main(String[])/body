@@ -1,0 +1,12 @@
+{
+  if (args.length < 2) {
+    System.out.println("Usage: " + TextIndexCreator.class.getSimpleName() + " <outputDir> <inputFile...>");
+    System.exit(0);
+  }
+  TextIndexCreator creator=new TextIndexCreator();
+  File outputDir=new File(args[0]);
+  if (outputDir.exists()) {
+    throw new RuntimeException("Output directory already exists: " + outputDir);
+  }
+  creator.index(outputDir,Arrays.copyOfRange(args,1,args.length - 1));
+}

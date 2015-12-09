@@ -1,0 +1,10 @@
+{
+  File tempFile=new File("/tmp/example-sentences.txt");
+  try (FileWriter fw=new FileWriter(tempFile)){
+    for (    String word : words) {
+      findExampleSentences(word,fw);
+    }
+    System.out.println("Example sentences written to " + tempFile);
+  }
+   return tempFile;
+}

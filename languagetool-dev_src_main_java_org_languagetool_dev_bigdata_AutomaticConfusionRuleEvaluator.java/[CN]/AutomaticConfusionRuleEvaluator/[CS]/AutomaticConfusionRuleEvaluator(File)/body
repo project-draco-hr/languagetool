@@ -1,0 +1,6 @@
+{
+  DirectoryReader reader=DirectoryReader.open(FSDirectory.open(indexDir.toPath()));
+  searcher=new IndexSearcher(reader);
+  InputStream confusionSetStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/en/confusion_sets.txt");
+  knownSets=new ConfusionSetLoader().loadConfusionSet(confusionSetStream);
+}

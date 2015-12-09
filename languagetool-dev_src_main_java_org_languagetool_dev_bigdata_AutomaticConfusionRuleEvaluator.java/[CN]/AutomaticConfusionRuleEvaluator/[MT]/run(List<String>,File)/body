@@ -1,0 +1,23 @@
+{
+  English english=new English();
+  LanguageModel lm=new LuceneLanguageModel(indexDir);
+  ConfusionRuleEvaluator evaluator=new ConfusionRuleEvaluator(english,lm);
+  for (  String line : lines) {
+    if (line.contains("#")) {
+      System.out.println("Ignoring: " + line);
+      continue;
+    }
+    String[] parts=line.split(";\\s*");
+    if (parts.length != 2) {
+      System.out.println("Ignoring: " + line);
+    }
+ else {
+      try {
+        runOnPair(evaluator,line,parts[0],parts[1]);
+      }
+ catch (      RuntimeException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+}

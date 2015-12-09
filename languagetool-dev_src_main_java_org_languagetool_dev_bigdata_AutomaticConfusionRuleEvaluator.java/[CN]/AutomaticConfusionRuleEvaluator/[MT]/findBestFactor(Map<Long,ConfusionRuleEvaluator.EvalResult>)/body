@@ -1,0 +1,11 @@
+{
+  Map<Long,ConfusionRuleEvaluator.EvalResult> filteredResults=new HashMap<>();
+  for (  Map.Entry<Long,ConfusionRuleEvaluator.EvalResult> entry : results.entrySet()) {
+    ConfusionRuleEvaluator.EvalResult result=entry.getValue();
+    boolean candidate=result.getPrecision() >= MIN_PRECISION && result.getRecall() >= MIN_RECALL;
+    if (candidate) {
+      filteredResults.put(entry.getKey(),entry.getValue());
+    }
+  }
+  return filteredResults;
+}

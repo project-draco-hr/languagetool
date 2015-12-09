@@ -1,0 +1,10 @@
+{
+  if (args.length != 3) {
+    System.out.println("Usage: " + AutomaticConfusionRuleEvaluator.class.getSimpleName() + " <confusionPairCandidates> <exampleSentenceIndexDir> <ngramDir>");
+    System.out.println("   <exampleSentenceIndexDir> is a Lucene index created by TextIndexCreator");
+    System.exit(1);
+  }
+  List<String> lines=IOUtils.readLines(new FileInputStream(args[0]),"utf-8");
+  AutomaticConfusionRuleEvaluator eval=new AutomaticConfusionRuleEvaluator(new File(args[1]));
+  eval.run(lines,new File(args[2]));
+}

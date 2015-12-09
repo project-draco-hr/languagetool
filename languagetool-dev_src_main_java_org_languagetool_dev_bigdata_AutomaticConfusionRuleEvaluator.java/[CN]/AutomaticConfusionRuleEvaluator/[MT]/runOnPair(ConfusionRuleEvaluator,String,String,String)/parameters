@@ -1,0 +1,4 @@
+ConfusionRuleEvaluator evaluator
+String line
+String part1
+String part2

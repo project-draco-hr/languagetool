@@ -1,25 +1,22 @@
 {
-  String summary=null;
+  Map<Long,EvalResult> results=new HashMap<>();
   int sentences=allTokenSentences.size() + allHomophoneSentences.size();
   System.out.println("\nEvaluation results for " + TOKEN + "/"+ TOKEN_HOMOPHONE+ " with "+ sentences+ " sentences as of "+ new Date()+ ":");
   System.out.printf(ENGLISH,"Inputs:       %s\n",inputsOrDir);
   System.out.printf(ENGLISH,"Case sensit.: %s\n",CASE_SENSITIVE);
   List<Long> factors=evalValues.keySet().stream().sorted().collect(toList());
-  float latestPrecision=0.0f;
-  float latestRecall=0.0f;
   for (  Long factor : factors) {
     EvalValues evalValues=this.evalValues.get(factor);
     float precision=(float)evalValues.truePositives / (evalValues.truePositives + evalValues.falsePositives);
-    latestPrecision=precision;
     float recall=(float)evalValues.truePositives / (evalValues.truePositives + evalValues.falseNegatives);
-    latestRecall=recall;
     String date=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-    summary=String.format(ENGLISH,"p=%.3f, r=%.3f, %d, %dgrams, %s",precision,recall,allTokenSentences.size() + allHomophoneSentences.size(),rule.getNGrams(),date);
+    String summary=String.format(ENGLISH,"p=%.3f, r=%.3f, %d+%d, %dgrams, %s",precision,recall,allTokenSentences.size(),allHomophoneSentences.size(),rule.getNGrams(),date);
+    results.put(factor,new EvalResult(summary,precision,recall));
     if (verbose) {
       System.out.println();
       System.out.printf(ENGLISH,"Factor:   %d - %d false positives, %d false negatives\n",factor,evalValues.falsePositives,evalValues.falseNegatives);
       System.out.printf("Summary:  " + summary + "\n");
     }
   }
-  return new EvalResult(summary,latestPrecision,latestRecall);
+  return results;
 }

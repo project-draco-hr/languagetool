@@ -1,0 +1,9 @@
+{
+  Analyzer analyzer=new StandardAnalyzer();
+  IndexWriterConfig config=new IndexWriterConfig(analyzer);
+  try (FSDirectory directory=FSDirectory.open(outputDir.toPath());IndexWriter indexWriter=new IndexWriter(directory,config)){
+    for (    String inputFile : inputFiles) {
+      indexFile(indexWriter,inputFile);
+    }
+  }
+ }

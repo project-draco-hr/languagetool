@@ -1,0 +1,8 @@
+{
+  Term term=new Term(TextIndexCreator.FIELD,word);
+  TopDocs topDocs=searcher.search(new TermQuery(term),MAX_EXAMPLES);
+  for (  ScoreDoc scoreDoc : topDocs.scoreDocs) {
+    String sentence=searcher.doc(scoreDoc.doc).get(TextIndexCreator.FIELD);
+    fw.write(sentence + "\n");
+  }
+}

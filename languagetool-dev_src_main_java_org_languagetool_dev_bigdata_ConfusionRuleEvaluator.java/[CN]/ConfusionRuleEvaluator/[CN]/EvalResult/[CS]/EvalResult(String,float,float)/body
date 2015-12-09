@@ -1,5 +1,5 @@
 {
   this.summary=summary;
-  this.latestPrecision=latestPrecision;
-  this.latestRecall=latestRecall;
+  this.precision=precision;
+  this.recall=recall;
 }
