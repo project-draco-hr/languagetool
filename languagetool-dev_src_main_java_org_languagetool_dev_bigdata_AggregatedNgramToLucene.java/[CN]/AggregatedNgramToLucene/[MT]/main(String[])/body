@@ -1,0 +1,18 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: " + AggregatedNgramToLucene.class + " <inputDir>");
+    System.out.println(" <inputDir> is a directory with aggregated ngram files from Hadoop, e.g. produced by CommonCrawlNGramJob");
+    System.exit(1);
+  }
+  File inputDir=new File(args[0]);
+  File outputDir=new File(inputDir,"index");
+  System.out.println("Indexing to " + outputDir);
+  try (AggregatedNgramToLucene prg=new AggregatedNgramToLucene(outputDir)){
+    for (    File file : inputDir.listFiles()) {
+      if (file.isFile()) {
+        prg.indexInputFile(file);
+      }
+    }
+    prg.addTotalTokenCountDoc(prg.totalTokenCount,prg.indexes.get(1).indexWriter);
+  }
+ }

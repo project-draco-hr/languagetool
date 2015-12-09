@@ -1,0 +1,6 @@
+{
+  Document doc=new Document();
+  doc.add(new Field("ngram",ngram,StringField.TYPE_STORED));
+  doc.add(getCountField(count));
+  return doc;
+}

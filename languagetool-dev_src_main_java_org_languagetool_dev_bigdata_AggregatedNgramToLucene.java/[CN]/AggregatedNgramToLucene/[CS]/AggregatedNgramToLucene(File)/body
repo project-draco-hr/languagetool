@@ -1,0 +1,5 @@
+{
+  indexes.put(1,new LuceneIndex(new File(indexTopDir,"1grams")));
+  indexes.put(2,new LuceneIndex(new File(indexTopDir,"2grams")));
+  indexes.put(3,new LuceneIndex(new File(indexTopDir,"3grams")));
+}
