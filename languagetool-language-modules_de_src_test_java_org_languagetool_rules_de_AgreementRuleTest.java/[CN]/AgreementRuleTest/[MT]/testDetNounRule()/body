@@ -17,6 +17,10 @@
   assertGood("Sie erreichten 5 Prozent.");
   assertGood("Sie erreichten mehrere Prozent Zustimmung.");
   assertGood("Die Bestandteile, aus denen Schwefel besteht.");
+  assertGood("Ich tat f??r ihn, was jeder andere Autor f??r ihn tat.");
+  assertGood("Ich tat f??r ihn, was jede andere Autorin f??r ihn tat.");
+  assertGood("Ich tat f??r ihn, was jedes andere Kind f??r ihn tat.");
+  assertGood("Klebe ein Preisschild auf jedes einzelne Produkt.");
   assertGood("Das Dach von meinem Auto.");
   assertGood("Das Dach von meinen Autos.");
   assertGood("Das Dach meines Autos.");

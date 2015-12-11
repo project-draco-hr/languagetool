@@ -25,7 +25,7 @@
       }
     }
  else {
-      if (reading.getDetermination() == null) {
+      if (reading.getDetermination() == null || "jed".equals(tmpReading.getLemma())) {
         set.add(makeString(reading.getCasus(),reading.getNumerus(),reading.getGenus(),GermanToken.Determination.DEFINITE,omit));
         set.add(makeString(reading.getCasus(),reading.getNumerus(),reading.getGenus(),GermanToken.Determination.INDEFINITE,omit));
       }
