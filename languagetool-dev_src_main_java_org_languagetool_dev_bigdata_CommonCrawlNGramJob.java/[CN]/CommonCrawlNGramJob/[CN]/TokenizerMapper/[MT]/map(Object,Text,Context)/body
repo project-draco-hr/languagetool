@@ -1,5 +1,10 @@
 {
-  List<String> sentences=sentenceTokenizer.tokenize(value.toString());
+  String text=value.toString();
+  if (text.length() > MAX_TEXT_LENGTH) {
+    context.getCounter("stats","sentenceTooLong").increment(1);
+    return;
+  }
+  List<String> sentences=sentenceTokenizer.tokenize(text);
   for (  String sentence : sentences) {
     indexSentence(sentence,context);
   }

@@ -1,4 +1,5 @@
 {
+  context.getCounter("stats","sentences").increment(1);
   List<String> tokens=wordTokenizer.tokenize(sentence);
   tokens.add(0,LanguageModel.GOOGLE_SENTENCE_START);
   tokens.add(LanguageModel.GOOGLE_SENTENCE_END);
