@@ -17,6 +17,13 @@
   assertGood("Sie erreichten 5 Prozent.");
   assertGood("Sie erreichten mehrere Prozent Zustimmung.");
   assertGood("Die Bestandteile, aus denen Schwefel besteht.");
+  assertGood("Ich tat f??r ihn, was kein anderer Autor f??r ihn tat.");
+  assertGood("Ich tat f??r ihn, was keine andere Autorin f??r ihn tat.");
+  assertGood("Ich tat f??r ihn, was kein anderes Kind f??r ihn tat.");
+  assertGood("Ich tat f??r ihn, was dieser andere Autor f??r ihn tat.");
+  assertGood("Ich tat f??r ihn, was diese andere Autorin f??r ihn tat.");
+  assertGood("Ich tat f??r ihn, was dieses andere Kind f??r ihn tat.");
+  assertGood("Ich tat f??r ihn, was jener andere Autor f??r ihn tat.");
   assertGood("Ich tat f??r ihn, was jeder andere Autor f??r ihn tat.");
   assertGood("Ich tat f??r ihn, was jede andere Autorin f??r ihn tat.");
   assertGood("Ich tat f??r ihn, was jedes andere Kind f??r ihn tat.");
