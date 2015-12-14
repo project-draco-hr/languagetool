@@ -1,0 +1,8 @@
+{
+  this.input=input;
+  this.sentenceTokenizer=language.getSentenceTokenizer();
+  this.wordTokenizer=new GoogleStyleWordTokenizer();
+  ngramSizeToWriter.put(1,new FileWriter(new File(outputDir,"unigrams.csv")));
+  ngramSizeToWriter.put(2,new FileWriter(new File(outputDir,"bigrams.csv")));
+  ngramSizeToWriter.put(3,new FileWriter(new File(outputDir,"trigrams.csv")));
+}

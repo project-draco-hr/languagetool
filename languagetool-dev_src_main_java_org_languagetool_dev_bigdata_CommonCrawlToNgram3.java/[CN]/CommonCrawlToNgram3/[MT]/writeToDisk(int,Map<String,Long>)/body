@@ -1,0 +1,9 @@
+{
+  System.out.println("Writing " + ngramToCount.size() + " cached ngrams to disk (ngramSize="+ ngramSize+ ")...");
+  FileWriter writer=ngramSizeToWriter.get(ngramSize);
+  for (  Map.Entry<String,Long> entry : ngramToCount.entrySet()) {
+    writer.write(entry.getKey() + "\t" + entry.getValue()+ "\n");
+  }
+  writer.flush();
+  ngramToCount.clear();
+}
