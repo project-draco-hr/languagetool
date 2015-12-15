@@ -1,3 +1,3 @@
 {
-  return Arrays.<Rule>asList(new EnglishConfusionProbabilityRule(messages,languageModel,this));
+  return Arrays.<Rule>asList(new EnglishConfusionProbabilityRule(messages,languageModel,this),new EnglishNgramProbabilityRule(messages,languageModel,this));
 }
