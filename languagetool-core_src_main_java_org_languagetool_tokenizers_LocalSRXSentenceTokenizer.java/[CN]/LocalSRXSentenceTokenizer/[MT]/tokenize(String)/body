@@ -1,3 +1,0 @@
-{
-  return SrxTools.tokenize(text,srxDocument,language.getShortName() + parCode);
-}

@@ -1,0 +1,5 @@
+{
+  this.language=Objects.requireNonNull(language);
+  this.srxDocument=SrxTools.createSrxDocument(srxInClassPath);
+  setSingleLineBreaksMarksParagraph(false);
+}

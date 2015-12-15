@@ -1,4 +1,3 @@
 {
-  this.language=language;
-  setSingleLineBreaksMarksParagraph(false);
+  this(language,"/segment.srx");
 }
