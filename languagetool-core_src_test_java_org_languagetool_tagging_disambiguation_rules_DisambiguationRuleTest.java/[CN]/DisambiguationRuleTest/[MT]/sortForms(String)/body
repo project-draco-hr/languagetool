@@ -6,5 +6,5 @@
   final String forms=wordForms.substring(wordForms.indexOf('[') + 1,wordForms.length() - 1);
   final String[] formToSort=forms.split(",");
   Arrays.sort(formToSort);
-  return word + StringTools.listToString(Arrays.asList(formToSort),",") + "]";
+  return word + String.join(",",Arrays.asList(formToSort)) + "]";
 }

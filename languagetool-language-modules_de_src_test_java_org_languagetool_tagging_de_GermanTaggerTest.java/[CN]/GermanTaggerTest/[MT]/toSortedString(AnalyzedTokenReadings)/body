@@ -7,7 +7,7 @@
       elements.add(reading.toString());
     }
   }
-  sb.append(StringTools.listToString(elements,", "));
+  sb.append(String.join(", ",elements));
   sb.append(']');
   return sb.toString();
 }

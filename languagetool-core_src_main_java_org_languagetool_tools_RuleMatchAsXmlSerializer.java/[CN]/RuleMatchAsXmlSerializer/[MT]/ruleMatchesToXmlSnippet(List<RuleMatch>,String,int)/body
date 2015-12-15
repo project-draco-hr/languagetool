@@ -19,7 +19,7 @@
     xml.append(subId);
     xml.append(" msg=\"").append(escapeXMLForAPIOutput(msg)).append('"');
     String context=contextTools.getContext(match.getFromPos(),match.getToPos(),text);
-    xml.append(" replacements=\"").append(escapeXMLForAPIOutput(listToString(match.getSuggestedReplacements(),"#"))).append('"');
+    xml.append(" replacements=\"").append(escapeXMLForAPIOutput(String.join("#",match.getSuggestedReplacements()))).append('"');
     int contextOffset=context.indexOf(startMarker);
     context=context.replaceFirst(startMarker,"");
     context=context.replaceAll("[\n\r]"," ");

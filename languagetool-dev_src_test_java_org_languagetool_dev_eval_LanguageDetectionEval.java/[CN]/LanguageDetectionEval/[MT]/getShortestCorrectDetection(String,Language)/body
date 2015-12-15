@@ -2,7 +2,7 @@
   totalInputs++;
   String[] tokens=line.split("\\s+");
   for (int i=tokens.length; i > 0; i--) {
-    String text=StringTools.listToString(Arrays.asList(tokens).subList(0,i)," ");
+    String text=String.join(" ",Arrays.asList(tokens).subList(0,i));
     Language detectedLangObj=languageIdentifier.detectLanguage(text);
     String detectedLang=null;
     if (detectedLangObj != null) {

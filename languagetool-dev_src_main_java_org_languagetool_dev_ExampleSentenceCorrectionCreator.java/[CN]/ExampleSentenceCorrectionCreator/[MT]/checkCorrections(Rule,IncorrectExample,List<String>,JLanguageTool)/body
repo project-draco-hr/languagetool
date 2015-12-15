@@ -13,7 +13,7 @@
       throw new RuntimeException("Got no rule match: " + incorrectSentence);
     }
     List<String> suggestedReplacements=matches.get(0).getSuggestedReplacements();
-    String newAttribute="correction=\"" + StringTools.listToString(suggestedReplacements,"|") + "\"";
+    String newAttribute="correction=\"" + String.join("|",suggestedReplacements) + "\"";
     addAttribute(rule,newAttribute,xmlLines);
   }
 }

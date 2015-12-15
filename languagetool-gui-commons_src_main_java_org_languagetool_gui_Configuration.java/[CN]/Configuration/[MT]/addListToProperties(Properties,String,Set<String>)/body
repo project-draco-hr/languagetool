@@ -3,6 +3,6 @@
     props.setProperty(key,"");
   }
  else {
-    props.setProperty(key,StringTools.listToString(list,DELIMITER));
+    props.setProperty(key,String.join(DELIMITER,list));
   }
 }

@@ -22,6 +22,6 @@
     }
     p*=thisP;
   }
-  debug("  " + StringTools.listToString(context," ") + " => %.20f\n",p);
+  debug("  " + String.join(" ",context) + " => %.20f\n",p);
   return new Probability(p,(float)coverage / maxCoverage);
 }

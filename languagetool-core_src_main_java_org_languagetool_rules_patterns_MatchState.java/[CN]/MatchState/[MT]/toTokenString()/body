@@ -1,4 +1,4 @@
 {
   String[] stringToFormat=toFinalString(null);
-  return StringTools.listToString(Arrays.asList(stringToFormat),"|");
+  return String.join("|",Arrays.asList(stringToFormat));
 }

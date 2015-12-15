@@ -12,5 +12,5 @@
   if (determination != null) {
     l.add(determination.toString());
   }
-  return StringTools.listToString(l,"/");
+  return String.join("/",l);
 }
