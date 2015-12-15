@@ -1,5 +1,8 @@
 {
-  checkUsageOrExit(args);
+  if (args.length != 2) {
+    System.out.println("Usage: " + WikipediaSentenceExtractor.class.getSimpleName() + " <langCode> <wikipediaXmlDump>");
+    System.exit(1);
+  }
   WikipediaSentenceExtractor extractor=new WikipediaSentenceExtractor();
   extractor.extract(Languages.getLanguageForShortName(args[0]),args[1]);
 }
