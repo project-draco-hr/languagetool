@@ -6,7 +6,7 @@
     lms.add(new LuceneLanguageModel(indexTopDir));
   }
   languageModel=new MultiLanguageModel(lms);
-  LuceneLanguageModel.clearCaches();
+  LuceneSingleIndexLanguageModel.clearCaches();
   System.out.println("Using Lucene language model from " + languageModel);
   probabilityRule=new EnglishNgramProbabilityRule(JLanguageTool.getMessageBundle(),languageModel,new English());
   langTool.addRule(probabilityRule);

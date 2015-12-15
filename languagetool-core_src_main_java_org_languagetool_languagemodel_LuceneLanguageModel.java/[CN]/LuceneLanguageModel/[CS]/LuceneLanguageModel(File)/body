@@ -1,12 +1,12 @@
 {
-  doValidateDirectory(topIndexDir);
-  this.topIndexDir=topIndexDir;
-  addIndex(topIndexDir,1);
-  addIndex(topIndexDir,2);
-  addIndex(topIndexDir,3);
-  addIndex(topIndexDir,4);
-  if (luceneSearcherMap.size() == 0) {
-    throw new RuntimeException("No directories '1grams' ... '3grams' found in " + topIndexDir);
+  File[] subDirs=getSubDirectoriesOrNull(topIndexDir);
+  if (subDirs != null && subDirs.length > 0) {
+    System.out.println("Running in multi-index mode with " + subDirs.length + " indexes: "+ topIndexDir);
+    for (    File subDir : subDirs) {
+      lms.add(new LuceneSingleIndexLanguageModel(subDir));
+    }
   }
-  maxNgram=Collections.<Integer>max(luceneSearcherMap.keySet());
+ else {
+    lms.add(new LuceneSingleIndexLanguageModel(topIndexDir));
+  }
 }

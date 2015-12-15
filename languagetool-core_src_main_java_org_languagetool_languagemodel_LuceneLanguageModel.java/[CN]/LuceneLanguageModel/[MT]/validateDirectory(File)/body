@@ -1,17 +1,6 @@
 {
-  if (!topIndexDir.exists() || !topIndexDir.isDirectory()) {
-    throw new RuntimeException("Not found or is not a directory: " + topIndexDir);
-  }
-  List<String> dirs=new ArrayList<>();
-  for (  String name : topIndexDir.list()) {
-    if (name.matches("[123]grams")) {
-      dirs.add(name);
-    }
-  }
-  if (dirs.size() == 0) {
-    throw new RuntimeException("Directory must contain at least '1grams', '2grams', and '3grams': " + topIndexDir.getAbsolutePath());
-  }
-  if (dirs.size() < 3) {
-    throw new RuntimeException("Expected at least '1grams', '2grams', and '3grams' sub directories but only got " + dirs + " in "+ topIndexDir.getAbsolutePath());
+  File[] subDirs=getSubDirectoriesOrNull(topIndexDir);
+  if (subDirs == null || subDirs.length == 0) {
+    LuceneSingleIndexLanguageModel.validateDirectory(topIndexDir);
   }
 }

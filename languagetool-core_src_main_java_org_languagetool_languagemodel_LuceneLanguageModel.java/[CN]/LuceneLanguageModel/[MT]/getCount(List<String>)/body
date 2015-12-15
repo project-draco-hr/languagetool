@@ -1,8 +1,2 @@
 {
-  if (tokens.size() > maxNgram) {
-    throw new RuntimeException("Requested " + tokens.size() + "gram but index has only up to "+ maxNgram+ "gram: "+ tokens);
-  }
-  Objects.requireNonNull(tokens);
-  Term term=new Term("ngram",StringUtils.join(tokens," "));
-  return getCount(term,getLuceneSearcher(tokens.size()));
 }

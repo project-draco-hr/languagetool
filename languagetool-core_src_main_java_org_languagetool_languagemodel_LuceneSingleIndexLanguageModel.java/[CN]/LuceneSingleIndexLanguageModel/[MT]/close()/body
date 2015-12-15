@@ -1,0 +1,11 @@
+{
+  for (  LuceneSearcher searcher : luceneSearcherMap.values()) {
+    try {
+      searcher.reader.close();
+      searcher.directory.close();
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}

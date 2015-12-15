@@ -1,4 +1,3 @@
 {
-  Objects.requireNonNull(token1);
-  return getCount(Arrays.asList(token1));
+  return getCount(Arrays.asList(token));
 }
