@@ -1,7 +1,7 @@
 {
-  try (FileInputStream fis=new FileInputStream(xmlDumpPath)){
+  try (FileInputStream fis=new FileInputStream(xmlDumpPath);BufferedInputStream bis=new BufferedInputStream(fis);CompressorInputStream input=new CompressorStreamFactory().createCompressorInputStream(bis)){
     int sentenceCount=0;
-    WikipediaSentenceSource source=new WikipediaSentenceSource(fis,language);
+    WikipediaSentenceSource source=new WikipediaSentenceSource(input,language);
     while (source.hasNext()) {
       String sentence=source.next().getText();
       if (skipSentence(sentence)) {
