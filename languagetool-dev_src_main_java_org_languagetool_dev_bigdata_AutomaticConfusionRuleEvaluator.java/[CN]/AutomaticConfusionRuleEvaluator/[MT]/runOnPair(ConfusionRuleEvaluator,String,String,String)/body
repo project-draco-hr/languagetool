@@ -18,6 +18,6 @@
     }
   }
  else {
-    System.out.println("No good result found for " + part1 + "/"+ part2+ ":");
+    System.out.println("No good result found for " + part1 + "/"+ part2);
   }
 }
