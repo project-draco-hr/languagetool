@@ -1,7 +1,3 @@
 {
-  if (prob < 0.0) {
-    throw new RuntimeException("Probability must be >= 0: " + prob);
-  }
-  this.prob=prob;
-  this.coverage=coverage;
+  this(prob,coverage,-1);
 }

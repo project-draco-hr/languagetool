@@ -1,12 +1,12 @@
 {
   double prob=0;
   float coverage=0;
-  int i=0;
+  long occurrences=0;
   for (  LanguageModel lm : lms) {
     Probability pProb=lm.getPseudoProbability(context);
     prob+=pProb.getProb();
     coverage+=pProb.getProb();
-    i++;
+    occurrences+=pProb.getOccurrences();
   }
-  return new Probability(prob,coverage / lms.size());
+  return new Probability(prob,coverage / lms.size(),occurrences);
 }
