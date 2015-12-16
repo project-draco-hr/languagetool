@@ -14,7 +14,7 @@
         String ngram=prevToken + " " + token+ " "+ next.token;
         double prob=p.getProb();
         if (prob < minProbability) {
-          String message="The phrase '" + ngram + "' rarely occurs in ngram reference corpus";
+          String message="The phrase '" + ngram + "' rarely occurs in the reference corpus";
           RuleMatch match=new RuleMatch(this,prevToken.startPos,next.endPos,message);
           matches.add(match);
         }
