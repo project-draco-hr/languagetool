@@ -52,7 +52,7 @@
       continue;
     }
     if (reqTokenReadings == null)     continue;
-    ArrayList<String> posTagsToFind=new ArrayList<>();
+    List<String> posTagsToFind=new ArrayList<>();
     String reqPosTag=reqTokenReadings.getAnalyzedToken(0).getPOSTag();
     String prep=reqTokenReadings.getAnalyzedToken(0).getLemma();
     if (prep.equalsIgnoreCase("??????????")) {

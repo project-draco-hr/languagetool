@@ -1,4 +1,5 @@
 {
+  assertEquals("foo bar",StringTools.escapeXML("foo bar"));
   assertEquals("!??&quot;&lt;&gt;&amp;&amp;",StringTools.escapeXML("!??\"<>&&"));
   assertEquals("!??&quot;&lt;&gt;&amp;&amp;",StringTools.escapeHTML("!??\"<>&&"));
 }

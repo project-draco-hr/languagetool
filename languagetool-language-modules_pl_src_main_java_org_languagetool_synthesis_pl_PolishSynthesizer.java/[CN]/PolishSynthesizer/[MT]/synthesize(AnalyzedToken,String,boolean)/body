@@ -28,7 +28,7 @@
         }
       }
     }
-    HashSet<String> hs=new HashSet<>();
+    Set<String> hs=new HashSet<>();
     hs.addAll(results);
     results.clear();
     results.addAll(hs);
