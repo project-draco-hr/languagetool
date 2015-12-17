@@ -1,7 +1,5 @@
 {
   String tokenString=readings.getToken();
   String msg=tokenString + getSuggestion(tokenString) + StringUtils.join(replacements,", ");
-  RuleMatch potentialRuleMatch=new RuleMatch(this,readings.getStartPos(),readings.getEndPos(),msg,getShort());
-  potentialRuleMatch.setSuggestedReplacements(replacements);
-  return potentialRuleMatch;
+  return createRuleMatch(readings,replacements,msg);
 }

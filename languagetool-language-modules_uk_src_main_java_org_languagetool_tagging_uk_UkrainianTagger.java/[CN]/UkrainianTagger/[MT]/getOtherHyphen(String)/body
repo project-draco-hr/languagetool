@@ -1,0 +1,5 @@
+{
+  if (word.indexOf('\u2013') != -1)   return '\u2013';
+  if (word.indexOf('\u2011') != -1)   return '\u2011';
+  return '\u0000';
+}

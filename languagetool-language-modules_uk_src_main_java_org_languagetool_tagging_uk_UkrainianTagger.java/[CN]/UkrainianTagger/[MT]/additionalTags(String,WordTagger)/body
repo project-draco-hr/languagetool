@@ -14,7 +14,7 @@
     additionalTaggedTokens.add(new AnalyzedToken(word,IPOSTag.date.getText(),word));
     return additionalTaggedTokens;
   }
-  if (word.contains("-")) {
+  if (word.indexOf('-') != -1) {
     List<AnalyzedToken> guessedCompoundTags=compoundTagger.guessCompoundTag(word);
     return guessedCompoundTags;
   }

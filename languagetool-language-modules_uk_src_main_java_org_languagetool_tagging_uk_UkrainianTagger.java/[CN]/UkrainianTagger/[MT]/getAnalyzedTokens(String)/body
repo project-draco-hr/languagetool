@@ -1,15 +1,16 @@
 {
   List<AnalyzedToken> tokens=super.getAnalyzedTokens(word);
   if (tokens.get(0).getPOSTag() == null) {
-    if ((word.indexOf('\u2013') != -1) && word.matches(".*[??-??????????][\u2013][??-??????????].*")) {
-      String newWord=word.replace('\u2013','-');
+    char otherHyphen=getOtherHyphen(word);
+    if (otherHyphen != '\u0000' && word.matches(".*[??-??????????][\u2013\u2011][??-??????????].*")) {
+      String newWord=word.replace(otherHyphen,'-');
       List<AnalyzedToken> newTokens=super.getAnalyzedTokens(newWord);
       for (int i=0; i < newTokens.size(); i++) {
         AnalyzedToken analyzedToken=newTokens.get(i);
         if (newWord.equals(analyzedToken.getToken())) {
           String lemma=analyzedToken.getLemma();
           if (lemma != null) {
-            lemma=lemma.replace('-','\u2013');
+            lemma=lemma.replace('-',otherHyphen);
           }
           AnalyzedToken newToken=new AnalyzedToken(word,analyzedToken.getPOSTag(),lemma);
           newTokens.set(i,newToken);

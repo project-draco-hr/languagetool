@@ -1,0 +1,5 @@
+{
+  RuleMatch potentialRuleMatch=new RuleMatch(this,readings.getStartPos(),readings.getEndPos(),msg,getShort());
+  potentialRuleMatch.setSuggestedReplacements(replacements);
+  return potentialRuleMatch;
+}
