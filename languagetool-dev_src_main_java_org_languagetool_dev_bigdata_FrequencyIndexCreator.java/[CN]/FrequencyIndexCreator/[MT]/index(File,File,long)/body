@@ -1,7 +1,7 @@
 {
   System.out.println(file);
   String name=file.getName();
-  if (name.matches(".*_[A-Z]+_.*")) {
+  if (IGNORE_POS && name.matches(".*_[A-Z]+_.*")) {
     System.out.println("Skipping POS tag file " + name);
     return;
   }

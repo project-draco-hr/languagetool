@@ -19,5 +19,6 @@
   FrequencyIndexCreator creator=new FrequencyIndexCreator(mode);
   System.out.println("Mode: " + mode);
   System.out.println("Minimum year: " + MIN_YEAR);
+  System.out.println("Ignore POS tags: " + IGNORE_POS);
   creator.run(new File(args[1]),new File(args[2]));
 }
