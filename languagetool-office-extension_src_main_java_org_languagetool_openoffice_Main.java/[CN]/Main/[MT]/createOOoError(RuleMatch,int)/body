@@ -9,7 +9,14 @@
     aError.aShortComment=aError.aFullComment;
   }
   aError.aShortComment=org.languagetool.gui.Tools.shortenComment(aError.aShortComment);
-  aError.aSuggestions=ruleMatch.getSuggestedReplacements().toArray(new String[ruleMatch.getSuggestedReplacements().size()]);
+  int numSuggestions=ruleMatch.getSuggestedReplacements().size();
+  String[] allSuggestions=ruleMatch.getSuggestedReplacements().toArray(new String[numSuggestions]);
+  if (numSuggestions > MAX_SUGGESTIONS) {
+    aError.aSuggestions=Arrays.copyOfRange(allSuggestions,0,MAX_SUGGESTIONS);
+  }
+ else {
+    aError.aSuggestions=allSuggestions;
+  }
   aError.nErrorStart=ruleMatch.getFromPos() + startIndex;
   aError.nErrorLength=ruleMatch.getToPos() - ruleMatch.getFromPos();
   aError.aRuleIdentifier=ruleMatch.getRule().getId();
