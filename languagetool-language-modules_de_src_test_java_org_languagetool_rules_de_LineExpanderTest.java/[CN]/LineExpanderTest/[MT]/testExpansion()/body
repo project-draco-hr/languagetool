@@ -1,0 +1,10 @@
+{
+  assertThat(expand(""),is("[]"));
+  assertThat(expand("Das"),is("[Das]"));
+  assertThat(expand("Tisch/E"),is("[Tisch, Tische]"));
+  assertThat(expand("Tische/N"),is("[Tische, Tischen]"));
+  assertThat(expand("Auto/S"),is("[Auto, Autos]"));
+  assertThat(expand("klein/A"),is("[klein, kleine, kleiner, kleines, kleinen, kleinem]"));
+  assertThat(expand("x/NSE"),is("[x, xn, xs, xe]"));
+  assertThat(expand("x/NA"),is("[x, xn, xe, xer, xes, xen, xem]"));
+}
