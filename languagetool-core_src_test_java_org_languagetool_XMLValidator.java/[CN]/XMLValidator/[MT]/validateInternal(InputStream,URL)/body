@@ -1,4 +1,0 @@
-{
-  final Validator validator=getValidator(xmlSchema);
-  validator.validate(new StreamSource(xml));
-}

@@ -5,7 +5,7 @@
       throw new IOException("XML schema not found in classpath: " + xmlSchemaPath);
     }
     final ByteArrayInputStream stream=new ByteArrayInputStream(xml.getBytes("utf-8"));
-    validateInternal(stream,schemaUrl);
+    validateInternal(new StreamSource(stream),schemaUrl);
   }
  catch (  SAXException e) {
     throw new RuntimeException(e);

@@ -7,7 +7,7 @@
     if (schemaUrl == null) {
       throw new IOException("XML schema not found in classpath: " + xmlSchemaPath);
     }
-    validateInternal(xmlStream,schemaUrl);
+    validateInternal(new StreamSource(xmlStream),schemaUrl);
   }
  catch (  Exception e) {
     throw new IOException("Cannot load or parse '" + filename + "'",e);
