@@ -1,7 +1,0 @@
-{
-  String property=props.getProperty(option);
-  if (property == null) {
-    return null;
-  }
-  return property.trim();
-}

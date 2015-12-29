@@ -1,3 +1,0 @@
-{
-  return hasOption(option) && "true".equals(getOption(option));
-}
