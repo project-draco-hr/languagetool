@@ -1,4 +1,4 @@
 {
-  this.example=example;
+  this.example=Objects.requireNonNull(example);
   this.corrections=Collections.unmodifiableList(new ArrayList<>(corrections));
 }

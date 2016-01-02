@@ -1,6 +1,6 @@
 {
   List<String> corrections=incorrectExample.getCorrections();
-  if (corrections != null && corrections.size() == 0) {
+  if (corrections.isEmpty()) {
     for (    Rule r : tool.getAllActiveRules()) {
       tool.disableRule(r.getId());
     }
