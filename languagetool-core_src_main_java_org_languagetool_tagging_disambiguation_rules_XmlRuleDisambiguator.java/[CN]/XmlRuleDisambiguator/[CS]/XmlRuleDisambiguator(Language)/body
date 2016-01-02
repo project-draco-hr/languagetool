@@ -1,6 +1,6 @@
 {
   Objects.requireNonNull(language);
-  final String disambiguationFile=JLanguageTool.getDataBroker().getResourceDir() + "/" + language.getShortName()+ "/"+ DISAMBIGUATION_FILE;
+  String disambiguationFile=language.getShortName() + "/" + DISAMBIGUATION_FILE;
   try {
     disambiguationRules=loadPatternRules(disambiguationFile);
   }

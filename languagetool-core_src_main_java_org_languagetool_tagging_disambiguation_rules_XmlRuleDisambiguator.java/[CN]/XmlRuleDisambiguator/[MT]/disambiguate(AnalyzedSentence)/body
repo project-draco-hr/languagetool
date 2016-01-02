@@ -1,6 +1,6 @@
 {
   AnalyzedSentence sentence=input;
-  for (  final DisambiguationPatternRule patternRule : disambiguationRules) {
+  for (  DisambiguationPatternRule patternRule : disambiguationRules) {
     sentence=patternRule.replace(sentence);
   }
   return sentence;
