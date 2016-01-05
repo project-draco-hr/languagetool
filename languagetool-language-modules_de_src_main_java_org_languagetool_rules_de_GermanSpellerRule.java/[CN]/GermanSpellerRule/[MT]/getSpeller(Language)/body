@@ -3,7 +3,7 @@
     throw new RuntimeException("Language is not a variant of German: " + language);
   }
   try {
-    final String morfoFile="/de/hunspell/de_" + language.getCountries()[0] + ".dict";
+    String morfoFile="/de/hunspell/de_" + language.getCountries()[0] + ".dict";
     if (JLanguageTool.getDataBroker().resourceExists(morfoFile)) {
       try (InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream("/de/hunspell/spelling.txt");BufferedReader br=new BufferedReader(new InputStreamReader(stream,"utf-8"))){
         return new MorfologikMultiSpeller(morfoFile,new ExpandingReader(br),MAX_EDIT_DISTANCE);

@@ -1,10 +1,10 @@
 {
-  final List<String> result=new ArrayList<>();
+  List<String> result=new ArrayList<>();
   for (  String suggestion : suggestions) {
     boolean moveSuggestionToTop=false;
     for (    Replacement replacement : REPL) {
-      final String modifiedMisspelling=misspelling.replace(replacement.key,replacement.value);
-      final boolean equalsAfterReplacement=modifiedMisspelling.equals(suggestion);
+      String modifiedMisspelling=misspelling.replace(replacement.key,replacement.value);
+      boolean equalsAfterReplacement=modifiedMisspelling.equals(suggestion);
       if (equalsAfterReplacement) {
         moveSuggestionToTop=true;
         break;
