@@ -1,3 +1,5 @@
 File file
 File indexBaseDir
 long totalBytes
+int inputFiles
+DataWriter globalDataWriter

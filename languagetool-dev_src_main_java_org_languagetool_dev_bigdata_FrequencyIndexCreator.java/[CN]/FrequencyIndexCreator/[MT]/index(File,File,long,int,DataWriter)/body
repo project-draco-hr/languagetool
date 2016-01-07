@@ -37,19 +37,30 @@
       System.out.println("Not skipping " + name + " - index dir '"+ indexDir+ "' already exists but is not complete");
     }
   }
-  System.out.println("Index dir: " + indexDir);
+  System.out.println("Index dir: " + indexDir + " - "+ (++inputFileCount)+ " of "+ inputFiles);
   try {
     if (mode == Mode.PlainText) {
-      try (DataWriter dw=new TextDataWriter(indexDir)){
-        indexLinesFromGoogleFile(dw,file,totalBytes,hiveMode);
+      if (globalDataWriter != null) {
+        indexLinesFromGoogleFile(globalDataWriter,file,totalBytes,hiveMode);
       }
-     }
  else {
-      try (DataWriter dw=new LuceneDataWriter(indexDir)){
-        indexLinesFromGoogleFile(dw,file,totalBytes,hiveMode);
+        try (DataWriter dw=new TextDataWriter(indexDir)){
+          indexLinesFromGoogleFile(dw,file,totalBytes,hiveMode);
+        }
+         markIndexAsComplete(indexDir);
       }
-     }
-    markIndexAsComplete(indexDir);
+    }
+ else {
+      if (globalDataWriter != null) {
+        indexLinesFromGoogleFile(globalDataWriter,file,totalBytes,hiveMode);
+      }
+ else {
+        try (DataWriter dw=new LuceneDataWriter(indexDir)){
+          indexLinesFromGoogleFile(dw,file,totalBytes,hiveMode);
+        }
+         markIndexAsComplete(indexDir);
+      }
+    }
   }
  catch (  Exception e) {
     throw new RuntimeException("Could not index " + file,e);
