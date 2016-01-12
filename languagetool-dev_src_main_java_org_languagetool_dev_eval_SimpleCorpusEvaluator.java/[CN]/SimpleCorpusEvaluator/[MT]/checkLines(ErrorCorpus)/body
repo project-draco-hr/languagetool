@@ -9,23 +9,17 @@
       System.out.println(StringUtils.repeat(" ",match.getFromPos()) + StringUtils.repeat("^",length));
     }
     List<Span> detectedErrorPositions=new ArrayList<>();
+    int tmpGoodMatches=0;
     for (    RuleMatch match : matches) {
       boolean alreadyCounted=errorAlreadyCounted(match,detectedErrorPositions);
       if (!alreadyCounted && sentence.hasErrorCoveredByMatchAndGoodFirstSuggestion(match)) {
-        goodMatches++;
-        perfectMatches++;
+        tmpGoodMatches++;
         matchCount++;
-        if (isConfusionRule(match)) {
-          perfectConfusionMatches++;
-        }
         System.out.println("    [++] " + match + ": "+ match.getSuggestedReplacements());
       }
- else       if (!alreadyCounted && sentence.hasErrorCoveredByMatch(match)) {
-        goodMatches++;
+ else       if (!alreadyCounted && sentence.hasErrorOverlappingWithMatch(match)) {
+        tmpGoodMatches++;
         matchCount++;
-        if (isConfusionRule(match)) {
-          goodConfusionMatches++;
-        }
         System.out.println("    [+ ] " + match + ": "+ match.getSuggestedReplacements());
       }
  else       if (alreadyCounted) {
@@ -34,12 +28,9 @@
  else {
         System.out.println("    [  ] " + match + ": "+ match.getSuggestedReplacements());
         matchCount++;
-        if (isConfusionRule(match)) {
-          badConfusionMatches++;
-          badConfusionMatchWords.add(sentence.getMarkupText().substring(match.getFromPos(),match.getToPos()));
-        }
       }
       detectedErrorPositions.add(new Span(match.getFromPos(),match.getToPos()));
     }
+    goodMatches+=Math.min(tmpGoodMatches,1);
   }
 }
