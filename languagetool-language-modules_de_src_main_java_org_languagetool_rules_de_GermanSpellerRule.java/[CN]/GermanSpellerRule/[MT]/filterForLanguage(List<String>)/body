@@ -5,4 +5,11 @@
       suggestions.set(i,s.replace("??","ss"));
     }
   }
+  Iterator<String> iterator=suggestions.iterator();
+  while (iterator.hasNext()) {
+    String suggestion=iterator.next();
+    if (suggestion.length() > 1 && suggestion.startsWith("-")) {
+      iterator.remove();
+    }
+  }
 }
