@@ -5,4 +5,5 @@
     singular.add(pair.singular);
     plural.add(pair.plural);
   }
+  addExamplePair(Example.wrong("Die Autos <marker>ist</marker> schnell."),Example.fixed("Die Autos <marker>sind</marker> schnell."));
 }
