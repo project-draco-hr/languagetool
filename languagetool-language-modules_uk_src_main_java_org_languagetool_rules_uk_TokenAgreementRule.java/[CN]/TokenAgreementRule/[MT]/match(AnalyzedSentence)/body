@@ -79,9 +79,11 @@
           continue;
         }
       }
-      if (prep.equalsIgnoreCase("????") && Character.isUpperCase(token.charAt(0)) && posTag.matches("noun:.:v_rod.*")) {
-        reqTokenReadings=null;
-        continue;
+      if (prep.equalsIgnoreCase("????")) {
+        if ((Character.isUpperCase(token.charAt(0)) && posTag.matches("noun:.:v_rod.*")) || (posTag.matches(".*[fl]name.*") && ((i > 1 && NAMES.contains(tokens[i - 2].getAnalyzedToken(0).getToken())) || (i > 2 && NAMES.contains(tokens[i - 3].getAnalyzedToken(0).getLemma()))))) {
+          reqTokenReadings=null;
+          continue;
+        }
       }
       if (prep.equalsIgnoreCase("??")) {
         if (token.equals("????????")) {
