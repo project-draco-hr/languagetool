@@ -31,6 +31,7 @@
   assertGood("Eine Stadt, in der zurzeit eine rege Baut??tigkeit herrscht.");
   assertGood("... wo es zu einer regen Baut??tigkeit kam.");
   assertGood("Mancher ausscheidende Politiker hinterl??sst eine L??cke.");
+  assertGood("Kern einer jeden Trag??die ist es, ..");
   assertGood("Das Dach von meinem Auto.");
   assertGood("Das Dach von meinen Autos.");
   assertGood("Das Dach meines Autos.");
