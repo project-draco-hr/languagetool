@@ -1,0 +1,3 @@
+{
+  rule.match(langTool.getAnalyzedSentence("Die nicht Teil des N??herungsmodells sind"));
+}
