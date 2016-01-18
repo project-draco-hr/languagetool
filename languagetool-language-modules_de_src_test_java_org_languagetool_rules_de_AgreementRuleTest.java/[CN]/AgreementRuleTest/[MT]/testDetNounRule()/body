@@ -130,4 +130,6 @@
   assertBad("Ich gebe dir das kleinem Kaninchen.");
   assertBad("Ich gebe dir das kleiner Kaninchen.");
   assertGood("Ich gebe dir das kleine Kaninchen.");
+  assertBad("Hier steht Ihre Text.");
+  assertBad("Hier steht ihre Text.");
 }
