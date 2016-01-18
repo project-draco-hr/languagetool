@@ -16,7 +16,7 @@
         tokenPositionList.add(j,0);
       }
     }
-    for (int l=0; l <= startPositionCorrection; l++) {
+    for (int l=0; l <= startPositionCorrection && tokenPositionList.size() > l; l++) {
       correctedStPos+=tokenPositionList.get(l);
     }
     int w=startPositionCorrection;
