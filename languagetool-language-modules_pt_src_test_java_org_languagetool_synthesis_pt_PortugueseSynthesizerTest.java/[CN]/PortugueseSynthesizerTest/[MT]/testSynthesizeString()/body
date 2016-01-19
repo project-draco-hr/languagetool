@@ -1,0 +1,5 @@
+{
+  PortugueseSynthesizer synth=new PortugueseSynthesizer();
+  assertEquals(synth.synthesize(dummyToken("blablabla"),"blablabla").length,0);
+  assertEquals("[bois]",Arrays.toString(getSortedArray(synth.synthesize(dummyToken("boi"),"NCMP000",true))));
+}
