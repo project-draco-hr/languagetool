@@ -35,6 +35,7 @@
     text=ABBR_DOT_PATTERN3.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2"+ ABBR_DOT_SUBST);
     text=ABBR_DOT_PATTERN6.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST);
     text=ABBR_DOT_PATTERN7.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2"+ ABBR_DOT_SUBST);
+    text=ABBR_DOT_PATTERN8.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2");
   }
   if (text.contains(":")) {
     text=COLON_NUMBERS_PATTERN.matcher(text).replaceAll("$1" + COLON_DOT_SUBST + "$2");

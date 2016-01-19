@@ -73,8 +73,8 @@
     }
     if (!getReadingWithVidmPosTag(posTagsToFind,tokenReadings)) {
       if (isTokenToSkip(tokenReadings))       continue;
-      if (prep.equalsIgnoreCase("??") || prep.equalsIgnoreCase("??") || prep.equals("????????")|| prep.equals("??????")) {
-        if (PosTagHelper.hasPosTag(tokenReadings,".*p:v_naz[^&]*")) {
+      if (prep.equalsIgnoreCase("??") || prep.equalsIgnoreCase("??") || prep.equals("????????")|| prep.equals("??????")|| prep.equals("????")) {
+        if (PosTagHelper.hasPosTag(tokenReadings,".*p:v_naz.*:anim[^&]*")) {
           reqTokenReadings=null;
           continue;
         }
