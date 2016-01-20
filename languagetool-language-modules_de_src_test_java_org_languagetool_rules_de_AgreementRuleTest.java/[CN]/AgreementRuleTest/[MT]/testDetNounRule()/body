@@ -88,6 +88,9 @@
   assertGood("Wenn dies gro??en Erfolg hat, werden wir es weiter f??rdern.");
   assertGood("Die Ereignisse dieses einen Jahres waren sehr schlimm.");
   assertGood("Er musste einen Hochwasser f??hrenden Fluss nach dem anderen ??berqueren.");
+  assertGood("Darf ich Ihren F??ller f??r ein paar Minuten ausleihen?");
+  assertGood("Bringen Sie diesen Gep??ckaufkleber an Ihrem Gep??ck an.");
+  assertGood("Extras, die den Wert Ihres Autos erh??hen.");
   assertBad("Es sind die Tisch.","dem Tisch","den Tisch","der Tisch","die Tische");
   assertBad("Es sind das Tisch.","dem Tisch","den Tisch","der Tisch");
   assertBad("Es sind die Haus.","das Haus","dem Haus","die H??user");
