@@ -1,6 +1,5 @@
 {
-  String text=sentence.getText();
-  List<GoogleToken> tokens=GoogleToken.getGoogleTokens(text,true,getGoogleStyleWordTokenizer());
+  List<GoogleToken> tokens=GoogleToken.getGoogleTokens(sentence,true,getGoogleStyleWordTokenizer());
   List<RuleMatch> matches=new ArrayList<>();
   GoogleToken prevPrevToken=null;
   GoogleToken prevToken=null;
@@ -14,9 +13,20 @@
         String ngram=prevToken + " " + token+ " "+ next.token;
         double prob=p.getProb();
         if (prob < minProbability) {
-          String message="The phrase '" + ngram + "' rarely occurs in the reference corpus ("+ p.getOccurrences()+ " times)";
-          RuleMatch match=new RuleMatch(this,prevToken.startPos,next.endPos,message);
-          matches.add(match);
+          Alternatives betterAlternatives=getBetterAlternatives(prevToken,token,next,googleToken,p);
+          if (!betterAlternatives.alternativesConsidered || betterAlternatives.alternatives.size() > 0) {
+            String message="The phrase '" + ngram + "' rarely occurs in the reference corpus ("+ p.getOccurrences()+ " times)";
+            RuleMatch match=new RuleMatch(this,prevToken.startPos,next.endPos,message);
+            List<String> suggestions=new ArrayList<>();
+            for (            Alternative betterAlternative : betterAlternatives.alternatives) {
+              suggestions.add(prevToken.token + " " + betterAlternative.token+ " "+ next.token);
+            }
+            match.setSuggestedReplacements(suggestions);
+            matches.add(match);
+          }
+ else {
+            debug("Ignoring match as all alternatives are less probable: '%s' in '%s'\n",ngram,sentence.getText());
+          }
         }
       }
     }

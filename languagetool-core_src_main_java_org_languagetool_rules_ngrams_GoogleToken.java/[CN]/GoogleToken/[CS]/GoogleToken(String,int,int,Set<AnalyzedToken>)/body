@@ -2,5 +2,5 @@
   this.token=token;
   this.startPos=startPos;
   this.endPos=endPos;
-  posTags=Collections.emptySet();
+  this.posTags=posTags;
 }

@@ -1,0 +1,11 @@
+{
+  Set<AnalyzedToken> result=new HashSet<>();
+  for (  AnalyzedTokenReadings tokens : sentence.getTokensWithoutWhitespace()) {
+    if (tokens.getStartPos() == startPos && tokens.getEndPos() == endPos) {
+      for (      AnalyzedToken analyzedToken : tokens.getReadings()) {
+        result.add(analyzedToken);
+      }
+    }
+  }
+  return result;
+}

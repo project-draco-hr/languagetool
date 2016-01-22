@@ -1,0 +1,11 @@
+{
+  List<GoogleToken> tokens=GoogleToken.getGoogleTokens("This, isn't a test.",false,new MyWordTokenizer());
+  assertThat(tokens.get(0).token,is("This"));
+  assertThat(tokens.get(0).posTags.toString(),is("[]"));
+  assertThat(tokens.get(1).token,is(","));
+  assertThat(tokens.get(2).token,is("isn"));
+  assertThat(tokens.get(3).token,is("'t"));
+  assertThat(tokens.get(4).token,is("a"));
+  assertThat(tokens.get(5).token,is("test"));
+  assertThat(tokens.get(6).token,is("."));
+}

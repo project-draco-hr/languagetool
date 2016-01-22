@@ -1,0 +1,18 @@
+{
+  List<GoogleToken> result=new ArrayList<>();
+  if (addStartToken) {
+    result.add(new GoogleToken(LanguageModel.GOOGLE_SENTENCE_START,0,0));
+  }
+  List<String> tokens=wordTokenizer.tokenize(sentence.getText());
+  int startPos=0;
+  for (  String token : tokens) {
+    if (!StringTools.isWhitespace(token)) {
+      int endPos=startPos + token.length();
+      Set<AnalyzedToken> pos=findOriginalAnalyzedTokens(sentence,startPos,endPos);
+      GoogleToken gToken=new GoogleToken(token,startPos,endPos,pos);
+      result.add(gToken);
+    }
+    startPos+=token.length();
+  }
+  return result;
+}

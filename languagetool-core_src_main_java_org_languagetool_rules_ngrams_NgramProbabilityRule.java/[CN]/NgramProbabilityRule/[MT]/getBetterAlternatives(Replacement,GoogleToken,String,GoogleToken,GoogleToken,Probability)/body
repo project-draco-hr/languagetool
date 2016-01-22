@@ -1,0 +1,24 @@
+{
+  Optional<AnalyzedToken> reading=getByPosTag(googleToken.getPosTags(),replacement.tag);
+  List<Alternative> betterAlternatives=new ArrayList<>();
+  if (reading.isPresent()) {
+    Synthesizer synthesizer=language.getSynthesizer();
+    if (synthesizer != null) {
+      String[] forms=synthesizer.synthesize(new AnalyzedToken(token,"not_used",reading.get().getLemma()),replacement.alternativeTag);
+      for (      String alternativeToken : forms) {
+        List<String> ngram=Arrays.asList(prevToken.token,token,next.token);
+        List<String> alternativeNgram=Arrays.asList(prevToken.token,alternativeToken,next.token);
+        Probability alternativeProbability=lm.getPseudoProbability(alternativeNgram);
+        if (alternativeProbability.getProb() > p.getProb()) {
+          debug("More probable alternative to '%s': %s\n",ngram,alternativeNgram);
+          betterAlternatives.add(new Alternative(alternativeToken,alternativeProbability));
+        }
+ else {
+          debug("Less probable alternative to '%s': %s\n",ngram,alternativeNgram);
+        }
+      }
+      return Optional.of(betterAlternatives);
+    }
+  }
+  return Optional.empty();
+}

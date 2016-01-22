@@ -1,0 +1,13 @@
+{
+  List<Replacement> replacements=Arrays.asList(new Replacement("NNS","NN"),new Replacement("NN","NNS"));
+  List<Alternative> betterAlternatives=new ArrayList<>();
+  boolean alternativesConsidered=false;
+  for (  Replacement replacement : replacements) {
+    Optional<List<Alternative>> alternatives=getBetterAlternatives(replacement,prevToken,token,next,googleToken,p);
+    if (alternatives.isPresent()) {
+      betterAlternatives.addAll(alternatives.get());
+      alternativesConsidered=true;
+    }
+  }
+  return new Alternatives(betterAlternatives,alternativesConsidered);
+}

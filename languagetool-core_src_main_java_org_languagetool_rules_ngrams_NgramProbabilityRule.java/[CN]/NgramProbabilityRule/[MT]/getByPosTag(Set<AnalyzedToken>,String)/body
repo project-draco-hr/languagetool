@@ -1,0 +1,8 @@
+{
+  for (  AnalyzedToken token : tokens) {
+    if (wantedPosTag.equals(token.getPOSTag())) {
+      return Optional.of(token);
+    }
+  }
+  return Optional.empty();
+}

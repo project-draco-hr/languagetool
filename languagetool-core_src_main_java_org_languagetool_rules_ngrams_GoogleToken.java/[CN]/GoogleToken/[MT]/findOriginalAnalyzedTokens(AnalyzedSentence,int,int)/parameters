@@ -1,0 +1,3 @@
+AnalyzedSentence sentence
+int startPos
+int endPos

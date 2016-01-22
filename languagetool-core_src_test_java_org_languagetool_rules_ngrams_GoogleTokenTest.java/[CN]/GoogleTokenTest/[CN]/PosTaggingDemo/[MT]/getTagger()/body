@@ -1,0 +1,35 @@
+{
+  return new Tagger(){
+    @Override public List<AnalyzedTokenReadings> tag(    final List<String> sentenceTokens){
+      final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
+      int pos=0;
+      for (      String word : sentenceTokens) {
+        final List<AnalyzedToken> l=new ArrayList<>();
+switch (word) {
+case "This":
+          l.add(new AnalyzedToken(word,"DT",word));
+        break;
+case "is":
+      l.add(new AnalyzedToken(word,"VBZ",word));
+    break;
+case "test":
+  l.add(new AnalyzedToken(word,"NN",word));
+break;
+default :
+l.add(new AnalyzedToken(word,null,word));
+break;
+}
+tokenReadings.add(new AnalyzedTokenReadings(l,pos));
+pos+=word.length();
+}
+return tokenReadings;
+}
+@Override public AnalyzedTokenReadings createNullToken(String token,int startPos){
+return null;
+}
+@Override public AnalyzedToken createToken(String token,String posTag){
+return null;
+}
+}
+;
+}

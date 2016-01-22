@@ -1,0 +1,4 @@
+String token
+int startPos
+int endPos
+Set<AnalyzedToken> posTags
