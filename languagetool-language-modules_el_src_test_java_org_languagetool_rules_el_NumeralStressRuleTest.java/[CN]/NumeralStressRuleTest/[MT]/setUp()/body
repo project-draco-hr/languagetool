@@ -1,0 +1,4 @@
+{
+  rule=new NumeralStressRule(TestTools.getMessages("el"));
+  langTool=new JLanguageTool(new Greek());
+}

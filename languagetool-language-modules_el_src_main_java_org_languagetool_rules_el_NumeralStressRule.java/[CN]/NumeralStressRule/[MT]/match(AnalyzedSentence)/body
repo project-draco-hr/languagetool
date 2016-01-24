@@ -1,0 +1,21 @@
+{
+  final List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  for (  AnalyzedTokenReadings token : tokens) {
+    Matcher m=numeral.matcher(token.getToken());
+    if (m.matches()) {
+      String number=m.group(1);
+      String suffix=m.group(2);
+      boolean needsStress=stressedNumber.matcher(number).matches();
+      boolean hasStress=stressedSuffix.matcher(suffix).matches();
+      if (needsStress != hasStress) {
+        suffix=suffixMap.get(suffix);
+        String suggestion=number + suffix;
+        String msg="<suggestion>" + suggestion + "</suggestion>";
+        RuleMatch match=new RuleMatch(this,token.getStartPos(),token.getEndPos(),msg,"???????????????? ??????????????????????");
+        ruleMatches.add(match);
+      }
+    }
+  }
+  return toRuleMatchArray(ruleMatches);
+}
