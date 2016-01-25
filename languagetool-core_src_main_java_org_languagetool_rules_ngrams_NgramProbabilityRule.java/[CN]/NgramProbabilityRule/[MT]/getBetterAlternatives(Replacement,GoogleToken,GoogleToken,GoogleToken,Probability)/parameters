@@ -1,6 +1,5 @@
 Replacement replacement
 GoogleToken prevToken
-String token
+GoogleToken token
 GoogleToken next
-GoogleToken googleToken
 Probability p

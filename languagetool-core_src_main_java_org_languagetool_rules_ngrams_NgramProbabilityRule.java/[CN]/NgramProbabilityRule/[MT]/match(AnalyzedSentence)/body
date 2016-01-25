@@ -13,7 +13,7 @@
         String ngram=prevToken + " " + token+ " "+ next.token;
         double prob=p.getProb();
         if (prob < minProbability) {
-          Alternatives betterAlternatives=getBetterAlternatives(prevToken,token,next,googleToken,p);
+          Alternatives betterAlternatives=getBetterAlternatives(prevToken,token,next,googleToken,p,sentence);
           if (!betterAlternatives.alternativesConsidered || betterAlternatives.alternatives.size() > 0) {
             String message="The phrase '" + ngram + "' rarely occurs in the reference corpus ("+ p.getOccurrences()+ " times)";
             RuleMatch match=new RuleMatch(this,prevToken.startPos,next.endPos,message);

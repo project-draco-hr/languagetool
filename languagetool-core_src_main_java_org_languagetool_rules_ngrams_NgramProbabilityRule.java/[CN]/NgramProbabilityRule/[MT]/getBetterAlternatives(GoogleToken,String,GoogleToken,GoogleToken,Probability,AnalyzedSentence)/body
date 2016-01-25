@@ -1,0 +1,30 @@
+{
+  List<Alternative> betterAlternatives=new ArrayList<>();
+  boolean alternativesConsidered=false;
+  for (  Replacement replacement : REPLACEMENTS) {
+    Optional<List<Alternative>> alternatives=getBetterAlternatives(replacement,prevToken,googleToken,next,p);
+    if (alternatives.isPresent()) {
+      betterAlternatives.addAll(alternatives.get());
+      alternativesConsidered=true;
+    }
+  }
+  for (  AdvancedReplacement advReplacement : ADV_REPLACEMENTS) {
+    PatternRule rule=new PatternRule("tmpId",language,advReplacement.patternTokens,"unused_description","unused_message","unused_shortMessage");
+    RuleMatch[] matches=rule.match(sentence);
+    for (    RuleMatch match : matches) {
+      if (googleToken.startPos > match.getFromPos() && googleToken.endPos < match.getToPos()) {
+        String replacement=advReplacement.alternativeText.replace("$1",token);
+        List<String> newNgram=new ArrayList<>();
+        newNgram.add(prevToken.token);
+        Collections.addAll(newNgram,replacement.split(" "));
+        newNgram.add(next.token);
+        Probability newProb=lm.getPseudoProbability(newNgram);
+        if (newProb.getProb() * 1000000L > p.getProb()) {
+          betterAlternatives.add(new Alternative(replacement,newProb));
+        }
+        alternativesConsidered=true;
+      }
+    }
+  }
+  return new Alternatives(betterAlternatives,alternativesConsidered);
+}

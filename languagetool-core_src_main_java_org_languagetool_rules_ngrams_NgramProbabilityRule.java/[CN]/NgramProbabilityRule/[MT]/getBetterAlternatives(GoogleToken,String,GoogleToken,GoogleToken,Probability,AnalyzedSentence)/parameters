@@ -3,3 +3,4 @@ String token
 GoogleToken next
 GoogleToken googleToken
 Probability p
+AnalyzedSentence sentence

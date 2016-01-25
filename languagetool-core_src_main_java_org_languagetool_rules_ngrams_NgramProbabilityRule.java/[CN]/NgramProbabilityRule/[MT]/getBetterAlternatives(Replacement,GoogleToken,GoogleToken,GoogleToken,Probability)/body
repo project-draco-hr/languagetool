@@ -1,15 +1,15 @@
 {
-  Optional<AnalyzedToken> reading=getByPosTag(googleToken.getPosTags(),replacement.tag);
+  Optional<AnalyzedToken> reading=getByPosTag(token.getPosTags(),replacement.tagRegex);
   List<Alternative> betterAlternatives=new ArrayList<>();
   if (reading.isPresent()) {
     Synthesizer synthesizer=language.getSynthesizer();
     if (synthesizer != null) {
-      String[] forms=synthesizer.synthesize(new AnalyzedToken(token,"not_used",reading.get().getLemma()),replacement.alternativeTag);
+      String[] forms=synthesizer.synthesize(new AnalyzedToken(token.token,"not_used",reading.get().getLemma()),replacement.alternativeTag);
       for (      String alternativeToken : forms) {
         if (alternativeToken.equals(token)) {
           continue;
         }
-        List<String> ngram=Arrays.asList(prevToken.token,token,next.token);
+        List<String> ngram=Arrays.asList(prevToken.token,token.token,next.token);
         List<String> alternativeNgram=Arrays.asList(prevToken.token,alternativeToken,next.token);
         Probability alternativeProbability=lm.getPseudoProbability(alternativeNgram);
         if (alternativeProbability.getProb() >= p.getProb()) {

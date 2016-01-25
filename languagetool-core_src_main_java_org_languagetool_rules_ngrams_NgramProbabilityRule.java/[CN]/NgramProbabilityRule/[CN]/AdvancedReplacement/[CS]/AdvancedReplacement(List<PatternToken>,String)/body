@@ -1,0 +1,4 @@
+{
+  this.patternTokens=patternTokens;
+  this.alternativeText=alternativeText;
+}

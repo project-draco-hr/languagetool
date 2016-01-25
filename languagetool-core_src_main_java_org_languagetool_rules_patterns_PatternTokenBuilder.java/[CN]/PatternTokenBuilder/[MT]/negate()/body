@@ -1,0 +1,4 @@
+{
+  token.setNegation(true);
+  return this;
+}
