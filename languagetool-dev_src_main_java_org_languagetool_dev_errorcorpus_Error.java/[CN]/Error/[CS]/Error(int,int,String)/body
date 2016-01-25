@@ -1,4 +1,7 @@
 {
+  if (endPos < startPos) {
+    throw new RuntimeException("end pos < start pos: " + endPos + " < "+ startPos);
+  }
   this.startPos=startPos;
   this.endPos=endPos;
   this.correction=correction;
