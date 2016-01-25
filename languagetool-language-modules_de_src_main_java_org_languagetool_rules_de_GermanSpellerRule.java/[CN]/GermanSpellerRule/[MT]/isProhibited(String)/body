@@ -1,0 +1,3 @@
+{
+  return word.startsWith("Standart-") || super.isProhibited(word);
+}

@@ -1,0 +1,7 @@
+{
+  final GermanSpellerRule rule=new GermanSpellerRule(TestTools.getMessages("de"),GERMAN_DE);
+  rule.getSuggestions("");
+  assertTrue(rule.isProhibited("Standart-Test"));
+  assertTrue(rule.isProhibited("Weihnachtfreier"));
+  assertFalse(rule.isProhibited("Standard-Test"));
+}
