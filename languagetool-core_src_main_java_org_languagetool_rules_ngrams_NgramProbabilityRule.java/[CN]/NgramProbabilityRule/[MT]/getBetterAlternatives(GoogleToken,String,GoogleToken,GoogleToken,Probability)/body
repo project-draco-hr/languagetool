@@ -1,5 +1,5 @@
 {
-  List<Replacement> replacements=Arrays.asList(new Replacement("NNS","NN"),new Replacement("NN","NNS"));
+  List<Replacement> replacements=Arrays.asList(new Replacement("VBG","VB"),new Replacement("VBG","VBN"),new Replacement("VB","VBG"),new Replacement("VB","VBZ"),new Replacement("VB","VBN"),new Replacement("VBZ","VB"),new Replacement("VBZ","VBP"),new Replacement("NNS","NN"),new Replacement("NN","NNS"));
   List<Alternative> betterAlternatives=new ArrayList<>();
   boolean alternativesConsidered=false;
   for (  Replacement replacement : replacements) {

@@ -1,2 +1,2 @@
 Set<AnalyzedToken> tokens
-String wantedPosTag
+String wantedPosTagRegex
