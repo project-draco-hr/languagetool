@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
   AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
   for (  AnalyzedTokenReadings token : tokens) {
     Matcher m=numeral.matcher(token.getToken());
