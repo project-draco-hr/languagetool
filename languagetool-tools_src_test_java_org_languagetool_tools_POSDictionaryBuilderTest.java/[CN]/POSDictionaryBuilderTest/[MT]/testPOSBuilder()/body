@@ -9,7 +9,8 @@
     assertTrue(outFile.toFile().length() >= 40);
   }
   finally {
-    inputFile.toFile().deleteOnExit();
+    outFile.toFile().deleteOnExit();
     infoFile.toFile().deleteOnExit();
+    inputFile.toFile().deleteOnExit();
   }
 }
