@@ -21,6 +21,10 @@
         Probability newProb=lm.getPseudoProbability(newNgram);
         if (newProb.getProb() * 1000000L > p.getProb()) {
           betterAlternatives.add(new Alternative(replacement,newProb));
+          debug("More probable: %s\n",replacement);
+        }
+ else {
+          debug("Less probable: %s\n",replacement);
         }
         alternativesConsidered=true;
       }
