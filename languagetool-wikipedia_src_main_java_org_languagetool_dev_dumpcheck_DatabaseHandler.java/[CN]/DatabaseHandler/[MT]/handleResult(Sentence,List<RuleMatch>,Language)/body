@@ -7,8 +7,8 @@
       final Rule rule=match.getRule();
       insertSt.setString(2,rule.getId());
       insertSt.setString(3,rule.getCategory().getName());
-      if (rule instanceof PatternRule) {
-        final PatternRule patternRule=(PatternRule)rule;
+      if (rule instanceof AbstractPatternRule) {
+        final AbstractPatternRule patternRule=(AbstractPatternRule)rule;
         insertSt.setString(4,patternRule.getSubId());
       }
  else {

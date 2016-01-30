@@ -8,8 +8,8 @@
   contextTools.setErrorMarkerEnd("");
   for (  RuleMatch match : ruleMatches) {
     String subId="";
-    if (match.getRule() instanceof PatternRule) {
-      PatternRule pRule=(PatternRule)match.getRule();
+    if (match.getRule() instanceof AbstractPatternRule) {
+      AbstractPatternRule pRule=(AbstractPatternRule)match.getRule();
       if (pRule.getSubId() != null) {
         subId=" subId=\"" + escapeXMLForAPIOutput(pRule.getSubId()) + "\" ";
       }
