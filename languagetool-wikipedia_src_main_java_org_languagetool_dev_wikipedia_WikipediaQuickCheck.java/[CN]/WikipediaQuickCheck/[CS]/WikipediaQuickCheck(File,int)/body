@@ -1,0 +1,4 @@
+{
+  this.ngramDir=ngramDir;
+  this.maxSizeBytes=maxSizeBytes;
+}

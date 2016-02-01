@@ -1,6 +1,9 @@
 {
   validateWikipediaUrl(url);
   final String xml=getMediaWikiContent(url);
+  if (xml.length() > maxSizeBytes) {
+    throw new RuntimeException("Sorry, the content at " + url + " is too big - this process has been limited to "+ maxSizeBytes+ " bytes, but the content is "+ xml.length()+ " bytes");
+  }
   final MediaWikiContent wikiContent=getRevisionContent(xml);
   final String content=wikiContent.getContent();
   if (content.trim().isEmpty()) {
