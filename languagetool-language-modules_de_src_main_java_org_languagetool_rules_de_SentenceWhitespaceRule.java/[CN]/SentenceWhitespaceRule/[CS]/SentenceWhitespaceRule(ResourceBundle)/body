@@ -2,4 +2,5 @@
   super(messages);
   super.setCategory(new Category(messages.getString("category_misc")));
   setLocQualityIssueType(ITSIssueType.Whitespace);
+  addExamplePair(Example.wrong("Hier steht ein Satz.<marker>Das</marker> ist ein weiterer Satz."),Example.fixed("Hier steht ein Satz.<marker> Das</marker> ist ein weiterer Satz."));
 }
