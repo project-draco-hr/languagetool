@@ -1,4 +1,6 @@
 {
   super.setCategory(new Category("Z) Concordances en grups nominals"));
   setLocQualityIssueType(ITSIssueType.Grammar);
+  addExamplePair(Example.wrong("An??lisis <marker>cl??nic</marker>."),Example.fixed("An??lisis <marker>cl??niques</marker>."));
+  addExamplePair(Example.wrong("Tinc dues taules <marker>verds</marker>."),Example.fixed("Tinc dues taules <marker>verdes</marker>."));
 }
