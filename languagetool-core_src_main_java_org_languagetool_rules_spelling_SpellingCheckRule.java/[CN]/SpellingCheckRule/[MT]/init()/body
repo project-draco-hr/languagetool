@@ -1,5 +1,11 @@
 {
-  loadWordsToBeIgnored(getIgnoreFileName());
-  loadWordsToBeIgnored(getSpellingFileName());
-  loadWordsToBeProhibited(getProhibitFileName());
+  for (  String ignoreWord : loadWords(getIgnoreFileName())) {
+    addIgnoreWords(ignoreWord,wordsToBeIgnored);
+  }
+  for (  String ignoreWord : loadWords(getSpellingFileName())) {
+    addIgnoreWords(ignoreWord,wordsToBeIgnored);
+  }
+  for (  String prohibitedWord : loadWords(getProhibitFileName())) {
+    wordsToBeProhibited.addAll(expandLine(prohibitedWord));
+  }
 }

@@ -1,5 +1,0 @@
-{
-  if (line.contains(" ")) {
-    throw new RuntimeException("No space expected in " + fileName + ": '"+ line+ "'");
-  }
-}

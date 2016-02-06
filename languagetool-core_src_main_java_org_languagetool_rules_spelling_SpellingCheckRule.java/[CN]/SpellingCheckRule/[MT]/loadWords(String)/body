@@ -1,0 +1,19 @@
+{
+  List<String> result=new ArrayList<>();
+  if (!JLanguageTool.getDataBroker().resourceExists(filePath)) {
+    return result;
+  }
+  try (InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(filePath);Scanner scanner=new Scanner(inputStream,"utf-8")){
+    while (scanner.hasNextLine()) {
+      final String line=scanner.nextLine();
+      if (isComment(line)) {
+        continue;
+      }
+      if (line.contains(" ")) {
+        throw new RuntimeException("No space expected in " + filePath + ": '"+ line+ "'");
+      }
+      result.add(line);
+    }
+  }
+   return result;
+}
