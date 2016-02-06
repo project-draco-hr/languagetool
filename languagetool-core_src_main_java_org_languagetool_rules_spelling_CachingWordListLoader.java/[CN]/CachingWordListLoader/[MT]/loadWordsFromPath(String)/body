@@ -6,7 +6,7 @@
   try (InputStream inputStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(filePath);Scanner scanner=new Scanner(inputStream,"utf-8")){
     while (scanner.hasNextLine()) {
       final String line=scanner.nextLine();
-      if (isComment(line)) {
+      if (line.startsWith("#")) {
         continue;
       }
       if (line.contains(" ")) {
