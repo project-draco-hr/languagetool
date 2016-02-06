@@ -1,18 +1,18 @@
 {
-  final JLanguageTool newLanguageTool=new JLanguageTool(lang,motherTongue);
+  final JLanguageTool lt=new JLanguageTool(lang,motherTongue);
   if (languageModelDir != null) {
-    newLanguageTool.activateLanguageModelRules(languageModelDir);
-  }
-  if (!params.useQuerySettings) {
-    if (rulesConfigurationFile != null) {
-      configureFromRulesFile(newLanguageTool,lang);
-    }
- else {
-      configureFromGUI(newLanguageTool,lang);
-    }
+    lt.activateLanguageModelRules(languageModelDir);
   }
   if (params.useQuerySettings) {
-    Tools.selectRules(newLanguageTool,params.disabledRules,params.enabledRules,params.useEnabledOnly);
+    Tools.selectRules(lt,params.disabledRules,params.enabledRules,params.useEnabledOnly);
   }
-  return newLanguageTool;
+ else {
+    if (rulesConfigurationFile != null) {
+      configureFromRulesFile(lt,lang);
+    }
+ else {
+      configureFromGUI(lt,lang);
+    }
+  }
+  return lt;
 }

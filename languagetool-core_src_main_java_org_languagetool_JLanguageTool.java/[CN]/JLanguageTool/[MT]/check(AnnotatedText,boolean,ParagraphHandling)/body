@@ -8,7 +8,9 @@
     sentences.add(annotatedText.getPlainText());
   }
   final List<Rule> allRules=getAllRules();
-  printIfVerbose(allRules.size() + " rules activated for language " + language);
+  if (printStream != null) {
+    printIfVerbose(allRules.size() + " rules activated for language " + language);
+  }
   for (  final Rule rule : allRules) {
     rule.reset();
   }
