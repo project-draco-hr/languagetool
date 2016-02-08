@@ -1,8 +1,10 @@
 {
   final String query;
   if ("post".equalsIgnoreCase(httpExchange.getRequestMethod())) {
-    query=StringTools.streamToString(httpExchange.getRequestBody(),ENCODING);
-  }
+    try (InputStreamReader isr=new InputStreamReader(httpExchange.getRequestBody(),ENCODING)){
+      query=readerToString(isr,maxTextLength);
+    }
+   }
  else {
     query=requestedUri.getRawQuery();
   }
