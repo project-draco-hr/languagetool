@@ -9,7 +9,16 @@
   }
   if (tokenIter == null || !tokenIter.hasNext()) {
     if (input.incrementToken()) {
-      final AnalyzedSentence sentence=languageTool.getAnalyzedSentence(termAtt.toString());
+      String sentenceStr=termAtt.toString();
+      collectedInput.append(sentenceStr);
+      if (sentenceStr.length() >= 255) {
+        return true;
+      }
+ else {
+        sentenceStr=collectedInput.toString();
+        collectedInput.setLength(0);
+      }
+      final AnalyzedSentence sentence=languageTool.getAnalyzedSentence(sentenceStr);
       final List<AnalyzedTokenReadings> tokenBuffer=Arrays.asList(sentence.getTokens());
       tokenIter=tokenBuffer.iterator();
       if (!tokenIter.hasNext()) {
