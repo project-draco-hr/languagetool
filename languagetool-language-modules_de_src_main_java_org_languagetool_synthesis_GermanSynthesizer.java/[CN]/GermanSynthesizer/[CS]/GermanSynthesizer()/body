@@ -1,3 +1,9 @@
 {
   super("/de/german_synth.dict","/de/german_tags.txt");
+  try {
+    splitter=new GermanCompoundTokenizer();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
 }

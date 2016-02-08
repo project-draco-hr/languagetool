@@ -1,0 +1,7 @@
+{
+  String[] result=super.synthesize(token,posTag);
+  if (result.length == 0) {
+    return getCompoundForms(token,posTag,false);
+  }
+  return result;
+}

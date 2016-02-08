@@ -1,0 +1,6 @@
+{
+  assertThat(synth("Regelsystem","SUB:NOM:PLU:NEU"),is("[Regelsysteme]"));
+  assertThat(synth("Regelsystem","SUB:DAT:PLU:NEU"),is("[Regelsystemen]"));
+  assertThat(synth("Regelsystem",".*:PLU:.*",true),is("[Regelsysteme, Regelsystemen]"));
+  assertThat(synth("K??hlschrankversuch",".*:PLU:.*",true),is("[K??hlschrankversuche, K??hlschrankversuchen]"));
+}
