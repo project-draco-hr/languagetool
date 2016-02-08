@@ -1,5 +1,17 @@
 {
   final String postData="language=" + lang.getShortName() + "&text="+ URLEncoder.encode(text,"UTF-8");
   final URL url=new URL("http://localhost:" + HTTPTools.getDefaultPort());
-  return HTTPTools.checkAtUrlByPost(url,postData);
+  try {
+    return HTTPTools.checkAtUrlByPost(url,postData);
+  }
+ catch (  IOException e) {
+    if (text.length() > MAX_LENGTH) {
+      System.err.println("Got expected error on long text (" + text.length() + " chars): "+ e.getMessage());
+      return "";
+    }
+ else {
+      System.err.println("Got error from server (" + lang.getShortNameWithCountryAndVariant() + ", "+ text.length()+ " chars): "+ e.getMessage());
+      return "";
+    }
+  }
 }

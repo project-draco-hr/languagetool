@@ -1,0 +1,11 @@
+{
+  final ExecutorService executorService=Executors.newFixedThreadPool(getThreadCount());
+  final List<Future> futures=new ArrayList<>();
+  for (int i=0; i < getThreadCount(); i++) {
+    final Future<?> future=executorService.submit(new TestRunnable());
+    futures.add(future);
+  }
+  for (  Future future : futures) {
+    future.get();
+  }
+}

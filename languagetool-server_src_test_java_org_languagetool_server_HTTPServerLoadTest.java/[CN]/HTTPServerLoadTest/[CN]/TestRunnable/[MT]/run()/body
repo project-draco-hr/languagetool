@@ -9,7 +9,7 @@
     }
  finally {
       int count=runningTests.decrementAndGet();
-      System.out.println("Tests currently running " + count);
+      System.out.println("Tests currently running: " + count);
     }
   }
 }
