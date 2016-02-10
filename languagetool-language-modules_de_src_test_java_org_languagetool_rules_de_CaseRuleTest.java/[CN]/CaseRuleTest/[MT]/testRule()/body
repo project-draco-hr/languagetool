@@ -31,6 +31,7 @@
   assertGood("Aber sein Inneres erz??hlte von den Geschehnissen.");
   assertGood("Ein Kaninchen, das zaubern kann.");
   assertGood("Keine Ahnung, wie ich das pr??fen sollte.");
+  assertGood("Und dann noch Strafrechtsdogmatikerinnen.");
   assertBad("Tom ist etwas ??ber Drei??ig.");
   assertBad("Unser warten wird sich lohnen.");
   assertBad("Tom kann mit fast Allem umgehen.");

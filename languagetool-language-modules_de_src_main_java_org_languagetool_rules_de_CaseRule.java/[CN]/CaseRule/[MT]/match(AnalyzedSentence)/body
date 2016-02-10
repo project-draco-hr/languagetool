@@ -44,7 +44,7 @@
     if (analyzedToken.getAnalyzedToken(0).getPOSTag() == null && lowercaseReadings == null) {
       continue;
     }
-    if (analyzedToken.getAnalyzedToken(0).getPOSTag() == null && lowercaseReadings != null && lowercaseReadings.getAnalyzedToken(0).getPOSTag() == null) {
+    if (analyzedToken.getAnalyzedToken(0).getPOSTag() == null && lowercaseReadings != null && (lowercaseReadings.getAnalyzedToken(0).getPOSTag() == null || analyzedToken.getToken().endsWith("innen"))) {
       continue;
     }
     potentiallyAddUppercaseMatch(ruleMatches,tokens,i,analyzedToken,token);
