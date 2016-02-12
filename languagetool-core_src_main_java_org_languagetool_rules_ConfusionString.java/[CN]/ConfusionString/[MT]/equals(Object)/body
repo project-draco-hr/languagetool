@@ -1,8 +1,6 @@
 {
   if (this == o)   return true;
   if (o == null || getClass() != o.getClass())   return false;
-  ConfusionString that=(ConfusionString)o;
-  if (!str.equals(that.str))   return false;
-  if (description != null ? !description.equals(that.description) : that.description != null)   return false;
-  return true;
+  ConfusionString other=(ConfusionString)o;
+  return Objects.equals(str,other.str) && Objects.equals(description,other.description);
 }

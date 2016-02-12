@@ -1,5 +1,3 @@
 {
-  int result=lemma != null ? lemma.hashCode() : 0;
-  result=31 * result + (posTag != null ? posTag.hashCode() : 0);
-  return result;
+  return Objects.hash(lemma,posTag);
 }

@@ -1,10 +1,7 @@
 {
-  if (this == obj)   return true;
-  if (obj == null)   return false;
-  if (getClass() != obj.getClass())   return false;
-  final AnalyzedSentence other=(AnalyzedSentence)obj;
-  if (!Arrays.equals(nonBlankTokens,other.nonBlankTokens))   return false;
-  if (!Arrays.equals(tokens,other.tokens))   return false;
-  if (!Arrays.equals(whPositions,other.whPositions))   return false;
-  return true;
+  if (this == o)   return true;
+  if (o == null)   return false;
+  if (getClass() != o.getClass())   return false;
+  AnalyzedSentence other=(AnalyzedSentence)o;
+  return Arrays.equals(nonBlankTokens,other.nonBlankTokens) && Arrays.equals(tokens,other.tokens) && Arrays.equals(whPositions,other.whPositions);
 }

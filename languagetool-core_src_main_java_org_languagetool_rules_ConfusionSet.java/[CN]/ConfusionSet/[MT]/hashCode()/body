@@ -1,5 +1,3 @@
 {
-  int result=set.hashCode();
-  result=31 * result + (int)(factor ^ (factor >>> 32));
-  return result;
+  return Objects.hash(set,factor);
 }

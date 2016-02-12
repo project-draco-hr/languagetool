@@ -2,5 +2,5 @@
   if (this == o)   return true;
   if (o == null || getClass() != o.getClass())   return false;
   RuleMatch other=(RuleMatch)o;
-  return new EqualsBuilder().append(rule.getId(),other.rule.getId()).append(offsetPosition,other.offsetPosition).append(message,other.message).append(suggestedReplacements,other.suggestedReplacements).isEquals();
+  return Objects.equals(rule.getId(),other.rule.getId()) && Objects.equals(offsetPosition,other.offsetPosition) && Objects.equals(message,other.message)&& Objects.equals(suggestedReplacements,other.suggestedReplacements);
 }

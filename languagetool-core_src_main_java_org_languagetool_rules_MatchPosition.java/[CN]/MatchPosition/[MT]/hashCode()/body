@@ -1,5 +1,3 @@
 {
-  int result=start;
-  result=31 * result + end;
-  return result;
+  return Objects.hash(start,end);
 }

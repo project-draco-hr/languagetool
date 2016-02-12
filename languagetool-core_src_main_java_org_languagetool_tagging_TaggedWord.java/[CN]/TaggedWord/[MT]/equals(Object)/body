@@ -1,8 +1,6 @@
 {
   if (this == o)   return true;
   if (o == null || getClass() != o.getClass())   return false;
-  TaggedWord that=(TaggedWord)o;
-  if (lemma != null ? !lemma.equals(that.lemma) : that.lemma != null)   return false;
-  if (posTag != null ? !posTag.equals(that.posTag) : that.posTag != null)   return false;
-  return true;
+  TaggedWord other=(TaggedWord)o;
+  return Objects.equals(lemma,other.lemma) && Objects.equals(posTag,other.posTag);
 }

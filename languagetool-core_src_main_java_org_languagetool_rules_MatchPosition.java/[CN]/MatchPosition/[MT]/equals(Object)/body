@@ -1,8 +1,6 @@
 {
   if (this == o)   return true;
   if (o == null || getClass() != o.getClass())   return false;
-  MatchPosition position=(MatchPosition)o;
-  if (end != position.end)   return false;
-  if (start != position.start)   return false;
-  return true;
+  MatchPosition other=(MatchPosition)o;
+  return Objects.equals(start,other.start) && Objects.equals(end,other.end);
 }

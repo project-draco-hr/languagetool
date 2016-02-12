@@ -1,8 +1,3 @@
 {
-  final int prime=31;
-  int result=1;
-  result=prime * result + Arrays.hashCode(nonBlankTokens);
-  result=prime * result + Arrays.hashCode(tokens);
-  result=prime * result + Arrays.hashCode(whPositions);
-  return result;
+  return Objects.hash(nonBlankTokens,tokens,whPositions);
 }
