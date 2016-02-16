@@ -33,4 +33,10 @@
   compoundTokens=wordTokenizer.tokenize("S??ownik polsko-niemiecko-indonezyjski");
   assertEquals(7,compoundTokens.size());
   assertEquals("[S??ownik,  , polsko, -, niemiecko, -, indonezyjski]",compoundTokens.toString());
+  compoundTokens=wordTokenizer.tokenize("Impreza odb??dzie si?? w dniach 1-23 maja.");
+  assertEquals(16,compoundTokens.size());
+  assertEquals("[Impreza,  , odb??dzie,  , si??,  , w,  , dniach,  , 1, -, 23,  , maja, .]",compoundTokens.toString());
+  compoundTokens=wordTokenizer.tokenize("Impreza odb??dzie si?? w dniach 1--23 maja.");
+  assertEquals(18,compoundTokens.size());
+  assertEquals("[Impreza,  , odb??dzie,  , si??,  , w,  , dniach,  , 1, -, , -, 23,  , maja, .]",compoundTokens.toString());
 }
