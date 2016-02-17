@@ -11,5 +11,8 @@
  else   if ("speach".equals(word)) {
     return Arrays.asList("speech");
   }
+ else   if ("icecreem".equals(word)) {
+    return Arrays.asList("ice cream");
+  }
   return super.getAdditionalTopSuggestions(suggestions,word);
 }
