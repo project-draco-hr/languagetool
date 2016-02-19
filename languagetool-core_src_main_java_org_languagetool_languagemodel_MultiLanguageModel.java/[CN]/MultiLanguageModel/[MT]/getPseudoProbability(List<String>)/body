@@ -5,7 +5,7 @@
   for (  LanguageModel lm : lms) {
     Probability pProb=lm.getPseudoProbability(context);
     prob+=pProb.getProb();
-    coverage+=pProb.getProb();
+    coverage+=pProb.getCoverage();
     occurrences+=pProb.getOccurrences();
   }
   return new Probability(prob,coverage / lms.size(),occurrences);
