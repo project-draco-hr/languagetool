@@ -7,6 +7,6 @@
   final String stdout=new String(this.out.toByteArray());
   final String stderr=new String(this.err.toByteArray());
   assertTrue(stderr.indexOf("Working on STDIN...") == 0);
-  assertTrue(stderr.contains("Language used is: English"));
+  assertTrue(stderr.contains("Using English for"));
   assertTrue(stdout.contains("1.) Line 1, column 9, Rule ID: EN_A_VS_AN"));
 }

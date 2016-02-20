@@ -1,5 +1,0 @@
-List<Rule> rules
-int ruleIndex
-int matches
-long sentences
-long startTime

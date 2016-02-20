@@ -1,9 +1,0 @@
-{
-  if (listUnknownWords && !taggerOnly) {
-    for (    String word : lt.getUnknownWords()) {
-      if (!unknownWords.contains(word)) {
-        unknownWords.add(word);
-      }
-    }
-  }
-}

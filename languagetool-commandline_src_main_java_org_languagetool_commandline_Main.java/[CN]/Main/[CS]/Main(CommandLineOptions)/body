@@ -7,9 +7,7 @@
   this.enabledRules=options.getEnabledRules();
   this.disabledRules=options.getDisabledRules();
   this.motherTongue=options.getMotherTongue();
-  this.singleLineBreakMarksParagraph=options.isSingleLineBreakMarksParagraph();
   this.listUnknownWords=options.isListUnknown();
-  this.unknownWords=new ArrayList<>();
   profileRules=false;
   bitextMode=false;
   srcLt=null;

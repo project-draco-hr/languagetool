@@ -1,3 +1,0 @@
-{
-  return lt.getLanguage().getSentenceTokenizer().singleLineBreaksMarksPara() || "".equals(line) || sb.length() >= MAX_FILE_SIZE;
-}

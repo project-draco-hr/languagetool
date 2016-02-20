@@ -2,10 +2,14 @@
   if (verbose) {
     lt.setOutput(System.err);
   }
-  if (!apiFormat && !applySuggestions) {
-    System.out.println("Working on " + filename + "...");
+  String fileContents;
+  String encodingName=encoding != null ? encoding : Charset.defaultCharset().name();
+  if (isStdIn(filename)) {
+    fileContents=streamToString(new BufferedInputStream(System.in),encodingName);
   }
-  final String fileContents=streamToString(new FileInputStream(filename),encoding != null ? encoding : Charset.defaultCharset().name());
+ else {
+    fileContents=streamToString(new FileInputStream(filename),encodingName);
+  }
   if (xmlFiltering) {
     return filterXML(fileContents);
   }
