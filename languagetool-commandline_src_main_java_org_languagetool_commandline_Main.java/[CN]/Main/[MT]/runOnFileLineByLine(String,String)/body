@@ -48,7 +48,7 @@
         }
         sb.append('\n');
         tmpLineOffset++;
-        if (isBreakPoint(sb,line)) {
+        if (isBreakPoint(line)) {
           matches+=handleLine(XmlPrintMode.CONTINUE_XML,lineOffset,sb);
           sentences+=lt.getSentenceCount();
           if (profileRules) {
