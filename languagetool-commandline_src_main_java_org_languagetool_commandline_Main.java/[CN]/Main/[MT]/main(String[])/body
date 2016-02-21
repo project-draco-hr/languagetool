@@ -78,7 +78,12 @@ catch (  UnknownParameterException e) {
     prg.runRecursive(options.getFilename(),options.getEncoding(),options.isXmlFiltering());
   }
  else {
-    prg.runOnFile(options.getFilename(),options.getEncoding(),options.isXmlFiltering());
+    if (options.isLineByLine()) {
+      prg.runOnFileLineByLine(options.getFilename(),options.getEncoding());
+    }
+ else {
+      prg.runOnFile(options.getFilename(),options.getEncoding(),options.isXmlFiltering());
+    }
   }
   prg.cleanUp();
 }

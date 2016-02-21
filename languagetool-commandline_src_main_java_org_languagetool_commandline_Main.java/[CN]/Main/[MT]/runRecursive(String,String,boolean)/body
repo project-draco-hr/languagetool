@@ -10,7 +10,12 @@
         runRecursive(file.getAbsolutePath(),encoding,xmlFiltering);
       }
  else {
-        runOnFile(file.getAbsolutePath(),encoding,xmlFiltering);
+        if (lineByLineMode) {
+          runOnFileLineByLine(file.getAbsolutePath(),encoding);
+        }
+ else {
+          runOnFile(file.getAbsolutePath(),encoding,xmlFiltering);
+        }
       }
     }
  catch (    Exception e) {

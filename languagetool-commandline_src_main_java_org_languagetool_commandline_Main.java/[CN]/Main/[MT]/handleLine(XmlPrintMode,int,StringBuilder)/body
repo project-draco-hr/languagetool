@@ -1,0 +1,17 @@
+{
+  int matches=0;
+  String s=filterXML(sb.toString());
+  if (applySuggestions) {
+    System.out.print(Tools.correctText(s,lt));
+  }
+ else   if (profileRules) {
+    matches+=Tools.profileRulesOnLine(s,lt,currentRule);
+  }
+ else   if (!taggerOnly) {
+    matches+=CommandLineTools.checkText(s,lt,apiFormat,-1,lineOffset,matches,mode,listUnknownWords,null);
+  }
+ else {
+    CommandLineTools.tagText(s,lt);
+  }
+  return matches;
+}
