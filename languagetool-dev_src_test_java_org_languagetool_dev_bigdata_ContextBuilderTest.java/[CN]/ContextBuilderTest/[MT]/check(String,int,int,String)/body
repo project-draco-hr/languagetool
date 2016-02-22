@@ -1,0 +1,5 @@
+{
+  AnalyzedSentence sentence=lt.getAnalyzedSentence(input);
+  List<String> context=cb.getContext(sentence.getTokensWithoutWhitespace(),pos,contextSize);
+  assertThat(context.toString(),is(expected));
+}

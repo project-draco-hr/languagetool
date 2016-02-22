@@ -1,0 +1,4 @@
+String input
+int pos
+int contextSize
+String expected
