@@ -1,0 +1,12 @@
+{
+  List<String> l=new ArrayList<>();
+  for (int i=pos - 1; i >= 0 && l.size() < contextSize; i--) {
+    if (i == 0) {
+      l.add(0,startMarker);
+    }
+ else {
+      l.add(0,tokens[i].getToken());
+    }
+  }
+  return l;
+}

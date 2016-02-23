@@ -1,0 +1,4 @@
+{
+  this.startMarker=startMarker;
+  this.endMarker=endMarker;
+}

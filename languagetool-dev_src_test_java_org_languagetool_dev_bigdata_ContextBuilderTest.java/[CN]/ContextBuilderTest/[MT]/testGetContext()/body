@@ -1,0 +1,9 @@
+{
+  check("And this is a test.",3,1,"[this, is, a]");
+  check("And this is a test.",3,2,"[And, this, is, a, test]");
+  check("And this is a test.",3,3,"[_START_, And, this, is, a, test, .]");
+  check("And this is a test.",3,4,"[_START_, And, this, is, a, test, ., _END_]");
+  check("This",1,0,"[This]");
+  check("This",1,1,"[_START_, This, _END_]");
+  check("This",1,2,"[_START_, This, _END_]");
+}

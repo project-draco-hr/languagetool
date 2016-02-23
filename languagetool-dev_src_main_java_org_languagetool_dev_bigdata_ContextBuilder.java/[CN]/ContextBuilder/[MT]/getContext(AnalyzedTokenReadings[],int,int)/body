@@ -1,0 +1,14 @@
+{
+  List<String> l=new ArrayList<>();
+  int i=0;
+  for (  AnalyzedTokenReadings token : tokens) {
+    if (i == pos) {
+      l.addAll(getLeftContext(tokens,pos,contextSize));
+      l.add(token.getToken());
+      l.addAll(getRightContext(tokens,pos,contextSize));
+      break;
+    }
+    i++;
+  }
+  return l;
+}
