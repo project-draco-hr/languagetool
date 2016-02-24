@@ -1,4 +1,4 @@
 {
   super(messages);
-  setCategory(new Category(Ukrainian.RULE_CATEGORY_STYLE));
+  setLocQualityIssueType(ITSIssueType.Style);
 }
