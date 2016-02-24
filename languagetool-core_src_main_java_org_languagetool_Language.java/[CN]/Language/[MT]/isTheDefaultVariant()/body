@@ -1,0 +1,6 @@
+{
+  if (getDefaultLanguageVariant() != null) {
+    return getClass().equals(getDefaultLanguageVariant().getClass());
+  }
+  return false;
+}
