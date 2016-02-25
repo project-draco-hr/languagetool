@@ -1,8 +1,8 @@
 {
   try {
     int x=Integer.parseInt(arguments.get("x"));
-    String century_prefix=arguments.get("x").substring(0,2);
-    int y=Integer.parseInt(century_prefix + arguments.get("y"));
+    String centuryPrefix=arguments.get("x").substring(0,2);
+    int y=Integer.parseInt(centuryPrefix + arguments.get("y"));
     if (x >= y) {
       return new RuleMatch(match.getRule(),match.getFromPos(),match.getToPos(),match.getMessage(),match.getShortMessage());
     }
