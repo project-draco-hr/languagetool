@@ -2,15 +2,29 @@
   String tokenString=tokenReadings.getToken();
   Synthesizer ukrainianSynthesizer=ukrainian.getSynthesizer();
   List<String> suggestions=new ArrayList<>();
-  String oldPosTag=tokenReadings.getAnalyzedToken(0).getPOSTag();
-  String requiredPostTagsRegEx=":(" + StringUtils.join(posTagsToFind,"|") + ")";
-  String posTag=oldPosTag.replaceFirst(":v_[a-z]+",requiredPostTagsRegEx);
-  try {
-    String[] synthesized=ukrainianSynthesizer.synthesize(tokenReadings.getAnalyzedToken(0),posTag,true);
-    suggestions.addAll(Arrays.asList(synthesized));
+  final String requiredPostTagsRegEx=":(" + StringUtils.join(posTagsToFind,"|") + ")";
+  for (  AnalyzedToken analyzedToken : tokenReadings.getReadings()) {
+    String oldPosTag=analyzedToken.getPOSTag();
+    if (oldPosTag == null)     continue;
+    String requiredPostTagsRegExToApply=requiredPostTagsRegEx;
+    Matcher matcher=REQ_ANIM_INANIM_PATTERN.matcher(oldPosTag);
+    if (matcher.find()) {
+      requiredPostTagsRegExToApply+=matcher.group(0);
+    }
+ else {
+      requiredPostTagsRegExToApply+="(?:" + reqAnimInanimRegex + ")?";
+    }
+    String posTag=oldPosTag.replaceFirst(":v_[a-z]+",requiredPostTagsRegExToApply);
+    try {
+      String[] synthesized=ukrainianSynthesizer.synthesize(analyzedToken,posTag,true);
+      suggestions.addAll(Arrays.asList(synthesized));
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
   }
- catch (  IOException e) {
-    throw new RuntimeException(e);
+  if (suggestions.size() > 0) {
+    suggestions=new ArrayList<>(new LinkedHashSet<>(suggestions));
   }
   List<String> reqVidminkyNames=new ArrayList<>();
   for (  String vidm : posTagsToFind) {
@@ -33,7 +47,7 @@
     }
   }
   String msg=MessageFormat.format("???????????????????? ??{0}?? ?????????????? ???????????? ????????????????: {1}, ?? ????????????????: {2}",reqTokenReadings.getToken(),StringUtils.join(reqVidminkyNames,", "),StringUtils.join(foundVidminkyNames,", "));
-  if (tokenString.equals("????")) {
+  if (tokenString.equals("????") && requiredPostTagsRegEx != null) {
     msg+=". ?????????????? ?????? ???????????????? ???????????????????? ?????????????????? ???????????????";
     try {
       String newYihPostag="adj:p" + requiredPostTagsRegEx + ".*";
