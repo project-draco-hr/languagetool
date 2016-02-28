@@ -157,7 +157,7 @@ if (matchElement == null) {
 final Match tmpMatchToken=new Match(disambiguatedPOS,null,true,disambiguatedPOS,null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);
 boolean newPOSmatches=false;
 for (int i=0; i < whTokens[fromPos].getReadingsLength(); i++) {
-if (!whTokens[fromPos].getAnalyzedToken(i).hasNoTag() && whTokens[fromPos].getAnalyzedToken(i).getPOSTag().matches(disambiguatedPOS)) {
+if (!whTokens[fromPos].getAnalyzedToken(i).hasNoTag() && whTokens[fromPos].getAnalyzedToken(i).getPOSTag() != null && whTokens[fromPos].getAnalyzedToken(i).getPOSTag().matches(disambiguatedPOS)) {
 newPOSmatches=true;
 break;
 }
