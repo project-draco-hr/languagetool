@@ -6,7 +6,7 @@
   TreeMap<String,ArrayList<Rule>> categories=new TreeMap<>();
   for (  Rule rule : disabledRules) {
     if (!categories.containsKey(rule.getCategory().getName())) {
-      categories.put(rule.getCategory().getName(),new ArrayList<Rule>());
+      categories.put(rule.getCategory().getName(),new ArrayList<>());
     }
     categories.get(rule.getCategory().getName()).add(rule);
   }
