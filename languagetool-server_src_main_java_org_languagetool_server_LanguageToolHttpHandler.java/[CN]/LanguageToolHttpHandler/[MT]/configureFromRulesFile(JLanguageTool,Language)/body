@@ -1,4 +1,4 @@
 {
   print("Using options configured in " + rulesConfigurationFile);
-  configureFromRules(langTool,new Configuration(rulesConfigurationFile.getParentFile(),rulesConfigurationFile.getName(),lang));
+  org.languagetool.gui.Tools.configureFromRules(langTool,new Configuration(rulesConfigurationFile.getParentFile(),rulesConfigurationFile.getName(),lang));
 }
