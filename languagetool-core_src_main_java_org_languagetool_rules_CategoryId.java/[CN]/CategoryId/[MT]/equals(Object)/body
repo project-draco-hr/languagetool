@@ -1,0 +1,7 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  CategoryId that=(CategoryId)o;
+  if (!id.equals(that.id))   return false;
+  return true;
+}

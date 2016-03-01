@@ -38,7 +38,7 @@
   if (category == null) {
     throw new RuntimeException("Cannot activate rule '" + id + "', it is outside of a <category>...</category>");
   }
-  if (category.isDefaultOff() && !defaultOn) {
+  if (defaultOff) {
     rule.setDefaultOff();
   }
   if (url != null && url.length() > 0) {

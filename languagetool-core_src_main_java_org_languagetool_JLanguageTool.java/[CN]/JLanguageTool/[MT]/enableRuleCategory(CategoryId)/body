@@ -1,0 +1,5 @@
+{
+  if (disabledRuleCategories.contains(id)) {
+    disabledRuleCategories.remove(id);
+  }
+}

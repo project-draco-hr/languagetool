@@ -1,0 +1,28 @@
+{
+  for (  CategoryId id : disabledCategories) {
+    lt.disableCategory(id);
+  }
+  for (  CategoryId id : enabledCategories) {
+    lt.enableRuleCategory(id);
+    lt.enableDefaultOffRuleCategory(id);
+  }
+  for (  final String disabledRule : disabledRules) {
+    lt.disableRule(disabledRule);
+  }
+  if (enabledRules.size() > 0) {
+    Set<String> enabledRuleIDs=new HashSet<>(enabledRules);
+    for (    String ruleName : enabledRuleIDs) {
+      lt.enableDefaultOffRule(ruleName);
+      lt.enableRule(ruleName);
+    }
+    if (useEnabledOnly) {
+      List<String> rulesToBeDisabled=new ArrayList<>();
+      for (      Rule rule : lt.getAllRules()) {
+        if (!enabledRuleIDs.contains(rule.getId())) {
+          rulesToBeDisabled.add(rule.getId());
+        }
+      }
+      lt.disableRules(rulesToBeDisabled);
+    }
+  }
+}

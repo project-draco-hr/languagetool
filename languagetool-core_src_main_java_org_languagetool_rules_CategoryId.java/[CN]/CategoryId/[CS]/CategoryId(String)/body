@@ -1,0 +1,7 @@
+{
+  Objects.requireNonNull(id,"category id must not be null");
+  if (id.trim().isEmpty()) {
+    throw new IllegalArgumentException("category id must not be empty: '" + id + "'");
+  }
+  this.id=id;
+}

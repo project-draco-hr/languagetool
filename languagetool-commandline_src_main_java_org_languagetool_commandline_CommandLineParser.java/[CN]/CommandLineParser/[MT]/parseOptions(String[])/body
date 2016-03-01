@@ -56,6 +56,16 @@
       final String rules=args[++i];
       options.setEnabledRules(rules.split(","));
     }
+ else     if (args[i].equals("--enablecategories")) {
+      checkArguments("--enablecategories",i,args);
+      final String categories=args[++i];
+      options.setEnabledCategories(Arrays.asList(categories.split(",")));
+    }
+ else     if (args[i].equals("--disablecategories")) {
+      checkArguments("--disablecategories",i,args);
+      final String categories=args[++i];
+      options.setDisabledCategories(Arrays.asList(categories.split(",")));
+    }
  else     if (args[i].equals("-l") || args[i].equals("--language")) {
       checkArguments("-l/--language",i,args);
       options.setLanguage(getLanguage(args[++i]));

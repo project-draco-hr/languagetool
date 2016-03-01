@@ -1,0 +1,5 @@
+{
+  for (  String categoryId : categoryIds) {
+    disabledCategories.add(new CategoryId(categoryId));
+  }
+}

@@ -1,0 +1,3 @@
+{
+  disabledRuleCategories.add(id);
+}

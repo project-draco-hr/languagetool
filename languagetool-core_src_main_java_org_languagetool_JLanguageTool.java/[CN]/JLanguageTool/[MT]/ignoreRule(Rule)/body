@@ -6,8 +6,16 @@
     return true;
   }
   Category category=rule.getCategory();
-  if (category != null && disabledCategories.contains(category.getName())) {
-    return true;
+  if (category != null) {
+    if (disabledRuleCategories.contains(category.getId())) {
+      return true;
+    }
+    if (disabledCategories.contains(category.getName())) {
+      return true;
+    }
+    if (category.isDefaultOff() && !enabledRuleCategories.contains(category.getId())) {
+      return true;
+    }
   }
   return false;
 }

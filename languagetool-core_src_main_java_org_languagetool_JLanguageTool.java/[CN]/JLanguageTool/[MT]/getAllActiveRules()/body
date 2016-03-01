@@ -4,8 +4,20 @@
   rules.addAll(builtinRules);
   rules.addAll(userRules);
   for (  final Rule rule : rules) {
-    boolean isDisabled=disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()));
-    if (!isDisabled) {
+    Category ruleCategory=rule.getCategory();
+    boolean isCategoryDisabled=(disabledRuleCategories.contains(ruleCategory.getId()) || rule.getCategory().isDefaultOff()) && !enabledRuleCategories.contains(ruleCategory.getId());
+    boolean isRuleDisabled=disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()));
+    boolean isEnabled=true;
+    if (isCategoryDisabled && enabledRules.contains(rule.getId())) {
+      isEnabled=true;
+    }
+ else     if (isCategoryDisabled) {
+      isEnabled=false;
+    }
+ else     if (isRuleDisabled) {
+      isEnabled=false;
+    }
+    if (isEnabled) {
       rulesActive.add(rule);
     }
   }

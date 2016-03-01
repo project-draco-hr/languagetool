@@ -2,9 +2,10 @@
 switch (qName) {
 case "category":
     final String catName=attrs.getValue(NAME);
-  Category.Location location=YES.equals(attrs.getValue(EXTERNAL)) ? Category.Location.EXTERNAL : Category.Location.INTERNAL;
+  final String catId=attrs.getValue(ID);
+Category.Location location=YES.equals(attrs.getValue(EXTERNAL)) ? Category.Location.EXTERNAL : Category.Location.INTERNAL;
 final boolean onByDefault=!OFF.equals(attrs.getValue(DEFAULT));
-category=new Category(catName,location,onByDefault);
+category=new Category(catId != null ? new CategoryId(catId) : null,catName,location,onByDefault);
 if (attrs.getValue(TYPE) != null) {
 categoryIssueType=attrs.getValue(TYPE);
 }

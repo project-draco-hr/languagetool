@@ -1,21 +1,3 @@
 {
-  for (  final String disabledRule : disabledRules) {
-    lt.disableRule(disabledRule);
-  }
-  if (enabledRules.length > 0) {
-    final Set<String> enabledRuleIDs=new HashSet<>(Arrays.asList(enabledRules));
-    for (    String ruleName : enabledRuleIDs) {
-      lt.enableDefaultOffRule(ruleName);
-      lt.enableRule(ruleName);
-    }
-    if (useEnabledOnly) {
-      List<String> rulesToBeDisabled=new ArrayList<>();
-      for (      Rule rule : lt.getAllRules()) {
-        if (!enabledRuleIDs.contains(rule.getId())) {
-          rulesToBeDisabled.add(rule.getId());
-        }
-      }
-      lt.disableRules(rulesToBeDisabled);
-    }
-  }
+  selectRules(lt,Collections.emptySet(),Collections.emptySet(),new HashSet<>(Arrays.asList(disabledRules)),new HashSet<>(Arrays.asList(enabledRules)),useEnabledOnly);
 }

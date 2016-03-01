@@ -1,0 +1,4 @@
+CategoryId id
+String name
+Location location
+boolean onByDefault
