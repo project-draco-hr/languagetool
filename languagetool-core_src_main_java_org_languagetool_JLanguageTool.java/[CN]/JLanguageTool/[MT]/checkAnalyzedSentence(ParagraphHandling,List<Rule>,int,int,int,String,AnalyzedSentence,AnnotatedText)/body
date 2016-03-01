@@ -1,6 +1,6 @@
 {
   final List<RuleMatch> sentenceMatches=new ArrayList<>();
-  for (  final Rule rule : rules) {
+  for (  Rule rule : rules) {
     if (rule instanceof TextLevelRule) {
       continue;
     }
@@ -14,7 +14,7 @@
       continue;
     }
     final RuleMatch[] thisMatches=rule.match(analyzedSentence);
-    for (    final RuleMatch element1 : thisMatches) {
+    for (    RuleMatch element1 : thisMatches) {
       final RuleMatch thisMatch=adjustRuleMatchPos(element1,charCount,columnCount,lineCount,sentence,annotatedText);
       sentenceMatches.add(thisMatch);
     }

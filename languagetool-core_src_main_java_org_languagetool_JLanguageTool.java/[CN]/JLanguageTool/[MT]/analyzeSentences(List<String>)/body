@@ -1,7 +1,7 @@
 {
   final List<AnalyzedSentence> analyzedSentences=new ArrayList<>();
   int j=0;
-  for (  final String sentence : sentences) {
+  for (  String sentence : sentences) {
     AnalyzedSentence analyzedSentence=getAnalyzedSentence(sentence);
     rememberUnknownWords(analyzedSentence);
     if (++j == sentences.size()) {

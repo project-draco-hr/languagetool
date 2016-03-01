@@ -1,7 +1,7 @@
 {
   if (listUnknownWords) {
     final AnalyzedTokenReadings[] atr=analyzedText.getTokensWithoutWhitespace();
-    for (    final AnalyzedTokenReadings reading : atr) {
+    for (    AnalyzedTokenReadings reading : atr) {
       if (!reading.isTagged()) {
         unknownWords.add(reading.getToken());
       }

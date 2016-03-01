@@ -3,7 +3,7 @@
   final List<Rule> rulesActive=new ArrayList<>();
   rules.addAll(builtinRules);
   rules.addAll(userRules);
-  for (  final Rule rule : rules) {
+  for (  Rule rule : rules) {
     Category ruleCategory=rule.getCategory();
     boolean isCategoryDisabled=(disabledRuleCategories.contains(ruleCategory.getId()) || rule.getCategory().isDefaultOff()) && !enabledRuleCategories.contains(ruleCategory.getId());
     boolean isRuleDisabled=disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()));

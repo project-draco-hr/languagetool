@@ -11,7 +11,7 @@
   if (printStream != null) {
     printIfVerbose(allRules.size() + " rules activated for language " + language);
   }
-  for (  final Rule rule : allRules) {
+  for (  Rule rule : allRules) {
     rule.reset();
   }
   sentenceCount=sentences.size();

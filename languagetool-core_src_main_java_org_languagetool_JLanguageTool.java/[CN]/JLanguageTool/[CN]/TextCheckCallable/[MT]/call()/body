@@ -14,7 +14,7 @@
       ruleMatches.addAll(Arrays.asList(matches));
     }
   }
-  for (  final AnalyzedSentence analyzedSentence : analyzedSentences) {
+  for (  AnalyzedSentence analyzedSentence : analyzedSentences) {
     final String sentence=sentences.get(i++);
     try {
       final List<RuleMatch> sentenceMatches=checkAnalyzedSentence(paraMode,rules,charCount,lineCount,columnCount,sentence,analyzedSentence,annotatedText);
