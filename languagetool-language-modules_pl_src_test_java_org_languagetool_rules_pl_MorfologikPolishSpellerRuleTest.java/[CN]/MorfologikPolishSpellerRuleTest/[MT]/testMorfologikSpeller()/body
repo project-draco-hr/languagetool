@@ -3,6 +3,8 @@
   final JLanguageTool langTool=new JLanguageTool(new Polish());
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("To jest test bez jakiegokolwiek b????du.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("??????w na staro???? wydziela dziwn?? wo??.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("??????w na staro???? wydziela dziwn?? wo?? numer 1234.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("W MI-6 pracuje 15-letni agent.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("LanguageTool jest ??wietny!")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence("Gdym to zobaczy??, zd??bia??em.")).length);
   assertEquals(0,rule.match(langTool.getAnalyzedSentence(",")).length);
@@ -26,4 +28,5 @@
   assertEquals("Clarkom",prunedMatches[0].getSuggestedReplacements().get(3));
   assertEquals("Czark??",prunedMatches[0].getSuggestedReplacements().get(4));
   assertEquals(1,rule.match(langTool.getAnalyzedSentence("premoc")).length);
+  assertEquals(1,rule.match(langTool.getAnalyzedSentence("dziwneg0")).length);
 }
