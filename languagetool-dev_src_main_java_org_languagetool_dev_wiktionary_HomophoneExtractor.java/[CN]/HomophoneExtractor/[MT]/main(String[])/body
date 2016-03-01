@@ -1,0 +1,9 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: " + HomophoneExtractor.class.getSimpleName() + " <xmlFilename>");
+    System.out.println("       <xmlFilename> is an unpacked Wiktionary dump");
+    System.exit(1);
+  }
+  HomophoneExtractor extractor=new HomophoneExtractor();
+  extractor.run(args[0]);
+}
