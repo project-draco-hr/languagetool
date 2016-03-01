@@ -1,0 +1,12 @@
+{
+  Demo demo=new Demo();
+  expectDemoRuleId(Collections.emptySet(),Collections.emptySet(),Collections.emptySet(),Collections.emptySet(),false,demo);
+  expectNotDemoRuleId(Collections.emptySet(),Collections.emptySet(),Collections.singleton("DEMO_RULE"),Collections.emptySet(),false,demo);
+  expectNotDemoRuleId(Collections.singleton(CategoryIds.MISC),Collections.emptySet(),Collections.emptySet(),Collections.emptySet(),false,demo);
+  expectDemoRuleId(Collections.singleton(CategoryIds.MISC),Collections.emptySet(),Collections.emptySet(),Collections.singleton("DEMO_RULE"),false,demo);
+  expectDemoRuleId(Collections.emptySet(),Collections.emptySet(),Collections.emptySet(),Collections.emptySet(),true,demo);
+  expectNotDemoRuleId(Collections.emptySet(),Collections.emptySet(),Collections.singleton("DEMO_RULE"),Collections.emptySet(),true,demo);
+  expectNotDemoRuleId(Collections.singleton(CategoryIds.MISC),Collections.emptySet(),Collections.emptySet(),Collections.emptySet(),true,demo);
+  expectDemoRuleId(Collections.emptySet(),Collections.singleton(CategoryIds.MISC),Collections.emptySet(),Collections.emptySet(),true,demo);
+  expectNotDemoRuleId(Collections.emptySet(),Collections.singleton(CategoryIds.CASING),Collections.emptySet(),Collections.emptySet(),true,demo);
+}

@@ -1,0 +1,6 @@
+Set<CategoryId> disabledCategories
+Set<CategoryId> enabledCategories
+Set<String> disabledRules
+Set<String> enabledRules
+boolean useEnabledOnly
+Demo demo

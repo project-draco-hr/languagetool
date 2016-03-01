@@ -4,7 +4,7 @@
     lt.activateLanguageModelRules(languageModelDir);
   }
   if (params.useQuerySettings) {
-    Tools.selectRules(lt,params.disabledRules,params.enabledRules,params.useEnabledOnly);
+    Tools.selectRules(lt,new HashSet<>(params.disabledCategories),new HashSet<>(params.enabledCategories),new HashSet<>(params.disabledRules),new HashSet<>(params.enabledRules),params.useEnabledOnly);
   }
  else {
     if (rulesConfigurationFile != null) {

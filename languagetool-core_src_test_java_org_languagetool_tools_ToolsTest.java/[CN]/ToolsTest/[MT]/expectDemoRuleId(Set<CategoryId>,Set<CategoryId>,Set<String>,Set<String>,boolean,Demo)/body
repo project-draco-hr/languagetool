@@ -1,0 +1,5 @@
+{
+  JLanguageTool lt=new JLanguageTool(demo);
+  Tools.selectRules(lt,disabledCategories,enabledCategories,disabledRules,enabledRules,useEnabledOnly);
+  assertTrue(getRuleIds(lt).contains("DEMO_RULE"));
+}

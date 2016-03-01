@@ -1,4 +1,6 @@
 List<String> enabledRules
 List<String> disabledRules
+List<CategoryId> enabledCategories
+List<CategoryId> disabledCategories
 boolean useEnabledOnly
 boolean useQuerySettings

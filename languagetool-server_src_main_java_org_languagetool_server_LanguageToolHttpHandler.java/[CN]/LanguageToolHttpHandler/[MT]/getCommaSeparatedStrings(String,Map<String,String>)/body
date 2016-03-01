@@ -1,0 +1,8 @@
+{
+  final String disabledParam=parameters.get(paramName);
+  final List<String> result=new ArrayList<>();
+  if (disabledParam != null) {
+    result.addAll(Arrays.asList(disabledParam.split(",")));
+  }
+  return result;
+}

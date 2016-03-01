@@ -1,6 +1,8 @@
 {
   this.enabledRules=enabledRules;
   this.disabledRules=disabledRules;
+  this.enabledCategories=enabledCategories;
+  this.disabledCategories=disabledCategories;
   this.useEnabledOnly=useEnabledOnly;
   this.useQuerySettings=useQuerySettings;
 }

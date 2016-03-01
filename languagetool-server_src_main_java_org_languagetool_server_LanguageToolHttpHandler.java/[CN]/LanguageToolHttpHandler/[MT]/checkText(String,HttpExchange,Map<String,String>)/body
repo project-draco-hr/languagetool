@@ -13,16 +13,14 @@
   if (enabledParam != null) {
     enabledRules.addAll(Arrays.asList(enabledParam.split(",")));
   }
-  final String disabledParam=parameters.get("disabled");
-  final List<String> disabledRules=new ArrayList<>();
-  if (disabledParam != null) {
-    disabledRules.addAll(Arrays.asList(disabledParam.split(",")));
+  final List<String> disabledRules=getCommaSeparatedStrings("disabled",parameters);
+  final List<CategoryId> enabledCategories=getCategoryIds("enabledCategories",parameters);
+  final List<CategoryId> disabledCategories=getCategoryIds("disabledCategories",parameters);
+  if ((disabledRules.size() > 0 || disabledCategories.size() > 0) && useEnabledOnly) {
+    throw new IllegalArgumentException("You cannot specify disabled rules or categories using enabledOnly=yes");
   }
-  if (disabledRules.size() > 0 && useEnabledOnly) {
-    throw new IllegalArgumentException("You cannot specify disabled rules using enabledOnly=yes");
-  }
-  final boolean useQuerySettings=enabledRules.size() > 0 || disabledRules.size() > 0;
-  final QueryParams params=new QueryParams(enabledRules,disabledRules,useEnabledOnly,useQuerySettings);
+  final boolean useQuerySettings=enabledRules.size() > 0 || disabledRules.size() > 0 || enabledCategories.size() > 0 || disabledCategories.size() > 0;
+  final QueryParams params=new QueryParams(enabledRules,disabledRules,enabledCategories,disabledCategories,useEnabledOnly,useQuerySettings);
   final Future<List<RuleMatch>> future=executorService.submit(new Callable<List<RuleMatch>>(){
     @Override public List<RuleMatch> call() throws Exception {
       return getRuleMatches(text,parameters,lang,motherTongue,params);
