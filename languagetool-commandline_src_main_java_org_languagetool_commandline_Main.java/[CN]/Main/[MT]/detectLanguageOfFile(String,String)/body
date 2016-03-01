@@ -1,4 +1,0 @@
-{
-  final String text=readStream(new FileInputStream(filename),encoding);
-  return detectLanguageOfString(text);
-}

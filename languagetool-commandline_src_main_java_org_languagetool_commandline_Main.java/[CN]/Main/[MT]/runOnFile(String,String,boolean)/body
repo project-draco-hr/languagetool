@@ -1,11 +1,11 @@
 {
   if (bitextMode) {
     final TabBitextReader reader=new TabBitextReader(filename,encoding);
-    if (applySuggestions) {
+    if (options.isApplySuggestions()) {
       CommandLineTools.correctBitext(reader,srcLt,lt,bRules);
     }
  else {
-      CommandLineTools.checkBitext(reader,srcLt,lt,bRules,apiFormat);
+      CommandLineTools.checkBitext(reader,srcLt,lt,bRules,options.isApiFormat());
     }
   }
  else {
@@ -16,28 +16,28 @@
  else {
       System.err.println("Working on " + filename + "...");
     }
-    if (autoDetect) {
+    if (options.isAutoDetect()) {
       Language language=detectLanguageOfString(text);
       if (language == null) {
         System.err.println("Could not detect language well enough, using English");
         language=new English();
       }
-      changeLanguage(language,motherTongue,disabledRules,enabledRules);
+      changeLanguage(language,options.getMotherTongue(),options.getDisabledRules(),options.getEnabledRules());
       System.err.println("Using " + language.getName() + " for file "+ filename);
     }
-    if (applySuggestions) {
+    if (options.isApplySuggestions()) {
       System.out.print(Tools.correctText(text,lt));
     }
  else     if (profileRules) {
       CommandLineTools.profileRulesOnText(text,lt);
     }
- else     if (!taggerOnly) {
-      CommandLineTools.checkText(text,lt,apiFormat,0,listUnknownWords);
+ else     if (!options.isTaggerOnly()) {
+      CommandLineTools.checkText(text,lt,options.isApiFormat(),0,options.isListUnknown());
     }
  else {
       CommandLineTools.tagText(text,lt);
     }
-    if (listUnknownWords && !apiFormat) {
+    if (options.isListUnknown() && !options.isApiFormat()) {
       System.out.println("Unknown words: " + lt.getUnknownWords());
     }
   }

@@ -1,14 +1,14 @@
 {
   int matches=0;
   String s=filterXML(sb.toString());
-  if (applySuggestions) {
+  if (options.isApplySuggestions()) {
     System.out.print(Tools.correctText(s,lt));
   }
  else   if (profileRules) {
     matches+=Tools.profileRulesOnLine(s,lt,currentRule);
   }
- else   if (!taggerOnly) {
-    matches+=CommandLineTools.checkText(s,lt,apiFormat,-1,lineOffset,matches,mode,listUnknownWords,Collections.<String>emptyList());
+ else   if (!options.isTaggerOnly()) {
+    matches+=CommandLineTools.checkText(s,lt,options.isApiFormat(),-1,lineOffset,matches,mode,options.isListUnknown(),Collections.<String>emptyList());
   }
  else {
     CommandLineTools.tagText(s,lt);

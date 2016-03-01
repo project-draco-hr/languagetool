@@ -1,25 +1,15 @@
 {
-  this.verbose=options.isVerbose();
-  this.apiFormat=options.isApiFormat();
-  this.taggerOnly=options.isTaggerOnly();
-  this.applySuggestions=options.isApplySuggestions();
-  this.autoDetect=options.isAutoDetect();
-  this.enabledRules=options.getEnabledRules();
-  this.disabledRules=options.getDisabledRules();
-  this.motherTongue=options.getMotherTongue();
-  this.listUnknownWords=options.isListUnknown();
-  this.lineByLineMode=options.isLineByLine();
-  this.singleLineBreakMarksParagraph=options.isSingleLineBreakMarksParagraph();
+  this.options=options;
   profileRules=false;
   bitextMode=false;
   srcLt=null;
   bRules=null;
-  lt=new MultiThreadedJLanguageTool(options.getLanguage(),motherTongue);
+  lt=new MultiThreadedJLanguageTool(options.getLanguage(),options.getMotherTongue());
   if (options.getRuleFile() != null) {
     addExternalRules(options.getRuleFile());
   }
   if (options.getLanguageModel() != null) {
     lt.activateLanguageModelRules(options.getLanguageModel());
   }
-  Tools.selectRules(lt,options.getDisabledCategories(),options.getEnabledCategories(),new HashSet<>(Arrays.asList(disabledRules)),new HashSet<>(Arrays.asList(enabledRules)),options.isUseEnabledOnly());
+  Tools.selectRules(lt,options.getDisabledCategories(),options.getEnabledCategories(),new HashSet<>(Arrays.asList(options.getDisabledRules())),new HashSet<>(Arrays.asList(options.getEnabledRules())),options.isUseEnabledOnly());
 }

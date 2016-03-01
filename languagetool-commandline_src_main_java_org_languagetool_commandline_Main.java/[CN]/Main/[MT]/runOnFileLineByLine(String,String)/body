@@ -1,9 +1,9 @@
 {
   System.err.println("Warning: running in line by line mode. Cross-paragraph checks will not work.\n");
-  if (verbose) {
+  if (options.isVerbose()) {
     lt.setOutput(System.err);
   }
-  if (!apiFormat && !applySuggestions) {
+  if (!options.isApiFormat() && !options.isApplySuggestions()) {
     if (isStdIn(filename)) {
       System.err.println("Working on STDIN...");
     }
@@ -36,15 +36,15 @@
       while ((line=br.readLine()) != null) {
         sb.append(line);
         lineCount++;
-        if (lineCount == 1 && autoDetect) {
+        if (lineCount == 1 && options.isAutoDetect()) {
           Language language=detectLanguageOfString(line);
           if (language == null) {
             System.err.println("Could not detect language well enough, using English");
             language=new English();
           }
           System.err.println("Language used is: " + language.getName());
-          language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(singleLineBreakMarksParagraph);
-          changeLanguage(language,motherTongue,disabledRules,enabledRules);
+          language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(options.isSingleLineBreakMarksParagraph());
+          changeLanguage(language,options.getMotherTongue(),options.getDisabledRules(),options.getEnabledRules());
         }
         sb.append('\n');
         tmpLineOffset++;
