@@ -21,4 +21,5 @@
       e.printStackTrace();
     }
   }
+  System.out.println("Done. Ignored items because they are already known: " + ignored);
 }
