@@ -3,5 +3,5 @@
   FSA fsa=FSABuilder.build(lines);
   ByteArrayOutputStream fsaOutStream=new CFSA2Serializer().serialize(fsa,new ByteArrayOutputStream());
   ByteArrayInputStream fsaInStream=new ByteArrayInputStream(fsaOutStream.toByteArray());
-  return Dictionary.readAndClose(fsaInStream,infoFile);
+  return Dictionary.read(fsaInStream,infoFile);
 }

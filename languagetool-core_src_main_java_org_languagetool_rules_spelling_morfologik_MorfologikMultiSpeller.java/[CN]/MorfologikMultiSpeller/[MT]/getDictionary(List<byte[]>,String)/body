@@ -9,7 +9,7 @@
     ByteArrayOutputStream fsaOutStream=new CFSA2Serializer().serialize(fsa,new ByteArrayOutputStream());
     ByteArrayInputStream fsaInStream=new ByteArrayInputStream(fsaOutStream.toByteArray());
     String infoFile=dictPath.replace(".dict",".info");
-    Dictionary dict=Dictionary.readAndClose(fsaInStream,JLanguageTool.getDataBroker().getFromResourceDirAsStream(infoFile));
+    Dictionary dict=Dictionary.read(fsaInStream,JLanguageTool.getDataBroker().getFromResourceDirAsStream(infoFile));
     dicPathToDict.put(dictPath,dict);
     return dict;
   }

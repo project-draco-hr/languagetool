@@ -1,12 +1,7 @@
 {
   final List<String> suggestions=new ArrayList<>();
-  try {
-    suggestions.addAll(speller.findReplacements(word));
-    suggestions.addAll(speller.replaceRunOnWords(word));
-  }
- catch (  CharacterCodingException e) {
-    throw new RuntimeException(e);
-  }
+  suggestions.addAll(speller.findReplacements(word));
+  suggestions.addAll(speller.replaceRunOnWords(word));
   if (dictionary.metadata.isConvertingCase() && StringTools.startsWithUppercase(word)) {
     for (int i=0; i < suggestions.size(); i++) {
       String uppercaseFirst=StringTools.uppercaseFirstChar(suggestions.get(i));
