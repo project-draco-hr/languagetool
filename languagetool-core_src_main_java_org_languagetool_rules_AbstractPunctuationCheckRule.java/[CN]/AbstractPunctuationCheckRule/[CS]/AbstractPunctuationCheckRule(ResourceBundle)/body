@@ -1,4 +1,4 @@
 {
   super(messages);
-  super.setCategory(new Category(messages.getString("category_misc")));
+  super.setCategory(new Category(CategoryIds.PUNCTUATION,messages.getString("category_misc")));
 }
