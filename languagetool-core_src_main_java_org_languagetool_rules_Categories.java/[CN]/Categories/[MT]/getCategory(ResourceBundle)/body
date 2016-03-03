@@ -1,0 +1,3 @@
+{
+  return new Category(new CategoryId(id),messages.getString(messageKey));
+}

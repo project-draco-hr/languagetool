@@ -1,6 +1,6 @@
 {
   super(messages);
-  setCategory(new Category(messages.getString("category_typo")));
+  setCategory(Categories.TYPOS.getCategory(messages));
   setLocQualityIssueType(ITSIssueType.NonConformance);
   this.lm=Objects.requireNonNull(languageModel);
   this.language=Objects.requireNonNull(language);

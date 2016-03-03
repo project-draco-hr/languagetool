@@ -1,6 +1,6 @@
 {
   super(messages);
   this.language=Objects.requireNonNull(language);
-  super.setCategory(new Category(CategoryIds.TYPOS,messages.getString("category_misc")));
+  super.setCategory(Categories.MISC.getCategory(messages));
   wrongWords=loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFileName()));
 }

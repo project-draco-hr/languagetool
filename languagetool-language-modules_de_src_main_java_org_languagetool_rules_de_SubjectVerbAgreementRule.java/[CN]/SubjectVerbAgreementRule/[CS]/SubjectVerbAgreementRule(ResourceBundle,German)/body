@@ -1,5 +1,5 @@
 {
-  super.setCategory(new Category(CategoryIds.GRAMMAR,messages.getString("category_grammar")));
+  super.setCategory(Categories.GRAMMAR.getCategory(messages));
   tagger=(GermanTagger)language.getTagger();
   for (  SingularPluralPair pair : PAIRS) {
     singular.add(pair.singular);
