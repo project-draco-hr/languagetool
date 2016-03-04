@@ -1,0 +1,9 @@
+{
+  super(messages);
+  super.setCategory(Categories.CASING.getCategory(messages));
+  this.language=language;
+  setLocQualityIssueType(ITSIssueType.Typographical);
+  if (incorrectExample != null && correctExample != null) {
+    addExamplePair(incorrectExample,correctExample);
+  }
+}

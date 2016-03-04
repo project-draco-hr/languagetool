@@ -1,6 +1,3 @@
 {
-  super(messages);
-  super.setCategory(Categories.CASING.getCategory(messages));
-  this.language=language;
-  setLocQualityIssueType(ITSIssueType.Typographical);
+  this(messages,language,null,null);
 }

@@ -1,0 +1,8 @@
+{
+  super(messages);
+  super.setCategory(Categories.MISC.getCategory(messages));
+  setLocQualityIssueType(ITSIssueType.Whitespace);
+  if (incorrectExample != null && correctExample != null) {
+    addExamplePair(incorrectExample,correctExample);
+  }
+}
