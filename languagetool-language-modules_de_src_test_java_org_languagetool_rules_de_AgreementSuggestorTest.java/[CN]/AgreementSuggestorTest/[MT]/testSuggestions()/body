@@ -4,4 +4,5 @@
   assertSuggestion("die/der/ART:DEF:NOM:PLU:FEM Haus/Haus/SUB:NOM:SIN:NEU","[das Haus]");
   assertSuggestion("das/der/ART:DEF:NOM:PLU:FEM H??user/Haus/SUB:NOM:PLU:NEU","[die H??user]");
   assertSuggestion("das/der/ART:DEF:NOM:PLU:FEM H??usern/Haus/SUB:DAT:PLU:NEU","[den H??usern]");
+  assertSuggestion("dieser/dies/PRO:DEM:GEN:PLU:NEU:B/S Buch/Buch/SUB:NOM:SIN:NEU","[dieser B??cher, dieses Buch]");
 }
