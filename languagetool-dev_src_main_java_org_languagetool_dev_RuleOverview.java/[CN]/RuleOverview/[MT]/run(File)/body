@@ -9,6 +9,7 @@
   System.out.println("  <th></th>");
   System.out.println("  <th align=\"left\" width=\"60\">Java<br/>rules</th>");
   System.out.println("  <th align=\"left\" width=\"60\">False<br/>friends</th>");
+  System.out.println("  <th align=\"left\" width=\"60\">Confusion<br/>pairs</th>");
   System.out.println("  <th valign='bottom' align=\"left\" width=\"70\">Activity</th>");
   System.out.println("  <th valign='bottom' align=\"left\">Rule Maintainers</th>");
   System.out.println("</tr>");
@@ -64,8 +65,8 @@
       }
       overallJavaCount++;
     }
-    final int count=countFalseFriendRules(falseFriendRules,lang);
-    System.out.print("<td valign=\"top\" align=\"right\">" + count + "</td>");
+    System.out.print("<td valign=\"top\" align=\"right\">" + countFalseFriendRules(falseFriendRules,lang) + "</td>");
+    System.out.print("<td valign=\"top\" align=\"right\">" + countConfusionPairs(lang) + "</td>");
     int commits=activity.getActivityFor(lang,365 / 2);
     int width=(int)Math.max(commits * 0.5,1);
     String images="";

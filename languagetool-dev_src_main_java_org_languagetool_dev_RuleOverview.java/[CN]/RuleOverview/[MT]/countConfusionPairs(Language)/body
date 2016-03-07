@@ -1,0 +1,14 @@
+{
+  String path="/" + lang.getShortName() + "/confusion_sets.txt";
+  ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
+  if (dataBroker.resourceExists(path)) {
+    try (InputStream confusionSetStream=dataBroker.getFromResourceDirAsStream(path)){
+      ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
+      return confusionSetLoader.loadConfusionSet(confusionSetStream).size();
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+  return 0;
+}
