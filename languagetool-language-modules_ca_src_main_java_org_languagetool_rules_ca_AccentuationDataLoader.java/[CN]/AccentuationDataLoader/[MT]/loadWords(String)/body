@@ -1,6 +1,6 @@
 {
   final Map<String,AnalyzedTokenReadings> map=new HashMap<>();
-  final InputStream inputStream=JLanguageTool.getDataBroker().getFromRulesDirAsStream(fileName);
+  final InputStream inputStream=JLanguageTool.getDataBroker().getFromRulesDirAsStream(path);
   try (Scanner scanner=new Scanner(inputStream,FILE_ENCODING)){
     while (scanner.hasNextLine()) {
       final String line=scanner.nextLine().trim();
@@ -9,7 +9,7 @@
       }
       final String[] parts=line.split(";");
       if (parts.length != 3) {
-        throw new IOException("Format error in file " + fileName + ", line: "+ line+ ", "+ "expected 3 semicolon-separated parts, got "+ parts.length);
+        throw new RuntimeException("Format error in file " + path + ", line: "+ line+ ", "+ "expected 3 semicolon-separated parts, got "+ parts.length);
       }
       final AnalyzedToken analyzedToken=new AnalyzedToken(parts[1],parts[2],null);
       map.put(parts[0],new AnalyzedTokenReadings(analyzedToken,0));
