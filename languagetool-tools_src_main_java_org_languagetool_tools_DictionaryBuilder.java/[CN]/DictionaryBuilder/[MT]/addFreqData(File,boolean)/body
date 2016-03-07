@@ -32,7 +32,12 @@
           throw new RuntimeException("Frequency out of range (0-255): " + normalizedFreq + " in word "+ key);
         }
         String freqChar=Character.toString((char)(FIRST_RANGE_CODE + normalizedFreq * FREQ_RANGES_OUT / FREQ_RANGES_IN));
-        bw.write(line + separator + freqChar+ "\n");
+        if (useSeparator) {
+          bw.write(line + separator + freqChar+ "\n");
+        }
+ else {
+          bw.write(line + freqChar + "\n");
+        }
       }
     }
     br.close();

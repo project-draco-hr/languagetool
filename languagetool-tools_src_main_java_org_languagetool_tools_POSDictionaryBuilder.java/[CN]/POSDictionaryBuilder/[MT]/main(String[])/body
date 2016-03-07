@@ -5,7 +5,7 @@
   File inputFile=new File(cmdLine.getOptionValue(BuilderOptions.INPUT_OPTION));
   if (cmdLine.hasOption(BuilderWithFreqOptions.FREQ_OPTION)) {
     builder.readFreqList(new File(cmdLine.getOptionValue(BuilderWithFreqOptions.FREQ_OPTION)));
-    inputFile=builder.addFreqData(inputFile);
+    inputFile=builder.addFreqData(inputFile,false);
   }
   builder.build(inputFile);
 }

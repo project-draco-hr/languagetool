@@ -1,5 +1,9 @@
 {
   File reversedFile=File.createTempFile(SynthDictionaryBuilder.class.getSimpleName() + "_reversed",".txt");
+  String separator=getOption("fsa.dict.separator");
+  if (separator == null || separator.trim().isEmpty()) {
+    throw new IOException("A separator character (fsa.dict.separator) must be defined in the dictionary info file.");
+  }
   String encoding=getOption("fsa.dict.encoding");
   int posIgnoreCount=0;
   Scanner scanner=new Scanner(plainTextDictFile,encoding);
@@ -17,7 +21,7 @@
           posIgnoreCount++;
           continue;
         }
-        out.write(parts[1] + "|" + posTag+ "\t"+ parts[0]);
+        out.write(parts[0] + separator + parts[1]+ "|"+ posTag);
         out.write("\n");
       }
  else {

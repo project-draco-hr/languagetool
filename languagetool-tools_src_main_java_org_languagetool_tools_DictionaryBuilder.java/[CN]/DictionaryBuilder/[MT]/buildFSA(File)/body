@@ -1,0 +1,6 @@
+{
+  File resultFile=new File(outputFilename);
+  new FSACompile(inputFile.toPath(),resultFile.toPath(),serializationFormat,false,false,true).call();
+  System.out.println("Done. The binary dictionary has been written to " + resultFile.getAbsolutePath());
+  return resultFile;
+}

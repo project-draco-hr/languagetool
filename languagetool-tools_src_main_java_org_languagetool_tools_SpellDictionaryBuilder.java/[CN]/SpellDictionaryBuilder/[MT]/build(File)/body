@@ -2,7 +2,7 @@
   File tempFile=null;
   try {
     tempFile=tokenizeInput(plainTextDictFile);
-    return buildDict(tempFile);
+    return buildFSA(tempFile);
   }
   finally {
     if (tempFile != null) {

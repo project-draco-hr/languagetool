@@ -7,7 +7,7 @@
   File inputFile=new File(plainTextFile);
   if (cmdLine.hasOption(BuilderWithFreqOptions.FREQ_OPTION)) {
     builder.readFreqList(new File(cmdLine.getOptionValue(BuilderWithFreqOptions.FREQ_OPTION)));
-    inputFile=builder.addFreqData(inputFile);
+    inputFile=builder.addFreqData(inputFile,true);
   }
   builder.build(inputFile);
 }

@@ -1,8 +1,11 @@
 {
-  File resultFile=new File(outputFilename);
-  String[] buildToolOptions={"-f","cfsa2","-i",tempFile.getAbsolutePath(),"-o",resultFile.getAbsolutePath()};
-  System.out.println("Running Morfologik DictCompile.main with these options: " + Arrays.toString(buildToolOptions));
-  DictCompile.main(buildToolOptions);
-  System.out.println("Done. The binary dictionary has been written to " + resultFile.getAbsolutePath());
-  return resultFile;
+  File outputFile=new File(outputFilename);
+  String infoPath=inputFile.toString().replaceAll(".txt",".info");
+  File resultFile=new File(inputFile.toString().replaceAll(".txt",".dict"));
+  File infoFile=new File(infoPath);
+  props.store(new FileOutputStream(infoFile),"");
+  new DictCompile(inputFile.toPath(),false,false,false,false,true).call();
+  Files.move(resultFile.toPath(),outputFile.toPath(),StandardCopyOption.REPLACE_EXISTING);
+  System.out.println("Done. The binary dictionary has been written to " + outputFile.getAbsolutePath());
+  return outputFile;
 }
