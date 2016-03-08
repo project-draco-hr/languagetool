@@ -22,7 +22,9 @@
               suggestions.add(prevToken.token + " " + betterAlternative.token+ " "+ next.token);
             }
             match.setSuggestedReplacements(suggestions);
-            matches.add(match);
+            if (acceptMatch(match,p,sentence)) {
+              matches.add(match);
+            }
           }
  else {
             debug("Ignoring match as all alternatives are less probable: '%s' in '%s'\n",ngram,sentence.getText());
