@@ -20,6 +20,6 @@
   numeral=Pattern.compile(pattern.toString());
   stressedNumber=Pattern.compile("[0-9]*[0|2-9]0");
   stressedSuffix=Pattern.compile(stressedSuffixRE.toString());
-  setCategory(new Category("Orthography"));
+  setCategory(new Category(new CategoryId("ORTHOGRAPHY"),"Orthography"));
   init();
 }
