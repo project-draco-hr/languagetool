@@ -1,2 +1,3 @@
 StringBuilder sb
 AnalyzedSentence sentence
+boolean odd
