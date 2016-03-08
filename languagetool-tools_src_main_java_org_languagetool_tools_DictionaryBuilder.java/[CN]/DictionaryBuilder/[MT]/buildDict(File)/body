@@ -1,10 +1,12 @@
 {
   File outputFile=new File(outputFilename);
-  String infoPath=inputFile.toString().replaceAll(".txt",".info");
-  File resultFile=new File(inputFile.toString().replaceAll(".txt",".dict"));
+  String infoPath=inputFile.toString().replaceAll("\\.txt$",".info");
+  File resultFile=new File(inputFile.toString().replaceAll("\\.txt$",".dict"));
   File infoFile=new File(infoPath);
   props.store(new FileOutputStream(infoFile),"");
-  new DictCompile(inputFile.toPath(),false,false,false,false,true).call();
+  String[] buildOptions={"--exit","false","-i",inputFile.toString(),"-f",serializationFormat.toString(),"--overwrite"};
+  System.out.println("Running Morfologik DictCompile.main with these options: " + Arrays.toString(buildOptions));
+  DictCompile.main(buildOptions);
   Files.move(resultFile.toPath(),outputFile.toPath(),StandardCopyOption.REPLACE_EXISTING);
   System.out.println("Done. The binary dictionary has been written to " + outputFile.getAbsolutePath());
   return outputFile;

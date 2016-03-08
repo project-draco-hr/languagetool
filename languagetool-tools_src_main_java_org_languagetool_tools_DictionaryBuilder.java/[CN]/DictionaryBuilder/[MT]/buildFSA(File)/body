@@ -1,6 +1,8 @@
 {
   File resultFile=new File(outputFilename);
-  new FSACompile(inputFile.toPath(),resultFile.toPath(),serializationFormat,false,false,true).call();
+  String[] buildOptions={"--exit","false","-i",inputFile.toString(),"-o",resultFile.toString(),"-f",serializationFormat.toString(),"--overwrite"};
+  System.out.println("Running Morfologik FSACompile.main with these options: " + Arrays.toString(buildOptions));
+  FSACompile.main(buildOptions);
   System.out.println("Done. The binary dictionary has been written to " + resultFile.getAbsolutePath());
   return resultFile;
 }
