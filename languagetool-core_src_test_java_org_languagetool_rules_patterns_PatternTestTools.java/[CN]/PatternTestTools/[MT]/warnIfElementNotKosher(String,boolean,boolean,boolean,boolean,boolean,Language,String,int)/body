@@ -30,14 +30,14 @@
       if (strictMatcher.find()) {
         final String s=strictMatcher.group(2).replaceAll("\\\\p\\{[^}]*\\}","");
         if (s.indexOf('|') >= 0) {
-          System.err.println("The " + lang + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains | (pipe) in "+ " regexp bracket expression ["+ strictMatcher.group(2)+ "] which is unlikely to be correct.");
+          System.err.println("The " + lang + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains | (pipe) in "+ "regexp bracket expression ["+ strictMatcher.group(2)+ "] which is unlikely to be correct.");
         }
         final char[] sorted=s.toCharArray();
         Arrays.sort(sorted);
         for (int i=1; i < sorted.length; ++i) {
           final char c=sorted[i];
           if ("&\\-|".indexOf(c) < 0 && sorted[i - 1] == c) {
-            System.err.println("The " + lang + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ " regexp part ["+ strictMatcher.group(2)+ "] which contains duplicated char ["+ c+ "].");
+            System.err.println("The " + lang + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ "regexp part ["+ strictMatcher.group(2)+ "] which contains duplicated char ["+ c+ "].");
             break;
           }
         }

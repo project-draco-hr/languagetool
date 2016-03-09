@@ -14,7 +14,7 @@
     if (pToken.getExceptionList() != null) {
       for (      final PatternToken exception : pToken.getExceptionList()) {
         if (exception.hasNextException() && pToken.getSkipNext() == 0) {
-          System.err.println("The " + lang + " rule: "+ ruleId+ "["+ ruleSubId+ "]"+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies. "+ " Did you forget skip=\"...\"?");
+          System.err.println("The " + lang + " rule: "+ ruleId+ "["+ ruleSubId+ "]"+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies."+ " Did you forget skip=\"...\"?");
         }
         if (!pToken.getString().isEmpty() && !exception.getString().isEmpty() && !pToken.getNegation()&& !pToken.isInflected()&& !exception.getNegation()&& !exception.isInflected()&& pToken.getSkipNext() == 0 && pToken.isCaseSensitive() == exception.isCaseSensitive()) {
           if (exception.isRegularExpression()) {
