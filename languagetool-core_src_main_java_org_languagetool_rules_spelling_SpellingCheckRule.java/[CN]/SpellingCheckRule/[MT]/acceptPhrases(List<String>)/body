@@ -4,7 +4,7 @@
     String[] parts=phrase.split(" ");
     List<PatternToken> patternTokens=new ArrayList<>();
     for (    String part : parts) {
-      patternTokens.add(new PatternTokenBuilder().token(part).build());
+      patternTokens.add(new PatternTokenBuilder().csToken(part).build());
     }
     antiPatterns.add(patternTokens);
   }
