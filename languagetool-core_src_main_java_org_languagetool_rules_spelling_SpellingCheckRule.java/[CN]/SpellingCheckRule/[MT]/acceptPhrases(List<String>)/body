@@ -1,0 +1,12 @@
+{
+  List<List<PatternToken>> antiPatterns=new ArrayList<>();
+  for (  String phrase : phrases) {
+    String[] parts=phrase.split(" ");
+    List<PatternToken> patternTokens=new ArrayList<>();
+    for (    String part : parts) {
+      patternTokens.add(new PatternTokenBuilder().token(part).build());
+    }
+    antiPatterns.add(patternTokens);
+  }
+  this.antiPatterns=makeAntiPatterns(antiPatterns,language);
+}

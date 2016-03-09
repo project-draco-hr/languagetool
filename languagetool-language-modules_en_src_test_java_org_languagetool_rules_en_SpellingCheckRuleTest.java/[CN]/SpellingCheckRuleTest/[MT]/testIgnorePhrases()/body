@@ -1,0 +1,14 @@
+{
+  JLanguageTool langTool=new JLanguageTool(new AmericanEnglish());
+  assertThat(langTool.check("A test with myfoo mybar").size(),is(2));
+  for (  Rule rule : langTool.getAllActiveRules()) {
+    if (rule instanceof SpellingCheckRule) {
+      ((SpellingCheckRule)rule).acceptPhrases(Arrays.asList("myfoo mybar"));
+    }
+ else {
+      langTool.disableRule(rule.getId());
+    }
+  }
+  assertThat(langTool.check("A test with myfoo mybar").size(),is(0));
+  assertThat(langTool.check("A test with myfoo and mybar").size(),is(2));
+}

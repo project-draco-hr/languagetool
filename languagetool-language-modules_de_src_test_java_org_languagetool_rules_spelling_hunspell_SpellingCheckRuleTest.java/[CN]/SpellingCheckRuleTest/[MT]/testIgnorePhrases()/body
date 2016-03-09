@@ -1,0 +1,14 @@
+{
+  JLanguageTool lt=new JLanguageTool(new GermanyGerman());
+  assertThat(lt.check("Ein Test mit Auriensis Fantasiewortus").size(),is(2));
+  for (  Rule rule : lt.getAllActiveRules()) {
+    if (rule instanceof SpellingCheckRule) {
+      ((SpellingCheckRule)rule).acceptPhrases(Arrays.asList("Auriensis Fantasiewortus"));
+    }
+ else {
+      lt.disableRule(rule.getId());
+    }
+  }
+  assertThat(lt.check("Ein Test mit Auriensis Fantasiewortus").size(),is(0));
+  assertThat(lt.check("Ein Test mit Auriensis und Fantasiewortus").size(),is(2));
+}
