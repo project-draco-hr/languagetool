@@ -19,6 +19,7 @@
       ngramDirectory=new File(ngramDir);
     }
     autoDetect="true".equals(props.get(AUTO_DETECT_KEY));
+    taggerShowsDisambigLog="true".equals(props.get(TAGGER_SHOWS_DISAMBIG_LOG_KEY));
     guiConfig="true".equals(props.get(USE_GUI_KEY));
     runServer="true".equals(props.get(SERVER_RUN_KEY));
     fontName=(String)props.get(FONT_NAME_KEY);

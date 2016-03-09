@@ -5,6 +5,7 @@
   this.ngramDirectory=configuration.ngramDirectory;
   this.runServer=configuration.runServer;
   this.autoDetect=configuration.autoDetect;
+  this.taggerShowsDisambigLog=configuration.taggerShowsDisambigLog;
   this.guiConfig=configuration.guiConfig;
   this.fontName=configuration.fontName;
   this.fontStyle=configuration.fontStyle;

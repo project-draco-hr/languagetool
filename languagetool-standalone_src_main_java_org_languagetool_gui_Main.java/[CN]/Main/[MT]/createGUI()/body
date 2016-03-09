@@ -101,6 +101,7 @@
   languageBox.selectLanguage(ltSupport.getLanguage());
   languageBox.setEnabled(!ltSupport.getConfig().getAutoDetect());
   autoDetectBox.setSelected(ltSupport.getConfig().getAutoDetect());
+  taggerShowsDisambigLog=ltSupport.getConfig().getTaggerShowsDisambigLog();
   languageBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
       if (e.getStateChange() == ItemEvent.SELECTED) {

@@ -14,6 +14,7 @@
     props.setProperty(NGRAM_DIR_KEY,ngramDirectory.getAbsolutePath());
   }
   props.setProperty(AUTO_DETECT_KEY,Boolean.toString(autoDetect));
+  props.setProperty(TAGGER_SHOWS_DISAMBIG_LOG_KEY,Boolean.toString(taggerShowsDisambigLog));
   props.setProperty(USE_GUI_KEY,Boolean.toString(guiConfig));
   props.setProperty(SERVER_RUN_KEY,Boolean.toString(runServer));
   props.setProperty(SERVER_PORT_KEY,Integer.toString(serverPort));
