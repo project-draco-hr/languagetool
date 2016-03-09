@@ -1,11 +1,10 @@
 {
-  final JLanguageTool langTool=new JLanguageTool(new AmericanEnglish());
-  final List<RuleMatch> matches=langTool.check("This is anArtificialTestWordForLanguageTool.");
-  assertEquals(0,matches.size());
-  final List<RuleMatch> matches2=langTool.check("This is a real typoh.");
-  assertEquals(1,matches2.size());
-  assertEquals("MORFOLOGIK_RULE_EN_US",matches2.get(0).getRule().getId());
-  final List<RuleMatch> matches3=langTool.check("This is anotherArtificialTestWordForLanguageTol.");
-  assertEquals(1,matches3.size());
-  assertEquals("[anotherArtificialTestWordForLanguageTool]",matches3.get(0).getSuggestedReplacements().toString());
+  JLanguageTool lt=new JLanguageTool(new AmericanEnglish());
+  assertThat(lt.check("This is anArtificialTestWordForLanguageTool.").size(),is(0));
+  List<RuleMatch> matches2=lt.check("This is a real typoh.");
+  assertThat(matches2.size(),is(1));
+  assertThat(matches2.get(0).getRule().getId(),is("MORFOLOGIK_RULE_EN_US"));
+  List<RuleMatch> matches3=lt.check("This is anotherArtificialTestWordForLanguageTol.");
+  assertThat(matches3.size(),is(1));
+  assertThat(matches3.get(0).getSuggestedReplacements().toString(),is("[anotherArtificialTestWordForLanguageTool]"));
 }
