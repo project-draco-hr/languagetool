@@ -1,0 +1,8 @@
+{
+  final List<RuleMatch> matches=new ArrayList<>();
+  final String text="This is a test sentence.";
+  final RuleMatch match=new RuleMatch(new FakeRule(),8,10,"myMessage","short message");
+  matches.add(match);
+  final String xml=SERIALIZER.ruleMatchesToXml(matches,text,5,LANG,null);
+  assertTrue(xml.contains("shortmsg=\"short message\""));
+}
