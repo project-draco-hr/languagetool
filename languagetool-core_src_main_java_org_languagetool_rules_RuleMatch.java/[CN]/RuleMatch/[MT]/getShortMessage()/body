@@ -1,3 +1,6 @@
 {
+  if (shortMessage == null) {
+    return "";
+  }
   return shortMessage;
 }
