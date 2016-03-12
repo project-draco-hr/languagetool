@@ -183,6 +183,8 @@
   assertEquals("qualificaren",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("Excelentissim"));
   assertEquals("Excel??lent??ssim",matches[0].getSuggestedReplacements().get(0));
+  matches=rule.match(langTool.getAnalyzedSentence("milisegons"));
+  assertEquals("mil??lisegons",matches[0].getSuggestedReplacements().get(0));
   matches=rule.match(langTool.getAnalyzedSentence("En la Pecra"));
   assertEquals(1,matches.length);
   assertEquals("Para",matches[0].getSuggestedReplacements().get(0));
