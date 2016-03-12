@@ -1,18 +1,8 @@
 {
-  if (args.length != 1) {
-    System.out.println("Usage: " + DictionaryExporter.class.getSimpleName() + " <dictionary>");
-    System.out.println("   <dictionary> is a binary dictionary file, typically ending with .dict");
-    System.exit(1);
-  }
-  String filename=args[0];
-  File inputFile=new File(filename);
-  String inputPath=inputFile.toString();
-  File outpuFile=new File(filename.replace(".dict","-dump.txt"));
-  if (inputPath.contains("hunspell") || inputPath.contains("spelling")) {
-    new FSADecompile(inputFile.toPath(),outpuFile.toPath()).call();
-  }
- else {
-    new DictDecompile(inputFile.toPath(),outpuFile.toPath(),true,true);
-  }
-  System.out.println("Done. The dictionary export has been written to " + outpuFile.getAbsolutePath());
+  CommandLine cmdLine=new ExporterOptions().parseArguments(args,DictionaryExporter.class);
+  File binaryDictFile=new File(cmdLine.getOptionValue(BuilderOptions.INPUT_OPTION));
+  File infoFile=new File(cmdLine.getOptionValue(BuilderOptions.INFO_OPTION));
+  DictionaryExporter builder=new DictionaryExporter(infoFile);
+  builder.setOutputFilename(cmdLine.getOptionValue(BuilderOptions.OUTPUT_OPTION));
+  builder.build(binaryDictFile);
 }

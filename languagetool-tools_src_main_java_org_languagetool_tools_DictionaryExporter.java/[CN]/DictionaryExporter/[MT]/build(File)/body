@@ -1,0 +1,16 @@
+{
+  String inputPath=binaryDictFile.toString();
+  File tmpOutputFile=File.createTempFile(DictionaryExporter.class.getSimpleName() + "_separator",".txt");
+  if (inputPath.contains("hunspell") || inputPath.contains("spelling")) {
+    String[] buildOptions={"--exit","false","-i",binaryDictFile.toString(),"-o",tmpOutputFile.toString(),"--overwrite"};
+    System.out.println("Running Morfologik FSADecompile.main with these options: " + Arrays.toString(buildOptions));
+    FSADecompile.main(buildOptions);
+  }
+ else {
+    String[] buildOptions={"--exit","false","-i",binaryDictFile.toString(),"-o",tmpOutputFile.toString(),"--overwrite"};
+    System.out.println("Running Morfologik DictDecompile.main with these options: " + Arrays.toString(buildOptions));
+    DictDecompile.main(buildOptions);
+  }
+  outputSeparatorToTab(tmpOutputFile);
+  System.out.println("Done. The dictionary export has been written to " + getOutputFilename());
+}

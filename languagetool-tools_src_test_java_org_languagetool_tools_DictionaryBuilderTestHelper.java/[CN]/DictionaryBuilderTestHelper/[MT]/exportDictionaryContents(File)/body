@@ -1,15 +1,7 @@
 {
-  File outputFile;
-  trackOutput();
-  try {
-    DictionaryExporter.main(new String[]{file.getAbsolutePath()});
-  }
-  finally {
-    resetOutput();
-  }
-  outputFile=File.createTempFile(POSDictionaryBuilder.class.getSimpleName(),".export");
-  FileOutputStream fos=new FileOutputStream(outputFile);
-  fos.write(out.toByteArray());
-  fos.close();
+  File outputFile=File.createTempFile(DictionaryExporter.class.getSimpleName(),".export");
+  String infoFile=file.toString().replaceAll("\\.dict$",".info");
+  String[] buildOptions={"--exit","false","-i",file.toString(),"-o",outputFile.toString(),"-info",infoFile,"--overwrite"};
+  DictionaryExporter.main(buildOptions);
   return outputFile;
 }
