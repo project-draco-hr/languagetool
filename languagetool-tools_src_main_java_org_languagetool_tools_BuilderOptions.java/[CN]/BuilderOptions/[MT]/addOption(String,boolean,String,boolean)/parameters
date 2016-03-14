@@ -1,0 +1,4 @@
+String opt
+boolean hasArg
+String description
+boolean isRequired

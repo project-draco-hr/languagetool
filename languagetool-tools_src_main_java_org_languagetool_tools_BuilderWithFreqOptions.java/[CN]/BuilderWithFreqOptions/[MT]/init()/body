@@ -1,5 +1,0 @@
-{
-  Option option=new Option(FREQ_OPTION,true,"optional .xml file with a frequency wordlist, see http://wiki.languagetool.org/developing-a-tagger-dictionary");
-  option.setRequired(false);
-  options.addOption(option);
-}
