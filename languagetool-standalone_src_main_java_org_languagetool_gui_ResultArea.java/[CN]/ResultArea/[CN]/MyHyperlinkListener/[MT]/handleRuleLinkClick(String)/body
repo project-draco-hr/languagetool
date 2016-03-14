@@ -8,5 +8,5 @@
     ltSupport.enableRule(ruleId);
   }
   ltSupport.getConfig().saveConfiguration(ltSupport.getLanguage());
-  ltSupport.checkImmediately(marker);
+  ltSupport.checkImmediately(this);
 }

@@ -1,0 +1,6 @@
+{
+  this.source=source;
+  this.type=type;
+  this.caller=caller;
+  this.elapsedTime=elapsedTime;
+}

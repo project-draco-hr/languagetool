@@ -1,0 +1,4 @@
+{
+  LanguageToolEvent event=new LanguageToolEvent(this,type,caller,elapsedTime);
+  fireEvent(event);
+}

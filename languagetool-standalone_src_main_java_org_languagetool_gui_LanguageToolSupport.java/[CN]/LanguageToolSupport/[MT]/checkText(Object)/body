@@ -44,21 +44,23 @@ catch (    InvocationTargetException ex) {
       throw new RuntimeException(ex);
     }
   }
+  long startTime=System.currentTimeMillis();
   final List<RuleMatch> matches=this.languageTool.check(this.textComponent.getText());
+  long elapsedTime=System.currentTimeMillis() - startTime;
   int v=check.get();
   if (v == 0) {
     if (!SwingUtilities.isEventDispatchThread()) {
       SwingUtilities.invokeLater(new Runnable(){
         @Override public void run(){
           updateHighlights(matches);
-          fireEvent(LanguageToolEvent.Type.CHECKING_FINISHED,caller);
+          fireEvent(LanguageToolEvent.Type.CHECKING_FINISHED,caller,elapsedTime);
         }
       }
 );
     }
  else {
       updateHighlights(matches);
-      fireEvent(LanguageToolEvent.Type.CHECKING_FINISHED,caller);
+      fireEvent(LanguageToolEvent.Type.CHECKING_FINISHED,caller,elapsedTime);
     }
   }
   return matches;

@@ -21,18 +21,17 @@
         final String startCheckText=Main.HTML_GREY_FONT_START + org.languagetool.tools.Tools.i18n(messages,"startChecking",langName) + "..."+ Main.HTML_FONT_END;
         statusPane.setText(startCheckText);
         setStartText(startCheckText);
-        if (event.getCaller() == marker) {
+        if (event.getCaller() == this) {
           statusPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         }
       }
  else       if (event.getType() == LanguageToolEvent.Type.CHECKING_FINISHED) {
+        setRunTime(event.getElapsedTime());
         inputText=event.getSource().getTextComponent().getText();
         setRuleMatches(event.getSource().getMatches());
-        if (event.getCaller() == marker || event.getCaller() == null) {
-          displayResult();
-          if (event.getCaller() == marker) {
-            statusPane.setCursor(Cursor.getDefaultCursor());
-          }
+        displayResult();
+        if (event.getCaller() == this) {
+          statusPane.setCursor(Cursor.getDefaultCursor());
         }
       }
  else       if (event.getType() == LanguageToolEvent.Type.RULE_DISABLED || event.getType() == LanguageToolEvent.Type.RULE_ENABLED) {

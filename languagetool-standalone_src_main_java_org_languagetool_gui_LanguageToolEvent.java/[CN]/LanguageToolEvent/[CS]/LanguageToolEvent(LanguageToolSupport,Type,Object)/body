@@ -1,5 +1,3 @@
 {
-  this.source=source;
-  this.type=type;
-  this.caller=caller;
+  this(source,type,caller,0);
 }
