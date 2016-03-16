@@ -1,7 +1,7 @@
 {
   final URL dictURL=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(originalPath);
   String dictionaryPath;
-  if ("jar".equals(dictURL.getProtocol()) || "vfs".equals(dictURL.getProtocol())) {
+  if ("jar".equals(dictURL.getProtocol()) || "vfs".equals(dictURL.getProtocol()) || "bundle".equals(dictURL.getProtocol())) {
     final File tempDir=new File(System.getProperty("java.io.tmpdir"));
     File tempDicFile=new File(tempDir,dicName + ".dic");
     JLanguageTool.addTemporaryFile(tempDicFile);
