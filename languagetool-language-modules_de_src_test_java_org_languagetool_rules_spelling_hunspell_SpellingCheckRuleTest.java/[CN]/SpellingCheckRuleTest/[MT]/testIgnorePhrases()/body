@@ -12,6 +12,6 @@
   assertThat(lt.check("Ein Test mit Auriensis Fantasiewortus").size(),is(0));
   assertThat(lt.check("Ein Test mit Auriensis und Fantasiewortus").size(),is(2));
   assertThat(lt.check("fudeldu laberwort").size(),is(0));
-  assertThat(lt.check("Fudeldu laberwort").size(),is(2));
+  assertThat(lt.check("Fudeldu laberwort").size(),is(0));
   assertThat(lt.check("Fudeldu Laberwort").size(),is(2));
 }

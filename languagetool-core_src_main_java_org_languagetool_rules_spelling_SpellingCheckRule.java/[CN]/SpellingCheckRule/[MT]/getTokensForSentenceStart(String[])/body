@@ -1,0 +1,16 @@
+{
+  List<PatternToken> ucPatternTokens=new ArrayList<>();
+  int j=0;
+  for (  String part : parts) {
+    if (j == 0) {
+      String uppercased=StringTools.uppercaseFirstChar(part);
+      ucPatternTokens.add(new PatternTokenBuilder().posRegex(JLanguageTool.SENTENCE_START_TAGNAME).build());
+      ucPatternTokens.add(new PatternTokenBuilder().csToken(uppercased).build());
+    }
+ else {
+      ucPatternTokens.add(new PatternTokenBuilder().csToken(part).build());
+    }
+    j++;
+  }
+  return ucPatternTokens;
+}

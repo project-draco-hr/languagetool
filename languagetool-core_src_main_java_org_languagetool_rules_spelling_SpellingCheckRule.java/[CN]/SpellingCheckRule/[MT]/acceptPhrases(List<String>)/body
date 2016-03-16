@@ -3,10 +3,22 @@
   for (  String phrase : phrases) {
     String[] parts=phrase.split(" ");
     List<PatternToken> patternTokens=new ArrayList<>();
+    int i=0;
+    boolean startsLowercase=false;
     for (    String part : parts) {
+      if (i == 0) {
+        String uppercased=StringTools.uppercaseFirstChar(part);
+        if (!uppercased.equals(part)) {
+          startsLowercase=true;
+        }
+      }
       patternTokens.add(new PatternTokenBuilder().csToken(part).build());
+      i++;
     }
     antiPatterns.add(patternTokens);
+    if (startsLowercase) {
+      antiPatterns.add(getTokensForSentenceStart(parts));
+    }
   }
   this.antiPatterns=makeAntiPatterns(antiPatterns,language);
 }
