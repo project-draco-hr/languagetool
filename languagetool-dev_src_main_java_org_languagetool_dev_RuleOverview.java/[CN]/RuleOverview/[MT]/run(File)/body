@@ -9,6 +9,7 @@
   System.out.println("  <th></th>");
   System.out.println("  <th align=\"left\" width=\"60\">Java<br/>rules</th>");
   System.out.println("  <th align=\"left\" width=\"60\">False<br/>friends</th>");
+  System.out.println("  <th align=\"left\" width=\"60\">Spell<br/>check</th>");
   System.out.println("  <th align=\"left\" width=\"60\">Confusion<br/>pairs</th>");
   System.out.println("  <th valign='bottom' align=\"left\" width=\"70\">Activity</th>");
   System.out.println("  <th valign='bottom' align=\"left\">Rule Maintainers</th>");
@@ -28,7 +29,7 @@
     System.out.print("<tr>");
     final String langCode=lang.getShortName();
     final File langSpecificWebsite=new File(webRoot,langCode);
-    final List<String> variants=getVariants(sortedLanguages,lang);
+    final List<String> variants=getVariantNames(sortedLanguages,lang);
     String variantsText="";
     if (variants.size() > 0) {
       variantsText="<br/><span class='langVariants'>Variants for: " + StringUtils.join(variants,", ") + "</span>";
@@ -66,6 +67,15 @@
       overallJavaCount++;
     }
     System.out.print("<td valign=\"top\" align=\"right\">" + countFalseFriendRules(falseFriendRules,lang) + "</td>");
+    SpellcheckSupport spellcheckSupport=spellcheckSupport(lang,sortedLanguages);
+    String spellSupportStr="";
+    if (spellcheckSupport == SpellcheckSupport.Full) {
+      spellSupportStr="???";
+    }
+ else     if (spellcheckSupport == SpellcheckSupport.NoSuggestion) {
+      spellSupportStr="<span title='spell check without suggestions'>(???)</span>";
+    }
+    System.out.print("<td valign=\"top\" align=\"right\">" + spellSupportStr + "</td>");
     System.out.print("<td valign=\"top\" align=\"right\">" + countConfusionPairs(lang) + "</td>");
     int commits=activity.getActivityFor(lang,365 / 2);
     int width=(int)Math.max(commits * 0.5,1);

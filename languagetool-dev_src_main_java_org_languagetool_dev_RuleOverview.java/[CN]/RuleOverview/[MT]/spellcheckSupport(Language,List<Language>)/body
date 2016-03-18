@@ -1,0 +1,12 @@
+{
+  if (spellcheckSupport(lang) != SpellcheckSupport.None) {
+    return spellcheckSupport(lang);
+  }
+  List<Language> variants=getVariants(allLanguages,lang);
+  for (  Language variant : variants) {
+    if (spellcheckSupport(variant) != SpellcheckSupport.None) {
+      return spellcheckSupport(variant);
+    }
+  }
+  return SpellcheckSupport.None;
+}

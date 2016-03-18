@@ -1,0 +1,13 @@
+{
+  for (  Rule rule : lang.getRelevantRules(JLanguageTool.getMessageBundle())) {
+    if (rule.isDictionaryBasedSpellingRule()) {
+      if (rule instanceof HunspellNoSuggestionRule) {
+        return SpellcheckSupport.NoSuggestion;
+      }
+ else {
+        return SpellcheckSupport.Full;
+      }
+    }
+  }
+  return SpellcheckSupport.None;
+}

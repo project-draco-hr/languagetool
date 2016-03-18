@@ -1,0 +1,8 @@
+{
+  List<Language> variants=getVariants(allLanguages,lang);
+  List<String> result=new ArrayList<>();
+  for (  Language l : variants) {
+    result.add(l.getName().replaceAll(".*\\((.*?)\\).*","$1").trim());
+  }
+  return result;
+}
