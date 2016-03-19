@@ -8,6 +8,12 @@
   if (wordRepetitionOf("can",tokens,position) && posIsIn(tokens,position - 1,"NN")) {
     return true;
   }
+  if (wordRepetitionOf("blah",tokens,position)) {
+    return true;
+  }
+  if (wordRepetitionOf("yadda",tokens,position)) {
+    return true;
+  }
   if (wordRepetitionOf("Pago",tokens,position)) {
     return true;
   }
