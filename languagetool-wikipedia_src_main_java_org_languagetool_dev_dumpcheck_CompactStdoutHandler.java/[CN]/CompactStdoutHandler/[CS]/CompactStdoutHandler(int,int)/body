@@ -1,0 +1,6 @@
+{
+  super(maxSentences,maxErrors);
+  contextTools.setContextSize(70);
+  contextTools.setErrorMarkerStart("**");
+  contextTools.setErrorMarkerEnd("**");
+}

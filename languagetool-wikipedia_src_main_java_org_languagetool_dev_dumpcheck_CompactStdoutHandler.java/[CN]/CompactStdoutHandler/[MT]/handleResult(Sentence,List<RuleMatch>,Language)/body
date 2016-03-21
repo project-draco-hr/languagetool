@@ -1,0 +1,14 @@
+{
+  if (ruleMatches.size() > 0) {
+    for (    RuleMatch match : ruleMatches) {
+      String ruleId=match.getRule().getId();
+      if (match.getRule() instanceof AbstractPatternRule) {
+        AbstractPatternRule pRule=(AbstractPatternRule)match.getRule();
+        ruleId+="[" + pRule.getSubId() + "]";
+      }
+      System.out.println(ruleId + ": " + contextTools.getContext(match.getFromPos(),match.getToPos(),sentence.getText()));
+      checkMaxErrors(++errorCount);
+    }
+  }
+  checkMaxSentences(++sentenceCount);
+}
