@@ -1,8 +1,11 @@
 {
   List<RuleMatch> ruleMatches=new ArrayList<>();
-  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  AnalyzedTokenReadings[] tokens=getSentenceWithImmunization(sentence).getTokensWithoutWhitespace();
   for (int i=1; i < tokens.length; i++) {
     AnalyzedTokenReadings token=tokens[i];
+    if (tokens[i].isImmunized()) {
+      continue;
+    }
     String tokenStr=token.getToken();
     RuleMatch singularMatch=getSingularMatchOrNull(tokens,i,token,tokenStr);
     if (singularMatch != null) {
