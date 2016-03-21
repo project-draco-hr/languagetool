@@ -3,12 +3,12 @@ synchronized (this) {
     handleCount++;
   }
   String text=null;
-  String origAddress=null;
+  String remoteAddress=null;
   try {
     final URI requestedUri=httpExchange.getRequestURI();
-    origAddress=httpExchange.getRemoteAddress().getAddress().getHostAddress();
+    final String origAddress=httpExchange.getRemoteAddress().getAddress().getHostAddress();
     final String realAddressOrNull=getRealRemoteAddressOrNull(httpExchange);
-    final String remoteAddress=realAddressOrNull != null ? realAddressOrNull : origAddress;
+    remoteAddress=realAddressOrNull != null ? realAddressOrNull : origAddress;
     final Map<String,String> parameters=getRequestQuery(httpExchange,requestedUri);
     if (requestLimiter != null && !requestLimiter.isAccessOkay(remoteAddress)) {
       final String errorMessage="Error: Access from " + remoteAddress + " (useragent: "+ parameters.get("useragent")+ ") denied - too many requests."+ " Allowed maximum requests: "+ requestLimiter.getRequestLimit()+ " requests per "+ requestLimiter.getRequestLimitPeriodInSeconds()+ " seconds";
@@ -50,8 +50,8 @@ synchronized (this) {
     }
   }
  catch (  Exception e) {
-    if (text != null && origAddress != null) {
-      print("An error has occurred. Access from " + origAddress + ", text length "+ text.length()+ ". Stacktrace follows:",System.err);
+    if (text != null && remoteAddress != null) {
+      print("An error has occurred. Access from " + remoteAddress + ", text length "+ text.length()+ ". Stacktrace follows:",System.err);
     }
  else {
       print("An error has occurred. Stacktrace follows:",System.err);
