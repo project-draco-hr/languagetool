@@ -33,6 +33,10 @@
     Category category=match.getRule().getCategory();
     if (category != null) {
       xml.append(" category=\"").append(escapeXMLForAPIOutput(category.getName())).append('"');
+      CategoryId id=category.getId();
+      if (id != null) {
+        xml.append(" categoryid=\"").append(escapeXMLForAPIOutput(id.toString())).append('"');
+      }
     }
     ITSIssueType type=match.getRule().getLocQualityIssueType();
     if (type != null) {
