@@ -1,0 +1,3 @@
+String filterClassName
+String filterArgs
+AbstractPatternRule rule
