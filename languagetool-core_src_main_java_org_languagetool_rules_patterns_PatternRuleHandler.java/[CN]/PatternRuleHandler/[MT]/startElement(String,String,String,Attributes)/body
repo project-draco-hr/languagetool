@@ -16,12 +16,12 @@ language=Languages.getLanguageForShortName(languageStr);
 break;
 case "regexp":
 inRegex=true;
-regex=new StringBuilder();
 regexMode="exact".equals(attrs.getValue("type")) ? RegexpMode.EXACT : RegexpMode.SMART;
 regexCaseSensitive=attrs.getValue(CASE_SENSITIVE) != null && YES.equals(attrs.getValue(CASE_SENSITIVE));
 regexpMark=attrs.getValue(MARK) != null ? Integer.parseInt(attrs.getValue(MARK)) : 0;
 break;
 case RULE:
+regex=new StringBuilder();
 inRule=true;
 shortMessage=new StringBuilder();
 message=new StringBuilder();
