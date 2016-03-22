@@ -10,6 +10,7 @@
   testSplit("Das Schreiben ist auf den 3.10.2000 datiert.");
   testSplit("Nat??rliche Vererbungsprozesse pr??gten sich erst im 18. und fr??hen 19. Jahrhundert aus.");
   testSplit("Das ist ja 1a. ","Und das auch.");
+  testSplit("Hallo, ich bin???s. ","K??nntest du kommen?");
   testSplit("Friedrich I., auch bekannt als Friedrich der Gro??e.");
   testSplit("Friedrich II., auch bekannt als Friedrich der Gro??e.");
   testSplit("Friedrich IIXC., auch bekannt als Friedrich der Gro??e.");
@@ -43,5 +44,6 @@
   testSplit("Er kannte eine Unmenge Quellen, aus denen er sch??pfen konnte, d. h. nat??rlich, wo er durch Arbeit sich etwas verdienen konnte.");
   testSplit("Stimme am lautesten heraust??nte ???. ","Sobald er auf der Stra??e war");
   testSplit("??Welche Wohnung?\" ","??Die, wo wir arbeiten.");
-  testSplit("??Nun also, wie ist's??? fragte Lushin und blickte sie fest an.");
+  testSplit("??Nun also, wie ist's??? ","fragte Lushin und blickte sie fest an.");
+  testSplit("??Nun also, wie ist es??? ","fragte Lushin und blickte sie fest an.");
 }
