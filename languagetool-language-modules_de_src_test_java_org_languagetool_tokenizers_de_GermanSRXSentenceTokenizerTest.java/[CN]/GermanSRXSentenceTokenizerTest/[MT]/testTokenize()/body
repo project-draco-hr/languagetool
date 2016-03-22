@@ -11,6 +11,7 @@
   testSplit("Nat??rliche Vererbungsprozesse pr??gten sich erst im 18. und fr??hen 19. Jahrhundert aus.");
   testSplit("Das ist ja 1a. ","Und das auch.");
   testSplit("Hallo, ich bin???s. ","K??nntest du kommen?");
+  testSplit("In der 1. Bundesliga kam es zum Eklat.");
   testSplit("Friedrich I., auch bekannt als Friedrich der Gro??e.");
   testSplit("Friedrich II., auch bekannt als Friedrich der Gro??e.");
   testSplit("Friedrich IIXC., auch bekannt als Friedrich der Gro??e.");
