@@ -1,4 +1,8 @@
 {
+  assertGood("Ein Mann wie ich braucht einen Hut.");
+  assertGood("Egal, was er sagen wird, ich habe meine Entscheidung getroffen.");
+  assertGood("Du Beharrst darauf, dein W??rterbuch h??tte recht, hast aber von den Feinheiten des Japanischen keine Ahnung!");
+  assertGood("Bin gleich wieder da.");
   assertGood("Wobei ich ??u??erst vorsichtig bin.");
   assertGood("Es ist klar, dass ich ??u??erst vorsichtig mit den Informationen umgehe");
   assertGood("Es ist klar, dass ich ??u??erst vorsichtig bin.");
