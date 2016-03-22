@@ -1,4 +1,7 @@
 {
+  assertGood("K??mmere du dich mal nicht darum!");
+  assertGood("Ich wei??, was ich tun werde, falls etwas geschehen sollte.");
+  assertGood("...die drei??ig Jahre j??nger als ich ist.");
   assertGood("Ein Mann wie ich braucht einen Hut.");
   assertGood("Egal, was er sagen wird, ich habe meine Entscheidung getroffen.");
   assertGood("Du Beharrst darauf, dein W??rterbuch h??tte recht, hast aber von den Feinheiten des Japanischen keine Ahnung!");
