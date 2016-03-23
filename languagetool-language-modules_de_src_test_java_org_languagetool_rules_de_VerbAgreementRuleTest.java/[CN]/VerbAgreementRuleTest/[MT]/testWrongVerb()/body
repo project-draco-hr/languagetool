@@ -1,4 +1,5 @@
 {
+  assertGood("Du bist in dem Moment angekommen, als ich gegangen bin.");
   assertGood("K??mmere du dich mal nicht darum!");
   assertGood("Ich wei??, was ich tun werde, falls etwas geschehen sollte.");
   assertGood("...die drei??ig Jahre j??nger als ich ist.");
