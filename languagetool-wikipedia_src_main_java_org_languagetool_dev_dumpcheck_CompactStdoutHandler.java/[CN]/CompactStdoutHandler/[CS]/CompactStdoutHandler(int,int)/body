@@ -3,4 +3,5 @@
   contextTools.setContextSize(70);
   contextTools.setErrorMarkerStart("**");
   contextTools.setErrorMarkerEnd("**");
+  contextTools.setEscapeHtml(false);
 }
