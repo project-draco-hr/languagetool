@@ -1,10 +1,14 @@
 {
-  if (isPlural(leftPosTag) && !isPlural(rightPosTag) || !isPlural(leftPosTag) && isPlural(rightPosTag))   return null;
+  boolean leftPlural=isPlural(leftPosTag);
+  boolean rightPlural=isPlural(rightPosTag);
+  if (leftPlural != rightPlural)   return null;
   if (!isSameAnimStatus(leftPosTag,rightPosTag))   return null;
-  if (stdNounTagRegex.matcher(leftPosTag).matches()) {
-    if (stdNounTagRegex.matcher(rightPosTag).matches()) {
-      String substring1=leftPosTag.substring(stdNounTagLen,stdNounTagLen + 3);
-      String substring2=rightPosTag.substring(stdNounTagLen,stdNounTagLen + 3);
+  Matcher stdNounMatcherLeft=stdNounTagRegex.matcher(leftPosTag);
+  if (stdNounMatcherLeft.matches()) {
+    Matcher stdNounMatcherRight=stdNounTagRegex.matcher(rightPosTag);
+    if (stdNounMatcherRight.matches()) {
+      String substring1=stdNounMatcherLeft.group(1);
+      String substring2=stdNounMatcherRight.group(1);
       if (substring1.equals(substring2)) {
         if (leftNv)         return rightPosTag;
         return leftPosTag;

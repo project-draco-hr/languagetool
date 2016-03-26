@@ -42,7 +42,7 @@
       }
  else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && rightPosTag.startsWith(IPOSTag.noun.getText())) {
         String agreedPosTag=getAgreedPosTag(leftPosTag,rightPosTag,leftNv);
-        if (agreedPosTag == null && rightPosTag.startsWith("noun:m:v_naz") && isMinMax(rightAnalyzedToken.getToken())) {
+        if (agreedPosTag == null && rightPosTag.startsWith("noun:inanim:m:v_naz") && isMinMax(rightAnalyzedToken.getToken())) {
           agreedPosTag=leftPosTag;
         }
         if (agreedPosTag == null && !isSameAnimStatus(leftPosTag,rightPosTag)) {
@@ -78,9 +78,11 @@
         }
       }
  else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && IPOSTag.startsWith(rightPosTag,IPOSTag.adj,IPOSTag.numr)) {
-        String leftGenderConj=PosTagHelper.getGenderConj(leftPosTag);
-        if (leftGenderConj != null && leftGenderConj.equals(PosTagHelper.getGenderConj(rightPosTag))) {
-          newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+        if (!leftPosTag.contains(":prop") || isJuniorSenior(leftAnalyzedToken,rightAnalyzedToken)) {
+          String leftGenderConj=PosTagHelper.getGenderConj(leftPosTag);
+          if (leftGenderConj != null && leftGenderConj.equals(PosTagHelper.getGenderConj(rightPosTag))) {
+            newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
+          }
         }
       }
     }

@@ -34,6 +34,7 @@
     text=ABBR_DOT_PATTERN5.matcher(text).replaceAll("$1" + BREAKING_PLACEHOLDER + ABBR_DOT_SUBST);
     text=ABBR_DOT_PATTERN3.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2"+ ABBR_DOT_SUBST);
     text=ABBR_DOT_PATTERN6.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST);
+    text=ABBR_DOT_PATTERN6_2.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST);
     text=ABBR_DOT_PATTERN7.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2"+ ABBR_DOT_SUBST);
     text=ABBR_DOT_PATTERN8.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2");
   }

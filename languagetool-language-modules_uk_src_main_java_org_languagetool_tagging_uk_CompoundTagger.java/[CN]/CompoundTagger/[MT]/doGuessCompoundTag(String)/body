@@ -5,7 +5,7 @@
   if (dashIdx != firstDashIdx)   return null;
   String leftWord=word.substring(0,dashIdx);
   String rightWord=word.substring(dashIdx + 1);
-  List<TaggedWord> leftWdList=tagBothCases(leftWord);
+  List<TaggedWord> leftWdList=tagAsIsAndWithLowerCase(leftWord);
   if (rightPartsWithLeftTagMap.containsKey(rightWord)) {
     if (leftWdList.isEmpty())     return null;
     Pattern leftTagRegex=rightPartsWithLeftTagMap.get(rightWord);

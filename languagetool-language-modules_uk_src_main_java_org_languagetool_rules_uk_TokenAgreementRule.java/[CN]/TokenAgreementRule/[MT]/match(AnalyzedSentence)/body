@@ -74,13 +74,13 @@
     if (!getReadingWithVidmPosTag(posTagsToFind,tokenReadings)) {
       if (isTokenToSkip(tokenReadings))       continue;
       if (prep.equalsIgnoreCase("??") || prep.equalsIgnoreCase("??") || prep.equals("????????")|| prep.equals("??????")|| prep.equals("????")) {
-        if (PosTagHelper.hasPosTag(tokenReadings,".*p:v_naz.*:anim[^&]*")) {
+        if (PosTagHelper.hasPosTag(tokenReadings,"noun:anim.*:p:v_naz[^&]*")) {
           reqTokenReadings=null;
           continue;
         }
       }
       if (prep.equalsIgnoreCase("????")) {
-        if ((Character.isUpperCase(token.charAt(0)) && posTag.matches("noun:.:v_rod.*")) || (posTag.matches(".*[fl]name.*") && ((i > 1 && NAMES.contains(tokens[i - 2].getAnalyzedToken(0).getToken())) || (i > 2 && NAMES.contains(tokens[i - 3].getAnalyzedToken(0).getLemma()))))) {
+        if ((Character.isUpperCase(token.charAt(0)) && posTag.matches("noun.*?:.:v_rod.*")) || (posTag.matches(".*[fl]name.*") && ((i > 1 && NAMES.contains(tokens[i - 2].getAnalyzedToken(0).getToken())) || (i > 2 && NAMES.contains(tokens[i - 3].getAnalyzedToken(0).getLemma()))))) {
           reqTokenReadings=null;
           continue;
         }
@@ -108,14 +108,14 @@
           reqTokenReadings=null;
           continue;
         }
-        if (IPOSTag.isNum(tokens[i + 1].getAnalyzedToken(0).getPOSTag()) && (token.equals("??????????") || token.equals("????????") || token.equals("??????????????")|| token.equals("????????????????"))) {
+        if (PosTagHelper.hasPosTag(tokens[i + 1],"num.*") && (token.equals("??????????") || token.equals("????????") || token.equals("??????????????")|| token.equals("????????????????"))) {
           reqTokenReadings=null;
           continue;
         }
-        if (PosTagHelper.hasPosTag(tokenReadings,"noun:.:v_oru.*") && tokens[i + 1].hasPartialPosTag("adjp")) {
+        if (PosTagHelper.hasPosTag(tokenReadings,"noun.*?:.:v_oru.*") && tokens[i + 1].hasPartialPosTag("adjp")) {
           continue;
         }
-        if ((prep.equalsIgnoreCase("??????????") || prep.equalsIgnoreCase("????")) && (posTag.startsWith("noun:p:v_naz") || posTag.startsWith("noun:p:v_rod")) && IPOSTag.isNum(tokens[i + 1].getAnalyzedToken(0).getPOSTag())) {
+        if ((prep.equalsIgnoreCase("??????????") || prep.equalsIgnoreCase("????")) && (posTag.startsWith("noun:inanim:p:v_naz") || posTag.startsWith("noun:inanim:p:v_rod")) && IPOSTag.isNum(tokens[i + 1].getAnalyzedToken(0).getPOSTag())) {
           reqTokenReadings=null;
           continue;
         }

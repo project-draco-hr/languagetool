@@ -2,10 +2,10 @@
   String agreedPosTag=null;
   if (leftMasterSet.contains(leftLemma)) {
     if (leftPosTag.contains(TAG_ANIM)) {
-      rightPosTag=rightPosTag + TAG_ANIM;
+      rightPosTag=rightPosTag.replace(TAG_INANIM,TAG_ANIM);
     }
  else {
-      rightPosTag=rightPosTag.replace(TAG_ANIM,"");
+      rightPosTag=rightPosTag.replace(TAG_ANIM,TAG_INANIM);
     }
     agreedPosTag=getAgreedPosTag(leftPosTag,rightPosTag,leftNv);
     if (agreedPosTag == null) {
@@ -22,10 +22,10 @@
     }
   }
  else   if (slaveSet.contains(rightLemma)) {
-    rightPosTag=rightPosTag.replace(":anim","");
+    rightPosTag=rightPosTag.replace(":anim",":inanim");
     agreedPosTag=getAgreedPosTag(leftPosTag,rightPosTag,false);
     if (agreedPosTag == null) {
-      if (!leftPosTag.contains(TAG_ANIM)) {
+      if (leftPosTag.contains(TAG_INANIM)) {
         if (MNP_ZNA_REGEX.matcher(leftPosTag).matches() && MNP_NAZ_REGEX.matcher(rightPosTag).matches() && PosTagHelper.getNum(leftPosTag).equals(PosTagHelper.getNum(rightPosTag))&& !leftNv&& !rightNv) {
           agreedPosTag=leftPosTag;
         }
@@ -33,10 +33,10 @@
     }
   }
  else   if (slaveSet.contains(leftLemma)) {
-    leftPosTag=leftPosTag.replace(":anim","");
+    leftPosTag=leftPosTag.replace(":anim",":inanim");
     agreedPosTag=getAgreedPosTag(rightPosTag,leftPosTag,false);
     if (agreedPosTag == null) {
-      if (!rightPosTag.contains(TAG_ANIM)) {
+      if (rightPosTag.contains(TAG_INANIM)) {
         if (MNP_ZNA_REGEX.matcher(rightPosTag).matches() && MNP_NAZ_REGEX.matcher(leftPosTag).matches() && PosTagHelper.getNum(leftPosTag).equals(PosTagHelper.getNum(rightPosTag))&& !leftNv&& !rightNv) {
           agreedPosTag=rightPosTag;
         }

@@ -1,0 +1,8 @@
+{
+  List<TaggedWord> leftWdList=wordTagger.tag(leftWord);
+  String leftLowerCase=leftWord.toLowerCase(conversionLocale);
+  if (!leftWord.equals(leftLowerCase)) {
+    leftWdList.addAll(wordTagger.tag(leftLowerCase));
+  }
+  return leftWdList;
+}

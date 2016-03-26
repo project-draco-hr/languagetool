@@ -1,3 +1,5 @@
 {
-  return leftPosTag.contains(TAG_ANIM) && rightPosTag.contains(TAG_ANIM) || !leftPosTag.contains(TAG_ANIM) && !rightPosTag.contains(TAG_ANIM);
+  boolean leftAnim=leftPosTag.contains(TAG_ANIM);
+  boolean rightAnim=rightPosTag.contains(TAG_ANIM);
+  return leftAnim == rightAnim;
 }
