@@ -6,21 +6,7 @@
   textPane.setBorder(BorderFactory.createEmptyBorder());
   textPane.setOpaque(false);
   textPane.setBackground(new Color(0,0,0,0));
-  textPane.addHyperlinkListener(new HyperlinkListener(){
-    @Override public void hyperlinkUpdate(    HyperlinkEvent e){
-      if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-        if (Desktop.isDesktopSupported()) {
-          try {
-            Desktop.getDesktop().browse(e.getURL().toURI());
-          }
- catch (          Exception ex) {
-            Tools.showError(ex);
-          }
-        }
-      }
-    }
-  }
-);
+  Tools.addHyperlinkListener(textPane);
   textPane.setSize(dialogWidth,Short.MAX_VALUE);
   String messageWithBold=message.replaceAll("<suggestion>","<b>").replaceAll("</suggestion>","</b>");
   String exampleSentences=getExampleSentences(rule,messages);
