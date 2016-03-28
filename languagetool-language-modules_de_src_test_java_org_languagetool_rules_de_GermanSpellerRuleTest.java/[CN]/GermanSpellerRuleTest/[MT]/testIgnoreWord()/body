@@ -5,6 +5,9 @@
   assertTrue(ruleGermany.doIgnoreWord("Wichtelm??nnchens"));
   assertTrue(ruleGermany.doIgnoreWord("vorgeh??ngt"));
   assertTrue(ruleGermany.doIgnoreWord("vorgeh??ngten"));
+  assertTrue(ruleGermany.doIgnoreWord("Wichtelm??nnchen-vorgeh??ngt"));
+  assertTrue(ruleGermany.doIgnoreWord("Wichtelm??nnchen-Au-pair"));
+  assertTrue(ruleGermany.doIgnoreWord("Au-pair-Wichtelm??nnchen"));
   MyGermanSpellerRule ruleSwiss=new MyGermanSpellerRule(TestTools.getMessages("de"),GERMAN_CH);
   assertTrue(ruleSwiss.doIgnoreWord("einPseudoWortF??rLanguageToolTests"));
   assertFalse(ruleSwiss.doIgnoreWord("Ligafu??ball"));
