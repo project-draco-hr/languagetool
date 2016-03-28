@@ -1,0 +1,7 @@
+{
+  super.afterExecute(r,t);
+  if (t != null && t instanceof OutOfMemoryError) {
+    t.printStackTrace();
+    System.exit(1);
+  }
+}

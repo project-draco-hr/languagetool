@@ -35,7 +35,15 @@
     try {
       matches=future.get(maxCheckTimeMillis,TimeUnit.MILLISECONDS);
     }
- catch (    TimeoutException e) {
+ catch (    ExecutionException e) {
+      if (e.getCause() != null && e.getCause() instanceof OutOfMemoryError) {
+        throw (OutOfMemoryError)e.getCause();
+      }
+ else {
+        throw e;
+      }
+    }
+catch (    TimeoutException e) {
       boolean cancelled=future.cancel(true);
       throw new RuntimeException("Text checking took longer than allowed maximum of " + maxCheckTimeMillis + " milliseconds (cancelled: "+ cancelled+ ", handleCount: "+ handleCount+ ", queue size: "+ workQueue.size()+ ", language: "+ lang.getShortNameWithCountryAndVariant()+ ", "+ text.length()+ " characters of text)",e);
     }
