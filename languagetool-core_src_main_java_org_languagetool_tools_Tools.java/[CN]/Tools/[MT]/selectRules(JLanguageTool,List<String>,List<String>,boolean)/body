@@ -1,3 +1,7 @@
 {
-  selectRules(lt,disabledRuleIds.toArray(new String[disabledRuleIds.size()]),enabledRuleIds.toArray(new String[enabledRuleIds.size()]),useEnabledOnly);
+  Set<String> disabledRuleIdsSet=new HashSet<>();
+  disabledRuleIdsSet.addAll(disabledRuleIds);
+  Set<String> enabledRuleIdsSet=new HashSet<>();
+  enabledRuleIdsSet.addAll(enabledRuleIds);
+  selectRules(lt,Collections.emptySet(),Collections.emptySet(),disabledRuleIdsSet,enabledRuleIdsSet,useEnabledOnly);
 }

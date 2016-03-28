@@ -25,6 +25,6 @@
   tool.disableRule("MORE_A_JJ");
   assertEquals(0,tool.check("I can give you more a detailed description.").size());
   assertEquals(1,tool.check("I've go to go.").size());
-  tool.disableCategory("Possible Typo");
+  tool.disableCategory(Categories.TYPOS.getId());
   assertEquals(0,tool.check("I've go to go.").size());
 }

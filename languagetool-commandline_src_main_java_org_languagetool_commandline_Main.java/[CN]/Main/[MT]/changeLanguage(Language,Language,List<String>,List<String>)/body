@@ -1,7 +1,7 @@
 {
   try {
     lt=new MultiThreadedJLanguageTool(language,motherTongue);
-    Tools.selectRules(lt,disabledRules,enabledRules);
+    Tools.selectRules(lt,disabledRules,enabledRules,true);
     if (options.isVerbose()) {
       lt.setOutput(System.err);
     }

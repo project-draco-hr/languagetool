@@ -11,5 +11,5 @@
   if (options.getLanguageModel() != null) {
     lt.activateLanguageModelRules(options.getLanguageModel());
   }
-  Tools.selectRules(lt,options.getDisabledCategories(),options.getEnabledCategories(),new HashSet<>(Arrays.asList(options.getDisabledRules())),new HashSet<>(Arrays.asList(options.getEnabledRules())),options.isUseEnabledOnly());
+  Tools.selectRules(lt,options.getDisabledCategories(),options.getEnabledCategories(),new HashSet<>(options.getDisabledRules()),new HashSet<>(options.getEnabledRules()),options.isUseEnabledOnly());
 }

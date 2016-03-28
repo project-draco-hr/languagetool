@@ -57,7 +57,7 @@ catch (  UnknownParameterException e) {
     }
   }
   if (prg.lt.getAllActiveRules().size() == 0) {
-    throw new RuntimeException("WARNING: No rules are active. Please make sure your rule ids are correct: " + Arrays.toString(options.getEnabledRules()));
+    throw new RuntimeException("WARNING: No rules are active. Please make sure your rule ids are correct: " + options.getEnabledRules());
   }
   if (languageHint != null) {
     String spellHint=prg.isSpellCheckingActive() ? "" : " (no spell checking active, specify a language variant like 'en-GB' if available)";
