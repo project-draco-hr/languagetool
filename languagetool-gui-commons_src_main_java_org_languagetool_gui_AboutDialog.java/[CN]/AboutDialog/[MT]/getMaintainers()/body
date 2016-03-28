@@ -7,30 +7,33 @@
       }
     }
   }
-  final StringBuilder maintainersInfo=new StringBuilder();
-  maintainersInfo.append("<table border=0 cellspacing=0 cellpadding=0>");
-  for (  String lang : list.keySet()) {
-    maintainersInfo.append("<tr valign=\"top\"><td>");
-    maintainersInfo.append(lang);
-    maintainersInfo.append(":</td>");
-    maintainersInfo.append("<td>&nbsp;</td>");
-    maintainersInfo.append("<td>");
+  final StringBuilder str=new StringBuilder();
+  str.append("<table border=0 cellspacing=0 cellpadding=0>");
+  for (  Map.Entry<String,Language> entry : list.entrySet()) {
+    str.append("<tr valign=\"top\"><td>");
+    str.append(entry.getKey());
+    if (entry.getValue().getMaintainedState() == LanguageMaintainedState.LookingForNewMaintainer) {
+      str.append("(*)");
+    }
+    str.append(":</td>");
+    str.append("<td>&nbsp;</td>");
+    str.append("<td>");
     int i=0;
-    Contributor[] maintainers=list.get(lang).getMaintainers();
+    Contributor[] maintainers=list.get(entry.getKey()).getMaintainers();
     if (maintainers != null) {
       for (      Contributor contributor : maintainers) {
         if (i > 0) {
-          maintainersInfo.append(", ");
+          str.append(", ");
           if (i % 3 == 0) {
-            maintainersInfo.append("<br>");
+            str.append("<br>");
           }
         }
-        maintainersInfo.append(contributor.getName());
+        str.append(contributor.getName());
         i++;
       }
     }
-    maintainersInfo.append("</td></tr>");
+    str.append("</td></tr>");
   }
-  maintainersInfo.append("</table>");
-  return maintainersInfo.toString();
+  str.append("</table>");
+  return str.toString();
 }
