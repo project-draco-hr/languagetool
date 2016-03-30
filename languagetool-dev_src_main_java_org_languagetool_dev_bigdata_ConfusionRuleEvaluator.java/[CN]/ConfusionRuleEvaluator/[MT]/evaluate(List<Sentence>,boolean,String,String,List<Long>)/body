@@ -22,7 +22,7 @@
       }
  else       if (!consideredCorrect && isCorrect) {
         evalValues.get(factor).falsePositives++;
-        println(factor + " false positive: " + displayStr);
+        println("false positive with factor " + factor + ": "+ displayStr);
       }
  else       if (consideredCorrect && !isCorrect) {
         evalValues.get(factor).falseNegatives++;
