@@ -1,0 +1,16 @@
+{
+  int count=0;
+  for (  Language language : Languages.get()) {
+    List<Rule> rules=language.getRelevantLanguageModelRules(JLanguageTool.getMessageBundle(),new FakeLanguageModel());
+    if (rules.size() > 0) {
+      String path="/" + language.getShortName() + "/confusion_sets.txt";
+      try (InputStream confusionSetStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(path)){
+        ConfusionSetLoader confusionSetLoader=new ConfusionSetLoader();
+        Map<String,List<ConfusionSet>> set=confusionSetLoader.loadConfusionSet(confusionSetStream);
+        count+=set.size();
+      }
+     }
+  }
+  int minCount=1000;
+  assertTrue("Only got " + count + " confusion pairs for all languages, expected > "+ minCount,count > minCount);
+}
