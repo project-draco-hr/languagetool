@@ -1,7 +1,0 @@
-{
-  int sum=0;
-  for (  int val : map.values()) {
-    sum+=val;
-  }
-  return sum;
-}

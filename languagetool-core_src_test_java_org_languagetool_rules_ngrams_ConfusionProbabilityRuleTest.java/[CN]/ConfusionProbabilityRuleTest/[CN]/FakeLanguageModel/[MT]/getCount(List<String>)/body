@@ -1,4 +1,0 @@
-{
-  Integer count=map.get(String.join(" ",tokens));
-  return count == null ? 0 : count;
-}
