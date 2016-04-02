@@ -18,4 +18,5 @@
   assertFirstSuggestion("geruft","gerufen",rule,langTool);
   assertFirstSuggestion("Au-pair-Agentr","Au-pair-Agentur",rule,langTool);
   assertFirstSuggestion("Netflix-Flm","Netflix-Film",rule,langTool);
+  assertFirstSuggestion("Bund-L??nder-Kommissio","Bund-L??nder-Kommission",rule,langTool);
 }
