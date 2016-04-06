@@ -1,6 +1,6 @@
 {
   if (exceptionSet) {
-    for (    final PatternToken testException : exceptionList) {
+    for (    PatternToken testException : exceptionList) {
       if (testException.exceptionValidNext) {
         if (testException.isMatched(token)) {
           return true;

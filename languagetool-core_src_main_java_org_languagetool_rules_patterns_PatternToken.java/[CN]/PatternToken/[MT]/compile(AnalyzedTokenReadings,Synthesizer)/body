@@ -1,5 +1,5 @@
 {
-  final PatternToken compiledPatternToken;
+  PatternToken compiledPatternToken;
   try {
     compiledPatternToken=(PatternToken)clone();
   }

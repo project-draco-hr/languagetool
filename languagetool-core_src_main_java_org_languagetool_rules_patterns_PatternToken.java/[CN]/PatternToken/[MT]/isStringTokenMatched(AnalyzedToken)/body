@@ -1,7 +1,7 @@
 {
-  final String testToken=getTestToken(token);
+  String testToken=getTestToken(token);
   if (stringRegExp) {
-    final Matcher m=pattern.matcher(testToken);
+    Matcher m=pattern.matcher(testToken);
     return m.matches();
   }
   if (caseSensitive) {
