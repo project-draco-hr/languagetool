@@ -1,5 +1,6 @@
 {
   wordSplitter=new GermanWordSplitter(false);
+  wordSplitter.addException("Maskerade",Collections.singletonList("Maskerade"));
   wordSplitter.setStrictMode(strictMode);
   wordSplitter.setMinimumWordLength(3);
 }
