@@ -1,6 +1,11 @@
 {
   if (inflected) {
-    return token.getTokenInflected();
+    if (token.getLemma() != null) {
+      return token.getLemma();
+    }
+ else {
+      return token.getToken();
+    }
   }
   return token.getToken();
 }

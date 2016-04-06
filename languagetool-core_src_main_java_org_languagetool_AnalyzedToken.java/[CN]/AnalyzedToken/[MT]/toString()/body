@@ -1,3 +1,3 @@
 {
-  return tokenInflected + '/' + posTag;
+  return lemmaOrToken + '/' + posTag;
 }
