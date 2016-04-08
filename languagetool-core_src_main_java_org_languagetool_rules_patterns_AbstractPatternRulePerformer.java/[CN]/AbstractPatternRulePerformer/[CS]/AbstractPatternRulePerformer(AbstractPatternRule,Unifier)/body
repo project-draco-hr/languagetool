@@ -1,4 +1,4 @@
 {
-  this.rule=rule;
-  this.unifier=unifier;
+  this.rule=Objects.requireNonNull(rule);
+  this.unifier=Objects.requireNonNull(unifier);
 }
