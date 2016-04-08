@@ -98,7 +98,7 @@ if (newTokenReadings.length == matchingTokensWithCorrection - startPositionCorre
 for (int i=0; i < newTokenReadings.length; i++) {
   String token;
   int position=sentence.getOriginalPosition(firstMatchToken + correctedStPos + i);
-  if ("".equals(newTokenReadings[i].getToken())) {
+  if (newTokenReadings[i].getToken().isEmpty()) {
     token=whTokens[position].getToken();
   }
  else {
