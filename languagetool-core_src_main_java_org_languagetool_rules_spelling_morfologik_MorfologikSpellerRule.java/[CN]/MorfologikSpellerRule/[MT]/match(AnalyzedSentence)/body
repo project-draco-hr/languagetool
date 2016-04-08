@@ -1,6 +1,6 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=getSentenceWithImmunization(sentence).getTokensWithoutWhitespace();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=getSentenceWithImmunization(sentence).getTokensWithoutWhitespace();
   if (speller1 == null) {
     String binaryDict=null;
     if (JLanguageTool.getDataBroker().resourceExists(getFileName())) {
@@ -19,15 +19,15 @@
     if (canBeIgnored(tokens,idx,token) || token.isImmunized()) {
       continue;
     }
-    final String word=token.getAnalyzedToken(0).getToken();
+    String word=token.getAnalyzedToken(0).getToken();
     if (tokenizingPattern() == null) {
       ruleMatches.addAll(getRuleMatches(word,token.getStartPos()));
     }
  else {
       int index=0;
-      final Matcher m=tokenizingPattern().matcher(word);
+      Matcher m=tokenizingPattern().matcher(word);
       while (m.find()) {
-        final String match=word.subSequence(index,m.start()).toString();
+        String match=word.subSequence(index,m.start()).toString();
         ruleMatches.addAll(getRuleMatches(match,token.getStartPos() + index));
         index=m.end();
       }

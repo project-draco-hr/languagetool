@@ -1,5 +1,5 @@
 {
-  final String[] parts=str.split(" ");
+  String[] parts=str.split(" ");
   for (  String part : parts) {
     if (isHyphenIgnored() || !"-".equals(part)) {
       if (StringTools.isAllUppercase(part)) {

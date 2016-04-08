@@ -2,11 +2,11 @@
   if (needsInit) {
     init();
   }
-  final List<String> candidates=getCandidates(word);
-  final List<String> suggestions=getCorrectWords(candidates);
-  final List<String> noSplitSuggestions=morfoSpeller.getSuggestions(word);
+  List<String> candidates=getCandidates(word);
+  List<String> suggestions=getCorrectWords(candidates);
+  List<String> noSplitSuggestions=morfoSpeller.getSuggestions(word);
   if (StringTools.startsWithUppercase(word) && !StringTools.isAllUppercase(word)) {
-    final List<String> noSplitLowercaseSuggestions=morfoSpeller.getSuggestions(word.toLowerCase());
+    List<String> noSplitLowercaseSuggestions=morfoSpeller.getSuggestions(word.toLowerCase());
     int pos=noSplitSuggestions.size() == 0 ? 0 : 1;
     for (    String suggestion : noSplitLowercaseSuggestions) {
       noSplitSuggestions.add(pos,StringTools.uppercaseFirstChar(suggestion));
@@ -16,6 +16,6 @@
   suggestions.addAll(0,noSplitSuggestions);
   filterDupes(suggestions);
   filterForLanguage(suggestions);
-  final List<String> sortedSuggestions=sortSuggestionByQuality(word,suggestions);
+  List<String> sortedSuggestions=sortSuggestionByQuality(word,suggestions);
   return sortedSuggestions.subList(0,Math.min(MAX_SUGGESTIONS,sortedSuggestions.size()));
 }

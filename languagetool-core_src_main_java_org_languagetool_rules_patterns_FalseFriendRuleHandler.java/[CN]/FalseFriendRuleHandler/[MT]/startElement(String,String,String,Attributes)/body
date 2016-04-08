@@ -13,7 +13,7 @@
   }
  else   if (qName.equals(PATTERN)) {
     inPattern=true;
-    final String languageStr=attrs.getValue("lang");
+    String languageStr=attrs.getValue("lang");
     if (Languages.isLanguageSupported(languageStr)) {
       language=Languages.getLanguageForShortName(languageStr);
     }
@@ -23,9 +23,9 @@
   }
  else   if (qName.equals(TRANSLATION)) {
     inTranslation=true;
-    final String languageStr=attrs.getValue("lang");
+    String languageStr=attrs.getValue("lang");
     if (Languages.isLanguageSupported(languageStr)) {
-      final Language tmpLang=Languages.getLanguageForShortName(languageStr);
+      Language tmpLang=Languages.getLanguageForShortName(languageStr);
       currentTranslationLanguage=tmpLang;
       if (tmpLang.equalsConsiderVariantsIfSpecified(motherTongue)) {
         translationLanguage=tmpLang;

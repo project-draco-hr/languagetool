@@ -1,12 +1,12 @@
 {
-  final Map<String,List<TaggedWord>> map=new HashMap<>();
+  Map<String,List<TaggedWord>> map=new HashMap<>();
   try (InputStreamReader reader=new InputStreamReader(inputStream,encoding);BufferedReader br=new BufferedReader(reader)){
     String line;
     while ((line=br.readLine()) != null) {
       if (StringTools.isEmpty(line) || line.charAt(0) == '#') {
         continue;
       }
-      final String[] parts=line.split("\t");
+      String[] parts=line.split("\t");
       if (parts.length != 3) {
         throw new IOException("Unknown line format when loading manual tagger dictionary, expected three tab-separated fields: '" + line + "'");
       }

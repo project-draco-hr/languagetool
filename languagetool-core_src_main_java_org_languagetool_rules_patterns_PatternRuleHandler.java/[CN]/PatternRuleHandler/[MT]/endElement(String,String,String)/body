@@ -15,7 +15,7 @@ if (relaxedMode && name == null) {
 name="";
 }
 if (phrasePatternTokens.isEmpty()) {
-final List<PatternToken> tmpPatternTokens=new ArrayList<>();
+List<PatternToken> tmpPatternTokens=new ArrayList<>();
 createRules(new ArrayList<>(patternTokens),tmpPatternTokens,0);
 }
  else {
@@ -26,7 +26,7 @@ ph.addAll(new ArrayList<>(patternTokens));
 }
 for (List<PatternToken> phrasePatternToken : phrasePatternTokens) {
 processElement(phrasePatternToken);
-final List<PatternToken> tmpPatternTokens=new ArrayList<>();
+List<PatternToken> tmpPatternTokens=new ArrayList<>();
 createRules(phrasePatternToken,tmpPatternTokens,0);
 }
 }
@@ -72,7 +72,7 @@ antiId=ruleGroupId + "[" + subId+ "]";
 antiId=ruleGroupId;
 }
 }
-final DisambiguationPatternRule rule=new DisambiguationPatternRule(antiId + "_antipattern:" + antiPatternCounter,"antipattern",language,patternTokens,null,null,DisambiguationPatternRule.DisambiguatorAction.IMMUNIZE);
+DisambiguationPatternRule rule=new DisambiguationPatternRule(antiId + "_antipattern:" + antiPatternCounter,"antipattern",language,patternTokens,null,null,DisambiguationPatternRule.DisambiguatorAction.IMMUNIZE);
 if (startPos != -1 && endPos != -1) {
 rule.setStartPositionCorrection(startPos);
 rule.setEndPositionCorrection(endPos - tokenCountForMarker);
@@ -97,8 +97,8 @@ if (inCorrectExample) {
 correctExamples.add(correctExample.toString());
 }
  else if (inIncorrectExample) {
-final IncorrectExample example;
-final List<String> corrections=new ArrayList<>();
+IncorrectExample example;
+List<String> corrections=new ArrayList<>();
 corrections.addAll(Arrays.asList(exampleCorrection.toString().split("\\|")));
 if (corrections.size() > 0) {
 if (exampleCorrection.toString().endsWith("|")) {
@@ -195,7 +195,7 @@ break;
 case UNIFY:
 inUnification=false;
 equivalenceFeatures=new HashMap<>();
-final int lastElement=patternTokens.size() - 1;
+int lastElement=patternTokens.size() - 1;
 patternTokens.get(lastElement).setLastInUnification();
 if (uniNegation) {
 patternTokens.get(lastElement).setUniNegation();

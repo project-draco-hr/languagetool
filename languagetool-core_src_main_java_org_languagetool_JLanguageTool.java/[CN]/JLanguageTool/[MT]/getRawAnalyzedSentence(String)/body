@@ -1,11 +1,11 @@
 {
-  final List<String> tokens=language.getWordTokenizer().tokenize(sentence);
-  final Map<Integer,String> softHyphenTokens=replaceSoftHyphens(tokens);
-  final List<AnalyzedTokenReadings> aTokens=language.getTagger().tag(tokens);
+  List<String> tokens=language.getWordTokenizer().tokenize(sentence);
+  Map<Integer,String> softHyphenTokens=replaceSoftHyphens(tokens);
+  List<AnalyzedTokenReadings> aTokens=language.getTagger().tag(tokens);
   if (language.getChunker() != null) {
     language.getChunker().addChunkTags(aTokens);
   }
-  final int numTokens=aTokens.size();
+  int numTokens=aTokens.size();
   int posFix=0;
   for (int i=1; i < numTokens; i++) {
     aTokens.get(i).setWhitespaceBefore(aTokens.get(i - 1).isWhitespace());
@@ -17,14 +17,14 @@
       }
     }
   }
-  final AnalyzedTokenReadings[] tokenArray=new AnalyzedTokenReadings[tokens.size() + 1];
-  final AnalyzedToken[] startTokenArray=new AnalyzedToken[1];
+  AnalyzedTokenReadings[] tokenArray=new AnalyzedTokenReadings[tokens.size() + 1];
+  AnalyzedToken[] startTokenArray=new AnalyzedToken[1];
   int toArrayCount=0;
-  final AnalyzedToken sentenceStartToken=new AnalyzedToken("",SENTENCE_START_TAGNAME,null);
+  AnalyzedToken sentenceStartToken=new AnalyzedToken("",SENTENCE_START_TAGNAME,null);
   startTokenArray[0]=sentenceStartToken;
   tokenArray[toArrayCount++]=new AnalyzedTokenReadings(startTokenArray,0);
   int startPos=0;
-  for (  final AnalyzedTokenReadings posTag : aTokens) {
+  for (  AnalyzedTokenReadings posTag : aTokens) {
     posTag.setStartPos(startPos);
     tokenArray[toArrayCount++]=posTag;
     startPos+=posTag.getToken().length();

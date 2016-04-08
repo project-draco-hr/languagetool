@@ -1,5 +1,5 @@
 {
-  final StringBuilder completePath=new StringBuilder(baseDir);
+  StringBuilder completePath=new StringBuilder(baseDir);
   if (!this.rulesDir.endsWith("/") && !path.startsWith("/")) {
     completePath.append('/');
   }

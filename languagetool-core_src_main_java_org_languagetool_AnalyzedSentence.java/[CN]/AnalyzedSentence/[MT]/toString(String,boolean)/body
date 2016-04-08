@@ -1,5 +1,5 @@
 {
-  final StringBuilder sb=new StringBuilder();
+  StringBuilder sb=new StringBuilder();
   for (  AnalyzedTokenReadings element : tokens) {
     if (!element.isWhitespace()) {
       sb.append(element.getToken());
@@ -7,8 +7,8 @@
     }
     Iterator<AnalyzedToken> iterator=element.iterator();
     while (iterator.hasNext()) {
-      final AnalyzedToken token=iterator.next();
-      final String posTag=token.getPOSTag();
+      AnalyzedToken token=iterator.next();
+      String posTag=token.getPOSTag();
       if (element.isSentenceStart()) {
         sb.append("<S>");
       }

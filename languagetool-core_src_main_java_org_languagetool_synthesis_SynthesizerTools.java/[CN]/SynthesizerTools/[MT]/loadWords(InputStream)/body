@@ -1,8 +1,8 @@
 {
-  final List<String> result=new ArrayList<>();
+  List<String> result=new ArrayList<>();
   try (Scanner scanner=new Scanner(stream,"UTF-8")){
     while (scanner.hasNextLine()) {
-      final String line=scanner.nextLine().trim();
+      String line=scanner.nextLine().trim();
       if (line.isEmpty() || line.charAt(0) == '#') {
         continue;
       }

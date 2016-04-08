@@ -1,6 +1,6 @@
 {
   try {
-    final StringPair result=nextPair;
+    StringPair result=nextPair;
     sentencePos=nextPair.getSource().length() + 1;
     if (nextLine != null) {
       prevLine=nextLine;

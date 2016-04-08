@@ -1,6 +1,6 @@
 {
   Objects.requireNonNull(replacement,"replacement may be empty but not null");
-  final List<String> replacements=new ArrayList<>();
+  List<String> replacements=new ArrayList<>();
   replacements.add(replacement);
   setSuggestedReplacements(replacements);
 }

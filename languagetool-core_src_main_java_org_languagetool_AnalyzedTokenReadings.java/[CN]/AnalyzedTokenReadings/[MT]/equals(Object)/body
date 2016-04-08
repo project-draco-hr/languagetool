@@ -8,6 +8,6 @@
   if (getClass() != obj.getClass()) {
     return false;
   }
-  final AnalyzedTokenReadings other=(AnalyzedTokenReadings)obj;
+  AnalyzedTokenReadings other=(AnalyzedTokenReadings)obj;
   return new EqualsBuilder().append(anTokReadings,other.anTokReadings).append(isLinebreak,other.isLinebreak).append(isParaEnd,other.isParaEnd).append(isSentEnd,other.isSentEnd).append(isSentStart,other.isSentStart).append(isWhitespace,other.isWhitespace).append(isWhitespaceBefore,other.isWhitespaceBefore).append(isImmunized,other.isImmunized).append(startPos,other.startPos).append(chunkTags,other.chunkTags).append(hasSameLemmas,other.hasSameLemmas).append(isIgnoredBySpeller,other.isIgnoredBySpeller).append(token,other.token).isEquals();
 }

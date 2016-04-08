@@ -1,6 +1,6 @@
 {
   String posTag=match.getPosTag();
-  final List<AnalyzedToken> list=new ArrayList<>();
+  List<AnalyzedToken> list=new ArrayList<>();
   String lemma="";
   for (int j=0; j < numRead; j++) {
     String tempPosTag=formattedToken.getAnalyzedToken(j).getPOSTag();

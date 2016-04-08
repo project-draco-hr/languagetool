@@ -2,9 +2,9 @@
   if (!(match.getRule() instanceof AbstractPatternRule) || !(nextMatch.getRule() instanceof AbstractPatternRule)) {
     return false;
   }
-  final String id1=match.getRule().getId();
-  final String subId1=((AbstractPatternRule)match.getRule()).getSubId();
-  final String subId2=((AbstractPatternRule)nextMatch.getRule()).getSubId();
+  String id1=match.getRule().getId();
+  String subId1=((AbstractPatternRule)match.getRule()).getSubId();
+  String subId2=((AbstractPatternRule)nextMatch.getRule()).getSubId();
   if (subId1 == null && subId2 != null) {
     return false;
   }

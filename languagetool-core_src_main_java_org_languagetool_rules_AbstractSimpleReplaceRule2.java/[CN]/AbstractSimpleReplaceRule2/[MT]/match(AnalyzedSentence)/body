@@ -1,12 +1,12 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
-  final Queue<AnalyzedTokenReadings> prevTokens=new ArrayBlockingQueue<>(wrongWords.size());
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  Queue<AnalyzedTokenReadings> prevTokens=new ArrayBlockingQueue<>(wrongWords.size());
   for (int i=1; i < tokens.length; i++) {
     addToQueue(tokens[i],prevTokens);
-    final StringBuilder sb=new StringBuilder();
-    final List<String> variants=new ArrayList<>();
-    final List<AnalyzedTokenReadings> prevTokensList=Arrays.asList(prevTokens.toArray(new AnalyzedTokenReadings[prevTokens.size()]));
+    StringBuilder sb=new StringBuilder();
+    List<String> variants=new ArrayList<>();
+    List<AnalyzedTokenReadings> prevTokensList=Arrays.asList(prevTokens.toArray(new AnalyzedTokenReadings[prevTokens.size()]));
     for (int j=prevTokensList.size() - 1; j >= 0; j--) {
       if (j != prevTokensList.size() - 1 && prevTokensList.get(j + 1).isWhitespaceBefore()) {
         sb.insert(0," ");
@@ -14,13 +14,13 @@
       sb.insert(0,prevTokensList.get(j).getToken());
       variants.add(0,sb.toString());
     }
-    final int len=variants.size();
+    int len=variants.size();
     for (int j=0; j < len; j++) {
-      final String crt=variants.get(j);
-      final int crtWordCount=len - j;
-      final String crtMatch=isCaseSensitive() ? wrongWords.get(crtWordCount - 1).get(crt) : wrongWords.get(crtWordCount - 1).get(crt.toLowerCase(getLocale()));
+      String crt=variants.get(j);
+      int crtWordCount=len - j;
+      String crtMatch=isCaseSensitive() ? wrongWords.get(crtWordCount - 1).get(crt) : wrongWords.get(crtWordCount - 1).get(crt.toLowerCase(getLocale()));
       if (crtMatch != null) {
-        final List<String> replacements=Arrays.asList(crtMatch.split("\\|"));
+        List<String> replacements=Arrays.asList(crtMatch.split("\\|"));
         String msg=crt + getSuggestion();
         for (int k=0; k < replacements.size(); k++) {
           if (k > 0) {
@@ -28,9 +28,9 @@
           }
           msg+="<suggestion>" + replacements.get(k) + "</suggestion>";
         }
-        final int startPos=prevTokensList.get(len - crtWordCount).getStartPos();
-        final int endPos=prevTokensList.get(len - 1).getEndPos();
-        final RuleMatch potentialRuleMatch=new RuleMatch(this,startPos,endPos,msg,getShort());
+        int startPos=prevTokensList.get(len - crtWordCount).getStartPos();
+        int endPos=prevTokensList.get(len - 1).getEndPos();
+        RuleMatch potentialRuleMatch=new RuleMatch(this,startPos,endPos,msg,getShort());
         if (!isCaseSensitive() && StringTools.startsWithUppercase(crt)) {
           for (int k=0; k < replacements.size(); k++) {
             replacements.set(k,StringTools.uppercaseFirstChar(replacements.get(k)));

@@ -1,8 +1,8 @@
 {
-  final URL dictURL=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(originalPath);
+  URL dictURL=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(originalPath);
   String dictionaryPath;
   if ("jar".equals(dictURL.getProtocol()) || "vfs".equals(dictURL.getProtocol()) || "bundle".equals(dictURL.getProtocol())) {
-    final File tempDir=new File(System.getProperty("java.io.tmpdir"));
+    File tempDir=new File(System.getProperty("java.io.tmpdir"));
     File tempDicFile=new File(tempDir,dicName + ".dic");
     JLanguageTool.addTemporaryFile(tempDicFile);
     try (InputStream dicStream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(originalPath)){
@@ -16,7 +16,7 @@
      dictionaryPath=tempDir.getAbsolutePath() + "/" + dicName;
   }
  else {
-    final int suffixLength=".dic".length();
+    int suffixLength=".dic".length();
     try {
       dictionaryPath=new File(dictURL.toURI()).getAbsolutePath();
       dictionaryPath=dictionaryPath.substring(0,dictionaryPath.length() - suffixLength);

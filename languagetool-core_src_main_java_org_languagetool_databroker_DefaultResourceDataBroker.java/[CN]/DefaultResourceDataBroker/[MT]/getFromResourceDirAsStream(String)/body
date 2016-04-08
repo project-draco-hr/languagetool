@@ -1,6 +1,6 @@
 {
-  final String completePath=getCompleteResourceUrl(path);
-  final InputStream resourceAsStream=ResourceDataBroker.class.getResourceAsStream(completePath);
+  String completePath=getCompleteResourceUrl(path);
+  InputStream resourceAsStream=ResourceDataBroker.class.getResourceAsStream(completePath);
   assertNotNull(resourceAsStream,path,completePath);
   return resourceAsStream;
 }

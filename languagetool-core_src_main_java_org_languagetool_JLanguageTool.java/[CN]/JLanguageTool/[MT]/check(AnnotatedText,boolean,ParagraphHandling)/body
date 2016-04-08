@@ -1,5 +1,5 @@
 {
-  final List<String> sentences;
+  List<String> sentences;
   if (tokenizeText) {
     sentences=sentenceTokenize(annotatedText.getPlainText());
   }
@@ -7,7 +7,7 @@
     sentences=new ArrayList<>();
     sentences.add(annotatedText.getPlainText());
   }
-  final List<Rule> allRules=getAllRules();
+  List<Rule> allRules=getAllRules();
   if (printStream != null) {
     printIfVerbose(allRules.size() + " rules activated for language " + language);
   }
@@ -16,7 +16,7 @@
   }
   sentenceCount=sentences.size();
   unknownWords=new HashSet<>();
-  final List<AnalyzedSentence> analyzedSentences=analyzeSentences(sentences);
+  List<AnalyzedSentence> analyzedSentences=analyzeSentences(sentences);
   List<RuleMatch> ruleMatches=performCheck(analyzedSentences,sentences,allRules,paraMode,annotatedText);
   ruleMatches=new SameRuleGroupFilter().filter(ruleMatches);
   return ruleMatches;

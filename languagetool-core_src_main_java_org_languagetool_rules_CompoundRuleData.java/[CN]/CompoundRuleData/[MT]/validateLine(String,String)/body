@@ -1,5 +1,5 @@
 {
-  final String[] parts=line.split(" ");
+  String[] parts=line.split(" ");
   if (parts.length == 1) {
     throw new RuntimeException("Not a compound in file " + path + ": "+ line);
   }

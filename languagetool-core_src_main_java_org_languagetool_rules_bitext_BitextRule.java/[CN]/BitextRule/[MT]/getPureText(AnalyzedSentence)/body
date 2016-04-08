@@ -1,5 +1,5 @@
 {
-  final StringBuilder sb=new StringBuilder();
+  StringBuilder sb=new StringBuilder();
   for (  AnalyzedTokenReadings token : sentence.getTokens()) {
     sb.append(token.getToken());
   }

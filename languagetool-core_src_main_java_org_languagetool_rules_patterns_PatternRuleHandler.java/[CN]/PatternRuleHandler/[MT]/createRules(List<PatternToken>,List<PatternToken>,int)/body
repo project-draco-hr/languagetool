@@ -33,7 +33,7 @@
     PatternToken patternToken=elemList.get(numElement);
     if (patternToken.hasOrGroup()) {
       for (      PatternToken patternTokenOfOrGroup : patternToken.getOrGroup()) {
-        final List<PatternToken> tmpElements2=new ArrayList<>();
+        List<PatternToken> tmpElements2=new ArrayList<>();
         tmpElements2.addAll(tmpPatternTokens);
         tmpElements2.add((PatternToken)ObjectUtils.clone(patternTokenOfOrGroup));
         createRules(elemList,tmpElements2,numElement + 1);

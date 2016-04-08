@@ -22,13 +22,13 @@
     rule.setSubId("1");
   }
   caseSensitive=false;
-  for (  final Match m : suggestionMatches) {
+  for (  Match m : suggestionMatches) {
     rule.addSuggestionMatch(m);
   }
   if (phrasePatternTokens.size() <= 1) {
     suggestionMatches.clear();
   }
-  for (  final Match m : suggestionMatchesOutMsg) {
+  for (  Match m : suggestionMatchesOutMsg) {
     rule.addSuggestionMatchOutMsg(m);
   }
   suggestionMatchesOutMsg.clear();

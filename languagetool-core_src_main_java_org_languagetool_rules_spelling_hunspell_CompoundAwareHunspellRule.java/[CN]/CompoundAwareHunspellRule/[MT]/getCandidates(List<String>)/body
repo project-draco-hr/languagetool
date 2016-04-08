@@ -1,6 +1,6 @@
 {
   int partCount=0;
-  final List<String> candidates=new ArrayList<>();
+  List<String> candidates=new ArrayList<>();
   for (  String part : parts) {
     if (hunspellDict.misspelled(part)) {
       boolean doUpperCase=partCount > 0 && !StringTools.startsWithUppercase(part);
@@ -9,7 +9,7 @@
         suggestions=morfoSpeller.getSuggestions(doUpperCase ? StringTools.lowercaseFirstChar(part) : part);
       }
       for (      String suggestion : suggestions) {
-        final List<String> partsCopy=new ArrayList<>(parts);
+        List<String> partsCopy=new ArrayList<>(parts);
         if (partCount > 0 && parts.get(partCount).startsWith("-") && parts.get(partCount).length() > 1) {
           partsCopy.set(partCount,"-" + StringTools.uppercaseFirstChar(suggestion.substring(1)));
         }

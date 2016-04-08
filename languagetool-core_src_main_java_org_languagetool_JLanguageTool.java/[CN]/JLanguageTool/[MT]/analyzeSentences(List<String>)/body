@@ -1,11 +1,11 @@
 {
-  final List<AnalyzedSentence> analyzedSentences=new ArrayList<>();
+  List<AnalyzedSentence> analyzedSentences=new ArrayList<>();
   int j=0;
   for (  String sentence : sentences) {
     AnalyzedSentence analyzedSentence=getAnalyzedSentence(sentence);
     rememberUnknownWords(analyzedSentence);
     if (++j == sentences.size()) {
-      final AnalyzedTokenReadings[] anTokens=analyzedSentence.getTokens();
+      AnalyzedTokenReadings[] anTokens=analyzedSentence.getTokens();
       anTokens[anTokens.length - 1].setParagraphEnd();
       analyzedSentence=new AnalyzedSentence(anTokens);
     }

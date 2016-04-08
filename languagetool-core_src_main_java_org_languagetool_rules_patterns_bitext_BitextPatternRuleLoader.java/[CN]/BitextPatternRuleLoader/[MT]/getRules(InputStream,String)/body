@@ -1,9 +1,9 @@
 {
-  final List<BitextPatternRule> rules;
+  List<BitextPatternRule> rules;
   try {
-    final BitextPatternRuleHandler handler=new BitextPatternRuleHandler();
-    final SAXParserFactory factory=SAXParserFactory.newInstance();
-    final SAXParser saxParser=factory.newSAXParser();
+    BitextPatternRuleHandler handler=new BitextPatternRuleHandler();
+    SAXParserFactory factory=SAXParserFactory.newInstance();
+    SAXParser saxParser=factory.newSAXParser();
     saxParser.getXMLReader().setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd",false);
     saxParser.parse(is,handler);
     rules=handler.getBitextRules();

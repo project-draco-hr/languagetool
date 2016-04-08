@@ -1,6 +1,6 @@
 {
   try {
-    final StringPair result=nextPair;
+    StringPair result=nextPair;
     if (nextLine != null) {
       nextLine=in.readLine();
       nextPair=tab2StringPair(nextLine);

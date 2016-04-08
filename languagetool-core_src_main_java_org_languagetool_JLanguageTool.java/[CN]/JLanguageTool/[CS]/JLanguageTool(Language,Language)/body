@@ -1,7 +1,7 @@
 {
   this.language=Objects.requireNonNull(language,"language cannot be null");
   this.motherTongue=motherTongue;
-  final ResourceBundle messages=ResourceBundleTools.getMessageBundle(language);
+  ResourceBundle messages=ResourceBundleTools.getMessageBundle(language);
   builtinRules=getAllBuiltinRules(language,messages);
   try {
     activateDefaultPatternRules();

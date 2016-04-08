@@ -1,7 +1,7 @@
 {
 switch (qName) {
 case RULES:
-    final String languageStr=attrs.getValue("targetLang");
+    String languageStr=attrs.getValue("targetLang");
   language=Languages.getLanguageForShortName(languageStr);
 break;
 case RULE:

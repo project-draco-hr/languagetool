@@ -1,7 +1,7 @@
 {
 switch (qName) {
 case RULE:
-    final DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,patternTokens,disambiguatedPOS,posSelector,disambigAction);
+    DisambiguationPatternRule rule=new DisambiguationPatternRule(id,name,language,patternTokens,disambiguatedPOS,posSelector,disambigAction);
   endPositionCorrection=endPos - tokenCountForMarker;
 if (startPos != -1 && endPos != -1) {
   rule.setStartPositionCorrection(startPos);
@@ -12,7 +12,7 @@ if (startPos != -1 && endPos != -1) {
   endPos=tokenCountForMarker;
 }
 rule.setSubId(inRuleGroup ? Integer.toString(subId) : "1");
-final int matchedTokenCount=endPos - startPos;
+int matchedTokenCount=endPos - startPos;
 if (newWdList != null) {
 if (disambigAction == DisambiguationPatternRule.DisambiguatorAction.ADD || disambigAction == DisambiguationPatternRule.DisambiguatorAction.REMOVE || disambigAction == DisambiguationPatternRule.DisambiguatorAction.REPLACE) {
 if ((!newWdList.isEmpty() && disambigAction == DisambiguationPatternRule.DisambiguatorAction.REPLACE) && newWdList.size() != matchedTokenCount) {
@@ -34,7 +34,7 @@ rules.add(rule);
 if (disambigAction == DisambiguationPatternRule.DisambiguatorAction.UNIFY && matchedTokenCount != uniCounter) {
 throw new SAXException(language.getName() + " rule error. The number unified tokens: " + uniCounter+ " must be equal to the number of matched tokens: "+ matchedTokenCount+ "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
 }
-final boolean singleTokenCorrection=endPos - startPos > 1;
+boolean singleTokenCorrection=endPos - startPos > 1;
 if ((!singleTokenCorrection && (disambigAction == DisambiguationPatternRule.DisambiguatorAction.FILTER || disambigAction == DisambiguationPatternRule.DisambiguatorAction.REPLACE)) && (matchedTokenCount > 1)) {
 throw new SAXException(language.getName() + " rule error. Cannot replace or filter more than one token at a time." + "\n Line: "+ pLocator.getLineNumber()+ ", column: "+ pLocator.getColumnNumber()+ ".");
 }
@@ -158,7 +158,7 @@ break;
 case UNIFY:
 inUnification=false;
 equivalenceFeatures=new HashMap<>();
-final int lastElement=patternTokens.size() - 1;
+int lastElement=patternTokens.size() - 1;
 patternTokens.get(lastElement).setLastInUnification();
 if (uniNegation) {
 patternTokens.get(lastElement).setUniNegation();

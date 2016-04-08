@@ -1,7 +1,7 @@
 {
   if (patternToken.hasAndGroup()) {
     boolean allConditionsMatch=true;
-    for (    final boolean testValue : andGroupCheck) {
+    for (    boolean testValue : andGroupCheck) {
       allConditionsMatch&=testValue;
     }
     return allConditionsMatch;

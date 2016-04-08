@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> ruleMatches=lt.check(contents);
+  List<RuleMatch> ruleMatches=lt.check(contents);
   if (ruleMatches.isEmpty()) {
     return contents;
   }

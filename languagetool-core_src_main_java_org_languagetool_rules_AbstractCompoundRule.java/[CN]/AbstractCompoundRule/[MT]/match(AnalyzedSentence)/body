@@ -1,10 +1,10 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
   RuleMatch prevRuleMatch=null;
-  final Queue<AnalyzedTokenReadings> prevTokens=new ArrayBlockingQueue<>(MAX_TERMS);
+  Queue<AnalyzedTokenReadings> prevTokens=new ArrayBlockingQueue<>(MAX_TERMS);
   for (int i=0; i < tokens.length + MAX_TERMS - 1; i++) {
-    final AnalyzedTokenReadings token;
+    AnalyzedTokenReadings token;
     if (i >= tokens.length) {
       token=new AnalyzedTokenReadings(new AnalyzedToken("","",null),prevTokens.peek().getStartPos());
     }
@@ -18,17 +18,17 @@
     if (token.isImmunized()) {
       continue;
     }
-    final AnalyzedTokenReadings firstMatchToken=prevTokens.peek();
-    final List<String> stringsToCheck=new ArrayList<>();
-    final List<String> origStringsToCheck=new ArrayList<>();
-    final Map<String,AnalyzedTokenReadings> stringToToken=getStringToTokenMap(prevTokens,stringsToCheck,origStringsToCheck);
+    AnalyzedTokenReadings firstMatchToken=prevTokens.peek();
+    List<String> stringsToCheck=new ArrayList<>();
+    List<String> origStringsToCheck=new ArrayList<>();
+    Map<String,AnalyzedTokenReadings> stringToToken=getStringToTokenMap(prevTokens,stringsToCheck,origStringsToCheck);
     for (int k=stringsToCheck.size() - 1; k >= 0; k--) {
-      final String stringToCheck=stringsToCheck.get(k);
-      final String origStringToCheck=origStringsToCheck.get(k);
+      String stringToCheck=stringsToCheck.get(k);
+      String origStringToCheck=origStringsToCheck.get(k);
       if (getCompoundRuleData().getIncorrectCompounds().contains(stringToCheck)) {
-        final AnalyzedTokenReadings atr=stringToToken.get(stringToCheck);
+        AnalyzedTokenReadings atr=stringToToken.get(stringToCheck);
         String msg=null;
-        final List<String> replacement=new ArrayList<>();
+        List<String> replacement=new ArrayList<>();
         if (!getCompoundRuleData().getNoDashSuggestion().contains(stringToCheck)) {
           replacement.add(origStringToCheck.replace(' ','-'));
           msg=withHyphenMessage;
@@ -37,7 +37,7 @@
           replacement.add(mergeCompound(origStringToCheck));
           msg=withoutHyphenMessage;
         }
-        final String[] parts=stringToCheck.split(" ");
+        String[] parts=stringToCheck.split(" ");
         if (parts.length > 0 && parts[0].length() == 1) {
           replacement.clear();
           replacement.add(origStringToCheck.replace(' ','-'));
@@ -46,7 +46,7 @@
  else         if (replacement.isEmpty() || replacement.size() == 2) {
           msg=withOrWithoutHyphenMessage;
         }
-        final RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),atr.getEndPos(),msg,shortDesc);
+        RuleMatch ruleMatch=new RuleMatch(this,firstMatchToken.getStartPos(),atr.getEndPos(),msg,shortDesc);
         ruleMatch.setSuggestedReplacements(replacement);
         if (prevRuleMatch != null && prevRuleMatch.getFromPos() == ruleMatch.getFromPos()) {
           prevRuleMatch=ruleMatch;

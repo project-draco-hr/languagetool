@@ -1,9 +1,9 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
-  final List<Integer> tokenPositions=new ArrayList<>(tokens.length + 1);
-  final int patternSize=patternTokenMatchers.size();
-  final int limit=Math.max(0,tokens.length - patternSize + 1);
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  List<Integer> tokenPositions=new ArrayList<>(tokens.length + 1);
+  int patternSize=patternTokenMatchers.size();
+  int limit=Math.max(0,tokens.length - patternSize + 1);
   PatternTokenMatcher pTokenMatcher=null;
   int i=0;
   int minOccurCorrection=getMinOccurrenceCorrection();
@@ -21,22 +21,22 @@
     tokenPositions.clear();
     int minOccurSkip=0;
     for (int k=0; k < patternSize; k++) {
-      final PatternTokenMatcher prevTokenMatcher=pTokenMatcher;
+      PatternTokenMatcher prevTokenMatcher=pTokenMatcher;
       pTokenMatcher=patternTokenMatchers.get(k);
       pTokenMatcher.resolveReference(firstMatchToken,tokens,rule.getLanguage());
-      final int nextPos=i + k + skipShiftTotal - minOccurSkip;
+      int nextPos=i + k + skipShiftTotal - minOccurSkip;
       prevMatched=false;
       if (prevSkipNext + nextPos >= tokens.length || prevSkipNext < 0) {
         prevSkipNext=tokens.length - (nextPos + 1);
       }
-      final int maxTok=Math.min(nextPos + prevSkipNext,tokens.length - (patternSize - k) + minOccurCorrection);
+      int maxTok=Math.min(nextPos + prevSkipNext,tokens.length - (patternSize - k) + minOccurCorrection);
       for (int m=nextPos; m <= maxTok; m++) {
         allElementsMatch=!tokens[m].isImmunized() && testAllReadings(tokens,pTokenMatcher,prevTokenMatcher,m,firstMatchToken,prevSkipNext);
         if (pTokenMatcher.getPatternToken().getMinOccurrence() == 0) {
           boolean foundNext=false;
           for (int k2=k + 1; k2 < patternSize; k2++) {
-            final PatternTokenMatcher nextElement=patternTokenMatchers.get(k2);
-            final boolean nextElementMatch=!tokens[m].isImmunized() && testAllReadings(tokens,nextElement,pTokenMatcher,m,firstMatchToken,prevSkipNext);
+            PatternTokenMatcher nextElement=patternTokenMatchers.get(k2);
+            boolean nextElementMatch=!tokens[m].isImmunized() && testAllReadings(tokens,nextElement,pTokenMatcher,m,firstMatchToken,prevSkipNext);
             if (nextElementMatch) {
               allElementsMatch=true;
               minOccurSkip++;
@@ -55,7 +55,7 @@
         if (allElementsMatch) {
           int skipForMax=skipMaxTokens(tokens,pTokenMatcher,firstMatchToken,prevSkipNext,prevTokenMatcher,m,patternSize - k - 1);
           lastMatchToken=m + skipForMax;
-          final int skipShift=lastMatchToken - nextPos;
+          int skipShift=lastMatchToken - nextPos;
           tokenPositions.add(skipShift + 1);
           prevSkipNext=translateElementNo(pTokenMatcher.getPatternToken().getSkipNext());
           skipShiftTotal+=skipShift;
@@ -76,7 +76,7 @@
       }
     }
     if (allElementsMatch && tokenPositions.size() == patternSize) {
-      final RuleMatch ruleMatch=createRuleMatch(tokenPositions,tokens,firstMatchToken,lastMatchToken,firstMarkerMatchToken,lastMarkerMatchToken);
+      RuleMatch ruleMatch=createRuleMatch(tokenPositions,tokens,firstMatchToken,lastMatchToken,firstMarkerMatchToken,lastMarkerMatchToken);
       if (ruleMatch != null) {
         ruleMatches.add(ruleMatch);
       }

@@ -1,7 +1,7 @@
 {
-  final List<String> outputList=new ArrayList<>();
+  List<String> outputList=new ArrayList<>();
   if (r == input.length) {
-    final StringBuilder sb=new StringBuilder();
+    StringBuilder sb=new StringBuilder();
     for (int k=0; k < output.length; k++) {
       sb.append(output[k]);
       if (k < output.length - 1) {
@@ -13,7 +13,7 @@
  else {
     for (int c=0; c < input[r].length; c++) {
       output[r]=input[r][c];
-      final String[] sList=combineLists(input,output,r + 1,lang);
+      String[] sList=combineLists(input,output,r + 1,lang);
       outputList.addAll(Arrays.asList(sList));
     }
   }

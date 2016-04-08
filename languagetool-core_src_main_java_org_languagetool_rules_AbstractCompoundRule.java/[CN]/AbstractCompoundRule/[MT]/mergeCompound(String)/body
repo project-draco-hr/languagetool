@@ -1,6 +1,6 @@
 {
-  final String[] stringParts=str.split(" ");
-  final StringBuilder sb=new StringBuilder();
+  String[] stringParts=str.split(" ");
+  StringBuilder sb=new StringBuilder();
   for (int k=0; k < stringParts.length; k++) {
     if (isHyphenIgnored() || !"-".equals(stringParts[k])) {
       if (k == 0) {

@@ -4,7 +4,7 @@
 synchronized (this) {
       dict=this.dictionary;
       if (dict == null) {
-        final URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(resourceFileName);
+        URL url=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(resourceFileName);
         this.dictionary=dict=Dictionary.read(url);
       }
     }

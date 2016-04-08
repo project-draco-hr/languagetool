@@ -5,7 +5,7 @@
   String posTagReplace=match.getPosTagReplace();
   if (match.isStaticLemma()) {
     for (    AnalyzedToken analyzedToken : matchedToken) {
-      final String tst=analyzedToken.getPOSTag();
+      String tst=analyzedToken.getPOSTag();
       if (tst != null && pPosRegexMatch.matcher(tst).matches()) {
         targetPosTag=analyzedToken.getPOSTag();
         posTags.add(targetPosTag);
@@ -17,7 +17,7 @@
   }
  else {
     for (    AnalyzedToken analyzedToken : formattedToken) {
-      final String tst=analyzedToken.getPOSTag();
+      String tst=analyzedToken.getPOSTag();
       if (tst != null && pPosRegexMatch.matcher(tst).matches()) {
         targetPosTag=analyzedToken.getPOSTag();
         posTags.add(targetPosTag);
@@ -27,8 +27,8 @@
       if (posTags.isEmpty()) {
         posTags.add(targetPosTag);
       }
-      final StringBuilder sb=new StringBuilder();
-      final int posTagLen=posTags.size();
+      StringBuilder sb=new StringBuilder();
+      int posTagLen=posTags.size();
       int l=0;
       for (      String lPosTag : posTags) {
         l++;

@@ -1,6 +1,6 @@
 {
   for (  Language language : Languages.get()) {
-    final boolean skip=language.getShortNameWithCountryAndVariant().equals(getShortNameWithCountryAndVariant());
+    boolean skip=language.getShortNameWithCountryAndVariant().equals(getShortNameWithCountryAndVariant());
     if (!skip && language.getClass().isAssignableFrom(getClass())) {
       return true;
     }

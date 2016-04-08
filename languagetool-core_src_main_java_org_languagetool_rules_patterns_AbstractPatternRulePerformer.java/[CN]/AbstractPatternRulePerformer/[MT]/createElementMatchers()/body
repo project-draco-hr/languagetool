@@ -1,7 +1,7 @@
 {
-  final List<PatternTokenMatcher> patternTokenMatchers=new ArrayList<>(rule.patternTokens.size());
+  List<PatternTokenMatcher> patternTokenMatchers=new ArrayList<>(rule.patternTokens.size());
   for (  PatternToken pToken : rule.patternTokens) {
-    final PatternTokenMatcher matcher=new PatternTokenMatcher(pToken);
+    PatternTokenMatcher matcher=new PatternTokenMatcher(pToken);
     patternTokenMatchers.add(matcher);
   }
   return patternTokenMatchers;

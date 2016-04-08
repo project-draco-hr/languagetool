@@ -1,5 +1,5 @@
 {
-  final AtomicInteger i=new AtomicInteger(0);
+  AtomicInteger i=new AtomicInteger(0);
   return new Iterator<AnalyzedToken>(){
     @Override public boolean hasNext(){
       return i.get() < getReadingsLength();

@@ -6,10 +6,10 @@
     return toUpperCase ? str.toUpperCase(Locale.ENGLISH) : str.toLowerCase();
   }
   int pos=0;
-  final int len=str.length() - 1;
+  int len=str.length() - 1;
   while (!Character.isLetterOrDigit(str.charAt(pos)) && len > pos) {
     pos++;
   }
-  final char firstChar=str.charAt(pos);
+  char firstChar=str.charAt(pos);
   return str.substring(0,pos) + (toUpperCase ? Character.toUpperCase(firstChar) : Character.toLowerCase(firstChar)) + str.substring(pos + 1);
 }

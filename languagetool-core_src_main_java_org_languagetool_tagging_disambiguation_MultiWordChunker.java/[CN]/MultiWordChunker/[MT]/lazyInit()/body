@@ -6,15 +6,15 @@
   Map<String,Integer> mStartNoSpace=new HashMap<>();
   Map<String,String> mFull=new HashMap<>();
   try (InputStream stream=JLanguageTool.getDataBroker().getFromResourceDirAsStream(filename)){
-    final List<String> posTokens=loadWords(stream);
+    List<String> posTokens=loadWords(stream);
     for (    String posToken : posTokens) {
-      final String[] tokenAndTag=posToken.split("\t");
+      String[] tokenAndTag=posToken.split("\t");
       if (tokenAndTag.length != 2) {
         throw new RuntimeException("Invalid format in " + filename + ": '"+ posToken+ "', expected two tab-separated parts");
       }
-      final boolean containsSpace=tokenAndTag[0].indexOf(' ') > 0;
+      boolean containsSpace=tokenAndTag[0].indexOf(' ') > 0;
       String firstToken;
-      final String[] firstTokens;
+      String[] firstTokens;
       if (!containsSpace) {
         firstTokens=new String[tokenAndTag[0].length()];
         firstToken=tokenAndTag[0].substring(0,1);

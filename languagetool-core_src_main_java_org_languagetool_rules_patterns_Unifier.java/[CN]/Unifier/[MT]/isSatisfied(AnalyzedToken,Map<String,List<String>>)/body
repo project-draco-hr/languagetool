@@ -14,19 +14,19 @@
     while (equivalencesMatched.size() <= tokCnt) {
       equivalencesMatched.add(new ConcurrentHashMap<String,Set<String>>());
     }
-    for (    final Map.Entry<String,List<String>> feat : uFeatures.entrySet()) {
+    for (    Map.Entry<String,List<String>> feat : uFeatures.entrySet()) {
       List<String> types=feat.getValue();
       if (types == null || types.isEmpty()) {
         types=equivalenceFeatures.get(feat.getKey());
       }
-      for (      final String typeName : types) {
-        final PatternToken testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
+      for (      String typeName : types) {
+        PatternToken testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
         if (testElem == null) {
           return false;
         }
         if (testElem.isMatched(aToken)) {
           if (!equivalencesMatched.get(tokCnt).containsKey(feat.getKey())) {
-            final Set<String> typeSet=new HashSet<>();
+            Set<String> typeSet=new HashSet<>();
             typeSet.add(typeName);
             equivalencesMatched.get(tokCnt).put(feat.getKey(),typeSet);
           }

@@ -1,5 +1,5 @@
 {
-  final List<AnalyzedToken> l=new ArrayList<>();
+  List<AnalyzedToken> l=new ArrayList<>();
   if (formattedToken != null) {
     if (match.isStaticLemma()) {
       matchedToken.leaveReading(new AnalyzedToken(matchedToken.getToken(),match.getPosTag(),formattedToken.getToken()));
@@ -14,13 +14,13 @@
     token=convertCase(token,token,null);
     String posTag=match.getPosTag();
     if (posTag != null) {
-      final int numRead=formattedToken.getReadingsLength();
+      int numRead=formattedToken.getReadingsLength();
       if (match.isPostagRegexp()) {
         Pattern pPosRegexMatch=match.getPosRegexMatch();
         String posTagReplace=match.getPosTagReplace();
         String targetPosTag;
         for (int i=0; i < numRead; i++) {
-          final String testTag=formattedToken.getAnalyzedToken(i).getPOSTag();
+          String testTag=formattedToken.getAnalyzedToken(i).getPOSTag();
           if (testTag != null && pPosRegexMatch.matcher(testTag).matches()) {
             targetPosTag=testTag;
             if (posTagReplace != null) {

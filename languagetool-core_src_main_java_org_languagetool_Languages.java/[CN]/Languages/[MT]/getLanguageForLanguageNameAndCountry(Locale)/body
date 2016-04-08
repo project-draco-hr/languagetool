@@ -1,7 +1,7 @@
 {
   for (  Language language : LANGUAGES) {
     if (language.getShortName().equals(locale.getLanguage())) {
-      final List<String> countryVariants=Arrays.asList(language.getCountries());
+      List<String> countryVariants=Arrays.asList(language.getCountries());
       if (countryVariants.contains(locale.getCountry())) {
         return language;
       }

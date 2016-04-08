@@ -2,7 +2,7 @@
   if (existingSugMatches == null || existingSugMatches.isEmpty()) {
     return new ArrayList<>();
   }
-  final List<Match> sugMatch=new ArrayList<>();
+  List<Match> sugMatch=new ArrayList<>();
   int pos=0;
   int ind=0;
   int matchCounter=0;
@@ -10,7 +10,7 @@
     pos=messageStr.indexOf('\\',ind + 1);
     if (pos != -1 && messageStr.length() > pos && Character.isDigit(messageStr.charAt(pos + 1))) {
       if (pos == 0 || messageStr.charAt(pos - 1) != '\u0001') {
-        final Match mWorker=new Match(null,null,false,null,null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);
+        Match mWorker=new Match(null,null,false,null,null,Match.CaseConversion.NONE,false,false,Match.IncludeRange.NONE);
         mWorker.setInMessageOnly(true);
         sugMatch.add(mWorker);
       }

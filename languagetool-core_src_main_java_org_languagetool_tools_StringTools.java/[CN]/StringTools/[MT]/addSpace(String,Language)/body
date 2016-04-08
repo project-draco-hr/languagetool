@@ -1,7 +1,7 @@
 {
   String space=" ";
   if (word.length() == 1) {
-    final char c=word.charAt(0);
+    char c=word.charAt(0);
     if ("fr".equals(language.getShortName())) {
       if (c == '.' || c == ',') {
         space="";

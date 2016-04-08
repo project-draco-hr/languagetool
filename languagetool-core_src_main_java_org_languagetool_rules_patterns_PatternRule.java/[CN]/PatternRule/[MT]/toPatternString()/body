@@ -1,5 +1,5 @@
 {
-  final List<String> strList=new ArrayList<>();
+  List<String> strList=new ArrayList<>();
   for (  PatternToken patternPatternToken : patternTokens) {
     strList.add(patternPatternToken.toString());
   }

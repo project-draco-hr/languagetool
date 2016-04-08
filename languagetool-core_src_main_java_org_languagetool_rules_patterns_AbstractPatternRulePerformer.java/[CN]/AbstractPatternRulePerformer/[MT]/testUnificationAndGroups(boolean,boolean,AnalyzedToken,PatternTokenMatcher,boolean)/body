@@ -1,7 +1,7 @@
 {
   boolean thisMatched=matched;
-  final boolean elemIsMatched=alreadyTested || elemMatcher.isMatched(matchToken);
-  final PatternToken elem=elemMatcher.getPatternToken();
+  boolean elemIsMatched=alreadyTested || elemMatcher.isMatched(matchToken);
+  PatternToken elem=elemMatcher.getPatternToken();
   if (rule.testUnification) {
     if (matched && elem.isUnified()) {
       if (elem.isUniNegated()) {

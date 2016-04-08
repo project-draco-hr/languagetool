@@ -1,16 +1,16 @@
 {
   super.init();
-  final String langCountry;
+  String langCountry;
   if (language.getCountries().length > 0) {
     langCountry=language.getShortName() + "_" + language.getCountries()[0];
   }
  else {
     langCountry=language.getShortName();
   }
-  final String shortDicPath="/" + language.getShortName() + "/hunspell/"+ langCountry+ ".dic";
+  String shortDicPath="/" + language.getShortName() + "/hunspell/"+ langCountry+ ".dic";
   String wordChars="";
   if (JLanguageTool.getDataBroker().resourceExists(shortDicPath)) {
-    final String path=getDictionaryPath(langCountry,shortDicPath);
+    String path=getDictionaryPath(langCountry,shortDicPath);
     if ("".equals(path)) {
       hunspellDict=null;
     }

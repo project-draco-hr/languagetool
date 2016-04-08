@@ -2,6 +2,6 @@
   if (isEmpty(str)) {
     return false;
   }
-  final char c=str.charAt(0);
+  char c=str.charAt(0);
   return c == '(' || c == '[' || c == '{';
 }

@@ -1,17 +1,17 @@
 {
 switch (qName) {
 case "category":
-    final String catName=attrs.getValue(NAME);
-  final String catId=attrs.getValue(ID);
+    String catName=attrs.getValue(NAME);
+  String catId=attrs.getValue(ID);
 Category.Location location=YES.equals(attrs.getValue(EXTERNAL)) ? Category.Location.EXTERNAL : Category.Location.INTERNAL;
-final boolean onByDefault=!OFF.equals(attrs.getValue(DEFAULT));
+boolean onByDefault=!OFF.equals(attrs.getValue(DEFAULT));
 category=new Category(catId != null ? new CategoryId(catId) : null,catName,location,onByDefault);
 if (attrs.getValue(TYPE) != null) {
 categoryIssueType=attrs.getValue(TYPE);
 }
 break;
 case "rules":
-final String languageStr=attrs.getValue("lang");
+String languageStr=attrs.getValue("lang");
 language=Languages.getLanguageForShortName(languageStr);
 break;
 case "regexp":

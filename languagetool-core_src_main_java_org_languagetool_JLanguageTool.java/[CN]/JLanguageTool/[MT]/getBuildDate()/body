@@ -1,13 +1,13 @@
 {
   try {
-    final URL res=JLanguageTool.class.getResource(JLanguageTool.class.getSimpleName() + ".class");
+    URL res=JLanguageTool.class.getResource(JLanguageTool.class.getSimpleName() + ".class");
     if (res == null) {
       return null;
     }
-    final Object connObj=res.openConnection();
+    Object connObj=res.openConnection();
     if (connObj instanceof JarURLConnection) {
-      final JarURLConnection conn=(JarURLConnection)connObj;
-      final Manifest manifest=conn.getManifest();
+      JarURLConnection conn=(JarURLConnection)connObj;
+      Manifest manifest=conn.getManifest();
       return manifest.getMainAttributes().getValue("Implementation-Date");
     }
  else {

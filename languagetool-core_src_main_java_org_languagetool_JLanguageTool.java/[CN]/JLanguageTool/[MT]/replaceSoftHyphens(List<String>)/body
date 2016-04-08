@@ -1,6 +1,6 @@
 {
   Pattern ignoredCharacterRegex=language.getIgnoredCharactersRegex();
-  final Map<Integer,String> ignoredCharsTokens=new HashMap<>();
+  Map<Integer,String> ignoredCharsTokens=new HashMap<>();
   if (ignoredCharacterRegex == null) {
     return ignoredCharsTokens;
   }

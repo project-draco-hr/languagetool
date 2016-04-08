@@ -1,7 +1,7 @@
 {
   try {
-    final Class<?> aClass=Class.forName(className);
-    final Constructor<?> constructor=aClass.getConstructor();
+    Class<?> aClass=Class.forName(className);
+    Constructor<?> constructor=aClass.getConstructor();
     return (Language)constructor.newInstance();
   }
  catch (  ClassNotFoundException e) {

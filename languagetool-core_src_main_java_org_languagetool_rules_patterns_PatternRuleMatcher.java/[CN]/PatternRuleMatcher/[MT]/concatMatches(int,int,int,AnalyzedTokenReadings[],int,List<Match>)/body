@@ -1,10 +1,10 @@
 {
   String[] finalMatch;
-  final int len=phraseLen(index);
-  final Language language=rule.language;
+  int len=phraseLen(index);
+  Language language=rule.language;
   if (len == 1) {
-    final int skippedTokens=nextTokenPos - tokenIndex;
-    final MatchState matchState=suggestionMatches.get(start).createState(language.getSynthesizer(),tokens,tokenIndex - 1,skippedTokens);
+    int skippedTokens=nextTokenPos - tokenIndex;
+    MatchState matchState=suggestionMatches.get(start).createState(language.getSynthesizer(),tokens,tokenIndex - 1,skippedTokens);
     finalMatch=matchState.toFinalString(language);
     if (suggestionMatches.get(start).checksSpelling() && finalMatch.length == 1 && "".equals(finalMatch[0])) {
       finalMatch=new String[1];
@@ -12,10 +12,10 @@
     }
   }
  else {
-    final List<String[]> matchList=new ArrayList<>();
+    List<String[]> matchList=new ArrayList<>();
     for (int i=0; i < len; i++) {
-      final int skippedTokens=nextTokenPos - (tokenIndex + i);
-      final MatchState matchState=suggestionMatches.get(start).createState(language.getSynthesizer(),tokens,tokenIndex - 1 + i,skippedTokens);
+      int skippedTokens=nextTokenPos - (tokenIndex + i);
+      MatchState matchState=suggestionMatches.get(start).createState(language.getSynthesizer(),tokens,tokenIndex - 1 + i,skippedTokens);
       matchList.add(matchState.toFinalString(language));
     }
     return combineLists(matchList.toArray(new String[matchList.size()][]),new String[matchList.size()],0,language);

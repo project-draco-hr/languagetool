@@ -1,8 +1,8 @@
 {
-  final List<AnalyzedToken> result=new ArrayList<>();
-  final String lowerWord=word.toLowerCase(conversionLocale);
-  final boolean isLowercase=word.equals(lowerWord);
-  final boolean isMixedCase=StringTools.isMixedCase(word);
+  List<AnalyzedToken> result=new ArrayList<>();
+  String lowerWord=word.toLowerCase(conversionLocale);
+  boolean isLowercase=word.equals(lowerWord);
+  boolean isMixedCase=StringTools.isMixedCase(word);
   List<AnalyzedToken> taggerTokens=asAnalyzedTokenListForTaggedWords(word,getWordTagger().tag(word));
   List<AnalyzedToken> lowerTaggerTokens=asAnalyzedTokenListForTaggedWords(word,getWordTagger().tag(lowerWord));
   addTokens(taggerTokens,result);

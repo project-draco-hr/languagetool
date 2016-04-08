@@ -1,5 +1,5 @@
 {
-  final String text=contents.replace('\n',' ');
+  String text=contents.replace('\n',' ');
   int startContent=fromPos - contextSize;
   String prefix="...";
   String postfix="...";
@@ -10,22 +10,22 @@
     startContent=0;
   }
   int endContent=toPos + contextSize;
-  final int textLength=text.length();
+  int textLength=text.length();
   if (endContent > textLength) {
     postfix="";
     endContent=textLength;
   }
-  final StringBuilder marker=getMarker(fromPos,toPos,textLength + prefix.length());
-  final StringBuilder sb=new StringBuilder();
+  StringBuilder marker=getMarker(fromPos,toPos,textLength + prefix.length());
+  StringBuilder sb=new StringBuilder();
   sb.append(prefix);
   sb.append(text.substring(startContent,endContent));
-  final String markerStr=markerPrefix + marker.substring(startContent,endContent);
+  String markerStr=markerPrefix + marker.substring(startContent,endContent);
   sb.append(postfix);
-  final int startMark=markerStr.indexOf('^');
-  final int endMark=markerStr.lastIndexOf('^');
+  int startMark=markerStr.indexOf('^');
+  int endMark=markerStr.lastIndexOf('^');
   String result=sb.toString();
   if (escapeHtml) {
-    final String escapedErrorPart=StringTools.escapeHTML(result.substring(startMark,endMark + 1)).replace(" ","&nbsp;");
+    String escapedErrorPart=StringTools.escapeHTML(result.substring(startMark,endMark + 1)).replace(" ","&nbsp;");
     result=StringTools.escapeHTML(result.substring(0,startMark)) + errorMarkerStart + escapedErrorPart+ errorMarkerEnd+ StringTools.escapeHTML(result.substring(endMark + 1));
   }
  else {

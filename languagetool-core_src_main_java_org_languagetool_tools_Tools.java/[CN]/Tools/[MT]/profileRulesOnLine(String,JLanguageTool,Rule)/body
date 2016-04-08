@@ -1,6 +1,6 @@
 {
   int count=0;
-  for (  final String sentence : lt.sentenceTokenize(contents)) {
+  for (  String sentence : lt.sentenceTokenize(contents)) {
     count+=rule.match(lt.getAnalyzedSentence(sentence)).length;
   }
   return count;

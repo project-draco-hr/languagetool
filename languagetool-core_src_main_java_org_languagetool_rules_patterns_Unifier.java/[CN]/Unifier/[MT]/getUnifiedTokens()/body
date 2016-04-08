@@ -12,7 +12,7 @@
         unifiedTokensFound=true;
       }
  else {
-        for (        final Map.Entry<String,List<String>> feat : unificationFeats.entrySet()) {
+        for (        Map.Entry<String,List<String>> feat : unificationFeats.entrySet()) {
           if (tokSequenceEquivalences.get(j).get(i).containsKey(feat.getKey()) && tokSequenceEquivalences.get(j).get(i).get(feat.getKey()).isEmpty()) {
             featUnified=0;
           }

@@ -1,6 +1,6 @@
 {
   InputStreamReader isr=null;
-  final StringBuilder sb=new StringBuilder();
+  StringBuilder sb=new StringBuilder();
   try {
     if (encoding == null) {
       isr=new InputStreamReader(stream);

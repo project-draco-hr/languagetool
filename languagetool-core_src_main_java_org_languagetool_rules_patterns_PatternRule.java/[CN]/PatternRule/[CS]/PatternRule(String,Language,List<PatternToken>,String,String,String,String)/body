@@ -9,7 +9,7 @@
   int cnt=0;
   int loopCnt=0;
   boolean tempUseList=false;
-  for (  final PatternToken pToken : this.patternTokens) {
+  for (  PatternToken pToken : this.patternTokens) {
     if (pToken.isPartOfPhrase()) {
       curName=pToken.getPhraseName();
       if (StringTools.isEmpty(prevName) || prevName.equals(curName)) {

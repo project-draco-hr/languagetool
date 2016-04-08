@@ -1,6 +1,6 @@
 {
-  final String completePath=getCompleteRulesUrl(path);
-  final URL resource=ResourceDataBroker.class.getResource(completePath);
+  String completePath=getCompleteRulesUrl(path);
+  URL resource=ResourceDataBroker.class.getResource(completePath);
   assertNotNull(resource,path,completePath);
   return resource;
 }

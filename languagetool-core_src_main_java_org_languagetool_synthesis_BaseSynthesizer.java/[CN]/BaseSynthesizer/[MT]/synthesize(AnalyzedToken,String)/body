@@ -1,5 +1,5 @@
 {
-  final List<String> wordForms=new ArrayList<>();
+  List<String> wordForms=new ArrayList<>();
   lookup(token.getLemma(),posTag,wordForms);
   return wordForms.toArray(new String[wordForms.size()]);
 }

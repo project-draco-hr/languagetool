@@ -1,6 +1,6 @@
 {
   boolean found=false;
-  for (  final AnalyzedToken reading : anTokReadings) {
+  for (  AnalyzedToken reading : anTokReadings) {
     if (reading.getPOSTag() != null) {
       found=posTag.equals(reading.getPOSTag());
       if (found) {

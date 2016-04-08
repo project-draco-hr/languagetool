@@ -1,5 +1,5 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
   int i=0;
   for (  Rule rule : rules) {
     if (rule instanceof TextLevelRule && !ignoreRule(rule) && paraMode != ParagraphHandling.ONLYNONPARA) {
@@ -15,13 +15,13 @@
     }
   }
   for (  AnalyzedSentence analyzedSentence : analyzedSentences) {
-    final String sentence=sentences.get(i++);
+    String sentence=sentences.get(i++);
     try {
-      final List<RuleMatch> sentenceMatches=checkAnalyzedSentence(paraMode,rules,charCount,lineCount,columnCount,sentence,analyzedSentence,annotatedText);
+      List<RuleMatch> sentenceMatches=checkAnalyzedSentence(paraMode,rules,charCount,lineCount,columnCount,sentence,analyzedSentence,annotatedText);
       ruleMatches.addAll(sentenceMatches);
       charCount+=sentence.length();
       lineCount+=countLineBreaks(sentence);
-      final int lineBreakPos=sentence.lastIndexOf('\n');
+      int lineBreakPos=sentence.lastIndexOf('\n');
       if (lineBreakPos == -1) {
         columnCount+=sentence.length();
       }

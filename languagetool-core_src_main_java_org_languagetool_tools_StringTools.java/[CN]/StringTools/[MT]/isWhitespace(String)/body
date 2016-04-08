@@ -2,7 +2,7 @@
   if ("\u0002".equals(str) || "\u0001".equals(str)) {
     return false;
   }
-  final String trimStr=str.trim();
+  String trimStr=str.trim();
   if (isEmpty(trimStr)) {
     return true;
   }

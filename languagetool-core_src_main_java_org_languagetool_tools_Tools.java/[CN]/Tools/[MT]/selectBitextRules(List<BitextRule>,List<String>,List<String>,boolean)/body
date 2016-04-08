@@ -3,7 +3,7 @@
   newBRules.addAll(bRules);
   List<BitextRule> rulesToDisable=new ArrayList<>();
   if (useEnabledOnly) {
-    for (    final String enabledRule : enabledRules) {
+    for (    String enabledRule : enabledRules) {
       for (      BitextRule b : bRules) {
         if (!b.getId().equals(enabledRule)) {
           rulesToDisable.add(b);
@@ -12,8 +12,8 @@
     }
   }
  else {
-    for (    final String disabledRule : disabledRules) {
-      for (      final BitextRule b : newBRules) {
+    for (    String disabledRule : disabledRules) {
+      for (      BitextRule b : newBRules) {
         if (b.getId().equals(disabledRule)) {
           rulesToDisable.add(b);
         }

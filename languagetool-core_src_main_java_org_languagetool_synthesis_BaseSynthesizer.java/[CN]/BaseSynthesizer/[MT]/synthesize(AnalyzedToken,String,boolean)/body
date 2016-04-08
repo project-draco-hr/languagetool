@@ -1,10 +1,10 @@
 {
   if (posTagRegExp) {
     initPossibleTags();
-    final Pattern p=Pattern.compile(posTag);
-    final List<String> results=new ArrayList<>();
+    Pattern p=Pattern.compile(posTag);
+    List<String> results=new ArrayList<>();
     for (    String tag : possibleTags) {
-      final Matcher m=p.matcher(tag);
+      Matcher m=p.matcher(tag);
       if (m.matches()) {
         lookup(token.getLemma(),tag,results);
       }

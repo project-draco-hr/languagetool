@@ -1,9 +1,9 @@
 {
-  final List<BitextRule> bRules=new ArrayList<>();
-  final BitextPatternRuleLoader ruleLoader=new BitextPatternRuleLoader();
-  final String name="/" + target.getShortName() + "/bitext.xml";
+  List<BitextRule> bRules=new ArrayList<>();
+  BitextPatternRuleLoader ruleLoader=new BitextPatternRuleLoader();
+  String name="/" + target.getShortName() + "/bitext.xml";
   if (JLanguageTool.getDataBroker().ruleFileExists(name)) {
-    final InputStream is=JLanguageTool.getDataBroker().getFromRulesDirAsStream(name);
+    InputStream is=JLanguageTool.getDataBroker().getFromRulesDirAsStream(name);
     if (is != null) {
       bRules.addAll(ruleLoader.getRules(is,name));
     }
@@ -11,9 +11,9 @@
   if (externalBitextRuleFile != null) {
     bRules.addAll(ruleLoader.getRules(new FileInputStream(externalBitextRuleFile),externalBitextRuleFile.getAbsolutePath()));
   }
-  final FalseFriendsAsBitextLoader fRuleLoader=new FalseFriendsAsBitextLoader();
-  final String falseFriendsFile="/false-friends.xml";
-  final List<BitextPatternRule> rules=fRuleLoader.getFalseFriendsAsBitext(falseFriendsFile,source,target);
+  FalseFriendsAsBitextLoader fRuleLoader=new FalseFriendsAsBitextLoader();
+  String falseFriendsFile="/false-friends.xml";
+  List<BitextPatternRule> rules=fRuleLoader.getFalseFriendsAsBitext(falseFriendsFile,source,target);
   bRules.addAll(rules);
   bRules.addAll(getAllBuiltinBitextRules(source,null));
   return bRules;

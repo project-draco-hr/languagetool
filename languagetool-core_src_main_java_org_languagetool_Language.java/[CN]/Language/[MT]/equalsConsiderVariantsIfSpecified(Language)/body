@@ -1,7 +1,7 @@
 {
   if (getShortName().equals(otherLanguage.getShortName())) {
-    final boolean thisHasCountry=hasCountry();
-    final boolean otherHasCountry=otherLanguage.hasCountry();
+    boolean thisHasCountry=hasCountry();
+    boolean otherHasCountry=otherLanguage.hasCountry();
     return !(thisHasCountry && otherHasCountry) || getShortNameWithCountryAndVariant().equals(otherLanguage.getShortNameWithCountryAndVariant());
   }
  else {

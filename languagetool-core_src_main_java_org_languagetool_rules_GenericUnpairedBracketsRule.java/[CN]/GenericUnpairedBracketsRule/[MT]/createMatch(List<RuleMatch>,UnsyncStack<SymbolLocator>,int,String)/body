@@ -1,8 +1,8 @@
 {
   if (!ruleMatchStack.empty()) {
-    final int index=findSymbolNum(symbol,endSymbols);
+    int index=findSymbolNum(symbol,endSymbols);
     if (index >= 0) {
-      final SymbolLocator rLoc=ruleMatchStack.peek();
+      SymbolLocator rLoc=ruleMatchStack.peek();
       if (rLoc.getSymbol().equals(startSymbols[index])) {
         if (ruleMatches.size() > rLoc.getIndex()) {
           ruleMatches.remove(rLoc.getIndex());

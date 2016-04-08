@@ -1,12 +1,12 @@
 {
-  final List<BitextRule> rules=new ArrayList<>();
+  List<BitextRule> rules=new ArrayList<>();
   try {
-    final List<Class<? extends BitextRule>> classes=BitextRule.getRelevantRules();
-    for (    final Class class1 : classes) {
-      final Constructor[] constructors=class1.getConstructors();
+    List<Class<? extends BitextRule>> classes=BitextRule.getRelevantRules();
+    for (    Class class1 : classes) {
+      Constructor[] constructors=class1.getConstructors();
       boolean foundConstructor=false;
-      for (      final Constructor constructor : constructors) {
-        final Class[] paramTypes=constructor.getParameterTypes();
+      for (      Constructor constructor : constructors) {
+        Class[] paramTypes=constructor.getParameterTypes();
         if (paramTypes.length == 0) {
           rules.add((BitextRule)constructor.newInstance());
           foundConstructor=true;

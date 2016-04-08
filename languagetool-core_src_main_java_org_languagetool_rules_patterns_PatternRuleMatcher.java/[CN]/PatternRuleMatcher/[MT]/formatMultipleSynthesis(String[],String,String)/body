@@ -1,9 +1,9 @@
 {
-  final String errorMessage;
+  String errorMessage;
   String suggestionLeft="";
   String suggestionRight="";
   String rightSideNew=rightSide;
-  final int sPos=leftSide.lastIndexOf(SUGGESTION_START_TAG);
+  int sPos=leftSide.lastIndexOf(SUGGESTION_START_TAG);
   if (sPos >= 0) {
     suggestionLeft=leftSide.substring(sPos + SUGGESTION_START_TAG.length());
   }
@@ -13,16 +13,16 @@
  else {
     errorMessage=leftSide.substring(0,leftSide.lastIndexOf(SUGGESTION_START_TAG)) + SUGGESTION_START_TAG;
   }
-  final int rPos=rightSide.indexOf(SUGGESTION_END_TAG);
+  int rPos=rightSide.indexOf(SUGGESTION_END_TAG);
   if (rPos >= 0) {
     suggestionRight=rightSide.substring(0,rPos);
   }
   if (!StringTools.isEmpty(suggestionRight)) {
     rightSideNew=rightSide.substring(rightSide.indexOf(SUGGESTION_END_TAG));
   }
-  final int lastLeftSugEnd=leftSide.indexOf(SUGGESTION_END_TAG);
-  final int lastLeftSugStart=leftSide.lastIndexOf(SUGGESTION_START_TAG);
-  final StringBuilder sb=new StringBuilder();
+  int lastLeftSugEnd=leftSide.indexOf(SUGGESTION_END_TAG);
+  int lastLeftSugStart=leftSide.lastIndexOf(SUGGESTION_START_TAG);
+  StringBuilder sb=new StringBuilder();
   sb.append(errorMessage);
   for (int z=0; z < matches.length; z++) {
     sb.append(suggestionLeft);

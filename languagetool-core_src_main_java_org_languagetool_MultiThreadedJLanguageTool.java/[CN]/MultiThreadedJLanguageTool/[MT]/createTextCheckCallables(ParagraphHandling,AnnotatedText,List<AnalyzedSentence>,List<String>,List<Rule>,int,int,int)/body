@@ -1,11 +1,11 @@
 {
-  final int threads=getThreadPoolSize();
-  final int totalRules=allRules.size();
-  final int chunkSize=totalRules / threads;
+  int threads=getThreadPoolSize();
+  int totalRules=allRules.size();
+  int chunkSize=totalRules / threads;
   int firstItem=0;
-  final List<Callable<List<RuleMatch>>> callables=new ArrayList<>();
+  List<Callable<List<RuleMatch>>> callables=new ArrayList<>();
   for (int i=0; i < threads; i++) {
-    final List<Rule> subRules;
+    List<Rule> subRules;
     if (i == threads - 1) {
       subRules=allRules.subList(firstItem,totalRules);
     }

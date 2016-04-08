@@ -1,7 +1,7 @@
 {
   lazyInit();
-  final AnalyzedTokenReadings[] anTokens=input.getTokens();
-  final AnalyzedTokenReadings[] output=anTokens;
+  AnalyzedTokenReadings[] anTokens=input.getTokens();
+  AnalyzedTokenReadings[] output=anTokens;
   for (int i=0; i < anTokens.length; i++) {
     String tok=output[i].getToken();
     if (tok.length() < 1) {
@@ -12,10 +12,10 @@
     }
     int myCount=0;
     while (myCount < 2) {
-      final StringBuilder tokens=new StringBuilder();
+      StringBuilder tokens=new StringBuilder();
       int finalLen=0;
       if (mStartSpace.containsKey(tok)) {
-        final int len=mStartSpace.get(tok);
+        int len=mStartSpace.get(tok);
         int j=i;
         int lenCounter=0;
         while (j < anTokens.length) {
@@ -26,7 +26,7 @@
  else {
               tokens.append(anTokens[j].getToken());
             }
-            final String toks=tokens.toString();
+            String toks=tokens.toString();
             if (mFull.containsKey(toks)) {
               output[i]=prepareNewReading(toks,output[i].getToken(),output[i],false);
               output[finalLen]=prepareNewReading(toks,anTokens[finalLen].getToken(),output[finalLen],true);
@@ -54,7 +54,7 @@
  else {
             tokens.append(anTokens[j].getToken());
           }
-          final String toks=tokens.toString();
+          String toks=tokens.toString();
           if (mFull.containsKey(toks)) {
             output[i]=prepareNewReading(toks,anTokens[i].getToken(),output[i],false);
             output[j]=prepareNewReading(toks,anTokens[j].getToken(),output[j],true);

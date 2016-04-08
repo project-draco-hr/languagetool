@@ -1,10 +1,10 @@
 {
-  final Language language=getLanguageForLanguageNameAndCountry(locale);
+  Language language=getLanguageForLanguageNameAndCountry(locale);
   if (language != null) {
     return language;
   }
  else {
-    final Language firstFallbackLanguage=getLanguageForLanguageNameOnly(locale);
+    Language firstFallbackLanguage=getLanguageForLanguageNameOnly(locale);
     if (firstFallbackLanguage != null) {
       return firstFallbackLanguage;
     }

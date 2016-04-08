@@ -1,7 +1,7 @@
 {
   boolean anyFeatUnified=false;
-  final List<Boolean> tokenFeaturesFound=new ArrayList<>(tmpFeaturesFound);
-  final Map<String,Set<String>> equivalencesMatchedHere=new ConcurrentHashMap<>();
+  List<Boolean> tokenFeaturesFound=new ArrayList<>(tmpFeaturesFound);
+  Map<String,Set<String>> equivalencesMatchedHere=new ConcurrentHashMap<>();
   if (allFeatsIn) {
     for (int i=0; i < tokCnt; i++) {
       boolean allFeatsUnified=true;
@@ -11,14 +11,14 @@
         if (types == null || types.isEmpty()) {
           types=equivalenceFeatures.get(feat.getKey());
         }
-        for (        final String typeName : types) {
+        for (        String typeName : types) {
           if (equivalencesMatched.get(i).containsKey(feat.getKey()) && equivalencesMatched.get(i).get(feat.getKey()).contains(typeName)) {
-            final PatternToken testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
+            PatternToken testElem=equivalenceTypes.get(new EquivalenceTypeLocator(feat.getKey(),typeName));
             boolean matched=testElem.isMatched(aToken);
             featUnified=featUnified || matched;
             if (matched) {
               if (!equivalencesToBeKept.containsKey(feat.getKey())) {
-                final Set<String> typeSet=new HashSet<>();
+                Set<String> typeSet=new HashSet<>();
                 typeSet.add(typeName);
                 equivalencesToBeKept.put(feat.getKey(),typeSet);
               }
@@ -26,7 +26,7 @@
                 equivalencesToBeKept.get(feat.getKey()).add(typeName);
               }
               if (!equivalencesMatchedHere.containsKey(feat.getKey())) {
-                final Set<String> typeSet=new HashSet<>();
+                Set<String> typeSet=new HashSet<>();
                 typeSet.add(typeName);
                 equivalencesMatchedHere.put(feat.getKey(),typeSet);
               }

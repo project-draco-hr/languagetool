@@ -1,9 +1,9 @@
 {
   try {
-    final PatternRuleHandler handler=new PatternRuleHandler();
+    PatternRuleHandler handler=new PatternRuleHandler();
     handler.setRelaxedMode(relaxedMode);
-    final SAXParserFactory factory=SAXParserFactory.newInstance();
-    final SAXParser saxParser=factory.newSAXParser();
+    SAXParserFactory factory=SAXParserFactory.newInstance();
+    SAXParser saxParser=factory.newSAXParser();
     Tools.setPasswordAuthenticator();
     saxParser.getXMLReader().setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd",false);
     saxParser.parse(is,handler);

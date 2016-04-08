@@ -1,4 +1,4 @@
 {
-  final Validator validator=getValidator(xmlSchema);
+  Validator validator=getValidator(xmlSchema);
   validator.validate(xmlSrc);
 }

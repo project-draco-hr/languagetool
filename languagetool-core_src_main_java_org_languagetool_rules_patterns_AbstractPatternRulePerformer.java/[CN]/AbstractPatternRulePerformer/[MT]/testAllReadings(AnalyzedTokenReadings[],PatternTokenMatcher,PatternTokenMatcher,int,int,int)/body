@@ -1,9 +1,9 @@
 {
   boolean thisMatched=false;
-  final int numberOfReadings=tokens[tokenNo].getReadingsLength();
+  int numberOfReadings=tokens[tokenNo].getReadingsLength();
   matcher.prepareAndGroup(firstMatchToken,tokens,rule.getLanguage());
   for (int i=0; i < numberOfReadings; i++) {
-    final AnalyzedToken matchToken=tokens[tokenNo].getAnalyzedToken(i);
+    AnalyzedToken matchToken=tokens[tokenNo].getAnalyzedToken(i);
     boolean tested=false;
     prevMatched=prevMatched || prevSkipNext > 0 && prevElement != null && prevElement.isMatchedByScopeNextException(matchToken);
     if (prevMatched) {

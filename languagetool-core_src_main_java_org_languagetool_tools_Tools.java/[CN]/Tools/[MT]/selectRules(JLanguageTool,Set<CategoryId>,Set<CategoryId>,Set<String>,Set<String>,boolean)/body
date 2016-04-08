@@ -16,7 +16,7 @@
       }
     }
   }
-  for (  final String disabledRule : disabledRules) {
+  for (  String disabledRule : disabledRules) {
     lt.disableRule(disabledRule);
   }
   if (enabledRules.size() > 0) {

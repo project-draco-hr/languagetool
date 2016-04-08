@@ -1,12 +1,12 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
   if (needsInit) {
     init();
   }
   if (hunspellDict == null) {
     return toRuleMatchArray(ruleMatches);
   }
-  final String[] tokens=tokenizeText(getSentenceTextWithoutUrlsAndImmunizedTokens(sentence));
+  String[] tokens=tokenizeText(getSentenceTextWithoutUrlsAndImmunizedTokens(sentence));
   int len=sentence.getTokens()[1].getStartPos();
   for (int i=0; i < tokens.length; i++) {
     String word=tokens[i];
@@ -15,8 +15,8 @@
       continue;
     }
     if (isMisspelled(word)) {
-      final RuleMatch ruleMatch=new RuleMatch(this,len,len + word.length(),messages.getString("spelling"),messages.getString("desc_spelling_short"));
-      final List<String> suggestions=getSuggestions(word);
+      RuleMatch ruleMatch=new RuleMatch(this,len,len + word.length(),messages.getString("spelling"),messages.getString("desc_spelling_short"));
+      List<String> suggestions=getSuggestions(word);
       suggestions.addAll(0,getAdditionalTopSuggestions(suggestions,word));
       suggestions.addAll(getAdditionalSuggestions(suggestions,word));
       if (!suggestions.isEmpty()) {

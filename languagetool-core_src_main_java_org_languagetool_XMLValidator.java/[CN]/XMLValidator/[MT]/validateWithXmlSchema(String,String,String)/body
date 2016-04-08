@@ -3,7 +3,7 @@
     if (xmlStream == null || baseXmlStream == null) {
       throw new IOException("Files not found in classpath: " + filename + ", "+ baseFilename);
     }
-    final URL schemaUrl=this.getClass().getResource(xmlSchemaPath);
+    URL schemaUrl=this.getClass().getResource(xmlSchemaPath);
     if (schemaUrl == null) {
       throw new IOException("XML schema not found in classpath: " + xmlSchemaPath);
     }

@@ -1,14 +1,14 @@
 {
-  final List<ContextWords> set=new ArrayList<>();
+  List<ContextWords> set=new ArrayList<>();
   try (Scanner scanner=new Scanner(stream,"utf-8")){
     while (scanner.hasNextLine()) {
-      final String line=scanner.nextLine();
+      String line=scanner.nextLine();
       if (line.trim().isEmpty() || line.charAt(0) == '#') {
         continue;
       }
-      final String[] column=line.split("\t");
+      String[] column=line.split("\t");
       if (column.length >= 6) {
-        final ContextWords contextWords=new ContextWords();
+        ContextWords contextWords=new ContextWords();
         contextWords.setWord(0,column[0]);
         contextWords.setWord(1,column[1]);
         contextWords.matches[0]=column[2];

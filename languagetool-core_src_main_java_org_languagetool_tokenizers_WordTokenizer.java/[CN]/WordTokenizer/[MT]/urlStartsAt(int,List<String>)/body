@@ -1,16 +1,16 @@
 {
-  final String token=l.get(i);
+  String token=l.get(i);
   if (isProtocol(token) && l.size() > i + 3) {
-    final String nToken=l.get(i + 1);
-    final String nnToken=l.get(i + 2);
-    final String nnnToken=l.get(i + 3);
+    String nToken=l.get(i + 1);
+    String nnToken=l.get(i + 2);
+    String nnnToken=l.get(i + 3);
     if (nToken.equals(":") && nnToken.equals("/") && nnnToken.equals("/")) {
       return true;
     }
   }
   if (l.size() > i + 1) {
-    final String nToken=l.get(i);
-    final String nnToken=l.get(i + 1);
+    String nToken=l.get(i);
+    String nnToken=l.get(i + 1);
     if (nToken.equals("www") && nnToken.equals(".")) {
       return true;
     }

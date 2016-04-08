@@ -1,5 +1,5 @@
 {
-  final String text=contents.replace('\n',' ').replace('\r',' ').replace('\t',' ');
+  String text=contents.replace('\n',' ').replace('\r',' ').replace('\t',' ');
   int startContent=fromPos - contextSize;
   String prefix="...";
   String postfix="...";
@@ -14,6 +14,6 @@
     postfix="";
     endContent=text.length();
   }
-  final StringBuilder marker=getMarker(fromPos,toPos,text.length() + prefix.length());
+  StringBuilder marker=getMarker(fromPos,toPos,text.length() + prefix.length());
   return prefix + text.substring(startContent,endContent) + postfix+ '\n'+ markerPrefix+ marker.substring(startContent,endContent);
 }

@@ -1,5 +1,5 @@
 {
-  final List<String> suggestions=new ArrayList<>();
+  List<String> suggestions=new ArrayList<>();
   suggestions.addAll(speller.findReplacements(word));
   suggestions.addAll(speller.replaceRunOnWords(word));
   if (dictionary.metadata.isConvertingCase() && StringTools.startsWithUppercase(word)) {

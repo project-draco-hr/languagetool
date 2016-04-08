@@ -1,5 +1,5 @@
 {
-  final List<Rule> rules=new ArrayList<>();
+  List<Rule> rules=new ArrayList<>();
   rules.addAll(builtinRules);
   rules.addAll(userRules);
   return rules;

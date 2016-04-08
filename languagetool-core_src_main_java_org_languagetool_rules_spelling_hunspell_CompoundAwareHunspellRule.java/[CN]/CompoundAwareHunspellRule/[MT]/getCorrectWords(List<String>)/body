@@ -1,7 +1,7 @@
 {
-  final List<String> result=new ArrayList<>();
+  List<String> result=new ArrayList<>();
   for (  String wordOrPhrase : wordsOrPhrases) {
-    final String[] words=tokenizeText(wordOrPhrase);
+    String[] words=tokenizeText(wordOrPhrase);
     boolean wordIsOkay=true;
     for (    String word : words) {
       if (hunspellDict.misspelled(word)) {

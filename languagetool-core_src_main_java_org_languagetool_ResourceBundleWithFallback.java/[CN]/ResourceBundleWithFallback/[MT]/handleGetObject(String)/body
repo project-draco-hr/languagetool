@@ -1,5 +1,5 @@
 {
-  final String s=bundle.getString(key);
+  String s=bundle.getString(key);
   if (s.trim().isEmpty()) {
     return fallbackBundle.getString(key);
   }

@@ -3,9 +3,9 @@
   if (!file.getName().endsWith(".xml")) {
     throw new RuleFilenameException(file);
   }
-  final String[] parts=file.getName().split("-");
-  final boolean startsWithRules=parts[0].equals("rules");
-  final boolean secondPartHasCorrectLength=parts.length == 3 && (parts[1].length() == "en".length() || parts[1].length() == "ast".length() || parts[1].length() == "en_US".length());
+  String[] parts=file.getName().split("-");
+  boolean startsWithRules=parts[0].equals("rules");
+  boolean secondPartHasCorrectLength=parts.length == 3 && (parts[1].length() == "en".length() || parts[1].length() == "ast".length() || parts[1].length() == "en_US".length());
   if (!startsWithRules || !secondPartHasCorrectLength) {
     throw new RuleFilenameException(file);
   }
@@ -41,7 +41,7 @@
         return Collections.emptyList();
       }
       @Override public List<String> getRuleFileNames(){
-        final List<String> ruleFiles=new ArrayList<>();
+        List<String> ruleFiles=new ArrayList<>();
         ruleFiles.add(file.getAbsolutePath());
         return ruleFiles;
       }

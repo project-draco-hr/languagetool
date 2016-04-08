@@ -1,7 +1,7 @@
 {
-  final StringBuilder sb=new StringBuilder();
+  StringBuilder sb=new StringBuilder();
   int readBytes=0;
-  final char[] chars=new char[4000];
+  char[] chars=new char[4000];
   while (readBytes >= 0) {
     readBytes=reader.read(chars,0,4000);
     if (readBytes <= 0) {
