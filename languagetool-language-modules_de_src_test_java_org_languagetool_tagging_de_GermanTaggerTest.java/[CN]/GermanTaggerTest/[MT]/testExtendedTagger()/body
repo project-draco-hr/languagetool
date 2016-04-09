@@ -1,5 +1,5 @@
 {
-  final GermanTagger tagger=new GermanTagger();
+  GermanTagger tagger=new GermanTagger();
   assertEquals("Ku??[Ku??/SUB:AKK:SIN:MAS, Ku??/SUB:DAT:SIN:MAS, Ku??/SUB:NOM:SIN:MAS]",toSortedString(tagger.lookup("Ku??")));
   assertEquals("Kuss[Kuss/SUB:AKK:SIN:MAS, Kuss/SUB:DAT:SIN:MAS, Kuss/SUB:NOM:SIN:MAS]",toSortedString(tagger.lookup("Kuss")));
   assertEquals("Ha??[Ha??/SUB:AKK:SIN:MAS, Ha??/SUB:DAT:SIN:MAS, Ha??/SUB:NOM:SIN:MAS]",toSortedString(tagger.lookup("Ha??")));

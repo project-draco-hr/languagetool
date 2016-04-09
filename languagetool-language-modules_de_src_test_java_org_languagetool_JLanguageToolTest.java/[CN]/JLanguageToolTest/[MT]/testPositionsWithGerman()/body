@@ -1,8 +1,8 @@
 {
-  final JLanguageTool tool=new JLanguageTool(new German());
-  final List<RuleMatch> matches=tool.check("Stundenkilometer");
+  JLanguageTool tool=new JLanguageTool(new German());
+  List<RuleMatch> matches=tool.check("Stundenkilometer");
   assertEquals(1,matches.size());
-  final RuleMatch match=matches.get(0);
+  RuleMatch match=matches.get(0);
   assertEquals(0,match.getLine());
   assertEquals(1,match.getColumn());
 }

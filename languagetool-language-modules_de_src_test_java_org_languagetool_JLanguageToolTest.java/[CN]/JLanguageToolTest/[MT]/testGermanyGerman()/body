@@ -1,5 +1,5 @@
 {
-  final JLanguageTool tool=new JLanguageTool(new GermanyGerman());
+  JLanguageTool tool=new JLanguageTool(new GermanyGerman());
   assertEquals(0,tool.check("Ein Test, der keine Fehler geben sollte.").size());
   assertEquals(1,tool.check("Ein Test Test, der Fehler geben sollte.").size());
   tool.setListUnknownWords(true);

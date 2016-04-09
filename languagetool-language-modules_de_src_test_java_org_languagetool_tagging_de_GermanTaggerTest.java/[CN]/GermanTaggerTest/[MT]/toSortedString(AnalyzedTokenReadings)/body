@@ -1,6 +1,6 @@
 {
-  final StringBuilder sb=new StringBuilder(tokenReadings.getToken());
-  final Set<String> elements=new TreeSet<>();
+  StringBuilder sb=new StringBuilder(tokenReadings.getToken());
+  Set<String> elements=new TreeSet<>();
   sb.append('[');
   for (  AnalyzedToken reading : tokenReadings) {
     if (!elements.contains(reading.toString())) {

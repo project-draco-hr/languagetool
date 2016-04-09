@@ -1,5 +1,5 @@
 {
-  final List<String> suggestions=rule.getSuggestions(input);
+  List<String> suggestions=rule.getSuggestions(input);
   int i=0;
   for (  String expectedTerm : expectedTerms) {
     assertTrue("Not found at position " + i + ": '"+ expectedTerm+ "' in: "+ suggestions,suggestions.get(i).equals(expectedTerm));
