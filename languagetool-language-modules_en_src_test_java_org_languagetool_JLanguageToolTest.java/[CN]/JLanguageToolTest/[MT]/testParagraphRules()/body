@@ -1,5 +1,5 @@
 {
-  final JLanguageTool tool=new JLanguageTool(new English());
+  JLanguageTool tool=new JLanguageTool(new English());
   List<RuleMatch> matches1=tool.check("(This is an quote.\n It ends in the second sentence.");
   assertEquals(2,matches1.size());
   assertEquals(2,tool.getSentenceCount());

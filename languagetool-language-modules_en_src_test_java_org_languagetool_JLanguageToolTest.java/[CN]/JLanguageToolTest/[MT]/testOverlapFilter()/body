@@ -1,23 +1,23 @@
 {
-  final Category category=new Category(new CategoryId("TEST_ID"),"test category");
-  final List<PatternToken> elements1=Arrays.asList(new PatternToken("one",true,false,false));
-  final PatternRule rule1=new PatternRule("id1",new English(),elements1,"desc1","msg1","shortMsg1");
+  Category category=new Category(new CategoryId("TEST_ID"),"test category");
+  List<PatternToken> elements1=Arrays.asList(new PatternToken("one",true,false,false));
+  PatternRule rule1=new PatternRule("id1",new English(),elements1,"desc1","msg1","shortMsg1");
   rule1.setSubId("1");
   rule1.setCategory(category);
-  final List<PatternToken> elements2=Arrays.asList(new PatternToken("one",true,false,false),new PatternToken("two",true,false,false));
-  final PatternRule rule2=new PatternRule("id1",new English(),elements2,"desc2","msg2","shortMsg2");
+  List<PatternToken> elements2=Arrays.asList(new PatternToken("one",true,false,false),new PatternToken("two",true,false,false));
+  PatternRule rule2=new PatternRule("id1",new English(),elements2,"desc2","msg2","shortMsg2");
   rule2.setSubId("2");
   rule2.setCategory(category);
-  final JLanguageTool tool=new JLanguageTool(new English());
+  JLanguageTool tool=new JLanguageTool(new English());
   tool.addRule(rule1);
   tool.addRule(rule2);
-  final List<RuleMatch> ruleMatches1=tool.check("And one two three.");
+  List<RuleMatch> ruleMatches1=tool.check("And one two three.");
   assertEquals("one overlapping rule must be filtered out",1,ruleMatches1.size());
   assertEquals("msg1",ruleMatches1.get(0).getMessage());
-  final String sentence="And one two three.";
-  final AnalyzedSentence analyzedSentence=tool.getAnalyzedSentence(sentence);
-  final List<Rule> bothRules=new ArrayList<Rule>(Arrays.asList(rule1,rule2));
-  final List<RuleMatch> ruleMatches2=tool.checkAnalyzedSentence(ParagraphHandling.NORMAL,bothRules,0,0,0,sentence,analyzedSentence);
+  String sentence="And one two three.";
+  AnalyzedSentence analyzedSentence=tool.getAnalyzedSentence(sentence);
+  List<Rule> bothRules=new ArrayList<Rule>(Arrays.asList(rule1,rule2));
+  List<RuleMatch> ruleMatches2=tool.checkAnalyzedSentence(ParagraphHandling.NORMAL,bothRules,0,0,0,sentence,analyzedSentence);
   assertEquals("one overlapping rule must be filtered out",1,ruleMatches2.size());
   assertEquals("msg1",ruleMatches2.get(0).getMessage());
 }

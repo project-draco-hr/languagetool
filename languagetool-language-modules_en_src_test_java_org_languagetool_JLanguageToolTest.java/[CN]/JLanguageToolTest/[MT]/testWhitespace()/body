@@ -1,11 +1,11 @@
 {
-  final JLanguageTool tool=new JLanguageTool(new English());
-  final AnalyzedSentence raw=tool.getRawAnalyzedSentence("Let's do a \"test\", do you understand?");
-  final AnalyzedSentence cooked=tool.getAnalyzedSentence("Let's do a \"test\", do you understand?");
+  JLanguageTool tool=new JLanguageTool(new English());
+  AnalyzedSentence raw=tool.getRawAnalyzedSentence("Let's do a \"test\", do you understand?");
+  AnalyzedSentence cooked=tool.getAnalyzedSentence("Let's do a \"test\", do you understand?");
   assertFalse(raw.equals(cooked));
   assertEquals(raw.getTokens().length,cooked.getTokens().length);
   int i=0;
-  for (  final AnalyzedTokenReadings atr : raw.getTokens()) {
+  for (  AnalyzedTokenReadings atr : raw.getTokens()) {
     assertEquals(atr.isWhitespaceBefore(),cooked.getTokens()[i].isWhitespaceBefore());
     i++;
   }

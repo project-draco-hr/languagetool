@@ -24,7 +24,7 @@
   assertIncorrect("A unintersting ...");
   assertIncorrect("A hour's work ...");
   assertIncorrect("Going to a \"industry party\".");
-  final RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("It was a uninteresting talk with an long sentence."));
+  RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("It was a uninteresting talk with an long sentence."));
   assertEquals(2,matches.length);
   assertCorrect("A University");
   assertCorrect("A Europe wide something");

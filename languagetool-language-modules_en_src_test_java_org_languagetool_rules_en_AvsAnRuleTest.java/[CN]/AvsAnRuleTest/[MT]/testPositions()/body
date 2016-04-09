@@ -1,6 +1,6 @@
 {
   RuleMatch[] matches;
-  final JLanguageTool langTool=new JLanguageTool(new English());
+  JLanguageTool langTool=new JLanguageTool(new English());
   matches=rule.match(langTool.getAnalyzedSentence("a industry standard."));
   assertEquals(0,matches[0].getFromPos());
   assertEquals(1,matches[0].getToPos());
