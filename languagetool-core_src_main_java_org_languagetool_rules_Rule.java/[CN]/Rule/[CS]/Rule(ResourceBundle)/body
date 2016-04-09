@@ -1,3 +1,9 @@
 {
   this.messages=messages;
+  if (messages != null) {
+    setCategory(Categories.MISC.getCategory(messages));
+  }
+ else {
+    setCategory(new Category(CategoryIds.MISC,"Misc"));
+  }
 }
