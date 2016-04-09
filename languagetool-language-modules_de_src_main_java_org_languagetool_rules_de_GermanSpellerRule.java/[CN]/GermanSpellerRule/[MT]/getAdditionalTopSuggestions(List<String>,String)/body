@@ -59,7 +59,7 @@
   if (suggestions.isEmpty() && word.contains("-")) {
     String[] words=word.split("-");
     if (words.length > 1) {
-      List<List<String>> suggestionLists=new ArrayList<List<String>>(words.length);
+      List<List<String>> suggestionLists=new ArrayList<>(words.length);
       int startAt=0, stopAt=words.length;
       if (super.ignoreWord(words[0] + "-" + words[1])) {
         startAt=2;
@@ -87,9 +87,9 @@
       for (int idx=1; idx < suggestionLists.size(); idx++) {
         List<String> suggestionList=suggestionLists.get(idx);
         List<String> newList=new ArrayList<>(additionalSuggestions.size() * suggestionList.size());
-        for (int first=0; first < additionalSuggestions.size(); first++) {
-          for (int last=0; last < suggestionList.size(); last++) {
-            newList.add(additionalSuggestions.get(first) + "-" + suggestionList.get(last));
+        for (        String additionalSuggestion : additionalSuggestions) {
+          for (          String aSuggestionList : suggestionList) {
+            newList.add(additionalSuggestion + "-" + aSuggestionList);
           }
         }
         additionalSuggestions=newList;

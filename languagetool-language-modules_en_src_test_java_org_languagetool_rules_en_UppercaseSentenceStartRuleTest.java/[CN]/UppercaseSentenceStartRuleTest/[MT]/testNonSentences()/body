@@ -1,3 +1,0 @@
-{
-  JLanguageTool lt=new JLanguageTool(new English());
-}

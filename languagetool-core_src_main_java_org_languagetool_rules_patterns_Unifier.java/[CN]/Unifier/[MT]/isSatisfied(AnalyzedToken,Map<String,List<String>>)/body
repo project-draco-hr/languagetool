@@ -12,7 +12,7 @@
   }
  else {
     while (equivalencesMatched.size() <= tokCnt) {
-      equivalencesMatched.add(new ConcurrentHashMap<String,Set<String>>());
+      equivalencesMatched.add(new ConcurrentHashMap<>());
     }
     for (    Map.Entry<String,List<String>> feat : uFeatures.entrySet()) {
       List<String> types=feat.getValue();
