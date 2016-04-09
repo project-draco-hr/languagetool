@@ -1,4 +1,3 @@
 {
-  Objects.requireNonNull(category,"category cannot be null");
-  this.category=category;
+  this.category=Objects.requireNonNull(category,"category cannot be null");
 }
