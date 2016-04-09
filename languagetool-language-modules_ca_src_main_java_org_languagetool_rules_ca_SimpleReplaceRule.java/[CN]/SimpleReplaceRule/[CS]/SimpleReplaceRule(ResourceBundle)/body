@@ -1,6 +1,6 @@
 {
   super(messages);
-  super.setCategory(new Category("Errors ortogr??fics"));
+  super.setCategory(Categories.TYPOS.getCategory(messages));
   super.setLocQualityIssueType(ITSIssueType.Misspelling);
   this.setIgnoreTaggedWords();
 }

@@ -1,5 +1,5 @@
 {
-  final Category category=new Category("test category");
+  final Category category=new Category(new CategoryId("TEST_ID"),"test category");
   final List<PatternToken> elements1=Arrays.asList(new PatternToken("one",true,false,false));
   final PatternRule rule1=new PatternRule("id1",new English(),elements1,"desc1","msg1","shortMsg1");
   rule1.setSubId("1");
