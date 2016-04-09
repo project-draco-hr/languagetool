@@ -4,7 +4,7 @@
       System.err.println("The " + lang + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ "\""+ stringValue+ "\" that contains token separators, so can't possibly be matched.");
     }
   }
-  final Pattern regexPattern=(isPos && lang.getShortName().equals("pl")) ? PROBABLE_PATTERN_PL_POS : PROBABLE_PATTERN;
+  Pattern regexPattern=(isPos && lang.getShortName().equals("pl")) ? PROBABLE_PATTERN_PL_POS : PROBABLE_PATTERN;
   if (!isRegularExpression && stringValue.length() > 1 && regexPattern.matcher(stringValue).find()) {
     System.err.println("The " + lang + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ "\""+ stringValue+ "\" that is not marked as regular expression but probably is one.");
   }
@@ -28,14 +28,14 @@
     if (matcher.find()) {
       Matcher strictMatcher=STRICT_CHAR_SET_PATTERN.matcher(stringValue);
       if (strictMatcher.find()) {
-        final String s=strictMatcher.group(2).replaceAll("\\\\p\\{[^}]*\\}","");
+        String s=strictMatcher.group(2).replaceAll("\\\\p\\{[^}]*\\}","");
         if (s.indexOf('|') >= 0) {
           System.err.println("The " + lang + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains | (pipe) in "+ "regexp bracket expression ["+ strictMatcher.group(2)+ "] which is unlikely to be correct.");
         }
-        final char[] sorted=s.toCharArray();
+        char[] sorted=s.toCharArray();
         Arrays.sort(sorted);
         for (int i=1; i < sorted.length; ++i) {
-          final char c=sorted[i];
+          char c=sorted[i];
           if ("&\\-|".indexOf(c) < 0 && sorted[i - 1] == c) {
             System.err.println("The " + lang + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ "regexp part ["+ strictMatcher.group(2)+ "] which contains duplicated char ["+ c+ "].");
             break;
@@ -47,11 +47,11 @@
       if (stringValue.contains("||") || stringValue.charAt(0) == '|' || stringValue.charAt(stringValue.length() - 1) == '|') {
         System.err.println("The " + lang + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains empty "+ "disjunction | within "+ "\""+ stringValue+ "\".");
       }
-      final String[] groups=stringValue.split("\\)");
-      for (      final String group : groups) {
-        final String[] alt=group.split("\\|");
-        final Set<String> partSet=new HashSet<>();
-        final Set<String> partSetNoCase=new HashSet<>();
+      String[] groups=stringValue.split("\\)");
+      for (      String group : groups) {
+        String[] alt=group.split("\\|");
+        Set<String> partSet=new HashSet<>();
+        Set<String> partSetNoCase=new HashSet<>();
         boolean hasSingleChar=false;
         boolean hasSingleDot=false;
         for (        String part : alt) {
@@ -63,7 +63,7 @@
               hasSingleChar=true;
             }
           }
-          final String partNoCase=isCaseSensitive ? part : part.toLowerCase();
+          String partNoCase=isCaseSensitive ? part : part.toLowerCase();
           if (partSetNoCase.contains(partNoCase)) {
             if (partSet.contains(part)) {
               System.err.println("The " + lang + " rule: "+ ruleId+ ", token ["+ tokenIndex+ "], contains "+ "duplicated disjunction part ("+ part+ ") within "+ "\""+ stringValue+ "\".");

@@ -1,5 +1,5 @@
 {
-  for (  final Language lang : Languages.getWithDemoLanguage()) {
+  for (  Language lang : Languages.getWithDemoLanguage()) {
     if (ignoredLanguages != null && ignoredLanguages.contains(lang)) {
       continue;
     }
@@ -8,13 +8,13 @@
       continue;
     }
     System.out.println("Running disambiguation tests for " + lang.getName() + "...");
-    final DisambiguationRuleLoader ruleLoader=new DisambiguationRuleLoader();
-    final JLanguageTool languageTool=new JLanguageTool(lang);
+    DisambiguationRuleLoader ruleLoader=new DisambiguationRuleLoader();
+    JLanguageTool languageTool=new JLanguageTool(lang);
     if (!(languageTool.getLanguage().getDisambiguator() instanceof DemoDisambiguator)) {
       long startTime=System.currentTimeMillis();
-      final String name=JLanguageTool.getDataBroker().getResourceDir() + "/" + lang.getShortName()+ "/disambiguation.xml";
+      String name=JLanguageTool.getDataBroker().getResourceDir() + "/" + lang.getShortName()+ "/disambiguation.xml";
       validateRuleFile(name);
-      final List<DisambiguationPatternRule> rules=ruleLoader.getRules(ruleLoader.getClass().getResourceAsStream(name));
+      List<DisambiguationPatternRule> rules=ruleLoader.getRules(ruleLoader.getClass().getResourceAsStream(name));
       for (      DisambiguationPatternRule rule : rules) {
         PatternTestTools.warnIfRegexpSyntaxNotKosher(rule.getPatternTokens(),rule.getId(),rule.getSubId(),lang);
       }

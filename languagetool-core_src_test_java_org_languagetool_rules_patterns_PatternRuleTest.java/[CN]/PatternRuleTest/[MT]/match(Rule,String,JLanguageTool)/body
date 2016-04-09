@@ -1,5 +1,5 @@
 {
-  final AnalyzedSentence analyzedSentence=languageTool.getAnalyzedSentence(sentence);
-  final RuleMatch[] matches=rule.match(analyzedSentence);
+  AnalyzedSentence analyzedSentence=languageTool.getAnalyzedSentence(sentence);
+  RuleMatch[] matches=rule.match(analyzedSentence);
   return matches.length > 0;
 }

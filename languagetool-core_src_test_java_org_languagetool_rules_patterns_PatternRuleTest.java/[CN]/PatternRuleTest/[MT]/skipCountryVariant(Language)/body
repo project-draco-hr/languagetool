@@ -2,7 +2,7 @@
   if (Languages.get().get(0).equals(lang)) {
     return false;
   }
-  final ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
+  ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
   boolean hasGrammarFiles=false;
   for (  String grammarFile : getGrammarFileNames(lang)) {
     if (dataBroker.ruleFileExists(grammarFile)) {

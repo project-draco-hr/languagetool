@@ -1,5 +1,5 @@
 {
-  final PatternToken patternTokenB=makeElement("b");
+  PatternToken patternTokenB=makeElement("b");
   patternTokenB.setMinOccurrence(0);
   List<PatternToken> patternTokens=Arrays.asList(makeElement("a"),patternTokenB,makeElement("c"));
   PatternRule rule=new PatternRule("",new Demo(),patternTokens,"my description","<suggestion>\\1 \\2 \\3</suggestion>","short message");

@@ -1,5 +1,5 @@
 {
-  final Language language=LanguageBuilder.makeAdditionalLanguage(new File("rules-xy-Fakelanguage.xml"));
+  Language language=LanguageBuilder.makeAdditionalLanguage(new File("rules-xy-Fakelanguage.xml"));
   assertEquals("Fakelanguage",language.getName());
   assertEquals("xy",language.getShortName());
   assertEquals(0,language.getRelevantRules(JLanguageTool.getMessageBundle()).size());

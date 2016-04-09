@@ -1,13 +1,13 @@
 {
-  final PatternToken patternTokenB=makeElement("b");
+  PatternToken patternTokenB=makeElement("b");
   patternTokenB.setMaxOccurrence(3);
-  final PatternRuleMatcher matcher=getMatcher(makeElement("a"),patternTokenB);
+  PatternRuleMatcher matcher=getMatcher(makeElement("a"),patternTokenB);
   assertNoMatch("a a",matcher);
   assertCompleteMatch("a b",matcher);
   assertCompleteMatch("a b b",matcher);
   assertCompleteMatch("a b b b",matcher);
   assertPartialMatch("a b b b b",matcher);
-  final RuleMatch[] matches1=getMatches("a b b b b",matcher);
+  RuleMatch[] matches1=getMatches("a b b b b",matcher);
   assertThat(matches1.length,is(1));
   assertPosition(matches1[0],0,7);
 }

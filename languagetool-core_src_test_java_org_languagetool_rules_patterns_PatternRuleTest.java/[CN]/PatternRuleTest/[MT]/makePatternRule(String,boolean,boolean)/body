@@ -1,9 +1,9 @@
 {
-  final List<PatternToken> patternTokens=new ArrayList<>();
-  final String[] parts=s.split(" ");
+  List<PatternToken> patternTokens=new ArrayList<>();
+  String[] parts=s.split(" ");
   boolean pos=false;
   PatternToken pToken;
-  for (  final String element : parts) {
+  for (  String element : parts) {
     if (element.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
       pos=true;
     }
@@ -19,6 +19,6 @@
     patternTokens.add(pToken);
     pos=false;
   }
-  final PatternRule rule=new PatternRule("ID1",TestTools.getDemoLanguage(),patternTokens,"test rule","user visible message","short comment");
+  PatternRule rule=new PatternRule("ID1",TestTools.getDemoLanguage(),patternTokens,"test rule","user visible message","short comment");
   return rule;
 }

@@ -1,5 +1,5 @@
 {
-  final String badSentence=cleanXML(origBadSentence);
+  String badSentence=cleanXML(origBadSentence);
   assertTrue(badSentence.trim().length() > 0);
   RuleMatch[] matches=getMatches(rule,badSentence,languageTool);
   assertTrue(lang + ": Did expect one error in: \"" + badSentence+ "\" (Rule: "+ rule+ "), got "+ matches.length+ ". Additional info:"+ rule.getMessage(),matches.length == 1);
@@ -9,10 +9,10 @@
     assertTrue("You specified a correction but your message has no suggestions in rule " + rule,rule.getMessage().contains("<suggestion>"));
     assertTrue(lang + ": Incorrect suggestions: " + suggestedCorrection+ " != "+ matches[0].getSuggestedReplacements()+ " for rule "+ rule,suggestedCorrection.equals(matches[0].getSuggestedReplacements()));
     if (matches[0].getSuggestedReplacements().size() > 0) {
-      final int fromPos=matches[0].getFromPos();
-      final int toPos=matches[0].getToPos();
-      for (      final String repl : matches[0].getSuggestedReplacements()) {
-        final String fixedSentence=badSentence.substring(0,fromPos) + repl + badSentence.substring(toPos);
+      int fromPos=matches[0].getFromPos();
+      int toPos=matches[0].getToPos();
+      for (      String repl : matches[0].getSuggestedReplacements()) {
+        String fixedSentence=badSentence.substring(0,fromPos) + repl + badSentence.substring(toPos);
         matches=getMatches(rule,fixedSentence,languageTool);
         if (matches.length > 0) {
           fail("Incorrect input:\n" + "  " + badSentence + "\nCorrected sentence:\n"+ "  "+ fixedSentence+ "\nBy Rule:\n"+ "  "+ rule+ "\nThe correction triggered an error itself:\n"+ "  "+ matches[0]+ "\n");

@@ -1,11 +1,11 @@
 {
-  final PatternRuleTest test=new PatternRuleTest();
+  PatternRuleTest test=new PatternRuleTest();
   System.out.println("Running XML pattern tests...");
   if (args.length == 0) {
     test.runGrammarRulesFromXmlTestIgnoringLanguages(null);
   }
  else {
-    final Set<Language> ignoredLanguages=TestTools.getLanguagesExcept(args);
+    Set<Language> ignoredLanguages=TestTools.getLanguagesExcept(args);
     test.runGrammarRulesFromXmlTestIgnoringLanguages(ignoredLanguages);
   }
   System.out.println("Tests finished!");

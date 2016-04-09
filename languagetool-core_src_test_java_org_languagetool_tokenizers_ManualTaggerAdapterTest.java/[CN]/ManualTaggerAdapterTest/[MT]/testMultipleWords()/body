@@ -1,6 +1,6 @@
 {
-  final List<String> l=Arrays.asList("inflectedform2","inflectedform3");
-  final List<AnalyzedTokenReadings> analyzedTokenReadings=tagger.tag(l);
+  List<String> l=Arrays.asList("inflectedform2","inflectedform3");
+  List<AnalyzedTokenReadings> analyzedTokenReadings=tagger.tag(l);
   assertNotNull(analyzedTokenReadings);
   assertEquals(2,analyzedTokenReadings.size());
   AnalyzedTokenReadings analyzedTokenReading;

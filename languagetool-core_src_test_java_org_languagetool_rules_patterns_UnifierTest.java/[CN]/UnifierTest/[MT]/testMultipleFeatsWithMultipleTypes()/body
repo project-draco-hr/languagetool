@@ -1,5 +1,5 @@
 {
-  final UnifierConfiguration unifierConfig=new UnifierConfiguration();
+  UnifierConfiguration unifierConfig=new UnifierConfiguration();
   unifierConfig.setEquivalence("number","singular",preparePOSElement(".*[\\.:]sg:.*"));
   unifierConfig.setEquivalence("number","plural",preparePOSElement(".*[\\.:]pl:.*"));
   unifierConfig.setEquivalence("gender","feminine",preparePOSElement(".*[\\.:]f([\\.:].*)?"));
@@ -12,15 +12,15 @@
   unifierConfig.setEquivalence("case","accusativus",preparePOSElement(".*[\\.:]acc[\\.:]?.*"));
   unifierConfig.setEquivalence("case","dativus",preparePOSElement(".*[\\.:]dat[\\.:]?.*"));
   unifierConfig.setEquivalence("case","vocativus",preparePOSElement(".*[\\.:]voc[\\.:]?.*"));
-  final Unifier uni=unifierConfig.createUnifier();
-  final AnalyzedToken sing1=new AnalyzedToken("niezgorsze","adj:sg:acc:n1.n2:pos","niezgorszy");
-  final AnalyzedToken sing1a=new AnalyzedToken("niezgorsze","adj:pl:acc:m2.m3.f.n1.n2.p2.p3:pos","niezgorszy");
-  final AnalyzedToken sing1b=new AnalyzedToken("niezgorsze","adj:pl:nom.voc:m2.m3.f.n1.n2.p2.p3:pos","niezgorszy");
-  final AnalyzedToken sing1c=new AnalyzedToken("niezgorsze","adj:sg:nom.voc:n1.n2:pos","niezgorszy");
-  final AnalyzedToken sing2=new AnalyzedToken("lekarstwo","subst:sg:acc:n2","lekarstwo");
-  final AnalyzedToken sing2b=new AnalyzedToken("lekarstwo","subst:sg:nom:n2","lekarstwo");
-  final AnalyzedToken sing2c=new AnalyzedToken("lekarstwo","subst:sg:voc:n2","lekarstwo");
-  final Map<String,List<String>> equiv=new HashMap<>();
+  Unifier uni=unifierConfig.createUnifier();
+  AnalyzedToken sing1=new AnalyzedToken("niezgorsze","adj:sg:acc:n1.n2:pos","niezgorszy");
+  AnalyzedToken sing1a=new AnalyzedToken("niezgorsze","adj:pl:acc:m2.m3.f.n1.n2.p2.p3:pos","niezgorszy");
+  AnalyzedToken sing1b=new AnalyzedToken("niezgorsze","adj:pl:nom.voc:m2.m3.f.n1.n2.p2.p3:pos","niezgorszy");
+  AnalyzedToken sing1c=new AnalyzedToken("niezgorsze","adj:sg:nom.voc:n1.n2:pos","niezgorszy");
+  AnalyzedToken sing2=new AnalyzedToken("lekarstwo","subst:sg:acc:n2","lekarstwo");
+  AnalyzedToken sing2b=new AnalyzedToken("lekarstwo","subst:sg:nom:n2","lekarstwo");
+  AnalyzedToken sing2c=new AnalyzedToken("lekarstwo","subst:sg:voc:n2","lekarstwo");
+  Map<String,List<String>> equiv=new HashMap<>();
   equiv.put("number",null);
   equiv.put("gender",null);
   equiv.put("case",null);

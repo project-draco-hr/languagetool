@@ -1,17 +1,17 @@
 {
-  final UnifierConfiguration unifierConfig=new UnifierConfiguration();
+  UnifierConfiguration unifierConfig=new UnifierConfiguration();
   unifierConfig.setEquivalence("number","singular",preparePOSElement(".*[\\.:]sg:.*"));
   unifierConfig.setEquivalence("number","plural",preparePOSElement(".*[\\.:]pl:.*"));
   unifierConfig.setEquivalence("gender","feminine",preparePOSElement(".*[\\.:]f([\\.:].*)?"));
   unifierConfig.setEquivalence("gender","masculine",preparePOSElement(".*[\\.:]m([\\.:].*)?"));
   unifierConfig.setEquivalence("gender","neutral",preparePOSElement(".*[\\.:]n([\\.:].*)?"));
-  final Unifier uni=unifierConfig.createUnifier();
-  final AnalyzedToken sing1=new AnalyzedToken("ma??y","adj:sg:blahblah:m","ma??y");
+  Unifier uni=unifierConfig.createUnifier();
+  AnalyzedToken sing1=new AnalyzedToken("ma??y","adj:sg:blahblah:m","ma??y");
   AnalyzedToken sing1a=new AnalyzedToken("ma??y","adj:pl:blahblah:f","ma??y");
   AnalyzedToken sing1b=new AnalyzedToken("ma??y","adj:pl:blahblah:f","ma??y");
   AnalyzedToken sing2=new AnalyzedToken("zgarbiony","adj:pl:blahblah:f","zgarbiony");
-  final AnalyzedToken sing3=new AnalyzedToken("cz??owiek","subst:sg:blahblah:m","cz??owiek");
-  final Map<String,List<String>> equiv=new HashMap<>();
+  AnalyzedToken sing3=new AnalyzedToken("cz??owiek","subst:sg:blahblah:m","cz??owiek");
+  Map<String,List<String>> equiv=new HashMap<>();
   equiv.put("number",null);
   equiv.put("gender",null);
   boolean satisfied=uni.isSatisfied(sing1,equiv);
@@ -41,8 +41,8 @@
   uni.reset();
   sing1a=new AnalyzedToken("osobiste","adj:pl:nom.acc.voc:f.n.m2.m3:pos:aff","osobisty");
   sing1b=new AnalyzedToken("osobiste","adj:sg:nom.acc.voc:n:pos:aff","osobisty");
-  final AnalyzedToken sing2a=new AnalyzedToken("god??o","subst:sg:nom.acc.voc:n","god??o");
-  final AnalyzedToken sing2b=new AnalyzedToken("god??o","indecl","god??o");
+  AnalyzedToken sing2a=new AnalyzedToken("god??o","subst:sg:nom.acc.voc:n","god??o");
+  AnalyzedToken sing2b=new AnalyzedToken("god??o","indecl","god??o");
   uni.isUnified(sing1a,equiv,false);
   uni.isUnified(sing1b,equiv,true);
   uni.isUnified(sing2a,equiv,false);

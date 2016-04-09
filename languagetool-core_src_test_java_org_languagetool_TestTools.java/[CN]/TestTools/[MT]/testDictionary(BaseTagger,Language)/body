@@ -1,6 +1,6 @@
 {
-  final Dictionary dictionary=Dictionary.read(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(tagger.getDictionaryPath()));
-  final DictionaryLookup lookup=new DictionaryLookup(dictionary);
+  Dictionary dictionary=Dictionary.read(JLanguageTool.getDataBroker().getFromResourceDirAsUrl(tagger.getDictionaryPath()));
+  DictionaryLookup lookup=new DictionaryLookup(dictionary);
   for (  WordData wordData : lookup) {
     if (wordData.getTag() == null || wordData.getTag().length() == 0) {
       System.err.println("**** Warning: " + language + ": the word "+ wordData.getWord()+ "/"+ wordData.getStem()+ " lacks a POS tag in the dictionary.");

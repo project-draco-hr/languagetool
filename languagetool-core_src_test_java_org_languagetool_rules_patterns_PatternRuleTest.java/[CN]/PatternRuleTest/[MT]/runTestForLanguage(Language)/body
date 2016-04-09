@@ -1,13 +1,13 @@
 {
   validatePatternFile(lang);
   System.out.print("Running pattern rule tests for " + lang.getName() + "... ");
-  final MultiThreadedJLanguageTool languageTool=new MultiThreadedJLanguageTool(lang);
+  MultiThreadedJLanguageTool languageTool=new MultiThreadedJLanguageTool(lang);
   if (CHECK_WITH_SENTENCE_SPLITTING) {
     disableSpellingRules(languageTool);
   }
-  final MultiThreadedJLanguageTool allRulesLanguageTool=new MultiThreadedJLanguageTool(lang);
+  MultiThreadedJLanguageTool allRulesLanguageTool=new MultiThreadedJLanguageTool(lang);
   validateRuleIds(lang,allRulesLanguageTool);
-  final List<AbstractPatternRule> rules=new ArrayList<>();
+  List<AbstractPatternRule> rules=new ArrayList<>();
   for (  String patternRuleFileName : lang.getRuleFileNames()) {
     rules.addAll(languageTool.loadPatternRules(patternRuleFileName));
   }

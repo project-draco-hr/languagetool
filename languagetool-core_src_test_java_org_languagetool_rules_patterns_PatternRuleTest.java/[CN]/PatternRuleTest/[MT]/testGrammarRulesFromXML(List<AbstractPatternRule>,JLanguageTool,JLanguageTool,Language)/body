@@ -1,14 +1,14 @@
 {
-  final Map<String,AbstractPatternRule> complexRules=new HashMap<>();
-  for (  final AbstractPatternRule rule : rules) {
+  Map<String,AbstractPatternRule> complexRules=new HashMap<>();
+  for (  AbstractPatternRule rule : rules) {
     testCorrectSentences(languageTool,allRulesLanguageTool,lang,rule);
     testBadSentences(languageTool,allRulesLanguageTool,lang,complexRules,rule);
   }
   if (!complexRules.isEmpty()) {
-    final Set<String> set=complexRules.keySet();
-    final List<AbstractPatternRule> badRules=new ArrayList<>();
+    Set<String> set=complexRules.keySet();
+    List<AbstractPatternRule> badRules=new ArrayList<>();
     for (    String aSet : set) {
-      final AbstractPatternRule badRule=complexRules.get(aSet);
+      AbstractPatternRule badRule=complexRules.get(aSet);
       if (badRule != null && badRule instanceof PatternRule) {
         ((PatternRule)badRule).notComplexPhrase();
         badRule.setMessage("The rule contains a phrase that never matched any incorrect example.\n" + ((PatternRule)badRule).toPatternString());

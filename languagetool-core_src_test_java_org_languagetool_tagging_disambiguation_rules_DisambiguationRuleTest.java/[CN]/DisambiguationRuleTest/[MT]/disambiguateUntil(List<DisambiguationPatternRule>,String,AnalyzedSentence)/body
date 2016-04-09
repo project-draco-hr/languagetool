@@ -1,6 +1,6 @@
 {
   AnalyzedSentence disambiguated=sentence;
-  for (  final DisambiguationPatternRule rule : rules) {
+  for (  DisambiguationPatternRule rule : rules) {
     if (ruleID.equals(rule.getId())) {
       break;
     }

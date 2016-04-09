@@ -1,5 +1,5 @@
 {
-  for (  final Language lang : Languages.get()) {
+  for (  Language lang : Languages.get()) {
     runGrammarRuleForLanguage(lang);
   }
   if (Languages.get().size() == 0) {

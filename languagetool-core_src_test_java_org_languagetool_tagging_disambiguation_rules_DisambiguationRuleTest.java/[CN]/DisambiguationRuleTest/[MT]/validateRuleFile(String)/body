@@ -1,5 +1,5 @@
 {
-  final XMLValidator validator=new XMLValidator();
+  XMLValidator validator=new XMLValidator();
   try (InputStream stream=this.getClass().getResourceAsStream(filePath)){
     if (stream != null) {
       validator.validateWithXmlSchema(filePath,JLanguageTool.getDataBroker().getResourceDir() + "/disambiguation.xsd");

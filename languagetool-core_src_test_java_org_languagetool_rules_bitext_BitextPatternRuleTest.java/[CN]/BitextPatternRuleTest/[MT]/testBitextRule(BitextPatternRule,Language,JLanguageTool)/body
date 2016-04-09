@@ -1,22 +1,22 @@
 {
-  final JLanguageTool srcTool=new JLanguageTool(rule.getSourceLanguage());
-  final List<StringPair> goodSentences=rule.getCorrectBitextExamples();
+  JLanguageTool srcTool=new JLanguageTool(rule.getSourceLanguage());
+  List<StringPair> goodSentences=rule.getCorrectBitextExamples();
   for (  StringPair goodSentence : goodSentences) {
     assertTrue(cleanSentence(goodSentence.getSource()).trim().length() > 0);
     assertTrue(cleanSentence(goodSentence.getTarget()).trim().length() > 0);
     assertFalse(lang + ": Did not expect error in: " + goodSentence+ " (Rule: "+ rule+ ")",match(rule,goodSentence.getSource(),goodSentence.getTarget(),srcTool,languageTool));
   }
-  final List<IncorrectBitextExample> badSentences=rule.getIncorrectBitextExamples();
+  List<IncorrectBitextExample> badSentences=rule.getIncorrectBitextExamples();
   for (  IncorrectBitextExample origBadExample : badSentences) {
-    final StringPair example=origBadExample.getExample();
-    final String origBadSrcSentence=example.getSource().replaceAll("[\\n\\t]+","");
-    final String origBadTrgSentence=example.getTarget().replaceAll("[\\n\\t]+","");
-    final List<String> suggestedCorrection=origBadExample.getCorrections();
-    final int expectedSrcMatchStart=origBadSrcSentence.indexOf("<marker>");
-    final int expectedSrcMatchEnd=origBadSrcSentence.indexOf("</marker>") - "<marker>".length();
+    StringPair example=origBadExample.getExample();
+    String origBadSrcSentence=example.getSource().replaceAll("[\\n\\t]+","");
+    String origBadTrgSentence=example.getTarget().replaceAll("[\\n\\t]+","");
+    List<String> suggestedCorrection=origBadExample.getCorrections();
+    int expectedSrcMatchStart=origBadSrcSentence.indexOf("<marker>");
+    int expectedSrcMatchEnd=origBadSrcSentence.indexOf("</marker>") - "<marker>".length();
     testMarker(expectedSrcMatchStart,expectedSrcMatchEnd,rule,lang);
-    final int expectedTrgMatchStart=origBadTrgSentence.indexOf("<marker>");
-    final int expectedTrgMatchEnd=origBadTrgSentence.indexOf("</marker>") - "<marker>".length();
+    int expectedTrgMatchStart=origBadTrgSentence.indexOf("<marker>");
+    int expectedTrgMatchEnd=origBadTrgSentence.indexOf("</marker>") - "<marker>".length();
     testMarker(expectedTrgMatchStart,expectedTrgMatchEnd,rule,lang);
     testBadSentence(origBadSrcSentence,suggestedCorrection,expectedSrcMatchStart,expectedSrcMatchEnd,rule.getSrcRule(),lang,srcTool);
     testBadSentence(origBadTrgSentence,suggestedCorrection,expectedTrgMatchStart,expectedTrgMatchEnd,rule.getTrgRule(),lang,languageTool);

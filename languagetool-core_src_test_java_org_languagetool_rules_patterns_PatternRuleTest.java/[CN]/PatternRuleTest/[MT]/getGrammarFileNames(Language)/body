@@ -1,9 +1,9 @@
 {
-  final String shortNameWithVariant=lang.getShortNameWithCountryAndVariant();
-  final List<String> fileNames=new ArrayList<>();
+  String shortNameWithVariant=lang.getShortNameWithCountryAndVariant();
+  List<String> fileNames=new ArrayList<>();
   for (  String ruleFile : lang.getRuleFileNames()) {
-    final String nameOnly=new File(ruleFile).getName();
-    final String fileName;
+    String nameOnly=new File(ruleFile).getName();
+    String fileName;
     if (shortNameWithVariant.contains("-x-")) {
       fileName=lang.getShortName() + "/" + nameOnly;
     }

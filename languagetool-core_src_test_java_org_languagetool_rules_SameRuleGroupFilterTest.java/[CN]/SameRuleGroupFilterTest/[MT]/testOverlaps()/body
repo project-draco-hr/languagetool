@@ -1,5 +1,5 @@
 {
-  final SameRuleGroupFilter filter=new SameRuleGroupFilter();
+  SameRuleGroupFilter filter=new SameRuleGroupFilter();
   assertTrue(filter.overlaps(makeRuleMatch(10,20),makeRuleMatch(10,20)));
   assertTrue(filter.overlaps(makeRuleMatch(10,20),makeRuleMatch(5,11)));
   assertTrue(filter.overlaps(makeRuleMatch(10,20),makeRuleMatch(19,21)));

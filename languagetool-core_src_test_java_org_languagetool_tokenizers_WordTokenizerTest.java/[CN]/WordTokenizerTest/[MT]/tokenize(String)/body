@@ -1,4 +1,4 @@
 {
-  final List<String> tokens=wordTokenizer.tokenize(text);
+  List<String> tokens=wordTokenizer.tokenize(text);
   return String.join("|",tokens);
 }

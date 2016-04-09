@@ -1,10 +1,10 @@
 {
-  final XMLValidator validator=new XMLValidator();
-  final List<String> grammarFiles=getGrammarFileNames(lang);
+  XMLValidator validator=new XMLValidator();
+  List<String> grammarFiles=getGrammarFileNames(lang);
   for (  String grammarFile : grammarFiles) {
     System.out.println("Running XML validation for " + grammarFile + "...");
-    final String rulesDir=JLanguageTool.getDataBroker().getRulesDir();
-    final String ruleFilePath=rulesDir + "/" + grammarFile;
+    String rulesDir=JLanguageTool.getDataBroker().getRulesDir();
+    String ruleFilePath=rulesDir + "/" + grammarFile;
     try (InputStream xmlStream=this.getClass().getResourceAsStream(ruleFilePath)){
       if (xmlStream == null) {
         System.out.println("No rule file found at " + ruleFilePath + " in classpath");

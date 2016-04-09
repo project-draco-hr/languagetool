@@ -1,18 +1,18 @@
 {
-  final List<IncorrectExample> badSentences=rule.getIncorrectExamples();
+  List<IncorrectExample> badSentences=rule.getIncorrectExamples();
   if (badSentences.size() == 0) {
     fail("No incorrect examples found for rule " + rule.getFullId());
   }
   List<AbstractPatternRule> rules=allRulesLanguageTool.getPatternRulesByIdAndSubId(rule.getId(),rule.getSubId());
   for (  IncorrectExample origBadExample : badSentences) {
-    final String origBadSentence=origBadExample.getExample().replaceAll("[\\n\\t]+","");
-    final List<String> expectedCorrections=origBadExample.getCorrections();
-    final int expectedMatchStart=origBadSentence.indexOf("<marker>");
-    final int expectedMatchEnd=origBadSentence.indexOf("</marker>") - "<marker>".length();
+    String origBadSentence=origBadExample.getExample().replaceAll("[\\n\\t]+","");
+    List<String> expectedCorrections=origBadExample.getCorrections();
+    int expectedMatchStart=origBadSentence.indexOf("<marker>");
+    int expectedMatchEnd=origBadSentence.indexOf("</marker>") - "<marker>".length();
     if (expectedMatchStart == -1 || expectedMatchEnd == -1) {
       fail(lang + ": No error position markup ('<marker>...</marker>') in bad example in rule " + rule.getFullId());
     }
-    final String badSentence=cleanXML(origBadSentence);
+    String badSentence=cleanXML(origBadSentence);
     assertTrue(badSentence.trim().length() > 0);
     List<RuleMatch> matches=new ArrayList<>();
     for (    Rule auxRule : rules) {
@@ -20,8 +20,8 @@
     }
     if (rule instanceof RegexPatternRule || rule instanceof PatternRule && !((PatternRule)rule).isWithComplexPhrase()) {
       if (matches.size() != 1) {
-        final AnalyzedSentence analyzedSentence=languageTool.getAnalyzedSentence(badSentence);
-        final StringBuilder sb=new StringBuilder("Analyzed token readings:");
+        AnalyzedSentence analyzedSentence=languageTool.getAnalyzedSentence(badSentence);
+        StringBuilder sb=new StringBuilder("Analyzed token readings:");
         for (        AnalyzedTokenReadings atr : analyzedSentence.getTokens()) {
           sb.append(" ").append(atr);
         }
@@ -35,10 +35,10 @@
       assertEquals(lang + ": Incorrect match position markup (end) for rule " + rule.getFullId()+ ", sentence: "+ badSentence,expectedMatchEnd,matches.get(0).getToPos());
       assertSuggestions(badSentence,lang,expectedCorrections,rule,matches);
       if (matches.get(0).getSuggestedReplacements().size() > 0) {
-        final int fromPos=matches.get(0).getFromPos();
-        final int toPos=matches.get(0).getToPos();
-        for (        final String replacement : matches.get(0).getSuggestedReplacements()) {
-          final String fixedSentence=badSentence.substring(0,fromPos) + replacement + badSentence.substring(toPos);
+        int fromPos=matches.get(0).getFromPos();
+        int toPos=matches.get(0).getToPos();
+        for (        String replacement : matches.get(0).getSuggestedReplacements()) {
+          String fixedSentence=badSentence.substring(0,fromPos) + replacement + badSentence.substring(toPos);
           matches=getMatches(rule,fixedSentence,languageTool);
           if (matches.size() > 0) {
             fail("Incorrect input:\n" + "  " + badSentence + "\nCorrected sentence:\n"+ "  "+ fixedSentence+ "\nBy Rule:\n"+ "  "+ rule.getFullId()+ "\nThe correction triggered an error itself:\n"+ "  "+ matches.get(0)+ "\n");

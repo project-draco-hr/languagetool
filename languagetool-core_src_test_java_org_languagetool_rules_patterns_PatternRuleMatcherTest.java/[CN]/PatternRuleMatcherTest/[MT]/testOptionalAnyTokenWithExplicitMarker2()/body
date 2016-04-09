@@ -1,16 +1,16 @@
 {
-  final PatternToken patternTokenA=makeElement("the");
+  PatternToken patternTokenA=makeElement("the");
   patternTokenA.setInsideMarker(true);
-  final PatternToken patternTokenB=makeElement(null);
+  PatternToken patternTokenB=makeElement(null);
   patternTokenB.setMinOccurrence(0);
   patternTokenB.setInsideMarker(true);
-  final PatternToken patternTokenC=makeElement("bike");
+  PatternToken patternTokenC=makeElement("bike");
   patternTokenC.setInsideMarker(false);
-  final PatternRuleMatcher matcher=getMatcher(patternTokenA,patternTokenB,patternTokenC);
-  final RuleMatch[] matches1=getMatches("the nice bike ZZZ",matcher);
+  PatternRuleMatcher matcher=getMatcher(patternTokenA,patternTokenB,patternTokenC);
+  RuleMatch[] matches1=getMatches("the nice bike ZZZ",matcher);
   assertThat(matches1.length,is(1));
   assertPosition(matches1[0],0,8);
-  final RuleMatch[] matches2=getMatches("the bike ZZZ",matcher);
+  RuleMatch[] matches2=getMatches("the bike ZZZ",matcher);
   assertThat(matches2.length,is(1));
   assertPosition(matches2[0],0,3);
 }

@@ -1,12 +1,12 @@
 {
-  final JLanguageTool langTool=new JLanguageTool(language);
-  final PatternToken patternToken=new PatternToken("Were",false,false,false);
-  final String message="Did you mean: <suggestion>where</suggestion> or <suggestion>we</suggestion>?";
-  final PatternRule rule=new PatternRule("MY_ID",language,Collections.singletonList(patternToken),"desc",message,"msg");
-  final RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("Were are in the process of ..."));
+  JLanguageTool langTool=new JLanguageTool(language);
+  PatternToken patternToken=new PatternToken("Were",false,false,false);
+  String message="Did you mean: <suggestion>where</suggestion> or <suggestion>we</suggestion>?";
+  PatternRule rule=new PatternRule("MY_ID",language,Collections.singletonList(patternToken),"desc",message,"msg");
+  RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("Were are in the process of ..."));
   assertEquals(1,matches.length);
-  final RuleMatch match=matches[0];
-  final List<String> replacements=match.getSuggestedReplacements();
+  RuleMatch match=matches[0];
+  List<String> replacements=match.getSuggestedReplacements();
   assertEquals(2,replacements.size());
   assertEquals("Where",replacements.get(0));
   assertEquals("We",replacements.get(1));

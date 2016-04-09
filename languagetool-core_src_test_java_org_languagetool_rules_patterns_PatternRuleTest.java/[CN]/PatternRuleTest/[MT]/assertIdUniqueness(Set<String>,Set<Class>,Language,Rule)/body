@@ -1,5 +1,5 @@
 {
-  final String ruleId=rule.getId();
+  String ruleId=rule.getId();
   Class relevantClass=rule instanceof AbstractPatternRule ? AbstractPatternRule.class : rule.getClass();
   if (ids.contains(ruleId) && !ruleClasses.contains(relevantClass)) {
     throw new RuntimeException("Rule id occurs more than once: '" + ruleId + "', language: "+ language);

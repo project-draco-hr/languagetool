@@ -1,5 +1,5 @@
 {
-  final PatternToken pToken=new PatternToken("",false,false,false);
+  PatternToken pToken=new PatternToken("",false,false,false);
   pToken.setPosToken(new PatternToken.PosToken(posString,true,false));
   return pToken;
 }

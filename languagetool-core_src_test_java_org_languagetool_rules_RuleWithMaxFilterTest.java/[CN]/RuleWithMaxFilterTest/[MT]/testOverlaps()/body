@@ -1,5 +1,5 @@
 {
-  final RuleWithMaxFilter filter=new RuleWithMaxFilter();
+  RuleWithMaxFilter filter=new RuleWithMaxFilter();
   assertTrue(filter.includes(makeRuleMatch(10,20),makeRuleMatch(10,20)));
   assertFalse(filter.includes(makeRuleMatch(10,20),makeRuleMatch(5,11)));
   assertFalse(filter.includes(makeRuleMatch(10,20),makeRuleMatch(11,21)));

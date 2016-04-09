@@ -1,10 +1,10 @@
 {
   return new Tagger(){
-    @Override public List<AnalyzedTokenReadings> tag(    final List<String> sentenceTokens){
-      final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
+    @Override public List<AnalyzedTokenReadings> tag(    List<String> sentenceTokens){
+      List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
       int pos=0;
       for (      String word : sentenceTokens) {
-        final List<AnalyzedToken> l=new ArrayList<>();
+        List<AnalyzedToken> l=new ArrayList<>();
 switch (word) {
 case "This":
           l.add(new AnalyzedToken(word,"DT",word));

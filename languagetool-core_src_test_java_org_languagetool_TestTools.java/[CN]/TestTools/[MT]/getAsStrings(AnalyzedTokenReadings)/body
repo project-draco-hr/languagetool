@@ -1,5 +1,5 @@
 {
-  final List<String> readings=new ArrayList<>();
+  List<String> readings=new ArrayList<>();
   for (  AnalyzedToken analyzedToken : tokenReadings) {
     readings.add(getAsString(analyzedToken));
   }

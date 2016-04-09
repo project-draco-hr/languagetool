@@ -1,5 +1,5 @@
 {
-  for (  final BitextPatternRule rule : rules) {
+  for (  BitextPatternRule rule : rules) {
     testBitextRule(rule,lang,languageTool);
   }
 }

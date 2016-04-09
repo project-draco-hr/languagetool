@@ -1,10 +1,10 @@
 {
   if (matches.get(0).getSuggestedReplacements().size() > 0) {
-    final int fromPos=matches.get(0).getFromPos();
-    final int toPos=matches.get(0).getToPos();
-    for (    final String replacement : matches.get(0).getSuggestedReplacements()) {
-      final String fixedSentence=badSentence.substring(0,fromPos) + replacement + badSentence.substring(toPos);
-      final List<RuleMatch> tempMatches=getMatches(rule,fixedSentence,languageTool);
+    int fromPos=matches.get(0).getFromPos();
+    int toPos=matches.get(0).getToPos();
+    for (    String replacement : matches.get(0).getSuggestedReplacements()) {
+      String fixedSentence=badSentence.substring(0,fromPos) + replacement + badSentence.substring(toPos);
+      List<RuleMatch> tempMatches=getMatches(rule,fixedSentence,languageTool);
       assertEquals("Corrected sentence for rule " + rule.getFullId() + " triggered error: "+ fixedSentence,0,tempMatches.size());
     }
   }

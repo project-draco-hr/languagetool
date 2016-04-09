@@ -1,5 +1,5 @@
 {
-  final Match match=getMatch(null,null,Match.IncludeRange.FOLLOWING);
-  final MatchState state=match.createState(synthesizer,getAnalyzedTokenReadings("inflectedform11 inflectedform2 inflectedform122 inflectedform122"),1,3);
+  Match match=getMatch(null,null,Match.IncludeRange.FOLLOWING);
+  MatchState state=match.createState(synthesizer,getAnalyzedTokenReadings("inflectedform11 inflectedform2 inflectedform122 inflectedform122"),1,3);
   assertEquals("[inflectedform2 inflectedform122]",Arrays.toString(state.toFinalString(null)));
 }

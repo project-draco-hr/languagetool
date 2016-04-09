@@ -1,8 +1,8 @@
 {
-  final PatternToken anyPatternToken=makeElement(null);
+  PatternToken anyPatternToken=makeElement(null);
   anyPatternToken.setMinOccurrence(0);
   anyPatternToken.setMaxOccurrence(2);
-  final PatternRuleMatcher matcher=getMatcher(makeElement("a"),anyPatternToken,makeElement("c"));
+  PatternRuleMatcher matcher=getMatcher(makeElement("a"),anyPatternToken,makeElement("c"));
   assertNoMatch("a b",matcher);
   assertNoMatch("b c",matcher);
   assertNoMatch("c",matcher);

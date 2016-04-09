@@ -3,16 +3,16 @@
     return;
   }
   int i=0;
-  for (  final PatternToken pToken : patternTokens) {
+  for (  PatternToken pToken : patternTokens) {
     i++;
     if (pToken.isReferenceElement()) {
       continue;
     }
     warnIfElementNotKosher(pToken.getString(),pToken.isRegularExpression(),pToken.isCaseSensitive(),pToken.getNegation(),pToken.isInflected(),false,lang,ruleId + "[" + ruleSubId+ "]",i);
     warnIfElementNotKosher(pToken.getPOStag() == null ? "" : pToken.getPOStag(),pToken.isPOStagRegularExpression(),pToken.isCaseSensitive(),pToken.getPOSNegation(),false,true,lang,ruleId + "[" + ruleSubId+ "] (POS tag)",i);
-    final List<PatternToken> exceptionPatternTokens=new ArrayList<>();
+    List<PatternToken> exceptionPatternTokens=new ArrayList<>();
     if (pToken.getExceptionList() != null) {
-      for (      final PatternToken exception : pToken.getExceptionList()) {
+      for (      PatternToken exception : pToken.getExceptionList()) {
         if (exception.hasNextException() && pToken.getSkipNext() == 0) {
           System.err.println("The " + lang + " rule: "+ ruleId+ "["+ ruleSubId+ "]"+ " (exception in token ["+ i+ "])"+ " has no skip=\"...\" and yet contains scope=\"next\""+ " so the exception never applies."+ " Did you forget skip=\"...\"?");
         }
@@ -20,8 +20,8 @@
           if (exception.isRegularExpression()) {
             if (pToken.isRegularExpression()) {
               if (exception.getString().indexOf('|') >= 0) {
-                final String[] alt=exception.getString().split("\\|");
-                for (                final String part : alt) {
+                String[] alt=exception.getString().split("\\|");
+                for (                String part : alt) {
                   if (exception.getString().indexOf('(') >= 0) {
                     break;
                   }
@@ -52,7 +52,7 @@
           warnIfElementNotKosher(exception.getString(),exception.isRegularExpression(),exception.isCaseSensitive(),exception.getNegation(),exception.isInflected(),false,lang,ruleId + "[" + ruleSubId+ "] (exception in token ["+ i+ "])",i);
         }
         warnIfElementNotKosher(exception.getPOStag() == null ? "" : exception.getPOStag(),exception.isPOStagRegularExpression(),exception.isCaseSensitive(),exception.getPOSNegation(),false,true,lang,ruleId + "[" + ruleSubId+ "] (exception in POS tag of token ["+ i+ "])",i);
-        for (        final PatternToken otherException : exceptionPatternTokens) {
+        for (        PatternToken otherException : exceptionPatternTokens) {
           if (equalException(exception,otherException)) {
             System.err.println("The " + lang + " rule: "+ ruleId+ "["+ ruleSubId+ "]"+ " in token ["+ i+ "]"+ " contains duplicate exceptions with"+ " string=["+ exception.getString()+ "]"+ " POS tag=["+ exception.getPOStag()+ "]"+ " negate=["+ exception.getNegation()+ "]"+ " POS negate=["+ exception.getPOSNegation()+ "]");
             break;

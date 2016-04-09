@@ -1,5 +1,5 @@
 {
-  final List<String> goodSentences=rule.getCorrectExamples();
+  List<String> goodSentences=rule.getCorrectExamples();
   List<AbstractPatternRule> rules=allRulesLanguageTool.getPatternRulesByIdAndSubId(rule.getId(),rule.getSubId());
   for (  String goodSentence : goodSentences) {
     goodSentence=goodSentence.replaceAll("[\\n\\t]+","");

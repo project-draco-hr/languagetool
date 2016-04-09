@@ -1,8 +1,8 @@
 {
-  final StringBuilder inputString=new StringBuilder();
-  final List<String> input=new ArrayList<>();
+  StringBuilder inputString=new StringBuilder();
+  List<String> input=new ArrayList<>();
   Collections.addAll(input,sentences);
-  for (  final String s : input) {
+  for (  String s : input) {
     inputString.append(s);
   }
   assertEquals(input,sTokenizer.tokenize(inputString.toString()));

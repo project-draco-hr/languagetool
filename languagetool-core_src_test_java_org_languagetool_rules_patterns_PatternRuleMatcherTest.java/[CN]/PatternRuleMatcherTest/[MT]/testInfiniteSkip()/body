@@ -1,7 +1,7 @@
 {
-  final PatternToken patternTokenA=makeElement("a");
+  PatternToken patternTokenA=makeElement("a");
   patternTokenA.setSkipNext(-1);
-  final PatternRuleMatcher matcher=getMatcher(patternTokenA,makeElement("b"));
+  PatternRuleMatcher matcher=getMatcher(patternTokenA,makeElement("b"));
   assertCompleteMatch("a b",matcher);
   assertCompleteMatch("a x b",matcher);
   assertCompleteMatch("a x x b",matcher);

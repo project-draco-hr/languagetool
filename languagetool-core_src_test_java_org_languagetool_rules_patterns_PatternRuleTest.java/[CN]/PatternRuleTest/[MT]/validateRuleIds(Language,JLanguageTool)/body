@@ -1,8 +1,8 @@
 {
-  final List<Rule> allRules=languageTool.getAllRules();
-  final Set<String> ids=new HashSet<>();
-  final Set<Class> ruleClasses=new HashSet<>();
-  final Set<String> categoryIds=new HashSet<>();
+  List<Rule> allRules=languageTool.getAllRules();
+  Set<String> ids=new HashSet<>();
+  Set<Class> ruleClasses=new HashSet<>();
+  Set<String> categoryIds=new HashSet<>();
   for (  Rule rule : allRules) {
     assertIdUniqueness(ids,ruleClasses,lang,rule);
     if (rule.getId().equalsIgnoreCase("ID")) {

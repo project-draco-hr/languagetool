@@ -1,5 +1,5 @@
 {
-  final PatternRuleMatcher matcher=new PatternRuleMatcher(getPatternRule("my test"),false);
+  PatternRuleMatcher matcher=new PatternRuleMatcher(getPatternRule("my test"),false);
   assertPartialMatch("This is my test.",matcher);
   assertNoMatch("This is no test.",matcher);
 }

@@ -10,8 +10,8 @@
       return false;
     }
   }
-  final String posTag1=exception1.getPOStag() == null ? "" : exception1.getPOStag();
-  final String posTag2=exception2.getPOStag() == null ? "" : exception2.getPOStag();
+  String posTag1=exception1.getPOStag() == null ? "" : exception1.getPOStag();
+  String posTag2=exception2.getPOStag() == null ? "" : exception2.getPOStag();
   if (!posTag1.isEmpty() && !posTag2.isEmpty()) {
     if (!posTag1.equals(posTag2)) {
       return false;

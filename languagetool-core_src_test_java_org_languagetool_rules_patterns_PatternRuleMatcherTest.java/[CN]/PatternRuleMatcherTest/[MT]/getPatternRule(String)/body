@@ -1,5 +1,5 @@
 {
-  final String[] parts=pattern.split(" ");
+  String[] parts=pattern.split(" ");
   List<PatternToken> patternTokens=new ArrayList<>();
   for (  String part : parts) {
     patternTokens.add(new PatternToken(part,false,false,false));

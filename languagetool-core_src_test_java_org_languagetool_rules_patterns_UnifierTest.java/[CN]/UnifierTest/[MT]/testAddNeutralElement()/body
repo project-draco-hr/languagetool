@@ -1,12 +1,12 @@
 {
-  final UnifierConfiguration unifierConfig=new UnifierConfiguration();
+  UnifierConfiguration unifierConfig=new UnifierConfiguration();
   unifierConfig.setEquivalence("number","singular",preparePOSElement(".*[\\.:]sg:.*"));
   unifierConfig.setEquivalence("number","plural",preparePOSElement(".*[\\.:]pl:.*"));
   unifierConfig.setEquivalence("gender","feminine",preparePOSElement(".*[\\.:]f([\\.:].*)?"));
   unifierConfig.setEquivalence("gender","masculine",preparePOSElement(".*[\\.:]m([\\.:].*)?"));
   unifierConfig.setEquivalence("gender","neutral",preparePOSElement(".*[\\.:]n([\\.:].*)?"));
-  final Unifier uni=unifierConfig.createUnifier();
-  final Map<String,List<String>> equiv=new HashMap<>();
+  Unifier uni=unifierConfig.createUnifier();
+  Map<String,List<String>> equiv=new HashMap<>();
   equiv.put("number",null);
   equiv.put("gender",null);
   AnalyzedToken sing1a=new AnalyzedToken("osobiste","adj:pl:nom.acc.voc:f.n.m2.m3:pos:aff","osobisty");
