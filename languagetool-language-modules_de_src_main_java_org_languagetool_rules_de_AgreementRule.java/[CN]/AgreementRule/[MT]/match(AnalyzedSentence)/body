@@ -1,19 +1,19 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=getSentenceWithImmunization(sentence).getTokensWithoutWhitespace();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=getSentenceWithImmunization(sentence).getTokensWithoutWhitespace();
   for (int i=0; i < tokens.length; i++) {
-    final String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
+    String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
     if (posToken != null && posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
       continue;
     }
     if (tokens[i].isImmunized()) {
       continue;
     }
-    final AnalyzedTokenReadings tokenReadings=tokens[i];
-    final boolean relevantPronoun=isRelevantPronoun(tokens,i);
+    AnalyzedTokenReadings tokenReadings=tokens[i];
+    boolean relevantPronoun=isRelevantPronoun(tokens,i);
     boolean ignore=couldBeRelativeClause(tokens,i);
     if (i > 0) {
-      final String prevToken=tokens[i - 1].getToken().toLowerCase();
+      String prevToken=tokens[i - 1].getToken().toLowerCase();
       if ((tokens[i].getToken().equals("eine") || tokens[i].getToken().equals("einen")) && (prevToken.equals("der") || prevToken.equals("die") || prevToken.equals("das")|| prevToken.equals("des")|| prevToken.equals("dieses"))) {
         ignore=true;
       }
@@ -42,14 +42,14 @@
           if (i >= 2 && GermanHelper.hasReadingOfType(tokens[i - 2],POSType.ADJEKTIV) && "als".equals(tokens[i - 1].getToken()) && "das".equals(tokens[i].getToken())) {
             continue;
           }
-          final RuleMatch ruleMatch=checkDetAdjNounAgreement(tokens[i],nextToken,tokens[i + 2]);
+          RuleMatch ruleMatch=checkDetAdjNounAgreement(tokens[i],nextToken,tokens[i + 2]);
           if (ruleMatch != null) {
             ruleMatches.add(ruleMatch);
           }
         }
       }
  else       if (GermanHelper.hasReadingOfType(nextToken,POSType.NOMEN) && !"Herr".equals(nextToken.getToken())) {
-        final RuleMatch ruleMatch=checkDetNounAgreement(tokens[i],tokens[i + 1]);
+        RuleMatch ruleMatch=checkDetNounAgreement(tokens[i],tokens[i + 1]);
         if (ruleMatch != null) {
           ruleMatches.add(ruleMatch);
         }

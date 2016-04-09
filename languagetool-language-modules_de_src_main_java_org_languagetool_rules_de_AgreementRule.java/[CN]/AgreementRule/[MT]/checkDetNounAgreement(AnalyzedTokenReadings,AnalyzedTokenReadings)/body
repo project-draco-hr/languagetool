@@ -5,24 +5,24 @@
   if (token2.isImmunized()) {
     return null;
   }
-  final Set<String> set1=getAgreementCategories(token1);
+  Set<String> set1=getAgreementCategories(token1);
   if (set1 == null) {
     return null;
   }
-  final Set<String> set2=getAgreementCategories(token2);
+  Set<String> set2=getAgreementCategories(token2);
   if (set2 == null) {
     return null;
   }
   set1.retainAll(set2);
   RuleMatch ruleMatch=null;
   if (set1.size() == 0 && !isException(token1,token2)) {
-    final List<String> errorCategories=getCategoriesCausingError(token1,token2);
-    final String errorDetails=errorCategories.size() > 0 ? String.join(" und ",errorCategories) : "Kasus, Genus oder Numerus";
-    final String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Artikel und Nomen " + "bez??glich " + errorDetails + ".";
-    final String shortMsg="M??glicherweise keine ??bereinstimmung bez??glich " + errorDetails;
+    List<String> errorCategories=getCategoriesCausingError(token1,token2);
+    String errorDetails=errorCategories.size() > 0 ? String.join(" und ",errorCategories) : "Kasus, Genus oder Numerus";
+    String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Artikel und Nomen " + "bez??glich " + errorDetails + ".";
+    String shortMsg="M??glicherweise keine ??bereinstimmung bez??glich " + errorDetails;
     ruleMatch=new RuleMatch(this,token1.getStartPos(),token2.getEndPos(),msg,shortMsg);
-    final AgreementSuggestor suggestor=new AgreementSuggestor(language.getSynthesizer(),token1,token2);
-    final List<String> suggestions=suggestor.getSuggestions();
+    AgreementSuggestor suggestor=new AgreementSuggestor(language.getSynthesizer(),token1,token2);
+    List<String> suggestions=suggestor.getSuggestions();
     ruleMatch.setSuggestedReplacements(suggestions);
   }
   return ruleMatch;

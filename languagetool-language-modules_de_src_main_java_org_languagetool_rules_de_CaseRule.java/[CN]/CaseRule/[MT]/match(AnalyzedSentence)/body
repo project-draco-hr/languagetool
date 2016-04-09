@@ -1,9 +1,9 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=getSentenceWithImmunization(sentence).getTokensWithoutWhitespace();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=getSentenceWithImmunization(sentence).getTokensWithoutWhitespace();
   boolean prevTokenIsDas=false;
   for (int i=0; i < tokens.length; i++) {
-    final String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
+    String posToken=tokens[i].getAnalyzedToken(0).getPOSTag();
     if (posToken != null && posToken.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
       continue;
     }
@@ -16,8 +16,8 @@
     if (i > 0 && isSalutation(tokens[i - 1].getToken())) {
       continue;
     }
-    final AnalyzedTokenReadings analyzedToken=tokens[i];
-    final String token=analyzedToken.getToken();
+    AnalyzedTokenReadings analyzedToken=tokens[i];
+    String token=analyzedToken.getToken();
     markLowerCaseNounErrors(ruleMatches,tokens,i,analyzedToken);
     boolean isBaseform=analyzedToken.getReadingsLength() >= 1 && analyzedToken.hasLemma(token);
     if ((analyzedToken.getAnalyzedToken(0).getPOSTag() == null || GermanHelper.hasReadingOfType(analyzedToken,GermanToken.POSType.VERB)) && isBaseform) {

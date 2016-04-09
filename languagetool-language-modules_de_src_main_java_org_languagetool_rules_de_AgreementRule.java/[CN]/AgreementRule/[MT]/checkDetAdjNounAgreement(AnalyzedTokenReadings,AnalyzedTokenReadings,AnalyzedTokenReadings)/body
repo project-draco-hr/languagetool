@@ -1,9 +1,9 @@
 {
-  final Set<String> set=retainCommonCategories(token1,token2,token3);
+  Set<String> set=retainCommonCategories(token1,token2,token3);
   RuleMatch ruleMatch=null;
   if (set == null || set.size() == 0) {
-    final String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Artikel, Adjektiv und " + "Nomen bez??glich Kasus, Numerus oder Genus. Beispiel: 'mein kleiner Haus' " + "statt 'mein kleines Haus'";
-    final String shortMsg="M??glicherweise keine ??bereinstimmung bez??glich Kasus, Numerus oder Genus";
+    String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Artikel, Adjektiv und " + "Nomen bez??glich Kasus, Numerus oder Genus. Beispiel: 'mein kleiner Haus' " + "statt 'mein kleines Haus'";
+    String shortMsg="M??glicherweise keine ??bereinstimmung bez??glich Kasus, Numerus oder Genus";
     ruleMatch=new RuleMatch(this,token1.getStartPos(),token3.getEndPos(),msg,shortMsg);
   }
   return ruleMatch;

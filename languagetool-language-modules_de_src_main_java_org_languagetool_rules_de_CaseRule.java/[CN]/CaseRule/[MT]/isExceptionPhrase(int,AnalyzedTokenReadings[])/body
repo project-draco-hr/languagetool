@@ -1,9 +1,9 @@
 {
   for (  String phrase : myExceptionPhrases) {
-    final String[] parts=phrase.split(" ");
+    String[] parts=phrase.split(" ");
     for (int j=0; j < parts.length; j++) {
       if (tokens[i].getToken().matches(parts[j])) {
-        final int startIndex=i - j;
+        int startIndex=i - j;
         if (compareLists(tokens,startIndex,startIndex + parts.length - 1,parts)) {
           return true;
         }

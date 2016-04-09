@@ -1,18 +1,18 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
   String prevToken=null;
   for (int i=0; i < tokens.length; i++) {
-    final String token=tokens[i].getToken();
+    String token=tokens[i].getToken();
     if (tokens[i].isWhitespace()) {
       continue;
     }
     if (prevToken != null && !prevToken.equals("-") && !prevToken.contains("--") && !prevToken.contains("???-") && prevToken.endsWith("-")) {
-      final char firstChar=token.charAt(0);
+      char firstChar=token.charAt(0);
       if (Character.isUpperCase(firstChar)) {
-        final String msg="M??glicherweise fehlt ein 'und' oder ein Komma, oder es wurde nach dem Wort " + "ein ??berfl??ssiges Leerzeichen eingef??gt. Eventuell haben Sie auch versehentlich einen Bindestrich statt eines Punktes eingef??gt.";
-        final String shortMsg="Fehlendes 'und' oder Komma oder ??berfl??ssiges Leerzeichen?";
-        final RuleMatch ruleMatch=new RuleMatch(this,tokens[i - 1].getStartPos(),tokens[i - 1].getStartPos() + prevToken.length() + 1,msg,shortMsg);
+        String msg="M??glicherweise fehlt ein 'und' oder ein Komma, oder es wurde nach dem Wort " + "ein ??berfl??ssiges Leerzeichen eingef??gt. Eventuell haben Sie auch versehentlich einen Bindestrich statt eines Punktes eingef??gt.";
+        String shortMsg="Fehlendes 'und' oder Komma oder ??berfl??ssiges Leerzeichen?";
+        RuleMatch ruleMatch=new RuleMatch(this,tokens[i - 1].getStartPos(),tokens[i - 1].getStartPos() + prevToken.length() + 1,msg,shortMsg);
         String prevTokenStr=tokens[i - 1].getToken();
         ruleMatch.setSuggestedReplacements(Arrays.asList(prevTokenStr,prevTokenStr + ", "));
         ruleMatches.add(ruleMatch);
