@@ -6,9 +6,9 @@
  else   if (ADD_IND_DETERMINER.equals(posTag)) {
     return new String[]{aOrAn};
   }
-  final IStemmer synthesizer=createStemmer();
-  final List<WordData> wordData=synthesizer.lookup(token.getLemma() + "|" + posTag);
-  final List<String> wordForms=new ArrayList<>();
+  IStemmer synthesizer=createStemmer();
+  List<WordData> wordData=synthesizer.lookup(token.getLemma() + "|" + posTag);
+  List<String> wordForms=new ArrayList<>();
   for (  WordData wd : wordData) {
     wordForms.add(wd.getStem().toString());
   }

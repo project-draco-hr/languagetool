@@ -12,10 +12,10 @@
       det="the ";
     }
     initPossibleTags();
-    final Pattern p=Pattern.compile(myPosTag);
-    final List<String> results=new ArrayList<>();
-    for (    final String tag : possibleTags) {
-      final Matcher m=p.matcher(tag);
+    Pattern p=Pattern.compile(myPosTag);
+    List<String> results=new ArrayList<>();
+    for (    String tag : possibleTags) {
+      Matcher m=p.matcher(tag);
       if (m.matches()) {
         lookup(token.getLemma(),tag,results,det);
       }

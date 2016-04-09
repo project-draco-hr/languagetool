@@ -9,12 +9,12 @@
       }
     }
   }
-  final boolean superException=!super.isNoException(tokenStr,tokens,i,j,precSpace,follSpace);
+  boolean superException=!super.isNoException(tokenStr,tokens,i,j,precSpace,follSpace);
   if (superException) {
     return false;
   }
   if (!precSpace && follSpace || tokens[i].isSentenceEnd()) {
-    final AnalyzedTokenReadings prevToken=tokens[i - 1];
+    AnalyzedTokenReadings prevToken=tokens[i - 1];
     if ("\"".equals(tokenStr)) {
       if (!symbolStack.empty() && "\"".equals(symbolStack.peek().getSymbol())) {
         return true;
