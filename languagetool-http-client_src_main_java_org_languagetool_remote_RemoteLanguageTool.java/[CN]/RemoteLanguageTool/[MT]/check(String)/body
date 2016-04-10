@@ -9,7 +9,7 @@
      }
  else {
       try (InputStream inputStream=conn.getErrorStream()){
-        String error=StringTools.readStream(inputStream,"utf-8");
+        String error=readStream(inputStream,"utf-8");
         throw new RuntimeException("Got error: " + error + " - HTTP response code "+ conn.getResponseCode());
       }
      }

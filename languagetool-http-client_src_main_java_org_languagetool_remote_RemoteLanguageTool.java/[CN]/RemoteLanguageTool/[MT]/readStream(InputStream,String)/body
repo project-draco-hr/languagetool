@@ -1,0 +1,10 @@
+{
+  StringBuilder sb=new StringBuilder();
+  try (InputStreamReader isr=new InputStreamReader(stream,encoding);BufferedReader br=new BufferedReader(isr)){
+    String line;
+    while ((line=br.readLine()) != null) {
+      sb.append(line).append('\n');
+    }
+  }
+   return sb.toString();
+}
