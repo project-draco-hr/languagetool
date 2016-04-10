@@ -1,6 +1,6 @@
 {
-  final Matcher matcher1=WIKIPEDIA_URL_REGEX.matcher(url);
-  final Matcher matcher2=SECURE_WIKIPEDIA_URL_REGEX.matcher(url);
+  Matcher matcher1=WIKIPEDIA_URL_REGEX.matcher(url);
+  Matcher matcher2=SECURE_WIKIPEDIA_URL_REGEX.matcher(url);
   if (matcher1.matches()) {
     return matcher1;
   }

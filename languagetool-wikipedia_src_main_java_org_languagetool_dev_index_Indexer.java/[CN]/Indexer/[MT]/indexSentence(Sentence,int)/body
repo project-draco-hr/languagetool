@@ -1,5 +1,5 @@
 {
-  final BufferedReader reader=new BufferedReader(new StringReader(sentence.getText()));
+  BufferedReader reader=new BufferedReader(new StringReader(sentence.getText()));
   String line;
   while ((line=reader.readLine()) != null) {
     add(line,sentence.getSource(),sentence.getTitle(),docCount);

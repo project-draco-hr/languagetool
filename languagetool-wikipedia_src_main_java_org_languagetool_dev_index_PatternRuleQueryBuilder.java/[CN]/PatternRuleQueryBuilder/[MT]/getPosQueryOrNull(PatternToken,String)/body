@@ -2,8 +2,8 @@
   if (pos == null || pos.isEmpty()) {
     return null;
   }
-  final Query posQuery;
-  final Term posQueryTerm;
+  Query posQuery;
+  Term posQueryTerm;
   if (patternToken.getPOSNegation() || patternToken.getMinOccurrence() == 0) {
     return null;
   }

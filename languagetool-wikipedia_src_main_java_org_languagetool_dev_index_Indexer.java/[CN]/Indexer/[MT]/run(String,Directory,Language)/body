@@ -1,5 +1,5 @@
 {
-  final BufferedReader br=new BufferedReader(new StringReader(content));
+  BufferedReader br=new BufferedReader(new StringReader(content));
   try (Indexer indexer=new Indexer(dir,language)){
     indexer.indexText(br);
   }

@@ -1,25 +1,25 @@
 {
-  final long startTime=System.currentTimeMillis();
-  final Language language=new English();
-  final JLanguageTool lt=new JLanguageTool(language);
+  long startTime=System.currentTimeMillis();
+  Language language=new English();
+  JLanguageTool lt=new JLanguageTool(language);
   System.out.println("Creating index for " + language + "...");
-  final int ruleCount=createIndex(lt);
+  int ruleCount=createIndex(lt);
   System.out.println("Index created with " + ruleCount + " rules");
   int ruleCounter=0;
   int ruleProblems=0;
   int exceptionCount=0;
-  final List<Rule> rules=lt.getAllActiveRules();
+  List<Rule> rules=lt.getAllActiveRules();
   for (  Rule rule : rules) {
     if (rule instanceof PatternRule && !rule.isDefaultOff()) {
-      final PatternRule patternRule=(PatternRule)rule;
+      PatternRule patternRule=(PatternRule)rule;
       try {
         ruleCounter++;
-        final SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(patternRule,language);
-        final List<MatchingSentence> matchingSentences=searcherResult.getMatchingSentences();
+        SearcherResult searcherResult=errorSearcher.findRuleMatchesOnIndex(patternRule,language);
+        List<MatchingSentence> matchingSentences=searcherResult.getMatchingSentences();
         boolean foundExpectedMatch=false;
         for (        MatchingSentence matchingSentence : matchingSentences) {
-          final List<RuleMatch> ruleMatches=matchingSentence.getRuleMatches();
-          final List<String> ruleMatchIds=getRuleMatchIds(ruleMatches);
+          List<RuleMatch> ruleMatches=matchingSentence.getRuleMatches();
+          List<String> ruleMatchIds=getRuleMatchIds(ruleMatches);
           if (ruleMatchIds.contains(patternRule.getFullId())) {
             foundExpectedMatch=true;
             break;

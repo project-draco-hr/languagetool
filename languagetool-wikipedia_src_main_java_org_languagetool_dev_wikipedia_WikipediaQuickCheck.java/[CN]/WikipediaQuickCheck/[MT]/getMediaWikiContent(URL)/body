@@ -1,6 +1,6 @@
 {
-  final Language lang=getLanguage(wikipediaUrl);
-  final String pageTitle=getPageTitle(wikipediaUrl);
-  final String apiUrl="https://" + lang.getShortName() + ".wikipedia.org/w/api.php?titles="+ URLEncoder.encode(pageTitle,"utf-8")+ "&action=query&prop=revisions&rvprop=content|timestamp&format=xml";
+  Language lang=getLanguage(wikipediaUrl);
+  String pageTitle=getPageTitle(wikipediaUrl);
+  String apiUrl="https://" + lang.getShortName() + ".wikipedia.org/w/api.php?titles="+ URLEncoder.encode(pageTitle,"utf-8")+ "&action=query&prop=revisions&rvprop=content|timestamp&format=xml";
   return getContent(new URL(apiUrl));
 }

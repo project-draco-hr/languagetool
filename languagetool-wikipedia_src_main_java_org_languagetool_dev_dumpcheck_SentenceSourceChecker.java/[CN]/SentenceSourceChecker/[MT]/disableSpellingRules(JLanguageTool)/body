@@ -1,5 +1,5 @@
 {
-  final List<Rule> allActiveRules=languageTool.getAllActiveRules();
+  List<Rule> allActiveRules=languageTool.getAllActiveRules();
   for (  Rule rule : allActiveRules) {
     if (rule.isDictionaryBasedSpellingRule()) {
       languageTool.disableRule(rule.getId());

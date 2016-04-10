@@ -1,6 +1,6 @@
 {
   if (posStack.size() > 0) {
-    final String pop=posStack.pop();
+    String pop=posStack.pop();
     restoreState(current);
     termAtt.append(pop);
     posIncrAtt.setPositionIncrement(0);
@@ -18,8 +18,8 @@
         sentenceStr=collectedInput.toString();
         collectedInput.setLength(0);
       }
-      final AnalyzedSentence sentence=languageTool.getAnalyzedSentence(sentenceStr);
-      final List<AnalyzedTokenReadings> tokenBuffer=Arrays.asList(sentence.getTokens());
+      AnalyzedSentence sentence=languageTool.getAnalyzedSentence(sentenceStr);
+      List<AnalyzedTokenReadings> tokenBuffer=Arrays.asList(sentence.getTokens());
       tokenIter=tokenBuffer.iterator();
       if (!tokenIter.hasNext()) {
         return false;
@@ -30,7 +30,7 @@
     }
   }
   clearAttributes();
-  final AnalyzedTokenReadings tr=tokenIter.next();
+  AnalyzedTokenReadings tr=tokenIter.next();
   if (tr.isSentenceStart()) {
     typeAtt.setType("pos");
     String posTag=tr.getAnalyzedToken(0).getPOSTag();

@@ -1,7 +1,7 @@
 {
-  final MultiThreadedJLanguageTool langTool=getLanguageTool(lang);
+  MultiThreadedJLanguageTool langTool=getLanguageTool(lang);
   try {
-    final List<RuleMatch> ruleMatches=langTool.check(plainText);
+    List<RuleMatch> ruleMatches=langTool.check(plainText);
     return new WikipediaQuickCheckResult(plainText,ruleMatches,lang.getShortName());
   }
   finally {

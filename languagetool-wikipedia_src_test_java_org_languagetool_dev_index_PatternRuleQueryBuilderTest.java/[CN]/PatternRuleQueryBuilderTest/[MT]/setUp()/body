@@ -2,8 +2,8 @@
   super.setUp();
   language=new English();
   directory=new RAMDirectory();
-  final Analyzer analyzer=Indexer.getAnalyzer(language);
-  final IndexWriterConfig config=Indexer.getIndexWriterConfig(analyzer);
+  Analyzer analyzer=Indexer.getAnalyzer(language);
+  IndexWriterConfig config=Indexer.getIndexWriterConfig(analyzer);
   try (IndexWriter writer=new IndexWriter(directory,config)){
     addDocument(writer,"How do you thin about this wonderful idea?");
     addDocument(writer,"The are several grammar checkers for English, E.G. LanguageTool 123.");

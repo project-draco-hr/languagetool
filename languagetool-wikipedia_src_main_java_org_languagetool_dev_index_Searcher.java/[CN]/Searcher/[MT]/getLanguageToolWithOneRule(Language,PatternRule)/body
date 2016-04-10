@@ -1,5 +1,5 @@
 {
-  final JLanguageTool langTool=new JLanguageTool(lang);
+  JLanguageTool langTool=new JLanguageTool(lang);
   for (  Rule rule : langTool.getAllActiveRules()) {
     if (!rule.getId().equals(patternRule.getId())) {
       langTool.disableRule(rule.getId());

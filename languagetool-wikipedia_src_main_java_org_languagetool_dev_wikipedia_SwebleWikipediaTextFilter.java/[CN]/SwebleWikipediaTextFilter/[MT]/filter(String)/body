@@ -1,9 +1,9 @@
 {
   try {
-    final CompiledPage compiledPage=compiler.postprocess(pageId,wikiText,null);
-    final TextConverter textConverter=new TextConverter(config,WRAP_COL);
+    CompiledPage compiledPage=compiler.postprocess(pageId,wikiText,null);
+    TextConverter textConverter=new TextConverter(config,WRAP_COL);
     textConverter.enableMapping(enableMapping);
-    final String plainText=(String)textConverter.go(compiledPage.getPage());
+    String plainText=(String)textConverter.go(compiledPage.getPage());
     if (enableMapping) {
       return new PlainTextMapping(plainText,textConverter.getMapping());
     }

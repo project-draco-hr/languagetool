@@ -1,5 +1,5 @@
 {
-  final WikipediaQuickCheck check=new WikipediaQuickCheck();
+  WikipediaQuickCheck check=new WikipediaQuickCheck();
   assertEquals("foo  bar",check.removeWikipediaLinks("foo [[pt:Some Article]] bar"));
   assertEquals("foo [[some link]] bar",check.removeWikipediaLinks("foo [[some link]] bar"));
   assertEquals("foo [[Some Link]] bar ",check.removeWikipediaLinks("foo [[Some Link]] bar [[pt:Some Article]]"));

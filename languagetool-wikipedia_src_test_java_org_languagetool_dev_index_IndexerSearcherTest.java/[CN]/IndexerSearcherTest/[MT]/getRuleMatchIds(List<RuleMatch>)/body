@@ -1,8 +1,8 @@
 {
-  final List<String> ids=new ArrayList<>();
+  List<String> ids=new ArrayList<>();
   for (  RuleMatch ruleMatch : ruleMatches) {
     if (ruleMatch.getRule() instanceof PatternRule) {
-      final PatternRule patternRule=(PatternRule)ruleMatch.getRule();
+      PatternRule patternRule=(PatternRule)ruleMatch.getRule();
       ids.add(patternRule.getFullId());
     }
   }

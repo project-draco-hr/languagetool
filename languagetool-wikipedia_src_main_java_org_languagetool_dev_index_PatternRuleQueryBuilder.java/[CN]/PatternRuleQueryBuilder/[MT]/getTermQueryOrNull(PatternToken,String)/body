@@ -2,22 +2,22 @@
   if (termStr == null || termStr.isEmpty()) {
     return null;
   }
-  final Query termQuery;
-  final Term termQueryTerm=getTermQueryTerm(patternToken,termStr);
+  Query termQuery;
+  Term termQueryTerm=getTermQueryTerm(patternToken,termStr);
   if (patternToken.getNegation() || patternToken.getMinOccurrence() == 0) {
     return null;
   }
  else   if (patternToken.isInflected() && patternToken.isRegularExpression()) {
     Term lemmaQueryTerm=getQueryTerm(patternToken,LEMMA_PREFIX + "(",simplifyRegex(termStr),")");
-    final Query regexpQuery=getRegexQuery(lemmaQueryTerm,termStr,patternToken);
+    Query regexpQuery=getRegexQuery(lemmaQueryTerm,termStr,patternToken);
     return new BooleanClause(regexpQuery,BooleanClause.Occur.MUST);
   }
  else   if (patternToken.isInflected() && !patternToken.isRegularExpression()) {
-    final Synthesizer synthesizer=language.getSynthesizer();
+    Synthesizer synthesizer=language.getSynthesizer();
     if (synthesizer != null) {
       try {
-        final String[] synthesized=synthesizer.synthesize(new AnalyzedToken(termStr,null,termStr),".*",true);
-        final Query query;
+        String[] synthesized=synthesizer.synthesize(new AnalyzedToken(termStr,null,termStr),".*",true);
+        Query query;
         if (synthesized.length == 0) {
           query=new TermQuery(termQueryTerm);
         }

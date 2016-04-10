@@ -1,14 +1,14 @@
 {
   try {
-    final java.sql.Date nowDate=new java.sql.Date(new Date().getTime());
+    java.sql.Date nowDate=new java.sql.Date(new Date().getTime());
     for (    RuleMatch match : ruleMatches) {
-      final String smallContext=smallContextTools.getContext(match.getFromPos(),match.getToPos(),sentence.getText());
+      String smallContext=smallContextTools.getContext(match.getFromPos(),match.getToPos(),sentence.getText());
       insertSt.setString(1,language.getShortName());
-      final Rule rule=match.getRule();
+      Rule rule=match.getRule();
       insertSt.setString(2,rule.getId());
       insertSt.setString(3,rule.getCategory().getName());
       if (rule instanceof AbstractPatternRule) {
-        final AbstractPatternRule patternRule=(AbstractPatternRule)rule;
+        AbstractPatternRule patternRule=(AbstractPatternRule)rule;
         insertSt.setString(4,patternRule.getSubId());
       }
  else {
@@ -16,7 +16,7 @@
       }
       insertSt.setString(5,rule.getDescription());
       insertSt.setString(6,StringUtils.abbreviate(match.getMessage(),255));
-      final String context=contextTools.getContext(match.getFromPos(),match.getToPos(),sentence.getText());
+      String context=contextTools.getContext(match.getFromPos(),match.getToPos(),sentence.getText());
       if (context.length() > MAX_CONTEXT_LENGTH) {
         continue;
       }

@@ -1,6 +1,6 @@
 {
-  final SentenceSourceChecker prg=new SentenceSourceChecker();
-  final CommandLine commandLine=ensureCorrectUsageOrExit(args);
+  SentenceSourceChecker prg=new SentenceSourceChecker();
+  CommandLine commandLine=ensureCorrectUsageOrExit(args);
   File propFile=null;
   if (commandLine.hasOption('d')) {
     propFile=new File(commandLine.getOptionValue('d'));
@@ -8,22 +8,22 @@
       throw new IOException("File not found or isn't a file: " + propFile.getAbsolutePath());
     }
   }
-  final String languageCode=commandLine.getOptionValue('l');
-  final Set<String> disabledRuleIds=new HashSet<>();
+  String languageCode=commandLine.getOptionValue('l');
+  Set<String> disabledRuleIds=new HashSet<>();
   if (commandLine.hasOption("rule-properties")) {
-    final File disabledRulesPropFile=new File(commandLine.getOptionValue("rule-properties"));
+    File disabledRulesPropFile=new File(commandLine.getOptionValue("rule-properties"));
     if (!disabledRulesPropFile.exists() || disabledRulesPropFile.isDirectory()) {
       throw new IOException("File not found or isn't a file: " + disabledRulesPropFile.getAbsolutePath());
     }
-    final Properties disabledRules=new Properties();
+    Properties disabledRules=new Properties();
     try (FileInputStream stream=new FileInputStream(disabledRulesPropFile)){
       disabledRules.load(stream);
       addDisabledRules("all",disabledRuleIds,disabledRules);
       addDisabledRules(languageCode,disabledRuleIds,disabledRules);
     }
    }
-  final int maxArticles=Integer.parseInt(commandLine.getOptionValue("max-sentences","0"));
-  final int maxErrors=Integer.parseInt(commandLine.getOptionValue("max-errors","0"));
+  int maxArticles=Integer.parseInt(commandLine.getOptionValue("max-sentences","0"));
+  int maxErrors=Integer.parseInt(commandLine.getOptionValue("max-errors","0"));
   String[] ruleIds=commandLine.hasOption('r') ? commandLine.getOptionValue('r').split(",") : null;
   String[] categoryIds=commandLine.hasOption("also-enable-categories") ? commandLine.getOptionValue("also-enable-categories").split(",") : null;
   String[] fileNames=commandLine.getOptionValues('f');

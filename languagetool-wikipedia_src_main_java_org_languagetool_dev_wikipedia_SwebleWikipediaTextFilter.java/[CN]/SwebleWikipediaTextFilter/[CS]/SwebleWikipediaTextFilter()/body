@@ -2,7 +2,7 @@
   try {
     config=new SimpleWikiConfiguration("classpath:/org/languagetool/resource/dev/SimpleWikiConfiguration.xml");
     compiler=new Compiler(config);
-    final PageTitle pageTitle=PageTitle.make(config,"fileTitle");
+    PageTitle pageTitle=PageTitle.make(config,"fileTitle");
     pageId=new PageId(pageTitle,-1);
   }
  catch (  Exception e) {

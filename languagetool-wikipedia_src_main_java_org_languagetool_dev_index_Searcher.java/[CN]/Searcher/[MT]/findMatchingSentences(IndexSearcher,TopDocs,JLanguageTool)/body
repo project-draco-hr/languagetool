@@ -1,14 +1,14 @@
 {
-  final List<MatchingSentence> matchingSentences=new ArrayList<>();
+  List<MatchingSentence> matchingSentences=new ArrayList<>();
   for (  ScoreDoc match : topDocs.scoreDocs) {
-    final Document doc=indexSearcher.doc(match.doc);
-    final String sentence=doc.get(FIELD_NAME);
-    final List<RuleMatch> ruleMatches=languageTool.check(sentence);
+    Document doc=indexSearcher.doc(match.doc);
+    String sentence=doc.get(FIELD_NAME);
+    List<RuleMatch> ruleMatches=languageTool.check(sentence);
     if (ruleMatches.size() > 0) {
-      final String source=doc.get(SOURCE_FIELD_NAME);
-      final String title=doc.get(Indexer.TITLE_FIELD_NAME);
-      final AnalyzedSentence analyzedSentence=languageTool.getAnalyzedSentence(sentence);
-      final MatchingSentence matchingSentence=new MatchingSentence(sentence,source,title,analyzedSentence,ruleMatches);
+      String source=doc.get(SOURCE_FIELD_NAME);
+      String title=doc.get(Indexer.TITLE_FIELD_NAME);
+      AnalyzedSentence analyzedSentence=languageTool.getAnalyzedSentence(sentence);
+      MatchingSentence matchingSentence=new MatchingSentence(sentence,source,title,analyzedSentence,ruleMatches);
       matchingSentences.add(matchingSentence);
     }
   }

@@ -1,14 +1,14 @@
 {
   checkUnsupportedElement(patternToken);
-  final String termStr=patternToken.getString();
-  final String pos=patternToken.getPOStag();
-  final BooleanClause termQuery=getTermQueryOrNull(patternToken,termStr);
-  final BooleanClause posQuery=getPosQueryOrNull(patternToken,pos);
+  String termStr=patternToken.getString();
+  String pos=patternToken.getPOStag();
+  BooleanClause termQuery=getTermQueryOrNull(patternToken,termStr);
+  BooleanClause posQuery=getPosQueryOrNull(patternToken,pos);
   if (termQuery != null && posQuery != null) {
     if (mustOccur(termQuery) && mustOccur(posQuery)) {
-      final SpanQuery spanQueryForTerm=asSpanQuery(termQuery);
-      final SpanQuery spanQueryForPos=asSpanQuery(posQuery);
-      final SpanQuery[] spanClauses={spanQueryForTerm,spanQueryForPos};
+      SpanQuery spanQueryForTerm=asSpanQuery(termQuery);
+      SpanQuery spanQueryForPos=asSpanQuery(posQuery);
+      SpanQuery[] spanClauses={spanQueryForTerm,spanQueryForPos};
       return new BooleanClause(new SpanNearQuery(spanClauses,0,false),BooleanClause.Occur.MUST);
     }
  else {

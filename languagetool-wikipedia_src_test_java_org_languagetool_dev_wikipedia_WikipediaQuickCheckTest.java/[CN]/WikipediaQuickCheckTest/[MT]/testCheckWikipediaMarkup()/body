@@ -1,13 +1,13 @@
 {
-  final WikipediaQuickCheck check=new WikipediaQuickCheck();
-  final String markup="== Beispiele ==\n\n" + "Eine kleine Auswahl von Fehlern.\n\n" + "Das Komma ist richtig, wegen dem Leerzeichen.";
-  final MediaWikiContent wikiContent=new MediaWikiContent(markup,"2012-11-11T20:00:00");
-  final ErrorMarker errorMarker=new ErrorMarker("<err>","</err>");
-  final MarkupAwareWikipediaResult result=check.checkWikipediaMarkup(new URL("http://fake-url.org"),wikiContent,new German(),errorMarker);
+  WikipediaQuickCheck check=new WikipediaQuickCheck();
+  String markup="== Beispiele ==\n\n" + "Eine kleine Auswahl von Fehlern.\n\n" + "Das Komma ist richtig, wegen dem Leerzeichen.";
+  MediaWikiContent wikiContent=new MediaWikiContent(markup,"2012-11-11T20:00:00");
+  ErrorMarker errorMarker=new ErrorMarker("<err>","</err>");
+  MarkupAwareWikipediaResult result=check.checkWikipediaMarkup(new URL("http://fake-url.org"),wikiContent,new German(),errorMarker);
   assertThat(result.getLastEditTimestamp(),is("2012-11-11T20:00:00"));
-  final List<AppliedRuleMatch> appliedMatches=result.getAppliedRuleMatches();
+  List<AppliedRuleMatch> appliedMatches=result.getAppliedRuleMatches();
   assertThat(appliedMatches.size(),is(1));
-  final AppliedRuleMatch firstAppliedMatch=appliedMatches.get(0);
+  AppliedRuleMatch firstAppliedMatch=appliedMatches.get(0);
   assertThat(firstAppliedMatch.getRuleMatchApplications().size(),is(1));
   RuleMatchApplication ruleMatchApplication=firstAppliedMatch.getRuleMatchApplications().get(0);
   assertTrue("Got: " + ruleMatchApplication.getTextWithCorrection(),ruleMatchApplication.getTextWithCorrection().contains("<err>wegen dem</err> Leerzeichen."));

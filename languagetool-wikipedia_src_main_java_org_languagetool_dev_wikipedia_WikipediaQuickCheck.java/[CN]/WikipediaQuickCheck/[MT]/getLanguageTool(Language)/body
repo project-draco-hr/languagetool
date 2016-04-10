@@ -1,5 +1,5 @@
 {
-  final MultiThreadedJLanguageTool langTool=new MultiThreadedJLanguageTool(lang);
+  MultiThreadedJLanguageTool langTool=new MultiThreadedJLanguageTool(lang);
   enableWikipediaRules(langTool);
   for (  String disabledRuleId : disabledRuleIds) {
     langTool.disableRule(disabledRuleId);

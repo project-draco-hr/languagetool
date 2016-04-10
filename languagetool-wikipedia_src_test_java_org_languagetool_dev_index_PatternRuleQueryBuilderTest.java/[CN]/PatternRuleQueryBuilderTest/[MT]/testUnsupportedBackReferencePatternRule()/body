@@ -1,5 +1,5 @@
 {
-  final PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder(language,searcher);
+  PatternRuleQueryBuilder patternRuleQueryBuilder=new PatternRuleQueryBuilder(language,searcher);
   try {
     patternRuleQueryBuilder.buildRelaxedQuery(makeRule("<token>\\1</token>",false));
     fail("Exception should be thrown for unsupported PatternRule");

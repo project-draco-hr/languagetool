@@ -1,6 +1,6 @@
 {
   try (DirectoryReader reader=DirectoryReader.open(directory)){
-    final IndexSearcher indexSearcher=new IndexSearcher(reader);
+    IndexSearcher indexSearcher=new IndexSearcher(reader);
     return getDocCount(indexSearcher);
   }
  }

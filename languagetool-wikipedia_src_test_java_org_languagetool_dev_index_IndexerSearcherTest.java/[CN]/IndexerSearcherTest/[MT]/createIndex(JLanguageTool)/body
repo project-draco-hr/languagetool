@@ -1,19 +1,19 @@
 {
   int ruleCount=0;
   try (Indexer indexer=new Indexer(directory,lt.getLanguage())){
-    final List<Rule> rules=lt.getAllActiveRules();
+    List<Rule> rules=lt.getAllActiveRules();
     for (    Rule rule : rules) {
       if (rule instanceof PatternRule && !rule.isDefaultOff()) {
-        final PatternRule patternRule=(PatternRule)rule;
-        final List<IncorrectExample> incorrectExamples=rule.getIncorrectExamples();
-        final Document doc=new Document();
-        final FieldType idType=new FieldType();
+        PatternRule patternRule=(PatternRule)rule;
+        List<IncorrectExample> incorrectExamples=rule.getIncorrectExamples();
+        Document doc=new Document();
+        FieldType idType=new FieldType();
         idType.setStored(true);
         idType.setTokenized(false);
         doc.add(new Field("ruleId",patternRule.getFullId(),idType));
         for (        IncorrectExample incorrectExample : incorrectExamples) {
-          final String example=incorrectExample.getExample().replaceAll("</?marker>","");
-          final FieldType fieldType=new FieldType();
+          String example=incorrectExample.getExample().replaceAll("</?marker>","");
+          FieldType fieldType=new FieldType();
           fieldType.setStored(true);
           fieldType.setTokenized(true);
           fieldType.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);

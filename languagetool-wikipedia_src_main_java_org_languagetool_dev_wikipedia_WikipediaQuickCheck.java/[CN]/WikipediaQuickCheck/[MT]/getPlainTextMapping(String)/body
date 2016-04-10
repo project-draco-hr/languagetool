@@ -1,5 +1,5 @@
 {
-  final MediaWikiContent wikiContent=getRevisionContent(completeWikiContent);
-  final SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
+  MediaWikiContent wikiContent=getRevisionContent(completeWikiContent);
+  SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
   return filter.filter(wikiContent.getContent());
 }

@@ -1,9 +1,9 @@
 {
-  final SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
-  final PlainTextMapping mapping=filter.filter(wikiContent.getContent());
-  final MultiThreadedJLanguageTool langTool=getLanguageTool(language);
-  final List<AppliedRuleMatch> appliedMatches=new ArrayList<>();
-  final List<RuleMatch> matches;
+  SwebleWikipediaTextFilter filter=new SwebleWikipediaTextFilter();
+  PlainTextMapping mapping=filter.filter(wikiContent.getContent());
+  MultiThreadedJLanguageTool langTool=getLanguageTool(language);
+  List<AppliedRuleMatch> appliedMatches=new ArrayList<>();
+  List<RuleMatch> matches;
   try {
     matches=langTool.check(mapping.getPlainText());
   }
@@ -12,9 +12,9 @@
   }
   int internalErrors=0;
   for (  RuleMatch match : matches) {
-    final SuggestionReplacer replacer=errorMarker != null ? new SuggestionReplacer(mapping,wikiContent.getContent(),errorMarker) : new SuggestionReplacer(mapping,wikiContent.getContent());
+    SuggestionReplacer replacer=errorMarker != null ? new SuggestionReplacer(mapping,wikiContent.getContent(),errorMarker) : new SuggestionReplacer(mapping,wikiContent.getContent());
     try {
-      final List<RuleMatchApplication> ruleMatchApplications=replacer.applySuggestionsToOriginalText(match);
+      List<RuleMatchApplication> ruleMatchApplications=replacer.applySuggestionsToOriginalText(match);
       appliedMatches.add(new AppliedRuleMatch(match,ruleMatchApplications));
     }
  catch (    Exception e) {

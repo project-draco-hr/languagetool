@@ -1,7 +1,7 @@
 {
   try {
-    final Analyzer analyzer=getAnalyzer(language);
-    final IndexWriterConfig writerConfig=getIndexWriterConfig(analyzer);
+    Analyzer analyzer=getAnalyzer(language);
+    IndexWriterConfig writerConfig=getIndexWriterConfig(analyzer);
     writerConfig.setOpenMode(OpenMode.CREATE);
     writer=new IndexWriter(dir,writerConfig);
     sentenceTokenizer=language.getSentenceTokenizer();

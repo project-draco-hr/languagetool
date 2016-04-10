@@ -3,7 +3,7 @@
     return new SpanMultiTermQueryWrapper<>((MultiTermQuery)query.getQuery());
   }
  else {
-    final Set<Term> terms=new HashSet<>();
+    Set<Term> terms=new HashSet<>();
     try {
       indexSearcher.createWeight(query.getQuery(),false).extractTerms(terms);
     }

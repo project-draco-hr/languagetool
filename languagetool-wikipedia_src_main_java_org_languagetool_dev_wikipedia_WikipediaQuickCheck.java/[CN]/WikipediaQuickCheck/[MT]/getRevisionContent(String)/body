@@ -1,7 +1,7 @@
 {
-  final SAXParserFactory factory=SAXParserFactory.newInstance();
-  final SAXParser saxParser;
-  final RevisionContentHandler handler=new RevisionContentHandler();
+  SAXParserFactory factory=SAXParserFactory.newInstance();
+  SAXParser saxParser;
+  RevisionContentHandler handler=new RevisionContentHandler();
   try {
     saxParser=factory.newSAXParser();
     saxParser.parse(new InputSource(new StringReader(completeWikiContent)),handler);

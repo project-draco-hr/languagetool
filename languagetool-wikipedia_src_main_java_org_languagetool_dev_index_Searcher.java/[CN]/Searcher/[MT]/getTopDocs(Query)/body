@@ -1,14 +1,14 @@
 {
-  final TopScoreDocCollector topCollector=TopScoreDocCollector.create(maxHits);
-  final Counter clock=Counter.newCounter(true);
-  final int waitMillis=1000;
-  final TimeLimitingCollector collector=new TimeLimitingCollector(topCollector,clock,maxSearchTimeMillis / waitMillis);
+  TopScoreDocCollector topCollector=TopScoreDocCollector.create(maxHits);
+  Counter clock=Counter.newCounter(true);
+  int waitMillis=1000;
+  TimeLimitingCollector collector=new TimeLimitingCollector(topCollector,clock,maxSearchTimeMillis / waitMillis);
   collector.setBaseline(0);
-  final Thread counterThread=new Thread(){
+  Thread counterThread=new Thread(){
     @Override public void run(){
-      final long startTime=System.currentTimeMillis();
+      long startTime=System.currentTimeMillis();
       while (true) {
-        final long runTimeMillis=System.currentTimeMillis() - startTime;
+        long runTimeMillis=System.currentTimeMillis() - startTime;
         if (runTimeMillis > maxSearchTimeMillis) {
           return;
         }
