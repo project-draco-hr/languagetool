@@ -10,11 +10,11 @@
   toDisable.removeAll(common);
   Set<String> toEnable=new HashSet<>(languageTool.getDisabledRules());
   toEnable.removeAll(common);
-  for (  final String ruleId : toDisable) {
+  for (  String ruleId : toDisable) {
     languageTool.disableRule(ruleId);
     update=true;
   }
-  for (  final String ruleId : toEnable) {
+  for (  String ruleId : toEnable) {
     languageTool.enableRule(ruleId);
     update=true;
   }

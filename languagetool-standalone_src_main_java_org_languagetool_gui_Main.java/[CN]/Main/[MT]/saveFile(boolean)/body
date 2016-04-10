@@ -1,6 +1,6 @@
 {
   if (currentFile == null || newFile) {
-    final JFileChooser jfc=new JFileChooser();
+    JFileChooser jfc=new JFileChooser();
     jfc.setFileFilter(new PlainTextFileFilter());
     jfc.showSaveDialog(frame);
     File file=jfc.getSelectedFile();

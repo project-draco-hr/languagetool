@@ -1,5 +1,5 @@
 {
-  final LanguageManagerDialog dialog=new LanguageManagerDialog(frame,externalLanguages);
+  LanguageManagerDialog dialog=new LanguageManagerDialog(frame,externalLanguages);
   dialog.show();
   List<Language> newExtLanguages=dialog.getLanguages();
   externalLanguages.clear();

@@ -10,7 +10,7 @@
     addItem(externalLanguage);
   }
   Collections.sort(languages,langComparator);
-  for (  final Language language : languages) {
+  for (  Language language : languages) {
     addItem(language);
   }
 }

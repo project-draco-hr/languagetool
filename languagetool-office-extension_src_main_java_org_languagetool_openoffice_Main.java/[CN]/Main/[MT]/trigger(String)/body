@@ -10,7 +10,7 @@
       runOptionsDialog();
     }
  else     if ("about".equals(sEvent)) {
-      final AboutDialogThread aboutThread=new AboutDialogThread(MESSAGES);
+      AboutDialogThread aboutThread=new AboutDialogThread(MESSAGES);
       aboutThread.start();
     }
  else {

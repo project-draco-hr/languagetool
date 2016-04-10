@@ -1,11 +1,11 @@
 {
-  final XComponent xComponent=getXComponent();
-  final Locale charLocale;
-  final XPropertySet xCursorProps;
+  XComponent xComponent=getXComponent();
+  Locale charLocale;
+  XPropertySet xCursorProps;
   try {
-    final XModel model=UnoRuntime.queryInterface(XModel.class,xComponent);
-    final XTextViewCursorSupplier xViewCursorSupplier=UnoRuntime.queryInterface(XTextViewCursorSupplier.class,model.getCurrentController());
-    final XTextViewCursor xCursor=xViewCursorSupplier.getViewCursor();
+    XModel model=UnoRuntime.queryInterface(XModel.class,xComponent);
+    XTextViewCursorSupplier xViewCursorSupplier=UnoRuntime.queryInterface(XTextViewCursorSupplier.class,model.getCurrentController());
+    XTextViewCursor xCursor=xViewCursorSupplier.getViewCursor();
     if (xCursor.isCollapsed()) {
       xCursorProps=UnoRuntime.queryInterface(XPropertySet.class,xCursor);
     }
@@ -18,7 +18,7 @@
     if (new TamilDetector().isThisLanguage(xCursor.getText().getString())) {
       return Languages.getLanguageForShortName("ta");
     }
-    final Object obj=xCursorProps.getPropertyValue("CharLocale");
+    Object obj=xCursorProps.getPropertyValue("CharLocale");
     if (obj == null) {
       return Languages.getLanguageForShortName("en-US");
     }
@@ -35,7 +35,7 @@
       }
     }
     if (!langIsSupported) {
-      final String message=Tools.i18n(MESSAGES,"language_not_supported",charLocale.Language);
+      String message=Tools.i18n(MESSAGES,"language_not_supported",charLocale.Language);
       JOptionPane.showMessageDialog(null,message);
       return null;
     }

@@ -1,5 +1,5 @@
 {
-  for (  final Language lang : languages) {
+  for (  Language lang : languages) {
     if (lang.toString().equals(language.toString())) {
       setSelectedItem(lang);
     }

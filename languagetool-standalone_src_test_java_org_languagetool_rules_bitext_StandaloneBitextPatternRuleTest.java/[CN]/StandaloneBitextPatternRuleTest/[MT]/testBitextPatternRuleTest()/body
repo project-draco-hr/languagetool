@@ -1,4 +1,4 @@
 {
-  final BitextPatternRuleTest test=new BitextPatternRuleTest();
+  BitextPatternRuleTest test=new BitextPatternRuleTest();
   test.testBitextRulesFromXML();
 }

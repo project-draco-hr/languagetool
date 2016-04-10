@@ -1,9 +1,9 @@
 {
-  final JLanguageTool langTool=new JLanguageTool(new English(),new German());
-  final List<RuleMatch> matches=assertErrors(1,"We will berate you.",langTool);
+  JLanguageTool langTool=new JLanguageTool(new English(),new German());
+  List<RuleMatch> matches=assertErrors(1,"We will berate you.",langTool);
   assertEquals(matches.get(0).getSuggestedReplacements().toString(),"[provide advice, give advice]");
   assertErrors(0,"We will give you advice.",langTool);
   assertErrors(1,"I go to high school in Foocity.",langTool);
-  final List<RuleMatch> matches2=assertErrors(1,"The chef",langTool);
+  List<RuleMatch> matches2=assertErrors(1,"The chef",langTool);
   assertEquals("[boss, chief]",matches2.get(0).getSuggestedReplacements().toString());
 }

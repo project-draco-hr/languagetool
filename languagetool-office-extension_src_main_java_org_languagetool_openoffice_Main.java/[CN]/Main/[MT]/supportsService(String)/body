@@ -1,5 +1,5 @@
 {
-  for (  final String sName : SERVICE_NAMES) {
+  for (  String sName : SERVICE_NAMES) {
     if (sServiceName.equals(sName)) {
       return true;
     }

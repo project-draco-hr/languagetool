@@ -1,5 +1,5 @@
 {
-  final String ruleId=rule.getId();
+  String ruleId=rule.getId();
   if (!ruleId.matches("^[A-Z_]+$")) {
     throw new RuntimeException("Invalid character in rule id: '" + ruleId + "', language: "+ language+ ", only [A-Z_] are allowed");
   }

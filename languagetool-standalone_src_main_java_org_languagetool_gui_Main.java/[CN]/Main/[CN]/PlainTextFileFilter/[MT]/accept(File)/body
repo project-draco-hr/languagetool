@@ -1,4 +1,4 @@
 {
-  final boolean isTextFile=f.getName().toLowerCase().endsWith(".txt");
+  boolean isTextFile=f.getName().toLowerCase().endsWith(".txt");
   return isTextFile || f.isDirectory();
 }

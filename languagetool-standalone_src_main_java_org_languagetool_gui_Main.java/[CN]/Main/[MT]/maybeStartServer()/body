@@ -2,7 +2,7 @@
   Configuration config=ltSupport.getConfig();
   if (config.getRunServer()) {
     try {
-      final HTTPServerConfig serverConfig=new HTTPServerConfig(config.getServerPort(),false);
+      HTTPServerConfig serverConfig=new HTTPServerConfig(config.getServerPort(),false);
       httpServer=new HTTPServer(serverConfig,true);
       httpServer.run();
       if (enableHttpServerItem != null) {

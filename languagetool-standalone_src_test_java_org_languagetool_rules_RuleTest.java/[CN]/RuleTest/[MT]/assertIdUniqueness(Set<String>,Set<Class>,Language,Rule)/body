@@ -1,5 +1,5 @@
 {
-  final String ruleId=rule.getId();
+  String ruleId=rule.getId();
   if (ids.contains(ruleId) && !ruleClasses.contains(rule.getClass())) {
     throw new RuntimeException("Rule id occurs more than once: '" + ruleId + "', language: "+ language);
   }

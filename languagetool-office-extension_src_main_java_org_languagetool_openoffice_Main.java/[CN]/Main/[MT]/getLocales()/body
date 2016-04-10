@@ -1,7 +1,7 @@
 {
   try {
     List<Locale> locales=new ArrayList<>();
-    for (    final Language lang : Languages.get()) {
+    for (    Language lang : Languages.get()) {
       if (lang.getCountries().length == 0) {
         if (lang.getVariant() != null) {
           locales.add(new Locale(LIBREOFFICE_SPECIAL_LANGUAGE_TAG,"",lang.getShortNameWithCountryAndVariant()));
@@ -11,7 +11,7 @@
         }
       }
  else {
-        for (        final String country : lang.getCountries()) {
+        for (        String country : lang.getCountries()) {
           if (lang.getVariant() != null) {
             locales.add(new Locale(LIBREOFFICE_SPECIAL_LANGUAGE_TAG,country,lang.getShortNameWithCountryAndVariant()));
           }

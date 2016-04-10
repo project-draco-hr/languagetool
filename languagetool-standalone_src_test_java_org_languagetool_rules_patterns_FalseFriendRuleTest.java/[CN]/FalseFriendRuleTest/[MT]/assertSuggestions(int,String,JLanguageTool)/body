@@ -1,7 +1,7 @@
 {
-  final List<RuleMatch> matches=langTool.check(text);
+  List<RuleMatch> matches=langTool.check(text);
   int suggestionsFound=0;
-  for (  final RuleMatch match : matches) {
+  for (  RuleMatch match : matches) {
     int pos=0;
     while (pos != -1) {
       pos=match.getMessage().indexOf("<suggestion>",pos + 1);

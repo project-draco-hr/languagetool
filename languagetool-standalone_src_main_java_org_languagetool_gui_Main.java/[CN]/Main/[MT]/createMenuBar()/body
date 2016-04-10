@@ -1,12 +1,12 @@
 {
   JMenuBar menuBar=new JMenuBar();
-  final JMenu fileMenu=new JMenu(getLabel("guiMenuFile"));
+  JMenu fileMenu=new JMenu(getLabel("guiMenuFile"));
   fileMenu.setMnemonic(getMnemonic("guiMenuFile"));
-  final JMenu editMenu=new JMenu(getLabel("guiMenuEdit"));
+  JMenu editMenu=new JMenu(getLabel("guiMenuEdit"));
   editMenu.setMnemonic(getMnemonic("guiMenuEdit"));
-  final JMenu grammarMenu=new JMenu(getLabel("guiMenuGrammar"));
+  JMenu grammarMenu=new JMenu(getLabel("guiMenuGrammar"));
   grammarMenu.setMnemonic(getMnemonic("guiMenuGrammar"));
-  final JMenu helpMenu=new JMenu(getLabel("guiMenuHelp"));
+  JMenu helpMenu=new JMenu(getLabel("guiMenuHelp"));
   helpMenu.setMnemonic(getMnemonic("guiMenuHelp"));
   fileMenu.add(openAction);
   fileMenu.add(saveAction);

@@ -1,22 +1,22 @@
 {
-  final ContextTools contextTools=new ContextTools();
-  final StringBuilder sb=new StringBuilder(200);
+  ContextTools contextTools=new ContextTools();
+  StringBuilder sb=new StringBuilder(200);
   if (ltSupport.getLanguage().getMaintainedState() != LanguageMaintainedState.ActivelyMaintained) {
     sb.append("<b>").append(messages.getString("unsupportedWarning")).append("</b><br><br>");
   }
   sb.append(startCheckText);
   sb.append("<br>\n");
   int i=0;
-  for (  final RuleMatch match : ruleMatches) {
-    final String output=org.languagetool.tools.Tools.i18n(messages,"result1",i + 1,match.getLine() + 1,match.getColumn());
+  for (  RuleMatch match : ruleMatches) {
+    String output=org.languagetool.tools.Tools.i18n(messages,"result1",i + 1,match.getLine() + 1,match.getColumn());
     sb.append(output);
-    final String msg=match.getMessage().replaceAll("<suggestion>","<b>").replaceAll("</suggestion>","</b>").replaceAll("<old>","<b>").replaceAll("</old>","</b>");
+    String msg=match.getMessage().replaceAll("<suggestion>","<b>").replaceAll("</suggestion>","</b>").replaceAll("<old>","<b>").replaceAll("</old>","</b>");
     sb.append("<b>").append(messages.getString("errorMessage")).append("</b> ");
     sb.append(msg);
-    final RuleLink ruleLink=RuleLink.buildDeactivationLink(match.getRule());
+    RuleLink ruleLink=RuleLink.buildDeactivationLink(match.getRule());
     sb.append(" <a href=\"").append(ruleLink).append("\">").append(messages.getString("deactivateRule")).append("</a><br>\n");
     if (match.getSuggestedReplacements().size() > 0) {
-      final String replacement=String.join("; ",match.getSuggestedReplacements());
+      String replacement=String.join("; ",match.getSuggestedReplacements());
       sb.append("<b>").append(messages.getString("correctionMessage")).append("</b> ").append(replacement).append("<br>\n");
     }
     if (ITSIssueType.Misspelling == match.getRule().getLocQualityIssueType()) {
@@ -25,21 +25,21 @@
  else {
       contextTools.setErrorMarkerStart(LT_ERROR_MARKER_START);
     }
-    final String context=contextTools.getContext(match.getFromPos(),match.getToPos(),text);
+    String context=contextTools.getContext(match.getFromPos(),match.getToPos(),text);
     sb.append("<b>").append(messages.getString("errorContext")).append("</b> ").append(context);
     sb.append("<br>\n");
     if (match.getRule().getUrl() != null && Desktop.isDesktopSupported()) {
       sb.append("<b>").append(messages.getString("moreInfo")).append("</b> <a href=\"");
-      final String url=match.getRule().getUrl().toString();
+      String url=match.getRule().getUrl().toString();
       sb.append(url);
-      final String shortUrl=StringUtils.abbreviate(url,60);
+      String shortUrl=StringUtils.abbreviate(url,60);
       sb.append("\">").append(shortUrl).append("</a><br>\n");
     }
     i++;
   }
   sb.append(Main.HTML_GREY_FONT_START);
   sb.append(getDisabledRulesHtml());
-  final String checkDone=org.languagetool.tools.Tools.i18n(messages,"checkDone",ruleMatches.size(),runTime);
+  String checkDone=org.languagetool.tools.Tools.i18n(messages,"checkDone",ruleMatches.size(),runTime);
   sb.append("<br>\n").append(checkDone);
   sb.append("<br>\n").append(messages.getString("makeLanguageToolBetter"));
   sb.append(Main.HTML_FONT_END).append("<br>\n");

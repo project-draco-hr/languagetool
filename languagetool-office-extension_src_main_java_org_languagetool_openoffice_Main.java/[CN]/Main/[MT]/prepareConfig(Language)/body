@@ -1,6 +1,6 @@
 {
   try {
-    final File homeDir=getHomeDir();
+    File homeDir=getHomeDir();
     config=new Configuration(homeDir,CONFIG_FILE,lang);
     disabledRules=config.getDisabledRuleIds();
     if (disabledRules == null) {

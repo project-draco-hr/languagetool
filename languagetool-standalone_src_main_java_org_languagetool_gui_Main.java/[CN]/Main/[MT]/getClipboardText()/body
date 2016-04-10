@@ -4,10 +4,10 @@
     clipboard=Toolkit.getDefaultToolkit().getSystemClipboard();
   }
   String s;
-  final Transferable data=clipboard.getContents(this);
+  Transferable data=clipboard.getContents(this);
   try {
     if (data != null && data.isDataFlavorSupported(DataFlavor.getTextPlainUnicodeFlavor())) {
-      final DataFlavor df=DataFlavor.getTextPlainUnicodeFlavor();
+      DataFlavor df=DataFlavor.getTextPlainUnicodeFlavor();
       try (Reader sr=df.getReaderForText(data)){
         s=StringTools.readerToString(sr);
       }

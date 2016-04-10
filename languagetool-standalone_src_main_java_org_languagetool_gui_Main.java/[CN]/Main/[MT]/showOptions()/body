@@ -1,7 +1,7 @@
 {
-  final JLanguageTool langTool=ltSupport.getLanguageTool();
-  final List<Rule> rules=langTool.getAllRules();
-  final ConfigurationDialog configDialog=ltSupport.getCurrentConfigDialog();
+  JLanguageTool langTool=ltSupport.getLanguageTool();
+  List<Rule> rules=langTool.getAllRules();
+  ConfigurationDialog configDialog=ltSupport.getCurrentConfigDialog();
   configDialog.show(rules);
   Configuration config=ltSupport.getConfig();
   try {

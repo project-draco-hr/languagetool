@@ -1,5 +1,5 @@
 {
-  final StringBuilder sb=new StringBuilder(40);
+  StringBuilder sb=new StringBuilder(40);
   sb.append(messages.getString("deactivatedRulesText"));
   int i=0;
   int deactivatedRuleCount=0;
@@ -7,14 +7,14 @@
     if (ruleId.trim().isEmpty()) {
       continue;
     }
-    final Rule rule=ltSupport.getRuleForId(ruleId);
+    Rule rule=ltSupport.getRuleForId(ruleId);
     if (rule == null || rule.isDefaultOff()) {
       continue;
     }
     if (i++ > 0) {
       sb.append(',');
     }
-    final RuleLink reactivationLink=RuleLink.buildReactivationLink(rule);
+    RuleLink reactivationLink=RuleLink.buildReactivationLink(rule);
     sb.append(" <a href=\"").append(reactivationLink).append("\">").append(rule.getDescription()).append("</a>");
     deactivatedRuleCount++;
   }

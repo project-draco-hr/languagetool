@@ -38,7 +38,7 @@
       list.setListData(ruleFiles.toArray(new File[ruleFiles.size()]));
     }
  else {
-      final JOptionPane jop=new JOptionPane();
+      JOptionPane jop=new JOptionPane();
       JOptionPane.showMessageDialog(jop,messages.getString("guiDuplicate"),messages.getString("guiWarning"),JOptionPane.WARNING_MESSAGE);
     }
   }

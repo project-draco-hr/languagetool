@@ -10,15 +10,15 @@
   ltSupport.addLanguageToolListener(new LanguageToolListener(){
     @Override public void languageToolEventOccurred(    LanguageToolEvent event){
       if (event.getType() == LanguageToolEvent.Type.CHECKING_STARTED) {
-        final Language lang=ltSupport.getLanguage();
-        final String langName;
+        Language lang=ltSupport.getLanguage();
+        String langName;
         if (lang.isExternal()) {
           langName=lang.getTranslatedName(messages) + Main.EXTERNAL_LANGUAGE_SUFFIX;
         }
  else {
           langName=lang.getTranslatedName(messages);
         }
-        final String startCheckText=Main.HTML_GREY_FONT_START + org.languagetool.tools.Tools.i18n(messages,"startChecking",langName) + "..."+ Main.HTML_FONT_END;
+        String startCheckText=Main.HTML_GREY_FONT_START + org.languagetool.tools.Tools.i18n(messages,"startChecking",langName) + "..."+ Main.HTML_FONT_END;
         statusPane.setText(startCheckText);
         setStartText(startCheckText);
         if (event.getCaller() == this) {

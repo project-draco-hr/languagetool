@@ -1,5 +1,5 @@
 {
-  final JLanguageTool langTool=new JLanguageTool(new English(){
+  JLanguageTool langTool=new JLanguageTool(new English(){
     @Override protected synchronized List<AbstractPatternRule> getPatternRules(){
       return Collections.emptyList();
     }

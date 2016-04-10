@@ -1,5 +1,5 @@
 {
-  final ProofreadingResult paRes=new ProofreadingResult();
+  ProofreadingResult paRes=new ProofreadingResult();
   try {
     paRes.nStartOfSentencePosition=startOfSentencePos;
     paRes.xProofreader=this;

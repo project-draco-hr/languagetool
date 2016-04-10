@@ -1,4 +1,4 @@
 {
-  final AboutDialog about=new AboutDialog(messages,null);
+  AboutDialog about=new AboutDialog(messages,null);
   about.show();
 }

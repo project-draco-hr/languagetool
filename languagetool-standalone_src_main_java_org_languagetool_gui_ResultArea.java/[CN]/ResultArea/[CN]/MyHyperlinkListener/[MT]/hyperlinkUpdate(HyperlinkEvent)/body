@@ -1,8 +1,8 @@
 {
   if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-    final URL url=e.getURL();
+    URL url=e.getURL();
     try {
-      final String uri=url.toURI().toString();
+      String uri=url.toURI().toString();
       if (uri.startsWith(DEACTIVATE_URL) || uri.startsWith(REACTIVATE_URL)) {
         handleRuleLinkClick(uri);
       }

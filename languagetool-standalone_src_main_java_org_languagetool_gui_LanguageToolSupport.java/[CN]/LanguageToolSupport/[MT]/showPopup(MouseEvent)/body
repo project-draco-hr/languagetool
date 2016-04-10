@@ -3,7 +3,7 @@
     return;
   }
   int offset=this.textComponent.viewToModel(event.getPoint());
-  final Span span=getSpan(offset);
+  Span span=getSpan(offset);
   JPopupMenu popup=new JPopupMenu("Grammar Menu");
   if (span != null) {
     JLabel msgItem=new JLabel("<html>" + span.msg.replace("<suggestion>","<b>").replace("</suggestion>","</b>") + "</html>");

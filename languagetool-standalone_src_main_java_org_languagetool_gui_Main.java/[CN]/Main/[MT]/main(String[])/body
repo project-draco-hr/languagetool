@@ -2,7 +2,7 @@
   if (System.getSecurityManager() == null) {
     JnaTools.setBugWorkaroundProperty();
   }
-  final Main prg=new Main();
+  Main prg=new Main();
   if (args.length == 1 && (args[0].equals("-t") || args[0].equals("--tray"))) {
     SwingUtilities.invokeLater(new Runnable(){
       @Override public void run(){

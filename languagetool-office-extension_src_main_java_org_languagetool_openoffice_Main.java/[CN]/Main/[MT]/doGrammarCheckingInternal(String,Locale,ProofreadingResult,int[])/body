@@ -5,45 +5,45 @@
       docLanguage=langForShortName;
       initLanguageTool();
     }
-    final Set<String> disabledRuleIds=config.getDisabledRuleIds();
+    Set<String> disabledRuleIds=config.getDisabledRuleIds();
     if (disabledRuleIds != null) {
-      final List<String> list=new ArrayList<>(disabledRuleIds);
-      for (      final String id : list) {
+      List<String> list=new ArrayList<>(disabledRuleIds);
+      for (      String id : list) {
         langTool.disableRule(id);
       }
     }
-    final Set<String> disabledCategories=config.getDisabledCategoryNames();
+    Set<String> disabledCategories=config.getDisabledCategoryNames();
     if (disabledCategories != null) {
-      final List<String> list=new ArrayList<>(disabledCategories);
-      for (      final String categoryName : list) {
+      List<String> list=new ArrayList<>(disabledCategories);
+      for (      String categoryName : list) {
         langTool.disableCategory(categoryName);
       }
     }
-    final Set<String> enabledRuleIds=config.getEnabledRuleIds();
+    Set<String> enabledRuleIds=config.getEnabledRuleIds();
     if (enabledRuleIds != null) {
-      final List<String> list=new ArrayList<>(enabledRuleIds);
+      List<String> list=new ArrayList<>(enabledRuleIds);
       for (      String ruleName : list) {
         langTool.enableDefaultOffRule(ruleName);
         langTool.enableRule(ruleName);
       }
     }
     try {
-      final String sentence=getSentence(paraText,paRes.nStartOfSentencePosition);
+      String sentence=getSentence(paraText,paRes.nStartOfSentencePosition);
       paRes.nStartOfSentencePosition=position;
       paRes.nStartOfNextSentencePosition=position + sentence.length();
       paRes.nBehindEndOfSentencePosition=paRes.nStartOfNextSentencePosition;
       if (!StringTools.isEmpty(sentence)) {
         AnnotatedText annotatedText=getAnnotatedText(sentence,footnotePositions,paRes);
-        final List<RuleMatch> ruleMatches=langTool.check(annotatedText,false,JLanguageTool.ParagraphHandling.ONLYNONPARA);
-        final SingleProofreadingError[] pErrors=checkParaRules(paraText,paRes.nStartOfSentencePosition,paRes.nStartOfNextSentencePosition,paRes.aDocumentIdentifier);
+        List<RuleMatch> ruleMatches=langTool.check(annotatedText,false,JLanguageTool.ParagraphHandling.ONLYNONPARA);
+        SingleProofreadingError[] pErrors=checkParaRules(paraText,paRes.nStartOfSentencePosition,paRes.nStartOfNextSentencePosition,paRes.aDocumentIdentifier);
         int pErrorCount=0;
         if (pErrors != null) {
           pErrorCount=pErrors.length;
         }
         if (!ruleMatches.isEmpty()) {
-          final SingleProofreadingError[] errorArray=new SingleProofreadingError[ruleMatches.size() + pErrorCount];
+          SingleProofreadingError[] errorArray=new SingleProofreadingError[ruleMatches.size() + pErrorCount];
           int i=0;
-          for (          final RuleMatch myRuleMatch : ruleMatches) {
+          for (          RuleMatch myRuleMatch : ruleMatches) {
             errorArray[i]=createOOoError(myRuleMatch,paRes.nStartOfSentencePosition);
             i++;
           }

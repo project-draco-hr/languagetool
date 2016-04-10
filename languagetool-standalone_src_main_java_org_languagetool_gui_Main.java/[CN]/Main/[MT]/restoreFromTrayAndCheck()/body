@@ -1,5 +1,5 @@
 {
-  final String s=getClipboardText();
+  String s=getClipboardText();
   restoreFromTray();
   textArea.setText(s);
 }

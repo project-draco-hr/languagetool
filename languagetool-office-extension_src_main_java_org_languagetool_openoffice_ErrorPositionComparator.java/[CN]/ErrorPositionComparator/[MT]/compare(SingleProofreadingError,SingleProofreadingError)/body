@@ -5,8 +5,8 @@
   if (match2.aSuggestions.length == 0 && match1.aSuggestions.length > 0) {
     return -1;
   }
-  final int error1pos=match1.nErrorStart;
-  final int error2pos=match2.nErrorStart;
+  int error1pos=match1.nErrorStart;
+  int error2pos=match2.nErrorStart;
   if (error1pos > error2pos) {
     return 1;
   }

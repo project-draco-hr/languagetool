@@ -1,6 +1,6 @@
 {
-  final Set<String> ids=new HashSet<>();
-  final Set<Class> ruleClasses=new HashSet<>();
+  Set<String> ids=new HashSet<>();
+  Set<Class> ruleClasses=new HashSet<>();
   if (Languages.getWithDemoLanguage().size() <= 1) {
     System.err.println("***************************************************************************");
     System.err.println("WARNING: found only these languages - the tests might not be complete:");
@@ -8,8 +8,8 @@
     System.err.println("***************************************************************************");
   }
   for (  Language language : Languages.getWithDemoLanguage()) {
-    final JLanguageTool lt=new JLanguageTool(language);
-    final List<Rule> allRules=lt.getAllRules();
+    JLanguageTool lt=new JLanguageTool(language);
+    List<Rule> allRules=lt.getAllRules();
     for (    Rule rule : allRules) {
       if (!(rule instanceof AbstractPatternRule)) {
         assertIdUniqueness(ids,ruleClasses,language,rule);

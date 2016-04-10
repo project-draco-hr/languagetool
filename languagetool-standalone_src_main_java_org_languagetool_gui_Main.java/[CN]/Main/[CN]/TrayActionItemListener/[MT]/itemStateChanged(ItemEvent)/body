@@ -1,9 +1,9 @@
 {
   try {
-    final Configuration config=ltSupport.getConfig();
+    Configuration config=ltSupport.getConfig();
     if (e.getStateChange() == ItemEvent.SELECTED) {
       config.setRunServer(true);
-      final boolean serverStarted=maybeStartServer();
+      boolean serverStarted=maybeStartServer();
       enableHttpServerItem.setState(serverStarted);
       config.setRunServer(serverStarted);
       config.saveConfiguration(ltSupport.getLanguage());

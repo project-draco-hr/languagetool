@@ -1,8 +1,8 @@
 {
   if (!xEventListeners.isEmpty()) {
-    for (    final XLinguServiceEventListener xEvLis : xEventListeners) {
+    for (    XLinguServiceEventListener xEvLis : xEventListeners) {
       if (xEvLis != null) {
-        final LinguServiceEvent xEvent=new LinguServiceEvent();
+        LinguServiceEvent xEvent=new LinguServiceEvent();
         xEvent.nEvent=LinguServiceEventFlags.PROOFREAD_AGAIN;
         xEvLis.processLinguServiceEvent(xEvent);
       }

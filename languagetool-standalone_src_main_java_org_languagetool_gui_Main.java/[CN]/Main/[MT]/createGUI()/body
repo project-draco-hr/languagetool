@@ -8,7 +8,7 @@
   autoCheckAction=new AutoCheckAction(true);
   frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
   frame.addWindowListener(new CloseListener());
-  final URL iconUrl=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(TRAY_ICON);
+  URL iconUrl=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(TRAY_ICON);
   frame.setIconImage(new ImageIcon(iconUrl).getImage());
   textArea=new JTextArea();
   textArea.setLineWrap(true);
@@ -17,8 +17,8 @@
   resultArea=new JTextPane();
   undoRedo=new UndoRedoSupport(this.textArea,messages);
   frame.setJMenuBar(createMenuBar());
-  final GridBagConstraints buttonCons=new GridBagConstraints();
-  final JPanel insidePanel=new JPanel();
+  GridBagConstraints buttonCons=new GridBagConstraints();
+  JPanel insidePanel=new JPanel();
   insidePanel.setOpaque(false);
   insidePanel.setLayout(new GridBagLayout());
   buttonCons.gridx=0;
@@ -31,7 +31,7 @@
   buttonCons.gridy=0;
   buttonCons.anchor=GridBagConstraints.LINE_START;
   insidePanel.add(languageBox,buttonCons);
-  final JCheckBox autoDetectBox=new JCheckBox(messages.getString("atd"));
+  JCheckBox autoDetectBox=new JCheckBox(messages.getString("atd"));
   buttonCons.gridx=2;
   buttonCons.gridy=0;
   buttonCons.gridwidth=GridBagConstraints.REMAINDER;
@@ -44,10 +44,10 @@
   buttonCons.anchor=GridBagConstraints.LINE_END;
   buttonCons.weightx=1.0;
   insidePanel.add(statusLabel,buttonCons);
-  final Container contentPane=frame.getContentPane();
-  final GridBagLayout gridLayout=new GridBagLayout();
+  Container contentPane=frame.getContentPane();
+  GridBagLayout gridLayout=new GridBagLayout();
   contentPane.setLayout(gridLayout);
-  final GridBagConstraints cons=new GridBagConstraints();
+  GridBagConstraints cons=new GridBagConstraints();
   cons.gridx=0;
   cons.gridy=1;
   cons.fill=GridBagConstraints.HORIZONTAL;
@@ -86,7 +86,7 @@
   cons.gridx=0;
   cons.gridy=2;
   cons.weighty=5.0f;
-  final JSplitPane splitPane=new JSplitPane(JSplitPane.VERTICAL_SPLIT,new JScrollPane(textArea),new JScrollPane(resultArea));
+  JSplitPane splitPane=new JSplitPane(JSplitPane.VERTICAL_SPLIT,new JScrollPane(textArea),new JScrollPane(resultArea));
   splitPane.setDividerLocation(200);
   contentPane.add(splitPane,cons);
   cons.fill=GridBagConstraints.HORIZONTAL;
@@ -130,7 +130,7 @@
   ltSupport.addLanguageToolListener(new LanguageToolListener(){
     @Override public void languageToolEventOccurred(    LanguageToolEvent event){
       if (event.getType() == LanguageToolEvent.Type.CHECKING_STARTED) {
-        final String msg=org.languagetool.tools.Tools.i18n(messages,"checkStart");
+        String msg=org.languagetool.tools.Tools.i18n(messages,"checkStart");
         statusLabel.setText(msg);
         if (event.getCaller() == getFrame()) {
           setWaitCursor();
@@ -142,7 +142,7 @@
           checkAction.setEnabled(true);
           unsetWaitCursor();
         }
-        final String msg=org.languagetool.tools.Tools.i18n(messages,"checkDone",event.getSource().getMatches().size(),event.getElapsedTime());
+        String msg=org.languagetool.tools.Tools.i18n(messages,"checkDone",event.getSource().getMatches().size(),event.getElapsedTime());
         statusLabel.setText(msg);
       }
  else       if (event.getType() == LanguageToolEvent.Type.LANGUAGE_CHANGED) {
@@ -151,7 +151,7 @@
  else       if (event.getType() == LanguageToolEvent.Type.RULE_ENABLED) {
       }
  else       if (event.getType() == LanguageToolEvent.Type.RULE_DISABLED) {
-        final String msg=org.languagetool.tools.Tools.i18n(messages,"checkDoneNoTime",event.getSource().getMatches().size());
+        String msg=org.languagetool.tools.Tools.i18n(messages,"checkDoneNoTime",event.getSource().getMatches().size());
         statusLabel.setText(msg);
       }
     }

@@ -1,6 +1,6 @@
 {
-  final RuleLink ruleLink=RuleLink.getFromString(uri);
-  final String ruleId=ruleLink.getId();
+  RuleLink ruleLink=RuleLink.getFromString(uri);
+  String ruleId=ruleLink.getId();
   if (uri.startsWith(DEACTIVATE_URL)) {
     ltSupport.disableRule(ruleId);
   }

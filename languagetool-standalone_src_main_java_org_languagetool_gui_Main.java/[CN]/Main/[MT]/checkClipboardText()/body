@@ -1,4 +1,4 @@
 {
-  final String s=getClipboardText();
+  String s=getClipboardText();
   textArea.setText(s);
 }

@@ -3,7 +3,7 @@
   int count=0;
   for (  Rule rule : rules) {
     count++;
-    final String id=rule.getId();
+    String id=rule.getId();
     JMenuItem ruleItem=new JMenuItem(rule.getDescription());
     ruleItem.addActionListener(new ActionListener(){
       @Override public void actionPerformed(      ActionEvent e){

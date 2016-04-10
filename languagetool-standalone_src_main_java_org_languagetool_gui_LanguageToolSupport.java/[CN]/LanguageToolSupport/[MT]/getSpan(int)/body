@@ -1,5 +1,5 @@
 {
-  for (  final Span cur : documentSpans) {
+  for (  Span cur : documentSpans) {
     if (cur.end > cur.start && cur.start <= offset && offset < cur.end) {
       return cur;
     }

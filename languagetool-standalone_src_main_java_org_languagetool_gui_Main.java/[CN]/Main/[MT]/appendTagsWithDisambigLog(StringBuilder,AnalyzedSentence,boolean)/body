@@ -21,8 +21,8 @@
     }
     Iterator<AnalyzedToken> iterator=t.iterator();
     while (iterator.hasNext()) {
-      final AnalyzedToken token=iterator.next();
-      final String posTag=token.getPOSTag();
+      AnalyzedToken token=iterator.next();
+      String posTag=token.getPOSTag();
       if (t.isSentenceStart()) {
         sb.append(StringTools.escapeHTML("<S>"));
       }

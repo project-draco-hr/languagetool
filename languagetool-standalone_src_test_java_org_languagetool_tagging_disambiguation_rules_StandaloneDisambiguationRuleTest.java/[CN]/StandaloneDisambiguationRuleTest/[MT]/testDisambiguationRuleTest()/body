@@ -1,4 +1,4 @@
 {
-  final DisambiguationRuleTest test=new DisambiguationRuleTest();
+  DisambiguationRuleTest test=new DisambiguationRuleTest();
   test.testDisambiguationRulesFromXML();
 }

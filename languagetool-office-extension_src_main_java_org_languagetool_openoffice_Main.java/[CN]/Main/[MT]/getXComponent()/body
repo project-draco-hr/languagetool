@@ -1,8 +1,8 @@
 {
   try {
-    final XMultiComponentFactory xMCF=xContext.getServiceManager();
-    final Object desktop=xMCF.createInstanceWithContext("com.sun.star.frame.Desktop",xContext);
-    final XDesktop xDesktop=UnoRuntime.queryInterface(XDesktop.class,desktop);
+    XMultiComponentFactory xMCF=xContext.getServiceManager();
+    Object desktop=xMCF.createInstanceWithContext("com.sun.star.frame.Desktop",xContext);
+    XDesktop xDesktop=UnoRuntime.queryInterface(XDesktop.class,desktop);
     return xDesktop.getCurrentComponent();
   }
  catch (  Throwable t) {
