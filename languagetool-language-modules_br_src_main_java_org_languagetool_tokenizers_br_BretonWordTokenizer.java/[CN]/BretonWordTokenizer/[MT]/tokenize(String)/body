@@ -1,6 +1,6 @@
 {
   String replaced=text.replaceAll("([Cc])['????????]([Hh])","$1\u0001\u0001BR_APOS\u0001\u0001$2").replaceAll("(\\p{L})['????????]","$1\u0001\u0001BR_APOS\u0001\u0001 ");
-  final List<String> tokenList=super.tokenize(replaced);
+  List<String> tokenList=super.tokenize(replaced);
   List<String> tokens=new ArrayList<>();
   Iterator<String> itr=tokenList.iterator();
   while (itr.hasNext()) {

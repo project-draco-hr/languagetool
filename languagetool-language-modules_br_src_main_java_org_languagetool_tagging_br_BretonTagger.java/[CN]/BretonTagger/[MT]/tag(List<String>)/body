@@ -2,17 +2,17 @@
   List<AnalyzedToken> taggerTokens;
   List<AnalyzedToken> lowerTaggerTokens;
   List<AnalyzedToken> upperTaggerTokens;
-  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
+  List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>();
   int pos=0;
   Matcher matcher;
   for (  String word : sentenceTokens) {
     String probeWord=word;
     for (; ; ) {
-      final List<AnalyzedToken> l=new ArrayList<>();
-      final String lowerWord=probeWord.toLowerCase(conversionLocale);
+      List<AnalyzedToken> l=new ArrayList<>();
+      String lowerWord=probeWord.toLowerCase(conversionLocale);
       taggerTokens=asAnalyzedTokenListForTaggedWords(word,getWordTagger().tag(probeWord));
       lowerTaggerTokens=asAnalyzedTokenListForTaggedWords(word,getWordTagger().tag(lowerWord));
-      final boolean isLowercase=probeWord.equals(lowerWord);
+      boolean isLowercase=probeWord.equals(lowerWord);
       addTokens(taggerTokens,l);
       if (!isLowercase) {
         addTokens(lowerTaggerTokens,l);

@@ -8,6 +8,6 @@
  catch (  Exception e) {
     return new ArrayList<>();
   }
-  final String[] list=result.split(" ");
+  String[] list=result.split(" ");
   return Arrays.asList(list);
 }

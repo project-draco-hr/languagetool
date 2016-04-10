@@ -2,7 +2,7 @@
   String tokenString=tokenReadings.getToken();
   Synthesizer ukrainianSynthesizer=ukrainian.getSynthesizer();
   List<String> suggestions=new ArrayList<>();
-  final String requiredPostTagsRegEx=":(" + StringUtils.join(posTagsToFind,"|") + ")";
+  String requiredPostTagsRegEx=":(" + StringUtils.join(posTagsToFind,"|") + ")";
   for (  AnalyzedToken analyzedToken : tokenReadings.getReadings()) {
     String oldPosTag=analyzedToken.getPOSTag();
     if (oldPosTag == null)     continue;

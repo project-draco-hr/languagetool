@@ -1,15 +1,15 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
-  final AnalyzedTokenReadings[] tokensWithWS=sentence.getTokens();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokensWithoutWhitespace();
+  AnalyzedTokenReadings[] tokensWithWS=sentence.getTokens();
   String prevToken="";
   for (int i=1; i < tokens.length; i++) {
-    final String token=tokens[i].getToken();
+    String token=tokens[i].getToken();
     if (isWord(token) && prevToken.equalsIgnoreCase(token) && !ignore(sentence,tokensWithWS,i)) {
-      final int prevPos=tokens[i - 1].getStartPos();
-      final int pos=tokens[i].getStartPos();
-      final RuleMatch ruleMatch=new RuleMatch(this,prevPos,pos + prevToken.length(),messages.getString("repetition"),messages.getString("desc_repetition_short"));
-      final List<String> replacements=new ArrayList<>();
+      int prevPos=tokens[i - 1].getStartPos();
+      int pos=tokens[i].getStartPos();
+      RuleMatch ruleMatch=new RuleMatch(this,prevPos,pos + prevToken.length(),messages.getString("repetition"),messages.getString("desc_repetition_short"));
+      List<String> replacements=new ArrayList<>();
       replacements.add(prevToken + " " + token);
       replacements.add(prevToken);
       replacements.add(prevToken + "???");

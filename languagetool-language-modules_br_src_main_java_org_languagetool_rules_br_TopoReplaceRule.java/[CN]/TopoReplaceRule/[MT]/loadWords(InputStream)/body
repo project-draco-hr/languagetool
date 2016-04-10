@@ -1,5 +1,5 @@
 {
-  final List<Map<String,String>> list=new ArrayList<>();
+  List<Map<String,String>> list=new ArrayList<>();
   try (InputStreamReader isr=new InputStreamReader(stream,getEncoding());BufferedReader br=new BufferedReader(isr)){
     String line;
     while ((line=br.readLine()) != null) {
@@ -7,14 +7,14 @@
       if (line.isEmpty() || line.charAt(0) == '#') {
         continue;
       }
-      final String[] parts=line.split("=");
+      String[] parts=line.split("=");
       if (parts.length != 2) {
         throw new IOException("Format error in file " + JLanguageTool.getDataBroker().getFromRulesDirAsUrl(getFileName()) + ", line: "+ line);
       }
-      final String[] wrongForms=parts[0].split("\\|");
+      String[] wrongForms=parts[0].split("\\|");
       for (      String wrongForm : wrongForms) {
         int wordCount=0;
-        final List<String> tokens=getWordTokenizer().tokenize(wrongForm);
+        List<String> tokens=getWordTokenizer().tokenize(wrongForm);
         for (        String token : tokens) {
           if (!StringTools.isWhitespace(token)) {
             wordCount++;
@@ -27,7 +27,7 @@
       }
     }
   }
-   final List<Map<String,String>> result=new ArrayList<>();
+   List<Map<String,String>> result=new ArrayList<>();
   for (  Map<String,String> map : list) {
     result.add(Collections.unmodifiableMap(map));
   }

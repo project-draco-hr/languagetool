@@ -6,20 +6,20 @@
     return verb.equals("memmortigi") ? "nt" : "tr";
   }
   for (; ; ) {
-    final boolean isTransitive=setTransitiveVerbs.contains(verb);
-    final boolean isIntransitive=setIntransitiveVerbs.contains(verb);
+    boolean isTransitive=setTransitiveVerbs.contains(verb);
+    boolean isIntransitive=setIntransitiveVerbs.contains(verb);
     if (isTransitive) {
       return isIntransitive ? "tn" : "tr";
     }
  else     if (isIntransitive) {
       return "nt";
     }
-    final Matcher matcherPrefix=patternPrefix.matcher(verb);
+    Matcher matcherPrefix=patternPrefix.matcher(verb);
     if (matcherPrefix.find()) {
       verb=matcherPrefix.group(1);
       continue;
     }
-    final Matcher matcherSuffix=patternSuffix.matcher(verb);
+    Matcher matcherSuffix=patternSuffix.matcher(verb);
     if (matcherSuffix.find()) {
       verb=matcherSuffix.group(1) + "i";
       continue;

@@ -1,10 +1,10 @@
 {
-  final List<RuleMatch> ruleMatches=new ArrayList<>();
-  final AnalyzedTokenReadings[] tokens=sentence.getTokens();
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=sentence.getTokens();
   String prevToken="";
   for (int i=1; i < tokens.length; i++) {
-    final String token=tokens[i].getToken();
-    final boolean isWhiteBefore=tokens[i].isWhitespaceBefore() && !"\u00A0".equals(prevToken) && !"\u202F".equals(prevToken);
+    String token=tokens[i].getToken();
+    boolean isWhiteBefore=tokens[i].isWhitespaceBefore() && !"\u00A0".equals(prevToken) && !"\u202F".equals(prevToken);
     String msg=null;
     int fixLen=0;
     String suggestionText=null;
@@ -54,7 +54,7 @@ suggestionText=prevToken + "???;";
 fixLen=1;
 }
  else if (token.equals(":") && !prevToken.equals("\u00a0") && !prevToken.equals("\u202f")) {
-final Matcher matcherUrl=urlPattern.matcher(prevToken);
+Matcher matcherUrl=urlPattern.matcher(prevToken);
 if (!matcherUrl.find()) {
 msg="Deux-points pr??c??d??s d'une espace fine ins??cable.";
 suggestionText=prevToken + "???:";
@@ -78,9 +78,9 @@ suggestionText="?????";
 fixLen=0;
 }
 if (msg != null) {
-final int fromPos=tokens[i - 1].getStartPos();
-final int toPos=tokens[i - 1].getStartPos() + fixLen + tokens[i - 1].getToken().length();
-final RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,msg,"Ins??rer un espace ins??cable");
+int fromPos=tokens[i - 1].getStartPos();
+int toPos=tokens[i - 1].getStartPos() + fixLen + tokens[i - 1].getToken().length();
+RuleMatch ruleMatch=new RuleMatch(this,fromPos,toPos,msg,"Ins??rer un espace ins??cable");
 if (suggestionText != null) {
 ruleMatch.setSuggestedReplacement(suggestionText);
 }

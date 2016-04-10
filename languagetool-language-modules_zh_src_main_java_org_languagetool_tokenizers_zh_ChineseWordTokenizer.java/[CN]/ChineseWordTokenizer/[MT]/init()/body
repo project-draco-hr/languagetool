@@ -3,7 +3,7 @@
     chinesdJF=CJFBeanFactory.getChineseJF();
   }
   if (seg == null) {
-    final ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
+    ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
     try (InputStream coreDictIn=dataBroker.getFromResourceDirAsStream("/zh/coreDict.dct");InputStream bigramDictIn=dataBroker.getFromResourceDirAsStream("/zh/BigramDict.dct");InputStream personTaggerDctIn=dataBroker.getFromResourceDirAsStream("/zh/nr.dct");InputStream personTaggerCtxIn=dataBroker.getFromResourceDirAsStream("/zh/nr.ctx");InputStream transPersonTaggerDctIn=dataBroker.getFromResourceDirAsStream("/zh/tr.dct");InputStream transPersonTaggerCtxIn=dataBroker.getFromResourceDirAsStream("/zh/tr.ctx");InputStream placeTaggerDctIn=dataBroker.getFromResourceDirAsStream("/zh/ns.dct");InputStream placeTaggerCtxIn=dataBroker.getFromResourceDirAsStream("/zh/ns.ctx");InputStream lexTaggerCtxIn=dataBroker.getFromResourceDirAsStream("/zh/lexical.ctx")){
       seg=new SegTag(1,coreDictIn,bigramDictIn,personTaggerDctIn,personTaggerCtxIn,transPersonTaggerDctIn,transPersonTaggerCtxIn,placeTaggerDctIn,placeTaggerCtxIn,lexTaggerCtxIn);
     }

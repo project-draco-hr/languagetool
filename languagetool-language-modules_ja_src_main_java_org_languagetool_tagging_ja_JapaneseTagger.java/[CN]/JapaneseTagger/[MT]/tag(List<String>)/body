@@ -1,5 +1,5 @@
 {
-  final List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>(sentenceTokens.size());
+  List<AnalyzedTokenReadings> tokenReadings=new ArrayList<>(sentenceTokens.size());
   int pos=0;
   for (  String word : sentenceTokens) {
     AnalyzedToken at=asAnalyzedToken(word);
