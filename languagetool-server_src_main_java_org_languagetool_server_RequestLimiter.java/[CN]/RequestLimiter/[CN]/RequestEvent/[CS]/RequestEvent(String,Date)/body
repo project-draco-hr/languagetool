@@ -1,4 +1,4 @@
 {
   this.ip=ip;
-  this.date=date;
+  this.date=new Date(date.getTime());
 }
