@@ -1,0 +1,14 @@
+{
+  disableCertChecks();
+  String keyStore=RemoteLanguageToolIntegrationTest.class.getResource("/org/languagetool/remote/test-keystore.jks").getFile();
+  HTTPSServerConfig config=new HTTPSServerConfig(new File(keyStore),"mytest");
+  HTTPSServer server=new HTTPSServer(config,false,"localhost",Collections.singleton("127.0.0.1"));
+  try {
+    server.run();
+    RemoteLanguageTool lt=new RemoteLanguageTool(new URL(serverUrl.replace("http:","https:")));
+    assertThat(lt.check("This is a correct sentence.","en").getMatches().size(),is(0));
+  }
+  finally {
+    server.stop();
+  }
+}
