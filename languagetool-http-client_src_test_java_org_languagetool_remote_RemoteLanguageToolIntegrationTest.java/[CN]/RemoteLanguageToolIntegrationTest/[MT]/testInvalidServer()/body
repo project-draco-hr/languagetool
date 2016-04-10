@@ -1,0 +1,4 @@
+{
+  RemoteLanguageTool lt=new RemoteLanguageTool(new URL("http://does-not-exist"));
+  lt.check("foo","en");
+}

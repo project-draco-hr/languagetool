@@ -1,0 +1,4 @@
+{
+  String httpsUrl="htp://" + HTTPServerConfig.DEFAULT_HOST + ":"+ HTTPServerConfig.DEFAULT_PORT;
+  new RemoteLanguageTool(new URL(httpsUrl));
+}

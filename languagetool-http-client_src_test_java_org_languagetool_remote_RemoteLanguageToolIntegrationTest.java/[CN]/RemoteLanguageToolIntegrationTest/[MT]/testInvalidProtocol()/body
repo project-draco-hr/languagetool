@@ -1,0 +1,5 @@
+{
+  String httpsUrl="ftp://" + HTTPServerConfig.DEFAULT_HOST + ":"+ HTTPServerConfig.DEFAULT_PORT;
+  RemoteLanguageTool lt=new RemoteLanguageTool(new URL(httpsUrl));
+  lt.check("foo","en");
+}

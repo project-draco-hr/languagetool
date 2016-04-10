@@ -1,0 +1,3 @@
+{
+  return check(getUrlParams(text,fallbackLangCode) + "&autodetect=1");
+}

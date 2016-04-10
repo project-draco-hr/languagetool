@@ -1,0 +1,18 @@
+{
+  try {
+    HttpURLConnection conn=(HttpURLConnection)serverUrl.openConnection();
+    conn.setDoOutput(true);
+    conn.setInstanceFollowRedirects(false);
+    conn.setRequestMethod("POST");
+    conn.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+    conn.setRequestProperty("charset","utf-8");
+    conn.setRequestProperty("Content-Length",Integer.toString(postData.length));
+    try (DataOutputStream wr=new DataOutputStream(conn.getOutputStream())){
+      wr.write(postData);
+    }
+     return conn;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

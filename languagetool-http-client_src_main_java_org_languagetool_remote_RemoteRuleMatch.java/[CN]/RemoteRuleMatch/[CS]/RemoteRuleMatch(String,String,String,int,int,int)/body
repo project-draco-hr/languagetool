@@ -1,0 +1,8 @@
+{
+  this.ruleId=Objects.requireNonNull(ruleId);
+  this.msg=Objects.requireNonNull(msg);
+  this.context=Objects.requireNonNull(context);
+  this.contextOffset=contextOffset;
+  this.offset=offset;
+  this.errorLength=errorLength;
+}

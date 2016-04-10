@@ -1,0 +1,6 @@
+{
+  if (categoryId != null && category != null) {
+    return Optional.of(new Category(new CategoryId(categoryId),category));
+  }
+  return Optional.empty();
+}

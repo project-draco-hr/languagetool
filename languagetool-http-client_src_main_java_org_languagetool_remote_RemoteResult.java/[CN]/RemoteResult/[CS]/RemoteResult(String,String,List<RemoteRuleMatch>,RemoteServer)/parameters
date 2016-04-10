@@ -1,0 +1,4 @@
+String language
+String languageCode
+List<RemoteRuleMatch> matches
+RemoteServer remoteServer

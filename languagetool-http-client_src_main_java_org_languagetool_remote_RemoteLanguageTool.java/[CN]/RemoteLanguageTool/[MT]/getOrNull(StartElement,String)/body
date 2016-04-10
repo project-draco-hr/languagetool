@@ -1,0 +1,7 @@
+{
+  Attribute val=elem.getAttributeByName(new QName(attributeName));
+  if (val != null) {
+    return val.getValue();
+  }
+  return null;
+}

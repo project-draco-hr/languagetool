@@ -1,0 +1,6 @@
+String ruleId
+String msg
+String context
+int contextOffset
+int offset
+int errorLength

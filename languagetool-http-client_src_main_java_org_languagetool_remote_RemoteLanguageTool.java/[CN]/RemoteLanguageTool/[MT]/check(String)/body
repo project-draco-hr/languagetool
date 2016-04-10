@@ -1,0 +1,26 @@
+{
+  byte[] postData=urlParameters.getBytes(StandardCharsets.UTF_8);
+  HttpURLConnection conn=getConnection(postData);
+  try {
+    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+      try (InputStream inputStream=conn.getInputStream()){
+        return parseXml(inputStream);
+      }
+     }
+ else {
+      try (InputStream inputStream=conn.getErrorStream()){
+        String error=StringTools.readStream(inputStream,"utf-8");
+        throw new RuntimeException("Got error: " + error + " - HTTP response code "+ conn.getResponseCode());
+      }
+     }
+  }
+ catch (  ConnectException e) {
+    throw new RuntimeException("Could not connect to server at " + serverUrl,e);
+  }
+catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+ finally {
+    conn.disconnect();
+  }
+}
