@@ -5,6 +5,6 @@
   if (motherTongue != null) {
     urlOptions+="&motherTongue=" + motherTongue.getShortName();
   }
-  final URL url=new URL("http://localhost:" + HTTPTools.getDefaultPort() + urlOptions);
+  URL url=new URL("http://localhost:" + HTTPTools.getDefaultPort() + urlOptions);
   return HTTPTools.checkAtUrl(url);
 }

@@ -5,13 +5,13 @@ synchronized (this) {
   String text=null;
   String remoteAddress=null;
   try {
-    final URI requestedUri=httpExchange.getRequestURI();
-    final String origAddress=httpExchange.getRemoteAddress().getAddress().getHostAddress();
-    final String realAddressOrNull=getRealRemoteAddressOrNull(httpExchange);
+    URI requestedUri=httpExchange.getRequestURI();
+    String origAddress=httpExchange.getRemoteAddress().getAddress().getHostAddress();
+    String realAddressOrNull=getRealRemoteAddressOrNull(httpExchange);
     remoteAddress=realAddressOrNull != null ? realAddressOrNull : origAddress;
-    final Map<String,String> parameters=getRequestQuery(httpExchange,requestedUri);
+    Map<String,String> parameters=getRequestQuery(httpExchange,requestedUri);
     if (requestLimiter != null && !requestLimiter.isAccessOkay(remoteAddress)) {
-      final String errorMessage="Error: Access from " + remoteAddress + " (useragent: "+ parameters.get("useragent")+ ") denied - too many requests."+ " Allowed maximum requests: "+ requestLimiter.getRequestLimit()+ " requests per "+ requestLimiter.getRequestLimitPeriodInSeconds()+ " seconds";
+      String errorMessage="Error: Access from " + remoteAddress + " (useragent: "+ parameters.get("useragent")+ ") denied - too many requests."+ " Allowed maximum requests: "+ requestLimiter.getRequestLimit()+ " requests per "+ requestLimiter.getRequestLimitPeriodInSeconds()+ " seconds";
       sendError(httpExchange,HttpURLConnection.HTTP_FORBIDDEN,errorMessage);
       print(errorMessage);
       return;
@@ -44,7 +44,7 @@ synchronized (this) {
       }
     }
  else {
-      final String errorMessage="Error: Access from " + StringTools.escapeXML(origAddress) + " denied";
+      String errorMessage="Error: Access from " + StringTools.escapeXML(origAddress) + " denied";
       sendError(httpExchange,HttpURLConnection.HTTP_FORBIDDEN,errorMessage);
       throw new RuntimeException(errorMessage);
     }

@@ -1,11 +1,11 @@
 {
-  final Map<String,String> parameters=new HashMap<>();
+  Map<String,String> parameters=new HashMap<>();
   for (  String pair : pairs) {
-    final int delimPos=pair.indexOf('=');
+    int delimPos=pair.indexOf('=');
     if (delimPos != -1) {
-      final String param=pair.substring(0,delimPos);
-      final String key=URLDecoder.decode(param,ENCODING);
-      final String value=URLDecoder.decode(pair.substring(delimPos + 1),ENCODING);
+      String param=pair.substring(0,delimPos);
+      String key=URLDecoder.decode(param,ENCODING);
+      String value=URLDecoder.decode(pair.substring(delimPos + 1),ENCODING);
       parameters.put(key,value);
     }
   }

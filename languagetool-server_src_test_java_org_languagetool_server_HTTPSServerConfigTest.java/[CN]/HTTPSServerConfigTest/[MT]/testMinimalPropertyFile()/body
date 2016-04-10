@@ -1,6 +1,6 @@
 {
-  final String propertyFile=HTTPSServerConfigTest.class.getResource("/org/languagetool/server/https-server-minimal.properties").getFile();
-  final HTTPSServerConfig config=new HTTPSServerConfig(("--config " + propertyFile).split(" "));
+  String propertyFile=HTTPSServerConfigTest.class.getResource("/org/languagetool/server/https-server-minimal.properties").getFile();
+  HTTPSServerConfig config=new HTTPSServerConfig(("--config " + propertyFile).split(" "));
   assertThat(config.getPort(),is(8081));
   assertThat(config.isPublicAccess(),is(false));
   assertThat(config.isVerbose(),is(false));

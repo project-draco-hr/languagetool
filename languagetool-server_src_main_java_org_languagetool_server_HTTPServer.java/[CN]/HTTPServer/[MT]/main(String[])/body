@@ -6,10 +6,10 @@
     printCommonOptions();
     System.exit(1);
   }
-  final boolean runInternal=false;
-  final HTTPServerConfig config=new HTTPServerConfig(args);
+  boolean runInternal=false;
+  HTTPServerConfig config=new HTTPServerConfig(args);
   try {
-    final HTTPServer server;
+    HTTPServer server;
     System.out.println("WARNING: running in HTTP mode, consider using " + HTTPSServer.class.getName() + " for encrypted connections");
     if (config.isPublicAccess()) {
       System.out.println("WARNING: running in public mode, LanguageTool API can be accessed without restrictions!");

@@ -1,8 +1,8 @@
 {
   return new HttpsConfigurator(sslContext){
     @Override public void configure(    HttpsParameters params){
-      final SSLContext context=getSSLContext();
-      final SSLParameters sslParams=context.getDefaultSSLParameters();
+      SSLContext context=getSSLContext();
+      SSLParameters sslParams=context.getDefaultSSLParameters();
       params.setNeedClientAuth(false);
       params.setSSLParameters(sslParams);
     }

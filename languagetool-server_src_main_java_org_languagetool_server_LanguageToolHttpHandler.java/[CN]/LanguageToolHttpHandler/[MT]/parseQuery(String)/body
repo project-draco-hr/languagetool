@@ -1,8 +1,8 @@
 {
-  final Map<String,String> parameters=new HashMap<>();
+  Map<String,String> parameters=new HashMap<>();
   if (query != null) {
-    final String[] pairs=query.split("[&]");
-    final Map<String,String> parameterMap=getParameterMap(pairs);
+    String[] pairs=query.split("[&]");
+    Map<String,String> parameterMap=getParameterMap(pairs);
     parameters.putAll(parameterMap);
   }
   return parameters;

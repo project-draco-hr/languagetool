@@ -1,12 +1,12 @@
 {
   try (FileInputStream keyStoreStream=new FileInputStream(keyStoreFile)){
-    final KeyStore keystore=KeyStore.getInstance("JKS");
+    KeyStore keystore=KeyStore.getInstance("JKS");
     keystore.load(keyStoreStream,passPhrase.toCharArray());
-    final KeyManagerFactory kmf=KeyManagerFactory.getInstance("SunX509");
+    KeyManagerFactory kmf=KeyManagerFactory.getInstance("SunX509");
     kmf.init(keystore,passPhrase.toCharArray());
-    final TrustManagerFactory tmf=TrustManagerFactory.getInstance("SunX509");
+    TrustManagerFactory tmf=TrustManagerFactory.getInstance("SunX509");
     tmf.init(keystore);
-    final SSLContext sslContext=SSLContext.getInstance("TLS");
+    SSLContext sslContext=SSLContext.getInstance("TLS");
     sslContext.init(kmf.getKeyManagers(),tmf.getTrustManagers(),null);
     return sslContext;
   }

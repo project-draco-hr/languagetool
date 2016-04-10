@@ -1,6 +1,6 @@
 {
-  final String postData="language=" + lang.getShortName() + "&text="+ URLEncoder.encode(text,"UTF-8");
-  final URL url=new URL("http://localhost:" + HTTPTools.getDefaultPort());
+  String postData="language=" + lang.getShortName() + "&text="+ URLEncoder.encode(text,"UTF-8");
+  URL url=new URL("http://localhost:" + HTTPTools.getDefaultPort());
   try {
     return HTTPTools.checkAtUrlByPost(url,postData);
   }

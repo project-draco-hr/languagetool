@@ -1,33 +1,33 @@
 {
-  final long timeStart=System.currentTimeMillis();
+  long timeStart=System.currentTimeMillis();
   if (text.length() > maxTextLength) {
     throw new TextTooLongException("Your text exceeds this server's limit of " + maxTextLength + " characters (it's "+ text.length()+ " characters). Please submit a shorter text.");
   }
-  final boolean autoDetectLanguage=getLanguageAutoDetect(parameters);
-  final Language lang=getLanguage(text,parameters.get("language"),autoDetectLanguage);
-  final String motherTongueParam=parameters.get("motherTongue");
-  final Language motherTongue=motherTongueParam != null ? Languages.getLanguageForShortName(motherTongueParam) : null;
-  final boolean useEnabledOnly="yes".equals(parameters.get("enabledOnly"));
-  final String enabledParam=parameters.get("enabled");
-  final List<String> enabledRules=new ArrayList<>();
+  boolean autoDetectLanguage=getLanguageAutoDetect(parameters);
+  Language lang=getLanguage(text,parameters.get("language"),autoDetectLanguage);
+  String motherTongueParam=parameters.get("motherTongue");
+  Language motherTongue=motherTongueParam != null ? Languages.getLanguageForShortName(motherTongueParam) : null;
+  boolean useEnabledOnly="yes".equals(parameters.get("enabledOnly"));
+  String enabledParam=parameters.get("enabled");
+  List<String> enabledRules=new ArrayList<>();
   if (enabledParam != null) {
     enabledRules.addAll(Arrays.asList(enabledParam.split(",")));
   }
-  final List<String> disabledRules=getCommaSeparatedStrings("disabled",parameters);
-  final List<CategoryId> enabledCategories=getCategoryIds("enabledCategories",parameters);
-  final List<CategoryId> disabledCategories=getCategoryIds("disabledCategories",parameters);
+  List<String> disabledRules=getCommaSeparatedStrings("disabled",parameters);
+  List<CategoryId> enabledCategories=getCategoryIds("enabledCategories",parameters);
+  List<CategoryId> disabledCategories=getCategoryIds("disabledCategories",parameters);
   if ((disabledRules.size() > 0 || disabledCategories.size() > 0) && useEnabledOnly) {
     throw new IllegalArgumentException("You cannot specify disabled rules or categories using enabledOnly=yes");
   }
-  final boolean useQuerySettings=enabledRules.size() > 0 || disabledRules.size() > 0 || enabledCategories.size() > 0 || disabledCategories.size() > 0;
-  final QueryParams params=new QueryParams(enabledRules,disabledRules,enabledCategories,disabledCategories,useEnabledOnly,useQuerySettings);
-  final Future<List<RuleMatch>> future=executorService.submit(new Callable<List<RuleMatch>>(){
+  boolean useQuerySettings=enabledRules.size() > 0 || disabledRules.size() > 0 || enabledCategories.size() > 0 || disabledCategories.size() > 0;
+  QueryParams params=new QueryParams(enabledRules,disabledRules,enabledCategories,disabledCategories,useEnabledOnly,useQuerySettings);
+  Future<List<RuleMatch>> future=executorService.submit(new Callable<List<RuleMatch>>(){
     @Override public List<RuleMatch> call() throws Exception {
       return getRuleMatches(text,parameters,lang,motherTongue,params);
     }
   }
 );
-  final List<RuleMatch> matches;
+  List<RuleMatch> matches;
   if (maxCheckTimeMillis < 0) {
     matches=future.get();
   }
@@ -52,7 +52,7 @@ catch (    TimeoutException e) {
   String xmlResponse=getXmlResponse(text,lang,motherTongue,matches);
   String messageSent="sent";
   String languageMessage=lang.getShortNameWithCountryAndVariant();
-  final String referrer=httpExchange.getRequestHeaders().getFirst("Referer");
+  String referrer=httpExchange.getRequestHeaders().getFirst("Referer");
   try {
     httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK,xmlResponse.getBytes(ENCODING).length);
     httpExchange.getResponseBody().write(xmlResponse.getBytes(ENCODING));

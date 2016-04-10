@@ -1,5 +1,5 @@
 {
-  final String propertyValue=(String)props.get(propertyName);
+  String propertyValue=(String)props.get(propertyName);
   if (propertyValue == null || propertyValue.trim().isEmpty()) {
     throw new IllegalConfigurationException("Property '" + propertyName + "' must be set in "+ config);
   }

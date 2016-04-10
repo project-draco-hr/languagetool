@@ -1,5 +1,5 @@
 {
-  final HTTPServer server=new HTTPServer();
+  HTTPServer server=new HTTPServer();
   assertFalse(server.isRunning());
   try {
     server.run();

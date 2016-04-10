@@ -1,8 +1,8 @@
 {
-  final StringBuilder sb=new StringBuilder();
+  StringBuilder sb=new StringBuilder();
   for (  ExampleSentence sentence : sentences) {
-    final String sentenceStr=sentence.getSentence().replace("<marker>","").replace("</marker>","");
-    final String cleanSentenceStr=sentenceStr.replaceAll("[\\n\\t]+","");
+    String sentenceStr=sentence.getSentence().replace("<marker>","").replace("</marker>","");
+    String cleanSentenceStr=sentenceStr.replaceAll("[\\n\\t]+","");
     sb.append(cleanSentenceStr);
     sb.append("\n\n");
   }

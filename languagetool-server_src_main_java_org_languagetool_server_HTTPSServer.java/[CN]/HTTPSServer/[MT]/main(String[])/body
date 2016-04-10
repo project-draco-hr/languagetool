@@ -8,11 +8,11 @@
     printCommonOptions();
     System.exit(1);
   }
-  final boolean runInternal=false;
+  boolean runInternal=false;
   try {
-    final HTTPSServerConfig config=new HTTPSServerConfig(args);
+    HTTPSServerConfig config=new HTTPSServerConfig(args);
     try {
-      final HTTPSServer server;
+      HTTPSServer server;
       if (config.isPublicAccess()) {
         System.out.println("WARNING: running in public mode, LanguageTool API can be accessed without restrictions!");
         server=new HTTPSServer(config,runInternal,null,null);

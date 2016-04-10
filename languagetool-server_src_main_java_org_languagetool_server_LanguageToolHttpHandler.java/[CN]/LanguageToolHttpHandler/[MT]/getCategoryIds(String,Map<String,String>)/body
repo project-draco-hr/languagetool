@@ -1,6 +1,6 @@
 {
   List<String> stringIds=getCommaSeparatedStrings(paramName,parameters);
-  final List<CategoryId> ids=new ArrayList<>();
+  List<CategoryId> ids=new ArrayList<>();
   for (  String stringId : stringIds) {
     ids.add(new CategoryId(stringId));
   }

@@ -1,5 +1,5 @@
 {
-  final JLanguageTool lt=new JLanguageTool(lang,motherTongue);
+  JLanguageTool lt=new JLanguageTool(lang,motherTongue);
   if (languageModelDir != null) {
     lt.activateLanguageModelRules(languageModelDir);
   }

@@ -1,8 +1,8 @@
 {
   HTTPTools.disableCertChecks();
-  final HTTPSServerConfig config=new HTTPSServerConfig(HTTPTools.getDefaultPort(),false,getKeystoreFile(),KEYSTORE_PASSWORD);
+  HTTPSServerConfig config=new HTTPSServerConfig(HTTPTools.getDefaultPort(),false,getKeystoreFile(),KEYSTORE_PASSWORD);
   config.setMaxTextLength(500);
-  final HTTPSServer server=new HTTPSServer(config,false,HTTPServerConfig.DEFAULT_HOST,null);
+  HTTPSServer server=new HTTPSServer(config,false,HTTPServerConfig.DEFAULT_HOST,null);
   try {
     server.run();
     runTests();
