@@ -1,20 +1,20 @@
 {
-  final String qualifier=getQualifier(lang);
+  String qualifier=getQualifier(lang);
   try (FileInputStream fis=new FileInputStream(configFile)){
-    final Properties props=new Properties();
+    Properties props=new Properties();
     props.load(fis);
     disabledRuleIds.addAll(getListFromProperties(props,DISABLED_RULES_KEY + qualifier));
     enabledRuleIds.addAll(getListFromProperties(props,ENABLED_RULES_KEY + qualifier));
     disabledCategoryNames.addAll(getListFromProperties(props,DISABLED_CATEGORIES_KEY + qualifier));
-    final String languageStr=(String)props.get(LANGUAGE_KEY);
+    String languageStr=(String)props.get(LANGUAGE_KEY);
     if (languageStr != null) {
       language=Languages.getLanguageForShortName(languageStr);
     }
-    final String motherTongueStr=(String)props.get(MOTHER_TONGUE_KEY);
+    String motherTongueStr=(String)props.get(MOTHER_TONGUE_KEY);
     if (motherTongueStr != null && !motherTongueStr.equals("xx")) {
       motherTongue=Languages.getLanguageForShortName(motherTongueStr);
     }
-    final String ngramDir=(String)props.get(NGRAM_DIR_KEY);
+    String ngramDir=(String)props.get(NGRAM_DIR_KEY);
     if (ngramDir != null) {
       ngramDirectory=new File(ngramDir);
     }
@@ -38,11 +38,11 @@
       }
     }
     lookAndFeelName=(String)props.get(LF_NAME_KEY);
-    final String serverPortString=(String)props.get(SERVER_PORT_KEY);
+    String serverPortString=(String)props.get(SERVER_PORT_KEY);
     if (serverPortString != null) {
       serverPort=Integer.parseInt(serverPortString);
     }
-    final String extRules=(String)props.get(EXTERNAL_RULE_DIRECTORY);
+    String extRules=(String)props.get(EXTERNAL_RULE_DIRECTORY);
     if (extRules != null) {
       externalRuleDirectory=extRules;
     }

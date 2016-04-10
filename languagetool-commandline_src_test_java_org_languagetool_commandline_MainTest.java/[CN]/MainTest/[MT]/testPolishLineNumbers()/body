@@ -1,9 +1,9 @@
 {
-  final File input=writeToTempFile("Test.\n" + "Test.\n" + "Test.\n"+ "Test.\n"+ "Test.\n"+ "Test.\n"+ "\n"+ "Test kt??ry wyka??e b????d.");
-  final String[] args={"-l","pl","-c","utf-8",input.getAbsolutePath()};
+  File input=writeToTempFile("Test.\n" + "Test.\n" + "Test.\n"+ "Test.\n"+ "Test.\n"+ "Test.\n"+ "\n"+ "Test kt??ry wyka??e b????d.");
+  String[] args={"-l","pl","-c","utf-8",input.getAbsolutePath()};
   Main.main(args);
-  final String stdout=new String(this.out.toByteArray(),"UTF-8");
-  final String stderr=new String(this.err.toByteArray());
+  String stdout=new String(this.out.toByteArray(),"UTF-8");
+  String stderr=new String(this.err.toByteArray());
   assertTrue(stderr.indexOf("Expected text language: Polish") == 0);
   assertTrue(stdout.contains("Line 8, column 1, Rule ID: BRAK_PRZECINKA_KTORY"));
 }

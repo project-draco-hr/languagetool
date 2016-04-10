@@ -1,5 +1,5 @@
 {
-  final JPanel motherTonguePanel=new JPanel();
+  JPanel motherTonguePanel=new JPanel();
   motherTonguePanel.add(new JLabel(messages.getString("guiMotherTongue")),cons);
   motherTongueBox=new JComboBox<>(getPossibleMotherTongues());
   if (config.getMotherTongue() != null) {

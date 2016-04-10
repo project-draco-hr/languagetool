@@ -15,7 +15,7 @@
     throw new IllegalArgumentException("Profiling mode cannot be used with input from STDIN");
   }
   int runCount=1;
-  final List<Rule> rules=lt.getAllActiveRules();
+  List<Rule> rules=lt.getAllActiveRules();
   if (profileRules) {
     System.out.printf("Testing %d rules\n",rules.size());
     System.out.println("Rule ID\tTime\tSentences\tMatches\tSentences per sec.");
@@ -29,7 +29,7 @@
     currentRule=rules.get(ruleIndex);
     int matches=0;
     long sentences=0;
-    final long startTime=System.currentTimeMillis();
+    long startTime=System.currentTimeMillis();
     try (InputStreamReader isr=getInputStreamReader(filename,encoding);BufferedReader br=new BufferedReader(isr)){
       String line;
       int lineCount=0;

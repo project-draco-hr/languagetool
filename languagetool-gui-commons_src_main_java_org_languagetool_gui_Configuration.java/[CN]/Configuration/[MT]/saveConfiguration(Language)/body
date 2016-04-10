@@ -1,6 +1,6 @@
 {
-  final Properties props=new Properties();
-  final String qualifier=getQualifier(lang);
+  Properties props=new Properties();
+  String qualifier=getQualifier(lang);
   addListToProperties(props,DISABLED_RULES_KEY + qualifier,disabledRuleIds);
   addListToProperties(props,ENABLED_RULES_KEY + qualifier,enabledRuleIds);
   addListToProperties(props,DISABLED_CATEGORIES_KEY + qualifier,disabledCategoryNames);
@@ -40,7 +40,7 @@
     sb.append(entry.getKey()).append(":").append("#").append(rgb).append(", ");
   }
   props.setProperty(ERROR_COLORS_KEY,sb.toString());
-  for (  final String key : configForOtherLanguages.keySet()) {
+  for (  String key : configForOtherLanguages.keySet()) {
     props.setProperty(key,configForOtherLanguages.get(key));
   }
   try (FileOutputStream fos=new FileOutputStream(configFile)){

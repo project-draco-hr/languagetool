@@ -1,10 +1,10 @@
 {
-  final String test="To jest test.";
-  final byte[] b=test.getBytes();
+  String test="To jest test.";
+  byte[] b=test.getBytes();
   System.setIn(new ByteArrayInputStream(b));
-  final String[] args={"--api","-l","pl","-e","PL_WORD_REPEAT","-"};
+  String[] args={"--api","-l","pl","-e","PL_WORD_REPEAT","-"};
   Main.main(args);
-  final String output=new String(this.out.toByteArray());
+  String output=new String(this.out.toByteArray());
   assertThat(StringUtils.countMatches(output,"<error "),is(0));
   assertThat(StringUtils.countMatches(output,"<matches "),is(1));
   assertThat(StringUtils.countMatches(output,"</matches>"),is(1));

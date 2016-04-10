@@ -2,7 +2,7 @@
   DefaultMutableTreeNode root=new DefaultMutableTreeNode("Rules");
   String lastRuleId=null;
   Map<String,DefaultMutableTreeNode> parents=new TreeMap<>();
-  for (  final Rule rule : rules) {
+  for (  Rule rule : rules) {
     if (!parents.containsKey(rule.getCategory().getName())) {
       boolean enabled=true;
       if (config.getDisabledCategoryNames() != null && config.getDisabledCategoryNames().contains(rule.getCategory().getName())) {

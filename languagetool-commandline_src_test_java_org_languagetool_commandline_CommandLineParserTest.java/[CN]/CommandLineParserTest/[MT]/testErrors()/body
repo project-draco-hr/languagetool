@@ -1,5 +1,5 @@
 {
-  final CommandLineParser parser=new CommandLineParser();
+  CommandLineParser parser=new CommandLineParser();
   try {
     parser.parseOptions(new String[]{"--apply","--taggeronly"});
     fail();

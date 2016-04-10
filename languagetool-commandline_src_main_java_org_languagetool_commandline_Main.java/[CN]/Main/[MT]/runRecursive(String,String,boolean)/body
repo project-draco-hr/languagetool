@@ -1,10 +1,10 @@
 {
-  final File dir=new File(filename);
-  final File[] files=dir.listFiles();
+  File dir=new File(filename);
+  File[] files=dir.listFiles();
   if (files == null) {
     throw new IllegalArgumentException(dir.getAbsolutePath() + " is not a directory, cannot use recursion");
   }
-  for (  final File file : files) {
+  for (  File file : files) {
     try {
       if (file.isDirectory()) {
         runRecursive(file.getAbsolutePath(),encoding,xmlFiltering);

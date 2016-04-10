@@ -1,5 +1,5 @@
 {
-  final JLanguageTool tool=new JLanguageTool(TestTools.getDemoLanguage());
+  JLanguageTool tool=new JLanguageTool(TestTools.getDemoLanguage());
   int matches=CommandLineTools.checkText("Foo.",tool);
   String output=new String(this.out.toByteArray());
   assertEquals(0,output.indexOf("Time:"));

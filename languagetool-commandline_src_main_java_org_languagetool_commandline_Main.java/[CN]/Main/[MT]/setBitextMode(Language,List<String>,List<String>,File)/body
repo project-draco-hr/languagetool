@@ -1,14 +1,14 @@
 {
   bitextMode=true;
-  final Language target=lt.getLanguage();
+  Language target=lt.getLanguage();
   lt=new MultiThreadedJLanguageTool(target,null);
   srcLt=new MultiThreadedJLanguageTool(sourceLang);
   Tools.selectRules(lt,disabledRules,enabledRules,true);
   Tools.selectRules(srcLt,disabledRules,enabledRules,true);
   bRules=Tools.getBitextRules(sourceLang,lt.getLanguage(),bitextRuleFile);
   List<BitextRule> bRuleList=new ArrayList<>(bRules);
-  for (  final BitextRule bitextRule : bRules) {
-    for (    final String disabledRule : disabledRules) {
+  for (  BitextRule bitextRule : bRules) {
+    for (    String disabledRule : disabledRules) {
       if (bitextRule.getId().equals(disabledRule)) {
         bRuleList.remove(bitextRule);
       }
@@ -17,8 +17,8 @@
   bRules=bRuleList;
   if (enabledRules.size() > 0) {
     bRuleList=new ArrayList<>();
-    for (    final String enabledRule : enabledRules) {
-      for (      final BitextRule bitextRule : bRules) {
+    for (    String enabledRule : enabledRules) {
+      for (      BitextRule bitextRule : bRules) {
         if (bitextRule.getId().equals(enabledRule)) {
           bRuleList.add(bitextRule);
         }

@@ -1,10 +1,10 @@
 {
   GridBagConstraints cons;
-  final JPanel treeButtonPanel=new JPanel();
+  JPanel treeButtonPanel=new JPanel();
   cons=new GridBagConstraints();
   cons.gridx=0;
   cons.gridy=0;
-  final JButton expandAllButton=new JButton(messages.getString("guiExpandAll"));
+  JButton expandAllButton=new JButton(messages.getString("guiExpandAll"));
   treeButtonPanel.add(expandAllButton,cons);
   expandAllButton.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
@@ -20,7 +20,7 @@
 );
   cons.gridx=1;
   cons.gridy=0;
-  final JButton collapseAllButton=new JButton(messages.getString("guiCollapseAll"));
+  JButton collapseAllButton=new JButton(messages.getString("guiCollapseAll"));
   treeButtonPanel.add(collapseAllButton,cons);
   collapseAllButton.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){

@@ -1,5 +1,5 @@
 {
-  final File tempFile=createTempXMLFile();
+  File tempFile=createTempXMLFile();
   try (PrintWriter writer=new PrintWriter(new OutputStreamWriter(new FileOutputStream(tempFile),"UTF-8"))){
     writer.println(content);
   }

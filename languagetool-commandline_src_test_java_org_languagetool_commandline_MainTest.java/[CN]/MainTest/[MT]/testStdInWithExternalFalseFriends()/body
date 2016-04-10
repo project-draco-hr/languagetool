@@ -1,11 +1,11 @@
 {
-  final String test="L??ska!\n";
-  final byte[] b=test.getBytes();
+  String test="L??ska!\n";
+  byte[] b=test.getBytes();
   System.setIn(new ByteArrayInputStream(b));
-  final String[] args={"-l","sk","--falsefriends",getExternalFalseFriends(),"-m","pl","-"};
+  String[] args={"-l","sk","--falsefriends",getExternalFalseFriends(),"-m","pl","-"};
   Main.main(args);
-  final String stdout=new String(this.out.toByteArray());
-  final String stderr=new String(this.err.toByteArray());
+  String stdout=new String(this.out.toByteArray());
+  String stderr=new String(this.err.toByteArray());
   assertTrue(stderr.contains("Expected text language: Slovak"));
   assertTrue(stderr.contains("Working on STDIN..."));
   assertTrue(stdout.contains("Rule ID: LASKA"));

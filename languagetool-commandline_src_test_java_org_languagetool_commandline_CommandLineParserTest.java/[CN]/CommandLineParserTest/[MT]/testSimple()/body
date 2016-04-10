@@ -1,5 +1,5 @@
 {
-  final CommandLineParser parser=new CommandLineParser();
+  CommandLineParser parser=new CommandLineParser();
   CommandLineOptions options;
   options=parser.parseOptions(new String[]{"filename.txt"});
   assertNull(options.getLanguage());

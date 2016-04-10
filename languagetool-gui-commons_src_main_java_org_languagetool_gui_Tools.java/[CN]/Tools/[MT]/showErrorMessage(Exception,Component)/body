@@ -1,5 +1,5 @@
 {
-  final String msg=e.getMessage();
+  String msg=e.getMessage();
   JOptionPane.showMessageDialog(parent,msg,"Error",JOptionPane.ERROR_MESSAGE);
   e.printStackTrace();
 }

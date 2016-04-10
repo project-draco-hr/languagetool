@@ -1,5 +1,5 @@
 {
-  final File tempFile=createTempFile();
+  File tempFile=createTempFile();
   try (PrintWriter writer=new PrintWriter(new OutputStreamWriter(new FileOutputStream(tempFile),"UTF-8"))){
     writer.print(content);
     writer.print('\n');

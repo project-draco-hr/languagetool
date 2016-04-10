@@ -4,16 +4,16 @@
   }
   dialog=new JDialog(owner,true);
   dialog.setTitle(messages.getString("guiConfigWindowTitle"));
-  final KeyStroke stroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
-  final ActionListener actionListener=new ActionListener(){
+  KeyStroke stroke=KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
+  ActionListener actionListener=new ActionListener(){
     @Override public void actionPerformed(    @SuppressWarnings("unused") ActionEvent actionEvent){
       dialog.setVisible(false);
     }
   }
 ;
-  final JRootPane rootPane=dialog.getRootPane();
+  JRootPane rootPane=dialog.getRootPane();
   rootPane.registerKeyboardAction(actionListener,stroke,JComponent.WHEN_IN_FOCUSED_WINDOW);
-  final JPanel checkBoxPanel=new JPanel();
+  JPanel checkBoxPanel=new JPanel();
   checkBoxPanel.setLayout(new GridBagLayout());
   GridBagConstraints cons=new GridBagConstraints();
   cons.anchor=GridBagConstraints.NORTHWEST;
@@ -35,7 +35,7 @@
   TreeListener.install(configTree);
   checkBoxPanel.add(configTree,cons);
   configTree.addMouseListener(getMouseAdapter());
-  final JPanel portPanel=new JPanel();
+  JPanel portPanel=new JPanel();
   portPanel.setLayout(new GridBagLayout());
   cons=new GridBagConstraints();
   cons.insets=new Insets(0,4,0,0);
@@ -47,7 +47,7 @@
   if (!insideOffice) {
     createNonOfficeElements(cons,portPanel);
   }
-  final JPanel buttonPanel=new JPanel();
+  JPanel buttonPanel=new JPanel();
   buttonPanel.setLayout(new GridBagLayout());
   okButton=new JButton(Tools.getLabel(messages.getString("guiOKButton")));
   okButton.setMnemonic(Tools.getMnemonic(messages.getString("guiOKButton")));
@@ -59,7 +59,7 @@
   cons.insets=new Insets(0,4,0,0);
   buttonPanel.add(okButton,cons);
   buttonPanel.add(cancelButton,cons);
-  final Container contentPane=dialog.getContentPane();
+  Container contentPane=dialog.getContentPane();
   contentPane.setLayout(new GridBagLayout());
   cons=new GridBagConstraints();
   cons.insets=new Insets(4,4,4,4);
@@ -90,8 +90,8 @@
   contentPane.add(buttonPanel,cons);
   dialog.pack();
   dialog.setSize(500,500);
-  final Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
-  final Dimension frameSize=dialog.getSize();
+  Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+  Dimension frameSize=dialog.getSize();
   dialog.setLocation(screenSize.width / 2 - frameSize.width / 2,screenSize.height / 2 - frameSize.height / 2);
   dialog.setLocationByPlatform(true);
   dialog.setVisible(true);

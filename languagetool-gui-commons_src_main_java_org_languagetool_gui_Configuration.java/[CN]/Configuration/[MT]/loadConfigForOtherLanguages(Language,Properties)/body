@@ -1,7 +1,7 @@
 {
   for (  Language otherLang : Languages.get()) {
     if (!otherLang.equals(lang)) {
-      final String languageSuffix="." + otherLang.getShortNameWithCountryAndVariant();
+      String languageSuffix="." + otherLang.getShortNameWithCountryAndVariant();
       storeConfigKeyFromProp(prop,DISABLED_RULES_KEY + languageSuffix);
       storeConfigKeyFromProp(prop,ENABLED_RULES_KEY + languageSuffix);
       storeConfigKeyFromProp(prop,DISABLED_CATEGORIES_KEY + languageSuffix);

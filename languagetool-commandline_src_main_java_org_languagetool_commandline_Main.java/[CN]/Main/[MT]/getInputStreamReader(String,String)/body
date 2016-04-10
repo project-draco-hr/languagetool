@@ -1,7 +1,7 @@
 {
-  final InputStreamReader isr;
+  InputStreamReader isr;
   if (!isStdIn(filename)) {
-    final File file=new File(filename);
+    File file=new File(filename);
     if (encoding != null) {
       isr=new InputStreamReader(new BufferedInputStream(new FileInputStream(file)),encoding);
     }

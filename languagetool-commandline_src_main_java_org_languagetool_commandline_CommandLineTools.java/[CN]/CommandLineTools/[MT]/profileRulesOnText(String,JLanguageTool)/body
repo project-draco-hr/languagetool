@@ -1,26 +1,26 @@
 {
-  final long[] workTime=new long[10];
-  final List<Rule> rules=lt.getAllActiveRules();
-  final int ruleCount=rules.size();
+  long[] workTime=new long[10];
+  List<Rule> rules=lt.getAllActiveRules();
+  int ruleCount=rules.size();
   System.out.printf("Testing %d rules%n",ruleCount);
   System.out.println("Rule ID\tTime\tSentences\tMatches\tSentences per sec.");
-  final List<String> sentences=lt.sentenceTokenize(contents);
+  List<String> sentences=lt.sentenceTokenize(contents);
   for (  Rule rule : rules) {
     if (rule instanceof TextLevelRule) {
       continue;
     }
     int matchCount=0;
     for (int k=0; k < 10; k++) {
-      final long startTime=System.currentTimeMillis();
+      long startTime=System.currentTimeMillis();
       for (      String sentence : sentences) {
         matchCount+=rule.match(lt.getAnalyzedSentence(sentence)).length;
       }
-      final long endTime=System.currentTimeMillis();
+      long endTime=System.currentTimeMillis();
       workTime[k]=endTime - startTime;
     }
-    final long time=median(workTime);
-    final float timeInSeconds=time / 1000.0f;
-    final float sentencesPerSecond=sentences.size() / timeInSeconds;
+    long time=median(workTime);
+    float timeInSeconds=time / 1000.0f;
+    float sentencesPerSecond=sentences.size() / timeInSeconds;
     System.out.printf(Locale.ENGLISH,"%s\t%d\t%d\t%d\t%.1f",rule.getId(),time,sentences.size(),matchCount,sentencesPerSecond);
     System.out.println();
   }

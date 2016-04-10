@@ -1,8 +1,8 @@
 {
-  final String[] args={"-l","br","--rulefile",getRuleFilePath(),getTestFilePath()};
+  String[] args={"-l","br","--rulefile",getRuleFilePath(),getTestFilePath()};
   Main.main(args);
-  final String stdout=new String(this.out.toByteArray());
-  final String stderr=new String(this.err.toByteArray());
+  String stdout=new String(this.out.toByteArray());
+  String stderr=new String(this.err.toByteArray());
   assertTrue(stderr.indexOf("Expected text language: Breton") == 0);
   assertTrue(stdout.contains("Rule ID: EXAMPLE_RULE"));
 }

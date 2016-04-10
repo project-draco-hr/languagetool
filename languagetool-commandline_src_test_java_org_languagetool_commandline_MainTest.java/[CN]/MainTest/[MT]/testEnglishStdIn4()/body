@@ -1,7 +1,7 @@
 {
   System.setIn(new FileInputStream(enTestFile));
-  final String[] args={"-l","en","--api","-"};
+  String[] args={"-l","en","--api","-"};
   Main.main(args);
-  final String output=new String(this.out.toByteArray());
+  String output=new String(this.out.toByteArray());
   assertTrue("Got: " + output,output.contains("<error fromy=\"4\" fromx=\"5\" toy=\"4\" " + "tox=\"10\" ruleId=\"ENGLISH_WORD_REPEAT_RULE\" msg=\"Possible typo: you repeated a word\" shortmsg=\"Word repetition\" " + "replacements=\"is\" context=\"....  This is a test of of language tool.  This is is a test of language tool. \""+ " contextoffset=\"48\" offset=\"60\" errorlength=\"5\" category=\"Miscellaneous\" categoryid=\"MISC\" locqualityissuetype=\"duplication\"/>"));
 }

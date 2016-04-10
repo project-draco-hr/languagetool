@@ -1,12 +1,12 @@
 {
   int i=1;
-  final ContextTools contextTools=new ContextTools();
+  ContextTools contextTools=new ContextTools();
   contextTools.setContextSize(contextSize);
-  for (  final RuleMatch match : ruleMatches) {
+  for (  RuleMatch match : ruleMatches) {
     Rule rule=match.getRule();
     String output=i + prevMatches + ".) Line "+ (match.getLine() + 1)+ ", column "+ match.getColumn()+ ", Rule ID: "+ rule.getId();
     if (rule instanceof AbstractPatternRule) {
-      final AbstractPatternRule pRule=(AbstractPatternRule)rule;
+      AbstractPatternRule pRule=(AbstractPatternRule)rule;
       if (pRule.getSubId() != null) {
         output+="[" + pRule.getSubId() + "]";
       }
@@ -16,7 +16,7 @@
     msg=msg.replaceAll("<suggestion>","'");
     msg=msg.replaceAll("</suggestion>","'");
     System.out.println("Message: " + msg);
-    final List<String> replacements=match.getSuggestedReplacements();
+    List<String> replacements=match.getSuggestedReplacements();
     if (!replacements.isEmpty()) {
       System.out.println("Suggestion: " + String.join("; ",replacements));
     }

@@ -1,8 +1,8 @@
 {
-  final StringBuilder sb=new StringBuilder(contents);
-  final List<String> errors=new ArrayList<>();
+  StringBuilder sb=new StringBuilder(contents);
+  List<String> errors=new ArrayList<>();
   for (  RuleMatch rm : matches) {
-    final List<String> replacements=rm.getSuggestedReplacements();
+    List<String> replacements=rm.getSuggestedReplacements();
     if (!replacements.isEmpty()) {
       errors.add(sb.substring(rm.getFromPos(),rm.getToPos()));
     }
@@ -10,7 +10,7 @@
   int offset=0;
   int counter=0;
   for (  RuleMatch rm : matches) {
-    final List<String> replacements=rm.getSuggestedReplacements();
+    List<String> replacements=rm.getSuggestedReplacements();
     if (!replacements.isEmpty()) {
       if (errors.get(counter).equals(sb.substring(rm.getFromPos() - offset,rm.getToPos() - offset))) {
         sb.replace(rm.getFromPos() - offset,rm.getToPos() - offset,replacements.get(0));

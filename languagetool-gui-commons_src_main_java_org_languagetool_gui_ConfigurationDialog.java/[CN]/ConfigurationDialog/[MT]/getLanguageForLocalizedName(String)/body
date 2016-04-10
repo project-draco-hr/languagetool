@@ -1,5 +1,5 @@
 {
-  for (  final Language element : Languages.get()) {
+  for (  Language element : Languages.get()) {
     if (languageName.equals(element.getTranslatedName(messages))) {
       return element;
     }

@@ -1,5 +1,5 @@
 {
-  final String aboutText=Tools.getLabel(messages.getString("guiMenuAbout"));
+  String aboutText=Tools.getLabel(messages.getString("guiMenuAbout"));
   JTextPane aboutPane=new JTextPane();
   aboutPane.setBackground(new Color(0,0,0,0));
   aboutPane.setBorder(BorderFactory.createEmptyBorder());

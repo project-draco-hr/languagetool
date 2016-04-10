@@ -1,6 +1,6 @@
 {
   if (bitextMode) {
-    final TabBitextReader reader=new TabBitextReader(filename,encoding);
+    TabBitextReader reader=new TabBitextReader(filename,encoding);
     if (options.isApplySuggestions()) {
       CommandLineTools.correctBitext(reader,srcLt,lt,bRules);
     }
@@ -9,7 +9,7 @@
     }
   }
  else {
-    final String text=getFilteredText(filename,encoding,xmlFiltering);
+    String text=getFilteredText(filename,encoding,xmlFiltering);
     if (isStdIn(filename)) {
       System.err.println("Working on STDIN...");
     }

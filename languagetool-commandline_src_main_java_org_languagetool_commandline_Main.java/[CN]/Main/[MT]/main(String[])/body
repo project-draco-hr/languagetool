@@ -1,6 +1,6 @@
 {
   JnaTools.setBugWorkaroundProperty();
-  final CommandLineParser commandLineParser=new CommandLineParser();
+  CommandLineParser commandLineParser=new CommandLineParser();
   CommandLineOptions options=null;
   try {
     options=commandLineParser.parseOptions(args);
@@ -49,7 +49,7 @@ catch (  UnknownParameterException e) {
     languageHint="Expected text language: " + options.getLanguage().getName();
   }
   options.getLanguage().getSentenceTokenizer().setSingleLineBreaksMarksParagraph(options.isSingleLineBreakMarksParagraph());
-  final Main prg=new Main(options);
+  Main prg=new Main(options);
   if (options.getFalseFriendFile() != null) {
     List<AbstractPatternRule> ffRules=prg.lt.loadFalseFriendRules(options.getFalseFriendFile());
     for (    AbstractPatternRule ffRule : ffRules) {

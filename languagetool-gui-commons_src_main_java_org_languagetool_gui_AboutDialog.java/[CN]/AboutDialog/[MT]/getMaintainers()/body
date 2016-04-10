@@ -1,5 +1,5 @@
 {
-  final TreeMap<String,Language> list=new TreeMap<>();
+  TreeMap<String,Language> list=new TreeMap<>();
   for (  Language lang : Languages.get()) {
     if (!lang.isVariant()) {
       if (lang.getMaintainers() != null) {
@@ -7,7 +7,7 @@
       }
     }
   }
-  final StringBuilder str=new StringBuilder();
+  StringBuilder str=new StringBuilder();
   str.append("<table border=0 cellspacing=0 cellpadding=0>");
   for (  Map.Entry<String,Language> entry : list.entrySet()) {
     str.append("<tr valign=\"top\"><td>");

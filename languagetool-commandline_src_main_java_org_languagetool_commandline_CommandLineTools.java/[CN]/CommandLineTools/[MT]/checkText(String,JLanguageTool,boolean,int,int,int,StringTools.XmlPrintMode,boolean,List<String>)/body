@@ -2,8 +2,8 @@
   if (contextSize == -1) {
     contextSize=DEFAULT_CONTEXT_SIZE;
   }
-  final long startTime=System.currentTimeMillis();
-  final List<RuleMatch> ruleMatches=lt.check(contents);
+  long startTime=System.currentTimeMillis();
+  List<RuleMatch> ruleMatches=lt.check(contents);
   for (  RuleMatch r : ruleMatches) {
     r.setLine(r.getLine() + lineOffset);
     r.setEndLine(r.getEndLine() + lineOffset);
@@ -12,9 +12,9 @@
     if (listUnknownWords && xmlMode == StringTools.XmlPrintMode.NORMAL_XML) {
       unknownWords=lt.getUnknownWords();
     }
-    final RuleMatchAsXmlSerializer serializer=new RuleMatchAsXmlSerializer();
-    final String xml=serializer.ruleMatchesToXml(ruleMatches,contents,contextSize,xmlMode,lt.getLanguage(),unknownWords);
-    final PrintStream out=new PrintStream(System.out,true,"UTF-8");
+    RuleMatchAsXmlSerializer serializer=new RuleMatchAsXmlSerializer();
+    String xml=serializer.ruleMatchesToXml(ruleMatches,contents,contextSize,xmlMode,lt.getLanguage(),unknownWords);
+    PrintStream out=new PrintStream(System.out,true,"UTF-8");
     out.print(xml);
   }
  else {

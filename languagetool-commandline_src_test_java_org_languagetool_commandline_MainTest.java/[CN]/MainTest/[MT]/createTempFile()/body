@@ -1,5 +1,5 @@
 {
-  final File input=File.createTempFile(MainTest.class.getName(),".txt");
+  File input=File.createTempFile(MainTest.class.getName(),".txt");
   input.deleteOnExit();
   return input;
 }

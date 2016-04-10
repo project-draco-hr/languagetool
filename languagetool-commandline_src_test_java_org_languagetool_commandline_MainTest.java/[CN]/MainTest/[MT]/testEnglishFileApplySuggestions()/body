@@ -1,6 +1,6 @@
 {
-  final String[] args={"-l","en","--apply",getTestFilePath()};
+  String[] args={"-l","en","--apply",getTestFilePath()};
   Main.main(args);
-  final String output=new String(this.out.toByteArray());
+  String output=new String(this.out.toByteArray());
   assertTrue(output.contains("This is a test.\n\n" + "This is a test of language tool.\n\n" + "This is a test of language tool."));
 }
