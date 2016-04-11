@@ -59,6 +59,9 @@ catch (    TimeoutException e) {
     if (motherTongue != null) {
       languageMessage+=" (mother tongue: " + motherTongue.getShortNameWithCountryAndVariant() + ")";
     }
+    if (autoDetectLanguage) {
+      languageMessage+="[auto]";
+    }
   }
  catch (  IOException exception) {
     messageSent="notSent: " + exception.getMessage();

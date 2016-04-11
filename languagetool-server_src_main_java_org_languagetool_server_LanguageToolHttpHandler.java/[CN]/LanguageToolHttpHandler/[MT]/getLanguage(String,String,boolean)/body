@@ -2,7 +2,6 @@
   Language lang;
   if (autoDetect) {
     lang=detectLanguageOfString(text,langParam);
-    print("Auto-detected language: " + lang.getShortNameWithCountryAndVariant());
   }
  else {
     if (afterTheDeadlineMode) {
