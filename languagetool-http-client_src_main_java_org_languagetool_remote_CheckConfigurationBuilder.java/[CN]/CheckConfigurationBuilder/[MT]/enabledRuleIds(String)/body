@@ -1,4 +1,3 @@
 {
-  this.enabledRuleIds=Arrays.asList(ruleIds);
-  return this;
+  return enabledRuleIds(Arrays.asList(ruleIds));
 }
