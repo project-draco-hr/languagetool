@@ -1,7 +1,7 @@
 {
   disableCertChecks();
   String keyStore=RemoteLanguageToolIntegrationTest.class.getResource("/org/languagetool/remote/test-keystore.jks").getFile();
-  HTTPSServerConfig config=new HTTPSServerConfig(new File(keyStore),"mytest");
+  HTTPSServerConfig config=new HTTPSServerConfig(HTTPTools.getDefaultPort(),false,new File(keyStore),"mytest");
   HTTPSServer server=new HTTPSServer(config,false,"localhost",Collections.singleton("127.0.0.1"));
   try {
     server.run();

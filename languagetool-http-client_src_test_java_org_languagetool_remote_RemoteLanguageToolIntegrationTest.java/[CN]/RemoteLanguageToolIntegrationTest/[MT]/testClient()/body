@@ -1,5 +1,6 @@
 {
-  HTTPServer server=new HTTPServer();
+  HTTPServerConfig config=new HTTPServerConfig(HTTPTools.getDefaultPort());
+  HTTPServer server=new HTTPServer(config);
   try {
     server.run();
     RemoteLanguageTool lt=new RemoteLanguageTool(new URL(serverUrl));
