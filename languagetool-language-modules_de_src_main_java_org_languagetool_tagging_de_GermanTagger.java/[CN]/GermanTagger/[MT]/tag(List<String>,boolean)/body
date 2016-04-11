@@ -8,7 +8,7 @@
     List<TaggedWord> taggerTokens=getWordTagger().tag(word);
     if (firstWord && taggerTokens.size() == 0 && ignoreCase) {
       taggerTokens=getWordTagger().tag(word.toLowerCase());
-      firstWord=false;
+      firstWord=StringUtils.isBlank(word);
     }
     if (taggerTokens.size() > 0) {
       l.addAll(getAnalyzedTokens(taggerTokens,word));
