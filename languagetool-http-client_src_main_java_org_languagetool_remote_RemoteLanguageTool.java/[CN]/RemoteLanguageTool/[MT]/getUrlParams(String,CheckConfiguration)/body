@@ -1,0 +1,21 @@
+{
+  StringBuilder params=new StringBuilder();
+  params.append("language=").append(config.getLangCode()).append("&text=").append(text);
+  if (config.getMotherTongueLangCode() != null) {
+    params.append("&motherTongue=").append(config.getMotherTongueLangCode());
+  }
+  if (config.guessLanguage()) {
+    params.append("&autodetect=1");
+  }
+  if (config.getEnabledRuleIds().size() > 0) {
+    params.append("&enabled=").append(String.join(",",config.getEnabledRuleIds()));
+  }
+  if (config.enabledOnly()) {
+    params.append("&enabledOnly=yes");
+  }
+  if (config.getDisabledRuleIds().size() > 0) {
+    params.append("&disabled=").append(String.join(",",config.getDisabledRuleIds()));
+  }
+  params.append("&useragent=java-http-client");
+  return params.toString();
+}

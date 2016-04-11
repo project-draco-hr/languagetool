@@ -1,3 +1,0 @@
-{
-  return "language=" + langCode + "&text="+ text+ "&useragent=java-http-client";
-}

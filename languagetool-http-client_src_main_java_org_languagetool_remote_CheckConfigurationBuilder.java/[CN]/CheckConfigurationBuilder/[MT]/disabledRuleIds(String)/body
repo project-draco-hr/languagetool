@@ -1,0 +1,4 @@
+{
+  this.disabledRuleIds=Arrays.asList(ruleIds);
+  return this;
+}

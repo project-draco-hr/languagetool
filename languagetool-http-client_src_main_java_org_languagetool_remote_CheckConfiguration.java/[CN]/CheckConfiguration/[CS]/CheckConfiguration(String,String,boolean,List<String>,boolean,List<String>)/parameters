@@ -1,0 +1,6 @@
+String langCode
+String motherTongueLangCode
+boolean guessLanguage
+List<String> enabledRuleIds
+boolean enabledOnly
+List<String> disabledRuleIds

@@ -1,0 +1,4 @@
+{
+  this.enabledRuleIds=Objects.requireNonNull(ruleIds);
+  return this;
+}

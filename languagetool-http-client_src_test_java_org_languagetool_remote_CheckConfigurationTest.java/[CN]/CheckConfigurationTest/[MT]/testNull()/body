@@ -1,0 +1,3 @@
+{
+  new CheckConfiguration(null,null,false,null,false,null);
+}

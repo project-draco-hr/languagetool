@@ -1,0 +1,6 @@
+{
+  if (enabledOnly && enabledRuleIds.size() == 0) {
+    throw new IllegalStateException("You cannot use 'enabledOnly' when you haven't set rule ids to be enabled");
+  }
+  return new CheckConfiguration(langCode,motherTongueLangCode,autoDetectLanguage,enabledRuleIds,enabledOnly,disabledRuleIds);
+}

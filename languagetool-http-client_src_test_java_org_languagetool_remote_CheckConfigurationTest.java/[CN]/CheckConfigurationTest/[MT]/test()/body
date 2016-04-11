@@ -1,0 +1,9 @@
+{
+  CheckConfiguration config=new CheckConfiguration("en",null,false,Collections.emptyList(),false,Collections.emptyList());
+  assertThat(config.getLangCode(),is("en"));
+  assertNull(config.getMotherTongueLangCode());
+  assertThat(config.getEnabledRuleIds().size(),is(0));
+  assertThat(config.enabledOnly(),is(false));
+  assertThat(config.guessLanguage(),is(false));
+  assertThat(config.getDisabledRuleIds().size(),is(0));
+}

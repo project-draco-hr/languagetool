@@ -1,0 +1,4 @@
+{
+  this.enabledRuleIds=Arrays.asList(ruleIds);
+  return this;
+}

@@ -1,0 +1,8 @@
+{
+  this.langCode=Objects.requireNonNull(langCode);
+  this.motherTongueLangCode=motherTongueLangCode;
+  this.guessLanguage=guessLanguage;
+  this.enabledRuleIds=Objects.requireNonNull(enabledRuleIds);
+  this.enabledOnly=enabledOnly;
+  this.disabledRuleIds=Objects.requireNonNull(disabledRuleIds);
+}
