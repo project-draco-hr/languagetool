@@ -1,0 +1,5 @@
+{
+  if (allowOriginUrl != null) {
+    httpExchange.getResponseHeaders().set("Access-Control-Allow-Origin",allowOriginUrl);
+  }
+}
