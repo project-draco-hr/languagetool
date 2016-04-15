@@ -9,7 +9,7 @@
   try (Scanner scanner=new Scanner(inputFile,encoding);Writer out=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile),encoding))){
     while (scanner.hasNextLine()) {
       String line=scanner.nextLine();
-      String[] parts=line.split(separator);
+      String[] parts=line.split(Pattern.quote(separator));
       if (parts.length == 3) {
         if (hasFrequency) {
           parts[2]=parts[2].substring(0,parts[2].length() - 1);
