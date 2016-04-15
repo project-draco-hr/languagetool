@@ -1,0 +1,4 @@
+{
+  this.dictUrl=null;
+  this.dictionary=dictionary;
+}

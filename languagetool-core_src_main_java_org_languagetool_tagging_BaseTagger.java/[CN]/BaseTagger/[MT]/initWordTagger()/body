@@ -1,5 +1,5 @@
 {
-  MorfologikTagger morfologikTagger=new MorfologikTagger(filename);
+  MorfologikTagger morfologikTagger=new MorfologikTagger(dictionary);
   try {
     String manualRemovalFileName=getManualRemovalsFileName();
     ManualTagger removalTagger=null;
