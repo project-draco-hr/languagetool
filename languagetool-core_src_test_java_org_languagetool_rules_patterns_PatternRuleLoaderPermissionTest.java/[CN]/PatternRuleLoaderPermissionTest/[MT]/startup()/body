@@ -1,0 +1,4 @@
+{
+  Policy.setPolicy(new MyPolicy());
+  System.setSecurityManager(new SecurityManager());
+}
