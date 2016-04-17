@@ -91,4 +91,5 @@
   assertGood("Das Geb??ude des Ausw??rtigen Amts.");
   assertGood("Das Geb??ude des Ausw??rtigen Amtes.");
   assertGood("   Im Folgenden beschreibe ich das Haus.");
+  assertGood("\"Im Folgenden beschreibe ich das Haus.\"");
 }
