@@ -68,7 +68,7 @@ synchronized (this) {
       response=Tools.getFullStackTrace(e);
       errorCode=HttpURLConnection.HTTP_INTERNAL_ERROR;
     }
-    logError(text,remoteAddress,e,errorCode);
+    logError(text,remoteAddress,e,errorCode,httpExchange);
     sendError(httpExchange,errorCode,"Error: " + response);
   }
  finally {

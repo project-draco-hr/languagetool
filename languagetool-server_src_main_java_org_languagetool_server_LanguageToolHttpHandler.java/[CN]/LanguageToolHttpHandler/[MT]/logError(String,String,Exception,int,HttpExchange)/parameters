@@ -2,3 +2,4 @@ String text
 String remoteAddress
 Exception e
 int errorCode
+HttpExchange httpExchange
