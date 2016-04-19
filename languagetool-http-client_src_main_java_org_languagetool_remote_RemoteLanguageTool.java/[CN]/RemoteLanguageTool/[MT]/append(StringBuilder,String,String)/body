@@ -1,0 +1,6 @@
+{
+  if (params.length() > 0) {
+    params.append("&");
+  }
+  params.append(paramName).append("=").append(encode(paramValue));
+}
