@@ -1,0 +1,3 @@
+{
+  return httpExchange.getRequestHeaders().getFirst("User-Agent");
+}

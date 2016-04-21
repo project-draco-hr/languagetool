@@ -11,9 +11,9 @@ synchronized (this) {
     remoteAddress=realAddressOrNull != null ? realAddressOrNull : origAddress;
     Map<String,String> parameters=getRequestQuery(httpExchange,requestedUri);
     if (requestLimiter != null && !requestLimiter.isAccessOkay(remoteAddress)) {
-      String errorMessage="Error: Access from " + remoteAddress + " (useragent: "+ parameters.get("useragent")+ ") denied - too many requests."+ " Allowed maximum requests: "+ requestLimiter.getRequestLimit()+ " requests per "+ requestLimiter.getRequestLimitPeriodInSeconds()+ " seconds";
+      String errorMessage="Error: Access from " + remoteAddress + " denied - too many requests."+ " Allowed maximum requests: "+ requestLimiter.getRequestLimit()+ " requests per "+ requestLimiter.getRequestLimitPeriodInSeconds()+ " seconds";
       sendError(httpExchange,HttpURLConnection.HTTP_FORBIDDEN,errorMessage);
-      print(errorMessage);
+      print(errorMessage + " - useragent: " + parameters.get("useragent")+ " - HTTP UserAgent: "+ getHttpUserAgent(httpExchange));
       return;
     }
     if (maxWorkQueueSize != 0 && workQueue.size() > maxWorkQueueSize) {

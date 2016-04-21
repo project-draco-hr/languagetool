@@ -3,7 +3,7 @@
   if (text != null && remoteAddress != null) {
     message+="Access from " + remoteAddress + ", text length "+ text.length()+ ". ";
   }
-  message+="HTTP user agent: " + httpExchange.getRequestHeaders().getFirst("User-Agent") + ", ";
+  message+="HTTP user agent: " + getHttpUserAgent(httpExchange) + ", ";
   message+="Stacktrace follows:";
   print(message,System.err);
   if (verbose && text != null) {
