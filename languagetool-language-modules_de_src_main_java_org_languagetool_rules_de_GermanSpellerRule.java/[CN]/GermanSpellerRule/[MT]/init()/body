@@ -1,0 +1,6 @@
+{
+  super.init();
+  String pattern="(" + nonWordPattern.pattern() + "|(?<=\\d)\\-|\\-(?=\\d+))";
+  nonWordPattern=Pattern.compile(pattern);
+  needsInit=false;
+}
