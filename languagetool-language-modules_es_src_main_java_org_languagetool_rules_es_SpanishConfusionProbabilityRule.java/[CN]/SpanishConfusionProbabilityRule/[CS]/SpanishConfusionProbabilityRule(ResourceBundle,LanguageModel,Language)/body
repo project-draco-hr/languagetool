@@ -1,3 +1,4 @@
 {
   super(messages,languageModel,language);
+  addExamplePair(Example.wrong("El proyecto no <marker>tubo</marker> una buena acogida."),Example.fixed("El proyecto no <marker>tuvo</marker> una buena acogida."));
 }
