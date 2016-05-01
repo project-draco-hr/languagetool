@@ -1,6 +1,7 @@
 {
   String posTag=token.getPOSTag();
-  if (posTag == null || posTag.split(":").length < 3) {
+  String[] parts;
+  if (posTag == null || (parts=SPLIT_REGEX.split(posTag)).length < 3) {
     type=null;
     casus=null;
     numerus=null;
@@ -8,7 +9,6 @@
     determination=null;
     return;
   }
-  String[] parts=posTag.split(":");
   POSType tempType=null;
   Kasus tempCasus=null;
   Numerus tempNumerus=null;
