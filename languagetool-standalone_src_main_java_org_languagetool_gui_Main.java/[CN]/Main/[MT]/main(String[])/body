@@ -41,5 +41,6 @@
   }
  else {
     printUsage();
+    System.exit(1);
   }
 }
