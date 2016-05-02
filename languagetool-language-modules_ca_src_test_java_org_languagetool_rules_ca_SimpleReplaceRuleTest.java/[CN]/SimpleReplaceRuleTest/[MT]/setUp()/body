@@ -1,5 +1,4 @@
 {
-  super.setUp();
   rule=new SimpleReplaceRule(TestTools.getMessages("ca"));
   langTool=new JLanguageTool(new Catalan());
 }

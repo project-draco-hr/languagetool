@@ -1,5 +1,4 @@
 {
-  super.setUp();
   this.stdout=System.out;
   this.stderr=System.err;
   this.out=new ByteArrayOutputStream();

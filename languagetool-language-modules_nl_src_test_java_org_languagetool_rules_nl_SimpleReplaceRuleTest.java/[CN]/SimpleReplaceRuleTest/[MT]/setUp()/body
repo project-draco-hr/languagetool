@@ -1,5 +1,4 @@
 {
-  super.setUp();
   rule=new SimpleReplaceRule(TestTools.getMessages("nl"));
   langTool=new JLanguageTool(new Dutch());
 }

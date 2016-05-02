@@ -1,4 +1,3 @@
 {
-  super.setUp();
   tagger=new ManualTaggerAdapter(new ManualTagger(new ByteArrayInputStream(TEST_DATA.getBytes("UTF-8"))));
 }
