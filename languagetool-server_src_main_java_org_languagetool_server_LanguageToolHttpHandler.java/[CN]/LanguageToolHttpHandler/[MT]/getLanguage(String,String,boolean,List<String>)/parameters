@@ -1,3 +1,4 @@
 String text
 String langParam
 boolean autoDetect
+List<String> preferredVariants

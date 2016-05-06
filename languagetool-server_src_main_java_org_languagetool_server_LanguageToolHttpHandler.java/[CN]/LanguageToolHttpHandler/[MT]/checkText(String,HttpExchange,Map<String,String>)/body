@@ -4,7 +4,17 @@
     throw new TextTooLongException("Your text exceeds this server's limit of " + maxTextLength + " characters (it's "+ text.length()+ " characters). Please submit a shorter text.");
   }
   boolean autoDetectLanguage=getLanguageAutoDetect(parameters);
-  Language lang=getLanguage(text,parameters.get("language"),autoDetectLanguage);
+  List<String> preferredVariants;
+  if (parameters.get("preferredvariants") != null) {
+    preferredVariants=Arrays.asList(parameters.get("preferredvariants").split(",\\s*"));
+    if (!autoDetectLanguage) {
+      throw new IllegalArgumentException("You specified 'preferredvariants' but you didn't specify 'autodetect=yes'");
+    }
+  }
+ else {
+    preferredVariants=Collections.emptyList();
+  }
+  Language lang=getLanguage(text,parameters.get("language"),autoDetectLanguage,preferredVariants);
   String motherTongueParam=parameters.get("motherTongue");
   Language motherTongue=motherTongueParam != null ? Languages.getLanguageForShortName(motherTongueParam) : null;
   boolean useEnabledOnly="yes".equals(parameters.get("enabledOnly"));

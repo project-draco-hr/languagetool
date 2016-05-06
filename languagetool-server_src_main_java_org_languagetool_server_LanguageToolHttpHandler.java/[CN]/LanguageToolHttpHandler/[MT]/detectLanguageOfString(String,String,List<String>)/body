@@ -1,0 +1,26 @@
+{
+  Language lang=identifier.detectLanguage(text);
+  if (lang == null) {
+    lang=Languages.getLanguageForShortName(fallbackLanguage != null ? fallbackLanguage : "en");
+  }
+  if (preferredVariants.size() > 0) {
+    for (    String preferredVariant : preferredVariants) {
+      if (!preferredVariant.contains("-")) {
+        throw new IllegalArgumentException("Invalid format for 'preferredvariant', expected a dash as in 'en-GB': '" + preferredVariant + "'");
+      }
+      String preferredVariantLang=preferredVariant.split("-")[0];
+      if (preferredVariantLang.equals(lang.getShortName())) {
+        lang=Languages.getLanguageForShortName(preferredVariant);
+        if (lang == null) {
+          throw new IllegalArgumentException("Invalid 'prefereredvariant', no such language/variant found: '" + preferredVariant + "'");
+        }
+      }
+    }
+  }
+ else {
+    if (lang.getDefaultLanguageVariant() != null) {
+      lang=lang.getDefaultLanguageVariant();
+    }
+  }
+  return lang;
+}
