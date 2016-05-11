@@ -3,12 +3,12 @@
     BOMInputStream bomIn=new BOMInputStream(inputStream,false,ByteOrderMark.UTF_8,ByteOrderMark.UTF_16BE,ByteOrderMark.UTF_16LE,ByteOrderMark.UTF_32BE,ByteOrderMark.UTF_32LE);
     String charsetName;
     if (bomIn.hasBOM() == false) {
-      BOM=null;
+      bom=null;
       charsetName=null;
     }
  else {
-      BOM=bomIn.getBOM();
-      charsetName=BOM.getCharsetName();
+      bom=bomIn.getBOM();
+      charsetName=bom.getCharsetName();
     }
     String fileContents=StringTools.readStream(bomIn,charsetName);
     textArea.setText(fileContents);

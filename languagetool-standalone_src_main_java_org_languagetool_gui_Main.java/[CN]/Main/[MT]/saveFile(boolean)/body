@@ -8,13 +8,13 @@
       return;
     }
     currentFile=file;
-    BOM=null;
+    bom=null;
     updateTitle();
   }
   try {
-    if (BOM != null) {
-      FileUtils.writeByteArrayToFile(currentFile,BOM.getBytes());
-      FileUtils.write(currentFile,textArea.getText(),BOM.getCharsetName(),true);
+    if (bom != null) {
+      FileUtils.writeByteArrayToFile(currentFile,bom.getBytes());
+      FileUtils.write(currentFile,textArea.getText(),bom.getCharsetName(),true);
     }
  else {
       FileUtils.write(currentFile,textArea.getText(),Charset.defaultCharset());

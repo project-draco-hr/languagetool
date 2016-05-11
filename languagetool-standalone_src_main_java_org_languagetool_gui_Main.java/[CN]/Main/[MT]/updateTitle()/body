@@ -2,8 +2,8 @@
   StringBuilder sb=new StringBuilder();
   if (currentFile != null) {
     sb.append(currentFile.getName());
-    if (BOM != null) {
-      sb.append(" (").append(BOM.getCharsetName()).append(')');
+    if (bom != null) {
+      sb.append(" (").append(bom.getCharsetName()).append(')');
     }
     sb.append(" - ");
   }
