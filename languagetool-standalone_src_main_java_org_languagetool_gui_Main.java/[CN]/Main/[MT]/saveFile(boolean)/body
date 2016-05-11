@@ -8,10 +8,17 @@
       return;
     }
     currentFile=file;
+    BOM=null;
     updateTitle();
   }
-  try (BufferedWriter writer=new BufferedWriter(new FileWriter(currentFile))){
-    writer.write(textArea.getText());
+  try {
+    if (BOM != null) {
+      FileUtils.writeByteArrayToFile(currentFile,BOM.getBytes());
+      FileUtils.write(currentFile,textArea.getText(),BOM.getCharsetName(),true);
+    }
+ else {
+      FileUtils.write(currentFile,textArea.getText(),Charset.defaultCharset());
+    }
   }
  catch (  IOException ex) {
     Tools.showError(ex);

@@ -1,6 +1,16 @@
 {
   try (FileInputStream inputStream=new FileInputStream(file)){
-    String fileContents=StringTools.readStream(inputStream,null);
+    BOMInputStream bomIn=new BOMInputStream(inputStream,false,ByteOrderMark.UTF_8,ByteOrderMark.UTF_16BE,ByteOrderMark.UTF_16LE,ByteOrderMark.UTF_32BE,ByteOrderMark.UTF_32LE);
+    String charsetName;
+    if (bomIn.hasBOM() == false) {
+      BOM=null;
+      charsetName=null;
+    }
+ else {
+      BOM=bomIn.getBOM();
+      charsetName=BOM.getCharsetName();
+    }
+    String fileContents=StringTools.readStream(bomIn,charsetName);
     textArea.setText(fileContents);
     currentFile=file;
     updateTitle();
