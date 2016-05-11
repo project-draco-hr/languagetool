@@ -1,0 +1,63 @@
+{
+  String userHome=null;
+  try {
+    userHome=System.getProperty("user.home");
+  }
+ catch (  SecurityException ex) {
+  }
+  if (userHome == null) {
+    directory=null;
+  }
+ else   if (SystemUtils.IS_OS_WINDOWS) {
+    File appDataDir=null;
+    try {
+      String appData=System.getenv("APPDATA");
+      if (!StringUtils.isEmpty(appData)) {
+        appDataDir=new File(appData);
+      }
+    }
+ catch (    SecurityException ex) {
+    }
+    if (appDataDir != null && appDataDir.isDirectory()) {
+      String path=VENDOR_ID + "\\" + APPLICATION_ID+ "\\";
+      directory=new File(appDataDir,path);
+    }
+ else {
+      String path="Application Data\\" + VENDOR_ID + "\\"+ APPLICATION_ID+ "\\";
+      directory=new File(userHome,path);
+    }
+  }
+ else   if (SystemUtils.IS_OS_LINUX) {
+    File appDataDir=null;
+    try {
+      String xdgConfigHome=System.getenv("XDG_CONFIG_HOME");
+      if (!StringUtils.isEmpty(xdgConfigHome)) {
+        appDataDir=new File(xdgConfigHome);
+        if (!appDataDir.isAbsolute()) {
+          appDataDir=null;
+        }
+      }
+    }
+ catch (    SecurityException ex) {
+    }
+    if (appDataDir != null && appDataDir.isDirectory()) {
+      String path=APPLICATION_ID + "/";
+      directory=new File(appDataDir,path);
+    }
+ else {
+      String path=".config/" + APPLICATION_ID + "/";
+      directory=new File(userHome,path);
+    }
+  }
+ else   if (SystemUtils.IS_OS_MAC_OSX) {
+    String path="Library/Application Support/" + APPLICATION_ID + "/";
+    directory=new File(userHome,path);
+  }
+ else {
+    String path="." + APPLICATION_ID + "/";
+    directory=new File(userHome,path);
+  }
+  if (directory != null && !directory.exists()) {
+    directory.mkdirs();
+  }
+}

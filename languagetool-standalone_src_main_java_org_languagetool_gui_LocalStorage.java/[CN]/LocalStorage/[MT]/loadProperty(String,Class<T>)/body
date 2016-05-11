@@ -1,0 +1,17 @@
+{
+  T result=null;
+  if (directory == null) {
+    return result;
+  }
+  try (XMLDecoder decoder=new XMLDecoder(new BufferedInputStream(new FileInputStream(new File(directory,name))))){
+    try {
+      return clazz.cast(decoder.readObject());
+    }
+ catch (    ClassCastException e) {
+      return null;
+    }
+  }
+ catch (  FileNotFoundException ex) {
+  }
+  return result;
+}
