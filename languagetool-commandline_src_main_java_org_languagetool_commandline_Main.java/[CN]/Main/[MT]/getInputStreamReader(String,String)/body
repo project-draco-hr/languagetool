@@ -1,21 +1,10 @@
 {
   InputStreamReader isr;
+  String charsetName=encoding != null ? encoding : Charset.defaultCharset().name();
+  InputStream is=System.in;
   if (!isStdIn(filename)) {
-    File file=new File(filename);
-    if (encoding != null) {
-      isr=new InputStreamReader(new BufferedInputStream(new FileInputStream(file)),encoding);
-    }
- else {
-      isr=new InputStreamReader(new BufferedInputStream(new FileInputStream(file)));
-    }
+    is=new FileInputStream(new File(filename));
   }
- else {
-    if (encoding != null) {
-      isr=new InputStreamReader(new BufferedInputStream(System.in),encoding);
-    }
- else {
-      isr=new InputStreamReader(new BufferedInputStream(System.in));
-    }
-  }
+  isr=new InputStreamReader(new BufferedInputStream(is),charsetName);
   return isr;
 }
