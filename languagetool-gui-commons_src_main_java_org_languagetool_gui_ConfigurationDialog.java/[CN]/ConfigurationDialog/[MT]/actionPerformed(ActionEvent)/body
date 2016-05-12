@@ -3,6 +3,11 @@
     if (original != null) {
       original.restoreState(config);
     }
+    for (    JPanel extra : extraPanels) {
+      if (extra instanceof SavablePanel) {
+        ((SavablePanel)extra).save();
+      }
+    }
     dialog.setVisible(false);
   }
  else   if (e.getSource() == cancelButton) {
