@@ -11,6 +11,10 @@
   fileMenu.add(openAction);
   fileMenu.add(saveAction);
   fileMenu.add(saveAsAction);
+  recentFilesMenu=new JMenu(getLabel("guiMenuRecentFiles"));
+  recentFilesMenu.setMnemonic(getMnemonic("guiMenuRecentFiles"));
+  fileMenu.add(recentFilesMenu);
+  updateRecentFilesMenu();
   fileMenu.addSeparator();
   fileMenu.add(new HideAction());
   fileMenu.addSeparator();

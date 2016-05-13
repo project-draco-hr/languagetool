@@ -1,4 +1,5 @@
 {
+  loadRecentFiles();
   frame=new JFrame("LanguageTool " + JLanguageTool.VERSION);
   setLookAndFeel();
   openAction=new OpenAction();

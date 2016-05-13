@@ -2,7 +2,8 @@
   if (System.getSecurityManager() == null) {
     JnaTools.setBugWorkaroundProperty();
   }
-  Main prg=new Main();
+  LocalStorage localStorage=new LocalStorage();
+  Main prg=new Main(localStorage);
   if (args.length == 1 && (args[0].equals("-t") || args[0].equals("--tray"))) {
     SwingUtilities.invokeLater(new Runnable(){
       @Override public void run(){

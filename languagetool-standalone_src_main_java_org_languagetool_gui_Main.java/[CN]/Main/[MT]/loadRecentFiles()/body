@@ -1,0 +1,11 @@
+{
+  CircularFifoQueue<String> l=localStorage.loadProperty("recentFiles",CircularFifoQueue.class);
+  if (l != null) {
+    for (    String name : l) {
+      File f=new File(name);
+      if (f.exists() && f.isFile()) {
+        recentFiles.add(name);
+      }
+    }
+  }
+}

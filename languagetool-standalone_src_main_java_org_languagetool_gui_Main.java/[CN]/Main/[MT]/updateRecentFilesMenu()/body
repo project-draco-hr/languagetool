@@ -1,0 +1,8 @@
+{
+  recentFilesMenu.removeAll();
+  String[] files=recentFiles.toArray(new String[recentFiles.size()]);
+  ArrayUtils.reverse(files);
+  for (  String filename : files) {
+    recentFilesMenu.add(new RecentFileAction(new File(filename)));
+  }
+}

@@ -1,0 +1,5 @@
+{
+  super(file.getName());
+  this.file=file;
+  putValue(Action.SHORT_DESCRIPTION,file.getAbsolutePath());
+}

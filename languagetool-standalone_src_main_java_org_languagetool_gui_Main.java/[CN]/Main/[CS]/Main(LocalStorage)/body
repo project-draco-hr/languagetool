@@ -1,3 +1,4 @@
 {
+  this.localStorage=localStorage;
   messages=JLanguageTool.getMessageBundle();
 }

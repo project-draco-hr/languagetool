@@ -1,0 +1,10 @@
+{
+  if (file.exists()) {
+    loadFile(file);
+  }
+ else {
+    JOptionPane.showMessageDialog(frame,messages.getString("guiFileNotFound"),messages.getString("dialogTitleError"),JOptionPane.ERROR_MESSAGE);
+    recentFiles.remove(file.getAbsolutePath());
+    updateRecentFilesMenu();
+  }
+}
