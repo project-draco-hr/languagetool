@@ -4,7 +4,7 @@
   File resultFile=new File(inputFile.toString().replaceAll("\\.txt$",".dict"));
   File infoFile=new File(infoPath);
   props.store(new FileOutputStream(infoFile),"");
-  String[] buildOptions={"--exit","false","-i",inputFile.toString(),"-f",serializationFormat.toString(),"--overwrite"};
+  String[] buildOptions={"--exit","false","-i",inputFile.toString(),"-f",serializationFormat.toString()};
   System.out.println("Running Morfologik DictCompile.main with these options: " + Arrays.toString(buildOptions));
   DictCompile.main(buildOptions);
   Files.move(resultFile.toPath(),outputFile.toPath(),StandardCopyOption.REPLACE_EXISTING);
