@@ -2,9 +2,12 @@
   if (directory == null) {
     return;
   }
-  try (XMLEncoder encoder=new XMLEncoder(new BufferedOutputStream(new FileOutputStream(new File(directory,name))))){
-    encoder.writeObject(obj);
-  }
- catch (  FileNotFoundException ex) {
+synchronized (directory) {
+    try (XMLEncoder encoder=new XMLEncoder(new BufferedOutputStream(new FileOutputStream(new File(directory,name))))){
+      encoder.writeObject(obj);
+    }
+ catch (    FileNotFoundException ex) {
+      Tools.showError(ex);
+    }
   }
 }
