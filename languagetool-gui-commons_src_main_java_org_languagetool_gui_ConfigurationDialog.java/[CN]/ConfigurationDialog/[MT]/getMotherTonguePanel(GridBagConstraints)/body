@@ -1,7 +1,7 @@
 {
   JPanel motherTonguePanel=new JPanel();
   motherTonguePanel.add(new JLabel(messages.getString("guiMotherTongue")),cons);
-  motherTongueBox=new JComboBox<>(getPossibleMotherTongues());
+  JComboBox<String> motherTongueBox=new JComboBox<>(getPossibleMotherTongues());
   if (config.getMotherTongue() != null) {
     motherTongueBox.setSelectedItem(config.getMotherTongue().getTranslatedName(messages));
   }

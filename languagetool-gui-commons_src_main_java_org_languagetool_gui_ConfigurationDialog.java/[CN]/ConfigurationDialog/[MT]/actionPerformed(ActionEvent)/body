@@ -1,5 +1,5 @@
 {
-  if (e.getSource() == okButton) {
+  if (ACTION_COMMAND_OK.equals(e.getActionCommand())) {
     if (original != null) {
       original.restoreState(config);
     }
@@ -10,7 +10,7 @@
     }
     dialog.setVisible(false);
   }
- else   if (e.getSource() == cancelButton) {
+ else   if (ACTION_COMMAND_CANCEL.equals(e.getActionCommand())) {
     dialog.setVisible(false);
   }
 }
