@@ -112,7 +112,7 @@
   c.fill=GridBagConstraints.NONE;
   JButton resetButton=new JButton(Tools.getLabel(messages.getString("FontChooser.reset")));
   resetButton.setMnemonic(Tools.getMnemonic(messages.getString("FontChooser.reset")));
-  resetButton.setActionCommand("RESET");
+  resetButton.setActionCommand(ACTION_COMMAND_RESET);
   resetButton.addActionListener(this);
   buttonPanel.add(resetButton,c);
   c.gridx=1;
@@ -123,14 +123,14 @@
   c.fill=GridBagConstraints.NONE;
   JButton cancelButton=new JButton(Tools.getLabel(messages.getString("guiCancelButton")));
   cancelButton.setMnemonic(Tools.getMnemonic(messages.getString("guiCancelButton")));
-  cancelButton.setActionCommand("CANCEL");
+  cancelButton.setActionCommand(ACTION_COMMAND_CANCEL);
   cancelButton.addActionListener(this);
   buttonPanel.add(cancelButton,c);
   c.gridx=2;
   c.gridy=0;
   JButton okButton=new JButton(Tools.getLabel(messages.getString("guiOKButton")));
   okButton.setMnemonic(Tools.getMnemonic(messages.getString("guiOKButton")));
-  okButton.setActionCommand("OK");
+  okButton.setActionCommand(ACTION_COMMAND_OK);
   okButton.addActionListener(this);
   buttonPanel.add(okButton,c);
   c.insets=new Insets(4,8,8,8);
