@@ -101,5 +101,10 @@
   Dimension frameSize=dialog.getSize();
   dialog.setLocation(screenSize.width / 2 - frameSize.width / 2,screenSize.height / 2 - frameSize.height / 2);
   dialog.setLocationByPlatform(true);
+  for (  JPanel extra : this.extraPanels) {
+    if (extra instanceof SavablePanel) {
+      ((SavablePanel)extra).componentShowing();
+    }
+  }
   dialog.setVisible(true);
 }
