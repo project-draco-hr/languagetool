@@ -1,0 +1,5 @@
+{
+  country=l.getCountry();
+  language=l.getLanguage();
+  variant=l.getVariant();
+}

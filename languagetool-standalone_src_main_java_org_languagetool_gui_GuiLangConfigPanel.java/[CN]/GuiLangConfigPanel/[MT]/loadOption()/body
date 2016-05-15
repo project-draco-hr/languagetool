@@ -1,0 +1,10 @@
+{
+  LocaleBean lang=storage.loadProperty("gui.locale",LocaleBean.class);
+  if (lang != null) {
+    Locale l=lang.asLocale();
+    languageBox.selectLanguage(Languages.getLanguageForLocale(l));
+  }
+ else {
+    languageBox.setSelectedItem(system);
+  }
+}

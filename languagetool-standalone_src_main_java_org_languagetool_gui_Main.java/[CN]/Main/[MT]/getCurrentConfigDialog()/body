@@ -6,6 +6,7 @@
   }
  else {
     configDialog=new ConfigurationDialog(frame,false,ltSupport.getConfig());
+    configDialog.addExtraPanel(new GuiLangConfigPanel(messages,localStorage));
     configDialogs.put(language,configDialog);
   }
   return configDialog;

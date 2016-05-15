@@ -1,0 +1,5 @@
+{
+  languageBox.removeItemListener(this);
+  loadOption();
+  languageBox.addItemListener(this);
+}

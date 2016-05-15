@@ -1,0 +1,11 @@
+{
+  if (guiLang == null) {
+    return;
+  }
+  if (guiLang.getLanguage() != null) {
+    storage.saveProperty("gui.locale",new LocaleBean(guiLang.getLanguage().getLocaleWithCountryAndVariant()));
+  }
+ else {
+    storage.saveProperty("gui.locale",null);
+  }
+}
