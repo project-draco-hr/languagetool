@@ -1,2 +1,4 @@
 ResourceBundle messages
 String extLangSuffix
+boolean withFlag
+boolean includeHidden

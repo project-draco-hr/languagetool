@@ -1,0 +1,22 @@
+{
+  LanguageComparator comparator=new LanguageComparator(messages,extLangSuffix);
+  LanguageComboBoxModel model=new LanguageComboBoxModel();
+  if (first != null) {
+    model.addElement(first);
+  }
+  if (external != null) {
+    ArrayList<Language> ext=new ArrayList<>(external);
+    Collections.sort(ext,comparator);
+    for (    Language l : ext) {
+      model.addElement(new LanguageAdapter(l));
+    }
+  }
+  ArrayList<Language> internal=new ArrayList<>(Languages.get());
+  Collections.sort(internal,comparator);
+  for (  Language l : internal) {
+    if (includeHidden || !l.isHiddenFromGui()) {
+      model.addElement(new LanguageAdapter(l));
+    }
+  }
+  return model;
+}

@@ -1,0 +1,3 @@
+{
+  applyComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
+}

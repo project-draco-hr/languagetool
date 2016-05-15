@@ -1,0 +1,5 @@
+ResourceBundle messages
+String extLangSuffix
+boolean includeHidden
+List<Language> external
+LanguageAdapter first

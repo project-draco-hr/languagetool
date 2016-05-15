@@ -1,0 +1,37 @@
+{
+  setComponentOrientation(list.getComponentOrientation());
+  if (isSelected) {
+    setBackground(list.getSelectionBackground());
+    setForeground(list.getSelectionForeground());
+  }
+ else {
+    setBackground(list.getBackground());
+    setForeground(list.getForeground());
+  }
+  if (adapter != null) {
+    Language lang=adapter.getLanguage();
+    if (lang != null) {
+      setText(getTranslatedName(lang));
+      String langTag=lang.getLocaleWithCountryAndVariant().toLanguageTag();
+      String country=lang.getLocaleWithCountryAndVariant().getCountry().toLowerCase();
+      ResourceDataBroker dataBroker=JLanguageTool.getDataBroker();
+      String filename="flags/bytag/" + langTag + ".png";
+      if (!dataBroker.resourceExists(filename)) {
+        filename="flags/" + country + ".png";
+      }
+      if (!dataBroker.resourceExists(filename)) {
+        filename="flags/empty.png";
+      }
+      ImageIcon icon=new ImageIcon(dataBroker.getFromResourceDirAsUrl(filename));
+      setIcon(icon);
+    }
+ else {
+      setText(adapter.getValue());
+      setIcon(null);
+    }
+  }
+  setEnabled(list.isEnabled());
+  setFont(list.getFont());
+  setBorder(BORDER);
+  return this;
+}

@@ -1,3 +1,0 @@
-{
-  populateLanguageBox(Collections.<Language>emptyList());
-}

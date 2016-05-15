@@ -1,0 +1,8 @@
+{
+  LanguageComboBox combo=new LanguageComboBox();
+  combo.setModel(LanguageComboBoxModel.create(messages,extLangSuffix,includeHidden,null,first));
+  if (withFlag) {
+    combo.setRenderer(new LanguageComboBoxRenderer(messages,extLangSuffix));
+  }
+  return combo;
+}

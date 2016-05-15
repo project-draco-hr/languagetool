@@ -1,0 +1,4 @@
+{
+  LanguageAdapter adapter=(LanguageAdapter)getSelectedItem();
+  return adapter.getLanguage();
+}

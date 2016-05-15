@@ -1,4 +1,0 @@
-{
-  this.langComparator=new LanguageComparator(messages,extLangSuffix);
-  populateLanguageBox();
-}

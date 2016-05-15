@@ -1,5 +1,5 @@
 JList list
-Language lang
+LanguageAdapter adapter
 int index
 boolean isSelected
 boolean cellHasFocus

@@ -1,7 +1,13 @@
 {
-  for (  Language lang : languages) {
-    if (lang.toString().equals(language.toString())) {
-      setSelectedItem(lang);
+  ComboBoxModel<LanguageAdapter> model=getModel();
+  for (int i=0; i < model.getSize(); i++) {
+    LanguageAdapter adapter=model.getElementAt(i);
+    if (adapter.getLanguage() == null) {
+      continue;
+    }
+    if (adapter.getLanguage().toString().equals(language.toString())) {
+      setSelectedItem(adapter);
+      break;
     }
   }
 }
