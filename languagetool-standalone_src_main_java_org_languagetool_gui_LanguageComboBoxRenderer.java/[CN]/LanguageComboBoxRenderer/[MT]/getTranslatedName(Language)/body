@@ -1,8 +1,7 @@
 {
+  String name=language.getTranslatedName(messages);
   if (language.isExternal()) {
-    return language.getName() + extLangSuffix;
+    name+=extLangSuffix;
   }
- else {
-    return language.getTranslatedName(messages);
-  }
+  return name;
 }
