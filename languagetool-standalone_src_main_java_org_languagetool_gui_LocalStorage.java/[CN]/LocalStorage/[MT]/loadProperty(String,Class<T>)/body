@@ -1,7 +1,6 @@
 {
-  T result=null;
   if (directory == null) {
-    return result;
+    return null;
   }
 synchronized (directory) {
     try (XMLDecoder decoder=new XMLDecoder(new BufferedInputStream(new FileInputStream(new File(directory,name))))){
@@ -20,5 +19,5 @@ catch (      Exception ex) {
  catch (    FileNotFoundException ex) {
     }
   }
-  return result;
+  return null;
 }
