@@ -1,4 +1,8 @@
 {
+  guiLang=null;
+  if (!needsRestart) {
+    needsRestartLabel.setText("");
+  }
   LocaleBean lang=storage.loadProperty("gui.locale",LocaleBean.class);
   if (lang != null) {
     Locale l=lang.asLocale();
