@@ -8,6 +8,11 @@
  catch (  IOException e) {
     Tools.showError(e);
   }
+  MainWindowStateBean bean=new MainWindowStateBean();
+  bean.setBounds(ResizeComponentListener.getBoundsProperty(frame));
+  bean.setState(frame.getExtendedState());
+  bean.setDividerLocation(this.splitPane.getDividerLocation());
+  localStorage.saveProperty("gui.state",bean);
   frame.setVisible(false);
   JLanguageTool.removeTemporaryFiles();
   System.exit(0);

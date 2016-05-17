@@ -1,0 +1,5 @@
+{
+  if ((frame.getExtendedState() & Frame.MAXIMIZED_BOTH) == 0) {
+    frame.getRootPane().putClientProperty(BOUNDS_PROPERTY_NAME,frame.getBounds());
+  }
+}

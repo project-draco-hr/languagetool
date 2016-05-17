@@ -1,0 +1,3 @@
+{
+  return (Rectangle)frame.getRootPane().getClientProperty(BOUNDS_PROPERTY_NAME);
+}

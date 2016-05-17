@@ -86,8 +86,7 @@
   cons.gridx=0;
   cons.gridy=2;
   cons.weighty=5.0f;
-  JSplitPane splitPane=new JSplitPane(JSplitPane.VERTICAL_SPLIT,new JScrollPane(textArea),new JScrollPane(resultArea));
-  splitPane.setDividerLocation(200);
+  splitPane=new JSplitPane(JSplitPane.VERTICAL_SPLIT,new JScrollPane(textArea),new JScrollPane(resultArea));
   contentPane.add(splitPane,cons);
   cons.fill=GridBagConstraints.HORIZONTAL;
   cons.gridx=0;
@@ -180,5 +179,20 @@
   frame.pack();
   frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
   frame.setLocationByPlatform(true);
+  splitPane.setDividerLocation(200);
+  MainWindowStateBean state=localStorage.loadProperty("gui.state",MainWindowStateBean.class);
+  if (state != null) {
+    if (state.getBounds() != null) {
+      frame.setBounds(state.getBounds());
+      ResizeComponentListener.setBoundsProperty(frame,state.getBounds());
+    }
+    if (state.getDividerLocation() != null) {
+      splitPane.setDividerLocation(state.getDividerLocation());
+    }
+    if (state.getState() != null) {
+      frame.setExtendedState(state.getState());
+    }
+  }
+  ResizeComponentListener.attachToWindow(frame);
   maybeStartServer();
 }
