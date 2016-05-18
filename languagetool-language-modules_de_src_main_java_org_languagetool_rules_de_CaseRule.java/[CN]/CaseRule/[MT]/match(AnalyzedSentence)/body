@@ -34,6 +34,9 @@
       if (isPrevProbablyRelativePronoun(tokens,i)) {
         continue;
       }
+      if (isVerbFollowedByRelativeClause(i,tokens)) {
+        continue;
+      }
       potentiallyAddLowercaseMatch(ruleMatches,tokens[i],prevTokenIsDas,token,nextTokenIsPersonalPronoun);
     }
     prevTokenIsDas=nounIndicators.contains(tokens[i].getToken().toLowerCase());
