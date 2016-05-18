@@ -1,0 +1,3 @@
+{
+  TestTools.myAssert(word,word + "/[null]null",tokenizer,tagger);
+}

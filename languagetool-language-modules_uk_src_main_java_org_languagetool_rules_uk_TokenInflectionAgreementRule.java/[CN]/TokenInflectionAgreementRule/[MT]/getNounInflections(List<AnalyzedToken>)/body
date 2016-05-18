@@ -1,0 +1,15 @@
+{
+  List<Inflection> slaveInflections=new ArrayList<>();
+  for (  AnalyzedToken token : nounTokenReadings) {
+    String posTag2=token.getPOSTag();
+    Matcher matcher=NOUN_INFLECTION_PATTERN.matcher(posTag2);
+    if (!matcher.find()) {
+      continue;
+    }
+    String gen=matcher.group(2);
+    String vidm=matcher.group(3);
+    String animTag=matcher.group(1);
+    slaveInflections.add(new Inflection(gen,vidm,animTag));
+  }
+  return slaveInflections;
+}

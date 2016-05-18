@@ -55,10 +55,7 @@
     List<String> posTagsToFind=new ArrayList<>();
     String reqPosTag=reqTokenReadings.getAnalyzedToken(0).getPOSTag();
     String prep=reqTokenReadings.getAnalyzedToken(0).getLemma();
-    if (prep.equalsIgnoreCase("??????????")) {
-      posTagsToFind.add("v_naz");
-    }
- else     if (prep.equalsIgnoreCase("??????????????")) {
+    if (prep.equalsIgnoreCase("??????????????")) {
       posTagsToFind.add("v_naz");
     }
     Matcher matcher=REQUIRE_VIDMINOK_REGEX.matcher(reqPosTag);
@@ -137,11 +134,9 @@
           continue;
         }
         if (tokens.length > i + 2) {
-          if (posTag.matches("adj.*:[mfn]:v_rod.*")) {
-            String gender=PosTagHelper.getGender(posTag);
-            if (gender == null) {
-            }
-            if (PosTagHelper.hasPosTag(tokens[i + 1],"noun.*:" + gender + ":v_rod.*")) {
+          if (PosTagHelper.hasPosTag(tokenReadings,"adj.*:[mfn]:v_rod.*")) {
+            String genders=PosTagHelper.getGenders(tokenReadings,"adj.*:[mfn]:v_rod.*");
+            if (PosTagHelper.hasPosTag(tokens[i + 1],"noun.*:[" + genders + "]:v_rod.*")) {
               i+=1;
               continue;
             }

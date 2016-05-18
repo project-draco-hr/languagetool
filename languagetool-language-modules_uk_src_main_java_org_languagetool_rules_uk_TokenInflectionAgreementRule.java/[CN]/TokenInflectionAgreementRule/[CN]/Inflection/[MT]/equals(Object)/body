@@ -1,0 +1,7 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  Inflection other=(Inflection)obj;
+  return gender.equals(other.gender) && _case.equals(other._case) && (animTag == null || other.animTag == null || !animMatters() || !other.isAnimalSensitive() || animTag.equals(other.animTag));
+}

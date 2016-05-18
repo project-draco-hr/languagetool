@@ -37,10 +37,11 @@
       if (rightPosTag.contains(COMPB_TAG)) {
         rightPosTag=rightPosTag.replace(COMPB_TAG,"");
       }
-      if (leftPosTag.equals(rightPosTag) && (IPOSTag.startsWith(leftPosTag,IPOSTag.numr,IPOSTag.adv,IPOSTag.adj,IPOSTag.verb) || (IPOSTag.startsWith(leftPosTag,IPOSTag.excl) && leftAnalyzedToken.getLemma().equalsIgnoreCase(rightAnalyzedToken.getLemma())))) {
+      if (leftPosTag.equals(rightPosTag) && (IPOSTag.startsWith(leftPosTag,IPOSTag.numr,IPOSTag.adv,IPOSTag.adj,IPOSTag.verb) || (IPOSTag.startsWith(leftPosTag,IPOSTag.intj) && leftAnalyzedToken.getLemma().equalsIgnoreCase(rightAnalyzedToken.getLemma())))) {
         newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
       }
  else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && rightPosTag.startsWith(IPOSTag.noun.getText())) {
+        if (leftAnalyzedToken.getToken().equalsIgnoreCase(rightAnalyzedToken.getToken()) && leftPosTag.contains(TAG_ANIM) && rightPosTag.contains(TAG_ANIM))         continue;
         String agreedPosTag=getAgreedPosTag(leftPosTag,rightPosTag,leftNv);
         if (agreedPosTag == null && rightPosTag.startsWith("noun:inanim:m:v_naz") && isMinMax(rightAnalyzedToken.getToken())) {
           agreedPosTag=leftPosTag;
@@ -77,16 +78,15 @@
           }
         }
       }
- else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && IPOSTag.startsWith(rightPosTag,IPOSTag.adj,IPOSTag.numr)) {
-        if (!leftPosTag.contains(":prop") || isJuniorSenior(leftAnalyzedToken,rightAnalyzedToken)) {
-          String leftGenderConj=PosTagHelper.getGenderConj(leftPosTag);
-          if (leftGenderConj != null && leftGenderConj.equals(PosTagHelper.getGenderConj(rightPosTag))) {
-            newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
-          }
+ else       if (leftPosTag.startsWith(IPOSTag.noun.getText()) && IPOSTag.startsWith(rightPosTag,IPOSTag.numr) || (IPOSTag.startsWith(rightPosTag,IPOSTag.adj) && isJuniorSenior(leftAnalyzedToken,rightAnalyzedToken))) {
+        String leftGenderConj=PosTagHelper.getGenderConj(leftPosTag);
+        if (leftGenderConj != null && leftGenderConj.equals(PosTagHelper.getGenderConj(rightPosTag))) {
+          newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
         }
       }
     }
   }
+  newAnalyzedTokens=new ArrayList<>(new LinkedHashSet<>(newAnalyzedTokens));
   if (newAnalyzedTokens.isEmpty()) {
     newAnalyzedTokens=newAnalyzedTokensAnimInanim;
   }

@@ -1,0 +1,4 @@
+List<Inflection> masterInflections
+List<Inflection> slaveInflections
+String masterCaseFilter
+String slaveCaseFilter

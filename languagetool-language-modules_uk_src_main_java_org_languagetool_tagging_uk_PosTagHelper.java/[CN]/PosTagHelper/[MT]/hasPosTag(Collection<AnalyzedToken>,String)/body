@@ -1,0 +1,6 @@
+{
+  for (  AnalyzedToken analyzedToken : analyzedTokenReadings) {
+    if (hasPosTag(analyzedToken,posTagRegex))     return true;
+  }
+  return false;
+}

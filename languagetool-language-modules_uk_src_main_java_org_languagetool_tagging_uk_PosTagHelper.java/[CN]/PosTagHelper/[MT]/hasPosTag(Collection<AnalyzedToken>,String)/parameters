@@ -1,0 +1,2 @@
+Collection<AnalyzedToken> analyzedTokenReadings
+String posTagRegex

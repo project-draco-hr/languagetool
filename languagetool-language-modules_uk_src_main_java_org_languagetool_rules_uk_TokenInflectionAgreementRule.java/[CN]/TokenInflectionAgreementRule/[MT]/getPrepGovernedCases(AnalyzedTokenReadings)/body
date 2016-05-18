@@ -1,0 +1,14 @@
+{
+  ArrayList<String> reqCases=new ArrayList<>();
+  for (  AnalyzedToken reading : analyzedTokenReadings.getReadings()) {
+    String posTag=reading.getPOSTag();
+    if (posTag != null && posTag.contains("rv_")) {
+      Matcher matcher=TokenAgreementRule.REQUIRE_VIDMINOK_REGEX.matcher(posTag);
+      while (matcher.find()) {
+        reqCases.add(matcher.group(1));
+      }
+      break;
+    }
+  }
+  return reqCases;
+}

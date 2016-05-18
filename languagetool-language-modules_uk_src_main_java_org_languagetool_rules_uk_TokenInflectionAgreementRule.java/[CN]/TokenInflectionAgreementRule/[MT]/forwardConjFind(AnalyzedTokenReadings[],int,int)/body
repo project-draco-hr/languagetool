@@ -1,0 +1,6 @@
+{
+  for (int i=pos; i < tokens.length && i <= pos + depth; i++) {
+    if (CONJ_FOR_PLURAL.contains(tokens[i].getAnalyzedToken(0).getLemma()) || tokens[i].getAnalyzedToken(0).getToken().equals(","))     return true;
+  }
+  return false;
+}

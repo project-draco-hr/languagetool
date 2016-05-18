@@ -1,6 +1,3 @@
 {
-  for (  AnalyzedToken analyzedToken : analyzedTokenReadings) {
-    if (hasPosTag(analyzedToken,posTagRegex))     return true;
-  }
-  return false;
+  return hasPosTag(analyzedTokenReadings.getReadings(),posTagRegex);
 }

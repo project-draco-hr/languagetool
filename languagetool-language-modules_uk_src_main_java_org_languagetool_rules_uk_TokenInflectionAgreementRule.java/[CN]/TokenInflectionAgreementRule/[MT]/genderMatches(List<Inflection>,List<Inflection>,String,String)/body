@@ -1,0 +1,8 @@
+{
+  for (  Inflection masterInflection : masterInflections) {
+    for (    Inflection slaveInflection : slaveInflections) {
+      if (masterInflection._case.equals(masterCaseFilter) && slaveInflection._case.equals(slaveCaseFilter) && slaveInflection.gender.equals(masterInflection.gender))       return true;
+    }
+  }
+  return false;
+}

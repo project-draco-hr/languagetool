@@ -1,0 +1,186 @@
+{
+  List<RuleMatch> ruleMatches=new ArrayList<>();
+  AnalyzedTokenReadings[] tokens=text.getTokensWithoutWhitespace();
+  ArrayList<AnalyzedToken> adjTokenReadings=new ArrayList<>();
+  AnalyzedTokenReadings adjAnalyzedTokenReadins=null;
+  boolean adjpPresent=false;
+  boolean numrPresent=false;
+  boolean pronPresent=false;
+  for (int i=0; i < tokens.length; i++) {
+    AnalyzedTokenReadings tokenReadings=tokens[i];
+    String posTag=tokenReadings.getAnalyzedToken(0).getPOSTag();
+    if (posTag == null || posTag.equals(JLanguageTool.SENTENCE_START_TAGNAME)) {
+      adjTokenReadings.clear();
+      continue;
+    }
+    if (adjTokenReadings.isEmpty()) {
+      if (i == tokens.length - 1)       continue;
+      adjpPresent=false;
+      numrPresent=false;
+      pronPresent=false;
+      for (      AnalyzedToken token : tokenReadings) {
+        String adjPosTag=token.getPOSTag();
+        if (adjPosTag == null) {
+          System.err.println("Null tag: " + tokenReadings);
+          continue;
+        }
+        if (adjPosTag.startsWith("adj") && !adjPosTag.contains(NO_VIDMINOK_SUBSTR)) {
+          adjTokenReadings.add(token);
+          adjAnalyzedTokenReadins=tokenReadings;
+          if (adjPosTag.contains("&pron")) {
+            pronPresent=true;
+          }
+          if (adjPosTag.startsWith("<")) {
+            adjTokenReadings.clear();
+            break;
+          }
+          if (Arrays.asList("??????????????","??????????","????????????????").contains(token.getLemma().toLowerCase()) && adjPosTag.matches(".*:[fp]:.*")) {
+            adjTokenReadings.clear();
+            break;
+          }
+          if (i > 1 && Arrays.asList("????????","????????????").contains(token.getLemma()) && reverseConjFind(tokens,i - 1,3)) {
+            adjTokenReadings.clear();
+            break;
+          }
+          if (i > 1 && adjPosTag.contains(":p:v_rod") && tokens[i - 1].getAnalyzedToken(0).getLemma() != null && tokens[i - 1].getAnalyzedToken(0).getLemma().matches(".*[2-4]|??????|??????|????????????") && PosTagHelper.hasPosTag(tokens[i + 1],".*:p:v_naz.*")) {
+            adjTokenReadings.clear();
+            break;
+          }
+          if (Arrays.asList("??????","????????").contains(token.getToken().toLowerCase())) {
+            adjTokenReadings.clear();
+            break;
+          }
+          if (i > 0 && PosTagHelper.hasPosTag(tokens[i - 1],"(</)?prep.*")) {
+            if (Arrays.asList("????????","????????????","??????????","????????????","??????????","????????","????????????????").contains(token.getLemma())) {
+              Collection<String> governedCases=getPrepGovernedCases(tokens[i - 1]);
+              boolean boo=false;
+              for (              String governedCase : governedCases) {
+                if (token.getPOSTag().contains(governedCase)) {
+                  boo=true;
+                  break;
+                }
+              }
+              if (boo) {
+                adjTokenReadings.clear();
+                break;
+              }
+            }
+          }
+          if (adjPosTag.contains("adjp:pasv")) {
+            adjpPresent=true;
+          }
+          if (adjPosTag.contains(":&numr")) {
+            if (token.getLemma().matches("([12][0-9])?[0-9][0-9]-.*")) {
+              adjTokenReadings.clear();
+              break;
+            }
+            if (i > 0 && Arrays.asList("????","??","??","????","??").contains(tokens[i - 1].getAnalyzedToken(0).getLemma())) {
+              adjTokenReadings.clear();
+              break;
+            }
+            numrPresent=true;
+          }
+          if (i > 0 && adjPosTag.contains(":v_oru") && hasButyLemma(tokens[i - 1])) {
+            adjTokenReadings.clear();
+            break;
+          }
+        }
+ else         if (adjPosTag.equals(JLanguageTool.SENTENCE_END_TAGNAME)) {
+          continue;
+        }
+ else {
+          adjTokenReadings.clear();
+          break;
+        }
+      }
+      continue;
+    }
+    ArrayList<AnalyzedToken> slaveTokenReadings=new ArrayList<>();
+    for (    AnalyzedToken token : tokenReadings) {
+      String posTag2=token.getPOSTag();
+      if (posTag2 == null) {
+        System.err.println("Null tag: " + tokenReadings);
+        continue;
+      }
+      if (posTag2.startsWith("noun") && !posTag2.contains(NO_VIDMINOK_SUBSTR)) {
+        if (posTag2.contains("&pron")) {
+          slaveTokenReadings.clear();
+          break;
+        }
+        if (token.getToken().equals("????.")) {
+          adjTokenReadings.clear();
+          break;
+        }
+        if (token.getToken().equals("??????????") && adjAnalyzedTokenReadins.getAnalyzedToken(0).getToken().matches(".*??????????????|.*????????????????")) {
+          adjTokenReadings.clear();
+          break;
+        }
+        if (posTag2.startsWith("</")) {
+          adjTokenReadings.clear();
+          break;
+        }
+        if (adjpPresent && posTag2.contains("v_oru")) {
+          slaveTokenReadings.clear();
+          break;
+        }
+ else         if (numrPresent && Arrays.asList("??????????","??????????","??????").contains(token.getLemma())) {
+          slaveTokenReadings.clear();
+          break;
+        }
+ else         if (pronPresent && token.getLemma().equals("??????????")) {
+          slaveTokenReadings.clear();
+          break;
+        }
+        slaveTokenReadings.add(token);
+      }
+ else       if (posTag2.equals(JLanguageTool.SENTENCE_END_TAGNAME)) {
+        continue;
+      }
+ else {
+        slaveTokenReadings.clear();
+        break;
+      }
+    }
+    if (slaveTokenReadings.isEmpty()) {
+      adjTokenReadings.clear();
+      continue;
+    }
+    List<Inflection> masterInflections=getAdjInflections(adjTokenReadings);
+    List<Inflection> slaveInflections=getNounInflections(slaveTokenReadings);
+    if (Collections.disjoint(masterInflections,slaveInflections)) {
+      if (i < tokens.length - 2 && PosTagHelper.hasPosTag(adjAnalyzedTokenReadins,"adj:p:.*") && forwardConjFind(tokens,i + 1,2) && !disjointIgnoreGender(masterInflections,slaveInflections)) {
+        adjTokenReadings.clear();
+        continue;
+      }
+      if (i > 1 && PosTagHelper.hasPosTag(tokenReadings,"noun:.*:p:(v_naz|v_zna).*") && Arrays.asList("??????","??????","????????????").contains(tokens[i - 2].getAnalyzedToken(0).getLemma()) && PosTagHelper.hasPosTag(adjAnalyzedTokenReadins,"adj.*:p:v_rod.*")) {
+        adjTokenReadings.clear();
+        continue;
+      }
+      if (i > 1 && PosTagHelper.hasPosTag(tokens[i - 2],"noun:.*") && !Collections.disjoint(masterInflections,getNounInflections(tokens[i - 2].getReadings()))) {
+        adjTokenReadings.clear();
+        continue;
+      }
+      if (i > 2 && PosTagHelper.hasPosTag(tokenReadings,"noun:.*:p:.*") && reverseConjFind(tokens,i - 2,2) && !disjointIgnoreGender(masterInflections,slaveInflections)) {
+        adjTokenReadings.clear();
+        continue;
+      }
+      if (i > 2 && PosTagHelper.hasPosTag(tokenReadings,"noun:.*:p:.*") && Arrays.asList("??????","??????????").contains(tokens[i - 2].getAnalyzedToken(0).getLemma()) && !disjointIgnoreGender(masterInflections,slaveInflections)) {
+        adjTokenReadings.clear();
+        continue;
+      }
+      if (i > 1 && PosTagHelper.hasPosTag(tokens[i - 2],"verb:.*") && PosTagHelper.hasPosTag(tokens[i - 1],"adj.*:v_oru.*") && PosTagHelper.hasPosTag(tokens[i],"noun:.*:v_zna.*") && genderMatches(masterInflections,slaveInflections,"v_oru","v_zna")) {
+        adjTokenReadings.clear();
+        continue;
+      }
+      if (inflectionControlMatches(adjTokenReadings,slaveInflections)) {
+        adjTokenReadings.clear();
+        continue;
+      }
+      String msg=String.format("?????????????????????? ???????????????????? ?? ??????????????????: \"%s\" (%s) ?? \"%s\" (%s)",adjTokenReadings.get(0).getToken(),masterInflections,slaveTokenReadings.get(0).getToken(),slaveInflections);
+      RuleMatch potentialRuleMatch=new RuleMatch(this,adjAnalyzedTokenReadins.getStartPos(),tokenReadings.getEndPos(),msg,getShort());
+      ruleMatches.add(potentialRuleMatch);
+    }
+    adjTokenReadings.clear();
+  }
+  return toRuleMatchArray(ruleMatches);
+}

@@ -1,0 +1,3 @@
+{
+  return _case.equals(other._case) && (animTag == null || other.animTag == null || !animMatters() || animTag.equals(other.animTag));
+}

@@ -1,11 +1,30 @@
 {
   List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(analyzedTokens.size());
   String leftBase=leftWord.substring(0,leftWord.length() - 1);
-  if (!LEFT_O_ADJ.contains(leftWord.toLowerCase(conversionLocale)) && tagBothCases(leftWord).isEmpty() && tagBothCases(oToYj(leftWord)).isEmpty()&& tagBothCases(leftBase).isEmpty()&& tagBothCases(leftBase + "??").isEmpty())   return null;
+  String extraTag="";
+  if (!LEFT_O_ADJ.contains(leftWord.toLowerCase(conversionLocale))) {
+    List<TaggedWord> taggedWords=tagBothCases(leftWord);
+    if (taggedWords.isEmpty()) {
+      taggedWords=tagBothCases(oToYj(leftWord));
+    }
+    if (taggedWords.isEmpty()) {
+      taggedWords=tagBothCases(leftBase);
+    }
+    if (taggedWords.isEmpty()) {
+      taggedWords=tagBothCases(leftBase + "??");
+    }
+    if (taggedWords.isEmpty())     return null;
+    for (    TaggedWord taggedWord : taggedWords) {
+      if (taggedWord.getPosTag().contains(":bad")) {
+        extraTag=":bad";
+        break;
+      }
+    }
+  }
   for (  AnalyzedToken analyzedToken : analyzedTokens) {
     String posTag=analyzedToken.getPOSTag();
     if (posTag.startsWith(IPOSTag.adj.getText())) {
-      newAnalyzedTokens.add(new AnalyzedToken(word,posTag,leftWord + "-" + analyzedToken.getLemma()));
+      newAnalyzedTokens.add(new AnalyzedToken(word,posTag + extraTag,leftWord.toLowerCase() + "-" + analyzedToken.getLemma()));
     }
   }
   return newAnalyzedTokens.isEmpty() ? null : newAnalyzedTokens;

@@ -1,0 +1,16 @@
+{
+  List<Inflection> masterInflections=new ArrayList<>();
+  for (  AnalyzedToken token : adjTokenReadings) {
+    String posTag2=token.getPOSTag();
+    Matcher matcher=ADJ_INFLECTION_PATTERN.matcher(posTag2);
+    matcher.find();
+    String gen=matcher.group(1);
+    String vidm=matcher.group(2);
+    String animTag=null;
+    if (matcher.group(3) != null) {
+      animTag=matcher.group(3).substring(2);
+    }
+    masterInflections.add(new Inflection(gen,vidm,animTag));
+  }
+  return masterInflections;
+}

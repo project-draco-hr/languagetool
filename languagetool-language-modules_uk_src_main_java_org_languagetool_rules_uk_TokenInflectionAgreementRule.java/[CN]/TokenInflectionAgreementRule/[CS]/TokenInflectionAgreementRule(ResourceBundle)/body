@@ -1,0 +1,4 @@
+{
+  super.setCategory(Categories.MISC.getCategory(messages));
+  setDefaultOff();
+}

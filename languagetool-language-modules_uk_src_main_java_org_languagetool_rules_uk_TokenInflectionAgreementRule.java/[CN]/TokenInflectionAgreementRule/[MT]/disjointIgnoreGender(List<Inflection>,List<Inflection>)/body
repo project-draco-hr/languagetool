@@ -1,0 +1,8 @@
+{
+  for (  Inflection mInflection : masterInflections) {
+    for (    Inflection sInflection : slaveInflections) {
+      if (mInflection.equalsIgnoreGender(sInflection))       return false;
+    }
+  }
+  return true;
+}

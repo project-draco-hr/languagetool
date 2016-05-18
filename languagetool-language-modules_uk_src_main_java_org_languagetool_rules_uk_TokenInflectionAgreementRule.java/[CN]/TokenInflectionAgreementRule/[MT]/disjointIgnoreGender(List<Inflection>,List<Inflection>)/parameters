@@ -1,0 +1,2 @@
+List<Inflection> masterInflections
+List<Inflection> slaveInflections

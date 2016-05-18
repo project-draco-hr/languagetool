@@ -1,0 +1,6 @@
+{
+  for (  AnalyzedToken analyzedToken : analyzedTokenReadings.getReadings()) {
+    if ("????????".equalsIgnoreCase(analyzedToken.getLemma()))     return true;
+  }
+  return false;
+}

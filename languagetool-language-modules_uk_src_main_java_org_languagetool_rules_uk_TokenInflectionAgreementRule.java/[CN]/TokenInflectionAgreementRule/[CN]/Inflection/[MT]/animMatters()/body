@@ -1,0 +1,3 @@
+{
+  return _case.equals("v_zna") && isAnimalSensitive();
+}

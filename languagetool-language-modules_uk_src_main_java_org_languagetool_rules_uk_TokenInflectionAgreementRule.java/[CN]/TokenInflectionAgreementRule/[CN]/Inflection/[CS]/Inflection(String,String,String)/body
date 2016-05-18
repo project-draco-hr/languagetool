@@ -1,0 +1,5 @@
+{
+  this.gender=gender;
+  this._case=_case;
+  this.animTag=animTag;
+}

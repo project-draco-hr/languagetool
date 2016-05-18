@@ -1,0 +1,14 @@
+{
+  Pattern posTagPattern=Pattern.compile(posTagRegex);
+  StringBuilder sb=new StringBuilder(4);
+  for (  AnalyzedToken tokenReading : tokenReadings) {
+    String posTag=tokenReading.getPOSTag();
+    if (posTagPattern.matcher(posTag).matches()) {
+      String gender=getGender(posTag);
+      if (sb.indexOf(gender) == -1) {
+        sb.append(gender);
+      }
+    }
+  }
+  return sb.toString();
+}
