@@ -1,5 +1,0 @@
-{
-  System.out.println("Running in After the Deadline mode, default language: " + defaultLanguage);
-  this.afterTheDeadlineMode=true;
-  this.afterTheDeadlineLanguage=defaultLanguage;
-}

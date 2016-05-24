@@ -1,0 +1,3 @@
+{
+  checker.detectLanguageOfString(english,"de",Arrays.asList("en"));
+}

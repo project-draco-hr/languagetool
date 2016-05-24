@@ -1,0 +1,4 @@
+String text
+HttpExchange httpExchange
+Map<String,String> parameters
+int handleCount

@@ -1,0 +1,9 @@
+{
+  print("Using options configured in " + config.getRulesConfigFile());
+  if (config.getRulesConfigFile() != null) {
+    org.languagetool.gui.Tools.configureFromRules(langTool,new Configuration(config.getRulesConfigFile().getParentFile(),config.getRulesConfigFile().getName(),lang));
+  }
+ else {
+    throw new RuntimeException("config.getRulesConfigFile() is null");
+  }
+}

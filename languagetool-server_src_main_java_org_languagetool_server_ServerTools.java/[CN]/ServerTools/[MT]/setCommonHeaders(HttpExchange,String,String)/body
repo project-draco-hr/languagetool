@@ -1,0 +1,4 @@
+{
+  httpExchange.getResponseHeaders().set("Content-Type",contentType);
+  setAllowOrigin(httpExchange,allowOriginUrl);
+}

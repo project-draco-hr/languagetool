@@ -1,0 +1,3 @@
+HttpExchange httpExchange
+String contentType
+String allowOriginUrl

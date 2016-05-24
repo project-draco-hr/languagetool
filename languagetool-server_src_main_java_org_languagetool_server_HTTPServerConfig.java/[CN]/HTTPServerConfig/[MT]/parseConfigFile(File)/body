@@ -9,6 +9,9 @@
       requestLimitPeriodInSeconds=Integer.parseInt(getOptionalProperty(props,"requestLimitPeriodInSeconds","0"));
       trustXForwardForHeader=Boolean.valueOf(getOptionalProperty(props,"trustXForwardForHeader","false"));
       maxWorkQueueSize=Integer.parseInt(getOptionalProperty(props,"maxWorkQueueSize","0"));
+      if (maxWorkQueueSize < 0) {
+        throw new IllegalArgumentException("Max queue size must be >= 0: " + maxWorkQueueSize);
+      }
       String langModel=getOptionalProperty(props,"languageModel",null);
       if (langModel != null) {
         languageModelDir=new File(langModel);

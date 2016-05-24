@@ -1,6 +1,0 @@
-{
-  this.trustXForwardForHeader=trustXForwardForHeader;
-  if (trustXForwardForHeader) {
-    this.ownIps=getServersOwnIps();
-  }
-}

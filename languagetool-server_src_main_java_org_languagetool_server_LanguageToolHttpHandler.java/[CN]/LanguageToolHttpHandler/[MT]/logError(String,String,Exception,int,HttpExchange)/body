@@ -6,7 +6,7 @@
   message+="HTTP user agent: " + getHttpUserAgent(httpExchange) + ", ";
   message+="Stacktrace follows:";
   print(message,System.err);
-  if (verbose && text != null) {
+  if (config.isVerbose() && text != null) {
     print("Exception was caused by this text (" + text.length() + " chars, showing up to 500):\n"+ StringUtils.abbreviate(text,500),System.err);
   }
   e.printStackTrace();

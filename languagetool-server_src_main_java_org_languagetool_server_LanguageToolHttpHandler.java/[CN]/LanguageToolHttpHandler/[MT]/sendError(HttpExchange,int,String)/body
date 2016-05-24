@@ -5,7 +5,7 @@
     httpExchange.getResponseBody().write(xmlResponse.getBytes(ENCODING));
   }
  else {
-    setAllowOrigin(httpExchange);
+    ServerTools.setAllowOrigin(httpExchange,config.getAllowOriginUrl());
     httpExchange.sendResponseHeaders(httpReturnCode,response.getBytes(ENCODING).length);
     httpExchange.getResponseBody().write(response.getBytes(ENCODING));
   }

@@ -2,7 +2,7 @@
   String query;
   if ("post".equalsIgnoreCase(httpExchange.getRequestMethod())) {
     try (InputStreamReader isr=new InputStreamReader(httpExchange.getRequestBody(),ENCODING)){
-      query=readerToString(isr,maxTextLength);
+      query=readerToString(isr,config.getMaxTextLength());
     }
    }
  else {

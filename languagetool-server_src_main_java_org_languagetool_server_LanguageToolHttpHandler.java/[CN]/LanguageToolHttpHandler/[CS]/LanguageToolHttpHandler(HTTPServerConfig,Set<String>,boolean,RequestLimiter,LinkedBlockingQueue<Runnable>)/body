@@ -1,0 +1,14 @@
+{
+  this.config=config;
+  this.allowedIps=allowedIps;
+  this.requestLimiter=requestLimiter;
+  this.workQueue=workQueue;
+  if (config.getTrustXForwardForHeader()) {
+    this.ownIps=getServersOwnIps();
+  }
+ else {
+    this.ownIps=new HashSet<>();
+  }
+  afterTheDeadlineMode=config.getMode() == HTTPServerConfig.Mode.AfterTheDeadline;
+  this.textChecker=new TextChecker(config,internal);
+}

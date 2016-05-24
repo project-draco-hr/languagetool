@@ -1,0 +1,15 @@
+{
+  Language lang;
+  if (autoDetect) {
+    lang=detectLanguageOfString(text,langParam,preferredVariants);
+  }
+ else {
+    if (config.getMode() == HTTPServerConfig.Mode.AfterTheDeadline) {
+      lang=config.getAfterTheDeadlineLanguage();
+    }
+ else {
+      lang=Languages.getLanguageForShortName(langParam);
+    }
+  }
+  return lang;
+}
