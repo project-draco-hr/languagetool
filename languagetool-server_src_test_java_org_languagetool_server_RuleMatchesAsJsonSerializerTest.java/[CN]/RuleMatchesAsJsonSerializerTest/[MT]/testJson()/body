@@ -4,7 +4,7 @@
   assertTrue(json.contains(JLanguageTool.VERSION));
   assertTrue(json.contains("\"English\""));
   assertTrue(json.contains("\"en\""));
-  assertTrue(json.contains("\"My Message\""));
+  assertTrue(json.contains("\"My Message, use <suggestion>foo</suggestion> instead\""));
   assertTrue(json.contains("\"My rule description\""));
   assertTrue(json.contains("\"FAKE_ID\""));
   assertTrue(json.contains("\"This is ...\""));
