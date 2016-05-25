@@ -8,6 +8,11 @@
     }
   }
   g.writeStringField("description",match.getRule().getDescription());
+  if (match.getRule().getUrl() != null) {
+    g.writeArrayFieldStart("urls");
+    g.writeString(match.getRule().getUrl().toString());
+    g.writeEndArray();
+  }
   writeCategory(g,match.getRule().getCategory());
   g.writeEndObject();
 }

@@ -8,4 +8,5 @@
   assertTrue(json.contains("\"My rule description\""));
   assertTrue(json.contains("\"FAKE_ID\""));
   assertTrue(json.contains("\"This is ...\""));
+  assertTrue(json.contains("\"http://foobar.org/blah\""));
 }

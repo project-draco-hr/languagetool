@@ -1,0 +1,8 @@
+{
+  try {
+    setUrl(new URL("http://foobar.org/blah"));
+  }
+ catch (  MalformedURLException e) {
+    throw new RuntimeException(e);
+  }
+}
