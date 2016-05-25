@@ -1,0 +1,8 @@
+{
+  String enabledParam=parameters.get("enabledRules");
+  List<String> enabledRules=new ArrayList<>();
+  if (enabledParam != null) {
+    enabledRules.addAll(Arrays.asList(enabledParam.split(",")));
+  }
+  return enabledRules;
+}

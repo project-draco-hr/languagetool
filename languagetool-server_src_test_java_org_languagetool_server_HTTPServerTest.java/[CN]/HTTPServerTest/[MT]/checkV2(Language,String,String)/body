@@ -1,0 +1,3 @@
+{
+  return check("/v2/check",lang,null,text,parameters);
+}

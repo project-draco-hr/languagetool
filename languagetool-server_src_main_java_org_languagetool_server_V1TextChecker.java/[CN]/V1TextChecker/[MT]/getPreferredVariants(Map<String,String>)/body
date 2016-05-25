@@ -1,0 +1,13 @@
+{
+  List<String> preferredVariants;
+  if (parameters.get("preferredvariants") != null) {
+    preferredVariants=Arrays.asList(parameters.get("preferredvariants").split(",\\s*"));
+    if (!getLanguageAutoDetect(parameters)) {
+      throw new IllegalArgumentException("You specified 'preferredvariants' but you didn't specify 'autodetect=yes'");
+    }
+  }
+ else {
+    preferredVariants=Collections.emptyList();
+  }
+  return preferredVariants;
+}

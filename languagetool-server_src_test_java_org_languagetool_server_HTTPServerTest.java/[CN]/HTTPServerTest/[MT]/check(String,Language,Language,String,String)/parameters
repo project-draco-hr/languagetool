@@ -2,3 +2,4 @@ String urlPrefix
 Language lang
 Language motherTongue
 String text
+String parameters

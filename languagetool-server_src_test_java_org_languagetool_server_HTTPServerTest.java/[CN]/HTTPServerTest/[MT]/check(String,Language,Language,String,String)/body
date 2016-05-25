@@ -1,9 +1,10 @@
 {
-  String urlOptions=urlPrefix + "?language=" + lang.getShortName();
+  String urlOptions=urlPrefix + "?language=" + (lang == null ? "auto" : lang.getShortName());
   urlOptions+="&disabled=HUNSPELL_RULE&text=" + URLEncoder.encode(text,"UTF-8");
   if (motherTongue != null) {
     urlOptions+="&motherTongue=" + motherTongue.getShortName();
   }
+  urlOptions+=parameters;
   URL url=new URL("http://localhost:" + HTTPTools.getDefaultPort() + urlOptions);
   return HTTPTools.checkAtUrl(url);
 }

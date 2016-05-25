@@ -1,0 +1,13 @@
+{
+  List<String> preferredVariants;
+  if (parameters.get("preferredVariants") != null) {
+    preferredVariants=Arrays.asList(parameters.get("preferredVariants").split(",\\s*"));
+    if (!"auto".equals(parameters.get("language"))) {
+      throw new IllegalArgumentException("You specified 'preferredVariants' but you didn't specify 'language=auto'");
+    }
+  }
+ else {
+    preferredVariants=Collections.emptyList();
+  }
+  return preferredVariants;
+}

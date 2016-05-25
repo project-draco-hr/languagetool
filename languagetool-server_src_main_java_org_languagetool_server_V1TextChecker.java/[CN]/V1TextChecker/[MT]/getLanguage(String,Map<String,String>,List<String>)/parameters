@@ -1,0 +1,3 @@
+String text
+Map<String,String> parameters
+List<String> preferredVariants

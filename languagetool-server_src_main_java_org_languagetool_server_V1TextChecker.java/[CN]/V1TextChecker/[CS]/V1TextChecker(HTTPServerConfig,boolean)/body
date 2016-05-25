@@ -1,4 +1,3 @@
 {
   super(config,internalServer);
-  this.config=config;
 }

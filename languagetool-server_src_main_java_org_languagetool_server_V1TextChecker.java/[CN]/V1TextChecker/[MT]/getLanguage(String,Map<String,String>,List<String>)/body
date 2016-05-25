@@ -1,0 +1,18 @@
+{
+  Language lang;
+  if (getLanguageAutoDetect(parameters)) {
+    lang=detectLanguageOfString(text,parameters.get("language"),preferredVariants);
+  }
+ else {
+    if (config.getMode() == HTTPServerConfig.Mode.AfterTheDeadline) {
+      lang=config.getAfterTheDeadlineLanguage();
+      if (lang == null) {
+        throw new RuntimeException("In AfterTheDeadline mode but AfterTheDeadline language not set");
+      }
+    }
+ else {
+      lang=Languages.getLanguageForShortName(parameters.get("language"));
+    }
+  }
+  return lang;
+}

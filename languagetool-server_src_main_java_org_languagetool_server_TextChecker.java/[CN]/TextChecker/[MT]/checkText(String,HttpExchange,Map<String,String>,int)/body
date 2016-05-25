@@ -4,26 +4,13 @@
     throw new TextTooLongException("Your text exceeds this server's limit of " + config.maxTextLength + " characters (it's "+ text.length()+ " characters). Please submit a shorter text.");
   }
   boolean autoDetectLanguage=getLanguageAutoDetect(parameters);
-  List<String> preferredVariants;
-  if (parameters.get("preferredvariants") != null) {
-    preferredVariants=Arrays.asList(parameters.get("preferredvariants").split(",\\s*"));
-    if (!autoDetectLanguage) {
-      throw new IllegalArgumentException("You specified 'preferredvariants' but you didn't specify 'autodetect=yes'");
-    }
-  }
- else {
-    preferredVariants=Collections.emptyList();
-  }
-  Language lang=getLanguage(text,parameters.get("language"),autoDetectLanguage,preferredVariants);
+  List<String> preferredVariants=getPreferredVariants(parameters);
+  Language lang=getLanguage(text,parameters,preferredVariants);
   String motherTongueParam=parameters.get("motherTongue");
   Language motherTongue=motherTongueParam != null ? Languages.getLanguageForShortName(motherTongueParam) : null;
-  boolean useEnabledOnly="yes".equals(parameters.get("enabledOnly"));
-  String enabledParam=parameters.get("enabled");
-  List<String> enabledRules=new ArrayList<>();
-  if (enabledParam != null) {
-    enabledRules.addAll(Arrays.asList(enabledParam.split(",")));
-  }
-  List<String> disabledRules=getCommaSeparatedStrings("disabled",parameters);
+  boolean useEnabledOnly="yes".equals(parameters.get("enabledOnly")) || "true".equals(parameters.get("enabledOnly"));
+  List<String> enabledRules=getEnabledRuleIds(parameters);
+  List<String> disabledRules=getDisabledRuleIds(parameters);
   List<CategoryId> enabledCategories=getCategoryIds("enabledCategories",parameters);
   List<CategoryId> disabledCategories=getCategoryIds("disabledCategories",parameters);
   if ((disabledRules.size() > 0 || disabledCategories.size() > 0) && useEnabledOnly) {
@@ -58,7 +45,7 @@ catch (    TimeoutException e) {
       throw new RuntimeException("Text checking took longer than allowed maximum of " + config.maxCheckTimeMillis + " milliseconds (cancelled: "+ cancelled+ ", handleCount: "+ handleCount+ ", language: "+ lang.getShortNameWithCountryAndVariant()+ ", "+ text.length()+ " characters of text)",e);
     }
   }
-  setCommonHeaders(httpExchange,XML_CONTENT_TYPE,config.allowOriginUrl);
+  setHeaders(httpExchange);
   String xmlResponse=getResponse(text,lang,motherTongue,matches);
   String messageSent="sent";
   String languageMessage=lang.getShortNameWithCountryAndVariant();
