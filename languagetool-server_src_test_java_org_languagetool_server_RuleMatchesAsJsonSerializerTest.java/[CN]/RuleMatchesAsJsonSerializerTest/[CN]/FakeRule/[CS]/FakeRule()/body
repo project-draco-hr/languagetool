@@ -1,4 +1,5 @@
 {
+  setLocQualityIssueType(ITSIssueType.Addition);
   try {
     setUrl(new URL("http://foobar.org/blah"));
   }
