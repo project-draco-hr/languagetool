@@ -1,0 +1,3 @@
+{
+  return checkV2(lang,null,text);
+}

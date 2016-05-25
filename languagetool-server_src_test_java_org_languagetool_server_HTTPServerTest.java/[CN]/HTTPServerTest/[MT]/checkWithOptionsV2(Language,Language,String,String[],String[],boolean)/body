@@ -1,0 +1,3 @@
+{
+  return checkWithOptions("/v2/check",lang,motherTongue,text,enabledRules,disabledRules,useEnabledOnly);
+}

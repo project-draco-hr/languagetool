@@ -6,7 +6,17 @@
     server.run();
     try {
       System.out.println("=== Testing timeout now, please ignore the following exception ===");
-      check(new GermanyGerman(),"Einq Tesz miit fieln Fehlan, desshalb sehee laagnsam bee dr Rechtschriebp??rfung");
+      checkV1(new GermanyGerman(),"Einq Tesz miit fieln Fehlan, desshalb sehee laagnsam bee dr Rechtschriebp??rfung");
+      fail("Check was expected to be stopped because it took too long");
+    }
+ catch (    IOException expected) {
+      if (!expected.toString().contains(" 503 ")) {
+        fail("Expected exception with error 503, got: " + expected);
+      }
+    }
+    try {
+      System.out.println("=== Testing timeout now, please ignore the following exception ===");
+      checkV2(new GermanyGerman(),"Einq Tesz miit fieln Fehlan, desshalb sehee laagnsam bee dr Rechtschriebp??rfung");
       fail("Check was expected to be stopped because it took too long");
     }
  catch (    IOException expected) {

@@ -4,7 +4,8 @@
   try {
     server.run();
     assertTrue(server.isRunning());
-    runTests();
+    runTestsV1();
+    runTestsV2();
   }
   finally {
     server.stop();
