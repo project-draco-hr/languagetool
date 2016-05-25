@@ -1,0 +1,10 @@
+{
+  String context=contextTools.getContext(match.getFromPos(),match.getToPos(),text);
+  int contextOffset=context.indexOf(START_MARKER);
+  context=context.replaceFirst(START_MARKER,"");
+  g.writeObjectFieldStart("context");
+  g.writeStringField("text",context);
+  g.writeNumberField("offset",contextOffset);
+  g.writeNumberField("length",match.getToPos() - match.getFromPos());
+  g.writeEndObject();
+}

@@ -1,0 +1,14 @@
+{
+  g.writeArrayFieldStart("matches");
+  for (  RuleMatch match : matches) {
+    g.writeStartObject();
+    g.writeStringField("message",match.getMessage());
+    writeReplacements(g,match);
+    g.writeNumberField("offset",match.getFromPos());
+    g.writeNumberField("length",match.getToPos() - match.getFromPos());
+    writeContext(g,match,text,contextTools);
+    writeRule(g,match);
+    g.writeEndObject();
+  }
+  g.writeEndArray();
+}

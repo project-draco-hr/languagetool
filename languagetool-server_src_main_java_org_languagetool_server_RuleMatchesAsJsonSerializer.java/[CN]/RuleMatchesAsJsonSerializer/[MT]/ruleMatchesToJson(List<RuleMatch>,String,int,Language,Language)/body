@@ -1,0 +1,21 @@
+{
+  ContextTools contextTools=new ContextTools();
+  contextTools.setEscapeHtml(false);
+  contextTools.setContextSize(contextSize);
+  contextTools.setErrorMarkerStart(START_MARKER);
+  contextTools.setErrorMarkerEnd("");
+  StringWriter sw=new StringWriter();
+  try {
+    try (JsonGenerator g=factory.createGenerator(sw)){
+      g.writeStartObject();
+      writeSoftwareSection(g);
+      writeLanguageSection(g,lang);
+      writeMatchesSection(g,matches,text,contextTools);
+      g.writeEndObject();
+    }
+   }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  return sw.toString();
+}

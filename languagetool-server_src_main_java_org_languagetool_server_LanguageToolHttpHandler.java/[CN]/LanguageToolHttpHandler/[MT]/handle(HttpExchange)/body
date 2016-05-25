@@ -23,7 +23,12 @@ synchronized (this) {
       return;
     }
     if (allowedIps == null || allowedIps.contains(origAddress)) {
-      if (requestedUri.getRawPath().endsWith("/Languages")) {
+      if (requestedUri.getRawPath().startsWith("/v2/")) {
+        ApiV2 apiV2=new ApiV2(textCheckerV2,config.getAllowOriginUrl());
+        String pathWithoutVersion=requestedUri.getRawPath().substring("/v2/".length());
+        apiV2.handleRequest(pathWithoutVersion,httpExchange,parameters);
+      }
+ else       if (requestedUri.getRawPath().endsWith("/Languages")) {
         printListOfLanguages(httpExchange);
       }
  else {
@@ -40,7 +45,7 @@ synchronized (this) {
             throw new IllegalArgumentException("Missing 'text' parameter");
           }
         }
-        textChecker.checkText(text,httpExchange,parameters,handleCount);
+        textCheckerV1.checkText(text,httpExchange,parameters,handleCount);
       }
     }
  else {

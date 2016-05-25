@@ -1,0 +1,6 @@
+{
+  g.writeObjectFieldStart("language");
+  g.writeStringField("name",lang.getName());
+  g.writeStringField("code",lang.getShortNameWithCountryAndVariant());
+  g.writeEndObject();
+}

@@ -1,0 +1,4 @@
+JsonGenerator g
+List<RuleMatch> matches
+String text
+ContextTools contextTools

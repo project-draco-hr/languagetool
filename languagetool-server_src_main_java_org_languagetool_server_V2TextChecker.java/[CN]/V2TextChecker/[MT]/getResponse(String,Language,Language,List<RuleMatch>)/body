@@ -1,0 +1,4 @@
+{
+  RuleMatchesAsJsonSerializer serializer=new RuleMatchesAsJsonSerializer();
+  return serializer.ruleMatchesToJson(matches,text,CONTEXT_SIZE,lang,motherTongue);
+}

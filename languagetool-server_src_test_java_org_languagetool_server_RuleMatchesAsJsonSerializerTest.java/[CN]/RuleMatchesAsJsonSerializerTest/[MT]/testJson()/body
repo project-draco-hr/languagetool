@@ -1,0 +1,11 @@
+{
+  String json=serializer.ruleMatchesToJson(matches,"This is an text.",5,Languages.getLanguageForShortName("en"),null);
+  assertTrue(json.contains("\"LanguageTool\""));
+  assertTrue(json.contains(JLanguageTool.VERSION));
+  assertTrue(json.contains("\"English\""));
+  assertTrue(json.contains("\"en\""));
+  assertTrue(json.contains("\"My Message\""));
+  assertTrue(json.contains("\"My rule description\""));
+  assertTrue(json.contains("\"FAKE_ID\""));
+  assertTrue(json.contains("\"This is ...\""));
+}

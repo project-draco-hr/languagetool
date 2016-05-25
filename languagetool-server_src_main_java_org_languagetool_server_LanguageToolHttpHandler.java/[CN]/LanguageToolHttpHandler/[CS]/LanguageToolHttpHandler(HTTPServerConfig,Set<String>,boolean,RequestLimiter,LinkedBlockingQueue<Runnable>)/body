@@ -10,5 +10,6 @@
     this.ownIps=new HashSet<>();
   }
   afterTheDeadlineMode=config.getMode() == HTTPServerConfig.Mode.AfterTheDeadline;
-  this.textChecker=new TextChecker(config,internal);
+  this.textCheckerV1=new V1TextChecker(config,internal);
+  this.textCheckerV2=new V2TextChecker(config,internal);
 }

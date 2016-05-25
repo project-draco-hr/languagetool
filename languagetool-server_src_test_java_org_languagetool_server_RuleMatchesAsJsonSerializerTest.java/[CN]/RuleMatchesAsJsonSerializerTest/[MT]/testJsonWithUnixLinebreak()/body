@@ -1,0 +1,4 @@
+{
+  String json=serializer.ruleMatchesToJson(matches,"This\nis an text.",5,Languages.getLanguageForShortName("en"),null);
+  assertTrue(json.contains("This is ..."));
+}

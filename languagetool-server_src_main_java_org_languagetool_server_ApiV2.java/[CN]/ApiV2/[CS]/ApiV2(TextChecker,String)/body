@@ -1,0 +1,4 @@
+{
+  this.textChecker=textChecker;
+  this.allowOriginUrl=allowOriginUrl;
+}

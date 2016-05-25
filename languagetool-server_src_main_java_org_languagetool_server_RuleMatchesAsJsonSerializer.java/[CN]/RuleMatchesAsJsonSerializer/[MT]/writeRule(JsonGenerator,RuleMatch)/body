@@ -1,0 +1,13 @@
+{
+  g.writeObjectFieldStart("rule");
+  g.writeStringField("id",match.getRule().getId());
+  if (match.getRule() instanceof AbstractPatternRule) {
+    AbstractPatternRule pRule=(AbstractPatternRule)match.getRule();
+    if (pRule.getSubId() != null) {
+      g.writeStringField("subId",pRule.getSubId());
+    }
+  }
+  g.writeStringField("description",match.getRule().getDescription());
+  writeCategory(g,match.getRule().getCategory());
+  g.writeEndObject();
+}
