@@ -67,5 +67,6 @@ catch (    TimeoutException e) {
     languageMessage+="[auto]";
   }
   String agent=parameters.get("useragent") != null ? parameters.get("useragent") : "-";
-  print("Check done: " + text.length() + " chars, "+ languageMessage+ ", "+ referrer+ ", "+ "handlers:"+ handleCount+ ", "+ matches.size()+ " matches, "+ (System.currentTimeMillis() - timeStart)+ "ms, agent:"+ agent+ ", "+ messageSent);
+  String clazz=this.getClass().getSimpleName();
+  print("Check done: " + text.length() + " chars, "+ languageMessage+ ", "+ referrer+ ", "+ "handlers:"+ handleCount+ ", "+ matches.size()+ " matches, "+ (System.currentTimeMillis() - timeStart)+ "ms, class: "+ clazz+ ", agent:"+ agent+ ", "+ messageSent);
 }
