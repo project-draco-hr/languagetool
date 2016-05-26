@@ -1,0 +1,9 @@
+{
+  List<AnalyzedToken> tokens=new ArrayList<>();
+  List<Lemma> lemma=tagger.getLemma(word,false);
+  for (  Lemma lm : lemma) {
+    AnalyzedToken tk=new AnalyzedToken(word,lm.getTag(),lm.getLemma());
+    tokens.add(tk);
+  }
+  return tokens;
+}
