@@ -10,4 +10,5 @@
   assertTrue(json.contains("\"This is ...\""));
   assertTrue(json.contains("\"http://foobar.org/blah\""));
   assertTrue(json.contains("\"addition\""));
+  assertTrue(json.contains("\"short message\""));
 }
