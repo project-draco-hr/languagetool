@@ -1,10 +1,10 @@
 {
-  this.rule=rule;
+  this.rule=Objects.requireNonNull(rule);
   if (toPos <= fromPos) {
     throw new RuntimeException("fromPos (" + fromPos + ") must be less than toPos ("+ toPos+ ")");
   }
   this.offsetPosition=new OffsetPosition(fromPos,toPos);
-  this.message=message;
+  this.message=Objects.requireNonNull(message);
   this.shortMessage=shortMessage;
   Matcher matcher=SUGGESTION_PATTERN.matcher(message + suggestionsOutMsg);
   int pos=0;
