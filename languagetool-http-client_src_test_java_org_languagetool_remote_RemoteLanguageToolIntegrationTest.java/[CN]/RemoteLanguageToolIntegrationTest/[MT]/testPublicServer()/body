@@ -1,5 +1,5 @@
 {
-  RemoteLanguageTool lt=new RemoteLanguageTool(new URL("https://languagetool.org/api/v2/check"));
+  RemoteLanguageTool lt=new RemoteLanguageTool(new URL("https://languagetool.org/api"));
   RemoteResult matches=lt.check("This is an test.","en");
   System.out.println("matches: " + matches);
 }

@@ -1,3 +1,6 @@
 {
-  this.serverUrl=Objects.requireNonNull(serverUrl);
+  if (serverBaseUrl.toString().endsWith("/")) {
+    throw new IllegalArgumentException("Server base URL must not end with '/': " + serverBaseUrl);
+  }
+  this.serverBaseUrl=Objects.requireNonNull(serverBaseUrl);
 }

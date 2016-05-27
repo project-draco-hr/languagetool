@@ -1,6 +1,13 @@
 {
   byte[] postData=urlParameters.getBytes(StandardCharsets.UTF_8);
-  HttpURLConnection conn=getConnection(postData);
+  URL checkUrl;
+  try {
+    checkUrl=new URL(serverBaseUrl + V2_CHECK);
+  }
+ catch (  MalformedURLException e) {
+    throw new RuntimeException(e);
+  }
+  HttpURLConnection conn=getConnection(postData,checkUrl);
   try {
     if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
       try (InputStream inputStream=conn.getInputStream()){
@@ -15,7 +22,7 @@
      }
   }
  catch (  ConnectException e) {
-    throw new RuntimeException("Could not connect to server at " + serverUrl,e);
+    throw new RuntimeException("Could not connect to server at " + serverBaseUrl,e);
   }
 catch (  Exception e) {
     throw new RuntimeException(e);
