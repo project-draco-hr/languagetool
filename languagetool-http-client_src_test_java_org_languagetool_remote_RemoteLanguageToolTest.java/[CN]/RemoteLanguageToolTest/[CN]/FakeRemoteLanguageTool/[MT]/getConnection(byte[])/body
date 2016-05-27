@@ -18,7 +18,7 @@
       return HTTP_OK;
     }
     @Override public InputStream getInputStream() throws IOException {
-      String response="<matches software=\"LanguageTool\" version=\"3.4-SNAPSHOT\" buildDate=\"2016-04-07 22:01\">" + "<language shortname=\"en-US\" name=\"English (US)\"/>" + "<error fromy=\"0\" fromx=\"12\" toy=\"0\" tox=\"13\" ruleId=\"EN_A_VS_AN\""+ "  msg=\"Use 'an' instead of 'a' if the following word starts with a vowel sound, e.g. 'an article', 'an hour'\""+ "  shortmsg=\"Wrong article\" replacements=\"an\" context=\"It happened a hour ago.\" "+ "  contextoffset=\"12\" offset=\"12\" errorlength=\"1\" category=\"Miscellaneous\" "+ "  categoryid=\"MISC\" locqualityissuetype=\"misspelling\"/>"+ "</matches>";
+      String response=StringTools.readStream(RemoteLanguageToolTest.class.getResourceAsStream("/org/languagetool/remote/" + jsonFile),"utf-8");
       return new ByteArrayInputStream(response.getBytes());
     }
   }

@@ -1,4 +1,4 @@
 {
+  this.langCode=null;
   this.autoDetectLanguage=true;
-  return this;
 }

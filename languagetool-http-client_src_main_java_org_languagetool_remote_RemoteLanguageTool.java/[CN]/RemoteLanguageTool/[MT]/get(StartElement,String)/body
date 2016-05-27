@@ -1,7 +1,0 @@
-{
-  Attribute val=elem.getAttributeByName(new QName(attributeName));
-  if (val != null) {
-    return val.getValue();
-  }
-  throw new RuntimeException("XML element " + elem + " doesn't contain required attribute '"+ attributeName+ "'");
-}

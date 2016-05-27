@@ -1,21 +1,23 @@
 {
   StringBuilder params=new StringBuilder();
-  append(params,"language",config.getLangCode());
   append(params,"text",text);
   if (config.getMotherTongueLangCode() != null) {
     append(params,"motherTongue",config.getMotherTongueLangCode());
   }
   if (config.guessLanguage()) {
-    append(params,"autodetect","1");
+    append(params,"language","auto");
+  }
+ else {
+    append(params,"language",config.getLangCode().orElse("auto"));
   }
   if (config.getEnabledRuleIds().size() > 0) {
-    append(params,"enabled",String.join(",",config.getEnabledRuleIds()));
+    append(params,"enabledRules",String.join(",",config.getEnabledRuleIds()));
   }
   if (config.enabledOnly()) {
     append(params,"enabledOnly","yes");
   }
   if (config.getDisabledRuleIds().size() > 0) {
-    append(params,"disabled",String.join(",",config.getDisabledRuleIds()));
+    append(params,"disabledRules",String.join(",",config.getDisabledRuleIds()));
   }
   append(params,"useragent","java-http-client");
   return params.toString();

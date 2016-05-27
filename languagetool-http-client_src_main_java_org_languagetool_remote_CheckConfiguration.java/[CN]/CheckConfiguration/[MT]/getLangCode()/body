@@ -1,3 +1,3 @@
 {
-  return langCode;
+  return Optional.ofNullable(langCode);
 }

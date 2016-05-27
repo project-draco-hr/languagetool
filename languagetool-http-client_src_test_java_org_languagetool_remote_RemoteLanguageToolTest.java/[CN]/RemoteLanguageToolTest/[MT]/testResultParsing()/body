@@ -1,8 +1,11 @@
 {
-  RemoteLanguageTool lt=new FakeRemoteLanguageTool(new URL("http://fake"));
+  RemoteLanguageTool lt=new FakeRemoteLanguageTool("response.json");
   RemoteResult result1=lt.check("some text, reply is hard-coded anyway","en");
   runAsserts(result1);
-  CheckConfiguration config=new CheckConfigurationBuilder("en").autoDetectLanguage().build();
+  CheckConfiguration config=new CheckConfigurationBuilder().build();
   RemoteResult result2=lt.check("some text, reply is hard-coded anyway",config);
   runAsserts(result2);
+  RemoteLanguageTool lt2=new FakeRemoteLanguageTool("response-with-url.json");
+  RemoteResult result3=lt2.check("some text, reply is hard-coded anyway",config);
+  assertThat(result3.getMatches().get(0).getUrl().get(),is("https://fake.org/foo"));
 }

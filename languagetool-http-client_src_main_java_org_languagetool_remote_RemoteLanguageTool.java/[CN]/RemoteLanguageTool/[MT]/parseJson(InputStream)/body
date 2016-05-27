@@ -1,0 +1,15 @@
+{
+  Map map=mapper.readValue(inputStream,Map.class);
+  Map<String,String> languageObj=(Map<String,String>)map.get("language");
+  String language=languageObj.get("name");
+  String languageCode=languageObj.get("code");
+  Map<String,String> software=(Map<String,String>)map.get("software");
+  RemoteServer remoteServer=new RemoteServer(software.get("name"),software.get("version"),software.get("buildDate"));
+  List matches=(ArrayList)map.get("matches");
+  List<RemoteRuleMatch> result=new ArrayList<>();
+  for (  Object match : matches) {
+    RemoteRuleMatch remoteMatch=getMatch((Map<String,Object>)match);
+    result.add(remoteMatch);
+  }
+  return new RemoteResult(language,languageCode,result,remoteServer);
+}

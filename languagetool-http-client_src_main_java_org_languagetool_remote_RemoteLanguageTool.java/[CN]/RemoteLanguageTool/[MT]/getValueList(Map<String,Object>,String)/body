@@ -1,0 +1,11 @@
+{
+  List<Object> matches=(List<Object>)match.get(propertyName);
+  List<String> l=new ArrayList<>();
+  if (matches != null) {
+    for (    Object o : matches) {
+      Map<String,Object> item=(Map<String,Object>)o;
+      l.add((String)item.get("value"));
+    }
+  }
+  return l;
+}

@@ -1,0 +1,7 @@
+{
+  Object val=elem.get(propertyName);
+  if (val != null) {
+    return (String)val;
+  }
+  return null;
+}

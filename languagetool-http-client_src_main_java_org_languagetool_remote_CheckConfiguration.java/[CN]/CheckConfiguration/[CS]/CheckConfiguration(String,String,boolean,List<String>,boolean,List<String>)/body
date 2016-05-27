@@ -1,5 +1,11 @@
 {
-  this.langCode=Objects.requireNonNull(langCode);
+  if (langCode == null && !guessLanguage) {
+    throw new IllegalArgumentException("No language was set but language guessing was not activated either");
+  }
+  if (langCode != null && guessLanguage) {
+    throw new IllegalArgumentException("Language was set but language guessing was also activated");
+  }
+  this.langCode=langCode;
   this.motherTongueLangCode=motherTongueLangCode;
   this.guessLanguage=guessLanguage;
   this.enabledRuleIds=Objects.requireNonNull(enabledRuleIds);

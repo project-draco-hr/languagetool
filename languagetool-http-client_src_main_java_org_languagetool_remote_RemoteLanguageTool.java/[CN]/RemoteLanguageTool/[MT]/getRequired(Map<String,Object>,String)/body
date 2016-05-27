@@ -1,0 +1,7 @@
+{
+  Object val=elem.get(propertyName);
+  if (val != null) {
+    return val;
+  }
+  throw new RuntimeException("JSON item " + elem + " doesn't contain required property '"+ propertyName+ "'");
+}

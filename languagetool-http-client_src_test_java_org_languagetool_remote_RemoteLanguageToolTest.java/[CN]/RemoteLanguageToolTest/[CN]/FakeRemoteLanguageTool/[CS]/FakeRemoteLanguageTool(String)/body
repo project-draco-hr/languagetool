@@ -1,0 +1,4 @@
+{
+  super(new URL("http://fake"));
+  this.jsonFile=jsonFile;
+}

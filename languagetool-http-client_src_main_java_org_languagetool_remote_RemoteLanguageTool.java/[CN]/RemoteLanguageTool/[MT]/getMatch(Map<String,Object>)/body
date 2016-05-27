@@ -1,0 +1,20 @@
+{
+  Map<String,Object> rule=(Map<String,Object>)match.get("rule");
+  int offset=(int)getRequired(match,"offset");
+  int errorLength=(int)getRequired(match,"length");
+  Map<String,Object> context=(Map<String,Object>)match.get("context");
+  int contextOffset=(int)getRequired(context,"offset");
+  RemoteRuleMatch remoteMatch=new RemoteRuleMatch(getRequiredString(rule,"id"),getRequiredString(match,"message"),getRequiredString(context,"text"),contextOffset,offset,errorLength);
+  remoteMatch.setShortMsg(getOrNull(match,"shortMessage"));
+  remoteMatch.setRuleSubId(getOrNull(rule,"subId"));
+  remoteMatch.setLocQualityIssueType(getOrNull(rule,"issueType"));
+  List<String> urls=getValueList(rule,"urls");
+  if (urls.size() > 0) {
+    remoteMatch.setUrl(urls.get(0));
+  }
+  Map<String,Object> category=(Map<String,Object>)rule.get("category");
+  remoteMatch.setCategory(getOrNull(category,"name"));
+  remoteMatch.setCategoryId(getOrNull(category,"id"));
+  remoteMatch.setReplacements(getValueList(match,"replacements"));
+  return remoteMatch;
+}

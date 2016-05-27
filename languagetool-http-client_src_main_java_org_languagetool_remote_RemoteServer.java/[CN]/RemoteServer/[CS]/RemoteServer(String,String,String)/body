@@ -1,5 +1,5 @@
 {
   this.software=Objects.requireNonNull(software);
   this.version=Objects.requireNonNull(version);
-  this.buildDate=Objects.requireNonNull(buildDate);
+  this.buildDate=buildDate;
 }
