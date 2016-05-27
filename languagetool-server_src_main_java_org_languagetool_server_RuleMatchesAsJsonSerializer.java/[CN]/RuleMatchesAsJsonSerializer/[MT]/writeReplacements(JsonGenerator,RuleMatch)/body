@@ -1,7 +1,9 @@
 {
   g.writeArrayFieldStart("replacements");
   for (  String replacement : match.getSuggestedReplacements()) {
-    g.writeString(replacement);
+    g.writeStartObject();
+    g.writeStringField("value",replacement);
+    g.writeEndObject();
   }
   g.writeEndArray();
 }
