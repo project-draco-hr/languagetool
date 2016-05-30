@@ -1,6 +1,6 @@
 {
   String targetPosTag=match.getPosTag();
-  final List<String> posTags=new ArrayList<>();
+  List<String> posTags=new ArrayList<>();
   Pattern pPosRegexMatch=match.getPosRegexMatch();
   String posTagReplace=match.getPosTagReplace();
   if (match.isStaticLemma()) {
