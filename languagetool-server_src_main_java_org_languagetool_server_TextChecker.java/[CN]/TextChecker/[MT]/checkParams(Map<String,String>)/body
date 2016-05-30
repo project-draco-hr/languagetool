@@ -1,0 +1,5 @@
+{
+  if (parameters.get("text") == null) {
+    throw new IllegalArgumentException("Missing 'text' parameter");
+  }
+}

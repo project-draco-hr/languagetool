@@ -1,4 +1,5 @@
 {
+  checkParams(parameters);
   long timeStart=System.currentTimeMillis();
   if (text.length() > config.maxTextLength) {
     throw new TextTooLongException("Your text exceeds this server's limit of " + config.maxTextLength + " characters (it's "+ text.length()+ " characters). Please submit a shorter text.");
