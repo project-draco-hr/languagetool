@@ -4,7 +4,7 @@
     HTTPTools.checkAtUrl(new URL(httpPrefix + "?text=a+test&language=en"));
     fail("HTTP should not work, only HTTPS");
   }
- catch (  SocketException expected) {
+ catch (  SocketException ignored) {
   }
   String httpsPrefix="https://localhost:" + HTTPTools.getDefaultPort() + "/";
   String result=HTTPTools.checkAtUrl(new URL(httpsPrefix + "?text=a+test.&language=en"));

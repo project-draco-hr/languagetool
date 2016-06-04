@@ -11,7 +11,7 @@
       String result=check(new German(),"foo");
       fail("Expected exception not thrown, got this result instead: '" + result + "'");
     }
- catch (    IOException expected) {
+ catch (    IOException ignored) {
     }
   }
   finally {
