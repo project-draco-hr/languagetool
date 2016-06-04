@@ -5,6 +5,7 @@
   }
  else {
     RuleMatchAsXmlSerializer serializer=new RuleMatchAsXmlSerializer();
-    return serializer.ruleMatchesToXml(matches,text,CONTEXT_SIZE,lang,motherTongue);
+    String xml=serializer.ruleMatchesToXml(matches,text,CONTEXT_SIZE,lang,motherTongue);
+    return xml.replaceFirst("\\?>","?>\n" + getDeprecationWarning());
   }
 }

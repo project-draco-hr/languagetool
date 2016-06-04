@@ -1,0 +1,3 @@
+{
+  return "<!-- ***** -->\n" + "<!-- WARNING: this API is deprecated and will be turned off - see https://languagetool.org/http-api/migration.php for details -->\n" + "<!-- ***** -->";
+}
