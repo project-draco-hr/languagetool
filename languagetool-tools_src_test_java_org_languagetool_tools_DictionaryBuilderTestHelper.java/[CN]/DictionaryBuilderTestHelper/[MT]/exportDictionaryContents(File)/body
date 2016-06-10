@@ -1,7 +1,7 @@
 {
   File outputFile=File.createTempFile(DictionaryExporter.class.getSimpleName(),".export");
   String infoFile=file.toString().replaceAll("\\.dict$",".info");
-  String[] buildOptions={"--exit","false","-i",file.toString(),"-o",outputFile.toString(),"-info",infoFile,"--overwrite"};
+  String[] buildOptions={"--exit","false","-i",file.toString(),"-o",outputFile.toString(),"-info",infoFile};
   DictionaryExporter.main(buildOptions);
   return outputFile;
 }
