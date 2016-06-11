@@ -12,4 +12,5 @@
   }
 ;
   assertGood("Their are new ideas to explore.",ruleWithException);
+  assertMatch("??m dabei gut auszusehen.");
 }
