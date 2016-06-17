@@ -1,7 +1,6 @@
 {
   String test="This is what I mean\nand you know it.";
-  byte[] b=test.getBytes();
-  System.setIn(new ByteArrayInputStream(b));
+  System.setIn(new ByteArrayInputStream(test.getBytes()));
   String[] args={"-l","en","-a","-"};
   Main.main(args);
   String output=new String(this.out.toByteArray());

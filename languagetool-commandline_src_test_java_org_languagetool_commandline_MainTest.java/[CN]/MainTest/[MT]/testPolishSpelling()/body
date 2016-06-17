@@ -1,7 +1,6 @@
 {
   String test="Zwuasdac?";
-  byte[] b=test.getBytes();
-  System.setIn(new ByteArrayInputStream(b));
+  System.setIn(new ByteArrayInputStream(test.getBytes()));
   String[] args={"-l","pl","-e","MORFOLOGIK_RULE_PL_PL","-"};
   Main.main(args);
   String stdout=new String(this.out.toByteArray());

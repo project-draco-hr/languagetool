@@ -1,7 +1,6 @@
 {
   String test="Zwuasdac?";
-  byte[] b=test.getBytes();
-  System.setIn(new ByteArrayInputStream(b));
+  System.setIn(new ByteArrayInputStream(test.getBytes()));
   String[] args={"-l","en","-e","FOO_BAR_BLABLA","-"};
   Main.main(args);
   String stderr=new String(this.err.toByteArray());

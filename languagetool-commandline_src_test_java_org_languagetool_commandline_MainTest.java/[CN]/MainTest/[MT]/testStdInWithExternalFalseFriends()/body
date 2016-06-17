@@ -1,7 +1,6 @@
 {
   String test="L??ska!\n";
-  byte[] b=test.getBytes();
-  System.setIn(new ByteArrayInputStream(b));
+  System.setIn(new ByteArrayInputStream(test.getBytes()));
   String[] args={"-l","sk","--falsefriends",getExternalFalseFriends(),"-m","pl","-"};
   Main.main(args);
   String stdout=new String(this.out.toByteArray());

@@ -1,7 +1,6 @@
 {
   String test="To jest test.";
-  byte[] b=test.getBytes();
-  System.setIn(new ByteArrayInputStream(b));
+  System.setIn(new ByteArrayInputStream(test.getBytes()));
   String[] args={"--api","-l","pl","-e","PL_WORD_REPEAT","-"};
   Main.main(args);
   String output=new String(this.out.toByteArray());
