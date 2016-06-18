@@ -6,7 +6,7 @@
   if (config.getDisabledCategoryNames().contains(rule.getCategory().getName())) {
     ret=false;
   }
-  if (rule.isDefaultOff() && !config.getEnabledRuleIds().contains(rule.getId())) {
+  if ((rule.isDefaultOff() || rule.getCategory().isDefaultOff()) && !config.getEnabledRuleIds().contains(rule.getId())) {
     ret=false;
   }
   if (rule.isDefaultOff() && rule.getCategory().isDefaultOff() && config.getEnabledRuleIds().contains(rule.getId())) {
