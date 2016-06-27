@@ -94,7 +94,7 @@ inAntiPattern=false;
 break;
 case EXAMPLE:
 if (inCorrectExample) {
-correctExamples.add(correctExample.toString());
+correctExamples.add(new CorrectExample(correctExample.toString()));
 }
  else if (inIncorrectExample) {
 IncorrectExample example;

@@ -1,4 +1,3 @@
 {
-  requireMarkup(example);
-  return example;
+  return new CorrectExample(example);
 }

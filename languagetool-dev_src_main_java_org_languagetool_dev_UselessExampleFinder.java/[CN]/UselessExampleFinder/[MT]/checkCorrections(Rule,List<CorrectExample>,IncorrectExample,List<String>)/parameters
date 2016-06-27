@@ -1,4 +1,4 @@
 Rule rule
-List<String> correctExamples
+List<CorrectExample> correctExamplesObjs
 IncorrectExample incorrectExample
 List<String> xmlLines

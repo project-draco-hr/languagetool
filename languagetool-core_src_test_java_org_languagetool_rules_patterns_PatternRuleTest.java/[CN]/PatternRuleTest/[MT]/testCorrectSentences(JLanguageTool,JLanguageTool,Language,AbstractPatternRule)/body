@@ -1,8 +1,8 @@
 {
-  List<String> goodSentences=rule.getCorrectExamples();
+  List<CorrectExample> goodSentences=rule.getCorrectExamples();
   List<AbstractPatternRule> rules=allRulesLanguageTool.getPatternRulesByIdAndSubId(rule.getId(),rule.getSubId());
-  for (  String goodSentence : goodSentences) {
-    goodSentence=goodSentence.replaceAll("[\\n\\t]+","");
+  for (  CorrectExample goodSentenceObj : goodSentences) {
+    String goodSentence=goodSentenceObj.getExample().replaceAll("[\\n\\t]+","");
     goodSentence=cleanXML(goodSentence);
     assertTrue(lang + ": Empty correct example in rule " + rule.getFullId(),goodSentence.trim().length() > 0);
     boolean isMatched=false;

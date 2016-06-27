@@ -11,7 +11,7 @@
     if (!(rule instanceof PatternRule)) {
       continue;
     }
-    List<String> correctExamples=rule.getCorrectExamples();
+    List<CorrectExample> correctExamples=rule.getCorrectExamples();
     List<IncorrectExample> incorrectExamples=rule.getIncorrectExamples();
     for (    IncorrectExample incorrectExample : incorrectExamples) {
       checkCorrections(rule,correctExamples,incorrectExample,xmlLines);
