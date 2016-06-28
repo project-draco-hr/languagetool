@@ -1,0 +1,5 @@
+{
+  WhitespaceBeforePunctuationRule rule=new WhitespaceBeforePunctuationRule(TestTools.getEnglishMessages());
+  AnalyzedSentence sentence=new AnalyzedSentence(new AnalyzedTokenReadings[]{new AnalyzedTokenReadings(new AnalyzedToken("2",null,null),0),new AnalyzedTokenReadings(new AnalyzedToken(" ",null,null),1),new AnalyzedTokenReadings(new AnalyzedToken("%","SYM",null),2)});
+  assertThat(rule.match(sentence).length,is(1));
+}
