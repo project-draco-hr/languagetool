@@ -49,6 +49,7 @@ defaultOff=OFF.equals(attrs.getValue(DEFAULT));
 }
 correctExamples=new ArrayList<>();
 incorrectExamples=new ArrayList<>();
+errorTriggeringExamples=new ArrayList<>();
 suggestionMatches.clear();
 suggestionMatchesOutMsg.clear();
 if (attrs.getValue(TYPE) != null) {
@@ -108,6 +109,8 @@ exampleCorrection.append(attrs.getValue("correction"));
 }
 }
  else if ("triggers_error".equals(typeVal)) {
+inErrorTriggerExample=true;
+errorTriggerExample=new StringBuilder();
 }
  else {
 inCorrectExample=true;
@@ -176,6 +179,9 @@ incorrectExample.append(MARKER_TAG);
 }
  else if (inCorrectExample) {
 correctExample.append(MARKER_TAG);
+}
+ else if (inErrorTriggerExample) {
+errorTriggerExample.append(MARKER_TAG);
 }
  else if (inPattern || inAntiPattern) {
 startPos=tokenCounter;

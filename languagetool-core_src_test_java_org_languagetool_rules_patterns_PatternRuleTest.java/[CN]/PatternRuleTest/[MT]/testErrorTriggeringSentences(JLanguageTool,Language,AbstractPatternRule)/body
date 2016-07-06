@@ -1,0 +1,9 @@
+{
+  for (  ErrorTriggeringExample example : rule.getErrorTriggeringExamples()) {
+    String sentence=cleanXML(example.getExample());
+    List<RuleMatch> matches=getMatches(rule,sentence,languageTool);
+    if (matches.size() == 0) {
+      fail(lang + ": " + rule.getFullId()+ ": Example sentence marked with 'triggers_error' didn't actually trigger an error: '"+ sentence+ "'");
+    }
+  }
+}

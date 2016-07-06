@@ -42,6 +42,7 @@ incorrectExamples.add(new IncorrectBitextExample(examplePair,corrections));
 }
 inCorrectExample=false;
 inIncorrectExample=false;
+inErrorTriggerExample=false;
 break;
 default :
 super.endElement(namespaceURI,sName,qName);

@@ -12,6 +12,9 @@
       example=new IncorrectExample(incorrectExample.toString());
     }
   }
+ else   if (inErrorTriggerExample) {
+    throw new RuntimeException("'triggers_error' is not supported for bitext XML");
+  }
   correctExample=new StringBuilder();
   incorrectExample=new StringBuilder();
   exampleCorrection=new StringBuilder();

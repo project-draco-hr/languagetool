@@ -3,6 +3,7 @@
   for (  AbstractPatternRule rule : rules) {
     testCorrectSentences(languageTool,allRulesLanguageTool,lang,rule);
     testBadSentences(languageTool,allRulesLanguageTool,lang,complexRules,rule);
+    testErrorTriggeringSentences(languageTool,lang,rule);
   }
   if (!complexRules.isEmpty()) {
     Set<String> set=complexRules.keySet();

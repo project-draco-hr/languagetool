@@ -7,6 +7,7 @@
   endPos=-1;
   rule.setCorrectExamples(correctExamples);
   rule.setIncorrectExamples(incorrectExamples);
+  rule.setErrorTriggeringExamples(errorTriggeringExamples);
   rule.setCategory(category);
   if (!rulegroupAntiPatterns.isEmpty()) {
     rule.setAntiPatterns(rulegroupAntiPatterns);

@@ -1,0 +1,3 @@
+{
+  this.errorTriggeringExamples=Objects.requireNonNull(examples);
+}

@@ -111,10 +111,15 @@ example=new IncorrectExample(incorrectExample.toString());
 }
 incorrectExamples.add(example);
 }
+ else if (inErrorTriggerExample) {
+errorTriggeringExamples.add(new ErrorTriggeringExample(errorTriggerExample.toString()));
+}
 inCorrectExample=false;
 inIncorrectExample=false;
+inErrorTriggerExample=false;
 correctExample=new StringBuilder();
 incorrectExample=new StringBuilder();
+errorTriggerExample=new StringBuilder();
 exampleCorrection=new StringBuilder();
 break;
 case MESSAGE:
@@ -166,6 +171,9 @@ correctExample.append("</marker>");
 }
  else if (inIncorrectExample) {
 incorrectExample.append("</marker>");
+}
+ else if (inErrorTriggerExample) {
+errorTriggerExample.append("</marker>");
 }
  else if (inPattern || inAntiPattern) {
 endPos=tokenCountForMarker;
