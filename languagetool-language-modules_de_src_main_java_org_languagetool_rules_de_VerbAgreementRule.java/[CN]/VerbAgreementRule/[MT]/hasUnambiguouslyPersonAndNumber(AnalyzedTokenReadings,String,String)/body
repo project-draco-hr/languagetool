@@ -4,6 +4,9 @@
   }
   for (  AnalyzedToken analyzedToken : tokenReadings) {
     final String postag=analyzedToken.getPOSTag();
+    if (postag == null) {
+      continue;
+    }
     if (postag.contains("_END")) {
       continue;
     }
