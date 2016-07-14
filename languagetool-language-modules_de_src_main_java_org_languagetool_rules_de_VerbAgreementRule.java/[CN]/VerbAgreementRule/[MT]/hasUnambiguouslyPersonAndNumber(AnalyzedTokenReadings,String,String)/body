@@ -3,7 +3,7 @@
     return false;
   }
   for (  AnalyzedToken analyzedToken : tokenReadings) {
-    final String postag=analyzedToken.getPOSTag();
+    String postag=analyzedToken.getPOSTag();
     if (postag == null) {
       continue;
     }

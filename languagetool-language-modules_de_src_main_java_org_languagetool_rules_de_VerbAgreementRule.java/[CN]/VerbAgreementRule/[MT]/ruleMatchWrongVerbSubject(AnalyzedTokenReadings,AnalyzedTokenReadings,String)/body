@@ -1,5 +1,5 @@
 {
-  final String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Subjekt (" + subject.getToken() + ") und Pr??dikat ("+ verb.getToken()+ ") bez??glich Person oder Numerus (Einzahl, Mehrzahl - Beispiel: "+ "'ich sind' statt 'ich bin').";
+  String msg="M??glicherweise fehlende grammatische ??bereinstimmung zwischen Subjekt (" + subject.getToken() + ") und Pr??dikat ("+ verb.getToken()+ ") bez??glich Person oder Numerus (Einzahl, Mehrzahl - Beispiel: "+ "'ich sind' statt 'ich bin').";
   List<String> suggestions=new ArrayList<>();
   List<String> verbSuggestions=new ArrayList<>();
   List<String> pronounSuggestions=new ArrayList<>();
