@@ -1,7 +1,8 @@
 {
   AnalyzedTokenReadings prevToken=i > 0 ? tokens[i - 1] : null;
+  boolean isUndefQuantifier=prevToken != null && (UNDEFINED_QUANTIFIERS.contains(prevToken.getToken().toLowerCase()));
   boolean isPrevDeterminer=prevToken != null && (prevToken.hasPartialPosTag("ART") || prevToken.hasPartialPosTag("PRP"));
-  if (!isPrevDeterminer) {
+  if (!isPrevDeterminer && !isUndefQuantifier) {
     return false;
   }
   AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
