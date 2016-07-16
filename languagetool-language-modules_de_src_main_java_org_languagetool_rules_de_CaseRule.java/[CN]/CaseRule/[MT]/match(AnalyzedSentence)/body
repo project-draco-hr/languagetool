@@ -30,6 +30,9 @@
         if (tokens[i + 1].isSentenceEnd()) {
           continue;
         }
+        if (prevTokenIsDas && tokens[i + 1].equals("die")) {
+          continue;
+        }
       }
       if (isPrevProbablyRelativePronoun(tokens,i)) {
         continue;
