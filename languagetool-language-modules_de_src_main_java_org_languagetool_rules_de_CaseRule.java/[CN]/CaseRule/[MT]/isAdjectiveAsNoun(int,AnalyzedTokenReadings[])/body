@@ -1,9 +1,12 @@
 {
   AnalyzedTokenReadings prevToken=i > 0 ? tokens[i - 1] : null;
   boolean isUndefQuantifier=prevToken != null && (UNDEFINED_QUANTIFIERS.contains(prevToken.getToken().toLowerCase()));
-  boolean isPrevDeterminer=prevToken != null && (prevToken.hasPartialPosTag("ART") || prevToken.hasPartialPosTag("PRP"));
+  boolean isPrevDeterminer=prevToken != null && (prevToken.hasPartialPosTag("ART") || prevToken.hasPartialPosTag("PRP") || prevToken.hasPartialPosTag("ZAL"));
   if (!isPrevDeterminer && !isUndefQuantifier) {
-    return false;
+    AnalyzedTokenReadings prevPrevToken=i > 1 && prevToken.hasPartialPosTag("ADJ") ? tokens[i - 2] : null;
+    if (prevPrevToken == null || !(prevPrevToken.hasPartialPosTag("ART") || prevPrevToken.hasPartialPosTag("PRP") || prevToken.hasPartialPosTag("ZAL"))) {
+      return false;
+    }
   }
   AnalyzedTokenReadings nextReadings=i < tokens.length - 1 ? tokens[i + 1] : null;
   for (  AnalyzedToken reading : tokens[i].getReadings()) {
