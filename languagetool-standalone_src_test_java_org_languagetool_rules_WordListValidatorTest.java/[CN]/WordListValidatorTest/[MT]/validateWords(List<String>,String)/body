@@ -1,0 +1,7 @@
+{
+  for (  String word : words) {
+    if (!VALID_CHARS.matcher(word).matches()) {
+      fail("Word '" + word + "' from "+ spellingFileName+ " doesn't match regex: "+ VALID_CHARS+ " - please fix the word or add the character to "+ WordListValidatorTest.class.getName()+ " if it's valid");
+    }
+  }
+}
