@@ -1,0 +1,4 @@
+{
+  rule=new SimpleReplaceBalearicRule(TestTools.getMessages("ca"));
+  langTool=new JLanguageTool(new Catalan());
+}

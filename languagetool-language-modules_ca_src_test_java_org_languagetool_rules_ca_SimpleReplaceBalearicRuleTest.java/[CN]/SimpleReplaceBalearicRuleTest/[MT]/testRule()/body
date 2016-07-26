@@ -1,0 +1,8 @@
+{
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Aix?? est?? for??a b??.")).length);
+  assertEquals(0,rule.match(langTool.getAnalyzedSentence("Joan Navarro no ??s de Navarra ni de Jerez.")).length);
+  RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence("El calcul del telefon."));
+  assertEquals(2,matches.length);
+  assertEquals("c??lcul",matches[0].getSuggestedReplacements().get(0));
+  assertEquals("tel??fon",matches[1].getSuggestedReplacements().get(0));
+}
