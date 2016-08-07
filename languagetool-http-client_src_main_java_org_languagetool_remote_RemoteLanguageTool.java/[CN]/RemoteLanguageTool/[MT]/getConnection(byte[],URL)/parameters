@@ -1,2 +1,2 @@
 byte[] postData
-URL baseUrl
+URL url

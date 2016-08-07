@@ -1,6 +1,6 @@
 {
   try {
-    HttpURLConnection conn=(HttpURLConnection)baseUrl.openConnection();
+    HttpURLConnection conn=(HttpURLConnection)url.openConnection();
     conn.setDoOutput(true);
     conn.setInstanceFollowRedirects(false);
     conn.setRequestMethod("POST");
