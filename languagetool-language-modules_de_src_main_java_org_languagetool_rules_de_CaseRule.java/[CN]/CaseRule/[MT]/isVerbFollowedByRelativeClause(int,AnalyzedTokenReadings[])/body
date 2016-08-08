@@ -1,6 +1,6 @@
 {
   if (i < tokens.length - 2 && hasPartialTag(tokens[i],"VER")) {
-    return ",".equals(tokens[i + 1].getToken()) && "was".equals(tokens[i + 2].getToken());
+    return ",".equals(tokens[i + 1].getToken()) && INTERROGATIVE_PARTICLES.contains(tokens[i + 2].getToken());
   }
   return false;
 }
