@@ -1,0 +1,4 @@
+{
+  List<RuleMatch> matches=lt.check(input);
+  assertEquals("Did expect 1 error in test sentence: '" + input + "', but got: "+ matches,1,matches.size());
+}
