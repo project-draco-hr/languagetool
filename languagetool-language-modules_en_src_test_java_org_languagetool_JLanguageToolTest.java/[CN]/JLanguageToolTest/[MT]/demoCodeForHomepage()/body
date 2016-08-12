@@ -2,7 +2,7 @@
   JLanguageTool langTool=new JLanguageTool(new BritishEnglish());
   List<RuleMatch> matches=langTool.check("A sentence with a error in the Hitchhiker's Guide tot he Galaxy");
   for (  RuleMatch match : matches) {
-    System.out.println("Potential error at line " + match.getLine() + ", column "+ match.getColumn()+ ": "+ match.getMessage());
-    System.out.println("Suggested correction: " + match.getSuggestedReplacements());
+    System.out.println("Potential error at characters " + match.getFromPos() + "-"+ match.getToPos()+ ": "+ match.getMessage());
+    System.out.println("Suggested correction(s): " + match.getSuggestedReplacements());
   }
 }
