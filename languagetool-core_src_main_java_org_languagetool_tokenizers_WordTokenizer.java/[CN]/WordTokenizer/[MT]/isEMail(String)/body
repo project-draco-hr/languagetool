@@ -1,0 +1,3 @@
+{
+  return E_MAIL.matcher(token).matches();
+}
