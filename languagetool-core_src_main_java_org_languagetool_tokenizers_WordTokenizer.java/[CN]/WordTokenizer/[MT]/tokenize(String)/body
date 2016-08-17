@@ -4,5 +4,5 @@
   while (st.hasMoreElements()) {
     l.add(st.nextToken());
   }
-  return joinUrls(joinEMails(l));
+  return joinEMailsAndUrls(l);
 }

@@ -45,5 +45,5 @@
       l.addAll(wordsToAdd(s));
     }
   }
-  return joinUrls(l);
+  return joinEMailsAndUrls(l);
 }

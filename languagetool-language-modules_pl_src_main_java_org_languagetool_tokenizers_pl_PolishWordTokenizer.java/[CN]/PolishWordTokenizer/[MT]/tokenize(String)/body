@@ -74,5 +74,5 @@ l.add(token);
 l.add(token);
 }
 }
-return joinUrls(l);
+return joinEMailsAndUrls(l);
 }
