@@ -1,0 +1,3 @@
+{
+  return WordTokenizer.isEMail(token);
+}
