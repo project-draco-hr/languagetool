@@ -1,0 +1,8 @@
+{
+  assertTrue(WordTokenizer.isEMail("martin.mustermann@test.de"));
+  assertTrue(WordTokenizer.isEMail("martin.mustermann@test.languagetool.de"));
+  assertTrue(WordTokenizer.isEMail("martin-mustermann@test.com"));
+  assertFalse(WordTokenizer.isEMail("@test.de"));
+  assertFalse(WordTokenizer.isEMail("f.test@test"));
+  assertFalse(WordTokenizer.isEMail("f@t.t"));
+}
