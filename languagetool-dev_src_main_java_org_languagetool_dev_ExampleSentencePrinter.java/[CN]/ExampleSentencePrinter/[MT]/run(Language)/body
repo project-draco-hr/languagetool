@@ -1,0 +1,24 @@
+{
+  File basePath=new File("/lt/git/languagetool/languagetool-language-modules");
+  if (!basePath.exists()) {
+    throw new RuntimeException("basePath does not exist: " + basePath);
+  }
+  JLanguageTool tool=new JLanguageTool(lang);
+  System.out.println("<html>");
+  System.out.println("<head>");
+  System.out.println("  <title>LanguageTool examples sentences</title>");
+  System.out.println("  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />");
+  System.out.println("</head>");
+  System.out.println("<body>");
+  int i=1;
+  for (  Rule rule : tool.getAllRules()) {
+    List<IncorrectExample> incorrectExamples=rule.getIncorrectExamples();
+    if (incorrectExamples.size() > 0) {
+      String example=incorrectExamples.get(0).getExample().replace("<marker>","<b>").replace("</marker>","</b>");
+      System.out.println(i + ". " + example+ " ["+ rule.getId()+ "]<br>");
+      i++;
+    }
+  }
+  System.out.println("</body>");
+  System.out.println("</html>");
+}
