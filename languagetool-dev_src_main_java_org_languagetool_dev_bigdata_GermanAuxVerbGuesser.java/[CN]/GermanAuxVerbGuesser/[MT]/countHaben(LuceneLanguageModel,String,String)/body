@@ -1,0 +1,3 @@
+{
+  return lm.getCount(asList("habe",pa2)) + lm.getCount(asList("hast",pa2)) + lm.getCount(asList("hat",pa2))+ lm.getCount(asList("habt",pa2))+ lm.getCount(asList("haben",pa2))+ lm.getCount(asList("hatte",pa2))+ lm.getCount(asList("hattest",pa2))+ lm.getCount(asList("hatte",pa2))+ lm.getCount(asList("hatten",pa2))+ lm.getCount(asList("hattet",pa2))+ lm.getCount(asList("werde",pa2,"haben"))+ lm.getCount(asList("wirst",pa2,"haben"))+ lm.getCount(asList("wird",pa2,"haben"))+ lm.getCount(asList("werden",pa2,"haben"))+ lm.getCount(asList("werdet",pa2,"haben"));
+}

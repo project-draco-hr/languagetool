@@ -1,0 +1,3 @@
+{
+  return lm.getCount(asList("bin",pa2)) + lm.getCount(asList("bist",pa2)) + lm.getCount(asList("ist",pa2))+ lm.getCount(asList("sind",pa2))+ lm.getCount(asList("seid",pa2))+ lm.getCount(asList("war",pa2))+ lm.getCount(asList("warst",pa2))+ lm.getCount(asList("war",pa2))+ lm.getCount(asList("waren",pa2))+ lm.getCount(asList("wart",pa2))+ lm.getCount(asList("werde",pa2,"sein"))+ lm.getCount(asList("wirst",pa2,"sein"))+ lm.getCount(asList("wird",pa2,"sein"))+ lm.getCount(asList("werden",pa2,"sein"))+ lm.getCount(asList("werdet",pa2,"sein"));
+}

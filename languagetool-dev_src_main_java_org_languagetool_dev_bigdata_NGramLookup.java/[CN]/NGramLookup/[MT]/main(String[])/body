@@ -1,0 +1,13 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + NGramLookup.class.getName() + " <ngram> <ngramDataIndex>");
+    System.out.println("  Example: " + NGramLookup.class.getName() + " \"my house\" /data/ngram-index");
+    System.exit(1);
+  }
+  String indexTopDir=args[1];
+  try (LuceneLanguageModel lm=new LuceneLanguageModel(new File(indexTopDir))){
+    String[] lookup=args[0].split(" ");
+    long count=lm.getCount(Arrays.asList(lookup));
+    System.out.println(Arrays.toString(lookup) + " -> " + count);
+  }
+ }

@@ -1,0 +1,4 @@
+{
+  ExampleSentencePrinter prg=new ExampleSentencePrinter();
+  prg.run(Languages.getLanguageForShortName("en"));
+}
