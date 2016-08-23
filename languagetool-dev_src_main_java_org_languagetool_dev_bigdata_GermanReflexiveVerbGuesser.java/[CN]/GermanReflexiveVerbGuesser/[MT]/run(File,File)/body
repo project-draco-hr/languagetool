@@ -1,0 +1,19 @@
+{
+  List<String> lemmas=Files.readAllLines(lemmaListFile.toPath());
+  System.out.println("Anzahl Lemma | mich/uns/euch ... | ... mich/uns/euch | Lemma");
+  try (LuceneLanguageModel lm=new LuceneLanguageModel(indexTopDir)){
+    for (    String lemma : lemmas) {
+      String[] thirdPsSinArray=synthesizer.synthesize(new AnalyzedToken(lemma,"VER:INF:NON",lemma),"VER:3:SIN:PR??:NON");
+      if (thirdPsSinArray.length == 0) {
+        thirdPsSinArray=synthesizer.synthesize(new AnalyzedToken(lemma,"VER:INF:NON",lemma),"VER:3:SIN:PR??:NON:NEB");
+      }
+      String thirdPsSin=thirdPsSinArray.length > 0 ? thirdPsSinArray[0] : null;
+      long reflexiveCount1=count1(lm,lemma,thirdPsSin);
+      long reflexiveCount2=count2(lm,lemma,thirdPsSin);
+      long lemmaCount=lm.getCount(lemma);
+      float factor1=((float)reflexiveCount1 / lemmaCount) * 100.0f;
+      float factor2=((float)reflexiveCount2 / lemmaCount) * 100.0f;
+      System.out.printf("%d %.2f%% %.2f%% %s\n",lemmaCount,factor1,factor2,lemma);
+    }
+  }
+ }
