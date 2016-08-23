@@ -1,0 +1,3 @@
+{
+  return lm.getCount(asList("mich",lemma)) + lm.getCount(asList("uns",lemma)) + lm.getCount(asList("sich",lemma));
+}

@@ -1,0 +1,19 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + GermanReflexiveVerbGuesser.class.getName() + " <ngramDataIndex> <verbLemmaFile>");
+    System.exit(1);
+  }
+  String indexTopDir=args[0];
+  List<String> lemmas=Files.readAllLines(Paths.get(args[1]));
+  System.out.println("Anzahl Lemma | mich/uns/euch ... | ... mich/uns/euch | Lemma");
+  try (LuceneLanguageModel lm=new LuceneLanguageModel(new File(indexTopDir))){
+    for (    String lemma : lemmas) {
+      long reflexiveCount1=count1(lm,lemma);
+      long reflexiveCount2=count2(lm,lemma);
+      long lemmaCount=lm.getCount(lemma);
+      float factor1=((float)reflexiveCount1 / lemmaCount) * 100.0f;
+      float factor2=((float)reflexiveCount2 / lemmaCount) * 100.0f;
+      System.out.printf("%d %.2f%% %.2f%% %s\n",lemmaCount,factor1,factor2,lemma);
+    }
+  }
+ }
