@@ -1,3 +1,4 @@
 LuceneLanguageModel lm
 String lemma
+String firstPsSin
 String thirdPsSin
