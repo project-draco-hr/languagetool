@@ -1,5 +1,6 @@
 {
   this.language=language;
+  this.caseSensitive=caseSensitive;
   try {
     List<Rule> rules=language.getRelevantLanguageModelRules(JLanguageTool.getMessageBundle(),languageModel);
     if (rules == null) {

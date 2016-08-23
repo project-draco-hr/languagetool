@@ -1,0 +1,14 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: " + GermanUpperLowercaseWords.class.getSimpleName() + " <wordList>");
+    System.exit(1);
+  }
+  List<String> lines=Files.readAllLines(Paths.get(args[0]));
+  Set<String> uppercaseWords=getUppercaseWords(lines);
+  for (  String line : lines) {
+    String uppercased=StringTools.uppercaseFirstChar(line);
+    if (!StringTools.startsWithUppercase(line) && uppercaseWords.contains(uppercased)) {
+      System.out.println(line + "; " + uppercased);
+    }
+  }
+}

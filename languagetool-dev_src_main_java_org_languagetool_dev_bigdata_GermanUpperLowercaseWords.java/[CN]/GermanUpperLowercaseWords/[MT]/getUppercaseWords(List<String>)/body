@@ -1,0 +1,9 @@
+{
+  Set<String> uppercaseWords=new HashSet<>();
+  for (  String line : lines) {
+    if (StringTools.startsWithUppercase(line)) {
+      uppercaseWords.add(line);
+    }
+  }
+  return uppercaseWords;
+}

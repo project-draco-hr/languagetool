@@ -1,8 +1,22 @@
 {
-  Term term=new Term(TextIndexCreator.FIELD,word);
-  TopDocs topDocs=searcher.search(new TermQuery(term),MAX_EXAMPLES);
+  Term term=new Term(TextIndexCreator.FIELD,CASE_SENSITIVE ? word.toLowerCase() : word);
+  TopDocs topDocs=searcher.search(new TermQuery(term),Integer.MAX_VALUE);
+  int count=0;
   for (  ScoreDoc scoreDoc : topDocs.scoreDocs) {
     String sentence=searcher.doc(scoreDoc.doc).get(TextIndexCreator.FIELD);
-    fw.write(sentence + "\n");
+    if (CASE_SENSITIVE) {
+      if (sentence.contains(word)) {
+        fw.write(sentence + "\n");
+        count++;
+      }
+    }
+ else {
+      fw.write(sentence + "\n");
+      count++;
+    }
+    if (count > MAX_EXAMPLES) {
+      break;
+    }
   }
+  System.out.println("Found " + count + " examples for "+ word);
 }

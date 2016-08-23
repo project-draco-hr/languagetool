@@ -3,7 +3,7 @@
   int sentences=allTokenSentences.size() + allHomophoneSentences.size();
   System.out.println("\nEvaluation results for " + TOKEN + "/"+ TOKEN_HOMOPHONE+ " with "+ sentences+ " sentences as of "+ new Date()+ ":");
   System.out.printf(ENGLISH,"Inputs:       %s\n",inputsOrDir);
-  System.out.printf(ENGLISH,"Case sensit.: %s\n",CASE_SENSITIVE);
+  System.out.printf(ENGLISH,"Case sensit.: %s\n",caseSensitive);
   List<Long> factors=evalValues.keySet().stream().sorted().collect(toList());
   for (  Long factor : factors) {
     EvalValues evalValues=this.evalValues.get(factor);
@@ -11,7 +11,7 @@
     float recall=(float)evalValues.truePositives / (evalValues.truePositives + evalValues.falseNegatives);
     String date=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     String spaces=StringUtils.repeat(" ",82 - Long.toString(factor).length());
-    String summary=String.format(ENGLISH,"%s; %s; %d; %s # p=%.3f, r=%.3f, %d+%d, %dgrams, %s",TOKEN,TOKEN_HOMOPHONE,factor,spaces,precision,recall,allTokenSentences.size(),allHomophoneSentences.size(),rule.getNGrams(),date);
+    String summary=String.format(ENGLISH,"%s; %s; %d; %s # p=%.3f, r=%.3f, %d+%d, %dgrams, %s",token,homophoneToken,factor,spaces,precision,recall,allTokenSentences.size(),allHomophoneSentences.size(),rule.getNGrams(),date);
     results.put(factor,new EvalResult(summary,precision,recall));
     if (verbose) {
       System.out.println();

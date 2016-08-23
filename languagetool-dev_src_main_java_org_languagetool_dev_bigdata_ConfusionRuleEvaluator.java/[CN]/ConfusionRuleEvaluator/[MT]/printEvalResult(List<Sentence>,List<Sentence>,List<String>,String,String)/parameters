@@ -1,3 +1,5 @@
 List<Sentence> allTokenSentences
 List<Sentence> allHomophoneSentences
 List<String> inputsOrDir
+String token
+String homophoneToken

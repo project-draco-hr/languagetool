@@ -8,5 +8,5 @@
   evaluate(allTokenSentences,false,homophoneToken,token,evalFactors);
   evaluate(allHomophoneSentences,false,token,homophoneToken,evalFactors);
   evaluate(allHomophoneSentences,true,homophoneToken,token,evalFactors);
-  return printEvalResult(allTokenSentences,allHomophoneSentences,inputsOrDir);
+  return printEvalResult(allTokenSentences,allHomophoneSentences,inputsOrDir,token,homophoneToken);
 }

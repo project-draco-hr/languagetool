@@ -1,7 +1,7 @@
 {
-  English english=new English();
+  Language language=Languages.getLanguageForShortName(LANGUAGE);
   LanguageModel lm=new LuceneLanguageModel(indexDir);
-  ConfusionRuleEvaluator evaluator=new ConfusionRuleEvaluator(english,lm);
+  ConfusionRuleEvaluator evaluator=new ConfusionRuleEvaluator(language,lm,CASE_SENSITIVE);
   for (  String line : lines) {
     if (line.contains("#")) {
       System.out.println("Ignoring: " + line);
