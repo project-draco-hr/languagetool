@@ -1,0 +1,12 @@
+{
+  int spaceStart=s.indexOf("0;");
+  if (spaceStart == -1) {
+    spaceStart=s.indexOf("1;");
+  }
+  int spaceEnd=s.indexOf('#');
+  if (spaceStart > 0 && spaceEnd > 0) {
+    String spaces=StringUtils.repeat(" ",52 - spaceStart);
+    return s.substring(0,spaceStart) + spaces + s.substring(spaceEnd);
+  }
+  return s;
+}
