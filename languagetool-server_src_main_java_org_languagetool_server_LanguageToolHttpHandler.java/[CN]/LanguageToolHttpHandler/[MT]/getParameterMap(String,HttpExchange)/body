@@ -1,0 +1,19 @@
+{
+  String[] pairs=query.split("[&]");
+  Map<String,String> parameters=new HashMap<>();
+  for (  String pair : pairs) {
+    int delimPos=pair.indexOf('=');
+    if (delimPos != -1) {
+      String param=pair.substring(0,delimPos);
+      String key=URLDecoder.decode(param,ENCODING);
+      try {
+        String value=URLDecoder.decode(pair.substring(delimPos + 1),ENCODING);
+        parameters.put(key,value);
+      }
+ catch (      IllegalArgumentException e) {
+        throw new RuntimeException("Could not decode query. Query length: " + query.length() + " Request method: "+ httpExchange.getRequestMethod(),e);
+      }
+    }
+  }
+  return parameters;
+}
