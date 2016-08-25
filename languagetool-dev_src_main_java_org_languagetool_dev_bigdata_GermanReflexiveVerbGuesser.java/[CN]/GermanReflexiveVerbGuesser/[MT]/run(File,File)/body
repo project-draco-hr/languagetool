@@ -7,7 +7,7 @@
       String[] thirdPsSinArray=synthesizer.synthesize(new AnalyzedToken(lemma,"VER:INF:NON",lemma),"VER:3:SIN:PR??.*",true);
       String firstPsSin=firstPsSinArray.length > 0 ? firstPsSinArray[0] : null;
       String thirdPsSin=thirdPsSinArray.length > 0 ? thirdPsSinArray[0] : null;
-      long reflexiveCount1=count1(lm,lemma,firstPsSin,thirdPsSin);
+      long reflexiveCount1=count1(lm,lemma,firstPsSin,thirdPsSin) - counterExamples("f??r",lm,lemma,firstPsSin,thirdPsSin) - counterExamples("vor",lm,lemma,firstPsSin,thirdPsSin);
       long reflexiveCount2=count2(lm,lemma,firstPsSin,thirdPsSin);
       long lemmaCount=lm.getCount(lemma);
       float factor1=((float)reflexiveCount1 / lemmaCount) * 100.0f;

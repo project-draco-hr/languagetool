@@ -1,0 +1,3 @@
+{
+  return lm.getCount(asList(term,"mich",firstPsSin)) + lm.getCount(asList(term,"mich",lemma)) + lm.getCount(asList(term,"sich",thirdPsSin))+ lm.getCount(asList(term,"uns",lemma))+ lm.getCount(asList(term,"euch",lemma))+ lm.getCount(asList(term,"sich",lemma));
+}
