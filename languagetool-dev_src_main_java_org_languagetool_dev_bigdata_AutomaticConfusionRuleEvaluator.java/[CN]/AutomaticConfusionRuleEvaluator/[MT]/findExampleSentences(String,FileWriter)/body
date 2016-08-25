@@ -1,6 +1,6 @@
 {
   Term term=new Term(TextIndexCreator.FIELD,CASE_SENSITIVE ? word.toLowerCase() : word);
-  TopDocs topDocs=searcher.search(new TermQuery(term),Integer.MAX_VALUE);
+  TopDocs topDocs=searcher.search(new TermQuery(term),CASE_SENSITIVE ? Integer.MAX_VALUE : MAX_EXAMPLES);
   int count=0;
   for (  ScoreDoc scoreDoc : topDocs.scoreDocs) {
     String sentence=searcher.doc(scoreDoc.doc).get(TextIndexCreator.FIELD);
