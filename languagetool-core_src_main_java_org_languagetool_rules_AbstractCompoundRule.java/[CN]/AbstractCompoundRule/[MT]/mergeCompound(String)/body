@@ -7,7 +7,7 @@
         sb.append(stringParts[0]);
       }
  else {
-        sb.append(stringParts[k].toLowerCase());
+        sb.append(stringParts[k]);
       }
     }
   }

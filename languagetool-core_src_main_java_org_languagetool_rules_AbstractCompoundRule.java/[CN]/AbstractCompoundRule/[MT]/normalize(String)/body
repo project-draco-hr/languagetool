@@ -1,5 +1,5 @@
 {
-  String str=inStr.trim().toLowerCase();
+  String str=inStr.trim();
   if (str.indexOf('-') != -1 && str.indexOf(' ') != -1) {
     if (isHyphenIgnored()) {
       str=str.replace('-',' ');
