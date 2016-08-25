@@ -1,8 +1,7 @@
 {
   Map<String,String> parameters=new HashMap<>();
   if (query != null) {
-    String[] pairs=query.split("[&]");
-    Map<String,String> parameterMap=getParameterMap(pairs);
+    Map<String,String> parameterMap=getParameterMap(query,httpExchange);
     parameters.putAll(parameterMap);
   }
   return parameters;

@@ -8,5 +8,5 @@
  else {
     query=requestedUri.getRawQuery();
   }
-  return parseQuery(query);
+  return parseQuery(query,httpExchange);
 }
