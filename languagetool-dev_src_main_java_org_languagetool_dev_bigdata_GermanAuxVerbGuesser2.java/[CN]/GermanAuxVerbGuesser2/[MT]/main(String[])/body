@@ -1,0 +1,22 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage: " + GermanAuxVerbGuesser2.class.getName() + " <ngramDataIndex> <lemmaFile>");
+    System.out.println("   <lemmaFile> is a text file with 'participle2 \\t lemma' per line, e.g. 'getrunken \t trinken'");
+    System.exit(1);
+  }
+  String indexTopDir=args[0];
+  List<String> lines=Files.readAllLines(Paths.get(args[1]));
+  System.out.println("# factor lemma Dativ/mir Akkusativ/mich");
+  try (LuceneLanguageModel lm=new LuceneLanguageModel(new File(indexTopDir))){
+    for (    String line : lines) {
+      String pa2=line.split("\t")[0];
+      String lemma=line.split("\t")[1];
+      long mir=count(lm,pa2,lemma,"mir");
+      long mich=count(lm,pa2,lemma,"mich");
+      long dir=count(lm,pa2,lemma,"dir");
+      long dich=count(lm,pa2,lemma,"dich");
+      float factor=((float)mir + dir) / ((float)mich + dich);
+      System.out.println(factor + " " + lemma+ " "+ mir+ " "+ mich);
+    }
+  }
+ }

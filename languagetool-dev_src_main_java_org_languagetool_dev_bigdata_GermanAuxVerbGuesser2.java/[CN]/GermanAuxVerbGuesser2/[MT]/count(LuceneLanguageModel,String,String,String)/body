@@ -1,0 +1,3 @@
+{
+  return lm.getCount(asList(reflexivePronoun,pa2)) + lm.getCount(asList(reflexivePronoun,lemma));
+}

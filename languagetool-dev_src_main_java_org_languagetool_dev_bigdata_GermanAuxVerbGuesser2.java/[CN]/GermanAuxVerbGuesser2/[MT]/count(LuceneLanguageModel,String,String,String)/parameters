@@ -1,0 +1,4 @@
+LuceneLanguageModel lm
+String pa2
+String lemma
+String reflexivePronoun
