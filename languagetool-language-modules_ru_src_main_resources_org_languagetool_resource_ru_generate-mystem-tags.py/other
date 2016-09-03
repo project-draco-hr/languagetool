@@ -2,6 +2,18 @@ import os
 from subprocess import call
 import re
 import enchant
+pos_LT = {'A': 'ADJ', 'ADV': 'ADV', 'ADVPRO': 'none', 'ANUM': 'none', 'APRO': 'none', 'COM': 'none', 'CONJ': 'CONJ', 'INTJ': 'INTERJECTION', 'NUM': 'NumC', 'PART': 'PARTICLE', 'PR': 'PREP', 'S': 'NN', 'SPRO': 'PNN', 'V': 'VB', }
+pos_other_LT = ['DPT', 'PT', 'ADJ_Short', 'ADJ', 'PADJ', 'ADJ_Comp', 'ADJ_Sup', 'NNN', 'NNP', 'NNF']
+tense_LT = {'praes': 'Real', 'inpraes': 'Fut', 'praet': 'Past', 'inf': 'INF', 'imper': 'IMP', }
+case_LT = {'nom': 'Nom', 'gen': 'R', 'dat': 'D', 'acc': 'V', 'ins': 'T', 'abl': 'P', 'part': 'R', 'loc': 'P', 'voc': 'none', }
+number_LT = {'sg': 'Sin', 'pl': 'PL', }
+person_LT = {'1p': 'P1', '2p': 'P2', '3p': 'P3', }
+gender_LT = {'m': 'Masc', 'f': 'Fem', 'n': 'Neut', }
+other_LT = {'ger': 'DPT', 'partcp': 'PT', 'indic': '', 'brev': 'ADJ_Short', 'plen': 'ADJ', 'poss': 'PADJ', 'supr': 'ADJ_Comp', 'comp': 'ADJ_S', 'ipf': '', 'pf': '', 'act': '', 'pass': '', 'anim': '', 'inan': '', 'tran': '', 'intr': '', 'parenth': '', 'geo': '', 'awkw': '', 'persn': 'NNN', 'dist': '', 'mf': '', 'obsc': '', 'patrn': 'NNP', 'praed': '', 'inform': 'Talk', 'rare': '', 'abbr': 'ABR', 'obsol': '', 'famn': 'NNF', }
+all_tags = []
+with open('all_tags.txt', 'r') as data_file:
+    for data_line in data_file:
+        all_tags.append(data_line[:(-1)])
 d = enchant.Dict('ru_RU')
 words = set()
 i = 0
@@ -43,7 +55,20 @@ with open('mout.txt', 'r') as new_file:
 mystems.sort()
 with open('final-tags.txt', 'w') as final:
     for word in mystems:
-        final.write(word)
+        token = word.split('{', 1)[0]
+        descs = word.split('{', 1)[1].split('|')
+        current_lemma = ''
+        for desc in descs:
+            if (desc[0] != '='):
+                current_lemma = desc.split('=', 1)[0]
+            gramma = desc.split('=', 1)[1]
+            if (gramma[(-2)] == '}'):
+                gramma = gramma[:(-2)]
+            pos_tag = convert_gramma(gramma)
+            if (pos_tag in all_tags):
+                final.write((((((token + '\t') + current_lemma) + '\t') + pos_tag) + '\n'))
+            else:
+                print ((((((token + '\t') + current_lemma) + '\t') + pos_tag) + ' <== ') + gramma)
 with open('final.txt', 'w') as final:
     for word in mystems:
         final.write((word.split('{', 1)[0] + '\n'))
