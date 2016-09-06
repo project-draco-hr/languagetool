@@ -1,5 +1,5 @@
 {
-  this.token=token;
+  this.token="???".equals(token) ? "'" : token;
   this.startPos=startPos;
   this.endPos=endPos;
   this.posTags=posTags;
