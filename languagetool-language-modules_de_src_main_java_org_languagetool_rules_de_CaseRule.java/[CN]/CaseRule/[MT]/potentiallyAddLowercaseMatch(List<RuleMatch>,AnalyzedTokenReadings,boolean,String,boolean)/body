@@ -1,5 +1,5 @@
 {
-  if (prevTokenIsDas && !nextTokenIsPersonalPronoun) {
+  if (prevTokenIsDas && !nextTokenIsPersonalOrReflexivePronoun) {
     if (Character.isLowerCase(token.charAt(0)) && !substVerbenExceptions.contains(token) && tokenReadings.hasPartialPosTag("VER:INF")&& !tokenReadings.isIgnoredBySpeller()&& !tokenReadings.isImmunized()) {
       String msg="Falls es sich um ein substantiviertes Verb handelt, wird es gro??geschrieben.";
       RuleMatch ruleMatch=new RuleMatch(this,tokenReadings.getStartPos(),tokenReadings.getEndPos(),msg);

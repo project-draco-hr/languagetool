@@ -21,16 +21,17 @@
     markLowerCaseNounErrors(ruleMatches,tokens,i,analyzedToken);
     boolean isBaseform=analyzedToken.getReadingsLength() >= 1 && analyzedToken.hasLemma(token);
     if ((analyzedToken.getAnalyzedToken(0).getPOSTag() == null || GermanHelper.hasReadingOfType(analyzedToken,GermanToken.POSType.VERB)) && isBaseform) {
-      boolean nextTokenIsPersonalPronoun=false;
+      boolean nextTokenIsPersonalOrReflexivePronoun=false;
       if (i < tokens.length - 1) {
-        nextTokenIsPersonalPronoun=tokens[i + 1].hasPartialPosTag("PRO:PER") || tokens[i + 1].getToken().equals("Sie");
-        if (tokens[i + 1].hasLemma("lassen")) {
+        AnalyzedTokenReadings nextToken=tokens[i + 1];
+        nextTokenIsPersonalOrReflexivePronoun=nextToken.hasPartialPosTag("PRO:PER") || nextToken.getToken().equals("sich") || nextToken.getToken().equals("Sie");
+        if (nextToken.hasLemma("lassen")) {
           continue;
         }
-        if (tokens[i + 1].isSentenceEnd()) {
+        if (nextToken.isSentenceEnd()) {
           continue;
         }
-        if (prevTokenIsDas && tokens[i + 1].equals("die")) {
+        if (prevTokenIsDas && nextToken.equals("die")) {
           continue;
         }
       }
@@ -40,7 +41,7 @@
       if (isVerbFollowedByRelativeClause(i,tokens)) {
         continue;
       }
-      potentiallyAddLowercaseMatch(ruleMatches,tokens[i],prevTokenIsDas,token,nextTokenIsPersonalPronoun);
+      potentiallyAddLowercaseMatch(ruleMatches,tokens[i],prevTokenIsDas,token,nextTokenIsPersonalOrReflexivePronoun);
     }
     prevTokenIsDas=nounIndicators.contains(tokens[i].getToken().toLowerCase());
     if (hasNounReading(analyzedToken)) {

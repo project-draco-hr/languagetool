@@ -33,6 +33,7 @@
   assertGood("Keine Ahnung, wie ich das pr??fen sollte.");
   assertGood("Und dann noch Strafrechtsdogmatikerinnen.");
   assertGood("Er kann ihr das bieten, was sie verdient.");
+  assertGood("Das fragen sich mittlerweile viele.");
   assertBad("Tom ist etwas ??ber Drei??ig.");
   assertBad("Unser warten wird sich lohnen.");
   assertBad("Tom kann mit fast Allem umgehen.");
