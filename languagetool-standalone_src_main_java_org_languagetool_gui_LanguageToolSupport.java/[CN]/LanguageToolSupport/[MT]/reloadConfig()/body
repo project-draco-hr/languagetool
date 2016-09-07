@@ -30,12 +30,10 @@
   toEnable.removeAll(common);
   if (!toDisable.isEmpty()) {
     languageTool.getDisabledCategories().addAll(toDisable);
-    languageTool.disableRules(new ArrayList<>());
     update=true;
   }
   if (!toEnable.isEmpty()) {
     languageTool.getDisabledCategories().removeAll(toEnable);
-    languageTool.disableRules(new ArrayList<>());
     update=true;
   }
   Set<String> enabledRules=config.getEnabledRuleIds();
