@@ -1,0 +1,7 @@
+{
+  if (args.length != 1) {
+    System.out.println("Usage: " + GermanSpellingReformGuesser.class.getSimpleName() + " <lemmaList>");
+    System.exit(1);
+  }
+  new GermanSpellingReformGuesser().run(args[0]);
+}

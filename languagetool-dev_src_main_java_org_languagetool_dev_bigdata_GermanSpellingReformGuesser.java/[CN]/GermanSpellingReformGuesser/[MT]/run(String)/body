@@ -1,0 +1,20 @@
+{
+  List<String> lines=Files.readAllLines(Paths.get(lemmaFile));
+  Set<String> lemmas=new HashSet<>(lines);
+  Set<String> result=new HashSet<>();
+  for (  String line : lines) {
+    String oldSpelling1=line.replace("ss","??");
+    String oldSpelling2=line.replace("f","ph");
+    if (!oldSpelling2.equals(line) && lemmas.contains(oldSpelling2)) {
+      result.add(line + ";" + oldSpelling2);
+    }
+    String newSpelling1=line.replace("ph","f");
+    if (!newSpelling1.equals(line) && lemmas.contains(newSpelling1)) {
+      result.add(newSpelling1 + ";" + line);
+    }
+  }
+  for (  String s : result) {
+    System.out.println(s);
+  }
+  System.err.println(result.size() + " Paare gefunden");
+}
