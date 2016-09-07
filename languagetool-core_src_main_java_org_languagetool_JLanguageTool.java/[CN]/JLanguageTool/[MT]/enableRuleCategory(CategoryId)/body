@@ -1,5 +1,3 @@
 {
-  if (disabledRuleCategories.contains(id)) {
-    disabledRuleCategories.remove(id);
-  }
+  disabledRuleCategories.remove(id);
 }

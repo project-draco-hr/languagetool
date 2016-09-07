@@ -1,5 +1,3 @@
 {
-  if (disabledRules.contains(ruleId)) {
-    disabledRules.remove(ruleId);
-  }
+  disabledRules.remove(ruleId);
 }
