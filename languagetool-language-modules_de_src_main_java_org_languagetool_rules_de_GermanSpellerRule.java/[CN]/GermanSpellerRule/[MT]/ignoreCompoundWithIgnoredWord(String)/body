@@ -1,6 +1,11 @@
 {
   String[] words=word.split("-");
   if (words.length < 2) {
+    int end=super.startsWithIgnoredWord(word);
+    if (end > 0) {
+      String partialWord=word.substring(end);
+      return !hunspellDict.misspelled(partialWord) || !hunspellDict.misspelled(WordUtils.capitalize(partialWord));
+    }
     return false;
   }
   boolean hasIgnoredWord=false;
