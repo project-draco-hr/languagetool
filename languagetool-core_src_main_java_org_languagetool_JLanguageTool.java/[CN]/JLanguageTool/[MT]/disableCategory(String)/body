@@ -1,3 +1,7 @@
 {
-  disabledCategories.add(categoryName);
+  for (  Rule rule : getAllRules()) {
+    if (rule.getCategory().getName().equals(categoryName)) {
+      disableCategory(rule.getCategory().getId());
+    }
+  }
 }

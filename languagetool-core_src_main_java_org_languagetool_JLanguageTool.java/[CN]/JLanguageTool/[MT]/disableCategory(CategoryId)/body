@@ -1,3 +1,4 @@
 {
   disabledRuleCategories.add(id);
+  enabledRuleCategories.remove(id);
 }

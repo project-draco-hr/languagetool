@@ -1,0 +1,7 @@
+{
+  Map<CategoryId,Category> map=new HashMap<>();
+  for (  Rule rule : getAllRules()) {
+    map.put(rule.getCategory().getId(),rule.getCategory());
+  }
+  return map;
+}

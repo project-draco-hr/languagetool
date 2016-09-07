@@ -1,3 +1,9 @@
 {
-  return disabledCategories;
+  Set<String> names=new HashSet<>();
+  for (  Rule rule : getAllRules()) {
+    if (disabledRuleCategories.contains(rule.getCategory().getId())) {
+      names.add(rule.getCategory().getName());
+    }
+  }
+  return names;
 }

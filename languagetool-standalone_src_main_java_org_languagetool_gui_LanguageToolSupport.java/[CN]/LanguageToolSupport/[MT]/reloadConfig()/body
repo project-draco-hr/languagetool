@@ -18,22 +18,37 @@
     languageTool.enableRule(ruleId);
     update=true;
   }
-  Set<String> disabledCategories=config.getDisabledCategoryNames();
-  if (disabledCategories == null) {
-    disabledCategories=Collections.emptySet();
+  Set<String> disabledCategoryNames=config.getDisabledCategoryNames();
+  if (disabledCategoryNames == null) {
+    disabledCategoryNames=Collections.emptySet();
   }
-  common=new HashSet<>(disabledCategories);
-  common.retainAll(languageTool.getDisabledCategories());
-  toDisable=new HashSet<>(disabledCategories);
-  toDisable.removeAll(common);
-  toEnable=new HashSet<>(languageTool.getDisabledCategories());
-  toEnable.removeAll(common);
-  if (!toDisable.isEmpty()) {
-    languageTool.getDisabledCategories().addAll(toDisable);
-    update=true;
+  Set<CategoryId> disabledCategories=new HashSet<>();
+  Map<CategoryId,Category> langCategories=languageTool.getCategories();
+  for (  CategoryId id : langCategories.keySet()) {
+    String categoryName=langCategories.get(id).getName();
+    if (disabledCategoryNames.contains(categoryName)) {
+      disabledCategories.add(id);
+    }
   }
-  if (!toEnable.isEmpty()) {
-    languageTool.getDisabledCategories().removeAll(toEnable);
+  Set<CategoryId> ltDisabledCategories=new HashSet<>();
+  for (  CategoryId id : langCategories.keySet()) {
+    if (languageTool.isCategoryDisabled(id)) {
+      ltDisabledCategories.add(id);
+    }
+  }
+  HashSet<CategoryId> commonCat=new HashSet<>(disabledCategories);
+  commonCat.retainAll(ltDisabledCategories);
+  HashSet<CategoryId> toDisableCat=new HashSet<>(disabledCategories);
+  toDisableCat.removeAll(common);
+  HashSet<CategoryId> toEnableCat=new HashSet<>(ltDisabledCategories);
+  toEnableCat.removeAll(common);
+  for (  CategoryId id : toDisableCat) {
+    languageTool.disableCategory(id);
+  }
+  for (  CategoryId id : toEnableCat) {
+    languageTool.enableRuleCategory(id);
+  }
+  if (!toDisableCat.isEmpty() || !toEnable.isEmpty()) {
     update=true;
   }
   Set<String> enabledRules=config.getEnabledRuleIds();

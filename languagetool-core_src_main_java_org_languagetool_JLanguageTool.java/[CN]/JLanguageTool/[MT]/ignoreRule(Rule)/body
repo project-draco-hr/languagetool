@@ -1,21 +1,13 @@
 {
-  if (disabledRules.contains(rule.getId())) {
-    return true;
+  Category ruleCategory=rule.getCategory();
+  boolean isCategoryDisabled=(disabledRuleCategories.contains(ruleCategory.getId()) || rule.getCategory().isDefaultOff()) && !enabledRuleCategories.contains(ruleCategory.getId());
+  boolean isRuleDisabled=disabledRules.contains(rule.getId()) || (rule.isDefaultOff() && !enabledRules.contains(rule.getId()));
+  boolean isDisabled;
+  if (isCategoryDisabled) {
+    isDisabled=!enabledRules.contains(rule.getId());
   }
-  if (rule.isDefaultOff() && !enabledRules.contains(rule.getId())) {
-    return true;
+ else {
+    isDisabled=isRuleDisabled;
   }
-  Category category=rule.getCategory();
-  if (category != null) {
-    if (disabledRuleCategories.contains(category.getId())) {
-      return true;
-    }
-    if (disabledCategories.contains(category.getName())) {
-      return true;
-    }
-    if (category.isDefaultOff() && !enabledRuleCategories.contains(category.getId()) && !enabledRules.contains(rule.getId())) {
-      return true;
-    }
-  }
-  return false;
+  return isDisabled;
 }
