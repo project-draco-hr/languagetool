@@ -39,16 +39,16 @@
   HashSet<CategoryId> commonCat=new HashSet<>(disabledCategories);
   commonCat.retainAll(ltDisabledCategories);
   HashSet<CategoryId> toDisableCat=new HashSet<>(disabledCategories);
-  toDisableCat.removeAll(common);
+  toDisableCat.removeAll(commonCat);
   HashSet<CategoryId> toEnableCat=new HashSet<>(ltDisabledCategories);
-  toEnableCat.removeAll(common);
+  toEnableCat.removeAll(commonCat);
   for (  CategoryId id : toDisableCat) {
     languageTool.disableCategory(id);
   }
   for (  CategoryId id : toEnableCat) {
     languageTool.enableRuleCategory(id);
   }
-  if (!toDisableCat.isEmpty() || !toEnable.isEmpty()) {
+  if (!toDisableCat.isEmpty() || !toEnableCat.isEmpty()) {
     update=true;
   }
   Set<String> enabledRules=config.getEnabledRuleIds();
@@ -56,8 +56,8 @@
     enabledRules=Collections.emptySet();
   }
   for (  String ruleName : enabledRules) {
-    languageTool.enableDefaultOffRule(ruleName);
     languageTool.enableRule(ruleName);
+    update=true;
   }
   if (update) {
     checkImmediately(null);
