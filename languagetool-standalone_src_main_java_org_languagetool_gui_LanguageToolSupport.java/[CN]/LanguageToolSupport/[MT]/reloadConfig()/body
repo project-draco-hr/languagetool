@@ -36,11 +36,11 @@
       ltDisabledCategories.add(id);
     }
   }
-  HashSet<CategoryId> commonCat=new HashSet<>(disabledCategories);
+  Set<CategoryId> commonCat=new HashSet<>(disabledCategories);
   commonCat.retainAll(ltDisabledCategories);
-  HashSet<CategoryId> toDisableCat=new HashSet<>(disabledCategories);
+  Set<CategoryId> toDisableCat=new HashSet<>(disabledCategories);
   toDisableCat.removeAll(commonCat);
-  HashSet<CategoryId> toEnableCat=new HashSet<>(ltDisabledCategories);
+  Set<CategoryId> toEnableCat=new HashSet<>(ltDisabledCategories);
   toEnableCat.removeAll(commonCat);
   for (  CategoryId id : toDisableCat) {
     languageTool.disableCategory(id);
