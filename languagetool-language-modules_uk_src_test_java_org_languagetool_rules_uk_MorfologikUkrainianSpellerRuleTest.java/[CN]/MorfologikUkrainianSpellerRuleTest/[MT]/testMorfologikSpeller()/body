@@ -43,4 +43,8 @@
   assertEquals(new ArrayList<RuleMatch>(),Arrays.asList(match));
   match=rule.match(langTool.getAnalyzedSentence("100 ???? ??"));
   assertEquals(1,Arrays.asList(match).size());
+  match=rule.match(langTool.getAnalyzedSentence("2 ????????"));
+  assertEquals(1,Arrays.asList(match).size());
+  match=rule.match(langTool.getAnalyzedSentence("?????????????? ????????"));
+  assertEquals(0,match.length);
 }

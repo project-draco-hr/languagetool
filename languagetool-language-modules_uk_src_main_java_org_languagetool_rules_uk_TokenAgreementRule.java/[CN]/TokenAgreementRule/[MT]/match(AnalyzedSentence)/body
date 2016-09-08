@@ -81,6 +81,10 @@
           reqTokenReadings=null;
           continue;
         }
+        if (token.equals("??????????")) {
+          reqTokenReadings=null;
+          continue;
+        }
       }
       if (prep.equalsIgnoreCase("??")) {
         if (token.equals("????????")) {
