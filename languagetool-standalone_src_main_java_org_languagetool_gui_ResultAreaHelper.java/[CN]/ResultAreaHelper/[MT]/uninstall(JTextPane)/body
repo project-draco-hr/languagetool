@@ -1,0 +1,7 @@
+{
+  Object helper=pane.getClientProperty(KEY);
+  if (helper != null && helper instanceof ResultAreaHelper) {
+    ((ResultAreaHelper)helper).disable();
+    pane.putClientProperty(KEY,null);
+  }
+}

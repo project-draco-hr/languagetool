@@ -1,0 +1,9 @@
+{
+  Object prev=pane.getClientProperty(KEY);
+  if (prev != null && prev instanceof ResultAreaHelper) {
+    enable(pane);
+    return;
+  }
+  ResultAreaHelper helper=new ResultAreaHelper(messages,ltSupport,pane);
+  pane.putClientProperty(KEY,helper);
+}

@@ -1,0 +1,12 @@
+{
+synchronized (lock) {
+    if (enabled) {
+      return;
+    }
+    enabled=true;
+    statusPane.setText(TEMPLATE);
+    setHeader(messages.getString("resultAreaText"));
+    statusPane.addHyperlinkListener(this);
+    ltSupport.addLanguageToolListener(this);
+  }
+}

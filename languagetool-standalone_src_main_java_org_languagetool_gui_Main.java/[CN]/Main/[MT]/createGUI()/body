@@ -96,7 +96,7 @@
   cons.insets=new Insets(4,12,4,12);
   contentPane.add(insidePanel,cons);
   ltSupport=new LanguageToolSupport(this.frame,this.textArea,this.undoRedo);
-  resultAreaHelper=new ResultAreaHelper(messages,ltSupport,resultArea);
+  ResultAreaHelper.install(messages,ltSupport,resultArea);
   languageBox.selectLanguage(ltSupport.getLanguage());
   languageBox.setEnabled(!ltSupport.getConfig().getAutoDetect());
   autoDetectBox.setSelected(ltSupport.getConfig().getAutoDetect());

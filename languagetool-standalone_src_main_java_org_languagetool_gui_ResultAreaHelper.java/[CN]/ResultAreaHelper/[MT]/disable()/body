@@ -1,0 +1,11 @@
+{
+synchronized (lock) {
+    if (!enabled) {
+      return;
+    }
+    enabled=false;
+    statusPane.setText(TEMPLATE);
+    statusPane.removeHyperlinkListener(this);
+    ltSupport.removeLanguageToolListener(this);
+  }
+}

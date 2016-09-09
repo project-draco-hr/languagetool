@@ -1,0 +1,30 @@
+{
+  if (event.getType() == LanguageToolEvent.Type.CHECKING_STARTED) {
+    Language lang=ltSupport.getLanguage();
+    String langName;
+    if (lang.isExternal()) {
+      langName=lang.getTranslatedName(messages) + Main.EXTERNAL_LANGUAGE_SUFFIX;
+    }
+ else {
+      langName=lang.getTranslatedName(messages);
+    }
+    String msg=org.languagetool.tools.Tools.i18n(messages,"startChecking",langName) + "...";
+    setHeader(msg);
+    setMain(EMPTY_PARA);
+    if (event.getCaller() == this) {
+      statusPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    }
+  }
+ else   if (event.getType() == LanguageToolEvent.Type.CHECKING_FINISHED) {
+    setRunTime(event.getElapsedTime());
+    String inputText=event.getSource().getTextComponent().getText();
+    displayResult(inputText,event.getSource().getMatches());
+    if (event.getCaller() == this) {
+      statusPane.setCursor(Cursor.getDefaultCursor());
+    }
+  }
+ else   if (event.getType() == LanguageToolEvent.Type.RULE_DISABLED || event.getType() == LanguageToolEvent.Type.RULE_ENABLED) {
+    String inputText=event.getSource().getTextComponent().getText();
+    displayResult(inputText,event.getSource().getMatches());
+  }
+}
