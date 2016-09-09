@@ -1,7 +1,7 @@
 {
   List<RuleMatch> filtered=new ArrayList<>();
   Set<String> disabledRuleIds=ltSupport.getConfig().getDisabledRuleIds();
-  for (  RuleMatch ruleMatch : allRuleMatches) {
+  for (  RuleMatch ruleMatch : matches) {
     if (!disabledRuleIds.contains(ruleMatch.getRule().getId())) {
       filtered.add(ruleMatch);
     }

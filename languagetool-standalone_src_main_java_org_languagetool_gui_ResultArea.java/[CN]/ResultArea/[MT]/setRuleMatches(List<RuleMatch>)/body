@@ -1,4 +1,0 @@
-{
-  this.allRuleMatches=new ArrayList<>(ruleMatches);
-  this.ruleMatches=new ArrayList<>(ruleMatches);
-}

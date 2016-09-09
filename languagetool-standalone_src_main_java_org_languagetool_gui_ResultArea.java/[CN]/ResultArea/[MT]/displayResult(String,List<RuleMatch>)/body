@@ -1,0 +1,5 @@
+{
+  List<RuleMatch> filtered=filterRuleMatches(matches);
+  String ruleMatchHtml=getRuleMatchHtml(filtered,inputText,startText);
+  displayText(ruleMatchHtml);
+}

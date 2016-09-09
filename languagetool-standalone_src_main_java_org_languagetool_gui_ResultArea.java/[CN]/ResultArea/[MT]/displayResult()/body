@@ -1,5 +1,0 @@
-{
-  ruleMatches=filterRuleMatches();
-  String ruleMatchHtml=getRuleMatchHtml(ruleMatches,inputText,startText);
-  displayText(ruleMatchHtml);
-}

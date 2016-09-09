@@ -27,17 +27,15 @@
       }
  else       if (event.getType() == LanguageToolEvent.Type.CHECKING_FINISHED) {
         setRunTime(event.getElapsedTime());
-        inputText=event.getSource().getTextComponent().getText();
-        setRuleMatches(event.getSource().getMatches());
-        displayResult();
+        String inputText=event.getSource().getTextComponent().getText();
+        displayResult(inputText,event.getSource().getMatches());
         if (event.getCaller() == this) {
           statusPane.setCursor(Cursor.getDefaultCursor());
         }
       }
  else       if (event.getType() == LanguageToolEvent.Type.RULE_DISABLED || event.getType() == LanguageToolEvent.Type.RULE_ENABLED) {
-        inputText=event.getSource().getTextComponent().getText();
-        setRuleMatches(event.getSource().getMatches());
-        displayResult();
+        String inputText=event.getSource().getTextComponent().getText();
+        displayResult(inputText,event.getSource().getMatches());
       }
     }
   }
