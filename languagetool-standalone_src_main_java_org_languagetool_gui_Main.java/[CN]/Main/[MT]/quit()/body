@@ -11,7 +11,14 @@
   MainWindowStateBean bean=new MainWindowStateBean();
   bean.setBounds(ResizeComponentListener.getBoundsProperty(frame));
   bean.setState(frame.getExtendedState());
-  bean.setDividerLocation(this.splitPane.getDividerLocation());
+  Component comp=mainPanel.getComponent(0);
+  if (comp instanceof JSplitPane) {
+    bean.setDividerLocation(((JSplitPane)comp).getDividerLocation());
+  }
+ else {
+    MainWindowStateBean old=localStorage.loadProperty("gui.state",MainWindowStateBean.class);
+    bean.setDividerLocation(old.getDividerLocation());
+  }
   localStorage.saveProperty("gui.state",bean);
   frame.setVisible(false);
   JLanguageTool.removeTemporaryFiles();

@@ -1,0 +1,23 @@
+{
+  if (enable) {
+    this.mainPanel.removeAll();
+    mainPanel.add(this.splitPane);
+    splitPane.setTopComponent(new JScrollPane(textArea));
+    splitPane.setDividerLocation(200);
+    MainWindowStateBean state=localStorage.loadProperty("gui.state",MainWindowStateBean.class);
+    if (state != null && state.getDividerLocation() != null) {
+      splitPane.setDividerLocation(state.getDividerLocation());
+    }
+    ResultAreaHelper.enable(resultArea);
+  }
+ else {
+    MainWindowStateBean bean=new MainWindowStateBean();
+    bean.setDividerLocation(splitPane.getDividerLocation());
+    localStorage.saveProperty("gui.state",bean);
+    this.mainPanel.removeAll();
+    splitPane.setTopComponent(null);
+    mainPanel.add(new JScrollPane(textArea));
+    ResultAreaHelper.disable(resultArea);
+  }
+  mainPanel.validate();
+}

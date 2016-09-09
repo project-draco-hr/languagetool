@@ -1,0 +1,8 @@
+{
+  super(getLabel("guiShowResultArea"));
+  putValue(Action.SHORT_DESCRIPTION,messages.getString("guiShowResultArea"));
+  putValue(Action.LONG_DESCRIPTION,messages.getString("guiShowResultArea"));
+  putValue(Action.MNEMONIC_KEY,getMnemonic("guiShowResultArea"));
+  enable=initial;
+  putValue(Action.SELECTED_KEY,enable);
+}

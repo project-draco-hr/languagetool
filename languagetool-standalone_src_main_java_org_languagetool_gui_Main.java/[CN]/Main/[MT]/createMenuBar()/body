@@ -22,6 +22,8 @@
   grammarMenu.add(checkAction);
   JCheckBoxMenuItem item=new JCheckBoxMenuItem(autoCheckAction);
   grammarMenu.add(item);
+  JCheckBoxMenuItem showResult=new JCheckBoxMenuItem(showResultAction);
+  grammarMenu.add(showResult);
   grammarMenu.add(new CheckClipboardAction());
   grammarMenu.add(new TagTextAction());
   grammarMenu.add(new AddRulesAction());

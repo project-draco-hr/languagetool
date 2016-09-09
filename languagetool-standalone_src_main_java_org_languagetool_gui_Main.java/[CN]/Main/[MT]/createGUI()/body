@@ -7,6 +7,7 @@
   saveAsAction=new SaveAsAction();
   checkAction=new CheckAction();
   autoCheckAction=new AutoCheckAction(true);
+  showResultAction=new ShowResultAction(true);
   frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
   frame.addWindowListener(new CloseListener());
   URL iconUrl=JLanguageTool.getDataBroker().getFromResourceDirAsUrl(TRAY_ICON);
@@ -87,7 +88,9 @@
   cons.gridy=2;
   cons.weighty=5.0f;
   splitPane=new JSplitPane(JSplitPane.VERTICAL_SPLIT,new JScrollPane(textArea),new JScrollPane(resultArea));
-  contentPane.add(splitPane,cons);
+  mainPanel.setLayout(new GridLayout(0,1));
+  contentPane.add(mainPanel,cons);
+  mainPanel.add(splitPane);
   cons.fill=GridBagConstraints.HORIZONTAL;
   cons.gridx=0;
   cons.gridy=3;

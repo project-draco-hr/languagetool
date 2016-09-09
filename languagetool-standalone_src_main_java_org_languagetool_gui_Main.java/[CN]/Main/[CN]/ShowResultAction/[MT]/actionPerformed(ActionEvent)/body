@@ -1,0 +1,5 @@
+{
+  enable=!enable;
+  putValue(Action.SELECTED_KEY,enable);
+  setResultAreaVisible(enable);
+}
