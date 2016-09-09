@@ -1,4 +1,0 @@
-{
-  statusPane.setText(Main.HTML_FONT_START + text + Main.HTML_FONT_END);
-  statusPane.setCaretPosition(0);
-}

@@ -1,0 +1,13 @@
+{
+  HTMLDocument d=(HTMLDocument)statusPane.getDocument();
+  Element e=d.getElement(HEADER);
+  try {
+    d.setInnerHTML(e,"<p class=\"grayed\">" + txt + "</p>");
+  }
+ catch (  BadLocationException ex) {
+    Tools.showError(ex);
+  }
+catch (  IOException ex) {
+    Tools.showError(ex);
+  }
+}

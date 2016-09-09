@@ -1,0 +1,13 @@
+{
+  HTMLDocument d=(HTMLDocument)statusPane.getDocument();
+  Element e=d.getElement(MAIN);
+  try {
+    d.insertBeforeEnd(e,html);
+  }
+ catch (  BadLocationException ex) {
+    Tools.showError(ex);
+  }
+catch (  IOException ex) {
+    Tools.showError(ex);
+  }
+}

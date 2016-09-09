@@ -3,7 +3,8 @@
   this.ltSupport=ltSupport;
   this.statusPane=statusPane;
   statusPane.setContentType("text/html");
-  statusPane.setText(Main.HTML_GREY_FONT_START + messages.getString("resultAreaText") + Main.HTML_FONT_END);
+  statusPane.setText(TEMPLATE);
+  setHeader(messages.getString("resultAreaText"));
   statusPane.setEditable(false);
   statusPane.addHyperlinkListener(new MyHyperlinkListener());
   statusPane.setTransferHandler(new RetainLineBreakTransferHandler());
@@ -18,9 +19,9 @@
  else {
           langName=lang.getTranslatedName(messages);
         }
-        String startCheckText=Main.HTML_GREY_FONT_START + org.languagetool.tools.Tools.i18n(messages,"startChecking",langName) + "..."+ Main.HTML_FONT_END;
-        statusPane.setText(startCheckText);
-        setStartText(startCheckText);
+        String msg=org.languagetool.tools.Tools.i18n(messages,"startChecking",langName) + "...";
+        setHeader(msg);
+        setMain(EMPTY_PARA);
         if (event.getCaller() == this) {
           statusPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         }

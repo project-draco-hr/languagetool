@@ -2,12 +2,16 @@
   ContextTools contextTools=new ContextTools();
   StringBuilder sb=new StringBuilder(200);
   if (ltSupport.getLanguage().getMaintainedState() != LanguageMaintainedState.ActivelyMaintained) {
-    sb.append("<b>").append(messages.getString("unsupportedWarning")).append("</b><br><br>");
+    sb.append("<p><b>").append(messages.getString("unsupportedWarning")).append("</b></p>\n");
   }
-  sb.append(startCheckText);
-  sb.append("<br>\n");
+ else {
+    sb.append(EMPTY_PARA);
+  }
+  setMain(sb.toString());
+  sb.setLength(0);
   int i=0;
   for (  RuleMatch match : ruleMatches) {
+    sb.append("<p>");
     String output=org.languagetool.tools.Tools.i18n(messages,"result1",i + 1,match.getLine() + 1,match.getColumn());
     sb.append(output);
     String msg=match.getMessage().replaceAll("<suggestion>","<b>").replaceAll("</suggestion>","</b>").replaceAll("<old>","<b>").replaceAll("</old>","</b>");
@@ -27,21 +31,25 @@
     }
     String context=contextTools.getContext(match.getFromPos(),match.getToPos(),text);
     sb.append("<b>").append(messages.getString("errorContext")).append("</b> ").append(context);
-    sb.append("<br>\n");
     if (match.getRule().getUrl() != null && Desktop.isDesktopSupported()) {
+      sb.append("<br>\n");
       sb.append("<b>").append(messages.getString("moreInfo")).append("</b> <a href=\"");
       String url=match.getRule().getUrl().toString();
       sb.append(url);
       String shortUrl=StringUtils.abbreviate(url,60);
-      sb.append("\">").append(shortUrl).append("</a><br>\n");
+      sb.append("\">").append(shortUrl).append("</a>\n");
     }
+    sb.append("</p>");
     i++;
+    appendMain(sb.toString());
+    sb.setLength(0);
   }
-  sb.append(Main.HTML_GREY_FONT_START);
+  sb.append("<p class=\"grayed\">");
   sb.append(getDisabledRulesHtml());
   String checkDone=org.languagetool.tools.Tools.i18n(messages,"checkDone",ruleMatches.size(),runTime);
   sb.append("<br>\n").append(checkDone);
   sb.append("<br>\n").append(messages.getString("makeLanguageToolBetter"));
-  sb.append(Main.HTML_FONT_END).append("<br>\n");
-  return sb.toString();
+  sb.append("<br>\n");
+  sb.append("</p>");
+  appendMain(sb.toString());
 }
