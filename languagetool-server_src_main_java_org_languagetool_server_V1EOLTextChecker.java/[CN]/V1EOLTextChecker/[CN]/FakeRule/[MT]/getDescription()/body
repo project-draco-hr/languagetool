@@ -1,0 +1,3 @@
+{
+  return "A pseudo rule indicating the API is end-of-life";
+}

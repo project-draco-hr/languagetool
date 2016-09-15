@@ -1,0 +1,3 @@
+{
+  setCommonHeaders(httpExchange,XML_CONTENT_TYPE,config.allowOriginUrl);
+}
