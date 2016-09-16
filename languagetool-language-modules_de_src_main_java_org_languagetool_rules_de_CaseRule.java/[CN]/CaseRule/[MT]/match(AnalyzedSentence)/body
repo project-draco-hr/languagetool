@@ -25,13 +25,10 @@
       if (i < tokens.length - 1) {
         AnalyzedTokenReadings nextToken=tokens[i + 1];
         nextTokenIsPersonalOrReflexivePronoun=nextToken.hasPartialPosTag("PRO:PER") || nextToken.getToken().equals("sich") || nextToken.getToken().equals("Sie");
-        if (nextToken.hasLemma("lassen")) {
-          continue;
-        }
         if (nextToken.isSentenceEnd()) {
           continue;
         }
-        if (prevTokenIsDas && nextToken.equals("die")) {
+        if (prevTokenIsDas && (nextToken.getToken().equals("die") || nextToken.getToken().equals("zu"))) {
           continue;
         }
       }
