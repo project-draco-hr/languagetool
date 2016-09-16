@@ -11,6 +11,7 @@
   assertTrue(ruleGermany.doIgnoreWord("Au-pair-Wichtelm??nnchen"));
   assertTrue(ruleGermany.doIgnoreWord("Secondhandware"));
   assertTrue(ruleGermany.doIgnoreWord("Feynmandiagramme"));
+  assertTrue(ruleGermany.doIgnoreWord("Helizit??tsoperator"));
   MyGermanSpellerRule ruleSwiss=new MyGermanSpellerRule(TestTools.getMessages("de"),GERMAN_CH);
   assertTrue(ruleSwiss.doIgnoreWord("einPseudoWortF??rLanguageToolTests"));
   assertFalse(ruleSwiss.doIgnoreWord("Ligafu??ball"));
