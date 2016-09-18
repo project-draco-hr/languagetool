@@ -1,0 +1,64 @@
+import os
+from subprocess import call
+import re
+import enchant
+pos_LT = {'ADJF': 'ADJ', 'ADJS': 'ADJ_Short', 'COMP': 'ADJ_Sup', 'ADVB': 'ADV', 'GRND': 'DPT', 'PRTF': 'PT', 'PRTS': 'PT_Short', 'PRED': 'none', 'INTJ': 'INTERJECTION', 'NUMR': 'NumC', 'NPRO': 'PNN', 'PREP': 'PREP', 'CONJ': 'CONJ', 'PRCL': 'PARTICLE', 'NOUN': 'NN', 'INFN': 'VB', 'VERB': 'VB', }
+pos_other_LT = ['ADJ', 'PADJ', 'ADJ_Comp', 'NNN', 'NNP', 'NNF']
+tense_LT = {'pres': 'Real', 'futr': 'Fut', 'past': 'Past', 'INFN': 'INF', 'impr': 'IMP', }
+case_LT = {'nomn': 'Nom', 'gent': 'R', 'datv': 'D', 'accs': 'V', 'ablt': 'T', 'loct': 'P', 'gen2': 'R', 'acc2': 'V', 'loc2': 'P', 'voct': 'none', }
+number_LT = {'sing': 'Sin', 'plur': 'PL', }
+person_LT = {'1per': 'P1', '2per': 'P2', '3per': 'P3', }
+gender_LT = {'masc': 'Masc', 'femn': 'Fem', 'neut': 'Neut', }
+other_LT = {'indic': '', 'poss': 'PADJ', 'Supr': 'ADJ_Comp', 'comp': 'ADJ_S', 'ipf': '', 'pf': '', 'act': '', 'pass': '', 'anim': '', 'inan': '', 'tran': '', 'intr': '', 'parenth': '', 'geo': '', 'awkw': '', 'Name': 'NNN', 'dist': '', 'mf': '', 'obsc': '', 'Patr': 'NNP', 'praed': '', 'inform': 'Talk', 'rare': '', 'abbr': 'ABR', 'obsol': '', 'Surn': 'NNF', }
+all_tags = []
+with open('all_tags.txt', 'r') as data_file:
+    for data_line in data_file:
+        all_tags.append(data_line[:(-1)])
+d = enchant.Dict('ru_RU')
+words = set()
+i = 0
+with open('need-tag.txt', 'r') as data_file:
+    for data_line in data_file:
+        if (' ' in data_line):
+            if ('...' in data_line[:3]):
+                data_line = data_line.split(' ', 1)[1]
+            if ('...' in data_line):
+                data_line = data_line.rsplit(' ', 1)[0]
+        split = re.findall(u'[\u0400-\u0500]+', data_line)
+        for word in split:
+            if (word != word.upper()):
+                words.add(word.lower())
+i = 0
+with open('unique-tag.txt', 'w') as new_file:
+    for word in words:
+        new_file.write((('\xd0\x90 ' + word) + ' \xd0\xb0.\n'))
+os.system('java -jar languagetool/languagetool-standalone/target/LanguageTool-3.5-SNAPSHOT/LanguageTool-3.5-SNAPSHOT/languagetool-commandline.jar -l ru -eo -e Unknown_words  unique-tag.txt > out.txt')
+news = set()
+with open('out.txt', 'r') as new_file:
+    prev_line = ' '
+    for line in new_file:
+        if ('^' in line):
+            start = line.find('^')
+            stop = (line.rfind('^') + 1)
+            news.add(prev_line[start:stop])
+        prev_line = line
+print len(news)
+import pymorphy2
+morph = pymorphy2.MorphAnalyzer()
+news.add('\xd0\xbb\xd1\x8e\xd0\xb4\xd0\xb8')
+news = list(news)
+news.sort()
+pytags = []
+with open('final-tags.txt', 'w') as final:
+    for word in news:
+        for data in morph.parse(word):
+            if (type(data.methods_stack[0][0]) is not pymorphy2.units.by_lookup.DictionaryAnalyzer):
+                continue
+            token = data.word
+            current_lemma = data.normal_form
+            gramma = data.tag
+            pos_tag = convert_gramma(gramma)
+            if (pos_tag in all_tags):
+                final.write((((((token + '\t') + current_lemma) + '\t') + pos_tag) + '\n'))
+            else:
+                print ((((((token + '\t') + current_lemma) + '\t') + pos_tag) + ' <== ') + str(gramma))

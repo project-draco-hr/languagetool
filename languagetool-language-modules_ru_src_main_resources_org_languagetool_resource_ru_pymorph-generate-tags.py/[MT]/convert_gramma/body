@@ -1,0 +1,53 @@
+def convert_gramma(gramma):
+    gramma = str(gramma).replace(' ', ',')
+    split = re.split(',', gramma)
+    pos = find_list(split, pos_LT)
+    case = find_list(split, case_LT)
+    number = find_list(split, number_LT)
+    gender = find_list(split, gender_LT)
+    tense = find_list(split, tense_LT)
+    person = find_list(split, person_LT)
+    other = find_list(split, other_LT)
+    other_pos = (set(other) & set(pos_other_LT))
+    if ((len(pos) != 1) or (len(case) > 1) or (len(number) > 1) or (len(gender) > 1) or (len(tense) > 1) or (len(person) > 1) or (len(other_pos) > 1)):
+        print ('ERROR! Too many pos tags in ' + gramma)
+        return 'UNKNOWN'
+    pos = pos[0]
+    if (len(other_pos) != 0):
+        pos = other_pos.pop()
+    if (pos == 'none'):
+        return 'UNKNOWN'
+    output = pos
+    if (pos in ['NN', 'NNN', 'NNF', 'NNP']):
+        output += (((((':' + gender[0]) + ':') + number[0]) + ':') + case[0])
+        if ('Talk' in other):
+            output += ':Talk'
+    if (pos in ['ADJ', 'ADJ_Com', 'ADJ_Short', 'PADJ']):
+        output += (':' + gender[0])
+        if (number[0] != 'Sin'):
+            output += (':' + number[0])
+        output += (':' + case[0])
+    if (pos == 'DPT'):
+        output += (':' + tense[0])
+    if (pos == 'NumC'):
+        output += (':' + case[0])
+    if (pos in ['PT', 'PT_Short']):
+        output += (((':' + tense[0]) + ':') + gender[0])
+        if (number[0] != 'Sin'):
+            output += (':' + number[0])
+        output += (':' + case[0])
+    if (pos in ['VB']):
+        output += (':' + tense[0])
+        if (tense[0] == 'Past'):
+            output += (':' + gender[0])
+            if (number[0] != 'Sin'):
+                output += (':' + number[0])
+        else:
+            output += (((':' + number[0]) + ':') + person[0])
+    output = output.replace('none', '')
+    if (('NN::' or '::Talk') not in output):
+        output = output.replace('::', ':')
+        output = output.replace('::', ':')
+    if (output[(-1)] == ':'):
+        output = output[:(-1)]
+    return output

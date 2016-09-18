@@ -1,0 +1,8 @@
+def find_list(split, dic):
+    ret = []
+    for key in dic.keys():
+        if (key in split):
+            ret.append(dic[key])
+    if (len(ret) == 0):
+        ret.append('none')
+    return ret
