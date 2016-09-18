@@ -54,6 +54,16 @@ with open('final-tags.txt', 'w') as final:
         for data in morph.parse(word):
             if (type(data.methods_stack[0][0]) is not pymorphy2.units.by_lookup.DictionaryAnalyzer):
                 continue
+            if (len(data.methods_stack) > 1):
+                if (type(data.methods_stack[1][0]) is pymorphy2.units.by_analogy.UnknownPrefixAnalyzer):
+                    continue
+                if (type(data.methods_stack[1][0]) is not pymorphy2.units.by_analogy.KnownPrefixAnalyzer):
+                    print data.methods_stack
+                    continue
+                if (len(data.methods_stack) > 2):
+                    if (type(data.methods_stack[2][0]) is not pymorphy2.units.by_analogy.KnownPrefixAnalyzer):
+                        print data.methods_stack
+                        continue
             token = data.word
             current_lemma = data.normal_form
             gramma = data.tag
@@ -61,4 +71,4 @@ with open('final-tags.txt', 'w') as final:
             if (pos_tag in all_tags):
                 final.write((((((token + '\t') + current_lemma) + '\t') + pos_tag) + '\n'))
             else:
-                print ((((((token + '\t') + current_lemma) + '\t') + pos_tag) + ' <== ') + str(gramma))
+                iasda = 0
