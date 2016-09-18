@@ -9,7 +9,7 @@ case_LT = {'nomn': 'Nom', 'gent': 'R', 'datv': 'D', 'accs': 'V', 'ablt': 'T', 'l
 number_LT = {'sing': 'Sin', 'plur': 'PL', }
 person_LT = {'1per': 'P1', '2per': 'P2', '3per': 'P3', }
 gender_LT = {'masc': 'Masc', 'femn': 'Fem', 'neut': 'Neut', }
-other_LT = {'indic': '', 'poss': 'PADJ', 'Supr': 'ADJ_Comp', 'comp': 'ADJ_S', 'ipf': '', 'pf': '', 'act': '', 'pass': '', 'anim': '', 'inan': '', 'tran': '', 'intr': '', 'parenth': '', 'geo': '', 'awkw': '', 'Name': 'NNN', 'dist': '', 'mf': '', 'obsc': '', 'Patr': 'NNP', 'praed': '', 'inform': 'Talk', 'rare': '', 'abbr': 'ABR', 'obsol': '', 'Surn': 'NNF', }
+other_LT = {'indic': '', 'poss': 'PADJ', 'Supr': 'ADJ_Comp', 'ipf': '', 'pf': '', 'act': '', 'pass': '', 'anim': '', 'inan': '', 'tran': '', 'intr': '', 'parenth': '', 'geo': '', 'awkw': '', 'Name': 'NNN', 'dist': '', 'mf': '', 'obsc': '', 'Patr': 'NNP', 'praed': '', 'Infr': 'Talk', 'rare': '', 'Abbr': 'ABR', 'obsol': '', 'Surn': 'NNF', }
 all_tags = []
 with open('all_tags.txt', 'r') as data_file:
     for data_line in data_file:
@@ -45,11 +45,11 @@ with open('out.txt', 'r') as new_file:
 print len(news)
 import pymorphy2
 morph = pymorphy2.MorphAnalyzer()
-news.add('\xd0\xbb\xd1\x8e\xd0\xb4\xd0\xb8')
 news = list(news)
 news.sort()
 pytags = []
-with open('final-tags.txt', 'w') as final:
+missed_tags = 0
+with open('final-tags-pymorph.txt', 'w') as final:
     for word in news:
         for data in morph.parse(word):
             if (type(data.methods_stack[0][0]) is not pymorphy2.units.by_lookup.DictionaryAnalyzer):
@@ -58,11 +58,11 @@ with open('final-tags.txt', 'w') as final:
                 if (type(data.methods_stack[1][0]) is pymorphy2.units.by_analogy.UnknownPrefixAnalyzer):
                     continue
                 if (type(data.methods_stack[1][0]) is not pymorphy2.units.by_analogy.KnownPrefixAnalyzer):
-                    print data.methods_stack
+                    print ('Unexpected method stack: ', data.methods_stack)
                     continue
                 if (len(data.methods_stack) > 2):
                     if (type(data.methods_stack[2][0]) is not pymorphy2.units.by_analogy.KnownPrefixAnalyzer):
-                        print data.methods_stack
+                        print ('Unexpected method stack: ', data.methods_stack)
                         continue
             token = data.word
             current_lemma = data.normal_form
@@ -71,4 +71,6 @@ with open('final-tags.txt', 'w') as final:
             if (pos_tag in all_tags):
                 final.write((((((token + '\t') + current_lemma) + '\t') + pos_tag) + '\n'))
             else:
-                iasda = 0
+                print ((((((token + '\t') + current_lemma) + '\t') + pos_tag) + ' <== ') + str(gramma))
+                missed_tags += 1
+print ('Detected dictionary tags, missing in LT:', missed_tags)
