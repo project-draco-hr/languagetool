@@ -14,7 +14,6 @@ all_tags = []
 with open('all_tags.txt', 'r') as data_file:
     for data_line in data_file:
         all_tags.append(data_line[:(-1)])
-d = enchant.Dict('ru_RU')
 words = set()
 i = 0
 with open('need-tag.txt', 'r') as data_file:
