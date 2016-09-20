@@ -12,6 +12,8 @@
   assertTrue(ruleGermany.doIgnoreWord("Secondhandware"));
   assertTrue(ruleGermany.doIgnoreWord("Feynmandiagramme"));
   assertTrue(ruleGermany.doIgnoreWord("Helizit??tsoperator"));
+  assertFalse(ruleGermany.doIgnoreWord("Helizit??tso"));
+  assertFalse(ruleGermany.doIgnoreWord("Feynmand"));
   MyGermanSpellerRule ruleSwiss=new MyGermanSpellerRule(TestTools.getMessages("de"),GERMAN_CH);
   assertTrue(ruleSwiss.doIgnoreWord("einPseudoWortF??rLanguageToolTests"));
   assertFalse(ruleSwiss.doIgnoreWord("Ligafu??ball"));
