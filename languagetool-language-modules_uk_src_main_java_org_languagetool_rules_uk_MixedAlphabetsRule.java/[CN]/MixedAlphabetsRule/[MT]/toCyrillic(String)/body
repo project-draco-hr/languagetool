@@ -2,5 +2,8 @@
   for (  Map.Entry<Character,Character> entry : toCyrMap.entrySet()) {
     word=word.replace(entry.getKey(),entry.getValue());
   }
+  for (int i=0; i < umlauts.length; i++) {
+    word=word.replace(umlauts[i],umlautsReplace[i]);
+  }
   return word;
 }
