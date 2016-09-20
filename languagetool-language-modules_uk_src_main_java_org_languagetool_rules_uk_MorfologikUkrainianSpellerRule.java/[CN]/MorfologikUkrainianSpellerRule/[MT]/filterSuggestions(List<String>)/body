@@ -1,0 +1,9 @@
+{
+  super.filterSuggestions(suggestions);
+  for (Iterator<String> iterator=suggestions.iterator(); iterator.hasNext(); ) {
+    String item=iterator.next();
+    if (item.contains(" ") && DO_NOT_SUGGEST_SPACED_PATTERN.matcher(item).matches()) {
+      iterator.remove();
+    }
+  }
+}
