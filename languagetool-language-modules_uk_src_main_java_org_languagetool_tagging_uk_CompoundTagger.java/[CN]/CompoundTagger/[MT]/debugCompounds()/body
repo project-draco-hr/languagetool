@@ -10,6 +10,6 @@
     compoundTaggedDebugWriter=Files.newBufferedWriter(taggedFile,Charset.defaultCharset());
   }
  catch (  IOException ex) {
-    throw new RuntimeException(ex);
+    System.err.println("Failed to open debug compounds file");
   }
 }

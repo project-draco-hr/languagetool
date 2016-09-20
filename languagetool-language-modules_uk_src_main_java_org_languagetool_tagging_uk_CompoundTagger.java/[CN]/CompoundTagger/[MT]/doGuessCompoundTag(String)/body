@@ -14,7 +14,7 @@
     List<AnalyzedToken> newAnalyzedTokens=new ArrayList<>(leftAnalyzedTokens.size());
     for (    AnalyzedToken analyzedToken : leftAnalyzedTokens) {
       String posTag=analyzedToken.getPOSTag();
-      if (posTag != null && leftTagRegex.matcher(posTag).matches()) {
+      if (posTag != null && (leftWord.equals("????????") && posTag.contains("adv")) || (leftTagRegex.matcher(posTag).matches())) {
         newAnalyzedTokens.add(new AnalyzedToken(word,posTag,analyzedToken.getLemma()));
       }
     }
@@ -55,7 +55,8 @@
     }
     return null;
   }
-  if (!leftWord.equalsIgnoreCase(rightWord) && PosTagHelper.hasPosTag(rightAnalyzedTokens,"(part|conj).*|.*:&pron.*"))   return null;
+  List<AnalyzedToken> leftAnalyzedTokens=ukrainianTagger.asAnalyzedTokenListForTaggedWordsInternal(leftWord,leftWdList);
+  if (!leftWord.equalsIgnoreCase(rightWord) && PosTagHelper.hasPosTag(rightAnalyzedTokens,"(part|conj).*|.*:&pron.*") && !(PosTagHelper.hasPosTag(leftAnalyzedTokens,"numr.*") && PosTagHelper.hasPosTag(rightAnalyzedTokens,"numr.*")))   return null;
   if (dashPrefixes.contains(leftWord) || dashPrefixes.contains(leftWord.toLowerCase()) || DASH_PREFIX_LAT_PATTERN.matcher(leftWord).matches()) {
     return getNvPrefixNounMatch(word,rightAnalyzedTokens,leftWord);
   }
@@ -76,10 +77,8 @@
   }
   if (Character.isUpperCase(leftWord.charAt(0)) && cityAvenue.contains(rightWord)) {
     if (leftWdList.isEmpty())     return null;
-    List<AnalyzedToken> leftAnalyzedTokens=ukrainianTagger.asAnalyzedTokenListForTaggedWordsInternal(leftWord,leftWdList);
     return cityAvenueMatch(word,leftAnalyzedTokens);
   }
-  List<AnalyzedToken> leftAnalyzedTokens=ukrainianTagger.asAnalyzedTokenListForTaggedWordsInternal(leftWord,leftWdList);
   if (!PosTagHelper.hasPosTag(leftAnalyzedTokens,"intj.*")) {
     String noDashWord=word.replace("-","");
     List<TaggedWord> noDashWordList=tagAsIsAndWithLowerCase(noDashWord);

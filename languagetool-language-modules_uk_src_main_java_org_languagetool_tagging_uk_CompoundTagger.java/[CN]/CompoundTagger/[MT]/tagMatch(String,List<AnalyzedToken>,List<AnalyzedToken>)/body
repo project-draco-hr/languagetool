@@ -11,13 +11,14 @@
       leftNv=true;
       leftPosTag=leftPosTag.replace(NV_TAG,"");
     }
-    Matcher matcher=EXTRA_TAGS.matcher(leftPosTag);
+    Matcher matcher=EXTRA_TAGS_DROP.matcher(leftPosTag);
+    if (matcher.find()) {
+      leftPosTag=matcher.replaceAll("");
+    }
+    matcher=EXTRA_TAGS.matcher(leftPosTag);
     if (matcher.find()) {
       leftPosTagExtra+=matcher.group();
       leftPosTag=matcher.replaceAll("");
-    }
-    if (leftPosTag.contains(COMPB_TAG)) {
-      leftPosTag=leftPosTag.replace(COMPB_TAG,"");
     }
     for (    AnalyzedToken rightAnalyzedToken : rightAnalyzedTokens) {
       String rightPosTag=rightAnalyzedToken.getPOSTag();
@@ -30,12 +31,13 @@
           extraNvTag+=NV_TAG;
         }
       }
-      Matcher matcherR=EXTRA_TAGS.matcher(rightPosTag);
+      Matcher matcherR=EXTRA_TAGS_DROP.matcher(rightPosTag);
       if (matcherR.find()) {
         rightPosTag=matcherR.replaceAll("");
       }
-      if (rightPosTag.contains(COMPB_TAG)) {
-        rightPosTag=rightPosTag.replace(COMPB_TAG,"");
+      matcherR=EXTRA_TAGS.matcher(rightPosTag);
+      if (matcherR.find()) {
+        rightPosTag=matcherR.replaceAll("");
       }
       if (leftPosTag.equals(rightPosTag) && (IPOSTag.startsWith(leftPosTag,IPOSTag.numr,IPOSTag.adv,IPOSTag.adj,IPOSTag.verb) || (IPOSTag.startsWith(leftPosTag,IPOSTag.intj) && leftAnalyzedToken.getLemma().equalsIgnoreCase(rightAnalyzedToken.getLemma())))) {
         newAnalyzedTokens.add(new AnalyzedToken(word,leftPosTag + extraNvTag + leftPosTagExtra,leftAnalyzedToken.getLemma() + "-" + rightAnalyzedToken.getLemma()));
