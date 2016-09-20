@@ -1,0 +1,12 @@
+{
+  ContextRepl contextRepl=new ContextRepl();
+  for (  String replacement : replacements) {
+    if (replacement.startsWith(CONTEXT_PREFIX)) {
+      contextRepl.contexts.addAll(Arrays.asList(replacement.replace(CONTEXT_PREFIX,"").trim().split(", *")));
+    }
+ else {
+      contextRepl.replacements.add(replacement);
+    }
+  }
+  return contextRepl;
+}
