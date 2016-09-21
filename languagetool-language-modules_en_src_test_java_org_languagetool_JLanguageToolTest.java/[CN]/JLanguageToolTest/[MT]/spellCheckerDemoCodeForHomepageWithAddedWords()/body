@@ -1,0 +1,10 @@
+{
+  JLanguageTool langTool=new JLanguageTool(new BritishEnglish());
+  for (  Rule rule : langTool.getAllRules()) {
+    if (rule instanceof SpellingCheckRule) {
+      ((SpellingCheckRule)rule).addIgnoreTokens(Arrays.asList("myspecialword","anotherspecialword"));
+    }
+  }
+  List<RuleMatch> matches=langTool.check("These are myspecialword and anotherspecialword");
+  System.out.println(matches.size() + " matches");
+}
