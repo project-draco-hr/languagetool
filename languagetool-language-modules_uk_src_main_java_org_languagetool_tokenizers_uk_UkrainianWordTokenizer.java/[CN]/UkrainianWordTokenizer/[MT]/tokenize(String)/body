@@ -44,6 +44,9 @@
   if (text.contains("(")) {
     text=BRACE_IN_WORD_PATTERN.matcher(text).replaceAll("$1" + LEFT_BRACE_SUBST + "$2"+ RIGHT_BRACE_SUBST);
   }
+  if (text.contains(SOFT_HYPHEN_WRAP)) {
+    text=text.replace(SOFT_HYPHEN_WRAP,SOFT_HYPHEN_WRAP_SUBST);
+  }
   List<String> tokenList=new ArrayList<>();
   StringTokenizer st=new StringTokenizer(text,SPLIT_CHARS,true);
   while (st.hasMoreElements()) {
@@ -56,9 +59,10 @@
     token=token.replace(COLON_DOT_SUBST,':');
     token=token.replace(LEFT_BRACE_SUBST,'(');
     token=token.replace(RIGHT_BRACE_SUBST,')');
-    token=token.replaceAll(ELLIPSIS_SUBST,ELLIPSIS);
-    token=token.replaceAll(ELLIPSIS2_SUBST,ELLIPSIS2);
-    token=token.replaceAll(ELLIPSIS3_SUBST,ELLIPSIS3);
+    token=token.replace(ELLIPSIS_SUBST,ELLIPSIS);
+    token=token.replace(ELLIPSIS2_SUBST,ELLIPSIS2);
+    token=token.replace(ELLIPSIS3_SUBST,ELLIPSIS3);
+    token=token.replace(SOFT_HYPHEN_WRAP_SUBST,SOFT_HYPHEN_WRAP);
     if (!urls.isEmpty()) {
       for (      Entry<String,String> entry : urls.entrySet()) {
         token=token.replace(entry.getKey(),entry.getValue());

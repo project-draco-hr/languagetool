@@ -1,0 +1,5 @@
+{
+  String txt="?? ????????\u00AD\n????";
+  RuleMatch[] matches=rule.match(langTool.getAnalyzedSentence(txt));
+  assertEquals(0,matches.length);
+}
