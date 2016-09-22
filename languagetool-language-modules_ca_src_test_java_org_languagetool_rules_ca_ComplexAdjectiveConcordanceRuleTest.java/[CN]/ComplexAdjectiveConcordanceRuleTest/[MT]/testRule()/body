@@ -1,4 +1,5 @@
 {
+  assertCorrect("La ra?? sol allunyar-se dels extrems");
   assertCorrect("L'URL introdu??t");
   assertCorrect("Som els m??s antisistema");
   assertCorrect("En un entorn de prova segur");
