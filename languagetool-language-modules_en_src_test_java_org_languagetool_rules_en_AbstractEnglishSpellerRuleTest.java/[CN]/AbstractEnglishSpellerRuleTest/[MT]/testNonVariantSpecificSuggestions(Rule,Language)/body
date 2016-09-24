@@ -29,6 +29,7 @@
   assertFirstMatch("mischevious","mischievous");
   assertFirstMatch("hygeine","hygiene");
   assertFirstMatch("vehical","medical","vehicle");
+  assertEquals(0,rule.match(lt.getAnalyzedSentence("You couldn't; he didn't; it doesn't; they aren't; I hadn't; etc.")).length);
   assertFirstMatch("alot","a lot");
   assertFirstMatch("speach","speech");
   assertFirstMatch("rythem","them","rather","rhythm");
