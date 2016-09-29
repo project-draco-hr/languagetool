@@ -8,6 +8,9 @@
       if (config.getDisabledCategoryNames() != null && config.getDisabledCategoryNames().contains(rule.getCategory().getName())) {
         enabled=false;
       }
+      if (rule.getCategory().isDefaultOff()) {
+        enabled=false;
+      }
       DefaultMutableTreeNode categoryNode=new CategoryNode(rule.getCategory(),enabled);
       root.add(categoryNode);
       parents.put(rule.getCategory().getName(),categoryNode);
