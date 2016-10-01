@@ -32,8 +32,6 @@
   assertTrue(checkV2(english,german,"We will berate you").contains("BERATE"));
   assertTrue(checkV2(german,english,"Man sollte ihn nicht so beraten.").contains("BERATE"));
   assertTrue(checkV2(polish,english,"To jest frywolne.").contains("FRIVOLOUS"));
-  assertTrue(bitextCheck(polish,english,"This is frivolous.","To jest frywolne.").contains("FRIVOLOUS"));
-  assertTrue(!bitextCheck(polish,english,"This is something else.","To jest frywolne.").contains("FRIVOLOUS"));
   String[] nothing={};
   assertEquals(checkV2(english,german,"We will berate you"),checkWithOptionsV2(english,german,"We will berate you",nothing,nothing,false));
   String[] disableAvsAn={"EN_A_VS_AN"};
