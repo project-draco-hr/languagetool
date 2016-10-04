@@ -2,7 +2,7 @@
   HashMap<String,String> urls=new HashMap<>();
   text=cleanup(text);
   if (text.contains(",")) {
-    text=DECIMAL_COMMA_PATTERN.matcher(text).replaceAll("$1" + DECIMAL_COMMA_SUBST + "$2");
+    text=DECIMAL_COMMA_PATTERN.matcher(text).replaceAll(DECIMAL_COMMA_REPL);
   }
   if (text.contains("tp")) {
     Matcher matcher=URL_PATTERN.matcher(text);
@@ -15,31 +15,50 @@
       urlReplaceChar++;
     }
   }
-  if (text.contains(ELLIPSIS)) {
-    text=text.replace(ELLIPSIS,ELLIPSIS_SUBST);
+  int dotIndex=text.indexOf(".");
+  boolean dotInsideSentence=dotIndex >= 0 && dotIndex < text.length() - 1;
+  if (dotInsideSentence) {
+    if (text.contains(ELLIPSIS)) {
+      text=text.replace(ELLIPSIS,ELLIPSIS_SUBST);
+    }
+    if (text.contains(ELLIPSIS2)) {
+      text=text.replace(ELLIPSIS2,ELLIPSIS2_SUBST);
+    }
+    if (text.contains(ELLIPSIS3)) {
+      text=text.replace(ELLIPSIS3,ELLIPSIS3_SUBST);
+    }
+    text=DATE_PATTERN.matcher(text).replaceAll(DATE_PATTERN_REPL);
+    text=DOTTED_NUMBERS_PATTERN.matcher(text).replaceAll(DOTTED_NUMBERS_REPL);
+    text=ABBR_DOT_2_SMALL_LETTERS_PATTERN.matcher(text).replaceAll(ABBR_DOT_2_SMALL_LETTERS_REPL);
+    text=ABBR_DOT_TYS_PATTERN.matcher(text).replaceAll("$1" + NON_BREAKING_DOT_SUBST + "$2");
+    text=ABBR_DOT_LAT_PATTERN.matcher(text).replaceAll("$1" + NON_BREAKING_DOT_SUBST + "$2");
+    text=ABBR_DOT_PROF_PATTERN.matcher(text).replaceAll("$1" + NON_BREAKING_DOT_SUBST + "$2");
+    text=INITIALS_DOT_PATTERN_SP_2.matcher(text).replaceAll(INITIALS_DOT_REPL_SP_2);
+    text=INITIALS_DOT_PATTERN_SP_1.matcher(text).replaceAll(INITIALS_DOT_REPL_SP_1);
+    text=INITIALS_DOT_PATTERN_NSP_2.matcher(text).replaceAll(INITIALS_DOT_REPL_NSP_2);
+    text=INITIALS_DOT_PATTERN_NSP_1.matcher(text).replaceAll(INITIALS_DOT_REPL_NSP_1);
+    text=ABBR_DOT_KUB_SM_PATTERN.matcher(text).replaceAll("$1" + BREAKING_PLACEHOLDER + NON_BREAKING_DOT_SUBST);
+    text=ABBR_DOT_S_G_PATTERN.matcher(text).replaceAll("$1" + NON_BREAKING_DOT_SUBST + "$2"+ NON_BREAKING_DOT_SUBST);
+    text=ABBR_DOT_I_T_P_PATTERN.matcher(text).replaceAll("$1" + NON_BREAKING_DOT_SUBST + "$2"+ NON_BREAKING_DOT_SUBST);
+    text=ABBR_DOT_RED_AVT_PATTERN.matcher(text).replaceAll("$1" + NON_BREAKING_DOT_SUBST + "$2");
+    text=ABBR_DOT_NON_ENDING_PATTERN.matcher(text).replaceAll("$1" + NON_BREAKING_DOT_SUBST);
   }
-  if (text.contains(ELLIPSIS2)) {
-    text=text.replace(ELLIPSIS2,ELLIPSIS2_SUBST);
-  }
-  if (text.contains(ELLIPSIS3)) {
-    text=text.replace(ELLIPSIS3,ELLIPSIS3_SUBST);
-  }
-  if (text.contains(".")) {
-    text=DATE_PATTERN.matcher(text).replaceAll("$1" + DATE_DOT_SUBST + "$2"+ DATE_DOT_SUBST+ "$3");
-    text=DOTTED_NUMBERS_PATTERN.matcher(text).replaceAll("$1" + NUMBER_DOT_SUBST + "$2");
-    text=ABBR_DOT_PATTERN4.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + BREAKING_PLACEHOLDER+ "$2"+ ABBR_DOT_SUBST);
-    text=ABBR_DOT_PATTERN.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2");
-    text=ABBR_DOT_PATTERN1.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2");
-    text=ABBR_DOT_PATTERN2.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2");
-    text=ABBR_DOT_PATTERN5.matcher(text).replaceAll("$1" + BREAKING_PLACEHOLDER + ABBR_DOT_SUBST);
-    text=ABBR_DOT_PATTERN3.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2"+ ABBR_DOT_SUBST);
-    text=ABBR_DOT_PATTERN6.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST);
-    text=ABBR_DOT_PATTERN6_2.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST);
-    text=ABBR_DOT_PATTERN7.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2"+ ABBR_DOT_SUBST);
-    text=ABBR_DOT_PATTERN8.matcher(text).replaceAll("$1" + ABBR_DOT_SUBST + "$2");
+  text=ABBR_DOT_ENDING_PATTERN.matcher(text).replaceAll("$1" + NON_BREAKING_DOT_SUBST);
+  Matcher spacedDecimalMatcher=DECIMAL_SPACE_PATTERN.matcher(text);
+  if (spacedDecimalMatcher.find()) {
+    StringBuffer sb=new StringBuffer();
+    do {
+      String splitNumber=spacedDecimalMatcher.group(0);
+      String splitNumberAdjusted=splitNumber.replace(' ',NON_BREAKING_SPACE_SUBST);
+      splitNumberAdjusted=splitNumberAdjusted.replace('\u00A0',NON_BREAKING_SPACE_SUBST);
+      spacedDecimalMatcher.appendReplacement(sb,splitNumberAdjusted);
+    }
+ while (spacedDecimalMatcher.find());
+    spacedDecimalMatcher.appendTail(sb);
+    text=sb.toString();
   }
   if (text.contains(":")) {
-    text=COLON_NUMBERS_PATTERN.matcher(text).replaceAll("$1" + COLON_DOT_SUBST + "$2");
+    text=COLON_NUMBERS_PATTERN.matcher(text).replaceAll(COLON_NUMBERS_REPL);
   }
   if (text.contains("(")) {
     text=BRACE_IN_WORD_PATTERN.matcher(text).replaceAll("$1" + LEFT_BRACE_SUBST + "$2"+ RIGHT_BRACE_SUBST);
@@ -53,15 +72,16 @@
     String token=st.nextToken();
     if (token.equals(BREAKING_PLACEHOLDER))     continue;
     token=token.replace(DECIMAL_COMMA_SUBST,',');
-    token=token.replace(DATE_DOT_SUBST,'.');
-    token=token.replace(NUMBER_DOT_SUBST,'.');
-    token=token.replace(ABBR_DOT_SUBST,'.');
-    token=token.replace(COLON_DOT_SUBST,':');
+    token=token.replace(NON_BREAKING_COLON_SUBST,':');
+    token=token.replace(NON_BREAKING_SPACE_SUBST,' ');
     token=token.replace(LEFT_BRACE_SUBST,'(');
     token=token.replace(RIGHT_BRACE_SUBST,')');
-    token=token.replace(ELLIPSIS_SUBST,ELLIPSIS);
-    token=token.replace(ELLIPSIS2_SUBST,ELLIPSIS2);
-    token=token.replace(ELLIPSIS3_SUBST,ELLIPSIS3);
+    token=token.replace(NON_BREAKING_DOT_SUBST,'.');
+    if (dotInsideSentence) {
+      token=token.replace(ELLIPSIS_SUBST,ELLIPSIS);
+      token=token.replace(ELLIPSIS2_SUBST,ELLIPSIS2);
+      token=token.replace(ELLIPSIS3_SUBST,ELLIPSIS3);
+    }
     token=token.replace(SOFT_HYPHEN_WRAP_SUBST,SOFT_HYPHEN_WRAP);
     if (!urls.isEmpty()) {
       for (      Entry<String,String> entry : urls.entrySet()) {

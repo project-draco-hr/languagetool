@@ -1,13 +1,13 @@
 {
   AnalyzedTokenReadings[] tokens=input.getTokens();
-  for (int i=0; i < tokens.length - 2; i++) {
+  for (int i=1; i < tokens.length - 1; i++) {
     if (isInitial(tokens,i)) {
-      boolean spaced=isSpace(tokens[i + 2].getToken());
+      boolean spaced=isSpace(tokens[i + 1].getToken());
       int spacedOffset=spaced ? 1 : 0;
-      int nextPos=i + 2 + spacedOffset;
-      if (nextPos + 2 + spacedOffset < tokens.length && isInitial(tokens,nextPos) && (!spaced || isSpace(tokens[nextPos + 2].getToken())) && tokens[nextPos + 2 + spacedOffset].hasPartialPosTag(LAST_NAME_TAG)) {
+      int nextPos=i + 1 + spacedOffset;
+      if (nextPos + 1 + spacedOffset < tokens.length && isInitial(tokens,nextPos) && (!spaced || isSpace(tokens[nextPos + 1].getToken())) && tokens[nextPos + 1 + spacedOffset].hasPartialPosTag(LAST_NAME_TAG)) {
         int currPos=nextPos;
-        nextPos+=2 + spacedOffset;
+        nextPos+=1 + spacedOffset;
         AnalyzedTokenReadings newReadings=getInitialReadings(tokens[currPos],tokens[nextPos],"patr");
         tokens[currPos]=newReadings;
       }
