@@ -1,6 +1,6 @@
 {
-  if (args.length < 3 || args.length > 4) {
-    System.err.println("Usage: " + ConfusionRuleEvaluator.class.getSimpleName() + " <langCode> <languageModelTopDir> <wikipediaXml|tatoebaFile|plainTextFile|dir>...");
+  if (args.length < 5 || args.length > 6) {
+    System.err.println("Usage: " + ConfusionRuleEvaluator.class.getSimpleName() + " <token> <homophoneToken> <langCode> <languageModelTopDir> <wikipediaXml|tatoebaFile|plainTextFile|dir>...");
     System.err.println("   <languageModelTopDir> is a directory with sub-directories like 'en' which then again contain '1grams',");
     System.err.println("                      '2grams', and '3grams' sub directories with Lucene indexes");
     System.err.println("                      See http://wiki.languagetool.org/finding-errors-using-n-gram-data");
@@ -11,7 +11,9 @@
     System.exit(1);
   }
   long startTime=System.currentTimeMillis();
-  String langCode=args[0];
+  String token=args[0];
+  String homophoneToken=args[1];
+  String langCode=args[2];
   Language lang;
   if ("en".equals(langCode)) {
     lang=new EnglishLight();
@@ -19,14 +21,14 @@
  else {
     lang=Languages.getLanguageForShortName(langCode);
   }
-  LanguageModel languageModel=new LuceneLanguageModel(new File(args[1],lang.getShortName()));
+  LanguageModel languageModel=new LuceneLanguageModel(new File(args[3],lang.getShortName()));
   List<String> inputsFiles=new ArrayList<>();
-  inputsFiles.add(args[2]);
-  if (args.length >= 4) {
-    inputsFiles.add(args[3]);
+  inputsFiles.add(args[4]);
+  if (args.length >= 6) {
+    inputsFiles.add(args[5]);
   }
   ConfusionRuleEvaluator generator=new ConfusionRuleEvaluator(lang,languageModel,CASE_SENSITIVE);
-  generator.run(inputsFiles,TOKEN,TOKEN_HOMOPHONE,MAX_SENTENCES,EVAL_FACTORS);
+  generator.run(inputsFiles,token,homophoneToken,MAX_SENTENCES,EVAL_FACTORS);
   long endTime=System.currentTimeMillis();
   System.out.println("\nTime: " + (endTime - startTime) + "ms");
 }

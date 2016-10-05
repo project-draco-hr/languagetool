@@ -1,7 +1,7 @@
 {
   Map<Long,EvalResult> results=new HashMap<>();
   int sentences=allTokenSentences.size() + allHomophoneSentences.size();
-  System.out.println("\nEvaluation results for " + TOKEN + "/"+ TOKEN_HOMOPHONE+ " with "+ sentences+ " sentences as of "+ new Date()+ ":");
+  System.out.println("\nEvaluation results for " + token + "/"+ homophoneToken+ " with "+ sentences+ " sentences as of "+ new Date()+ ":");
   System.out.printf(ENGLISH,"Inputs:       %s\n",inputsOrDir);
   System.out.printf(ENGLISH,"Case sensit.: %s\n",caseSensitive);
   List<Long> factors=evalValues.keySet().stream().sorted().collect(toList());
